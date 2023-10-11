@@ -1,0 +1,25 @@
+# Artifact Hub package metadata file
+version: 0.1.0
+name: helloworld
+category: helloworld # One of: ai-machine-learning, database, integration-delivery, monitoring-logging, networking, security, storage, streaming-messaging or skip-prediction
+displayName: helloworld
+createdAt: "2022-05-25T07:30:00Z"
+description: This is a KCL helloworld model
+digest: sha256:324h5ljkh345jhl2jh5l324jh5lj3hh45hth43l5ghl4h5j45hj
+keywords: # (optional)
+  - kcl
+links: # (optional)
+  - name: KCL homepage
+    url: https://kcl-lang.io/
+  - name: KCL repo
+    url: https://github.com/kcl-lang/kcl
+install: | # (optional)
+  kpm add helloworld:0.1.0
+  kpm pull helloworld:0.1.0
+maintainers: # (optional)
+  - name: kcl-lang.io
+    email: kcl-lang.io@domainsbyproxy.com
+provider: # (optional)
+  name: kcl-lang.io
+recommendations: # (optional, list of recommended packages)
+  - url: https://artifacthub.io/packages/kcl/k8s
