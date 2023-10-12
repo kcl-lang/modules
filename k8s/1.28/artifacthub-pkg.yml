@@ -1,0 +1,24 @@
+# Artifact Hub package metadata file
+version: 1.28
+name: k8s
+category: kubernetes # One of: ai-machine-learning, database, integration-delivery, monitoring-logging, networking, security, storage, streaming-messaging or skip-prediction
+displayName: k8s
+createdAt: "2022-05-25T07:30:00Z"
+description: This is a KCL model describing kubernetes
+digest: sha256:ad455d93311930f775d2c79d09239b7c7656c2d8fe2c7fc9276bdeced02e186e
+keywords: # (optional)
+  - kubernetes
+  - kcl
+links: # (optional)
+  - name: KCL homepage
+    url: https://kcl-lang.io/
+  - name: KCL repo
+    url: https://github.com/kcl-lang/kcl
+install: | # (optional)
+  kpm add k8s:1.28
+  kpm pull k8s:1.28
+maintainers: # (optional)
+  - name: kcl-lang.io
+    email: kcl-lang.io@domainsbyproxy.com
+provider: # (optional)
+  name: kcl-lang.io
