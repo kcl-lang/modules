@@ -1,0 +1,46 @@
+name: Update Package Info on AH
+
+on:
+  registry_package:
+    types: [published]
+
+env:
+  KPM_REG: "ghcr.io"
+  KPM_REPO: "kcl-lang"
+
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.19
+
+      - name: Install kpm
+        run: go install kcl-lang.io/kpm@latest
+
+      - name: login
+        run: kpm login -u ${{ secrets.ACCOUNT }} -p ${{ secrets.GITHUB_TOKEN }} ghcr.io
+
+      - name: Pull package
+        run: kpm pull ${{ github.event.registry_package.name }}:${{ github.event.registry_package.package_version.container_metadata.tag.name }}
+
+      - name: Get README.md
+        run: ./get_readme.sh
+
+      - name: Run Go program
+        run: go run main.go ${{ github.event.registry_package.name }} ${{ github.event.registry_package.package_version.container_metadata.tag.name }}
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@github.com'
+
+          git add .
+          git commit -m "Updata package ${{ github.event.registry_package.name }}"
+          git push
