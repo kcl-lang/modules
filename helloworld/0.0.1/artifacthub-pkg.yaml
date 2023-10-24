@@ -2,7 +2,7 @@ version: 0.0.1
 name: helloworld
 displayName: helloworld
 createdAt: "2023-10-24T12:25:12Z"
-description: ""
+description: "This is a KCL package"
 links:
 - name: KCL homepage
   url: https://kcl-lang.io/
