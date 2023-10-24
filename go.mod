@@ -1,4 +1,4 @@
-module metadata_test
+module artifacthub
 
 go 1.21
 

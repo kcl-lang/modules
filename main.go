@@ -5,26 +5,28 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"path/filepath"
 	"strings"
 
 	ocispec "github.com/opencontainers/image-spec/specs-go/v1"
-	yaml "gopkg.in/yaml.v2"
+	"github.com/otiai10/copy"
+	"gopkg.in/yaml.v2"
 	"kcl-lang.io/kpm/pkg/client"
 	"kcl-lang.io/kpm/pkg/constants"
 	"kcl-lang.io/kpm/pkg/opt"
+	pkg "kcl-lang.io/kpm/pkg/package"
 	"oras.land/oras-go/v2"
 )
 
 const (
-	DefaultOciRegistry = "ghcr.io"
-	DefaultOciRepo     = "kcl-lang"
-	Homepage           = "KCL homepage"
-	HomepageLink       = "https://kcl-lang.io/"
-	Repo               = "KCL repo"
-	RepoLink           = "kcl-lang.io"
-	KclEmail           = "kcl-lang.io@domainsbyproxy.com"
-	KclName            = "kcl-lang"
-	README             = "README.md"
+	Homepage     = "KCL homepage"
+	HomepageLink = "https://kcl-lang.io/"
+	Repo         = "KCL repo"
+	RepoLink     = "kcl-lang.io"
+	KclEmail     = "kcl-lang.io@domainsbyproxy.com"
+	KclName      = "kcl-lang"
+	README       = "README.md"
+	AHConfFile   = "artifacthub-pkg.yaml"
 
 	MdFlagPackageName = "<package_name>"
 	MdFlagPackageTag  = "<package_tag>"
@@ -57,21 +59,38 @@ type Person struct {
 }
 
 func main() {
-	pkgName := os.Args[1]
-	pkgTag := os.Args[2]
+	if len(os.Args) < 2 {
+		fmt.Println("error: expected kcl package path")
+		os.Exit(1)
+	}
+
+	// 1. load the kcl package
+	pkgPath := os.Args[1]
+	fileName := filepath.Base(pkgPath)
+	if fileName != "kcl.mod" {
+		return
+	}
 
 	kpmClient, err := client.NewKpmClient()
 	if err != nil {
 		log.Fatalf("error: %v", err)
 	}
 
-	// 1. Get the metadata from oci manifest
+	pkgPath = filepath.Dir(pkgPath)
+	kclPkg, err := pkg.LoadKclPkg(pkgPath)
+	if err != nil {
+		log.Fatalf("error: %v", err)
+	}
+
+	pkgName := kclPkg.GetPkgName()
+	pkgTag := kclPkg.GetPkgVersion()
+
 	manifest := ocispec.Manifest{}
 	jsonDesc, err := kpmClient.FetchOciManifestIntoJsonStr(opt.OciFetchOptions{
 		FetchBytesOptions: oras.DefaultFetchBytesOptions,
 		OciOptions: opt.OciOptions{
-			Reg:  DefaultOciRegistry,
-			Repo: fmt.Sprintf("%s/%s", DefaultOciRepo, pkgName),
+			Reg:  kpmClient.GetSettings().DefaultOciRegistry(),
+			Repo: fmt.Sprintf("%s/%s", kpmClient.GetSettings().DefaultOciRepo(), pkgName),
 			Tag:  pkgTag,
 		},
 	})
@@ -80,13 +99,6 @@ func main() {
 	}
 
 	err = json.Unmarshal([]byte(jsonDesc), &manifest)
-	if err != nil {
-		log.Fatalf("error: %v", err)
-	}
-
-	dirPath := fmt.Sprintf("%s/%s", pkgName, pkgTag)
-
-	err = os.MkdirAll(dirPath, 0755)
 	if err != nil {
 		log.Fatalf("error: %v", err)
 	}
@@ -101,7 +113,6 @@ func main() {
 	if err != nil {
 		log.Fatalf("error: %v", err)
 	}
-
 	installDoc := strings.Replace(string(installationTemplate), MdFlagPackageName, pkgName, -1)
 	installDoc = strings.Replace(string(installDoc), MdFlagPackageTag, pkgTag, -1)
 
@@ -130,7 +141,21 @@ func main() {
 		log.Fatalf("error: %v", err)
 	}
 
-	err = os.WriteFile(fmt.Sprintf("%s/artifacthub-pkg.yaml", dirPath), data, 0644)
+	ahDir := filepath.Join(pkgPath, pkgTag)
+
+	err = os.MkdirAll(ahDir, 0755)
+	if err != nil {
+		log.Fatalf("error: %v", err)
+	}
+
+	err = copy.Copy(filepath.Join(pkgPath, README), filepath.Join(ahDir, README))
+	if err != nil {
+		if !os.IsNotExist(err) {
+			log.Fatalf("error: %v", err)
+		}
+	}
+
+	err = os.WriteFile(filepath.Join(ahDir, AHConfFile), data, 0644)
 	if err != nil {
 		log.Fatalf("error: %v", err)
 	}

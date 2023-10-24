@@ -1,20 +1,26 @@
-name: Update Package Info on AH
+name: Publish Package
 
 on:
-  registry_package:
-    types: [published]
+  pull_request:
+    types: [closed]
 
 env:
-  KPM_REG: "ghcr.io"
-  KPM_REPO: "kcl-lang"
-
+  KPM_REG: "docker.io"
+  KPM_REPO: "kcllang"
 
 jobs:
-  sync:
+  publish_pkg:
+    # NOTE:
+    # - This is limited to pull_request* events and would raise an error for other events.
+    # - A maximum of 3000 files can be returned.
+    # - For more flexibility and no limitations see "Using local .git history" above.
+
     runs-on: ubuntu-latest
+    name: Update Package Info on AH 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Go
         uses: actions/setup-go@v2
@@ -25,16 +31,33 @@ jobs:
         run: go install kcl-lang.io/kpm@latest
 
       - name: login
-        run: kpm login -u ${{ secrets.ACCOUNT }} -p ${{ secrets.GITHUB_TOKEN }} ghcr.io
+        run: kpm login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} docker.io
 
-      - name: Pull package
-        run: kpm pull ${{ github.event.registry_package.name }}:${{ github.event.registry_package.package_version.container_metadata.tag.name }}
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v39
 
-      - name: Get README.md
-        run: ./get_readme.sh
+      - name: publish to docker.io
+        run: |
+          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+            ./scripts/push_pkg_from.sh $file
+          done
 
-      - name: Run Go program
-        run: go run main.go ${{ github.event.registry_package.name }} ${{ github.event.registry_package.package_version.container_metadata.tag.name }}
+      - name: publish to ghcr.io
+        run: |
+          kpm login -u ${{ secrets.GITHUB_USERNAME }} -p ${{ secrets.GITHUB_TOKEN }} ghcr.io
+          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+            ./scripts/push_pkg_from.sh $file
+          done
+        env:
+          KPM_REG: "ghcr.io"
+          KPM_REPO: "kcl-lang"
+
+      - name: update artifacthub-pkg.yaml
+        run: |
+          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+            go run main.go $file
+          done
 
       - name: Commit and push changes
         run: |
@@ -42,5 +65,5 @@ jobs:
           git config --global user.email 'action@github.com'
 
           git add .
-          git commit -m "Updata package ${{ github.event.registry_package.name }}"
+          git commit -m "Updata artifacthub-pkg.yaml for ${{ github.event.registry_package.name }}"
           git push
