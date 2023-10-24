@@ -46,7 +46,7 @@ jobs:
 
       - name: publish to ghcr.io
         run: |
-          kpm login -u ${{ secrets.GITHUB_USERNAME }} -p ${{ secrets.GITHUB_TOKEN }} ghcr.io
+          kpm login -u ${{ secrets.DEPLOY_ACCESS_NAME }} -p ${{ secrets.DEPLOY_ACCESS_TOKEN }} ghcr.io
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             ./scripts/push_pkg_from.sh $file
           done
