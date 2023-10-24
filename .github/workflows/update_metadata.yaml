@@ -32,7 +32,7 @@ jobs:
         run: go install kcl-lang.io/kpm@latest
 
       - name: login
-        run: kpm login -u ${{ secrets.TEST }} -p ${{ secrets.DOCKER_PASSWORD }} docker.io
+        run: kpm login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} docker.io
 
       - name: Get changed files
         id: changed-files
