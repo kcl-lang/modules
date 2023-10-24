@@ -1,8 +1,9 @@
 name: Publish Package
 
 on:
-  pull_request:
-    types: [closed]
+  push:
+    branches:
+      - main
 
 env:
   KPM_REG: "docker.io"
