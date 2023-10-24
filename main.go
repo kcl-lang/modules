@@ -30,6 +30,8 @@ const (
 
 	MdFlagPackageName = "<package_name>"
 	MdFlagPackageTag  = "<package_tag>"
+
+	DefaultPkgDesc = "This is a KCL package"
 )
 
 type Metadata struct {
@@ -107,6 +109,9 @@ func main() {
 	tag := manifest.Annotations[constants.DEFAULT_KCL_OCI_MANIFEST_VERSION]
 	createTime := manifest.Annotations[constants.DEFAULT_CREATE_OCI_MANIFEST_TIME]
 	desc := manifest.Annotations[constants.DEFAULT_KCL_OCI_MANIFEST_DESCRIPTION]
+	if len(desc) == 0 {
+		desc = DefaultPkgDesc
+	}
 
 	// 2. generate the install command from the markdown template
 	installationTemplate, err := os.ReadFile("./templates/install.md")
