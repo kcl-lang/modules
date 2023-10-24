@@ -1,0 +1,69 @@
+name: Publish Package
+
+on:
+  pull_request:
+    types: [closed]
+
+env:
+  KPM_REG: "docker.io"
+  KPM_REPO: "kcllang"
+
+jobs:
+  publish_pkg:
+    # NOTE:
+    # - This is limited to pull_request* events and would raise an error for other events.
+    # - A maximum of 3000 files can be returned.
+    # - For more flexibility and no limitations see "Using local .git history" above.
+
+    runs-on: ubuntu-latest
+    name: Update Package Info on AH 
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.19
+
+      - name: Install kpm
+        run: go install kcl-lang.io/kpm@latest
+
+      - name: login
+        run: kpm login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} docker.io
+
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v39
+
+      - name: publish to docker.io
+        run: |
+          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+            ./scripts/push_pkg_from.sh $file
+          done
+
+      - name: publish to ghcr.io
+        run: |
+          kpm login -u ${{ secrets.GITHUB_USERNAME }} -p ${{ secrets.GITHUB_TOKEN }} ghcr.io
+          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+            ./scripts/push_pkg_from.sh $file
+          done
+        env:
+          KPM_REG: "ghcr.io"
+          KPM_REPO: "kcl-lang"
+
+      - name: update artifacthub-pkg.yaml
+        run: |
+          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+            go run main.go $file
+          done
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@github.com'
+
+          git add .
+          git commit -m "Updata artifacthub-pkg.yaml for ${{ github.event.registry_package.name }}"
+          git push

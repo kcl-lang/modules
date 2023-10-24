@@ -1,0 +1,21 @@
+# Artifact Hub package metadata file
+version: A SemVer 2 version (required)
+name: The name of the package (only alphanum, no spaces, dashes allowed) (required)
+displayName: The name of the package nicely formatted (required)
+createdAt: The date this package was created (RFC3339 layout) (required)
+description: A short description of the package (required)
+links: # (optional)
+  - name: KCL homepage
+    url: https://kcl-lang.io/
+  - name: KCL repo
+    url: https://github.com/kcl-lang/kcl
+install: | # (optional)
+  kpm add helloworld:0.1.0
+  kpm pull helloworld:0.1.0
+maintainers: # (optional)
+  - name: kcl-lang.io
+    email: kcl-lang.io@domainsbyproxy.com
+provider: # (optional)
+  name: kcl-lang.io
+recommendations: # (optional, list of recommended packages)
+  - url: https://artifacthub.io/packages/kcl/k8s
