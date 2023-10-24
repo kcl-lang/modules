@@ -1,0 +1,25 @@
+version: 0.0.1
+name: hello1
+displayName: hello1
+createdAt: "2023-10-24T11:12:11Z"
+description: ""
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `hello1` with tag `0.0.1` as dependency
+  ```
+  kpm add hello1:0.0.1
+  ```
+
+  #### Pull `hello1` with tag `0.0.1` to local
+  ```
+  kpm pull hello1:0.0.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
