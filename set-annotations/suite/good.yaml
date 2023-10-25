@@ -1,0 +1,25 @@
+apiVersion: krm.kcl.dev/v1alpha1
+kind: KCLRun
+metadata:
+  name: set-annotations
+  annotations: 
+    krm.kcl.dev/version: 0.0.1
+    krm.kcl.dev/type: mutation
+    documentation: >-
+      Set annotations
+spec:
+  params:
+    annotations:
+      config.kubernetes.io/local-config: "true"
+  source: ./examples/mutation/set-annotations/main.k
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  containers:
+  - name: nginx
+    image: nginx:1.14.2
+    ports:
+    - containerPort: 80
