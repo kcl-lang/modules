@@ -1,0 +1,9 @@
+apiVersion: krm.kcl.dev/v1alpha1
+kind: KCLRun
+metadata:
+  name: set-annotations
+spec:
+  params:
+    annotations:
+      config.kubernetes.io/local-config: "true"
+  source: oci://ghcr.io/kcl-lang/set-annotations
