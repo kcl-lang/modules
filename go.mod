@@ -4,6 +4,7 @@ go 1.21
 
 require (
 	github.com/opencontainers/image-spec v1.1.0-rc4
+	github.com/otiai10/copy v1.9.0
 	gopkg.in/yaml.v2 v2.4.0
 	kcl-lang.io/kpm v0.3.7
 	oras.land/oras-go/v2 v2.3.0
@@ -24,7 +25,7 @@ require (
 	github.com/containerd/containerd v1.7.0 // indirect
 	github.com/cyphar/filepath-securejoin v0.2.3 // indirect
 	github.com/docker/cli v23.0.1+incompatible // indirect
-	github.com/docker/distribution v2.8.1+incompatible // indirect
+	github.com/docker/distribution v2.8.2+incompatible // indirect
 	github.com/docker/docker v23.0.1+incompatible // indirect
 	github.com/docker/docker-credential-helpers v0.7.0 // indirect
 	github.com/docker/go-connections v0.4.0 // indirect
@@ -55,7 +56,6 @@ require (
 	github.com/moby/term v0.0.0-20221205130635-1aeaba878587 // indirect
 	github.com/morikuni/aec v1.0.0 // indirect
 	github.com/opencontainers/go-digest v1.0.0 // indirect
-	github.com/otiai10/copy v1.9.0 // indirect
 	github.com/pjbgf/sha1cd v0.3.0 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/powerman/rpc-codec v1.2.2 // indirect
