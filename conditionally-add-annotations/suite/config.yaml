@@ -1,0 +1,16 @@
+apiVersion: krm.kcl.dev/v1alpha1
+kind: KCLRun
+metadata:
+  name: conditionally-add-annotations
+  annotations: 
+    krm.kcl.dev/version: 0.0.1
+    krm.kcl.dev/type: mutation
+    documentation: >-
+      Conditionally add annotations
+spec:
+  params:
+    toMatch:
+      config.kubernetes.io/local-config: "true"
+    toAdd:
+      configmanagement.gke.io/managed: disabled
+  source: oci://ghcr.io/kcl-lang/conditionally-add-annotations

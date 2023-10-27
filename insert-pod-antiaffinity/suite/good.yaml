@@ -1,0 +1,36 @@
+apiVersion: krm.kcl.dev/v1alpha1
+kind: KCLRun
+metadata:
+  name: insert-pod-antiaffinity
+  annotations: 
+    krm.kcl.dev/version: 0.0.1
+    krm.kcl.dev/type: mutation
+    documentation: >-
+      Applications may involve multiple replicas of the same Pod for availability as well as scale
+      purposes, yet Kubernetes does not by default provide a solution for availability. This policy
+      sets a Pod anti-affinity configuration on Deployments which contain an `app` label if it is
+      not already present.
+spec:
+  source: ./examples/mutation/insert-pod-antiaffinity/main.k
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80

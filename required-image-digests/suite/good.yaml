@@ -1,0 +1,22 @@
+apiVersion: krm.kcl.dev/v1alpha1
+kind: KCLRun
+metadata:
+  name: required-image-digests
+  annotations: 
+    krm.kcl.dev/version: 0.0.1
+    krm.kcl.dev/type: validation
+    documentation: >-
+      Requires container images to contain a digest.
+
+      https://kubernetes.io/docs/concepts/containers/images/
+spec:
+  source: ./examples/validation/required-image-digests/main.k
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: good-suite
+spec:
+  containers:
+    - name: kcl
+      image: kcllang/kcl:0.6.0@sha256:04ff8fce2afd1a3bc26260348e5b290e8d945b1fad4b4c16d22834c2f3a1814a

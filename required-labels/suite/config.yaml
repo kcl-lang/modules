@@ -1,0 +1,16 @@
+apiVersion: krm.kcl.dev/v1alpha1
+kind: KCLRun
+metadata:
+  name: required-labels
+  annotations: 
+    krm.kcl.dev/version: 0.0.1
+    krm.kcl.dev/type: validation
+    documentation: >-
+      Requires resources to contain specified labels, with values matching provided regular expressions.
+spec:
+  params:
+    requires:
+      - key: config.kubernetes.io/local-config
+        # Optional: If specified, a regular expression the annotation's value must match.
+        allowedRegex: "true"
+  source: oci://ghcr.io/kcl-lang/required-labels

@@ -1,0 +1,37 @@
+apiVersion: krm.kcl.dev/v1alpha1
+kind: KCLRun
+metadata:
+  name: replica-limits
+  annotations: 
+    krm.kcl.dev/version: 0.0.1
+    krm.kcl.dev/type: validation
+    documentation: >-
+      Requires that objects with the field `spec.replicas` (Deployments,
+      ReplicaSets, etc.) specify a number of replicas within defined ranges.
+spec:
+  params:
+    min_replicas: 0
+    max_replicas: 5
+  source: ./examples/validation/replica-limits/main.k
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 6
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80

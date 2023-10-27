@@ -1,0 +1,20 @@
+apiVersion: config.kubernetes.io/v1
+kind: ResourceList
+items:
+functionConfig:
+  apiVersion: krm.kcl.dev/v1alpha1
+  kind: KCLRun
+  spec:
+    params:
+      name: app
+      containers:
+        ngnix:
+          image: ngnix
+          ports:
+          - containerPort: 80
+      service:
+        ports:
+        - port: 80
+      labels:
+        name: app
+    source: oci://ghcr.io/kcl-lang/web-service

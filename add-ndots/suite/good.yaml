@@ -1,0 +1,24 @@
+apiVersion: krm.kcl.dev/v1alpha1
+kind: KCLRun
+metadata:
+  name: add-ndots
+  annotations: 
+    krm.kcl.dev/version: 0.0.1
+    krm.kcl.dev/type: mutation
+    documentation: >-
+      The ndots value controls where DNS lookups are first performed in a cluster
+      and needs to be set to a lower value than the default of 5 in some cases.
+      This policy mutates all Pods to add the ndots option with a value of 1.
+spec:
+  source: ./examples/mutation/add-ndots/main.k
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  containers:
+  - name: nginx
+    image: nginx:1.14.2
+    ports:
+    - containerPort: 80

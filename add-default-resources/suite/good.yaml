@@ -1,0 +1,28 @@
+apiVersion: krm.kcl.dev/v1alpha1
+kind: KCLRun
+metadata:
+  name: add-default-resources
+  annotations: 
+    krm.kcl.dev/version: 0.0.1
+    krm.kcl.dev/type: mutation
+    documentation: >-
+      Pods which don't specify at least resource requests are assigned a QoS class
+      of BestEffort which can hog resources for other Pods on Nodes. At a minimum,
+      all Pods should specify resource requests in order to be labeled as the QoS
+      class Burstable. This sample mutates any container in a Pod which doesn't
+      specify memory or cpu requests to apply some sane defaults.
+spec:
+  source: ./examples/mutation/add-default-resources/main.k
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  containers:
+  - name: nginx
+    image: nginx:1.14.2
+    ports:
+    - containerPort: 80
+  - name: kcl
+    image: kcllang/kcl

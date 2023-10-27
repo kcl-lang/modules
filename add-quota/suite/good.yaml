@@ -1,0 +1,16 @@
+apiVersion: krm.kcl.dev/v1alpha1
+kind: KCLRun
+metadata:
+  name: add-quota
+  annotations: 
+    krm.kcl.dev/version: 0.0.1
+    krm.kcl.dev/type: mutation
+    documentation: >-
+      Add quota
+spec:
+  source: ./examples/mutation/add-quota/main.k
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: sampleapp

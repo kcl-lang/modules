@@ -1,0 +1,19 @@
+apiVersion: krm.kcl.dev/v1alpha1
+kind: KCLRun
+metadata:
+  name: disallow-svc-lb
+spec:
+  source: oci://ghcr.io/kcl-lang/disallow-svc-lb
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+spec:
+  selector:
+    app.kubernetes.io/name: MyApp
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+  type: LoadBalancer # 错误地设置了 LoadBalancer

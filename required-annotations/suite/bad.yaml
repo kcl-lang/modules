@@ -1,0 +1,35 @@
+apiVersion: krm.kcl.dev/v1alpha1
+kind: KCLRun
+metadata:
+  name: required-annotations
+  annotations: 
+    krm.kcl.dev/version: 0.0.1
+    krm.kcl.dev/type: validation
+    documentation: >-
+      Requires resources to contain specified annotations, with values matching provided regular expressions.
+spec:
+  params:
+    requires:
+      - key: config.kubernetes.io/local-config
+        # Optional: If specified, a regular expression the annotation's value must match.
+        allowedRegex: "true"
+  source: ./examples/validation/required-annotations/main.k
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: bad-required-annotations
+  annotations:
+    config.kubernetes.io/local-config: "false"
+spec:
+  rules:
+  - host: cafe.example.com
+    http:
+      paths:
+      - path: /root
+        pathType: Prefix
+        backend:
+          service:
+            name: tea-svc
+            port:
+              number: 80

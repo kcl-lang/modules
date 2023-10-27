@@ -1,0 +1,11 @@
+apiVersion: krm.kcl.dev/v1alpha1
+kind: KCLRun
+metadata:
+  name: deny-all
+  annotations: 
+    krm.kcl.dev/version: 0.0.1
+    krm.kcl.dev/type: validation
+    documentation: >-
+      Deny all objects if there are input objects.
+spec:
+  source: ./examples/validation/deny-all/main.k

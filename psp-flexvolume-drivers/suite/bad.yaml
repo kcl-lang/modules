@@ -1,0 +1,37 @@
+apiVersion: krm.kcl.dev/v1alpha1
+kind: KCLRun
+metadata:
+  name: psp-flexvolume-drivers
+  annotations: 
+    krm.kcl.dev/version: 0.0.1
+    krm.kcl.dev/type: validation
+    documentation: >-
+      Controls the allowlist of FlexVolume drivers. Corresponds to the
+      `allowedFlexVolumes` field in PodSecurityPolicy. For more information,
+      see
+      https://kubernetes.io/docs/concepts/policy/pod-security-policy/#flexvolume-drivers
+spec:
+  params:
+    allowedFlexVolumes: #[]
+      - driver: "example/lvm"
+      - driver: "example/cifs"
+  source: ./examples/validation/psp-flexvolume-drivers/main.k
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-flexvolume-driver-disallowed
+  labels:
+    app: nginx-flexvolume-driver
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    volumeMounts:
+    - mountPath: /test
+      name: test-volume
+      readOnly: true
+  volumes:
+  - name: test-volume
+    flexVolume:
+      driver: "example/testdriver" #"example/lvm"

@@ -1,0 +1,27 @@
+apiVersion: krm.kcl.dev/v1alpha1
+kind: KCLRun
+metadata:
+  name: add-default-securitycontext
+  annotations: 
+    krm.kcl.dev/version: 0.0.1
+    krm.kcl.dev/type: mutation
+    documentation: >-
+      A Pod securityContext entry defines fields such as the user and group which should be used to run the Pod.
+      Sometimes choosing default values for users rather than blocking is a better alternative to not impede
+      such Pod definitions. This policy will mutate a Pod to set `runAsNonRoot`, `runAsUser`, `runAsGroup`, and 
+      `fsGroup` fields within the Pod securityContext if they are not already set.
+spec:
+  source: ./examples/mutation/add-default-securitycontext/main.k
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  containers:
+  - name: nginx
+    image: nginx:1.14.2
+    ports:
+    - containerPort: 80
+  - name: kcl
+    image: kcllang/kcl

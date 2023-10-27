@@ -1,0 +1,22 @@
+apiVersion: krm.kcl.dev/v1alpha1
+kind: KCLRun
+metadata:
+  name: selinux
+  annotations: 
+    krm.kcl.dev/version: 0.0.1
+    krm.kcl.dev/type: mutation
+    documentation: >-
+      Pod Secirity Policy (PSP) selinux
+spec:
+  source: ./examples/mutation/pod-security-policy/selinux/main.k
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-default-selinux
+  labels:
+    app: nginx-default-selinux
+spec:
+  containers:
+  - name: nginx
+    image: nginx

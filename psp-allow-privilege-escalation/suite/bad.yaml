@@ -1,0 +1,27 @@
+apiVersion: krm.kcl.dev/v1alpha1
+kind: KCLRun
+metadata:
+  name: psp-allow-privilege-escalation
+  annotations: 
+    krm.kcl.dev/version: 0.0.1
+    krm.kcl.dev/type: validation
+    documentation: >-
+      Controls restricting escalation to root privileges. Corresponds to the
+      `allowPrivilegeEscalation` field in a PodSecurityPolicy. For more
+      information, see
+      https://kubernetes.io/docs/concepts/policy/pod-security-policy/#privilege-escalation
+spec:
+  source: ./examples/validation/psp-allow-privilege-escalation/main.k
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-privilege-escalation-disallowed
+  labels:
+    app: nginx-privilege-escalation
+spec:
+  ephemeralContainers:
+  - name: nginx
+    image: nginx
+    securityContext:
+      allowPrivilegeEscalation: true

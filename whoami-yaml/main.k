@@ -1,0 +1,42 @@
+import yaml
+deployment = yaml.decode("""\
+kind: Deployment 
+apiVersion: apps/v1 
+metadata: 
+  name: whoami 
+  namespace: kube-system 
+spec: 
+  replicas: 2 
+  selector: 
+    matchLabels: 
+      app: whoami 
+  template: 
+    metadata: 
+      labels: 
+        app: whoami 
+    spec: 
+      containers: 
+        - name: whoami 
+          image: containous/whoami 
+          ports: 
+            - containerPort: 80 
+              name: http
+""")
+service = yaml.decode("""\
+apiVersion: v1 
+kind: Service 
+metadata: 
+  name: whoami 
+  namespace: kube-system 
+spec: 
+  ports: 
+    - protocol: TCP 
+      port: 80 
+      targetPort: http 
+  selector: 
+    app: whoami
+""")
+items = [
+    deployment
+    service
+]

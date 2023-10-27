@@ -1,0 +1,54 @@
+apiVersion: krm.kcl.dev/v1alpha1
+kind: KCLRun
+metadata:
+  name: validate-deprecated-api
+  annotations: 
+    krm.kcl.dev/version: 0.0.1
+    krm.kcl.dev/type: validation
+    documentation: >-
+      Verifies deprecated Kubernetes APIs to ensure all the API versions are up to date. 
+      This template does not apply to audit as audit looks at the resources which are already
+      present in the cluster with non-deprecated API versions.
+      Ref: https://open-policy-agent.github.io/gatekeeper-library/website/validation/verifydeprecatedapi
+spec:
+  params:
+    kvs: 
+      - deprecatedAPI: "apps/v1beta1"
+        kinds: ["Deployment", "ReplicaSet", "StatefulSet"]
+        targetAPI: "apps/v1"
+      - deprecatedAPI: "extensions/v1beta1"
+        kinds: ["ReplicaSet", "Deployment", "DaemonSet"]
+        targetAPI: "apps/v1"
+      - deprecatedAPI: "extensions/v1beta1"
+        kinds: ["PodSecurityPolicy"]
+        targetAPI: "policy/v1beta1"
+      - deprecatedAPI: "apps/v1beta2"
+        kinds: ["ReplicaSet", "StatefulSet", "Deployment", "DaemonSet"]
+        targetAPI: "apps/v1"
+      - deprecatedAPI: "extensions/v1beta1"
+        kinds: ["NetworkPolicy"]
+        targetAPI: "networking.k8s.io/v1"
+    k8sVersion: 1.16
+  source: ./examples/validation/validate-deprecated-api/main.k
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: disallowed-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80

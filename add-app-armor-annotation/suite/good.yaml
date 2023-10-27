@@ -1,0 +1,28 @@
+apiVersion: krm.kcl.dev/v1alpha1
+kind: KCLRun
+metadata:
+  name: add-app-armor-annotation
+  annotations: 
+    krm.kcl.dev/version: 0.0.1
+    krm.kcl.dev/type: mutation
+    documentation: >-
+      In the earlier Pod Security Policy controller, it was possible to define
+      a setting which would enable AppArmor for all the containers within a Pod so
+      they may be assigned the desired profile. Assigning an AppArmor profile, accomplished
+      via an annotation, is useful in that it allows secure defaults to be defined and may
+      also result in passing other validation rules such as those in the Pod Security Standards.
+      This policy mutates Pods to add an annotation for every container to enabled AppArmor
+      at the runtime/default level.
+spec:
+  source: ./examples/mutation/add-app-armor-annotation/main.k
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  containers:
+  - name: nginx
+    image: nginx:1.14.2
+    ports:
+    - containerPort: 80

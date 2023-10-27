@@ -1,0 +1,38 @@
+apiVersion: krm.kcl.dev/v1alpha1
+kind: KCLRun
+metadata:
+  name: validate-auto-mount-service-account-token
+  annotations: 
+    krm.kcl.dev/version: 0.0.1
+    krm.kcl.dev/type: validation
+    documentation: >-
+      Requires container images to begin with a string from the specified list.
+
+      Ref: https://github.com/open-policy-agent/gatekeeper-library/blob/master/src/general/automount-serviceaccount-token/constraint.tmpl
+spec:
+  source: ./examples/validation/validate-auto-mount-service-account-token/main.k
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deploy
+  labels:
+    app: nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      automountServiceAccountToken: true
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - mountPath: /var/run/secrets/kubernetes.io/error_serviceaccount

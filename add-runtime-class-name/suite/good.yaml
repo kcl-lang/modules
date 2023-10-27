@@ -1,0 +1,27 @@
+apiVersion: krm.kcl.dev/v1alpha1
+kind: KCLRun
+metadata:
+  name: add-runtime-class-name
+  annotations: 
+    krm.kcl.dev/version: 0.0.1
+    krm.kcl.dev/type: mutation
+    documentation: >-
+      In the earlier Pod Security Policy controller, it was possible to configure a policy to add
+      a Pod's runtimeClassName. This was beneficial in that various container runtimes could be
+      specified according to a policy. This Kyverno policies mutates Pods to add a runtimeClassName
+      of `prodclass`.
+spec:
+  params:
+    name: runc
+  source: ./examples/mutation/add-runtime-class-name/main.k
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  containers:
+  - name: nginx
+    image: nginx:1.14.2
+    ports:
+    - containerPort: 80

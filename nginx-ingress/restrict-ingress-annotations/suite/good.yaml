@@ -1,0 +1,65 @@
+apiVersion: krm.kcl.dev/v1alpha1
+kind: KCLRun
+metadata:
+  name: restrict-ingress-annotations
+  annotations: 
+    krm.kcl.dev/version: 0.0.1
+    krm.kcl.dev/type: validation
+    documentation: >-
+      This policy mitigates CVE-2021-25746 by restricting `metadata.annotations` to safe values.
+      See: https://github.com/kubernetes/ingress-nginx/blame/main/internal/ingress/inspector/rules.go.
+      This issue has been fixed in NGINX Ingress v1.2.0. For NGINX Ingress version 1.0.5+ the 
+      "annotation-value-word-blocklist" configuration setting is also recommended. 
+      Please refer to the CVE for details. 
+spec:
+  source: ./examples/validation/nginx-ingress/restrict-ingress-annotations/main.k
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: cafe-ingress-with-snippets
+  annotations:
+    nginx.org/good: "value" 
+spec:
+  rules:
+  - host: cafe.example.com
+    http:
+      paths:
+      - path: /tea
+        pathType: Prefix
+        backend:
+          service:
+            name: tea-svc
+            port:
+              number: 80
+      - path: /coffee
+        pathType: Prefix
+        backend:
+          service:
+            name: coffee-svc
+            port:
+              number: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: cafe-ingress
+spec:
+  rules:
+  - host: cafe.example.com
+    http:
+      paths:
+      - path: /tea
+        pathType: Prefix
+        backend:
+          service:
+            name: tea-svc
+            port:
+              number: 80
+      - path: /coffee
+        pathType: Prefix
+        backend:
+          service:
+            name: coffee-svc
+            port:
+              number: 80

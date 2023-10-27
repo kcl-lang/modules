@@ -1,0 +1,29 @@
+apiVersion: krm.kcl.dev/v1alpha1
+kind: KCLRun
+metadata:
+  name: conditionally-add-labels
+  annotations: 
+    krm.kcl.dev/version: 0.0.1
+    krm.kcl.dev/type: mutation
+    documentation: >-
+      Conditionally add annotations
+spec:
+  params:
+    toMatch:
+      config.kubernetes.io/local-config: "true"
+    toAdd:
+      configmanagement.gke.io/managed: disabled
+  source: ./examples/mutation/conditionally-add-labels/main.k
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  labels:
+    config.kubernetes.io/local-config: "true"
+spec:
+  containers:
+  - name: nginx
+    image: nginx:1.14.2
+    ports:
+    - containerPort: 80
