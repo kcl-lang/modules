@@ -1,9 +1,7 @@
 name: Republish All Packages
 
-on:
-  push:
-    branches:
-      - main
+on: 
+  workflow_dispatch:
 
 env:
   KPM_REG: "docker.io"
