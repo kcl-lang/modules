@@ -1,0 +1,25 @@
+version: 0.1.0
+name: set-replicas
+displayName: set-replicas
+createdAt: "2023-10-27T03:24:34Z"
+description: '`set-replicas` is a kcl mutation package'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `set-replicas` with tag `0.1.0` as dependency
+  ```
+  kpm add set-replicas:0.1.0
+  ```
+
+  #### Pull `set-replicas` with tag `0.1.0` to local
+  ```
+  kpm pull set-replicas:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

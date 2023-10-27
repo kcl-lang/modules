@@ -1,0 +1,25 @@
+version: 0.1.0
+name: conditionally-add-annotations
+displayName: conditionally-add-annotations
+createdAt: "2023-10-27T03:23:33Z"
+description: '`conditionally-add-annotations` is a kcl mutation package'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `conditionally-add-annotations` with tag `0.1.0` as dependency
+  ```
+  kpm add conditionally-add-annotations:0.1.0
+  ```
+
+  #### Pull `conditionally-add-annotations` with tag `0.1.0` to local
+  ```
+  kpm pull conditionally-add-annotations:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

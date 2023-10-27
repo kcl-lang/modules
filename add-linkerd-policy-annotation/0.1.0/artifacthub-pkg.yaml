@@ -1,0 +1,25 @@
+version: 0.1.0
+name: add-linkerd-policy-annotation
+displayName: add-linkerd-policy-annotation
+createdAt: "2023-10-27T03:23:16Z"
+description: '`add-linkerd-policy-annotation` is a kcl mutation package'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `add-linkerd-policy-annotation` with tag `0.1.0` as dependency
+  ```
+  kpm add add-linkerd-policy-annotation:0.1.0
+  ```
+
+  #### Pull `add-linkerd-policy-annotation` with tag `0.1.0` to local
+  ```
+  kpm pull add-linkerd-policy-annotation:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

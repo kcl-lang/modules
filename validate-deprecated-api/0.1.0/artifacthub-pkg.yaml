@@ -1,0 +1,25 @@
+version: 0.1.0
+name: validate-deprecated-api
+displayName: validate-deprecated-api
+createdAt: "2023-10-27T03:24:41Z"
+description: '`validate-deprecated-api` is a kcl validation package'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `validate-deprecated-api` with tag `0.1.0` as dependency
+  ```
+  kpm add validate-deprecated-api:0.1.0
+  ```
+
+  #### Pull `validate-deprecated-api` with tag `0.1.0` to local
+  ```
+  kpm pull validate-deprecated-api:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

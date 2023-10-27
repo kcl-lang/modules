@@ -1,0 +1,25 @@
+version: 0.1.0
+name: disallow-ingress-wildcard
+displayName: disallow-ingress-wildcard
+createdAt: "2023-10-27T03:23:46Z"
+description: '`disallow-ingress-wildcard` is a kcl validation package'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `disallow-ingress-wildcard` with tag `0.1.0` as dependency
+  ```
+  kpm add disallow-ingress-wildcard:0.1.0
+  ```
+
+  #### Pull `disallow-ingress-wildcard` with tag `0.1.0` to local
+  ```
+  kpm pull disallow-ingress-wildcard:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

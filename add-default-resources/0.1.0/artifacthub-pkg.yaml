@@ -1,0 +1,25 @@
+version: 0.1.0
+name: add-default-resources
+displayName: add-default-resources
+createdAt: "2023-10-27T03:23:07Z"
+description: '`add-default-resources` is a kcl mutation package'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `add-default-resources` with tag `0.1.0` as dependency
+  ```
+  kpm add add-default-resources:0.1.0
+  ```
+
+  #### Pull `add-default-resources` with tag `0.1.0` to local
+  ```
+  kpm pull add-default-resources:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

@@ -1,0 +1,25 @@
+version: 0.1.0
+name: readonly-root-fs
+displayName: readonly-root-fs
+createdAt: "2023-10-27T03:24:20Z"
+description: '`readonly-root-fs` is a kcl validation package'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `readonly-root-fs` with tag `0.1.0` as dependency
+  ```
+  kpm add readonly-root-fs:0.1.0
+  ```
+
+  #### Pull `readonly-root-fs` with tag `0.1.0` to local
+  ```
+  kpm pull readonly-root-fs:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

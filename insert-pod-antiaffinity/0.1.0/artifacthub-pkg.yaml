@@ -1,0 +1,25 @@
+version: 0.1.0
+name: insert-pod-antiaffinity
+displayName: insert-pod-antiaffinity
+createdAt: "2023-10-27T03:24:01Z"
+description: '`insert-pod-antiaffinity` is a kcl mutation package'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `insert-pod-antiaffinity` with tag `0.1.0` as dependency
+  ```
+  kpm add insert-pod-antiaffinity:0.1.0
+  ```
+
+  #### Pull `insert-pod-antiaffinity` with tag `0.1.0` to local
+  ```
+  kpm pull insert-pod-antiaffinity:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

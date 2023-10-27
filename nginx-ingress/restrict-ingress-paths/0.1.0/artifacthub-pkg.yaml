@@ -1,0 +1,25 @@
+version: 0.1.0
+name: restrict-ingress-paths
+displayName: restrict-ingress-paths
+createdAt: "2023-10-27T03:24:09Z"
+description: '`restrict-ingress-paths` is a kcl validation package'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `restrict-ingress-paths` with tag `0.1.0` as dependency
+  ```
+  kpm add restrict-ingress-paths:0.1.0
+  ```
+
+  #### Pull `restrict-ingress-paths` with tag `0.1.0` to local
+  ```
+  kpm pull restrict-ingress-paths:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

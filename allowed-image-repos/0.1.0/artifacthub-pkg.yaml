@@ -1,0 +1,25 @@
+version: 0.1.0
+name: allowed-image-repos
+displayName: allowed-image-repos
+createdAt: "2023-10-27T03:23:29Z"
+description: '`allowed-image-repos` is a kcl validation package'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `allowed-image-repos` with tag `0.1.0` as dependency
+  ```
+  kpm add allowed-image-repos:0.1.0
+  ```
+
+  #### Pull `allowed-image-repos` with tag `0.1.0` to local
+  ```
+  kpm pull allowed-image-repos:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

@@ -1,0 +1,25 @@
+version: 0.1.0
+name: deny-endpoint-edit-default-role
+displayName: deny-endpoint-edit-default-role
+createdAt: "2023-10-27T03:23:40Z"
+description: '`deny-endpoint-edit-default-role` is a kcl validation package'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `deny-endpoint-edit-default-role` with tag `0.1.0` as dependency
+  ```
+  kpm add deny-endpoint-edit-default-role:0.1.0
+  ```
+
+  #### Pull `deny-endpoint-edit-default-role` with tag `0.1.0` to local
+  ```
+  kpm pull deny-endpoint-edit-default-role:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

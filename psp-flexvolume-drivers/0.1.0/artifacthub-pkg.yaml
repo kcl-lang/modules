@@ -1,0 +1,25 @@
+version: 0.1.0
+name: psp-flexvolume-drivers
+displayName: psp-flexvolume-drivers
+createdAt: "2023-10-27T03:24:18Z"
+description: '`psp-flexvolume-drivers` is a kcl validation package'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `psp-flexvolume-drivers` with tag `0.1.0` as dependency
+  ```
+  kpm add psp-flexvolume-drivers:0.1.0
+  ```
+
+  #### Pull `psp-flexvolume-drivers` with tag `0.1.0` to local
+  ```
+  kpm pull psp-flexvolume-drivers:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

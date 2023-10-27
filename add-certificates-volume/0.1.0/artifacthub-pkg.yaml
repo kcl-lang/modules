@@ -1,0 +1,25 @@
+version: 0.1.0
+name: add-certificates-volume
+displayName: add-certificates-volume
+createdAt: "2023-10-27T03:23:05Z"
+description: '`add-certificates-volume` is a kcl mutation package.'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `add-certificates-volume` with tag `0.1.0` as dependency
+  ```
+  kpm add add-certificates-volume:0.1.0
+  ```
+
+  #### Pull `add-certificates-volume` with tag `0.1.0` to local
+  ```
+  kpm pull add-certificates-volume:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

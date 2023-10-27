@@ -1,0 +1,25 @@
+version: 0.1.0
+name: validate-probes
+displayName: validate-probes
+createdAt: "2023-10-27T03:24:42Z"
+description: '`validate-probes` is a kcl validation package'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `validate-probes` with tag `0.1.0` as dependency
+  ```
+  kpm add validate-probes:0.1.0
+  ```
+
+  #### Pull `validate-probes` with tag `0.1.0` to local
+  ```
+  kpm pull validate-probes:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

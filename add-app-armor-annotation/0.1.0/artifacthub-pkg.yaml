@@ -1,0 +1,26 @@
+version: 0.1.0
+name: add-app-armor-annotation
+displayName: add-app-armor-annotation
+createdAt: "2023-10-27T03:23:00Z"
+description: '`add-app-armor-annotation` is a kcl mutation package, which can be used
+  to add apparmor annotations for the Kubernetes resources.'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `add-app-armor-annotation` with tag `0.1.0` as dependency
+  ```
+  kpm add add-app-armor-annotation:0.1.0
+  ```
+
+  #### Pull `add-app-armor-annotation` with tag `0.1.0` to local
+  ```
+  kpm pull add-app-armor-annotation:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

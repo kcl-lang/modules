@@ -1,0 +1,25 @@
+version: 0.1.0
+name: add-runtime-class-name
+displayName: add-runtime-class-name
+createdAt: "2023-10-27T03:23:26Z"
+description: '`add-runtime-class-name` is a kcl mutation package'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `add-runtime-class-name` with tag `0.1.0` as dependency
+  ```
+  kpm add add-runtime-class-name:0.1.0
+  ```
+
+  #### Pull `add-runtime-class-name` with tag `0.1.0` to local
+  ```
+  kpm pull add-runtime-class-name:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

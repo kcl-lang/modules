@@ -1,0 +1,25 @@
+version: 0.1.0
+name: disallow-host-ports
+displayName: disallow-host-ports
+createdAt: "2023-10-27T03:23:44Z"
+description: '`disallow-host-ports` is a kcl validation package'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `disallow-host-ports` with tag `0.1.0` as dependency
+  ```
+  kpm add disallow-host-ports:0.1.0
+  ```
+
+  #### Pull `disallow-host-ports` with tag `0.1.0` to local
+  ```
+  kpm pull disallow-host-ports:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

@@ -1,0 +1,25 @@
+version: 0.1.0
+name: replica-limits
+displayName: replica-limits
+createdAt: "2023-10-27T03:24:22Z"
+description: '`replica-limits` is a kcl validation package'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `replica-limits` with tag `0.1.0` as dependency
+  ```
+  kpm add replica-limits:0.1.0
+  ```
+
+  #### Pull `replica-limits` with tag `0.1.0` to local
+  ```
+  kpm pull replica-limits:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

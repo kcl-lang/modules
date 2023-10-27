@@ -1,0 +1,25 @@
+version: 0.1.0
+name: external-ips
+displayName: external-ips
+createdAt: "2023-10-27T03:23:56Z"
+description: '`external-ips` is a kcl validation package'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `external-ips` with tag `0.1.0` as dependency
+  ```
+  kpm add external-ips:0.1.0
+  ```
+
+  #### Pull `external-ips` with tag `0.1.0` to local
+  ```
+  kpm pull external-ips:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
