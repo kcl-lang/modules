@@ -23,7 +23,7 @@
 
 #### 1. 下载代码仓库
 
-首先，您需要使用 git 将仓库 https://github.com/kcl-lang/artifacthub下载到您的本地 
+首先，您需要使用 git 将仓库 https://github.com/kcl-lang/artifacthub 下载到您的本地 
 
 ```
 git clone https://github.com/kcl-lang/artifacthub --depth=1
