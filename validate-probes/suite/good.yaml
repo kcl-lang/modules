@@ -1,0 +1,58 @@
+apiVersion: krm.kcl.dev/v1alpha1
+kind: KCLRun
+metadata:
+  name: validate-probes
+  annotations: 
+    krm.kcl.dev/version: 0.0.1
+    krm.kcl.dev/type: validation
+    documentation: >-
+      Liveness and readiness probes accomplish different goals, and setting both to the same
+      is an anti-pattern and often results in app problems in the future. This policy
+      checks that liveness and readiness probes are not equal. Keep in mind that if both the 
+      probes are not set, they are considered to be equal and hence fails the check.
+spec:
+  source: ./examples/validation/validate-probes/main.k
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
+        livenessProbe:
+          exec:
+            command:
+            - /bin/sh
+            - -c
+            - echo livenessProbe
+          failureThreshold: 3
+          initialDelaySeconds: 30
+          periodSeconds: 5
+          successThreshold: 1
+          timeoutSeconds: 10
+        readinessProbe:
+          exec:
+            command:
+            - /bin/sh
+            - -c
+            - echo readinessProbe
+          failureThreshold: 3
+          initialDelaySeconds: 30
+          periodSeconds: 5
+          successThreshold: 2
+          timeoutSeconds: 10

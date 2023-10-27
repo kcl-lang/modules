@@ -1,0 +1,37 @@
+apiVersion: krm.kcl.dev/v1alpha1
+kind: KCLRun
+metadata:
+  name: append-env
+  annotations: 
+    krm.kcl.dev/version: 0.0.1
+    krm.kcl.dev/type: mutation
+    documentation: >-
+      Append env list for `Pod` and `Deployment` resources
+spec:
+  params:
+    env:
+      name: test_name
+      value: test_value
+  source: ./examples/mutation/append-env/main.k
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80

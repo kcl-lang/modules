@@ -1,0 +1,39 @@
+apiVersion: krm.kcl.dev/v1alpha1
+kind: KCLRun
+metadata:
+  name: horizontal-pod-auto-scaler
+  annotations: 
+    krm.kcl.dev/version: 0.0.1
+    krm.kcl.dev/type: validation
+    documentation: >-
+      Disallow the following scenarios when deploying `HorizontalPodAutoscalers`
+      1. Deployment of HorizontalPodAutoscalers with `.spec.minReplicas` or `.spec.maxReplicas` outside the ranges defined in the constraint
+      2. Deployment of HorizontalPodAutoscalers where the difference between `.spec.minReplicas` and `.spec.maxReplicas` is less than the configured `minimumReplicaSpread`
+      3. Deployment of HorizontalPodAutoscalers that do not reference a valid `scaleTargetRef` (e.g. Deployment, ReplicationController, ReplicaSet, StatefulSet).
+spec:
+  params:
+    minimumReplicaSpread: 1
+    ranges:
+    - min_replicas: 3
+      max_replicas: 6
+  source: ./examples/validation/horizontal-pod-auto-scaler/main.k
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: nginx-hpa-allowed
+  namespace: default
+spec:
+  minReplicas: 3
+  maxReplicas: 6
+  metrics:
+  - resource:
+      name: cpu
+      target:
+        averageUtilization: 900
+        type: Utilization
+    type: Resource
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: nginx-deployment

@@ -28,3 +28,7 @@ spec:
       config.kubernetes.io/local-config: "true"
   source: oci://ghcr.io/kcl-lang/set-annotations
 ```
+
+## Resource
+
+Code source and document is [here](https://github.com/kcl-lang/artifacthub/tree/main/set-annotations)

@@ -1,0 +1,26 @@
+apiVersion: krm.kcl.dev/v1alpha1
+kind: KCLRun
+metadata:
+  name: add-image-as-env-var
+  annotations: 
+    krm.kcl.dev/version: 0.0.1
+    krm.kcl.dev/type: mutation
+    documentation: >-
+      The Kubernetes downward API only has the ability to express so many
+      options as environment variables. The image consumed in a Pod is commonly
+      needed to make the application aware of some logic it must take. This policy
+      takes the value of the `image` field and adds it as an environment variable
+      to Pods.
+spec:
+  source: ./examples/mutation/add-image-as-env-var/main.k
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  containers:
+  - name: nginx
+    image: nginx:1.14.2
+    ports:
+    - containerPort: 80

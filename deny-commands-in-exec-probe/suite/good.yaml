@@ -1,0 +1,29 @@
+apiVersion: krm.kcl.dev/v1alpha1
+kind: KCLRun
+metadata:
+  name: deny-commands-in-exec-probe
+  annotations: 
+    krm.kcl.dev/version: 0.0.1
+    krm.kcl.dev/type: validation
+    documentation: >-
+      Developers may feel compelled to use simple shell commands as a workaround to
+      creating "proper" liveness or readiness probes for a Pod. Such a practice can be discouraged
+      via detection of those commands. This policy prevents the use of certain commands
+      `jcmd`, `ps`, or `ls` if found in a Pod's liveness exec probe.
+spec:
+  source: ./examples/validation/deny-commands-in-exec-probe/main.k
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  containers:
+  - name: nginx
+    image: nginx:1.14.2
+    ports:
+    - containerPort: 80
+    livenessProbe:
+      exec:
+        command:
+        - kcl

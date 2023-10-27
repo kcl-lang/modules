@@ -1,0 +1,30 @@
+apiVersion: krm.kcl.dev/v1alpha1
+kind: KCLRun
+metadata:
+  name: validate-container-limits
+  annotations: 
+    krm.kcl.dev/version: 0.0.1
+    krm.kcl.dev/type: validation
+    documentation: >-
+      Requires containers to have memory and CPU limits set and constrains
+      limits to be within the specified maximum values.
+
+      https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+spec:
+  params:
+    cpu: "200m"
+    memory: "1Gi"
+  source: ./examples/validation/validate-container-limits/main.k
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: allowed
+spec:
+  containers:
+    - name: nginx
+      image: nginx
+      resources:
+        limits:
+          cpu: "100m"
+          memory: "2Gi"

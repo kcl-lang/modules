@@ -1,0 +1,11 @@
+apiVersion: krm.kcl.dev/v1alpha1
+kind: KCLRun
+metadata:
+  name: whoami
+  annotations: 
+    krm.kcl.dev/version: 0.0.1
+    krm.kcl.dev/type: abstraction
+    documentation: >-
+      whoami application abstraction
+spec:
+  source: ./examples/abstraction/whoami/main.k

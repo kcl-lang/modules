@@ -1,0 +1,15 @@
+apiVersion: krm.kcl.dev/v1alpha1
+kind: KCLRun
+metadata:
+  name: https-only
+  annotations: 
+    krm.kcl.dev/version: 0.0.1
+    krm.kcl.dev/type: validation
+    documentation: >-
+      Requires Ingress resources to be HTTPS only.  Ingress resources must
+      include the `kubernetes.io/ingress.allow-http` annotation, set to `false`.
+      By default a valid TLS {} configuration is required, this can be made
+      optional by setting the `tlsOptional` parameter to `true`.
+      More info: https://kubernetes.io/docs/concepts/services-networking/ingress/#tls
+spec:
+  source: oci://ghcr.io/kcl-lang/https-only

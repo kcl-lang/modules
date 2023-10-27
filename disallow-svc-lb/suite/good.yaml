@@ -1,0 +1,23 @@
+apiVersion: krm.kcl.dev/v1alpha1
+kind: KCLRun
+metadata:
+  name: disallow-svc-lb
+  annotations: 
+    krm.kcl.dev/version: 0.0.1
+    krm.kcl.dev/type: validation
+    documentation: >-
+      A validation that prevents the creation of Service resources of type `LoadBalancer`
+spec:
+  source: ./examples/validation/disallow-svc-lb/main.k
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+spec:
+  selector:
+    app.kubernetes.io/name: MyApp
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80

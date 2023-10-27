@@ -1,0 +1,29 @@
+apiVersion: krm.kcl.dev/v1alpha1
+kind: KCLRun
+metadata:
+  name: external-ips
+  annotations: 
+    krm.kcl.dev/version: 0.0.1
+    krm.kcl.dev/type: validation
+    documentation: >-
+      Restricts Service externalIPs to an allowed list of IP addresses.
+      More info: https://kubernetes.io/docs/concepts/services-networking/service/#external-ips
+spec:
+  params:
+    allowedIps: ["198.51.100.32"]
+  source: ./examples/validation/external-ips/main.k
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+spec:
+  selector:
+    app.kubernetes.io/name: MyApp
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 49152
+  externalIPs:
+    - 127.0.0.1

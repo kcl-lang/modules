@@ -1,0 +1,31 @@
+apiVersion: krm.kcl.dev/v1alpha1
+kind: KCLRun
+metadata:
+  name: disallow-privileged-containers
+  annotations: 
+    krm.kcl.dev/version: 0.0.1
+    krm.kcl.dev/type: validation
+    documentation: >-
+      Privileged mode disables most security mechanisms and must not be allowed. This policy
+      ensures Pods do not call for privileged mode. Privileged mode is disallowed.
+      The fields spec.containers[*].securityContext.privileged
+      and spec.initContainers[*].securityContext.privileged must be unset or set to `false`.
+spec:
+  source: ./examples/validation/disallow-privileged-containers/main.k
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  containers:
+  - name: nginx
+    image: nginx:1.14.2
+    ports:
+    - containerPort: 80
+    securityContext:
+      privileged: "false"
+  - name: nginx
+    image: nginx:1.14.2
+    ports:
+    - containerPort: 80

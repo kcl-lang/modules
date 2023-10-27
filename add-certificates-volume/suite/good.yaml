@@ -1,0 +1,27 @@
+apiVersion: krm.kcl.dev/v1alpha1
+kind: KCLRun
+metadata:
+  name: add-certificates-volume
+  annotations: 
+    krm.kcl.dev/version: 0.0.1
+    krm.kcl.dev/type: mutation
+    documentation: >-
+      In some cases you would need to trust custom CA certificates for all the containers of a Pod.
+      It makes sense to be in a ConfigMap so that you can automount them by only setting an annotation.
+      This policy adds a volume to all containers in a Pod containing the certificate if the annotation
+      called `inject-certs` with value `enabled` is found.
+spec:
+  source: ./examples/mutation/add-certificates-volume/main.k
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  annotations:
+    inject-certs: "enabled"
+spec:
+  containers:
+  - name: nginx
+    image: nginx:1.14.2
+    ports:
+    - containerPort: 80

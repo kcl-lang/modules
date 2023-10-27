@@ -1,0 +1,28 @@
+apiVersion: krm.kcl.dev/v1alpha1
+kind: KCLRun
+metadata:
+  name: disallowed-image-repos
+  annotations: 
+    krm.kcl.dev/version: 0.0.1
+    krm.kcl.dev/type: validation
+    documentation: >-
+      Disallowed container repositories that begin with a string from the specified list.
+spec:
+  params:
+    repos:
+      - "k8s.gcr.io/"
+  source: ./examples/validation/disallowed-image-repos/main.k
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod
+spec:
+  containers:
+    - name: kcl
+      image: kcllang/kcl
+      args:
+        - "kcl"
+  ephemeralContainers:
+    - name: kcl
+      image: kcllang/kcl

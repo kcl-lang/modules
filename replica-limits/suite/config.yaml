@@ -1,0 +1,15 @@
+apiVersion: krm.kcl.dev/v1alpha1
+kind: KCLRun
+metadata:
+  name: replica-limits
+  annotations: 
+    krm.kcl.dev/version: 0.0.1
+    krm.kcl.dev/type: validation
+    documentation: >-
+      Requires that objects with the field `spec.replicas` (Deployments,
+      ReplicaSets, etc.) specify a number of replicas within defined ranges.
+spec:
+  params:
+    min_replicas: 0
+    max_replicas: 5
+  source: oci://ghcr.io/kcl-lang/replica-limits

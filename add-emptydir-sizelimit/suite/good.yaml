@@ -1,0 +1,31 @@
+apiVersion: krm.kcl.dev/v1alpha1
+kind: KCLRun
+metadata:
+  name: add-emptydir-sizelimit
+  annotations: 
+    krm.kcl.dev/version: 0.0.1
+    krm.kcl.dev/type: mutation
+    documentation: >-
+      When a Pod requests an emptyDir, by default it does not have a size limit which
+      may allow it to consume excess or all of the space in the medium backing the volume.
+      This can quickly overrun a Node and may result in a denial of service for other
+      workloads. This policy adds a sizeLimit field to all Pods mounting emptyDir
+      volumes, if not present, and sets it to 100Mi.
+spec:
+  source: ./examples/mutation/add-emptydir-sizelimit/main.k
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  containers:
+  - name: nginx
+    image: nginx:1.14.2
+    ports:
+    - containerPort: 80
+  - name: kcl
+    image: kcllang/kcl
+  volumes:
+  - emptyDir: {}
+    name: wordpress-persistent-storage
