@@ -6,8 +6,8 @@ on:
       - main
 
 env:
-  KPM_REG: "docker.io"
-  KPM_REPO: "kcllang"
+  KPM_REG: "ghcr.io"
+  KPM_REPO: "amyXia1994"
 
 jobs:
   publish_pkg:

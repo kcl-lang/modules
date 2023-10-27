@@ -1,0 +1,26 @@
+version: 0.1.0
+name: doc-demo
+displayName: doc-demo
+createdAt: "2023-10-25T06:46:13Z"
+description: '`set-annotations` is a kcl mutation package, which can be used to add
+  `metadata.annotations` attributes for the Kubernetes resources.'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `set-annotations` with tag `0.1.0` as dependency
+  ```
+  kpm add set-annotations:0.1.0
+  ```
+
+  #### Pull `set-annotations` with tag `0.1.0` to local
+  ```
+  kpm pull set-annotations:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
