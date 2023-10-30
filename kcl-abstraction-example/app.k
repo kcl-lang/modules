@@ -1,31 +1,3 @@
-## Introduction
-
-`web-service` is a abstraction application model for Kubernetes resources.
-
-## How to Use
-
-```yaml
-apiVersion: krm.kcl.dev/v1alpha1
-kind: KCLRun
-spec:
-  params:
-    name: app
-    containers:
-      ngnix:
-        image: ngnix
-        ports:
-        - containerPort: 80
-    service:
-      ports:
-      - port: 80
-    labels:
-      name: app
-  source: oci://ghcr.io/kcl-lang/web-service
-```
-
-The application definition is as follows:
-
-```python
 schema App:
     """The application model."""
     name: str
@@ -77,8 +49,3 @@ schema Volume:
 schema Resource:
     limits?: {str:}
     requests?: {str:}
-```
-
-## Resource
-
-Code source and document is [here](https://github.com/kcl-lang/artifacthub/tree/main/web-service)
