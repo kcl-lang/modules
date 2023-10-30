@@ -1,0 +1,26 @@
+version: 0.0.1
+name: kcl-chart-example
+displayName: kcl-chart-example
+createdAt: "2023-10-30T07:35:06Z"
+description: '`kcl-chart-example` is a Helm chart like KCL module that contains multiple
+  Kubernetes manifests.'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `kcl-chart-example` with tag `0.0.1` as dependency
+  ```
+  kpm add kcl-chart-example:0.0.1
+  ```
+
+  #### Pull `kcl-chart-example` with tag `0.0.1` to local
+  ```
+  kpm pull kcl-chart-example:0.0.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

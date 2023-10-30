@@ -1,0 +1,25 @@
+version: 0.1.0
+name: kcl-definition-example
+displayName: kcl-definition-example
+createdAt: "2023-10-30T07:35:13Z"
+description: '`kcl-definition-example` is the schema definition example.'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `kcl-definition-example` with tag `0.1.0` as dependency
+  ```
+  kpm add kcl-definition-example:0.1.0
+  ```
+
+  #### Pull `kcl-definition-example` with tag `0.1.0` to local
+  ```
+  kpm pull kcl-definition-example:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

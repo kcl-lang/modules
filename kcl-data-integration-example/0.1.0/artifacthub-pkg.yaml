@@ -1,0 +1,25 @@
+version: 0.1.0
+name: kcl-data-integration-example
+displayName: kcl-data-integration-example
+createdAt: "2023-10-30T07:35:10Z"
+description: '`kcl-data-integration-example` is the KCL data integration example.'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `kcl-data-integration-example` with tag `0.1.0` as dependency
+  ```
+  kpm add kcl-data-integration-example:0.1.0
+  ```
+
+  #### Pull `kcl-data-integration-example` with tag `0.1.0` to local
+  ```
+  kpm pull kcl-data-integration-example:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

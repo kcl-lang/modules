@@ -1,0 +1,25 @@
+version: 0.1.0
+name: kcl-isolated-config-example
+displayName: kcl-isolated-config-example
+createdAt: "2023-10-30T07:35:15Z"
+description: '`kcl-isolated-config-example` is the isolated configuration example.'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `kcl-isolated-config-example` with tag `0.1.0` as dependency
+  ```
+  kpm add kcl-isolated-config-example:0.1.0
+  ```
+
+  #### Pull `kcl-isolated-config-example` with tag `0.1.0` to local
+  ```
+  kpm pull kcl-isolated-config-example:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

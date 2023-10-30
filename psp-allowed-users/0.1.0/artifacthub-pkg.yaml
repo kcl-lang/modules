@@ -1,0 +1,25 @@
+version: 0.1.0
+name: psp-allowed-users
+displayName: psp-allowed-users
+createdAt: "2023-10-30T07:35:22Z"
+description: '`psp-allowed-users` is a kcl validation package'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `psp-allowed-users` with tag `0.1.0` as dependency
+  ```
+  kpm add psp-allowed-users:0.1.0
+  ```
+
+  #### Pull `psp-allowed-users` with tag `0.1.0` to local
+  ```
+  kpm pull psp-allowed-users:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

@@ -1,0 +1,25 @@
+version: 0.0.1
+name: ingress-nginx
+displayName: ingress-nginx
+createdAt: "2023-10-30T07:34:58Z"
+description: '`ingress-nginx` Kubernetes KCL manifests'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `ingress-nginx` with tag `0.0.1` as dependency
+  ```
+  kpm add ingress-nginx:0.0.1
+  ```
+
+  #### Pull `ingress-nginx` with tag `0.0.1` to local
+  ```
+  kpm pull ingress-nginx:0.0.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

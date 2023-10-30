@@ -1,0 +1,26 @@
+version: 0.0.1
+name: kcl-secret-management-example
+displayName: kcl-secret-management-example
+createdAt: "2023-10-30T07:35:20Z"
+description: '`kcl-secret-management-example` is the KCL secret management example
+  using Vault and Vals.'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `kcl-secret-management-example` with tag `0.0.1` as dependency
+  ```
+  kpm add kcl-secret-management-example:0.0.1
+  ```
+
+  #### Pull `kcl-secret-management-example` with tag `0.0.1` to local
+  ```
+  kpm pull kcl-secret-management-example:0.0.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

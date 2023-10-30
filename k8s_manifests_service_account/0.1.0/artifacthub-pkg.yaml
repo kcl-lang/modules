@@ -1,0 +1,26 @@
+version: 0.1.0
+name: k8s_manifests_service_account
+displayName: k8s_manifests_service_account
+createdAt: "2023-10-30T07:35:01Z"
+description: '`k8s_manifests_service_accounts` can be used to get the service account
+  name in the Kubernetes resource.'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `k8s_manifests_service_account` with tag `0.1.0` as dependency
+  ```
+  kpm add k8s_manifests_service_account:0.1.0
+  ```
+
+  #### Pull `k8s_manifests_service_account` with tag `0.1.0` to local
+  ```
+  kpm pull k8s_manifests_service_account:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

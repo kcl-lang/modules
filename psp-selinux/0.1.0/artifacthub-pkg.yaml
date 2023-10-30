@@ -1,0 +1,25 @@
+version: 0.1.0
+name: psp-selinux
+displayName: psp-selinux
+createdAt: "2023-10-30T07:35:24Z"
+description: '`psp-selinux` is a kcl mutation package'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `psp-selinux` with tag `0.1.0` as dependency
+  ```
+  kpm add psp-selinux:0.1.0
+  ```
+
+  #### Pull `psp-selinux` with tag `0.1.0` to local
+  ```
+  kpm pull psp-selinux:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
