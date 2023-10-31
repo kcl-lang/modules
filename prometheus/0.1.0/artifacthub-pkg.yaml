@@ -1,0 +1,25 @@
+version: 0.1.0
+name: prometheus
+displayName: prometheus
+createdAt: "2023-10-31T14:49:22Z"
+description: '`prometheus` is the prometheus spec definition'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `prometheus` with tag `0.1.0` as dependency
+  ```
+  kpm add prometheus:0.1.0
+  ```
+
+  #### Pull `prometheus` with tag `0.1.0` to local
+  ```
+  kpm pull prometheus:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
