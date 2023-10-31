@@ -1,0 +1,25 @@
+version: 0.1.0
+name: psp-host-namespaces
+displayName: psp-host-namespaces
+createdAt: "2023-10-31T08:15:53Z"
+description: '`psp-host-namespaces` is a kcl validation package'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `psp-host-namespaces` with tag `0.1.0` as dependency
+  ```
+  kpm add psp-host-namespaces:0.1.0
+  ```
+
+  #### Pull `psp-host-namespaces` with tag `0.1.0` to local
+  ```
+  kpm pull psp-host-namespaces:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
