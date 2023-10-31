@@ -23,7 +23,7 @@ require (
 	github.com/chai2010/protorpc v1.1.4 // indirect
 	github.com/cloudflare/circl v1.1.0 // indirect
 	github.com/containerd/containerd v1.7.0 // indirect
-	github.com/cyphar/filepath-securejoin v0.2.3 // indirect
+	github.com/cyphar/filepath-securejoin v0.2.4 // indirect
 	github.com/docker/cli v23.0.1+incompatible // indirect
 	github.com/docker/distribution v2.8.2+incompatible // indirect
 	github.com/docker/docker v23.0.3+incompatible // indirect
