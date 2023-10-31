@@ -1,0 +1,25 @@
+version: 0.1.0
+name: dapr
+displayName: dapr
+createdAt: "2023-10-31T15:28:51Z"
+description: '`dapr` is the dapr spec definition'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `dapr` with tag `0.1.0` as dependency
+  ```
+  kpm add dapr:0.1.0
+  ```
+
+  #### Pull `dapr` with tag `0.1.0` to local
+  ```
+  kpm pull dapr:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

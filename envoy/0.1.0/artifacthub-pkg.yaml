@@ -1,0 +1,25 @@
+version: 0.1.0
+name: envoy
+displayName: envoy
+createdAt: "2023-10-31T15:28:53Z"
+description: '`envoy` is the envoy spec definition'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `envoy` with tag `0.1.0` as dependency
+  ```
+  kpm add envoy:0.1.0
+  ```
+
+  #### Pull `envoy` with tag `0.1.0` to local
+  ```
+  kpm pull envoy:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

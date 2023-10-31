@@ -1,0 +1,25 @@
+version: 0.1.0
+name: grafana
+displayName: grafana
+createdAt: "2023-10-31T15:28:55Z"
+description: '`grafana` is the grafana spec definition'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `grafana` with tag `0.1.0` as dependency
+  ```
+  kpm add grafana:0.1.0
+  ```
+
+  #### Pull `grafana` with tag `0.1.0` to local
+  ```
+  kpm pull grafana:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

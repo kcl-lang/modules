@@ -1,0 +1,25 @@
+version: 0.1.0
+name: argo-cd
+displayName: argo-cd
+createdAt: "2023-10-31T15:28:46Z"
+description: '`argo-cd` is the argo-cd spec definition'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `argo-cd` with tag `0.1.0` as dependency
+  ```
+  kpm add argo-cd:0.1.0
+  ```
+
+  #### Pull `argo-cd` with tag `0.1.0` to local
+  ```
+  kpm pull argo-cd:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
