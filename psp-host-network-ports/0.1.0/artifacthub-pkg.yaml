@@ -1,0 +1,25 @@
+version: 0.1.0
+name: psp-host-network-ports
+displayName: psp-host-network-ports
+createdAt: "2023-10-31T07:54:07Z"
+description: '`psp-host-network-ports` is a kcl validation package'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `psp-host-network-ports` with tag `0.1.0` as dependency
+  ```
+  kpm add psp-host-network-ports:0.1.0
+  ```
+
+  #### Pull `psp-host-network-ports` with tag `0.1.0` to local
+  ```
+  kpm pull psp-host-network-ports:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
