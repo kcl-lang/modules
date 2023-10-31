@@ -1,7 +1,12 @@
-name: Republish All Packages
+name: Republish Specified Packages
 
 on: 
   workflow_dispatch:
+    inputs:
+      myInput:
+        description: 'Enter the package path'     
+        required: true
+        default: ''
 
 env:
   KPM_REG: "docker.io"
@@ -24,29 +29,29 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v2
         with:
-          go-version: 1.19
+          go-version: 1.21
 
       - name: Install kpm
         run: go install kcl-lang.io/kpm@latest
 
-      - name: login
+      - name: Login
         run: kpm login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} docker.io
 
-      - name: republish to docker.io
+      - name: Republish to docker.io
         run: |
-          find . -name "kcl.mod" -execdir bash -c 'echo Pushing in directory: "$PWD" && kpm push || echo Failed to push in directory: "$PWD"' \;
+          find ${{ github.event.inputs.myInput }} -name "kcl.mod" -execdir bash -c 'echo Pushing in directory: "$PWD" && kpm push || echo Failed to push in directory: "$PWD"' \;
 
-      - name: republish to ghcr.io
+      - name: Republish to ghcr.io
         run: |
           kpm login -u ${{ secrets.DEPLOY_ACCESS_NAME }} -p ${{ secrets.DEPLOY_ACCESS_TOKEN }} ghcr.io
-          find . -name "kcl.mod" -execdir bash -c 'echo Pushing in directory: "$PWD" && kpm push || echo Failed to push in directory: "$PWD"' \;
+          find ${{ github.event.inputs.myInput }} -name "kcl.mod" -execdir bash -c 'echo Pushing in directory: "$PWD" && kpm push || echo Failed to push in directory: "$PWD"' \;
         env:
           KPM_REG: "ghcr.io"
           KPM_REPO: "kcl-lang"
 
-      - name: regenerate artifacthub-pkg.yaml
+      - name: Regenerate artifacthub-pkg.yaml
         run: |
-          find . -name "kcl.mod" -exec bash -c 'file="{}" && echo Running for file: "$file" && go run main.go "$file" || echo Failed to run for file: "$file"' \;
+          find ${{ github.event.inputs.myInput }} -name "kcl.mod" -exec bash -c 'file="{}" && echo Running for file: "$file" && go run main.go "$file" || echo Failed to run for file: "$file"' \;
 
       - name: Commit and push changes
         run: |

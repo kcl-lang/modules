@@ -26,25 +26,25 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v2
         with:
-          go-version: 1.19
+          go-version: 1.21
 
       - name: Install kpm
         run: go install kcl-lang.io/kpm@latest
 
-      - name: login
+      - name: Login
         run: kpm login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} docker.io
 
       - name: Get changed files
         id: changed-files
         uses: tj-actions/changed-files@v39
 
-      - name: publish to docker.io
+      - name: Publish to docker.io
         run: |
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             ./scripts/push_pkg_from.sh $file
           done
 
-      - name: publish to ghcr.io
+      - name: Publish to ghcr.io
         run: |
           kpm login -u ${{ secrets.DEPLOY_ACCESS_NAME }} -p ${{ secrets.DEPLOY_ACCESS_TOKEN }} ghcr.io
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
@@ -54,7 +54,7 @@ jobs:
           KPM_REG: "ghcr.io"
           KPM_REPO: "kcl-lang"
 
-      - name: update artifacthub-pkg.yaml
+      - name: Update artifacthub-pkg.yaml
         run: |
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             go run main.go $file
