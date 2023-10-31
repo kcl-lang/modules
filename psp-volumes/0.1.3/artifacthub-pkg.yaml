@@ -1,0 +1,25 @@
+version: 0.1.3
+name: psp-volumes
+displayName: psp-volumes
+createdAt: "2023-10-31T06:40:16Z"
+description: '`psp-volumes` is a kcl validation package'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `psp-volumes` with tag `0.1.3` as dependency
+  ```
+  kpm add psp-volumes:0.1.3
+  ```
+
+  #### Pull `psp-volumes` with tag `0.1.3` to local
+  ```
+  kpm pull psp-volumes:0.1.3
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

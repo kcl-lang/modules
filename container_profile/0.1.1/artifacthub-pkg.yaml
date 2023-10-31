@@ -1,0 +1,25 @@
+version: 0.1.1
+name: container_profile
+displayName: container_profile
+createdAt: "2023-10-31T06:40:11Z"
+description: '`container_profile` is a kcl package to get pod container profile'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `container_profile` with tag `0.1.1` as dependency
+  ```
+  kpm add container_profile:0.1.1
+  ```
+
+  #### Pull `container_profile` with tag `0.1.1` to local
+  ```
+  kpm pull container_profile:0.1.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

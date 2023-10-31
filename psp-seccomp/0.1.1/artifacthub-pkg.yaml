@@ -1,0 +1,25 @@
+version: 0.1.1
+name: psp-seccomp
+displayName: psp-seccomp
+createdAt: "2023-10-31T06:40:14Z"
+description: '`psp-seccomp` is a kcl validation package'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `psp-seccomp` with tag `0.1.1` as dependency
+  ```
+  kpm add psp-seccomp:0.1.1
+  ```
+
+  #### Pull `psp-seccomp` with tag `0.1.1` to local
+  ```
+  kpm pull psp-seccomp:0.1.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
