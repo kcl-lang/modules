@@ -1,0 +1,25 @@
+version: 0.1.0
+name: psp-proc-mount
+displayName: psp-proc-mount
+createdAt: "2023-10-31T06:58:13Z"
+description: '`psp-proc-mount` is a kcl validation package'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `psp-proc-mount` with tag `0.1.0` as dependency
+  ```
+  kpm add psp-proc-mount:0.1.0
+  ```
+
+  #### Pull `psp-proc-mount` with tag `0.1.0` to local
+  ```
+  kpm pull psp-proc-mount:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
