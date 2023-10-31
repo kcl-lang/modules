@@ -1,0 +1,25 @@
+version: 0.1.1
+name: kcl-run
+displayName: kcl-run
+createdAt: "2023-10-31T14:20:18Z"
+description: '`kcl-run` is the KRM KCL spec definition'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `kcl-run` with tag `0.1.1` as dependency
+  ```
+  kpm add kcl-run:0.1.1
+  ```
+
+  #### Pull `kcl-run` with tag `0.1.1` to local
+  ```
+  kpm pull kcl-run:0.1.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
