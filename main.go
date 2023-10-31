@@ -60,28 +60,21 @@ type Person struct {
 	Email string `yaml:"email"`
 }
 
-func main() {
-	if len(os.Args) < 2 {
-		fmt.Println("error: expected kcl package path")
-		os.Exit(1)
-	}
-
-	// 1. load the kcl package
-	pkgPath := os.Args[1]
+func UpdateReadmeAndMetadata(pkgPath string) error {
 	fileName := filepath.Base(pkgPath)
 	if fileName != "kcl.mod" {
-		return
+		return nil
 	}
 
 	kpmClient, err := client.NewKpmClient()
 	if err != nil {
-		log.Fatalf("error: %v", err)
+		return err
 	}
 
 	pkgPath = filepath.Dir(pkgPath)
 	kclPkg, err := pkg.LoadKclPkg(pkgPath)
 	if err != nil {
-		log.Fatalf("error: %v", err)
+		return err
 	}
 
 	pkgName := kclPkg.GetPkgName()
@@ -97,12 +90,12 @@ func main() {
 		},
 	})
 	if err != nil {
-		log.Fatalf("error: %v", err)
+		return err
 	}
 
 	err = json.Unmarshal([]byte(jsonDesc), &manifest)
 	if err != nil {
-		log.Fatalf("error: %v", err)
+		return err
 	}
 
 	name := manifest.Annotations[constants.DEFAULT_KCL_OCI_MANIFEST_NAME]
@@ -116,7 +109,7 @@ func main() {
 	// 2. generate the install command from the markdown template
 	installationTemplate, err := os.ReadFile("./templates/install.md")
 	if err != nil {
-		log.Fatalf("error: %v", err)
+		return err
 	}
 	installDoc := strings.Replace(string(installationTemplate), MdFlagPackageName, pkgName, -1)
 	installDoc = strings.Replace(string(installDoc), MdFlagPackageTag, pkgTag, -1)
@@ -124,13 +117,13 @@ func main() {
 	// 3. load the artifacthub-pkg.yaml template
 	data, err := os.ReadFile("./templates/ah.yaml")
 	if err != nil {
-		log.Fatalf("error: %v", err)
+		return err
 	}
 
 	var metadata Metadata
 	err = yaml.Unmarshal(data, &metadata)
 	if err != nil {
-		log.Fatalf("error: %v", err)
+		return err
 	}
 
 	metadata.Name = name
@@ -143,27 +136,41 @@ func main() {
 	// 4. generate new artifacthub-pkg.yaml
 	data, err = yaml.Marshal(&metadata)
 	if err != nil {
-		log.Fatalf("error: %v", err)
+		return err
 	}
 
 	ahDir := filepath.Join(pkgPath, pkgTag)
 
 	err = os.MkdirAll(ahDir, 0755)
 	if err != nil {
-		log.Fatalf("error: %v", err)
+		return err
 	}
 
 	err = copy.Copy(filepath.Join(pkgPath, README), filepath.Join(ahDir, README))
 	if err != nil {
 		if !os.IsNotExist(err) {
-			log.Fatalf("error: %v", err)
+			return err
 		}
 	}
 
 	err = os.WriteFile(filepath.Join(ahDir, AHConfFile), data, 0644)
 	if err != nil {
-		log.Fatalf("error: %v", err)
+		return err
 	}
 
 	fmt.Printf("generate artifacthub-pkg.yaml for %s succeed\n", pkgName)
+	return nil
+}
+
+func main() {
+	if len(os.Args) < 2 {
+		fmt.Println("error: expected kcl package path")
+		os.Exit(1)
+	}
+
+	pkgModPath := os.Args[1]
+	err := UpdateReadmeAndMetadata(pkgModPath)
+	if err != nil {
+		log.Fatalf("error: %v", err)
+	}
 }
