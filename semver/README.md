@@ -35,4 +35,4 @@ valid_semver = semver.is_valid("v1.1.0")  # True
 
 ## Resource
 
-The code source and document are [here](https://github.com/kcl-lang/artifacthub/tree/main/semvar)
+The code source and document are [here](https://github.com/kcl-lang/artifacthub/tree/main/semver)
