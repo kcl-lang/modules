@@ -16,14 +16,14 @@ func TestUpdateReadmeAndMetadata(t *testing.T) {
 	assert.Equal(t, nil, err)
 	testDir := filepath.Join(pwd, "helloworld")
 	modPath := filepath.Join(testDir, "kcl.mod")
-	ahPath := filepath.Join(testDir, "0.1.0", "artifacthub-pkg.yaml")
+	ahPath := filepath.Join(testDir, "0.1.1", "artifacthub-pkg.yaml")
 
 	if utils.DirExists(ahPath) {
 		err = os.Remove(ahPath)
 		assert.Equal(t, nil, err)
 	}
 	assert.Equal(t, false, utils.DirExists(ahPath))
-	err = UpdateReadmeAndMetadata(modPath)
+	err = UpdateReadmeAndMetadata(modPath, false)
 	assert.Equal(t, nil, err)
 	assert.Equal(t, true, utils.DirExists(ahPath))
 
@@ -36,7 +36,7 @@ func TestUpdateReadmeAndMetadata(t *testing.T) {
 
 	assert.Equal(t, "helloworld", metadata.Name)
 	assert.Equal(t, "helloworld", metadata.DisplayName)
-	assert.Equal(t, "0.1.0", metadata.Version)
+	assert.Equal(t, "0.1.1", metadata.Version)
 	assert.Equal(t, "This is a KCL package", metadata.Description)
 	assert.Equal(t, len(metadata.Links), 2)
 	assert.Equal(t, metadata.Links[0].Name, "KCL homepage")
@@ -51,6 +51,33 @@ func TestUpdateReadmeAndMetadata(t *testing.T) {
 	installationTemplate, err := os.ReadFile("./templates/install.md")
 	assert.Equal(t, nil, err)
 	installDoc := strings.Replace(string(installationTemplate), MdFlagPackageName, "helloworld", -1)
-	installDoc = strings.Replace(string(installDoc), MdFlagPackageTag, "0.1.0", -1)
+	installDoc = strings.Replace(string(installDoc), MdFlagPackageTag, "0.1.1", -1)
 	assert.Equal(t, installDoc, metadata.Install)
+}
+
+func TestCustomAhYml(t *testing.T) {
+	pwd, err := os.Getwd()
+	assert.Equal(t, nil, err)
+	testDir := filepath.Join(pwd, "helloworld")
+	modPath := filepath.Join(testDir, "kcl.mod")
+	ahPath := filepath.Join(testDir, "0.1.1", "artifacthub-pkg.yaml")
+
+	if utils.DirExists(ahPath) {
+		err = os.Remove(ahPath)
+		assert.Equal(t, nil, err)
+	}
+	assert.Equal(t, false, utils.DirExists(ahPath))
+	err = UpdateReadmeAndMetadata(modPath, true)
+	assert.Equal(t, nil, err)
+	assert.Equal(t, true, utils.DirExists(ahPath))
+
+	buf, err := os.ReadFile(ahPath)
+	assert.Equal(t, nil, err)
+
+	var metadata Metadata
+	err = yaml.Unmarshal(buf, &metadata)
+	assert.Equal(t, nil, err)
+
+	assert.Equal(t, "0.1.1", metadata.Version)
+	assert.Equal(t, "This is a KCL package For Testing", metadata.Description)
 }
