@@ -1,0 +1,26 @@
+version: 0.1.0
+name: semver
+displayName: semver
+createdAt: "2023-11-06T08:27:29Z"
+description: Module semver implements comparison of semantic version strings. In this
+  module, semantic version strings must begin with a leading `v`, as in `v1.0.0`.
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `semver` with tag `0.1.0` as dependency
+  ```
+  kpm add semver:0.1.0
+  ```
+
+  #### Pull `semver` with tag `0.1.0` to local
+  ```
+  kpm pull semver:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
