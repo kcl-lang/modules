@@ -1,0 +1,25 @@
+version: 0.1.0
+name: tekton
+displayName: tekton
+createdAt: "2023-11-07T13:47:07Z"
+description: '`tekton` module contains definitions for tekton'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `tekton` with tag `0.1.0` as dependency
+  ```
+  kpm add tekton:0.1.0
+  ```
+
+  #### Pull `tekton` with tag `0.1.0` to local
+  ```
+  kpm pull tekton:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

@@ -1,0 +1,25 @@
+version: 0.1.0
+name: traefik
+displayName: traefik
+createdAt: "2023-11-07T13:47:09Z"
+description: '`traefik` module contains definitions for traefik'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `traefik` with tag `0.1.0` as dependency
+  ```
+  kpm add traefik:0.1.0
+  ```
+
+  #### Pull `traefik` with tag `0.1.0` to local
+  ```
+  kpm pull traefik:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

@@ -1,0 +1,25 @@
+version: 0.1.0
+name: linkerd
+displayName: linkerd
+createdAt: "2023-11-07T13:47:02Z"
+description: '`linkerd` module contains definitions for linkerd'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `linkerd` with tag `0.1.0` as dependency
+  ```
+  kpm add linkerd:0.1.0
+  ```
+
+  #### Pull `linkerd` with tag `0.1.0` to local
+  ```
+  kpm pull linkerd:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
