@@ -31,7 +31,9 @@ const (
 	MdFlagPackageName = "<package_name>"
 	MdFlagPackageTag  = "<package_tag>"
 
-	DefaultPkgDesc = "This is a KCL package"
+	DefaultPkgDesc   = "This is a KCL package"
+	IntergrationPath = ".integration"
+	IntergrationAh   = "artifacthub"
 )
 
 type Metadata struct {
@@ -79,7 +81,7 @@ func UpdateReadmeAndMetadata(pkgPath string, allowUserMetadataOverride bool) err
 
 	pkgName := kclPkg.GetPkgName()
 	pkgTag := kclPkg.GetPkgVersion()
-	ahDir := filepath.Join(pkgPath, pkgTag)
+	ahDir := filepath.Join(IntergrationPath, IntergrationAh, pkgName, pkgTag)
 
 	err = os.MkdirAll(ahDir, 0755)
 	if err != nil {
