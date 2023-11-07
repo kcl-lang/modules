@@ -2,12 +2,12 @@ version: 0.1.0
 name: karmada
 displayName: karmada
 createdAt: "2023-11-07T04:14:30Z"
-description: This is a KCL package
+description: '`karmada` is the Karmada spec definition'
 links:
-- name: KCL homepage
-  url: https://kcl-lang.io/
-- name: KCL repo
-  url: https://github.com/kcl-lang/kcl
+- name: Karmada homepage
+  url: https://karmada.io/
+- name: Karmada repo
+  url: https://github.com/karmada-io/karmada
 install: |
   #### Add `karmada` with tag `0.1.0` as dependency
   ```
@@ -21,5 +21,7 @@ install: |
 maintainers:
 - name: kcl-lang.io
   email: kcl-lang.io@domainsbyproxy.com
+- name: Lan Liang
+  email: gcslyp@gmail.com
 provider:
   name: kcl-lang.io
