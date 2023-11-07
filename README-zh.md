@@ -19,6 +19,27 @@
 
 注意：如果您希望将您的 KCL 包发布到 kcl-lang 官方的 Registry 中，那么您的 KCL 包的源代码将以开源的形式保存在当前仓库中，您需要将您的包的源代码通过 PR 提交到这个仓库中。
 
+### 准备您的 KCL 包
+
+通过 `kpm init <package_name>` 命令, 您可以创建一个合法的 KCL 程序包。
+
+目前，仓库能够识别的合法的程序的目录结构如下：
+
+```
+<package_name>
+    |- kcl.mod (必选的)
+    |- kcl.mod.lock (可选的)
+    |- artifacthub-pkg.yaml （可选的）
+    |- README.md （可选的）
+    |- (*.k) kcl program files
+```
+
+- kcl.mod : 作为 KCL 程序包的标识文件，这个文件**必选的**，包含 kcl.mod 文件的目录会被标识为文件的根目录。
+- kcl.mod.lock : 自动生成的用来固定依赖版本的文件，这个文件**可选的**，不需要手动改动。
+- artifacthub-pkg.yaml : 这个文件是**可选的**，因为我们的仓库目前通过 artifacthub 展示所有的包，通过 artifacthub-pkg.yaml 来配置您想要包的信息，这里我们采取的策略是**如果在您的包的 kcl.mod 文件所在目录中有一个名为 artifacthub-pkg.yaml 的配置文件，那么，我们将使用您提供 artifacthub-pkg.yaml 来展示您的包的信息，否则，我们将会使用一些默认的信息生成对应的 artifacthub-pkg.yaml 文件。**
+- README.md : 一个 markdown 文件作为您的包的文档，这个文件是**可选的**，**如果您不提供这个文件，artifacthub 上将不会展示您的包的文档。**
+- (*.k) kcl program files: 您的 KCL 程序的源代码。
+
 ### 通过 PR 发布您的包
 
 #### 1. 下载代码仓库
@@ -84,6 +105,16 @@ git push
 
 - [如何创建 PR](https://docs.github.com/zh/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request)
 
+### 通过 PR 升级您的包
+完成包的内容上传后，您可以通过 PR 升级您的包。
 
+注意：**我们没有提供任何改变包的内容但是不改变版本号的升级策略。** 如果您想要升级您的包，并希望您升级后的包被展示在 AH 上，您需要修改您的包的版本号。即在 kcl.mod 文件的 package 章节中的 version 字段。
+```
+[package]
+name = "my_package"
+edition = "*"
+version = "0.1.0" # 改变这个字段来升级您的包
+description = "This is my package."
+```
 
- 
+同样，**您无法多次上传同一个版本号的 KCL 包**，一旦您的包的版本号已经被使用，您将无法再次使用这个版本号，再次上传这个包的方式就只有升级版本号。
