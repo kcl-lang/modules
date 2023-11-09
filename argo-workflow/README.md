@@ -4,4 +4,4 @@
 
 ## Resource
 
-Code source and document is [here](https://github.com/kcl-lang/artifacthub/tree/main/argo-workflow)
+The code source and documents are [here](https://github.com/kcl-lang/artifacthub/tree/main/argo-workflow)
