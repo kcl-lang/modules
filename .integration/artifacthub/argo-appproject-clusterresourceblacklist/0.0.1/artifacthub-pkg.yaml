@@ -1,0 +1,25 @@
+version: 0.0.1
+name: argo-appproject-clusterresourceblacklist
+displayName: argo-appproject-clusterresourceblacklist
+createdAt: "2023-11-09T10:00:00Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `argo-appproject-clusterresourceblacklist` with tag `0.0.1` as dependency
+  ```
+  kpm add argo-appproject-clusterresourceblacklist:0.0.1
+  ```
+
+  #### Pull `argo-appproject-clusterresourceblacklist` with tag `0.0.1` to local
+  ```
+  kpm pull argo-appproject-clusterresourceblacklist:0.0.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

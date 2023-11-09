@@ -1,0 +1,25 @@
+version: 0.0.1
+name: argo-applicationset-name-matches-project
+displayName: argo-applicationset-name-matches-project
+createdAt: "2023-11-09T09:59:57Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `argo-applicationset-name-matches-project` with tag `0.0.1` as dependency
+  ```
+  kpm add argo-applicationset-name-matches-project:0.0.1
+  ```
+
+  #### Pull `argo-applicationset-name-matches-project` with tag `0.0.1` to local
+  ```
+  kpm pull argo-applicationset-name-matches-project:0.0.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

@@ -1,0 +1,26 @@
+version: 0.1.1
+name: argo-application-field-validation
+displayName: argo-application-field-validation
+createdAt: "2023-11-09T10:00:07Z"
+description: '`argo-application-field-validation` is a kcl validation module, which
+  can be used to perform some validation on Argo `Application` fields.'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `argo-application-field-validation` with tag `0.1.1` as dependency
+  ```
+  kpm add argo-application-field-validation:0.1.1
+  ```
+
+  #### Pull `argo-application-field-validation` with tag `0.1.1` to local
+  ```
+  kpm pull argo-application-field-validation:0.1.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
