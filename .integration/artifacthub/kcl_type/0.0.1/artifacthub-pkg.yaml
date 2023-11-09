@@ -1,0 +1,25 @@
+version: 0.0.1
+name: kcl_type
+displayName: kcl_type
+createdAt: "2023-11-09T01:51:35Z"
+description: '`kcl_type` is a module for KCL type definitions'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `kcl_type` with tag `0.0.1` as dependency
+  ```
+  kpm add kcl_type:0.0.1
+  ```
+
+  #### Pull `kcl_type` with tag `0.0.1` to local
+  ```
+  kpm pull kcl_type:0.0.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
