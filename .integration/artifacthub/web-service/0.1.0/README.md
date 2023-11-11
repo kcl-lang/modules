@@ -11,8 +11,8 @@ spec:
   params:
     name: app
     containers:
-      ngnix:
-        image: ngnix
+      nginx:
+        image: nginx
         ports:
         - containerPort: 80
     service:
