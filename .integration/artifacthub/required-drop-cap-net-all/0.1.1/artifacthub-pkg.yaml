@@ -1,0 +1,25 @@
+version: 0.1.1
+name: required-drop-cap-net-all
+displayName: required-drop-cap-net-all
+createdAt: "2023-11-12T04:57:19Z"
+description: '`required-drop-cap-net-all` is a KCL validation module'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `required-drop-cap-net-all` with tag `0.1.1` as dependency
+  ```
+  kpm add required-drop-cap-net-all:0.1.1
+  ```
+
+  #### Pull `required-drop-cap-net-all` with tag `0.1.1` to local
+  ```
+  kpm pull required-drop-cap-net-all:0.1.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

@@ -1,0 +1,26 @@
+version: 0.1.2
+name: k8s_manifests_containers
+displayName: k8s_manifests_containers
+createdAt: "2023-11-12T04:57:25Z"
+description: '`k8s_manifests_containers` can be used to get all containers resources
+  in a Pod resource.'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `k8s_manifests_containers` with tag `0.1.2` as dependency
+  ```
+  kpm add k8s_manifests_containers:0.1.2
+  ```
+
+  #### Pull `k8s_manifests_containers` with tag `0.1.2` to local
+  ```
+  kpm pull k8s_manifests_containers:0.1.2
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

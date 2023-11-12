@@ -1,0 +1,25 @@
+version: 0.1.0
+name: add-network-policy-dns
+displayName: add-network-policy-dns
+createdAt: "2023-11-12T06:48:54Z"
+description: '`add-network-policy-dns` is a KCL mutation module'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `add-network-policy-dns` with tag `0.1.0` as dependency
+  ```
+  kpm add add-network-policy-dns:0.1.0
+  ```
+
+  #### Pull `add-network-policy-dns` with tag `0.1.0` to local
+  ```
+  kpm pull add-network-policy-dns:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

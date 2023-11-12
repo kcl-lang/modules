@@ -1,0 +1,25 @@
+version: 0.1.1
+name: restrict-service-external-ips
+displayName: restrict-service-external-ips
+createdAt: "2023-11-12T04:57:24Z"
+description: '`restrict-service-external-ips` is a KCL validation module'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `restrict-service-external-ips` with tag `0.1.1` as dependency
+  ```
+  kpm add restrict-service-external-ips:0.1.1
+  ```
+
+  #### Pull `restrict-service-external-ips` with tag `0.1.1` to local
+  ```
+  kpm pull restrict-service-external-ips:0.1.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

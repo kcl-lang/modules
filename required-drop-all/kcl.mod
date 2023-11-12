@@ -1,5 +1,4 @@
 [package]
-name = "require-pod-requests-limits"
-version = "0.1.0"
-description = "`require-pod-requests-limits` is a KCL validation module"
-
+name = "required-drop-all"
+version = "0.1.1"
+description = "`required-drop-all` is a KCL validation module"

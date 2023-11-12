@@ -1,0 +1,25 @@
+version: 0.1.0
+name: consul-enforce-min-tls-version
+displayName: consul-enforce-min-tls-version
+createdAt: "2023-11-12T06:49:07Z"
+description: '`consul-enforce-min-tls-version` is a KCL validation module'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `consul-enforce-min-tls-version` with tag `0.1.0` as dependency
+  ```
+  kpm add consul-enforce-min-tls-version:0.1.0
+  ```
+
+  #### Pull `consul-enforce-min-tls-version` with tag `0.1.0` to local
+  ```
+  kpm pull consul-enforce-min-tls-version:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
