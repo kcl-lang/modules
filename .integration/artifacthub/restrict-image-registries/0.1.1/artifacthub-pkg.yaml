@@ -1,0 +1,25 @@
+version: 0.1.1
+name: restrict-image-registries
+displayName: restrict-image-registries
+createdAt: "2023-11-12T04:57:23Z"
+description: '`restrict-image-registries` is a KCL validation module'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `restrict-image-registries` with tag `0.1.1` as dependency
+  ```
+  kpm add restrict-image-registries:0.1.1
+  ```
+
+  #### Pull `restrict-image-registries` with tag `0.1.1` to local
+  ```
+  kpm pull restrict-image-registries:0.1.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

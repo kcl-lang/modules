@@ -1,0 +1,25 @@
+version: 0.1.1
+name: require-pod-requests-limits
+displayName: require-pod-requests-limits
+createdAt: "2023-11-12T04:57:20Z"
+description: '`require-pod-requests-limits` is a KCL validation module'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `require-pod-requests-limits` with tag `0.1.1` as dependency
+  ```
+  kpm add require-pod-requests-limits:0.1.1
+  ```
+
+  #### Pull `require-pod-requests-limits` with tag `0.1.1` to local
+  ```
+  kpm pull require-pod-requests-limits:0.1.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
