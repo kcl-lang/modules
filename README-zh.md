@@ -1,9 +1,9 @@
-<h1 align="center">KCL 集成 ArtifactHub</h1>
+<h1 align="center">KCL Modules</h1>
 
 <p align="center">
 <a href="./README.md">English</a> | <a href="./README-zh.md">简体中文</a>
 
-这个仓库负责保存已经发布的 KCL package，并且您可以在 [artifacthub.io (AH)](https://artifacthub.io/) 上找到这些包。
+这个仓库负责保存已经发布的 KCL 模块，并且您可以在 [artifacthub.io (AH)](https://artifacthub.io/) 上找到这些包。
 
 ## 快速开始
 
@@ -13,20 +13,20 @@
 
 - 安装 [kpm](https://kcl-lang.io/zh-CN/docs/user_docs/guides/package-management/installation/)
 - 安装 [git](https://git-scm.com/book/zh/v2/%E8%B5%B7%E6%AD%A5-%E5%AE%89%E8%A3%85-Git)
-- [注册一个 Github 账户(可选，您需要有一个github的账户)](https://docs.github.com/zh/get-started/signing-up-for-github/signing-up-for-a-new-github-account)
+- [注册一个 Github 账户(可选)](https://docs.github.com/zh/get-started/signing-up-for-github/signing-up-for-a-new-github-account)
 
 ### 代码仓库
 
-注意：如果您希望将您的 KCL 包发布到 kcl-lang 官方的 Registry 中，那么您的 KCL 包的源代码将以开源的形式保存在当前仓库中，您需要将您的包的源代码通过 PR 提交到这个仓库中。
+注意：如果您希望将您的 KCL 包发布到 `kcl-lang` 官方的 Registry 中，那么您的 KCL 包的源代码将以开源的形式保存在当前仓库中，您需要将您的包的源代码通过 PR 提交到这个仓库中。
 
 ### 准备您的 KCL 包
 
-通过 `kpm init <package_name>` 命令, 您可以创建一个合法的 KCL 程序包。
+通过 `kpm init <module_name>` 命令, 您可以创建一个合法的 KCL 程序模块。
 
 目前，仓库能够识别的合法的程序的目录结构如下：
 
 ```
-<package_name>
+<module_name>
     |- kcl.mod (必选的)
     |- kcl.mod.lock (可选的)
     |- artifacthub-pkg.yaml （可选的）
@@ -52,7 +52,7 @@ git clone https://github.com/kcl-lang/artifacthub --depth=1
 
 #### 2. 为您的包创建一个分支
 
-我们推荐您的分支名为：publish-pkg-<pkg_name>, <pkg_name> 为您包的名称。
+我们推荐您的分支名为：publish-pkg-<module_name>, <module_name> 为您包的名称。
 
 以包 helloworld 为例
 
@@ -76,7 +76,7 @@ kpm init helloworld
 您可以为 helloworld 包增加一个 README.md 文件保存在包的根目录下，用来展示在 AH 的首页中。
 ```
 echo "## Introduction" >> helloworld/README.md
-echo "This is a kcl package named helloworld." >> helloworld/README.md
+echo "This is a kcl module named helloworld." >> helloworld/README.md
 ```
 
 #### 4. 提交您的包
@@ -89,32 +89,32 @@ echo "This is a kcl package named helloworld." >> helloworld/README.md
 git add .
 ```
 
-使用 `git commit -s` 命令提交您的包, 我们推荐您的 commit message 遵循  “publish package <pkg_name>” 的格式。
+使用 `git commit -s` 命令提交您的包, 我们推荐您的 commit message 遵循  “publish module <module_name>” 的格式。
 ```
-git commit -m"publish package helloworld" -s
+git commit -m "publish module helloworld" -s
 ```
 
-使用 `git push` 命令将您的包提交到您的分支 publish-pkg-<pkg_name> 中
+使用 `git push` 命令将您的包提交到您的分支 publish-pkg-<module_name> 中
 ```
 git push
 ```
 
 #### 5. 提交 PR
 
-将您的分支 publish-pkg-<pkg_name> 向仓库的 main 分支提交 PR。
+将您的分支 publish-pkg-<module_name> 向仓库的 main 分支提交 PR。
 
 - [如何创建 PR](https://docs.github.com/zh/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request)
 
 ### 通过 PR 升级您的包
 完成包的内容上传后，您可以通过 PR 升级您的包。
 
-注意：**我们没有提供任何改变包的内容但是不改变版本号的升级策略。** 如果您想要升级您的包，并希望您升级后的包被展示在 AH 上，您需要修改您的包的版本号。即在 kcl.mod 文件的 package 章节中的 version 字段。
+注意：**我们没有提供任何改变包的内容但是不改变版本号的升级策略。** 如果您想要升级您的包，并希望您升级后的包被展示在 AH 上，您需要修改您的包的版本号。即在 kcl.mod 文件的 module 章节中的 version 字段。
 ```
 [package]
-name = "my_package"
+name = "my_module"
 edition = "*"
 version = "0.1.0" # 改变这个字段来升级您的包
-description = "This is my package."
+description = "This is my module."
 ```
 
 同样，**您无法多次上传同一个版本号的 KCL 包**，一旦您的包的版本号已经被使用，您将无法再次使用这个版本号，再次上传这个包的方式就只有升级版本号。
