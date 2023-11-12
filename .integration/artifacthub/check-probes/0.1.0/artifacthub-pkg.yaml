@@ -1,0 +1,25 @@
+version: 0.1.0
+name: check-probes
+displayName: check-probes
+createdAt: "2023-11-12T07:15:50Z"
+description: '`check-probes` is a kcl validation package'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `check-probes` with tag `0.1.0` as dependency
+  ```
+  kpm add check-probes:0.1.0
+  ```
+
+  #### Pull `check-probes` with tag `0.1.0` to local
+  ```
+  kpm pull check-probes:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

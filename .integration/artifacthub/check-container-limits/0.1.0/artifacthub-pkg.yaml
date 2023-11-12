@@ -1,0 +1,25 @@
+version: 0.1.0
+name: check-container-limits
+displayName: check-container-limits
+createdAt: "2023-11-12T07:15:45Z"
+description: '`check-container-limits` is a kcl validation package'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `check-container-limits` with tag `0.1.0` as dependency
+  ```
+  kpm add check-container-limits:0.1.0
+  ```
+
+  #### Pull `check-container-limits` with tag `0.1.0` to local
+  ```
+  kpm pull check-container-limits:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
