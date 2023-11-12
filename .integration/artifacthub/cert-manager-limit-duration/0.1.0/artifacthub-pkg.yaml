@@ -1,0 +1,25 @@
+version: 0.1.0
+name: cert-manager-limit-duration
+displayName: cert-manager-limit-duration
+createdAt: "2023-11-12T06:49:03Z"
+description: '`cert-manager-limit-duration` is a KCL validation module'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `cert-manager-limit-duration` with tag `0.1.0` as dependency
+  ```
+  kpm add cert-manager-limit-duration:0.1.0
+  ```
+
+  #### Pull `cert-manager-limit-duration` with tag `0.1.0` to local
+  ```
+  kpm pull cert-manager-limit-duration:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

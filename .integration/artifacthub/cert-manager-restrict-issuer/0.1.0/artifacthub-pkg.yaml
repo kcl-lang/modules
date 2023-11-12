@@ -1,0 +1,25 @@
+version: 0.1.0
+name: cert-manager-restrict-issuer
+displayName: cert-manager-restrict-issuer
+createdAt: "2023-11-12T06:49:05Z"
+description: '`cert-manager-restrict-issuer` is a KCL validation module'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `cert-manager-restrict-issuer` with tag `0.1.0` as dependency
+  ```
+  kpm add cert-manager-restrict-issuer:0.1.0
+  ```
+
+  #### Pull `cert-manager-restrict-issuer` with tag `0.1.0` to local
+  ```
+  kpm pull cert-manager-restrict-issuer:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

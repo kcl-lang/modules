@@ -1,0 +1,25 @@
+version: 0.1.0
+name: disallow-helm-tiller
+displayName: disallow-helm-tiller
+createdAt: "2023-11-12T06:49:16Z"
+description: '`disallow-helm-tiller` is a KCL validation module'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `disallow-helm-tiller` with tag `0.1.0` as dependency
+  ```
+  kpm add disallow-helm-tiller:0.1.0
+  ```
+
+  #### Pull `disallow-helm-tiller` with tag `0.1.0` to local
+  ```
+  kpm pull disallow-helm-tiller:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

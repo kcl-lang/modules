@@ -1,0 +1,25 @@
+version: 0.1.0
+name: disallow-image-repos
+displayName: disallow-image-repos
+createdAt: "2023-11-12T06:49:19Z"
+description: '`disallow-image-repos` is a kcl validation package'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `disallow-image-repos` with tag `0.1.0` as dependency
+  ```
+  kpm add disallow-image-repos:0.1.0
+  ```
+
+  #### Pull `disallow-image-repos` with tag `0.1.0` to local
+  ```
+  kpm pull disallow-image-repos:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
