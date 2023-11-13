@@ -11,7 +11,7 @@
 
 ### 准备工作
 
-- 安装 [kpm](https://kcl-lang.io/zh-CN/docs/user_docs/guides/package-management/installation/)
+- 安装 [KCL](https://kcl-lang.io/docs/user_docs/getting-started/install)
 - 安装 [git](https://git-scm.com/book/zh/v2/%E8%B5%B7%E6%AD%A5-%E5%AE%89%E8%A3%85-Git)
 - [注册一个 Github 账户(可选)](https://docs.github.com/zh/get-started/signing-up-for-github/signing-up-for-a-new-github-account)
 
@@ -21,7 +21,7 @@
 
 ### 准备您的 KCL 包
 
-通过 `kpm init <module_name>` 命令, 您可以创建一个合法的 KCL 程序模块。
+通过 `kcl mod init <module_name>` 命令, 您可以创建一个合法的 KCL 程序模块。
 
 目前，仓库能够识别的合法的程序的目录结构如下：
 
@@ -44,10 +44,10 @@
 
 #### 1. 下载代码仓库
 
-首先，您需要使用 git 将仓库 https://github.com/kcl-lang/artifacthub 下载到您的本地 
+首先，您需要使用 git 将仓库 https://github.com/kcl-lang/modules 下载到您的本地 
 
-```
-git clone https://github.com/kcl-lang/artifacthub --depth=1
+```shell
+git clone https://github.com/kcl-lang/modules --depth=1
 ```
 
 #### 2. 为您的包创建一个分支
@@ -56,25 +56,29 @@ git clone https://github.com/kcl-lang/artifacthub --depth=1
 
 以包 helloworld 为例
 
-进入您下载的artifacthub目录中
+进入您下载的 modules 目录中
+
+```shell
+cd modules
 ```
-cd artifacthub
-```
+
 为包 helloworld 创建一个分支 `publish-pkg-helloworld`
-```
+
+```shell
 git checkout -b publish-pkg-helloworld
 ```
 
 #### 3. 添加您的包
 
-您需要将您的包移动到当前目录下，在我们的例子中，我们使用 kpm init 命令创建包 helloworld
+您需要将您的包移动到当前目录下，在我们的例子中，我们使用 `kcl mod init` 命令创建包 helloworld
 
-```
-kpm init helloworld
+```shell
+kcl mod init helloworld
 ```
 
 您可以为 helloworld 包增加一个 README.md 文件保存在包的根目录下，用来展示在 AH 的首页中。
-```
+
+```shell
 echo "## Introduction" >> helloworld/README.md
 echo "This is a kcl module named helloworld." >> helloworld/README.md
 ```
@@ -85,17 +89,19 @@ echo "This is a kcl module named helloworld." >> helloworld/README.md
 
 使用 `git add .` 命令将您的包添加到 git 的暂存区中
 
-```
+```shell
 git add .
 ```
 
 使用 `git commit -s` 命令提交您的包, 我们推荐您的 commit message 遵循  “publish module <module_name>” 的格式。
-```
+
+```shell
 git commit -m "publish module helloworld" -s
 ```
 
 使用 `git push` 命令将您的包提交到您的分支 publish-pkg-<module_name> 中
-```
+
+```shell
 git push
 ```
 
@@ -109,7 +115,8 @@ git push
 完成包的内容上传后，您可以通过 PR 升级您的包。
 
 注意：**我们没有提供任何改变包的内容但是不改变版本号的升级策略。** 如果您想要升级您的包，并希望您升级后的包被展示在 AH 上，您需要修改您的包的版本号。即在 kcl.mod 文件的 module 章节中的 version 字段。
-```
+
+```toml
 [package]
 name = "my_module"
 edition = "*"
