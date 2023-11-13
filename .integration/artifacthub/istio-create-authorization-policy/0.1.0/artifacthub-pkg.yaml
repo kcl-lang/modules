@@ -1,0 +1,25 @@
+version: 0.1.0
+name: istio-create-authorization-policy
+displayName: istio-create-authorization-policy
+createdAt: "2023-11-13T11:49:43Z"
+description: '`istio-create-authorization-policy` is a kcl mutation package'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `istio-create-authorization-policy` with tag `0.1.0` as dependency
+  ```
+  kpm add istio-create-authorization-policy:0.1.0
+  ```
+
+  #### Pull `istio-create-authorization-policy` with tag `0.1.0` to local
+  ```
+  kpm pull istio-create-authorization-policy:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

@@ -1,0 +1,25 @@
+version: 0.1.0
+name: istio-check-sidecar-injection-label
+displayName: istio-check-sidecar-injection-label
+createdAt: "2023-11-13T11:49:40Z"
+description: '`istio-check-sidecar-injection-label` is a KCL validation module'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `istio-check-sidecar-injection-label` with tag `0.1.0` as dependency
+  ```
+  kpm add istio-check-sidecar-injection-label:0.1.0
+  ```
+
+  #### Pull `istio-check-sidecar-injection-label` with tag `0.1.0` to local
+  ```
+  kpm pull istio-check-sidecar-injection-label:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

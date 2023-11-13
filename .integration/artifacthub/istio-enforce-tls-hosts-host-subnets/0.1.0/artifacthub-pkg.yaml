@@ -1,0 +1,25 @@
+version: 0.1.0
+name: istio-enforce-tls-hosts-host-subnets
+displayName: istio-enforce-tls-hosts-host-subnets
+createdAt: "2023-11-13T11:49:44Z"
+description: '`istio-enforce-tls-hosts-host-subnets` is a KCL validation module'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `istio-enforce-tls-hosts-host-subnets` with tag `0.1.0` as dependency
+  ```
+  kpm add istio-enforce-tls-hosts-host-subnets:0.1.0
+  ```
+
+  #### Pull `istio-enforce-tls-hosts-host-subnets` with tag `0.1.0` to local
+  ```
+  kpm pull istio-enforce-tls-hosts-host-subnets:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

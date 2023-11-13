@@ -1,0 +1,25 @@
+version: 0.1.0
+name: istio-add-sidecar-injection
+displayName: istio-add-sidecar-injection
+createdAt: "2023-11-13T11:49:38Z"
+description: '`istio-add-sidecar-injection` is a KCL mutation module'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `istio-add-sidecar-injection` with tag `0.1.0` as dependency
+  ```
+  kpm add istio-add-sidecar-injection:0.1.0
+  ```
+
+  #### Pull `istio-add-sidecar-injection` with tag `0.1.0` to local
+  ```
+  kpm pull istio-add-sidecar-injection:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

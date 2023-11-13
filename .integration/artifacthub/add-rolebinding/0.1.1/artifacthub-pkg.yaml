@@ -1,0 +1,25 @@
+version: 0.1.1
+name: add-rolebinding
+displayName: add-rolebinding
+createdAt: "2023-11-13T11:49:49Z"
+description: '`add-rolebinding` is a KCL mutation module.'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `add-rolebinding` with tag `0.1.1` as dependency
+  ```
+  kpm add add-rolebinding:0.1.1
+  ```
+
+  #### Pull `add-rolebinding` with tag `0.1.1` to local
+  ```
+  kpm pull add-rolebinding:0.1.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

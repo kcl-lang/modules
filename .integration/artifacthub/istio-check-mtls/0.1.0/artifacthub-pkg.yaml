@@ -1,0 +1,25 @@
+version: 0.1.0
+name: istio-check-mtls
+displayName: istio-check-mtls
+createdAt: "2023-11-13T11:49:39Z"
+description: '`istio-check-mtls` is a KCL validation module'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `istio-check-mtls` with tag `0.1.0` as dependency
+  ```
+  kpm add istio-check-mtls:0.1.0
+  ```
+
+  #### Pull `istio-check-mtls` with tag `0.1.0` to local
+  ```
+  kpm pull istio-check-mtls:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

@@ -1,0 +1,25 @@
+version: 0.1.1
+name: add-network-policy
+displayName: add-network-policy
+createdAt: "2023-11-13T11:49:47Z"
+description: '`add-network-policy` is a KCL mutation module'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `add-network-policy` with tag `0.1.1` as dependency
+  ```
+  kpm add add-network-policy:0.1.1
+  ```
+
+  #### Pull `add-network-policy` with tag `0.1.1` to local
+  ```
+  kpm pull add-network-policy:0.1.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

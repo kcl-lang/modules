@@ -1,0 +1,25 @@
+version: 0.1.0
+name: istio-check-virtual-service-wildcard
+displayName: istio-check-virtual-service-wildcard
+createdAt: "2023-11-13T11:49:41Z"
+description: '`istio-check-virtual-service-wildcard` is a KCL validation module'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `istio-check-virtual-service-wildcard` with tag `0.1.0` as dependency
+  ```
+  kpm add istio-check-virtual-service-wildcard:0.1.0
+  ```
+
+  #### Pull `istio-check-virtual-service-wildcard` with tag `0.1.0` to local
+  ```
+  kpm pull istio-check-virtual-service-wildcard:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
