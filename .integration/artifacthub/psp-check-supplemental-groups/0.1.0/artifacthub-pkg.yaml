@@ -1,0 +1,25 @@
+version: 0.1.0
+name: psp-check-supplemental-groups
+displayName: psp-check-supplemental-groups
+createdAt: "2023-11-13T13:43:47Z"
+description: '`psp-check-supplemental-groups` is a kcl validation package'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `psp-check-supplemental-groups` with tag `0.1.0` as dependency
+  ```
+  kpm add psp-check-supplemental-groups:0.1.0
+  ```
+
+  #### Pull `psp-check-supplemental-groups` with tag `0.1.0` to local
+  ```
+  kpm pull psp-check-supplemental-groups:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
