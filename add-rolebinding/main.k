@@ -7,7 +7,7 @@ items = option("items") + [
         apiVersion: "rbac.authorization.k8s.io/v1"
         kind: "RoleBinding"
         name: "${username}-admin-binding"
-        namespace: ns.metadata.name
+        namespace: ns
         data: {
             roleRef: {
               apiGroup: "rbac.authorization.k8s.io"

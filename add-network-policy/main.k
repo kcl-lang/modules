@@ -3,7 +3,7 @@ items = (option("items") or []) + [{
     apiVersion: "networking.k8s.io/v1"
     kind: "NetworkPolicy"
     name: "default-deny"
-    namespace: "${ns.metadata.name}"
+    namespace: ns
     synchronize: True
     data.spec: {
         # select all pods in the namespace

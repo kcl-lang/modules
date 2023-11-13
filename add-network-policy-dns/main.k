@@ -1,9 +1,9 @@
-ns_list = [item.metadata.name for item in option("items") or [] if item.kind == "Namespace"]
+ns_list: [str] = [item.metadata.name for item in option("items") or [] if item.kind == "Namespace"]
 items = (option("items") or []) + [{
     apiVersion: "networking.k8s.io/v1"
     kind: "NetworkPolicy"
     name: "allow-dns"
-    namespace: "${ns.metadata.name}"
+    namespace: ns
     synchronize: False
     data.spec: {
         # select all pods in the namespace
