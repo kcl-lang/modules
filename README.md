@@ -11,7 +11,7 @@ In the next section, we will show you how to publish your module with a `hellowo
 
 ### Prerequisites
 
-- Install [kpm](https://kcl-lang.io/docs/user_docs/guides/package-management/installation/)
+- Install [KCL](https://kcl-lang.io/docs/user_docs/getting-started/install)
 - Install [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 - [Register a GitHub account (optional)](https://docs.github.com/en/get-started/signing-up-for-github/signing-up-for-a-new-github-account)
 
@@ -21,7 +21,7 @@ NOTE: If you want to publish your KCL module to the `kcl-lang` official registry
 
 ### Prepare your KCL Module
 
-By the `kpm init <module_name>` command, you can create a valid KCL module.
+By the `kcl mod init <module_name>` command, you can create a valid KCL module.
 
 Currently, the directory structure of a valid KCL module that the repository can recognize is as follows:
 
@@ -50,8 +50,8 @@ Currently, the directory structure of a valid KCL module that the repository can
 
 First, you need to clone the repository
 
-```
-git clone https://github.com/kcl-lang/artifacthub --depth=1
+```shell
+git clone https://github.com/kcl-lang/modules --depth=1
 ```
 
 #### 2. Create a branch for your module
@@ -60,26 +60,29 @@ We recommend that your branch name be: `publish-pkg-<module_name>`, `<module_nam
 
 Take the module `helloworld` as an example
 
-Enter the artifacthub directory you downloaded
-```
-cd artifacthub
+Enter the `modules` directory you downloaded
+
+```shell
+cd modules
 ```
 
 Create a branch `publish-pkg-helloworld` for the module `helloworld`
-```
+
+```shell
 git checkout -b publish-pkg-helloworld
 ```
 
 #### 3. Add your KCL module
 
-You need to move your module to the current directory. In our example, we use the `kpm init` command to create the module `helloworld`
+You need to move your module to the current directory. In our example, we use the `kcl mod init` command to create the module `helloworld`
 
-```
-kpm init helloworld
+```shell
+kcl mod init helloworld
 ```
 
 You can add a `README.md` file to the root directory of the module to display on the homepage of AH.
-```
+
+```shell
 echo "## Introduction" >> helloworld/README.md
 echo "This is a kcl module named helloworld." >> helloworld/README.md
 ```
@@ -90,18 +93,19 @@ You can use the following command to commit your module
 
 Use `git add .` command to add your module to the staging area of git
 
-```
+```shell
 git add .
 ```
 
 Use `git commit -s` command to commit your module, we recommend that your commit message follow the format "publish module <module_name>".
-```
+
+```shell
 git commit -m "publish module helloworld" -s
 ```
 
 Use `git push` command to submit your module to your branch `publish-pkg-<module_name>`
 
-```
+```shell
 git push
 ```
 
@@ -117,7 +121,7 @@ After completing the upload of the module content, you can upgrade your module b
 
 NOTE: **We do not provide any upgrade strategy that changes the content of the module but does not change the version number.** If you want to upgrade your module and want your upgraded module to be displayed on AH, you need to modify the version number of your module. That is, the version field in the module section of the kcl.mod file.
 
-```
+```toml
 [package]
 name = "my_module"
 edition = "*"
