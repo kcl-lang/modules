@@ -4,4 +4,4 @@
 
 ## Resource
 
-The Code source and document are [here](https://github.com/kcl-lang/modules/tree/main/nginx-ingress/nginx-ingress-restrict-annotations)
+The Code source and document are [here](https://github.com/kcl-lang/modules/tree/main/nginx-ingress-restrict-annotations)

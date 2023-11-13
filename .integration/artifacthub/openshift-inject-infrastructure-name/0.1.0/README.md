@@ -4,4 +4,4 @@
 
 ## Resource
 
-The Code source and document are [here](https://github.com/kcl-lang/modules/tree/main/nginx-ingress/openshift-inject-infrastructure-name)
+The Code source and document are [here](https://github.com/kcl-lang/modules/tree/main/openshift-inject-infrastructure-name)

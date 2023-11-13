@@ -4,4 +4,4 @@
 
 ## Resource
 
-The Code source and document are [here](https://github.com/kcl-lang/modules/tree/main/nginx-ingress/tekton-require-securitycontext)
+The Code source and document are [here](https://github.com/kcl-lang/modules/tree/main/tekton-require-securitycontext)

@@ -4,4 +4,4 @@
 
 ## Resource
 
-The Code source and document are [here](https://github.com/kcl-lang/modules/tree/main/nginx-ingress/openshift-team-validate-ns-name)
+The Code source and document are [here](https://github.com/kcl-lang/modules/tree/main/openshift-team-validate-ns-name)

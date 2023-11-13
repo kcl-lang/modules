@@ -4,4 +4,4 @@
 
 ## Resource
 
-The Code source and document are [here](https://github.com/kcl-lang/modules/tree/main/nginx-ingress/openshift-check-security-context-roleref)
+The Code source and document are [here](https://github.com/kcl-lang/modules/tree/main/openshift-check-security-context-roleref)

@@ -4,4 +4,4 @@
 
 ## Resource
 
-The Code source and document are [here](https://github.com/kcl-lang/modules/tree/main/nginx-ingress/openshift-enforce-etcd-encryption)
+The Code source and document are [here](https://github.com/kcl-lang/modules/tree/main/openshift-enforce-etcd-encryption)

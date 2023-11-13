@@ -4,4 +4,4 @@
 
 ## Resource
 
-The Code source and documents are [here](https://github.com/kcl-lang/modules/tree/main/nginx-ingress/nginx-ingress-disallow-custom-snippets)
+The Code source and documents are [here](https://github.com/kcl-lang/modules/tree/main/nginx-ingress-disallow-custom-snippets)

@@ -4,4 +4,4 @@
 
 ## Resource
 
-The Code source and document are [here](https://github.com/kcl-lang/modules/tree/main/nginx-ingress/openshift-disallow-deprecated-apis)
+The Code source and document are [here](https://github.com/kcl-lang/modules/tree/main/openshift-disallow-deprecated-apis)
