@@ -1,0 +1,25 @@
+version: 0.1.0
+name: nginx-ingress-disallow-custom-snippets
+displayName: nginx-ingress-disallow-custom-snippets
+createdAt: "2023-11-13T14:33:47Z"
+description: '`nginx-ingress-disallow-custom-snippets` is a KCL validation module'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `nginx-ingress-disallow-custom-snippets` with tag `0.1.0` as dependency
+  ```
+  kpm add nginx-ingress-disallow-custom-snippets:0.1.0
+  ```
+
+  #### Pull `nginx-ingress-disallow-custom-snippets` with tag `0.1.0` to local
+  ```
+  kpm pull nginx-ingress-disallow-custom-snippets:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
