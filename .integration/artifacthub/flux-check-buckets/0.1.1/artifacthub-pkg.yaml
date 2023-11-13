@@ -1,0 +1,25 @@
+version: 0.1.1
+name: flux-check-buckets
+displayName: flux-check-buckets
+createdAt: "2023-11-13T07:43:07Z"
+description: '`flux-check-buckets` is a KCL validation module'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `flux-check-buckets` with tag `0.1.1` as dependency
+  ```
+  kpm add flux-check-buckets:0.1.1
+  ```
+
+  #### Pull `flux-check-buckets` with tag `0.1.1` to local
+  ```
+  kpm pull flux-check-buckets:0.1.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

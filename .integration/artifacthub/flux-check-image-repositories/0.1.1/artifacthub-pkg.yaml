@@ -1,0 +1,25 @@
+version: 0.1.1
+name: flux-check-image-repositories
+displayName: flux-check-image-repositories
+createdAt: "2023-11-13T07:43:11Z"
+description: '`flux-check-image-repositories` is a KCL validation module'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `flux-check-image-repositories` with tag `0.1.1` as dependency
+  ```
+  kpm add flux-check-image-repositories:0.1.1
+  ```
+
+  #### Pull `flux-check-image-repositories` with tag `0.1.1` to local
+  ```
+  kpm pull flux-check-image-repositories:0.1.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

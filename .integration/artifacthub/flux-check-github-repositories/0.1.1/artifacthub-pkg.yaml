@@ -1,0 +1,25 @@
+version: 0.1.1
+name: flux-check-github-repositories
+displayName: flux-check-github-repositories
+createdAt: "2023-11-13T07:43:09Z"
+description: '`flux-check-github-repositories` is a KCL validation module'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `flux-check-github-repositories` with tag `0.1.1` as dependency
+  ```
+  kpm add flux-check-github-repositories:0.1.1
+  ```
+
+  #### Pull `flux-check-github-repositories` with tag `0.1.1` to local
+  ```
+  kpm pull flux-check-github-repositories:0.1.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
