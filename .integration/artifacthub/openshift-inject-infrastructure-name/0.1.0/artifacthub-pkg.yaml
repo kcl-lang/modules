@@ -1,0 +1,25 @@
+version: 0.1.0
+name: openshift-inject-infrastructure-name
+displayName: openshift-inject-infrastructure-name
+createdAt: "2023-11-13T14:18:22Z"
+description: '`openshift-inject-infrastructure-name` is a KCL mutation module'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `openshift-inject-infrastructure-name` with tag `0.1.0` as dependency
+  ```
+  kpm add openshift-inject-infrastructure-name:0.1.0
+  ```
+
+  #### Pull `openshift-inject-infrastructure-name` with tag `0.1.0` to local
+  ```
+  kpm pull openshift-inject-infrastructure-name:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

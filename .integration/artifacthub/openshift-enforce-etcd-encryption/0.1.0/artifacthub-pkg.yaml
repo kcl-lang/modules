@@ -1,0 +1,25 @@
+version: 0.1.0
+name: openshift-enforce-etcd-encryption
+displayName: openshift-enforce-etcd-encryption
+createdAt: "2023-11-13T14:18:21Z"
+description: '`openshift-enforce-etcd-encryption` is a KCL validation module'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `openshift-enforce-etcd-encryption` with tag `0.1.0` as dependency
+  ```
+  kpm add openshift-enforce-etcd-encryption:0.1.0
+  ```
+
+  #### Pull `openshift-enforce-etcd-encryption` with tag `0.1.0` to local
+  ```
+  kpm pull openshift-enforce-etcd-encryption:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

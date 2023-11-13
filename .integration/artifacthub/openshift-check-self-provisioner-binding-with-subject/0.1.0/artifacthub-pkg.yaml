@@ -1,0 +1,26 @@
+version: 0.1.0
+name: openshift-check-self-provisioner-binding-with-subject
+displayName: openshift-check-self-provisioner-binding-with-subject
+createdAt: "2023-11-13T14:18:17Z"
+description: '`openshift-check-self-provisioner-binding-with-subject` is a KCL validation
+  module'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `openshift-check-self-provisioner-binding-with-subject` with tag `0.1.0` as dependency
+  ```
+  kpm add openshift-check-self-provisioner-binding-with-subject:0.1.0
+  ```
+
+  #### Pull `openshift-check-self-provisioner-binding-with-subject` with tag `0.1.0` to local
+  ```
+  kpm pull openshift-check-self-provisioner-binding-with-subject:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

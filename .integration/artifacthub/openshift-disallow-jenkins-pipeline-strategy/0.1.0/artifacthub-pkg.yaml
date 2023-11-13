@@ -1,0 +1,25 @@
+version: 0.1.0
+name: openshift-disallow-jenkins-pipeline-strategy
+displayName: openshift-disallow-jenkins-pipeline-strategy
+createdAt: "2023-11-13T14:18:20Z"
+description: '`openshift-disallow-jenkins-pipeline-strategy` is a KCL validation module'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `openshift-disallow-jenkins-pipeline-strategy` with tag `0.1.0` as dependency
+  ```
+  kpm add openshift-disallow-jenkins-pipeline-strategy:0.1.0
+  ```
+
+  #### Pull `openshift-disallow-jenkins-pipeline-strategy` with tag `0.1.0` to local
+  ```
+  kpm pull openshift-disallow-jenkins-pipeline-strategy:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
