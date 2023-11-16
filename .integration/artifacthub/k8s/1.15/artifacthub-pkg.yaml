@@ -1,0 +1,26 @@
+version: "1.15"
+name: k8s
+displayName: k8s
+createdAt: "2023-11-16T06:04:15Z"
+description: '`k8s` is a KCL module contains all the built-in Kubernetes resource
+  models (the CRDs are not included here).'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `k8s` with tag `1.15` as dependency
+  ```
+  kcl mod add k8s:1.15
+  ```
+
+  #### Pull `k8s` with tag `1.15` to local
+  ```
+  kcl mod pull k8s:1.15
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
