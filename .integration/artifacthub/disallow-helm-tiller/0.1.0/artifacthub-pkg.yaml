@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `disallow-helm-tiller` with tag `0.1.0` as dependency
   ```
-  kpm add disallow-helm-tiller:0.1.0
+  kcl mod add disallow-helm-tiller:0.1.0
   ```
 
   #### Pull `disallow-helm-tiller` with tag `0.1.0` to local
   ```
-  kpm pull disallow-helm-tiller:0.1.0
+  kcl mod pull disallow-helm-tiller:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

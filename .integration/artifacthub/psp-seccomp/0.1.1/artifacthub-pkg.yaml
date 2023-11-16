@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `psp-seccomp` with tag `0.1.1` as dependency
   ```
-  kpm add psp-seccomp:0.1.1
+  kcl mod add psp-seccomp:0.1.1
   ```
 
   #### Pull `psp-seccomp` with tag `0.1.1` to local
   ```
-  kpm pull psp-seccomp:0.1.1
+  kcl mod pull psp-seccomp:0.1.1
   ```
 maintainers:
 - name: kcl-lang.io

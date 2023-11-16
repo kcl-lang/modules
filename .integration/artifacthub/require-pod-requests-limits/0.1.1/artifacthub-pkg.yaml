@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `require-pod-requests-limits` with tag `0.1.1` as dependency
   ```
-  kpm add require-pod-requests-limits:0.1.1
+  kcl mod add require-pod-requests-limits:0.1.1
   ```
 
   #### Pull `require-pod-requests-limits` with tag `0.1.1` to local
   ```
-  kpm pull require-pod-requests-limits:0.1.1
+  kcl mod pull require-pod-requests-limits:0.1.1
   ```
 maintainers:
 - name: kcl-lang.io

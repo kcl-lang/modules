@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `https-only` with tag `0.1.0` as dependency
   ```
-  kpm add https-only:0.1.0
+  kcl mod add https-only:0.1.0
   ```
 
   #### Pull `https-only` with tag `0.1.0` to local
   ```
-  kpm pull https-only:0.1.0
+  kcl mod pull https-only:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

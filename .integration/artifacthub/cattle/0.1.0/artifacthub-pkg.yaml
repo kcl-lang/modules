@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `cattle` with tag `0.1.0` as dependency
   ```
-  kpm add cattle:0.1.0
+  kcl mod add cattle:0.1.0
   ```
 
   #### Pull `cattle` with tag `0.1.0` to local
   ```
-  kpm pull cattle:0.1.0
+  kcl mod pull cattle:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

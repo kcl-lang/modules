@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `envoy` with tag `0.1.0` as dependency
   ```
-  kpm add envoy:0.1.0
+  kcl mod add envoy:0.1.0
   ```
 
   #### Pull `envoy` with tag `0.1.0` to local
   ```
-  kpm pull envoy:0.1.0
+  kcl mod pull envoy:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

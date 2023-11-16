@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `argoproj` with tag `0.1.0` as dependency
   ```
-  kpm add argoproj:0.1.0
+  kcl mod add argoproj:0.1.0
   ```
 
   #### Pull `argoproj` with tag `0.1.0` to local
   ```
-  kpm pull argoproj:0.1.0
+  kcl mod pull argoproj:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

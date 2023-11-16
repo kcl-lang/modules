@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `restrict-service-external-ips` with tag `0.1.1` as dependency
   ```
-  kpm add restrict-service-external-ips:0.1.1
+  kcl mod add restrict-service-external-ips:0.1.1
   ```
 
   #### Pull `restrict-service-external-ips` with tag `0.1.1` to local
   ```
-  kpm pull restrict-service-external-ips:0.1.1
+  kcl mod pull restrict-service-external-ips:0.1.1
   ```
 maintainers:
 - name: kcl-lang.io

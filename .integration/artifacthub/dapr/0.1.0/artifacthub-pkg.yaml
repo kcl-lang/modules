@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `dapr` with tag `0.1.0` as dependency
   ```
-  kpm add dapr:0.1.0
+  kcl mod add dapr:0.1.0
   ```
 
   #### Pull `dapr` with tag `0.1.0` to local
   ```
-  kpm pull dapr:0.1.0
+  kcl mod pull dapr:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `oam` with tag `0.1.0` as dependency
   ```
-  kpm add oam:0.1.0
+  kcl mod add oam:0.1.0
   ```
 
   #### Pull `oam` with tag `0.1.0` to local
   ```
-  kpm pull oam:0.1.0
+  kcl mod pull oam:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

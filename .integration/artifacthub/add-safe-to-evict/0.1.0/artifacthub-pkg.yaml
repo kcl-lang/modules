@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `add-safe-to-evict` with tag `0.1.0` as dependency
   ```
-  kpm add add-safe-to-evict:0.1.0
+  kcl mod add add-safe-to-evict:0.1.0
   ```
 
   #### Pull `add-safe-to-evict` with tag `0.1.0` to local
   ```
-  kpm pull add-safe-to-evict:0.1.0
+  kcl mod pull add-safe-to-evict:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

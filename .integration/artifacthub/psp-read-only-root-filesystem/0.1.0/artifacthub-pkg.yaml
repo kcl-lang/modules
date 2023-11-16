@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `psp-read-only-root-filesystem` with tag `0.1.0` as dependency
   ```
-  kpm add psp-read-only-root-filesystem:0.1.0
+  kcl mod add psp-read-only-root-filesystem:0.1.0
   ```
 
   #### Pull `psp-read-only-root-filesystem` with tag `0.1.0` to local
   ```
-  kpm pull psp-read-only-root-filesystem:0.1.0
+  kcl mod pull psp-read-only-root-filesystem:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

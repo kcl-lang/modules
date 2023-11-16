@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `psp-proc-mount` with tag `0.1.0` as dependency
   ```
-  kpm add psp-proc-mount:0.1.0
+  kcl mod add psp-proc-mount:0.1.0
   ```
 
   #### Pull `psp-proc-mount` with tag `0.1.0` to local
   ```
-  kpm pull psp-proc-mount:0.1.0
+  kcl mod pull psp-proc-mount:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

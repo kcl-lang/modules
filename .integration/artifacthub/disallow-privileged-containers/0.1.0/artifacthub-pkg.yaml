@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `disallow-privileged-containers` with tag `0.1.0` as dependency
   ```
-  kpm add disallow-privileged-containers:0.1.0
+  kcl mod add disallow-privileged-containers:0.1.0
   ```
 
   #### Pull `disallow-privileged-containers` with tag `0.1.0` to local
   ```
-  kpm pull disallow-privileged-containers:0.1.0
+  kcl mod pull disallow-privileged-containers:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

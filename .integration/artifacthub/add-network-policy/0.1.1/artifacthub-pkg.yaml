@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `add-network-policy` with tag `0.1.1` as dependency
   ```
-  kpm add add-network-policy:0.1.1
+  kcl mod add add-network-policy:0.1.1
   ```
 
   #### Pull `add-network-policy` with tag `0.1.1` to local
   ```
-  kpm pull add-network-policy:0.1.1
+  kcl mod pull add-network-policy:0.1.1
   ```
 maintainers:
 - name: kcl-lang.io

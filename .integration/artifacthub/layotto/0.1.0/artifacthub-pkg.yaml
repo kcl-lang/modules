@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `layotto` with tag `0.1.0` as dependency
   ```
-  kpm add layotto:0.1.0
+  kcl mod add layotto:0.1.0
   ```
 
   #### Pull `layotto` with tag `0.1.0` to local
   ```
-  kpm pull layotto:0.1.0
+  kcl mod pull layotto:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

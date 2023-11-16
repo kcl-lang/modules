@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `psp-fsgroup` with tag `0.1.0` as dependency
   ```
-  kpm add psp-fsgroup:0.1.0
+  kcl mod add psp-fsgroup:0.1.0
   ```
 
   #### Pull `psp-fsgroup` with tag `0.1.0` to local
   ```
-  kpm pull psp-fsgroup:0.1.0
+  kcl mod pull psp-fsgroup:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

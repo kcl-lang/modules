@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `disallow-svc-node-port` with tag `0.1.0` as dependency
   ```
-  kpm add disallow-svc-node-port:0.1.0
+  kcl mod add disallow-svc-node-port:0.1.0
   ```
 
   #### Pull `disallow-svc-node-port` with tag `0.1.0` to local
   ```
-  kpm pull disallow-svc-node-port:0.1.0
+  kcl mod pull disallow-svc-node-port:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

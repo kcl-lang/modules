@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `kops` with tag `0.1.0` as dependency
   ```
-  kpm add kops:0.1.0
+  kcl mod add kops:0.1.0
   ```
 
   #### Pull `kops` with tag `0.1.0` to local
   ```
-  kpm pull kops:0.1.0
+  kcl mod pull kops:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

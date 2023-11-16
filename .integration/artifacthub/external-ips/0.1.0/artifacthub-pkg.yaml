@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `external-ips` with tag `0.1.0` as dependency
   ```
-  kpm add external-ips:0.1.0
+  kcl mod add external-ips:0.1.0
   ```
 
   #### Pull `external-ips` with tag `0.1.0` to local
   ```
-  kpm pull external-ips:0.1.0
+  kcl mod pull external-ips:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

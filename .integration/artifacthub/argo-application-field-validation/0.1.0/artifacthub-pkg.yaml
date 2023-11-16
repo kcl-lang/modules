@@ -12,12 +12,12 @@ links:
 install: |
   #### Add `argo-application-field-validation` with tag `0.1.0` as dependency
   ```
-  kpm add argo-application-field-validation:0.1.0
+  kcl mod add argo-application-field-validation:0.1.0
   ```
 
   #### Pull `argo-application-field-validation` with tag `0.1.0` to local
   ```
-  kpm pull argo-application-field-validation:0.1.0
+  kcl mod pull argo-application-field-validation:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

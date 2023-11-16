@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `psp-selinux` with tag `0.1.0` as dependency
   ```
-  kpm add psp-selinux:0.1.0
+  kcl mod add psp-selinux:0.1.0
   ```
 
   #### Pull `psp-selinux` with tag `0.1.0` to local
   ```
-  kpm pull psp-selinux:0.1.0
+  kcl mod pull psp-selinux:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

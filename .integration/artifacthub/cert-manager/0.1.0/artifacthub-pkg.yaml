@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `cert-manager` with tag `0.1.0` as dependency
   ```
-  kpm add cert-manager:0.1.0
+  kcl mod add cert-manager:0.1.0
   ```
 
   #### Pull `cert-manager` with tag `0.1.0` to local
   ```
-  kpm pull cert-manager:0.1.0
+  kcl mod pull cert-manager:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

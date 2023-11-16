@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `disallowed-image-repos` with tag `0.1.0` as dependency
   ```
-  kpm add disallowed-image-repos:0.1.0
+  kcl mod add disallowed-image-repos:0.1.0
   ```
 
   #### Pull `disallowed-image-repos` with tag `0.1.0` to local
   ```
-  kpm pull disallowed-image-repos:0.1.0
+  kcl mod pull disallowed-image-repos:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

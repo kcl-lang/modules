@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `argo-workflow` with tag `0.0.2` as dependency
   ```
-  kpm add argo-workflow:0.0.2
+  kcl mod add argo-workflow:0.0.2
   ```
 
   #### Pull `argo-workflow` with tag `0.0.2` to local
   ```
-  kpm pull argo-workflow:0.0.2
+  kcl mod pull argo-workflow:0.0.2
   ```
 maintainers:
 - name: kcl-lang.io

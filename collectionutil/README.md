@@ -7,7 +7,7 @@
 + Add the dependency
 
 ```shell
-kpm add collectionutil
+kcl mod add collectionutil
 ```
 
 + Write the kcl code

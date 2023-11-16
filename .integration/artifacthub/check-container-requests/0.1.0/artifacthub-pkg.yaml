@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `check-container-requests` with tag `0.1.0` as dependency
   ```
-  kpm add check-container-requests:0.1.0
+  kcl mod add check-container-requests:0.1.0
   ```
 
   #### Pull `check-container-requests` with tag `0.1.0` to local
   ```
-  kpm pull check-container-requests:0.1.0
+  kcl mod pull check-container-requests:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

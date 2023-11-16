@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `append-env` with tag `0.1.0` as dependency
   ```
-  kpm add append-env:0.1.0
+  kcl mod add append-env:0.1.0
   ```
 
   #### Pull `append-env` with tag `0.1.0` to local
   ```
-  kpm pull append-env:0.1.0
+  kcl mod pull append-env:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

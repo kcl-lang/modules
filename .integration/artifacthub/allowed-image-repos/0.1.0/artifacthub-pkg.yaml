@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `allowed-image-repos` with tag `0.1.0` as dependency
   ```
-  kpm add allowed-image-repos:0.1.0
+  kcl mod add allowed-image-repos:0.1.0
   ```
 
   #### Pull `allowed-image-repos` with tag `0.1.0` to local
   ```
-  kpm pull allowed-image-repos:0.1.0
+  kcl mod pull allowed-image-repos:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

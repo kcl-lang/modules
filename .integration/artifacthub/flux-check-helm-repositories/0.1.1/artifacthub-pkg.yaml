@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `flux-check-helm-repositories` with tag `0.1.1` as dependency
   ```
-  kpm add flux-check-helm-repositories:0.1.1
+  kcl mod add flux-check-helm-repositories:0.1.1
   ```
 
   #### Pull `flux-check-helm-repositories` with tag `0.1.1` to local
   ```
-  kpm pull flux-check-helm-repositories:0.1.1
+  kcl mod pull flux-check-helm-repositories:0.1.1
   ```
 maintainers:
 - name: kcl-lang.io

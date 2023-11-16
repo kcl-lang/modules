@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `disallow-anonymous` with tag `0.1.0` as dependency
   ```
-  kpm add disallow-anonymous:0.1.0
+  kcl mod add disallow-anonymous:0.1.0
   ```
 
   #### Pull `disallow-anonymous` with tag `0.1.0` to local
   ```
-  kpm pull disallow-anonymous:0.1.0
+  kcl mod pull disallow-anonymous:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

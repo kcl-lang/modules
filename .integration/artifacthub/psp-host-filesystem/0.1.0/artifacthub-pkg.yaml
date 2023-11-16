@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `psp-host-filesystem` with tag `0.1.0` as dependency
   ```
-  kpm add psp-host-filesystem:0.1.0
+  kcl mod add psp-host-filesystem:0.1.0
   ```
 
   #### Pull `psp-host-filesystem` with tag `0.1.0` to local
   ```
-  kpm pull psp-host-filesystem:0.1.0
+  kcl mod pull psp-host-filesystem:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

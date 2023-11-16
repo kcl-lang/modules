@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `openshift-enforce-etcd-encryption` with tag `0.1.0` as dependency
   ```
-  kpm add openshift-enforce-etcd-encryption:0.1.0
+  kcl mod add openshift-enforce-etcd-encryption:0.1.0
   ```
 
   #### Pull `openshift-enforce-etcd-encryption` with tag `0.1.0` to local
   ```
-  kpm pull openshift-enforce-etcd-encryption:0.1.0
+  kcl mod pull openshift-enforce-etcd-encryption:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

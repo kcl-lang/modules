@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `psp-check-supplemental-groups` with tag `0.1.0` as dependency
   ```
-  kpm add psp-check-supplemental-groups:0.1.0
+  kcl mod add psp-check-supplemental-groups:0.1.0
   ```
 
   #### Pull `psp-check-supplemental-groups` with tag `0.1.0` to local
   ```
-  kpm pull psp-check-supplemental-groups:0.1.0
+  kcl mod pull psp-check-supplemental-groups:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

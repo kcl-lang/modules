@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `nginx-ingress-check-config-map` with tag `0.1.0` as dependency
   ```
-  kpm add nginx-ingress-check-config-map:0.1.0
+  kcl mod add nginx-ingress-check-config-map:0.1.0
   ```
 
   #### Pull `nginx-ingress-check-config-map` with tag `0.1.0` to local
   ```
-  kpm pull nginx-ingress-check-config-map:0.1.0
+  kcl mod pull nginx-ingress-check-config-map:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `openshift-disallow-jenkins-pipeline-strategy` with tag `0.1.0` as dependency
   ```
-  kpm add openshift-disallow-jenkins-pipeline-strategy:0.1.0
+  kcl mod add openshift-disallow-jenkins-pipeline-strategy:0.1.0
   ```
 
   #### Pull `openshift-disallow-jenkins-pipeline-strategy` with tag `0.1.0` to local
   ```
-  kpm pull openshift-disallow-jenkins-pipeline-strategy:0.1.0
+  kcl mod pull openshift-disallow-jenkins-pipeline-strategy:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

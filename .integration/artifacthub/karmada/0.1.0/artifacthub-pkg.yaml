@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `karmada` with tag `0.1.0` as dependency
   ```
-  kpm add karmada:0.1.0
+  kcl mod add karmada:0.1.0
   ```
 
   #### Pull `karmada` with tag `0.1.0` to local
   ```
-  kpm pull karmada:0.1.0
+  kcl mod pull karmada:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

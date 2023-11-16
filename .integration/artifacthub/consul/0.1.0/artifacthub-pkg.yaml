@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `consul` with tag `0.1.0` as dependency
   ```
-  kpm add consul:0.1.0
+  kcl mod add consul:0.1.0
   ```
 
   #### Pull `consul` with tag `0.1.0` to local
   ```
-  kpm pull consul:0.1.0
+  kcl mod pull consul:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

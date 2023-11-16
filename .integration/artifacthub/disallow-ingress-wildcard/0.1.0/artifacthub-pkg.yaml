@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `disallow-ingress-wildcard` with tag `0.1.0` as dependency
   ```
-  kpm add disallow-ingress-wildcard:0.1.0
+  kcl mod add disallow-ingress-wildcard:0.1.0
   ```
 
   #### Pull `disallow-ingress-wildcard` with tag `0.1.0` to local
   ```
-  kpm pull disallow-ingress-wildcard:0.1.0
+  kcl mod pull disallow-ingress-wildcard:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

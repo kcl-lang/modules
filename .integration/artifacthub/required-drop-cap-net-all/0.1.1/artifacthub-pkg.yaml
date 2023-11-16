@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `required-drop-cap-net-all` with tag `0.1.1` as dependency
   ```
-  kpm add required-drop-cap-net-all:0.1.1
+  kcl mod add required-drop-cap-net-all:0.1.1
   ```
 
   #### Pull `required-drop-cap-net-all` with tag `0.1.1` to local
   ```
-  kpm pull required-drop-cap-net-all:0.1.1
+  kcl mod pull required-drop-cap-net-all:0.1.1
   ```
 maintainers:
 - name: kcl-lang.io

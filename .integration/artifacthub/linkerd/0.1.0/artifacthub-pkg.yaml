@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `linkerd` with tag `0.1.0` as dependency
   ```
-  kpm add linkerd:0.1.0
+  kcl mod add linkerd:0.1.0
   ```
 
   #### Pull `linkerd` with tag `0.1.0` to local
   ```
-  kpm pull linkerd:0.1.0
+  kcl mod pull linkerd:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

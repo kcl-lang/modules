@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `tekton` with tag `0.1.0` as dependency
   ```
-  kpm add tekton:0.1.0
+  kcl mod add tekton:0.1.0
   ```
 
   #### Pull `tekton` with tag `0.1.0` to local
   ```
-  kpm pull tekton:0.1.0
+  kcl mod pull tekton:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `validate-auto-mount-service-account-token` with tag `0.1.0` as dependency
   ```
-  kpm add validate-auto-mount-service-account-token:0.1.0
+  kcl mod add validate-auto-mount-service-account-token:0.1.0
   ```
 
   #### Pull `validate-auto-mount-service-account-token` with tag `0.1.0` to local
   ```
-  kpm pull validate-auto-mount-service-account-token:0.1.0
+  kcl mod pull validate-auto-mount-service-account-token:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

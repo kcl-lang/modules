@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `kcl-abstraction-example` with tag `0.1.0` as dependency
   ```
-  kpm add kcl-abstraction-example:0.1.0
+  kcl mod add kcl-abstraction-example:0.1.0
   ```
 
   #### Pull `kcl-abstraction-example` with tag `0.1.0` to local
   ```
-  kpm pull kcl-abstraction-example:0.1.0
+  kcl mod pull kcl-abstraction-example:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

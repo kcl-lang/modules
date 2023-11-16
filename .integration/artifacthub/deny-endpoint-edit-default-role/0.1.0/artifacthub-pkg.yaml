@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `deny-endpoint-edit-default-role` with tag `0.1.0` as dependency
   ```
-  kpm add deny-endpoint-edit-default-role:0.1.0
+  kcl mod add deny-endpoint-edit-default-role:0.1.0
   ```
 
   #### Pull `deny-endpoint-edit-default-role` with tag `0.1.0` to local
   ```
-  kpm pull deny-endpoint-edit-default-role:0.1.0
+  kcl mod pull deny-endpoint-edit-default-role:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

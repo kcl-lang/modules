@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `traefik` with tag `0.1.0` as dependency
   ```
-  kpm add traefik:0.1.0
+  kcl mod add traefik:0.1.0
   ```
 
   #### Pull `traefik` with tag `0.1.0` to local
   ```
-  kpm pull traefik:0.1.0
+  kcl mod pull traefik:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

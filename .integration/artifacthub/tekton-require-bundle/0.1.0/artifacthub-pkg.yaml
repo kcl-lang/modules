@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `tekton-require-bundle` with tag `0.1.0` as dependency
   ```
-  kpm add tekton-require-bundle:0.1.0
+  kcl mod add tekton-require-bundle:0.1.0
   ```
 
   #### Pull `tekton-require-bundle` with tag `0.1.0` to local
   ```
-  kpm pull tekton-require-bundle:0.1.0
+  kcl mod pull tekton-require-bundle:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

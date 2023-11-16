@@ -12,12 +12,12 @@ links:
 install: |
   #### Add `add-app-armor-annotation` with tag `0.1.0` as dependency
   ```
-  kpm add add-app-armor-annotation:0.1.0
+  kcl mod add add-app-armor-annotation:0.1.0
   ```
 
   #### Pull `add-app-armor-annotation` with tag `0.1.0` to local
   ```
-  kpm pull add-app-armor-annotation:0.1.0
+  kcl mod pull add-app-armor-annotation:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

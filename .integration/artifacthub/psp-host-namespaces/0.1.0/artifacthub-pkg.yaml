@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `psp-host-namespaces` with tag `0.1.0` as dependency
   ```
-  kpm add psp-host-namespaces:0.1.0
+  kcl mod add psp-host-namespaces:0.1.0
   ```
 
   #### Pull `psp-host-namespaces` with tag `0.1.0` to local
   ```
-  kpm pull psp-host-namespaces:0.1.0
+  kcl mod pull psp-host-namespaces:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

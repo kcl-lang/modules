@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `check-deprecated-api` with tag `0.1.0` as dependency
   ```
-  kpm add check-deprecated-api:0.1.0
+  kcl mod add check-deprecated-api:0.1.0
   ```
 
   #### Pull `check-deprecated-api` with tag `0.1.0` to local
   ```
-  kpm pull check-deprecated-api:0.1.0
+  kcl mod pull check-deprecated-api:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

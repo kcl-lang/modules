@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `conditionally-add-annotations` with tag `0.1.0` as dependency
   ```
-  kpm add conditionally-add-annotations:0.1.0
+  kcl mod add conditionally-add-annotations:0.1.0
   ```
 
   #### Pull `conditionally-add-annotations` with tag `0.1.0` to local
   ```
-  kpm pull conditionally-add-annotations:0.1.0
+  kcl mod pull conditionally-add-annotations:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

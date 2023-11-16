@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `restrict-ingress-paths` with tag `0.1.0` as dependency
   ```
-  kpm add restrict-ingress-paths:0.1.0
+  kcl mod add restrict-ingress-paths:0.1.0
   ```
 
   #### Pull `restrict-ingress-paths` with tag `0.1.0` to local
   ```
-  kpm pull restrict-ingress-paths:0.1.0
+  kcl mod pull restrict-ingress-paths:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

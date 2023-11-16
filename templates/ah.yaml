@@ -10,8 +10,8 @@ links: # (optional)
   - name: KCL repo
     url: https://github.com/kcl-lang/kcl
 install: | # (optional)
-  kpm add helloworld:0.1.0
-  kpm pull helloworld:0.1.0
+  kcl mod add helloworld:0.1.0
+  kcl mod pull helloworld:0.1.0
 maintainers: # (optional)
   - name: kcl-lang.io
     email: kcl-lang.io@domainsbyproxy.com

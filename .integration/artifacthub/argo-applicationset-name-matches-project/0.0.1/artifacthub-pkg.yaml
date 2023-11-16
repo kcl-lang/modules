@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `argo-applicationset-name-matches-project` with tag `0.0.1` as dependency
   ```
-  kpm add argo-applicationset-name-matches-project:0.0.1
+  kcl mod add argo-applicationset-name-matches-project:0.0.1
   ```
 
   #### Pull `argo-applicationset-name-matches-project` with tag `0.0.1` to local
   ```
-  kpm pull argo-applicationset-name-matches-project:0.0.1
+  kcl mod pull argo-applicationset-name-matches-project:0.0.1
   ```
 maintainers:
 - name: kcl-lang.io

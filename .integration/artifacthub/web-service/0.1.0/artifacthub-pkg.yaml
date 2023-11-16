@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `web-service` with tag `0.1.0` as dependency
   ```
-  kpm add web-service:0.1.0
+  kcl mod add web-service:0.1.0
   ```
 
   #### Pull `web-service` with tag `0.1.0` to local
   ```
-  kpm pull web-service:0.1.0
+  kcl mod pull web-service:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io
