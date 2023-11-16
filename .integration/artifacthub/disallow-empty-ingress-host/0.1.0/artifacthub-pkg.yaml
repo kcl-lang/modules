@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `disallow-empty-ingress-host` with tag `0.1.0` as dependency
   ```
-  kpm add disallow-empty-ingress-host:0.1.0
+  kcl mod add disallow-empty-ingress-host:0.1.0
   ```
 
   #### Pull `disallow-empty-ingress-host` with tag `0.1.0` to local
   ```
-  kpm pull disallow-empty-ingress-host:0.1.0
+  kcl mod pull disallow-empty-ingress-host:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `istio-enforce-tls-hosts-host-subnets` with tag `0.1.0` as dependency
   ```
-  kpm add istio-enforce-tls-hosts-host-subnets:0.1.0
+  kcl mod add istio-enforce-tls-hosts-host-subnets:0.1.0
   ```
 
   #### Pull `istio-enforce-tls-hosts-host-subnets` with tag `0.1.0` to local
   ```
-  kpm pull istio-enforce-tls-hosts-host-subnets:0.1.0
+  kcl mod pull istio-enforce-tls-hosts-host-subnets:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

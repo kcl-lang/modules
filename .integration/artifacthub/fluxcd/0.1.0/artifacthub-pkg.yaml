@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `fluxcd` with tag `0.1.0` as dependency
   ```
-  kpm add fluxcd:0.1.0
+  kcl mod add fluxcd:0.1.0
   ```
 
   #### Pull `fluxcd` with tag `0.1.0` to local
   ```
-  kpm pull fluxcd:0.1.0
+  kcl mod pull fluxcd:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

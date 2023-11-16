@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `crossplane` with tag `0.1.0` as dependency
   ```
-  kpm add crossplane:0.1.0
+  kcl mod add crossplane:0.1.0
   ```
 
   #### Pull `crossplane` with tag `0.1.0` to local
   ```
-  kpm pull crossplane:0.1.0
+  kcl mod pull crossplane:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

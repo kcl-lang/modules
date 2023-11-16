@@ -12,12 +12,12 @@ links:
 install: |
   #### Add `semver` with tag `0.1.0` as dependency
   ```
-  kpm add semver:0.1.0
+  kcl mod add semver:0.1.0
   ```
 
   #### Pull `semver` with tag `0.1.0` to local
   ```
-  kpm pull semver:0.1.0
+  kcl mod pull semver:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

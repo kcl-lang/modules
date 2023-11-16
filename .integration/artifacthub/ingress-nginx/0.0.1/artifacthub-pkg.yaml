@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `ingress-nginx` with tag `0.0.1` as dependency
   ```
-  kpm add ingress-nginx:0.0.1
+  kcl mod add ingress-nginx:0.0.1
   ```
 
   #### Pull `ingress-nginx` with tag `0.0.1` to local
   ```
-  kpm pull ingress-nginx:0.0.1
+  kcl mod pull ingress-nginx:0.0.1
   ```
 maintainers:
 - name: kcl-lang.io

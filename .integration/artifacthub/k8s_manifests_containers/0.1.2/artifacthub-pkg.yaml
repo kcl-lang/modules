@@ -12,12 +12,12 @@ links:
 install: |
   #### Add `k8s_manifests_containers` with tag `0.1.2` as dependency
   ```
-  kpm add k8s_manifests_containers:0.1.2
+  kcl mod add k8s_manifests_containers:0.1.2
   ```
 
   #### Pull `k8s_manifests_containers` with tag `0.1.2` to local
   ```
-  kpm pull k8s_manifests_containers:0.1.2
+  kcl mod pull k8s_manifests_containers:0.1.2
   ```
 maintainers:
 - name: kcl-lang.io

@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `cilium` with tag `0.1.0` as dependency
   ```
-  kpm add cilium:0.1.0
+  kcl mod add cilium:0.1.0
   ```
 
   #### Pull `cilium` with tag `0.1.0` to local
   ```
-  kpm pull cilium:0.1.0
+  kcl mod pull cilium:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

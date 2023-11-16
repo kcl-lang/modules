@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `whoami-yaml` with tag `0.1.0` as dependency
   ```
-  kpm add whoami-yaml:0.1.0
+  kcl mod add whoami-yaml:0.1.0
   ```
 
   #### Pull `whoami-yaml` with tag `0.1.0` to local
   ```
-  kpm pull whoami-yaml:0.1.0
+  kcl mod pull whoami-yaml:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

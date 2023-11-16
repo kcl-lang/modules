@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `readonly-root-fs` with tag `0.1.0` as dependency
   ```
-  kpm add readonly-root-fs:0.1.0
+  kcl mod add readonly-root-fs:0.1.0
   ```
 
   #### Pull `readonly-root-fs` with tag `0.1.0` to local
   ```
-  kpm pull readonly-root-fs:0.1.0
+  kcl mod pull readonly-root-fs:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

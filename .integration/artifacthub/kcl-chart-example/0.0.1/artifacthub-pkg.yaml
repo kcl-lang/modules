@@ -12,12 +12,12 @@ links:
 install: |
   #### Add `kcl-chart-example` with tag `0.0.1` as dependency
   ```
-  kpm add kcl-chart-example:0.0.1
+  kcl mod add kcl-chart-example:0.0.1
   ```
 
   #### Pull `kcl-chart-example` with tag `0.0.1` to local
   ```
-  kpm pull kcl-chart-example:0.0.1
+  kcl mod pull kcl-chart-example:0.0.1
   ```
 maintainers:
 - name: kcl-lang.io

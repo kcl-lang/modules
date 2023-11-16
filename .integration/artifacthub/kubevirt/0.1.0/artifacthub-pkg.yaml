@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `kubevirt` with tag `0.1.0` as dependency
   ```
-  kpm add kubevirt:0.1.0
+  kcl mod add kubevirt:0.1.0
   ```
 
   #### Pull `kubevirt` with tag `0.1.0` to local
   ```
-  kpm pull kubevirt:0.1.0
+  kcl mod pull kubevirt:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

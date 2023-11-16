@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `kcl-config-example` with tag `0.1.0` as dependency
   ```
-  kpm add kcl-config-example:0.1.0
+  kcl mod add kcl-config-example:0.1.0
   ```
 
   #### Pull `kcl-config-example` with tag `0.1.0` to local
   ```
-  kpm pull kcl-config-example:0.1.0
+  kcl mod pull kcl-config-example:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

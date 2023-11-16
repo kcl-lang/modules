@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `check-probes` with tag `0.1.0` as dependency
   ```
-  kpm add check-probes:0.1.0
+  kcl mod add check-probes:0.1.0
   ```
 
   #### Pull `check-probes` with tag `0.1.0` to local
   ```
-  kpm pull check-probes:0.1.0
+  kcl mod pull check-probes:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

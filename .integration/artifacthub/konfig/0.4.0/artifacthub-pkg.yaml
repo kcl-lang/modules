@@ -15,12 +15,12 @@ links:
 install: |
   #### Add `konfig` with tag `0.4.0` as dependency
   ```
-  kpm add konfig:0.4.0
+  kcl mod add konfig:0.4.0
   ```
 
   #### Pull `konfig` with tag `0.4.0` to local
   ```
-  kpm pull konfig:0.4.0
+  kcl mod pull konfig:0.4.0
   ```
 maintainers:
 - name: kcl-lang.io

@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `disallow-default-namespace` with tag `0.1.0` as dependency
   ```
-  kpm add disallow-default-namespace:0.1.0
+  kcl mod add disallow-default-namespace:0.1.0
   ```
 
   #### Pull `disallow-default-namespace` with tag `0.1.0` to local
   ```
-  kpm pull disallow-default-namespace:0.1.0
+  kcl mod pull disallow-default-namespace:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `add-image-as-env-var` with tag `0.1.0` as dependency
   ```
-  kpm add add-image-as-env-var:0.1.0
+  kcl mod add add-image-as-env-var:0.1.0
   ```
 
   #### Pull `add-image-as-env-var` with tag `0.1.0` to local
   ```
-  kpm pull add-image-as-env-var:0.1.0
+  kcl mod pull add-image-as-env-var:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

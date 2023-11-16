@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `external-secrets` with tag `0.1.0` as dependency
   ```
-  kpm add external-secrets:0.1.0
+  kcl mod add external-secrets:0.1.0
   ```
 
   #### Pull `external-secrets` with tag `0.1.0` to local
   ```
-  kpm pull external-secrets:0.1.0
+  kcl mod pull external-secrets:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

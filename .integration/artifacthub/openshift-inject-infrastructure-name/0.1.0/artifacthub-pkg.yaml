@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `openshift-inject-infrastructure-name` with tag `0.1.0` as dependency
   ```
-  kpm add openshift-inject-infrastructure-name:0.1.0
+  kcl mod add openshift-inject-infrastructure-name:0.1.0
   ```
 
   #### Pull `openshift-inject-infrastructure-name` with tag `0.1.0` to local
   ```
-  kpm pull openshift-inject-infrastructure-name:0.1.0
+  kcl mod pull openshift-inject-infrastructure-name:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

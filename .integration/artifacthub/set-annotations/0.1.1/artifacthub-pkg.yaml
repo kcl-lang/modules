@@ -12,12 +12,12 @@ links:
 install: |
   #### Add `set-annotations` with tag `0.1.1` as dependency
   ```
-  kpm add set-annotations:0.1.1
+  kcl mod add set-annotations:0.1.1
   ```
 
   #### Pull `set-annotations` with tag `0.1.1` to local
   ```
-  kpm pull set-annotations:0.1.1
+  kcl mod pull set-annotations:0.1.1
   ```
 maintainers:
 - name: kcl-lang.io

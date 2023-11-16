@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `add-capabilities` with tag `0.1.0` as dependency
   ```
-  kpm add add-capabilities:0.1.0
+  kcl mod add add-capabilities:0.1.0
   ```
 
   #### Pull `add-capabilities` with tag `0.1.0` to local
   ```
-  kpm pull add-capabilities:0.1.0
+  kcl mod pull add-capabilities:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

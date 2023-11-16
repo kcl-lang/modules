@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `disallow-cri-sock-mount` with tag `0.1.0` as dependency
   ```
-  kpm add disallow-cri-sock-mount:0.1.0
+  kcl mod add disallow-cri-sock-mount:0.1.0
   ```
 
   #### Pull `disallow-cri-sock-mount` with tag `0.1.0` to local
   ```
-  kpm pull disallow-cri-sock-mount:0.1.0
+  kcl mod pull disallow-cri-sock-mount:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

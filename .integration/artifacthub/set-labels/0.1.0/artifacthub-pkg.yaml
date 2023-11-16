@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `set-labels` with tag `0.1.0` as dependency
   ```
-  kpm add set-labels:0.1.0
+  kcl mod add set-labels:0.1.0
   ```
 
   #### Pull `set-labels` with tag `0.1.0` to local
   ```
-  kpm pull set-labels:0.1.0
+  kcl mod pull set-labels:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

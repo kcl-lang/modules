@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `horizontal-pod-auto-scaler` with tag `0.1.0` as dependency
   ```
-  kpm add horizontal-pod-auto-scaler:0.1.0
+  kcl mod add horizontal-pod-auto-scaler:0.1.0
   ```
 
   #### Pull `horizontal-pod-auto-scaler` with tag `0.1.0` to local
   ```
-  kpm pull horizontal-pod-auto-scaler:0.1.0
+  kcl mod pull horizontal-pod-auto-scaler:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

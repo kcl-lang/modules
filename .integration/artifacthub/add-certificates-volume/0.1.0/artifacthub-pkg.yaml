@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `add-certificates-volume` with tag `0.1.0` as dependency
   ```
-  kpm add add-certificates-volume:0.1.0
+  kcl mod add add-certificates-volume:0.1.0
   ```
 
   #### Pull `add-certificates-volume` with tag `0.1.0` to local
   ```
-  kpm pull add-certificates-volume:0.1.0
+  kcl mod pull add-certificates-volume:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

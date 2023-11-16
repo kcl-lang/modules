@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `consul-enforce-min-tls-version` with tag `0.1.0` as dependency
   ```
-  kpm add consul-enforce-min-tls-version:0.1.0
+  kcl mod add consul-enforce-min-tls-version:0.1.0
   ```
 
   #### Pull `consul-enforce-min-tls-version` with tag `0.1.0` to local
   ```
-  kpm pull consul-enforce-min-tls-version:0.1.0
+  kcl mod pull consul-enforce-min-tls-version:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

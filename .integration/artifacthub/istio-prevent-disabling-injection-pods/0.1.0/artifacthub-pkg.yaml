@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `istio-prevent-disabling-injection-pods` with tag `0.1.0` as dependency
   ```
-  kpm add istio-prevent-disabling-injection-pods:0.1.0
+  kcl mod add istio-prevent-disabling-injection-pods:0.1.0
   ```
 
   #### Pull `istio-prevent-disabling-injection-pods` with tag `0.1.0` to local
   ```
-  kpm pull istio-prevent-disabling-injection-pods:0.1.0
+  kcl mod pull istio-prevent-disabling-injection-pods:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

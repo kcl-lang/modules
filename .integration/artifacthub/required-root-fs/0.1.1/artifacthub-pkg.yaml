@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `required-root-fs` with tag `0.1.1` as dependency
   ```
-  kpm add required-root-fs:0.1.1
+  kcl mod add required-root-fs:0.1.1
   ```
 
   #### Pull `required-root-fs` with tag `0.1.1` to local
   ```
-  kpm pull required-root-fs:0.1.1
+  kcl mod pull required-root-fs:0.1.1
   ```
 maintainers:
 - name: kcl-lang.io

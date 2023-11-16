@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `collectionutil` with tag `0.0.1` as dependency
   ```
-  kpm add collectionutil:0.0.1
+  kcl mod add collectionutil:0.0.1
   ```
 
   #### Pull `collectionutil` with tag `0.0.1` to local
   ```
-  kpm pull collectionutil:0.0.1
+  kcl mod pull collectionutil:0.0.1
   ```
 maintainers:
 - name: kcl-lang.io

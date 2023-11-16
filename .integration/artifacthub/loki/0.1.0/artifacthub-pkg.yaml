@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `loki` with tag `0.1.0` as dependency
   ```
-  kpm add loki:0.1.0
+  kcl mod add loki:0.1.0
   ```
 
   #### Pull `loki` with tag `0.1.0` to local
   ```
-  kpm pull loki:0.1.0
+  kcl mod pull loki:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

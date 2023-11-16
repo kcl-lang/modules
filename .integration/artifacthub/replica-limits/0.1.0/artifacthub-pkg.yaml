@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `replica-limits` with tag `0.1.0` as dependency
   ```
-  kpm add replica-limits:0.1.0
+  kcl mod add replica-limits:0.1.0
   ```
 
   #### Pull `replica-limits` with tag `0.1.0` to local
   ```
-  kpm pull replica-limits:0.1.0
+  kcl mod pull replica-limits:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

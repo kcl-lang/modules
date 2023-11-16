@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `container_profile` with tag `0.1.1` as dependency
   ```
-  kpm add container_profile:0.1.1
+  kcl mod add container_profile:0.1.1
   ```
 
   #### Pull `container_profile` with tag `0.1.1` to local
   ```
-  kpm pull container_profile:0.1.1
+  kcl mod pull container_profile:0.1.1
   ```
 maintainers:
 - name: kcl-lang.io

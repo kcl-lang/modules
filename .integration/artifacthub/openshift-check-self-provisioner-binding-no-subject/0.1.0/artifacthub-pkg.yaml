@@ -12,12 +12,12 @@ links:
 install: |
   #### Add `openshift-check-self-provisioner-binding-no-subject` with tag `0.1.0` as dependency
   ```
-  kpm add openshift-check-self-provisioner-binding-no-subject:0.1.0
+  kcl mod add openshift-check-self-provisioner-binding-no-subject:0.1.0
   ```
 
   #### Pull `openshift-check-self-provisioner-binding-no-subject` with tag `0.1.0` to local
   ```
-  kpm pull openshift-check-self-provisioner-binding-no-subject:0.1.0
+  kcl mod pull openshift-check-self-provisioner-binding-no-subject:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

@@ -12,12 +12,12 @@ links:
 install: |
   #### Add `jsonpatch` with tag `0.0.1` as dependency
   ```
-  kpm add jsonpatch:0.0.1
+  kcl mod add jsonpatch:0.0.1
   ```
 
   #### Pull `jsonpatch` with tag `0.0.1` to local
   ```
-  kpm pull jsonpatch:0.0.1
+  kcl mod pull jsonpatch:0.0.1
   ```
 maintainers:
 - name: kcl-lang.io

@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `psp-allow-privilege-escalation` with tag `0.1.0` as dependency
   ```
-  kpm add psp-allow-privilege-escalation:0.1.0
+  kcl mod add psp-allow-privilege-escalation:0.1.0
   ```
 
   #### Pull `psp-allow-privilege-escalation` with tag `0.1.0` to local
   ```
-  kpm pull psp-allow-privilege-escalation:0.1.0
+  kcl mod pull psp-allow-privilege-escalation:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

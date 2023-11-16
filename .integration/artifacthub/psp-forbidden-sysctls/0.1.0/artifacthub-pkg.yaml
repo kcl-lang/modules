@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `psp-forbidden-sysctls` with tag `0.1.0` as dependency
   ```
-  kpm add psp-forbidden-sysctls:0.1.0
+  kcl mod add psp-forbidden-sysctls:0.1.0
   ```
 
   #### Pull `psp-forbidden-sysctls` with tag `0.1.0` to local
   ```
-  kpm pull psp-forbidden-sysctls:0.1.0
+  kcl mod pull psp-forbidden-sysctls:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

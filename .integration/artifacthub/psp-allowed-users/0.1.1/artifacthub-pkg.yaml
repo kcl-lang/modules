@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `psp-allowed-users` with tag `0.1.1` as dependency
   ```
-  kpm add psp-allowed-users:0.1.1
+  kcl mod add psp-allowed-users:0.1.1
   ```
 
   #### Pull `psp-allowed-users` with tag `0.1.1` to local
   ```
-  kpm pull psp-allowed-users:0.1.1
+  kcl mod pull psp-allowed-users:0.1.1
   ```
 maintainers:
 - name: kcl-lang.io

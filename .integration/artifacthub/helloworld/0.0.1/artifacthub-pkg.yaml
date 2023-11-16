@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `helloworld` with tag `0.0.1` as dependency
   ```
-  kpm add helloworld:0.0.1
+  kcl mod add helloworld:0.0.1
   ```
 
   #### Pull `helloworld` with tag `0.0.1` to local
   ```
-  kpm pull helloworld:0.0.1
+  kcl mod pull helloworld:0.0.1
   ```
 maintainers:
 - name: kcl-lang.io

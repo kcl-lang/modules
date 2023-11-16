@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `istio` with tag `0.1.0` as dependency
   ```
-  kpm add istio:0.1.0
+  kcl mod add istio:0.1.0
   ```
 
   #### Pull `istio` with tag `0.1.0` to local
   ```
-  kpm pull istio:0.1.0
+  kcl mod pull istio:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io

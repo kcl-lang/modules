@@ -11,12 +11,12 @@ links:
 install: |
   #### Add `svc-require-encryption-aws-loadbalancers` with tag `0.1.0` as dependency
   ```
-  kpm add svc-require-encryption-aws-loadbalancers:0.1.0
+  kcl mod add svc-require-encryption-aws-loadbalancers:0.1.0
   ```
 
   #### Pull `svc-require-encryption-aws-loadbalancers` with tag `0.1.0` to local
   ```
-  kpm pull svc-require-encryption-aws-loadbalancers:0.1.0
+  kcl mod pull svc-require-encryption-aws-loadbalancers:0.1.0
   ```
 maintainers:
 - name: kcl-lang.io
