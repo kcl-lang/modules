@@ -1,0 +1,25 @@
+version: 0.1.1
+name: psp-app-armor
+displayName: psp-app-armor
+createdAt: "2023-11-20T14:10:01Z"
+description: '`psp-app-armor` is a kcl validation package'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `psp-app-armor` with tag `0.1.1` as dependency
+  ```
+  kcl mod add psp-app-armor:0.1.1
+  ```
+
+  #### Pull `psp-app-armor` with tag `0.1.1` to local
+  ```
+  kcl mod pull psp-app-armor:0.1.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

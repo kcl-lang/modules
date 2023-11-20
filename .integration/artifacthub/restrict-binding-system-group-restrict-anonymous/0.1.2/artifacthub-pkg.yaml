@@ -1,0 +1,26 @@
+version: 0.1.2
+name: restrict-binding-system-group-restrict-anonymous
+displayName: restrict-binding-system-group-restrict-anonymous
+createdAt: "2023-11-20T14:10:06Z"
+description: '`restrict-binding-system-group-restrict-anonymous` is a KCL validation
+  module'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `restrict-binding-system-group-restrict-anonymous` with tag `0.1.2` as dependency
+  ```
+  kcl mod add restrict-binding-system-group-restrict-anonymous:0.1.2
+  ```
+
+  #### Pull `restrict-binding-system-group-restrict-anonymous` with tag `0.1.2` to local
+  ```
+  kcl mod pull restrict-binding-system-group-restrict-anonymous:0.1.2
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

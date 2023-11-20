@@ -1,0 +1,25 @@
+version: 0.1.1
+name: disallow-anonymous
+displayName: disallow-anonymous
+createdAt: "2023-11-20T14:10:00Z"
+description: '`disallow-anonymous` is a kcl validation package'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `disallow-anonymous` with tag `0.1.1` as dependency
+  ```
+  kcl mod add disallow-anonymous:0.1.1
+  ```
+
+  #### Pull `disallow-anonymous` with tag `0.1.1` to local
+  ```
+  kcl mod pull disallow-anonymous:0.1.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

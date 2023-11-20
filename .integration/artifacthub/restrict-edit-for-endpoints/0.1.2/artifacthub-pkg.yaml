@@ -1,0 +1,25 @@
+version: 0.1.2
+name: restrict-edit-for-endpoints
+displayName: restrict-edit-for-endpoints
+createdAt: "2023-11-20T14:10:20Z"
+description: '`restrict-edit-for-endpoints` is a KCL validation module'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `restrict-edit-for-endpoints` with tag `0.1.2` as dependency
+  ```
+  kcl mod add restrict-edit-for-endpoints:0.1.2
+  ```
+
+  #### Pull `restrict-edit-for-endpoints` with tag `0.1.2` to local
+  ```
+  kcl mod pull restrict-edit-for-endpoints:0.1.2
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

@@ -1,0 +1,25 @@
+version: 0.1.2
+name: restrict-ingress-defaultbackend
+displayName: restrict-ingress-defaultbackend
+createdAt: "2023-11-20T14:10:25Z"
+description: '`restrict-ingress-defaultbackend` is a KCL validation module'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `restrict-ingress-defaultbackend` with tag `0.1.2` as dependency
+  ```
+  kcl mod add restrict-ingress-defaultbackend:0.1.2
+  ```
+
+  #### Pull `restrict-ingress-defaultbackend` with tag `0.1.2` to local
+  ```
+  kcl mod pull restrict-ingress-defaultbackend:0.1.2
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

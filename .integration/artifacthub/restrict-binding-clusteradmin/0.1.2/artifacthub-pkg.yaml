@@ -1,0 +1,25 @@
+version: 0.1.2
+name: restrict-binding-clusteradmin
+displayName: restrict-binding-clusteradmin
+createdAt: "2023-11-20T14:10:05Z"
+description: '`restrict-binding-clusteradmin` is a KCL validation module'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `restrict-binding-clusteradmin` with tag `0.1.2` as dependency
+  ```
+  kcl mod add restrict-binding-clusteradmin:0.1.2
+  ```
+
+  #### Pull `restrict-binding-clusteradmin` with tag `0.1.2` to local
+  ```
+  kcl mod pull restrict-binding-clusteradmin:0.1.2
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

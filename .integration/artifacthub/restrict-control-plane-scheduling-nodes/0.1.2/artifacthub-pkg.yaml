@@ -1,0 +1,25 @@
+version: 0.1.2
+name: restrict-control-plane-scheduling-nodes
+displayName: restrict-control-plane-scheduling-nodes
+createdAt: "2023-11-20T14:10:16Z"
+description: '`restrict-control-plane-scheduling-nodes` is a KCL validation module'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `restrict-control-plane-scheduling-nodes` with tag `0.1.2` as dependency
+  ```
+  kcl mod add restrict-control-plane-scheduling-nodes:0.1.2
+  ```
+
+  #### Pull `restrict-control-plane-scheduling-nodes` with tag `0.1.2` to local
+  ```
+  kcl mod pull restrict-control-plane-scheduling-nodes:0.1.2
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

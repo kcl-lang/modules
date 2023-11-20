@@ -1,0 +1,26 @@
+version: 0.1.2
+name: restrict-control-plane-scheduling-control-plane
+displayName: restrict-control-plane-scheduling-control-plane
+createdAt: "2023-11-20T14:10:13Z"
+description: '`restrict-control-plane-scheduling-control-plane` is a KCL validation
+  module'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `restrict-control-plane-scheduling-control-plane` with tag `0.1.2` as dependency
+  ```
+  kcl mod add restrict-control-plane-scheduling-control-plane:0.1.2
+  ```
+
+  #### Pull `restrict-control-plane-scheduling-control-plane` with tag `0.1.2` to local
+  ```
+  kcl mod pull restrict-control-plane-scheduling-control-plane:0.1.2
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

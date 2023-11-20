@@ -1,0 +1,25 @@
+version: 0.1.2
+name: restrict-escalation-verbs-roles
+displayName: restrict-escalation-verbs-roles
+createdAt: "2023-11-20T14:10:21Z"
+description: '`restrict-escalation-verbs-roles` is a KCL validation module'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `restrict-escalation-verbs-roles` with tag `0.1.2` as dependency
+  ```
+  kcl mod add restrict-escalation-verbs-roles:0.1.2
+  ```
+
+  #### Pull `restrict-escalation-verbs-roles` with tag `0.1.2` to local
+  ```
+  kcl mod pull restrict-escalation-verbs-roles:0.1.2
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

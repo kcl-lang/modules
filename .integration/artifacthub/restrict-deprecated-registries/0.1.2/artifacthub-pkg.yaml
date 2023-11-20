@@ -1,0 +1,25 @@
+version: 0.1.2
+name: restrict-deprecated-registries
+displayName: restrict-deprecated-registries
+createdAt: "2023-11-20T14:10:19Z"
+description: '`restrict-deprecated-registries` is a KCL validation module'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `restrict-deprecated-registries` with tag `0.1.2` as dependency
+  ```
+  kcl mod add restrict-deprecated-registries:0.1.2
+  ```
+
+  #### Pull `restrict-deprecated-registries` with tag `0.1.2` to local
+  ```
+  kcl mod pull restrict-deprecated-registries:0.1.2
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
