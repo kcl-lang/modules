@@ -1,0 +1,25 @@
+version: 0.1.0
+name: restrict-jobs
+displayName: restrict-jobs
+createdAt: "2023-11-27T12:59:16Z"
+description: '`restrict-jobs` is a KCL validation module'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `restrict-jobs` with tag `0.1.0` as dependency
+  ```
+  kcl mod add restrict-jobs:0.1.0
+  ```
+
+  #### Pull `restrict-jobs` with tag `0.1.0` to local
+  ```
+  kcl mod pull restrict-jobs:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

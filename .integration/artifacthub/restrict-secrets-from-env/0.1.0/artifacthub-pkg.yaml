@@ -1,0 +1,25 @@
+version: 0.1.0
+name: restrict-secrets-from-env
+displayName: restrict-secrets-from-env
+createdAt: "2023-11-27T12:59:42Z"
+description: '`restrict-secrets-from-env` is a KCL validation module'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `restrict-secrets-from-env` with tag `0.1.0` as dependency
+  ```
+  kcl mod add restrict-secrets-from-env:0.1.0
+  ```
+
+  #### Pull `restrict-secrets-from-env` with tag `0.1.0` to local
+  ```
+  kcl mod pull restrict-secrets-from-env:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

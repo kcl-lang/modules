@@ -1,0 +1,25 @@
+version: 0.1.0
+name: restrict-node-label-creation
+displayName: restrict-node-label-creation
+createdAt: "2023-11-27T12:59:26Z"
+description: '`restrict-node-label-creation` is a KCL validation module'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `restrict-node-label-creation` with tag `0.1.0` as dependency
+  ```
+  kcl mod add restrict-node-label-creation:0.1.0
+  ```
+
+  #### Pull `restrict-node-label-creation` with tag `0.1.0` to local
+  ```
+  kcl mod pull restrict-node-label-creation:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

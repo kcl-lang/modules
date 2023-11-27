@@ -1,0 +1,25 @@
+version: 0.1.0
+name: restrict-node-name
+displayName: restrict-node-name
+createdAt: "2023-11-27T12:59:28Z"
+description: '`restrict-node-name` is a KCL validation module'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `restrict-node-name` with tag `0.1.0` as dependency
+  ```
+  kcl mod add restrict-node-name:0.1.0
+  ```
+
+  #### Pull `restrict-node-name` with tag `0.1.0` to local
+  ```
+  kcl mod pull restrict-node-name:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

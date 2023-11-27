@@ -1,0 +1,25 @@
+version: 0.1.0
+name: safe-secrets-from-volumes
+displayName: safe-secrets-from-volumes
+createdAt: "2023-11-27T12:59:54Z"
+description: '`safe-secrets-from-volumes` is a KCL validation module'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `safe-secrets-from-volumes` with tag `0.1.0` as dependency
+  ```
+  kcl mod add safe-secrets-from-volumes:0.1.0
+  ```
+
+  #### Pull `safe-secrets-from-volumes` with tag `0.1.0` to local
+  ```
+  kcl mod pull safe-secrets-from-volumes:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

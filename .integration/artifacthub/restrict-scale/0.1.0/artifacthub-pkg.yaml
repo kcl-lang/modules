@@ -1,0 +1,25 @@
+version: 0.1.0
+name: restrict-scale
+displayName: restrict-scale
+createdAt: "2023-11-27T12:59:36Z"
+description: '`restrict-scale` is a KCL validation module'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `restrict-scale` with tag `0.1.0` as dependency
+  ```
+  kcl mod add restrict-scale:0.1.0
+  ```
+
+  #### Pull `restrict-scale` with tag `0.1.0` to local
+  ```
+  kcl mod pull restrict-scale:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
