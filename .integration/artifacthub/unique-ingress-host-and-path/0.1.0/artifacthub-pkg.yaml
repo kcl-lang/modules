@@ -1,0 +1,25 @@
+version: 0.1.0
+name: unique-ingress-host-and-path
+displayName: unique-ingress-host-and-path
+createdAt: "2023-12-04T11:12:42Z"
+description: '`unique-ingress-host-and-path` is a kcl validation package'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `unique-ingress-host-and-path` with tag `0.1.0` as dependency
+  ```
+  kcl mod add unique-ingress-host-and-path:0.1.0
+  ```
+
+  #### Pull `unique-ingress-host-and-path` with tag `0.1.0` to local
+  ```
+  kcl mod pull unique-ingress-host-and-path:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

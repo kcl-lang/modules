@@ -1,0 +1,25 @@
+version: 0.1.0
+name: spread-pods-across-topology
+displayName: spread-pods-across-topology
+createdAt: "2023-12-04T11:12:39Z"
+description: '`spread-pods-across-topology` is a KCL mutation package'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `spread-pods-across-topology` with tag `0.1.0` as dependency
+  ```
+  kcl mod add spread-pods-across-topology:0.1.0
+  ```
+
+  #### Pull `spread-pods-across-topology` with tag `0.1.0` to local
+  ```
+  kcl mod pull spread-pods-across-topology:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

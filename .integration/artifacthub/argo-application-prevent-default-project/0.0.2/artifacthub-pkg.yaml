@@ -1,0 +1,25 @@
+version: 0.0.2
+name: argo-application-prevent-default-project
+displayName: argo-application-prevent-default-project
+createdAt: "2023-12-04T11:12:46Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `argo-application-prevent-default-project` with tag `0.0.2` as dependency
+  ```
+  kcl mod add argo-application-prevent-default-project:0.0.2
+  ```
+
+  #### Pull `argo-application-prevent-default-project` with tag `0.0.2` to local
+  ```
+  kcl mod pull argo-application-prevent-default-project:0.0.2
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

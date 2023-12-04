@@ -1,0 +1,25 @@
+version: 0.1.0
+name: scale-deployment-zero
+displayName: scale-deployment-zero
+createdAt: "2023-12-04T11:12:37Z"
+description: '`scale-deployment-zero` is a KCL mutation package'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `scale-deployment-zero` with tag `0.1.0` as dependency
+  ```
+  kcl mod add scale-deployment-zero:0.1.0
+  ```
+
+  #### Pull `scale-deployment-zero` with tag `0.1.0` to local
+  ```
+  kcl mod pull scale-deployment-zero:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

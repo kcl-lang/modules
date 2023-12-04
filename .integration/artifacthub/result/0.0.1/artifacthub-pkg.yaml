@@ -1,0 +1,25 @@
+version: 0.0.1
+name: result
+displayName: result
+createdAt: "2023-12-04T11:12:35Z"
+description: '`result` is a KCL error handling library'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `result` with tag `0.0.1` as dependency
+  ```
+  kcl mod add result:0.0.1
+  ```
+
+  #### Pull `result` with tag `0.0.1` to local
+  ```
+  kcl mod pull result:0.0.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

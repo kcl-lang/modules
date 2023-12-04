@@ -1,0 +1,25 @@
+version: 0.1.0
+name: topology-spread-constraints
+displayName: topology-spread-constraints
+createdAt: "2023-12-04T11:12:40Z"
+description: '`topology-spread-constraints` is a kcl validation package'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `topology-spread-constraints` with tag `0.1.0` as dependency
+  ```
+  kcl mod add topology-spread-constraints:0.1.0
+  ```
+
+  #### Pull `topology-spread-constraints` with tag `0.1.0` to local
+  ```
+  kcl mod pull topology-spread-constraints:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
