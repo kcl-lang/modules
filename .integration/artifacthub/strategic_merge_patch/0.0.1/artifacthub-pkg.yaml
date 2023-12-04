@@ -1,0 +1,26 @@
+version: 0.0.1
+name: strategic_merge_patch
+displayName: strategic_merge_patch
+createdAt: "2023-12-04T15:15:27Z"
+description: '`strategic_merge_patch` is a module for applying Kubernetes strategic
+  merge patches for KCL values.'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `strategic_merge_patch` with tag `0.0.1` as dependency
+  ```
+  kcl mod add strategic_merge_patch:0.0.1
+  ```
+
+  #### Pull `strategic_merge_patch` with tag `0.0.1` to local
+  ```
+  kcl mod pull strategic_merge_patch:0.0.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
