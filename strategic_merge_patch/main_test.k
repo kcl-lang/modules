@@ -1,22 +1,6 @@
-## Introduction
+import yaml
 
-`strategic_merge_patch` is a module for applying Kubernetes strategic merge patches for KCL values. Notice this library is WIP.
-
-+ [x] Kubernetes Extension Merge Strategic Definition.
-+ [x] `strategic_merge_patch.merge` function impl.
-+ [ ] Directives: `$retainKeys`, "$patch", `$deleteFromPrimitiveList/<keyOfPrimitiveList>: [a primitive list]`, `# $setElementOrder/<keyOfList>: [a list]`, etc.
-
-## How to Use
-
-+ Add the dependency
-
-```shell
-kcl mod add strategic_merge_patch
-```
-
-+ Write the code
-
-```python
+test_merge = lambda {
     original = {
         "metadata": {
             "name": "my-deployment"
@@ -27,12 +11,12 @@ kcl mod add strategic_merge_patch
             "template": {
                 "spec": {"containers": [
                     {
-                        "name" = "my-container-1"
-                        "image" = "my-image-1"
+                        "name": "my-container-1"
+                        "image": "my-image-1"
                     }
                     {
-                        "name" = "my-container-2"
-                        "image" = "my-image-2"
+                        "name": "my-container-2"
+                        "image": "my-image-2"
                     }
                 ]}
             }
@@ -47,7 +31,7 @@ kcl mod add strategic_merge_patch
             "template": {
                 "spec": {"containers": [
                     {
-                        "name" = "my-container-1"
+                        "name": "my-container-1"
                         "image" = "my-new-image-1"
                     }
                     {
@@ -78,9 +62,4 @@ spec:
 """)
     got = merge(original, patch)
     assert str(got) == str(expected), "expected ${expected}, got ${got}"
-```
-
-## Resource
-
-+ The code source and documents are [here](https://github.com/kcl-lang/artifacthub/tree/main/strategic_merge_patch)
-+ [Strategic Merge Patch Documents](https://github.com/kubernetes/community/blob/master/contributors/devel/sig-api-machinery/strategic-merge-patch.md)
+}
