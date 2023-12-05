@@ -1,0 +1,25 @@
+version: 0.20.0
+name: crossplane-provider-azure
+displayName: crossplane-provider-azure
+createdAt: "2023-12-05T09:34:27Z"
+description: '`crossplane-provider-azure` is the crossplane-provider-azure spec definition'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `crossplane-provider-azure` with tag `0.20.0` as dependency
+  ```
+  kcl mod add crossplane-provider-azure:0.20.0
+  ```
+
+  #### Pull `crossplane-provider-azure` with tag `0.20.0` to local
+  ```
+  kcl mod pull crossplane-provider-azure:0.20.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

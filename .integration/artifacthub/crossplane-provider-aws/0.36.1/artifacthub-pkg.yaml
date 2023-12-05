@@ -1,0 +1,25 @@
+version: 0.36.1
+name: crossplane-provider-aws
+displayName: crossplane-provider-aws
+createdAt: "2023-12-05T09:34:25Z"
+description: '`crossplane-provider-aws` is the crossplane-provider-aws spec definition'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `crossplane-provider-aws` with tag `0.36.1` as dependency
+  ```
+  kcl mod add crossplane-provider-aws:0.36.1
+  ```
+
+  #### Pull `crossplane-provider-aws` with tag `0.36.1` to local
+  ```
+  kcl mod pull crossplane-provider-aws:0.36.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

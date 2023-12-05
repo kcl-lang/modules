@@ -1,0 +1,25 @@
+version: 0.7.0
+name: crossplane-provider-sql
+displayName: crossplane-provider-sql
+createdAt: "2023-12-05T09:34:33Z"
+description: '`crossplane-provider-sql` is the crossplane-provider-sql spec definition'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `crossplane-provider-sql` with tag `0.7.0` as dependency
+  ```
+  kcl mod add crossplane-provider-sql:0.7.0
+  ```
+
+  #### Pull `crossplane-provider-sql` with tag `0.7.0` to local
+  ```
+  kcl mod pull crossplane-provider-sql:0.7.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

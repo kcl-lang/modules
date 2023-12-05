@@ -1,0 +1,25 @@
+version: 0.22.0
+name: crossplane-provider-gcp
+displayName: crossplane-provider-gcp
+createdAt: "2023-12-05T09:34:29Z"
+description: '`crossplane-provider-gcp` is the crossplane-provider-gcp spec definition'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `crossplane-provider-gcp` with tag `0.22.0` as dependency
+  ```
+  kcl mod add crossplane-provider-gcp:0.22.0
+  ```
+
+  #### Pull `crossplane-provider-gcp` with tag `0.22.0` to local
+  ```
+  kcl mod pull crossplane-provider-gcp:0.22.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

@@ -1,0 +1,26 @@
+version: 0.10.0
+name: crossplane-provider-terraform
+displayName: crossplane-provider-terraform
+createdAt: "2023-12-05T09:34:34Z"
+description: '`crossplane-provider-terraform` is the crossplane-provider-terraform
+  spec definition'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `crossplane-provider-terraform` with tag `0.10.0` as dependency
+  ```
+  kcl mod add crossplane-provider-terraform:0.10.0
+  ```
+
+  #### Pull `crossplane-provider-terraform` with tag `0.10.0` to local
+  ```
+  kcl mod pull crossplane-provider-terraform:0.10.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

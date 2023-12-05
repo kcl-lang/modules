@@ -1,0 +1,25 @@
+version: 0.13.0
+name: crossplane-provider-helm
+displayName: crossplane-provider-helm
+createdAt: "2023-12-05T09:34:30Z"
+description: '`crossplane-provider-helm` is the crossplane-provider-helm spec definition'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `crossplane-provider-helm` with tag `0.13.0` as dependency
+  ```
+  kcl mod add crossplane-provider-helm:0.13.0
+  ```
+
+  #### Pull `crossplane-provider-helm` with tag `0.13.0` to local
+  ```
+  kcl mod pull crossplane-provider-helm:0.13.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
