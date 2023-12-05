@@ -66,5 +66,5 @@ jobs:
           git config --global user.email 'action@github.com'
 
           git add .
-          git commit -m "Update artifacthub-pkg.yaml"
+          git commit -m "chore: update artifacthub-pkg.yaml"
           git push
