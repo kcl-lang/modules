@@ -10,6 +10,18 @@ looper = lambda initial: any, elements: [any], func: (any, any) -> any -> any {
     _looper_n(elements, 0, func, initial)
 }
 
+_looper_n_with_param = lambda elements: [any], n: int, func: (any, any, any) -> any, initial: any, param: any -> any {
+    assert n >= 0
+    result = initial
+    if n < len(elements):
+        result = _looper_n_with_param(elements, n + 1, func, func(result, elements[n], param))
+    result
+}
+
+looper_with_param = lambda initial: any, elements: [any], func: (any, any, any) -> any, param: any -> any {
+    _looper_n_with_param(elements, 0, func, initial, param)
+}
+
 for_each = lambda elements: [any], func: (any) -> any {
     [func(i) for i in elements]
     Undefined
