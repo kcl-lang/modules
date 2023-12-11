@@ -1,0 +1,25 @@
+version: 0.1.0
+name: postgres-operator
+displayName: postgres-operator
+createdAt: "2023-12-11T11:23:31Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `postgres-operator` with tag `0.1.0` as dependency
+  ```
+  kcl mod add postgres-operator:0.1.0
+  ```
+
+  #### Pull `postgres-operator` with tag `0.1.0` to local
+  ```
+  kcl mod pull postgres-operator:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
