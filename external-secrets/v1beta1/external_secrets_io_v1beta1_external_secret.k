@@ -103,7 +103,7 @@ schema ExternalSecretsIoV1beta1ExternalSecretSpecDataFromItems0Extract:
         Used to define a decoding Strategy
     key : str, default is Undefined, required
         Key is the key used in the Provider, mandatory
-    metadataPolicy : str, default is Undefined, optional
+    metadataPolicy : str, default is "None", optional
         Policy for fetching tags/labels from provider secrets, possible options are Fetch, None. Defaults to None
     property : str, default is Undefined, optional
         Used to select a specific property of the Provider value (if a map), if supported
@@ -112,13 +112,13 @@ schema ExternalSecretsIoV1beta1ExternalSecretSpecDataFromItems0Extract:
     """
 
 
-    conversionStrategy?: str = "Default"
+    conversionStrategy?: "Default" | "Unicode" = "Default"
 
-    decodingStrategy?: str = "None"
+    decodingStrategy?: "Auto" | "Base64" | "Base64URL" | "None" = "None"
 
     key: str
 
-    metadataPolicy?: str
+    metadataPolicy?: "None" | "Fetch" = "None"
 
     property?: str
 
@@ -144,9 +144,9 @@ schema ExternalSecretsIoV1beta1ExternalSecretSpecDataFromItems0Find:
     """
 
 
-    conversionStrategy?: str = "Default"
+    conversionStrategy?: "Default" | "Unicode" = "Default"
 
-    decodingStrategy?: str = "None"
+    decodingStrategy?: "Auto" | "Base64" | "Base64URL" | "None" = "None"
 
     name?: ExternalSecretsIoV1beta1ExternalSecretSpecDataFromItems0FindName
 
@@ -177,10 +177,14 @@ schema ExternalSecretsIoV1beta1ExternalSecretSpecDataFromItems0RewriteItems0:
     ----------
     regexp : ExternalSecretsIoV1beta1ExternalSecretSpecDataFromItems0RewriteItems0Regexp, default is Undefined, optional
         regexp
+    transform : ExternalSecretsIoV1beta1ExternalSecretSpecDataFromItems0RewriteItems0Transform, default is Undefined, optional
+        transform
     """
 
 
     regexp?: ExternalSecretsIoV1beta1ExternalSecretSpecDataFromItems0RewriteItems0Regexp
+
+    transform?: ExternalSecretsIoV1beta1ExternalSecretSpecDataFromItems0RewriteItems0Transform
 
 
 schema ExternalSecretsIoV1beta1ExternalSecretSpecDataFromItems0RewriteItems0Regexp:
@@ -199,6 +203,20 @@ schema ExternalSecretsIoV1beta1ExternalSecretSpecDataFromItems0RewriteItems0Rege
     source: str
 
     target: str
+
+
+schema ExternalSecretsIoV1beta1ExternalSecretSpecDataFromItems0RewriteItems0Transform:
+    """
+    Used to apply string transformation on the secrets. The resulting key will be the output of the template applied by the operation.
+
+    Attributes
+    ----------
+    template : str, default is Undefined, required
+        Used to define the template to apply on the secret name. `.value ` will specify the secret name in the template.
+    """
+
+
+    template: str
 
 
 schema ExternalSecretsIoV1beta1ExternalSecretSpecDataFromItems0SourceRef:
@@ -221,7 +239,7 @@ schema ExternalSecretsIoV1beta1ExternalSecretSpecDataFromItems0SourceRef:
 
 schema ExternalSecretsIoV1beta1ExternalSecretSpecDataFromItems0SourceRefGeneratorRef:
     """
-    GeneratorRef points to a generator custom resource in
+    GeneratorRef points to a generator custom resource.
 
     Attributes
     ----------
@@ -293,7 +311,7 @@ schema ExternalSecretsIoV1beta1ExternalSecretSpecDataItems0RemoteRef:
         Used to define a decoding Strategy
     key : str, default is Undefined, required
         Key is the key used in the Provider, mandatory
-    metadataPolicy : str, default is Undefined, optional
+    metadataPolicy : str, default is "None", optional
         Policy for fetching tags/labels from provider secrets, possible options are Fetch, None. Defaults to None
     property : str, default is Undefined, optional
         Used to select a specific property of the Provider value (if a map), if supported
@@ -302,13 +320,13 @@ schema ExternalSecretsIoV1beta1ExternalSecretSpecDataItems0RemoteRef:
     """
 
 
-    conversionStrategy?: str = "Default"
+    conversionStrategy?: "Default" | "Unicode" = "Default"
 
-    decodingStrategy?: str = "None"
+    decodingStrategy?: "Auto" | "Base64" | "Base64URL" | "None" = "None"
 
     key: str
 
-    metadataPolicy?: str
+    metadataPolicy?: "None" | "Fetch" = "None"
 
     property?: str
 
@@ -335,7 +353,8 @@ schema ExternalSecretsIoV1beta1ExternalSecretSpecDataItems0SourceRef:
 
 schema ExternalSecretsIoV1beta1ExternalSecretSpecDataItems0SourceRefGeneratorRef:
     """
-    GeneratorRef points to a generator custom resource in
+    GeneratorRef points to a generator custom resource. 
+     Deprecated: The generatorRef is not implemented in .data[]. this will be removed with v1.
 
     Attributes
     ----------
@@ -430,7 +449,7 @@ schema ExternalSecretsIoV1beta1ExternalSecretSpecTargetTemplate:
     data : {str:str}, default is Undefined, optional
         data
     engineVersion : str, default is "v2", optional
-        engine version
+        EngineVersion specifies the template engine version that should be used to compile/execute the template specified in .data and .templateFrom[].
     mergePolicy : str, default is "Replace", optional
         merge policy
     metadata : ExternalSecretsIoV1beta1ExternalSecretSpecTargetTemplateMetadata, default is Undefined, optional
@@ -444,9 +463,9 @@ schema ExternalSecretsIoV1beta1ExternalSecretSpecTargetTemplate:
 
     data?: {str:str}
 
-    engineVersion?: str = "v2"
+    engineVersion?: "v1" | "v2" = "v2"
 
-    mergePolicy?: str = "Replace"
+    mergePolicy?: "Replace" | "Merge" = "Replace"
 
     metadata?: ExternalSecretsIoV1beta1ExternalSecretSpecTargetTemplateMetadata
 
@@ -496,7 +515,7 @@ schema ExternalSecretsIoV1beta1ExternalSecretSpecTargetTemplateTemplateFromItems
 
     secret?: ExternalSecretsIoV1beta1ExternalSecretSpecTargetTemplateTemplateFromItems0Secret
 
-    target?: str = "Data"
+    target?: "Data" | "Annotations" | "Labels" = "Data"
 
 
 schema ExternalSecretsIoV1beta1ExternalSecretSpecTargetTemplateTemplateFromItems0ConfigMap:
@@ -532,7 +551,7 @@ schema ExternalSecretsIoV1beta1ExternalSecretSpecTargetTemplateTemplateFromItems
 
     key: str
 
-    templateAs?: str = "Values"
+    templateAs?: "Values" | "KeysAndValues" = "Values"
 
 
 schema ExternalSecretsIoV1beta1ExternalSecretSpecTargetTemplateTemplateFromItems0Secret:
@@ -568,7 +587,7 @@ schema ExternalSecretsIoV1beta1ExternalSecretSpecTargetTemplateTemplateFromItems
 
     key: str
 
-    templateAs?: str = "Values"
+    templateAs?: "Values" | "KeysAndValues" = "Values"
 
 
 schema ExternalSecretsIoV1beta1ExternalSecretStatus:
@@ -577,6 +596,8 @@ schema ExternalSecretsIoV1beta1ExternalSecretStatus:
 
     Attributes
     ----------
+    binding : ExternalSecretsIoV1beta1ExternalSecretStatusBinding, default is Undefined, optional
+        binding
     conditions : [ExternalSecretsIoV1beta1ExternalSecretStatusConditionsItems0], default is Undefined, optional
         conditions
     refreshTime : str, default is Undefined, optional
@@ -586,11 +607,27 @@ schema ExternalSecretsIoV1beta1ExternalSecretStatus:
     """
 
 
+    binding?: ExternalSecretsIoV1beta1ExternalSecretStatusBinding
+
     conditions?: [ExternalSecretsIoV1beta1ExternalSecretStatusConditionsItems0]
 
     refreshTime?: str
 
     syncedResourceVersion?: str
+
+
+schema ExternalSecretsIoV1beta1ExternalSecretStatusBinding:
+    """
+    Binding represents a servicebinding.io Provisioned Service reference to the secret
+
+    Attributes
+    ----------
+    name : str, default is Undefined, optional
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+    """
+
+
+    name?: str
 
 
 schema ExternalSecretsIoV1beta1ExternalSecretStatusConditionsItems0:
