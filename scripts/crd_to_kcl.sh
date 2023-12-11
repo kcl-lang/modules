@@ -61,5 +61,6 @@ for version_dir in *; do
         kcl run ./$version_dir
     fi
 done
-
 echo "Files have been grouped and listed by version."
+kcl doc generate
+mv ./docs/*.md README.md
