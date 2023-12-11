@@ -1,6 +1,5 @@
 [package]
-name = "cloud-on-k8s"
-edition = "0.0.1"
+name = "secure-code-box"
 version = "0.1.0"
 
 [dependencies]
