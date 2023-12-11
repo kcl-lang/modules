@@ -131,3 +131,16 @@ description = "This is my module."
 
 **At the same time, you cannot upload the same version module multiple times.** Once the version number of your module has been used, you will not be able to use this version number again. The only way to upload this module again is to upgrade the version number.
 
+## Other Usages
+
+### Convert Kubernetes CRD to KCL Modules
+
+```shell
+./scripts/crd_to_kcl <github repo>
+```
+
+For example
+
+```shell
+./scripts/crd_to_kcl.sh github.com/kubernetes-sigs/cluster-api-provider-vsphere
+```
