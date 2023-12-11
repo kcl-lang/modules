@@ -82,7 +82,7 @@ schema ExternalSecretsIoV1alpha1ExternalSecretSpecDataFromItems0:
     """
 
 
-    conversionStrategy?: str = "Default"
+    conversionStrategy?: "Default" | "Unicode" = "Default"
 
     key: str
 
@@ -126,7 +126,7 @@ schema ExternalSecretsIoV1alpha1ExternalSecretSpecDataItems0RemoteRef:
     """
 
 
-    conversionStrategy?: str = "Default"
+    conversionStrategy?: "Default" | "Unicode" = "Default"
 
     key: str
 
@@ -170,7 +170,7 @@ schema ExternalSecretsIoV1alpha1ExternalSecretSpecTarget:
     """
 
 
-    creationPolicy?: str = "Owner"
+    creationPolicy?: "Owner" | "Merge" | "None" = "Owner"
 
     immutable?: bool
 
@@ -200,7 +200,7 @@ schema ExternalSecretsIoV1alpha1ExternalSecretSpecTargetTemplate:
 
     data?: {str:str}
 
-    engineVersion?: str = "v1"
+    engineVersion?: "v1" | "v2" = "v1"
 
     metadata?: ExternalSecretsIoV1alpha1ExternalSecretSpecTargetTemplateMetadata
 
@@ -315,6 +315,8 @@ schema ExternalSecretsIoV1alpha1ExternalSecretStatus:
 
     Attributes
     ----------
+    binding : ExternalSecretsIoV1alpha1ExternalSecretStatusBinding, default is Undefined, optional
+        binding
     conditions : [ExternalSecretsIoV1alpha1ExternalSecretStatusConditionsItems0], default is Undefined, optional
         conditions
     refreshTime : str, default is Undefined, optional
@@ -324,11 +326,27 @@ schema ExternalSecretsIoV1alpha1ExternalSecretStatus:
     """
 
 
+    binding?: ExternalSecretsIoV1alpha1ExternalSecretStatusBinding
+
     conditions?: [ExternalSecretsIoV1alpha1ExternalSecretStatusConditionsItems0]
 
     refreshTime?: str
 
     syncedResourceVersion?: str
+
+
+schema ExternalSecretsIoV1alpha1ExternalSecretStatusBinding:
+    """
+    Binding represents a servicebinding.io Provisioned Service reference to the secret
+
+    Attributes
+    ----------
+    name : str, default is Undefined, optional
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+    """
+
+
+    name?: str
 
 
 schema ExternalSecretsIoV1alpha1ExternalSecretStatusConditionsItems0:
