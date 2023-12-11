@@ -53,7 +53,6 @@ done
 cd -
 echo "Files have been grouped by version."
 rm -rf models
-rm -rf crds
 # Check KCL runs
 for version_dir in *; do
     if [ -d "$version_dir" ]; then
