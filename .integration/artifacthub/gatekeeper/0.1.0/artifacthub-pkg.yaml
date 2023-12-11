@@ -1,0 +1,25 @@
+version: 0.1.0
+name: gatekeeper
+displayName: gatekeeper
+createdAt: "2023-12-11T13:58:22Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `gatekeeper` with tag `0.1.0` as dependency
+  ```
+  kcl mod add gatekeeper:0.1.0
+  ```
+
+  #### Pull `gatekeeper` with tag `0.1.0` to local
+  ```
+  kcl mod pull gatekeeper:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

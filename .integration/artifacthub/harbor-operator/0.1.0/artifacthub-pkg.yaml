@@ -1,0 +1,25 @@
+version: 0.1.0
+name: harbor-operator
+displayName: harbor-operator
+createdAt: "2023-12-11T13:58:26Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `harbor-operator` with tag `0.1.0` as dependency
+  ```
+  kcl mod add harbor-operator:0.1.0
+  ```
+
+  #### Pull `harbor-operator` with tag `0.1.0` to local
+  ```
+  kcl mod pull harbor-operator:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

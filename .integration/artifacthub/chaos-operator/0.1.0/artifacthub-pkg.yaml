@@ -1,0 +1,25 @@
+version: 0.1.0
+name: chaos-operator
+displayName: chaos-operator
+createdAt: "2023-12-11T13:58:14Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `chaos-operator` with tag `0.1.0` as dependency
+  ```
+  kcl mod add chaos-operator:0.1.0
+  ```
+
+  #### Pull `chaos-operator` with tag `0.1.0` to local
+  ```
+  kcl mod pull chaos-operator:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

@@ -1,0 +1,25 @@
+version: 0.1.0
+name: cluster-operator
+displayName: cluster-operator
+createdAt: "2023-12-11T13:58:17Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `cluster-operator` with tag `0.1.0` as dependency
+  ```
+  kcl mod add cluster-operator:0.1.0
+  ```
+
+  #### Pull `cluster-operator` with tag `0.1.0` to local
+  ```
+  kcl mod pull cluster-operator:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

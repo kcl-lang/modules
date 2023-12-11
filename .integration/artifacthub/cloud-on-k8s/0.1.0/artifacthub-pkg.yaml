@@ -1,0 +1,25 @@
+version: 0.1.0
+name: cloud-on-k8s
+displayName: cloud-on-k8s
+createdAt: "2023-12-11T13:58:15Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `cloud-on-k8s` with tag `0.1.0` as dependency
+  ```
+  kcl mod add cloud-on-k8s:0.1.0
+  ```
+
+  #### Pull `cloud-on-k8s` with tag `0.1.0` to local
+  ```
+  kcl mod pull cloud-on-k8s:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

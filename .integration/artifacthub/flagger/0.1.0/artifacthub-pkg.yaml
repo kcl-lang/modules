@@ -1,0 +1,25 @@
+version: 0.1.0
+name: flagger
+displayName: flagger
+createdAt: "2023-12-11T13:58:21Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `flagger` with tag `0.1.0` as dependency
+  ```
+  kcl mod add flagger:0.1.0
+  ```
+
+  #### Pull `flagger` with tag `0.1.0` to local
+  ```
+  kcl mod pull flagger:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
