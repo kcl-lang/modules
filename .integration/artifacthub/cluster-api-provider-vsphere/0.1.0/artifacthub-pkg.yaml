@@ -1,0 +1,25 @@
+version: 0.1.0
+name: cluster-api-provider-vsphere
+displayName: cluster-api-provider-vsphere
+createdAt: "2023-12-11T09:34:06Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `cluster-api-provider-vsphere` with tag `0.1.0` as dependency
+  ```
+  kcl mod add cluster-api-provider-vsphere:0.1.0
+  ```
+
+  #### Pull `cluster-api-provider-vsphere` with tag `0.1.0` to local
+  ```
+  kcl mod pull cluster-api-provider-vsphere:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
