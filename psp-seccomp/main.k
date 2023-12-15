@@ -42,6 +42,21 @@ is_exempt = lambda image: str -> bool {
     result
 }
 
+get_allowed_profiles = lambda -> [str] {
+    # Plattern the profile list
+    sum([lambda profile: str -> [str] {
+        result = [profile]
+        if not profile.lower().startswith("localhost"):
+            result = naming_translation[profile]
+        elif profile == "Localhost":
+            files = allowedLocalhostFiles or []
+            result = ["${p}/${file}" for file in files for p in naming_translation[profile]]
+        elif profile.startswith("localhost"):
+            result = naming_translation.localhost
+        result
+    }(profile) for profile in allowedProfiles], [])
+}
+
 allowed_profiles = get_allowed_profiles()
 
 violation = lambda item: {str:}, container: {str:} {
@@ -54,7 +69,7 @@ violation = lambda item: {str:}, container: {str:} {
 
 get_message = lambda profile: str, file: str, name: str, location: str, allowed_profiles: [str] -> str {
     message = "Seccomp profile '{}' is not allowed for container '{}'. Found at: {}. Allowed profiles: {}".format(profile, name, location, allowed_profiles) \
-    if profile == "Localhost" else "Seccomp profile '{}' with file '{}' is not allowed for container '{}'. Found at: {}. Allowed profiles: {}".format(profile, file, name, location, allowed_profile)
+    if profile == "Localhost" else "Seccomp profile '{}' with file '{}' is not allowed for container '{}'. Found at: {}. Allowed profiles: {}".format(profile, file, name, location, allowed_profiles)
 }
 
 allowed_profile = lambda profile: str, file: str, allowed: [str] -> bool {
@@ -90,21 +105,6 @@ allowed_profile = lambda profile: str, file: str, allowed: [str] -> bool {
 # Localhost files from annotation scheme
 get_annotation_localhost_files = lambda -> [str] {
     [p.removeprefix("localhost/") for p in allowedProfiles]
-}
-
-get_allowed_profiles = lambda -> [str] {
-    # Plattern the profile list
-    sum([lambda profile: str -> [str] {
-        result = [profile]
-        if not profile.lower().startswith("localhost"):
-            result = naming_translation[profile]
-        elif profile == "Localhost":
-            files = allowedLocalhostFiles or []
-            result = ["${p}/${file}" for file in files for p in naming_translation[profile]]
-        elif profile.startswith("localhost"):
-            result = naming_translation.localhost
-        result
-    }(profile) for profile in allowedProfiles], [])
 }
 
 # Container profile missing
@@ -172,4 +172,4 @@ validate = lambda item: {str:} {
     item
 }
 # Validate All resource
-items = [validate(i) for i in option("items")]
+items = [validate(i) for i in option("items") or []]
