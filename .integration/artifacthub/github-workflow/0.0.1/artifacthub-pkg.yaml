@@ -1,0 +1,25 @@
+version: 0.0.1
+name: github-workflow
+displayName: github-workflow
+createdAt: "2023-12-18T09:54:22Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `github-workflow` with tag `0.0.1` as dependency
+  ```
+  kcl mod add github-workflow:0.0.1
+  ```
+
+  #### Pull `github-workflow` with tag `0.0.1` to local
+  ```
+  kcl mod pull github-workflow:0.0.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
