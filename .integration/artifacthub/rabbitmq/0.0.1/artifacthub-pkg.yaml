@@ -1,0 +1,25 @@
+version: 0.0.1
+name: rabbitmq
+displayName: rabbitmq
+createdAt: "2023-12-18T14:03:55Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `rabbitmq` with tag `0.0.1` as dependency
+  ```
+  kcl mod add rabbitmq:0.0.1
+  ```
+
+  #### Pull `rabbitmq` with tag `0.0.1` to local
+  ```
+  kcl mod pull rabbitmq:0.0.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

@@ -1,0 +1,25 @@
+version: 0.0.1
+name: datadog-operator
+displayName: datadog-operator
+createdAt: "2023-12-18T14:03:50Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `datadog-operator` with tag `0.0.1` as dependency
+  ```
+  kcl mod add datadog-operator:0.0.1
+  ```
+
+  #### Pull `datadog-operator` with tag `0.0.1` to local
+  ```
+  kcl mod pull datadog-operator:0.0.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

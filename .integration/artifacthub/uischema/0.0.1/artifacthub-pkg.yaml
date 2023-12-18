@@ -1,0 +1,25 @@
+version: 0.0.1
+name: uischema
+displayName: uischema
+createdAt: "2023-12-18T14:03:57Z"
+description: '`uischema` is a module for the UI JSON schema definition using KCL'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `uischema` with tag `0.0.1` as dependency
+  ```
+  kcl mod add uischema:0.0.1
+  ```
+
+  #### Pull `uischema` with tag `0.0.1` to local
+  ```
+  kcl mod pull uischema:0.0.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

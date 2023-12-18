@@ -1,0 +1,25 @@
+version: 0.0.1
+name: rabbitmq-messaging-topology-operator
+displayName: rabbitmq-messaging-topology-operator
+createdAt: "2023-12-18T14:03:54Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `rabbitmq-messaging-topology-operator` with tag `0.0.1` as dependency
+  ```
+  kcl mod add rabbitmq-messaging-topology-operator:0.0.1
+  ```
+
+  #### Pull `rabbitmq-messaging-topology-operator` with tag `0.0.1` to local
+  ```
+  kcl mod pull rabbitmq-messaging-topology-operator:0.0.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
