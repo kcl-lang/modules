@@ -1,0 +1,25 @@
+version: 0.0.1
+name: aws-ack-lambda-controller
+displayName: aws-ack-lambda-controller
+createdAt: "2023-12-19T04:04:12Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `aws-ack-lambda-controller` with tag `0.0.1` as dependency
+  ```
+  kcl mod add aws-ack-lambda-controller:0.0.1
+  ```
+
+  #### Pull `aws-ack-lambda-controller` with tag `0.0.1` to local
+  ```
+  kcl mod pull aws-ack-lambda-controller:0.0.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

@@ -1,0 +1,25 @@
+version: 0.0.1
+name: aws-ack-dynamodb-controller
+displayName: aws-ack-dynamodb-controller
+createdAt: "2023-12-19T04:03:55Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `aws-ack-dynamodb-controller` with tag `0.0.1` as dependency
+  ```
+  kcl mod add aws-ack-dynamodb-controller:0.0.1
+  ```
+
+  #### Pull `aws-ack-dynamodb-controller` with tag `0.0.1` to local
+  ```
+  kcl mod pull aws-ack-dynamodb-controller:0.0.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

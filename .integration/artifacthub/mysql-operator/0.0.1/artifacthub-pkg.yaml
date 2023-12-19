@@ -1,0 +1,25 @@
+version: 0.0.1
+name: mysql-operator
+displayName: mysql-operator
+createdAt: "2023-12-19T04:04:46Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `mysql-operator` with tag `0.0.1` as dependency
+  ```
+  kcl mod add mysql-operator:0.0.1
+  ```
+
+  #### Pull `mysql-operator` with tag `0.0.1` to local
+  ```
+  kcl mod pull mysql-operator:0.0.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

@@ -1,0 +1,25 @@
+version: 0.0.1
+name: aws-ack-ecr-controller
+displayName: aws-ack-ecr-controller
+createdAt: "2023-12-19T04:04:01Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `aws-ack-ecr-controller` with tag `0.0.1` as dependency
+  ```
+  kcl mod add aws-ack-ecr-controller:0.0.1
+  ```
+
+  #### Pull `aws-ack-ecr-controller` with tag `0.0.1` to local
+  ```
+  kcl mod pull aws-ack-ecr-controller:0.0.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

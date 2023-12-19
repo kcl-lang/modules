@@ -1,0 +1,25 @@
+version: 0.0.1
+name: mongodb-kubernetes-operator
+displayName: mongodb-kubernetes-operator
+createdAt: "2023-12-19T04:04:44Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `mongodb-kubernetes-operator` with tag `0.0.1` as dependency
+  ```
+  kcl mod add mongodb-kubernetes-operator:0.0.1
+  ```
+
+  #### Pull `mongodb-kubernetes-operator` with tag `0.0.1` to local
+  ```
+  kcl mod pull mongodb-kubernetes-operator:0.0.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
