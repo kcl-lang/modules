@@ -1,0 +1,1625 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  name: addons.eks.services.k8s.aws
+spec:
+  group: eks.services.k8s.aws
+  names:
+    kind: Addon
+    listKind: AddonList
+    plural: addons
+    singular: addon
+  scope: Namespaced
+  versions:
+  - name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        description: Addon is the Schema for the Addons API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: "AddonSpec defines the desired state of Addon. \n An Amazon
+              EKS add-on. For more information, see Amazon EKS add-ons (https://docs.aws.amazon.com/eks/latest/userguide/eks-add-ons.html)
+              in the Amazon EKS User Guide."
+            properties:
+              addonVersion:
+                description: The version of the add-on. The version must match one
+                  of the versions returned by DescribeAddonVersions (https://docs.aws.amazon.com/eks/latest/APIReference/API_DescribeAddonVersions.html).
+                type: string
+              clientRequestToken:
+                description: A unique, case-sensitive identifier that you provide
+                  to ensure the idempotency of the request.
+                type: string
+              clusterName:
+                description: The name of the cluster to create the add-on for.
+                type: string
+              clusterRef:
+                description: "AWSResourceReferenceWrapper provides a wrapper around
+                  *AWSResourceReference type to provide more user friendly syntax
+                  for references using 'from' field Ex: APIIDRef: \n from: name: my-api"
+                properties:
+                  from:
+                    description: AWSResourceReference provides all the values necessary
+                      to reference another k8s resource for finding the identifier(Id/ARN/Name)
+                    properties:
+                      name:
+                        type: string
+                    type: object
+                type: object
+              configurationValues:
+                description: The set of configuration values for the add-on that's
+                  created. The values that you provide are validated against the schema
+                  in DescribeAddonConfiguration (https://docs.aws.amazon.com/eks/latest/APIReference/API_DescribeAddonConfiguration.html).
+                type: string
+              name:
+                description: The name of the add-on. The name must match one of the
+                  names that DescribeAddonVersions (https://docs.aws.amazon.com/eks/latest/APIReference/API_DescribeAddonVersions.html)
+                  returns.
+                type: string
+              resolveConflicts:
+                description: "How to resolve field value conflicts for an Amazon EKS
+                  add-on. Conflicts are handled based on the value you choose: \n
+                  - None – If the self-managed version of the add-on is installed
+                  on your cluster, Amazon EKS doesn't change the value. Creation of
+                  the add-on might fail. \n - Overwrite – If the self-managed version
+                  of the add-on is installed on your cluster and the Amazon EKS default
+                  value is different than the existing value, Amazon EKS changes the
+                  value to the Amazon EKS default value. \n - Preserve – Not supported.
+                  You can set this value when updating an add-on though. For more
+                  information, see UpdateAddon (https://docs.aws.amazon.com/eks/latest/APIReference/API_UpdateAddon.html).
+                  \n If you don't currently have the self-managed version of the add-on
+                  installed on your cluster, the Amazon EKS add-on is installed. Amazon
+                  EKS sets all values to default values, regardless of the option
+                  that you specify."
+                type: string
+              serviceAccountRoleARN:
+                description: "The Amazon Resource Name (ARN) of an existing IAM role
+                  to bind to the add-on's service account. The role must be assigned
+                  the IAM permissions required by the add-on. If you don't specify
+                  an existing IAM role, then the add-on uses the permissions assigned
+                  to the node IAM role. For more information, see Amazon EKS node
+                  IAM role (https://docs.aws.amazon.com/eks/latest/userguide/create-node-role.html)
+                  in the Amazon EKS User Guide. \n To specify an existing IAM role,
+                  you must have an IAM OpenID Connect (OIDC) provider created for
+                  your cluster. For more information, see Enabling IAM roles for service
+                  accounts on your cluster (https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html)
+                  in the Amazon EKS User Guide."
+                type: string
+              serviceAccountRoleRef:
+                description: "AWSResourceReferenceWrapper provides a wrapper around
+                  *AWSResourceReference type to provide more user friendly syntax
+                  for references using 'from' field Ex: APIIDRef: \n from: name: my-api"
+                properties:
+                  from:
+                    description: AWSResourceReference provides all the values necessary
+                      to reference another k8s resource for finding the identifier(Id/ARN/Name)
+                    properties:
+                      name:
+                        type: string
+                    type: object
+                type: object
+              tags:
+                additionalProperties:
+                  type: string
+                description: The metadata to apply to the cluster to assist with categorization
+                  and organization. Each tag consists of a key and an optional value.
+                  You define both.
+                type: object
+            required:
+            - name
+            type: object
+          status:
+            description: AddonStatus defines the observed state of Addon
+            properties:
+              ackResourceMetadata:
+                description: All CRs managed by ACK have a common `Status.ACKResourceMetadata`
+                  member that is used to contain resource sync state, account ownership,
+                  constructed ARN for the resource
+                properties:
+                  arn:
+                    description: 'ARN is the Amazon Resource Name for the resource.
+                      This is a globally-unique identifier and is set only by the
+                      ACK service controller once the controller has orchestrated
+                      the creation of the resource OR when it has verified that an
+                      "adopted" resource (a resource where the ARN annotation was
+                      set by the Kubernetes user on the CR) exists and matches the
+                      supplied CR''s Spec field values. TODO(vijat@): Find a better
+                      strategy for resources that do not have ARN in CreateOutputResponse
+                      https://github.com/aws/aws-controllers-k8s/issues/270'
+                    type: string
+                  ownerAccountID:
+                    description: OwnerAccountID is the AWS Account ID of the account
+                      that owns the backend AWS service API resource.
+                    type: string
+                  region:
+                    description: Region is the AWS region in which the resource exists
+                      or will exist.
+                    type: string
+                required:
+                - ownerAccountID
+                - region
+                type: object
+              conditions:
+                description: All CRS managed by ACK have a common `Status.Conditions`
+                  member that contains a collection of `ackv1alpha1.Condition` objects
+                  that describe the various terminal states of the CR and its backend
+                  AWS service API resource
+                items:
+                  description: Condition is the common struct used by all CRDs managed
+                    by ACK service controllers to indicate terminal states  of the
+                    CR and its backend AWS service API resource
+                  properties:
+                    lastTransitionTime:
+                      description: Last time the condition transitioned from one status
+                        to another.
+                      format: date-time
+                      type: string
+                    message:
+                      description: A human readable message indicating details about
+                        the transition.
+                      type: string
+                    reason:
+                      description: The reason for the condition's last transition.
+                      type: string
+                    status:
+                      description: Status of the condition, one of True, False, Unknown.
+                      type: string
+                    type:
+                      description: Type is the type of the Condition
+                      type: string
+                  required:
+                  - status
+                  - type
+                  type: object
+                type: array
+              createdAt:
+                description: The date and time that the add-on was created.
+                format: date-time
+                type: string
+              health:
+                description: An object that represents the health of the add-on.
+                properties:
+                  issues:
+                    items:
+                      description: An issue related to an add-on.
+                      properties:
+                        code:
+                          type: string
+                        message:
+                          type: string
+                        resourceIDs:
+                          items:
+                            type: string
+                          type: array
+                      type: object
+                    type: array
+                type: object
+              marketplaceInformation:
+                description: Information about an Amazon EKS add-on from the Amazon
+                  Web Services Marketplace.
+                properties:
+                  productID:
+                    type: string
+                  productURL:
+                    type: string
+                type: object
+              modifiedAt:
+                description: The date and time that the add-on was last modified.
+                format: date-time
+                type: string
+              owner:
+                description: The owner of the add-on.
+                type: string
+              publisher:
+                description: The publisher of the add-on.
+                type: string
+              status:
+                description: The status of the add-on.
+                type: string
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: null
+  storedVersions:
+  - v1alpha1
+
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  name: clusters.eks.services.k8s.aws
+spec:
+  group: eks.services.k8s.aws
+  names:
+    kind: Cluster
+    listKind: ClusterList
+    plural: clusters
+    singular: cluster
+  scope: Namespaced
+  versions:
+  - name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        description: Cluster is the Schema for the Clusters API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: "ClusterSpec defines the desired state of Cluster. \n An
+              object representing an Amazon EKS cluster."
+            properties:
+              clientRequestToken:
+                description: Unique, case-sensitive identifier that you provide to
+                  ensure the idempotency of the request.
+                type: string
+              encryptionConfig:
+                description: The encryption configuration for the cluster.
+                items:
+                  description: The encryption configuration for the cluster.
+                  properties:
+                    provider:
+                      description: Identifies the Key Management Service (KMS) key
+                        used to encrypt the secrets.
+                      properties:
+                        keyARN:
+                          type: string
+                      type: object
+                    resources:
+                      items:
+                        type: string
+                      type: array
+                  type: object
+                type: array
+              kubernetesNetworkConfig:
+                description: The Kubernetes network configuration for the cluster.
+                properties:
+                  ipFamily:
+                    type: string
+                  serviceIPv4CIDR:
+                    type: string
+                type: object
+              logging:
+                description: "Enable or disable exporting the Kubernetes control plane
+                  logs for your cluster to CloudWatch Logs. By default, cluster control
+                  plane logs aren't exported to CloudWatch Logs. For more information,
+                  see Amazon EKS Cluster control plane logs (https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html)
+                  in the Amazon EKS User Guide . \n CloudWatch Logs ingestion, archive
+                  storage, and data scanning rates apply to exported control plane
+                  logs. For more information, see CloudWatch Pricing (http://aws.amazon.com/cloudwatch/pricing/)."
+                properties:
+                  clusterLogging:
+                    items:
+                      description: An object representing the enabled or disabled
+                        Kubernetes control plane logs for your cluster.
+                      properties:
+                        enabled:
+                          type: boolean
+                        types:
+                          items:
+                            type: string
+                          type: array
+                      type: object
+                    type: array
+                type: object
+              name:
+                description: The unique name to give to your cluster.
+                type: string
+              outpostConfig:
+                description: An object representing the configuration of your local
+                  Amazon EKS cluster on an Amazon Web Services Outpost. Before creating
+                  a local cluster on an Outpost, review Local clusters for Amazon
+                  EKS on Amazon Web Services Outposts (https://docs.aws.amazon.com/eks/latest/userguide/eks-outposts-local-cluster-overview.html)
+                  in the Amazon EKS User Guide. This object isn't available for creating
+                  Amazon EKS clusters on the Amazon Web Services cloud.
+                properties:
+                  controlPlaneInstanceType:
+                    type: string
+                  controlPlanePlacement:
+                    description: The placement configuration for all the control plane
+                      instances of your local Amazon EKS cluster on an Amazon Web
+                      Services Outpost. For more information, see Capacity considerations
+                      (https://docs.aws.amazon.com/eks/latest/userguide/eks-outposts-capacity-considerations.html)
+                      in the Amazon EKS User Guide
+                    properties:
+                      groupName:
+                        type: string
+                    type: object
+                  outpostARNs:
+                    items:
+                      type: string
+                    type: array
+                type: object
+              resourcesVPCConfig:
+                description: The VPC configuration that's used by the cluster control
+                  plane. Amazon EKS VPC resources have specific requirements to work
+                  properly with Kubernetes. For more information, see Cluster VPC
+                  Considerations (https://docs.aws.amazon.com/eks/latest/userguide/network_reqs.html)
+                  and Cluster Security Group Considerations (https://docs.aws.amazon.com/eks/latest/userguide/sec-group-reqs.html)
+                  in the Amazon EKS User Guide. You must specify at least two subnets.
+                  You can specify up to five security groups. However, we recommend
+                  that you use a dedicated security group for your cluster control
+                  plane.
+                properties:
+                  endpointPrivateAccess:
+                    type: boolean
+                  endpointPublicAccess:
+                    type: boolean
+                  publicAccessCIDRs:
+                    items:
+                      type: string
+                    type: array
+                  securityGroupIDs:
+                    items:
+                      type: string
+                    type: array
+                  securityGroupRefs:
+                    description: Reference field for SecurityGroupIDs
+                    items:
+                      description: "AWSResourceReferenceWrapper provides a wrapper
+                        around *AWSResourceReference type to provide more user friendly
+                        syntax for references using 'from' field Ex: APIIDRef: \n
+                        from: name: my-api"
+                      properties:
+                        from:
+                          description: AWSResourceReference provides all the values
+                            necessary to reference another k8s resource for finding
+                            the identifier(Id/ARN/Name)
+                          properties:
+                            name:
+                              type: string
+                          type: object
+                      type: object
+                    type: array
+                  subnetIDs:
+                    items:
+                      type: string
+                    type: array
+                  subnetRefs:
+                    description: Reference field for SubnetIDs
+                    items:
+                      description: "AWSResourceReferenceWrapper provides a wrapper
+                        around *AWSResourceReference type to provide more user friendly
+                        syntax for references using 'from' field Ex: APIIDRef: \n
+                        from: name: my-api"
+                      properties:
+                        from:
+                          description: AWSResourceReference provides all the values
+                            necessary to reference another k8s resource for finding
+                            the identifier(Id/ARN/Name)
+                          properties:
+                            name:
+                              type: string
+                          type: object
+                      type: object
+                    type: array
+                type: object
+              roleARN:
+                description: The Amazon Resource Name (ARN) of the IAM role that provides
+                  permissions for the Kubernetes control plane to make calls to Amazon
+                  Web Services API operations on your behalf. For more information,
+                  see Amazon EKS Service IAM Role (https://docs.aws.amazon.com/eks/latest/userguide/service_IAM_role.html)
+                  in the Amazon EKS User Guide .
+                type: string
+              roleRef:
+                description: "AWSResourceReferenceWrapper provides a wrapper around
+                  *AWSResourceReference type to provide more user friendly syntax
+                  for references using 'from' field Ex: APIIDRef: \n from: name: my-api"
+                properties:
+                  from:
+                    description: AWSResourceReference provides all the values necessary
+                      to reference another k8s resource for finding the identifier(Id/ARN/Name)
+                    properties:
+                      name:
+                        type: string
+                    type: object
+                type: object
+              tags:
+                additionalProperties:
+                  type: string
+                description: The metadata to apply to the cluster to assist with categorization
+                  and organization. Each tag consists of a key and an optional value.
+                  You define both.
+                type: object
+              version:
+                description: "The desired Kubernetes version for your cluster. If
+                  you don't specify a value here, the default version available in
+                  Amazon EKS is used. \n The default version might not be the latest
+                  version available."
+                type: string
+            required:
+            - name
+            - resourcesVPCConfig
+            type: object
+          status:
+            description: ClusterStatus defines the observed state of Cluster
+            properties:
+              ackResourceMetadata:
+                description: All CRs managed by ACK have a common `Status.ACKResourceMetadata`
+                  member that is used to contain resource sync state, account ownership,
+                  constructed ARN for the resource
+                properties:
+                  arn:
+                    description: 'ARN is the Amazon Resource Name for the resource.
+                      This is a globally-unique identifier and is set only by the
+                      ACK service controller once the controller has orchestrated
+                      the creation of the resource OR when it has verified that an
+                      "adopted" resource (a resource where the ARN annotation was
+                      set by the Kubernetes user on the CR) exists and matches the
+                      supplied CR''s Spec field values. TODO(vijat@): Find a better
+                      strategy for resources that do not have ARN in CreateOutputResponse
+                      https://github.com/aws/aws-controllers-k8s/issues/270'
+                    type: string
+                  ownerAccountID:
+                    description: OwnerAccountID is the AWS Account ID of the account
+                      that owns the backend AWS service API resource.
+                    type: string
+                  region:
+                    description: Region is the AWS region in which the resource exists
+                      or will exist.
+                    type: string
+                required:
+                - ownerAccountID
+                - region
+                type: object
+              certificateAuthority:
+                description: The certificate-authority-data for your cluster.
+                properties:
+                  data:
+                    type: string
+                type: object
+              conditions:
+                description: All CRS managed by ACK have a common `Status.Conditions`
+                  member that contains a collection of `ackv1alpha1.Condition` objects
+                  that describe the various terminal states of the CR and its backend
+                  AWS service API resource
+                items:
+                  description: Condition is the common struct used by all CRDs managed
+                    by ACK service controllers to indicate terminal states  of the
+                    CR and its backend AWS service API resource
+                  properties:
+                    lastTransitionTime:
+                      description: Last time the condition transitioned from one status
+                        to another.
+                      format: date-time
+                      type: string
+                    message:
+                      description: A human readable message indicating details about
+                        the transition.
+                      type: string
+                    reason:
+                      description: The reason for the condition's last transition.
+                      type: string
+                    status:
+                      description: Status of the condition, one of True, False, Unknown.
+                      type: string
+                    type:
+                      description: Type is the type of the Condition
+                      type: string
+                  required:
+                  - status
+                  - type
+                  type: object
+                type: array
+              connectorConfig:
+                description: The configuration used to connect to a cluster for registration.
+                properties:
+                  activationCode:
+                    type: string
+                  activationExpiry:
+                    format: date-time
+                    type: string
+                  activationID:
+                    type: string
+                  provider:
+                    type: string
+                  roleARN:
+                    type: string
+                type: object
+              createdAt:
+                description: The Unix epoch timestamp in seconds for when the cluster
+                  was created.
+                format: date-time
+                type: string
+              endpoint:
+                description: The endpoint for your Kubernetes API server.
+                type: string
+              health:
+                description: An object representing the health of your local Amazon
+                  EKS cluster on an Amazon Web Services Outpost. This object isn't
+                  available for clusters on the Amazon Web Services cloud.
+                properties:
+                  issues:
+                    items:
+                      description: An issue with your local Amazon EKS cluster on
+                        an Amazon Web Services Outpost. You can't use this API with
+                        an Amazon EKS cluster on the Amazon Web Services cloud.
+                      properties:
+                        code:
+                          type: string
+                        message:
+                          type: string
+                        resourceIDs:
+                          items:
+                            type: string
+                          type: array
+                      type: object
+                    type: array
+                type: object
+              id:
+                description: The ID of your local Amazon EKS cluster on an Amazon
+                  Web Services Outpost. This property isn't available for an Amazon
+                  EKS cluster on the Amazon Web Services cloud.
+                type: string
+              identity:
+                description: The identity provider information for the cluster.
+                properties:
+                  oidc:
+                    description: An object representing the OpenID Connect (https://openid.net/connect/)
+                      (OIDC) identity provider information for the cluster.
+                    properties:
+                      issuer:
+                        type: string
+                    type: object
+                type: object
+              platformVersion:
+                description: The platform version of your Amazon EKS cluster. For
+                  more information, see Platform Versions (https://docs.aws.amazon.com/eks/latest/userguide/platform-versions.html)
+                  in the Amazon EKS User Guide .
+                type: string
+              status:
+                description: The current status of the cluster.
+                type: string
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: null
+  storedVersions:
+  - v1alpha1
+
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  name: fargateprofiles.eks.services.k8s.aws
+spec:
+  group: eks.services.k8s.aws
+  names:
+    kind: FargateProfile
+    listKind: FargateProfileList
+    plural: fargateprofiles
+    singular: fargateprofile
+  scope: Namespaced
+  versions:
+  - name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        description: FargateProfile is the Schema for the FargateProfiles API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: "FargateProfileSpec defines the desired state of FargateProfile.
+              \n An object representing an Fargate profile."
+            properties:
+              clientRequestToken:
+                description: Unique, case-sensitive identifier that you provide to
+                  ensure the idempotency of the request.
+                type: string
+              clusterName:
+                description: The name of the Amazon EKS cluster to apply the Fargate
+                  profile to.
+                type: string
+              clusterRef:
+                description: "AWSResourceReferenceWrapper provides a wrapper around
+                  *AWSResourceReference type to provide more user friendly syntax
+                  for references using 'from' field Ex: APIIDRef: \n from: name: my-api"
+                properties:
+                  from:
+                    description: AWSResourceReference provides all the values necessary
+                      to reference another k8s resource for finding the identifier(Id/ARN/Name)
+                    properties:
+                      name:
+                        type: string
+                    type: object
+                type: object
+              name:
+                description: The name of the Fargate profile.
+                type: string
+              podExecutionRoleARN:
+                description: The Amazon Resource Name (ARN) of the pod execution role
+                  to use for pods that match the selectors in the Fargate profile.
+                  The pod execution role allows Fargate infrastructure to register
+                  with your cluster as a node, and it provides read access to Amazon
+                  ECR image repositories. For more information, see Pod Execution
+                  Role (https://docs.aws.amazon.com/eks/latest/userguide/pod-execution-role.html)
+                  in the Amazon EKS User Guide.
+                type: string
+              podExecutionRoleRef:
+                description: "AWSResourceReferenceWrapper provides a wrapper around
+                  *AWSResourceReference type to provide more user friendly syntax
+                  for references using 'from' field Ex: APIIDRef: \n from: name: my-api"
+                properties:
+                  from:
+                    description: AWSResourceReference provides all the values necessary
+                      to reference another k8s resource for finding the identifier(Id/ARN/Name)
+                    properties:
+                      name:
+                        type: string
+                    type: object
+                type: object
+              selectors:
+                description: The selectors to match for pods to use this Fargate profile.
+                  Each selector must have an associated namespace. Optionally, you
+                  can also specify labels for a namespace. You may specify up to five
+                  selectors in a Fargate profile.
+                items:
+                  description: An object representing an Fargate profile selector.
+                  properties:
+                    labels:
+                      additionalProperties:
+                        type: string
+                      type: object
+                    namespace:
+                      type: string
+                  type: object
+                type: array
+              subnetRefs:
+                items:
+                  description: "AWSResourceReferenceWrapper provides a wrapper around
+                    *AWSResourceReference type to provide more user friendly syntax
+                    for references using 'from' field Ex: APIIDRef: \n from: name:
+                    my-api"
+                  properties:
+                    from:
+                      description: AWSResourceReference provides all the values necessary
+                        to reference another k8s resource for finding the identifier(Id/ARN/Name)
+                      properties:
+                        name:
+                          type: string
+                      type: object
+                  type: object
+                type: array
+              subnets:
+                description: The IDs of subnets to launch your pods into. At this
+                  time, pods running on Fargate are not assigned public IP addresses,
+                  so only private subnets (with no direct route to an Internet Gateway)
+                  are accepted for this parameter.
+                items:
+                  type: string
+                type: array
+              tags:
+                additionalProperties:
+                  type: string
+                description: The metadata to apply to the Fargate profile to assist
+                  with categorization and organization. Each tag consists of a key
+                  and an optional value. You define both. Fargate profile tags do
+                  not propagate to any other resources associated with the Fargate
+                  profile, such as the pods that are scheduled with it.
+                type: object
+            required:
+            - name
+            type: object
+          status:
+            description: FargateProfileStatus defines the observed state of FargateProfile
+            properties:
+              ackResourceMetadata:
+                description: All CRs managed by ACK have a common `Status.ACKResourceMetadata`
+                  member that is used to contain resource sync state, account ownership,
+                  constructed ARN for the resource
+                properties:
+                  arn:
+                    description: 'ARN is the Amazon Resource Name for the resource.
+                      This is a globally-unique identifier and is set only by the
+                      ACK service controller once the controller has orchestrated
+                      the creation of the resource OR when it has verified that an
+                      "adopted" resource (a resource where the ARN annotation was
+                      set by the Kubernetes user on the CR) exists and matches the
+                      supplied CR''s Spec field values. TODO(vijat@): Find a better
+                      strategy for resources that do not have ARN in CreateOutputResponse
+                      https://github.com/aws/aws-controllers-k8s/issues/270'
+                    type: string
+                  ownerAccountID:
+                    description: OwnerAccountID is the AWS Account ID of the account
+                      that owns the backend AWS service API resource.
+                    type: string
+                  region:
+                    description: Region is the AWS region in which the resource exists
+                      or will exist.
+                    type: string
+                required:
+                - ownerAccountID
+                - region
+                type: object
+              conditions:
+                description: All CRS managed by ACK have a common `Status.Conditions`
+                  member that contains a collection of `ackv1alpha1.Condition` objects
+                  that describe the various terminal states of the CR and its backend
+                  AWS service API resource
+                items:
+                  description: Condition is the common struct used by all CRDs managed
+                    by ACK service controllers to indicate terminal states  of the
+                    CR and its backend AWS service API resource
+                  properties:
+                    lastTransitionTime:
+                      description: Last time the condition transitioned from one status
+                        to another.
+                      format: date-time
+                      type: string
+                    message:
+                      description: A human readable message indicating details about
+                        the transition.
+                      type: string
+                    reason:
+                      description: The reason for the condition's last transition.
+                      type: string
+                    status:
+                      description: Status of the condition, one of True, False, Unknown.
+                      type: string
+                    type:
+                      description: Type is the type of the Condition
+                      type: string
+                  required:
+                  - status
+                  - type
+                  type: object
+                type: array
+              createdAt:
+                description: The Unix epoch timestamp in seconds for when the Fargate
+                  profile was created.
+                format: date-time
+                type: string
+              status:
+                description: The current status of the Fargate profile.
+                type: string
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: null
+  storedVersions:
+  - v1alpha1
+
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  name: nodegroups.eks.services.k8s.aws
+spec:
+  group: eks.services.k8s.aws
+  names:
+    kind: Nodegroup
+    listKind: NodegroupList
+    plural: nodegroups
+    singular: nodegroup
+  scope: Namespaced
+  versions:
+  - name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        description: Nodegroup is the Schema for the Nodegroups API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: "NodegroupSpec defines the desired state of Nodegroup. \n
+              An object representing an Amazon EKS managed node group."
+            properties:
+              amiType:
+                description: The AMI type for your node group. If you specify launchTemplate,
+                  and your launch template uses a custom AMI, then don't specify amiType,
+                  or the node group deployment will fail. If your launch template
+                  uses a Windows custom AMI, then add eks:kube-proxy-windows to your
+                  Windows nodes rolearn in the aws-auth ConfigMap. For more information
+                  about using launch templates with Amazon EKS, see Launch template
+                  support (https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
+                  in the Amazon EKS User Guide.
+                type: string
+              capacityType:
+                description: The capacity type for your node group.
+                type: string
+              clientRequestToken:
+                description: Unique, case-sensitive identifier that you provide to
+                  ensure the idempotency of the request.
+                type: string
+              clusterName:
+                description: The name of the cluster to create the node group in.
+                type: string
+              clusterRef:
+                description: "AWSResourceReferenceWrapper provides a wrapper around
+                  *AWSResourceReference type to provide more user friendly syntax
+                  for references using 'from' field Ex: APIIDRef: \n from: name: my-api"
+                properties:
+                  from:
+                    description: AWSResourceReference provides all the values necessary
+                      to reference another k8s resource for finding the identifier(Id/ARN/Name)
+                    properties:
+                      name:
+                        type: string
+                    type: object
+                type: object
+              diskSize:
+                description: The root device disk size (in GiB) for your node group
+                  instances. The default disk size is 20 GiB for Linux and Bottlerocket.
+                  The default disk size is 50 GiB for Windows. If you specify launchTemplate,
+                  then don't specify diskSize, or the node group deployment will fail.
+                  For more information about using launch templates with Amazon EKS,
+                  see Launch template support (https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
+                  in the Amazon EKS User Guide.
+                format: int64
+                type: integer
+              instanceTypes:
+                description: Specify the instance types for a node group. If you specify
+                  a GPU instance type, make sure to also specify an applicable GPU
+                  AMI type with the amiType parameter. If you specify launchTemplate,
+                  then you can specify zero or one instance type in your launch template
+                  or you can specify 0-20 instance types for instanceTypes. If however,
+                  you specify an instance type in your launch template and specify
+                  any instanceTypes, the node group deployment will fail. If you don't
+                  specify an instance type in a launch template or for instanceTypes,
+                  then t3.medium is used, by default. If you specify Spot for capacityType,
+                  then we recommend specifying multiple values for instanceTypes.
+                  For more information, see Managed node group capacity types (https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html#managed-node-group-capacity-types)
+                  and Launch template support (https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
+                  in the Amazon EKS User Guide.
+                items:
+                  type: string
+                type: array
+              labels:
+                additionalProperties:
+                  type: string
+                description: The Kubernetes labels to be applied to the nodes in the
+                  node group when they are created.
+                type: object
+              launchTemplate:
+                description: An object representing a node group's launch template
+                  specification. If specified, then do not specify instanceTypes,
+                  diskSize, or remoteAccess and make sure that the launch template
+                  meets the requirements in launchTemplateSpecification.
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
+                  version:
+                    type: string
+                type: object
+              name:
+                description: The unique name to give your node group.
+                type: string
+              nodeRole:
+                description: The Amazon Resource Name (ARN) of the IAM role to associate
+                  with your node group. The Amazon EKS worker node kubelet daemon
+                  makes calls to Amazon Web Services APIs on your behalf. Nodes receive
+                  permissions for these API calls through an IAM instance profile
+                  and associated policies. Before you can launch nodes and register
+                  them into a cluster, you must create an IAM role for those nodes
+                  to use when they are launched. For more information, see Amazon
+                  EKS node IAM role (https://docs.aws.amazon.com/eks/latest/userguide/create-node-role.html)
+                  in the Amazon EKS User Guide . If you specify launchTemplate, then
+                  don't specify IamInstanceProfile (https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IamInstanceProfile.html)
+                  in your launch template, or the node group deployment will fail.
+                  For more information about using launch templates with Amazon EKS,
+                  see Launch template support (https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
+                  in the Amazon EKS User Guide.
+                type: string
+              nodeRoleRef:
+                description: "AWSResourceReferenceWrapper provides a wrapper around
+                  *AWSResourceReference type to provide more user friendly syntax
+                  for references using 'from' field Ex: APIIDRef: \n from: name: my-api"
+                properties:
+                  from:
+                    description: AWSResourceReference provides all the values necessary
+                      to reference another k8s resource for finding the identifier(Id/ARN/Name)
+                    properties:
+                      name:
+                        type: string
+                    type: object
+                type: object
+              releaseVersion:
+                description: "The AMI version of the Amazon EKS optimized AMI to use
+                  with your node group. By default, the latest available AMI version
+                  for the node group's current Kubernetes version is used. For information
+                  about Linux versions, see Amazon EKS optimized Amazon Linux AMI
+                  versions (https://docs.aws.amazon.com/eks/latest/userguide/eks-linux-ami-versions.html)
+                  in the Amazon EKS User Guide. Amazon EKS managed node groups support
+                  the November 2022 and later releases of the Windows AMIs. For information
+                  about Windows versions, see Amazon EKS optimized Windows AMI versions
+                  (https://docs.aws.amazon.com/eks/latest/userguide/eks-ami-versions-windows.html)
+                  in the Amazon EKS User Guide. \n If you specify launchTemplate,
+                  and your launch template uses a custom AMI, then don't specify releaseVersion,
+                  or the node group deployment will fail. For more information about
+                  using launch templates with Amazon EKS, see Launch template support
+                  (https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
+                  in the Amazon EKS User Guide."
+                type: string
+              remoteAccess:
+                description: The remote access configuration to use with your node
+                  group. For Linux, the protocol is SSH. For Windows, the protocol
+                  is RDP. If you specify launchTemplate, then don't specify remoteAccess,
+                  or the node group deployment will fail. For more information about
+                  using launch templates with Amazon EKS, see Launch template support
+                  (https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
+                  in the Amazon EKS User Guide.
+                properties:
+                  ec2SshKey:
+                    type: string
+                  sourceSecurityGroupRefs:
+                    description: Reference field for SourceSecurityGroups
+                    items:
+                      description: "AWSResourceReferenceWrapper provides a wrapper
+                        around *AWSResourceReference type to provide more user friendly
+                        syntax for references using 'from' field Ex: APIIDRef: \n
+                        from: name: my-api"
+                      properties:
+                        from:
+                          description: AWSResourceReference provides all the values
+                            necessary to reference another k8s resource for finding
+                            the identifier(Id/ARN/Name)
+                          properties:
+                            name:
+                              type: string
+                          type: object
+                      type: object
+                    type: array
+                  sourceSecurityGroups:
+                    items:
+                      type: string
+                    type: array
+                type: object
+              scalingConfig:
+                description: The scaling configuration details for the Auto Scaling
+                  group that is created for your node group.
+                properties:
+                  desiredSize:
+                    format: int64
+                    type: integer
+                  maxSize:
+                    format: int64
+                    type: integer
+                  minSize:
+                    format: int64
+                    type: integer
+                type: object
+              subnetRefs:
+                items:
+                  description: "AWSResourceReferenceWrapper provides a wrapper around
+                    *AWSResourceReference type to provide more user friendly syntax
+                    for references using 'from' field Ex: APIIDRef: \n from: name:
+                    my-api"
+                  properties:
+                    from:
+                      description: AWSResourceReference provides all the values necessary
+                        to reference another k8s resource for finding the identifier(Id/ARN/Name)
+                      properties:
+                        name:
+                          type: string
+                      type: object
+                  type: object
+                type: array
+              subnets:
+                description: The subnets to use for the Auto Scaling group that is
+                  created for your node group. If you specify launchTemplate, then
+                  don't specify SubnetId (https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateNetworkInterface.html)
+                  in your launch template, or the node group deployment will fail.
+                  For more information about using launch templates with Amazon EKS,
+                  see Launch template support (https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
+                  in the Amazon EKS User Guide.
+                items:
+                  type: string
+                type: array
+              tags:
+                additionalProperties:
+                  type: string
+                description: The metadata to apply to the node group to assist with
+                  categorization and organization. Each tag consists of a key and
+                  an optional value. You define both. Node group tags do not propagate
+                  to any other resources associated with the node group, such as the
+                  Amazon EC2 instances or subnets.
+                type: object
+              taints:
+                description: The Kubernetes taints to be applied to the nodes in the
+                  node group. For more information, see Node taints on managed node
+                  groups (https://docs.aws.amazon.com/eks/latest/userguide/node-taints-managed-node-groups.html).
+                items:
+                  description: A property that allows a node to repel a set of pods.
+                    For more information, see Node taints on managed node groups (https://docs.aws.amazon.com/eks/latest/userguide/node-taints-managed-node-groups.html).
+                  properties:
+                    effect:
+                      type: string
+                    key:
+                      type: string
+                    value:
+                      type: string
+                  type: object
+                type: array
+              updateConfig:
+                description: The node group update configuration.
+                properties:
+                  maxUnavailable:
+                    format: int64
+                    type: integer
+                  maxUnavailablePercentage:
+                    format: int64
+                    type: integer
+                type: object
+              version:
+                description: The Kubernetes version to use for your managed nodes.
+                  By default, the Kubernetes version of the cluster is used, and this
+                  is the only accepted specified value. If you specify launchTemplate,
+                  and your launch template uses a custom AMI, then don't specify version,
+                  or the node group deployment will fail. For more information about
+                  using launch templates with Amazon EKS, see Launch template support
+                  (https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
+                  in the Amazon EKS User Guide.
+                type: string
+            required:
+            - name
+            type: object
+          status:
+            description: NodegroupStatus defines the observed state of Nodegroup
+            properties:
+              ackResourceMetadata:
+                description: All CRs managed by ACK have a common `Status.ACKResourceMetadata`
+                  member that is used to contain resource sync state, account ownership,
+                  constructed ARN for the resource
+                properties:
+                  arn:
+                    description: 'ARN is the Amazon Resource Name for the resource.
+                      This is a globally-unique identifier and is set only by the
+                      ACK service controller once the controller has orchestrated
+                      the creation of the resource OR when it has verified that an
+                      "adopted" resource (a resource where the ARN annotation was
+                      set by the Kubernetes user on the CR) exists and matches the
+                      supplied CR''s Spec field values. TODO(vijat@): Find a better
+                      strategy for resources that do not have ARN in CreateOutputResponse
+                      https://github.com/aws/aws-controllers-k8s/issues/270'
+                    type: string
+                  ownerAccountID:
+                    description: OwnerAccountID is the AWS Account ID of the account
+                      that owns the backend AWS service API resource.
+                    type: string
+                  region:
+                    description: Region is the AWS region in which the resource exists
+                      or will exist.
+                    type: string
+                required:
+                - ownerAccountID
+                - region
+                type: object
+              conditions:
+                description: All CRS managed by ACK have a common `Status.Conditions`
+                  member that contains a collection of `ackv1alpha1.Condition` objects
+                  that describe the various terminal states of the CR and its backend
+                  AWS service API resource
+                items:
+                  description: Condition is the common struct used by all CRDs managed
+                    by ACK service controllers to indicate terminal states  of the
+                    CR and its backend AWS service API resource
+                  properties:
+                    lastTransitionTime:
+                      description: Last time the condition transitioned from one status
+                        to another.
+                      format: date-time
+                      type: string
+                    message:
+                      description: A human readable message indicating details about
+                        the transition.
+                      type: string
+                    reason:
+                      description: The reason for the condition's last transition.
+                      type: string
+                    status:
+                      description: Status of the condition, one of True, False, Unknown.
+                      type: string
+                    type:
+                      description: Type is the type of the Condition
+                      type: string
+                  required:
+                  - status
+                  - type
+                  type: object
+                type: array
+              createdAt:
+                description: The Unix epoch timestamp in seconds for when the managed
+                  node group was created.
+                format: date-time
+                type: string
+              health:
+                description: The health status of the node group. If there are issues
+                  with your node group's health, they are listed here.
+                properties:
+                  issues:
+                    items:
+                      description: An object representing an issue with an Amazon
+                        EKS resource.
+                      properties:
+                        code:
+                          type: string
+                        message:
+                          type: string
+                        resourceIDs:
+                          items:
+                            type: string
+                          type: array
+                      type: object
+                    type: array
+                type: object
+              modifiedAt:
+                description: The Unix epoch timestamp in seconds for when the managed
+                  node group was last modified.
+                format: date-time
+                type: string
+              resources:
+                description: The resources associated with the node group, such as
+                  Auto Scaling groups and security groups for remote access.
+                properties:
+                  autoScalingGroups:
+                    items:
+                      description: An Auto Scaling group that is associated with an
+                        Amazon EKS managed node group.
+                      properties:
+                        name:
+                          type: string
+                      type: object
+                    type: array
+                  remoteAccessSecurityGroup:
+                    type: string
+                type: object
+              status:
+                description: The current status of the managed node group.
+                type: string
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: null
+  storedVersions:
+  - v1alpha1
+
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  name: adoptedresources.services.k8s.aws
+spec:
+  group: services.k8s.aws
+  names:
+    kind: AdoptedResource
+    listKind: AdoptedResourceList
+    plural: adoptedresources
+    singular: adoptedresource
+  scope: Namespaced
+  versions:
+  - name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        description: AdoptedResource is the schema for the AdoptedResource API.
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: AdoptedResourceSpec defines the desired state of the AdoptedResource.
+            properties:
+              aws:
+                description: AWSIdentifiers provide all unique ways to reference an
+                  AWS resource.
+                properties:
+                  additionalKeys:
+                    additionalProperties:
+                      type: string
+                    description: AdditionalKeys represents any additional arbitrary
+                      identifiers used when describing the target resource.
+                    type: object
+                  arn:
+                    description: ARN is the AWS Resource Name for the resource. It
+                      is a globally unique identifier.
+                    type: string
+                  nameOrID:
+                    description: NameOrId is a user-supplied string identifier for
+                      the resource. It may or may not be globally unique, depending
+                      on the type of resource.
+                    type: string
+                type: object
+              kubernetes:
+                description: ResourceWithMetadata provides the values necessary to
+                  create a Kubernetes resource and override any of its metadata values.
+                properties:
+                  group:
+                    type: string
+                  kind:
+                    type: string
+                  metadata:
+                    description: "ObjectMeta is metadata that all persisted resources
+                      must have, which includes all objects users must create. It
+                      is not possible to use `metav1.ObjectMeta` inside spec, as the
+                      controller-gen automatically converts this to an arbitrary string-string
+                      map. https://github.com/kubernetes-sigs/controller-tools/issues/385
+                      \n Active discussion about inclusion of this field in the spec
+                      is happening in this PR: https://github.com/kubernetes-sigs/controller-tools/pull/395
+                      \n Until this is allowed, or if it never is, we will produce
+                      a subset of the object meta that contains only the fields which
+                      the user is allowed to modify in the metadata."
+                    properties:
+                      annotations:
+                        additionalProperties:
+                          type: string
+                        description: 'Annotations is an unstructured key value map
+                          stored with a resource that may be set by external tools
+                          to store and retrieve arbitrary metadata. They are not queryable
+                          and should be preserved when modifying objects. More info:
+                          http://kubernetes.io/docs/user-guide/annotations'
+                        type: object
+                      generateName:
+                        description: "GenerateName is an optional prefix, used by
+                          the server, to generate a unique name ONLY IF the Name field
+                          has not been provided. If this field is used, the name returned
+                          to the client will be different than the name passed. This
+                          value will also be combined with a unique suffix. The provided
+                          value has the same validation rules as the Name field, and
+                          may be truncated by the length of the suffix required to
+                          make the value unique on the server. \n If this field is
+                          specified and the generated name exists, the server will
+                          NOT return a 409 - instead, it will either return 201 Created
+                          or 500 with Reason ServerTimeout indicating a unique name
+                          could not be found in the time allotted, and the client
+                          should retry (optionally after the time indicated in the
+                          Retry-After header). \n Applied only if Name is not specified.
+                          More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#idempotency"
+                        type: string
+                      labels:
+                        additionalProperties:
+                          type: string
+                        description: 'Map of string keys and values that can be used
+                          to organize and categorize (scope and select) objects. May
+                          match selectors of replication controllers and services.
+                          More info: http://kubernetes.io/docs/user-guide/labels'
+                        type: object
+                      name:
+                        description: 'Name must be unique within a namespace. Is required
+                          when creating resources, although some resources may allow
+                          a client to request the generation of an appropriate name
+                          automatically. Name is primarily intended for creation idempotence
+                          and configuration definition. Cannot be updated. More info:
+                          http://kubernetes.io/docs/user-guide/identifiers#names'
+                        type: string
+                      namespace:
+                        description: "Namespace defines the space within each name
+                          must be unique. An empty namespace is equivalent to the
+                          \"default\" namespace, but \"default\" is the canonical
+                          representation. Not all objects are required to be scoped
+                          to a namespace - the value of this field for those objects
+                          will be empty. \n Must be a DNS_LABEL. Cannot be updated.
+                          More info: http://kubernetes.io/docs/user-guide/namespaces"
+                        type: string
+                      ownerReferences:
+                        description: List of objects depended by this object. If ALL
+                          objects in the list have been deleted, this object will
+                          be garbage collected. If this object is managed by a controller,
+                          then an entry in this list will point to this controller,
+                          with the controller field set to true. There cannot be more
+                          than one managing controller.
+                        items:
+                          description: OwnerReference contains enough information
+                            to let you identify an owning object. An owning object
+                            must be in the same namespace as the dependent, or be
+                            cluster-scoped, so there is no namespace field.
+                          properties:
+                            apiVersion:
+                              description: API version of the referent.
+                              type: string
+                            blockOwnerDeletion:
+                              description: If true, AND if the owner has the "foregroundDeletion"
+                                finalizer, then the owner cannot be deleted from the
+                                key-value store until this reference is removed. See
+                                https://kubernetes.io/docs/concepts/architecture/garbage-collection/#foreground-deletion
+                                for how the garbage collector interacts with this
+                                field and enforces the foreground deletion. Defaults
+                                to false. To set this field, a user needs "delete"
+                                permission of the owner, otherwise 422 (Unprocessable
+                                Entity) will be returned.
+                              type: boolean
+                            controller:
+                              description: If true, this reference points to the managing
+                                controller.
+                              type: boolean
+                            kind:
+                              description: 'Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+                              type: string
+                            name:
+                              description: 'Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names'
+                              type: string
+                            uid:
+                              description: 'UID of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#uids'
+                              type: string
+                          required:
+                          - apiVersion
+                          - kind
+                          - name
+                          - uid
+                          type: object
+                          x-kubernetes-map-type: atomic
+                        type: array
+                    type: object
+                required:
+                - group
+                - kind
+                type: object
+            required:
+            - aws
+            - kubernetes
+            type: object
+          status:
+            description: AdoptedResourceStatus defines the observed status of the
+              AdoptedResource.
+            properties:
+              conditions:
+                description: A collection of `ackv1alpha1.Condition` objects that
+                  describe the various terminal states of the adopted resource CR
+                  and its target custom resource
+                items:
+                  description: Condition is the common struct used by all CRDs managed
+                    by ACK service controllers to indicate terminal states  of the
+                    CR and its backend AWS service API resource
+                  properties:
+                    lastTransitionTime:
+                      description: Last time the condition transitioned from one status
+                        to another.
+                      format: date-time
+                      type: string
+                    message:
+                      description: A human readable message indicating details about
+                        the transition.
+                      type: string
+                    reason:
+                      description: The reason for the condition's last transition.
+                      type: string
+                    status:
+                      description: Status of the condition, one of True, False, Unknown.
+                      type: string
+                    type:
+                      description: Type is the type of the Condition
+                      type: string
+                  required:
+                  - status
+                  - type
+                  type: object
+                type: array
+            required:
+            - conditions
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: null
+  storedVersions:
+  - v1alpha1
+
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  name: fieldexports.services.k8s.aws
+spec:
+  group: services.k8s.aws
+  names:
+    kind: FieldExport
+    listKind: FieldExportList
+    plural: fieldexports
+    singular: fieldexport
+  scope: Namespaced
+  versions:
+  - name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        description: FieldExport is the schema for the FieldExport API.
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: FieldExportSpec defines the desired state of the FieldExport.
+            properties:
+              from:
+                description: ResourceFieldSelector provides the values necessary to
+                  identify an individual field on an individual K8s resource.
+                properties:
+                  path:
+                    type: string
+                  resource:
+                    description: NamespacedResource provides all the values necessary
+                      to identify an ACK resource of a given type (within the same
+                      namespace as the custom resource containing this type).
+                    properties:
+                      group:
+                        type: string
+                      kind:
+                        type: string
+                      name:
+                        type: string
+                    required:
+                    - group
+                    - kind
+                    - name
+                    type: object
+                required:
+                - path
+                - resource
+                type: object
+              to:
+                description: FieldExportTarget provides the values necessary to identify
+                  the output path for a field export.
+                properties:
+                  key:
+                    description: Key overrides the default value (`<namespace>.<FieldExport-resource-name>`)
+                      for the FieldExport target
+                    type: string
+                  kind:
+                    description: FieldExportOutputType represents all types that can
+                      be produced by a field export operation
+                    enum:
+                    - configmap
+                    - secret
+                    type: string
+                  name:
+                    type: string
+                  namespace:
+                    description: Namespace is marked as optional, so we cannot compose
+                      `NamespacedName`
+                    type: string
+                required:
+                - kind
+                - name
+                type: object
+            required:
+            - from
+            - to
+            type: object
+          status:
+            description: FieldExportStatus defines the observed status of the FieldExport.
+            properties:
+              conditions:
+                description: A collection of `ackv1alpha1.Condition` objects that
+                  describe the various recoverable states of the field CR
+                items:
+                  description: Condition is the common struct used by all CRDs managed
+                    by ACK service controllers to indicate terminal states  of the
+                    CR and its backend AWS service API resource
+                  properties:
+                    lastTransitionTime:
+                      description: Last time the condition transitioned from one status
+                        to another.
+                      format: date-time
+                      type: string
+                    message:
+                      description: A human readable message indicating details about
+                        the transition.
+                      type: string
+                    reason:
+                      description: The reason for the condition's last transition.
+                      type: string
+                    status:
+                      description: Status of the condition, one of True, False, Unknown.
+                      type: string
+                    type:
+                      description: Type is the type of the Condition
+                      type: string
+                  required:
+                  - status
+                  - type
+                  type: object
+                type: array
+            required:
+            - conditions
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: null
+  storedVersions:
+  - v1alpha1
+
+---
