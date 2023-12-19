@@ -1,0 +1,1232 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  name: backups.dynamodb.services.k8s.aws
+spec:
+  group: dynamodb.services.k8s.aws
+  names:
+    kind: Backup
+    listKind: BackupList
+    plural: backups
+    singular: backup
+  scope: Namespaced
+  versions:
+  - name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        description: Backup is the Schema for the Backups API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: BackupSpec defines the desired state of Backup.
+            properties:
+              backupName:
+                description: Specified name for the backup.
+                type: string
+              tableName:
+                description: The name of the table.
+                type: string
+            required:
+            - backupName
+            - tableName
+            type: object
+          status:
+            description: BackupStatus defines the observed state of Backup
+            properties:
+              ackResourceMetadata:
+                description: All CRs managed by ACK have a common `Status.ACKResourceMetadata`
+                  member that is used to contain resource sync state, account ownership,
+                  constructed ARN for the resource
+                properties:
+                  arn:
+                    description: 'ARN is the Amazon Resource Name for the resource.
+                      This is a globally-unique identifier and is set only by the
+                      ACK service controller once the controller has orchestrated
+                      the creation of the resource OR when it has verified that an
+                      "adopted" resource (a resource where the ARN annotation was
+                      set by the Kubernetes user on the CR) exists and matches the
+                      supplied CR''s Spec field values. TODO(vijat@): Find a better
+                      strategy for resources that do not have ARN in CreateOutputResponse
+                      https://github.com/aws/aws-controllers-k8s/issues/270'
+                    type: string
+                  ownerAccountID:
+                    description: OwnerAccountID is the AWS Account ID of the account
+                      that owns the backend AWS service API resource.
+                    type: string
+                  region:
+                    description: Region is the AWS region in which the resource exists
+                      or will exist.
+                    type: string
+                required:
+                - ownerAccountID
+                - region
+                type: object
+              backupCreationDateTime:
+                description: Time at which the backup was created. This is the request
+                  time of the backup.
+                format: date-time
+                type: string
+              backupExpiryDateTime:
+                description: Time at which the automatic on-demand backup created
+                  by DynamoDB will expire. This SYSTEM on-demand backup expires automatically
+                  35 days after its creation.
+                format: date-time
+                type: string
+              backupSizeBytes:
+                description: Size of the backup in bytes. DynamoDB updates this value
+                  approximately every six hours. Recent changes might not be reflected
+                  in this value.
+                format: int64
+                type: integer
+              backupStatus:
+                description: 'Backup can be in one of the following states: CREATING,
+                  ACTIVE, DELETED.'
+                type: string
+              backupType:
+                description: "BackupType: \n * USER - You create and manage these
+                  using the on-demand backup feature. \n * SYSTEM - If you delete
+                  a table with point-in-time recovery enabled, a SYSTEM backup is
+                  automatically created and is retained for 35 days (at no additional
+                  cost). System backups allow you to restore the deleted table to
+                  the state it was in just before the point of deletion. \n * AWS_BACKUP
+                  - On-demand backup created by you from Backup service."
+                type: string
+              conditions:
+                description: All CRS managed by ACK have a common `Status.Conditions`
+                  member that contains a collection of `ackv1alpha1.Condition` objects
+                  that describe the various terminal states of the CR and its backend
+                  AWS service API resource
+                items:
+                  description: Condition is the common struct used by all CRDs managed
+                    by ACK service controllers to indicate terminal states  of the
+                    CR and its backend AWS service API resource
+                  properties:
+                    lastTransitionTime:
+                      description: Last time the condition transitioned from one status
+                        to another.
+                      format: date-time
+                      type: string
+                    message:
+                      description: A human readable message indicating details about
+                        the transition.
+                      type: string
+                    reason:
+                      description: The reason for the condition's last transition.
+                      type: string
+                    status:
+                      description: Status of the condition, one of True, False, Unknown.
+                      type: string
+                    type:
+                      description: Type is the type of the Condition
+                      type: string
+                  required:
+                  - status
+                  - type
+                  type: object
+                type: array
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: null
+  storedVersions:
+  - v1alpha1
+
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  name: globaltables.dynamodb.services.k8s.aws
+spec:
+  group: dynamodb.services.k8s.aws
+  names:
+    kind: GlobalTable
+    listKind: GlobalTableList
+    plural: globaltables
+    singular: globaltable
+  scope: Namespaced
+  versions:
+  - name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        description: GlobalTable is the Schema for the GlobalTables API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: "GlobalTableSpec defines the desired state of GlobalTable.
+              \n Represents the properties of a global table."
+            properties:
+              globalTableName:
+                description: The global table name.
+                type: string
+              replicationGroup:
+                description: The Regions where the global table needs to be created.
+                items:
+                  description: Represents the properties of a replica.
+                  properties:
+                    regionName:
+                      type: string
+                  type: object
+                type: array
+            required:
+            - globalTableName
+            - replicationGroup
+            type: object
+          status:
+            description: GlobalTableStatus defines the observed state of GlobalTable
+            properties:
+              ackResourceMetadata:
+                description: All CRs managed by ACK have a common `Status.ACKResourceMetadata`
+                  member that is used to contain resource sync state, account ownership,
+                  constructed ARN for the resource
+                properties:
+                  arn:
+                    description: 'ARN is the Amazon Resource Name for the resource.
+                      This is a globally-unique identifier and is set only by the
+                      ACK service controller once the controller has orchestrated
+                      the creation of the resource OR when it has verified that an
+                      "adopted" resource (a resource where the ARN annotation was
+                      set by the Kubernetes user on the CR) exists and matches the
+                      supplied CR''s Spec field values. TODO(vijat@): Find a better
+                      strategy for resources that do not have ARN in CreateOutputResponse
+                      https://github.com/aws/aws-controllers-k8s/issues/270'
+                    type: string
+                  ownerAccountID:
+                    description: OwnerAccountID is the AWS Account ID of the account
+                      that owns the backend AWS service API resource.
+                    type: string
+                  region:
+                    description: Region is the AWS region in which the resource exists
+                      or will exist.
+                    type: string
+                required:
+                - ownerAccountID
+                - region
+                type: object
+              conditions:
+                description: All CRS managed by ACK have a common `Status.Conditions`
+                  member that contains a collection of `ackv1alpha1.Condition` objects
+                  that describe the various terminal states of the CR and its backend
+                  AWS service API resource
+                items:
+                  description: Condition is the common struct used by all CRDs managed
+                    by ACK service controllers to indicate terminal states  of the
+                    CR and its backend AWS service API resource
+                  properties:
+                    lastTransitionTime:
+                      description: Last time the condition transitioned from one status
+                        to another.
+                      format: date-time
+                      type: string
+                    message:
+                      description: A human readable message indicating details about
+                        the transition.
+                      type: string
+                    reason:
+                      description: The reason for the condition's last transition.
+                      type: string
+                    status:
+                      description: Status of the condition, one of True, False, Unknown.
+                      type: string
+                    type:
+                      description: Type is the type of the Condition
+                      type: string
+                  required:
+                  - status
+                  - type
+                  type: object
+                type: array
+              creationDateTime:
+                description: The creation time of the global table.
+                format: date-time
+                type: string
+              globalTableStatus:
+                description: "The current state of the global table: \n * CREATING
+                  - The global table is being created. \n * UPDATING - The global
+                  table is being updated. \n * DELETING - The global table is being
+                  deleted. \n * ACTIVE - The global table is ready for use."
+                type: string
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: null
+  storedVersions:
+  - v1alpha1
+
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  name: tables.dynamodb.services.k8s.aws
+spec:
+  group: dynamodb.services.k8s.aws
+  names:
+    kind: Table
+    listKind: TableList
+    plural: tables
+    singular: table
+  scope: Namespaced
+  versions:
+  - name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        description: Table is the Schema for the Tables API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: TableSpec defines the desired state of Table.
+            properties:
+              attributeDefinitions:
+                description: An array of attributes that describe the key schema for
+                  the table and indexes.
+                items:
+                  description: Represents an attribute for describing the key schema
+                    for the table and indexes.
+                  properties:
+                    attributeName:
+                      type: string
+                    attributeType:
+                      type: string
+                  type: object
+                type: array
+              billingMode:
+                description: "Controls how you are charged for read and write throughput
+                  and how you manage capacity. This setting can be changed later.
+                  \n * PROVISIONED - We recommend using PROVISIONED for predictable
+                  workloads. PROVISIONED sets the billing mode to Provisioned Mode
+                  (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.ProvisionedThroughput.Manual).
+                  \n * PAY_PER_REQUEST - We recommend using PAY_PER_REQUEST for unpredictable
+                  workloads. PAY_PER_REQUEST sets the billing mode to On-Demand Mode
+                  (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.OnDemand)."
+                type: string
+              globalSecondaryIndexes:
+                description: "One or more global secondary indexes (the maximum is
+                  20) to be created on the table. Each global secondary index in the
+                  array includes the following: \n * IndexName - The name of the global
+                  secondary index. Must be unique only for this table. \n * KeySchema
+                  - Specifies the key schema for the global secondary index. \n *
+                  Projection - Specifies attributes that are copied (projected) from
+                  the table into the index. These are in addition to the primary key
+                  attributes and index key attributes, which are automatically projected.
+                  Each attribute specification is composed of: ProjectionType - One
+                  of the following: KEYS_ONLY - Only the index and primary keys are
+                  projected into the index. INCLUDE - Only the specified table attributes
+                  are projected into the index. The list of projected attributes is
+                  in NonKeyAttributes. ALL - All of the table attributes are projected
+                  into the index. NonKeyAttributes - A list of one or more non-key
+                  attribute names that are projected into the secondary index. The
+                  total count of attributes provided in NonKeyAttributes, summed across
+                  all of the secondary indexes, must not exceed 100. If you project
+                  the same attribute into two different indexes, this counts as two
+                  distinct attributes when determining the total. \n * ProvisionedThroughput
+                  - The provisioned throughput settings for the global secondary index,
+                  consisting of read and write capacity units."
+                items:
+                  description: Represents the properties of a global secondary index.
+                  properties:
+                    indexName:
+                      type: string
+                    keySchema:
+                      items:
+                        description: "Represents a single element of a key schema.
+                          A key schema specifies the attributes that make up the primary
+                          key of a table, or the key attributes of an index. \n A
+                          KeySchemaElement represents exactly one attribute of the
+                          primary key. For example, a simple primary key would be
+                          represented by one KeySchemaElement (for the partition key).
+                          A composite primary key would require one KeySchemaElement
+                          for the partition key, and another KeySchemaElement for
+                          the sort key. \n A KeySchemaElement must be a scalar, top-level
+                          attribute (not a nested attribute). The data type must be
+                          one of String, Number, or Binary. The attribute cannot be
+                          nested within a List or a Map."
+                        properties:
+                          attributeName:
+                            type: string
+                          keyType:
+                            type: string
+                        type: object
+                      type: array
+                    projection:
+                      description: Represents attributes that are copied (projected)
+                        from the table into an index. These are in addition to the
+                        primary key attributes and index key attributes, which are
+                        automatically projected.
+                      properties:
+                        nonKeyAttributes:
+                          items:
+                            type: string
+                          type: array
+                        projectionType:
+                          type: string
+                      type: object
+                    provisionedThroughput:
+                      description: "Represents the provisioned throughput settings
+                        for a specified table or index. The settings can be modified
+                        using the UpdateTable operation. \n For current minimum and
+                        maximum provisioned throughput values, see Service, Account,
+                        and Table Quotas (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
+                        in the Amazon DynamoDB Developer Guide."
+                      properties:
+                        readCapacityUnits:
+                          format: int64
+                          type: integer
+                        writeCapacityUnits:
+                          format: int64
+                          type: integer
+                      type: object
+                  type: object
+                type: array
+              keySchema:
+                description: "Specifies the attributes that make up the primary key
+                  for a table or an index. The attributes in KeySchema must also be
+                  defined in the AttributeDefinitions array. For more information,
+                  see Data Model (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html)
+                  in the Amazon DynamoDB Developer Guide. \n Each KeySchemaElement
+                  in the array is composed of: \n * AttributeName - The name of this
+                  key attribute. \n * KeyType - The role that the key attribute will
+                  assume: HASH - partition key RANGE - sort key \n The partition key
+                  of an item is also known as its hash attribute. The term \"hash
+                  attribute\" derives from the DynamoDB usage of an internal hash
+                  function to evenly distribute data items across partitions, based
+                  on their partition key values. \n The sort key of an item is also
+                  known as its range attribute. The term \"range attribute\" derives
+                  from the way DynamoDB stores items with the same partition key physically
+                  close together, in sorted order by the sort key value. \n For a
+                  simple primary key (partition key), you must provide exactly one
+                  element with a KeyType of HASH. \n For a composite primary key (partition
+                  key and sort key), you must provide exactly two elements, in this
+                  order: The first element must have a KeyType of HASH, and the second
+                  element must have a KeyType of RANGE. \n For more information, see
+                  Working with Tables (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#WorkingWithTables.primary.key)
+                  in the Amazon DynamoDB Developer Guide."
+                items:
+                  description: "Represents a single element of a key schema. A key
+                    schema specifies the attributes that make up the primary key of
+                    a table, or the key attributes of an index. \n A KeySchemaElement
+                    represents exactly one attribute of the primary key. For example,
+                    a simple primary key would be represented by one KeySchemaElement
+                    (for the partition key). A composite primary key would require
+                    one KeySchemaElement for the partition key, and another KeySchemaElement
+                    for the sort key. \n A KeySchemaElement must be a scalar, top-level
+                    attribute (not a nested attribute). The data type must be one
+                    of String, Number, or Binary. The attribute cannot be nested within
+                    a List or a Map."
+                  properties:
+                    attributeName:
+                      type: string
+                    keyType:
+                      type: string
+                  type: object
+                type: array
+              localSecondaryIndexes:
+                description: "One or more local secondary indexes (the maximum is
+                  5) to be created on the table. Each index is scoped to a given partition
+                  key value. There is a 10 GB size limit per partition key value;
+                  otherwise, the size of a local secondary index is unconstrained.
+                  \n Each local secondary index in the array includes the following:
+                  \n * IndexName - The name of the local secondary index. Must be
+                  unique only for this table. \n * KeySchema - Specifies the key schema
+                  for the local secondary index. The key schema must begin with the
+                  same partition key as the table. \n * Projection - Specifies attributes
+                  that are copied (projected) from the table into the index. These
+                  are in addition to the primary key attributes and index key attributes,
+                  which are automatically projected. Each attribute specification
+                  is composed of: ProjectionType - One of the following: KEYS_ONLY
+                  - Only the index and primary keys are projected into the index.
+                  INCLUDE - Only the specified table attributes are projected into
+                  the index. The list of projected attributes is in NonKeyAttributes.
+                  ALL - All of the table attributes are projected into the index.
+                  NonKeyAttributes - A list of one or more non-key attribute names
+                  that are projected into the secondary index. The total count of
+                  attributes provided in NonKeyAttributes, summed across all of the
+                  secondary indexes, must not exceed 100. If you project the same
+                  attribute into two different indexes, this counts as two distinct
+                  attributes when determining the total."
+                items:
+                  description: Represents the properties of a local secondary index.
+                  properties:
+                    indexName:
+                      type: string
+                    keySchema:
+                      items:
+                        description: "Represents a single element of a key schema.
+                          A key schema specifies the attributes that make up the primary
+                          key of a table, or the key attributes of an index. \n A
+                          KeySchemaElement represents exactly one attribute of the
+                          primary key. For example, a simple primary key would be
+                          represented by one KeySchemaElement (for the partition key).
+                          A composite primary key would require one KeySchemaElement
+                          for the partition key, and another KeySchemaElement for
+                          the sort key. \n A KeySchemaElement must be a scalar, top-level
+                          attribute (not a nested attribute). The data type must be
+                          one of String, Number, or Binary. The attribute cannot be
+                          nested within a List or a Map."
+                        properties:
+                          attributeName:
+                            type: string
+                          keyType:
+                            type: string
+                        type: object
+                      type: array
+                    projection:
+                      description: Represents attributes that are copied (projected)
+                        from the table into an index. These are in addition to the
+                        primary key attributes and index key attributes, which are
+                        automatically projected.
+                      properties:
+                        nonKeyAttributes:
+                          items:
+                            type: string
+                          type: array
+                        projectionType:
+                          type: string
+                      type: object
+                  type: object
+                type: array
+              provisionedThroughput:
+                description: "Represents the provisioned throughput settings for a
+                  specified table or index. The settings can be modified using the
+                  UpdateTable operation. \n If you set BillingMode as PROVISIONED,
+                  you must specify this property. If you set BillingMode as PAY_PER_REQUEST,
+                  you cannot specify this property. \n For current minimum and maximum
+                  provisioned throughput values, see Service, Account, and Table Quotas
+                  (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
+                  in the Amazon DynamoDB Developer Guide."
+                properties:
+                  readCapacityUnits:
+                    format: int64
+                    type: integer
+                  writeCapacityUnits:
+                    format: int64
+                    type: integer
+                type: object
+              sseSpecification:
+                description: Represents the settings used to enable server-side encryption.
+                properties:
+                  enabled:
+                    type: boolean
+                  kmsMasterKeyID:
+                    type: string
+                  sseType:
+                    type: string
+                type: object
+              streamSpecification:
+                description: "The settings for DynamoDB Streams on the table. These
+                  settings consist of: \n * StreamEnabled - Indicates whether DynamoDB
+                  Streams is to be enabled (true) or disabled (false). \n * StreamViewType
+                  - When an item in the table is modified, StreamViewType determines
+                  what information is written to the table's stream. Valid values
+                  for StreamViewType are: KEYS_ONLY - Only the key attributes of the
+                  modified item are written to the stream. NEW_IMAGE - The entire
+                  item, as it appears after it was modified, is written to the stream.
+                  OLD_IMAGE - The entire item, as it appeared before it was modified,
+                  is written to the stream. NEW_AND_OLD_IMAGES - Both the new and
+                  the old item images of the item are written to the stream."
+                properties:
+                  streamEnabled:
+                    type: boolean
+                  streamViewType:
+                    type: string
+                type: object
+              tableClass:
+                description: The table class of the new table. Valid values are STANDARD
+                  and STANDARD_INFREQUENT_ACCESS.
+                type: string
+              tableName:
+                description: The name of the table to create.
+                type: string
+              tags:
+                description: A list of key-value pairs to label the table. For more
+                  information, see Tagging for DynamoDB (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html).
+                items:
+                  description: "Describes a tag. A tag is a key-value pair. You can
+                    add up to 50 tags to a single DynamoDB table. \n Amazon Web Services-assigned
+                    tag names and values are automatically assigned the aws: prefix,
+                    which the user cannot assign. Amazon Web Services-assigned tag
+                    names do not count towards the tag limit of 50. User-assigned
+                    tag names have the prefix user: in the Cost Allocation Report.
+                    You cannot backdate the application of a tag. \n For an overview
+                    on tagging DynamoDB resources, see Tagging for DynamoDB (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html)
+                    in the Amazon DynamoDB Developer Guide."
+                  properties:
+                    key:
+                      type: string
+                    value:
+                      type: string
+                  type: object
+                type: array
+              timeToLive:
+                description: Represents the settings used to enable or disable Time
+                  to Live for the specified table.
+                properties:
+                  attributeName:
+                    type: string
+                  enabled:
+                    type: boolean
+                type: object
+            required:
+            - attributeDefinitions
+            - keySchema
+            - tableName
+            type: object
+          status:
+            description: TableStatus defines the observed state of Table
+            properties:
+              ackResourceMetadata:
+                description: All CRs managed by ACK have a common `Status.ACKResourceMetadata`
+                  member that is used to contain resource sync state, account ownership,
+                  constructed ARN for the resource
+                properties:
+                  arn:
+                    description: 'ARN is the Amazon Resource Name for the resource.
+                      This is a globally-unique identifier and is set only by the
+                      ACK service controller once the controller has orchestrated
+                      the creation of the resource OR when it has verified that an
+                      "adopted" resource (a resource where the ARN annotation was
+                      set by the Kubernetes user on the CR) exists and matches the
+                      supplied CR''s Spec field values. TODO(vijat@): Find a better
+                      strategy for resources that do not have ARN in CreateOutputResponse
+                      https://github.com/aws/aws-controllers-k8s/issues/270'
+                    type: string
+                  ownerAccountID:
+                    description: OwnerAccountID is the AWS Account ID of the account
+                      that owns the backend AWS service API resource.
+                    type: string
+                  region:
+                    description: Region is the AWS region in which the resource exists
+                      or will exist.
+                    type: string
+                required:
+                - ownerAccountID
+                - region
+                type: object
+              archivalSummary:
+                description: Contains information about the table archive.
+                properties:
+                  archivalBackupARN:
+                    type: string
+                  archivalDateTime:
+                    format: date-time
+                    type: string
+                  archivalReason:
+                    type: string
+                type: object
+              billingModeSummary:
+                description: Contains the details for the read/write capacity mode.
+                properties:
+                  billingMode:
+                    type: string
+                  lastUpdateToPayPerRequestDateTime:
+                    format: date-time
+                    type: string
+                type: object
+              conditions:
+                description: All CRS managed by ACK have a common `Status.Conditions`
+                  member that contains a collection of `ackv1alpha1.Condition` objects
+                  that describe the various terminal states of the CR and its backend
+                  AWS service API resource
+                items:
+                  description: Condition is the common struct used by all CRDs managed
+                    by ACK service controllers to indicate terminal states  of the
+                    CR and its backend AWS service API resource
+                  properties:
+                    lastTransitionTime:
+                      description: Last time the condition transitioned from one status
+                        to another.
+                      format: date-time
+                      type: string
+                    message:
+                      description: A human readable message indicating details about
+                        the transition.
+                      type: string
+                    reason:
+                      description: The reason for the condition's last transition.
+                      type: string
+                    status:
+                      description: Status of the condition, one of True, False, Unknown.
+                      type: string
+                    type:
+                      description: Type is the type of the Condition
+                      type: string
+                  required:
+                  - status
+                  - type
+                  type: object
+                type: array
+              creationDateTime:
+                description: The date and time when the table was created, in UNIX
+                  epoch time (http://www.epochconverter.com/) format.
+                format: date-time
+                type: string
+              globalTableVersion:
+                description: Represents the version of global tables (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GlobalTables.html)
+                  in use, if the table is replicated across Amazon Web Services Regions.
+                type: string
+              itemCount:
+                description: The number of items in the specified table. DynamoDB
+                  updates this value approximately every six hours. Recent changes
+                  might not be reflected in this value.
+                format: int64
+                type: integer
+              latestStreamARN:
+                description: The Amazon Resource Name (ARN) that uniquely identifies
+                  the latest stream for this table.
+                type: string
+              latestStreamLabel:
+                description: "A timestamp, in ISO 8601 format, for this stream. \n
+                  Note that LatestStreamLabel is not a unique identifier for the stream,
+                  because it is possible that a stream from another table might have
+                  the same timestamp. However, the combination of the following three
+                  elements is guaranteed to be unique: \n * Amazon Web Services customer
+                  ID \n * Table name \n * StreamLabel"
+                type: string
+              replicas:
+                description: Represents replicas of the table.
+                items:
+                  description: Contains the details of the replica.
+                  properties:
+                    globalSecondaryIndexes:
+                      items:
+                        description: Represents the properties of a replica global
+                          secondary index.
+                        properties:
+                          indexName:
+                            type: string
+                          provisionedThroughputOverride:
+                            description: Replica-specific provisioned throughput settings.
+                              If not specified, uses the source table's provisioned
+                              throughput settings.
+                            properties:
+                              readCapacityUnits:
+                                format: int64
+                                type: integer
+                            type: object
+                        type: object
+                      type: array
+                    kmsMasterKeyID:
+                      type: string
+                    provisionedThroughputOverride:
+                      description: Replica-specific provisioned throughput settings.
+                        If not specified, uses the source table's provisioned throughput
+                        settings.
+                      properties:
+                        readCapacityUnits:
+                          format: int64
+                          type: integer
+                      type: object
+                    regionName:
+                      type: string
+                    replicaInaccessibleDateTime:
+                      format: date-time
+                      type: string
+                    replicaStatus:
+                      type: string
+                    replicaStatusDescription:
+                      type: string
+                    replicaStatusPercentProgress:
+                      type: string
+                    replicaTableClassSummary:
+                      description: Contains details of the table class.
+                      properties:
+                        lastUpdateDateTime:
+                          format: date-time
+                          type: string
+                        tableClass:
+                          type: string
+                      type: object
+                  type: object
+                type: array
+              restoreSummary:
+                description: Contains details for the restore.
+                properties:
+                  restoreDateTime:
+                    format: date-time
+                    type: string
+                  restoreInProgress:
+                    type: boolean
+                  sourceBackupARN:
+                    type: string
+                  sourceTableARN:
+                    type: string
+                type: object
+              sseDescription:
+                description: The description of the server-side encryption status
+                  on the specified table.
+                properties:
+                  inaccessibleEncryptionDateTime:
+                    format: date-time
+                    type: string
+                  kmsMasterKeyARN:
+                    type: string
+                  sseType:
+                    type: string
+                  status:
+                    type: string
+                type: object
+              tableClassSummary:
+                description: Contains details of the table class.
+                properties:
+                  lastUpdateDateTime:
+                    format: date-time
+                    type: string
+                  tableClass:
+                    type: string
+                type: object
+              tableID:
+                description: Unique identifier for the table for which the backup
+                  was created.
+                type: string
+              tableSizeBytes:
+                description: The total size of the specified table, in bytes. DynamoDB
+                  updates this value approximately every six hours. Recent changes
+                  might not be reflected in this value.
+                format: int64
+                type: integer
+              tableStatus:
+                description: "The current state of the table: \n * CREATING - The
+                  table is being created. \n * UPDATING - The table is being updated.
+                  \n * DELETING - The table is being deleted. \n * ACTIVE - The table
+                  is ready for use. \n * INACCESSIBLE_ENCRYPTION_CREDENTIALS - The
+                  KMS key used to encrypt the table in inaccessible. Table operations
+                  may fail due to failure to use the KMS key. DynamoDB will initiate
+                  the table archival process when a table's KMS key remains inaccessible
+                  for more than seven days. \n * ARCHIVING - The table is being archived.
+                  Operations are not allowed until archival is complete. \n * ARCHIVED
+                  - The table has been archived. See the ArchivalReason for more information."
+                type: string
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: null
+  storedVersions:
+  - v1alpha1
+
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  name: adoptedresources.services.k8s.aws
+spec:
+  group: services.k8s.aws
+  names:
+    kind: AdoptedResource
+    listKind: AdoptedResourceList
+    plural: adoptedresources
+    singular: adoptedresource
+  scope: Namespaced
+  versions:
+  - name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        description: AdoptedResource is the schema for the AdoptedResource API.
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: AdoptedResourceSpec defines the desired state of the AdoptedResource.
+            properties:
+              aws:
+                description: AWSIdentifiers provide all unique ways to reference an
+                  AWS resource.
+                properties:
+                  additionalKeys:
+                    additionalProperties:
+                      type: string
+                    description: AdditionalKeys represents any additional arbitrary
+                      identifiers used when describing the target resource.
+                    type: object
+                  arn:
+                    description: ARN is the AWS Resource Name for the resource. It
+                      is a globally unique identifier.
+                    type: string
+                  nameOrID:
+                    description: NameOrId is a user-supplied string identifier for
+                      the resource. It may or may not be globally unique, depending
+                      on the type of resource.
+                    type: string
+                type: object
+              kubernetes:
+                description: ResourceWithMetadata provides the values necessary to
+                  create a Kubernetes resource and override any of its metadata values.
+                properties:
+                  group:
+                    type: string
+                  kind:
+                    type: string
+                  metadata:
+                    description: "ObjectMeta is metadata that all persisted resources
+                      must have, which includes all objects users must create. It
+                      is not possible to use `metav1.ObjectMeta` inside spec, as the
+                      controller-gen automatically converts this to an arbitrary string-string
+                      map. https://github.com/kubernetes-sigs/controller-tools/issues/385
+                      \n Active discussion about inclusion of this field in the spec
+                      is happening in this PR: https://github.com/kubernetes-sigs/controller-tools/pull/395
+                      \n Until this is allowed, or if it never is, we will produce
+                      a subset of the object meta that contains only the fields which
+                      the user is allowed to modify in the metadata."
+                    properties:
+                      annotations:
+                        additionalProperties:
+                          type: string
+                        description: 'Annotations is an unstructured key value map
+                          stored with a resource that may be set by external tools
+                          to store and retrieve arbitrary metadata. They are not queryable
+                          and should be preserved when modifying objects. More info:
+                          http://kubernetes.io/docs/user-guide/annotations'
+                        type: object
+                      generateName:
+                        description: "GenerateName is an optional prefix, used by
+                          the server, to generate a unique name ONLY IF the Name field
+                          has not been provided. If this field is used, the name returned
+                          to the client will be different than the name passed. This
+                          value will also be combined with a unique suffix. The provided
+                          value has the same validation rules as the Name field, and
+                          may be truncated by the length of the suffix required to
+                          make the value unique on the server. \n If this field is
+                          specified and the generated name exists, the server will
+                          NOT return a 409 - instead, it will either return 201 Created
+                          or 500 with Reason ServerTimeout indicating a unique name
+                          could not be found in the time allotted, and the client
+                          should retry (optionally after the time indicated in the
+                          Retry-After header). \n Applied only if Name is not specified.
+                          More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#idempotency"
+                        type: string
+                      labels:
+                        additionalProperties:
+                          type: string
+                        description: 'Map of string keys and values that can be used
+                          to organize and categorize (scope and select) objects. May
+                          match selectors of replication controllers and services.
+                          More info: http://kubernetes.io/docs/user-guide/labels'
+                        type: object
+                      name:
+                        description: 'Name must be unique within a namespace. Is required
+                          when creating resources, although some resources may allow
+                          a client to request the generation of an appropriate name
+                          automatically. Name is primarily intended for creation idempotence
+                          and configuration definition. Cannot be updated. More info:
+                          http://kubernetes.io/docs/user-guide/identifiers#names'
+                        type: string
+                      namespace:
+                        description: "Namespace defines the space within each name
+                          must be unique. An empty namespace is equivalent to the
+                          \"default\" namespace, but \"default\" is the canonical
+                          representation. Not all objects are required to be scoped
+                          to a namespace - the value of this field for those objects
+                          will be empty. \n Must be a DNS_LABEL. Cannot be updated.
+                          More info: http://kubernetes.io/docs/user-guide/namespaces"
+                        type: string
+                      ownerReferences:
+                        description: List of objects depended by this object. If ALL
+                          objects in the list have been deleted, this object will
+                          be garbage collected. If this object is managed by a controller,
+                          then an entry in this list will point to this controller,
+                          with the controller field set to true. There cannot be more
+                          than one managing controller.
+                        items:
+                          description: OwnerReference contains enough information
+                            to let you identify an owning object. An owning object
+                            must be in the same namespace as the dependent, or be
+                            cluster-scoped, so there is no namespace field.
+                          properties:
+                            apiVersion:
+                              description: API version of the referent.
+                              type: string
+                            blockOwnerDeletion:
+                              description: If true, AND if the owner has the "foregroundDeletion"
+                                finalizer, then the owner cannot be deleted from the
+                                key-value store until this reference is removed. Defaults
+                                to false. To set this field, a user needs "delete"
+                                permission of the owner, otherwise 422 (Unprocessable
+                                Entity) will be returned.
+                              type: boolean
+                            controller:
+                              description: If true, this reference points to the managing
+                                controller.
+                              type: boolean
+                            kind:
+                              description: 'Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+                              type: string
+                            name:
+                              description: 'Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names'
+                              type: string
+                            uid:
+                              description: 'UID of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#uids'
+                              type: string
+                          required:
+                          - apiVersion
+                          - kind
+                          - name
+                          - uid
+                          type: object
+                        type: array
+                    type: object
+                required:
+                - group
+                - kind
+                type: object
+            required:
+            - aws
+            - kubernetes
+            type: object
+          status:
+            description: AdoptedResourceStatus defines the observed status of the
+              AdoptedResource.
+            properties:
+              conditions:
+                description: A collection of `ackv1alpha1.Condition` objects that
+                  describe the various terminal states of the adopted resource CR
+                  and its target custom resource
+                items:
+                  description: Condition is the common struct used by all CRDs managed
+                    by ACK service controllers to indicate terminal states  of the
+                    CR and its backend AWS service API resource
+                  properties:
+                    lastTransitionTime:
+                      description: Last time the condition transitioned from one status
+                        to another.
+                      format: date-time
+                      type: string
+                    message:
+                      description: A human readable message indicating details about
+                        the transition.
+                      type: string
+                    reason:
+                      description: The reason for the condition's last transition.
+                      type: string
+                    status:
+                      description: Status of the condition, one of True, False, Unknown.
+                      type: string
+                    type:
+                      description: Type is the type of the Condition
+                      type: string
+                  required:
+                  - status
+                  - type
+                  type: object
+                type: array
+            required:
+            - conditions
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions:
+  - v1alpha1
+
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  name: fieldexports.services.k8s.aws
+spec:
+  group: services.k8s.aws
+  names:
+    kind: FieldExport
+    listKind: FieldExportList
+    plural: fieldexports
+    singular: fieldexport
+  scope: Namespaced
+  versions:
+  - name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        description: FieldExport is the schema for the FieldExport API.
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: FieldExportSpec defines the desired state of the FieldExport.
+            properties:
+              from:
+                description: ResourceFieldSelector provides the values necessary to
+                  identify an individual field on an individual K8s resource.
+                properties:
+                  path:
+                    type: string
+                  resource:
+                    description: NamespacedResource provides all the values necessary
+                      to identify an ACK resource of a given type (within the same
+                      namespace as the custom resource containing this type).
+                    properties:
+                      group:
+                        type: string
+                      kind:
+                        type: string
+                      name:
+                        type: string
+                    required:
+                    - group
+                    - kind
+                    - name
+                    type: object
+                required:
+                - path
+                - resource
+                type: object
+              to:
+                description: FieldExportTarget provides the values necessary to identify
+                  the output path for a field export.
+                properties:
+                  key:
+                    description: Key overrides the default value (`<namespace>.<FieldExport-resource-name>`)
+                      for the FieldExport target
+                    type: string
+                  kind:
+                    description: FieldExportOutputType represents all types that can
+                      be produced by a field export operation
+                    enum:
+                    - configmap
+                    - secret
+                    type: string
+                  name:
+                    type: string
+                  namespace:
+                    description: Namespace is marked as optional, so we cannot compose
+                      `NamespacedName`
+                    type: string
+                required:
+                - kind
+                - name
+                type: object
+            required:
+            - from
+            - to
+            type: object
+          status:
+            description: FieldExportStatus defines the observed status of the FieldExport.
+            properties:
+              conditions:
+                description: A collection of `ackv1alpha1.Condition` objects that
+                  describe the various recoverable states of the field CR
+                items:
+                  description: Condition is the common struct used by all CRDs managed
+                    by ACK service controllers to indicate terminal states  of the
+                    CR and its backend AWS service API resource
+                  properties:
+                    lastTransitionTime:
+                      description: Last time the condition transitioned from one status
+                        to another.
+                      format: date-time
+                      type: string
+                    message:
+                      description: A human readable message indicating details about
+                        the transition.
+                      type: string
+                    reason:
+                      description: The reason for the condition's last transition.
+                      type: string
+                    status:
+                      description: Status of the condition, one of True, False, Unknown.
+                      type: string
+                    type:
+                      description: Type is the type of the Condition
+                      type: string
+                  required:
+                  - status
+                  - type
+                  type: object
+                type: array
+            required:
+            - conditions
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: null
+  storedVersions:
+  - v1alpha1
+
+---

@@ -1,0 +1,1824 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  name: aliases.lambda.services.k8s.aws
+spec:
+  group: lambda.services.k8s.aws
+  names:
+    kind: Alias
+    listKind: AliasList
+    plural: aliases
+    singular: alias
+  scope: Namespaced
+  versions:
+  - name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        description: Alias is the Schema for the Aliases API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            properties:
+              description:
+                description: A description of the alias.
+                type: string
+              functionName:
+                description: "The name of the Lambda function. \n Name formats \n
+                  - Function name - MyFunction. \n - Function ARN - arn:aws:lambda:us-west-2:123456789012:function:MyFunction.
+                  \n - Partial ARN - 123456789012:function:MyFunction. \n The length
+                  constraint applies only to the full ARN. If you specify only the
+                  function name, it is limited to 64 characters in length."
+                type: string
+              functionRef:
+                description: 'AWSResourceReferenceWrapper provides a wrapper around
+                  *AWSResourceReference type to provide more user friendly syntax
+                  for references using ''from'' field Ex: APIIDRef: from: name: my-api'
+                properties:
+                  from:
+                    description: AWSResourceReference provides all the values necessary
+                      to reference another k8s resource for finding the identifier(Id/ARN/Name)
+                    properties:
+                      name:
+                        type: string
+                    type: object
+                type: object
+              functionVersion:
+                description: The function version that the alias invokes.
+                type: string
+              name:
+                description: The name of the alias.
+                type: string
+              routingConfig:
+                description: The routing configuration (https://docs.aws.amazon.com/lambda/latest/dg/configuration-aliases.html#configuring-alias-routing)
+                  of the alias.
+                properties:
+                  additionalVersionWeights:
+                    additionalProperties:
+                      type: number
+                    type: object
+                type: object
+            required:
+            - functionVersion
+            - name
+            type: object
+          status:
+            description: AliasStatus defines the observed state of Alias
+            properties:
+              ackResourceMetadata:
+                description: All CRs managed by ACK have a common `Status.ACKResourceMetadata`
+                  member that is used to contain resource sync state, account ownership,
+                  constructed ARN for the resource
+                properties:
+                  arn:
+                    description: 'ARN is the Amazon Resource Name for the resource.
+                      This is a globally-unique identifier and is set only by the
+                      ACK service controller once the controller has orchestrated
+                      the creation of the resource OR when it has verified that an
+                      "adopted" resource (a resource where the ARN annotation was
+                      set by the Kubernetes user on the CR) exists and matches the
+                      supplied CR''s Spec field values. TODO(vijat@): Find a better
+                      strategy for resources that do not have ARN in CreateOutputResponse
+                      https://github.com/aws/aws-controllers-k8s/issues/270'
+                    type: string
+                  ownerAccountID:
+                    description: OwnerAccountID is the AWS Account ID of the account
+                      that owns the backend AWS service API resource.
+                    type: string
+                  region:
+                    description: Region is the AWS region in which the resource exists
+                      or will exist.
+                    type: string
+                required:
+                - ownerAccountID
+                - region
+                type: object
+              conditions:
+                description: All CRS managed by ACK have a common `Status.Conditions`
+                  member that contains a collection of `ackv1alpha1.Condition` objects
+                  that describe the various terminal states of the CR and its backend
+                  AWS service API resource
+                items:
+                  description: Condition is the common struct used by all CRDs managed
+                    by ACK service controllers to indicate terminal states  of the
+                    CR and its backend AWS service API resource
+                  properties:
+                    lastTransitionTime:
+                      description: Last time the condition transitioned from one status
+                        to another.
+                      format: date-time
+                      type: string
+                    message:
+                      description: A human readable message indicating details about
+                        the transition.
+                      type: string
+                    reason:
+                      description: The reason for the condition's last transition.
+                      type: string
+                    status:
+                      description: Status of the condition, one of True, False, Unknown.
+                      type: string
+                    type:
+                      description: Type is the type of the Condition
+                      type: string
+                  required:
+                  - status
+                  - type
+                  type: object
+                type: array
+              revisionID:
+                description: A unique identifier that changes when you update the
+                  alias.
+                type: string
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: null
+  storedVersions:
+  - v1alpha1
+
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  name: codesigningconfigs.lambda.services.k8s.aws
+spec:
+  group: lambda.services.k8s.aws
+  names:
+    kind: CodeSigningConfig
+    listKind: CodeSigningConfigList
+    plural: codesigningconfigs
+    singular: codesigningconfig
+  scope: Namespaced
+  versions:
+  - name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        description: CodeSigningConfig is the Schema for the CodeSigningConfigs API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: "CodeSigningConfigSpec defines the desired state of CodeSigningConfig.
+              \n Details about a Code signing configuration (https://docs.aws.amazon.com/lambda/latest/dg/configuration-codesigning.html)."
+            properties:
+              allowedPublishers:
+                description: Signing profiles for this code signing configuration.
+                properties:
+                  signingProfileVersionARNs:
+                    items:
+                      type: string
+                    type: array
+                type: object
+              codeSigningPolicies:
+                description: The code signing policies define the actions to take
+                  if the validation checks fail.
+                properties:
+                  untrustedArtifactOnDeployment:
+                    type: string
+                type: object
+              description:
+                description: Descriptive name for this code signing configuration.
+                type: string
+            required:
+            - allowedPublishers
+            type: object
+          status:
+            description: CodeSigningConfigStatus defines the observed state of CodeSigningConfig
+            properties:
+              ackResourceMetadata:
+                description: All CRs managed by ACK have a common `Status.ACKResourceMetadata`
+                  member that is used to contain resource sync state, account ownership,
+                  constructed ARN for the resource
+                properties:
+                  arn:
+                    description: 'ARN is the Amazon Resource Name for the resource.
+                      This is a globally-unique identifier and is set only by the
+                      ACK service controller once the controller has orchestrated
+                      the creation of the resource OR when it has verified that an
+                      "adopted" resource (a resource where the ARN annotation was
+                      set by the Kubernetes user on the CR) exists and matches the
+                      supplied CR''s Spec field values. TODO(vijat@): Find a better
+                      strategy for resources that do not have ARN in CreateOutputResponse
+                      https://github.com/aws/aws-controllers-k8s/issues/270'
+                    type: string
+                  ownerAccountID:
+                    description: OwnerAccountID is the AWS Account ID of the account
+                      that owns the backend AWS service API resource.
+                    type: string
+                  region:
+                    description: Region is the AWS region in which the resource exists
+                      or will exist.
+                    type: string
+                required:
+                - ownerAccountID
+                - region
+                type: object
+              codeSigningConfigID:
+                description: Unique identifer for the Code signing configuration.
+                type: string
+              conditions:
+                description: All CRS managed by ACK have a common `Status.Conditions`
+                  member that contains a collection of `ackv1alpha1.Condition` objects
+                  that describe the various terminal states of the CR and its backend
+                  AWS service API resource
+                items:
+                  description: Condition is the common struct used by all CRDs managed
+                    by ACK service controllers to indicate terminal states  of the
+                    CR and its backend AWS service API resource
+                  properties:
+                    lastTransitionTime:
+                      description: Last time the condition transitioned from one status
+                        to another.
+                      format: date-time
+                      type: string
+                    message:
+                      description: A human readable message indicating details about
+                        the transition.
+                      type: string
+                    reason:
+                      description: The reason for the condition's last transition.
+                      type: string
+                    status:
+                      description: Status of the condition, one of True, False, Unknown.
+                      type: string
+                    type:
+                      description: Type is the type of the Condition
+                      type: string
+                  required:
+                  - status
+                  - type
+                  type: object
+                type: array
+              lastModified:
+                description: The date and time that the Code signing configuration
+                  was last modified, in ISO-8601 format (YYYY-MM-DDThh:mm:ss.sTZD).
+                type: string
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: null
+  storedVersions:
+  - v1alpha1
+
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  name: eventsourcemappings.lambda.services.k8s.aws
+spec:
+  group: lambda.services.k8s.aws
+  names:
+    kind: EventSourceMapping
+    listKind: EventSourceMappingList
+    plural: eventsourcemappings
+    singular: eventsourcemapping
+  scope: Namespaced
+  versions:
+  - name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        description: EventSourceMapping is the Schema for the EventSourceMappings
+          API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: EventSourceMappingSpec defines the desired state of EventSourceMapping.
+            properties:
+              amazonManagedKafkaEventSourceConfig:
+                description: Specific configuration settings for an Amazon Managed
+                  Streaming for Apache Kafka (Amazon MSK) event source.
+                properties:
+                  consumerGroupID:
+                    type: string
+                type: object
+              batchSize:
+                description: "The maximum number of records in each batch that Lambda
+                  pulls from your stream or queue and sends to your function. Lambda
+                  passes all of the records in the batch to the function in a single
+                  call, up to the payload limit for synchronous invocation (6 MB).
+                  \n * Amazon Kinesis – Default 100. Max 10,000. \n * Amazon DynamoDB
+                  Streams – Default 100. Max 10,000. \n * Amazon Simple Queue Service
+                  – Default 10. For standard queues the max is 10,000. For FIFO queues
+                  the max is 10. \n * Amazon Managed Streaming for Apache Kafka –
+                  Default 100. Max 10,000. \n * Self-managed Apache Kafka – Default
+                  100. Max 10,000. \n * Amazon MQ (ActiveMQ and RabbitMQ) – Default
+                  100. Max 10,000."
+                format: int64
+                type: integer
+              bisectBatchOnFunctionError:
+                description: (Streams only) If the function returns an error, split
+                  the batch in two and retry.
+                type: boolean
+              destinationConfig:
+                description: (Streams only) An Amazon SQS queue or Amazon SNS topic
+                  destination for discarded records.
+                properties:
+                  onFailure:
+                    description: A destination for events that failed processing.
+                    properties:
+                      destination:
+                        type: string
+                    type: object
+                  onSuccess:
+                    description: A destination for events that were processed successfully.
+                    properties:
+                      destination:
+                        type: string
+                    type: object
+                type: object
+              enabled:
+                description: "When true, the event source mapping is active. When
+                  false, Lambda pauses polling and invocation. \n Default: True"
+                type: boolean
+              eventSourceARN:
+                description: "The Amazon Resource Name (ARN) of the event source.
+                  \n * Amazon Kinesis – The ARN of the data stream or a stream consumer.
+                  \n * Amazon DynamoDB Streams – The ARN of the stream. \n * Amazon
+                  Simple Queue Service – The ARN of the queue. \n * Amazon Managed
+                  Streaming for Apache Kafka – The ARN of the cluster. \n * Amazon
+                  MQ – The ARN of the broker."
+                type: string
+              filterCriteria:
+                description: An object that defines the filter criteria that determine
+                  whether Lambda should process an event. For more information, see
+                  Lambda event filtering (https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventfiltering.html).
+                properties:
+                  filters:
+                    items:
+                      description: A structure within a FilterCriteria object that
+                        defines an event filtering pattern.
+                      properties:
+                        pattern:
+                          type: string
+                      type: object
+                    type: array
+                type: object
+              functionName:
+                description: "The name of the Lambda function. \n Name formats \n
+                  * Function name – MyFunction. \n * Function ARN – arn:aws:lambda:us-west-2:123456789012:function:MyFunction.
+                  \n * Version or Alias ARN – arn:aws:lambda:us-west-2:123456789012:function:MyFunction:PROD.
+                  \n * Partial ARN – 123456789012:function:MyFunction. \n The length
+                  constraint applies only to the full ARN. If you specify only the
+                  function name, it's limited to 64 characters in length."
+                type: string
+              functionRef:
+                description: 'AWSResourceReferenceWrapper provides a wrapper around
+                  *AWSResourceReference type to provide more user friendly syntax
+                  for references using ''from'' field Ex: APIIDRef: from: name: my-api'
+                properties:
+                  from:
+                    description: AWSResourceReference provides all the values necessary
+                      to reference another k8s resource for finding the identifier(Id/ARN/Name)
+                    properties:
+                      name:
+                        type: string
+                    type: object
+                type: object
+              functionResponseTypes:
+                description: (Streams and Amazon SQS) A list of current response type
+                  enums applied to the event source mapping.
+                items:
+                  type: string
+                type: array
+              maximumBatchingWindowInSeconds:
+                description: "The maximum amount of time, in seconds, that Lambda
+                  spends gathering records before invoking the function. You can configure
+                  MaximumBatchingWindowInSeconds to any value from 0 seconds to 300
+                  seconds in increments of seconds. \n For streams and Amazon SQS
+                  event sources, the default batching window is 0 seconds. For Amazon
+                  MSK, Self-managed Apache Kafka, and Amazon MQ event sources, the
+                  default batching window is 500 ms. Note that because you can only
+                  change MaximumBatchingWindowInSeconds in increments of seconds,
+                  you cannot revert back to the 500 ms default batching window after
+                  you have changed it. To restore the default batching window, you
+                  must create a new event source mapping. \n Related setting: For
+                  streams and Amazon SQS event sources, when you set BatchSize to
+                  a value greater than 10, you must set MaximumBatchingWindowInSeconds
+                  to at least 1."
+                format: int64
+                type: integer
+              maximumRecordAgeInSeconds:
+                description: (Streams only) Discard records older than the specified
+                  age. The default value is infinite (-1).
+                format: int64
+                type: integer
+              maximumRetryAttempts:
+                description: (Streams only) Discard records after the specified number
+                  of retries. The default value is infinite (-1). When set to infinite
+                  (-1), failed records are retried until the record expires.
+                format: int64
+                type: integer
+              parallelizationFactor:
+                description: (Streams only) The number of batches to process from
+                  each shard concurrently.
+                format: int64
+                type: integer
+              queueRefs:
+                items:
+                  description: 'AWSResourceReferenceWrapper provides a wrapper around
+                    *AWSResourceReference type to provide more user friendly syntax
+                    for references using ''from'' field Ex: APIIDRef: from: name:
+                    my-api'
+                  properties:
+                    from:
+                      description: AWSResourceReference provides all the values necessary
+                        to reference another k8s resource for finding the identifier(Id/ARN/Name)
+                      properties:
+                        name:
+                          type: string
+                      type: object
+                  type: object
+                type: array
+              queues:
+                description: (MQ) The name of the Amazon MQ broker destination queue
+                  to consume.
+                items:
+                  type: string
+                type: array
+              scalingConfig:
+                description: (Amazon SQS only) The scaling configuration for the event
+                  source. For more information, see Configuring maximum concurrency
+                  for Amazon SQS event sources (https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html#events-sqs-max-concurrency).
+                properties:
+                  maximumConcurrency:
+                    format: int64
+                    type: integer
+                type: object
+              selfManagedEventSource:
+                description: The self-managed Apache Kafka cluster to receive records
+                  from.
+                properties:
+                  endpoints:
+                    additionalProperties:
+                      items:
+                        type: string
+                      type: array
+                    type: object
+                type: object
+              selfManagedKafkaEventSourceConfig:
+                description: Specific configuration settings for a self-managed Apache
+                  Kafka event source.
+                properties:
+                  consumerGroupID:
+                    type: string
+                type: object
+              sourceAccessConfigurations:
+                description: An array of authentication protocols or VPC components
+                  required to secure your event source.
+                items:
+                  description: To secure and define access to your event source, you
+                    can specify the authentication protocol, VPC components, or virtual
+                    host.
+                  properties:
+                    type_:
+                      type: string
+                    uRI:
+                      type: string
+                  type: object
+                type: array
+              startingPosition:
+                description: The position in a stream from which to start reading.
+                  Required for Amazon Kinesis, Amazon DynamoDB, and Amazon MSK Streams
+                  sources. AT_TIMESTAMP is supported only for Amazon Kinesis streams.
+                type: string
+              startingPositionTimestamp:
+                description: With StartingPosition set to AT_TIMESTAMP, the time from
+                  which to start reading.
+                format: date-time
+                type: string
+              topics:
+                description: The name of the Kafka topic.
+                items:
+                  type: string
+                type: array
+              tumblingWindowInSeconds:
+                description: (Streams only) The duration in seconds of a processing
+                  window. The range is between 1 second and 900 seconds.
+                format: int64
+                type: integer
+            type: object
+          status:
+            description: EventSourceMappingStatus defines the observed state of EventSourceMapping
+            properties:
+              ackResourceMetadata:
+                description: All CRs managed by ACK have a common `Status.ACKResourceMetadata`
+                  member that is used to contain resource sync state, account ownership,
+                  constructed ARN for the resource
+                properties:
+                  arn:
+                    description: 'ARN is the Amazon Resource Name for the resource.
+                      This is a globally-unique identifier and is set only by the
+                      ACK service controller once the controller has orchestrated
+                      the creation of the resource OR when it has verified that an
+                      "adopted" resource (a resource where the ARN annotation was
+                      set by the Kubernetes user on the CR) exists and matches the
+                      supplied CR''s Spec field values. TODO(vijat@): Find a better
+                      strategy for resources that do not have ARN in CreateOutputResponse
+                      https://github.com/aws/aws-controllers-k8s/issues/270'
+                    type: string
+                  ownerAccountID:
+                    description: OwnerAccountID is the AWS Account ID of the account
+                      that owns the backend AWS service API resource.
+                    type: string
+                  region:
+                    description: Region is the AWS region in which the resource exists
+                      or will exist.
+                    type: string
+                required:
+                - ownerAccountID
+                - region
+                type: object
+              conditions:
+                description: All CRS managed by ACK have a common `Status.Conditions`
+                  member that contains a collection of `ackv1alpha1.Condition` objects
+                  that describe the various terminal states of the CR and its backend
+                  AWS service API resource
+                items:
+                  description: Condition is the common struct used by all CRDs managed
+                    by ACK service controllers to indicate terminal states  of the
+                    CR and its backend AWS service API resource
+                  properties:
+                    lastTransitionTime:
+                      description: Last time the condition transitioned from one status
+                        to another.
+                      format: date-time
+                      type: string
+                    message:
+                      description: A human readable message indicating details about
+                        the transition.
+                      type: string
+                    reason:
+                      description: The reason for the condition's last transition.
+                      type: string
+                    status:
+                      description: Status of the condition, one of True, False, Unknown.
+                      type: string
+                    type:
+                      description: Type is the type of the Condition
+                      type: string
+                  required:
+                  - status
+                  - type
+                  type: object
+                type: array
+              functionARN:
+                description: The ARN of the Lambda function.
+                type: string
+              lastModified:
+                description: The date that the event source mapping was last updated
+                  or that its state changed.
+                format: date-time
+                type: string
+              lastProcessingResult:
+                description: The result of the last Lambda invocation of your function.
+                type: string
+              state:
+                description: 'The state of the event source mapping. It can be one
+                  of the following: Creating, Enabling, Enabled, Disabling, Disabled,
+                  Updating, or Deleting.'
+                type: string
+              stateTransitionReason:
+                description: Indicates whether a user or Lambda made the last change
+                  to the event source mapping.
+                type: string
+              uuid:
+                description: The identifier of the event source mapping.
+                type: string
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: null
+  storedVersions:
+  - v1alpha1
+
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  name: functions.lambda.services.k8s.aws
+spec:
+  group: lambda.services.k8s.aws
+  names:
+    kind: Function
+    listKind: FunctionList
+    plural: functions
+    singular: function
+  scope: Namespaced
+  versions:
+  - name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        description: Function is the Schema for the Functions API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: FunctionSpec defines the desired state of Function.
+            properties:
+              architectures:
+                description: The instruction set architecture that the function supports.
+                  Enter a string array with one of the valid values (arm64 or x86_64).
+                  The default value is x86_64.
+                items:
+                  type: string
+                type: array
+              code:
+                description: The code for the function.
+                properties:
+                  imageURI:
+                    type: string
+                  s3Bucket:
+                    type: string
+                  s3BucketRef:
+                    description: Reference field for S3Bucket
+                    properties:
+                      from:
+                        description: AWSResourceReference provides all the values
+                          necessary to reference another k8s resource for finding
+                          the identifier(Id/ARN/Name)
+                        properties:
+                          name:
+                            type: string
+                        type: object
+                    type: object
+                  s3Key:
+                    type: string
+                  s3ObjectVersion:
+                    type: string
+                  zipFile:
+                    format: byte
+                    type: string
+                type: object
+              codeSigningConfigARN:
+                description: To enable code signing for this function, specify the
+                  ARN of a code-signing configuration. A code-signing configuration
+                  includes a set of signing profiles, which define the trusted publishers
+                  for this function.
+                type: string
+              deadLetterConfig:
+                description: A dead-letter queue configuration that specifies the
+                  queue or topic where Lambda sends asynchronous events when they
+                  fail processing. For more information, see Dead-letter queues (https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#invocation-dlq).
+                properties:
+                  targetARN:
+                    type: string
+                type: object
+              description:
+                description: A description of the function.
+                type: string
+              environment:
+                description: Environment variables that are accessible from function
+                  code during execution.
+                properties:
+                  variables:
+                    additionalProperties:
+                      type: string
+                    type: object
+                type: object
+              ephemeralStorage:
+                description: The size of the function's /tmp directory in MB. The
+                  default value is 512, but can be any whole number between 512 and
+                  10,240 MB.
+                properties:
+                  size:
+                    format: int64
+                    type: integer
+                type: object
+              fileSystemConfigs:
+                description: Connection settings for an Amazon EFS file system.
+                items:
+                  description: Details about the connection between a Lambda function
+                    and an Amazon EFS file system (https://docs.aws.amazon.com/lambda/latest/dg/configuration-filesystem.html).
+                  properties:
+                    arn:
+                      type: string
+                    localMountPath:
+                      type: string
+                  type: object
+                type: array
+              handler:
+                description: The name of the method within your code that Lambda calls
+                  to run your function. Handler is required if the deployment package
+                  is a .zip file archive. The format includes the file name. It can
+                  also include namespaces and other qualifiers, depending on the runtime.
+                  For more information, see Lambda programming model (https://docs.aws.amazon.com/lambda/latest/dg/foundation-progmodel.html).
+                type: string
+              imageConfig:
+                description: Container image configuration values (https://docs.aws.amazon.com/lambda/latest/dg/configuration-images.html#configuration-images-settings)
+                  that override the values in the container image Dockerfile.
+                properties:
+                  command:
+                    items:
+                      type: string
+                    type: array
+                  entryPoint:
+                    items:
+                      type: string
+                    type: array
+                  workingDirectory:
+                    type: string
+                type: object
+              kmsKeyARN:
+                description: The ARN of the Key Management Service (KMS) key that's
+                  used to encrypt your function's environment variables. If it's not
+                  provided, Lambda uses a default service key.
+                type: string
+              kmsKeyRef:
+                description: 'AWSResourceReferenceWrapper provides a wrapper around
+                  *AWSResourceReference type to provide more user friendly syntax
+                  for references using ''from'' field Ex: APIIDRef: from: name: my-api'
+                properties:
+                  from:
+                    description: AWSResourceReference provides all the values necessary
+                      to reference another k8s resource for finding the identifier(Id/ARN/Name)
+                    properties:
+                      name:
+                        type: string
+                    type: object
+                type: object
+              layers:
+                description: A list of function layers (https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html)
+                  to add to the function's execution environment. Specify each layer
+                  by its ARN, including the version.
+                items:
+                  type: string
+                type: array
+              memorySize:
+                description: The amount of memory available to the function (https://docs.aws.amazon.com/lambda/latest/dg/configuration-function-common.html#configuration-memory-console)
+                  at runtime. Increasing the function memory also increases its CPU
+                  allocation. The default value is 128 MB. The value can be any multiple
+                  of 1 MB.
+                format: int64
+                type: integer
+              name:
+                description: "The name of the Lambda function. \n Name formats \n
+                  * Function name – my-function. \n * Function ARN – arn:aws:lambda:us-west-2:123456789012:function:my-function.
+                  \n * Partial ARN – 123456789012:function:my-function. \n The length
+                  constraint applies only to the full ARN. If you specify only the
+                  function name, it is limited to 64 characters in length."
+                type: string
+              packageType:
+                description: The type of deployment package. Set to Image for container
+                  image and set to Zip for .zip file archive.
+                type: string
+              publish:
+                description: Set to true to publish the first version of the function
+                  during creation.
+                type: boolean
+              reservedConcurrentExecutions:
+                description: The number of simultaneous executions to reserve for
+                  the function.
+                format: int64
+                type: integer
+              role:
+                description: The Amazon Resource Name (ARN) of the function's execution
+                  role.
+                type: string
+              runtime:
+                description: The identifier of the function's runtime (https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html).
+                  Runtime is required if the deployment package is a .zip file archive.
+                type: string
+              snapStart:
+                description: The function's SnapStart (https://docs.aws.amazon.com/lambda/latest/dg/snapstart.html)
+                  setting.
+                properties:
+                  applyOn:
+                    type: string
+                type: object
+              tags:
+                additionalProperties:
+                  type: string
+                description: A list of tags (https://docs.aws.amazon.com/lambda/latest/dg/tagging.html)
+                  to apply to the function.
+                type: object
+              timeout:
+                description: The amount of time (in seconds) that Lambda allows a
+                  function to run before stopping it. The default is 3 seconds. The
+                  maximum allowed value is 900 seconds. For more information, see
+                  Lambda execution environment (https://docs.aws.amazon.com/lambda/latest/dg/runtimes-context.html).
+                format: int64
+                type: integer
+              tracingConfig:
+                description: Set Mode to Active to sample and trace a subset of incoming
+                  requests with X-Ray (https://docs.aws.amazon.com/lambda/latest/dg/services-xray.html).
+                properties:
+                  mode:
+                    type: string
+                type: object
+              vpcConfig:
+                description: For network connectivity to Amazon Web Services resources
+                  in a VPC, specify a list of security groups and subnets in the VPC.
+                  When you connect a function to a VPC, it can access resources and
+                  the internet only through that VPC. For more information, see Configuring
+                  a Lambda function to access resources in a VPC (https://docs.aws.amazon.com/lambda/latest/dg/configuration-vpc.html).
+                properties:
+                  securityGroupIDs:
+                    items:
+                      type: string
+                    type: array
+                  securityGroupRefs:
+                    description: Reference field for SecurityGroupIDs
+                    items:
+                      description: 'AWSResourceReferenceWrapper provides a wrapper
+                        around *AWSResourceReference type to provide more user friendly
+                        syntax for references using ''from'' field Ex: APIIDRef: from:
+                        name: my-api'
+                      properties:
+                        from:
+                          description: AWSResourceReference provides all the values
+                            necessary to reference another k8s resource for finding
+                            the identifier(Id/ARN/Name)
+                          properties:
+                            name:
+                              type: string
+                          type: object
+                      type: object
+                    type: array
+                  subnetIDs:
+                    items:
+                      type: string
+                    type: array
+                  subnetRefs:
+                    description: Reference field for SubnetIDs
+                    items:
+                      description: 'AWSResourceReferenceWrapper provides a wrapper
+                        around *AWSResourceReference type to provide more user friendly
+                        syntax for references using ''from'' field Ex: APIIDRef: from:
+                        name: my-api'
+                      properties:
+                        from:
+                          description: AWSResourceReference provides all the values
+                            necessary to reference another k8s resource for finding
+                            the identifier(Id/ARN/Name)
+                          properties:
+                            name:
+                              type: string
+                          type: object
+                      type: object
+                    type: array
+                type: object
+            required:
+            - code
+            - name
+            - role
+            type: object
+          status:
+            description: FunctionStatus defines the observed state of Function
+            properties:
+              ackResourceMetadata:
+                description: All CRs managed by ACK have a common `Status.ACKResourceMetadata`
+                  member that is used to contain resource sync state, account ownership,
+                  constructed ARN for the resource
+                properties:
+                  arn:
+                    description: 'ARN is the Amazon Resource Name for the resource.
+                      This is a globally-unique identifier and is set only by the
+                      ACK service controller once the controller has orchestrated
+                      the creation of the resource OR when it has verified that an
+                      "adopted" resource (a resource where the ARN annotation was
+                      set by the Kubernetes user on the CR) exists and matches the
+                      supplied CR''s Spec field values. TODO(vijat@): Find a better
+                      strategy for resources that do not have ARN in CreateOutputResponse
+                      https://github.com/aws/aws-controllers-k8s/issues/270'
+                    type: string
+                  ownerAccountID:
+                    description: OwnerAccountID is the AWS Account ID of the account
+                      that owns the backend AWS service API resource.
+                    type: string
+                  region:
+                    description: Region is the AWS region in which the resource exists
+                      or will exist.
+                    type: string
+                required:
+                - ownerAccountID
+                - region
+                type: object
+              codeSHA256:
+                description: The SHA256 hash of the function's deployment package.
+                type: string
+              codeSize:
+                description: The size of the function's deployment package, in bytes.
+                format: int64
+                type: integer
+              conditions:
+                description: All CRS managed by ACK have a common `Status.Conditions`
+                  member that contains a collection of `ackv1alpha1.Condition` objects
+                  that describe the various terminal states of the CR and its backend
+                  AWS service API resource
+                items:
+                  description: Condition is the common struct used by all CRDs managed
+                    by ACK service controllers to indicate terminal states  of the
+                    CR and its backend AWS service API resource
+                  properties:
+                    lastTransitionTime:
+                      description: Last time the condition transitioned from one status
+                        to another.
+                      format: date-time
+                      type: string
+                    message:
+                      description: A human readable message indicating details about
+                        the transition.
+                      type: string
+                    reason:
+                      description: The reason for the condition's last transition.
+                      type: string
+                    status:
+                      description: Status of the condition, one of True, False, Unknown.
+                      type: string
+                    type:
+                      description: Type is the type of the Condition
+                      type: string
+                  required:
+                  - status
+                  - type
+                  type: object
+                type: array
+              imageConfigResponse:
+                description: The function's image configuration values.
+                properties:
+                  error:
+                    description: Error response to GetFunctionConfiguration.
+                    properties:
+                      errorCode:
+                        type: string
+                      message:
+                        type: string
+                    type: object
+                  imageConfig:
+                    description: Configuration values that override the container
+                      image Dockerfile settings. For more information, see Container
+                      image settings (https://docs.aws.amazon.com/lambda/latest/dg/images-create.html#images-parms).
+                    properties:
+                      command:
+                        items:
+                          type: string
+                        type: array
+                      entryPoint:
+                        items:
+                          type: string
+                        type: array
+                      workingDirectory:
+                        type: string
+                    type: object
+                type: object
+              lastModified:
+                description: The date and time that the function was last updated,
+                  in ISO-8601 format (https://www.w3.org/TR/NOTE-datetime) (YYYY-MM-DDThh:mm:ss.sTZD).
+                type: string
+              lastUpdateStatus:
+                description: The status of the last update that was performed on the
+                  function. This is first set to Successful after function creation
+                  completes.
+                type: string
+              lastUpdateStatusReason:
+                description: The reason for the last update that was performed on
+                  the function.
+                type: string
+              lastUpdateStatusReasonCode:
+                description: The reason code for the last update that was performed
+                  on the function.
+                type: string
+              layerStatuses:
+                description: The function's layers (https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html).
+                items:
+                  description: An Lambda layer (https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html).
+                  properties:
+                    arn:
+                      type: string
+                    codeSize:
+                      format: int64
+                      type: integer
+                    signingJobARN:
+                      type: string
+                    signingProfileVersionARN:
+                      type: string
+                  type: object
+                type: array
+              masterARN:
+                description: For Lambda@Edge functions, the ARN of the main function.
+                type: string
+              revisionID:
+                description: The latest updated revision of the function or alias.
+                type: string
+              signingJobARN:
+                description: The ARN of the signing job.
+                type: string
+              signingProfileVersionARN:
+                description: The ARN of the signing profile version.
+                type: string
+              state:
+                description: The current state of the function. When the state is
+                  Inactive, you can reactivate the function by invoking it.
+                type: string
+              stateReason:
+                description: The reason for the function's current state.
+                type: string
+              stateReasonCode:
+                description: The reason code for the function's current state. When
+                  the code is Creating, you can't invoke or modify the function.
+                type: string
+              version:
+                description: The version of the Lambda function.
+                type: string
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: null
+  storedVersions:
+  - v1alpha1
+
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  name: functionurlconfigs.lambda.services.k8s.aws
+spec:
+  group: lambda.services.k8s.aws
+  names:
+    kind: FunctionURLConfig
+    listKind: FunctionURLConfigList
+    plural: functionurlconfigs
+    singular: functionurlconfig
+  scope: Namespaced
+  versions:
+  - name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        description: FunctionURLConfig is the Schema for the FunctionURLConfigs API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: "FunctionUrlConfigSpec defines the desired state of FunctionUrlConfig.
+              \n Details about a Lambda function URL."
+            properties:
+              authType:
+                description: The type of authentication that your function URL uses.
+                  Set to AWS_IAM if you want to restrict access to authenticated IAM
+                  users only. Set to NONE if you want to bypass IAM authentication
+                  to create a public endpoint. For more information, see Security
+                  and auth model for Lambda function URLs (https://docs.aws.amazon.com/lambda/latest/dg/urls-auth.html).
+                type: string
+              cors:
+                description: The cross-origin resource sharing (CORS) (https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)
+                  settings for your function URL.
+                properties:
+                  allowCredentials:
+                    type: boolean
+                  allowHeaders:
+                    items:
+                      type: string
+                    type: array
+                  allowMethods:
+                    items:
+                      type: string
+                    type: array
+                  allowOrigins:
+                    items:
+                      type: string
+                    type: array
+                  exposeHeaders:
+                    items:
+                      type: string
+                    type: array
+                  maxAge:
+                    format: int64
+                    type: integer
+                type: object
+              functionName:
+                description: "The name of the Lambda function. \n Name formats \n
+                  * Function name – my-function. \n * Function ARN – arn:aws:lambda:us-west-2:123456789012:function:my-function.
+                  \n * Partial ARN – 123456789012:function:my-function. \n The length
+                  constraint applies only to the full ARN. If you specify only the
+                  function name, it is limited to 64 characters in length."
+                type: string
+              functionRef:
+                description: 'AWSResourceReferenceWrapper provides a wrapper around
+                  *AWSResourceReference type to provide more user friendly syntax
+                  for references using ''from'' field Ex: APIIDRef: from: name: my-api'
+                properties:
+                  from:
+                    description: AWSResourceReference provides all the values necessary
+                      to reference another k8s resource for finding the identifier(Id/ARN/Name)
+                    properties:
+                      name:
+                        type: string
+                    type: object
+                type: object
+              qualifier:
+                description: The alias name.
+                type: string
+            required:
+            - authType
+            type: object
+          status:
+            description: FunctionURLConfigStatus defines the observed state of FunctionURLConfig
+            properties:
+              ackResourceMetadata:
+                description: All CRs managed by ACK have a common `Status.ACKResourceMetadata`
+                  member that is used to contain resource sync state, account ownership,
+                  constructed ARN for the resource
+                properties:
+                  arn:
+                    description: 'ARN is the Amazon Resource Name for the resource.
+                      This is a globally-unique identifier and is set only by the
+                      ACK service controller once the controller has orchestrated
+                      the creation of the resource OR when it has verified that an
+                      "adopted" resource (a resource where the ARN annotation was
+                      set by the Kubernetes user on the CR) exists and matches the
+                      supplied CR''s Spec field values. TODO(vijat@): Find a better
+                      strategy for resources that do not have ARN in CreateOutputResponse
+                      https://github.com/aws/aws-controllers-k8s/issues/270'
+                    type: string
+                  ownerAccountID:
+                    description: OwnerAccountID is the AWS Account ID of the account
+                      that owns the backend AWS service API resource.
+                    type: string
+                  region:
+                    description: Region is the AWS region in which the resource exists
+                      or will exist.
+                    type: string
+                required:
+                - ownerAccountID
+                - region
+                type: object
+              conditions:
+                description: All CRS managed by ACK have a common `Status.Conditions`
+                  member that contains a collection of `ackv1alpha1.Condition` objects
+                  that describe the various terminal states of the CR and its backend
+                  AWS service API resource
+                items:
+                  description: Condition is the common struct used by all CRDs managed
+                    by ACK service controllers to indicate terminal states  of the
+                    CR and its backend AWS service API resource
+                  properties:
+                    lastTransitionTime:
+                      description: Last time the condition transitioned from one status
+                        to another.
+                      format: date-time
+                      type: string
+                    message:
+                      description: A human readable message indicating details about
+                        the transition.
+                      type: string
+                    reason:
+                      description: The reason for the condition's last transition.
+                      type: string
+                    status:
+                      description: Status of the condition, one of True, False, Unknown.
+                      type: string
+                    type:
+                      description: Type is the type of the Condition
+                      type: string
+                  required:
+                  - status
+                  - type
+                  type: object
+                type: array
+              creationTime:
+                description: When the function URL was created, in ISO-8601 format
+                  (https://www.w3.org/TR/NOTE-datetime) (YYYY-MM-DDThh:mm:ss.sTZD).
+                type: string
+              functionARN:
+                description: The Amazon Resource Name (ARN) of your function.
+                type: string
+              functionURL:
+                description: The HTTP URL endpoint for your function.
+                type: string
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: null
+  storedVersions:
+  - v1alpha1
+
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  name: layerversions.lambda.services.k8s.aws
+spec:
+  group: lambda.services.k8s.aws
+  names:
+    kind: LayerVersion
+    listKind: LayerVersionList
+    plural: layerversions
+    singular: layerversion
+  scope: Namespaced
+  versions:
+  - name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        description: LayerVersion is the Schema for the LayerVersions API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: LayerVersionSpec defines the desired state of LayerVersion.
+            properties:
+              compatibleArchitectures:
+                description: A list of compatible instruction set architectures (https://docs.aws.amazon.com/lambda/latest/dg/foundation-arch.html).
+                items:
+                  type: string
+                type: array
+              compatibleRuntimes:
+                description: A list of compatible function runtimes (https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html).
+                  Used for filtering with ListLayers and ListLayerVersions.
+                items:
+                  type: string
+                type: array
+              content:
+                description: The function layer archive.
+                properties:
+                  s3Bucket:
+                    type: string
+                  s3Key:
+                    type: string
+                  s3ObjectVersion:
+                    type: string
+                  zipFile:
+                    format: byte
+                    type: string
+                type: object
+              description:
+                description: The description of the version.
+                type: string
+              layerName:
+                description: The name or Amazon Resource Name (ARN) of the layer.
+                type: string
+              licenseInfo:
+                description: "The layer's software license. It can be any of the following:
+                  \n - An SPDX license identifier (https://spdx.org/licenses/). For
+                  example, MIT. \n - The URL of a license hosted on the internet.
+                  For example, https://opensource.org/licenses/MIT. \n - The full
+                  text of the license."
+                type: string
+            required:
+            - content
+            - layerName
+            type: object
+          status:
+            description: LayerVersionStatus defines the observed state of LayerVersion
+            properties:
+              ackResourceMetadata:
+                description: All CRs managed by ACK have a common `Status.ACKResourceMetadata`
+                  member that is used to contain resource sync state, account ownership,
+                  constructed ARN for the resource
+                properties:
+                  arn:
+                    description: 'ARN is the Amazon Resource Name for the resource.
+                      This is a globally-unique identifier and is set only by the
+                      ACK service controller once the controller has orchestrated
+                      the creation of the resource OR when it has verified that an
+                      "adopted" resource (a resource where the ARN annotation was
+                      set by the Kubernetes user on the CR) exists and matches the
+                      supplied CR''s Spec field values. TODO(vijat@): Find a better
+                      strategy for resources that do not have ARN in CreateOutputResponse
+                      https://github.com/aws/aws-controllers-k8s/issues/270'
+                    type: string
+                  ownerAccountID:
+                    description: OwnerAccountID is the AWS Account ID of the account
+                      that owns the backend AWS service API resource.
+                    type: string
+                  region:
+                    description: Region is the AWS region in which the resource exists
+                      or will exist.
+                    type: string
+                required:
+                - ownerAccountID
+                - region
+                type: object
+              conditions:
+                description: All CRS managed by ACK have a common `Status.Conditions`
+                  member that contains a collection of `ackv1alpha1.Condition` objects
+                  that describe the various terminal states of the CR and its backend
+                  AWS service API resource
+                items:
+                  description: Condition is the common struct used by all CRDs managed
+                    by ACK service controllers to indicate terminal states  of the
+                    CR and its backend AWS service API resource
+                  properties:
+                    lastTransitionTime:
+                      description: Last time the condition transitioned from one status
+                        to another.
+                      format: date-time
+                      type: string
+                    message:
+                      description: A human readable message indicating details about
+                        the transition.
+                      type: string
+                    reason:
+                      description: The reason for the condition's last transition.
+                      type: string
+                    status:
+                      description: Status of the condition, one of True, False, Unknown.
+                      type: string
+                    type:
+                      description: Type is the type of the Condition
+                      type: string
+                  required:
+                  - status
+                  - type
+                  type: object
+                type: array
+              createdDate:
+                description: The date that the layer version was created, in ISO-8601
+                  format (https://www.w3.org/TR/NOTE-datetime) (YYYY-MM-DDThh:mm:ss.sTZD).
+                type: string
+              layerARN:
+                description: The ARN of the layer.
+                type: string
+              versionNumber:
+                description: The version number.
+                format: int64
+                type: integer
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: null
+  storedVersions:
+  - v1alpha1
+
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  name: adoptedresources.services.k8s.aws
+spec:
+  group: services.k8s.aws
+  names:
+    kind: AdoptedResource
+    listKind: AdoptedResourceList
+    plural: adoptedresources
+    singular: adoptedresource
+  scope: Namespaced
+  versions:
+  - name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        description: AdoptedResource is the schema for the AdoptedResource API.
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: AdoptedResourceSpec defines the desired state of the AdoptedResource.
+            properties:
+              aws:
+                description: AWSIdentifiers provide all unique ways to reference an
+                  AWS resource.
+                properties:
+                  additionalKeys:
+                    additionalProperties:
+                      type: string
+                    description: AdditionalKeys represents any additional arbitrary
+                      identifiers used when describing the target resource.
+                    type: object
+                  arn:
+                    description: ARN is the AWS Resource Name for the resource. It
+                      is a globally unique identifier.
+                    type: string
+                  nameOrID:
+                    description: NameOrId is a user-supplied string identifier for
+                      the resource. It may or may not be globally unique, depending
+                      on the type of resource.
+                    type: string
+                type: object
+              kubernetes:
+                description: ResourceWithMetadata provides the values necessary to
+                  create a Kubernetes resource and override any of its metadata values.
+                properties:
+                  group:
+                    type: string
+                  kind:
+                    type: string
+                  metadata:
+                    description: "ObjectMeta is metadata that all persisted resources
+                      must have, which includes all objects users must create. It
+                      is not possible to use `metav1.ObjectMeta` inside spec, as the
+                      controller-gen automatically converts this to an arbitrary string-string
+                      map. https://github.com/kubernetes-sigs/controller-tools/issues/385
+                      \n Active discussion about inclusion of this field in the spec
+                      is happening in this PR: https://github.com/kubernetes-sigs/controller-tools/pull/395
+                      \n Until this is allowed, or if it never is, we will produce
+                      a subset of the object meta that contains only the fields which
+                      the user is allowed to modify in the metadata."
+                    properties:
+                      annotations:
+                        additionalProperties:
+                          type: string
+                        description: 'Annotations is an unstructured key value map
+                          stored with a resource that may be set by external tools
+                          to store and retrieve arbitrary metadata. They are not queryable
+                          and should be preserved when modifying objects. More info:
+                          http://kubernetes.io/docs/user-guide/annotations'
+                        type: object
+                      generateName:
+                        description: "GenerateName is an optional prefix, used by
+                          the server, to generate a unique name ONLY IF the Name field
+                          has not been provided. If this field is used, the name returned
+                          to the client will be different than the name passed. This
+                          value will also be combined with a unique suffix. The provided
+                          value has the same validation rules as the Name field, and
+                          may be truncated by the length of the suffix required to
+                          make the value unique on the server. \n If this field is
+                          specified and the generated name exists, the server will
+                          NOT return a 409 - instead, it will either return 201 Created
+                          or 500 with Reason ServerTimeout indicating a unique name
+                          could not be found in the time allotted, and the client
+                          should retry (optionally after the time indicated in the
+                          Retry-After header). \n Applied only if Name is not specified.
+                          More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#idempotency"
+                        type: string
+                      labels:
+                        additionalProperties:
+                          type: string
+                        description: 'Map of string keys and values that can be used
+                          to organize and categorize (scope and select) objects. May
+                          match selectors of replication controllers and services.
+                          More info: http://kubernetes.io/docs/user-guide/labels'
+                        type: object
+                      name:
+                        description: 'Name must be unique within a namespace. Is required
+                          when creating resources, although some resources may allow
+                          a client to request the generation of an appropriate name
+                          automatically. Name is primarily intended for creation idempotence
+                          and configuration definition. Cannot be updated. More info:
+                          http://kubernetes.io/docs/user-guide/identifiers#names'
+                        type: string
+                      namespace:
+                        description: "Namespace defines the space within each name
+                          must be unique. An empty namespace is equivalent to the
+                          \"default\" namespace, but \"default\" is the canonical
+                          representation. Not all objects are required to be scoped
+                          to a namespace - the value of this field for those objects
+                          will be empty. \n Must be a DNS_LABEL. Cannot be updated.
+                          More info: http://kubernetes.io/docs/user-guide/namespaces"
+                        type: string
+                      ownerReferences:
+                        description: List of objects depended by this object. If ALL
+                          objects in the list have been deleted, this object will
+                          be garbage collected. If this object is managed by a controller,
+                          then an entry in this list will point to this controller,
+                          with the controller field set to true. There cannot be more
+                          than one managing controller.
+                        items:
+                          description: OwnerReference contains enough information
+                            to let you identify an owning object. An owning object
+                            must be in the same namespace as the dependent, or be
+                            cluster-scoped, so there is no namespace field.
+                          properties:
+                            apiVersion:
+                              description: API version of the referent.
+                              type: string
+                            blockOwnerDeletion:
+                              description: If true, AND if the owner has the "foregroundDeletion"
+                                finalizer, then the owner cannot be deleted from the
+                                key-value store until this reference is removed. Defaults
+                                to false. To set this field, a user needs "delete"
+                                permission of the owner, otherwise 422 (Unprocessable
+                                Entity) will be returned.
+                              type: boolean
+                            controller:
+                              description: If true, this reference points to the managing
+                                controller.
+                              type: boolean
+                            kind:
+                              description: 'Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+                              type: string
+                            name:
+                              description: 'Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names'
+                              type: string
+                            uid:
+                              description: 'UID of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#uids'
+                              type: string
+                          required:
+                          - apiVersion
+                          - kind
+                          - name
+                          - uid
+                          type: object
+                          x-kubernetes-map-type: atomic
+                        type: array
+                    type: object
+                required:
+                - group
+                - kind
+                type: object
+            required:
+            - aws
+            - kubernetes
+            type: object
+          status:
+            description: AdoptedResourceStatus defines the observed status of the
+              AdoptedResource.
+            properties:
+              conditions:
+                description: A collection of `ackv1alpha1.Condition` objects that
+                  describe the various terminal states of the adopted resource CR
+                  and its target custom resource
+                items:
+                  description: Condition is the common struct used by all CRDs managed
+                    by ACK service controllers to indicate terminal states  of the
+                    CR and its backend AWS service API resource
+                  properties:
+                    lastTransitionTime:
+                      description: Last time the condition transitioned from one status
+                        to another.
+                      format: date-time
+                      type: string
+                    message:
+                      description: A human readable message indicating details about
+                        the transition.
+                      type: string
+                    reason:
+                      description: The reason for the condition's last transition.
+                      type: string
+                    status:
+                      description: Status of the condition, one of True, False, Unknown.
+                      type: string
+                    type:
+                      description: Type is the type of the Condition
+                      type: string
+                  required:
+                  - status
+                  - type
+                  type: object
+                type: array
+            required:
+            - conditions
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: null
+  storedVersions:
+  - v1alpha1
+
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  name: fieldexports.services.k8s.aws
+spec:
+  group: services.k8s.aws
+  names:
+    kind: FieldExport
+    listKind: FieldExportList
+    plural: fieldexports
+    singular: fieldexport
+  scope: Namespaced
+  versions:
+  - name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        description: FieldExport is the schema for the FieldExport API.
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: FieldExportSpec defines the desired state of the FieldExport.
+            properties:
+              from:
+                description: ResourceFieldSelector provides the values necessary to
+                  identify an individual field on an individual K8s resource.
+                properties:
+                  path:
+                    type: string
+                  resource:
+                    description: NamespacedResource provides all the values necessary
+                      to identify an ACK resource of a given type (within the same
+                      namespace as the custom resource containing this type).
+                    properties:
+                      group:
+                        type: string
+                      kind:
+                        type: string
+                      name:
+                        type: string
+                    required:
+                    - group
+                    - kind
+                    - name
+                    type: object
+                required:
+                - path
+                - resource
+                type: object
+              to:
+                description: FieldExportTarget provides the values necessary to identify
+                  the output path for a field export.
+                properties:
+                  key:
+                    description: Key overrides the default value (`<namespace>.<FieldExport-resource-name>`)
+                      for the FieldExport target
+                    type: string
+                  kind:
+                    description: FieldExportOutputType represents all types that can
+                      be produced by a field export operation
+                    enum:
+                    - configmap
+                    - secret
+                    type: string
+                  name:
+                    type: string
+                  namespace:
+                    description: Namespace is marked as optional, so we cannot compose
+                      `NamespacedName`
+                    type: string
+                required:
+                - kind
+                - name
+                type: object
+            required:
+            - from
+            - to
+            type: object
+          status:
+            description: FieldExportStatus defines the observed status of the FieldExport.
+            properties:
+              conditions:
+                description: A collection of `ackv1alpha1.Condition` objects that
+                  describe the various recoverable states of the field CR
+                items:
+                  description: Condition is the common struct used by all CRDs managed
+                    by ACK service controllers to indicate terminal states  of the
+                    CR and its backend AWS service API resource
+                  properties:
+                    lastTransitionTime:
+                      description: Last time the condition transitioned from one status
+                        to another.
+                      format: date-time
+                      type: string
+                    message:
+                      description: A human readable message indicating details about
+                        the transition.
+                      type: string
+                    reason:
+                      description: The reason for the condition's last transition.
+                      type: string
+                    status:
+                      description: Status of the condition, one of True, False, Unknown.
+                      type: string
+                    type:
+                      description: Type is the type of the Condition
+                      type: string
+                  required:
+                  - status
+                  - type
+                  type: object
+                type: array
+            required:
+            - conditions
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: null
+  storedVersions:
+  - v1alpha1
+
+---
