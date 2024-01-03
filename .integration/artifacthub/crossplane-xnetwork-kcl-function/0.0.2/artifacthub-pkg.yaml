@@ -1,0 +1,25 @@
+version: 0.0.2
+name: crossplane-xnetwork-kcl-function
+displayName: crossplane-xnetwork-kcl-function
+createdAt: "2024-01-03T05:21:55Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `crossplane-xnetwork-kcl-function` with tag `0.0.2` as dependency
+  ```
+  kcl mod add crossplane-xnetwork-kcl-function:0.0.2
+  ```
+
+  #### Pull `crossplane-xnetwork-kcl-function` with tag `0.0.2` to local
+  ```
+  kcl mod pull crossplane-xnetwork-kcl-function:0.0.2
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
