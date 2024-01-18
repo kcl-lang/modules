@@ -32,5 +32,5 @@ igress = netv1.Ingress {
             ingressClassName: values.ingress.className
         
     }
-}
+} if values.ingress.enabled else Undefined
 

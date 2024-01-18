@@ -39,5 +39,5 @@ hpa = autoscaling.HorizontalPodAutoscaler {
             
         ]
     }
-}
+} if values.autoscaling.enabled else Undefined
 
