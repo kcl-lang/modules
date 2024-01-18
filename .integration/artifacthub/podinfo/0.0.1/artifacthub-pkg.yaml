@@ -1,0 +1,25 @@
+version: 0.0.1
+name: podinfo
+displayName: podinfo
+createdAt: "2024-01-18T11:02:35Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `podinfo` with tag `0.0.1` as dependency
+  ```
+  kcl mod add podinfo:0.0.1
+  ```
+
+  #### Pull `podinfo` with tag `0.0.1` to local
+  ```
+  kcl mod pull podinfo:0.0.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
