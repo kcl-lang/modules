@@ -602,7 +602,7 @@ schema CamelApacheOrgV1IntegrationPlatformSpecTraits:
     """
 
 
-    3scale?: CamelApacheOrgV1IntegrationPlatformSpecTraitsNr3scale
+    "3scale"?: CamelApacheOrgV1IntegrationPlatformSpecTraitsNr3scale
 
     addons?: {str:any}
 
@@ -2665,7 +2665,7 @@ schema CamelApacheOrgV1IntegrationPlatformStatusTraits:
     """
 
 
-    3scale?: CamelApacheOrgV1IntegrationPlatformStatusTraitsNr3scale
+    "3scale"?: CamelApacheOrgV1IntegrationPlatformStatusTraitsNr3scale
 
     addons?: {str:any}
 

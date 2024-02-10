@@ -5908,7 +5908,7 @@ schema CamelApacheOrgV1IntegrationSpecTraits:
     """
 
 
-    3scale?: CamelApacheOrgV1IntegrationSpecTraitsNr3scale
+    "3scale"?: CamelApacheOrgV1IntegrationSpecTraitsNr3scale
 
     addons?: {str:any}
 

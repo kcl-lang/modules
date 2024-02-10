@@ -86,7 +86,7 @@ schema JSONSchema:
     allowTrailingCommas?: bool
 
     check:
-        n in ["$id", "$schema"]
+        n in ["$id", "$schema"], "additional attributes must be in $id and $schema"
 
 schema JSONSchemaMap:
     [name: str]: JSONSchema
