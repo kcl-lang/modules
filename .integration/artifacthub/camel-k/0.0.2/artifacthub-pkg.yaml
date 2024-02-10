@@ -1,0 +1,25 @@
+version: 0.0.2
+name: camel-k
+displayName: camel-k
+createdAt: "2024-02-10T13:19:44Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `camel-k` with tag `0.0.2` as dependency
+  ```
+  kcl mod add camel-k:0.0.2
+  ```
+
+  #### Pull `camel-k` with tag `0.0.2` to local
+  ```
+  kcl mod pull camel-k:0.0.2
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
