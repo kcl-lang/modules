@@ -2,6 +2,7 @@
 type JSONSchemaType = 'string' | 'number' | 'integer' | 'bool' | 'null' | 'array' | 'object'
 
 schema JSONSchema:
+    [n: ...str]: str
     id?: str
     "$id"?: str
     "$schema"?: str
@@ -83,6 +84,9 @@ schema JSONSchema:
     suggestSortText?: str
     allowComments?: bool
     allowTrailingCommas?: bool
+
+    check:
+        n in ["$id", "$schema"]
 
 schema JSONSchemaMap:
     [name: str]: JSONSchema
