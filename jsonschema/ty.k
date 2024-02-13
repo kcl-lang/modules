@@ -96,3 +96,4 @@ schema JSONSchemaSnippet:
     description?: str
     body?: any # A object that will be JSON stringified
     bodyText?: str # An already stringified JSON object that can contain new lines (\n) and tabs (\t)
+
