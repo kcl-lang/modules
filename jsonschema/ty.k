@@ -31,7 +31,6 @@ schema JSONSchema:
     exclusiveMaximum?: bool | int | float
     multipleOf?: int | float
     required?: [str]
-    $ref?: str
     anyOf?: JSONSchema[]
     allOf?: JSONSchema[]
     oneOf?: JSONSchema[]
@@ -59,16 +58,16 @@ schema JSONSchema:
     deprecated?: bool
     dependentRequired?: {str:[str]}
     dependentSchemas?: JSONSchemaMap
-    $defs?: {str:JSONSchema}
-    $anchor?: str
-    $recursiveRef?: str
-    $recursiveAnchor?: str
-    $vocabulary?: any
+    "$defs"?: {str:JSONSchema}
+    "$anchor"?: str
+    "$recursiveRef"?: str
+    "$recursiveAnchor"?: str
+    "$vocabulary"?: any
 
     # schema 2020-12
     prefixItems?: JSONSchema[]
-    $dynamicRef?: str
-    $dynamicAnchor?: str
+    "$dynamicRef"?: str
+    "$dynamicAnchor?": str
 
     # VSCode extensions
 
@@ -86,7 +85,7 @@ schema JSONSchema:
     allowTrailingCommas?: bool
 
     check:
-        n in ["$id", "$schema"], "additional attributes must be in $id and $schema"
+        n in ["$id", "$schema", "$ref"], "additional attributes must be in $id and $schema"
 
 schema JSONSchemaMap:
     [name: str]: JSONSchema
