@@ -67,7 +67,7 @@ schema JSONSchema:
     # schema 2020-12
     prefixItems?: JSONSchema[]
     "$dynamicRef"?: str
-    "$dynamicAnchor?": str
+    "$dynamicAnchor"?: str
 
     # VSCode extensions
 
