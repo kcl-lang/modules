@@ -111,12 +111,20 @@ schema MessagingKnativeDevV1ChannelSpecDeliveryDeadLetterSink:
 
     Attributes
     ----------
+    CACerts : str, default is Undefined, optional
+        Certification Authority (CA) certificates in PEM format that the source trusts when sending events to the sink.
+    audience : str, default is Undefined, optional
+        Audience is the OIDC audience. This only needs to be set if the target is not an Addressable and thus the Audience can't be received from the Addressable itself. If the target is an Addressable and specifies an Audience, the target's Audience takes precedence.
     ref : MessagingKnativeDevV1ChannelSpecDeliveryDeadLetterSinkRef, default is Undefined, optional
         ref
     uri : str, default is Undefined, optional
         URI can be an absolute URL(non-empty scheme and non-empty host) pointing to the target or a relative URI. Relative URIs will be resolved using the base URI retrieved from Ref.
     """
 
+
+    CACerts?: str
+
+    audience?: str
 
     ref?: MessagingKnativeDevV1ChannelSpecDeliveryDeadLetterSinkRef
 
@@ -159,8 +167,16 @@ schema MessagingKnativeDevV1ChannelSpecSubscribersItems0:
         delivery
     generation : int, default is Undefined, optional
         Generation of the origin of the subscriber with uid:UID.
+    replyAudience : str, default is Undefined, optional
+        ReplyAudience is the OIDC audience for the replyUri.
+    replyCACerts : str, default is Undefined, optional
+        Certification Authority (CA) certificates in PEM format according to https://www.rfc-editor.org/rfc/rfc7468.
     replyUri : str, default is Undefined, optional
         ReplyURI is the endpoint for the reply
+    subscriberAudience : str, default is Undefined, optional
+        SubscriberAudience is the OIDC audience for the subscriberUri.
+    subscriberCACerts : str, default is Undefined, optional
+        Certification Authority (CA) certificates in PEM format according to https://www.rfc-editor.org/rfc/rfc7468.
     subscriberUri : str, default is Undefined, optional
         SubscriberURI is the endpoint for the subscriber
     uid : str, default is Undefined, optional
@@ -172,7 +188,15 @@ schema MessagingKnativeDevV1ChannelSpecSubscribersItems0:
 
     generation?: int
 
+    replyAudience?: str
+
+    replyCACerts?: str
+
     replyUri?: str
+
+    subscriberAudience?: str
+
+    subscriberCACerts?: str
 
     subscriberUri?: str
 
@@ -257,6 +281,8 @@ schema MessagingKnativeDevV1ChannelStatus:
     ----------
     address : MessagingKnativeDevV1ChannelStatusAddress, default is Undefined, optional
         address
+    addresses : [MessagingKnativeDevV1ChannelStatusAddressesItems0], default is Undefined, optional
+        Channel is Addressable. It exposes the endpoints as URIs to get events delivered into the Channel mesh.
     annotations : any, default is Undefined, optional
         Annotations is additional Status fields for the Resource to save some additional State as well as convey more information to the user. This is roughly akin to Annotations on any k8s resource, just the reconciler conveying richer information outwards.
     channel : MessagingKnativeDevV1ChannelStatusChannel, default is Undefined, optional
@@ -265,6 +291,10 @@ schema MessagingKnativeDevV1ChannelStatus:
         Conditions the latest available observations of a resource's current state.
     deadLetterChannel : MessagingKnativeDevV1ChannelStatusDeadLetterChannel, default is Undefined, optional
         dead letter channel
+    deadLetterSinkCACerts : str, default is Undefined, optional
+        Certification Authority (CA) certificates in PEM format according to https://www.rfc-editor.org/rfc/rfc7468.
+    deadLetterSinkUri : str, default is Undefined, optional
+        DeadLetterSinkURI is the resolved URI of the dead letter sink that will be used as a fallback when not specified by Triggers.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the 'Generation' of the Service that was last processed by the controller.
     subscribers : [MessagingKnativeDevV1ChannelStatusSubscribersItems0], default is Undefined, optional
@@ -274,6 +304,8 @@ schema MessagingKnativeDevV1ChannelStatus:
 
     address?: MessagingKnativeDevV1ChannelStatusAddress
 
+    addresses?: [MessagingKnativeDevV1ChannelStatusAddressesItems0]
+
     annotations?: any
 
     channel?: MessagingKnativeDevV1ChannelStatusChannel
@@ -282,6 +314,10 @@ schema MessagingKnativeDevV1ChannelStatus:
 
     deadLetterChannel?: MessagingKnativeDevV1ChannelStatusDeadLetterChannel
 
+    deadLetterSinkCACerts?: str
+
+    deadLetterSinkUri?: str
+
     observedGeneration?: int
 
     subscribers?: [MessagingKnativeDevV1ChannelStatusSubscribersItems0]
@@ -289,14 +325,52 @@ schema MessagingKnativeDevV1ChannelStatus:
 
 schema MessagingKnativeDevV1ChannelStatusAddress:
     """
-    messaging knative dev v1 channel status address
+    Channel is Addressable. It exposes the endpoint as an URI to get events delivered into the Channel mesh.
 
     Attributes
     ----------
+    CACerts : str, default is Undefined, optional
+        c a certs
+    audience : str, default is Undefined, optional
+        audience
+    name : str, default is Undefined, optional
+        name
     url : str, default is Undefined, optional
         url
     """
 
+
+    CACerts?: str
+
+    audience?: str
+
+    name?: str
+
+    url?: str
+
+
+schema MessagingKnativeDevV1ChannelStatusAddressesItems0:
+    """
+    messaging knative dev v1 channel status addresses items0
+
+    Attributes
+    ----------
+    CACerts : str, default is Undefined, optional
+        c a certs
+    audience : str, default is Undefined, optional
+        audience
+    name : str, default is Undefined, optional
+        name
+    url : str, default is Undefined, optional
+        url
+    """
+
+
+    CACerts?: str
+
+    audience?: str
+
+    name?: str
 
     url?: str
 
@@ -393,6 +467,8 @@ schema MessagingKnativeDevV1ChannelStatusSubscribersItems0:
 
     Attributes
     ----------
+    auth : MessagingKnativeDevV1ChannelStatusSubscribersItems0Auth, default is Undefined, optional
+        auth
     message : str, default is Undefined, optional
         A human readable message indicating details of Ready status.
     observedGeneration : int, default is Undefined, optional
@@ -404,6 +480,8 @@ schema MessagingKnativeDevV1ChannelStatusSubscribersItems0:
     """
 
 
+    auth?: MessagingKnativeDevV1ChannelStatusSubscribersItems0Auth
+
     message?: str
 
     observedGeneration?: int
@@ -411,5 +489,19 @@ schema MessagingKnativeDevV1ChannelStatusSubscribersItems0:
     ready?: str
 
     uid?: str
+
+
+schema MessagingKnativeDevV1ChannelStatusSubscribersItems0Auth:
+    """
+    Auth provides the relevant information for OIDC authentication.
+
+    Attributes
+    ----------
+    serviceAccountName : str, default is Undefined, optional
+        ServiceAccountName is the name of the generated service account used for this components OIDC authentication.
+    """
+
+
+    serviceAccountName?: str
 
 

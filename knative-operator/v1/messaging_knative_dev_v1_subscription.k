@@ -63,40 +63,24 @@ schema MessagingKnativeDevV1SubscriptionSpec:
 
 schema MessagingKnativeDevV1SubscriptionSpecChannel:
     """
-    Reference to a channel that will be used to create the subscription You can specify only the following fields of the ObjectReference: - Kind - APIVersion - Name The resource pointed by this ObjectReference must meet the contract to the ChannelableSpec duck type. If the resource does not meet this contract it will be reflected in the Subscription's status.  This field is immutable. We have no good answer on what happens to the events that are currently in the channel being consumed from and what the semantics there should be. For now, you can always delete the Subscription and recreate it to point to a different channel, giving the user more control over what semantics should be used (drain the channel first, possibly have events dropped, etc.)
+    Reference to a channel that will be used to create the subscription. You can specify only the following fields of the KReference: kind, apiVersion and name. The resource pointed by this KReference must meet the contract to the ChannelableSpec duck type. If the resource does not meet this contract it will be reflected in the Subscription's status.  This field is immutable. We have no good answer on what happens to the events that are currently in the channel being consumed from and what the semantics there should be. For now, you can always delete the Subscription and recreate it to point to a different channel, giving the user more control over what semantics should be used (drain the channel first, possibly have events dropped, etc.)
 
     Attributes
     ----------
     apiVersion : str, default is Undefined, optional
         API version of the referent.
-    fieldPath : str, default is Undefined, optional
-        If referring to a piece of an object instead of an entire object, this string should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2]. For example, if the object reference is to a container within a pod, this would take on a value like: "spec.containers{name}" (where "name" refers to the name of the container that triggered the event) or if no container name is specified "spec.containers[2]" (container with index 2 in this pod). This syntax is chosen only to have some well-defined way of referencing a part of an object.
     kind : str, default is Undefined, optional
         Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     name : str, default is Undefined, optional
         Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-    namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
-    resourceVersion : str, default is Undefined, optional
-        Specific resourceVersion to which this reference is made, if any. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
-    uid : str, default is Undefined, optional
-        UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
     """
 
 
     apiVersion?: str
 
-    fieldPath?: str
-
     kind?: str
 
     name?: str
-
-    namespace?: str
-
-    resourceVersion?: str
-
-    uid?: str
 
 
 schema MessagingKnativeDevV1SubscriptionSpecDelivery:
@@ -131,12 +115,20 @@ schema MessagingKnativeDevV1SubscriptionSpecDeliveryDeadLetterSink:
 
     Attributes
     ----------
+    CACerts : str, default is Undefined, optional
+        Certification Authority (CA) certificates in PEM format that the source trusts when sending events to the sink.
+    audience : str, default is Undefined, optional
+        Audience is the OIDC audience. This only needs to be set if the target is not an Addressable and thus the Audience can't be received from the Addressable itself. If the target is an Addressable and specifies an Audience, the target's Audience takes precedence.
     ref : MessagingKnativeDevV1SubscriptionSpecDeliveryDeadLetterSinkRef, default is Undefined, optional
         ref
     uri : str, default is Undefined, optional
         URI can be an absolute URL(non-empty scheme and non-empty host) pointing to the target or a relative URI. Relative URIs will be resolved using the base URI retrieved from Ref.
     """
 
+
+    CACerts?: str
+
+    audience?: str
 
     ref?: MessagingKnativeDevV1SubscriptionSpecDeliveryDeadLetterSinkRef
 
@@ -175,12 +167,20 @@ schema MessagingKnativeDevV1SubscriptionSpecReply:
 
     Attributes
     ----------
+    CACerts : str, default is Undefined, optional
+        Certification Authority (CA) certificates in PEM format that the source trusts when sending events to the sink.
+    audience : str, default is Undefined, optional
+        Audience is the OIDC audience. This only needs to be set if the target is not an Addressable and thus the Audience can't be received from the Addressable itself. If the target is an Addressable and specifies an Audience, the target's Audience takes precedence.
     ref : MessagingKnativeDevV1SubscriptionSpecReplyRef, default is Undefined, optional
         ref
     uri : str, default is Undefined, optional
         URI can be an absolute URL(non-empty scheme and non-empty host) pointing to the target or a relative URI. Relative URIs will be resolved using the base URI retrieved from Ref.
     """
 
+
+    CACerts?: str
+
+    audience?: str
 
     ref?: MessagingKnativeDevV1SubscriptionSpecReplyRef
 
@@ -219,12 +219,20 @@ schema MessagingKnativeDevV1SubscriptionSpecSubscriber:
 
     Attributes
     ----------
+    CACerts : str, default is Undefined, optional
+        Certification Authority (CA) certificates in PEM format that the subscription trusts when sending events to the sink.
+    audience : str, default is Undefined, optional
+        Audience is the OIDC audience. This only needs to be set if the target is not an Addressable and thus the Audience can't be received from the Addressable itself. If the target is an Addressable and specifies an Audience, the target's Audience takes precedence.
     ref : MessagingKnativeDevV1SubscriptionSpecSubscriberRef, default is Undefined, optional
         ref
     uri : str, default is Undefined, optional
         URI can be an absolute URL(non-empty scheme and non-empty host) pointing to the target or a relative URI. Relative URIs will be resolved using the base URI retrieved from Ref.
     """
 
+
+    CACerts?: str
+
+    audience?: str
 
     ref?: MessagingKnativeDevV1SubscriptionSpecSubscriberRef
 
@@ -265,6 +273,8 @@ schema MessagingKnativeDevV1SubscriptionStatus:
     ----------
     annotations : any, default is Undefined, optional
         Annotations is additional Status fields for the Resource to save some additional State as well as convey more information to the user. This is roughly akin to Annotations on any k8s resource, just the reconciler conveying richer information outwards.
+    auth : MessagingKnativeDevV1SubscriptionStatusAuth, default is Undefined, optional
+        auth
     conditions : [MessagingKnativeDevV1SubscriptionStatusConditionsItems0], default is Undefined, optional
         Conditions the latest available observations of a resource's current state.
     observedGeneration : int, default is Undefined, optional
@@ -276,11 +286,27 @@ schema MessagingKnativeDevV1SubscriptionStatus:
 
     annotations?: any
 
+    auth?: MessagingKnativeDevV1SubscriptionStatusAuth
+
     conditions?: [MessagingKnativeDevV1SubscriptionStatusConditionsItems0]
 
     observedGeneration?: int
 
     physicalSubscription?: MessagingKnativeDevV1SubscriptionStatusPhysicalSubscription
+
+
+schema MessagingKnativeDevV1SubscriptionStatusAuth:
+    """
+    Auth provides the relevant information for OIDC authentication.
+
+    Attributes
+    ----------
+    serviceAccountName : str, default is Undefined, optional
+        ServiceAccountName is the name of the generated service account used for this components OIDC authentication.
+    """
+
+
+    serviceAccountName?: str
 
 
 schema MessagingKnativeDevV1SubscriptionStatusConditionsItems0:
@@ -323,18 +349,38 @@ schema MessagingKnativeDevV1SubscriptionStatusPhysicalSubscription:
 
     Attributes
     ----------
+    deadLetterSinkCACerts : str, default is Undefined, optional
+        Certification Authority (CA) certificates in PEM format according to https://www.rfc-editor.org/rfc/rfc7468.
     deadLetterSinkUri : str, default is Undefined, optional
         ReplyURI is the fully resolved URI for the spec.delivery.deadLetterSink.
+    replyAudience : str, default is Undefined, optional
+        ReplyAudience is the OIDC audience for the replyUri.
+    replyCACerts : str, default is Undefined, optional
+        Certification Authority (CA) certificates in PEM format according to https://www.rfc-editor.org/rfc/rfc7468.
     replyUri : str, default is Undefined, optional
         ReplyURI is the fully resolved URI for the spec.reply.
+    subscriberAudience : str, default is Undefined, optional
+        SubscriberAudience is the OIDC audience for the subscriberUri.
+    subscriberCACerts : str, default is Undefined, optional
+        Certification Authority (CA) certificates in PEM format according to https://www.rfc-editor.org/rfc/rfc7468.
     subscriberUri : str, default is Undefined, optional
         SubscriberURI is the fully resolved URI for spec.subscriber.
     """
 
 
+    deadLetterSinkCACerts?: str
+
     deadLetterSinkUri?: str
 
+    replyAudience?: str
+
+    replyCACerts?: str
+
     replyUri?: str
+
+    subscriberAudience?: str
+
+    subscriberCACerts?: str
 
     subscriberUri?: str
 

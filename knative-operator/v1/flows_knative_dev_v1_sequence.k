@@ -67,7 +67,7 @@ schema FlowsKnativeDevV1SequenceSpecChannelTemplate:
         APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
     kind : str, default is Undefined, optional
         Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-    spec : str, default is Undefined, optional
+    spec : any, default is Undefined, optional
         Spec defines the Spec to use for each channel created. Passed in verbatim to the Channel CRD as Spec section.
     """
 
@@ -76,7 +76,7 @@ schema FlowsKnativeDevV1SequenceSpecChannelTemplate:
 
     kind?: str
 
-    spec?: str
+    spec?: any
 
 
 schema FlowsKnativeDevV1SequenceSpecReply:
@@ -85,12 +85,16 @@ schema FlowsKnativeDevV1SequenceSpecReply:
 
     Attributes
     ----------
+    CACerts : str, default is Undefined, optional
+        Certification Authority (CA) certificates in PEM format that the source trusts when sending events to the reply.
     ref : FlowsKnativeDevV1SequenceSpecReplyRef, default is Undefined, optional
         ref
     uri : str, default is Undefined, optional
         URI can be an absolute URL(non-empty scheme and non-empty host) pointing to the target or a relative URI. Relative URIs will be resolved using the base URI retrieved from Ref.
     """
 
+
+    CACerts?: str
 
     ref?: FlowsKnativeDevV1SequenceSpecReplyRef
 
@@ -129,6 +133,10 @@ schema FlowsKnativeDevV1SequenceSpecStepsItems0:
 
     Attributes
     ----------
+    CACerts : str, default is Undefined, optional
+        Certification Authority (CA) certificates in PEM format that the source trusts when sending events to the sink.
+    audience : str, default is Undefined, optional
+        Audience is the OIDC audience. This only needs to be set if the target is not an Addressable and thus the Audience can't be received from the Addressable itself. If the target is an Addressable and specifies an Audience, the target's Audience takes precedence.
     delivery : FlowsKnativeDevV1SequenceSpecStepsItems0Delivery, default is Undefined, optional
         delivery
     ref : FlowsKnativeDevV1SequenceSpecStepsItems0Ref, default is Undefined, optional
@@ -137,6 +145,10 @@ schema FlowsKnativeDevV1SequenceSpecStepsItems0:
         URI can be an absolute URL(non-empty scheme and non-empty host) pointing to the target or a relative URI. Relative URIs will be resolved using the base URI retrieved from Ref.
     """
 
+
+    CACerts?: str
+
+    audience?: str
 
     delivery?: FlowsKnativeDevV1SequenceSpecStepsItems0Delivery
 
@@ -177,12 +189,20 @@ schema FlowsKnativeDevV1SequenceSpecStepsItems0DeliveryDeadLetterSink:
 
     Attributes
     ----------
+    CACerts : str, default is Undefined, optional
+        Certification Authority (CA) certificates in PEM format that the source trusts when sending events to the sink.
+    audience : str, default is Undefined, optional
+        Audience is the OIDC audience. This only needs to be set if the target is not an Addressable and thus the Audience can't be received from the Addressable itself. If the target is an Addressable and specifies an Audience, the target's Audience takes precedence.
     ref : FlowsKnativeDevV1SequenceSpecStepsItems0DeliveryDeadLetterSinkRef, default is Undefined, optional
         ref
     uri : str, default is Undefined, optional
         URI can be an absolute URL(non-empty scheme and non-empty host) pointing to the target or a relative URI. Relative URIs will be resolved using the base URI retrieved from Ref.
     """
 
+
+    CACerts?: str
+
+    audience?: str
 
     ref?: FlowsKnativeDevV1SequenceSpecStepsItems0DeliveryDeadLetterSinkRef
 
@@ -249,8 +269,12 @@ schema FlowsKnativeDevV1SequenceStatus:
     ----------
     address : FlowsKnativeDevV1SequenceStatusAddress, default is Undefined, optional
         address
+    addresses : [FlowsKnativeDevV1SequenceStatusAddressesItems0], default is Undefined, optional
+        Sequence is Addressable. It exposes the endpoints as URIs to get events delivered into the Sequence.
     annotations : any, default is Undefined, optional
         Annotations is additional Status fields for the Resource to save some additional State as well as convey more information to the user. This is roughly akin to Annotations on any k8s resource, just the reconciler conveying richer information outwards.
+    auth : FlowsKnativeDevV1SequenceStatusAuth, default is Undefined, optional
+        auth
     channelStatuses : [FlowsKnativeDevV1SequenceStatusChannelStatusesItems0], default is Undefined, optional
         ChannelStatuses is an array of corresponding Channel statuses. Matches the Spec.Steps array in the order.
     conditions : [FlowsKnativeDevV1SequenceStatusConditionsItems0], default is Undefined, optional
@@ -264,7 +288,11 @@ schema FlowsKnativeDevV1SequenceStatus:
 
     address?: FlowsKnativeDevV1SequenceStatusAddress
 
+    addresses?: [FlowsKnativeDevV1SequenceStatusAddressesItems0]
+
     annotations?: any
+
+    auth?: FlowsKnativeDevV1SequenceStatusAuth
 
     channelStatuses?: [FlowsKnativeDevV1SequenceStatusChannelStatusesItems0]
 
@@ -277,16 +305,68 @@ schema FlowsKnativeDevV1SequenceStatus:
 
 schema FlowsKnativeDevV1SequenceStatusAddress:
     """
-    flows knative dev v1 sequence status address
+    Sequence is Addressable. It exposes the endpoint as an URI to get events delivered into the Sequence.
 
     Attributes
     ----------
-    url : str, default is Undefined, required
+    CACerts : str, default is Undefined, optional
+        c a certs
+    audience : str, default is Undefined, optional
+        audience
+    name : str, default is Undefined, optional
+        name
+    url : str, default is Undefined, optional
         url
     """
 
 
-    url: str
+    CACerts?: str
+
+    audience?: str
+
+    name?: str
+
+    url?: str
+
+
+schema FlowsKnativeDevV1SequenceStatusAddressesItems0:
+    """
+    flows knative dev v1 sequence status addresses items0
+
+    Attributes
+    ----------
+    CACerts : str, default is Undefined, optional
+        c a certs
+    audience : str, default is Undefined, optional
+        audience
+    name : str, default is Undefined, optional
+        name
+    url : str, default is Undefined, optional
+        url
+    """
+
+
+    CACerts?: str
+
+    audience?: str
+
+    name?: str
+
+    url?: str
+
+
+schema FlowsKnativeDevV1SequenceStatusAuth:
+    """
+    Auth provides the relevant information for OIDC authentication.
+
+    Attributes
+    ----------
+    serviceAccountName : str, default is Undefined, optional
+        ServiceAccountName is the name of the generated service account used for this components OIDC authentication.
+    """
+
+
+    serviceAccountName?: str
 
 
 schema FlowsKnativeDevV1SequenceStatusChannelStatusesItems0:

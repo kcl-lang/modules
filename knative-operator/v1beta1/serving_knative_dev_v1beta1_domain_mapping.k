@@ -61,6 +61,8 @@ schema ServingKnativeDevV1beta1DomainMappingSpecRef:
 
     Attributes
     ----------
+    address : str, default is Undefined, optional
+        Address points to a specific Address Name.
     apiVersion : str, default is Undefined, optional
         API version of the referent.
     group : str, default is Undefined, optional
@@ -73,6 +75,8 @@ schema ServingKnativeDevV1beta1DomainMappingSpecRef:
         Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/ This is optional field, it gets defaulted to the object holding it if left out.
     """
 
+
+    address?: str
 
     apiVersion?: str
 
@@ -135,10 +139,22 @@ schema ServingKnativeDevV1beta1DomainMappingStatusAddress:
 
     Attributes
     ----------
+    CACerts : str, default is Undefined, optional
+        CACerts is the Certification Authority (CA) certificates in PEM format according to https://www.rfc-editor.org/rfc/rfc7468.
+    audience : str, default is Undefined, optional
+        Audience is the OIDC audience for this address.
+    name : str, default is Undefined, optional
+        Name is the name of the address.
     url : str, default is Undefined, optional
         url
     """
 
+
+    CACerts?: str
+
+    audience?: str
+
+    name?: str
 
     url?: str
 

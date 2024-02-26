@@ -111,12 +111,20 @@ schema EventingKnativeDevV1BrokerSpecDeliveryDeadLetterSink:
 
     Attributes
     ----------
+    CACerts : str, default is Undefined, optional
+        Certification Authority (CA) certificates in PEM format that the source trusts when sending events to the sink.
+    audience : str, default is Undefined, optional
+        Audience is the OIDC audience. This only needs to be set if the target is not an Addressable and thus the Audience can't be received from the Addressable itself. If the target is an Addressable and specifies an Audience, the target's Audience takes precedence.
     ref : EventingKnativeDevV1BrokerSpecDeliveryDeadLetterSinkRef, default is Undefined, optional
         ref
     uri : str, default is Undefined, optional
         URI can be an absolute URL(non-empty scheme and non-empty host) pointing to the target or a relative URI. Relative URIs will be resolved using the base URI retrieved from Ref.
     """
 
+
+    CACerts?: str
+
+    audience?: str
 
     ref?: EventingKnativeDevV1BrokerSpecDeliveryDeadLetterSinkRef
 
@@ -157,10 +165,16 @@ schema EventingKnativeDevV1BrokerStatus:
     ----------
     address : EventingKnativeDevV1BrokerStatusAddress, default is Undefined, optional
         address
+    addresses : [EventingKnativeDevV1BrokerStatusAddressesItems0], default is Undefined, optional
+        Broker is Addressable. It exposes the endpoints as URIs to get events delivered into the Broker mesh.
     annotations : any, default is Undefined, optional
         Annotations is additional Status fields for the Resource to save some additional State as well as convey more information to the user. This is roughly akin to Annotations on any k8s resource, just the reconciler conveying richer information outwards.
     conditions : [EventingKnativeDevV1BrokerStatusConditionsItems0], default is Undefined, optional
         Conditions the latest available observations of a resource's current state.
+    deadLetterSinkCACerts : str, default is Undefined, optional
+        Certification Authority (CA) certificates in PEM format according to https://www.rfc-editor.org/rfc/rfc7468.
+    deadLetterSinkUri : str, default is Undefined, optional
+        DeadLetterSinkURI is the resolved URI of the dead letter sink that will be used as a fallback when not specified by Triggers.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the 'Generation' of the Service that was last processed by the controller.
     """
@@ -168,9 +182,15 @@ schema EventingKnativeDevV1BrokerStatus:
 
     address?: EventingKnativeDevV1BrokerStatusAddress
 
+    addresses?: [EventingKnativeDevV1BrokerStatusAddressesItems0]
+
     annotations?: any
 
     conditions?: [EventingKnativeDevV1BrokerStatusConditionsItems0]
+
+    deadLetterSinkCACerts?: str
+
+    deadLetterSinkUri?: str
 
     observedGeneration?: int
 
@@ -181,10 +201,48 @@ schema EventingKnativeDevV1BrokerStatusAddress:
 
     Attributes
     ----------
+    CACerts : str, default is Undefined, optional
+        c a certs
+    audience : str, default is Undefined, optional
+        audience
+    name : str, default is Undefined, optional
+        name
     url : str, default is Undefined, optional
         url
     """
 
+
+    CACerts?: str
+
+    audience?: str
+
+    name?: str
+
+    url?: str
+
+
+schema EventingKnativeDevV1BrokerStatusAddressesItems0:
+    """
+    eventing knative dev v1 broker status addresses items0
+
+    Attributes
+    ----------
+    CACerts : str, default is Undefined, optional
+        c a certs
+    audience : str, default is Undefined, optional
+        audience
+    name : str, default is Undefined, optional
+        name
+    url : str, default is Undefined, optional
+        url
+    """
+
+
+    CACerts?: str
+
+    audience?: str
+
+    name?: str
 
     url?: str
 
