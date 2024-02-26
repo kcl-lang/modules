@@ -1,0 +1,25 @@
+version: 0.1.0
+name: knative-operator
+displayName: knative-operator
+createdAt: "2024-02-26T09:18:29Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `knative-operator` with tag `0.1.0` as dependency
+  ```
+  kcl mod add knative-operator:0.1.0
+  ```
+
+  #### Pull `knative-operator` with tag `0.1.0` to local
+  ```
+  kcl mod pull knative-operator:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
