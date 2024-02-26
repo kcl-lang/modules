@@ -115,12 +115,20 @@ schema FlowsKnativeDevV1ParallelSpecBranchesItems0DeliveryDeadLetterSink:
 
     Attributes
     ----------
+    CACerts : str, default is Undefined, optional
+        Certification Authority (CA) certificates in PEM format that the source trusts when sending events to the sink.
+    audience : str, default is Undefined, optional
+        Audience is the OIDC audience. This only needs to be set if the target is not an Addressable and thus the Audience can't be received from the Addressable itself. If the target is an Addressable and specifies an Audience, the target's Audience takes precedence.
     ref : FlowsKnativeDevV1ParallelSpecBranchesItems0DeliveryDeadLetterSinkRef, default is Undefined, optional
         ref
     uri : str, default is Undefined, optional
         URI can be an absolute URL(non-empty scheme and non-empty host) pointing to the target or a relative URI. Relative URIs will be resolved using the base URI retrieved from Ref.
     """
 
+
+    CACerts?: str
+
+    audience?: str
 
     ref?: FlowsKnativeDevV1ParallelSpecBranchesItems0DeliveryDeadLetterSinkRef
 
@@ -159,12 +167,20 @@ schema FlowsKnativeDevV1ParallelSpecBranchesItems0Filter:
 
     Attributes
     ----------
+    CACerts : str, default is Undefined, optional
+        Certification Authority (CA) certificates in PEM format that the source trusts when sending events to the sink.
+    audience : str, default is Undefined, optional
+        Audience is the OIDC audience. This only needs to be set if the target is not an Addressable and thus the Audience can't be received from the Addressable itself. If the target is an Addressable and specifies an Audience, the target's Audience takes precedence.
     ref : FlowsKnativeDevV1ParallelSpecBranchesItems0FilterRef, default is Undefined, optional
         ref
     uri : str, default is Undefined, optional
         URI can be an absolute URL(non-empty scheme and non-empty host) pointing to the target or a relative URI. Relative URIs will be resolved using the base URI retrieved from Ref.
     """
 
+
+    CACerts?: str
+
+    audience?: str
 
     ref?: FlowsKnativeDevV1ParallelSpecBranchesItems0FilterRef
 
@@ -203,12 +219,20 @@ schema FlowsKnativeDevV1ParallelSpecBranchesItems0Reply:
 
     Attributes
     ----------
+    CACerts : str, default is Undefined, optional
+        Certification Authority (CA) certificates in PEM format that the source trusts when sending events to the sink.
+    audience : str, default is Undefined, optional
+        Audience is the OIDC audience. This only needs to be set if the target is not an Addressable and thus the Audience can't be received from the Addressable itself. If the target is an Addressable and specifies an Audience, the target's Audience takes precedence.
     ref : FlowsKnativeDevV1ParallelSpecBranchesItems0ReplyRef, default is Undefined, optional
         ref
     uri : str, default is Undefined, optional
         URI can be an absolute URL(non-empty scheme and non-empty host) pointing to the target or a relative URI. Relative URIs will be resolved using the base URI retrieved from Ref.
     """
 
+
+    CACerts?: str
+
+    audience?: str
 
     ref?: FlowsKnativeDevV1ParallelSpecBranchesItems0ReplyRef
 
@@ -247,12 +271,20 @@ schema FlowsKnativeDevV1ParallelSpecBranchesItems0Subscriber:
 
     Attributes
     ----------
+    CACerts : str, default is Undefined, optional
+        Certification Authority (CA) certificates in PEM format that the source trusts when sending events to the sink.
+    audience : str, default is Undefined, optional
+        Audience is the OIDC audience. This only needs to be set if the target is not an Addressable and thus the Audience can't be received from the Addressable itself. If the target is an Addressable and specifies an Audience, the target's Audience takes precedence.
     ref : FlowsKnativeDevV1ParallelSpecBranchesItems0SubscriberRef, default is Undefined, optional
         ref
     uri : str, default is Undefined, optional
         URI can be an absolute URL(non-empty scheme and non-empty host) pointing to the target or a relative URI. Relative URIs will be resolved using the base URI retrieved from Ref.
     """
 
+
+    CACerts?: str
+
+    audience?: str
 
     ref?: FlowsKnativeDevV1ParallelSpecBranchesItems0SubscriberRef
 
@@ -313,12 +345,20 @@ schema FlowsKnativeDevV1ParallelSpecReply:
 
     Attributes
     ----------
+    CACerts : str, default is Undefined, optional
+        Certification Authority (CA) certificates in PEM format that the source trusts when sending events to the sink.
+    audience : str, default is Undefined, optional
+        Audience is the OIDC audience. This only needs to be set if the target is not an Addressable and thus the Audience can't be received from the Addressable itself. If the target is an Addressable and specifies an Audience, the target's Audience takes precedence.
     ref : FlowsKnativeDevV1ParallelSpecReplyRef, default is Undefined, optional
         ref
     uri : str, default is Undefined, optional
         URI can be an absolute URL(non-empty scheme and non-empty host) pointing to the target or a relative URI. Relative URIs will be resolved using the base URI retrieved from Ref.
     """
 
+
+    CACerts?: str
+
+    audience?: str
 
     ref?: FlowsKnativeDevV1ParallelSpecReplyRef
 
@@ -359,8 +399,12 @@ schema FlowsKnativeDevV1ParallelStatus:
     ----------
     address : FlowsKnativeDevV1ParallelStatusAddress, default is Undefined, optional
         address
+    addresses : [FlowsKnativeDevV1ParallelStatusAddressesItems0], default is Undefined, optional
+        Parallel is Addressable. It exposes the endpoints as URIs to get events delivered into the Parallel.
     annotations : any, default is Undefined, optional
         Annotations is additional Status fields for the Resource to save some additional State as well as convey more information to the user. This is roughly akin to Annotations on any k8s resource, just the reconciler conveying richer information outwards.
+    auth : FlowsKnativeDevV1ParallelStatusAuth, default is Undefined, optional
+        auth
     branchStatuses : [FlowsKnativeDevV1ParallelStatusBranchStatusesItems0], default is Undefined, optional
         BranchStatuses is an array of corresponding to branch statuses. Matches the Spec.Branches array in the order.
     conditions : [FlowsKnativeDevV1ParallelStatusConditionsItems0], default is Undefined, optional
@@ -374,7 +418,11 @@ schema FlowsKnativeDevV1ParallelStatus:
 
     address?: FlowsKnativeDevV1ParallelStatusAddress
 
+    addresses?: [FlowsKnativeDevV1ParallelStatusAddressesItems0]
+
     annotations?: any
+
+    auth?: FlowsKnativeDevV1ParallelStatusAuth
 
     branchStatuses?: [FlowsKnativeDevV1ParallelStatusBranchStatusesItems0]
 
@@ -387,16 +435,68 @@ schema FlowsKnativeDevV1ParallelStatus:
 
 schema FlowsKnativeDevV1ParallelStatusAddress:
     """
-    flows knative dev v1 parallel status address
+    Parallel is Addressable. It exposes the endpoint as an URI to get events delivered into the Parallel.
 
     Attributes
     ----------
+    CACerts : str, default is Undefined, optional
+        c a certs
+    audience : str, default is Undefined, optional
+        audience
+    name : str, default is Undefined, optional
+        name
     url : str, default is Undefined, optional
         url
     """
 
 
+    CACerts?: str
+
+    audience?: str
+
+    name?: str
+
     url?: str
+
+
+schema FlowsKnativeDevV1ParallelStatusAddressesItems0:
+    """
+    flows knative dev v1 parallel status addresses items0
+
+    Attributes
+    ----------
+    CACerts : str, default is Undefined, optional
+        c a certs
+    audience : str, default is Undefined, optional
+        audience
+    name : str, default is Undefined, optional
+        name
+    url : str, default is Undefined, optional
+        url
+    """
+
+
+    CACerts?: str
+
+    audience?: str
+
+    name?: str
+
+    url?: str
+
+
+schema FlowsKnativeDevV1ParallelStatusAuth:
+    """
+    Auth provides the relevant information for OIDC authentication.
+
+    Attributes
+    ----------
+    serviceAccountName : str, default is Undefined, optional
+        ServiceAccountName is the name of the generated service account used for this components OIDC authentication.
+    """
+
+
+    serviceAccountName?: str
 
 
 schema FlowsKnativeDevV1ParallelStatusBranchStatusesItems0:

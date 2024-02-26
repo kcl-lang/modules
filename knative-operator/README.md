@@ -1,4 +1,4 @@
-# operator
+# knative-operator
 
 ## Index
 
@@ -15,6 +15,7 @@
   - [EventingKnativeDevV1BrokerSpecDeliveryDeadLetterSinkRef](#eventingknativedevv1brokerspecdeliverydeadlettersinkref)
   - [EventingKnativeDevV1BrokerStatus](#eventingknativedevv1brokerstatus)
   - [EventingKnativeDevV1BrokerStatusAddress](#eventingknativedevv1brokerstatusaddress)
+  - [EventingKnativeDevV1BrokerStatusAddressesItems0](#eventingknativedevv1brokerstatusaddressesitems0)
   - [EventingKnativeDevV1BrokerStatusConditionsItems0](#eventingknativedevv1brokerstatusconditionsitems0)
   - [EventingKnativeDevV1TriggerSpec](#eventingknativedevv1triggerspec)
   - [EventingKnativeDevV1TriggerSpecDelivery](#eventingknativedevv1triggerspecdelivery)
@@ -24,6 +25,7 @@
   - [EventingKnativeDevV1TriggerSpecSubscriber](#eventingknativedevv1triggerspecsubscriber)
   - [EventingKnativeDevV1TriggerSpecSubscriberRef](#eventingknativedevv1triggerspecsubscriberref)
   - [EventingKnativeDevV1TriggerStatus](#eventingknativedevv1triggerstatus)
+  - [EventingKnativeDevV1TriggerStatusAuth](#eventingknativedevv1triggerstatusauth)
   - [EventingKnativeDevV1TriggerStatusConditionsItems0](#eventingknativedevv1triggerstatusconditionsitems0)
   - [FlowsKnativeDevV1ParallelSpec](#flowsknativedevv1parallelspec)
   - [FlowsKnativeDevV1ParallelSpecBranchesItems0](#flowsknativedevv1parallelspecbranchesitems0)
@@ -41,6 +43,8 @@
   - [FlowsKnativeDevV1ParallelSpecReplyRef](#flowsknativedevv1parallelspecreplyref)
   - [FlowsKnativeDevV1ParallelStatus](#flowsknativedevv1parallelstatus)
   - [FlowsKnativeDevV1ParallelStatusAddress](#flowsknativedevv1parallelstatusaddress)
+  - [FlowsKnativeDevV1ParallelStatusAddressesItems0](#flowsknativedevv1parallelstatusaddressesitems0)
+  - [FlowsKnativeDevV1ParallelStatusAuth](#flowsknativedevv1parallelstatusauth)
   - [FlowsKnativeDevV1ParallelStatusBranchStatusesItems0](#flowsknativedevv1parallelstatusbranchstatusesitems0)
   - [FlowsKnativeDevV1ParallelStatusBranchStatusesItems0FilterChannelStatus](#flowsknativedevv1parallelstatusbranchstatusesitems0filterchannelstatus)
   - [FlowsKnativeDevV1ParallelStatusBranchStatusesItems0FilterChannelStatusChannel](#flowsknativedevv1parallelstatusbranchstatusesitems0filterchannelstatuschannel)
@@ -66,6 +70,8 @@
   - [FlowsKnativeDevV1SequenceSpecStepsItems0Ref](#flowsknativedevv1sequencespecstepsitems0ref)
   - [FlowsKnativeDevV1SequenceStatus](#flowsknativedevv1sequencestatus)
   - [FlowsKnativeDevV1SequenceStatusAddress](#flowsknativedevv1sequencestatusaddress)
+  - [FlowsKnativeDevV1SequenceStatusAddressesItems0](#flowsknativedevv1sequencestatusaddressesitems0)
+  - [FlowsKnativeDevV1SequenceStatusAuth](#flowsknativedevv1sequencestatusauth)
   - [FlowsKnativeDevV1SequenceStatusChannelStatusesItems0](#flowsknativedevv1sequencestatuschannelstatusesitems0)
   - [FlowsKnativeDevV1SequenceStatusChannelStatusesItems0Channel](#flowsknativedevv1sequencestatuschannelstatusesitems0channel)
   - [FlowsKnativeDevV1SequenceStatusChannelStatusesItems0Ready](#flowsknativedevv1sequencestatuschannelstatusesitems0ready)
@@ -85,10 +91,12 @@
   - [MessagingKnativeDevV1ChannelSpecSubscribersItems0DeliveryDeadLetterSinkRef](#messagingknativedevv1channelspecsubscribersitems0deliverydeadlettersinkref)
   - [MessagingKnativeDevV1ChannelStatus](#messagingknativedevv1channelstatus)
   - [MessagingKnativeDevV1ChannelStatusAddress](#messagingknativedevv1channelstatusaddress)
+  - [MessagingKnativeDevV1ChannelStatusAddressesItems0](#messagingknativedevv1channelstatusaddressesitems0)
   - [MessagingKnativeDevV1ChannelStatusChannel](#messagingknativedevv1channelstatuschannel)
   - [MessagingKnativeDevV1ChannelStatusConditionsItems0](#messagingknativedevv1channelstatusconditionsitems0)
   - [MessagingKnativeDevV1ChannelStatusDeadLetterChannel](#messagingknativedevv1channelstatusdeadletterchannel)
   - [MessagingKnativeDevV1ChannelStatusSubscribersItems0](#messagingknativedevv1channelstatussubscribersitems0)
+  - [MessagingKnativeDevV1ChannelStatusSubscribersItems0Auth](#messagingknativedevv1channelstatussubscribersitems0auth)
   - [MessagingKnativeDevV1InMemoryChannelSpec](#messagingknativedevv1inmemorychannelspec)
   - [MessagingKnativeDevV1InMemoryChannelSpecDelivery](#messagingknativedevv1inmemorychannelspecdelivery)
   - [MessagingKnativeDevV1InMemoryChannelSpecDeliveryDeadLetterSink](#messagingknativedevv1inmemorychannelspecdeliverydeadlettersink)
@@ -112,9 +120,11 @@
   - [MessagingKnativeDevV1SubscriptionSpecSubscriber](#messagingknativedevv1subscriptionspecsubscriber)
   - [MessagingKnativeDevV1SubscriptionSpecSubscriberRef](#messagingknativedevv1subscriptionspecsubscriberref)
   - [MessagingKnativeDevV1SubscriptionStatus](#messagingknativedevv1subscriptionstatus)
+  - [MessagingKnativeDevV1SubscriptionStatusAuth](#messagingknativedevv1subscriptionstatusauth)
   - [MessagingKnativeDevV1SubscriptionStatusConditionsItems0](#messagingknativedevv1subscriptionstatusconditionsitems0)
   - [MessagingKnativeDevV1SubscriptionStatusPhysicalSubscription](#messagingknativedevv1subscriptionstatusphysicalsubscription)
   - [Parallel](#parallel)
+  - [PingSource](#pingsource)
   - [Revision](#revision)
   - [Route](#route)
   - [Sequence](#sequence)
@@ -133,18 +143,22 @@
   - [ServingKnativeDevV1ConfigurationSpecTemplateSpecContainersItems0EnvItems0ValueFromSecretKeyRef](#servingknativedevv1configurationspectemplatespeccontainersitems0envitems0valuefromsecretkeyref)
   - [ServingKnativeDevV1ConfigurationSpecTemplateSpecContainersItems0LivenessProbe](#servingknativedevv1configurationspectemplatespeccontainersitems0livenessprobe)
   - [ServingKnativeDevV1ConfigurationSpecTemplateSpecContainersItems0LivenessProbeExec](#servingknativedevv1configurationspectemplatespeccontainersitems0livenessprobeexec)
+  - [ServingKnativeDevV1ConfigurationSpecTemplateSpecContainersItems0LivenessProbeGrpc](#servingknativedevv1configurationspectemplatespeccontainersitems0livenessprobegrpc)
   - [ServingKnativeDevV1ConfigurationSpecTemplateSpecContainersItems0LivenessProbeHTTPGet](#servingknativedevv1configurationspectemplatespeccontainersitems0livenessprobehttpget)
   - [ServingKnativeDevV1ConfigurationSpecTemplateSpecContainersItems0LivenessProbeHTTPGetHTTPHeadersItems0](#servingknativedevv1configurationspectemplatespeccontainersitems0livenessprobehttpgethttpheadersitems0)
   - [ServingKnativeDevV1ConfigurationSpecTemplateSpecContainersItems0LivenessProbeTCPSocket](#servingknativedevv1configurationspectemplatespeccontainersitems0livenessprobetcpsocket)
   - [ServingKnativeDevV1ConfigurationSpecTemplateSpecContainersItems0PortsItems0](#servingknativedevv1configurationspectemplatespeccontainersitems0portsitems0)
   - [ServingKnativeDevV1ConfigurationSpecTemplateSpecContainersItems0ReadinessProbe](#servingknativedevv1configurationspectemplatespeccontainersitems0readinessprobe)
   - [ServingKnativeDevV1ConfigurationSpecTemplateSpecContainersItems0ReadinessProbeExec](#servingknativedevv1configurationspectemplatespeccontainersitems0readinessprobeexec)
+  - [ServingKnativeDevV1ConfigurationSpecTemplateSpecContainersItems0ReadinessProbeGrpc](#servingknativedevv1configurationspectemplatespeccontainersitems0readinessprobegrpc)
   - [ServingKnativeDevV1ConfigurationSpecTemplateSpecContainersItems0ReadinessProbeHTTPGet](#servingknativedevv1configurationspectemplatespeccontainersitems0readinessprobehttpget)
   - [ServingKnativeDevV1ConfigurationSpecTemplateSpecContainersItems0ReadinessProbeHTTPGetHTTPHeadersItems0](#servingknativedevv1configurationspectemplatespeccontainersitems0readinessprobehttpgethttpheadersitems0)
   - [ServingKnativeDevV1ConfigurationSpecTemplateSpecContainersItems0ReadinessProbeTCPSocket](#servingknativedevv1configurationspectemplatespeccontainersitems0readinessprobetcpsocket)
   - [ServingKnativeDevV1ConfigurationSpecTemplateSpecContainersItems0Resources](#servingknativedevv1configurationspectemplatespeccontainersitems0resources)
+  - [ServingKnativeDevV1ConfigurationSpecTemplateSpecContainersItems0ResourcesClaimsItems0](#servingknativedevv1configurationspectemplatespeccontainersitems0resourcesclaimsitems0)
   - [ServingKnativeDevV1ConfigurationSpecTemplateSpecContainersItems0SecurityContext](#servingknativedevv1configurationspectemplatespeccontainersitems0securitycontext)
   - [ServingKnativeDevV1ConfigurationSpecTemplateSpecContainersItems0SecurityContextCapabilities](#servingknativedevv1configurationspectemplatespeccontainersitems0securitycontextcapabilities)
+  - [ServingKnativeDevV1ConfigurationSpecTemplateSpecContainersItems0SecurityContextSeccompProfile](#servingknativedevv1configurationspectemplatespeccontainersitems0securitycontextseccompprofile)
   - [ServingKnativeDevV1ConfigurationSpecTemplateSpecContainersItems0VolumeMountsItems0](#servingknativedevv1configurationspectemplatespeccontainersitems0volumemountsitems0)
   - [ServingKnativeDevV1ConfigurationSpecTemplateSpecImagePullSecretsItems0](#servingknativedevv1configurationspectemplatespecimagepullsecretsitems0)
   - [ServingKnativeDevV1ConfigurationSpecTemplateSpecVolumesItems0](#servingknativedevv1configurationspectemplatespecvolumesitems0)
@@ -154,6 +168,10 @@
   - [ServingKnativeDevV1ConfigurationSpecTemplateSpecVolumesItems0ProjectedSourcesItems0](#servingknativedevv1configurationspectemplatespecvolumesitems0projectedsourcesitems0)
   - [ServingKnativeDevV1ConfigurationSpecTemplateSpecVolumesItems0ProjectedSourcesItems0ConfigMap](#servingknativedevv1configurationspectemplatespecvolumesitems0projectedsourcesitems0configmap)
   - [ServingKnativeDevV1ConfigurationSpecTemplateSpecVolumesItems0ProjectedSourcesItems0ConfigMapItemsItems0](#servingknativedevv1configurationspectemplatespecvolumesitems0projectedsourcesitems0configmapitemsitems0)
+  - [ServingKnativeDevV1ConfigurationSpecTemplateSpecVolumesItems0ProjectedSourcesItems0DownwardAPI](#servingknativedevv1configurationspectemplatespecvolumesitems0projectedsourcesitems0downwardapi)
+  - [ServingKnativeDevV1ConfigurationSpecTemplateSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0](#servingknativedevv1configurationspectemplatespecvolumesitems0projectedsourcesitems0downwardapiitemsitems0)
+  - [ServingKnativeDevV1ConfigurationSpecTemplateSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0FieldRef](#servingknativedevv1configurationspectemplatespecvolumesitems0projectedsourcesitems0downwardapiitemsitems0fieldref)
+  - [ServingKnativeDevV1ConfigurationSpecTemplateSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0ResourceFieldRef](#servingknativedevv1configurationspectemplatespecvolumesitems0projectedsourcesitems0downwardapiitemsitems0resourcefieldref)
   - [ServingKnativeDevV1ConfigurationSpecTemplateSpecVolumesItems0ProjectedSourcesItems0Secret](#servingknativedevv1configurationspectemplatespecvolumesitems0projectedsourcesitems0secret)
   - [ServingKnativeDevV1ConfigurationSpecTemplateSpecVolumesItems0ProjectedSourcesItems0SecretItemsItems0](#servingknativedevv1configurationspectemplatespecvolumesitems0projectedsourcesitems0secretitemsitems0)
   - [ServingKnativeDevV1ConfigurationSpecTemplateSpecVolumesItems0ProjectedSourcesItems0ServiceAccountToken](#servingknativedevv1configurationspectemplatespecvolumesitems0projectedsourcesitems0serviceaccounttoken)
@@ -172,18 +190,22 @@
   - [ServingKnativeDevV1RevisionSpecContainersItems0EnvItems0ValueFromSecretKeyRef](#servingknativedevv1revisionspeccontainersitems0envitems0valuefromsecretkeyref)
   - [ServingKnativeDevV1RevisionSpecContainersItems0LivenessProbe](#servingknativedevv1revisionspeccontainersitems0livenessprobe)
   - [ServingKnativeDevV1RevisionSpecContainersItems0LivenessProbeExec](#servingknativedevv1revisionspeccontainersitems0livenessprobeexec)
+  - [ServingKnativeDevV1RevisionSpecContainersItems0LivenessProbeGrpc](#servingknativedevv1revisionspeccontainersitems0livenessprobegrpc)
   - [ServingKnativeDevV1RevisionSpecContainersItems0LivenessProbeHTTPGet](#servingknativedevv1revisionspeccontainersitems0livenessprobehttpget)
   - [ServingKnativeDevV1RevisionSpecContainersItems0LivenessProbeHTTPGetHTTPHeadersItems0](#servingknativedevv1revisionspeccontainersitems0livenessprobehttpgethttpheadersitems0)
   - [ServingKnativeDevV1RevisionSpecContainersItems0LivenessProbeTCPSocket](#servingknativedevv1revisionspeccontainersitems0livenessprobetcpsocket)
   - [ServingKnativeDevV1RevisionSpecContainersItems0PortsItems0](#servingknativedevv1revisionspeccontainersitems0portsitems0)
   - [ServingKnativeDevV1RevisionSpecContainersItems0ReadinessProbe](#servingknativedevv1revisionspeccontainersitems0readinessprobe)
   - [ServingKnativeDevV1RevisionSpecContainersItems0ReadinessProbeExec](#servingknativedevv1revisionspeccontainersitems0readinessprobeexec)
+  - [ServingKnativeDevV1RevisionSpecContainersItems0ReadinessProbeGrpc](#servingknativedevv1revisionspeccontainersitems0readinessprobegrpc)
   - [ServingKnativeDevV1RevisionSpecContainersItems0ReadinessProbeHTTPGet](#servingknativedevv1revisionspeccontainersitems0readinessprobehttpget)
   - [ServingKnativeDevV1RevisionSpecContainersItems0ReadinessProbeHTTPGetHTTPHeadersItems0](#servingknativedevv1revisionspeccontainersitems0readinessprobehttpgethttpheadersitems0)
   - [ServingKnativeDevV1RevisionSpecContainersItems0ReadinessProbeTCPSocket](#servingknativedevv1revisionspeccontainersitems0readinessprobetcpsocket)
   - [ServingKnativeDevV1RevisionSpecContainersItems0Resources](#servingknativedevv1revisionspeccontainersitems0resources)
+  - [ServingKnativeDevV1RevisionSpecContainersItems0ResourcesClaimsItems0](#servingknativedevv1revisionspeccontainersitems0resourcesclaimsitems0)
   - [ServingKnativeDevV1RevisionSpecContainersItems0SecurityContext](#servingknativedevv1revisionspeccontainersitems0securitycontext)
   - [ServingKnativeDevV1RevisionSpecContainersItems0SecurityContextCapabilities](#servingknativedevv1revisionspeccontainersitems0securitycontextcapabilities)
+  - [ServingKnativeDevV1RevisionSpecContainersItems0SecurityContextSeccompProfile](#servingknativedevv1revisionspeccontainersitems0securitycontextseccompprofile)
   - [ServingKnativeDevV1RevisionSpecContainersItems0VolumeMountsItems0](#servingknativedevv1revisionspeccontainersitems0volumemountsitems0)
   - [ServingKnativeDevV1RevisionSpecImagePullSecretsItems0](#servingknativedevv1revisionspecimagepullsecretsitems0)
   - [ServingKnativeDevV1RevisionSpecVolumesItems0](#servingknativedevv1revisionspecvolumesitems0)
@@ -193,6 +215,10 @@
   - [ServingKnativeDevV1RevisionSpecVolumesItems0ProjectedSourcesItems0](#servingknativedevv1revisionspecvolumesitems0projectedsourcesitems0)
   - [ServingKnativeDevV1RevisionSpecVolumesItems0ProjectedSourcesItems0ConfigMap](#servingknativedevv1revisionspecvolumesitems0projectedsourcesitems0configmap)
   - [ServingKnativeDevV1RevisionSpecVolumesItems0ProjectedSourcesItems0ConfigMapItemsItems0](#servingknativedevv1revisionspecvolumesitems0projectedsourcesitems0configmapitemsitems0)
+  - [ServingKnativeDevV1RevisionSpecVolumesItems0ProjectedSourcesItems0DownwardAPI](#servingknativedevv1revisionspecvolumesitems0projectedsourcesitems0downwardapi)
+  - [ServingKnativeDevV1RevisionSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0](#servingknativedevv1revisionspecvolumesitems0projectedsourcesitems0downwardapiitemsitems0)
+  - [ServingKnativeDevV1RevisionSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0FieldRef](#servingknativedevv1revisionspecvolumesitems0projectedsourcesitems0downwardapiitemsitems0fieldref)
+  - [ServingKnativeDevV1RevisionSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0ResourceFieldRef](#servingknativedevv1revisionspecvolumesitems0projectedsourcesitems0downwardapiitemsitems0resourcefieldref)
   - [ServingKnativeDevV1RevisionSpecVolumesItems0ProjectedSourcesItems0Secret](#servingknativedevv1revisionspecvolumesitems0projectedsourcesitems0secret)
   - [ServingKnativeDevV1RevisionSpecVolumesItems0ProjectedSourcesItems0SecretItemsItems0](#servingknativedevv1revisionspecvolumesitems0projectedsourcesitems0secretitemsitems0)
   - [ServingKnativeDevV1RevisionSpecVolumesItems0ProjectedSourcesItems0ServiceAccountToken](#servingknativedevv1revisionspecvolumesitems0projectedsourcesitems0serviceaccounttoken)
@@ -222,18 +248,22 @@
   - [ServingKnativeDevV1ServiceSpecTemplateSpecContainersItems0EnvItems0ValueFromSecretKeyRef](#servingknativedevv1servicespectemplatespeccontainersitems0envitems0valuefromsecretkeyref)
   - [ServingKnativeDevV1ServiceSpecTemplateSpecContainersItems0LivenessProbe](#servingknativedevv1servicespectemplatespeccontainersitems0livenessprobe)
   - [ServingKnativeDevV1ServiceSpecTemplateSpecContainersItems0LivenessProbeExec](#servingknativedevv1servicespectemplatespeccontainersitems0livenessprobeexec)
+  - [ServingKnativeDevV1ServiceSpecTemplateSpecContainersItems0LivenessProbeGrpc](#servingknativedevv1servicespectemplatespeccontainersitems0livenessprobegrpc)
   - [ServingKnativeDevV1ServiceSpecTemplateSpecContainersItems0LivenessProbeHTTPGet](#servingknativedevv1servicespectemplatespeccontainersitems0livenessprobehttpget)
   - [ServingKnativeDevV1ServiceSpecTemplateSpecContainersItems0LivenessProbeHTTPGetHTTPHeadersItems0](#servingknativedevv1servicespectemplatespeccontainersitems0livenessprobehttpgethttpheadersitems0)
   - [ServingKnativeDevV1ServiceSpecTemplateSpecContainersItems0LivenessProbeTCPSocket](#servingknativedevv1servicespectemplatespeccontainersitems0livenessprobetcpsocket)
   - [ServingKnativeDevV1ServiceSpecTemplateSpecContainersItems0PortsItems0](#servingknativedevv1servicespectemplatespeccontainersitems0portsitems0)
   - [ServingKnativeDevV1ServiceSpecTemplateSpecContainersItems0ReadinessProbe](#servingknativedevv1servicespectemplatespeccontainersitems0readinessprobe)
   - [ServingKnativeDevV1ServiceSpecTemplateSpecContainersItems0ReadinessProbeExec](#servingknativedevv1servicespectemplatespeccontainersitems0readinessprobeexec)
+  - [ServingKnativeDevV1ServiceSpecTemplateSpecContainersItems0ReadinessProbeGrpc](#servingknativedevv1servicespectemplatespeccontainersitems0readinessprobegrpc)
   - [ServingKnativeDevV1ServiceSpecTemplateSpecContainersItems0ReadinessProbeHTTPGet](#servingknativedevv1servicespectemplatespeccontainersitems0readinessprobehttpget)
   - [ServingKnativeDevV1ServiceSpecTemplateSpecContainersItems0ReadinessProbeHTTPGetHTTPHeadersItems0](#servingknativedevv1servicespectemplatespeccontainersitems0readinessprobehttpgethttpheadersitems0)
   - [ServingKnativeDevV1ServiceSpecTemplateSpecContainersItems0ReadinessProbeTCPSocket](#servingknativedevv1servicespectemplatespeccontainersitems0readinessprobetcpsocket)
   - [ServingKnativeDevV1ServiceSpecTemplateSpecContainersItems0Resources](#servingknativedevv1servicespectemplatespeccontainersitems0resources)
+  - [ServingKnativeDevV1ServiceSpecTemplateSpecContainersItems0ResourcesClaimsItems0](#servingknativedevv1servicespectemplatespeccontainersitems0resourcesclaimsitems0)
   - [ServingKnativeDevV1ServiceSpecTemplateSpecContainersItems0SecurityContext](#servingknativedevv1servicespectemplatespeccontainersitems0securitycontext)
   - [ServingKnativeDevV1ServiceSpecTemplateSpecContainersItems0SecurityContextCapabilities](#servingknativedevv1servicespectemplatespeccontainersitems0securitycontextcapabilities)
+  - [ServingKnativeDevV1ServiceSpecTemplateSpecContainersItems0SecurityContextSeccompProfile](#servingknativedevv1servicespectemplatespeccontainersitems0securitycontextseccompprofile)
   - [ServingKnativeDevV1ServiceSpecTemplateSpecContainersItems0VolumeMountsItems0](#servingknativedevv1servicespectemplatespeccontainersitems0volumemountsitems0)
   - [ServingKnativeDevV1ServiceSpecTemplateSpecImagePullSecretsItems0](#servingknativedevv1servicespectemplatespecimagepullsecretsitems0)
   - [ServingKnativeDevV1ServiceSpecTemplateSpecVolumesItems0](#servingknativedevv1servicespectemplatespecvolumesitems0)
@@ -243,6 +273,10 @@
   - [ServingKnativeDevV1ServiceSpecTemplateSpecVolumesItems0ProjectedSourcesItems0](#servingknativedevv1servicespectemplatespecvolumesitems0projectedsourcesitems0)
   - [ServingKnativeDevV1ServiceSpecTemplateSpecVolumesItems0ProjectedSourcesItems0ConfigMap](#servingknativedevv1servicespectemplatespecvolumesitems0projectedsourcesitems0configmap)
   - [ServingKnativeDevV1ServiceSpecTemplateSpecVolumesItems0ProjectedSourcesItems0ConfigMapItemsItems0](#servingknativedevv1servicespectemplatespecvolumesitems0projectedsourcesitems0configmapitemsitems0)
+  - [ServingKnativeDevV1ServiceSpecTemplateSpecVolumesItems0ProjectedSourcesItems0DownwardAPI](#servingknativedevv1servicespectemplatespecvolumesitems0projectedsourcesitems0downwardapi)
+  - [ServingKnativeDevV1ServiceSpecTemplateSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0](#servingknativedevv1servicespectemplatespecvolumesitems0projectedsourcesitems0downwardapiitemsitems0)
+  - [ServingKnativeDevV1ServiceSpecTemplateSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0FieldRef](#servingknativedevv1servicespectemplatespecvolumesitems0projectedsourcesitems0downwardapiitemsitems0fieldref)
+  - [ServingKnativeDevV1ServiceSpecTemplateSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0ResourceFieldRef](#servingknativedevv1servicespectemplatespecvolumesitems0projectedsourcesitems0downwardapiitemsitems0resourcefieldref)
   - [ServingKnativeDevV1ServiceSpecTemplateSpecVolumesItems0ProjectedSourcesItems0Secret](#servingknativedevv1servicespectemplatespecvolumesitems0projectedsourcesitems0secret)
   - [ServingKnativeDevV1ServiceSpecTemplateSpecVolumesItems0ProjectedSourcesItems0SecretItemsItems0](#servingknativedevv1servicespectemplatespecvolumesitems0projectedsourcesitems0secretitemsitems0)
   - [ServingKnativeDevV1ServiceSpecTemplateSpecVolumesItems0ProjectedSourcesItems0ServiceAccountToken](#servingknativedevv1servicespectemplatespecvolumesitems0projectedsourcesitems0serviceaccounttoken)
@@ -256,6 +290,8 @@
   - [SinkBinding](#sinkbinding)
   - [SourcesKnativeDevV1APIServerSourceSpec](#sourcesknativedevv1apiserversourcespec)
   - [SourcesKnativeDevV1APIServerSourceSpecCeOverrides](#sourcesknativedevv1apiserversourcespecceoverrides)
+  - [SourcesKnativeDevV1APIServerSourceSpecNamespaceSelector](#sourcesknativedevv1apiserversourcespecnamespaceselector)
+  - [SourcesKnativeDevV1APIServerSourceSpecNamespaceSelectorMatchExpressionsItems0](#sourcesknativedevv1apiserversourcespecnamespaceselectormatchexpressionsitems0)
   - [SourcesKnativeDevV1APIServerSourceSpecOwner](#sourcesknativedevv1apiserversourcespecowner)
   - [SourcesKnativeDevV1APIServerSourceSpecResourcesItems0](#sourcesknativedevv1apiserversourcespecresourcesitems0)
   - [SourcesKnativeDevV1APIServerSourceSpecResourcesItems0Selector](#sourcesknativedevv1apiserversourcespecresourcesitems0selector)
@@ -263,6 +299,7 @@
   - [SourcesKnativeDevV1APIServerSourceSpecSink](#sourcesknativedevv1apiserversourcespecsink)
   - [SourcesKnativeDevV1APIServerSourceSpecSinkRef](#sourcesknativedevv1apiserversourcespecsinkref)
   - [SourcesKnativeDevV1APIServerSourceStatus](#sourcesknativedevv1apiserversourcestatus)
+  - [SourcesKnativeDevV1APIServerSourceStatusAuth](#sourcesknativedevv1apiserversourcestatusauth)
   - [SourcesKnativeDevV1APIServerSourceStatusCeAttributesItems0](#sourcesknativedevv1apiserversourcestatusceattributesitems0)
   - [SourcesKnativeDevV1APIServerSourceStatusConditionsItems0](#sourcesknativedevv1apiserversourcestatusconditionsitems0)
   - [SourcesKnativeDevV1ContainerSourceSpec](#sourcesknativedevv1containersourcespec)
@@ -270,6 +307,7 @@
   - [SourcesKnativeDevV1ContainerSourceSpecSink](#sourcesknativedevv1containersourcespecsink)
   - [SourcesKnativeDevV1ContainerSourceSpecSinkRef](#sourcesknativedevv1containersourcespecsinkref)
   - [SourcesKnativeDevV1ContainerSourceStatus](#sourcesknativedevv1containersourcestatus)
+  - [SourcesKnativeDevV1ContainerSourceStatusAuth](#sourcesknativedevv1containersourcestatusauth)
   - [SourcesKnativeDevV1ContainerSourceStatusCeAttributesItems0](#sourcesknativedevv1containersourcestatusceattributesitems0)
   - [SourcesKnativeDevV1ContainerSourceStatusConditionsItems0](#sourcesknativedevv1containersourcestatusconditionsitems0)
   - [SourcesKnativeDevV1SinkBindingSpec](#sourcesknativedevv1sinkbindingspec)
@@ -280,8 +318,17 @@
   - [SourcesKnativeDevV1SinkBindingSpecSubjectSelector](#sourcesknativedevv1sinkbindingspecsubjectselector)
   - [SourcesKnativeDevV1SinkBindingSpecSubjectSelectorMatchExpressionsItems0](#sourcesknativedevv1sinkbindingspecsubjectselectormatchexpressionsitems0)
   - [SourcesKnativeDevV1SinkBindingStatus](#sourcesknativedevv1sinkbindingstatus)
+  - [SourcesKnativeDevV1SinkBindingStatusAuth](#sourcesknativedevv1sinkbindingstatusauth)
   - [SourcesKnativeDevV1SinkBindingStatusCeAttributesItems0](#sourcesknativedevv1sinkbindingstatusceattributesitems0)
   - [SourcesKnativeDevV1SinkBindingStatusConditionsItems0](#sourcesknativedevv1sinkbindingstatusconditionsitems0)
+  - [SourcesKnativeDevV1beta2PingSourceSpec](#sourcesknativedevv1beta2pingsourcespec)
+  - [SourcesKnativeDevV1beta2PingSourceSpecCeOverrides](#sourcesknativedevv1beta2pingsourcespecceoverrides)
+  - [SourcesKnativeDevV1beta2PingSourceSpecSink](#sourcesknativedevv1beta2pingsourcespecsink)
+  - [SourcesKnativeDevV1beta2PingSourceSpecSinkRef](#sourcesknativedevv1beta2pingsourcespecsinkref)
+  - [SourcesKnativeDevV1beta2PingSourceStatus](#sourcesknativedevv1beta2pingsourcestatus)
+  - [SourcesKnativeDevV1beta2PingSourceStatusAuth](#sourcesknativedevv1beta2pingsourcestatusauth)
+  - [SourcesKnativeDevV1beta2PingSourceStatusCeAttributesItems0](#sourcesknativedevv1beta2pingsourcestatusceattributesitems0)
+  - [SourcesKnativeDevV1beta2PingSourceStatusConditionsItems0](#sourcesknativedevv1beta2pingsourcestatusconditionsitems0)
   - [Subscription](#subscription)
   - [Trigger](#trigger)
 - v1alpha1
@@ -361,6 +408,8 @@
   - [SourcesKnativeDevV1alpha1GitHubSourceSpecAccessToken](#sourcesknativedevv1alpha1githubsourcespecaccesstoken)
   - [SourcesKnativeDevV1alpha1GitHubSourceSpecAccessTokenSecretKeyRef](#sourcesknativedevv1alpha1githubsourcespecaccesstokensecretkeyref)
   - [SourcesKnativeDevV1alpha1GitHubSourceSpecCeOverrides](#sourcesknativedevv1alpha1githubsourcespecceoverrides)
+  - [SourcesKnativeDevV1alpha1GitHubSourceSpecSecretToken](#sourcesknativedevv1alpha1githubsourcespecsecrettoken)
+  - [SourcesKnativeDevV1alpha1GitHubSourceSpecSecretTokenSecretKeyRef](#sourcesknativedevv1alpha1githubsourcespecsecrettokensecretkeyref)
   - [SourcesKnativeDevV1alpha1GitHubSourceSpecSink](#sourcesknativedevv1alpha1githubsourcespecsink)
   - [SourcesKnativeDevV1alpha1GitHubSourceSpecSinkRef](#sourcesknativedevv1alpha1githubsourcespecsinkref)
   - [SourcesKnativeDevV1alpha1GitHubSourceStatus](#sourcesknativedevv1alpha1githubsourcestatus)
@@ -404,6 +453,7 @@
   - [DomainMapping](#domainmapping)
   - [EventType](#eventtype)
   - [EventingKnativeDevV1beta1EventTypeSpec](#eventingknativedevv1beta1eventtypespec)
+  - [EventingKnativeDevV1beta1EventTypeSpecReference](#eventingknativedevv1beta1eventtypespecreference)
   - [EventingKnativeDevV1beta1EventTypeStatus](#eventingknativedevv1beta1eventtypestatus)
   - [EventingKnativeDevV1beta1EventTypeStatusConditionsItems0](#eventingknativedevv1beta1eventtypestatusconditionsitems0)
   - [KafkaChannel](#kafkachannel)
@@ -644,12 +694,18 @@
   - [ServingKnativeDevV1beta1DomainMappingStatusAddress](#servingknativedevv1beta1domainmappingstatusaddress)
   - [ServingKnativeDevV1beta1DomainMappingStatusConditionsItems0](#servingknativedevv1beta1domainmappingstatusconditionsitems0)
 - v1beta2
+  - [EventType](#eventtype)
+  - [EventingKnativeDevV1beta1EventTypeSpec](#eventingknativedevv1beta1eventtypespec)
+  - [EventingKnativeDevV1beta1EventTypeSpecReference](#eventingknativedevv1beta1eventtypespecreference)
+  - [EventingKnativeDevV1beta1EventTypeStatus](#eventingknativedevv1beta1eventtypestatus)
+  - [EventingKnativeDevV1beta1EventTypeStatusConditionsItems0](#eventingknativedevv1beta1eventtypestatusconditionsitems0)
   - [PingSource](#pingsource)
   - [SourcesKnativeDevV1beta2PingSourceSpec](#sourcesknativedevv1beta2pingsourcespec)
   - [SourcesKnativeDevV1beta2PingSourceSpecCeOverrides](#sourcesknativedevv1beta2pingsourcespecceoverrides)
   - [SourcesKnativeDevV1beta2PingSourceSpecSink](#sourcesknativedevv1beta2pingsourcespecsink)
   - [SourcesKnativeDevV1beta2PingSourceSpecSinkRef](#sourcesknativedevv1beta2pingsourcespecsinkref)
   - [SourcesKnativeDevV1beta2PingSourceStatus](#sourcesknativedevv1beta2pingsourcestatus)
+  - [SourcesKnativeDevV1beta2PingSourceStatusAuth](#sourcesknativedevv1beta2pingsourcestatusauth)
   - [SourcesKnativeDevV1beta2PingSourceStatusCeAttributesItems0](#sourcesknativedevv1beta2pingsourcestatusceattributesitems0)
   - [SourcesKnativeDevV1beta2PingSourceStatusConditionsItems0](#sourcesknativedevv1beta2pingsourcestatusconditionsitems0)
 
@@ -762,6 +818,8 @@ DeadLetterSink is the sink receiving event that could not be sent to a destinati
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
+|**CACerts**|str|Certification Authority (CA) certificates in PEM format that the source trusts when sending events to the sink.||
+|**audience**|str|Audience is the OIDC audience. This only needs to be set if the target is not an Addressable and thus the Audience can't be received from the Addressable itself. If the target is an Addressable and specifies an Audience, the target's Audience takes precedence.||
 |**ref**|[EventingKnativeDevV1BrokerSpecDeliveryDeadLetterSinkRef](#eventingknativedevv1brokerspecdeliverydeadlettersinkref)|ref||
 |**uri**|str|URI can be an absolute URL(non-empty scheme and non-empty host) pointing to the target or a relative URI. Relative URIs will be resolved using the base URI retrieved from Ref.||
 ### EventingKnativeDevV1BrokerSpecDeliveryDeadLetterSinkRef
@@ -785,8 +843,11 @@ Status represents the current state of the Broker. This data may be out of date.
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**address**|[EventingKnativeDevV1BrokerStatusAddress](#eventingknativedevv1brokerstatusaddress)|address||
+|**addresses**|[[EventingKnativeDevV1BrokerStatusAddressesItems0](#eventingknativedevv1brokerstatusaddressesitems0)]|Broker is Addressable. It exposes the endpoints as URIs to get events delivered into the Broker mesh.||
 |**annotations**|any|Annotations is additional Status fields for the Resource to save some additional State as well as convey more information to the user. This is roughly akin to Annotations on any k8s resource, just the reconciler conveying richer information outwards.||
 |**conditions**|[[EventingKnativeDevV1BrokerStatusConditionsItems0](#eventingknativedevv1brokerstatusconditionsitems0)]|Conditions the latest available observations of a resource's current state.||
+|**deadLetterSinkCACerts**|str|Certification Authority (CA) certificates in PEM format according to https://www.rfc-editor.org/rfc/rfc7468.||
+|**deadLetterSinkUri**|str|DeadLetterSinkURI is the resolved URI of the dead letter sink that will be used as a fallback when not specified by Triggers.||
 |**observedGeneration**|int|ObservedGeneration is the 'Generation' of the Service that was last processed by the controller.||
 ### EventingKnativeDevV1BrokerStatusAddress
 
@@ -796,6 +857,21 @@ Broker is Addressable. It exposes the endpoint as an URI to get events delivered
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
+|**CACerts**|str|c a certs||
+|**audience**|str|audience||
+|**name**|str|name||
+|**url**|str|url||
+### EventingKnativeDevV1BrokerStatusAddressesItems0
+
+eventing knative dev v1 broker status addresses items0
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**CACerts**|str|c a certs||
+|**audience**|str|audience||
+|**name**|str|name||
 |**url**|str|url||
 ### EventingKnativeDevV1BrokerStatusConditionsItems0
 
@@ -843,6 +919,8 @@ DeadLetterSink is the sink receiving event that could not be sent to a destinati
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
+|**CACerts**|str|Certification Authority (CA) certificates in PEM format that the source trusts when sending events to the sink.||
+|**audience**|str|Audience is the OIDC audience. This only needs to be set if the target is not an Addressable and thus the Audience can't be received from the Addressable itself. If the target is an Addressable and specifies an Audience, the target's Audience takes precedence.||
 |**ref**|[EventingKnativeDevV1TriggerSpecDeliveryDeadLetterSinkRef](#eventingknativedevv1triggerspecdeliverydeadlettersinkref)|ref||
 |**uri**|str|URI can be an absolute URL(non-empty scheme and non-empty host) pointing to the target or a relative URI. Relative URIs will be resolved using the base URI retrieved from Ref.||
 ### EventingKnativeDevV1TriggerSpecDeliveryDeadLetterSinkRef
@@ -874,6 +952,8 @@ Subscriber is the addressable that receives events from the Broker that pass the
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
+|**CACerts**|str|Certification Authority (CA) certificates in PEM format that the source trusts when sending events to the sink.||
+|**audience**|str|Audience is the OIDC audience. This only needs to be set if the target is not an Addressable and thus the Audience can't be received from the Addressable itself. If the target is an Addressable and specifies an Audience, the target's Audience takes precedence.||
 |**ref**|[EventingKnativeDevV1TriggerSpecSubscriberRef](#eventingknativedevv1triggerspecsubscriberref)|ref||
 |**uri**|str|URI can be an absolute URL(non-empty scheme and non-empty host) pointing to the target or a relative URI. Relative URIs will be resolved using the base URI retrieved from Ref.||
 ### EventingKnativeDevV1TriggerSpecSubscriberRef
@@ -897,9 +977,22 @@ Status represents the current state of the Trigger. This data may be out of date
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**annotations**|any|Annotations is additional Status fields for the Resource to save some additional State as well as convey more information to the user. This is roughly akin to Annotations on any k8s resource, just the reconciler conveying richer information outwards.||
+|**auth**|[EventingKnativeDevV1TriggerStatusAuth](#eventingknativedevv1triggerstatusauth)|auth||
 |**conditions**|[[EventingKnativeDevV1TriggerStatusConditionsItems0](#eventingknativedevv1triggerstatusconditionsitems0)]|Conditions the latest available observations of a resource's current state.||
+|**deadLetterSinkCACerts**|str|Certification Authority (CA) certificates in PEM format according to https://www.rfc-editor.org/rfc/rfc7468.||
+|**deadLetterSinkUri**|str|DeadLetterSinkURI is the resolved URI of the dead letter sink for this Trigger, in case there is none this will fallback to it's Broker status DeadLetterSinkURI.||
 |**observedGeneration**|int|ObservedGeneration is the 'Generation' of the Service that was last processed by the controller.||
+|**subscriberCACerts**|str|Certification Authority (CA) certificates in PEM format according to https://www.rfc-editor.org/rfc/rfc7468.||
 |**subscriberUri**|str|SubscriberURI is the resolved URI of the receiver for this Trigger.||
+### EventingKnativeDevV1TriggerStatusAuth
+
+Auth provides the relevant information for OIDC authentication.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**serviceAccountName**|str|ServiceAccountName is the name of the generated service account used for this components OIDC authentication.||
 ### EventingKnativeDevV1TriggerStatusConditionsItems0
 
 eventing knative dev v1 trigger status conditions items0
@@ -957,6 +1050,8 @@ DeadLetterSink is the sink receiving event that could not be sent to a destinati
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
+|**CACerts**|str|Certification Authority (CA) certificates in PEM format that the source trusts when sending events to the sink.||
+|**audience**|str|Audience is the OIDC audience. This only needs to be set if the target is not an Addressable and thus the Audience can't be received from the Addressable itself. If the target is an Addressable and specifies an Audience, the target's Audience takes precedence.||
 |**ref**|[FlowsKnativeDevV1ParallelSpecBranchesItems0DeliveryDeadLetterSinkRef](#flowsknativedevv1parallelspecbranchesitems0deliverydeadlettersinkref)|ref||
 |**uri**|str|URI can be an absolute URL(non-empty scheme and non-empty host) pointing to the target or a relative URI. Relative URIs will be resolved using the base URI retrieved from Ref.||
 ### FlowsKnativeDevV1ParallelSpecBranchesItems0DeliveryDeadLetterSinkRef
@@ -979,6 +1074,8 @@ Filter is the expression guarding the branch
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
+|**CACerts**|str|Certification Authority (CA) certificates in PEM format that the source trusts when sending events to the sink.||
+|**audience**|str|Audience is the OIDC audience. This only needs to be set if the target is not an Addressable and thus the Audience can't be received from the Addressable itself. If the target is an Addressable and specifies an Audience, the target's Audience takes precedence.||
 |**ref**|[FlowsKnativeDevV1ParallelSpecBranchesItems0FilterRef](#flowsknativedevv1parallelspecbranchesitems0filterref)|ref||
 |**uri**|str|URI can be an absolute URL(non-empty scheme and non-empty host) pointing to the target or a relative URI. Relative URIs will be resolved using the base URI retrieved from Ref.||
 ### FlowsKnativeDevV1ParallelSpecBranchesItems0FilterRef
@@ -1001,6 +1098,8 @@ Reply is a Reference to where the result of Subscriber of this case gets sent to
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
+|**CACerts**|str|Certification Authority (CA) certificates in PEM format that the source trusts when sending events to the sink.||
+|**audience**|str|Audience is the OIDC audience. This only needs to be set if the target is not an Addressable and thus the Audience can't be received from the Addressable itself. If the target is an Addressable and specifies an Audience, the target's Audience takes precedence.||
 |**ref**|[FlowsKnativeDevV1ParallelSpecBranchesItems0ReplyRef](#flowsknativedevv1parallelspecbranchesitems0replyref)|ref||
 |**uri**|str|URI can be an absolute URL(non-empty scheme and non-empty host) pointing to the target or a relative URI. Relative URIs will be resolved using the base URI retrieved from Ref.||
 ### FlowsKnativeDevV1ParallelSpecBranchesItems0ReplyRef
@@ -1023,6 +1122,8 @@ Subscriber receiving the event when the filter passes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
+|**CACerts**|str|Certification Authority (CA) certificates in PEM format that the source trusts when sending events to the sink.||
+|**audience**|str|Audience is the OIDC audience. This only needs to be set if the target is not an Addressable and thus the Audience can't be received from the Addressable itself. If the target is an Addressable and specifies an Audience, the target's Audience takes precedence.||
 |**ref**|[FlowsKnativeDevV1ParallelSpecBranchesItems0SubscriberRef](#flowsknativedevv1parallelspecbranchesitems0subscriberref)|ref||
 |**uri**|str|URI can be an absolute URL(non-empty scheme and non-empty host) pointing to the target or a relative URI. Relative URIs will be resolved using the base URI retrieved from Ref.||
 ### FlowsKnativeDevV1ParallelSpecBranchesItems0SubscriberRef
@@ -1056,6 +1157,8 @@ Reply is a Reference to where the result of a case Subscriber gets sent to when 
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
+|**CACerts**|str|Certification Authority (CA) certificates in PEM format that the source trusts when sending events to the sink.||
+|**audience**|str|Audience is the OIDC audience. This only needs to be set if the target is not an Addressable and thus the Audience can't be received from the Addressable itself. If the target is an Addressable and specifies an Audience, the target's Audience takes precedence.||
 |**ref**|[FlowsKnativeDevV1ParallelSpecReplyRef](#flowsknativedevv1parallelspecreplyref)|ref||
 |**uri**|str|URI can be an absolute URL(non-empty scheme and non-empty host) pointing to the target or a relative URI. Relative URIs will be resolved using the base URI retrieved from Ref.||
 ### FlowsKnativeDevV1ParallelSpecReplyRef
@@ -1079,20 +1182,46 @@ Status represents the current state of the Parallel. This data may be out of dat
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**address**|[FlowsKnativeDevV1ParallelStatusAddress](#flowsknativedevv1parallelstatusaddress)|address||
+|**addresses**|[[FlowsKnativeDevV1ParallelStatusAddressesItems0](#flowsknativedevv1parallelstatusaddressesitems0)]|Parallel is Addressable. It exposes the endpoints as URIs to get events delivered into the Parallel.||
 |**annotations**|any|Annotations is additional Status fields for the Resource to save some additional State as well as convey more information to the user. This is roughly akin to Annotations on any k8s resource, just the reconciler conveying richer information outwards.||
+|**auth**|[FlowsKnativeDevV1ParallelStatusAuth](#flowsknativedevv1parallelstatusauth)|auth||
 |**branchStatuses**|[[FlowsKnativeDevV1ParallelStatusBranchStatusesItems0](#flowsknativedevv1parallelstatusbranchstatusesitems0)]|BranchStatuses is an array of corresponding to branch statuses. Matches the Spec.Branches array in the order.||
 |**conditions**|[[FlowsKnativeDevV1ParallelStatusConditionsItems0](#flowsknativedevv1parallelstatusconditionsitems0)]|Conditions the latest available observations of a resource's current state.||
 |**ingressChannelStatus**|[FlowsKnativeDevV1ParallelStatusIngressChannelStatus](#flowsknativedevv1parallelstatusingresschannelstatus)|ingress channel status||
 |**observedGeneration**|int|ObservedGeneration is the 'Generation' of the Service that was last processed by the controller.||
 ### FlowsKnativeDevV1ParallelStatusAddress
 
-flows knative dev v1 parallel status address
+Parallel is Addressable. It exposes the endpoint as an URI to get events delivered into the Parallel.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
+|**CACerts**|str|c a certs||
+|**audience**|str|audience||
+|**name**|str|name||
 |**url**|str|url||
+### FlowsKnativeDevV1ParallelStatusAddressesItems0
+
+flows knative dev v1 parallel status addresses items0
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**CACerts**|str|c a certs||
+|**audience**|str|audience||
+|**name**|str|name||
+|**url**|str|url||
+### FlowsKnativeDevV1ParallelStatusAuth
+
+Auth provides the relevant information for OIDC authentication.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**serviceAccountName**|str|ServiceAccountName is the name of the generated service account used for this components OIDC authentication.||
 ### FlowsKnativeDevV1ParallelStatusBranchStatusesItems0
 
 flows knative dev v1 parallel status branch statuses items0
@@ -1290,7 +1419,7 @@ ChannelTemplate specifies which Channel CRD to use. If left unspecified, it is s
 | --- | --- | --- | --- |
 |**apiVersion**|str|APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources||
 |**kind**|str|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds||
-|**spec**|str|Spec defines the Spec to use for each channel created. Passed in verbatim to the Channel CRD as Spec section.||
+|**spec**|any|Spec defines the Spec to use for each channel created. Passed in verbatim to the Channel CRD as Spec section.||
 ### FlowsKnativeDevV1SequenceSpecReply
 
 Reply is a Reference to where the result of the last Subscriber gets sent to.
@@ -1299,6 +1428,7 @@ Reply is a Reference to where the result of the last Subscriber gets sent to.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
+|**CACerts**|str|Certification Authority (CA) certificates in PEM format that the source trusts when sending events to the reply.||
 |**ref**|[FlowsKnativeDevV1SequenceSpecReplyRef](#flowsknativedevv1sequencespecreplyref)|ref||
 |**uri**|str|URI can be an absolute URL(non-empty scheme and non-empty host) pointing to the target or a relative URI. Relative URIs will be resolved using the base URI retrieved from Ref.||
 ### FlowsKnativeDevV1SequenceSpecReplyRef
@@ -1321,6 +1451,8 @@ flows knative dev v1 sequence spec steps items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
+|**CACerts**|str|Certification Authority (CA) certificates in PEM format that the source trusts when sending events to the sink.||
+|**audience**|str|Audience is the OIDC audience. This only needs to be set if the target is not an Addressable and thus the Audience can't be received from the Addressable itself. If the target is an Addressable and specifies an Audience, the target's Audience takes precedence.||
 |**delivery**|[FlowsKnativeDevV1SequenceSpecStepsItems0Delivery](#flowsknativedevv1sequencespecstepsitems0delivery)|delivery||
 |**ref**|[FlowsKnativeDevV1SequenceSpecStepsItems0Ref](#flowsknativedevv1sequencespecstepsitems0ref)|ref||
 |**uri**|str|URI can be an absolute URL(non-empty scheme and non-empty host) pointing to the target or a relative URI. Relative URIs will be resolved using the base URI retrieved from Ref.||
@@ -1344,6 +1476,8 @@ DeadLetterSink is the sink receiving event that could not be sent to a destinati
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
+|**CACerts**|str|Certification Authority (CA) certificates in PEM format that the source trusts when sending events to the sink.||
+|**audience**|str|Audience is the OIDC audience. This only needs to be set if the target is not an Addressable and thus the Audience can't be received from the Addressable itself. If the target is an Addressable and specifies an Audience, the target's Audience takes precedence.||
 |**ref**|[FlowsKnativeDevV1SequenceSpecStepsItems0DeliveryDeadLetterSinkRef](#flowsknativedevv1sequencespecstepsitems0deliverydeadlettersinkref)|ref||
 |**uri**|str|URI can be an absolute URL(non-empty scheme and non-empty host) pointing to the target or a relative URI. Relative URIs will be resolved using the base URI retrieved from Ref.||
 ### FlowsKnativeDevV1SequenceSpecStepsItems0DeliveryDeadLetterSinkRef
@@ -1379,20 +1513,46 @@ Status represents the current state of the Sequence. This data may be out of dat
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**address**|[FlowsKnativeDevV1SequenceStatusAddress](#flowsknativedevv1sequencestatusaddress)|address||
+|**addresses**|[[FlowsKnativeDevV1SequenceStatusAddressesItems0](#flowsknativedevv1sequencestatusaddressesitems0)]|Sequence is Addressable. It exposes the endpoints as URIs to get events delivered into the Sequence.||
 |**annotations**|any|Annotations is additional Status fields for the Resource to save some additional State as well as convey more information to the user. This is roughly akin to Annotations on any k8s resource, just the reconciler conveying richer information outwards.||
+|**auth**|[FlowsKnativeDevV1SequenceStatusAuth](#flowsknativedevv1sequencestatusauth)|auth||
 |**channelStatuses**|[[FlowsKnativeDevV1SequenceStatusChannelStatusesItems0](#flowsknativedevv1sequencestatuschannelstatusesitems0)]|ChannelStatuses is an array of corresponding Channel statuses. Matches the Spec.Steps array in the order.||
 |**conditions**|[[FlowsKnativeDevV1SequenceStatusConditionsItems0](#flowsknativedevv1sequencestatusconditionsitems0)]|Conditions the latest available observations of a resource's current state.||
 |**observedGeneration**|int|ObservedGeneration is the 'Generation' of the Service that was last processed by the controller.||
 |**subscriptionStatuses**|[[FlowsKnativeDevV1SequenceStatusSubscriptionStatusesItems0](#flowsknativedevv1sequencestatussubscriptionstatusesitems0)]|SubscriptionStatuses is an array of corresponding Subscription statuses. Matches the Spec.Steps array in the order.||
 ### FlowsKnativeDevV1SequenceStatusAddress
 
-flows knative dev v1 sequence status address
+Sequence is Addressable. It exposes the endpoint as an URI to get events delivered into the Sequence.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**url** `required`|str|url||
+|**CACerts**|str|c a certs||
+|**audience**|str|audience||
+|**name**|str|name||
+|**url**|str|url||
+### FlowsKnativeDevV1SequenceStatusAddressesItems0
+
+flows knative dev v1 sequence status addresses items0
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**CACerts**|str|c a certs||
+|**audience**|str|audience||
+|**name**|str|name||
+|**url**|str|url||
+### FlowsKnativeDevV1SequenceStatusAuth
+
+Auth provides the relevant information for OIDC authentication.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**serviceAccountName**|str|ServiceAccountName is the name of the generated service account used for this components OIDC authentication.||
 ### FlowsKnativeDevV1SequenceStatusChannelStatusesItems0
 
 flows knative dev v1 sequence status channel statuses items0
@@ -1540,6 +1700,8 @@ DeadLetterSink is the sink receiving event that could not be sent to a destinati
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
+|**CACerts**|str|Certification Authority (CA) certificates in PEM format that the source trusts when sending events to the sink.||
+|**audience**|str|Audience is the OIDC audience. This only needs to be set if the target is not an Addressable and thus the Audience can't be received from the Addressable itself. If the target is an Addressable and specifies an Audience, the target's Audience takes precedence.||
 |**ref**|[MessagingKnativeDevV1ChannelSpecDeliveryDeadLetterSinkRef](#messagingknativedevv1channelspecdeliverydeadlettersinkref)|ref||
 |**uri**|str|URI can be an absolute URL(non-empty scheme and non-empty host) pointing to the target or a relative URI. Relative URIs will be resolved using the base URI retrieved from Ref.||
 ### MessagingKnativeDevV1ChannelSpecDeliveryDeadLetterSinkRef
@@ -1564,7 +1726,11 @@ messaging knative dev v1 channel spec subscribers items0
 | --- | --- | --- | --- |
 |**delivery**|[MessagingKnativeDevV1ChannelSpecSubscribersItems0Delivery](#messagingknativedevv1channelspecsubscribersitems0delivery)|delivery||
 |**generation**|int|Generation of the origin of the subscriber with uid:UID.||
+|**replyAudience**|str|ReplyAudience is the OIDC audience for the replyUri.||
+|**replyCACerts**|str|Certification Authority (CA) certificates in PEM format according to https://www.rfc-editor.org/rfc/rfc7468.||
 |**replyUri**|str|ReplyURI is the endpoint for the reply||
+|**subscriberAudience**|str|SubscriberAudience is the OIDC audience for the subscriberUri.||
+|**subscriberCACerts**|str|Certification Authority (CA) certificates in PEM format according to https://www.rfc-editor.org/rfc/rfc7468.||
 |**subscriberUri**|str|SubscriberURI is the endpoint for the subscriber||
 |**uid**|str|UID is used to understand the origin of the subscriber.||
 ### MessagingKnativeDevV1ChannelSpecSubscribersItems0Delivery
@@ -1610,20 +1776,38 @@ Status represents the current state of the Channel. This data may be out of date
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**address**|[MessagingKnativeDevV1ChannelStatusAddress](#messagingknativedevv1channelstatusaddress)|address||
+|**addresses**|[[MessagingKnativeDevV1ChannelStatusAddressesItems0](#messagingknativedevv1channelstatusaddressesitems0)]|Channel is Addressable. It exposes the endpoints as URIs to get events delivered into the Channel mesh.||
 |**annotations**|any|Annotations is additional Status fields for the Resource to save some additional State as well as convey more information to the user. This is roughly akin to Annotations on any k8s resource, just the reconciler conveying richer information outwards.||
 |**channel**|[MessagingKnativeDevV1ChannelStatusChannel](#messagingknativedevv1channelstatuschannel)|channel||
 |**conditions**|[[MessagingKnativeDevV1ChannelStatusConditionsItems0](#messagingknativedevv1channelstatusconditionsitems0)]|Conditions the latest available observations of a resource's current state.||
 |**deadLetterChannel**|[MessagingKnativeDevV1ChannelStatusDeadLetterChannel](#messagingknativedevv1channelstatusdeadletterchannel)|dead letter channel||
+|**deadLetterSinkCACerts**|str|Certification Authority (CA) certificates in PEM format according to https://www.rfc-editor.org/rfc/rfc7468.||
+|**deadLetterSinkUri**|str|DeadLetterSinkURI is the resolved URI of the dead letter sink that will be used as a fallback when not specified by Triggers.||
 |**observedGeneration**|int|ObservedGeneration is the 'Generation' of the Service that was last processed by the controller.||
 |**subscribers**|[[MessagingKnativeDevV1ChannelStatusSubscribersItems0](#messagingknativedevv1channelstatussubscribersitems0)]|This is the list of subscription's statuses for this channel.||
 ### MessagingKnativeDevV1ChannelStatusAddress
 
-messaging knative dev v1 channel status address
+Channel is Addressable. It exposes the endpoint as an URI to get events delivered into the Channel mesh.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
+|**CACerts**|str|c a certs||
+|**audience**|str|audience||
+|**name**|str|name||
+|**url**|str|url||
+### MessagingKnativeDevV1ChannelStatusAddressesItems0
+
+messaging knative dev v1 channel status addresses items0
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**CACerts**|str|c a certs||
+|**audience**|str|audience||
+|**name**|str|name||
 |**url**|str|url||
 ### MessagingKnativeDevV1ChannelStatusChannel
 
@@ -1671,10 +1855,20 @@ messaging knative dev v1 channel status subscribers items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
+|**auth**|[MessagingKnativeDevV1ChannelStatusSubscribersItems0Auth](#messagingknativedevv1channelstatussubscribersitems0auth)|auth||
 |**message**|str|A human readable message indicating details of Ready status.||
 |**observedGeneration**|int|Generation of the origin of the subscriber with uid:UID.||
 |**ready**|str|Status of the subscriber.||
 |**uid**|str|UID is used to understand the origin of the subscriber.||
+### MessagingKnativeDevV1ChannelStatusSubscribersItems0Auth
+
+Auth provides the relevant information for OIDC authentication.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**serviceAccountName**|str|ServiceAccountName is the name of the generated service account used for this components OIDC authentication.||
 ### MessagingKnativeDevV1InMemoryChannelSpec
 
 Spec defines the desired state of the Channel.
@@ -1842,19 +2036,15 @@ messaging knative dev v1 subscription spec
 |**subscriber**|[MessagingKnativeDevV1SubscriptionSpecSubscriber](#messagingknativedevv1subscriptionspecsubscriber)|subscriber||
 ### MessagingKnativeDevV1SubscriptionSpecChannel
 
-Reference to a channel that will be used to create the subscription You can specify only the following fields of the ObjectReference: - Kind - APIVersion - Name The resource pointed by this ObjectReference must meet the contract to the ChannelableSpec duck type. If the resource does not meet this contract it will be reflected in the Subscription's status.  This field is immutable. We have no good answer on what happens to the events that are currently in the channel being consumed from and what the semantics there should be. For now, you can always delete the Subscription and recreate it to point to a different channel, giving the user more control over what semantics should be used (drain the channel first, possibly have events dropped, etc.)
+Reference to a channel that will be used to create the subscription. You can specify only the following fields of the KReference: kind, apiVersion and name. The resource pointed by this KReference must meet the contract to the ChannelableSpec duck type. If the resource does not meet this contract it will be reflected in the Subscription's status.  This field is immutable. We have no good answer on what happens to the events that are currently in the channel being consumed from and what the semantics there should be. For now, you can always delete the Subscription and recreate it to point to a different channel, giving the user more control over what semantics should be used (drain the channel first, possibly have events dropped, etc.)
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**apiVersion**|str|API version of the referent.||
-|**fieldPath**|str|If referring to a piece of an object instead of an entire object, this string should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2]. For example, if the object reference is to a container within a pod, this would take on a value like: "spec.containers{name}" (where "name" refers to the name of the container that triggered the event) or if no container name is specified "spec.containers[2]" (container with index 2 in this pod). This syntax is chosen only to have some well-defined way of referencing a part of an object.||
 |**kind**|str|Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds||
 |**name**|str|Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names||
-|**namespace**|str|Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/||
-|**resourceVersion**|str|Specific resourceVersion to which this reference is made, if any. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency||
-|**uid**|str|UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids||
 ### MessagingKnativeDevV1SubscriptionSpecDelivery
 
 Delivery configuration
@@ -1875,6 +2065,8 @@ DeadLetterSink is the sink receiving event that could not be sent to a destinati
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
+|**CACerts**|str|Certification Authority (CA) certificates in PEM format that the source trusts when sending events to the sink.||
+|**audience**|str|Audience is the OIDC audience. This only needs to be set if the target is not an Addressable and thus the Audience can't be received from the Addressable itself. If the target is an Addressable and specifies an Audience, the target's Audience takes precedence.||
 |**ref**|[MessagingKnativeDevV1SubscriptionSpecDeliveryDeadLetterSinkRef](#messagingknativedevv1subscriptionspecdeliverydeadlettersinkref)|ref||
 |**uri**|str|URI can be an absolute URL(non-empty scheme and non-empty host) pointing to the target or a relative URI. Relative URIs will be resolved using the base URI retrieved from Ref.||
 ### MessagingKnativeDevV1SubscriptionSpecDeliveryDeadLetterSinkRef
@@ -1897,6 +2089,8 @@ Reply specifies (optionally) how to handle events returned from the Subscriber t
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
+|**CACerts**|str|Certification Authority (CA) certificates in PEM format that the source trusts when sending events to the sink.||
+|**audience**|str|Audience is the OIDC audience. This only needs to be set if the target is not an Addressable and thus the Audience can't be received from the Addressable itself. If the target is an Addressable and specifies an Audience, the target's Audience takes precedence.||
 |**ref**|[MessagingKnativeDevV1SubscriptionSpecReplyRef](#messagingknativedevv1subscriptionspecreplyref)|ref||
 |**uri**|str|URI can be an absolute URL(non-empty scheme and non-empty host) pointing to the target or a relative URI. Relative URIs will be resolved using the base URI retrieved from Ref.||
 ### MessagingKnativeDevV1SubscriptionSpecReplyRef
@@ -1919,6 +2113,8 @@ Subscriber is reference to (optional) function for processing events. Events fro
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
+|**CACerts**|str|Certification Authority (CA) certificates in PEM format that the subscription trusts when sending events to the sink.||
+|**audience**|str|Audience is the OIDC audience. This only needs to be set if the target is not an Addressable and thus the Audience can't be received from the Addressable itself. If the target is an Addressable and specifies an Audience, the target's Audience takes precedence.||
 |**ref**|[MessagingKnativeDevV1SubscriptionSpecSubscriberRef](#messagingknativedevv1subscriptionspecsubscriberref)|ref||
 |**uri**|str|URI can be an absolute URL(non-empty scheme and non-empty host) pointing to the target or a relative URI. Relative URIs will be resolved using the base URI retrieved from Ref.||
 ### MessagingKnativeDevV1SubscriptionSpecSubscriberRef
@@ -1942,9 +2138,19 @@ messaging knative dev v1 subscription status
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**annotations**|any|Annotations is additional Status fields for the Resource to save some additional State as well as convey more information to the user. This is roughly akin to Annotations on any k8s resource, just the reconciler conveying richer information outwards.||
+|**auth**|[MessagingKnativeDevV1SubscriptionStatusAuth](#messagingknativedevv1subscriptionstatusauth)|auth||
 |**conditions**|[[MessagingKnativeDevV1SubscriptionStatusConditionsItems0](#messagingknativedevv1subscriptionstatusconditionsitems0)]|Conditions the latest available observations of a resource's current state.||
 |**observedGeneration**|int|ObservedGeneration is the 'Generation' of the Service that was last processed by the controller.||
 |**physicalSubscription**|[MessagingKnativeDevV1SubscriptionStatusPhysicalSubscription](#messagingknativedevv1subscriptionstatusphysicalsubscription)|physical subscription||
+### MessagingKnativeDevV1SubscriptionStatusAuth
+
+Auth provides the relevant information for OIDC authentication.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**serviceAccountName**|str|ServiceAccountName is the name of the generated service account used for this components OIDC authentication.||
 ### MessagingKnativeDevV1SubscriptionStatusConditionsItems0
 
 messaging knative dev v1 subscription status conditions items0
@@ -1967,8 +2173,13 @@ PhysicalSubscription is the fully resolved values that this Subscription represe
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
+|**deadLetterSinkCACerts**|str|Certification Authority (CA) certificates in PEM format according to https://www.rfc-editor.org/rfc/rfc7468.||
 |**deadLetterSinkUri**|str|ReplyURI is the fully resolved URI for the spec.delivery.deadLetterSink.||
+|**replyAudience**|str|ReplyAudience is the OIDC audience for the replyUri.||
+|**replyCACerts**|str|Certification Authority (CA) certificates in PEM format according to https://www.rfc-editor.org/rfc/rfc7468.||
 |**replyUri**|str|ReplyURI is the fully resolved URI for the spec.reply.||
+|**subscriberAudience**|str|SubscriberAudience is the OIDC audience for the subscriberUri.||
+|**subscriberCACerts**|str|Certification Authority (CA) certificates in PEM format according to https://www.rfc-editor.org/rfc/rfc7468.||
 |**subscriberUri**|str|SubscriberURI is the fully resolved URI for spec.subscriber.||
 ### Parallel
 
@@ -1983,6 +2194,19 @@ Parallel defines conditional branches that will be wired in series through Chann
 |**metadata**|[ObjectMeta](#objectmeta)|metadata||
 |**spec**|[FlowsKnativeDevV1ParallelSpec](#flowsknativedevv1parallelspec)|spec||
 |**status**|[FlowsKnativeDevV1ParallelStatus](#flowsknativedevv1parallelstatus)|status||
+### PingSource
+
+PingSource describes an event source with a fixed payload produced on a specified cron schedule.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**apiVersion** `required` `readOnly`|"sources.knative.dev/v1beta2"|APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources|"sources.knative.dev/v1beta2"|
+|**kind** `required` `readOnly`|"PingSource"|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds|"PingSource"|
+|**metadata**|[ObjectMeta](#objectmeta)|metadata||
+|**spec**|[SourcesKnativeDevV1beta2PingSourceSpec](#sourcesknativedevv1beta2pingsourcespec)|spec||
+|**status**|[SourcesKnativeDevV1beta2PingSourceStatus](#sourcesknativedevv1beta2pingsourcestatus)|status||
 ### Revision
 
 Revision is an immutable snapshot of code and configuration.  A revision references a container image. Revisions are created by updates to a Configuration. See also: https://github.com/knative/serving/blob/main/docs/spec/overview.md#revision
@@ -2093,6 +2317,7 @@ RevisionSpec holds the desired state of the Revision (from the client).
 |**schedulerName**|str|This is accessible behind a feature flag - kubernetes.podspec-schedulername||
 |**securityContext**|any|This is accessible behind a feature flag - kubernetes.podspec-securitycontext||
 |**serviceAccountName**|str|ServiceAccountName is the name of the ServiceAccount to use to run this pod. More info: https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/||
+|**shareProcessNamespace**|bool|This is accessible behind a feature flag - kubernetes.podspec-shareproccessnamespace||
 |**timeoutSeconds**|int|TimeoutSeconds is the maximum duration in seconds that the request instance is allowed to respond to a request. If unspecified, a system default will be provided.||
 |**tolerations**|[]|This is accessible behind a feature flag - kubernetes.podspec-tolerations||
 |**topologySpreadConstraints**|[]|This is accessible behind a feature flag - kubernetes.podspec-topologyspreadconstraints||
@@ -2207,6 +2432,7 @@ Periodic probe of container liveness. Container will be restarted if the probe f
 | --- | --- | --- | --- |
 |**exec**|[ServingKnativeDevV1ConfigurationSpecTemplateSpecContainersItems0LivenessProbeExec](#servingknativedevv1configurationspectemplatespeccontainersitems0livenessprobeexec)|exec||
 |**failureThreshold**|int|Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.||
+|**grpc**|[ServingKnativeDevV1ConfigurationSpecTemplateSpecContainersItems0LivenessProbeGrpc](#servingknativedevv1configurationspectemplatespeccontainersitems0livenessprobegrpc)|grpc||
 |**httpGet**|[ServingKnativeDevV1ConfigurationSpecTemplateSpecContainersItems0LivenessProbeHTTPGet](#servingknativedevv1configurationspectemplatespeccontainersitems0livenessprobehttpget)|http get||
 |**initialDelaySeconds**|int|Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes||
 |**periodSeconds**|int|How often (in seconds) to perform the probe.||
@@ -2222,6 +2448,16 @@ Exec specifies the action to take.
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**command**|[str]|Command is the command line to execute inside the container, the working directory for the command  is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('\|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.||
+### ServingKnativeDevV1ConfigurationSpecTemplateSpecContainersItems0LivenessProbeGrpc
+
+GRPC specifies an action involving a GRPC port.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**port** `required`|int|Port number of the gRPC service. Number must be in the range 1 to 65535.||
+|**service**|str|Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).<br />If this is not specified, the default behavior is defined by gRPC.||
 ### ServingKnativeDevV1ConfigurationSpecTemplateSpecContainersItems0LivenessProbeHTTPGet
 
 HTTPGet specifies the http request to perform.
@@ -2243,7 +2479,7 @@ HTTPHeader describes a custom header to be used in HTTP probes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**name** `required`|str|The header field name||
+|**name** `required`|str|The header field name. This will be canonicalized upon output, so case-variant names will be understood as the same header.||
 |**value** `required`|str|The header field value||
 ### ServingKnativeDevV1ConfigurationSpecTemplateSpecContainersItems0LivenessProbeTCPSocket
 
@@ -2276,6 +2512,7 @@ Periodic probe of container service readiness. Container will be removed from se
 | --- | --- | --- | --- |
 |**exec**|[ServingKnativeDevV1ConfigurationSpecTemplateSpecContainersItems0ReadinessProbeExec](#servingknativedevv1configurationspectemplatespeccontainersitems0readinessprobeexec)|exec||
 |**failureThreshold**|int|Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.||
+|**grpc**|[ServingKnativeDevV1ConfigurationSpecTemplateSpecContainersItems0ReadinessProbeGrpc](#servingknativedevv1configurationspectemplatespeccontainersitems0readinessprobegrpc)|grpc||
 |**httpGet**|[ServingKnativeDevV1ConfigurationSpecTemplateSpecContainersItems0ReadinessProbeHTTPGet](#servingknativedevv1configurationspectemplatespeccontainersitems0readinessprobehttpget)|http get||
 |**initialDelaySeconds**|int|Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes||
 |**periodSeconds**|int|How often (in seconds) to perform the probe.||
@@ -2291,6 +2528,16 @@ Exec specifies the action to take.
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**command**|[str]|Command is the command line to execute inside the container, the working directory for the command  is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('\|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.||
+### ServingKnativeDevV1ConfigurationSpecTemplateSpecContainersItems0ReadinessProbeGrpc
+
+GRPC specifies an action involving a GRPC port.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**port** `required`|int|Port number of the gRPC service. Number must be in the range 1 to 65535.||
+|**service**|str|Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).<br />If this is not specified, the default behavior is defined by gRPC.||
 ### ServingKnativeDevV1ConfigurationSpecTemplateSpecContainersItems0ReadinessProbeHTTPGet
 
 HTTPGet specifies the http request to perform.
@@ -2312,7 +2559,7 @@ HTTPHeader describes a custom header to be used in HTTP probes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**name** `required`|str|The header field name||
+|**name** `required`|str|The header field name. This will be canonicalized upon output, so case-variant names will be understood as the same header.||
 |**value** `required`|str|The header field value||
 ### ServingKnativeDevV1ConfigurationSpecTemplateSpecContainersItems0ReadinessProbeTCPSocket
 
@@ -2332,8 +2579,18 @@ Compute Resources required by this container. Cannot be updated. More info: http
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
+|**claims**|[[ServingKnativeDevV1ConfigurationSpecTemplateSpecContainersItems0ResourcesClaimsItems0](#servingknativedevv1configurationspectemplatespeccontainersitems0resourcesclaimsitems0)]|Claims lists the names of resources, defined in spec.resourceClaims, that are used by this container.<br />This is an alpha field and requires enabling the DynamicResourceAllocation feature gate.<br />This field is immutable. It can only be set for containers.||
 |**limits**|{str:int | str}|Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/||
-|**requests**|{str:int | str}|Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/||
+|**requests**|{str:int | str}|Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. Requests cannot exceed Limits. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/||
+### ServingKnativeDevV1ConfigurationSpecTemplateSpecContainersItems0ResourcesClaimsItems0
+
+ResourceClaim references one entry in PodSpec.ResourceClaims.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**name** `required`|str|Name must match the name of one entry in pod.spec.resourceClaims of the Pod where this field is used. It makes that resource available inside a container.||
 ### ServingKnativeDevV1ConfigurationSpecTemplateSpecContainersItems0SecurityContext
 
 SecurityContext defines the security options the container should be run with. If set, the fields of SecurityContext override the equivalent fields of PodSecurityContext. More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
@@ -2348,6 +2605,7 @@ SecurityContext defines the security options the container should be run with. I
 |**runAsGroup**|int|The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. Note that this field cannot be set when spec.os.name is windows.||
 |**runAsNonRoot**|bool|Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.||
 |**runAsUser**|int|The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. Note that this field cannot be set when spec.os.name is windows.||
+|**seccompProfile**|[ServingKnativeDevV1ConfigurationSpecTemplateSpecContainersItems0SecurityContextSeccompProfile](#servingknativedevv1configurationspectemplatespeccontainersitems0securitycontextseccompprofile)|seccomp profile||
 ### ServingKnativeDevV1ConfigurationSpecTemplateSpecContainersItems0SecurityContextCapabilities
 
 The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime. Note that this field cannot be set when spec.os.name is windows.
@@ -2358,6 +2616,16 @@ The capabilities to add/drop when running containers. Defaults to the default se
 | --- | --- | --- | --- |
 |**add**|[str]|This is accessible behind a feature flag - kubernetes.containerspec-addcapabilities||
 |**drop**|[str]|Removed capabilities||
+### ServingKnativeDevV1ConfigurationSpecTemplateSpecContainersItems0SecurityContextSeccompProfile
+
+The seccomp options to use by this container. If seccomp options are provided at both the pod & container level, the container options override the pod options. Note that this field cannot be set when spec.os.name is windows.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**localhostProfile**|str|localhostProfile indicates a profile defined in a file on the node should be used. The profile must be preconfigured on the node to work. Must be a descending path, relative to the kubelet's configured seccomp profile location. Must be set if type is "Localhost". Must NOT be set for any other type.||
+|**type** `required`|str|||
 ### ServingKnativeDevV1ConfigurationSpecTemplateSpecContainersItems0VolumeMountsItems0
 
 VolumeMount describes a mounting of a Volume within a container.
@@ -2435,6 +2703,7 @@ Projection that may be projected along with other supported volume types
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**configMap**|[ServingKnativeDevV1ConfigurationSpecTemplateSpecVolumesItems0ProjectedSourcesItems0ConfigMap](#servingknativedevv1configurationspectemplatespecvolumesitems0projectedsourcesitems0configmap)|config map||
+|**downwardAPI**|[ServingKnativeDevV1ConfigurationSpecTemplateSpecVolumesItems0ProjectedSourcesItems0DownwardAPI](#servingknativedevv1configurationspectemplatespecvolumesitems0projectedsourcesitems0downwardapi)|downward API||
 |**secret**|[ServingKnativeDevV1ConfigurationSpecTemplateSpecVolumesItems0ProjectedSourcesItems0Secret](#servingknativedevv1configurationspectemplatespecvolumesitems0projectedsourcesitems0secret)|secret||
 |**serviceAccountToken**|[ServingKnativeDevV1ConfigurationSpecTemplateSpecVolumesItems0ProjectedSourcesItems0ServiceAccountToken](#servingknativedevv1configurationspectemplatespecvolumesitems0projectedsourcesitems0serviceaccounttoken)|service account token||
 ### ServingKnativeDevV1ConfigurationSpecTemplateSpecVolumesItems0ProjectedSourcesItems0ConfigMap
@@ -2459,6 +2728,48 @@ Maps a string key to a path within a volume.
 |**key** `required`|str|key is the key to project.||
 |**mode**|int|mode is Optional: mode bits used to set permissions on this file. Must be an octal value between 0000 and 0777 or a decimal value between 0 and 511. YAML accepts both octal and decimal values, JSON requires decimal values for mode bits. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.||
 |**path** `required`|str|path is the relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.||
+### ServingKnativeDevV1ConfigurationSpecTemplateSpecVolumesItems0ProjectedSourcesItems0DownwardAPI
+
+downwardAPI information about the downwardAPI data to project
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**items**|[[ServingKnativeDevV1ConfigurationSpecTemplateSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0](#servingknativedevv1configurationspectemplatespecvolumesitems0projectedsourcesitems0downwardapiitemsitems0)]|Items is a list of DownwardAPIVolume file||
+### ServingKnativeDevV1ConfigurationSpecTemplateSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0
+
+DownwardAPIVolumeFile represents information to create the file containing the pod field
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**fieldRef**|[ServingKnativeDevV1ConfigurationSpecTemplateSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0FieldRef](#servingknativedevv1configurationspectemplatespecvolumesitems0projectedsourcesitems0downwardapiitemsitems0fieldref)|field ref||
+|**mode**|int|Optional: mode bits used to set permissions on this file, must be an octal value between 0000 and 0777 or a decimal value between 0 and 511. YAML accepts both octal and decimal values, JSON requires decimal values for mode bits. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.||
+|**path** `required`|str|Required: Path is  the relative path name of the file to be created. Must not be absolute or contain the '..' path. Must be utf-8 encoded. The first item of the relative path must not start with '..'||
+|**resourceFieldRef**|[ServingKnativeDevV1ConfigurationSpecTemplateSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0ResourceFieldRef](#servingknativedevv1configurationspectemplatespecvolumesitems0projectedsourcesitems0downwardapiitemsitems0resourcefieldref)|resource field ref||
+### ServingKnativeDevV1ConfigurationSpecTemplateSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0FieldRef
+
+Required: Selects a field of the pod: only annotations, labels, name and namespace are supported.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**apiVersion**|str|Version of the schema the FieldPath is written in terms of, defaults to "v1".||
+|**fieldPath** `required`|str|Path of the field to select in the specified API version.||
+### ServingKnativeDevV1ConfigurationSpecTemplateSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0ResourceFieldRef
+
+Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**containerName**|str|Container name: required for volumes, optional for env vars||
+|**divisor**|int | str|Specifies the output format of the exposed resources, defaults to "1"||
+|**resource** `required`|str|Required: resource to select||
 ### ServingKnativeDevV1ConfigurationSpecTemplateSpecVolumesItems0ProjectedSourcesItems0Secret
 
 secret information about the secret data to project
@@ -2568,6 +2879,7 @@ RevisionSpec holds the desired state of the Revision (from the client).
 |**schedulerName**|str|This is accessible behind a feature flag - kubernetes.podspec-schedulername||
 |**securityContext**|any|This is accessible behind a feature flag - kubernetes.podspec-securitycontext||
 |**serviceAccountName**|str|ServiceAccountName is the name of the ServiceAccount to use to run this pod. More info: https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/||
+|**shareProcessNamespace**|bool|This is accessible behind a feature flag - kubernetes.podspec-shareproccessnamespace||
 |**timeoutSeconds**|int|TimeoutSeconds is the maximum duration in seconds that the request instance is allowed to respond to a request. If unspecified, a system default will be provided.||
 |**tolerations**|[]|This is accessible behind a feature flag - kubernetes.podspec-tolerations||
 |**topologySpreadConstraints**|[]|This is accessible behind a feature flag - kubernetes.podspec-topologyspreadconstraints||
@@ -2682,6 +2994,7 @@ Periodic probe of container liveness. Container will be restarted if the probe f
 | --- | --- | --- | --- |
 |**exec**|[ServingKnativeDevV1RevisionSpecContainersItems0LivenessProbeExec](#servingknativedevv1revisionspeccontainersitems0livenessprobeexec)|exec||
 |**failureThreshold**|int|Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.||
+|**grpc**|[ServingKnativeDevV1RevisionSpecContainersItems0LivenessProbeGrpc](#servingknativedevv1revisionspeccontainersitems0livenessprobegrpc)|grpc||
 |**httpGet**|[ServingKnativeDevV1RevisionSpecContainersItems0LivenessProbeHTTPGet](#servingknativedevv1revisionspeccontainersitems0livenessprobehttpget)|http get||
 |**initialDelaySeconds**|int|Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes||
 |**periodSeconds**|int|How often (in seconds) to perform the probe.||
@@ -2697,6 +3010,16 @@ Exec specifies the action to take.
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**command**|[str]|Command is the command line to execute inside the container, the working directory for the command  is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('\|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.||
+### ServingKnativeDevV1RevisionSpecContainersItems0LivenessProbeGrpc
+
+GRPC specifies an action involving a GRPC port.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**port** `required`|int|Port number of the gRPC service. Number must be in the range 1 to 65535.||
+|**service**|str|Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).<br />If this is not specified, the default behavior is defined by gRPC.||
 ### ServingKnativeDevV1RevisionSpecContainersItems0LivenessProbeHTTPGet
 
 HTTPGet specifies the http request to perform.
@@ -2718,7 +3041,7 @@ HTTPHeader describes a custom header to be used in HTTP probes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**name** `required`|str|The header field name||
+|**name** `required`|str|The header field name. This will be canonicalized upon output, so case-variant names will be understood as the same header.||
 |**value** `required`|str|The header field value||
 ### ServingKnativeDevV1RevisionSpecContainersItems0LivenessProbeTCPSocket
 
@@ -2751,6 +3074,7 @@ Periodic probe of container service readiness. Container will be removed from se
 | --- | --- | --- | --- |
 |**exec**|[ServingKnativeDevV1RevisionSpecContainersItems0ReadinessProbeExec](#servingknativedevv1revisionspeccontainersitems0readinessprobeexec)|exec||
 |**failureThreshold**|int|Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.||
+|**grpc**|[ServingKnativeDevV1RevisionSpecContainersItems0ReadinessProbeGrpc](#servingknativedevv1revisionspeccontainersitems0readinessprobegrpc)|grpc||
 |**httpGet**|[ServingKnativeDevV1RevisionSpecContainersItems0ReadinessProbeHTTPGet](#servingknativedevv1revisionspeccontainersitems0readinessprobehttpget)|http get||
 |**initialDelaySeconds**|int|Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes||
 |**periodSeconds**|int|How often (in seconds) to perform the probe.||
@@ -2766,6 +3090,16 @@ Exec specifies the action to take.
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**command**|[str]|Command is the command line to execute inside the container, the working directory for the command  is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('\|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.||
+### ServingKnativeDevV1RevisionSpecContainersItems0ReadinessProbeGrpc
+
+GRPC specifies an action involving a GRPC port.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**port** `required`|int|Port number of the gRPC service. Number must be in the range 1 to 65535.||
+|**service**|str|Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).<br />If this is not specified, the default behavior is defined by gRPC.||
 ### ServingKnativeDevV1RevisionSpecContainersItems0ReadinessProbeHTTPGet
 
 HTTPGet specifies the http request to perform.
@@ -2787,7 +3121,7 @@ HTTPHeader describes a custom header to be used in HTTP probes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**name** `required`|str|The header field name||
+|**name** `required`|str|The header field name. This will be canonicalized upon output, so case-variant names will be understood as the same header.||
 |**value** `required`|str|The header field value||
 ### ServingKnativeDevV1RevisionSpecContainersItems0ReadinessProbeTCPSocket
 
@@ -2807,8 +3141,18 @@ Compute Resources required by this container. Cannot be updated. More info: http
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
+|**claims**|[[ServingKnativeDevV1RevisionSpecContainersItems0ResourcesClaimsItems0](#servingknativedevv1revisionspeccontainersitems0resourcesclaimsitems0)]|Claims lists the names of resources, defined in spec.resourceClaims, that are used by this container.<br />This is an alpha field and requires enabling the DynamicResourceAllocation feature gate.<br />This field is immutable. It can only be set for containers.||
 |**limits**|{str:int | str}|Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/||
-|**requests**|{str:int | str}|Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/||
+|**requests**|{str:int | str}|Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. Requests cannot exceed Limits. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/||
+### ServingKnativeDevV1RevisionSpecContainersItems0ResourcesClaimsItems0
+
+ResourceClaim references one entry in PodSpec.ResourceClaims.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**name** `required`|str|Name must match the name of one entry in pod.spec.resourceClaims of the Pod where this field is used. It makes that resource available inside a container.||
 ### ServingKnativeDevV1RevisionSpecContainersItems0SecurityContext
 
 SecurityContext defines the security options the container should be run with. If set, the fields of SecurityContext override the equivalent fields of PodSecurityContext. More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
@@ -2823,6 +3167,7 @@ SecurityContext defines the security options the container should be run with. I
 |**runAsGroup**|int|The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. Note that this field cannot be set when spec.os.name is windows.||
 |**runAsNonRoot**|bool|Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.||
 |**runAsUser**|int|The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. Note that this field cannot be set when spec.os.name is windows.||
+|**seccompProfile**|[ServingKnativeDevV1RevisionSpecContainersItems0SecurityContextSeccompProfile](#servingknativedevv1revisionspeccontainersitems0securitycontextseccompprofile)|seccomp profile||
 ### ServingKnativeDevV1RevisionSpecContainersItems0SecurityContextCapabilities
 
 The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime. Note that this field cannot be set when spec.os.name is windows.
@@ -2833,6 +3178,16 @@ The capabilities to add/drop when running containers. Defaults to the default se
 | --- | --- | --- | --- |
 |**add**|[str]|This is accessible behind a feature flag - kubernetes.containerspec-addcapabilities||
 |**drop**|[str]|Removed capabilities||
+### ServingKnativeDevV1RevisionSpecContainersItems0SecurityContextSeccompProfile
+
+The seccomp options to use by this container. If seccomp options are provided at both the pod & container level, the container options override the pod options. Note that this field cannot be set when spec.os.name is windows.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**localhostProfile**|str|localhostProfile indicates a profile defined in a file on the node should be used. The profile must be preconfigured on the node to work. Must be a descending path, relative to the kubelet's configured seccomp profile location. Must be set if type is "Localhost". Must NOT be set for any other type.||
+|**type** `required`|str|||
 ### ServingKnativeDevV1RevisionSpecContainersItems0VolumeMountsItems0
 
 VolumeMount describes a mounting of a Volume within a container.
@@ -2910,6 +3265,7 @@ Projection that may be projected along with other supported volume types
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**configMap**|[ServingKnativeDevV1RevisionSpecVolumesItems0ProjectedSourcesItems0ConfigMap](#servingknativedevv1revisionspecvolumesitems0projectedsourcesitems0configmap)|config map||
+|**downwardAPI**|[ServingKnativeDevV1RevisionSpecVolumesItems0ProjectedSourcesItems0DownwardAPI](#servingknativedevv1revisionspecvolumesitems0projectedsourcesitems0downwardapi)|downward API||
 |**secret**|[ServingKnativeDevV1RevisionSpecVolumesItems0ProjectedSourcesItems0Secret](#servingknativedevv1revisionspecvolumesitems0projectedsourcesitems0secret)|secret||
 |**serviceAccountToken**|[ServingKnativeDevV1RevisionSpecVolumesItems0ProjectedSourcesItems0ServiceAccountToken](#servingknativedevv1revisionspecvolumesitems0projectedsourcesitems0serviceaccounttoken)|service account token||
 ### ServingKnativeDevV1RevisionSpecVolumesItems0ProjectedSourcesItems0ConfigMap
@@ -2934,6 +3290,48 @@ Maps a string key to a path within a volume.
 |**key** `required`|str|key is the key to project.||
 |**mode**|int|mode is Optional: mode bits used to set permissions on this file. Must be an octal value between 0000 and 0777 or a decimal value between 0 and 511. YAML accepts both octal and decimal values, JSON requires decimal values for mode bits. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.||
 |**path** `required`|str|path is the relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.||
+### ServingKnativeDevV1RevisionSpecVolumesItems0ProjectedSourcesItems0DownwardAPI
+
+downwardAPI information about the downwardAPI data to project
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**items**|[[ServingKnativeDevV1RevisionSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0](#servingknativedevv1revisionspecvolumesitems0projectedsourcesitems0downwardapiitemsitems0)]|Items is a list of DownwardAPIVolume file||
+### ServingKnativeDevV1RevisionSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0
+
+DownwardAPIVolumeFile represents information to create the file containing the pod field
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**fieldRef**|[ServingKnativeDevV1RevisionSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0FieldRef](#servingknativedevv1revisionspecvolumesitems0projectedsourcesitems0downwardapiitemsitems0fieldref)|field ref||
+|**mode**|int|Optional: mode bits used to set permissions on this file, must be an octal value between 0000 and 0777 or a decimal value between 0 and 511. YAML accepts both octal and decimal values, JSON requires decimal values for mode bits. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.||
+|**path** `required`|str|Required: Path is  the relative path name of the file to be created. Must not be absolute or contain the '..' path. Must be utf-8 encoded. The first item of the relative path must not start with '..'||
+|**resourceFieldRef**|[ServingKnativeDevV1RevisionSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0ResourceFieldRef](#servingknativedevv1revisionspecvolumesitems0projectedsourcesitems0downwardapiitemsitems0resourcefieldref)|resource field ref||
+### ServingKnativeDevV1RevisionSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0FieldRef
+
+Required: Selects a field of the pod: only annotations, labels, name and namespace are supported.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**apiVersion**|str|Version of the schema the FieldPath is written in terms of, defaults to "v1".||
+|**fieldPath** `required`|str|Path of the field to select in the specified API version.||
+### ServingKnativeDevV1RevisionSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0ResourceFieldRef
+
+Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**containerName**|str|Container name: required for volumes, optional for env vars||
+|**divisor**|int | str|Specifies the output format of the exposed resources, defaults to "1"||
+|**resource** `required`|str|Required: resource to select||
 ### ServingKnativeDevV1RevisionSpecVolumesItems0ProjectedSourcesItems0Secret
 
 secret information about the secret data to project
@@ -3085,6 +3483,9 @@ Address holds the information needed for a Route to be the target of an event.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
+|**CACerts**|str|CACerts is the Certification Authority (CA) certificates in PEM format according to https://www.rfc-editor.org/rfc/rfc7468.||
+|**audience**|str|Audience is the OIDC audience for this address.||
+|**name**|str|Name is the name of the address.||
 |**url**|str|url||
 ### ServingKnativeDevV1RouteStatusConditionsItems0
 
@@ -3173,6 +3574,7 @@ RevisionSpec holds the desired state of the Revision (from the client).
 |**schedulerName**|str|This is accessible behind a feature flag - kubernetes.podspec-schedulername||
 |**securityContext**|any|This is accessible behind a feature flag - kubernetes.podspec-securitycontext||
 |**serviceAccountName**|str|ServiceAccountName is the name of the ServiceAccount to use to run this pod. More info: https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/||
+|**shareProcessNamespace**|bool|This is accessible behind a feature flag - kubernetes.podspec-shareproccessnamespace||
 |**timeoutSeconds**|int|TimeoutSeconds is the maximum duration in seconds that the request instance is allowed to respond to a request. If unspecified, a system default will be provided.||
 |**tolerations**|[]|This is accessible behind a feature flag - kubernetes.podspec-tolerations||
 |**topologySpreadConstraints**|[]|This is accessible behind a feature flag - kubernetes.podspec-topologyspreadconstraints||
@@ -3287,6 +3689,7 @@ Periodic probe of container liveness. Container will be restarted if the probe f
 | --- | --- | --- | --- |
 |**exec**|[ServingKnativeDevV1ServiceSpecTemplateSpecContainersItems0LivenessProbeExec](#servingknativedevv1servicespectemplatespeccontainersitems0livenessprobeexec)|exec||
 |**failureThreshold**|int|Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.||
+|**grpc**|[ServingKnativeDevV1ServiceSpecTemplateSpecContainersItems0LivenessProbeGrpc](#servingknativedevv1servicespectemplatespeccontainersitems0livenessprobegrpc)|grpc||
 |**httpGet**|[ServingKnativeDevV1ServiceSpecTemplateSpecContainersItems0LivenessProbeHTTPGet](#servingknativedevv1servicespectemplatespeccontainersitems0livenessprobehttpget)|http get||
 |**initialDelaySeconds**|int|Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes||
 |**periodSeconds**|int|How often (in seconds) to perform the probe.||
@@ -3302,6 +3705,16 @@ Exec specifies the action to take.
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**command**|[str]|Command is the command line to execute inside the container, the working directory for the command  is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('\|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.||
+### ServingKnativeDevV1ServiceSpecTemplateSpecContainersItems0LivenessProbeGrpc
+
+GRPC specifies an action involving a GRPC port.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**port** `required`|int|Port number of the gRPC service. Number must be in the range 1 to 65535.||
+|**service**|str|Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).<br />If this is not specified, the default behavior is defined by gRPC.||
 ### ServingKnativeDevV1ServiceSpecTemplateSpecContainersItems0LivenessProbeHTTPGet
 
 HTTPGet specifies the http request to perform.
@@ -3323,7 +3736,7 @@ HTTPHeader describes a custom header to be used in HTTP probes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**name** `required`|str|The header field name||
+|**name** `required`|str|The header field name. This will be canonicalized upon output, so case-variant names will be understood as the same header.||
 |**value** `required`|str|The header field value||
 ### ServingKnativeDevV1ServiceSpecTemplateSpecContainersItems0LivenessProbeTCPSocket
 
@@ -3356,6 +3769,7 @@ Periodic probe of container service readiness. Container will be removed from se
 | --- | --- | --- | --- |
 |**exec**|[ServingKnativeDevV1ServiceSpecTemplateSpecContainersItems0ReadinessProbeExec](#servingknativedevv1servicespectemplatespeccontainersitems0readinessprobeexec)|exec||
 |**failureThreshold**|int|Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.||
+|**grpc**|[ServingKnativeDevV1ServiceSpecTemplateSpecContainersItems0ReadinessProbeGrpc](#servingknativedevv1servicespectemplatespeccontainersitems0readinessprobegrpc)|grpc||
 |**httpGet**|[ServingKnativeDevV1ServiceSpecTemplateSpecContainersItems0ReadinessProbeHTTPGet](#servingknativedevv1servicespectemplatespeccontainersitems0readinessprobehttpget)|http get||
 |**initialDelaySeconds**|int|Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes||
 |**periodSeconds**|int|How often (in seconds) to perform the probe.||
@@ -3371,6 +3785,16 @@ Exec specifies the action to take.
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**command**|[str]|Command is the command line to execute inside the container, the working directory for the command  is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('\|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.||
+### ServingKnativeDevV1ServiceSpecTemplateSpecContainersItems0ReadinessProbeGrpc
+
+GRPC specifies an action involving a GRPC port.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**port** `required`|int|Port number of the gRPC service. Number must be in the range 1 to 65535.||
+|**service**|str|Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).<br />If this is not specified, the default behavior is defined by gRPC.||
 ### ServingKnativeDevV1ServiceSpecTemplateSpecContainersItems0ReadinessProbeHTTPGet
 
 HTTPGet specifies the http request to perform.
@@ -3392,7 +3816,7 @@ HTTPHeader describes a custom header to be used in HTTP probes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**name** `required`|str|The header field name||
+|**name** `required`|str|The header field name. This will be canonicalized upon output, so case-variant names will be understood as the same header.||
 |**value** `required`|str|The header field value||
 ### ServingKnativeDevV1ServiceSpecTemplateSpecContainersItems0ReadinessProbeTCPSocket
 
@@ -3412,8 +3836,18 @@ Compute Resources required by this container. Cannot be updated. More info: http
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
+|**claims**|[[ServingKnativeDevV1ServiceSpecTemplateSpecContainersItems0ResourcesClaimsItems0](#servingknativedevv1servicespectemplatespeccontainersitems0resourcesclaimsitems0)]|Claims lists the names of resources, defined in spec.resourceClaims, that are used by this container.<br />This is an alpha field and requires enabling the DynamicResourceAllocation feature gate.<br />This field is immutable. It can only be set for containers.||
 |**limits**|{str:int | str}|Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/||
-|**requests**|{str:int | str}|Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/||
+|**requests**|{str:int | str}|Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. Requests cannot exceed Limits. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/||
+### ServingKnativeDevV1ServiceSpecTemplateSpecContainersItems0ResourcesClaimsItems0
+
+ResourceClaim references one entry in PodSpec.ResourceClaims.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**name** `required`|str|Name must match the name of one entry in pod.spec.resourceClaims of the Pod where this field is used. It makes that resource available inside a container.||
 ### ServingKnativeDevV1ServiceSpecTemplateSpecContainersItems0SecurityContext
 
 SecurityContext defines the security options the container should be run with. If set, the fields of SecurityContext override the equivalent fields of PodSecurityContext. More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
@@ -3428,6 +3862,7 @@ SecurityContext defines the security options the container should be run with. I
 |**runAsGroup**|int|The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. Note that this field cannot be set when spec.os.name is windows.||
 |**runAsNonRoot**|bool|Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.||
 |**runAsUser**|int|The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. Note that this field cannot be set when spec.os.name is windows.||
+|**seccompProfile**|[ServingKnativeDevV1ServiceSpecTemplateSpecContainersItems0SecurityContextSeccompProfile](#servingknativedevv1servicespectemplatespeccontainersitems0securitycontextseccompprofile)|seccomp profile||
 ### ServingKnativeDevV1ServiceSpecTemplateSpecContainersItems0SecurityContextCapabilities
 
 The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime. Note that this field cannot be set when spec.os.name is windows.
@@ -3438,6 +3873,16 @@ The capabilities to add/drop when running containers. Defaults to the default se
 | --- | --- | --- | --- |
 |**add**|[str]|This is accessible behind a feature flag - kubernetes.containerspec-addcapabilities||
 |**drop**|[str]|Removed capabilities||
+### ServingKnativeDevV1ServiceSpecTemplateSpecContainersItems0SecurityContextSeccompProfile
+
+The seccomp options to use by this container. If seccomp options are provided at both the pod & container level, the container options override the pod options. Note that this field cannot be set when spec.os.name is windows.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**localhostProfile**|str|localhostProfile indicates a profile defined in a file on the node should be used. The profile must be preconfigured on the node to work. Must be a descending path, relative to the kubelet's configured seccomp profile location. Must be set if type is "Localhost". Must NOT be set for any other type.||
+|**type** `required`|str|||
 ### ServingKnativeDevV1ServiceSpecTemplateSpecContainersItems0VolumeMountsItems0
 
 VolumeMount describes a mounting of a Volume within a container.
@@ -3515,6 +3960,7 @@ Projection that may be projected along with other supported volume types
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**configMap**|[ServingKnativeDevV1ServiceSpecTemplateSpecVolumesItems0ProjectedSourcesItems0ConfigMap](#servingknativedevv1servicespectemplatespecvolumesitems0projectedsourcesitems0configmap)|config map||
+|**downwardAPI**|[ServingKnativeDevV1ServiceSpecTemplateSpecVolumesItems0ProjectedSourcesItems0DownwardAPI](#servingknativedevv1servicespectemplatespecvolumesitems0projectedsourcesitems0downwardapi)|downward API||
 |**secret**|[ServingKnativeDevV1ServiceSpecTemplateSpecVolumesItems0ProjectedSourcesItems0Secret](#servingknativedevv1servicespectemplatespecvolumesitems0projectedsourcesitems0secret)|secret||
 |**serviceAccountToken**|[ServingKnativeDevV1ServiceSpecTemplateSpecVolumesItems0ProjectedSourcesItems0ServiceAccountToken](#servingknativedevv1servicespectemplatespecvolumesitems0projectedsourcesitems0serviceaccounttoken)|service account token||
 ### ServingKnativeDevV1ServiceSpecTemplateSpecVolumesItems0ProjectedSourcesItems0ConfigMap
@@ -3539,6 +3985,48 @@ Maps a string key to a path within a volume.
 |**key** `required`|str|key is the key to project.||
 |**mode**|int|mode is Optional: mode bits used to set permissions on this file. Must be an octal value between 0000 and 0777 or a decimal value between 0 and 511. YAML accepts both octal and decimal values, JSON requires decimal values for mode bits. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.||
 |**path** `required`|str|path is the relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.||
+### ServingKnativeDevV1ServiceSpecTemplateSpecVolumesItems0ProjectedSourcesItems0DownwardAPI
+
+downwardAPI information about the downwardAPI data to project
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**items**|[[ServingKnativeDevV1ServiceSpecTemplateSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0](#servingknativedevv1servicespectemplatespecvolumesitems0projectedsourcesitems0downwardapiitemsitems0)]|Items is a list of DownwardAPIVolume file||
+### ServingKnativeDevV1ServiceSpecTemplateSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0
+
+DownwardAPIVolumeFile represents information to create the file containing the pod field
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**fieldRef**|[ServingKnativeDevV1ServiceSpecTemplateSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0FieldRef](#servingknativedevv1servicespectemplatespecvolumesitems0projectedsourcesitems0downwardapiitemsitems0fieldref)|field ref||
+|**mode**|int|Optional: mode bits used to set permissions on this file, must be an octal value between 0000 and 0777 or a decimal value between 0 and 511. YAML accepts both octal and decimal values, JSON requires decimal values for mode bits. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.||
+|**path** `required`|str|Required: Path is  the relative path name of the file to be created. Must not be absolute or contain the '..' path. Must be utf-8 encoded. The first item of the relative path must not start with '..'||
+|**resourceFieldRef**|[ServingKnativeDevV1ServiceSpecTemplateSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0ResourceFieldRef](#servingknativedevv1servicespectemplatespecvolumesitems0projectedsourcesitems0downwardapiitemsitems0resourcefieldref)|resource field ref||
+### ServingKnativeDevV1ServiceSpecTemplateSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0FieldRef
+
+Required: Selects a field of the pod: only annotations, labels, name and namespace are supported.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**apiVersion**|str|Version of the schema the FieldPath is written in terms of, defaults to "v1".||
+|**fieldPath** `required`|str|Path of the field to select in the specified API version.||
+### ServingKnativeDevV1ServiceSpecTemplateSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0ResourceFieldRef
+
+Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**containerName**|str|Container name: required for volumes, optional for env vars||
+|**divisor**|int | str|Specifies the output format of the exposed resources, defaults to "1"||
+|**resource** `required`|str|Required: resource to select||
 ### ServingKnativeDevV1ServiceSpecTemplateSpecVolumesItems0ProjectedSourcesItems0Secret
 
 secret information about the secret data to project
@@ -3633,6 +4121,9 @@ Address holds the information needed for a Route to be the target of an event.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
+|**CACerts**|str|CACerts is the Certification Authority (CA) certificates in PEM format according to https://www.rfc-editor.org/rfc/rfc7468.||
+|**audience**|str|Audience is the OIDC audience for this address.||
+|**name**|str|Name is the name of the address.||
 |**url**|str|url||
 ### ServingKnativeDevV1ServiceStatusConditionsItems0
 
@@ -3685,6 +4176,7 @@ sources knative dev v1 API server source spec
 | --- | --- | --- | --- |
 |**ceOverrides**|[SourcesKnativeDevV1APIServerSourceSpecCeOverrides](#sourcesknativedevv1apiserversourcespecceoverrides)|ce overrides||
 |**mode**|str|EventMode controls the format of the event. `Reference` sends a dataref event type for the resource under watch. `Resource` send the full resource lifecycle event. Defaults to `Reference`||
+|**namespaceSelector**|[SourcesKnativeDevV1APIServerSourceSpecNamespaceSelector](#sourcesknativedevv1apiserversourcespecnamespaceselector)|namespace selector||
 |**owner**|[SourcesKnativeDevV1APIServerSourceSpecOwner](#sourcesknativedevv1apiserversourcespecowner)|owner||
 |**resources** `required`|[[SourcesKnativeDevV1APIServerSourceSpecResourcesItems0](#sourcesknativedevv1apiserversourcespecresourcesitems0)]|Resource are the resources this source will track and send related lifecycle events from the Kubernetes ApiServer, with an optional label selector to help filter.||
 |**serviceAccountName**|str|ServiceAccountName is the name of the ServiceAccount to use to run this source. Defaults to default if not set.||
@@ -3698,6 +4190,27 @@ CloudEventOverrides defines overrides to control the output format and modificat
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**extensions**|any|Extensions specify what attribute are added or overridden on the outbound event. Each `Extensions` key-value pair are set on the event as an attribute extension independently.||
+### SourcesKnativeDevV1APIServerSourceSpecNamespaceSelector
+
+NamespaceSelector is a label selector to capture the namespaces that should be watched by the source.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**matchExpressions**|[[SourcesKnativeDevV1APIServerSourceSpecNamespaceSelectorMatchExpressionsItems0](#sourcesknativedevv1apiserversourcespecnamespaceselectormatchexpressionsitems0)]|matchExpressions is a list of label selector requirements. The requirements are ANDed.||
+|**matchLabels**|any|matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.||
+### SourcesKnativeDevV1APIServerSourceSpecNamespaceSelectorMatchExpressionsItems0
+
+sources knative dev v1 API server source spec namespace selector match expressions items0
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**key**|str|key is the label key that the selector applies to.||
+|**operator**|str|operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.||
+|**values**|[str]|values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.||
 ### SourcesKnativeDevV1APIServerSourceSpecOwner
 
 ResourceOwner is an additional filter to only track resources that are owned by a specific resource type. If ResourceOwner matches Resources[n] then Resources[n] is allowed to pass the ResourceOwner filter.
@@ -3748,6 +4261,8 @@ Sink is a reference to an object that will resolve to a uri to use as the sink.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
+|**CACerts**|str|CACerts is the Certification Authority (CA) certificates in PEM format that the source trusts when sending events to the sink.||
+|**audience**|str|Audience is the OIDC audience. This only needs to be set if the target is not an Addressable and thus the Audience can't be received from the Addressable itself. If the target is an Addressable and specifies an Audience, the target's Audience takes precedence.||
 |**ref**|[SourcesKnativeDevV1APIServerSourceSpecSinkRef](#sourcesknativedevv1apiserversourcespecsinkref)|ref||
 |**uri**|str|URI can be an absolute URL(non-empty scheme and non-empty host) pointing to the target or a relative URI. Relative URIs will be resolved using the base URI retrieved from Ref.||
 ### SourcesKnativeDevV1APIServerSourceSpecSinkRef
@@ -3771,10 +4286,22 @@ sources knative dev v1 API server source status
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**annotations**|any|Annotations is additional Status fields for the Resource to save some additional State as well as convey more information to the user. This is roughly akin to Annotations on any k8s resource, just the reconciler conveying richer information outwards.||
+|**auth**|[SourcesKnativeDevV1APIServerSourceStatusAuth](#sourcesknativedevv1apiserversourcestatusauth)|auth||
 |**ceAttributes**|[[SourcesKnativeDevV1APIServerSourceStatusCeAttributesItems0](#sourcesknativedevv1apiserversourcestatusceattributesitems0)]|CloudEventAttributes are the specific attributes that the Source uses as part of its CloudEvents.||
 |**conditions**|[[SourcesKnativeDevV1APIServerSourceStatusConditionsItems0](#sourcesknativedevv1apiserversourcestatusconditionsitems0)]|Conditions the latest available observations of a resource's current state.||
+|**namespaces**|[str]|Namespaces show the namespaces currently watched by the ApiServerSource||
 |**observedGeneration**|int|ObservedGeneration is the 'Generation' of the Service that was last processed by the controller.||
+|**sinkCACerts**|str|CACerts is the Certification Authority (CA) certificates in PEM format that the source trusts when sending events to the sink.||
 |**sinkUri**|str|SinkURI is the current active sink URI that has been configured for the Source.||
+### SourcesKnativeDevV1APIServerSourceStatusAuth
+
+Auth provides the relevant information for OIDC authentication.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**serviceAccountName**|str|ServiceAccountName is the name of the generated service account used for this components OIDC authentication.||
 ### SourcesKnativeDevV1APIServerSourceStatusCeAttributesItems0
 
 sources knative dev v1 API server source status ce attributes items0
@@ -3827,6 +4354,8 @@ Sink is a reference to an object that will resolve to a uri to use as the sink.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
+|**CACerts**|str|CACerts is the Certification Authority (CA) certificates in PEM format that the source trusts when sending events to the sink.||
+|**audience**|str|Audience is the OIDC audience. This only needs to be set if the target is not an Addressable and thus the Audience can't be received from the Addressable itself. If the target is an Addressable and specifies an Audience, the target's Audience takes precedence.||
 |**ref**|[SourcesKnativeDevV1ContainerSourceSpecSinkRef](#sourcesknativedevv1containersourcespecsinkref)|ref||
 |**uri**|str|URI can be an absolute URL(non-empty scheme and non-empty host) pointing to the target or a relative URI. Relative URIs will be resolved using the base URI retrieved from Ref.||
 ### SourcesKnativeDevV1ContainerSourceSpecSinkRef
@@ -3850,10 +4379,21 @@ sources knative dev v1 container source status
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**annotations**|any|Annotations is additional Status fields for the Resource to save some additional State as well as convey more information to the user. This is roughly akin to Annotations on any k8s resource, just the reconciler conveying richer information outwards.||
+|**auth**|[SourcesKnativeDevV1ContainerSourceStatusAuth](#sourcesknativedevv1containersourcestatusauth)|auth||
 |**ceAttributes**|[[SourcesKnativeDevV1ContainerSourceStatusCeAttributesItems0](#sourcesknativedevv1containersourcestatusceattributesitems0)]|CloudEventAttributes are the specific attributes that the Source uses as part of its CloudEvents.||
 |**conditions**|[[SourcesKnativeDevV1ContainerSourceStatusConditionsItems0](#sourcesknativedevv1containersourcestatusconditionsitems0)]|Conditions the latest available observations of a resource's current state.||
 |**observedGeneration**|int|ObservedGeneration is the 'Generation' of the Service that was last processed by the controller.||
+|**sinkCACerts**|str|CACerts is the Certification Authority (CA) certificates in PEM format that the source trusts when sending events to the sink.||
 |**sinkUri**|str|SinkURI is the current active sink URI that has been configured for the Source.||
+### SourcesKnativeDevV1ContainerSourceStatusAuth
+
+Auth provides the relevant information for OIDC authentication.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**serviceAccountName**|str|ServiceAccountName is the name of the generated service account used for this components OIDC authentication.||
 ### SourcesKnativeDevV1ContainerSourceStatusCeAttributesItems0
 
 sources knative dev v1 container source status ce attributes items0
@@ -3906,6 +4446,8 @@ Sink is a reference to an object that will resolve to a uri to use as the sink.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
+|**CACerts**|str|CACerts is the Certification Authority (CA) certificates in PEM format that the source trusts when sending events to the sink.||
+|**audience**|str|Audience is the OIDC audience. This only needs to be set if the target is not an Addressable and thus the Audience can't be received from the Addressable itself. If the target is an Addressable and specifies an Audience, the target's Audience takes precedence.||
 |**ref**|[SourcesKnativeDevV1SinkBindingSpecSinkRef](#sourcesknativedevv1sinkbindingspecsinkref)|ref||
 |**uri**|str|URI can be an absolute URL(non-empty scheme and non-empty host) pointing to the target or a relative URI. Relative URIs will be resolved using the base URI retrieved from Ref.||
 ### SourcesKnativeDevV1SinkBindingSpecSinkRef
@@ -3963,10 +4505,21 @@ sources knative dev v1 sink binding status
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**annotations**|any|Annotations is additional Status fields for the Resource to save some additional State as well as convey more information to the user. This is roughly akin to Annotations on any k8s resource, just the reconciler conveying richer information outwards.||
+|**auth**|[SourcesKnativeDevV1SinkBindingStatusAuth](#sourcesknativedevv1sinkbindingstatusauth)|auth||
 |**ceAttributes**|[[SourcesKnativeDevV1SinkBindingStatusCeAttributesItems0](#sourcesknativedevv1sinkbindingstatusceattributesitems0)]|CloudEventAttributes are the specific attributes that the Source uses as part of its CloudEvents.||
 |**conditions**|[[SourcesKnativeDevV1SinkBindingStatusConditionsItems0](#sourcesknativedevv1sinkbindingstatusconditionsitems0)]|Conditions the latest available observations of a resource's current state.||
 |**observedGeneration**|int|ObservedGeneration is the 'Generation' of the Service that was last processed by the controller.||
+|**sinkCACerts**|str|CACerts is the Certification Authority (CA) certificates in PEM format that the source trusts when sending events to the sink.||
 |**sinkUri**|str|SinkURI is the current active sink URI that has been configured for the Source.||
+### SourcesKnativeDevV1SinkBindingStatusAuth
+
+Auth provides the relevant information for OIDC authentication.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**serviceAccountName**|str|ServiceAccountName is the name of the generated service account used for this components OIDC authentication.||
 ### SourcesKnativeDevV1SinkBindingStatusCeAttributesItems0
 
 sources knative dev v1 sink binding status ce attributes items0
@@ -3980,6 +4533,102 @@ sources knative dev v1 sink binding status ce attributes items0
 ### SourcesKnativeDevV1SinkBindingStatusConditionsItems0
 
 sources knative dev v1 sink binding status conditions items0
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**lastTransitionTime**|str|LastTransitionTime is the last time the condition transitioned from one status to another. We use VolatileTime in place of metav1.Time to exclude this from creating equality.Semantic differences (all other things held constant).||
+|**message**|str|A human readable message indicating details about the transition.||
+|**reason**|str|The reason for the condition's last transition.||
+|**severity**|str|Severity with which to treat failures of this type of condition. When this is not specified, it defaults to Error.||
+|**status** `required`|str|Status of the condition, one of True, False, Unknown.||
+|**type** `required`|str|||
+### SourcesKnativeDevV1beta2PingSourceSpec
+
+PingSourceSpec defines the desired state of the PingSource (from the client).
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**ceOverrides**|[SourcesKnativeDevV1beta2PingSourceSpecCeOverrides](#sourcesknativedevv1beta2pingsourcespecceoverrides)|ce overrides||
+|**contentType**|str|ContentType is the media type of `data` or `dataBase64`. Default is empty.||
+|**data**|str|Data is data used as the body of the event posted to the sink. Default is empty. Mutually exclusive with `dataBase64`.||
+|**dataBase64**|str|DataBase64 is the base64-encoded string of the actual event's body posted to the sink. Default is empty. Mutually exclusive with `data`.||
+|**schedule**|str|Schedule is the cron schedule. Defaults to `* * * * *`.||
+|**sink**|[SourcesKnativeDevV1beta2PingSourceSpecSink](#sourcesknativedevv1beta2pingsourcespecsink)|sink||
+|**timezone**|str|Timezone modifies the actual time relative to the specified timezone. Defaults to the system time zone. More general information about time zones: https://www.iana.org/time-zones List of valid timezone values: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones||
+### SourcesKnativeDevV1beta2PingSourceSpecCeOverrides
+
+CloudEventOverrides defines overrides to control the output format and modifications of the event sent to the sink.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**extensions**|{str:str}|Extensions specify what attribute are added or overridden on the outbound event. Each `Extensions` key-value pair are set on the event as an attribute extension independently.||
+### SourcesKnativeDevV1beta2PingSourceSpecSink
+
+Sink is a reference to an object that will resolve to a uri to use as the sink.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**CACerts**|str|CACerts is the Certification Authority (CA) certificates in PEM format that the source trusts when sending events to the sink.||
+|**audience**|str|Audience is the OIDC audience. This only needs to be set if the target is not an Addressable and thus the Audience can't be received from the Addressable itself. If the target is an Addressable and specifies an Audience, the target's Audience takes precedence.||
+|**ref**|[SourcesKnativeDevV1beta2PingSourceSpecSinkRef](#sourcesknativedevv1beta2pingsourcespecsinkref)|ref||
+|**uri**|str|URI can be an absolute URL(non-empty scheme and non-empty host) pointing to the target or a relative URI. Relative URIs will be resolved using the base URI retrieved from Ref.||
+### SourcesKnativeDevV1beta2PingSourceSpecSinkRef
+
+Ref points to an Addressable.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**apiVersion**|str|API version of the referent.||
+|**kind**|str|Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds||
+|**name**|str|Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names||
+|**namespace**|str|Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/ This is optional field, it gets defaulted to the object holding it if left out.||
+### SourcesKnativeDevV1beta2PingSourceStatus
+
+PingSourceStatus defines the observed state of PingSource (from the controller).
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**annotations**|any|Annotations is additional Status fields for the Resource to save some additional State as well as convey more information to the user. This is roughly akin to Annotations on any k8s resource, just the reconciler conveying richer information outwards.||
+|**auth**|[SourcesKnativeDevV1beta2PingSourceStatusAuth](#sourcesknativedevv1beta2pingsourcestatusauth)|auth||
+|**ceAttributes**|[[SourcesKnativeDevV1beta2PingSourceStatusCeAttributesItems0](#sourcesknativedevv1beta2pingsourcestatusceattributesitems0)]|CloudEventAttributes are the specific attributes that the Source uses as part of its CloudEvents.||
+|**conditions**|[[SourcesKnativeDevV1beta2PingSourceStatusConditionsItems0](#sourcesknativedevv1beta2pingsourcestatusconditionsitems0)]|Conditions the latest available observations of a resource's current state.||
+|**observedGeneration**|int|ObservedGeneration is the "Generation" of the Service that was last processed by the controller.||
+|**sinkCACerts**|str|CACerts is the Certification Authority (CA) certificates in PEM format that the source trusts when sending events to the sink.||
+|**sinkUri**|str|SinkURI is the current active sink URI that has been configured for the Source.||
+### SourcesKnativeDevV1beta2PingSourceStatusAuth
+
+Auth provides the relevant information for OIDC authentication.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**serviceAccountName**|str|ServiceAccountName is the name of the generated service account used for this components OIDC authentication.||
+### SourcesKnativeDevV1beta2PingSourceStatusCeAttributesItems0
+
+sources knative dev v1beta2 ping source status ce attributes items0
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**source**|str|Source is the CloudEvents source attribute.||
+|**type**|str|||
+### SourcesKnativeDevV1beta2PingSourceStatusConditionsItems0
+
+sources knative dev v1beta2 ping source status conditions items0
 
 #### Attributes
 
@@ -4527,6 +5176,7 @@ Spec is the desired state of the Certificate. More info: https://git.k8s.io/comm
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**dnsNames** `required`|[str]|DNSNames is a list of DNS names the Certificate could support. The wildcard format of DNSNames (e.g. *.default.example.com) is supported.||
+|**domain**|str|Domain is the top level domain of the values for DNSNames.||
 |**secretName** `required`|str|SecretName is the name of the secret resource to store the SSL certificate in.||
 ### NetworkingInternalKnativeDevV1alpha1CertificateStatus
 
@@ -4873,7 +5523,7 @@ sources knative dev v1alpha1 git hub source spec
 |**ceOverrides**|[SourcesKnativeDevV1alpha1GitHubSourceSpecCeOverrides](#sourcesknativedevv1alpha1githubsourcespecceoverrides)|ce overrides||
 |**eventTypes** `required`|[str]|List of webhooks to enable on the selected GitHub repository.||
 |**ownerAndRepository** `required`|str|Reference to the GitHub repository to receive events from, in the format user/repository.||
-|**secretToken** `required`|any|secret token||
+|**secretToken** `required`|[SourcesKnativeDevV1alpha1GitHubSourceSpecSecretToken](#sourcesknativedevv1alpha1githubsourcespecsecrettoken)|secret token||
 |**serviceAccountName**|str|service account name||
 |**sink**|[SourcesKnativeDevV1alpha1GitHubSourceSpecSink](#sourcesknativedevv1alpha1githubsourcespecsink)|sink||
 ### SourcesKnativeDevV1alpha1GitHubSourceSpecAccessToken
@@ -4904,6 +5554,25 @@ Defines overrides to control modifications of the event sent to the sink.
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**extensions** `required`|{str:str}|extensions||
+### SourcesKnativeDevV1alpha1GitHubSourceSpecSecretToken
+
+Arbitrary token used to validate requests to webhooks.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**secretKeyRef**|[SourcesKnativeDevV1alpha1GitHubSourceSpecSecretTokenSecretKeyRef](#sourcesknativedevv1alpha1githubsourcespecsecrettokensecretkeyref)|secret key ref||
+### SourcesKnativeDevV1alpha1GitHubSourceSpecSecretTokenSecretKeyRef
+
+A reference to a Kubernetes Secret object containing the webhook token.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**key** `required`|str|The key which contains the webhook token within the Kubernetes Secret object referenced by name.||
+|**name** `required`|str|The name of the Kubernetes Secret object which contains the webhook token.||
 ### SourcesKnativeDevV1alpha1GitHubSourceSpecSink
 
 The destination of events received from webhooks.
@@ -5389,10 +6058,23 @@ Spec defines the desired state of the EventType.
 | --- | --- | --- | --- |
 |**broker**|str|broker||
 |**description**|str|Description is an optional field used to describe the EventType, in any meaningful way.||
+|**reference**|[EventingKnativeDevV1beta1EventTypeSpecReference](#eventingknativedevv1beta1eventtypespecreference)|reference||
 |**schema**|str|||
 |**schemaData**|str|SchemaData allows the CloudEvents schema to be stored directly in the EventType. Content is dependent on the encoding. Optional attribute. The contents are not validated or manipulated by the system.||
 |**source**|str|Source is a URI, it represents the CloudEvents source.||
 |**type**|str|||
+### EventingKnativeDevV1beta1EventTypeSpecReference
+
+Reference Broker. For example
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**apiVersion**|str|API version of the referent.||
+|**kind**|str|Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds||
+|**name**|str|Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names||
+|**namespace**|str|Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/ This is an optional field, it gets defaulted to the object holding it if left out.||
 ### EventingKnativeDevV1beta1EventTypeStatus
 
 Status represents the current state of the EventType. This data may be out of date.
@@ -8012,6 +8694,7 @@ Ref specifies the target of the Domain Mapping. The object identified by the Ref
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
+|**address**|str|Address points to a specific Address Name.||
 |**apiVersion**|str|API version of the referent.||
 |**group**|str|Group of the API, without the version of the group. This can be used as an alternative to the APIVersion, and then resolved using ResolveGroup. Note: This API is EXPERIMENTAL and might break anytime. For more details: https://github.com/knative/eventing/issues/5086||
 |**kind** `required`|str|Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds||
@@ -8047,10 +8730,78 @@ Address holds the information needed for a DomainMapping to be the target of an 
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
+|**CACerts**|str|CACerts is the Certification Authority (CA) certificates in PEM format according to https://www.rfc-editor.org/rfc/rfc7468.||
+|**audience**|str|Audience is the OIDC audience for this address.||
+|**name**|str|Name is the name of the address.||
 |**url**|str|url||
 ### ServingKnativeDevV1beta1DomainMappingStatusConditionsItems0
 
 Condition defines a readiness condition for a Knative resource. See: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#typical-status-properties
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**lastTransitionTime**|str|LastTransitionTime is the last time the condition transitioned from one status to another. We use VolatileTime in place of metav1.Time to exclude this from creating equality.Semantic differences (all other things held constant).||
+|**message**|str|A human readable message indicating details about the transition.||
+|**reason**|str|The reason for the condition's last transition.||
+|**severity**|str|Severity with which to treat failures of this type of condition. When this is not specified, it defaults to Error.||
+|**status** `required`|str|Status of the condition, one of True, False, Unknown.||
+|**type** `required`|str|||
+### EventType
+
+EventType represents a type of event that can be consumed from a Broker.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**apiVersion** `required` `readOnly`|"eventing.knative.dev/v1beta1"|APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources|"eventing.knative.dev/v1beta1"|
+|**kind** `required` `readOnly`|"EventType"|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds|"EventType"|
+|**metadata**|[ObjectMeta](#objectmeta)|metadata||
+|**spec**|[EventingKnativeDevV1beta1EventTypeSpec](#eventingknativedevv1beta1eventtypespec)|spec||
+|**status**|[EventingKnativeDevV1beta1EventTypeStatus](#eventingknativedevv1beta1eventtypestatus)|status||
+### EventingKnativeDevV1beta1EventTypeSpec
+
+Spec defines the desired state of the EventType.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**broker**|str|broker||
+|**description**|str|Description is an optional field used to describe the EventType, in any meaningful way.||
+|**reference**|[EventingKnativeDevV1beta1EventTypeSpecReference](#eventingknativedevv1beta1eventtypespecreference)|reference||
+|**schema**|str|||
+|**schemaData**|str|SchemaData allows the CloudEvents schema to be stored directly in the EventType. Content is dependent on the encoding. Optional attribute. The contents are not validated or manipulated by the system.||
+|**source**|str|Source is a URI, it represents the CloudEvents source.||
+|**type**|str|||
+### EventingKnativeDevV1beta1EventTypeSpecReference
+
+Reference Broker. For example
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**apiVersion**|str|API version of the referent.||
+|**kind**|str|Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds||
+|**name**|str|Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names||
+|**namespace**|str|Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/ This is an optional field, it gets defaulted to the object holding it if left out.||
+### EventingKnativeDevV1beta1EventTypeStatus
+
+Status represents the current state of the EventType. This data may be out of date.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**annotations**|any|Annotations is additional Status fields for the Resource to save some additional State as well as convey more information to the user. This is roughly akin to Annotations on any k8s resource, just the reconciler conveying richer information outwards.||
+|**conditions**|[[EventingKnativeDevV1beta1EventTypeStatusConditionsItems0](#eventingknativedevv1beta1eventtypestatusconditionsitems0)]|Conditions the latest available observations of a resource's current state.||
+|**observedGeneration**|int|ObservedGeneration is the 'Generation' of the Service that was last processed by the controller.||
+### EventingKnativeDevV1beta1EventTypeStatusConditionsItems0
+
+eventing knative dev v1beta1 event type status conditions items0
 
 #### Attributes
 
@@ -8107,6 +8858,8 @@ Sink is a reference to an object that will resolve to a uri to use as the sink.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
+|**CACerts**|str|CACerts is the Certification Authority (CA) certificates in PEM format that the source trusts when sending events to the sink.||
+|**audience**|str|Audience is the OIDC audience. This only needs to be set if the target is not an Addressable and thus the Audience can't be received from the Addressable itself. If the target is an Addressable and specifies an Audience, the target's Audience takes precedence.||
 |**ref**|[SourcesKnativeDevV1beta2PingSourceSpecSinkRef](#sourcesknativedevv1beta2pingsourcespecsinkref)|ref||
 |**uri**|str|URI can be an absolute URL(non-empty scheme and non-empty host) pointing to the target or a relative URI. Relative URIs will be resolved using the base URI retrieved from Ref.||
 ### SourcesKnativeDevV1beta2PingSourceSpecSinkRef
@@ -8130,10 +8883,21 @@ PingSourceStatus defines the observed state of PingSource (from the controller).
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**annotations**|any|Annotations is additional Status fields for the Resource to save some additional State as well as convey more information to the user. This is roughly akin to Annotations on any k8s resource, just the reconciler conveying richer information outwards.||
+|**auth**|[SourcesKnativeDevV1beta2PingSourceStatusAuth](#sourcesknativedevv1beta2pingsourcestatusauth)|auth||
 |**ceAttributes**|[[SourcesKnativeDevV1beta2PingSourceStatusCeAttributesItems0](#sourcesknativedevv1beta2pingsourcestatusceattributesitems0)]|CloudEventAttributes are the specific attributes that the Source uses as part of its CloudEvents.||
 |**conditions**|[[SourcesKnativeDevV1beta2PingSourceStatusConditionsItems0](#sourcesknativedevv1beta2pingsourcestatusconditionsitems0)]|Conditions the latest available observations of a resource's current state.||
 |**observedGeneration**|int|ObservedGeneration is the "Generation" of the Service that was last processed by the controller.||
+|**sinkCACerts**|str|CACerts is the Certification Authority (CA) certificates in PEM format that the source trusts when sending events to the sink.||
 |**sinkUri**|str|SinkURI is the current active sink URI that has been configured for the Source.||
+### SourcesKnativeDevV1beta2PingSourceStatusAuth
+
+Auth provides the relevant information for OIDC authentication.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**serviceAccountName**|str|ServiceAccountName is the name of the generated service account used for this components OIDC authentication.||
 ### SourcesKnativeDevV1beta2PingSourceStatusCeAttributesItems0
 
 sources knative dev v1beta2 ping source status ce attributes items0

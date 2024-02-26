@@ -123,10 +123,22 @@ schema ServingKnativeDevV1RouteStatusAddress:
 
     Attributes
     ----------
+    CACerts : str, default is Undefined, optional
+        CACerts is the Certification Authority (CA) certificates in PEM format according to https://www.rfc-editor.org/rfc/rfc7468.
+    audience : str, default is Undefined, optional
+        Audience is the OIDC audience for this address.
+    name : str, default is Undefined, optional
+        Name is the name of the address.
     url : str, default is Undefined, optional
         url
     """
 
+
+    CACerts?: str
+
+    audience?: str
+
+    name?: str
 
     url?: str
 

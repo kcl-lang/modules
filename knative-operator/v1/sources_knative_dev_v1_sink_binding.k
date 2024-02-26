@@ -77,12 +77,20 @@ schema SourcesKnativeDevV1SinkBindingSpecSink:
 
     Attributes
     ----------
+    CACerts : str, default is Undefined, optional
+        CACerts is the Certification Authority (CA) certificates in PEM format that the source trusts when sending events to the sink.
+    audience : str, default is Undefined, optional
+        Audience is the OIDC audience. This only needs to be set if the target is not an Addressable and thus the Audience can't be received from the Addressable itself. If the target is an Addressable and specifies an Audience, the target's Audience takes precedence.
     ref : SourcesKnativeDevV1SinkBindingSpecSinkRef, default is Undefined, optional
         ref
     uri : str, default is Undefined, optional
         URI can be an absolute URL(non-empty scheme and non-empty host) pointing to the target or a relative URI. Relative URIs will be resolved using the base URI retrieved from Ref.
     """
 
+
+    CACerts?: str
+
+    audience?: str
 
     ref?: SourcesKnativeDevV1SinkBindingSpecSinkRef
 
@@ -193,12 +201,16 @@ schema SourcesKnativeDevV1SinkBindingStatus:
     ----------
     annotations : any, default is Undefined, optional
         Annotations is additional Status fields for the Resource to save some additional State as well as convey more information to the user. This is roughly akin to Annotations on any k8s resource, just the reconciler conveying richer information outwards.
+    auth : SourcesKnativeDevV1SinkBindingStatusAuth, default is Undefined, optional
+        auth
     ceAttributes : [SourcesKnativeDevV1SinkBindingStatusCeAttributesItems0], default is Undefined, optional
         CloudEventAttributes are the specific attributes that the Source uses as part of its CloudEvents.
     conditions : [SourcesKnativeDevV1SinkBindingStatusConditionsItems0], default is Undefined, optional
         Conditions the latest available observations of a resource's current state.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the 'Generation' of the Service that was last processed by the controller.
+    sinkCACerts : str, default is Undefined, optional
+        CACerts is the Certification Authority (CA) certificates in PEM format that the source trusts when sending events to the sink.
     sinkUri : str, default is Undefined, optional
         SinkURI is the current active sink URI that has been configured for the Source.
     """
@@ -206,13 +218,31 @@ schema SourcesKnativeDevV1SinkBindingStatus:
 
     annotations?: any
 
+    auth?: SourcesKnativeDevV1SinkBindingStatusAuth
+
     ceAttributes?: [SourcesKnativeDevV1SinkBindingStatusCeAttributesItems0]
 
     conditions?: [SourcesKnativeDevV1SinkBindingStatusConditionsItems0]
 
     observedGeneration?: int
 
+    sinkCACerts?: str
+
     sinkUri?: str
+
+
+schema SourcesKnativeDevV1SinkBindingStatusAuth:
+    """
+    Auth provides the relevant information for OIDC authentication.
+
+    Attributes
+    ----------
+    serviceAccountName : str, default is Undefined, optional
+        ServiceAccountName is the name of the generated service account used for this components OIDC authentication.
+    """
+
+
+    serviceAccountName?: str
 
 
 schema SourcesKnativeDevV1SinkBindingStatusCeAttributesItems0:

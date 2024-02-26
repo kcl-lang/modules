@@ -43,12 +43,16 @@ schema NetworkingInternalKnativeDevV1alpha1CertificateSpec:
     ----------
     dnsNames : [str], default is Undefined, required
         DNSNames is a list of DNS names the Certificate could support. The wildcard format of DNSNames (e.g. *.default.example.com) is supported.
+    domain : str, default is Undefined, optional
+        Domain is the top level domain of the values for DNSNames.
     secretName : str, default is Undefined, required
         SecretName is the name of the secret resource to store the SSL certificate in.
     """
 
 
     dnsNames: [str]
+
+    domain?: str
 
     secretName: str
 
