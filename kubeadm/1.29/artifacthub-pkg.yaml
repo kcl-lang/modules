@@ -1,0 +1,27 @@
+version: 1.29.0+kcl0
+name: kubeadm
+displayName: kubeadm
+createdAt: "2024-03-08T04:14:30Z"
+description: '`kubeadm` is the kubeadm spec definition'
+links:
+- name: kubeadm homepage
+  url: https://kubernetes.io/docs/reference/setup-tools/kubeadm/
+- name: kubeadm repo
+  url: https://github.com/kubernetes/kubeadm
+install: |
+  #### Add `kubeadm` with tag `1.29.0+kcl0` as dependency
+  ```
+  kcl mod add kubeadm:1.29.0+kcl0
+  ```
+
+  #### Pull `kubeadm` with tag `1.29.0+kcl0` to local
+  ```
+  kcl mod pull kubeadm:1.29.0+kcl0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+- name: Lan Liang
+  email: gcslyp@gmail.com
+provider:
+  name: kcl-lang.io
