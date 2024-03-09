@@ -1,0 +1,25 @@
+version: 0.2.0
+name: kcl-abstraction-example
+displayName: kcl-abstraction-example
+createdAt: "2024-03-09T14:25:09Z"
+description: '`kcl-abstraction-example` is the KCL abstraction example.'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `kcl-abstraction-example` with tag `0.2.0` as dependency
+  ```
+  kcl mod add kcl-abstraction-example:0.2.0
+  ```
+
+  #### Pull `kcl-abstraction-example` with tag `0.2.0` to local
+  ```
+  kcl mod pull kcl-abstraction-example:0.2.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
