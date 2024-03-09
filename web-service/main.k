@@ -4,7 +4,7 @@ schema App:
     replicas: int = 1
     labels?: {str:str} = {app = name}
     service?: Service
-    containers?: {str: Container}
+    containers: {str: Container}
 
 schema Service:
     """The service model."""
@@ -92,5 +92,14 @@ kubernetesRender = lambda a: App {
     [deployment, if a.service: service]
 }
 
-params: App = option("params")
+params: App = option("params") or App {
+    name: "app"
+    containers.main = {
+        args = ["kcl", "run"]
+        image = "kcllang/kcl"
+        ports = [ContainerPort {
+            containerPort = 80
+        }]
+    }
+}
 items = kubernetesRender(params)
