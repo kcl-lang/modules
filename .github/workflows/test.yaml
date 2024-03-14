@@ -2,6 +2,7 @@ name: Test Generate Metadata
 
 on:
   push:
+  pull_request:
 
 jobs:
   test:

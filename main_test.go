@@ -16,7 +16,7 @@ func TestUpdateReadmeAndMetadata(t *testing.T) {
 	assert.Equal(t, nil, err)
 	testDir := filepath.Join(pwd, "helloworld")
 	modPath := filepath.Join(testDir, "kcl.mod")
-	ahPath := filepath.Join(testDir, "0.1.1", "artifacthub-pkg.yaml")
+	ahPath := filepath.Join(IntergrationPath, IntergrationAh, "helloworld", "0.1.1", "artifacthub-pkg.yaml")
 
 	if utils.DirExists(ahPath) {
 		err = os.Remove(ahPath)
