@@ -3,4 +3,5 @@ test_jsonschema = lambda {
         "$schema" =  "https://json-schema.org/draft/2020-12/schema"
         "$id" = "https://myid"
     }
+    assert json_schema["$id"] == "https://myid"
 }

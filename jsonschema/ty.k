@@ -2,10 +2,10 @@
 type JSONSchemaType = 'string' | 'number' | 'integer' | 'bool' | 'null' | 'array' | 'object'
 
 schema JSONSchema:
-    [n: ...str]: str
     id?: str
     "$id"?: str
     "$schema"?: str
+    "$ref"?: str
     type?: JSONSchemaType | JSONSchemaType[]
     title?: str
     default?: any
@@ -83,9 +83,6 @@ schema JSONSchema:
     suggestSortText?: str
     allowComments?: bool
     allowTrailingCommas?: bool
-
-    check:
-        n in ["$id", "$schema", "$ref"], "additional attributes must be in $id and $schema"
 
 schema JSONSchemaMap:
     [name: str]: JSONSchema
