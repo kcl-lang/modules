@@ -4,9 +4,9 @@ import manifests
 manifests.yaml_stream([
     templates.deployment
     templates.service
-    templates.igress
+    if templates.igress: templates.igress
     templates.serviceAccount
-    templates.serviceMonitor
-    templates.hpa
-    templates.testJob
+    if templates.serviceMonitor: templates.serviceMonitor
+    if templates.hpa: templates.hpa
+    if templates.testJob: templates.testJob
 ])
