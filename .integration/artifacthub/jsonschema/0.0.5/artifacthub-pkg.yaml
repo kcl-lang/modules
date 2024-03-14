@@ -1,0 +1,25 @@
+version: 0.0.5
+name: jsonschema
+displayName: jsonschema
+createdAt: "2024-03-14T03:29:28Z"
+description: '`jsonschema` is a module for the JSON schema definition using KCL'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `jsonschema` with tag `0.0.5` as dependency
+  ```
+  kcl mod add jsonschema:0.0.5
+  ```
+
+  #### Pull `jsonschema` with tag `0.0.5` to local
+  ```
+  kcl mod pull jsonschema:0.0.5
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
