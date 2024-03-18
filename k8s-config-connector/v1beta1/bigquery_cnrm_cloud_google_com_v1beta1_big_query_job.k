@@ -335,7 +335,7 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecLoad:
         Immutable. The separator for fields in a CSV file. The separator can be any ISO-8859-1 single-byte character.
         To use a character in the range 128-255, you must encode the character as UTF8. BigQuery converts
         the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the
-        data in its raw, binary state. BigQuery also supports the escape sequence "\t" to specify a tab separator.
+        data in its raw, binary state. BigQuery also supports the escape sequence "\\t" to specify a tab separator.
         The default value is a comma (',').
     ignoreUnknownValues : bool, default is Undefined, optional
         Immutable. Indicates if BigQuery should allow extra values that are not represented in the table schema.
@@ -352,7 +352,7 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecLoad:
         Immutable. The maximum number of bad records that BigQuery can ignore when running the job. If the number of bad records exceeds this value,
         an invalid error is returned in the job result. The default value is 0, which requires that all records are valid.
     nullMarker : str, default is Undefined, optional
-        Immutable. Specifies a string that represents a null value in a CSV file. For example, if you specify "\N", BigQuery interprets "\N" as a null value
+        Immutable. Specifies a string that represents a null value in a CSV file. For example, if you specify "\\N", BigQuery interprets "\\N" as a null value
         when loading a CSV file. The default value is the empty string. If you set this property to a custom value, BigQuery throws an error if an
         empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as
         an empty value.
@@ -390,11 +390,11 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecLoad:
         The default value is CSV.
     sourceUris : [str], default is Undefined, required
         Immutable. The fully-qualified URIs that point to your data in Google Cloud.
-        For Google Cloud Storage URIs: Each URI can contain one '\*' wildcard character
+        For Google Cloud Storage URIs: Each URI can contain one '\\*' wildcard character
         and it must come after the 'bucket' name. Size limits related to load jobs apply
         to external data sources. For Google Cloud Bigtable URIs: Exactly one URI can be
         specified and it has be a fully specified and valid HTTPS URL for a Google Cloud Bigtable table.
-        For Google Cloud Datastore backups: Exactly one URI can be specified. Also, the '\*' wildcard character is not allowed.
+        For Google Cloud Datastore backups: Exactly one URI can be specified. Also, the '\\*' wildcard character is not allowed.
     timePartitioning : BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecLoadTimePartitioning, default is Undefined, optional
         time partitioning
     writeDisposition : str, default is Undefined, optional
