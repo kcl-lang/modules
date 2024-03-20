@@ -6,6 +6,8 @@
 This repository is responsible for saving the published KCL modules, and you can find these modules on [artifacthub.io (AH)](https://artifacthub.io/).
 
 ## Quick Start
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fkcl-lang%2Fmodules.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fkcl-lang%2Fmodules?ref=badge_shield)
+
 
 In the next section, we will show you how to publish your module with a `helloworld` example.
 
@@ -144,3 +146,7 @@ For example
 ```shell
 ./scripts/crd_to_kcl.sh github.com/kubernetes-sigs/cluster-api-provider-vsphere
 ```
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fkcl-lang%2Fmodules.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fkcl-lang%2Fmodules?ref=badge_large)
