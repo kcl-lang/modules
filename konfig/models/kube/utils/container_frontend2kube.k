@@ -38,7 +38,7 @@ ContainerFrontend2Kube = lambda c -> {str:} {
                             divisor: str(e.valueFrom.resourceFieldRef.divisor)
                     } if e.valueFrom.resourceFieldRef else Undefined
                 } if e.valueFrom else Undefined
-            } for e in c.env
+            } for _, e in c.env
         ]
 
     # Convert frontend envFrom to kube envFrom

@@ -71,7 +71,7 @@ schema Sidecar:
     name: str
     command?: [str]
     args?: [str]
-    env?: [e.Env]
+    env?: e.EnvMap
     envFrom?: [e.EnvFromSource]
     ports?: [cp.ContainerPort]
     resource: str | res.Resource

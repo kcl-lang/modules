@@ -1,6 +1,11 @@
 import regex
 import units
 
+schema EnvMap:
+    [name: str]: Env = {
+        name = name
+    }
+
 schema Env:
     """ Env represents an environment variable present in a Container.
 

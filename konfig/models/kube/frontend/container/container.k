@@ -19,7 +19,7 @@ schema Main:
     args: [str], default is Undefined, optional.
         A Container-level attribute.
         The startup arguments of main process. The image's cmd is used if this is not provided.
-    env: [e.Env], default is Undefined, optional.
+    env: e.EnvMap, default is Undefined, optional.
         A Container-level attribute.
         List of environment variables in the container.
     envFrom: [e.EnvFromSource], default is Undefined, optional.
@@ -65,7 +65,7 @@ schema Main:
     command?: [str]
     args?: [str]
     useBuiltInEnv?: bool = False
-    env?: [e.Env]
+    env?: e.EnvMap
     envFrom?: [e.EnvFromSource]
     ports?: [cp.ContainerPort]
 

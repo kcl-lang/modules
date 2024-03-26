@@ -77,12 +77,9 @@ schema Server:
     appConfiguration: frontend.Server {
         mainContainer = container.Main {
             name = "php-redis"
-            env = [
-                {
-                    name = "GET_HOSTS_FROM"
-                    value = "dns"
-                }
-            ]
+            env: {
+                "GET_HOSTS_FROM": {value = "dns"}
+            }
             ports = [{containerPort = 80}]
         }
         selector = {

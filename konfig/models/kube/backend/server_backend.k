@@ -61,12 +61,6 @@ schema ServerBackend[inputConfig: server.Server]:
     if config.initContainers:
         initContainers = utils.VolumePatch(config.volumes, [utils.ContainerFrontend2Kube(_s) for _s in config.initContainers])
 
-    if config.storage:
-        provider = [*provider, *StorageBackend(config).provider]
-    
-    if config.database: 
-        provider = [*provider, *DatabaseBackend(config).provider]
-
     _applicationLabel: {str: str} = {
         "app.k8s.io/component": workloadName
     }
