@@ -1,6 +1,6 @@
 [package]
 name = "crossplane"
-version = "1.13"
+version = "1.15.2"
 description = "`crossplane` is the crossplane spec definition"
 
 [dependencies]
