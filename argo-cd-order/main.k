@@ -2,9 +2,14 @@ import json_merge_patch as p
 WAVE_MIN = 0
 
 validatedAnnotations = lambda a: {str:str} {
-    assert a["argocd.argoproj.io/hook"] in ["preSync", "sync", "postSync"]
+    assert a["argocd.argoproj.io/hook"] in ["PreSync", "Sync", "PostSync", "SyncFail", "SyncFail"]
     assert int(a["argocd.argoproj.io/sync-wave"]) >= WAVE_MIN
-    a
+    # Don't explicitly specify a sync-wave for the "Sync" state; let's keep the behavior as the default.
+    if a["argocd.argoproj.io/hook"] == "Sync":
+        r = { "argocd.argoproj.io/sync-wave" = a["argocd.argoproj.io/sync-wave"]}
+    else: 
+        r = a
+    r
 }
 
 schema ArgoCdManifest:
@@ -47,9 +52,11 @@ schema ArgoCdOrder:
     For more details: https://argo-cd.readthedocs.io/en/stable/user-guide/sync-waves/
 
     """
-    preSync: [any]
-    sync: [any]
-    postSync: [any]
+    PreSync: [any] = []
+    Sync: [any] = []
+    Skip: [any] = []
+    PostSync: [any] = []
+    SyncFail: [any] = []
 
 make = lambda argoCdApp: ArgoCdOrder -> [[ArgoCdManifest]] {
     [
