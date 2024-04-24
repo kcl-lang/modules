@@ -22,7 +22,7 @@ import argoproj.v1alpha1 as argoproj
 
 
 testApp = ArgoCdOrder.make({
-    preSync = [
+    PreSync = [
         k8core.Namespace {
             metadata.name = "test-namespace"
         }
@@ -36,7 +36,7 @@ testApp = ArgoCdOrder.make({
             }
         }
     ] + yaml.decode_all(file.read("./knative-operator.yaml"))
-    sync = [
+    Sync = [
         argoproj.Application {
         metadata = {
             name = "testApp"
@@ -70,7 +70,7 @@ testApp = ArgoCdOrder.make({
         }
     ]
 
-    postSync = []
+    PostSync = []
 
 })
 
