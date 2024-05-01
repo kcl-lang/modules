@@ -33,13 +33,19 @@ schema ArgoCdManifestMetadataAnnotations:
     "argocd.argoproj.io/sync-wave": str
     "argocd.argoproj.io/hook": str
 
-preparePhase = lambda phase: str, phaseResources: [any] -> [ArgoCdManifest] {
-    [
+patchResource = lambda resource: any, sync_wave: str, phase: str -> ArgoCdManifest {
         p.merge(resource, { metadata.annotations = validatedAnnotations({
            "argocd.argoproj.io/sync-wave" = str(sync_wave)
            "argocd.argoproj.io/hook" = phase
         })})
-        for sync_wave, resource in phaseResources if resource != None
+}
+
+preparePhase = lambda phase: str, phaseResources: [any] -> [[ArgoCdManifest]] {
+    [
+        [
+            patchResource(resource, str(sync_wave), phase)
+            for resource in resources 
+        ] for sync_wave, resources in phaseResources if resources != None
 
     ]
 }
@@ -52,13 +58,13 @@ schema ArgoCdOrder:
     For more details: https://argo-cd.readthedocs.io/en/stable/user-guide/sync-waves/
 
     """
-    PreSync: [any] = []
-    Sync: [any] = []
-    Skip: [any] = []
-    PostSync: [any] = []
-    SyncFail: [any] = []
+    PreSync: [any] = [[]]
+    Sync: [any] = [[]]
+    Skip: [any] = [[]]
+    PostSync: [any] = [[]]
+    SyncFail: [any] = [[]]
 
-make = lambda argoCdApp: ArgoCdOrder -> [[ArgoCdManifest]] {
+make = lambda argoCdApp: ArgoCdOrder {
     [
     preparePhase(phase, argoCdApp[phase])
         for phase in argoCdApp
