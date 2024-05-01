@@ -20,58 +20,28 @@ import k8s.api.core.v1 as k8core
 import file
 import argoproj.v1alpha1 as argoproj
 
-
-testApp = ArgoCdOrder.make({
-    PreSync = [
-        k8core.Namespace {
-            metadata.name = "test-namespace"
-        }
-        k8core.ConfigMap {
-            metadata = {
-                name = "test-configmap"
-                namespace = "test-namespace"
-                annotations = {
-                    hello = "world"
-                }
-            }
-        }
-    ] + yaml.decode_all(file.read("./knative-operator.yaml"))
+testApp = argoCdOrder.make({
+    # PreSync, PostSync and other phases works in the same way
     Sync = [
-        argoproj.Application {
-        metadata = {
-            name = "testApp"
-            namespace = "argocd"
-        }
-        spec = {
-            destination = {
-                namespace = "test-namespace"
-                server = "https://kubernetes.default.svc"
-            }
-            project = "default"
-            source = {
-                chart = "hello"
-                repoURL = "https://cloudecho.github.io/charts/"
-                targetRevision = "0.1.2"
-                helm = {
-                    values = yaml.encode({})
-                    releaseName = "my-hello"
-                }
-
-
-            }
-            syncPolicy = {
-                automated = {}
-                syncOptions = [
-                    "CreateNamespace=true"
-                ]
-            }
-
-        }
-        }
+        # wave 0
+        [
+            k8core.Namespace {
+                metadata.name = "test"
+            } 
+            k8core.Namespace {
+                metadata.name = "test2"
+            } 
+        ]
+        # wave 1
+        [
+            k8core.Namespace {
+                metadata.name = "test3"
+            } 
+            k8core.Namespace {
+                metadata.name = "test4"
+            } 
+        ]
     ]
-
-    PostSync = []
-
 })
 
 manifests.yaml_stream([
@@ -79,5 +49,37 @@ manifests.yaml_stream([
 ])
 
 
+```
+
+Result yaml
+
+```
+apiVersion: v1
+kind: Namespace
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: '0'
+  name: test
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: '0'
+  name: test2
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: '1'
+  name: test3
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: '1'
+  name: test4
 ```
 
