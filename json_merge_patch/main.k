@@ -1,19 +1,19 @@
-KCL_BUILTIN_TYPES = ["int", "str", "bool", "float", "None", "UndefinedType", "any", "list", "dict", "function", "number_multiplier"]
+KCL_BUILTIN_TYPES = ["int", "str", "bool", "float", "None", "UndefinedType", "any", "list", "dict", "type", "function", "number_multiplier"]
 NULL_CONSTANTS = [Undefined, None]
-
 is_schema = lambda obj: any -> bool {
     typeof(obj) not in KCL_BUILTIN_TYPES
-
 }
+
 is_config = lambda obj: any -> bool {
     typeof(obj) == "dict" or is_schema(obj)
 }
 
-_looper_n = lambda elements: [any], n: int, func: (any, any) -> any, initial: any-> any {
+_looper_n = lambda elements: [any], n: int, func: (any, any) -> any, initial: any -> any {
     assert n >= 0
     result = initial
     if n < len(elements):
         result = _looper_n(elements, n + 1, func, func(result, elements[n]))
+
     result
 }
 
@@ -37,6 +37,7 @@ merge = lambda src: any, obj: any -> any {
     result = src
     if not is_config(src):
         result = {}
+
     if not is_config(obj):
         result = obj
     else:
