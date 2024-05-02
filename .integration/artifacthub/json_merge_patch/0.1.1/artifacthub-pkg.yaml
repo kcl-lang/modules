@@ -1,0 +1,26 @@
+version: 0.1.1
+name: json_merge_patch
+displayName: json_merge_patch
+createdAt: "2024-05-02T20:09:45Z"
+description: '`json_merge_patch` is a module for applying JSON merge patches (RFC
+  7368) for KCL values.'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `json_merge_patch` with tag `0.1.1` as dependency
+  ```
+  kcl mod add json_merge_patch:0.1.1
+  ```
+
+  #### Pull `json_merge_patch` with tag `0.1.1` to local
+  ```
+  kcl mod pull json_merge_patch:0.1.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
