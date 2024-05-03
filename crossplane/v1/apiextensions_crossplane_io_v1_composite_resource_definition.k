@@ -435,7 +435,7 @@ schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecVersionsItems0:
 
 
     check:
-        len(deprecationWarning) <= 256
+        len(deprecationWarning) <= 256 if deprecationWarning
 
 
 schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecVersionsItems0AdditionalPrinterColumnsItems0:
