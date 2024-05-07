@@ -44,8 +44,8 @@ preparePhase = lambda phase: str, phaseResources: [any] -> [[ArgoCdManifest]] {
     [
         [
             patchResource(resource, str(sync_wave), phase)
-            for resource in resources 
-        ] for sync_wave, resources in phaseResources if resources != None
+            for resource in resources if resource
+        ] for sync_wave, resources in phaseResources if resources
 
     ]
 }
