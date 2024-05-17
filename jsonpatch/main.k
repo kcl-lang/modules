@@ -89,7 +89,7 @@ set_obj = lambda obj: any, path: str, value: any -> any {
     obj | _build_patch_obj_n(obj, value, path.lstrip('/').split('/'), 0)
 }
 
-apply_patch = lambda obj: any, patch: Patch {
+_apply_patch = lambda obj: any, patch: Patch {
     dst = obj
     if patch.op == "add":
         assert False
@@ -106,41 +106,14 @@ apply_patch = lambda obj: any, patch: Patch {
     dst
 }
 
-apply_patchs = lambda obj: any, patch: JsonPatch -> any {
+_apply_patchs = lambda obj: any, patch: JsonPatch -> any {
     """Apply list of patches to specified json document."""
     assert False, "TODO: PRs welcome"
     {}
 }
 
-make_patch = lambda src: any, dst: any -> JsonPatch {
+_make_patch = lambda src: any, dst: any -> JsonPatch {
     """Generates patch by comparing two document objects."""
     assert False, "TODO: PRs welcome"
     []
 }
-
-if option("__test__"):
-    data = {
-        "firstName": "John",
-        "lastName": "Doe",
-        "age": 30,
-        "address": {
-            "streetAddress": "1234 Main St",
-            "city": "New York",
-            "state": "NY",
-            "postalCode": "10001"
-        },
-        "phoneNumbers": [
-            {
-                "type": "home",
-                "number": "212-555-1234"
-            },
-            {
-                "type": "work",
-                "number": "646-555-5678"
-            }
-        ]
-    }
-    phoneNumbers0type: str = get_obj(data, "phoneNumbers/0/type")
-    newObj = set_obj(data, "phoneNumbers/0/type", "school")
-    assert phoneNumbers0type == "home"
-    assert newObj["phoneNumbers"][0]["type"] == "school"

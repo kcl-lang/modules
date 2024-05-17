@@ -1,2 +1,2 @@
 test:
-	kcl -D __test__
+	kcl test
