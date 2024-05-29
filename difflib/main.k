@@ -14,7 +14,13 @@ looper = lambda initial: any, elements: [any], func: (any, any) -> any -> any {
     _looper_n(elements, 0, func, initial)
 }
 
-looper_enumerate = lambda initial: any, elements: [any] | {str:}, func: (any, str | int, any) -> any -> any {
+looper_enumerate1 = lambda initial: any, elements: [any] | {str:}, func: (any, str | int, any) -> any -> any {
+    looper(initial, [{"k" = k, "v" = v} for k, v in elements], lambda initial, value {
+        func(initial, value.k, value.v)
+    })
+}
+
+looper_enumerate2 = lambda initial: any, elements: [any] | {str:}, func: (any, str | int, any) -> any -> any {
     looper(initial, [{"k" = k, "v" = v} for k, v in elements], lambda initial, value {
         func(initial, value.k, value.v)
     })
@@ -40,8 +46,8 @@ longest_common_subsequence = lambda a: [], b: [] -> [] {
     """Longest Common Subsequence (LCS) is a typical algorithm for calculating the length of the longest common subsequence between two sequences."""
     # Build the lengths matrix for dp
     lengths = [[0] * (len(b) + 1) for _ in range(len(a) + 1)]
-    lengths = looper_enumerate(lengths, a, lambda m, i, x {
-        looper_enumerate(m, b, lambda v, j, y {
+    lengths = looper_enumerate1(lengths, a, lambda m, i, x {
+        looper_enumerate2(m, b, lambda v, j, y {
             list_set_index(v, i + 1, list_set_index(v[i + 1], j + 1, v[i][j] + 1 if x == y else max(v[i + 1][j], v[i][j + 1])))
         })
     })
