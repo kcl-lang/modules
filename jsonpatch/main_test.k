@@ -21,7 +21,11 @@ test_json_patch = lambda {
         ]
     }
     phoneNumbers0type: str = get_obj(data, "phoneNumbers/0/type")
-    newObj = set_obj(data, "phoneNumbers/0/type", "school")
+    addressCity: str = get_obj(data, "address/city")
+    newType = set_obj(data, "phoneNumbers/0/type", "school")
+    newState = set_obj(data, "address/state", "WA")
     assert phoneNumbers0type == "home"
-    assert newObj["phoneNumbers"][0]["type"] == "school"
+    assert addressCity == "New York"
+    assert newType["phoneNumbers"][0]["type"] == "school"
+    assert newState["address"]["state"] == "WA"
 }

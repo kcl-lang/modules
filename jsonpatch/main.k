@@ -60,9 +60,9 @@ _build_patch_obj_n = lambda obj: {str:}, value: any, elements: [str], n: int -> 
         assert current_obj not in NULL_CONSTANTS, "list value not found for path: ${current_path}"
         if n + 1 < len(elements):
             next_key = _get_list_index_from_key(elements[n + 1])
-            next_val = _build_patch_obj_n(obj, value, elements, n + 2)
             # List key
             if next_key not in NULL_CONSTANTS:
+                next_val = _build_patch_obj_n(obj, value, elements, n + 2)
                 idx = next_key
                 assert 0 <= idx < len(current_obj), "value not found for path: {}".format(current_path + "/" + elements[n + 1])
                 result = {
@@ -70,6 +70,7 @@ _build_patch_obj_n = lambda obj: {str:}, value: any, elements: [str], n: int -> 
                 }
             # Config key
             else:
+                next_val = _build_patch_obj_n(obj, value, elements, n + 1)
                 result = {
                     "${elements[n]}": next_val
                 }
