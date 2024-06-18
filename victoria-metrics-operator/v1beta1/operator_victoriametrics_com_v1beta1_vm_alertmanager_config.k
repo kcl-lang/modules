@@ -45,15 +45,19 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpec:
     _ : str, default is Undefined, optional
         
     inhibit_rules : [OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecInhibitRulesItems0], default is Undefined, optional
-        InhibitRules will only apply for alerts matching the resource's namespace.
+        InhibitRules will only apply for alerts matching
+        the resource's namespace.
     mute_time_intervals : [OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecMuteTimeIntervalsItems0], default is Undefined, optional
-        MuteTimeInterval - global mute time See https://prometheus.io/docs/alerting/latest/configuration/#mute_time_interval
+        MuteTimeInterval - global mute time
+        See https://prometheus.io/docs/alerting/latest/configuration/#mute_time_interval
     receivers : [OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0], default is Undefined, optional
-        Receivers defines alert receivers. without defined Route, receivers will be skipped.
+        Receivers defines alert receivers.
+        without defined Route, receivers will be skipped.
     route : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecRoute, default is Undefined, optional
         route
     time_intervals : [OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecTimeIntervalsItems0], default is Undefined, optional
-        ParsingError contents error with context if operator was failed to parse json object from kubernetes api server TimeIntervals modern config option, use it instead of  mute_time_intervals
+        ParsingError contents error with context if operator was failed to parse json object from kubernetes api server
+        TimeIntervals modern config option, use it instead of  mute_time_intervals
     """
 
 
@@ -72,16 +76,22 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpec:
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecInhibitRulesItems0:
     """
-    InhibitRule defines an inhibition rule that allows to mute alerts when other alerts are already firing. Note, it doesn't support deprecated alertmanager config options. See https://prometheus.io/docs/alerting/latest/configuration/#inhibit_rule
+    InhibitRule defines an inhibition rule that allows to mute alerts when other
+    alerts are already firing.
+    Note, it doesn't support deprecated alertmanager config options.
+    See https://prometheus.io/docs/alerting/latest/configuration/#inhibit_rule
 
     Attributes
     ----------
     equal : [str], default is Undefined, optional
-        Labels that must have an equal value in the source and target alert for the inhibition to take effect.
+        Labels that must have an equal value in the source and target alert for
+        the inhibition to take effect.
     source_matchers : [str], default is Undefined, optional
-        SourceMatchers defines a list of matchers for which one or more alerts have to exist for the inhibition to take effect.
+        SourceMatchers defines a list of matchers for which one or more alerts have
+        to exist for the inhibition to take effect.
     target_matchers : [str], default is Undefined, optional
-        TargetMatchers defines a list of matchers that have to be fulfilled by the target alerts to be muted.
+        TargetMatchers defines a list of matchers that have to be fulfilled by the target
+        alerts to be muted.
     """
 
 
@@ -117,17 +127,20 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecMuteTimeInterval
     Attributes
     ----------
     days_of_month : [str], default is Undefined, optional
-        DayOfMonth defines list of numerical days in the month. Days begin at 1. Negative values are also accepted. for example, ['1:5', '-3:-1']
+        DayOfMonth defines list of numerical days in the month. Days begin at 1. Negative values are also accepted.
+        for example, ['1:5', '-3:-1']
     location : str, default is Undefined, optional
         Location in golang time location form, e.g. UTC
     months : [str], default is Undefined, optional
-        Months  defines list of calendar months identified by a case-insentive name (e.g. ‘January’) or numeric 1. For example, ['1:3', 'may:august', 'december']
+        Months  defines list of calendar months identified by a case-insensitive name (e.g. ‘January’) or numeric 1.
+        For example, ['1:3', 'may:august', 'december']
     times : [OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecMuteTimeIntervalsItems0TimeIntervalsItems0TimesItems0], default is Undefined, optional
         Times defines time range for mute
     weekdays : [str], default is Undefined, optional
         Weekdays defines list of days of the week, where the week begins on Sunday and ends on Saturday.
     years : [str], default is Undefined, optional
-        Years defines numerical list of years, ranges are accepted. For example, ['2020:2022', '2030']
+        Years defines numerical list of years, ranges are accepted.
+        For example, ['2020:2022', '2030']
     """
 
 
@@ -168,8 +181,12 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0:
 
     Attributes
     ----------
+    discord_configs : [OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0DiscordConfigsItems0], default is Undefined, optional
+        discord configs
     email_configs : [OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0EmailConfigsItems0], default is Undefined, optional
         EmailConfigs defines email notification configurations.
+    msteams_configs : [OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0MsteamsConfigsItems0], default is Undefined, optional
+        msteams configs
     name : str, default is Undefined, required
         Name of the receiver. Must be unique across all items from the list.
     opsgenie_configs : [OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0OpsgenieConfigsItems0], default is Undefined, optional
@@ -180,10 +197,14 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0:
         PushoverConfigs defines push over notification configurations.
     slack_configs : [OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SlackConfigsItems0], default is Undefined, optional
         SlackConfigs defines slack notification configurations.
+    sns_configs : [OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SnsConfigsItems0], default is Undefined, optional
+        sns configs
     telegram_configs : [OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0TelegramConfigsItems0], default is Undefined, optional
         telegram configs
     victorops_configs : [OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0VictoropsConfigsItems0], default is Undefined, optional
         VictorOpsConfigs defines victor ops notification configurations.
+    webex_configs : [OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0WebexConfigsItems0], default is Undefined, optional
+        webex configs
     webhook_configs : [OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0WebhookConfigsItems0], default is Undefined, optional
         WebhookConfigs defines webhook notification configurations.
     wechat_configs : [OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0WechatConfigsItems0], default is Undefined, optional
@@ -191,7 +212,11 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0:
     """
 
 
+    discord_configs?: [OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0DiscordConfigsItems0]
+
     email_configs?: [OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0EmailConfigsItems0]
+
+    msteams_configs?: [OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0MsteamsConfigsItems0]
 
     name: str
 
@@ -203,9 +228,13 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0:
 
     slack_configs?: [OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SlackConfigsItems0]
 
+    sns_configs?: [OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SnsConfigsItems0]
+
     telegram_configs?: [OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0TelegramConfigsItems0]
 
     victorops_configs?: [OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0VictoropsConfigsItems0]
+
+    webex_configs?: [OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0WebexConfigsItems0]
 
     webhook_configs?: [OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0WebhookConfigsItems0]
 
@@ -214,6 +243,395 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0:
 
     check:
         len(name) >= 1
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0DiscordConfigsItems0:
+    """
+    operator victoriametrics com v1beta1 VM alertmanager config spec receivers items0 discord configs items0
+
+    Attributes
+    ----------
+    http_config : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0DiscordConfigsItems0HTTPConfig, default is Undefined, optional
+        http config
+    message : str, default is Undefined, optional
+        The message body template
+    send_resolved : bool, default is Undefined, optional
+        SendResolved controls notify about resolved alerts.
+    title : str, default is Undefined, optional
+        The message title template
+    webhook_url : str, default is Undefined, optional
+        The discord webhook URL
+        one of `urlSecret` and `url` must be defined.
+    webhook_url_secret : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0DiscordConfigsItems0WebhookURLSecret, default is Undefined, optional
+        webhook url secret
+    """
+
+
+    http_config?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0DiscordConfigsItems0HTTPConfig
+
+    message?: str
+
+    send_resolved?: bool
+
+    title?: str
+
+    webhook_url?: str
+
+    webhook_url_secret?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0DiscordConfigsItems0WebhookURLSecret
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0DiscordConfigsItems0HTTPConfig:
+    """
+    HTTP client configuration.
+
+    Attributes
+    ----------
+    basic_auth : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0DiscordConfigsItems0HTTPConfigBasicAuth, default is Undefined, optional
+        basic auth
+    bearer_token_file : str, default is Undefined, optional
+        BearerTokenFile defines filename for bearer token, it must be mounted to pod.
+    bearer_token_secret : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0DiscordConfigsItems0HTTPConfigBearerTokenSecret, default is Undefined, optional
+        bearer token secret
+    proxyURL : str, default is Undefined, optional
+        Optional proxy URL.
+    tls_config : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0DiscordConfigsItems0HTTPConfigTLSConfig, default is Undefined, optional
+        tls config
+    """
+
+
+    basic_auth?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0DiscordConfigsItems0HTTPConfigBasicAuth
+
+    bearer_token_file?: str
+
+    bearer_token_secret?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0DiscordConfigsItems0HTTPConfigBearerTokenSecret
+
+    proxyURL?: str
+
+    tls_config?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0DiscordConfigsItems0HTTPConfigTLSConfig
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0DiscordConfigsItems0HTTPConfigBasicAuth:
+    """
+    TODO oAuth2 support
+    BasicAuth for the client.
+
+    Attributes
+    ----------
+    password : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0DiscordConfigsItems0HTTPConfigBasicAuthPassword, default is Undefined, optional
+        password
+    password_file : str, default is Undefined, optional
+        PasswordFile defines path to password file at disk
+    username : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0DiscordConfigsItems0HTTPConfigBasicAuthUsername, default is Undefined, optional
+        username
+    """
+
+
+    password?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0DiscordConfigsItems0HTTPConfigBasicAuthPassword
+
+    password_file?: str
+
+    username?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0DiscordConfigsItems0HTTPConfigBasicAuthUsername
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0DiscordConfigsItems0HTTPConfigBasicAuthPassword:
+    """
+    The secret in the service scrape namespace that contains the password
+    for authentication.
+    It must be at them same namespace as CRD
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        The key of the secret to select from.  Must be a valid secret key.
+    name : str, default is Undefined, optional
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
+    optional : bool, default is Undefined, optional
+        Specify whether the Secret or its key must be defined
+    """
+
+
+    key: str
+
+    name?: str
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0DiscordConfigsItems0HTTPConfigBasicAuthUsername:
+    """
+    The secret in the service scrape namespace that contains the username
+    for authentication.
+    It must be at them same namespace as CRD
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        The key of the secret to select from.  Must be a valid secret key.
+    name : str, default is Undefined, optional
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
+    optional : bool, default is Undefined, optional
+        Specify whether the Secret or its key must be defined
+    """
+
+
+    key: str
+
+    name?: str
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0DiscordConfigsItems0HTTPConfigBearerTokenSecret:
+    """
+    The secret's key that contains the bearer token
+    It must be at them same namespace as CRD
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        The key of the secret to select from.  Must be a valid secret key.
+    name : str, default is Undefined, optional
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
+    optional : bool, default is Undefined, optional
+        Specify whether the Secret or its key must be defined
+    """
+
+
+    key: str
+
+    name?: str
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0DiscordConfigsItems0HTTPConfigTLSConfig:
+    """
+    TLS configuration for the client.
+
+    Attributes
+    ----------
+    ca : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0DiscordConfigsItems0HTTPConfigTLSConfigCa, default is Undefined, optional
+        ca
+    caFile : str, default is Undefined, optional
+        Path to the CA cert in the container to use for the targets.
+    cert : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0DiscordConfigsItems0HTTPConfigTLSConfigCert, default is Undefined, optional
+        cert
+    certFile : str, default is Undefined, optional
+        Path to the client cert file in the container for the targets.
+    insecureSkipVerify : bool, default is Undefined, optional
+        Disable target certificate validation.
+    keyFile : str, default is Undefined, optional
+        Path to the client key file in the container for the targets.
+    keySecret : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0DiscordConfigsItems0HTTPConfigTLSConfigKeySecret, default is Undefined, optional
+        key secret
+    serverName : str, default is Undefined, optional
+        Used to verify the hostname for the targets.
+    """
+
+
+    ca?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0DiscordConfigsItems0HTTPConfigTLSConfigCa
+
+    caFile?: str
+
+    cert?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0DiscordConfigsItems0HTTPConfigTLSConfigCert
+
+    certFile?: str
+
+    insecureSkipVerify?: bool
+
+    keyFile?: str
+
+    keySecret?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0DiscordConfigsItems0HTTPConfigTLSConfigKeySecret
+
+    serverName?: str
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0DiscordConfigsItems0HTTPConfigTLSConfigCa:
+    """
+    Stuct containing the CA cert to use for the targets.
+
+    Attributes
+    ----------
+    configMap : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0DiscordConfigsItems0HTTPConfigTLSConfigCaConfigMap, default is Undefined, optional
+        config map
+    secret : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0DiscordConfigsItems0HTTPConfigTLSConfigCaSecret, default is Undefined, optional
+        secret
+    """
+
+
+    configMap?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0DiscordConfigsItems0HTTPConfigTLSConfigCaConfigMap
+
+    secret?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0DiscordConfigsItems0HTTPConfigTLSConfigCaSecret
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0DiscordConfigsItems0HTTPConfigTLSConfigCaConfigMap:
+    """
+    ConfigMap containing data to use for the targets.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        The key to select.
+    name : str, default is Undefined, optional
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
+    optional : bool, default is Undefined, optional
+        Specify whether the ConfigMap or its key must be defined
+    """
+
+
+    key: str
+
+    name?: str
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0DiscordConfigsItems0HTTPConfigTLSConfigCaSecret:
+    """
+    Secret containing data to use for the targets.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        The key of the secret to select from.  Must be a valid secret key.
+    name : str, default is Undefined, optional
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
+    optional : bool, default is Undefined, optional
+        Specify whether the Secret or its key must be defined
+    """
+
+
+    key: str
+
+    name?: str
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0DiscordConfigsItems0HTTPConfigTLSConfigCert:
+    """
+    Struct containing the client cert file for the targets.
+
+    Attributes
+    ----------
+    configMap : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0DiscordConfigsItems0HTTPConfigTLSConfigCertConfigMap, default is Undefined, optional
+        config map
+    secret : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0DiscordConfigsItems0HTTPConfigTLSConfigCertSecret, default is Undefined, optional
+        secret
+    """
+
+
+    configMap?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0DiscordConfigsItems0HTTPConfigTLSConfigCertConfigMap
+
+    secret?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0DiscordConfigsItems0HTTPConfigTLSConfigCertSecret
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0DiscordConfigsItems0HTTPConfigTLSConfigCertConfigMap:
+    """
+    ConfigMap containing data to use for the targets.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        The key to select.
+    name : str, default is Undefined, optional
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
+    optional : bool, default is Undefined, optional
+        Specify whether the ConfigMap or its key must be defined
+    """
+
+
+    key: str
+
+    name?: str
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0DiscordConfigsItems0HTTPConfigTLSConfigCertSecret:
+    """
+    Secret containing data to use for the targets.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        The key of the secret to select from.  Must be a valid secret key.
+    name : str, default is Undefined, optional
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
+    optional : bool, default is Undefined, optional
+        Specify whether the Secret or its key must be defined
+    """
+
+
+    key: str
+
+    name?: str
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0DiscordConfigsItems0HTTPConfigTLSConfigKeySecret:
+    """
+    Secret containing the client key file for the targets.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        The key of the secret to select from.  Must be a valid secret key.
+    name : str, default is Undefined, optional
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
+    optional : bool, default is Undefined, optional
+        Specify whether the Secret or its key must be defined
+    """
+
+
+    key: str
+
+    name?: str
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0DiscordConfigsItems0WebhookURLSecret:
+    """
+    URLSecret defines secret name and key at the CRD namespace.
+    It must contain the webhook URL.
+    one of `urlSecret` and `url` must be defined.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        The key of the secret to select from.  Must be a valid secret key.
+    name : str, default is Undefined, optional
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
+    optional : bool, default is Undefined, optional
+        Specify whether the Secret or its key must be defined
+    """
+
+
+    key: str
+
+    name?: str
+
+    optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0EmailConfigsItems0:
@@ -233,13 +651,15 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0E
     from : str, default is Undefined, optional
         The sender address.
     headers : {str:str}, default is Undefined, optional
-        Further headers email header key/value pairs. Overrides any headers previously set by the notification implementation.
+        Further headers email header key/value pairs. Overrides any headers
+        previously set by the notification implementation.
     hello : str, default is Undefined, optional
         The hostname to identify to the SMTP server.
     html : str, default is Undefined, optional
         The HTML body of the email notification.
     require_tls : bool, default is Undefined, optional
-        The SMTP TLS requirement. Note that Go does not support unencrypted connections to remote SMTP endpoints.
+        The SMTP TLS requirement.
+        Note that Go does not support unencrypted connections to remote SMTP endpoints.
     send_resolved : bool, default is Undefined, optional
         SendResolved controls notify about resolved alerts.
     smarthost : str, default is Undefined, optional
@@ -291,7 +711,9 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0E
     key : str, default is Undefined, required
         The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -306,14 +728,17 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0E
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0EmailConfigsItems0AuthSecret:
     """
-    AuthSecret defines secrent name and key at CRD namespace. It must contain the CRAM-MD5 secret.
+    AuthSecret defines secrent name and key at CRD namespace.
+    It must contain the CRAM-MD5 secret.
 
     Attributes
     ----------
     key : str, default is Undefined, required
         The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -395,7 +820,9 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0E
     key : str, default is Undefined, required
         The key to select.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the ConfigMap or its key must be defined
     """
@@ -417,7 +844,9 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0E
     key : str, default is Undefined, required
         The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -457,7 +886,9 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0E
     key : str, default is Undefined, required
         The key to select.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the ConfigMap or its key must be defined
     """
@@ -479,7 +910,9 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0E
     key : str, default is Undefined, required
         The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -501,7 +934,398 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0E
     key : str, default is Undefined, required
         The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
+    optional : bool, default is Undefined, optional
+        Specify whether the Secret or its key must be defined
+    """
+
+
+    key: str
+
+    name?: str
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0MsteamsConfigsItems0:
+    """
+    operator victoriametrics com v1beta1 VM alertmanager config spec receivers items0 msteams configs items0
+
+    Attributes
+    ----------
+    http_config : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0MsteamsConfigsItems0HTTPConfig, default is Undefined, optional
+        http config
+    send_resolved : bool, default is Undefined, optional
+        SendResolved controls notify about resolved alerts.
+    text : str, default is Undefined, optional
+        The text body of the teams notification.
+    title : str, default is Undefined, optional
+        The title of the teams notification.
+    webhook_url : str, default is Undefined, optional
+        The incoming webhook URL
+        one of `urlSecret` and `url` must be defined.
+    webhook_url_secret : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0MsteamsConfigsItems0WebhookURLSecret, default is Undefined, optional
+        webhook url secret
+    """
+
+
+    http_config?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0MsteamsConfigsItems0HTTPConfig
+
+    send_resolved?: bool
+
+    text?: str
+
+    title?: str
+
+    webhook_url?: str
+
+    webhook_url_secret?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0MsteamsConfigsItems0WebhookURLSecret
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0MsteamsConfigsItems0HTTPConfig:
+    """
+    HTTP client configuration.
+
+    Attributes
+    ----------
+    basic_auth : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0MsteamsConfigsItems0HTTPConfigBasicAuth, default is Undefined, optional
+        basic auth
+    bearer_token_file : str, default is Undefined, optional
+        BearerTokenFile defines filename for bearer token, it must be mounted to pod.
+    bearer_token_secret : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0MsteamsConfigsItems0HTTPConfigBearerTokenSecret, default is Undefined, optional
+        bearer token secret
+    proxyURL : str, default is Undefined, optional
+        Optional proxy URL.
+    tls_config : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0MsteamsConfigsItems0HTTPConfigTLSConfig, default is Undefined, optional
+        tls config
+    """
+
+
+    basic_auth?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0MsteamsConfigsItems0HTTPConfigBasicAuth
+
+    bearer_token_file?: str
+
+    bearer_token_secret?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0MsteamsConfigsItems0HTTPConfigBearerTokenSecret
+
+    proxyURL?: str
+
+    tls_config?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0MsteamsConfigsItems0HTTPConfigTLSConfig
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0MsteamsConfigsItems0HTTPConfigBasicAuth:
+    """
+    TODO oAuth2 support
+    BasicAuth for the client.
+
+    Attributes
+    ----------
+    password : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0MsteamsConfigsItems0HTTPConfigBasicAuthPassword, default is Undefined, optional
+        password
+    password_file : str, default is Undefined, optional
+        PasswordFile defines path to password file at disk
+    username : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0MsteamsConfigsItems0HTTPConfigBasicAuthUsername, default is Undefined, optional
+        username
+    """
+
+
+    password?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0MsteamsConfigsItems0HTTPConfigBasicAuthPassword
+
+    password_file?: str
+
+    username?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0MsteamsConfigsItems0HTTPConfigBasicAuthUsername
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0MsteamsConfigsItems0HTTPConfigBasicAuthPassword:
+    """
+    The secret in the service scrape namespace that contains the password
+    for authentication.
+    It must be at them same namespace as CRD
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        The key of the secret to select from.  Must be a valid secret key.
+    name : str, default is Undefined, optional
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
+    optional : bool, default is Undefined, optional
+        Specify whether the Secret or its key must be defined
+    """
+
+
+    key: str
+
+    name?: str
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0MsteamsConfigsItems0HTTPConfigBasicAuthUsername:
+    """
+    The secret in the service scrape namespace that contains the username
+    for authentication.
+    It must be at them same namespace as CRD
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        The key of the secret to select from.  Must be a valid secret key.
+    name : str, default is Undefined, optional
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
+    optional : bool, default is Undefined, optional
+        Specify whether the Secret or its key must be defined
+    """
+
+
+    key: str
+
+    name?: str
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0MsteamsConfigsItems0HTTPConfigBearerTokenSecret:
+    """
+    The secret's key that contains the bearer token
+    It must be at them same namespace as CRD
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        The key of the secret to select from.  Must be a valid secret key.
+    name : str, default is Undefined, optional
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
+    optional : bool, default is Undefined, optional
+        Specify whether the Secret or its key must be defined
+    """
+
+
+    key: str
+
+    name?: str
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0MsteamsConfigsItems0HTTPConfigTLSConfig:
+    """
+    TLS configuration for the client.
+
+    Attributes
+    ----------
+    ca : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0MsteamsConfigsItems0HTTPConfigTLSConfigCa, default is Undefined, optional
+        ca
+    caFile : str, default is Undefined, optional
+        Path to the CA cert in the container to use for the targets.
+    cert : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0MsteamsConfigsItems0HTTPConfigTLSConfigCert, default is Undefined, optional
+        cert
+    certFile : str, default is Undefined, optional
+        Path to the client cert file in the container for the targets.
+    insecureSkipVerify : bool, default is Undefined, optional
+        Disable target certificate validation.
+    keyFile : str, default is Undefined, optional
+        Path to the client key file in the container for the targets.
+    keySecret : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0MsteamsConfigsItems0HTTPConfigTLSConfigKeySecret, default is Undefined, optional
+        key secret
+    serverName : str, default is Undefined, optional
+        Used to verify the hostname for the targets.
+    """
+
+
+    ca?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0MsteamsConfigsItems0HTTPConfigTLSConfigCa
+
+    caFile?: str
+
+    cert?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0MsteamsConfigsItems0HTTPConfigTLSConfigCert
+
+    certFile?: str
+
+    insecureSkipVerify?: bool
+
+    keyFile?: str
+
+    keySecret?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0MsteamsConfigsItems0HTTPConfigTLSConfigKeySecret
+
+    serverName?: str
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0MsteamsConfigsItems0HTTPConfigTLSConfigCa:
+    """
+    Stuct containing the CA cert to use for the targets.
+
+    Attributes
+    ----------
+    configMap : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0MsteamsConfigsItems0HTTPConfigTLSConfigCaConfigMap, default is Undefined, optional
+        config map
+    secret : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0MsteamsConfigsItems0HTTPConfigTLSConfigCaSecret, default is Undefined, optional
+        secret
+    """
+
+
+    configMap?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0MsteamsConfigsItems0HTTPConfigTLSConfigCaConfigMap
+
+    secret?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0MsteamsConfigsItems0HTTPConfigTLSConfigCaSecret
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0MsteamsConfigsItems0HTTPConfigTLSConfigCaConfigMap:
+    """
+    ConfigMap containing data to use for the targets.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        The key to select.
+    name : str, default is Undefined, optional
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
+    optional : bool, default is Undefined, optional
+        Specify whether the ConfigMap or its key must be defined
+    """
+
+
+    key: str
+
+    name?: str
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0MsteamsConfigsItems0HTTPConfigTLSConfigCaSecret:
+    """
+    Secret containing data to use for the targets.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        The key of the secret to select from.  Must be a valid secret key.
+    name : str, default is Undefined, optional
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
+    optional : bool, default is Undefined, optional
+        Specify whether the Secret or its key must be defined
+    """
+
+
+    key: str
+
+    name?: str
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0MsteamsConfigsItems0HTTPConfigTLSConfigCert:
+    """
+    Struct containing the client cert file for the targets.
+
+    Attributes
+    ----------
+    configMap : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0MsteamsConfigsItems0HTTPConfigTLSConfigCertConfigMap, default is Undefined, optional
+        config map
+    secret : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0MsteamsConfigsItems0HTTPConfigTLSConfigCertSecret, default is Undefined, optional
+        secret
+    """
+
+
+    configMap?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0MsteamsConfigsItems0HTTPConfigTLSConfigCertConfigMap
+
+    secret?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0MsteamsConfigsItems0HTTPConfigTLSConfigCertSecret
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0MsteamsConfigsItems0HTTPConfigTLSConfigCertConfigMap:
+    """
+    ConfigMap containing data to use for the targets.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        The key to select.
+    name : str, default is Undefined, optional
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
+    optional : bool, default is Undefined, optional
+        Specify whether the ConfigMap or its key must be defined
+    """
+
+
+    key: str
+
+    name?: str
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0MsteamsConfigsItems0HTTPConfigTLSConfigCertSecret:
+    """
+    Secret containing data to use for the targets.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        The key of the secret to select from.  Must be a valid secret key.
+    name : str, default is Undefined, optional
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
+    optional : bool, default is Undefined, optional
+        Specify whether the Secret or its key must be defined
+    """
+
+
+    key: str
+
+    name?: str
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0MsteamsConfigsItems0HTTPConfigTLSConfigKeySecret:
+    """
+    Secret containing the client key file for the targets.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        The key of the secret to select from.  Must be a valid secret key.
+    name : str, default is Undefined, optional
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
+    optional : bool, default is Undefined, optional
+        Specify whether the Secret or its key must be defined
+    """
+
+
+    key: str
+
+    name?: str
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0MsteamsConfigsItems0WebhookURLSecret:
+    """
+    URLSecret defines secret name and key at the CRD namespace.
+    It must contain the webhook URL.
+    one of `urlSecret` and `url` must be defined.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        The key of the secret to select from.  Must be a valid secret key.
+    name : str, default is Undefined, optional
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -516,10 +1340,13 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0E
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0OpsgenieConfigsItems0:
     """
-    OpsGenieConfig configures notifications via OpsGenie. See https://prometheus.io/docs/alerting/latest/configuration/#opsgenie_config
+    OpsGenieConfig configures notifications via OpsGenie.
+    See https://prometheus.io/docs/alerting/latest/configuration/#opsgenie_config
 
     Attributes
     ----------
+    actions : str, default is Undefined, optional
+        Comma separated list of actions that will be available for the alert.
     apiURL : str, default is Undefined, optional
         The URL to send OpsGenie API requests to.
     api_key : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0OpsgenieConfigsItems0APIKey, default is Undefined, optional
@@ -528,6 +1355,8 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0O
         Description of the incident.
     details : {str:str}, default is Undefined, optional
         A set of arbitrary key/value pairs that provide further detail about the incident.
+    entity : str, default is Undefined, optional
+        Optional field that can be used to specify which domain alert is related to.
     http_config : any, default is Undefined, optional
         HTTP client configuration.
     message : str, default is Undefined, optional
@@ -544,8 +1373,13 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0O
         Backlink to the sender of the notification.
     tags : str, default is Undefined, optional
         Comma separated list of tags attached to the notifications.
+    update_alerts : bool, default is Undefined, optional
+        Whether to update message and description of the alert in OpsGenie if it already exists
+        By default, the alert is never updated in OpsGenie, the new message only appears in activity log.
     """
 
+
+    actions?: str
 
     apiURL?: str
 
@@ -554,6 +1388,8 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0O
     description?: str
 
     details?: {str:str}
+
+    entity?: str
 
     http_config?: any
 
@@ -571,17 +1407,22 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0O
 
     tags?: str
 
+    update_alerts?: bool
+
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0OpsgenieConfigsItems0APIKey:
     """
-    The secret's key that contains the OpsGenie API key. It must be at them same namespace as CRD
+    The secret's key that contains the OpsGenie API key.
+    It must be at them same namespace as CRD
 
     Attributes
     ----------
     key : str, default is Undefined, required
         The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -596,7 +1437,8 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0O
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0OpsgenieConfigsItems0RespondersItems0:
     """
-    OpsGenieConfigResponder defines a responder to an incident. One of `id`, `name` or `username` has to be defined.
+    OpsGenieConfigResponder defines a responder to an incident.
+    One of `id`, `name` or `username` has to be defined.
 
     Attributes
     ----------
@@ -626,7 +1468,8 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0O
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0PagerdutyConfigsItems0:
     """
-    PagerDutyConfig configures notifications via PagerDuty. See https://prometheus.io/docs/alerting/latest/configuration/#pagerduty_config
+    PagerDutyConfig configures notifications via PagerDuty.
+    See https://prometheus.io/docs/alerting/latest/configuration/#pagerduty_config
 
     Attributes
     ----------
@@ -696,7 +1539,9 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0P
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0PagerdutyConfigsItems0ImagesItems0:
     """
-    ImageConfig is used to attach images to the incident. See https://developer.pagerduty.com/docs/ZG9jOjExMDI5NTgx-send-an-alert-event#the-images-property for more information.
+    ImageConfig is used to attach images to the incident.
+    See https://developer.pagerduty.com/docs/ZG9jOjExMDI5NTgx-send-an-alert-event#the-images-property
+    for more information.
 
     Attributes
     ----------
@@ -718,7 +1563,9 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0P
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0PagerdutyConfigsItems0LinksItems0:
     """
-    LinkConfig is used to attach text links to the incident. See https://developer.pagerduty.com/docs/ZG9jOjExMDI5NTgx-send-an-alert-event#the-links-property for more information.
+    LinkConfig is used to attach text links to the incident.
+    See https://developer.pagerduty.com/docs/ZG9jOjExMDI5NTgx-send-an-alert-event#the-links-property
+    for more information.
 
     Attributes
     ----------
@@ -736,14 +1583,18 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0P
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0PagerdutyConfigsItems0RoutingKey:
     """
-    The secret's key that contains the PagerDuty integration key (when using Events API v2). Either this field or `serviceKey` needs to be defined. It must be at them same namespace as CRD
+    The secret's key that contains the PagerDuty integration key (when using
+    Events API v2). Either this field or `serviceKey` needs to be defined.
+    It must be at them same namespace as CRD
 
     Attributes
     ----------
     key : str, default is Undefined, required
         The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -758,14 +1609,19 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0P
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0PagerdutyConfigsItems0ServiceKey:
     """
-    The secret's key that contains the PagerDuty service key (when using integration type "Prometheus"). Either this field or `routingKey` needs to be defined. It must be at them same namespace as CRD
+    The secret's key that contains the PagerDuty service key (when using
+    integration type "Prometheus"). Either this field or `routingKey` needs to
+    be defined.
+    It must be at them same namespace as CRD
 
     Attributes
     ----------
     key : str, default is Undefined, required
         The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -780,12 +1636,14 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0P
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0PushoverConfigsItems0:
     """
-    PushoverConfig configures notifications via Pushover. See https://prometheus.io/docs/alerting/latest/configuration/#pushover_config
+    PushoverConfig configures notifications via Pushover.
+    See https://prometheus.io/docs/alerting/latest/configuration/#pushover_config
 
     Attributes
     ----------
     expire : str, default is Undefined, optional
-        How long your notification will continue to be retried for, unless the user acknowledges the notification.
+        How long your notification will continue to be retried for, unless the user
+        acknowledges the notification.
     html : bool, default is Undefined, optional
         Whether notification message is HTML or plain text.
     http_config : any, default is Undefined, optional
@@ -795,7 +1653,8 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0P
     priority : str, default is Undefined, optional
         Priority, see https://pushover.net/api#priority
     retry : str, default is Undefined, optional
-        How often the Pushover servers will send the same notification to the user. Must be at least 30 seconds.
+        How often the Pushover servers will send the same notification to the user.
+        Must be at least 30 seconds.
     send_resolved : bool, default is Undefined, optional
         SendResolved controls notify about resolved alerts.
     sound : str, default is Undefined, optional
@@ -842,14 +1701,17 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0P
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0PushoverConfigsItems0Token:
     """
-    The secret's key that contains the registered application’s API token, see https://pushover.net/apps. It must be at them same namespace as CRD
+    The secret's key that contains the registered application’s API token, see https://pushover.net/apps.
+    It must be at them same namespace as CRD
 
     Attributes
     ----------
     key : str, default is Undefined, required
         The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -864,14 +1726,17 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0P
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0PushoverConfigsItems0UserKey:
     """
-    The secret's key that contains the recipient user’s user key. It must be at them same namespace as CRD
+    The secret's key that contains the recipient user’s user key.
+    It must be at them same namespace as CRD
 
     Attributes
     ----------
     key : str, default is Undefined, required
         The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -886,7 +1751,8 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0P
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SlackConfigsItems0:
     """
-    SlackConfig configures notifications via Slack. See https://prometheus.io/docs/alerting/latest/configuration/#slack_config
+    SlackConfig configures notifications via Slack.
+    See https://prometheus.io/docs/alerting/latest/configuration/#slack_config
 
     Attributes
     ----------
@@ -984,14 +1850,17 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0S
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SlackConfigsItems0APIURL:
     """
-    The secret's key that contains the Slack webhook URL. It must be at them same namespace as CRD
+    The secret's key that contains the Slack webhook URL.
+    It must be at them same namespace as CRD
 
     Attributes
     ----------
     key : str, default is Undefined, required
         The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -1006,7 +1875,10 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0S
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SlackConfigsItems0ActionsItems0:
     """
-    SlackAction configures a single Slack action that is sent with each notification. See https://api.slack.com/docs/message-attachments#action_fields and https://api.slack.com/docs/message-buttons for more information.
+    SlackAction configures a single Slack action that is sent with each
+    notification.
+    See https://api.slack.com/docs/message-attachments#action_fields and
+    https://api.slack.com/docs/message-buttons for more information.
 
     Attributes
     ----------
@@ -1049,7 +1921,11 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0S
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SlackConfigsItems0ActionsItems0Confirm:
     """
-    SlackConfirmationField protect users from destructive actions or particularly distinguished decisions by asking them to confirm their button click one more time. See https://api.slack.com/docs/interactive-message-field-guide#confirmation_fields for more information.
+    SlackConfirmationField protect users from destructive actions or
+    particularly distinguished decisions by asking them to confirm their button
+    click one more time.
+    See https://api.slack.com/docs/interactive-message-field-guide#confirmation_fields
+    for more information.
 
     Attributes
     ----------
@@ -1079,7 +1955,8 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0S
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SlackConfigsItems0FieldsItems0:
     """
-    SlackField configures a single Slack field that is sent with each notification. See https://api.slack.com/docs/message-attachments#fields for more information.
+    SlackField configures a single Slack field that is sent with each notification.
+    See https://api.slack.com/docs/message-attachments#fields for more information.
 
     Attributes
     ----------
@@ -1104,6 +1981,469 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0S
         len(value) >= 1
 
 
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SnsConfigsItems0:
+    """
+    operator victoriametrics com v1beta1 VM alertmanager config spec receivers items0 sns configs items0
+
+    Attributes
+    ----------
+    api_url : str, default is Undefined, optional
+        The api URL
+    attributes : {str:str}, default is Undefined, optional
+        SNS message attributes
+    http_config : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SnsConfigsItems0HTTPConfig, default is Undefined, optional
+        http config
+    message : str, default is Undefined, optional
+        The message content of the SNS notification.
+    phone_number : str, default is Undefined, optional
+        Phone number if message is delivered via SMS
+        Specify this, topic_arn or target_arn
+    send_resolved : bool, default is Undefined, optional
+        SendResolved controls notify about resolved alerts.
+    sigv4 : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SnsConfigsItems0Sigv4, default is Undefined, optional
+        sigv4
+    subject : str, default is Undefined, optional
+        The subject line if message is delivered to an email endpoint.
+    target_arn : str, default is Undefined, optional
+        Mobile platform endpoint ARN if message is delivered via mobile notifications
+        Specify this, topic_arn or phone_number
+    topic_arn : str, default is Undefined, optional
+        SNS topic ARN, either specify this, phone_number or target_arn
+    """
+
+
+    api_url?: str
+
+    attributes?: {str:str}
+
+    http_config?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SnsConfigsItems0HTTPConfig
+
+    message?: str
+
+    phone_number?: str
+
+    send_resolved?: bool
+
+    sigv4?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SnsConfigsItems0Sigv4
+
+    subject?: str
+
+    target_arn?: str
+
+    topic_arn?: str
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SnsConfigsItems0HTTPConfig:
+    """
+    HTTP client configuration.
+
+    Attributes
+    ----------
+    basic_auth : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SnsConfigsItems0HTTPConfigBasicAuth, default is Undefined, optional
+        basic auth
+    bearer_token_file : str, default is Undefined, optional
+        BearerTokenFile defines filename for bearer token, it must be mounted to pod.
+    bearer_token_secret : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SnsConfigsItems0HTTPConfigBearerTokenSecret, default is Undefined, optional
+        bearer token secret
+    proxyURL : str, default is Undefined, optional
+        Optional proxy URL.
+    tls_config : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SnsConfigsItems0HTTPConfigTLSConfig, default is Undefined, optional
+        tls config
+    """
+
+
+    basic_auth?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SnsConfigsItems0HTTPConfigBasicAuth
+
+    bearer_token_file?: str
+
+    bearer_token_secret?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SnsConfigsItems0HTTPConfigBearerTokenSecret
+
+    proxyURL?: str
+
+    tls_config?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SnsConfigsItems0HTTPConfigTLSConfig
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SnsConfigsItems0HTTPConfigBasicAuth:
+    """
+    TODO oAuth2 support
+    BasicAuth for the client.
+
+    Attributes
+    ----------
+    password : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SnsConfigsItems0HTTPConfigBasicAuthPassword, default is Undefined, optional
+        password
+    password_file : str, default is Undefined, optional
+        PasswordFile defines path to password file at disk
+    username : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SnsConfigsItems0HTTPConfigBasicAuthUsername, default is Undefined, optional
+        username
+    """
+
+
+    password?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SnsConfigsItems0HTTPConfigBasicAuthPassword
+
+    password_file?: str
+
+    username?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SnsConfigsItems0HTTPConfigBasicAuthUsername
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SnsConfigsItems0HTTPConfigBasicAuthPassword:
+    """
+    The secret in the service scrape namespace that contains the password
+    for authentication.
+    It must be at them same namespace as CRD
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        The key of the secret to select from.  Must be a valid secret key.
+    name : str, default is Undefined, optional
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
+    optional : bool, default is Undefined, optional
+        Specify whether the Secret or its key must be defined
+    """
+
+
+    key: str
+
+    name?: str
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SnsConfigsItems0HTTPConfigBasicAuthUsername:
+    """
+    The secret in the service scrape namespace that contains the username
+    for authentication.
+    It must be at them same namespace as CRD
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        The key of the secret to select from.  Must be a valid secret key.
+    name : str, default is Undefined, optional
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
+    optional : bool, default is Undefined, optional
+        Specify whether the Secret or its key must be defined
+    """
+
+
+    key: str
+
+    name?: str
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SnsConfigsItems0HTTPConfigBearerTokenSecret:
+    """
+    The secret's key that contains the bearer token
+    It must be at them same namespace as CRD
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        The key of the secret to select from.  Must be a valid secret key.
+    name : str, default is Undefined, optional
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
+    optional : bool, default is Undefined, optional
+        Specify whether the Secret or its key must be defined
+    """
+
+
+    key: str
+
+    name?: str
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SnsConfigsItems0HTTPConfigTLSConfig:
+    """
+    TLS configuration for the client.
+
+    Attributes
+    ----------
+    ca : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SnsConfigsItems0HTTPConfigTLSConfigCa, default is Undefined, optional
+        ca
+    caFile : str, default is Undefined, optional
+        Path to the CA cert in the container to use for the targets.
+    cert : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SnsConfigsItems0HTTPConfigTLSConfigCert, default is Undefined, optional
+        cert
+    certFile : str, default is Undefined, optional
+        Path to the client cert file in the container for the targets.
+    insecureSkipVerify : bool, default is Undefined, optional
+        Disable target certificate validation.
+    keyFile : str, default is Undefined, optional
+        Path to the client key file in the container for the targets.
+    keySecret : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SnsConfigsItems0HTTPConfigTLSConfigKeySecret, default is Undefined, optional
+        key secret
+    serverName : str, default is Undefined, optional
+        Used to verify the hostname for the targets.
+    """
+
+
+    ca?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SnsConfigsItems0HTTPConfigTLSConfigCa
+
+    caFile?: str
+
+    cert?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SnsConfigsItems0HTTPConfigTLSConfigCert
+
+    certFile?: str
+
+    insecureSkipVerify?: bool
+
+    keyFile?: str
+
+    keySecret?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SnsConfigsItems0HTTPConfigTLSConfigKeySecret
+
+    serverName?: str
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SnsConfigsItems0HTTPConfigTLSConfigCa:
+    """
+    Stuct containing the CA cert to use for the targets.
+
+    Attributes
+    ----------
+    configMap : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SnsConfigsItems0HTTPConfigTLSConfigCaConfigMap, default is Undefined, optional
+        config map
+    secret : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SnsConfigsItems0HTTPConfigTLSConfigCaSecret, default is Undefined, optional
+        secret
+    """
+
+
+    configMap?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SnsConfigsItems0HTTPConfigTLSConfigCaConfigMap
+
+    secret?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SnsConfigsItems0HTTPConfigTLSConfigCaSecret
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SnsConfigsItems0HTTPConfigTLSConfigCaConfigMap:
+    """
+    ConfigMap containing data to use for the targets.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        The key to select.
+    name : str, default is Undefined, optional
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
+    optional : bool, default is Undefined, optional
+        Specify whether the ConfigMap or its key must be defined
+    """
+
+
+    key: str
+
+    name?: str
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SnsConfigsItems0HTTPConfigTLSConfigCaSecret:
+    """
+    Secret containing data to use for the targets.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        The key of the secret to select from.  Must be a valid secret key.
+    name : str, default is Undefined, optional
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
+    optional : bool, default is Undefined, optional
+        Specify whether the Secret or its key must be defined
+    """
+
+
+    key: str
+
+    name?: str
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SnsConfigsItems0HTTPConfigTLSConfigCert:
+    """
+    Struct containing the client cert file for the targets.
+
+    Attributes
+    ----------
+    configMap : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SnsConfigsItems0HTTPConfigTLSConfigCertConfigMap, default is Undefined, optional
+        config map
+    secret : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SnsConfigsItems0HTTPConfigTLSConfigCertSecret, default is Undefined, optional
+        secret
+    """
+
+
+    configMap?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SnsConfigsItems0HTTPConfigTLSConfigCertConfigMap
+
+    secret?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SnsConfigsItems0HTTPConfigTLSConfigCertSecret
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SnsConfigsItems0HTTPConfigTLSConfigCertConfigMap:
+    """
+    ConfigMap containing data to use for the targets.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        The key to select.
+    name : str, default is Undefined, optional
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
+    optional : bool, default is Undefined, optional
+        Specify whether the ConfigMap or its key must be defined
+    """
+
+
+    key: str
+
+    name?: str
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SnsConfigsItems0HTTPConfigTLSConfigCertSecret:
+    """
+    Secret containing data to use for the targets.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        The key of the secret to select from.  Must be a valid secret key.
+    name : str, default is Undefined, optional
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
+    optional : bool, default is Undefined, optional
+        Specify whether the Secret or its key must be defined
+    """
+
+
+    key: str
+
+    name?: str
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SnsConfigsItems0HTTPConfigTLSConfigKeySecret:
+    """
+    Secret containing the client key file for the targets.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        The key of the secret to select from.  Must be a valid secret key.
+    name : str, default is Undefined, optional
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
+    optional : bool, default is Undefined, optional
+        Specify whether the Secret or its key must be defined
+    """
+
+
+    key: str
+
+    name?: str
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SnsConfigsItems0Sigv4:
+    """
+    Configure the AWS Signature Verification 4 signing process
+
+    Attributes
+    ----------
+    access_key : str, default is Undefined, optional
+        The AWS API keys. Both access_key and secret_key must be supplied or both must be blank.
+        If blank the environment variables `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` are used.
+    access_key_selector : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SnsConfigsItems0Sigv4AccessKeySelector, default is Undefined, optional
+        access key selector
+    profile : str, default is Undefined, optional
+        Named AWS profile used to authenticate
+    region : str, default is Undefined, optional
+        AWS region, if blank the region from the default credentials chain is used
+    role_arn : str, default is Undefined, optional
+        AWS Role ARN, an alternative to using AWS API keys
+    secret_key_selector : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SnsConfigsItems0Sigv4SecretKeySelector, default is Undefined, optional
+        secret key selector
+    """
+
+
+    access_key?: str
+
+    access_key_selector?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SnsConfigsItems0Sigv4AccessKeySelector
+
+    profile?: str
+
+    region?: str
+
+    role_arn?: str
+
+    secret_key_selector?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SnsConfigsItems0Sigv4SecretKeySelector
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SnsConfigsItems0Sigv4AccessKeySelector:
+    """
+    secret key selector to get the keys from a Kubernetes Secret
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        The key of the secret to select from.  Must be a valid secret key.
+    name : str, default is Undefined, optional
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
+    optional : bool, default is Undefined, optional
+        Specify whether the Secret or its key must be defined
+    """
+
+
+    key: str
+
+    name?: str
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0SnsConfigsItems0Sigv4SecretKeySelector:
+    """
+    secret key selector to get the keys from a Kubernetes Secret
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        The key of the secret to select from.  Must be a valid secret key.
+    name : str, default is Undefined, optional
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
+    optional : bool, default is Undefined, optional
+        Specify whether the Secret or its key must be defined
+    """
+
+
+    key: str
+
+    name?: str
+
+    optional?: bool
+
+
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0TelegramConfigsItems0:
     """
     operator victoriametrics com v1beta1 VM alertmanager config spec receivers items0 telegram configs items0
@@ -1123,7 +2463,8 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0T
     message : str, default is Undefined, optional
         Message is templated message
     parse_mode : str, default is Undefined, optional
-        ParseMode for telegram message, supported values are MarkdownV2, Markdown, Markdown and empty string for plain text.
+        ParseMode for telegram message,
+        supported values are MarkdownV2, Markdown, Markdown and empty string for plain text.
     send_resolved : bool, default is Undefined, optional
         SendResolved controls notify about resolved alerts.
     """
@@ -1148,14 +2489,17 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0T
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0TelegramConfigsItems0BotToken:
     """
-    BotToken token for the bot https://core.telegram.org/bots/api
+    BotToken token for the bot
+    https://core.telegram.org/bots/api
 
     Attributes
     ----------
     key : str, default is Undefined, required
         The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -1170,7 +2514,8 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0T
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0VictoropsConfigsItems0:
     """
-    VictorOpsConfig configures notifications via VictorOps. See https://prometheus.io/docs/alerting/latest/configuration/#victorops_config
+    VictorOpsConfig configures notifications via VictorOps.
+    See https://prometheus.io/docs/alerting/latest/configuration/#victorops_config
 
     Attributes
     ----------
@@ -1179,7 +2524,8 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0V
     api_url : str, default is Undefined, optional
         The VictorOps API URL.
     custom_fields : {str:str}, default is Undefined, optional
-        Adds optional custom fields https://github.com/prometheus/alertmanager/blob/v0.24.0/config/notifiers.go#L537
+        Adds optional custom fields
+        https://github.com/prometheus/alertmanager/blob/v0.24.0/config/notifiers.go#L537
     entity_display_name : str, default is Undefined, optional
         Contains summary of the alerted problem.
     http_config : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0VictoropsConfigsItems0HTTPConfig, default is Undefined, optional
@@ -1220,14 +2566,17 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0V
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0VictoropsConfigsItems0APIKey:
     """
-    The secret's key that contains the API key to use when talking to the VictorOps API. It must be at them same namespace as CRD
+    The secret's key that contains the API key to use when talking to the VictorOps API.
+    It must be at them same namespace as CRD
 
     Attributes
     ----------
     key : str, default is Undefined, required
         The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -1272,7 +2621,8 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0V
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0VictoropsConfigsItems0HTTPConfigBasicAuth:
     """
-    TODO oAuth2 support BasicAuth for the client.
+    TODO oAuth2 support
+    BasicAuth for the client.
 
     Attributes
     ----------
@@ -1294,14 +2644,18 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0V
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0VictoropsConfigsItems0HTTPConfigBasicAuthPassword:
     """
-    The secret in the service scrape namespace that contains the password for authentication. It must be at them same namespace as CRD
+    The secret in the service scrape namespace that contains the password
+    for authentication.
+    It must be at them same namespace as CRD
 
     Attributes
     ----------
     key : str, default is Undefined, required
         The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -1316,14 +2670,18 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0V
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0VictoropsConfigsItems0HTTPConfigBasicAuthUsername:
     """
-    The secret in the service scrape namespace that contains the username for authentication. It must be at them same namespace as CRD
+    The secret in the service scrape namespace that contains the username
+    for authentication.
+    It must be at them same namespace as CRD
 
     Attributes
     ----------
     key : str, default is Undefined, required
         The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -1338,14 +2696,17 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0V
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0VictoropsConfigsItems0HTTPConfigBearerTokenSecret:
     """
-    The secret's key that contains the bearer token It must be at them same namespace as CRD
+    The secret's key that contains the bearer token
+    It must be at them same namespace as CRD
 
     Attributes
     ----------
     key : str, default is Undefined, required
         The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -1427,7 +2788,9 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0V
     key : str, default is Undefined, required
         The key to select.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the ConfigMap or its key must be defined
     """
@@ -1449,7 +2812,9 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0V
     key : str, default is Undefined, required
         The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -1489,7 +2854,9 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0V
     key : str, default is Undefined, required
         The key to select.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the ConfigMap or its key must be defined
     """
@@ -1511,7 +2878,9 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0V
     key : str, default is Undefined, required
         The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -1533,7 +2902,367 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0V
     key : str, default is Undefined, required
         The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
+    optional : bool, default is Undefined, optional
+        Specify whether the Secret or its key must be defined
+    """
+
+
+    key: str
+
+    name?: str
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0WebexConfigsItems0:
+    """
+    operator victoriametrics com v1beta1 VM alertmanager config spec receivers items0 webex configs items0
+
+    Attributes
+    ----------
+    api_url : str, default is Undefined, optional
+        The Webex Teams API URL, i.e. https://webexapis.com/v1/messages
+    http_config : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0WebexConfigsItems0HTTPConfig, default is Undefined, optional
+        http config
+    message : str, default is Undefined, optional
+        The message body template
+    room_id : str, default is Undefined, optional
+        The ID of the Webex Teams room where to send the messages
+    send_resolved : bool, default is Undefined, optional
+        SendResolved controls notify about resolved alerts.
+    """
+
+
+    api_url?: str
+
+    http_config?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0WebexConfigsItems0HTTPConfig
+
+    message?: str
+
+    room_id?: str
+
+    send_resolved?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0WebexConfigsItems0HTTPConfig:
+    """
+    HTTP client configuration. You must use this configuration to supply the bot token as part of the HTTP `Authorization` header.
+
+    Attributes
+    ----------
+    basic_auth : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0WebexConfigsItems0HTTPConfigBasicAuth, default is Undefined, optional
+        basic auth
+    bearer_token_file : str, default is Undefined, optional
+        BearerTokenFile defines filename for bearer token, it must be mounted to pod.
+    bearer_token_secret : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0WebexConfigsItems0HTTPConfigBearerTokenSecret, default is Undefined, optional
+        bearer token secret
+    proxyURL : str, default is Undefined, optional
+        Optional proxy URL.
+    tls_config : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0WebexConfigsItems0HTTPConfigTLSConfig, default is Undefined, optional
+        tls config
+    """
+
+
+    basic_auth?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0WebexConfigsItems0HTTPConfigBasicAuth
+
+    bearer_token_file?: str
+
+    bearer_token_secret?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0WebexConfigsItems0HTTPConfigBearerTokenSecret
+
+    proxyURL?: str
+
+    tls_config?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0WebexConfigsItems0HTTPConfigTLSConfig
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0WebexConfigsItems0HTTPConfigBasicAuth:
+    """
+    TODO oAuth2 support
+    BasicAuth for the client.
+
+    Attributes
+    ----------
+    password : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0WebexConfigsItems0HTTPConfigBasicAuthPassword, default is Undefined, optional
+        password
+    password_file : str, default is Undefined, optional
+        PasswordFile defines path to password file at disk
+    username : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0WebexConfigsItems0HTTPConfigBasicAuthUsername, default is Undefined, optional
+        username
+    """
+
+
+    password?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0WebexConfigsItems0HTTPConfigBasicAuthPassword
+
+    password_file?: str
+
+    username?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0WebexConfigsItems0HTTPConfigBasicAuthUsername
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0WebexConfigsItems0HTTPConfigBasicAuthPassword:
+    """
+    The secret in the service scrape namespace that contains the password
+    for authentication.
+    It must be at them same namespace as CRD
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        The key of the secret to select from.  Must be a valid secret key.
+    name : str, default is Undefined, optional
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
+    optional : bool, default is Undefined, optional
+        Specify whether the Secret or its key must be defined
+    """
+
+
+    key: str
+
+    name?: str
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0WebexConfigsItems0HTTPConfigBasicAuthUsername:
+    """
+    The secret in the service scrape namespace that contains the username
+    for authentication.
+    It must be at them same namespace as CRD
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        The key of the secret to select from.  Must be a valid secret key.
+    name : str, default is Undefined, optional
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
+    optional : bool, default is Undefined, optional
+        Specify whether the Secret or its key must be defined
+    """
+
+
+    key: str
+
+    name?: str
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0WebexConfigsItems0HTTPConfigBearerTokenSecret:
+    """
+    The secret's key that contains the bearer token
+    It must be at them same namespace as CRD
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        The key of the secret to select from.  Must be a valid secret key.
+    name : str, default is Undefined, optional
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
+    optional : bool, default is Undefined, optional
+        Specify whether the Secret or its key must be defined
+    """
+
+
+    key: str
+
+    name?: str
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0WebexConfigsItems0HTTPConfigTLSConfig:
+    """
+    TLS configuration for the client.
+
+    Attributes
+    ----------
+    ca : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0WebexConfigsItems0HTTPConfigTLSConfigCa, default is Undefined, optional
+        ca
+    caFile : str, default is Undefined, optional
+        Path to the CA cert in the container to use for the targets.
+    cert : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0WebexConfigsItems0HTTPConfigTLSConfigCert, default is Undefined, optional
+        cert
+    certFile : str, default is Undefined, optional
+        Path to the client cert file in the container for the targets.
+    insecureSkipVerify : bool, default is Undefined, optional
+        Disable target certificate validation.
+    keyFile : str, default is Undefined, optional
+        Path to the client key file in the container for the targets.
+    keySecret : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0WebexConfigsItems0HTTPConfigTLSConfigKeySecret, default is Undefined, optional
+        key secret
+    serverName : str, default is Undefined, optional
+        Used to verify the hostname for the targets.
+    """
+
+
+    ca?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0WebexConfigsItems0HTTPConfigTLSConfigCa
+
+    caFile?: str
+
+    cert?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0WebexConfigsItems0HTTPConfigTLSConfigCert
+
+    certFile?: str
+
+    insecureSkipVerify?: bool
+
+    keyFile?: str
+
+    keySecret?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0WebexConfigsItems0HTTPConfigTLSConfigKeySecret
+
+    serverName?: str
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0WebexConfigsItems0HTTPConfigTLSConfigCa:
+    """
+    Stuct containing the CA cert to use for the targets.
+
+    Attributes
+    ----------
+    configMap : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0WebexConfigsItems0HTTPConfigTLSConfigCaConfigMap, default is Undefined, optional
+        config map
+    secret : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0WebexConfigsItems0HTTPConfigTLSConfigCaSecret, default is Undefined, optional
+        secret
+    """
+
+
+    configMap?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0WebexConfigsItems0HTTPConfigTLSConfigCaConfigMap
+
+    secret?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0WebexConfigsItems0HTTPConfigTLSConfigCaSecret
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0WebexConfigsItems0HTTPConfigTLSConfigCaConfigMap:
+    """
+    ConfigMap containing data to use for the targets.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        The key to select.
+    name : str, default is Undefined, optional
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
+    optional : bool, default is Undefined, optional
+        Specify whether the ConfigMap or its key must be defined
+    """
+
+
+    key: str
+
+    name?: str
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0WebexConfigsItems0HTTPConfigTLSConfigCaSecret:
+    """
+    Secret containing data to use for the targets.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        The key of the secret to select from.  Must be a valid secret key.
+    name : str, default is Undefined, optional
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
+    optional : bool, default is Undefined, optional
+        Specify whether the Secret or its key must be defined
+    """
+
+
+    key: str
+
+    name?: str
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0WebexConfigsItems0HTTPConfigTLSConfigCert:
+    """
+    Struct containing the client cert file for the targets.
+
+    Attributes
+    ----------
+    configMap : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0WebexConfigsItems0HTTPConfigTLSConfigCertConfigMap, default is Undefined, optional
+        config map
+    secret : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0WebexConfigsItems0HTTPConfigTLSConfigCertSecret, default is Undefined, optional
+        secret
+    """
+
+
+    configMap?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0WebexConfigsItems0HTTPConfigTLSConfigCertConfigMap
+
+    secret?: OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0WebexConfigsItems0HTTPConfigTLSConfigCertSecret
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0WebexConfigsItems0HTTPConfigTLSConfigCertConfigMap:
+    """
+    ConfigMap containing data to use for the targets.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        The key to select.
+    name : str, default is Undefined, optional
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
+    optional : bool, default is Undefined, optional
+        Specify whether the ConfigMap or its key must be defined
+    """
+
+
+    key: str
+
+    name?: str
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0WebexConfigsItems0HTTPConfigTLSConfigCertSecret:
+    """
+    Secret containing data to use for the targets.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        The key of the secret to select from.  Must be a valid secret key.
+    name : str, default is Undefined, optional
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
+    optional : bool, default is Undefined, optional
+        Specify whether the Secret or its key must be defined
+    """
+
+
+    key: str
+
+    name?: str
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0WebexConfigsItems0HTTPConfigTLSConfigKeySecret:
+    """
+    Secret containing the client key file for the targets.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        The key of the secret to select from.  Must be a valid secret key.
+    name : str, default is Undefined, optional
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -1548,7 +3277,8 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0V
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0WebhookConfigsItems0:
     """
-    WebhookConfig configures notifications via a generic receiver supporting the webhook payload. See https://prometheus.io/docs/alerting/latest/configuration/#webhook_config
+    WebhookConfig configures notifications via a generic receiver supporting the webhook payload.
+    See https://prometheus.io/docs/alerting/latest/configuration/#webhook_config
 
     Attributes
     ----------
@@ -1559,7 +3289,8 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0W
     send_resolved : bool, default is Undefined, optional
         SendResolved controls notify about resolved alerts.
     url : str, default is Undefined, optional
-        URL to send requests to, one of `urlSecret` and `url` must be defined.
+        URL to send requests to,
+        one of `urlSecret` and `url` must be defined.
     url_secret : OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0WebhookConfigsItems0URLSecret, default is Undefined, optional
         url secret
     """
@@ -1582,14 +3313,18 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0W
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0WebhookConfigsItems0URLSecret:
     """
-    URLSecret defines secret name and key at the CRD namespace. It must contain the webhook URL. one of `urlSecret` and `url` must be defined.
+    URLSecret defines secret name and key at the CRD namespace.
+    It must contain the webhook URL.
+    one of `urlSecret` and `url` must be defined.
 
     Attributes
     ----------
     key : str, default is Undefined, required
         The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -1604,7 +3339,8 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0W
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0WechatConfigsItems0:
     """
-    WeChatConfig configures notifications via WeChat. See https://prometheus.io/docs/alerting/latest/configuration/#wechat_config
+    WeChatConfig configures notifications via WeChat.
+    See https://prometheus.io/docs/alerting/latest/configuration/#wechat_config
 
     Attributes
     ----------
@@ -1658,14 +3394,18 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0W
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0WechatConfigsItems0APISecret:
     """
-    The secret's key that contains the WeChat API key. The secret needs to be in the same namespace as the AlertmanagerConfig object and accessible by the Prometheus Operator.
+    The secret's key that contains the WeChat API key.
+    The secret needs to be in the same namespace as the AlertmanagerConfig
+    object and accessible by the Prometheus Operator.
 
     Attributes
     ----------
     key : str, default is Undefined, required
         The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -1710,7 +3450,8 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0W
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0WechatConfigsItems0HTTPConfigBasicAuth:
     """
-    TODO oAuth2 support BasicAuth for the client.
+    TODO oAuth2 support
+    BasicAuth for the client.
 
     Attributes
     ----------
@@ -1732,14 +3473,18 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0W
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0WechatConfigsItems0HTTPConfigBasicAuthPassword:
     """
-    The secret in the service scrape namespace that contains the password for authentication. It must be at them same namespace as CRD
+    The secret in the service scrape namespace that contains the password
+    for authentication.
+    It must be at them same namespace as CRD
 
     Attributes
     ----------
     key : str, default is Undefined, required
         The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -1754,14 +3499,18 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0W
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0WechatConfigsItems0HTTPConfigBasicAuthUsername:
     """
-    The secret in the service scrape namespace that contains the username for authentication. It must be at them same namespace as CRD
+    The secret in the service scrape namespace that contains the username
+    for authentication.
+    It must be at them same namespace as CRD
 
     Attributes
     ----------
     key : str, default is Undefined, required
         The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -1776,14 +3525,17 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0W
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0WechatConfigsItems0HTTPConfigBearerTokenSecret:
     """
-    The secret's key that contains the bearer token It must be at them same namespace as CRD
+    The secret's key that contains the bearer token
+    It must be at them same namespace as CRD
 
     Attributes
     ----------
     key : str, default is Undefined, required
         The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -1865,7 +3617,9 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0W
     key : str, default is Undefined, required
         The key to select.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the ConfigMap or its key must be defined
     """
@@ -1887,7 +3641,9 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0W
     key : str, default is Undefined, required
         The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -1927,7 +3683,9 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0W
     key : str, default is Undefined, required
         The key to select.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the ConfigMap or its key must be defined
     """
@@ -1949,7 +3707,9 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0W
     key : str, default is Undefined, required
         The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -1971,7 +3731,9 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0W
     key : str, default is Undefined, required
         The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -1991,9 +3753,11 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecRoute:
     Attributes
     ----------
     active_time_intervals : [str], default is Undefined, optional
-        ActiveTimeIntervals Times when the route should be active These must match the name at time_intervals
+        ActiveTimeIntervals Times when the route should be active
+        These must match the name at time_intervals
     continue : bool, default is Undefined, optional
-        Continue indicating whether an alert should continue matching subsequent sibling nodes. It will always be true for the first-level route if disableRouteContinueEnforce for vmalertmanager not set.
+        Continue indicating whether an alert should continue matching subsequent
+        sibling nodes. It will always be true for the first-level route if disableRouteContinueEnforce for vmalertmanager not set.
     group_by : [str], default is Undefined, optional
         List of labels to group by.
     group_interval : str, default is Undefined, optional
@@ -2001,7 +3765,9 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecRoute:
     group_wait : str, default is Undefined, optional
         How long to wait before sending the initial notification.
     matchers : [str], default is Undefined, optional
-        List of matchers that the alert’s labels should match. For the first level route, the operator adds a namespace: "CRD_NS" matcher. https://prometheus.io/docs/alerting/latest/configuration/#matcher
+        List of matchers that the alert’s labels should match. For the first
+        level route, the operator adds a namespace: "CRD_NS" matcher.
+        https://prometheus.io/docs/alerting/latest/configuration/#matcher
     mute_time_intervals : [str], default is Undefined, optional
         MuteTimeIntervals for alerts
     receiver : str, default is Undefined, required
@@ -2009,7 +3775,8 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecRoute:
     repeat_interval : str, default is Undefined, optional
         How long to wait before repeating the last notification.
     routes : [any], default is Undefined, optional
-        Child routes. https://prometheus.io/docs/alerting/latest/configuration/#route
+        Child routes.
+        https://prometheus.io/docs/alerting/latest/configuration/#route
     """
 
 
@@ -2065,17 +3832,20 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecTimeIntervalsIte
     Attributes
     ----------
     days_of_month : [str], default is Undefined, optional
-        DayOfMonth defines list of numerical days in the month. Days begin at 1. Negative values are also accepted. for example, ['1:5', '-3:-1']
+        DayOfMonth defines list of numerical days in the month. Days begin at 1. Negative values are also accepted.
+        for example, ['1:5', '-3:-1']
     location : str, default is Undefined, optional
         Location in golang time location form, e.g. UTC
     months : [str], default is Undefined, optional
-        Months  defines list of calendar months identified by a case-insentive name (e.g. ‘January’) or numeric 1. For example, ['1:3', 'may:august', 'december']
+        Months  defines list of calendar months identified by a case-insensitive name (e.g. ‘January’) or numeric 1.
+        For example, ['1:3', 'may:august', 'december']
     times : [OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecTimeIntervalsItems0TimeIntervalsItems0TimesItems0], default is Undefined, optional
         Times defines time range for mute
     weekdays : [str], default is Undefined, optional
         Weekdays defines list of days of the week, where the week begins on Sunday and ends on Saturday.
     years : [str], default is Undefined, optional
-        Years defines numerical list of years, ranges are accepted. For example, ['2020:2022', '2030']
+        Years defines numerical list of years, ranges are accepted.
+        For example, ['2020:2022', '2030']
     """
 
 

@@ -1,7 +1,7 @@
 [package]
 name = "victoria-metrics-operator"
-edition = "0.0.1"
-version = "0.0.1"
+edition = "*"
+version = "0.45.0"
 
 [dependencies]
 k8s = "1.28"
