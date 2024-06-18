@@ -1,0 +1,25 @@
+version: 0.45.0
+name: victoria-metrics-operator
+displayName: victoria-metrics-operator
+createdAt: "2024-06-18T23:21:33Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `victoria-metrics-operator` with tag `0.45.0` as dependency
+  ```
+  kcl mod add victoria-metrics-operator:0.45.0
+  ```
+
+  #### Pull `victoria-metrics-operator` with tag `0.45.0` to local
+  ```
+  kcl mod pull victoria-metrics-operator:0.45.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
