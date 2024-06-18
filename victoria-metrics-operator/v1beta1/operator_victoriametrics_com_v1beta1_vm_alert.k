@@ -42,14 +42,18 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpec:
 
     Attributes
     ----------
-    _ : str, default is Undefined, optional
-        ParsingError contents error with context if operator was failed to parse json object from kubernetes api server
     affinity : any, default is Undefined, optional
         Affinity If specified, the pod's scheduling constraints.
     configMaps : [str], default is Undefined, optional
-        ConfigMaps is a list of ConfigMaps in the same namespace as the VMAlert object, which shall be mounted into the VMAlert Pods. The ConfigMaps are mounted into /etc/vm/configs/<configmap-name>.
+        ConfigMaps is a list of ConfigMaps in the same namespace as the VMAlert
+        object, which shall be mounted into the VMAlert Pods.
+        The ConfigMaps are mounted into /etc/vm/configs/<configmap-name>.
+    configReloaderExtraArgs : {str:str}, default is Undefined, optional
+        ConfigReloaderExtraArgs that will be passed to  VMAuths config-reloader container
+        for example resyncInterval: "30s"
     containers : [any], default is Undefined, optional
-        Containers property allows to inject additions sidecars or to patch existing containers. It can be useful for proxies, backup, etc.
+        Containers property allows to inject additions sidecars or to patch existing containers.
+        It can be useful for proxies, backup, etc.
     datasource : OperatorVictoriametricsComV1beta1VMAlertSpecDatasource, default is Undefined, required
         datasource
     dnsConfig : OperatorVictoriametricsComV1beta1VMAlertSpecDNSConfig, default is Undefined, optional
@@ -57,13 +61,16 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpec:
     dnsPolicy : str, default is Undefined, optional
         DNSPolicy sets DNS policy for the pod
     enforcedNamespaceLabel : str, default is Undefined, optional
-        EnforcedNamespaceLabel enforces adding a namespace label of origin for each alert and metric that is user created. The label value will always be the namespace of the object that is being created.
+        EnforcedNamespaceLabel enforces adding a namespace label of origin for each alert
+        and metric that is user created. The label value will always be the namespace of the object that is
+        being created.
     evaluationInterval : str, default is Undefined, optional
         EvaluationInterval defines how often to evaluate rules by default
     externalLabels : {str:str}, default is Undefined, optional
         ExternalLabels in the form 'name: value' to add to all generated recording rules and alerts.
     extraArgs : {str:str}, default is Undefined, optional
-        ExtraArgs that will be passed to  VMAlert pod for example -remoteWrite.tmpDataPath=/tmp
+        ExtraArgs that will be passed to  VMAlert pod
+        for example -remoteWrite.tmpDataPath=/tmp
     extraEnvs : [OperatorVictoriametricsComV1beta1VMAlertSpecExtraEnvsItems0], default is Undefined, optional
         ExtraEnvs that will be added to VMAlert pod
     hostNetwork : bool, default is Undefined, optional
@@ -71,15 +78,28 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpec:
     image : OperatorVictoriametricsComV1beta1VMAlertSpecImage, default is Undefined, optional
         image
     imagePullSecrets : [OperatorVictoriametricsComV1beta1VMAlertSpecImagePullSecretsItems0], default is Undefined, optional
-        ImagePullSecrets An optional list of references to secrets in the same namespace to use for pulling images from registries see https://kubernetes.io/docs/concepts/containers/images/#referring-to-an-imagepullsecrets-on-a-pod
+        ImagePullSecrets An optional list of references to secrets in the same namespace
+        to use for pulling images from registries
+        see https://kubernetes.io/docs/concepts/containers/images/#referring-to-an-imagepullsecrets-on-a-pod
     initContainers : [any], default is Undefined, optional
-        InitContainers allows adding initContainers to the pod definition. Those can be used to e.g. fetch secrets for injection into the VMAlert configuration from external sources. Any errors during the execution of an initContainer will lead to a restart of the Pod. More info: https://kubernetes.io/docs/concepts/workloads/pods/init-containers/ Using initContainers for any use case other then secret fetching is entirely outside the scope of what the maintainers will support and by doing so, you accept that this behaviour may break at any time without notice.
+        InitContainers allows adding initContainers to the pod definition. Those can be used to e.g.
+        fetch secrets for injection into the VMAlert configuration from external sources. Any
+        errors during the execution of an initContainer will lead to a restart of the Pod. More info: https://kubernetes.io/docs/concepts/workloads/pods/init-containers/
+        Using initContainers for any use case other then secret fetching is entirely outside the scope
+        of what the maintainers will support and by doing so, you accept that this behaviour may break
+        at any time without notice.
+    license : OperatorVictoriametricsComV1beta1VMAlertSpecLicense, default is Undefined, optional
+        license
     livenessProbe : any, default is Undefined, optional
         LivenessProbe that will be added CRD pod
     logFormat : str, default is Undefined, optional
-        LogFormat for VMAlert to be configured with. default or json
+        LogFormat for VMAlert to be configured with.
+        default or json
     logLevel : str, default is Undefined, optional
         LogLevel for VMAlert to be configured with.
+    minReadySeconds : int, default is Undefined, optional
+        MinReadySeconds defines a minim number os seconds to wait before starting update next pod
+        if previous in healthy state
     nodeSelector : {str:str}, default is Undefined, optional
         NodeSelector Define which Nodes the Pods are scheduled on.
     notifier : OperatorVictoriametricsComV1beta1VMAlertSpecNotifier, default is Undefined, optional
@@ -87,13 +107,16 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpec:
     notifierConfigRef : OperatorVictoriametricsComV1beta1VMAlertSpecNotifierConfigRef, default is Undefined, optional
         notifier config ref
     notifiers : [OperatorVictoriametricsComV1beta1VMAlertSpecNotifiersItems0], default is Undefined, optional
-        Notifiers prometheus alertmanager endpoints. Required at least one of  notifier or notifiers. e.g. http://127.0.0.1:9093 If specified both notifier and notifiers, notifier will be added as last element to notifiers. only one of notifier options could be chosen: notifierConfigRef or notifiers +  notifier
+        Notifiers prometheus alertmanager endpoints. Required at least one of notifier or notifiers when there are alerting rules. e.g. http://127.0.0.1:9093
+        If specified both notifier and notifiers, notifier will be added as last element to notifiers.
+        only one of notifier options could be chosen: notifierConfigRef or notifiers +  notifier
+    paused : bool, default is Undefined, optional
+        Paused If set to true all actions on the underlying managed objects are not
+        going to be performed, except for delete actions.
     podDisruptionBudget : OperatorVictoriametricsComV1beta1VMAlertSpecPodDisruptionBudget, default is Undefined, optional
         pod disruption budget
     podMetadata : OperatorVictoriametricsComV1beta1VMAlertSpecPodMetadata, default is Undefined, optional
         pod metadata
-    podSecurityPolicyName : str, default is Undefined, optional
-        PodSecurityPolicyName - defines name for podSecurityPolicy in case of empty value, prefixedName will be used.
     port : str, default is Undefined, optional
         Port for listen
     priorityClassName : str, default is Undefined, optional
@@ -107,29 +130,49 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpec:
     remoteWrite : OperatorVictoriametricsComV1beta1VMAlertSpecRemoteWrite, default is Undefined, optional
         remote write
     replicaCount : int, default is Undefined, optional
-        ReplicaCount is the expected size of the VMAlert cluster. The controller will eventually make the size of the running cluster equal to the expected size.
+        ReplicaCount is the expected size of the VMAlert cluster. The controller will
+        eventually make the size of the running cluster equal to the expected
+        size.
     resources : OperatorVictoriametricsComV1beta1VMAlertSpecResources, default is Undefined, optional
         resources
+    revisionHistoryLimitCount : int, default is Undefined, optional
+        The number of old ReplicaSets to retain to allow rollback in deployment or
+        maximum number of revisions that will be maintained in the StatefulSet's revision history.
+        Defaults to 10.
     rollingUpdate : OperatorVictoriametricsComV1beta1VMAlertSpecRollingUpdate, default is Undefined, optional
         rolling update
     ruleNamespaceSelector : OperatorVictoriametricsComV1beta1VMAlertSpecRuleNamespaceSelector, default is Undefined, optional
         rule namespace selector
     rulePath : [str], default is Undefined, optional
-        RulePath to the file with alert rules. Supports patterns. Flag can be specified multiple times. Examples: -rule /path/to/file. Path to a single file with alerting rules -rule dir/*.yaml -rule /*.yaml. Relative path to all .yaml files in folder, absolute path to all .yaml files in root. by default operator adds /etc/vmalert/configs/base/vmalert.yaml
+        RulePath to the file with alert rules.
+        Supports patterns. Flag can be specified multiple times.
+        Examples:
+        -rule /path/to/file. Path to a single file with alerting rules
+        -rule dir/*.yaml -rule /*.yaml. Relative path to all .yaml files in folder,
+        absolute path to all .yaml files in root.
+        by default operator adds /etc/vmalert/configs/base/vmalert.yaml
     ruleSelector : OperatorVictoriametricsComV1beta1VMAlertSpecRuleSelector, default is Undefined, optional
         rule selector
     runtimeClassName : str, default is Undefined, optional
-        RuntimeClassName - defines runtime class for kubernetes pod. https://kubernetes.io/docs/concepts/containers/runtime-class/
+        RuntimeClassName - defines runtime class for kubernetes pod.
+        https://kubernetes.io/docs/concepts/containers/runtime-class/
     schedulerName : str, default is Undefined, optional
         SchedulerName - defines kubernetes scheduler name
     secrets : [str], default is Undefined, optional
-        Secrets is a list of Secrets in the same namespace as the VMAlert object, which shall be mounted into the VMAlert Pods. The Secrets are mounted into /etc/vm/secrets/<secret-name>.
+        Secrets is a list of Secrets in the same namespace as the VMAlert
+        object, which shall be mounted into the VMAlert Pods.
+        The Secrets are mounted into /etc/vm/secrets/<secret-name>.
     securityContext : any, default is Undefined, optional
-        SecurityContext holds pod-level security attributes and common container settings. This defaults to the default PodSecurityContext.
+        SecurityContext holds pod-level security attributes and common container settings.
+        This defaults to the default PodSecurityContext.
     selectAllByDefault : bool, default is Undefined, optional
-        SelectAllByDefault changes default behavior for empty CRD selectors, such RuleSelector. with selectAllByDefault: true and empty serviceScrapeSelector and RuleNamespaceSelector Operator selects all exist serviceScrapes with selectAllByDefault: false - selects nothing
+        SelectAllByDefault changes default behavior for empty CRD selectors, such RuleSelector.
+        with selectAllByDefault: true and empty serviceScrapeSelector and RuleNamespaceSelector
+        Operator selects all exist serviceScrapes
+        with selectAllByDefault: false - selects nothing
     serviceAccountName : str, default is Undefined, optional
-        ServiceAccountName is the name of the ServiceAccount to use to run the VMAlert Pods.
+        ServiceAccountName is the name of the ServiceAccount to use to run the
+        VMAlert Pods.
     serviceScrapeSpec : any, default is Undefined, optional
         ServiceScrapeSpec that will be added to vmalert VMServiceScrape spec
     serviceSpec : OperatorVictoriametricsComV1beta1VMAlertSpecServiceSpec, default is Undefined, optional
@@ -141,21 +184,33 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpec:
     tolerations : [OperatorVictoriametricsComV1beta1VMAlertSpecTolerationsItems0], default is Undefined, optional
         Tolerations If specified, the pod's tolerations.
     topologySpreadConstraints : [any], default is Undefined, optional
-        TopologySpreadConstraints embedded kubernetes pod configuration option, controls how pods are spread across your cluster among failure-domains such as regions, zones, nodes, and other user-defined topology domains https://kubernetes.io/docs/concepts/workloads/pods/pod-topology-spread-constraints/
+        TopologySpreadConstraints embedded kubernetes pod configuration option,
+        controls how pods are spread across your cluster among failure-domains
+        such as regions, zones, nodes, and other user-defined topology domains
+        https://kubernetes.io/docs/concepts/workloads/pods/pod-topology-spread-constraints/
     updateStrategy : str, default is Undefined, optional
         UpdateStrategy - overrides default update strategy.
+    useStrictSecurity : bool, default is Undefined, optional
+        UseStrictSecurity enables strict security mode for component
+        it restricts disk writes access
+        uses non-root user out of the box
+        drops not needed security permissions
     volumeMounts : [OperatorVictoriametricsComV1beta1VMAlertSpecVolumeMountsItems0], default is Undefined, optional
-        VolumeMounts allows configuration of additional VolumeMounts on the output Deployment definition. VolumeMounts specified will be appended to other VolumeMounts in the VMAlert container, that are generated as a result of StorageSpec objects.
+        VolumeMounts allows configuration of additional VolumeMounts on the output Deployment definition.
+        VolumeMounts specified will be appended to other VolumeMounts in the VMAlert container,
+        that are generated as a result of StorageSpec objects.
     volumes : [any], default is Undefined, optional
-        Volumes allows configuration of additional volumes on the output Deployment definition. Volumes specified will be appended to other volumes that are generated as a result of StorageSpec objects.
+        Volumes allows configuration of additional volumes on the output Deployment definition.
+        Volumes specified will be appended to other volumes that are generated as a result of
+        StorageSpec objects.
     """
 
-
-    _?: str
 
     affinity?: any
 
     configMaps?: [str]
+
+    configReloaderExtraArgs?: {str:str}
 
     containers?: [any]
 
@@ -183,11 +238,15 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpec:
 
     initContainers?: [any]
 
+    license?: OperatorVictoriametricsComV1beta1VMAlertSpecLicense
+
     livenessProbe?: any
 
     logFormat?: "default" | "json"
 
     logLevel?: "INFO" | "WARN" | "ERROR" | "FATAL" | "PANIC"
+
+    minReadySeconds?: int
 
     nodeSelector?: {str:str}
 
@@ -197,11 +256,11 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpec:
 
     notifiers?: [OperatorVictoriametricsComV1beta1VMAlertSpecNotifiersItems0]
 
+    paused?: bool
+
     podDisruptionBudget?: OperatorVictoriametricsComV1beta1VMAlertSpecPodDisruptionBudget
 
     podMetadata?: OperatorVictoriametricsComV1beta1VMAlertSpecPodMetadata
-
-    podSecurityPolicyName?: str
 
     port?: str
 
@@ -218,6 +277,8 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpec:
     replicaCount?: int
 
     resources?: OperatorVictoriametricsComV1beta1VMAlertSpecResources
+
+    revisionHistoryLimitCount?: int
 
     rollingUpdate?: OperatorVictoriametricsComV1beta1VMAlertSpecRollingUpdate
 
@@ -253,6 +314,8 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpec:
 
     updateStrategy?: "Recreate" | "RollingUpdate"
 
+    useStrictSecurity?: bool
+
     volumeMounts?: [OperatorVictoriametricsComV1beta1VMAlertSpecVolumeMountsItems0]
 
     volumes?: [any]
@@ -262,18 +325,27 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpec:
         regex.match(str(evaluationInterval), r"[0-9]+(ms|s|m|h)") if evaluationInterval
 
 
-schema [any]:
+schema OperatorVictoriametricsComV1beta1VMAlertSpecDNSConfig:
     """
-    Specifies the DNS parameters of a pod. Parameters specified here will be merged to the generated DNS configuration based on DNSPolicy.
+    Specifies the DNS parameters of a pod.
+    Parameters specified here will be merged to the generated DNS
+    configuration based on DNSPolicy.
 
     Attributes
     ----------
     nameservers : [str], default is Undefined, optional
-        A list of DNS name server IP addresses. This will be appended to the base nameservers generated from DNSPolicy. Duplicated nameservers will be removed.
+        A list of DNS name server IP addresses.
+        This will be appended to the base nameservers generated from DNSPolicy.
+        Duplicated nameservers will be removed.
     options : [OperatorVictoriametricsComV1beta1VMAlertSpecDNSConfigOptionsItems0], default is Undefined, optional
-        A list of DNS resolver options. This will be merged with the base options generated from DNSPolicy. Duplicated entries will be removed. Resolution options given in Options will override those that appear in the base DNSPolicy.
+        A list of DNS resolver options.
+        This will be merged with the base options generated from DNSPolicy.
+        Duplicated entries will be removed. Resolution options given in Options
+        will override those that appear in the base DNSPolicy.
     searches : [str], default is Undefined, optional
-        A list of DNS search domains for host-name lookup. This will be appended to the base search paths generated from DNSPolicy. Duplicated search paths will be removed.
+        A list of DNS search domains for host-name lookup.
+        This will be appended to the base search paths generated from DNSPolicy.
+        Duplicated search paths will be removed.
     """
 
 
@@ -317,7 +389,11 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecDatasource:
     bearerTokenSecret : OperatorVictoriametricsComV1beta1VMAlertSpecDatasourceBearerTokenSecret, default is Undefined, optional
         bearer token secret
     headers : [str], default is Undefined, optional
-        Headers allow configuring custom http headers Must be in form of semicolon separated header with value e.g. headerName:headerValue vmalert supports it since 1.79.0 version
+        Headers allow configuring custom http headers
+        Must be in form of semicolon separated header with value
+        e.g.
+        headerName:headerValue
+        vmalert supports it since 1.79.0 version
     oauth2 : OperatorVictoriametricsComV1beta1VMAlertSpecDatasourceOauth2, default is Undefined, optional
         oauth2
     tlsConfig : any, default is Undefined, optional
@@ -368,14 +444,18 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecDatasourceBasicAuth:
 
 schema OperatorVictoriametricsComV1beta1VMAlertSpecDatasourceBasicAuthPassword:
     """
-    The secret in the service scrape namespace that contains the password for authentication. It must be at them same namespace as CRD
+    The secret in the service scrape namespace that contains the password
+    for authentication.
+    It must be at them same namespace as CRD
 
     Attributes
     ----------
     key : str, default is Undefined, required
         The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -390,14 +470,18 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecDatasourceBasicAuthPassword:
 
 schema OperatorVictoriametricsComV1beta1VMAlertSpecDatasourceBasicAuthUsername:
     """
-    The secret in the service scrape namespace that contains the username for authentication. It must be at them same namespace as CRD
+    The secret in the service scrape namespace that contains the username
+    for authentication.
+    It must be at them same namespace as CRD
 
     Attributes
     ----------
     key : str, default is Undefined, required
         The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -419,7 +503,9 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecDatasourceBearerTokenSecret:
     key : str, default is Undefined, required
         The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -497,7 +583,9 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecDatasourceOauth2ClientIDConfi
     key : str, default is Undefined, required
         The key to select.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the ConfigMap or its key must be defined
     """
@@ -519,7 +607,9 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecDatasourceOauth2ClientIDSecre
     key : str, default is Undefined, required
         The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -541,7 +631,9 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecDatasourceOauth2ClientSecret:
     key : str, default is Undefined, required
         The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -563,7 +655,15 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecExtraEnvsItems0:
     name : str, default is Undefined, required
         Name of the environment variable. Must be a C_IDENTIFIER.
     value : str, default is Undefined, optional
-        Variable references $(VAR_NAME) are expanded using the previously defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e. "$$(VAR_NAME)" will produce the string literal "$(VAR_NAME)". Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
+        Variable references $(VAR_NAME) are expanded
+        using the previously defined environment variables in the container and
+        any service environment variables. If a variable cannot be resolved,
+        the reference in the input string will be unchanged. Double $$ are reduced
+        to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e.
+        "$$(VAR_NAME)" will produce the string literal "$(VAR_NAME)".
+        Escaped references will never be expanded, regardless of whether the variable
+        exists or not.
+        Defaults to "".
     """
 
 
@@ -574,7 +674,8 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecExtraEnvsItems0:
 
 schema OperatorVictoriametricsComV1beta1VMAlertSpecImage:
     """
-    Image - docker image settings for VMAlert if no specified operator uses default config version
+    Image - docker image settings for VMAlert
+    if no specified operator uses default config version
 
     Attributes
     ----------
@@ -596,21 +697,73 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecImage:
 
 schema OperatorVictoriametricsComV1beta1VMAlertSpecImagePullSecretsItems0:
     """
-    LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
+    LocalObjectReference contains enough information to let you locate the
+    referenced object inside the same namespace.
 
     Attributes
     ----------
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     """
 
 
     name?: str
 
 
+schema OperatorVictoriametricsComV1beta1VMAlertSpecLicense:
+    """
+    License allows to configure license key to be used for enterprise features.
+    Using license key is supported starting from VictoriaMetrics v1.94.0.
+    See: https://docs.victoriametrics.com/enterprise.html
+
+    Attributes
+    ----------
+    key : str, default is Undefined, optional
+        Enterprise license key. This flag is available only in VictoriaMetrics enterprise.
+        Documentation - https://docs.victoriametrics.com/enterprise.html
+        for more information, visit https://victoriametrics.com/products/enterprise/ .
+        To request a trial license, go to https://victoriametrics.com/products/enterprise/trial/
+    keyRef : OperatorVictoriametricsComV1beta1VMAlertSpecLicenseKeyRef, default is Undefined, optional
+        key ref
+    """
+
+
+    key?: str
+
+    keyRef?: OperatorVictoriametricsComV1beta1VMAlertSpecLicenseKeyRef
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertSpecLicenseKeyRef:
+    """
+    KeyRef is reference to secret with license key for enterprise features.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        The key of the secret to select from.  Must be a valid secret key.
+    name : str, default is Undefined, optional
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
+    optional : bool, default is Undefined, optional
+        Specify whether the Secret or its key must be defined
+    """
+
+
+    key: str
+
+    name?: str
+
+    optional?: bool
+
+
 schema OperatorVictoriametricsComV1beta1VMAlertSpecNotifier:
     """
-    Notifier prometheus alertmanager endpoint spec. Required at least one of  notifier or notifiers. e.g. http://127.0.0.1:9093 If specified both notifier and notifiers, notifier will be added as last element to notifiers. only one of notifier options could be chosen: notifierConfigRef or notifiers +  notifier
+    Notifier prometheus alertmanager endpoint spec. Required at least one of notifier or notifiers when there are alerting rules. e.g. http://127.0.0.1:9093
+    If specified both notifier and notifiers, notifier will be added as last element to notifiers.
+    only one of notifier options could be chosen: notifierConfigRef or notifiers +  notifier
 
     Attributes
     ----------
@@ -623,7 +776,11 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecNotifier:
     bearerTokenSecret : OperatorVictoriametricsComV1beta1VMAlertSpecNotifierBearerTokenSecret, default is Undefined, optional
         bearer token secret
     headers : [str], default is Undefined, optional
-        Headers allow configuring custom http headers Must be in form of semicolon separated header with value e.g. headerName:headerValue vmalert supports it since 1.79.0 version
+        Headers allow configuring custom http headers
+        Must be in form of semicolon separated header with value
+        e.g.
+        headerName:headerValue
+        vmalert supports it since 1.79.0 version
     oauth2 : OperatorVictoriametricsComV1beta1VMAlertSpecNotifierOauth2, default is Undefined, optional
         oauth2
     selector : OperatorVictoriametricsComV1beta1VMAlertSpecNotifierSelector, default is Undefined, optional
@@ -678,14 +835,18 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecNotifierBasicAuth:
 
 schema OperatorVictoriametricsComV1beta1VMAlertSpecNotifierBasicAuthPassword:
     """
-    The secret in the service scrape namespace that contains the password for authentication. It must be at them same namespace as CRD
+    The secret in the service scrape namespace that contains the password
+    for authentication.
+    It must be at them same namespace as CRD
 
     Attributes
     ----------
     key : str, default is Undefined, required
         The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -700,14 +861,18 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecNotifierBasicAuthPassword:
 
 schema OperatorVictoriametricsComV1beta1VMAlertSpecNotifierBasicAuthUsername:
     """
-    The secret in the service scrape namespace that contains the username for authentication. It must be at them same namespace as CRD
+    The secret in the service scrape namespace that contains the username
+    for authentication.
+    It must be at them same namespace as CRD
 
     Attributes
     ----------
     key : str, default is Undefined, required
         The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -729,7 +894,9 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecNotifierBearerTokenSecret:
     key : str, default is Undefined, required
         The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -744,14 +911,17 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecNotifierBearerTokenSecret:
 
 schema OperatorVictoriametricsComV1beta1VMAlertSpecNotifierConfigRef:
     """
-    NotifierConfigRef reference for secret with notifier configuration for vmalert only one of notifier options could be chosen: notifierConfigRef or notifiers +  notifier
+    NotifierConfigRef reference for secret with notifier configuration for vmalert
+    only one of notifier options could be chosen: notifierConfigRef or notifiers +  notifier
 
     Attributes
     ----------
     key : str, default is Undefined, required
         The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -829,7 +999,9 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecNotifierOauth2ClientIDConfigM
     key : str, default is Undefined, required
         The key to select.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the ConfigMap or its key must be defined
     """
@@ -851,7 +1023,9 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecNotifierOauth2ClientIDSecret:
     key : str, default is Undefined, required
         The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -873,7 +1047,9 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecNotifierOauth2ClientSecret:
     key : str, default is Undefined, required
         The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -888,7 +1064,9 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecNotifierOauth2ClientSecret:
 
 schema OperatorVictoriametricsComV1beta1VMAlertSpecNotifierSelector:
     """
-    Selector allows service discovery for alertmanager in this case all matched vmalertmanager replicas will be added into vmalert notifier.url as statefulset pod.fqdn
+    Selector allows service discovery for alertmanager
+    in this case all matched vmalertmanager replicas will be added into vmalert notifier.url
+    as statefulset pod.fqdn
 
     Attributes
     ----------
@@ -906,14 +1084,18 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecNotifierSelector:
 
 schema OperatorVictoriametricsComV1beta1VMAlertSpecNotifierSelectorLabelSelector:
     """
-    A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.
+    A label selector is a label query over a set of resources. The result of matchLabels and
+    matchExpressions are ANDed. An empty label selector matches all objects. A null
+    label selector matches no objects.
 
     Attributes
     ----------
     matchExpressions : [OperatorVictoriametricsComV1beta1VMAlertSpecNotifierSelectorLabelSelectorMatchExpressionsItems0], default is Undefined, optional
         matchExpressions is a list of label selector requirements. The requirements are ANDed.
     matchLabels : {str:str}, default is Undefined, optional
-        matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+        matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels
+        map is equivalent to an element of matchExpressions, whose key field is "key", the
+        operator is "In", and the values array contains only "value". The requirements are ANDed.
     """
 
 
@@ -924,16 +1106,21 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecNotifierSelectorLabelSelector
 
 schema OperatorVictoriametricsComV1beta1VMAlertSpecNotifierSelectorLabelSelectorMatchExpressionsItems0:
     """
-    A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+    A label selector requirement is a selector that contains values, a key, and an operator that
+    relates the key and values.
 
     Attributes
     ----------
     key : str, default is Undefined, required
         key is the label key that the selector applies to.
     operator : str, default is Undefined, required
-        operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+        operator represents a key's relationship to a set of values.
+        Valid operators are In, NotIn, Exists and DoesNotExist.
     values : [str], default is Undefined, optional
-        values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.
+        values is an array of string values. If the operator is In or NotIn,
+        the values array must be non-empty. If the operator is Exists or DoesNotExist,
+        the values array must be empty. This array is replaced during a strategic
+        merge patch.
     """
 
 
@@ -946,12 +1133,14 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecNotifierSelectorLabelSelector
 
 schema OperatorVictoriametricsComV1beta1VMAlertSpecNotifierSelectorNamespaceSelector:
     """
-    NamespaceSelector is a selector for selecting either all namespaces or a list of namespaces.
+    NamespaceSelector is a selector for selecting either all namespaces or a
+    list of namespaces.
 
     Attributes
     ----------
     any : bool, default is Undefined, optional
-        Boolean describing whether all namespaces are selected in contrast to a list restricting them.
+        Boolean describing whether all namespaces are selected in contrast to a
+        list restricting them.
     matchNames : [str], default is Undefined, optional
         List of namespace names.
     """
@@ -977,7 +1166,11 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecNotifiersItems0:
     bearerTokenSecret : OperatorVictoriametricsComV1beta1VMAlertSpecNotifiersItems0BearerTokenSecret, default is Undefined, optional
         bearer token secret
     headers : [str], default is Undefined, optional
-        Headers allow configuring custom http headers Must be in form of semicolon separated header with value e.g. headerName:headerValue vmalert supports it since 1.79.0 version
+        Headers allow configuring custom http headers
+        Must be in form of semicolon separated header with value
+        e.g.
+        headerName:headerValue
+        vmalert supports it since 1.79.0 version
     oauth2 : OperatorVictoriametricsComV1beta1VMAlertSpecNotifiersItems0Oauth2, default is Undefined, optional
         oauth2
     selector : OperatorVictoriametricsComV1beta1VMAlertSpecNotifiersItems0Selector, default is Undefined, optional
@@ -1032,14 +1225,18 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecNotifiersItems0BasicAuth:
 
 schema OperatorVictoriametricsComV1beta1VMAlertSpecNotifiersItems0BasicAuthPassword:
     """
-    The secret in the service scrape namespace that contains the password for authentication. It must be at them same namespace as CRD
+    The secret in the service scrape namespace that contains the password
+    for authentication.
+    It must be at them same namespace as CRD
 
     Attributes
     ----------
     key : str, default is Undefined, required
         The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -1054,14 +1251,18 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecNotifiersItems0BasicAuthPassw
 
 schema OperatorVictoriametricsComV1beta1VMAlertSpecNotifiersItems0BasicAuthUsername:
     """
-    The secret in the service scrape namespace that contains the username for authentication. It must be at them same namespace as CRD
+    The secret in the service scrape namespace that contains the username
+    for authentication.
+    It must be at them same namespace as CRD
 
     Attributes
     ----------
     key : str, default is Undefined, required
         The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -1083,7 +1284,9 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecNotifiersItems0BearerTokenSec
     key : str, default is Undefined, required
         The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -1161,7 +1364,9 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecNotifiersItems0Oauth2ClientID
     key : str, default is Undefined, required
         The key to select.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the ConfigMap or its key must be defined
     """
@@ -1183,7 +1388,9 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecNotifiersItems0Oauth2ClientID
     key : str, default is Undefined, required
         The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -1205,7 +1412,9 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecNotifiersItems0Oauth2ClientSe
     key : str, default is Undefined, required
         The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -1220,7 +1429,9 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecNotifiersItems0Oauth2ClientSe
 
 schema OperatorVictoriametricsComV1beta1VMAlertSpecNotifiersItems0Selector:
     """
-    Selector allows service discovery for alertmanager in this case all matched vmalertmanager replicas will be added into vmalert notifier.url as statefulset pod.fqdn
+    Selector allows service discovery for alertmanager
+    in this case all matched vmalertmanager replicas will be added into vmalert notifier.url
+    as statefulset pod.fqdn
 
     Attributes
     ----------
@@ -1238,14 +1449,18 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecNotifiersItems0Selector:
 
 schema OperatorVictoriametricsComV1beta1VMAlertSpecNotifiersItems0SelectorLabelSelector:
     """
-    A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.
+    A label selector is a label query over a set of resources. The result of matchLabels and
+    matchExpressions are ANDed. An empty label selector matches all objects. A null
+    label selector matches no objects.
 
     Attributes
     ----------
     matchExpressions : [OperatorVictoriametricsComV1beta1VMAlertSpecNotifiersItems0SelectorLabelSelectorMatchExpressionsItems0], default is Undefined, optional
         matchExpressions is a list of label selector requirements. The requirements are ANDed.
     matchLabels : {str:str}, default is Undefined, optional
-        matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+        matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels
+        map is equivalent to an element of matchExpressions, whose key field is "key", the
+        operator is "In", and the values array contains only "value". The requirements are ANDed.
     """
 
 
@@ -1256,16 +1471,21 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecNotifiersItems0SelectorLabelS
 
 schema OperatorVictoriametricsComV1beta1VMAlertSpecNotifiersItems0SelectorLabelSelectorMatchExpressionsItems0:
     """
-    A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+    A label selector requirement is a selector that contains values, a key, and an operator that
+    relates the key and values.
 
     Attributes
     ----------
     key : str, default is Undefined, required
         key is the label key that the selector applies to.
     operator : str, default is Undefined, required
-        operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+        operator represents a key's relationship to a set of values.
+        Valid operators are In, NotIn, Exists and DoesNotExist.
     values : [str], default is Undefined, optional
-        values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.
+        values is an array of string values. If the operator is In or NotIn,
+        the values array must be non-empty. If the operator is Exists or DoesNotExist,
+        the values array must be empty. This array is replaced during a strategic
+        merge patch.
     """
 
 
@@ -1278,12 +1498,14 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecNotifiersItems0SelectorLabelS
 
 schema OperatorVictoriametricsComV1beta1VMAlertSpecNotifiersItems0SelectorNamespaceSelector:
     """
-    NamespaceSelector is a selector for selecting either all namespaces or a list of namespaces.
+    NamespaceSelector is a selector for selecting either all namespaces or a
+    list of namespaces.
 
     Attributes
     ----------
     any : bool, default is Undefined, optional
-        Boolean describing whether all namespaces are selected in contrast to a list restricting them.
+        Boolean describing whether all namespaces are selected in contrast to a
+        list restricting them.
     matchNames : [str], default is Undefined, optional
         List of namespace names.
     """
@@ -1301,11 +1523,18 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecPodDisruptionBudget:
     Attributes
     ----------
     maxUnavailable : int | str, default is Undefined, optional
-        An eviction is allowed if at most "maxUnavailable" pods selected by "selector" are unavailable after the eviction, i.e. even in absence of the evicted pod. For example, one can prevent all voluntary evictions by specifying 0. This is a mutually exclusive setting with "minAvailable".
+        An eviction is allowed if at most "maxUnavailable" pods selected by
+        "selector" are unavailable after the eviction, i.e. even in absence of
+        the evicted pod. For example, one can prevent all voluntary evictions
+        by specifying 0. This is a mutually exclusive setting with "minAvailable".
     minAvailable : int | str, default is Undefined, optional
-        An eviction is allowed if at least "minAvailable" pods selected by "selector" will still be available after the eviction, i.e. even in the absence of the evicted pod.  So for example you can prevent all voluntary evictions by specifying "100%".
+        An eviction is allowed if at least "minAvailable" pods selected by
+        "selector" will still be available after the eviction, i.e. even in the
+        absence of the evicted pod.  So for example you can prevent all voluntary
+        evictions by specifying "100%".
     selectorLabels : {str:str}, default is Undefined, optional
-        replaces default labels selector generated by operator it's useful when you need to create custom budget
+        replaces default labels selector generated by operator
+        it's useful when you need to create custom budget
     """
 
 
@@ -1323,11 +1552,22 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecPodMetadata:
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations
+        Annotations is an unstructured key value map stored with a resource that may be
+        set by external tools to store and retrieve arbitrary metadata. They are not
+        queryable and should be preserved when modifying objects.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
     labels : {str:str}, default is Undefined, optional
-        Labels Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: http://kubernetes.io/docs/user-guide/labels
+        Labels Map of string keys and values that can be used to organize and categorize
+        (scope and select) objects. May match selectors of replication controllers
+        and services.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels
     name : str, default is Undefined, optional
-        Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names
+        Name must be unique within a namespace. Is required when creating resources, although
+        some resources may allow a client to request the generation of an appropriate name
+        automatically. Name is primarily intended for creation idempotence and configuration
+        definition.
+        Cannot be updated.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#names
     """
 
 
@@ -1354,7 +1594,11 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecReadinessGatesItems0:
 
 schema OperatorVictoriametricsComV1beta1VMAlertSpecRemoteRead:
     """
-    RemoteRead Optional URL to read vmalert state (persisted via RemoteWrite) This configuration only makes sense if alerts state has been successfully persisted (via RemoteWrite) before. see -remoteRead.url docs in vmalerts for details. E.g. http://127.0.0.1:8428
+    RemoteRead Optional URL to read vmalert state (persisted via RemoteWrite)
+    This configuration only makes sense if alerts state has been successfully
+    persisted (via RemoteWrite) before.
+    see -remoteRead.url docs in vmalerts for details.
+    E.g. http://127.0.0.1:8428
 
     Attributes
     ----------
@@ -1367,9 +1611,14 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecRemoteRead:
     bearerTokenSecret : OperatorVictoriametricsComV1beta1VMAlertSpecRemoteReadBearerTokenSecret, default is Undefined, optional
         bearer token secret
     headers : [str], default is Undefined, optional
-        Headers allow configuring custom http headers Must be in form of semicolon separated header with value e.g. headerName:headerValue vmalert supports it since 1.79.0 version
+        Headers allow configuring custom http headers
+        Must be in form of semicolon separated header with value
+        e.g.
+        headerName:headerValue
+        vmalert supports it since 1.79.0 version
     lookback : str, default is Undefined, optional
-        Lookback defines how far to look into past for alerts timeseries. For example, if lookback=1h then range from now() to now()-1h will be scanned. (default 1h0m0s) Applied only to RemoteReadSpec
+        Lookback defines how far to look into past for alerts timeseries. For example, if lookback=1h then range from now() to now()-1h will be scanned. (default 1h0m0s)
+        Applied only to RemoteReadSpec
     oauth2 : OperatorVictoriametricsComV1beta1VMAlertSpecRemoteReadOauth2, default is Undefined, optional
         oauth2
     tlsConfig : any, default is Undefined, optional
@@ -1422,14 +1671,18 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecRemoteReadBasicAuth:
 
 schema OperatorVictoriametricsComV1beta1VMAlertSpecRemoteReadBasicAuthPassword:
     """
-    The secret in the service scrape namespace that contains the password for authentication. It must be at them same namespace as CRD
+    The secret in the service scrape namespace that contains the password
+    for authentication.
+    It must be at them same namespace as CRD
 
     Attributes
     ----------
     key : str, default is Undefined, required
         The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -1444,14 +1697,18 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecRemoteReadBasicAuthPassword:
 
 schema OperatorVictoriametricsComV1beta1VMAlertSpecRemoteReadBasicAuthUsername:
     """
-    The secret in the service scrape namespace that contains the username for authentication. It must be at them same namespace as CRD
+    The secret in the service scrape namespace that contains the username
+    for authentication.
+    It must be at them same namespace as CRD
 
     Attributes
     ----------
     key : str, default is Undefined, required
         The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -1473,7 +1730,9 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecRemoteReadBearerTokenSecret:
     key : str, default is Undefined, required
         The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -1551,7 +1810,9 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecRemoteReadOauth2ClientIDConfi
     key : str, default is Undefined, required
         The key to select.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the ConfigMap or its key must be defined
     """
@@ -1573,7 +1834,9 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecRemoteReadOauth2ClientIDSecre
     key : str, default is Undefined, required
         The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -1595,7 +1858,9 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecRemoteReadOauth2ClientSecret:
     key : str, default is Undefined, required
         The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -1610,7 +1875,12 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecRemoteReadOauth2ClientSecret:
 
 schema OperatorVictoriametricsComV1beta1VMAlertSpecRemoteWrite:
     """
-    RemoteWrite Optional URL to remote-write compatible storage to persist vmalert state and rule results to. Rule results will be persisted according to each rule. Alerts state will be persisted in the form of time series named ALERTS and ALERTS_FOR_STATE see -remoteWrite.url docs in vmalerts for details. E.g. http://127.0.0.1:8428
+    RemoteWrite Optional URL to remote-write compatible storage to persist
+    vmalert state and rule results to.
+    Rule results will be persisted according to each rule.
+    Alerts state will be persisted in the form of time series named ALERTS and ALERTS_FOR_STATE
+    see -remoteWrite.url docs in vmalerts for details.
+    E.g. http://127.0.0.1:8428
 
     Attributes
     ----------
@@ -1627,7 +1897,11 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecRemoteWrite:
     flushInterval : str, default is Undefined, optional
         Defines interval of flushes to remote write endpoint (default 5s)
     headers : [str], default is Undefined, optional
-        Headers allow configuring custom http headers Must be in form of semicolon separated header with value e.g. headerName:headerValue vmalert supports it since 1.79.0 version
+        Headers allow configuring custom http headers
+        Must be in form of semicolon separated header with value
+        e.g.
+        headerName:headerValue
+        vmalert supports it since 1.79.0 version
     maxBatchSize : int, default is Undefined, optional
         Defines defines max number of timeseries to be flushed at once (default 1000)
     maxQueueSize : int, default is Undefined, optional
@@ -1694,14 +1968,18 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecRemoteWriteBasicAuth:
 
 schema OperatorVictoriametricsComV1beta1VMAlertSpecRemoteWriteBasicAuthPassword:
     """
-    The secret in the service scrape namespace that contains the password for authentication. It must be at them same namespace as CRD
+    The secret in the service scrape namespace that contains the password
+    for authentication.
+    It must be at them same namespace as CRD
 
     Attributes
     ----------
     key : str, default is Undefined, required
         The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -1716,14 +1994,18 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecRemoteWriteBasicAuthPassword:
 
 schema OperatorVictoriametricsComV1beta1VMAlertSpecRemoteWriteBasicAuthUsername:
     """
-    The secret in the service scrape namespace that contains the username for authentication. It must be at them same namespace as CRD
+    The secret in the service scrape namespace that contains the username
+    for authentication.
+    It must be at them same namespace as CRD
 
     Attributes
     ----------
     key : str, default is Undefined, required
         The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -1745,7 +2027,9 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecRemoteWriteBearerTokenSecret:
     key : str, default is Undefined, required
         The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -1823,7 +2107,9 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecRemoteWriteOauth2ClientIDConf
     key : str, default is Undefined, required
         The key to select.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the ConfigMap or its key must be defined
     """
@@ -1845,7 +2131,9 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecRemoteWriteOauth2ClientIDSecr
     key : str, default is Undefined, required
         The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -1867,7 +2155,9 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecRemoteWriteOauth2ClientSecret
     key : str, default is Undefined, required
         The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -1886,12 +2176,28 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecResources:
 
     Attributes
     ----------
+    claims : [OperatorVictoriametricsComV1beta1VMAlertSpecResourcesClaimsItems0], default is Undefined, optional
+        Claims lists the names of resources, defined in spec.resourceClaims,
+        that are used by this container.
+
+
+        This is an alpha field and requires enabling the
+        DynamicResourceAllocation feature gate.
+
+
+        This field is immutable. It can only be set for containers.
     limits : {str:int | str}, default is Undefined, optional
-        Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+        Limits describes the maximum amount of compute resources allowed.
+        More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
     requests : {str:int | str}, default is Undefined, optional
-        Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+        Requests describes the minimum amount of compute resources required.
+        If Requests is omitted for a container, it defaults to Limits if that is explicitly specified,
+        otherwise to an implementation-defined value. Requests cannot exceed Limits.
+        More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
     """
 
+
+    claims?: [OperatorVictoriametricsComV1beta1VMAlertSpecResourcesClaimsItems0]
 
     limits?: {str:int | str}
 
@@ -1899,8 +2205,24 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecResources:
 
 
     check:
-        all _, n in limits { regex.match(str(n), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") } if limits
-        all _, n in requests { regex.match(str(n), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") } if requests
+        all _, limits in limits {regex.match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests {regex.match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertSpecResourcesClaimsItems0:
+    """
+    ResourceClaim references one entry in PodSpec.ResourceClaims.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name must match the name of one entry in pod.spec.resourceClaims of
+        the Pod where this field is used. It makes that resource available
+        inside a container.
+    """
+
+
+    name: str
 
 
 schema OperatorVictoriametricsComV1beta1VMAlertSpecRollingUpdate:
@@ -1910,9 +2232,28 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecRollingUpdate:
     Attributes
     ----------
     maxSurge : int | str, default is Undefined, optional
-        The maximum number of pods that can be scheduled above the desired number of pods. Value can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%). This can not be 0 if MaxUnavailable is 0. Absolute number is calculated from percentage by rounding up. Defaults to 25%. Example: when this is set to 30%, the new ReplicaSet can be scaled up immediately when the rolling update starts, such that the total number of old and new pods do not exceed 130% of desired pods. Once old pods have been killed, new ReplicaSet can be scaled up further, ensuring that total number of pods running at any time during the update is at most 130% of desired pods.
+        The maximum number of pods that can be scheduled above the desired number of
+        pods.
+        Value can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%).
+        This can not be 0 if MaxUnavailable is 0.
+        Absolute number is calculated from percentage by rounding up.
+        Defaults to 25%.
+        Example: when this is set to 30%, the new ReplicaSet can be scaled up immediately when
+        the rolling update starts, such that the total number of old and new pods do not exceed
+        130% of desired pods. Once old pods have been killed,
+        new ReplicaSet can be scaled up further, ensuring that total number of pods running
+        at any time during the update is at most 130% of desired pods.
     maxUnavailable : int | str, default is Undefined, optional
-        The maximum number of pods that can be unavailable during the update. Value can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%). Absolute number is calculated from percentage by rounding down. This can not be 0 if MaxSurge is 0. Defaults to 25%. Example: when this is set to 30%, the old ReplicaSet can be scaled down to 70% of desired pods immediately when the rolling update starts. Once new pods are ready, old ReplicaSet can be scaled down further, followed by scaling up the new ReplicaSet, ensuring that the total number of pods available at all times during the update is at least 70% of desired pods.
+        The maximum number of pods that can be unavailable during the update.
+        Value can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%).
+        Absolute number is calculated from percentage by rounding down.
+        This can not be 0 if MaxSurge is 0.
+        Defaults to 25%.
+        Example: when this is set to 30%, the old ReplicaSet can be scaled down to 70% of desired pods
+        immediately when the rolling update starts. Once new pods are ready, old ReplicaSet
+        can be scaled down further, followed by scaling up the new ReplicaSet, ensuring
+        that the total number of pods available at all times during the update is at
+        least 70% of desired pods.
     """
 
 
@@ -1923,14 +2264,19 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecRollingUpdate:
 
 schema OperatorVictoriametricsComV1beta1VMAlertSpecRuleNamespaceSelector:
     """
-    RuleNamespaceSelector to be selected for VMRules discovery. Works in combination with Selector. If both nil - behaviour controlled by selectAllByDefault NamespaceSelector nil - only objects at VMAlert namespace.
+    RuleNamespaceSelector to be selected for VMRules discovery.
+    Works in combination with Selector.
+    If both nil - behaviour controlled by selectAllByDefault
+    NamespaceSelector nil - only objects at VMAlert namespace.
 
     Attributes
     ----------
     matchExpressions : [OperatorVictoriametricsComV1beta1VMAlertSpecRuleNamespaceSelectorMatchExpressionsItems0], default is Undefined, optional
         matchExpressions is a list of label selector requirements. The requirements are ANDed.
     matchLabels : {str:str}, default is Undefined, optional
-        matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+        matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels
+        map is equivalent to an element of matchExpressions, whose key field is "key", the
+        operator is "In", and the values array contains only "value". The requirements are ANDed.
     """
 
 
@@ -1941,16 +2287,21 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecRuleNamespaceSelector:
 
 schema OperatorVictoriametricsComV1beta1VMAlertSpecRuleNamespaceSelectorMatchExpressionsItems0:
     """
-    A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+    A label selector requirement is a selector that contains values, a key, and an operator that
+    relates the key and values.
 
     Attributes
     ----------
     key : str, default is Undefined, required
         key is the label key that the selector applies to.
     operator : str, default is Undefined, required
-        operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+        operator represents a key's relationship to a set of values.
+        Valid operators are In, NotIn, Exists and DoesNotExist.
     values : [str], default is Undefined, optional
-        values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.
+        values is an array of string values. If the operator is In or NotIn,
+        the values array must be non-empty. If the operator is Exists or DoesNotExist,
+        the values array must be empty. This array is replaced during a strategic
+        merge patch.
     """
 
 
@@ -1963,14 +2314,20 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecRuleNamespaceSelectorMatchExp
 
 schema OperatorVictoriametricsComV1beta1VMAlertSpecRuleSelector:
     """
-    RuleSelector selector to select which VMRules to mount for loading alerting rules from. Works in combination with NamespaceSelector. If both nil - behaviour controlled by selectAllByDefault NamespaceSelector nil - only objects at VMAlert namespace.
+    RuleSelector selector to select which VMRules to mount for loading alerting
+    rules from.
+    Works in combination with NamespaceSelector.
+    If both nil - behaviour controlled by selectAllByDefault
+    NamespaceSelector nil - only objects at VMAlert namespace.
 
     Attributes
     ----------
     matchExpressions : [OperatorVictoriametricsComV1beta1VMAlertSpecRuleSelectorMatchExpressionsItems0], default is Undefined, optional
         matchExpressions is a list of label selector requirements. The requirements are ANDed.
     matchLabels : {str:str}, default is Undefined, optional
-        matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+        matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels
+        map is equivalent to an element of matchExpressions, whose key field is "key", the
+        operator is "In", and the values array contains only "value". The requirements are ANDed.
     """
 
 
@@ -1981,16 +2338,21 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecRuleSelector:
 
 schema OperatorVictoriametricsComV1beta1VMAlertSpecRuleSelectorMatchExpressionsItems0:
     """
-    A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+    A label selector requirement is a selector that contains values, a key, and an operator that
+    relates the key and values.
 
     Attributes
     ----------
     key : str, default is Undefined, required
         key is the label key that the selector applies to.
     operator : str, default is Undefined, required
-        operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+        operator represents a key's relationship to a set of values.
+        Valid operators are In, NotIn, Exists and DoesNotExist.
     values : [str], default is Undefined, optional
-        values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.
+        values is an array of string values. If the operator is In or NotIn,
+        the values array must be non-empty. If the operator is Exists or DoesNotExist,
+        the values array must be empty. This array is replaced during a strategic
+        merge patch.
     """
 
 
@@ -2010,13 +2372,19 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecServiceSpec:
     metadata : OperatorVictoriametricsComV1beta1VMAlertSpecServiceSpecMetadata, default is Undefined, optional
         metadata
     spec : any, default is Undefined, required
-        ServiceSpec describes the attributes that a user creates on a service. More info: https://kubernetes.io/docs/concepts/services-networking/service/
+        ServiceSpec describes the attributes that a user creates on a service.
+        More info: https://kubernetes.io/docs/concepts/services-networking/service/
+    useAsDefault : bool, default is Undefined, optional
+        UseAsDefault applies changes from given service definition to the main object Service
+        Changing from headless service to clusterIP or loadbalancer may break cross-component communication
     """
 
 
     metadata?: OperatorVictoriametricsComV1beta1VMAlertSpecServiceSpecMetadata
 
     spec: any
+
+    useAsDefault?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMAlertSpecServiceSpecMetadata:
@@ -2026,11 +2394,22 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecServiceSpecMetadata:
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations
+        Annotations is an unstructured key value map stored with a resource that may be
+        set by external tools to store and retrieve arbitrary metadata. They are not
+        queryable and should be preserved when modifying objects.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
     labels : {str:str}, default is Undefined, optional
-        Labels Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: http://kubernetes.io/docs/user-guide/labels
+        Labels Map of string keys and values that can be used to organize and categorize
+        (scope and select) objects. May match selectors of replication controllers
+        and services.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels
     name : str, default is Undefined, optional
-        Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names
+        Name must be unique within a namespace. Is required when creating resources, although
+        some resources may allow a client to request the generation of an appropriate name
+        automatically. Name is primarily intended for creation idempotence and configuration
+        definition.
+        Cannot be updated.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#names
     """
 
 
@@ -2043,20 +2422,30 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecServiceSpecMetadata:
 
 schema OperatorVictoriametricsComV1beta1VMAlertSpecTolerationsItems0:
     """
-    The pod this Toleration is attached to tolerates any taint that matches the triple <key,value,effect> using the matching operator <operator>.
+    The pod this Toleration is attached to tolerates any taint that matches
+    the triple <key,value,effect> using the matching operator <operator>.
 
     Attributes
     ----------
     effect : str, default is Undefined, optional
-        Effect indicates the taint effect to match. Empty means match all taint effects. When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.
+        Effect indicates the taint effect to match. Empty means match all taint effects.
+        When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.
     key : str, default is Undefined, optional
-        Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists; this combination means to match all values and all keys.
+        Key is the taint key that the toleration applies to. Empty means match all taint keys.
+        If the key is empty, operator must be Exists; this combination means to match all values and all keys.
     operator : str, default is Undefined, optional
-        Operator represents a key's relationship to the value. Valid operators are Exists and Equal. Defaults to Equal. Exists is equivalent to wildcard for value, so that a pod can tolerate all taints of a particular category.
+        Operator represents a key's relationship to the value.
+        Valid operators are Exists and Equal. Defaults to Equal.
+        Exists is equivalent to wildcard for value, so that a pod can
+        tolerate all taints of a particular category.
     tolerationSeconds : int, default is Undefined, optional
-        TolerationSeconds represents the period of time the toleration (which must be of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default, it is not set, which means tolerate the taint forever (do not evict). Zero and negative values will be treated as 0 (evict immediately) by the system.
+        TolerationSeconds represents the period of time the toleration (which must be
+        of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default,
+        it is not set, which means tolerate the taint forever (do not evict). Zero and
+        negative values will be treated as 0 (evict immediately) by the system.
     value : str, default is Undefined, optional
-        Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string.
+        Value is the taint value the toleration matches to.
+        If the operator is Exists, the value should be empty, otherwise just a regular string.
     """
 
 
@@ -2078,17 +2467,26 @@ schema OperatorVictoriametricsComV1beta1VMAlertSpecVolumeMountsItems0:
     Attributes
     ----------
     mountPath : str, default is Undefined, required
-        Path within the container at which the volume should be mounted.  Must not contain ':'.
+        Path within the container at which the volume should be mounted.  Must
+        not contain ':'.
     mountPropagation : str, default is Undefined, optional
-        mountPropagation determines how mounts are propagated from the host to container and the other way around. When not set, MountPropagationNone is used. This field is beta in 1.10.
+        mountPropagation determines how mounts are propagated from the host
+        to container and the other way around.
+        When not set, MountPropagationNone is used.
+        This field is beta in 1.10.
     name : str, default is Undefined, required
         This must match the Name of a Volume.
     readOnly : bool, default is Undefined, optional
-        Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false.
+        Mounted read-only if true, read-write otherwise (false or unspecified).
+        Defaults to false.
     subPath : str, default is Undefined, optional
-        Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
+        Path within the volume from which the container's volume should be mounted.
+        Defaults to "" (volume's root).
     subPathExpr : str, default is Undefined, optional
-        Expanded path within the volume from which the container's volume should be mounted. Behaves similarly to SubPath but environment variable references $(VAR_NAME) are expanded using the container's environment. Defaults to "" (volume's root). SubPathExpr and SubPath are mutually exclusive.
+        Expanded path within the volume from which the container's volume should be mounted.
+        Behaves similarly to SubPath but environment variable references $(VAR_NAME) are expanded using the container's environment.
+        Defaults to "" (volume's root).
+        SubPathExpr and SubPath are mutually exclusive.
     """
 
 
@@ -2111,23 +2509,34 @@ schema OperatorVictoriametricsComV1beta1VMAlertStatus:
 
     Attributes
     ----------
-    availableReplicas : int, default is Undefined, required
-        AvailableReplicas Total number of available pods (ready for at least minReadySeconds) targeted by this VMAlert cluster.
-    replicas : int, default is Undefined, required
-        ReplicaCount Total number of non-terminated pods targeted by this VMAlert cluster (their labels match the selector).
-    unavailableReplicas : int, default is Undefined, required
+    availableReplicas : int, default is Undefined, optional
+        AvailableReplicas Total number of available pods (ready for at least minReadySeconds)
+        targeted by this VMAlert cluster.
+    reason : str, default is Undefined, optional
+        Reason defines fail reason for update process, effective only for statefulMode
+    replicas : int, default is Undefined, optional
+        ReplicaCount Total number of non-terminated pods targeted by this VMAlert
+        cluster (their labels match the selector).
+    unavailableReplicas : int, default is Undefined, optional
         UnavailableReplicas Total number of unavailable pods targeted by this VMAlert cluster.
-    updatedReplicas : int, default is Undefined, required
-        UpdatedReplicas Total number of non-terminated pods targeted by this VMAlert cluster that have the desired version spec.
+    updateStatus : str, default is Undefined, optional
+        UpdateStatus defines a status for update rollout, effective only for statefulMode
+    updatedReplicas : int, default is Undefined, optional
+        UpdatedReplicas Total number of non-terminated pods targeted by this VMAlert
+        cluster that have the desired version spec.
     """
 
 
-    availableReplicas: int
+    availableReplicas?: int
 
-    replicas: int
+    reason?: str
 
-    unavailableReplicas: int
+    replicas?: int
 
-    updatedReplicas: int
+    unavailableReplicas?: int
+
+    updateStatus?: str
+
+    updatedReplicas?: int
 
 
