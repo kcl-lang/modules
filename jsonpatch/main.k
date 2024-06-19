@@ -19,10 +19,10 @@ get_obj_by_key = lambda obj: any, key: str -> any {
     ty = typeof(obj)
     # Schema
     if ty not in KCL_BUILTIN_TYPES:
-        result = obj[key]
+        result = obj[_rfc6901Decode(key)]
     # Config
     elif ty == "dict":
-        result = obj[key]
+        result = obj[_rfc6901Decode(key)]
     # List
     elif ty == "list":
         idx = _get_list_index_from_key(key)
@@ -51,6 +51,12 @@ _get_obj_n = lambda obj: any, elements: [str], n: int -> any {
     result
 }
 
+# From http://tools.ietf.org/html/rfc6901#section-4 :
+# Transforming '~1' to '/', and then '~0' to '~'.
+_rfc6901Decode = lambda string: str {
+  result = string.replace("~1","/").replace("~0","~")
+}
+
 _build_patch_obj_n = lambda obj: {str:}, value: any, elements: [str], n: int -> {str:} {
     assert n >= 0
     result = Undefined
@@ -66,18 +72,18 @@ _build_patch_obj_n = lambda obj: {str:}, value: any, elements: [str], n: int -> 
                 idx = next_key
                 assert 0 <= idx < len(current_obj), "value not found for path: {}".format(current_path + "/" + elements[n + 1])
                 result = {
-                    "${elements[n]}": [None] * idx + [next_val] + [None] * (len(current_obj) - 1 - idx)
+                    "${_rfc6901Decode(elements[n])}": [None] * idx + [next_val] + [None] * (len(current_obj) - 1 - idx)
                 }
             # Config key
             else:
                 next_val = _build_patch_obj_n(obj, value, elements, n + 1)
                 result = {
-                    "${elements[n]}": next_val
+                    "${_rfc6901Decode(elements[n])}": next_val
                 }
         # No Next value
         else:
             result = {
-                "${elements[n]}" = value
+                "${_rfc6901Decode(elements[n])}" = value
             }
     result
 }
