@@ -1,0 +1,26 @@
+version: 0.0.5
+name: jsonpatch
+displayName: jsonpatch
+createdAt: "2024-06-19T10:43:59Z"
+description: '`jsonpatch` is a module for applying JSON patches (RFC 6902) for KCL
+  values.'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `jsonpatch` with tag `0.0.5` as dependency
+  ```
+  kcl mod add jsonpatch:0.0.5
+  ```
+
+  #### Pull `jsonpatch` with tag `0.0.5` to local
+  ```
+  kcl mod pull jsonpatch:0.0.5
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
