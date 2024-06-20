@@ -3308,7 +3308,7 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0W
 
 
     check:
-        max_alerts >= 0
+        max_alerts >= 0 if max_alerts is not Undefined
 
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerConfigSpecReceiversItems0WebhookConfigsItems0URLSecret:
