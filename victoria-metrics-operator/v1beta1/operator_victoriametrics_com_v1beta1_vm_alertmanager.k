@@ -337,7 +337,7 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpec:
 
 
     check:
-        replicaCount >= 0
+        replicaCount >= 0 if replicaCount is not Undefined
         regex.match(str(retention), r"[0-9]+(ms|s|m|h)") if retention
 
 
