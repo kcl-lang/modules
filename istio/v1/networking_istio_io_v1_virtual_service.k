@@ -148,10 +148,10 @@ schema NetworkingIstioIoV1VirtualServiceSpecHTTPItems0:
 
 
     check:
-        mirrorPercent <= 4.294967295e+09
-        mirrorPercent >= 0
-        mirror_percent <= 4.294967295e+09
-        mirror_percent >= 0
+        mirrorPercent <= 4.294967295e+09 if mirrorPercent
+        mirrorPercent >= 0 if mirrorPercent
+        mirror_percent <= 4.294967295e+09 if mirror_percent
+        mirror_percent >= 0 if mirror_percent
 
 
 schema NetworkingIstioIoV1VirtualServiceSpecHTTPItems0CorsPolicy:
