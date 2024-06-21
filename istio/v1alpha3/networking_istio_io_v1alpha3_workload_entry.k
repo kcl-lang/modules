@@ -42,17 +42,17 @@ schema NetworkingIstioIoV1alpha3WorkloadEntrySpec:
     Attributes
     ----------
     address : str, default is Undefined, optional
-        address
+        Address associated with the network endpoint without the port.
     labels : {str:str}, default is Undefined, optional
         One or more labels associated with the endpoint.
     locality : str, default is Undefined, optional
         The locality associated with the endpoint.
     network : str, default is Undefined, optional
-        network
+        Network enables Istio to group endpoints resident in the same L3 domain/network.
     ports : {str:int}, default is Undefined, optional
         Set of ports associated with the endpoint.
     serviceAccount : str, default is Undefined, optional
-        service account
+        The service account associated with the workload if a sidecar is present in the workload.
     weight : int, default is Undefined, optional
         The load balancing weight associated with the endpoint.
     """

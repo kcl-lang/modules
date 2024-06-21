@@ -42,7 +42,7 @@ schema NetworkingIstioIoV1alpha3GatewaySpec:
     Attributes
     ----------
     selector : {str:str}, default is Undefined, optional
-        selector
+        One or more labels that indicate a specific set of pods/VMs on which this gateway configuration should be applied.
     servers : [NetworkingIstioIoV1alpha3GatewaySpecServersItems0], default is Undefined, optional
         A list of server specifications.
     """
@@ -60,14 +60,14 @@ schema NetworkingIstioIoV1alpha3GatewaySpecServersItems0:
     Attributes
     ----------
     bind : str, default is Undefined, optional
-        bind
+        The ip or the Unix domain socket to which the listener should be bound to.
     defaultEndpoint : str, default is Undefined, optional
         default endpoint
-    hosts : [str], default is Undefined, optional
+    hosts : [str], default is Undefined, required
         One or more hosts exposed by this gateway.
     name : str, default is Undefined, optional
         An optional name of the server, when set must be unique across all servers.
-    port : NetworkingIstioIoV1alpha3GatewaySpecServersItems0Port, default is Undefined, optional
+    port : NetworkingIstioIoV1alpha3GatewaySpecServersItems0Port, default is Undefined, required
         port
     tls : NetworkingIstioIoV1alpha3GatewaySpecServersItems0TLS, default is Undefined, optional
         tls
@@ -78,37 +78,37 @@ schema NetworkingIstioIoV1alpha3GatewaySpecServersItems0:
 
     defaultEndpoint?: str
 
-    hosts?: [str]
+    hosts: [str]
 
     name?: str
 
-    port?: NetworkingIstioIoV1alpha3GatewaySpecServersItems0Port
+    port: NetworkingIstioIoV1alpha3GatewaySpecServersItems0Port
 
     tls?: NetworkingIstioIoV1alpha3GatewaySpecServersItems0TLS
 
 
 schema NetworkingIstioIoV1alpha3GatewaySpecServersItems0Port:
     """
-    networking istio io v1alpha3 gateway spec servers items0 port
+    The Port on which the proxy should listen for incoming connections.
 
     Attributes
     ----------
-    name : str, default is Undefined, optional
+    name : str, default is Undefined, required
         Label assigned to the port.
-    number : int, default is Undefined, optional
+    number : int, default is Undefined, required
         A valid non-negative integer port number.
-    $protocol : str, default is Undefined, optional
+    $protocol : str, default is Undefined, required
         The protocol exposed on the port.
     targetPort : int, default is Undefined, optional
         target port
     """
 
 
-    name?: str
+    name: str
 
-    number?: int
+    number: int
 
-    $protocol?: str
+    $protocol: str
 
     targetPort?: int
 
@@ -121,32 +121,42 @@ schema NetworkingIstioIoV1alpha3GatewaySpecServersItems0TLS:
     ----------
     caCertificates : str, default is Undefined, optional
         REQUIRED if mode is `MUTUAL` or `OPTIONAL_MUTUAL`.
+    caCrl : str, default is Undefined, optional
+        OPTIONAL: The path to the file containing the certificate revocation list (CRL) to use in verifying a presented client side certificate.
     cipherSuites : [str], default is Undefined, optional
         Optional: If specified, only support the specified cipher list.
     credentialName : str, default is Undefined, optional
-        credential name
+        For gateways running on Kubernetes, the name of the secret that holds the TLS certs including the CA certificates.
     httpsRedirect : bool, default is Undefined, optional
-        https redirect
+        If set to true, the load balancer will send a 301 redirect for all http connections, asking the clients to use HTTPS.
     maxProtocolVersion : str, default is Undefined, optional
         Optional: Maximum TLS protocol version.
+
+        Valid Options: TLS_AUTO, TLSV1_0, TLSV1_1, TLSV1_2, TLSV1_3
     minProtocolVersion : str, default is Undefined, optional
         Optional: Minimum TLS protocol version.
+
+        Valid Options: TLS_AUTO, TLSV1_0, TLSV1_1, TLSV1_2, TLSV1_3
     mode : str, default is Undefined, optional
-        mode
+        Optional: Indicates whether connections to this port should be secured using TLS.
+
+        Valid Options: PASSTHROUGH, SIMPLE, MUTUAL, AUTO_PASSTHROUGH, ISTIO_MUTUAL, OPTIONAL_MUTUAL
     privateKey : str, default is Undefined, optional
         REQUIRED if mode is `SIMPLE` or `MUTUAL`.
     serverCertificate : str, default is Undefined, optional
         REQUIRED if mode is `SIMPLE` or `MUTUAL`.
     subjectAltNames : [str], default is Undefined, optional
-        subject alt names
+        A list of alternate names to verify the subject identity in the certificate presented by the client.
     verifyCertificateHash : [str], default is Undefined, optional
-        verify certificate hash
+        An optional list of hex-encoded SHA-256 hashes of the authorized client certificates.
     verifyCertificateSpki : [str], default is Undefined, optional
-        verify certificate spki
+        An optional list of base64-encoded SHA-256 hashes of the SPKIs of authorized client certificates.
     """
 
 
     caCertificates?: str
+
+    caCrl?: str
 
     cipherSuites?: [str]
 

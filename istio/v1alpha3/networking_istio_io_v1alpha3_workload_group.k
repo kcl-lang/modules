@@ -161,11 +161,6 @@ schema NetworkingIstioIoV1alpha3WorkloadGroupSpecProbeHTTPGet:
     scheme?: str
 
 
-    check:
-        port <= 4.294967295e+09
-        port >= 0
-
-
 schema NetworkingIstioIoV1alpha3WorkloadGroupSpecProbeHTTPGetHTTPHeadersItems0:
     """
     networking istio io v1alpha3 workload group spec probe HTTP get HTTP headers items0
@@ -200,11 +195,6 @@ schema NetworkingIstioIoV1alpha3WorkloadGroupSpecProbeTCPSocket:
     host?: str
 
     port: int
-
-
-    check:
-        port <= 4.294967295e+09
-        port >= 0
 
 
 schema NetworkingIstioIoV1alpha3WorkloadGroupSpecTemplate:
@@ -243,11 +233,5 @@ schema NetworkingIstioIoV1alpha3WorkloadGroupSpecTemplate:
     serviceAccount?: str
 
     weight?: int
-
-
-    check:
-        all _, ports in ports {ports <= 4.294967295e+09ports >= 0 } if ports
-        weight <= 4.294967295e+09
-        weight >= 0
 
 

@@ -47,16 +47,20 @@ schema NetworkingIstioIoV1alpha3ServiceEntrySpec:
         One or more endpoints associated with the service.
     exportTo : [str], default is Undefined, optional
         A list of namespaces to which this service is exported.
-    hosts : [str], default is Undefined, optional
+    hosts : [str], default is Undefined, required
         The hosts associated with the ServiceEntry.
     location : str, default is Undefined, optional
-        location
+        Specify whether the service should be considered external to the mesh or part of the mesh.
+
+        Valid Options: MESH_EXTERNAL, MESH_INTERNAL
     ports : [NetworkingIstioIoV1alpha3ServiceEntrySpecPortsItems0], default is Undefined, optional
         The ports associated with the external service.
     resolution : str, default is Undefined, optional
         Service resolution mode for the hosts.
+
+        Valid Options: NONE, STATIC, DNS, DNS_ROUND_ROBIN
     subjectAltNames : [str], default is Undefined, optional
-        subject alt names
+        If specified, the proxy will verify that the server certificate's subject alternate name matches one of the specified values.
     workloadSelector : NetworkingIstioIoV1alpha3ServiceEntrySpecWorkloadSelector, default is Undefined, optional
         workload selector
     """
@@ -68,7 +72,7 @@ schema NetworkingIstioIoV1alpha3ServiceEntrySpec:
 
     exportTo?: [str]
 
-    hosts?: [str]
+    hosts: [str]
 
     location?: "MESH_EXTERNAL" | "MESH_INTERNAL"
 
@@ -88,17 +92,17 @@ schema NetworkingIstioIoV1alpha3ServiceEntrySpecEndpointsItems0:
     Attributes
     ----------
     address : str, default is Undefined, optional
-        address
+        Address associated with the network endpoint without the port.
     labels : {str:str}, default is Undefined, optional
         One or more labels associated with the endpoint.
     locality : str, default is Undefined, optional
         The locality associated with the endpoint.
     network : str, default is Undefined, optional
-        network
+        Network enables Istio to group endpoints resident in the same L3 domain/network.
     ports : {str:int}, default is Undefined, optional
         Set of ports associated with the endpoint.
     serviceAccount : str, default is Undefined, optional
-        service account
+        The service account associated with the workload if a sidecar is present in the workload.
     weight : int, default is Undefined, optional
         The load balancing weight associated with the endpoint.
     """
@@ -125,20 +129,20 @@ schema NetworkingIstioIoV1alpha3ServiceEntrySpecPortsItems0:
 
     Attributes
     ----------
-    name : str, default is Undefined, optional
+    name : str, default is Undefined, required
         Label assigned to the port.
-    number : int, default is Undefined, optional
+    number : int, default is Undefined, required
         A valid non-negative integer port number.
     $protocol : str, default is Undefined, optional
         The protocol exposed on the port.
     targetPort : int, default is Undefined, optional
-        target port
+        The port number on the endpoint where the traffic will be received.
     """
 
 
-    name?: str
+    name: str
 
-    number?: int
+    number: int
 
     $protocol?: str
 
@@ -152,7 +156,7 @@ schema NetworkingIstioIoV1alpha3ServiceEntrySpecWorkloadSelector:
     Attributes
     ----------
     labels : {str:str}, default is Undefined, optional
-        labels
+        One or more labels that indicate a specific set of pods/VMs on which the configuration should be applied.
     """
 
 

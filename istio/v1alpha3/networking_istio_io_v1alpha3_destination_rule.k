@@ -43,10 +43,10 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpec:
     ----------
     exportTo : [str], default is Undefined, optional
         A list of namespaces to which this destination rule is exported.
-    host : str, default is Undefined, optional
+    host : str, default is Undefined, required
         The name of a service from the service registry.
     subsets : [NetworkingIstioIoV1alpha3DestinationRuleSpecSubsetsItems0], default is Undefined, optional
-        subsets
+        One or more named sets that represent individual versions of a service.
     trafficPolicy : NetworkingIstioIoV1alpha3DestinationRuleSpecTrafficPolicy, default is Undefined, optional
         traffic policy
     workloadSelector : NetworkingIstioIoV1alpha3DestinationRuleSpecWorkloadSelector, default is Undefined, optional
@@ -56,7 +56,7 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpec:
 
     exportTo?: [str]
 
-    host?: str
+    host: str
 
     subsets?: [NetworkingIstioIoV1alpha3DestinationRuleSpecSubsetsItems0]
 
@@ -72,8 +72,8 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecSubsetsItems0:
     Attributes
     ----------
     labels : {str:str}, default is Undefined, optional
-        labels
-    name : str, default is Undefined, optional
+        Labels apply a filter over the endpoints of a service in the service registry.
+    name : str, default is Undefined, required
         Name of the subset.
     trafficPolicy : NetworkingIstioIoV1alpha3DestinationRuleSpecSubsetsItems0TrafficPolicy, default is Undefined, optional
         traffic policy
@@ -82,7 +82,7 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecSubsetsItems0:
 
     labels?: {str:str}
 
-    name?: str
+    name: str
 
     trafficPolicy?: NetworkingIstioIoV1alpha3DestinationRuleSpecSubsetsItems0TrafficPolicy
 
@@ -101,6 +101,8 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecSubsetsItems0TrafficPolicy:
         outlier detection
     portLevelSettings : [NetworkingIstioIoV1alpha3DestinationRuleSpecSubsetsItems0TrafficPolicyPortLevelSettingsItems0], default is Undefined, optional
         Traffic policies specific to individual ports.
+    proxyProtocol : NetworkingIstioIoV1alpha3DestinationRuleSpecSubsetsItems0TrafficPolicyProxyProtocol, default is Undefined, optional
+        proxy protocol
     tls : NetworkingIstioIoV1alpha3DestinationRuleSpecSubsetsItems0TrafficPolicyTLS, default is Undefined, optional
         tls
     tunnel : NetworkingIstioIoV1alpha3DestinationRuleSpecSubsetsItems0TrafficPolicyTunnel, default is Undefined, optional
@@ -115,6 +117,8 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecSubsetsItems0TrafficPolicy:
     outlierDetection?: NetworkingIstioIoV1alpha3DestinationRuleSpecSubsetsItems0TrafficPolicyOutlierDetection
 
     portLevelSettings?: [NetworkingIstioIoV1alpha3DestinationRuleSpecSubsetsItems0TrafficPolicyPortLevelSettingsItems0]
+
+    proxyProtocol?: NetworkingIstioIoV1alpha3DestinationRuleSpecSubsetsItems0TrafficPolicyProxyProtocol
 
     tls?: NetworkingIstioIoV1alpha3DestinationRuleSpecSubsetsItems0TrafficPolicyTLS
 
@@ -147,16 +151,20 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecSubsetsItems0TrafficPolicyCon
     ----------
     h2UpgradePolicy : str, default is Undefined, optional
         Specify if http1.1 connection should be upgraded to http2 for the associated destination.
+
+        Valid Options: DEFAULT, DO_NOT_UPGRADE, UPGRADE
     http1MaxPendingRequests : int, default is Undefined, optional
-        http1 max pending requests
+        Maximum number of requests that will be queued while waiting for a ready connection pool connection.
     http2MaxRequests : int, default is Undefined, optional
         Maximum number of active requests to a destination.
     idleTimeout : str, default is Undefined, optional
         The idle timeout for upstream connection pool connections.
+    maxConcurrentStreams : int, default is Undefined, optional
+        The maximum number of concurrent streams allowed for a peer on one HTTP/2 connection.
     maxRequestsPerConnection : int, default is Undefined, optional
         Maximum number of requests per connection to a backend.
     maxRetries : int, default is Undefined, optional
-        max retries
+        Maximum number of retries that can be outstanding to all hosts in a cluster at a given time.
     useClientProtocol : bool, default is Undefined, optional
         If set to true, client protocol will be preserved while initiating connection to backend.
     """
@@ -169,6 +177,8 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecSubsetsItems0TrafficPolicyCon
     http2MaxRequests?: int
 
     idleTimeout?: str
+
+    maxConcurrentStreams?: int
 
     maxRequestsPerConnection?: int
 
@@ -185,6 +195,8 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecSubsetsItems0TrafficPolicyCon
     ----------
     connectTimeout : str, default is Undefined, optional
         TCP connection timeout.
+    idleTimeout : str, default is Undefined, optional
+        The idle timeout for TCP connections.
     maxConnectionDuration : str, default is Undefined, optional
         The maximum duration of a connection.
     maxConnections : int, default is Undefined, optional
@@ -195,6 +207,8 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecSubsetsItems0TrafficPolicyCon
 
 
     connectTimeout?: str
+
+    idleTimeout?: str
 
     maxConnectionDuration?: str
 
@@ -212,9 +226,9 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecSubsetsItems0TrafficPolicyCon
     interval : str, default is Undefined, optional
         The time duration between keep-alive probes.
     probes : int, default is Undefined, optional
-        probes
+        Maximum number of keepalive probes to send without response before deciding the connection is dead.
     time : str, default is Undefined, optional
-        time
+        The time duration a connection needs to be idle before keep-alive probes start being sent.
     """
 
 
@@ -236,7 +250,9 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecSubsetsItems0TrafficPolicyLoa
     localityLbSetting : NetworkingIstioIoV1alpha3DestinationRuleSpecSubsetsItems0TrafficPolicyLoadBalancerLocalityLbSetting, default is Undefined, optional
         locality lb setting
     simple : str, default is Undefined, optional
-        simple
+
+
+        Valid Options: LEAST_CONN, RANDOM, PASSTHROUGH, ROUND_ROBIN, LEAST_REQUEST
     warmupDurationSecs : str, default is Undefined, optional
         Represents the warmup duration of Service.
     """
@@ -274,6 +290,10 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecSubsetsItems0TrafficPolicyLoa
     """
 
 
+
+
+
+
     httpCookie?: NetworkingIstioIoV1alpha3DestinationRuleSpecSubsetsItems0TrafficPolicyLoadBalancerConsistentHashHTTPCookie
 
     httpHeaderName?: str
@@ -295,7 +315,7 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecSubsetsItems0TrafficPolicyLoa
 
     Attributes
     ----------
-    name : str, default is Undefined, optional
+    name : str, default is Undefined, required
         Name of the cookie.
     path : str, default is Undefined, optional
         Path to set for the cookie.
@@ -304,7 +324,7 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecSubsetsItems0TrafficPolicyLoa
     """
 
 
-    name?: str
+    name: str
 
     path?: str
 
@@ -332,7 +352,7 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecSubsetsItems0TrafficPolicyLoa
     Attributes
     ----------
     minimumRingSize : int, default is Undefined, optional
-        minimum ring size
+        The minimum number of virtual nodes to use for the hash ring.
     """
 
 
@@ -392,7 +412,7 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecSubsetsItems0TrafficPolicyLoa
     from : str, default is Undefined, optional
         Originating region.
     to : str, default is Undefined, optional
-        to
+        Destination region the traffic will fail over to when endpoints in the 'from' region becomes unhealthy.
     """
 
 
@@ -416,13 +436,13 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecSubsetsItems0TrafficPolicyOut
     consecutiveGatewayErrors : int, default is Undefined, optional
         Number of gateway errors before a host is ejected from the connection pool.
     consecutiveLocalOriginFailures : int, default is Undefined, optional
-        consecutive local origin failures
+        The number of consecutive locally originated failures before ejection occurs.
     interval : str, default is Undefined, optional
         Time interval between ejection sweep analysis.
     maxEjectionPercent : int, default is Undefined, optional
-        max ejection percent
+        Maximum % of hosts in the load balancing pool for the upstream service that can be ejected.
     minHealthPercent : int, default is Undefined, optional
-        min health percent
+        Outlier detection will be enabled as long as the associated load balancing pool has at least min_health_percent hosts in healthy mode.
     splitExternalLocalOriginErrors : bool, default is Undefined, optional
         Determines whether to distinguish local origin failures from external errors.
     """
@@ -503,16 +523,20 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecSubsetsItems0TrafficPolicyPor
     ----------
     h2UpgradePolicy : str, default is Undefined, optional
         Specify if http1.1 connection should be upgraded to http2 for the associated destination.
+
+        Valid Options: DEFAULT, DO_NOT_UPGRADE, UPGRADE
     http1MaxPendingRequests : int, default is Undefined, optional
-        http1 max pending requests
+        Maximum number of requests that will be queued while waiting for a ready connection pool connection.
     http2MaxRequests : int, default is Undefined, optional
         Maximum number of active requests to a destination.
     idleTimeout : str, default is Undefined, optional
         The idle timeout for upstream connection pool connections.
+    maxConcurrentStreams : int, default is Undefined, optional
+        The maximum number of concurrent streams allowed for a peer on one HTTP/2 connection.
     maxRequestsPerConnection : int, default is Undefined, optional
         Maximum number of requests per connection to a backend.
     maxRetries : int, default is Undefined, optional
-        max retries
+        Maximum number of retries that can be outstanding to all hosts in a cluster at a given time.
     useClientProtocol : bool, default is Undefined, optional
         If set to true, client protocol will be preserved while initiating connection to backend.
     """
@@ -525,6 +549,8 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecSubsetsItems0TrafficPolicyPor
     http2MaxRequests?: int
 
     idleTimeout?: str
+
+    maxConcurrentStreams?: int
 
     maxRequestsPerConnection?: int
 
@@ -541,6 +567,8 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecSubsetsItems0TrafficPolicyPor
     ----------
     connectTimeout : str, default is Undefined, optional
         TCP connection timeout.
+    idleTimeout : str, default is Undefined, optional
+        The idle timeout for TCP connections.
     maxConnectionDuration : str, default is Undefined, optional
         The maximum duration of a connection.
     maxConnections : int, default is Undefined, optional
@@ -551,6 +579,8 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecSubsetsItems0TrafficPolicyPor
 
 
     connectTimeout?: str
+
+    idleTimeout?: str
 
     maxConnectionDuration?: str
 
@@ -568,9 +598,9 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecSubsetsItems0TrafficPolicyPor
     interval : str, default is Undefined, optional
         The time duration between keep-alive probes.
     probes : int, default is Undefined, optional
-        probes
+        Maximum number of keepalive probes to send without response before deciding the connection is dead.
     time : str, default is Undefined, optional
-        time
+        The time duration a connection needs to be idle before keep-alive probes start being sent.
     """
 
 
@@ -592,7 +622,9 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecSubsetsItems0TrafficPolicyPor
     localityLbSetting : NetworkingIstioIoV1alpha3DestinationRuleSpecSubsetsItems0TrafficPolicyPortLevelSettingsItems0LoadBalancerLocalityLbSetting, default is Undefined, optional
         locality lb setting
     simple : str, default is Undefined, optional
-        simple
+
+
+        Valid Options: LEAST_CONN, RANDOM, PASSTHROUGH, ROUND_ROBIN, LEAST_REQUEST
     warmupDurationSecs : str, default is Undefined, optional
         Represents the warmup duration of Service.
     """
@@ -630,6 +662,10 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecSubsetsItems0TrafficPolicyPor
     """
 
 
+
+
+
+
     httpCookie?: NetworkingIstioIoV1alpha3DestinationRuleSpecSubsetsItems0TrafficPolicyPortLevelSettingsItems0LoadBalancerConsistentHashHTTPCookie
 
     httpHeaderName?: str
@@ -651,7 +687,7 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecSubsetsItems0TrafficPolicyPor
 
     Attributes
     ----------
-    name : str, default is Undefined, optional
+    name : str, default is Undefined, required
         Name of the cookie.
     path : str, default is Undefined, optional
         Path to set for the cookie.
@@ -660,7 +696,7 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecSubsetsItems0TrafficPolicyPor
     """
 
 
-    name?: str
+    name: str
 
     path?: str
 
@@ -688,7 +724,7 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecSubsetsItems0TrafficPolicyPor
     Attributes
     ----------
     minimumRingSize : int, default is Undefined, optional
-        minimum ring size
+        The minimum number of virtual nodes to use for the hash ring.
     """
 
 
@@ -748,7 +784,7 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecSubsetsItems0TrafficPolicyPor
     from : str, default is Undefined, optional
         Originating region.
     to : str, default is Undefined, optional
-        to
+        Destination region the traffic will fail over to when endpoints in the 'from' region becomes unhealthy.
     """
 
 
@@ -772,13 +808,13 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecSubsetsItems0TrafficPolicyPor
     consecutiveGatewayErrors : int, default is Undefined, optional
         Number of gateway errors before a host is ejected from the connection pool.
     consecutiveLocalOriginFailures : int, default is Undefined, optional
-        consecutive local origin failures
+        The number of consecutive locally originated failures before ejection occurs.
     interval : str, default is Undefined, optional
         Time interval between ejection sweep analysis.
     maxEjectionPercent : int, default is Undefined, optional
-        max ejection percent
+        Maximum % of hosts in the load balancing pool for the upstream service that can be ejected.
     minHealthPercent : int, default is Undefined, optional
-        min health percent
+        Outlier detection will be enabled as long as the associated load balancing pool has at least min_health_percent hosts in healthy mode.
     splitExternalLocalOriginErrors : bool, default is Undefined, optional
         Determines whether to distinguish local origin failures from external errors.
     """
@@ -805,7 +841,7 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecSubsetsItems0TrafficPolicyPor
 
 schema NetworkingIstioIoV1alpha3DestinationRuleSpecSubsetsItems0TrafficPolicyPortLevelSettingsItems0Port:
     """
-    networking istio io v1alpha3 destination rule spec subsets items0 traffic policy port level settings items0 port
+    Specifies the number of a port on the destination service on which this policy is being applied.
 
     Attributes
     ----------
@@ -824,25 +860,31 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecSubsetsItems0TrafficPolicyPor
     Attributes
     ----------
     caCertificates : str, default is Undefined, optional
-        ca certificates
+        OPTIONAL: The path to the file containing certificate authority certificates to use in verifying a presented server certificate.
+    caCrl : str, default is Undefined, optional
+        OPTIONAL: The path to the file containing the certificate revocation list (CRL) to use in verifying a presented server certificate.
     clientCertificate : str, default is Undefined, optional
         REQUIRED if mode is `MUTUAL`.
     credentialName : str, default is Undefined, optional
-        credential name
+        The name of the secret that holds the TLS certs for the client including the CA certificates.
     insecureSkipVerify : bool, default is Undefined, optional
-        insecure skip verify
+        `insecureSkipVerify` specifies whether the proxy should skip verifying the CA signature and SAN for the server certificate corresponding to the host.
     mode : str, default is Undefined, optional
-        mode
+        Indicates whether connections to this port should be secured using TLS.
+
+        Valid Options: DISABLE, SIMPLE, MUTUAL, ISTIO_MUTUAL
     privateKey : str, default is Undefined, optional
         REQUIRED if mode is `MUTUAL`.
     sni : str, default is Undefined, optional
         SNI string to present to the server during TLS handshake.
     subjectAltNames : [str], default is Undefined, optional
-        subject alt names
+        A list of alternate names to verify the subject identity in the certificate.
     """
 
 
     caCertificates?: str
+
+    caCrl?: str
 
     clientCertificate?: str
 
@@ -859,6 +901,22 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecSubsetsItems0TrafficPolicyPor
     subjectAltNames?: [str]
 
 
+schema NetworkingIstioIoV1alpha3DestinationRuleSpecSubsetsItems0TrafficPolicyProxyProtocol:
+    """
+    The upstream PROXY protocol settings.
+
+    Attributes
+    ----------
+    version : str, default is Undefined, optional
+        The PROXY protocol version to use.
+
+        Valid Options: V1, V2
+    """
+
+
+    version?: "V1" | "V2"
+
+
 schema NetworkingIstioIoV1alpha3DestinationRuleSpecSubsetsItems0TrafficPolicyTLS:
     """
     TLS related settings for connections to the upstream service.
@@ -866,25 +924,31 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecSubsetsItems0TrafficPolicyTLS
     Attributes
     ----------
     caCertificates : str, default is Undefined, optional
-        ca certificates
+        OPTIONAL: The path to the file containing certificate authority certificates to use in verifying a presented server certificate.
+    caCrl : str, default is Undefined, optional
+        OPTIONAL: The path to the file containing the certificate revocation list (CRL) to use in verifying a presented server certificate.
     clientCertificate : str, default is Undefined, optional
         REQUIRED if mode is `MUTUAL`.
     credentialName : str, default is Undefined, optional
-        credential name
+        The name of the secret that holds the TLS certs for the client including the CA certificates.
     insecureSkipVerify : bool, default is Undefined, optional
-        insecure skip verify
+        `insecureSkipVerify` specifies whether the proxy should skip verifying the CA signature and SAN for the server certificate corresponding to the host.
     mode : str, default is Undefined, optional
-        mode
+        Indicates whether connections to this port should be secured using TLS.
+
+        Valid Options: DISABLE, SIMPLE, MUTUAL, ISTIO_MUTUAL
     privateKey : str, default is Undefined, optional
         REQUIRED if mode is `MUTUAL`.
     sni : str, default is Undefined, optional
         SNI string to present to the server during TLS handshake.
     subjectAltNames : [str], default is Undefined, optional
-        subject alt names
+        A list of alternate names to verify the subject identity in the certificate.
     """
 
 
     caCertificates?: str
+
+    caCrl?: str
 
     clientCertificate?: str
 
@@ -903,29 +967,29 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecSubsetsItems0TrafficPolicyTLS
 
 schema NetworkingIstioIoV1alpha3DestinationRuleSpecSubsetsItems0TrafficPolicyTunnel:
     """
-    networking istio io v1alpha3 destination rule spec subsets items0 traffic policy tunnel
+    Configuration of tunneling TCP over other transport or application layers for the host configured in the DestinationRule.
 
     Attributes
     ----------
     $protocol : str, default is Undefined, optional
         Specifies which protocol to use for tunneling the downstream connection.
-    targetHost : str, default is Undefined, optional
+    targetHost : str, default is Undefined, required
         Specifies a host to which the downstream connection is tunneled.
-    targetPort : int, default is Undefined, optional
+    targetPort : int, default is Undefined, required
         Specifies a port to which the downstream connection is tunneled.
     """
 
 
     $protocol?: str
 
-    targetHost?: str
+    targetHost: str
 
-    targetPort?: int
+    targetPort: int
 
 
 schema NetworkingIstioIoV1alpha3DestinationRuleSpecTrafficPolicy:
     """
-    networking istio io v1alpha3 destination rule spec traffic policy
+    Traffic policies to apply (load balancing policy, connection pool sizes, outlier detection).
 
     Attributes
     ----------
@@ -937,6 +1001,8 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecTrafficPolicy:
         outlier detection
     portLevelSettings : [NetworkingIstioIoV1alpha3DestinationRuleSpecTrafficPolicyPortLevelSettingsItems0], default is Undefined, optional
         Traffic policies specific to individual ports.
+    proxyProtocol : NetworkingIstioIoV1alpha3DestinationRuleSpecTrafficPolicyProxyProtocol, default is Undefined, optional
+        proxy protocol
     tls : NetworkingIstioIoV1alpha3DestinationRuleSpecTrafficPolicyTLS, default is Undefined, optional
         tls
     tunnel : NetworkingIstioIoV1alpha3DestinationRuleSpecTrafficPolicyTunnel, default is Undefined, optional
@@ -951,6 +1017,8 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecTrafficPolicy:
     outlierDetection?: NetworkingIstioIoV1alpha3DestinationRuleSpecTrafficPolicyOutlierDetection
 
     portLevelSettings?: [NetworkingIstioIoV1alpha3DestinationRuleSpecTrafficPolicyPortLevelSettingsItems0]
+
+    proxyProtocol?: NetworkingIstioIoV1alpha3DestinationRuleSpecTrafficPolicyProxyProtocol
 
     tls?: NetworkingIstioIoV1alpha3DestinationRuleSpecTrafficPolicyTLS
 
@@ -983,16 +1051,20 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecTrafficPolicyConnectionPoolHT
     ----------
     h2UpgradePolicy : str, default is Undefined, optional
         Specify if http1.1 connection should be upgraded to http2 for the associated destination.
+
+        Valid Options: DEFAULT, DO_NOT_UPGRADE, UPGRADE
     http1MaxPendingRequests : int, default is Undefined, optional
-        http1 max pending requests
+        Maximum number of requests that will be queued while waiting for a ready connection pool connection.
     http2MaxRequests : int, default is Undefined, optional
         Maximum number of active requests to a destination.
     idleTimeout : str, default is Undefined, optional
         The idle timeout for upstream connection pool connections.
+    maxConcurrentStreams : int, default is Undefined, optional
+        The maximum number of concurrent streams allowed for a peer on one HTTP/2 connection.
     maxRequestsPerConnection : int, default is Undefined, optional
         Maximum number of requests per connection to a backend.
     maxRetries : int, default is Undefined, optional
-        max retries
+        Maximum number of retries that can be outstanding to all hosts in a cluster at a given time.
     useClientProtocol : bool, default is Undefined, optional
         If set to true, client protocol will be preserved while initiating connection to backend.
     """
@@ -1005,6 +1077,8 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecTrafficPolicyConnectionPoolHT
     http2MaxRequests?: int
 
     idleTimeout?: str
+
+    maxConcurrentStreams?: int
 
     maxRequestsPerConnection?: int
 
@@ -1021,6 +1095,8 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecTrafficPolicyConnectionPoolTC
     ----------
     connectTimeout : str, default is Undefined, optional
         TCP connection timeout.
+    idleTimeout : str, default is Undefined, optional
+        The idle timeout for TCP connections.
     maxConnectionDuration : str, default is Undefined, optional
         The maximum duration of a connection.
     maxConnections : int, default is Undefined, optional
@@ -1031,6 +1107,8 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecTrafficPolicyConnectionPoolTC
 
 
     connectTimeout?: str
+
+    idleTimeout?: str
 
     maxConnectionDuration?: str
 
@@ -1048,9 +1126,9 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecTrafficPolicyConnectionPoolTC
     interval : str, default is Undefined, optional
         The time duration between keep-alive probes.
     probes : int, default is Undefined, optional
-        probes
+        Maximum number of keepalive probes to send without response before deciding the connection is dead.
     time : str, default is Undefined, optional
-        time
+        The time duration a connection needs to be idle before keep-alive probes start being sent.
     """
 
 
@@ -1072,7 +1150,9 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecTrafficPolicyLoadBalancer:
     localityLbSetting : NetworkingIstioIoV1alpha3DestinationRuleSpecTrafficPolicyLoadBalancerLocalityLbSetting, default is Undefined, optional
         locality lb setting
     simple : str, default is Undefined, optional
-        simple
+
+
+        Valid Options: LEAST_CONN, RANDOM, PASSTHROUGH, ROUND_ROBIN, LEAST_REQUEST
     warmupDurationSecs : str, default is Undefined, optional
         Represents the warmup duration of Service.
     """
@@ -1110,6 +1190,10 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecTrafficPolicyLoadBalancerCons
     """
 
 
+
+
+
+
     httpCookie?: NetworkingIstioIoV1alpha3DestinationRuleSpecTrafficPolicyLoadBalancerConsistentHashHTTPCookie
 
     httpHeaderName?: str
@@ -1131,7 +1215,7 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecTrafficPolicyLoadBalancerCons
 
     Attributes
     ----------
-    name : str, default is Undefined, optional
+    name : str, default is Undefined, required
         Name of the cookie.
     path : str, default is Undefined, optional
         Path to set for the cookie.
@@ -1140,7 +1224,7 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecTrafficPolicyLoadBalancerCons
     """
 
 
-    name?: str
+    name: str
 
     path?: str
 
@@ -1168,7 +1252,7 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecTrafficPolicyLoadBalancerCons
     Attributes
     ----------
     minimumRingSize : int, default is Undefined, optional
-        minimum ring size
+        The minimum number of virtual nodes to use for the hash ring.
     """
 
 
@@ -1228,7 +1312,7 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecTrafficPolicyLoadBalancerLoca
     from : str, default is Undefined, optional
         Originating region.
     to : str, default is Undefined, optional
-        to
+        Destination region the traffic will fail over to when endpoints in the 'from' region becomes unhealthy.
     """
 
 
@@ -1252,13 +1336,13 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecTrafficPolicyOutlierDetection
     consecutiveGatewayErrors : int, default is Undefined, optional
         Number of gateway errors before a host is ejected from the connection pool.
     consecutiveLocalOriginFailures : int, default is Undefined, optional
-        consecutive local origin failures
+        The number of consecutive locally originated failures before ejection occurs.
     interval : str, default is Undefined, optional
         Time interval between ejection sweep analysis.
     maxEjectionPercent : int, default is Undefined, optional
-        max ejection percent
+        Maximum % of hosts in the load balancing pool for the upstream service that can be ejected.
     minHealthPercent : int, default is Undefined, optional
-        min health percent
+        Outlier detection will be enabled as long as the associated load balancing pool has at least min_health_percent hosts in healthy mode.
     splitExternalLocalOriginErrors : bool, default is Undefined, optional
         Determines whether to distinguish local origin failures from external errors.
     """
@@ -1339,16 +1423,20 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecTrafficPolicyPortLevelSetting
     ----------
     h2UpgradePolicy : str, default is Undefined, optional
         Specify if http1.1 connection should be upgraded to http2 for the associated destination.
+
+        Valid Options: DEFAULT, DO_NOT_UPGRADE, UPGRADE
     http1MaxPendingRequests : int, default is Undefined, optional
-        http1 max pending requests
+        Maximum number of requests that will be queued while waiting for a ready connection pool connection.
     http2MaxRequests : int, default is Undefined, optional
         Maximum number of active requests to a destination.
     idleTimeout : str, default is Undefined, optional
         The idle timeout for upstream connection pool connections.
+    maxConcurrentStreams : int, default is Undefined, optional
+        The maximum number of concurrent streams allowed for a peer on one HTTP/2 connection.
     maxRequestsPerConnection : int, default is Undefined, optional
         Maximum number of requests per connection to a backend.
     maxRetries : int, default is Undefined, optional
-        max retries
+        Maximum number of retries that can be outstanding to all hosts in a cluster at a given time.
     useClientProtocol : bool, default is Undefined, optional
         If set to true, client protocol will be preserved while initiating connection to backend.
     """
@@ -1361,6 +1449,8 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecTrafficPolicyPortLevelSetting
     http2MaxRequests?: int
 
     idleTimeout?: str
+
+    maxConcurrentStreams?: int
 
     maxRequestsPerConnection?: int
 
@@ -1377,6 +1467,8 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecTrafficPolicyPortLevelSetting
     ----------
     connectTimeout : str, default is Undefined, optional
         TCP connection timeout.
+    idleTimeout : str, default is Undefined, optional
+        The idle timeout for TCP connections.
     maxConnectionDuration : str, default is Undefined, optional
         The maximum duration of a connection.
     maxConnections : int, default is Undefined, optional
@@ -1387,6 +1479,8 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecTrafficPolicyPortLevelSetting
 
 
     connectTimeout?: str
+
+    idleTimeout?: str
 
     maxConnectionDuration?: str
 
@@ -1404,9 +1498,9 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecTrafficPolicyPortLevelSetting
     interval : str, default is Undefined, optional
         The time duration between keep-alive probes.
     probes : int, default is Undefined, optional
-        probes
+        Maximum number of keepalive probes to send without response before deciding the connection is dead.
     time : str, default is Undefined, optional
-        time
+        The time duration a connection needs to be idle before keep-alive probes start being sent.
     """
 
 
@@ -1428,7 +1522,9 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecTrafficPolicyPortLevelSetting
     localityLbSetting : NetworkingIstioIoV1alpha3DestinationRuleSpecTrafficPolicyPortLevelSettingsItems0LoadBalancerLocalityLbSetting, default is Undefined, optional
         locality lb setting
     simple : str, default is Undefined, optional
-        simple
+
+
+        Valid Options: LEAST_CONN, RANDOM, PASSTHROUGH, ROUND_ROBIN, LEAST_REQUEST
     warmupDurationSecs : str, default is Undefined, optional
         Represents the warmup duration of Service.
     """
@@ -1466,6 +1562,10 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecTrafficPolicyPortLevelSetting
     """
 
 
+
+
+
+
     httpCookie?: NetworkingIstioIoV1alpha3DestinationRuleSpecTrafficPolicyPortLevelSettingsItems0LoadBalancerConsistentHashHTTPCookie
 
     httpHeaderName?: str
@@ -1487,7 +1587,7 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecTrafficPolicyPortLevelSetting
 
     Attributes
     ----------
-    name : str, default is Undefined, optional
+    name : str, default is Undefined, required
         Name of the cookie.
     path : str, default is Undefined, optional
         Path to set for the cookie.
@@ -1496,7 +1596,7 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecTrafficPolicyPortLevelSetting
     """
 
 
-    name?: str
+    name: str
 
     path?: str
 
@@ -1524,7 +1624,7 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecTrafficPolicyPortLevelSetting
     Attributes
     ----------
     minimumRingSize : int, default is Undefined, optional
-        minimum ring size
+        The minimum number of virtual nodes to use for the hash ring.
     """
 
 
@@ -1584,7 +1684,7 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecTrafficPolicyPortLevelSetting
     from : str, default is Undefined, optional
         Originating region.
     to : str, default is Undefined, optional
-        to
+        Destination region the traffic will fail over to when endpoints in the 'from' region becomes unhealthy.
     """
 
 
@@ -1608,13 +1708,13 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecTrafficPolicyPortLevelSetting
     consecutiveGatewayErrors : int, default is Undefined, optional
         Number of gateway errors before a host is ejected from the connection pool.
     consecutiveLocalOriginFailures : int, default is Undefined, optional
-        consecutive local origin failures
+        The number of consecutive locally originated failures before ejection occurs.
     interval : str, default is Undefined, optional
         Time interval between ejection sweep analysis.
     maxEjectionPercent : int, default is Undefined, optional
-        max ejection percent
+        Maximum % of hosts in the load balancing pool for the upstream service that can be ejected.
     minHealthPercent : int, default is Undefined, optional
-        min health percent
+        Outlier detection will be enabled as long as the associated load balancing pool has at least min_health_percent hosts in healthy mode.
     splitExternalLocalOriginErrors : bool, default is Undefined, optional
         Determines whether to distinguish local origin failures from external errors.
     """
@@ -1641,7 +1741,7 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecTrafficPolicyPortLevelSetting
 
 schema NetworkingIstioIoV1alpha3DestinationRuleSpecTrafficPolicyPortLevelSettingsItems0Port:
     """
-    networking istio io v1alpha3 destination rule spec traffic policy port level settings items0 port
+    Specifies the number of a port on the destination service on which this policy is being applied.
 
     Attributes
     ----------
@@ -1660,25 +1760,31 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecTrafficPolicyPortLevelSetting
     Attributes
     ----------
     caCertificates : str, default is Undefined, optional
-        ca certificates
+        OPTIONAL: The path to the file containing certificate authority certificates to use in verifying a presented server certificate.
+    caCrl : str, default is Undefined, optional
+        OPTIONAL: The path to the file containing the certificate revocation list (CRL) to use in verifying a presented server certificate.
     clientCertificate : str, default is Undefined, optional
         REQUIRED if mode is `MUTUAL`.
     credentialName : str, default is Undefined, optional
-        credential name
+        The name of the secret that holds the TLS certs for the client including the CA certificates.
     insecureSkipVerify : bool, default is Undefined, optional
-        insecure skip verify
+        `insecureSkipVerify` specifies whether the proxy should skip verifying the CA signature and SAN for the server certificate corresponding to the host.
     mode : str, default is Undefined, optional
-        mode
+        Indicates whether connections to this port should be secured using TLS.
+
+        Valid Options: DISABLE, SIMPLE, MUTUAL, ISTIO_MUTUAL
     privateKey : str, default is Undefined, optional
         REQUIRED if mode is `MUTUAL`.
     sni : str, default is Undefined, optional
         SNI string to present to the server during TLS handshake.
     subjectAltNames : [str], default is Undefined, optional
-        subject alt names
+        A list of alternate names to verify the subject identity in the certificate.
     """
 
 
     caCertificates?: str
+
+    caCrl?: str
 
     clientCertificate?: str
 
@@ -1695,6 +1801,22 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecTrafficPolicyPortLevelSetting
     subjectAltNames?: [str]
 
 
+schema NetworkingIstioIoV1alpha3DestinationRuleSpecTrafficPolicyProxyProtocol:
+    """
+    The upstream PROXY protocol settings.
+
+    Attributes
+    ----------
+    version : str, default is Undefined, optional
+        The PROXY protocol version to use.
+
+        Valid Options: V1, V2
+    """
+
+
+    version?: "V1" | "V2"
+
+
 schema NetworkingIstioIoV1alpha3DestinationRuleSpecTrafficPolicyTLS:
     """
     TLS related settings for connections to the upstream service.
@@ -1702,25 +1824,31 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecTrafficPolicyTLS:
     Attributes
     ----------
     caCertificates : str, default is Undefined, optional
-        ca certificates
+        OPTIONAL: The path to the file containing certificate authority certificates to use in verifying a presented server certificate.
+    caCrl : str, default is Undefined, optional
+        OPTIONAL: The path to the file containing the certificate revocation list (CRL) to use in verifying a presented server certificate.
     clientCertificate : str, default is Undefined, optional
         REQUIRED if mode is `MUTUAL`.
     credentialName : str, default is Undefined, optional
-        credential name
+        The name of the secret that holds the TLS certs for the client including the CA certificates.
     insecureSkipVerify : bool, default is Undefined, optional
-        insecure skip verify
+        `insecureSkipVerify` specifies whether the proxy should skip verifying the CA signature and SAN for the server certificate corresponding to the host.
     mode : str, default is Undefined, optional
-        mode
+        Indicates whether connections to this port should be secured using TLS.
+
+        Valid Options: DISABLE, SIMPLE, MUTUAL, ISTIO_MUTUAL
     privateKey : str, default is Undefined, optional
         REQUIRED if mode is `MUTUAL`.
     sni : str, default is Undefined, optional
         SNI string to present to the server during TLS handshake.
     subjectAltNames : [str], default is Undefined, optional
-        subject alt names
+        A list of alternate names to verify the subject identity in the certificate.
     """
 
 
     caCertificates?: str
+
+    caCrl?: str
 
     clientCertificate?: str
 
@@ -1739,34 +1867,34 @@ schema NetworkingIstioIoV1alpha3DestinationRuleSpecTrafficPolicyTLS:
 
 schema NetworkingIstioIoV1alpha3DestinationRuleSpecTrafficPolicyTunnel:
     """
-    networking istio io v1alpha3 destination rule spec traffic policy tunnel
+    Configuration of tunneling TCP over other transport or application layers for the host configured in the DestinationRule.
 
     Attributes
     ----------
     $protocol : str, default is Undefined, optional
         Specifies which protocol to use for tunneling the downstream connection.
-    targetHost : str, default is Undefined, optional
+    targetHost : str, default is Undefined, required
         Specifies a host to which the downstream connection is tunneled.
-    targetPort : int, default is Undefined, optional
+    targetPort : int, default is Undefined, required
         Specifies a port to which the downstream connection is tunneled.
     """
 
 
     $protocol?: str
 
-    targetHost?: str
+    targetHost: str
 
-    targetPort?: int
+    targetPort: int
 
 
 schema NetworkingIstioIoV1alpha3DestinationRuleSpecWorkloadSelector:
     """
-    networking istio io v1alpha3 destination rule spec workload selector
+    Criteria used to select the specific set of pods/VMs on which this `DestinationRule` configuration should be applied.
 
     Attributes
     ----------
     matchLabels : {str:str}, default is Undefined, optional
-        match labels
+        One or more labels that indicate a specific set of pods/VMs on which a policy should be applied.
     """
 
 

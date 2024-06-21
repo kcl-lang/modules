@@ -52,7 +52,7 @@ schema NetworkingIstioIoV1alpha3VirtualServiceSpec:
     tcp : [NetworkingIstioIoV1alpha3VirtualServiceSpecTCPItems0], default is Undefined, optional
         An ordered list of route rules for opaque TCP traffic.
     tls : [NetworkingIstioIoV1alpha3VirtualServiceSpecTLSItems0], default is Undefined, optional
-        tls
+        An ordered list of route rule for non-terminated TLS & HTTPS traffic.
     """
 
 
@@ -86,17 +86,17 @@ schema NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0:
     headers : NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0Headers, default is Undefined, optional
         headers
     match : [NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0MatchItems0], default is Undefined, optional
-        match
+        Match conditions to be satisfied for the rule to be activated.
     mirror : NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0Mirror, default is Undefined, optional
         mirror
     mirrorPercent : int, default is Undefined, optional
-        Percentage of the traffic to be mirrored by the `mirror` field.
+        mirror percent
     mirrorPercentage : NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0MirrorPercentage, default is Undefined, optional
         mirror percentage
     mirror_percent : int, default is Undefined, optional
-        Percentage of the traffic to be mirrored by the `mirror` field.
+        mirror percent
     mirrors : [NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0MirrorsItems0], default is Undefined, optional
-        mirrors
+        Specifies the destinations to mirror HTTP traffic in addition to the original destination.
     name : str, default is Undefined, optional
         The name assigned to the route for debugging purposes.
     redirect : NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0Redirect, default is Undefined, optional
@@ -154,19 +154,19 @@ schema NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0CorsPolicy:
     Attributes
     ----------
     allowCredentials : bool, default is Undefined, optional
-        allow credentials
+        Indicates whether the caller is allowed to send the actual request (not the preflight) using credentials.
     allowHeaders : [str], default is Undefined, optional
-        allow headers
+        List of HTTP headers that can be used when requesting the resource.
     allowMethods : [str], default is Undefined, optional
         List of HTTP methods allowed to access the resource.
     allowOrigin : [str], default is Undefined, optional
-        The list of origins that are allowed to perform CORS requests.
+        allow origin
     allowOrigins : [NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0CorsPolicyAllowOriginsItems0], default is Undefined, optional
         String patterns that match allowed origins.
     exposeHeaders : [str], default is Undefined, optional
-        expose headers
+        A list of HTTP headers that the browsers are allowed to access.
     maxAge : str, default is Undefined, optional
-        max age
+        Specifies how long the results of a preflight request can be cached.
     """
 
 
@@ -209,7 +209,7 @@ schema NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0CorsPolicyAllowOrigi
 
 schema NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0Delegate:
     """
-    networking istio io v1alpha3 virtual service spec HTTP items0 delegate
+    Delegate is used to specify the particular VirtualService which can be used to define delegate HTTPRoute.
 
     Attributes
     ----------
@@ -233,14 +233,14 @@ schema NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0DirectResponse:
     ----------
     body : NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0DirectResponseBody, default is Undefined, optional
         body
-    status : int, default is Undefined, optional
+    status : int, default is Undefined, required
         Specifies the HTTP response status to be returned.
     """
 
 
     body?: NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0DirectResponseBody
 
-    status?: int
+    status: int
 
 
 schema NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0DirectResponseBody:
@@ -281,7 +281,7 @@ schema NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0Fault:
 
 schema NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0FaultAbort:
     """
-    networking istio io v1alpha3 virtual service spec HTTP items0 fault abort
+    Abort Http request attempts and return error codes back to downstream service, giving the impression that the upstream service is faulty.
 
     Attributes
     ----------
@@ -321,7 +321,7 @@ schema NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0FaultAbortPercentage
 
 schema NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0FaultDelay:
     """
-    networking istio io v1alpha3 virtual service spec HTTP items0 fault delay
+    Delay requests before forwarding, emulating various failures such as network issues, overloaded upstream service, etc.
 
     Attributes
     ----------
@@ -432,7 +432,7 @@ schema NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0MatchItems0:
     gateways : [str], default is Undefined, optional
         Names of gateways where the rule should be applied.
     headers : {str:NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0MatchItems0HeadersAnon}, default is Undefined, optional
-        headers
+        The header keys must be lowercase and use hyphen as the separator, e.g.
     ignoreUriCase : bool, default is Undefined, optional
         Flag to specify whether the URI matching should be case-insensitive.
     method : NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0MatchItems0Method, default is Undefined, optional
@@ -446,7 +446,7 @@ schema NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0MatchItems0:
     scheme : NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0MatchItems0Scheme, default is Undefined, optional
         scheme
     sourceLabels : {str:str}, default is Undefined, optional
-        source labels
+        One or more labels that constrain the applicability of a rule to source (client) workloads with the given labels.
     sourceNamespace : str, default is Undefined, optional
         Source namespace constraining the applicability of a rule to workloads in that namespace.
     statPrefix : str, default is Undefined, optional
@@ -489,7 +489,7 @@ schema NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0MatchItems0:
 
 schema NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0MatchItems0Authority:
     """
-    networking istio io v1alpha3 virtual service spec HTTP items0 match items0 authority
+    HTTP Authority values are case-sensitive and formatted as follows: - `exact: "value"` for exact string match - `prefix: "value"` for prefix-based match - `regex: "value"` for RE2 style regex-based match (https://github.com/google/re2/wiki/Syntax).
 
     Attributes
     ----------
@@ -533,7 +533,7 @@ schema NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0MatchItems0HeadersAn
 
 schema NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0MatchItems0Method:
     """
-    networking istio io v1alpha3 virtual service spec HTTP items0 match items0 method
+    HTTP Method values are case-sensitive and formatted as follows: - `exact: "value"` for exact string match - `prefix: "value"` for prefix-based match - `regex: "value"` for RE2 style regex-based match (https://github.com/google/re2/wiki/Syntax).
 
     Attributes
     ----------
@@ -577,7 +577,7 @@ schema NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0MatchItems0QueryPara
 
 schema NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0MatchItems0Scheme:
     """
-    networking istio io v1alpha3 virtual service spec HTTP items0 match items0 scheme
+    URI Scheme values are case-sensitive and formatted as follows: - `exact: "value"` for exact string match - `prefix: "value"` for prefix-based match - `regex: "value"` for RE2 style regex-based match (https://github.com/google/re2/wiki/Syntax).
 
     Attributes
     ----------
@@ -599,7 +599,7 @@ schema NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0MatchItems0Scheme:
 
 schema NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0MatchItems0URI:
     """
-    networking istio io v1alpha3 virtual service spec HTTP items0 match items0 URI
+    URI to match values are case-sensitive and formatted as follows: - `exact: "value"` for exact string match - `prefix: "value"` for prefix-based match - `regex: "value"` for RE2 style regex-based match (https://github.com/google/re2/wiki/Syntax).
 
     Attributes
     ----------
@@ -643,11 +643,11 @@ schema NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0MatchItems0WithoutHe
 
 schema NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0Mirror:
     """
-    networking istio io v1alpha3 virtual service spec HTTP items0 mirror
+    Mirror HTTP traffic to a another destination in addition to forwarding the requests to the intended destination.
 
     Attributes
     ----------
-    host : str, default is Undefined, optional
+    host : str, default is Undefined, required
         The name of a service from the service registry.
     port : NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0MirrorPort, default is Undefined, optional
         port
@@ -656,7 +656,7 @@ schema NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0Mirror:
     """
 
 
-    host?: str
+    host: str
 
     port?: NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0MirrorPort
 
@@ -697,25 +697,25 @@ schema NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0MirrorsItems0:
 
     Attributes
     ----------
-    destination : NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0MirrorsItems0Destination, default is Undefined, optional
+    destination : NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0MirrorsItems0Destination, default is Undefined, required
         destination
     percentage : NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0MirrorsItems0Percentage, default is Undefined, optional
         percentage
     """
 
 
-    destination?: NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0MirrorsItems0Destination
+    destination: NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0MirrorsItems0Destination
 
     percentage?: NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0MirrorsItems0Percentage
 
 
 schema NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0MirrorsItems0Destination:
     """
-    networking istio io v1alpha3 virtual service spec HTTP items0 mirrors items0 destination
+    Destination specifies the target of the mirror operation.
 
     Attributes
     ----------
-    host : str, default is Undefined, optional
+    host : str, default is Undefined, required
         The name of a service from the service registry.
     port : NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0MirrorsItems0DestinationPort, default is Undefined, optional
         port
@@ -724,7 +724,7 @@ schema NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0MirrorsItems0Destina
     """
 
 
-    host?: str
+    host: str
 
     port?: NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0MirrorsItems0DestinationPort
 
@@ -747,7 +747,7 @@ schema NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0MirrorsItems0Destina
 
 schema NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0MirrorsItems0Percentage:
     """
-    networking istio io v1alpha3 virtual service spec HTTP items0 mirrors items0 percentage
+    Percentage of the traffic to be mirrored by the `destination` field.
 
     Attributes
     ----------
@@ -766,17 +766,19 @@ schema NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0Redirect:
     Attributes
     ----------
     authority : str, default is Undefined, optional
-        authority
+        On a redirect, overwrite the Authority/Host portion of the URL with this value.
     derivePort : str, default is Undefined, optional
-        derive port
+        On a redirect, dynamically set the port: * FROM_PROTOCOL_DEFAULT: automatically set to 80 for HTTP and 443 for HTTPS.
+
+        Valid Options: FROM_PROTOCOL_DEFAULT, FROM_REQUEST_PORT
     port : int, default is Undefined, optional
         On a redirect, overwrite the port portion of the URL with this value.
     redirectCode : int, default is Undefined, optional
-        redirect code
+        On a redirect, Specifies the HTTP status code to use in the redirect response.
     scheme : str, default is Undefined, optional
         On a redirect, overwrite the scheme portion of the URL with this value.
     uri : str, default is Undefined, optional
-        uri
+        On a redirect, overwrite the Path portion of the URL with this value.
     """
 
 
@@ -828,7 +830,7 @@ schema NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0Rewrite:
     authority : str, default is Undefined, optional
         rewrite the Authority/Host header with this value.
     uri : str, default is Undefined, optional
-        uri
+        rewrite the path (or the prefix) portion of the URI with this value.
     uriRegexRewrite : NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0RewriteURIRegexRewrite, default is Undefined, optional
         uri regex rewrite
     """
@@ -865,7 +867,7 @@ schema NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0RouteItems0:
 
     Attributes
     ----------
-    destination : NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0RouteItems0Destination, default is Undefined, optional
+    destination : NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0RouteItems0Destination, default is Undefined, required
         destination
     headers : NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0RouteItems0Headers, default is Undefined, optional
         headers
@@ -874,7 +876,7 @@ schema NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0RouteItems0:
     """
 
 
-    destination?: NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0RouteItems0Destination
+    destination: NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0RouteItems0Destination
 
     headers?: NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0RouteItems0Headers
 
@@ -883,11 +885,11 @@ schema NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0RouteItems0:
 
 schema NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0RouteItems0Destination:
     """
-    networking istio io v1alpha3 virtual service spec HTTP items0 route items0 destination
+    Destination uniquely identifies the instances of a service to which the request/connection should be forwarded to.
 
     Attributes
     ----------
-    host : str, default is Undefined, optional
+    host : str, default is Undefined, required
         The name of a service from the service registry.
     port : NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0RouteItems0DestinationPort, default is Undefined, optional
         port
@@ -896,7 +898,7 @@ schema NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0RouteItems0Destinati
     """
 
 
-    host?: str
+    host: str
 
     port?: NetworkingIstioIoV1alpha3VirtualServiceSpecHTTPItems0RouteItems0DestinationPort
 
@@ -986,7 +988,7 @@ schema NetworkingIstioIoV1alpha3VirtualServiceSpecTCPItems0:
     Attributes
     ----------
     match : [NetworkingIstioIoV1alpha3VirtualServiceSpecTCPItems0MatchItems0], default is Undefined, optional
-        match
+        Match conditions to be satisfied for the rule to be activated.
     route : [NetworkingIstioIoV1alpha3VirtualServiceSpecTCPItems0RouteItems0], default is Undefined, optional
         The destination to which the connection should be forwarded to.
     """
@@ -1010,11 +1012,11 @@ schema NetworkingIstioIoV1alpha3VirtualServiceSpecTCPItems0MatchItems0:
     port : int, default is Undefined, optional
         Specifies the port on the host that is being addressed.
     sourceLabels : {str:str}, default is Undefined, optional
-        source labels
+        One or more labels that constrain the applicability of a rule to workloads with the given labels.
     sourceNamespace : str, default is Undefined, optional
         Source namespace constraining the applicability of a rule to workloads in that namespace.
     sourceSubnet : str, default is Undefined, optional
-        IPv4 or IPv6 ip address of source with optional subnet.
+        source subnet
     """
 
 
@@ -1037,25 +1039,25 @@ schema NetworkingIstioIoV1alpha3VirtualServiceSpecTCPItems0RouteItems0:
 
     Attributes
     ----------
-    destination : NetworkingIstioIoV1alpha3VirtualServiceSpecTCPItems0RouteItems0Destination, default is Undefined, optional
+    destination : NetworkingIstioIoV1alpha3VirtualServiceSpecTCPItems0RouteItems0Destination, default is Undefined, required
         destination
     weight : int, default is Undefined, optional
         Weight specifies the relative proportion of traffic to be forwarded to the destination.
     """
 
 
-    destination?: NetworkingIstioIoV1alpha3VirtualServiceSpecTCPItems0RouteItems0Destination
+    destination: NetworkingIstioIoV1alpha3VirtualServiceSpecTCPItems0RouteItems0Destination
 
     weight?: int
 
 
 schema NetworkingIstioIoV1alpha3VirtualServiceSpecTCPItems0RouteItems0Destination:
     """
-    networking istio io v1alpha3 virtual service spec TCP items0 route items0 destination
+    Destination uniquely identifies the instances of a service to which the request/connection should be forwarded to.
 
     Attributes
     ----------
-    host : str, default is Undefined, optional
+    host : str, default is Undefined, required
         The name of a service from the service registry.
     port : NetworkingIstioIoV1alpha3VirtualServiceSpecTCPItems0RouteItems0DestinationPort, default is Undefined, optional
         port
@@ -1064,7 +1066,7 @@ schema NetworkingIstioIoV1alpha3VirtualServiceSpecTCPItems0RouteItems0Destinatio
     """
 
 
-    host?: str
+    host: str
 
     port?: NetworkingIstioIoV1alpha3VirtualServiceSpecTCPItems0RouteItems0DestinationPort
 
@@ -1091,14 +1093,14 @@ schema NetworkingIstioIoV1alpha3VirtualServiceSpecTLSItems0:
 
     Attributes
     ----------
-    match : [NetworkingIstioIoV1alpha3VirtualServiceSpecTLSItems0MatchItems0], default is Undefined, optional
-        match
+    match : [NetworkingIstioIoV1alpha3VirtualServiceSpecTLSItems0MatchItems0], default is Undefined, required
+        Match conditions to be satisfied for the rule to be activated.
     route : [NetworkingIstioIoV1alpha3VirtualServiceSpecTLSItems0RouteItems0], default is Undefined, optional
         The destination to which the connection should be forwarded to.
     """
 
 
-    match?: [NetworkingIstioIoV1alpha3VirtualServiceSpecTLSItems0MatchItems0]
+    match: [NetworkingIstioIoV1alpha3VirtualServiceSpecTLSItems0MatchItems0]
 
     route?: [NetworkingIstioIoV1alpha3VirtualServiceSpecTLSItems0RouteItems0]
 
@@ -1115,10 +1117,10 @@ schema NetworkingIstioIoV1alpha3VirtualServiceSpecTLSItems0MatchItems0:
         Names of gateways where the rule should be applied.
     port : int, default is Undefined, optional
         Specifies the port on the host that is being addressed.
-    sniHosts : [str], default is Undefined, optional
+    sniHosts : [str], default is Undefined, required
         SNI (server name indicator) to match on.
     sourceLabels : {str:str}, default is Undefined, optional
-        source labels
+        One or more labels that constrain the applicability of a rule to workloads with the given labels.
     sourceNamespace : str, default is Undefined, optional
         Source namespace constraining the applicability of a rule to workloads in that namespace.
     """
@@ -1130,7 +1132,7 @@ schema NetworkingIstioIoV1alpha3VirtualServiceSpecTLSItems0MatchItems0:
 
     port?: int
 
-    sniHosts?: [str]
+    sniHosts: [str]
 
     sourceLabels?: {str:str}
 
@@ -1143,25 +1145,25 @@ schema NetworkingIstioIoV1alpha3VirtualServiceSpecTLSItems0RouteItems0:
 
     Attributes
     ----------
-    destination : NetworkingIstioIoV1alpha3VirtualServiceSpecTLSItems0RouteItems0Destination, default is Undefined, optional
+    destination : NetworkingIstioIoV1alpha3VirtualServiceSpecTLSItems0RouteItems0Destination, default is Undefined, required
         destination
     weight : int, default is Undefined, optional
         Weight specifies the relative proportion of traffic to be forwarded to the destination.
     """
 
 
-    destination?: NetworkingIstioIoV1alpha3VirtualServiceSpecTLSItems0RouteItems0Destination
+    destination: NetworkingIstioIoV1alpha3VirtualServiceSpecTLSItems0RouteItems0Destination
 
     weight?: int
 
 
 schema NetworkingIstioIoV1alpha3VirtualServiceSpecTLSItems0RouteItems0Destination:
     """
-    networking istio io v1alpha3 virtual service spec TLS items0 route items0 destination
+    Destination uniquely identifies the instances of a service to which the request/connection should be forwarded to.
 
     Attributes
     ----------
-    host : str, default is Undefined, optional
+    host : str, default is Undefined, required
         The name of a service from the service registry.
     port : NetworkingIstioIoV1alpha3VirtualServiceSpecTLSItems0RouteItems0DestinationPort, default is Undefined, optional
         port
@@ -1170,7 +1172,7 @@ schema NetworkingIstioIoV1alpha3VirtualServiceSpecTLSItems0RouteItems0Destinatio
     """
 
 
-    host?: str
+    host: str
 
     port?: NetworkingIstioIoV1alpha3VirtualServiceSpecTLSItems0RouteItems0DestinationPort
 

@@ -45,8 +45,6 @@ schema NetworkingIstioIoV1alpha3EnvoyFilterSpec:
         One or more patches with match conditions.
     priority : int, default is Undefined, optional
         Priority defines the order in which patch sets are applied within a context.
-    targetRefs : [NetworkingIstioIoV1alpha3EnvoyFilterSpecTargetRefsItems0], default is Undefined, optional
-        Optional.
     workloadSelector : NetworkingIstioIoV1alpha3EnvoyFilterSpecWorkloadSelector, default is Undefined, optional
         workload selector
     """
@@ -55,8 +53,6 @@ schema NetworkingIstioIoV1alpha3EnvoyFilterSpec:
     configPatches?: [NetworkingIstioIoV1alpha3EnvoyFilterSpecConfigPatchesItems0]
 
     priority?: int
-
-    targetRefs?: [NetworkingIstioIoV1alpha3EnvoyFilterSpecTargetRefsItems0]
 
     workloadSelector?: NetworkingIstioIoV1alpha3EnvoyFilterSpecWorkloadSelector
 
@@ -143,11 +139,6 @@ schema NetworkingIstioIoV1alpha3EnvoyFilterSpecConfigPatchesItems0MatchCluster:
     subset?: str
 
 
-    check:
-        portNumber <= 4.294967295e+09
-        portNumber >= 0
-
-
 schema NetworkingIstioIoV1alpha3EnvoyFilterSpecConfigPatchesItems0MatchListener:
     """
     Match on envoy listener attributes.
@@ -176,11 +167,6 @@ schema NetworkingIstioIoV1alpha3EnvoyFilterSpecConfigPatchesItems0MatchListener:
     portName?: str
 
     portNumber?: int
-
-
-    check:
-        portNumber <= 4.294967295e+09
-        portNumber >= 0
 
 
 schema NetworkingIstioIoV1alpha3EnvoyFilterSpecConfigPatchesItems0MatchListenerFilterChain:
@@ -215,11 +201,6 @@ schema NetworkingIstioIoV1alpha3EnvoyFilterSpecConfigPatchesItems0MatchListenerF
     sni?: str
 
     transportProtocol?: str
-
-
-    check:
-        destinationPort <= 4.294967295e+09
-        destinationPort >= 0
 
 
 schema NetworkingIstioIoV1alpha3EnvoyFilterSpecConfigPatchesItems0MatchListenerFilterChainFilter:
@@ -302,11 +283,6 @@ schema NetworkingIstioIoV1alpha3EnvoyFilterSpecConfigPatchesItems0MatchRouteConf
     vhost?: NetworkingIstioIoV1alpha3EnvoyFilterSpecConfigPatchesItems0MatchRouteConfigurationVhost
 
 
-    check:
-        portNumber <= 4.294967295e+09
-        portNumber >= 0
-
-
 schema NetworkingIstioIoV1alpha3EnvoyFilterSpecConfigPatchesItems0MatchRouteConfigurationVhost:
     """
     Match a specific virtual host in a route configuration and apply the patch to the virtual host.
@@ -369,32 +345,6 @@ schema NetworkingIstioIoV1alpha3EnvoyFilterSpecConfigPatchesItems0Patch:
     operation?: "INVALID" | "MERGE" | "ADD" | "REMOVE" | "INSERT_BEFORE" | "INSERT_AFTER" | "INSERT_FIRST" | "REPLACE"
 
     value?: any
-
-
-schema NetworkingIstioIoV1alpha3EnvoyFilterSpecTargetRefsItems0:
-    """
-    networking istio io v1alpha3 envoy filter spec target refs items0
-
-    Attributes
-    ----------
-    group : str, default is Undefined, optional
-        group is the group of the target resource.
-    kind : str, default is Undefined, optional
-        kind is kind of the target resource.
-    name : str, default is Undefined, optional
-        name is the name of the target resource.
-    namespace : str, default is Undefined, optional
-        namespace is the namespace of the referent.
-    """
-
-
-    group?: str
-
-    kind?: str
-
-    name?: str
-
-    namespace?: str
 
 
 schema NetworkingIstioIoV1alpha3EnvoyFilterSpecWorkloadSelector:

@@ -70,8 +70,6 @@ schema ExtensionsIstioIoV1alpha1WasmPluginSpec:
         SHA256 checksum that will be used to verify Wasm module or OCI container.
     targetRef : ExtensionsIstioIoV1alpha1WasmPluginSpecTargetRef, default is Undefined, optional
         target ref
-    targetRefs : [ExtensionsIstioIoV1alpha1WasmPluginSpecTargetRefsItems0], default is Undefined, optional
-        Optional.
     $type : str, default is Undefined, optional
         Specifies the type of Wasm Extension to be used.
 
@@ -107,8 +105,6 @@ schema ExtensionsIstioIoV1alpha1WasmPluginSpec:
 
     targetRef?: ExtensionsIstioIoV1alpha1WasmPluginSpecTargetRef
 
-    targetRefs?: [ExtensionsIstioIoV1alpha1WasmPluginSpecTargetRefsItems0]
-
     $type?: "UNSPECIFIED_PLUGIN_TYPE" | "HTTP" | "NETWORK"
 
     url: str
@@ -119,10 +115,10 @@ schema ExtensionsIstioIoV1alpha1WasmPluginSpec:
 
 
     check:
-        len(imagePullSecret) <= 253
-        len(imagePullSecret) >= 1
-        len(pluginName) <= 256
-        len(pluginName) >= 1
+        len(imagePullSecret) <= 253 if imagePullSecret
+        len(imagePullSecret) >= 1 if imagePullSecret
+        len(pluginName) <= 256 if pluginName
+        len(pluginName) >= 1 if pluginName
         regex.match(str(sha256), r"(^$|^[a-f0-9]{64}$)") if sha256
         len(url) >= 1
 
@@ -182,33 +178,7 @@ schema ExtensionsIstioIoV1alpha1WasmPluginSpecSelector:
 
 schema ExtensionsIstioIoV1alpha1WasmPluginSpecTargetRef:
     """
-    extensions istio io v1alpha1 wasm plugin spec target ref
-
-    Attributes
-    ----------
-    group : str, default is Undefined, optional
-        group is the group of the target resource.
-    kind : str, default is Undefined, optional
-        kind is kind of the target resource.
-    name : str, default is Undefined, optional
-        name is the name of the target resource.
-    namespace : str, default is Undefined, optional
-        namespace is the namespace of the referent.
-    """
-
-
-    group?: str
-
-    kind?: str
-
-    name?: str
-
-    namespace?: str
-
-
-schema ExtensionsIstioIoV1alpha1WasmPluginSpecTargetRefsItems0:
-    """
-    extensions istio io v1alpha1 wasm plugin spec target refs items0
+    Optional.
 
     Attributes
     ----------
@@ -277,6 +247,6 @@ schema ExtensionsIstioIoV1alpha1WasmPluginSpecVMConfigEnvItems0:
     check:
         len(name) <= 256
         len(name) >= 1
-        len(value) <= 2048
+        len(value) <= 2048 if value
 
 
