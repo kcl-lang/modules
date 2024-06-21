@@ -7,35 +7,36 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema MachineHealthCheck:
     """
-    MachineHealthCheck is the Schema for the machinehealthchecks API.
+    MachineHealthCheck is the Schema for the machinehealthchecks API. 
+     Deprecated: This type will be removed in one of the next releases.
 
     Attributes
     ----------
-    apiVersion : str, default is "cluster.x-k8s.io/v1beta1", required
+    apiVersion : str, default is "cluster.x-k8s.io/v1alpha3", required
         APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
     kind : str, default is "MachineHealthCheck", required
         Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     metadata : v1.ObjectMeta, default is Undefined, optional
         metadata
-    spec : ClusterxK8sIoV1beta1MachineHealthCheckSpec, default is Undefined, optional
+    spec : ClusterxK8sIoV1alpha3MachineHealthCheckSpec, default is Undefined, optional
         spec
-    status : ClusterxK8sIoV1beta1MachineHealthCheckStatus, default is Undefined, optional
+    status : ClusterxK8sIoV1alpha3MachineHealthCheckStatus, default is Undefined, optional
         status
     """
 
 
-    apiVersion: "cluster.x-k8s.io/v1beta1" = "cluster.x-k8s.io/v1beta1"
+    apiVersion: "cluster.x-k8s.io/v1alpha3" = "cluster.x-k8s.io/v1alpha3"
 
     kind: "MachineHealthCheck" = "MachineHealthCheck"
 
     metadata?: v1.ObjectMeta
 
-    spec?: ClusterxK8sIoV1beta1MachineHealthCheckSpec
+    spec?: ClusterxK8sIoV1alpha3MachineHealthCheckSpec
 
-    status?: ClusterxK8sIoV1beta1MachineHealthCheckStatus
+    status?: ClusterxK8sIoV1alpha3MachineHealthCheckStatus
 
 
-schema ClusterxK8sIoV1beta1MachineHealthCheckSpec:
+schema ClusterxK8sIoV1alpha3MachineHealthCheckSpec:
     """
     Specification of machine health check policy
 
@@ -46,15 +47,13 @@ schema ClusterxK8sIoV1beta1MachineHealthCheckSpec:
     maxUnhealthy : int | str, default is Undefined, optional
         Any further remediation is only allowed if at most "MaxUnhealthy" machines selected by "selector" are not healthy.
     nodeStartupTimeout : str, default is Undefined, optional
-        Machines older than this duration without a node will be considered to have failed and will be remediated. If not set, this value is defaulted to 10 minutes. If you wish to disable this feature, set the value explicitly to 0.
-    remediationTemplate : ClusterxK8sIoV1beta1MachineHealthCheckSpecRemediationTemplate, default is Undefined, optional
+        Machines older than this duration without a node will be considered to have failed and will be remediated.
+    remediationTemplate : ClusterxK8sIoV1alpha3MachineHealthCheckSpecRemediationTemplate, default is Undefined, optional
         remediation template
-    selector : ClusterxK8sIoV1beta1MachineHealthCheckSpecSelector, default is Undefined, required
+    selector : ClusterxK8sIoV1alpha3MachineHealthCheckSpecSelector, default is Undefined, required
         selector
-    unhealthyConditions : [ClusterxK8sIoV1beta1MachineHealthCheckSpecUnhealthyConditionsItems0], default is Undefined, required
+    unhealthyConditions : [ClusterxK8sIoV1alpha3MachineHealthCheckSpecUnhealthyConditionsItems0], default is Undefined, required
         UnhealthyConditions contains a list of the conditions that determine whether a node is considered unhealthy.  The conditions are combined in a logical OR, i.e. if any of the conditions is met, the node is unhealthy.
-    unhealthyRange : str, default is Undefined, optional
-        Any further remediation is only allowed if the number of machines selected by "selector" as not healthy is within the range of "UnhealthyRange". Takes precedence over MaxUnhealthy. Eg. "[3-5]" - This means that remediation will be allowed only when: (a) there are at least 3 unhealthy machines (and) (b) there are at most 5 unhealthy machines
     """
 
 
@@ -64,22 +63,19 @@ schema ClusterxK8sIoV1beta1MachineHealthCheckSpec:
 
     nodeStartupTimeout?: str
 
-    remediationTemplate?: ClusterxK8sIoV1beta1MachineHealthCheckSpecRemediationTemplate
+    remediationTemplate?: ClusterxK8sIoV1alpha3MachineHealthCheckSpecRemediationTemplate
 
-    selector: ClusterxK8sIoV1beta1MachineHealthCheckSpecSelector
+    selector: ClusterxK8sIoV1alpha3MachineHealthCheckSpecSelector
 
-    unhealthyConditions: [ClusterxK8sIoV1beta1MachineHealthCheckSpecUnhealthyConditionsItems0]
-
-    unhealthyRange?: str
+    unhealthyConditions: [ClusterxK8sIoV1alpha3MachineHealthCheckSpecUnhealthyConditionsItems0]
 
 
     check:
         len(clusterName) >= 1
         len(unhealthyConditions) >= 1
-        regex_match(str(unhealthyRange), r"^\[[0-9]+-[0-9]+\]$") if unhealthyRange
 
 
-schema ClusterxK8sIoV1beta1MachineHealthCheckSpecRemediationTemplate:
+schema ClusterxK8sIoV1alpha3MachineHealthCheckSpecRemediationTemplate:
     """
     RemediationTemplate is a reference to a remediation template provided by an infrastructure provider. 
      This field is completely optional, when filled, the MachineHealthCheck controller creates a new object from the template referenced and hands off remediation of the machine to a controller that lives outside of Cluster API.
@@ -118,25 +114,25 @@ schema ClusterxK8sIoV1beta1MachineHealthCheckSpecRemediationTemplate:
     uid?: str
 
 
-schema ClusterxK8sIoV1beta1MachineHealthCheckSpecSelector:
+schema ClusterxK8sIoV1alpha3MachineHealthCheckSpecSelector:
     """
     Label selector to match machines whose health will be exercised
 
     Attributes
     ----------
-    matchExpressions : [ClusterxK8sIoV1beta1MachineHealthCheckSpecSelectorMatchExpressionsItems0], default is Undefined, optional
+    matchExpressions : [ClusterxK8sIoV1alpha3MachineHealthCheckSpecSelectorMatchExpressionsItems0], default is Undefined, optional
         matchExpressions is a list of label selector requirements. The requirements are ANDed.
     matchLabels : {str:str}, default is Undefined, optional
         matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
     """
 
 
-    matchExpressions?: [ClusterxK8sIoV1beta1MachineHealthCheckSpecSelectorMatchExpressionsItems0]
+    matchExpressions?: [ClusterxK8sIoV1alpha3MachineHealthCheckSpecSelectorMatchExpressionsItems0]
 
     matchLabels?: {str:str}
 
 
-schema ClusterxK8sIoV1beta1MachineHealthCheckSpecSelectorMatchExpressionsItems0:
+schema ClusterxK8sIoV1alpha3MachineHealthCheckSpecSelectorMatchExpressionsItems0:
     """
     A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
@@ -158,7 +154,7 @@ schema ClusterxK8sIoV1beta1MachineHealthCheckSpecSelectorMatchExpressionsItems0:
     values?: [str]
 
 
-schema ClusterxK8sIoV1beta1MachineHealthCheckSpecUnhealthyConditionsItems0:
+schema ClusterxK8sIoV1alpha3MachineHealthCheckSpecUnhealthyConditionsItems0:
     """
     UnhealthyCondition represents a Node condition type and value with a timeout specified as a duration.  When the named condition has been in the given status for at least the timeout value, a node is considered unhealthy.
 
@@ -185,13 +181,13 @@ schema ClusterxK8sIoV1beta1MachineHealthCheckSpecUnhealthyConditionsItems0:
         len($type) >= 1
 
 
-schema ClusterxK8sIoV1beta1MachineHealthCheckStatus:
+schema ClusterxK8sIoV1alpha3MachineHealthCheckStatus:
     """
     Most recently observed status of MachineHealthCheck resource
 
     Attributes
     ----------
-    conditions : [ClusterxK8sIoV1beta1MachineHealthCheckStatusConditionsItems0], default is Undefined, optional
+    conditions : [ClusterxK8sIoV1alpha3MachineHealthCheckStatusConditionsItems0], default is Undefined, optional
         Conditions defines current service state of the MachineHealthCheck.
     currentHealthy : int, default is Undefined, optional
         total number of healthy machines counted by this machine health check
@@ -206,7 +202,7 @@ schema ClusterxK8sIoV1beta1MachineHealthCheckStatus:
     """
 
 
-    conditions?: [ClusterxK8sIoV1beta1MachineHealthCheckStatusConditionsItems0]
+    conditions?: [ClusterxK8sIoV1alpha3MachineHealthCheckStatusConditionsItems0]
 
     currentHealthy?: int
 
@@ -225,13 +221,13 @@ schema ClusterxK8sIoV1beta1MachineHealthCheckStatus:
         remediationsAllowed >= 0
 
 
-schema ClusterxK8sIoV1beta1MachineHealthCheckStatusConditionsItems0:
+schema ClusterxK8sIoV1alpha3MachineHealthCheckStatusConditionsItems0:
     """
     Condition defines an observation of a Cluster API resource operational state.
 
     Attributes
     ----------
-    lastTransitionTime : str, default is Undefined, required
+    lastTransitionTime : str, default is Undefined, optional
         Last time the condition transitioned from one status to another. This should be when the underlying condition changed. If that is not known, then using the time when the API field changed is acceptable.
     message : str, default is Undefined, optional
         A human readable message indicating details about the transition. This field may be empty.
@@ -246,7 +242,7 @@ schema ClusterxK8sIoV1beta1MachineHealthCheckStatusConditionsItems0:
     """
 
 
-    lastTransitionTime: str
+    lastTransitionTime?: str
 
     message?: str
 

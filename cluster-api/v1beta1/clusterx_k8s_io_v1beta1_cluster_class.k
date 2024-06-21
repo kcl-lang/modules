@@ -4,6 +4,7 @@ Editing this file might prove futile when you re-run the KCL auto-gen generate c
 """
 import regex
 import k8s.apimachinery.pkg.apis.meta.v1
+regex_match = regex.match
 
 
 schema ClusterClass:
@@ -139,7 +140,7 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecControlPlaneMachineHealthCheck:
 
 
     check:
-        regex.match(str(unhealthyRange), r"^\[[0-9]+-[0-9]+\]$") if unhealthyRange
+        regex_match(str(unhealthyRange), r"^\[[0-9]+-[0-9]+\]$") if unhealthyRange
 
 
 schema ClusterxK8sIoV1beta1ClusterClassSpecControlPlaneMachineHealthCheckRemediationTemplate:
@@ -584,6 +585,8 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecVariablesItems0:
 
     Attributes
     ----------
+    metadata : ClusterxK8sIoV1beta1ClusterClassSpecVariablesItems0Metadata, default is Undefined, optional
+        metadata
     name : str, default is Undefined, required
         Name of the variable.
     required : bool, default is Undefined, required
@@ -593,11 +596,31 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecVariablesItems0:
     """
 
 
+    metadata?: ClusterxK8sIoV1beta1ClusterClassSpecVariablesItems0Metadata
+
     name: str
 
     required: bool
 
     $schema: ClusterxK8sIoV1beta1ClusterClassSpecVariablesItems0Schema
+
+
+schema ClusterxK8sIoV1beta1ClusterClassSpecVariablesItems0Metadata:
+    """
+    Metadata is the metadata of a variable. It can be used to add additional data for higher level tools to a ClusterClassVariable.
+
+    Attributes
+    ----------
+    annotations : {str:str}, default is Undefined, optional
+        Annotations is an unstructured key value map that can be used to store and retrieve arbitrary metadata. They are not queryable.
+    labels : {str:str}, default is Undefined, optional
+        Map of string keys and values that can be used to organize and categorize (scope and select) variables.
+    """
+
+
+    annotations?: {str:str}
+
+    labels?: {str:str}
 
 
 schema ClusterxK8sIoV1beta1ClusterClassSpecVariablesItems0Schema:
@@ -807,7 +830,7 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0Machin
 
 
     check:
-        regex.match(str(unhealthyRange), r"^\[[0-9]+-[0-9]+\]$") if unhealthyRange
+        regex_match(str(unhealthyRange), r"^\[[0-9]+-[0-9]+\]$") if unhealthyRange
 
 
 schema ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0MachineHealthCheckRemediationTemplate:
@@ -1360,6 +1383,8 @@ schema ClusterxK8sIoV1beta1ClusterClassStatusVariablesItems0DefinitionsItems0:
     ----------
     from : str, default is Undefined, required
         From specifies the origin of the variable definition. This will be `inline` for variables defined in the ClusterClass or the name of a patch defined in the ClusterClass for variables discovered from a DiscoverVariables runtime extensions.
+    metadata : ClusterxK8sIoV1beta1ClusterClassStatusVariablesItems0DefinitionsItems0Metadata, default is Undefined, optional
+        metadata
     required : bool, default is Undefined, required
         Required specifies if the variable is required. Note: this applies to the variable as a whole and thus the top-level object defined in the schema. If nested fields are required, this will be specified inside the schema.
     $schema : ClusterxK8sIoV1beta1ClusterClassStatusVariablesItems0DefinitionsItems0Schema, default is Undefined, required
@@ -1369,9 +1394,29 @@ schema ClusterxK8sIoV1beta1ClusterClassStatusVariablesItems0DefinitionsItems0:
 
     from: str
 
+    metadata?: ClusterxK8sIoV1beta1ClusterClassStatusVariablesItems0DefinitionsItems0Metadata
+
     required: bool
 
     $schema: ClusterxK8sIoV1beta1ClusterClassStatusVariablesItems0DefinitionsItems0Schema
+
+
+schema ClusterxK8sIoV1beta1ClusterClassStatusVariablesItems0DefinitionsItems0Metadata:
+    """
+    Metadata is the metadata of a variable. It can be used to add additional data for higher level tools to a ClusterClassVariable.
+
+    Attributes
+    ----------
+    annotations : {str:str}, default is Undefined, optional
+        Annotations is an unstructured key value map that can be used to store and retrieve arbitrary metadata. They are not queryable.
+    labels : {str:str}, default is Undefined, optional
+        Map of string keys and values that can be used to organize and categorize (scope and select) variables.
+    """
+
+
+    annotations?: {str:str}
+
+    labels?: {str:str}
 
 
 schema ClusterxK8sIoV1beta1ClusterClassStatusVariablesItems0DefinitionsItems0Schema:
