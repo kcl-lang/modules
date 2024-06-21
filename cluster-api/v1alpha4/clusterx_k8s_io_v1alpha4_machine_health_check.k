@@ -4,6 +4,7 @@ Editing this file might prove futile when you re-run the KCL auto-gen generate c
 """
 import regex
 import k8s.apimachinery.pkg.apis.meta.v1
+regex_match = regex.match
 
 
 schema MachineHealthCheck:
@@ -78,7 +79,7 @@ schema ClusterxK8sIoV1alpha4MachineHealthCheckSpec:
     check:
         len(clusterName) >= 1
         len(unhealthyConditions) >= 1
-        regex.match(str(unhealthyRange), r"^\[[0-9]+-[0-9]+\]$") if unhealthyRange
+        regex_match(str(unhealthyRange), r"^\[[0-9]+-[0-9]+\]$") if unhealthyRange
 
 
 schema ClusterxK8sIoV1alpha4MachineHealthCheckSpecRemediationTemplate:
