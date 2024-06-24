@@ -1,0 +1,25 @@
+version: v1.6.1
+name: cluster-api-provider-gcp
+displayName: cluster-api-provider-gcp
+createdAt: "2024-06-24T08:32:35Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `cluster-api-provider-gcp` with tag `v1.6.1` as dependency
+  ```
+  kcl mod add cluster-api-provider-gcp:v1.6.1
+  ```
+
+  #### Pull `cluster-api-provider-gcp` with tag `v1.6.1` to local
+  ```
+  kcl mod pull cluster-api-provider-gcp:v1.6.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
