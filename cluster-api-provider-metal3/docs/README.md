@@ -177,10 +177,10 @@ BareMetalHostSpec defines the desired state of BareMetalHost
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**architecture**|str|CPU architecture of the host, e.g. "x86_64" or "aarch64". If unset, eventually populated by inspection.||
-|**automatedCleaningMode**|"metadata" | "disabled"|When set to disabled, automated cleaning will be avoided during provisioning and deprovisioning.|"metadata"|
+|**automatedCleaningMode**|"metadata" \| "disabled"|When set to disabled, automated cleaning will be avoided during provisioning and deprovisioning.|"metadata"|
 |**bmc**|[Metal3IoV1alpha1BareMetalHostSpecBmc](#metal3iov1alpha1baremetalhostspecbmc)|bmc||
 |**bootMACAddress**|str|Which MAC address will PXE boot? This is optional for some types, but required for libvirt VMs driven by vbmc.||
-|**bootMode**|"UEFI" | "UEFISecureBoot" | "legacy"|Select the method of initializing the hardware during boot. Defaults to UEFI.||
+|**bootMode**|"UEFI" \| "UEFISecureBoot" \| "legacy"|Select the method of initializing the hardware during boot. Defaults to UEFI.||
 |**consumerRef**|[Metal3IoV1alpha1BareMetalHostSpecConsumerRef](#metal3iov1alpha1baremetalhostspecconsumerref)|consumer ref||
 |**customDeploy**|[Metal3IoV1alpha1BareMetalHostSpecCustomDeploy](#metal3iov1alpha1baremetalhostspeccustomdeploy)|custom deploy||
 |**description**|str|Description is a human-entered text used to help identify the host||
@@ -230,7 +230,7 @@ A custom deploy procedure.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**method** `required`|str|Custom deploy method name. This name is specific to the deploy ramdisk used. If you don't have a custom deploy ramdisk, you shouldn't use CustomDeploy.||
+|**method** `required`|str|Custom deploy method name. This name is specific to the deploy ramdisk used. If you don&#39;t have a custom deploy ramdisk, you shouldn&#39;t use CustomDeploy.||
 ### Metal3IoV1alpha1BareMetalHostSpecFirmware
 
 BIOS configuration for bare metal server
@@ -239,9 +239,9 @@ BIOS configuration for bare metal server
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**simultaneousMultithreadingEnabled**|True | False|Allows a single physical processor core to appear as several logical processors. This supports following options: true, false.||
-|**sriovEnabled**|True | False|SR-IOV support enables a hypervisor to create virtual instances of a PCI-express device, potentially increasing performance. This supports following options: true, false.||
-|**virtualizationEnabled**|True | False|Supports the virtualization of platform hardware. This supports following options: true, false.||
+|**simultaneousMultithreadingEnabled**|True \| False|Allows a single physical processor core to appear as several logical processors. This supports following options: true, false.||
+|**sriovEnabled**|True \| False|SR-IOV support enables a hypervisor to create virtual instances of a PCI-express device, potentially increasing performance. This supports following options: true, false.||
+|**virtualizationEnabled**|True \| False|Supports the virtualization of platform hardware. This supports following options: true, false.||
 ### Metal3IoV1alpha1BareMetalHostSpecImage
 
 Image holds the details of the image to be provisioned.
@@ -251,8 +251,8 @@ Image holds the details of the image to be provisioned.
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**checksum**|str|Checksum is the checksum for the image.||
-|**checksumType**|"md5" | "sha256" | "sha512"|ChecksumType is the checksum algorithm for the image. e.g md5, sha256, sha512||
-|**format**|"raw" | "qcow2" | "vdi" | "vmdk" | "live-iso"|DiskFormat contains the format of the image (raw, qcow2, ...). Needs to be set to raw for raw images streaming. Note live-iso means an iso referenced by the url will be live-booted and not deployed to disk, and in this case the checksum options are not required and if specified will be ignored.||
+|**checksumType**|"md5" \| "sha256" \| "sha512"|ChecksumType is the checksum algorithm for the image. e.g md5, sha256, sha512||
+|**format**|"raw" \| "qcow2" \| "vdi" \| "vmdk" \| "live-iso"|DiskFormat contains the format of the image (raw, qcow2, ...). Needs to be set to raw for raw images streaming. Note live-iso means an iso referenced by the url will be live-booted and not deployed to disk, and in this case the checksum options are not required and if specified will be ignored.||
 |**url** `required`|str|URL is a location of an image to deploy.||
 ### Metal3IoV1alpha1BareMetalHostSpecMetaData
 
@@ -282,8 +282,8 @@ RAID configuration for bare metal server
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**hardwareRAIDVolumes**|[[Metal3IoV1alpha1BareMetalHostSpecRaidHardwareRAIDVolumesItems0](#metal3iov1alpha1baremetalhostspecraidhardwareraidvolumesitems0)]|The list of logical disks for hardware RAID, if rootDeviceHints isn't used, first volume is root volume. You can set the value of this field to `[]` to clear all the hardware RAID configurations.||
-|**softwareRAIDVolumes**|[[Metal3IoV1alpha1BareMetalHostSpecRaidSoftwareRAIDVolumesItems0](#metal3iov1alpha1baremetalhostspecraidsoftwareraidvolumesitems0)]|The list of logical disks for software RAID, if rootDeviceHints isn't used, first volume is root volume. If HardwareRAIDVolumes is set this item will be invalid. The number of created Software RAID devices must be 1 or 2. If there is only one Software RAID device, it has to be a RAID-1. If there are two, the first one has to be a RAID-1, while the RAID level for the second one can be 0, 1, or 1+0. As the first RAID device will be the deployment device, enforcing a RAID-1 reduces the risk of ending up with a non-booting node in case of a disk failure. Software RAID will always be deleted.||
+|**hardwareRAIDVolumes**|[[Metal3IoV1alpha1BareMetalHostSpecRaidHardwareRAIDVolumesItems0](#metal3iov1alpha1baremetalhostspecraidhardwareraidvolumesitems0)]|The list of logical disks for hardware RAID, if rootDeviceHints isn&#39;t used, first volume is root volume. You can set the value of this field to `[]` to clear all the hardware RAID configurations.||
+|**softwareRAIDVolumes**|[[Metal3IoV1alpha1BareMetalHostSpecRaidSoftwareRAIDVolumesItems0](#metal3iov1alpha1baremetalhostspecraidsoftwareraidvolumesitems0)]|The list of logical disks for software RAID, if rootDeviceHints isn&#39;t used, first volume is root volume. If HardwareRAIDVolumes is set this item will be invalid. The number of created Software RAID devices must be 1 or 2. If there is only one Software RAID device, it has to be a RAID-1. If there are two, the first one has to be a RAID-1, while the RAID level for the second one can be 0, 1, or 1+0. As the first RAID device will be the deployment device, enforcing a RAID-1 reduces the risk of ending up with a non-booting node in case of a disk failure. Software RAID will always be deleted.||
 ### Metal3IoV1alpha1BareMetalHostSpecRaidHardwareRAIDVolumesItems0
 
 HardwareRAIDVolume defines the desired configuration of volume in hardware RAID
@@ -293,7 +293,7 @@ HardwareRAIDVolume defines the desired configuration of volume in hardware RAID
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**controller**|str|The name of the RAID controller to use||
-|**level** `required`|"0" | "1" | "2" | "5" | "6" | "1+0" | "5+0" | "6+0"|RAID level for the logical disk. The following levels are supported: 0;1;2;5;6;1+0;5+0;6+0.||
+|**level** `required`|"0" \| "1" \| "2" \| "5" \| "6" \| "1+0" \| "5+0" \| "6+0"|RAID level for the logical disk. The following levels are supported: 0;1;2;5;6;1+0;5+0;6+0.||
 |**name**|str|Name of the volume. Should be unique within the Node. If not specified, volume name will be auto-generated.||
 |**numberOfPhysicalDisks**|int|Integer, number of physical disks to use for the logical disk. Defaults to minimum number of disks required for the particular RAID level.||
 |**physicalDisks**|[str]|Optional list of physical disk names to be used for the Hardware RAID volumes. The disk names are interpreted by the Hardware RAID controller, and the format is hardware specific.||
@@ -307,7 +307,7 @@ SoftwareRAIDVolume defines the desired configuration of volume in software RAID
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**level** `required`|"0" | "1" | "1+0"|RAID level for the logical disk. The following levels are supported: 0;1;1+0.||
+|**level** `required`|"0" \| "1" \| "1+0"|RAID level for the logical disk. The following levels are supported: 0;1;1+0.||
 |**physicalDisks**|[[Metal3IoV1alpha1BareMetalHostSpecRaidSoftwareRAIDVolumesItems0PhysicalDisksItems0](#metal3iov1alpha1baremetalhostspecraidsoftwareraidvolumesitems0physicaldisksitems0)]|A list of device hints, the number of items should be greater than or equal to 2.||
 |**sizeGibibytes**|int|Size (Integer) of the logical disk to be created in GiB. If unspecified or set be 0, the maximum capacity of disk will be used for logical disk.||
 ### Metal3IoV1alpha1BareMetalHostSpecRaidSoftwareRAIDVolumesItems0PhysicalDisksItems0
@@ -378,13 +378,13 @@ BareMetalHostStatus defines the observed state of BareMetalHost
 | --- | --- | --- | --- |
 |**errorCount** `required`|int|ErrorCount records how many times the host has encoutered an error since the last successful operation|0|
 |**errorMessage** `required`|str|the last error message reported by the provisioning subsystem||
-|**errorType**|"provisioned registration error" | "registration error" | "inspection error" | "preparation error" | "provisioning error" | "power management error"|ErrorType indicates the type of failure encountered when the OperationalStatus is OperationalStatusError||
+|**errorType**|"provisioned registration error" \| "registration error" \| "inspection error" \| "preparation error" \| "provisioning error" \| "power management error"|ErrorType indicates the type of failure encountered when the OperationalStatus is OperationalStatusError||
 |**goodCredentials**|[Metal3IoV1alpha1BareMetalHostStatusGoodCredentials](#metal3iov1alpha1baremetalhoststatusgoodcredentials)|good credentials||
 |**hardware**|[Metal3IoV1alpha1BareMetalHostStatusHardware](#metal3iov1alpha1baremetalhoststatushardware)|hardware||
 |**hardwareProfile** `required`|str|The name of the profile matching the hardware details.||
 |**lastUpdated**|str|LastUpdated identifies when this status was last observed.||
 |**operationHistory**|[Metal3IoV1alpha1BareMetalHostStatusOperationHistory](#metal3iov1alpha1baremetalhoststatusoperationhistory)|operation history||
-|**operationalStatus** `required`|"" | "OK" | "discovered" | "error" | "delayed" | "detached"|OperationalStatus holds the status of the host||
+|**operationalStatus** `required`|"" \| "OK" \| "discovered" \| "error" \| "delayed" \| "detached"|OperationalStatus holds the status of the host||
 |**poweredOn** `required`|bool|indicator for whether or not the host is powered on||
 |**provisioning** `required`|[Metal3IoV1alpha1BareMetalHostStatusProvisioning](#metal3iov1alpha1baremetalhoststatusprovisioning)|provisioning||
 |**triedCredentials**|[Metal3IoV1alpha1BareMetalHostStatusTriedCredentials](#metal3iov1alpha1baremetalhoststatustriedcredentials)|tried credentials||
@@ -493,10 +493,10 @@ Storage describes one storage device (disk, SSD, etc.) on the host.
 |**hctl**|str|The SCSI location of the device||
 |**model**|str|Hardware model||
 |**name**|str|The Linux device name of the disk, e.g. "/dev/sda". Note that this may not be stable across reboots.||
-|**rotational**|bool|Whether this disk represents rotational storage. This field is not recommended for usage, please prefer using 'Type' field instead, this field will be deprecated eventually.||
+|**rotational**|bool|Whether this disk represents rotational storage. This field is not recommended for usage, please prefer using &#39;Type&#39; field instead, this field will be deprecated eventually.||
 |**serialNumber**|str|The serial number of the device||
 |**sizeBytes**|int|The size of the disk in Bytes||
-|**type**|"HDD" | "SSD" | "NVME"|||
+|**type**|"HDD" \| "SSD" \| "NVME"|||
 |**vendor**|str|The name of the vendor of the device||
 |**wwn**|str|The WWN of the device||
 |**wwnVendorExtension**|str|The WWN Vendor extension of the device||
@@ -572,8 +572,8 @@ Information tracked by the provisioner.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**ID** `required`|str|The machine's UUID from the underlying provisioning tool||
-|**bootMode**|"UEFI" | "UEFISecureBoot" | "legacy"|BootMode indicates the boot mode used to provision the node||
+|**ID** `required`|str|The machine&#39;s UUID from the underlying provisioning tool||
+|**bootMode**|"UEFI" \| "UEFISecureBoot" \| "legacy"|BootMode indicates the boot mode used to provision the node||
 |**customDeploy**|[Metal3IoV1alpha1BareMetalHostStatusProvisioningCustomDeploy](#metal3iov1alpha1baremetalhoststatusprovisioningcustomdeploy)|custom deploy||
 |**firmware**|[Metal3IoV1alpha1BareMetalHostStatusProvisioningFirmware](#metal3iov1alpha1baremetalhoststatusprovisioningfirmware)|firmware||
 |**image**|[Metal3IoV1alpha1BareMetalHostStatusProvisioningImage](#metal3iov1alpha1baremetalhoststatusprovisioningimage)|image||
@@ -588,7 +588,7 @@ Custom deploy procedure applied to the host.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**method** `required`|str|Custom deploy method name. This name is specific to the deploy ramdisk used. If you don't have a custom deploy ramdisk, you shouldn't use CustomDeploy.||
+|**method** `required`|str|Custom deploy method name. This name is specific to the deploy ramdisk used. If you don&#39;t have a custom deploy ramdisk, you shouldn&#39;t use CustomDeploy.||
 ### Metal3IoV1alpha1BareMetalHostStatusProvisioningFirmware
 
 The Bios set by the user
@@ -597,9 +597,9 @@ The Bios set by the user
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**simultaneousMultithreadingEnabled**|True | False|Allows a single physical processor core to appear as several logical processors. This supports following options: true, false.||
-|**sriovEnabled**|True | False|SR-IOV support enables a hypervisor to create virtual instances of a PCI-express device, potentially increasing performance. This supports following options: true, false.||
-|**virtualizationEnabled**|True | False|Supports the virtualization of platform hardware. This supports following options: true, false.||
+|**simultaneousMultithreadingEnabled**|True \| False|Allows a single physical processor core to appear as several logical processors. This supports following options: true, false.||
+|**sriovEnabled**|True \| False|SR-IOV support enables a hypervisor to create virtual instances of a PCI-express device, potentially increasing performance. This supports following options: true, false.||
+|**virtualizationEnabled**|True \| False|Supports the virtualization of platform hardware. This supports following options: true, false.||
 ### Metal3IoV1alpha1BareMetalHostStatusProvisioningImage
 
 Image holds the details of the last image successfully provisioned to the host.
@@ -609,8 +609,8 @@ Image holds the details of the last image successfully provisioned to the host.
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**checksum**|str|Checksum is the checksum for the image.||
-|**checksumType**|"md5" | "sha256" | "sha512"|ChecksumType is the checksum algorithm for the image. e.g md5, sha256, sha512||
-|**format**|"raw" | "qcow2" | "vdi" | "vmdk" | "live-iso"|DiskFormat contains the format of the image (raw, qcow2, ...). Needs to be set to raw for raw images streaming. Note live-iso means an iso referenced by the url will be live-booted and not deployed to disk, and in this case the checksum options are not required and if specified will be ignored.||
+|**checksumType**|"md5" \| "sha256" \| "sha512"|ChecksumType is the checksum algorithm for the image. e.g md5, sha256, sha512||
+|**format**|"raw" \| "qcow2" \| "vdi" \| "vmdk" \| "live-iso"|DiskFormat contains the format of the image (raw, qcow2, ...). Needs to be set to raw for raw images streaming. Note live-iso means an iso referenced by the url will be live-booted and not deployed to disk, and in this case the checksum options are not required and if specified will be ignored.||
 |**url** `required`|str|URL is a location of an image to deploy.||
 ### Metal3IoV1alpha1BareMetalHostStatusProvisioningRaid
 
@@ -620,8 +620,8 @@ The Raid set by the user
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**hardwareRAIDVolumes**|[[Metal3IoV1alpha1BareMetalHostStatusProvisioningRaidHardwareRAIDVolumesItems0](#metal3iov1alpha1baremetalhoststatusprovisioningraidhardwareraidvolumesitems0)]|The list of logical disks for hardware RAID, if rootDeviceHints isn't used, first volume is root volume. You can set the value of this field to `[]` to clear all the hardware RAID configurations.||
-|**softwareRAIDVolumes**|[[Metal3IoV1alpha1BareMetalHostStatusProvisioningRaidSoftwareRAIDVolumesItems0](#metal3iov1alpha1baremetalhoststatusprovisioningraidsoftwareraidvolumesitems0)]|The list of logical disks for software RAID, if rootDeviceHints isn't used, first volume is root volume. If HardwareRAIDVolumes is set this item will be invalid. The number of created Software RAID devices must be 1 or 2. If there is only one Software RAID device, it has to be a RAID-1. If there are two, the first one has to be a RAID-1, while the RAID level for the second one can be 0, 1, or 1+0. As the first RAID device will be the deployment device, enforcing a RAID-1 reduces the risk of ending up with a non-booting node in case of a disk failure. Software RAID will always be deleted.||
+|**hardwareRAIDVolumes**|[[Metal3IoV1alpha1BareMetalHostStatusProvisioningRaidHardwareRAIDVolumesItems0](#metal3iov1alpha1baremetalhoststatusprovisioningraidhardwareraidvolumesitems0)]|The list of logical disks for hardware RAID, if rootDeviceHints isn&#39;t used, first volume is root volume. You can set the value of this field to `[]` to clear all the hardware RAID configurations.||
+|**softwareRAIDVolumes**|[[Metal3IoV1alpha1BareMetalHostStatusProvisioningRaidSoftwareRAIDVolumesItems0](#metal3iov1alpha1baremetalhoststatusprovisioningraidsoftwareraidvolumesitems0)]|The list of logical disks for software RAID, if rootDeviceHints isn&#39;t used, first volume is root volume. If HardwareRAIDVolumes is set this item will be invalid. The number of created Software RAID devices must be 1 or 2. If there is only one Software RAID device, it has to be a RAID-1. If there are two, the first one has to be a RAID-1, while the RAID level for the second one can be 0, 1, or 1+0. As the first RAID device will be the deployment device, enforcing a RAID-1 reduces the risk of ending up with a non-booting node in case of a disk failure. Software RAID will always be deleted.||
 ### Metal3IoV1alpha1BareMetalHostStatusProvisioningRaidHardwareRAIDVolumesItems0
 
 HardwareRAIDVolume defines the desired configuration of volume in hardware RAID
@@ -631,7 +631,7 @@ HardwareRAIDVolume defines the desired configuration of volume in hardware RAID
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**controller**|str|The name of the RAID controller to use||
-|**level** `required`|"0" | "1" | "2" | "5" | "6" | "1+0" | "5+0" | "6+0"|RAID level for the logical disk. The following levels are supported: 0;1;2;5;6;1+0;5+0;6+0.||
+|**level** `required`|"0" \| "1" \| "2" \| "5" \| "6" \| "1+0" \| "5+0" \| "6+0"|RAID level for the logical disk. The following levels are supported: 0;1;2;5;6;1+0;5+0;6+0.||
 |**name**|str|Name of the volume. Should be unique within the Node. If not specified, volume name will be auto-generated.||
 |**numberOfPhysicalDisks**|int|Integer, number of physical disks to use for the logical disk. Defaults to minimum number of disks required for the particular RAID level.||
 |**physicalDisks**|[str]|Optional list of physical disk names to be used for the Hardware RAID volumes. The disk names are interpreted by the Hardware RAID controller, and the format is hardware specific.||
@@ -645,7 +645,7 @@ SoftwareRAIDVolume defines the desired configuration of volume in software RAID
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**level** `required`|"0" | "1" | "1+0"|RAID level for the logical disk. The following levels are supported: 0;1;1+0.||
+|**level** `required`|"0" \| "1" \| "1+0"|RAID level for the logical disk. The following levels are supported: 0;1;1+0.||
 |**physicalDisks**|[[Metal3IoV1alpha1BareMetalHostStatusProvisioningRaidSoftwareRAIDVolumesItems0PhysicalDisksItems0](#metal3iov1alpha1baremetalhoststatusprovisioningraidsoftwareraidvolumesitems0physicaldisksitems0)]|A list of device hints, the number of items should be greater than or equal to 2.||
 |**sizeGibibytes**|int|Size (Integer) of the logical disk to be created in GiB. If unspecified or set be 0, the maximum capacity of disk will be used for logical disk.||
 ### Metal3IoV1alpha1BareMetalHostStatusProvisioningRaidSoftwareRAIDVolumesItems0PhysicalDisksItems0
@@ -747,7 +747,7 @@ Condition defines an observation of a Cluster API resource operational state.
 | --- | --- | --- | --- |
 |**lastTransitionTime** `required`|str|Last time the condition transitioned from one status to another. This should be when the underlying condition changed. If that is not known, then using the time when the API field changed is acceptable.||
 |**message**|str|A human readable message indicating details about the transition. This field may be empty.||
-|**reason**|str|The reason for the condition's last transition in CamelCase. The specific API may choose whether or not this field is considered a guaranteed API. This field may not be empty.||
+|**reason**|str|The reason for the condition&#39;s last transition in CamelCase. The specific API may choose whether or not this field is considered a guaranteed API. This field may not be empty.||
 |**severity**|str|Severity provides an explicit classification of Reason code, so the users or machines can immediately understand the current situation and act accordingly. The Severity field MUST be set only when Status=False.||
 |**status** `required`|str|Status of the condition, one of True, False, Unknown.||
 |**type** `required`|str|||
@@ -927,7 +927,7 @@ MetaDataFromAnnotation contains the information to fetch an annotation content, 
 | --- | --- | --- | --- |
 |**annotation** `required`|str|Annotation is the key of the Annotation to fetch||
 |**key** `required`|str|Key will be used as the key to set in the metadata map for cloud-init||
-|**object** `required`|"machine" | "metal3machine" | "baremetalhost"|Object is the type of the object from which we retrieve the name||
+|**object** `required`|"machine" \| "metal3machine" \| "baremetalhost"|Object is the type of the object from which we retrieve the name||
 ### InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecMetaDataFromHostInterfacesItems0
 
 MetaDataHostInterface contains the information to render the object name.
@@ -948,7 +948,7 @@ MetaDataFromLabel contains the information to fetch a label content, if the labe
 | --- | --- | --- | --- |
 |**key** `required`|str|Key will be used as the key to set in the metadata map for cloud-init||
 |**label** `required`|str|Label is the key of the label to fetch||
-|**object** `required`|"machine" | "metal3machine" | "baremetalhost"|Object is the type of the object from which we retrieve the name||
+|**object** `required`|"machine" \| "metal3machine" \| "baremetalhost"|Object is the type of the object from which we retrieve the name||
 ### InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecMetaDataGatewaysFromIPPoolItems0
 
 infrastructure clusterx k8s io v1beta1 metal3 data template spec meta data gateways from IP pool items0
@@ -1004,7 +1004,7 @@ MetaDataObjectName contains the information to render the object name.
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**key** `required`|str|Key will be used as the key to set in the metadata map for cloud-init||
-|**object** `required`|"machine" | "metal3machine" | "baremetalhost"|Object is the type of the object from which we retrieve the name||
+|**object** `required`|"machine" \| "metal3machine" \| "baremetalhost"|Object is the type of the object from which we retrieve the name||
 ### InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecMetaDataPrefixesFromIPPoolItems0
 
 infrastructure clusterx k8s io v1beta1 metal3 data template spec meta data prefixes from IP pool items0
@@ -1058,8 +1058,8 @@ NetworkDataLinkBond represents a bond link object.
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**bondLinks**|[str]|BondLinks is the list of links that are part of the bond.||
-|**bondMode** `required`|"balance-rr" | "active-backup" | "balance-xor" | "broadcast" | "balance-tlb" | "balance-alb" | "802.3ad"|BondMode is the mode of bond used. It can be one of balance-rr, active-backup, balance-xor, broadcast, balance-tlb, balance-alb, 802.3ad||
-|**bondXmitHashPolicy**|"layer2" | "layer3+4" | "layer2+3"|Selects the transmit hash policy used for port selection in balance-xor and 802.3ad modes||
+|**bondMode** `required`|"balance-rr" \| "active-backup" \| "balance-xor" \| "broadcast" \| "balance-tlb" \| "balance-alb" \| "802.3ad"|BondMode is the mode of bond used. It can be one of balance-rr, active-backup, balance-xor, broadcast, balance-tlb, balance-alb, 802.3ad||
+|**bondXmitHashPolicy**|"layer2" \| "layer3+4" \| "layer2+3"|Selects the transmit hash policy used for port selection in balance-xor and 802.3ad modes||
 |**id** `required`|str|Id is the ID of the interface (used for naming)||
 |**macAddress** `required`|[InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataLinksBondsItems0MacAddress](#infrastructureclusterxk8siov1beta1metal3datatemplatespecnetworkdatalinksbondsitems0macaddress)|mac address||
 |**mtu**|int|MTU is the MTU of the interface|1500|
@@ -1083,7 +1083,7 @@ FromAnnotation references an object Annotation to retrieve the MAC address from
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**annotation** `required`|str|Annotation is the key of the Annotation to fetch||
-|**object** `required`|"machine" | "metal3machine" | "baremetalhost"|Object is the type of the object from which we retrieve the name||
+|**object** `required`|"machine" \| "metal3machine" \| "baremetalhost"|Object is the type of the object from which we retrieve the name||
 ### InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataLinksEthernetsItems0
 
 NetworkDataLinkEthernet represents an ethernet link object.
@@ -1095,7 +1095,7 @@ NetworkDataLinkEthernet represents an ethernet link object.
 |**id** `required`|str|Id is the ID of the interface (used for naming)||
 |**macAddress** `required`|[InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataLinksEthernetsItems0MacAddress](#infrastructureclusterxk8siov1beta1metal3datatemplatespecnetworkdatalinksethernetsitems0macaddress)|mac address||
 |**mtu**|int|MTU is the MTU of the interface|1500|
-|**type** `required`|"bridge" | "dvs" | "hw_veb" | "hyperv" | "ovs" | "tap" | "vhostuser" | "vif" | "phy"|||
+|**type** `required`|"bridge" \| "dvs" \| "hw_veb" \| "hyperv" \| "ovs" \| "tap" \| "vhostuser" \| "vif" \| "phy"|||
 ### InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataLinksEthernetsItems0MacAddress
 
 MACAddress is the MAC address of the interface, containing the object used to render it.
@@ -1116,7 +1116,7 @@ FromAnnotation references an object Annotation to retrieve the MAC address from
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**annotation** `required`|str|Annotation is the key of the Annotation to fetch||
-|**object** `required`|"machine" | "metal3machine" | "baremetalhost"|Object is the type of the object from which we retrieve the name||
+|**object** `required`|"machine" \| "metal3machine" \| "baremetalhost"|Object is the type of the object from which we retrieve the name||
 ### InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataLinksVlansItems0
 
 NetworkDataLinkVlan represents a vlan link object.
@@ -1150,7 +1150,7 @@ FromAnnotation references an object Annotation to retrieve the MAC address from
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**annotation** `required`|str|Annotation is the key of the Annotation to fetch||
-|**object** `required`|"machine" | "metal3machine" | "baremetalhost"|Object is the type of the object from which we retrieve the name||
+|**object** `required`|"machine" \| "metal3machine" \| "baremetalhost"|Object is the type of the object from which we retrieve the name||
 ### InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworks
 
 Networks  is a structure containing lists of different types objects
@@ -1433,13 +1433,13 @@ Metal3MachineSpec defines the desired state of Metal3Machine.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**automatedCleaningMode**|"metadata" | "disabled"|When set to disabled, automated cleaning of host disks will be skipped during provisioning and deprovisioning.||
+|**automatedCleaningMode**|"metadata" \| "disabled"|When set to disabled, automated cleaning of host disks will be skipped during provisioning and deprovisioning.||
 |**dataTemplate**|[InfrastructureClusterxK8sIoV1beta1Metal3MachineSpecDataTemplate](#infrastructureclusterxk8siov1beta1metal3machinespecdatatemplate)|data template||
 |**hostSelector**|[InfrastructureClusterxK8sIoV1beta1Metal3MachineSpecHostSelector](#infrastructureclusterxk8siov1beta1metal3machinespechostselector)|host selector||
 |**image** `required`|[InfrastructureClusterxK8sIoV1beta1Metal3MachineSpecImage](#infrastructureclusterxk8siov1beta1metal3machinespecimage)|image||
 |**metaData**|[InfrastructureClusterxK8sIoV1beta1Metal3MachineSpecMetaData](#infrastructureclusterxk8siov1beta1metal3machinespecmetadata)|meta data||
 |**networkData**|[InfrastructureClusterxK8sIoV1beta1Metal3MachineSpecNetworkData](#infrastructureclusterxk8siov1beta1metal3machinespecnetworkdata)|network data||
-|**providerID**|str|ProviderID will be the Metal3 machine in ProviderID format (metal3://<bmh-uuid>)||
+|**providerID**|str|ProviderID will be the Metal3 machine in ProviderID format (metal3://&lt;bmh-uuid&gt;)||
 |**userData**|[InfrastructureClusterxK8sIoV1beta1Metal3MachineSpecUserData](#infrastructureclusterxk8siov1beta1metal3machinespecuserdata)|user data||
 ### InfrastructureClusterxK8sIoV1beta1Metal3MachineSpecDataTemplate
 
@@ -1475,7 +1475,7 @@ infrastructure clusterx k8s io v1beta1 metal3 machine spec host selector match e
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**key** `required`|str|key||
-|**operator** `required`|str|Operator represents a key/field's relationship to value(s). See labels.Requirement and fields.Requirement for more details.||
+|**operator** `required`|str|Operator represents a key/field&#39;s relationship to value(s). See labels.Requirement and fields.Requirement for more details.||
 |**values** `required`|[str]|values||
 ### InfrastructureClusterxK8sIoV1beta1Metal3MachineSpecImage
 
@@ -1486,8 +1486,8 @@ Image is the image to be provisioned.
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**checksum** `required`|str|Checksum is a md5sum, sha256sum or sha512sum value or a URL to retrieve one.||
-|**checksumType**|"md5" | "sha256" | "sha512"|ChecksumType is the checksum algorithm for the image. e.g md5, sha256, sha512||
-|**format**|"raw" | "qcow2" | "vdi" | "vmdk" | "live-iso"|DiskFormat contains the image disk format.||
+|**checksumType**|"md5" \| "sha256" \| "sha512"|ChecksumType is the checksum algorithm for the image. e.g md5, sha256, sha512||
+|**format**|"raw" \| "qcow2" \| "vdi" \| "vmdk" \| "live-iso"|DiskFormat contains the image disk format.||
 |**url** `required`|str|URL is a location of an image to deploy.||
 ### InfrastructureClusterxK8sIoV1beta1Metal3MachineSpecMetaData
 
@@ -1511,7 +1511,7 @@ NetworkData is an object storing the reference to the secret containing the netw
 |**namespace**|str|namespace defines the space within which the secret name must be unique.||
 ### InfrastructureClusterxK8sIoV1beta1Metal3MachineSpecUserData
 
-UserData references the Secret that holds user data needed by the bare metal operator. The Namespace is optional; it will default to the metal3machine's namespace if not specified.
+UserData references the Secret that holds user data needed by the bare metal operator. The Namespace is optional; it will default to the metal3machine&#39;s namespace if not specified.
 
 #### Attributes
 
@@ -1529,8 +1529,8 @@ Metal3MachineStatus defines the observed state of Metal3Machine.
 | --- | --- | --- | --- |
 |**addresses**|[[InfrastructureClusterxK8sIoV1beta1Metal3MachineStatusAddressesItems0](#infrastructureclusterxk8siov1beta1metal3machinestatusaddressesitems0)]|Addresses is a list of addresses assigned to the machine. This field is copied from the infrastructure provider reference.||
 |**conditions**|[[InfrastructureClusterxK8sIoV1beta1Metal3MachineStatusConditionsItems0](#infrastructureclusterxk8siov1beta1metal3machinestatusconditionsitems0)]|Conditions defines current service state of the Metal3Machine.||
-|**failureMessage**|str|FailureMessage will be set in the event that there is a terminal problem reconciling the metal3machine and will contain a more verbose string suitable for logging and human consumption.<br />This field should not be set for transitive errors that a controller faces that are expected to be fixed automatically over time (like service outages), but instead indicate that something is fundamentally wrong with the metal3machine's spec or the configuration of the controller, and that manual intervention is required. Examples of terminal errors would be invalid combinations of settings in the spec, values that are unsupported by the controller, or the responsible controller itself being critically misconfigured.<br />Any transient errors that occur during the reconciliation of metal3machines can be added as events to the metal3machine object and/or logged in the controller's output.||
-|**failureReason**|str|FailureReason will be set in the event that there is a terminal problem reconciling the metal3machine and will contain a succinct value suitable for machine interpretation.<br />This field should not be set for transitive errors that a controller faces that are expected to be fixed automatically over time (like service outages), but instead indicate that something is fundamentally wrong with the metal3machine's spec or the configuration of the controller, and that manual intervention is required. Examples of terminal errors would be invalid combinations of settings in the spec, values that are unsupported by the controller, or the responsible controller itself being critically misconfigured.<br />Any transient errors that occur during the reconciliation of metal3machines can be added as events to the metal3machine object and/or logged in the controller's output.||
+|**failureMessage**|str|FailureMessage will be set in the event that there is a terminal problem reconciling the metal3machine and will contain a more verbose string suitable for logging and human consumption.<br />This field should not be set for transitive errors that a controller faces that are expected to be fixed automatically over time (like service outages), but instead indicate that something is fundamentally wrong with the metal3machine&#39;s spec or the configuration of the controller, and that manual intervention is required. Examples of terminal errors would be invalid combinations of settings in the spec, values that are unsupported by the controller, or the responsible controller itself being critically misconfigured.<br />Any transient errors that occur during the reconciliation of metal3machines can be added as events to the metal3machine object and/or logged in the controller&#39;s output.||
+|**failureReason**|str|FailureReason will be set in the event that there is a terminal problem reconciling the metal3machine and will contain a succinct value suitable for machine interpretation.<br />This field should not be set for transitive errors that a controller faces that are expected to be fixed automatically over time (like service outages), but instead indicate that something is fundamentally wrong with the metal3machine&#39;s spec or the configuration of the controller, and that manual intervention is required. Examples of terminal errors would be invalid combinations of settings in the spec, values that are unsupported by the controller, or the responsible controller itself being critically misconfigured.<br />Any transient errors that occur during the reconciliation of metal3machines can be added as events to the metal3machine object and/or logged in the controller&#39;s output.||
 |**lastUpdated**|str|LastUpdated identifies when this status was last observed.||
 |**metaData**|[InfrastructureClusterxK8sIoV1beta1Metal3MachineStatusMetaData](#infrastructureclusterxk8siov1beta1metal3machinestatusmetadata)|meta data||
 |**networkData**|[InfrastructureClusterxK8sIoV1beta1Metal3MachineStatusNetworkData](#infrastructureclusterxk8siov1beta1metal3machinestatusnetworkdata)|network data||
@@ -1540,7 +1540,7 @@ Metal3MachineStatus defines the observed state of Metal3Machine.
 |**userData**|[InfrastructureClusterxK8sIoV1beta1Metal3MachineStatusUserData](#infrastructureclusterxk8siov1beta1metal3machinestatususerdata)|user data||
 ### InfrastructureClusterxK8sIoV1beta1Metal3MachineStatusAddressesItems0
 
-MachineAddress contains information for the node's address.
+MachineAddress contains information for the node&#39;s address.
 
 #### Attributes
 
@@ -1558,7 +1558,7 @@ Condition defines an observation of a Cluster API resource operational state.
 | --- | --- | --- | --- |
 |**lastTransitionTime** `required`|str|Last time the condition transitioned from one status to another. This should be when the underlying condition changed. If that is not known, then using the time when the API field changed is acceptable.||
 |**message**|str|A human readable message indicating details about the transition. This field may be empty.||
-|**reason**|str|The reason for the condition's last transition in CamelCase. The specific API may choose whether or not this field is considered a guaranteed API. This field may not be empty.||
+|**reason**|str|The reason for the condition&#39;s last transition in CamelCase. The specific API may choose whether or not this field is considered a guaranteed API. This field may not be empty.||
 |**severity**|str|Severity provides an explicit classification of Reason code, so the users or machines can immediately understand the current situation and act accordingly. The Severity field MUST be set only when Status=False.||
 |**status** `required`|str|Status of the condition, one of True, False, Unknown.||
 |**type** `required`|str|||
@@ -1599,7 +1599,7 @@ RenderedData is a reference to a rendered Metal3Data object containing the refer
 |**uid**|str|UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids||
 ### InfrastructureClusterxK8sIoV1beta1Metal3MachineStatusUserData
 
-UserData references the Secret that holds user data needed by the bare metal operator. The Namespace is optional; it will default to the metal3machine's namespace if not specified.
+UserData references the Secret that holds user data needed by the bare metal operator. The Namespace is optional; it will default to the metal3machine&#39;s namespace if not specified.
 
 #### Attributes
 
@@ -1615,7 +1615,7 @@ Metal3MachineTemplateSpec defines the desired state of Metal3MachineTemplate.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**nodeReuse**|bool|When set to True, CAPM3 Machine controller will pick the same pool of BMHs' that were released during the upgrade operation.|False|
+|**nodeReuse**|bool|When set to True, CAPM3 Machine controller will pick the same pool of BMHs&#39; that were released during the upgrade operation.|False|
 |**template** `required`|[InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplate](#infrastructureclusterxk8siov1beta1metal3machinetemplatespectemplate)|template||
 ### InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplate
 
@@ -1634,13 +1634,13 @@ Spec is the specification of the desired behavior of the machine.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**automatedCleaningMode**|"metadata" | "disabled"|When set to disabled, automated cleaning of host disks will be skipped during provisioning and deprovisioning.||
+|**automatedCleaningMode**|"metadata" \| "disabled"|When set to disabled, automated cleaning of host disks will be skipped during provisioning and deprovisioning.||
 |**dataTemplate**|[InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpecDataTemplate](#infrastructureclusterxk8siov1beta1metal3machinetemplatespectemplatespecdatatemplate)|data template||
 |**hostSelector**|[InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpecHostSelector](#infrastructureclusterxk8siov1beta1metal3machinetemplatespectemplatespechostselector)|host selector||
 |**image** `required`|[InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpecImage](#infrastructureclusterxk8siov1beta1metal3machinetemplatespectemplatespecimage)|image||
 |**metaData**|[InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpecMetaData](#infrastructureclusterxk8siov1beta1metal3machinetemplatespectemplatespecmetadata)|meta data||
 |**networkData**|[InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpecNetworkData](#infrastructureclusterxk8siov1beta1metal3machinetemplatespectemplatespecnetworkdata)|network data||
-|**providerID**|str|ProviderID will be the Metal3 machine in ProviderID format (metal3://<bmh-uuid>)||
+|**providerID**|str|ProviderID will be the Metal3 machine in ProviderID format (metal3://&lt;bmh-uuid&gt;)||
 |**userData**|[InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpecUserData](#infrastructureclusterxk8siov1beta1metal3machinetemplatespectemplatespecuserdata)|user data||
 ### InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpecDataTemplate
 
@@ -1676,7 +1676,7 @@ infrastructure clusterx k8s io v1beta1 metal3 machine template spec template spe
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**key** `required`|str|key||
-|**operator** `required`|str|Operator represents a key/field's relationship to value(s). See labels.Requirement and fields.Requirement for more details.||
+|**operator** `required`|str|Operator represents a key/field&#39;s relationship to value(s). See labels.Requirement and fields.Requirement for more details.||
 |**values** `required`|[str]|values||
 ### InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpecImage
 
@@ -1687,8 +1687,8 @@ Image is the image to be provisioned.
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**checksum** `required`|str|Checksum is a md5sum, sha256sum or sha512sum value or a URL to retrieve one.||
-|**checksumType**|"md5" | "sha256" | "sha512"|ChecksumType is the checksum algorithm for the image. e.g md5, sha256, sha512||
-|**format**|"raw" | "qcow2" | "vdi" | "vmdk" | "live-iso"|DiskFormat contains the image disk format.||
+|**checksumType**|"md5" \| "sha256" \| "sha512"|ChecksumType is the checksum algorithm for the image. e.g md5, sha256, sha512||
+|**format**|"raw" \| "qcow2" \| "vdi" \| "vmdk" \| "live-iso"|DiskFormat contains the image disk format.||
 |**url** `required`|str|URL is a location of an image to deploy.||
 ### InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpecMetaData
 
@@ -1712,7 +1712,7 @@ NetworkData is an object storing the reference to the secret containing the netw
 |**namespace**|str|namespace defines the space within which the secret name must be unique.||
 ### InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpecUserData
 
-UserData references the Secret that holds user data needed by the bare metal operator. The Namespace is optional; it will default to the metal3machine's namespace if not specified.
+UserData references the Secret that holds user data needed by the bare metal operator. The Namespace is optional; it will default to the metal3machine&#39;s namespace if not specified.
 
 #### Attributes
 
