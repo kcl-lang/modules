@@ -1,0 +1,25 @@
+version: v0.2.4
+name: cluster-api-addon-provider-helm
+displayName: cluster-api-addon-provider-helm
+createdAt: "2024-06-24T06:57:57Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `cluster-api-addon-provider-helm` with tag `v0.2.4` as dependency
+  ```
+  kcl mod add cluster-api-addon-provider-helm:v0.2.4
+  ```
+
+  #### Pull `cluster-api-addon-provider-helm` with tag `v0.2.4` to local
+  ```
+  kcl mod pull cluster-api-addon-provider-helm:v0.2.4
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
