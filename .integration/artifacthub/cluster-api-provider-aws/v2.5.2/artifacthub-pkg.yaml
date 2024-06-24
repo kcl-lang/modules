@@ -1,0 +1,25 @@
+version: v2.5.2
+name: cluster-api-provider-aws
+displayName: cluster-api-provider-aws
+createdAt: "2024-06-24T06:39:34Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `cluster-api-provider-aws` with tag `v2.5.2` as dependency
+  ```
+  kcl mod add cluster-api-provider-aws:v2.5.2
+  ```
+
+  #### Pull `cluster-api-provider-aws` with tag `v2.5.2` to local
+  ```
+  kcl mod pull cluster-api-provider-aws:v2.5.2
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
