@@ -1,7 +1,7 @@
 [package]
 name = "argo-workflow"
 edition = "*"
-version = "0.0.2"
+version = "0.0.3"
 description = "`argo-workflow` is the argo-workflow spec definition"
 
 [dependencies]
