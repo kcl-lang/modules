@@ -4,11 +4,12 @@ Editing this file might prove futile when you re-run the KCL auto-gen generate c
 """
 import regex
 import k8s.apimachinery.pkg.apis.meta.v1
+regex_match = regex.match
 
 
 schema OpAMPBridge:
     """
-    OpAMPBridge is the Schema for the opampbridges API.
+    opentelemetry io v1alpha1 op a m p bridge
 
     Attributes
     ----------
@@ -38,56 +39,60 @@ schema OpAMPBridge:
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpec:
     """
-    OpAMPBridgeSpec defines the desired state of OpAMPBridge.
+    opentelemetry io v1alpha1 op a m p bridge spec
 
     Attributes
     ----------
     affinity : OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinity, default is Undefined, optional
         affinity
     capabilities : {str:bool}, default is Undefined, required
-        Capabilities supported by the OpAMP Bridge
+        capabilities
     componentsAllowed : {str:[str]}, default is Undefined, optional
-        ComponentsAllowed is a list of allowed OpenTelemetry components for each pipeline type (receiver, processor, etc.)
+        components allowed
     endpoint : str, default is Undefined, required
-        OpAMP backend Server endpoint
+        endpoint
     env : [OpentelemetryIoV1alpha1OpAMPBridgeSpecEnvItems0], default is Undefined, optional
-        ENV vars to set on the OpAMPBridge Pods.
+        env
     envFrom : [OpentelemetryIoV1alpha1OpAMPBridgeSpecEnvFromItems0], default is Undefined, optional
-        List of sources to populate environment variables on the OpAMPBridge Pods.
+        env from
+    headers : {str:str}, default is Undefined, optional
+        headers
     hostNetwork : bool, default is Undefined, optional
-        HostNetwork indicates if the pod should run in the host networking namespace.
+        host network
     image : str, default is Undefined, optional
-        Image indicates the container image to use for the OpAMPBridge.
+        image
     imagePullPolicy : str, default is Undefined, optional
-        ImagePullPolicy indicates the pull policy to be used for retrieving the container image (Always, Never, IfNotPresent)
+        image pull policy
     nodeSelector : {str:str}, default is Undefined, optional
-        NodeSelector to schedule OpAMPBridge pods.
+        node selector
     podAnnotations : {str:str}, default is Undefined, optional
-        PodAnnotations is the set of annotations that will be attached to OpAMPBridge pods.
+        pod annotations
+    podDnsConfig : OpentelemetryIoV1alpha1OpAMPBridgeSpecPodDNSConfig, default is Undefined, optional
+        pod Dns config
     podSecurityContext : OpentelemetryIoV1alpha1OpAMPBridgeSpecPodSecurityContext, default is Undefined, optional
         pod security context
     ports : [OpentelemetryIoV1alpha1OpAMPBridgeSpecPortsItems0], default is Undefined, optional
-        Ports allows a set of ports to be exposed by the underlying v1.Service.
+        ports
     priorityClassName : str, default is Undefined, optional
-        If specified, indicates the pod's priority. If not specified, the pod priority will be default or zero if there is no default.
+        priority class name
     replicas : int, default is Undefined, optional
-        Replicas is the number of pod instances for the OpAMPBridge.
+        replicas
     resources : OpentelemetryIoV1alpha1OpAMPBridgeSpecResources, default is Undefined, optional
         resources
     securityContext : OpentelemetryIoV1alpha1OpAMPBridgeSpecSecurityContext, default is Undefined, optional
         security context
     serviceAccount : str, default is Undefined, optional
-        ServiceAccount indicates the name of an existing service account to use with this instance. When set, the operator will not automatically create a ServiceAccount for the OpAMPBridge.
+        service account
     tolerations : [OpentelemetryIoV1alpha1OpAMPBridgeSpecTolerationsItems0], default is Undefined, optional
-        Toleration to schedule OpAMPBridge pods.
+        tolerations
     topologySpreadConstraints : [OpentelemetryIoV1alpha1OpAMPBridgeSpecTopologySpreadConstraintsItems0], default is Undefined, optional
-        TopologySpreadConstraints embedded kubernetes pod configuration option, controls how pods are spread across your cluster among failure-domains such as regions, zones, nodes, and other user-defined top
+        topology spread constraints
     upgradeStrategy : str, default is Undefined, optional
-        UpgradeStrategy represents how the operator will handle upgrades to the CR when a newer version of the operator is deployed
+        upgrade strategy
     volumeMounts : [OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumeMountsItems0], default is Undefined, optional
-        VolumeMounts represents the mount points to use in the underlying OpAMPBridge deployment(s)
+        volume mounts
     volumes : [OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0], default is Undefined, optional
-        Volumes represents which volumes to use in the underlying OpAMPBridge deployment(s).
+        volumes
     """
 
 
@@ -103,6 +108,8 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpec:
 
     envFrom?: [OpentelemetryIoV1alpha1OpAMPBridgeSpecEnvFromItems0]
 
+    headers?: {str:str}
+
     hostNetwork?: bool
 
     image?: str
@@ -112,6 +119,8 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpec:
     nodeSelector?: {str:str}
 
     podAnnotations?: {str:str}
+
+    podDnsConfig?: OpentelemetryIoV1alpha1OpAMPBridgeSpecPodDNSConfig
 
     podSecurityContext?: OpentelemetryIoV1alpha1OpAMPBridgeSpecPodSecurityContext
 
@@ -144,7 +153,7 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpec:
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinity:
     """
-    If specified, indicates the pod's scheduling constraints
+    opentelemetry io v1alpha1 op a m p bridge spec affinity
 
     Attributes
     ----------
@@ -166,12 +175,12 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinity:
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityNodeAffinity:
     """
-    Describes node affinity scheduling rules for the pod.
+    opentelemetry io v1alpha1 op a m p bridge spec affinity node affinity
 
     Attributes
     ----------
     preferredDuringSchedulingIgnoredDuringExecution : [OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0], default is Undefined, optional
-        The scheduler will prefer to schedule pods to nodes that satisfy the affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions.
+        preferred during scheduling ignored during execution
     requiredDuringSchedulingIgnoredDuringExecution : OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution, default is Undefined, optional
         required during scheduling ignored during execution
     """
@@ -184,14 +193,14 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityNodeAffinity:
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
     """
-    An empty preferred scheduling term matches all objects with implicit weight 0 (i.e. it's a no-op). A null preferred scheduling term matches no objects (i.e. is also a no-op).
+    opentelemetry io v1alpha1 op a m p bridge spec affinity node affinity preferred during scheduling ignored during execution items0
 
     Attributes
     ----------
     preference : OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0Preference, default is Undefined, required
         preference
     weight : int, default is Undefined, required
-        Weight associated with matching the corresponding nodeSelectorTerm, in the range 1-100.
+        weight
     """
 
 
@@ -202,14 +211,14 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityNodeAffinityPreferredDuring
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0Preference:
     """
-    A node selector term, associated with the corresponding weight.
+    opentelemetry io v1alpha1 op a m p bridge spec affinity node affinity preferred during scheduling ignored during execution items0 preference
 
     Attributes
     ----------
     matchExpressions : [OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchExpressionsItems0], default is Undefined, optional
-        A list of node selector requirements by node's labels.
+        match expressions
     matchFields : [OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchFieldsItems0], default is Undefined, optional
-        A list of node selector requirements by node's fields.
+        match fields
     """
 
 
@@ -220,16 +229,16 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityNodeAffinityPreferredDuring
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchExpressionsItems0:
     """
-    A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+    opentelemetry io v1alpha1 op a m p bridge spec affinity node affinity preferred during scheduling ignored during execution items0 preference match expressions items0
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The label key that the selector applies to.
+        key
     operator : str, default is Undefined, required
-        Represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists, DoesNotExist. Gt, and Lt.
+        operator
     values : [str], default is Undefined, optional
-        An array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty.
+        values
     """
 
 
@@ -242,16 +251,16 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityNodeAffinityPreferredDuring
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchFieldsItems0:
     """
-    A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+    opentelemetry io v1alpha1 op a m p bridge spec affinity node affinity preferred during scheduling ignored during execution items0 preference match fields items0
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The label key that the selector applies to.
+        key
     operator : str, default is Undefined, required
-        Represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists, DoesNotExist. Gt, and Lt.
+        operator
     values : [str], default is Undefined, optional
-        An array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty.
+        values
     """
 
 
@@ -264,12 +273,12 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityNodeAffinityPreferredDuring
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution:
     """
-    If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node.
+    opentelemetry io v1alpha1 op a m p bridge spec affinity node affinity required during scheduling ignored during execution
 
     Attributes
     ----------
     nodeSelectorTerms : [OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0], default is Undefined, required
-        Required. A list of node selector terms. The terms are ORed.
+        node selector terms
     """
 
 
@@ -278,14 +287,14 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityNodeAffinityRequiredDuringS
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0:
     """
-    A null or empty node selector term matches no objects. The requirements of them are ANDed. The TopologySelectorTerm type implements a subset of the NodeSelectorTerm.
+    opentelemetry io v1alpha1 op a m p bridge spec affinity node affinity required during scheduling ignored during execution node selector terms items0
 
     Attributes
     ----------
     matchExpressions : [OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchExpressionsItems0], default is Undefined, optional
-        A list of node selector requirements by node's labels.
+        match expressions
     matchFields : [OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchFieldsItems0], default is Undefined, optional
-        A list of node selector requirements by node's fields.
+        match fields
     """
 
 
@@ -296,16 +305,16 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityNodeAffinityRequiredDuringS
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchExpressionsItems0:
     """
-    A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+    opentelemetry io v1alpha1 op a m p bridge spec affinity node affinity required during scheduling ignored during execution node selector terms items0 match expressions items0
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The label key that the selector applies to.
+        key
     operator : str, default is Undefined, required
-        Represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists, DoesNotExist. Gt, and Lt.
+        operator
     values : [str], default is Undefined, optional
-        An array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty.
+        values
     """
 
 
@@ -318,16 +327,16 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityNodeAffinityRequiredDuringS
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchFieldsItems0:
     """
-    A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+    opentelemetry io v1alpha1 op a m p bridge spec affinity node affinity required during scheduling ignored during execution node selector terms items0 match fields items0
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The label key that the selector applies to.
+        key
     operator : str, default is Undefined, required
-        Represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists, DoesNotExist. Gt, and Lt.
+        operator
     values : [str], default is Undefined, optional
-        An array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty.
+        values
     """
 
 
@@ -340,14 +349,14 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityNodeAffinityRequiredDuringS
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAffinity:
     """
-    Describes pod affinity scheduling rules (e.g. co-locate this pod in the same node, zone, etc. as some other pod(s)).
+    opentelemetry io v1alpha1 op a m p bridge spec affinity pod affinity
 
     Attributes
     ----------
     preferredDuringSchedulingIgnoredDuringExecution : [OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0], default is Undefined, optional
-        The scheduler will prefer to schedule pods to nodes that satisfy the affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions.
+        preferred during scheduling ignored during execution
     requiredDuringSchedulingIgnoredDuringExecution : [OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0], default is Undefined, optional
-        If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node.
+        required during scheduling ignored during execution
     """
 
 
@@ -358,14 +367,14 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAffinity:
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
     """
-    The weights of all of the matched WeightedPodAffinityTerm fields are added per-node to find the most preferred node(s)
+    opentelemetry io v1alpha1 op a m p bridge spec affinity pod affinity preferred during scheduling ignored during execution items0
 
     Attributes
     ----------
     podAffinityTerm : OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTerm, default is Undefined, required
         pod affinity term
     weight : int, default is Undefined, required
-        weight associated with matching the corresponding podAffinityTerm, in the range 1-100.
+        weight
     """
 
 
@@ -376,22 +385,30 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAffinityPreferredDuringS
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTerm:
     """
-    Required. A pod affinity term, associated with the corresponding weight.
+    opentelemetry io v1alpha1 op a m p bridge spec affinity pod affinity preferred during scheduling ignored during execution items0 pod affinity term
 
     Attributes
     ----------
     labelSelector : OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector, default is Undefined, optional
         label selector
+    matchLabelKeys : [str], default is Undefined, optional
+        match label keys
+    mismatchLabelKeys : [str], default is Undefined, optional
+        mismatch label keys
     namespaceSelector : OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector, default is Undefined, optional
         namespace selector
     namespaces : [str], default is Undefined, optional
-        namespaces specifies a static list of namespace names that the term applies to. The term is applied to the union of the namespaces listed in this field and the ones selected by namespaceSelector.
+        namespaces
     topologyKey : str, default is Undefined, required
-        This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching the labelSelector in the specified namespaces, where co-located is defined as running on a node whose 
+        topology key
     """
 
 
     labelSelector?: OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector
+
+    matchLabelKeys?: [str]
+
+    mismatchLabelKeys?: [str]
 
     namespaceSelector?: OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector
 
@@ -402,14 +419,14 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAffinityPreferredDuringS
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector:
     """
-    A label query over a set of resources, in this case pods.
+    opentelemetry io v1alpha1 op a m p bridge spec affinity pod affinity preferred during scheduling ignored during execution items0 pod affinity term label selector
 
     Attributes
     ----------
     matchExpressions : [OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0], default is Undefined, optional
-        matchExpressions is a list of label selector requirements. The requirements are ANDed.
+        match expressions
     matchLabels : {str:str}, default is Undefined, optional
-        matchLabels is a map of {key,value} pairs.
+        match labels
     """
 
 
@@ -420,16 +437,16 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAffinityPreferredDuringS
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0:
     """
-    A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+    opentelemetry io v1alpha1 op a m p bridge spec affinity pod affinity preferred during scheduling ignored during execution items0 pod affinity term label selector match expressions items0
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        key is the label key that the selector applies to.
+        key
     operator : str, default is Undefined, required
-        operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+        operator
     values : [str], default is Undefined, optional
-        values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty.
+        values
     """
 
 
@@ -442,14 +459,14 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAffinityPreferredDuringS
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector:
     """
-    A label query over the set of namespaces that the term applies to. The term is applied to the union of the namespaces selected by this field and the ones listed in the namespaces field.
+    opentelemetry io v1alpha1 op a m p bridge spec affinity pod affinity preferred during scheduling ignored during execution items0 pod affinity term namespace selector
 
     Attributes
     ----------
     matchExpressions : [OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelectorMatchExpressionsItems0], default is Undefined, optional
-        matchExpressions is a list of label selector requirements. The requirements are ANDed.
+        match expressions
     matchLabels : {str:str}, default is Undefined, optional
-        matchLabels is a map of {key,value} pairs.
+        match labels
     """
 
 
@@ -460,16 +477,16 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAffinityPreferredDuringS
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelectorMatchExpressionsItems0:
     """
-    A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+    opentelemetry io v1alpha1 op a m p bridge spec affinity pod affinity preferred during scheduling ignored during execution items0 pod affinity term namespace selector match expressions items0
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        key is the label key that the selector applies to.
+        key
     operator : str, default is Undefined, required
-        operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+        operator
     values : [str], default is Undefined, optional
-        values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty.
+        values
     """
 
 
@@ -482,22 +499,30 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAffinityPreferredDuringS
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0:
     """
-    Defines a set of pods (namely those matching the labelSelector relative to the given namespace(s)) that this pod should be co-located (affinity) or not co-located (anti-affinity) with, where co-locate
+    opentelemetry io v1alpha1 op a m p bridge spec affinity pod affinity required during scheduling ignored during execution items0
 
     Attributes
     ----------
     labelSelector : OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector, default is Undefined, optional
         label selector
+    matchLabelKeys : [str], default is Undefined, optional
+        match label keys
+    mismatchLabelKeys : [str], default is Undefined, optional
+        mismatch label keys
     namespaceSelector : OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector, default is Undefined, optional
         namespace selector
     namespaces : [str], default is Undefined, optional
-        namespaces specifies a static list of namespace names that the term applies to. The term is applied to the union of the namespaces listed in this field and the ones selected by namespaceSelector.
+        namespaces
     topologyKey : str, default is Undefined, required
-        This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching the labelSelector in the specified namespaces, where co-located is defined as running on a node whose 
+        topology key
     """
 
 
     labelSelector?: OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector
+
+    matchLabelKeys?: [str]
+
+    mismatchLabelKeys?: [str]
 
     namespaceSelector?: OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector
 
@@ -508,14 +533,14 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAffinityRequiredDuringSc
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector:
     """
-    A label query over a set of resources, in this case pods.
+    opentelemetry io v1alpha1 op a m p bridge spec affinity pod affinity required during scheduling ignored during execution items0 label selector
 
     Attributes
     ----------
     matchExpressions : [OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0], default is Undefined, optional
-        matchExpressions is a list of label selector requirements. The requirements are ANDed.
+        match expressions
     matchLabels : {str:str}, default is Undefined, optional
-        matchLabels is a map of {key,value} pairs.
+        match labels
     """
 
 
@@ -526,16 +551,16 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAffinityRequiredDuringSc
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0:
     """
-    A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+    opentelemetry io v1alpha1 op a m p bridge spec affinity pod affinity required during scheduling ignored during execution items0 label selector match expressions items0
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        key is the label key that the selector applies to.
+        key
     operator : str, default is Undefined, required
-        operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+        operator
     values : [str], default is Undefined, optional
-        values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty.
+        values
     """
 
 
@@ -548,14 +573,14 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAffinityRequiredDuringSc
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector:
     """
-    A label query over the set of namespaces that the term applies to. The term is applied to the union of the namespaces selected by this field and the ones listed in the namespaces field.
+    opentelemetry io v1alpha1 op a m p bridge spec affinity pod affinity required during scheduling ignored during execution items0 namespace selector
 
     Attributes
     ----------
     matchExpressions : [OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelectorMatchExpressionsItems0], default is Undefined, optional
-        matchExpressions is a list of label selector requirements. The requirements are ANDed.
+        match expressions
     matchLabels : {str:str}, default is Undefined, optional
-        matchLabels is a map of {key,value} pairs.
+        match labels
     """
 
 
@@ -566,16 +591,16 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAffinityRequiredDuringSc
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelectorMatchExpressionsItems0:
     """
-    A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+    opentelemetry io v1alpha1 op a m p bridge spec affinity pod affinity required during scheduling ignored during execution items0 namespace selector match expressions items0
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        key is the label key that the selector applies to.
+        key
     operator : str, default is Undefined, required
-        operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+        operator
     values : [str], default is Undefined, optional
-        values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty.
+        values
     """
 
 
@@ -588,14 +613,14 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAffinityRequiredDuringSc
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAntiAffinity:
     """
-    Describes pod anti-affinity scheduling rules (e.g. avoid putting this pod in the same node, zone, etc. as some other pod(s)).
+    opentelemetry io v1alpha1 op a m p bridge spec affinity pod anti affinity
 
     Attributes
     ----------
     preferredDuringSchedulingIgnoredDuringExecution : [OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0], default is Undefined, optional
-        The scheduler will prefer to schedule pods to nodes that satisfy the anti-affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions.
+        preferred during scheduling ignored during execution
     requiredDuringSchedulingIgnoredDuringExecution : [OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0], default is Undefined, optional
-        If the anti-affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node.
+        required during scheduling ignored during execution
     """
 
 
@@ -606,14 +631,14 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAntiAffinity:
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
     """
-    The weights of all of the matched WeightedPodAffinityTerm fields are added per-node to find the most preferred node(s)
+    opentelemetry io v1alpha1 op a m p bridge spec affinity pod anti affinity preferred during scheduling ignored during execution items0
 
     Attributes
     ----------
     podAffinityTerm : OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTerm, default is Undefined, required
         pod affinity term
     weight : int, default is Undefined, required
-        weight associated with matching the corresponding podAffinityTerm, in the range 1-100.
+        weight
     """
 
 
@@ -624,22 +649,30 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAntiAffinityPreferredDur
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTerm:
     """
-    Required. A pod affinity term, associated with the corresponding weight.
+    opentelemetry io v1alpha1 op a m p bridge spec affinity pod anti affinity preferred during scheduling ignored during execution items0 pod affinity term
 
     Attributes
     ----------
     labelSelector : OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector, default is Undefined, optional
         label selector
+    matchLabelKeys : [str], default is Undefined, optional
+        match label keys
+    mismatchLabelKeys : [str], default is Undefined, optional
+        mismatch label keys
     namespaceSelector : OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector, default is Undefined, optional
         namespace selector
     namespaces : [str], default is Undefined, optional
-        namespaces specifies a static list of namespace names that the term applies to. The term is applied to the union of the namespaces listed in this field and the ones selected by namespaceSelector.
+        namespaces
     topologyKey : str, default is Undefined, required
-        This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching the labelSelector in the specified namespaces, where co-located is defined as running on a node whose 
+        topology key
     """
 
 
     labelSelector?: OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector
+
+    matchLabelKeys?: [str]
+
+    mismatchLabelKeys?: [str]
 
     namespaceSelector?: OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector
 
@@ -650,14 +683,14 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAntiAffinityPreferredDur
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector:
     """
-    A label query over a set of resources, in this case pods.
+    opentelemetry io v1alpha1 op a m p bridge spec affinity pod anti affinity preferred during scheduling ignored during execution items0 pod affinity term label selector
 
     Attributes
     ----------
     matchExpressions : [OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0], default is Undefined, optional
-        matchExpressions is a list of label selector requirements. The requirements are ANDed.
+        match expressions
     matchLabels : {str:str}, default is Undefined, optional
-        matchLabels is a map of {key,value} pairs.
+        match labels
     """
 
 
@@ -668,16 +701,16 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAntiAffinityPreferredDur
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0:
     """
-    A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+    opentelemetry io v1alpha1 op a m p bridge spec affinity pod anti affinity preferred during scheduling ignored during execution items0 pod affinity term label selector match expressions items0
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        key is the label key that the selector applies to.
+        key
     operator : str, default is Undefined, required
-        operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+        operator
     values : [str], default is Undefined, optional
-        values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty.
+        values
     """
 
 
@@ -690,14 +723,14 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAntiAffinityPreferredDur
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector:
     """
-    A label query over the set of namespaces that the term applies to. The term is applied to the union of the namespaces selected by this field and the ones listed in the namespaces field.
+    opentelemetry io v1alpha1 op a m p bridge spec affinity pod anti affinity preferred during scheduling ignored during execution items0 pod affinity term namespace selector
 
     Attributes
     ----------
     matchExpressions : [OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelectorMatchExpressionsItems0], default is Undefined, optional
-        matchExpressions is a list of label selector requirements. The requirements are ANDed.
+        match expressions
     matchLabels : {str:str}, default is Undefined, optional
-        matchLabels is a map of {key,value} pairs.
+        match labels
     """
 
 
@@ -708,16 +741,16 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAntiAffinityPreferredDur
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelectorMatchExpressionsItems0:
     """
-    A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+    opentelemetry io v1alpha1 op a m p bridge spec affinity pod anti affinity preferred during scheduling ignored during execution items0 pod affinity term namespace selector match expressions items0
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        key is the label key that the selector applies to.
+        key
     operator : str, default is Undefined, required
-        operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+        operator
     values : [str], default is Undefined, optional
-        values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty.
+        values
     """
 
 
@@ -730,22 +763,30 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAntiAffinityPreferredDur
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0:
     """
-    Defines a set of pods (namely those matching the labelSelector relative to the given namespace(s)) that this pod should be co-located (affinity) or not co-located (anti-affinity) with, where co-locate
+    opentelemetry io v1alpha1 op a m p bridge spec affinity pod anti affinity required during scheduling ignored during execution items0
 
     Attributes
     ----------
     labelSelector : OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector, default is Undefined, optional
         label selector
+    matchLabelKeys : [str], default is Undefined, optional
+        match label keys
+    mismatchLabelKeys : [str], default is Undefined, optional
+        mismatch label keys
     namespaceSelector : OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector, default is Undefined, optional
         namespace selector
     namespaces : [str], default is Undefined, optional
-        namespaces specifies a static list of namespace names that the term applies to. The term is applied to the union of the namespaces listed in this field and the ones selected by namespaceSelector.
+        namespaces
     topologyKey : str, default is Undefined, required
-        This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching the labelSelector in the specified namespaces, where co-located is defined as running on a node whose 
+        topology key
     """
 
 
     labelSelector?: OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector
+
+    matchLabelKeys?: [str]
+
+    mismatchLabelKeys?: [str]
 
     namespaceSelector?: OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector
 
@@ -756,14 +797,14 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAntiAffinityRequiredDuri
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector:
     """
-    A label query over a set of resources, in this case pods.
+    opentelemetry io v1alpha1 op a m p bridge spec affinity pod anti affinity required during scheduling ignored during execution items0 label selector
 
     Attributes
     ----------
     matchExpressions : [OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0], default is Undefined, optional
-        matchExpressions is a list of label selector requirements. The requirements are ANDed.
+        match expressions
     matchLabels : {str:str}, default is Undefined, optional
-        matchLabels is a map of {key,value} pairs.
+        match labels
     """
 
 
@@ -774,16 +815,16 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAntiAffinityRequiredDuri
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0:
     """
-    A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+    opentelemetry io v1alpha1 op a m p bridge spec affinity pod anti affinity required during scheduling ignored during execution items0 label selector match expressions items0
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        key is the label key that the selector applies to.
+        key
     operator : str, default is Undefined, required
-        operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+        operator
     values : [str], default is Undefined, optional
-        values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty.
+        values
     """
 
 
@@ -796,14 +837,14 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAntiAffinityRequiredDuri
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector:
     """
-    A label query over the set of namespaces that the term applies to. The term is applied to the union of the namespaces selected by this field and the ones listed in the namespaces field.
+    opentelemetry io v1alpha1 op a m p bridge spec affinity pod anti affinity required during scheduling ignored during execution items0 namespace selector
 
     Attributes
     ----------
     matchExpressions : [OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelectorMatchExpressionsItems0], default is Undefined, optional
-        matchExpressions is a list of label selector requirements. The requirements are ANDed.
+        match expressions
     matchLabels : {str:str}, default is Undefined, optional
-        matchLabels is a map of {key,value} pairs.
+        match labels
     """
 
 
@@ -814,16 +855,16 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAntiAffinityRequiredDuri
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelectorMatchExpressionsItems0:
     """
-    A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+    opentelemetry io v1alpha1 op a m p bridge spec affinity pod anti affinity required during scheduling ignored during execution items0 namespace selector match expressions items0
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        key is the label key that the selector applies to.
+        key
     operator : str, default is Undefined, required
-        operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+        operator
     values : [str], default is Undefined, optional
-        values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty.
+        values
     """
 
 
@@ -836,14 +877,14 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecAffinityPodAntiAffinityRequiredDuri
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecEnvFromItems0:
     """
-    EnvFromSource represents the source of a set of ConfigMaps
+    opentelemetry io v1alpha1 op a m p bridge spec env from items0
 
     Attributes
     ----------
     configMapRef : OpentelemetryIoV1alpha1OpAMPBridgeSpecEnvFromItems0ConfigMapRef, default is Undefined, optional
         config map ref
     prefix : str, default is Undefined, optional
-        An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
+        prefix
     secretRef : OpentelemetryIoV1alpha1OpAMPBridgeSpecEnvFromItems0SecretRef, default is Undefined, optional
         secret ref
     """
@@ -858,50 +899,50 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecEnvFromItems0:
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecEnvFromItems0ConfigMapRef:
     """
-    The ConfigMap to select from
+    opentelemetry io v1alpha1 op a m p bridge spec env from items0 config map ref
 
     Attributes
     ----------
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the ConfigMap must be defined
+        optional
     """
 
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecEnvFromItems0SecretRef:
     """
-    The Secret to select from
+    opentelemetry io v1alpha1 op a m p bridge spec env from items0 secret ref
 
     Attributes
     ----------
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret must be defined
+        optional
     """
 
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecEnvItems0:
     """
-    EnvVar represents an environment variable present in a Container.
+    opentelemetry io v1alpha1 op a m p bridge spec env items0
 
     Attributes
     ----------
     name : str, default is Undefined, required
-        Name of the environment variable. Must be a C_IDENTIFIER.
+        name
     value : str, default is Undefined, optional
-        Variable references $(VAR_NAME) are expanded using the previously defined environment variables in the container and any service environment variables.
+        value
     valueFrom : OpentelemetryIoV1alpha1OpAMPBridgeSpecEnvItems0ValueFrom, default is Undefined, optional
         value from
     """
@@ -916,7 +957,7 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecEnvItems0:
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecEnvItems0ValueFrom:
     """
-    Source for the environment variable's value. Cannot be used if value is not empty.
+    opentelemetry io v1alpha1 op a m p bridge spec env items0 value from
 
     Attributes
     ----------
@@ -942,36 +983,36 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecEnvItems0ValueFrom:
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecEnvItems0ValueFromConfigMapKeyRef:
     """
-    Selects a key of a ConfigMap.
+    opentelemetry io v1alpha1 op a m p bridge spec env items0 value from config map key ref
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key to select.
+        key
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the ConfigMap or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecEnvItems0ValueFromFieldRef:
     """
-    Selects a field of the pod: supports metadata.name, metadata.namespace, `metadata.labels['<KEY>']`, `metadata.annotations['<KEY>']`, spec.nodeName, spec.serviceAccountName, status.hostIP, status.
+    opentelemetry io v1alpha1 op a m p bridge spec env items0 value from field ref
 
     Attributes
     ----------
     apiVersion : str, default is Undefined, optional
-        Version of the schema the FieldPath is written in terms of, defaults to "v1".
+        api version
     fieldPath : str, default is Undefined, required
-        Path of the field to select in the specified API version.
+        field path
     """
 
 
@@ -982,16 +1023,16 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecEnvItems0ValueFromFieldRef:
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecEnvItems0ValueFromResourceFieldRef:
     """
-    Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.
+    opentelemetry io v1alpha1 op a m p bridge spec env items0 value from resource field ref
 
     Attributes
     ----------
     containerName : str, default is Undefined, optional
-        Container name: required for volumes, optional for env vars
+        container name
     divisor : int | str, default is Undefined, optional
-        Specifies the output format of the exposed resources, defaults to "1"
+        divisor
     resource : str, default is Undefined, required
-        Required: resource to select
+        resource
     """
 
 
@@ -1003,60 +1044,103 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecEnvItems0ValueFromResourceFieldRef:
 
 
     check:
-        regex.match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
+        regex_match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
 
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecEnvItems0ValueFromSecretKeyRef:
     """
-    Selects a key of a secret in the pod's namespace
+    opentelemetry io v1alpha1 op a m p bridge spec env items0 value from secret key ref
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
-schema OpentelemetryIoV1alpha1OpAMPBridgeSpecPodSecurityContext:
+schema OpentelemetryIoV1alpha1OpAMPBridgeSpecPodDNSConfig:
     """
-    PodSecurityContext will be set as the pod security context.
+    opentelemetry io v1alpha1 op a m p bridge spec pod DNS config
 
     Attributes
     ----------
+    nameservers : [str], default is Undefined, optional
+        nameservers
+    options : [OpentelemetryIoV1alpha1OpAMPBridgeSpecPodDNSConfigOptionsItems0], default is Undefined, optional
+        options
+    searches : [str], default is Undefined, optional
+        searches
+    """
+
+
+    nameservers?: [str]
+
+    options?: [OpentelemetryIoV1alpha1OpAMPBridgeSpecPodDNSConfigOptionsItems0]
+
+    searches?: [str]
+
+
+schema OpentelemetryIoV1alpha1OpAMPBridgeSpecPodDNSConfigOptionsItems0:
+    """
+    opentelemetry io v1alpha1 op a m p bridge spec pod DNS config options items0
+
+    Attributes
+    ----------
+    name : str, default is Undefined, optional
+        name
+    value : str, default is Undefined, optional
+        value
+    """
+
+
+    name?: str
+
+    value?: str
+
+
+schema OpentelemetryIoV1alpha1OpAMPBridgeSpecPodSecurityContext:
+    """
+    opentelemetry io v1alpha1 op a m p bridge spec pod security context
+
+    Attributes
+    ----------
+    appArmorProfile : OpentelemetryIoV1alpha1OpAMPBridgeSpecPodSecurityContextAppArmorProfile, default is Undefined, optional
+        app armor profile
     fsGroup : int, default is Undefined, optional
-        A special supplemental group that applies to all containers in a pod. Some volume types allow the Kubelet to change the ownership of that volume to be owned by the pod: 
-         1.
+        fs group
     fsGroupChangePolicy : str, default is Undefined, optional
-        fsGroupChangePolicy defines behavior of changing ownership and permission of the volume before being exposed inside Pod.
+        fs group change policy
     runAsGroup : int, default is Undefined, optional
-        The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in SecurityContext.
+        run as group
     runAsNonRoot : bool, default is Undefined, optional
-        Indicates that the container must run as a non-root user.
+        run as non root
     runAsUser : int, default is Undefined, optional
-        The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in SecurityContext.
+        run as user
     seLinuxOptions : OpentelemetryIoV1alpha1OpAMPBridgeSpecPodSecurityContextSeLinuxOptions, default is Undefined, optional
         se linux options
     seccompProfile : OpentelemetryIoV1alpha1OpAMPBridgeSpecPodSecurityContextSeccompProfile, default is Undefined, optional
         seccomp profile
     supplementalGroups : [int], default is Undefined, optional
-        A list of groups applied to the first process run in each container, in addition to the container's primary GID, the fsGroup (if specified), and group memberships defined in the container image for th
+        supplemental groups
     sysctls : [OpentelemetryIoV1alpha1OpAMPBridgeSpecPodSecurityContextSysctlsItems0], default is Undefined, optional
-        Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported sysctls (by the container runtime) might fail to launch. Note that this field cannot be set when spec.os.
+        sysctls
     windowsOptions : OpentelemetryIoV1alpha1OpAMPBridgeSpecPodSecurityContextWindowsOptions, default is Undefined, optional
         windows options
     """
 
+
+    appArmorProfile?: OpentelemetryIoV1alpha1OpAMPBridgeSpecPodSecurityContextAppArmorProfile
 
     fsGroup?: int
 
@@ -1079,20 +1163,38 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecPodSecurityContext:
     windowsOptions?: OpentelemetryIoV1alpha1OpAMPBridgeSpecPodSecurityContextWindowsOptions
 
 
+schema OpentelemetryIoV1alpha1OpAMPBridgeSpecPodSecurityContextAppArmorProfile:
+    """
+    opentelemetry io v1alpha1 op a m p bridge spec pod security context app armor profile
+
+    Attributes
+    ----------
+    localhostProfile : str, default is Undefined, optional
+        localhost profile
+    $type : str, default is Undefined, required
+        type
+    """
+
+
+    localhostProfile?: str
+
+    $type: str
+
+
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecPodSecurityContextSeLinuxOptions:
     """
-    The SELinux context to be applied to all containers. If unspecified, the container runtime will allocate a random SELinux context for each container.  May also be set in SecurityContext.
+    opentelemetry io v1alpha1 op a m p bridge spec pod security context se linux options
 
     Attributes
     ----------
     level : str, default is Undefined, optional
-        Level is SELinux level label that applies to the container.
+        level
     role : str, default is Undefined, optional
-        Role is a SELinux role label that applies to the container.
+        role
     $type : str, default is Undefined, optional
-        Type is a SELinux type label that applies to the container.
+        type
     user : str, default is Undefined, optional
-        User is a SELinux user label that applies to the container.
+        user
     """
 
 
@@ -1107,15 +1209,14 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecPodSecurityContextSeLinuxOptions:
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecPodSecurityContextSeccompProfile:
     """
-    The seccomp options to use by the containers in this pod. Note that this field cannot be set when spec.os.name is windows.
+    opentelemetry io v1alpha1 op a m p bridge spec pod security context seccomp profile
 
     Attributes
     ----------
     localhostProfile : str, default is Undefined, optional
-        localhostProfile indicates a profile defined in a file on the node should be used. The profile must be preconfigured on the node to work.
+        localhost profile
     $type : str, default is Undefined, required
-        type indicates which kind of seccomp profile will be applied. Valid options are: 
-         Localhost - a profile defined in a file on the node should be used.
+        type
     """
 
 
@@ -1126,14 +1227,14 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecPodSecurityContextSeccompProfile:
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecPodSecurityContextSysctlsItems0:
     """
-    Sysctl defines a kernel parameter to be set
+    opentelemetry io v1alpha1 op a m p bridge spec pod security context sysctls items0
 
     Attributes
     ----------
     name : str, default is Undefined, required
-        Name of a property to set
+        name
     value : str, default is Undefined, required
-        Value of a property to set
+        value
     """
 
 
@@ -1144,18 +1245,18 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecPodSecurityContextSysctlsItems0:
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecPodSecurityContextWindowsOptions:
     """
-    The Windows specific settings applied to all containers. If unspecified, the options within a container's SecurityContext will be used.
+    opentelemetry io v1alpha1 op a m p bridge spec pod security context windows options
 
     Attributes
     ----------
     gmsaCredentialSpec : str, default is Undefined, optional
-        GMSACredentialSpec is where the GMSA admission webhook (https://github.com/kubernetes-sigs/windows-gmsa) inlines the contents of the GMSA credential spec named by the GMSACredentialSpecName field.
+        gmsa credential spec
     gmsaCredentialSpecName : str, default is Undefined, optional
-        GMSACredentialSpecName is the name of the GMSA credential spec to use.
+        gmsa credential spec name
     hostProcess : bool, default is Undefined, optional
-        HostProcess determines if a container should be run as a 'Host Process' container.
+        host process
     runAsUserName : str, default is Undefined, optional
-        The UserName in Windows to run the entrypoint of the container process. Defaults to the user specified in image metadata if unspecified. May also be set in PodSecurityContext.
+        run as user name
     """
 
 
@@ -1170,22 +1271,22 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecPodSecurityContextWindowsOptions:
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecPortsItems0:
     """
-    ServicePort contains information on service's port.
+    opentelemetry io v1alpha1 op a m p bridge spec ports items0
 
     Attributes
     ----------
     appProtocol : str, default is Undefined, optional
-        The application protocol for this port. This is used as a hint for implementations to offer richer behavior for protocols that they understand. This field follows standard Kubernetes label syntax.
+        app protocol
     name : str, default is Undefined, optional
-        The name of this port within the service. This must be a DNS_LABEL. All ports within a ServiceSpec must have unique names.
+        name
     nodePort : int, default is Undefined, optional
-        The port on each node on which this service is exposed when type is NodePort or LoadBalancer.  Usually assigned by the system.
+        node port
     port : int, default is Undefined, required
-        The port that will be exposed by this service.
+        port
     $protocol : str, default is "TCP", optional
-        The IP protocol for this port. Supports "TCP", "UDP", and "SCTP". Default is TCP.
+        protocol
     targetPort : int | str, default is Undefined, optional
-        Number or name of the port to access on the pods targeted by the service. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+        target port
     """
 
 
@@ -1204,17 +1305,16 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecPortsItems0:
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecResources:
     """
-    Resources to set on the OpAMPBridge pods.
+    opentelemetry io v1alpha1 op a m p bridge spec resources
 
     Attributes
     ----------
     claims : [OpentelemetryIoV1alpha1OpAMPBridgeSpecResourcesClaimsItems0], default is Undefined, optional
-        Claims lists the names of resources, defined in spec.resourceClaims, that are used by this container. 
-         This is an alpha field and requires enabling the DynamicResourceAllocation feature gate.
+        claims
     limits : {str:int | str}, default is Undefined, optional
-        Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+        limits
     requests : {str:int | str}, default is Undefined, optional
-        Requests describes the minimum amount of compute resources required.
+        requests
     """
 
 
@@ -1226,18 +1326,18 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecResources:
 
 
     check:
-        all _, n in limits { regex.match(str(n), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") } if limits
-        all _, n in requests { regex.match(str(n), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") } if requests
+        all _, limits in limits {regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests {regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecResourcesClaimsItems0:
     """
-    ResourceClaim references one entry in PodSpec.ResourceClaims.
+    opentelemetry io v1alpha1 op a m p bridge spec resources claims items0
 
     Attributes
     ----------
     name : str, default is Undefined, required
-        Name must match the name of one entry in pod.spec.resourceClaims of the Pod where this field is used. It makes that resource available inside a container.
+        name
     """
 
 
@@ -1246,26 +1346,28 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecResourcesClaimsItems0:
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecSecurityContext:
     """
-    SecurityContext will be set as the container security context.
+    opentelemetry io v1alpha1 op a m p bridge spec security context
 
     Attributes
     ----------
     allowPrivilegeEscalation : bool, default is Undefined, optional
-        AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the no_new_privs flag will be set on the container process.
+        allow privilege escalation
+    appArmorProfile : OpentelemetryIoV1alpha1OpAMPBridgeSpecSecurityContextAppArmorProfile, default is Undefined, optional
+        app armor profile
     capabilities : OpentelemetryIoV1alpha1OpAMPBridgeSpecSecurityContextCapabilities, default is Undefined, optional
         capabilities
     privileged : bool, default is Undefined, optional
-        Run container in privileged mode. Processes in privileged containers are essentially equivalent to root on the host. Defaults to false. Note that this field cannot be set when spec.os.name is windows.
+        privileged
     procMount : str, default is Undefined, optional
-        procMount denotes the type of proc mount to use for the containers. The default is DefaultProcMount which uses the container runtime defaults for readonly paths and masked paths.
+        proc mount
     readOnlyRootFilesystem : bool, default is Undefined, optional
-        Whether this container has a read-only root filesystem. Default is false. Note that this field cannot be set when spec.os.name is windows.
+        read only root filesystem
     runAsGroup : int, default is Undefined, optional
-        The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in PodSecurityContext.
+        run as group
     runAsNonRoot : bool, default is Undefined, optional
-        Indicates that the container must run as a non-root user.
+        run as non root
     runAsUser : int, default is Undefined, optional
-        The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext.
+        run as user
     seLinuxOptions : OpentelemetryIoV1alpha1OpAMPBridgeSpecSecurityContextSeLinuxOptions, default is Undefined, optional
         se linux options
     seccompProfile : OpentelemetryIoV1alpha1OpAMPBridgeSpecSecurityContextSeccompProfile, default is Undefined, optional
@@ -1276,6 +1378,8 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecSecurityContext:
 
 
     allowPrivilegeEscalation?: bool
+
+    appArmorProfile?: OpentelemetryIoV1alpha1OpAMPBridgeSpecSecurityContextAppArmorProfile
 
     capabilities?: OpentelemetryIoV1alpha1OpAMPBridgeSpecSecurityContextCapabilities
 
@@ -1298,16 +1402,34 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecSecurityContext:
     windowsOptions?: OpentelemetryIoV1alpha1OpAMPBridgeSpecSecurityContextWindowsOptions
 
 
+schema OpentelemetryIoV1alpha1OpAMPBridgeSpecSecurityContextAppArmorProfile:
+    """
+    opentelemetry io v1alpha1 op a m p bridge spec security context app armor profile
+
+    Attributes
+    ----------
+    localhostProfile : str, default is Undefined, optional
+        localhost profile
+    $type : str, default is Undefined, required
+        type
+    """
+
+
+    localhostProfile?: str
+
+    $type: str
+
+
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecSecurityContextCapabilities:
     """
-    The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime. Note that this field cannot be set when spec.os.name is windows.
+    opentelemetry io v1alpha1 op a m p bridge spec security context capabilities
 
     Attributes
     ----------
     add : [str], default is Undefined, optional
-        Added capabilities
+        add
     drop : [str], default is Undefined, optional
-        Removed capabilities
+        drop
     """
 
 
@@ -1318,18 +1440,18 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecSecurityContextCapabilities:
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecSecurityContextSeLinuxOptions:
     """
-    The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container.  May also be set in PodSecurityContext.
+    opentelemetry io v1alpha1 op a m p bridge spec security context se linux options
 
     Attributes
     ----------
     level : str, default is Undefined, optional
-        Level is SELinux level label that applies to the container.
+        level
     role : str, default is Undefined, optional
-        Role is a SELinux role label that applies to the container.
+        role
     $type : str, default is Undefined, optional
-        Type is a SELinux type label that applies to the container.
+        type
     user : str, default is Undefined, optional
-        User is a SELinux user label that applies to the container.
+        user
     """
 
 
@@ -1344,15 +1466,14 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecSecurityContextSeLinuxOptions:
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecSecurityContextSeccompProfile:
     """
-    The seccomp options to use by this container. If seccomp options are provided at both the pod & container level, the container options override the pod options.
+    opentelemetry io v1alpha1 op a m p bridge spec security context seccomp profile
 
     Attributes
     ----------
     localhostProfile : str, default is Undefined, optional
-        localhostProfile indicates a profile defined in a file on the node should be used. The profile must be preconfigured on the node to work.
+        localhost profile
     $type : str, default is Undefined, required
-        type indicates which kind of seccomp profile will be applied. Valid options are: 
-         Localhost - a profile defined in a file on the node should be used.
+        type
     """
 
 
@@ -1363,18 +1484,18 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecSecurityContextSeccompProfile:
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecSecurityContextWindowsOptions:
     """
-    The Windows specific settings applied to all containers. If unspecified, the options from the PodSecurityContext will be used.
+    opentelemetry io v1alpha1 op a m p bridge spec security context windows options
 
     Attributes
     ----------
     gmsaCredentialSpec : str, default is Undefined, optional
-        GMSACredentialSpec is where the GMSA admission webhook (https://github.com/kubernetes-sigs/windows-gmsa) inlines the contents of the GMSA credential spec named by the GMSACredentialSpecName field.
+        gmsa credential spec
     gmsaCredentialSpecName : str, default is Undefined, optional
-        GMSACredentialSpecName is the name of the GMSA credential spec to use.
+        gmsa credential spec name
     hostProcess : bool, default is Undefined, optional
-        HostProcess determines if a container should be run as a 'Host Process' container.
+        host process
     runAsUserName : str, default is Undefined, optional
-        The UserName in Windows to run the entrypoint of the container process. Defaults to the user specified in image metadata if unspecified. May also be set in PodSecurityContext.
+        run as user name
     """
 
 
@@ -1389,20 +1510,20 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecSecurityContextWindowsOptions:
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecTolerationsItems0:
     """
-    The pod this Toleration is attached to tolerates any taint that matches the triple <key,value,effect> using the matching operator <operator>.
+    opentelemetry io v1alpha1 op a m p bridge spec tolerations items0
 
     Attributes
     ----------
     effect : str, default is Undefined, optional
-        Effect indicates the taint effect to match. Empty means match all taint effects. When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.
+        effect
     key : str, default is Undefined, optional
-        Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists; this combination means to match all values and all keys.
+        key
     operator : str, default is Undefined, optional
-        Operator represents a key's relationship to the value. Valid operators are Exists and Equal. Defaults to Equal.
+        operator
     tolerationSeconds : int, default is Undefined, optional
-        TolerationSeconds represents the period of time the toleration (which must be of effect NoExecute, otherwise this field is ignored) tolerates the taint.
+        toleration seconds
     value : str, default is Undefined, optional
-        Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string.
+        value
     """
 
 
@@ -1419,26 +1540,26 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecTolerationsItems0:
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecTopologySpreadConstraintsItems0:
     """
-    TopologySpreadConstraint specifies how to spread matching pods among the given topology.
+    opentelemetry io v1alpha1 op a m p bridge spec topology spread constraints items0
 
     Attributes
     ----------
     labelSelector : OpentelemetryIoV1alpha1OpAMPBridgeSpecTopologySpreadConstraintsItems0LabelSelector, default is Undefined, optional
         label selector
     matchLabelKeys : [str], default is Undefined, optional
-        MatchLabelKeys is a set of pod label keys to select the pods over which spreading will be calculated.
+        match label keys
     maxSkew : int, default is Undefined, required
-        MaxSkew describes the degree to which pods may be unevenly distributed.
+        max skew
     minDomains : int, default is Undefined, optional
-        MinDomains indicates a minimum number of eligible domains.
+        min domains
     nodeAffinityPolicy : str, default is Undefined, optional
-        NodeAffinityPolicy indicates how we will treat Pod's nodeAffinity/nodeSelector when calculating pod topology spread skew.
+        node affinity policy
     nodeTaintsPolicy : str, default is Undefined, optional
-        NodeTaintsPolicy indicates how we will treat node taints when calculating pod topology spread skew.
+        node taints policy
     topologyKey : str, default is Undefined, required
-        TopologyKey is the key of node labels. Nodes that have a label with this key and identical values are considered to be in the same topology.
+        topology key
     whenUnsatisfiable : str, default is Undefined, required
-        WhenUnsatisfiable indicates how to deal with a pod if it doesn't satisfy the spread constraint. - DoNotSchedule (default) tells the scheduler not to schedule it.
+        when unsatisfiable
     """
 
 
@@ -1461,14 +1582,14 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecTopologySpreadConstraintsItems0:
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecTopologySpreadConstraintsItems0LabelSelector:
     """
-    LabelSelector is used to find matching pods. Pods that match this label selector are counted to determine the number of pods in their corresponding topology domain.
+    opentelemetry io v1alpha1 op a m p bridge spec topology spread constraints items0 label selector
 
     Attributes
     ----------
     matchExpressions : [OpentelemetryIoV1alpha1OpAMPBridgeSpecTopologySpreadConstraintsItems0LabelSelectorMatchExpressionsItems0], default is Undefined, optional
-        matchExpressions is a list of label selector requirements. The requirements are ANDed.
+        match expressions
     matchLabels : {str:str}, default is Undefined, optional
-        matchLabels is a map of {key,value} pairs.
+        match labels
     """
 
 
@@ -1479,16 +1600,16 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecTopologySpreadConstraintsItems0Labe
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecTopologySpreadConstraintsItems0LabelSelectorMatchExpressionsItems0:
     """
-    A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+    opentelemetry io v1alpha1 op a m p bridge spec topology spread constraints items0 label selector match expressions items0
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        key is the label key that the selector applies to.
+        key
     operator : str, default is Undefined, required
-        operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+        operator
     values : [str], default is Undefined, optional
-        values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty.
+        values
     """
 
 
@@ -1501,22 +1622,24 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecTopologySpreadConstraintsItems0Labe
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumeMountsItems0:
     """
-    VolumeMount describes a mounting of a Volume within a container.
+    opentelemetry io v1alpha1 op a m p bridge spec volume mounts items0
 
     Attributes
     ----------
     mountPath : str, default is Undefined, required
-        Path within the container at which the volume should be mounted.  Must not contain ':'.
+        mount path
     mountPropagation : str, default is Undefined, optional
-        mountPropagation determines how mounts are propagated from the host to container and the other way around. When not set, MountPropagationNone is used. This field is beta in 1.10.
+        mount propagation
     name : str, default is Undefined, required
-        This must match the Name of a Volume.
+        name
     readOnly : bool, default is Undefined, optional
-        Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false.
+        read only
+    recursiveReadOnly : str, default is Undefined, optional
+        recursive read only
     subPath : str, default is Undefined, optional
-        Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
+        sub path
     subPathExpr : str, default is Undefined, optional
-        Expanded path within the volume from which the container's volume should be mounted.
+        sub path expr
     """
 
 
@@ -1528,6 +1651,8 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumeMountsItems0:
 
     readOnly?: bool
 
+    recursiveReadOnly?: str
+
     subPath?: str
 
     subPathExpr?: str
@@ -1535,7 +1660,7 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumeMountsItems0:
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0:
     """
-    Volume represents a named volume in a pod that may be accessed by any container in the pod.
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0
 
     Attributes
     ----------
@@ -1576,7 +1701,7 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0:
     iscsi : OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0Iscsi, default is Undefined, optional
         iscsi
     name : str, default is Undefined, required
-        name of the volume. Must be a DNS_LABEL and unique within the pod. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        name
     nfs : OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0Nfs, default is Undefined, optional
         nfs
     persistentVolumeClaim : OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0PersistentVolumeClaim, default is Undefined, optional
@@ -1665,18 +1790,18 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0:
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0AwsElasticBlockStore:
     """
-    awsElasticBlockStore represents an AWS Disk resource that is attached to a kubelet's host machine and then exposed to the pod. More info: https://kubernetes.
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 aws elastic block store
 
     Attributes
     ----------
     fsType : str, default is Undefined, optional
-        fsType is the filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs".
+        fs type
     partition : int, default is Undefined, optional
-        partition is the partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as "1".
+        partition
     readOnly : bool, default is Undefined, optional
-        readOnly value true will force the readOnly setting in VolumeMounts. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+        read only
     volumeID : str, default is Undefined, required
-        volumeID is unique ID of the persistent disk resource in AWS (Amazon EBS volume). More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+        volume ID
     """
 
 
@@ -1691,22 +1816,22 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0AwsElasticBlockStore:
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0AzureDisk:
     """
-    azureDisk represents an Azure Data Disk mount on the host and bind mount to the pod.
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 azure disk
 
     Attributes
     ----------
     cachingMode : str, default is Undefined, optional
-        cachingMode is the Host Caching mode: None, Read Only, Read Write.
+        caching mode
     diskName : str, default is Undefined, required
-        diskName is the Name of the data disk in the blob storage
+        disk name
     diskURI : str, default is Undefined, required
-        diskURI is the URI of data disk in the blob storage
+        disk URI
     fsType : str, default is Undefined, optional
-        fsType is Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+        fs type
     kind : str, default is Undefined, optional
-        kind expected values are Shared: multiple blob disks per storage account  Dedicated: single blob disk per storage account  Managed: azure managed data disk (only in managed availability set).
+        kind
     readOnly : bool, default is Undefined, optional
-        readOnly Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.
+        read only
     """
 
 
@@ -1725,16 +1850,16 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0AzureDisk:
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0AzureFile:
     """
-    azureFile represents an Azure File Service mount on the host and bind mount to the pod.
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 azure file
 
     Attributes
     ----------
     readOnly : bool, default is Undefined, optional
-        readOnly defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.
+        read only
     secretName : str, default is Undefined, required
-        secretName is the  name of secret that contains Azure Storage Account Name and Key
+        secret name
     shareName : str, default is Undefined, required
-        shareName is the azure share Name
+        share name
     """
 
 
@@ -1747,22 +1872,22 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0AzureFile:
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0Cephfs:
     """
-    cephFS represents a Ceph FS mount on the host that shares a pod's lifetime
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 cephfs
 
     Attributes
     ----------
     monitors : [str], default is Undefined, required
-        monitors is Required: Monitors is a collection of Ceph monitors More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+        monitors
     path : str, default is Undefined, optional
-        path is Optional: Used as the mounted root, rather than the full Ceph tree, default is /
+        path
     readOnly : bool, default is Undefined, optional
-        readOnly is Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+        read only
     secretFile : str, default is Undefined, optional
-        secretFile is Optional: SecretFile is the path to key ring for User, default is /etc/ceph/user.secret More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+        secret file
     secretRef : OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0CephfsSecretRef, default is Undefined, optional
         secret ref
     user : str, default is Undefined, optional
-        user is optional: User is the rados user name, default is admin More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+        user
     """
 
 
@@ -1781,32 +1906,32 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0Cephfs:
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0CephfsSecretRef:
     """
-    secretRef is Optional: SecretRef is reference to the authentication secret for User, default is empty. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 cephfs secret ref
 
     Attributes
     ----------
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0Cinder:
     """
-    cinder represents a cinder volume attached and mounted on kubelets host machine. More info: https://examples.k8s.io/mysql-cinder-pd/README.md
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 cinder
 
     Attributes
     ----------
     fsType : str, default is Undefined, optional
-        fsType is the filesystem type to mount. Must be a filesystem type supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+        fs type
     readOnly : bool, default is Undefined, optional
-        readOnly defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. More info: https://examples.k8s.io/mysql-cinder-pd/README.md
+        read only
     secretRef : OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0CinderSecretRef, default is Undefined, optional
         secret ref
     volumeID : str, default is Undefined, required
-        volumeID used to identify the volume in cinder. More info: https://examples.k8s.io/mysql-cinder-pd/README.md
+        volume ID
     """
 
 
@@ -1821,32 +1946,32 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0Cinder:
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0CinderSecretRef:
     """
-    secretRef is optional: points to a secret object containing parameters used to connect to OpenStack.
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 cinder secret ref
 
     Attributes
     ----------
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0ConfigMap:
     """
-    configMap represents a configMap that should populate this volume
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 config map
 
     Attributes
     ----------
     defaultMode : int, default is Undefined, optional
-        defaultMode is optional: mode bits used to set permissions on created files by default. Must be an octal value between 0000 and 0777 or a decimal value between 0 and 511.
+        default mode
     items : [OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0ConfigMapItemsItems0], default is Undefined, optional
-        items if unspecified, each key-value pair in the Data field of the referenced ConfigMap will be projected into the volume as a file whose name is the key and content is the value.
+        items
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        optional specify whether the ConfigMap or its keys must be defined
+        optional
     """
 
 
@@ -1854,23 +1979,23 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0ConfigMap:
 
     items?: [OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0ConfigMapItemsItems0]
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0ConfigMapItemsItems0:
     """
-    Maps a string key to a path within a volume.
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 config map items items0
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        key is the key to project.
+        key
     mode : int, default is Undefined, optional
-        mode is Optional: mode bits used to set permissions on this file. Must be an octal value between 0000 and 0777 or a decimal value between 0 and 511.
+        mode
     path : str, default is Undefined, required
-        path is the relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+        path
     """
 
 
@@ -1883,20 +2008,20 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0ConfigMapItemsItems0:
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0Csi:
     """
-    csi (Container Storage Interface) represents ephemeral storage that is handled by certain external CSI drivers (Beta feature).
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 csi
 
     Attributes
     ----------
     driver : str, default is Undefined, required
-        driver is the name of the CSI driver that handles this volume. Consult with your admin for the correct name as registered in the cluster.
+        driver
     fsType : str, default is Undefined, optional
-        fsType to mount. Ex. "ext4", "xfs", "ntfs". If not provided, the empty value is passed to the associated CSI driver which will determine the default filesystem to apply.
+        fs type
     nodePublishSecretRef : OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0CsiNodePublishSecretRef, default is Undefined, optional
         node publish secret ref
     readOnly : bool, default is Undefined, optional
-        readOnly specifies a read-only configuration for the volume. Defaults to false (read/write).
+        read only
     volumeAttributes : {str:str}, default is Undefined, optional
-        volumeAttributes stores driver-specific properties that are passed to the CSI driver. Consult your driver's documentation for supported values.
+        volume attributes
     """
 
 
@@ -1913,28 +2038,28 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0Csi:
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0CsiNodePublishSecretRef:
     """
-    nodePublishSecretRef is a reference to the secret object containing sensitive information to pass to the CSI driver to complete the CSI NodePublishVolume and NodeUnpublishVolume calls.
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 csi node publish secret ref
 
     Attributes
     ----------
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0DownwardAPI:
     """
-    downwardAPI represents downward API about the pod that should populate this volume
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 downward API
 
     Attributes
     ----------
     defaultMode : int, default is Undefined, optional
-        Optional: mode bits to use on created files by default. Must be a Optional: mode bits used to set permissions on created files by default.
+        default mode
     items : [OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0DownwardAPIItemsItems0], default is Undefined, optional
-        Items is a list of downward API volume file
+        items
     """
 
 
@@ -1945,16 +2070,16 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0DownwardAPI:
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0DownwardAPIItemsItems0:
     """
-    DownwardAPIVolumeFile represents information to create the file containing the pod field
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 downward API items items0
 
     Attributes
     ----------
     fieldRef : OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0DownwardAPIItemsItems0FieldRef, default is Undefined, optional
         field ref
     mode : int, default is Undefined, optional
-        Optional: mode bits used to set permissions on this file, must be an octal value between 0000 and 0777 or a decimal value between 0 and 511.
+        mode
     path : str, default is Undefined, required
-        Required: Path is  the relative path name of the file to be created. Must not be absolute or contain the '..' path. Must be utf-8 encoded. The first item of the relative path must not start with '..'
+        path
     resourceFieldRef : OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0DownwardAPIItemsItems0ResourceFieldRef, default is Undefined, optional
         resource field ref
     """
@@ -1971,14 +2096,14 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0DownwardAPIItemsItems0
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0DownwardAPIItemsItems0FieldRef:
     """
-    Required: Selects a field of the pod: only annotations, labels, name and namespace are supported.
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 downward API items items0 field ref
 
     Attributes
     ----------
     apiVersion : str, default is Undefined, optional
-        Version of the schema the FieldPath is written in terms of, defaults to "v1".
+        api version
     fieldPath : str, default is Undefined, required
-        Path of the field to select in the specified API version.
+        field path
     """
 
 
@@ -1989,16 +2114,16 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0DownwardAPIItemsItems0
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0DownwardAPIItemsItems0ResourceFieldRef:
     """
-    Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported.
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 downward API items items0 resource field ref
 
     Attributes
     ----------
     containerName : str, default is Undefined, optional
-        Container name: required for volumes, optional for env vars
+        container name
     divisor : int | str, default is Undefined, optional
-        Specifies the output format of the exposed resources, defaults to "1"
+        divisor
     resource : str, default is Undefined, required
-        Required: resource to select
+        resource
     """
 
 
@@ -2010,19 +2135,19 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0DownwardAPIItemsItems0
 
 
     check:
-        regex.match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
+        regex_match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
 
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0EmptyDir:
     """
-    emptyDir represents a temporary directory that shares a pod's lifetime. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 empty dir
 
     Attributes
     ----------
     medium : str, default is Undefined, optional
-        medium represents what type of storage medium should back this directory. The default is "" which means to use the node's default medium. Must be an empty string (default) or Memory.
+        medium
     sizeLimit : int | str, default is Undefined, optional
-        sizeLimit is the total amount of local storage required for this EmptyDir volume. The size limit is also applicable for memory medium.
+        size limit
     """
 
 
@@ -2032,12 +2157,12 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0EmptyDir:
 
 
     check:
-        regex.match(str(sizeLimit), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if sizeLimit
+        regex_match(str(sizeLimit), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if sizeLimit
 
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0Ephemeral:
     """
-    ephemeral represents a volume that is handled by a cluster storage driver.
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 ephemeral
 
     Attributes
     ----------
@@ -2051,7 +2176,7 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0Ephemeral:
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0EphemeralVolumeClaimTemplate:
     """
-    Will be used to create a stand-alone PVC to provision the volume. The pod in which this EphemeralVolumeSource is embedded will be the owner of the PVC, i.e.
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 ephemeral volume claim template
 
     Attributes
     ----------
@@ -2069,7 +2194,7 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0EphemeralVolumeClaimTe
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0EphemeralVolumeClaimTemplateMetadata:
     """
-    May contain labels and annotations that will be copied into the PVC when creating it. No other fields are allowed and will be rejected during validation.
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 ephemeral volume claim template metadata
 
     Attributes
     ----------
@@ -2099,12 +2224,12 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0EphemeralVolumeClaimTe
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0EphemeralVolumeClaimTemplateSpec:
     """
-    The specification for the PersistentVolumeClaim. The entire content is copied unchanged into the PVC that gets created from this template.
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 ephemeral volume claim template spec
 
     Attributes
     ----------
     accessModes : [str], default is Undefined, optional
-        accessModes contains the desired access modes the volume should have. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1
+        access modes
     dataSource : OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0EphemeralVolumeClaimTemplateSpecDataSource, default is Undefined, optional
         data source
     dataSourceRef : OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0EphemeralVolumeClaimTemplateSpecDataSourceRef, default is Undefined, optional
@@ -2114,11 +2239,13 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0EphemeralVolumeClaimTe
     selector : OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0EphemeralVolumeClaimTemplateSpecSelector, default is Undefined, optional
         selector
     storageClassName : str, default is Undefined, optional
-        storageClassName is the name of the StorageClass required by the claim. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#class-1
+        storage class name
+    volumeAttributesClassName : str, default is Undefined, optional
+        volume attributes class name
     volumeMode : str, default is Undefined, optional
-        volumeMode defines what type of volume is required by the claim. Value of Filesystem is implied when not included in claim spec.
+        volume mode
     volumeName : str, default is Undefined, optional
-        volumeName is the binding reference to the PersistentVolume backing this claim.
+        volume name
     """
 
 
@@ -2134,6 +2261,8 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0EphemeralVolumeClaimTe
 
     storageClassName?: str
 
+    volumeAttributesClassName?: str
+
     volumeMode?: str
 
     volumeName?: str
@@ -2141,16 +2270,16 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0EphemeralVolumeClaimTe
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0EphemeralVolumeClaimTemplateSpecDataSource:
     """
-    dataSource field can be used to specify either: * An existing VolumeSnapshot object (snapshot.storage.k8s.
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 ephemeral volume claim template spec data source
 
     Attributes
     ----------
     apiGroup : str, default is Undefined, optional
-        APIGroup is the group for the resource being referenced. If APIGroup is not specified, the specified Kind must be in the core API group. For any other third-party types, APIGroup is required.
+        api group
     kind : str, default is Undefined, required
-        Kind is the type of resource being referenced
+        kind
     name : str, default is Undefined, required
-        Name is the name of resource being referenced
+        name
     """
 
 
@@ -2163,18 +2292,18 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0EphemeralVolumeClaimTe
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0EphemeralVolumeClaimTemplateSpecDataSourceRef:
     """
-    dataSourceRef specifies the object from which to populate the volume with data, if a non-empty volume is desired.
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 ephemeral volume claim template spec data source ref
 
     Attributes
     ----------
     apiGroup : str, default is Undefined, optional
-        APIGroup is the group for the resource being referenced. If APIGroup is not specified, the specified Kind must be in the core API group. For any other third-party types, APIGroup is required.
+        api group
     kind : str, default is Undefined, required
-        Kind is the type of resource being referenced
+        kind
     name : str, default is Undefined, required
-        Name is the name of resource being referenced
+        name
     namespace : str, default is Undefined, optional
-        Namespace is the namespace of resource being referenced Note that when a namespace is specified, a gateway.networking.k8s.
+        namespace
     """
 
 
@@ -2189,21 +2318,16 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0EphemeralVolumeClaimTe
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0EphemeralVolumeClaimTemplateSpecResources:
     """
-    resources represents the minimum resources the volume should have.
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 ephemeral volume claim template spec resources
 
     Attributes
     ----------
-    claims : [OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0EphemeralVolumeClaimTemplateSpecResourcesClaimsItems0], default is Undefined, optional
-        Claims lists the names of resources, defined in spec.resourceClaims, that are used by this container. 
-         This is an alpha field and requires enabling the DynamicResourceAllocation feature gate.
     limits : {str:int | str}, default is Undefined, optional
-        Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+        limits
     requests : {str:int | str}, default is Undefined, optional
-        Requests describes the minimum amount of compute resources required.
+        requests
     """
 
-
-    claims?: [OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0EphemeralVolumeClaimTemplateSpecResourcesClaimsItems0]
 
     limits?: {str:int | str}
 
@@ -2211,34 +2335,20 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0EphemeralVolumeClaimTe
 
 
     check:
-        all _, n in limits { regex.match(str(n), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") } if limits
-        all _, n in requests { regex.match(str(n), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") } if requests
-
-
-schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0EphemeralVolumeClaimTemplateSpecResourcesClaimsItems0:
-    """
-    ResourceClaim references one entry in PodSpec.ResourceClaims.
-
-    Attributes
-    ----------
-    name : str, default is Undefined, required
-        Name must match the name of one entry in pod.spec.resourceClaims of the Pod where this field is used. It makes that resource available inside a container.
-    """
-
-
-    name: str
+        all _, limits in limits {regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests {regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0EphemeralVolumeClaimTemplateSpecSelector:
     """
-    selector is a label query over volumes to consider for binding.
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 ephemeral volume claim template spec selector
 
     Attributes
     ----------
     matchExpressions : [OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0EphemeralVolumeClaimTemplateSpecSelectorMatchExpressionsItems0], default is Undefined, optional
-        matchExpressions is a list of label selector requirements. The requirements are ANDed.
+        match expressions
     matchLabels : {str:str}, default is Undefined, optional
-        matchLabels is a map of {key,value} pairs.
+        match labels
     """
 
 
@@ -2249,16 +2359,16 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0EphemeralVolumeClaimTe
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0EphemeralVolumeClaimTemplateSpecSelectorMatchExpressionsItems0:
     """
-    A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 ephemeral volume claim template spec selector match expressions items0
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        key is the label key that the selector applies to.
+        key
     operator : str, default is Undefined, required
-        operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+        operator
     values : [str], default is Undefined, optional
-        values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty.
+        values
     """
 
 
@@ -2271,20 +2381,20 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0EphemeralVolumeClaimTe
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0Fc:
     """
-    fc represents a Fibre Channel resource that is attached to a kubelet's host machine and then exposed to the pod.
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 fc
 
     Attributes
     ----------
     fsType : str, default is Undefined, optional
-        fsType is the filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+        fs type
     lun : int, default is Undefined, optional
-        lun is Optional: FC target lun number
+        lun
     readOnly : bool, default is Undefined, optional
-        readOnly is Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.
+        read only
     targetWWNs : [str], default is Undefined, optional
-        targetWWNs is Optional: FC target worldwide names (WWNs)
+        target w w ns
     wwids : [str], default is Undefined, optional
-        wwids Optional: FC volume world wide identifiers (wwids) Either wwids or combination of targetWWNs and lun must be set, but not both simultaneously.
+        wwids
     """
 
 
@@ -2301,18 +2411,18 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0Fc:
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0FlexVolume:
     """
-    flexVolume represents a generic volume resource that is provisioned/attached using an exec based plugin.
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 flex volume
 
     Attributes
     ----------
     driver : str, default is Undefined, required
-        driver is the name of the driver to use for this volume.
+        driver
     fsType : str, default is Undefined, optional
-        fsType is the filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". The default filesystem depends on FlexVolume script.
+        fs type
     options : {str:str}, default is Undefined, optional
-        options is Optional: this field holds extra command options if any.
+        options
     readOnly : bool, default is Undefined, optional
-        readOnly is Optional: defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.
+        read only
     secretRef : OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0FlexVolumeSecretRef, default is Undefined, optional
         secret ref
     """
@@ -2331,28 +2441,28 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0FlexVolume:
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0FlexVolumeSecretRef:
     """
-    secretRef is Optional: secretRef is reference to the secret object containing sensitive information to pass to the plugin scripts. This may be empty if no secret object is specified.
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 flex volume secret ref
 
     Attributes
     ----------
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0Flocker:
     """
-    flocker represents a Flocker volume attached to a kubelet's host machine. This depends on the Flocker control service being running
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 flocker
 
     Attributes
     ----------
     datasetName : str, default is Undefined, optional
-        datasetName is Name of the dataset stored as metadata -> name on the dataset for Flocker should be considered as deprecated
+        dataset name
     datasetUUID : str, default is Undefined, optional
-        datasetUUID is the UUID of the dataset. This is unique identifier of a Flocker dataset
+        dataset UUID
     """
 
 
@@ -2363,18 +2473,18 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0Flocker:
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0GcePersistentDisk:
     """
-    gcePersistentDisk represents a GCE Disk resource that is attached to a kubelet's host machine and then exposed to the pod. More info: https://kubernetes.
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 gce persistent disk
 
     Attributes
     ----------
     fsType : str, default is Undefined, optional
-        fsType is filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs".
+        fs type
     partition : int, default is Undefined, optional
-        partition is the partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as "1".
+        partition
     pdName : str, default is Undefined, required
-        pdName is unique name of the PD resource in GCE. Used to identify the disk in GCE. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+        pd name
     readOnly : bool, default is Undefined, optional
-        readOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+        read only
     """
 
 
@@ -2389,16 +2499,16 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0GcePersistentDisk:
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0GitRepo:
     """
-    gitRepo represents a git repository at a particular revision. DEPRECATED: GitRepo is deprecated.
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 git repo
 
     Attributes
     ----------
     directory : str, default is Undefined, optional
-        directory is the target directory name. Must not contain or start with '..'.  If '.' is supplied, the volume directory will be the git repository.
+        directory
     repository : str, default is Undefined, required
-        repository is the URL
+        repository
     revision : str, default is Undefined, optional
-        revision is the commit hash for the specified revision.
+        revision
     """
 
 
@@ -2411,16 +2521,16 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0GitRepo:
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0Glusterfs:
     """
-    glusterfs represents a Glusterfs mount on the host that shares a pod's lifetime. More info: https://examples.k8s.io/volumes/glusterfs/README.md
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 glusterfs
 
     Attributes
     ----------
     endpoints : str, default is Undefined, required
-        endpoints is the endpoint name that details Glusterfs topology. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
+        endpoints
     path : str, default is Undefined, required
-        path is the Glusterfs volume path. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
+        path
     readOnly : bool, default is Undefined, optional
-        readOnly here will force the Glusterfs volume to be mounted with read-only permissions. Defaults to false. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
+        read only
     """
 
 
@@ -2433,14 +2543,14 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0Glusterfs:
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0HostPath:
     """
-    hostPath represents a pre-existing file or directory on the host machine that is directly exposed to the container.
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 host path
 
     Attributes
     ----------
     path : str, default is Undefined, required
-        path of the directory on the host. If the path is a symlink, it will follow the link to the real path. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath
+        path
     $type : str, default is Undefined, optional
-        type for HostPath Volume Defaults to "" More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath
+        type
     """
 
 
@@ -2451,32 +2561,32 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0HostPath:
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0Iscsi:
     """
-    iscsi represents an ISCSI Disk resource that is attached to a kubelet's host machine and then exposed to the pod. More info: https://examples.k8s.io/volumes/iscsi/README.md
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 iscsi
 
     Attributes
     ----------
     chapAuthDiscovery : bool, default is Undefined, optional
-        chapAuthDiscovery defines whether support iSCSI Discovery CHAP authentication
+        chap auth discovery
     chapAuthSession : bool, default is Undefined, optional
-        chapAuthSession defines whether support iSCSI Session CHAP authentication
+        chap auth session
     fsType : str, default is Undefined, optional
-        fsType is the filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs".
+        fs type
     initiatorName : str, default is Undefined, optional
-        initiatorName is the custom iSCSI Initiator Name.
+        initiator name
     iqn : str, default is Undefined, required
-        iqn is the target iSCSI Qualified Name.
+        iqn
     iscsiInterface : str, default is Undefined, optional
-        iscsiInterface is the interface Name that uses an iSCSI transport. Defaults to 'default' (tcp).
+        iscsi interface
     lun : int, default is Undefined, required
-        lun represents iSCSI Target Lun number.
+        lun
     portals : [str], default is Undefined, optional
-        portals is the iSCSI Target Portal List. The portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260).
+        portals
     readOnly : bool, default is Undefined, optional
-        readOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false.
+        read only
     secretRef : OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0IscsiSecretRef, default is Undefined, optional
         secret ref
     targetPortal : str, default is Undefined, required
-        targetPortal is iSCSI Target Portal. The Portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260).
+        target portal
     """
 
 
@@ -2505,30 +2615,30 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0Iscsi:
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0IscsiSecretRef:
     """
-    secretRef is the CHAP Secret for iSCSI target and initiator authentication
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 iscsi secret ref
 
     Attributes
     ----------
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0Nfs:
     """
-    nfs represents an NFS mount on the host that shares a pod's lifetime More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 nfs
 
     Attributes
     ----------
     path : str, default is Undefined, required
-        path that is exported by the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+        path
     readOnly : bool, default is Undefined, optional
-        readOnly here will force the NFS export to be mounted with read-only permissions. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+        read only
     server : str, default is Undefined, required
-        server is the hostname or IP address of the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+        server
     """
 
 
@@ -2541,14 +2651,14 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0Nfs:
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0PersistentVolumeClaim:
     """
-    persistentVolumeClaimVolumeSource represents a reference to a PersistentVolumeClaim in the same namespace. More info: https://kubernetes.
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 persistent volume claim
 
     Attributes
     ----------
     claimName : str, default is Undefined, required
-        claimName is the name of a PersistentVolumeClaim in the same namespace as the pod using this volume. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
+        claim name
     readOnly : bool, default is Undefined, optional
-        readOnly Will force the ReadOnly setting in VolumeMounts. Default false.
+        read only
     """
 
 
@@ -2559,14 +2669,14 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0PersistentVolumeClaim:
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0PhotonPersistentDisk:
     """
-    photonPersistentDisk represents a PhotonController persistent disk attached and mounted on kubelets host machine
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 photon persistent disk
 
     Attributes
     ----------
     fsType : str, default is Undefined, optional
-        fsType is the filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+        fs type
     pdID : str, default is Undefined, required
-        pdID is the ID that identifies Photon Controller persistent disk
+        pd ID
     """
 
 
@@ -2577,16 +2687,16 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0PhotonPersistentDisk:
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0PortworxVolume:
     """
-    portworxVolume represents a portworx volume attached and mounted on kubelets host machine
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 portworx volume
 
     Attributes
     ----------
     fsType : str, default is Undefined, optional
-        fSType represents the filesystem type to mount Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs". Implicitly inferred to be "ext4" if unspecified.
+        fs type
     readOnly : bool, default is Undefined, optional
-        readOnly defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.
+        read only
     volumeID : str, default is Undefined, required
-        volumeID uniquely identifies a Portworx volume
+        volume ID
     """
 
 
@@ -2599,14 +2709,14 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0PortworxVolume:
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0Projected:
     """
-    projected items for all in one resources secrets, configmaps, and downward API
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 projected
 
     Attributes
     ----------
     defaultMode : int, default is Undefined, optional
-        defaultMode are the mode bits used to set permissions on created files by default. Must be an octal value between 0000 and 0777 or a decimal value between 0 and 511.
+        default mode
     sources : [OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0ProjectedSourcesItems0], default is Undefined, optional
-        sources is the list of volume projections
+        sources
     """
 
 
@@ -2617,10 +2727,12 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0Projected:
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0ProjectedSourcesItems0:
     """
-    Projection that may be projected along with other supported volume types
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 projected sources items0
 
     Attributes
     ----------
+    clusterTrustBundle : OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0ProjectedSourcesItems0ClusterTrustBundle, default is Undefined, optional
+        cluster trust bundle
     configMap : OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0ProjectedSourcesItems0ConfigMap, default is Undefined, optional
         config map
     downwardAPI : OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0ProjectedSourcesItems0DownwardAPI, default is Undefined, optional
@@ -2632,6 +2744,8 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0ProjectedSourcesItems0
     """
 
 
+    clusterTrustBundle?: OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0ProjectedSourcesItems0ClusterTrustBundle
+
     configMap?: OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0ProjectedSourcesItems0ConfigMap
 
     downwardAPI?: OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0ProjectedSourcesItems0DownwardAPI
@@ -2641,40 +2755,110 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0ProjectedSourcesItems0
     serviceAccountToken?: OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0ProjectedSourcesItems0ServiceAccountToken
 
 
+schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0ProjectedSourcesItems0ClusterTrustBundle:
+    """
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 projected sources items0 cluster trust bundle
+
+    Attributes
+    ----------
+    labelSelector : OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0ProjectedSourcesItems0ClusterTrustBundleLabelSelector, default is Undefined, optional
+        label selector
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    path : str, default is Undefined, required
+        path
+    signerName : str, default is Undefined, optional
+        signer name
+    """
+
+
+    labelSelector?: OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0ProjectedSourcesItems0ClusterTrustBundleLabelSelector
+
+    name?: str
+
+    optional?: bool
+
+    path: str
+
+    signerName?: str
+
+
+schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0ProjectedSourcesItems0ClusterTrustBundleLabelSelector:
+    """
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 projected sources items0 cluster trust bundle label selector
+
+    Attributes
+    ----------
+    matchExpressions : [OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0ProjectedSourcesItems0ClusterTrustBundleLabelSelectorMatchExpressionsItems0], default is Undefined, optional
+        match expressions
+    matchLabels : {str:str}, default is Undefined, optional
+        match labels
+    """
+
+
+    matchExpressions?: [OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0ProjectedSourcesItems0ClusterTrustBundleLabelSelectorMatchExpressionsItems0]
+
+    matchLabels?: {str:str}
+
+
+schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0ProjectedSourcesItems0ClusterTrustBundleLabelSelectorMatchExpressionsItems0:
+    """
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 projected sources items0 cluster trust bundle label selector match expressions items0
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    operator : str, default is Undefined, required
+        operator
+    values : [str], default is Undefined, optional
+        values
+    """
+
+
+    key: str
+
+    operator: str
+
+    values?: [str]
+
+
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0ProjectedSourcesItems0ConfigMap:
     """
-    configMap information about the configMap data to project
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 projected sources items0 config map
 
     Attributes
     ----------
     items : [OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0ProjectedSourcesItems0ConfigMapItemsItems0], default is Undefined, optional
-        items if unspecified, each key-value pair in the Data field of the referenced ConfigMap will be projected into the volume as a file whose name is the key and content is the value.
+        items
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        optional specify whether the ConfigMap or its keys must be defined
+        optional
     """
 
 
     items?: [OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0ProjectedSourcesItems0ConfigMapItemsItems0]
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0ProjectedSourcesItems0ConfigMapItemsItems0:
     """
-    Maps a string key to a path within a volume.
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 projected sources items0 config map items items0
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        key is the key to project.
+        key
     mode : int, default is Undefined, optional
-        mode is Optional: mode bits used to set permissions on this file. Must be an octal value between 0000 and 0777 or a decimal value between 0 and 511.
+        mode
     path : str, default is Undefined, required
-        path is the relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+        path
     """
 
 
@@ -2687,12 +2871,12 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0ProjectedSourcesItems0
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0ProjectedSourcesItems0DownwardAPI:
     """
-    downwardAPI information about the downwardAPI data to project
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 projected sources items0 downward API
 
     Attributes
     ----------
     items : [OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0], default is Undefined, optional
-        Items is a list of DownwardAPIVolume file
+        items
     """
 
 
@@ -2701,16 +2885,16 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0ProjectedSourcesItems0
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0:
     """
-    DownwardAPIVolumeFile represents information to create the file containing the pod field
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 projected sources items0 downward API items items0
 
     Attributes
     ----------
     fieldRef : OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0FieldRef, default is Undefined, optional
         field ref
     mode : int, default is Undefined, optional
-        Optional: mode bits used to set permissions on this file, must be an octal value between 0000 and 0777 or a decimal value between 0 and 511.
+        mode
     path : str, default is Undefined, required
-        Required: Path is  the relative path name of the file to be created. Must not be absolute or contain the '..' path. Must be utf-8 encoded. The first item of the relative path must not start with '..'
+        path
     resourceFieldRef : OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0ResourceFieldRef, default is Undefined, optional
         resource field ref
     """
@@ -2727,14 +2911,14 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0ProjectedSourcesItems0
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0FieldRef:
     """
-    Required: Selects a field of the pod: only annotations, labels, name and namespace are supported.
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 projected sources items0 downward API items items0 field ref
 
     Attributes
     ----------
     apiVersion : str, default is Undefined, optional
-        Version of the schema the FieldPath is written in terms of, defaults to "v1".
+        api version
     fieldPath : str, default is Undefined, required
-        Path of the field to select in the specified API version.
+        field path
     """
 
 
@@ -2745,16 +2929,16 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0ProjectedSourcesItems0
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0ResourceFieldRef:
     """
-    Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported.
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 projected sources items0 downward API items items0 resource field ref
 
     Attributes
     ----------
     containerName : str, default is Undefined, optional
-        Container name: required for volumes, optional for env vars
+        container name
     divisor : int | str, default is Undefined, optional
-        Specifies the output format of the exposed resources, defaults to "1"
+        divisor
     resource : str, default is Undefined, required
-        Required: resource to select
+        resource
     """
 
 
@@ -2766,43 +2950,43 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0ProjectedSourcesItems0
 
 
     check:
-        regex.match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
+        regex_match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
 
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0ProjectedSourcesItems0Secret:
     """
-    secret information about the secret data to project
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 projected sources items0 secret
 
     Attributes
     ----------
     items : [OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0ProjectedSourcesItems0SecretItemsItems0], default is Undefined, optional
-        items if unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value.
+        items
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        optional field specify whether the Secret or its key must be defined
+        optional
     """
 
 
     items?: [OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0ProjectedSourcesItems0SecretItemsItems0]
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0ProjectedSourcesItems0SecretItemsItems0:
     """
-    Maps a string key to a path within a volume.
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 projected sources items0 secret items items0
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        key is the key to project.
+        key
     mode : int, default is Undefined, optional
-        mode is Optional: mode bits used to set permissions on this file. Must be an octal value between 0000 and 0777 or a decimal value between 0 and 511.
+        mode
     path : str, default is Undefined, required
-        path is the relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+        path
     """
 
 
@@ -2815,16 +2999,16 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0ProjectedSourcesItems0
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0ProjectedSourcesItems0ServiceAccountToken:
     """
-    serviceAccountToken is information about the serviceAccountToken data to project
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 projected sources items0 service account token
 
     Attributes
     ----------
     audience : str, default is Undefined, optional
-        audience is the intended audience of the token. A recipient of a token must identify itself with an identifier specified in the audience of the token, and otherwise should reject the token.
+        audience
     expirationSeconds : int, default is Undefined, optional
-        expirationSeconds is the requested duration of validity of the service account token. As the token approaches expiration, the kubelet volume plugin will proactively rotate the service account token.
+        expiration seconds
     path : str, default is Undefined, required
-        path is the path relative to the mount point of the file to project the token into.
+        path
     """
 
 
@@ -2837,22 +3021,22 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0ProjectedSourcesItems0
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0Quobyte:
     """
-    quobyte represents a Quobyte mount on the host that shares a pod's lifetime
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 quobyte
 
     Attributes
     ----------
     group : str, default is Undefined, optional
-        group to map volume access to Default is no group
+        group
     readOnly : bool, default is Undefined, optional
-        readOnly here will force the Quobyte volume to be mounted with read-only permissions. Defaults to false.
+        read only
     registry : str, default is Undefined, required
-        registry represents a single or multiple Quobyte Registry services specified as a string as host:port pair (multiple entries are separated with commas) which acts as the central registry for volumes
+        registry
     tenant : str, default is Undefined, optional
-        tenant owning the given Quobyte volume in the Backend Used with dynamically provisioned Quobyte volumes, value is set by the plugin
+        tenant
     user : str, default is Undefined, optional
-        user to map volume access to Defaults to serivceaccount user
+        user
     volume : str, default is Undefined, required
-        volume is a string that references an already created Quobyte volume by name.
+        volume
     """
 
 
@@ -2871,26 +3055,26 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0Quobyte:
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0Rbd:
     """
-    rbd represents a Rados Block Device mount on the host that shares a pod's lifetime. More info: https://examples.k8s.io/volumes/rbd/README.md
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 rbd
 
     Attributes
     ----------
     fsType : str, default is Undefined, optional
-        fsType is the filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs".
+        fs type
     image : str, default is Undefined, required
-        image is the rados image name. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+        image
     keyring : str, default is Undefined, optional
-        keyring is the path to key ring for RBDUser. Default is /etc/ceph/keyring. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+        keyring
     monitors : [str], default is Undefined, required
-        monitors is a collection of Ceph monitors. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+        monitors
     pool : str, default is Undefined, optional
-        pool is the rados pool name. Default is rbd. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+        pool
     readOnly : bool, default is Undefined, optional
-        readOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+        read only
     secretRef : OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0RbdSecretRef, default is Undefined, optional
         secret ref
     user : str, default is Undefined, optional
-        user is the rados user name. Default is admin. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+        user
     """
 
 
@@ -2913,44 +3097,44 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0Rbd:
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0RbdSecretRef:
     """
-    secretRef is name of the authentication secret for RBDUser. If provided overrides keyring. Default is nil. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 rbd secret ref
 
     Attributes
     ----------
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0ScaleIO:
     """
-    scaleIO represents a ScaleIO persistent volume attached and mounted on Kubernetes nodes.
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 scale i o
 
     Attributes
     ----------
     fsType : str, default is Undefined, optional
-        fsType is the filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Default is "xfs".
+        fs type
     gateway : str, default is Undefined, required
-        gateway is the host address of the ScaleIO API Gateway.
+        gateway
     protectionDomain : str, default is Undefined, optional
-        protectionDomain is the name of the ScaleIO Protection Domain for the configured storage.
+        protection domain
     readOnly : bool, default is Undefined, optional
-        readOnly Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.
+        read only
     secretRef : OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0ScaleIOSecretRef, default is Undefined, required
         secret ref
     sslEnabled : bool, default is Undefined, optional
-        sslEnabled Flag enable/disable SSL communication with Gateway, default false
+        ssl enabled
     storageMode : str, default is Undefined, optional
-        storageMode indicates whether the storage for a volume should be ThickProvisioned or ThinProvisioned. Default is ThinProvisioned.
+        storage mode
     storagePool : str, default is Undefined, optional
-        storagePool is the ScaleIO Storage Pool associated with the protection domain.
+        storage pool
     system : str, default is Undefined, required
-        system is the name of the storage system as configured in ScaleIO.
+        system
     volumeName : str, default is Undefined, optional
-        volumeName is the name of a volume already created in the ScaleIO system that is associated with this volume source.
+        volume name
     """
 
 
@@ -2977,32 +3161,32 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0ScaleIO:
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0ScaleIOSecretRef:
     """
-    secretRef references to the secret for ScaleIO user and other sensitive information. If this is not provided, Login operation will fail.
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 scale i o secret ref
 
     Attributes
     ----------
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0Secret:
     """
-    secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 secret
 
     Attributes
     ----------
     defaultMode : int, default is Undefined, optional
-        defaultMode is Optional: mode bits used to set permissions on created files by default. Must be an octal value between 0000 and 0777 or a decimal value between 0 and 511.
+        default mode
     items : [OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0SecretItemsItems0], default is Undefined, optional
-        items If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value.
+        items
     optional : bool, default is Undefined, optional
-        optional field specify whether the Secret or its keys must be defined
+        optional
     secretName : str, default is Undefined, optional
-        secretName is the name of the secret in the pod's namespace to use. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+        secret name
     """
 
 
@@ -3017,16 +3201,16 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0Secret:
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0SecretItemsItems0:
     """
-    Maps a string key to a path within a volume.
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 secret items items0
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        key is the key to project.
+        key
     mode : int, default is Undefined, optional
-        mode is Optional: mode bits used to set permissions on this file. Must be an octal value between 0000 and 0777 or a decimal value between 0 and 511.
+        mode
     path : str, default is Undefined, required
-        path is the relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+        path
     """
 
 
@@ -3039,20 +3223,20 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0SecretItemsItems0:
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0Storageos:
     """
-    storageOS represents a StorageOS volume attached and mounted on Kubernetes nodes.
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 storageos
 
     Attributes
     ----------
     fsType : str, default is Undefined, optional
-        fsType is the filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+        fs type
     readOnly : bool, default is Undefined, optional
-        readOnly defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.
+        read only
     secretRef : OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0StorageosSecretRef, default is Undefined, optional
         secret ref
     volumeName : str, default is Undefined, optional
-        volumeName is the human-readable name of the StorageOS volume.  Volume names are only unique within a namespace.
+        volume name
     volumeNamespace : str, default is Undefined, optional
-        volumeNamespace specifies the scope of the volume within StorageOS.  If no namespace is specified then the Pod's namespace will be used.
+        volume namespace
     """
 
 
@@ -3069,32 +3253,32 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0Storageos:
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0StorageosSecretRef:
     """
-    secretRef specifies the secret to use for obtaining the StorageOS API credentials.  If not specified, default values will be attempted.
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 storageos secret ref
 
     Attributes
     ----------
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0VsphereVolume:
     """
-    vsphereVolume represents a vSphere volume attached and mounted on kubelets host machine
+    opentelemetry io v1alpha1 op a m p bridge spec volumes items0 vsphere volume
 
     Attributes
     ----------
     fsType : str, default is Undefined, optional
-        fsType is filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
+        fs type
     storagePolicyID : str, default is Undefined, optional
-        storagePolicyID is the storage Policy Based Management (SPBM) profile ID associated with the StoragePolicyName.
+        storage policy ID
     storagePolicyName : str, default is Undefined, optional
-        storagePolicyName is the storage Policy Based Management (SPBM) profile name.
+        storage policy name
     volumePath : str, default is Undefined, required
-        volumePath is the path that identifies vSphere volume vmdk
+        volume path
     """
 
 
@@ -3109,12 +3293,12 @@ schema OpentelemetryIoV1alpha1OpAMPBridgeSpecVolumesItems0VsphereVolume:
 
 schema OpentelemetryIoV1alpha1OpAMPBridgeStatus:
     """
-    OpAMPBridgeStatus defines the observed state of OpAMPBridge.
+    opentelemetry io v1alpha1 op a m p bridge status
 
     Attributes
     ----------
     version : str, default is Undefined, optional
-        Version of the managed OpAMP Bridge (operand)
+        version
     """
 
 

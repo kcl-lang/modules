@@ -4,11 +4,12 @@ Editing this file might prove futile when you re-run the KCL auto-gen generate c
 """
 import regex
 import k8s.apimachinery.pkg.apis.meta.v1
+regex_match = regex.match
 
 
 schema Instrumentation:
     """
-    Instrumentation is the spec for OpenTelemetry instrumentation.
+    opentelemetry io v1alpha1 instrumentation
 
     Attributes
     ----------
@@ -21,7 +22,7 @@ schema Instrumentation:
     spec : OpentelemetryIoV1alpha1InstrumentationSpec, default is Undefined, optional
         spec
     status : any, default is Undefined, optional
-        InstrumentationStatus defines status of the instrumentation.
+        status
     """
 
 
@@ -38,7 +39,7 @@ schema Instrumentation:
 
 schema OpentelemetryIoV1alpha1InstrumentationSpec:
     """
-    InstrumentationSpec defines the desired state of OpenTelemetry SDK and instrumentation.
+    opentelemetry io v1alpha1 instrumentation spec
 
     Attributes
     ----------
@@ -47,7 +48,7 @@ schema OpentelemetryIoV1alpha1InstrumentationSpec:
     dotnet : OpentelemetryIoV1alpha1InstrumentationSpecDotnet, default is Undefined, optional
         dotnet
     env : [OpentelemetryIoV1alpha1InstrumentationSpecEnvItems0], default is Undefined, optional
-        Env defines common env vars.
+        env
     exporter : OpentelemetryIoV1alpha1InstrumentationSpecExporter, default is Undefined, optional
         exporter
     go : OpentelemetryIoV1alpha1InstrumentationSpecGo, default is Undefined, optional
@@ -59,7 +60,7 @@ schema OpentelemetryIoV1alpha1InstrumentationSpec:
     nodejs : OpentelemetryIoV1alpha1InstrumentationSpecNodejs, default is Undefined, optional
         nodejs
     propagators : [str], default is Undefined, optional
-        Propagators defines inter-process context propagation configuration. Values in this list will be set in the OTEL_PROPAGATORS env var. Enum=tracecontext;baggage;b3;b3multi;jaeger;xray;ottrace;none
+        propagators
     python : OpentelemetryIoV1alpha1InstrumentationSpecPython, default is Undefined, optional
         python
     resource : OpentelemetryIoV1alpha1InstrumentationSpecResource, default is Undefined, optional
@@ -96,24 +97,24 @@ schema OpentelemetryIoV1alpha1InstrumentationSpec:
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecApacheHttpd:
     """
-    ApacheHttpd defines configuration for Apache HTTPD auto-instrumentation.
+    opentelemetry io v1alpha1 instrumentation spec apache httpd
 
     Attributes
     ----------
     attrs : [OpentelemetryIoV1alpha1InstrumentationSpecApacheHttpdAttrsItems0], default is Undefined, optional
-        Attrs defines Apache HTTPD agent specific attributes. The precedence is: `agent default attributes` > `instrument spec attributes` . Attributes are documented at https://github.
+        attrs
     configPath : str, default is Undefined, optional
-        Location of Apache HTTPD server configuration. Needed only if different from default "/usr/local/apache2/conf"
+        config path
     env : [OpentelemetryIoV1alpha1InstrumentationSpecApacheHttpdEnvItems0], default is Undefined, optional
-        Env defines Apache HTTPD specific env vars.
+        env
     image : str, default is Undefined, optional
-        Image is a container image with Apache SDK and auto-instrumentation.
+        image
     resourceRequirements : OpentelemetryIoV1alpha1InstrumentationSpecApacheHttpdResourceRequirements, default is Undefined, optional
         resource requirements
     version : str, default is Undefined, optional
-        Apache HTTPD server version. One of 2.4 or 2.2. Default is 2.4
+        version
     volumeLimitSize : int | str, default is Undefined, optional
-        VolumeSizeLimit defines size limit for volume used for auto-instrumentation. The default size is 200Mi.
+        volume limit size
     """
 
 
@@ -133,19 +134,19 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecApacheHttpd:
 
 
     check:
-        regex.match(str(volumeLimitSize), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if volumeLimitSize
+        regex_match(str(volumeLimitSize), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if volumeLimitSize
 
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecApacheHttpdAttrsItems0:
     """
-    EnvVar represents an environment variable present in a Container.
+    opentelemetry io v1alpha1 instrumentation spec apache httpd attrs items0
 
     Attributes
     ----------
     name : str, default is Undefined, required
-        Name of the environment variable. Must be a C_IDENTIFIER.
+        name
     value : str, default is Undefined, optional
-        Variable references $(VAR_NAME) are expanded using the previously defined environment variables in the container and any service environment variables.
+        value
     valueFrom : OpentelemetryIoV1alpha1InstrumentationSpecApacheHttpdAttrsItems0ValueFrom, default is Undefined, optional
         value from
     """
@@ -160,7 +161,7 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecApacheHttpdAttrsItems0:
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecApacheHttpdAttrsItems0ValueFrom:
     """
-    Source for the environment variable's value. Cannot be used if value is not empty.
+    opentelemetry io v1alpha1 instrumentation spec apache httpd attrs items0 value from
 
     Attributes
     ----------
@@ -186,36 +187,36 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecApacheHttpdAttrsItems0ValueFrom
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecApacheHttpdAttrsItems0ValueFromConfigMapKeyRef:
     """
-    Selects a key of a ConfigMap.
+    opentelemetry io v1alpha1 instrumentation spec apache httpd attrs items0 value from config map key ref
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key to select.
+        key
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the ConfigMap or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecApacheHttpdAttrsItems0ValueFromFieldRef:
     """
-    Selects a field of the pod: supports metadata.name, metadata.namespace, `metadata.labels['<KEY>']`, `metadata.annotations['<KEY>']`, spec.nodeName, spec.serviceAccountName, status.hostIP, status.
+    opentelemetry io v1alpha1 instrumentation spec apache httpd attrs items0 value from field ref
 
     Attributes
     ----------
     apiVersion : str, default is Undefined, optional
-        Version of the schema the FieldPath is written in terms of, defaults to "v1".
+        api version
     fieldPath : str, default is Undefined, required
-        Path of the field to select in the specified API version.
+        field path
     """
 
 
@@ -226,16 +227,16 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecApacheHttpdAttrsItems0ValueFrom
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecApacheHttpdAttrsItems0ValueFromResourceFieldRef:
     """
-    Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.
+    opentelemetry io v1alpha1 instrumentation spec apache httpd attrs items0 value from resource field ref
 
     Attributes
     ----------
     containerName : str, default is Undefined, optional
-        Container name: required for volumes, optional for env vars
+        container name
     divisor : int | str, default is Undefined, optional
-        Specifies the output format of the exposed resources, defaults to "1"
+        divisor
     resource : str, default is Undefined, required
-        Required: resource to select
+        resource
     """
 
 
@@ -247,41 +248,41 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecApacheHttpdAttrsItems0ValueFrom
 
 
     check:
-        regex.match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
+        regex_match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
 
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecApacheHttpdAttrsItems0ValueFromSecretKeyRef:
     """
-    Selects a key of a secret in the pod's namespace
+    opentelemetry io v1alpha1 instrumentation spec apache httpd attrs items0 value from secret key ref
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecApacheHttpdEnvItems0:
     """
-    EnvVar represents an environment variable present in a Container.
+    opentelemetry io v1alpha1 instrumentation spec apache httpd env items0
 
     Attributes
     ----------
     name : str, default is Undefined, required
-        Name of the environment variable. Must be a C_IDENTIFIER.
+        name
     value : str, default is Undefined, optional
-        Variable references $(VAR_NAME) are expanded using the previously defined environment variables in the container and any service environment variables.
+        value
     valueFrom : OpentelemetryIoV1alpha1InstrumentationSpecApacheHttpdEnvItems0ValueFrom, default is Undefined, optional
         value from
     """
@@ -296,7 +297,7 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecApacheHttpdEnvItems0:
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecApacheHttpdEnvItems0ValueFrom:
     """
-    Source for the environment variable's value. Cannot be used if value is not empty.
+    opentelemetry io v1alpha1 instrumentation spec apache httpd env items0 value from
 
     Attributes
     ----------
@@ -322,36 +323,36 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecApacheHttpdEnvItems0ValueFrom:
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecApacheHttpdEnvItems0ValueFromConfigMapKeyRef:
     """
-    Selects a key of a ConfigMap.
+    opentelemetry io v1alpha1 instrumentation spec apache httpd env items0 value from config map key ref
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key to select.
+        key
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the ConfigMap or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecApacheHttpdEnvItems0ValueFromFieldRef:
     """
-    Selects a field of the pod: supports metadata.name, metadata.namespace, `metadata.labels['<KEY>']`, `metadata.annotations['<KEY>']`, spec.nodeName, spec.serviceAccountName, status.hostIP, status.
+    opentelemetry io v1alpha1 instrumentation spec apache httpd env items0 value from field ref
 
     Attributes
     ----------
     apiVersion : str, default is Undefined, optional
-        Version of the schema the FieldPath is written in terms of, defaults to "v1".
+        api version
     fieldPath : str, default is Undefined, required
-        Path of the field to select in the specified API version.
+        field path
     """
 
 
@@ -362,16 +363,16 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecApacheHttpdEnvItems0ValueFromFi
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecApacheHttpdEnvItems0ValueFromResourceFieldRef:
     """
-    Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.
+    opentelemetry io v1alpha1 instrumentation spec apache httpd env items0 value from resource field ref
 
     Attributes
     ----------
     containerName : str, default is Undefined, optional
-        Container name: required for volumes, optional for env vars
+        container name
     divisor : int | str, default is Undefined, optional
-        Specifies the output format of the exposed resources, defaults to "1"
+        divisor
     resource : str, default is Undefined, required
-        Required: resource to select
+        resource
     """
 
 
@@ -383,44 +384,43 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecApacheHttpdEnvItems0ValueFromRe
 
 
     check:
-        regex.match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
+        regex_match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
 
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecApacheHttpdEnvItems0ValueFromSecretKeyRef:
     """
-    Selects a key of a secret in the pod's namespace
+    opentelemetry io v1alpha1 instrumentation spec apache httpd env items0 value from secret key ref
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecApacheHttpdResourceRequirements:
     """
-    Resources describes the compute resource requirements.
+    opentelemetry io v1alpha1 instrumentation spec apache httpd resource requirements
 
     Attributes
     ----------
     claims : [OpentelemetryIoV1alpha1InstrumentationSpecApacheHttpdResourceRequirementsClaimsItems0], default is Undefined, optional
-        Claims lists the names of resources, defined in spec.resourceClaims, that are used by this container. 
-         This is an alpha field and requires enabling the DynamicResourceAllocation feature gate.
+        claims
     limits : {str:int | str}, default is Undefined, optional
-        Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+        limits
     requests : {str:int | str}, default is Undefined, optional
-        Requests describes the minimum amount of compute resources required.
+        requests
     """
 
 
@@ -432,18 +432,18 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecApacheHttpdResourceRequirements
 
 
     check:
-        all _, n in limits { regex.match(str(n), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") } if limits
-        all _, n in requests { regex.match(str(n), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") } if requests
+        all _, limits in limits {regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests {regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecApacheHttpdResourceRequirementsClaimsItems0:
     """
-    ResourceClaim references one entry in PodSpec.ResourceClaims.
+    opentelemetry io v1alpha1 instrumentation spec apache httpd resource requirements claims items0
 
     Attributes
     ----------
     name : str, default is Undefined, required
-        Name must match the name of one entry in pod.spec.resourceClaims of the Pod where this field is used. It makes that resource available inside a container.
+        name
     """
 
 
@@ -452,18 +452,18 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecApacheHttpdResourceRequirements
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecDotnet:
     """
-    DotNet defines configuration for DotNet auto-instrumentation.
+    opentelemetry io v1alpha1 instrumentation spec dotnet
 
     Attributes
     ----------
     env : [OpentelemetryIoV1alpha1InstrumentationSpecDotnetEnvItems0], default is Undefined, optional
-        Env defines DotNet specific env vars.
+        env
     image : str, default is Undefined, optional
-        Image is a container image with DotNet SDK and auto-instrumentation.
+        image
     resourceRequirements : OpentelemetryIoV1alpha1InstrumentationSpecDotnetResourceRequirements, default is Undefined, optional
         resource requirements
     volumeLimitSize : int | str, default is Undefined, optional
-        VolumeSizeLimit defines size limit for volume used for auto-instrumentation. The default size is 200Mi.
+        volume limit size
     """
 
 
@@ -477,19 +477,19 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecDotnet:
 
 
     check:
-        regex.match(str(volumeLimitSize), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if volumeLimitSize
+        regex_match(str(volumeLimitSize), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if volumeLimitSize
 
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecDotnetEnvItems0:
     """
-    EnvVar represents an environment variable present in a Container.
+    opentelemetry io v1alpha1 instrumentation spec dotnet env items0
 
     Attributes
     ----------
     name : str, default is Undefined, required
-        Name of the environment variable. Must be a C_IDENTIFIER.
+        name
     value : str, default is Undefined, optional
-        Variable references $(VAR_NAME) are expanded using the previously defined environment variables in the container and any service environment variables.
+        value
     valueFrom : OpentelemetryIoV1alpha1InstrumentationSpecDotnetEnvItems0ValueFrom, default is Undefined, optional
         value from
     """
@@ -504,7 +504,7 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecDotnetEnvItems0:
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecDotnetEnvItems0ValueFrom:
     """
-    Source for the environment variable's value. Cannot be used if value is not empty.
+    opentelemetry io v1alpha1 instrumentation spec dotnet env items0 value from
 
     Attributes
     ----------
@@ -530,36 +530,36 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecDotnetEnvItems0ValueFrom:
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecDotnetEnvItems0ValueFromConfigMapKeyRef:
     """
-    Selects a key of a ConfigMap.
+    opentelemetry io v1alpha1 instrumentation spec dotnet env items0 value from config map key ref
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key to select.
+        key
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the ConfigMap or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecDotnetEnvItems0ValueFromFieldRef:
     """
-    Selects a field of the pod: supports metadata.name, metadata.namespace, `metadata.labels['<KEY>']`, `metadata.annotations['<KEY>']`, spec.nodeName, spec.serviceAccountName, status.hostIP, status.
+    opentelemetry io v1alpha1 instrumentation spec dotnet env items0 value from field ref
 
     Attributes
     ----------
     apiVersion : str, default is Undefined, optional
-        Version of the schema the FieldPath is written in terms of, defaults to "v1".
+        api version
     fieldPath : str, default is Undefined, required
-        Path of the field to select in the specified API version.
+        field path
     """
 
 
@@ -570,16 +570,16 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecDotnetEnvItems0ValueFromFieldRe
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecDotnetEnvItems0ValueFromResourceFieldRef:
     """
-    Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.
+    opentelemetry io v1alpha1 instrumentation spec dotnet env items0 value from resource field ref
 
     Attributes
     ----------
     containerName : str, default is Undefined, optional
-        Container name: required for volumes, optional for env vars
+        container name
     divisor : int | str, default is Undefined, optional
-        Specifies the output format of the exposed resources, defaults to "1"
+        divisor
     resource : str, default is Undefined, required
-        Required: resource to select
+        resource
     """
 
 
@@ -591,44 +591,43 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecDotnetEnvItems0ValueFromResourc
 
 
     check:
-        regex.match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
+        regex_match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
 
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecDotnetEnvItems0ValueFromSecretKeyRef:
     """
-    Selects a key of a secret in the pod's namespace
+    opentelemetry io v1alpha1 instrumentation spec dotnet env items0 value from secret key ref
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecDotnetResourceRequirements:
     """
-    Resources describes the compute resource requirements.
+    opentelemetry io v1alpha1 instrumentation spec dotnet resource requirements
 
     Attributes
     ----------
     claims : [OpentelemetryIoV1alpha1InstrumentationSpecDotnetResourceRequirementsClaimsItems0], default is Undefined, optional
-        Claims lists the names of resources, defined in spec.resourceClaims, that are used by this container. 
-         This is an alpha field and requires enabling the DynamicResourceAllocation feature gate.
+        claims
     limits : {str:int | str}, default is Undefined, optional
-        Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+        limits
     requests : {str:int | str}, default is Undefined, optional
-        Requests describes the minimum amount of compute resources required.
+        requests
     """
 
 
@@ -640,18 +639,18 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecDotnetResourceRequirements:
 
 
     check:
-        all _, n in limits { regex.match(str(n), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") } if limits
-        all _, n in requests { regex.match(str(n), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") } if requests
+        all _, limits in limits {regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests {regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecDotnetResourceRequirementsClaimsItems0:
     """
-    ResourceClaim references one entry in PodSpec.ResourceClaims.
+    opentelemetry io v1alpha1 instrumentation spec dotnet resource requirements claims items0
 
     Attributes
     ----------
     name : str, default is Undefined, required
-        Name must match the name of one entry in pod.spec.resourceClaims of the Pod where this field is used. It makes that resource available inside a container.
+        name
     """
 
 
@@ -660,14 +659,14 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecDotnetResourceRequirementsClaim
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecEnvItems0:
     """
-    EnvVar represents an environment variable present in a Container.
+    opentelemetry io v1alpha1 instrumentation spec env items0
 
     Attributes
     ----------
     name : str, default is Undefined, required
-        Name of the environment variable. Must be a C_IDENTIFIER.
+        name
     value : str, default is Undefined, optional
-        Variable references $(VAR_NAME) are expanded using the previously defined environment variables in the container and any service environment variables.
+        value
     valueFrom : OpentelemetryIoV1alpha1InstrumentationSpecEnvItems0ValueFrom, default is Undefined, optional
         value from
     """
@@ -682,7 +681,7 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecEnvItems0:
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecEnvItems0ValueFrom:
     """
-    Source for the environment variable's value. Cannot be used if value is not empty.
+    opentelemetry io v1alpha1 instrumentation spec env items0 value from
 
     Attributes
     ----------
@@ -708,36 +707,36 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecEnvItems0ValueFrom:
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecEnvItems0ValueFromConfigMapKeyRef:
     """
-    Selects a key of a ConfigMap.
+    opentelemetry io v1alpha1 instrumentation spec env items0 value from config map key ref
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key to select.
+        key
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the ConfigMap or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecEnvItems0ValueFromFieldRef:
     """
-    Selects a field of the pod: supports metadata.name, metadata.namespace, `metadata.labels['<KEY>']`, `metadata.annotations['<KEY>']`, spec.nodeName, spec.serviceAccountName, status.hostIP, status.
+    opentelemetry io v1alpha1 instrumentation spec env items0 value from field ref
 
     Attributes
     ----------
     apiVersion : str, default is Undefined, optional
-        Version of the schema the FieldPath is written in terms of, defaults to "v1".
+        api version
     fieldPath : str, default is Undefined, required
-        Path of the field to select in the specified API version.
+        field path
     """
 
 
@@ -748,16 +747,16 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecEnvItems0ValueFromFieldRef:
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecEnvItems0ValueFromResourceFieldRef:
     """
-    Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.
+    opentelemetry io v1alpha1 instrumentation spec env items0 value from resource field ref
 
     Attributes
     ----------
     containerName : str, default is Undefined, optional
-        Container name: required for volumes, optional for env vars
+        container name
     divisor : int | str, default is Undefined, optional
-        Specifies the output format of the exposed resources, defaults to "1"
+        divisor
     resource : str, default is Undefined, required
-        Required: resource to select
+        resource
     """
 
 
@@ -769,39 +768,39 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecEnvItems0ValueFromResourceField
 
 
     check:
-        regex.match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
+        regex_match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
 
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecEnvItems0ValueFromSecretKeyRef:
     """
-    Selects a key of a secret in the pod's namespace
+    opentelemetry io v1alpha1 instrumentation spec env items0 value from secret key ref
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecExporter:
     """
-    Exporter defines exporter configuration.
+    opentelemetry io v1alpha1 instrumentation spec exporter
 
     Attributes
     ----------
     endpoint : str, default is Undefined, optional
-        Endpoint is address of the collector with OTLP endpoint.
+        endpoint
     """
 
 
@@ -810,18 +809,18 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecExporter:
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecGo:
     """
-    Go defines configuration for Go auto-instrumentation.
+    opentelemetry io v1alpha1 instrumentation spec go
 
     Attributes
     ----------
     env : [OpentelemetryIoV1alpha1InstrumentationSpecGoEnvItems0], default is Undefined, optional
-        Env defines Go specific env vars.
+        env
     image : str, default is Undefined, optional
-        Image is a container image with Go SDK and auto-instrumentation.
+        image
     resourceRequirements : OpentelemetryIoV1alpha1InstrumentationSpecGoResourceRequirements, default is Undefined, optional
         resource requirements
     volumeLimitSize : int | str, default is Undefined, optional
-        VolumeSizeLimit defines size limit for volume used for auto-instrumentation. The default size is 200Mi.
+        volume limit size
     """
 
 
@@ -835,19 +834,19 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecGo:
 
 
     check:
-        regex.match(str(volumeLimitSize), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if volumeLimitSize
+        regex_match(str(volumeLimitSize), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if volumeLimitSize
 
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecGoEnvItems0:
     """
-    EnvVar represents an environment variable present in a Container.
+    opentelemetry io v1alpha1 instrumentation spec go env items0
 
     Attributes
     ----------
     name : str, default is Undefined, required
-        Name of the environment variable. Must be a C_IDENTIFIER.
+        name
     value : str, default is Undefined, optional
-        Variable references $(VAR_NAME) are expanded using the previously defined environment variables in the container and any service environment variables.
+        value
     valueFrom : OpentelemetryIoV1alpha1InstrumentationSpecGoEnvItems0ValueFrom, default is Undefined, optional
         value from
     """
@@ -862,7 +861,7 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecGoEnvItems0:
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecGoEnvItems0ValueFrom:
     """
-    Source for the environment variable's value. Cannot be used if value is not empty.
+    opentelemetry io v1alpha1 instrumentation spec go env items0 value from
 
     Attributes
     ----------
@@ -888,36 +887,36 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecGoEnvItems0ValueFrom:
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecGoEnvItems0ValueFromConfigMapKeyRef:
     """
-    Selects a key of a ConfigMap.
+    opentelemetry io v1alpha1 instrumentation spec go env items0 value from config map key ref
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key to select.
+        key
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the ConfigMap or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecGoEnvItems0ValueFromFieldRef:
     """
-    Selects a field of the pod: supports metadata.name, metadata.namespace, `metadata.labels['<KEY>']`, `metadata.annotations['<KEY>']`, spec.nodeName, spec.serviceAccountName, status.hostIP, status.
+    opentelemetry io v1alpha1 instrumentation spec go env items0 value from field ref
 
     Attributes
     ----------
     apiVersion : str, default is Undefined, optional
-        Version of the schema the FieldPath is written in terms of, defaults to "v1".
+        api version
     fieldPath : str, default is Undefined, required
-        Path of the field to select in the specified API version.
+        field path
     """
 
 
@@ -928,16 +927,16 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecGoEnvItems0ValueFromFieldRef:
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecGoEnvItems0ValueFromResourceFieldRef:
     """
-    Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.
+    opentelemetry io v1alpha1 instrumentation spec go env items0 value from resource field ref
 
     Attributes
     ----------
     containerName : str, default is Undefined, optional
-        Container name: required for volumes, optional for env vars
+        container name
     divisor : int | str, default is Undefined, optional
-        Specifies the output format of the exposed resources, defaults to "1"
+        divisor
     resource : str, default is Undefined, required
-        Required: resource to select
+        resource
     """
 
 
@@ -949,44 +948,43 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecGoEnvItems0ValueFromResourceFie
 
 
     check:
-        regex.match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
+        regex_match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
 
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecGoEnvItems0ValueFromSecretKeyRef:
     """
-    Selects a key of a secret in the pod's namespace
+    opentelemetry io v1alpha1 instrumentation spec go env items0 value from secret key ref
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecGoResourceRequirements:
     """
-    Resources describes the compute resource requirements.
+    opentelemetry io v1alpha1 instrumentation spec go resource requirements
 
     Attributes
     ----------
     claims : [OpentelemetryIoV1alpha1InstrumentationSpecGoResourceRequirementsClaimsItems0], default is Undefined, optional
-        Claims lists the names of resources, defined in spec.resourceClaims, that are used by this container. 
-         This is an alpha field and requires enabling the DynamicResourceAllocation feature gate.
+        claims
     limits : {str:int | str}, default is Undefined, optional
-        Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+        limits
     requests : {str:int | str}, default is Undefined, optional
-        Requests describes the minimum amount of compute resources required.
+        requests
     """
 
 
@@ -998,18 +996,18 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecGoResourceRequirements:
 
 
     check:
-        all _, n in limits { regex.match(str(n), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") } if limits
-        all _, n in requests { regex.match(str(n), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") } if requests
+        all _, limits in limits {regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests {regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecGoResourceRequirementsClaimsItems0:
     """
-    ResourceClaim references one entry in PodSpec.ResourceClaims.
+    opentelemetry io v1alpha1 instrumentation spec go resource requirements claims items0
 
     Attributes
     ----------
     name : str, default is Undefined, required
-        Name must match the name of one entry in pod.spec.resourceClaims of the Pod where this field is used. It makes that resource available inside a container.
+        name
     """
 
 
@@ -1018,22 +1016,26 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecGoResourceRequirementsClaimsIte
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecJava:
     """
-    Java defines configuration for java auto-instrumentation.
+    opentelemetry io v1alpha1 instrumentation spec java
 
     Attributes
     ----------
     env : [OpentelemetryIoV1alpha1InstrumentationSpecJavaEnvItems0], default is Undefined, optional
-        Env defines java specific env vars.
+        env
+    extensions : [OpentelemetryIoV1alpha1InstrumentationSpecJavaExtensionsItems0], default is Undefined, optional
+        extensions
     image : str, default is Undefined, optional
-        Image is a container image with javaagent auto-instrumentation JAR.
+        image
     resources : OpentelemetryIoV1alpha1InstrumentationSpecJavaResources, default is Undefined, optional
         resources
     volumeLimitSize : int | str, default is Undefined, optional
-        VolumeSizeLimit defines size limit for volume used for auto-instrumentation. The default size is 200Mi.
+        volume limit size
     """
 
 
     env?: [OpentelemetryIoV1alpha1InstrumentationSpecJavaEnvItems0]
+
+    extensions?: [OpentelemetryIoV1alpha1InstrumentationSpecJavaExtensionsItems0]
 
     image?: str
 
@@ -1043,19 +1045,19 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecJava:
 
 
     check:
-        regex.match(str(volumeLimitSize), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if volumeLimitSize
+        regex_match(str(volumeLimitSize), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if volumeLimitSize
 
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecJavaEnvItems0:
     """
-    EnvVar represents an environment variable present in a Container.
+    opentelemetry io v1alpha1 instrumentation spec java env items0
 
     Attributes
     ----------
     name : str, default is Undefined, required
-        Name of the environment variable. Must be a C_IDENTIFIER.
+        name
     value : str, default is Undefined, optional
-        Variable references $(VAR_NAME) are expanded using the previously defined environment variables in the container and any service environment variables.
+        value
     valueFrom : OpentelemetryIoV1alpha1InstrumentationSpecJavaEnvItems0ValueFrom, default is Undefined, optional
         value from
     """
@@ -1070,7 +1072,7 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecJavaEnvItems0:
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecJavaEnvItems0ValueFrom:
     """
-    Source for the environment variable's value. Cannot be used if value is not empty.
+    opentelemetry io v1alpha1 instrumentation spec java env items0 value from
 
     Attributes
     ----------
@@ -1096,36 +1098,36 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecJavaEnvItems0ValueFrom:
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecJavaEnvItems0ValueFromConfigMapKeyRef:
     """
-    Selects a key of a ConfigMap.
+    opentelemetry io v1alpha1 instrumentation spec java env items0 value from config map key ref
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key to select.
+        key
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the ConfigMap or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecJavaEnvItems0ValueFromFieldRef:
     """
-    Selects a field of the pod: supports metadata.name, metadata.namespace, `metadata.labels['<KEY>']`, `metadata.annotations['<KEY>']`, spec.nodeName, spec.serviceAccountName, status.hostIP, status.
+    opentelemetry io v1alpha1 instrumentation spec java env items0 value from field ref
 
     Attributes
     ----------
     apiVersion : str, default is Undefined, optional
-        Version of the schema the FieldPath is written in terms of, defaults to "v1".
+        api version
     fieldPath : str, default is Undefined, required
-        Path of the field to select in the specified API version.
+        field path
     """
 
 
@@ -1136,16 +1138,16 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecJavaEnvItems0ValueFromFieldRef:
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecJavaEnvItems0ValueFromResourceFieldRef:
     """
-    Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.
+    opentelemetry io v1alpha1 instrumentation spec java env items0 value from resource field ref
 
     Attributes
     ----------
     containerName : str, default is Undefined, optional
-        Container name: required for volumes, optional for env vars
+        container name
     divisor : int | str, default is Undefined, optional
-        Specifies the output format of the exposed resources, defaults to "1"
+        divisor
     resource : str, default is Undefined, required
-        Required: resource to select
+        resource
     """
 
 
@@ -1157,44 +1159,61 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecJavaEnvItems0ValueFromResourceF
 
 
     check:
-        regex.match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
+        regex_match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
 
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecJavaEnvItems0ValueFromSecretKeyRef:
     """
-    Selects a key of a secret in the pod's namespace
+    opentelemetry io v1alpha1 instrumentation spec java env items0 value from secret key ref
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
+schema OpentelemetryIoV1alpha1InstrumentationSpecJavaExtensionsItems0:
+    """
+    opentelemetry io v1alpha1 instrumentation spec java extensions items0
+
+    Attributes
+    ----------
+    dir : str, default is Undefined, required
+        dir
+    image : str, default is Undefined, required
+        image
+    """
+
+
+    dir: str
+
+    image: str
+
+
 schema OpentelemetryIoV1alpha1InstrumentationSpecJavaResources:
     """
-    Resources describes the compute resource requirements.
+    opentelemetry io v1alpha1 instrumentation spec java resources
 
     Attributes
     ----------
     claims : [OpentelemetryIoV1alpha1InstrumentationSpecJavaResourcesClaimsItems0], default is Undefined, optional
-        Claims lists the names of resources, defined in spec.resourceClaims, that are used by this container. 
-         This is an alpha field and requires enabling the DynamicResourceAllocation feature gate.
+        claims
     limits : {str:int | str}, default is Undefined, optional
-        Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+        limits
     requests : {str:int | str}, default is Undefined, optional
-        Requests describes the minimum amount of compute resources required.
+        requests
     """
 
 
@@ -1206,18 +1225,18 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecJavaResources:
 
 
     check:
-        all _, n in limits { regex.match(str(n), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") } if limits
-        all _, n in requests { regex.match(str(n), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") } if requests
+        all _, limits in limits {regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests {regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecJavaResourcesClaimsItems0:
     """
-    ResourceClaim references one entry in PodSpec.ResourceClaims.
+    opentelemetry io v1alpha1 instrumentation spec java resources claims items0
 
     Attributes
     ----------
     name : str, default is Undefined, required
-        Name must match the name of one entry in pod.spec.resourceClaims of the Pod where this field is used. It makes that resource available inside a container.
+        name
     """
 
 
@@ -1226,22 +1245,22 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecJavaResourcesClaimsItems0:
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecNginx:
     """
-    Nginx defines configuration for Nginx auto-instrumentation.
+    opentelemetry io v1alpha1 instrumentation spec nginx
 
     Attributes
     ----------
     attrs : [OpentelemetryIoV1alpha1InstrumentationSpecNginxAttrsItems0], default is Undefined, optional
-        Attrs defines Nginx agent specific attributes. The precedence order is: `agent default attributes` > `instrument spec attributes` . Attributes are documented at https://github.
+        attrs
     configFile : str, default is Undefined, optional
-        Location of Nginx configuration file. Needed only if different from default "/etx/nginx/nginx.conf"
+        config file
     env : [OpentelemetryIoV1alpha1InstrumentationSpecNginxEnvItems0], default is Undefined, optional
-        Env defines Nginx specific env vars.
+        env
     image : str, default is Undefined, optional
-        Image is a container image with Nginx SDK and auto-instrumentation.
+        image
     resourceRequirements : OpentelemetryIoV1alpha1InstrumentationSpecNginxResourceRequirements, default is Undefined, optional
         resource requirements
     volumeLimitSize : int | str, default is Undefined, optional
-        VolumeSizeLimit defines size limit for volume used for auto-instrumentation. The default size is 200Mi.
+        volume limit size
     """
 
 
@@ -1259,19 +1278,19 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecNginx:
 
 
     check:
-        regex.match(str(volumeLimitSize), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if volumeLimitSize
+        regex_match(str(volumeLimitSize), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if volumeLimitSize
 
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecNginxAttrsItems0:
     """
-    EnvVar represents an environment variable present in a Container.
+    opentelemetry io v1alpha1 instrumentation spec nginx attrs items0
 
     Attributes
     ----------
     name : str, default is Undefined, required
-        Name of the environment variable. Must be a C_IDENTIFIER.
+        name
     value : str, default is Undefined, optional
-        Variable references $(VAR_NAME) are expanded using the previously defined environment variables in the container and any service environment variables.
+        value
     valueFrom : OpentelemetryIoV1alpha1InstrumentationSpecNginxAttrsItems0ValueFrom, default is Undefined, optional
         value from
     """
@@ -1286,7 +1305,7 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecNginxAttrsItems0:
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecNginxAttrsItems0ValueFrom:
     """
-    Source for the environment variable's value. Cannot be used if value is not empty.
+    opentelemetry io v1alpha1 instrumentation spec nginx attrs items0 value from
 
     Attributes
     ----------
@@ -1312,36 +1331,36 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecNginxAttrsItems0ValueFrom:
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecNginxAttrsItems0ValueFromConfigMapKeyRef:
     """
-    Selects a key of a ConfigMap.
+    opentelemetry io v1alpha1 instrumentation spec nginx attrs items0 value from config map key ref
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key to select.
+        key
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the ConfigMap or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecNginxAttrsItems0ValueFromFieldRef:
     """
-    Selects a field of the pod: supports metadata.name, metadata.namespace, `metadata.labels['<KEY>']`, `metadata.annotations['<KEY>']`, spec.nodeName, spec.serviceAccountName, status.hostIP, status.
+    opentelemetry io v1alpha1 instrumentation spec nginx attrs items0 value from field ref
 
     Attributes
     ----------
     apiVersion : str, default is Undefined, optional
-        Version of the schema the FieldPath is written in terms of, defaults to "v1".
+        api version
     fieldPath : str, default is Undefined, required
-        Path of the field to select in the specified API version.
+        field path
     """
 
 
@@ -1352,16 +1371,16 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecNginxAttrsItems0ValueFromFieldR
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecNginxAttrsItems0ValueFromResourceFieldRef:
     """
-    Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.
+    opentelemetry io v1alpha1 instrumentation spec nginx attrs items0 value from resource field ref
 
     Attributes
     ----------
     containerName : str, default is Undefined, optional
-        Container name: required for volumes, optional for env vars
+        container name
     divisor : int | str, default is Undefined, optional
-        Specifies the output format of the exposed resources, defaults to "1"
+        divisor
     resource : str, default is Undefined, required
-        Required: resource to select
+        resource
     """
 
 
@@ -1373,41 +1392,41 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecNginxAttrsItems0ValueFromResour
 
 
     check:
-        regex.match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
+        regex_match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
 
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecNginxAttrsItems0ValueFromSecretKeyRef:
     """
-    Selects a key of a secret in the pod's namespace
+    opentelemetry io v1alpha1 instrumentation spec nginx attrs items0 value from secret key ref
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecNginxEnvItems0:
     """
-    EnvVar represents an environment variable present in a Container.
+    opentelemetry io v1alpha1 instrumentation spec nginx env items0
 
     Attributes
     ----------
     name : str, default is Undefined, required
-        Name of the environment variable. Must be a C_IDENTIFIER.
+        name
     value : str, default is Undefined, optional
-        Variable references $(VAR_NAME) are expanded using the previously defined environment variables in the container and any service environment variables.
+        value
     valueFrom : OpentelemetryIoV1alpha1InstrumentationSpecNginxEnvItems0ValueFrom, default is Undefined, optional
         value from
     """
@@ -1422,7 +1441,7 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecNginxEnvItems0:
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecNginxEnvItems0ValueFrom:
     """
-    Source for the environment variable's value. Cannot be used if value is not empty.
+    opentelemetry io v1alpha1 instrumentation spec nginx env items0 value from
 
     Attributes
     ----------
@@ -1448,36 +1467,36 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecNginxEnvItems0ValueFrom:
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecNginxEnvItems0ValueFromConfigMapKeyRef:
     """
-    Selects a key of a ConfigMap.
+    opentelemetry io v1alpha1 instrumentation spec nginx env items0 value from config map key ref
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key to select.
+        key
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the ConfigMap or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecNginxEnvItems0ValueFromFieldRef:
     """
-    Selects a field of the pod: supports metadata.name, metadata.namespace, `metadata.labels['<KEY>']`, `metadata.annotations['<KEY>']`, spec.nodeName, spec.serviceAccountName, status.hostIP, status.
+    opentelemetry io v1alpha1 instrumentation spec nginx env items0 value from field ref
 
     Attributes
     ----------
     apiVersion : str, default is Undefined, optional
-        Version of the schema the FieldPath is written in terms of, defaults to "v1".
+        api version
     fieldPath : str, default is Undefined, required
-        Path of the field to select in the specified API version.
+        field path
     """
 
 
@@ -1488,16 +1507,16 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecNginxEnvItems0ValueFromFieldRef
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecNginxEnvItems0ValueFromResourceFieldRef:
     """
-    Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.
+    opentelemetry io v1alpha1 instrumentation spec nginx env items0 value from resource field ref
 
     Attributes
     ----------
     containerName : str, default is Undefined, optional
-        Container name: required for volumes, optional for env vars
+        container name
     divisor : int | str, default is Undefined, optional
-        Specifies the output format of the exposed resources, defaults to "1"
+        divisor
     resource : str, default is Undefined, required
-        Required: resource to select
+        resource
     """
 
 
@@ -1509,44 +1528,43 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecNginxEnvItems0ValueFromResource
 
 
     check:
-        regex.match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
+        regex_match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
 
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecNginxEnvItems0ValueFromSecretKeyRef:
     """
-    Selects a key of a secret in the pod's namespace
+    opentelemetry io v1alpha1 instrumentation spec nginx env items0 value from secret key ref
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecNginxResourceRequirements:
     """
-    Resources describes the compute resource requirements.
+    opentelemetry io v1alpha1 instrumentation spec nginx resource requirements
 
     Attributes
     ----------
     claims : [OpentelemetryIoV1alpha1InstrumentationSpecNginxResourceRequirementsClaimsItems0], default is Undefined, optional
-        Claims lists the names of resources, defined in spec.resourceClaims, that are used by this container. 
-         This is an alpha field and requires enabling the DynamicResourceAllocation feature gate.
+        claims
     limits : {str:int | str}, default is Undefined, optional
-        Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+        limits
     requests : {str:int | str}, default is Undefined, optional
-        Requests describes the minimum amount of compute resources required.
+        requests
     """
 
 
@@ -1558,18 +1576,18 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecNginxResourceRequirements:
 
 
     check:
-        all _, n in limits { regex.match(str(n), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") } if limits
-        all _, n in requests { regex.match(str(n), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") } if requests
+        all _, limits in limits {regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests {regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecNginxResourceRequirementsClaimsItems0:
     """
-    ResourceClaim references one entry in PodSpec.ResourceClaims.
+    opentelemetry io v1alpha1 instrumentation spec nginx resource requirements claims items0
 
     Attributes
     ----------
     name : str, default is Undefined, required
-        Name must match the name of one entry in pod.spec.resourceClaims of the Pod where this field is used. It makes that resource available inside a container.
+        name
     """
 
 
@@ -1578,18 +1596,18 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecNginxResourceRequirementsClaims
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecNodejs:
     """
-    NodeJS defines configuration for nodejs auto-instrumentation.
+    opentelemetry io v1alpha1 instrumentation spec nodejs
 
     Attributes
     ----------
     env : [OpentelemetryIoV1alpha1InstrumentationSpecNodejsEnvItems0], default is Undefined, optional
-        Env defines nodejs specific env vars.
+        env
     image : str, default is Undefined, optional
-        Image is a container image with NodeJS SDK and auto-instrumentation.
+        image
     resourceRequirements : OpentelemetryIoV1alpha1InstrumentationSpecNodejsResourceRequirements, default is Undefined, optional
         resource requirements
     volumeLimitSize : int | str, default is Undefined, optional
-        VolumeSizeLimit defines size limit for volume used for auto-instrumentation. The default size is 200Mi.
+        volume limit size
     """
 
 
@@ -1603,19 +1621,19 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecNodejs:
 
 
     check:
-        regex.match(str(volumeLimitSize), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if volumeLimitSize
+        regex_match(str(volumeLimitSize), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if volumeLimitSize
 
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecNodejsEnvItems0:
     """
-    EnvVar represents an environment variable present in a Container.
+    opentelemetry io v1alpha1 instrumentation spec nodejs env items0
 
     Attributes
     ----------
     name : str, default is Undefined, required
-        Name of the environment variable. Must be a C_IDENTIFIER.
+        name
     value : str, default is Undefined, optional
-        Variable references $(VAR_NAME) are expanded using the previously defined environment variables in the container and any service environment variables.
+        value
     valueFrom : OpentelemetryIoV1alpha1InstrumentationSpecNodejsEnvItems0ValueFrom, default is Undefined, optional
         value from
     """
@@ -1630,7 +1648,7 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecNodejsEnvItems0:
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecNodejsEnvItems0ValueFrom:
     """
-    Source for the environment variable's value. Cannot be used if value is not empty.
+    opentelemetry io v1alpha1 instrumentation spec nodejs env items0 value from
 
     Attributes
     ----------
@@ -1656,36 +1674,36 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecNodejsEnvItems0ValueFrom:
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecNodejsEnvItems0ValueFromConfigMapKeyRef:
     """
-    Selects a key of a ConfigMap.
+    opentelemetry io v1alpha1 instrumentation spec nodejs env items0 value from config map key ref
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key to select.
+        key
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the ConfigMap or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecNodejsEnvItems0ValueFromFieldRef:
     """
-    Selects a field of the pod: supports metadata.name, metadata.namespace, `metadata.labels['<KEY>']`, `metadata.annotations['<KEY>']`, spec.nodeName, spec.serviceAccountName, status.hostIP, status.
+    opentelemetry io v1alpha1 instrumentation spec nodejs env items0 value from field ref
 
     Attributes
     ----------
     apiVersion : str, default is Undefined, optional
-        Version of the schema the FieldPath is written in terms of, defaults to "v1".
+        api version
     fieldPath : str, default is Undefined, required
-        Path of the field to select in the specified API version.
+        field path
     """
 
 
@@ -1696,16 +1714,16 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecNodejsEnvItems0ValueFromFieldRe
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecNodejsEnvItems0ValueFromResourceFieldRef:
     """
-    Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.
+    opentelemetry io v1alpha1 instrumentation spec nodejs env items0 value from resource field ref
 
     Attributes
     ----------
     containerName : str, default is Undefined, optional
-        Container name: required for volumes, optional for env vars
+        container name
     divisor : int | str, default is Undefined, optional
-        Specifies the output format of the exposed resources, defaults to "1"
+        divisor
     resource : str, default is Undefined, required
-        Required: resource to select
+        resource
     """
 
 
@@ -1717,44 +1735,43 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecNodejsEnvItems0ValueFromResourc
 
 
     check:
-        regex.match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
+        regex_match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
 
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecNodejsEnvItems0ValueFromSecretKeyRef:
     """
-    Selects a key of a secret in the pod's namespace
+    opentelemetry io v1alpha1 instrumentation spec nodejs env items0 value from secret key ref
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecNodejsResourceRequirements:
     """
-    Resources describes the compute resource requirements.
+    opentelemetry io v1alpha1 instrumentation spec nodejs resource requirements
 
     Attributes
     ----------
     claims : [OpentelemetryIoV1alpha1InstrumentationSpecNodejsResourceRequirementsClaimsItems0], default is Undefined, optional
-        Claims lists the names of resources, defined in spec.resourceClaims, that are used by this container. 
-         This is an alpha field and requires enabling the DynamicResourceAllocation feature gate.
+        claims
     limits : {str:int | str}, default is Undefined, optional
-        Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+        limits
     requests : {str:int | str}, default is Undefined, optional
-        Requests describes the minimum amount of compute resources required.
+        requests
     """
 
 
@@ -1766,18 +1783,18 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecNodejsResourceRequirements:
 
 
     check:
-        all _, n in limits { regex.match(str(n), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") } if limits
-        all _, n in requests { regex.match(str(n), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") } if requests
+        all _, limits in limits {regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests {regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecNodejsResourceRequirementsClaimsItems0:
     """
-    ResourceClaim references one entry in PodSpec.ResourceClaims.
+    opentelemetry io v1alpha1 instrumentation spec nodejs resource requirements claims items0
 
     Attributes
     ----------
     name : str, default is Undefined, required
-        Name must match the name of one entry in pod.spec.resourceClaims of the Pod where this field is used. It makes that resource available inside a container.
+        name
     """
 
 
@@ -1786,18 +1803,18 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecNodejsResourceRequirementsClaim
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecPython:
     """
-    Python defines configuration for python auto-instrumentation.
+    opentelemetry io v1alpha1 instrumentation spec python
 
     Attributes
     ----------
     env : [OpentelemetryIoV1alpha1InstrumentationSpecPythonEnvItems0], default is Undefined, optional
-        Env defines python specific env vars.
+        env
     image : str, default is Undefined, optional
-        Image is a container image with Python SDK and auto-instrumentation.
+        image
     resourceRequirements : OpentelemetryIoV1alpha1InstrumentationSpecPythonResourceRequirements, default is Undefined, optional
         resource requirements
     volumeLimitSize : int | str, default is Undefined, optional
-        VolumeSizeLimit defines size limit for volume used for auto-instrumentation. The default size is 200Mi.
+        volume limit size
     """
 
 
@@ -1811,19 +1828,19 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecPython:
 
 
     check:
-        regex.match(str(volumeLimitSize), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if volumeLimitSize
+        regex_match(str(volumeLimitSize), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if volumeLimitSize
 
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecPythonEnvItems0:
     """
-    EnvVar represents an environment variable present in a Container.
+    opentelemetry io v1alpha1 instrumentation spec python env items0
 
     Attributes
     ----------
     name : str, default is Undefined, required
-        Name of the environment variable. Must be a C_IDENTIFIER.
+        name
     value : str, default is Undefined, optional
-        Variable references $(VAR_NAME) are expanded using the previously defined environment variables in the container and any service environment variables.
+        value
     valueFrom : OpentelemetryIoV1alpha1InstrumentationSpecPythonEnvItems0ValueFrom, default is Undefined, optional
         value from
     """
@@ -1838,7 +1855,7 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecPythonEnvItems0:
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecPythonEnvItems0ValueFrom:
     """
-    Source for the environment variable's value. Cannot be used if value is not empty.
+    opentelemetry io v1alpha1 instrumentation spec python env items0 value from
 
     Attributes
     ----------
@@ -1864,36 +1881,36 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecPythonEnvItems0ValueFrom:
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecPythonEnvItems0ValueFromConfigMapKeyRef:
     """
-    Selects a key of a ConfigMap.
+    opentelemetry io v1alpha1 instrumentation spec python env items0 value from config map key ref
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key to select.
+        key
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the ConfigMap or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecPythonEnvItems0ValueFromFieldRef:
     """
-    Selects a field of the pod: supports metadata.name, metadata.namespace, `metadata.labels['<KEY>']`, `metadata.annotations['<KEY>']`, spec.nodeName, spec.serviceAccountName, status.hostIP, status.
+    opentelemetry io v1alpha1 instrumentation spec python env items0 value from field ref
 
     Attributes
     ----------
     apiVersion : str, default is Undefined, optional
-        Version of the schema the FieldPath is written in terms of, defaults to "v1".
+        api version
     fieldPath : str, default is Undefined, required
-        Path of the field to select in the specified API version.
+        field path
     """
 
 
@@ -1904,16 +1921,16 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecPythonEnvItems0ValueFromFieldRe
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecPythonEnvItems0ValueFromResourceFieldRef:
     """
-    Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.
+    opentelemetry io v1alpha1 instrumentation spec python env items0 value from resource field ref
 
     Attributes
     ----------
     containerName : str, default is Undefined, optional
-        Container name: required for volumes, optional for env vars
+        container name
     divisor : int | str, default is Undefined, optional
-        Specifies the output format of the exposed resources, defaults to "1"
+        divisor
     resource : str, default is Undefined, required
-        Required: resource to select
+        resource
     """
 
 
@@ -1925,44 +1942,43 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecPythonEnvItems0ValueFromResourc
 
 
     check:
-        regex.match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
+        regex_match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
 
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecPythonEnvItems0ValueFromSecretKeyRef:
     """
-    Selects a key of a secret in the pod's namespace
+    opentelemetry io v1alpha1 instrumentation spec python env items0 value from secret key ref
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecPythonResourceRequirements:
     """
-    Resources describes the compute resource requirements.
+    opentelemetry io v1alpha1 instrumentation spec python resource requirements
 
     Attributes
     ----------
     claims : [OpentelemetryIoV1alpha1InstrumentationSpecPythonResourceRequirementsClaimsItems0], default is Undefined, optional
-        Claims lists the names of resources, defined in spec.resourceClaims, that are used by this container. 
-         This is an alpha field and requires enabling the DynamicResourceAllocation feature gate.
+        claims
     limits : {str:int | str}, default is Undefined, optional
-        Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+        limits
     requests : {str:int | str}, default is Undefined, optional
-        Requests describes the minimum amount of compute resources required.
+        requests
     """
 
 
@@ -1974,18 +1990,18 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecPythonResourceRequirements:
 
 
     check:
-        all _, n in limits { regex.match(str(n), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") } if limits
-        all _, n in requests { regex.match(str(n), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") } if requests
+        all _, limits in limits {regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests {regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecPythonResourceRequirementsClaimsItems0:
     """
-    ResourceClaim references one entry in PodSpec.ResourceClaims.
+    opentelemetry io v1alpha1 instrumentation spec python resource requirements claims items0
 
     Attributes
     ----------
     name : str, default is Undefined, required
-        Name must match the name of one entry in pod.spec.resourceClaims of the Pod where this field is used. It makes that resource available inside a container.
+        name
     """
 
 
@@ -1994,14 +2010,14 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecPythonResourceRequirementsClaim
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecResource:
     """
-    Resource defines the configuration for the resource attributes, as defined by the OpenTelemetry specification.
+    opentelemetry io v1alpha1 instrumentation spec resource
 
     Attributes
     ----------
     addK8sUIDAttributes : bool, default is Undefined, optional
-        AddK8sUIDAttributes defines whether K8s UID attributes should be collected (e.g. k8s.deployment.uid).
+        add k8s UID attributes
     resourceAttributes : {str:str}, default is Undefined, optional
-        Attributes defines attributes that are added to the resource. For example environment: dev
+        resource attributes
     """
 
 
@@ -2012,14 +2028,14 @@ schema OpentelemetryIoV1alpha1InstrumentationSpecResource:
 
 schema OpentelemetryIoV1alpha1InstrumentationSpecSampler:
     """
-    Sampler defines sampling configuration.
+    opentelemetry io v1alpha1 instrumentation spec sampler
 
     Attributes
     ----------
     argument : str, default is Undefined, optional
-        Argument defines sampler argument. The value depends on the sampler type. For instance for parentbased_traceidratio sampler type it is a number in range [0..1] e.g. 0.25.
+        argument
     $type : str, default is Undefined, optional
-        Type defines sampler type. The value will be set in the OTEL_TRACES_SAMPLER env var. The value can be for instance parentbased_always_on, parentbased_always_off, parentbased_traceidratio...
+        type
     """
 
 
