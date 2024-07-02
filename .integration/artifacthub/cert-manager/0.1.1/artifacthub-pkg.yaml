@@ -1,0 +1,25 @@
+version: 0.1.1
+name: cert-manager
+displayName: cert-manager
+createdAt: "2024-07-02T06:23:24Z"
+description: '`cert-manager` module contains definitions for cert-manager'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `cert-manager` with tag `0.1.1` as dependency
+  ```
+  kcl mod add cert-manager:0.1.1
+  ```
+
+  #### Pull `cert-manager` with tag `0.1.1` to local
+  ```
+  kcl mod pull cert-manager:0.1.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
