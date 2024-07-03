@@ -192,22 +192,26 @@ schema CiliumIoV2CiliumEndpointStatusExternalIdentifiers:
 
     Attributes
     ----------
+    cni_attachment_id : str, default is Undefined, optional
+        ID assigned to this attachment by container runtime
     container_id : str, default is Undefined, optional
-        ID assigned by container runtime
+        ID assigned by container runtime (deprecated, may not be unique)
     container_name : str, default is Undefined, optional
-        Name assigned to container
+        Name assigned to container (deprecated, may not be unique)
     docker_endpoint_id : str, default is Undefined, optional
         Docker endpoint ID
     docker_network_id : str, default is Undefined, optional
         Docker network ID
     k8s_namespace : str, default is Undefined, optional
-        K8s namespace for this endpoint
+        K8s namespace for this endpoint (deprecated, may not be unique)
     k8s_pod_name : str, default is Undefined, optional
-        K8s pod name for this endpoint
+        K8s pod name for this endpoint (deprecated, may not be unique)
     pod_name : str, default is Undefined, optional
-        K8s pod for this endpoint(Deprecated, use K8sPodName and K8sNamespace instead)
+        K8s pod for this endpoint (deprecated, may not be unique)
     """
 
+
+    cni_attachment_id?: str
 
     container_id?: str
 

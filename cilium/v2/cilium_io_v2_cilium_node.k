@@ -47,6 +47,8 @@ schema CiliumIoV2CiliumNodeSpec:
         alibaba cloud
     azure : CiliumIoV2CiliumNodeSpecAzure, default is Undefined, optional
         azure
+    bootid : str, default is Undefined, optional
+        BootID is a unique node identifier generated on boot
     encryption : CiliumIoV2CiliumNodeSpecEncryption, default is Undefined, optional
         encryption
     eni : CiliumIoV2CiliumNodeSpecEni, default is Undefined, optional
@@ -69,6 +71,8 @@ schema CiliumIoV2CiliumNodeSpec:
     alibaba_cloud?: CiliumIoV2CiliumNodeSpecAlibabaCloud
 
     azure?: CiliumIoV2CiliumNodeSpecAzure
+
+    bootid?: str
 
     encryption?: CiliumIoV2CiliumNodeSpecEncryption
 
@@ -304,20 +308,18 @@ schema CiliumIoV2CiliumNodeSpecIpam:
 
     Attributes
     ----------
+    ipv6_pool : {str:CiliumIoV2CiliumNodeSpecIpamIPV6PoolAnon}, default is Undefined, optional
+        IPv6Pool is the list of IPv6 addresses available to the node for allocation. When an IPv6 address is used, it will remain on this list but will be added to Status.IPAM.IPv6Used
     max_above_watermark : int, default is Undefined, optional
         MaxAboveWatermark is the maximum number of addresses to allocate beyond the addresses needed to reach the PreAllocate watermark. Going above the watermark can help reduce the number of API calls to allocate IPs, e.g. when a new ENI is allocated, as many secondary IPs as possible are allocated. Limiting the amount can help reduce waste of IPs.
     max_allocate : int, default is Undefined, optional
         MaxAllocate is the maximum number of IPs that can be allocated to the node. When the current amount of allocated IPs will approach this value, the considered value for PreAllocate will decrease down to 0 in order to not attempt to allocate more addresses than defined.
     min_allocate : int, default is Undefined, optional
         MinAllocate is the minimum number of IPs that must be allocated when the node is first bootstrapped. It defines the minimum base socket of addresses that must be available. After reaching this watermark, the PreAllocate and MaxAboveWatermark logic takes over to continue allocating IPs.
-    pod_cidr_allocation_threshold : int, default is Undefined, optional
-        PodCIDRAllocationThreshold defines the minimum number of free IPs which must be available to this node via its pod CIDR pool. If the total number of IP addresses in the pod CIDR pool is less than this value, the pod CIDRs currently in-use by this node will be marked as depleted and cilium-operator will allocate a new pod CIDR to this node. This value effectively defines the buffer of IP addresses available immediately without requiring cilium-operator to get involved.
-    pod_cidr_release_threshold : int, default is Undefined, optional
-        PodCIDRReleaseThreshold defines the maximum number of free IPs which may be available to this node via its pod CIDR pool. While the total number of free IP addresses in the pod CIDR pool is larger than this value, cilium-agent will attempt to release currently unused pod CIDRs.
     podCIDRs : [str], default is Undefined, optional
         PodCIDRs is the list of CIDRs available to the node for allocation. When an IP is used, the IP will be added to Status.IPAM.Used
     pool : {str:CiliumIoV2CiliumNodeSpecIpamPoolAnon}, default is Undefined, optional
-        Pool is the list of IPs available to the node for allocation. When an IP is used, the IP will remain on this list but will be added to Status.IPAM.Used
+        Pool is the list of IPv4 addresses available to the node for allocation. When an IPv4 address is used, it will remain on this list but will be added to Status.IPAM.Used
     pools : CiliumIoV2CiliumNodeSpecIpamPools, default is Undefined, optional
         pools
     pre_allocate : int, default is Undefined, optional
@@ -325,15 +327,13 @@ schema CiliumIoV2CiliumNodeSpecIpam:
     """
 
 
+    ipv6_pool?: {str:CiliumIoV2CiliumNodeSpecIpamIPV6PoolAnon}
+
     max_above_watermark?: int
 
     max_allocate?: int
 
     min_allocate?: int
-
-    pod_cidr_allocation_threshold?: int
-
-    pod_cidr_release_threshold?: int
 
     podCIDRs?: [str]
 
@@ -348,9 +348,26 @@ schema CiliumIoV2CiliumNodeSpecIpam:
         max_above_watermark >= 0
         max_allocate >= 0
         min_allocate >= 0
-        pod_cidr_allocation_threshold >= 0
-        pod_cidr_release_threshold >= 0
         pre_allocate >= 0
+
+
+schema CiliumIoV2CiliumNodeSpecIpamIPV6PoolAnon:
+    """
+    AllocationIP is an IP which is available for allocation, or already has been allocated
+
+    Attributes
+    ----------
+    owner : str, default is Undefined, optional
+        Owner is the owner of the IP. This field is set if the IP has been allocated. It will be set to the pod name or another identifier representing the usage of the IP 
+         The owner field is left blank for an entry in Spec.IPAM.Pool and filled out as the IP is used and also added to Status.IPAM.Used.
+    resource : str, default is Undefined, optional
+        Resource is set for both available and allocated IPs, it represents what resource the IP is associated with, e.g. in combination with AWS ENI, this will refer to the ID of the ENI
+    """
+
+
+    owner?: str
+
+    resource?: str
 
 
 schema CiliumIoV2CiliumNodeSpecIpamPoolAnon:
@@ -574,6 +591,8 @@ schema CiliumIoV2CiliumNodeStatusAlibabaCloudEnisAnonVpc:
         CIDRBlock is the VPC IPv4 CIDR
     ipv6_cidr : str, default is Undefined, optional
         IPv6CIDRBlock is the VPC IPv6 CIDR
+    secondary_cidrs : [str], default is Undefined, optional
+        SecondaryCIDRs is the list of Secondary CIDRs associated with the VPC
     vpc_id : str, default is Undefined, optional
         VPCID is the vpc to which the ENI belongs
     """
@@ -582,6 +601,8 @@ schema CiliumIoV2CiliumNodeStatusAlibabaCloudEnisAnonVpc:
     cidr?: str
 
     ipv6_cidr?: str
+
+    secondary_cidrs?: [str]
 
     vpc_id?: str
 
@@ -810,16 +831,22 @@ schema CiliumIoV2CiliumNodeStatusIpam:
 
     Attributes
     ----------
+    ipv6_used : {str:CiliumIoV2CiliumNodeStatusIpamIPV6UsedAnon}, default is Undefined, optional
+        IPv6Used lists all IPv6 addresses out of Spec.IPAM.IPv6Pool which have been allocated and are in use.
     operator_status : CiliumIoV2CiliumNodeStatusIpamOperatorStatus, default is Undefined, optional
         operator status
     pod_cidrs : {str:CiliumIoV2CiliumNodeStatusIpamPodCidrsAnon}, default is Undefined, optional
         PodCIDRs lists the status of each pod CIDR allocated to this node.
     release_ips : {str:str}, default is Undefined, optional
-        ReleaseIPs tracks the state for every IP considered for release. value can be one of the following string : * marked-for-release : Set by operator as possible candidate for IP * ready-for-release  : Acknowledged as safe to release by agent * do-not-release     : IP already in use / not owned by the node. Set by agent * released           : IP successfully released. Set by operator
+        ReleaseIPs tracks the state for every IPv4 address considered for release. The value can be one of the following strings: * marked-for-release : Set by operator as possible candidate for IP * ready-for-release  : Acknowledged as safe to release by agent * do-not-release     : IP already in use / not owned by the node. Set by agent * released           : IP successfully released. Set by operator
+    release_ipv6s : {str:str}, default is Undefined, optional
+        ReleaseIPv6s tracks the state for every IPv6 address considered for release. The value can be one of the following strings: * marked-for-release : Set by operator as possible candidate for IP * ready-for-release  : Acknowledged as safe to release by agent * do-not-release     : IP already in use / not owned by the node. Set by agent * released           : IP successfully released. Set by operator
     used : {str:CiliumIoV2CiliumNodeStatusIpamUsedAnon}, default is Undefined, optional
-        Used lists all IPs out of Spec.IPAM.Pool which have been allocated and are in use.
+        Used lists all IPv4 addresses out of Spec.IPAM.Pool which have been allocated and are in use.
     """
 
+
+    ipv6_used?: {str:CiliumIoV2CiliumNodeStatusIpamIPV6UsedAnon}
 
     operator_status?: CiliumIoV2CiliumNodeStatusIpamOperatorStatus
 
@@ -827,7 +854,28 @@ schema CiliumIoV2CiliumNodeStatusIpam:
 
     release_ips?: {str:str}
 
+    release_ipv6s?: {str:str}
+
     used?: {str:CiliumIoV2CiliumNodeStatusIpamUsedAnon}
+
+
+schema CiliumIoV2CiliumNodeStatusIpamIPV6UsedAnon:
+    """
+    AllocationIP is an IP which is available for allocation, or already has been allocated
+
+    Attributes
+    ----------
+    owner : str, default is Undefined, optional
+        Owner is the owner of the IP. This field is set if the IP has been allocated. It will be set to the pod name or another identifier representing the usage of the IP 
+         The owner field is left blank for an entry in Spec.IPAM.Pool and filled out as the IP is used and also added to Status.IPAM.Used.
+    resource : str, default is Undefined, optional
+        Resource is set for both available and allocated IPs, it represents what resource the IP is associated with, e.g. in combination with AWS ENI, this will refer to the ID of the ENI
+    """
+
+
+    owner?: str
+
+    resource?: str
 
 
 schema CiliumIoV2CiliumNodeStatusIpamOperatorStatus:

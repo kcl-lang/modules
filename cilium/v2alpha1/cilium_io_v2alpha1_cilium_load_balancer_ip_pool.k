@@ -4,6 +4,7 @@ Editing this file might prove futile when you re-run the KCL auto-gen generate c
 """
 import regex
 import k8s.apimachinery.pkg.apis.meta.v1
+regex_match = regex.match
 
 
 schema CiliumLoadBalancerIPPool:
@@ -42,8 +43,10 @@ schema CiliumIoV2alpha1CiliumLoadBalancerIPPoolSpec:
 
     Attributes
     ----------
-    cidrs : [CiliumIoV2alpha1CiliumLoadBalancerIPPoolSpecCidrsItems0], default is Undefined, required
-        CiliumLoadBalancerIPPoolCIDRBlock is a list of CIDRs comprising this IP Pool
+    allowFirstLastIPs : str, default is Undefined, optional
+        AllowFirstLastIPs, if set to `yes` means that the first and last IPs of each CIDR will be allocatable. If `no` or undefined, these IPs will be reserved. This field is ignored for /{31,32} and /{127,128} CIDRs since reserving the first and last IPs would make the CIDRs unusable.
+    blocks : [CiliumIoV2alpha1CiliumLoadBalancerIPPoolSpecBlocksItems0], default is Undefined, optional
+        Blocks is a list of CIDRs comprising this IP Pool
     disabled : bool, default is Undefined, optional
         Disabled, if set to true means that no new IPs will be allocated from this pool. Existing allocations will not be removed from services.
     serviceSelector : CiliumIoV2alpha1CiliumLoadBalancerIPPoolSpecServiceSelector, default is Undefined, optional
@@ -51,29 +54,35 @@ schema CiliumIoV2alpha1CiliumLoadBalancerIPPoolSpec:
     """
 
 
-    cidrs: [CiliumIoV2alpha1CiliumLoadBalancerIPPoolSpecCidrsItems0]
+    allowFirstLastIPs?: "Yes" | "No"
+
+    blocks?: [CiliumIoV2alpha1CiliumLoadBalancerIPPoolSpecBlocksItems0]
 
     disabled?: bool = False
 
     serviceSelector?: CiliumIoV2alpha1CiliumLoadBalancerIPPoolSpecServiceSelector
 
 
-    check:
-        len(cidrs) >= 1
-
-
-schema CiliumIoV2alpha1CiliumLoadBalancerIPPoolSpecCidrsItems0:
+schema CiliumIoV2alpha1CiliumLoadBalancerIPPoolSpecBlocksItems0:
     """
-    CiliumLoadBalancerIPPoolCIDRBlock describes a single CIDR block.
+    CiliumLoadBalancerIPPoolIPBlock describes a single IP block.
 
     Attributes
     ----------
-    cidr : str, default is Undefined, required
+    cidr : str, default is Undefined, optional
         cidr
+    start : str, default is Undefined, optional
+        start
+    stop : str, default is Undefined, optional
+        stop
     """
 
 
-    cidr: str
+    cidr?: str
+
+    start?: str
+
+    stop?: str
 
 
 schema CiliumIoV2alpha1CiliumLoadBalancerIPPoolSpecServiceSelector:
@@ -95,7 +104,7 @@ schema CiliumIoV2alpha1CiliumLoadBalancerIPPoolSpecServiceSelector:
 
 
     check:
-        all _, n in matchLabels { regex.match(str(n), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") } if matchLabels
+        all _, matchLabels in matchLabels {len(matchLabels) <= 63regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
 
 
 schema CiliumIoV2alpha1CiliumLoadBalancerIPPoolSpecServiceSelectorMatchExpressionsItems0:
@@ -138,8 +147,8 @@ schema CiliumIoV2alpha1CiliumLoadBalancerIPPoolStatus:
 schema CiliumIoV2alpha1CiliumLoadBalancerIPPoolStatusConditionsItems0:
     """
     Condition contains details for one aspect of the current state of this API Resource. --- This struct is intended for direct use as an array at the field path .status.conditions.  For example, 
-     	type FooStatus struct{ 	    // Represents the observations of a foo's current state. 	    // Known .status.conditions.type are: "Available", "Progressing", and "Degraded" 	    // +patchMergeKey=type 	    // +patchStrategy=merge 	    // +listType=map 	    // +listMapKey=type 	    Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"` 
-     	    // other fields 	}
+     type FooStatus struct{ // Represents the observations of a foo's current state. // Known .status.conditions.type are: "Available", "Progressing", and "Degraded" // +patchMergeKey=type // +patchStrategy=merge // +listType=map // +listMapKey=type Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"` 
+     // other fields }
 
     Attributes
     ----------
@@ -176,8 +185,8 @@ schema CiliumIoV2alpha1CiliumLoadBalancerIPPoolStatusConditionsItems0:
         observedGeneration >= 0
         len(reason) <= 1024
         len(reason) >= 1
-        regex.match(str(reason), r"^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$")
+        regex_match(str(reason), r"^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$")
         len($type) <= 316
-        regex.match(str($type), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$")
+        regex_match(str($type), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$")
 
 
