@@ -4,6 +4,7 @@ Editing this file might prove futile when you re-run the KCL auto-gen generate c
 """
 import regex
 import k8s.apimachinery.pkg.apis.meta.v1
+regex_match = regex.match
 
 
 schema CiliumL2AnnouncementPolicy:
@@ -87,7 +88,7 @@ schema CiliumIoV2alpha1CiliumL2AnnouncementPolicySpecNodeSelector:
 
 
     check:
-        all _, n in matchLabels { regex.match(str(n), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") } if matchLabels
+        all _, matchLabels in matchLabels {len(matchLabels) <= 63regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
 
 
 schema CiliumIoV2alpha1CiliumL2AnnouncementPolicySpecNodeSelectorMatchExpressionsItems0:
@@ -114,7 +115,8 @@ schema CiliumIoV2alpha1CiliumL2AnnouncementPolicySpecNodeSelectorMatchExpression
 
 schema CiliumIoV2alpha1CiliumL2AnnouncementPolicySpecServiceSelector:
     """
-    ServiceSelector selects a set of services which will be announced over L2 networks 
+    ServiceSelector selects a set of services which will be announced over L2 networks. The loadBalancerClass for a service must be nil or specify a supported class, e.g. "io.cilium/l2-announcer". Refer to the following document for additional details regarding load balancer classes: 
+     https://kubernetes.io/docs/concepts/services-networking/service/#load-balancer-class 
      If nil this policy applies to all services.
 
     Attributes
@@ -132,7 +134,7 @@ schema CiliumIoV2alpha1CiliumL2AnnouncementPolicySpecServiceSelector:
 
 
     check:
-        all _, n in matchLabels { regex.match(str(n), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") } if matchLabels
+        all _, matchLabels in matchLabels {len(matchLabels) <= 63regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
 
 
 schema CiliumIoV2alpha1CiliumL2AnnouncementPolicySpecServiceSelectorMatchExpressionsItems0:
@@ -174,8 +176,8 @@ schema CiliumIoV2alpha1CiliumL2AnnouncementPolicyStatus:
 schema CiliumIoV2alpha1CiliumL2AnnouncementPolicyStatusConditionsItems0:
     """
     Condition contains details for one aspect of the current state of this API Resource. --- This struct is intended for direct use as an array at the field path .status.conditions.  For example, 
-     	type FooStatus struct{ 	    // Represents the observations of a foo's current state. 	    // Known .status.conditions.type are: "Available", "Progressing", and "Degraded" 	    // +patchMergeKey=type 	    // +patchStrategy=merge 	    // +listType=map 	    // +listMapKey=type 	    Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"` 
-     	    // other fields 	}
+     type FooStatus struct{ // Represents the observations of a foo's current state. // Known .status.conditions.type are: "Available", "Progressing", and "Degraded" // +patchMergeKey=type // +patchStrategy=merge // +listType=map // +listMapKey=type Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"` 
+     // other fields }
 
     Attributes
     ----------
@@ -212,8 +214,8 @@ schema CiliumIoV2alpha1CiliumL2AnnouncementPolicyStatusConditionsItems0:
         observedGeneration >= 0
         len(reason) <= 1024
         len(reason) >= 1
-        regex.match(str(reason), r"^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$")
+        regex_match(str(reason), r"^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$")
         len($type) <= 316
-        regex.match(str($type), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$")
+        regex_match(str($type), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$")
 
 

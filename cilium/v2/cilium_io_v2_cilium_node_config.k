@@ -12,27 +12,27 @@ schema CiliumNodeConfig:
 
     Attributes
     ----------
-    apiVersion : str, default is "cilium.io/v2alpha1", required
+    apiVersion : str, default is "cilium.io/v2", required
         APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
     kind : str, default is "CiliumNodeConfig", required
         Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     metadata : v1.ObjectMeta, default is Undefined, optional
         metadata
-    spec : CiliumIoV2alpha1CiliumNodeConfigSpec, default is Undefined, required
+    spec : CiliumIoV2CiliumNodeConfigSpec, default is Undefined, required
         spec
     """
 
 
-    apiVersion: "cilium.io/v2alpha1" = "cilium.io/v2alpha1"
+    apiVersion: "cilium.io/v2" = "cilium.io/v2"
 
     kind: "CiliumNodeConfig" = "CiliumNodeConfig"
 
     metadata?: v1.ObjectMeta
 
-    spec: CiliumIoV2alpha1CiliumNodeConfigSpec
+    spec: CiliumIoV2CiliumNodeConfigSpec
 
 
-schema CiliumIoV2alpha1CiliumNodeConfigSpec:
+schema CiliumIoV2CiliumNodeConfigSpec:
     """
     Spec is the desired Cilium configuration overrides for a given node
 
@@ -40,35 +40,35 @@ schema CiliumIoV2alpha1CiliumNodeConfigSpec:
     ----------
     defaults : {str:str}, default is Undefined, required
         Defaults is treated the same as the cilium-config ConfigMap - a set of key-value pairs parsed by the agent and operator processes. Each key must be a valid config-map data field (i.e. a-z, A-Z, -, _, and .)
-    nodeSelector : CiliumIoV2alpha1CiliumNodeConfigSpecNodeSelector, default is Undefined, required
+    nodeSelector : CiliumIoV2CiliumNodeConfigSpecNodeSelector, default is Undefined, required
         node selector
     """
 
 
     defaults: {str:str}
 
-    nodeSelector: CiliumIoV2alpha1CiliumNodeConfigSpecNodeSelector
+    nodeSelector: CiliumIoV2CiliumNodeConfigSpecNodeSelector
 
 
-schema CiliumIoV2alpha1CiliumNodeConfigSpecNodeSelector:
+schema CiliumIoV2CiliumNodeConfigSpecNodeSelector:
     """
     NodeSelector is a label selector that determines to which nodes this configuration applies. If not supplied, then this config applies to no nodes. If empty, then it applies to all nodes.
 
     Attributes
     ----------
-    matchExpressions : [CiliumIoV2alpha1CiliumNodeConfigSpecNodeSelectorMatchExpressionsItems0], default is Undefined, optional
+    matchExpressions : [CiliumIoV2CiliumNodeConfigSpecNodeSelectorMatchExpressionsItems0], default is Undefined, optional
         matchExpressions is a list of label selector requirements. The requirements are ANDed.
     matchLabels : {str:str}, default is Undefined, optional
         matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
     """
 
 
-    matchExpressions?: [CiliumIoV2alpha1CiliumNodeConfigSpecNodeSelectorMatchExpressionsItems0]
+    matchExpressions?: [CiliumIoV2CiliumNodeConfigSpecNodeSelectorMatchExpressionsItems0]
 
     matchLabels?: {str:str}
 
 
-schema CiliumIoV2alpha1CiliumNodeConfigSpecNodeSelectorMatchExpressionsItems0:
+schema CiliumIoV2CiliumNodeConfigSpecNodeSelectorMatchExpressionsItems0:
     """
     A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 

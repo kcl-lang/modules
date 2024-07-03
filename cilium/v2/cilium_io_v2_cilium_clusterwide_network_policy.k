@@ -4,6 +4,7 @@ Editing this file might prove futile when you re-run the KCL auto-gen generate c
 """
 import regex
 import k8s.apimachinery.pkg.apis.meta.v1
+regex_match = regex.match
 
 
 schema CiliumClusterwideNetworkPolicy:
@@ -52,6 +53,8 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpec:
         Egress is a list of EgressRule which are enforced at egress. If omitted or empty, this rule does not apply at egress.
     egressDeny : [CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressDenyItems0], default is Undefined, optional
         EgressDeny is a list of EgressDenyRule which are enforced at egress. Any rule inserted here will be denied regardless of the allowed egress rules in the 'egress' field. If omitted or empty, this rule does not apply at egress.
+    enableDefaultDeny : CiliumIoV2CiliumClusterwideNetworkPolicySpecEnableDefaultDeny, default is Undefined, optional
+        enable default deny
     endpointSelector : CiliumIoV2CiliumClusterwideNetworkPolicySpecEndpointSelector, default is Undefined, optional
         endpoint selector
     ingress : [CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressItems0], default is Undefined, optional
@@ -71,6 +74,8 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpec:
 
     egressDeny?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressDenyItems0]
 
+    enableDefaultDeny?: CiliumIoV2CiliumClusterwideNetworkPolicySpecEnableDefaultDeny
+
     endpointSelector?: CiliumIoV2CiliumClusterwideNetworkPolicySpecEndpointSelector
 
     ingress?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressItems0]
@@ -85,9 +90,9 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpec:
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressDenyItems0:
     """
     EgressDenyRule contains all rule types which can be applied at egress, i.e. network traffic that originates inside the endpoint and exits the endpoint selected by the endpointSelector. 
-       - All members of this structure are optional. If omitted or empty, the     member will have no effect on the rule. 
-       - If multiple members of the structure are specified, then all members     must match in order for the rule to take effect. The exception to this     rule is the ToRequires member; the effects of any Requires field in any     rule will apply to all other rules as well. 
-       - ToEndpoints, ToCIDR, ToCIDRSet, ToEntities, ToServices and ToGroups are     mutually exclusive. Only one of these members may be present within an     individual rule.
+     - All members of this structure are optional. If omitted or empty, the member will have no effect on the rule. 
+     - If multiple members of the structure are specified, then all members must match in order for the rule to take effect. The exception to this rule is the ToRequires member; the effects of any Requires field in any rule will apply to all other rules as well. 
+     - ToEndpoints, ToCIDR, ToCIDRSet, ToEntities, ToServices and ToGroups are mutually exclusive. Only one of these members may be present within an individual rule.
 
     Attributes
     ----------
@@ -107,7 +112,9 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressDenyItems0:
         ToEntities is a list of special entities to which the endpoint subject to the rule is allowed to initiate connections. Supported entities are `world`, `cluster`,`host`,`remote-node`,`kube-apiserver`, `init`, `health`,`unmanaged` and `all`.
     toGroups : [CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressDenyItems0ToGroupsItems0], default is Undefined, optional
         ToGroups is a directive that allows the integration with multiple outside providers. Currently, only AWS is supported, and the rule can select by multiple sub directives: 
-         Example: toGroups: - aws:     securityGroupsIds:     - 'sg-XXXXXXXXXXXXX'
+         Example: toGroups: - aws: securityGroupsIds: - 'sg-XXXXXXXXXXXXX'
+    toNodes : [CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressDenyItems0ToNodesItems0], default is Undefined, optional
+        ToNodes is a list of nodes identified by an EndpointSelector to which endpoints subject to the rule is allowed to communicate.
     toPorts : [CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressDenyItems0ToPortsItems0], default is Undefined, optional
         ToPorts is a list of destination ports identified by port number and protocol which the endpoint subject to the rule is not allowed to connect to. 
          Example: Any endpoint with the label "role=frontend" is not allowed to initiate connections to destination port 8080/tcp
@@ -132,15 +139,13 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressDenyItems0:
 
     toGroups?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressDenyItems0ToGroupsItems0]
 
+    toNodes?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressDenyItems0ToNodesItems0]
+
     toPorts?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressDenyItems0ToPortsItems0]
 
     toRequires?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressDenyItems0ToRequiresItems0]
 
     toServices?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressDenyItems0ToServicesItems0]
-
-
-    check:
-        all n in toCIDR { regex.match(str(n), r"^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\/([0-9]|[1-2][0-9]|3[0-2])$|^s*((([0-9A-Fa-f]{1,4}:){7}(:|([0-9A-Fa-f]{1,4})))|(([0-9A-Fa-f]{1,4}:){6}:([0-9A-Fa-f]{1,4})?)|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){0,1}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){0,2}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){0,3}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){0,4}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){0,5}):([0-9A-Fa-f]{1,4})?))|(:(:|((:[0-9A-Fa-f]{1,4}){1,7}))))(%.+)?s*/([0-9]|[1-9][0-9]|1[0-1][0-9]|12[0-8])$") } if toCIDR
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressDenyItems0IcmpsItems0:
@@ -157,6 +162,10 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressDenyItems0IcmpsItems0:
     fields?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressDenyItems0IcmpsItems0FieldsItems0]
 
 
+    check:
+        len(fields) <= 40
+
+
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressDenyItems0IcmpsItems0FieldsItems0:
     """
     ICMPField is a ICMP field.
@@ -165,19 +174,18 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressDenyItems0IcmpsItems0Fi
     ----------
     family : str, default is "IPv4", optional
         Family is a IP address version. Currently, we support `IPv4` and `IPv6`. `IPv4` is set as default.
-    $type : int, default is Undefined, required
-        Type is a ICMP-type. It should be 0-255 (8bit).
+    $type : int | str, default is Undefined, required
+        Type is a ICMP-type. It should be an 8bit code (0-255), or it's CamelCase name (for example, "EchoReply"). Allowed ICMP types are: Ipv4: EchoReply | DestinationUnreachable | Redirect | Echo | EchoRequest | RouterAdvertisement | RouterSelection | TimeExceeded | ParameterProblem | Timestamp | TimestampReply | Photuris | ExtendedEcho Request | ExtendedEcho Reply Ipv6: DestinationUnreachable | PacketTooBig | TimeExceeded | ParameterProblem | EchoRequest | EchoReply | MulticastListenerQuery| MulticastListenerReport | MulticastListenerDone | RouterSolicitation | RouterAdvertisement | NeighborSolicitation | NeighborAdvertisement | RedirectMessage | RouterRenumbering | ICMPNodeInformationQuery | ICMPNodeInformationResponse | InverseNeighborDiscoverySolicitation | InverseNeighborDiscoveryAdvertisement | HomeAgentAddressDiscoveryRequest | HomeAgentAddressDiscoveryReply | MobilePrefixSolicitation | MobilePrefixAdvertisement | DuplicateAddressRequestCodeSuffix | DuplicateAddressConfirmationCodeSuffix | ExtendedEchoRequest | ExtendedEchoReply
     """
 
 
     family?: "IPv4" | "IPv6" = "IPv4"
 
-    $type: int
+    $type: int | str
 
 
     check:
-        $type <= 255
-        $type >= 0
+        regex_match(str($type), r"^([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]|EchoReply|DestinationUnreachable|Redirect|Echo|RouterAdvertisement|RouterSelection|TimeExceeded|ParameterProblem|Timestamp|TimestampReply|Photuris|ExtendedEchoRequest|ExtendedEcho Reply|PacketTooBig|ParameterProblem|EchoRequest|MulticastListenerQuery|MulticastListenerReport|MulticastListenerDone|RouterSolicitation|RouterAdvertisement|NeighborSolicitation|NeighborAdvertisement|RedirectMessage|RouterRenumbering|ICMPNodeInformationQuery|ICMPNodeInformationResponse|InverseNeighborDiscoverySolicitation|InverseNeighborDiscoveryAdvertisement|HomeAgentAddressDiscoveryRequest|HomeAgentAddressDiscoveryReply|MobilePrefixSolicitation|MobilePrefixAdvertisement|DuplicateAddressRequestCodeSuffix|DuplicateAddressConfirmationCodeSuffix)$")
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressDenyItems0ToCIDRSetItems0:
@@ -189,7 +197,7 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressDenyItems0ToCIDRSetItem
     cidr : str, default is Undefined, optional
         CIDR is a CIDR prefix / IP Block.
     cidrGroupRef : str, default is Undefined, optional
-        CIDRGroupRef is a reference to a CiliumCIDRGroup object. A CiliumCIDRGroup contains a list of CIDRs that the endpoint, subject to the rule, can (Ingress) or cannot (IngressDeny) receive connections from.
+        CIDRGroupRef is a reference to a CiliumCIDRGroup object. A CiliumCIDRGroup contains a list of CIDRs that the endpoint, subject to the rule, can (Ingress/Egress) or cannot (IngressDeny/EgressDeny) receive connections from.
     except : [str], default is Undefined, optional
         ExceptCIDRs is a list of IP blocks which the endpoint subject to the rule is not allowed to initiate connections to. These CIDR prefixes should be contained within Cidr, using ExceptCIDRs together with CIDRGroupRef is not supported yet. These exceptions are only applied to the Cidr in this CIDRRule, and do not apply to any other CIDR prefixes in any other CIDRRules.
     """
@@ -203,10 +211,8 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressDenyItems0ToCIDRSetItem
 
 
     check:
-        regex.match(str(cidr), r"^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\/([0-9]|[1-2][0-9]|3[0-2])$|^s*((([0-9A-Fa-f]{1,4}:){7}(:|([0-9A-Fa-f]{1,4})))|(([0-9A-Fa-f]{1,4}:){6}:([0-9A-Fa-f]{1,4})?)|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){0,1}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){0,2}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){0,3}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){0,4}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){0,5}):([0-9A-Fa-f]{1,4})?))|(:(:|((:[0-9A-Fa-f]{1,4}){1,7}))))(%.+)?s*/([0-9]|[1-9][0-9]|1[0-1][0-9]|12[0-8])$") if cidr
         len(cidrGroupRef) <= 253
-        regex.match(str(cidrGroupRef), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if cidrGroupRef
-        all n in except { regex.match(str(n), r"^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\/([0-9]|[1-2][0-9]|3[0-2])$|^s*((([0-9A-Fa-f]{1,4}:){7}(:|([0-9A-Fa-f]{1,4})))|(([0-9A-Fa-f]{1,4}:){6}:([0-9A-Fa-f]{1,4})?)|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){0,1}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){0,2}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){0,3}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){0,4}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){0,5}):([0-9A-Fa-f]{1,4})?))|(:(:|((:[0-9A-Fa-f]{1,4}){1,7}))))(%.+)?s*/([0-9]|[1-9][0-9]|1[0-1][0-9]|12[0-8])$") } if except
+        regex_match(str(cidrGroupRef), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if cidrGroupRef
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressDenyItems0ToEndpointsItems0:
@@ -228,7 +234,7 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressDenyItems0ToEndpointsIt
 
 
     check:
-        all _, n in matchLabels { regex.match(str(n), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") } if matchLabels
+        all _, matchLabels in matchLabels {len(matchLabels) <= 63regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressDenyItems0ToEndpointsItems0MatchExpressionsItems0:
@@ -255,7 +261,7 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressDenyItems0ToEndpointsIt
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressDenyItems0ToGroupsItems0:
     """
-    ToGroups structure to store all kinds of new integrations that needs a new derivative policy.
+    Groups structure to store all kinds of new integrations that needs a new derivative policy.
 
     Attributes
     ----------
@@ -293,6 +299,50 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressDenyItems0ToGroupsItems
     securityGroupsNames?: [str]
 
 
+schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressDenyItems0ToNodesItems0:
+    """
+    EndpointSelector is a wrapper for k8s LabelSelector.
+
+    Attributes
+    ----------
+    matchExpressions : [CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressDenyItems0ToNodesItems0MatchExpressionsItems0], default is Undefined, optional
+        matchExpressions is a list of label selector requirements. The requirements are ANDed.
+    matchLabels : {str:str}, default is Undefined, optional
+        matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+    """
+
+
+    matchExpressions?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressDenyItems0ToNodesItems0MatchExpressionsItems0]
+
+    matchLabels?: {str:str}
+
+
+    check:
+        all _, matchLabels in matchLabels {len(matchLabels) <= 63regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
+
+
+schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressDenyItems0ToNodesItems0MatchExpressionsItems0:
+    """
+    A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key is the label key that the selector applies to.
+    operator : str, default is Undefined, required
+        operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+    values : [str], default is Undefined, optional
+        values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.
+    """
+
+
+    key: str
+
+    operator: "In" | "NotIn" | "Exists" | "DoesNotExist"
+
+    values?: [str]
+
+
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressDenyItems0ToPortsItems0:
     """
     PortDenyRule is a list of ports/protocol that should be used for deny policies. This structure lacks the L7Rules since it's not supported in deny policies.
@@ -313,8 +363,10 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressDenyItems0ToPortsItems0
 
     Attributes
     ----------
+    endPort : int, default is Undefined, optional
+        EndPort can only be an L4 port number.
     port : str, default is Undefined, required
-        Port is an L4 port number. For now the string will be strictly parsed as a single uint16. In the future, this field may support ranges in the form "1024-2048 Port can also be a port name, which must contain at least one [a-z], and may also contain [0-9] and '-' anywhere except adjacent to another '-' or in the beginning or the end.
+        Port can be an L4 port number, or a name in the form of "http" or "http-8080".
     $protocol : str, default is Undefined, optional
         Protocol is the L4 protocol. If omitted or empty, any protocol matches. Accepted values: "TCP", "UDP", "SCTP", "ANY" 
          Matching on ICMP is not supported. 
@@ -322,13 +374,17 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressDenyItems0ToPortsItems0
     """
 
 
+    endPort?: int
+
     port: str
 
     $protocol?: "TCP" | "UDP" | "SCTP" | "ANY"
 
 
     check:
-        regex.match(str(port), r"^(6553[0-5]|655[0-2][0-9]|65[0-4][0-9]{2}|6[0-4][0-9]{3}|[1-5][0-9]{4}|[0-9]{1,4})|([a-zA-Z0-9]-?)*[a-zA-Z](-?[a-zA-Z0-9])*$")
+        endPort <= 65535
+        endPort >= 0
+        regex_match(str(port), r"^(6553[0-5]|655[0-2][0-9]|65[0-4][0-9]{2}|6[0-4][0-9]{3}|[1-5][0-9]{4}|[0-9]{1,4})|([a-zA-Z0-9]-?)*[a-zA-Z](-?[a-zA-Z0-9])*$")
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressDenyItems0ToRequiresItems0:
@@ -350,7 +406,7 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressDenyItems0ToRequiresIte
 
 
     check:
-        all _, n in matchLabels { regex.match(str(n), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") } if matchLabels
+        all _, matchLabels in matchLabels {len(matchLabels) <= 63regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressDenyItems0ToRequiresItems0MatchExpressionsItems0:
@@ -448,7 +504,7 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressDenyItems0ToServicesIte
 
 
     check:
-        all _, n in matchLabels { regex.match(str(n), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") } if matchLabels
+        all _, matchLabels in matchLabels {len(matchLabels) <= 63regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressDenyItems0ToServicesItems0K8sServiceSelectorSelectorMatchExpressionsItems0:
@@ -476,9 +532,9 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressDenyItems0ToServicesIte
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressItems0:
     """
     EgressRule contains all rule types which can be applied at egress, i.e. network traffic that originates inside the endpoint and exits the endpoint selected by the endpointSelector. 
-       - All members of this structure are optional. If omitted or empty, the     member will have no effect on the rule. 
-       - If multiple members of the structure are specified, then all members     must match in order for the rule to take effect. The exception to this     rule is the ToRequires member; the effects of any Requires field in any     rule will apply to all other rules as well. 
-       - ToEndpoints, ToCIDR, ToCIDRSet, ToEntities, ToServices and ToGroups are     mutually exclusive. Only one of these members may be present within an     individual rule.
+     - All members of this structure are optional. If omitted or empty, the member will have no effect on the rule. 
+     - If multiple members of the structure are specified, then all members must match in order for the rule to take effect. The exception to this rule is the ToRequires member; the effects of any Requires field in any rule will apply to all other rules as well. 
+     - ToEndpoints, ToCIDR, ToCIDRSet, ToEntities, ToServices and ToGroups are mutually exclusive. Only one of these members may be present within an individual rule.
 
     Attributes
     ----------
@@ -502,7 +558,9 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressItems0:
         ToFQDN allows whitelisting DNS names in place of IPs. The IPs that result from DNS resolution of `ToFQDN.MatchName`s are added to the same EgressRule object as ToCIDRSet entries, and behave accordingly. Any L4 and L7 rules within this EgressRule will also apply to these IPs. The DNS -> IP mapping is re-resolved periodically from within the cilium-agent, and the IPs in the DNS response are effected in the policy for selected pods as-is (i.e. the list of IPs is not modified in any way). Note: An explicit rule to allow for DNS traffic is needed for the pods, as ToFQDN counts as an egress rule and will enforce egress policy when PolicyEnforcment=default. Note: If the resolved IPs are IPs within the kubernetes cluster, the ToFQDN rule will not apply to that IP. Note: ToFQDN cannot occur in the same policy as other To* rules.
     toGroups : [CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressItems0ToGroupsItems0], default is Undefined, optional
         ToGroups is a directive that allows the integration with multiple outside providers. Currently, only AWS is supported, and the rule can select by multiple sub directives: 
-         Example: toGroups: - aws:     securityGroupsIds:     - 'sg-XXXXXXXXXXXXX'
+         Example: toGroups: - aws: securityGroupsIds: - 'sg-XXXXXXXXXXXXX'
+    toNodes : [CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressItems0ToNodesItems0], default is Undefined, optional
+        ToNodes is a list of nodes identified by an EndpointSelector to which endpoints subject to the rule is allowed to communicate.
     toPorts : [CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressItems0ToPortsItems0], default is Undefined, optional
         ToPorts is a list of destination ports identified by port number and protocol which the endpoint subject to the rule is allowed to connect to. 
          Example: Any endpoint with the label "role=frontend" is allowed to initiate connections to destination port 8080/tcp
@@ -531,15 +589,13 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressItems0:
 
     toGroups?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressItems0ToGroupsItems0]
 
+    toNodes?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressItems0ToNodesItems0]
+
     toPorts?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressItems0ToPortsItems0]
 
     toRequires?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressItems0ToRequiresItems0]
 
     toServices?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressItems0ToServicesItems0]
-
-
-    check:
-        all n in toCIDR { regex.match(str(n), r"^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\/([0-9]|[1-2][0-9]|3[0-2])$|^s*((([0-9A-Fa-f]{1,4}:){7}(:|([0-9A-Fa-f]{1,4})))|(([0-9A-Fa-f]{1,4}:){6}:([0-9A-Fa-f]{1,4})?)|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){0,1}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){0,2}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){0,3}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){0,4}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){0,5}):([0-9A-Fa-f]{1,4})?))|(:(:|((:[0-9A-Fa-f]{1,4}){1,7}))))(%.+)?s*/([0-9]|[1-9][0-9]|1[0-1][0-9]|12[0-8])$") } if toCIDR
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressItems0Authentication:
@@ -570,6 +626,10 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressItems0IcmpsItems0:
     fields?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressItems0IcmpsItems0FieldsItems0]
 
 
+    check:
+        len(fields) <= 40
+
+
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressItems0IcmpsItems0FieldsItems0:
     """
     ICMPField is a ICMP field.
@@ -578,19 +638,18 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressItems0IcmpsItems0Fields
     ----------
     family : str, default is "IPv4", optional
         Family is a IP address version. Currently, we support `IPv4` and `IPv6`. `IPv4` is set as default.
-    $type : int, default is Undefined, required
-        Type is a ICMP-type. It should be 0-255 (8bit).
+    $type : int | str, default is Undefined, required
+        Type is a ICMP-type. It should be an 8bit code (0-255), or it's CamelCase name (for example, "EchoReply"). Allowed ICMP types are: Ipv4: EchoReply | DestinationUnreachable | Redirect | Echo | EchoRequest | RouterAdvertisement | RouterSelection | TimeExceeded | ParameterProblem | Timestamp | TimestampReply | Photuris | ExtendedEcho Request | ExtendedEcho Reply Ipv6: DestinationUnreachable | PacketTooBig | TimeExceeded | ParameterProblem | EchoRequest | EchoReply | MulticastListenerQuery| MulticastListenerReport | MulticastListenerDone | RouterSolicitation | RouterAdvertisement | NeighborSolicitation | NeighborAdvertisement | RedirectMessage | RouterRenumbering | ICMPNodeInformationQuery | ICMPNodeInformationResponse | InverseNeighborDiscoverySolicitation | InverseNeighborDiscoveryAdvertisement | HomeAgentAddressDiscoveryRequest | HomeAgentAddressDiscoveryReply | MobilePrefixSolicitation | MobilePrefixAdvertisement | DuplicateAddressRequestCodeSuffix | DuplicateAddressConfirmationCodeSuffix | ExtendedEchoRequest | ExtendedEchoReply
     """
 
 
     family?: "IPv4" | "IPv6" = "IPv4"
 
-    $type: int
+    $type: int | str
 
 
     check:
-        $type <= 255
-        $type >= 0
+        regex_match(str($type), r"^([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]|EchoReply|DestinationUnreachable|Redirect|Echo|RouterAdvertisement|RouterSelection|TimeExceeded|ParameterProblem|Timestamp|TimestampReply|Photuris|ExtendedEchoRequest|ExtendedEcho Reply|PacketTooBig|ParameterProblem|EchoRequest|MulticastListenerQuery|MulticastListenerReport|MulticastListenerDone|RouterSolicitation|RouterAdvertisement|NeighborSolicitation|NeighborAdvertisement|RedirectMessage|RouterRenumbering|ICMPNodeInformationQuery|ICMPNodeInformationResponse|InverseNeighborDiscoverySolicitation|InverseNeighborDiscoveryAdvertisement|HomeAgentAddressDiscoveryRequest|HomeAgentAddressDiscoveryReply|MobilePrefixSolicitation|MobilePrefixAdvertisement|DuplicateAddressRequestCodeSuffix|DuplicateAddressConfirmationCodeSuffix)$")
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressItems0ToCIDRSetItems0:
@@ -602,7 +661,7 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressItems0ToCIDRSetItems0:
     cidr : str, default is Undefined, optional
         CIDR is a CIDR prefix / IP Block.
     cidrGroupRef : str, default is Undefined, optional
-        CIDRGroupRef is a reference to a CiliumCIDRGroup object. A CiliumCIDRGroup contains a list of CIDRs that the endpoint, subject to the rule, can (Ingress) or cannot (IngressDeny) receive connections from.
+        CIDRGroupRef is a reference to a CiliumCIDRGroup object. A CiliumCIDRGroup contains a list of CIDRs that the endpoint, subject to the rule, can (Ingress/Egress) or cannot (IngressDeny/EgressDeny) receive connections from.
     except : [str], default is Undefined, optional
         ExceptCIDRs is a list of IP blocks which the endpoint subject to the rule is not allowed to initiate connections to. These CIDR prefixes should be contained within Cidr, using ExceptCIDRs together with CIDRGroupRef is not supported yet. These exceptions are only applied to the Cidr in this CIDRRule, and do not apply to any other CIDR prefixes in any other CIDRRules.
     """
@@ -616,10 +675,8 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressItems0ToCIDRSetItems0:
 
 
     check:
-        regex.match(str(cidr), r"^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\/([0-9]|[1-2][0-9]|3[0-2])$|^s*((([0-9A-Fa-f]{1,4}:){7}(:|([0-9A-Fa-f]{1,4})))|(([0-9A-Fa-f]{1,4}:){6}:([0-9A-Fa-f]{1,4})?)|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){0,1}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){0,2}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){0,3}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){0,4}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){0,5}):([0-9A-Fa-f]{1,4})?))|(:(:|((:[0-9A-Fa-f]{1,4}){1,7}))))(%.+)?s*/([0-9]|[1-9][0-9]|1[0-1][0-9]|12[0-8])$") if cidr
         len(cidrGroupRef) <= 253
-        regex.match(str(cidrGroupRef), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if cidrGroupRef
-        all n in except { regex.match(str(n), r"^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\/([0-9]|[1-2][0-9]|3[0-2])$|^s*((([0-9A-Fa-f]{1,4}:){7}(:|([0-9A-Fa-f]{1,4})))|(([0-9A-Fa-f]{1,4}:){6}:([0-9A-Fa-f]{1,4})?)|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){0,1}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){0,2}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){0,3}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){0,4}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){0,5}):([0-9A-Fa-f]{1,4})?))|(:(:|((:[0-9A-Fa-f]{1,4}){1,7}))))(%.+)?s*/([0-9]|[1-9][0-9]|1[0-1][0-9]|12[0-8])$") } if except
+        regex_match(str(cidrGroupRef), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if cidrGroupRef
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressItems0ToEndpointsItems0:
@@ -641,7 +698,7 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressItems0ToEndpointsItems0
 
 
     check:
-        all _, n in matchLabels { regex.match(str(n), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") } if matchLabels
+        all _, matchLabels in matchLabels {len(matchLabels) <= 63regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressItems0ToEndpointsItems0MatchExpressionsItems0:
@@ -676,7 +733,7 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressItems0ToFQDNsItems0:
         MatchName matches literal DNS names. A trailing "." is automatically added when missing.
     matchPattern : str, default is Undefined, optional
         MatchPattern allows using wildcards to match DNS names. All wildcards are case insensitive. The wildcards are: - "*" matches 0 or more DNS valid characters, and may occur anywhere in the pattern. As a special case a "*" as the leftmost character, without a following "." matches all subdomains as well as the name to the right. A trailing "." is automatically added when missing. 
-         Examples: `*.cilium.io` matches subomains of cilium at that level   www.cilium.io and blog.cilium.io match, cilium.io and google.com do not `*cilium.io` matches cilium.io and all subdomains ends with "cilium.io"   except those containing "." separator, subcilium.io and sub-cilium.io match,   www.cilium.io and blog.cilium.io does not sub*.cilium.io matches subdomains of cilium where the subdomain component begins with "sub"   sub.cilium.io and subdomain.cilium.io match, www.cilium.io,   blog.cilium.io, cilium.io and google.com do not
+         Examples: `*.cilium.io` matches subomains of cilium at that level www.cilium.io and blog.cilium.io match, cilium.io and google.com do not `*cilium.io` matches cilium.io and all subdomains ends with "cilium.io" except those containing "." separator, subcilium.io and sub-cilium.io match, www.cilium.io and blog.cilium.io does not sub*.cilium.io matches subdomains of cilium where the subdomain component begins with "sub" sub.cilium.io and subdomain.cilium.io match, www.cilium.io, blog.cilium.io, cilium.io and google.com do not
     """
 
 
@@ -686,13 +743,13 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressItems0ToFQDNsItems0:
 
 
     check:
-        regex.match(str(matchName), r"^([-a-zA-Z0-9_]+[.]?)+$") if matchName
-        regex.match(str(matchPattern), r"^([-a-zA-Z0-9_*]+[.]?)+$") if matchPattern
+        regex_match(str(matchName), r"^([-a-zA-Z0-9_]+[.]?)+$") if matchName
+        regex_match(str(matchPattern), r"^([-a-zA-Z0-9_*]+[.]?)+$") if matchPattern
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressItems0ToGroupsItems0:
     """
-    ToGroups structure to store all kinds of new integrations that needs a new derivative policy.
+    Groups structure to store all kinds of new integrations that needs a new derivative policy.
 
     Attributes
     ----------
@@ -730,6 +787,50 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressItems0ToGroupsItems0Aws
     securityGroupsNames?: [str]
 
 
+schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressItems0ToNodesItems0:
+    """
+    EndpointSelector is a wrapper for k8s LabelSelector.
+
+    Attributes
+    ----------
+    matchExpressions : [CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressItems0ToNodesItems0MatchExpressionsItems0], default is Undefined, optional
+        matchExpressions is a list of label selector requirements. The requirements are ANDed.
+    matchLabels : {str:str}, default is Undefined, optional
+        matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+    """
+
+
+    matchExpressions?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressItems0ToNodesItems0MatchExpressionsItems0]
+
+    matchLabels?: {str:str}
+
+
+    check:
+        all _, matchLabels in matchLabels {len(matchLabels) <= 63regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
+
+
+schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressItems0ToNodesItems0MatchExpressionsItems0:
+    """
+    A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key is the label key that the selector applies to.
+    operator : str, default is Undefined, required
+        operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+    values : [str], default is Undefined, optional
+        values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.
+    """
+
+
+    key: str
+
+    operator: "In" | "NotIn" | "Exists" | "DoesNotExist"
+
+    values?: [str]
+
+
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressItems0ToPortsItems0:
     """
     PortRule is a list of ports/protocol combinations with optional Layer 7 rules which must be met.
@@ -764,6 +865,10 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressItems0ToPortsItems0:
     terminatingTLS?: CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressItems0ToPortsItems0TerminatingTLS
 
 
+    check:
+        len(ports) <= 40
+
+
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressItems0ToPortsItems0Listener:
     """
     listener specifies the name of a custom Envoy listener to which this traffic should be redirected to.
@@ -774,6 +879,8 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressItems0ToPortsItems0List
         envoy config
     name : str, default is Undefined, required
         Name is the name of the listener.
+    priority : int, default is Undefined, optional
+        Priority for this Listener that is used when multiple rules would apply different listeners to a policy map entry. Behavior of this is implementation dependent.
     """
 
 
@@ -781,14 +888,18 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressItems0ToPortsItems0List
 
     name: str
 
+    priority?: int
+
 
     check:
         len(name) >= 1
+        priority <= 100
+        priority >= 1
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressItems0ToPortsItems0ListenerEnvoyConfig:
     """
-    EnvoyConfig is a reference to the CEC or CCNP resource in which the listener is defined.
+    EnvoyConfig is a reference to the CEC or CCEC resource in which the listener is defined.
 
     Attributes
     ----------
@@ -836,7 +947,7 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressItems0ToPortsItems0Orig
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressItems0ToPortsItems0OriginatingTLSSecret:
     """
-    Secret is the secret that contains the certificates and private key for the TLS context. By default, Cilium will search in this secret for the following items:  - 'ca.crt'  - Which represents the trusted CA to verify remote source.  - 'tls.crt' - Which represents the public key certificate.  - 'tls.key' - Which represents the private key matching the public key                certificate.
+    Secret is the secret that contains the certificates and private key for the TLS context. By default, Cilium will search in this secret for the following items: - 'ca.crt'  - Which represents the trusted CA to verify remote source. - 'tls.crt' - Which represents the public key certificate. - 'tls.key' - Which represents the private key matching the public key certificate.
 
     Attributes
     ----------
@@ -858,8 +969,10 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressItems0ToPortsItems0Port
 
     Attributes
     ----------
+    endPort : int, default is Undefined, optional
+        EndPort can only be an L4 port number.
     port : str, default is Undefined, required
-        Port is an L4 port number. For now the string will be strictly parsed as a single uint16. In the future, this field may support ranges in the form "1024-2048 Port can also be a port name, which must contain at least one [a-z], and may also contain [0-9] and '-' anywhere except adjacent to another '-' or in the beginning or the end.
+        Port can be an L4 port number, or a name in the form of "http" or "http-8080".
     $protocol : str, default is Undefined, optional
         Protocol is the L4 protocol. If omitted or empty, any protocol matches. Accepted values: "TCP", "UDP", "SCTP", "ANY" 
          Matching on ICMP is not supported. 
@@ -867,13 +980,17 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressItems0ToPortsItems0Port
     """
 
 
+    endPort?: int
+
     port: str
 
     $protocol?: "TCP" | "UDP" | "SCTP" | "ANY"
 
 
     check:
-        regex.match(str(port), r"^(6553[0-5]|655[0-2][0-9]|65[0-4][0-9]{2}|6[0-4][0-9]{3}|[1-5][0-9]{4}|[0-9]{1,4})|([a-zA-Z0-9]-?)*[a-zA-Z](-?[a-zA-Z0-9])*$")
+        endPort <= 65535
+        endPort >= 0
+        regex_match(str(port), r"^(6553[0-5]|655[0-2][0-9]|65[0-4][0-9]{2}|6[0-4][0-9]{3}|[1-5][0-9]{4}|[0-9]{1,4})|([a-zA-Z0-9]-?)*[a-zA-Z](-?[a-zA-Z0-9])*$")
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressItems0ToPortsItems0Rules:
@@ -916,7 +1033,7 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressItems0ToPortsItems0Rule
         MatchName matches literal DNS names. A trailing "." is automatically added when missing.
     matchPattern : str, default is Undefined, optional
         MatchPattern allows using wildcards to match DNS names. All wildcards are case insensitive. The wildcards are: - "*" matches 0 or more DNS valid characters, and may occur anywhere in the pattern. As a special case a "*" as the leftmost character, without a following "." matches all subdomains as well as the name to the right. A trailing "." is automatically added when missing. 
-         Examples: `*.cilium.io` matches subomains of cilium at that level   www.cilium.io and blog.cilium.io match, cilium.io and google.com do not `*cilium.io` matches cilium.io and all subdomains ends with "cilium.io"   except those containing "." separator, subcilium.io and sub-cilium.io match,   www.cilium.io and blog.cilium.io does not sub*.cilium.io matches subdomains of cilium where the subdomain component begins with "sub"   sub.cilium.io and subdomain.cilium.io match, www.cilium.io,   blog.cilium.io, cilium.io and google.com do not
+         Examples: `*.cilium.io` matches subomains of cilium at that level www.cilium.io and blog.cilium.io match, cilium.io and google.com do not `*cilium.io` matches cilium.io and all subdomains ends with "cilium.io" except those containing "." separator, subcilium.io and sub-cilium.io match, www.cilium.io and blog.cilium.io does not sub*.cilium.io matches subdomains of cilium where the subdomain component begins with "sub" sub.cilium.io and subdomain.cilium.io match, www.cilium.io, blog.cilium.io, cilium.io and google.com do not
     """
 
 
@@ -926,8 +1043,8 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressItems0ToPortsItems0Rule
 
 
     check:
-        regex.match(str(matchName), r"^([-a-zA-Z0-9_]+[.]?)+$") if matchName
-        regex.match(str(matchPattern), r"^([-a-zA-Z0-9_*]+[.]?)+$") if matchPattern
+        regex_match(str(matchName), r"^([-a-zA-Z0-9_]+[.]?)+$") if matchName
+        regex_match(str(matchPattern), r"^([-a-zA-Z0-9_*]+[.]?)+$") if matchPattern
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressItems0ToPortsItems0RulesHTTPItems0:
@@ -990,6 +1107,10 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressItems0ToPortsItems0Rule
     value?: str
 
 
+    check:
+        len(name) >= 1
+
+
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressItems0ToPortsItems0RulesHTTPItems0HeaderMatchesItems0Secret:
     """
     Secret refers to a secret that contains the value to be matched against. The secret must only contain one entry. If the referred secret does not exist, and there is no "Value" specified, the match will fail.
@@ -1026,7 +1147,7 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressItems0ToPortsItems0Rule
          If omitted or empty, all client identifiers are allowed.
     role : str, default is Undefined, optional
         Role is a case-insensitive string and describes a group of API keys necessary to perform certain higher-level Kafka operations such as "produce" or "consume". A Role automatically expands into all APIKeys required to perform the specified higher-level operation. 
-         The following values are supported:  - "produce": Allow producing to the topics specified in the rule  - "consume": Allow consuming from the topics specified in the rule 
+         The following values are supported: - "produce": Allow producing to the topics specified in the rule - "consume": Allow consuming from the topics specified in the rule 
          This field is incompatible with the APIKey field, i.e APIKey and Role cannot both be specified in the same rule. 
          If omitted or empty, and if APIKey is not specified, then all keys are allowed.
     topic : str, default is Undefined, optional
@@ -1080,7 +1201,7 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressItems0ToPortsItems0Term
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressItems0ToPortsItems0TerminatingTLSSecret:
     """
-    Secret is the secret that contains the certificates and private key for the TLS context. By default, Cilium will search in this secret for the following items:  - 'ca.crt'  - Which represents the trusted CA to verify remote source.  - 'tls.crt' - Which represents the public key certificate.  - 'tls.key' - Which represents the private key matching the public key                certificate.
+    Secret is the secret that contains the certificates and private key for the TLS context. By default, Cilium will search in this secret for the following items: - 'ca.crt'  - Which represents the trusted CA to verify remote source. - 'tls.crt' - Which represents the public key certificate. - 'tls.key' - Which represents the private key matching the public key certificate.
 
     Attributes
     ----------
@@ -1115,7 +1236,7 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressItems0ToRequiresItems0:
 
 
     check:
-        all _, n in matchLabels { regex.match(str(n), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") } if matchLabels
+        all _, matchLabels in matchLabels {len(matchLabels) <= 63regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressItems0ToRequiresItems0MatchExpressionsItems0:
@@ -1213,7 +1334,7 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressItems0ToServicesItems0K
 
 
     check:
-        all _, n in matchLabels { regex.match(str(n), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") } if matchLabels
+        all _, matchLabels in matchLabels {len(matchLabels) <= 63regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressItems0ToServicesItems0K8sServiceSelectorSelectorMatchExpressionsItems0:
@@ -1238,6 +1359,27 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEgressItems0ToServicesItems0K
     values?: [str]
 
 
+schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEnableDefaultDeny:
+    """
+    EnableDefaultDeny determines whether this policy configures the subject endpoint(s) to have a default deny mode. If enabled, this causes all traffic not explicitly allowed by a network policy to be dropped. 
+     If not specified, the default is true for each traffic direction that has rules, and false otherwise. For example, if a policy only has Ingress or IngressDeny rules, then the default for ingress is true and egress is false. 
+     If multiple policies apply to an endpoint, that endpoint's default deny will be enabled if any policy requests it. 
+     This is useful for creating broad-based network policies that will not cause endpoints to enter default-deny mode.
+
+    Attributes
+    ----------
+    egress : bool, default is Undefined, optional
+        Whether or not the endpoint should have a default-deny rule applied to egress traffic.
+    ingress : bool, default is Undefined, optional
+        Whether or not the endpoint should have a default-deny rule applied to ingress traffic.
+    """
+
+
+    egress?: bool
+
+    ingress?: bool
+
+
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEndpointSelector:
     """
     EndpointSelector selects all endpoints which should be subject to this rule. EndpointSelector and NodeSelector cannot be both empty and are mutually exclusive.
@@ -1257,7 +1399,7 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEndpointSelector:
 
 
     check:
-        all _, n in matchLabels { regex.match(str(n), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") } if matchLabels
+        all _, matchLabels in matchLabels {len(matchLabels) <= 63regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEndpointSelectorMatchExpressionsItems0:
@@ -1285,9 +1427,9 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecEndpointSelectorMatchExpressi
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressDenyItems0:
     """
     IngressDenyRule contains all rule types which can be applied at ingress, i.e. network traffic that originates outside of the endpoint and is entering the endpoint selected by the endpointSelector. 
-       - All members of this structure are optional. If omitted or empty, the     member will have no effect on the rule. 
-       - If multiple members are set, all of them need to match in order for     the rule to take effect. The exception to this rule is FromRequires field;     the effects of any Requires field in any rule will apply to all other     rules as well. 
-       - FromEndpoints, FromCIDR, FromCIDRSet and FromEntities are mutually     exclusive. Only one of these members may be present within an individual     rule.
+     - All members of this structure are optional. If omitted or empty, the member will have no effect on the rule. 
+     - If multiple members are set, all of them need to match in order for the rule to take effect. The exception to this rule is FromRequires field; the effects of any Requires field in any rule will apply to all other rules as well. 
+     - FromEndpoints, FromCIDR, FromCIDRSet, FromGroups and FromEntities are mutually exclusive. Only one of these members may be present within an individual rule.
 
     Attributes
     ----------
@@ -1302,6 +1444,11 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressDenyItems0:
          Example: Any endpoint with the label "role=backend" can be consumed by any endpoint carrying the label "role=frontend".
     fromEntities : [str], default is Undefined, optional
         FromEntities is a list of special entities which the endpoint subject to the rule is allowed to receive connections from. Supported entities are `world`, `cluster` and `host`
+    fromGroups : [CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressDenyItems0FromGroupsItems0], default is Undefined, optional
+        FromGroups is a directive that allows the integration with multiple outside providers. Currently, only AWS is supported, and the rule can select by multiple sub directives: 
+         Example: FromGroups: - aws: securityGroupsIds: - 'sg-XXXXXXXXXXXXX'
+    fromNodes : [CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressDenyItems0FromNodesItems0], default is Undefined, optional
+        FromNodes is a list of nodes identified by an EndpointSelector which are allowed to communicate with the endpoint subject to the rule.
     fromRequires : [CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressDenyItems0FromRequiresItems0], default is Undefined, optional
         FromRequires is a list of additional constraints which must be met in order for the selected endpoints to be reachable. These additional constraints do no by itself grant access privileges and must always be accompanied with at least one matching FromEndpoints. 
          Example: Any Endpoint with the label "team=A" requires consuming endpoint to also carry the label "team=A".
@@ -1322,15 +1469,15 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressDenyItems0:
 
     fromEntities?: [str]
 
+    fromGroups?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressDenyItems0FromGroupsItems0]
+
+    fromNodes?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressDenyItems0FromNodesItems0]
+
     fromRequires?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressDenyItems0FromRequiresItems0]
 
     icmps?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressDenyItems0IcmpsItems0]
 
     toPorts?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressDenyItems0ToPortsItems0]
-
-
-    check:
-        all n in fromCIDR { regex.match(str(n), r"^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\/([0-9]|[1-2][0-9]|3[0-2])$|^s*((([0-9A-Fa-f]{1,4}:){7}(:|([0-9A-Fa-f]{1,4})))|(([0-9A-Fa-f]{1,4}:){6}:([0-9A-Fa-f]{1,4})?)|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){0,1}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){0,2}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){0,3}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){0,4}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){0,5}):([0-9A-Fa-f]{1,4})?))|(:(:|((:[0-9A-Fa-f]{1,4}){1,7}))))(%.+)?s*/([0-9]|[1-9][0-9]|1[0-1][0-9]|12[0-8])$") } if fromCIDR
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressDenyItems0FromCIDRSetItems0:
@@ -1342,7 +1489,7 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressDenyItems0FromCIDRSetI
     cidr : str, default is Undefined, optional
         CIDR is a CIDR prefix / IP Block.
     cidrGroupRef : str, default is Undefined, optional
-        CIDRGroupRef is a reference to a CiliumCIDRGroup object. A CiliumCIDRGroup contains a list of CIDRs that the endpoint, subject to the rule, can (Ingress) or cannot (IngressDeny) receive connections from.
+        CIDRGroupRef is a reference to a CiliumCIDRGroup object. A CiliumCIDRGroup contains a list of CIDRs that the endpoint, subject to the rule, can (Ingress/Egress) or cannot (IngressDeny/EgressDeny) receive connections from.
     except : [str], default is Undefined, optional
         ExceptCIDRs is a list of IP blocks which the endpoint subject to the rule is not allowed to initiate connections to. These CIDR prefixes should be contained within Cidr, using ExceptCIDRs together with CIDRGroupRef is not supported yet. These exceptions are only applied to the Cidr in this CIDRRule, and do not apply to any other CIDR prefixes in any other CIDRRules.
     """
@@ -1356,10 +1503,8 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressDenyItems0FromCIDRSetI
 
 
     check:
-        regex.match(str(cidr), r"^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\/([0-9]|[1-2][0-9]|3[0-2])$|^s*((([0-9A-Fa-f]{1,4}:){7}(:|([0-9A-Fa-f]{1,4})))|(([0-9A-Fa-f]{1,4}:){6}:([0-9A-Fa-f]{1,4})?)|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){0,1}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){0,2}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){0,3}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){0,4}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){0,5}):([0-9A-Fa-f]{1,4})?))|(:(:|((:[0-9A-Fa-f]{1,4}){1,7}))))(%.+)?s*/([0-9]|[1-9][0-9]|1[0-1][0-9]|12[0-8])$") if cidr
         len(cidrGroupRef) <= 253
-        regex.match(str(cidrGroupRef), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if cidrGroupRef
-        all n in except { regex.match(str(n), r"^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\/([0-9]|[1-2][0-9]|3[0-2])$|^s*((([0-9A-Fa-f]{1,4}:){7}(:|([0-9A-Fa-f]{1,4})))|(([0-9A-Fa-f]{1,4}:){6}:([0-9A-Fa-f]{1,4})?)|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){0,1}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){0,2}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){0,3}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){0,4}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){0,5}):([0-9A-Fa-f]{1,4})?))|(:(:|((:[0-9A-Fa-f]{1,4}){1,7}))))(%.+)?s*/([0-9]|[1-9][0-9]|1[0-1][0-9]|12[0-8])$") } if except
+        regex_match(str(cidrGroupRef), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if cidrGroupRef
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressDenyItems0FromEndpointsItems0:
@@ -1381,10 +1526,94 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressDenyItems0FromEndpoint
 
 
     check:
-        all _, n in matchLabels { regex.match(str(n), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") } if matchLabels
+        all _, matchLabels in matchLabels {len(matchLabels) <= 63regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressDenyItems0FromEndpointsItems0MatchExpressionsItems0:
+    """
+    A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key is the label key that the selector applies to.
+    operator : str, default is Undefined, required
+        operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+    values : [str], default is Undefined, optional
+        values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.
+    """
+
+
+    key: str
+
+    operator: "In" | "NotIn" | "Exists" | "DoesNotExist"
+
+    values?: [str]
+
+
+schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressDenyItems0FromGroupsItems0:
+    """
+    Groups structure to store all kinds of new integrations that needs a new derivative policy.
+
+    Attributes
+    ----------
+    aws : CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressDenyItems0FromGroupsItems0Aws, default is Undefined, optional
+        aws
+    """
+
+
+    aws?: CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressDenyItems0FromGroupsItems0Aws
+
+
+schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressDenyItems0FromGroupsItems0Aws:
+    """
+    AWSGroup is an structure that can be used to whitelisting information from AWS integration
+
+    Attributes
+    ----------
+    labels : {str:str}, default is Undefined, optional
+        labels
+    region : str, default is Undefined, optional
+        region
+    securityGroupsIds : [str], default is Undefined, optional
+        security groups ids
+    securityGroupsNames : [str], default is Undefined, optional
+        security groups names
+    """
+
+
+    labels?: {str:str}
+
+    region?: str
+
+    securityGroupsIds?: [str]
+
+    securityGroupsNames?: [str]
+
+
+schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressDenyItems0FromNodesItems0:
+    """
+    EndpointSelector is a wrapper for k8s LabelSelector.
+
+    Attributes
+    ----------
+    matchExpressions : [CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressDenyItems0FromNodesItems0MatchExpressionsItems0], default is Undefined, optional
+        matchExpressions is a list of label selector requirements. The requirements are ANDed.
+    matchLabels : {str:str}, default is Undefined, optional
+        matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+    """
+
+
+    matchExpressions?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressDenyItems0FromNodesItems0MatchExpressionsItems0]
+
+    matchLabels?: {str:str}
+
+
+    check:
+        all _, matchLabels in matchLabels {len(matchLabels) <= 63regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
+
+
+schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressDenyItems0FromNodesItems0MatchExpressionsItems0:
     """
     A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
@@ -1425,7 +1654,7 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressDenyItems0FromRequires
 
 
     check:
-        all _, n in matchLabels { regex.match(str(n), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") } if matchLabels
+        all _, matchLabels in matchLabels {len(matchLabels) <= 63regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressDenyItems0FromRequiresItems0MatchExpressionsItems0:
@@ -1464,6 +1693,10 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressDenyItems0IcmpsItems0:
     fields?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressDenyItems0IcmpsItems0FieldsItems0]
 
 
+    check:
+        len(fields) <= 40
+
+
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressDenyItems0IcmpsItems0FieldsItems0:
     """
     ICMPField is a ICMP field.
@@ -1472,19 +1705,18 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressDenyItems0IcmpsItems0F
     ----------
     family : str, default is "IPv4", optional
         Family is a IP address version. Currently, we support `IPv4` and `IPv6`. `IPv4` is set as default.
-    $type : int, default is Undefined, required
-        Type is a ICMP-type. It should be 0-255 (8bit).
+    $type : int | str, default is Undefined, required
+        Type is a ICMP-type. It should be an 8bit code (0-255), or it's CamelCase name (for example, "EchoReply"). Allowed ICMP types are: Ipv4: EchoReply | DestinationUnreachable | Redirect | Echo | EchoRequest | RouterAdvertisement | RouterSelection | TimeExceeded | ParameterProblem | Timestamp | TimestampReply | Photuris | ExtendedEcho Request | ExtendedEcho Reply Ipv6: DestinationUnreachable | PacketTooBig | TimeExceeded | ParameterProblem | EchoRequest | EchoReply | MulticastListenerQuery| MulticastListenerReport | MulticastListenerDone | RouterSolicitation | RouterAdvertisement | NeighborSolicitation | NeighborAdvertisement | RedirectMessage | RouterRenumbering | ICMPNodeInformationQuery | ICMPNodeInformationResponse | InverseNeighborDiscoverySolicitation | InverseNeighborDiscoveryAdvertisement | HomeAgentAddressDiscoveryRequest | HomeAgentAddressDiscoveryReply | MobilePrefixSolicitation | MobilePrefixAdvertisement | DuplicateAddressRequestCodeSuffix | DuplicateAddressConfirmationCodeSuffix | ExtendedEchoRequest | ExtendedEchoReply
     """
 
 
     family?: "IPv4" | "IPv6" = "IPv4"
 
-    $type: int
+    $type: int | str
 
 
     check:
-        $type <= 255
-        $type >= 0
+        regex_match(str($type), r"^([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]|EchoReply|DestinationUnreachable|Redirect|Echo|RouterAdvertisement|RouterSelection|TimeExceeded|ParameterProblem|Timestamp|TimestampReply|Photuris|ExtendedEchoRequest|ExtendedEcho Reply|PacketTooBig|ParameterProblem|EchoRequest|MulticastListenerQuery|MulticastListenerReport|MulticastListenerDone|RouterSolicitation|RouterAdvertisement|NeighborSolicitation|NeighborAdvertisement|RedirectMessage|RouterRenumbering|ICMPNodeInformationQuery|ICMPNodeInformationResponse|InverseNeighborDiscoverySolicitation|InverseNeighborDiscoveryAdvertisement|HomeAgentAddressDiscoveryRequest|HomeAgentAddressDiscoveryReply|MobilePrefixSolicitation|MobilePrefixAdvertisement|DuplicateAddressRequestCodeSuffix|DuplicateAddressConfirmationCodeSuffix)$")
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressDenyItems0ToPortsItems0:
@@ -1507,8 +1739,10 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressDenyItems0ToPortsItems
 
     Attributes
     ----------
+    endPort : int, default is Undefined, optional
+        EndPort can only be an L4 port number.
     port : str, default is Undefined, required
-        Port is an L4 port number. For now the string will be strictly parsed as a single uint16. In the future, this field may support ranges in the form "1024-2048 Port can also be a port name, which must contain at least one [a-z], and may also contain [0-9] and '-' anywhere except adjacent to another '-' or in the beginning or the end.
+        Port can be an L4 port number, or a name in the form of "http" or "http-8080".
     $protocol : str, default is Undefined, optional
         Protocol is the L4 protocol. If omitted or empty, any protocol matches. Accepted values: "TCP", "UDP", "SCTP", "ANY" 
          Matching on ICMP is not supported. 
@@ -1516,21 +1750,25 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressDenyItems0ToPortsItems
     """
 
 
+    endPort?: int
+
     port: str
 
     $protocol?: "TCP" | "UDP" | "SCTP" | "ANY"
 
 
     check:
-        regex.match(str(port), r"^(6553[0-5]|655[0-2][0-9]|65[0-4][0-9]{2}|6[0-4][0-9]{3}|[1-5][0-9]{4}|[0-9]{1,4})|([a-zA-Z0-9]-?)*[a-zA-Z](-?[a-zA-Z0-9])*$")
+        endPort <= 65535
+        endPort >= 0
+        regex_match(str(port), r"^(6553[0-5]|655[0-2][0-9]|65[0-4][0-9]{2}|6[0-4][0-9]{3}|[1-5][0-9]{4}|[0-9]{1,4})|([a-zA-Z0-9]-?)*[a-zA-Z](-?[a-zA-Z0-9])*$")
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressItems0:
     """
     IngressRule contains all rule types which can be applied at ingress, i.e. network traffic that originates outside of the endpoint and is entering the endpoint selected by the endpointSelector. 
-       - All members of this structure are optional. If omitted or empty, the     member will have no effect on the rule. 
-       - If multiple members are set, all of them need to match in order for     the rule to take effect. The exception to this rule is FromRequires field;     the effects of any Requires field in any rule will apply to all other     rules as well. 
-       - FromEndpoints, FromCIDR, FromCIDRSet and FromEntities are mutually     exclusive. Only one of these members may be present within an individual     rule.
+     - All members of this structure are optional. If omitted or empty, the member will have no effect on the rule. 
+     - If multiple members are set, all of them need to match in order for the rule to take effect. The exception to this rule is FromRequires field; the effects of any Requires field in any rule will apply to all other rules as well. 
+     - FromEndpoints, FromCIDR, FromCIDRSet and FromEntities are mutually exclusive. Only one of these members may be present within an individual rule.
 
     Attributes
     ----------
@@ -1547,6 +1785,11 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressItems0:
          Example: Any endpoint with the label "role=backend" can be consumed by any endpoint carrying the label "role=frontend".
     fromEntities : [str], default is Undefined, optional
         FromEntities is a list of special entities which the endpoint subject to the rule is allowed to receive connections from. Supported entities are `world`, `cluster` and `host`
+    fromGroups : [CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressItems0FromGroupsItems0], default is Undefined, optional
+        FromGroups is a directive that allows the integration with multiple outside providers. Currently, only AWS is supported, and the rule can select by multiple sub directives: 
+         Example: FromGroups: - aws: securityGroupsIds: - 'sg-XXXXXXXXXXXXX'
+    fromNodes : [CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressItems0FromNodesItems0], default is Undefined, optional
+        FromNodes is a list of nodes identified by an EndpointSelector which are allowed to communicate with the endpoint subject to the rule.
     fromRequires : [CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressItems0FromRequiresItems0], default is Undefined, optional
         FromRequires is a list of additional constraints which must be met in order for the selected endpoints to be reachable. These additional constraints do no by itself grant access privileges and must always be accompanied with at least one matching FromEndpoints. 
          Example: Any Endpoint with the label "team=A" requires consuming endpoint to also carry the label "team=A".
@@ -1569,15 +1812,15 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressItems0:
 
     fromEntities?: [str]
 
+    fromGroups?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressItems0FromGroupsItems0]
+
+    fromNodes?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressItems0FromNodesItems0]
+
     fromRequires?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressItems0FromRequiresItems0]
 
     icmps?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressItems0IcmpsItems0]
 
     toPorts?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressItems0ToPortsItems0]
-
-
-    check:
-        all n in fromCIDR { regex.match(str(n), r"^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\/([0-9]|[1-2][0-9]|3[0-2])$|^s*((([0-9A-Fa-f]{1,4}:){7}(:|([0-9A-Fa-f]{1,4})))|(([0-9A-Fa-f]{1,4}:){6}:([0-9A-Fa-f]{1,4})?)|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){0,1}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){0,2}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){0,3}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){0,4}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){0,5}):([0-9A-Fa-f]{1,4})?))|(:(:|((:[0-9A-Fa-f]{1,4}){1,7}))))(%.+)?s*/([0-9]|[1-9][0-9]|1[0-1][0-9]|12[0-8])$") } if fromCIDR
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressItems0Authentication:
@@ -1603,7 +1846,7 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressItems0FromCIDRSetItems
     cidr : str, default is Undefined, optional
         CIDR is a CIDR prefix / IP Block.
     cidrGroupRef : str, default is Undefined, optional
-        CIDRGroupRef is a reference to a CiliumCIDRGroup object. A CiliumCIDRGroup contains a list of CIDRs that the endpoint, subject to the rule, can (Ingress) or cannot (IngressDeny) receive connections from.
+        CIDRGroupRef is a reference to a CiliumCIDRGroup object. A CiliumCIDRGroup contains a list of CIDRs that the endpoint, subject to the rule, can (Ingress/Egress) or cannot (IngressDeny/EgressDeny) receive connections from.
     except : [str], default is Undefined, optional
         ExceptCIDRs is a list of IP blocks which the endpoint subject to the rule is not allowed to initiate connections to. These CIDR prefixes should be contained within Cidr, using ExceptCIDRs together with CIDRGroupRef is not supported yet. These exceptions are only applied to the Cidr in this CIDRRule, and do not apply to any other CIDR prefixes in any other CIDRRules.
     """
@@ -1617,10 +1860,8 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressItems0FromCIDRSetItems
 
 
     check:
-        regex.match(str(cidr), r"^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\/([0-9]|[1-2][0-9]|3[0-2])$|^s*((([0-9A-Fa-f]{1,4}:){7}(:|([0-9A-Fa-f]{1,4})))|(([0-9A-Fa-f]{1,4}:){6}:([0-9A-Fa-f]{1,4})?)|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){0,1}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){0,2}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){0,3}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){0,4}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){0,5}):([0-9A-Fa-f]{1,4})?))|(:(:|((:[0-9A-Fa-f]{1,4}){1,7}))))(%.+)?s*/([0-9]|[1-9][0-9]|1[0-1][0-9]|12[0-8])$") if cidr
         len(cidrGroupRef) <= 253
-        regex.match(str(cidrGroupRef), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if cidrGroupRef
-        all n in except { regex.match(str(n), r"^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\/([0-9]|[1-2][0-9]|3[0-2])$|^s*((([0-9A-Fa-f]{1,4}:){7}(:|([0-9A-Fa-f]{1,4})))|(([0-9A-Fa-f]{1,4}:){6}:([0-9A-Fa-f]{1,4})?)|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){0,1}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){0,2}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){0,3}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){0,4}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){0,5}):([0-9A-Fa-f]{1,4})?))|(:(:|((:[0-9A-Fa-f]{1,4}){1,7}))))(%.+)?s*/([0-9]|[1-9][0-9]|1[0-1][0-9]|12[0-8])$") } if except
+        regex_match(str(cidrGroupRef), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if cidrGroupRef
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressItems0FromEndpointsItems0:
@@ -1642,10 +1883,94 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressItems0FromEndpointsIte
 
 
     check:
-        all _, n in matchLabels { regex.match(str(n), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") } if matchLabels
+        all _, matchLabels in matchLabels {len(matchLabels) <= 63regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressItems0FromEndpointsItems0MatchExpressionsItems0:
+    """
+    A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key is the label key that the selector applies to.
+    operator : str, default is Undefined, required
+        operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+    values : [str], default is Undefined, optional
+        values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.
+    """
+
+
+    key: str
+
+    operator: "In" | "NotIn" | "Exists" | "DoesNotExist"
+
+    values?: [str]
+
+
+schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressItems0FromGroupsItems0:
+    """
+    Groups structure to store all kinds of new integrations that needs a new derivative policy.
+
+    Attributes
+    ----------
+    aws : CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressItems0FromGroupsItems0Aws, default is Undefined, optional
+        aws
+    """
+
+
+    aws?: CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressItems0FromGroupsItems0Aws
+
+
+schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressItems0FromGroupsItems0Aws:
+    """
+    AWSGroup is an structure that can be used to whitelisting information from AWS integration
+
+    Attributes
+    ----------
+    labels : {str:str}, default is Undefined, optional
+        labels
+    region : str, default is Undefined, optional
+        region
+    securityGroupsIds : [str], default is Undefined, optional
+        security groups ids
+    securityGroupsNames : [str], default is Undefined, optional
+        security groups names
+    """
+
+
+    labels?: {str:str}
+
+    region?: str
+
+    securityGroupsIds?: [str]
+
+    securityGroupsNames?: [str]
+
+
+schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressItems0FromNodesItems0:
+    """
+    EndpointSelector is a wrapper for k8s LabelSelector.
+
+    Attributes
+    ----------
+    matchExpressions : [CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressItems0FromNodesItems0MatchExpressionsItems0], default is Undefined, optional
+        matchExpressions is a list of label selector requirements. The requirements are ANDed.
+    matchLabels : {str:str}, default is Undefined, optional
+        matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+    """
+
+
+    matchExpressions?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressItems0FromNodesItems0MatchExpressionsItems0]
+
+    matchLabels?: {str:str}
+
+
+    check:
+        all _, matchLabels in matchLabels {len(matchLabels) <= 63regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
+
+
+schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressItems0FromNodesItems0MatchExpressionsItems0:
     """
     A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
@@ -1686,7 +2011,7 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressItems0FromRequiresItem
 
 
     check:
-        all _, n in matchLabels { regex.match(str(n), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") } if matchLabels
+        all _, matchLabels in matchLabels {len(matchLabels) <= 63regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressItems0FromRequiresItems0MatchExpressionsItems0:
@@ -1725,6 +2050,10 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressItems0IcmpsItems0:
     fields?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressItems0IcmpsItems0FieldsItems0]
 
 
+    check:
+        len(fields) <= 40
+
+
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressItems0IcmpsItems0FieldsItems0:
     """
     ICMPField is a ICMP field.
@@ -1733,19 +2062,18 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressItems0IcmpsItems0Field
     ----------
     family : str, default is "IPv4", optional
         Family is a IP address version. Currently, we support `IPv4` and `IPv6`. `IPv4` is set as default.
-    $type : int, default is Undefined, required
-        Type is a ICMP-type. It should be 0-255 (8bit).
+    $type : int | str, default is Undefined, required
+        Type is a ICMP-type. It should be an 8bit code (0-255), or it's CamelCase name (for example, "EchoReply"). Allowed ICMP types are: Ipv4: EchoReply | DestinationUnreachable | Redirect | Echo | EchoRequest | RouterAdvertisement | RouterSelection | TimeExceeded | ParameterProblem | Timestamp | TimestampReply | Photuris | ExtendedEcho Request | ExtendedEcho Reply Ipv6: DestinationUnreachable | PacketTooBig | TimeExceeded | ParameterProblem | EchoRequest | EchoReply | MulticastListenerQuery| MulticastListenerReport | MulticastListenerDone | RouterSolicitation | RouterAdvertisement | NeighborSolicitation | NeighborAdvertisement | RedirectMessage | RouterRenumbering | ICMPNodeInformationQuery | ICMPNodeInformationResponse | InverseNeighborDiscoverySolicitation | InverseNeighborDiscoveryAdvertisement | HomeAgentAddressDiscoveryRequest | HomeAgentAddressDiscoveryReply | MobilePrefixSolicitation | MobilePrefixAdvertisement | DuplicateAddressRequestCodeSuffix | DuplicateAddressConfirmationCodeSuffix | ExtendedEchoRequest | ExtendedEchoReply
     """
 
 
     family?: "IPv4" | "IPv6" = "IPv4"
 
-    $type: int
+    $type: int | str
 
 
     check:
-        $type <= 255
-        $type >= 0
+        regex_match(str($type), r"^([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]|EchoReply|DestinationUnreachable|Redirect|Echo|RouterAdvertisement|RouterSelection|TimeExceeded|ParameterProblem|Timestamp|TimestampReply|Photuris|ExtendedEchoRequest|ExtendedEcho Reply|PacketTooBig|ParameterProblem|EchoRequest|MulticastListenerQuery|MulticastListenerReport|MulticastListenerDone|RouterSolicitation|RouterAdvertisement|NeighborSolicitation|NeighborAdvertisement|RedirectMessage|RouterRenumbering|ICMPNodeInformationQuery|ICMPNodeInformationResponse|InverseNeighborDiscoverySolicitation|InverseNeighborDiscoveryAdvertisement|HomeAgentAddressDiscoveryRequest|HomeAgentAddressDiscoveryReply|MobilePrefixSolicitation|MobilePrefixAdvertisement|DuplicateAddressRequestCodeSuffix|DuplicateAddressConfirmationCodeSuffix)$")
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressItems0ToPortsItems0:
@@ -1782,6 +2110,10 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressItems0ToPortsItems0:
     terminatingTLS?: CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressItems0ToPortsItems0TerminatingTLS
 
 
+    check:
+        len(ports) <= 40
+
+
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressItems0ToPortsItems0Listener:
     """
     listener specifies the name of a custom Envoy listener to which this traffic should be redirected to.
@@ -1792,6 +2124,8 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressItems0ToPortsItems0Lis
         envoy config
     name : str, default is Undefined, required
         Name is the name of the listener.
+    priority : int, default is Undefined, optional
+        Priority for this Listener that is used when multiple rules would apply different listeners to a policy map entry. Behavior of this is implementation dependent.
     """
 
 
@@ -1799,14 +2133,18 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressItems0ToPortsItems0Lis
 
     name: str
 
+    priority?: int
+
 
     check:
         len(name) >= 1
+        priority <= 100
+        priority >= 1
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressItems0ToPortsItems0ListenerEnvoyConfig:
     """
-    EnvoyConfig is a reference to the CEC or CCNP resource in which the listener is defined.
+    EnvoyConfig is a reference to the CEC or CCEC resource in which the listener is defined.
 
     Attributes
     ----------
@@ -1854,7 +2192,7 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressItems0ToPortsItems0Ori
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressItems0ToPortsItems0OriginatingTLSSecret:
     """
-    Secret is the secret that contains the certificates and private key for the TLS context. By default, Cilium will search in this secret for the following items:  - 'ca.crt'  - Which represents the trusted CA to verify remote source.  - 'tls.crt' - Which represents the public key certificate.  - 'tls.key' - Which represents the private key matching the public key                certificate.
+    Secret is the secret that contains the certificates and private key for the TLS context. By default, Cilium will search in this secret for the following items: - 'ca.crt'  - Which represents the trusted CA to verify remote source. - 'tls.crt' - Which represents the public key certificate. - 'tls.key' - Which represents the private key matching the public key certificate.
 
     Attributes
     ----------
@@ -1876,8 +2214,10 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressItems0ToPortsItems0Por
 
     Attributes
     ----------
+    endPort : int, default is Undefined, optional
+        EndPort can only be an L4 port number.
     port : str, default is Undefined, required
-        Port is an L4 port number. For now the string will be strictly parsed as a single uint16. In the future, this field may support ranges in the form "1024-2048 Port can also be a port name, which must contain at least one [a-z], and may also contain [0-9] and '-' anywhere except adjacent to another '-' or in the beginning or the end.
+        Port can be an L4 port number, or a name in the form of "http" or "http-8080".
     $protocol : str, default is Undefined, optional
         Protocol is the L4 protocol. If omitted or empty, any protocol matches. Accepted values: "TCP", "UDP", "SCTP", "ANY" 
          Matching on ICMP is not supported. 
@@ -1885,13 +2225,17 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressItems0ToPortsItems0Por
     """
 
 
+    endPort?: int
+
     port: str
 
     $protocol?: "TCP" | "UDP" | "SCTP" | "ANY"
 
 
     check:
-        regex.match(str(port), r"^(6553[0-5]|655[0-2][0-9]|65[0-4][0-9]{2}|6[0-4][0-9]{3}|[1-5][0-9]{4}|[0-9]{1,4})|([a-zA-Z0-9]-?)*[a-zA-Z](-?[a-zA-Z0-9])*$")
+        endPort <= 65535
+        endPort >= 0
+        regex_match(str(port), r"^(6553[0-5]|655[0-2][0-9]|65[0-4][0-9]{2}|6[0-4][0-9]{3}|[1-5][0-9]{4}|[0-9]{1,4})|([a-zA-Z0-9]-?)*[a-zA-Z](-?[a-zA-Z0-9])*$")
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressItems0ToPortsItems0Rules:
@@ -1934,7 +2278,7 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressItems0ToPortsItems0Rul
         MatchName matches literal DNS names. A trailing "." is automatically added when missing.
     matchPattern : str, default is Undefined, optional
         MatchPattern allows using wildcards to match DNS names. All wildcards are case insensitive. The wildcards are: - "*" matches 0 or more DNS valid characters, and may occur anywhere in the pattern. As a special case a "*" as the leftmost character, without a following "." matches all subdomains as well as the name to the right. A trailing "." is automatically added when missing. 
-         Examples: `*.cilium.io` matches subomains of cilium at that level   www.cilium.io and blog.cilium.io match, cilium.io and google.com do not `*cilium.io` matches cilium.io and all subdomains ends with "cilium.io"   except those containing "." separator, subcilium.io and sub-cilium.io match,   www.cilium.io and blog.cilium.io does not sub*.cilium.io matches subdomains of cilium where the subdomain component begins with "sub"   sub.cilium.io and subdomain.cilium.io match, www.cilium.io,   blog.cilium.io, cilium.io and google.com do not
+         Examples: `*.cilium.io` matches subomains of cilium at that level www.cilium.io and blog.cilium.io match, cilium.io and google.com do not `*cilium.io` matches cilium.io and all subdomains ends with "cilium.io" except those containing "." separator, subcilium.io and sub-cilium.io match, www.cilium.io and blog.cilium.io does not sub*.cilium.io matches subdomains of cilium where the subdomain component begins with "sub" sub.cilium.io and subdomain.cilium.io match, www.cilium.io, blog.cilium.io, cilium.io and google.com do not
     """
 
 
@@ -1944,8 +2288,8 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressItems0ToPortsItems0Rul
 
 
     check:
-        regex.match(str(matchName), r"^([-a-zA-Z0-9_]+[.]?)+$") if matchName
-        regex.match(str(matchPattern), r"^([-a-zA-Z0-9_*]+[.]?)+$") if matchPattern
+        regex_match(str(matchName), r"^([-a-zA-Z0-9_]+[.]?)+$") if matchName
+        regex_match(str(matchPattern), r"^([-a-zA-Z0-9_*]+[.]?)+$") if matchPattern
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressItems0ToPortsItems0RulesHTTPItems0:
@@ -2008,6 +2352,10 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressItems0ToPortsItems0Rul
     value?: str
 
 
+    check:
+        len(name) >= 1
+
+
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressItems0ToPortsItems0RulesHTTPItems0HeaderMatchesItems0Secret:
     """
     Secret refers to a secret that contains the value to be matched against. The secret must only contain one entry. If the referred secret does not exist, and there is no "Value" specified, the match will fail.
@@ -2044,7 +2392,7 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressItems0ToPortsItems0Rul
          If omitted or empty, all client identifiers are allowed.
     role : str, default is Undefined, optional
         Role is a case-insensitive string and describes a group of API keys necessary to perform certain higher-level Kafka operations such as "produce" or "consume". A Role automatically expands into all APIKeys required to perform the specified higher-level operation. 
-         The following values are supported:  - "produce": Allow producing to the topics specified in the rule  - "consume": Allow consuming from the topics specified in the rule 
+         The following values are supported: - "produce": Allow producing to the topics specified in the rule - "consume": Allow consuming from the topics specified in the rule 
          This field is incompatible with the APIKey field, i.e APIKey and Role cannot both be specified in the same rule. 
          If omitted or empty, and if APIKey is not specified, then all keys are allowed.
     topic : str, default is Undefined, optional
@@ -2098,7 +2446,7 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressItems0ToPortsItems0Ter
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecIngressItems0ToPortsItems0TerminatingTLSSecret:
     """
-    Secret is the secret that contains the certificates and private key for the TLS context. By default, Cilium will search in this secret for the following items:  - 'ca.crt'  - Which represents the trusted CA to verify remote source.  - 'tls.crt' - Which represents the public key certificate.  - 'tls.key' - Which represents the private key matching the public key                certificate.
+    Secret is the secret that contains the certificates and private key for the TLS context. By default, Cilium will search in this secret for the following items: - 'ca.crt'  - Which represents the trusted CA to verify remote source. - 'tls.crt' - Which represents the public key certificate. - 'tls.key' - Which represents the private key matching the public key certificate.
 
     Attributes
     ----------
@@ -2155,7 +2503,7 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecNodeSelector:
 
 
     check:
-        all _, n in matchLabels { regex.match(str(n), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") } if matchLabels
+        all _, matchLabels in matchLabels {len(matchLabels) <= 63regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecNodeSelectorMatchExpressionsItems0:
@@ -2194,6 +2542,8 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0:
         Egress is a list of EgressRule which are enforced at egress. If omitted or empty, this rule does not apply at egress.
     egressDeny : [CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressDenyItems0], default is Undefined, optional
         EgressDeny is a list of EgressDenyRule which are enforced at egress. Any rule inserted here will be denied regardless of the allowed egress rules in the 'egress' field. If omitted or empty, this rule does not apply at egress.
+    enableDefaultDeny : CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EnableDefaultDeny, default is Undefined, optional
+        enable default deny
     endpointSelector : CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EndpointSelector, default is Undefined, optional
         endpoint selector
     ingress : [CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressItems0], default is Undefined, optional
@@ -2213,6 +2563,8 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0:
 
     egressDeny?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressDenyItems0]
 
+    enableDefaultDeny?: CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EnableDefaultDeny
+
     endpointSelector?: CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EndpointSelector
 
     ingress?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressItems0]
@@ -2227,9 +2579,9 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0:
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressDenyItems0:
     """
     EgressDenyRule contains all rule types which can be applied at egress, i.e. network traffic that originates inside the endpoint and exits the endpoint selected by the endpointSelector. 
-       - All members of this structure are optional. If omitted or empty, the     member will have no effect on the rule. 
-       - If multiple members of the structure are specified, then all members     must match in order for the rule to take effect. The exception to this     rule is the ToRequires member; the effects of any Requires field in any     rule will apply to all other rules as well. 
-       - ToEndpoints, ToCIDR, ToCIDRSet, ToEntities, ToServices and ToGroups are     mutually exclusive. Only one of these members may be present within an     individual rule.
+     - All members of this structure are optional. If omitted or empty, the member will have no effect on the rule. 
+     - If multiple members of the structure are specified, then all members must match in order for the rule to take effect. The exception to this rule is the ToRequires member; the effects of any Requires field in any rule will apply to all other rules as well. 
+     - ToEndpoints, ToCIDR, ToCIDRSet, ToEntities, ToServices and ToGroups are mutually exclusive. Only one of these members may be present within an individual rule.
 
     Attributes
     ----------
@@ -2249,7 +2601,9 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressDenyItems0:
         ToEntities is a list of special entities to which the endpoint subject to the rule is allowed to initiate connections. Supported entities are `world`, `cluster`,`host`,`remote-node`,`kube-apiserver`, `init`, `health`,`unmanaged` and `all`.
     toGroups : [CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressDenyItems0ToGroupsItems0], default is Undefined, optional
         ToGroups is a directive that allows the integration with multiple outside providers. Currently, only AWS is supported, and the rule can select by multiple sub directives: 
-         Example: toGroups: - aws:     securityGroupsIds:     - 'sg-XXXXXXXXXXXXX'
+         Example: toGroups: - aws: securityGroupsIds: - 'sg-XXXXXXXXXXXXX'
+    toNodes : [CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressDenyItems0ToNodesItems0], default is Undefined, optional
+        ToNodes is a list of nodes identified by an EndpointSelector to which endpoints subject to the rule is allowed to communicate.
     toPorts : [CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressDenyItems0ToPortsItems0], default is Undefined, optional
         ToPorts is a list of destination ports identified by port number and protocol which the endpoint subject to the rule is not allowed to connect to. 
          Example: Any endpoint with the label "role=frontend" is not allowed to initiate connections to destination port 8080/tcp
@@ -2274,15 +2628,13 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressDenyItems0:
 
     toGroups?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressDenyItems0ToGroupsItems0]
 
+    toNodes?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressDenyItems0ToNodesItems0]
+
     toPorts?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressDenyItems0ToPortsItems0]
 
     toRequires?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressDenyItems0ToRequiresItems0]
 
     toServices?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressDenyItems0ToServicesItems0]
-
-
-    check:
-        all n in toCIDR { regex.match(str(n), r"^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\/([0-9]|[1-2][0-9]|3[0-2])$|^s*((([0-9A-Fa-f]{1,4}:){7}(:|([0-9A-Fa-f]{1,4})))|(([0-9A-Fa-f]{1,4}:){6}:([0-9A-Fa-f]{1,4})?)|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){0,1}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){0,2}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){0,3}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){0,4}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){0,5}):([0-9A-Fa-f]{1,4})?))|(:(:|((:[0-9A-Fa-f]{1,4}){1,7}))))(%.+)?s*/([0-9]|[1-9][0-9]|1[0-1][0-9]|12[0-8])$") } if toCIDR
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressDenyItems0IcmpsItems0:
@@ -2299,6 +2651,10 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressDenyItems0IcmpsI
     fields?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressDenyItems0IcmpsItems0FieldsItems0]
 
 
+    check:
+        len(fields) <= 40
+
+
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressDenyItems0IcmpsItems0FieldsItems0:
     """
     ICMPField is a ICMP field.
@@ -2307,19 +2663,18 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressDenyItems0IcmpsI
     ----------
     family : str, default is "IPv4", optional
         Family is a IP address version. Currently, we support `IPv4` and `IPv6`. `IPv4` is set as default.
-    $type : int, default is Undefined, required
-        Type is a ICMP-type. It should be 0-255 (8bit).
+    $type : int | str, default is Undefined, required
+        Type is a ICMP-type. It should be an 8bit code (0-255), or it's CamelCase name (for example, "EchoReply"). Allowed ICMP types are: Ipv4: EchoReply | DestinationUnreachable | Redirect | Echo | EchoRequest | RouterAdvertisement | RouterSelection | TimeExceeded | ParameterProblem | Timestamp | TimestampReply | Photuris | ExtendedEcho Request | ExtendedEcho Reply Ipv6: DestinationUnreachable | PacketTooBig | TimeExceeded | ParameterProblem | EchoRequest | EchoReply | MulticastListenerQuery| MulticastListenerReport | MulticastListenerDone | RouterSolicitation | RouterAdvertisement | NeighborSolicitation | NeighborAdvertisement | RedirectMessage | RouterRenumbering | ICMPNodeInformationQuery | ICMPNodeInformationResponse | InverseNeighborDiscoverySolicitation | InverseNeighborDiscoveryAdvertisement | HomeAgentAddressDiscoveryRequest | HomeAgentAddressDiscoveryReply | MobilePrefixSolicitation | MobilePrefixAdvertisement | DuplicateAddressRequestCodeSuffix | DuplicateAddressConfirmationCodeSuffix | ExtendedEchoRequest | ExtendedEchoReply
     """
 
 
     family?: "IPv4" | "IPv6" = "IPv4"
 
-    $type: int
+    $type: int | str
 
 
     check:
-        $type <= 255
-        $type >= 0
+        regex_match(str($type), r"^([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]|EchoReply|DestinationUnreachable|Redirect|Echo|RouterAdvertisement|RouterSelection|TimeExceeded|ParameterProblem|Timestamp|TimestampReply|Photuris|ExtendedEchoRequest|ExtendedEcho Reply|PacketTooBig|ParameterProblem|EchoRequest|MulticastListenerQuery|MulticastListenerReport|MulticastListenerDone|RouterSolicitation|RouterAdvertisement|NeighborSolicitation|NeighborAdvertisement|RedirectMessage|RouterRenumbering|ICMPNodeInformationQuery|ICMPNodeInformationResponse|InverseNeighborDiscoverySolicitation|InverseNeighborDiscoveryAdvertisement|HomeAgentAddressDiscoveryRequest|HomeAgentAddressDiscoveryReply|MobilePrefixSolicitation|MobilePrefixAdvertisement|DuplicateAddressRequestCodeSuffix|DuplicateAddressConfirmationCodeSuffix)$")
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressDenyItems0ToCIDRSetItems0:
@@ -2331,7 +2686,7 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressDenyItems0ToCIDR
     cidr : str, default is Undefined, optional
         CIDR is a CIDR prefix / IP Block.
     cidrGroupRef : str, default is Undefined, optional
-        CIDRGroupRef is a reference to a CiliumCIDRGroup object. A CiliumCIDRGroup contains a list of CIDRs that the endpoint, subject to the rule, can (Ingress) or cannot (IngressDeny) receive connections from.
+        CIDRGroupRef is a reference to a CiliumCIDRGroup object. A CiliumCIDRGroup contains a list of CIDRs that the endpoint, subject to the rule, can (Ingress/Egress) or cannot (IngressDeny/EgressDeny) receive connections from.
     except : [str], default is Undefined, optional
         ExceptCIDRs is a list of IP blocks which the endpoint subject to the rule is not allowed to initiate connections to. These CIDR prefixes should be contained within Cidr, using ExceptCIDRs together with CIDRGroupRef is not supported yet. These exceptions are only applied to the Cidr in this CIDRRule, and do not apply to any other CIDR prefixes in any other CIDRRules.
     """
@@ -2345,10 +2700,8 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressDenyItems0ToCIDR
 
 
     check:
-        regex.match(str(cidr), r"^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\/([0-9]|[1-2][0-9]|3[0-2])$|^s*((([0-9A-Fa-f]{1,4}:){7}(:|([0-9A-Fa-f]{1,4})))|(([0-9A-Fa-f]{1,4}:){6}:([0-9A-Fa-f]{1,4})?)|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){0,1}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){0,2}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){0,3}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){0,4}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){0,5}):([0-9A-Fa-f]{1,4})?))|(:(:|((:[0-9A-Fa-f]{1,4}){1,7}))))(%.+)?s*/([0-9]|[1-9][0-9]|1[0-1][0-9]|12[0-8])$") if cidr
         len(cidrGroupRef) <= 253
-        regex.match(str(cidrGroupRef), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if cidrGroupRef
-        all n in except { regex.match(str(n), r"^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\/([0-9]|[1-2][0-9]|3[0-2])$|^s*((([0-9A-Fa-f]{1,4}:){7}(:|([0-9A-Fa-f]{1,4})))|(([0-9A-Fa-f]{1,4}:){6}:([0-9A-Fa-f]{1,4})?)|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){0,1}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){0,2}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){0,3}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){0,4}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){0,5}):([0-9A-Fa-f]{1,4})?))|(:(:|((:[0-9A-Fa-f]{1,4}){1,7}))))(%.+)?s*/([0-9]|[1-9][0-9]|1[0-1][0-9]|12[0-8])$") } if except
+        regex_match(str(cidrGroupRef), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if cidrGroupRef
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressDenyItems0ToEndpointsItems0:
@@ -2370,7 +2723,7 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressDenyItems0ToEndp
 
 
     check:
-        all _, n in matchLabels { regex.match(str(n), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") } if matchLabels
+        all _, matchLabels in matchLabels {len(matchLabels) <= 63regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressDenyItems0ToEndpointsItems0MatchExpressionsItems0:
@@ -2397,7 +2750,7 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressDenyItems0ToEndp
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressDenyItems0ToGroupsItems0:
     """
-    ToGroups structure to store all kinds of new integrations that needs a new derivative policy.
+    Groups structure to store all kinds of new integrations that needs a new derivative policy.
 
     Attributes
     ----------
@@ -2435,6 +2788,50 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressDenyItems0ToGrou
     securityGroupsNames?: [str]
 
 
+schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressDenyItems0ToNodesItems0:
+    """
+    EndpointSelector is a wrapper for k8s LabelSelector.
+
+    Attributes
+    ----------
+    matchExpressions : [CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressDenyItems0ToNodesItems0MatchExpressionsItems0], default is Undefined, optional
+        matchExpressions is a list of label selector requirements. The requirements are ANDed.
+    matchLabels : {str:str}, default is Undefined, optional
+        matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+    """
+
+
+    matchExpressions?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressDenyItems0ToNodesItems0MatchExpressionsItems0]
+
+    matchLabels?: {str:str}
+
+
+    check:
+        all _, matchLabels in matchLabels {len(matchLabels) <= 63regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
+
+
+schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressDenyItems0ToNodesItems0MatchExpressionsItems0:
+    """
+    A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key is the label key that the selector applies to.
+    operator : str, default is Undefined, required
+        operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+    values : [str], default is Undefined, optional
+        values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.
+    """
+
+
+    key: str
+
+    operator: "In" | "NotIn" | "Exists" | "DoesNotExist"
+
+    values?: [str]
+
+
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressDenyItems0ToPortsItems0:
     """
     PortDenyRule is a list of ports/protocol that should be used for deny policies. This structure lacks the L7Rules since it's not supported in deny policies.
@@ -2455,8 +2852,10 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressDenyItems0ToPort
 
     Attributes
     ----------
+    endPort : int, default is Undefined, optional
+        EndPort can only be an L4 port number.
     port : str, default is Undefined, required
-        Port is an L4 port number. For now the string will be strictly parsed as a single uint16. In the future, this field may support ranges in the form "1024-2048 Port can also be a port name, which must contain at least one [a-z], and may also contain [0-9] and '-' anywhere except adjacent to another '-' or in the beginning or the end.
+        Port can be an L4 port number, or a name in the form of "http" or "http-8080".
     $protocol : str, default is Undefined, optional
         Protocol is the L4 protocol. If omitted or empty, any protocol matches. Accepted values: "TCP", "UDP", "SCTP", "ANY" 
          Matching on ICMP is not supported. 
@@ -2464,13 +2863,17 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressDenyItems0ToPort
     """
 
 
+    endPort?: int
+
     port: str
 
     $protocol?: "TCP" | "UDP" | "SCTP" | "ANY"
 
 
     check:
-        regex.match(str(port), r"^(6553[0-5]|655[0-2][0-9]|65[0-4][0-9]{2}|6[0-4][0-9]{3}|[1-5][0-9]{4}|[0-9]{1,4})|([a-zA-Z0-9]-?)*[a-zA-Z](-?[a-zA-Z0-9])*$")
+        endPort <= 65535
+        endPort >= 0
+        regex_match(str(port), r"^(6553[0-5]|655[0-2][0-9]|65[0-4][0-9]{2}|6[0-4][0-9]{3}|[1-5][0-9]{4}|[0-9]{1,4})|([a-zA-Z0-9]-?)*[a-zA-Z](-?[a-zA-Z0-9])*$")
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressDenyItems0ToRequiresItems0:
@@ -2492,7 +2895,7 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressDenyItems0ToRequ
 
 
     check:
-        all _, n in matchLabels { regex.match(str(n), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") } if matchLabels
+        all _, matchLabels in matchLabels {len(matchLabels) <= 63regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressDenyItems0ToRequiresItems0MatchExpressionsItems0:
@@ -2590,7 +2993,7 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressDenyItems0ToServ
 
 
     check:
-        all _, n in matchLabels { regex.match(str(n), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") } if matchLabels
+        all _, matchLabels in matchLabels {len(matchLabels) <= 63regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressDenyItems0ToServicesItems0K8sServiceSelectorSelectorMatchExpressionsItems0:
@@ -2618,9 +3021,9 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressDenyItems0ToServ
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressItems0:
     """
     EgressRule contains all rule types which can be applied at egress, i.e. network traffic that originates inside the endpoint and exits the endpoint selected by the endpointSelector. 
-       - All members of this structure are optional. If omitted or empty, the     member will have no effect on the rule. 
-       - If multiple members of the structure are specified, then all members     must match in order for the rule to take effect. The exception to this     rule is the ToRequires member; the effects of any Requires field in any     rule will apply to all other rules as well. 
-       - ToEndpoints, ToCIDR, ToCIDRSet, ToEntities, ToServices and ToGroups are     mutually exclusive. Only one of these members may be present within an     individual rule.
+     - All members of this structure are optional. If omitted or empty, the member will have no effect on the rule. 
+     - If multiple members of the structure are specified, then all members must match in order for the rule to take effect. The exception to this rule is the ToRequires member; the effects of any Requires field in any rule will apply to all other rules as well. 
+     - ToEndpoints, ToCIDR, ToCIDRSet, ToEntities, ToServices and ToGroups are mutually exclusive. Only one of these members may be present within an individual rule.
 
     Attributes
     ----------
@@ -2644,7 +3047,9 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressItems0:
         ToFQDN allows whitelisting DNS names in place of IPs. The IPs that result from DNS resolution of `ToFQDN.MatchName`s are added to the same EgressRule object as ToCIDRSet entries, and behave accordingly. Any L4 and L7 rules within this EgressRule will also apply to these IPs. The DNS -> IP mapping is re-resolved periodically from within the cilium-agent, and the IPs in the DNS response are effected in the policy for selected pods as-is (i.e. the list of IPs is not modified in any way). Note: An explicit rule to allow for DNS traffic is needed for the pods, as ToFQDN counts as an egress rule and will enforce egress policy when PolicyEnforcment=default. Note: If the resolved IPs are IPs within the kubernetes cluster, the ToFQDN rule will not apply to that IP. Note: ToFQDN cannot occur in the same policy as other To* rules.
     toGroups : [CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressItems0ToGroupsItems0], default is Undefined, optional
         ToGroups is a directive that allows the integration with multiple outside providers. Currently, only AWS is supported, and the rule can select by multiple sub directives: 
-         Example: toGroups: - aws:     securityGroupsIds:     - 'sg-XXXXXXXXXXXXX'
+         Example: toGroups: - aws: securityGroupsIds: - 'sg-XXXXXXXXXXXXX'
+    toNodes : [CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressItems0ToNodesItems0], default is Undefined, optional
+        ToNodes is a list of nodes identified by an EndpointSelector to which endpoints subject to the rule is allowed to communicate.
     toPorts : [CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressItems0ToPortsItems0], default is Undefined, optional
         ToPorts is a list of destination ports identified by port number and protocol which the endpoint subject to the rule is allowed to connect to. 
          Example: Any endpoint with the label "role=frontend" is allowed to initiate connections to destination port 8080/tcp
@@ -2673,15 +3078,13 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressItems0:
 
     toGroups?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressItems0ToGroupsItems0]
 
+    toNodes?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressItems0ToNodesItems0]
+
     toPorts?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressItems0ToPortsItems0]
 
     toRequires?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressItems0ToRequiresItems0]
 
     toServices?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressItems0ToServicesItems0]
-
-
-    check:
-        all n in toCIDR { regex.match(str(n), r"^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\/([0-9]|[1-2][0-9]|3[0-2])$|^s*((([0-9A-Fa-f]{1,4}:){7}(:|([0-9A-Fa-f]{1,4})))|(([0-9A-Fa-f]{1,4}:){6}:([0-9A-Fa-f]{1,4})?)|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){0,1}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){0,2}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){0,3}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){0,4}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){0,5}):([0-9A-Fa-f]{1,4})?))|(:(:|((:[0-9A-Fa-f]{1,4}){1,7}))))(%.+)?s*/([0-9]|[1-9][0-9]|1[0-1][0-9]|12[0-8])$") } if toCIDR
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressItems0Authentication:
@@ -2712,6 +3115,10 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressItems0IcmpsItems
     fields?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressItems0IcmpsItems0FieldsItems0]
 
 
+    check:
+        len(fields) <= 40
+
+
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressItems0IcmpsItems0FieldsItems0:
     """
     ICMPField is a ICMP field.
@@ -2720,19 +3127,18 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressItems0IcmpsItems
     ----------
     family : str, default is "IPv4", optional
         Family is a IP address version. Currently, we support `IPv4` and `IPv6`. `IPv4` is set as default.
-    $type : int, default is Undefined, required
-        Type is a ICMP-type. It should be 0-255 (8bit).
+    $type : int | str, default is Undefined, required
+        Type is a ICMP-type. It should be an 8bit code (0-255), or it's CamelCase name (for example, "EchoReply"). Allowed ICMP types are: Ipv4: EchoReply | DestinationUnreachable | Redirect | Echo | EchoRequest | RouterAdvertisement | RouterSelection | TimeExceeded | ParameterProblem | Timestamp | TimestampReply | Photuris | ExtendedEcho Request | ExtendedEcho Reply Ipv6: DestinationUnreachable | PacketTooBig | TimeExceeded | ParameterProblem | EchoRequest | EchoReply | MulticastListenerQuery| MulticastListenerReport | MulticastListenerDone | RouterSolicitation | RouterAdvertisement | NeighborSolicitation | NeighborAdvertisement | RedirectMessage | RouterRenumbering | ICMPNodeInformationQuery | ICMPNodeInformationResponse | InverseNeighborDiscoverySolicitation | InverseNeighborDiscoveryAdvertisement | HomeAgentAddressDiscoveryRequest | HomeAgentAddressDiscoveryReply | MobilePrefixSolicitation | MobilePrefixAdvertisement | DuplicateAddressRequestCodeSuffix | DuplicateAddressConfirmationCodeSuffix | ExtendedEchoRequest | ExtendedEchoReply
     """
 
 
     family?: "IPv4" | "IPv6" = "IPv4"
 
-    $type: int
+    $type: int | str
 
 
     check:
-        $type <= 255
-        $type >= 0
+        regex_match(str($type), r"^([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]|EchoReply|DestinationUnreachable|Redirect|Echo|RouterAdvertisement|RouterSelection|TimeExceeded|ParameterProblem|Timestamp|TimestampReply|Photuris|ExtendedEchoRequest|ExtendedEcho Reply|PacketTooBig|ParameterProblem|EchoRequest|MulticastListenerQuery|MulticastListenerReport|MulticastListenerDone|RouterSolicitation|RouterAdvertisement|NeighborSolicitation|NeighborAdvertisement|RedirectMessage|RouterRenumbering|ICMPNodeInformationQuery|ICMPNodeInformationResponse|InverseNeighborDiscoverySolicitation|InverseNeighborDiscoveryAdvertisement|HomeAgentAddressDiscoveryRequest|HomeAgentAddressDiscoveryReply|MobilePrefixSolicitation|MobilePrefixAdvertisement|DuplicateAddressRequestCodeSuffix|DuplicateAddressConfirmationCodeSuffix)$")
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressItems0ToCIDRSetItems0:
@@ -2744,7 +3150,7 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressItems0ToCIDRSetI
     cidr : str, default is Undefined, optional
         CIDR is a CIDR prefix / IP Block.
     cidrGroupRef : str, default is Undefined, optional
-        CIDRGroupRef is a reference to a CiliumCIDRGroup object. A CiliumCIDRGroup contains a list of CIDRs that the endpoint, subject to the rule, can (Ingress) or cannot (IngressDeny) receive connections from.
+        CIDRGroupRef is a reference to a CiliumCIDRGroup object. A CiliumCIDRGroup contains a list of CIDRs that the endpoint, subject to the rule, can (Ingress/Egress) or cannot (IngressDeny/EgressDeny) receive connections from.
     except : [str], default is Undefined, optional
         ExceptCIDRs is a list of IP blocks which the endpoint subject to the rule is not allowed to initiate connections to. These CIDR prefixes should be contained within Cidr, using ExceptCIDRs together with CIDRGroupRef is not supported yet. These exceptions are only applied to the Cidr in this CIDRRule, and do not apply to any other CIDR prefixes in any other CIDRRules.
     """
@@ -2758,10 +3164,8 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressItems0ToCIDRSetI
 
 
     check:
-        regex.match(str(cidr), r"^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\/([0-9]|[1-2][0-9]|3[0-2])$|^s*((([0-9A-Fa-f]{1,4}:){7}(:|([0-9A-Fa-f]{1,4})))|(([0-9A-Fa-f]{1,4}:){6}:([0-9A-Fa-f]{1,4})?)|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){0,1}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){0,2}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){0,3}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){0,4}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){0,5}):([0-9A-Fa-f]{1,4})?))|(:(:|((:[0-9A-Fa-f]{1,4}){1,7}))))(%.+)?s*/([0-9]|[1-9][0-9]|1[0-1][0-9]|12[0-8])$") if cidr
         len(cidrGroupRef) <= 253
-        regex.match(str(cidrGroupRef), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if cidrGroupRef
-        all n in except { regex.match(str(n), r"^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\/([0-9]|[1-2][0-9]|3[0-2])$|^s*((([0-9A-Fa-f]{1,4}:){7}(:|([0-9A-Fa-f]{1,4})))|(([0-9A-Fa-f]{1,4}:){6}:([0-9A-Fa-f]{1,4})?)|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){0,1}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){0,2}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){0,3}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){0,4}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){0,5}):([0-9A-Fa-f]{1,4})?))|(:(:|((:[0-9A-Fa-f]{1,4}){1,7}))))(%.+)?s*/([0-9]|[1-9][0-9]|1[0-1][0-9]|12[0-8])$") } if except
+        regex_match(str(cidrGroupRef), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if cidrGroupRef
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressItems0ToEndpointsItems0:
@@ -2783,7 +3187,7 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressItems0ToEndpoint
 
 
     check:
-        all _, n in matchLabels { regex.match(str(n), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") } if matchLabels
+        all _, matchLabels in matchLabels {len(matchLabels) <= 63regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressItems0ToEndpointsItems0MatchExpressionsItems0:
@@ -2818,7 +3222,7 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressItems0ToFQDNsIte
         MatchName matches literal DNS names. A trailing "." is automatically added when missing.
     matchPattern : str, default is Undefined, optional
         MatchPattern allows using wildcards to match DNS names. All wildcards are case insensitive. The wildcards are: - "*" matches 0 or more DNS valid characters, and may occur anywhere in the pattern. As a special case a "*" as the leftmost character, without a following "." matches all subdomains as well as the name to the right. A trailing "." is automatically added when missing. 
-         Examples: `*.cilium.io` matches subomains of cilium at that level   www.cilium.io and blog.cilium.io match, cilium.io and google.com do not `*cilium.io` matches cilium.io and all subdomains ends with "cilium.io"   except those containing "." separator, subcilium.io and sub-cilium.io match,   www.cilium.io and blog.cilium.io does not sub*.cilium.io matches subdomains of cilium where the subdomain component begins with "sub"   sub.cilium.io and subdomain.cilium.io match, www.cilium.io,   blog.cilium.io, cilium.io and google.com do not
+         Examples: `*.cilium.io` matches subomains of cilium at that level www.cilium.io and blog.cilium.io match, cilium.io and google.com do not `*cilium.io` matches cilium.io and all subdomains ends with "cilium.io" except those containing "." separator, subcilium.io and sub-cilium.io match, www.cilium.io and blog.cilium.io does not sub*.cilium.io matches subdomains of cilium where the subdomain component begins with "sub" sub.cilium.io and subdomain.cilium.io match, www.cilium.io, blog.cilium.io, cilium.io and google.com do not
     """
 
 
@@ -2828,13 +3232,13 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressItems0ToFQDNsIte
 
 
     check:
-        regex.match(str(matchName), r"^([-a-zA-Z0-9_]+[.]?)+$") if matchName
-        regex.match(str(matchPattern), r"^([-a-zA-Z0-9_*]+[.]?)+$") if matchPattern
+        regex_match(str(matchName), r"^([-a-zA-Z0-9_]+[.]?)+$") if matchName
+        regex_match(str(matchPattern), r"^([-a-zA-Z0-9_*]+[.]?)+$") if matchPattern
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressItems0ToGroupsItems0:
     """
-    ToGroups structure to store all kinds of new integrations that needs a new derivative policy.
+    Groups structure to store all kinds of new integrations that needs a new derivative policy.
 
     Attributes
     ----------
@@ -2872,6 +3276,50 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressItems0ToGroupsIt
     securityGroupsNames?: [str]
 
 
+schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressItems0ToNodesItems0:
+    """
+    EndpointSelector is a wrapper for k8s LabelSelector.
+
+    Attributes
+    ----------
+    matchExpressions : [CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressItems0ToNodesItems0MatchExpressionsItems0], default is Undefined, optional
+        matchExpressions is a list of label selector requirements. The requirements are ANDed.
+    matchLabels : {str:str}, default is Undefined, optional
+        matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+    """
+
+
+    matchExpressions?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressItems0ToNodesItems0MatchExpressionsItems0]
+
+    matchLabels?: {str:str}
+
+
+    check:
+        all _, matchLabels in matchLabels {len(matchLabels) <= 63regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
+
+
+schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressItems0ToNodesItems0MatchExpressionsItems0:
+    """
+    A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key is the label key that the selector applies to.
+    operator : str, default is Undefined, required
+        operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+    values : [str], default is Undefined, optional
+        values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.
+    """
+
+
+    key: str
+
+    operator: "In" | "NotIn" | "Exists" | "DoesNotExist"
+
+    values?: [str]
+
+
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressItems0ToPortsItems0:
     """
     PortRule is a list of ports/protocol combinations with optional Layer 7 rules which must be met.
@@ -2906,6 +3354,10 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressItems0ToPortsIte
     terminatingTLS?: CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressItems0ToPortsItems0TerminatingTLS
 
 
+    check:
+        len(ports) <= 40
+
+
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressItems0ToPortsItems0Listener:
     """
     listener specifies the name of a custom Envoy listener to which this traffic should be redirected to.
@@ -2916,6 +3368,8 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressItems0ToPortsIte
         envoy config
     name : str, default is Undefined, required
         Name is the name of the listener.
+    priority : int, default is Undefined, optional
+        Priority for this Listener that is used when multiple rules would apply different listeners to a policy map entry. Behavior of this is implementation dependent.
     """
 
 
@@ -2923,14 +3377,18 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressItems0ToPortsIte
 
     name: str
 
+    priority?: int
+
 
     check:
         len(name) >= 1
+        priority <= 100
+        priority >= 1
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressItems0ToPortsItems0ListenerEnvoyConfig:
     """
-    EnvoyConfig is a reference to the CEC or CCNP resource in which the listener is defined.
+    EnvoyConfig is a reference to the CEC or CCEC resource in which the listener is defined.
 
     Attributes
     ----------
@@ -2978,7 +3436,7 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressItems0ToPortsIte
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressItems0ToPortsItems0OriginatingTLSSecret:
     """
-    Secret is the secret that contains the certificates and private key for the TLS context. By default, Cilium will search in this secret for the following items:  - 'ca.crt'  - Which represents the trusted CA to verify remote source.  - 'tls.crt' - Which represents the public key certificate.  - 'tls.key' - Which represents the private key matching the public key                certificate.
+    Secret is the secret that contains the certificates and private key for the TLS context. By default, Cilium will search in this secret for the following items: - 'ca.crt'  - Which represents the trusted CA to verify remote source. - 'tls.crt' - Which represents the public key certificate. - 'tls.key' - Which represents the private key matching the public key certificate.
 
     Attributes
     ----------
@@ -3000,8 +3458,10 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressItems0ToPortsIte
 
     Attributes
     ----------
+    endPort : int, default is Undefined, optional
+        EndPort can only be an L4 port number.
     port : str, default is Undefined, required
-        Port is an L4 port number. For now the string will be strictly parsed as a single uint16. In the future, this field may support ranges in the form "1024-2048 Port can also be a port name, which must contain at least one [a-z], and may also contain [0-9] and '-' anywhere except adjacent to another '-' or in the beginning or the end.
+        Port can be an L4 port number, or a name in the form of "http" or "http-8080".
     $protocol : str, default is Undefined, optional
         Protocol is the L4 protocol. If omitted or empty, any protocol matches. Accepted values: "TCP", "UDP", "SCTP", "ANY" 
          Matching on ICMP is not supported. 
@@ -3009,13 +3469,17 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressItems0ToPortsIte
     """
 
 
+    endPort?: int
+
     port: str
 
     $protocol?: "TCP" | "UDP" | "SCTP" | "ANY"
 
 
     check:
-        regex.match(str(port), r"^(6553[0-5]|655[0-2][0-9]|65[0-4][0-9]{2}|6[0-4][0-9]{3}|[1-5][0-9]{4}|[0-9]{1,4})|([a-zA-Z0-9]-?)*[a-zA-Z](-?[a-zA-Z0-9])*$")
+        endPort <= 65535
+        endPort >= 0
+        regex_match(str(port), r"^(6553[0-5]|655[0-2][0-9]|65[0-4][0-9]{2}|6[0-4][0-9]{3}|[1-5][0-9]{4}|[0-9]{1,4})|([a-zA-Z0-9]-?)*[a-zA-Z](-?[a-zA-Z0-9])*$")
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressItems0ToPortsItems0Rules:
@@ -3058,7 +3522,7 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressItems0ToPortsIte
         MatchName matches literal DNS names. A trailing "." is automatically added when missing.
     matchPattern : str, default is Undefined, optional
         MatchPattern allows using wildcards to match DNS names. All wildcards are case insensitive. The wildcards are: - "*" matches 0 or more DNS valid characters, and may occur anywhere in the pattern. As a special case a "*" as the leftmost character, without a following "." matches all subdomains as well as the name to the right. A trailing "." is automatically added when missing. 
-         Examples: `*.cilium.io` matches subomains of cilium at that level   www.cilium.io and blog.cilium.io match, cilium.io and google.com do not `*cilium.io` matches cilium.io and all subdomains ends with "cilium.io"   except those containing "." separator, subcilium.io and sub-cilium.io match,   www.cilium.io and blog.cilium.io does not sub*.cilium.io matches subdomains of cilium where the subdomain component begins with "sub"   sub.cilium.io and subdomain.cilium.io match, www.cilium.io,   blog.cilium.io, cilium.io and google.com do not
+         Examples: `*.cilium.io` matches subomains of cilium at that level www.cilium.io and blog.cilium.io match, cilium.io and google.com do not `*cilium.io` matches cilium.io and all subdomains ends with "cilium.io" except those containing "." separator, subcilium.io and sub-cilium.io match, www.cilium.io and blog.cilium.io does not sub*.cilium.io matches subdomains of cilium where the subdomain component begins with "sub" sub.cilium.io and subdomain.cilium.io match, www.cilium.io, blog.cilium.io, cilium.io and google.com do not
     """
 
 
@@ -3068,8 +3532,8 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressItems0ToPortsIte
 
 
     check:
-        regex.match(str(matchName), r"^([-a-zA-Z0-9_]+[.]?)+$") if matchName
-        regex.match(str(matchPattern), r"^([-a-zA-Z0-9_*]+[.]?)+$") if matchPattern
+        regex_match(str(matchName), r"^([-a-zA-Z0-9_]+[.]?)+$") if matchName
+        regex_match(str(matchPattern), r"^([-a-zA-Z0-9_*]+[.]?)+$") if matchPattern
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressItems0ToPortsItems0RulesHTTPItems0:
@@ -3132,6 +3596,10 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressItems0ToPortsIte
     value?: str
 
 
+    check:
+        len(name) >= 1
+
+
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressItems0ToPortsItems0RulesHTTPItems0HeaderMatchesItems0Secret:
     """
     Secret refers to a secret that contains the value to be matched against. The secret must only contain one entry. If the referred secret does not exist, and there is no "Value" specified, the match will fail.
@@ -3168,7 +3636,7 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressItems0ToPortsIte
          If omitted or empty, all client identifiers are allowed.
     role : str, default is Undefined, optional
         Role is a case-insensitive string and describes a group of API keys necessary to perform certain higher-level Kafka operations such as "produce" or "consume". A Role automatically expands into all APIKeys required to perform the specified higher-level operation. 
-         The following values are supported:  - "produce": Allow producing to the topics specified in the rule  - "consume": Allow consuming from the topics specified in the rule 
+         The following values are supported: - "produce": Allow producing to the topics specified in the rule - "consume": Allow consuming from the topics specified in the rule 
          This field is incompatible with the APIKey field, i.e APIKey and Role cannot both be specified in the same rule. 
          If omitted or empty, and if APIKey is not specified, then all keys are allowed.
     topic : str, default is Undefined, optional
@@ -3222,7 +3690,7 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressItems0ToPortsIte
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressItems0ToPortsItems0TerminatingTLSSecret:
     """
-    Secret is the secret that contains the certificates and private key for the TLS context. By default, Cilium will search in this secret for the following items:  - 'ca.crt'  - Which represents the trusted CA to verify remote source.  - 'tls.crt' - Which represents the public key certificate.  - 'tls.key' - Which represents the private key matching the public key                certificate.
+    Secret is the secret that contains the certificates and private key for the TLS context. By default, Cilium will search in this secret for the following items: - 'ca.crt'  - Which represents the trusted CA to verify remote source. - 'tls.crt' - Which represents the public key certificate. - 'tls.key' - Which represents the private key matching the public key certificate.
 
     Attributes
     ----------
@@ -3257,7 +3725,7 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressItems0ToRequires
 
 
     check:
-        all _, n in matchLabels { regex.match(str(n), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") } if matchLabels
+        all _, matchLabels in matchLabels {len(matchLabels) <= 63regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressItems0ToRequiresItems0MatchExpressionsItems0:
@@ -3355,7 +3823,7 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressItems0ToServices
 
 
     check:
-        all _, n in matchLabels { regex.match(str(n), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") } if matchLabels
+        all _, matchLabels in matchLabels {len(matchLabels) <= 63regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressItems0ToServicesItems0K8sServiceSelectorSelectorMatchExpressionsItems0:
@@ -3380,6 +3848,27 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EgressItems0ToServices
     values?: [str]
 
 
+schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EnableDefaultDeny:
+    """
+    EnableDefaultDeny determines whether this policy configures the subject endpoint(s) to have a default deny mode. If enabled, this causes all traffic not explicitly allowed by a network policy to be dropped. 
+     If not specified, the default is true for each traffic direction that has rules, and false otherwise. For example, if a policy only has Ingress or IngressDeny rules, then the default for ingress is true and egress is false. 
+     If multiple policies apply to an endpoint, that endpoint's default deny will be enabled if any policy requests it. 
+     This is useful for creating broad-based network policies that will not cause endpoints to enter default-deny mode.
+
+    Attributes
+    ----------
+    egress : bool, default is Undefined, optional
+        Whether or not the endpoint should have a default-deny rule applied to egress traffic.
+    ingress : bool, default is Undefined, optional
+        Whether or not the endpoint should have a default-deny rule applied to ingress traffic.
+    """
+
+
+    egress?: bool
+
+    ingress?: bool
+
+
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EndpointSelector:
     """
     EndpointSelector selects all endpoints which should be subject to this rule. EndpointSelector and NodeSelector cannot be both empty and are mutually exclusive.
@@ -3399,7 +3888,7 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EndpointSelector:
 
 
     check:
-        all _, n in matchLabels { regex.match(str(n), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") } if matchLabels
+        all _, matchLabels in matchLabels {len(matchLabels) <= 63regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EndpointSelectorMatchExpressionsItems0:
@@ -3427,9 +3916,9 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0EndpointSelectorMatchE
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressDenyItems0:
     """
     IngressDenyRule contains all rule types which can be applied at ingress, i.e. network traffic that originates outside of the endpoint and is entering the endpoint selected by the endpointSelector. 
-       - All members of this structure are optional. If omitted or empty, the     member will have no effect on the rule. 
-       - If multiple members are set, all of them need to match in order for     the rule to take effect. The exception to this rule is FromRequires field;     the effects of any Requires field in any rule will apply to all other     rules as well. 
-       - FromEndpoints, FromCIDR, FromCIDRSet and FromEntities are mutually     exclusive. Only one of these members may be present within an individual     rule.
+     - All members of this structure are optional. If omitted or empty, the member will have no effect on the rule. 
+     - If multiple members are set, all of them need to match in order for the rule to take effect. The exception to this rule is FromRequires field; the effects of any Requires field in any rule will apply to all other rules as well. 
+     - FromEndpoints, FromCIDR, FromCIDRSet, FromGroups and FromEntities are mutually exclusive. Only one of these members may be present within an individual rule.
 
     Attributes
     ----------
@@ -3444,6 +3933,11 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressDenyItems0:
          Example: Any endpoint with the label "role=backend" can be consumed by any endpoint carrying the label "role=frontend".
     fromEntities : [str], default is Undefined, optional
         FromEntities is a list of special entities which the endpoint subject to the rule is allowed to receive connections from. Supported entities are `world`, `cluster` and `host`
+    fromGroups : [CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressDenyItems0FromGroupsItems0], default is Undefined, optional
+        FromGroups is a directive that allows the integration with multiple outside providers. Currently, only AWS is supported, and the rule can select by multiple sub directives: 
+         Example: FromGroups: - aws: securityGroupsIds: - 'sg-XXXXXXXXXXXXX'
+    fromNodes : [CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressDenyItems0FromNodesItems0], default is Undefined, optional
+        FromNodes is a list of nodes identified by an EndpointSelector which are allowed to communicate with the endpoint subject to the rule.
     fromRequires : [CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressDenyItems0FromRequiresItems0], default is Undefined, optional
         FromRequires is a list of additional constraints which must be met in order for the selected endpoints to be reachable. These additional constraints do no by itself grant access privileges and must always be accompanied with at least one matching FromEndpoints. 
          Example: Any Endpoint with the label "team=A" requires consuming endpoint to also carry the label "team=A".
@@ -3464,15 +3958,15 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressDenyItems0:
 
     fromEntities?: [str]
 
+    fromGroups?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressDenyItems0FromGroupsItems0]
+
+    fromNodes?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressDenyItems0FromNodesItems0]
+
     fromRequires?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressDenyItems0FromRequiresItems0]
 
     icmps?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressDenyItems0IcmpsItems0]
 
     toPorts?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressDenyItems0ToPortsItems0]
-
-
-    check:
-        all n in fromCIDR { regex.match(str(n), r"^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\/([0-9]|[1-2][0-9]|3[0-2])$|^s*((([0-9A-Fa-f]{1,4}:){7}(:|([0-9A-Fa-f]{1,4})))|(([0-9A-Fa-f]{1,4}:){6}:([0-9A-Fa-f]{1,4})?)|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){0,1}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){0,2}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){0,3}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){0,4}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){0,5}):([0-9A-Fa-f]{1,4})?))|(:(:|((:[0-9A-Fa-f]{1,4}){1,7}))))(%.+)?s*/([0-9]|[1-9][0-9]|1[0-1][0-9]|12[0-8])$") } if fromCIDR
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressDenyItems0FromCIDRSetItems0:
@@ -3484,7 +3978,7 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressDenyItems0FromC
     cidr : str, default is Undefined, optional
         CIDR is a CIDR prefix / IP Block.
     cidrGroupRef : str, default is Undefined, optional
-        CIDRGroupRef is a reference to a CiliumCIDRGroup object. A CiliumCIDRGroup contains a list of CIDRs that the endpoint, subject to the rule, can (Ingress) or cannot (IngressDeny) receive connections from.
+        CIDRGroupRef is a reference to a CiliumCIDRGroup object. A CiliumCIDRGroup contains a list of CIDRs that the endpoint, subject to the rule, can (Ingress/Egress) or cannot (IngressDeny/EgressDeny) receive connections from.
     except : [str], default is Undefined, optional
         ExceptCIDRs is a list of IP blocks which the endpoint subject to the rule is not allowed to initiate connections to. These CIDR prefixes should be contained within Cidr, using ExceptCIDRs together with CIDRGroupRef is not supported yet. These exceptions are only applied to the Cidr in this CIDRRule, and do not apply to any other CIDR prefixes in any other CIDRRules.
     """
@@ -3498,10 +3992,8 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressDenyItems0FromC
 
 
     check:
-        regex.match(str(cidr), r"^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\/([0-9]|[1-2][0-9]|3[0-2])$|^s*((([0-9A-Fa-f]{1,4}:){7}(:|([0-9A-Fa-f]{1,4})))|(([0-9A-Fa-f]{1,4}:){6}:([0-9A-Fa-f]{1,4})?)|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){0,1}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){0,2}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){0,3}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){0,4}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){0,5}):([0-9A-Fa-f]{1,4})?))|(:(:|((:[0-9A-Fa-f]{1,4}){1,7}))))(%.+)?s*/([0-9]|[1-9][0-9]|1[0-1][0-9]|12[0-8])$") if cidr
         len(cidrGroupRef) <= 253
-        regex.match(str(cidrGroupRef), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if cidrGroupRef
-        all n in except { regex.match(str(n), r"^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\/([0-9]|[1-2][0-9]|3[0-2])$|^s*((([0-9A-Fa-f]{1,4}:){7}(:|([0-9A-Fa-f]{1,4})))|(([0-9A-Fa-f]{1,4}:){6}:([0-9A-Fa-f]{1,4})?)|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){0,1}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){0,2}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){0,3}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){0,4}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){0,5}):([0-9A-Fa-f]{1,4})?))|(:(:|((:[0-9A-Fa-f]{1,4}){1,7}))))(%.+)?s*/([0-9]|[1-9][0-9]|1[0-1][0-9]|12[0-8])$") } if except
+        regex_match(str(cidrGroupRef), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if cidrGroupRef
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressDenyItems0FromEndpointsItems0:
@@ -3523,10 +4015,94 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressDenyItems0FromE
 
 
     check:
-        all _, n in matchLabels { regex.match(str(n), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") } if matchLabels
+        all _, matchLabels in matchLabels {len(matchLabels) <= 63regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressDenyItems0FromEndpointsItems0MatchExpressionsItems0:
+    """
+    A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key is the label key that the selector applies to.
+    operator : str, default is Undefined, required
+        operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+    values : [str], default is Undefined, optional
+        values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.
+    """
+
+
+    key: str
+
+    operator: "In" | "NotIn" | "Exists" | "DoesNotExist"
+
+    values?: [str]
+
+
+schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressDenyItems0FromGroupsItems0:
+    """
+    Groups structure to store all kinds of new integrations that needs a new derivative policy.
+
+    Attributes
+    ----------
+    aws : CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressDenyItems0FromGroupsItems0Aws, default is Undefined, optional
+        aws
+    """
+
+
+    aws?: CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressDenyItems0FromGroupsItems0Aws
+
+
+schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressDenyItems0FromGroupsItems0Aws:
+    """
+    AWSGroup is an structure that can be used to whitelisting information from AWS integration
+
+    Attributes
+    ----------
+    labels : {str:str}, default is Undefined, optional
+        labels
+    region : str, default is Undefined, optional
+        region
+    securityGroupsIds : [str], default is Undefined, optional
+        security groups ids
+    securityGroupsNames : [str], default is Undefined, optional
+        security groups names
+    """
+
+
+    labels?: {str:str}
+
+    region?: str
+
+    securityGroupsIds?: [str]
+
+    securityGroupsNames?: [str]
+
+
+schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressDenyItems0FromNodesItems0:
+    """
+    EndpointSelector is a wrapper for k8s LabelSelector.
+
+    Attributes
+    ----------
+    matchExpressions : [CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressDenyItems0FromNodesItems0MatchExpressionsItems0], default is Undefined, optional
+        matchExpressions is a list of label selector requirements. The requirements are ANDed.
+    matchLabels : {str:str}, default is Undefined, optional
+        matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+    """
+
+
+    matchExpressions?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressDenyItems0FromNodesItems0MatchExpressionsItems0]
+
+    matchLabels?: {str:str}
+
+
+    check:
+        all _, matchLabels in matchLabels {len(matchLabels) <= 63regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
+
+
+schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressDenyItems0FromNodesItems0MatchExpressionsItems0:
     """
     A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
@@ -3567,7 +4143,7 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressDenyItems0FromR
 
 
     check:
-        all _, n in matchLabels { regex.match(str(n), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") } if matchLabels
+        all _, matchLabels in matchLabels {len(matchLabels) <= 63regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressDenyItems0FromRequiresItems0MatchExpressionsItems0:
@@ -3606,6 +4182,10 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressDenyItems0Icmps
     fields?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressDenyItems0IcmpsItems0FieldsItems0]
 
 
+    check:
+        len(fields) <= 40
+
+
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressDenyItems0IcmpsItems0FieldsItems0:
     """
     ICMPField is a ICMP field.
@@ -3614,19 +4194,18 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressDenyItems0Icmps
     ----------
     family : str, default is "IPv4", optional
         Family is a IP address version. Currently, we support `IPv4` and `IPv6`. `IPv4` is set as default.
-    $type : int, default is Undefined, required
-        Type is a ICMP-type. It should be 0-255 (8bit).
+    $type : int | str, default is Undefined, required
+        Type is a ICMP-type. It should be an 8bit code (0-255), or it's CamelCase name (for example, "EchoReply"). Allowed ICMP types are: Ipv4: EchoReply | DestinationUnreachable | Redirect | Echo | EchoRequest | RouterAdvertisement | RouterSelection | TimeExceeded | ParameterProblem | Timestamp | TimestampReply | Photuris | ExtendedEcho Request | ExtendedEcho Reply Ipv6: DestinationUnreachable | PacketTooBig | TimeExceeded | ParameterProblem | EchoRequest | EchoReply | MulticastListenerQuery| MulticastListenerReport | MulticastListenerDone | RouterSolicitation | RouterAdvertisement | NeighborSolicitation | NeighborAdvertisement | RedirectMessage | RouterRenumbering | ICMPNodeInformationQuery | ICMPNodeInformationResponse | InverseNeighborDiscoverySolicitation | InverseNeighborDiscoveryAdvertisement | HomeAgentAddressDiscoveryRequest | HomeAgentAddressDiscoveryReply | MobilePrefixSolicitation | MobilePrefixAdvertisement | DuplicateAddressRequestCodeSuffix | DuplicateAddressConfirmationCodeSuffix | ExtendedEchoRequest | ExtendedEchoReply
     """
 
 
     family?: "IPv4" | "IPv6" = "IPv4"
 
-    $type: int
+    $type: int | str
 
 
     check:
-        $type <= 255
-        $type >= 0
+        regex_match(str($type), r"^([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]|EchoReply|DestinationUnreachable|Redirect|Echo|RouterAdvertisement|RouterSelection|TimeExceeded|ParameterProblem|Timestamp|TimestampReply|Photuris|ExtendedEchoRequest|ExtendedEcho Reply|PacketTooBig|ParameterProblem|EchoRequest|MulticastListenerQuery|MulticastListenerReport|MulticastListenerDone|RouterSolicitation|RouterAdvertisement|NeighborSolicitation|NeighborAdvertisement|RedirectMessage|RouterRenumbering|ICMPNodeInformationQuery|ICMPNodeInformationResponse|InverseNeighborDiscoverySolicitation|InverseNeighborDiscoveryAdvertisement|HomeAgentAddressDiscoveryRequest|HomeAgentAddressDiscoveryReply|MobilePrefixSolicitation|MobilePrefixAdvertisement|DuplicateAddressRequestCodeSuffix|DuplicateAddressConfirmationCodeSuffix)$")
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressDenyItems0ToPortsItems0:
@@ -3649,8 +4228,10 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressDenyItems0ToPor
 
     Attributes
     ----------
+    endPort : int, default is Undefined, optional
+        EndPort can only be an L4 port number.
     port : str, default is Undefined, required
-        Port is an L4 port number. For now the string will be strictly parsed as a single uint16. In the future, this field may support ranges in the form "1024-2048 Port can also be a port name, which must contain at least one [a-z], and may also contain [0-9] and '-' anywhere except adjacent to another '-' or in the beginning or the end.
+        Port can be an L4 port number, or a name in the form of "http" or "http-8080".
     $protocol : str, default is Undefined, optional
         Protocol is the L4 protocol. If omitted or empty, any protocol matches. Accepted values: "TCP", "UDP", "SCTP", "ANY" 
          Matching on ICMP is not supported. 
@@ -3658,21 +4239,25 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressDenyItems0ToPor
     """
 
 
+    endPort?: int
+
     port: str
 
     $protocol?: "TCP" | "UDP" | "SCTP" | "ANY"
 
 
     check:
-        regex.match(str(port), r"^(6553[0-5]|655[0-2][0-9]|65[0-4][0-9]{2}|6[0-4][0-9]{3}|[1-5][0-9]{4}|[0-9]{1,4})|([a-zA-Z0-9]-?)*[a-zA-Z](-?[a-zA-Z0-9])*$")
+        endPort <= 65535
+        endPort >= 0
+        regex_match(str(port), r"^(6553[0-5]|655[0-2][0-9]|65[0-4][0-9]{2}|6[0-4][0-9]{3}|[1-5][0-9]{4}|[0-9]{1,4})|([a-zA-Z0-9]-?)*[a-zA-Z](-?[a-zA-Z0-9])*$")
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressItems0:
     """
     IngressRule contains all rule types which can be applied at ingress, i.e. network traffic that originates outside of the endpoint and is entering the endpoint selected by the endpointSelector. 
-       - All members of this structure are optional. If omitted or empty, the     member will have no effect on the rule. 
-       - If multiple members are set, all of them need to match in order for     the rule to take effect. The exception to this rule is FromRequires field;     the effects of any Requires field in any rule will apply to all other     rules as well. 
-       - FromEndpoints, FromCIDR, FromCIDRSet and FromEntities are mutually     exclusive. Only one of these members may be present within an individual     rule.
+     - All members of this structure are optional. If omitted or empty, the member will have no effect on the rule. 
+     - If multiple members are set, all of them need to match in order for the rule to take effect. The exception to this rule is FromRequires field; the effects of any Requires field in any rule will apply to all other rules as well. 
+     - FromEndpoints, FromCIDR, FromCIDRSet and FromEntities are mutually exclusive. Only one of these members may be present within an individual rule.
 
     Attributes
     ----------
@@ -3689,6 +4274,11 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressItems0:
          Example: Any endpoint with the label "role=backend" can be consumed by any endpoint carrying the label "role=frontend".
     fromEntities : [str], default is Undefined, optional
         FromEntities is a list of special entities which the endpoint subject to the rule is allowed to receive connections from. Supported entities are `world`, `cluster` and `host`
+    fromGroups : [CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressItems0FromGroupsItems0], default is Undefined, optional
+        FromGroups is a directive that allows the integration with multiple outside providers. Currently, only AWS is supported, and the rule can select by multiple sub directives: 
+         Example: FromGroups: - aws: securityGroupsIds: - 'sg-XXXXXXXXXXXXX'
+    fromNodes : [CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressItems0FromNodesItems0], default is Undefined, optional
+        FromNodes is a list of nodes identified by an EndpointSelector which are allowed to communicate with the endpoint subject to the rule.
     fromRequires : [CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressItems0FromRequiresItems0], default is Undefined, optional
         FromRequires is a list of additional constraints which must be met in order for the selected endpoints to be reachable. These additional constraints do no by itself grant access privileges and must always be accompanied with at least one matching FromEndpoints. 
          Example: Any Endpoint with the label "team=A" requires consuming endpoint to also carry the label "team=A".
@@ -3711,15 +4301,15 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressItems0:
 
     fromEntities?: [str]
 
+    fromGroups?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressItems0FromGroupsItems0]
+
+    fromNodes?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressItems0FromNodesItems0]
+
     fromRequires?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressItems0FromRequiresItems0]
 
     icmps?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressItems0IcmpsItems0]
 
     toPorts?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressItems0ToPortsItems0]
-
-
-    check:
-        all n in fromCIDR { regex.match(str(n), r"^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\/([0-9]|[1-2][0-9]|3[0-2])$|^s*((([0-9A-Fa-f]{1,4}:){7}(:|([0-9A-Fa-f]{1,4})))|(([0-9A-Fa-f]{1,4}:){6}:([0-9A-Fa-f]{1,4})?)|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){0,1}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){0,2}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){0,3}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){0,4}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){0,5}):([0-9A-Fa-f]{1,4})?))|(:(:|((:[0-9A-Fa-f]{1,4}){1,7}))))(%.+)?s*/([0-9]|[1-9][0-9]|1[0-1][0-9]|12[0-8])$") } if fromCIDR
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressItems0Authentication:
@@ -3745,7 +4335,7 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressItems0FromCIDRS
     cidr : str, default is Undefined, optional
         CIDR is a CIDR prefix / IP Block.
     cidrGroupRef : str, default is Undefined, optional
-        CIDRGroupRef is a reference to a CiliumCIDRGroup object. A CiliumCIDRGroup contains a list of CIDRs that the endpoint, subject to the rule, can (Ingress) or cannot (IngressDeny) receive connections from.
+        CIDRGroupRef is a reference to a CiliumCIDRGroup object. A CiliumCIDRGroup contains a list of CIDRs that the endpoint, subject to the rule, can (Ingress/Egress) or cannot (IngressDeny/EgressDeny) receive connections from.
     except : [str], default is Undefined, optional
         ExceptCIDRs is a list of IP blocks which the endpoint subject to the rule is not allowed to initiate connections to. These CIDR prefixes should be contained within Cidr, using ExceptCIDRs together with CIDRGroupRef is not supported yet. These exceptions are only applied to the Cidr in this CIDRRule, and do not apply to any other CIDR prefixes in any other CIDRRules.
     """
@@ -3759,10 +4349,8 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressItems0FromCIDRS
 
 
     check:
-        regex.match(str(cidr), r"^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\/([0-9]|[1-2][0-9]|3[0-2])$|^s*((([0-9A-Fa-f]{1,4}:){7}(:|([0-9A-Fa-f]{1,4})))|(([0-9A-Fa-f]{1,4}:){6}:([0-9A-Fa-f]{1,4})?)|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){0,1}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){0,2}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){0,3}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){0,4}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){0,5}):([0-9A-Fa-f]{1,4})?))|(:(:|((:[0-9A-Fa-f]{1,4}){1,7}))))(%.+)?s*/([0-9]|[1-9][0-9]|1[0-1][0-9]|12[0-8])$") if cidr
         len(cidrGroupRef) <= 253
-        regex.match(str(cidrGroupRef), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if cidrGroupRef
-        all n in except { regex.match(str(n), r"^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\/([0-9]|[1-2][0-9]|3[0-2])$|^s*((([0-9A-Fa-f]{1,4}:){7}(:|([0-9A-Fa-f]{1,4})))|(([0-9A-Fa-f]{1,4}:){6}:([0-9A-Fa-f]{1,4})?)|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){0,1}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){0,2}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){0,3}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){0,4}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){0,5}):([0-9A-Fa-f]{1,4})?))|(:(:|((:[0-9A-Fa-f]{1,4}){1,7}))))(%.+)?s*/([0-9]|[1-9][0-9]|1[0-1][0-9]|12[0-8])$") } if except
+        regex_match(str(cidrGroupRef), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if cidrGroupRef
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressItems0FromEndpointsItems0:
@@ -3784,10 +4372,94 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressItems0FromEndpo
 
 
     check:
-        all _, n in matchLabels { regex.match(str(n), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") } if matchLabels
+        all _, matchLabels in matchLabels {len(matchLabels) <= 63regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressItems0FromEndpointsItems0MatchExpressionsItems0:
+    """
+    A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key is the label key that the selector applies to.
+    operator : str, default is Undefined, required
+        operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+    values : [str], default is Undefined, optional
+        values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.
+    """
+
+
+    key: str
+
+    operator: "In" | "NotIn" | "Exists" | "DoesNotExist"
+
+    values?: [str]
+
+
+schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressItems0FromGroupsItems0:
+    """
+    Groups structure to store all kinds of new integrations that needs a new derivative policy.
+
+    Attributes
+    ----------
+    aws : CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressItems0FromGroupsItems0Aws, default is Undefined, optional
+        aws
+    """
+
+
+    aws?: CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressItems0FromGroupsItems0Aws
+
+
+schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressItems0FromGroupsItems0Aws:
+    """
+    AWSGroup is an structure that can be used to whitelisting information from AWS integration
+
+    Attributes
+    ----------
+    labels : {str:str}, default is Undefined, optional
+        labels
+    region : str, default is Undefined, optional
+        region
+    securityGroupsIds : [str], default is Undefined, optional
+        security groups ids
+    securityGroupsNames : [str], default is Undefined, optional
+        security groups names
+    """
+
+
+    labels?: {str:str}
+
+    region?: str
+
+    securityGroupsIds?: [str]
+
+    securityGroupsNames?: [str]
+
+
+schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressItems0FromNodesItems0:
+    """
+    EndpointSelector is a wrapper for k8s LabelSelector.
+
+    Attributes
+    ----------
+    matchExpressions : [CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressItems0FromNodesItems0MatchExpressionsItems0], default is Undefined, optional
+        matchExpressions is a list of label selector requirements. The requirements are ANDed.
+    matchLabels : {str:str}, default is Undefined, optional
+        matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+    """
+
+
+    matchExpressions?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressItems0FromNodesItems0MatchExpressionsItems0]
+
+    matchLabels?: {str:str}
+
+
+    check:
+        all _, matchLabels in matchLabels {len(matchLabels) <= 63regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
+
+
+schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressItems0FromNodesItems0MatchExpressionsItems0:
     """
     A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
@@ -3828,7 +4500,7 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressItems0FromRequi
 
 
     check:
-        all _, n in matchLabels { regex.match(str(n), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") } if matchLabels
+        all _, matchLabels in matchLabels {len(matchLabels) <= 63regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressItems0FromRequiresItems0MatchExpressionsItems0:
@@ -3867,6 +4539,10 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressItems0IcmpsItem
     fields?: [CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressItems0IcmpsItems0FieldsItems0]
 
 
+    check:
+        len(fields) <= 40
+
+
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressItems0IcmpsItems0FieldsItems0:
     """
     ICMPField is a ICMP field.
@@ -3875,19 +4551,18 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressItems0IcmpsItem
     ----------
     family : str, default is "IPv4", optional
         Family is a IP address version. Currently, we support `IPv4` and `IPv6`. `IPv4` is set as default.
-    $type : int, default is Undefined, required
-        Type is a ICMP-type. It should be 0-255 (8bit).
+    $type : int | str, default is Undefined, required
+        Type is a ICMP-type. It should be an 8bit code (0-255), or it's CamelCase name (for example, "EchoReply"). Allowed ICMP types are: Ipv4: EchoReply | DestinationUnreachable | Redirect | Echo | EchoRequest | RouterAdvertisement | RouterSelection | TimeExceeded | ParameterProblem | Timestamp | TimestampReply | Photuris | ExtendedEcho Request | ExtendedEcho Reply Ipv6: DestinationUnreachable | PacketTooBig | TimeExceeded | ParameterProblem | EchoRequest | EchoReply | MulticastListenerQuery| MulticastListenerReport | MulticastListenerDone | RouterSolicitation | RouterAdvertisement | NeighborSolicitation | NeighborAdvertisement | RedirectMessage | RouterRenumbering | ICMPNodeInformationQuery | ICMPNodeInformationResponse | InverseNeighborDiscoverySolicitation | InverseNeighborDiscoveryAdvertisement | HomeAgentAddressDiscoveryRequest | HomeAgentAddressDiscoveryReply | MobilePrefixSolicitation | MobilePrefixAdvertisement | DuplicateAddressRequestCodeSuffix | DuplicateAddressConfirmationCodeSuffix | ExtendedEchoRequest | ExtendedEchoReply
     """
 
 
     family?: "IPv4" | "IPv6" = "IPv4"
 
-    $type: int
+    $type: int | str
 
 
     check:
-        $type <= 255
-        $type >= 0
+        regex_match(str($type), r"^([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]|EchoReply|DestinationUnreachable|Redirect|Echo|RouterAdvertisement|RouterSelection|TimeExceeded|ParameterProblem|Timestamp|TimestampReply|Photuris|ExtendedEchoRequest|ExtendedEcho Reply|PacketTooBig|ParameterProblem|EchoRequest|MulticastListenerQuery|MulticastListenerReport|MulticastListenerDone|RouterSolicitation|RouterAdvertisement|NeighborSolicitation|NeighborAdvertisement|RedirectMessage|RouterRenumbering|ICMPNodeInformationQuery|ICMPNodeInformationResponse|InverseNeighborDiscoverySolicitation|InverseNeighborDiscoveryAdvertisement|HomeAgentAddressDiscoveryRequest|HomeAgentAddressDiscoveryReply|MobilePrefixSolicitation|MobilePrefixAdvertisement|DuplicateAddressRequestCodeSuffix|DuplicateAddressConfirmationCodeSuffix)$")
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressItems0ToPortsItems0:
@@ -3924,6 +4599,10 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressItems0ToPortsIt
     terminatingTLS?: CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressItems0ToPortsItems0TerminatingTLS
 
 
+    check:
+        len(ports) <= 40
+
+
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressItems0ToPortsItems0Listener:
     """
     listener specifies the name of a custom Envoy listener to which this traffic should be redirected to.
@@ -3934,6 +4613,8 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressItems0ToPortsIt
         envoy config
     name : str, default is Undefined, required
         Name is the name of the listener.
+    priority : int, default is Undefined, optional
+        Priority for this Listener that is used when multiple rules would apply different listeners to a policy map entry. Behavior of this is implementation dependent.
     """
 
 
@@ -3941,14 +4622,18 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressItems0ToPortsIt
 
     name: str
 
+    priority?: int
+
 
     check:
         len(name) >= 1
+        priority <= 100
+        priority >= 1
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressItems0ToPortsItems0ListenerEnvoyConfig:
     """
-    EnvoyConfig is a reference to the CEC or CCNP resource in which the listener is defined.
+    EnvoyConfig is a reference to the CEC or CCEC resource in which the listener is defined.
 
     Attributes
     ----------
@@ -3996,7 +4681,7 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressItems0ToPortsIt
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressItems0ToPortsItems0OriginatingTLSSecret:
     """
-    Secret is the secret that contains the certificates and private key for the TLS context. By default, Cilium will search in this secret for the following items:  - 'ca.crt'  - Which represents the trusted CA to verify remote source.  - 'tls.crt' - Which represents the public key certificate.  - 'tls.key' - Which represents the private key matching the public key                certificate.
+    Secret is the secret that contains the certificates and private key for the TLS context. By default, Cilium will search in this secret for the following items: - 'ca.crt'  - Which represents the trusted CA to verify remote source. - 'tls.crt' - Which represents the public key certificate. - 'tls.key' - Which represents the private key matching the public key certificate.
 
     Attributes
     ----------
@@ -4018,8 +4703,10 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressItems0ToPortsIt
 
     Attributes
     ----------
+    endPort : int, default is Undefined, optional
+        EndPort can only be an L4 port number.
     port : str, default is Undefined, required
-        Port is an L4 port number. For now the string will be strictly parsed as a single uint16. In the future, this field may support ranges in the form "1024-2048 Port can also be a port name, which must contain at least one [a-z], and may also contain [0-9] and '-' anywhere except adjacent to another '-' or in the beginning or the end.
+        Port can be an L4 port number, or a name in the form of "http" or "http-8080".
     $protocol : str, default is Undefined, optional
         Protocol is the L4 protocol. If omitted or empty, any protocol matches. Accepted values: "TCP", "UDP", "SCTP", "ANY" 
          Matching on ICMP is not supported. 
@@ -4027,13 +4714,17 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressItems0ToPortsIt
     """
 
 
+    endPort?: int
+
     port: str
 
     $protocol?: "TCP" | "UDP" | "SCTP" | "ANY"
 
 
     check:
-        regex.match(str(port), r"^(6553[0-5]|655[0-2][0-9]|65[0-4][0-9]{2}|6[0-4][0-9]{3}|[1-5][0-9]{4}|[0-9]{1,4})|([a-zA-Z0-9]-?)*[a-zA-Z](-?[a-zA-Z0-9])*$")
+        endPort <= 65535
+        endPort >= 0
+        regex_match(str(port), r"^(6553[0-5]|655[0-2][0-9]|65[0-4][0-9]{2}|6[0-4][0-9]{3}|[1-5][0-9]{4}|[0-9]{1,4})|([a-zA-Z0-9]-?)*[a-zA-Z](-?[a-zA-Z0-9])*$")
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressItems0ToPortsItems0Rules:
@@ -4076,7 +4767,7 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressItems0ToPortsIt
         MatchName matches literal DNS names. A trailing "." is automatically added when missing.
     matchPattern : str, default is Undefined, optional
         MatchPattern allows using wildcards to match DNS names. All wildcards are case insensitive. The wildcards are: - "*" matches 0 or more DNS valid characters, and may occur anywhere in the pattern. As a special case a "*" as the leftmost character, without a following "." matches all subdomains as well as the name to the right. A trailing "." is automatically added when missing. 
-         Examples: `*.cilium.io` matches subomains of cilium at that level   www.cilium.io and blog.cilium.io match, cilium.io and google.com do not `*cilium.io` matches cilium.io and all subdomains ends with "cilium.io"   except those containing "." separator, subcilium.io and sub-cilium.io match,   www.cilium.io and blog.cilium.io does not sub*.cilium.io matches subdomains of cilium where the subdomain component begins with "sub"   sub.cilium.io and subdomain.cilium.io match, www.cilium.io,   blog.cilium.io, cilium.io and google.com do not
+         Examples: `*.cilium.io` matches subomains of cilium at that level www.cilium.io and blog.cilium.io match, cilium.io and google.com do not `*cilium.io` matches cilium.io and all subdomains ends with "cilium.io" except those containing "." separator, subcilium.io and sub-cilium.io match, www.cilium.io and blog.cilium.io does not sub*.cilium.io matches subdomains of cilium where the subdomain component begins with "sub" sub.cilium.io and subdomain.cilium.io match, www.cilium.io, blog.cilium.io, cilium.io and google.com do not
     """
 
 
@@ -4086,8 +4777,8 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressItems0ToPortsIt
 
 
     check:
-        regex.match(str(matchName), r"^([-a-zA-Z0-9_]+[.]?)+$") if matchName
-        regex.match(str(matchPattern), r"^([-a-zA-Z0-9_*]+[.]?)+$") if matchPattern
+        regex_match(str(matchName), r"^([-a-zA-Z0-9_]+[.]?)+$") if matchName
+        regex_match(str(matchPattern), r"^([-a-zA-Z0-9_*]+[.]?)+$") if matchPattern
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressItems0ToPortsItems0RulesHTTPItems0:
@@ -4150,6 +4841,10 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressItems0ToPortsIt
     value?: str
 
 
+    check:
+        len(name) >= 1
+
+
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressItems0ToPortsItems0RulesHTTPItems0HeaderMatchesItems0Secret:
     """
     Secret refers to a secret that contains the value to be matched against. The secret must only contain one entry. If the referred secret does not exist, and there is no "Value" specified, the match will fail.
@@ -4186,7 +4881,7 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressItems0ToPortsIt
          If omitted or empty, all client identifiers are allowed.
     role : str, default is Undefined, optional
         Role is a case-insensitive string and describes a group of API keys necessary to perform certain higher-level Kafka operations such as "produce" or "consume". A Role automatically expands into all APIKeys required to perform the specified higher-level operation. 
-         The following values are supported:  - "produce": Allow producing to the topics specified in the rule  - "consume": Allow consuming from the topics specified in the rule 
+         The following values are supported: - "produce": Allow producing to the topics specified in the rule - "consume": Allow consuming from the topics specified in the rule 
          This field is incompatible with the APIKey field, i.e APIKey and Role cannot both be specified in the same rule. 
          If omitted or empty, and if APIKey is not specified, then all keys are allowed.
     topic : str, default is Undefined, optional
@@ -4240,7 +4935,7 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressItems0ToPortsIt
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0IngressItems0ToPortsItems0TerminatingTLSSecret:
     """
-    Secret is the secret that contains the certificates and private key for the TLS context. By default, Cilium will search in this secret for the following items:  - 'ca.crt'  - Which represents the trusted CA to verify remote source.  - 'tls.crt' - Which represents the public key certificate.  - 'tls.key' - Which represents the private key matching the public key                certificate.
+    Secret is the secret that contains the certificates and private key for the TLS context. By default, Cilium will search in this secret for the following items: - 'ca.crt'  - Which represents the trusted CA to verify remote source. - 'tls.crt' - Which represents the public key certificate. - 'tls.key' - Which represents the private key matching the public key certificate.
 
     Attributes
     ----------
@@ -4297,7 +4992,7 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0NodeSelector:
 
 
     check:
-        all _, n in matchLabels { regex.match(str(n), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") } if matchLabels
+        all _, matchLabels in matchLabels {len(matchLabels) <= 63regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
 
 
 schema CiliumIoV2CiliumClusterwideNetworkPolicySpecsItems0NodeSelectorMatchExpressionsItems0:
@@ -4329,53 +5024,49 @@ schema CiliumIoV2CiliumClusterwideNetworkPolicyStatus:
 
     Attributes
     ----------
+    conditions : [CiliumIoV2CiliumClusterwideNetworkPolicyStatusConditionsItems0], default is Undefined, optional
+        conditions
     derivativePolicies : {str:CiliumIoV2CiliumClusterwideNetworkPolicyStatusDerivativePoliciesAnon}, default is Undefined, optional
         DerivativePolicies is the status of all policies derived from the Cilium policy
-    nodes : {str:CiliumIoV2CiliumClusterwideNetworkPolicyStatusNodesAnon}, default is Undefined, optional
-        Nodes is the Cilium policy status for each node
     """
 
+
+    conditions?: [CiliumIoV2CiliumClusterwideNetworkPolicyStatusConditionsItems0]
 
     derivativePolicies?: {str:CiliumIoV2CiliumClusterwideNetworkPolicyStatusDerivativePoliciesAnon}
 
-    nodes?: {str:CiliumIoV2CiliumClusterwideNetworkPolicyStatusNodesAnon}
 
-
-schema CiliumIoV2CiliumClusterwideNetworkPolicyStatusDerivativePoliciesAnon:
+schema CiliumIoV2CiliumClusterwideNetworkPolicyStatusConditionsItems0:
     """
-    CiliumNetworkPolicyNodeStatus is the status of a Cilium policy rule for a specific node.
+    cilium io v2 cilium clusterwide network policy status conditions items0
 
     Attributes
     ----------
-    annotations : {str:str}, default is Undefined, optional
-        Annotations corresponds to the Annotations in the ObjectMeta of the CNP that have been realized on the node for CNP. That is, if a CNP has been imported and has been assigned annotation X=Y by the user, Annotations in CiliumNetworkPolicyNodeStatus will be X=Y once the CNP that was imported corresponding to Annotation X=Y has been realized on the node.
-    enforcing : bool, default is Undefined, optional
-        Enforcing is set to true once all endpoints present at the time the policy has been imported are enforcing this policy.
-    error : str, default is Undefined, optional
-        Error describes any error that occurred when parsing or importing the policy, or realizing the policy for the endpoints to which it applies on the node.
-    lastUpdated : str, default is Undefined, optional
-        LastUpdated contains the last time this status was updated
-    localPolicyRevision : int, default is Undefined, optional
-        Revision is the policy revision of the repository which first implemented this policy.
-    ok : bool, default is Undefined, optional
-        OK is true when the policy has been parsed and imported successfully into the in-memory policy repository on the node.
+    lastTransitionTime : str, default is Undefined, optional
+        The last time the condition transitioned from one status to another.
+    message : str, default is Undefined, optional
+        A human readable message indicating details about the transition.
+    reason : str, default is Undefined, optional
+        The reason for the condition's last transition.
+    status : str, default is Undefined, required
+        The status of the condition, one of True, False, or Unknown
+    $type : str, default is Undefined, required
+        The type of the policy condition
     """
 
 
-    annotations?: {str:str}
+    lastTransitionTime?: str
 
-    enforcing?: bool
+    message?: str
 
-    error?: str
+    reason?: str
 
-    lastUpdated?: str
+    status: str
 
-    localPolicyRevision?: int
-
-    ok?: bool
+    $type: str
 
 
-schema CiliumIoV2CiliumClusterwideNetworkPolicyStatusNodesAnon:
+schema CiliumIoV2CiliumClusterwideNetworkPolicyStatusDerivativePoliciesAnon:
     """
     CiliumNetworkPolicyNodeStatus is the status of a Cilium policy rule for a specific node.
 

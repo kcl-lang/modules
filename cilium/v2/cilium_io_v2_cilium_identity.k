@@ -8,7 +8,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 schema CiliumIdentity:
     """
     CiliumIdentity is a CRD that represents an identity managed by Cilium. It is intended as a backing store for identity allocation, acting as the global coordination backend, and can be used in place of a KVStore (such as etcd). The name of the CRD is the numeric identity and the labels on the CRD object are the kubernetes sourced labels seen by cilium. This is currently the only label source possible when running under kubernetes. Non-kubernetes labels are filtered but all labels, from all sources, are places in the SecurityLabels field. These also include the source and are used to define the identity. The labels under metav1.ObjectMeta can be used when searching for CiliumIdentity instances that include particular labels. This can be done with invocations such as: 
-     	kubectl get ciliumid -l 'foo=bar'
+     kubectl get ciliumid -l 'foo=bar'
 
     Attributes
     ----------
