@@ -1,6 +1,6 @@
 # Introduction
 
-`argo-cd` is the argo-cd spec definition
+`cilium` is the cilium spec definition
 
 ## Resource
 
