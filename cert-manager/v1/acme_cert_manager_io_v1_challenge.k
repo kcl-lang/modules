@@ -6,7 +6,6 @@ import regex
 import k8s.apimachinery.pkg.apis.meta.v1
 regex_match = regex.match
 
-
 schema Challenge:
     """
     Challenge is a type to represent a Challenge request with an ACME server
