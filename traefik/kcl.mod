@@ -1,6 +1,6 @@
 [package]
 name = "traefik"
-version = "0.1.0"
+version = "0.1.1"
 description = "`traefik` module contains definitions for traefik"
 
 [dependencies]
