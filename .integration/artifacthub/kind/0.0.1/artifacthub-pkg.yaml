@@ -1,0 +1,25 @@
+version: 0.0.1
+name: kind
+displayName: kind
+createdAt: "2024-07-17T05:54:33Z"
+description: '`kind` is a KCL module.'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `kind` with tag `0.0.1` as dependency
+  ```
+  kcl mod add kind:0.0.1
+  ```
+
+  #### Pull `kind` with tag `0.0.1` to local
+  ```
+  kcl mod pull kind:0.0.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
