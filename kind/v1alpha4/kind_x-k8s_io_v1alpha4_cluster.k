@@ -6,10 +6,25 @@ schema Cluster:
 
 schema Networking:
     apiServerAddress?: str
+    apiServerPort?: int
+    serviceSubnet?: str 
+    podSubnet?: str
+
+schema ExtraPortMapping:
+    containerPort?: int
+    hostPort?: int
+    listenAddress?: str
+
+schema ExtraMount:
+    hostPath: str 
+    containerPath: str
 
 schema Node:
-    image: str = "kindest/node:v1.30.0"
+    image: str = "kindest/node:v1.30.3"
     role: str = "control-plane" 
+    extraMounts?: [ExtraMount]
+    extraPortMappings?: [ExtraPortMapping]
+    kubeadmConfigPatches?: [str]
 
     check:
         role in ['control-plane', 'worker'], "The role {} is unsupported".format(role)
