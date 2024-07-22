@@ -44,9 +44,12 @@ schema ExternalSecretsIoV1alpha1ExternalSecretSpec:
     data : [ExternalSecretsIoV1alpha1ExternalSecretSpecDataItems0], default is Undefined, optional
         Data defines the connection between the Kubernetes Secret keys and the Provider data
     dataFrom : [ExternalSecretsIoV1alpha1ExternalSecretSpecDataFromItems0], default is Undefined, optional
-        DataFrom is used to fetch all properties from a specific Provider data If multiple entries are specified, the Secret keys are merged in the specified order
+        DataFrom is used to fetch all properties from a specific Provider data
+        If multiple entries are specified, the Secret keys are merged in the specified order
     refreshInterval : str, default is "1h", optional
-        RefreshInterval is the amount of time before the values are read again from the SecretStore provider Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h" May be set to zero to fetch and create it once. Defaults to 1h.
+        RefreshInterval is the amount of time before the values are read again from the SecretStore provider
+        Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h"
+        May be set to zero to fetch and create it once. Defaults to 1h.
     secretStoreRef : ExternalSecretsIoV1alpha1ExternalSecretSpecSecretStoreRef, default is Undefined, required
         secret store ref
     target : ExternalSecretsIoV1alpha1ExternalSecretSpecTarget, default is Undefined, required
@@ -142,7 +145,8 @@ schema ExternalSecretsIoV1alpha1ExternalSecretSpecSecretStoreRef:
     Attributes
     ----------
     kind : str, default is Undefined, optional
-        Kind of the SecretStore resource (SecretStore or ClusterSecretStore) Defaults to `SecretStore`
+        Kind of the SecretStore resource (SecretStore or ClusterSecretStore)
+        Defaults to `SecretStore`
     name : str, default is Undefined, required
         Name of the SecretStore resource
     """
@@ -155,16 +159,20 @@ schema ExternalSecretsIoV1alpha1ExternalSecretSpecSecretStoreRef:
 
 schema ExternalSecretsIoV1alpha1ExternalSecretSpecTarget:
     """
-    ExternalSecretTarget defines the Kubernetes Secret to be created There can be only one target per ExternalSecret.
+    ExternalSecretTarget defines the Kubernetes Secret to be created
+    There can be only one target per ExternalSecret.
 
     Attributes
     ----------
     creationPolicy : str, default is "Owner", optional
-        CreationPolicy defines rules on how to create the resulting Secret Defaults to 'Owner'
+        CreationPolicy defines rules on how to create the resulting Secret
+        Defaults to 'Owner'
     immutable : bool, default is Undefined, optional
         Immutable defines if the final secret will be immutable
     name : str, default is Undefined, optional
-        Name defines the name of the Secret resource to be managed This field is immutable Defaults to the .metadata.name of the ExternalSecret resource
+        Name defines the name of the Secret resource to be managed
+        This field is immutable
+        Defaults to the .metadata.name of the ExternalSecret resource
     template : ExternalSecretsIoV1alpha1ExternalSecretSpecTargetTemplate, default is Undefined, optional
         template
     """
@@ -188,7 +196,9 @@ schema ExternalSecretsIoV1alpha1ExternalSecretSpecTargetTemplate:
     data : {str:str}, default is Undefined, optional
         data
     engineVersion : str, default is "v1", optional
-        EngineVersion specifies the template engine version that should be used to compile/execute the template specified in .data and .templateFrom[].
+        EngineVersion specifies the template engine version
+        that should be used to compile/execute the
+        template specified in .data and .templateFrom[].
     metadata : ExternalSecretsIoV1alpha1ExternalSecretSpecTargetTemplateMetadata, default is Undefined, optional
         metadata
     templateFrom : [ExternalSecretsIoV1alpha1ExternalSecretSpecTargetTemplateTemplateFromItems0], default is Undefined, optional
@@ -320,7 +330,8 @@ schema ExternalSecretsIoV1alpha1ExternalSecretStatus:
     conditions : [ExternalSecretsIoV1alpha1ExternalSecretStatusConditionsItems0], default is Undefined, optional
         conditions
     refreshTime : str, default is Undefined, optional
-        refreshTime is the time and date the external secret was fetched and the target secret updated
+        refreshTime is the time and date the external secret was fetched and
+        the target secret updated
     syncedResourceVersion : str, default is Undefined, optional
         SyncedResourceVersion keeps track of the last synced version
     """
@@ -342,11 +353,17 @@ schema ExternalSecretsIoV1alpha1ExternalSecretStatusBinding:
     Attributes
     ----------
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        This field is effectively required, but due to backwards compatibility is
+        allowed to be empty. Instances of this type with an empty value here are
+        almost certainly wrong.
+        TODO: Add other useful fields. apiVersion, kind, uid?
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema ExternalSecretsIoV1alpha1ExternalSecretStatusConditionsItems0:

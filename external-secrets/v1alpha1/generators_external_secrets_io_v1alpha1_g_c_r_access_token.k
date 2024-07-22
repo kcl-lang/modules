@@ -7,7 +7,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema GCRAccessToken:
     """
-    GCRAccessToken generates an GCP access token that can be used to authenticate with GCR.
+    GCRAccessToken generates an GCP access token
+    that can be used to authenticate with GCR.
 
     Attributes
     ----------
@@ -88,11 +89,13 @@ schema GeneratorsExternalSecretsIoV1alpha1GCRAccessTokenSpecAuthSecretRefSecretA
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -136,11 +139,14 @@ schema GeneratorsExternalSecretsIoV1alpha1GCRAccessTokenSpecAuthWorkloadIdentity
     Attributes
     ----------
     audiences : [str], default is Undefined, optional
-        Audience specifies the `aud` claim for the service account token If the service account uses a well-known annotation for e.g. IRSA or GCP Workload Identity then this audiences will be appended to the list
+        Audience specifies the `aud` claim for the service account token
+        If the service account uses a well-known annotation for e.g. IRSA or GCP Workload Identity
+        then this audiences will be appended to the list
     name : str, default is Undefined, required
         The name of the ServiceAccount resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 

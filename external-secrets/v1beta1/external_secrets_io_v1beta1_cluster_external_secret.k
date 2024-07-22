@@ -49,8 +49,10 @@ schema ExternalSecretsIoV1beta1ClusterExternalSecretSpec:
         external secret spec
     namespaceSelector : ExternalSecretsIoV1beta1ClusterExternalSecretSpecNamespaceSelector, default is Undefined, optional
         namespace selector
+    namespaceSelectors : [ExternalSecretsIoV1beta1ClusterExternalSecretSpecNamespaceSelectorsItems0], default is Undefined, optional
+        A list of labels to select by to find the Namespaces to create the ExternalSecrets in. The selectors are ORed.
     namespaces : [str], default is Undefined, optional
-        Choose namespaces by name. This field is ORed with anything that NamespaceSelector ends up choosing.
+        Choose namespaces by name. This field is ORed with anything that NamespaceSelectors ends up choosing.
     refreshTime : str, default is Undefined, optional
         The time in which the controller should reconcile its objects and recheck namespaces for labels.
     """
@@ -63,6 +65,8 @@ schema ExternalSecretsIoV1beta1ClusterExternalSecretSpec:
     externalSecretSpec: ExternalSecretsIoV1beta1ClusterExternalSecretSpecExternalSecretSpec
 
     namespaceSelector?: ExternalSecretsIoV1beta1ClusterExternalSecretSpecNamespaceSelector
+
+    namespaceSelectors?: [ExternalSecretsIoV1beta1ClusterExternalSecretSpecNamespaceSelectorsItems0]
 
     namespaces?: [str]
 
@@ -96,9 +100,12 @@ schema ExternalSecretsIoV1beta1ClusterExternalSecretSpecExternalSecretSpec:
     data : [ExternalSecretsIoV1beta1ClusterExternalSecretSpecExternalSecretSpecDataItems0], default is Undefined, optional
         Data defines the connection between the Kubernetes Secret keys and the Provider data
     dataFrom : [ExternalSecretsIoV1beta1ClusterExternalSecretSpecExternalSecretSpecDataFromItems0], default is Undefined, optional
-        DataFrom is used to fetch all properties from a specific Provider data If multiple entries are specified, the Secret keys are merged in the specified order
+        DataFrom is used to fetch all properties from a specific Provider data
+        If multiple entries are specified, the Secret keys are merged in the specified order
     refreshInterval : str, default is "1h", optional
-        RefreshInterval is the amount of time before the values are read again from the SecretStore provider Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h" May be set to zero to fetch and create it once. Defaults to 1h.
+        RefreshInterval is the amount of time before the values are read again from the SecretStore provider
+        Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h"
+        May be set to zero to fetch and create it once. Defaults to 1h.
     secretStoreRef : ExternalSecretsIoV1beta1ClusterExternalSecretSpecExternalSecretSpecSecretStoreRef, default is Undefined, optional
         secret store ref
     target : ExternalSecretsIoV1beta1ClusterExternalSecretSpecExternalSecretSpecTarget, default is Undefined, optional
@@ -128,7 +135,8 @@ schema ExternalSecretsIoV1beta1ClusterExternalSecretSpecExternalSecretSpecDataFr
     find : ExternalSecretsIoV1beta1ClusterExternalSecretSpecExternalSecretSpecDataFromItems0Find, default is Undefined, optional
         find
     rewrite : [ExternalSecretsIoV1beta1ClusterExternalSecretSpecExternalSecretSpecDataFromItems0RewriteItems0], default is Undefined, optional
-        Used to rewrite secret Keys after getting them from the secret Provider Multiple Rewrite operations can be provided. They are applied in a layered order (first to last)
+        Used to rewrite secret Keys after getting them from the secret Provider
+        Multiple Rewrite operations can be provided. They are applied in a layered order (first to last)
     sourceRef : ExternalSecretsIoV1beta1ClusterExternalSecretSpecExternalSecretSpecDataFromItems0SourceRef, default is Undefined, optional
         source ref
     """
@@ -145,7 +153,8 @@ schema ExternalSecretsIoV1beta1ClusterExternalSecretSpecExternalSecretSpecDataFr
 
 schema ExternalSecretsIoV1beta1ClusterExternalSecretSpecExternalSecretSpecDataFromItems0Extract:
     """
-    Used to extract multiple key/value pairs from one secret Note: Extract does not support sourceRef.Generator or sourceRef.GeneratorRef.
+    Used to extract multiple key/value pairs from one secret
+    Note: Extract does not support sourceRef.Generator or sourceRef.GeneratorRef.
 
     Attributes
     ----------
@@ -179,7 +188,8 @@ schema ExternalSecretsIoV1beta1ClusterExternalSecretSpecExternalSecretSpecDataFr
 
 schema ExternalSecretsIoV1beta1ClusterExternalSecretSpecExternalSecretSpecDataFromItems0Find:
     """
-    Used to find secrets based on tags or regular expressions Note: Find does not support sourceRef.Generator or sourceRef.GeneratorRef.
+    Used to find secrets based on tags or regular expressions
+    Note: Find does not support sourceRef.Generator or sourceRef.GeneratorRef.
 
     Attributes
     ----------
@@ -241,7 +251,8 @@ schema ExternalSecretsIoV1beta1ClusterExternalSecretSpecExternalSecretSpecDataFr
 
 schema ExternalSecretsIoV1beta1ClusterExternalSecretSpecExternalSecretSpecDataFromItems0RewriteItems0Regexp:
     """
-    Used to rewrite with regular expressions. The resulting key will be the output of a regexp.ReplaceAll operation.
+    Used to rewrite with regular expressions.
+    The resulting key will be the output of a regexp.ReplaceAll operation.
 
     Attributes
     ----------
@@ -259,12 +270,14 @@ schema ExternalSecretsIoV1beta1ClusterExternalSecretSpecExternalSecretSpecDataFr
 
 schema ExternalSecretsIoV1beta1ClusterExternalSecretSpecExternalSecretSpecDataFromItems0RewriteItems0Transform:
     """
-    Used to apply string transformation on the secrets. The resulting key will be the output of the template applied by the operation.
+    Used to apply string transformation on the secrets.
+    The resulting key will be the output of the template applied by the operation.
 
     Attributes
     ----------
     template : str, default is Undefined, required
-        Used to define the template to apply on the secret name. `.value ` will specify the secret name in the template.
+        Used to define the template to apply on the secret name.
+        `.value ` will specify the secret name in the template.
     """
 
 
@@ -273,7 +286,12 @@ schema ExternalSecretsIoV1beta1ClusterExternalSecretSpecExternalSecretSpecDataFr
 
 schema ExternalSecretsIoV1beta1ClusterExternalSecretSpecExternalSecretSpecDataFromItems0SourceRef:
     """
-    SourceRef points to a store or generator which contains secret values ready to use. Use this in combination with Extract or Find pull values out of a specific SecretStore. When sourceRef points to a generator Extract or Find is not supported. The generator returns a static map of values
+    SourceRef points to a store or generator
+    which contains secret values ready to use.
+    Use this in combination with Extract or Find pull values out of
+    a specific SecretStore.
+    When sourceRef points to a generator Extract or Find is not supported.
+    The generator returns a static map of values
 
     Attributes
     ----------
@@ -318,7 +336,8 @@ schema ExternalSecretsIoV1beta1ClusterExternalSecretSpecExternalSecretSpecDataFr
     Attributes
     ----------
     kind : str, default is Undefined, optional
-        Kind of the SecretStore resource (SecretStore or ClusterSecretStore) Defaults to `SecretStore`
+        Kind of the SecretStore resource (SecretStore or ClusterSecretStore)
+        Defaults to `SecretStore`
     name : str, default is Undefined, required
         Name of the SecretStore resource
     """
@@ -338,7 +357,8 @@ schema ExternalSecretsIoV1beta1ClusterExternalSecretSpecExternalSecretSpecDataIt
     remoteRef : ExternalSecretsIoV1beta1ClusterExternalSecretSpecExternalSecretSpecDataItems0RemoteRef, default is Undefined, required
         remote ref
     secretKey : str, default is Undefined, required
-        SecretKey defines the key in which the controller stores the value. This is the key in the Kind=Secret
+        SecretKey defines the key in which the controller stores
+        the value. This is the key in the Kind=Secret
     sourceRef : ExternalSecretsIoV1beta1ClusterExternalSecretSpecExternalSecretSpecDataItems0SourceRef, default is Undefined, optional
         source ref
     """
@@ -353,7 +373,8 @@ schema ExternalSecretsIoV1beta1ClusterExternalSecretSpecExternalSecretSpecDataIt
 
 schema ExternalSecretsIoV1beta1ClusterExternalSecretSpecExternalSecretSpecDataItems0RemoteRef:
     """
-    RemoteRef points to the remote secret and defines which secret (version/property/..) to fetch.
+    RemoteRef points to the remote secret and defines
+    which secret (version/property/..) to fetch.
 
     Attributes
     ----------
@@ -387,7 +408,8 @@ schema ExternalSecretsIoV1beta1ClusterExternalSecretSpecExternalSecretSpecDataIt
 
 schema ExternalSecretsIoV1beta1ClusterExternalSecretSpecExternalSecretSpecDataItems0SourceRef:
     """
-    SourceRef allows you to override the source from which the value will pulled from.
+    SourceRef allows you to override the source
+    from which the value will pulled from.
 
     Attributes
     ----------
@@ -405,8 +427,11 @@ schema ExternalSecretsIoV1beta1ClusterExternalSecretSpecExternalSecretSpecDataIt
 
 schema ExternalSecretsIoV1beta1ClusterExternalSecretSpecExternalSecretSpecDataItems0SourceRefGeneratorRef:
     """
-    GeneratorRef points to a generator custom resource. 
-     Deprecated: The generatorRef is not implemented in .data[]. this will be removed with v1.
+    GeneratorRef points to a generator custom resource.
+
+
+    Deprecated: The generatorRef is not implemented in .data[].
+    this will be removed with v1.
 
     Attributes
     ----------
@@ -433,7 +458,8 @@ schema ExternalSecretsIoV1beta1ClusterExternalSecretSpecExternalSecretSpecDataIt
     Attributes
     ----------
     kind : str, default is Undefined, optional
-        Kind of the SecretStore resource (SecretStore or ClusterSecretStore) Defaults to `SecretStore`
+        Kind of the SecretStore resource (SecretStore or ClusterSecretStore)
+        Defaults to `SecretStore`
     name : str, default is Undefined, required
         Name of the SecretStore resource
     """
@@ -451,7 +477,8 @@ schema ExternalSecretsIoV1beta1ClusterExternalSecretSpecExternalSecretSpecSecret
     Attributes
     ----------
     kind : str, default is Undefined, optional
-        Kind of the SecretStore resource (SecretStore or ClusterSecretStore) Defaults to `SecretStore`
+        Kind of the SecretStore resource (SecretStore or ClusterSecretStore)
+        Defaults to `SecretStore`
     name : str, default is Undefined, required
         Name of the SecretStore resource
     """
@@ -464,18 +491,23 @@ schema ExternalSecretsIoV1beta1ClusterExternalSecretSpecExternalSecretSpecSecret
 
 schema ExternalSecretsIoV1beta1ClusterExternalSecretSpecExternalSecretSpecTarget:
     """
-    ExternalSecretTarget defines the Kubernetes Secret to be created There can be only one target per ExternalSecret.
+    ExternalSecretTarget defines the Kubernetes Secret to be created
+    There can be only one target per ExternalSecret.
 
     Attributes
     ----------
     creationPolicy : str, default is "Owner", optional
-        CreationPolicy defines rules on how to create the resulting Secret Defaults to 'Owner'
+        CreationPolicy defines rules on how to create the resulting Secret
+        Defaults to 'Owner'
     deletionPolicy : str, default is "Retain", optional
-        DeletionPolicy defines rules on how to delete the resulting Secret Defaults to 'Retain'
+        DeletionPolicy defines rules on how to delete the resulting Secret
+        Defaults to 'Retain'
     immutable : bool, default is Undefined, optional
         Immutable defines if the final secret will be immutable
     name : str, default is Undefined, optional
-        Name defines the name of the Secret resource to be managed This field is immutable Defaults to the .metadata.name of the ExternalSecret resource
+        Name defines the name of the Secret resource to be managed
+        This field is immutable
+        Defaults to the .metadata.name of the ExternalSecret resource
     template : ExternalSecretsIoV1beta1ClusterExternalSecretSpecExternalSecretSpecTargetTemplate, default is Undefined, optional
         template
     """
@@ -501,7 +533,9 @@ schema ExternalSecretsIoV1beta1ClusterExternalSecretSpecExternalSecretSpecTarget
     data : {str:str}, default is Undefined, optional
         data
     engineVersion : str, default is "v2", optional
-        EngineVersion specifies the template engine version that should be used to compile/execute the template specified in .data and .templateFrom[].
+        EngineVersion specifies the template engine version
+        that should be used to compile/execute the
+        template specified in .data and .templateFrom[].
     mergePolicy : str, default is "Replace", optional
         merge policy
     metadata : ExternalSecretsIoV1beta1ClusterExternalSecretSpecExternalSecretSpecTargetTemplateMetadata, default is Undefined, optional
@@ -645,13 +679,16 @@ schema ExternalSecretsIoV1beta1ClusterExternalSecretSpecExternalSecretSpecTarget
 schema ExternalSecretsIoV1beta1ClusterExternalSecretSpecNamespaceSelector:
     """
     The labels to select by to find the Namespaces to create the ExternalSecrets in.
+    Deprecated: Use NamespaceSelectors instead.
 
     Attributes
     ----------
     matchExpressions : [ExternalSecretsIoV1beta1ClusterExternalSecretSpecNamespaceSelectorMatchExpressionsItems0], default is Undefined, optional
         matchExpressions is a list of label selector requirements. The requirements are ANDed.
     matchLabels : {str:str}, default is Undefined, optional
-        matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+        matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels
+        map is equivalent to an element of matchExpressions, whose key field is "key", the
+        operator is "In", and the values array contains only "value". The requirements are ANDed.
     """
 
 
@@ -662,16 +699,70 @@ schema ExternalSecretsIoV1beta1ClusterExternalSecretSpecNamespaceSelector:
 
 schema ExternalSecretsIoV1beta1ClusterExternalSecretSpecNamespaceSelectorMatchExpressionsItems0:
     """
-    A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+    A label selector requirement is a selector that contains values, a key, and an operator that
+    relates the key and values.
 
     Attributes
     ----------
     key : str, default is Undefined, required
         key is the label key that the selector applies to.
     operator : str, default is Undefined, required
-        operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+        operator represents a key's relationship to a set of values.
+        Valid operators are In, NotIn, Exists and DoesNotExist.
     values : [str], default is Undefined, optional
-        values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.
+        values is an array of string values. If the operator is In or NotIn,
+        the values array must be non-empty. If the operator is Exists or DoesNotExist,
+        the values array must be empty. This array is replaced during a strategic
+        merge patch.
+    """
+
+
+    key: str
+
+    operator: str
+
+    values?: [str]
+
+
+schema ExternalSecretsIoV1beta1ClusterExternalSecretSpecNamespaceSelectorsItems0:
+    """
+    A label selector is a label query over a set of resources. The result of matchLabels and
+    matchExpressions are ANDed. An empty label selector matches all objects. A null
+    label selector matches no objects.
+
+    Attributes
+    ----------
+    matchExpressions : [ExternalSecretsIoV1beta1ClusterExternalSecretSpecNamespaceSelectorsItems0MatchExpressionsItems0], default is Undefined, optional
+        matchExpressions is a list of label selector requirements. The requirements are ANDed.
+    matchLabels : {str:str}, default is Undefined, optional
+        matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels
+        map is equivalent to an element of matchExpressions, whose key field is "key", the
+        operator is "In", and the values array contains only "value". The requirements are ANDed.
+    """
+
+
+    matchExpressions?: [ExternalSecretsIoV1beta1ClusterExternalSecretSpecNamespaceSelectorsItems0MatchExpressionsItems0]
+
+    matchLabels?: {str:str}
+
+
+schema ExternalSecretsIoV1beta1ClusterExternalSecretSpecNamespaceSelectorsItems0MatchExpressionsItems0:
+    """
+    A label selector requirement is a selector that contains values, a key, and an operator that
+    relates the key and values.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key is the label key that the selector applies to.
+    operator : str, default is Undefined, required
+        operator represents a key's relationship to a set of values.
+        Valid operators are In, NotIn, Exists and DoesNotExist.
+    values : [str], default is Undefined, optional
+        values is an array of string values. If the operator is In or NotIn,
+        the values array must be non-empty. If the operator is Exists or DoesNotExist,
+        the values array must be empty. This array is replaced during a strategic
+        merge patch.
     """
 
 

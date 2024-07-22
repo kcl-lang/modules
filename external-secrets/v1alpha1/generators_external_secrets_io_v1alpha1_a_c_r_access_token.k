@@ -7,8 +7,15 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ACRAccessToken:
     """
-    ACRAccessToken returns a Azure Container Registry token that can be used for pushing/pulling images. Note: by default it will return an ACR Refresh Token with full access (depending on the identity). This can be scoped down to the repository level using .spec.scope. In case scope is defined it will return an ACR Access Token. 
-     See docs: https://github.com/Azure/acr/blob/main/docs/AAD-OAuth.md
+    ACRAccessToken returns a Azure Container Registry token
+    that can be used for pushing/pulling images.
+    Note: by default it will return an ACR Refresh Token with full access
+    (depending on the identity).
+    This can be scoped down to the repository level using .spec.scope.
+    In case scope is defined it will return an ACR Access Token.
+
+
+    See docs: https://github.com/Azure/acr/blob/main/docs/AAD-OAuth.md
 
     Attributes
     ----------
@@ -34,20 +41,34 @@ schema ACRAccessToken:
 
 schema GeneratorsExternalSecretsIoV1alpha1ACRAccessTokenSpec:
     """
-    ACRAccessTokenSpec defines how to generate the access token e.g. how to authenticate and which registry to use. see: https://github.com/Azure/acr/blob/main/docs/AAD-OAuth.md#overview
+    ACRAccessTokenSpec defines how to generate the access token
+    e.g. how to authenticate and which registry to use.
+    see: https://github.com/Azure/acr/blob/main/docs/AAD-OAuth.md#overview
 
     Attributes
     ----------
     auth : GeneratorsExternalSecretsIoV1alpha1ACRAccessTokenSpecAuth, default is Undefined, required
         auth
     environmentType : str, default is "PublicCloud", optional
-        EnvironmentType specifies the Azure cloud environment endpoints to use for connecting and authenticating with Azure. By default it points to the public cloud AAD endpoint. The following endpoints are available, also see here: https://github.com/Azure/go-autorest/blob/main/autorest/azure/environments.go#L152 PublicCloud, USGovernmentCloud, ChinaCloud, GermanCloud
+        EnvironmentType specifies the Azure cloud environment endpoints to use for
+        connecting and authenticating with Azure. By default it points to the public cloud AAD endpoint.
+        The following endpoints are available, also see here: https://github.com/Azure/go-autorest/blob/main/autorest/azure/environments.go#L152
+        PublicCloud, USGovernmentCloud, ChinaCloud, GermanCloud
     registry : str, default is Undefined, required
-        the domain name of the ACR registry e.g. foobarexample.azurecr.io
+        the domain name of the ACR registry
+        e.g. foobarexample.azurecr.io
     scope : str, default is Undefined, optional
-        Define the scope for the access token, e.g. pull/push access for a repository. if not provided it will return a refresh token that has full scope. Note: you need to pin it down to the repository level, there is no wildcard available. 
-         examples: repository:my-repository:pull,push repository:my-repository:pull 
-         see docs for details: https://docs.docker.com/registry/spec/auth/scope/
+        Define the scope for the access token, e.g. pull/push access for a repository.
+        if not provided it will return a refresh token that has full scope.
+        Note: you need to pin it down to the repository level, there is no wildcard available.
+
+
+        examples:
+        repository:my-repository:pull,push
+        repository:my-repository:pull
+
+
+        see docs for details: https://docs.docker.com/registry/spec/auth/scope/
     tenantId : str, default is Undefined, optional
         TenantID configures the Azure Tenant to send requests to. Required for ServicePrincipal auth type.
     """
@@ -116,7 +137,8 @@ schema GeneratorsExternalSecretsIoV1alpha1ACRAccessTokenSpecAuthServicePrincipal
 
 schema GeneratorsExternalSecretsIoV1alpha1ACRAccessTokenSpecAuthServicePrincipalSecretRef:
     """
-    Configuration used to authenticate with Azure using static credentials stored in a Kind=Secret.
+    Configuration used to authenticate with Azure using static
+    credentials stored in a Kind=Secret.
 
     Attributes
     ----------
@@ -139,11 +161,13 @@ schema GeneratorsExternalSecretsIoV1alpha1ACRAccessTokenSpecAuthServicePrincipal
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -161,11 +185,13 @@ schema GeneratorsExternalSecretsIoV1alpha1ACRAccessTokenSpecAuthServicePrincipal
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -192,16 +218,20 @@ schema GeneratorsExternalSecretsIoV1alpha1ACRAccessTokenSpecAuthWorkloadIdentity
 
 schema GeneratorsExternalSecretsIoV1alpha1ACRAccessTokenSpecAuthWorkloadIdentityServiceAccountRef:
     """
-    ServiceAccountRef specified the service account that should be used when authenticating with WorkloadIdentity.
+    ServiceAccountRef specified the service account
+    that should be used when authenticating with WorkloadIdentity.
 
     Attributes
     ----------
     audiences : [str], default is Undefined, optional
-        Audience specifies the `aud` claim for the service account token If the service account uses a well-known annotation for e.g. IRSA or GCP Workload Identity then this audiences will be appended to the list
+        Audience specifies the `aud` claim for the service account token
+        If the service account uses a well-known annotation for e.g. IRSA or GCP Workload Identity
+        then this audiences will be appended to the list
     name : str, default is Undefined, required
         The name of the ServiceAccount resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 

@@ -44,7 +44,8 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpec:
     conditions : [ExternalSecretsIoV1beta1ClusterSecretStoreSpecConditionsItems0], default is Undefined, optional
         Used to constraint a ClusterSecretStore to specific namespaces. Relevant only to ClusterSecretStore
     controller : str, default is Undefined, optional
-        Used to select the correct ESO controller (think: ingress.ingressClassName) The ESO controller is instantiated with a specific controller name and filters ES based on this property
+        Used to select the correct ESO controller (think: ingress.ingressClassName)
+        The ESO controller is instantiated with a specific controller name and filters ES based on this property
     provider : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProvider, default is Undefined, required
         provider
     refreshInterval : int, default is Undefined, optional
@@ -67,16 +68,21 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpec:
 
 schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecConditionsItems0:
     """
-    ClusterSecretStoreCondition describes a condition by which to choose namespaces to process ExternalSecrets in for a ClusterSecretStore instance.
+    ClusterSecretStoreCondition describes a condition by which to choose namespaces to process ExternalSecrets in
+    for a ClusterSecretStore instance.
 
     Attributes
     ----------
+    namespaceRegexes : [str], default is Undefined, optional
+        Choose namespaces by using regex matching
     namespaceSelector : ExternalSecretsIoV1beta1ClusterSecretStoreSpecConditionsItems0NamespaceSelector, default is Undefined, optional
         namespace selector
     namespaces : [str], default is Undefined, optional
         Choose namespaces by name
     """
 
+
+    namespaceRegexes?: [str]
 
     namespaceSelector?: ExternalSecretsIoV1beta1ClusterSecretStoreSpecConditionsItems0NamespaceSelector
 
@@ -92,7 +98,9 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecConditionsItems0NamespaceSe
     matchExpressions : [ExternalSecretsIoV1beta1ClusterSecretStoreSpecConditionsItems0NamespaceSelectorMatchExpressionsItems0], default is Undefined, optional
         matchExpressions is a list of label selector requirements. The requirements are ANDed.
     matchLabels : {str:str}, default is Undefined, optional
-        matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+        matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels
+        map is equivalent to an element of matchExpressions, whose key field is "key", the
+        operator is "In", and the values array contains only "value". The requirements are ANDed.
     """
 
 
@@ -103,16 +111,21 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecConditionsItems0NamespaceSe
 
 schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecConditionsItems0NamespaceSelectorMatchExpressionsItems0:
     """
-    A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+    A label selector requirement is a selector that contains values, a key, and an operator that
+    relates the key and values.
 
     Attributes
     ----------
     key : str, default is Undefined, required
         key is the label key that the selector applies to.
     operator : str, default is Undefined, required
-        operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+        operator represents a key's relationship to a set of values.
+        Valid operators are In, NotIn, Exists and DoesNotExist.
     values : [str], default is Undefined, optional
-        values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.
+        values is an array of string values. If the operator is In or NotIn,
+        the values array must be non-empty. If the operator is Exists or DoesNotExist,
+        the values array must be empty. This array is replaced during a strategic
+        merge patch.
     """
 
 
@@ -137,30 +150,50 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProvider:
         aws
     azurekv : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAzurekv, default is Undefined, optional
         azurekv
+    bitwardensecretsmanager : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderBitwardensecretsmanager, default is Undefined, optional
+        bitwardensecretsmanager
+    chef : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderChef, default is Undefined, optional
+        chef
     conjur : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderConjur, default is Undefined, optional
         conjur
     delinea : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderDelinea, default is Undefined, optional
         delinea
+    device42 : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderDevice42, default is Undefined, optional
+        device42
     doppler : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderDoppler, default is Undefined, optional
         doppler
     fake : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderFake, default is Undefined, optional
         fake
+    fortanix : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderFortanix, default is Undefined, optional
+        fortanix
     gcpsm : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderGcpsm, default is Undefined, optional
         gcpsm
     gitlab : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderGitlab, default is Undefined, optional
         gitlab
     ibm : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderIbm, default is Undefined, optional
         ibm
+    infisical : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderInfisical, default is Undefined, optional
+        infisical
     keepersecurity : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderKeepersecurity, default is Undefined, optional
         keepersecurity
     kubernetes : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderKubernetes, default is Undefined, optional
         kubernetes
+    onboardbase : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderOnboardbase, default is Undefined, optional
+        onboardbase
     onepassword : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderOnepassword, default is Undefined, optional
         onepassword
     oracle : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderOracle, default is Undefined, optional
         oracle
+    passbolt : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderPassbolt, default is Undefined, optional
+        passbolt
+    passworddepot : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderPassworddepot, default is Undefined, optional
+        passworddepot
+    pulumi : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderPulumi, default is Undefined, optional
+        pulumi
     scaleway : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderScaleway, default is Undefined, optional
         scaleway
+    secretserver : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderSecretserver, default is Undefined, optional
+        secretserver
     senhasegura : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderSenhasegura, default is Undefined, optional
         senhasegura
     vault : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVault, default is Undefined, optional
@@ -182,13 +215,21 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProvider:
 
     azurekv?: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAzurekv
 
+    bitwardensecretsmanager?: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderBitwardensecretsmanager
+
+    chef?: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderChef
+
     conjur?: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderConjur
 
     delinea?: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderDelinea
 
+    device42?: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderDevice42
+
     doppler?: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderDoppler
 
     fake?: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderFake
+
+    fortanix?: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderFortanix
 
     gcpsm?: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderGcpsm
 
@@ -196,15 +237,27 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProvider:
 
     ibm?: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderIbm
 
+    infisical?: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderInfisical
+
     keepersecurity?: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderKeepersecurity
 
     kubernetes?: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderKubernetes
+
+    onboardbase?: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderOnboardbase
 
     onepassword?: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderOnepassword
 
     oracle?: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderOracle
 
+    passbolt?: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderPassbolt
+
+    passworddepot?: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderPassworddepot
+
+    pulumi?: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderPulumi
+
     scaleway?: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderScaleway
+
+    secretserver?: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderSecretserver
 
     senhasegura?: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderSenhasegura
 
@@ -228,7 +281,9 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAkeyless:
     authSecretRef : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAkeylessAuthSecretRef, default is Undefined, required
         auth secret ref
     caBundle : str, default is Undefined, optional
-        PEM/base64 encoded CA bundle used to validate Akeyless Gateway certificate. Only used if the AkeylessGWApiURL URL is using HTTPS protocol. If not set the system root certificates are used to validate the TLS connection.
+        PEM/base64 encoded CA bundle used to validate Akeyless Gateway certificate. Only used
+        if the AkeylessGWApiURL URL is using HTTPS protocol. If not set the system root certificates
+        are used to validate the TLS connection.
     caProvider : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAkeylessCaProvider, default is Undefined, optional
         ca provider
     """
@@ -263,7 +318,8 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAkeylessAuthSecretR
 
 schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAkeylessAuthSecretRefKubernetesAuth:
     """
-    Kubernetes authenticates with Akeyless by passing the ServiceAccount token stored in the named Secret resource.
+    Kubernetes authenticates with Akeyless by passing the ServiceAccount
+    token stored in the named Secret resource.
 
     Attributes
     ----------
@@ -289,16 +345,21 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAkeylessAuthSecretR
 
 schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAkeylessAuthSecretRefKubernetesAuthSecretRef:
     """
-    Optional secret field containing a Kubernetes ServiceAccount JWT used for authenticating with Akeyless. If a name is specified without a key, `token` is the default. If one is not specified, the one bound to the controller will be used.
+    Optional secret field containing a Kubernetes ServiceAccount JWT used
+    for authenticating with Akeyless. If a name is specified without a key,
+    `token` is the default. If one is not specified, the one bound to
+    the controller will be used.
 
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -311,16 +372,22 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAkeylessAuthSecretR
 
 schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAkeylessAuthSecretRefKubernetesAuthServiceAccountRef:
     """
-    Optional service account field containing the name of a kubernetes ServiceAccount. If the service account is specified, the service account secret token JWT will be used for authenticating with Akeyless. If the service account selector is not supplied, the secretRef will be used instead.
+    Optional service account field containing the name of a kubernetes ServiceAccount.
+    If the service account is specified, the service account secret token JWT will be used
+    for authenticating with Akeyless. If the service account selector is not supplied,
+    the secretRef will be used instead.
 
     Attributes
     ----------
     audiences : [str], default is Undefined, optional
-        Audience specifies the `aud` claim for the service account token If the service account uses a well-known annotation for e.g. IRSA or GCP Workload Identity then this audiences will be appended to the list
+        Audience specifies the `aud` claim for the service account token
+        If the service account uses a well-known annotation for e.g. IRSA or GCP Workload Identity
+        then this audiences will be appended to the list
     name : str, default is Undefined, required
         The name of the ServiceAccount resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -333,7 +400,8 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAkeylessAuthSecretR
 
 schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAkeylessAuthSecretRefSecretRef:
     """
-    Reference to a Secret that contains the details to authenticate with Akeyless.
+    Reference to a Secret that contains the details
+    to authenticate with Akeyless.
 
     Attributes
     ----------
@@ -360,11 +428,13 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAkeylessAuthSecretR
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -377,16 +447,19 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAkeylessAuthSecretR
 
 schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAkeylessAuthSecretRefSecretRefAccessType:
     """
-    A reference to a specific 'key' within a Secret resource, In some instances, `key` is a required field.
+    A reference to a specific 'key' within a Secret resource,
+    In some instances, `key` is a required field.
 
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -399,16 +472,19 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAkeylessAuthSecretR
 
 schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAkeylessAuthSecretRefSecretRefAccessTypeParam:
     """
-    A reference to a specific 'key' within a Secret resource, In some instances, `key` is a required field.
+    A reference to a specific 'key' within a Secret resource,
+    In some instances, `key` is a required field.
 
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -430,7 +506,8 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAkeylessCaProvider:
     name : str, default is Undefined, required
         The name of the object located at the provider type.
     namespace : str, default is Undefined, optional
-        The namespace the Provider type is in. Can only be defined when used in a ClusterSecretStore.
+        The namespace the Provider type is in.
+        Can only be defined when used in a ClusterSecretStore.
     $type : str, default is Undefined, required
         The type of provider to use such as "Secret", or "ConfigMap".
     """
@@ -532,11 +609,13 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAlibabaAuthSecretRe
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -554,11 +633,13 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAlibabaAuthSecretRe
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -576,7 +657,7 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAws:
     Attributes
     ----------
     additionalRoles : [str], default is Undefined, optional
-        AdditionalRoles is a chained list of Role ARNs which the SecretManager provider will sequentially assume before assuming Role
+        AdditionalRoles is a chained list of Role ARNs which the provider will sequentially assume before assuming the Role
     auth : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAwsAuth, default is Undefined, optional
         auth
     externalID : str, default is Undefined, optional
@@ -584,13 +665,15 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAws:
     region : str, default is Undefined, required
         AWS Region to be used for the provider
     role : str, default is Undefined, optional
-        Role is a Role ARN which the SecretManager provider will assume
+        Role is a Role ARN which the provider will assume
+    secretsManager : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAwsSecretsManager, default is Undefined, optional
+        secrets manager
     service : str, default is Undefined, required
         Service defines which service should be used to fetch the secrets
     sessionTags : [ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAwsSessionTagsItems0], default is Undefined, optional
         AWS STS assume role session tags
     transitiveTagKeys : [str], default is Undefined, optional
-        AWS STS assume role transitive session tags. Required when multiple rules are used with SecretStore
+        AWS STS assume role transitive session tags. Required when multiple rules are used with the provider
     """
 
 
@@ -604,6 +687,8 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAws:
 
     role?: str
 
+    secretsManager?: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAwsSecretsManager
+
     service: "SecretsManager" | "ParameterStore"
 
     sessionTags?: [ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAwsSessionTagsItems0]
@@ -613,7 +698,9 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAws:
 
 schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAwsAuth:
     """
-    Auth defines the information necessary to authenticate against AWS if not set aws sdk will infer credentials from your environment see: https://docs.aws.amazon.com/sdk-for-go/v1/developer-guide/configuring-sdk.html#specifying-credentials
+    Auth defines the information necessary to authenticate against AWS
+    if not set aws sdk will infer credentials from your environment
+    see: https://docs.aws.amazon.com/sdk-for-go/v1/developer-guide/configuring-sdk.html#specifying-credentials
 
     Attributes
     ----------
@@ -650,11 +737,14 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAwsAuthJwtServiceAc
     Attributes
     ----------
     audiences : [str], default is Undefined, optional
-        Audience specifies the `aud` claim for the service account token If the service account uses a well-known annotation for e.g. IRSA or GCP Workload Identity then this audiences will be appended to the list
+        Audience specifies the `aud` claim for the service account token
+        If the service account uses a well-known annotation for e.g. IRSA or GCP Workload Identity
+        then this audiences will be appended to the list
     name : str, default is Undefined, required
         The name of the ServiceAccount resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -667,7 +757,8 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAwsAuthJwtServiceAc
 
 schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAwsAuthSecretRef:
     """
-    AWSAuthSecretRef holds secret references for AWS credentials both AccessKeyID and SecretAccessKey must be defined in order to properly authenticate.
+    AWSAuthSecretRef holds secret references for AWS credentials
+    both AccessKeyID and SecretAccessKey must be defined in order to properly authenticate.
 
     Attributes
     ----------
@@ -694,11 +785,13 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAwsAuthSecretRefAcc
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -716,11 +809,13 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAwsAuthSecretRefSec
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -733,16 +828,20 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAwsAuthSecretRefSec
 
 schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAwsAuthSecretRefSessionTokenSecretRef:
     """
-    The SessionToken used for authentication This must be defined if AccessKeyID and SecretAccessKey are temporary credentials see: https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_use-resources.html
+    The SessionToken used for authentication
+    This must be defined if AccessKeyID and SecretAccessKey are temporary credentials
+    see: https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_use-resources.html
 
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -751,6 +850,32 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAwsAuthSecretRefSes
     name?: str
 
     namespace?: str
+
+
+schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAwsSecretsManager:
+    """
+    SecretsManager defines how the provider behaves when interacting with AWS SecretsManager
+
+    Attributes
+    ----------
+    forceDeleteWithoutRecovery : bool, default is Undefined, optional
+        Specifies whether to delete the secret without any recovery window. You
+        can't use both this parameter and RecoveryWindowInDays in the same call.
+        If you don't use either, then by default Secrets Manager uses a 30 day
+        recovery window.
+        see: https://docs.aws.amazon.com/secretsmanager/latest/apireference/API_DeleteSecret.html#SecretsManager-DeleteSecret-request-ForceDeleteWithoutRecovery
+    recoveryWindowInDays : int, default is Undefined, optional
+        The number of days from 7 to 30 that Secrets Manager waits before
+        permanently deleting the secret. You can't use both this parameter and
+        ForceDeleteWithoutRecovery in the same call. If you don't use either,
+        then by default Secrets Manager uses a 30 day recovery window.
+        see: https://docs.aws.amazon.com/secretsmanager/latest/apireference/API_DeleteSecret.html#SecretsManager-DeleteSecret-request-RecoveryWindowInDays
+    """
+
+
+    forceDeleteWithoutRecovery?: bool
+
+    recoveryWindowInDays?: int
 
 
 schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAwsSessionTagsItems0:
@@ -780,15 +905,21 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAzurekv:
     authSecretRef : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAzurekvAuthSecretRef, default is Undefined, optional
         auth secret ref
     authType : str, default is "ServicePrincipal", optional
-        Auth type defines how to authenticate to the keyvault service. Valid values are: - "ServicePrincipal" (default): Using a service principal (tenantId, clientId, clientSecret) - "ManagedIdentity": Using Managed Identity assigned to the pod (see aad-pod-identity)
+        Auth type defines how to authenticate to the keyvault service.
+        Valid values are:
+        - "ServicePrincipal" (default): Using a service principal (tenantId, clientId, clientSecret)
+        - "ManagedIdentity": Using Managed Identity assigned to the pod (see aad-pod-identity)
     environmentType : str, default is "PublicCloud", optional
-        EnvironmentType specifies the Azure cloud environment endpoints to use for connecting and authenticating with Azure. By default it points to the public cloud AAD endpoint. The following endpoints are available, also see here: https://github.com/Azure/go-autorest/blob/main/autorest/azure/environments.go#L152 PublicCloud, USGovernmentCloud, ChinaCloud, GermanCloud
+        EnvironmentType specifies the Azure cloud environment endpoints to use for
+        connecting and authenticating with Azure. By default it points to the public cloud AAD endpoint.
+        The following endpoints are available, also see here: https://github.com/Azure/go-autorest/blob/main/autorest/azure/environments.go#L152
+        PublicCloud, USGovernmentCloud, ChinaCloud, GermanCloud
     identityId : str, default is Undefined, optional
         If multiple Managed Identity is assigned to the pod, you can select the one to be used
     serviceAccountRef : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAzurekvServiceAccountRef, default is Undefined, optional
         service account ref
     tenantId : str, default is Undefined, optional
-        TenantID configures the Azure Tenant to send requests to. Required for ServicePrincipal auth type.
+        TenantID configures the Azure Tenant to send requests to. Required for ServicePrincipal auth type. Optional for WorkloadIdentity.
     vaultUrl : str, default is Undefined, required
         Vault Url from which the secrets to be fetched from.
     """
@@ -811,34 +942,68 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAzurekv:
 
 schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAzurekvAuthSecretRef:
     """
-    Auth configures how the operator authenticates with Azure. Required for ServicePrincipal auth type.
+    Auth configures how the operator authenticates with Azure. Required for ServicePrincipal auth type. Optional for WorkloadIdentity.
 
     Attributes
     ----------
+    clientCertificate : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAzurekvAuthSecretRefClientCertificate, default is Undefined, optional
+        client certificate
     clientId : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAzurekvAuthSecretRefClientID, default is Undefined, optional
         client Id
     clientSecret : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAzurekvAuthSecretRefClientSecret, default is Undefined, optional
         client secret
+    tenantId : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAzurekvAuthSecretRefTenantID, default is Undefined, optional
+        tenant Id
     """
 
+
+    clientCertificate?: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAzurekvAuthSecretRefClientCertificate
 
     clientId?: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAzurekvAuthSecretRefClientID
 
     clientSecret?: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAzurekvAuthSecretRefClientSecret
 
+    tenantId?: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAzurekvAuthSecretRefTenantID
 
-schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAzurekvAuthSecretRefClientID:
+
+schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAzurekvAuthSecretRefClientCertificate:
     """
-    The Azure clientId of the service principle used for authentication.
+    The Azure ClientCertificate of the service principle used for authentication.
 
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
+    """
+
+
+    key?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAzurekvAuthSecretRefClientID:
+    """
+    The Azure clientId of the service principle or managed identity used for authentication.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, optional
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
+    name : str, default is Undefined, optional
+        The name of the Secret resource being referred to.
+    namespace : str, default is Undefined, optional
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -856,11 +1021,37 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAzurekvAuthSecretRe
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
+    """
+
+
+    key?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAzurekvAuthSecretRefTenantID:
+    """
+    The Azure tenantId of the managed identity used for authentication.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, optional
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
+    name : str, default is Undefined, optional
+        The name of the Secret resource being referred to.
+    namespace : str, default is Undefined, optional
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -873,22 +1064,192 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAzurekvAuthSecretRe
 
 schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderAzurekvServiceAccountRef:
     """
-    ServiceAccountRef specified the service account that should be used when authenticating with WorkloadIdentity.
+    ServiceAccountRef specified the service account
+    that should be used when authenticating with WorkloadIdentity.
 
     Attributes
     ----------
     audiences : [str], default is Undefined, optional
-        Audience specifies the `aud` claim for the service account token If the service account uses a well-known annotation for e.g. IRSA or GCP Workload Identity then this audiences will be appended to the list
+        Audience specifies the `aud` claim for the service account token
+        If the service account uses a well-known annotation for e.g. IRSA or GCP Workload Identity
+        then this audiences will be appended to the list
     name : str, default is Undefined, required
         The name of the ServiceAccount resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
     audiences?: [str]
 
     name: str
+
+    namespace?: str
+
+
+schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderBitwardensecretsmanager:
+    """
+    BitwardenSecretsManager configures this store to sync secrets using BitwardenSecretsManager provider
+
+    Attributes
+    ----------
+    apiURL : str, default is Undefined, optional
+        api URL
+    auth : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderBitwardensecretsmanagerAuth, default is Undefined, required
+        auth
+    bitwardenServerSDKURL : str, default is Undefined, optional
+        bitwarden server s d k URL
+    caBundle : str, default is Undefined, required
+        Base64 encoded certificate for the bitwarden server sdk. The sdk MUST run with HTTPS to make sure no MITM attack
+        can be performed.
+    identityURL : str, default is Undefined, optional
+        identity URL
+    organizationID : str, default is Undefined, required
+        OrganizationID determines which organization this secret store manages.
+    projectID : str, default is Undefined, required
+        ProjectID determines which project this secret store manages.
+    """
+
+
+    apiURL?: str
+
+    auth: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderBitwardensecretsmanagerAuth
+
+    bitwardenServerSDKURL?: str
+
+    caBundle: str
+
+    identityURL?: str
+
+    organizationID: str
+
+    projectID: str
+
+
+schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderBitwardensecretsmanagerAuth:
+    """
+    Auth configures how secret-manager authenticates with a bitwarden machine account instance.
+    Make sure that the token being used has permissions on the given secret.
+
+    Attributes
+    ----------
+    secretRef : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderBitwardensecretsmanagerAuthSecretRef, default is Undefined, required
+        secret ref
+    """
+
+
+    secretRef: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderBitwardensecretsmanagerAuthSecretRef
+
+
+schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderBitwardensecretsmanagerAuthSecretRef:
+    """
+    BitwardenSecretsManagerSecretRef contains the credential ref to the bitwarden instance.
+
+    Attributes
+    ----------
+    credentials : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderBitwardensecretsmanagerAuthSecretRefCredentials, default is Undefined, required
+        credentials
+    """
+
+
+    credentials: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderBitwardensecretsmanagerAuthSecretRefCredentials
+
+
+schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderBitwardensecretsmanagerAuthSecretRefCredentials:
+    """
+    AccessToken used for the bitwarden instance.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, optional
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
+    name : str, default is Undefined, optional
+        The name of the Secret resource being referred to.
+    namespace : str, default is Undefined, optional
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
+    """
+
+
+    key?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderChef:
+    """
+    Chef configures this store to sync secrets with chef server
+
+    Attributes
+    ----------
+    auth : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderChefAuth, default is Undefined, required
+        auth
+    serverUrl : str, default is Undefined, required
+        ServerURL is the chef server URL used to connect to. If using orgs you should include your org in the url and terminate the url with a "/"
+    username : str, default is Undefined, required
+        UserName should be the user ID on the chef server
+    """
+
+
+    auth: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderChefAuth
+
+    serverUrl: str
+
+    username: str
+
+
+schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderChefAuth:
+    """
+    Auth defines the information necessary to authenticate against chef Server
+
+    Attributes
+    ----------
+    secretRef : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderChefAuthSecretRef, default is Undefined, required
+        secret ref
+    """
+
+
+    secretRef: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderChefAuthSecretRef
+
+
+schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderChefAuthSecretRef:
+    """
+    ChefAuthSecretRef holds secret references for chef server login credentials.
+
+    Attributes
+    ----------
+    privateKeySecretRef : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderChefAuthSecretRefPrivateKeySecretRef, default is Undefined, required
+        private key secret ref
+    """
+
+
+    privateKeySecretRef: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderChefAuthSecretRefPrivateKeySecretRef
+
+
+schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderChefAuthSecretRefPrivateKeySecretRef:
+    """
+    SecretKey is the Signing Key in PEM format, used for authentication.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, optional
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
+    name : str, default is Undefined, optional
+        The name of the Secret resource being referred to.
+    namespace : str, default is Undefined, optional
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
+    """
+
+
+    key?: str
+
+    name?: str
 
     namespace?: str
 
@@ -961,16 +1322,19 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderConjurAuthApikey:
 
 schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderConjurAuthApikeyAPIKeyRef:
     """
-    A reference to a specific 'key' within a Secret resource, In some instances, `key` is a required field.
+    A reference to a specific 'key' within a Secret resource,
+    In some instances, `key` is a required field.
 
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -983,16 +1347,19 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderConjurAuthApikeyAPI
 
 schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderConjurAuthApikeyUserRef:
     """
-    A reference to a specific 'key' within a Secret resource, In some instances, `key` is a required field.
+    A reference to a specific 'key' within a Secret resource,
+    In some instances, `key` is a required field.
 
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -1011,6 +1378,9 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderConjurAuthJwt:
     ----------
     account : str, default is Undefined, required
         account
+    hostId : str, default is Undefined, optional
+        Optional HostID for JWT authentication. This may be used depending
+        on how the Conjur JWT authenticator policy is configured.
     secretRef : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderConjurAuthJwtSecretRef, default is Undefined, optional
         secret ref
     serviceAccountRef : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderConjurAuthJwtServiceAccountRef, default is Undefined, optional
@@ -1022,6 +1392,8 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderConjurAuthJwt:
 
     account: str
 
+    hostId?: str
+
     secretRef?: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderConjurAuthJwtSecretRef
 
     serviceAccountRef?: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderConjurAuthJwtServiceAccountRef
@@ -1031,16 +1403,19 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderConjurAuthJwt:
 
 schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderConjurAuthJwtSecretRef:
     """
-    Optional SecretRef that refers to a key in a Secret resource containing JWT token to authenticate with Conjur using the JWT authentication method.
+    Optional SecretRef that refers to a key in a Secret resource containing JWT token to
+    authenticate with Conjur using the JWT authentication method.
 
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -1053,16 +1428,20 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderConjurAuthJwtSecret
 
 schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderConjurAuthJwtServiceAccountRef:
     """
-    Optional ServiceAccountRef specifies the Kubernetes service account for which to request a token for with the `TokenRequest` API.
+    Optional ServiceAccountRef specifies the Kubernetes service account for which to request
+    a token for with the `TokenRequest` API.
 
     Attributes
     ----------
     audiences : [str], default is Undefined, optional
-        Audience specifies the `aud` claim for the service account token If the service account uses a well-known annotation for e.g. IRSA or GCP Workload Identity then this audiences will be appended to the list
+        Audience specifies the `aud` claim for the service account token
+        If the service account uses a well-known annotation for e.g. IRSA or GCP Workload Identity
+        then this audiences will be appended to the list
     name : str, default is Undefined, required
         The name of the ServiceAccount resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -1075,7 +1454,9 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderConjurAuthJwtServic
 
 schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderConjurCaProvider:
     """
-    Used to provide custom certificate authority (CA) certificates for a secret store. The CAProvider points to a Secret or ConfigMap resource that contains a PEM-encoded certificate.
+    Used to provide custom certificate authority (CA) certificates
+    for a secret store. The CAProvider points to a Secret or ConfigMap resource
+    that contains a PEM-encoded certificate.
 
     Attributes
     ----------
@@ -1084,7 +1465,8 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderConjurCaProvider:
     name : str, default is Undefined, required
         The name of the object located at the provider type.
     namespace : str, default is Undefined, optional
-        The namespace the Provider type is in. Can only be defined when used in a ClusterSecretStore.
+        The namespace the Provider type is in.
+        Can only be defined when used in a ClusterSecretStore.
     $type : str, default is Undefined, required
         The type of provider to use such as "Secret", or "ConfigMap".
     """
@@ -1101,7 +1483,8 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderConjurCaProvider:
 
 schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderDelinea:
     """
-    Delinea DevOps Secrets Vault https://docs.delinea.com/online-help/products/devops-secrets-vault/current
+    Delinea DevOps Secrets Vault
+    https://docs.delinea.com/online-help/products/devops-secrets-vault/current
 
     Attributes
     ----------
@@ -1112,9 +1495,11 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderDelinea:
     tenant : str, default is Undefined, required
         Tenant is the chosen hostname / site name.
     tld : str, default is Undefined, optional
-        TLD is based on the server location that was chosen during provisioning. If unset, defaults to "com".
+        TLD is based on the server location that was chosen during provisioning.
+        If unset, defaults to "com".
     urlTemplate : str, default is Undefined, optional
-        URLTemplate If unset, defaults to "https://%s.secretsvaultcloud.%s/v1/%s%s".
+        URLTemplate
+        If unset, defaults to "https://%s.secretsvaultcloud.%s/v1/%s%s".
     """
 
 
@@ -1154,11 +1539,13 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderDelineaClientIDSecr
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -1194,11 +1581,83 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderDelineaClientSecret
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
+    """
+
+
+    key?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderDevice42:
+    """
+    Device42 configures this store to sync secrets using the Device42 provider
+
+    Attributes
+    ----------
+    auth : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderDevice42Auth, default is Undefined, required
+        auth
+    host : str, default is Undefined, required
+        URL configures the Device42 instance URL.
+    """
+
+
+    auth: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderDevice42Auth
+
+    host: str
+
+
+schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderDevice42Auth:
+    """
+    Auth configures how secret-manager authenticates with a Device42 instance.
+
+    Attributes
+    ----------
+    secretRef : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderDevice42AuthSecretRef, default is Undefined, required
+        secret ref
+    """
+
+
+    secretRef: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderDevice42AuthSecretRef
+
+
+schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderDevice42AuthSecretRef:
+    """
+    external secrets io v1beta1 cluster secret store spec provider device42 auth secret ref
+
+    Attributes
+    ----------
+    credentials : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderDevice42AuthSecretRefCredentials, default is Undefined, optional
+        credentials
+    """
+
+
+    credentials?: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderDevice42AuthSecretRefCredentials
+
+
+schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderDevice42AuthSecretRefCredentials:
+    """
+    Username / Password is used for authentication.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, optional
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
+    name : str, default is Undefined, optional
+        The name of the Secret resource being referred to.
+    namespace : str, default is Undefined, optional
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -1269,16 +1728,20 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderDopplerAuthSecretRe
 
 schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderDopplerAuthSecretRefDopplerToken:
     """
-    The DopplerToken is used for authentication. See https://docs.doppler.com/reference/api#authentication for auth token types. The Key attribute defaults to dopplerToken if not specified.
+    The DopplerToken is used for authentication.
+    See https://docs.doppler.com/reference/api#authentication for auth token types.
+    The Key attribute defaults to dopplerToken if not specified.
 
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -1314,7 +1777,7 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderFakeDataItems0:
     value : str, default is Undefined, optional
         value
     valueMap : {str:str}, default is Undefined, optional
-        value map
+        Deprecated: ValueMap is deprecated and is intended to be removed in the future, use the `value` field instead.
     version : str, default is Undefined, optional
         version
     """
@@ -1329,6 +1792,62 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderFakeDataItems0:
     version?: str
 
 
+schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderFortanix:
+    """
+    Fortanix configures this store to sync secrets using the Fortanix provider
+
+    Attributes
+    ----------
+    apiKey : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderFortanixAPIKey, default is Undefined, optional
+        api key
+    apiUrl : str, default is Undefined, optional
+        APIURL is the URL of SDKMS API. Defaults to `sdkms.fortanix.com`.
+    """
+
+
+    apiKey?: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderFortanixAPIKey
+
+    apiUrl?: str
+
+
+schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderFortanixAPIKey:
+    """
+    APIKey is the API token to access SDKMS Applications.
+
+    Attributes
+    ----------
+    secretRef : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderFortanixAPIKeySecretRef, default is Undefined, optional
+        secret ref
+    """
+
+
+    secretRef?: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderFortanixAPIKeySecretRef
+
+
+schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderFortanixAPIKeySecretRef:
+    """
+    SecretRef is a reference to a secret containing the SDKMS API Key.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, optional
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
+    name : str, default is Undefined, optional
+        The name of the Secret resource being referred to.
+    namespace : str, default is Undefined, optional
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
+    """
+
+
+    key?: str
+
+    name?: str
+
+    namespace?: str
+
+
 schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderGcpsm:
     """
     GCPSM configures this store to sync secrets using Google Cloud Platform Secret Manager provider
@@ -1337,12 +1856,16 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderGcpsm:
     ----------
     auth : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderGcpsmAuth, default is Undefined, optional
         auth
+    location : str, default is Undefined, optional
+        Location optionally defines a location for a secret
     projectID : str, default is Undefined, optional
         ProjectID project where secret is located
     """
 
 
     auth?: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderGcpsmAuth
+
+    location?: str
 
     projectID?: str
 
@@ -1386,11 +1909,13 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderGcpsmAuthSecretRefS
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -1434,11 +1959,14 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderGcpsmAuthWorkloadId
     Attributes
     ----------
     audiences : [str], default is Undefined, optional
-        Audience specifies the `aud` claim for the service account token If the service account uses a well-known annotation for e.g. IRSA or GCP Workload Identity then this audiences will be appended to the list
+        Audience specifies the `aud` claim for the service account token
+        If the service account uses a well-known annotation for e.g. IRSA or GCP Workload Identity
+        then this audiences will be appended to the list
     name : str, default is Undefined, required
         The name of the ServiceAccount resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -1518,11 +2046,13 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderGitlabAuthSecretRef
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -1612,11 +2142,13 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderIbmAuthSecretRefSec
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -1625,6 +2157,132 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderIbmAuthSecretRefSec
     name?: str
 
     namespace?: str
+
+
+schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderInfisical:
+    """
+    Infisical configures this store to sync secrets using the Infisical provider
+
+    Attributes
+    ----------
+    auth : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderInfisicalAuth, default is Undefined, required
+        auth
+    hostAPI : str, default is "https://app.infisical.com/api", optional
+        host API
+    secretsScope : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderInfisicalSecretsScope, default is Undefined, required
+        secrets scope
+    """
+
+
+    auth: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderInfisicalAuth
+
+    hostAPI?: str = "https://app.infisical.com/api"
+
+    secretsScope: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderInfisicalSecretsScope
+
+
+schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderInfisicalAuth:
+    """
+    Auth configures how the Operator authenticates with the Infisical API
+
+    Attributes
+    ----------
+    universalAuthCredentials : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderInfisicalAuthUniversalAuthCredentials, default is Undefined, optional
+        universal auth credentials
+    """
+
+
+    universalAuthCredentials?: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderInfisicalAuthUniversalAuthCredentials
+
+
+schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderInfisicalAuthUniversalAuthCredentials:
+    """
+    external secrets io v1beta1 cluster secret store spec provider infisical auth universal auth credentials
+
+    Attributes
+    ----------
+    clientId : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderInfisicalAuthUniversalAuthCredentialsClientID, default is Undefined, required
+        client Id
+    clientSecret : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderInfisicalAuthUniversalAuthCredentialsClientSecret, default is Undefined, required
+        client secret
+    """
+
+
+    clientId: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderInfisicalAuthUniversalAuthCredentialsClientID
+
+    clientSecret: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderInfisicalAuthUniversalAuthCredentialsClientSecret
+
+
+schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderInfisicalAuthUniversalAuthCredentialsClientID:
+    """
+    A reference to a specific 'key' within a Secret resource,
+    In some instances, `key` is a required field.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, optional
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
+    name : str, default is Undefined, optional
+        The name of the Secret resource being referred to.
+    namespace : str, default is Undefined, optional
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
+    """
+
+
+    key?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderInfisicalAuthUniversalAuthCredentialsClientSecret:
+    """
+    A reference to a specific 'key' within a Secret resource,
+    In some instances, `key` is a required field.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, optional
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
+    name : str, default is Undefined, optional
+        The name of the Secret resource being referred to.
+    namespace : str, default is Undefined, optional
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
+    """
+
+
+    key?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderInfisicalSecretsScope:
+    """
+    external secrets io v1beta1 cluster secret store spec provider infisical secrets scope
+
+    Attributes
+    ----------
+    environmentSlug : str, default is Undefined, required
+        environment slug
+    projectSlug : str, default is Undefined, required
+        project slug
+    secretsPath : str, default is "/", optional
+        secrets path
+    """
+
+
+    environmentSlug: str
+
+    projectSlug: str
+
+    secretsPath?: str = "/"
 
 
 schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderKeepersecurity:
@@ -1647,16 +2305,19 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderKeepersecurity:
 
 schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderKeepersecurityAuthRef:
     """
-    A reference to a specific 'key' within a Secret resource, In some instances, `key` is a required field.
+    A reference to a specific 'key' within a Secret resource,
+    In some instances, `key` is a required field.
 
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -1673,8 +2334,10 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderKubernetes:
 
     Attributes
     ----------
-    auth : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderKubernetesAuth, default is Undefined, required
+    auth : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderKubernetesAuth, default is Undefined, optional
         auth
+    authRef : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderKubernetesAuthRef, default is Undefined, optional
+        auth ref
     remoteNamespace : str, default is "default", optional
         Remote namespace to fetch the secrets from
     server : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderKubernetesServer, default is Undefined, optional
@@ -1682,7 +2345,9 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderKubernetes:
     """
 
 
-    auth: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderKubernetesAuth
+    auth?: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderKubernetesAuth
+
+    authRef?: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderKubernetesAuthRef
 
     remoteNamespace?: str = "default"
 
@@ -1731,16 +2396,19 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderKubernetesAuthCert:
 
 schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderKubernetesAuthCertClientCert:
     """
-    A reference to a specific 'key' within a Secret resource, In some instances, `key` is a required field.
+    A reference to a specific 'key' within a Secret resource,
+    In some instances, `key` is a required field.
 
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -1753,16 +2421,43 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderKubernetesAuthCertC
 
 schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderKubernetesAuthCertClientKey:
     """
-    A reference to a specific 'key' within a Secret resource, In some instances, `key` is a required field.
+    A reference to a specific 'key' within a Secret resource,
+    In some instances, `key` is a required field.
 
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
+    """
+
+
+    key?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderKubernetesAuthRef:
+    """
+    A reference to a secret that contains the auth information.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, optional
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
+    name : str, default is Undefined, optional
+        The name of the Secret resource being referred to.
+    namespace : str, default is Undefined, optional
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -1780,11 +2475,14 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderKubernetesAuthServi
     Attributes
     ----------
     audiences : [str], default is Undefined, optional
-        Audience specifies the `aud` claim for the service account token If the service account uses a well-known annotation for e.g. IRSA or GCP Workload Identity then this audiences will be appended to the list
+        Audience specifies the `aud` claim for the service account token
+        If the service account uses a well-known annotation for e.g. IRSA or GCP Workload Identity
+        then this audiences will be appended to the list
     name : str, default is Undefined, required
         The name of the ServiceAccount resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -1811,16 +2509,19 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderKubernetesAuthToken
 
 schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderKubernetesAuthTokenBearerToken:
     """
-    A reference to a specific 'key' within a Secret resource, In some instances, `key` is a required field.
+    A reference to a specific 'key' within a Secret resource,
+    In some instances, `key` is a required field.
 
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -1864,7 +2565,8 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderKubernetesServerCaP
     name : str, default is Undefined, required
         The name of the object located at the provider type.
     namespace : str, default is Undefined, optional
-        The namespace the Provider type is in. Can only be defined when used in a ClusterSecretStore.
+        The namespace the Provider type is in.
+        Can only be defined when used in a ClusterSecretStore.
     $type : str, default is Undefined, required
         The type of provider to use such as "Secret", or "ConfigMap".
     """
@@ -1877,6 +2579,99 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderKubernetesServerCaP
     namespace?: str
 
     $type: "Secret" | "ConfigMap"
+
+
+schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderOnboardbase:
+    """
+    Onboardbase configures this store to sync secrets using the Onboardbase provider
+
+    Attributes
+    ----------
+    apiHost : str, default is "https://public.onboardbase.com/api/v1/", required
+        APIHost use this to configure the host url for the API for selfhosted installation, default is https://public.onboardbase.com/api/v1/
+    auth : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderOnboardbaseAuth, default is Undefined, required
+        auth
+    environment : str, default is "development", required
+        Environment is the name of an environmnent within a project to pull the secrets from
+    project : str, default is "development", required
+        Project is an onboardbase project that the secrets should be pulled from
+    """
+
+
+    apiHost: str = "https://public.onboardbase.com/api/v1/"
+
+    auth: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderOnboardbaseAuth
+
+    environment: str = "development"
+
+    project: str = "development"
+
+
+schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderOnboardbaseAuth:
+    """
+    Auth configures how the Operator authenticates with the Onboardbase API
+
+    Attributes
+    ----------
+    apiKeyRef : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderOnboardbaseAuthAPIKeyRef, default is Undefined, required
+        api key ref
+    passcodeRef : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderOnboardbaseAuthPasscodeRef, default is Undefined, required
+        passcode ref
+    """
+
+
+    apiKeyRef: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderOnboardbaseAuthAPIKeyRef
+
+    passcodeRef: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderOnboardbaseAuthPasscodeRef
+
+
+schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderOnboardbaseAuthAPIKeyRef:
+    """
+    OnboardbaseAPIKey is the APIKey generated by an admin account.
+    It is used to recognize and authorize access to a project and environment within onboardbase
+
+    Attributes
+    ----------
+    key : str, default is Undefined, optional
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
+    name : str, default is Undefined, optional
+        The name of the Secret resource being referred to.
+    namespace : str, default is Undefined, optional
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
+    """
+
+
+    key?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderOnboardbaseAuthPasscodeRef:
+    """
+    OnboardbasePasscode is the passcode attached to the API Key
+
+    Attributes
+    ----------
+    key : str, default is Undefined, optional
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
+    name : str, default is Undefined, optional
+        The name of the Secret resource being referred to.
+    namespace : str, default is Undefined, optional
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
+    """
+
+
+    key?: str
+
+    name?: str
+
+    namespace?: str
 
 
 schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderOnepassword:
@@ -1936,11 +2731,13 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderOnepasswordAuthSecr
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -1960,11 +2757,15 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderOracle:
     auth : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderOracleAuth, default is Undefined, optional
         auth
     compartment : str, default is Undefined, optional
-        Compartment is the vault compartment OCID. Required for PushSecret
+        Compartment is the vault compartment OCID.
+        Required for PushSecret
     encryptionKey : str, default is Undefined, optional
-        EncryptionKey is the OCID of the encryption key within the vault. Required for PushSecret
+        EncryptionKey is the OCID of the encryption key within the vault.
+        Required for PushSecret
     principalType : str, default is Undefined, optional
-        The type of principal to use for authentication. If left blank, the Auth struct will determine the principal type. This optional field must be specified if using workload identity.
+        The type of principal to use for authentication. If left blank, the Auth struct will
+        determine the principal type. This optional field must be specified if using
+        workload identity.
     region : str, default is Undefined, required
         Region is the region where vault is located.
     serviceAccountRef : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderOracleServiceAccountRef, default is Undefined, optional
@@ -1980,7 +2781,7 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderOracle:
 
     encryptionKey?: str
 
-    principalType?: str
+    principalType?: "" | "UserPrincipal" | "InstancePrincipal" | "Workload"
 
     region: str
 
@@ -1991,7 +2792,8 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderOracle:
 
 schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderOracleAuth:
     """
-    Auth configures how secret-manager authenticates with the Oracle Vault. If empty, use the instance principal, otherwise the user credentials specified in Auth.
+    Auth configures how secret-manager authenticates with the Oracle Vault.
+    If empty, use the instance principal, otherwise the user credentials specified in Auth.
 
     Attributes
     ----------
@@ -2036,11 +2838,13 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderOracleAuthSecretRef
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -2058,11 +2862,13 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderOracleAuthSecretRef
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -2075,22 +2881,254 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderOracleAuthSecretRef
 
 schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderOracleServiceAccountRef:
     """
-    ServiceAccountRef specified the service account that should be used when authenticating with WorkloadIdentity.
+    ServiceAccountRef specified the service account
+    that should be used when authenticating with WorkloadIdentity.
 
     Attributes
     ----------
     audiences : [str], default is Undefined, optional
-        Audience specifies the `aud` claim for the service account token If the service account uses a well-known annotation for e.g. IRSA or GCP Workload Identity then this audiences will be appended to the list
+        Audience specifies the `aud` claim for the service account token
+        If the service account uses a well-known annotation for e.g. IRSA or GCP Workload Identity
+        then this audiences will be appended to the list
     name : str, default is Undefined, required
         The name of the ServiceAccount resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
     audiences?: [str]
 
     name: str
+
+    namespace?: str
+
+
+schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderPassbolt:
+    """
+    external secrets io v1beta1 cluster secret store spec provider passbolt
+
+    Attributes
+    ----------
+    auth : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderPassboltAuth, default is Undefined, required
+        auth
+    host : str, default is Undefined, required
+        Host defines the Passbolt Server to connect to
+    """
+
+
+    auth: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderPassboltAuth
+
+    host: str
+
+
+schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderPassboltAuth:
+    """
+    Auth defines the information necessary to authenticate against Passbolt Server
+
+    Attributes
+    ----------
+    passwordSecretRef : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderPassboltAuthPasswordSecretRef, default is Undefined, required
+        password secret ref
+    privateKeySecretRef : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderPassboltAuthPrivateKeySecretRef, default is Undefined, required
+        private key secret ref
+    """
+
+
+    passwordSecretRef: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderPassboltAuthPasswordSecretRef
+
+    privateKeySecretRef: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderPassboltAuthPrivateKeySecretRef
+
+
+schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderPassboltAuthPasswordSecretRef:
+    """
+    A reference to a specific 'key' within a Secret resource,
+    In some instances, `key` is a required field.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, optional
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
+    name : str, default is Undefined, optional
+        The name of the Secret resource being referred to.
+    namespace : str, default is Undefined, optional
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
+    """
+
+
+    key?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderPassboltAuthPrivateKeySecretRef:
+    """
+    A reference to a specific 'key' within a Secret resource,
+    In some instances, `key` is a required field.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, optional
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
+    name : str, default is Undefined, optional
+        The name of the Secret resource being referred to.
+    namespace : str, default is Undefined, optional
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
+    """
+
+
+    key?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderPassworddepot:
+    """
+    Configures a store to sync secrets with a Password Depot instance.
+
+    Attributes
+    ----------
+    auth : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderPassworddepotAuth, default is Undefined, required
+        auth
+    database : str, default is Undefined, required
+        Database to use as source
+    host : str, default is Undefined, required
+        URL configures the Password Depot instance URL.
+    """
+
+
+    auth: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderPassworddepotAuth
+
+    database: str
+
+    host: str
+
+
+schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderPassworddepotAuth:
+    """
+    Auth configures how secret-manager authenticates with a Password Depot instance.
+
+    Attributes
+    ----------
+    secretRef : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderPassworddepotAuthSecretRef, default is Undefined, required
+        secret ref
+    """
+
+
+    secretRef: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderPassworddepotAuthSecretRef
+
+
+schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderPassworddepotAuthSecretRef:
+    """
+    external secrets io v1beta1 cluster secret store spec provider passworddepot auth secret ref
+
+    Attributes
+    ----------
+    credentials : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderPassworddepotAuthSecretRefCredentials, default is Undefined, optional
+        credentials
+    """
+
+
+    credentials?: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderPassworddepotAuthSecretRefCredentials
+
+
+schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderPassworddepotAuthSecretRefCredentials:
+    """
+    Username / Password is used for authentication.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, optional
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
+    name : str, default is Undefined, optional
+        The name of the Secret resource being referred to.
+    namespace : str, default is Undefined, optional
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
+    """
+
+
+    key?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderPulumi:
+    """
+    Pulumi configures this store to sync secrets using the Pulumi provider
+
+    Attributes
+    ----------
+    accessToken : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderPulumiAccessToken, default is Undefined, required
+        access token
+    apiUrl : str, default is "https://api.pulumi.com", optional
+        APIURL is the URL of the Pulumi API.
+    environment : str, default is Undefined, required
+        Environment are YAML documents composed of static key-value pairs, programmatic expressions,
+        dynamically retrieved values from supported providers including all major clouds,
+        and other Pulumi ESC environments.
+        To create a new environment, visit https://www.pulumi.com/docs/esc/environments/ for more information.
+    organization : str, default is Undefined, required
+        Organization are a space to collaborate on shared projects and stacks.
+        To create a new organization, visit https://app.pulumi.com/ and click "New Organization".
+    """
+
+
+    accessToken: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderPulumiAccessToken
+
+    apiUrl?: str = "https://api.pulumi.com"
+
+    environment: str
+
+    organization: str
+
+
+schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderPulumiAccessToken:
+    """
+    AccessToken is the access tokens to sign in to the Pulumi Cloud Console.
+
+    Attributes
+    ----------
+    secretRef : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderPulumiAccessTokenSecretRef, default is Undefined, optional
+        secret ref
+    """
+
+
+    secretRef?: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderPulumiAccessTokenSecretRef
+
+
+schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderPulumiAccessTokenSecretRef:
+    """
+    SecretRef is a reference to a secret containing the Pulumi API token.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, optional
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
+    name : str, default is Undefined, optional
+        The name of the Secret resource being referred to.
+    namespace : str, default is Undefined, optional
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
+    """
+
+
+    key?: str
+
+    name?: str
 
     namespace?: str
 
@@ -2150,11 +3188,13 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderScalewayAccessKeySe
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -2190,11 +3230,121 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderScalewaySecretKeySe
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
+    """
+
+
+    key?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderSecretserver:
+    """
+    SecretServer configures this store to sync secrets using SecretServer provider
+    https://docs.delinea.com/online-help/secret-server/start.htm
+
+    Attributes
+    ----------
+    password : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderSecretserverPassword, default is Undefined, required
+        password
+    serverURL : str, default is Undefined, required
+        ServerURL
+        URL to your secret server installation
+    username : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderSecretserverUsername, default is Undefined, required
+        username
+    """
+
+
+    password: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderSecretserverPassword
+
+    serverURL: str
+
+    username: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderSecretserverUsername
+
+
+schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderSecretserverPassword:
+    """
+    Password is the secret server account password.
+
+    Attributes
+    ----------
+    secretRef : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderSecretserverPasswordSecretRef, default is Undefined, optional
+        secret ref
+    value : str, default is Undefined, optional
+        Value can be specified directly to set a value without using a secret.
+    """
+
+
+    secretRef?: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderSecretserverPasswordSecretRef
+
+    value?: str
+
+
+schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderSecretserverPasswordSecretRef:
+    """
+    SecretRef references a key in a secret that will be used as value.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, optional
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
+    name : str, default is Undefined, optional
+        The name of the Secret resource being referred to.
+    namespace : str, default is Undefined, optional
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
+    """
+
+
+    key?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderSecretserverUsername:
+    """
+    Username is the secret server account username.
+
+    Attributes
+    ----------
+    secretRef : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderSecretserverUsernameSecretRef, default is Undefined, optional
+        secret ref
+    value : str, default is Undefined, optional
+        Value can be specified directly to set a value without using a secret.
+    """
+
+
+    secretRef?: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderSecretserverUsernameSecretRef
+
+    value?: str
+
+
+schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderSecretserverUsernameSecretRef:
+    """
+    SecretRef references a key in a secret that will be used as value.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, optional
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
+    name : str, default is Undefined, optional
+        The name of the Secret resource being referred to.
+    namespace : str, default is Undefined, optional
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -2251,16 +3401,19 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderSenhaseguraAuth:
 
 schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderSenhaseguraAuthClientSecretSecretRef:
     """
-    A reference to a specific 'key' within a Secret resource, In some instances, `key` is a required field.
+    A reference to a specific 'key' within a Secret resource,
+    In some instances, `key` is a required field.
 
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -2280,21 +3433,40 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVault:
     auth : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuth, default is Undefined, required
         auth
     caBundle : str, default is Undefined, optional
-        PEM encoded CA bundle used to validate Vault server certificate. Only used if the Server URL is using HTTPS protocol. This parameter is ignored for plain HTTP protocol connection. If not set the system root certificates are used to validate the TLS connection.
+        PEM encoded CA bundle used to validate Vault server certificate. Only used
+        if the Server URL is using HTTPS protocol. This parameter is ignored for
+        plain HTTP protocol connection. If not set the system root certificates
+        are used to validate the TLS connection.
     caProvider : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultCaProvider, default is Undefined, optional
         ca provider
     forwardInconsistent : bool, default is Undefined, optional
-        ForwardInconsistent tells Vault to forward read-after-write requests to the Vault leader instead of simply retrying within a loop. This can increase performance if the option is enabled serverside. https://www.vaultproject.io/docs/configuration/replication#allow_forwarding_via_header
+        ForwardInconsistent tells Vault to forward read-after-write requests to the Vault
+        leader instead of simply retrying within a loop. This can increase performance if
+        the option is enabled serverside.
+        https://www.vaultproject.io/docs/configuration/replication#allow_forwarding_via_header
+    headers : {str:str}, default is Undefined, optional
+        Headers to be added in Vault request
     namespace : str, default is Undefined, optional
-        Name of the vault namespace. Namespaces is a set of features within Vault Enterprise that allows Vault environments to support Secure Multi-tenancy. e.g: "ns1". More about namespaces can be found here https://www.vaultproject.io/docs/enterprise/namespaces
+        Name of the vault namespace. Namespaces is a set of features within Vault Enterprise that allows
+        Vault environments to support Secure Multi-tenancy. e.g: "ns1".
+        More about namespaces can be found here https://www.vaultproject.io/docs/enterprise/namespaces
     path : str, default is Undefined, optional
-        Path is the mount path of the Vault KV backend endpoint, e.g: "secret". The v2 KV secret engine version specific "/data" path suffix for fetching secrets from Vault is optional and will be appended if not present in specified path.
+        Path is the mount path of the Vault KV backend endpoint, e.g:
+        "secret". The v2 KV secret engine version specific "/data" path suffix
+        for fetching secrets from Vault is optional and will be appended
+        if not present in specified path.
     readYourWrites : bool, default is Undefined, optional
-        ReadYourWrites ensures isolated read-after-write semantics by providing discovered cluster replication states in each request. More information about eventual consistency in Vault can be found here https://www.vaultproject.io/docs/enterprise/consistency
+        ReadYourWrites ensures isolated read-after-write semantics by
+        providing discovered cluster replication states in each request.
+        More information about eventual consistency in Vault can be found here
+        https://www.vaultproject.io/docs/enterprise/consistency
     server : str, default is Undefined, required
         Server is the connection address for the Vault server, e.g: "https://vault.example.com:8200".
+    tls : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultTLS, default is Undefined, optional
+        tls
     version : str, default is "v2", optional
-        Version is the Vault KV secret engine version. This can be either "v1" or "v2". Version defaults to "v2".
+        Version is the Vault KV secret engine version. This can be either "v1" or
+        "v2". Version defaults to "v2".
     """
 
 
@@ -2306,6 +3478,8 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVault:
 
     forwardInconsistent?: bool
 
+    headers?: {str:str}
+
     namespace?: str
 
     path?: str
@@ -2313,6 +3487,8 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVault:
     readYourWrites?: bool
 
     server: str
+
+    tls?: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultTLS
 
     version?: "v1" | "v2" = "v2"
 
@@ -2335,6 +3511,12 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuth:
         kubernetes
     ldap : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuthLdap, default is Undefined, optional
         ldap
+    namespace : str, default is Undefined, optional
+        Name of the vault namespace to authenticate to. This can be different than the namespace your secret is in.
+        Namespaces is a set of features within Vault Enterprise that allows
+        Vault environments to support Secure Multi-tenancy. e.g: "ns1".
+        More about namespaces can be found here https://www.vaultproject.io/docs/enterprise/namespaces
+        This will default to Vault.Namespace field if set, or empty otherwise
     tokenSecretRef : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuthTokenSecretRef, default is Undefined, optional
         token secret ref
     userPass : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuthUserPass, default is Undefined, optional
@@ -2354,6 +3536,8 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuth:
 
     ldap?: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuthLdap
 
+    namespace?: str
+
     tokenSecretRef?: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuthTokenSecretRef
 
     userPass?: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuthUserPass
@@ -2361,14 +3545,17 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuth:
 
 schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuthAppRole:
     """
-    AppRole authenticates with Vault using the App Role auth mechanism, with the role and secret stored in a Kubernetes Secret resource.
+    AppRole authenticates with Vault using the App Role auth mechanism,
+    with the role and secret stored in a Kubernetes Secret resource.
 
     Attributes
     ----------
     path : str, default is "approle", required
-        Path where the App Role authentication backend is mounted in Vault, e.g: "approle"
+        Path where the App Role authentication backend is mounted
+        in Vault, e.g: "approle"
     roleId : str, default is Undefined, optional
-        RoleID configured in the App Role authentication backend when setting up the authentication backend in Vault.
+        RoleID configured in the App Role authentication backend when setting
+        up the authentication backend in Vault.
     roleRef : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuthAppRoleRoleRef, default is Undefined, optional
         role ref
     secretRef : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuthAppRoleSecretRef, default is Undefined, required
@@ -2387,16 +3574,21 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuthAppRole:
 
 schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuthAppRoleRoleRef:
     """
-    Reference to a key in a Secret that contains the App Role ID used to authenticate with Vault. The `key` field must be specified and denotes which entry within the Secret resource is used as the app role id.
+    Reference to a key in a Secret that contains the App Role ID used
+    to authenticate with Vault.
+    The `key` field must be specified and denotes which entry within the Secret
+    resource is used as the app role id.
 
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -2409,16 +3601,21 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuthAppRoleRol
 
 schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuthAppRoleSecretRef:
     """
-    Reference to a key in a Secret that contains the App Role secret used to authenticate with Vault. The `key` field must be specified and denotes which entry within the Secret resource is used as the app role secret.
+    Reference to a key in a Secret that contains the App Role secret used
+    to authenticate with Vault.
+    The `key` field must be specified and denotes which entry within the Secret
+    resource is used as the app role secret.
 
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -2431,7 +3628,8 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuthAppRoleSec
 
 schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuthCert:
     """
-    Cert authenticates with TLS Certificates by passing client certificate, private key and ca certificate Cert authentication method
+    Cert authenticates with TLS Certificates by passing client certificate, private key and ca certificate
+    Cert authentication method
 
     Attributes
     ----------
@@ -2449,16 +3647,19 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuthCert:
 
 schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuthCertClientCert:
     """
-    ClientCert is a certificate to authenticate using the Cert Vault authentication method
+    ClientCert is a certificate to authenticate using the Cert Vault
+    authentication method
 
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -2471,16 +3672,19 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuthCertClient
 
 schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuthCertSecretRef:
     """
-    SecretRef to a key in a Secret resource containing client private key to authenticate with Vault using the Cert authentication method
+    SecretRef to a key in a Secret resource containing client private key to
+    authenticate with Vault using the Cert authentication method
 
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -2493,7 +3697,8 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuthCertSecret
 
 schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuthIam:
     """
-    Iam authenticates with vault by passing a special AWS request signed with AWS IAM credentials AWS IAM authentication method
+    Iam authenticates with vault by passing a special AWS request signed with AWS IAM credentials
+    AWS IAM authentication method
 
     Attributes
     ----------
@@ -2554,11 +3759,14 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuthIamJwtServ
     Attributes
     ----------
     audiences : [str], default is Undefined, optional
-        Audience specifies the `aud` claim for the service account token If the service account uses a well-known annotation for e.g. IRSA or GCP Workload Identity then this audiences will be appended to the list
+        Audience specifies the `aud` claim for the service account token
+        If the service account uses a well-known annotation for e.g. IRSA or GCP Workload Identity
+        then this audiences will be appended to the list
     name : str, default is Undefined, required
         The name of the ServiceAccount resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -2598,11 +3806,13 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuthIamSecretR
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -2620,11 +3830,13 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuthIamSecretR
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -2637,16 +3849,20 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuthIamSecretR
 
 schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuthIamSecretRefSessionTokenSecretRef:
     """
-    The SessionToken used for authentication This must be defined if AccessKeyID and SecretAccessKey are temporary credentials see: https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_use-resources.html
+    The SessionToken used for authentication
+    This must be defined if AccessKeyID and SecretAccessKey are temporary credentials
+    see: https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_use-resources.html
 
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -2659,16 +3875,19 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuthIamSecretR
 
 schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuthJwt:
     """
-    Jwt authenticates with Vault by passing role and JWT token using the JWT/OIDC authentication method
+    Jwt authenticates with Vault by passing role and JWT token using the
+    JWT/OIDC authentication method
 
     Attributes
     ----------
     kubernetesServiceAccountToken : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuthJwtKubernetesServiceAccountToken, default is Undefined, optional
         kubernetes service account token
     path : str, default is "jwt", required
-        Path where the JWT authentication backend is mounted in Vault, e.g: "jwt"
+        Path where the JWT authentication backend is mounted
+        in Vault, e.g: "jwt"
     role : str, default is Undefined, optional
-        Role is a JWT role to authenticate using the JWT/OIDC Vault authentication method
+        Role is a JWT role to authenticate using the JWT/OIDC Vault
+        authentication method
     secretRef : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuthJwtSecretRef, default is Undefined, optional
         secret ref
     """
@@ -2685,14 +3904,22 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuthJwt:
 
 schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuthJwtKubernetesServiceAccountToken:
     """
-    Optional ServiceAccountToken specifies the Kubernetes service account for which to request a token for with the `TokenRequest` API.
+    Optional ServiceAccountToken specifies the Kubernetes service account for which to request
+    a token for with the `TokenRequest` API.
 
     Attributes
     ----------
     audiences : [str], default is Undefined, optional
-        Optional audiences field that will be used to request a temporary Kubernetes service account token for the service account referenced by `serviceAccountRef`. Defaults to a single audience `vault` it not specified. Deprecated: use serviceAccountRef.Audiences instead
+        Optional audiences field that will be used to request a temporary Kubernetes service
+        account token for the service account referenced by `serviceAccountRef`.
+        Defaults to a single audience `vault` it not specified.
+        Deprecated: use serviceAccountRef.Audiences instead
     expirationSeconds : int, default is Undefined, optional
-        Optional expiration time in seconds that will be used to request a temporary Kubernetes service account token for the service account referenced by `serviceAccountRef`. Deprecated: this will be removed in the future. Defaults to 10 minutes.
+        Optional expiration time in seconds that will be used to request a temporary
+        Kubernetes service account token for the service account referenced by
+        `serviceAccountRef`.
+        Deprecated: this will be removed in the future.
+        Defaults to 10 minutes.
     serviceAccountRef : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuthJwtKubernetesServiceAccountTokenServiceAccountRef, default is Undefined, required
         service account ref
     """
@@ -2712,11 +3939,14 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuthJwtKuberne
     Attributes
     ----------
     audiences : [str], default is Undefined, optional
-        Audience specifies the `aud` claim for the service account token If the service account uses a well-known annotation for e.g. IRSA or GCP Workload Identity then this audiences will be appended to the list
+        Audience specifies the `aud` claim for the service account token
+        If the service account uses a well-known annotation for e.g. IRSA or GCP Workload Identity
+        then this audiences will be appended to the list
     name : str, default is Undefined, required
         The name of the ServiceAccount resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -2729,16 +3959,19 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuthJwtKuberne
 
 schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuthJwtSecretRef:
     """
-    Optional SecretRef that refers to a key in a Secret resource containing JWT token to authenticate with Vault using the JWT/OIDC authentication method.
+    Optional SecretRef that refers to a key in a Secret resource containing JWT token to
+    authenticate with Vault using the JWT/OIDC authentication method.
 
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -2751,14 +3984,17 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuthJwtSecretR
 
 schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuthKubernetes:
     """
-    Kubernetes authenticates with Vault by passing the ServiceAccount token stored in the named Secret resource to the Vault server.
+    Kubernetes authenticates with Vault by passing the ServiceAccount
+    token stored in the named Secret resource to the Vault server.
 
     Attributes
     ----------
     mountPath : str, default is "kubernetes", required
-        Path where the Kubernetes authentication backend is mounted in Vault, e.g: "kubernetes"
+        Path where the Kubernetes authentication backend is mounted in Vault, e.g:
+        "kubernetes"
     role : str, default is Undefined, required
-        A required field containing the Vault Role to assume. A Role binds a Kubernetes ServiceAccount with a set of Vault policies.
+        A required field containing the Vault Role to assume. A Role binds a
+        Kubernetes ServiceAccount with a set of Vault policies.
     secretRef : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuthKubernetesSecretRef, default is Undefined, optional
         secret ref
     serviceAccountRef : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuthKubernetesServiceAccountRef, default is Undefined, optional
@@ -2777,16 +4013,21 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuthKubernetes
 
 schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuthKubernetesSecretRef:
     """
-    Optional secret field containing a Kubernetes ServiceAccount JWT used for authenticating with Vault. If a name is specified without a key, `token` is the default. If one is not specified, the one bound to the controller will be used.
+    Optional secret field containing a Kubernetes ServiceAccount JWT used
+    for authenticating with Vault. If a name is specified without a key,
+    `token` is the default. If one is not specified, the one bound to
+    the controller will be used.
 
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -2799,16 +4040,22 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuthKubernetes
 
 schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuthKubernetesServiceAccountRef:
     """
-    Optional service account field containing the name of a kubernetes ServiceAccount. If the service account is specified, the service account secret token JWT will be used for authenticating with Vault. If the service account selector is not supplied, the secretRef will be used instead.
+    Optional service account field containing the name of a kubernetes ServiceAccount.
+    If the service account is specified, the service account secret token JWT will be used
+    for authenticating with Vault. If the service account selector is not supplied,
+    the secretRef will be used instead.
 
     Attributes
     ----------
     audiences : [str], default is Undefined, optional
-        Audience specifies the `aud` claim for the service account token If the service account uses a well-known annotation for e.g. IRSA or GCP Workload Identity then this audiences will be appended to the list
+        Audience specifies the `aud` claim for the service account token
+        If the service account uses a well-known annotation for e.g. IRSA or GCP Workload Identity
+        then this audiences will be appended to the list
     name : str, default is Undefined, required
         The name of the ServiceAccount resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -2821,16 +4068,19 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuthKubernetes
 
 schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuthLdap:
     """
-    Ldap authenticates with Vault by passing username/password pair using the LDAP authentication method
+    Ldap authenticates with Vault by passing username/password pair using
+    the LDAP authentication method
 
     Attributes
     ----------
     path : str, default is "ldap", required
-        Path where the LDAP authentication backend is mounted in Vault, e.g: "ldap"
+        Path where the LDAP authentication backend is mounted
+        in Vault, e.g: "ldap"
     secretRef : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuthLdapSecretRef, default is Undefined, optional
         secret ref
     username : str, default is Undefined, required
-        Username is a LDAP user name used to authenticate using the LDAP Vault authentication method
+        Username is a LDAP user name used to authenticate using the LDAP Vault
+        authentication method
     """
 
 
@@ -2843,16 +4093,20 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuthLdap:
 
 schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuthLdapSecretRef:
     """
-    SecretRef to a key in a Secret resource containing password for the LDAP user used to authenticate with Vault using the LDAP authentication method
+    SecretRef to a key in a Secret resource containing password for the LDAP
+    user used to authenticate with Vault using the LDAP authentication
+    method
 
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -2870,11 +4124,13 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuthTokenSecre
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -2892,11 +4148,13 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuthUserPass:
     Attributes
     ----------
     path : str, default is "user", required
-        Path where the UserPassword authentication backend is mounted in Vault, e.g: "user"
+        Path where the UserPassword authentication backend is mounted
+        in Vault, e.g: "user"
     secretRef : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuthUserPassSecretRef, default is Undefined, optional
         secret ref
     username : str, default is Undefined, required
-        Username is a user name used to authenticate using the UserPass Vault authentication method
+        Username is a user name used to authenticate using the UserPass Vault
+        authentication method
     """
 
 
@@ -2909,16 +4167,20 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuthUserPass:
 
 schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultAuthUserPassSecretRef:
     """
-    SecretRef to a key in a Secret resource containing password for the user used to authenticate with Vault using the UserPass authentication method
+    SecretRef to a key in a Secret resource containing password for the
+    user used to authenticate with Vault using the UserPass authentication
+    method
 
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -2940,7 +4202,8 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultCaProvider:
     name : str, default is Undefined, required
         The name of the object located at the provider type.
     namespace : str, default is Undefined, optional
-        The namespace the Provider type is in. Can only be defined when used in a ClusterSecretStore.
+        The namespace the Provider type is in.
+        Can only be defined when used in a ClusterSecretStore.
     $type : str, default is Undefined, required
         The type of provider to use such as "Secret", or "ConfigMap".
     """
@@ -2955,6 +4218,80 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultCaProvider:
     $type: "Secret" | "ConfigMap"
 
 
+schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultTLS:
+    """
+    The configuration used for client side related TLS communication, when the Vault server
+    requires mutual authentication. Only used if the Server URL is using HTTPS protocol.
+    This parameter is ignored for plain HTTP protocol connection.
+    It's worth noting this configuration is different from the "TLS certificates auth method",
+    which is available under the `auth.cert` section.
+
+    Attributes
+    ----------
+    certSecretRef : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultTLSCertSecretRef, default is Undefined, optional
+        cert secret ref
+    keySecretRef : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultTLSKeySecretRef, default is Undefined, optional
+        key secret ref
+    """
+
+
+    certSecretRef?: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultTLSCertSecretRef
+
+    keySecretRef?: ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultTLSKeySecretRef
+
+
+schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultTLSCertSecretRef:
+    """
+    CertSecretRef is a certificate added to the transport layer
+    when communicating with the Vault server.
+    If no key for the Secret is specified, external-secret will default to 'tls.crt'.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, optional
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
+    name : str, default is Undefined, optional
+        The name of the Secret resource being referred to.
+    namespace : str, default is Undefined, optional
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
+    """
+
+
+    key?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderVaultTLSKeySecretRef:
+    """
+    KeySecretRef to a key in a Secret resource containing client private key
+    added to the transport layer when communicating with the Vault server.
+    If no key for the Secret is specified, external-secret will default to 'tls.key'.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, optional
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
+    name : str, default is Undefined, optional
+        The name of the Secret resource being referred to.
+    namespace : str, default is Undefined, optional
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
+    """
+
+
+    key?: str
+
+    name?: str
+
+    namespace?: str
+
+
 schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderWebhook:
     """
     Webhook configures this store to sync secrets using a generic templated webhook
@@ -2964,7 +4301,10 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderWebhook:
     body : str, default is Undefined, optional
         Body
     caBundle : str, default is Undefined, optional
-        PEM encoded CA bundle used to validate webhook server certificate. Only used if the Server URL is using HTTPS protocol. This parameter is ignored for plain HTTP protocol connection. If not set the system root certificates are used to validate the TLS connection.
+        PEM encoded CA bundle used to validate webhook server certificate. Only used
+        if the Server URL is using HTTPS protocol. This parameter is ignored for
+        plain HTTP protocol connection. If not set the system root certificates
+        are used to validate the TLS connection.
     caProvider : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderWebhookCaProvider, default is Undefined, optional
         ca provider
     headers : {str:str}, default is Undefined, optional
@@ -2974,7 +4314,8 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderWebhook:
     result : ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderWebhookResult, default is Undefined, required
         result
     secrets : [ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderWebhookSecretsItems0], default is Undefined, optional
-        Secrets to fill in templates These secrets will be passed to the templating function as key value pairs under the given name
+        Secrets to fill in templates
+        These secrets will be passed to the templating function as key value pairs under the given name
     timeout : str, default is Undefined, optional
         Timeout
     url : str, default is Undefined, required
@@ -3066,11 +4407,13 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderWebhookSecretsItems
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -3124,11 +4467,13 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderYandexcertificatema
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -3155,16 +4500,19 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderYandexcertificatema
 
 schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderYandexcertificatemanagerCaProviderCertSecretRef:
     """
-    A reference to a specific 'key' within a Secret resource, In some instances, `key` is a required field.
+    A reference to a specific 'key' within a Secret resource,
+    In some instances, `key` is a required field.
 
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -3218,11 +4566,13 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderYandexlockboxAuthAu
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -3249,16 +4599,19 @@ schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderYandexlockboxCaProv
 
 schema ExternalSecretsIoV1beta1ClusterSecretStoreSpecProviderYandexlockboxCaProviderCertSecretRef:
     """
-    A reference to a specific 'key' within a Secret resource, In some instances, `key` is a required field.
+    A reference to a specific 'key' within a Secret resource,
+    In some instances, `key` is a required field.
 
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
