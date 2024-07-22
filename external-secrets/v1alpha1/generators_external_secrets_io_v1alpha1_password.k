@@ -7,7 +7,9 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema Password:
     """
-    Password generates a random password based on the configuration parameters in spec. You can specify the length, characterset and other attributes.
+    Password generates a random password based on the
+    configuration parameters in spec.
+    You can specify the length, characterset and other attributes.
 
     Attributes
     ----------
@@ -40,15 +42,19 @@ schema GeneratorsExternalSecretsIoV1alpha1PasswordSpec:
     allowRepeat : bool, default is Undefined, required
         set AllowRepeat to true to allow repeating characters.
     digits : int, default is Undefined, optional
-        Digits specifies the number of digits in the generated password. If omitted it defaults to 25% of the length of the password
+        Digits specifies the number of digits in the generated
+        password. If omitted it defaults to 25% of the length of the password
     length : int, default is 24, required
-        Length of the password to be generated. Defaults to 24
+        Length of the password to be generated.
+        Defaults to 24
     noUpper : bool, default is Undefined, required
         Set NoUpper to disable uppercase characters
     symbolCharacters : str, default is Undefined, optional
-        SymbolCharacters specifies the special characters that should be used in the generated password.
+        SymbolCharacters specifies the special characters that should be used
+        in the generated password.
     symbols : int, default is Undefined, optional
-        Symbols specifies the number of symbol characters in the generated password. If omitted it defaults to 25% of the length of the password
+        Symbols specifies the number of symbol characters in the generated
+        password. If omitted it defaults to 25% of the length of the password
     """
 
 

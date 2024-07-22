@@ -51,6 +51,10 @@ schema ExternalSecretsIoV1alpha1PushSecretSpec:
         secret store refs
     selector : ExternalSecretsIoV1alpha1PushSecretSpecSelector, default is Undefined, required
         selector
+    template : ExternalSecretsIoV1alpha1PushSecretSpecTemplate, default is Undefined, optional
+        template
+    updatePolicy : str, default is "Replace", optional
+        UpdatePolicy to handle Secrets in the provider. Possible Values: "Replace/IfNotExists". Defaults to "Replace".
     """
 
 
@@ -64,6 +68,10 @@ schema ExternalSecretsIoV1alpha1PushSecretSpec:
 
     selector: ExternalSecretsIoV1alpha1PushSecretSpecSelector
 
+    template?: ExternalSecretsIoV1alpha1PushSecretSpecTemplate
+
+    updatePolicy?: "Replace" | "IfNotExists" = "Replace"
+
 
 schema ExternalSecretsIoV1alpha1PushSecretSpecDataItems0:
     """
@@ -71,12 +79,17 @@ schema ExternalSecretsIoV1alpha1PushSecretSpecDataItems0:
 
     Attributes
     ----------
+    conversionStrategy : str, default is "None", optional
+        Used to define a conversion Strategy for the secret keys
     match : ExternalSecretsIoV1alpha1PushSecretSpecDataItems0Match, default is Undefined, required
         match
     metadata : any, default is Undefined, optional
-        Metadata is metadata attached to the secret. The structure of metadata is provider specific, please look it up in the provider documentation.
+        Metadata is metadata attached to the secret.
+        The structure of metadata is provider specific, please look it up in the provider documentation.
     """
 
+
+    conversionStrategy?: "None" | "ReverseUnicode" = "None"
 
     match: ExternalSecretsIoV1alpha1PushSecretSpecDataItems0Match
 
@@ -91,14 +104,14 @@ schema ExternalSecretsIoV1alpha1PushSecretSpecDataItems0Match:
     ----------
     remoteRef : ExternalSecretsIoV1alpha1PushSecretSpecDataItems0MatchRemoteRef, default is Undefined, required
         remote ref
-    secretKey : str, default is Undefined, required
+    secretKey : str, default is Undefined, optional
         Secret Key to be pushed
     """
 
 
     remoteRef: ExternalSecretsIoV1alpha1PushSecretSpecDataItems0MatchRemoteRef
 
-    secretKey: str
+    secretKey?: str
 
 
 schema ExternalSecretsIoV1alpha1PushSecretSpecDataItems0MatchRemoteRef:
@@ -126,7 +139,8 @@ schema ExternalSecretsIoV1alpha1PushSecretSpecSecretStoreRefsItems0:
     Attributes
     ----------
     kind : str, default is "SecretStore", optional
-        Kind of the SecretStore resource (SecretStore or ClusterSecretStore) Defaults to `SecretStore`
+        Kind of the SecretStore resource (SecretStore or ClusterSecretStore)
+        Defaults to `SecretStore`
     labelSelector : ExternalSecretsIoV1alpha1PushSecretSpecSecretStoreRefsItems0LabelSelector, default is Undefined, optional
         label selector
     name : str, default is Undefined, optional
@@ -150,7 +164,9 @@ schema ExternalSecretsIoV1alpha1PushSecretSpecSecretStoreRefsItems0LabelSelector
     matchExpressions : [ExternalSecretsIoV1alpha1PushSecretSpecSecretStoreRefsItems0LabelSelectorMatchExpressionsItems0], default is Undefined, optional
         matchExpressions is a list of label selector requirements. The requirements are ANDed.
     matchLabels : {str:str}, default is Undefined, optional
-        matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+        matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels
+        map is equivalent to an element of matchExpressions, whose key field is "key", the
+        operator is "In", and the values array contains only "value". The requirements are ANDed.
     """
 
 
@@ -161,16 +177,21 @@ schema ExternalSecretsIoV1alpha1PushSecretSpecSecretStoreRefsItems0LabelSelector
 
 schema ExternalSecretsIoV1alpha1PushSecretSpecSecretStoreRefsItems0LabelSelectorMatchExpressionsItems0:
     """
-    A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+    A label selector requirement is a selector that contains values, a key, and an operator that
+    relates the key and values.
 
     Attributes
     ----------
     key : str, default is Undefined, required
         key is the label key that the selector applies to.
     operator : str, default is Undefined, required
-        operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+        operator represents a key's relationship to a set of values.
+        Valid operators are In, NotIn, Exists and DoesNotExist.
     values : [str], default is Undefined, optional
-        values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.
+        values is an array of string values. If the operator is In or NotIn,
+        the values array must be non-empty. If the operator is Exists or DoesNotExist,
+        the values array must be empty. This array is replaced during a strategic
+        merge patch.
     """
 
 
@@ -209,6 +230,158 @@ schema ExternalSecretsIoV1alpha1PushSecretSpecSelectorSecret:
     name: str
 
 
+schema ExternalSecretsIoV1alpha1PushSecretSpecTemplate:
+    """
+    Template defines a blueprint for the created Secret resource.
+
+    Attributes
+    ----------
+    data : {str:str}, default is Undefined, optional
+        data
+    engineVersion : str, default is "v2", optional
+        EngineVersion specifies the template engine version
+        that should be used to compile/execute the
+        template specified in .data and .templateFrom[].
+    mergePolicy : str, default is "Replace", optional
+        merge policy
+    metadata : ExternalSecretsIoV1alpha1PushSecretSpecTemplateMetadata, default is Undefined, optional
+        metadata
+    templateFrom : [ExternalSecretsIoV1alpha1PushSecretSpecTemplateTemplateFromItems0], default is Undefined, optional
+        template from
+    $type : str, default is Undefined, optional
+        type
+    """
+
+
+    data?: {str:str}
+
+    engineVersion?: "v1" | "v2" = "v2"
+
+    mergePolicy?: "Replace" | "Merge" = "Replace"
+
+    metadata?: ExternalSecretsIoV1alpha1PushSecretSpecTemplateMetadata
+
+    templateFrom?: [ExternalSecretsIoV1alpha1PushSecretSpecTemplateTemplateFromItems0]
+
+    $type?: str
+
+
+schema ExternalSecretsIoV1alpha1PushSecretSpecTemplateMetadata:
+    """
+    ExternalSecretTemplateMetadata defines metadata fields for the Secret blueprint.
+
+    Attributes
+    ----------
+    annotations : {str:str}, default is Undefined, optional
+        annotations
+    labels : {str:str}, default is Undefined, optional
+        labels
+    """
+
+
+    annotations?: {str:str}
+
+    labels?: {str:str}
+
+
+schema ExternalSecretsIoV1alpha1PushSecretSpecTemplateTemplateFromItems0:
+    """
+    external secrets io v1alpha1 push secret spec template template from items0
+
+    Attributes
+    ----------
+    configMap : ExternalSecretsIoV1alpha1PushSecretSpecTemplateTemplateFromItems0ConfigMap, default is Undefined, optional
+        config map
+    literal : str, default is Undefined, optional
+        literal
+    secret : ExternalSecretsIoV1alpha1PushSecretSpecTemplateTemplateFromItems0Secret, default is Undefined, optional
+        secret
+    target : str, default is "Data", optional
+        target
+    """
+
+
+    configMap?: ExternalSecretsIoV1alpha1PushSecretSpecTemplateTemplateFromItems0ConfigMap
+
+    literal?: str
+
+    secret?: ExternalSecretsIoV1alpha1PushSecretSpecTemplateTemplateFromItems0Secret
+
+    target?: "Data" | "Annotations" | "Labels" = "Data"
+
+
+schema ExternalSecretsIoV1alpha1PushSecretSpecTemplateTemplateFromItems0ConfigMap:
+    """
+    external secrets io v1alpha1 push secret spec template template from items0 config map
+
+    Attributes
+    ----------
+    items : [ExternalSecretsIoV1alpha1PushSecretSpecTemplateTemplateFromItems0ConfigMapItemsItems0], default is Undefined, required
+        items
+    name : str, default is Undefined, required
+        name
+    """
+
+
+    items: [ExternalSecretsIoV1alpha1PushSecretSpecTemplateTemplateFromItems0ConfigMapItemsItems0]
+
+    name: str
+
+
+schema ExternalSecretsIoV1alpha1PushSecretSpecTemplateTemplateFromItems0ConfigMapItemsItems0:
+    """
+    external secrets io v1alpha1 push secret spec template template from items0 config map items items0
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    templateAs : str, default is "Values", optional
+        template as
+    """
+
+
+    key: str
+
+    templateAs?: "Values" | "KeysAndValues" = "Values"
+
+
+schema ExternalSecretsIoV1alpha1PushSecretSpecTemplateTemplateFromItems0Secret:
+    """
+    external secrets io v1alpha1 push secret spec template template from items0 secret
+
+    Attributes
+    ----------
+    items : [ExternalSecretsIoV1alpha1PushSecretSpecTemplateTemplateFromItems0SecretItemsItems0], default is Undefined, required
+        items
+    name : str, default is Undefined, required
+        name
+    """
+
+
+    items: [ExternalSecretsIoV1alpha1PushSecretSpecTemplateTemplateFromItems0SecretItemsItems0]
+
+    name: str
+
+
+schema ExternalSecretsIoV1alpha1PushSecretSpecTemplateTemplateFromItems0SecretItemsItems0:
+    """
+    external secrets io v1alpha1 push secret spec template template from items0 secret items items0
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    templateAs : str, default is "Values", optional
+        template as
+    """
+
+
+    key: str
+
+    templateAs?: "Values" | "KeysAndValues" = "Values"
+
+
 schema ExternalSecretsIoV1alpha1PushSecretStatus:
     """
     PushSecretStatus indicates the history of the status of PushSecret.
@@ -218,9 +391,11 @@ schema ExternalSecretsIoV1alpha1PushSecretStatus:
     conditions : [ExternalSecretsIoV1alpha1PushSecretStatusConditionsItems0], default is Undefined, optional
         conditions
     refreshTime : str, default is Undefined, optional
-        refreshTime is the time and date the external secret was fetched and the target secret updated
+        refreshTime is the time and date the external secret was fetched and
+        the target secret updated
     syncedPushSecrets : {str:{str:ExternalSecretsIoV1alpha1PushSecretStatusSyncedPushSecretsAnon}}, default is Undefined, optional
-        Synced Push Secrets for later deletion. Matches Secret Stores to PushSecretData that was stored to that secretStore.
+        Synced PushSecrets, including secrets that already exist in provider.
+        Matches secret stores to PushSecretData that was stored to that secret store.
     syncedResourceVersion : str, default is Undefined, optional
         SyncedResourceVersion keeps track of the last synced version.
     """
@@ -271,12 +446,17 @@ schema ExternalSecretsIoV1alpha1PushSecretStatusSyncedPushSecretsAnon:
 
     Attributes
     ----------
+    conversionStrategy : str, default is "None", optional
+        Used to define a conversion Strategy for the secret keys
     match : ExternalSecretsIoV1alpha1PushSecretStatusSyncedPushSecretsAnonMatch, default is Undefined, required
         match
     metadata : any, default is Undefined, optional
-        Metadata is metadata attached to the secret. The structure of metadata is provider specific, please look it up in the provider documentation.
+        Metadata is metadata attached to the secret.
+        The structure of metadata is provider specific, please look it up in the provider documentation.
     """
 
+
+    conversionStrategy?: "None" | "ReverseUnicode" = "None"
 
     match: ExternalSecretsIoV1alpha1PushSecretStatusSyncedPushSecretsAnonMatch
 
@@ -291,14 +471,14 @@ schema ExternalSecretsIoV1alpha1PushSecretStatusSyncedPushSecretsAnonMatch:
     ----------
     remoteRef : ExternalSecretsIoV1alpha1PushSecretStatusSyncedPushSecretsAnonMatchRemoteRef, default is Undefined, required
         remote ref
-    secretKey : str, default is Undefined, required
+    secretKey : str, default is Undefined, optional
         Secret Key to be pushed
     """
 
 
     remoteRef: ExternalSecretsIoV1alpha1PushSecretStatusSyncedPushSecretsAnonMatchRemoteRef
 
-    secretKey: str
+    secretKey?: str
 
 
 schema ExternalSecretsIoV1alpha1PushSecretStatusSyncedPushSecretsAnonMatchRemoteRef:

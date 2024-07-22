@@ -44,9 +44,12 @@ schema ExternalSecretsIoV1beta1ExternalSecretSpec:
     data : [ExternalSecretsIoV1beta1ExternalSecretSpecDataItems0], default is Undefined, optional
         Data defines the connection between the Kubernetes Secret keys and the Provider data
     dataFrom : [ExternalSecretsIoV1beta1ExternalSecretSpecDataFromItems0], default is Undefined, optional
-        DataFrom is used to fetch all properties from a specific Provider data If multiple entries are specified, the Secret keys are merged in the specified order
+        DataFrom is used to fetch all properties from a specific Provider data
+        If multiple entries are specified, the Secret keys are merged in the specified order
     refreshInterval : str, default is "1h", optional
-        RefreshInterval is the amount of time before the values are read again from the SecretStore provider Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h" May be set to zero to fetch and create it once. Defaults to 1h.
+        RefreshInterval is the amount of time before the values are read again from the SecretStore provider
+        Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h"
+        May be set to zero to fetch and create it once. Defaults to 1h.
     secretStoreRef : ExternalSecretsIoV1beta1ExternalSecretSpecSecretStoreRef, default is Undefined, optional
         secret store ref
     target : ExternalSecretsIoV1beta1ExternalSecretSpecTarget, default is Undefined, optional
@@ -76,7 +79,8 @@ schema ExternalSecretsIoV1beta1ExternalSecretSpecDataFromItems0:
     find : ExternalSecretsIoV1beta1ExternalSecretSpecDataFromItems0Find, default is Undefined, optional
         find
     rewrite : [ExternalSecretsIoV1beta1ExternalSecretSpecDataFromItems0RewriteItems0], default is Undefined, optional
-        Used to rewrite secret Keys after getting them from the secret Provider Multiple Rewrite operations can be provided. They are applied in a layered order (first to last)
+        Used to rewrite secret Keys after getting them from the secret Provider
+        Multiple Rewrite operations can be provided. They are applied in a layered order (first to last)
     sourceRef : ExternalSecretsIoV1beta1ExternalSecretSpecDataFromItems0SourceRef, default is Undefined, optional
         source ref
     """
@@ -93,7 +97,8 @@ schema ExternalSecretsIoV1beta1ExternalSecretSpecDataFromItems0:
 
 schema ExternalSecretsIoV1beta1ExternalSecretSpecDataFromItems0Extract:
     """
-    Used to extract multiple key/value pairs from one secret Note: Extract does not support sourceRef.Generator or sourceRef.GeneratorRef.
+    Used to extract multiple key/value pairs from one secret
+    Note: Extract does not support sourceRef.Generator or sourceRef.GeneratorRef.
 
     Attributes
     ----------
@@ -127,7 +132,8 @@ schema ExternalSecretsIoV1beta1ExternalSecretSpecDataFromItems0Extract:
 
 schema ExternalSecretsIoV1beta1ExternalSecretSpecDataFromItems0Find:
     """
-    Used to find secrets based on tags or regular expressions Note: Find does not support sourceRef.Generator or sourceRef.GeneratorRef.
+    Used to find secrets based on tags or regular expressions
+    Note: Find does not support sourceRef.Generator or sourceRef.GeneratorRef.
 
     Attributes
     ----------
@@ -189,7 +195,8 @@ schema ExternalSecretsIoV1beta1ExternalSecretSpecDataFromItems0RewriteItems0:
 
 schema ExternalSecretsIoV1beta1ExternalSecretSpecDataFromItems0RewriteItems0Regexp:
     """
-    Used to rewrite with regular expressions. The resulting key will be the output of a regexp.ReplaceAll operation.
+    Used to rewrite with regular expressions.
+    The resulting key will be the output of a regexp.ReplaceAll operation.
 
     Attributes
     ----------
@@ -207,12 +214,14 @@ schema ExternalSecretsIoV1beta1ExternalSecretSpecDataFromItems0RewriteItems0Rege
 
 schema ExternalSecretsIoV1beta1ExternalSecretSpecDataFromItems0RewriteItems0Transform:
     """
-    Used to apply string transformation on the secrets. The resulting key will be the output of the template applied by the operation.
+    Used to apply string transformation on the secrets.
+    The resulting key will be the output of the template applied by the operation.
 
     Attributes
     ----------
     template : str, default is Undefined, required
-        Used to define the template to apply on the secret name. `.value ` will specify the secret name in the template.
+        Used to define the template to apply on the secret name.
+        `.value ` will specify the secret name in the template.
     """
 
 
@@ -221,7 +230,12 @@ schema ExternalSecretsIoV1beta1ExternalSecretSpecDataFromItems0RewriteItems0Tran
 
 schema ExternalSecretsIoV1beta1ExternalSecretSpecDataFromItems0SourceRef:
     """
-    SourceRef points to a store or generator which contains secret values ready to use. Use this in combination with Extract or Find pull values out of a specific SecretStore. When sourceRef points to a generator Extract or Find is not supported. The generator returns a static map of values
+    SourceRef points to a store or generator
+    which contains secret values ready to use.
+    Use this in combination with Extract or Find pull values out of
+    a specific SecretStore.
+    When sourceRef points to a generator Extract or Find is not supported.
+    The generator returns a static map of values
 
     Attributes
     ----------
@@ -266,7 +280,8 @@ schema ExternalSecretsIoV1beta1ExternalSecretSpecDataFromItems0SourceRefStoreRef
     Attributes
     ----------
     kind : str, default is Undefined, optional
-        Kind of the SecretStore resource (SecretStore or ClusterSecretStore) Defaults to `SecretStore`
+        Kind of the SecretStore resource (SecretStore or ClusterSecretStore)
+        Defaults to `SecretStore`
     name : str, default is Undefined, required
         Name of the SecretStore resource
     """
@@ -286,7 +301,8 @@ schema ExternalSecretsIoV1beta1ExternalSecretSpecDataItems0:
     remoteRef : ExternalSecretsIoV1beta1ExternalSecretSpecDataItems0RemoteRef, default is Undefined, required
         remote ref
     secretKey : str, default is Undefined, required
-        SecretKey defines the key in which the controller stores the value. This is the key in the Kind=Secret
+        SecretKey defines the key in which the controller stores
+        the value. This is the key in the Kind=Secret
     sourceRef : ExternalSecretsIoV1beta1ExternalSecretSpecDataItems0SourceRef, default is Undefined, optional
         source ref
     """
@@ -301,7 +317,8 @@ schema ExternalSecretsIoV1beta1ExternalSecretSpecDataItems0:
 
 schema ExternalSecretsIoV1beta1ExternalSecretSpecDataItems0RemoteRef:
     """
-    RemoteRef points to the remote secret and defines which secret (version/property/..) to fetch.
+    RemoteRef points to the remote secret and defines
+    which secret (version/property/..) to fetch.
 
     Attributes
     ----------
@@ -335,7 +352,8 @@ schema ExternalSecretsIoV1beta1ExternalSecretSpecDataItems0RemoteRef:
 
 schema ExternalSecretsIoV1beta1ExternalSecretSpecDataItems0SourceRef:
     """
-    SourceRef allows you to override the source from which the value will pulled from.
+    SourceRef allows you to override the source
+    from which the value will pulled from.
 
     Attributes
     ----------
@@ -353,8 +371,11 @@ schema ExternalSecretsIoV1beta1ExternalSecretSpecDataItems0SourceRef:
 
 schema ExternalSecretsIoV1beta1ExternalSecretSpecDataItems0SourceRefGeneratorRef:
     """
-    GeneratorRef points to a generator custom resource. 
-     Deprecated: The generatorRef is not implemented in .data[]. this will be removed with v1.
+    GeneratorRef points to a generator custom resource.
+
+
+    Deprecated: The generatorRef is not implemented in .data[].
+    this will be removed with v1.
 
     Attributes
     ----------
@@ -381,7 +402,8 @@ schema ExternalSecretsIoV1beta1ExternalSecretSpecDataItems0SourceRefStoreRef:
     Attributes
     ----------
     kind : str, default is Undefined, optional
-        Kind of the SecretStore resource (SecretStore or ClusterSecretStore) Defaults to `SecretStore`
+        Kind of the SecretStore resource (SecretStore or ClusterSecretStore)
+        Defaults to `SecretStore`
     name : str, default is Undefined, required
         Name of the SecretStore resource
     """
@@ -399,7 +421,8 @@ schema ExternalSecretsIoV1beta1ExternalSecretSpecSecretStoreRef:
     Attributes
     ----------
     kind : str, default is Undefined, optional
-        Kind of the SecretStore resource (SecretStore or ClusterSecretStore) Defaults to `SecretStore`
+        Kind of the SecretStore resource (SecretStore or ClusterSecretStore)
+        Defaults to `SecretStore`
     name : str, default is Undefined, required
         Name of the SecretStore resource
     """
@@ -412,18 +435,23 @@ schema ExternalSecretsIoV1beta1ExternalSecretSpecSecretStoreRef:
 
 schema ExternalSecretsIoV1beta1ExternalSecretSpecTarget:
     """
-    ExternalSecretTarget defines the Kubernetes Secret to be created There can be only one target per ExternalSecret.
+    ExternalSecretTarget defines the Kubernetes Secret to be created
+    There can be only one target per ExternalSecret.
 
     Attributes
     ----------
     creationPolicy : str, default is "Owner", optional
-        CreationPolicy defines rules on how to create the resulting Secret Defaults to 'Owner'
+        CreationPolicy defines rules on how to create the resulting Secret
+        Defaults to 'Owner'
     deletionPolicy : str, default is "Retain", optional
-        DeletionPolicy defines rules on how to delete the resulting Secret Defaults to 'Retain'
+        DeletionPolicy defines rules on how to delete the resulting Secret
+        Defaults to 'Retain'
     immutable : bool, default is Undefined, optional
         Immutable defines if the final secret will be immutable
     name : str, default is Undefined, optional
-        Name defines the name of the Secret resource to be managed This field is immutable Defaults to the .metadata.name of the ExternalSecret resource
+        Name defines the name of the Secret resource to be managed
+        This field is immutable
+        Defaults to the .metadata.name of the ExternalSecret resource
     template : ExternalSecretsIoV1beta1ExternalSecretSpecTargetTemplate, default is Undefined, optional
         template
     """
@@ -449,7 +477,9 @@ schema ExternalSecretsIoV1beta1ExternalSecretSpecTargetTemplate:
     data : {str:str}, default is Undefined, optional
         data
     engineVersion : str, default is "v2", optional
-        EngineVersion specifies the template engine version that should be used to compile/execute the template specified in .data and .templateFrom[].
+        EngineVersion specifies the template engine version
+        that should be used to compile/execute the
+        template specified in .data and .templateFrom[].
     mergePolicy : str, default is "Replace", optional
         merge policy
     metadata : ExternalSecretsIoV1beta1ExternalSecretSpecTargetTemplateMetadata, default is Undefined, optional
@@ -601,7 +631,8 @@ schema ExternalSecretsIoV1beta1ExternalSecretStatus:
     conditions : [ExternalSecretsIoV1beta1ExternalSecretStatusConditionsItems0], default is Undefined, optional
         conditions
     refreshTime : str, default is Undefined, optional
-        refreshTime is the time and date the external secret was fetched and the target secret updated
+        refreshTime is the time and date the external secret was fetched and
+        the target secret updated
     syncedResourceVersion : str, default is Undefined, optional
         SyncedResourceVersion keeps track of the last synced version
     """
@@ -623,11 +654,17 @@ schema ExternalSecretsIoV1beta1ExternalSecretStatusBinding:
     Attributes
     ----------
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        This field is effectively required, but due to backwards compatibility is
+        allowed to be empty. Instances of this type with an empty value here are
+        almost certainly wrong.
+        TODO: Add other useful fields. apiVersion, kind, uid?
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema ExternalSecretsIoV1beta1ExternalSecretStatusConditionsItems0:

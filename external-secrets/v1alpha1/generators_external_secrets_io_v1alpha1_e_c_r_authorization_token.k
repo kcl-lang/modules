@@ -7,7 +7,12 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ECRAuthorizationToken:
     """
-    ECRAuthorizationTokenSpec uses the GetAuthorizationToken API to retrieve an authorization token. The authorization token is valid for 12 hours. The authorizationToken returned is a base64 encoded string that can be decoded and used in a docker login command to authenticate to a registry. For more information, see Registry authentication (https://docs.aws.amazon.com/AmazonECR/latest/userguide/Registries.html#registry_auth) in the Amazon Elastic Container Registry User Guide.
+    ECRAuthorizationTokenSpec uses the GetAuthorizationToken API to retrieve an
+    authorization token.
+    The authorization token is valid for 12 hours.
+    The authorizationToken returned is a base64 encoded string that can be decoded
+    and used in a docker login command to authenticate to a registry.
+    For more information, see Registry authentication (https://docs.aws.amazon.com/AmazonECR/latest/userguide/Registries.html#registry_auth) in the Amazon Elastic Container Registry User Guide.
 
     Attributes
     ----------
@@ -42,7 +47,8 @@ schema GeneratorsExternalSecretsIoV1alpha1ECRAuthorizationTokenSpec:
     region : str, default is Undefined, required
         Region specifies the region to operate in.
     role : str, default is Undefined, optional
-        You can assume a role before making calls to the desired AWS service.
+        You can assume a role before making calls to the
+        desired AWS service.
     """
 
 
@@ -92,11 +98,14 @@ schema GeneratorsExternalSecretsIoV1alpha1ECRAuthorizationTokenSpecAuthJwtServic
     Attributes
     ----------
     audiences : [str], default is Undefined, optional
-        Audience specifies the `aud` claim for the service account token If the service account uses a well-known annotation for e.g. IRSA or GCP Workload Identity then this audiences will be appended to the list
+        Audience specifies the `aud` claim for the service account token
+        If the service account uses a well-known annotation for e.g. IRSA or GCP Workload Identity
+        then this audiences will be appended to the list
     name : str, default is Undefined, required
         The name of the ServiceAccount resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -109,7 +118,8 @@ schema GeneratorsExternalSecretsIoV1alpha1ECRAuthorizationTokenSpecAuthJwtServic
 
 schema GeneratorsExternalSecretsIoV1alpha1ECRAuthorizationTokenSpecAuthSecretRef:
     """
-    AWSAuthSecretRef holds secret references for AWS credentials both AccessKeyID and SecretAccessKey must be defined in order to properly authenticate.
+    AWSAuthSecretRef holds secret references for AWS credentials
+    both AccessKeyID and SecretAccessKey must be defined in order to properly authenticate.
 
     Attributes
     ----------
@@ -136,11 +146,13 @@ schema GeneratorsExternalSecretsIoV1alpha1ECRAuthorizationTokenSpecAuthSecretRef
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -158,11 +170,13 @@ schema GeneratorsExternalSecretsIoV1alpha1ECRAuthorizationTokenSpecAuthSecretRef
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -175,16 +189,20 @@ schema GeneratorsExternalSecretsIoV1alpha1ECRAuthorizationTokenSpecAuthSecretRef
 
 schema GeneratorsExternalSecretsIoV1alpha1ECRAuthorizationTokenSpecAuthSecretRefSessionTokenSecretRef:
     """
-    The SessionToken used for authentication This must be defined if AccessKeyID and SecretAccessKey are temporary credentials see: https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_use-resources.html
+    The SessionToken used for authentication
+    This must be defined if AccessKeyID and SecretAccessKey are temporary credentials
+    see: https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_use-resources.html
 
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 

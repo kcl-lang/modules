@@ -38,7 +38,8 @@ schema GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpec:
     Attributes
     ----------
     controller : str, default is Undefined, optional
-        Used to select the correct ESO controller (think: ingress.ingressClassName) The ESO controller is instantiated with a specific controller name and filters VDS based on this property
+        Used to select the correct ESO controller (think: ingress.ingressClassName)
+        The ESO controller is instantiated with a specific controller name and filters VDS based on this property
     method : str, default is Undefined, optional
         Vault API method to use (GET/POST/other)
     parameters : any, default is Undefined, optional
@@ -48,7 +49,11 @@ schema GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpec:
     provider : GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProvider, default is Undefined, required
         provider
     resultType : str, default is "Data", optional
-        Result type defines which data is returned from the generator. By default it is the "data" section of the Vault API response. When using e.g. /auth/token/create the "data" section is empty but the "auth" section contains the generated token. Please refer to the vault docs regarding the result data structure.
+        Result type defines which data is returned from the generator.
+        By default it is the "data" section of the Vault API response.
+        When using e.g. /auth/token/create the "data" section is empty but
+        the "auth" section contains the generated token.
+        Please refer to the vault docs regarding the result data structure.
     """
 
 
@@ -62,7 +67,7 @@ schema GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpec:
 
     provider: GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProvider
 
-    resultType?: str = "Data"
+    resultType?: "Data" | "Auth" = "Data"
 
 
 schema GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProvider:
@@ -74,21 +79,40 @@ schema GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProvider:
     auth : GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuth, default is Undefined, required
         auth
     caBundle : str, default is Undefined, optional
-        PEM encoded CA bundle used to validate Vault server certificate. Only used if the Server URL is using HTTPS protocol. This parameter is ignored for plain HTTP protocol connection. If not set the system root certificates are used to validate the TLS connection.
+        PEM encoded CA bundle used to validate Vault server certificate. Only used
+        if the Server URL is using HTTPS protocol. This parameter is ignored for
+        plain HTTP protocol connection. If not set the system root certificates
+        are used to validate the TLS connection.
     caProvider : GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderCaProvider, default is Undefined, optional
         ca provider
     forwardInconsistent : bool, default is Undefined, optional
-        ForwardInconsistent tells Vault to forward read-after-write requests to the Vault leader instead of simply retrying within a loop. This can increase performance if the option is enabled serverside. https://www.vaultproject.io/docs/configuration/replication#allow_forwarding_via_header
+        ForwardInconsistent tells Vault to forward read-after-write requests to the Vault
+        leader instead of simply retrying within a loop. This can increase performance if
+        the option is enabled serverside.
+        https://www.vaultproject.io/docs/configuration/replication#allow_forwarding_via_header
+    headers : {str:str}, default is Undefined, optional
+        Headers to be added in Vault request
     namespace : str, default is Undefined, optional
-        Name of the vault namespace. Namespaces is a set of features within Vault Enterprise that allows Vault environments to support Secure Multi-tenancy. e.g: "ns1". More about namespaces can be found here https://www.vaultproject.io/docs/enterprise/namespaces
+        Name of the vault namespace. Namespaces is a set of features within Vault Enterprise that allows
+        Vault environments to support Secure Multi-tenancy. e.g: "ns1".
+        More about namespaces can be found here https://www.vaultproject.io/docs/enterprise/namespaces
     path : str, default is Undefined, optional
-        Path is the mount path of the Vault KV backend endpoint, e.g: "secret". The v2 KV secret engine version specific "/data" path suffix for fetching secrets from Vault is optional and will be appended if not present in specified path.
+        Path is the mount path of the Vault KV backend endpoint, e.g:
+        "secret". The v2 KV secret engine version specific "/data" path suffix
+        for fetching secrets from Vault is optional and will be appended
+        if not present in specified path.
     readYourWrites : bool, default is Undefined, optional
-        ReadYourWrites ensures isolated read-after-write semantics by providing discovered cluster replication states in each request. More information about eventual consistency in Vault can be found here https://www.vaultproject.io/docs/enterprise/consistency
+        ReadYourWrites ensures isolated read-after-write semantics by
+        providing discovered cluster replication states in each request.
+        More information about eventual consistency in Vault can be found here
+        https://www.vaultproject.io/docs/enterprise/consistency
     server : str, default is Undefined, required
         Server is the connection address for the Vault server, e.g: "https://vault.example.com:8200".
+    tls : GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderTLS, default is Undefined, optional
+        tls
     version : str, default is "v2", optional
-        Version is the Vault KV secret engine version. This can be either "v1" or "v2". Version defaults to "v2".
+        Version is the Vault KV secret engine version. This can be either "v1" or
+        "v2". Version defaults to "v2".
     """
 
 
@@ -100,6 +124,8 @@ schema GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProvider:
 
     forwardInconsistent?: bool
 
+    headers?: {str:str}
+
     namespace?: str
 
     path?: str
@@ -107,6 +133,8 @@ schema GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProvider:
     readYourWrites?: bool
 
     server: str
+
+    tls?: GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderTLS
 
     version?: "v1" | "v2" = "v2"
 
@@ -129,6 +157,12 @@ schema GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuth:
         kubernetes
     ldap : GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuthLdap, default is Undefined, optional
         ldap
+    namespace : str, default is Undefined, optional
+        Name of the vault namespace to authenticate to. This can be different than the namespace your secret is in.
+        Namespaces is a set of features within Vault Enterprise that allows
+        Vault environments to support Secure Multi-tenancy. e.g: "ns1".
+        More about namespaces can be found here https://www.vaultproject.io/docs/enterprise/namespaces
+        This will default to Vault.Namespace field if set, or empty otherwise
     tokenSecretRef : GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuthTokenSecretRef, default is Undefined, optional
         token secret ref
     userPass : GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuthUserPass, default is Undefined, optional
@@ -148,6 +182,8 @@ schema GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuth:
 
     ldap?: GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuthLdap
 
+    namespace?: str
+
     tokenSecretRef?: GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuthTokenSecretRef
 
     userPass?: GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuthUserPass
@@ -155,14 +191,17 @@ schema GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuth:
 
 schema GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuthAppRole:
     """
-    AppRole authenticates with Vault using the App Role auth mechanism, with the role and secret stored in a Kubernetes Secret resource.
+    AppRole authenticates with Vault using the App Role auth mechanism,
+    with the role and secret stored in a Kubernetes Secret resource.
 
     Attributes
     ----------
     path : str, default is "approle", required
-        Path where the App Role authentication backend is mounted in Vault, e.g: "approle"
+        Path where the App Role authentication backend is mounted
+        in Vault, e.g: "approle"
     roleId : str, default is Undefined, optional
-        RoleID configured in the App Role authentication backend when setting up the authentication backend in Vault.
+        RoleID configured in the App Role authentication backend when setting
+        up the authentication backend in Vault.
     roleRef : GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuthAppRoleRoleRef, default is Undefined, optional
         role ref
     secretRef : GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuthAppRoleSecretRef, default is Undefined, required
@@ -181,16 +220,21 @@ schema GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuthAppR
 
 schema GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuthAppRoleRoleRef:
     """
-    Reference to a key in a Secret that contains the App Role ID used to authenticate with Vault. The `key` field must be specified and denotes which entry within the Secret resource is used as the app role id.
+    Reference to a key in a Secret that contains the App Role ID used
+    to authenticate with Vault.
+    The `key` field must be specified and denotes which entry within the Secret
+    resource is used as the app role id.
 
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -203,16 +247,21 @@ schema GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuthAppR
 
 schema GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuthAppRoleSecretRef:
     """
-    Reference to a key in a Secret that contains the App Role secret used to authenticate with Vault. The `key` field must be specified and denotes which entry within the Secret resource is used as the app role secret.
+    Reference to a key in a Secret that contains the App Role secret used
+    to authenticate with Vault.
+    The `key` field must be specified and denotes which entry within the Secret
+    resource is used as the app role secret.
 
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -225,7 +274,8 @@ schema GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuthAppR
 
 schema GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuthCert:
     """
-    Cert authenticates with TLS Certificates by passing client certificate, private key and ca certificate Cert authentication method
+    Cert authenticates with TLS Certificates by passing client certificate, private key and ca certificate
+    Cert authentication method
 
     Attributes
     ----------
@@ -243,16 +293,19 @@ schema GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuthCert
 
 schema GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuthCertClientCert:
     """
-    ClientCert is a certificate to authenticate using the Cert Vault authentication method
+    ClientCert is a certificate to authenticate using the Cert Vault
+    authentication method
 
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -265,16 +318,19 @@ schema GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuthCert
 
 schema GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuthCertSecretRef:
     """
-    SecretRef to a key in a Secret resource containing client private key to authenticate with Vault using the Cert authentication method
+    SecretRef to a key in a Secret resource containing client private key to
+    authenticate with Vault using the Cert authentication method
 
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -287,7 +343,8 @@ schema GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuthCert
 
 schema GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuthIam:
     """
-    Iam authenticates with vault by passing a special AWS request signed with AWS IAM credentials AWS IAM authentication method
+    Iam authenticates with vault by passing a special AWS request signed with AWS IAM credentials
+    AWS IAM authentication method
 
     Attributes
     ----------
@@ -348,11 +405,14 @@ schema GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuthIamJ
     Attributes
     ----------
     audiences : [str], default is Undefined, optional
-        Audience specifies the `aud` claim for the service account token If the service account uses a well-known annotation for e.g. IRSA or GCP Workload Identity then this audiences will be appended to the list
+        Audience specifies the `aud` claim for the service account token
+        If the service account uses a well-known annotation for e.g. IRSA or GCP Workload Identity
+        then this audiences will be appended to the list
     name : str, default is Undefined, required
         The name of the ServiceAccount resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -392,11 +452,13 @@ schema GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuthIamS
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -414,11 +476,13 @@ schema GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuthIamS
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -431,16 +495,20 @@ schema GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuthIamS
 
 schema GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuthIamSecretRefSessionTokenSecretRef:
     """
-    The SessionToken used for authentication This must be defined if AccessKeyID and SecretAccessKey are temporary credentials see: https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_use-resources.html
+    The SessionToken used for authentication
+    This must be defined if AccessKeyID and SecretAccessKey are temporary credentials
+    see: https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_use-resources.html
 
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -453,16 +521,19 @@ schema GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuthIamS
 
 schema GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuthJwt:
     """
-    Jwt authenticates with Vault by passing role and JWT token using the JWT/OIDC authentication method
+    Jwt authenticates with Vault by passing role and JWT token using the
+    JWT/OIDC authentication method
 
     Attributes
     ----------
     kubernetesServiceAccountToken : GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuthJwtKubernetesServiceAccountToken, default is Undefined, optional
         kubernetes service account token
     path : str, default is "jwt", required
-        Path where the JWT authentication backend is mounted in Vault, e.g: "jwt"
+        Path where the JWT authentication backend is mounted
+        in Vault, e.g: "jwt"
     role : str, default is Undefined, optional
-        Role is a JWT role to authenticate using the JWT/OIDC Vault authentication method
+        Role is a JWT role to authenticate using the JWT/OIDC Vault
+        authentication method
     secretRef : GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuthJwtSecretRef, default is Undefined, optional
         secret ref
     """
@@ -479,14 +550,22 @@ schema GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuthJwt:
 
 schema GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuthJwtKubernetesServiceAccountToken:
     """
-    Optional ServiceAccountToken specifies the Kubernetes service account for which to request a token for with the `TokenRequest` API.
+    Optional ServiceAccountToken specifies the Kubernetes service account for which to request
+    a token for with the `TokenRequest` API.
 
     Attributes
     ----------
     audiences : [str], default is Undefined, optional
-        Optional audiences field that will be used to request a temporary Kubernetes service account token for the service account referenced by `serviceAccountRef`. Defaults to a single audience `vault` it not specified. Deprecated: use serviceAccountRef.Audiences instead
+        Optional audiences field that will be used to request a temporary Kubernetes service
+        account token for the service account referenced by `serviceAccountRef`.
+        Defaults to a single audience `vault` it not specified.
+        Deprecated: use serviceAccountRef.Audiences instead
     expirationSeconds : int, default is Undefined, optional
-        Optional expiration time in seconds that will be used to request a temporary Kubernetes service account token for the service account referenced by `serviceAccountRef`. Deprecated: this will be removed in the future. Defaults to 10 minutes.
+        Optional expiration time in seconds that will be used to request a temporary
+        Kubernetes service account token for the service account referenced by
+        `serviceAccountRef`.
+        Deprecated: this will be removed in the future.
+        Defaults to 10 minutes.
     serviceAccountRef : GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuthJwtKubernetesServiceAccountTokenServiceAccountRef, default is Undefined, required
         service account ref
     """
@@ -506,11 +585,14 @@ schema GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuthJwtK
     Attributes
     ----------
     audiences : [str], default is Undefined, optional
-        Audience specifies the `aud` claim for the service account token If the service account uses a well-known annotation for e.g. IRSA or GCP Workload Identity then this audiences will be appended to the list
+        Audience specifies the `aud` claim for the service account token
+        If the service account uses a well-known annotation for e.g. IRSA or GCP Workload Identity
+        then this audiences will be appended to the list
     name : str, default is Undefined, required
         The name of the ServiceAccount resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -523,16 +605,19 @@ schema GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuthJwtK
 
 schema GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuthJwtSecretRef:
     """
-    Optional SecretRef that refers to a key in a Secret resource containing JWT token to authenticate with Vault using the JWT/OIDC authentication method.
+    Optional SecretRef that refers to a key in a Secret resource containing JWT token to
+    authenticate with Vault using the JWT/OIDC authentication method.
 
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -545,14 +630,17 @@ schema GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuthJwtS
 
 schema GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuthKubernetes:
     """
-    Kubernetes authenticates with Vault by passing the ServiceAccount token stored in the named Secret resource to the Vault server.
+    Kubernetes authenticates with Vault by passing the ServiceAccount
+    token stored in the named Secret resource to the Vault server.
 
     Attributes
     ----------
     mountPath : str, default is "kubernetes", required
-        Path where the Kubernetes authentication backend is mounted in Vault, e.g: "kubernetes"
+        Path where the Kubernetes authentication backend is mounted in Vault, e.g:
+        "kubernetes"
     role : str, default is Undefined, required
-        A required field containing the Vault Role to assume. A Role binds a Kubernetes ServiceAccount with a set of Vault policies.
+        A required field containing the Vault Role to assume. A Role binds a
+        Kubernetes ServiceAccount with a set of Vault policies.
     secretRef : GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuthKubernetesSecretRef, default is Undefined, optional
         secret ref
     serviceAccountRef : GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuthKubernetesServiceAccountRef, default is Undefined, optional
@@ -571,16 +659,21 @@ schema GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuthKube
 
 schema GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuthKubernetesSecretRef:
     """
-    Optional secret field containing a Kubernetes ServiceAccount JWT used for authenticating with Vault. If a name is specified without a key, `token` is the default. If one is not specified, the one bound to the controller will be used.
+    Optional secret field containing a Kubernetes ServiceAccount JWT used
+    for authenticating with Vault. If a name is specified without a key,
+    `token` is the default. If one is not specified, the one bound to
+    the controller will be used.
 
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -593,16 +686,22 @@ schema GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuthKube
 
 schema GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuthKubernetesServiceAccountRef:
     """
-    Optional service account field containing the name of a kubernetes ServiceAccount. If the service account is specified, the service account secret token JWT will be used for authenticating with Vault. If the service account selector is not supplied, the secretRef will be used instead.
+    Optional service account field containing the name of a kubernetes ServiceAccount.
+    If the service account is specified, the service account secret token JWT will be used
+    for authenticating with Vault. If the service account selector is not supplied,
+    the secretRef will be used instead.
 
     Attributes
     ----------
     audiences : [str], default is Undefined, optional
-        Audience specifies the `aud` claim for the service account token If the service account uses a well-known annotation for e.g. IRSA or GCP Workload Identity then this audiences will be appended to the list
+        Audience specifies the `aud` claim for the service account token
+        If the service account uses a well-known annotation for e.g. IRSA or GCP Workload Identity
+        then this audiences will be appended to the list
     name : str, default is Undefined, required
         The name of the ServiceAccount resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -615,16 +714,19 @@ schema GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuthKube
 
 schema GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuthLdap:
     """
-    Ldap authenticates with Vault by passing username/password pair using the LDAP authentication method
+    Ldap authenticates with Vault by passing username/password pair using
+    the LDAP authentication method
 
     Attributes
     ----------
     path : str, default is "ldap", required
-        Path where the LDAP authentication backend is mounted in Vault, e.g: "ldap"
+        Path where the LDAP authentication backend is mounted
+        in Vault, e.g: "ldap"
     secretRef : GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuthLdapSecretRef, default is Undefined, optional
         secret ref
     username : str, default is Undefined, required
-        Username is a LDAP user name used to authenticate using the LDAP Vault authentication method
+        Username is a LDAP user name used to authenticate using the LDAP Vault
+        authentication method
     """
 
 
@@ -637,16 +739,20 @@ schema GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuthLdap
 
 schema GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuthLdapSecretRef:
     """
-    SecretRef to a key in a Secret resource containing password for the LDAP user used to authenticate with Vault using the LDAP authentication method
+    SecretRef to a key in a Secret resource containing password for the LDAP
+    user used to authenticate with Vault using the LDAP authentication
+    method
 
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -664,11 +770,13 @@ schema GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuthToke
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -686,11 +794,13 @@ schema GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuthUser
     Attributes
     ----------
     path : str, default is "user", required
-        Path where the UserPassword authentication backend is mounted in Vault, e.g: "user"
+        Path where the UserPassword authentication backend is mounted
+        in Vault, e.g: "user"
     secretRef : GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuthUserPassSecretRef, default is Undefined, optional
         secret ref
     username : str, default is Undefined, required
-        Username is a user name used to authenticate using the UserPass Vault authentication method
+        Username is a user name used to authenticate using the UserPass Vault
+        authentication method
     """
 
 
@@ -703,16 +813,20 @@ schema GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuthUser
 
 schema GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderAuthUserPassSecretRef:
     """
-    SecretRef to a key in a Secret resource containing password for the user used to authenticate with Vault using the UserPass authentication method
+    SecretRef to a key in a Secret resource containing password for the
+    user used to authenticate with Vault using the UserPass authentication
+    method
 
     Attributes
     ----------
     key : str, default is Undefined, optional
-        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
     name : str, default is Undefined, optional
         The name of the Secret resource being referred to.
     namespace : str, default is Undefined, optional
-        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
     """
 
 
@@ -734,7 +848,8 @@ schema GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderCaProvid
     name : str, default is Undefined, required
         The name of the object located at the provider type.
     namespace : str, default is Undefined, optional
-        The namespace the Provider type is in. Can only be defined when used in a ClusterSecretStore.
+        The namespace the Provider type is in.
+        Can only be defined when used in a ClusterSecretStore.
     $type : str, default is Undefined, required
         The type of provider to use such as "Secret", or "ConfigMap".
     """
@@ -747,5 +862,79 @@ schema GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderCaProvid
     namespace?: str
 
     $type: "Secret" | "ConfigMap"
+
+
+schema GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderTLS:
+    """
+    The configuration used for client side related TLS communication, when the Vault server
+    requires mutual authentication. Only used if the Server URL is using HTTPS protocol.
+    This parameter is ignored for plain HTTP protocol connection.
+    It's worth noting this configuration is different from the "TLS certificates auth method",
+    which is available under the `auth.cert` section.
+
+    Attributes
+    ----------
+    certSecretRef : GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderTLSCertSecretRef, default is Undefined, optional
+        cert secret ref
+    keySecretRef : GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderTLSKeySecretRef, default is Undefined, optional
+        key secret ref
+    """
+
+
+    certSecretRef?: GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderTLSCertSecretRef
+
+    keySecretRef?: GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderTLSKeySecretRef
+
+
+schema GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderTLSCertSecretRef:
+    """
+    CertSecretRef is a certificate added to the transport layer
+    when communicating with the Vault server.
+    If no key for the Secret is specified, external-secret will default to 'tls.crt'.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, optional
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
+    name : str, default is Undefined, optional
+        The name of the Secret resource being referred to.
+    namespace : str, default is Undefined, optional
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
+    """
+
+
+    key?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema GeneratorsExternalSecretsIoV1alpha1VaultDynamicSecretSpecProviderTLSKeySecretRef:
+    """
+    KeySecretRef to a key in a Secret resource containing client private key
+    added to the transport layer when communicating with the Vault server.
+    If no key for the Secret is specified, external-secret will default to 'tls.key'.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, optional
+        The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be
+        defaulted, in others it may be required.
+    name : str, default is Undefined, optional
+        The name of the Secret resource being referred to.
+    namespace : str, default is Undefined, optional
+        Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults
+        to the namespace of the referent.
+    """
+
+
+    key?: str
+
+    name?: str
+
+    namespace?: str
 
 
