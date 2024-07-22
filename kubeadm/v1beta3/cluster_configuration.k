@@ -6,8 +6,8 @@ schema ClusterConfiguration:
     controlPlaneEndpoint?: str
     certificatesDir: str = "/etc/kubernetes/pki"
     clusterName: str = "kubernetes"
-    imageRepository: str = "registry.k8s.io"
-    kubernetesVersion: str = "1.30.3"
+    imageRepository?: str
+    kubernetesVersion?: str
     etcd?: Etcd
     networking?: Networking
     apiServer?: ApiServer
@@ -35,7 +35,7 @@ schema ExternalEtcd:
 
 schema ApiServer:
     timeoutForControlPlane: str = "4m0s"
-    certSANs = ["127.0.0.1"]
+    certSANs?: [str]
     extraArgs?: {str:str}
     extraVolumes?: [ExtraVolumeItem]
 
