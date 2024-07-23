@@ -26,10 +26,10 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v4
         with:
-          go-version: 1.21
+          go-version: 1.22
 
       - name: Install kpm
-        run: go install kcl-lang.io/kpm@v0.9.0
+        run: go install kcl-lang.io/kpm@latest
 
       - name: Login
         run: kpm login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} docker.io
