@@ -87,7 +87,7 @@ schema CiliumIoV2alpha1CiliumL2AnnouncementPolicySpecNodeSelector:
 
 
     check:
-        all _, matchLabels in matchLabels {len(matchLabels) <= 63regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
+        all _, matchLabels in matchLabels {len(matchLabels) <= _regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
 
 
 schema CiliumIoV2alpha1CiliumL2AnnouncementPolicySpecNodeSelectorMatchExpressionsItems0:
@@ -133,7 +133,7 @@ schema CiliumIoV2alpha1CiliumL2AnnouncementPolicySpecServiceSelector:
 
 
     check:
-        all _, matchLabels in matchLabels {len(matchLabels) <= 63regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
+        all _, matchLabels in matchLabels {len(matchLabels) <= _regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
 
 
 schema CiliumIoV2alpha1CiliumL2AnnouncementPolicySpecServiceSelectorMatchExpressionsItems0:
@@ -213,8 +213,8 @@ schema CiliumIoV2alpha1CiliumL2AnnouncementPolicyStatusConditionsItems0:
         observedGeneration >= 0
         len(reason) <= 1024
         len(reason) >= 1
-        regex_match(str(reason), r"^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$")
+        _regex_match(str(reason), r"^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$")
         len($type) <= 316
-        regex_match(str($type), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$")
+        _regex_match(str($type), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$")
 
 

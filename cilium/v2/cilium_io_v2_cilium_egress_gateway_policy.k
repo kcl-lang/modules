@@ -59,8 +59,8 @@ schema CiliumIoV2CiliumEgressGatewayPolicySpec:
 
 
     check:
-        all destinationCIDRs in destinationCIDRs {regex_match(str(destinationCIDRs), r"^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\/([0-9]|[1-2][0-9]|3[0-2])$") if destinationCIDRs }
-        all excludedCIDRs in excludedCIDRs {regex_match(str(excludedCIDRs), r"^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\/([0-9]|[1-2][0-9]|3[0-2])$") if excludedCIDRs } if excludedCIDRs
+        all destinationCIDRs in destinationCIDRs {_regex_match(str(destinationCIDRs), r"^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\/([0-9]|[1-2][0-9]|3[0-2])$") if destinationCIDRs }
+        all excludedCIDRs in excludedCIDRs {_regex_match(str(excludedCIDRs), r"^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\/([0-9]|[1-2][0-9]|3[0-2])$") if excludedCIDRs } if excludedCIDRs
 
 
 schema CiliumIoV2CiliumEgressGatewayPolicySpecEgressGateway:
@@ -108,7 +108,7 @@ schema CiliumIoV2CiliumEgressGatewayPolicySpecEgressGatewayNodeSelector:
 
 
     check:
-        all _, matchLabels in matchLabels {len(matchLabels) <= 63regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
+        all _, matchLabels in matchLabels {len(matchLabels) <= _regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
 
 
 schema CiliumIoV2CiliumEgressGatewayPolicySpecEgressGatewayNodeSelectorMatchExpressionsItems0:
@@ -170,7 +170,7 @@ schema CiliumIoV2CiliumEgressGatewayPolicySpecSelectorsItems0NamespaceSelector:
 
 
     check:
-        all _, matchLabels in matchLabels {len(matchLabels) <= 63regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
+        all _, matchLabels in matchLabels {len(matchLabels) <= _regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
 
 
 schema CiliumIoV2CiliumEgressGatewayPolicySpecSelectorsItems0NamespaceSelectorMatchExpressionsItems0:
@@ -214,7 +214,7 @@ schema CiliumIoV2CiliumEgressGatewayPolicySpecSelectorsItems0PodSelector:
 
 
     check:
-        all _, matchLabels in matchLabels {len(matchLabels) <= 63regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
+        all _, matchLabels in matchLabels {len(matchLabels) <= _regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
 
 
 schema CiliumIoV2CiliumEgressGatewayPolicySpecSelectorsItems0PodSelectorMatchExpressionsItems0:

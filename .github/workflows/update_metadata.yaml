@@ -29,7 +29,7 @@ jobs:
           go-version: 1.21
 
       - name: Install kpm
-        run: go install kcl-lang.io/kpm@latest
+        run: go install kcl-lang.io/kpm@v0.9.0
 
       - name: Login
         run: kpm login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} docker.io

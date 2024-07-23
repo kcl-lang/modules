@@ -74,7 +74,7 @@ schema CiliumIoV2alpha1CiliumBGPPeeringPolicySpecNodeSelector:
 
 
     check:
-        all _, matchLabels in matchLabels {len(matchLabels) <= 63regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
+        all _, matchLabels in matchLabels {len(matchLabels) <= _regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
 
 
 schema CiliumIoV2alpha1CiliumBGPPeeringPolicySpecNodeSelectorMatchExpressionsItems0:
@@ -263,8 +263,8 @@ schema CiliumIoV2alpha1CiliumBGPPeeringPolicySpecVirtualRoutersItems0NeighborsIt
 
 
     check:
-        all large in large {regex_match(str(large), r"^([0-9]|[1-9][0-9]{1,8}|[1-3][0-9]{9}|4[01][0-9]{8}|42[0-8][0-9]{7}|429[0-3][0-9]{6}|4294[0-8][0-9]{5}|42949[0-5][0-9]{4}|429496[0-6][0-9]{3}|4294967[01][0-9]{2}|42949672[0-8][0-9]|429496729[0-5]):([0-9]|[1-9][0-9]{1,8}|[1-3][0-9]{9}|4[01][0-9]{8}|42[0-8][0-9]{7}|429[0-3][0-9]{6}|4294[0-8][0-9]{5}|42949[0-5][0-9]{4}|429496[0-6][0-9]{3}|4294967[01][0-9]{2}|42949672[0-8][0-9]|429496729[0-5]):([0-9]|[1-9][0-9]{1,8}|[1-3][0-9]{9}|4[01][0-9]{8}|42[0-8][0-9]{7}|429[0-3][0-9]{6}|4294[0-8][0-9]{5}|42949[0-5][0-9]{4}|429496[0-6][0-9]{3}|4294967[01][0-9]{2}|42949672[0-8][0-9]|429496729[0-5])$") if large } if large
-        all standard in standard {regex_match(str(standard), r"^([0-9]|[1-9][0-9]{1,8}|[1-3][0-9]{9}|4[01][0-9]{8}|42[0-8][0-9]{7}|429[0-3][0-9]{6}|4294[0-8][0-9]{5}|42949[0-5][0-9]{4}|429496[0-6][0-9]{3}|4294967[01][0-9]{2}|42949672[0-8][0-9]|429496729[0-5])$|^([0-9]|[1-9][0-9]{1,3}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5]):([0-9]|[1-9][0-9]{1,3}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])$") if standard } if standard
+        all large in large {_regex_match(str(large), r"^([0-9]|[1-9][0-9]{1,8}|[1-3][0-9]{9}|4[01][0-9]{8}|42[0-8][0-9]{7}|429[0-3][0-9]{6}|4294[0-8][0-9]{5}|42949[0-5][0-9]{4}|429496[0-6][0-9]{3}|4294967[01][0-9]{2}|42949672[0-8][0-9]|429496729[0-5]):([0-9]|[1-9][0-9]{1,8}|[1-3][0-9]{9}|4[01][0-9]{8}|42[0-8][0-9]{7}|429[0-3][0-9]{6}|4294[0-8][0-9]{5}|42949[0-5][0-9]{4}|429496[0-6][0-9]{3}|4294967[01][0-9]{2}|42949672[0-8][0-9]|429496729[0-5]):([0-9]|[1-9][0-9]{1,8}|[1-3][0-9]{9}|4[01][0-9]{8}|42[0-8][0-9]{7}|429[0-3][0-9]{6}|4294[0-8][0-9]{5}|42949[0-5][0-9]{4}|429496[0-6][0-9]{3}|4294967[01][0-9]{2}|42949672[0-8][0-9]|429496729[0-5])$") if large } if large
+        all standard in standard {_regex_match(str(standard), r"^([0-9]|[1-9][0-9]{1,8}|[1-3][0-9]{9}|4[01][0-9]{8}|42[0-8][0-9]{7}|429[0-3][0-9]{6}|4294[0-8][0-9]{5}|42949[0-5][0-9]{4}|429496[0-6][0-9]{3}|4294967[01][0-9]{2}|42949672[0-8][0-9]|429496729[0-5])$|^([0-9]|[1-9][0-9]{1,3}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5]):([0-9]|[1-9][0-9]{1,3}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])$") if standard } if standard
 
 
 schema CiliumIoV2alpha1CiliumBGPPeeringPolicySpecVirtualRoutersItems0NeighborsItems0AdvertisedPathAttributesItems0Selector:
@@ -286,7 +286,7 @@ schema CiliumIoV2alpha1CiliumBGPPeeringPolicySpecVirtualRoutersItems0NeighborsIt
 
 
     check:
-        all _, matchLabels in matchLabels {len(matchLabels) <= 63regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
+        all _, matchLabels in matchLabels {len(matchLabels) <= _regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
 
 
 schema CiliumIoV2alpha1CiliumBGPPeeringPolicySpecVirtualRoutersItems0NeighborsItems0AdvertisedPathAttributesItems0SelectorMatchExpressionsItems0:
@@ -372,7 +372,7 @@ schema CiliumIoV2alpha1CiliumBGPPeeringPolicySpecVirtualRoutersItems0PodIPPoolSe
 
 
     check:
-        all _, matchLabels in matchLabels {len(matchLabels) <= 63regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
+        all _, matchLabels in matchLabels {len(matchLabels) <= _regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
 
 
 schema CiliumIoV2alpha1CiliumBGPPeeringPolicySpecVirtualRoutersItems0PodIPPoolSelectorMatchExpressionsItems0:
@@ -418,7 +418,7 @@ schema CiliumIoV2alpha1CiliumBGPPeeringPolicySpecVirtualRoutersItems0ServiceSele
 
 
     check:
-        all _, matchLabels in matchLabels {len(matchLabels) <= 63regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
+        all _, matchLabels in matchLabels {len(matchLabels) <= _regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
 
 
 schema CiliumIoV2alpha1CiliumBGPPeeringPolicySpecVirtualRoutersItems0ServiceSelectorMatchExpressionsItems0:

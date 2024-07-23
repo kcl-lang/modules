@@ -1,6 +1,6 @@
 ## Introduction
 
-`external-secrets` module contains definitions for `external-secrets`
+The `external-secrets` module contains definitions for `external-secrets`
 
 ## Resource
 
