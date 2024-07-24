@@ -32,6 +32,9 @@ schema LocalEtcd:
 
 schema ExternalEtcd:
     endpoints: [str]
+    caFile?: str 
+    certFile?: str 
+    keyFile?: str
 
 schema ApiServer:
     timeoutForControlPlane: str = "4m0s"
