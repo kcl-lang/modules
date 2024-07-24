@@ -19,6 +19,10 @@ jobs:
     runs-on: ubuntu-latest
     name: Update Package Info on AH 
     steps:
+
+      - name: Install kcl
+        run: wget -q https://kcl-lang.io/script/install-cli.sh -O - | /bin/bash
+
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -28,11 +32,8 @@ jobs:
         with:
           go-version: 1.22
 
-      - name: Install kpm
-        run: go install kcl-lang.io/kpm@latest
-
       - name: Login
-        run: kpm login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} docker.io
+        run: kcl registry -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} docker.io
 
       - name: Get changed files
         id: changed-files
@@ -46,7 +47,7 @@ jobs:
 
       - name: Publish to ghcr.io
         run: |
-          kpm login -u ${{ secrets.DEPLOY_ACCESS_NAME }} -p ${{ secrets.DEPLOY_ACCESS_TOKEN }} ghcr.io
+          kcl registry -u ${{ secrets.DEPLOY_ACCESS_NAME }} -p ${{ secrets.DEPLOY_ACCESS_TOKEN }} ghcr.io
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             ./scripts/push_pkg_from.sh $file
           done

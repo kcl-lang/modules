@@ -8,6 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     name: Publish packages to local registry
     steps:
+      - name: Install kcl
+        run: wget -q https://kcl-lang.io/script/install-cli.sh -O - | /bin/bash
+        
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -24,6 +27,7 @@ jobs:
         run: |
           export KPM_REG="localhost:5001"
           export KPM_REPO="test"
+          export LOGIN_WITH_KCL=1
           ./scripts/reg.sh
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             ./scripts/push_pkg_from.sh $file

@@ -27,7 +27,7 @@ docker run -p 5001:5000 \
 # clean the registry
 docker exec registry rm -rf /var/lib/registry/docker/registry/v2/repositories/
 
-export LOGIN_WITH_KPM=${LOGIN_WITH_KPM:-"0"}
-if [ "$LOGIN_WITH_KPM" = "1" ];then 
-    kpm login -u test -p 1234 localhost:5001
+export LOGIN_WITH_KCL=${LOGIN_WITH_KCL:-"0"}
+if [ "$LOGIN_WITH_KCL" = "1" ];then 
+    kcl registry login localhost:5001 -u test -p 1234 
 fi
