@@ -19,4 +19,4 @@ PKG_PATH=$(dirname "$KCL_MOD_FILE_PATH")
 echo "info: load package from $PKG_PATH"
 
 cd $PKG_PATH
-kpm push
+kcl mod push
