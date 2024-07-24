@@ -1,0 +1,30 @@
+name: Test Publish Package
+
+on:
+  pull_request:
+
+jobs:
+  publish_pkg_local:
+    runs-on: ubuntu-latest
+    name: Publish packages to local registry
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v41
+
+      - name: test
+        run: |
+          export KPM_REG="localhost:5001"
+          export KPM_REPO="test"
+          ./scripts/reg.sh
+          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+            ./scripts/push_pkg_from.sh $file
+          done
