@@ -5,7 +5,7 @@ Editing this file might prove futile when you re-run the KCL auto-gen generate c
 import k8s.apimachinery.pkg.apis.meta.v1
 
 
-schema Provider:
+schema MetaProvider:
     """
     A Provider is the description of a Crossplane Provider package.
 
