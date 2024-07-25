@@ -250,29 +250,6 @@ test_configschema = lambda {
     }) == 'rules must be unique'
 }
 
-
-# DISABLED test until check is fixed in sqlc.k
-#test_configschema_codegen = lambda {
-#    assert runtime.catch(lambda {
-#        p = ConfigSchema{
-#            plugins = [ConfigPlugin{
-#                name = 'py'
-#            }]
-#            sql = [
-#               ConfigSql{
-#                    name = 'test'
-#                    engine = 'postgresql'
-#                    $schema = 'test'
-#                    codegen = [Codegen{
-#                        out = 'somedir'
-#                        plugin = 'pypy'
-#                    }]
-#                }
-#            ]
-#        }
-#    }) == 'codegen plugins must reference config plugins'
-#}
-
 # JSON example
 test_json_sample = lambda {
     js = """\
@@ -323,4 +300,25 @@ sql:
     #assert cfg.$rules[0].$rule is not ''
     assert cfg.sql[0].gen.go.package == 'somegopkg'
     assert cfg.sql[0].engine == 'mysql'
+}
+
+test_configschema_codegen = lambda {
+    result = runtime.catch(lambda {
+        p = ConfigSchema{
+            plugins = [ConfigPlugin{
+                name = 'py'
+            }]
+            sql = [
+               ConfigSql{
+                    name = 'test'
+                    engine = 'postgresql'
+                    $schema = 'test'
+                    codegen = [Codegen{
+                        out = 'somedir'
+                        plugin = 'pypy'
+                    }]
+                }
+            ]
+        }
+    }) == 'codegen.plugins must be present in plugins'
 }

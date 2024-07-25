@@ -27,10 +27,8 @@ schema ConfigSchema:
         isunique(allRuleNames()) if $rules, "rules must be unique"
         # schema.sql.[rules] need to be present in base schema.[rules].name
         all_true([r in allRuleNames() for r in allSqlRules()])
-
-        # Check disabled, as it always raise the exception in testing
         # check schema.sql.[codegen].plugin is defined in schema.[plugins].name
-        # all_true([p.name in codegenPlugins() for p in plugins] if plugins else [True]) if codegenPlugins(), "codegen plugins must reference config plugins"
+        all_true([p.name in codegenPlugins() for p in plugins] if plugins else [True]) if codegenPlugins(), "codegen plugins must reference config plugins"
 
 # A Common Expression Language (CEL) expression.
 schema ConfigRule:
@@ -74,7 +72,7 @@ schema ConfigSql:
     # Directory of SQL migrations or path to single SQL file; or a list of paths.
     $schema: str
     # Directory of SQL queries or path to single SQL file; or a list of paths.
-    queries: str
+    queries?: str
     # A collection of mappings to configure code generators.
     # See codegen for the supported keys.
     # https://docs.sqlc.dev/en/latest/reference/config.html#codegen
@@ -261,7 +259,7 @@ schema Codegen:
     # The name of the plugin. Must be defined in the plugins collection.
     plugin: str
     # A mapping of plugin-specific options.
-    options: {any:any}
+    options?: {any:any}
 
 schema Database:
     # If true, connect to a managed database. Defaults to false.
