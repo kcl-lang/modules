@@ -29,6 +29,8 @@ schema Etcd:
 
 schema LocalEtcd:
     dataDir: str = "/var/lib/etcd"
+    imageRepository?: str
+    imageTag?: str
 
 schema ExternalEtcd:
     endpoints: [str]
@@ -55,3 +57,4 @@ schema Scheduler:
 
 schema Dns:
     imageRepository?: str
+    imageTag?: str
