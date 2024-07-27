@@ -1,0 +1,25 @@
+version: 0.0.2
+name: kind
+displayName: kind
+createdAt: "2024-07-27T07:41:09Z"
+description: '`kind` is the Kind configuration definition.'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `kind` with tag `0.0.2` as dependency
+  ```
+  kcl mod add kind:0.0.2
+  ```
+
+  #### Pull `kind` with tag `0.0.2` to local
+  ```
+  kcl mod pull kind:0.0.2
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
