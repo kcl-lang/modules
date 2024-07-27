@@ -1,14 +1,17 @@
 schema Cluster:
     apiVersion: str =  "kind.x-k8s.io/v1alpha4"
     kind: str = "Cluster"
-    networking: Networking={}
+    networking?: Networking
     nodes: [Node]
+    featureGates?: {str:bool}
 
 schema Networking:
     apiServerAddress?: str
     apiServerPort?: int
     serviceSubnet?: str 
     podSubnet?: str
+    ipFamily?: str 
+    kubeProxyMode?: str
 
 schema ExtraPortMapping:
     containerPort?: int
