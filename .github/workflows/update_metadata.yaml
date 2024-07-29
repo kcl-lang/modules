@@ -41,9 +41,9 @@ jobs:
         with:
           go-version: 1.22
 
-      - name: Login
-        if: steps.changed-files.outputs.any_changed == 'true'
-        run: kcl registry login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} docker.io
+      # - name: Login
+      #   if: steps.changed-files.outputs.any_changed == 'true'
+      #   run: kcl registry login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} docker.io
 
       - name: Publish to docker.io
         if: steps.changed-files.outputs.any_changed == 'true'
