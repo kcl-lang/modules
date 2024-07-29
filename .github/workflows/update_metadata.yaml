@@ -5,6 +5,8 @@ on:
     branches:
       - main
   pull_request:
+    paths:
+      - "**.mod"
 
 env:
   KPM_REG: "docker.io"
