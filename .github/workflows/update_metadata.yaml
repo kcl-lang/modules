@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+    paths:
+      - "**.mod"
 
 env:
   KPM_REG: "docker.io"
@@ -28,9 +30,9 @@ jobs:
           fetch-depth: 0
 
       - name: Set up Go
-        uses: actions/setup-go@v4
+        uses: actions/setup-go@v5
         with:
-          go-version: 1.22
+          go-version-file: go.mod
 
       - name: Login
         run: kcl registry login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} docker.io
