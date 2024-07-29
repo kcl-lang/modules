@@ -57,9 +57,10 @@ jobs:
       - name: Publish to ghcr.io
         if: steps.changed-files.outputs.any_changed == 'true'
         run: |
-          kcl registry login -u ${{ secrets.DEPLOY_ACCESS_NAME }} -p ${{ secrets.DEPLOY_ACCESS_TOKEN }} ghcr.io
-          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
-            ./scripts/push_pkg_from.sh $file
+          #kcl registry login -u ${{ secrets.DEPLOY_ACCESS_NAME }} -p ${{ secrets.DEPLOY_ACCESS_TOKEN }} ghcr.io
+          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do 
+            echo $file
+            #./scripts/push_pkg_from.sh $file
           done
         env:
           KPM_REG: "ghcr.io"
