@@ -33,7 +33,7 @@ jobs:
         uses: tj-actions/changed-files@v41
         with:
           files: |
-             **.k
+             **.mod
 
       - name: Set up Go
         if: steps.changed-markdown-files.outputs.any_changed == 'true'
