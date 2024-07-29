@@ -36,24 +36,24 @@ jobs:
              **.mod
 
       - name: Set up Go
-        if: steps.changed-markdown-files.outputs.any_changed == 'true'
+        if: steps.changed-files.outputs.any_changed == 'true'
         uses: actions/setup-go@v4
         with:
           go-version: 1.22
 
       - name: Login
-        if: steps.changed-markdown-files.outputs.any_changed == 'true'
+        if: steps.changed-files.outputs.any_changed == 'true'
         run: kcl registry login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} docker.io
 
       - name: Publish to docker.io
-        if: steps.changed-markdown-files.outputs.any_changed == 'true'
+        if: steps.changed-files.outputs.any_changed == 'true'
         run: |
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             ./scripts/push_pkg_from.sh $file
           done
 
       - name: Publish to ghcr.io
-        if: steps.changed-markdown-files.outputs.any_changed == 'true'
+        if: steps.changed-files.outputs.any_changed == 'true'
         run: |
           kcl registry login -u ${{ secrets.DEPLOY_ACCESS_NAME }} -p ${{ secrets.DEPLOY_ACCESS_TOKEN }} ghcr.io
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
@@ -64,14 +64,14 @@ jobs:
           KPM_REPO: "kcl-lang"
 
       - name: Update artifacthub-pkg.yaml
-        if: steps.changed-markdown-files.outputs.any_changed == 'true'
+        if: steps.changed-files.outputs.any_changed == 'true'
         run: |
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             go run main.go $file
           done
 
       - name: Commit and push changes
-        if: steps.changed-markdown-files.outputs.any_changed == 'true'
+        if: steps.changed-files.outputs.any_changed == 'true'
         run: |
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@github.com'
