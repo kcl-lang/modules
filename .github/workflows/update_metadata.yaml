@@ -33,7 +33,7 @@ jobs:
           go-version: 1.22
 
       - name: Login
-        run: kcl registry -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} docker.io
+        run: kcl registry login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} docker.io
 
       - name: Get changed files
         id: changed-files
@@ -47,7 +47,7 @@ jobs:
 
       - name: Publish to ghcr.io
         run: |
-          kcl registry -u ${{ secrets.DEPLOY_ACCESS_NAME }} -p ${{ secrets.DEPLOY_ACCESS_TOKEN }} ghcr.io
+          kcl registry login -u ${{ secrets.DEPLOY_ACCESS_NAME }} -p ${{ secrets.DEPLOY_ACCESS_TOKEN }} ghcr.io
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             ./scripts/push_pkg_from.sh $file
           done
