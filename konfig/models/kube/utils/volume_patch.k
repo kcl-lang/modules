@@ -1,7 +1,9 @@
 import models.kube.frontend.volume
+import models.kube.templates
 
-VolumePatch = lambda volumes: [volume.Volume], containers: [{str:}] -> [{str:}] {
-    """VolumePatch patches volumes into _containers and returns the patched _container"""
+
+volume_patch = lambda volumes: [volume.Volume], containers: [{str:}] -> [{str:}] {
+    """volume_patch patches volumes into _containers and returns the patched _container"""
     [
         _container | {
             volumeMounts = sum([[
@@ -14,4 +16,18 @@ VolumePatch = lambda volumes: [volume.Volume], containers: [{str:}] -> [{str:}] 
             ] for volume in volumes] if volumes else [], [])
         } for _container in containers
     ] if containers else Undefined
+}
+
+to_kube_volume = lambda v: volume.Volume {
+    """Convert frontend volume to k8s Volume."""
+    volumeType = typeof(v.volumeSource)
+    assert volumeType in templates.VOLUME_SOURCE_TYPE_MAPPING, "Invalid frontend volume type, please check VOLUME_SOURCE_TYPE_MAPPING"
+    kubeVolumeType = templates.VOLUME_SOURCE_TYPE_MAPPING[volumeType]
+    {
+        name = v.name
+        if typeof(v.volumeSource) == "EmptyDir" and v.volumeSource.medium == "":
+            "${kubeVolumeType}" = {}
+        else:
+            "${kubeVolumeType}" = v.volumeSource
+    }
 }

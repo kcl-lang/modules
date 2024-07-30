@@ -6,16 +6,6 @@ import models.kube.metadata
 import models.kube.utils
 import models.kube.resource
 
-# Frontend volume to k8s volume mapping.
-VOLUME_SOURCE_TYPE_MAPPING = {
-    EmptyDir = "emptyDir"
-    Secret = "secret"
-    ConfigMap = "configMap"
-    DownwardAPI = "downwardAPI"
-    CSI = "csi"
-    HostPath = "hostPath"
-}
-
 schema ServerBackend[inputConfig: server.Server]:
     """ServerBackend converts the user-written front-end model `Server` into a 
     collection of k8s resources and places the resource collection into 
@@ -46,7 +36,7 @@ schema ServerBackend[inputConfig: server.Server]:
     if config.mainContainer:
         assert config.image, "config.image must be specified and can't be empty or None or Undefined"
         # Construct input of converter using the volumes.
-        mainContainer = utils.VolumePatch(config.volumes, [utils.ContainerFrontend2Kube({
+        mainContainer = utils.volume_patch(config.volumes, [utils.ContainerFrontend2Kube({
             **config.mainContainer
             if config.mainContainer.useBuiltInEnv:
                 env += app.envs
@@ -56,10 +46,10 @@ schema ServerBackend[inputConfig: server.Server]:
         })])?[0]
 
     if config.sidecarContainers:
-        sidecarContainers = utils.VolumePatch(config.volumes, [utils.ContainerFrontend2Kube(_s) for _s in config.sidecarContainers])
+        sidecarContainers = utils.volume_patch(config.volumes, [utils.ContainerFrontend2Kube(_s) for _s in config.sidecarContainers])
 
     if config.initContainers:
-        initContainers = utils.VolumePatch(config.volumes, [utils.ContainerFrontend2Kube(_s) for _s in config.initContainers])
+        initContainers = utils.volume_patch(config.volumes, [utils.ContainerFrontend2Kube(_s) for _s in config.initContainers])
 
     _applicationLabel: {str: str} = {
         "app.k8s.io/component": workloadName
@@ -85,19 +75,7 @@ schema ServerBackend[inputConfig: server.Server]:
                     containers = [mainContainer] + (sidecarContainers or [])
                     initContainers = initContainers
                     if config.volumes: volumes = [
-                        (lambda volume {
-                            """Convert frontend volume to k8s Volume."""
-                            volumeType = typeof(volume.volumeSource)
-                            assert volumeType in VOLUME_SOURCE_TYPE_MAPPING, "Invalid frontend volume type, please check VOLUME_SOURCE_TYPE_MAPPING"
-                            kubeVolumeType = VOLUME_SOURCE_TYPE_MAPPING[volumeType]
-                            {
-                                name = volume.name
-                                if typeof(volume.volumeSource) == "EmptyDir" and volume.volumeSource.medium == "":
-                                    "${kubeVolumeType}" = {}
-                                else:
-                                    "${kubeVolumeType}" = volume.volumeSource
-                            }
-                        })(volume) for volume in config.volumes if volume.volumeSource
+                        utils.to_kube_volume(v) for v in config.volumes if v.volumeSource
                     ]
                     if config.serviceAccount:
                         serviceAccountName = config.serviceAccount.name

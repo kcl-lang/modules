@@ -34,6 +34,7 @@ remove_duplicated_iter = lambda data: [], func {
 
 __renderServerFrontendInstances__ = [inst for inst in frontend.Server.instances() if typeof(inst) == "Server"]
 __renderServerBackendInstances__ = [backend.ServerBackend(inst) for inst in __renderServerFrontendInstances__]
+__serverExtraResources: [{str:}] = [v for s in __renderServerFrontendInstances__ for k, v in s.extraResources or []]
 
 __renderJobFrontendInstances__ = [inst for inst in frontend.Job.instances() if typeof(inst) == "Job"]
 __renderJobBackendInstances__ = [backend.JobBackend(inst) for inst in __renderJobFrontendInstances__]
@@ -83,5 +84,7 @@ getId = lambda _resource {
 _output = { 
     _kind: [_resource for _resource in _res] \
         for _kind, _res in __resource_map___
+} | {
+    __extra: __serverExtraResources    
 }
 manifestsResourceMap(_output)

@@ -1,5 +1,10 @@
 # Konfig
 
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fkcl-lang%2Fkonfig.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fkcl-lang%2Fkonfig?ref=badge_shield)
+
+
+[English](README.md) | [Chinese](README-zh.md)
+
 Konfig is the repository of the infra configuration in KCL.
 
 Konfig provides users with an out-of-the-box, highly abstract configuration interface. The original starting point of the model library is to improve the efficiency and experience of YAML users. We hope to simplify the writing of user-side configuration code by abstracting and encapsulating the model with more complex code into a unified model.
@@ -13,6 +18,7 @@ The overall structure of the configuration library is as follows:
 ```bash
 .
 ├── LICENSE
+├── Makefile
 ├── README-zh.md
 ├── README.md
 ├── examples            # konfig examples
@@ -44,7 +50,7 @@ The overall structure of the configuration library is as follows:
 
 ## Prerequisites
 
-Install [kpm](https://kcl-lang.io/docs/user_docs/guides/package-management/installation)
+Install [KCL](https://kcl-lang.io/docs/user_docs/getting-started/install)
 
 ## Quick Start
 
@@ -53,3 +59,6 @@ See [here](https://kcl-lang.io/docs/user_docs/guides/working-with-konfig/guide)
 ## License
 
 Apache License Version 2.0
+
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fkcl-lang%2Fkonfig.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fkcl-lang%2Fkonfig?ref=badge_large)

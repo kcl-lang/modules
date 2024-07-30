@@ -36,13 +36,13 @@ schema JobBackend[inputConfig: frontend.Job]:
             image = config.image
             resource = config?.schedulingStrategy?.resource
         }
-        mainContainer = utils.VolumePatch(config.volumes, [utils.ContainerFrontend2Kube(mainContainerDict)])?[0]
+        mainContainer = utils.volume_patch(config.volumes, [utils.ContainerFrontend2Kube(mainContainerDict)])?[0]
 
     if config.sidecarContainers:
-        sidecarContainers = utils.VolumePatch(config.volumes, [utils.ContainerFrontend2Kube(_s) for _s in config.sidecarContainers])
+        sidecarContainers = utils.volume_patch(config.volumes, [utils.ContainerFrontend2Kube(_s) for _s in config.sidecarContainers])
 
     if config.initContainers:
-        initContainers =  utils.VolumePatch(config.volumes, [utils.ContainerFrontend2Kube(_s) for _s in config.initContainers])
+        initContainers =  utils.volume_patch(config.volumes, [utils.ContainerFrontend2Kube(_s) for _s in config.initContainers])
 
     # construct job attributes
     jobAttrs: {str:} = {
@@ -72,20 +72,9 @@ schema JobBackend[inputConfig: frontend.Job]:
                     ]
                     initContainers = initContainers
                     restartPolicy = config.restartPolicy
-                    # volume
+                    # volumes
                     if config.volumes: volumes = [
-                        (lambda volume {
-                            volumeType = typeof(volume.volumeSource)
-                            assert volumeType in VOLUME_SOURCE_TYPE_MAPPING, "Invalid frontend volume type, please check VOLUME_SOURCE_TYPE_MAPPING"
-                            kubeVolumeType = VOLUME_SOURCE_TYPE_MAPPING[volumeType]
-                            {
-                                name = volume.name
-                                if typeof(volume.volumeSource) == "EmptyDir" and volume.volumeSource.medium == "":
-                                    "${kubeVolumeType}" = {}
-                                else:
-                                    "${kubeVolumeType}" = volume.volumeSource
-                            }
-                        })(volume) for volume in config.volumes if volume.volumeSource
+                        utils.to_kube_volume(v) for v in config.volumes if v.volumeSource
                     ]
                     # service account
                     if config.serviceAccount:

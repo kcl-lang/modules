@@ -23,6 +23,7 @@
         - env
           - [Env](#env)
           - [EnvFromSource](#envfromsource)
+          - [EnvMap](#envmap)
           - [EnvValueFrom](#envvaluefrom)
           - [ObjectFieldSelector](#objectfieldselector)
           - [ObjectKeySelector](#objectkeyselector)
@@ -135,52 +136,7 @@ Provider
 |**app** `required`|[ApplicationBuilder](#applicationbuilder)||utils.ApplicationBuilder {}|
 |**config** `required`|[Job](#job)||inputConfig|
 |**initContainers**|[{str:}]|||
-|**jobAttrs** `required`|{str:}||{
-    metadata = utils.MetadataBuilder(config) | {name = jobName}
-    spec = {
-        activeDeadlineSeconds = config.activeDeadlineSeconds
-        backoffLimit = config.backoffLimit
-        completionMode = config.completionMode
-        completions = config.completions
-        manualSelector = config.manualSelector
-        parallelism = config.parallelism
-        suspend = config.suspend
-        ttlSecondsAfterFinished = config.ttlSecondsAfterFinished
-        selector: {matchLabels = app.selector | config.selector}
-        template = {
-            metadata = {
-                labels = app.labels
-                **config.podMetadata
-            }
-            spec = {
-                containers = [
-                    mainContainer
-                    *sidecarContainers
-                ]
-                initContainers = initContainers
-                restartPolicy = config.restartPolicy
-                if config.volumes:
-                    volumes = [(lambda volume {
-                        volumeType = typeof(volume.volumeSource)
-                        assert volumeType in VOLUME_SOURCE_TYPE_MAPPING, "Invalid frontend volume type, please check VOLUME_SOURCE_TYPE_MAPPING"
-                        kubeVolumeType = VOLUME_SOURCE_TYPE_MAPPING[volumeType]
-                        {
-                            name = volume.name
-                            if typeof(volume.volumeSource) == "EmptyDir" and volume.volumeSource.medium == "":
-                                "${kubeVolumeType}" = {}
-                            else:
-                                "${kubeVolumeType}" = volume.volumeSource
-                        }
-
-                    })(volume) for volume in config.volumes if volume.volumeSource]
-                
-                if config.serviceAccount:
-                    serviceAccountName = config.serviceAccount.name
-                
-            }
-        }
-    }
-}|
+|**jobAttrs** `required`|{str:}||{<br />    metadata = utils.MetadataBuilder(config) \| {name = jobName}<br />    spec = {<br />        activeDeadlineSeconds = config.activeDeadlineSeconds<br />        backoffLimit = config.backoffLimit<br />        completionMode = config.completionMode<br />        completions = config.completions<br />        manualSelector = config.manualSelector<br />        parallelism = config.parallelism<br />        suspend = config.suspend<br />        ttlSecondsAfterFinished = config.ttlSecondsAfterFinished<br />        selector: {matchLabels = app.selector \| config.selector}<br />        template = {<br />            metadata = {<br />                labels = app.labels<br />                **config.podMetadata<br />            }<br />            spec = {<br />                containers = [<br />                    mainContainer<br />                    *sidecarContainers<br />                ]<br />                initContainers = initContainers<br />                restartPolicy = config.restartPolicy<br />                if config.volumes:<br />                    volumes = [utils.to_kube_volume(v) for v in config.volumes if v.volumeSource]<br />                <br />                if config.serviceAccount:<br />                    serviceAccountName = config.serviceAccount.name<br />                <br />            }<br />        }<br />    }<br />}|
 |**jobName** `required`|str||"{}-{}".format(metadata.__META_APP_NAME, metadata.__META_ENV_TYPE_NAME).lower()|
 |**kubernetes** `required`|[ResourceMapping](#resourcemapping)||{"${typeof(_jobInstance)}" = [_jobInstance]}|
 |**mainContainer** `required`|{str:}|||
@@ -195,62 +151,15 @@ ServerBackend converts the user-written front-end model `Server` into a collecti
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**_applicationLabel** `required`|{str:str}||{"app.k8s.io/component": workloadName}|
-|**_workloadInstance**| | |||
+|**_workloadInstance**|[Deployment](#deployment) | [StatefulSet](#statefulset)|||
 |**app** `required`|[ApplicationBuilder](#applicationbuilder)||utils.ApplicationBuilder {}|
 |**config** `required`|[Server](#server)||inputConfig|
 |**initContainers**|[{str:}]|||
-|**kubernetes** `required`|[ResourceMapping](#resourcemapping)||{
-    if _workloadInstance:
-        "${typeof(_workloadInstance)}" = [_workloadInstance]
-    
-    if _headlessServiceInstance:
-        "${typeof(_headlessServiceInstance)}" = [_headlessServiceInstance]
-    
-}|
+|**kubernetes** `required`|[ResourceMapping](#resourcemapping)||{<br />    if _workloadInstance:<br />        "${typeof(_workloadInstance)}" = [_workloadInstance]<br />    <br />    if _headlessServiceInstance:<br />        "${typeof(_headlessServiceInstance)}" = [_headlessServiceInstance]<br />    <br />}|
 |**mainContainer** `required`|{str:}|||
 |**provider**|[]|||
 |**sidecarContainers**|[{str:}]|||
-|**workloadAttributes** `required`|{str:}||{
-    metadata = utils.MetadataBuilder(config) | {name = workloadName}
-    spec = {
-        replicas = config.replicas
-        if config.useBuiltInSelector:
-            selector: {matchLabels: app.selector | config.selector | _applicationLabel}
-        else:
-            selector: {matchLabels: config.selector}
-        template = {
-            metadata = {
-                if config.useBuiltInLabels:
-                    labels = app.labels | _applicationLabel
-                
-                **config.podMetadata
-            }
-            spec = {
-                containers = [mainContainer] + (sidecarContainers or [])
-                initContainers = initContainers
-                if config.volumes:
-                    volumes = [(lambda volume {
-                        """Convert frontend volume to k8s Volume."""
-                        volumeType = typeof(volume.volumeSource)
-                        assert volumeType in VOLUME_SOURCE_TYPE_MAPPING, "Invalid frontend volume type, please check VOLUME_SOURCE_TYPE_MAPPING"
-                        kubeVolumeType = VOLUME_SOURCE_TYPE_MAPPING[volumeType]
-                        {
-                            name = volume.name
-                            if typeof(volume.volumeSource) == "EmptyDir" and volume.volumeSource.medium == "":
-                                "${kubeVolumeType}" = {}
-                            else:
-                                "${kubeVolumeType}" = volume.volumeSource
-                        }
-
-                    })(volume) for volume in config.volumes if volume.volumeSource]
-                
-                if config.serviceAccount:
-                    serviceAccountName = config.serviceAccount.name
-                
-            }
-        }
-    }
-}|
+|**workloadAttributes** `required`|{str:}||{<br />    metadata = utils.MetadataBuilder(config) \| {name = workloadName}<br />    spec = {<br />        replicas = config.replicas<br />        if config.useBuiltInSelector:<br />            selector: {matchLabels: app.selector \| config.selector \| _applicationLabel}<br />        else:<br />            selector: {matchLabels: config.selector}<br />        template = {<br />            metadata = {<br />                if config.useBuiltInLabels:<br />                    labels = app.labels \| _applicationLabel<br />                <br />                **config.podMetadata<br />            }<br />            spec = {<br />                containers = [mainContainer] + (sidecarContainers or [])<br />                initContainers = initContainers<br />                if config.volumes:<br />                    volumes = [utils.to_kube_volume(v) for v in config.volumes if v.volumeSource]<br />                <br />                if config.serviceAccount:<br />                    serviceAccountName = config.serviceAccount.name<br />                <br />            }<br />        }<br />    }<br />}|
 |**workloadName** `required`|str||config.name or "{}{}".format(metadata.__META_APP_NAME, metadata.__META_ENV_TYPE_NAME).lower()|
 ### Job
 
@@ -273,7 +182,7 @@ Job is the common user interface for one-time jobs, which is defined by Kubernet
 |**manualSelector**|bool|manualSelector controls generation of pod labels and pod selectors.<br />More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/#specifying-your-own-pod-selector||
 |**needNamespace**|bool|NeedNamespace mark server is namespace scoped or not.|True|
 |**parallelism**|int|Specifies the maximum desired number of pods the job should run at any given time.<br />More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/||
-|**podMetadata**|any|PodMetadata is metadata that all persisted resources must have, which includes all objects users must create.||
+|**podMetadata**|[ObjectMeta](#objectmeta)|PodMetadata is metadata that all persisted resources must have, which includes all objects users must create.||
 |**restartPolicy**|"Never" | "OnFailure"|Restart policy for all containers within the pod. One of Always, OnFailure, Never.<br />Default to Always. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#restart-policy|"Never"|
 |**schedulingStrategy**|[SchedulingStrategy](#schedulingstrategy)|SchedulingStrategy represents scheduling strategy.|strategy.SchedulingStrategy {}|
 |**selector**|{str:str}|A label query over pods that should match the pod count.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors||
@@ -309,6 +218,7 @@ Server is abstaction of Deployment and StatefulSet.
 |**configMaps**|[[ConfigMap](#configmap)]|ConfigMaps is a list of ConfigMap which holds configuration data for server to consume.||
 |**database**|[DataBase](#database)|||
 |**enableMonitoring**|bool|EnableMonitoring mark server is enable monitor or not.|False|
+|**extraResources**|{str:{str:}}|Extra resources used to output the final result.||
 |**image** `required`|str|Container image name.<br />More info: https://kubernetes.io/docs/concepts/containers/images|option("image")|
 |**ingresses**|[[Ingress](#ingress)]|Ingresses is a list of Ingress which is collection of rules that allow inbound connections to reach the endpoints defined by a backend.||
 |**initContainers**|[[Sidecar](#sidecar)]|InitContainers describes the list of sidecar container configuration that is expected to be run on the host.||
@@ -316,7 +226,7 @@ Server is abstaction of Deployment and StatefulSet.
 |**mainContainer** `required`|[Main](#main)|MainContainer describes the main container configuration that is expected to be run on the host.||
 |**name**|str|The name of the workload and service.<br />If not defined, a generated name ("{__META_APP_NAME}-{__META_ENV_TYPE_NAME}") will be used.<br />The value of __META_APP_NAME will be extracted from the value of the "name" defined in project.yaml,<br />and the value of __META_ENV_TYPE_NAME will be extracted from the value of the "name" defined in stack.yaml.||
 |**needNamespace**|bool|NeedNamespace mark server is namespace scoped or not.|True|
-|**podMetadata**|any|PodMetadata is metadata that all persisted resources must have, which includes all objects users must create.||
+|**podMetadata**|[ObjectMeta](#objectmeta)|PodMetadata is metadata that all persisted resources must have, which includes all objects users must create.||
 |**renderType**|"Server" | "KubeVelaApplication"|Application render type, default to 'Server'|"Server"|
 |**replicas** `required`|int|Number of desired pods. This is a pointer to distinguish between explicit zero and not specified. Defaults to 1.|option("replicas") or 1|
 |**schedulingStrategy** `required`|[SchedulingStrategy](#schedulingstrategy)|SchedulingStrategy represents scheduling strategy.|strategy.SchedulingStrategy {}|
@@ -340,12 +250,9 @@ import models.kube.templates.resource as res_tpl
 appConfiguration: frontend.Server {
     mainContainer = container.Main {
         name = "php-redis"
-        env = [
-            {
-                name = "GET_HOSTS_FROM"
-                value = "dns"
-            }
-        ]
+        env: {
+            "GET_HOSTS_FROM": {value = "dns"}
+        }
         ports = [{containerPort = 80}]
     }
     selector = {
@@ -407,7 +314,7 @@ Main describes the main container configuration that is expected to be run on th
 | --- | --- | --- | --- |
 |**args**|[str]|A Container-level attribute.<br />The startup arguments of main process. The image's cmd is used if this is not provided.||
 |**command**|[str]|A Container-level attribute.<br />The startup command of main process. The image's entrypoint is used if this is not provided.||
-|**env**|[[Env](#env)]|A Container-level attribute.<br />List of environment variables in the container.||
+|**env**|[EnvMap](#envmap)|A Container-level attribute.<br />List of environment variables in the container.||
 |**envFrom**|[[EnvFromSource](#envfromsource)]|A Container-level attribute.<br />List of sources to populate environment variables in the container.||
 |**lifecycle**|[Lifecycle](#lifecycle)|Actions that the management system should take in response to container lifecycle events. Cannot be updated.||
 |**livenessProbe**|[Probe](#probe)|A Container-level attribute.<br />The probe to check whether container is live or not.||
@@ -456,6 +363,12 @@ EnvFromSource represents the source of a set of ConfigMaps or Secrets.
 | --- | --- | --- | --- |
 |**configMapRef**|str|A Container-level attribute.<br />The ConfigMap name to select from.||
 |**secretRef**|str|A Container-level attribute.<br />The Secret name to select from.||
+### EnvMap
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
 ### EnvValueFrom
 
 EnvValueFrom represents the source of the value of an Env.
@@ -618,8 +531,8 @@ Ingress is a collection of rules that allow inbound connections to reach the end
 |**labels**|{str:str}|Labels is a map of string keys and values that can be used to<br />organize and categorize (scope and select) objects.<br />May match selectors of replication controllers and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
 |**name**|str|The name of the resource.<br />Name must be unique within a namespace. It's required when creating<br />resources, although some resources may allow a client to request the<br />generation of an appropriate name automatically.<br />Name is primarily intended for creation idempotence and configuration<br />definition. Cannot be updated. More info:<br />http://kubernetes.io/docs/user-guide/identifiers#names||
 |**namespace**|str|Namespaces are intended for use in environments with many users spread<br />across multiple teams, or projects.<br />For clusters with a few to tens of users, you should not need to create<br />or think about namespaces at all. Start using namespaces when you need the features they provide.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/||
-|**rules**|[]|A list of host rules used to configure the Ingress. If unspecified, or no rule matches, all traffic is sent to the default backend.||
-|**tls**|[]|TLS configuration. Currently the Ingress only supports a single TLS port, 443. If multiple members of this list specify different hosts, they will be multiplexed on the same port according to the hostname specified through the SNI TLS extension, if the ingress controller fulfilling the ingress supports SNI.||
+|**rules**|[[IngressRule](#ingressrule)]|A list of host rules used to configure the Ingress. If unspecified, or no rule matches, all traffic is sent to the default backend.||
+|**tls**|[[IngressTLS](#ingresstls)]|TLS configuration. Currently the Ingress only supports a single TLS port, 443. If multiple members of this list specify different hosts, they will be multiplexed on the same port according to the hostname specified through the SNI TLS extension, if the ingress controller fulfilling the ingress supports SNI.||
 #### Examples
 
 ```
@@ -657,23 +570,14 @@ rules: [PolicyRule], default is Undefined, optional Rules holds all the PolicyRu
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**aggregationRule**|any|||
+|**aggregationRule**|[AggregationRule](#aggregationrule)|||
 |**annotations**|{str:str}|Annotations is an unstructured key value map stored with a<br />resource that may be set by external tools to store and retrieve<br />arbitrary metadata. They are not queryable and should be preserved<br />when modifying objects.<br />More info: http://kubernetes.io/docs/user-guide/annotations||
-|**kubernetes** `required`|any||rbacv1.ClusterRole {
-    metadata = metadata
-    rules = rules
-    aggregationRule = aggregationRule
-}|
+|**kubernetes** `required`|[ClusterRole](#clusterrole)||rbacv1.ClusterRole {<br />    metadata = metadata<br />    rules = rules<br />    aggregationRule = aggregationRule<br />}|
 |**labels**|{str:str}|Labels is a map of string keys and values that can be used to<br />organize and categorize (scope and select) objects.<br />May match selectors of replication controllers and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
-|**metadata**|{str:}||{
-    name: name?.lower()
-    annotations: annotations
-    namespace: namespace
-    labels: labels
-}|
+|**metadata**|{str:}||{<br />    name: name?.lower()<br />    annotations: annotations<br />    namespace: namespace<br />    labels: labels<br />}|
 |**name**|str|The name of the resource.<br />Name must be unique within a namespace. It's required when creating<br />resources, although some resources may allow a client to request the<br />generation of an appropriate name automatically.<br />Name is primarily intended for creation idempotence and configuration<br />definition. Cannot be updated. More info:<br />http://kubernetes.io/docs/user-guide/identifiers#names||
 |**namespace**|str|Namespaces are intended for use in environments with many users spread<br />across multiple teams, or projects.<br />For clusters with a few to tens of users, you should not need to create<br />or think about namespaces at all. Start using namespaces when you need the features they provide.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/||
-|**rules**|[]|||
+|**rules**|[[PolicyRule](#policyrule)]|||
 ### ClusterRoleBinding
 
 subjects: [Subject], default is Undefined, optional Subjects holds references to the objects the role applies to. roleRef: ClusterRole, default is Undefined, required RoleRef can only reference a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error.
@@ -683,22 +587,13 @@ subjects: [Subject], default is Undefined, optional Subjects holds references to
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**annotations**|{str:str}|Annotations is an unstructured key value map stored with a<br />resource that may be set by external tools to store and retrieve<br />arbitrary metadata. They are not queryable and should be preserved<br />when modifying objects.<br />More info: http://kubernetes.io/docs/user-guide/annotations||
-|**kubernetes** `required`|any||rbacv1.ClusterRoleBinding {
-    metadata = metadata
-    subjects = subjects
-    roleRef = roleRef
-}|
+|**kubernetes** `required`|[ClusterRoleBinding](#clusterrolebinding)||rbacv1.ClusterRoleBinding {<br />    metadata = metadata<br />    subjects = subjects<br />    roleRef = roleRef<br />}|
 |**labels**|{str:str}|Labels is a map of string keys and values that can be used to<br />organize and categorize (scope and select) objects.<br />May match selectors of replication controllers and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
-|**metadata**|{str:}||{
-    name: name?.lower()
-    annotations: annotations
-    namespace: namespace
-    labels: labels
-}|
+|**metadata**|{str:}||{<br />    name: name?.lower()<br />    annotations: annotations<br />    namespace: namespace<br />    labels: labels<br />}|
 |**name**|str|The name of the resource.<br />Name must be unique within a namespace. It's required when creating<br />resources, although some resources may allow a client to request the<br />generation of an appropriate name automatically.<br />Name is primarily intended for creation idempotence and configuration<br />definition. Cannot be updated. More info:<br />http://kubernetes.io/docs/user-guide/identifiers#names||
 |**namespace**|str|Namespaces are intended for use in environments with many users spread<br />across multiple teams, or projects.<br />For clusters with a few to tens of users, you should not need to create<br />or think about namespaces at all. Start using namespaces when you need the features they provide.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/||
-|**roleRef** `required`|any|||
-|**subjects**|[]|||
+|**roleRef** `required`|[RoleRef](#roleref)|||
+|**subjects**|[[Subject](#subject)]|||
 ### Role
 
 rules: [PolicyRule], default is Undefined, optional Rules holds all the PolicyRules for this ClusterRole
@@ -708,20 +603,12 @@ rules: [PolicyRule], default is Undefined, optional Rules holds all the PolicyRu
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**annotations**|{str:str}|Annotations is an unstructured key value map stored with a<br />resource that may be set by external tools to store and retrieve<br />arbitrary metadata. They are not queryable and should be preserved<br />when modifying objects.<br />More info: http://kubernetes.io/docs/user-guide/annotations||
-|**kubernetes** `required`|any||rbacv1.Role {
-    metadata = metadata
-    rules = rules
-}|
+|**kubernetes** `required`|[Role](#role)||rbacv1.Role {<br />    metadata = metadata<br />    rules = rules<br />}|
 |**labels**|{str:str}|Labels is a map of string keys and values that can be used to<br />organize and categorize (scope and select) objects.<br />May match selectors of replication controllers and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
-|**metadata**|{str:}||{
-    name: name?.lower()
-    annotations: annotations
-    namespace: namespace
-    labels: labels
-}|
+|**metadata**|{str:}||{<br />    name: name?.lower()<br />    annotations: annotations<br />    namespace: namespace<br />    labels: labels<br />}|
 |**name**|str|The name of the resource.<br />Name must be unique within a namespace. It's required when creating<br />resources, although some resources may allow a client to request the<br />generation of an appropriate name automatically.<br />Name is primarily intended for creation idempotence and configuration<br />definition. Cannot be updated. More info:<br />http://kubernetes.io/docs/user-guide/identifiers#names||
 |**namespace**|str|Namespaces are intended for use in environments with many users spread<br />across multiple teams, or projects.<br />For clusters with a few to tens of users, you should not need to create<br />or think about namespaces at all. Start using namespaces when you need the features they provide.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/||
-|**rules**|[]|||
+|**rules**|[[PolicyRule](#policyrule)]|||
 ### RoleBinding
 
 subjects: [Subject], default is Undefined, optional Subjects holds references to the objects the role applies to. roleRef: RoleRef, default is Undefined, required RoleRef can only reference a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error.
@@ -731,22 +618,13 @@ subjects: [Subject], default is Undefined, optional Subjects holds references to
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**annotations**|{str:str}|Annotations is an unstructured key value map stored with a<br />resource that may be set by external tools to store and retrieve<br />arbitrary metadata. They are not queryable and should be preserved<br />when modifying objects.<br />More info: http://kubernetes.io/docs/user-guide/annotations||
-|**kubernetes** `required`|any||rbacv1.RoleBinding {
-    metadata = metadata
-    subjects = subjects
-    roleRef = roleRef
-}|
+|**kubernetes** `required`|[RoleBinding](#rolebinding)||rbacv1.RoleBinding {<br />    metadata = metadata<br />    subjects = subjects<br />    roleRef = roleRef<br />}|
 |**labels**|{str:str}|Labels is a map of string keys and values that can be used to<br />organize and categorize (scope and select) objects.<br />May match selectors of replication controllers and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
-|**metadata**|{str:}||{
-    name: name?.lower()
-    annotations: annotations
-    namespace: namespace
-    labels: labels
-}|
+|**metadata**|{str:}||{<br />    name: name?.lower()<br />    annotations: annotations<br />    namespace: namespace<br />    labels: labels<br />}|
 |**name**|str|The name of the resource.<br />Name must be unique within a namespace. It's required when creating<br />resources, although some resources may allow a client to request the<br />generation of an appropriate name automatically.<br />Name is primarily intended for creation idempotence and configuration<br />definition. Cannot be updated. More info:<br />http://kubernetes.io/docs/user-guide/identifiers#names||
 |**namespace**|str|Namespaces are intended for use in environments with many users spread<br />across multiple teams, or projects.<br />For clusters with a few to tens of users, you should not need to create<br />or think about namespaces at all. Start using namespaces when you need the features they provide.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/||
-|**roleRef** `required`|any|||
-|**subjects**|[]|||
+|**roleRef** `required`|[RoleRef](#roleref)|||
+|**subjects**|[[Subject](#subject)]|||
 ### Resource
 
 Resource describes the compute resource requirements.
@@ -848,7 +726,7 @@ Service are Kubernetes objects which partition a single Kubernetes cluster into 
 |**loadBalancerSourceRanges**|[str]|If specified and supported by the platform, this will restrict traffic through the cloud-provider load-balancer will be restricted to the specified client IPs.<br />This field will be ignored if the cloud-provider does not support the feature.<br />More info: https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/||
 |**name**|str|The name of the resource.<br />Name must be unique within a namespace. It's required when creating<br />resources, although some resources may allow a client to request the<br />generation of an appropriate name automatically.<br />Name is primarily intended for creation idempotence and configuration<br />definition. Cannot be updated. More info:<br />http://kubernetes.io/docs/user-guide/identifiers#names||
 |**namespace**|str|Namespaces are intended for use in environments with many users spread<br />across multiple teams, or projects.<br />For clusters with a few to tens of users, you should not need to create<br />or think about namespaces at all. Start using namespaces when you need the features they provide.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/||
-|**ports**|[]|The list of ports that are exposed by this service.<br />More info: https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies||
+|**ports**|[[ServicePort](#serviceport)]|The list of ports that are exposed by this service.<br />More info: https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies||
 |**publishNotReadyAddresses**|bool|publishNotReadyAddresses indicates that any agent which deals with endpoints for this Service should disregard any indications of ready/not-ready.||
 |**selector**|{str:str}|Route service traffic to pods with label keys and values matching this selector.<br />More info: https://kubernetes.io/docs/concepts/services-networking/service/||
 |**sessionAffinity**|str|Supports "ClientIP" and "None". Used to maintain session affinity.<br />More info: https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies||
@@ -920,7 +798,7 @@ Sidecar describes the sidecar container configuration that is expected to be run
 | --- | --- | --- | --- |
 |**args**|[str]|A Container-level attribute.<br />The startup arguments of main process. The image's cmd is used if this is not provided.||
 |**command**|[str]|A Container-level attribute.<br />The startup command of main process. The image's entrypoint is used if this is not provided.||
-|**env**|[[Env](#env)]|A Container-level attribute.<br />List of environment variables in the container.||
+|**env**|[EnvMap](#envmap)|A Container-level attribute.<br />List of environment variables in the container.||
 |**envFrom**|[[EnvFromSource](#envfromsource)]|A Container-level attribute.<br />List of sources to populate environment variables in the container.||
 |**image** `required`|str|A Container-level attribute.<br />Container image name. More info: https://kubernetes.io/docs/concepts/containers/images||
 |**lifecycle**|[Lifecycle](#lifecycle)|Actions that the management system should take in response to container lifecycle events.<br />Cannot be updated.||
@@ -1161,12 +1039,7 @@ volume = v.Volume {
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**metadata**|{str:}||{
-    name: name?.lower()
-    annotations: annotations
-    namespace: namespace
-    labels: labels
-}|
+|**metadata**|{str:}||{<br />    name: name?.lower()<br />    annotations: annotations<br />    namespace: namespace<br />    labels: labels<br />}|
 ### NamespaceMixin
 
 NamespaceMixin encapsulate the logic of automatically creating a namespace resource.
@@ -1227,30 +1100,8 @@ ApplicationBuilder contains the workload labels, selector and environments about
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**envs** `required`|[{str:}]||[
-    {
-        name: "APP_NAME"
-        value: metadata.__META_APP_NAME
-    }
-    {
-        name: "ENVIRONMENT"
-        value: metadata.__META_ENV_TYPE_NAME
-    }
-    {
-        name: "INSTANCE"
-        value: "{}-{}".format(metadata.__META_APP_NAME, metadata.__META_ENV_TYPE_NAME).lower()
-    }
-    {
-        name: "CLUSTER"
-        value: metadata.__META_CLUSTER_NAME
-    }
-]|
-|**labels** `required`|{str:str}||{
-    "app.kubernetes.io/name": metadata.__META_APP_NAME
-    "app.kubernetes.io/env": metadata.__META_ENV_TYPE_NAME
-    "app.kubernetes.io/instance": "{}-{}".format(metadata.__META_APP_NAME, metadata.__META_ENV_TYPE_NAME).lower()
-    "cluster.x-k8s.io/cluster-name": metadata.__META_CLUSTER_NAME
-}|
+|**envs** `required`|[{str:}]||[<br />    {<br />        name: "APP_NAME"<br />        value: metadata.__META_APP_NAME<br />    }<br />    {<br />        name: "ENVIRONMENT"<br />        value: metadata.__META_ENV_TYPE_NAME<br />    }<br />    {<br />        name: "INSTANCE"<br />        value: "{}-{}".format(metadata.__META_APP_NAME, metadata.__META_ENV_TYPE_NAME).lower()<br />    }<br />    {<br />        name: "CLUSTER"<br />        value: metadata.__META_CLUSTER_NAME<br />    }<br />]|
+|**labels** `required`|{str:str}||{<br />    "app.kubernetes.io/name": metadata.__META_APP_NAME<br />    "app.kubernetes.io/env": metadata.__META_ENV_TYPE_NAME<br />    "app.kubernetes.io/instance": "{}-{}".format(metadata.__META_APP_NAME, metadata.__META_ENV_TYPE_NAME).lower()<br />    "cluster.x-k8s.io/cluster-name": metadata.__META_CLUSTER_NAME<br />}|
 |**selector** `required`|{str:str}||labels|
 ### Str2ResourceRequirements
 
@@ -1258,58 +1109,10 @@ ApplicationBuilder contains the workload labels, selector and environments about
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**resource** `required`|[{str:}]||[{
-    cpu = {
-        requests = (item.split("=")?[1] if len(item.split("=")) > 1 else item.split("<")?[0])?.strip()
-        limits = (item.split("=")?[1] if len(item.split("=")) > 1 else item.split("<")?[-1])?.strip()
-    }
-} if "cpu" in item else ({
-    memory = {
-        requests = (item.split("=")?[1] if len(item.split("=")) > 1 else item.split("<")?[0])?.strip()
-        limits = (item.split("=")?[1] if len(item.split("=")) > 1 else item.split("<")?[-1])?.strip()
-    }
-} if "memory" in item else ({
-    disk = {
-        requests = (item.split("=")?[1] if len(item.split("=")) > 1 else item.split("<")?[0])?.strip()
-        limits = (item.split("=")?[1] if len(item.split("=")) > 1 else item.split("<")?[-1])?.strip()
-    }
-} if "disk" in item else Undefined)) for item in schedulingResourceItems]|
+|**resource** `required`|[{str:}]||[{<br />    cpu = {<br />        requests = (item.split("=")?[1] if len(item.split("=")) > 1 else item.split("<")?[0])?.strip()<br />        limits = (item.split("=")?[1] if len(item.split("=")) > 1 else item.split("<")?[-1])?.strip()<br />    }<br />} if "cpu" in item else ({<br />    memory = {<br />        requests = (item.split("=")?[1] if len(item.split("=")) > 1 else item.split("<")?[0])?.strip()<br />        limits = (item.split("=")?[1] if len(item.split("=")) > 1 else item.split("<")?[-1])?.strip()<br />    }<br />} if "memory" in item else ({<br />    disk = {<br />        requests = (item.split("=")?[1] if len(item.split("=")) > 1 else item.split("<")?[0])?.strip()<br />        limits = (item.split("=")?[1] if len(item.split("=")) > 1 else item.split("<")?[-1])?.strip()<br />    }<br />} if "disk" in item else Undefined)) for item in schedulingResourceItems]|
 |**resourceRequirementsUnit**|[ResourceRequirements](#resourcerequirements)||resourcePara as res.ResourceRequirements if typeof(resourcePara) == "ResourceRequirements" else None|
 |**resourceStr**|str||resourcePara as str if typeof(resourcePara) == "str" else None|
 |**resourceUnit**|[Resource](#resource)||resourcePara as res.Resource if typeof(resourcePara) == "Resource" else None|
-|**result** `required`|{str:}||{
-    requests = {
-        cpu = [r?.cpu?.requests for r in resource if r?.cpu?.requests]?[-1] or Undefined
-        memory = [r?.memory?.requests for r in resource if r?.memory?.requests]?[-1] or Undefined
-        "ephemeral-storage" = [r?.disk?.requests for r in resource if r?.disk?.requests]?[-1] or Undefined
-    }
-    limits = {
-        cpu = [r?.cpu?.limits for r in resource if r?.cpu?.limits]?[-1] or Undefined
-        memory = [r?.memory?.limits for r in resource if r?.memory?.limits]?[-1] or Undefined
-        "ephemeral-storage" = [r?.disk?.limits for r in resource if r?.disk?.limits]?[-1] or Undefined
-    }
-} if resourceStr else {
-    requests = {
-        cpu = str(resourceRequirementsUnit.requests.cpu)
-        memory = str(resourceRequirementsUnit.requests.memory)
-        "ephemeral-storage" = str(resourceRequirementsUnit.requests.disk) if resourceRequirementsUnit.requests.disk else Undefined
-    }
-    limits = {
-        cpu = str(resourceRequirementsUnit.limits.cpu)
-        memory = str(resourceRequirementsUnit.limits.memory)
-        "ephemeral-storage" = str(resourceRequirementsUnit.limits.disk) if resourceRequirementsUnit.limits.disk else Undefined
-    }
-} if resourceRequirementsUnit else {
-    requests = {
-        cpu = str(resourceUnit.cpu)
-        memory = str(resourceUnit.memory)
-        "ephemeral-storage" = str(resourceUnit.disk) if resourceUnit.disk else Undefined
-    }
-    limits = {
-        cpu = str(resourceUnit.cpu)
-        memory = str(resourceUnit.memory)
-        "ephemeral-storage" = str(resourceUnit.disk) if resourceUnit.disk else Undefined
-    }
-}|
+|**result** `required`|{str:}||{<br />    requests = {<br />        cpu = [r?.cpu?.requests for r in resource if r?.cpu?.requests]?[-1] or Undefined<br />        memory = [r?.memory?.requests for r in resource if r?.memory?.requests]?[-1] or Undefined<br />        "ephemeral-storage" = [r?.disk?.requests for r in resource if r?.disk?.requests]?[-1] or Undefined<br />    }<br />    limits = {<br />        cpu = [r?.cpu?.limits for r in resource if r?.cpu?.limits]?[-1] or Undefined<br />        memory = [r?.memory?.limits for r in resource if r?.memory?.limits]?[-1] or Undefined<br />        "ephemeral-storage" = [r?.disk?.limits for r in resource if r?.disk?.limits]?[-1] or Undefined<br />    }<br />} if resourceStr else {<br />    requests = {<br />        cpu = str(resourceRequirementsUnit.requests.cpu)<br />        memory = str(resourceRequirementsUnit.requests.memory)<br />        "ephemeral-storage" = str(resourceRequirementsUnit.requests.disk) if resourceRequirementsUnit.requests.disk else Undefined<br />    }<br />    limits = {<br />        cpu = str(resourceRequirementsUnit.limits.cpu)<br />        memory = str(resourceRequirementsUnit.limits.memory)<br />        "ephemeral-storage" = str(resourceRequirementsUnit.limits.disk) if resourceRequirementsUnit.limits.disk else Undefined<br />    }<br />} if resourceRequirementsUnit else {<br />    requests = {<br />        cpu = str(resourceUnit.cpu)<br />        memory = str(resourceUnit.memory)<br />        "ephemeral-storage" = str(resourceUnit.disk) if resourceUnit.disk else Undefined<br />    }<br />    limits = {<br />        cpu = str(resourceUnit.cpu)<br />        memory = str(resourceUnit.memory)<br />        "ephemeral-storage" = str(resourceUnit.disk) if resourceUnit.disk else Undefined<br />    }<br />}|
 |**schedulingResourceItems** `required`|[str]||resourceStr?.split(",") or []|
 <!-- Auto generated by kcl-doc tool, please do not edit. -->

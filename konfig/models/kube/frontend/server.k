@@ -67,6 +67,8 @@ schema Server:
         Ingresses is a list of Ingress which is collection of rules that allow inbound connections to reach the endpoints defined by a backend.
     serviceAccount: sa.ServiceAccount, default is Undefined, optional.
         ServiceAccount is used to run this pod.
+    extraResources: {str:{str:}}, default is Undefined, optional.
+        Extra resources used to output the final result.
 
     Examples
     --------
@@ -138,3 +140,6 @@ schema Server:
     # app cloud resource
     storage?: storage.ObjectStorage 
     database?: storage.DataBase
+
+    # extra resources
+    extraResources?: {str: {str:}}
