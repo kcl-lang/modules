@@ -7,8 +7,10 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema DockerCluster:
     """
-    DockerCluster is the Schema for the dockerclusters API. 
-     Deprecated: This type will be removed in one of the next releases.
+    DockerCluster is the Schema for the dockerclusters API.
+
+
+    Deprecated: This type will be removed in one of the next releases.
 
     Attributes
     ----------
@@ -45,7 +47,10 @@ schema InfrastructureClusterxK8sIoV1alpha3DockerClusterSpec:
     controlPlaneEndpoint : InfrastructureClusterxK8sIoV1alpha3DockerClusterSpecControlPlaneEndpoint, default is Undefined, optional
         control plane endpoint
     failureDomains : {str:InfrastructureClusterxK8sIoV1alpha3DockerClusterSpecFailureDomainsAnon}, default is Undefined, optional
-        FailureDomains are not usulaly defined on the spec. The docker provider is special since failure domains don't mean anything in a local docker environment. Instead, the docker cluster controller will simply copy these into the Status and allow the Cluster API controllers to do what they will with the defined failure domains.
+        FailureDomains are not usulaly defined on the spec.
+        The docker provider is special since failure domains don't mean anything in a local docker environment.
+        Instead, the docker cluster controller will simply copy these into the Status and allow the Cluster API
+        controllers to do what they will with the defined failure domains.
     """
 
 
@@ -74,7 +79,8 @@ schema InfrastructureClusterxK8sIoV1alpha3DockerClusterSpecControlPlaneEndpoint:
 
 schema InfrastructureClusterxK8sIoV1alpha3DockerClusterSpecFailureDomainsAnon:
     """
-    FailureDomainSpec is the Schema for Cluster API failure domains. It allows controllers to understand how many failure domains a cluster can optionally span across.
+    FailureDomainSpec is the Schema for Cluster API failure domains.
+    It allows controllers to understand how many failure domains a cluster can optionally span across.
 
     Attributes
     ----------
@@ -99,7 +105,8 @@ schema InfrastructureClusterxK8sIoV1alpha3DockerClusterStatus:
     conditions : [InfrastructureClusterxK8sIoV1alpha3DockerClusterStatusConditionsItems0], default is Undefined, optional
         Conditions defines current service state of the DockerCluster.
     failureDomains : {str:InfrastructureClusterxK8sIoV1alpha3DockerClusterStatusFailureDomainsAnon}, default is Undefined, optional
-        FailureDomains don't mean much in CAPD since it's all local, but we can see how the rest of cluster API will use this if we populate it.
+        FailureDomains don't mean much in CAPD since it's all local, but we can see how the rest of cluster API
+        will use this if we populate it.
     ready : bool, default is Undefined, required
         Ready denotes that the docker cluster (infrastructure) is ready.
     """
@@ -119,17 +126,26 @@ schema InfrastructureClusterxK8sIoV1alpha3DockerClusterStatusConditionsItems0:
     Attributes
     ----------
     lastTransitionTime : str, default is Undefined, optional
-        Last time the condition transitioned from one status to another. This should be when the underlying condition changed. If that is not known, then using the time when the API field changed is acceptable.
+        Last time the condition transitioned from one status to another.
+        This should be when the underlying condition changed. If that is not known, then using the time when
+        the API field changed is acceptable.
     message : str, default is Undefined, optional
-        A human readable message indicating details about the transition. This field may be empty.
+        A human readable message indicating details about the transition.
+        This field may be empty.
     reason : str, default is Undefined, optional
-        The reason for the condition's last transition in CamelCase. The specific API may choose whether or not this field is considered a guaranteed API. This field may not be empty.
+        The reason for the condition's last transition in CamelCase.
+        The specific API may choose whether or not this field is considered a guaranteed API.
+        This field may not be empty.
     severity : str, default is Undefined, optional
-        Severity provides an explicit classification of Reason code, so the users or machines can immediately understand the current situation and act accordingly. The Severity field MUST be set only when Status=False.
+        Severity provides an explicit classification of Reason code, so the users or machines can immediately
+        understand the current situation and act accordingly.
+        The Severity field MUST be set only when Status=False.
     status : str, default is Undefined, required
         Status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
-        Type of condition in CamelCase or in foo.example.com/CamelCase. Many .condition.type values are consistent across resources like Available, but because arbitrary conditions can be useful (see .node.status.conditions), the ability to deconflict is important.
+        Type of condition in CamelCase or in foo.example.com/CamelCase.
+        Many .condition.type values are consistent across resources like Available, but because arbitrary conditions
+        can be useful (see .node.status.conditions), the ability to deconflict is important.
     """
 
 
@@ -148,7 +164,8 @@ schema InfrastructureClusterxK8sIoV1alpha3DockerClusterStatusConditionsItems0:
 
 schema InfrastructureClusterxK8sIoV1alpha3DockerClusterStatusFailureDomainsAnon:
     """
-    FailureDomainSpec is the Schema for Cluster API failure domains. It allows controllers to understand how many failure domains a cluster can optionally span across.
+    FailureDomainSpec is the Schema for Cluster API failure domains.
+    It allows controllers to understand how many failure domains a cluster can optionally span across.
 
     Attributes
     ----------

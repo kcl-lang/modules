@@ -7,8 +7,10 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema DockerMachineTemplate:
     """
-    DockerMachineTemplate is the Schema for the dockermachinetemplates API. 
-     Deprecated: This type will be removed in one of the next releases.
+    DockerMachineTemplate is the Schema for the dockermachinetemplates API.
+
+
+    Deprecated: This type will be removed in one of the next releases.
 
     Attributes
     ----------
@@ -67,13 +69,17 @@ schema InfrastructureClusterxK8sIoV1alpha4DockerMachineTemplateSpecTemplateSpec:
     Attributes
     ----------
     bootstrapped : bool, default is Undefined, optional
-        Bootstrapped is true when the kubeadm bootstrapping has been run against this machine
+        Bootstrapped is true when the kubeadm bootstrapping has been run
+        against this machine
     customImage : str, default is Undefined, optional
-        CustomImage allows customizing the container image that is used for running the machine
+        CustomImage allows customizing the container image that is used for
+        running the machine
     extraMounts : [InfrastructureClusterxK8sIoV1alpha4DockerMachineTemplateSpecTemplateSpecExtraMountsItems0], default is Undefined, optional
-        ExtraMounts describes additional mount points for the node container These may be used to bind a hostPath
+        ExtraMounts describes additional mount points for the node container
+        These may be used to bind a hostPath
     preLoadImages : [str], default is Undefined, optional
-        PreLoadImages allows to pre-load images in a newly created machine. This can be used to speed up tests by avoiding e.g. to download CNI images on all the containers.
+        PreLoadImages allows to pre-load images in a newly created machine. This can be used to
+        speed up tests by avoiding e.g. to download CNI images on all the containers.
     providerID : str, default is Undefined, optional
         ProviderID will be the container name in ProviderID format (docker:////<containername>)
     """
@@ -92,14 +98,17 @@ schema InfrastructureClusterxK8sIoV1alpha4DockerMachineTemplateSpecTemplateSpec:
 
 schema InfrastructureClusterxK8sIoV1alpha4DockerMachineTemplateSpecTemplateSpecExtraMountsItems0:
     """
-    Mount specifies a host volume to mount into a container. This is a simplified version of kind v1alpha4.Mount types.
+    Mount specifies a host volume to mount into a container.
+    This is a simplified version of kind v1alpha4.Mount types.
 
     Attributes
     ----------
     containerPath : str, default is Undefined, optional
         Path of the mount within the container.
     hostPath : str, default is Undefined, optional
-        Path of the mount on the host. If the hostPath doesn't exist, then runtimes should report error. If the hostpath is a symbolic link, runtimes should follow the symlink and mount the real destination to container.
+        Path of the mount on the host. If the hostPath doesn't exist, then runtimes
+        should report error. If the hostpath is a symbolic link, runtimes should
+        follow the symlink and mount the real destination to container.
     readOnly : bool, default is Undefined, optional
         If set, the mount is read-only.
     """

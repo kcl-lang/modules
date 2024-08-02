@@ -72,7 +72,8 @@ schema ClusterxK8sIoV1alpha3ClusterSpecClusterNetwork:
     Attributes
     ----------
     apiServerPort : int, default is Undefined, optional
-        APIServerPort specifies the port the API Server should bind to. Defaults to 6443.
+        APIServerPort specifies the port the API Server should bind to.
+        Defaults to 6443.
     pods : ClusterxK8sIoV1alpha3ClusterSpecClusterNetworkPods, default is Undefined, optional
         pods
     serviceDomain : str, default is Undefined, optional
@@ -139,24 +140,37 @@ schema ClusterxK8sIoV1alpha3ClusterSpecControlPlaneEndpoint:
 
 schema ClusterxK8sIoV1alpha3ClusterSpecControlPlaneRef:
     """
-    ControlPlaneRef is an optional reference to a provider-specific resource that holds the details for provisioning the Control Plane for a Cluster.
+    ControlPlaneRef is an optional reference to a provider-specific resource that holds
+    the details for provisioning the Control Plane for a Cluster.
 
     Attributes
     ----------
     apiVersion : str, default is Undefined, optional
         API version of the referent.
     fieldPath : str, default is Undefined, optional
-        If referring to a piece of an object instead of an entire object, this string should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2]. For example, if the object reference is to a container within a pod, this would take on a value like: "spec.containers{name}" (where "name" refers to the name of the container that triggered the event) or if no container name is specified "spec.containers[2]" (container with index 2 in this pod). This syntax is chosen only to have some well-defined way of referencing a part of an object. TODO: this design is not final and this field is subject to change in the future.
+        If referring to a piece of an object instead of an entire object, this string
+        should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2].
+        For example, if the object reference is to a container within a pod, this would take on a value like:
+        "spec.containers{name}" (where "name" refers to the name of the container that triggered
+        the event) or if no container name is specified "spec.containers[2]" (container with
+        index 2 in this pod). This syntax is chosen only to have some well-defined way of
+        referencing a part of an object.
+        TODO: this design is not final and this field is subject to change in the future.
     kind : str, default is Undefined, optional
-        Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+        Kind of the referent.
+        More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        Namespace of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
     resourceVersion : str, default is Undefined, optional
-        Specific resourceVersion to which this reference is made, if any. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+        Specific resourceVersion to which this reference is made, if any.
+        More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
     uid : str, default is Undefined, optional
-        UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
+        UID of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
     """
 
 
@@ -177,24 +191,37 @@ schema ClusterxK8sIoV1alpha3ClusterSpecControlPlaneRef:
 
 schema ClusterxK8sIoV1alpha3ClusterSpecInfrastructureRef:
     """
-    InfrastructureRef is a reference to a provider-specific resource that holds the details for provisioning infrastructure for a cluster in said provider.
+    InfrastructureRef is a reference to a provider-specific resource that holds the details
+    for provisioning infrastructure for a cluster in said provider.
 
     Attributes
     ----------
     apiVersion : str, default is Undefined, optional
         API version of the referent.
     fieldPath : str, default is Undefined, optional
-        If referring to a piece of an object instead of an entire object, this string should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2]. For example, if the object reference is to a container within a pod, this would take on a value like: "spec.containers{name}" (where "name" refers to the name of the container that triggered the event) or if no container name is specified "spec.containers[2]" (container with index 2 in this pod). This syntax is chosen only to have some well-defined way of referencing a part of an object. TODO: this design is not final and this field is subject to change in the future.
+        If referring to a piece of an object instead of an entire object, this string
+        should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2].
+        For example, if the object reference is to a container within a pod, this would take on a value like:
+        "spec.containers{name}" (where "name" refers to the name of the container that triggered
+        the event) or if no container name is specified "spec.containers[2]" (container with
+        index 2 in this pod). This syntax is chosen only to have some well-defined way of
+        referencing a part of an object.
+        TODO: this design is not final and this field is subject to change in the future.
     kind : str, default is Undefined, optional
-        Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+        Kind of the referent.
+        More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        Namespace of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
     resourceVersion : str, default is Undefined, optional
-        Specific resourceVersion to which this reference is made, if any. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+        Specific resourceVersion to which this reference is made, if any.
+        More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
     uid : str, default is Undefined, optional
-        UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
+        UID of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
     """
 
 
@@ -228,15 +255,19 @@ schema ClusterxK8sIoV1alpha3ClusterStatus:
     failureDomains : {str:ClusterxK8sIoV1alpha3ClusterStatusFailureDomainsAnon}, default is Undefined, optional
         FailureDomains is a slice of failure domain objects synced from the infrastructure provider.
     failureMessage : str, default is Undefined, optional
-        FailureMessage indicates that there is a fatal problem reconciling the state, and will be set to a descriptive error message.
+        FailureMessage indicates that there is a fatal problem reconciling the
+        state, and will be set to a descriptive error message.
     failureReason : str, default is Undefined, optional
-        FailureReason indicates that there is a fatal problem reconciling the state, and will be set to a token value suitable for programmatic interpretation.
+        FailureReason indicates that there is a fatal problem reconciling the
+        state, and will be set to a token value suitable for
+        programmatic interpretation.
     infrastructureReady : bool, default is Undefined, optional
         InfrastructureReady is the state of the infrastructure provider.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the latest generation observed by the controller.
     phase : str, default is Undefined, optional
-        Phase represents the current phase of cluster actuation. E.g. Pending, Running, Terminating, Failed etc.
+        Phase represents the current phase of cluster actuation.
+        E.g. Pending, Running, Terminating, Failed etc.
     """
 
 
@@ -266,17 +297,26 @@ schema ClusterxK8sIoV1alpha3ClusterStatusConditionsItems0:
     Attributes
     ----------
     lastTransitionTime : str, default is Undefined, optional
-        Last time the condition transitioned from one status to another. This should be when the underlying condition changed. If that is not known, then using the time when the API field changed is acceptable.
+        Last time the condition transitioned from one status to another.
+        This should be when the underlying condition changed. If that is not known, then using the time when
+        the API field changed is acceptable.
     message : str, default is Undefined, optional
-        A human readable message indicating details about the transition. This field may be empty.
+        A human readable message indicating details about the transition.
+        This field may be empty.
     reason : str, default is Undefined, optional
-        The reason for the condition's last transition in CamelCase. The specific API may choose whether or not this field is considered a guaranteed API. This field may not be empty.
+        The reason for the condition's last transition in CamelCase.
+        The specific API may choose whether or not this field is considered a guaranteed API.
+        This field may not be empty.
     severity : str, default is Undefined, optional
-        Severity provides an explicit classification of Reason code, so the users or machines can immediately understand the current situation and act accordingly. The Severity field MUST be set only when Status=False.
+        Severity provides an explicit classification of Reason code, so the users or machines can immediately
+        understand the current situation and act accordingly.
+        The Severity field MUST be set only when Status=False.
     status : str, default is Undefined, required
         Status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
-        Type of condition in CamelCase or in foo.example.com/CamelCase. Many .condition.type values are consistent across resources like Available, but because arbitrary conditions can be useful (see .node.status.conditions), the ability to deconflict is important.
+        Type of condition in CamelCase or in foo.example.com/CamelCase.
+        Many .condition.type values are consistent across resources like Available, but because arbitrary conditions
+        can be useful (see .node.status.conditions), the ability to deconflict is important.
     """
 
 
@@ -295,7 +335,8 @@ schema ClusterxK8sIoV1alpha3ClusterStatusConditionsItems0:
 
 schema ClusterxK8sIoV1alpha3ClusterStatusFailureDomainsAnon:
     """
-    FailureDomainSpec is the Schema for Cluster API failure domains. It allows controllers to understand how many failure domains a cluster can optionally span across.
+    FailureDomainSpec is the Schema for Cluster API failure domains.
+    It allows controllers to understand how many failure domains a cluster can optionally span across.
 
     Attributes
     ----------

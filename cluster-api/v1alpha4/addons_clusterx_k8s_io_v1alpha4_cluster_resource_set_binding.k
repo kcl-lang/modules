@@ -7,8 +7,10 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ClusterResourceSetBinding:
     """
-    ClusterResourceSetBinding lists all matching ClusterResourceSets with the cluster it belongs to. 
-     Deprecated: This type will be removed in one of the next releases.
+    ClusterResourceSetBinding lists all matching ClusterResourceSets with the cluster it belongs to.
+
+
+    Deprecated: This type will be removed in one of the next releases.
 
     Attributes
     ----------
@@ -73,7 +75,8 @@ schema AddonsClusterxK8sIoV1alpha4ClusterResourceSetBindingSpecBindingsItems0Res
     applied : bool, default is Undefined, required
         Applied is to track if a resource is applied to the cluster or not.
     hash : str, default is Undefined, optional
-        Hash is the hash of a resource's data. This can be used to decide if a resource is changed. For "ApplyOnce" ClusterResourceSet.spec.strategy, this is no-op as that strategy does not act on change.
+        Hash is the hash of a resource's data. This can be used to decide if a resource is changed.
+        For "ApplyOnce" ClusterResourceSet.spec.strategy, this is no-op as that strategy does not act on change.
     kind : str, default is Undefined, required
         Kind of the resource. Supported kinds are: Secrets and ConfigMaps.
     lastAppliedTime : str, default is Undefined, optional

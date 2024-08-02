@@ -65,14 +65,21 @@ schema InfrastructureClusterxK8sIoV1beta1DockerMachinePoolTemplateSpecTemplate:
 
 schema InfrastructureClusterxK8sIoV1beta1DockerMachinePoolTemplateSpecTemplateMetadata:
     """
-    Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+    Standard object's metadata.
+    More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations
+        Annotations is an unstructured key value map stored with a resource that may be
+        set by external tools to store and retrieve arbitrary metadata. They are not
+        queryable and should be preserved when modifying objects.
+        More info: http://kubernetes.io/docs/user-guide/annotations
     labels : {str:str}, default is Undefined, optional
-        Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: http://kubernetes.io/docs/user-guide/labels
+        Map of string keys and values that can be used to organize and categorize
+        (scope and select) objects. May match selectors of replication controllers
+        and services.
+        More info: http://kubernetes.io/docs/user-guide/labels
     """
 
 
@@ -110,11 +117,14 @@ schema InfrastructureClusterxK8sIoV1beta1DockerMachinePoolTemplateSpecTemplateSp
     Attributes
     ----------
     customImage : str, default is Undefined, optional
-        CustomImage allows customizing the container image that is used for running the machine
+        CustomImage allows customizing the container image that is used for
+        running the machine
     extraMounts : [InfrastructureClusterxK8sIoV1beta1DockerMachinePoolTemplateSpecTemplateSpecTemplateExtraMountsItems0], default is Undefined, optional
-        ExtraMounts describes additional mount points for the node container These may be used to bind a hostPath
+        ExtraMounts describes additional mount points for the node container
+        These may be used to bind a hostPath
     preLoadImages : [str], default is Undefined, optional
-        PreLoadImages allows to pre-load images in a newly created machine. This can be used to speed up tests by avoiding e.g. to download CNI images on all the containers.
+        PreLoadImages allows to pre-load images in a newly created machine. This can be used to
+        speed up tests by avoiding e.g. to download CNI images on all the containers.
     """
 
 
@@ -127,14 +137,17 @@ schema InfrastructureClusterxK8sIoV1beta1DockerMachinePoolTemplateSpecTemplateSp
 
 schema InfrastructureClusterxK8sIoV1beta1DockerMachinePoolTemplateSpecTemplateSpecTemplateExtraMountsItems0:
     """
-    Mount specifies a host volume to mount into a container. This is a simplified version of kind v1alpha4.Mount types.
+    Mount specifies a host volume to mount into a container.
+    This is a simplified version of kind v1alpha4.Mount types.
 
     Attributes
     ----------
     containerPath : str, default is Undefined, optional
         Path of the mount within the container.
     hostPath : str, default is Undefined, optional
-        Path of the mount on the host. If the hostPath doesn't exist, then runtimes should report error. If the hostpath is a symbolic link, runtimes should follow the symlink and mount the real destination to container.
+        Path of the mount on the host. If the hostPath doesn't exist, then runtimes
+        should report error. If the hostpath is a symbolic link, runtimes should
+        follow the symlink and mount the real destination to container.
     readOnly : bool, default is Undefined, optional
         If set, the mount is read-only.
     """

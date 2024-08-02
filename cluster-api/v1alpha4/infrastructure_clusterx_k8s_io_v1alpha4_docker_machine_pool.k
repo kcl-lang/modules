@@ -7,8 +7,10 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema DockerMachinePool:
     """
-    DockerMachinePool is the Schema for the dockermachinepools API. 
-     Deprecated: This type will be removed in one of the next releases.
+    DockerMachinePool is the Schema for the dockermachinepools API.
+
+
+    Deprecated: This type will be removed in one of the next releases.
 
     Attributes
     ----------
@@ -65,11 +67,14 @@ schema InfrastructureClusterxK8sIoV1alpha4DockerMachinePoolSpecTemplate:
     Attributes
     ----------
     customImage : str, default is Undefined, optional
-        CustomImage allows customizing the container image that is used for running the machine
+        CustomImage allows customizing the container image that is used for
+        running the machine
     extraMounts : [InfrastructureClusterxK8sIoV1alpha4DockerMachinePoolSpecTemplateExtraMountsItems0], default is Undefined, optional
-        ExtraMounts describes additional mount points for the node container These may be used to bind a hostPath
+        ExtraMounts describes additional mount points for the node container
+        These may be used to bind a hostPath
     preLoadImages : [str], default is Undefined, optional
-        PreLoadImages allows to pre-load images in a newly created machine. This can be used to speed up tests by avoiding e.g. to download CNI images on all the containers.
+        PreLoadImages allows to pre-load images in a newly created machine. This can be used to
+        speed up tests by avoiding e.g. to download CNI images on all the containers.
     """
 
 
@@ -82,14 +87,17 @@ schema InfrastructureClusterxK8sIoV1alpha4DockerMachinePoolSpecTemplate:
 
 schema InfrastructureClusterxK8sIoV1alpha4DockerMachinePoolSpecTemplateExtraMountsItems0:
     """
-    Mount specifies a host volume to mount into a container. This is a simplified version of kind v1alpha4.Mount types.
+    Mount specifies a host volume to mount into a container.
+    This is a simplified version of kind v1alpha4.Mount types.
 
     Attributes
     ----------
     containerPath : str, default is Undefined, optional
         Path of the mount within the container.
     hostPath : str, default is Undefined, optional
-        Path of the mount on the host. If the hostPath doesn't exist, then runtimes should report error. If the hostpath is a symbolic link, runtimes should follow the symlink and mount the real destination to container.
+        Path of the mount on the host. If the hostPath doesn't exist, then runtimes
+        should report error. If the hostpath is a symbolic link, runtimes should
+        follow the symlink and mount the real destination to container.
     readOnly : bool, default is Undefined, optional
         If set, the mount is read-only.
     """
@@ -139,17 +147,26 @@ schema InfrastructureClusterxK8sIoV1alpha4DockerMachinePoolStatusConditionsItems
     Attributes
     ----------
     lastTransitionTime : str, default is Undefined, optional
-        Last time the condition transitioned from one status to another. This should be when the underlying condition changed. If that is not known, then using the time when the API field changed is acceptable.
+        Last time the condition transitioned from one status to another.
+        This should be when the underlying condition changed. If that is not known, then using the time when
+        the API field changed is acceptable.
     message : str, default is Undefined, optional
-        A human readable message indicating details about the transition. This field may be empty.
+        A human readable message indicating details about the transition.
+        This field may be empty.
     reason : str, default is Undefined, optional
-        The reason for the condition's last transition in CamelCase. The specific API may choose whether or not this field is considered a guaranteed API. This field may not be empty.
+        The reason for the condition's last transition in CamelCase.
+        The specific API may choose whether or not this field is considered a guaranteed API.
+        This field may not be empty.
     severity : str, default is Undefined, optional
-        Severity provides an explicit classification of Reason code, so the users or machines can immediately understand the current situation and act accordingly. The Severity field MUST be set only when Status=False.
+        Severity provides an explicit classification of Reason code, so the users or machines can immediately
+        understand the current situation and act accordingly.
+        The Severity field MUST be set only when Status=False.
     status : str, default is Undefined, required
         Status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
-        Type of condition in CamelCase or in foo.example.com/CamelCase. Many .condition.type values are consistent across resources like Available, but because arbitrary conditions can be useful (see .node.status.conditions), the ability to deconflict is important.
+        Type of condition in CamelCase or in foo.example.com/CamelCase.
+        Many .condition.type values are consistent across resources like Available, but because arbitrary conditions
+        can be useful (see .node.status.conditions), the ability to deconflict is important.
     """
 
 
@@ -175,7 +192,8 @@ schema InfrastructureClusterxK8sIoV1alpha4DockerMachinePoolStatusInstancesItems0
     addresses : [InfrastructureClusterxK8sIoV1alpha4DockerMachinePoolStatusInstancesItems0AddressesItems0], default is Undefined, optional
         Addresses contains the associated addresses for the docker machine.
     bootstrapped : bool, default is Undefined, optional
-        Bootstrapped is true when the kubeadm bootstrapping has been run against this machine
+        Bootstrapped is true when the kubeadm bootstrapping has been run
+        against this machine
     instanceName : str, default is Undefined, optional
         InstanceName is the identification of the Machine Instance within the Machine Pool
     providerID : str, default is Undefined, optional

@@ -7,8 +7,10 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema DockerClusterTemplate:
     """
-    DockerClusterTemplate is the Schema for the dockerclustertemplates API. 
-     Deprecated: This type will be removed in one of the next releases.
+    DockerClusterTemplate is the Schema for the dockerclustertemplates API.
+
+
+    Deprecated: This type will be removed in one of the next releases.
 
     Attributes
     ----------
@@ -69,7 +71,10 @@ schema InfrastructureClusterxK8sIoV1alpha4DockerClusterTemplateSpecTemplateSpec:
     controlPlaneEndpoint : InfrastructureClusterxK8sIoV1alpha4DockerClusterTemplateSpecTemplateSpecControlPlaneEndpoint, default is Undefined, optional
         control plane endpoint
     failureDomains : {str:InfrastructureClusterxK8sIoV1alpha4DockerClusterTemplateSpecTemplateSpecFailureDomainsAnon}, default is Undefined, optional
-        FailureDomains are not usulaly defined on the spec. The docker provider is special since failure domains don't mean anything in a local docker environment. Instead, the docker cluster controller will simply copy these into the Status and allow the Cluster API controllers to do what they will with the defined failure domains.
+        FailureDomains are not usulaly defined on the spec.
+        The docker provider is special since failure domains don't mean anything in a local docker environment.
+        Instead, the docker cluster controller will simply copy these into the Status and allow the Cluster API
+        controllers to do what they will with the defined failure domains.
     loadBalancer : InfrastructureClusterxK8sIoV1alpha4DockerClusterTemplateSpecTemplateSpecLoadBalancer, default is Undefined, optional
         load balancer
     """
@@ -102,7 +107,8 @@ schema InfrastructureClusterxK8sIoV1alpha4DockerClusterTemplateSpecTemplateSpecC
 
 schema InfrastructureClusterxK8sIoV1alpha4DockerClusterTemplateSpecTemplateSpecFailureDomainsAnon:
     """
-    FailureDomainSpec is the Schema for Cluster API failure domains. It allows controllers to understand how many failure domains a cluster can optionally span across.
+    FailureDomainSpec is the Schema for Cluster API failure domains.
+    It allows controllers to understand how many failure domains a cluster can optionally span across.
 
     Attributes
     ----------
@@ -125,9 +131,11 @@ schema InfrastructureClusterxK8sIoV1alpha4DockerClusterTemplateSpecTemplateSpecL
     Attributes
     ----------
     imageRepository : str, default is Undefined, optional
-        ImageRepository sets the container registry to pull the haproxy image from. if not set, "kindest" will be used instead.
+        ImageRepository sets the container registry to pull the haproxy image from.
+        if not set, "kindest" will be used instead.
     imageTag : str, default is Undefined, optional
-        ImageTag allows to specify a tag for the haproxy image. if not set, "v20210715-a6da3463" will be used instead.
+        ImageTag allows to specify a tag for the haproxy image.
+        if not set, "v20210715-a6da3463" will be used instead.
     """
 
 

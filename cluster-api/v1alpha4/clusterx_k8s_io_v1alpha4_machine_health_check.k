@@ -4,13 +4,15 @@ Editing this file might prove futile when you re-run the KCL auto-gen generate c
 """
 import regex
 import k8s.apimachinery.pkg.apis.meta.v1
-regex_match = regex.match
+_regex_match = regex.match
 
 
 schema MachineHealthCheck:
     """
-    MachineHealthCheck is the Schema for the machinehealthchecks API. 
-     Deprecated: This type will be removed in one of the next releases.
+    MachineHealthCheck is the Schema for the machinehealthchecks API.
+
+
+    Deprecated: This type will be removed in one of the next releases.
 
     Attributes
     ----------
@@ -47,17 +49,27 @@ schema ClusterxK8sIoV1alpha4MachineHealthCheckSpec:
     clusterName : str, default is Undefined, required
         ClusterName is the name of the Cluster this object belongs to.
     maxUnhealthy : int | str, default is Undefined, optional
-        Any further remediation is only allowed if at most "MaxUnhealthy" machines selected by "selector" are not healthy.
+        Any further remediation is only allowed if at most "MaxUnhealthy" machines selected by
+        "selector" are not healthy.
     nodeStartupTimeout : str, default is Undefined, optional
-        Machines older than this duration without a node will be considered to have failed and will be remediated. If not set, this value is defaulted to 10 minutes. If you wish to disable this feature, set the value explicitly to 0.
+        Machines older than this duration without a node will be considered to have
+        failed and will be remediated.
+        If not set, this value is defaulted to 10 minutes.
+        If you wish to disable this feature, set the value explicitly to 0.
     remediationTemplate : ClusterxK8sIoV1alpha4MachineHealthCheckSpecRemediationTemplate, default is Undefined, optional
         remediation template
     selector : ClusterxK8sIoV1alpha4MachineHealthCheckSpecSelector, default is Undefined, required
         selector
     unhealthyConditions : [ClusterxK8sIoV1alpha4MachineHealthCheckSpecUnhealthyConditionsItems0], default is Undefined, required
-        UnhealthyConditions contains a list of the conditions that determine whether a node is considered unhealthy.  The conditions are combined in a logical OR, i.e. if any of the conditions is met, the node is unhealthy.
+        UnhealthyConditions contains a list of the conditions that determine
+        whether a node is considered unhealthy.  The conditions are combined in a
+        logical OR, i.e. if any of the conditions is met, the node is unhealthy.
     unhealthyRange : str, default is Undefined, optional
-        Any further remediation is only allowed if the number of machines selected by "selector" as not healthy is within the range of "UnhealthyRange". Takes precedence over MaxUnhealthy. Eg. "[3-5]" - This means that remediation will be allowed only when: (a) there are at least 3 unhealthy machines (and) (b) there are at most 5 unhealthy machines
+        Any further remediation is only allowed if the number of machines selected by "selector" as not healthy
+        is within the range of "UnhealthyRange". Takes precedence over MaxUnhealthy.
+        Eg. "[3-5]" - This means that remediation will be allowed only when:
+        (a) there are at least 3 unhealthy machines (and)
+        (b) there are at most 5 unhealthy machines
     """
 
 
@@ -79,30 +91,47 @@ schema ClusterxK8sIoV1alpha4MachineHealthCheckSpec:
     check:
         len(clusterName) >= 1
         len(unhealthyConditions) >= 1
-        regex_match(str(unhealthyRange), r"^\[[0-9]+-[0-9]+\]$") if unhealthyRange
+        _regex_match(str(unhealthyRange), r"^\[[0-9]+-[0-9]+\]$") if unhealthyRange
 
 
 schema ClusterxK8sIoV1alpha4MachineHealthCheckSpecRemediationTemplate:
     """
-    RemediationTemplate is a reference to a remediation template provided by an infrastructure provider. 
-     This field is completely optional, when filled, the MachineHealthCheck controller creates a new object from the template referenced and hands off remediation of the machine to a controller that lives outside of Cluster API.
+    RemediationTemplate is a reference to a remediation template
+    provided by an infrastructure provider.
+
+
+    This field is completely optional, when filled, the MachineHealthCheck controller
+    creates a new object from the template referenced and hands off remediation of the machine to
+    a controller that lives outside of Cluster API.
 
     Attributes
     ----------
     apiVersion : str, default is Undefined, optional
         API version of the referent.
     fieldPath : str, default is Undefined, optional
-        If referring to a piece of an object instead of an entire object, this string should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2]. For example, if the object reference is to a container within a pod, this would take on a value like: "spec.containers{name}" (where "name" refers to the name of the container that triggered the event) or if no container name is specified "spec.containers[2]" (container with index 2 in this pod). This syntax is chosen only to have some well-defined way of referencing a part of an object. TODO: this design is not final and this field is subject to change in the future.
+        If referring to a piece of an object instead of an entire object, this string
+        should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2].
+        For example, if the object reference is to a container within a pod, this would take on a value like:
+        "spec.containers{name}" (where "name" refers to the name of the container that triggered
+        the event) or if no container name is specified "spec.containers[2]" (container with
+        index 2 in this pod). This syntax is chosen only to have some well-defined way of
+        referencing a part of an object.
+        TODO: this design is not final and this field is subject to change in the future.
     kind : str, default is Undefined, optional
-        Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+        Kind of the referent.
+        More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        Namespace of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
     resourceVersion : str, default is Undefined, optional
-        Specific resourceVersion to which this reference is made, if any. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+        Specific resourceVersion to which this reference is made, if any.
+        More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
     uid : str, default is Undefined, optional
-        UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
+        UID of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
     """
 
 
@@ -130,7 +159,9 @@ schema ClusterxK8sIoV1alpha4MachineHealthCheckSpecSelector:
     matchExpressions : [ClusterxK8sIoV1alpha4MachineHealthCheckSpecSelectorMatchExpressionsItems0], default is Undefined, optional
         matchExpressions is a list of label selector requirements. The requirements are ANDed.
     matchLabels : {str:str}, default is Undefined, optional
-        matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.
+        matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels
+        map is equivalent to an element of matchExpressions, whose key field is "key", the
+        operator is "In", and the values array contains only "value". The requirements are ANDed.
     """
 
 
@@ -141,16 +172,21 @@ schema ClusterxK8sIoV1alpha4MachineHealthCheckSpecSelector:
 
 schema ClusterxK8sIoV1alpha4MachineHealthCheckSpecSelectorMatchExpressionsItems0:
     """
-    A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+    A label selector requirement is a selector that contains values, a key, and an operator that
+    relates the key and values.
 
     Attributes
     ----------
     key : str, default is Undefined, required
         key is the label key that the selector applies to.
     operator : str, default is Undefined, required
-        operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+        operator represents a key's relationship to a set of values.
+        Valid operators are In, NotIn, Exists and DoesNotExist.
     values : [str], default is Undefined, optional
-        values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.
+        values is an array of string values. If the operator is In or NotIn,
+        the values array must be non-empty. If the operator is Exists or DoesNotExist,
+        the values array must be empty. This array is replaced during a strategic
+        merge patch.
     """
 
 
@@ -163,7 +199,9 @@ schema ClusterxK8sIoV1alpha4MachineHealthCheckSpecSelectorMatchExpressionsItems0
 
 schema ClusterxK8sIoV1alpha4MachineHealthCheckSpecUnhealthyConditionsItems0:
     """
-    UnhealthyCondition represents a Node condition type and value with a timeout specified as a duration.  When the named condition has been in the given status for at least the timeout value, a node is considered unhealthy.
+    UnhealthyCondition represents a Node condition type and value with a timeout
+    specified as a duration.  When the named condition has been in the given
+    status for at least the timeout value, a node is considered unhealthy.
 
     Attributes
     ----------
@@ -203,7 +241,8 @@ schema ClusterxK8sIoV1alpha4MachineHealthCheckStatus:
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the latest generation observed by the controller.
     remediationsAllowed : int, default is Undefined, optional
-        RemediationsAllowed is the number of further remediations allowed by this machine health check before maxUnhealthy short circuiting will be applied
+        RemediationsAllowed is the number of further remediations allowed by this machine health check before
+        maxUnhealthy short circuiting will be applied
     targets : [str], default is Undefined, optional
         Targets shows the current list of machines the machine health check is watching
     """
@@ -223,9 +262,9 @@ schema ClusterxK8sIoV1alpha4MachineHealthCheckStatus:
 
 
     check:
-        currentHealthy >= 0
-        expectedMachines >= 0
-        remediationsAllowed >= 0
+        currentHealthy >= 0 if currentHealthy not in [None, Undefined]
+        expectedMachines >= 0 if expectedMachines not in [None, Undefined]
+        remediationsAllowed >= 0 if remediationsAllowed not in [None, Undefined]
 
 
 schema ClusterxK8sIoV1alpha4MachineHealthCheckStatusConditionsItems0:
@@ -235,17 +274,26 @@ schema ClusterxK8sIoV1alpha4MachineHealthCheckStatusConditionsItems0:
     Attributes
     ----------
     lastTransitionTime : str, default is Undefined, optional
-        Last time the condition transitioned from one status to another. This should be when the underlying condition changed. If that is not known, then using the time when the API field changed is acceptable.
+        Last time the condition transitioned from one status to another.
+        This should be when the underlying condition changed. If that is not known, then using the time when
+        the API field changed is acceptable.
     message : str, default is Undefined, optional
-        A human readable message indicating details about the transition. This field may be empty.
+        A human readable message indicating details about the transition.
+        This field may be empty.
     reason : str, default is Undefined, optional
-        The reason for the condition's last transition in CamelCase. The specific API may choose whether or not this field is considered a guaranteed API. This field may not be empty.
+        The reason for the condition's last transition in CamelCase.
+        The specific API may choose whether or not this field is considered a guaranteed API.
+        This field may not be empty.
     severity : str, default is Undefined, optional
-        Severity provides an explicit classification of Reason code, so the users or machines can immediately understand the current situation and act accordingly. The Severity field MUST be set only when Status=False.
+        Severity provides an explicit classification of Reason code, so the users or machines can immediately
+        understand the current situation and act accordingly.
+        The Severity field MUST be set only when Status=False.
     status : str, default is Undefined, required
         Status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
-        Type of condition in CamelCase or in foo.example.com/CamelCase. Many .condition.type values are consistent across resources like Available, but because arbitrary conditions can be useful (see .node.status.conditions), the ability to deconflict is important.
+        Type of condition in CamelCase or in foo.example.com/CamelCase.
+        Many .condition.type values are consistent across resources like Available, but because arbitrary conditions
+        can be useful (see .node.status.conditions), the ability to deconflict is important.
     """
 
 

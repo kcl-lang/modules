@@ -38,8 +38,10 @@ schema ClusterctlClusterxK8sIoV1alpha3MetadataReleaseSeriesItems0:
     Attributes
     ----------
     contract : str, default is Undefined, optional
-        Contract defines the Cluster API contract supported by this series. 
-         The value is an API Version, e.g. `v1alpha3`.
+        Contract defines the Cluster API contract supported by this series.
+
+
+        The value is an API Version, e.g. `v1alpha3`.
     major : int, default is Undefined, optional
         Major version of the release series
     minor : int, default is Undefined, optional

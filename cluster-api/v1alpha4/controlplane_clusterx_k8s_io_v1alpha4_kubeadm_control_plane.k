@@ -7,8 +7,10 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema KubeadmControlPlane:
     """
-    KubeadmControlPlane is the Schema for the KubeadmControlPlane API. 
-     Deprecated: This type will be removed in one of the next releases.
+    KubeadmControlPlane is the Schema for the KubeadmControlPlane API.
+
+
+    Deprecated: This type will be removed in one of the next releases.
 
     Attributes
     ----------
@@ -47,9 +49,13 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpec:
     machineTemplate : ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecMachineTemplate, default is Undefined, required
         machine template
     replicas : int, default is Undefined, optional
-        Number of desired machines. Defaults to 1. When stacked etcd is used only odd numbers are permitted, as per [etcd best practice](https://etcd.io/docs/v3.3.12/faq/#why-an-odd-number-of-cluster-members). This is a pointer to distinguish between explicit zero and not specified.
+        Number of desired machines. Defaults to 1. When stacked etcd is used only
+        odd numbers are permitted, as per [etcd best practice](https://etcd.io/docs/v3.3.12/faq/#why-an-odd-number-of-cluster-members).
+        This is a pointer to distinguish between explicit zero and not specified.
     rolloutAfter : str, default is Undefined, optional
-        RolloutAfter is a field to indicate a rollout should be performed after the specified time even if no changes have been made to the KubeadmControlPlane.
+        RolloutAfter is a field to indicate a rollout should be performed
+        after the specified time even if no changes have been made to the
+        KubeadmControlPlane.
     rolloutStrategy : ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecRolloutStrategy, default is Undefined, optional
         rollout strategy
     version : str, default is Undefined, required
@@ -72,7 +78,8 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpec:
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec:
     """
-    KubeadmConfigSpec is a KubeadmConfigSpec to use for initializing and joining machines to the control plane.
+    KubeadmConfigSpec is a KubeadmConfigSpec
+    to use for initializing and joining machines to the control plane.
 
     Attributes
     ----------
@@ -97,14 +104,24 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
     preKubeadmCommands : [str], default is Undefined, optional
         PreKubeadmCommands specifies extra commands to run before kubeadm runs
     useExperimentalRetryJoin : bool, default is Undefined, optional
-        UseExperimentalRetryJoin replaces a basic kubeadm command with a shell script with retries for joins. 
-         This is meant to be an experimental temporary workaround on some environments where joins fail due to timing (and other issues). The long term goal is to add retries to kubeadm proper and use that functionality. 
-         This will add about 40KB to userdata 
-         For more information, refer to https://github.com/kubernetes-sigs/cluster-api/pull/2763#discussion_r397306055.
+        UseExperimentalRetryJoin replaces a basic kubeadm command with a shell
+        script with retries for joins.
+
+
+        This is meant to be an experimental temporary workaround on some environments
+        where joins fail due to timing (and other issues). The long term goal is to add retries to
+        kubeadm proper and use that functionality.
+
+
+        This will add about 40KB to userdata
+
+
+        For more information, refer to https://github.com/kubernetes-sigs/cluster-api/pull/2763#discussion_r397306055.
     users : [ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecUsersItems0], default is Undefined, optional
         Users specifies extra users to add
     verbosity : int, default is Undefined, optional
-        Verbosity is the number for the kubeadm log level verbosity. It overrides the `--v` flag in kubeadm commands.
+        Verbosity is the number for the kubeadm log level verbosity.
+        It overrides the `--v` flag in kubeadm commands.
     """
 
 
@@ -144,13 +161,28 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
     apiServer : ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecClusterConfigurationAPIServer, default is Undefined, optional
         api server
     apiVersion : str, default is Undefined, optional
-        APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+        APIVersion defines the versioned schema of this representation of an object.
+        Servers should convert recognized schemas to the latest internal value, and
+        may reject unrecognized values.
+        More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
     certificatesDir : str, default is Undefined, optional
-        CertificatesDir specifies where to store or look for all required certificates. NB: if not provided, this will default to `/etc/kubernetes/pki`
+        CertificatesDir specifies where to store or look for all required certificates.
+        NB: if not provided, this will default to `/etc/kubernetes/pki`
     clusterName : str, default is Undefined, optional
         The cluster name
     controlPlaneEndpoint : str, default is Undefined, optional
-        ControlPlaneEndpoint sets a stable IP address or DNS name for the control plane; it can be a valid IP address or a RFC-1123 DNS subdomain, both with optional TCP port. In case the ControlPlaneEndpoint is not specified, the AdvertiseAddress + BindPort are used; in case the ControlPlaneEndpoint is specified but without a TCP port, the BindPort is used. Possible usages are: e.g. In a cluster with more than one control plane instances, this field should be assigned the address of the external load balancer in front of the control plane instances. e.g.  in environments with enforced node recycling, the ControlPlaneEndpoint could be used for assigning a stable DNS to the control plane. NB: This value defaults to the first value in the Cluster object status.apiEndpoints array.
+        ControlPlaneEndpoint sets a stable IP address or DNS name for the control plane; it
+        can be a valid IP address or a RFC-1123 DNS subdomain, both with optional TCP port.
+        In case the ControlPlaneEndpoint is not specified, the AdvertiseAddress + BindPort
+        are used; in case the ControlPlaneEndpoint is specified but without a TCP port,
+        the BindPort is used.
+        Possible usages are:
+        e.g. In a cluster with more than one control plane instances, this field should be
+        assigned the address of the external load balancer in front of the
+        control plane instances.
+        e.g.  in environments with enforced node recycling, the ControlPlaneEndpoint
+        could be used for assigning a stable DNS to the control plane.
+        NB: This value defaults to the first value in the Cluster object status.apiEndpoints array.
     controllerManager : ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecClusterConfigurationControllerManager, default is Undefined, optional
         controller manager
     dns : ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecClusterConfigurationDNS, default is Undefined, optional
@@ -160,11 +192,19 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
     featureGates : {str:bool}, default is Undefined, optional
         FeatureGates enabled by the user.
     imageRepository : str, default is Undefined, optional
-        ImageRepository sets the container registry to pull images from. If empty, `registry.k8s.io` will be used by default; in case of kubernetes version is a CI build (kubernetes version starts with `ci/` or `ci-cross/`) `gcr.io/k8s-staging-ci-images` will be used as a default for control plane components and for kube-proxy, while `registry.k8s.io` will be used for all the other images.
+        ImageRepository sets the container registry to pull images from.
+        If empty, `registry.k8s.io` will be used by default; in case of kubernetes version is a CI build (kubernetes version starts with `ci/` or `ci-cross/`)
+        `gcr.io/k8s-staging-ci-images` will be used as a default for control plane components and for kube-proxy, while `registry.k8s.io`
+        will be used for all the other images.
     kind : str, default is Undefined, optional
-        Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+        Kind is a string value representing the REST resource this object represents.
+        Servers may infer this from the endpoint the client submits requests to.
+        Cannot be updated.
+        In CamelCase.
+        More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     kubernetesVersion : str, default is Undefined, optional
-        KubernetesVersion is the target version of the control plane. NB: This value defaults to the Machine object spec.version
+        KubernetesVersion is the target version of the control plane.
+        NB: This value defaults to the Machine object spec.version
     networking : ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecClusterConfigurationNetworking, default is Undefined, optional
         networking
     scheduler : ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecClusterConfigurationScheduler, default is Undefined, optional
@@ -210,7 +250,9 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
     certSANs : [str], default is Undefined, optional
         CertSANs sets extra Subject Alternative Names for the API Server signing cert.
     extraArgs : {str:str}, default is Undefined, optional
-        ExtraArgs is an extra set of flags to pass to the control plane component. TODO: This is temporary and ideally we would like to switch all components to use ComponentConfig + ConfigMaps.
+        ExtraArgs is an extra set of flags to pass to the control plane component.
+        TODO: This is temporary and ideally we would like to switch all components to
+        use ComponentConfig + ConfigMaps.
     extraVolumes : [ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecClusterConfigurationAPIServerExtraVolumesItems0], default is Undefined, optional
         ExtraVolumes is an extra set of host volumes, mounted to the control plane component.
     timeoutForControlPlane : str, default is Undefined, optional
@@ -229,12 +271,14 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecClusterConfigurationAPIServerExtraVolumesItems0:
     """
-    HostPathMount contains elements describing volumes that are mounted from the host.
+    HostPathMount contains elements describing volumes that are mounted from the
+    host.
 
     Attributes
     ----------
     hostPath : str, default is Undefined, required
-        HostPath is the path in the host that will be mounted inside the pod.
+        HostPath is the path in the host that will be mounted inside
+        the pod.
     mountPath : str, default is Undefined, required
         MountPath is the path inside the pod where hostPath will be mounted.
     name : str, default is Undefined, required
@@ -264,7 +308,9 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
     Attributes
     ----------
     extraArgs : {str:str}, default is Undefined, optional
-        ExtraArgs is an extra set of flags to pass to the control plane component. TODO: This is temporary and ideally we would like to switch all components to use ComponentConfig + ConfigMaps.
+        ExtraArgs is an extra set of flags to pass to the control plane component.
+        TODO: This is temporary and ideally we would like to switch all components to
+        use ComponentConfig + ConfigMaps.
     extraVolumes : [ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecClusterConfigurationControllerManagerExtraVolumesItems0], default is Undefined, optional
         ExtraVolumes is an extra set of host volumes, mounted to the control plane component.
     """
@@ -277,12 +323,14 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecClusterConfigurationControllerManagerExtraVolumesItems0:
     """
-    HostPathMount contains elements describing volumes that are mounted from the host.
+    HostPathMount contains elements describing volumes that are mounted from the
+    host.
 
     Attributes
     ----------
     hostPath : str, default is Undefined, required
-        HostPath is the path in the host that will be mounted inside the pod.
+        HostPath is the path in the host that will be mounted inside
+        the pod.
     mountPath : str, default is Undefined, required
         MountPath is the path inside the pod where hostPath will be mounted.
     name : str, default is Undefined, required
@@ -312,9 +360,11 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
     Attributes
     ----------
     imageRepository : str, default is Undefined, optional
-        ImageRepository sets the container registry to pull images from. if not set, the ImageRepository defined in ClusterConfiguration will be used instead.
+        ImageRepository sets the container registry to pull images from.
+        if not set, the ImageRepository defined in ClusterConfiguration will be used instead.
     imageTag : str, default is Undefined, optional
-        ImageTag allows to specify a tag for the image. In case this value is set, kubeadm does not change automatically the version of the above components during upgrades.
+        ImageTag allows to specify a tag for the image.
+        In case this value is set, kubeadm does not change automatically the version of the above components during upgrades.
     """
 
 
@@ -325,7 +375,8 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecClusterConfigurationEtcd:
     """
-    Etcd holds configuration for etcd. NB: This value defaults to a Local (stacked) etcd
+    Etcd holds configuration for etcd.
+    NB: This value defaults to a Local (stacked) etcd
 
     Attributes
     ----------
@@ -343,18 +394,22 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecClusterConfigurationEtcdExternal:
     """
-    External describes how to connect to an external etcd cluster Local and External are mutually exclusive
+    External describes how to connect to an external etcd cluster
+    Local and External are mutually exclusive
 
     Attributes
     ----------
     caFile : str, default is Undefined, required
-        CAFile is an SSL Certificate Authority file used to secure etcd communication. Required if using a TLS connection.
+        CAFile is an SSL Certificate Authority file used to secure etcd communication.
+        Required if using a TLS connection.
     certFile : str, default is Undefined, required
-        CertFile is an SSL certification file used to secure etcd communication. Required if using a TLS connection.
+        CertFile is an SSL certification file used to secure etcd communication.
+        Required if using a TLS connection.
     endpoints : [str], default is Undefined, required
         Endpoints of etcd members. Required for ExternalEtcd.
     keyFile : str, default is Undefined, required
-        KeyFile is an SSL key file used to secure etcd communication. Required if using a TLS connection.
+        KeyFile is an SSL key file used to secure etcd communication.
+        Required if using a TLS connection.
     """
 
 
@@ -369,18 +424,23 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecClusterConfigurationEtcdLocal:
     """
-    Local provides configuration knobs for configuring the local etcd instance Local and External are mutually exclusive
+    Local provides configuration knobs for configuring the local etcd instance
+    Local and External are mutually exclusive
 
     Attributes
     ----------
     dataDir : str, default is Undefined, optional
-        DataDir is the directory etcd will place its data. Defaults to "/var/lib/etcd".
+        DataDir is the directory etcd will place its data.
+        Defaults to "/var/lib/etcd".
     extraArgs : {str:str}, default is Undefined, optional
-        ExtraArgs are extra arguments provided to the etcd binary when run inside a static pod.
+        ExtraArgs are extra arguments provided to the etcd binary
+        when run inside a static pod.
     imageRepository : str, default is Undefined, optional
-        ImageRepository sets the container registry to pull images from. if not set, the ImageRepository defined in ClusterConfiguration will be used instead.
+        ImageRepository sets the container registry to pull images from.
+        if not set, the ImageRepository defined in ClusterConfiguration will be used instead.
     imageTag : str, default is Undefined, optional
-        ImageTag allows to specify a tag for the image. In case this value is set, kubeadm does not change automatically the version of the above components during upgrades.
+        ImageTag allows to specify a tag for the image.
+        In case this value is set, kubeadm does not change automatically the version of the above components during upgrades.
     peerCertSANs : [str], default is Undefined, optional
         PeerCertSANs sets extra Subject Alternative Names for the etcd peer signing cert.
     serverCertSANs : [str], default is Undefined, optional
@@ -403,16 +463,21 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecClusterConfigurationNetworking:
     """
-    Networking holds configuration for the networking topology of the cluster. NB: This value defaults to the Cluster object spec.clusterNetwork.
+    Networking holds configuration for the networking topology of the cluster.
+    NB: This value defaults to the Cluster object spec.clusterNetwork.
 
     Attributes
     ----------
     dnsDomain : str, default is Undefined, optional
         DNSDomain is the dns domain used by k8s services. Defaults to "cluster.local".
     podSubnet : str, default is Undefined, optional
-        PodSubnet is the subnet used by pods. If unset, the API server will not allocate CIDR ranges for every node. Defaults to a comma-delimited string of the Cluster object's spec.clusterNetwork.services.cidrBlocks if that is set
+        PodSubnet is the subnet used by pods.
+        If unset, the API server will not allocate CIDR ranges for every node.
+        Defaults to a comma-delimited string of the Cluster object's spec.clusterNetwork.services.cidrBlocks if that is set
     serviceSubnet : str, default is Undefined, optional
-        ServiceSubnet is the subnet used by k8s services. Defaults to a comma-delimited string of the Cluster object's spec.clusterNetwork.pods.cidrBlocks, or to "10.96.0.0/12" if that's unset.
+        ServiceSubnet is the subnet used by k8s services.
+        Defaults to a comma-delimited string of the Cluster object's spec.clusterNetwork.pods.cidrBlocks, or
+        to "10.96.0.0/12" if that's unset.
     """
 
 
@@ -430,7 +495,9 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
     Attributes
     ----------
     extraArgs : {str:str}, default is Undefined, optional
-        ExtraArgs is an extra set of flags to pass to the control plane component. TODO: This is temporary and ideally we would like to switch all components to use ComponentConfig + ConfigMaps.
+        ExtraArgs is an extra set of flags to pass to the control plane component.
+        TODO: This is temporary and ideally we would like to switch all components to
+        use ComponentConfig + ConfigMaps.
     extraVolumes : [ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecClusterConfigurationSchedulerExtraVolumesItems0], default is Undefined, optional
         ExtraVolumes is an extra set of host volumes, mounted to the control plane component.
     """
@@ -443,12 +510,14 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecClusterConfigurationSchedulerExtraVolumesItems0:
     """
-    HostPathMount contains elements describing volumes that are mounted from the host.
+    HostPathMount contains elements describing volumes that are mounted from the
+    host.
 
     Attributes
     ----------
     hostPath : str, default is Undefined, required
-        HostPath is the path in the host that will be mounted inside the pod.
+        HostPath is the path in the host that will be mounted inside
+        the pod.
     mountPath : str, default is Undefined, required
         MountPath is the path inside the pod where hostPath will be mounted.
     name : str, default is Undefined, required
@@ -504,11 +573,13 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
     label : str, default is Undefined, required
         Label specifies the file system label to be used. If set to None, no label is used.
     overwrite : bool, default is Undefined, optional
-        Overwrite defines whether or not to overwrite any existing filesystem. If true, any pre-existing file system will be destroyed. Use with Caution.
+        Overwrite defines whether or not to overwrite any existing filesystem.
+        If true, any pre-existing file system will be destroyed. Use with Caution.
     partition : str, default is Undefined, optional
         Partition specifies the partition to use. The valid options are: "auto|any", "auto", "any", "none", and <NUM>, where NUM is the actual partition number.
     replaceFS : str, default is Undefined, optional
-        ReplaceFS is a special directive, used for Microsoft Azure that instructs cloud-init to replace a file system of <FS_TYPE>. NOTE: unless you define a label, this requires the use of the 'any' partition directive.
+        ReplaceFS is a special directive, used for Microsoft Azure that instructs cloud-init to replace a file system of <FS_TYPE>.
+        NOTE: unless you define a label, this requires the use of the 'any' partition directive.
     """
 
 
@@ -536,11 +607,16 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
     device : str, default is Undefined, required
         Device is the name of the device.
     layout : bool, default is Undefined, required
-        Layout specifies the device layout. If it is true, a single partition will be created for the entire device. When layout is false, it means don't partition or ignore existing partitioning.
+        Layout specifies the device layout.
+        If it is true, a single partition will be created for the entire device.
+        When layout is false, it means don't partition or ignore existing partitioning.
     overwrite : bool, default is Undefined, optional
-        Overwrite describes whether to skip checks and create the partition if a partition or filesystem is found on the device. Use with caution. Default is 'false'.
+        Overwrite describes whether to skip checks and create the partition if a partition or filesystem is found on the device.
+        Use with caution. Default is 'false'.
     tableType : str, default is Undefined, optional
-        TableType specifies the tupe of partition table. The following are supported: 'mbr': default and setups a MS-DOS partition table 'gpt': setups a GPT partition table
+        TableType specifies the tupe of partition table. The following are supported:
+        'mbr': default and setups a MS-DOS partition table
+        'gpt': setups a GPT partition table
     """
 
 
@@ -626,11 +702,19 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
     Attributes
     ----------
     apiVersion : str, default is Undefined, optional
-        APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+        APIVersion defines the versioned schema of this representation of an object.
+        Servers should convert recognized schemas to the latest internal value, and
+        may reject unrecognized values.
+        More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
     bootstrapTokens : [ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecInitConfigurationBootstrapTokensItems0], default is Undefined, optional
-        BootstrapTokens is respected at `kubeadm init` time and describes a set of Bootstrap Tokens to create. This information IS NOT uploaded to the kubeadm cluster configmap, partly because of its sensitive nature
+        BootstrapTokens is respected at `kubeadm init` time and describes a set of Bootstrap Tokens to create.
+        This information IS NOT uploaded to the kubeadm cluster configmap, partly because of its sensitive nature
     kind : str, default is Undefined, optional
-        Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+        Kind is a string value representing the REST resource this object represents.
+        Servers may infer this from the endpoint the client submits requests to.
+        Cannot be updated.
+        In CamelCase.
+        More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     localAPIEndpoint : ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecInitConfigurationLocalAPIEndpoint, default is Undefined, optional
         local API endpoint
     nodeRegistration : ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecInitConfigurationNodeRegistration, default is Undefined, optional
@@ -656,17 +740,23 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
     Attributes
     ----------
     description : str, default is Undefined, optional
-        Description sets a human-friendly message why this token exists and what it's used for, so other administrators can know its purpose.
+        Description sets a human-friendly message why this token exists and what it's used
+        for, so other administrators can know its purpose.
     expires : str, default is Undefined, optional
-        Expires specifies the timestamp when this token expires. Defaults to being set dynamically at runtime based on the TTL. Expires and TTL are mutually exclusive.
+        Expires specifies the timestamp when this token expires. Defaults to being set
+        dynamically at runtime based on the TTL. Expires and TTL are mutually exclusive.
     groups : [str], default is Undefined, optional
-        Groups specifies the extra groups that this token will authenticate as when/if used for authentication
+        Groups specifies the extra groups that this token will authenticate as when/if
+        used for authentication
     token : str, default is Undefined, required
-        Token is used for establishing bidirectional trust between nodes and control-planes. Used for joining nodes in the cluster.
+        Token is used for establishing bidirectional trust between nodes and control-planes.
+        Used for joining nodes in the cluster.
     ttl : str, default is Undefined, optional
-        TTL defines the time to live for this token. Defaults to 24h. Expires and TTL are mutually exclusive.
+        TTL defines the time to live for this token. Defaults to 24h.
+        Expires and TTL are mutually exclusive.
     usages : [str], default is Undefined, optional
-        Usages describes the ways in which this token can be used. Can by default be used for establishing bidirectional trust, but that can be changed here.
+        Usages describes the ways in which this token can be used. Can by default be used
+        for establishing bidirectional trust, but that can be changed here.
     """
 
 
@@ -685,14 +775,20 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecInitConfigurationLocalAPIEndpoint:
     """
-    LocalAPIEndpoint represents the endpoint of the API server instance that's deployed on this control plane node In HA setups, this differs from ClusterConfiguration.ControlPlaneEndpoint in the sense that ControlPlaneEndpoint is the global endpoint for the cluster, which then loadbalances the requests to each individual API server. This configuration object lets you customize what IP/DNS name and port the local API server advertises it's accessible on. By default, kubeadm tries to auto-detect the IP of the default interface and use that, but in case that process fails you may set the desired value here.
+    LocalAPIEndpoint represents the endpoint of the API server instance that's deployed on this control plane node
+    In HA setups, this differs from ClusterConfiguration.ControlPlaneEndpoint in the sense that ControlPlaneEndpoint
+    is the global endpoint for the cluster, which then loadbalances the requests to each individual API server. This
+    configuration object lets you customize what IP/DNS name and port the local API server advertises it's accessible
+    on. By default, kubeadm tries to auto-detect the IP of the default interface and use that, but in case that process
+    fails you may set the desired value here.
 
     Attributes
     ----------
     advertiseAddress : str, default is Undefined, optional
         AdvertiseAddress sets the IP address for the API server to advertise.
     bindPort : int, default is Undefined, optional
-        BindPort sets the secure port for the API Server to bind to. Defaults to 6443.
+        BindPort sets the secure port for the API Server to bind to.
+        Defaults to 6443.
     """
 
 
@@ -703,7 +799,9 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecInitConfigurationNodeRegistration:
     """
-    NodeRegistration holds fields that relate to registering the new control-plane node to the cluster. When used in the context of control plane nodes, NodeRegistration should remain consistent across both InitConfiguration and JoinConfiguration
+    NodeRegistration holds fields that relate to registering the new control-plane node to the cluster.
+    When used in the context of control plane nodes, NodeRegistration should remain consistent
+    across both InitConfiguration and JoinConfiguration
 
     Attributes
     ----------
@@ -712,11 +810,17 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
     ignorePreflightErrors : [str], default is Undefined, optional
         IgnorePreflightErrors provides a slice of pre-flight errors to be ignored when the current node is registered.
     kubeletExtraArgs : {str:str}, default is Undefined, optional
-        KubeletExtraArgs passes through extra arguments to the kubelet. The arguments here are passed to the kubelet command line via the environment file kubeadm writes at runtime for the kubelet to source. This overrides the generic base-level configuration in the kubelet-config-1.X ConfigMap Flags have higher priority when parsing. These values are local and specific to the node kubeadm is executing on.
+        KubeletExtraArgs passes through extra arguments to the kubelet. The arguments here are passed to the kubelet command line via the environment file
+        kubeadm writes at runtime for the kubelet to source. This overrides the generic base-level configuration in the kubelet-config-1.X ConfigMap
+        Flags have higher priority when parsing. These values are local and specific to the node kubeadm is executing on.
     name : str, default is Undefined, optional
-        Name is the `.Metadata.Name` field of the Node API object that will be created in this `kubeadm init` or `kubeadm join` operation. This field is also used in the CommonName field of the kubelet's client certificate to the API server. Defaults to the hostname of the node if not provided.
+        Name is the `.Metadata.Name` field of the Node API object that will be created in this `kubeadm init` or `kubeadm join` operation.
+        This field is also used in the CommonName field of the kubelet's client certificate to the API server.
+        Defaults to the hostname of the node if not provided.
     taints : [ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecInitConfigurationNodeRegistrationTaintsItems0], default is Undefined, optional
-        Taints specifies the taints the Node API object should be registered with. If this field is unset, i.e. nil, in the `kubeadm init` process it will be defaulted to []v1.Taint{'node-role.kubernetes.io/master=""'}. If you don't want to taint your control-plane node, set this field to an empty slice, i.e. `taints: {}` in the YAML file. This field is solely used for Node registration.
+        Taints specifies the taints the Node API object should be registered with. If this field is unset, i.e. nil, in the `kubeadm init` process
+        it will be defaulted to []v1.Taint{'node-role.kubernetes.io/master=""'}. If you don't want to taint your control-plane node, set this field to an
+        empty slice, i.e. `taints: {}` in the YAML file. This field is solely used for Node registration.
     """
 
 
@@ -733,16 +837,20 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecInitConfigurationNodeRegistrationTaintsItems0:
     """
-    The node this Taint is attached to has the "effect" on any pod that does not tolerate the Taint.
+    The node this Taint is attached to has the "effect" on
+    any pod that does not tolerate the Taint.
 
     Attributes
     ----------
     effect : str, default is Undefined, required
-        Required. The effect of the taint on pods that do not tolerate the taint. Valid effects are NoSchedule, PreferNoSchedule and NoExecute.
+        Required. The effect of the taint on pods
+        that do not tolerate the taint.
+        Valid effects are NoSchedule, PreferNoSchedule and NoExecute.
     key : str, default is Undefined, required
         Required. The taint key to be applied to a node.
     timeAdded : str, default is Undefined, optional
-        TimeAdded represents the time at which the taint was added. It is only written for NoExecute taints.
+        TimeAdded represents the time at which the taint was added.
+        It is only written for NoExecute taints.
     value : str, default is Undefined, optional
         The taint value corresponding to the taint key.
     """
@@ -764,15 +872,25 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
     Attributes
     ----------
     apiVersion : str, default is Undefined, optional
-        APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+        APIVersion defines the versioned schema of this representation of an object.
+        Servers should convert recognized schemas to the latest internal value, and
+        may reject unrecognized values.
+        More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
     caCertPath : str, default is Undefined, optional
-        CACertPath is the path to the SSL certificate authority used to secure comunications between node and control-plane. Defaults to "/etc/kubernetes/pki/ca.crt". TODO: revisit when there is defaulting from k/k
+        CACertPath is the path to the SSL certificate authority used to
+        secure comunications between node and control-plane.
+        Defaults to "/etc/kubernetes/pki/ca.crt".
+        TODO: revisit when there is defaulting from k/k
     controlPlane : ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecJoinConfigurationControlPlane, default is Undefined, optional
         control plane
     discovery : ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecJoinConfigurationDiscovery, default is Undefined, optional
         discovery
     kind : str, default is Undefined, optional
-        Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+        Kind is a string value representing the REST resource this object represents.
+        Servers may infer this from the endpoint the client submits requests to.
+        Cannot be updated.
+        In CamelCase.
+        More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     nodeRegistration : ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecJoinConfigurationNodeRegistration, default is Undefined, optional
         node registration
     """
@@ -793,7 +911,8 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecJoinConfigurationControlPlane:
     """
-    ControlPlane defines the additional control plane instance to be deployed on the joining node. If nil, no additional control plane instance will be deployed.
+    ControlPlane defines the additional control plane instance to be deployed on the joining node.
+    If nil, no additional control plane instance will be deployed.
 
     Attributes
     ----------
@@ -814,7 +933,8 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
     advertiseAddress : str, default is Undefined, optional
         AdvertiseAddress sets the IP address for the API server to advertise.
     bindPort : int, default is Undefined, optional
-        BindPort sets the secure port for the API Server to bind to. Defaults to 6443.
+        BindPort sets the secure port for the API Server to bind to.
+        Defaults to 6443.
     """
 
 
@@ -825,7 +945,8 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecJoinConfigurationDiscovery:
     """
-    Discovery specifies the options for the kubelet to use during the TLS Bootstrap process TODO: revisit when there is defaulting from k/k
+    Discovery specifies the options for the kubelet to use during the TLS Bootstrap process
+    TODO: revisit when there is defaulting from k/k
 
     Attributes
     ----------
@@ -836,7 +957,9 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
     timeout : str, default is Undefined, optional
         Timeout modifies the discovery timeout
     tlsBootstrapToken : str, default is Undefined, optional
-        TLSBootstrapToken is a token used for TLS bootstrapping. If .BootstrapToken is set, this field is defaulted to .BootstrapToken.Token, but can be overridden. If .File is set, this field **must be set** in case the KubeConfigFile does not contain any other authentication information
+        TLSBootstrapToken is a token used for TLS bootstrapping.
+        If .BootstrapToken is set, this field is defaulted to .BootstrapToken.Token, but can be overridden.
+        If .File is set, this field **must be set** in case the KubeConfigFile does not contain any other authentication information
     """
 
 
@@ -851,18 +974,29 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecJoinConfigurationDiscoveryBootstrapToken:
     """
-    BootstrapToken is used to set the options for bootstrap token based discovery BootstrapToken and File are mutually exclusive
+    BootstrapToken is used to set the options for bootstrap token based discovery
+    BootstrapToken and File are mutually exclusive
 
     Attributes
     ----------
     apiServerEndpoint : str, default is Undefined, optional
         APIServerEndpoint is an IP or domain name to the API server from which info will be fetched.
     caCertHashes : [str], default is Undefined, optional
-        CACertHashes specifies a set of public key pins to verify when token-based discovery is used. The root CA found during discovery must match one of these values. Specifying an empty set disables root CA pinning, which can be unsafe. Each hash is specified as "<type>:<value>", where the only currently supported type is "sha256". This is a hex-encoded SHA-256 hash of the Subject Public Key Info (SPKI) object in DER-encoded ASN.1. These hashes can be calculated using, for example, OpenSSL: openssl x509 -pubkey -in ca.crt openssl rsa -pubin -outform der 2>&/dev/null | openssl dgst -sha256 -hex
+        CACertHashes specifies a set of public key pins to verify
+        when token-based discovery is used. The root CA found during discovery
+        must match one of these values. Specifying an empty set disables root CA
+        pinning, which can be unsafe. Each hash is specified as "<type>:<value>",
+        where the only currently supported type is "sha256". This is a hex-encoded
+        SHA-256 hash of the Subject Public Key Info (SPKI) object in DER-encoded
+        ASN.1. These hashes can be calculated using, for example, OpenSSL:
+        openssl x509 -pubkey -in ca.crt openssl rsa -pubin -outform der 2>&/dev/null | openssl dgst -sha256 -hex
     token : str, default is Undefined, required
-        Token is a token used to validate cluster information fetched from the control-plane.
+        Token is a token used to validate cluster information
+        fetched from the control-plane.
     unsafeSkipCAVerification : bool, default is Undefined, optional
-        UnsafeSkipCAVerification allows token-based discovery without CA verification via CACertHashes. This can weaken the security of kubeadm since other nodes can impersonate the control-plane.
+        UnsafeSkipCAVerification allows token-based discovery
+        without CA verification via CACertHashes. This can weaken
+        the security of kubeadm since other nodes can impersonate the control-plane.
     """
 
 
@@ -877,7 +1011,8 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecJoinConfigurationDiscoveryFile:
     """
-    File is used to specify a file or URL to a kubeconfig file from which to load cluster information BootstrapToken and File are mutually exclusive
+    File is used to specify a file or URL to a kubeconfig file from which to load cluster information
+    BootstrapToken and File are mutually exclusive
 
     Attributes
     ----------
@@ -891,7 +1026,9 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecJoinConfigurationNodeRegistration:
     """
-    NodeRegistration holds fields that relate to registering the new control-plane node to the cluster. When used in the context of control plane nodes, NodeRegistration should remain consistent across both InitConfiguration and JoinConfiguration
+    NodeRegistration holds fields that relate to registering the new control-plane node to the cluster.
+    When used in the context of control plane nodes, NodeRegistration should remain consistent
+    across both InitConfiguration and JoinConfiguration
 
     Attributes
     ----------
@@ -900,11 +1037,17 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
     ignorePreflightErrors : [str], default is Undefined, optional
         IgnorePreflightErrors provides a slice of pre-flight errors to be ignored when the current node is registered.
     kubeletExtraArgs : {str:str}, default is Undefined, optional
-        KubeletExtraArgs passes through extra arguments to the kubelet. The arguments here are passed to the kubelet command line via the environment file kubeadm writes at runtime for the kubelet to source. This overrides the generic base-level configuration in the kubelet-config-1.X ConfigMap Flags have higher priority when parsing. These values are local and specific to the node kubeadm is executing on.
+        KubeletExtraArgs passes through extra arguments to the kubelet. The arguments here are passed to the kubelet command line via the environment file
+        kubeadm writes at runtime for the kubelet to source. This overrides the generic base-level configuration in the kubelet-config-1.X ConfigMap
+        Flags have higher priority when parsing. These values are local and specific to the node kubeadm is executing on.
     name : str, default is Undefined, optional
-        Name is the `.Metadata.Name` field of the Node API object that will be created in this `kubeadm init` or `kubeadm join` operation. This field is also used in the CommonName field of the kubelet's client certificate to the API server. Defaults to the hostname of the node if not provided.
+        Name is the `.Metadata.Name` field of the Node API object that will be created in this `kubeadm init` or `kubeadm join` operation.
+        This field is also used in the CommonName field of the kubelet's client certificate to the API server.
+        Defaults to the hostname of the node if not provided.
     taints : [ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecJoinConfigurationNodeRegistrationTaintsItems0], default is Undefined, optional
-        Taints specifies the taints the Node API object should be registered with. If this field is unset, i.e. nil, in the `kubeadm init` process it will be defaulted to []v1.Taint{'node-role.kubernetes.io/master=""'}. If you don't want to taint your control-plane node, set this field to an empty slice, i.e. `taints: {}` in the YAML file. This field is solely used for Node registration.
+        Taints specifies the taints the Node API object should be registered with. If this field is unset, i.e. nil, in the `kubeadm init` process
+        it will be defaulted to []v1.Taint{'node-role.kubernetes.io/master=""'}. If you don't want to taint your control-plane node, set this field to an
+        empty slice, i.e. `taints: {}` in the YAML file. This field is solely used for Node registration.
     """
 
 
@@ -921,16 +1064,20 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecJoinConfigurationNodeRegistrationTaintsItems0:
     """
-    The node this Taint is attached to has the "effect" on any pod that does not tolerate the Taint.
+    The node this Taint is attached to has the "effect" on
+    any pod that does not tolerate the Taint.
 
     Attributes
     ----------
     effect : str, default is Undefined, required
-        Required. The effect of the taint on pods that do not tolerate the taint. Valid effects are NoSchedule, PreferNoSchedule and NoExecute.
+        Required. The effect of the taint on pods
+        that do not tolerate the taint.
+        Valid effects are NoSchedule, PreferNoSchedule and NoExecute.
     key : str, default is Undefined, required
         Required. The taint key to be applied to a node.
     timeAdded : str, default is Undefined, optional
-        TimeAdded represents the time at which the taint was added. It is only written for NoExecute taints.
+        TimeAdded represents the time at which the taint was added.
+        It is only written for NoExecute taints.
     value : str, default is Undefined, optional
         The taint value corresponding to the taint key.
     """
@@ -1019,7 +1166,8 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecMachineTemplate:
     """
-    MachineTemplate contains information about how machines should be shaped when creating or updating a control plane.
+    MachineTemplate contains information about how machines
+    should be shaped when creating or updating a control plane.
 
     Attributes
     ----------
@@ -1028,7 +1176,9 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecMachineTemplate:
     metadata : ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecMachineTemplateMetadata, default is Undefined, optional
         metadata
     nodeDrainTimeout : str, default is Undefined, optional
-        NodeDrainTimeout is the total amount of time that the controller will spend on draining a controlplane node The default value is 0, meaning that the node can be drained without any time limitations. NOTE: NodeDrainTimeout is different from `kubectl drain --timeout`
+        NodeDrainTimeout is the total amount of time that the controller will spend on draining a controlplane node
+        The default value is 0, meaning that the node can be drained without any time limitations.
+        NOTE: NodeDrainTimeout is different from `kubectl drain --timeout`
     """
 
 
@@ -1041,24 +1191,37 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecMachineTemplate:
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecMachineTemplateInfrastructureRef:
     """
-    InfrastructureRef is a required reference to a custom resource offered by an infrastructure provider.
+    InfrastructureRef is a required reference to a custom resource
+    offered by an infrastructure provider.
 
     Attributes
     ----------
     apiVersion : str, default is Undefined, optional
         API version of the referent.
     fieldPath : str, default is Undefined, optional
-        If referring to a piece of an object instead of an entire object, this string should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2]. For example, if the object reference is to a container within a pod, this would take on a value like: "spec.containers{name}" (where "name" refers to the name of the container that triggered the event) or if no container name is specified "spec.containers[2]" (container with index 2 in this pod). This syntax is chosen only to have some well-defined way of referencing a part of an object. TODO: this design is not final and this field is subject to change in the future.
+        If referring to a piece of an object instead of an entire object, this string
+        should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2].
+        For example, if the object reference is to a container within a pod, this would take on a value like:
+        "spec.containers{name}" (where "name" refers to the name of the container that triggered
+        the event) or if no container name is specified "spec.containers[2]" (container with
+        index 2 in this pod). This syntax is chosen only to have some well-defined way of
+        referencing a part of an object.
+        TODO: this design is not final and this field is subject to change in the future.
     kind : str, default is Undefined, optional
-        Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+        Kind of the referent.
+        More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        Namespace of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
     resourceVersion : str, default is Undefined, optional
-        Specific resourceVersion to which this reference is made, if any. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+        Specific resourceVersion to which this reference is made, if any.
+        More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
     uid : str, default is Undefined, optional
-        UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
+        UID of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
     """
 
 
@@ -1079,14 +1242,21 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecMachineTemplateIn
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecMachineTemplateMetadata:
     """
-    Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+    Standard object's metadata.
+    More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations
+        Annotations is an unstructured key value map stored with a resource that may be
+        set by external tools to store and retrieve arbitrary metadata. They are not
+        queryable and should be preserved when modifying objects.
+        More info: http://kubernetes.io/docs/user-guide/annotations
     labels : {str:str}, default is Undefined, optional
-        Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: http://kubernetes.io/docs/user-guide/labels
+        Map of string keys and values that can be used to organize and categorize
+        (scope and select) objects. May match selectors of replication controllers
+        and services.
+        More info: http://kubernetes.io/docs/user-guide/labels
     """
 
 
@@ -1097,14 +1267,17 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecMachineTemplateMe
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecRolloutStrategy:
     """
-    The RolloutStrategy to use to replace control plane machines with new ones.
+    The RolloutStrategy to use to replace control plane machines with
+    new ones.
 
     Attributes
     ----------
     rollingUpdate : ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecRolloutStrategyRollingUpdate, default is Undefined, optional
         rolling update
     $type : str, default is Undefined, optional
-        Type of rollout. Currently the only supported strategy is "RollingUpdate". Default is RollingUpdate.
+        Type of rollout. Currently the only supported strategy is
+        "RollingUpdate".
+        Default is RollingUpdate.
     """
 
 
@@ -1115,12 +1288,18 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecRolloutStrategy:
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecRolloutStrategyRollingUpdate:
     """
-    Rolling update config params. Present only if RolloutStrategyType = RollingUpdate.
+    Rolling update config params. Present only if
+    RolloutStrategyType = RollingUpdate.
 
     Attributes
     ----------
     maxSurge : int | str, default is Undefined, optional
-        The maximum number of control planes that can be scheduled above or under the desired number of control planes. Value can be an absolute number 1 or 0. Defaults to 1. Example: when this is set to 1, the control plane can be scaled up immediately when the rolling update starts.
+        The maximum number of control planes that can be scheduled above or under the
+        desired number of control planes.
+        Value can be an absolute number 1 or 0.
+        Defaults to 1.
+        Example: when this is set to 1, the control plane can be scaled
+        up immediately when the rolling update starts.
     """
 
 
@@ -1136,27 +1315,43 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneStatus:
     conditions : [ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneStatusConditionsItems0], default is Undefined, optional
         Conditions defines current service state of the KubeadmControlPlane.
     failureMessage : str, default is Undefined, optional
-        ErrorMessage indicates that there is a terminal problem reconciling the state, and will be set to a descriptive error message.
+        ErrorMessage indicates that there is a terminal problem reconciling the
+        state, and will be set to a descriptive error message.
     failureReason : str, default is Undefined, optional
-        FailureReason indicates that there is a terminal problem reconciling the state, and will be set to a token value suitable for programmatic interpretation.
+        FailureReason indicates that there is a terminal problem reconciling the
+        state, and will be set to a token value suitable for
+        programmatic interpretation.
     initialized : bool, default is Undefined, optional
-        Initialized denotes whether or not the control plane has the uploaded kubeadm-config configmap.
+        Initialized denotes whether or not the control plane has the
+        uploaded kubeadm-config configmap.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the latest generation observed by the controller.
     ready : bool, default is Undefined, optional
-        Ready denotes that the KubeadmControlPlane API Server is ready to receive requests.
+        Ready denotes that the KubeadmControlPlane API Server is ready to
+        receive requests.
     readyReplicas : int, default is Undefined, optional
         Total number of fully running and ready control plane machines.
     replicas : int, default is Undefined, optional
-        Total number of non-terminated machines targeted by this control plane (their labels match the selector).
+        Total number of non-terminated machines targeted by this control plane
+        (their labels match the selector).
     selector : str, default is Undefined, optional
-        Selector is the label selector in string format to avoid introspection by clients, and is used to provide the CRD-based integration for the scale subresource and additional integrations for things like kubectl describe.. The string will be in the same format as the query-param syntax. More info about label selectors: http://kubernetes.io/docs/user-guide/labels#label-selectors
+        Selector is the label selector in string format to avoid introspection
+        by clients, and is used to provide the CRD-based integration for the
+        scale subresource and additional integrations for things like kubectl
+        describe.. The string will be in the same format as the query-param syntax.
+        More info about label selectors: http://kubernetes.io/docs/user-guide/labels#label-selectors
     unavailableReplicas : int, default is Undefined, optional
-        Total number of unavailable machines targeted by this control plane. This is the total number of machines that are still required for the deployment to have 100% available capacity. They may either be machines that are running but not yet ready or machines that still have not been created.
+        Total number of unavailable machines targeted by this control plane.
+        This is the total number of machines that are still required for
+        the deployment to have 100% available capacity. They may either
+        be machines that are running but not yet ready or machines
+        that still have not been created.
     updatedReplicas : int, default is Undefined, optional
-        Total number of non-terminated machines targeted by this control plane that have the desired template spec.
+        Total number of non-terminated machines targeted by this control plane
+        that have the desired template spec.
     version : str, default is Undefined, optional
-        Version represents the minimum Kubernetes version for the control plane machines in the cluster.
+        Version represents the minimum Kubernetes version for the control plane machines
+        in the cluster.
     """
 
 
@@ -1192,17 +1387,26 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneStatusConditionsItems
     Attributes
     ----------
     lastTransitionTime : str, default is Undefined, optional
-        Last time the condition transitioned from one status to another. This should be when the underlying condition changed. If that is not known, then using the time when the API field changed is acceptable.
+        Last time the condition transitioned from one status to another.
+        This should be when the underlying condition changed. If that is not known, then using the time when
+        the API field changed is acceptable.
     message : str, default is Undefined, optional
-        A human readable message indicating details about the transition. This field may be empty.
+        A human readable message indicating details about the transition.
+        This field may be empty.
     reason : str, default is Undefined, optional
-        The reason for the condition's last transition in CamelCase. The specific API may choose whether or not this field is considered a guaranteed API. This field may not be empty.
+        The reason for the condition's last transition in CamelCase.
+        The specific API may choose whether or not this field is considered a guaranteed API.
+        This field may not be empty.
     severity : str, default is Undefined, optional
-        Severity provides an explicit classification of Reason code, so the users or machines can immediately understand the current situation and act accordingly. The Severity field MUST be set only when Status=False.
+        Severity provides an explicit classification of Reason code, so the users or machines can immediately
+        understand the current situation and act accordingly.
+        The Severity field MUST be set only when Status=False.
     status : str, default is Undefined, required
         Status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
-        Type of condition in CamelCase or in foo.example.com/CamelCase. Many .condition.type values are consistent across resources like Available, but because arbitrary conditions can be useful (see .node.status.conditions), the ability to deconflict is important.
+        Type of condition in CamelCase or in foo.example.com/CamelCase.
+        Many .condition.type values are consistent across resources like Available, but because arbitrary conditions
+        can be useful (see .node.status.conditions), the ability to deconflict is important.
     """
 
 

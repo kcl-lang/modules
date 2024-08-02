@@ -8,11 +8,8 @@ See [here](https://github.com/kcl-lang/modules/blob/main/cluster-api/docs/README
 kcl mod add cluster-api
 ```
 
-Write the code
+Write the code:
 
 ```python
-import cluster_api.v1alpha1
-import cluster_api.v1alpha3
-import cluster_api.v1alpha4
 import cluster_api.v1beta1
 ```
