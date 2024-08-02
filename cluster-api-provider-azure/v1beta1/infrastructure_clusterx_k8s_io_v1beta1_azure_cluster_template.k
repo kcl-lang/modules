@@ -8,7 +8,7 @@ _regex_match = regex.match
 
 
 schema AzureClusterTemplate:
-    """
+    r"""
     AzureClusterTemplate is the Schema for the azureclustertemplates API.
 
     Attributes
@@ -34,7 +34,7 @@ schema AzureClusterTemplate:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpec:
-    """
+    r"""
     AzureClusterTemplateSpec defines the desired state of AzureClusterTemplate.
 
     Attributes
@@ -48,7 +48,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpec:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplate:
-    """
+    r"""
     AzureClusterTemplateResource describes the data needed to create an AzureCluster from a template.
 
     Attributes
@@ -62,7 +62,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplate:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpec:
-    """
+    r"""
     AzureClusterTemplateResourceSpec specifies an Azure cluster template resource.
 
     Attributes
@@ -136,7 +136,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpec:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecBastionSpec:
-    """
+    r"""
     BastionSpec encapsulates all things related to the Bastions in the cluster.
 
     Attributes
@@ -150,7 +150,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecBas
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecBastionSpecAzureBastion:
-    """
+    r"""
     AzureBastionTemplateSpec specifies a template for an Azure Bastion host.
 
     Attributes
@@ -164,7 +164,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecBas
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecBastionSpecAzureBastionSubnet:
-    """
+    r"""
     SubnetTemplateSpec specifies a template for a subnet.
 
     Attributes
@@ -202,7 +202,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecBas
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecBastionSpecAzureBastionSubnetNatGateway:
-    """
+    r"""
     NatGateway associated with this subnet.
 
     Attributes
@@ -216,7 +216,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecBas
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecBastionSpecAzureBastionSubnetPrivateEndpointsItems0:
-    """
+    r"""
     PrivateEndpointSpec configures an Azure Private Endpoint.
 
     Attributes
@@ -257,7 +257,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecBas
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecBastionSpecAzureBastionSubnetPrivateEndpointsItems0PrivateLinkServiceConnectionsItems0:
-    """
+    r"""
     PrivateLinkServiceConnection defines the specification for a private link service connection associated with a private endpoint.
 
     Attributes
@@ -283,11 +283,11 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecBas
 
 
     check:
-        len(requestMessage) <= 140
+        len(requestMessage) <= 140 if requestMessage
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecBastionSpecAzureBastionSubnetSecurityGroup:
-    """
+    r"""
     SecurityGroup defines the NSG (network security group) that should be attached to this subnet.
 
     Attributes
@@ -305,7 +305,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecBas
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecBastionSpecAzureBastionSubnetSecurityGroupSecurityRulesItems0:
-    """
+    r"""
     SecurityRule defines an Azure security rule for security groups.
 
     Attributes
@@ -359,7 +359,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecBas
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecBastionSpecAzureBastionSubnetServiceEndpointsItems0:
-    """
+    r"""
     ServiceEndpointSpec configures an Azure Service Endpoint.
 
     Attributes
@@ -377,7 +377,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecBas
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecCloudProviderConfigOverrides:
-    """
+    r"""
     CloudProviderConfigOverrides is an optional set of configuration values that can be overridden in azure cloud provider config.
     This is only a subset of options that are available in azure cloud provider config.
     Some values for the cloud provider config are inferred from other parts of cluster api provider azure spec, and may not be available for overrides.
@@ -399,7 +399,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecClo
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecCloudProviderConfigOverridesBackOffs:
-    """
+    r"""
     BackOffConfig indicates the back-off config options.
 
     Attributes
@@ -434,7 +434,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecClo
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecCloudProviderConfigOverridesRateLimitsItems0:
-    """
+    r"""
     RateLimitSpec represents the rate limit configuration for a particular kind of resource.
     Eg. loadBalancerRateLimit is used to configure rate limits for load balancers.
     This eventually gets converted to CloudProviderRateLimitConfig that cloud-provider-azure expects.
@@ -457,7 +457,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecClo
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecCloudProviderConfigOverridesRateLimitsItems0Config:
-    """
+    r"""
     RateLimitConfig indicates the rate limit config options.
 
     Attributes
@@ -492,7 +492,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecClo
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecExtendedLocation:
-    """
+    r"""
     ExtendedLocation is an optional set of ExtendedLocation properties for clusters on Azure public MEC.
 
     Attributes
@@ -510,7 +510,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecExt
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecFailureDomainsAnon:
-    """
+    r"""
     FailureDomainSpec is the Schema for Cluster API failure domains.
     It allows controllers to understand how many failure domains a cluster can optionally span across.
 
@@ -529,7 +529,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecFai
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecIdentityRef:
-    """
+    r"""
     IdentityRef is a reference to an AzureIdentity to be used when reconciling this cluster
 
     Attributes
@@ -579,7 +579,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecIde
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpec:
-    """
+    r"""
     NetworkSpec encapsulates all things related to Azure network.
 
     Attributes
@@ -613,7 +613,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNet
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecAPIServerLB:
-    """
+    r"""
     APIServerLB is the configuration for the control-plane load balancer.
 
     Attributes
@@ -635,7 +635,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNet
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecControlPlaneOutboundLB:
-    """
+    r"""
     ControlPlaneOutboundLB is the configuration for the control-plane outbound load balancer.
     This is different from APIServerLB, and is used only in private clusters (optionally) for enabling outbound traffic.
 
@@ -658,7 +658,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNet
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecNodeOutboundLB:
-    """
+    r"""
     NodeOutboundLB is the configuration for the node outbound load balancer.
 
     Attributes
@@ -680,7 +680,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNet
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecSubnetsItems0:
-    """
+    r"""
     SubnetTemplateSpec specifies a template for a subnet.
 
     Attributes
@@ -718,7 +718,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNet
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecSubnetsItems0NatGateway:
-    """
+    r"""
     NatGateway associated with this subnet.
 
     Attributes
@@ -732,7 +732,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNet
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecSubnetsItems0PrivateEndpointsItems0:
-    """
+    r"""
     PrivateEndpointSpec configures an Azure Private Endpoint.
 
     Attributes
@@ -773,7 +773,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNet
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecSubnetsItems0PrivateEndpointsItems0PrivateLinkServiceConnectionsItems0:
-    """
+    r"""
     PrivateLinkServiceConnection defines the specification for a private link service connection associated with a private endpoint.
 
     Attributes
@@ -799,11 +799,11 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNet
 
 
     check:
-        len(requestMessage) <= 140
+        len(requestMessage) <= 140 if requestMessage
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecSubnetsItems0SecurityGroup:
-    """
+    r"""
     SecurityGroup defines the NSG (network security group) that should be attached to this subnet.
 
     Attributes
@@ -821,7 +821,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNet
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecSubnetsItems0SecurityGroupSecurityRulesItems0:
-    """
+    r"""
     SecurityRule defines an Azure security rule for security groups.
 
     Attributes
@@ -875,7 +875,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNet
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecSubnetsItems0ServiceEndpointsItems0:
-    """
+    r"""
     ServiceEndpointSpec configures an Azure Service Endpoint.
 
     Attributes
@@ -893,7 +893,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNet
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecVnet:
-    """
+    r"""
     Vnet is the configuration for the Azure virtual network.
 
     Attributes
@@ -915,7 +915,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNet
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecVnetPeeringsItems0:
-    """
+    r"""
     VnetPeeringClassSpec specifies a virtual network peering class.
 
     Attributes
@@ -941,7 +941,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNet
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecVnetPeeringsItems0ForwardPeeringProperties:
-    """
+    r"""
     ForwardPeeringProperties specifies VnetPeeringProperties for peering from the cluster's virtual network to the
     remote virtual network.
 
@@ -974,7 +974,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNet
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecVnetPeeringsItems0ReversePeeringProperties:
-    """
+    r"""
     ReversePeeringProperties specifies VnetPeeringProperties for peering from the remote virtual network to the
     cluster's virtual network.
 

@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ClusterInformation:
-    """
+    r"""
     ClusterInformation contains the cluster specific information.
 
     Attributes
@@ -32,7 +32,7 @@ schema ClusterInformation:
 
 
 schema CrdProjectcalicoOrgV1ClusterInformationSpec:
-    """
+    r"""
     ClusterInformationSpec contains the values of describing the cluster.
 
     Attributes

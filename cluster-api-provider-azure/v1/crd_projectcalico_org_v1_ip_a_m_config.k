@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema IPAMConfig:
-    """
+    r"""
     crd projectcalico org v1 IP a m config
 
     Attributes
@@ -32,7 +32,7 @@ schema IPAMConfig:
 
 
 schema CrdProjectcalicoOrgV1IPAMConfigSpec:
-    """
+    r"""
     IPAMConfigSpec contains the specification for an IPAMConfig resource.
 
     Attributes
@@ -54,7 +54,7 @@ schema CrdProjectcalicoOrgV1IPAMConfigSpec:
 
 
     check:
-        maxBlocksPerHost <= 2.147483647e+09
-        maxBlocksPerHost >= 0
+        maxBlocksPerHost <= 2.147483647e+09 if maxBlocksPerHost not in [None, Undefined]
+        maxBlocksPerHost >= 0 if maxBlocksPerHost not in [None, Undefined]
 
 

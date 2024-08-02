@@ -8,7 +8,7 @@ _regex_match = regex.match
 
 
 schema AzureManagedControlPlane:
-    """
+    r"""
     AzureManagedControlPlane is the Schema for the azuremanagedcontrolplanes API.
 
     Attributes
@@ -38,7 +38,7 @@ schema AzureManagedControlPlane:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpec:
-    """
+    r"""
     AzureManagedControlPlaneSpec defines the desired state of AzureManagedControlPlane.
 
     Attributes
@@ -238,7 +238,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpec:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecAPIServerAccessProfile:
-    """
+    r"""
     APIServerAccessProfile is the access profile for AKS API server.
     Immutable except for `authorizedIPRanges`.
 
@@ -265,7 +265,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecAPIServerAc
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecAadProfile:
-    """
+    r"""
     AadProfile is Azure Active Directory configuration to integrate with AKS for aad authentication.
 
     Attributes
@@ -283,7 +283,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecAadProfile:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecAddonProfilesItems0:
-    """
+    r"""
     AddonProfile represents a managed cluster add-on.
 
     Attributes
@@ -305,7 +305,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecAddonProfil
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecAutoUpgradeProfile:
-    """
+    r"""
     AutoUpgradeProfile defines the auto upgrade configuration.
 
     Attributes
@@ -319,7 +319,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecAutoUpgrade
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecAutoscalerProfile:
-    """
+    r"""
     AutoscalerProfile is the parameters to be applied to the cluster-autoscaler when enabled
 
     Attributes
@@ -399,8 +399,8 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecAutoscalerP
     check:
         _regex_match(str(maxGracefulTerminationSec), r"^(\d+)$") if maxGracefulTerminationSec
         _regex_match(str(maxNodeProvisionTime), r"^(\d+)m$") if maxNodeProvisionTime
-        len(maxTotalUnreadyPercentage) <= 3
-        len(maxTotalUnreadyPercentage) >= 1
+        len(maxTotalUnreadyPercentage) <= 3 if maxTotalUnreadyPercentage
+        len(maxTotalUnreadyPercentage) >= 1 if maxTotalUnreadyPercentage
         _regex_match(str(maxTotalUnreadyPercentage), r"^(\d+)$") if maxTotalUnreadyPercentage
         _regex_match(str(okTotalUnreadyCount), r"^(\d+)$") if okTotalUnreadyCount
         _regex_match(str(scaleDownDelayAfterAdd), r"^(\d+)m$") if scaleDownDelayAfterAdd
@@ -412,7 +412,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecAutoscalerP
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecControlPlaneEndpoint:
-    """
+    r"""
     ControlPlaneEndpoint represents the endpoint used to communicate with the control plane.
     Immutable, populated by the AKS API at create.
 
@@ -431,7 +431,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecControlPlan
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecExtensionsItems0:
-    """
+    r"""
     AKSExtension represents the configuration for an AKS cluster extension.
     See also [AKS doc].
 
@@ -487,7 +487,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecExtensionsI
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecExtensionsItems0Plan:
-    """
+    r"""
     Plan is the plan of the extension.
 
     Attributes
@@ -517,7 +517,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecExtensionsI
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecExtensionsItems0Scope:
-    """
+    r"""
     Scope is the scope at which this extension is enabled.
 
     Attributes
@@ -541,7 +541,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecExtensionsI
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecFleetsMember:
-    """
+    r"""
     FleetsMember is the spec for the fleet this cluster is a member of.
     See also [AKS doc].
 
@@ -571,7 +571,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecFleetsMembe
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecHTTPProxyConfig:
-    """
+    r"""
     HTTPProxyConfig is the HTTP proxy configuration for the cluster.
     Immutable.
 
@@ -598,7 +598,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecHTTPProxyCo
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecIdentity:
-    """
+    r"""
     Identity configuration used by the AKS control plane.
 
     Attributes
@@ -616,7 +616,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecIdentity:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecIdentityRef:
-    """
+    r"""
     IdentityRef is a reference to a AzureClusterIdentity to be used when reconciling this cluster
 
     Attributes
@@ -666,7 +666,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecIdentityRef
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecLoadBalancerProfile:
-    """
+    r"""
     LoadBalancerProfile is the profile of the cluster load balancer.
 
     Attributes
@@ -696,7 +696,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecLoadBalance
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecOidcIssuerProfile:
-    """
+    r"""
     OIDCIssuerProfile is the OIDC issuer profile of the Managed Cluster.
 
     Attributes
@@ -710,7 +710,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecOidcIssuerP
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecSecurityProfile:
-    """
+    r"""
     SecurityProfile defines the security profile for cluster.
 
     Attributes
@@ -736,7 +736,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecSecurityPro
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecSecurityProfileAzureKeyVaultKms:
-    """
+    r"""
     AzureKeyVaultKms defines Azure Key Vault Management Services Profile for the security profile.
 
     Attributes
@@ -766,7 +766,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecSecurityPro
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecSecurityProfileDefender:
-    """
+    r"""
     Defender settings for the security profile.
 
     Attributes
@@ -785,7 +785,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecSecurityPro
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecSecurityProfileDefenderSecurityMonitoring:
-    """
+    r"""
     SecurityMonitoring profile defines the Microsoft Defender threat detection for Cloud settings for the security profile.
 
     Attributes
@@ -799,7 +799,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecSecurityPro
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecSecurityProfileImageCleaner:
-    """
+    r"""
     ImageCleaner settings for the security profile.
 
     Attributes
@@ -817,12 +817,12 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecSecurityPro
 
 
     check:
-        intervalHours <= 2160
-        intervalHours >= 24
+        intervalHours <= 2160 if intervalHours not in [None, Undefined]
+        intervalHours >= 24 if intervalHours not in [None, Undefined]
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecSecurityProfileWorkloadIdentity:
-    """
+    r"""
     Workloadidentity enables Kubernetes applications to access Azure cloud resources securely with Azure AD. Ensure to enable OIDC issuer while enabling Workload Identity
 
     Attributes
@@ -836,7 +836,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecSecurityPro
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecSku:
-    """
+    r"""
     SKU is the SKU of the AKS to be provisioned.
 
     Attributes
@@ -850,7 +850,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecSku:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecVirtualNetwork:
-    """
+    r"""
     VirtualNetwork describes the virtual network for the AKS cluster. It will be created if it does not already exist.
 
     Attributes
@@ -876,7 +876,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecVirtualNetw
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecVirtualNetworkSubnet:
-    """
+    r"""
     ManagedControlPlaneSubnet describes a subnet for an AKS cluster.
 
     Attributes
@@ -902,7 +902,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecVirtualNetw
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecVirtualNetworkSubnetPrivateEndpointsItems0:
-    """
+    r"""
     PrivateEndpointSpec configures an Azure Private Endpoint.
 
     Attributes
@@ -943,7 +943,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecVirtualNetw
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecVirtualNetworkSubnetPrivateEndpointsItems0PrivateLinkServiceConnectionsItems0:
-    """
+    r"""
     PrivateLinkServiceConnection defines the specification for a private link service connection associated with a private endpoint.
 
     Attributes
@@ -969,11 +969,11 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecVirtualNetw
 
 
     check:
-        len(requestMessage) <= 140
+        len(requestMessage) <= 140 if requestMessage
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecVirtualNetworkSubnetServiceEndpointsItems0:
-    """
+    r"""
     ServiceEndpointSpec configures an Azure Service Endpoint.
 
     Attributes
@@ -991,7 +991,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecVirtualNetw
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneStatus:
-    """
+    r"""
     AzureManagedControlPlaneStatus defines the observed state of AzureManagedControlPlane.
 
     Attributes
@@ -1032,11 +1032,11 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneStatus:
 
 
     check:
-        len(autoUpgradeVersion) >= 2
+        len(autoUpgradeVersion) >= 2 if autoUpgradeVersion
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneStatusConditionsItems0:
-    """
+    r"""
     Condition defines an observation of a Cluster API resource operational state.
 
     Attributes
@@ -1079,7 +1079,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneStatusCondition
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneStatusLongRunningOperationStatesItems0:
-    """
+    r"""
     Future contains the data needed for an Azure long-running operation to continue across reconcile loops.
 
     Attributes
@@ -1111,7 +1111,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneStatusLongRunni
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneStatusOidcIssuerProfile:
-    """
+    r"""
     OIDCIssuerProfile is the OIDC issuer profile of the Managed Cluster.
 
     Attributes

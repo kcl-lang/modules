@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema BGPFilter:
-    """
+    r"""
     crd projectcalico org v1 b g p filter
 
     Attributes
@@ -32,7 +32,7 @@ schema BGPFilter:
 
 
 schema CrdProjectcalicoOrgV1BGPFilterSpec:
-    """
+    r"""
     BGPFilterSpec contains the IPv4 and IPv6 filter rules of the BGP Filter.
 
     Attributes
@@ -58,7 +58,7 @@ schema CrdProjectcalicoOrgV1BGPFilterSpec:
 
 
 schema CrdProjectcalicoOrgV1BGPFilterSpecExportV4Items0:
-    """
+    r"""
     BGPFilterRuleV4 defines a BGP filter rule consisting a single IPv4 CIDR block and a filter action for this CIDR.
 
     Attributes
@@ -80,7 +80,7 @@ schema CrdProjectcalicoOrgV1BGPFilterSpecExportV4Items0:
 
 
 schema CrdProjectcalicoOrgV1BGPFilterSpecExportV6Items0:
-    """
+    r"""
     BGPFilterRuleV6 defines a BGP filter rule consisting a single IPv6 CIDR block and a filter action for this CIDR.
 
     Attributes
@@ -102,7 +102,7 @@ schema CrdProjectcalicoOrgV1BGPFilterSpecExportV6Items0:
 
 
 schema CrdProjectcalicoOrgV1BGPFilterSpecImportV4Items0:
-    """
+    r"""
     BGPFilterRuleV4 defines a BGP filter rule consisting a single IPv4 CIDR block and a filter action for this CIDR.
 
     Attributes
@@ -124,7 +124,7 @@ schema CrdProjectcalicoOrgV1BGPFilterSpecImportV4Items0:
 
 
 schema CrdProjectcalicoOrgV1BGPFilterSpecImportV6Items0:
-    """
+    r"""
     BGPFilterRuleV6 defines a BGP filter rule consisting a single IPv6 CIDR block and a filter action for this CIDR.
 
     Attributes

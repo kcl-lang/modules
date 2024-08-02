@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema AzureManagedClusterTemplate:
-    """
+    r"""
     AzureManagedClusterTemplate is the Schema for the AzureManagedClusterTemplates API.
 
     Attributes
@@ -32,7 +32,7 @@ schema AzureManagedClusterTemplate:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureManagedClusterTemplateSpec:
-    """
+    r"""
     AzureManagedClusterTemplateSpec defines the desired state of AzureManagedClusterTemplate.
 
     Attributes
@@ -46,7 +46,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedClusterTemplateSpec:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureManagedClusterTemplateSpecTemplate:
-    """
+    r"""
     AzureManagedClusterTemplateResource describes the data needed to create an AzureManagedCluster from a template.
 
     Attributes

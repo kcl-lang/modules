@@ -8,7 +8,7 @@ _regex_match = regex.match
 
 
 schema AzureManagedMachinePoolTemplate:
-    """
+    r"""
     AzureManagedMachinePoolTemplate is the Schema for the AzureManagedMachinePoolTemplates API.
 
     Attributes
@@ -34,7 +34,7 @@ schema AzureManagedMachinePoolTemplate:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolTemplateSpec:
-    """
+    r"""
     AzureManagedMachinePoolTemplateSpec defines the desired state of AzureManagedMachinePoolTemplate.
 
     Attributes
@@ -48,7 +48,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolTemplateSpec:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolTemplateSpecTemplate:
-    """
+    r"""
     AzureManagedMachinePoolTemplateResource describes the data needed to create an AzureManagedCluster from a template.
 
     Attributes
@@ -62,7 +62,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolTemplateSpecTemp
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolTemplateSpecTemplateSpec:
-    """
+    r"""
     AzureManagedMachinePoolTemplateResourceSpec specifies an Azure managed control plane template resource.
 
     Attributes
@@ -229,7 +229,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolTemplateSpecTemp
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolTemplateSpecTemplateSpecKubeletConfig:
-    """
+    r"""
     KubeletConfig specifies the kubelet configurations for nodes.
     Immutable.
 
@@ -289,16 +289,16 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolTemplateSpecTemp
 
 
     check:
-        containerLogMaxFiles >= 2
-        imageGcHighThreshold <= 100
-        imageGcHighThreshold >= 0
-        imageGcLowThreshold <= 100
-        imageGcLowThreshold >= 0
-        podMaxPids >= -1
+        containerLogMaxFiles >= 2 if containerLogMaxFiles not in [None, Undefined]
+        imageGcHighThreshold <= 100 if imageGcHighThreshold not in [None, Undefined]
+        imageGcHighThreshold >= 0 if imageGcHighThreshold not in [None, Undefined]
+        imageGcLowThreshold <= 100 if imageGcLowThreshold not in [None, Undefined]
+        imageGcLowThreshold >= 0 if imageGcLowThreshold not in [None, Undefined]
+        podMaxPids >= -1 if podMaxPids not in [None, Undefined]
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolTemplateSpecTemplateSpecLinuxOSConfig:
-    """
+    r"""
     LinuxOSConfig specifies the custom Linux OS settings and configurations.
     Immutable.
 
@@ -339,11 +339,11 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolTemplateSpecTemp
 
 
     check:
-        swapFileSizeMB >= 1
+        swapFileSizeMB >= 1 if swapFileSizeMB not in [None, Undefined]
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolTemplateSpecTemplateSpecLinuxOSConfigSysctls:
-    """
+    r"""
     Sysctl specifies the settings for Linux agent nodes.
 
     Attributes
@@ -531,62 +531,62 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolTemplateSpecTemp
 
 
     check:
-        fsAioMaxNr <= 6.5535e+06
-        fsAioMaxNr >= 65536
-        fsFileMax <= 1.20005e+07
-        fsFileMax >= 8192
-        fsInotifyMaxUserWatches <= 2.097152e+06
-        fsInotifyMaxUserWatches >= 781250
-        fsNrOpen <= 2.00005e+07
-        fsNrOpen >= 8192
-        kernelThreadsMax <= 513785
-        kernelThreadsMax >= 20
-        netCoreNetdevMaxBacklog <= 3.24e+06
-        netCoreNetdevMaxBacklog >= 1000
-        netCoreOptmemMax <= 4.194304e+06
-        netCoreOptmemMax >= 20480
-        netCoreRmemDefault <= 1.34217728e+08
-        netCoreRmemDefault >= 212992
-        netCoreRmemMax <= 1.34217728e+08
-        netCoreRmemMax >= 212992
-        netCoreSomaxconn <= 3.24e+06
-        netCoreSomaxconn >= 4096
-        netCoreWmemDefault <= 1.34217728e+08
-        netCoreWmemDefault >= 212992
-        netCoreWmemMax <= 1.34217728e+08
-        netCoreWmemMax >= 212992
-        netIpv4NeighDefaultGcThresh1 <= 80000
-        netIpv4NeighDefaultGcThresh1 >= 128
-        netIpv4NeighDefaultGcThresh2 <= 90000
-        netIpv4NeighDefaultGcThresh2 >= 512
-        netIpv4NeighDefaultGcThresh3 <= 100000
-        netIpv4NeighDefaultGcThresh3 >= 1024
-        netIpv4TCPFinTimeout <= 120
-        netIpv4TCPFinTimeout >= 5
-        netIpv4TCPKeepaliveProbes <= 15
-        netIpv4TCPKeepaliveProbes >= 1
-        netIpv4TCPKeepaliveTime <= 432000
-        netIpv4TCPKeepaliveTime >= 30
-        netIpv4TCPMaxSynBacklog <= 3.24e+06
-        netIpv4TCPMaxSynBacklog >= 128
-        netIpv4TCPMaxTwBuckets <= 1.44e+06
-        netIpv4TCPMaxTwBuckets >= 8000
-        netIpv4TCPkeepaliveIntvl <= 75
-        netIpv4TCPkeepaliveIntvl >= 1
-        netNetfilterNfConntrackBuckets <= 147456
-        netNetfilterNfConntrackBuckets >= 65536
-        netNetfilterNfConntrackMax <= 1.048576e+06
-        netNetfilterNfConntrackMax >= 131072
-        vmMaxMapCount <= 262144
-        vmMaxMapCount >= 65530
-        vmSwappiness <= 100
-        vmSwappiness >= 0
-        vmVfsCachePressure <= 500
-        vmVfsCachePressure >= 1
+        fsAioMaxNr <= 6.5535e+06 if fsAioMaxNr not in [None, Undefined]
+        fsAioMaxNr >= 65536 if fsAioMaxNr not in [None, Undefined]
+        fsFileMax <= 1.20005e+07 if fsFileMax not in [None, Undefined]
+        fsFileMax >= 8192 if fsFileMax not in [None, Undefined]
+        fsInotifyMaxUserWatches <= 2.097152e+06 if fsInotifyMaxUserWatches not in [None, Undefined]
+        fsInotifyMaxUserWatches >= 781250 if fsInotifyMaxUserWatches not in [None, Undefined]
+        fsNrOpen <= 2.00005e+07 if fsNrOpen not in [None, Undefined]
+        fsNrOpen >= 8192 if fsNrOpen not in [None, Undefined]
+        kernelThreadsMax <= 513785 if kernelThreadsMax not in [None, Undefined]
+        kernelThreadsMax >= 20 if kernelThreadsMax not in [None, Undefined]
+        netCoreNetdevMaxBacklog <= 3.24e+06 if netCoreNetdevMaxBacklog not in [None, Undefined]
+        netCoreNetdevMaxBacklog >= 1000 if netCoreNetdevMaxBacklog not in [None, Undefined]
+        netCoreOptmemMax <= 4.194304e+06 if netCoreOptmemMax not in [None, Undefined]
+        netCoreOptmemMax >= 20480 if netCoreOptmemMax not in [None, Undefined]
+        netCoreRmemDefault <= 1.34217728e+08 if netCoreRmemDefault not in [None, Undefined]
+        netCoreRmemDefault >= 212992 if netCoreRmemDefault not in [None, Undefined]
+        netCoreRmemMax <= 1.34217728e+08 if netCoreRmemMax not in [None, Undefined]
+        netCoreRmemMax >= 212992 if netCoreRmemMax not in [None, Undefined]
+        netCoreSomaxconn <= 3.24e+06 if netCoreSomaxconn not in [None, Undefined]
+        netCoreSomaxconn >= 4096 if netCoreSomaxconn not in [None, Undefined]
+        netCoreWmemDefault <= 1.34217728e+08 if netCoreWmemDefault not in [None, Undefined]
+        netCoreWmemDefault >= 212992 if netCoreWmemDefault not in [None, Undefined]
+        netCoreWmemMax <= 1.34217728e+08 if netCoreWmemMax not in [None, Undefined]
+        netCoreWmemMax >= 212992 if netCoreWmemMax not in [None, Undefined]
+        netIpv4NeighDefaultGcThresh1 <= 80000 if netIpv4NeighDefaultGcThresh1 not in [None, Undefined]
+        netIpv4NeighDefaultGcThresh1 >= 128 if netIpv4NeighDefaultGcThresh1 not in [None, Undefined]
+        netIpv4NeighDefaultGcThresh2 <= 90000 if netIpv4NeighDefaultGcThresh2 not in [None, Undefined]
+        netIpv4NeighDefaultGcThresh2 >= 512 if netIpv4NeighDefaultGcThresh2 not in [None, Undefined]
+        netIpv4NeighDefaultGcThresh3 <= 100000 if netIpv4NeighDefaultGcThresh3 not in [None, Undefined]
+        netIpv4NeighDefaultGcThresh3 >= 1024 if netIpv4NeighDefaultGcThresh3 not in [None, Undefined]
+        netIpv4TCPFinTimeout <= 120 if netIpv4TCPFinTimeout not in [None, Undefined]
+        netIpv4TCPFinTimeout >= 5 if netIpv4TCPFinTimeout not in [None, Undefined]
+        netIpv4TCPKeepaliveProbes <= 15 if netIpv4TCPKeepaliveProbes not in [None, Undefined]
+        netIpv4TCPKeepaliveProbes >= 1 if netIpv4TCPKeepaliveProbes not in [None, Undefined]
+        netIpv4TCPKeepaliveTime <= 432000 if netIpv4TCPKeepaliveTime not in [None, Undefined]
+        netIpv4TCPKeepaliveTime >= 30 if netIpv4TCPKeepaliveTime not in [None, Undefined]
+        netIpv4TCPMaxSynBacklog <= 3.24e+06 if netIpv4TCPMaxSynBacklog not in [None, Undefined]
+        netIpv4TCPMaxSynBacklog >= 128 if netIpv4TCPMaxSynBacklog not in [None, Undefined]
+        netIpv4TCPMaxTwBuckets <= 1.44e+06 if netIpv4TCPMaxTwBuckets not in [None, Undefined]
+        netIpv4TCPMaxTwBuckets >= 8000 if netIpv4TCPMaxTwBuckets not in [None, Undefined]
+        netIpv4TCPkeepaliveIntvl <= 75 if netIpv4TCPkeepaliveIntvl not in [None, Undefined]
+        netIpv4TCPkeepaliveIntvl >= 1 if netIpv4TCPkeepaliveIntvl not in [None, Undefined]
+        netNetfilterNfConntrackBuckets <= 147456 if netNetfilterNfConntrackBuckets not in [None, Undefined]
+        netNetfilterNfConntrackBuckets >= 65536 if netNetfilterNfConntrackBuckets not in [None, Undefined]
+        netNetfilterNfConntrackMax <= 1.048576e+06 if netNetfilterNfConntrackMax not in [None, Undefined]
+        netNetfilterNfConntrackMax >= 131072 if netNetfilterNfConntrackMax not in [None, Undefined]
+        vmMaxMapCount <= 262144 if vmMaxMapCount not in [None, Undefined]
+        vmMaxMapCount >= 65530 if vmMaxMapCount not in [None, Undefined]
+        vmSwappiness <= 100 if vmSwappiness not in [None, Undefined]
+        vmSwappiness >= 0 if vmSwappiness not in [None, Undefined]
+        vmVfsCachePressure <= 500 if vmVfsCachePressure not in [None, Undefined]
+        vmVfsCachePressure >= 1 if vmVfsCachePressure not in [None, Undefined]
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolTemplateSpecTemplateSpecScaling:
-    """
+    r"""
     Scaling specifies the autoscaling parameters for the node pool.
 
     Attributes
@@ -604,7 +604,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolTemplateSpecTemp
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolTemplateSpecTemplateSpecTaintsItems0:
-    """
+    r"""
     Taint represents a Kubernetes taint.
 
     Attributes

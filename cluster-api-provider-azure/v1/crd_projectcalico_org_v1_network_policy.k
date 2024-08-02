@@ -8,7 +8,7 @@ _regex_match = regex.match
 
 
 schema NetworkPolicy:
-    """
+    r"""
     crd projectcalico org v1 network policy
 
     Attributes
@@ -34,7 +34,7 @@ schema NetworkPolicy:
 
 
 schema CrdProjectcalicoOrgV1NetworkPolicySpec:
-    """
+    r"""
     crd projectcalico org v1 network policy spec
 
     Attributes
@@ -77,7 +77,7 @@ schema CrdProjectcalicoOrgV1NetworkPolicySpec:
 
 
 schema CrdProjectcalicoOrgV1NetworkPolicySpecEgressItems0:
-    """
+    r"""
     A Rule encapsulates a set of match criteria and an action.  Both selector-based security Policy and security Profiles reference rules - separated out as a list of rules for both ingress and egress packet matching. 
      Each positive match criteria has a negated version, prefixed with "Not". All the match criteria within a rule must be satisfied for a packet to match. A single rule can contain the positive and negative version of a match and both must be satisfied for the rule to match.
 
@@ -134,7 +134,7 @@ schema CrdProjectcalicoOrgV1NetworkPolicySpecEgressItems0:
 
 
 schema CrdProjectcalicoOrgV1NetworkPolicySpecEgressItems0Destination:
-    """
+    r"""
     Destination contains the match criteria that apply to destination entity.
 
     Attributes
@@ -193,7 +193,7 @@ schema CrdProjectcalicoOrgV1NetworkPolicySpecEgressItems0Destination:
 
 
 schema CrdProjectcalicoOrgV1NetworkPolicySpecEgressItems0DestinationServiceAccounts:
-    """
+    r"""
     ServiceAccounts is an optional field that restricts the rule to only apply to traffic that originates from (or terminates at) a pod running as a matching service account.
 
     Attributes
@@ -211,7 +211,7 @@ schema CrdProjectcalicoOrgV1NetworkPolicySpecEgressItems0DestinationServiceAccou
 
 
 schema CrdProjectcalicoOrgV1NetworkPolicySpecEgressItems0DestinationServices:
-    """
+    r"""
     Services is an optional field that contains options for matching Kubernetes Services. If specified, only traffic that originates from or terminates at endpoints within the selected service(s) will be matched, and only to/from each endpoint's port. 
      Services cannot be specified on the same rule as Selector, NotSelector, NamespaceSelector, Nets, NotNets or ServiceAccounts. 
      Ports and NotPorts can only be specified with Services on ingress rules.
@@ -231,7 +231,7 @@ schema CrdProjectcalicoOrgV1NetworkPolicySpecEgressItems0DestinationServices:
 
 
 schema CrdProjectcalicoOrgV1NetworkPolicySpecEgressItems0HTTP:
-    """
+    r"""
     HTTP contains match criteria that apply to HTTP requests.
 
     Attributes
@@ -249,7 +249,7 @@ schema CrdProjectcalicoOrgV1NetworkPolicySpecEgressItems0HTTP:
 
 
 schema CrdProjectcalicoOrgV1NetworkPolicySpecEgressItems0HTTPPathsItems0:
-    """
+    r"""
     HTTPPath specifies an HTTP path to match. It may be either of the form: exact: <path>: which matches the path exactly or prefix: <path-prefix>: which matches the path prefix
 
     Attributes
@@ -267,7 +267,7 @@ schema CrdProjectcalicoOrgV1NetworkPolicySpecEgressItems0HTTPPathsItems0:
 
 
 schema CrdProjectcalicoOrgV1NetworkPolicySpecEgressItems0Icmp:
-    """
+    r"""
     ICMP is an optional field that restricts the rule to apply to a specific type and code of ICMP traffic.  This should only be specified if the Protocol field is set to "ICMP" or "ICMPv6".
 
     Attributes
@@ -285,7 +285,7 @@ schema CrdProjectcalicoOrgV1NetworkPolicySpecEgressItems0Icmp:
 
 
 schema CrdProjectcalicoOrgV1NetworkPolicySpecEgressItems0Metadata:
-    """
+    r"""
     Metadata contains additional information for this rule
 
     Attributes
@@ -299,7 +299,7 @@ schema CrdProjectcalicoOrgV1NetworkPolicySpecEgressItems0Metadata:
 
 
 schema CrdProjectcalicoOrgV1NetworkPolicySpecEgressItems0NotICMP:
-    """
+    r"""
     NotICMP is the negated version of the ICMP field.
 
     Attributes
@@ -317,7 +317,7 @@ schema CrdProjectcalicoOrgV1NetworkPolicySpecEgressItems0NotICMP:
 
 
 schema CrdProjectcalicoOrgV1NetworkPolicySpecEgressItems0Source:
-    """
+    r"""
     Source contains the match criteria that apply to source entity.
 
     Attributes
@@ -376,7 +376,7 @@ schema CrdProjectcalicoOrgV1NetworkPolicySpecEgressItems0Source:
 
 
 schema CrdProjectcalicoOrgV1NetworkPolicySpecEgressItems0SourceServiceAccounts:
-    """
+    r"""
     ServiceAccounts is an optional field that restricts the rule to only apply to traffic that originates from (or terminates at) a pod running as a matching service account.
 
     Attributes
@@ -394,7 +394,7 @@ schema CrdProjectcalicoOrgV1NetworkPolicySpecEgressItems0SourceServiceAccounts:
 
 
 schema CrdProjectcalicoOrgV1NetworkPolicySpecEgressItems0SourceServices:
-    """
+    r"""
     Services is an optional field that contains options for matching Kubernetes Services. If specified, only traffic that originates from or terminates at endpoints within the selected service(s) will be matched, and only to/from each endpoint's port. 
      Services cannot be specified on the same rule as Selector, NotSelector, NamespaceSelector, Nets, NotNets or ServiceAccounts. 
      Ports and NotPorts can only be specified with Services on ingress rules.
@@ -414,7 +414,7 @@ schema CrdProjectcalicoOrgV1NetworkPolicySpecEgressItems0SourceServices:
 
 
 schema CrdProjectcalicoOrgV1NetworkPolicySpecIngressItems0:
-    """
+    r"""
     A Rule encapsulates a set of match criteria and an action.  Both selector-based security Policy and security Profiles reference rules - separated out as a list of rules for both ingress and egress packet matching. 
      Each positive match criteria has a negated version, prefixed with "Not". All the match criteria within a rule must be satisfied for a packet to match. A single rule can contain the positive and negative version of a match and both must be satisfied for the rule to match.
 
@@ -471,7 +471,7 @@ schema CrdProjectcalicoOrgV1NetworkPolicySpecIngressItems0:
 
 
 schema CrdProjectcalicoOrgV1NetworkPolicySpecIngressItems0Destination:
-    """
+    r"""
     Destination contains the match criteria that apply to destination entity.
 
     Attributes
@@ -530,7 +530,7 @@ schema CrdProjectcalicoOrgV1NetworkPolicySpecIngressItems0Destination:
 
 
 schema CrdProjectcalicoOrgV1NetworkPolicySpecIngressItems0DestinationServiceAccounts:
-    """
+    r"""
     ServiceAccounts is an optional field that restricts the rule to only apply to traffic that originates from (or terminates at) a pod running as a matching service account.
 
     Attributes
@@ -548,7 +548,7 @@ schema CrdProjectcalicoOrgV1NetworkPolicySpecIngressItems0DestinationServiceAcco
 
 
 schema CrdProjectcalicoOrgV1NetworkPolicySpecIngressItems0DestinationServices:
-    """
+    r"""
     Services is an optional field that contains options for matching Kubernetes Services. If specified, only traffic that originates from or terminates at endpoints within the selected service(s) will be matched, and only to/from each endpoint's port. 
      Services cannot be specified on the same rule as Selector, NotSelector, NamespaceSelector, Nets, NotNets or ServiceAccounts. 
      Ports and NotPorts can only be specified with Services on ingress rules.
@@ -568,7 +568,7 @@ schema CrdProjectcalicoOrgV1NetworkPolicySpecIngressItems0DestinationServices:
 
 
 schema CrdProjectcalicoOrgV1NetworkPolicySpecIngressItems0HTTP:
-    """
+    r"""
     HTTP contains match criteria that apply to HTTP requests.
 
     Attributes
@@ -586,7 +586,7 @@ schema CrdProjectcalicoOrgV1NetworkPolicySpecIngressItems0HTTP:
 
 
 schema CrdProjectcalicoOrgV1NetworkPolicySpecIngressItems0HTTPPathsItems0:
-    """
+    r"""
     HTTPPath specifies an HTTP path to match. It may be either of the form: exact: <path>: which matches the path exactly or prefix: <path-prefix>: which matches the path prefix
 
     Attributes
@@ -604,7 +604,7 @@ schema CrdProjectcalicoOrgV1NetworkPolicySpecIngressItems0HTTPPathsItems0:
 
 
 schema CrdProjectcalicoOrgV1NetworkPolicySpecIngressItems0Icmp:
-    """
+    r"""
     ICMP is an optional field that restricts the rule to apply to a specific type and code of ICMP traffic.  This should only be specified if the Protocol field is set to "ICMP" or "ICMPv6".
 
     Attributes
@@ -622,7 +622,7 @@ schema CrdProjectcalicoOrgV1NetworkPolicySpecIngressItems0Icmp:
 
 
 schema CrdProjectcalicoOrgV1NetworkPolicySpecIngressItems0Metadata:
-    """
+    r"""
     Metadata contains additional information for this rule
 
     Attributes
@@ -636,7 +636,7 @@ schema CrdProjectcalicoOrgV1NetworkPolicySpecIngressItems0Metadata:
 
 
 schema CrdProjectcalicoOrgV1NetworkPolicySpecIngressItems0NotICMP:
-    """
+    r"""
     NotICMP is the negated version of the ICMP field.
 
     Attributes
@@ -654,7 +654,7 @@ schema CrdProjectcalicoOrgV1NetworkPolicySpecIngressItems0NotICMP:
 
 
 schema CrdProjectcalicoOrgV1NetworkPolicySpecIngressItems0Source:
-    """
+    r"""
     Source contains the match criteria that apply to source entity.
 
     Attributes
@@ -713,7 +713,7 @@ schema CrdProjectcalicoOrgV1NetworkPolicySpecIngressItems0Source:
 
 
 schema CrdProjectcalicoOrgV1NetworkPolicySpecIngressItems0SourceServiceAccounts:
-    """
+    r"""
     ServiceAccounts is an optional field that restricts the rule to only apply to traffic that originates from (or terminates at) a pod running as a matching service account.
 
     Attributes
@@ -731,7 +731,7 @@ schema CrdProjectcalicoOrgV1NetworkPolicySpecIngressItems0SourceServiceAccounts:
 
 
 schema CrdProjectcalicoOrgV1NetworkPolicySpecIngressItems0SourceServices:
-    """
+    r"""
     Services is an optional field that contains options for matching Kubernetes Services. If specified, only traffic that originates from or terminates at endpoints within the selected service(s) will be matched, and only to/from each endpoint's port. 
      Services cannot be specified on the same rule as Selector, NotSelector, NamespaceSelector, Nets, NotNets or ServiceAccounts. 
      Ports and NotPorts can only be specified with Services on ingress rules.

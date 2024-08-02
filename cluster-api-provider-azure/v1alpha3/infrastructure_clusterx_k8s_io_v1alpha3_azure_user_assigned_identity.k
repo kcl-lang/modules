@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema AzureUserAssignedIdentity:
-    """
+    r"""
     AzureUserAssignedIdentity represents a reference to an Azure access key ID and secret access key, stored in a secret.
 
     Attributes
@@ -32,7 +32,7 @@ schema AzureUserAssignedIdentity:
 
 
 schema InfrastructureClusterxK8sIoV1alpha3AzureUserAssignedIdentitySpec:
-    """
+    r"""
     Spec for this AzureUserAssignedIdentitySpec.
 
     Attributes
@@ -54,7 +54,7 @@ schema InfrastructureClusterxK8sIoV1alpha3AzureUserAssignedIdentitySpec:
 
 
 schema InfrastructureClusterxK8sIoV1alpha3AzureUserAssignedIdentitySpecAllowedNamespaces:
-    """
+    r"""
     AllowedNamespaces is a selector of namespaces that AzureClusters can use this ClusterPrincipal from. This is a standard Kubernetes LabelSelector, a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. Controllers must not support AzureClusters in namespaces outside this selector. 
      An empty selector (default) indicates that AzureClusters can use this AzureUserAssignedIdentity from any namespace. This field is intentionally not a pointer because the nil behavior (no namespaces) is undesirable here.
 
@@ -73,7 +73,7 @@ schema InfrastructureClusterxK8sIoV1alpha3AzureUserAssignedIdentitySpecAllowedNa
 
 
 schema InfrastructureClusterxK8sIoV1alpha3AzureUserAssignedIdentitySpecAllowedNamespacesMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
     Attributes
@@ -95,7 +95,7 @@ schema InfrastructureClusterxK8sIoV1alpha3AzureUserAssignedIdentitySpecAllowedNa
 
 
 schema InfrastructureClusterxK8sIoV1alpha3AzureUserAssignedIdentitySpecSecretRef:
-    """
+    r"""
     Reference to a secret containing the credentials. The secret should contain the following data keys: tenantID clientID
 
     Attributes

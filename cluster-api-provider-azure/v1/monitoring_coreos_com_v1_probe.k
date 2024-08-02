@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema Probe:
-    """
+    r"""
     Probe defines monitoring for a set of static targets or ingresses.
 
     Attributes
@@ -32,7 +32,7 @@ schema Probe:
 
 
 schema MonitoringCoreosComV1ProbeSpec:
-    """
+    r"""
     Specification of desired Ingress selection for target discovery by Prometheus.
 
     Attributes
@@ -66,7 +66,7 @@ schema MonitoringCoreosComV1ProbeSpec:
 
 
 schema MonitoringCoreosComV1ProbeSpecProber:
-    """
+    r"""
     Specification for the prober to use for probing targets. The prober.URL parameter is required. Targets cannot be probed if left empty.
 
     Attributes
@@ -88,7 +88,7 @@ schema MonitoringCoreosComV1ProbeSpecProber:
 
 
 schema MonitoringCoreosComV1ProbeSpecTargets:
-    """
+    r"""
     Targets defines a set of static and/or dynamically discovered targets to be probed using the prober.
 
     Attributes
@@ -106,7 +106,7 @@ schema MonitoringCoreosComV1ProbeSpecTargets:
 
 
 schema MonitoringCoreosComV1ProbeSpecTargetsIngress:
-    """
+    r"""
     Ingress defines the set of dynamically discovered ingress objects which hosts are considered for probing.
 
     Attributes
@@ -128,7 +128,7 @@ schema MonitoringCoreosComV1ProbeSpecTargetsIngress:
 
 
 schema MonitoringCoreosComV1ProbeSpecTargetsIngressNamespaceSelector:
-    """
+    r"""
     Select Ingress objects by namespace.
 
     Attributes
@@ -146,7 +146,7 @@ schema MonitoringCoreosComV1ProbeSpecTargetsIngressNamespaceSelector:
 
 
 schema MonitoringCoreosComV1ProbeSpecTargetsIngressRelabelingConfigsItems0:
-    """
+    r"""
     RelabelConfig allows dynamic rewriting of the label set, being applied to samples before ingestion. It defines `<metric_relabel_configs>`-section of Prometheus configuration. More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#metric_relabel_configs
 
     Attributes
@@ -184,7 +184,7 @@ schema MonitoringCoreosComV1ProbeSpecTargetsIngressRelabelingConfigsItems0:
 
 
 schema MonitoringCoreosComV1ProbeSpecTargetsIngressSelector:
-    """
+    r"""
     Select Ingress objects by labels.
 
     Attributes
@@ -202,7 +202,7 @@ schema MonitoringCoreosComV1ProbeSpecTargetsIngressSelector:
 
 
 schema MonitoringCoreosComV1ProbeSpecTargetsIngressSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
     Attributes
@@ -224,7 +224,7 @@ schema MonitoringCoreosComV1ProbeSpecTargetsIngressSelectorMatchExpressionsItems
 
 
 schema MonitoringCoreosComV1ProbeSpecTargetsStaticConfig:
-    """
+    r"""
     StaticConfig defines static targets which are considers for probing. More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#static_config.
 
     Attributes

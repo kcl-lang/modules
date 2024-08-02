@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema Alertmanager:
-    """
+    r"""
     Alertmanager describes an Alertmanager cluster.
 
     Attributes
@@ -36,7 +36,7 @@ schema Alertmanager:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpec:
-    """
+    r"""
     Specification of the desired behavior of the Alertmanager cluster. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
 
     Attributes
@@ -194,7 +194,7 @@ schema MonitoringCoreosComV1AlertmanagerSpec:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecAffinity:
-    """
+    r"""
     If specified, the pod's scheduling constraints.
 
     Attributes
@@ -216,7 +216,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecAffinity:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecAffinityNodeAffinity:
-    """
+    r"""
     Describes node affinity scheduling rules for the pod.
 
     Attributes
@@ -234,7 +234,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecAffinityNodeAffinity:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     An empty preferred scheduling term matches all objects with implicit weight 0 (i.e. it's a no-op). A null preferred scheduling term matches no objects (i.e. is also a no-op).
 
     Attributes
@@ -252,7 +252,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecAffinityNodeAffinityPreferredDuringS
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0Preference:
-    """
+    r"""
     A node selector term, associated with the corresponding weight.
 
     Attributes
@@ -270,7 +270,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecAffinityNodeAffinityPreferredDuringS
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchExpressionsItems0:
-    """
+    r"""
     A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
     Attributes
@@ -292,7 +292,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecAffinityNodeAffinityPreferredDuringS
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchFieldsItems0:
-    """
+    r"""
     A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
     Attributes
@@ -314,7 +314,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecAffinityNodeAffinityPreferredDuringS
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution:
-    """
+    r"""
     If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to an update), the system may or may not try to eventually evict the pod from its node.
 
     Attributes
@@ -328,7 +328,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecAffinityNodeAffinityRequiredDuringSc
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0:
-    """
+    r"""
     A null or empty node selector term matches no objects. The requirements of them are ANDed. The TopologySelectorTerm type implements a subset of the NodeSelectorTerm.
 
     Attributes
@@ -346,7 +346,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecAffinityNodeAffinityRequiredDuringSc
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchExpressionsItems0:
-    """
+    r"""
     A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
     Attributes
@@ -368,7 +368,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecAffinityNodeAffinityRequiredDuringSc
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchFieldsItems0:
-    """
+    r"""
     A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
     Attributes
@@ -390,7 +390,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecAffinityNodeAffinityRequiredDuringSc
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecAffinityPodAffinity:
-    """
+    r"""
     Describes pod affinity scheduling rules (e.g. co-locate this pod in the same node, zone, etc. as some other pod(s)).
 
     Attributes
@@ -408,7 +408,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecAffinityPodAffinity:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     The weights of all of the matched WeightedPodAffinityTerm fields are added per-node to find the most preferred node(s)
 
     Attributes
@@ -426,7 +426,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecAffinityPodAffinityPreferredDuringSc
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTerm:
-    """
+    r"""
     Required. A pod affinity term, associated with the corresponding weight.
 
     Attributes
@@ -448,7 +448,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecAffinityPodAffinityPreferredDuringSc
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector:
-    """
+    r"""
     A label query over a set of resources, in this case pods.
 
     Attributes
@@ -466,7 +466,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecAffinityPodAffinityPreferredDuringSc
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
     Attributes
@@ -488,7 +488,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecAffinityPodAffinityPreferredDuringSc
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     Defines a set of pods (namely those matching the labelSelector relative to the given namespace(s)) that this pod should be co-located (affinity) or not co-located (anti-affinity) with, where co-located is defined as running on a node whose value of the label with key <topologyKey> matches that of any node on which a pod of the set of pods is running
 
     Attributes
@@ -510,7 +510,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecAffinityPodAffinityRequiredDuringSch
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector:
-    """
+    r"""
     A label query over a set of resources, in this case pods.
 
     Attributes
@@ -528,7 +528,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecAffinityPodAffinityRequiredDuringSch
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
     Attributes
@@ -550,7 +550,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecAffinityPodAffinityRequiredDuringSch
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecAffinityPodAntiAffinity:
-    """
+    r"""
     Describes pod anti-affinity scheduling rules (e.g. avoid putting this pod in the same node, zone, etc. as some other pod(s)).
 
     Attributes
@@ -568,7 +568,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecAffinityPodAntiAffinity:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     The weights of all of the matched WeightedPodAffinityTerm fields are added per-node to find the most preferred node(s)
 
     Attributes
@@ -586,7 +586,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecAffinityPodAntiAffinityPreferredDuri
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTerm:
-    """
+    r"""
     Required. A pod affinity term, associated with the corresponding weight.
 
     Attributes
@@ -608,7 +608,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecAffinityPodAntiAffinityPreferredDuri
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector:
-    """
+    r"""
     A label query over a set of resources, in this case pods.
 
     Attributes
@@ -626,7 +626,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecAffinityPodAntiAffinityPreferredDuri
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
     Attributes
@@ -648,7 +648,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecAffinityPodAntiAffinityPreferredDuri
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     Defines a set of pods (namely those matching the labelSelector relative to the given namespace(s)) that this pod should be co-located (affinity) or not co-located (anti-affinity) with, where co-located is defined as running on a node whose value of the label with key <topologyKey> matches that of any node on which a pod of the set of pods is running
 
     Attributes
@@ -670,7 +670,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecAffinityPodAntiAffinityRequiredDurin
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector:
-    """
+    r"""
     A label query over a set of resources, in this case pods.
 
     Attributes
@@ -688,7 +688,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecAffinityPodAntiAffinityRequiredDurin
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
     Attributes
@@ -710,7 +710,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecAffinityPodAntiAffinityRequiredDurin
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecAlertmanagerConfigNamespaceSelector:
-    """
+    r"""
     Namespaces to be selected for AlertmanagerConfig discovery. If nil, only check own namespace.
 
     Attributes
@@ -728,7 +728,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecAlertmanagerConfigNamespaceSelector:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecAlertmanagerConfigNamespaceSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
     Attributes
@@ -750,7 +750,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecAlertmanagerConfigNamespaceSelectorM
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecAlertmanagerConfigSelector:
-    """
+    r"""
     AlertmanagerConfigs to be selected for to merge and configure Alertmanager with.
 
     Attributes
@@ -768,7 +768,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecAlertmanagerConfigSelector:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecAlertmanagerConfigSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
     Attributes
@@ -790,7 +790,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecAlertmanagerConfigSelectorMatchExpre
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0:
-    """
+    r"""
     A single application container that you want to run within a pod.
 
     Attributes
@@ -888,7 +888,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0EnvFromItems0:
-    """
+    r"""
     EnvFromSource represents the source of a set of ConfigMaps
 
     Attributes
@@ -910,7 +910,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0EnvFromItems0:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0EnvFromItems0ConfigMapRef:
-    """
+    r"""
     The ConfigMap to select from
 
     Attributes
@@ -928,7 +928,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0EnvFromItems0ConfigM
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0EnvFromItems0SecretRef:
-    """
+    r"""
     The Secret to select from
 
     Attributes
@@ -946,7 +946,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0EnvFromItems0SecretR
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0EnvItems0:
-    """
+    r"""
     EnvVar represents an environment variable present in a Container.
 
     Attributes
@@ -968,7 +968,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0EnvItems0:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0EnvItems0ValueFrom:
-    """
+    r"""
     Source for the environment variable's value. Cannot be used if value is not empty.
 
     Attributes
@@ -994,7 +994,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0EnvItems0ValueFrom:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0EnvItems0ValueFromConfigMapKeyRef:
-    """
+    r"""
     Selects a key of a ConfigMap.
 
     Attributes
@@ -1016,7 +1016,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0EnvItems0ValueFromCo
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0EnvItems0ValueFromFieldRef:
-    """
+    r"""
     Selects a field of the pod: supports metadata.name, metadata.namespace, metadata.labels, metadata.annotations, spec.nodeName, spec.serviceAccountName, status.hostIP, status.podIP, status.podIPs.
 
     Attributes
@@ -1034,7 +1034,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0EnvItems0ValueFromFi
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0EnvItems0ValueFromResourceFieldRef:
-    """
+    r"""
     Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
 
     Attributes
@@ -1056,7 +1056,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0EnvItems0ValueFromRe
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0EnvItems0ValueFromSecretKeyRef:
-    """
+    r"""
     Selects a key of a secret in the pod's namespace
 
     Attributes
@@ -1078,7 +1078,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0EnvItems0ValueFromSe
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0Lifecycle:
-    """
+    r"""
     Actions that the management system should take in response to container lifecycle events. Cannot be updated.
 
     Attributes
@@ -1096,7 +1096,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0Lifecycle:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0LifecyclePostStart:
-    """
+    r"""
     PostStart is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
 
     Attributes
@@ -1118,7 +1118,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0LifecyclePostStart:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0LifecyclePostStartExec:
-    """
+    r"""
     One and only one of the following should be specified. Exec specifies the action to take.
 
     Attributes
@@ -1132,7 +1132,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0LifecyclePostStartEx
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0LifecyclePostStartHTTPGet:
-    """
+    r"""
     HTTPGet specifies the http request to perform.
 
     Attributes
@@ -1162,7 +1162,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0LifecyclePostStartHT
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0LifecyclePostStartHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     HTTPHeader describes a custom header to be used in HTTP probes
 
     Attributes
@@ -1180,7 +1180,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0LifecyclePostStartHT
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0LifecyclePostStartTCPSocket:
-    """
+    r"""
     TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
 
     Attributes
@@ -1198,7 +1198,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0LifecyclePostStartTC
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0LifecyclePreStop:
-    """
+    r"""
     PreStop is called immediately before a container is terminated due to an API request or management event such as liveness/startup probe failure, preemption, resource contention, etc. The handler is not called if the container crashes or exits. The reason for termination is passed to the handler. The Pod's termination grace period countdown begins before the PreStop hooked is executed. Regardless of the outcome of the handler, the container will eventually terminate within the Pod's termination grace period. Other management of the container blocks until the hook completes or until the termination grace period is reached. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
 
     Attributes
@@ -1220,7 +1220,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0LifecyclePreStop:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0LifecyclePreStopExec:
-    """
+    r"""
     One and only one of the following should be specified. Exec specifies the action to take.
 
     Attributes
@@ -1234,7 +1234,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0LifecyclePreStopExec
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0LifecyclePreStopHTTPGet:
-    """
+    r"""
     HTTPGet specifies the http request to perform.
 
     Attributes
@@ -1264,7 +1264,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0LifecyclePreStopHTTP
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0LifecyclePreStopHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     HTTPHeader describes a custom header to be used in HTTP probes
 
     Attributes
@@ -1282,7 +1282,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0LifecyclePreStopHTTP
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0LifecyclePreStopTCPSocket:
-    """
+    r"""
     TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
 
     Attributes
@@ -1300,7 +1300,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0LifecyclePreStopTCPS
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0LivenessProbe:
-    """
+    r"""
     Periodic probe of container liveness. Container will be restarted if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 
     Attributes
@@ -1342,7 +1342,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0LivenessProbe:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0LivenessProbeExec:
-    """
+    r"""
     One and only one of the following should be specified. Exec specifies the action to take.
 
     Attributes
@@ -1356,7 +1356,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0LivenessProbeExec:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0LivenessProbeHTTPGet:
-    """
+    r"""
     HTTPGet specifies the http request to perform.
 
     Attributes
@@ -1386,7 +1386,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0LivenessProbeHTTPGet
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0LivenessProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     HTTPHeader describes a custom header to be used in HTTP probes
 
     Attributes
@@ -1404,7 +1404,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0LivenessProbeHTTPGet
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0LivenessProbeTCPSocket:
-    """
+    r"""
     TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
 
     Attributes
@@ -1422,7 +1422,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0LivenessProbeTCPSock
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0PortsItems0:
-    """
+    r"""
     ContainerPort represents a network port in a single container.
 
     Attributes
@@ -1452,7 +1452,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0PortsItems0:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0ReadinessProbe:
-    """
+    r"""
     Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 
     Attributes
@@ -1494,7 +1494,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0ReadinessProbe:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0ReadinessProbeExec:
-    """
+    r"""
     One and only one of the following should be specified. Exec specifies the action to take.
 
     Attributes
@@ -1508,7 +1508,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0ReadinessProbeExec:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0ReadinessProbeHTTPGet:
-    """
+    r"""
     HTTPGet specifies the http request to perform.
 
     Attributes
@@ -1538,7 +1538,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0ReadinessProbeHTTPGe
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0ReadinessProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     HTTPHeader describes a custom header to be used in HTTP probes
 
     Attributes
@@ -1556,7 +1556,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0ReadinessProbeHTTPGe
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0ReadinessProbeTCPSocket:
-    """
+    r"""
     TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
 
     Attributes
@@ -1574,7 +1574,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0ReadinessProbeTCPSoc
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0Resources:
-    """
+    r"""
     Compute Resources required by this container. Cannot be updated. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
 
     Attributes
@@ -1592,7 +1592,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0Resources:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0SecurityContext:
-    """
+    r"""
     Security options the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-context/ More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
 
     Attributes
@@ -1642,7 +1642,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0SecurityContext:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0SecurityContextCapabilities:
-    """
+    r"""
     The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime.
 
     Attributes
@@ -1660,7 +1660,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0SecurityContextCapab
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0SecurityContextSeLinuxOptions:
-    """
+    r"""
     The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container.  May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
 
     Attributes
@@ -1686,7 +1686,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0SecurityContextSeLin
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0SecurityContextWindowsOptions:
-    """
+    r"""
     The Windows specific settings applied to all containers. If unspecified, the options from the PodSecurityContext will be used. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
 
     Attributes
@@ -1708,7 +1708,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0SecurityContextWindo
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0StartupProbe:
-    """
+    r"""
     StartupProbe indicates that the Pod has successfully initialized. If specified, no other probes are executed until this completes successfully. If this probe fails, the Pod will be restarted, just as if the livenessProbe failed. This can be used to provide different probe parameters at the beginning of a Pod's lifecycle, when it might take a long time to load data or warm a cache, than during steady-state operation. This cannot be updated. This is a beta feature enabled by the StartupProbe feature flag. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 
     Attributes
@@ -1750,7 +1750,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0StartupProbe:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0StartupProbeExec:
-    """
+    r"""
     One and only one of the following should be specified. Exec specifies the action to take.
 
     Attributes
@@ -1764,7 +1764,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0StartupProbeExec:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0StartupProbeHTTPGet:
-    """
+    r"""
     HTTPGet specifies the http request to perform.
 
     Attributes
@@ -1794,7 +1794,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0StartupProbeHTTPGet:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0StartupProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     HTTPHeader describes a custom header to be used in HTTP probes
 
     Attributes
@@ -1812,7 +1812,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0StartupProbeHTTPGetH
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0StartupProbeTCPSocket:
-    """
+    r"""
     TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
 
     Attributes
@@ -1830,7 +1830,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0StartupProbeTCPSocke
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0VolumeDevicesItems0:
-    """
+    r"""
     volumeDevice describes a mapping of a raw block device within a container.
 
     Attributes
@@ -1848,7 +1848,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0VolumeDevicesItems0:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0VolumeMountsItems0:
-    """
+    r"""
     VolumeMount describes a mounting of a Volume within a container.
 
     Attributes
@@ -1882,7 +1882,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecContainersItems0VolumeMountsItems0:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecImagePullSecretsItems0:
-    """
+    r"""
     LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
 
     Attributes
@@ -1896,7 +1896,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecImagePullSecretsItems0:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0:
-    """
+    r"""
     A single application container that you want to run within a pod.
 
     Attributes
@@ -1994,7 +1994,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0EnvFromItems0:
-    """
+    r"""
     EnvFromSource represents the source of a set of ConfigMaps
 
     Attributes
@@ -2016,7 +2016,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0EnvFromItems0:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0EnvFromItems0ConfigMapRef:
-    """
+    r"""
     The ConfigMap to select from
 
     Attributes
@@ -2034,7 +2034,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0EnvFromItems0Con
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0EnvFromItems0SecretRef:
-    """
+    r"""
     The Secret to select from
 
     Attributes
@@ -2052,7 +2052,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0EnvFromItems0Sec
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0EnvItems0:
-    """
+    r"""
     EnvVar represents an environment variable present in a Container.
 
     Attributes
@@ -2074,7 +2074,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0EnvItems0:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0EnvItems0ValueFrom:
-    """
+    r"""
     Source for the environment variable's value. Cannot be used if value is not empty.
 
     Attributes
@@ -2100,7 +2100,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0EnvItems0ValueFr
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0EnvItems0ValueFromConfigMapKeyRef:
-    """
+    r"""
     Selects a key of a ConfigMap.
 
     Attributes
@@ -2122,7 +2122,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0EnvItems0ValueFr
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0EnvItems0ValueFromFieldRef:
-    """
+    r"""
     Selects a field of the pod: supports metadata.name, metadata.namespace, metadata.labels, metadata.annotations, spec.nodeName, spec.serviceAccountName, status.hostIP, status.podIP, status.podIPs.
 
     Attributes
@@ -2140,7 +2140,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0EnvItems0ValueFr
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0EnvItems0ValueFromResourceFieldRef:
-    """
+    r"""
     Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
 
     Attributes
@@ -2162,7 +2162,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0EnvItems0ValueFr
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0EnvItems0ValueFromSecretKeyRef:
-    """
+    r"""
     Selects a key of a secret in the pod's namespace
 
     Attributes
@@ -2184,7 +2184,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0EnvItems0ValueFr
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0Lifecycle:
-    """
+    r"""
     Actions that the management system should take in response to container lifecycle events. Cannot be updated.
 
     Attributes
@@ -2202,7 +2202,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0Lifecycle:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0LifecyclePostStart:
-    """
+    r"""
     PostStart is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
 
     Attributes
@@ -2224,7 +2224,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0LifecyclePostSta
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0LifecyclePostStartExec:
-    """
+    r"""
     One and only one of the following should be specified. Exec specifies the action to take.
 
     Attributes
@@ -2238,7 +2238,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0LifecyclePostSta
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0LifecyclePostStartHTTPGet:
-    """
+    r"""
     HTTPGet specifies the http request to perform.
 
     Attributes
@@ -2268,7 +2268,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0LifecyclePostSta
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0LifecyclePostStartHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     HTTPHeader describes a custom header to be used in HTTP probes
 
     Attributes
@@ -2286,7 +2286,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0LifecyclePostSta
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0LifecyclePostStartTCPSocket:
-    """
+    r"""
     TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
 
     Attributes
@@ -2304,7 +2304,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0LifecyclePostSta
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0LifecyclePreStop:
-    """
+    r"""
     PreStop is called immediately before a container is terminated due to an API request or management event such as liveness/startup probe failure, preemption, resource contention, etc. The handler is not called if the container crashes or exits. The reason for termination is passed to the handler. The Pod's termination grace period countdown begins before the PreStop hooked is executed. Regardless of the outcome of the handler, the container will eventually terminate within the Pod's termination grace period. Other management of the container blocks until the hook completes or until the termination grace period is reached. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
 
     Attributes
@@ -2326,7 +2326,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0LifecyclePreStop
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0LifecyclePreStopExec:
-    """
+    r"""
     One and only one of the following should be specified. Exec specifies the action to take.
 
     Attributes
@@ -2340,7 +2340,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0LifecyclePreStop
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0LifecyclePreStopHTTPGet:
-    """
+    r"""
     HTTPGet specifies the http request to perform.
 
     Attributes
@@ -2370,7 +2370,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0LifecyclePreStop
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0LifecyclePreStopHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     HTTPHeader describes a custom header to be used in HTTP probes
 
     Attributes
@@ -2388,7 +2388,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0LifecyclePreStop
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0LifecyclePreStopTCPSocket:
-    """
+    r"""
     TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
 
     Attributes
@@ -2406,7 +2406,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0LifecyclePreStop
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0LivenessProbe:
-    """
+    r"""
     Periodic probe of container liveness. Container will be restarted if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 
     Attributes
@@ -2448,7 +2448,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0LivenessProbe:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0LivenessProbeExec:
-    """
+    r"""
     One and only one of the following should be specified. Exec specifies the action to take.
 
     Attributes
@@ -2462,7 +2462,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0LivenessProbeExe
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0LivenessProbeHTTPGet:
-    """
+    r"""
     HTTPGet specifies the http request to perform.
 
     Attributes
@@ -2492,7 +2492,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0LivenessProbeHTT
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0LivenessProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     HTTPHeader describes a custom header to be used in HTTP probes
 
     Attributes
@@ -2510,7 +2510,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0LivenessProbeHTT
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0LivenessProbeTCPSocket:
-    """
+    r"""
     TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
 
     Attributes
@@ -2528,7 +2528,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0LivenessProbeTCP
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0PortsItems0:
-    """
+    r"""
     ContainerPort represents a network port in a single container.
 
     Attributes
@@ -2558,7 +2558,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0PortsItems0:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0ReadinessProbe:
-    """
+    r"""
     Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 
     Attributes
@@ -2600,7 +2600,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0ReadinessProbe:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0ReadinessProbeExec:
-    """
+    r"""
     One and only one of the following should be specified. Exec specifies the action to take.
 
     Attributes
@@ -2614,7 +2614,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0ReadinessProbeEx
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0ReadinessProbeHTTPGet:
-    """
+    r"""
     HTTPGet specifies the http request to perform.
 
     Attributes
@@ -2644,7 +2644,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0ReadinessProbeHT
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0ReadinessProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     HTTPHeader describes a custom header to be used in HTTP probes
 
     Attributes
@@ -2662,7 +2662,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0ReadinessProbeHT
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0ReadinessProbeTCPSocket:
-    """
+    r"""
     TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
 
     Attributes
@@ -2680,7 +2680,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0ReadinessProbeTC
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0Resources:
-    """
+    r"""
     Compute Resources required by this container. Cannot be updated. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
 
     Attributes
@@ -2698,7 +2698,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0Resources:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0SecurityContext:
-    """
+    r"""
     Security options the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-context/ More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
 
     Attributes
@@ -2748,7 +2748,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0SecurityContext:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0SecurityContextCapabilities:
-    """
+    r"""
     The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime.
 
     Attributes
@@ -2766,7 +2766,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0SecurityContextC
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0SecurityContextSeLinuxOptions:
-    """
+    r"""
     The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container.  May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
 
     Attributes
@@ -2792,7 +2792,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0SecurityContextS
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0SecurityContextWindowsOptions:
-    """
+    r"""
     The Windows specific settings applied to all containers. If unspecified, the options from the PodSecurityContext will be used. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
 
     Attributes
@@ -2814,7 +2814,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0SecurityContextW
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0StartupProbe:
-    """
+    r"""
     StartupProbe indicates that the Pod has successfully initialized. If specified, no other probes are executed until this completes successfully. If this probe fails, the Pod will be restarted, just as if the livenessProbe failed. This can be used to provide different probe parameters at the beginning of a Pod's lifecycle, when it might take a long time to load data or warm a cache, than during steady-state operation. This cannot be updated. This is a beta feature enabled by the StartupProbe feature flag. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 
     Attributes
@@ -2856,7 +2856,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0StartupProbe:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0StartupProbeExec:
-    """
+    r"""
     One and only one of the following should be specified. Exec specifies the action to take.
 
     Attributes
@@ -2870,7 +2870,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0StartupProbeExec
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0StartupProbeHTTPGet:
-    """
+    r"""
     HTTPGet specifies the http request to perform.
 
     Attributes
@@ -2900,7 +2900,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0StartupProbeHTTP
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0StartupProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     HTTPHeader describes a custom header to be used in HTTP probes
 
     Attributes
@@ -2918,7 +2918,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0StartupProbeHTTP
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0StartupProbeTCPSocket:
-    """
+    r"""
     TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
 
     Attributes
@@ -2936,7 +2936,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0StartupProbeTCPS
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0VolumeDevicesItems0:
-    """
+    r"""
     volumeDevice describes a mapping of a raw block device within a container.
 
     Attributes
@@ -2954,7 +2954,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0VolumeDevicesIte
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0VolumeMountsItems0:
-    """
+    r"""
     VolumeMount describes a mounting of a Volume within a container.
 
     Attributes
@@ -2988,7 +2988,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0VolumeMountsItem
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecPodMetadata:
-    """
+    r"""
     PodMetadata configures Labels and Annotations which are propagated to the alertmanager pods.
 
     Attributes
@@ -3010,7 +3010,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecPodMetadata:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecResources:
-    """
+    r"""
     Define resources requests and limits for single Pods.
 
     Attributes
@@ -3028,7 +3028,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecResources:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecSecurityContext:
-    """
+    r"""
     SecurityContext holds pod-level security attributes and common container settings. This defaults to the default PodSecurityContext.
 
     Attributes
@@ -3076,7 +3076,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecSecurityContext:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecSecurityContextSeLinuxOptions:
-    """
+    r"""
     The SELinux context to be applied to all containers. If unspecified, the container runtime will allocate a random SELinux context for each container.  May also be set in SecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container.
 
     Attributes
@@ -3102,7 +3102,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecSecurityContextSeLinuxOptions:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecSecurityContextSysctlsItems0:
-    """
+    r"""
     Sysctl defines a kernel parameter to be set
 
     Attributes
@@ -3120,7 +3120,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecSecurityContextSysctlsItems0:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecSecurityContextWindowsOptions:
-    """
+    r"""
     The Windows specific settings applied to all containers. If unspecified, the options within a container's SecurityContext will be used. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
 
     Attributes
@@ -3142,7 +3142,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecSecurityContextWindowsOptions:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecStorage:
-    """
+    r"""
     Storage is the definition of how storage will be used by the Alertmanager instances.
 
     Attributes
@@ -3164,7 +3164,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecStorage:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecStorageEmptyDir:
-    """
+    r"""
     EmptyDirVolumeSource to be used by the Prometheus StatefulSets. If specified, used in place of any volumeClaimTemplate. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir
 
     Attributes
@@ -3182,7 +3182,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecStorageEmptyDir:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecStorageVolumeClaimTemplate:
-    """
+    r"""
     A PVC spec to be used by the Prometheus StatefulSets.
 
     Attributes
@@ -3212,7 +3212,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecStorageVolumeClaimTemplate:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecStorageVolumeClaimTemplateMetadata:
-    """
+    r"""
     EmbeddedMetadata contains metadata relevant to an EmbeddedResource.
 
     Attributes
@@ -3234,7 +3234,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecStorageVolumeClaimTemplateMetadata:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecStorageVolumeClaimTemplateSpec:
-    """
+    r"""
     Spec defines the desired characteristics of a volume requested by a pod author. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
 
     Attributes
@@ -3272,7 +3272,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecStorageVolumeClaimTemplateSpec:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecStorageVolumeClaimTemplateSpecDataSource:
-    """
+    r"""
     This field can be used to specify either: * An existing VolumeSnapshot object (snapshot.storage.k8s.io/VolumeSnapshot - Beta) * An existing PVC (PersistentVolumeClaim) * An existing custom resource/object that implements data population (Alpha) In order to use VolumeSnapshot object types, the appropriate feature gate must be enabled (VolumeSnapshotDataSource or AnyVolumeDataSource) If the provisioner or an external controller can support the specified data source, it will create a new volume based on the contents of the specified data source. If the specified data source is not supported, the volume will not be created and the failure will be reported as an event. In the future, we plan to support more data source types and the behavior of the provisioner may change.
 
     Attributes
@@ -3294,7 +3294,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecStorageVolumeClaimTemplateSpecDataSo
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecStorageVolumeClaimTemplateSpecResources:
-    """
+    r"""
     Resources represents the minimum resources the volume should have. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 
     Attributes
@@ -3312,7 +3312,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecStorageVolumeClaimTemplateSpecResour
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecStorageVolumeClaimTemplateSpecSelector:
-    """
+    r"""
     A label query over volumes to consider for binding.
 
     Attributes
@@ -3330,7 +3330,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecStorageVolumeClaimTemplateSpecSelect
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecStorageVolumeClaimTemplateSpecSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
     Attributes
@@ -3352,7 +3352,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecStorageVolumeClaimTemplateSpecSelect
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecStorageVolumeClaimTemplateStatus:
-    """
+    r"""
     Status represents the current information/status of a persistent volume claim. Read-only. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
 
     Attributes
@@ -3378,7 +3378,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecStorageVolumeClaimTemplateStatus:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecStorageVolumeClaimTemplateStatusConditionsItems0:
-    """
+    r"""
     PersistentVolumeClaimCondition contains details about state of pvc
 
     Attributes
@@ -3412,7 +3412,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecStorageVolumeClaimTemplateStatusCond
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecTolerationsItems0:
-    """
+    r"""
     The pod this Toleration is attached to tolerates any taint that matches the triple <key,value,effect> using the matching operator <operator>.
 
     Attributes
@@ -3442,7 +3442,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecTolerationsItems0:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecTopologySpreadConstraintsItems0:
-    """
+    r"""
     TopologySpreadConstraint specifies how to spread matching pods among the given topology.
 
     Attributes
@@ -3468,7 +3468,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecTopologySpreadConstraintsItems0:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecTopologySpreadConstraintsItems0LabelSelector:
-    """
+    r"""
     LabelSelector is used to find matching pods. Pods that match this label selector are counted to determine the number of pods in their corresponding topology domain.
 
     Attributes
@@ -3486,7 +3486,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecTopologySpreadConstraintsItems0Label
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecTopologySpreadConstraintsItems0LabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
     Attributes
@@ -3508,7 +3508,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecTopologySpreadConstraintsItems0Label
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecVolumeMountsItems0:
-    """
+    r"""
     VolumeMount describes a mounting of a Volume within a container.
 
     Attributes
@@ -3542,7 +3542,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecVolumeMountsItems0:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0:
-    """
+    r"""
     Volume represents a named volume in a pod that may be accessed by any container in the pod.
 
     Attributes
@@ -3668,7 +3668,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0AwsElasticBlockStore:
-    """
+    r"""
     AWSElasticBlockStore represents an AWS Disk resource that is attached to a kubelet's host machine and then exposed to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
 
     Attributes
@@ -3694,7 +3694,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0AwsElasticBlockStore:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0AzureDisk:
-    """
+    r"""
     AzureDisk represents an Azure Data Disk mount on the host and bind mount to the pod.
 
     Attributes
@@ -3728,7 +3728,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0AzureDisk:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0AzureFile:
-    """
+    r"""
     AzureFile represents an Azure File Service mount on the host and bind mount to the pod.
 
     Attributes
@@ -3750,7 +3750,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0AzureFile:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0Cephfs:
-    """
+    r"""
     CephFS represents a Ceph FS mount on the host that shares a pod's lifetime
 
     Attributes
@@ -3784,7 +3784,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0Cephfs:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0CephfsSecretRef:
-    """
+    r"""
     Optional: SecretRef is reference to the authentication secret for User, default is empty. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
 
     Attributes
@@ -3798,7 +3798,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0CephfsSecretRef:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0Cinder:
-    """
+    r"""
     Cinder represents a cinder volume attached and mounted on kubelets host machine. More info: https://examples.k8s.io/mysql-cinder-pd/README.md
 
     Attributes
@@ -3824,7 +3824,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0Cinder:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0CinderSecretRef:
-    """
+    r"""
     Optional: points to a secret object containing parameters used to connect to OpenStack.
 
     Attributes
@@ -3838,7 +3838,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0CinderSecretRef:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0ConfigMap:
-    """
+    r"""
     ConfigMap represents a configMap that should populate this volume
 
     Attributes
@@ -3864,7 +3864,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0ConfigMap:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0ConfigMapItemsItems0:
-    """
+    r"""
     Maps a string key to a path within a volume.
 
     Attributes
@@ -3886,7 +3886,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0ConfigMapItemsItems0:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0Csi:
-    """
+    r"""
     CSI (Container Storage Interface) represents storage that is handled by an external CSI driver (Alpha feature).
 
     Attributes
@@ -3916,7 +3916,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0Csi:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0CsiNodePublishSecretRef:
-    """
+    r"""
     NodePublishSecretRef is a reference to the secret object containing sensitive information to pass to the CSI driver to complete the CSI NodePublishVolume and NodeUnpublishVolume calls. This field is optional, and  may be empty if no secret is required. If the secret object contains more than one secret, all secret references are passed.
 
     Attributes
@@ -3930,7 +3930,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0CsiNodePublishSecretRef
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0DownwardAPI:
-    """
+    r"""
     DownwardAPI represents downward API about the pod that should populate this volume
 
     Attributes
@@ -3948,7 +3948,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0DownwardAPI:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0DownwardAPIItemsItems0:
-    """
+    r"""
     DownwardAPIVolumeFile represents information to create the file containing the pod field
 
     Attributes
@@ -3974,7 +3974,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0DownwardAPIItemsItems0:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0DownwardAPIItemsItems0FieldRef:
-    """
+    r"""
     Required: Selects a field of the pod: only annotations, labels, name and namespace are supported.
 
     Attributes
@@ -3992,7 +3992,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0DownwardAPIItemsItems0F
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0DownwardAPIItemsItems0ResourceFieldRef:
-    """
+    r"""
     Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported.
 
     Attributes
@@ -4014,7 +4014,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0DownwardAPIItemsItems0R
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0EmptyDir:
-    """
+    r"""
     EmptyDir represents a temporary directory that shares a pod's lifetime. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir
 
     Attributes
@@ -4032,7 +4032,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0EmptyDir:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0Fc:
-    """
+    r"""
     FC represents a Fibre Channel resource that is attached to a kubelet's host machine and then exposed to the pod.
 
     Attributes
@@ -4062,7 +4062,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0Fc:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0FlexVolume:
-    """
+    r"""
     FlexVolume represents a generic volume resource that is provisioned/attached using an exec based plugin.
 
     Attributes
@@ -4092,7 +4092,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0FlexVolume:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0FlexVolumeSecretRef:
-    """
+    r"""
     Optional: SecretRef is reference to the secret object containing sensitive information to pass to the plugin scripts. This may be empty if no secret object is specified. If the secret object contains more than one secret, all secrets are passed to the plugin scripts.
 
     Attributes
@@ -4106,7 +4106,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0FlexVolumeSecretRef:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0Flocker:
-    """
+    r"""
     Flocker represents a Flocker volume attached to a kubelet's host machine. This depends on the Flocker control service being running
 
     Attributes
@@ -4124,7 +4124,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0Flocker:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0GcePersistentDisk:
-    """
+    r"""
     GCEPersistentDisk represents a GCE Disk resource that is attached to a kubelet's host machine and then exposed to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
 
     Attributes
@@ -4150,7 +4150,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0GcePersistentDisk:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0GitRepo:
-    """
+    r"""
     GitRepo represents a git repository at a particular revision. DEPRECATED: GitRepo is deprecated. To provision a container with a git repo, mount an EmptyDir into an InitContainer that clones the repo using git, then mount the EmptyDir into the Pod's container.
 
     Attributes
@@ -4172,7 +4172,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0GitRepo:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0Glusterfs:
-    """
+    r"""
     Glusterfs represents a Glusterfs mount on the host that shares a pod's lifetime. More info: https://examples.k8s.io/volumes/glusterfs/README.md
 
     Attributes
@@ -4194,7 +4194,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0Glusterfs:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0HostPath:
-    """
+    r"""
     HostPath represents a pre-existing file or directory on the host machine that is directly exposed to the container. This is generally used for system agents or other privileged things that are allowed to see the host machine. Most containers will NOT need this. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath --- TODO(jonesdl) We need to restrict who can use host directory mounts and who can/can not mount host directories as read/write.
 
     Attributes
@@ -4212,7 +4212,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0HostPath:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0Iscsi:
-    """
+    r"""
     ISCSI represents an ISCSI Disk resource that is attached to a kubelet's host machine and then exposed to the pod. More info: https://examples.k8s.io/volumes/iscsi/README.md
 
     Attributes
@@ -4266,7 +4266,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0Iscsi:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0IscsiSecretRef:
-    """
+    r"""
     CHAP Secret for iSCSI target and initiator authentication
 
     Attributes
@@ -4280,7 +4280,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0IscsiSecretRef:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0Nfs:
-    """
+    r"""
     NFS represents an NFS mount on the host that shares a pod's lifetime More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
 
     Attributes
@@ -4302,7 +4302,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0Nfs:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0PersistentVolumeClaim:
-    """
+    r"""
     PersistentVolumeClaimVolumeSource represents a reference to a PersistentVolumeClaim in the same namespace. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
 
     Attributes
@@ -4320,7 +4320,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0PersistentVolumeClaim:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0PhotonPersistentDisk:
-    """
+    r"""
     PhotonPersistentDisk represents a PhotonController persistent disk attached and mounted on kubelets host machine
 
     Attributes
@@ -4338,7 +4338,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0PhotonPersistentDisk:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0PortworxVolume:
-    """
+    r"""
     PortworxVolume represents a portworx volume attached and mounted on kubelets host machine
 
     Attributes
@@ -4360,7 +4360,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0PortworxVolume:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0Projected:
-    """
+    r"""
     Items for all in one resources secrets, configmaps, and downward API
 
     Attributes
@@ -4378,7 +4378,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0Projected:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0ProjectedSourcesItems0:
-    """
+    r"""
     Projection that may be projected along with other supported volume types
 
     Attributes
@@ -4404,7 +4404,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0ProjectedSourcesItems0:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0ProjectedSourcesItems0ConfigMap:
-    """
+    r"""
     information about the configMap data to project
 
     Attributes
@@ -4426,7 +4426,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0ProjectedSourcesItems0C
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0ProjectedSourcesItems0ConfigMapItemsItems0:
-    """
+    r"""
     Maps a string key to a path within a volume.
 
     Attributes
@@ -4448,7 +4448,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0ProjectedSourcesItems0C
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0ProjectedSourcesItems0DownwardAPI:
-    """
+    r"""
     information about the downwardAPI data to project
 
     Attributes
@@ -4462,7 +4462,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0ProjectedSourcesItems0D
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0:
-    """
+    r"""
     DownwardAPIVolumeFile represents information to create the file containing the pod field
 
     Attributes
@@ -4488,7 +4488,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0ProjectedSourcesItems0D
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0FieldRef:
-    """
+    r"""
     Required: Selects a field of the pod: only annotations, labels, name and namespace are supported.
 
     Attributes
@@ -4506,7 +4506,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0ProjectedSourcesItems0D
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0ResourceFieldRef:
-    """
+    r"""
     Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported.
 
     Attributes
@@ -4528,7 +4528,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0ProjectedSourcesItems0D
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0ProjectedSourcesItems0Secret:
-    """
+    r"""
     information about the secret data to project
 
     Attributes
@@ -4550,7 +4550,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0ProjectedSourcesItems0S
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0ProjectedSourcesItems0SecretItemsItems0:
-    """
+    r"""
     Maps a string key to a path within a volume.
 
     Attributes
@@ -4572,7 +4572,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0ProjectedSourcesItems0S
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0ProjectedSourcesItems0ServiceAccountToken:
-    """
+    r"""
     information about the serviceAccountToken data to project
 
     Attributes
@@ -4594,7 +4594,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0ProjectedSourcesItems0S
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0Quobyte:
-    """
+    r"""
     Quobyte represents a Quobyte mount on the host that shares a pod's lifetime
 
     Attributes
@@ -4628,7 +4628,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0Quobyte:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0Rbd:
-    """
+    r"""
     RBD represents a Rados Block Device mount on the host that shares a pod's lifetime. More info: https://examples.k8s.io/volumes/rbd/README.md
 
     Attributes
@@ -4670,7 +4670,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0Rbd:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0RbdSecretRef:
-    """
+    r"""
     SecretRef is name of the authentication secret for RBDUser. If provided overrides keyring. Default is nil. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
 
     Attributes
@@ -4684,7 +4684,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0RbdSecretRef:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0ScaleIO:
-    """
+    r"""
     ScaleIO represents a ScaleIO persistent volume attached and mounted on Kubernetes nodes.
 
     Attributes
@@ -4734,7 +4734,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0ScaleIO:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0ScaleIOSecretRef:
-    """
+    r"""
     SecretRef references to the secret for ScaleIO user and other sensitive information. If this is not provided, Login operation will fail.
 
     Attributes
@@ -4748,7 +4748,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0ScaleIOSecretRef:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0Secret:
-    """
+    r"""
     Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
 
     Attributes
@@ -4774,7 +4774,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0Secret:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0SecretItemsItems0:
-    """
+    r"""
     Maps a string key to a path within a volume.
 
     Attributes
@@ -4796,7 +4796,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0SecretItemsItems0:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0Storageos:
-    """
+    r"""
     StorageOS represents a StorageOS volume attached and mounted on Kubernetes nodes.
 
     Attributes
@@ -4826,7 +4826,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0Storageos:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0StorageosSecretRef:
-    """
+    r"""
     SecretRef specifies the secret to use for obtaining the StorageOS API credentials.  If not specified, default values will be attempted.
 
     Attributes
@@ -4840,7 +4840,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0StorageosSecretRef:
 
 
 schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0VsphereVolume:
-    """
+    r"""
     VsphereVolume represents a vSphere volume attached and mounted on kubelets host machine
 
     Attributes
@@ -4866,7 +4866,7 @@ schema MonitoringCoreosComV1AlertmanagerSpecVolumesItems0VsphereVolume:
 
 
 schema MonitoringCoreosComV1AlertmanagerStatus:
-    """
+    r"""
     Most recent observed status of the Alertmanager cluster. Read-only. Not included when requesting from the apiserver, only from the Prometheus Operator API itself. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
 
     Attributes

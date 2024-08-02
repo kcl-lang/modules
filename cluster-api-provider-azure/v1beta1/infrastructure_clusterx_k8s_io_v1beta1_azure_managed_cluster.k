@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema AzureManagedCluster:
-    """
+    r"""
     AzureManagedCluster is the Schema for the azuremanagedclusters API.
 
     Attributes
@@ -36,7 +36,7 @@ schema AzureManagedCluster:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureManagedClusterSpec:
-    """
+    r"""
     AzureManagedClusterSpec defines the desired state of AzureManagedCluster.
 
     Attributes
@@ -50,7 +50,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedClusterSpec:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureManagedClusterSpecControlPlaneEndpoint:
-    """
+    r"""
     ControlPlaneEndpoint represents the endpoint used to communicate with the control plane.
     Immutable, populated by the AKS API at create.
     Because this field is programmatically set by CAPZ after resource creation, we define it as +optional
@@ -71,7 +71,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedClusterSpecControlPlaneEndp
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureManagedClusterStatus:
-    """
+    r"""
     AzureManagedClusterStatus defines the observed state of AzureManagedCluster.
 
     Attributes

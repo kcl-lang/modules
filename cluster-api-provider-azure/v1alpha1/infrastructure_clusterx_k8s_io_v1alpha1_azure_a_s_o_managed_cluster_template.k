@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema AzureASOManagedClusterTemplate:
-    """
+    r"""
     AzureASOManagedClusterTemplate is the Schema for the azureasomanagedclustertemplates API.
 
     Attributes
@@ -32,7 +32,7 @@ schema AzureASOManagedClusterTemplate:
 
 
 schema InfrastructureClusterxK8sIoV1alpha1AzureASOManagedClusterTemplateSpec:
-    """
+    r"""
     AzureASOManagedClusterTemplateSpec defines the desired state of AzureASOManagedClusterTemplate.
 
     Attributes
@@ -46,7 +46,7 @@ schema InfrastructureClusterxK8sIoV1alpha1AzureASOManagedClusterTemplateSpec:
 
 
 schema InfrastructureClusterxK8sIoV1alpha1AzureASOManagedClusterTemplateSpecTemplate:
-    """
+    r"""
     AzureASOManagedClusterTemplateResource defines the templated resource.
 
     Attributes
@@ -60,7 +60,7 @@ schema InfrastructureClusterxK8sIoV1alpha1AzureASOManagedClusterTemplateSpecTemp
 
 
 schema InfrastructureClusterxK8sIoV1alpha1AzureASOManagedClusterTemplateSpecTemplateSpec:
-    """
+    r"""
     AzureASOManagedClusterTemplateResourceSpec defines the desired state of the templated resource.
 
     Attributes

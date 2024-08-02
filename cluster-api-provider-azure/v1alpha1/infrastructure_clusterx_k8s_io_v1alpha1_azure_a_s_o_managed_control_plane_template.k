@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema AzureASOManagedControlPlaneTemplate:
-    """
+    r"""
     AzureASOManagedControlPlaneTemplate is the Schema for the azureasomanagedcontrolplanetemplates API.
 
     Attributes
@@ -32,7 +32,7 @@ schema AzureASOManagedControlPlaneTemplate:
 
 
 schema InfrastructureClusterxK8sIoV1alpha1AzureASOManagedControlPlaneTemplateSpec:
-    """
+    r"""
     AzureASOManagedControlPlaneTemplateSpec defines the desired state of AzureASOManagedControlPlane.
 
     Attributes
@@ -46,7 +46,7 @@ schema InfrastructureClusterxK8sIoV1alpha1AzureASOManagedControlPlaneTemplateSpe
 
 
 schema InfrastructureClusterxK8sIoV1alpha1AzureASOManagedControlPlaneTemplateSpecTemplate:
-    """
+    r"""
     AzureASOManagedControlPlaneResource defines the templated resource.
 
     Attributes
@@ -60,7 +60,7 @@ schema InfrastructureClusterxK8sIoV1alpha1AzureASOManagedControlPlaneTemplateSpe
 
 
 schema InfrastructureClusterxK8sIoV1alpha1AzureASOManagedControlPlaneTemplateSpecTemplateSpec:
-    """
+    r"""
     AzureASOManagedControlPlaneTemplateResourceSpec defines the desired state of the templated resource.
 
     Attributes

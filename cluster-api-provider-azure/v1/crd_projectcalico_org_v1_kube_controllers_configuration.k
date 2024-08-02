@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema KubeControllersConfiguration:
-    """
+    r"""
     crd projectcalico org v1 kube controllers configuration
 
     Attributes
@@ -36,7 +36,7 @@ schema KubeControllersConfiguration:
 
 
 schema CrdProjectcalicoOrgV1KubeControllersConfigurationSpec:
-    """
+    r"""
     KubeControllersConfigurationSpec contains the values of the Kubernetes controllers configuration.
 
     Attributes
@@ -70,7 +70,7 @@ schema CrdProjectcalicoOrgV1KubeControllersConfigurationSpec:
 
 
 schema CrdProjectcalicoOrgV1KubeControllersConfigurationSpecControllers:
-    """
+    r"""
     Controllers enables and configures individual Kubernetes controllers
 
     Attributes
@@ -100,7 +100,7 @@ schema CrdProjectcalicoOrgV1KubeControllersConfigurationSpecControllers:
 
 
 schema CrdProjectcalicoOrgV1KubeControllersConfigurationSpecControllersNamespace:
-    """
+    r"""
     Namespace enables and configures the namespace controller. Enabled by default, set to nil to disable.
 
     Attributes
@@ -114,7 +114,7 @@ schema CrdProjectcalicoOrgV1KubeControllersConfigurationSpecControllersNamespace
 
 
 schema CrdProjectcalicoOrgV1KubeControllersConfigurationSpecControllersNode:
-    """
+    r"""
     Node enables and configures the node controller. Enabled by default, set to nil to disable.
 
     Attributes
@@ -140,7 +140,7 @@ schema CrdProjectcalicoOrgV1KubeControllersConfigurationSpecControllersNode:
 
 
 schema CrdProjectcalicoOrgV1KubeControllersConfigurationSpecControllersNodeHostEndpoint:
-    """
+    r"""
     HostEndpoint controls syncing nodes to host endpoints. Disabled by default, set to nil to disable.
 
     Attributes
@@ -154,7 +154,7 @@ schema CrdProjectcalicoOrgV1KubeControllersConfigurationSpecControllersNodeHostE
 
 
 schema CrdProjectcalicoOrgV1KubeControllersConfigurationSpecControllersPolicy:
-    """
+    r"""
     Policy enables and configures the policy controller. Enabled by default, set to nil to disable.
 
     Attributes
@@ -168,7 +168,7 @@ schema CrdProjectcalicoOrgV1KubeControllersConfigurationSpecControllersPolicy:
 
 
 schema CrdProjectcalicoOrgV1KubeControllersConfigurationSpecControllersServiceAccount:
-    """
+    r"""
     ServiceAccount enables and configures the service account controller. Enabled by default, set to nil to disable.
 
     Attributes
@@ -182,7 +182,7 @@ schema CrdProjectcalicoOrgV1KubeControllersConfigurationSpecControllersServiceAc
 
 
 schema CrdProjectcalicoOrgV1KubeControllersConfigurationSpecControllersWorkloadEndpoint:
-    """
+    r"""
     WorkloadEndpoint enables and configures the workload endpoint controller. Enabled by default, set to nil to disable.
 
     Attributes
@@ -196,7 +196,7 @@ schema CrdProjectcalicoOrgV1KubeControllersConfigurationSpecControllersWorkloadE
 
 
 schema CrdProjectcalicoOrgV1KubeControllersConfigurationStatus:
-    """
+    r"""
     KubeControllersConfigurationStatus represents the status of the configuration. It's useful for admins to be able to see the actual config that was applied, which can be modified by environment variables on the kube-controllers process.
 
     Attributes
@@ -214,7 +214,7 @@ schema CrdProjectcalicoOrgV1KubeControllersConfigurationStatus:
 
 
 schema CrdProjectcalicoOrgV1KubeControllersConfigurationStatusRunningConfig:
-    """
+    r"""
     RunningConfig contains the effective config that is running in the kube-controllers pod, after merging the API resource with any environment variables.
 
     Attributes
@@ -248,7 +248,7 @@ schema CrdProjectcalicoOrgV1KubeControllersConfigurationStatusRunningConfig:
 
 
 schema CrdProjectcalicoOrgV1KubeControllersConfigurationStatusRunningConfigControllers:
-    """
+    r"""
     Controllers enables and configures individual Kubernetes controllers
 
     Attributes
@@ -278,7 +278,7 @@ schema CrdProjectcalicoOrgV1KubeControllersConfigurationStatusRunningConfigContr
 
 
 schema CrdProjectcalicoOrgV1KubeControllersConfigurationStatusRunningConfigControllersNamespace:
-    """
+    r"""
     Namespace enables and configures the namespace controller. Enabled by default, set to nil to disable.
 
     Attributes
@@ -292,7 +292,7 @@ schema CrdProjectcalicoOrgV1KubeControllersConfigurationStatusRunningConfigContr
 
 
 schema CrdProjectcalicoOrgV1KubeControllersConfigurationStatusRunningConfigControllersNode:
-    """
+    r"""
     Node enables and configures the node controller. Enabled by default, set to nil to disable.
 
     Attributes
@@ -318,7 +318,7 @@ schema CrdProjectcalicoOrgV1KubeControllersConfigurationStatusRunningConfigContr
 
 
 schema CrdProjectcalicoOrgV1KubeControllersConfigurationStatusRunningConfigControllersNodeHostEndpoint:
-    """
+    r"""
     HostEndpoint controls syncing nodes to host endpoints. Disabled by default, set to nil to disable.
 
     Attributes
@@ -332,7 +332,7 @@ schema CrdProjectcalicoOrgV1KubeControllersConfigurationStatusRunningConfigContr
 
 
 schema CrdProjectcalicoOrgV1KubeControllersConfigurationStatusRunningConfigControllersPolicy:
-    """
+    r"""
     Policy enables and configures the policy controller. Enabled by default, set to nil to disable.
 
     Attributes
@@ -346,7 +346,7 @@ schema CrdProjectcalicoOrgV1KubeControllersConfigurationStatusRunningConfigContr
 
 
 schema CrdProjectcalicoOrgV1KubeControllersConfigurationStatusRunningConfigControllersServiceAccount:
-    """
+    r"""
     ServiceAccount enables and configures the service account controller. Enabled by default, set to nil to disable.
 
     Attributes
@@ -360,7 +360,7 @@ schema CrdProjectcalicoOrgV1KubeControllersConfigurationStatusRunningConfigContr
 
 
 schema CrdProjectcalicoOrgV1KubeControllersConfigurationStatusRunningConfigControllersWorkloadEndpoint:
-    """
+    r"""
     WorkloadEndpoint enables and configures the workload endpoint controller. Enabled by default, set to nil to disable.
 
     Attributes

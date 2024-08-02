@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema IPPool:
-    """
+    r"""
     crd projectcalico org v1 IP pool
 
     Attributes
@@ -32,7 +32,7 @@ schema IPPool:
 
 
 schema CrdProjectcalicoOrgV1IPPoolSpec:
-    """
+    r"""
     IPPoolSpec contains the specification for an IPPool resource.
 
     Attributes
@@ -86,7 +86,7 @@ schema CrdProjectcalicoOrgV1IPPoolSpec:
 
 
 schema CrdProjectcalicoOrgV1IPPoolSpecIpip:
-    """
+    r"""
     Deprecated: this field is only used for APIv1 backwards compatibility. Setting this field is not allowed, this field is for internal use only.
 
     Attributes

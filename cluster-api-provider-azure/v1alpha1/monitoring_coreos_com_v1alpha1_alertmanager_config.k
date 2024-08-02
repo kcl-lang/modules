@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema AlertmanagerConfig:
-    """
+    r"""
     AlertmanagerConfig defines a namespaced AlertmanagerConfig to be aggregated across multiple namespaces configuring one Alertmanager.
 
     Attributes
@@ -32,7 +32,7 @@ schema AlertmanagerConfig:
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpec:
-    """
+    r"""
     monitoring coreos com v1alpha1 alertmanager config spec
 
     Attributes
@@ -54,7 +54,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpec:
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecInhibitRulesItems0:
-    """
+    r"""
     monitoring coreos com v1alpha1 alertmanager config spec inhibit rules items0
 
     Attributes
@@ -76,7 +76,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecInhibitRulesItems0:
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecInhibitRulesItems0SourceMatchItems0:
-    """
+    r"""
     monitoring coreos com v1alpha1 alertmanager config spec inhibit rules items0 source match items0
 
     Attributes
@@ -98,7 +98,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecInhibitRulesItems0Source
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecInhibitRulesItems0TargetMatchItems0:
-    """
+    r"""
     monitoring coreos com v1alpha1 alertmanager config spec inhibit rules items0 target match items0
 
     Attributes
@@ -120,7 +120,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecInhibitRulesItems0Target
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0:
-    """
+    r"""
     monitoring coreos com v1alpha1 alertmanager config spec receivers items0
 
     Attributes
@@ -150,7 +150,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0:
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0OpsgenieConfigsItems0:
-    """
+    r"""
     monitoring coreos com v1alpha1 alertmanager config spec receivers items0 opsgenie configs items0
 
     Attributes
@@ -208,7 +208,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0OpsgenieC
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0OpsgenieConfigsItems0APIKey:
-    """
+    r"""
     SecretKeySelector selects a key of a Secret.
 
     Attributes
@@ -230,7 +230,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0OpsgenieC
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0OpsgenieConfigsItems0DetailsItems0:
-    """
+    r"""
     monitoring coreos com v1alpha1 alertmanager config spec receivers items0 opsgenie configs items0 details items0
 
     Attributes
@@ -248,7 +248,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0OpsgenieC
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0OpsgenieConfigsItems0HTTPConfig:
-    """
+    r"""
     monitoring coreos com v1alpha1 alertmanager config spec receivers items0 opsgenie configs items0 HTTP config
 
     Attributes
@@ -274,7 +274,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0OpsgenieC
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0OpsgenieConfigsItems0HTTPConfigBasicAuth:
-    """
+    r"""
     BasicAuth allow an endpoint to authenticate over basic authentication More info: https://prometheus.io/docs/operating/configuration/#endpoints
 
     Attributes
@@ -292,7 +292,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0OpsgenieC
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0OpsgenieConfigsItems0HTTPConfigBasicAuthPassword:
-    """
+    r"""
     The secret in the service monitor namespace that contains the password for authentication.
 
     Attributes
@@ -314,7 +314,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0OpsgenieC
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0OpsgenieConfigsItems0HTTPConfigBasicAuthUsername:
-    """
+    r"""
     The secret in the service monitor namespace that contains the username for authentication.
 
     Attributes
@@ -336,7 +336,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0OpsgenieC
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0OpsgenieConfigsItems0HTTPConfigBearerTokenSecret:
-    """
+    r"""
     SecretKeySelector selects a key of a Secret.
 
     Attributes
@@ -358,7 +358,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0OpsgenieC
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0OpsgenieConfigsItems0HTTPConfigTLSConfig:
-    """
+    r"""
     SafeTLSConfig specifies safe TLS configuration parameters.
 
     Attributes
@@ -388,7 +388,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0OpsgenieC
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0OpsgenieConfigsItems0HTTPConfigTLSConfigCa:
-    """
+    r"""
     Struct containing the CA cert to use for the targets.
 
     Attributes
@@ -406,7 +406,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0OpsgenieC
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0OpsgenieConfigsItems0HTTPConfigTLSConfigCaConfigMap:
-    """
+    r"""
     ConfigMap containing data to use for the targets.
 
     Attributes
@@ -428,7 +428,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0OpsgenieC
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0OpsgenieConfigsItems0HTTPConfigTLSConfigCaSecret:
-    """
+    r"""
     Secret containing data to use for the targets.
 
     Attributes
@@ -450,7 +450,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0OpsgenieC
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0OpsgenieConfigsItems0HTTPConfigTLSConfigCert:
-    """
+    r"""
     Struct containing the client cert file for the targets.
 
     Attributes
@@ -468,7 +468,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0OpsgenieC
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0OpsgenieConfigsItems0HTTPConfigTLSConfigCertConfigMap:
-    """
+    r"""
     ConfigMap containing data to use for the targets.
 
     Attributes
@@ -490,7 +490,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0OpsgenieC
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0OpsgenieConfigsItems0HTTPConfigTLSConfigCertSecret:
-    """
+    r"""
     Secret containing data to use for the targets.
 
     Attributes
@@ -512,7 +512,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0OpsgenieC
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0OpsgenieConfigsItems0HTTPConfigTLSConfigKeySecret:
-    """
+    r"""
     Secret containing the client key file for the targets.
 
     Attributes
@@ -534,7 +534,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0OpsgenieC
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0OpsgenieConfigsItems0RespondersItems0:
-    """
+    r"""
     monitoring coreos com v1alpha1 alertmanager config spec receivers items0 opsgenie configs items0 responders items0
 
     Attributes
@@ -560,7 +560,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0OpsgenieC
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0PagerDutyConfigsItems0:
-    """
+    r"""
     monitoring coreos com v1alpha1 alertmanager config spec receivers items0 pager duty configs items0
 
     Attributes
@@ -622,7 +622,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0PagerDuty
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0PagerDutyConfigsItems0DetailsItems0:
-    """
+    r"""
     monitoring coreos com v1alpha1 alertmanager config spec receivers items0 pager duty configs items0 details items0
 
     Attributes
@@ -640,7 +640,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0PagerDuty
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0PagerDutyConfigsItems0HTTPConfig:
-    """
+    r"""
     monitoring coreos com v1alpha1 alertmanager config spec receivers items0 pager duty configs items0 HTTP config
 
     Attributes
@@ -666,7 +666,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0PagerDuty
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0PagerDutyConfigsItems0HTTPConfigBasicAuth:
-    """
+    r"""
     BasicAuth allow an endpoint to authenticate over basic authentication More info: https://prometheus.io/docs/operating/configuration/#endpoints
 
     Attributes
@@ -684,7 +684,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0PagerDuty
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0PagerDutyConfigsItems0HTTPConfigBasicAuthPassword:
-    """
+    r"""
     The secret in the service monitor namespace that contains the password for authentication.
 
     Attributes
@@ -706,7 +706,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0PagerDuty
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0PagerDutyConfigsItems0HTTPConfigBasicAuthUsername:
-    """
+    r"""
     The secret in the service monitor namespace that contains the username for authentication.
 
     Attributes
@@ -728,7 +728,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0PagerDuty
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0PagerDutyConfigsItems0HTTPConfigBearerTokenSecret:
-    """
+    r"""
     SecretKeySelector selects a key of a Secret.
 
     Attributes
@@ -750,7 +750,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0PagerDuty
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0PagerDutyConfigsItems0HTTPConfigTLSConfig:
-    """
+    r"""
     SafeTLSConfig specifies safe TLS configuration parameters.
 
     Attributes
@@ -780,7 +780,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0PagerDuty
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0PagerDutyConfigsItems0HTTPConfigTLSConfigCa:
-    """
+    r"""
     Struct containing the CA cert to use for the targets.
 
     Attributes
@@ -798,7 +798,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0PagerDuty
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0PagerDutyConfigsItems0HTTPConfigTLSConfigCaConfigMap:
-    """
+    r"""
     ConfigMap containing data to use for the targets.
 
     Attributes
@@ -820,7 +820,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0PagerDuty
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0PagerDutyConfigsItems0HTTPConfigTLSConfigCaSecret:
-    """
+    r"""
     Secret containing data to use for the targets.
 
     Attributes
@@ -842,7 +842,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0PagerDuty
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0PagerDutyConfigsItems0HTTPConfigTLSConfigCert:
-    """
+    r"""
     Struct containing the client cert file for the targets.
 
     Attributes
@@ -860,7 +860,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0PagerDuty
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0PagerDutyConfigsItems0HTTPConfigTLSConfigCertConfigMap:
-    """
+    r"""
     ConfigMap containing data to use for the targets.
 
     Attributes
@@ -882,7 +882,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0PagerDuty
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0PagerDutyConfigsItems0HTTPConfigTLSConfigCertSecret:
-    """
+    r"""
     Secret containing data to use for the targets.
 
     Attributes
@@ -904,7 +904,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0PagerDuty
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0PagerDutyConfigsItems0HTTPConfigTLSConfigKeySecret:
-    """
+    r"""
     Secret containing the client key file for the targets.
 
     Attributes
@@ -926,7 +926,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0PagerDuty
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0PagerDutyConfigsItems0RoutingKey:
-    """
+    r"""
     SecretKeySelector selects a key of a Secret.
 
     Attributes
@@ -948,7 +948,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0PagerDuty
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0PagerDutyConfigsItems0ServiceKey:
-    """
+    r"""
     SecretKeySelector selects a key of a Secret.
 
     Attributes
@@ -970,7 +970,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0PagerDuty
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WeChatConfigsItems0:
-    """
+    r"""
     monitoring coreos com v1alpha1 alertmanager config spec receivers items0 we chat configs items0
 
     Attributes
@@ -1024,7 +1024,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WeChatCon
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WeChatConfigsItems0APISecret:
-    """
+    r"""
     SecretKeySelector selects a key of a Secret.
 
     Attributes
@@ -1046,7 +1046,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WeChatCon
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WeChatConfigsItems0HTTPConfig:
-    """
+    r"""
     monitoring coreos com v1alpha1 alertmanager config spec receivers items0 we chat configs items0 HTTP config
 
     Attributes
@@ -1072,7 +1072,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WeChatCon
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WeChatConfigsItems0HTTPConfigBasicAuth:
-    """
+    r"""
     BasicAuth allow an endpoint to authenticate over basic authentication More info: https://prometheus.io/docs/operating/configuration/#endpoints
 
     Attributes
@@ -1090,7 +1090,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WeChatCon
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WeChatConfigsItems0HTTPConfigBasicAuthPassword:
-    """
+    r"""
     The secret in the service monitor namespace that contains the password for authentication.
 
     Attributes
@@ -1112,7 +1112,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WeChatCon
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WeChatConfigsItems0HTTPConfigBasicAuthUsername:
-    """
+    r"""
     The secret in the service monitor namespace that contains the username for authentication.
 
     Attributes
@@ -1134,7 +1134,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WeChatCon
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WeChatConfigsItems0HTTPConfigBearerTokenSecret:
-    """
+    r"""
     SecretKeySelector selects a key of a Secret.
 
     Attributes
@@ -1156,7 +1156,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WeChatCon
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WeChatConfigsItems0HTTPConfigTLSConfig:
-    """
+    r"""
     SafeTLSConfig specifies safe TLS configuration parameters.
 
     Attributes
@@ -1186,7 +1186,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WeChatCon
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WeChatConfigsItems0HTTPConfigTLSConfigCa:
-    """
+    r"""
     Struct containing the CA cert to use for the targets.
 
     Attributes
@@ -1204,7 +1204,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WeChatCon
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WeChatConfigsItems0HTTPConfigTLSConfigCaConfigMap:
-    """
+    r"""
     ConfigMap containing data to use for the targets.
 
     Attributes
@@ -1226,7 +1226,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WeChatCon
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WeChatConfigsItems0HTTPConfigTLSConfigCaSecret:
-    """
+    r"""
     Secret containing data to use for the targets.
 
     Attributes
@@ -1248,7 +1248,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WeChatCon
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WeChatConfigsItems0HTTPConfigTLSConfigCert:
-    """
+    r"""
     Struct containing the client cert file for the targets.
 
     Attributes
@@ -1266,7 +1266,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WeChatCon
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WeChatConfigsItems0HTTPConfigTLSConfigCertConfigMap:
-    """
+    r"""
     ConfigMap containing data to use for the targets.
 
     Attributes
@@ -1288,7 +1288,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WeChatCon
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WeChatConfigsItems0HTTPConfigTLSConfigCertSecret:
-    """
+    r"""
     Secret containing data to use for the targets.
 
     Attributes
@@ -1310,7 +1310,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WeChatCon
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WeChatConfigsItems0HTTPConfigTLSConfigKeySecret:
-    """
+    r"""
     Secret containing the client key file for the targets.
 
     Attributes
@@ -1332,7 +1332,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WeChatCon
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WebhookConfigsItems0:
-    """
+    r"""
     monitoring coreos com v1alpha1 alertmanager config spec receivers items0 webhook configs items0
 
     Attributes
@@ -1362,7 +1362,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WebhookCo
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WebhookConfigsItems0HTTPConfig:
-    """
+    r"""
     monitoring coreos com v1alpha1 alertmanager config spec receivers items0 webhook configs items0 HTTP config
 
     Attributes
@@ -1388,7 +1388,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WebhookCo
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WebhookConfigsItems0HTTPConfigBasicAuth:
-    """
+    r"""
     BasicAuth allow an endpoint to authenticate over basic authentication More info: https://prometheus.io/docs/operating/configuration/#endpoints
 
     Attributes
@@ -1406,7 +1406,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WebhookCo
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WebhookConfigsItems0HTTPConfigBasicAuthPassword:
-    """
+    r"""
     The secret in the service monitor namespace that contains the password for authentication.
 
     Attributes
@@ -1428,7 +1428,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WebhookCo
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WebhookConfigsItems0HTTPConfigBasicAuthUsername:
-    """
+    r"""
     The secret in the service monitor namespace that contains the username for authentication.
 
     Attributes
@@ -1450,7 +1450,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WebhookCo
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WebhookConfigsItems0HTTPConfigBearerTokenSecret:
-    """
+    r"""
     SecretKeySelector selects a key of a Secret.
 
     Attributes
@@ -1472,7 +1472,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WebhookCo
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WebhookConfigsItems0HTTPConfigTLSConfig:
-    """
+    r"""
     SafeTLSConfig specifies safe TLS configuration parameters.
 
     Attributes
@@ -1502,7 +1502,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WebhookCo
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WebhookConfigsItems0HTTPConfigTLSConfigCa:
-    """
+    r"""
     Struct containing the CA cert to use for the targets.
 
     Attributes
@@ -1520,7 +1520,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WebhookCo
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WebhookConfigsItems0HTTPConfigTLSConfigCaConfigMap:
-    """
+    r"""
     ConfigMap containing data to use for the targets.
 
     Attributes
@@ -1542,7 +1542,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WebhookCo
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WebhookConfigsItems0HTTPConfigTLSConfigCaSecret:
-    """
+    r"""
     Secret containing data to use for the targets.
 
     Attributes
@@ -1564,7 +1564,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WebhookCo
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WebhookConfigsItems0HTTPConfigTLSConfigCert:
-    """
+    r"""
     Struct containing the client cert file for the targets.
 
     Attributes
@@ -1582,7 +1582,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WebhookCo
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WebhookConfigsItems0HTTPConfigTLSConfigCertConfigMap:
-    """
+    r"""
     ConfigMap containing data to use for the targets.
 
     Attributes
@@ -1604,7 +1604,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WebhookCo
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WebhookConfigsItems0HTTPConfigTLSConfigCertSecret:
-    """
+    r"""
     Secret containing data to use for the targets.
 
     Attributes
@@ -1626,7 +1626,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WebhookCo
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WebhookConfigsItems0HTTPConfigTLSConfigKeySecret:
-    """
+    r"""
     Secret containing the client key file for the targets.
 
     Attributes
@@ -1648,7 +1648,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WebhookCo
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WebhookConfigsItems0URLSecret:
-    """
+    r"""
     SecretKeySelector selects a key of a Secret.
 
     Attributes
@@ -1670,7 +1670,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WebhookCo
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecRoute:
-    """
+    r"""
     monitoring coreos com v1alpha1 alertmanager config spec route
 
     Attributes
@@ -1712,7 +1712,7 @@ schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecRoute:
 
 
 schema MonitoringCoreosComV1alpha1AlertmanagerConfigSpecRouteMatchersItems0:
-    """
+    r"""
     monitoring coreos com v1alpha1 alertmanager config spec route matchers items0
 
     Attributes

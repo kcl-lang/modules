@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema BlockAffinity:
-    """
+    r"""
     crd projectcalico org v1 block affinity
 
     Attributes
@@ -32,7 +32,7 @@ schema BlockAffinity:
 
 
 schema CrdProjectcalicoOrgV1BlockAffinitySpec:
-    """
+    r"""
     BlockAffinitySpec contains the specification for a BlockAffinity resource.
 
     Attributes

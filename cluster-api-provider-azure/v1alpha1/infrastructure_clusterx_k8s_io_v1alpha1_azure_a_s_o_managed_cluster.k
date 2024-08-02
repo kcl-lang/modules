@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema AzureASOManagedCluster:
-    """
+    r"""
     AzureASOManagedCluster is the Schema for the azureasomanagedclusters API.
 
     Attributes
@@ -36,7 +36,7 @@ schema AzureASOManagedCluster:
 
 
 schema InfrastructureClusterxK8sIoV1alpha1AzureASOManagedClusterSpec:
-    """
+    r"""
     AzureASOManagedClusterSpec defines the desired state of AzureASOManagedCluster.
 
     Attributes
@@ -54,7 +54,7 @@ schema InfrastructureClusterxK8sIoV1alpha1AzureASOManagedClusterSpec:
 
 
 schema InfrastructureClusterxK8sIoV1alpha1AzureASOManagedClusterSpecControlPlaneEndpoint:
-    """
+    r"""
     ControlPlaneEndpoint is the location of the API server within the control plane. CAPZ manages this field
     and it should not be set by the user. It fulfills Cluster API's cluster infrastructure provider contract.
     Because this field is programmatically set by CAPZ after resource creation, we define it as +optional
@@ -75,7 +75,7 @@ schema InfrastructureClusterxK8sIoV1alpha1AzureASOManagedClusterSpecControlPlane
 
 
 schema InfrastructureClusterxK8sIoV1alpha1AzureASOManagedClusterStatus:
-    """
+    r"""
     AzureASOManagedClusterStatus defines the observed state of AzureASOManagedCluster.
 
     Attributes
@@ -94,7 +94,7 @@ schema InfrastructureClusterxK8sIoV1alpha1AzureASOManagedClusterStatus:
 
 
 schema InfrastructureClusterxK8sIoV1alpha1AzureASOManagedClusterStatusResourcesItems0:
-    """
+    r"""
     ResourceStatus represents the status of a resource.
 
     Attributes
@@ -112,7 +112,7 @@ schema InfrastructureClusterxK8sIoV1alpha1AzureASOManagedClusterStatusResourcesI
 
 
 schema InfrastructureClusterxK8sIoV1alpha1AzureASOManagedClusterStatusResourcesItems0Resource:
-    """
+    r"""
     StatusResource is a handle to a resource.
 
     Attributes

@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema NetworkSet:
-    """
+    r"""
     NetworkSet is the Namespaced-equivalent of the GlobalNetworkSet.
 
     Attributes
@@ -32,7 +32,7 @@ schema NetworkSet:
 
 
 schema CrdProjectcalicoOrgV1NetworkSetSpec:
-    """
+    r"""
     NetworkSetSpec contains the specification for a NetworkSet resource.
 
     Attributes

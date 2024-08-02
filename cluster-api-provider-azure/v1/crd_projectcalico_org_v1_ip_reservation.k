@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema IPReservation:
-    """
+    r"""
     crd projectcalico org v1 IP reservation
 
     Attributes
@@ -32,7 +32,7 @@ schema IPReservation:
 
 
 schema CrdProjectcalicoOrgV1IPReservationSpec:
-    """
+    r"""
     IPReservationSpec contains the specification for an IPReservation resource.
 
     Attributes

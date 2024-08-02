@@ -8,7 +8,7 @@ _regex_match = regex.match
 
 
 schema BGPConfiguration:
-    """
+    r"""
     BGPConfiguration contains the configuration for any BGP routing.
 
     Attributes
@@ -34,7 +34,7 @@ schema BGPConfiguration:
 
 
 schema CrdProjectcalicoOrgV1BGPConfigurationSpec:
-    """
+    r"""
     BGPConfigurationSpec contains the values of the BGP configuration.
 
     Attributes
@@ -96,12 +96,12 @@ schema CrdProjectcalicoOrgV1BGPConfigurationSpec:
 
 
     check:
-        listenPort <= 65535
-        listenPort >= 1
+        listenPort <= 65535 if listenPort not in [None, Undefined]
+        listenPort >= 1 if listenPort not in [None, Undefined]
 
 
 schema CrdProjectcalicoOrgV1BGPConfigurationSpecCommunitiesItems0:
-    """
+    r"""
     Community contains standard or large community value and its name.
 
     Attributes
@@ -123,7 +123,7 @@ schema CrdProjectcalicoOrgV1BGPConfigurationSpecCommunitiesItems0:
 
 
 schema CrdProjectcalicoOrgV1BGPConfigurationSpecNodeMeshPassword:
-    """
+    r"""
     Optional BGP password for full node-to-mesh peerings. This field can only be set on the default BGPConfiguration instance and requires that NodeMesh is enabled
 
     Attributes
@@ -137,7 +137,7 @@ schema CrdProjectcalicoOrgV1BGPConfigurationSpecNodeMeshPassword:
 
 
 schema CrdProjectcalicoOrgV1BGPConfigurationSpecNodeMeshPasswordSecretKeyRef:
-    """
+    r"""
     Selects a key of a secret in the node pod's namespace.
 
     Attributes
@@ -159,7 +159,7 @@ schema CrdProjectcalicoOrgV1BGPConfigurationSpecNodeMeshPasswordSecretKeyRef:
 
 
 schema CrdProjectcalicoOrgV1BGPConfigurationSpecPrefixAdvertisementsItems0:
-    """
+    r"""
     PrefixAdvertisement configures advertisement properties for the specified CIDR.
 
     Attributes
@@ -177,7 +177,7 @@ schema CrdProjectcalicoOrgV1BGPConfigurationSpecPrefixAdvertisementsItems0:
 
 
 schema CrdProjectcalicoOrgV1BGPConfigurationSpecServiceClusterIPsItems0:
-    """
+    r"""
     ServiceClusterIPBlock represents a single allowed ClusterIP CIDR block.
 
     Attributes
@@ -191,7 +191,7 @@ schema CrdProjectcalicoOrgV1BGPConfigurationSpecServiceClusterIPsItems0:
 
 
 schema CrdProjectcalicoOrgV1BGPConfigurationSpecServiceExternalIPsItems0:
-    """
+    r"""
     ServiceExternalIPBlock represents a single allowed External IP CIDR block.
 
     Attributes
@@ -205,7 +205,7 @@ schema CrdProjectcalicoOrgV1BGPConfigurationSpecServiceExternalIPsItems0:
 
 
 schema CrdProjectcalicoOrgV1BGPConfigurationSpecServiceLoadBalancerIPsItems0:
-    """
+    r"""
     ServiceLoadBalancerIPBlock represents a single allowed LoadBalancer IP CIDR block.
 
     Attributes
