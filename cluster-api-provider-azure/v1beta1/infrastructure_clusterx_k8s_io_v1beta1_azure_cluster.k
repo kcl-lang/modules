@@ -8,7 +8,7 @@ _regex_match = regex.match
 
 
 schema AzureCluster:
-    """
+    r"""
     AzureCluster is the Schema for the azureclusters API.
 
     Attributes
@@ -38,7 +38,7 @@ schema AzureCluster:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpec:
-    """
+    r"""
     AzureClusterSpec defines the desired state of AzureCluster.
 
     Attributes
@@ -120,7 +120,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpec:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpec:
-    """
+    r"""
     BastionSpec encapsulates all things related to the Bastions in the cluster.
 
     Attributes
@@ -134,7 +134,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpec:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastion:
-    """
+    r"""
     AzureBastion specifies how the Azure Bastion cloud component should be configured.
 
     Attributes
@@ -164,7 +164,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastion
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastionPublicIP:
-    """
+    r"""
     PublicIPSpec defines the inputs to create an Azure public IP address.
 
     Attributes
@@ -186,7 +186,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastion
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastionPublicIPIPTagsItems0:
-    """
+    r"""
     IPTag contains the IpTag associated with the object.
 
     Attributes
@@ -204,7 +204,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastion
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastionSubnet:
-    """
+    r"""
     SubnetSpec configures an Azure subnet.
 
     Attributes
@@ -251,7 +251,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastion
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastionSubnetNatGateway:
-    """
+    r"""
     NatGateway associated with this subnet.
 
     Attributes
@@ -274,7 +274,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastion
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastionSubnetNatGatewayIP:
-    """
+    r"""
     PublicIPSpec defines the inputs to create an Azure public IP address.
 
     Attributes
@@ -296,7 +296,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastion
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastionSubnetNatGatewayIPIPTagsItems0:
-    """
+    r"""
     IPTag contains the IpTag associated with the object.
 
     Attributes
@@ -314,7 +314,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastion
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastionSubnetPrivateEndpointsItems0:
-    """
+    r"""
     PrivateEndpointSpec configures an Azure Private Endpoint.
 
     Attributes
@@ -355,7 +355,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastion
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastionSubnetPrivateEndpointsItems0PrivateLinkServiceConnectionsItems0:
-    """
+    r"""
     PrivateLinkServiceConnection defines the specification for a private link service connection associated with a private endpoint.
 
     Attributes
@@ -381,11 +381,11 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastion
 
 
     check:
-        len(requestMessage) <= 140
+        len(requestMessage) <= 140 if requestMessage
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastionSubnetRouteTable:
-    """
+    r"""
     RouteTable defines the route table that should be attached to this subnet.
 
     Attributes
@@ -404,7 +404,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastion
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastionSubnetSecurityGroup:
-    """
+    r"""
     SecurityGroup defines the NSG (network security group) that should be attached to this subnet.
 
     Attributes
@@ -431,7 +431,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastion
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastionSubnetSecurityGroupSecurityRulesItems0:
-    """
+    r"""
     SecurityRule defines an Azure security rule for security groups.
 
     Attributes
@@ -485,7 +485,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastion
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastionSubnetServiceEndpointsItems0:
-    """
+    r"""
     ServiceEndpointSpec configures an Azure Service Endpoint.
 
     Attributes
@@ -503,7 +503,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastion
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecCloudProviderConfigOverrides:
-    """
+    r"""
     CloudProviderConfigOverrides is an optional set of configuration values that can be overridden in azure cloud provider config.
     This is only a subset of options that are available in azure cloud provider config.
     Some values for the cloud provider config are inferred from other parts of cluster api provider azure spec, and may not be available for overrides.
@@ -525,7 +525,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecCloudProviderConfigOver
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecCloudProviderConfigOverridesBackOffs:
-    """
+    r"""
     BackOffConfig indicates the back-off config options.
 
     Attributes
@@ -560,7 +560,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecCloudProviderConfigOver
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecCloudProviderConfigOverridesRateLimitsItems0:
-    """
+    r"""
     RateLimitSpec represents the rate limit configuration for a particular kind of resource.
     Eg. loadBalancerRateLimit is used to configure rate limits for load balancers.
     This eventually gets converted to CloudProviderRateLimitConfig that cloud-provider-azure expects.
@@ -583,7 +583,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecCloudProviderConfigOver
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecCloudProviderConfigOverridesRateLimitsItems0Config:
-    """
+    r"""
     RateLimitConfig indicates the rate limit config options.
 
     Attributes
@@ -618,7 +618,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecCloudProviderConfigOver
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecControlPlaneEndpoint:
-    """
+    r"""
     ControlPlaneEndpoint represents the endpoint used to communicate with the control plane. It is not recommended to set
     this when creating an AzureCluster as CAPZ will set this for you. However, if it is set, CAPZ will not change it.
 
@@ -637,7 +637,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecControlPlaneEndpoint:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecExtendedLocation:
-    """
+    r"""
     ExtendedLocation is an optional set of ExtendedLocation properties for clusters on Azure public MEC.
 
     Attributes
@@ -655,7 +655,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecExtendedLocation:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecFailureDomainsAnon:
-    """
+    r"""
     FailureDomainSpec is the Schema for Cluster API failure domains.
     It allows controllers to understand how many failure domains a cluster can optionally span across.
 
@@ -674,7 +674,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecFailureDomainsAnon:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecIdentityRef:
-    """
+    r"""
     IdentityRef is a reference to an AzureIdentity to be used when reconciling this cluster
 
     Attributes
@@ -724,7 +724,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecIdentityRef:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpec:
-    """
+    r"""
     NetworkSpec encapsulates all things related to Azure network.
 
     Attributes
@@ -758,7 +758,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpec:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecAPIServerLB:
-    """
+    r"""
     APIServerLB is the configuration for the control-plane load balancer.
 
     Attributes
@@ -801,7 +801,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecAPIServerLB:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecAPIServerLBBackendPool:
-    """
+    r"""
     BackendPool describes the backend pool of the load balancer.
 
     Attributes
@@ -816,7 +816,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecAPIServerLBB
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecAPIServerLBFrontendIPsItems0:
-    """
+    r"""
     FrontendIP defines a load balancer frontend IP configuration.
 
     Attributes
@@ -842,7 +842,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecAPIServerLBF
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecAPIServerLBFrontendIPsItems0PublicIP:
-    """
+    r"""
     PublicIPSpec defines the inputs to create an Azure public IP address.
 
     Attributes
@@ -864,7 +864,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecAPIServerLBF
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecAPIServerLBFrontendIPsItems0PublicIPIPTagsItems0:
-    """
+    r"""
     IPTag contains the IpTag associated with the object.
 
     Attributes
@@ -882,7 +882,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecAPIServerLBF
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecControlPlaneOutboundLB:
-    """
+    r"""
     ControlPlaneOutboundLB is the configuration for the control-plane outbound load balancer.
     This is different from APIServerLB, and is used only in private clusters (optionally) for enabling outbound traffic.
 
@@ -926,7 +926,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecControlPlane
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecControlPlaneOutboundLBBackendPool:
-    """
+    r"""
     BackendPool describes the backend pool of the load balancer.
 
     Attributes
@@ -941,7 +941,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecControlPlane
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecControlPlaneOutboundLBFrontendIPsItems0:
-    """
+    r"""
     FrontendIP defines a load balancer frontend IP configuration.
 
     Attributes
@@ -967,7 +967,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecControlPlane
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecControlPlaneOutboundLBFrontendIPsItems0PublicIP:
-    """
+    r"""
     PublicIPSpec defines the inputs to create an Azure public IP address.
 
     Attributes
@@ -989,7 +989,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecControlPlane
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecControlPlaneOutboundLBFrontendIPsItems0PublicIPIPTagsItems0:
-    """
+    r"""
     IPTag contains the IpTag associated with the object.
 
     Attributes
@@ -1007,7 +1007,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecControlPlane
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecNodeOutboundLB:
-    """
+    r"""
     NodeOutboundLB is the configuration for the node outbound load balancer.
 
     Attributes
@@ -1050,7 +1050,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecNodeOutbound
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecNodeOutboundLBBackendPool:
-    """
+    r"""
     BackendPool describes the backend pool of the load balancer.
 
     Attributes
@@ -1065,7 +1065,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecNodeOutbound
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecNodeOutboundLBFrontendIPsItems0:
-    """
+    r"""
     FrontendIP defines a load balancer frontend IP configuration.
 
     Attributes
@@ -1091,7 +1091,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecNodeOutbound
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecNodeOutboundLBFrontendIPsItems0PublicIP:
-    """
+    r"""
     PublicIPSpec defines the inputs to create an Azure public IP address.
 
     Attributes
@@ -1113,7 +1113,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecNodeOutbound
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecNodeOutboundLBFrontendIPsItems0PublicIPIPTagsItems0:
-    """
+    r"""
     IPTag contains the IpTag associated with the object.
 
     Attributes
@@ -1131,7 +1131,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecNodeOutbound
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecSubnetsItems0:
-    """
+    r"""
     SubnetSpec configures an Azure subnet.
 
     Attributes
@@ -1178,7 +1178,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecSubnetsItems
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecSubnetsItems0NatGateway:
-    """
+    r"""
     NatGateway associated with this subnet.
 
     Attributes
@@ -1201,7 +1201,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecSubnetsItems
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecSubnetsItems0NatGatewayIP:
-    """
+    r"""
     PublicIPSpec defines the inputs to create an Azure public IP address.
 
     Attributes
@@ -1223,7 +1223,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecSubnetsItems
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecSubnetsItems0NatGatewayIPIPTagsItems0:
-    """
+    r"""
     IPTag contains the IpTag associated with the object.
 
     Attributes
@@ -1241,7 +1241,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecSubnetsItems
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecSubnetsItems0PrivateEndpointsItems0:
-    """
+    r"""
     PrivateEndpointSpec configures an Azure Private Endpoint.
 
     Attributes
@@ -1282,7 +1282,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecSubnetsItems
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecSubnetsItems0PrivateEndpointsItems0PrivateLinkServiceConnectionsItems0:
-    """
+    r"""
     PrivateLinkServiceConnection defines the specification for a private link service connection associated with a private endpoint.
 
     Attributes
@@ -1308,11 +1308,11 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecSubnetsItems
 
 
     check:
-        len(requestMessage) <= 140
+        len(requestMessage) <= 140 if requestMessage
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecSubnetsItems0RouteTable:
-    """
+    r"""
     RouteTable defines the route table that should be attached to this subnet.
 
     Attributes
@@ -1331,7 +1331,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecSubnetsItems
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecSubnetsItems0SecurityGroup:
-    """
+    r"""
     SecurityGroup defines the NSG (network security group) that should be attached to this subnet.
 
     Attributes
@@ -1358,7 +1358,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecSubnetsItems
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecSubnetsItems0SecurityGroupSecurityRulesItems0:
-    """
+    r"""
     SecurityRule defines an Azure security rule for security groups.
 
     Attributes
@@ -1412,7 +1412,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecSubnetsItems
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecSubnetsItems0ServiceEndpointsItems0:
-    """
+    r"""
     ServiceEndpointSpec configures an Azure Service Endpoint.
 
     Attributes
@@ -1430,7 +1430,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecSubnetsItems
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecVnet:
-    """
+    r"""
     Vnet is the configuration for the Azure virtual network.
 
     Attributes
@@ -1466,7 +1466,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecVnet:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecVnetPeeringsItems0:
-    """
+    r"""
     VnetPeeringSpec specifies an existing remote virtual network to peer with the AzureCluster's virtual network.
 
     Attributes
@@ -1492,7 +1492,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecVnetPeerings
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecVnetPeeringsItems0ForwardPeeringProperties:
-    """
+    r"""
     ForwardPeeringProperties specifies VnetPeeringProperties for peering from the cluster's virtual network to the
     remote virtual network.
 
@@ -1525,7 +1525,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecVnetPeerings
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecVnetPeeringsItems0ReversePeeringProperties:
-    """
+    r"""
     ReversePeeringProperties specifies VnetPeeringProperties for peering from the remote virtual network to the
     cluster's virtual network.
 
@@ -1558,7 +1558,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecVnetPeerings
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterStatus:
-    """
+    r"""
     AzureClusterStatus defines the observed state of AzureCluster.
 
     Attributes
@@ -1590,7 +1590,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterStatus:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterStatusConditionsItems0:
-    """
+    r"""
     Condition defines an observation of a Cluster API resource operational state.
 
     Attributes
@@ -1633,7 +1633,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterStatusConditionsItems0:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterStatusFailureDomainsAnon:
-    """
+    r"""
     FailureDomainSpec is the Schema for Cluster API failure domains.
     It allows controllers to understand how many failure domains a cluster can optionally span across.
 
@@ -1652,7 +1652,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterStatusFailureDomainsAnon:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterStatusLongRunningOperationStatesItems0:
-    """
+    r"""
     Future contains the data needed for an Azure long-running operation to continue across reconcile loops.
 
     Attributes

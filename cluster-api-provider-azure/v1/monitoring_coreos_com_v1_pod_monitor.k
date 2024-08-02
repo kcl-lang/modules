@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema PodMonitor:
-    """
+    r"""
     PodMonitor defines monitoring for a set of pods.
 
     Attributes
@@ -32,7 +32,7 @@ schema PodMonitor:
 
 
 schema MonitoringCoreosComV1PodMonitorSpec:
-    """
+    r"""
     Specification of desired Pod selection for target discovery by Prometheus.
 
     Attributes
@@ -70,7 +70,7 @@ schema MonitoringCoreosComV1PodMonitorSpec:
 
 
 schema MonitoringCoreosComV1PodMonitorSpecNamespaceSelector:
-    """
+    r"""
     Selector to select which namespaces the Endpoints objects are discovered from.
 
     Attributes
@@ -88,7 +88,7 @@ schema MonitoringCoreosComV1PodMonitorSpecNamespaceSelector:
 
 
 schema MonitoringCoreosComV1PodMonitorSpecPodMetricsEndpointsItems0:
-    """
+    r"""
     PodMetricsEndpoint defines a scrapeable endpoint of a Kubernetes Pod serving Prometheus metrics.
 
     Attributes
@@ -158,7 +158,7 @@ schema MonitoringCoreosComV1PodMonitorSpecPodMetricsEndpointsItems0:
 
 
 schema MonitoringCoreosComV1PodMonitorSpecPodMetricsEndpointsItems0BasicAuth:
-    """
+    r"""
     BasicAuth allow an endpoint to authenticate over basic authentication. More info: https://prometheus.io/docs/operating/configuration/#endpoint
 
     Attributes
@@ -176,7 +176,7 @@ schema MonitoringCoreosComV1PodMonitorSpecPodMetricsEndpointsItems0BasicAuth:
 
 
 schema MonitoringCoreosComV1PodMonitorSpecPodMetricsEndpointsItems0BasicAuthPassword:
-    """
+    r"""
     The secret in the service monitor namespace that contains the password for authentication.
 
     Attributes
@@ -198,7 +198,7 @@ schema MonitoringCoreosComV1PodMonitorSpecPodMetricsEndpointsItems0BasicAuthPass
 
 
 schema MonitoringCoreosComV1PodMonitorSpecPodMetricsEndpointsItems0BasicAuthUsername:
-    """
+    r"""
     The secret in the service monitor namespace that contains the username for authentication.
 
     Attributes
@@ -220,7 +220,7 @@ schema MonitoringCoreosComV1PodMonitorSpecPodMetricsEndpointsItems0BasicAuthUser
 
 
 schema MonitoringCoreosComV1PodMonitorSpecPodMetricsEndpointsItems0BearerTokenSecret:
-    """
+    r"""
     Secret to mount to read bearer token for scraping targets. The secret needs to be in the same namespace as the pod monitor and accessible by the Prometheus Operator.
 
     Attributes
@@ -242,7 +242,7 @@ schema MonitoringCoreosComV1PodMonitorSpecPodMetricsEndpointsItems0BearerTokenSe
 
 
 schema MonitoringCoreosComV1PodMonitorSpecPodMetricsEndpointsItems0MetricRelabelingsItems0:
-    """
+    r"""
     RelabelConfig allows dynamic rewriting of the label set, being applied to samples before ingestion. It defines `<metric_relabel_configs>`-section of Prometheus configuration. More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#metric_relabel_configs
 
     Attributes
@@ -280,7 +280,7 @@ schema MonitoringCoreosComV1PodMonitorSpecPodMetricsEndpointsItems0MetricRelabel
 
 
 schema MonitoringCoreosComV1PodMonitorSpecPodMetricsEndpointsItems0RelabelingsItems0:
-    """
+    r"""
     RelabelConfig allows dynamic rewriting of the label set, being applied to samples before ingestion. It defines `<metric_relabel_configs>`-section of Prometheus configuration. More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#metric_relabel_configs
 
     Attributes
@@ -318,7 +318,7 @@ schema MonitoringCoreosComV1PodMonitorSpecPodMetricsEndpointsItems0RelabelingsIt
 
 
 schema MonitoringCoreosComV1PodMonitorSpecPodMetricsEndpointsItems0TLSConfig:
-    """
+    r"""
     TLS configuration to use when scraping the endpoint.
 
     Attributes
@@ -348,7 +348,7 @@ schema MonitoringCoreosComV1PodMonitorSpecPodMetricsEndpointsItems0TLSConfig:
 
 
 schema MonitoringCoreosComV1PodMonitorSpecPodMetricsEndpointsItems0TLSConfigCa:
-    """
+    r"""
     Struct containing the CA cert to use for the targets.
 
     Attributes
@@ -366,7 +366,7 @@ schema MonitoringCoreosComV1PodMonitorSpecPodMetricsEndpointsItems0TLSConfigCa:
 
 
 schema MonitoringCoreosComV1PodMonitorSpecPodMetricsEndpointsItems0TLSConfigCaConfigMap:
-    """
+    r"""
     ConfigMap containing data to use for the targets.
 
     Attributes
@@ -388,7 +388,7 @@ schema MonitoringCoreosComV1PodMonitorSpecPodMetricsEndpointsItems0TLSConfigCaCo
 
 
 schema MonitoringCoreosComV1PodMonitorSpecPodMetricsEndpointsItems0TLSConfigCaSecret:
-    """
+    r"""
     Secret containing data to use for the targets.
 
     Attributes
@@ -410,7 +410,7 @@ schema MonitoringCoreosComV1PodMonitorSpecPodMetricsEndpointsItems0TLSConfigCaSe
 
 
 schema MonitoringCoreosComV1PodMonitorSpecPodMetricsEndpointsItems0TLSConfigCert:
-    """
+    r"""
     Struct containing the client cert file for the targets.
 
     Attributes
@@ -428,7 +428,7 @@ schema MonitoringCoreosComV1PodMonitorSpecPodMetricsEndpointsItems0TLSConfigCert
 
 
 schema MonitoringCoreosComV1PodMonitorSpecPodMetricsEndpointsItems0TLSConfigCertConfigMap:
-    """
+    r"""
     ConfigMap containing data to use for the targets.
 
     Attributes
@@ -450,7 +450,7 @@ schema MonitoringCoreosComV1PodMonitorSpecPodMetricsEndpointsItems0TLSConfigCert
 
 
 schema MonitoringCoreosComV1PodMonitorSpecPodMetricsEndpointsItems0TLSConfigCertSecret:
-    """
+    r"""
     Secret containing data to use for the targets.
 
     Attributes
@@ -472,7 +472,7 @@ schema MonitoringCoreosComV1PodMonitorSpecPodMetricsEndpointsItems0TLSConfigCert
 
 
 schema MonitoringCoreosComV1PodMonitorSpecPodMetricsEndpointsItems0TLSConfigKeySecret:
-    """
+    r"""
     Secret containing the client key file for the targets.
 
     Attributes
@@ -494,7 +494,7 @@ schema MonitoringCoreosComV1PodMonitorSpecPodMetricsEndpointsItems0TLSConfigKeyS
 
 
 schema MonitoringCoreosComV1PodMonitorSpecSelector:
-    """
+    r"""
     Selector to select Pod objects.
 
     Attributes
@@ -512,7 +512,7 @@ schema MonitoringCoreosComV1PodMonitorSpecSelector:
 
 
 schema MonitoringCoreosComV1PodMonitorSpecSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
     Attributes

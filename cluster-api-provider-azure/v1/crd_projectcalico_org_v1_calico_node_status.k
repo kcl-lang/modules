@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema CalicoNodeStatus:
-    """
+    r"""
     crd projectcalico org v1 calico node status
 
     Attributes
@@ -36,7 +36,7 @@ schema CalicoNodeStatus:
 
 
 schema CrdProjectcalicoOrgV1CalicoNodeStatusSpec:
-    """
+    r"""
     CalicoNodeStatusSpec contains the specification for a CalicoNodeStatus resource.
 
     Attributes
@@ -58,7 +58,7 @@ schema CrdProjectcalicoOrgV1CalicoNodeStatusSpec:
 
 
 schema CrdProjectcalicoOrgV1CalicoNodeStatusStatus:
-    """
+    r"""
     CalicoNodeStatusStatus defines the observed state of CalicoNodeStatus. No validation needed for status since it is updated by Calico.
 
     Attributes
@@ -84,7 +84,7 @@ schema CrdProjectcalicoOrgV1CalicoNodeStatusStatus:
 
 
 schema CrdProjectcalicoOrgV1CalicoNodeStatusStatusAgent:
-    """
+    r"""
     Agent holds agent status on the node.
 
     Attributes
@@ -102,7 +102,7 @@ schema CrdProjectcalicoOrgV1CalicoNodeStatusStatusAgent:
 
 
 schema CrdProjectcalicoOrgV1CalicoNodeStatusStatusAgentBirdV4:
-    """
+    r"""
     BIRDV4 represents the latest observed status of bird4.
 
     Attributes
@@ -132,7 +132,7 @@ schema CrdProjectcalicoOrgV1CalicoNodeStatusStatusAgentBirdV4:
 
 
 schema CrdProjectcalicoOrgV1CalicoNodeStatusStatusAgentBirdV6:
-    """
+    r"""
     BIRDV6 represents the latest observed status of bird6.
 
     Attributes
@@ -162,7 +162,7 @@ schema CrdProjectcalicoOrgV1CalicoNodeStatusStatusAgentBirdV6:
 
 
 schema CrdProjectcalicoOrgV1CalicoNodeStatusStatusBgp:
-    """
+    r"""
     BGP holds node BGP status.
 
     Attributes
@@ -196,7 +196,7 @@ schema CrdProjectcalicoOrgV1CalicoNodeStatusStatusBgp:
 
 
 schema CrdProjectcalicoOrgV1CalicoNodeStatusStatusBgpPeersV4Items0:
-    """
+    r"""
     CalicoNodePeer contains the status of BGP peers on the node.
 
     Attributes
@@ -222,7 +222,7 @@ schema CrdProjectcalicoOrgV1CalicoNodeStatusStatusBgpPeersV4Items0:
 
 
 schema CrdProjectcalicoOrgV1CalicoNodeStatusStatusBgpPeersV6Items0:
-    """
+    r"""
     CalicoNodePeer contains the status of BGP peers on the node.
 
     Attributes
@@ -248,7 +248,7 @@ schema CrdProjectcalicoOrgV1CalicoNodeStatusStatusBgpPeersV6Items0:
 
 
 schema CrdProjectcalicoOrgV1CalicoNodeStatusStatusRoutes:
-    """
+    r"""
     Routes reports routes known to the Calico BGP daemon on the node.
 
     Attributes
@@ -266,7 +266,7 @@ schema CrdProjectcalicoOrgV1CalicoNodeStatusStatusRoutes:
 
 
 schema CrdProjectcalicoOrgV1CalicoNodeStatusStatusRoutesRoutesV4Items0:
-    """
+    r"""
     CalicoNodeRoute contains the status of BGP routes on the node.
 
     Attributes
@@ -296,7 +296,7 @@ schema CrdProjectcalicoOrgV1CalicoNodeStatusStatusRoutesRoutesV4Items0:
 
 
 schema CrdProjectcalicoOrgV1CalicoNodeStatusStatusRoutesRoutesV4Items0LearnedFrom:
-    """
+    r"""
     LearnedFrom contains information regarding where this route originated.
 
     Attributes
@@ -314,7 +314,7 @@ schema CrdProjectcalicoOrgV1CalicoNodeStatusStatusRoutesRoutesV4Items0LearnedFro
 
 
 schema CrdProjectcalicoOrgV1CalicoNodeStatusStatusRoutesRoutesV6Items0:
-    """
+    r"""
     CalicoNodeRoute contains the status of BGP routes on the node.
 
     Attributes
@@ -344,7 +344,7 @@ schema CrdProjectcalicoOrgV1CalicoNodeStatusStatusRoutesRoutesV6Items0:
 
 
 schema CrdProjectcalicoOrgV1CalicoNodeStatusStatusRoutesRoutesV6Items0LearnedFrom:
-    """
+    r"""
     LearnedFrom contains information regarding where this route originated.
 
     Attributes

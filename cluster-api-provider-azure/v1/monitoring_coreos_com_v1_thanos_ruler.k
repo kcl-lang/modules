@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ThanosRuler:
-    """
+    r"""
     ThanosRuler defines a ThanosRuler deployment.
 
     Attributes
@@ -36,7 +36,7 @@ schema ThanosRuler:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpec:
-    """
+    r"""
     Specification of the desired behavior of the ThanosRuler cluster. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
 
     Attributes
@@ -202,7 +202,7 @@ schema MonitoringCoreosComV1ThanosRulerSpec:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecAffinity:
-    """
+    r"""
     If specified, the pod's scheduling constraints.
 
     Attributes
@@ -224,7 +224,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecAffinity:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecAffinityNodeAffinity:
-    """
+    r"""
     Describes node affinity scheduling rules for the pod.
 
     Attributes
@@ -242,7 +242,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecAffinityNodeAffinity:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     An empty preferred scheduling term matches all objects with implicit weight 0 (i.e. it's a no-op). A null preferred scheduling term matches no objects (i.e. is also a no-op).
 
     Attributes
@@ -260,7 +260,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecAffinityNodeAffinityPreferredDuringSc
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0Preference:
-    """
+    r"""
     A node selector term, associated with the corresponding weight.
 
     Attributes
@@ -278,7 +278,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecAffinityNodeAffinityPreferredDuringSc
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchExpressionsItems0:
-    """
+    r"""
     A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
     Attributes
@@ -300,7 +300,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecAffinityNodeAffinityPreferredDuringSc
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchFieldsItems0:
-    """
+    r"""
     A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
     Attributes
@@ -322,7 +322,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecAffinityNodeAffinityPreferredDuringSc
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution:
-    """
+    r"""
     If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to an update), the system may or may not try to eventually evict the pod from its node.
 
     Attributes
@@ -336,7 +336,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecAffinityNodeAffinityRequiredDuringSch
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0:
-    """
+    r"""
     A null or empty node selector term matches no objects. The requirements of them are ANDed. The TopologySelectorTerm type implements a subset of the NodeSelectorTerm.
 
     Attributes
@@ -354,7 +354,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecAffinityNodeAffinityRequiredDuringSch
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchExpressionsItems0:
-    """
+    r"""
     A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
     Attributes
@@ -376,7 +376,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecAffinityNodeAffinityRequiredDuringSch
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchFieldsItems0:
-    """
+    r"""
     A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
     Attributes
@@ -398,7 +398,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecAffinityNodeAffinityRequiredDuringSch
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecAffinityPodAffinity:
-    """
+    r"""
     Describes pod affinity scheduling rules (e.g. co-locate this pod in the same node, zone, etc. as some other pod(s)).
 
     Attributes
@@ -416,7 +416,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecAffinityPodAffinity:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     The weights of all of the matched WeightedPodAffinityTerm fields are added per-node to find the most preferred node(s)
 
     Attributes
@@ -434,7 +434,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecAffinityPodAffinityPreferredDuringSch
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTerm:
-    """
+    r"""
     Required. A pod affinity term, associated with the corresponding weight.
 
     Attributes
@@ -456,7 +456,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecAffinityPodAffinityPreferredDuringSch
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector:
-    """
+    r"""
     A label query over a set of resources, in this case pods.
 
     Attributes
@@ -474,7 +474,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecAffinityPodAffinityPreferredDuringSch
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
     Attributes
@@ -496,7 +496,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecAffinityPodAffinityPreferredDuringSch
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     Defines a set of pods (namely those matching the labelSelector relative to the given namespace(s)) that this pod should be co-located (affinity) or not co-located (anti-affinity) with, where co-located is defined as running on a node whose value of the label with key <topologyKey> matches that of any node on which a pod of the set of pods is running
 
     Attributes
@@ -518,7 +518,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecAffinityPodAffinityRequiredDuringSche
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector:
-    """
+    r"""
     A label query over a set of resources, in this case pods.
 
     Attributes
@@ -536,7 +536,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecAffinityPodAffinityRequiredDuringSche
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
     Attributes
@@ -558,7 +558,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecAffinityPodAffinityRequiredDuringSche
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecAffinityPodAntiAffinity:
-    """
+    r"""
     Describes pod anti-affinity scheduling rules (e.g. avoid putting this pod in the same node, zone, etc. as some other pod(s)).
 
     Attributes
@@ -576,7 +576,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecAffinityPodAntiAffinity:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     The weights of all of the matched WeightedPodAffinityTerm fields are added per-node to find the most preferred node(s)
 
     Attributes
@@ -594,7 +594,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecAffinityPodAntiAffinityPreferredDurin
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTerm:
-    """
+    r"""
     Required. A pod affinity term, associated with the corresponding weight.
 
     Attributes
@@ -616,7 +616,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecAffinityPodAntiAffinityPreferredDurin
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector:
-    """
+    r"""
     A label query over a set of resources, in this case pods.
 
     Attributes
@@ -634,7 +634,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecAffinityPodAntiAffinityPreferredDurin
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
     Attributes
@@ -656,7 +656,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecAffinityPodAntiAffinityPreferredDurin
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     Defines a set of pods (namely those matching the labelSelector relative to the given namespace(s)) that this pod should be co-located (affinity) or not co-located (anti-affinity) with, where co-located is defined as running on a node whose value of the label with key <topologyKey> matches that of any node on which a pod of the set of pods is running
 
     Attributes
@@ -678,7 +678,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecAffinityPodAntiAffinityRequiredDuring
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector:
-    """
+    r"""
     A label query over a set of resources, in this case pods.
 
     Attributes
@@ -696,7 +696,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecAffinityPodAntiAffinityRequiredDuring
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
     Attributes
@@ -718,7 +718,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecAffinityPodAntiAffinityRequiredDuring
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecAlertmanagersConfig:
-    """
+    r"""
     Define configuration for connecting to alertmanager.  Only available with thanos v0.10.0 and higher.  Maps to the `alertmanagers.config` arg.
 
     Attributes
@@ -740,7 +740,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecAlertmanagersConfig:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0:
-    """
+    r"""
     A single application container that you want to run within a pod.
 
     Attributes
@@ -838,7 +838,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0EnvFromItems0:
-    """
+    r"""
     EnvFromSource represents the source of a set of ConfigMaps
 
     Attributes
@@ -860,7 +860,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0EnvFromItems0:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0EnvFromItems0ConfigMapRef:
-    """
+    r"""
     The ConfigMap to select from
 
     Attributes
@@ -878,7 +878,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0EnvFromItems0ConfigMa
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0EnvFromItems0SecretRef:
-    """
+    r"""
     The Secret to select from
 
     Attributes
@@ -896,7 +896,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0EnvFromItems0SecretRe
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0EnvItems0:
-    """
+    r"""
     EnvVar represents an environment variable present in a Container.
 
     Attributes
@@ -918,7 +918,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0EnvItems0:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0EnvItems0ValueFrom:
-    """
+    r"""
     Source for the environment variable's value. Cannot be used if value is not empty.
 
     Attributes
@@ -944,7 +944,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0EnvItems0ValueFrom:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0EnvItems0ValueFromConfigMapKeyRef:
-    """
+    r"""
     Selects a key of a ConfigMap.
 
     Attributes
@@ -966,7 +966,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0EnvItems0ValueFromCon
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0EnvItems0ValueFromFieldRef:
-    """
+    r"""
     Selects a field of the pod: supports metadata.name, metadata.namespace, metadata.labels, metadata.annotations, spec.nodeName, spec.serviceAccountName, status.hostIP, status.podIP, status.podIPs.
 
     Attributes
@@ -984,7 +984,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0EnvItems0ValueFromFie
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0EnvItems0ValueFromResourceFieldRef:
-    """
+    r"""
     Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
 
     Attributes
@@ -1006,7 +1006,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0EnvItems0ValueFromRes
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0EnvItems0ValueFromSecretKeyRef:
-    """
+    r"""
     Selects a key of a secret in the pod's namespace
 
     Attributes
@@ -1028,7 +1028,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0EnvItems0ValueFromSec
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0Lifecycle:
-    """
+    r"""
     Actions that the management system should take in response to container lifecycle events. Cannot be updated.
 
     Attributes
@@ -1046,7 +1046,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0Lifecycle:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0LifecyclePostStart:
-    """
+    r"""
     PostStart is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
 
     Attributes
@@ -1068,7 +1068,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0LifecyclePostStart:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0LifecyclePostStartExec:
-    """
+    r"""
     One and only one of the following should be specified. Exec specifies the action to take.
 
     Attributes
@@ -1082,7 +1082,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0LifecyclePostStartExe
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0LifecyclePostStartHTTPGet:
-    """
+    r"""
     HTTPGet specifies the http request to perform.
 
     Attributes
@@ -1112,7 +1112,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0LifecyclePostStartHTT
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0LifecyclePostStartHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     HTTPHeader describes a custom header to be used in HTTP probes
 
     Attributes
@@ -1130,7 +1130,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0LifecyclePostStartHTT
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0LifecyclePostStartTCPSocket:
-    """
+    r"""
     TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
 
     Attributes
@@ -1148,7 +1148,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0LifecyclePostStartTCP
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0LifecyclePreStop:
-    """
+    r"""
     PreStop is called immediately before a container is terminated due to an API request or management event such as liveness/startup probe failure, preemption, resource contention, etc. The handler is not called if the container crashes or exits. The reason for termination is passed to the handler. The Pod's termination grace period countdown begins before the PreStop hooked is executed. Regardless of the outcome of the handler, the container will eventually terminate within the Pod's termination grace period. Other management of the container blocks until the hook completes or until the termination grace period is reached. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
 
     Attributes
@@ -1170,7 +1170,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0LifecyclePreStop:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0LifecyclePreStopExec:
-    """
+    r"""
     One and only one of the following should be specified. Exec specifies the action to take.
 
     Attributes
@@ -1184,7 +1184,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0LifecyclePreStopExec:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0LifecyclePreStopHTTPGet:
-    """
+    r"""
     HTTPGet specifies the http request to perform.
 
     Attributes
@@ -1214,7 +1214,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0LifecyclePreStopHTTPG
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0LifecyclePreStopHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     HTTPHeader describes a custom header to be used in HTTP probes
 
     Attributes
@@ -1232,7 +1232,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0LifecyclePreStopHTTPG
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0LifecyclePreStopTCPSocket:
-    """
+    r"""
     TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
 
     Attributes
@@ -1250,7 +1250,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0LifecyclePreStopTCPSo
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0LivenessProbe:
-    """
+    r"""
     Periodic probe of container liveness. Container will be restarted if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 
     Attributes
@@ -1292,7 +1292,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0LivenessProbe:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0LivenessProbeExec:
-    """
+    r"""
     One and only one of the following should be specified. Exec specifies the action to take.
 
     Attributes
@@ -1306,7 +1306,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0LivenessProbeExec:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0LivenessProbeHTTPGet:
-    """
+    r"""
     HTTPGet specifies the http request to perform.
 
     Attributes
@@ -1336,7 +1336,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0LivenessProbeHTTPGet:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0LivenessProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     HTTPHeader describes a custom header to be used in HTTP probes
 
     Attributes
@@ -1354,7 +1354,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0LivenessProbeHTTPGetH
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0LivenessProbeTCPSocket:
-    """
+    r"""
     TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
 
     Attributes
@@ -1372,7 +1372,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0LivenessProbeTCPSocke
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0PortsItems0:
-    """
+    r"""
     ContainerPort represents a network port in a single container.
 
     Attributes
@@ -1402,7 +1402,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0PortsItems0:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0ReadinessProbe:
-    """
+    r"""
     Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 
     Attributes
@@ -1444,7 +1444,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0ReadinessProbe:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0ReadinessProbeExec:
-    """
+    r"""
     One and only one of the following should be specified. Exec specifies the action to take.
 
     Attributes
@@ -1458,7 +1458,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0ReadinessProbeExec:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0ReadinessProbeHTTPGet:
-    """
+    r"""
     HTTPGet specifies the http request to perform.
 
     Attributes
@@ -1488,7 +1488,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0ReadinessProbeHTTPGet
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0ReadinessProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     HTTPHeader describes a custom header to be used in HTTP probes
 
     Attributes
@@ -1506,7 +1506,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0ReadinessProbeHTTPGet
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0ReadinessProbeTCPSocket:
-    """
+    r"""
     TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
 
     Attributes
@@ -1524,7 +1524,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0ReadinessProbeTCPSock
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0Resources:
-    """
+    r"""
     Compute Resources required by this container. Cannot be updated. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
 
     Attributes
@@ -1542,7 +1542,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0Resources:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0SecurityContext:
-    """
+    r"""
     Security options the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-context/ More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
 
     Attributes
@@ -1592,7 +1592,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0SecurityContext:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0SecurityContextCapabilities:
-    """
+    r"""
     The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime.
 
     Attributes
@@ -1610,7 +1610,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0SecurityContextCapabi
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0SecurityContextSeLinuxOptions:
-    """
+    r"""
     The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container.  May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
 
     Attributes
@@ -1636,7 +1636,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0SecurityContextSeLinu
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0SecurityContextWindowsOptions:
-    """
+    r"""
     The Windows specific settings applied to all containers. If unspecified, the options from the PodSecurityContext will be used. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
 
     Attributes
@@ -1658,7 +1658,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0SecurityContextWindow
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0StartupProbe:
-    """
+    r"""
     StartupProbe indicates that the Pod has successfully initialized. If specified, no other probes are executed until this completes successfully. If this probe fails, the Pod will be restarted, just as if the livenessProbe failed. This can be used to provide different probe parameters at the beginning of a Pod's lifecycle, when it might take a long time to load data or warm a cache, than during steady-state operation. This cannot be updated. This is a beta feature enabled by the StartupProbe feature flag. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 
     Attributes
@@ -1700,7 +1700,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0StartupProbe:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0StartupProbeExec:
-    """
+    r"""
     One and only one of the following should be specified. Exec specifies the action to take.
 
     Attributes
@@ -1714,7 +1714,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0StartupProbeExec:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0StartupProbeHTTPGet:
-    """
+    r"""
     HTTPGet specifies the http request to perform.
 
     Attributes
@@ -1744,7 +1744,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0StartupProbeHTTPGet:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0StartupProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     HTTPHeader describes a custom header to be used in HTTP probes
 
     Attributes
@@ -1762,7 +1762,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0StartupProbeHTTPGetHT
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0StartupProbeTCPSocket:
-    """
+    r"""
     TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
 
     Attributes
@@ -1780,7 +1780,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0StartupProbeTCPSocket
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0VolumeDevicesItems0:
-    """
+    r"""
     volumeDevice describes a mapping of a raw block device within a container.
 
     Attributes
@@ -1798,7 +1798,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0VolumeDevicesItems0:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0VolumeMountsItems0:
-    """
+    r"""
     VolumeMount describes a mounting of a Volume within a container.
 
     Attributes
@@ -1832,7 +1832,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecContainersItems0VolumeMountsItems0:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecGrpcServerTLSConfig:
-    """
+    r"""
     GRPCServerTLSConfig configures the gRPC server from which Thanos Querier reads recorded rule data. Note: Currently only the CAFile, CertFile, and KeyFile fields are supported. Maps to the '--grpc-server-tls-*' CLI args.
 
     Attributes
@@ -1874,7 +1874,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecGrpcServerTLSConfig:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecGrpcServerTLSConfigCa:
-    """
+    r"""
     Struct containing the CA cert to use for the targets.
 
     Attributes
@@ -1892,7 +1892,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecGrpcServerTLSConfigCa:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecGrpcServerTLSConfigCaConfigMap:
-    """
+    r"""
     ConfigMap containing data to use for the targets.
 
     Attributes
@@ -1914,7 +1914,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecGrpcServerTLSConfigCaConfigMap:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecGrpcServerTLSConfigCaSecret:
-    """
+    r"""
     Secret containing data to use for the targets.
 
     Attributes
@@ -1936,7 +1936,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecGrpcServerTLSConfigCaSecret:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecGrpcServerTLSConfigCert:
-    """
+    r"""
     Struct containing the client cert file for the targets.
 
     Attributes
@@ -1954,7 +1954,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecGrpcServerTLSConfigCert:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecGrpcServerTLSConfigCertConfigMap:
-    """
+    r"""
     ConfigMap containing data to use for the targets.
 
     Attributes
@@ -1976,7 +1976,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecGrpcServerTLSConfigCertConfigMap:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecGrpcServerTLSConfigCertSecret:
-    """
+    r"""
     Secret containing data to use for the targets.
 
     Attributes
@@ -1998,7 +1998,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecGrpcServerTLSConfigCertSecret:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecGrpcServerTLSConfigKeySecret:
-    """
+    r"""
     Secret containing the client key file for the targets.
 
     Attributes
@@ -2020,7 +2020,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecGrpcServerTLSConfigKeySecret:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecImagePullSecretsItems0:
-    """
+    r"""
     LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
 
     Attributes
@@ -2034,7 +2034,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecImagePullSecretsItems0:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0:
-    """
+    r"""
     A single application container that you want to run within a pod.
 
     Attributes
@@ -2132,7 +2132,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0EnvFromItems0:
-    """
+    r"""
     EnvFromSource represents the source of a set of ConfigMaps
 
     Attributes
@@ -2154,7 +2154,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0EnvFromItems0:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0EnvFromItems0ConfigMapRef:
-    """
+    r"""
     The ConfigMap to select from
 
     Attributes
@@ -2172,7 +2172,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0EnvFromItems0Conf
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0EnvFromItems0SecretRef:
-    """
+    r"""
     The Secret to select from
 
     Attributes
@@ -2190,7 +2190,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0EnvFromItems0Secr
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0EnvItems0:
-    """
+    r"""
     EnvVar represents an environment variable present in a Container.
 
     Attributes
@@ -2212,7 +2212,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0EnvItems0:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0EnvItems0ValueFrom:
-    """
+    r"""
     Source for the environment variable's value. Cannot be used if value is not empty.
 
     Attributes
@@ -2238,7 +2238,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0EnvItems0ValueFro
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0EnvItems0ValueFromConfigMapKeyRef:
-    """
+    r"""
     Selects a key of a ConfigMap.
 
     Attributes
@@ -2260,7 +2260,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0EnvItems0ValueFro
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0EnvItems0ValueFromFieldRef:
-    """
+    r"""
     Selects a field of the pod: supports metadata.name, metadata.namespace, metadata.labels, metadata.annotations, spec.nodeName, spec.serviceAccountName, status.hostIP, status.podIP, status.podIPs.
 
     Attributes
@@ -2278,7 +2278,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0EnvItems0ValueFro
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0EnvItems0ValueFromResourceFieldRef:
-    """
+    r"""
     Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
 
     Attributes
@@ -2300,7 +2300,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0EnvItems0ValueFro
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0EnvItems0ValueFromSecretKeyRef:
-    """
+    r"""
     Selects a key of a secret in the pod's namespace
 
     Attributes
@@ -2322,7 +2322,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0EnvItems0ValueFro
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0Lifecycle:
-    """
+    r"""
     Actions that the management system should take in response to container lifecycle events. Cannot be updated.
 
     Attributes
@@ -2340,7 +2340,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0Lifecycle:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0LifecyclePostStart:
-    """
+    r"""
     PostStart is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
 
     Attributes
@@ -2362,7 +2362,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0LifecyclePostStar
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0LifecyclePostStartExec:
-    """
+    r"""
     One and only one of the following should be specified. Exec specifies the action to take.
 
     Attributes
@@ -2376,7 +2376,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0LifecyclePostStar
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0LifecyclePostStartHTTPGet:
-    """
+    r"""
     HTTPGet specifies the http request to perform.
 
     Attributes
@@ -2406,7 +2406,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0LifecyclePostStar
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0LifecyclePostStartHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     HTTPHeader describes a custom header to be used in HTTP probes
 
     Attributes
@@ -2424,7 +2424,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0LifecyclePostStar
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0LifecyclePostStartTCPSocket:
-    """
+    r"""
     TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
 
     Attributes
@@ -2442,7 +2442,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0LifecyclePostStar
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0LifecyclePreStop:
-    """
+    r"""
     PreStop is called immediately before a container is terminated due to an API request or management event such as liveness/startup probe failure, preemption, resource contention, etc. The handler is not called if the container crashes or exits. The reason for termination is passed to the handler. The Pod's termination grace period countdown begins before the PreStop hooked is executed. Regardless of the outcome of the handler, the container will eventually terminate within the Pod's termination grace period. Other management of the container blocks until the hook completes or until the termination grace period is reached. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
 
     Attributes
@@ -2464,7 +2464,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0LifecyclePreStop:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0LifecyclePreStopExec:
-    """
+    r"""
     One and only one of the following should be specified. Exec specifies the action to take.
 
     Attributes
@@ -2478,7 +2478,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0LifecyclePreStopE
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0LifecyclePreStopHTTPGet:
-    """
+    r"""
     HTTPGet specifies the http request to perform.
 
     Attributes
@@ -2508,7 +2508,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0LifecyclePreStopH
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0LifecyclePreStopHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     HTTPHeader describes a custom header to be used in HTTP probes
 
     Attributes
@@ -2526,7 +2526,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0LifecyclePreStopH
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0LifecyclePreStopTCPSocket:
-    """
+    r"""
     TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
 
     Attributes
@@ -2544,7 +2544,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0LifecyclePreStopT
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0LivenessProbe:
-    """
+    r"""
     Periodic probe of container liveness. Container will be restarted if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 
     Attributes
@@ -2586,7 +2586,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0LivenessProbe:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0LivenessProbeExec:
-    """
+    r"""
     One and only one of the following should be specified. Exec specifies the action to take.
 
     Attributes
@@ -2600,7 +2600,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0LivenessProbeExec
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0LivenessProbeHTTPGet:
-    """
+    r"""
     HTTPGet specifies the http request to perform.
 
     Attributes
@@ -2630,7 +2630,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0LivenessProbeHTTP
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0LivenessProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     HTTPHeader describes a custom header to be used in HTTP probes
 
     Attributes
@@ -2648,7 +2648,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0LivenessProbeHTTP
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0LivenessProbeTCPSocket:
-    """
+    r"""
     TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
 
     Attributes
@@ -2666,7 +2666,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0LivenessProbeTCPS
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0PortsItems0:
-    """
+    r"""
     ContainerPort represents a network port in a single container.
 
     Attributes
@@ -2696,7 +2696,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0PortsItems0:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0ReadinessProbe:
-    """
+    r"""
     Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 
     Attributes
@@ -2738,7 +2738,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0ReadinessProbe:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0ReadinessProbeExec:
-    """
+    r"""
     One and only one of the following should be specified. Exec specifies the action to take.
 
     Attributes
@@ -2752,7 +2752,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0ReadinessProbeExe
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0ReadinessProbeHTTPGet:
-    """
+    r"""
     HTTPGet specifies the http request to perform.
 
     Attributes
@@ -2782,7 +2782,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0ReadinessProbeHTT
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0ReadinessProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     HTTPHeader describes a custom header to be used in HTTP probes
 
     Attributes
@@ -2800,7 +2800,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0ReadinessProbeHTT
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0ReadinessProbeTCPSocket:
-    """
+    r"""
     TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
 
     Attributes
@@ -2818,7 +2818,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0ReadinessProbeTCP
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0Resources:
-    """
+    r"""
     Compute Resources required by this container. Cannot be updated. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
 
     Attributes
@@ -2836,7 +2836,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0Resources:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0SecurityContext:
-    """
+    r"""
     Security options the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-context/ More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
 
     Attributes
@@ -2886,7 +2886,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0SecurityContext:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0SecurityContextCapabilities:
-    """
+    r"""
     The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime.
 
     Attributes
@@ -2904,7 +2904,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0SecurityContextCa
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0SecurityContextSeLinuxOptions:
-    """
+    r"""
     The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container.  May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
 
     Attributes
@@ -2930,7 +2930,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0SecurityContextSe
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0SecurityContextWindowsOptions:
-    """
+    r"""
     The Windows specific settings applied to all containers. If unspecified, the options from the PodSecurityContext will be used. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
 
     Attributes
@@ -2952,7 +2952,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0SecurityContextWi
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0StartupProbe:
-    """
+    r"""
     StartupProbe indicates that the Pod has successfully initialized. If specified, no other probes are executed until this completes successfully. If this probe fails, the Pod will be restarted, just as if the livenessProbe failed. This can be used to provide different probe parameters at the beginning of a Pod's lifecycle, when it might take a long time to load data or warm a cache, than during steady-state operation. This cannot be updated. This is a beta feature enabled by the StartupProbe feature flag. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 
     Attributes
@@ -2994,7 +2994,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0StartupProbe:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0StartupProbeExec:
-    """
+    r"""
     One and only one of the following should be specified. Exec specifies the action to take.
 
     Attributes
@@ -3008,7 +3008,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0StartupProbeExec:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0StartupProbeHTTPGet:
-    """
+    r"""
     HTTPGet specifies the http request to perform.
 
     Attributes
@@ -3038,7 +3038,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0StartupProbeHTTPG
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0StartupProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     HTTPHeader describes a custom header to be used in HTTP probes
 
     Attributes
@@ -3056,7 +3056,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0StartupProbeHTTPG
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0StartupProbeTCPSocket:
-    """
+    r"""
     TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
 
     Attributes
@@ -3074,7 +3074,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0StartupProbeTCPSo
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0VolumeDevicesItems0:
-    """
+    r"""
     volumeDevice describes a mapping of a raw block device within a container.
 
     Attributes
@@ -3092,7 +3092,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0VolumeDevicesItem
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0VolumeMountsItems0:
-    """
+    r"""
     VolumeMount describes a mounting of a Volume within a container.
 
     Attributes
@@ -3126,7 +3126,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0VolumeMountsItems
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecObjectStorageConfig:
-    """
+    r"""
     ObjectStorageConfig configures object storage in Thanos.
 
     Attributes
@@ -3148,7 +3148,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecObjectStorageConfig:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecPodMetadata:
-    """
+    r"""
     PodMetadata contains Labels and Annotations gets propagated to the thanos ruler pods.
 
     Attributes
@@ -3170,7 +3170,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecPodMetadata:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecPrometheusRulesExcludedFromEnforceItems0:
-    """
+    r"""
     PrometheusRuleExcludeConfig enables users to configure excluded PrometheusRule names and their namespaces to be ignored while enforcing namespace label for alerts and metrics.
 
     Attributes
@@ -3188,7 +3188,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecPrometheusRulesExcludedFromEnforceIte
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecQueryConfig:
-    """
+    r"""
     Define configuration for connecting to thanos query instances. If this is defined, the QueryEndpoints field will be ignored. Maps to the `query.config` CLI argument. Only available with thanos v0.11.0 and higher.
 
     Attributes
@@ -3210,7 +3210,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecQueryConfig:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecResources:
-    """
+    r"""
     Resources defines the resource requirements for single Pods. If not provided, no requests/limits will be set
 
     Attributes
@@ -3228,7 +3228,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecResources:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecRuleNamespaceSelector:
-    """
+    r"""
     Namespaces to be selected for Rules discovery. If unspecified, only the same namespace as the ThanosRuler object is in is used.
 
     Attributes
@@ -3246,7 +3246,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecRuleNamespaceSelector:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecRuleNamespaceSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
     Attributes
@@ -3268,7 +3268,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecRuleNamespaceSelectorMatchExpressions
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecRuleSelector:
-    """
+    r"""
     A label selector to select which PrometheusRules to mount for alerting and recording.
 
     Attributes
@@ -3286,7 +3286,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecRuleSelector:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecRuleSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
     Attributes
@@ -3308,7 +3308,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecRuleSelectorMatchExpressionsItems0:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecSecurityContext:
-    """
+    r"""
     SecurityContext holds pod-level security attributes and common container settings. This defaults to the default PodSecurityContext.
 
     Attributes
@@ -3356,7 +3356,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecSecurityContext:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecSecurityContextSeLinuxOptions:
-    """
+    r"""
     The SELinux context to be applied to all containers. If unspecified, the container runtime will allocate a random SELinux context for each container.  May also be set in SecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container.
 
     Attributes
@@ -3382,7 +3382,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecSecurityContextSeLinuxOptions:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecSecurityContextSysctlsItems0:
-    """
+    r"""
     Sysctl defines a kernel parameter to be set
 
     Attributes
@@ -3400,7 +3400,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecSecurityContextSysctlsItems0:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecSecurityContextWindowsOptions:
-    """
+    r"""
     The Windows specific settings applied to all containers. If unspecified, the options within a container's SecurityContext will be used. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
 
     Attributes
@@ -3422,7 +3422,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecSecurityContextWindowsOptions:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecStorage:
-    """
+    r"""
     Storage spec to specify how storage shall be used.
 
     Attributes
@@ -3444,7 +3444,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecStorage:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecStorageEmptyDir:
-    """
+    r"""
     EmptyDirVolumeSource to be used by the Prometheus StatefulSets. If specified, used in place of any volumeClaimTemplate. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir
 
     Attributes
@@ -3462,7 +3462,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecStorageEmptyDir:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecStorageVolumeClaimTemplate:
-    """
+    r"""
     A PVC spec to be used by the Prometheus StatefulSets.
 
     Attributes
@@ -3492,7 +3492,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecStorageVolumeClaimTemplate:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecStorageVolumeClaimTemplateMetadata:
-    """
+    r"""
     EmbeddedMetadata contains metadata relevant to an EmbeddedResource.
 
     Attributes
@@ -3514,7 +3514,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecStorageVolumeClaimTemplateMetadata:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecStorageVolumeClaimTemplateSpec:
-    """
+    r"""
     Spec defines the desired characteristics of a volume requested by a pod author. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
 
     Attributes
@@ -3552,7 +3552,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecStorageVolumeClaimTemplateSpec:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecStorageVolumeClaimTemplateSpecDataSource:
-    """
+    r"""
     This field can be used to specify either: * An existing VolumeSnapshot object (snapshot.storage.k8s.io/VolumeSnapshot - Beta) * An existing PVC (PersistentVolumeClaim) * An existing custom resource/object that implements data population (Alpha) In order to use VolumeSnapshot object types, the appropriate feature gate must be enabled (VolumeSnapshotDataSource or AnyVolumeDataSource) If the provisioner or an external controller can support the specified data source, it will create a new volume based on the contents of the specified data source. If the specified data source is not supported, the volume will not be created and the failure will be reported as an event. In the future, we plan to support more data source types and the behavior of the provisioner may change.
 
     Attributes
@@ -3574,7 +3574,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecStorageVolumeClaimTemplateSpecDataSou
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecStorageVolumeClaimTemplateSpecResources:
-    """
+    r"""
     Resources represents the minimum resources the volume should have. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 
     Attributes
@@ -3592,7 +3592,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecStorageVolumeClaimTemplateSpecResourc
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecStorageVolumeClaimTemplateSpecSelector:
-    """
+    r"""
     A label query over volumes to consider for binding.
 
     Attributes
@@ -3610,7 +3610,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecStorageVolumeClaimTemplateSpecSelecto
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecStorageVolumeClaimTemplateSpecSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
     Attributes
@@ -3632,7 +3632,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecStorageVolumeClaimTemplateSpecSelecto
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecStorageVolumeClaimTemplateStatus:
-    """
+    r"""
     Status represents the current information/status of a persistent volume claim. Read-only. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
 
     Attributes
@@ -3658,7 +3658,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecStorageVolumeClaimTemplateStatus:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecStorageVolumeClaimTemplateStatusConditionsItems0:
-    """
+    r"""
     PersistentVolumeClaimCondition contains details about state of pvc
 
     Attributes
@@ -3692,7 +3692,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecStorageVolumeClaimTemplateStatusCondi
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecTolerationsItems0:
-    """
+    r"""
     The pod this Toleration is attached to tolerates any taint that matches the triple <key,value,effect> using the matching operator <operator>.
 
     Attributes
@@ -3722,7 +3722,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecTolerationsItems0:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecTopologySpreadConstraintsItems0:
-    """
+    r"""
     TopologySpreadConstraint specifies how to spread matching pods among the given topology.
 
     Attributes
@@ -3748,7 +3748,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecTopologySpreadConstraintsItems0:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecTopologySpreadConstraintsItems0LabelSelector:
-    """
+    r"""
     LabelSelector is used to find matching pods. Pods that match this label selector are counted to determine the number of pods in their corresponding topology domain.
 
     Attributes
@@ -3766,7 +3766,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecTopologySpreadConstraintsItems0LabelS
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecTopologySpreadConstraintsItems0LabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
     Attributes
@@ -3788,7 +3788,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecTopologySpreadConstraintsItems0LabelS
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecTracingConfig:
-    """
+    r"""
     TracingConfig configures tracing in Thanos. This is an experimental feature, it may change in any upcoming release in a breaking way.
 
     Attributes
@@ -3810,7 +3810,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecTracingConfig:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0:
-    """
+    r"""
     Volume represents a named volume in a pod that may be accessed by any container in the pod.
 
     Attributes
@@ -3936,7 +3936,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0AwsElasticBlockStore:
-    """
+    r"""
     AWSElasticBlockStore represents an AWS Disk resource that is attached to a kubelet's host machine and then exposed to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
 
     Attributes
@@ -3962,7 +3962,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0AwsElasticBlockStore:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0AzureDisk:
-    """
+    r"""
     AzureDisk represents an Azure Data Disk mount on the host and bind mount to the pod.
 
     Attributes
@@ -3996,7 +3996,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0AzureDisk:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0AzureFile:
-    """
+    r"""
     AzureFile represents an Azure File Service mount on the host and bind mount to the pod.
 
     Attributes
@@ -4018,7 +4018,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0AzureFile:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0Cephfs:
-    """
+    r"""
     CephFS represents a Ceph FS mount on the host that shares a pod's lifetime
 
     Attributes
@@ -4052,7 +4052,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0Cephfs:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0CephfsSecretRef:
-    """
+    r"""
     Optional: SecretRef is reference to the authentication secret for User, default is empty. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
 
     Attributes
@@ -4066,7 +4066,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0CephfsSecretRef:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0Cinder:
-    """
+    r"""
     Cinder represents a cinder volume attached and mounted on kubelets host machine. More info: https://examples.k8s.io/mysql-cinder-pd/README.md
 
     Attributes
@@ -4092,7 +4092,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0Cinder:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0CinderSecretRef:
-    """
+    r"""
     Optional: points to a secret object containing parameters used to connect to OpenStack.
 
     Attributes
@@ -4106,7 +4106,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0CinderSecretRef:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0ConfigMap:
-    """
+    r"""
     ConfigMap represents a configMap that should populate this volume
 
     Attributes
@@ -4132,7 +4132,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0ConfigMap:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0ConfigMapItemsItems0:
-    """
+    r"""
     Maps a string key to a path within a volume.
 
     Attributes
@@ -4154,7 +4154,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0ConfigMapItemsItems0:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0Csi:
-    """
+    r"""
     CSI (Container Storage Interface) represents storage that is handled by an external CSI driver (Alpha feature).
 
     Attributes
@@ -4184,7 +4184,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0Csi:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0CsiNodePublishSecretRef:
-    """
+    r"""
     NodePublishSecretRef is a reference to the secret object containing sensitive information to pass to the CSI driver to complete the CSI NodePublishVolume and NodeUnpublishVolume calls. This field is optional, and  may be empty if no secret is required. If the secret object contains more than one secret, all secret references are passed.
 
     Attributes
@@ -4198,7 +4198,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0CsiNodePublishSecretRef:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0DownwardAPI:
-    """
+    r"""
     DownwardAPI represents downward API about the pod that should populate this volume
 
     Attributes
@@ -4216,7 +4216,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0DownwardAPI:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0DownwardAPIItemsItems0:
-    """
+    r"""
     DownwardAPIVolumeFile represents information to create the file containing the pod field
 
     Attributes
@@ -4242,7 +4242,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0DownwardAPIItemsItems0:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0DownwardAPIItemsItems0FieldRef:
-    """
+    r"""
     Required: Selects a field of the pod: only annotations, labels, name and namespace are supported.
 
     Attributes
@@ -4260,7 +4260,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0DownwardAPIItemsItems0Fi
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0DownwardAPIItemsItems0ResourceFieldRef:
-    """
+    r"""
     Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported.
 
     Attributes
@@ -4282,7 +4282,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0DownwardAPIItemsItems0Re
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0EmptyDir:
-    """
+    r"""
     EmptyDir represents a temporary directory that shares a pod's lifetime. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir
 
     Attributes
@@ -4300,7 +4300,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0EmptyDir:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0Fc:
-    """
+    r"""
     FC represents a Fibre Channel resource that is attached to a kubelet's host machine and then exposed to the pod.
 
     Attributes
@@ -4330,7 +4330,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0Fc:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0FlexVolume:
-    """
+    r"""
     FlexVolume represents a generic volume resource that is provisioned/attached using an exec based plugin.
 
     Attributes
@@ -4360,7 +4360,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0FlexVolume:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0FlexVolumeSecretRef:
-    """
+    r"""
     Optional: SecretRef is reference to the secret object containing sensitive information to pass to the plugin scripts. This may be empty if no secret object is specified. If the secret object contains more than one secret, all secrets are passed to the plugin scripts.
 
     Attributes
@@ -4374,7 +4374,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0FlexVolumeSecretRef:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0Flocker:
-    """
+    r"""
     Flocker represents a Flocker volume attached to a kubelet's host machine. This depends on the Flocker control service being running
 
     Attributes
@@ -4392,7 +4392,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0Flocker:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0GcePersistentDisk:
-    """
+    r"""
     GCEPersistentDisk represents a GCE Disk resource that is attached to a kubelet's host machine and then exposed to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
 
     Attributes
@@ -4418,7 +4418,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0GcePersistentDisk:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0GitRepo:
-    """
+    r"""
     GitRepo represents a git repository at a particular revision. DEPRECATED: GitRepo is deprecated. To provision a container with a git repo, mount an EmptyDir into an InitContainer that clones the repo using git, then mount the EmptyDir into the Pod's container.
 
     Attributes
@@ -4440,7 +4440,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0GitRepo:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0Glusterfs:
-    """
+    r"""
     Glusterfs represents a Glusterfs mount on the host that shares a pod's lifetime. More info: https://examples.k8s.io/volumes/glusterfs/README.md
 
     Attributes
@@ -4462,7 +4462,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0Glusterfs:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0HostPath:
-    """
+    r"""
     HostPath represents a pre-existing file or directory on the host machine that is directly exposed to the container. This is generally used for system agents or other privileged things that are allowed to see the host machine. Most containers will NOT need this. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath --- TODO(jonesdl) We need to restrict who can use host directory mounts and who can/can not mount host directories as read/write.
 
     Attributes
@@ -4480,7 +4480,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0HostPath:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0Iscsi:
-    """
+    r"""
     ISCSI represents an ISCSI Disk resource that is attached to a kubelet's host machine and then exposed to the pod. More info: https://examples.k8s.io/volumes/iscsi/README.md
 
     Attributes
@@ -4534,7 +4534,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0Iscsi:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0IscsiSecretRef:
-    """
+    r"""
     CHAP Secret for iSCSI target and initiator authentication
 
     Attributes
@@ -4548,7 +4548,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0IscsiSecretRef:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0Nfs:
-    """
+    r"""
     NFS represents an NFS mount on the host that shares a pod's lifetime More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
 
     Attributes
@@ -4570,7 +4570,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0Nfs:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0PersistentVolumeClaim:
-    """
+    r"""
     PersistentVolumeClaimVolumeSource represents a reference to a PersistentVolumeClaim in the same namespace. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
 
     Attributes
@@ -4588,7 +4588,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0PersistentVolumeClaim:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0PhotonPersistentDisk:
-    """
+    r"""
     PhotonPersistentDisk represents a PhotonController persistent disk attached and mounted on kubelets host machine
 
     Attributes
@@ -4606,7 +4606,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0PhotonPersistentDisk:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0PortworxVolume:
-    """
+    r"""
     PortworxVolume represents a portworx volume attached and mounted on kubelets host machine
 
     Attributes
@@ -4628,7 +4628,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0PortworxVolume:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0Projected:
-    """
+    r"""
     Items for all in one resources secrets, configmaps, and downward API
 
     Attributes
@@ -4646,7 +4646,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0Projected:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0ProjectedSourcesItems0:
-    """
+    r"""
     Projection that may be projected along with other supported volume types
 
     Attributes
@@ -4672,7 +4672,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0ProjectedSourcesItems0:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0ProjectedSourcesItems0ConfigMap:
-    """
+    r"""
     information about the configMap data to project
 
     Attributes
@@ -4694,7 +4694,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0ProjectedSourcesItems0Co
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0ProjectedSourcesItems0ConfigMapItemsItems0:
-    """
+    r"""
     Maps a string key to a path within a volume.
 
     Attributes
@@ -4716,7 +4716,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0ProjectedSourcesItems0Co
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0ProjectedSourcesItems0DownwardAPI:
-    """
+    r"""
     information about the downwardAPI data to project
 
     Attributes
@@ -4730,7 +4730,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0ProjectedSourcesItems0Do
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0:
-    """
+    r"""
     DownwardAPIVolumeFile represents information to create the file containing the pod field
 
     Attributes
@@ -4756,7 +4756,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0ProjectedSourcesItems0Do
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0FieldRef:
-    """
+    r"""
     Required: Selects a field of the pod: only annotations, labels, name and namespace are supported.
 
     Attributes
@@ -4774,7 +4774,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0ProjectedSourcesItems0Do
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0ResourceFieldRef:
-    """
+    r"""
     Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported.
 
     Attributes
@@ -4796,7 +4796,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0ProjectedSourcesItems0Do
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0ProjectedSourcesItems0Secret:
-    """
+    r"""
     information about the secret data to project
 
     Attributes
@@ -4818,7 +4818,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0ProjectedSourcesItems0Se
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0ProjectedSourcesItems0SecretItemsItems0:
-    """
+    r"""
     Maps a string key to a path within a volume.
 
     Attributes
@@ -4840,7 +4840,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0ProjectedSourcesItems0Se
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0ProjectedSourcesItems0ServiceAccountToken:
-    """
+    r"""
     information about the serviceAccountToken data to project
 
     Attributes
@@ -4862,7 +4862,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0ProjectedSourcesItems0Se
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0Quobyte:
-    """
+    r"""
     Quobyte represents a Quobyte mount on the host that shares a pod's lifetime
 
     Attributes
@@ -4896,7 +4896,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0Quobyte:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0Rbd:
-    """
+    r"""
     RBD represents a Rados Block Device mount on the host that shares a pod's lifetime. More info: https://examples.k8s.io/volumes/rbd/README.md
 
     Attributes
@@ -4938,7 +4938,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0Rbd:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0RbdSecretRef:
-    """
+    r"""
     SecretRef is name of the authentication secret for RBDUser. If provided overrides keyring. Default is nil. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
 
     Attributes
@@ -4952,7 +4952,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0RbdSecretRef:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0ScaleIO:
-    """
+    r"""
     ScaleIO represents a ScaleIO persistent volume attached and mounted on Kubernetes nodes.
 
     Attributes
@@ -5002,7 +5002,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0ScaleIO:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0ScaleIOSecretRef:
-    """
+    r"""
     SecretRef references to the secret for ScaleIO user and other sensitive information. If this is not provided, Login operation will fail.
 
     Attributes
@@ -5016,7 +5016,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0ScaleIOSecretRef:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0Secret:
-    """
+    r"""
     Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
 
     Attributes
@@ -5042,7 +5042,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0Secret:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0SecretItemsItems0:
-    """
+    r"""
     Maps a string key to a path within a volume.
 
     Attributes
@@ -5064,7 +5064,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0SecretItemsItems0:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0Storageos:
-    """
+    r"""
     StorageOS represents a StorageOS volume attached and mounted on Kubernetes nodes.
 
     Attributes
@@ -5094,7 +5094,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0Storageos:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0StorageosSecretRef:
-    """
+    r"""
     SecretRef specifies the secret to use for obtaining the StorageOS API credentials.  If not specified, default values will be attempted.
 
     Attributes
@@ -5108,7 +5108,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0StorageosSecretRef:
 
 
 schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0VsphereVolume:
-    """
+    r"""
     VsphereVolume represents a vSphere volume attached and mounted on kubelets host machine
 
     Attributes
@@ -5134,7 +5134,7 @@ schema MonitoringCoreosComV1ThanosRulerSpecVolumesItems0VsphereVolume:
 
 
 schema MonitoringCoreosComV1ThanosRulerStatus:
-    """
+    r"""
     Most recent observed status of the ThanosRuler cluster. Read-only. Not included when requesting from the apiserver, only from the ThanosRuler Operator API itself. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
 
     Attributes

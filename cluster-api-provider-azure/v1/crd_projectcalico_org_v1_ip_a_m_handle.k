@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema IPAMHandle:
-    """
+    r"""
     crd projectcalico org v1 IP a m handle
 
     Attributes
@@ -32,7 +32,7 @@ schema IPAMHandle:
 
 
 schema CrdProjectcalicoOrgV1IPAMHandleSpec:
-    """
+    r"""
     IPAMHandleSpec contains the specification for an IPAMHandle resource.
 
     Attributes

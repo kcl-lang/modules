@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema AzureASOManagedControlPlane:
-    """
+    r"""
     AzureASOManagedControlPlane is the Schema for the azureasomanagedcontrolplanes API.
 
     Attributes
@@ -36,7 +36,7 @@ schema AzureASOManagedControlPlane:
 
 
 schema InfrastructureClusterxK8sIoV1alpha1AzureASOManagedControlPlaneSpec:
-    """
+    r"""
     AzureASOManagedControlPlaneSpec defines the desired state of AzureASOManagedControlPlane.
 
     Attributes
@@ -55,7 +55,7 @@ schema InfrastructureClusterxK8sIoV1alpha1AzureASOManagedControlPlaneSpec:
 
 
 schema InfrastructureClusterxK8sIoV1alpha1AzureASOManagedControlPlaneStatus:
-    """
+    r"""
     AzureASOManagedControlPlaneStatus defines the observed state of AzureASOManagedControlPlane.
 
     Attributes
@@ -88,7 +88,7 @@ schema InfrastructureClusterxK8sIoV1alpha1AzureASOManagedControlPlaneStatus:
 
 
 schema InfrastructureClusterxK8sIoV1alpha1AzureASOManagedControlPlaneStatusControlPlaneEndpoint:
-    """
+    r"""
     ControlPlaneEndpoint represents the endpoint for the cluster's API server.
 
     Attributes
@@ -106,7 +106,7 @@ schema InfrastructureClusterxK8sIoV1alpha1AzureASOManagedControlPlaneStatusContr
 
 
 schema InfrastructureClusterxK8sIoV1alpha1AzureASOManagedControlPlaneStatusResourcesItems0:
-    """
+    r"""
     ResourceStatus represents the status of a resource.
 
     Attributes
@@ -124,7 +124,7 @@ schema InfrastructureClusterxK8sIoV1alpha1AzureASOManagedControlPlaneStatusResou
 
 
 schema InfrastructureClusterxK8sIoV1alpha1AzureASOManagedControlPlaneStatusResourcesItems0Resource:
-    """
+    r"""
     StatusResource is a handle to a resource.
 
     Attributes

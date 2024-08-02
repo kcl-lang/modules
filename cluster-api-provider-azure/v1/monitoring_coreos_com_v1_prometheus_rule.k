@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema PrometheusRule:
-    """
+    r"""
     PrometheusRule defines alerting rules for a Prometheus instance
 
     Attributes
@@ -32,7 +32,7 @@ schema PrometheusRule:
 
 
 schema MonitoringCoreosComV1PrometheusRuleSpec:
-    """
+    r"""
     Specification of desired alerting rule definitions for Prometheus.
 
     Attributes
@@ -46,7 +46,7 @@ schema MonitoringCoreosComV1PrometheusRuleSpec:
 
 
 schema MonitoringCoreosComV1PrometheusRuleSpecGroupsItems0:
-    """
+    r"""
     RuleGroup is a list of sequentially evaluated recording and alerting rules. Note: PartialResponseStrategy is only used by ThanosRuler and will be ignored by Prometheus instances.  Valid values for this field are 'warn' or 'abort'.  More info: https://github.com/thanos-io/thanos/blob/master/docs/components/rule.md#partial-response
 
     Attributes
@@ -72,7 +72,7 @@ schema MonitoringCoreosComV1PrometheusRuleSpecGroupsItems0:
 
 
 schema MonitoringCoreosComV1PrometheusRuleSpecGroupsItems0RulesItems0:
-    """
+    r"""
     Rule describes an alerting or recording rule.
 
     Attributes

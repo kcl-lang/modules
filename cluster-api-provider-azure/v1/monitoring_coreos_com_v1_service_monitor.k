@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ServiceMonitor:
-    """
+    r"""
     ServiceMonitor defines monitoring for a set of services.
 
     Attributes
@@ -32,7 +32,7 @@ schema ServiceMonitor:
 
 
 schema MonitoringCoreosComV1ServiceMonitorSpec:
-    """
+    r"""
     Specification of desired Service selection for target discovery by Prometheus.
 
     Attributes
@@ -74,7 +74,7 @@ schema MonitoringCoreosComV1ServiceMonitorSpec:
 
 
 schema MonitoringCoreosComV1ServiceMonitorSpecEndpointsItems0:
-    """
+    r"""
     Endpoint defines a scrapeable endpoint serving Prometheus metrics.
 
     Attributes
@@ -148,7 +148,7 @@ schema MonitoringCoreosComV1ServiceMonitorSpecEndpointsItems0:
 
 
 schema MonitoringCoreosComV1ServiceMonitorSpecEndpointsItems0BasicAuth:
-    """
+    r"""
     BasicAuth allow an endpoint to authenticate over basic authentication More info: https://prometheus.io/docs/operating/configuration/#endpoints
 
     Attributes
@@ -166,7 +166,7 @@ schema MonitoringCoreosComV1ServiceMonitorSpecEndpointsItems0BasicAuth:
 
 
 schema MonitoringCoreosComV1ServiceMonitorSpecEndpointsItems0BasicAuthPassword:
-    """
+    r"""
     The secret in the service monitor namespace that contains the password for authentication.
 
     Attributes
@@ -188,7 +188,7 @@ schema MonitoringCoreosComV1ServiceMonitorSpecEndpointsItems0BasicAuthPassword:
 
 
 schema MonitoringCoreosComV1ServiceMonitorSpecEndpointsItems0BasicAuthUsername:
-    """
+    r"""
     The secret in the service monitor namespace that contains the username for authentication.
 
     Attributes
@@ -210,7 +210,7 @@ schema MonitoringCoreosComV1ServiceMonitorSpecEndpointsItems0BasicAuthUsername:
 
 
 schema MonitoringCoreosComV1ServiceMonitorSpecEndpointsItems0BearerTokenSecret:
-    """
+    r"""
     Secret to mount to read bearer token for scraping targets. The secret needs to be in the same namespace as the service monitor and accessible by the Prometheus Operator.
 
     Attributes
@@ -232,7 +232,7 @@ schema MonitoringCoreosComV1ServiceMonitorSpecEndpointsItems0BearerTokenSecret:
 
 
 schema MonitoringCoreosComV1ServiceMonitorSpecEndpointsItems0MetricRelabelingsItems0:
-    """
+    r"""
     RelabelConfig allows dynamic rewriting of the label set, being applied to samples before ingestion. It defines `<metric_relabel_configs>`-section of Prometheus configuration. More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#metric_relabel_configs
 
     Attributes
@@ -270,7 +270,7 @@ schema MonitoringCoreosComV1ServiceMonitorSpecEndpointsItems0MetricRelabelingsIt
 
 
 schema MonitoringCoreosComV1ServiceMonitorSpecEndpointsItems0RelabelingsItems0:
-    """
+    r"""
     RelabelConfig allows dynamic rewriting of the label set, being applied to samples before ingestion. It defines `<metric_relabel_configs>`-section of Prometheus configuration. More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#metric_relabel_configs
 
     Attributes
@@ -308,7 +308,7 @@ schema MonitoringCoreosComV1ServiceMonitorSpecEndpointsItems0RelabelingsItems0:
 
 
 schema MonitoringCoreosComV1ServiceMonitorSpecEndpointsItems0TLSConfig:
-    """
+    r"""
     TLS configuration to use when scraping the endpoint
 
     Attributes
@@ -350,7 +350,7 @@ schema MonitoringCoreosComV1ServiceMonitorSpecEndpointsItems0TLSConfig:
 
 
 schema MonitoringCoreosComV1ServiceMonitorSpecEndpointsItems0TLSConfigCa:
-    """
+    r"""
     Struct containing the CA cert to use for the targets.
 
     Attributes
@@ -368,7 +368,7 @@ schema MonitoringCoreosComV1ServiceMonitorSpecEndpointsItems0TLSConfigCa:
 
 
 schema MonitoringCoreosComV1ServiceMonitorSpecEndpointsItems0TLSConfigCaConfigMap:
-    """
+    r"""
     ConfigMap containing data to use for the targets.
 
     Attributes
@@ -390,7 +390,7 @@ schema MonitoringCoreosComV1ServiceMonitorSpecEndpointsItems0TLSConfigCaConfigMa
 
 
 schema MonitoringCoreosComV1ServiceMonitorSpecEndpointsItems0TLSConfigCaSecret:
-    """
+    r"""
     Secret containing data to use for the targets.
 
     Attributes
@@ -412,7 +412,7 @@ schema MonitoringCoreosComV1ServiceMonitorSpecEndpointsItems0TLSConfigCaSecret:
 
 
 schema MonitoringCoreosComV1ServiceMonitorSpecEndpointsItems0TLSConfigCert:
-    """
+    r"""
     Struct containing the client cert file for the targets.
 
     Attributes
@@ -430,7 +430,7 @@ schema MonitoringCoreosComV1ServiceMonitorSpecEndpointsItems0TLSConfigCert:
 
 
 schema MonitoringCoreosComV1ServiceMonitorSpecEndpointsItems0TLSConfigCertConfigMap:
-    """
+    r"""
     ConfigMap containing data to use for the targets.
 
     Attributes
@@ -452,7 +452,7 @@ schema MonitoringCoreosComV1ServiceMonitorSpecEndpointsItems0TLSConfigCertConfig
 
 
 schema MonitoringCoreosComV1ServiceMonitorSpecEndpointsItems0TLSConfigCertSecret:
-    """
+    r"""
     Secret containing data to use for the targets.
 
     Attributes
@@ -474,7 +474,7 @@ schema MonitoringCoreosComV1ServiceMonitorSpecEndpointsItems0TLSConfigCertSecret
 
 
 schema MonitoringCoreosComV1ServiceMonitorSpecEndpointsItems0TLSConfigKeySecret:
-    """
+    r"""
     Secret containing the client key file for the targets.
 
     Attributes
@@ -496,7 +496,7 @@ schema MonitoringCoreosComV1ServiceMonitorSpecEndpointsItems0TLSConfigKeySecret:
 
 
 schema MonitoringCoreosComV1ServiceMonitorSpecNamespaceSelector:
-    """
+    r"""
     Selector to select which namespaces the Endpoints objects are discovered from.
 
     Attributes
@@ -514,7 +514,7 @@ schema MonitoringCoreosComV1ServiceMonitorSpecNamespaceSelector:
 
 
 schema MonitoringCoreosComV1ServiceMonitorSpecSelector:
-    """
+    r"""
     Selector to select Endpoints objects.
 
     Attributes
@@ -532,7 +532,7 @@ schema MonitoringCoreosComV1ServiceMonitorSpecSelector:
 
 
 schema MonitoringCoreosComV1ServiceMonitorSpecSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
     Attributes

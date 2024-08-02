@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema AzureClusterIdentity:
-    """
+    r"""
     AzureClusterIdentity is the Schema for the azureclustersidentities API.
 
     Attributes
@@ -36,7 +36,7 @@ schema AzureClusterIdentity:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterIdentitySpec:
-    """
+    r"""
     AzureClusterIdentitySpec defines the parameters that are used to create an AzureIdentity.
 
     Attributes
@@ -51,6 +51,9 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterIdentitySpec:
     resourceID : str, default is Undefined, optional
         ResourceID is the Azure resource ID for the User Assigned MSI resource.
         Only applicable when type is UserAssignedMSI.
+
+
+        Deprecated: This field no longer has any effect.
     tenantID : str, default is Undefined, required
         TenantID is the service principal primary tenant id.
     $type : str, default is Undefined, required
@@ -73,7 +76,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterIdentitySpec:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterIdentitySpecAllowedNamespaces:
-    """
+    r"""
     AllowedNamespaces is used to identify the namespaces the clusters are allowed to use the identity from.
     Namespaces can be selected either using an array of namespaces or with label selector.
     An empty allowedNamespaces object indicates that AzureClusters can use this identity from any namespace.
@@ -95,7 +98,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterIdentitySpecAllowedNamespac
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterIdentitySpecAllowedNamespacesSelector:
-    """
+    r"""
     Selector is a selector of namespaces that AzureCluster can
     use this Identity from. This is a standard Kubernetes LabelSelector,
     a label query over a set of resources. The result of matchLabels and
@@ -122,7 +125,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterIdentitySpecAllowedNamespac
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterIdentitySpecAllowedNamespacesSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
 
@@ -149,7 +152,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterIdentitySpecAllowedNamespac
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterIdentitySpecClientSecret:
-    """
+    r"""
     ClientSecret is a secret reference which should contain either a Service Principal password or certificate secret.
 
     Attributes
@@ -167,7 +170,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterIdentitySpecClientSecret:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterIdentityStatus:
-    """
+    r"""
     AzureClusterIdentityStatus defines the observed state of AzureClusterIdentity.
 
     Attributes
@@ -181,7 +184,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterIdentityStatus:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterIdentityStatusConditionsItems0:
-    """
+    r"""
     Condition defines an observation of a Cluster API resource operational state.
 
     Attributes

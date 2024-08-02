@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema AzureASOManagedMachinePool:
-    """
+    r"""
     AzureASOManagedMachinePool is the Schema for the azureasomanagedmachinepools API.
 
     Attributes
@@ -36,7 +36,7 @@ schema AzureASOManagedMachinePool:
 
 
 schema InfrastructureClusterxK8sIoV1alpha1AzureASOManagedMachinePoolSpec:
-    """
+    r"""
     AzureASOManagedMachinePoolSpec defines the desired state of AzureASOManagedMachinePool.
 
     Attributes
@@ -55,7 +55,7 @@ schema InfrastructureClusterxK8sIoV1alpha1AzureASOManagedMachinePoolSpec:
 
 
 schema InfrastructureClusterxK8sIoV1alpha1AzureASOManagedMachinePoolStatus:
-    """
+    r"""
     AzureASOManagedMachinePoolStatus defines the observed state of AzureASOManagedMachinePool.
 
     Attributes
@@ -79,7 +79,7 @@ schema InfrastructureClusterxK8sIoV1alpha1AzureASOManagedMachinePoolStatus:
 
 
 schema InfrastructureClusterxK8sIoV1alpha1AzureASOManagedMachinePoolStatusResourcesItems0:
-    """
+    r"""
     ResourceStatus represents the status of a resource.
 
     Attributes
@@ -97,7 +97,7 @@ schema InfrastructureClusterxK8sIoV1alpha1AzureASOManagedMachinePoolStatusResour
 
 
 schema InfrastructureClusterxK8sIoV1alpha1AzureASOManagedMachinePoolStatusResourcesItems0Resource:
-    """
+    r"""
     StatusResource is a handle to a resource.
 
     Attributes

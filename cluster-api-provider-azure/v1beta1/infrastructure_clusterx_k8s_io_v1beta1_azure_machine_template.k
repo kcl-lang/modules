@@ -8,7 +8,7 @@ _regex_match = regex.match
 
 
 schema AzureMachineTemplate:
-    """
+    r"""
     AzureMachineTemplate is the Schema for the azuremachinetemplates API.
 
     Attributes
@@ -34,7 +34,7 @@ schema AzureMachineTemplate:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpec:
-    """
+    r"""
     AzureMachineTemplateSpec defines the desired state of AzureMachineTemplate.
 
     Attributes
@@ -48,7 +48,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpec:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplate:
-    """
+    r"""
     AzureMachineTemplateResource describes the data needed to create an AzureMachine from a template.
 
     Attributes
@@ -66,7 +66,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplate:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateMetadata:
-    """
+    r"""
     ObjectMeta is metadata that all persisted resources must have, which includes all objects
     users must create. This is a copy of customizable fields from metav1.ObjectMeta.
 
@@ -114,7 +114,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateMetadat
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpec:
-    """
+    r"""
     Spec is the specification of the desired behavior of the machine.
 
     Attributes
@@ -132,10 +132,18 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpec:
     capacityReservationGroupID : str, default is Undefined, optional
         CapacityReservationGroupID specifies the capacity reservation group resource id that should be
         used for allocating the virtual machine.
+        The field size should be greater than 0 and the field input must start with '/'.
+        The input for capacityReservationGroupID must be similar to '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}'.
+        The keys which are used should be among 'subscriptions', 'providers' and 'resourcegroups' followed by valid ID or names respectively.
+        It is optional but may not be changed once set.
     dataDisks : [InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecDataDisksItems0], default is Undefined, optional
         DataDisk specifies the parameters that are used to add one or more data disks to the machine
     diagnostics : InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecDiagnostics, default is Undefined, optional
         diagnostics
+    disableExtensionOperations : bool, default is Undefined, optional
+        DisableExtensionOperations specifies whether extension operations should be disabled on the virtual machine.
+        Use this setting only if VMExtensions are not supported by your image, as it disables CAPZ bootstrapping extension used for detecting Kubernetes bootstrap failure.
+        This may only be set to True when no extensions are configured on the virtual machine.
     dnsServers : [str], default is Undefined, optional
         DNSServers adds a list of DNS Server IP addresses to the VM NICs.
     enableIPForwarding : bool, default is Undefined, optional
@@ -201,6 +209,8 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpec:
 
     diagnostics?: InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecDiagnostics
 
+    disableExtensionOperations?: bool
+
     dnsServers?: [str]
 
     enableIPForwarding?: bool
@@ -237,7 +247,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpec:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecAdditionalCapabilities:
-    """
+    r"""
     AdditionalCapabilities specifies additional capabilities enabled or disabled on the virtual machine.
 
     Attributes
@@ -253,7 +263,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecAdd
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecDataDisksItems0:
-    """
+    r"""
     DataDisk specifies the parameters that are used to add one or more data disks to the machine.
 
     Attributes
@@ -285,7 +295,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecDat
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecDataDisksItems0ManagedDisk:
-    """
+    r"""
     ManagedDisk specifies the Managed Disk parameters for the data disk.
 
     Attributes
@@ -307,7 +317,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecDat
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecDataDisksItems0ManagedDiskDiskEncryptionSet:
-    """
+    r"""
     DiskEncryptionSet specifies the customer-managed disk encryption set resource id for the managed disk.
 
     Attributes
@@ -321,7 +331,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecDat
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecDataDisksItems0ManagedDiskSecurityProfile:
-    """
+    r"""
     SecurityProfile specifies the security profile for the managed disk.
 
     Attributes
@@ -345,7 +355,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecDat
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecDataDisksItems0ManagedDiskSecurityProfileDiskEncryptionSet:
-    """
+    r"""
     DiskEncryptionSet specifies the customer-managed disk encryption set resource id for the
     managed disk that is used for Customer Managed Key encrypted ConfidentialVM OS Disk and
     VMGuest blob.
@@ -361,7 +371,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecDat
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecDiagnostics:
-    """
+    r"""
     Diagnostics specifies the diagnostics settings for a virtual machine.
     If not specified then Boot diagnostics (Managed) will be enabled.
 
@@ -376,7 +386,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecDia
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecDiagnosticsBoot:
-    """
+    r"""
     Boot configures the boot diagnostics settings for the virtual machine.
     This allows to configure capturing serial output from the virtual machine on boot.
     This is useful for debugging software based launch issues.
@@ -398,7 +408,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecDia
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecDiagnosticsBootUserManaged:
-    """
+    r"""
     UserManaged provides a reference to the user-managed storage account.
 
     Attributes
@@ -422,7 +432,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecDia
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecImage:
-    """
+    r"""
     Image is used to provide details of an image to use during VM creation.
     If image details are omitted the image will default the Azure Marketplace "capi" offer,
     which is based on Ubuntu.
@@ -450,7 +460,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecIma
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecImageComputeGallery:
-    """
+    r"""
     ComputeGallery specifies an image to use from the Azure Compute Gallery
 
     Attributes
@@ -494,7 +504,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecIma
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecImageComputeGalleryPlan:
-    """
+    r"""
     Plan contains plan information.
 
     Attributes
@@ -524,7 +534,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecIma
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecImageMarketplace:
-    """
+    r"""
     Marketplace specifies an image to use from the Azure Marketplace
 
     Attributes
@@ -568,7 +578,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecIma
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecImageSharedGallery:
-    """
+    r"""
     SharedGallery specifies an image to use from an Azure Shared Image Gallery
     Deprecated: use ComputeGallery instead.
 
@@ -631,7 +641,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecIma
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecNetworkInterfacesItems0:
-    """
+    r"""
     NetworkInterface defines a network interface.
 
     Attributes
@@ -656,7 +666,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecNet
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecOsDisk:
-    """
+    r"""
     OSDisk specifies the parameters for the operating system disk of the machine
 
     Attributes
@@ -687,7 +697,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecOsD
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecOsDiskDiffDiskSettings:
-    """
+    r"""
     DiffDiskSettings describe ephemeral disk settings for the os disk.
 
     Attributes
@@ -695,14 +705,18 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecOsD
     option : str, default is Undefined, required
         Option enables ephemeral OS when set to "Local"
         See https://learn.microsoft.com/azure/virtual-machines/ephemeral-os-disks for full details
+    placement : str, default is Undefined, optional
+        Placement specifies the ephemeral disk placement for operating system disk. If placement is specified, Option must be set to "Local".
     """
 
 
     option: "Local"
 
+    placement?: "CacheDisk" | "NvmeDisk" | "ResourceDisk"
+
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecOsDiskManagedDisk:
-    """
+    r"""
     ManagedDisk specifies the Managed Disk parameters for the OS disk.
 
     Attributes
@@ -724,7 +738,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecOsD
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecOsDiskManagedDiskDiskEncryptionSet:
-    """
+    r"""
     DiskEncryptionSet specifies the customer-managed disk encryption set resource id for the managed disk.
 
     Attributes
@@ -738,7 +752,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecOsD
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecOsDiskManagedDiskSecurityProfile:
-    """
+    r"""
     SecurityProfile specifies the security profile for the managed disk.
 
     Attributes
@@ -762,7 +776,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecOsD
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecOsDiskManagedDiskSecurityProfileDiskEncryptionSet:
-    """
+    r"""
     DiskEncryptionSet specifies the customer-managed disk encryption set resource id for the
     managed disk that is used for Customer Managed Key encrypted ConfidentialVM OS Disk and
     VMGuest blob.
@@ -778,7 +792,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecOsD
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecSecurityProfile:
-    """
+    r"""
     SecurityProfile specifies the Security profile settings for a virtual machine.
 
     Attributes
@@ -804,7 +818,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecSec
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecSecurityProfileUefiSettings:
-    """
+    r"""
     UefiSettings specifies the security settings like secure boot and vTPM used while creating the virtual machine.
 
     Attributes
@@ -828,7 +842,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecSec
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecSpotVMOptions:
-    """
+    r"""
     SpotVMOptions allows the ability to specify the Machine should use a Spot VM
 
     Attributes
@@ -850,7 +864,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecSpo
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecSystemAssignedIdentityRole:
-    """
+    r"""
     SystemAssignedIdentityRole defines the role and scope to assign to the system-assigned identity.
 
     Attributes
@@ -875,7 +889,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecSys
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecUserAssignedIdentitiesItems0:
-    """
+    r"""
     UserAssignedIdentity defines the user-assigned identities provided
     by the user to be assigned to Azure resources.
 
@@ -891,7 +905,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecUse
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecVMExtensionsItems0:
-    """
+    r"""
     VMExtension specifies the parameters for a custom VM extension.
 
     Attributes

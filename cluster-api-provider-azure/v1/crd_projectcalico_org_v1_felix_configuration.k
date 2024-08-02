@@ -8,7 +8,7 @@ _regex_match = regex.match
 
 
 schema FelixConfiguration:
-    """
+    r"""
     Felix Configuration contains the configuration for Felix.
 
     Attributes
@@ -34,7 +34,7 @@ schema FelixConfiguration:
 
 
 schema CrdProjectcalicoOrgV1FelixConfigurationSpec:
-    """
+    r"""
     FelixConfigurationSpec contains the values of the Felix configuration.
 
     Attributes
@@ -547,7 +547,7 @@ schema CrdProjectcalicoOrgV1FelixConfigurationSpec:
 
 
 schema CrdProjectcalicoOrgV1FelixConfigurationSpecFailsafeInboundHostPortsItems0:
-    """
+    r"""
     ProtoPort is combination of protocol, port, and CIDR. Protocol and port must be specified.
 
     Attributes
@@ -569,7 +569,7 @@ schema CrdProjectcalicoOrgV1FelixConfigurationSpecFailsafeInboundHostPortsItems0
 
 
 schema CrdProjectcalicoOrgV1FelixConfigurationSpecFailsafeOutboundHostPortsItems0:
-    """
+    r"""
     ProtoPort is combination of protocol, port, and CIDR. Protocol and port must be specified.
 
     Attributes
@@ -591,7 +591,7 @@ schema CrdProjectcalicoOrgV1FelixConfigurationSpecFailsafeOutboundHostPortsItems
 
 
 schema CrdProjectcalicoOrgV1FelixConfigurationSpecHealthTimeoutOverridesItems0:
-    """
+    r"""
     crd projectcalico org v1 felix configuration spec health timeout overrides items0
 
     Attributes
@@ -609,7 +609,7 @@ schema CrdProjectcalicoOrgV1FelixConfigurationSpecHealthTimeoutOverridesItems0:
 
 
 schema CrdProjectcalicoOrgV1FelixConfigurationSpecRouteTableRange:
-    """
+    r"""
     Deprecated in favor of RouteTableRanges. Calico programs additional Linux route tables for various purposes. RouteTableRange specifies the indices of the route tables that Calico should use.
 
     Attributes
@@ -627,7 +627,7 @@ schema CrdProjectcalicoOrgV1FelixConfigurationSpecRouteTableRange:
 
 
 schema CrdProjectcalicoOrgV1FelixConfigurationSpecRouteTableRangesItems0:
-    """
+    r"""
     crd projectcalico org v1 felix configuration spec route table ranges items0
 
     Attributes

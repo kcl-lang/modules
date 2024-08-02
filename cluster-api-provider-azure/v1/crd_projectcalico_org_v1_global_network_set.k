@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema GlobalNetworkSet:
-    """
+    r"""
     GlobalNetworkSet contains a set of arbitrary IP sub-networks/CIDRs that share labels to allow rules to refer to them via selectors.  The labels of GlobalNetworkSet are not namespaced.
 
     Attributes
@@ -32,7 +32,7 @@ schema GlobalNetworkSet:
 
 
 schema CrdProjectcalicoOrgV1GlobalNetworkSetSpec:
-    """
+    r"""
     GlobalNetworkSetSpec contains the specification for a NetworkSet resource.
 
     Attributes

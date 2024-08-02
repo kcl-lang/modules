@@ -8,7 +8,7 @@ _regex_match = regex.match
 
 
 schema HostEndpoint:
-    """
+    r"""
     crd projectcalico org v1 host endpoint
 
     Attributes
@@ -34,7 +34,7 @@ schema HostEndpoint:
 
 
 schema CrdProjectcalicoOrgV1HostEndpointSpec:
-    """
+    r"""
     HostEndpointSpec contains the specification for a HostEndpoint resource.
 
     Attributes
@@ -66,7 +66,7 @@ schema CrdProjectcalicoOrgV1HostEndpointSpec:
 
 
 schema CrdProjectcalicoOrgV1HostEndpointSpecPortsItems0:
-    """
+    r"""
     crd projectcalico org v1 host endpoint spec ports items0
 
     Attributes

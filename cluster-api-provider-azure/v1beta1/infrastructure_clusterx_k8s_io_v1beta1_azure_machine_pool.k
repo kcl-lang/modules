@@ -8,7 +8,7 @@ _regex_match = regex.match
 
 
 schema AzureMachinePool:
-    """
+    r"""
     AzureMachinePool is the Schema for the azuremachinepools API.
 
     Attributes
@@ -38,7 +38,7 @@ schema AzureMachinePool:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpec:
-    """
+    r"""
     AzureMachinePoolSpec defines the desired state of AzureMachinePool.
 
     Attributes
@@ -111,7 +111,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpec:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecStrategy:
-    """
+    r"""
     The deployment strategy to use to replace existing AzureMachinePoolMachines with new ones.
 
     Attributes
@@ -129,7 +129,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecStrategy:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecStrategyRollingUpdate:
-    """
+    r"""
     Rolling update config params. Present only if
     MachineDeploymentStrategyType = RollingUpdate.
 
@@ -177,7 +177,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecStrategyRollingUpda
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecSystemAssignedIdentityRole:
-    """
+    r"""
     SystemAssignedIdentityRole defines the role and scope to assign to the system assigned identity.
 
     Attributes
@@ -202,7 +202,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecSystemAssignedIdent
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplate:
-    """
+    r"""
     Template contains the details used to build a replica virtual machine within the Machine Pool
 
     Attributes
@@ -270,7 +270,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplate:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateDataDisksItems0:
-    """
+    r"""
     DataDisk specifies the parameters that are used to add one or more data disks to the machine.
 
     Attributes
@@ -302,7 +302,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateDataDisksIt
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateDataDisksItems0ManagedDisk:
-    """
+    r"""
     ManagedDisk specifies the Managed Disk parameters for the data disk.
 
     Attributes
@@ -324,7 +324,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateDataDisksIt
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateDataDisksItems0ManagedDiskDiskEncryptionSet:
-    """
+    r"""
     DiskEncryptionSet specifies the customer-managed disk encryption set resource id for the managed disk.
 
     Attributes
@@ -338,7 +338,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateDataDisksIt
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateDataDisksItems0ManagedDiskSecurityProfile:
-    """
+    r"""
     SecurityProfile specifies the security profile for the managed disk.
 
     Attributes
@@ -362,7 +362,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateDataDisksIt
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateDataDisksItems0ManagedDiskSecurityProfileDiskEncryptionSet:
-    """
+    r"""
     DiskEncryptionSet specifies the customer-managed disk encryption set resource id for the
     managed disk that is used for Customer Managed Key encrypted ConfidentialVM OS Disk and
     VMGuest blob.
@@ -378,7 +378,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateDataDisksIt
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateDiagnostics:
-    """
+    r"""
     Diagnostics specifies the diagnostics settings for a virtual machine.
     If not specified then Boot diagnostics (Managed) will be enabled.
 
@@ -393,7 +393,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateDiagnostics
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateDiagnosticsBoot:
-    """
+    r"""
     Boot configures the boot diagnostics settings for the virtual machine.
     This allows to configure capturing serial output from the virtual machine on boot.
     This is useful for debugging software based launch issues.
@@ -415,7 +415,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateDiagnostics
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateDiagnosticsBootUserManaged:
-    """
+    r"""
     UserManaged provides a reference to the user-managed storage account.
 
     Attributes
@@ -439,7 +439,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateDiagnostics
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateImage:
-    """
+    r"""
     Image is used to provide details of an image to use during VM creation.
     If image details are omitted the image will default the Azure Marketplace "capi" offer,
     which is based on Ubuntu.
@@ -467,7 +467,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateImage:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateImageComputeGallery:
-    """
+    r"""
     ComputeGallery specifies an image to use from the Azure Compute Gallery
 
     Attributes
@@ -511,7 +511,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateImageComput
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateImageComputeGalleryPlan:
-    """
+    r"""
     Plan contains plan information.
 
     Attributes
@@ -541,7 +541,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateImageComput
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateImageMarketplace:
-    """
+    r"""
     Marketplace specifies an image to use from the Azure Marketplace
 
     Attributes
@@ -585,7 +585,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateImageMarket
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateImageSharedGallery:
-    """
+    r"""
     SharedGallery specifies an image to use from an Azure Shared Image Gallery
     Deprecated: use ComputeGallery instead.
 
@@ -648,7 +648,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateImageShared
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateNetworkInterfacesItems0:
-    """
+    r"""
     NetworkInterface defines a network interface.
 
     Attributes
@@ -673,7 +673,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateNetworkInte
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateOsDisk:
-    """
+    r"""
     OSDisk contains the operating system disk information for a Virtual Machine
 
     Attributes
@@ -704,7 +704,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateOsDisk:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateOsDiskDiffDiskSettings:
-    """
+    r"""
     DiffDiskSettings describe ephemeral disk settings for the os disk.
 
     Attributes
@@ -712,14 +712,18 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateOsDiskDiffD
     option : str, default is Undefined, required
         Option enables ephemeral OS when set to "Local"
         See https://learn.microsoft.com/azure/virtual-machines/ephemeral-os-disks for full details
+    placement : str, default is Undefined, optional
+        Placement specifies the ephemeral disk placement for operating system disk. If placement is specified, Option must be set to "Local".
     """
 
 
     option: "Local"
 
+    placement?: "CacheDisk" | "NvmeDisk" | "ResourceDisk"
+
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateOsDiskManagedDisk:
-    """
+    r"""
     ManagedDisk specifies the Managed Disk parameters for the OS disk.
 
     Attributes
@@ -741,7 +745,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateOsDiskManag
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateOsDiskManagedDiskDiskEncryptionSet:
-    """
+    r"""
     DiskEncryptionSet specifies the customer-managed disk encryption set resource id for the managed disk.
 
     Attributes
@@ -755,7 +759,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateOsDiskManag
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateOsDiskManagedDiskSecurityProfile:
-    """
+    r"""
     SecurityProfile specifies the security profile for the managed disk.
 
     Attributes
@@ -779,7 +783,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateOsDiskManag
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateOsDiskManagedDiskSecurityProfileDiskEncryptionSet:
-    """
+    r"""
     DiskEncryptionSet specifies the customer-managed disk encryption set resource id for the
     managed disk that is used for Customer Managed Key encrypted ConfidentialVM OS Disk and
     VMGuest blob.
@@ -795,7 +799,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateOsDiskManag
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateSecurityProfile:
-    """
+    r"""
     SecurityProfile specifies the Security profile settings for a virtual machine.
 
     Attributes
@@ -821,7 +825,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateSecurityPro
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateSecurityProfileUefiSettings:
-    """
+    r"""
     UefiSettings specifies the security settings like secure boot and vTPM used while creating the virtual machine.
 
     Attributes
@@ -845,7 +849,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateSecurityPro
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateSpotVMOptions:
-    """
+    r"""
     SpotVMOptions allows the ability to specify the Machine should use a Spot VM
 
     Attributes
@@ -867,7 +871,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateSpotVMOptio
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateVMExtensionsItems0:
-    """
+    r"""
     VMExtension specifies the parameters for a custom VM extension.
 
     Attributes
@@ -897,7 +901,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateVMExtension
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecUserAssignedIdentitiesItems0:
-    """
+    r"""
     UserAssignedIdentity defines the user-assigned identities provided
     by the user to be assigned to Azure resources.
 
@@ -913,7 +917,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecUserAssignedIdentit
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolStatus:
-    """
+    r"""
     AzureMachinePoolStatus defines the observed state of AzureMachinePool.
 
     Attributes
@@ -1002,7 +1006,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolStatus:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolStatusConditionsItems0:
-    """
+    r"""
     Condition defines an observation of a Cluster API resource operational state.
 
     Attributes
@@ -1045,7 +1049,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolStatusConditionsItems0:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolStatusImage:
-    """
+    r"""
     Image is the current image used in the AzureMachinePool. When the spec image is nil, this image is populated
     with the details of the defaulted Azure Marketplace "capi" offer.
 
@@ -1072,7 +1076,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolStatusImage:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolStatusImageComputeGallery:
-    """
+    r"""
     ComputeGallery specifies an image to use from the Azure Compute Gallery
 
     Attributes
@@ -1116,7 +1120,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolStatusImageComputeGalle
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolStatusImageComputeGalleryPlan:
-    """
+    r"""
     Plan contains plan information.
 
     Attributes
@@ -1146,7 +1150,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolStatusImageComputeGalle
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolStatusImageMarketplace:
-    """
+    r"""
     Marketplace specifies an image to use from the Azure Marketplace
 
     Attributes
@@ -1190,7 +1194,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolStatusImageMarketplace:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolStatusImageSharedGallery:
-    """
+    r"""
     SharedGallery specifies an image to use from an Azure Shared Image Gallery
     Deprecated: use ComputeGallery instead.
 
@@ -1253,7 +1257,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolStatusImageSharedGaller
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolStatusInstancesItems0:
-    """
+    r"""
     AzureMachinePoolInstanceStatus provides status information for each instance in the VMSS.
 
     Attributes
@@ -1289,7 +1293,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolStatusInstancesItems0:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolStatusLongRunningOperationStatesItems0:
-    """
+    r"""
     Future contains the data needed for an Azure long-running operation to continue across reconcile loops.
 
     Attributes

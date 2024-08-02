@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema AzureASOManagedMachinePoolTemplate:
-    """
+    r"""
     AzureASOManagedMachinePoolTemplate is the Schema for the azureasomanagedmachinepooltemplates API.
 
     Attributes
@@ -32,7 +32,7 @@ schema AzureASOManagedMachinePoolTemplate:
 
 
 schema InfrastructureClusterxK8sIoV1alpha1AzureASOManagedMachinePoolTemplateSpec:
-    """
+    r"""
     AzureASOManagedMachinePoolTemplateSpec defines the desired state of AzureASOManagedMachinePoolTemplate.
 
     Attributes
@@ -46,7 +46,7 @@ schema InfrastructureClusterxK8sIoV1alpha1AzureASOManagedMachinePoolTemplateSpec
 
 
 schema InfrastructureClusterxK8sIoV1alpha1AzureASOManagedMachinePoolTemplateSpecTemplate:
-    """
+    r"""
     AzureASOManagedControlPlaneResource defines the templated resource.
 
     Attributes
@@ -60,7 +60,7 @@ schema InfrastructureClusterxK8sIoV1alpha1AzureASOManagedMachinePoolTemplateSpec
 
 
 schema InfrastructureClusterxK8sIoV1alpha1AzureASOManagedMachinePoolTemplateSpecTemplateSpec:
-    """
+    r"""
     AzureASOManagedControlPlaneTemplateResourceSpec defines the desired state of the templated resource.
 
     Attributes

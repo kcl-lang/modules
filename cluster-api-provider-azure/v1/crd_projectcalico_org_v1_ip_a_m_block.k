@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema IPAMBlock:
-    """
+    r"""
     crd projectcalico org v1 IP a m block
 
     Attributes
@@ -32,7 +32,7 @@ schema IPAMBlock:
 
 
 schema CrdProjectcalicoOrgV1IPAMBlockSpec:
-    """
+    r"""
     IPAMBlockSpec contains the specification for an IPAMBlock resource.
 
     Attributes
@@ -78,7 +78,7 @@ schema CrdProjectcalicoOrgV1IPAMBlockSpec:
 
 
 schema CrdProjectcalicoOrgV1IPAMBlockSpecAttributesItems0:
-    """
+    r"""
     crd projectcalico org v1 IP a m block spec attributes items0
 
     Attributes

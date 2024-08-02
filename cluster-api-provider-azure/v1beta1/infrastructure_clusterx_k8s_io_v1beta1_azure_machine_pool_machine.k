@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema AzureMachinePoolMachine:
-    """
+    r"""
     AzureMachinePoolMachine is the Schema for the azuremachinepoolmachines API.
 
     Attributes
@@ -36,7 +36,7 @@ schema AzureMachinePoolMachine:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolMachineSpec:
-    """
+    r"""
     AzureMachinePoolMachineSpec defines the desired state of AzureMachinePoolMachine.
 
     Attributes
@@ -54,7 +54,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolMachineSpec:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolMachineStatus:
-    """
+    r"""
     AzureMachinePoolMachineStatus defines the observed state of AzureMachinePoolMachine.
 
     Attributes
@@ -121,7 +121,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolMachineStatus:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolMachineStatusConditionsItems0:
-    """
+    r"""
     Condition defines an observation of a Cluster API resource operational state.
 
     Attributes
@@ -164,7 +164,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolMachineStatusConditions
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolMachineStatusLongRunningOperationStatesItems0:
-    """
+    r"""
     Future contains the data needed for an Azure long-running operation to continue across reconcile loops.
 
     Attributes
@@ -196,7 +196,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolMachineStatusLongRunnin
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolMachineStatusNodeRef:
-    """
+    r"""
     NodeRef will point to the corresponding Node if it exists.
 
     Attributes
