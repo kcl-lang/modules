@@ -1,0 +1,25 @@
+version: v0.38.0
+name: fluxcd-image-automation-controller
+displayName: fluxcd-image-automation-controller
+createdAt: "2024-08-02T02:26:59Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `fluxcd-image-automation-controller` with tag `v0.38.0` as dependency
+  ```
+  kcl mod add fluxcd-image-automation-controller:v0.38.0
+  ```
+
+  #### Pull `fluxcd-image-automation-controller` with tag `v0.38.0` to local
+  ```
+  kcl mod pull fluxcd-image-automation-controller:v0.38.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
