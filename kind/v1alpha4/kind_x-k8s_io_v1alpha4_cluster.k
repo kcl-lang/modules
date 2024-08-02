@@ -12,6 +12,7 @@ schema Networking:
     podSubnet?: str
     ipFamily?: str 
     kubeProxyMode?: str
+    disableDefaultCNI?: bool
 
 schema ExtraPortMapping:
     containerPort?: int
