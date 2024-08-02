@@ -1,0 +1,25 @@
+version: v0.32.0
+name: fluxcd-image-reflector-controller
+displayName: fluxcd-image-reflector-controller
+createdAt: "2024-08-02T02:28:01Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `fluxcd-image-reflector-controller` with tag `v0.32.0` as dependency
+  ```
+  kcl mod add fluxcd-image-reflector-controller:v0.32.0
+  ```
+
+  #### Pull `fluxcd-image-reflector-controller` with tag `v0.32.0` to local
+  ```
+  kcl mod pull fluxcd-image-reflector-controller:v0.32.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
