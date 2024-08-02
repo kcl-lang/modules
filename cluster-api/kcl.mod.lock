@@ -1,8 +1,5 @@
 [dependencies]
   [dependencies.k8s]
     name = "k8s"
-    full_name = "k8s_1.29"
-    version = "1.29"
-    reg = "ghcr.io"
-    repo = "kcl-lang/k8s"
-    oci_tag = "1.29"
+    full_name = "k8s_1.30"
+    version = "1.30"

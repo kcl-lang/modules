@@ -40,7 +40,8 @@ schema AddonsClusterxK8sIoV1beta1ClusterResourceSetBindingSpec:
     bindings : [AddonsClusterxK8sIoV1beta1ClusterResourceSetBindingSpecBindingsItems0], default is Undefined, optional
         Bindings is a list of ClusterResourceSets and their resources.
     clusterName : str, default is Undefined, optional
-        ClusterName is the name of the Cluster this binding applies to. Note: this field mandatory in v1beta2.
+        ClusterName is the name of the Cluster this binding applies to.
+        Note: this field mandatory in v1beta2.
     """
 
 
@@ -76,7 +77,8 @@ schema AddonsClusterxK8sIoV1beta1ClusterResourceSetBindingSpecBindingsItems0Reso
     applied : bool, default is Undefined, required
         Applied is to track if a resource is applied to the cluster or not.
     hash : str, default is Undefined, optional
-        Hash is the hash of a resource's data. This can be used to decide if a resource is changed. For "ApplyOnce" ClusterResourceSet.spec.strategy, this is no-op as that strategy does not act on change.
+        Hash is the hash of a resource's data. This can be used to decide if a resource is changed.
+        For "ApplyOnce" ClusterResourceSet.spec.strategy, this is no-op as that strategy does not act on change.
     kind : str, default is Undefined, required
         Kind of the resource. Supported kinds are: Secrets and ConfigMaps.
     lastAppliedTime : str, default is Undefined, optional

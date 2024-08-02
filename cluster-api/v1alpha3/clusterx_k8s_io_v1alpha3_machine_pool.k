@@ -7,8 +7,10 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema MachinePool:
     """
-    MachinePool is the Schema for the machinepools API. 
-     Deprecated: This type will be removed in one of the next releases.
+    MachinePool is the Schema for the machinepools API.
+
+
+    Deprecated: This type will be removed in one of the next releases.
 
     Attributes
     ----------
@@ -47,11 +49,16 @@ schema ClusterxK8sIoV1alpha3MachinePoolSpec:
     failureDomains : [str], default is Undefined, optional
         FailureDomains is the list of failure domains this MachinePool should be attached to.
     minReadySeconds : int, default is Undefined, optional
-        Minimum number of seconds for which a newly created machine instances should be ready. Defaults to 0 (machine instance will be considered available as soon as it is ready)
+        Minimum number of seconds for which a newly created machine instances should
+        be ready.
+        Defaults to 0 (machine instance will be considered available as soon as it
+        is ready)
     providerIDList : [str], default is Undefined, optional
-        ProviderIDList are the identification IDs of machine instances provided by the provider. This field must match the provider IDs as seen on the node objects corresponding to a machine pool's machine instances.
+        ProviderIDList are the identification IDs of machine instances provided by the provider.
+        This field must match the provider IDs as seen on the node objects corresponding to a machine pool's machine instances.
     replicas : int, default is Undefined, optional
-        Number of desired machines. Defaults to 1. This is a pointer to distinguish between explicit zero and not specified.
+        Number of desired machines. Defaults to 1.
+        This is a pointer to distinguish between explicit zero and not specified.
     strategy : ClusterxK8sIoV1alpha3MachinePoolSpecStrategy, default is Undefined, optional
         strategy
     template : ClusterxK8sIoV1alpha3MachinePoolSpecTemplate, default is Undefined, required
@@ -80,14 +87,17 @@ schema ClusterxK8sIoV1alpha3MachinePoolSpec:
 
 schema ClusterxK8sIoV1alpha3MachinePoolSpecStrategy:
     """
-    The deployment strategy to use to replace existing machine instances with new ones.
+    The deployment strategy to use to replace existing machine instances with
+    new ones.
 
     Attributes
     ----------
     rollingUpdate : ClusterxK8sIoV1alpha3MachinePoolSpecStrategyRollingUpdate, default is Undefined, optional
         rolling update
     $type : str, default is Undefined, optional
-        Type of deployment. Currently the only supported strategy is "RollingUpdate". Default is RollingUpdate.
+        Type of deployment. Currently the only supported strategy is
+        "RollingUpdate".
+        Default is RollingUpdate.
     """
 
 
@@ -98,14 +108,38 @@ schema ClusterxK8sIoV1alpha3MachinePoolSpecStrategy:
 
 schema ClusterxK8sIoV1alpha3MachinePoolSpecStrategyRollingUpdate:
     """
-    Rolling update config params. Present only if MachineDeploymentStrategyType = RollingUpdate.
+    Rolling update config params. Present only if
+    MachineDeploymentStrategyType = RollingUpdate.
 
     Attributes
     ----------
     maxSurge : int | str, default is Undefined, optional
-        The maximum number of machines that can be scheduled above the desired number of machines. Value can be an absolute number (ex: 5) or a percentage of desired machines (ex: 10%). This can not be 0 if MaxUnavailable is 0. Absolute number is calculated from percentage by rounding up. Defaults to 1. Example: when this is set to 30%, the new MachineSet can be scaled up immediately when the rolling update starts, such that the total number of old and new machines do not exceed 130% of desired machines. Once old machines have been killed, new MachineSet can be scaled up further, ensuring that total number of machines running at any time during the update is at most 130% of desired machines.
+        The maximum number of machines that can be scheduled above the
+        desired number of machines.
+        Value can be an absolute number (ex: 5) or a percentage of
+        desired machines (ex: 10%).
+        This can not be 0 if MaxUnavailable is 0.
+        Absolute number is calculated from percentage by rounding up.
+        Defaults to 1.
+        Example: when this is set to 30%, the new MachineSet can be scaled
+        up immediately when the rolling update starts, such that the total
+        number of old and new machines do not exceed 130% of desired
+        machines. Once old machines have been killed, new MachineSet can
+        be scaled up further, ensuring that total number of machines running
+        at any time during the update is at most 130% of desired machines.
     maxUnavailable : int | str, default is Undefined, optional
-        The maximum number of machines that can be unavailable during the update. Value can be an absolute number (ex: 5) or a percentage of desired machines (ex: 10%). Absolute number is calculated from percentage by rounding down. This can not be 0 if MaxSurge is 0. Defaults to 0. Example: when this is set to 30%, the old MachineSet can be scaled down to 70% of desired machines immediately when the rolling update starts. Once new machines are ready, old MachineSet can be scaled down further, followed by scaling up the new MachineSet, ensuring that the total number of machines available at all times during the update is at least 70% of desired machines.
+        The maximum number of machines that can be unavailable during the update.
+        Value can be an absolute number (ex: 5) or a percentage of desired
+        machines (ex: 10%).
+        Absolute number is calculated from percentage by rounding down.
+        This can not be 0 if MaxSurge is 0.
+        Defaults to 0.
+        Example: when this is set to 30%, the old MachineSet can be scaled
+        down to 70% of desired machines immediately when the rolling update
+        starts. Once new machines are ready, old MachineSet can be scaled
+        down further, followed by scaling up the new MachineSet, ensuring
+        that the total number of machines available at all times
+        during the update is at least 70% of desired machines.
     """
 
 
@@ -134,29 +168,73 @@ schema ClusterxK8sIoV1alpha3MachinePoolSpecTemplate:
 
 schema ClusterxK8sIoV1alpha3MachinePoolSpecTemplateMetadata:
     """
-    Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+    Standard object's metadata.
+    More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations
+        Annotations is an unstructured key value map stored with a resource that may be
+        set by external tools to store and retrieve arbitrary metadata. They are not
+        queryable and should be preserved when modifying objects.
+        More info: http://kubernetes.io/docs/user-guide/annotations
     generateName : str, default is Undefined, optional
-        GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server. 
-         If this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header). 
-         Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#idempotency 
-         Deprecated: This field has no function and is going to be removed in a next release.
+        GenerateName is an optional prefix, used by the server, to generate a unique
+        name ONLY IF the Name field has not been provided.
+        If this field is used, the name returned to the client will be different
+        than the name passed. This value will also be combined with a unique suffix.
+        The provided value has the same validation rules as the Name field,
+        and may be truncated by the length of the suffix required to make the value
+        unique on the server.
+
+
+        If this field is specified and the generated name exists, the server will
+        NOT return a 409 - instead, it will either return 201 Created or 500 with Reason
+        ServerTimeout indicating a unique name could not be found in the time allotted, and the client
+        should retry (optionally after the time indicated in the Retry-After header).
+
+
+        Applied only if Name is not specified.
+        More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#idempotency
+
+
+        Deprecated: This field has no function and is going to be removed in a next release.
     labels : {str:str}, default is Undefined, optional
-        Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: http://kubernetes.io/docs/user-guide/labels
+        Map of string keys and values that can be used to organize and categorize
+        (scope and select) objects. May match selectors of replication controllers
+        and services.
+        More info: http://kubernetes.io/docs/user-guide/labels
     name : str, default is Undefined, optional
-        Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names 
-         Deprecated: This field has no function and is going to be removed in a next release.
+        Name must be unique within a namespace. Is required when creating resources, although
+        some resources may allow a client to request the generation of an appropriate name
+        automatically. Name is primarily intended for creation idempotence and configuration
+        definition.
+        Cannot be updated.
+        More info: http://kubernetes.io/docs/user-guide/identifiers#names
+
+
+        Deprecated: This field has no function and is going to be removed in a next release.
     namespace : str, default is Undefined, optional
-        Namespace defines the space within each name must be unique. An empty namespace is equivalent to the "default" namespace, but "default" is the canonical representation. Not all objects are required to be scoped to a namespace - the value of this field for those objects will be empty. 
-         Must be a DNS_LABEL. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/namespaces 
-         Deprecated: This field has no function and is going to be removed in a next release.
+        Namespace defines the space within each name must be unique. An empty namespace is
+        equivalent to the "default" namespace, but "default" is the canonical representation.
+        Not all objects are required to be scoped to a namespace - the value of this field for
+        those objects will be empty.
+
+
+        Must be a DNS_LABEL.
+        Cannot be updated.
+        More info: http://kubernetes.io/docs/user-guide/namespaces
+
+
+        Deprecated: This field has no function and is going to be removed in a next release.
     ownerReferences : [ClusterxK8sIoV1alpha3MachinePoolSpecTemplateMetadataOwnerReferencesItems0], default is Undefined, optional
-        List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller. 
-         Deprecated: This field has no function and is going to be removed in a next release.
+        List of objects depended by this object. If ALL objects in the list have
+        been deleted, this object will be garbage collected. If this object is managed by a controller,
+        then an entry in this list will point to this controller, with the controller field set to true.
+        There cannot be more than one managing controller.
+
+
+        Deprecated: This field has no function and is going to be removed in a next release.
     """
 
 
@@ -175,22 +253,34 @@ schema ClusterxK8sIoV1alpha3MachinePoolSpecTemplateMetadata:
 
 schema ClusterxK8sIoV1alpha3MachinePoolSpecTemplateMetadataOwnerReferencesItems0:
     """
-    OwnerReference contains enough information to let you identify an owning object. An owning object must be in the same namespace as the dependent, or be cluster-scoped, so there is no namespace field.
+    OwnerReference contains enough information to let you identify an owning
+    object. An owning object must be in the same namespace as the dependent, or
+    be cluster-scoped, so there is no namespace field.
 
     Attributes
     ----------
     apiVersion : str, default is Undefined, required
         API version of the referent.
     blockOwnerDeletion : bool, default is Undefined, optional
-        If true, AND if the owner has the "foregroundDeletion" finalizer, then the owner cannot be deleted from the key-value store until this reference is removed. See https://kubernetes.io/docs/concepts/architecture/garbage-collection/#foreground-deletion for how the garbage collector interacts with this field and enforces the foreground deletion. Defaults to false. To set this field, a user needs "delete" permission of the owner, otherwise 422 (Unprocessable Entity) will be returned.
+        If true, AND if the owner has the "foregroundDeletion" finalizer, then
+        the owner cannot be deleted from the key-value store until this
+        reference is removed.
+        See https://kubernetes.io/docs/concepts/architecture/garbage-collection/#foreground-deletion
+        for how the garbage collector interacts with this field and enforces the foreground deletion.
+        Defaults to false.
+        To set this field, a user needs "delete" permission of the owner,
+        otherwise 422 (Unprocessable Entity) will be returned.
     controller : bool, default is Undefined, optional
         If true, this reference points to the managing controller.
     kind : str, default is Undefined, required
-        Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+        Kind of the referent.
+        More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     name : str, default is Undefined, required
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#names
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#names
     uid : str, default is Undefined, required
-        UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids
+        UID of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids
     """
 
 
@@ -209,7 +299,8 @@ schema ClusterxK8sIoV1alpha3MachinePoolSpecTemplateMetadataOwnerReferencesItems0
 
 schema ClusterxK8sIoV1alpha3MachinePoolSpecTemplateSpec:
     """
-    Specification of the desired behavior of the machine. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+    Specification of the desired behavior of the machine.
+    More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
 
     Attributes
     ----------
@@ -218,15 +309,28 @@ schema ClusterxK8sIoV1alpha3MachinePoolSpecTemplateSpec:
     clusterName : str, default is Undefined, required
         ClusterName is the name of the Cluster this object belongs to.
     failureDomain : str, default is Undefined, optional
-        FailureDomain is the failure domain the machine will be created in. Must match a key in the FailureDomains map stored on the cluster object.
+        FailureDomain is the failure domain the machine will be created in.
+        Must match a key in the FailureDomains map stored on the cluster object.
     infrastructureRef : ClusterxK8sIoV1alpha3MachinePoolSpecTemplateSpecInfrastructureRef, default is Undefined, required
         infrastructure ref
     nodeDrainTimeout : str, default is Undefined, optional
-        NodeDrainTimeout is the total amount of time that the controller will spend on draining a node. The default value is 0, meaning that the node can be drained without any time limitations. NOTE: NodeDrainTimeout is different from `kubectl drain --timeout`
+        NodeDrainTimeout is the total amount of time that the controller will spend on draining a node.
+        The default value is 0, meaning that the node can be drained without any time limitations.
+        NOTE: NodeDrainTimeout is different from `kubectl drain --timeout`
     providerID : str, default is Undefined, optional
-        ProviderID is the identification ID of the machine provided by the provider. This field must match the provider ID as seen on the node object corresponding to this machine. This field is required by higher level consumers of cluster-api. Example use case is cluster autoscaler with cluster-api as provider. Clean-up logic in the autoscaler compares machines to nodes to find out machines at provider which could not get registered as Kubernetes nodes. With cluster-api as a generic out-of-tree provider for autoscaler, this field is required by autoscaler to be able to have a provider view of the list of machines. Another list of nodes is queried from the k8s apiserver and then a comparison is done to find out unregistered machines and are marked for delete. This field will be set by the actuators and consumed by higher level entities like autoscaler that will be interfacing with cluster-api as generic provider.
+        ProviderID is the identification ID of the machine provided by the provider.
+        This field must match the provider ID as seen on the node object corresponding to this machine.
+        This field is required by higher level consumers of cluster-api. Example use case is cluster autoscaler
+        with cluster-api as provider. Clean-up logic in the autoscaler compares machines to nodes to find out
+        machines at provider which could not get registered as Kubernetes nodes. With cluster-api as a
+        generic out-of-tree provider for autoscaler, this field is required by autoscaler to be
+        able to have a provider view of the list of machines. Another list of nodes is queried from the k8s apiserver
+        and then a comparison is done to find out unregistered machines and are marked for delete.
+        This field will be set by the actuators and consumed by higher level entities like autoscaler that will
+        be interfacing with cluster-api as generic provider.
     version : str, default is Undefined, optional
-        Version defines the desired Kubernetes version. This field is meant to be optionally used by bootstrap providers.
+        Version defines the desired Kubernetes version.
+        This field is meant to be optionally used by bootstrap providers.
     """
 
 
@@ -251,17 +355,22 @@ schema ClusterxK8sIoV1alpha3MachinePoolSpecTemplateSpec:
 
 schema ClusterxK8sIoV1alpha3MachinePoolSpecTemplateSpecBootstrap:
     """
-    Bootstrap is a reference to a local struct which encapsulates fields to configure the Machine’s bootstrapping mechanism.
+    Bootstrap is a reference to a local struct which encapsulates
+    fields to configure the Machine’s bootstrapping mechanism.
 
     Attributes
     ----------
     configRef : ClusterxK8sIoV1alpha3MachinePoolSpecTemplateSpecBootstrapConfigRef, default is Undefined, optional
         config ref
     data : str, default is Undefined, optional
-        Data contains the bootstrap data, such as cloud-init details scripts. If nil, the Machine should remain in the Pending state. 
-         Deprecated: Switch to DataSecretName.
+        Data contains the bootstrap data, such as cloud-init details scripts.
+        If nil, the Machine should remain in the Pending state.
+
+
+        Deprecated: Switch to DataSecretName.
     dataSecretName : str, default is Undefined, optional
-        DataSecretName is the name of the secret that stores the bootstrap data script. If nil, the Machine should remain in the Pending state.
+        DataSecretName is the name of the secret that stores the bootstrap data script.
+        If nil, the Machine should remain in the Pending state.
     """
 
 
@@ -274,24 +383,39 @@ schema ClusterxK8sIoV1alpha3MachinePoolSpecTemplateSpecBootstrap:
 
 schema ClusterxK8sIoV1alpha3MachinePoolSpecTemplateSpecBootstrapConfigRef:
     """
-    ConfigRef is a reference to a bootstrap provider-specific resource that holds configuration details. The reference is optional to allow users/operators to specify Bootstrap.Data without the need of a controller.
+    ConfigRef is a reference to a bootstrap provider-specific resource
+    that holds configuration details. The reference is optional to
+    allow users/operators to specify Bootstrap.Data without
+    the need of a controller.
 
     Attributes
     ----------
     apiVersion : str, default is Undefined, optional
         API version of the referent.
     fieldPath : str, default is Undefined, optional
-        If referring to a piece of an object instead of an entire object, this string should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2]. For example, if the object reference is to a container within a pod, this would take on a value like: "spec.containers{name}" (where "name" refers to the name of the container that triggered the event) or if no container name is specified "spec.containers[2]" (container with index 2 in this pod). This syntax is chosen only to have some well-defined way of referencing a part of an object. TODO: this design is not final and this field is subject to change in the future.
+        If referring to a piece of an object instead of an entire object, this string
+        should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2].
+        For example, if the object reference is to a container within a pod, this would take on a value like:
+        "spec.containers{name}" (where "name" refers to the name of the container that triggered
+        the event) or if no container name is specified "spec.containers[2]" (container with
+        index 2 in this pod). This syntax is chosen only to have some well-defined way of
+        referencing a part of an object.
+        TODO: this design is not final and this field is subject to change in the future.
     kind : str, default is Undefined, optional
-        Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+        Kind of the referent.
+        More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        Namespace of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
     resourceVersion : str, default is Undefined, optional
-        Specific resourceVersion to which this reference is made, if any. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+        Specific resourceVersion to which this reference is made, if any.
+        More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
     uid : str, default is Undefined, optional
-        UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
+        UID of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
     """
 
 
@@ -312,24 +436,37 @@ schema ClusterxK8sIoV1alpha3MachinePoolSpecTemplateSpecBootstrapConfigRef:
 
 schema ClusterxK8sIoV1alpha3MachinePoolSpecTemplateSpecInfrastructureRef:
     """
-    InfrastructureRef is a required reference to a custom resource offered by an infrastructure provider.
+    InfrastructureRef is a required reference to a custom resource
+    offered by an infrastructure provider.
 
     Attributes
     ----------
     apiVersion : str, default is Undefined, optional
         API version of the referent.
     fieldPath : str, default is Undefined, optional
-        If referring to a piece of an object instead of an entire object, this string should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2]. For example, if the object reference is to a container within a pod, this would take on a value like: "spec.containers{name}" (where "name" refers to the name of the container that triggered the event) or if no container name is specified "spec.containers[2]" (container with index 2 in this pod). This syntax is chosen only to have some well-defined way of referencing a part of an object. TODO: this design is not final and this field is subject to change in the future.
+        If referring to a piece of an object instead of an entire object, this string
+        should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2].
+        For example, if the object reference is to a container within a pod, this would take on a value like:
+        "spec.containers{name}" (where "name" refers to the name of the container that triggered
+        the event) or if no container name is specified "spec.containers[2]" (container with
+        index 2 in this pod). This syntax is chosen only to have some well-defined way of
+        referencing a part of an object.
+        TODO: this design is not final and this field is subject to change in the future.
     kind : str, default is Undefined, optional
-        Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+        Kind of the referent.
+        More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        Namespace of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
     resourceVersion : str, default is Undefined, optional
-        Specific resourceVersion to which this reference is made, if any. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+        Specific resourceVersion to which this reference is made, if any.
+        More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
     uid : str, default is Undefined, optional
-        UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
+        UID of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
     """
 
 
@@ -361,9 +498,11 @@ schema ClusterxK8sIoV1alpha3MachinePoolStatus:
     conditions : [ClusterxK8sIoV1alpha3MachinePoolStatusConditionsItems0], default is Undefined, optional
         Conditions define the current service state of the MachinePool.
     failureMessage : str, default is Undefined, optional
-        FailureMessage indicates that there is a problem reconciling the state, and will be set to a descriptive error message.
+        FailureMessage indicates that there is a problem reconciling the state,
+        and will be set to a descriptive error message.
     failureReason : str, default is Undefined, optional
-        FailureReason indicates that there is a problem reconciling the state, and will be set to a token value suitable for programmatic interpretation.
+        FailureReason indicates that there is a problem reconciling the state, and
+        will be set to a token value suitable for programmatic interpretation.
     infrastructureReady : bool, default is Undefined, optional
         InfrastructureReady is the state of the infrastructure provider.
     nodeRefs : [ClusterxK8sIoV1alpha3MachinePoolStatusNodeRefsItems0], default is Undefined, optional
@@ -371,13 +510,18 @@ schema ClusterxK8sIoV1alpha3MachinePoolStatus:
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the latest generation observed by the controller.
     phase : str, default is Undefined, optional
-        Phase represents the current phase of cluster actuation. E.g. Pending, Running, Terminating, Failed etc.
+        Phase represents the current phase of cluster actuation.
+        E.g. Pending, Running, Terminating, Failed etc.
     readyReplicas : int, default is Undefined, optional
         The number of ready replicas for this MachinePool. A machine is considered ready when the node has been created and is "Ready".
     replicas : int, default is Undefined, optional
         Replicas is the most recently observed number of replicas.
     unavailableReplicas : int, default is Undefined, optional
-        Total number of unavailable machine instances targeted by this machine pool. This is the total number of machine instances that are still required for the machine pool to have 100% available capacity. They may either be machine instances that are running but not yet available or machine instances that still have not been created.
+        Total number of unavailable machine instances targeted by this machine pool.
+        This is the total number of machine instances that are still required for
+        the machine pool to have 100% available capacity. They may either
+        be machine instances that are running but not yet available or machine instances
+        that still have not been created.
     """
 
 
@@ -413,17 +557,26 @@ schema ClusterxK8sIoV1alpha3MachinePoolStatusConditionsItems0:
     Attributes
     ----------
     lastTransitionTime : str, default is Undefined, optional
-        Last time the condition transitioned from one status to another. This should be when the underlying condition changed. If that is not known, then using the time when the API field changed is acceptable.
+        Last time the condition transitioned from one status to another.
+        This should be when the underlying condition changed. If that is not known, then using the time when
+        the API field changed is acceptable.
     message : str, default is Undefined, optional
-        A human readable message indicating details about the transition. This field may be empty.
+        A human readable message indicating details about the transition.
+        This field may be empty.
     reason : str, default is Undefined, optional
-        The reason for the condition's last transition in CamelCase. The specific API may choose whether or not this field is considered a guaranteed API. This field may not be empty.
+        The reason for the condition's last transition in CamelCase.
+        The specific API may choose whether or not this field is considered a guaranteed API.
+        This field may not be empty.
     severity : str, default is Undefined, optional
-        Severity provides an explicit classification of Reason code, so the users or machines can immediately understand the current situation and act accordingly. The Severity field MUST be set only when Status=False.
+        Severity provides an explicit classification of Reason code, so the users or machines can immediately
+        understand the current situation and act accordingly.
+        The Severity field MUST be set only when Status=False.
     status : str, default is Undefined, required
         Status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
-        Type of condition in CamelCase or in foo.example.com/CamelCase. Many .condition.type values are consistent across resources like Available, but because arbitrary conditions can be useful (see .node.status.conditions), the ability to deconflict is important.
+        Type of condition in CamelCase or in foo.example.com/CamelCase.
+        Many .condition.type values are consistent across resources like Available, but because arbitrary conditions
+        can be useful (see .node.status.conditions), the ability to deconflict is important.
     """
 
 
@@ -442,25 +595,52 @@ schema ClusterxK8sIoV1alpha3MachinePoolStatusConditionsItems0:
 
 schema ClusterxK8sIoV1alpha3MachinePoolStatusNodeRefsItems0:
     """
-    ObjectReference contains enough information to let you inspect or modify the referred object. --- New uses of this type are discouraged because of difficulty describing its usage when embedded in APIs. 1. Ignored fields.  It includes many fields which are not generally honored.  For instance, ResourceVersion and FieldPath are both very rarely valid in actual usage. 2. Invalid usage help.  It is impossible to add specific help for individual usage.  In most embedded usages, there are particular restrictions like, "must refer only to types A and B" or "UID not honored" or "name must be restricted". Those cannot be well described when embedded. 3. Inconsistent validation.  Because the usages are different, the validation rules are different by usage, which makes it hard for users to predict what will happen. 4. The fields are both imprecise and overly precise.  Kind is not a precise mapping to a URL. This can produce ambiguity during interpretation and require a REST mapping.  In most cases, the dependency is on the group,resource tuple and the version of the actual struct is irrelevant. 5. We cannot easily change it.  Because this type is embedded in many locations, updates to this type will affect numerous schemas.  Don't make new APIs embed an underspecified API type they do not control. 
-     Instead of using this type, create a locally provided and used type that is well-focused on your reference. For example, ServiceReferences for admission registration: https://github.com/kubernetes/api/blob/release-1.17/admissionregistration/v1/types.go#L533 .
+    ObjectReference contains enough information to let you inspect or modify the referred object.
+    ---
+    New uses of this type are discouraged because of difficulty describing its usage when embedded in APIs.
+     1. Ignored fields.  It includes many fields which are not generally honored.  For instance, ResourceVersion and FieldPath are both very rarely valid in actual usage.
+     2. Invalid usage help.  It is impossible to add specific help for individual usage.  In most embedded usages, there are particular
+        restrictions like, "must refer only to types A and B" or "UID not honored" or "name must be restricted".
+        Those cannot be well described when embedded.
+     3. Inconsistent validation.  Because the usages are different, the validation rules are different by usage, which makes it hard for users to predict what will happen.
+     4. The fields are both imprecise and overly precise.  Kind is not a precise mapping to a URL. This can produce ambiguity
+        during interpretation and require a REST mapping.  In most cases, the dependency is on the group,resource tuple
+        and the version of the actual struct is irrelevant.
+     5. We cannot easily change it.  Because this type is embedded in many locations, updates to this type
+        will affect numerous schemas.  Don't make new APIs embed an underspecified API type they do not control.
+
+
+    Instead of using this type, create a locally provided and used type that is well-focused on your reference.
+    For example, ServiceReferences for admission registration: https://github.com/kubernetes/api/blob/release-1.17/admissionregistration/v1/types.go#L533 .
 
     Attributes
     ----------
     apiVersion : str, default is Undefined, optional
         API version of the referent.
     fieldPath : str, default is Undefined, optional
-        If referring to a piece of an object instead of an entire object, this string should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2]. For example, if the object reference is to a container within a pod, this would take on a value like: "spec.containers{name}" (where "name" refers to the name of the container that triggered the event) or if no container name is specified "spec.containers[2]" (container with index 2 in this pod). This syntax is chosen only to have some well-defined way of referencing a part of an object. TODO: this design is not final and this field is subject to change in the future.
+        If referring to a piece of an object instead of an entire object, this string
+        should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2].
+        For example, if the object reference is to a container within a pod, this would take on a value like:
+        "spec.containers{name}" (where "name" refers to the name of the container that triggered
+        the event) or if no container name is specified "spec.containers[2]" (container with
+        index 2 in this pod). This syntax is chosen only to have some well-defined way of
+        referencing a part of an object.
+        TODO: this design is not final and this field is subject to change in the future.
     kind : str, default is Undefined, optional
-        Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+        Kind of the referent.
+        More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        Namespace of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
     resourceVersion : str, default is Undefined, optional
-        Specific resourceVersion to which this reference is made, if any. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+        Specific resourceVersion to which this reference is made, if any.
+        More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
     uid : str, default is Undefined, optional
-        UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
+        UID of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
     """
 
 

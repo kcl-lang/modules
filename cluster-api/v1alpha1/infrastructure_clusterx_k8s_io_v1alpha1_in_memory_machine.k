@@ -55,7 +55,8 @@ schema InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpec:
 
 schema InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpecBehaviour:
     """
-    Behaviour of the InMemoryMachine; this will allow to make a simulation more alike to real use cases e.g. by defining the duration of the provisioning phase mimicking the performances of the target infrastructure.
+    Behaviour of the InMemoryMachine; this will allow to make a simulation more alike to real use cases
+    e.g. by defining the duration of the provisioning phase mimicking the performances of the target infrastructure.
 
     Attributes
     ----------
@@ -95,14 +96,17 @@ schema InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpecBehaviourAPIServer:
 
 schema InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpecBehaviourAPIServerProvisioning:
     """
-    Provisioning defines variables influencing how the APIServer hosted on the InMemoryMachine is going to be provisioned. NOTE: APIServer provisioning includes all the steps from starting the static Pod to the Pod become ready and being registered in K8s.
+    Provisioning defines variables influencing how the APIServer hosted on the InMemoryMachine is going to be provisioned.
+    NOTE: APIServer provisioning includes all the steps from starting the static Pod to the Pod become ready and being registered in K8s.
 
     Attributes
     ----------
     startupDuration : str, default is Undefined, required
         StartupDuration defines the duration of the object provisioning phase.
     startupJitter : str, default is Undefined, optional
-        StartupJitter adds some randomness on StartupDuration; the actual duration will be StartupDuration plus an additional amount chosen uniformly at random from the interval between zero and `StartupJitter*StartupDuration`. NOTE: this is modeled as string because the usage of float is highly discouraged, as support for them varies across languages.
+        StartupJitter adds some randomness on StartupDuration; the actual duration will be StartupDuration plus an additional
+        amount chosen uniformly at random from the interval between zero and `StartupJitter*StartupDuration`.
+        NOTE: this is modeled as string because the usage of float is highly discouraged, as support for them varies across languages.
     """
 
 
@@ -127,14 +131,17 @@ schema InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpecBehaviourEtcd:
 
 schema InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpecBehaviourEtcdProvisioning:
     """
-    Provisioning defines variables influencing how the etcd member hosted on the InMemoryMachine is going to be provisioned. NOTE: Etcd provisioning includes all the steps from starting the static Pod to the Pod become ready and being registered in K8s.
+    Provisioning defines variables influencing how the etcd member hosted on the InMemoryMachine is going to be provisioned.
+    NOTE: Etcd provisioning includes all the steps from starting the static Pod to the Pod become ready and being registered in K8s.
 
     Attributes
     ----------
     startupDuration : str, default is Undefined, required
         StartupDuration defines the duration of the object provisioning phase.
     startupJitter : str, default is Undefined, optional
-        StartupJitter adds some randomness on StartupDuration; the actual duration will be StartupDuration plus an additional amount chosen uniformly at random from the interval between zero and `StartupJitter*StartupDuration`. NOTE: this is modeled as string because the usage of float is highly discouraged, as support for them varies across languages.
+        StartupJitter adds some randomness on StartupDuration; the actual duration will be StartupDuration plus an additional
+        amount chosen uniformly at random from the interval between zero and `StartupJitter*StartupDuration`.
+        NOTE: this is modeled as string because the usage of float is highly discouraged, as support for them varies across languages.
     """
 
 
@@ -159,14 +166,17 @@ schema InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpecBehaviourNode:
 
 schema InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpecBehaviourNodeProvisioning:
     """
-    Provisioning defines variables influencing how the Node (the kubelet) hosted on the InMemoryMachine is going to be provisioned. NOTE: Node provisioning includes all the steps from starting kubelet to the node become ready, get a provider ID, and being registered in K8s.
+    Provisioning defines variables influencing how the Node (the kubelet) hosted on the InMemoryMachine is going to be provisioned.
+    NOTE: Node provisioning includes all the steps from starting kubelet to the node become ready, get a provider ID, and being registered in K8s.
 
     Attributes
     ----------
     startupDuration : str, default is Undefined, required
         StartupDuration defines the duration of the object provisioning phase.
     startupJitter : str, default is Undefined, optional
-        StartupJitter adds some randomness on StartupDuration; the actual duration will be StartupDuration plus an additional amount chosen uniformly at random from the interval between zero and `StartupJitter*StartupDuration`. NOTE: this is modeled as string because the usage of float is highly discouraged, as support for them varies across languages.
+        StartupJitter adds some randomness on StartupDuration; the actual duration will be StartupDuration plus an additional
+        amount chosen uniformly at random from the interval between zero and `StartupJitter*StartupDuration`.
+        NOTE: this is modeled as string because the usage of float is highly discouraged, as support for them varies across languages.
     """
 
 
@@ -191,14 +201,17 @@ schema InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpecBehaviourVM:
 
 schema InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpecBehaviourVMProvisioning:
     """
-    Provisioning defines variables influencing how the VM implementing the InMemoryMachine is going to be provisioned. NOTE: VM provisioning includes all the steps from creation to power-on.
+    Provisioning defines variables influencing how the VM implementing the InMemoryMachine is going to be provisioned.
+    NOTE: VM provisioning includes all the steps from creation to power-on.
 
     Attributes
     ----------
     startupDuration : str, default is Undefined, required
         StartupDuration defines the duration of the object provisioning phase.
     startupJitter : str, default is Undefined, optional
-        StartupJitter adds some randomness on StartupDuration; the actual duration will be StartupDuration plus an additional amount chosen uniformly at random from the interval between zero and `StartupJitter*StartupDuration`. NOTE: this is modeled as string because the usage of float is highly discouraged, as support for them varies across languages.
+        StartupJitter adds some randomness on StartupDuration; the actual duration will be StartupDuration plus an additional
+        amount chosen uniformly at random from the interval between zero and `StartupJitter*StartupDuration`.
+        NOTE: this is modeled as string because the usage of float is highly discouraged, as support for them varies across languages.
     """
 
 
@@ -232,17 +245,26 @@ schema InfrastructureClusterxK8sIoV1alpha1InMemoryMachineStatusConditionsItems0:
     Attributes
     ----------
     lastTransitionTime : str, default is Undefined, required
-        Last time the condition transitioned from one status to another. This should be when the underlying condition changed. If that is not known, then using the time when the API field changed is acceptable.
+        Last time the condition transitioned from one status to another.
+        This should be when the underlying condition changed. If that is not known, then using the time when
+        the API field changed is acceptable.
     message : str, default is Undefined, optional
-        A human readable message indicating details about the transition. This field may be empty.
+        A human readable message indicating details about the transition.
+        This field may be empty.
     reason : str, default is Undefined, optional
-        The reason for the condition's last transition in CamelCase. The specific API may choose whether or not this field is considered a guaranteed API. This field may not be empty.
+        The reason for the condition's last transition in CamelCase.
+        The specific API may choose whether or not this field is considered a guaranteed API.
+        This field may not be empty.
     severity : str, default is Undefined, optional
-        Severity provides an explicit classification of Reason code, so the users or machines can immediately understand the current situation and act accordingly. The Severity field MUST be set only when Status=False.
+        Severity provides an explicit classification of Reason code, so the users or machines can immediately
+        understand the current situation and act accordingly.
+        The Severity field MUST be set only when Status=False.
     status : str, default is Undefined, required
         Status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
-        Type of condition in CamelCase or in foo.example.com/CamelCase. Many .condition.type values are consistent across resources like Available, but because arbitrary conditions can be useful (see .node.status.conditions), the ability to deconflict is important.
+        Type of condition in CamelCase or in foo.example.com/CamelCase.
+        Many .condition.type values are consistent across resources like Available, but because arbitrary conditions
+        can be useful (see .node.status.conditions), the ability to deconflict is important.
     """
 
 

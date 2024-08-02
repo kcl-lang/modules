@@ -41,19 +41,31 @@ schema InfrastructureClusterxK8sIoV1beta1DockerMachineSpec:
 
     Attributes
     ----------
+    bootstrapTimeout : str, default is Undefined, optional
+        BootstrapTimeout is the total amount of time to wait for the machine to bootstrap before timing out.
+        The default value is 3m.
     bootstrapped : bool, default is Undefined, optional
-        Bootstrapped is true when the kubeadm bootstrapping has been run against this machine 
-         Deprecated: This field will be removed in the next apiVersion. When removing also remove from staticcheck exclude-rules for SA1019 in golangci.yml.
+        Bootstrapped is true when the kubeadm bootstrapping has been run
+        against this machine
+
+
+        Deprecated: This field will be removed in the next apiVersion.
+        When removing also remove from staticcheck exclude-rules for SA1019 in golangci.yml.
     customImage : str, default is Undefined, optional
-        CustomImage allows customizing the container image that is used for running the machine
+        CustomImage allows customizing the container image that is used for
+        running the machine
     extraMounts : [InfrastructureClusterxK8sIoV1beta1DockerMachineSpecExtraMountsItems0], default is Undefined, optional
-        ExtraMounts describes additional mount points for the node container These may be used to bind a hostPath
+        ExtraMounts describes additional mount points for the node container
+        These may be used to bind a hostPath
     preLoadImages : [str], default is Undefined, optional
-        PreLoadImages allows to pre-load images in a newly created machine. This can be used to speed up tests by avoiding e.g. to download CNI images on all the containers.
+        PreLoadImages allows to pre-load images in a newly created machine. This can be used to
+        speed up tests by avoiding e.g. to download CNI images on all the containers.
     providerID : str, default is Undefined, optional
         ProviderID will be the container name in ProviderID format (docker:////<containername>)
     """
 
+
+    bootstrapTimeout?: str
 
     bootstrapped?: bool
 
@@ -68,14 +80,17 @@ schema InfrastructureClusterxK8sIoV1beta1DockerMachineSpec:
 
 schema InfrastructureClusterxK8sIoV1beta1DockerMachineSpecExtraMountsItems0:
     """
-    Mount specifies a host volume to mount into a container. This is a simplified version of kind v1alpha4.Mount types.
+    Mount specifies a host volume to mount into a container.
+    This is a simplified version of kind v1alpha4.Mount types.
 
     Attributes
     ----------
     containerPath : str, default is Undefined, optional
         Path of the mount within the container.
     hostPath : str, default is Undefined, optional
-        Path of the mount on the host. If the hostPath doesn't exist, then runtimes should report error. If the hostpath is a symbolic link, runtimes should follow the symlink and mount the real destination to container.
+        Path of the mount on the host. If the hostPath doesn't exist, then runtimes
+        should report error. If the hostpath is a symbolic link, runtimes should
+        follow the symlink and mount the real destination to container.
     readOnly : bool, default is Undefined, optional
         If set, the mount is read-only.
     """
@@ -99,7 +114,8 @@ schema InfrastructureClusterxK8sIoV1beta1DockerMachineStatus:
     conditions : [InfrastructureClusterxK8sIoV1beta1DockerMachineStatusConditionsItems0], default is Undefined, optional
         Conditions defines current service state of the DockerMachine.
     loadBalancerConfigured : bool, default is Undefined, optional
-        LoadBalancerConfigured denotes that the machine has been added to the load balancer
+        LoadBalancerConfigured denotes that the machine has been
+        added to the load balancer
     ready : bool, default is Undefined, optional
         Ready denotes that the machine (docker container) is ready
     """
@@ -139,17 +155,26 @@ schema InfrastructureClusterxK8sIoV1beta1DockerMachineStatusConditionsItems0:
     Attributes
     ----------
     lastTransitionTime : str, default is Undefined, required
-        Last time the condition transitioned from one status to another. This should be when the underlying condition changed. If that is not known, then using the time when the API field changed is acceptable.
+        Last time the condition transitioned from one status to another.
+        This should be when the underlying condition changed. If that is not known, then using the time when
+        the API field changed is acceptable.
     message : str, default is Undefined, optional
-        A human readable message indicating details about the transition. This field may be empty.
+        A human readable message indicating details about the transition.
+        This field may be empty.
     reason : str, default is Undefined, optional
-        The reason for the condition's last transition in CamelCase. The specific API may choose whether or not this field is considered a guaranteed API. This field may not be empty.
+        The reason for the condition's last transition in CamelCase.
+        The specific API may choose whether or not this field is considered a guaranteed API.
+        This field may not be empty.
     severity : str, default is Undefined, optional
-        Severity provides an explicit classification of Reason code, so the users or machines can immediately understand the current situation and act accordingly. The Severity field MUST be set only when Status=False.
+        Severity provides an explicit classification of Reason code, so the users or machines can immediately
+        understand the current situation and act accordingly.
+        The Severity field MUST be set only when Status=False.
     status : str, default is Undefined, required
         Status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
-        Type of condition in CamelCase or in foo.example.com/CamelCase. Many .condition.type values are consistent across resources like Available, but because arbitrary conditions can be useful (see .node.status.conditions), the ability to deconflict is important.
+        Type of condition in CamelCase or in foo.example.com/CamelCase.
+        Many .condition.type values are consistent across resources like Available, but because arbitrary conditions
+        can be useful (see .node.status.conditions), the ability to deconflict is important.
     """
 
 

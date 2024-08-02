@@ -65,14 +65,21 @@ schema InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpecTemplate:
 
 schema InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpecTemplateMetadata:
     """
-    Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+    Standard object's metadata.
+    More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations
+        Annotations is an unstructured key value map stored with a resource that may be
+        set by external tools to store and retrieve arbitrary metadata. They are not
+        queryable and should be preserved when modifying objects.
+        More info: http://kubernetes.io/docs/user-guide/annotations
     labels : {str:str}, default is Undefined, optional
-        Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: http://kubernetes.io/docs/user-guide/labels
+        Map of string keys and values that can be used to organize and categorize
+        (scope and select) objects. May match selectors of replication controllers
+        and services.
+        More info: http://kubernetes.io/docs/user-guide/labels
     """
 
 
@@ -90,7 +97,10 @@ schema InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpecTemplateSpec:
     controlPlaneEndpoint : InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpecTemplateSpecControlPlaneEndpoint, default is Undefined, optional
         control plane endpoint
     failureDomains : {str:InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpecTemplateSpecFailureDomainsAnon}, default is Undefined, optional
-        FailureDomains are usually not defined in the spec. The docker provider is special since failure domains don't mean anything in a local docker environment. Instead, the docker cluster controller will simply copy these into the Status and allow the Cluster API controllers to do what they will with the defined failure domains.
+        FailureDomains are usually not defined in the spec.
+        The docker provider is special since failure domains don't mean anything in a local docker environment.
+        Instead, the docker cluster controller will simply copy these into the Status and allow the Cluster API
+        controllers to do what they will with the defined failure domains.
     loadBalancer : InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpecTemplateSpecLoadBalancer, default is Undefined, optional
         load balancer
     """
@@ -112,7 +122,8 @@ schema InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpecTemplateSpecCo
     host : str, default is Undefined, required
         Host is the hostname on which the API server is serving.
     port : int, default is Undefined, required
-        Port is the port on which the API server is serving. Defaults to 6443 if not set.
+        Port is the port on which the API server is serving.
+        Defaults to 6443 if not set.
     """
 
 
@@ -123,7 +134,8 @@ schema InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpecTemplateSpecCo
 
 schema InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpecTemplateSpecFailureDomainsAnon:
     """
-    FailureDomainSpec is the Schema for Cluster API failure domains. It allows controllers to understand how many failure domains a cluster can optionally span across.
+    FailureDomainSpec is the Schema for Cluster API failure domains.
+    It allows controllers to understand how many failure domains a cluster can optionally span across.
 
     Attributes
     ----------
@@ -148,9 +160,11 @@ schema InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpecTemplateSpecLo
     customHAProxyConfigTemplateRef : InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpecTemplateSpecLoadBalancerCustomHAProxyConfigTemplateRef, default is Undefined, optional
         custom h a proxy config template ref
     imageRepository : str, default is Undefined, optional
-        ImageRepository sets the container registry to pull the haproxy image from. if not set, "kindest" will be used instead.
+        ImageRepository sets the container registry to pull the haproxy image from.
+        if not set, "kindest" will be used instead.
     imageTag : str, default is Undefined, optional
-        ImageTag allows to specify a tag for the haproxy image. if not set, "v20210715-a6da3463" will be used instead.
+        ImageTag allows to specify a tag for the haproxy image.
+        if not set, "v20210715-a6da3463" will be used instead.
     """
 
 
@@ -163,12 +177,21 @@ schema InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpecTemplateSpecLo
 
 schema InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpecTemplateSpecLoadBalancerCustomHAProxyConfigTemplateRef:
     """
-    CustomHAProxyConfigTemplateRef allows you to replace the default HAProxy config file. This field is a reference to a config map that contains the configuration template. The key of the config map should be equal to 'value'. The content of the config map will be processed and will replace the default HAProxy config file. Please use it with caution, as there are no checks to ensure the validity of the configuration. This template will support the following variables that will be passed by the controller: $IPv6 (bool) indicates if the cluster is IPv6, $FrontendControlPlanePort (string) indicates the frontend control plane port, $BackendControlPlanePort (string) indicates the backend control plane port, $BackendServers (map[string]string) indicates the backend server where the key is the server name and the value is the address. This map is dynamic and is updated every time a new control plane node is added or removed. The template will also support the JoinHostPort function to join the host and port of the backend server.
+    CustomHAProxyConfigTemplateRef allows you to replace the default HAProxy config file.
+    This field is a reference to a config map that contains the configuration template. The key of the config map should be equal to 'value'.
+    The content of the config map will be processed and will replace the default HAProxy config file. Please use it with caution, as there are
+    no checks to ensure the validity of the configuration. This template will support the following variables that will be passed by the controller:
+    $IPv6 (bool) indicates if the cluster is IPv6, $FrontendControlPlanePort (string) indicates the frontend control plane port,
+    $BackendControlPlanePort (string) indicates the backend control plane port, $BackendServers (map[string]string) indicates the backend server
+    where the key is the server name and the value is the address. This map is dynamic and is updated every time a new control plane
+    node is added or removed. The template will also support the JoinHostPort function to join the host and port of the backend server.
 
     Attributes
     ----------
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Add other useful fields. apiVersion, kind, uid?
     """
 
 

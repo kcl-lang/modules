@@ -65,14 +65,21 @@ schema InfrastructureClusterxK8sIoV1alpha1InMemoryClusterTemplateSpecTemplate:
 
 schema InfrastructureClusterxK8sIoV1alpha1InMemoryClusterTemplateSpecTemplateMetadata:
     """
-    Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+    Standard object's metadata.
+    More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations
+        Annotations is an unstructured key value map stored with a resource that may be
+        set by external tools to store and retrieve arbitrary metadata. They are not
+        queryable and should be preserved when modifying objects.
+        More info: http://kubernetes.io/docs/user-guide/annotations
     labels : {str:str}, default is Undefined, optional
-        Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: http://kubernetes.io/docs/user-guide/labels
+        Map of string keys and values that can be used to organize and categorize
+        (scope and select) objects. May match selectors of replication controllers
+        and services.
+        More info: http://kubernetes.io/docs/user-guide/labels
     """
 
 
@@ -104,7 +111,8 @@ schema InfrastructureClusterxK8sIoV1alpha1InMemoryClusterTemplateSpecTemplateSpe
     host : str, default is Undefined, required
         Host is the hostname on which the API server is serving.
     port : int, default is Undefined, required
-        Port is the port on which the API server is serving. Defaults to 6443 if not set.
+        Port is the port on which the API server is serving.
+        Defaults to 6443 if not set.
     """
 
 

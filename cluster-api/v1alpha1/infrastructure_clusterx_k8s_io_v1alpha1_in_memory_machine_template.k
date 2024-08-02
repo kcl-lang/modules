@@ -65,14 +65,21 @@ schema InfrastructureClusterxK8sIoV1alpha1InMemoryMachineTemplateSpecTemplate:
 
 schema InfrastructureClusterxK8sIoV1alpha1InMemoryMachineTemplateSpecTemplateMetadata:
     """
-    Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+    Standard object's metadata.
+    More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations
+        Annotations is an unstructured key value map stored with a resource that may be
+        set by external tools to store and retrieve arbitrary metadata. They are not
+        queryable and should be preserved when modifying objects.
+        More info: http://kubernetes.io/docs/user-guide/annotations
     labels : {str:str}, default is Undefined, optional
-        Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: http://kubernetes.io/docs/user-guide/labels
+        Map of string keys and values that can be used to organize and categorize
+        (scope and select) objects. May match selectors of replication controllers
+        and services.
+        More info: http://kubernetes.io/docs/user-guide/labels
     """
 
 
@@ -101,7 +108,8 @@ schema InfrastructureClusterxK8sIoV1alpha1InMemoryMachineTemplateSpecTemplateSpe
 
 schema InfrastructureClusterxK8sIoV1alpha1InMemoryMachineTemplateSpecTemplateSpecBehaviour:
     """
-    Behaviour of the InMemoryMachine; this will allow to make a simulation more alike to real use cases e.g. by defining the duration of the provisioning phase mimicking the performances of the target infrastructure.
+    Behaviour of the InMemoryMachine; this will allow to make a simulation more alike to real use cases
+    e.g. by defining the duration of the provisioning phase mimicking the performances of the target infrastructure.
 
     Attributes
     ----------
@@ -141,14 +149,17 @@ schema InfrastructureClusterxK8sIoV1alpha1InMemoryMachineTemplateSpecTemplateSpe
 
 schema InfrastructureClusterxK8sIoV1alpha1InMemoryMachineTemplateSpecTemplateSpecBehaviourAPIServerProvisioning:
     """
-    Provisioning defines variables influencing how the APIServer hosted on the InMemoryMachine is going to be provisioned. NOTE: APIServer provisioning includes all the steps from starting the static Pod to the Pod become ready and being registered in K8s.
+    Provisioning defines variables influencing how the APIServer hosted on the InMemoryMachine is going to be provisioned.
+    NOTE: APIServer provisioning includes all the steps from starting the static Pod to the Pod become ready and being registered in K8s.
 
     Attributes
     ----------
     startupDuration : str, default is Undefined, required
         StartupDuration defines the duration of the object provisioning phase.
     startupJitter : str, default is Undefined, optional
-        StartupJitter adds some randomness on StartupDuration; the actual duration will be StartupDuration plus an additional amount chosen uniformly at random from the interval between zero and `StartupJitter*StartupDuration`. NOTE: this is modeled as string because the usage of float is highly discouraged, as support for them varies across languages.
+        StartupJitter adds some randomness on StartupDuration; the actual duration will be StartupDuration plus an additional
+        amount chosen uniformly at random from the interval between zero and `StartupJitter*StartupDuration`.
+        NOTE: this is modeled as string because the usage of float is highly discouraged, as support for them varies across languages.
     """
 
 
@@ -173,14 +184,17 @@ schema InfrastructureClusterxK8sIoV1alpha1InMemoryMachineTemplateSpecTemplateSpe
 
 schema InfrastructureClusterxK8sIoV1alpha1InMemoryMachineTemplateSpecTemplateSpecBehaviourEtcdProvisioning:
     """
-    Provisioning defines variables influencing how the etcd member hosted on the InMemoryMachine is going to be provisioned. NOTE: Etcd provisioning includes all the steps from starting the static Pod to the Pod become ready and being registered in K8s.
+    Provisioning defines variables influencing how the etcd member hosted on the InMemoryMachine is going to be provisioned.
+    NOTE: Etcd provisioning includes all the steps from starting the static Pod to the Pod become ready and being registered in K8s.
 
     Attributes
     ----------
     startupDuration : str, default is Undefined, required
         StartupDuration defines the duration of the object provisioning phase.
     startupJitter : str, default is Undefined, optional
-        StartupJitter adds some randomness on StartupDuration; the actual duration will be StartupDuration plus an additional amount chosen uniformly at random from the interval between zero and `StartupJitter*StartupDuration`. NOTE: this is modeled as string because the usage of float is highly discouraged, as support for them varies across languages.
+        StartupJitter adds some randomness on StartupDuration; the actual duration will be StartupDuration plus an additional
+        amount chosen uniformly at random from the interval between zero and `StartupJitter*StartupDuration`.
+        NOTE: this is modeled as string because the usage of float is highly discouraged, as support for them varies across languages.
     """
 
 
@@ -205,14 +219,17 @@ schema InfrastructureClusterxK8sIoV1alpha1InMemoryMachineTemplateSpecTemplateSpe
 
 schema InfrastructureClusterxK8sIoV1alpha1InMemoryMachineTemplateSpecTemplateSpecBehaviourNodeProvisioning:
     """
-    Provisioning defines variables influencing how the Node (the kubelet) hosted on the InMemoryMachine is going to be provisioned. NOTE: Node provisioning includes all the steps from starting kubelet to the node become ready, get a provider ID, and being registered in K8s.
+    Provisioning defines variables influencing how the Node (the kubelet) hosted on the InMemoryMachine is going to be provisioned.
+    NOTE: Node provisioning includes all the steps from starting kubelet to the node become ready, get a provider ID, and being registered in K8s.
 
     Attributes
     ----------
     startupDuration : str, default is Undefined, required
         StartupDuration defines the duration of the object provisioning phase.
     startupJitter : str, default is Undefined, optional
-        StartupJitter adds some randomness on StartupDuration; the actual duration will be StartupDuration plus an additional amount chosen uniformly at random from the interval between zero and `StartupJitter*StartupDuration`. NOTE: this is modeled as string because the usage of float is highly discouraged, as support for them varies across languages.
+        StartupJitter adds some randomness on StartupDuration; the actual duration will be StartupDuration plus an additional
+        amount chosen uniformly at random from the interval between zero and `StartupJitter*StartupDuration`.
+        NOTE: this is modeled as string because the usage of float is highly discouraged, as support for them varies across languages.
     """
 
 
@@ -237,14 +254,17 @@ schema InfrastructureClusterxK8sIoV1alpha1InMemoryMachineTemplateSpecTemplateSpe
 
 schema InfrastructureClusterxK8sIoV1alpha1InMemoryMachineTemplateSpecTemplateSpecBehaviourVMProvisioning:
     """
-    Provisioning defines variables influencing how the VM implementing the InMemoryMachine is going to be provisioned. NOTE: VM provisioning includes all the steps from creation to power-on.
+    Provisioning defines variables influencing how the VM implementing the InMemoryMachine is going to be provisioned.
+    NOTE: VM provisioning includes all the steps from creation to power-on.
 
     Attributes
     ----------
     startupDuration : str, default is Undefined, required
         StartupDuration defines the duration of the object provisioning phase.
     startupJitter : str, default is Undefined, optional
-        StartupJitter adds some randomness on StartupDuration; the actual duration will be StartupDuration plus an additional amount chosen uniformly at random from the interval between zero and `StartupJitter*StartupDuration`. NOTE: this is modeled as string because the usage of float is highly discouraged, as support for them varies across languages.
+        StartupJitter adds some randomness on StartupDuration; the actual duration will be StartupDuration plus an additional
+        amount chosen uniformly at random from the interval between zero and `StartupJitter*StartupDuration`.
+        NOTE: this is modeled as string because the usage of float is highly discouraged, as support for them varies across languages.
     """
 
 
