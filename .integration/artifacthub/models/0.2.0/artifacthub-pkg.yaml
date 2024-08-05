@@ -1,0 +1,25 @@
+version: 0.2.0
+name: models
+displayName: models
+createdAt: "2024-08-05T07:43:05Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `models` with tag `0.2.0` as dependency
+  ```
+  kcl mod add models:0.2.0
+  ```
+
+  #### Pull `models` with tag `0.2.0` to local
+  ```
+  kcl mod pull models:0.2.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
