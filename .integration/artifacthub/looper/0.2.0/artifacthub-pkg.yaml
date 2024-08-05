@@ -1,0 +1,25 @@
+version: 0.2.0
+name: looper
+displayName: looper
+createdAt: "2024-08-05T07:02:49Z"
+description: '`looper` is a KCL loop library'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `looper` with tag `0.2.0` as dependency
+  ```
+  kcl mod add looper:0.2.0
+  ```
+
+  #### Pull `looper` with tag `0.2.0` to local
+  ```
+  kcl mod pull looper:0.2.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
