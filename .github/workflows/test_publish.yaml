@@ -29,6 +29,7 @@ jobs:
           export KPM_REPO="test"
           export LOGIN_WITH_KCL=1
           ./scripts/reg.sh
+          kcl registry login -u test -p 1234 localhost:5001
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             ./scripts/push_pkg_from.sh $file
           done
