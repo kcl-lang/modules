@@ -1,7 +1,7 @@
 [package]
 name = "argo-rollouts"
 edition = "0.0.1"
-version = "0.0.1"
+version = "0.0.2"
 
 [dependencies]
-k8s = "1.28"
+k8s = "1.29"
