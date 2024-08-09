@@ -1,0 +1,25 @@
+version: 0.1.0
+name: outdent
+displayName: outdent
+createdAt: "2024-08-09T02:31:46Z"
+description: '`outdent` is ...(write here)'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `outdent` with tag `0.1.0` as dependency
+  ```
+  kcl mod add outdent:0.1.0
+  ```
+
+  #### Pull `outdent` with tag `0.1.0` to local
+  ```
+  kcl mod pull outdent:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
