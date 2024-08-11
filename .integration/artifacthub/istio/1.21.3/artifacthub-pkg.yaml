@@ -1,0 +1,25 @@
+version: 1.21.3
+name: istio
+displayName: istio
+createdAt: "2024-08-11T03:59:05Z"
+description: '`istio` is the Istio spec and CRD definition'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `istio` with tag `1.21.3` as dependency
+  ```
+  kcl mod add istio:1.21.3
+  ```
+
+  #### Pull `istio` with tag `1.21.3` to local
+  ```
+  kcl mod pull istio:1.21.3
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
