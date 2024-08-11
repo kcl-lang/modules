@@ -5,7 +5,7 @@ Editing this file might prove futile when you re-run the KCL auto-gen generate c
 import k8s.apimachinery.pkg.apis.meta.v1
 
 
-schema Telemetry:
+schema TelemetryIstio:
     """
     telemetry istio io v1 telemetry
 
