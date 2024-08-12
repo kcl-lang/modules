@@ -1,0 +1,25 @@
+version: 0.10.0
+name: kcl_lib
+displayName: kcl_lib
+createdAt: "2024-08-12T05:24:47Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `kcl_lib` with tag `0.10.0` as dependency
+  ```
+  kcl mod add kcl_lib:0.10.0
+  ```
+
+  #### Pull `kcl_lib` with tag `0.10.0` to local
+  ```
+  kcl mod pull kcl_lib:0.10.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
