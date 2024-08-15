@@ -47,7 +47,7 @@ schema CiliumIoV2alpha1CiliumEndpointSliceEndpointsItems0:
         IdentityID is the numeric identity of the endpoint
     name : str, default is Undefined, optional
         Name indicate as CiliumEndpoint name.
-    named_ports : [CiliumIoV2alpha1CiliumEndpointSliceEndpointsItems0NamedPortsItems0], default is Undefined, optional
+    "named-ports" : [CiliumIoV2alpha1CiliumEndpointSliceEndpointsItems0NamedPortsItems0], default is Undefined, optional
         NamedPorts List of named Layer 4 port and protocol pairs which will be used in Network Policy specs. 
          swagger:model NamedPorts
     networking : CiliumIoV2alpha1CiliumEndpointSliceEndpointsItems0Networking, default is Undefined, optional
@@ -61,7 +61,7 @@ schema CiliumIoV2alpha1CiliumEndpointSliceEndpointsItems0:
 
     name?: str
 
-    named_ports?: [CiliumIoV2alpha1CiliumEndpointSliceEndpointsItems0NamedPortsItems0]
+    "named-ports"?: [CiliumIoV2alpha1CiliumEndpointSliceEndpointsItems0NamedPortsItems0]
 
     networking?: CiliumIoV2alpha1CiliumEndpointSliceEndpointsItems0Networking
 

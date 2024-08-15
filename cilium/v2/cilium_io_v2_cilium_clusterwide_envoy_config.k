@@ -100,7 +100,7 @@ schema CiliumIoV2CiliumClusterwideEnvoyConfigSpecNodeSelector:
 
 
     check:
-        all _, matchLabels in matchLabels {len(matchLabels) <= _regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
+        all _, matchLabels in matchLabels {_regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
 
 
 schema CiliumIoV2CiliumClusterwideEnvoyConfigSpecNodeSelectorMatchExpressionsItems0:

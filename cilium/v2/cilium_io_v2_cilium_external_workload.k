@@ -4,6 +4,7 @@ Editing this file might prove futile when you re-run the KCL auto-gen generate c
 """
 import regex
 import k8s.apimachinery.pkg.apis.meta.v1
+_regex_match = regex.match
 
 
 schema CiliumExternalWorkload:
@@ -42,21 +43,17 @@ schema CiliumIoV2CiliumExternalWorkloadSpec:
 
     Attributes
     ----------
-    ipv4_alloc_cidr : str, default is Undefined, optional
+    "ipv4-alloc-cidr" : str, default is Undefined, optional
         IPv4AllocCIDR is the range of IPv4 addresses in the CIDR format that the external workload can use to allocate IP addresses for the tunnel device and the health endpoint.
-    ipv6_alloc_cidr : str, default is Undefined, optional
+    "ipv6-alloc-cidr" : str, default is Undefined, optional
         IPv6AllocCIDR is the range of IPv6 addresses in the CIDR format that the external workload can use to allocate IP addresses for the tunnel device and the health endpoint.
     """
 
 
-    ipv4_alloc_cidr?: str
+    "ipv4-alloc-cidr"?: str
 
-    ipv6_alloc_cidr?: str
+    "ipv6-alloc-cidr"?: str
 
-
-    check:
-        _regex_match(str(ipv4_alloc_cidr), r"^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\/([0-9]|[1-2][0-9]|3[0-2])$") if ipv4_alloc_cidr
-        _regex_match(str(ipv6_alloc_cidr), r"^s*((([0-9A-Fa-f]{1,4}:){7}(:|([0-9A-Fa-f]{1,4})))|(([0-9A-Fa-f]{1,4}:){6}:([0-9A-Fa-f]{1,4})?)|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){0,1}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){0,2}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){0,3}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){0,4}):([0-9A-Fa-f]{1,4})?))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){0,5}):([0-9A-Fa-f]{1,4})?))|(:(:|((:[0-9A-Fa-f]{1,4}){1,7}))))(%.+)?s*/([0-9]|[1-9][0-9]|1[0-1][0-9]|12[0-8])$") if ipv6_alloc_cidr
 
 
 schema CiliumIoV2CiliumExternalWorkloadStatus:

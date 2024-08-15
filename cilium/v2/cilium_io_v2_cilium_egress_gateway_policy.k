@@ -4,6 +4,7 @@ Editing this file might prove futile when you re-run the KCL auto-gen generate c
 """
 import regex
 import k8s.apimachinery.pkg.apis.meta.v1
+_regex_match = regex.match
 
 
 schema CiliumEgressGatewayPolicy:
@@ -108,7 +109,7 @@ schema CiliumIoV2CiliumEgressGatewayPolicySpecEgressGatewayNodeSelector:
 
 
     check:
-        all _, matchLabels in matchLabels {len(matchLabels) <= _regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
+        all _, matchLabels in matchLabels {_regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
 
 
 schema CiliumIoV2CiliumEgressGatewayPolicySpecEgressGatewayNodeSelectorMatchExpressionsItems0:
@@ -170,7 +171,7 @@ schema CiliumIoV2CiliumEgressGatewayPolicySpecSelectorsItems0NamespaceSelector:
 
 
     check:
-        all _, matchLabels in matchLabels {len(matchLabels) <= _regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
+        all _, matchLabels in matchLabels {_regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
 
 
 schema CiliumIoV2CiliumEgressGatewayPolicySpecSelectorsItems0NamespaceSelectorMatchExpressionsItems0:
@@ -214,7 +215,7 @@ schema CiliumIoV2CiliumEgressGatewayPolicySpecSelectorsItems0PodSelector:
 
 
     check:
-        all _, matchLabels in matchLabels {len(matchLabels) <= _regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
+        all _, matchLabels in matchLabels {_regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
 
 
 schema CiliumIoV2CiliumEgressGatewayPolicySpecSelectorsItems0PodSelectorMatchExpressionsItems0:

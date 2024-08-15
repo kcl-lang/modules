@@ -18,7 +18,7 @@ schema CiliumIdentity:
         Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     metadata : v1.ObjectMeta, default is Undefined, required
         metadata
-    security_labels : {str:str}, default is Undefined, required
+    "security-labels" : {str:str}, default is Undefined, required
         SecurityLabels is the source-of-truth set of labels for this identity.
     """
 
@@ -29,6 +29,6 @@ schema CiliumIdentity:
 
     metadata: v1.ObjectMeta
 
-    security_labels: {str:str}
+    "security-labels": {str:str}
 
 

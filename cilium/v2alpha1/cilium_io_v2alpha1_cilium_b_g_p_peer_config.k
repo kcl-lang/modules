@@ -4,6 +4,7 @@ Editing this file might prove futile when you re-run the KCL auto-gen generate c
 """
 import regex
 import k8s.apimachinery.pkg.apis.meta.v1
+_regex_match = regex.match
 
 
 schema CiliumBGPPeerConfig:
@@ -70,8 +71,8 @@ schema CiliumIoV2alpha1CiliumBGPPeerConfigSpec:
 
 
     check:
-        ebgpMultihop <= 255
-        ebgpMultihop >= 1
+        ebgpMultihop <= 255 if ebgpMultihop not in [None, Undefined]
+        ebgpMultihop >= 1 if ebgpMultihop not in [None, Undefined]
 
 
 schema CiliumIoV2alpha1CiliumBGPPeerConfigSpecFamiliesItems0:
@@ -117,7 +118,7 @@ schema CiliumIoV2alpha1CiliumBGPPeerConfigSpecFamiliesItems0Advertisements:
 
 
     check:
-        all _, matchLabels in matchLabels {len(matchLabels) <= _regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
+        all _, matchLabels in matchLabels {_regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
 
 
 schema CiliumIoV2alpha1CiliumBGPPeerConfigSpecFamiliesItems0AdvertisementsMatchExpressionsItems0:
@@ -162,8 +163,8 @@ schema CiliumIoV2alpha1CiliumBGPPeerConfigSpecGracefulRestart:
 
 
     check:
-        restartTimeSeconds <= 4095
-        restartTimeSeconds >= 1
+        restartTimeSeconds <= 4095 if restartTimeSeconds not in [None, Undefined]
+        restartTimeSeconds >= 1 if restartTimeSeconds not in [None, Undefined]
 
 
 schema CiliumIoV2alpha1CiliumBGPPeerConfigSpecTimers:
@@ -193,12 +194,12 @@ schema CiliumIoV2alpha1CiliumBGPPeerConfigSpecTimers:
 
 
     check:
-        connectRetryTimeSeconds <= 2.147483647e+09
-        connectRetryTimeSeconds >= 1
-        holdTimeSeconds <= 65535
-        holdTimeSeconds >= 3
-        keepAliveTimeSeconds <= 65535
-        keepAliveTimeSeconds >= 1
+        connectRetryTimeSeconds <= 2.147483647e+09 if connectRetryTimeSeconds not in [None, Undefined]
+        connectRetryTimeSeconds >= 1 if connectRetryTimeSeconds not in [None, Undefined]
+        holdTimeSeconds <= 65535 if holdTimeSeconds not in [None, Undefined]
+        holdTimeSeconds >= 3 if holdTimeSeconds not in [None, Undefined]
+        keepAliveTimeSeconds <= 65535 if keepAliveTimeSeconds not in [None, Undefined]
+        keepAliveTimeSeconds >= 1 if keepAliveTimeSeconds not in [None, Undefined]
 
 
 schema CiliumIoV2alpha1CiliumBGPPeerConfigSpecTransport:
@@ -224,9 +225,9 @@ schema CiliumIoV2alpha1CiliumBGPPeerConfigSpecTransport:
 
 
     check:
-        localPort <= 65535
-        localPort >= 1
-        peerPort <= 65535
-        peerPort >= 1
+        localPort <= 65535 if localPort not in [None, Undefined]
+        localPort >= 1 if localPort not in [None, Undefined]
+        peerPort <= 65535 if peerPort not in [None, Undefined]
+        peerPort >= 1 if peerPort not in [None, Undefined]
 
 

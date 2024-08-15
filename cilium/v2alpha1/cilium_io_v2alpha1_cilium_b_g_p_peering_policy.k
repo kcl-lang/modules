@@ -4,6 +4,7 @@ Editing this file might prove futile when you re-run the KCL auto-gen generate c
 """
 import regex
 import k8s.apimachinery.pkg.apis.meta.v1
+_regex_match = regex.match
 
 
 schema CiliumBGPPeeringPolicy:
@@ -74,7 +75,7 @@ schema CiliumIoV2alpha1CiliumBGPPeeringPolicySpecNodeSelector:
 
 
     check:
-        all _, matchLabels in matchLabels {len(matchLabels) <= _regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
+        all _, matchLabels in matchLabels {_regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
 
 
 schema CiliumIoV2alpha1CiliumBGPPeeringPolicySpecNodeSelectorMatchExpressionsItems0:
@@ -195,18 +196,18 @@ schema CiliumIoV2alpha1CiliumBGPPeeringPolicySpecVirtualRoutersItems0NeighborsIt
 
 
     check:
-        connectRetryTimeSeconds <= 2.147483647e+09
-        connectRetryTimeSeconds >= 1
-        eBGPMultihopTTL <= 255
-        eBGPMultihopTTL >= 1
-        holdTimeSeconds <= 65535
-        holdTimeSeconds >= 3
-        keepAliveTimeSeconds <= 65535
-        keepAliveTimeSeconds >= 1
+        connectRetryTimeSeconds <= 2.147483647e+09 if connectRetryTimeSeconds not in [None, Undefined]
+        connectRetryTimeSeconds >= 1 if connectRetryTimeSeconds not in [None, Undefined]
+        eBGPMultihopTTL <= 255 if eBGPMultihopTTL not in [None, Undefined]
+        eBGPMultihopTTL >= 1 if eBGPMultihopTTL not in [None, Undefined]
+        holdTimeSeconds <= 65535 if holdTimeSeconds not in [None, Undefined]
+        holdTimeSeconds >= 3 if holdTimeSeconds not in [None, Undefined]
+        keepAliveTimeSeconds <= 65535 if keepAliveTimeSeconds not in [None, Undefined]
+        keepAliveTimeSeconds >= 1 if keepAliveTimeSeconds not in [None, Undefined]
         peerASN <= 4.294967295e+09
         peerASN >= 0
-        peerPort <= 65535
-        peerPort >= 1
+        peerPort <= 65535 if peerPort not in [None, Undefined]
+        peerPort >= 1 if peerPort not in [None, Undefined]
 
 
 schema CiliumIoV2alpha1CiliumBGPPeeringPolicySpecVirtualRoutersItems0NeighborsItems0AdvertisedPathAttributesItems0:
@@ -236,8 +237,8 @@ schema CiliumIoV2alpha1CiliumBGPPeeringPolicySpecVirtualRoutersItems0NeighborsIt
 
 
     check:
-        localPreference <= 4.294967295e+09
-        localPreference >= 0
+        localPreference <= 4.294967295e+09 if localPreference not in [None, Undefined]
+        localPreference >= 0 if localPreference not in [None, Undefined]
 
 
 schema CiliumIoV2alpha1CiliumBGPPeeringPolicySpecVirtualRoutersItems0NeighborsItems0AdvertisedPathAttributesItems0Communities:
@@ -286,7 +287,7 @@ schema CiliumIoV2alpha1CiliumBGPPeeringPolicySpecVirtualRoutersItems0NeighborsIt
 
 
     check:
-        all _, matchLabels in matchLabels {len(matchLabels) <= _regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
+        all _, matchLabels in matchLabels {_regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
 
 
 schema CiliumIoV2alpha1CiliumBGPPeeringPolicySpecVirtualRoutersItems0NeighborsItems0AdvertisedPathAttributesItems0SelectorMatchExpressionsItems0:
@@ -348,8 +349,8 @@ schema CiliumIoV2alpha1CiliumBGPPeeringPolicySpecVirtualRoutersItems0NeighborsIt
 
 
     check:
-        restartTimeSeconds <= 4095
-        restartTimeSeconds >= 1
+        restartTimeSeconds <= 4095 if restartTimeSeconds not in [None, Undefined]
+        restartTimeSeconds >= 1 if restartTimeSeconds not in [None, Undefined]
 
 
 schema CiliumIoV2alpha1CiliumBGPPeeringPolicySpecVirtualRoutersItems0PodIPPoolSelector:
@@ -372,7 +373,7 @@ schema CiliumIoV2alpha1CiliumBGPPeeringPolicySpecVirtualRoutersItems0PodIPPoolSe
 
 
     check:
-        all _, matchLabels in matchLabels {len(matchLabels) <= _regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
+        all _, matchLabels in matchLabels {_regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
 
 
 schema CiliumIoV2alpha1CiliumBGPPeeringPolicySpecVirtualRoutersItems0PodIPPoolSelectorMatchExpressionsItems0:
@@ -418,7 +419,7 @@ schema CiliumIoV2alpha1CiliumBGPPeeringPolicySpecVirtualRoutersItems0ServiceSele
 
 
     check:
-        all _, matchLabels in matchLabels {len(matchLabels) <= _regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
+        all _, matchLabels in matchLabels {_regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
 
 
 schema CiliumIoV2alpha1CiliumBGPPeeringPolicySpecVirtualRoutersItems0ServiceSelectorMatchExpressionsItems0:
