@@ -4,6 +4,7 @@ Editing this file might prove futile when you re-run the KCL auto-gen generate c
 """
 import regex
 import k8s.apimachinery.pkg.apis.meta.v1
+_regex_match = regex.match
 
 
 schema CiliumL2AnnouncementPolicy:
@@ -87,7 +88,7 @@ schema CiliumIoV2alpha1CiliumL2AnnouncementPolicySpecNodeSelector:
 
 
     check:
-        all _, matchLabels in matchLabels {len(matchLabels) <= _regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
+        all _, matchLabels in matchLabels {_regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
 
 
 schema CiliumIoV2alpha1CiliumL2AnnouncementPolicySpecNodeSelectorMatchExpressionsItems0:
@@ -133,7 +134,7 @@ schema CiliumIoV2alpha1CiliumL2AnnouncementPolicySpecServiceSelector:
 
 
     check:
-        all _, matchLabels in matchLabels {len(matchLabels) <= _regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
+        all _, matchLabels in matchLabels {_regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
 
 
 schema CiliumIoV2alpha1CiliumL2AnnouncementPolicySpecServiceSelectorMatchExpressionsItems0:
@@ -210,7 +211,7 @@ schema CiliumIoV2alpha1CiliumL2AnnouncementPolicyStatusConditionsItems0:
 
     check:
         len(message) <= 32768
-        observedGeneration >= 0
+        observedGeneration >= 0 if observedGeneration not in [None, Undefined]
         len(reason) <= 1024
         len(reason) >= 1
         _regex_match(str(reason), r"^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$")

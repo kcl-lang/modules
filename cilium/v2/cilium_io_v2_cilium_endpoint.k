@@ -41,7 +41,7 @@ schema CiliumIoV2CiliumEndpointStatus:
         Controllers is the list of failing controllers for this endpoint.
     encryption : CiliumIoV2CiliumEndpointStatusEncryption, default is Undefined, optional
         encryption
-    external_identifiers : CiliumIoV2CiliumEndpointStatusExternalIdentifiers, default is Undefined, optional
+    "external-identifiers" : CiliumIoV2CiliumEndpointStatusExternalIdentifiers, default is Undefined, optional
         external identifiers
     health : CiliumIoV2CiliumEndpointStatusHealth, default is Undefined, optional
         health
@@ -51,7 +51,7 @@ schema CiliumIoV2CiliumEndpointStatus:
         identity
     log : [CiliumIoV2CiliumEndpointStatusLogItems0], default is Undefined, optional
         Log is the list of the last few warning and error log entries
-    named_ports : [CiliumIoV2CiliumEndpointStatusNamedPortsItems0], default is Undefined, optional
+    "named-ports" : [CiliumIoV2CiliumEndpointStatusNamedPortsItems0], default is Undefined, optional
         NamedPorts List of named Layer 4 port and protocol pairs which will be used in Network Policy specs. 
          swagger:model NamedPorts
     networking : CiliumIoV2CiliumEndpointStatusNetworking, default is Undefined, optional
@@ -60,7 +60,7 @@ schema CiliumIoV2CiliumEndpointStatus:
         policy
     state : str, default is Undefined, optional
         State is the state of the endpoint.
-    visibility_policy_status : str, default is Undefined, optional
+    "visibility-policy-status" : str, default is Undefined, optional
         visibility policy status
     """
 
@@ -69,7 +69,7 @@ schema CiliumIoV2CiliumEndpointStatus:
 
     encryption?: CiliumIoV2CiliumEndpointStatusEncryption
 
-    external_identifiers?: CiliumIoV2CiliumEndpointStatusExternalIdentifiers
+    "external-identifiers"?: CiliumIoV2CiliumEndpointStatusExternalIdentifiers
 
     health?: CiliumIoV2CiliumEndpointStatusHealth
 
@@ -79,7 +79,7 @@ schema CiliumIoV2CiliumEndpointStatus:
 
     log?: [CiliumIoV2CiliumEndpointStatusLogItems0]
 
-    named_ports?: [CiliumIoV2CiliumEndpointStatusNamedPortsItems0]
+    "named-ports"?: [CiliumIoV2CiliumEndpointStatusNamedPortsItems0]
 
     networking?: CiliumIoV2CiliumEndpointStatusNetworking
 
@@ -87,7 +87,7 @@ schema CiliumIoV2CiliumEndpointStatus:
 
     state?: "creating" | "waiting-for-identity" | "not-ready" | "waiting-to-regenerate" | "regenerating" | "restoring" | "ready" | "disconnecting" | "disconnected" | "invalid"
 
-    visibility_policy_status?: str
+    "visibility-policy-status"?: str
 
 
 schema CiliumIoV2CiliumEndpointStatusControllersItems0:
@@ -122,18 +122,18 @@ schema CiliumIoV2CiliumEndpointStatusControllersItems0Configuration:
 
     Attributes
     ----------
-    error_retry : bool, default is Undefined, optional
+    "error-retry" : bool, default is Undefined, optional
         Retry on error
-    error_retry_base : int, default is Undefined, optional
+    "error-retry-base" : int, default is Undefined, optional
         Base error retry back-off time Format: duration
     interval : int, default is Undefined, optional
         Regular synchronization interval Format: duration
     """
 
 
-    error_retry?: bool
+    "error-retry"?: bool
 
-    error_retry_base?: int
+    "error-retry-base"?: int
 
     interval?: int
 
@@ -144,32 +144,32 @@ schema CiliumIoV2CiliumEndpointStatusControllersItems0Status:
 
     Attributes
     ----------
-    consecutive_failure_count : int, default is Undefined, optional
+    "consecutive-failure-count" : int, default is Undefined, optional
         consecutive failure count
-    failure_count : int, default is Undefined, optional
+    "failure-count" : int, default is Undefined, optional
         failure count
-    last_failure_msg : str, default is Undefined, optional
+    "last-failure-msg" : str, default is Undefined, optional
         last failure msg
-    last_failure_timestamp : str, default is Undefined, optional
+    "last-failure-timestamp" : str, default is Undefined, optional
         last failure timestamp
-    last_success_timestamp : str, default is Undefined, optional
+    "last-success-timestamp" : str, default is Undefined, optional
         last success timestamp
-    success_count : int, default is Undefined, optional
+    "success-count" : int, default is Undefined, optional
         success count
     """
 
 
-    consecutive_failure_count?: int
+    "consecutive-failure-count"?: int
 
-    failure_count?: int
+    "failure-count"?: int
 
-    last_failure_msg?: str
+    "last-failure-msg"?: str
 
-    last_failure_timestamp?: str
+    "last-failure-timestamp"?: str
 
-    last_success_timestamp?: str
+    "last-success-timestamp"?: str
 
-    success_count?: int
+    "success-count"?: int
 
 
 schema CiliumIoV2CiliumEndpointStatusEncryption:
@@ -192,40 +192,40 @@ schema CiliumIoV2CiliumEndpointStatusExternalIdentifiers:
 
     Attributes
     ----------
-    cni_attachment_id : str, default is Undefined, optional
+    "cni-attachment-id" : str, default is Undefined, optional
         ID assigned to this attachment by container runtime
-    container_id : str, default is Undefined, optional
+    "container-id" : str, default is Undefined, optional
         ID assigned by container runtime (deprecated, may not be unique)
-    container_name : str, default is Undefined, optional
+    "container-name" : str, default is Undefined, optional
         Name assigned to container (deprecated, may not be unique)
-    docker_endpoint_id : str, default is Undefined, optional
+    "docker-endpoint-id" : str, default is Undefined, optional
         Docker endpoint ID
-    docker_network_id : str, default is Undefined, optional
+    "docker-network-id" : str, default is Undefined, optional
         Docker network ID
-    k8s_namespace : str, default is Undefined, optional
+    "k8s-namespace" : str, default is Undefined, optional
         K8s namespace for this endpoint (deprecated, may not be unique)
-    k8s_pod_name : str, default is Undefined, optional
+    "k8s-pod-name" : str, default is Undefined, optional
         K8s pod name for this endpoint (deprecated, may not be unique)
-    pod_name : str, default is Undefined, optional
+    "pod-name" : str, default is Undefined, optional
         K8s pod for this endpoint (deprecated, may not be unique)
     """
 
 
-    cni_attachment_id?: str
+    "cni-attachment-id"?: str
 
-    container_id?: str
+    "container-id"?: str
 
-    container_name?: str
+    "container-name"?: str
 
-    docker_endpoint_id?: str
+    "docker-endpoint-id"?: str
 
-    docker_network_id?: str
+    "docker-network-id"?: str
 
-    k8s_namespace?: str
+    "k8s-namespace"?: str
 
-    k8s_pod_name?: str
+    "k8s-pod-name"?: str
 
-    pod_name?: str
+    "pod-name"?: str
 
 
 schema CiliumIoV2CiliumEndpointStatusHealth:
@@ -416,22 +416,22 @@ schema CiliumIoV2CiliumEndpointStatusPolicyEgressAddingItems0:
 
     Attributes
     ----------
-    dest_port : int, default is Undefined, optional
+    "dest-port" : int, default is Undefined, optional
         dest port
     identity : int, default is Undefined, optional
         identity
-    identity_labels : {str:str}, default is Undefined, optional
+    "identity-labels" : {str:str}, default is Undefined, optional
         identity labels
     $protocol : int, default is Undefined, optional
         protocol
     """
 
 
-    dest_port?: int
+    "dest-port"?: int
 
     identity?: int
 
-    identity_labels?: {str:str}
+    "identity-labels"?: {str:str}
 
     $protocol?: int
 
@@ -442,22 +442,22 @@ schema CiliumIoV2CiliumEndpointStatusPolicyEgressAllowedItems0:
 
     Attributes
     ----------
-    dest_port : int, default is Undefined, optional
+    "dest-port" : int, default is Undefined, optional
         dest port
     identity : int, default is Undefined, optional
         identity
-    identity_labels : {str:str}, default is Undefined, optional
+    "identity-labels" : {str:str}, default is Undefined, optional
         identity labels
     $protocol : int, default is Undefined, optional
         protocol
     """
 
 
-    dest_port?: int
+    "dest-port"?: int
 
     identity?: int
 
-    identity_labels?: {str:str}
+    "identity-labels"?: {str:str}
 
     $protocol?: int
 
@@ -468,22 +468,22 @@ schema CiliumIoV2CiliumEndpointStatusPolicyEgressDeniedItems0:
 
     Attributes
     ----------
-    dest_port : int, default is Undefined, optional
+    "dest-port" : int, default is Undefined, optional
         dest port
     identity : int, default is Undefined, optional
         identity
-    identity_labels : {str:str}, default is Undefined, optional
+    "identity-labels" : {str:str}, default is Undefined, optional
         identity labels
     $protocol : int, default is Undefined, optional
         protocol
     """
 
 
-    dest_port?: int
+    "dest-port"?: int
 
     identity?: int
 
-    identity_labels?: {str:str}
+    "identity-labels"?: {str:str}
 
     $protocol?: int
 
@@ -494,22 +494,22 @@ schema CiliumIoV2CiliumEndpointStatusPolicyEgressRemovingItems0:
 
     Attributes
     ----------
-    dest_port : int, default is Undefined, optional
+    "dest-port" : int, default is Undefined, optional
         dest port
     identity : int, default is Undefined, optional
         identity
-    identity_labels : {str:str}, default is Undefined, optional
+    "identity-labels" : {str:str}, default is Undefined, optional
         identity labels
     $protocol : int, default is Undefined, optional
         protocol
     """
 
 
-    dest_port?: int
+    "dest-port"?: int
 
     identity?: int
 
-    identity_labels?: {str:str}
+    "identity-labels"?: {str:str}
 
     $protocol?: int
 
@@ -554,22 +554,22 @@ schema CiliumIoV2CiliumEndpointStatusPolicyIngressAddingItems0:
 
     Attributes
     ----------
-    dest_port : int, default is Undefined, optional
+    "dest-port" : int, default is Undefined, optional
         dest port
     identity : int, default is Undefined, optional
         identity
-    identity_labels : {str:str}, default is Undefined, optional
+    "identity-labels" : {str:str}, default is Undefined, optional
         identity labels
     $protocol : int, default is Undefined, optional
         protocol
     """
 
 
-    dest_port?: int
+    "dest-port"?: int
 
     identity?: int
 
-    identity_labels?: {str:str}
+    "identity-labels"?: {str:str}
 
     $protocol?: int
 
@@ -580,22 +580,22 @@ schema CiliumIoV2CiliumEndpointStatusPolicyIngressAllowedItems0:
 
     Attributes
     ----------
-    dest_port : int, default is Undefined, optional
+    "dest-port" : int, default is Undefined, optional
         dest port
     identity : int, default is Undefined, optional
         identity
-    identity_labels : {str:str}, default is Undefined, optional
+    "identity-labels" : {str:str}, default is Undefined, optional
         identity labels
     $protocol : int, default is Undefined, optional
         protocol
     """
 
 
-    dest_port?: int
+    "dest-port"?: int
 
     identity?: int
 
-    identity_labels?: {str:str}
+    "identity-labels"?: {str:str}
 
     $protocol?: int
 
@@ -606,22 +606,22 @@ schema CiliumIoV2CiliumEndpointStatusPolicyIngressDeniedItems0:
 
     Attributes
     ----------
-    dest_port : int, default is Undefined, optional
+    "dest-port" : int, default is Undefined, optional
         dest port
     identity : int, default is Undefined, optional
         identity
-    identity_labels : {str:str}, default is Undefined, optional
+    "identity-labels" : {str:str}, default is Undefined, optional
         identity labels
     $protocol : int, default is Undefined, optional
         protocol
     """
 
 
-    dest_port?: int
+    "dest-port"?: int
 
     identity?: int
 
-    identity_labels?: {str:str}
+    "identity-labels"?: {str:str}
 
     $protocol?: int
 
@@ -632,22 +632,22 @@ schema CiliumIoV2CiliumEndpointStatusPolicyIngressRemovingItems0:
 
     Attributes
     ----------
-    dest_port : int, default is Undefined, optional
+    "dest-port" : int, default is Undefined, optional
         dest port
     identity : int, default is Undefined, optional
         identity
-    identity_labels : {str:str}, default is Undefined, optional
+    "identity-labels" : {str:str}, default is Undefined, optional
         identity labels
     $protocol : int, default is Undefined, optional
         protocol
     """
 
 
-    dest_port?: int
+    "dest-port"?: int
 
     identity?: int
 
-    identity_labels?: {str:str}
+    "identity-labels"?: {str:str}
 
     $protocol?: int
 

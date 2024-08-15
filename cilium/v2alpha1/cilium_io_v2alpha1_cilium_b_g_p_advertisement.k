@@ -137,7 +137,7 @@ schema CiliumIoV2alpha1CiliumBGPAdvertisementSpecAdvertisementsItems0Selector:
 
 
     check:
-        all _, matchLabels in matchLabels {len(matchLabels) <= _regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
+        all _, matchLabels in matchLabels {_regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
 
 
 schema CiliumIoV2alpha1CiliumBGPAdvertisementSpecAdvertisementsItems0SelectorMatchExpressionsItems0:
@@ -177,6 +177,6 @@ schema CiliumIoV2alpha1CiliumBGPAdvertisementSpecAdvertisementsItems0Service:
 
 
     check:
-        len(addresses) >= 1
+        len(addresses) >= 1 if addresses
 
 

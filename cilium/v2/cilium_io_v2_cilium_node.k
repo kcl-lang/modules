@@ -43,7 +43,7 @@ schema CiliumIoV2CiliumNodeSpec:
     ----------
     addresses : [CiliumIoV2CiliumNodeSpecAddressesItems0], default is Undefined, optional
         Addresses is the list of all node addresses.
-    alibaba_cloud : CiliumIoV2CiliumNodeSpecAlibabaCloud, default is Undefined, optional
+    "alibaba-cloud" : CiliumIoV2CiliumNodeSpecAlibabaCloud, default is Undefined, optional
         alibaba cloud
     azure : CiliumIoV2CiliumNodeSpecAzure, default is Undefined, optional
         azure
@@ -57,7 +57,7 @@ schema CiliumIoV2CiliumNodeSpec:
         health
     ingress : CiliumIoV2CiliumNodeSpecIngress, default is Undefined, optional
         ingress
-    instance_id : str, default is Undefined, optional
+    "instance-id" : str, default is Undefined, optional
         InstanceID is the identifier of the node. This is different from the node name which is typically the FQDN of the node. The InstanceID typically refers to the identifier used by the cloud provider or some other means of identification.
     ipam : CiliumIoV2CiliumNodeSpecIpam, default is Undefined, optional
         ipam
@@ -68,7 +68,7 @@ schema CiliumIoV2CiliumNodeSpec:
 
     addresses?: [CiliumIoV2CiliumNodeSpecAddressesItems0]
 
-    alibaba_cloud?: CiliumIoV2CiliumNodeSpecAlibabaCloud
+    "alibaba-cloud"?: CiliumIoV2CiliumNodeSpecAlibabaCloud
 
     azure?: CiliumIoV2CiliumNodeSpecAzure
 
@@ -82,7 +82,7 @@ schema CiliumIoV2CiliumNodeSpec:
 
     ingress?: CiliumIoV2CiliumNodeSpecIngress
 
-    instance_id?: str
+    "instance-id"?: str
 
     ipam?: CiliumIoV2CiliumNodeSpecIpam
 
@@ -113,38 +113,38 @@ schema CiliumIoV2CiliumNodeSpecAlibabaCloud:
 
     Attributes
     ----------
-    availability_zone : str, default is Undefined, optional
+    "availability-zone" : str, default is Undefined, optional
         AvailabilityZone is the availability zone to use when allocating ENIs.
-    cidr_block : str, default is Undefined, optional
+    "cidr-block" : str, default is Undefined, optional
         CIDRBlock is vpc ipv4 CIDR
-    instance_type : str, default is Undefined, optional
+    "instance-type" : str, default is Undefined, optional
         InstanceType is the ECS instance type, e.g. "ecs.g6.2xlarge"
-    security_group_tags : {str:str}, default is Undefined, optional
+    "security-group-tags" : {str:str}, default is Undefined, optional
         SecurityGroupTags is the list of tags to use when evaluating which security groups to use for the ENI.
-    security_groups : [str], default is Undefined, optional
+    "security-groups" : [str], default is Undefined, optional
         SecurityGroups is the list of security groups to attach to any ENI that is created and attached to the instance.
-    vpc_id : str, default is Undefined, optional
+    "vpc-id" : str, default is Undefined, optional
         VPCID is the VPC ID to use when allocating ENIs.
-    vswitch_tags : {str:str}, default is Undefined, optional
+    "vswitch-tags" : {str:str}, default is Undefined, optional
         VSwitchTags is the list of tags to use when evaluating which vSwitch to use for the ENI.
     vswitches : [str], default is Undefined, optional
         VSwitches is the ID of vSwitch available for ENI
     """
 
 
-    availability_zone?: str
+    "availability-zone"?: str
 
-    cidr_block?: str
+    "cidr-block"?: str
 
-    instance_type?: str
+    "instance-type"?: str
 
-    security_group_tags?: {str:str}
+    "security-group-tags"?: {str:str}
 
-    security_groups?: [str]
+    "security-groups"?: [str]
 
-    vpc_id?: str
+    "vpc-id"?: str
 
-    vswitch_tags?: {str:str}
+    "vswitch-tags"?: {str:str}
 
     vswitches?: [str]
 
@@ -155,12 +155,12 @@ schema CiliumIoV2CiliumNodeSpecAzure:
 
     Attributes
     ----------
-    interface_name : str, default is Undefined, optional
+    "interface-name" : str, default is Undefined, optional
         InterfaceName is the name of the interface the cilium-operator will use to allocate all the IPs on
     """
 
 
-    interface_name?: str
+    "interface-name"?: str
 
 
 schema CiliumIoV2CiliumNodeSpecEncryption:
@@ -183,87 +183,81 @@ schema CiliumIoV2CiliumNodeSpecEni:
 
     Attributes
     ----------
-    availability_zone : str, default is Undefined, optional
+    "availability-zone" : str, default is Undefined, optional
         AvailabilityZone is the availability zone to use when allocating ENIs.
-    delete_on_termination : bool, default is Undefined, optional
+    "delete-on-termination" : bool, default is Undefined, optional
         DeleteOnTermination defines that the ENI should be deleted when the associated instance is terminated. If the parameter is not set the default behavior is to delete the ENI on instance termination.
-    disable_prefix_delegation : bool, default is Undefined, optional
+    "disable-prefix-delegation" : bool, default is Undefined, optional
         DisablePrefixDelegation determines whether ENI prefix delegation should be disabled on this node.
-    exclude_interface_tags : {str:str}, default is Undefined, optional
+    "exclude-interface-tags" : {str:str}, default is Undefined, optional
         ExcludeInterfaceTags is the list of tags to use when excluding ENIs for Cilium IP allocation. Any interface matching this set of tags will not be managed by Cilium.
-    first_interface_index : int, default is Undefined, optional
+    "first-interface-index" : int, default is Undefined, optional
         FirstInterfaceIndex is the index of the first ENI to use for IP allocation, e.g. if the node has eth0, eth1, eth2 and FirstInterfaceIndex is set to 1, then only eth1 and eth2 will be used for IP allocation, eth0 will be ignored for PodIP allocation.
-    instance_id : str, default is Undefined, optional
+    "instance-id" : str, default is Undefined, optional
         InstanceID is the AWS InstanceId of the node. The InstanceID is used to retrieve AWS metadata for the node. 
          OBSOLETE: This field is obsolete, please use Spec.InstanceID
-    instance_type : str, default is Undefined, optional
+    "instance-type" : str, default is Undefined, optional
         InstanceType is the AWS EC2 instance type, e.g. "m5.large"
-    max_above_watermark : int, default is Undefined, optional
+    "max-above-watermark" : int, default is Undefined, optional
         MaxAboveWatermark is the maximum number of addresses to allocate beyond the addresses needed to reach the PreAllocate watermark. Going above the watermark can help reduce the number of API calls to allocate IPs, e.g. when a new ENI is allocated, as many secondary IPs as possible are allocated. Limiting the amount can help reduce waste of IPs. 
          OBSOLETE: This field is obsolete, please use Spec.IPAM.MaxAboveWatermark
-    min_allocate : int, default is Undefined, optional
+    "min-allocate" : int, default is Undefined, optional
         MinAllocate is the minimum number of IPs that must be allocated when the node is first bootstrapped. It defines the minimum base socket of addresses that must be available. After reaching this watermark, the PreAllocate and MaxAboveWatermark logic takes over to continue allocating IPs. 
          OBSOLETE: This field is obsolete, please use Spec.IPAM.MinAllocate
-    node_subnet_id : str, default is Undefined, optional
+    "node-subnet-id" : str, default is Undefined, optional
         NodeSubnetID is the subnet of the primary ENI the instance was brought up with. It is used as a sensible default subnet to create ENIs in.
-    pre_allocate : int, default is Undefined, optional
+    "pre-allocate" : int, default is Undefined, optional
         PreAllocate defines the number of IP addresses that must be available for allocation in the IPAMspec. It defines the buffer of addresses available immediately without requiring cilium-operator to get involved. 
          OBSOLETE: This field is obsolete, please use Spec.IPAM.PreAllocate
-    security_group_tags : {str:str}, default is Undefined, optional
+    "security-group-tags" : {str:str}, default is Undefined, optional
         SecurityGroupTags is the list of tags to use when evaliating what AWS security groups to use for the ENI.
-    security_groups : [str], default is Undefined, optional
+    "security-groups" : [str], default is Undefined, optional
         SecurityGroups is the list of security groups to attach to any ENI that is created and attached to the instance.
-    subnet_ids : [str], default is Undefined, optional
+    "subnet-ids" : [str], default is Undefined, optional
         SubnetIDs is the list of subnet ids to use when evaluating what AWS subnets to use for ENI and IP allocation.
-    subnet_tags : {str:str}, default is Undefined, optional
+    "subnet-tags" : {str:str}, default is Undefined, optional
         SubnetTags is the list of tags to use when evaluating what AWS subnets to use for ENI and IP allocation.
-    use_primary_address : bool, default is Undefined, optional
+    "use-primary-address" : bool, default is Undefined, optional
         UsePrimaryAddress determines whether an ENI's primary address should be available for allocations on the node
-    vpc_id : str, default is Undefined, optional
+    "vpc-id" : str, default is Undefined, optional
         VpcID is the VPC ID to use when allocating ENIs.
     """
 
 
-    availability_zone?: str
+    "availability-zone"?: str
 
-    delete_on_termination?: bool
+    "delete-on-termination"?: bool
 
-    disable_prefix_delegation?: bool
+    "disable-prefix-delegation"?: bool
 
-    exclude_interface_tags?: {str:str}
+    "exclude-interface-tags"?: {str:str}
 
-    first_interface_index?: int
+    "first-interface-index"?: int
 
-    instance_id?: str
+    "instance-id"?: str
 
-    instance_type?: str
+    "instance-type"?: str
 
-    max_above_watermark?: int
+    "max-above-watermark"?: int
 
-    min_allocate?: int
+    "min-allocate"?: int
 
-    node_subnet_id?: str
+    "node-subnet-id"?: str
 
-    pre_allocate?: int
+    "pre-allocate"?: int
 
-    security_group_tags?: {str:str}
+    "security-group-tags"?: {str:str}
 
-    security_groups?: [str]
+    "security-groups"?: [str]
 
-    subnet_ids?: [str]
+    "subnet-ids"?: [str]
 
-    subnet_tags?: {str:str}
+    "subnet-tags"?: {str:str}
 
-    use_primary_address?: bool
+    "use-primary-address"?: bool
 
-    vpc_id?: str
+    "vpc-id"?: str
 
-
-    check:
-        first_interface_index >= 0
-        max_above_watermark >= 0
-        min_allocate >= 0
-        pre_allocate >= 0
 
 
 schema CiliumIoV2CiliumNodeSpecHealth:
@@ -308,13 +302,13 @@ schema CiliumIoV2CiliumNodeSpecIpam:
 
     Attributes
     ----------
-    ipv6_pool : {str:CiliumIoV2CiliumNodeSpecIpamIPV6PoolAnon}, default is Undefined, optional
+    "ipv6-pool" : {str:CiliumIoV2CiliumNodeSpecIpamIPV6PoolAnon}, default is Undefined, optional
         IPv6Pool is the list of IPv6 addresses available to the node for allocation. When an IPv6 address is used, it will remain on this list but will be added to Status.IPAM.IPv6Used
-    max_above_watermark : int, default is Undefined, optional
+    "max-above-watermark" : int, default is Undefined, optional
         MaxAboveWatermark is the maximum number of addresses to allocate beyond the addresses needed to reach the PreAllocate watermark. Going above the watermark can help reduce the number of API calls to allocate IPs, e.g. when a new ENI is allocated, as many secondary IPs as possible are allocated. Limiting the amount can help reduce waste of IPs.
-    max_allocate : int, default is Undefined, optional
+    "max-allocate" : int, default is Undefined, optional
         MaxAllocate is the maximum number of IPs that can be allocated to the node. When the current amount of allocated IPs will approach this value, the considered value for PreAllocate will decrease down to 0 in order to not attempt to allocate more addresses than defined.
-    min_allocate : int, default is Undefined, optional
+    "min-allocate" : int, default is Undefined, optional
         MinAllocate is the minimum number of IPs that must be allocated when the node is first bootstrapped. It defines the minimum base socket of addresses that must be available. After reaching this watermark, the PreAllocate and MaxAboveWatermark logic takes over to continue allocating IPs.
     podCIDRs : [str], default is Undefined, optional
         PodCIDRs is the list of CIDRs available to the node for allocation. When an IP is used, the IP will be added to Status.IPAM.Used
@@ -322,18 +316,18 @@ schema CiliumIoV2CiliumNodeSpecIpam:
         Pool is the list of IPv4 addresses available to the node for allocation. When an IPv4 address is used, it will remain on this list but will be added to Status.IPAM.Used
     pools : CiliumIoV2CiliumNodeSpecIpamPools, default is Undefined, optional
         pools
-    pre_allocate : int, default is Undefined, optional
+    "pre-allocate" : int, default is Undefined, optional
         PreAllocate defines the number of IP addresses that must be available for allocation in the IPAMspec. It defines the buffer of addresses available immediately without requiring cilium-operator to get involved.
     """
 
 
-    ipv6_pool?: {str:CiliumIoV2CiliumNodeSpecIpamIPV6PoolAnon}
+    "ipv6-pool"?: {str:CiliumIoV2CiliumNodeSpecIpamIPV6PoolAnon}
 
-    max_above_watermark?: int
+    "max-above-watermark"?: int
 
-    max_allocate?: int
+    "max-allocate"?: int
 
-    min_allocate?: int
+    "min-allocate"?: int
 
     podCIDRs?: [str]
 
@@ -341,14 +335,7 @@ schema CiliumIoV2CiliumNodeSpecIpam:
 
     pools?: CiliumIoV2CiliumNodeSpecIpamPools
 
-    pre_allocate?: int
-
-
-    check:
-        max_above_watermark >= 0
-        max_allocate >= 0
-        min_allocate >= 0
-        pre_allocate >= 0
+    "pre-allocate"?: int
 
 
 schema CiliumIoV2CiliumNodeSpecIpamIPV6PoolAnon:
@@ -457,16 +444,16 @@ schema CiliumIoV2CiliumNodeSpecIpamPoolsRequestedItems0Needed:
 
     Attributes
     ----------
-    ipv4_addrs : int, default is Undefined, optional
+    "ipv4-addrs" : int, default is Undefined, optional
         IPv4Addrs contains the number of requested IPv4 addresses out of a given pool
-    ipv6_addrs : int, default is Undefined, optional
+    "ipv6-addrs" : int, default is Undefined, optional
         IPv6Addrs contains the number of requested IPv6 addresses out of a given pool
     """
 
 
-    ipv4_addrs?: int
+    "ipv4-addrs"?: int
 
-    ipv6_addrs?: int
+    "ipv6-addrs"?: int
 
 
 schema CiliumIoV2CiliumNodeStatus:
@@ -475,7 +462,7 @@ schema CiliumIoV2CiliumNodeStatus:
 
     Attributes
     ----------
-    alibaba_cloud : CiliumIoV2CiliumNodeStatusAlibabaCloud, default is Undefined, optional
+    "alibaba-cloud" : CiliumIoV2CiliumNodeStatusAlibabaCloud, default is Undefined, optional
         alibaba cloud
     azure : CiliumIoV2CiliumNodeStatusAzure, default is Undefined, optional
         azure
@@ -486,7 +473,7 @@ schema CiliumIoV2CiliumNodeStatus:
     """
 
 
-    alibaba_cloud?: CiliumIoV2CiliumNodeStatusAlibabaCloud
+    "alibaba-cloud"?: CiliumIoV2CiliumNodeStatusAlibabaCloud
 
     azure?: CiliumIoV2CiliumNodeStatusAzure
 
@@ -515,17 +502,17 @@ schema CiliumIoV2CiliumNodeStatusAlibabaCloudEnisAnon:
 
     Attributes
     ----------
-    instance_id : str, default is Undefined, optional
+    "instance-id" : str, default is Undefined, optional
         InstanceID is the InstanceID using this ENI
-    mac_address : str, default is Undefined, optional
+    "mac-address" : str, default is Undefined, optional
         MACAddress is the mac address of the ENI
-    network_interface_id : str, default is Undefined, optional
+    "network-interface-id" : str, default is Undefined, optional
         NetworkInterfaceID is the ENI id
-    primary_ip_address : str, default is Undefined, optional
+    "primary-ip-address" : str, default is Undefined, optional
         PrimaryIPAddress is the primary IP on ENI
-    private_ipsets : [CiliumIoV2CiliumNodeStatusAlibabaCloudEnisAnonPrivateIpsetsItems0], default is Undefined, optional
+    "private-ipsets" : [CiliumIoV2CiliumNodeStatusAlibabaCloudEnisAnonPrivateIpsetsItems0], default is Undefined, optional
         PrivateIPSets is the list of all IPs on the ENI, including PrimaryIPAddress
-    security_groupids : [str], default is Undefined, optional
+    "security-groupids" : [str], default is Undefined, optional
         SecurityGroupIDs is the security group ids used by this ENI
     tags : {str:str}, default is Undefined, optional
         Tags is the tags on this ENI
@@ -535,22 +522,22 @@ schema CiliumIoV2CiliumNodeStatusAlibabaCloudEnisAnon:
         vpc
     vswitch : CiliumIoV2CiliumNodeStatusAlibabaCloudEnisAnonVswitch, default is Undefined, optional
         vswitch
-    zone_id : str, default is Undefined, optional
+    "zone-id" : str, default is Undefined, optional
         ZoneID is the zone to which the ENI belongs
     """
 
 
-    instance_id?: str
+    "instance-id"?: str
 
-    mac_address?: str
+    "mac-address"?: str
 
-    network_interface_id?: str
+    "network-interface-id"?: str
 
-    primary_ip_address?: str
+    "primary-ip-address"?: str
 
-    private_ipsets?: [CiliumIoV2CiliumNodeStatusAlibabaCloudEnisAnonPrivateIpsetsItems0]
+    "private-ipsets"?: [CiliumIoV2CiliumNodeStatusAlibabaCloudEnisAnonPrivateIpsetsItems0]
 
-    security_groupids?: [str]
+    "security-groupids"?: [str]
 
     tags?: {str:str}
 
@@ -560,7 +547,7 @@ schema CiliumIoV2CiliumNodeStatusAlibabaCloudEnisAnon:
 
     vswitch?: CiliumIoV2CiliumNodeStatusAlibabaCloudEnisAnonVswitch
 
-    zone_id?: str
+    "zone-id"?: str
 
 
 schema CiliumIoV2CiliumNodeStatusAlibabaCloudEnisAnonPrivateIpsetsItems0:
@@ -571,14 +558,14 @@ schema CiliumIoV2CiliumNodeStatusAlibabaCloudEnisAnonPrivateIpsetsItems0:
     ----------
     primary : bool, default is Undefined, optional
         primary
-    private_ip_address : str, default is Undefined, optional
+    "private-ip-address" : str, default is Undefined, optional
         private ip address
     """
 
 
     primary?: bool
 
-    private_ip_address?: str
+    "private-ip-address"?: str
 
 
 schema CiliumIoV2CiliumNodeStatusAlibabaCloudEnisAnonVpc:
@@ -589,22 +576,22 @@ schema CiliumIoV2CiliumNodeStatusAlibabaCloudEnisAnonVpc:
     ----------
     cidr : str, default is Undefined, optional
         CIDRBlock is the VPC IPv4 CIDR
-    ipv6_cidr : str, default is Undefined, optional
+    "ipv6-cidr" : str, default is Undefined, optional
         IPv6CIDRBlock is the VPC IPv6 CIDR
-    secondary_cidrs : [str], default is Undefined, optional
+    "secondary-cidrs" : [str], default is Undefined, optional
         SecondaryCIDRs is the list of Secondary CIDRs associated with the VPC
-    vpc_id : str, default is Undefined, optional
+    "vpc-id" : str, default is Undefined, optional
         VPCID is the vpc to which the ENI belongs
     """
 
 
     cidr?: str
 
-    ipv6_cidr?: str
+    "ipv6-cidr"?: str
 
-    secondary_cidrs?: [str]
+    "secondary-cidrs"?: [str]
 
-    vpc_id?: str
+    "vpc-id"?: str
 
 
 schema CiliumIoV2CiliumNodeStatusAlibabaCloudEnisAnonVswitch:
@@ -615,18 +602,18 @@ schema CiliumIoV2CiliumNodeStatusAlibabaCloudEnisAnonVswitch:
     ----------
     cidr : str, default is Undefined, optional
         CIDRBlock is the vSwitch IPv4 CIDR
-    ipv6_cidr : str, default is Undefined, optional
+    "ipv6-cidr" : str, default is Undefined, optional
         IPv6CIDRBlock is the vSwitch IPv6 CIDR
-    vswitch_id : str, default is Undefined, optional
+    "vswitch-id" : str, default is Undefined, optional
         VSwitchID is the vSwitch to which the ENI belongs
     """
 
 
     cidr?: str
 
-    ipv6_cidr?: str
+    "ipv6-cidr"?: str
 
-    vswitch_id?: str
+    "vswitch-id"?: str
 
 
 schema CiliumIoV2CiliumNodeStatusAzure:
@@ -664,7 +651,7 @@ schema CiliumIoV2CiliumNodeStatusAzureInterfacesItems0:
         MAC is the mac address
     name : str, default is Undefined, optional
         Name is the name of the interface
-    security_group : str, default is Undefined, optional
+    "security-group" : str, default is Undefined, optional
         SecurityGroup is the security group associated with the interface
     state : str, default is Undefined, optional
         State is the provisioning state
@@ -685,7 +672,7 @@ schema CiliumIoV2CiliumNodeStatusAzureInterfacesItems0:
 
     name?: str
 
-    security_group?: str
+    "security-group"?: str
 
     state?: str
 
@@ -735,7 +722,7 @@ schema CiliumIoV2CiliumNodeStatusEniEnisAnon:
     ----------
     addresses : [str], default is Undefined, optional
         Addresses is the list of all secondary IPs associated with the ENI
-    availability_zone : str, default is Undefined, optional
+    "availability-zone" : str, default is Undefined, optional
         AvailabilityZone is the availability zone of the ENI
     description : str, default is Undefined, optional
         Description is the description field of the ENI
@@ -749,7 +736,7 @@ schema CiliumIoV2CiliumNodeStatusEniEnisAnon:
         Number is the interface index, it used in combination with FirstInterfaceIndex
     prefixes : [str], default is Undefined, optional
         Prefixes is the list of all /28 prefixes associated with the ENI
-    security_groups : [str], default is Undefined, optional
+    "security-groups" : [str], default is Undefined, optional
         SecurityGroups are the security groups associated with the ENI
     subnet : CiliumIoV2CiliumNodeStatusEniEnisAnonSubnet, default is Undefined, optional
         subnet
@@ -762,7 +749,7 @@ schema CiliumIoV2CiliumNodeStatusEniEnisAnon:
 
     addresses?: [str]
 
-    availability_zone?: str
+    "availability-zone"?: str
 
     description?: str
 
@@ -776,7 +763,7 @@ schema CiliumIoV2CiliumNodeStatusEniEnisAnon:
 
     prefixes?: [str]
 
-    security_groups?: [str]
+    "security-groups"?: [str]
 
     subnet?: CiliumIoV2CiliumNodeStatusEniEnisAnonSubnet
 
@@ -813,7 +800,7 @@ schema CiliumIoV2CiliumNodeStatusEniEnisAnonVpc:
         CIDRs is the list of CIDR ranges associated with the VPC
     id : str, default is Undefined, optional
         / ID is the ID of a VPC
-    primary_cidr : str, default is Undefined, optional
+    "primary-cidr" : str, default is Undefined, optional
         PrimaryCIDR is the primary CIDR of the VPC
     """
 
@@ -822,7 +809,7 @@ schema CiliumIoV2CiliumNodeStatusEniEnisAnonVpc:
 
     id?: str
 
-    primary_cidr?: str
+    "primary-cidr"?: str
 
 
 schema CiliumIoV2CiliumNodeStatusIpam:
@@ -831,30 +818,30 @@ schema CiliumIoV2CiliumNodeStatusIpam:
 
     Attributes
     ----------
-    ipv6_used : {str:CiliumIoV2CiliumNodeStatusIpamIPV6UsedAnon}, default is Undefined, optional
+    "ipv6-used" : {str:CiliumIoV2CiliumNodeStatusIpamIPV6UsedAnon}, default is Undefined, optional
         IPv6Used lists all IPv6 addresses out of Spec.IPAM.IPv6Pool which have been allocated and are in use.
-    operator_status : CiliumIoV2CiliumNodeStatusIpamOperatorStatus, default is Undefined, optional
+    "operator-status" : CiliumIoV2CiliumNodeStatusIpamOperatorStatus, default is Undefined, optional
         operator status
-    pod_cidrs : {str:CiliumIoV2CiliumNodeStatusIpamPodCidrsAnon}, default is Undefined, optional
+    "pod-cidrs" : {str:CiliumIoV2CiliumNodeStatusIpamPodCidrsAnon}, default is Undefined, optional
         PodCIDRs lists the status of each pod CIDR allocated to this node.
-    release_ips : {str:str}, default is Undefined, optional
+    "release-ips" : {str:str}, default is Undefined, optional
         ReleaseIPs tracks the state for every IPv4 address considered for release. The value can be one of the following strings: * marked-for-release : Set by operator as possible candidate for IP * ready-for-release  : Acknowledged as safe to release by agent * do-not-release     : IP already in use / not owned by the node. Set by agent * released           : IP successfully released. Set by operator
-    release_ipv6s : {str:str}, default is Undefined, optional
+    "release-ipv6s" : {str:str}, default is Undefined, optional
         ReleaseIPv6s tracks the state for every IPv6 address considered for release. The value can be one of the following strings: * marked-for-release : Set by operator as possible candidate for IP * ready-for-release  : Acknowledged as safe to release by agent * do-not-release     : IP already in use / not owned by the node. Set by agent * released           : IP successfully released. Set by operator
     used : {str:CiliumIoV2CiliumNodeStatusIpamUsedAnon}, default is Undefined, optional
         Used lists all IPv4 addresses out of Spec.IPAM.Pool which have been allocated and are in use.
     """
 
 
-    ipv6_used?: {str:CiliumIoV2CiliumNodeStatusIpamIPV6UsedAnon}
+    "ipv6-used"?: {str:CiliumIoV2CiliumNodeStatusIpamIPV6UsedAnon}
 
-    operator_status?: CiliumIoV2CiliumNodeStatusIpamOperatorStatus
+    "operator-status"?: CiliumIoV2CiliumNodeStatusIpamOperatorStatus
 
-    pod_cidrs?: {str:CiliumIoV2CiliumNodeStatusIpamPodCidrsAnon}
+    "pod-cidrs"?: {str:CiliumIoV2CiliumNodeStatusIpamPodCidrsAnon}
 
-    release_ips?: {str:str}
+    "release-ips"?: {str:str}
 
-    release_ipv6s?: {str:str}
+    "release-ipv6s"?: {str:str}
 
     used?: {str:CiliumIoV2CiliumNodeStatusIpamUsedAnon}
 

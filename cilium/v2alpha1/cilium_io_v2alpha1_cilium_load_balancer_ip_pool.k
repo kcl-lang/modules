@@ -6,6 +6,7 @@ import regex
 import k8s.apimachinery.pkg.apis.meta.v1
 _regex_match = regex.match
 
+
 schema CiliumLoadBalancerIPPool:
     """
     CiliumLoadBalancerIPPool is a Kubernetes third-party resource which is used to defined pools of IPs which the operator can use to to allocate and advertise IPs for Services of type LoadBalancer.
@@ -103,7 +104,7 @@ schema CiliumIoV2alpha1CiliumLoadBalancerIPPoolSpecServiceSelector:
 
 
     check:
-        all _, matchLabels in matchLabels {len(matchLabels) <= _regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
+        all _, matchLabels in matchLabels {_regex_match(str(matchLabels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if matchLabels } if matchLabels
 
 
 schema CiliumIoV2alpha1CiliumLoadBalancerIPPoolSpecServiceSelectorMatchExpressionsItems0:
@@ -181,7 +182,7 @@ schema CiliumIoV2alpha1CiliumLoadBalancerIPPoolStatusConditionsItems0:
 
     check:
         len(message) <= 32768
-        observedGeneration >= 0
+        observedGeneration >= 0 if observedGeneration not in [None, Undefined]
         len(reason) <= 1024
         len(reason) >= 1
         _regex_match(str(reason), r"^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$")
