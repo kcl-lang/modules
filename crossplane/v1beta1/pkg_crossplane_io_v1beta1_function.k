@@ -6,8 +6,13 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema Function:
-    """
-    Function is the CRD type for a request to deploy a long-running Function.
+    r"""
+    A Function installs an OCI compatible Crossplane package, extending
+    Crossplane with support for a new kind of composition function.
+
+
+    Read the Crossplane documentation for
+    [more information about Functions](https://docs.crossplane.io/latest/concepts/composition-functions).
 
     Attributes
     ----------
@@ -36,7 +41,7 @@ schema Function:
 
 
 schema PkgCrossplaneIoV1beta1FunctionSpec:
-    """
+    r"""
     FunctionSpec specifies the configuration of a Function.
 
     Attributes
@@ -45,7 +50,7 @@ schema PkgCrossplaneIoV1beta1FunctionSpec:
         Map of string keys and values that can be used to organize and categorize
         (scope and select) objects. May match selectors of replication controllers
         and services.
-        More info: http://kubernetes.io/docs/user-guide/labels
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
     controllerConfigRef : PkgCrossplaneIoV1beta1FunctionSpecControllerConfigRef, default is Undefined, optional
         controller config ref
     ignoreCrossplaneConstraints : bool, default is Undefined, optional
@@ -100,7 +105,7 @@ schema PkgCrossplaneIoV1beta1FunctionSpec:
 
 
 schema PkgCrossplaneIoV1beta1FunctionSpecControllerConfigRef:
-    """
+    r"""
     ControllerConfigRef references a ControllerConfig resource that will be
     used to configure the packaged controller Deployment.
     Deprecated: Use RuntimeConfigReference instead.
@@ -116,7 +121,7 @@ schema PkgCrossplaneIoV1beta1FunctionSpecControllerConfigRef:
 
 
 schema PkgCrossplaneIoV1beta1FunctionSpecPackagePullSecretsItems0:
-    """
+    r"""
     LocalObjectReference contains enough information to let you locate the
     referenced object inside the same namespace.
 
@@ -133,7 +138,7 @@ schema PkgCrossplaneIoV1beta1FunctionSpecPackagePullSecretsItems0:
 
 
 schema PkgCrossplaneIoV1beta1FunctionSpecRuntimeConfigRef:
-    """
+    r"""
     RuntimeConfigRef references a RuntimeConfig resource that will be used
     to configure the package runtime.
 
@@ -156,7 +161,7 @@ schema PkgCrossplaneIoV1beta1FunctionSpecRuntimeConfigRef:
 
 
 schema PkgCrossplaneIoV1beta1FunctionStatus:
-    """
+    r"""
     FunctionStatus represents the observed state of a Function.
 
     Attributes
@@ -185,7 +190,7 @@ schema PkgCrossplaneIoV1beta1FunctionStatus:
 
 
 schema PkgCrossplaneIoV1beta1FunctionStatusConditionsItems0:
-    """
+    r"""
     A Condition that may apply to a resource.
 
     Attributes
@@ -196,6 +201,10 @@ schema PkgCrossplaneIoV1beta1FunctionStatusConditionsItems0:
     message : str, default is Undefined, optional
         A Message containing details about this condition's last transition from
         one status to another, if any.
+    observedGeneration : int, default is Undefined, optional
+        ObservedGeneration represents the .metadata.generation that the condition was set based upon.
+        For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date
+        with respect to the current state of the instance.
     reason : str, default is Undefined, required
         A Reason for this condition's last transition from one status to another.
     status : str, default is Undefined, required
@@ -209,6 +218,8 @@ schema PkgCrossplaneIoV1beta1FunctionStatusConditionsItems0:
     lastTransitionTime: str
 
     message?: str
+
+    observedGeneration?: int
 
     reason: str
 

@@ -6,10 +6,13 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema CompositeResourceDefinition:
-    """
-    A CompositeResourceDefinition defines a new kind of composite infrastructure
-    resource. The new resource is composed of other composite or managed
-    infrastructure resources.
+    r"""
+    A CompositeResourceDefinition defines the schema for a new custom Kubernetes
+    API.
+
+
+    Read the Crossplane documentation for
+    [more information about CustomResourceDefinitions](https://docs.crossplane.io/latest/concepts/composite-resource-definitions).
 
     Attributes
     ----------
@@ -38,7 +41,7 @@ schema CompositeResourceDefinition:
 
 
 schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpec:
-    """
+    r"""
     CompositeResourceDefinitionSpec specifies the desired state of the definition.
 
     Attributes
@@ -108,7 +111,7 @@ schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpec:
 
 
 schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecClaimNames:
-    """
+    r"""
     ClaimNames specifies the names of an optional composite resource claim.
     When claim names are specified Crossplane will create a namespaced
     'composite resource claim' CRD that corresponds to the defined composite
@@ -157,7 +160,7 @@ schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecClaimNames:
 
 
 schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecConversion:
-    """
+    r"""
     Conversion defines all conversion settings for the defined Composite resource.
 
     Attributes
@@ -178,7 +181,7 @@ schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecConversion:
 
 
 schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecConversionWebhook:
-    """
+    r"""
     webhook describes how to call the conversion webhook. Required when `strategy` is set to `"Webhook"`.
 
     Attributes
@@ -201,7 +204,7 @@ schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecConversionWebho
 
 
 schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecConversionWebhookClientConfig:
-    """
+    r"""
     clientConfig is the instructions for how to call the webhook if strategy is `Webhook`.
 
     Attributes
@@ -253,7 +256,7 @@ schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecConversionWebho
 
 
 schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecConversionWebhookClientConfigService:
-    """
+    r"""
     service is a reference to the service for this webhook. Either
     service or url must be specified.
 
@@ -287,7 +290,7 @@ schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecConversionWebho
 
 
 schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecDefaultCompositionRef:
-    """
+    r"""
     DefaultCompositionRef refers to the Composition resource that will be used
     in case no composition selector is given.
 
@@ -302,7 +305,7 @@ schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecDefaultComposit
 
 
 schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecEnforcedCompositionRef:
-    """
+    r"""
     EnforcedCompositionRef refers to the Composition resource that will be used
     by all composite instances whose schema is defined by this definition.
 
@@ -317,7 +320,7 @@ schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecEnforcedComposi
 
 
 schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecMetadata:
-    """
+    r"""
     Metadata specifies the desired metadata for the defined composite resource and claim CRD's.
 
     Attributes
@@ -343,7 +346,7 @@ schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecMetadata:
 
 
 schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecNames:
-    """
+    r"""
     Names specifies the resource and kind names of the defined composite
     resource.
 
@@ -386,7 +389,7 @@ schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecNames:
 
 
 schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecVersionsItems0:
-    """
+    r"""
     CompositeResourceDefinitionVersion describes a version of an XR.
 
     Attributes
@@ -439,7 +442,7 @@ schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecVersionsItems0:
 
 
 schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecVersionsItems0AdditionalPrinterColumnsItems0:
-    """
+    r"""
     CustomResourceColumnDefinition specifies a column for server side printing.
 
     Attributes
@@ -479,7 +482,7 @@ schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecVersionsItems0A
 
 
 schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecVersionsItems0Schema:
-    """
+    r"""
     Schema describes the schema used for validation, pruning, and defaulting
     of this version of the defined composite resource. Fields required by all
     composite resources will be injected into this schema automatically, and
@@ -499,7 +502,7 @@ schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecVersionsItems0S
 
 
 schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionStatus:
-    """
+    r"""
     CompositeResourceDefinitionStatus shows the observed state of the definition.
 
     Attributes
@@ -517,7 +520,7 @@ schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionStatus:
 
 
 schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionStatusConditionsItems0:
-    """
+    r"""
     A Condition that may apply to a resource.
 
     Attributes
@@ -528,6 +531,10 @@ schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionStatusConditionsIte
     message : str, default is Undefined, optional
         A Message containing details about this condition's last transition from
         one status to another, if any.
+    observedGeneration : int, default is Undefined, optional
+        ObservedGeneration represents the .metadata.generation that the condition was set based upon.
+        For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date
+        with respect to the current state of the instance.
     reason : str, default is Undefined, required
         A Reason for this condition's last transition from one status to another.
     status : str, default is Undefined, required
@@ -542,6 +549,8 @@ schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionStatusConditionsIte
 
     message?: str
 
+    observedGeneration?: int
+
     reason: str
 
     status: str
@@ -550,7 +559,7 @@ schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionStatusConditionsIte
 
 
 schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionStatusControllers:
-    """
+    r"""
     Controllers represents the status of the controllers that power this
     composite resource definition.
 
@@ -569,7 +578,7 @@ schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionStatusControllers:
 
 
 schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionStatusControllersCompositeResourceClaimType:
-    """
+    r"""
     The CompositeResourceClaimTypeRef is the type of composite resource claim
     that Crossplane is currently reconciling for this definition. Its version
     will eventually become consistent with the definition's referenceable
@@ -591,7 +600,7 @@ schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionStatusControllersCo
 
 
 schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionStatusControllersCompositeResourceType:
-    """
+    r"""
     The CompositeResourceTypeRef is the type of composite resource that
     Crossplane is currently reconciling for this definition. Its version will
     eventually become consistent with the definition's referenceable version.

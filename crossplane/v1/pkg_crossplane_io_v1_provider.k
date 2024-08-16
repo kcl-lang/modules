@@ -6,8 +6,13 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema Provider:
-    """
-    Provider is the CRD type for a request to add a provider to Crossplane.
+    r"""
+    A Provider installs an OCI compatible Crossplane package, extending
+    Crossplane with support for new kinds of managed resources.
+
+
+    Read the Crossplane documentation for
+    [more information about Providers](https://docs.crossplane.io/latest/concepts/providers).
 
     Attributes
     ----------
@@ -36,7 +41,7 @@ schema Provider:
 
 
 schema PkgCrossplaneIoV1ProviderSpec:
-    """
+    r"""
     ProviderSpec specifies details about a request to install a provider to
     Crossplane.
 
@@ -46,7 +51,7 @@ schema PkgCrossplaneIoV1ProviderSpec:
         Map of string keys and values that can be used to organize and categorize
         (scope and select) objects. May match selectors of replication controllers
         and services.
-        More info: http://kubernetes.io/docs/user-guide/labels
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
     controllerConfigRef : PkgCrossplaneIoV1ProviderSpecControllerConfigRef, default is Undefined, optional
         controller config ref
     ignoreCrossplaneConstraints : bool, default is Undefined, optional
@@ -101,7 +106,7 @@ schema PkgCrossplaneIoV1ProviderSpec:
 
 
 schema PkgCrossplaneIoV1ProviderSpecControllerConfigRef:
-    """
+    r"""
     ControllerConfigRef references a ControllerConfig resource that will be
     used to configure the packaged controller Deployment.
     Deprecated: Use RuntimeConfigReference instead.
@@ -117,7 +122,7 @@ schema PkgCrossplaneIoV1ProviderSpecControllerConfigRef:
 
 
 schema PkgCrossplaneIoV1ProviderSpecPackagePullSecretsItems0:
-    """
+    r"""
     LocalObjectReference contains enough information to let you locate the
     referenced object inside the same namespace.
 
@@ -134,7 +139,7 @@ schema PkgCrossplaneIoV1ProviderSpecPackagePullSecretsItems0:
 
 
 schema PkgCrossplaneIoV1ProviderSpecRuntimeConfigRef:
-    """
+    r"""
     RuntimeConfigRef references a RuntimeConfig resource that will be used
     to configure the package runtime.
 
@@ -157,7 +162,7 @@ schema PkgCrossplaneIoV1ProviderSpecRuntimeConfigRef:
 
 
 schema PkgCrossplaneIoV1ProviderStatus:
-    """
+    r"""
     ProviderStatus represents the observed state of a Provider.
 
     Attributes
@@ -186,7 +191,7 @@ schema PkgCrossplaneIoV1ProviderStatus:
 
 
 schema PkgCrossplaneIoV1ProviderStatusConditionsItems0:
-    """
+    r"""
     A Condition that may apply to a resource.
 
     Attributes
@@ -197,6 +202,10 @@ schema PkgCrossplaneIoV1ProviderStatusConditionsItems0:
     message : str, default is Undefined, optional
         A Message containing details about this condition's last transition from
         one status to another, if any.
+    observedGeneration : int, default is Undefined, optional
+        ObservedGeneration represents the .metadata.generation that the condition was set based upon.
+        For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date
+        with respect to the current state of the instance.
     reason : str, default is Undefined, required
         A Reason for this condition's last transition from one status to another.
     status : str, default is Undefined, required
@@ -210,6 +219,8 @@ schema PkgCrossplaneIoV1ProviderStatusConditionsItems0:
     lastTransitionTime: str
 
     message?: str
+
+    observedGeneration?: int
 
     reason: str
 

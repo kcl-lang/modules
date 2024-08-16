@@ -6,8 +6,13 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ConfigurationRevision:
-    """
-    A ConfigurationRevision that has been added to Crossplane.
+    r"""
+    A ConfigurationRevision represents a revision of a Configuration. Crossplane
+    creates new revisions when there are changes to a Configuration.
+
+
+    Crossplane creates and manages ConfigurationRevision. Don't directly edit
+    ConfigurationRevisions.
 
     Attributes
     ----------
@@ -36,7 +41,7 @@ schema ConfigurationRevision:
 
 
 schema PkgCrossplaneIoV1ConfigurationRevisionSpec:
-    """
+    r"""
     PackageRevisionSpec specifies the desired state of a PackageRevision.
 
     Attributes
@@ -45,7 +50,7 @@ schema PkgCrossplaneIoV1ConfigurationRevisionSpec:
         Map of string keys and values that can be used to organize and categorize
         (scope and select) objects. May match selectors of replication controllers
         and services.
-        More info: http://kubernetes.io/docs/user-guide/labels
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
     desiredState : str, default is Undefined, required
         DesiredState of the PackageRevision. Can be either Active or Inactive.
     ignoreCrossplaneConstraints : bool, default is Undefined, optional
@@ -92,7 +97,7 @@ schema PkgCrossplaneIoV1ConfigurationRevisionSpec:
 
 
 schema PkgCrossplaneIoV1ConfigurationRevisionSpecPackagePullSecretsItems0:
-    """
+    r"""
     LocalObjectReference contains enough information to let you locate the
     referenced object inside the same namespace.
 
@@ -109,7 +114,7 @@ schema PkgCrossplaneIoV1ConfigurationRevisionSpecPackagePullSecretsItems0:
 
 
 schema PkgCrossplaneIoV1ConfigurationRevisionStatus:
-    """
+    r"""
     PackageRevisionStatus represents the observed state of a PackageRevision.
 
     Attributes
@@ -145,7 +150,7 @@ schema PkgCrossplaneIoV1ConfigurationRevisionStatus:
 
 
 schema PkgCrossplaneIoV1ConfigurationRevisionStatusConditionsItems0:
-    """
+    r"""
     A Condition that may apply to a resource.
 
     Attributes
@@ -156,6 +161,10 @@ schema PkgCrossplaneIoV1ConfigurationRevisionStatusConditionsItems0:
     message : str, default is Undefined, optional
         A Message containing details about this condition's last transition from
         one status to another, if any.
+    observedGeneration : int, default is Undefined, optional
+        ObservedGeneration represents the .metadata.generation that the condition was set based upon.
+        For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date
+        with respect to the current state of the instance.
     reason : str, default is Undefined, required
         A Reason for this condition's last transition from one status to another.
     status : str, default is Undefined, required
@@ -170,6 +179,8 @@ schema PkgCrossplaneIoV1ConfigurationRevisionStatusConditionsItems0:
 
     message?: str
 
+    observedGeneration?: int
+
     reason: str
 
     status: str
@@ -178,7 +189,7 @@ schema PkgCrossplaneIoV1ConfigurationRevisionStatusConditionsItems0:
 
 
 schema PkgCrossplaneIoV1ConfigurationRevisionStatusObjectRefsItems0:
-    """
+    r"""
     A TypedReference refers to an object by Name, Kind, and APIVersion. It is
     commonly used to reference cluster-scoped objects or objects where the
     namespace is already known.
@@ -206,7 +217,7 @@ schema PkgCrossplaneIoV1ConfigurationRevisionStatusObjectRefsItems0:
 
 
 schema PkgCrossplaneIoV1ConfigurationRevisionStatusPermissionRequestsItems0:
-    """
+    r"""
     PolicyRule holds information that describes a policy rule, but does not contain information
     about who the rule applies to or which namespace the rule applies to.
 

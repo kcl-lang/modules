@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema Lock:
-    """
+    r"""
     Lock is the CRD type that tracks package dependencies.
 
     Attributes
@@ -32,7 +32,7 @@ schema Lock:
 
 
 schema PkgCrossplaneIoV1beta1LockPackagesItems0:
-    """
+    r"""
     LockPackage is a package that is in the lock.
 
     Attributes
@@ -63,7 +63,7 @@ schema PkgCrossplaneIoV1beta1LockPackagesItems0:
 
 
 schema PkgCrossplaneIoV1beta1LockPackagesItems0DependenciesItems0:
-    """
+    r"""
     A Dependency is a dependency of a package in the lock.
 
     Attributes

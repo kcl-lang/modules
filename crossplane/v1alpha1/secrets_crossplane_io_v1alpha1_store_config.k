@@ -6,8 +6,9 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema StoreConfig:
-    """
-    A StoreConfig configures how Crossplane controllers should store connection details.
+    r"""
+    A StoreConfig configures how Crossplane controllers should store connection
+    details in an external secret store.
 
     Attributes
     ----------
@@ -32,7 +33,7 @@ schema StoreConfig:
 
 
 schema SecretsCrossplaneIoV1alpha1StoreConfigSpec:
-    """
+    r"""
     A StoreConfigSpec defines the desired state of a StoreConfig.
 
     Attributes
@@ -64,7 +65,7 @@ schema SecretsCrossplaneIoV1alpha1StoreConfigSpec:
 
 
 schema SecretsCrossplaneIoV1alpha1StoreConfigSpecKubernetes:
-    """
+    r"""
     Kubernetes configures a Kubernetes secret store.
     If the "type" is "Kubernetes" but no config provided, in cluster config
     will be used.
@@ -80,7 +81,7 @@ schema SecretsCrossplaneIoV1alpha1StoreConfigSpecKubernetes:
 
 
 schema SecretsCrossplaneIoV1alpha1StoreConfigSpecKubernetesAuth:
-    """
+    r"""
     Credentials used to connect to the Kubernetes API.
 
     Attributes
@@ -106,7 +107,7 @@ schema SecretsCrossplaneIoV1alpha1StoreConfigSpecKubernetesAuth:
 
 
 schema SecretsCrossplaneIoV1alpha1StoreConfigSpecKubernetesAuthEnv:
-    """
+    r"""
     Env is a reference to an environment variable that contains credentials
     that must be used to connect to the provider.
 
@@ -121,7 +122,7 @@ schema SecretsCrossplaneIoV1alpha1StoreConfigSpecKubernetesAuthEnv:
 
 
 schema SecretsCrossplaneIoV1alpha1StoreConfigSpecKubernetesAuthFs:
-    """
+    r"""
     Fs is a reference to a filesystem location that contains credentials that
     must be used to connect to the provider.
 
@@ -136,7 +137,7 @@ schema SecretsCrossplaneIoV1alpha1StoreConfigSpecKubernetesAuthFs:
 
 
 schema SecretsCrossplaneIoV1alpha1StoreConfigSpecKubernetesAuthSecretRef:
-    """
+    r"""
     A SecretRef is a reference to a secret key that contains the credentials
     that must be used to connect to the provider.
 
@@ -159,7 +160,7 @@ schema SecretsCrossplaneIoV1alpha1StoreConfigSpecKubernetesAuthSecretRef:
 
 
 schema SecretsCrossplaneIoV1alpha1StoreConfigSpecPlugin:
-    """
+    r"""
     Plugin configures External secret store as a plugin.
 
     Attributes
@@ -177,7 +178,7 @@ schema SecretsCrossplaneIoV1alpha1StoreConfigSpecPlugin:
 
 
 schema SecretsCrossplaneIoV1alpha1StoreConfigSpecPluginConfigRef:
-    """
+    r"""
     ConfigRef contains store config reference info.
 
     Attributes

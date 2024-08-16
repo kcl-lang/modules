@@ -4,15 +4,19 @@ Editing this file might prove futile when you re-run the KCL auto-gen generate c
 """
 import regex
 import k8s.apimachinery.pkg.apis.meta.v1
-regex_match = regex.match
 
 
 schema ControllerConfig:
-    """
-    ControllerConfig is the CRD type for a packaged controller configuration.
-    Deprecated: This API is replaced by DeploymentRuntimeConfig, and is scheduled
-    to be removed in a future release. See the design doc for more details:
-    https://github.com/crossplane/crossplane/blob/11bbe13ea3604928cc4e24e8d0d18f3f5f7e847c/design/one-pager-package-runtime-config.md
+    r"""
+    A ControllerConfig applies settings to controllers like Provider pods.
+    Deprecated: Use the
+    [DeploymentRuntimeConfig](https://docs.crossplane.io/latest/concepts/providers#runtime-configuration)
+    instead.
+
+
+    Read the
+    [Package Runtime Configuration](https://github.com/crossplane/crossplane/blob/11bbe13ea3604928cc4e24e8d0d18f3f5f7e847c/design/one-pager-package-runtime-config.md)
+    design document for more details.
 
     Attributes
     ----------
@@ -37,7 +41,7 @@ schema ControllerConfig:
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpec:
-    """
+    r"""
     ControllerConfigSpec specifies the configuration for a packaged controller.
     Values provided will override package manager defaults. Labels and
     annotations are passed to both the controller Deployment and ServiceAccount.
@@ -117,7 +121,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpec:
         to run this pod.  If no RuntimeClass resource matches the named class, the pod will not be run.
         If unset or empty, the "legacy" RuntimeClass will be used, which is an implicit class with an
         empty definition that uses the default runtime handler.
-        More info: https://git.k8s.io/enhancements/keps/sig-node/runtime-class.md
+        More info: https://github.com/kubernetes/enhancements/blob/master/keps/sig-node/585-runtime-class/README.md
         This is a beta feature as of Kubernetes v1.14.
     securityContext : PkgCrossplaneIoV1alpha1ControllerConfigSpecSecurityContext, default is Undefined, optional
         security context
@@ -189,7 +193,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpec:
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinity:
-    """
+    r"""
     If specified, the pod's scheduling constraints
 
     Attributes
@@ -211,7 +215,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinity:
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityNodeAffinity:
-    """
+    r"""
     Describes node affinity scheduling rules for the pod.
 
     Attributes
@@ -237,7 +241,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityNodeAffinity:
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     An empty preferred scheduling term matches all objects with implicit weight 0
     (i.e. it's a no-op). A null preferred scheduling term matches no objects (i.e. is also a no-op).
 
@@ -256,7 +260,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityNodeAffinityPreferredD
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0Preference:
-    """
+    r"""
     A node selector term, associated with the corresponding weight.
 
     Attributes
@@ -274,7 +278,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityNodeAffinityPreferredD
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchExpressionsItems0:
-    """
+    r"""
     A node selector requirement is a selector that contains values, a key, and an operator
     that relates the key and values.
 
@@ -302,7 +306,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityNodeAffinityPreferredD
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchFieldsItems0:
-    """
+    r"""
     A node selector requirement is a selector that contains values, a key, and an operator
     that relates the key and values.
 
@@ -330,7 +334,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityNodeAffinityPreferredD
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution:
-    """
+    r"""
     If the affinity requirements specified by this field are not met at
     scheduling time, the pod will not be scheduled onto the node.
     If the affinity requirements specified by this field cease to be met
@@ -348,7 +352,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityNodeAffinityRequiredDu
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0:
-    """
+    r"""
     A null or empty node selector term matches no objects. The requirements of
     them are ANDed.
     The TopologySelectorTerm type implements a subset of the NodeSelectorTerm.
@@ -368,7 +372,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityNodeAffinityRequiredDu
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchExpressionsItems0:
-    """
+    r"""
     A node selector requirement is a selector that contains values, a key, and an operator
     that relates the key and values.
 
@@ -396,7 +400,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityNodeAffinityRequiredDu
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchFieldsItems0:
-    """
+    r"""
     A node selector requirement is a selector that contains values, a key, and an operator
     that relates the key and values.
 
@@ -424,7 +428,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityNodeAffinityRequiredDu
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAffinity:
-    """
+    r"""
     Describes pod affinity scheduling rules (e.g. co-locate this pod in the same node, zone, etc. as some other pod(s)).
 
     Attributes
@@ -456,7 +460,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAffinity:
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     The weights of all of the matched WeightedPodAffinityTerm fields are added per-node to find the most preferred node(s)
 
     Attributes
@@ -475,7 +479,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAffinityPreferredDu
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTerm:
-    """
+    r"""
     Required. A pod affinity term, associated with the corresponding weight.
 
     Attributes
@@ -532,7 +536,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAffinityPreferredDu
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector:
-    """
+    r"""
     A label query over a set of resources, in this case pods.
     If it's null, this PodAffinityTerm matches with no Pods.
 
@@ -553,7 +557,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAffinityPreferredDu
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
 
@@ -580,7 +584,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAffinityPreferredDu
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector:
-    """
+    r"""
     A label query over the set of namespaces that the term applies to.
     The term is applied to the union of the namespaces selected by this field
     and the ones listed in the namespaces field.
@@ -604,7 +608,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAffinityPreferredDu
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
 
@@ -631,7 +635,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAffinityPreferredDu
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     Defines a set of pods (namely those matching the labelSelector
     relative to the given namespace(s)) that this pod should be
     co-located (affinity) or not co-located (anti-affinity) with,
@@ -693,7 +697,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAffinityRequiredDur
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector:
-    """
+    r"""
     A label query over a set of resources, in this case pods.
     If it's null, this PodAffinityTerm matches with no Pods.
 
@@ -714,7 +718,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAffinityRequiredDur
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
 
@@ -741,7 +745,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAffinityRequiredDur
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector:
-    """
+    r"""
     A label query over the set of namespaces that the term applies to.
     The term is applied to the union of the namespaces selected by this field
     and the ones listed in the namespaces field.
@@ -765,7 +769,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAffinityRequiredDur
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
 
@@ -792,7 +796,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAffinityRequiredDur
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAntiAffinity:
-    """
+    r"""
     Describes pod anti-affinity scheduling rules (e.g. avoid putting this pod in the same node, zone, etc. as some other pod(s)).
 
     Attributes
@@ -824,7 +828,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAntiAffinity:
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     The weights of all of the matched WeightedPodAffinityTerm fields are added per-node to find the most preferred node(s)
 
     Attributes
@@ -843,7 +847,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAntiAffinityPreferr
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTerm:
-    """
+    r"""
     Required. A pod affinity term, associated with the corresponding weight.
 
     Attributes
@@ -900,7 +904,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAntiAffinityPreferr
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector:
-    """
+    r"""
     A label query over a set of resources, in this case pods.
     If it's null, this PodAffinityTerm matches with no Pods.
 
@@ -921,7 +925,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAntiAffinityPreferr
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
 
@@ -948,7 +952,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAntiAffinityPreferr
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector:
-    """
+    r"""
     A label query over the set of namespaces that the term applies to.
     The term is applied to the union of the namespaces selected by this field
     and the ones listed in the namespaces field.
@@ -972,7 +976,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAntiAffinityPreferr
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
 
@@ -999,7 +1003,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAntiAffinityPreferr
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     Defines a set of pods (namely those matching the labelSelector
     relative to the given namespace(s)) that this pod should be
     co-located (affinity) or not co-located (anti-affinity) with,
@@ -1061,7 +1065,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAntiAffinityRequire
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector:
-    """
+    r"""
     A label query over a set of resources, in this case pods.
     If it's null, this PodAffinityTerm matches with no Pods.
 
@@ -1082,7 +1086,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAntiAffinityRequire
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
 
@@ -1109,7 +1113,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAntiAffinityRequire
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector:
-    """
+    r"""
     A label query over the set of namespaces that the term applies to.
     The term is applied to the union of the namespaces selected by this field
     and the ones listed in the namespaces field.
@@ -1133,7 +1137,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAntiAffinityRequire
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
 
@@ -1160,7 +1164,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAntiAffinityRequire
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecEnvFromItems0:
-    """
+    r"""
     EnvFromSource represents the source of a set of ConfigMaps
 
     Attributes
@@ -1182,7 +1186,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecEnvFromItems0:
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecEnvFromItems0ConfigMapRef:
-    """
+    r"""
     The ConfigMap to select from
 
     Attributes
@@ -1202,7 +1206,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecEnvFromItems0ConfigMapRef:
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecEnvFromItems0SecretRef:
-    """
+    r"""
     The Secret to select from
 
     Attributes
@@ -1222,7 +1226,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecEnvFromItems0SecretRef:
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecEnvItems0:
-    """
+    r"""
     EnvVar represents an environment variable present in a Container.
 
     Attributes
@@ -1252,7 +1256,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecEnvItems0:
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecEnvItems0ValueFrom:
-    """
+    r"""
     Source for the environment variable's value. Cannot be used if value is not empty.
 
     Attributes
@@ -1278,7 +1282,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecEnvItems0ValueFrom:
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecEnvItems0ValueFromConfigMapKeyRef:
-    """
+    r"""
     Selects a key of a ConfigMap.
 
     Attributes
@@ -1302,7 +1306,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecEnvItems0ValueFromConfigMapKey
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecEnvItems0ValueFromFieldRef:
-    """
+    r"""
     Selects a field of the pod: supports metadata.name, metadata.namespace, `metadata.labels['<KEY>']`, `metadata.annotations['<KEY>']`,
     spec.nodeName, spec.serviceAccountName, status.hostIP, status.podIP, status.podIPs.
 
@@ -1321,7 +1325,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecEnvItems0ValueFromFieldRef:
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecEnvItems0ValueFromResourceFieldRef:
-    """
+    r"""
     Selects a resource of the container: only resources limits and requests
     (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
 
@@ -1344,11 +1348,11 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecEnvItems0ValueFromResourceFiel
 
 
     check:
-        regex_match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
+        regex.match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecEnvItems0ValueFromSecretKeyRef:
-    """
+    r"""
     Selects a key of a secret in the pod's namespace
 
     Attributes
@@ -1372,7 +1376,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecEnvItems0ValueFromSecretKeyRef
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecImagePullSecretsItems0:
-    """
+    r"""
     LocalObjectReference contains enough information to let you locate the
     referenced object inside the same namespace.
 
@@ -1389,7 +1393,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecImagePullSecretsItems0:
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecMetadata:
-    """
+    r"""
     Metadata that will be added to the provider Pod.
 
     Attributes
@@ -1398,14 +1402,14 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecMetadata:
         Annotations is an unstructured key value map stored with a resource that may be
         set by external tools to store and retrieve arbitrary metadata. They are not
         queryable and should be preserved when modifying objects.
-        More info: http://kubernetes.io/docs/user-guide/annotations
+        More info: http:https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
     labels : {str:str}, default is Undefined, optional
         Map of string keys and values that can be used to organize and
         categorize (scope and select) objects. This will only affect
         labels on the pod, not the pod selector. Labels will be merged
         with internal labels used by crossplane, and labels with a
         crossplane.io key might be overwritten.
-        More info: http://kubernetes.io/docs/user-guide/labels
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
     """
 
 
@@ -1415,7 +1419,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecMetadata:
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecPodSecurityContext:
-    """
+    r"""
     PodSecurityContext holds pod-level security attributes and common container settings.
     Optional: Defaults to empty.  See type description for default values of each field.
 
@@ -1506,7 +1510,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecPodSecurityContext:
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecPodSecurityContextSeLinuxOptions:
-    """
+    r"""
     The SELinux context to be applied to all containers.
     If unspecified, the container runtime will allocate a random SELinux context for each
     container.  May also be set in SecurityContext.  If set in
@@ -1537,7 +1541,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecPodSecurityContextSeLinuxOptio
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecPodSecurityContextSeccompProfile:
-    """
+    r"""
     The seccomp options to use by the containers in this pod.
     Note that this field cannot be set when spec.os.name is windows.
 
@@ -1565,7 +1569,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecPodSecurityContextSeccompProfi
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecPodSecurityContextSysctlsItems0:
-    """
+    r"""
     Sysctl defines a kernel parameter to be set
 
     Attributes
@@ -1583,7 +1587,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecPodSecurityContextSysctlsItems
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecPodSecurityContextWindowsOptions:
-    """
+    r"""
     The Windows specific settings applied to all containers.
     If unspecified, the options within a container's SecurityContext will be used.
     If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
@@ -1620,7 +1624,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecPodSecurityContextWindowsOptio
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecPortsItems0:
-    """
+    r"""
     ContainerPort represents a network port in a single container.
 
     Attributes
@@ -1657,7 +1661,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecPortsItems0:
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecResources:
-    """
+    r"""
     Compute Resources required by this container.
     Cannot be updated.
     More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
@@ -1693,12 +1697,12 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecResources:
 
 
     check:
-        all _, limits in limits {regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests {regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
+        all _, limits in limits {regex.match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests {regex.match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecResourcesClaimsItems0:
-    """
+    r"""
     ResourceClaim references one entry in PodSpec.ResourceClaims.
 
     Attributes
@@ -1714,7 +1718,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecResourcesClaimsItems0:
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecSecurityContext:
-    """
+    r"""
     SecurityContext holds container-level security attributes and common container settings.
     Optional: Defaults to empty.  See type description for default values of each field.
 
@@ -1797,7 +1801,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecSecurityContext:
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecSecurityContextCapabilities:
-    """
+    r"""
     The capabilities to add/drop when running containers.
     Defaults to the default set of capabilities granted by the container runtime.
     Note that this field cannot be set when spec.os.name is windows.
@@ -1817,7 +1821,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecSecurityContextCapabilities:
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecSecurityContextSeLinuxOptions:
-    """
+    r"""
     The SELinux context to be applied to the container.
     If unspecified, the container runtime will allocate a random SELinux context for each
     container.  May also be set in PodSecurityContext.  If set in both SecurityContext and
@@ -1847,7 +1851,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecSecurityContextSeLinuxOptions:
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecSecurityContextSeccompProfile:
-    """
+    r"""
     The seccomp options to use by this container. If seccomp options are
     provided at both the pod & container level, the container options
     override the pod options.
@@ -1877,7 +1881,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecSecurityContextSeccompProfile:
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecSecurityContextWindowsOptions:
-    """
+    r"""
     The Windows specific settings applied to all containers.
     If unspecified, the options from the PodSecurityContext will be used.
     If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
@@ -1914,7 +1918,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecSecurityContextWindowsOptions:
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecTolerationsItems0:
-    """
+    r"""
     The pod this Toleration is attached to tolerates any taint that matches
     the triple <key,value,effect> using the matching operator <operator>.
 
@@ -1954,7 +1958,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecTolerationsItems0:
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumeMountsItems0:
-    """
+    r"""
     VolumeMount describes a mounting of a Volume within a container.
 
     Attributes
@@ -1997,7 +2001,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumeMountsItems0:
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0:
-    """
+    r"""
     Volume represents a named volume in a pod that may be accessed by any container in the pod.
 
     Attributes
@@ -2129,7 +2133,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0:
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0AwsElasticBlockStore:
-    """
+    r"""
     awsElasticBlockStore represents an AWS Disk resource that is attached to a
     kubelet's host machine and then exposed to the pod.
     More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
@@ -2166,7 +2170,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0AwsElasticBlockSt
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0AzureDisk:
-    """
+    r"""
     azureDisk represents an Azure Data Disk mount on the host and bind mount to the pod.
 
     Attributes
@@ -2203,7 +2207,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0AzureDisk:
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0AzureFile:
-    """
+    r"""
     azureFile represents an Azure File Service mount on the host and bind mount to the pod.
 
     Attributes
@@ -2226,7 +2230,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0AzureFile:
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0Cephfs:
-    """
+    r"""
     cephFS represents a Ceph FS mount on the host that shares a pod's lifetime
 
     Attributes
@@ -2265,7 +2269,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0Cephfs:
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0CephfsSecretRef:
-    """
+    r"""
     secretRef is Optional: SecretRef is reference to the authentication secret for User, default is empty.
     More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
 
@@ -2282,7 +2286,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0CephfsSecretRef:
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0Cinder:
-    """
+    r"""
     cinder represents a cinder volume attached and mounted on kubelets host machine.
     More info: https://examples.k8s.io/mysql-cinder-pd/README.md
 
@@ -2315,7 +2319,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0Cinder:
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0CinderSecretRef:
-    """
+    r"""
     secretRef is optional: points to a secret object containing parameters used to connect
     to OpenStack.
 
@@ -2332,7 +2336,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0CinderSecretRef:
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0ConfigMap:
-    """
+    r"""
     configMap represents a configMap that should populate this volume
 
     Attributes
@@ -2372,7 +2376,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0ConfigMap:
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0ConfigMapItemsItems0:
-    """
+    r"""
     Maps a string key to a path within a volume.
 
     Attributes
@@ -2402,7 +2406,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0ConfigMapItemsIte
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0Csi:
-    """
+    r"""
     csi (Container Storage Interface) represents ephemeral storage that is handled by certain external CSI drivers (Beta feature).
 
     Attributes
@@ -2437,7 +2441,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0Csi:
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0CsiNodePublishSecretRef:
-    """
+    r"""
     nodePublishSecretRef is a reference to the secret object containing
     sensitive information to pass to the CSI driver to complete the CSI
     NodePublishVolume and NodeUnpublishVolume calls.
@@ -2457,7 +2461,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0CsiNodePublishSec
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0DownwardAPI:
-    """
+    r"""
     downwardAPI represents downward API about the pod that should populate this volume
 
     Attributes
@@ -2482,7 +2486,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0DownwardAPI:
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0DownwardAPIItemsItems0:
-    """
+    r"""
     DownwardAPIVolumeFile represents information to create the file containing the pod field
 
     Attributes
@@ -2513,7 +2517,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0DownwardAPIItemsI
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0DownwardAPIItemsItems0FieldRef:
-    """
+    r"""
     Required: Selects a field of the pod: only annotations, labels, name and namespace are supported.
 
     Attributes
@@ -2531,7 +2535,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0DownwardAPIItemsI
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0DownwardAPIItemsItems0ResourceFieldRef:
-    """
+    r"""
     Selects a resource of the container: only resources limits and requests
     (limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported.
 
@@ -2554,11 +2558,11 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0DownwardAPIItemsI
 
 
     check:
-        regex_match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
+        regex.match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0EmptyDir:
-    """
+    r"""
     emptyDir represents a temporary directory that shares a pod's lifetime.
     More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir
 
@@ -2585,11 +2589,11 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0EmptyDir:
 
 
     check:
-        regex_match(str(sizeLimit), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if sizeLimit
+        regex.match(str(sizeLimit), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if sizeLimit
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0Ephemeral:
-    """
+    r"""
     ephemeral represents a volume that is handled by a cluster storage driver.
     The volume's lifecycle is tied to the pod that defines it - it will be created before the pod starts,
     and deleted when the pod is removed.
@@ -2630,7 +2634,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0Ephemeral:
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0EphemeralVolumeClaimTemplate:
-    """
+    r"""
     Will be used to create a stand-alone PVC to provision the volume.
     The pod in which this EphemeralVolumeSource is embedded will be the
     owner of the PVC, i.e. the PVC will be deleted together with the
@@ -2671,7 +2675,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0EphemeralVolumeCl
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0EphemeralVolumeClaimTemplateMetadata:
-    """
+    r"""
     May contain labels and annotations that will be copied into the PVC
     when creating it. No other fields are allowed and will be rejected during
     validation.
@@ -2703,7 +2707,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0EphemeralVolumeCl
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0EphemeralVolumeClaimTemplateSpec:
-    """
+    r"""
     The specification for the PersistentVolumeClaim. The entire content is
     copied unchanged into the PVC that gets created from this
     template. The same fields as in a PersistentVolumeClaim
@@ -2766,7 +2770,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0EphemeralVolumeCl
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0EphemeralVolumeClaimTemplateSpecDataSource:
-    """
+    r"""
     dataSource field can be used to specify either:
     * An existing VolumeSnapshot object (snapshot.storage.k8s.io/VolumeSnapshot)
     * An existing PVC (PersistentVolumeClaim)
@@ -2797,7 +2801,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0EphemeralVolumeCl
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0EphemeralVolumeClaimTemplateSpecDataSourceRef:
-    """
+    r"""
     dataSourceRef specifies the object from which to populate the volume with data, if a non-empty
     volume is desired. This may be any object from a non-empty API group (non
     core object) or a PersistentVolumeClaim object.
@@ -2849,7 +2853,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0EphemeralVolumeCl
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0EphemeralVolumeClaimTemplateSpecResources:
-    """
+    r"""
     resources represents the minimum resources the volume should have.
     If RecoverVolumeExpansionFailure feature is enabled users are allowed to specify resource requirements
     that are lower than previous value but must still be higher than capacity recorded in the
@@ -2875,12 +2879,12 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0EphemeralVolumeCl
 
 
     check:
-        all _, limits in limits {regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests {regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
+        all _, limits in limits {regex.match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests {regex.match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0EphemeralVolumeClaimTemplateSpecSelector:
-    """
+    r"""
     selector is a label query over volumes to consider for binding.
 
     Attributes
@@ -2900,7 +2904,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0EphemeralVolumeCl
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0EphemeralVolumeClaimTemplateSpecSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
 
@@ -2927,7 +2931,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0EphemeralVolumeCl
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0Fc:
-    """
+    r"""
     fc represents a Fibre Channel resource that is attached to a kubelet's host machine and then exposed to the pod.
 
     Attributes
@@ -2962,7 +2966,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0Fc:
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0FlexVolume:
-    """
+    r"""
     flexVolume represents a generic volume resource that is
     provisioned/attached using an exec based plugin.
 
@@ -2996,7 +3000,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0FlexVolume:
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0FlexVolumeSecretRef:
-    """
+    r"""
     secretRef is Optional: secretRef is reference to the secret object containing
     sensitive information to pass to the plugin scripts. This may be
     empty if no secret object is specified. If the secret object
@@ -3016,7 +3020,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0FlexVolumeSecretR
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0Flocker:
-    """
+    r"""
     flocker represents a Flocker volume attached to a kubelet's host machine. This depends on the Flocker control service being running
 
     Attributes
@@ -3035,7 +3039,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0Flocker:
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0GcePersistentDisk:
-    """
+    r"""
     gcePersistentDisk represents a GCE Disk resource that is attached to a
     kubelet's host machine and then exposed to the pod.
     More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
@@ -3074,7 +3078,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0GcePersistentDisk
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0GitRepo:
-    """
+    r"""
     gitRepo represents a git repository at a particular revision.
     DEPRECATED: GitRepo is deprecated. To provision a container with a git repo, mount an
     EmptyDir into an InitContainer that clones the repo using git, then mount the EmptyDir
@@ -3102,7 +3106,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0GitRepo:
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0Glusterfs:
-    """
+    r"""
     glusterfs represents a Glusterfs mount on the host that shares a pod's lifetime.
     More info: https://examples.k8s.io/volumes/glusterfs/README.md
 
@@ -3129,7 +3133,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0Glusterfs:
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0HostPath:
-    """
+    r"""
     hostPath represents a pre-existing file or directory on the host
     machine that is directly exposed to the container. This is generally
     used for system agents or other privileged things that are allowed
@@ -3158,7 +3162,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0HostPath:
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0Iscsi:
-    """
+    r"""
     iscsi represents an ISCSI Disk resource that is attached to a
     kubelet's host machine and then exposed to the pod.
     More info: https://examples.k8s.io/volumes/iscsi/README.md
@@ -3224,7 +3228,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0Iscsi:
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0IscsiSecretRef:
-    """
+    r"""
     secretRef is the CHAP Secret for iSCSI target and initiator authentication
 
     Attributes
@@ -3240,7 +3244,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0IscsiSecretRef:
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0Nfs:
-    """
+    r"""
     nfs represents an NFS mount on the host that shares a pod's lifetime
     More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
 
@@ -3267,7 +3271,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0Nfs:
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0PersistentVolumeClaim:
-    """
+    r"""
     persistentVolumeClaimVolumeSource represents a reference to a
     PersistentVolumeClaim in the same namespace.
     More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
@@ -3289,7 +3293,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0PersistentVolumeC
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0PhotonPersistentDisk:
-    """
+    r"""
     photonPersistentDisk represents a PhotonController persistent disk attached and mounted on kubelets host machine
 
     Attributes
@@ -3309,7 +3313,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0PhotonPersistentD
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0PortworxVolume:
-    """
+    r"""
     portworxVolume represents a portworx volume attached and mounted on kubelets host machine
 
     Attributes
@@ -3334,7 +3338,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0PortworxVolume:
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0Projected:
-    """
+    r"""
     projected items for all in one resources secrets, configmaps, and downward API
 
     Attributes
@@ -3357,7 +3361,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0Projected:
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0ProjectedSourcesItems0:
-    """
+    r"""
     Projection that may be projected along with other supported volume types
 
     Attributes
@@ -3387,7 +3391,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0ProjectedSourcesI
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0ProjectedSourcesItems0ClusterTrustBundle:
-    """
+    r"""
     ClusterTrustBundle allows a pod to access the `.spec.trustBundle` field
     of ClusterTrustBundle objects in an auto-updating file.
 
@@ -3439,7 +3443,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0ProjectedSourcesI
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0ProjectedSourcesItems0ClusterTrustBundleLabelSelector:
-    """
+    r"""
     Select all ClusterTrustBundles that match this label selector.  Only has
     effect if signerName is set.  Mutually-exclusive with name.  If unset,
     interpreted as "match nothing".  If set but empty, interpreted as "match
@@ -3462,7 +3466,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0ProjectedSourcesI
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0ProjectedSourcesItems0ClusterTrustBundleLabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
 
@@ -3489,7 +3493,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0ProjectedSourcesI
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0ProjectedSourcesItems0ConfigMap:
-    """
+    r"""
     configMap information about the configMap data to project
 
     Attributes
@@ -3519,7 +3523,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0ProjectedSourcesI
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0ProjectedSourcesItems0ConfigMapItemsItems0:
-    """
+    r"""
     Maps a string key to a path within a volume.
 
     Attributes
@@ -3549,7 +3553,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0ProjectedSourcesI
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0ProjectedSourcesItems0DownwardAPI:
-    """
+    r"""
     downwardAPI information about the downwardAPI data to project
 
     Attributes
@@ -3563,7 +3567,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0ProjectedSourcesI
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0:
-    """
+    r"""
     DownwardAPIVolumeFile represents information to create the file containing the pod field
 
     Attributes
@@ -3594,7 +3598,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0ProjectedSourcesI
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0FieldRef:
-    """
+    r"""
     Required: Selects a field of the pod: only annotations, labels, name and namespace are supported.
 
     Attributes
@@ -3612,7 +3616,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0ProjectedSourcesI
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0ResourceFieldRef:
-    """
+    r"""
     Selects a resource of the container: only resources limits and requests
     (limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported.
 
@@ -3635,11 +3639,11 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0ProjectedSourcesI
 
 
     check:
-        regex_match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
+        regex.match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0ProjectedSourcesItems0Secret:
-    """
+    r"""
     secret information about the secret data to project
 
     Attributes
@@ -3669,7 +3673,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0ProjectedSourcesI
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0ProjectedSourcesItems0SecretItemsItems0:
-    """
+    r"""
     Maps a string key to a path within a volume.
 
     Attributes
@@ -3699,7 +3703,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0ProjectedSourcesI
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0ProjectedSourcesItems0ServiceAccountToken:
-    """
+    r"""
     serviceAccountToken is information about the serviceAccountToken data to project
 
     Attributes
@@ -3730,7 +3734,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0ProjectedSourcesI
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0Quobyte:
-    """
+    r"""
     quobyte represents a Quobyte mount on the host that shares a pod's lifetime
 
     Attributes
@@ -3770,7 +3774,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0Quobyte:
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0Rbd:
-    """
+    r"""
     rbd represents a Rados Block Device mount on the host that shares a pod's lifetime.
     More info: https://examples.k8s.io/volumes/rbd/README.md
 
@@ -3827,7 +3831,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0Rbd:
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0RbdSecretRef:
-    """
+    r"""
     secretRef is name of the authentication secret for RBDUser. If provided
     overrides keyring.
     Default is nil.
@@ -3846,7 +3850,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0RbdSecretRef:
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0ScaleIO:
-    """
+    r"""
     scaleIO represents a ScaleIO persistent volume attached and mounted on Kubernetes nodes.
 
     Attributes
@@ -3902,7 +3906,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0ScaleIO:
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0ScaleIOSecretRef:
-    """
+    r"""
     secretRef references to the secret for ScaleIO user and other
     sensitive information. If this is not provided, Login operation will fail.
 
@@ -3919,7 +3923,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0ScaleIOSecretRef:
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0Secret:
-    """
+    r"""
     secret represents a secret that should populate this volume.
     More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
 
@@ -3959,7 +3963,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0Secret:
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0SecretItemsItems0:
-    """
+    r"""
     Maps a string key to a path within a volume.
 
     Attributes
@@ -3989,7 +3993,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0SecretItemsItems0
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0Storageos:
-    """
+    r"""
     storageOS represents a StorageOS volume attached and mounted on Kubernetes nodes.
 
     Attributes
@@ -4028,7 +4032,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0Storageos:
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0StorageosSecretRef:
-    """
+    r"""
     secretRef specifies the secret to use for obtaining the StorageOS API
     credentials.  If not specified, default values will be attempted.
 
@@ -4045,7 +4049,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0StorageosSecretRe
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0VsphereVolume:
-    """
+    r"""
     vsphereVolume represents a vSphere volume attached and mounted on kubelets host machine
 
     Attributes

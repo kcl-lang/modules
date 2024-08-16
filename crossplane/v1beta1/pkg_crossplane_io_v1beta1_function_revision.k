@@ -6,8 +6,13 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema FunctionRevision:
-    """
-    A FunctionRevision that has been added to Crossplane.
+    r"""
+    A FunctionRevision represents a revision of a Function. Crossplane
+    creates new revisions when there are changes to the Function.
+
+
+    Crossplane creates and manages FunctionRevisions. Don't directly edit
+    FunctionRevisions.
 
     Attributes
     ----------
@@ -36,7 +41,7 @@ schema FunctionRevision:
 
 
 schema PkgCrossplaneIoV1beta1FunctionRevisionSpec:
-    """
+    r"""
     FunctionRevisionSpec specifies configuration for a FunctionRevision.
 
     Attributes
@@ -45,7 +50,7 @@ schema PkgCrossplaneIoV1beta1FunctionRevisionSpec:
         Map of string keys and values that can be used to organize and categorize
         (scope and select) objects. May match selectors of replication controllers
         and services.
-        More info: http://kubernetes.io/docs/user-guide/labels
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
     controllerConfigRef : PkgCrossplaneIoV1beta1FunctionRevisionSpecControllerConfigRef, default is Undefined, optional
         controller config ref
     desiredState : str, default is Undefined, required
@@ -110,7 +115,7 @@ schema PkgCrossplaneIoV1beta1FunctionRevisionSpec:
 
 
 schema PkgCrossplaneIoV1beta1FunctionRevisionSpecControllerConfigRef:
-    """
+    r"""
     ControllerConfigRef references a ControllerConfig resource that will be
     used to configure the packaged controller Deployment.
     Deprecated: Use RuntimeConfigReference instead.
@@ -126,7 +131,7 @@ schema PkgCrossplaneIoV1beta1FunctionRevisionSpecControllerConfigRef:
 
 
 schema PkgCrossplaneIoV1beta1FunctionRevisionSpecPackagePullSecretsItems0:
-    """
+    r"""
     LocalObjectReference contains enough information to let you locate the
     referenced object inside the same namespace.
 
@@ -143,7 +148,7 @@ schema PkgCrossplaneIoV1beta1FunctionRevisionSpecPackagePullSecretsItems0:
 
 
 schema PkgCrossplaneIoV1beta1FunctionRevisionSpecRuntimeConfigRef:
-    """
+    r"""
     RuntimeConfigRef references a RuntimeConfig resource that will be used
     to configure the package runtime.
 
@@ -166,7 +171,7 @@ schema PkgCrossplaneIoV1beta1FunctionRevisionSpecRuntimeConfigRef:
 
 
 schema PkgCrossplaneIoV1beta1FunctionRevisionStatus:
-    """
+    r"""
     FunctionRevisionStatus represents the observed state of a FunctionRevision.
 
     Attributes
@@ -207,7 +212,7 @@ schema PkgCrossplaneIoV1beta1FunctionRevisionStatus:
 
 
 schema PkgCrossplaneIoV1beta1FunctionRevisionStatusConditionsItems0:
-    """
+    r"""
     A Condition that may apply to a resource.
 
     Attributes
@@ -218,6 +223,10 @@ schema PkgCrossplaneIoV1beta1FunctionRevisionStatusConditionsItems0:
     message : str, default is Undefined, optional
         A Message containing details about this condition's last transition from
         one status to another, if any.
+    observedGeneration : int, default is Undefined, optional
+        ObservedGeneration represents the .metadata.generation that the condition was set based upon.
+        For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date
+        with respect to the current state of the instance.
     reason : str, default is Undefined, required
         A Reason for this condition's last transition from one status to another.
     status : str, default is Undefined, required
@@ -232,6 +241,8 @@ schema PkgCrossplaneIoV1beta1FunctionRevisionStatusConditionsItems0:
 
     message?: str
 
+    observedGeneration?: int
+
     reason: str
 
     status: str
@@ -240,7 +251,7 @@ schema PkgCrossplaneIoV1beta1FunctionRevisionStatusConditionsItems0:
 
 
 schema PkgCrossplaneIoV1beta1FunctionRevisionStatusObjectRefsItems0:
-    """
+    r"""
     A TypedReference refers to an object by Name, Kind, and APIVersion. It is
     commonly used to reference cluster-scoped objects or objects where the
     namespace is already known.
@@ -268,7 +279,7 @@ schema PkgCrossplaneIoV1beta1FunctionRevisionStatusObjectRefsItems0:
 
 
 schema PkgCrossplaneIoV1beta1FunctionRevisionStatusPermissionRequestsItems0:
-    """
+    r"""
     PolicyRule holds information that describes a policy rule, but does not contain information
     about who the rule applies to or which namespace the rule applies to.
 
