@@ -1,0 +1,25 @@
+version: 1.0.0
+name: crossplane-provider-vault
+displayName: crossplane-provider-vault
+createdAt: "2024-08-16T16:08:23Z"
+description: '`crossplane-provider-vault` is the crossplane-provider-vault spec definition'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `crossplane-provider-vault` with tag `1.0.0` as dependency
+  ```
+  kcl mod add crossplane-provider-vault:1.0.0
+  ```
+
+  #### Pull `crossplane-provider-vault` with tag `1.0.0` to local
+  ```
+  kcl mod pull crossplane-provider-vault:1.0.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
