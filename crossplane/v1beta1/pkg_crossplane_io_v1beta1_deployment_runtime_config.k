@@ -4,15 +4,17 @@ Editing this file might prove futile when you re-run the KCL auto-gen generate c
 """
 import regex
 import k8s.apimachinery.pkg.apis.meta.v1
-regex_match = regex.match
+_regex_match = regex.match
 
 
 schema DeploymentRuntimeConfig:
-    """
-    A DeploymentRuntimeConfig is used to configure the package runtime when
-    the package uses a runtime and the package manager is running with
-    --package-runtime=Deployment (the default). See the following design doc for
-    more details:https://github.com/crossplane/crossplane/blob/91edeae3fcac96c6c8a1759a723981eea4bb77e4/design/one-pager-package-runtime-config.md#migration-from-controllerconfig
+    r"""
+    The DeploymentRuntimeConfig provides settings for the Kubernetes Deployment
+    of a Provider or composition function package.
+
+
+    Read the Crossplane documentation for
+    [more information about DeploymentRuntimeConfigs](https://docs.crossplane.io/latest/concepts/providers/#runtime-configuration).
 
     Attributes
     ----------
@@ -37,7 +39,7 @@ schema DeploymentRuntimeConfig:
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpec:
-    """
+    r"""
     DeploymentRuntimeConfigSpec specifies the configuration for a packaged controller.
     Values provided will override package manager defaults. Labels and
     annotations are passed to both the controller Deployment and ServiceAccount.
@@ -61,7 +63,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpec:
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplate:
-    """
+    r"""
     DeploymentTemplate is the template for the Deployment object.
 
     Attributes
@@ -79,7 +81,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplate:
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateMetadata:
-    """
+    r"""
     Metadata contains the configurable metadata fields for the Deployment.
 
     Attributes
@@ -88,13 +90,13 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateMetada
         Annotations is an unstructured key value map stored with a resource that
         may be set by external tools to store and retrieve arbitrary metadata.
         They are not queryable and should be preserved when modifying objects.
-        More info: http://kubernetes.io/docs/user-guide/annotations
+        More info: http:https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
     labels : {str:str}, default is Undefined, optional
         Map of string keys and values that can be used to organize and categorize
         (scope and select) objects. Labels will be merged with internal labels
         used by crossplane, and labels with a crossplane.io key might be
         overwritten.
-        More info: http://kubernetes.io/docs/user-guide/labels
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
     name : str, default is Undefined, optional
         Name is the name of the object.
     """
@@ -108,7 +110,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateMetada
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpec:
-    """
+    r"""
     Spec contains the configurable spec fields for the Deployment object.
 
     Attributes
@@ -159,7 +161,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpec:
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecSelector:
-    """
+    r"""
     Label selector for pods. Existing ReplicaSets whose pods are
     selected by this will be the ones affected by this deployment.
     It must match the pod template's labels.
@@ -181,7 +183,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecSe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
 
@@ -208,7 +210,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecSe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecStrategy:
-    """
+    r"""
     The deployment strategy to use to replace existing pods with new ones.
 
     Attributes
@@ -226,7 +228,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecSt
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecStrategyRollingUpdate:
-    """
+    r"""
     Rolling update config params. Present only if DeploymentStrategyType =
     RollingUpdate.
     ---
@@ -267,7 +269,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecSt
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplate:
-    """
+    r"""
     Template describes the pods that will be created.
     The only allowed template.spec.restartPolicy value is "Always".
 
@@ -286,7 +288,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateMetadata:
-    """
+    r"""
     Standard object's metadata.
     More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
 
@@ -317,7 +319,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpec:
-    """
+    r"""
     Specification of the desired behavior of the pod.
     More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
 
@@ -598,11 +600,11 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
     check:
-        all _, overhead in overhead {regex_match(str(overhead), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if overhead } if overhead
+        all _, overhead in overhead {_regex_match(str(overhead), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if overhead } if overhead
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecAffinity:
-    """
+    r"""
     If specified, the pod's scheduling constraints
 
     Attributes
@@ -624,7 +626,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecAffinityNodeAffinity:
-    """
+    r"""
     Describes node affinity scheduling rules for the pod.
 
     Attributes
@@ -650,7 +652,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     An empty preferred scheduling term matches all objects with implicit weight 0
     (i.e. it's a no-op). A null preferred scheduling term matches no objects (i.e. is also a no-op).
 
@@ -669,7 +671,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0Preference:
-    """
+    r"""
     A node selector term, associated with the corresponding weight.
 
     Attributes
@@ -687,7 +689,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchExpressionsItems0:
-    """
+    r"""
     A node selector requirement is a selector that contains values, a key, and an operator
     that relates the key and values.
 
@@ -715,7 +717,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchFieldsItems0:
-    """
+    r"""
     A node selector requirement is a selector that contains values, a key, and an operator
     that relates the key and values.
 
@@ -743,7 +745,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution:
-    """
+    r"""
     If the affinity requirements specified by this field are not met at
     scheduling time, the pod will not be scheduled onto the node.
     If the affinity requirements specified by this field cease to be met
@@ -761,7 +763,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0:
-    """
+    r"""
     A null or empty node selector term matches no objects. The requirements of
     them are ANDed.
     The TopologySelectorTerm type implements a subset of the NodeSelectorTerm.
@@ -781,7 +783,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchExpressionsItems0:
-    """
+    r"""
     A node selector requirement is a selector that contains values, a key, and an operator
     that relates the key and values.
 
@@ -809,7 +811,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchFieldsItems0:
-    """
+    r"""
     A node selector requirement is a selector that contains values, a key, and an operator
     that relates the key and values.
 
@@ -837,7 +839,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecAffinityPodAffinity:
-    """
+    r"""
     Describes pod affinity scheduling rules (e.g. co-locate this pod in the same node, zone, etc. as some other pod(s)).
 
     Attributes
@@ -869,7 +871,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     The weights of all of the matched WeightedPodAffinityTerm fields are added per-node to find the most preferred node(s)
 
     Attributes
@@ -888,7 +890,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTerm:
-    """
+    r"""
     Required. A pod affinity term, associated with the corresponding weight.
 
     Attributes
@@ -945,7 +947,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector:
-    """
+    r"""
     A label query over a set of resources, in this case pods.
     If it's null, this PodAffinityTerm matches with no Pods.
 
@@ -966,7 +968,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
 
@@ -993,7 +995,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector:
-    """
+    r"""
     A label query over the set of namespaces that the term applies to.
     The term is applied to the union of the namespaces selected by this field
     and the ones listed in the namespaces field.
@@ -1017,7 +1019,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
 
@@ -1044,7 +1046,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     Defines a set of pods (namely those matching the labelSelector
     relative to the given namespace(s)) that this pod should be
     co-located (affinity) or not co-located (anti-affinity) with,
@@ -1106,7 +1108,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector:
-    """
+    r"""
     A label query over a set of resources, in this case pods.
     If it's null, this PodAffinityTerm matches with no Pods.
 
@@ -1127,7 +1129,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
 
@@ -1154,7 +1156,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector:
-    """
+    r"""
     A label query over the set of namespaces that the term applies to.
     The term is applied to the union of the namespaces selected by this field
     and the ones listed in the namespaces field.
@@ -1178,7 +1180,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
 
@@ -1205,7 +1207,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecAffinityPodAntiAffinity:
-    """
+    r"""
     Describes pod anti-affinity scheduling rules (e.g. avoid putting this pod in the same node, zone, etc. as some other pod(s)).
 
     Attributes
@@ -1237,7 +1239,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     The weights of all of the matched WeightedPodAffinityTerm fields are added per-node to find the most preferred node(s)
 
     Attributes
@@ -1256,7 +1258,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTerm:
-    """
+    r"""
     Required. A pod affinity term, associated with the corresponding weight.
 
     Attributes
@@ -1313,7 +1315,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector:
-    """
+    r"""
     A label query over a set of resources, in this case pods.
     If it's null, this PodAffinityTerm matches with no Pods.
 
@@ -1334,7 +1336,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
 
@@ -1361,7 +1363,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector:
-    """
+    r"""
     A label query over the set of namespaces that the term applies to.
     The term is applied to the union of the namespaces selected by this field
     and the ones listed in the namespaces field.
@@ -1385,7 +1387,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
 
@@ -1412,7 +1414,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     Defines a set of pods (namely those matching the labelSelector
     relative to the given namespace(s)) that this pod should be
     co-located (affinity) or not co-located (anti-affinity) with,
@@ -1474,7 +1476,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector:
-    """
+    r"""
     A label query over a set of resources, in this case pods.
     If it's null, this PodAffinityTerm matches with no Pods.
 
@@ -1495,7 +1497,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
 
@@ -1522,7 +1524,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector:
-    """
+    r"""
     A label query over the set of namespaces that the term applies to.
     The term is applied to the union of the namespaces selected by this field
     and the ones listed in the namespaces field.
@@ -1546,7 +1548,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
 
@@ -1573,7 +1575,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0:
-    """
+    r"""
     A single application container that you want to run within a pod.
 
     Attributes
@@ -1753,7 +1755,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0EnvFromItems0:
-    """
+    r"""
     EnvFromSource represents the source of a set of ConfigMaps
 
     Attributes
@@ -1775,7 +1777,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0EnvFromItems0ConfigMapRef:
-    """
+    r"""
     The ConfigMap to select from
 
     Attributes
@@ -1795,7 +1797,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0EnvFromItems0SecretRef:
-    """
+    r"""
     The Secret to select from
 
     Attributes
@@ -1815,7 +1817,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0EnvItems0:
-    """
+    r"""
     EnvVar represents an environment variable present in a Container.
 
     Attributes
@@ -1845,7 +1847,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0EnvItems0ValueFrom:
-    """
+    r"""
     Source for the environment variable's value. Cannot be used if value is not empty.
 
     Attributes
@@ -1871,7 +1873,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0EnvItems0ValueFromConfigMapKeyRef:
-    """
+    r"""
     Selects a key of a ConfigMap.
 
     Attributes
@@ -1895,7 +1897,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0EnvItems0ValueFromFieldRef:
-    """
+    r"""
     Selects a field of the pod: supports metadata.name, metadata.namespace, `metadata.labels['<KEY>']`, `metadata.annotations['<KEY>']`,
     spec.nodeName, spec.serviceAccountName, status.hostIP, status.podIP, status.podIPs.
 
@@ -1914,7 +1916,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0EnvItems0ValueFromResourceFieldRef:
-    """
+    r"""
     Selects a resource of the container: only resources limits and requests
     (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
 
@@ -1937,11 +1939,11 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
     check:
-        regex_match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
+        _regex_match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0EnvItems0ValueFromSecretKeyRef:
-    """
+    r"""
     Selects a key of a secret in the pod's namespace
 
     Attributes
@@ -1965,7 +1967,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0Lifecycle:
-    """
+    r"""
     Actions that the management system should take in response to container lifecycle events.
     Cannot be updated.
 
@@ -1984,7 +1986,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0LifecyclePostStart:
-    """
+    r"""
     PostStart is called immediately after a container is created. If the handler fails,
     the container is terminated and restarted according to its restart policy.
     Other management of the container blocks until the hook completes.
@@ -2013,7 +2015,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0LifecyclePostStartExec:
-    """
+    r"""
     Exec specifies the action to take.
 
     Attributes
@@ -2031,7 +2033,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0LifecyclePostStartHTTPGet:
-    """
+    r"""
     HTTPGet specifies the http request to perform.
 
     Attributes
@@ -2065,7 +2067,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0LifecyclePostStartHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     HTTPHeader describes a custom header to be used in HTTP probes
 
     Attributes
@@ -2084,7 +2086,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0LifecyclePostStartSleep:
-    """
+    r"""
     Sleep represents the duration that the container should sleep before being terminated.
 
     Attributes
@@ -2098,7 +2100,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0LifecyclePostStartTCPSocket:
-    """
+    r"""
     Deprecated. TCPSocket is NOT supported as a LifecycleHandler and kept
     for the backward compatibility. There are no validation of this field and
     lifecycle hooks will fail in runtime when tcp handler is specified.
@@ -2120,7 +2122,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0LifecyclePreStop:
-    """
+    r"""
     PreStop is called immediately before a container is terminated due to an
     API request or management event such as liveness/startup probe failure,
     preemption, resource contention, etc. The handler is not called if the
@@ -2154,7 +2156,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0LifecyclePreStopExec:
-    """
+    r"""
     Exec specifies the action to take.
 
     Attributes
@@ -2172,7 +2174,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0LifecyclePreStopHTTPGet:
-    """
+    r"""
     HTTPGet specifies the http request to perform.
 
     Attributes
@@ -2206,7 +2208,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0LifecyclePreStopHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     HTTPHeader describes a custom header to be used in HTTP probes
 
     Attributes
@@ -2225,7 +2227,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0LifecyclePreStopSleep:
-    """
+    r"""
     Sleep represents the duration that the container should sleep before being terminated.
 
     Attributes
@@ -2239,7 +2241,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0LifecyclePreStopTCPSocket:
-    """
+    r"""
     Deprecated. TCPSocket is NOT supported as a LifecycleHandler and kept
     for the backward compatibility. There are no validation of this field and
     lifecycle hooks will fail in runtime when tcp handler is specified.
@@ -2261,7 +2263,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0LivenessProbe:
-    """
+    r"""
     Periodic probe of container liveness.
     Container will be restarted if the probe fails.
     Cannot be updated.
@@ -2329,7 +2331,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0LivenessProbeExec:
-    """
+    r"""
     Exec specifies the action to take.
 
     Attributes
@@ -2347,7 +2349,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0LivenessProbeGrpc:
-    """
+    r"""
     GRPC specifies an action involving a GRPC port.
 
     Attributes
@@ -2369,7 +2371,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0LivenessProbeHTTPGet:
-    """
+    r"""
     HTTPGet specifies the http request to perform.
 
     Attributes
@@ -2403,7 +2405,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0LivenessProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     HTTPHeader describes a custom header to be used in HTTP probes
 
     Attributes
@@ -2422,7 +2424,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0LivenessProbeTCPSocket:
-    """
+    r"""
     TCPSocket specifies an action involving a TCP port.
 
     Attributes
@@ -2442,7 +2444,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0PortsItems0:
-    """
+    r"""
     ContainerPort represents a network port in a single container.
 
     Attributes
@@ -2479,7 +2481,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0ReadinessProbe:
-    """
+    r"""
     Periodic probe of container service readiness.
     Container will be removed from service endpoints if the probe fails.
     Cannot be updated.
@@ -2547,7 +2549,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0ReadinessProbeExec:
-    """
+    r"""
     Exec specifies the action to take.
 
     Attributes
@@ -2565,7 +2567,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0ReadinessProbeGrpc:
-    """
+    r"""
     GRPC specifies an action involving a GRPC port.
 
     Attributes
@@ -2587,7 +2589,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0ReadinessProbeHTTPGet:
-    """
+    r"""
     HTTPGet specifies the http request to perform.
 
     Attributes
@@ -2621,7 +2623,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0ReadinessProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     HTTPHeader describes a custom header to be used in HTTP probes
 
     Attributes
@@ -2640,7 +2642,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0ReadinessProbeTCPSocket:
-    """
+    r"""
     TCPSocket specifies an action involving a TCP port.
 
     Attributes
@@ -2660,7 +2662,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0ResizePolicyItems0:
-    """
+    r"""
     ContainerResizePolicy represents resource resize policy for the container.
 
     Attributes
@@ -2680,7 +2682,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0Resources:
-    """
+    r"""
     Compute Resources required by this container.
     Cannot be updated.
     More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
@@ -2716,12 +2718,12 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
     check:
-        all _, limits in limits {regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests {regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
+        all _, limits in limits {_regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests {_regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0ResourcesClaimsItems0:
-    """
+    r"""
     ResourceClaim references one entry in PodSpec.ResourceClaims.
 
     Attributes
@@ -2737,7 +2739,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0SecurityContext:
-    """
+    r"""
     SecurityContext defines the security options the container should be run with.
     If set, the fields of SecurityContext override the equivalent fields of PodSecurityContext.
     More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
@@ -2821,7 +2823,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0SecurityContextCapabilities:
-    """
+    r"""
     The capabilities to add/drop when running containers.
     Defaults to the default set of capabilities granted by the container runtime.
     Note that this field cannot be set when spec.os.name is windows.
@@ -2841,7 +2843,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0SecurityContextSeLinuxOptions:
-    """
+    r"""
     The SELinux context to be applied to the container.
     If unspecified, the container runtime will allocate a random SELinux context for each
     container.  May also be set in PodSecurityContext.  If set in both SecurityContext and
@@ -2871,7 +2873,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0SecurityContextSeccompProfile:
-    """
+    r"""
     The seccomp options to use by this container. If seccomp options are
     provided at both the pod & container level, the container options
     override the pod options.
@@ -2901,7 +2903,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0SecurityContextWindowsOptions:
-    """
+    r"""
     The Windows specific settings applied to all containers.
     If unspecified, the options from the PodSecurityContext will be used.
     If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
@@ -2938,7 +2940,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0StartupProbe:
-    """
+    r"""
     StartupProbe indicates that the Pod has successfully initialized.
     If specified, no other probes are executed until this completes successfully.
     If this probe fails, the Pod will be restarted, just as if the livenessProbe failed.
@@ -3009,7 +3011,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0StartupProbeExec:
-    """
+    r"""
     Exec specifies the action to take.
 
     Attributes
@@ -3027,7 +3029,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0StartupProbeGrpc:
-    """
+    r"""
     GRPC specifies an action involving a GRPC port.
 
     Attributes
@@ -3049,7 +3051,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0StartupProbeHTTPGet:
-    """
+    r"""
     HTTPGet specifies the http request to perform.
 
     Attributes
@@ -3083,7 +3085,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0StartupProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     HTTPHeader describes a custom header to be used in HTTP probes
 
     Attributes
@@ -3102,7 +3104,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0StartupProbeTCPSocket:
-    """
+    r"""
     TCPSocket specifies an action involving a TCP port.
 
     Attributes
@@ -3122,7 +3124,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0VolumeDevicesItems0:
-    """
+    r"""
     volumeDevice describes a mapping of a raw block device within a container.
 
     Attributes
@@ -3140,7 +3142,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0VolumeMountsItems0:
-    """
+    r"""
     VolumeMount describes a mounting of a Volume within a container.
 
     Attributes
@@ -3183,7 +3185,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecDNSConfig:
-    """
+    r"""
     Specifies the DNS parameters of a pod.
     Parameters specified here will be merged to the generated DNS
     configuration based on DNSPolicy.
@@ -3214,7 +3216,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecDNSConfigOptionsItems0:
-    """
+    r"""
     PodDNSConfigOption defines DNS resolver options of a pod.
 
     Attributes
@@ -3232,7 +3234,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0:
-    """
+    r"""
     An EphemeralContainer is a temporary container that you may add to an existing Pod for
     user-initiated activities such as debugging. Ephemeral containers have no resource or
     scheduling guarantees, and they will not be restarted when they exit or when a Pod is
@@ -3410,7 +3412,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0EnvFromItems0:
-    """
+    r"""
     EnvFromSource represents the source of a set of ConfigMaps
 
     Attributes
@@ -3432,7 +3434,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0EnvFromItems0ConfigMapRef:
-    """
+    r"""
     The ConfigMap to select from
 
     Attributes
@@ -3452,7 +3454,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0EnvFromItems0SecretRef:
-    """
+    r"""
     The Secret to select from
 
     Attributes
@@ -3472,7 +3474,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0EnvItems0:
-    """
+    r"""
     EnvVar represents an environment variable present in a Container.
 
     Attributes
@@ -3502,7 +3504,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0EnvItems0ValueFrom:
-    """
+    r"""
     Source for the environment variable's value. Cannot be used if value is not empty.
 
     Attributes
@@ -3528,7 +3530,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0EnvItems0ValueFromConfigMapKeyRef:
-    """
+    r"""
     Selects a key of a ConfigMap.
 
     Attributes
@@ -3552,7 +3554,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0EnvItems0ValueFromFieldRef:
-    """
+    r"""
     Selects a field of the pod: supports metadata.name, metadata.namespace, `metadata.labels['<KEY>']`, `metadata.annotations['<KEY>']`,
     spec.nodeName, spec.serviceAccountName, status.hostIP, status.podIP, status.podIPs.
 
@@ -3571,7 +3573,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0EnvItems0ValueFromResourceFieldRef:
-    """
+    r"""
     Selects a resource of the container: only resources limits and requests
     (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
 
@@ -3594,11 +3596,11 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
     check:
-        regex_match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
+        _regex_match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0EnvItems0ValueFromSecretKeyRef:
-    """
+    r"""
     Selects a key of a secret in the pod's namespace
 
     Attributes
@@ -3622,7 +3624,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0Lifecycle:
-    """
+    r"""
     Lifecycle is not allowed for ephemeral containers.
 
     Attributes
@@ -3640,7 +3642,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0LifecyclePostStart:
-    """
+    r"""
     PostStart is called immediately after a container is created. If the handler fails,
     the container is terminated and restarted according to its restart policy.
     Other management of the container blocks until the hook completes.
@@ -3669,7 +3671,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0LifecyclePostStartExec:
-    """
+    r"""
     Exec specifies the action to take.
 
     Attributes
@@ -3687,7 +3689,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0LifecyclePostStartHTTPGet:
-    """
+    r"""
     HTTPGet specifies the http request to perform.
 
     Attributes
@@ -3721,7 +3723,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0LifecyclePostStartHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     HTTPHeader describes a custom header to be used in HTTP probes
 
     Attributes
@@ -3740,7 +3742,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0LifecyclePostStartSleep:
-    """
+    r"""
     Sleep represents the duration that the container should sleep before being terminated.
 
     Attributes
@@ -3754,7 +3756,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0LifecyclePostStartTCPSocket:
-    """
+    r"""
     Deprecated. TCPSocket is NOT supported as a LifecycleHandler and kept
     for the backward compatibility. There are no validation of this field and
     lifecycle hooks will fail in runtime when tcp handler is specified.
@@ -3776,7 +3778,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0LifecyclePreStop:
-    """
+    r"""
     PreStop is called immediately before a container is terminated due to an
     API request or management event such as liveness/startup probe failure,
     preemption, resource contention, etc. The handler is not called if the
@@ -3810,7 +3812,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0LifecyclePreStopExec:
-    """
+    r"""
     Exec specifies the action to take.
 
     Attributes
@@ -3828,7 +3830,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0LifecyclePreStopHTTPGet:
-    """
+    r"""
     HTTPGet specifies the http request to perform.
 
     Attributes
@@ -3862,7 +3864,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0LifecyclePreStopHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     HTTPHeader describes a custom header to be used in HTTP probes
 
     Attributes
@@ -3881,7 +3883,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0LifecyclePreStopSleep:
-    """
+    r"""
     Sleep represents the duration that the container should sleep before being terminated.
 
     Attributes
@@ -3895,7 +3897,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0LifecyclePreStopTCPSocket:
-    """
+    r"""
     Deprecated. TCPSocket is NOT supported as a LifecycleHandler and kept
     for the backward compatibility. There are no validation of this field and
     lifecycle hooks will fail in runtime when tcp handler is specified.
@@ -3917,7 +3919,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0LivenessProbe:
-    """
+    r"""
     Probes are not allowed for ephemeral containers.
 
     Attributes
@@ -3982,7 +3984,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0LivenessProbeExec:
-    """
+    r"""
     Exec specifies the action to take.
 
     Attributes
@@ -4000,7 +4002,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0LivenessProbeGrpc:
-    """
+    r"""
     GRPC specifies an action involving a GRPC port.
 
     Attributes
@@ -4022,7 +4024,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0LivenessProbeHTTPGet:
-    """
+    r"""
     HTTPGet specifies the http request to perform.
 
     Attributes
@@ -4056,7 +4058,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0LivenessProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     HTTPHeader describes a custom header to be used in HTTP probes
 
     Attributes
@@ -4075,7 +4077,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0LivenessProbeTCPSocket:
-    """
+    r"""
     TCPSocket specifies an action involving a TCP port.
 
     Attributes
@@ -4095,7 +4097,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0PortsItems0:
-    """
+    r"""
     ContainerPort represents a network port in a single container.
 
     Attributes
@@ -4132,7 +4134,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0ReadinessProbe:
-    """
+    r"""
     Probes are not allowed for ephemeral containers.
 
     Attributes
@@ -4197,7 +4199,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0ReadinessProbeExec:
-    """
+    r"""
     Exec specifies the action to take.
 
     Attributes
@@ -4215,7 +4217,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0ReadinessProbeGrpc:
-    """
+    r"""
     GRPC specifies an action involving a GRPC port.
 
     Attributes
@@ -4237,7 +4239,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0ReadinessProbeHTTPGet:
-    """
+    r"""
     HTTPGet specifies the http request to perform.
 
     Attributes
@@ -4271,7 +4273,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0ReadinessProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     HTTPHeader describes a custom header to be used in HTTP probes
 
     Attributes
@@ -4290,7 +4292,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0ReadinessProbeTCPSocket:
-    """
+    r"""
     TCPSocket specifies an action involving a TCP port.
 
     Attributes
@@ -4310,7 +4312,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0ResizePolicyItems0:
-    """
+    r"""
     ContainerResizePolicy represents resource resize policy for the container.
 
     Attributes
@@ -4330,7 +4332,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0Resources:
-    """
+    r"""
     Resources are not allowed for ephemeral containers. Ephemeral containers use spare resources
     already allocated to the pod.
 
@@ -4365,12 +4367,12 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
     check:
-        all _, limits in limits {regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests {regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
+        all _, limits in limits {_regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests {_regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0ResourcesClaimsItems0:
-    """
+    r"""
     ResourceClaim references one entry in PodSpec.ResourceClaims.
 
     Attributes
@@ -4386,7 +4388,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0SecurityContext:
-    """
+    r"""
     Optional: SecurityContext defines the security options the ephemeral container should be run with.
     If set, the fields of SecurityContext override the equivalent fields of PodSecurityContext.
 
@@ -4469,7 +4471,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0SecurityContextCapabilities:
-    """
+    r"""
     The capabilities to add/drop when running containers.
     Defaults to the default set of capabilities granted by the container runtime.
     Note that this field cannot be set when spec.os.name is windows.
@@ -4489,7 +4491,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0SecurityContextSeLinuxOptions:
-    """
+    r"""
     The SELinux context to be applied to the container.
     If unspecified, the container runtime will allocate a random SELinux context for each
     container.  May also be set in PodSecurityContext.  If set in both SecurityContext and
@@ -4519,7 +4521,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0SecurityContextSeccompProfile:
-    """
+    r"""
     The seccomp options to use by this container. If seccomp options are
     provided at both the pod & container level, the container options
     override the pod options.
@@ -4549,7 +4551,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0SecurityContextWindowsOptions:
-    """
+    r"""
     The Windows specific settings applied to all containers.
     If unspecified, the options from the PodSecurityContext will be used.
     If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
@@ -4586,7 +4588,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0StartupProbe:
-    """
+    r"""
     Probes are not allowed for ephemeral containers.
 
     Attributes
@@ -4651,7 +4653,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0StartupProbeExec:
-    """
+    r"""
     Exec specifies the action to take.
 
     Attributes
@@ -4669,7 +4671,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0StartupProbeGrpc:
-    """
+    r"""
     GRPC specifies an action involving a GRPC port.
 
     Attributes
@@ -4691,7 +4693,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0StartupProbeHTTPGet:
-    """
+    r"""
     HTTPGet specifies the http request to perform.
 
     Attributes
@@ -4725,7 +4727,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0StartupProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     HTTPHeader describes a custom header to be used in HTTP probes
 
     Attributes
@@ -4744,7 +4746,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0StartupProbeTCPSocket:
-    """
+    r"""
     TCPSocket specifies an action involving a TCP port.
 
     Attributes
@@ -4764,7 +4766,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0VolumeDevicesItems0:
-    """
+    r"""
     volumeDevice describes a mapping of a raw block device within a container.
 
     Attributes
@@ -4782,7 +4784,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0VolumeMountsItems0:
-    """
+    r"""
     VolumeMount describes a mounting of a Volume within a container.
 
     Attributes
@@ -4825,7 +4827,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecHostAliasesItems0:
-    """
+    r"""
     HostAlias holds the mapping between IP and hostnames that will be injected as an entry in the
     pod's hosts file.
 
@@ -4844,7 +4846,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecImagePullSecretsItems0:
-    """
+    r"""
     LocalObjectReference contains enough information to let you locate the
     referenced object inside the same namespace.
 
@@ -4861,7 +4863,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0:
-    """
+    r"""
     A single application container that you want to run within a pod.
 
     Attributes
@@ -5041,7 +5043,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0EnvFromItems0:
-    """
+    r"""
     EnvFromSource represents the source of a set of ConfigMaps
 
     Attributes
@@ -5063,7 +5065,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0EnvFromItems0ConfigMapRef:
-    """
+    r"""
     The ConfigMap to select from
 
     Attributes
@@ -5083,7 +5085,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0EnvFromItems0SecretRef:
-    """
+    r"""
     The Secret to select from
 
     Attributes
@@ -5103,7 +5105,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0EnvItems0:
-    """
+    r"""
     EnvVar represents an environment variable present in a Container.
 
     Attributes
@@ -5133,7 +5135,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0EnvItems0ValueFrom:
-    """
+    r"""
     Source for the environment variable's value. Cannot be used if value is not empty.
 
     Attributes
@@ -5159,7 +5161,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0EnvItems0ValueFromConfigMapKeyRef:
-    """
+    r"""
     Selects a key of a ConfigMap.
 
     Attributes
@@ -5183,7 +5185,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0EnvItems0ValueFromFieldRef:
-    """
+    r"""
     Selects a field of the pod: supports metadata.name, metadata.namespace, `metadata.labels['<KEY>']`, `metadata.annotations['<KEY>']`,
     spec.nodeName, spec.serviceAccountName, status.hostIP, status.podIP, status.podIPs.
 
@@ -5202,7 +5204,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0EnvItems0ValueFromResourceFieldRef:
-    """
+    r"""
     Selects a resource of the container: only resources limits and requests
     (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
 
@@ -5225,11 +5227,11 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
     check:
-        regex_match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
+        _regex_match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0EnvItems0ValueFromSecretKeyRef:
-    """
+    r"""
     Selects a key of a secret in the pod's namespace
 
     Attributes
@@ -5253,7 +5255,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0Lifecycle:
-    """
+    r"""
     Actions that the management system should take in response to container lifecycle events.
     Cannot be updated.
 
@@ -5272,7 +5274,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0LifecyclePostStart:
-    """
+    r"""
     PostStart is called immediately after a container is created. If the handler fails,
     the container is terminated and restarted according to its restart policy.
     Other management of the container blocks until the hook completes.
@@ -5301,7 +5303,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0LifecyclePostStartExec:
-    """
+    r"""
     Exec specifies the action to take.
 
     Attributes
@@ -5319,7 +5321,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0LifecyclePostStartHTTPGet:
-    """
+    r"""
     HTTPGet specifies the http request to perform.
 
     Attributes
@@ -5353,7 +5355,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0LifecyclePostStartHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     HTTPHeader describes a custom header to be used in HTTP probes
 
     Attributes
@@ -5372,7 +5374,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0LifecyclePostStartSleep:
-    """
+    r"""
     Sleep represents the duration that the container should sleep before being terminated.
 
     Attributes
@@ -5386,7 +5388,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0LifecyclePostStartTCPSocket:
-    """
+    r"""
     Deprecated. TCPSocket is NOT supported as a LifecycleHandler and kept
     for the backward compatibility. There are no validation of this field and
     lifecycle hooks will fail in runtime when tcp handler is specified.
@@ -5408,7 +5410,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0LifecyclePreStop:
-    """
+    r"""
     PreStop is called immediately before a container is terminated due to an
     API request or management event such as liveness/startup probe failure,
     preemption, resource contention, etc. The handler is not called if the
@@ -5442,7 +5444,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0LifecyclePreStopExec:
-    """
+    r"""
     Exec specifies the action to take.
 
     Attributes
@@ -5460,7 +5462,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0LifecyclePreStopHTTPGet:
-    """
+    r"""
     HTTPGet specifies the http request to perform.
 
     Attributes
@@ -5494,7 +5496,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0LifecyclePreStopHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     HTTPHeader describes a custom header to be used in HTTP probes
 
     Attributes
@@ -5513,7 +5515,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0LifecyclePreStopSleep:
-    """
+    r"""
     Sleep represents the duration that the container should sleep before being terminated.
 
     Attributes
@@ -5527,7 +5529,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0LifecyclePreStopTCPSocket:
-    """
+    r"""
     Deprecated. TCPSocket is NOT supported as a LifecycleHandler and kept
     for the backward compatibility. There are no validation of this field and
     lifecycle hooks will fail in runtime when tcp handler is specified.
@@ -5549,7 +5551,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0LivenessProbe:
-    """
+    r"""
     Periodic probe of container liveness.
     Container will be restarted if the probe fails.
     Cannot be updated.
@@ -5617,7 +5619,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0LivenessProbeExec:
-    """
+    r"""
     Exec specifies the action to take.
 
     Attributes
@@ -5635,7 +5637,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0LivenessProbeGrpc:
-    """
+    r"""
     GRPC specifies an action involving a GRPC port.
 
     Attributes
@@ -5657,7 +5659,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0LivenessProbeHTTPGet:
-    """
+    r"""
     HTTPGet specifies the http request to perform.
 
     Attributes
@@ -5691,7 +5693,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0LivenessProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     HTTPHeader describes a custom header to be used in HTTP probes
 
     Attributes
@@ -5710,7 +5712,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0LivenessProbeTCPSocket:
-    """
+    r"""
     TCPSocket specifies an action involving a TCP port.
 
     Attributes
@@ -5730,7 +5732,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0PortsItems0:
-    """
+    r"""
     ContainerPort represents a network port in a single container.
 
     Attributes
@@ -5767,7 +5769,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0ReadinessProbe:
-    """
+    r"""
     Periodic probe of container service readiness.
     Container will be removed from service endpoints if the probe fails.
     Cannot be updated.
@@ -5835,7 +5837,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0ReadinessProbeExec:
-    """
+    r"""
     Exec specifies the action to take.
 
     Attributes
@@ -5853,7 +5855,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0ReadinessProbeGrpc:
-    """
+    r"""
     GRPC specifies an action involving a GRPC port.
 
     Attributes
@@ -5875,7 +5877,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0ReadinessProbeHTTPGet:
-    """
+    r"""
     HTTPGet specifies the http request to perform.
 
     Attributes
@@ -5909,7 +5911,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0ReadinessProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     HTTPHeader describes a custom header to be used in HTTP probes
 
     Attributes
@@ -5928,7 +5930,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0ReadinessProbeTCPSocket:
-    """
+    r"""
     TCPSocket specifies an action involving a TCP port.
 
     Attributes
@@ -5948,7 +5950,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0ResizePolicyItems0:
-    """
+    r"""
     ContainerResizePolicy represents resource resize policy for the container.
 
     Attributes
@@ -5968,7 +5970,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0Resources:
-    """
+    r"""
     Compute Resources required by this container.
     Cannot be updated.
     More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
@@ -6004,12 +6006,12 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
     check:
-        all _, limits in limits {regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests {regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
+        all _, limits in limits {_regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests {_regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0ResourcesClaimsItems0:
-    """
+    r"""
     ResourceClaim references one entry in PodSpec.ResourceClaims.
 
     Attributes
@@ -6025,7 +6027,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0SecurityContext:
-    """
+    r"""
     SecurityContext defines the security options the container should be run with.
     If set, the fields of SecurityContext override the equivalent fields of PodSecurityContext.
     More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
@@ -6109,7 +6111,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0SecurityContextCapabilities:
-    """
+    r"""
     The capabilities to add/drop when running containers.
     Defaults to the default set of capabilities granted by the container runtime.
     Note that this field cannot be set when spec.os.name is windows.
@@ -6129,7 +6131,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0SecurityContextSeLinuxOptions:
-    """
+    r"""
     The SELinux context to be applied to the container.
     If unspecified, the container runtime will allocate a random SELinux context for each
     container.  May also be set in PodSecurityContext.  If set in both SecurityContext and
@@ -6159,7 +6161,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0SecurityContextSeccompProfile:
-    """
+    r"""
     The seccomp options to use by this container. If seccomp options are
     provided at both the pod & container level, the container options
     override the pod options.
@@ -6189,7 +6191,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0SecurityContextWindowsOptions:
-    """
+    r"""
     The Windows specific settings applied to all containers.
     If unspecified, the options from the PodSecurityContext will be used.
     If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
@@ -6226,7 +6228,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0StartupProbe:
-    """
+    r"""
     StartupProbe indicates that the Pod has successfully initialized.
     If specified, no other probes are executed until this completes successfully.
     If this probe fails, the Pod will be restarted, just as if the livenessProbe failed.
@@ -6297,7 +6299,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0StartupProbeExec:
-    """
+    r"""
     Exec specifies the action to take.
 
     Attributes
@@ -6315,7 +6317,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0StartupProbeGrpc:
-    """
+    r"""
     GRPC specifies an action involving a GRPC port.
 
     Attributes
@@ -6337,7 +6339,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0StartupProbeHTTPGet:
-    """
+    r"""
     HTTPGet specifies the http request to perform.
 
     Attributes
@@ -6371,7 +6373,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0StartupProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     HTTPHeader describes a custom header to be used in HTTP probes
 
     Attributes
@@ -6390,7 +6392,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0StartupProbeTCPSocket:
-    """
+    r"""
     TCPSocket specifies an action involving a TCP port.
 
     Attributes
@@ -6410,7 +6412,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0VolumeDevicesItems0:
-    """
+    r"""
     volumeDevice describes a mapping of a raw block device within a container.
 
     Attributes
@@ -6428,7 +6430,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0VolumeMountsItems0:
-    """
+    r"""
     VolumeMount describes a mounting of a Volume within a container.
 
     Attributes
@@ -6471,7 +6473,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecOs:
-    """
+    r"""
     Specifies the OS of the containers in the pod.
     Some pod and container fields are restricted if this is set.
 
@@ -6517,7 +6519,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecReadinessGatesItems0:
-    """
+    r"""
     PodReadinessGate contains the reference to a pod condition
 
     Attributes
@@ -6531,7 +6533,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecResourceClaimsItems0:
-    """
+    r"""
     PodResourceClaim references exactly one ResourceClaim through a ClaimSource.
     It adds a name to it that uniquely identifies the ResourceClaim inside the Pod.
     Containers that need access to the ResourceClaim reference it with this name.
@@ -6552,7 +6554,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecResourceClaimsItems0Source:
-    """
+    r"""
     Source describes where to find the ResourceClaim.
 
     Attributes
@@ -6584,7 +6586,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecSchedulingGatesItems0:
-    """
+    r"""
     PodSchedulingGate is associated to a Pod to guard its scheduling.
 
     Attributes
@@ -6599,7 +6601,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecSecurityContext:
-    """
+    r"""
     SecurityContext holds pod-level security attributes and common container settings.
     Optional: Defaults to empty.  See type description for default values of each field.
 
@@ -6690,7 +6692,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecSecurityContextSeLinuxOptions:
-    """
+    r"""
     The SELinux context to be applied to all containers.
     If unspecified, the container runtime will allocate a random SELinux context for each
     container.  May also be set in SecurityContext.  If set in
@@ -6721,7 +6723,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecSecurityContextSeccompProfile:
-    """
+    r"""
     The seccomp options to use by the containers in this pod.
     Note that this field cannot be set when spec.os.name is windows.
 
@@ -6749,7 +6751,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecSecurityContextSysctlsItems0:
-    """
+    r"""
     Sysctl defines a kernel parameter to be set
 
     Attributes
@@ -6767,7 +6769,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecSecurityContextWindowsOptions:
-    """
+    r"""
     The Windows specific settings applied to all containers.
     If unspecified, the options within a container's SecurityContext will be used.
     If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
@@ -6804,7 +6806,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecTolerationsItems0:
-    """
+    r"""
     The pod this Toleration is attached to tolerates any taint that matches
     the triple <key,value,effect> using the matching operator <operator>.
 
@@ -6844,7 +6846,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecTopologySpreadConstraintsItems0:
-    """
+    r"""
     TopologySpreadConstraint specifies how to spread matching pods among the given topology.
 
     Attributes
@@ -6975,7 +6977,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecTopologySpreadConstraintsItems0LabelSelector:
-    """
+    r"""
     LabelSelector is used to find matching pods.
     Pods that match this label selector are counted to determine the number of pods
     in their corresponding topology domain.
@@ -6997,7 +6999,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecTopologySpreadConstraintsItems0LabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
 
@@ -7024,7 +7026,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0:
-    """
+    r"""
     Volume represents a named volume in a pod that may be accessed by any container in the pod.
 
     Attributes
@@ -7156,7 +7158,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0AwsElasticBlockStore:
-    """
+    r"""
     awsElasticBlockStore represents an AWS Disk resource that is attached to a
     kubelet's host machine and then exposed to the pod.
     More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
@@ -7193,7 +7195,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0AzureDisk:
-    """
+    r"""
     azureDisk represents an Azure Data Disk mount on the host and bind mount to the pod.
 
     Attributes
@@ -7230,7 +7232,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0AzureFile:
-    """
+    r"""
     azureFile represents an Azure File Service mount on the host and bind mount to the pod.
 
     Attributes
@@ -7253,7 +7255,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0Cephfs:
-    """
+    r"""
     cephFS represents a Ceph FS mount on the host that shares a pod's lifetime
 
     Attributes
@@ -7292,7 +7294,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0CephfsSecretRef:
-    """
+    r"""
     secretRef is Optional: SecretRef is reference to the authentication secret for User, default is empty.
     More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
 
@@ -7309,7 +7311,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0Cinder:
-    """
+    r"""
     cinder represents a cinder volume attached and mounted on kubelets host machine.
     More info: https://examples.k8s.io/mysql-cinder-pd/README.md
 
@@ -7342,7 +7344,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0CinderSecretRef:
-    """
+    r"""
     secretRef is optional: points to a secret object containing parameters used to connect
     to OpenStack.
 
@@ -7359,7 +7361,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0ConfigMap:
-    """
+    r"""
     configMap represents a configMap that should populate this volume
 
     Attributes
@@ -7399,7 +7401,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0ConfigMapItemsItems0:
-    """
+    r"""
     Maps a string key to a path within a volume.
 
     Attributes
@@ -7429,7 +7431,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0Csi:
-    """
+    r"""
     csi (Container Storage Interface) represents ephemeral storage that is handled by certain external CSI drivers (Beta feature).
 
     Attributes
@@ -7464,7 +7466,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0CsiNodePublishSecretRef:
-    """
+    r"""
     nodePublishSecretRef is a reference to the secret object containing
     sensitive information to pass to the CSI driver to complete the CSI
     NodePublishVolume and NodeUnpublishVolume calls.
@@ -7484,7 +7486,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0DownwardAPI:
-    """
+    r"""
     downwardAPI represents downward API about the pod that should populate this volume
 
     Attributes
@@ -7509,7 +7511,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0DownwardAPIItemsItems0:
-    """
+    r"""
     DownwardAPIVolumeFile represents information to create the file containing the pod field
 
     Attributes
@@ -7540,7 +7542,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0DownwardAPIItemsItems0FieldRef:
-    """
+    r"""
     Required: Selects a field of the pod: only annotations, labels, name and namespace are supported.
 
     Attributes
@@ -7558,7 +7560,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0DownwardAPIItemsItems0ResourceFieldRef:
-    """
+    r"""
     Selects a resource of the container: only resources limits and requests
     (limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported.
 
@@ -7581,11 +7583,11 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
     check:
-        regex_match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
+        _regex_match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0EmptyDir:
-    """
+    r"""
     emptyDir represents a temporary directory that shares a pod's lifetime.
     More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir
 
@@ -7612,11 +7614,11 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
     check:
-        regex_match(str(sizeLimit), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if sizeLimit
+        _regex_match(str(sizeLimit), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if sizeLimit
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0Ephemeral:
-    """
+    r"""
     ephemeral represents a volume that is handled by a cluster storage driver.
     The volume's lifecycle is tied to the pod that defines it - it will be created before the pod starts,
     and deleted when the pod is removed.
@@ -7657,7 +7659,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0EphemeralVolumeClaimTemplate:
-    """
+    r"""
     Will be used to create a stand-alone PVC to provision the volume.
     The pod in which this EphemeralVolumeSource is embedded will be the
     owner of the PVC, i.e. the PVC will be deleted together with the
@@ -7698,7 +7700,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0EphemeralVolumeClaimTemplateMetadata:
-    """
+    r"""
     May contain labels and annotations that will be copied into the PVC
     when creating it. No other fields are allowed and will be rejected during
     validation.
@@ -7730,7 +7732,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0EphemeralVolumeClaimTemplateSpec:
-    """
+    r"""
     The specification for the PersistentVolumeClaim. The entire content is
     copied unchanged into the PVC that gets created from this
     template. The same fields as in a PersistentVolumeClaim
@@ -7793,7 +7795,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0EphemeralVolumeClaimTemplateSpecDataSource:
-    """
+    r"""
     dataSource field can be used to specify either:
     * An existing VolumeSnapshot object (snapshot.storage.k8s.io/VolumeSnapshot)
     * An existing PVC (PersistentVolumeClaim)
@@ -7824,7 +7826,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0EphemeralVolumeClaimTemplateSpecDataSourceRef:
-    """
+    r"""
     dataSourceRef specifies the object from which to populate the volume with data, if a non-empty
     volume is desired. This may be any object from a non-empty API group (non
     core object) or a PersistentVolumeClaim object.
@@ -7876,7 +7878,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0EphemeralVolumeClaimTemplateSpecResources:
-    """
+    r"""
     resources represents the minimum resources the volume should have.
     If RecoverVolumeExpansionFailure feature is enabled users are allowed to specify resource requirements
     that are lower than previous value but must still be higher than capacity recorded in the
@@ -7902,12 +7904,12 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
     check:
-        all _, limits in limits {regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests {regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
+        all _, limits in limits {_regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests {_regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0EphemeralVolumeClaimTemplateSpecSelector:
-    """
+    r"""
     selector is a label query over volumes to consider for binding.
 
     Attributes
@@ -7927,7 +7929,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0EphemeralVolumeClaimTemplateSpecSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
 
@@ -7954,7 +7956,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0Fc:
-    """
+    r"""
     fc represents a Fibre Channel resource that is attached to a kubelet's host machine and then exposed to the pod.
 
     Attributes
@@ -7989,7 +7991,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0FlexVolume:
-    """
+    r"""
     flexVolume represents a generic volume resource that is
     provisioned/attached using an exec based plugin.
 
@@ -8023,7 +8025,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0FlexVolumeSecretRef:
-    """
+    r"""
     secretRef is Optional: secretRef is reference to the secret object containing
     sensitive information to pass to the plugin scripts. This may be
     empty if no secret object is specified. If the secret object
@@ -8043,7 +8045,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0Flocker:
-    """
+    r"""
     flocker represents a Flocker volume attached to a kubelet's host machine. This depends on the Flocker control service being running
 
     Attributes
@@ -8062,7 +8064,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0GcePersistentDisk:
-    """
+    r"""
     gcePersistentDisk represents a GCE Disk resource that is attached to a
     kubelet's host machine and then exposed to the pod.
     More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
@@ -8101,7 +8103,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0GitRepo:
-    """
+    r"""
     gitRepo represents a git repository at a particular revision.
     DEPRECATED: GitRepo is deprecated. To provision a container with a git repo, mount an
     EmptyDir into an InitContainer that clones the repo using git, then mount the EmptyDir
@@ -8129,7 +8131,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0Glusterfs:
-    """
+    r"""
     glusterfs represents a Glusterfs mount on the host that shares a pod's lifetime.
     More info: https://examples.k8s.io/volumes/glusterfs/README.md
 
@@ -8156,7 +8158,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0HostPath:
-    """
+    r"""
     hostPath represents a pre-existing file or directory on the host
     machine that is directly exposed to the container. This is generally
     used for system agents or other privileged things that are allowed
@@ -8185,7 +8187,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0Iscsi:
-    """
+    r"""
     iscsi represents an ISCSI Disk resource that is attached to a
     kubelet's host machine and then exposed to the pod.
     More info: https://examples.k8s.io/volumes/iscsi/README.md
@@ -8251,7 +8253,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0IscsiSecretRef:
-    """
+    r"""
     secretRef is the CHAP Secret for iSCSI target and initiator authentication
 
     Attributes
@@ -8267,7 +8269,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0Nfs:
-    """
+    r"""
     nfs represents an NFS mount on the host that shares a pod's lifetime
     More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
 
@@ -8294,7 +8296,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0PersistentVolumeClaim:
-    """
+    r"""
     persistentVolumeClaimVolumeSource represents a reference to a
     PersistentVolumeClaim in the same namespace.
     More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
@@ -8316,7 +8318,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0PhotonPersistentDisk:
-    """
+    r"""
     photonPersistentDisk represents a PhotonController persistent disk attached and mounted on kubelets host machine
 
     Attributes
@@ -8336,7 +8338,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0PortworxVolume:
-    """
+    r"""
     portworxVolume represents a portworx volume attached and mounted on kubelets host machine
 
     Attributes
@@ -8361,7 +8363,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0Projected:
-    """
+    r"""
     projected items for all in one resources secrets, configmaps, and downward API
 
     Attributes
@@ -8384,7 +8386,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0ProjectedSourcesItems0:
-    """
+    r"""
     Projection that may be projected along with other supported volume types
 
     Attributes
@@ -8414,7 +8416,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0ProjectedSourcesItems0ClusterTrustBundle:
-    """
+    r"""
     ClusterTrustBundle allows a pod to access the `.spec.trustBundle` field
     of ClusterTrustBundle objects in an auto-updating file.
 
@@ -8466,7 +8468,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0ProjectedSourcesItems0ClusterTrustBundleLabelSelector:
-    """
+    r"""
     Select all ClusterTrustBundles that match this label selector.  Only has
     effect if signerName is set.  Mutually-exclusive with name.  If unset,
     interpreted as "match nothing".  If set but empty, interpreted as "match
@@ -8489,7 +8491,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0ProjectedSourcesItems0ClusterTrustBundleLabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
 
@@ -8516,7 +8518,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0ProjectedSourcesItems0ConfigMap:
-    """
+    r"""
     configMap information about the configMap data to project
 
     Attributes
@@ -8546,7 +8548,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0ProjectedSourcesItems0ConfigMapItemsItems0:
-    """
+    r"""
     Maps a string key to a path within a volume.
 
     Attributes
@@ -8576,7 +8578,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0ProjectedSourcesItems0DownwardAPI:
-    """
+    r"""
     downwardAPI information about the downwardAPI data to project
 
     Attributes
@@ -8590,7 +8592,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0:
-    """
+    r"""
     DownwardAPIVolumeFile represents information to create the file containing the pod field
 
     Attributes
@@ -8621,7 +8623,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0FieldRef:
-    """
+    r"""
     Required: Selects a field of the pod: only annotations, labels, name and namespace are supported.
 
     Attributes
@@ -8639,7 +8641,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0ResourceFieldRef:
-    """
+    r"""
     Selects a resource of the container: only resources limits and requests
     (limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported.
 
@@ -8662,11 +8664,11 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
     check:
-        regex_match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
+        _regex_match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0ProjectedSourcesItems0Secret:
-    """
+    r"""
     secret information about the secret data to project
 
     Attributes
@@ -8696,7 +8698,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0ProjectedSourcesItems0SecretItemsItems0:
-    """
+    r"""
     Maps a string key to a path within a volume.
 
     Attributes
@@ -8726,7 +8728,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0ProjectedSourcesItems0ServiceAccountToken:
-    """
+    r"""
     serviceAccountToken is information about the serviceAccountToken data to project
 
     Attributes
@@ -8757,7 +8759,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0Quobyte:
-    """
+    r"""
     quobyte represents a Quobyte mount on the host that shares a pod's lifetime
 
     Attributes
@@ -8797,7 +8799,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0Rbd:
-    """
+    r"""
     rbd represents a Rados Block Device mount on the host that shares a pod's lifetime.
     More info: https://examples.k8s.io/volumes/rbd/README.md
 
@@ -8854,7 +8856,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0RbdSecretRef:
-    """
+    r"""
     secretRef is name of the authentication secret for RBDUser. If provided
     overrides keyring.
     Default is nil.
@@ -8873,7 +8875,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0ScaleIO:
-    """
+    r"""
     scaleIO represents a ScaleIO persistent volume attached and mounted on Kubernetes nodes.
 
     Attributes
@@ -8929,7 +8931,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0ScaleIOSecretRef:
-    """
+    r"""
     secretRef references to the secret for ScaleIO user and other
     sensitive information. If this is not provided, Login operation will fail.
 
@@ -8946,7 +8948,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0Secret:
-    """
+    r"""
     secret represents a secret that should populate this volume.
     More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
 
@@ -8986,7 +8988,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0SecretItemsItems0:
-    """
+    r"""
     Maps a string key to a path within a volume.
 
     Attributes
@@ -9016,7 +9018,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0Storageos:
-    """
+    r"""
     storageOS represents a StorageOS volume attached and mounted on Kubernetes nodes.
 
     Attributes
@@ -9055,7 +9057,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0StorageosSecretRef:
-    """
+    r"""
     secretRef specifies the secret to use for obtaining the StorageOS API
     credentials.  If not specified, default values will be attempted.
 
@@ -9072,7 +9074,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0VsphereVolume:
-    """
+    r"""
     vsphereVolume represents a vSphere volume attached and mounted on kubelets host machine
 
     Attributes
@@ -9100,7 +9102,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecServiceAccountTemplate:
-    """
+    r"""
     ServiceAccountTemplate is the template for the ServiceAccount object.
 
     Attributes
@@ -9114,7 +9116,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecServiceAccountTemplate:
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecServiceAccountTemplateMetadata:
-    """
+    r"""
     Metadata contains the configurable metadata fields for the ServiceAccount.
 
     Attributes
@@ -9123,13 +9125,13 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecServiceAccountTemplateMe
         Annotations is an unstructured key value map stored with a resource that
         may be set by external tools to store and retrieve arbitrary metadata.
         They are not queryable and should be preserved when modifying objects.
-        More info: http://kubernetes.io/docs/user-guide/annotations
+        More info: http:https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
     labels : {str:str}, default is Undefined, optional
         Map of string keys and values that can be used to organize and categorize
         (scope and select) objects. Labels will be merged with internal labels
         used by crossplane, and labels with a crossplane.io key might be
         overwritten.
-        More info: http://kubernetes.io/docs/user-guide/labels
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
     name : str, default is Undefined, optional
         Name is the name of the object.
     """
@@ -9143,7 +9145,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecServiceAccountTemplateMe
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecServiceTemplate:
-    """
+    r"""
     ServiceTemplate is the template for the Service object.
 
     Attributes
@@ -9157,7 +9159,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecServiceTemplate:
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecServiceTemplateMetadata:
-    """
+    r"""
     Metadata contains the configurable metadata fields for the Service.
 
     Attributes
@@ -9166,13 +9168,13 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecServiceTemplateMetadata:
         Annotations is an unstructured key value map stored with a resource that
         may be set by external tools to store and retrieve arbitrary metadata.
         They are not queryable and should be preserved when modifying objects.
-        More info: http://kubernetes.io/docs/user-guide/annotations
+        More info: http:https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
     labels : {str:str}, default is Undefined, optional
         Map of string keys and values that can be used to organize and categorize
         (scope and select) objects. Labels will be merged with internal labels
         used by crossplane, and labels with a crossplane.io key might be
         overwritten.
-        More info: http://kubernetes.io/docs/user-guide/labels
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
     name : str, default is Undefined, optional
         Name is the name of the object.
     """

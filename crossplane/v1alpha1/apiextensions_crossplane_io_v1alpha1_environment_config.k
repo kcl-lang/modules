@@ -6,8 +6,13 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema EnvironmentConfig:
-    """
-    A EnvironmentConfig contains a set of arbitrary, unstructured values.
+    r"""
+    An EnvironmentConfig contains user-defined unstructured values for
+    use in a Composition.
+
+
+    Read the Crossplane documentation for
+    [more information about EnvironmentConfigs](https://docs.crossplane.io/latest/concepts/environment-configs).
 
     Attributes
     ----------
