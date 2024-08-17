@@ -13,31 +13,31 @@ schema NodePool:
 
     Attributes
     ----------
-    apiVersion : str, default is "karpenter.sh/v1beta1", required
+    apiVersion : str, default is "karpenter.sh/v1", required
         APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
     kind : str, default is "NodePool", required
         Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     metadata : v1.ObjectMeta, default is Undefined, optional
         metadata
-    spec : KarpenterShV1beta1NodePoolSpec, default is Undefined, required
+    spec : KarpenterShV1NodePoolSpec, default is Undefined, required
         spec
-    status : KarpenterShV1beta1NodePoolStatus, default is Undefined, optional
+    status : KarpenterShV1NodePoolStatus, default is Undefined, optional
         status
     """
 
 
-    apiVersion: "karpenter.sh/v1beta1" = "karpenter.sh/v1beta1"
+    apiVersion: "karpenter.sh/v1" = "karpenter.sh/v1"
 
     kind: "NodePool" = "NodePool"
 
     metadata?: v1.ObjectMeta
 
-    spec: KarpenterShV1beta1NodePoolSpec
+    spec: KarpenterShV1NodePoolSpec
 
-    status?: KarpenterShV1beta1NodePoolStatus
+    status?: KarpenterShV1NodePoolStatus
 
 
-schema KarpenterShV1beta1NodePoolSpec:
+schema KarpenterShV1NodePoolSpec:
     r"""
     NodePoolSpec is the top level nodepool specification. Nodepools
     launch nodes in response to pods that are unschedulable. A single nodepool
@@ -53,9 +53,9 @@ schema KarpenterShV1beta1NodePoolSpec:
         numerical weight indicates that this nodepool will be ordered
         ahead of other nodepools with lower weights. A nodepool with no weight
         will be treated as if it is a nodepool with a weight of 0.
-    disruption : KarpenterShV1beta1NodePoolSpecDisruption, default is Undefined, optional
+    disruption : KarpenterShV1NodePoolSpecDisruption, default is Undefined, optional
         disruption
-    template : KarpenterShV1beta1NodePoolSpecTemplate, default is Undefined, required
+    template : KarpenterShV1NodePoolSpecTemplate, default is Undefined, required
         template
     """
 
@@ -64,9 +64,9 @@ schema KarpenterShV1beta1NodePoolSpec:
 
     weight?: int
 
-    disruption?: KarpenterShV1beta1NodePoolSpecDisruption
+    disruption?: KarpenterShV1NodePoolSpecDisruption
 
-    template: KarpenterShV1beta1NodePoolSpecTemplate
+    template: KarpenterShV1NodePoolSpecTemplate
 
 
     check:
@@ -75,48 +75,40 @@ schema KarpenterShV1beta1NodePoolSpec:
         weight >= 1 if weight not in [None, Undefined]
 
 
-schema KarpenterShV1beta1NodePoolSpecDisruption:
+schema KarpenterShV1NodePoolSpecDisruption:
     r"""
     Disruption contains the parameters that relate to Karpenter's disruption logic
 
     Attributes
     ----------
-    budgets : [KarpenterShV1beta1NodePoolSpecDisruptionBudgetsItems0], default is [{"nodes": {"value": "10%", "x-order": 0}}], optional
+    budgets : [KarpenterShV1NodePoolSpecDisruptionBudgetsItems0], default is [{"nodes": {"value": "10%", "x-order": 0}}], optional
         Budgets is a list of Budgets.
         If there are multiple active budgets, Karpenter uses
         the most restrictive value. If left undefined,
         this will default to one budget with a value to 10%.
-    consolidateAfter : str, default is Undefined, optional
+    consolidateAfter : str, default is Undefined, required
         ConsolidateAfter is the duration the controller will wait
         before attempting to terminate nodes that are underutilized.
         Refer to ConsolidationPolicy for how underutilization is considered.
-    consolidationPolicy : str, default is "WhenUnderutilized", optional
+    consolidationPolicy : str, default is "WhenEmptyOrUnderutilized", optional
         ConsolidationPolicy describes which nodes Karpenter can disrupt through its consolidation
-        algorithm. This policy defaults to "WhenUnderutilized" if not specified
-    expireAfter : str, default is "720h", optional
-        ExpireAfter is the duration the controller will wait
-        before terminating a node, measured from when the node is created. This
-        is useful to implement features like eventually consistent node upgrade,
-        memory leak protection, and disruption testing.
+        algorithm. This policy defaults to "WhenEmptyOrUnderutilized" if not specified
     """
 
 
-    budgets?: [KarpenterShV1beta1NodePoolSpecDisruptionBudgetsItems0] = [{"nodes": {"x-order": 0, "value": "10%"}}]
+    budgets?: [KarpenterShV1NodePoolSpecDisruptionBudgetsItems0] = [{"nodes": {"value": "10%", "x-order": 0}}]
 
-    consolidateAfter?: str
+    consolidateAfter: str
 
-    consolidationPolicy?: "WhenEmpty" | "WhenUnderutilized" = "WhenUnderutilized"
-
-    expireAfter?: str = "720h"
+    consolidationPolicy?: "WhenEmpty" | "WhenEmptyOrUnderutilized" = "WhenEmptyOrUnderutilized"
 
 
     check:
         len(budgets) <= 50 if budgets
-        _regex_match(str(consolidateAfter), r"^(([0-9]+(s|m|h))+)|(Never)$") if consolidateAfter
-        _regex_match(str(expireAfter), r"^(([0-9]+(s|m|h))+)|(Never)$") if expireAfter
+        _regex_match(str(consolidateAfter), r"^(([0-9]+(s|m|h))+)|(Never)$")
 
 
-schema KarpenterShV1beta1NodePoolSpecDisruptionBudgetsItems0:
+schema KarpenterShV1NodePoolSpecDisruptionBudgetsItems0:
     r"""
     Budget defines when Karpenter will restrict the
     number of Node Claims that can be terminating simultaneously.
@@ -138,6 +130,10 @@ schema KarpenterShV1beta1NodePoolSpecDisruptionBudgetsItems0:
         This cannot be of type intstr.IntOrString since kubebuilder doesn't support pattern
         checking for int nodes for IntOrString nodes.
         Ref: https://github.com/kubernetes-sigs/controller-tools/blob/55efe4be40394a288216dab63156b0a64fb82929/pkg/crd/markers/validation.go#L379-L388
+    reasons : [str], default is Undefined, optional
+        Reasons is a list of disruption methods that this budget applies to. If Reasons is not set, this budget applies to all methods.
+        Otherwise, this will apply to each reason defined.
+        allowed reasons are Underutilized, Empty, and Drifted.
     schedule : str, default is Undefined, optional
         Schedule specifies when a budget begins being active, following
         the upstream cronjob syntax. If omitted, the budget is always active.
@@ -150,6 +146,8 @@ schema KarpenterShV1beta1NodePoolSpecDisruptionBudgetsItems0:
 
     nodes: str = "10%"
 
+    reasons?: [str]
+
     schedule?: str
 
 
@@ -159,28 +157,28 @@ schema KarpenterShV1beta1NodePoolSpecDisruptionBudgetsItems0:
         _regex_match(str(schedule), r"^(@(annually|yearly|monthly|weekly|daily|midnight|hourly))|((.+)\s(.+)\s(.+)\s(.+)\s(.+))$") if schedule
 
 
-schema KarpenterShV1beta1NodePoolSpecTemplate:
+schema KarpenterShV1NodePoolSpecTemplate:
     r"""
     Template contains the template of possibilities for the provisioning logic to launch a NodeClaim with.
     NodeClaims launched from this NodePool will often be further constrained than the template specifies.
 
     Attributes
     ----------
-    metadata : KarpenterShV1beta1NodePoolSpecTemplateMetadata, default is Undefined, optional
+    metadata : KarpenterShV1NodePoolSpecTemplateMetadata, default is Undefined, optional
         metadata
-    spec : KarpenterShV1beta1NodePoolSpecTemplateSpec, default is Undefined, required
+    spec : KarpenterShV1NodePoolSpecTemplateSpec, default is Undefined, required
         spec
     """
 
 
-    metadata?: KarpenterShV1beta1NodePoolSpecTemplateMetadata
+    metadata?: KarpenterShV1NodePoolSpecTemplateMetadata
 
-    spec: KarpenterShV1beta1NodePoolSpecTemplateSpec
+    spec: KarpenterShV1NodePoolSpecTemplateSpec
 
 
-schema KarpenterShV1beta1NodePoolSpecTemplateMetadata:
+schema KarpenterShV1NodePoolSpecTemplateMetadata:
     r"""
-    karpenter sh v1beta1 node pool spec template metadata
+    karpenter sh v1 node pool spec template metadata
 
     Attributes
     ----------
@@ -207,155 +205,97 @@ schema KarpenterShV1beta1NodePoolSpecTemplateMetadata:
         all _, labels in labels { _regex_match(str(labels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if labels } if labels
 
 
-schema KarpenterShV1beta1NodePoolSpecTemplateSpec:
+schema KarpenterShV1NodePoolSpecTemplateSpec:
     r"""
-    NodeClaimSpec describes the desired state of the NodeClaim
+    NodeClaimTemplateSpec describes the desired state of the NodeClaim in the Nodepool
+    NodeClaimTemplateSpec is used in the NodePool's NodeClaimTemplate, with the resource requests omitted since
+    users are not able to set resource requests in the NodePool.
 
     Attributes
     ----------
-    requirements : [KarpenterShV1beta1NodePoolSpecTemplateSpecRequirementsItems0], default is Undefined, required
+    expireAfter : str, default is "720h", optional
+        ExpireAfter is the duration the controller will wait
+        before terminating a node, measured from when the node is created. This
+        is useful to implement features like eventually consistent node upgrade,
+        memory leak protection, and disruption testing.
+    requirements : [KarpenterShV1NodePoolSpecTemplateSpecRequirementsItems0], default is Undefined, required
         Requirements are layered with GetLabels and applied to every node.
-    startupTaints : [KarpenterShV1beta1NodePoolSpecTemplateSpecStartupTaintsItems0], default is Undefined, optional
+    startupTaints : [KarpenterShV1NodePoolSpecTemplateSpecStartupTaintsItems0], default is Undefined, optional
         StartupTaints are taints that are applied to nodes upon startup which are expected to be removed automatically
         within a short period of time, typically by a DaemonSet that tolerates the taint. These are commonly used by
         daemonsets to allow initialization and enforce startup ordering.  StartupTaints are ignored for provisioning
         purposes in that pods are not required to tolerate a StartupTaint in order to have nodes provisioned for them.
-    taints : [KarpenterShV1beta1NodePoolSpecTemplateSpecTaintsItems0], default is Undefined, optional
+    taints : [KarpenterShV1NodePoolSpecTemplateSpecTaintsItems0], default is Undefined, optional
         Taints will be applied to the NodeClaim's node.
-    kubelet : KarpenterShV1beta1NodePoolSpecTemplateSpecKubelet, default is Undefined, optional
-        kubelet
-    nodeClassRef : KarpenterShV1beta1NodePoolSpecTemplateSpecNodeClassRef, default is Undefined, required
+    terminationGracePeriod : str, default is Undefined, optional
+        TerminationGracePeriod is the maximum duration the controller will wait before forcefully deleting the pods on a node, measured from when deletion is first initiated.
+
+
+        Warning: this feature takes precedence over a Pod's terminationGracePeriodSeconds value, and bypasses any blocked PDBs or the karpenter.sh/do-not-disrupt annotation.
+
+
+        This field is intended to be used by cluster administrators to enforce that nodes can be cycled within a given time period.
+        When set, drifted nodes will begin draining even if there are pods blocking eviction. Draining will respect PDBs and the do-not-disrupt annotation until the TGP is reached.
+
+
+        Karpenter will preemptively delete pods so their terminationGracePeriodSeconds align with the node's terminationGracePeriod.
+        If a pod would be terminated without being granted its full terminationGracePeriodSeconds prior to the node timeout,
+        that pod will be deleted at T = node timeout - pod terminationGracePeriodSeconds.
+
+
+        The feature can also be used to allow maximum time limits for long-running jobs which can delay node termination with preStop hooks.
+        If left undefined, the controller will wait indefinitely for pods to be drained.
+    nodeClassRef : KarpenterShV1NodePoolSpecTemplateSpecNodeClassRef, default is Undefined, required
         node class ref
-    resources : KarpenterShV1beta1NodePoolSpecTemplateSpecResources, default is Undefined, optional
-        resources
     """
 
 
-    requirements: [KarpenterShV1beta1NodePoolSpecTemplateSpecRequirementsItems0]
+    expireAfter?: str = "720h"
 
-    startupTaints?: [KarpenterShV1beta1NodePoolSpecTemplateSpecStartupTaintsItems0]
+    requirements: [KarpenterShV1NodePoolSpecTemplateSpecRequirementsItems0]
 
-    taints?: [KarpenterShV1beta1NodePoolSpecTemplateSpecTaintsItems0]
+    startupTaints?: [KarpenterShV1NodePoolSpecTemplateSpecStartupTaintsItems0]
 
-    kubelet?: KarpenterShV1beta1NodePoolSpecTemplateSpecKubelet
+    taints?: [KarpenterShV1NodePoolSpecTemplateSpecTaintsItems0]
 
-    nodeClassRef: KarpenterShV1beta1NodePoolSpecTemplateSpecNodeClassRef
+    terminationGracePeriod?: str
 
-    resources?: KarpenterShV1beta1NodePoolSpecTemplateSpecResources
+    nodeClassRef: KarpenterShV1NodePoolSpecTemplateSpecNodeClassRef
 
 
     check:
+        _regex_match(str(expireAfter), r"^(([0-9]+(s|m|h))+)|(Never)$") if expireAfter
         len(requirements) <= 100
+        _regex_match(str(terminationGracePeriod), r"^([0-9]+(s|m|h))+$") if terminationGracePeriod
 
 
-schema KarpenterShV1beta1NodePoolSpecTemplateSpecKubelet:
-    r"""
-    Kubelet defines args to be used when configuring kubelet on provisioned nodes.
-    They are a subset of the upstream types, recognizing not all options may be supported.
-    Wherever possible, the types and names should reflect the upstream kubelet types.
-
-    Attributes
-    ----------
-    clusterDNS : [str], default is Undefined, optional
-        clusterDNS is a list of IP addresses for the cluster DNS server.
-        Note that not all providers may use all addresses.
-    cpuCFSQuota : bool, default is Undefined, optional
-        CPUCFSQuota enables CPU CFS quota enforcement for containers that specify CPU limits.
-    evictionHard : {str:str}, default is Undefined, optional
-        EvictionHard is the map of signal names to quantities that define hard eviction thresholds
-    evictionMaxPodGracePeriod : int, default is Undefined, optional
-        EvictionMaxPodGracePeriod is the maximum allowed grace period (in seconds) to use when terminating pods in
-        response to soft eviction thresholds being met.
-    evictionSoft : {str:str}, default is Undefined, optional
-        EvictionSoft is the map of signal names to quantities that define soft eviction thresholds
-    evictionSoftGracePeriod : {str:str}, default is Undefined, optional
-        EvictionSoftGracePeriod is the map of signal names to quantities that define grace periods for each eviction signal
-    imageGCHighThresholdPercent : int, default is Undefined, optional
-        ImageGCHighThresholdPercent is the percent of disk usage after which image
-        garbage collection is always run. The percent is calculated by dividing this
-        field value by 100, so this field must be between 0 and 100, inclusive.
-        When specified, the value must be greater than ImageGCLowThresholdPercent.
-    imageGCLowThresholdPercent : int, default is Undefined, optional
-        ImageGCLowThresholdPercent is the percent of disk usage before which image
-        garbage collection is never run. Lowest disk usage to garbage collect to.
-        The percent is calculated by dividing this field value by 100,
-        so the field value must be between 0 and 100, inclusive.
-        When specified, the value must be less than imageGCHighThresholdPercent
-    kubeReserved : {str:str}, default is Undefined, optional
-        KubeReserved contains resources reserved for Kubernetes system components.
-    maxPods : int, default is Undefined, optional
-        MaxPods is an override for the maximum number of pods that can run on
-        a worker node instance.
-    podsPerCore : int, default is Undefined, optional
-        PodsPerCore is an override for the number of pods that can run on a worker node
-        instance based on the number of cpu cores. This value cannot exceed MaxPods, so, if
-        MaxPods is a lower value, that value will be used.
-    systemReserved : {str:str}, default is Undefined, optional
-        SystemReserved contains resources reserved for OS system daemons and kernel memory.
-    """
-
-
-    clusterDNS?: [str]
-
-    cpuCFSQuota?: bool
-
-    evictionHard?: {str:str}
-
-    evictionMaxPodGracePeriod?: int
-
-    evictionSoft?: {str:str}
-
-    evictionSoftGracePeriod?: {str:str}
-
-    imageGCHighThresholdPercent?: int
-
-    imageGCLowThresholdPercent?: int
-
-    kubeReserved?: {str:str}
-
-    maxPods?: int
-
-    podsPerCore?: int
-
-    systemReserved?: {str:str}
-
-
-    check:
-        all _, evictionHard in evictionHard { _regex_match(str(evictionHard), r"^((\d{1,2}(\.\d{1,2})?|100(\.0{1,2})?)%||(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?)$") if evictionHard } if evictionHard
-        all _, evictionSoft in evictionSoft { _regex_match(str(evictionSoft), r"^((\d{1,2}(\.\d{1,2})?|100(\.0{1,2})?)%||(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?)$") if evictionSoft } if evictionSoft
-        imageGCHighThresholdPercent <= 100 if imageGCHighThresholdPercent not in [None, Undefined]
-        imageGCHighThresholdPercent >= 0 if imageGCHighThresholdPercent not in [None, Undefined]
-        imageGCLowThresholdPercent <= 100 if imageGCLowThresholdPercent not in [None, Undefined]
-        imageGCLowThresholdPercent >= 0 if imageGCLowThresholdPercent not in [None, Undefined]
-        all _, kubeReserved in kubeReserved { _regex_match(str(kubeReserved), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if kubeReserved } if kubeReserved
-        maxPods >= 0 if maxPods not in [None, Undefined]
-        podsPerCore >= 0 if podsPerCore not in [None, Undefined]
-        all _, systemReserved in systemReserved { _regex_match(str(systemReserved), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if systemReserved } if systemReserved
-
-
-schema KarpenterShV1beta1NodePoolSpecTemplateSpecNodeClassRef:
+schema KarpenterShV1NodePoolSpecTemplateSpecNodeClassRef:
     r"""
     NodeClassRef is a reference to an object that defines provider specific configuration
 
     Attributes
     ----------
-    apiVersion : str, default is Undefined, optional
+    group : str, default is Undefined, required
         API version of the referent
-    kind : str, default is Undefined, optional
+    kind : str, default is Undefined, required
         Kind of the referent; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds"
     name : str, default is Undefined, required
         Name of the referent; More info: http://kubernetes.io/docs/user-guide/identifiers#names
     """
 
 
-    apiVersion?: str
+    group: str
 
-    kind?: str
+    kind: str
 
     name: str
 
 
-schema KarpenterShV1beta1NodePoolSpecTemplateSpecRequirementsItems0:
+    check:
+        _regex_match(str(group), r"^[^/]*$")
+
+
+schema KarpenterShV1NodePoolSpecTemplateSpecRequirementsItems0:
     r"""
     A node selector requirement with min values is a selector that contains values, a key, an operator that relates the key and values
     and minValues that represent the requirement to have at least that many values.
@@ -397,25 +337,7 @@ schema KarpenterShV1beta1NodePoolSpecTemplateSpecRequirementsItems0:
         _regex_match(str(values), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if values
 
 
-schema KarpenterShV1beta1NodePoolSpecTemplateSpecResources:
-    r"""
-    Resources models the resource requirements for the NodeClaim to launch
-
-    Attributes
-    ----------
-    requests : {str:int | str}, default is Undefined, optional
-        Requests describes the minimum required resources for the NodeClaim to launch
-    """
-
-
-    requests?: {str:int | str}
-
-
-    check:
-        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
-
-
-schema KarpenterShV1beta1NodePoolSpecTemplateSpecStartupTaintsItems0:
+schema KarpenterShV1NodePoolSpecTemplateSpecStartupTaintsItems0:
     r"""
     The node this Taint is attached to has the "effect" on
     any pod that does not tolerate the Taint.
@@ -451,7 +373,7 @@ schema KarpenterShV1beta1NodePoolSpecTemplateSpecStartupTaintsItems0:
         _regex_match(str(value), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*(\/))?([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9]$") if value
 
 
-schema KarpenterShV1beta1NodePoolSpecTemplateSpecTaintsItems0:
+schema KarpenterShV1NodePoolSpecTemplateSpecTaintsItems0:
     r"""
     The node this Taint is attached to has the "effect" on
     any pod that does not tolerate the Taint.
@@ -487,20 +409,20 @@ schema KarpenterShV1beta1NodePoolSpecTemplateSpecTaintsItems0:
         _regex_match(str(value), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*(\/))?([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9]$") if value
 
 
-schema KarpenterShV1beta1NodePoolStatus:
+schema KarpenterShV1NodePoolStatus:
     r"""
     NodePoolStatus defines the observed state of NodePool
 
     Attributes
     ----------
-    conditions : [KarpenterShV1beta1NodePoolStatusConditionsItems0], default is Undefined, optional
+    conditions : [KarpenterShV1NodePoolStatusConditionsItems0], default is Undefined, optional
         Conditions contains signals for health and readiness
     resources : {str:int | str}, default is Undefined, optional
         Resources is the list of resources that have been provisioned.
     """
 
 
-    conditions?: [KarpenterShV1beta1NodePoolStatusConditionsItems0]
+    conditions?: [KarpenterShV1NodePoolStatusConditionsItems0]
 
     resources?: {str:int | str}
 
@@ -509,7 +431,7 @@ schema KarpenterShV1beta1NodePoolStatus:
         all _, resources in resources { _regex_match(str(resources), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if resources } if resources
 
 
-schema KarpenterShV1beta1NodePoolStatusConditionsItems0:
+schema KarpenterShV1NodePoolStatusConditionsItems0:
     r"""
     Condition aliases the upstream type and adds additional helper methods
 
