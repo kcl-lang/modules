@@ -19,12 +19,8 @@ schema ReferenceGrant:
     sources of inbound references for the namespace they are defined within.
 
 
-    A ReferenceGrant is required for all cross-namespace references in Gateway API
-    (with the exception of cross-namespace Route-Gateway attachment, which is
-    governed by the AllowedRoutes configuration on the Gateway, and cross-namespace
-    Service ParentRefs on a "consumer" mesh Route, which defines routing rules
-    applicable only to workloads in the Route namespace). ReferenceGrants allowing
-    a reference from a Route to a Service are only applicable to BackendRefs.
+    All cross-namespace references in Gateway API (with the exception of cross-namespace
+    Gateway-route attachment) require a ReferenceGrant.
 
 
     ReferenceGrant is a form of runtime verification allowing users to assert
@@ -35,33 +31,33 @@ schema ReferenceGrant:
 
     Attributes
     ----------
-    apiVersion : str, default is "gateway.networking.k8s.io/v1alpha2", required
+    apiVersion : str, default is "gateway.networking.k8s.io/v1beta1", required
         APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
     kind : str, default is "ReferenceGrant", required
         Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     metadata : v1.ObjectMeta, default is Undefined, optional
         metadata
-    spec : GatewayNetworkingK8sIoV1alpha2ReferenceGrantSpec, default is Undefined, optional
+    spec : GatewayNetworkingK8sIoV1beta1ReferenceGrantSpec, default is Undefined, optional
         spec
     """
 
 
-    apiVersion: "gateway.networking.k8s.io/v1alpha2" = "gateway.networking.k8s.io/v1alpha2"
+    apiVersion: "gateway.networking.k8s.io/v1beta1" = "gateway.networking.k8s.io/v1beta1"
 
     kind: "ReferenceGrant" = "ReferenceGrant"
 
     metadata?: v1.ObjectMeta
 
-    spec?: GatewayNetworkingK8sIoV1alpha2ReferenceGrantSpec
+    spec?: GatewayNetworkingK8sIoV1beta1ReferenceGrantSpec
 
 
-schema GatewayNetworkingK8sIoV1alpha2ReferenceGrantSpec:
+schema GatewayNetworkingK8sIoV1beta1ReferenceGrantSpec:
     r"""
     Spec defines the desired state of ReferenceGrant.
 
     Attributes
     ----------
-    from : [GatewayNetworkingK8sIoV1alpha2ReferenceGrantSpecFromItems0], default is Undefined, required
+    from : [GatewayNetworkingK8sIoV1beta1ReferenceGrantSpecFromItems0], default is Undefined, required
         From describes the trusted namespaces and kinds that can reference the
         resources described in "To". Each entry in this list MUST be considered
         to be an additional place that references can be valid from, or to put
@@ -69,7 +65,7 @@ schema GatewayNetworkingK8sIoV1alpha2ReferenceGrantSpec:
 
 
         Support: Core
-    to : [GatewayNetworkingK8sIoV1alpha2ReferenceGrantSpecToItems0], default is Undefined, required
+    to : [GatewayNetworkingK8sIoV1beta1ReferenceGrantSpecToItems0], default is Undefined, required
         To describes the resources that may be referenced by the resources
         described in "From". Each entry in this list MUST be considered to be an
         additional place that references can be valid to, or to put this another
@@ -80,9 +76,9 @@ schema GatewayNetworkingK8sIoV1alpha2ReferenceGrantSpec:
     """
 
 
-    from: [GatewayNetworkingK8sIoV1alpha2ReferenceGrantSpecFromItems0]
+    from: [GatewayNetworkingK8sIoV1beta1ReferenceGrantSpecFromItems0]
 
-    to: [GatewayNetworkingK8sIoV1alpha2ReferenceGrantSpecToItems0]
+    to: [GatewayNetworkingK8sIoV1beta1ReferenceGrantSpecToItems0]
 
 
     check:
@@ -92,7 +88,7 @@ schema GatewayNetworkingK8sIoV1alpha2ReferenceGrantSpec:
         len(to) <= 16
 
 
-schema GatewayNetworkingK8sIoV1alpha2ReferenceGrantSpecFromItems0:
+schema GatewayNetworkingK8sIoV1beta1ReferenceGrantSpecFromItems0:
     r"""
     ReferenceGrantFrom describes trusted namespaces and kinds.
 
@@ -150,7 +146,7 @@ schema GatewayNetworkingK8sIoV1alpha2ReferenceGrantSpecFromItems0:
         _regex_match(str(namespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$")
 
 
-schema GatewayNetworkingK8sIoV1alpha2ReferenceGrantSpecToItems0:
+schema GatewayNetworkingK8sIoV1beta1ReferenceGrantSpecToItems0:
     r"""
     ReferenceGrantTo describes what Kinds are allowed as targets of the
     references.
