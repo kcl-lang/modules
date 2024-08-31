@@ -1,0 +1,25 @@
+version: 0.0.3
+name: sqlc
+displayName: sqlc
+createdAt: "2024-08-31T00:04:39Z"
+description: sqlc.dev schema config file
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `sqlc` with tag `0.0.3` as dependency
+  ```
+  kcl mod add sqlc:0.0.3
+  ```
+
+  #### Pull `sqlc` with tag `0.0.3` to local
+  ```
+  kcl mod pull sqlc:0.0.3
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
