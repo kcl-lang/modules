@@ -21,8 +21,6 @@ schema ConfigSchema:
     }
 
     check:
-        # schema.sql.rules should be unique
-        isunique(allSqlRules()), "sql.rules must be unique"
         # schema.[rulees].name should be unique
         isunique(allRuleNames()) if $rules, "rules must be unique"
         # schema.sql.[rules] need to be present in base schema.[rules].name

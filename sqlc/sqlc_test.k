@@ -293,6 +293,18 @@ sql:
         out: "some/path"
         omit_unused_structs: true
         emit_sql_as_comment: true
+  - name: "test_two"
+    schema: "schema.sql"
+    queries: "query.sql"
+    engine: "mysql"
+    rules:
+      - no-exec-q-annotation
+    gen:
+      go:
+        package: "somegopkgtwo"
+        out: "some/pathtwo"
+        omit_unused_structs: true
+        emit_sql_as_comment: true
 """
     cfg :ConfigSchema = yaml.decode(yl)
     assert len(cfg.$rules) == 1
