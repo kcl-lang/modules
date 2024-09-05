@@ -29,5 +29,5 @@ schema Resource:
     """
 
     cpu?: int | Unit = 1
-    memory?: Unit = 1024Mi
-    disk?: Unit = 10Gi
+    memory?: str | Unit = 1024Mi
+    disk?: str | Unit = 10Gi
