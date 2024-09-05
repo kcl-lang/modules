@@ -167,6 +167,10 @@ schema GoGen:
     # Either `pgx/v4`, `pgx/v5` or `database/sql`.
     # Defaults to database/sql.
     sql_package: "database/sql" | "pgx/v4" | "pgx/v5" = "database/sql"
+    # One of the following drivers are allowed, the default value will depend on the sql_package
+    # and is handled by sqlc behavior:
+    # "github.com/jackc/pgx/v4" | "github.com/jackc/pgx/v5" | "github.com/lib/pq" | "github.com/go-sql-driver/mysql"
+    sql_driver?: "github.com/jackc/pgx/v4" | "github.com/jackc/pgx/v5" | "github.com/lib/pq" | "github.com/go-sql-driver/mysql"
     # If true, add DB tags to generated structs. Defaults to false.
     emit_db_tags: bool = False
     # If true, include support for prepared queries. Defaults to false.

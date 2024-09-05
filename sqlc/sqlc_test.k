@@ -293,6 +293,7 @@ sql:
         out: "some/path"
         omit_unused_structs: true
         emit_sql_as_comment: true
+        sql_driver: "github.com/go-sql-driver/mysql"
   - name: "test_two"
     schema: "schema.sql"
     queries: "query.sql"
