@@ -4,6 +4,7 @@ Editing this file might prove futile when you re-run the KCL auto-gen generate c
 """
 import regex
 import k8s.apimachinery.pkg.apis.meta.v1
+_regex_match = regex.match
 
 
 schema ControllerConfig:
@@ -489,22 +490,22 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAffinityPreferredDu
     matchLabelKeys : [str], default is Undefined, optional
         MatchLabelKeys is a set of pod label keys to select which pods will
         be taken into consideration. The keys are used to lookup values from the
-        incoming pod labels, those key-value labels are merged with `LabelSelector` as `key in (value)`
+        incoming pod labels, those key-value labels are merged with `labelSelector` as `key in (value)`
         to select the group of existing pods which pods will be taken into consideration
         for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming
         pod labels will be ignored. The default value is empty.
-        The same key is forbidden to exist in both MatchLabelKeys and LabelSelector.
-        Also, MatchLabelKeys cannot be set when LabelSelector isn't set.
+        The same key is forbidden to exist in both matchLabelKeys and labelSelector.
+        Also, matchLabelKeys cannot be set when labelSelector isn't set.
         This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.
     mismatchLabelKeys : [str], default is Undefined, optional
         MismatchLabelKeys is a set of pod label keys to select which pods will
         be taken into consideration. The keys are used to lookup values from the
-        incoming pod labels, those key-value labels are merged with `LabelSelector` as `key notin (value)`
+        incoming pod labels, those key-value labels are merged with `labelSelector` as `key notin (value)`
         to select the group of existing pods which pods will be taken into consideration
         for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming
         pod labels will be ignored. The default value is empty.
-        The same key is forbidden to exist in both MismatchLabelKeys and LabelSelector.
-        Also, MismatchLabelKeys cannot be set when LabelSelector isn't set.
+        The same key is forbidden to exist in both mismatchLabelKeys and labelSelector.
+        Also, mismatchLabelKeys cannot be set when labelSelector isn't set.
         This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.
     namespaceSelector : PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector, default is Undefined, optional
         namespace selector
@@ -650,22 +651,22 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAffinityRequiredDur
     matchLabelKeys : [str], default is Undefined, optional
         MatchLabelKeys is a set of pod label keys to select which pods will
         be taken into consideration. The keys are used to lookup values from the
-        incoming pod labels, those key-value labels are merged with `LabelSelector` as `key in (value)`
+        incoming pod labels, those key-value labels are merged with `labelSelector` as `key in (value)`
         to select the group of existing pods which pods will be taken into consideration
         for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming
         pod labels will be ignored. The default value is empty.
-        The same key is forbidden to exist in both MatchLabelKeys and LabelSelector.
-        Also, MatchLabelKeys cannot be set when LabelSelector isn't set.
+        The same key is forbidden to exist in both matchLabelKeys and labelSelector.
+        Also, matchLabelKeys cannot be set when labelSelector isn't set.
         This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.
     mismatchLabelKeys : [str], default is Undefined, optional
         MismatchLabelKeys is a set of pod label keys to select which pods will
         be taken into consideration. The keys are used to lookup values from the
-        incoming pod labels, those key-value labels are merged with `LabelSelector` as `key notin (value)`
+        incoming pod labels, those key-value labels are merged with `labelSelector` as `key notin (value)`
         to select the group of existing pods which pods will be taken into consideration
         for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming
         pod labels will be ignored. The default value is empty.
-        The same key is forbidden to exist in both MismatchLabelKeys and LabelSelector.
-        Also, MismatchLabelKeys cannot be set when LabelSelector isn't set.
+        The same key is forbidden to exist in both mismatchLabelKeys and labelSelector.
+        Also, mismatchLabelKeys cannot be set when labelSelector isn't set.
         This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.
     namespaceSelector : PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector, default is Undefined, optional
         namespace selector
@@ -857,22 +858,22 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAntiAffinityPreferr
     matchLabelKeys : [str], default is Undefined, optional
         MatchLabelKeys is a set of pod label keys to select which pods will
         be taken into consideration. The keys are used to lookup values from the
-        incoming pod labels, those key-value labels are merged with `LabelSelector` as `key in (value)`
+        incoming pod labels, those key-value labels are merged with `labelSelector` as `key in (value)`
         to select the group of existing pods which pods will be taken into consideration
         for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming
         pod labels will be ignored. The default value is empty.
-        The same key is forbidden to exist in both MatchLabelKeys and LabelSelector.
-        Also, MatchLabelKeys cannot be set when LabelSelector isn't set.
+        The same key is forbidden to exist in both matchLabelKeys and labelSelector.
+        Also, matchLabelKeys cannot be set when labelSelector isn't set.
         This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.
     mismatchLabelKeys : [str], default is Undefined, optional
         MismatchLabelKeys is a set of pod label keys to select which pods will
         be taken into consideration. The keys are used to lookup values from the
-        incoming pod labels, those key-value labels are merged with `LabelSelector` as `key notin (value)`
+        incoming pod labels, those key-value labels are merged with `labelSelector` as `key notin (value)`
         to select the group of existing pods which pods will be taken into consideration
         for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming
         pod labels will be ignored. The default value is empty.
-        The same key is forbidden to exist in both MismatchLabelKeys and LabelSelector.
-        Also, MismatchLabelKeys cannot be set when LabelSelector isn't set.
+        The same key is forbidden to exist in both mismatchLabelKeys and labelSelector.
+        Also, mismatchLabelKeys cannot be set when labelSelector isn't set.
         This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.
     namespaceSelector : PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector, default is Undefined, optional
         namespace selector
@@ -1018,22 +1019,22 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAntiAffinityRequire
     matchLabelKeys : [str], default is Undefined, optional
         MatchLabelKeys is a set of pod label keys to select which pods will
         be taken into consideration. The keys are used to lookup values from the
-        incoming pod labels, those key-value labels are merged with `LabelSelector` as `key in (value)`
+        incoming pod labels, those key-value labels are merged with `labelSelector` as `key in (value)`
         to select the group of existing pods which pods will be taken into consideration
         for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming
         pod labels will be ignored. The default value is empty.
-        The same key is forbidden to exist in both MatchLabelKeys and LabelSelector.
-        Also, MatchLabelKeys cannot be set when LabelSelector isn't set.
+        The same key is forbidden to exist in both matchLabelKeys and labelSelector.
+        Also, matchLabelKeys cannot be set when labelSelector isn't set.
         This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.
     mismatchLabelKeys : [str], default is Undefined, optional
         MismatchLabelKeys is a set of pod label keys to select which pods will
         be taken into consideration. The keys are used to lookup values from the
-        incoming pod labels, those key-value labels are merged with `LabelSelector` as `key notin (value)`
+        incoming pod labels, those key-value labels are merged with `labelSelector` as `key notin (value)`
         to select the group of existing pods which pods will be taken into consideration
         for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming
         pod labels will be ignored. The default value is empty.
-        The same key is forbidden to exist in both MismatchLabelKeys and LabelSelector.
-        Also, MismatchLabelKeys cannot be set when LabelSelector isn't set.
+        The same key is forbidden to exist in both mismatchLabelKeys and labelSelector.
+        Also, mismatchLabelKeys cannot be set when labelSelector isn't set.
         This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.
     namespaceSelector : PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector, default is Undefined, optional
         namespace selector
@@ -1348,7 +1349,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecEnvItems0ValueFromResourceFiel
 
 
     check:
-        regex.match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
+        _regex_match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecEnvItems0ValueFromSecretKeyRef:
@@ -1425,6 +1426,8 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecPodSecurityContext:
 
     Attributes
     ----------
+    appArmorProfile : PkgCrossplaneIoV1alpha1ControllerConfigSpecPodSecurityContextAppArmorProfile, default is Undefined, optional
+        app armor profile
     fsGroup : int, default is Undefined, optional
         A special supplemental group that applies to all containers in a pod.
         Some volume types allow the Kubelet to change the ownership of that volume
@@ -1488,6 +1491,8 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecPodSecurityContext:
     """
 
 
+    appArmorProfile?: PkgCrossplaneIoV1alpha1ControllerConfigSpecPodSecurityContextAppArmorProfile
+
     fsGroup?: int
 
     fsGroupChangePolicy?: str
@@ -1507,6 +1512,32 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecPodSecurityContext:
     sysctls?: [PkgCrossplaneIoV1alpha1ControllerConfigSpecPodSecurityContextSysctlsItems0]
 
     windowsOptions?: PkgCrossplaneIoV1alpha1ControllerConfigSpecPodSecurityContextWindowsOptions
+
+
+schema PkgCrossplaneIoV1alpha1ControllerConfigSpecPodSecurityContextAppArmorProfile:
+    r"""
+    appArmorProfile is the AppArmor options to use by the containers in this pod.
+    Note that this field cannot be set when spec.os.name is windows.
+
+    Attributes
+    ----------
+    localhostProfile : str, default is Undefined, optional
+        localhostProfile indicates a profile loaded on the node that should be used.
+        The profile must be preconfigured on the node to work.
+        Must match the loaded name of the profile.
+        Must be set if and only if type is "Localhost".
+    $type : str, default is Undefined, required
+        type indicates which kind of AppArmor profile will be applied.
+        Valid options are:
+          Localhost - a profile pre-loaded on the node.
+          RuntimeDefault - the container runtime's default profile.
+          Unconfined - no AppArmor enforcement.
+    """
+
+
+    localhostProfile?: str
+
+    $type: str
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecPodSecurityContextSeLinuxOptions:
@@ -1697,8 +1728,8 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecResources:
 
 
     check:
-        all _, limits in limits {regex.match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests {regex.match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecResourcesClaimsItems0:
@@ -1732,6 +1763,8 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecSecurityContext:
         1) run as Privileged
         2) has CAP_SYS_ADMIN
         Note that this field cannot be set when spec.os.name is windows.
+    appArmorProfile : PkgCrossplaneIoV1alpha1ControllerConfigSpecSecurityContextAppArmorProfile, default is Undefined, optional
+        app armor profile
     capabilities : PkgCrossplaneIoV1alpha1ControllerConfigSpecSecurityContextCapabilities, default is Undefined, optional
         capabilities
     privileged : bool, default is Undefined, optional
@@ -1779,6 +1812,8 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecSecurityContext:
 
     allowPrivilegeEscalation?: bool
 
+    appArmorProfile?: PkgCrossplaneIoV1alpha1ControllerConfigSpecSecurityContextAppArmorProfile
+
     capabilities?: PkgCrossplaneIoV1alpha1ControllerConfigSpecSecurityContextCapabilities
 
     privileged?: bool
@@ -1798,6 +1833,33 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecSecurityContext:
     seccompProfile?: PkgCrossplaneIoV1alpha1ControllerConfigSpecSecurityContextSeccompProfile
 
     windowsOptions?: PkgCrossplaneIoV1alpha1ControllerConfigSpecSecurityContextWindowsOptions
+
+
+schema PkgCrossplaneIoV1alpha1ControllerConfigSpecSecurityContextAppArmorProfile:
+    r"""
+    appArmorProfile is the AppArmor options to use by this container. If set, this profile
+    overrides the pod's appArmorProfile.
+    Note that this field cannot be set when spec.os.name is windows.
+
+    Attributes
+    ----------
+    localhostProfile : str, default is Undefined, optional
+        localhostProfile indicates a profile loaded on the node that should be used.
+        The profile must be preconfigured on the node to work.
+        Must match the loaded name of the profile.
+        Must be set if and only if type is "Localhost".
+    $type : str, default is Undefined, required
+        type indicates which kind of AppArmor profile will be applied.
+        Valid options are:
+          Localhost - a profile pre-loaded on the node.
+          RuntimeDefault - the container runtime's default profile.
+          Unconfined - no AppArmor enforcement.
+    """
+
+
+    localhostProfile?: str
+
+    $type: str
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecSecurityContextCapabilities:
@@ -1971,11 +2033,34 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumeMountsItems0:
         to container and the other way around.
         When not set, MountPropagationNone is used.
         This field is beta in 1.10.
+        When RecursiveReadOnly is set to IfPossible or to Enabled, MountPropagation must be None or unspecified
+        (which defaults to None).
     name : str, default is Undefined, required
         This must match the Name of a Volume.
     readOnly : bool, default is Undefined, optional
         Mounted read-only if true, read-write otherwise (false or unspecified).
         Defaults to false.
+    recursiveReadOnly : str, default is Undefined, optional
+        RecursiveReadOnly specifies whether read-only mounts should be handled
+        recursively.
+
+
+        If ReadOnly is false, this field has no meaning and must be unspecified.
+
+
+        If ReadOnly is true, and this field is set to Disabled, the mount is not made
+        recursively read-only.  If this field is set to IfPossible, the mount is made
+        recursively read-only, if it is supported by the container runtime.  If this
+        field is set to Enabled, the mount is made recursively read-only if it is
+        supported by the container runtime, otherwise the pod will not be started and
+        an error will be generated to indicate the reason.
+
+
+        If this field is set to IfPossible or Enabled, MountPropagation must be set to
+        None (or be unspecified, which defaults to None).
+
+
+        If this field is not specified, it is treated as an equivalent of Disabled.
     subPath : str, default is Undefined, optional
         Path within the volume from which the container's volume should be mounted.
         Defaults to "" (volume's root).
@@ -1994,6 +2079,8 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumeMountsItems0:
     name: str
 
     readOnly?: bool
+
+    recursiveReadOnly?: str
 
     subPath?: str
 
@@ -2518,7 +2605,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0DownwardAPIItemsI
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0DownwardAPIItemsItems0FieldRef:
     r"""
-    Required: Selects a field of the pod: only annotations, labels, name and namespace are supported.
+    Required: Selects a field of the pod: only annotations, labels, name, namespace and uid are supported.
 
     Attributes
     ----------
@@ -2558,7 +2645,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0DownwardAPIItemsI
 
 
     check:
-        regex.match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
+        _regex_match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0EmptyDir:
@@ -2589,7 +2676,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0EmptyDir:
 
 
     check:
-        regex.match(str(sizeLimit), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if sizeLimit
+        _regex_match(str(sizeLimit), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if sizeLimit
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0Ephemeral:
@@ -2740,7 +2827,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0EphemeralVolumeCl
         If the resource referred to by volumeAttributesClass does not exist, this PersistentVolumeClaim will be
         set to a Pending state, as reflected by the modifyVolumeStatus field, until such as a resource
         exists.
-        More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#volumeattributesclass
+        More info: https://kubernetes.io/docs/concepts/storage/volume-attributes-classes/
         (Alpha) Using this field requires the VolumeAttributesClass feature gate to be enabled.
     volumeMode : str, default is Undefined, optional
         volumeMode defines what type of volume is required by the claim.
@@ -2879,8 +2966,8 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0EphemeralVolumeCl
 
 
     check:
-        all _, limits in limits {regex.match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests {regex.match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0EphemeralVolumeClaimTemplateSpecSelector:
@@ -3599,7 +3686,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0ProjectedSourcesI
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0FieldRef:
     r"""
-    Required: Selects a field of the pod: only annotations, labels, name and namespace are supported.
+    Required: Selects a field of the pod: only annotations, labels, name, namespace and uid are supported.
 
     Attributes
     ----------
@@ -3639,7 +3726,7 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0ProjectedSourcesI
 
 
     check:
-        regex.match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
+        _regex_match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0ProjectedSourcesItems0Secret:
