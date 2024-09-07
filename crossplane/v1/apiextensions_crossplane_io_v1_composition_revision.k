@@ -55,17 +55,20 @@ schema ApiextensionsCrossplaneIoV1CompositionRevisionSpec:
         Mode controls what type or "mode" of Composition will be used.
 
 
-        "Resources" (the default) indicates that a Composition uses what is
-        commonly referred to as "Patch & Transform" or P&T composition. This mode
-        of Composition uses an array of resources, each a template for a composed
-        resource.
+        "Pipeline" indicates that a Composition specifies a pipeline of
+        Composition Functions, each of which is responsible for producing
+        composed resources that Crossplane should create or update.
 
 
-        "Pipeline" indicates that a Composition specifies a pipeline
-        of Composition Functions, each of which is responsible for producing
-        composed resources that Crossplane should create or update. THE PIPELINE
-        MODE IS A BETA FEATURE. It is not honored if the relevant Crossplane
-        feature flag is disabled.
+        "Resources" indicates that a Composition uses what is commonly referred
+        to as "Patch & Transform" or P&T composition. This mode of Composition
+        uses an array of resources, each a template for a composed resource.
+
+
+        All Compositions should use Pipeline mode. Resources mode is deprecated.
+        Resources mode won't be removed in Crossplane 1.x, and will remain the
+        default to avoid breaking legacy Compositions. However, it's no longer
+        accepting new features, and only accepting security related bug fixes.
     patchSets : [ApiextensionsCrossplaneIoV1CompositionRevisionSpecPatchSetsItems0], default is Undefined, optional
         PatchSets define a named set of patches that may be included by any
         resource in this Composition. PatchSets cannot themselves refer to other
@@ -74,6 +77,9 @@ schema ApiextensionsCrossplaneIoV1CompositionRevisionSpec:
 
         PatchSets are only used by the "Resources" mode of Composition. They
         are ignored by other modes.
+
+
+        Deprecated: Use Composition Functions instead.
     pipeline : [ApiextensionsCrossplaneIoV1CompositionRevisionSpecPipelineItems0], default is Undefined, optional
         Pipeline is a list of composition function steps that will be used when a
         composite resource referring to this composition is created. One of
@@ -82,10 +88,6 @@ schema ApiextensionsCrossplaneIoV1CompositionRevisionSpec:
 
         The Pipeline is only used by the "Pipeline" mode of Composition. It is
         ignored by other modes.
-
-
-        THIS IS A BETA FIELD. It is not honored if the relevant Crossplane
-        feature flag is disabled.
     publishConnectionDetailsWithStoreConfigRef : ApiextensionsCrossplaneIoV1CompositionRevisionSpecPublishConnectionDetailsWithStoreConfigRef, default is Undefined, optional
         publish connection details with store config ref
     resources : [ApiextensionsCrossplaneIoV1CompositionRevisionSpecResourcesItems0], default is Undefined, optional
@@ -95,6 +97,9 @@ schema ApiextensionsCrossplaneIoV1CompositionRevisionSpec:
 
         Resources are only used by the "Resources" mode of Composition. They are
         ignored by other modes.
+
+
+        Deprecated: Use Composition Functions instead.
     revision : int, default is Undefined, required
         Revision number. Newer revisions have larger numbers.
     writeConnectionSecretsToNamespace : str, default is Undefined, optional

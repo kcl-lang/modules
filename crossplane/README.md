@@ -1,7 +1,13 @@
-# crossplane@v1.15.2
+# crossplane
 
 ## Index
 
+- meta
+  - v1beta1
+    - [Function](#function)
+    - [MetaPkgCrossplaneIoV1beta1FunctionSpec](#metapkgcrossplaneiov1beta1functionspec)
+    - [MetaPkgCrossplaneIoV1beta1FunctionSpecCrossplane](#metapkgcrossplaneiov1beta1functionspeccrossplane)
+    - [MetaPkgCrossplaneIoV1beta1FunctionSpecDependsOnItems0](#metapkgcrossplaneiov1beta1functionspecdependsonitems0)
 - v1
   - [ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpec](#apiextensionscrossplaneiov1compositeresourcedefinitionspec)
   - [ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecClaimNames](#apiextensionscrossplaneiov1compositeresourcedefinitionspecclaimnames)
@@ -59,6 +65,8 @@
   - [ApiextensionsCrossplaneIoV1CompositionRevisionSpecPatchSetsItems0PatchesItems0TransformsItems0StringJoin](#apiextensionscrossplaneiov1compositionrevisionspecpatchsetsitems0patchesitems0transformsitems0stringjoin)
   - [ApiextensionsCrossplaneIoV1CompositionRevisionSpecPatchSetsItems0PatchesItems0TransformsItems0StringRegexp](#apiextensionscrossplaneiov1compositionrevisionspecpatchsetsitems0patchesitems0transformsitems0stringregexp)
   - [ApiextensionsCrossplaneIoV1CompositionRevisionSpecPipelineItems0](#apiextensionscrossplaneiov1compositionrevisionspecpipelineitems0)
+  - [ApiextensionsCrossplaneIoV1CompositionRevisionSpecPipelineItems0CredentialsItems0](#apiextensionscrossplaneiov1compositionrevisionspecpipelineitems0credentialsitems0)
+  - [ApiextensionsCrossplaneIoV1CompositionRevisionSpecPipelineItems0CredentialsItems0SecretRef](#apiextensionscrossplaneiov1compositionrevisionspecpipelineitems0credentialsitems0secretref)
   - [ApiextensionsCrossplaneIoV1CompositionRevisionSpecPipelineItems0FunctionRef](#apiextensionscrossplaneiov1compositionrevisionspecpipelineitems0functionref)
   - [ApiextensionsCrossplaneIoV1CompositionRevisionSpecPublishConnectionDetailsWithStoreConfigRef](#apiextensionscrossplaneiov1compositionrevisionspecpublishconnectiondetailswithstoreconfigref)
   - [ApiextensionsCrossplaneIoV1CompositionRevisionSpecResourcesItems0](#apiextensionscrossplaneiov1compositionrevisionspecresourcesitems0)
@@ -119,6 +127,8 @@
   - [ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0TransformsItems0StringJoin](#apiextensionscrossplaneiov1compositionspecpatchsetsitems0patchesitems0transformsitems0stringjoin)
   - [ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0TransformsItems0StringRegexp](#apiextensionscrossplaneiov1compositionspecpatchsetsitems0patchesitems0transformsitems0stringregexp)
   - [ApiextensionsCrossplaneIoV1CompositionSpecPipelineItems0](#apiextensionscrossplaneiov1compositionspecpipelineitems0)
+  - [ApiextensionsCrossplaneIoV1CompositionSpecPipelineItems0CredentialsItems0](#apiextensionscrossplaneiov1compositionspecpipelineitems0credentialsitems0)
+  - [ApiextensionsCrossplaneIoV1CompositionSpecPipelineItems0CredentialsItems0SecretRef](#apiextensionscrossplaneiov1compositionspecpipelineitems0credentialsitems0secretref)
   - [ApiextensionsCrossplaneIoV1CompositionSpecPipelineItems0FunctionRef](#apiextensionscrossplaneiov1compositionspecpipelineitems0functionref)
   - [ApiextensionsCrossplaneIoV1CompositionSpecPublishConnectionDetailsWithStoreConfigRef](#apiextensionscrossplaneiov1compositionspecpublishconnectiondetailswithstoreconfigref)
   - [ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0](#apiextensionscrossplaneiov1compositionspecresourcesitems0)
@@ -144,14 +154,8 @@
   - [CompositionRevision](#compositionrevision)
   - [Configuration](#configuration)
   - [ConfigurationRevision](#configurationrevision)
-  - [MetaPkgCrossplaneIoV1ConfigurationSpec](#metapkgcrossplaneiov1configurationspec)
-  - [MetaPkgCrossplaneIoV1ConfigurationSpecCrossplane](#metapkgcrossplaneiov1configurationspeccrossplane)
-  - [MetaPkgCrossplaneIoV1ConfigurationSpecDependsOnItems0](#metapkgcrossplaneiov1configurationspecdependsonitems0)
-  - [MetaPkgCrossplaneIoV1ProviderSpec](#metapkgcrossplaneiov1providerspec)
-  - [MetaPkgCrossplaneIoV1ProviderSpecController](#metapkgcrossplaneiov1providerspeccontroller)
-  - [MetaPkgCrossplaneIoV1ProviderSpecControllerPermissionRequestsItems0](#metapkgcrossplaneiov1providerspeccontrollerpermissionrequestsitems0)
-  - [MetaPkgCrossplaneIoV1ProviderSpecCrossplane](#metapkgcrossplaneiov1providerspeccrossplane)
-  - [MetaPkgCrossplaneIoV1ProviderSpecDependsOnItems0](#metapkgcrossplaneiov1providerspecdependsonitems0)
+  - [Function](#function)
+  - [FunctionRevision](#functionrevision)
   - [PkgCrossplaneIoV1ConfigurationRevisionSpec](#pkgcrossplaneiov1configurationrevisionspec)
   - [PkgCrossplaneIoV1ConfigurationRevisionSpecPackagePullSecretsItems0](#pkgcrossplaneiov1configurationrevisionspecpackagepullsecretsitems0)
   - [PkgCrossplaneIoV1ConfigurationRevisionStatus](#pkgcrossplaneiov1configurationrevisionstatus)
@@ -162,6 +166,20 @@
   - [PkgCrossplaneIoV1ConfigurationSpecPackagePullSecretsItems0](#pkgcrossplaneiov1configurationspecpackagepullsecretsitems0)
   - [PkgCrossplaneIoV1ConfigurationStatus](#pkgcrossplaneiov1configurationstatus)
   - [PkgCrossplaneIoV1ConfigurationStatusConditionsItems0](#pkgcrossplaneiov1configurationstatusconditionsitems0)
+  - [PkgCrossplaneIoV1FunctionRevisionSpec](#pkgcrossplaneiov1functionrevisionspec)
+  - [PkgCrossplaneIoV1FunctionRevisionSpecControllerConfigRef](#pkgcrossplaneiov1functionrevisionspeccontrollerconfigref)
+  - [PkgCrossplaneIoV1FunctionRevisionSpecPackagePullSecretsItems0](#pkgcrossplaneiov1functionrevisionspecpackagepullsecretsitems0)
+  - [PkgCrossplaneIoV1FunctionRevisionSpecRuntimeConfigRef](#pkgcrossplaneiov1functionrevisionspecruntimeconfigref)
+  - [PkgCrossplaneIoV1FunctionRevisionStatus](#pkgcrossplaneiov1functionrevisionstatus)
+  - [PkgCrossplaneIoV1FunctionRevisionStatusConditionsItems0](#pkgcrossplaneiov1functionrevisionstatusconditionsitems0)
+  - [PkgCrossplaneIoV1FunctionRevisionStatusObjectRefsItems0](#pkgcrossplaneiov1functionrevisionstatusobjectrefsitems0)
+  - [PkgCrossplaneIoV1FunctionRevisionStatusPermissionRequestsItems0](#pkgcrossplaneiov1functionrevisionstatuspermissionrequestsitems0)
+  - [PkgCrossplaneIoV1FunctionSpec](#pkgcrossplaneiov1functionspec)
+  - [PkgCrossplaneIoV1FunctionSpecControllerConfigRef](#pkgcrossplaneiov1functionspeccontrollerconfigref)
+  - [PkgCrossplaneIoV1FunctionSpecPackagePullSecretsItems0](#pkgcrossplaneiov1functionspecpackagepullsecretsitems0)
+  - [PkgCrossplaneIoV1FunctionSpecRuntimeConfigRef](#pkgcrossplaneiov1functionspecruntimeconfigref)
+  - [PkgCrossplaneIoV1FunctionStatus](#pkgcrossplaneiov1functionstatus)
+  - [PkgCrossplaneIoV1FunctionStatusConditionsItems0](#pkgcrossplaneiov1functionstatusconditionsitems0)
   - [PkgCrossplaneIoV1ProviderRevisionSpec](#pkgcrossplaneiov1providerrevisionspec)
   - [PkgCrossplaneIoV1ProviderRevisionSpecControllerConfigRef](#pkgcrossplaneiov1providerrevisionspeccontrollerconfigref)
   - [PkgCrossplaneIoV1ProviderRevisionSpecPackagePullSecretsItems0](#pkgcrossplaneiov1providerrevisionspecpackagepullsecretsitems0)
@@ -190,34 +208,6 @@
   - [ApiextensionsCrossplaneIoV1alpha1UsageStatusConditionsItems0](#apiextensionscrossplaneiov1alpha1usagestatusconditionsitems0)
   - [ControllerConfig](#controllerconfig)
   - [EnvironmentConfig](#environmentconfig)
-  - [HelmCrossplaneIoV1alpha1ProviderConfigSpec](#helmcrossplaneiov1alpha1providerconfigspec)
-  - [HelmCrossplaneIoV1alpha1ProviderConfigSpecCredentials](#helmcrossplaneiov1alpha1providerconfigspeccredentials)
-  - [HelmCrossplaneIoV1alpha1ProviderConfigSpecCredentialsEnv](#helmcrossplaneiov1alpha1providerconfigspeccredentialsenv)
-  - [HelmCrossplaneIoV1alpha1ProviderConfigSpecCredentialsFs](#helmcrossplaneiov1alpha1providerconfigspeccredentialsfs)
-  - [HelmCrossplaneIoV1alpha1ProviderConfigSpecCredentialsSecretRef](#helmcrossplaneiov1alpha1providerconfigspeccredentialssecretref)
-  - [HelmCrossplaneIoV1alpha1ProviderConfigSpecIdentity](#helmcrossplaneiov1alpha1providerconfigspecidentity)
-  - [HelmCrossplaneIoV1alpha1ProviderConfigSpecIdentityEnv](#helmcrossplaneiov1alpha1providerconfigspecidentityenv)
-  - [HelmCrossplaneIoV1alpha1ProviderConfigSpecIdentityFs](#helmcrossplaneiov1alpha1providerconfigspecidentityfs)
-  - [HelmCrossplaneIoV1alpha1ProviderConfigSpecIdentitySecretRef](#helmcrossplaneiov1alpha1providerconfigspecidentitysecretref)
-  - [HelmCrossplaneIoV1alpha1ProviderConfigStatus](#helmcrossplaneiov1alpha1providerconfigstatus)
-  - [HelmCrossplaneIoV1alpha1ProviderConfigStatusConditionsItems0](#helmcrossplaneiov1alpha1providerconfigstatusconditionsitems0)
-  - [NopCrossplaneIoV1alpha1NopResourceSpec](#nopcrossplaneiov1alpha1nopresourcespec)
-  - [NopCrossplaneIoV1alpha1NopResourceSpecForProvider](#nopcrossplaneiov1alpha1nopresourcespecforprovider)
-  - [NopCrossplaneIoV1alpha1NopResourceSpecForProviderConditionAfterItems0](#nopcrossplaneiov1alpha1nopresourcespecforproviderconditionafteritems0)
-  - [NopCrossplaneIoV1alpha1NopResourceSpecForProviderConnectionDetailsItems0](#nopcrossplaneiov1alpha1nopresourcespecforproviderconnectiondetailsitems0)
-  - [NopCrossplaneIoV1alpha1NopResourceSpecProviderConfigRef](#nopcrossplaneiov1alpha1nopresourcespecproviderconfigref)
-  - [NopCrossplaneIoV1alpha1NopResourceSpecProviderConfigRefPolicy](#nopcrossplaneiov1alpha1nopresourcespecproviderconfigrefpolicy)
-  - [NopCrossplaneIoV1alpha1NopResourceSpecProviderRef](#nopcrossplaneiov1alpha1nopresourcespecproviderref)
-  - [NopCrossplaneIoV1alpha1NopResourceSpecProviderRefPolicy](#nopcrossplaneiov1alpha1nopresourcespecproviderrefpolicy)
-  - [NopCrossplaneIoV1alpha1NopResourceSpecPublishConnectionDetailsTo](#nopcrossplaneiov1alpha1nopresourcespecpublishconnectiondetailsto)
-  - [NopCrossplaneIoV1alpha1NopResourceSpecPublishConnectionDetailsToConfigRef](#nopcrossplaneiov1alpha1nopresourcespecpublishconnectiondetailstoconfigref)
-  - [NopCrossplaneIoV1alpha1NopResourceSpecPublishConnectionDetailsToConfigRefPolicy](#nopcrossplaneiov1alpha1nopresourcespecpublishconnectiondetailstoconfigrefpolicy)
-  - [NopCrossplaneIoV1alpha1NopResourceSpecPublishConnectionDetailsToMetadata](#nopcrossplaneiov1alpha1nopresourcespecpublishconnectiondetailstometadata)
-  - [NopCrossplaneIoV1alpha1NopResourceSpecWriteConnectionSecretToRef](#nopcrossplaneiov1alpha1nopresourcespecwriteconnectionsecrettoref)
-  - [NopCrossplaneIoV1alpha1NopResourceStatus](#nopcrossplaneiov1alpha1nopresourcestatus)
-  - [NopCrossplaneIoV1alpha1NopResourceStatusAtProvider](#nopcrossplaneiov1alpha1nopresourcestatusatprovider)
-  - [NopCrossplaneIoV1alpha1NopResourceStatusConditionsItems0](#nopcrossplaneiov1alpha1nopresourcestatusconditionsitems0)
-  - [NopResource](#nopresource)
   - [PkgCrossplaneIoV1alpha1ControllerConfigSpec](#pkgcrossplaneiov1alpha1controllerconfigspec)
   - [PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinity](#pkgcrossplaneiov1alpha1controllerconfigspecaffinity)
   - [PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityNodeAffinity](#pkgcrossplaneiov1alpha1controllerconfigspecaffinitynodeaffinity)
@@ -265,6 +255,7 @@
   - [PkgCrossplaneIoV1alpha1ControllerConfigSpecImagePullSecretsItems0](#pkgcrossplaneiov1alpha1controllerconfigspecimagepullsecretsitems0)
   - [PkgCrossplaneIoV1alpha1ControllerConfigSpecMetadata](#pkgcrossplaneiov1alpha1controllerconfigspecmetadata)
   - [PkgCrossplaneIoV1alpha1ControllerConfigSpecPodSecurityContext](#pkgcrossplaneiov1alpha1controllerconfigspecpodsecuritycontext)
+  - [PkgCrossplaneIoV1alpha1ControllerConfigSpecPodSecurityContextAppArmorProfile](#pkgcrossplaneiov1alpha1controllerconfigspecpodsecuritycontextapparmorprofile)
   - [PkgCrossplaneIoV1alpha1ControllerConfigSpecPodSecurityContextSeLinuxOptions](#pkgcrossplaneiov1alpha1controllerconfigspecpodsecuritycontextselinuxoptions)
   - [PkgCrossplaneIoV1alpha1ControllerConfigSpecPodSecurityContextSeccompProfile](#pkgcrossplaneiov1alpha1controllerconfigspecpodsecuritycontextseccompprofile)
   - [PkgCrossplaneIoV1alpha1ControllerConfigSpecPodSecurityContextSysctlsItems0](#pkgcrossplaneiov1alpha1controllerconfigspecpodsecuritycontextsysctlsitems0)
@@ -273,6 +264,7 @@
   - [PkgCrossplaneIoV1alpha1ControllerConfigSpecResources](#pkgcrossplaneiov1alpha1controllerconfigspecresources)
   - [PkgCrossplaneIoV1alpha1ControllerConfigSpecResourcesClaimsItems0](#pkgcrossplaneiov1alpha1controllerconfigspecresourcesclaimsitems0)
   - [PkgCrossplaneIoV1alpha1ControllerConfigSpecSecurityContext](#pkgcrossplaneiov1alpha1controllerconfigspecsecuritycontext)
+  - [PkgCrossplaneIoV1alpha1ControllerConfigSpecSecurityContextAppArmorProfile](#pkgcrossplaneiov1alpha1controllerconfigspecsecuritycontextapparmorprofile)
   - [PkgCrossplaneIoV1alpha1ControllerConfigSpecSecurityContextCapabilities](#pkgcrossplaneiov1alpha1controllerconfigspecsecuritycontextcapabilities)
   - [PkgCrossplaneIoV1alpha1ControllerConfigSpecSecurityContextSeLinuxOptions](#pkgcrossplaneiov1alpha1controllerconfigspecsecuritycontextselinuxoptions)
   - [PkgCrossplaneIoV1alpha1ControllerConfigSpecSecurityContextSeccompProfile](#pkgcrossplaneiov1alpha1controllerconfigspecsecuritycontextseccompprofile)
@@ -343,7 +335,6 @@
   - [PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0Storageos](#pkgcrossplaneiov1alpha1controllerconfigspecvolumesitems0storageos)
   - [PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0StorageosSecretRef](#pkgcrossplaneiov1alpha1controllerconfigspecvolumesitems0storageossecretref)
   - [PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0VsphereVolume](#pkgcrossplaneiov1alpha1controllerconfigspecvolumesitems0vspherevolume)
-  - [ProviderConfig](#providerconfig)
   - [SecretsCrossplaneIoV1alpha1StoreConfigSpec](#secretscrossplaneiov1alpha1storeconfigspec)
   - [SecretsCrossplaneIoV1alpha1StoreConfigSpecKubernetes](#secretscrossplaneiov1alpha1storeconfigspeckubernetes)
   - [SecretsCrossplaneIoV1alpha1StoreConfigSpecKubernetesAuth](#secretscrossplaneiov1alpha1storeconfigspeckubernetesauth)
@@ -356,12 +347,7 @@
   - [Usage](#usage)
 - v1beta1
   - [DeploymentRuntimeConfig](#deploymentruntimeconfig)
-  - [Function](#function)
-  - [FunctionRevision](#functionrevision)
   - [Lock](#lock)
-  - [MetaPkgCrossplaneIoV1beta1FunctionSpec](#metapkgcrossplaneiov1beta1functionspec)
-  - [MetaPkgCrossplaneIoV1beta1FunctionSpecCrossplane](#metapkgcrossplaneiov1beta1functionspeccrossplane)
-  - [MetaPkgCrossplaneIoV1beta1FunctionSpecDependsOnItems0](#metapkgcrossplaneiov1beta1functionspecdependsonitems0)
   - [PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpec](#pkgcrossplaneiov1beta1deploymentruntimeconfigspec)
   - [PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplate](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplate)
   - [PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateMetadata](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatemetadata)
@@ -447,6 +433,7 @@
   - [PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0Resources](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespeccontainersitems0resources)
   - [PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0ResourcesClaimsItems0](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespeccontainersitems0resourcesclaimsitems0)
   - [PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0SecurityContext](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespeccontainersitems0securitycontext)
+  - [PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0SecurityContextAppArmorProfile](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespeccontainersitems0securitycontextapparmorprofile)
   - [PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0SecurityContextCapabilities](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespeccontainersitems0securitycontextcapabilities)
   - [PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0SecurityContextSeLinuxOptions](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespeccontainersitems0securitycontextselinuxoptions)
   - [PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0SecurityContextSeccompProfile](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespeccontainersitems0securitycontextseccompprofile)
@@ -501,6 +488,7 @@
   - [PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0Resources](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespecephemeralcontainersitems0resources)
   - [PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0ResourcesClaimsItems0](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespecephemeralcontainersitems0resourcesclaimsitems0)
   - [PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0SecurityContext](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespecephemeralcontainersitems0securitycontext)
+  - [PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0SecurityContextAppArmorProfile](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespecephemeralcontainersitems0securitycontextapparmorprofile)
   - [PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0SecurityContextCapabilities](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespecephemeralcontainersitems0securitycontextcapabilities)
   - [PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0SecurityContextSeLinuxOptions](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespecephemeralcontainersitems0securitycontextselinuxoptions)
   - [PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0SecurityContextSeccompProfile](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespecephemeralcontainersitems0securitycontextseccompprofile)
@@ -555,6 +543,7 @@
   - [PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0Resources](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespecinitcontainersitems0resources)
   - [PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0ResourcesClaimsItems0](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespecinitcontainersitems0resourcesclaimsitems0)
   - [PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0SecurityContext](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespecinitcontainersitems0securitycontext)
+  - [PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0SecurityContextAppArmorProfile](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespecinitcontainersitems0securitycontextapparmorprofile)
   - [PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0SecurityContextCapabilities](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespecinitcontainersitems0securitycontextcapabilities)
   - [PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0SecurityContextSeLinuxOptions](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespecinitcontainersitems0securitycontextselinuxoptions)
   - [PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0SecurityContextSeccompProfile](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespecinitcontainersitems0securitycontextseccompprofile)
@@ -573,6 +562,7 @@
   - [PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecResourceClaimsItems0Source](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespecresourceclaimsitems0source)
   - [PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecSchedulingGatesItems0](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespecschedulinggatesitems0)
   - [PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecSecurityContext](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespecsecuritycontext)
+  - [PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecSecurityContextAppArmorProfile](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespecsecuritycontextapparmorprofile)
   - [PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecSecurityContextSeLinuxOptions](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespecsecuritycontextselinuxoptions)
   - [PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecSecurityContextSeccompProfile](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespecsecuritycontextseccompprofile)
   - [PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecSecurityContextSysctlsItems0](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespecsecuritycontextsysctlsitems0)
@@ -649,25 +639,55 @@
   - [PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecServiceAccountTemplateMetadata](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecserviceaccounttemplatemetadata)
   - [PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecServiceTemplate](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecservicetemplate)
   - [PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecServiceTemplateMetadata](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecservicetemplatemetadata)
-  - [PkgCrossplaneIoV1beta1FunctionRevisionSpec](#pkgcrossplaneiov1beta1functionrevisionspec)
-  - [PkgCrossplaneIoV1beta1FunctionRevisionSpecControllerConfigRef](#pkgcrossplaneiov1beta1functionrevisionspeccontrollerconfigref)
-  - [PkgCrossplaneIoV1beta1FunctionRevisionSpecPackagePullSecretsItems0](#pkgcrossplaneiov1beta1functionrevisionspecpackagepullsecretsitems0)
-  - [PkgCrossplaneIoV1beta1FunctionRevisionSpecRuntimeConfigRef](#pkgcrossplaneiov1beta1functionrevisionspecruntimeconfigref)
-  - [PkgCrossplaneIoV1beta1FunctionRevisionStatus](#pkgcrossplaneiov1beta1functionrevisionstatus)
-  - [PkgCrossplaneIoV1beta1FunctionRevisionStatusConditionsItems0](#pkgcrossplaneiov1beta1functionrevisionstatusconditionsitems0)
-  - [PkgCrossplaneIoV1beta1FunctionRevisionStatusObjectRefsItems0](#pkgcrossplaneiov1beta1functionrevisionstatusobjectrefsitems0)
-  - [PkgCrossplaneIoV1beta1FunctionRevisionStatusPermissionRequestsItems0](#pkgcrossplaneiov1beta1functionrevisionstatuspermissionrequestsitems0)
-  - [PkgCrossplaneIoV1beta1FunctionSpec](#pkgcrossplaneiov1beta1functionspec)
-  - [PkgCrossplaneIoV1beta1FunctionSpecControllerConfigRef](#pkgcrossplaneiov1beta1functionspeccontrollerconfigref)
-  - [PkgCrossplaneIoV1beta1FunctionSpecPackagePullSecretsItems0](#pkgcrossplaneiov1beta1functionspecpackagepullsecretsitems0)
-  - [PkgCrossplaneIoV1beta1FunctionSpecRuntimeConfigRef](#pkgcrossplaneiov1beta1functionspecruntimeconfigref)
-  - [PkgCrossplaneIoV1beta1FunctionStatus](#pkgcrossplaneiov1beta1functionstatus)
-  - [PkgCrossplaneIoV1beta1FunctionStatusConditionsItems0](#pkgcrossplaneiov1beta1functionstatusconditionsitems0)
   - [PkgCrossplaneIoV1beta1LockPackagesItems0](#pkgcrossplaneiov1beta1lockpackagesitems0)
   - [PkgCrossplaneIoV1beta1LockPackagesItems0DependenciesItems0](#pkgcrossplaneiov1beta1lockpackagesitems0dependenciesitems0)
 
 ## Schemas
 
+### Function
+
+A Function is the description of a Crossplane Function package.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**apiVersion** `required` `readOnly`|"meta.pkg.crossplane.io/v1beta1"|APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources|"meta.pkg.crossplane.io/v1beta1"|
+|**kind** `required` `readOnly`|"Function"|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds|"Function"|
+|**metadata**|[ObjectMeta](#objectmeta)|metadata||
+|**spec** `required`|[MetaPkgCrossplaneIoV1beta1FunctionSpec](#metapkgcrossplaneiov1beta1functionspec)|spec||
+### MetaPkgCrossplaneIoV1beta1FunctionSpec
+
+FunctionSpec specifies the configuration of a Function.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**crossplane**|[MetaPkgCrossplaneIoV1beta1FunctionSpecCrossplane](#metapkgcrossplaneiov1beta1functionspeccrossplane)|crossplane||
+|**dependsOn**|[[MetaPkgCrossplaneIoV1beta1FunctionSpecDependsOnItems0](#metapkgcrossplaneiov1beta1functionspecdependsonitems0)]|Dependencies on other packages.||
+|**image**|str|Image is the packaged Function image.||
+### MetaPkgCrossplaneIoV1beta1FunctionSpecCrossplane
+
+Semantic version constraints of Crossplane that package is compatible with.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**version** `required`|str|Semantic version constraints of Crossplane that package is compatible with.||
+### MetaPkgCrossplaneIoV1beta1FunctionSpecDependsOnItems0
+
+Dependency is a dependency on another package. One of Provider or Configuration may be supplied.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**configuration**|str|Configuration is the name of a Configuration package image.||
+|**function**|str|Function is the name of a Function package image.||
+|**provider**|str|Provider is the name of a Provider package image.||
+|**version** `required`|str|Version is the semantic version constraints of the dependency image.||
 ### ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpec
 
 CompositeResourceDefinitionSpec specifies the desired state of the definition.
@@ -844,6 +864,7 @@ A Condition that may apply to a resource.
 | --- | --- | --- | --- |
 |**lastTransitionTime** `required`|str|LastTransitionTime is the last time this condition transitioned from one<br />status to another.||
 |**message**|str|A Message containing details about this condition's last transition from<br />one status to another, if any.||
+|**observedGeneration**|int|ObservedGeneration represents the .metadata.generation that the condition was set based upon.<br />For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date<br />with respect to the current state of the instance.||
 |**reason** `required`|str|A Reason for this condition's last transition from one status to another.||
 |**status** `required`|str|Status of this condition; is it currently True, False, or Unknown?||
 |**type** `required`|str|||
@@ -887,11 +908,11 @@ CompositionRevisionSpec specifies the desired state of the composition revision.
 | --- | --- | --- | --- |
 |**compositeTypeRef** `required`|[ApiextensionsCrossplaneIoV1CompositionRevisionSpecCompositeTypeRef](#apiextensionscrossplaneiov1compositionrevisionspeccompositetyperef)|composite type ref||
 |**environment**|[ApiextensionsCrossplaneIoV1CompositionRevisionSpecEnvironment](#apiextensionscrossplaneiov1compositionrevisionspecenvironment)|environment||
-|**mode**|"Resources" | "Pipeline"|Mode controls what type or "mode" of Composition will be used.<br /><br />"Resources" (the default) indicates that a Composition uses what is<br />commonly referred to as "Patch & Transform" or P&T composition. This mode<br />of Composition uses an array of resources, each a template for a composed<br />resource.<br /><br />"Pipeline" indicates that a Composition specifies a pipeline<br />of Composition Functions, each of which is responsible for producing<br />composed resources that Crossplane should create or update. THE PIPELINE<br />MODE IS A BETA FEATURE. It is not honored if the relevant Crossplane<br />feature flag is disabled.|"Resources"|
-|**patchSets**|[[ApiextensionsCrossplaneIoV1CompositionRevisionSpecPatchSetsItems0](#apiextensionscrossplaneiov1compositionrevisionspecpatchsetsitems0)]|PatchSets define a named set of patches that may be included by any<br />resource in this Composition. PatchSets cannot themselves refer to other<br />PatchSets.<br /><br />PatchSets are only used by the "Resources" mode of Composition. They<br />are ignored by other modes.||
-|**pipeline**|[[ApiextensionsCrossplaneIoV1CompositionRevisionSpecPipelineItems0](#apiextensionscrossplaneiov1compositionrevisionspecpipelineitems0)]|Pipeline is a list of composition function steps that will be used when a<br />composite resource referring to this composition is created. One of<br />resources and pipeline must be specified - you cannot specify both.<br /><br />The Pipeline is only used by the "Pipeline" mode of Composition. It is<br />ignored by other modes.<br /><br />THIS IS A BETA FIELD. It is not honored if the relevant Crossplane<br />feature flag is disabled.||
+|**mode**|"Resources" | "Pipeline"|Mode controls what type or "mode" of Composition will be used.<br /><br />"Pipeline" indicates that a Composition specifies a pipeline of<br />Composition Functions, each of which is responsible for producing<br />composed resources that Crossplane should create or update.<br /><br />"Resources" indicates that a Composition uses what is commonly referred<br />to as "Patch & Transform" or P&T composition. This mode of Composition<br />uses an array of resources, each a template for a composed resource.<br /><br />All Compositions should use Pipeline mode. Resources mode is deprecated.<br />Resources mode won't be removed in Crossplane 1.x, and will remain the<br />default to avoid breaking legacy Compositions. However, it's no longer<br />accepting new features, and only accepting security related bug fixes.|"Resources"|
+|**patchSets**|[[ApiextensionsCrossplaneIoV1CompositionRevisionSpecPatchSetsItems0](#apiextensionscrossplaneiov1compositionrevisionspecpatchsetsitems0)]|PatchSets define a named set of patches that may be included by any<br />resource in this Composition. PatchSets cannot themselves refer to other<br />PatchSets.<br /><br />PatchSets are only used by the "Resources" mode of Composition. They<br />are ignored by other modes.<br /><br />Deprecated: Use Composition Functions instead.||
+|**pipeline**|[[ApiextensionsCrossplaneIoV1CompositionRevisionSpecPipelineItems0](#apiextensionscrossplaneiov1compositionrevisionspecpipelineitems0)]|Pipeline is a list of composition function steps that will be used when a<br />composite resource referring to this composition is created. One of<br />resources and pipeline must be specified - you cannot specify both.<br /><br />The Pipeline is only used by the "Pipeline" mode of Composition. It is<br />ignored by other modes.||
 |**publishConnectionDetailsWithStoreConfigRef**|[ApiextensionsCrossplaneIoV1CompositionRevisionSpecPublishConnectionDetailsWithStoreConfigRef](#apiextensionscrossplaneiov1compositionrevisionspecpublishconnectiondetailswithstoreconfigref)|publish connection details with store config ref||
-|**resources**|[[ApiextensionsCrossplaneIoV1CompositionRevisionSpecResourcesItems0](#apiextensionscrossplaneiov1compositionrevisionspecresourcesitems0)]|Resources is a list of resource templates that will be used when a<br />composite resource referring to this composition is created.<br /><br />Resources are only used by the "Resources" mode of Composition. They are<br />ignored by other modes.||
+|**resources**|[[ApiextensionsCrossplaneIoV1CompositionRevisionSpecResourcesItems0](#apiextensionscrossplaneiov1compositionrevisionspecresourcesitems0)]|Resources is a list of resource templates that will be used when a<br />composite resource referring to this composition is created.<br /><br />Resources are only used by the "Resources" mode of Composition. They are<br />ignored by other modes.<br /><br />Deprecated: Use Composition Functions instead.||
 |**revision** `required`|int|Revision number. Newer revisions have larger numbers.||
 |**writeConnectionSecretsToNamespace**|str|WriteConnectionSecretsToNamespace specifies the namespace in which the<br />connection secrets of composite resource dynamically provisioned using<br />this composition will be created.<br />This field is planned to be replaced in a future release in favor of<br />PublishConnectionDetailsWithStoreConfigRef. Currently, both could be<br />set independently and connection details would be published to both<br />without affecting each other as long as related fields at MR level<br />specified.||
 ### ApiextensionsCrossplaneIoV1CompositionRevisionSpecCompositeTypeRef
@@ -1017,7 +1038,7 @@ Policy configures the specifics of patching behaviour.
 |**mergeOptions**|[ApiextensionsCrossplaneIoV1CompositionRevisionSpecEnvironmentPatchesItems0PolicyMergeOptions](#apiextensionscrossplaneiov1compositionrevisionspecenvironmentpatchesitems0policymergeoptions)|merge options||
 ### ApiextensionsCrossplaneIoV1CompositionRevisionSpecEnvironmentPatchesItems0PolicyMergeOptions
 
-MergeOptions Specifies merge options on a field path
+MergeOptions Specifies merge options on a field path.
 
 #### Attributes
 
@@ -1193,7 +1214,7 @@ Policy configures the specifics of patching behaviour.
 |**mergeOptions**|[ApiextensionsCrossplaneIoV1CompositionRevisionSpecPatchSetsItems0PatchesItems0PolicyMergeOptions](#apiextensionscrossplaneiov1compositionrevisionspecpatchsetsitems0patchesitems0policymergeoptions)|merge options||
 ### ApiextensionsCrossplaneIoV1CompositionRevisionSpecPatchSetsItems0PatchesItems0PolicyMergeOptions
 
-MergeOptions Specifies merge options on a field path
+MergeOptions Specifies merge options on a field path.
 
 #### Attributes
 
@@ -1301,9 +1322,31 @@ A PipelineStep in a Composition Function pipeline.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
+|**credentials**|[[ApiextensionsCrossplaneIoV1CompositionRevisionSpecPipelineItems0CredentialsItems0](#apiextensionscrossplaneiov1compositionrevisionspecpipelineitems0credentialsitems0)]|Credentials are optional credentials that the Composition Function needs.||
 |**functionRef** `required`|[ApiextensionsCrossplaneIoV1CompositionRevisionSpecPipelineItems0FunctionRef](#apiextensionscrossplaneiov1compositionrevisionspecpipelineitems0functionref)|function ref||
 |**input**|any|Input is an optional, arbitrary Kubernetes resource (i.e. a resource<br />with an apiVersion and kind) that will be passed to the Composition<br />Function as the 'input' of its RunFunctionRequest.||
 |**step** `required`|str|Step name. Must be unique within its Pipeline.||
+### ApiextensionsCrossplaneIoV1CompositionRevisionSpecPipelineItems0CredentialsItems0
+
+FunctionCredentials are optional credentials that a Composition Function needs to run.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**name** `required`|str|Name of this set of credentials.||
+|**secretRef**|[ApiextensionsCrossplaneIoV1CompositionRevisionSpecPipelineItems0CredentialsItems0SecretRef](#apiextensionscrossplaneiov1compositionrevisionspecpipelineitems0credentialsitems0secretref)|secret ref||
+|**source** `required`|"None" | "Secret"|Source of the function credentials.||
+### ApiextensionsCrossplaneIoV1CompositionRevisionSpecPipelineItems0CredentialsItems0SecretRef
+
+A SecretRef is a reference to a secret containing credentials that should be supplied to the function.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**name** `required`|str|Name of the secret.||
+|**namespace** `required`|str|Namespace of the secret.||
 ### ApiextensionsCrossplaneIoV1CompositionRevisionSpecPipelineItems0FunctionRef
 
 FunctionRef is a reference to the Composition Function this step should execute.
@@ -1404,7 +1447,7 @@ Policy configures the specifics of patching behaviour.
 |**mergeOptions**|[ApiextensionsCrossplaneIoV1CompositionRevisionSpecResourcesItems0PatchesItems0PolicyMergeOptions](#apiextensionscrossplaneiov1compositionrevisionspecresourcesitems0patchesitems0policymergeoptions)|merge options||
 ### ApiextensionsCrossplaneIoV1CompositionRevisionSpecResourcesItems0PatchesItems0PolicyMergeOptions
 
-MergeOptions Specifies merge options on a field path
+MergeOptions Specifies merge options on a field path.
 
 #### Attributes
 
@@ -1506,7 +1549,7 @@ Extract a match from the input using a regular expression.
 |**match** `required`|str|Match string. May optionally include submatches, aka capture groups.<br />See https://pkg.go.dev/regexp/ for details.||
 ### ApiextensionsCrossplaneIoV1CompositionRevisionSpecResourcesItems0ReadinessChecksItems0
 
-ReadinessCheck is used to indicate how to tell whether a resource is ready for consumption
+ReadinessCheck is used to indicate how to tell whether a resource is ready for consumption.
 
 #### Attributes
 
@@ -1546,6 +1589,7 @@ A Condition that may apply to a resource.
 | --- | --- | --- | --- |
 |**lastTransitionTime** `required`|str|LastTransitionTime is the last time this condition transitioned from one<br />status to another.||
 |**message**|str|A Message containing details about this condition's last transition from<br />one status to another, if any.||
+|**observedGeneration**|int|ObservedGeneration represents the .metadata.generation that the condition was set based upon.<br />For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date<br />with respect to the current state of the instance.||
 |**reason** `required`|str|A Reason for this condition's last transition from one status to another.||
 |**status** `required`|str|Status of this condition; is it currently True, False, or Unknown?||
 |**type** `required`|str|||
@@ -1559,11 +1603,11 @@ CompositionSpec specifies desired state of a composition.
 | --- | --- | --- | --- |
 |**compositeTypeRef** `required`|[ApiextensionsCrossplaneIoV1CompositionSpecCompositeTypeRef](#apiextensionscrossplaneiov1compositionspeccompositetyperef)|composite type ref||
 |**environment**|[ApiextensionsCrossplaneIoV1CompositionSpecEnvironment](#apiextensionscrossplaneiov1compositionspecenvironment)|environment||
-|**mode**|"Resources" | "Pipeline"|Mode controls what type or "mode" of Composition will be used.<br /><br />"Resources" (the default) indicates that a Composition uses what is<br />commonly referred to as "Patch & Transform" or P&T composition. This mode<br />of Composition uses an array of resources, each a template for a composed<br />resource.<br /><br />"Pipeline" indicates that a Composition specifies a pipeline<br />of Composition Functions, each of which is responsible for producing<br />composed resources that Crossplane should create or update. THE PIPELINE<br />MODE IS A BETA FEATURE. It is not honored if the relevant Crossplane<br />feature flag is disabled.|"Resources"|
-|**patchSets**|[[ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0](#apiextensionscrossplaneiov1compositionspecpatchsetsitems0)]|PatchSets define a named set of patches that may be included by any<br />resource in this Composition. PatchSets cannot themselves refer to other<br />PatchSets.<br /><br />PatchSets are only used by the "Resources" mode of Composition. They<br />are ignored by other modes.||
-|**pipeline**|[[ApiextensionsCrossplaneIoV1CompositionSpecPipelineItems0](#apiextensionscrossplaneiov1compositionspecpipelineitems0)]|Pipeline is a list of composition function steps that will be used when a<br />composite resource referring to this composition is created. One of<br />resources and pipeline must be specified - you cannot specify both.<br /><br />The Pipeline is only used by the "Pipeline" mode of Composition. It is<br />ignored by other modes.<br /><br />THIS IS A BETA FIELD. It is not honored if the relevant Crossplane<br />feature flag is disabled.||
+|**mode**|"Resources" | "Pipeline"|Mode controls what type or "mode" of Composition will be used.<br /><br />"Pipeline" indicates that a Composition specifies a pipeline of<br />Composition Functions, each of which is responsible for producing<br />composed resources that Crossplane should create or update.<br /><br />"Resources" indicates that a Composition uses what is commonly referred<br />to as "Patch & Transform" or P&T composition. This mode of Composition<br />uses an array of resources, each a template for a composed resource.<br /><br />All Compositions should use Pipeline mode. Resources mode is deprecated.<br />Resources mode won't be removed in Crossplane 1.x, and will remain the<br />default to avoid breaking legacy Compositions. However, it's no longer<br />accepting new features, and only accepting security related bug fixes.|"Resources"|
+|**patchSets**|[[ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0](#apiextensionscrossplaneiov1compositionspecpatchsetsitems0)]|PatchSets define a named set of patches that may be included by any<br />resource in this Composition. PatchSets cannot themselves refer to other<br />PatchSets.<br /><br />PatchSets are only used by the "Resources" mode of Composition. They<br />are ignored by other modes.<br /><br />Deprecated: Use Composition Functions instead.||
+|**pipeline**|[[ApiextensionsCrossplaneIoV1CompositionSpecPipelineItems0](#apiextensionscrossplaneiov1compositionspecpipelineitems0)]|Pipeline is a list of composition function steps that will be used when a<br />composite resource referring to this composition is created. One of<br />resources and pipeline must be specified - you cannot specify both.<br /><br />The Pipeline is only used by the "Pipeline" mode of Composition. It is<br />ignored by other modes.||
 |**publishConnectionDetailsWithStoreConfigRef**|[ApiextensionsCrossplaneIoV1CompositionSpecPublishConnectionDetailsWithStoreConfigRef](#apiextensionscrossplaneiov1compositionspecpublishconnectiondetailswithstoreconfigref)|publish connection details with store config ref||
-|**resources**|[[ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0](#apiextensionscrossplaneiov1compositionspecresourcesitems0)]|Resources is a list of resource templates that will be used when a<br />composite resource referring to this composition is created.<br /><br />Resources are only used by the "Resources" mode of Composition. They are<br />ignored by other modes.||
+|**resources**|[[ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0](#apiextensionscrossplaneiov1compositionspecresourcesitems0)]|Resources is a list of resource templates that will be used when a<br />composite resource referring to this composition is created.<br /><br />Resources are only used by the "Resources" mode of Composition. They are<br />ignored by other modes.<br /><br />Deprecated: Use Composition Functions instead.||
 |**writeConnectionSecretsToNamespace**|str|WriteConnectionSecretsToNamespace specifies the namespace in which the<br />connection secrets of composite resource dynamically provisioned using<br />this composition will be created.<br />This field is planned to be replaced in a future release in favor of<br />PublishConnectionDetailsWithStoreConfigRef. Currently, both could be<br />set independently and connection details would be published to both<br />without affecting each other as long as related fields at MR level<br />specified.||
 ### ApiextensionsCrossplaneIoV1CompositionSpecCompositeTypeRef
 
@@ -1688,7 +1732,7 @@ Policy configures the specifics of patching behaviour.
 |**mergeOptions**|[ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0PolicyMergeOptions](#apiextensionscrossplaneiov1compositionspecenvironmentpatchesitems0policymergeoptions)|merge options||
 ### ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0PolicyMergeOptions
 
-MergeOptions Specifies merge options on a field path
+MergeOptions Specifies merge options on a field path.
 
 #### Attributes
 
@@ -1864,7 +1908,7 @@ Policy configures the specifics of patching behaviour.
 |**mergeOptions**|[ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0PolicyMergeOptions](#apiextensionscrossplaneiov1compositionspecpatchsetsitems0patchesitems0policymergeoptions)|merge options||
 ### ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0PolicyMergeOptions
 
-MergeOptions Specifies merge options on a field path
+MergeOptions Specifies merge options on a field path.
 
 #### Attributes
 
@@ -1972,9 +2016,31 @@ A PipelineStep in a Composition Function pipeline.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
+|**credentials**|[[ApiextensionsCrossplaneIoV1CompositionSpecPipelineItems0CredentialsItems0](#apiextensionscrossplaneiov1compositionspecpipelineitems0credentialsitems0)]|Credentials are optional credentials that the Composition Function needs.||
 |**functionRef** `required`|[ApiextensionsCrossplaneIoV1CompositionSpecPipelineItems0FunctionRef](#apiextensionscrossplaneiov1compositionspecpipelineitems0functionref)|function ref||
 |**input**|any|Input is an optional, arbitrary Kubernetes resource (i.e. a resource<br />with an apiVersion and kind) that will be passed to the Composition<br />Function as the 'input' of its RunFunctionRequest.||
 |**step** `required`|str|Step name. Must be unique within its Pipeline.||
+### ApiextensionsCrossplaneIoV1CompositionSpecPipelineItems0CredentialsItems0
+
+FunctionCredentials are optional credentials that a Composition Function needs to run.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**name** `required`|str|Name of this set of credentials.||
+|**secretRef**|[ApiextensionsCrossplaneIoV1CompositionSpecPipelineItems0CredentialsItems0SecretRef](#apiextensionscrossplaneiov1compositionspecpipelineitems0credentialsitems0secretref)|secret ref||
+|**source** `required`|"None" | "Secret"|Source of the function credentials.||
+### ApiextensionsCrossplaneIoV1CompositionSpecPipelineItems0CredentialsItems0SecretRef
+
+A SecretRef is a reference to a secret containing credentials that should be supplied to the function.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**name** `required`|str|Name of the secret.||
+|**namespace** `required`|str|Namespace of the secret.||
 ### ApiextensionsCrossplaneIoV1CompositionSpecPipelineItems0FunctionRef
 
 FunctionRef is a reference to the Composition Function this step should execute.
@@ -2075,7 +2141,7 @@ Policy configures the specifics of patching behaviour.
 |**mergeOptions**|[ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0PolicyMergeOptions](#apiextensionscrossplaneiov1compositionspecresourcesitems0patchesitems0policymergeoptions)|merge options||
 ### ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0PolicyMergeOptions
 
-MergeOptions Specifies merge options on a field path
+MergeOptions Specifies merge options on a field path.
 
 #### Attributes
 
@@ -2177,7 +2243,7 @@ Extract a match from the input using a regular expression.
 |**match** `required`|str|Match string. May optionally include submatches, aka capture groups.<br />See https://pkg.go.dev/regexp/ for details.||
 ### ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0ReadinessChecksItems0
 
-ReadinessCheck is used to indicate how to tell whether a resource is ready for consumption
+ReadinessCheck is used to indicate how to tell whether a resource is ready for consumption.
 
 #### Attributes
 
@@ -2200,7 +2266,7 @@ MatchCondition specifies the condition you'd like to match if you're using "Matc
 |**type** `required`|str||"Ready"|
 ### CompositeResourceDefinition
 
-A CompositeResourceDefinition defines a new kind of composite infrastructure resource. The new resource is composed of other composite or managed infrastructure resources.
+A CompositeResourceDefinition defines the schema for a new custom Kubernetes API.  Read the Crossplane documentation for [more information about CustomResourceDefinitions](https://docs.crossplane.io/latest/concepts/composite-resource-definitions).
 
 #### Attributes
 
@@ -2213,7 +2279,7 @@ A CompositeResourceDefinition defines a new kind of composite infrastructure res
 |**status**|[ApiextensionsCrossplaneIoV1CompositeResourceDefinitionStatus](#apiextensionscrossplaneiov1compositeresourcedefinitionstatus)|status||
 ### Composition
 
-A Composition specifies how a composite resource should be composed.
+A Composition defines a collection of managed resources or functions that Crossplane uses to create and manage new composite resources.  Read the Crossplane documentation for [more information about Compositions](https://docs.crossplane.io/latest/concepts/compositions).
 
 #### Attributes
 
@@ -2225,7 +2291,7 @@ A Composition specifies how a composite resource should be composed.
 |**spec**|[ApiextensionsCrossplaneIoV1CompositionSpec](#apiextensionscrossplaneiov1compositionspec)|spec||
 ### CompositionRevision
 
-A CompositionRevision represents a revision in time of a Composition. Revisions are created by Crossplane; they should be treated as immutable.
+A CompositionRevision represents a revision of a Composition. Crossplane creates new revisions when there are changes to the Composition.  Crossplane creates and manages CompositionRevisions. Don't directly edit CompositionRevisions.
 
 #### Attributes
 
@@ -2238,7 +2304,7 @@ A CompositionRevision represents a revision in time of a Composition. Revisions 
 |**status**|[ApiextensionsCrossplaneIoV1CompositionRevisionStatus](#apiextensionscrossplaneiov1compositionrevisionstatus)|status||
 ### Configuration
 
-Configuration is the CRD type for a request to add a configuration to Crossplane.
+A Configuration installs an OCI compatible Crossplane package, extending Crossplane with support for new kinds of CompositeResourceDefinitions and Compositions.  Read the Crossplane documentation for [more information about Configuration packages](https://docs.crossplane.io/latest/concepts/packages).
 
 #### Attributes
 
@@ -2251,7 +2317,7 @@ Configuration is the CRD type for a request to add a configuration to Crossplane
 |**status**|[PkgCrossplaneIoV1ConfigurationStatus](#pkgcrossplaneiov1configurationstatus)|status||
 ### ConfigurationRevision
 
-A ConfigurationRevision that has been added to Crossplane.
+A ConfigurationRevision represents a revision of a Configuration. Crossplane creates new revisions when there are changes to a Configuration.  Crossplane creates and manages ConfigurationRevision. Don't directly edit ConfigurationRevisions.
 
 #### Attributes
 
@@ -2262,92 +2328,32 @@ A ConfigurationRevision that has been added to Crossplane.
 |**metadata**|[ObjectMeta](#objectmeta)|metadata||
 |**spec**|[PkgCrossplaneIoV1ConfigurationRevisionSpec](#pkgcrossplaneiov1configurationrevisionspec)|spec||
 |**status**|[PkgCrossplaneIoV1ConfigurationRevisionStatus](#pkgcrossplaneiov1configurationrevisionstatus)|status||
-### MetaPkgCrossplaneIoV1ConfigurationSpec
+### Function
 
-ConfigurationSpec specifies the configuration of a Configuration.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**crossplane**|[MetaPkgCrossplaneIoV1ConfigurationSpecCrossplane](#metapkgcrossplaneiov1configurationspeccrossplane)|crossplane||
-|**dependsOn**|[[MetaPkgCrossplaneIoV1ConfigurationSpecDependsOnItems0](#metapkgcrossplaneiov1configurationspecdependsonitems0)]|Dependencies on other packages.||
-### MetaPkgCrossplaneIoV1ConfigurationSpecCrossplane
-
-Semantic version constraints of Crossplane that package is compatible with.
+A Function installs an OCI compatible Crossplane package, extending Crossplane with support for a new kind of composition function.  Read the Crossplane documentation for [more information about Functions](https://docs.crossplane.io/latest/concepts/composition-functions).
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**version** `required`|str|Semantic version constraints of Crossplane that package is compatible with.||
-### MetaPkgCrossplaneIoV1ConfigurationSpecDependsOnItems0
+|**apiVersion** `required` `readOnly`|"pkg.crossplane.io/v1"|APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources|"pkg.crossplane.io/v1"|
+|**kind** `required` `readOnly`|"Function"|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds|"Function"|
+|**metadata**|[ObjectMeta](#objectmeta)|metadata||
+|**spec**|[PkgCrossplaneIoV1FunctionSpec](#pkgcrossplaneiov1functionspec)|spec||
+|**status**|[PkgCrossplaneIoV1FunctionStatus](#pkgcrossplaneiov1functionstatus)|status||
+### FunctionRevision
 
-Dependency is a dependency on another package. One of Provider or Configuration may be supplied.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**configuration**|str|Configuration is the name of a Configuration package image.||
-|**function**|str|Function is the name of a Function package image.||
-|**provider**|str|Provider is the name of a Provider package image.||
-|**version** `required`|str|Version is the semantic version constraints of the dependency image.||
-### MetaPkgCrossplaneIoV1ProviderSpec
-
-ProviderSpec specifies the configuration of a Provider.
+A FunctionRevision represents a revision of a Function. Crossplane creates new revisions when there are changes to the Function.  Crossplane creates and manages FunctionRevisions. Don't directly edit FunctionRevisions.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**controller** `required`|[MetaPkgCrossplaneIoV1ProviderSpecController](#metapkgcrossplaneiov1providerspeccontroller)|controller||
-|**crossplane**|[MetaPkgCrossplaneIoV1ProviderSpecCrossplane](#metapkgcrossplaneiov1providerspeccrossplane)|crossplane||
-|**dependsOn**|[[MetaPkgCrossplaneIoV1ProviderSpecDependsOnItems0](#metapkgcrossplaneiov1providerspecdependsonitems0)]|Dependencies on other packages.||
-### MetaPkgCrossplaneIoV1ProviderSpecController
-
-Configuration for the packaged Provider's controller.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**image**|str|Image is the packaged Provider controller image.||
-|**permissionRequests**|[[MetaPkgCrossplaneIoV1ProviderSpecControllerPermissionRequestsItems0](#metapkgcrossplaneiov1providerspeccontrollerpermissionrequestsitems0)]|PermissionRequests for RBAC rules required for this provider's controller<br />to function. The RBAC manager is responsible for assessing the requested<br />permissions.||
-### MetaPkgCrossplaneIoV1ProviderSpecControllerPermissionRequestsItems0
-
-PolicyRule holds information that describes a policy rule, but does not contain information about who the rule applies to or which namespace the rule applies to.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**apiGroups**|[str]|APIGroups is the name of the APIGroup that contains the resources.  If multiple API groups are specified, any action requested against one of<br />the enumerated resources in any API group will be allowed. "" represents the core API group and "*" represents all API groups.||
-|**nonResourceURLs**|[str]|NonResourceURLs is a set of partial urls that a user should have access to.  *s are allowed, but only as the full, final step in the path<br />Since non-resource URLs are not namespaced, this field is only applicable for ClusterRoles referenced from a ClusterRoleBinding.<br />Rules can either apply to API resources (such as "pods" or "secrets") or non-resource URL paths (such as "/api"),  but not both.||
-|**resourceNames**|[str]|ResourceNames is an optional white list of names that the rule applies to.  An empty set means that everything is allowed.||
-|**resources**|[str]|Resources is a list of resources this rule applies to. '*' represents all resources.||
-|**verbs** `required`|[str]|Verbs is a list of Verbs that apply to ALL the ResourceKinds contained in this rule. '*' represents all verbs.||
-### MetaPkgCrossplaneIoV1ProviderSpecCrossplane
-
-Semantic version constraints of Crossplane that package is compatible with.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**version** `required`|str|Semantic version constraints of Crossplane that package is compatible with.||
-### MetaPkgCrossplaneIoV1ProviderSpecDependsOnItems0
-
-Dependency is a dependency on another package. One of Provider or Configuration may be supplied.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**configuration**|str|Configuration is the name of a Configuration package image.||
-|**function**|str|Function is the name of a Function package image.||
-|**provider**|str|Provider is the name of a Provider package image.||
-|**version** `required`|str|Version is the semantic version constraints of the dependency image.||
+|**apiVersion** `required` `readOnly`|"pkg.crossplane.io/v1"|APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources|"pkg.crossplane.io/v1"|
+|**kind** `required` `readOnly`|"FunctionRevision"|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds|"FunctionRevision"|
+|**metadata**|[ObjectMeta](#objectmeta)|metadata||
+|**spec**|[PkgCrossplaneIoV1FunctionRevisionSpec](#pkgcrossplaneiov1functionrevisionspec)|spec||
+|**status**|[PkgCrossplaneIoV1FunctionRevisionStatus](#pkgcrossplaneiov1functionrevisionstatus)|status||
 ### PkgCrossplaneIoV1ConfigurationRevisionSpec
 
 PackageRevisionSpec specifies the desired state of a PackageRevision.
@@ -2356,7 +2362,7 @@ PackageRevisionSpec specifies the desired state of a PackageRevision.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**commonLabels**|{str:str}|Map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
+|**commonLabels**|{str:str}|Map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/||
 |**desiredState** `required`|str|DesiredState of the PackageRevision. Can be either Active or Inactive.||
 |**ignoreCrossplaneConstraints**|bool|IgnoreCrossplaneConstraints indicates to the package manager whether to<br />honor Crossplane version constrains specified by the package.<br />Default is false.|False|
 |**image** `required`|str|Package image used by install Pod to extract package contents.||
@@ -2397,6 +2403,7 @@ A Condition that may apply to a resource.
 | --- | --- | --- | --- |
 |**lastTransitionTime** `required`|str|LastTransitionTime is the last time this condition transitioned from one<br />status to another.||
 |**message**|str|A Message containing details about this condition's last transition from<br />one status to another, if any.||
+|**observedGeneration**|int|ObservedGeneration represents the .metadata.generation that the condition was set based upon.<br />For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date<br />with respect to the current state of the instance.||
 |**reason** `required`|str|A Reason for this condition's last transition from one status to another.||
 |**status** `required`|str|Status of this condition; is it currently True, False, or Unknown?||
 |**type** `required`|str|||
@@ -2433,7 +2440,7 @@ ConfigurationSpec specifies details about a request to install a configuration t
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**commonLabels**|{str:str}|Map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
+|**commonLabels**|{str:str}|Map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/||
 |**ignoreCrossplaneConstraints**|bool|IgnoreCrossplaneConstraints indicates to the package manager whether to<br />honor Crossplane version constrains specified by the package.<br />Default is false.|False|
 |**package** `required`|str|Package is the name of the package that is being requested.||
 |**packagePullPolicy**|str|PackagePullPolicy defines the pull policy for the package.<br />Default is IfNotPresent.|"IfNotPresent"|
@@ -2471,6 +2478,182 @@ A Condition that may apply to a resource.
 | --- | --- | --- | --- |
 |**lastTransitionTime** `required`|str|LastTransitionTime is the last time this condition transitioned from one<br />status to another.||
 |**message**|str|A Message containing details about this condition's last transition from<br />one status to another, if any.||
+|**observedGeneration**|int|ObservedGeneration represents the .metadata.generation that the condition was set based upon.<br />For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date<br />with respect to the current state of the instance.||
+|**reason** `required`|str|A Reason for this condition's last transition from one status to another.||
+|**status** `required`|str|Status of this condition; is it currently True, False, or Unknown?||
+|**type** `required`|str|||
+### PkgCrossplaneIoV1FunctionRevisionSpec
+
+FunctionRevisionSpec specifies configuration for a FunctionRevision.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**commonLabels**|{str:str}|Map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/||
+|**controllerConfigRef**|[PkgCrossplaneIoV1FunctionRevisionSpecControllerConfigRef](#pkgcrossplaneiov1functionrevisionspeccontrollerconfigref)|controller config ref||
+|**desiredState** `required`|str|DesiredState of the PackageRevision. Can be either Active or Inactive.||
+|**ignoreCrossplaneConstraints**|bool|IgnoreCrossplaneConstraints indicates to the package manager whether to<br />honor Crossplane version constrains specified by the package.<br />Default is false.|False|
+|**image** `required`|str|Package image used by install Pod to extract package contents.||
+|**packagePullPolicy**|str|PackagePullPolicy defines the pull policy for the package. It is also<br />applied to any images pulled for the package, such as a provider's<br />controller image.<br />Default is IfNotPresent.|"IfNotPresent"|
+|**packagePullSecrets**|[[PkgCrossplaneIoV1FunctionRevisionSpecPackagePullSecretsItems0](#pkgcrossplaneiov1functionrevisionspecpackagepullsecretsitems0)]|PackagePullSecrets are named secrets in the same namespace that can be<br />used to fetch packages from private registries. They are also applied to<br />any images pulled for the package, such as a provider's controller image.||
+|**revision** `required`|int|Revision number. Indicates when the revision will be garbage collected<br />based on the parent's RevisionHistoryLimit.||
+|**runtimeConfigRef**|[PkgCrossplaneIoV1FunctionRevisionSpecRuntimeConfigRef](#pkgcrossplaneiov1functionrevisionspecruntimeconfigref)|runtime config ref||
+|**skipDependencyResolution**|bool|SkipDependencyResolution indicates to the package manager whether to skip<br />resolving dependencies for a package. Setting this value to true may have<br />unintended consequences.<br />Default is false.|False|
+|**tlsClientSecretName**|str|TLSClientSecretName is the name of the TLS Secret that stores client<br />certificates of the Provider.||
+|**tlsServerSecretName**|str|TLSServerSecretName is the name of the TLS Secret that stores server<br />certificates of the Provider.||
+### PkgCrossplaneIoV1FunctionRevisionSpecControllerConfigRef
+
+ControllerConfigRef references a ControllerConfig resource that will be used to configure the packaged controller Deployment. Deprecated: Use RuntimeConfigReference instead.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**name** `required`|str|Name of the ControllerConfig.||
+### PkgCrossplaneIoV1FunctionRevisionSpecPackagePullSecretsItems0
+
+LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**name**|str|Name of the referent.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names<br />TODO: Add other useful fields. apiVersion, kind, uid?||
+### PkgCrossplaneIoV1FunctionRevisionSpecRuntimeConfigRef
+
+RuntimeConfigRef references a RuntimeConfig resource that will be used to configure the package runtime.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**apiVersion**|str|API version of the referent.|"pkg.crossplane.io/v1beta1"|
+|**kind**|str|Kind of the referent.|"DeploymentRuntimeConfig"|
+|**name** `required`|str|Name of the RuntimeConfig.||
+### PkgCrossplaneIoV1FunctionRevisionStatus
+
+FunctionRevisionStatus represents the observed state of a FunctionRevision.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**conditions**|[[PkgCrossplaneIoV1FunctionRevisionStatusConditionsItems0](#pkgcrossplaneiov1functionrevisionstatusconditionsitems0)]|Conditions of the resource.||
+|**endpoint**|str|Endpoint is the gRPC endpoint where Crossplane will send<br />RunFunctionRequests.||
+|**foundDependencies**|int|Dependency information.||
+|**installedDependencies**|int|installed dependencies||
+|**invalidDependencies**|int|invalid dependencies||
+|**objectRefs**|[[PkgCrossplaneIoV1FunctionRevisionStatusObjectRefsItems0](#pkgcrossplaneiov1functionrevisionstatusobjectrefsitems0)]|References to objects owned by PackageRevision.||
+|**permissionRequests**|[[PkgCrossplaneIoV1FunctionRevisionStatusPermissionRequestsItems0](#pkgcrossplaneiov1functionrevisionstatuspermissionrequestsitems0)]|PermissionRequests made by this package. The package declares that its<br />controller needs these permissions to run. The RBAC manager is<br />responsible for granting them.||
+### PkgCrossplaneIoV1FunctionRevisionStatusConditionsItems0
+
+A Condition that may apply to a resource.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**lastTransitionTime** `required`|str|LastTransitionTime is the last time this condition transitioned from one<br />status to another.||
+|**message**|str|A Message containing details about this condition's last transition from<br />one status to another, if any.||
+|**observedGeneration**|int|ObservedGeneration represents the .metadata.generation that the condition was set based upon.<br />For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date<br />with respect to the current state of the instance.||
+|**reason** `required`|str|A Reason for this condition's last transition from one status to another.||
+|**status** `required`|str|Status of this condition; is it currently True, False, or Unknown?||
+|**type** `required`|str|||
+### PkgCrossplaneIoV1FunctionRevisionStatusObjectRefsItems0
+
+A TypedReference refers to an object by Name, Kind, and APIVersion. It is commonly used to reference cluster-scoped objects or objects where the namespace is already known.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**apiVersion** `required`|str|APIVersion of the referenced object.||
+|**kind** `required`|str|Kind of the referenced object.||
+|**name** `required`|str|Name of the referenced object.||
+|**uid**|str|UID of the referenced object.||
+### PkgCrossplaneIoV1FunctionRevisionStatusPermissionRequestsItems0
+
+PolicyRule holds information that describes a policy rule, but does not contain information about who the rule applies to or which namespace the rule applies to.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**apiGroups**|[str]|APIGroups is the name of the APIGroup that contains the resources.  If multiple API groups are specified, any action requested against one of<br />the enumerated resources in any API group will be allowed. "" represents the core API group and "*" represents all API groups.||
+|**nonResourceURLs**|[str]|NonResourceURLs is a set of partial urls that a user should have access to.  *s are allowed, but only as the full, final step in the path<br />Since non-resource URLs are not namespaced, this field is only applicable for ClusterRoles referenced from a ClusterRoleBinding.<br />Rules can either apply to API resources (such as "pods" or "secrets") or non-resource URL paths (such as "/api"),  but not both.||
+|**resourceNames**|[str]|ResourceNames is an optional white list of names that the rule applies to.  An empty set means that everything is allowed.||
+|**resources**|[str]|Resources is a list of resources this rule applies to. '*' represents all resources.||
+|**verbs** `required`|[str]|Verbs is a list of Verbs that apply to ALL the ResourceKinds contained in this rule. '*' represents all verbs.||
+### PkgCrossplaneIoV1FunctionSpec
+
+FunctionSpec specifies the configuration of a Function.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**commonLabels**|{str:str}|Map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/||
+|**controllerConfigRef**|[PkgCrossplaneIoV1FunctionSpecControllerConfigRef](#pkgcrossplaneiov1functionspeccontrollerconfigref)|controller config ref||
+|**ignoreCrossplaneConstraints**|bool|IgnoreCrossplaneConstraints indicates to the package manager whether to<br />honor Crossplane version constrains specified by the package.<br />Default is false.|False|
+|**package** `required`|str|Package is the name of the package that is being requested.||
+|**packagePullPolicy**|str|PackagePullPolicy defines the pull policy for the package.<br />Default is IfNotPresent.|"IfNotPresent"|
+|**packagePullSecrets**|[[PkgCrossplaneIoV1FunctionSpecPackagePullSecretsItems0](#pkgcrossplaneiov1functionspecpackagepullsecretsitems0)]|PackagePullSecrets are named secrets in the same namespace that can be used<br />to fetch packages from private registries.||
+|**revisionActivationPolicy**|str|RevisionActivationPolicy specifies how the package controller should<br />update from one revision to the next. Options are Automatic or Manual.<br />Default is Automatic.|"Automatic"|
+|**revisionHistoryLimit**|int|RevisionHistoryLimit dictates how the package controller cleans up old<br />inactive package revisions.<br />Defaults to 1. Can be disabled by explicitly setting to 0.|1|
+|**runtimeConfigRef**|[PkgCrossplaneIoV1FunctionSpecRuntimeConfigRef](#pkgcrossplaneiov1functionspecruntimeconfigref)|runtime config ref||
+|**skipDependencyResolution**|bool|SkipDependencyResolution indicates to the package manager whether to skip<br />resolving dependencies for a package. Setting this value to true may have<br />unintended consequences.<br />Default is false.|False|
+### PkgCrossplaneIoV1FunctionSpecControllerConfigRef
+
+ControllerConfigRef references a ControllerConfig resource that will be used to configure the packaged controller Deployment. Deprecated: Use RuntimeConfigReference instead.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**name** `required`|str|Name of the ControllerConfig.||
+### PkgCrossplaneIoV1FunctionSpecPackagePullSecretsItems0
+
+LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**name**|str|Name of the referent.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names<br />TODO: Add other useful fields. apiVersion, kind, uid?||
+### PkgCrossplaneIoV1FunctionSpecRuntimeConfigRef
+
+RuntimeConfigRef references a RuntimeConfig resource that will be used to configure the package runtime.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**apiVersion**|str|API version of the referent.|"pkg.crossplane.io/v1beta1"|
+|**kind**|str|Kind of the referent.|"DeploymentRuntimeConfig"|
+|**name** `required`|str|Name of the RuntimeConfig.||
+### PkgCrossplaneIoV1FunctionStatus
+
+FunctionStatus represents the observed state of a Function.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**conditions**|[[PkgCrossplaneIoV1FunctionStatusConditionsItems0](#pkgcrossplaneiov1functionstatusconditionsitems0)]|Conditions of the resource.||
+|**currentIdentifier**|str|CurrentIdentifier is the most recent package source that was used to<br />produce a revision. The package manager uses this field to determine<br />whether to check for package updates for a given source when<br />packagePullPolicy is set to IfNotPresent. Manually removing this field<br />will cause the package manager to check that the current revision is<br />correct for the given package source.||
+|**currentRevision**|str|CurrentRevision is the name of the current package revision. It will<br />reflect the most up to date revision, whether it has been activated or<br />not.||
+### PkgCrossplaneIoV1FunctionStatusConditionsItems0
+
+A Condition that may apply to a resource.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**lastTransitionTime** `required`|str|LastTransitionTime is the last time this condition transitioned from one<br />status to another.||
+|**message**|str|A Message containing details about this condition's last transition from<br />one status to another, if any.||
+|**observedGeneration**|int|ObservedGeneration represents the .metadata.generation that the condition was set based upon.<br />For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date<br />with respect to the current state of the instance.||
 |**reason** `required`|str|A Reason for this condition's last transition from one status to another.||
 |**status** `required`|str|Status of this condition; is it currently True, False, or Unknown?||
 |**type** `required`|str|||
@@ -2482,7 +2665,7 @@ ProviderRevisionSpec specifies configuration for a ProviderRevision.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**commonLabels**|{str:str}|Map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
+|**commonLabels**|{str:str}|Map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/||
 |**controllerConfigRef**|[PkgCrossplaneIoV1ProviderRevisionSpecControllerConfigRef](#pkgcrossplaneiov1providerrevisionspeccontrollerconfigref)|controller config ref||
 |**desiredState** `required`|str|DesiredState of the PackageRevision. Can be either Active or Inactive.||
 |**ignoreCrossplaneConstraints**|bool|IgnoreCrossplaneConstraints indicates to the package manager whether to<br />honor Crossplane version constrains specified by the package.<br />Default is false.|False|
@@ -2547,6 +2730,7 @@ A Condition that may apply to a resource.
 | --- | --- | --- | --- |
 |**lastTransitionTime** `required`|str|LastTransitionTime is the last time this condition transitioned from one<br />status to another.||
 |**message**|str|A Message containing details about this condition's last transition from<br />one status to another, if any.||
+|**observedGeneration**|int|ObservedGeneration represents the .metadata.generation that the condition was set based upon.<br />For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date<br />with respect to the current state of the instance.||
 |**reason** `required`|str|A Reason for this condition's last transition from one status to another.||
 |**status** `required`|str|Status of this condition; is it currently True, False, or Unknown?||
 |**type** `required`|str|||
@@ -2583,7 +2767,7 @@ ProviderSpec specifies details about a request to install a provider to Crosspla
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**commonLabels**|{str:str}|Map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
+|**commonLabels**|{str:str}|Map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/||
 |**controllerConfigRef**|[PkgCrossplaneIoV1ProviderSpecControllerConfigRef](#pkgcrossplaneiov1providerspeccontrollerconfigref)|controller config ref||
 |**ignoreCrossplaneConstraints**|bool|IgnoreCrossplaneConstraints indicates to the package manager whether to<br />honor Crossplane version constrains specified by the package.<br />Default is false.|False|
 |**package** `required`|str|Package is the name of the package that is being requested.||
@@ -2643,12 +2827,13 @@ A Condition that may apply to a resource.
 | --- | --- | --- | --- |
 |**lastTransitionTime** `required`|str|LastTransitionTime is the last time this condition transitioned from one<br />status to another.||
 |**message**|str|A Message containing details about this condition's last transition from<br />one status to another, if any.||
+|**observedGeneration**|int|ObservedGeneration represents the .metadata.generation that the condition was set based upon.<br />For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date<br />with respect to the current state of the instance.||
 |**reason** `required`|str|A Reason for this condition's last transition from one status to another.||
 |**status** `required`|str|Status of this condition; is it currently True, False, or Unknown?||
 |**type** `required`|str|||
 ### Provider
 
-Provider is the CRD type for a request to add a provider to Crossplane.
+A Provider installs an OCI compatible Crossplane package, extending Crossplane with support for new kinds of managed resources.  Read the Crossplane documentation for [more information about Providers](https://docs.crossplane.io/latest/concepts/providers).
 
 #### Attributes
 
@@ -2661,7 +2846,7 @@ Provider is the CRD type for a request to add a provider to Crossplane.
 |**status**|[PkgCrossplaneIoV1ProviderStatus](#pkgcrossplaneiov1providerstatus)|status||
 ### ProviderRevision
 
-A ProviderRevision that has been added to Crossplane.
+A ProviderRevision represents a revision of a Provider. Crossplane creates new revisions when there are changes to a Provider.  Crossplane creates and manages ProviderRevisions. Don't directly edit ProviderRevisions.
 
 #### Attributes
 
@@ -2765,12 +2950,13 @@ A Condition that may apply to a resource.
 | --- | --- | --- | --- |
 |**lastTransitionTime** `required`|str|LastTransitionTime is the last time this condition transitioned from one<br />status to another.||
 |**message**|str|A Message containing details about this condition's last transition from<br />one status to another, if any.||
+|**observedGeneration**|int|ObservedGeneration represents the .metadata.generation that the condition was set based upon.<br />For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date<br />with respect to the current state of the instance.||
 |**reason** `required`|str|A Reason for this condition's last transition from one status to another.||
 |**status** `required`|str|Status of this condition; is it currently True, False, or Unknown?||
 |**type** `required`|str|||
 ### ControllerConfig
 
-ControllerConfig is the CRD type for a packaged controller configuration. Deprecated: This API is replaced by DeploymentRuntimeConfig, and is scheduled to be removed in a future release. See the design doc for more details: https://github.com/crossplane/crossplane/blob/11bbe13ea3604928cc4e24e8d0d18f3f5f7e847c/design/one-pager-package-runtime-config.md
+A ControllerConfig applies settings to controllers like Provider pods. Deprecated: Use the [DeploymentRuntimeConfig](https://docs.crossplane.io/latest/concepts/providers#runtime-configuration) instead.  Read the [Package Runtime Configuration](https://github.com/crossplane/crossplane/blob/11bbe13ea3604928cc4e24e8d0d18f3f5f7e847c/design/one-pager-package-runtime-config.md) design document for more details.
 
 #### Attributes
 
@@ -2782,7 +2968,7 @@ ControllerConfig is the CRD type for a packaged controller configuration. Deprec
 |**spec**|[PkgCrossplaneIoV1alpha1ControllerConfigSpec](#pkgcrossplaneiov1alpha1controllerconfigspec)|spec||
 ### EnvironmentConfig
 
-A EnvironmentConfig contains a set of arbitrary, unstructured values.
+An EnvironmentConfig contains user-defined unstructured values for use in a Composition.  Read the Crossplane documentation for [more information about EnvironmentConfigs](https://docs.crossplane.io/latest/concepts/environment-configs).
 
 #### Attributes
 
@@ -2792,306 +2978,6 @@ A EnvironmentConfig contains a set of arbitrary, unstructured values.
 |**data**|{str:}|The data of this EnvironmentConfig.<br />This may contain any kind of structure that can be serialized into JSON.||
 |**kind** `required` `readOnly`|"EnvironmentConfig"|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds|"EnvironmentConfig"|
 |**metadata**|[ObjectMeta](#objectmeta)|metadata||
-### HelmCrossplaneIoV1alpha1ProviderConfigSpec
-
-A ProviderConfigSpec defines the desired state of a Provider.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**credentials** `required`|[HelmCrossplaneIoV1alpha1ProviderConfigSpecCredentials](#helmcrossplaneiov1alpha1providerconfigspeccredentials)|credentials||
-|**identity**|[HelmCrossplaneIoV1alpha1ProviderConfigSpecIdentity](#helmcrossplaneiov1alpha1providerconfigspecidentity)|identity||
-### HelmCrossplaneIoV1alpha1ProviderConfigSpecCredentials
-
-Credentials used to connect to the Kubernetes API. Typically a kubeconfig file. Use InjectedIdentity for in-cluster config.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**env**|[HelmCrossplaneIoV1alpha1ProviderConfigSpecCredentialsEnv](#helmcrossplaneiov1alpha1providerconfigspeccredentialsenv)|env||
-|**fs**|[HelmCrossplaneIoV1alpha1ProviderConfigSpecCredentialsFs](#helmcrossplaneiov1alpha1providerconfigspeccredentialsfs)|fs||
-|**secretRef**|[HelmCrossplaneIoV1alpha1ProviderConfigSpecCredentialsSecretRef](#helmcrossplaneiov1alpha1providerconfigspeccredentialssecretref)|secret ref||
-|**source** `required`|"None" | "Secret" | "InjectedIdentity" | "Environment" | "Filesystem"|Source of the provider credentials.||
-### HelmCrossplaneIoV1alpha1ProviderConfigSpecCredentialsEnv
-
-Env is a reference to an environment variable that contains credentials that must be used to connect to the provider.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**name** `required`|str|Name is the name of an environment variable.||
-### HelmCrossplaneIoV1alpha1ProviderConfigSpecCredentialsFs
-
-Fs is a reference to a filesystem location that contains credentials that must be used to connect to the provider.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**path** `required`|str|Path is a filesystem path.||
-### HelmCrossplaneIoV1alpha1ProviderConfigSpecCredentialsSecretRef
-
-A SecretRef is a reference to a secret key that contains the credentials that must be used to connect to the provider.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**key** `required`|str|The key to select.||
-|**name** `required`|str|Name of the secret.||
-|**namespace** `required`|str|Namespace of the secret.||
-### HelmCrossplaneIoV1alpha1ProviderConfigSpecIdentity
-
-Identity used to authenticate to the Kubernetes API. The identity credentials can be used to supplement kubeconfig 'credentials', for example by configuring a bearer token source such as OAuth.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**env**|[HelmCrossplaneIoV1alpha1ProviderConfigSpecIdentityEnv](#helmcrossplaneiov1alpha1providerconfigspecidentityenv)|env||
-|**fs**|[HelmCrossplaneIoV1alpha1ProviderConfigSpecIdentityFs](#helmcrossplaneiov1alpha1providerconfigspecidentityfs)|fs||
-|**secretRef**|[HelmCrossplaneIoV1alpha1ProviderConfigSpecIdentitySecretRef](#helmcrossplaneiov1alpha1providerconfigspecidentitysecretref)|secret ref||
-|**source** `required`|"None" | "Secret" | "InjectedIdentity" | "Environment" | "Filesystem"|Source of the provider credentials.||
-|**type** `required` `readOnly`|"GoogleApplicationCredentials"||"GoogleApplicationCredentials"|
-### HelmCrossplaneIoV1alpha1ProviderConfigSpecIdentityEnv
-
-Env is a reference to an environment variable that contains credentials that must be used to connect to the provider.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**name** `required`|str|Name is the name of an environment variable.||
-### HelmCrossplaneIoV1alpha1ProviderConfigSpecIdentityFs
-
-Fs is a reference to a filesystem location that contains credentials that must be used to connect to the provider.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**path** `required`|str|Path is a filesystem path.||
-### HelmCrossplaneIoV1alpha1ProviderConfigSpecIdentitySecretRef
-
-A SecretRef is a reference to a secret key that contains the credentials that must be used to connect to the provider.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**key** `required`|str|The key to select.||
-|**name** `required`|str|Name of the secret.||
-|**namespace** `required`|str|Namespace of the secret.||
-### HelmCrossplaneIoV1alpha1ProviderConfigStatus
-
-A ProviderConfigStatus defines the status of a Provider.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**conditions**|[[HelmCrossplaneIoV1alpha1ProviderConfigStatusConditionsItems0](#helmcrossplaneiov1alpha1providerconfigstatusconditionsitems0)]|Conditions of the resource.||
-|**users**|int|Users of this provider configuration.||
-### HelmCrossplaneIoV1alpha1ProviderConfigStatusConditionsItems0
-
-A Condition that may apply to a resource.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**lastTransitionTime** `required`|str|LastTransitionTime is the last time this condition transitioned from one status to another.||
-|**message**|str|A Message containing details about this condition's last transition from one status to another, if any.||
-|**reason** `required`|str|A Reason for this condition's last transition from one status to another.||
-|**status** `required`|str|Status of this condition; is it currently True, False, or Unknown?||
-|**type** `required`|str|||
-### NopCrossplaneIoV1alpha1NopResourceSpec
-
-A NopResourceSpec defines the desired state of a NopResource.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**deletionPolicy**|"Orphan" | "Delete"|DeletionPolicy specifies what will happen to the underlying external when this managed resource is deleted - either "Delete" or "Orphan" the external resource.|"Delete"|
-|**forProvider** `required`|[NopCrossplaneIoV1alpha1NopResourceSpecForProvider](#nopcrossplaneiov1alpha1nopresourcespecforprovider)|for provider||
-|**providerConfigRef**|[NopCrossplaneIoV1alpha1NopResourceSpecProviderConfigRef](#nopcrossplaneiov1alpha1nopresourcespecproviderconfigref)|provider config ref||
-|**providerRef**|[NopCrossplaneIoV1alpha1NopResourceSpecProviderRef](#nopcrossplaneiov1alpha1nopresourcespecproviderref)|provider ref||
-|**publishConnectionDetailsTo**|[NopCrossplaneIoV1alpha1NopResourceSpecPublishConnectionDetailsTo](#nopcrossplaneiov1alpha1nopresourcespecpublishconnectiondetailsto)|publish connection details to||
-|**writeConnectionSecretToRef**|[NopCrossplaneIoV1alpha1NopResourceSpecWriteConnectionSecretToRef](#nopcrossplaneiov1alpha1nopresourcespecwriteconnectionsecrettoref)|write connection secret to ref||
-### NopCrossplaneIoV1alpha1NopResourceSpecForProvider
-
-NopResourceParameters are the configurable fields of a NopResource.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**conditionAfter**|[[NopCrossplaneIoV1alpha1NopResourceSpecForProviderConditionAfterItems0](#nopcrossplaneiov1alpha1nopresourcespecforproviderconditionafteritems0)]|ConditionAfter can be used to set status conditions after a specified time. By default a NopResource will only have a status condition of Type: Synced. It will never have a status condition of Type: Ready unless one is configured here.||
-|**connectionDetails**|[[NopCrossplaneIoV1alpha1NopResourceSpecForProviderConnectionDetailsItems0](#nopcrossplaneiov1alpha1nopresourcespecforproviderconnectiondetailsitems0)]|ConnectionDetails that this NopResource should emit on each reconcile.||
-|**fields**|any|Fields is an arbitrary object you can patch to and from. It has no schema, is not validated, and is not used by the NopResource controller.||
-### NopCrossplaneIoV1alpha1NopResourceSpecForProviderConditionAfterItems0
-
-ResourceConditionAfter specifies a condition of a NopResource that should be set after a certain duration.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**conditionReason**|str|ConditionReason to set - e.g. Available.||
-|**conditionStatus** `required`|str|ConditionStatus to set - e.g. True.||
-|**conditionType** `required`|str|ConditionType to set - e.g. Ready.||
-|**time** `required`|str|Time is the duration after which the condition should be set.||
-### NopCrossplaneIoV1alpha1NopResourceSpecForProviderConnectionDetailsItems0
-
-ResourceConnectionDetail specifies a connection detail a NopResource should emit.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**name** `required`|str|Name of the connection detail.||
-|**value** `required`|str|Value of the connection detail.||
-### NopCrossplaneIoV1alpha1NopResourceSpecProviderConfigRef
-
-ProviderConfigReference specifies how the provider that will be used to create, observe, update, and delete this managed resource should be configured.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**name** `required`|str|Name of the referenced object.||
-|**policy**|[NopCrossplaneIoV1alpha1NopResourceSpecProviderConfigRefPolicy](#nopcrossplaneiov1alpha1nopresourcespecproviderconfigrefpolicy)|policy||
-### NopCrossplaneIoV1alpha1NopResourceSpecProviderConfigRefPolicy
-
-Policies for referencing.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**resolution**|"Required" | "Optional"|Resolution specifies whether resolution of this reference is required. The default is 'Required', which means the reconcile will fail if the reference cannot be resolved. 'Optional' means this reference will be a no-op if it cannot be resolved.|"Required"|
-|**resolve**|"Always" | "IfNotPresent"|Resolve specifies when this reference should be resolved. The default is 'IfNotPresent', which will attempt to resolve the reference only when the corresponding field is not present. Use 'Always' to resolve the reference on every reconcile.||
-### NopCrossplaneIoV1alpha1NopResourceSpecProviderRef
-
-ProviderReference specifies the provider that will be used to create, observe, update, and delete this managed resource. Deprecated: Please use ProviderConfigReference, i.e. `providerConfigRef`
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**name** `required`|str|Name of the referenced object.||
-|**policy**|[NopCrossplaneIoV1alpha1NopResourceSpecProviderRefPolicy](#nopcrossplaneiov1alpha1nopresourcespecproviderrefpolicy)|policy||
-### NopCrossplaneIoV1alpha1NopResourceSpecProviderRefPolicy
-
-Policies for referencing.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**resolution**|"Required" | "Optional"|Resolution specifies whether resolution of this reference is required. The default is 'Required', which means the reconcile will fail if the reference cannot be resolved. 'Optional' means this reference will be a no-op if it cannot be resolved.|"Required"|
-|**resolve**|"Always" | "IfNotPresent"|Resolve specifies when this reference should be resolved. The default is 'IfNotPresent', which will attempt to resolve the reference only when the corresponding field is not present. Use 'Always' to resolve the reference on every reconcile.||
-### NopCrossplaneIoV1alpha1NopResourceSpecPublishConnectionDetailsTo
-
-PublishConnectionDetailsTo specifies the connection secret config which contains a name, metadata and a reference to secret store config to which any connection details for this managed resource should be written. Connection details frequently include the endpoint, username, and password required to connect to the managed resource.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**configRef**|[NopCrossplaneIoV1alpha1NopResourceSpecPublishConnectionDetailsToConfigRef](#nopcrossplaneiov1alpha1nopresourcespecpublishconnectiondetailstoconfigref)|config ref||
-|**metadata**|[NopCrossplaneIoV1alpha1NopResourceSpecPublishConnectionDetailsToMetadata](#nopcrossplaneiov1alpha1nopresourcespecpublishconnectiondetailstometadata)|metadata||
-|**name** `required`|str|Name is the name of the connection secret.||
-### NopCrossplaneIoV1alpha1NopResourceSpecPublishConnectionDetailsToConfigRef
-
-SecretStoreConfigRef specifies which secret store config should be used for this ConnectionSecret.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**name** `required`|str|Name of the referenced object.||
-|**policy**|[NopCrossplaneIoV1alpha1NopResourceSpecPublishConnectionDetailsToConfigRefPolicy](#nopcrossplaneiov1alpha1nopresourcespecpublishconnectiondetailstoconfigrefpolicy)|policy||
-### NopCrossplaneIoV1alpha1NopResourceSpecPublishConnectionDetailsToConfigRefPolicy
-
-Policies for referencing.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**resolution**|"Required" | "Optional"|Resolution specifies whether resolution of this reference is required. The default is 'Required', which means the reconcile will fail if the reference cannot be resolved. 'Optional' means this reference will be a no-op if it cannot be resolved.|"Required"|
-|**resolve**|"Always" | "IfNotPresent"|Resolve specifies when this reference should be resolved. The default is 'IfNotPresent', which will attempt to resolve the reference only when the corresponding field is not present. Use 'Always' to resolve the reference on every reconcile.||
-### NopCrossplaneIoV1alpha1NopResourceSpecPublishConnectionDetailsToMetadata
-
-Metadata is the metadata for connection secret.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations are the annotations to be added to connection secret. - For Kubernetes secrets, this will be used as "metadata.annotations". - It is up to Secret Store implementation for others store types.||
-|**labels**|{str:str}|Labels are the labels/tags to be added to connection secret. - For Kubernetes secrets, this will be used as "metadata.labels". - It is up to Secret Store implementation for others store types.||
-|**type**|str|||
-### NopCrossplaneIoV1alpha1NopResourceSpecWriteConnectionSecretToRef
-
-WriteConnectionSecretToReference specifies the namespace and name of a Secret to which any connection details for this managed resource should be written. Connection details frequently include the endpoint, username, and password required to connect to the managed resource. This field is planned to be replaced in a future release in favor of PublishConnectionDetailsTo. Currently, both could be set independently and connection details would be published to both without affecting each other.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**name** `required`|str|Name of the secret.||
-|**namespace** `required`|str|Namespace of the secret.||
-### NopCrossplaneIoV1alpha1NopResourceStatus
-
-A NopResourceStatus represents the observed state of a NopResource.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**atProvider**|[NopCrossplaneIoV1alpha1NopResourceStatusAtProvider](#nopcrossplaneiov1alpha1nopresourcestatusatprovider)|at provider||
-|**conditions**|[[NopCrossplaneIoV1alpha1NopResourceStatusConditionsItems0](#nopcrossplaneiov1alpha1nopresourcestatusconditionsitems0)]|Conditions of the resource.||
-### NopCrossplaneIoV1alpha1NopResourceStatusAtProvider
-
-NopResourceObservation are the observable fields of a NopResource.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**fields**|any|Fields is an arbitrary object you can patch to and from. It has no schema, is not validated, and is not used by the NopResource controller.||
-### NopCrossplaneIoV1alpha1NopResourceStatusConditionsItems0
-
-A Condition that may apply to a resource.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**lastTransitionTime** `required`|str|LastTransitionTime is the last time this condition transitioned from one status to another.||
-|**message**|str|A Message containing details about this condition's last transition from one status to another, if any.||
-|**reason** `required`|str|A Reason for this condition's last transition from one status to another.||
-|**status** `required`|str|Status of this condition; is it currently True, False, or Unknown?||
-|**type** `required`|str|||
-### NopResource
-
-A NopResource is an example API type.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**apiVersion** `required` `readOnly`|"nop.crossplane.io/v1alpha1"|APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources|"nop.crossplane.io/v1alpha1"|
-|**kind** `required` `readOnly`|"NopResource"|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds|"NopResource"|
-|**metadata**|[ObjectMeta](#objectmeta)|metadata||
-|**spec** `required`|[NopCrossplaneIoV1alpha1NopResourceSpec](#nopcrossplaneiov1alpha1nopresourcespec)|spec||
-|**status**|[NopCrossplaneIoV1alpha1NopResourceStatus](#nopcrossplaneiov1alpha1nopresourcestatus)|status||
 ### PkgCrossplaneIoV1alpha1ControllerConfigSpec
 
 ControllerConfigSpec specifies the configuration for a packaged controller. Values provided will override package manager defaults. Labels and annotations are passed to both the controller Deployment and ServiceAccount.
@@ -3115,7 +3001,7 @@ ControllerConfigSpec specifies the configuration for a packaged controller. Valu
 |**priorityClassName**|str|If specified, indicates the pod's priority. "system-node-critical" and<br />"system-cluster-critical" are two special keywords which indicate the<br />highest priorities with the former being the highest priority. Any other<br />name must be defined by creating a PriorityClass object with that name.<br />If not specified, the pod priority will be default or zero if there is no<br />default.||
 |**replicas**|int|Number of desired pods. This is a pointer to distinguish between explicit<br />zero and not specified. Defaults to 1.<br />Note: If more than 1 replica is set and leader election is not enabled then<br />controllers could conflict. Environment variable "LEADER_ELECTION" can be<br />used to enable leader election process.||
 |**resources**|[PkgCrossplaneIoV1alpha1ControllerConfigSpecResources](#pkgcrossplaneiov1alpha1controllerconfigspecresources)|resources||
-|**runtimeClassName**|str|RuntimeClassName refers to a RuntimeClass object in the node.k8s.io group, which should be used<br />to run this pod.  If no RuntimeClass resource matches the named class, the pod will not be run.<br />If unset or empty, the "legacy" RuntimeClass will be used, which is an implicit class with an<br />empty definition that uses the default runtime handler.<br />More info: https://git.k8s.io/enhancements/keps/sig-node/runtime-class.md<br />This is a beta feature as of Kubernetes v1.14.||
+|**runtimeClassName**|str|RuntimeClassName refers to a RuntimeClass object in the node.k8s.io group, which should be used<br />to run this pod.  If no RuntimeClass resource matches the named class, the pod will not be run.<br />If unset or empty, the "legacy" RuntimeClass will be used, which is an implicit class with an<br />empty definition that uses the default runtime handler.<br />More info: https://github.com/kubernetes/enhancements/blob/master/keps/sig-node/585-runtime-class/README.md<br />This is a beta feature as of Kubernetes v1.14.||
 |**securityContext**|[PkgCrossplaneIoV1alpha1ControllerConfigSpecSecurityContext](#pkgcrossplaneiov1alpha1controllerconfigspecsecuritycontext)|security context||
 |**serviceAccountName**|str|ServiceAccountName is the name of the ServiceAccount to use to run this pod.<br />More info: https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/<br />If specified, a ServiceAccount named this ServiceAccountName will be used for<br />the spec.serviceAccountName field in Pods to be created and for the subjects.name field<br />in a ClusterRoleBinding to be created.<br />If there is no ServiceAccount named this ServiceAccountName, a new ServiceAccount<br />will be created.<br />If there is a pre-existing ServiceAccount named this ServiceAccountName, the ServiceAccount<br />will be used. The annotations in the ControllerConfig will be copied to the ServiceAccount<br />and pre-existing annotations will be kept.<br />Regardless of whether there is a ServiceAccount created by Crossplane or is in place already,<br />the ServiceAccount will be deleted once the Provider and ControllerConfig are deleted.||
 |**tolerations**|[[PkgCrossplaneIoV1alpha1ControllerConfigSpecTolerationsItems0](#pkgcrossplaneiov1alpha1controllerconfigspectolerationsitems0)]|If specified, the pod's tolerations.||
@@ -3254,8 +3140,8 @@ Required. A pod affinity term, associated with the corresponding weight.
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**labelSelector**|[PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector](#pkgcrossplaneiov1alpha1controllerconfigspecaffinitypodaffinitypreferredduringschedulingignoredduringexecutionitems0podaffinitytermlabelselector)|label selector||
-|**matchLabelKeys**|[str]|MatchLabelKeys is a set of pod label keys to select which pods will<br />be taken into consideration. The keys are used to lookup values from the<br />incoming pod labels, those key-value labels are merged with `LabelSelector` as `key in (value)`<br />to select the group of existing pods which pods will be taken into consideration<br />for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming<br />pod labels will be ignored. The default value is empty.<br />The same key is forbidden to exist in both MatchLabelKeys and LabelSelector.<br />Also, MatchLabelKeys cannot be set when LabelSelector isn't set.<br />This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.||
-|**mismatchLabelKeys**|[str]|MismatchLabelKeys is a set of pod label keys to select which pods will<br />be taken into consideration. The keys are used to lookup values from the<br />incoming pod labels, those key-value labels are merged with `LabelSelector` as `key notin (value)`<br />to select the group of existing pods which pods will be taken into consideration<br />for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming<br />pod labels will be ignored. The default value is empty.<br />The same key is forbidden to exist in both MismatchLabelKeys and LabelSelector.<br />Also, MismatchLabelKeys cannot be set when LabelSelector isn't set.<br />This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.||
+|**matchLabelKeys**|[str]|MatchLabelKeys is a set of pod label keys to select which pods will<br />be taken into consideration. The keys are used to lookup values from the<br />incoming pod labels, those key-value labels are merged with `labelSelector` as `key in (value)`<br />to select the group of existing pods which pods will be taken into consideration<br />for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming<br />pod labels will be ignored. The default value is empty.<br />The same key is forbidden to exist in both matchLabelKeys and labelSelector.<br />Also, matchLabelKeys cannot be set when labelSelector isn't set.<br />This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.||
+|**mismatchLabelKeys**|[str]|MismatchLabelKeys is a set of pod label keys to select which pods will<br />be taken into consideration. The keys are used to lookup values from the<br />incoming pod labels, those key-value labels are merged with `labelSelector` as `key notin (value)`<br />to select the group of existing pods which pods will be taken into consideration<br />for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming<br />pod labels will be ignored. The default value is empty.<br />The same key is forbidden to exist in both mismatchLabelKeys and labelSelector.<br />Also, mismatchLabelKeys cannot be set when labelSelector isn't set.<br />This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.||
 |**namespaceSelector**|[PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector](#pkgcrossplaneiov1alpha1controllerconfigspecaffinitypodaffinitypreferredduringschedulingignoredduringexecutionitems0podaffinitytermnamespaceselector)|namespace selector||
 |**namespaces**|[str]|namespaces specifies a static list of namespace names that the term applies to.<br />The term is applied to the union of the namespaces listed in this field<br />and the ones selected by namespaceSelector.<br />null or empty namespaces list and null namespaceSelector means "this pod's namespace".||
 |**topologyKey** `required`|str|This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching<br />the labelSelector in the specified namespaces, where co-located is defined as running on a node<br />whose value of the label with key topologyKey matches that of any node on which any of the<br />selected pods is running.<br />Empty topologyKey is not allowed.||
@@ -3310,8 +3196,8 @@ Defines a set of pods (namely those matching the labelSelector relative to the g
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**labelSelector**|[PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector](#pkgcrossplaneiov1alpha1controllerconfigspecaffinitypodaffinityrequiredduringschedulingignoredduringexecutionitems0labelselector)|label selector||
-|**matchLabelKeys**|[str]|MatchLabelKeys is a set of pod label keys to select which pods will<br />be taken into consideration. The keys are used to lookup values from the<br />incoming pod labels, those key-value labels are merged with `LabelSelector` as `key in (value)`<br />to select the group of existing pods which pods will be taken into consideration<br />for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming<br />pod labels will be ignored. The default value is empty.<br />The same key is forbidden to exist in both MatchLabelKeys and LabelSelector.<br />Also, MatchLabelKeys cannot be set when LabelSelector isn't set.<br />This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.||
-|**mismatchLabelKeys**|[str]|MismatchLabelKeys is a set of pod label keys to select which pods will<br />be taken into consideration. The keys are used to lookup values from the<br />incoming pod labels, those key-value labels are merged with `LabelSelector` as `key notin (value)`<br />to select the group of existing pods which pods will be taken into consideration<br />for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming<br />pod labels will be ignored. The default value is empty.<br />The same key is forbidden to exist in both MismatchLabelKeys and LabelSelector.<br />Also, MismatchLabelKeys cannot be set when LabelSelector isn't set.<br />This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.||
+|**matchLabelKeys**|[str]|MatchLabelKeys is a set of pod label keys to select which pods will<br />be taken into consideration. The keys are used to lookup values from the<br />incoming pod labels, those key-value labels are merged with `labelSelector` as `key in (value)`<br />to select the group of existing pods which pods will be taken into consideration<br />for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming<br />pod labels will be ignored. The default value is empty.<br />The same key is forbidden to exist in both matchLabelKeys and labelSelector.<br />Also, matchLabelKeys cannot be set when labelSelector isn't set.<br />This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.||
+|**mismatchLabelKeys**|[str]|MismatchLabelKeys is a set of pod label keys to select which pods will<br />be taken into consideration. The keys are used to lookup values from the<br />incoming pod labels, those key-value labels are merged with `labelSelector` as `key notin (value)`<br />to select the group of existing pods which pods will be taken into consideration<br />for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming<br />pod labels will be ignored. The default value is empty.<br />The same key is forbidden to exist in both mismatchLabelKeys and labelSelector.<br />Also, mismatchLabelKeys cannot be set when labelSelector isn't set.<br />This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.||
 |**namespaceSelector**|[PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector](#pkgcrossplaneiov1alpha1controllerconfigspecaffinitypodaffinityrequiredduringschedulingignoredduringexecutionitems0namespaceselector)|namespace selector||
 |**namespaces**|[str]|namespaces specifies a static list of namespace names that the term applies to.<br />The term is applied to the union of the namespaces listed in this field<br />and the ones selected by namespaceSelector.<br />null or empty namespaces list and null namespaceSelector means "this pod's namespace".||
 |**topologyKey** `required`|str|This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching<br />the labelSelector in the specified namespaces, where co-located is defined as running on a node<br />whose value of the label with key topologyKey matches that of any node on which any of the<br />selected pods is running.<br />Empty topologyKey is not allowed.||
@@ -3386,8 +3272,8 @@ Required. A pod affinity term, associated with the corresponding weight.
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**labelSelector**|[PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector](#pkgcrossplaneiov1alpha1controllerconfigspecaffinitypodantiaffinitypreferredduringschedulingignoredduringexecutionitems0podaffinitytermlabelselector)|label selector||
-|**matchLabelKeys**|[str]|MatchLabelKeys is a set of pod label keys to select which pods will<br />be taken into consideration. The keys are used to lookup values from the<br />incoming pod labels, those key-value labels are merged with `LabelSelector` as `key in (value)`<br />to select the group of existing pods which pods will be taken into consideration<br />for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming<br />pod labels will be ignored. The default value is empty.<br />The same key is forbidden to exist in both MatchLabelKeys and LabelSelector.<br />Also, MatchLabelKeys cannot be set when LabelSelector isn't set.<br />This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.||
-|**mismatchLabelKeys**|[str]|MismatchLabelKeys is a set of pod label keys to select which pods will<br />be taken into consideration. The keys are used to lookup values from the<br />incoming pod labels, those key-value labels are merged with `LabelSelector` as `key notin (value)`<br />to select the group of existing pods which pods will be taken into consideration<br />for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming<br />pod labels will be ignored. The default value is empty.<br />The same key is forbidden to exist in both MismatchLabelKeys and LabelSelector.<br />Also, MismatchLabelKeys cannot be set when LabelSelector isn't set.<br />This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.||
+|**matchLabelKeys**|[str]|MatchLabelKeys is a set of pod label keys to select which pods will<br />be taken into consideration. The keys are used to lookup values from the<br />incoming pod labels, those key-value labels are merged with `labelSelector` as `key in (value)`<br />to select the group of existing pods which pods will be taken into consideration<br />for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming<br />pod labels will be ignored. The default value is empty.<br />The same key is forbidden to exist in both matchLabelKeys and labelSelector.<br />Also, matchLabelKeys cannot be set when labelSelector isn't set.<br />This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.||
+|**mismatchLabelKeys**|[str]|MismatchLabelKeys is a set of pod label keys to select which pods will<br />be taken into consideration. The keys are used to lookup values from the<br />incoming pod labels, those key-value labels are merged with `labelSelector` as `key notin (value)`<br />to select the group of existing pods which pods will be taken into consideration<br />for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming<br />pod labels will be ignored. The default value is empty.<br />The same key is forbidden to exist in both mismatchLabelKeys and labelSelector.<br />Also, mismatchLabelKeys cannot be set when labelSelector isn't set.<br />This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.||
 |**namespaceSelector**|[PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector](#pkgcrossplaneiov1alpha1controllerconfigspecaffinitypodantiaffinitypreferredduringschedulingignoredduringexecutionitems0podaffinitytermnamespaceselector)|namespace selector||
 |**namespaces**|[str]|namespaces specifies a static list of namespace names that the term applies to.<br />The term is applied to the union of the namespaces listed in this field<br />and the ones selected by namespaceSelector.<br />null or empty namespaces list and null namespaceSelector means "this pod's namespace".||
 |**topologyKey** `required`|str|This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching<br />the labelSelector in the specified namespaces, where co-located is defined as running on a node<br />whose value of the label with key topologyKey matches that of any node on which any of the<br />selected pods is running.<br />Empty topologyKey is not allowed.||
@@ -3442,8 +3328,8 @@ Defines a set of pods (namely those matching the labelSelector relative to the g
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**labelSelector**|[PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector](#pkgcrossplaneiov1alpha1controllerconfigspecaffinitypodantiaffinityrequiredduringschedulingignoredduringexecutionitems0labelselector)|label selector||
-|**matchLabelKeys**|[str]|MatchLabelKeys is a set of pod label keys to select which pods will<br />be taken into consideration. The keys are used to lookup values from the<br />incoming pod labels, those key-value labels are merged with `LabelSelector` as `key in (value)`<br />to select the group of existing pods which pods will be taken into consideration<br />for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming<br />pod labels will be ignored. The default value is empty.<br />The same key is forbidden to exist in both MatchLabelKeys and LabelSelector.<br />Also, MatchLabelKeys cannot be set when LabelSelector isn't set.<br />This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.||
-|**mismatchLabelKeys**|[str]|MismatchLabelKeys is a set of pod label keys to select which pods will<br />be taken into consideration. The keys are used to lookup values from the<br />incoming pod labels, those key-value labels are merged with `LabelSelector` as `key notin (value)`<br />to select the group of existing pods which pods will be taken into consideration<br />for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming<br />pod labels will be ignored. The default value is empty.<br />The same key is forbidden to exist in both MismatchLabelKeys and LabelSelector.<br />Also, MismatchLabelKeys cannot be set when LabelSelector isn't set.<br />This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.||
+|**matchLabelKeys**|[str]|MatchLabelKeys is a set of pod label keys to select which pods will<br />be taken into consideration. The keys are used to lookup values from the<br />incoming pod labels, those key-value labels are merged with `labelSelector` as `key in (value)`<br />to select the group of existing pods which pods will be taken into consideration<br />for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming<br />pod labels will be ignored. The default value is empty.<br />The same key is forbidden to exist in both matchLabelKeys and labelSelector.<br />Also, matchLabelKeys cannot be set when labelSelector isn't set.<br />This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.||
+|**mismatchLabelKeys**|[str]|MismatchLabelKeys is a set of pod label keys to select which pods will<br />be taken into consideration. The keys are used to lookup values from the<br />incoming pod labels, those key-value labels are merged with `labelSelector` as `key notin (value)`<br />to select the group of existing pods which pods will be taken into consideration<br />for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming<br />pod labels will be ignored. The default value is empty.<br />The same key is forbidden to exist in both mismatchLabelKeys and labelSelector.<br />Also, mismatchLabelKeys cannot be set when labelSelector isn't set.<br />This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.||
 |**namespaceSelector**|[PkgCrossplaneIoV1alpha1ControllerConfigSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector](#pkgcrossplaneiov1alpha1controllerconfigspecaffinitypodantiaffinityrequiredduringschedulingignoredduringexecutionitems0namespaceselector)|namespace selector||
 |**namespaces**|[str]|namespaces specifies a static list of namespace names that the term applies to.<br />The term is applied to the union of the namespaces listed in this field<br />and the ones selected by namespaceSelector.<br />null or empty namespaces list and null namespaceSelector means "this pod's namespace".||
 |**topologyKey** `required`|str|This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching<br />the labelSelector in the specified namespaces, where co-located is defined as running on a node<br />whose value of the label with key topologyKey matches that of any node on which any of the<br />selected pods is running.<br />Empty topologyKey is not allowed.||
@@ -3603,8 +3489,8 @@ Metadata that will be added to the provider Pod.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations is an unstructured key value map stored with a resource that may be<br />set by external tools to store and retrieve arbitrary metadata. They are not<br />queryable and should be preserved when modifying objects.<br />More info: http://kubernetes.io/docs/user-guide/annotations||
-|**labels**|{str:str}|Map of string keys and values that can be used to organize and<br />categorize (scope and select) objects. This will only affect<br />labels on the pod, not the pod selector. Labels will be merged<br />with internal labels used by crossplane, and labels with a<br />crossplane.io key might be overwritten.<br />More info: http://kubernetes.io/docs/user-guide/labels||
+|**annotations**|{str:str}|Annotations is an unstructured key value map stored with a resource that may be<br />set by external tools to store and retrieve arbitrary metadata. They are not<br />queryable and should be preserved when modifying objects.<br />More info: http:https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/||
+|**labels**|{str:str}|Map of string keys and values that can be used to organize and<br />categorize (scope and select) objects. This will only affect<br />labels on the pod, not the pod selector. Labels will be merged<br />with internal labels used by crossplane, and labels with a<br />crossplane.io key might be overwritten.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/||
 ### PkgCrossplaneIoV1alpha1ControllerConfigSpecPodSecurityContext
 
 PodSecurityContext holds pod-level security attributes and common container settings. Optional: Defaults to empty.  See type description for default values of each field.
@@ -3613,6 +3499,7 @@ PodSecurityContext holds pod-level security attributes and common container sett
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
+|**appArmorProfile**|[PkgCrossplaneIoV1alpha1ControllerConfigSpecPodSecurityContextAppArmorProfile](#pkgcrossplaneiov1alpha1controllerconfigspecpodsecuritycontextapparmorprofile)|app armor profile||
 |**fsGroup**|int|A special supplemental group that applies to all containers in a pod.<br />Some volume types allow the Kubelet to change the ownership of that volume<br />to be owned by the pod:<br /><br />1. The owning GID will be the FSGroup<br />2. The setgid bit is set (new files created in the volume will be owned by FSGroup)<br />3. The permission bits are OR'd with rw-rw----<br /><br />If unset, the Kubelet will not modify the ownership and permissions of any volume.<br />Note that this field cannot be set when spec.os.name is windows.||
 |**fsGroupChangePolicy**|str|fsGroupChangePolicy defines behavior of changing ownership and permission of the volume<br />before being exposed inside Pod. This field will only apply to<br />volume types which support fsGroup based ownership(and permissions).<br />It will have no effect on ephemeral volume types such as: secret, configmaps<br />and emptydir.<br />Valid values are "OnRootMismatch" and "Always". If not specified, "Always" is used.<br />Note that this field cannot be set when spec.os.name is windows.||
 |**runAsGroup**|int|The GID to run the entrypoint of the container process.<br />Uses runtime default if unset.<br />May also be set in SecurityContext.  If set in both SecurityContext and<br />PodSecurityContext, the value specified in SecurityContext takes precedence<br />for that container.<br />Note that this field cannot be set when spec.os.name is windows.||
@@ -3623,6 +3510,16 @@ PodSecurityContext holds pod-level security attributes and common container sett
 |**supplementalGroups**|[int]|A list of groups applied to the first process run in each container, in addition<br />to the container's primary GID, the fsGroup (if specified), and group memberships<br />defined in the container image for the uid of the container process. If unspecified,<br />no additional groups are added to any container. Note that group memberships<br />defined in the container image for the uid of the container process are still effective,<br />even if they are not included in this list.<br />Note that this field cannot be set when spec.os.name is windows.||
 |**sysctls**|[[PkgCrossplaneIoV1alpha1ControllerConfigSpecPodSecurityContextSysctlsItems0](#pkgcrossplaneiov1alpha1controllerconfigspecpodsecuritycontextsysctlsitems0)]|Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported<br />sysctls (by the container runtime) might fail to launch.<br />Note that this field cannot be set when spec.os.name is windows.||
 |**windowsOptions**|[PkgCrossplaneIoV1alpha1ControllerConfigSpecPodSecurityContextWindowsOptions](#pkgcrossplaneiov1alpha1controllerconfigspecpodsecuritycontextwindowsoptions)|windows options||
+### PkgCrossplaneIoV1alpha1ControllerConfigSpecPodSecurityContextAppArmorProfile
+
+appArmorProfile is the AppArmor options to use by the containers in this pod. Note that this field cannot be set when spec.os.name is windows.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**localhostProfile**|str|localhostProfile indicates a profile loaded on the node that should be used.<br />The profile must be preconfigured on the node to work.<br />Must match the loaded name of the profile.<br />Must be set if and only if type is "Localhost".||
+|**type** `required`|str|||
 ### PkgCrossplaneIoV1alpha1ControllerConfigSpecPodSecurityContextSeLinuxOptions
 
 The SELinux context to be applied to all containers. If unspecified, the container runtime will allocate a random SELinux context for each container.  May also be set in SecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container. Note that this field cannot be set when spec.os.name is windows.
@@ -3709,6 +3606,7 @@ SecurityContext holds container-level security attributes and common container s
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**allowPrivilegeEscalation**|bool|AllowPrivilegeEscalation controls whether a process can gain more<br />privileges than its parent process. This bool directly controls if<br />the no_new_privs flag will be set on the container process.<br />AllowPrivilegeEscalation is true always when the container is:<br />1) run as Privileged<br />2) has CAP_SYS_ADMIN<br />Note that this field cannot be set when spec.os.name is windows.||
+|**appArmorProfile**|[PkgCrossplaneIoV1alpha1ControllerConfigSpecSecurityContextAppArmorProfile](#pkgcrossplaneiov1alpha1controllerconfigspecsecuritycontextapparmorprofile)|app armor profile||
 |**capabilities**|[PkgCrossplaneIoV1alpha1ControllerConfigSpecSecurityContextCapabilities](#pkgcrossplaneiov1alpha1controllerconfigspecsecuritycontextcapabilities)|capabilities||
 |**privileged**|bool|Run container in privileged mode.<br />Processes in privileged containers are essentially equivalent to root on the host.<br />Defaults to false.<br />Note that this field cannot be set when spec.os.name is windows.||
 |**procMount**|str|procMount denotes the type of proc mount to use for the containers.<br />The default is DefaultProcMount which uses the container runtime defaults for<br />readonly paths and masked paths.<br />This requires the ProcMountType feature flag to be enabled.<br />Note that this field cannot be set when spec.os.name is windows.||
@@ -3719,6 +3617,16 @@ SecurityContext holds container-level security attributes and common container s
 |**seLinuxOptions**|[PkgCrossplaneIoV1alpha1ControllerConfigSpecSecurityContextSeLinuxOptions](#pkgcrossplaneiov1alpha1controllerconfigspecsecuritycontextselinuxoptions)|se linux options||
 |**seccompProfile**|[PkgCrossplaneIoV1alpha1ControllerConfigSpecSecurityContextSeccompProfile](#pkgcrossplaneiov1alpha1controllerconfigspecsecuritycontextseccompprofile)|seccomp profile||
 |**windowsOptions**|[PkgCrossplaneIoV1alpha1ControllerConfigSpecSecurityContextWindowsOptions](#pkgcrossplaneiov1alpha1controllerconfigspecsecuritycontextwindowsoptions)|windows options||
+### PkgCrossplaneIoV1alpha1ControllerConfigSpecSecurityContextAppArmorProfile
+
+appArmorProfile is the AppArmor options to use by this container. If set, this profile overrides the pod's appArmorProfile. Note that this field cannot be set when spec.os.name is windows.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**localhostProfile**|str|localhostProfile indicates a profile loaded on the node that should be used.<br />The profile must be preconfigured on the node to work.<br />Must match the loaded name of the profile.<br />Must be set if and only if type is "Localhost".||
+|**type** `required`|str|||
 ### PkgCrossplaneIoV1alpha1ControllerConfigSpecSecurityContextCapabilities
 
 The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime. Note that this field cannot be set when spec.os.name is windows.
@@ -3785,9 +3693,10 @@ VolumeMount describes a mounting of a Volume within a container.
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**mountPath** `required`|str|Path within the container at which the volume should be mounted.  Must<br />not contain ':'.||
-|**mountPropagation**|str|mountPropagation determines how mounts are propagated from the host<br />to container and the other way around.<br />When not set, MountPropagationNone is used.<br />This field is beta in 1.10.||
+|**mountPropagation**|str|mountPropagation determines how mounts are propagated from the host<br />to container and the other way around.<br />When not set, MountPropagationNone is used.<br />This field is beta in 1.10.<br />When RecursiveReadOnly is set to IfPossible or to Enabled, MountPropagation must be None or unspecified<br />(which defaults to None).||
 |**name** `required`|str|This must match the Name of a Volume.||
 |**readOnly**|bool|Mounted read-only if true, read-write otherwise (false or unspecified).<br />Defaults to false.||
+|**recursiveReadOnly**|str|RecursiveReadOnly specifies whether read-only mounts should be handled<br />recursively.<br /><br />If ReadOnly is false, this field has no meaning and must be unspecified.<br /><br />If ReadOnly is true, and this field is set to Disabled, the mount is not made<br />recursively read-only.  If this field is set to IfPossible, the mount is made<br />recursively read-only, if it is supported by the container runtime.  If this<br />field is set to Enabled, the mount is made recursively read-only if it is<br />supported by the container runtime, otherwise the pod will not be started and<br />an error will be generated to indicate the reason.<br /><br />If this field is set to IfPossible or Enabled, MountPropagation must be set to<br />None (or be unspecified, which defaults to None).<br /><br />If this field is not specified, it is treated as an equivalent of Disabled.||
 |**subPath**|str|Path within the volume from which the container's volume should be mounted.<br />Defaults to "" (volume's root).||
 |**subPathExpr**|str|Expanded path within the volume from which the container's volume should be mounted.<br />Behaves similarly to SubPath but environment variable references $(VAR_NAME) are expanded using the container's environment.<br />Defaults to "" (volume's root).<br />SubPathExpr and SubPath are mutually exclusive.||
 ### PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0
@@ -3978,7 +3887,7 @@ DownwardAPIVolumeFile represents information to create the file containing the p
 |**resourceFieldRef**|[PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0DownwardAPIItemsItems0ResourceFieldRef](#pkgcrossplaneiov1alpha1controllerconfigspecvolumesitems0downwardapiitemsitems0resourcefieldref)|resource field ref||
 ### PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0DownwardAPIItemsItems0FieldRef
 
-Required: Selects a field of the pod: only annotations, labels, name and namespace are supported.
+Required: Selects a field of the pod: only annotations, labels, name, namespace and uid are supported.
 
 #### Attributes
 
@@ -4053,7 +3962,7 @@ The specification for the PersistentVolumeClaim. The entire content is copied un
 |**resources**|[PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0EphemeralVolumeClaimTemplateSpecResources](#pkgcrossplaneiov1alpha1controllerconfigspecvolumesitems0ephemeralvolumeclaimtemplatespecresources)|resources||
 |**selector**|[PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0EphemeralVolumeClaimTemplateSpecSelector](#pkgcrossplaneiov1alpha1controllerconfigspecvolumesitems0ephemeralvolumeclaimtemplatespecselector)|selector||
 |**storageClassName**|str|storageClassName is the name of the StorageClass required by the claim.<br />More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#class-1||
-|**volumeAttributesClassName**|str|volumeAttributesClassName may be used to set the VolumeAttributesClass used by this claim.<br />If specified, the CSI driver will create or update the volume with the attributes defined<br />in the corresponding VolumeAttributesClass. This has a different purpose than storageClassName,<br />it can be changed after the claim is created. An empty string value means that no VolumeAttributesClass<br />will be applied to the claim but it's not allowed to reset this field to empty string once it is set.<br />If unspecified and the PersistentVolumeClaim is unbound, the default VolumeAttributesClass<br />will be set by the persistentvolume controller if it exists.<br />If the resource referred to by volumeAttributesClass does not exist, this PersistentVolumeClaim will be<br />set to a Pending state, as reflected by the modifyVolumeStatus field, until such as a resource<br />exists.<br />More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#volumeattributesclass<br />(Alpha) Using this field requires the VolumeAttributesClass feature gate to be enabled.||
+|**volumeAttributesClassName**|str|volumeAttributesClassName may be used to set the VolumeAttributesClass used by this claim.<br />If specified, the CSI driver will create or update the volume with the attributes defined<br />in the corresponding VolumeAttributesClass. This has a different purpose than storageClassName,<br />it can be changed after the claim is created. An empty string value means that no VolumeAttributesClass<br />will be applied to the claim but it's not allowed to reset this field to empty string once it is set.<br />If unspecified and the PersistentVolumeClaim is unbound, the default VolumeAttributesClass<br />will be set by the persistentvolume controller if it exists.<br />If the resource referred to by volumeAttributesClass does not exist, this PersistentVolumeClaim will be<br />set to a Pending state, as reflected by the modifyVolumeStatus field, until such as a resource<br />exists.<br />More info: https://kubernetes.io/docs/concepts/storage/volume-attributes-classes/<br />(Alpha) Using this field requires the VolumeAttributesClass feature gate to be enabled.||
 |**volumeMode**|str|volumeMode defines what type of volume is required by the claim.<br />Value of Filesystem is implied when not included in claim spec.||
 |**volumeName**|str|volumeName is the binding reference to the PersistentVolume backing this claim.||
 ### PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0EphemeralVolumeClaimTemplateSpecDataSource
@@ -4371,7 +4280,7 @@ DownwardAPIVolumeFile represents information to create the file containing the p
 |**resourceFieldRef**|[PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0ResourceFieldRef](#pkgcrossplaneiov1alpha1controllerconfigspecvolumesitems0projectedsourcesitems0downwardapiitemsitems0resourcefieldref)|resource field ref||
 ### PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0FieldRef
 
-Required: Selects a field of the pod: only annotations, labels, name and namespace are supported.
+Required: Selects a field of the pod: only annotations, labels, name, namespace and uid are supported.
 
 #### Attributes
 
@@ -4546,19 +4455,6 @@ vsphereVolume represents a vSphere volume attached and mounted on kubelets host 
 |**storagePolicyID**|str|storagePolicyID is the storage Policy Based Management (SPBM) profile ID associated with the StoragePolicyName.||
 |**storagePolicyName**|str|storagePolicyName is the storage Policy Based Management (SPBM) profile name.||
 |**volumePath** `required`|str|volumePath is the path that identifies vSphere volume vmdk||
-### ProviderConfig
-
-A ProviderConfig configures a Helm 'provider', i.e. a connection to a particular
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**apiVersion** `required` `readOnly`|"helm.crossplane.io/v1alpha1"|APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources|"helm.crossplane.io/v1alpha1"|
-|**kind** `required` `readOnly`|"ProviderConfig"|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds|"ProviderConfig"|
-|**metadata**|[ObjectMeta](#objectmeta)|metadata||
-|**spec** `required`|[HelmCrossplaneIoV1alpha1ProviderConfigSpec](#helmcrossplaneiov1alpha1providerconfigspec)|spec||
-|**status**|[HelmCrossplaneIoV1alpha1ProviderConfigStatus](#helmcrossplaneiov1alpha1providerconfigstatus)|status||
 ### SecretsCrossplaneIoV1alpha1StoreConfigSpec
 
 A StoreConfigSpec defines the desired state of a StoreConfig.
@@ -4644,7 +4540,7 @@ ConfigRef contains store config reference info.
 |**name** `required`|str|Name of the referenced config.||
 ### StoreConfig
 
-A StoreConfig configures how Crossplane controllers should store connection details.
+A StoreConfig configures how Crossplane controllers should store connection details in an external secret store.
 
 #### Attributes
 
@@ -4656,7 +4552,7 @@ A StoreConfig configures how Crossplane controllers should store connection deta
 |**spec** `required`|[SecretsCrossplaneIoV1alpha1StoreConfigSpec](#secretscrossplaneiov1alpha1storeconfigspec)|spec||
 ### Usage
 
-A Usage defines a deletion blocking relationship between two resources.
+A Usage defines a deletion blocking relationship between two resources.  Usages prevent accidental deletion of a single resource or deletion of resources with dependent resources.  Read the Crossplane documentation for [more information about Compositions](https://docs.crossplane.io/latest/concepts/usages).
 
 #### Attributes
 
@@ -4669,7 +4565,7 @@ A Usage defines a deletion blocking relationship between two resources.
 |**status**|[ApiextensionsCrossplaneIoV1alpha1UsageStatus](#apiextensionscrossplaneiov1alpha1usagestatus)|status||
 ### DeploymentRuntimeConfig
 
-A DeploymentRuntimeConfig is used to configure the package runtime when the package uses a runtime and the package manager is running with --package-runtime=Deployment (the default). See the following design doc for more details:https://github.com/crossplane/crossplane/blob/91edeae3fcac96c6c8a1759a723981eea4bb77e4/design/one-pager-package-runtime-config.md#migration-from-controllerconfig
+The DeploymentRuntimeConfig provides settings for the Kubernetes Deployment of a Provider or composition function package.  Read the Crossplane documentation for [more information about DeploymentRuntimeConfigs](https://docs.crossplane.io/latest/concepts/providers/#runtime-configuration).
 
 #### Attributes
 
@@ -4679,32 +4575,6 @@ A DeploymentRuntimeConfig is used to configure the package runtime when the pack
 |**kind** `required` `readOnly`|"DeploymentRuntimeConfig"|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds|"DeploymentRuntimeConfig"|
 |**metadata**|[ObjectMeta](#objectmeta)|metadata||
 |**spec**|[PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpec](#pkgcrossplaneiov1beta1deploymentruntimeconfigspec)|spec||
-### Function
-
-Function is the CRD type for a request to deploy a long-running Function.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**apiVersion** `required` `readOnly`|"pkg.crossplane.io/v1beta1"|APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources|"pkg.crossplane.io/v1beta1"|
-|**kind** `required` `readOnly`|"Function"|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds|"Function"|
-|**metadata**|[ObjectMeta](#objectmeta)|metadata||
-|**spec**|[PkgCrossplaneIoV1beta1FunctionSpec](#pkgcrossplaneiov1beta1functionspec)|spec||
-|**status**|[PkgCrossplaneIoV1beta1FunctionStatus](#pkgcrossplaneiov1beta1functionstatus)|status||
-### FunctionRevision
-
-A FunctionRevision that has been added to Crossplane.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**apiVersion** `required` `readOnly`|"pkg.crossplane.io/v1beta1"|APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources|"pkg.crossplane.io/v1beta1"|
-|**kind** `required` `readOnly`|"FunctionRevision"|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds|"FunctionRevision"|
-|**metadata**|[ObjectMeta](#objectmeta)|metadata||
-|**spec**|[PkgCrossplaneIoV1beta1FunctionRevisionSpec](#pkgcrossplaneiov1beta1functionrevisionspec)|spec||
-|**status**|[PkgCrossplaneIoV1beta1FunctionRevisionStatus](#pkgcrossplaneiov1beta1functionrevisionstatus)|status||
 ### Lock
 
 Lock is the CRD type that tracks package dependencies.
@@ -4717,38 +4587,6 @@ Lock is the CRD type that tracks package dependencies.
 |**kind** `required` `readOnly`|"Lock"|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds|"Lock"|
 |**metadata**|[ObjectMeta](#objectmeta)|metadata||
 |**packages**|[[PkgCrossplaneIoV1beta1LockPackagesItems0](#pkgcrossplaneiov1beta1lockpackagesitems0)]|packages||
-### MetaPkgCrossplaneIoV1beta1FunctionSpec
-
-FunctionSpec specifies the configuration of a Function.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**crossplane**|[MetaPkgCrossplaneIoV1beta1FunctionSpecCrossplane](#metapkgcrossplaneiov1beta1functionspeccrossplane)|crossplane||
-|**dependsOn**|[[MetaPkgCrossplaneIoV1beta1FunctionSpecDependsOnItems0](#metapkgcrossplaneiov1beta1functionspecdependsonitems0)]|Dependencies on other packages.||
-|**image**|str|Image is the packaged Function image.||
-### MetaPkgCrossplaneIoV1beta1FunctionSpecCrossplane
-
-Semantic version constraints of Crossplane that package is compatible with.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**version** `required`|str|Semantic version constraints of Crossplane that package is compatible with.||
-### MetaPkgCrossplaneIoV1beta1FunctionSpecDependsOnItems0
-
-Dependency is a dependency on another package. One of Provider or Configuration may be supplied.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**configuration**|str|Configuration is the name of a Configuration package image.||
-|**function**|str|Function is the name of a Function package image.||
-|**provider**|str|Provider is the name of a Provider package image.||
-|**version** `required`|str|Version is the semantic version constraints of the dependency image.||
 ### PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpec
 
 DeploymentRuntimeConfigSpec specifies the configuration for a packaged controller. Values provided will override package manager defaults. Labels and annotations are passed to both the controller Deployment and ServiceAccount.
@@ -4778,8 +4616,8 @@ Metadata contains the configurable metadata fields for the Deployment.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations is an unstructured key value map stored with a resource that<br />may be set by external tools to store and retrieve arbitrary metadata.<br />They are not queryable and should be preserved when modifying objects.<br />More info: http://kubernetes.io/docs/user-guide/annotations||
-|**labels**|{str:str}|Map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. Labels will be merged with internal labels<br />used by crossplane, and labels with a crossplane.io key might be<br />overwritten.<br />More info: http://kubernetes.io/docs/user-guide/labels||
+|**annotations**|{str:str}|Annotations is an unstructured key value map stored with a resource that<br />may be set by external tools to store and retrieve arbitrary metadata.<br />They are not queryable and should be preserved when modifying objects.<br />More info: http:https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/||
+|**labels**|{str:str}|Map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. Labels will be merged with internal labels<br />used by crossplane, and labels with a crossplane.io key might be<br />overwritten.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/||
 |**name**|str|Name is the name of the object.||
 ### PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpec
 
@@ -4877,7 +4715,7 @@ Specification of the desired behavior of the pod. More info: https://git.k8s.io/
 |**dnsPolicy**|str|Set DNS policy for the pod.<br />Defaults to "ClusterFirst".<br />Valid values are 'ClusterFirstWithHostNet', 'ClusterFirst', 'Default' or 'None'.<br />DNS parameters given in DNSConfig will be merged with the policy selected with DNSPolicy.<br />To have DNS options set along with hostNetwork, you have to specify DNS policy<br />explicitly to 'ClusterFirstWithHostNet'.||
 |**enableServiceLinks**|bool|EnableServiceLinks indicates whether information about services should be injected into pod's<br />environment variables, matching the syntax of Docker links.<br />Optional: Defaults to true.||
 |**ephemeralContainers**|[[PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespecephemeralcontainersitems0)]|List of ephemeral containers run in this pod. Ephemeral containers may be run in an existing<br />pod to perform user-initiated actions such as debugging. This list cannot be specified when<br />creating a pod, and it cannot be modified by updating the pod spec. In order to add an<br />ephemeral container to an existing pod, use the pod's ephemeralcontainers subresource.||
-|**hostAliases**|[[PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecHostAliasesItems0](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespechostaliasesitems0)]|HostAliases is an optional list of hosts and IPs that will be injected into the pod's hosts<br />file if specified. This is only valid for non-hostNetwork pods.||
+|**hostAliases**|[[PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecHostAliasesItems0](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespechostaliasesitems0)]|HostAliases is an optional list of hosts and IPs that will be injected into the pod's hosts<br />file if specified.||
 |**hostIPC**|bool|Use the host's ipc namespace.<br />Optional: Default to false.||
 |**hostNetwork**|bool|Host networking requested for this pod. Use the host's network namespace.<br />If this option is set, the ports that will be used must be specified.<br />Default to false.||
 |**hostPID**|bool|Use the host's pid namespace.<br />Optional: Default to false.||
@@ -4897,9 +4735,9 @@ Specification of the desired behavior of the pod. More info: https://git.k8s.io/
 |**restartPolicy**|str|Restart policy for all containers within the pod.<br />One of Always, OnFailure, Never. In some contexts, only a subset of those values may be permitted.<br />Default to Always.<br />More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#restart-policy||
 |**runtimeClassName**|str|RuntimeClassName refers to a RuntimeClass object in the node.k8s.io group, which should be used<br />to run this pod.  If no RuntimeClass resource matches the named class, the pod will not be run.<br />If unset or empty, the "legacy" RuntimeClass will be used, which is an implicit class with an<br />empty definition that uses the default runtime handler.<br />More info: https://git.k8s.io/enhancements/keps/sig-node/585-runtime-class||
 |**schedulerName**|str|If specified, the pod will be dispatched by specified scheduler.<br />If not specified, the pod will be dispatched by default scheduler.||
-|**schedulingGates**|[[PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecSchedulingGatesItems0](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespecschedulinggatesitems0)]|SchedulingGates is an opaque list of values that if specified will block scheduling the pod.<br />If schedulingGates is not empty, the pod will stay in the SchedulingGated state and the<br />scheduler will not attempt to schedule the pod.<br /><br />SchedulingGates can only be set at pod creation time, and be removed only afterwards.<br /><br />This is a beta feature enabled by the PodSchedulingReadiness feature gate.||
+|**schedulingGates**|[[PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecSchedulingGatesItems0](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespecschedulinggatesitems0)]|SchedulingGates is an opaque list of values that if specified will block scheduling the pod.<br />If schedulingGates is not empty, the pod will stay in the SchedulingGated state and the<br />scheduler will not attempt to schedule the pod.<br /><br />SchedulingGates can only be set at pod creation time, and be removed only afterwards.||
 |**securityContext**|[PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecSecurityContext](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespecsecuritycontext)|security context||
-|**serviceAccount**|str|DeprecatedServiceAccount is a depreciated alias for ServiceAccountName.<br />Deprecated: Use serviceAccountName instead.||
+|**serviceAccount**|str|DeprecatedServiceAccount is a deprecated alias for ServiceAccountName.<br />Deprecated: Use serviceAccountName instead.||
 |**serviceAccountName**|str|ServiceAccountName is the name of the ServiceAccount to use to run this pod.<br />More info: https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/||
 |**setHostnameAsFQDN**|bool|If true the pod's hostname will be configured as the pod's FQDN, rather than the leaf name (the default).<br />In Linux containers, this means setting the FQDN in the hostname field of the kernel (the nodename field of struct utsname).<br />In Windows containers, this means setting the registry value of hostname for the registry key HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters to FQDN.<br />If a pod does not have FQDN, this has no effect.<br />Default to false.||
 |**shareProcessNamespace**|bool|Share a single process namespace between all of the containers in a pod.<br />When this is set containers will be able to view and signal processes from other containers<br />in the same pod, and the first process in each container will not be assigned PID 1.<br />HostPID and ShareProcessNamespace cannot both be set.<br />Optional: Default to false.||
@@ -5041,8 +4879,8 @@ Required. A pod affinity term, associated with the corresponding weight.
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**labelSelector**|[PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespecaffinitypodaffinitypreferredduringschedulingignoredduringexecutionitems0podaffinitytermlabelselector)|label selector||
-|**matchLabelKeys**|[str]|MatchLabelKeys is a set of pod label keys to select which pods will<br />be taken into consideration. The keys are used to lookup values from the<br />incoming pod labels, those key-value labels are merged with `LabelSelector` as `key in (value)`<br />to select the group of existing pods which pods will be taken into consideration<br />for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming<br />pod labels will be ignored. The default value is empty.<br />The same key is forbidden to exist in both MatchLabelKeys and LabelSelector.<br />Also, MatchLabelKeys cannot be set when LabelSelector isn't set.<br />This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.||
-|**mismatchLabelKeys**|[str]|MismatchLabelKeys is a set of pod label keys to select which pods will<br />be taken into consideration. The keys are used to lookup values from the<br />incoming pod labels, those key-value labels are merged with `LabelSelector` as `key notin (value)`<br />to select the group of existing pods which pods will be taken into consideration<br />for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming<br />pod labels will be ignored. The default value is empty.<br />The same key is forbidden to exist in both MismatchLabelKeys and LabelSelector.<br />Also, MismatchLabelKeys cannot be set when LabelSelector isn't set.<br />This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.||
+|**matchLabelKeys**|[str]|MatchLabelKeys is a set of pod label keys to select which pods will<br />be taken into consideration. The keys are used to lookup values from the<br />incoming pod labels, those key-value labels are merged with `labelSelector` as `key in (value)`<br />to select the group of existing pods which pods will be taken into consideration<br />for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming<br />pod labels will be ignored. The default value is empty.<br />The same key is forbidden to exist in both matchLabelKeys and labelSelector.<br />Also, matchLabelKeys cannot be set when labelSelector isn't set.<br />This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.||
+|**mismatchLabelKeys**|[str]|MismatchLabelKeys is a set of pod label keys to select which pods will<br />be taken into consideration. The keys are used to lookup values from the<br />incoming pod labels, those key-value labels are merged with `labelSelector` as `key notin (value)`<br />to select the group of existing pods which pods will be taken into consideration<br />for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming<br />pod labels will be ignored. The default value is empty.<br />The same key is forbidden to exist in both mismatchLabelKeys and labelSelector.<br />Also, mismatchLabelKeys cannot be set when labelSelector isn't set.<br />This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.||
 |**namespaceSelector**|[PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespecaffinitypodaffinitypreferredduringschedulingignoredduringexecutionitems0podaffinitytermnamespaceselector)|namespace selector||
 |**namespaces**|[str]|namespaces specifies a static list of namespace names that the term applies to.<br />The term is applied to the union of the namespaces listed in this field<br />and the ones selected by namespaceSelector.<br />null or empty namespaces list and null namespaceSelector means "this pod's namespace".||
 |**topologyKey** `required`|str|This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching<br />the labelSelector in the specified namespaces, where co-located is defined as running on a node<br />whose value of the label with key topologyKey matches that of any node on which any of the<br />selected pods is running.<br />Empty topologyKey is not allowed.||
@@ -5097,8 +4935,8 @@ Defines a set of pods (namely those matching the labelSelector relative to the g
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**labelSelector**|[PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespecaffinitypodaffinityrequiredduringschedulingignoredduringexecutionitems0labelselector)|label selector||
-|**matchLabelKeys**|[str]|MatchLabelKeys is a set of pod label keys to select which pods will<br />be taken into consideration. The keys are used to lookup values from the<br />incoming pod labels, those key-value labels are merged with `LabelSelector` as `key in (value)`<br />to select the group of existing pods which pods will be taken into consideration<br />for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming<br />pod labels will be ignored. The default value is empty.<br />The same key is forbidden to exist in both MatchLabelKeys and LabelSelector.<br />Also, MatchLabelKeys cannot be set when LabelSelector isn't set.<br />This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.||
-|**mismatchLabelKeys**|[str]|MismatchLabelKeys is a set of pod label keys to select which pods will<br />be taken into consideration. The keys are used to lookup values from the<br />incoming pod labels, those key-value labels are merged with `LabelSelector` as `key notin (value)`<br />to select the group of existing pods which pods will be taken into consideration<br />for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming<br />pod labels will be ignored. The default value is empty.<br />The same key is forbidden to exist in both MismatchLabelKeys and LabelSelector.<br />Also, MismatchLabelKeys cannot be set when LabelSelector isn't set.<br />This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.||
+|**matchLabelKeys**|[str]|MatchLabelKeys is a set of pod label keys to select which pods will<br />be taken into consideration. The keys are used to lookup values from the<br />incoming pod labels, those key-value labels are merged with `labelSelector` as `key in (value)`<br />to select the group of existing pods which pods will be taken into consideration<br />for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming<br />pod labels will be ignored. The default value is empty.<br />The same key is forbidden to exist in both matchLabelKeys and labelSelector.<br />Also, matchLabelKeys cannot be set when labelSelector isn't set.<br />This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.||
+|**mismatchLabelKeys**|[str]|MismatchLabelKeys is a set of pod label keys to select which pods will<br />be taken into consideration. The keys are used to lookup values from the<br />incoming pod labels, those key-value labels are merged with `labelSelector` as `key notin (value)`<br />to select the group of existing pods which pods will be taken into consideration<br />for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming<br />pod labels will be ignored. The default value is empty.<br />The same key is forbidden to exist in both mismatchLabelKeys and labelSelector.<br />Also, mismatchLabelKeys cannot be set when labelSelector isn't set.<br />This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.||
 |**namespaceSelector**|[PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespecaffinitypodaffinityrequiredduringschedulingignoredduringexecutionitems0namespaceselector)|namespace selector||
 |**namespaces**|[str]|namespaces specifies a static list of namespace names that the term applies to.<br />The term is applied to the union of the namespaces listed in this field<br />and the ones selected by namespaceSelector.<br />null or empty namespaces list and null namespaceSelector means "this pod's namespace".||
 |**topologyKey** `required`|str|This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching<br />the labelSelector in the specified namespaces, where co-located is defined as running on a node<br />whose value of the label with key topologyKey matches that of any node on which any of the<br />selected pods is running.<br />Empty topologyKey is not allowed.||
@@ -5173,8 +5011,8 @@ Required. A pod affinity term, associated with the corresponding weight.
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**labelSelector**|[PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespecaffinitypodantiaffinitypreferredduringschedulingignoredduringexecutionitems0podaffinitytermlabelselector)|label selector||
-|**matchLabelKeys**|[str]|MatchLabelKeys is a set of pod label keys to select which pods will<br />be taken into consideration. The keys are used to lookup values from the<br />incoming pod labels, those key-value labels are merged with `LabelSelector` as `key in (value)`<br />to select the group of existing pods which pods will be taken into consideration<br />for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming<br />pod labels will be ignored. The default value is empty.<br />The same key is forbidden to exist in both MatchLabelKeys and LabelSelector.<br />Also, MatchLabelKeys cannot be set when LabelSelector isn't set.<br />This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.||
-|**mismatchLabelKeys**|[str]|MismatchLabelKeys is a set of pod label keys to select which pods will<br />be taken into consideration. The keys are used to lookup values from the<br />incoming pod labels, those key-value labels are merged with `LabelSelector` as `key notin (value)`<br />to select the group of existing pods which pods will be taken into consideration<br />for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming<br />pod labels will be ignored. The default value is empty.<br />The same key is forbidden to exist in both MismatchLabelKeys and LabelSelector.<br />Also, MismatchLabelKeys cannot be set when LabelSelector isn't set.<br />This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.||
+|**matchLabelKeys**|[str]|MatchLabelKeys is a set of pod label keys to select which pods will<br />be taken into consideration. The keys are used to lookup values from the<br />incoming pod labels, those key-value labels are merged with `labelSelector` as `key in (value)`<br />to select the group of existing pods which pods will be taken into consideration<br />for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming<br />pod labels will be ignored. The default value is empty.<br />The same key is forbidden to exist in both matchLabelKeys and labelSelector.<br />Also, matchLabelKeys cannot be set when labelSelector isn't set.<br />This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.||
+|**mismatchLabelKeys**|[str]|MismatchLabelKeys is a set of pod label keys to select which pods will<br />be taken into consideration. The keys are used to lookup values from the<br />incoming pod labels, those key-value labels are merged with `labelSelector` as `key notin (value)`<br />to select the group of existing pods which pods will be taken into consideration<br />for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming<br />pod labels will be ignored. The default value is empty.<br />The same key is forbidden to exist in both mismatchLabelKeys and labelSelector.<br />Also, mismatchLabelKeys cannot be set when labelSelector isn't set.<br />This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.||
 |**namespaceSelector**|[PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespecaffinitypodantiaffinitypreferredduringschedulingignoredduringexecutionitems0podaffinitytermnamespaceselector)|namespace selector||
 |**namespaces**|[str]|namespaces specifies a static list of namespace names that the term applies to.<br />The term is applied to the union of the namespaces listed in this field<br />and the ones selected by namespaceSelector.<br />null or empty namespaces list and null namespaceSelector means "this pod's namespace".||
 |**topologyKey** `required`|str|This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching<br />the labelSelector in the specified namespaces, where co-located is defined as running on a node<br />whose value of the label with key topologyKey matches that of any node on which any of the<br />selected pods is running.<br />Empty topologyKey is not allowed.||
@@ -5229,8 +5067,8 @@ Defines a set of pods (namely those matching the labelSelector relative to the g
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**labelSelector**|[PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespecaffinitypodantiaffinityrequiredduringschedulingignoredduringexecutionitems0labelselector)|label selector||
-|**matchLabelKeys**|[str]|MatchLabelKeys is a set of pod label keys to select which pods will<br />be taken into consideration. The keys are used to lookup values from the<br />incoming pod labels, those key-value labels are merged with `LabelSelector` as `key in (value)`<br />to select the group of existing pods which pods will be taken into consideration<br />for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming<br />pod labels will be ignored. The default value is empty.<br />The same key is forbidden to exist in both MatchLabelKeys and LabelSelector.<br />Also, MatchLabelKeys cannot be set when LabelSelector isn't set.<br />This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.||
-|**mismatchLabelKeys**|[str]|MismatchLabelKeys is a set of pod label keys to select which pods will<br />be taken into consideration. The keys are used to lookup values from the<br />incoming pod labels, those key-value labels are merged with `LabelSelector` as `key notin (value)`<br />to select the group of existing pods which pods will be taken into consideration<br />for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming<br />pod labels will be ignored. The default value is empty.<br />The same key is forbidden to exist in both MismatchLabelKeys and LabelSelector.<br />Also, MismatchLabelKeys cannot be set when LabelSelector isn't set.<br />This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.||
+|**matchLabelKeys**|[str]|MatchLabelKeys is a set of pod label keys to select which pods will<br />be taken into consideration. The keys are used to lookup values from the<br />incoming pod labels, those key-value labels are merged with `labelSelector` as `key in (value)`<br />to select the group of existing pods which pods will be taken into consideration<br />for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming<br />pod labels will be ignored. The default value is empty.<br />The same key is forbidden to exist in both matchLabelKeys and labelSelector.<br />Also, matchLabelKeys cannot be set when labelSelector isn't set.<br />This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.||
+|**mismatchLabelKeys**|[str]|MismatchLabelKeys is a set of pod label keys to select which pods will<br />be taken into consideration. The keys are used to lookup values from the<br />incoming pod labels, those key-value labels are merged with `labelSelector` as `key notin (value)`<br />to select the group of existing pods which pods will be taken into consideration<br />for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming<br />pod labels will be ignored. The default value is empty.<br />The same key is forbidden to exist in both mismatchLabelKeys and labelSelector.<br />Also, mismatchLabelKeys cannot be set when labelSelector isn't set.<br />This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.||
 |**namespaceSelector**|[PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespecaffinitypodantiaffinityrequiredduringschedulingignoredduringexecutionitems0namespaceselector)|namespace selector||
 |**namespaces**|[str]|namespaces specifies a static list of namespace names that the term applies to.<br />The term is applied to the union of the namespaces listed in this field<br />and the ones selected by namespaceSelector.<br />null or empty namespaces list and null namespaceSelector means "this pod's namespace".||
 |**topologyKey** `required`|str|This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching<br />the labelSelector in the specified namespaces, where co-located is defined as running on a node<br />whose value of the label with key topologyKey matches that of any node on which any of the<br />selected pods is running.<br />Empty topologyKey is not allowed.||
@@ -5733,6 +5571,7 @@ SecurityContext defines the security options the container should be run with. I
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**allowPrivilegeEscalation**|bool|AllowPrivilegeEscalation controls whether a process can gain more<br />privileges than its parent process. This bool directly controls if<br />the no_new_privs flag will be set on the container process.<br />AllowPrivilegeEscalation is true always when the container is:<br />1) run as Privileged<br />2) has CAP_SYS_ADMIN<br />Note that this field cannot be set when spec.os.name is windows.||
+|**appArmorProfile**|[PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0SecurityContextAppArmorProfile](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespeccontainersitems0securitycontextapparmorprofile)|app armor profile||
 |**capabilities**|[PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0SecurityContextCapabilities](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespeccontainersitems0securitycontextcapabilities)|capabilities||
 |**privileged**|bool|Run container in privileged mode.<br />Processes in privileged containers are essentially equivalent to root on the host.<br />Defaults to false.<br />Note that this field cannot be set when spec.os.name is windows.||
 |**procMount**|str|procMount denotes the type of proc mount to use for the containers.<br />The default is DefaultProcMount which uses the container runtime defaults for<br />readonly paths and masked paths.<br />This requires the ProcMountType feature flag to be enabled.<br />Note that this field cannot be set when spec.os.name is windows.||
@@ -5743,6 +5582,16 @@ SecurityContext defines the security options the container should be run with. I
 |**seLinuxOptions**|[PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0SecurityContextSeLinuxOptions](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespeccontainersitems0securitycontextselinuxoptions)|se linux options||
 |**seccompProfile**|[PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0SecurityContextSeccompProfile](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespeccontainersitems0securitycontextseccompprofile)|seccomp profile||
 |**windowsOptions**|[PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0SecurityContextWindowsOptions](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespeccontainersitems0securitycontextwindowsoptions)|windows options||
+### PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0SecurityContextAppArmorProfile
+
+appArmorProfile is the AppArmor options to use by this container. If set, this profile overrides the pod's appArmorProfile. Note that this field cannot be set when spec.os.name is windows.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**localhostProfile**|str|localhostProfile indicates a profile loaded on the node that should be used.<br />The profile must be preconfigured on the node to work.<br />Must match the loaded name of the profile.<br />Must be set if and only if type is "Localhost".||
+|**type** `required`|str|||
 ### PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0SecurityContextCapabilities
 
 The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime. Note that this field cannot be set when spec.os.name is windows.
@@ -5876,9 +5725,10 @@ VolumeMount describes a mounting of a Volume within a container.
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**mountPath** `required`|str|Path within the container at which the volume should be mounted.  Must<br />not contain ':'.||
-|**mountPropagation**|str|mountPropagation determines how mounts are propagated from the host<br />to container and the other way around.<br />When not set, MountPropagationNone is used.<br />This field is beta in 1.10.||
+|**mountPropagation**|str|mountPropagation determines how mounts are propagated from the host<br />to container and the other way around.<br />When not set, MountPropagationNone is used.<br />This field is beta in 1.10.<br />When RecursiveReadOnly is set to IfPossible or to Enabled, MountPropagation must be None or unspecified<br />(which defaults to None).||
 |**name** `required`|str|This must match the Name of a Volume.||
 |**readOnly**|bool|Mounted read-only if true, read-write otherwise (false or unspecified).<br />Defaults to false.||
+|**recursiveReadOnly**|str|RecursiveReadOnly specifies whether read-only mounts should be handled<br />recursively.<br /><br />If ReadOnly is false, this field has no meaning and must be unspecified.<br /><br />If ReadOnly is true, and this field is set to Disabled, the mount is not made<br />recursively read-only.  If this field is set to IfPossible, the mount is made<br />recursively read-only, if it is supported by the container runtime.  If this<br />field is set to Enabled, the mount is made recursively read-only if it is<br />supported by the container runtime, otherwise the pod will not be started and<br />an error will be generated to indicate the reason.<br /><br />If this field is set to IfPossible or Enabled, MountPropagation must be set to<br />None (or be unspecified, which defaults to None).<br /><br />If this field is not specified, it is treated as an equivalent of Disabled.||
 |**subPath**|str|Path within the volume from which the container's volume should be mounted.<br />Defaults to "" (volume's root).||
 |**subPathExpr**|str|Expanded path within the volume from which the container's volume should be mounted.<br />Behaves similarly to SubPath but environment variable references $(VAR_NAME) are expanded using the container's environment.<br />Defaults to "" (volume's root).<br />SubPathExpr and SubPath are mutually exclusive.||
 ### PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecDNSConfig
@@ -6360,6 +6210,7 @@ Optional: SecurityContext defines the security options the ephemeral container s
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**allowPrivilegeEscalation**|bool|AllowPrivilegeEscalation controls whether a process can gain more<br />privileges than its parent process. This bool directly controls if<br />the no_new_privs flag will be set on the container process.<br />AllowPrivilegeEscalation is true always when the container is:<br />1) run as Privileged<br />2) has CAP_SYS_ADMIN<br />Note that this field cannot be set when spec.os.name is windows.||
+|**appArmorProfile**|[PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0SecurityContextAppArmorProfile](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespecephemeralcontainersitems0securitycontextapparmorprofile)|app armor profile||
 |**capabilities**|[PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0SecurityContextCapabilities](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespecephemeralcontainersitems0securitycontextcapabilities)|capabilities||
 |**privileged**|bool|Run container in privileged mode.<br />Processes in privileged containers are essentially equivalent to root on the host.<br />Defaults to false.<br />Note that this field cannot be set when spec.os.name is windows.||
 |**procMount**|str|procMount denotes the type of proc mount to use for the containers.<br />The default is DefaultProcMount which uses the container runtime defaults for<br />readonly paths and masked paths.<br />This requires the ProcMountType feature flag to be enabled.<br />Note that this field cannot be set when spec.os.name is windows.||
@@ -6370,6 +6221,16 @@ Optional: SecurityContext defines the security options the ephemeral container s
 |**seLinuxOptions**|[PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0SecurityContextSeLinuxOptions](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespecephemeralcontainersitems0securitycontextselinuxoptions)|se linux options||
 |**seccompProfile**|[PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0SecurityContextSeccompProfile](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespecephemeralcontainersitems0securitycontextseccompprofile)|seccomp profile||
 |**windowsOptions**|[PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0SecurityContextWindowsOptions](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespecephemeralcontainersitems0securitycontextwindowsoptions)|windows options||
+### PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0SecurityContextAppArmorProfile
+
+appArmorProfile is the AppArmor options to use by this container. If set, this profile overrides the pod's appArmorProfile. Note that this field cannot be set when spec.os.name is windows.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**localhostProfile**|str|localhostProfile indicates a profile loaded on the node that should be used.<br />The profile must be preconfigured on the node to work.<br />Must match the loaded name of the profile.<br />Must be set if and only if type is "Localhost".||
+|**type** `required`|str|||
 ### PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0SecurityContextCapabilities
 
 The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime. Note that this field cannot be set when spec.os.name is windows.
@@ -6503,9 +6364,10 @@ VolumeMount describes a mounting of a Volume within a container.
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**mountPath** `required`|str|Path within the container at which the volume should be mounted.  Must<br />not contain ':'.||
-|**mountPropagation**|str|mountPropagation determines how mounts are propagated from the host<br />to container and the other way around.<br />When not set, MountPropagationNone is used.<br />This field is beta in 1.10.||
+|**mountPropagation**|str|mountPropagation determines how mounts are propagated from the host<br />to container and the other way around.<br />When not set, MountPropagationNone is used.<br />This field is beta in 1.10.<br />When RecursiveReadOnly is set to IfPossible or to Enabled, MountPropagation must be None or unspecified<br />(which defaults to None).||
 |**name** `required`|str|This must match the Name of a Volume.||
 |**readOnly**|bool|Mounted read-only if true, read-write otherwise (false or unspecified).<br />Defaults to false.||
+|**recursiveReadOnly**|str|RecursiveReadOnly specifies whether read-only mounts should be handled<br />recursively.<br /><br />If ReadOnly is false, this field has no meaning and must be unspecified.<br /><br />If ReadOnly is true, and this field is set to Disabled, the mount is not made<br />recursively read-only.  If this field is set to IfPossible, the mount is made<br />recursively read-only, if it is supported by the container runtime.  If this<br />field is set to Enabled, the mount is made recursively read-only if it is<br />supported by the container runtime, otherwise the pod will not be started and<br />an error will be generated to indicate the reason.<br /><br />If this field is set to IfPossible or Enabled, MountPropagation must be set to<br />None (or be unspecified, which defaults to None).<br /><br />If this field is not specified, it is treated as an equivalent of Disabled.||
 |**subPath**|str|Path within the volume from which the container's volume should be mounted.<br />Defaults to "" (volume's root).||
 |**subPathExpr**|str|Expanded path within the volume from which the container's volume should be mounted.<br />Behaves similarly to SubPath but environment variable references $(VAR_NAME) are expanded using the container's environment.<br />Defaults to "" (volume's root).<br />SubPathExpr and SubPath are mutually exclusive.||
 ### PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecHostAliasesItems0
@@ -6517,7 +6379,7 @@ HostAlias holds the mapping between IP and hostnames that will be injected as an
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**hostnames**|[str]|Hostnames for the above IP address.||
-|**ip**|str|IP address of the host file entry.||
+|**ip** `required`|str|IP address of the host file entry.||
 ### PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecImagePullSecretsItems0
 
 LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
@@ -6526,7 +6388,7 @@ LocalObjectReference contains enough information to let you locate the reference
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**name**|str|Name of the referent.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names<br />TODO: Add other useful fields. apiVersion, kind, uid?||
+|**name** `required`|str|Name of the referent.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names<br />TODO: Add other useful fields. apiVersion, kind, uid?||
 ### PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0
 
 A single application container that you want to run within a pod.
@@ -6984,6 +6846,7 @@ SecurityContext defines the security options the container should be run with. I
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**allowPrivilegeEscalation**|bool|AllowPrivilegeEscalation controls whether a process can gain more<br />privileges than its parent process. This bool directly controls if<br />the no_new_privs flag will be set on the container process.<br />AllowPrivilegeEscalation is true always when the container is:<br />1) run as Privileged<br />2) has CAP_SYS_ADMIN<br />Note that this field cannot be set when spec.os.name is windows.||
+|**appArmorProfile**|[PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0SecurityContextAppArmorProfile](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespecinitcontainersitems0securitycontextapparmorprofile)|app armor profile||
 |**capabilities**|[PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0SecurityContextCapabilities](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespecinitcontainersitems0securitycontextcapabilities)|capabilities||
 |**privileged**|bool|Run container in privileged mode.<br />Processes in privileged containers are essentially equivalent to root on the host.<br />Defaults to false.<br />Note that this field cannot be set when spec.os.name is windows.||
 |**procMount**|str|procMount denotes the type of proc mount to use for the containers.<br />The default is DefaultProcMount which uses the container runtime defaults for<br />readonly paths and masked paths.<br />This requires the ProcMountType feature flag to be enabled.<br />Note that this field cannot be set when spec.os.name is windows.||
@@ -6994,6 +6857,16 @@ SecurityContext defines the security options the container should be run with. I
 |**seLinuxOptions**|[PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0SecurityContextSeLinuxOptions](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespecinitcontainersitems0securitycontextselinuxoptions)|se linux options||
 |**seccompProfile**|[PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0SecurityContextSeccompProfile](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespecinitcontainersitems0securitycontextseccompprofile)|seccomp profile||
 |**windowsOptions**|[PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0SecurityContextWindowsOptions](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespecinitcontainersitems0securitycontextwindowsoptions)|windows options||
+### PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0SecurityContextAppArmorProfile
+
+appArmorProfile is the AppArmor options to use by this container. If set, this profile overrides the pod's appArmorProfile. Note that this field cannot be set when spec.os.name is windows.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**localhostProfile**|str|localhostProfile indicates a profile loaded on the node that should be used.<br />The profile must be preconfigured on the node to work.<br />Must match the loaded name of the profile.<br />Must be set if and only if type is "Localhost".||
+|**type** `required`|str|||
 ### PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0SecurityContextCapabilities
 
 The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime. Note that this field cannot be set when spec.os.name is windows.
@@ -7127,14 +7000,15 @@ VolumeMount describes a mounting of a Volume within a container.
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**mountPath** `required`|str|Path within the container at which the volume should be mounted.  Must<br />not contain ':'.||
-|**mountPropagation**|str|mountPropagation determines how mounts are propagated from the host<br />to container and the other way around.<br />When not set, MountPropagationNone is used.<br />This field is beta in 1.10.||
+|**mountPropagation**|str|mountPropagation determines how mounts are propagated from the host<br />to container and the other way around.<br />When not set, MountPropagationNone is used.<br />This field is beta in 1.10.<br />When RecursiveReadOnly is set to IfPossible or to Enabled, MountPropagation must be None or unspecified<br />(which defaults to None).||
 |**name** `required`|str|This must match the Name of a Volume.||
 |**readOnly**|bool|Mounted read-only if true, read-write otherwise (false or unspecified).<br />Defaults to false.||
+|**recursiveReadOnly**|str|RecursiveReadOnly specifies whether read-only mounts should be handled<br />recursively.<br /><br />If ReadOnly is false, this field has no meaning and must be unspecified.<br /><br />If ReadOnly is true, and this field is set to Disabled, the mount is not made<br />recursively read-only.  If this field is set to IfPossible, the mount is made<br />recursively read-only, if it is supported by the container runtime.  If this<br />field is set to Enabled, the mount is made recursively read-only if it is<br />supported by the container runtime, otherwise the pod will not be started and<br />an error will be generated to indicate the reason.<br /><br />If this field is set to IfPossible or Enabled, MountPropagation must be set to<br />None (or be unspecified, which defaults to None).<br /><br />If this field is not specified, it is treated as an equivalent of Disabled.||
 |**subPath**|str|Path within the volume from which the container's volume should be mounted.<br />Defaults to "" (volume's root).||
 |**subPathExpr**|str|Expanded path within the volume from which the container's volume should be mounted.<br />Behaves similarly to SubPath but environment variable references $(VAR_NAME) are expanded using the container's environment.<br />Defaults to "" (volume's root).<br />SubPathExpr and SubPath are mutually exclusive.||
 ### PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecOs
 
-Specifies the OS of the containers in the pod. Some pod and container fields are restricted if this is set.  If the OS field is set to linux, the following fields must be unset: -securityContext.windowsOptions  If the OS field is set to windows, following fields must be unset: - spec.hostPID - spec.hostIPC - spec.hostUsers - spec.securityContext.seLinuxOptions - spec.securityContext.seccompProfile - spec.securityContext.fsGroup - spec.securityContext.fsGroupChangePolicy - spec.securityContext.sysctls - spec.shareProcessNamespace - spec.securityContext.runAsUser - spec.securityContext.runAsGroup - spec.securityContext.supplementalGroups - spec.containers[*].securityContext.seLinuxOptions - spec.containers[*].securityContext.seccompProfile - spec.containers[*].securityContext.capabilities - spec.containers[*].securityContext.readOnlyRootFilesystem - spec.containers[*].securityContext.privileged - spec.containers[*].securityContext.allowPrivilegeEscalation - spec.containers[*].securityContext.procMount - spec.containers[*].securityContext.runAsUser - spec.containers[*].securityContext.runAsGroup
+Specifies the OS of the containers in the pod. Some pod and container fields are restricted if this is set.  If the OS field is set to linux, the following fields must be unset: -securityContext.windowsOptions  If the OS field is set to windows, following fields must be unset: - spec.hostPID - spec.hostIPC - spec.hostUsers - spec.securityContext.appArmorProfile - spec.securityContext.seLinuxOptions - spec.securityContext.seccompProfile - spec.securityContext.fsGroup - spec.securityContext.fsGroupChangePolicy - spec.securityContext.sysctls - spec.shareProcessNamespace - spec.securityContext.runAsUser - spec.securityContext.runAsGroup - spec.securityContext.supplementalGroups - spec.containers[*].securityContext.appArmorProfile - spec.containers[*].securityContext.seLinuxOptions - spec.containers[*].securityContext.seccompProfile - spec.containers[*].securityContext.capabilities - spec.containers[*].securityContext.readOnlyRootFilesystem - spec.containers[*].securityContext.privileged - spec.containers[*].securityContext.allowPrivilegeEscalation - spec.containers[*].securityContext.procMount - spec.containers[*].securityContext.runAsUser - spec.containers[*].securityContext.runAsGroup
 
 #### Attributes
 
@@ -7187,6 +7061,7 @@ SecurityContext holds pod-level security attributes and common container setting
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
+|**appArmorProfile**|[PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecSecurityContextAppArmorProfile](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespecsecuritycontextapparmorprofile)|app armor profile||
 |**fsGroup**|int|A special supplemental group that applies to all containers in a pod.<br />Some volume types allow the Kubelet to change the ownership of that volume<br />to be owned by the pod:<br /><br />1. The owning GID will be the FSGroup<br />2. The setgid bit is set (new files created in the volume will be owned by FSGroup)<br />3. The permission bits are OR'd with rw-rw----<br /><br />If unset, the Kubelet will not modify the ownership and permissions of any volume.<br />Note that this field cannot be set when spec.os.name is windows.||
 |**fsGroupChangePolicy**|str|fsGroupChangePolicy defines behavior of changing ownership and permission of the volume<br />before being exposed inside Pod. This field will only apply to<br />volume types which support fsGroup based ownership(and permissions).<br />It will have no effect on ephemeral volume types such as: secret, configmaps<br />and emptydir.<br />Valid values are "OnRootMismatch" and "Always". If not specified, "Always" is used.<br />Note that this field cannot be set when spec.os.name is windows.||
 |**runAsGroup**|int|The GID to run the entrypoint of the container process.<br />Uses runtime default if unset.<br />May also be set in SecurityContext.  If set in both SecurityContext and<br />PodSecurityContext, the value specified in SecurityContext takes precedence<br />for that container.<br />Note that this field cannot be set when spec.os.name is windows.||
@@ -7197,6 +7072,16 @@ SecurityContext holds pod-level security attributes and common container setting
 |**supplementalGroups**|[int]|A list of groups applied to the first process run in each container, in addition<br />to the container's primary GID, the fsGroup (if specified), and group memberships<br />defined in the container image for the uid of the container process. If unspecified,<br />no additional groups are added to any container. Note that group memberships<br />defined in the container image for the uid of the container process are still effective,<br />even if they are not included in this list.<br />Note that this field cannot be set when spec.os.name is windows.||
 |**sysctls**|[[PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecSecurityContextSysctlsItems0](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespecsecuritycontextsysctlsitems0)]|Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported<br />sysctls (by the container runtime) might fail to launch.<br />Note that this field cannot be set when spec.os.name is windows.||
 |**windowsOptions**|[PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecSecurityContextWindowsOptions](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespecsecuritycontextwindowsoptions)|windows options||
+### PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecSecurityContextAppArmorProfile
+
+appArmorProfile is the AppArmor options to use by the containers in this pod. Note that this field cannot be set when spec.os.name is windows.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**localhostProfile**|str|localhostProfile indicates a profile loaded on the node that should be used.<br />The profile must be preconfigured on the node to work.<br />Must match the loaded name of the profile.<br />Must be set if and only if type is "Localhost".||
+|**type** `required`|str|||
 ### PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecSecurityContextSeLinuxOptions
 
 The SELinux context to be applied to all containers. If unspecified, the container runtime will allocate a random SELinux context for each container.  May also be set in SecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container. Note that this field cannot be set when spec.os.name is windows.
@@ -7265,7 +7150,7 @@ TopologySpreadConstraint specifies how to spread matching pods among the given t
 |**labelSelector**|[PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecTopologySpreadConstraintsItems0LabelSelector](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespectopologyspreadconstraintsitems0labelselector)|label selector||
 |**matchLabelKeys**|[str]|MatchLabelKeys is a set of pod label keys to select the pods over which<br />spreading will be calculated. The keys are used to lookup values from the<br />incoming pod labels, those key-value labels are ANDed with labelSelector<br />to select the group of existing pods over which spreading will be calculated<br />for the incoming pod. The same key is forbidden to exist in both MatchLabelKeys and LabelSelector.<br />MatchLabelKeys cannot be set when LabelSelector isn't set.<br />Keys that don't exist in the incoming pod labels will<br />be ignored. A null or empty list means only match against labelSelector.<br /><br />This is a beta field and requires the MatchLabelKeysInPodTopologySpread feature gate to be enabled (enabled by default).||
 |**maxSkew** `required`|int|MaxSkew describes the degree to which pods may be unevenly distributed.<br />When `whenUnsatisfiable=DoNotSchedule`, it is the maximum permitted difference<br />between the number of matching pods in the target topology and the global minimum.<br />The global minimum is the minimum number of matching pods in an eligible domain<br />or zero if the number of eligible domains is less than MinDomains.<br />For example, in a 3-zone cluster, MaxSkew is set to 1, and pods with the same<br />labelSelector spread as 2/2/1:<br />In this case, the global minimum is 1.<br />\| zone1 \| zone2 \| zone3 \|<br />\|  P P  \|  P P  \|   P   \|<br />- if MaxSkew is 1, incoming pod can only be scheduled to zone3 to become 2/2/2;<br />scheduling it onto zone1(zone2) would make the ActualSkew(3-1) on zone1(zone2)<br />violate MaxSkew(1).<br />- if MaxSkew is 2, incoming pod can be scheduled onto any zone.<br />When `whenUnsatisfiable=ScheduleAnyway`, it is used to give higher precedence<br />to topologies that satisfy it.<br />It's a required field. Default value is 1 and 0 is not allowed.||
-|**minDomains**|int|MinDomains indicates a minimum number of eligible domains.<br />When the number of eligible domains with matching topology keys is less than minDomains,<br />Pod Topology Spread treats "global minimum" as 0, and then the calculation of Skew is performed.<br />And when the number of eligible domains with matching topology keys equals or greater than minDomains,<br />this value has no effect on scheduling.<br />As a result, when the number of eligible domains is less than minDomains,<br />scheduler won't schedule more than maxSkew Pods to those domains.<br />If value is nil, the constraint behaves as if MinDomains is equal to 1.<br />Valid values are integers greater than 0.<br />When value is not nil, WhenUnsatisfiable must be DoNotSchedule.<br /><br />For example, in a 3-zone cluster, MaxSkew is set to 2, MinDomains is set to 5 and pods with the same<br />labelSelector spread as 2/2/2:<br />\| zone1 \| zone2 \| zone3 \|<br />\|  P P  \|  P P  \|  P P  \|<br />The number of domains is less than 5(MinDomains), so "global minimum" is treated as 0.<br />In this situation, new pod with the same labelSelector cannot be scheduled,<br />because computed skew will be 3(3 - 0) if new Pod is scheduled to any of the three zones,<br />it will violate MaxSkew.<br /><br />This is a beta field and requires the MinDomainsInPodTopologySpread feature gate to be enabled (enabled by default).||
+|**minDomains**|int|MinDomains indicates a minimum number of eligible domains.<br />When the number of eligible domains with matching topology keys is less than minDomains,<br />Pod Topology Spread treats "global minimum" as 0, and then the calculation of Skew is performed.<br />And when the number of eligible domains with matching topology keys equals or greater than minDomains,<br />this value has no effect on scheduling.<br />As a result, when the number of eligible domains is less than minDomains,<br />scheduler won't schedule more than maxSkew Pods to those domains.<br />If value is nil, the constraint behaves as if MinDomains is equal to 1.<br />Valid values are integers greater than 0.<br />When value is not nil, WhenUnsatisfiable must be DoNotSchedule.<br /><br />For example, in a 3-zone cluster, MaxSkew is set to 2, MinDomains is set to 5 and pods with the same<br />labelSelector spread as 2/2/2:<br />\| zone1 \| zone2 \| zone3 \|<br />\|  P P  \|  P P  \|  P P  \|<br />The number of domains is less than 5(MinDomains), so "global minimum" is treated as 0.<br />In this situation, new pod with the same labelSelector cannot be scheduled,<br />because computed skew will be 3(3 - 0) if new Pod is scheduled to any of the three zones,<br />it will violate MaxSkew.||
 |**nodeAffinityPolicy**|str|NodeAffinityPolicy indicates how we will treat Pod's nodeAffinity/nodeSelector<br />when calculating pod topology spread skew. Options are:<br />- Honor: only nodes matching nodeAffinity/nodeSelector are included in the calculations.<br />- Ignore: nodeAffinity/nodeSelector are ignored. All nodes are included in the calculations.<br /><br />If this value is nil, the behavior is equivalent to the Honor policy.<br />This is a beta-level feature default enabled by the NodeInclusionPolicyInPodTopologySpread feature flag.||
 |**nodeTaintsPolicy**|str|NodeTaintsPolicy indicates how we will treat node taints when calculating<br />pod topology spread skew. Options are:<br />- Honor: nodes without taints, along with tainted nodes for which the incoming pod<br />has a toleration, are included.<br />- Ignore: node taints are ignored. All nodes are included.<br /><br />If this value is nil, the behavior is equivalent to the Ignore policy.<br />This is a beta-level feature default enabled by the NodeInclusionPolicyInPodTopologySpread feature flag.||
 |**topologyKey** `required`|str|TopologyKey is the key of node labels. Nodes that have a label with this key<br />and identical values are considered to be in the same topology.<br />We consider each <key, value> as a "bucket", and try to put balanced number<br />of pods into each bucket.<br />We define a domain as a particular instance of a topology.<br />Also, we define an eligible domain as a domain whose nodes meet the requirements of<br />nodeAffinityPolicy and nodeTaintsPolicy.<br />e.g. If TopologyKey is "kubernetes.io/hostname", each Node is a domain of that topology.<br />And, if TopologyKey is "topology.kubernetes.io/zone", each zone is a domain of that topology.<br />It's a required field.||
@@ -7479,7 +7364,7 @@ DownwardAPIVolumeFile represents information to create the file containing the p
 |**resourceFieldRef**|[PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0DownwardAPIItemsItems0ResourceFieldRef](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespecvolumesitems0downwardapiitemsitems0resourcefieldref)|resource field ref||
 ### PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0DownwardAPIItemsItems0FieldRef
 
-Required: Selects a field of the pod: only annotations, labels, name and namespace are supported.
+Required: Selects a field of the pod: only annotations, labels, name, namespace and uid are supported.
 
 #### Attributes
 
@@ -7554,7 +7439,7 @@ The specification for the PersistentVolumeClaim. The entire content is copied un
 |**resources**|[PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0EphemeralVolumeClaimTemplateSpecResources](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespecvolumesitems0ephemeralvolumeclaimtemplatespecresources)|resources||
 |**selector**|[PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0EphemeralVolumeClaimTemplateSpecSelector](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespecvolumesitems0ephemeralvolumeclaimtemplatespecselector)|selector||
 |**storageClassName**|str|storageClassName is the name of the StorageClass required by the claim.<br />More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#class-1||
-|**volumeAttributesClassName**|str|volumeAttributesClassName may be used to set the VolumeAttributesClass used by this claim.<br />If specified, the CSI driver will create or update the volume with the attributes defined<br />in the corresponding VolumeAttributesClass. This has a different purpose than storageClassName,<br />it can be changed after the claim is created. An empty string value means that no VolumeAttributesClass<br />will be applied to the claim but it's not allowed to reset this field to empty string once it is set.<br />If unspecified and the PersistentVolumeClaim is unbound, the default VolumeAttributesClass<br />will be set by the persistentvolume controller if it exists.<br />If the resource referred to by volumeAttributesClass does not exist, this PersistentVolumeClaim will be<br />set to a Pending state, as reflected by the modifyVolumeStatus field, until such as a resource<br />exists.<br />More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#volumeattributesclass<br />(Alpha) Using this field requires the VolumeAttributesClass feature gate to be enabled.||
+|**volumeAttributesClassName**|str|volumeAttributesClassName may be used to set the VolumeAttributesClass used by this claim.<br />If specified, the CSI driver will create or update the volume with the attributes defined<br />in the corresponding VolumeAttributesClass. This has a different purpose than storageClassName,<br />it can be changed after the claim is created. An empty string value means that no VolumeAttributesClass<br />will be applied to the claim but it's not allowed to reset this field to empty string once it is set.<br />If unspecified and the PersistentVolumeClaim is unbound, the default VolumeAttributesClass<br />will be set by the persistentvolume controller if it exists.<br />If the resource referred to by volumeAttributesClass does not exist, this PersistentVolumeClaim will be<br />set to a Pending state, as reflected by the modifyVolumeStatus field, until such as a resource<br />exists.<br />More info: https://kubernetes.io/docs/concepts/storage/volume-attributes-classes/<br />(Alpha) Using this field requires the VolumeAttributesClass feature gate to be enabled.||
 |**volumeMode**|str|volumeMode defines what type of volume is required by the claim.<br />Value of Filesystem is implied when not included in claim spec.||
 |**volumeName**|str|volumeName is the binding reference to the PersistentVolume backing this claim.||
 ### PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0EphemeralVolumeClaimTemplateSpecDataSource
@@ -7872,7 +7757,7 @@ DownwardAPIVolumeFile represents information to create the file containing the p
 |**resourceFieldRef**|[PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0ResourceFieldRef](#pkgcrossplaneiov1beta1deploymentruntimeconfigspecdeploymenttemplatespectemplatespecvolumesitems0projectedsourcesitems0downwardapiitemsitems0resourcefieldref)|resource field ref||
 ### PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0FieldRef
 
-Required: Selects a field of the pod: only annotations, labels, name and namespace are supported.
+Required: Selects a field of the pod: only annotations, labels, name, namespace and uid are supported.
 
 #### Attributes
 
@@ -8064,8 +7949,8 @@ Metadata contains the configurable metadata fields for the ServiceAccount.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations is an unstructured key value map stored with a resource that<br />may be set by external tools to store and retrieve arbitrary metadata.<br />They are not queryable and should be preserved when modifying objects.<br />More info: http://kubernetes.io/docs/user-guide/annotations||
-|**labels**|{str:str}|Map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. Labels will be merged with internal labels<br />used by crossplane, and labels with a crossplane.io key might be<br />overwritten.<br />More info: http://kubernetes.io/docs/user-guide/labels||
+|**annotations**|{str:str}|Annotations is an unstructured key value map stored with a resource that<br />may be set by external tools to store and retrieve arbitrary metadata.<br />They are not queryable and should be preserved when modifying objects.<br />More info: http:https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/||
+|**labels**|{str:str}|Map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. Labels will be merged with internal labels<br />used by crossplane, and labels with a crossplane.io key might be<br />overwritten.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/||
 |**name**|str|Name is the name of the object.||
 ### PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecServiceTemplate
 
@@ -8084,182 +7969,9 @@ Metadata contains the configurable metadata fields for the Service.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations is an unstructured key value map stored with a resource that<br />may be set by external tools to store and retrieve arbitrary metadata.<br />They are not queryable and should be preserved when modifying objects.<br />More info: http://kubernetes.io/docs/user-guide/annotations||
-|**labels**|{str:str}|Map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. Labels will be merged with internal labels<br />used by crossplane, and labels with a crossplane.io key might be<br />overwritten.<br />More info: http://kubernetes.io/docs/user-guide/labels||
+|**annotations**|{str:str}|Annotations is an unstructured key value map stored with a resource that<br />may be set by external tools to store and retrieve arbitrary metadata.<br />They are not queryable and should be preserved when modifying objects.<br />More info: http:https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/||
+|**labels**|{str:str}|Map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. Labels will be merged with internal labels<br />used by crossplane, and labels with a crossplane.io key might be<br />overwritten.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/||
 |**name**|str|Name is the name of the object.||
-### PkgCrossplaneIoV1beta1FunctionRevisionSpec
-
-FunctionRevisionSpec specifies configuration for a FunctionRevision.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**commonLabels**|{str:str}|Map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
-|**controllerConfigRef**|[PkgCrossplaneIoV1beta1FunctionRevisionSpecControllerConfigRef](#pkgcrossplaneiov1beta1functionrevisionspeccontrollerconfigref)|controller config ref||
-|**desiredState** `required`|str|DesiredState of the PackageRevision. Can be either Active or Inactive.||
-|**ignoreCrossplaneConstraints**|bool|IgnoreCrossplaneConstraints indicates to the package manager whether to<br />honor Crossplane version constrains specified by the package.<br />Default is false.|False|
-|**image** `required`|str|Package image used by install Pod to extract package contents.||
-|**packagePullPolicy**|str|PackagePullPolicy defines the pull policy for the package. It is also<br />applied to any images pulled for the package, such as a provider's<br />controller image.<br />Default is IfNotPresent.|"IfNotPresent"|
-|**packagePullSecrets**|[[PkgCrossplaneIoV1beta1FunctionRevisionSpecPackagePullSecretsItems0](#pkgcrossplaneiov1beta1functionrevisionspecpackagepullsecretsitems0)]|PackagePullSecrets are named secrets in the same namespace that can be<br />used to fetch packages from private registries. They are also applied to<br />any images pulled for the package, such as a provider's controller image.||
-|**revision** `required`|int|Revision number. Indicates when the revision will be garbage collected<br />based on the parent's RevisionHistoryLimit.||
-|**runtimeConfigRef**|[PkgCrossplaneIoV1beta1FunctionRevisionSpecRuntimeConfigRef](#pkgcrossplaneiov1beta1functionrevisionspecruntimeconfigref)|runtime config ref||
-|**skipDependencyResolution**|bool|SkipDependencyResolution indicates to the package manager whether to skip<br />resolving dependencies for a package. Setting this value to true may have<br />unintended consequences.<br />Default is false.|False|
-|**tlsClientSecretName**|str|TLSClientSecretName is the name of the TLS Secret that stores client<br />certificates of the Provider.||
-|**tlsServerSecretName**|str|TLSServerSecretName is the name of the TLS Secret that stores server<br />certificates of the Provider.||
-### PkgCrossplaneIoV1beta1FunctionRevisionSpecControllerConfigRef
-
-ControllerConfigRef references a ControllerConfig resource that will be used to configure the packaged controller Deployment. Deprecated: Use RuntimeConfigReference instead.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**name** `required`|str|Name of the ControllerConfig.||
-### PkgCrossplaneIoV1beta1FunctionRevisionSpecPackagePullSecretsItems0
-
-LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**name**|str|Name of the referent.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names<br />TODO: Add other useful fields. apiVersion, kind, uid?||
-### PkgCrossplaneIoV1beta1FunctionRevisionSpecRuntimeConfigRef
-
-RuntimeConfigRef references a RuntimeConfig resource that will be used to configure the package runtime.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**apiVersion**|str|API version of the referent.|"pkg.crossplane.io/v1beta1"|
-|**kind**|str|Kind of the referent.|"DeploymentRuntimeConfig"|
-|**name** `required`|str|Name of the RuntimeConfig.||
-### PkgCrossplaneIoV1beta1FunctionRevisionStatus
-
-FunctionRevisionStatus represents the observed state of a FunctionRevision.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**conditions**|[[PkgCrossplaneIoV1beta1FunctionRevisionStatusConditionsItems0](#pkgcrossplaneiov1beta1functionrevisionstatusconditionsitems0)]|Conditions of the resource.||
-|**endpoint**|str|Endpoint is the gRPC endpoint where Crossplane will send<br />RunFunctionRequests.||
-|**foundDependencies**|int|Dependency information.||
-|**installedDependencies**|int|installed dependencies||
-|**invalidDependencies**|int|invalid dependencies||
-|**objectRefs**|[[PkgCrossplaneIoV1beta1FunctionRevisionStatusObjectRefsItems0](#pkgcrossplaneiov1beta1functionrevisionstatusobjectrefsitems0)]|References to objects owned by PackageRevision.||
-|**permissionRequests**|[[PkgCrossplaneIoV1beta1FunctionRevisionStatusPermissionRequestsItems0](#pkgcrossplaneiov1beta1functionrevisionstatuspermissionrequestsitems0)]|PermissionRequests made by this package. The package declares that its<br />controller needs these permissions to run. The RBAC manager is<br />responsible for granting them.||
-### PkgCrossplaneIoV1beta1FunctionRevisionStatusConditionsItems0
-
-A Condition that may apply to a resource.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**lastTransitionTime** `required`|str|LastTransitionTime is the last time this condition transitioned from one<br />status to another.||
-|**message**|str|A Message containing details about this condition's last transition from<br />one status to another, if any.||
-|**reason** `required`|str|A Reason for this condition's last transition from one status to another.||
-|**status** `required`|str|Status of this condition; is it currently True, False, or Unknown?||
-|**type** `required`|str|||
-### PkgCrossplaneIoV1beta1FunctionRevisionStatusObjectRefsItems0
-
-A TypedReference refers to an object by Name, Kind, and APIVersion. It is commonly used to reference cluster-scoped objects or objects where the namespace is already known.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**apiVersion** `required`|str|APIVersion of the referenced object.||
-|**kind** `required`|str|Kind of the referenced object.||
-|**name** `required`|str|Name of the referenced object.||
-|**uid**|str|UID of the referenced object.||
-### PkgCrossplaneIoV1beta1FunctionRevisionStatusPermissionRequestsItems0
-
-PolicyRule holds information that describes a policy rule, but does not contain information about who the rule applies to or which namespace the rule applies to.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**apiGroups**|[str]|APIGroups is the name of the APIGroup that contains the resources.  If multiple API groups are specified, any action requested against one of<br />the enumerated resources in any API group will be allowed. "" represents the core API group and "*" represents all API groups.||
-|**nonResourceURLs**|[str]|NonResourceURLs is a set of partial urls that a user should have access to.  *s are allowed, but only as the full, final step in the path<br />Since non-resource URLs are not namespaced, this field is only applicable for ClusterRoles referenced from a ClusterRoleBinding.<br />Rules can either apply to API resources (such as "pods" or "secrets") or non-resource URL paths (such as "/api"),  but not both.||
-|**resourceNames**|[str]|ResourceNames is an optional white list of names that the rule applies to.  An empty set means that everything is allowed.||
-|**resources**|[str]|Resources is a list of resources this rule applies to. '*' represents all resources.||
-|**verbs** `required`|[str]|Verbs is a list of Verbs that apply to ALL the ResourceKinds contained in this rule. '*' represents all verbs.||
-### PkgCrossplaneIoV1beta1FunctionSpec
-
-FunctionSpec specifies the configuration of a Function.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**commonLabels**|{str:str}|Map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
-|**controllerConfigRef**|[PkgCrossplaneIoV1beta1FunctionSpecControllerConfigRef](#pkgcrossplaneiov1beta1functionspeccontrollerconfigref)|controller config ref||
-|**ignoreCrossplaneConstraints**|bool|IgnoreCrossplaneConstraints indicates to the package manager whether to<br />honor Crossplane version constrains specified by the package.<br />Default is false.|False|
-|**package** `required`|str|Package is the name of the package that is being requested.||
-|**packagePullPolicy**|str|PackagePullPolicy defines the pull policy for the package.<br />Default is IfNotPresent.|"IfNotPresent"|
-|**packagePullSecrets**|[[PkgCrossplaneIoV1beta1FunctionSpecPackagePullSecretsItems0](#pkgcrossplaneiov1beta1functionspecpackagepullsecretsitems0)]|PackagePullSecrets are named secrets in the same namespace that can be used<br />to fetch packages from private registries.||
-|**revisionActivationPolicy**|str|RevisionActivationPolicy specifies how the package controller should<br />update from one revision to the next. Options are Automatic or Manual.<br />Default is Automatic.|"Automatic"|
-|**revisionHistoryLimit**|int|RevisionHistoryLimit dictates how the package controller cleans up old<br />inactive package revisions.<br />Defaults to 1. Can be disabled by explicitly setting to 0.|1|
-|**runtimeConfigRef**|[PkgCrossplaneIoV1beta1FunctionSpecRuntimeConfigRef](#pkgcrossplaneiov1beta1functionspecruntimeconfigref)|runtime config ref||
-|**skipDependencyResolution**|bool|SkipDependencyResolution indicates to the package manager whether to skip<br />resolving dependencies for a package. Setting this value to true may have<br />unintended consequences.<br />Default is false.|False|
-### PkgCrossplaneIoV1beta1FunctionSpecControllerConfigRef
-
-ControllerConfigRef references a ControllerConfig resource that will be used to configure the packaged controller Deployment. Deprecated: Use RuntimeConfigReference instead.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**name** `required`|str|Name of the ControllerConfig.||
-### PkgCrossplaneIoV1beta1FunctionSpecPackagePullSecretsItems0
-
-LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**name**|str|Name of the referent.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names<br />TODO: Add other useful fields. apiVersion, kind, uid?||
-### PkgCrossplaneIoV1beta1FunctionSpecRuntimeConfigRef
-
-RuntimeConfigRef references a RuntimeConfig resource that will be used to configure the package runtime.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**apiVersion**|str|API version of the referent.|"pkg.crossplane.io/v1beta1"|
-|**kind**|str|Kind of the referent.|"DeploymentRuntimeConfig"|
-|**name** `required`|str|Name of the RuntimeConfig.||
-### PkgCrossplaneIoV1beta1FunctionStatus
-
-FunctionStatus represents the observed state of a Function.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**conditions**|[[PkgCrossplaneIoV1beta1FunctionStatusConditionsItems0](#pkgcrossplaneiov1beta1functionstatusconditionsitems0)]|Conditions of the resource.||
-|**currentIdentifier**|str|CurrentIdentifier is the most recent package source that was used to<br />produce a revision. The package manager uses this field to determine<br />whether to check for package updates for a given source when<br />packagePullPolicy is set to IfNotPresent. Manually removing this field<br />will cause the package manager to check that the current revision is<br />correct for the given package source.||
-|**currentRevision**|str|CurrentRevision is the name of the current package revision. It will<br />reflect the most up to date revision, whether it has been activated or<br />not.||
-### PkgCrossplaneIoV1beta1FunctionStatusConditionsItems0
-
-A Condition that may apply to a resource.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**lastTransitionTime** `required`|str|LastTransitionTime is the last time this condition transitioned from one<br />status to another.||
-|**message**|str|A Message containing details about this condition's last transition from<br />one status to another, if any.||
-|**reason** `required`|str|A Reason for this condition's last transition from one status to another.||
-|**status** `required`|str|Status of this condition; is it currently True, False, or Unknown?||
-|**type** `required`|str|||
 ### PkgCrossplaneIoV1beta1LockPackagesItems0
 
 LockPackage is a package that is in the lock.
