@@ -77,7 +77,7 @@ __resource_map_original___: {str: []} = {
 __resource_map___: {str: []} = {kind = remove_duplicated_iter(res_list, checkIdentical) for kind, res_list in __resource_map_original___}
 
 # kubernetes id: apiVersion:Kind:Namespace:Name
-getId = lambda _resource {
+getId = lambda _resource -> str {
     _resource.apiVersion + ":" + _resource.kind + ":" + (_resource.metadata.namespace + ":" if _resource.metadata.namespace else "") + _resource.metadata.name 
 }
 
