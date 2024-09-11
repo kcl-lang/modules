@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema GrafanaDatasource:
     """
-    grafana integreatly org v1beta1 grafana datasource
+    GrafanaDatasource is the Schema for the grafanadatasources API
 
     Attributes
     ----------
@@ -37,22 +37,22 @@ schema GrafanaDatasource:
 
 schema GrafanaIntegreatlyOrgV1beta1GrafanaDatasourceSpec:
     """
-    grafana integreatly org v1beta1 grafana datasource spec
+    GrafanaDatasourceSpec defines the desired state of GrafanaDatasource
 
     Attributes
     ----------
     allowCrossNamespaceImport : bool, default is Undefined, optional
-        allow cross namespace import
+        allow to import this resources from an operator in a different namespace
     datasource : GrafanaIntegreatlyOrgV1beta1GrafanaDatasourceSpecDatasource, default is Undefined, required
         datasource
     instanceSelector : GrafanaIntegreatlyOrgV1beta1GrafanaDatasourceSpecInstanceSelector, default is Undefined, required
         instance selector
     plugins : [GrafanaIntegreatlyOrgV1beta1GrafanaDatasourceSpecPluginsItems0], default is Undefined, optional
         plugins
-    resyncPeriod : str, default is Undefined, optional
-        resync period
+    resyncPeriod : str, default is "5m", optional
+        how often the datasource is refreshed, defaults to 5m if not set
     valuesFrom : [GrafanaIntegreatlyOrgV1beta1GrafanaDatasourceSpecValuesFromItems0], default is Undefined, optional
-        values from
+        environments variables from secrets or config maps
     """
 
 
@@ -64,7 +64,7 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaDatasourceSpec:
 
     plugins?: [GrafanaIntegreatlyOrgV1beta1GrafanaDatasourceSpecPluginsItems0]
 
-    resyncPeriod?: str
+    resyncPeriod?: str = "5m"
 
     valuesFrom?: [GrafanaIntegreatlyOrgV1beta1GrafanaDatasourceSpecValuesFromItems0]
 
@@ -75,7 +75,7 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaDatasourceSpecDatasource:
 
     Attributes
     ----------
-    access : str, default is Undefined, required
+    access : str, default is Undefined, optional
         access
     basicAuth : bool, default is Undefined, optional
         basic auth
@@ -84,29 +84,29 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaDatasourceSpecDatasource:
     database : str, default is Undefined, optional
         database
     editable : bool, default is Undefined, optional
-        editable
+        Deprecated field, it has no effect
     isDefault : bool, default is Undefined, optional
         is default
     jsonData : any, default is Undefined, optional
         json data
-    name : str, default is Undefined, required
+    name : str, default is Undefined, optional
         name
     orgId : int, default is Undefined, optional
-        org Id
+        Deprecated field, it has no effect
     secureJsonData : any, default is Undefined, optional
         secure Json data
-    $type : str, default is Undefined, required
+    $type : str, default is Undefined, optional
         type
     uid : str, default is Undefined, optional
         uid
-    url : str, default is Undefined, required
+    url : str, default is Undefined, optional
         url
     user : str, default is Undefined, optional
         user
     """
 
 
-    access: str
+    access?: str
 
     basicAuth?: bool
 
@@ -120,31 +120,33 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaDatasourceSpecDatasource:
 
     jsonData?: any
 
-    name: str
+    name?: str
 
     orgId?: int
 
     secureJsonData?: any
 
-    $type: str
+    $type?: str
 
     uid?: str
 
-    url: str
+    url?: str
 
     user?: str
 
 
 schema GrafanaIntegreatlyOrgV1beta1GrafanaDatasourceSpecInstanceSelector:
     """
-    grafana integreatly org v1beta1 grafana datasource spec instance selector
+    selects Grafana instances for import
 
     Attributes
     ----------
     matchExpressions : [GrafanaIntegreatlyOrgV1beta1GrafanaDatasourceSpecInstanceSelectorMatchExpressionsItems0], default is Undefined, optional
-        match expressions
+        matchExpressions is a list of label selector requirements. The requirements are ANDed.
     matchLabels : {str:str}, default is Undefined, optional
-        match labels
+        matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels
+        map is equivalent to an element of matchExpressions, whose key field is "key", the
+        operator is "In", and the values array contains only "value". The requirements are ANDed.
     """
 
 
@@ -155,16 +157,21 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaDatasourceSpecInstanceSelector:
 
 schema GrafanaIntegreatlyOrgV1beta1GrafanaDatasourceSpecInstanceSelectorMatchExpressionsItems0:
     """
-    grafana integreatly org v1beta1 grafana datasource spec instance selector match expressions items0
+    A label selector requirement is a selector that contains values, a key, and an operator that
+    relates the key and values.
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        key
+        key is the label key that the selector applies to.
     operator : str, default is Undefined, required
-        operator
+        operator represents a key's relationship to a set of values.
+        Valid operators are In, NotIn, Exists and DoesNotExist.
     values : [str], default is Undefined, optional
-        values
+        values is an array of string values. If the operator is In or NotIn,
+        the values array must be non-empty. If the operator is Exists or DoesNotExist,
+        the values array must be empty. This array is replaced during a strategic
+        merge patch.
     """
 
 
@@ -231,62 +238,74 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaDatasourceSpecValuesFromItems0ValueFro
 
 schema GrafanaIntegreatlyOrgV1beta1GrafanaDatasourceSpecValuesFromItems0ValueFromConfigMapKeyRef:
     """
-    grafana integreatly org v1beta1 grafana datasource spec values from items0 value from config map key ref
+    Selects a key of a ConfigMap.
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        key
+        The key to select.
     name : str, default is Undefined, optional
-        name
+        Name of the referent.
+        This field is effectively required, but due to backwards compatibility is
+        allowed to be empty. Instances of this type with an empty value here are
+        almost certainly wrong.
+        TODO: Add other useful fields. apiVersion, kind, uid?
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.
     optional : bool, default is Undefined, optional
-        optional
+        Specify whether the ConfigMap or its key must be defined
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema GrafanaIntegreatlyOrgV1beta1GrafanaDatasourceSpecValuesFromItems0ValueFromSecretKeyRef:
     """
-    grafana integreatly org v1beta1 grafana datasource spec values from items0 value from secret key ref
+    Selects a key of a Secret.
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        key
+        The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
-        name
+        Name of the referent.
+        This field is effectively required, but due to backwards compatibility is
+        allowed to be empty. Instances of this type with an empty value here are
+        almost certainly wrong.
+        TODO: Add other useful fields. apiVersion, kind, uid?
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.
     optional : bool, default is Undefined, optional
-        optional
+        Specify whether the Secret or its key must be defined
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema GrafanaIntegreatlyOrgV1beta1GrafanaDatasourceStatus:
     """
-    grafana integreatly org v1beta1 grafana datasource status
+    GrafanaDatasourceStatus defines the observed state of GrafanaDatasource
 
     Attributes
     ----------
     NoMatchingInstances : bool, default is Undefined, optional
-        no matching instances
+        The datasource instanceSelector can't find matching grafana instances
     hash : str, default is Undefined, optional
         hash
     lastMessage : str, default is Undefined, optional
         last message
     lastResync : str, default is Undefined, optional
-        last resync
+        Last time the datasource was resynced
     uid : str, default is Undefined, optional
         uid
     """
