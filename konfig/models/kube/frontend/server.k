@@ -18,8 +18,8 @@ schema Server:
     name: str, default is Undefined, optional.
         The name of the workload and service. 
         If not defined, a generated name ("{__META_APP_NAME}-{__META_ENV_TYPE_NAME}") will be used.
-        The value of __META_APP_NAME will be extracted from the value of the "name" defined in project.yaml,
-        and the value of __META_ENV_TYPE_NAME will be extracted from the value of the "name" defined in stack.yaml.
+        The value of metadata.__META_APP_NAME will be extracted from the value of the "name" defined through option("app"),
+        and the value of metadata.__META_ENV_TYPE_NAME will be extracted from the value of the "name" defined through option("env").
     workloadType: "Deployment" | "StatefulSet", default is "Deployment", required.
         Application workload type, default to 'Deployment'
     renderType: "Server" | "KubeVelaApplication", default is "Server", optional. 
