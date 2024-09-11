@@ -1,0 +1,25 @@
+version: 0.1.1
+name: grafana-operator
+displayName: grafana-operator
+createdAt: "2024-09-11T15:02:11Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `grafana-operator` with tag `0.1.1` as dependency
+  ```
+  kcl mod add grafana-operator:0.1.1
+  ```
+
+  #### Pull `grafana-operator` with tag `0.1.1` to local
+  ```
+  kcl mod pull grafana-operator:0.1.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
