@@ -7,81 +7,65 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 
-schema GrafanaFolder:
+schema GrafanaNotificationPolicy:
     """
-    GrafanaFolder is the Schema for the grafanafolders API
+    GrafanaNotificationPolicy is the Schema for the GrafanaNotificationPolicy API
 
     Attributes
     ----------
     apiVersion : str, default is "grafana.integreatly.org/v1beta1", required
         APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-    kind : str, default is "GrafanaFolder", required
+    kind : str, default is "GrafanaNotificationPolicy", required
         Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     metadata : v1.ObjectMeta, default is Undefined, optional
         metadata
-    spec : GrafanaIntegreatlyOrgV1beta1GrafanaFolderSpec, default is Undefined, optional
+    spec : GrafanaIntegreatlyOrgV1beta1GrafanaNotificationPolicySpec, default is Undefined, optional
         spec
-    status : GrafanaIntegreatlyOrgV1beta1GrafanaFolderStatus, default is Undefined, optional
+    status : GrafanaIntegreatlyOrgV1beta1GrafanaNotificationPolicyStatus, default is Undefined, optional
         status
     """
 
 
     apiVersion: "grafana.integreatly.org/v1beta1" = "grafana.integreatly.org/v1beta1"
 
-    kind: "GrafanaFolder" = "GrafanaFolder"
+    kind: "GrafanaNotificationPolicy" = "GrafanaNotificationPolicy"
 
     metadata?: v1.ObjectMeta
 
-    spec?: GrafanaIntegreatlyOrgV1beta1GrafanaFolderSpec
+    spec?: GrafanaIntegreatlyOrgV1beta1GrafanaNotificationPolicySpec
 
-    status?: GrafanaIntegreatlyOrgV1beta1GrafanaFolderStatus
+    status?: GrafanaIntegreatlyOrgV1beta1GrafanaNotificationPolicyStatus
 
 
-schema GrafanaIntegreatlyOrgV1beta1GrafanaFolderSpec:
+schema GrafanaIntegreatlyOrgV1beta1GrafanaNotificationPolicySpec:
     """
-    GrafanaFolderSpec defines the desired state of GrafanaFolder
+    GrafanaNotificationPolicySpec defines the desired state of GrafanaNotificationPolicy
 
     Attributes
     ----------
-    allowCrossNamespaceImport : bool, default is Undefined, optional
-        allow to import this resources from an operator in a different namespace
-    instanceSelector : GrafanaIntegreatlyOrgV1beta1GrafanaFolderSpecInstanceSelector, default is Undefined, required
+    instanceSelector : GrafanaIntegreatlyOrgV1beta1GrafanaNotificationPolicySpecInstanceSelector, default is Undefined, required
         instance selector
-    parentFolderRef : str, default is Undefined, optional
-        Reference to an existing GrafanaFolder CR in the same namespace
-    parentFolderUID : str, default is Undefined, optional
-        UID of the folder in which the current folder should be created
-    permissions : str, default is Undefined, optional
-        raw json with folder permissions
-    resyncPeriod : str, default is "5m", optional
-        how often the folder is synced, defaults to 5m if not set
-    title : str, default is Undefined, optional
-        title
+    resyncPeriod : str, default is "10m", optional
+        resync period
+    route : GrafanaIntegreatlyOrgV1beta1GrafanaNotificationPolicySpecRoute, default is Undefined, required
+        route
     """
 
 
-    allowCrossNamespaceImport?: bool
+    instanceSelector: GrafanaIntegreatlyOrgV1beta1GrafanaNotificationPolicySpecInstanceSelector
 
-    instanceSelector: GrafanaIntegreatlyOrgV1beta1GrafanaFolderSpecInstanceSelector
+    resyncPeriod?: str = "10m"
 
-    parentFolderRef?: str
-
-    parentFolderUID?: str
-
-    permissions?: str
-
-    resyncPeriod?: str = "5m"
-
-    title?: str
+    route: GrafanaIntegreatlyOrgV1beta1GrafanaNotificationPolicySpecRoute
 
 
-schema GrafanaIntegreatlyOrgV1beta1GrafanaFolderSpecInstanceSelector:
+schema GrafanaIntegreatlyOrgV1beta1GrafanaNotificationPolicySpecInstanceSelector:
     """
     selects Grafanas for import
 
     Attributes
     ----------
-    matchExpressions : [GrafanaIntegreatlyOrgV1beta1GrafanaFolderSpecInstanceSelectorMatchExpressionsItems0], default is Undefined, optional
+    matchExpressions : [GrafanaIntegreatlyOrgV1beta1GrafanaNotificationPolicySpecInstanceSelectorMatchExpressionsItems0], default is Undefined, optional
         matchExpressions is a list of label selector requirements. The requirements are ANDed.
     matchLabels : {str:str}, default is Undefined, optional
         matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels
@@ -90,12 +74,12 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaFolderSpecInstanceSelector:
     """
 
 
-    matchExpressions?: [GrafanaIntegreatlyOrgV1beta1GrafanaFolderSpecInstanceSelectorMatchExpressionsItems0]
+    matchExpressions?: [GrafanaIntegreatlyOrgV1beta1GrafanaNotificationPolicySpecInstanceSelectorMatchExpressionsItems0]
 
     matchLabels?: {str:str}
 
 
-schema GrafanaIntegreatlyOrgV1beta1GrafanaFolderSpecInstanceSelectorMatchExpressionsItems0:
+schema GrafanaIntegreatlyOrgV1beta1GrafanaNotificationPolicySpecInstanceSelectorMatchExpressionsItems0:
     """
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
@@ -122,34 +106,105 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaFolderSpecInstanceSelectorMatchExpress
     values?: [str]
 
 
-schema GrafanaIntegreatlyOrgV1beta1GrafanaFolderStatus:
+schema GrafanaIntegreatlyOrgV1beta1GrafanaNotificationPolicySpecRoute:
     """
-    GrafanaFolderStatus defines the observed state of GrafanaFolder
+    Routes for alerts to match against
 
     Attributes
     ----------
-    NoMatchingInstances : bool, default is Undefined, optional
-        The folder instanceSelector can't find matching grafana instances
-    conditions : [GrafanaIntegreatlyOrgV1beta1GrafanaFolderStatusConditionsItems0], default is Undefined, optional
-        conditions
-    hash : str, default is Undefined, optional
-        INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
-        Important: Run "make" to regenerate code after modifying this file
-    lastResync : str, default is Undefined, optional
-        Last time the folder was resynced
+    continue : bool, default is Undefined, optional
+        continue
+    group_by : [str], default is Undefined, optional
+        group by
+    group_interval : str, default is Undefined, optional
+        group interval
+    group_wait : str, default is Undefined, optional
+        group wait
+    match_re : {str:str}, default is Undefined, optional
+        match re
+    matchers : [GrafanaIntegreatlyOrgV1beta1GrafanaNotificationPolicySpecRouteMatchersItems0], default is Undefined, optional
+        matchers
+    mute_time_intervals : [str], default is Undefined, optional
+        mute time intervals
+    object_matchers : [[str]], default is Undefined, optional
+        object matchers
+    provenance : str, default is Undefined, optional
+        provenance
+    receiver : str, default is Undefined, optional
+        receiver
+    repeat_interval : str, default is Undefined, optional
+        repeat interval
+    routes : any, default is Undefined, optional
+        routes
     """
 
 
-    NoMatchingInstances?: bool
+    continue?: bool
 
-    conditions?: [GrafanaIntegreatlyOrgV1beta1GrafanaFolderStatusConditionsItems0]
+    group_by?: [str]
 
-    hash?: str
+    group_interval?: str
 
-    lastResync?: str
+    group_wait?: str
+
+    match_re?: {str:str}
+
+    matchers?: [GrafanaIntegreatlyOrgV1beta1GrafanaNotificationPolicySpecRouteMatchersItems0]
+
+    mute_time_intervals?: [str]
+
+    object_matchers?: [[str]]
+
+    provenance?: str
+
+    receiver?: str
+
+    repeat_interval?: str
+
+    routes?: any
 
 
-schema GrafanaIntegreatlyOrgV1beta1GrafanaFolderStatusConditionsItems0:
+schema GrafanaIntegreatlyOrgV1beta1GrafanaNotificationPolicySpecRouteMatchersItems0:
+    """
+    grafana integreatly org v1beta1 grafana notification policy spec route matchers items0
+
+    Attributes
+    ----------
+    isEqual : bool, default is Undefined, optional
+        is equal
+    isRegex : bool, default is Undefined, required
+        is regex
+    name : str, default is Undefined, optional
+        name
+    value : str, default is Undefined, required
+        value
+    """
+
+
+    isEqual?: bool
+
+    isRegex: bool
+
+    name?: str
+
+    value: str
+
+
+schema GrafanaIntegreatlyOrgV1beta1GrafanaNotificationPolicyStatus:
+    """
+    GrafanaNotificationPolicyStatus defines the observed state of GrafanaNotificationPolicy
+
+    Attributes
+    ----------
+    conditions : [GrafanaIntegreatlyOrgV1beta1GrafanaNotificationPolicyStatusConditionsItems0], default is Undefined, required
+        conditions
+    """
+
+
+    conditions: [GrafanaIntegreatlyOrgV1beta1GrafanaNotificationPolicyStatusConditionsItems0]
+
+
+schema GrafanaIntegreatlyOrgV1beta1GrafanaNotificationPolicyStatusConditionsItems0:
     """
     Condition contains details for one aspect of the current state of this API Resource.
     ---
