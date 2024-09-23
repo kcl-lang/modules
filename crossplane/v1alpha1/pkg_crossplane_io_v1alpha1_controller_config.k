@@ -1728,8 +1728,8 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecResources:
 
 
     check:
-        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
+        all _, limits in limits {_regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests {_regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecResourcesClaimsItems0:
@@ -2966,8 +2966,8 @@ schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0EphemeralVolumeCl
 
 
     check:
-        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
+        all _, limits in limits {_regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests {_regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema PkgCrossplaneIoV1alpha1ControllerConfigSpecVolumesItems0EphemeralVolumeClaimTemplateSpecSelector:

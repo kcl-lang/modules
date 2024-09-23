@@ -102,6 +102,12 @@ schema ApiextensionsCrossplaneIoV1CompositionRevisionSpec:
         Deprecated: Use Composition Functions instead.
     revision : int, default is Undefined, required
         Revision number. Newer revisions have larger numbers.
+
+
+        This number can change. When a Composition transitions from state A
+        -> B -> A there will be only two CompositionRevisions. Crossplane will
+        edit the original CompositionRevision to change its revision number from
+        0 to 2.
     writeConnectionSecretsToNamespace : str, default is Undefined, optional
         WriteConnectionSecretsToNamespace specifies the namespace in which the
         connection secrets of composite resource dynamically provisioned using
@@ -1235,7 +1241,7 @@ schema ApiextensionsCrossplaneIoV1CompositionRevisionSpecResourcesItems0:
 
     patches?: [ApiextensionsCrossplaneIoV1CompositionRevisionSpecResourcesItems0PatchesItems0]
 
-    readinessChecks?: [ApiextensionsCrossplaneIoV1CompositionRevisionSpecResourcesItems0ReadinessChecksItems0] = [{"matchCondition": {"status": "True", "type": "Ready"}, "type": "MatchCondition"}]
+    readinessChecks?: [ApiextensionsCrossplaneIoV1CompositionRevisionSpecResourcesItems0ReadinessChecksItems0] = [{"type": "MatchCondition", "matchCondition": {"status": "True", "type": "Ready"}}]
 
 
 schema ApiextensionsCrossplaneIoV1CompositionRevisionSpecResourcesItems0ConnectionDetailsItems0:
