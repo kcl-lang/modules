@@ -1226,7 +1226,7 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0:
 
     patches?: [ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0]
 
-    readinessChecks?: [ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0ReadinessChecksItems0] = [{"matchCondition": {"type": "Ready", "status": "True"}, "type": "MatchCondition"}]
+    readinessChecks?: [ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0ReadinessChecksItems0] = [{"matchCondition": {"status": "True", "type": "Ready"}, "type": "MatchCondition"}]
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0ConnectionDetailsItems0:
