@@ -6,8 +6,13 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema Composition:
-    """
-    A Composition specifies how a composite resource should be composed.
+    r"""
+    A Composition defines a collection of managed resources or functions that
+    Crossplane uses to create and manage new composite resources.
+
+
+    Read the Crossplane documentation for
+    [more information about Compositions](https://docs.crossplane.io/latest/concepts/compositions).
 
     Attributes
     ----------
@@ -32,7 +37,7 @@ schema Composition:
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpec:
-    """
+    r"""
     CompositionSpec specifies desired state of a composition.
 
     Attributes
@@ -45,17 +50,20 @@ schema ApiextensionsCrossplaneIoV1CompositionSpec:
         Mode controls what type or "mode" of Composition will be used.
 
 
-        "Resources" (the default) indicates that a Composition uses what is
-        commonly referred to as "Patch & Transform" or P&T composition. This mode
-        of Composition uses an array of resources, each a template for a composed
-        resource.
+        "Pipeline" indicates that a Composition specifies a pipeline of
+        Composition Functions, each of which is responsible for producing
+        composed resources that Crossplane should create or update.
 
 
-        "Pipeline" indicates that a Composition specifies a pipeline
-        of Composition Functions, each of which is responsible for producing
-        composed resources that Crossplane should create or update. THE PIPELINE
-        MODE IS A BETA FEATURE. It is not honored if the relevant Crossplane
-        feature flag is disabled.
+        "Resources" indicates that a Composition uses what is commonly referred
+        to as "Patch & Transform" or P&T composition. This mode of Composition
+        uses an array of resources, each a template for a composed resource.
+
+
+        All Compositions should use Pipeline mode. Resources mode is deprecated.
+        Resources mode won't be removed in Crossplane 1.x, and will remain the
+        default to avoid breaking legacy Compositions. However, it's no longer
+        accepting new features, and only accepting security related bug fixes.
     patchSets : [ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0], default is Undefined, optional
         PatchSets define a named set of patches that may be included by any
         resource in this Composition. PatchSets cannot themselves refer to other
@@ -64,6 +72,9 @@ schema ApiextensionsCrossplaneIoV1CompositionSpec:
 
         PatchSets are only used by the "Resources" mode of Composition. They
         are ignored by other modes.
+
+
+        Deprecated: Use Composition Functions instead.
     pipeline : [ApiextensionsCrossplaneIoV1CompositionSpecPipelineItems0], default is Undefined, optional
         Pipeline is a list of composition function steps that will be used when a
         composite resource referring to this composition is created. One of
@@ -72,10 +83,6 @@ schema ApiextensionsCrossplaneIoV1CompositionSpec:
 
         The Pipeline is only used by the "Pipeline" mode of Composition. It is
         ignored by other modes.
-
-
-        THIS IS A BETA FIELD. It is not honored if the relevant Crossplane
-        feature flag is disabled.
     publishConnectionDetailsWithStoreConfigRef : ApiextensionsCrossplaneIoV1CompositionSpecPublishConnectionDetailsWithStoreConfigRef, default is Undefined, optional
         publish connection details with store config ref
     resources : [ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0], default is Undefined, optional
@@ -85,6 +92,9 @@ schema ApiextensionsCrossplaneIoV1CompositionSpec:
 
         Resources are only used by the "Resources" mode of Composition. They are
         ignored by other modes.
+
+
+        Deprecated: Use Composition Functions instead.
     writeConnectionSecretsToNamespace : str, default is Undefined, optional
         WriteConnectionSecretsToNamespace specifies the namespace in which the
         connection secrets of composite resource dynamically provisioned using
@@ -115,7 +125,7 @@ schema ApiextensionsCrossplaneIoV1CompositionSpec:
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecCompositeTypeRef:
-    """
+    r"""
     CompositeTypeRef specifies the type of composite resource that this
     composition is compatible with.
 
@@ -134,7 +144,7 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecCompositeTypeRef:
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironment:
-    """
+    r"""
     Environment configures the environment in which resources are rendered.
 
 
@@ -181,7 +191,7 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironment:
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentEnvironmentConfigsItems0:
-    """
+    r"""
     EnvironmentSource selects a EnvironmentConfig resource.
 
     Attributes
@@ -204,7 +214,7 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentEnvironmentConfigsIt
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentEnvironmentConfigsItems0Ref:
-    """
+    r"""
     Ref is a named reference to a single EnvironmentConfig.
     Either Ref or Selector is required.
 
@@ -219,7 +229,7 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentEnvironmentConfigsIt
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentEnvironmentConfigsItems0Selector:
-    """
+    r"""
     Selector selects EnvironmentConfig(s) via labels.
 
     Attributes
@@ -249,7 +259,7 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentEnvironmentConfigsIt
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentEnvironmentConfigsItems0SelectorMatchLabelsItems0:
-    """
+    r"""
     An EnvironmentSourceSelectorLabelMatcher acts like a k8s label selector but
     can draw the label value from a different path.
 
@@ -286,7 +296,7 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentEnvironmentConfigsIt
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0:
-    """
+    r"""
     EnvironmentPatch is a patch for a Composition environment.
 
     Attributes
@@ -326,7 +336,7 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0:
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0Combine:
-    """
+    r"""
     Combine is the patch configuration for a CombineFromComposite or
     CombineToComposite patch.
 
@@ -355,7 +365,7 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0Combine
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0CombineString:
-    """
+    r"""
     String declares that input variables should be combined into a single
     string, using the relevant settings for formatting purposes.
 
@@ -371,7 +381,7 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0Combine
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0CombineVariablesItems0:
-    """
+    r"""
     A CombineVariable defines the source of a value that is combined with
     others to form and patch an output value. Currently, this only supports
     retrieving values from a field path.
@@ -388,7 +398,7 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0Combine
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0Policy:
-    """
+    r"""
     Policy configures the specifics of patching behaviour.
 
     Attributes
@@ -409,8 +419,8 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0Policy:
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0PolicyMergeOptions:
-    """
-    MergeOptions Specifies merge options on a field path
+    r"""
+    MergeOptions Specifies merge options on a field path.
 
     Attributes
     ----------
@@ -427,7 +437,7 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0PolicyM
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0TransformsItems0:
-    """
+    r"""
     Transform is a unit of process whose input is transformed into an output with
     the supplied configuration.
 
@@ -462,7 +472,7 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0Transfo
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0TransformsItems0Convert:
-    """
+    r"""
     Convert is used to cast the input into the given output type.
 
     Attributes
@@ -489,7 +499,7 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0Transfo
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0TransformsItems0Match:
-    """
+    r"""
     Match is a more complex version of Map that matches a list of patterns.
 
     Attributes
@@ -514,7 +524,7 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0Transfo
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0TransformsItems0MatchPatternsItems0:
-    """
+    r"""
     MatchTransformPattern is a transform that returns the value that matches a
     pattern.
 
@@ -552,7 +562,7 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0Transfo
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0TransformsItems0Math:
-    """
+    r"""
     Math is used to transform the input via mathematical operations such as
     multiplication.
 
@@ -579,7 +589,7 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0Transfo
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0TransformsItems0String:
-    """
+    r"""
     String is used to transform the input into a string or a different kind
     of string. Note that the input does not necessarily need to be a string.
 
@@ -621,7 +631,7 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0Transfo
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0TransformsItems0StringJoin:
-    """
+    r"""
     Join defines parameters to join a slice of values to a string.
 
     Attributes
@@ -636,7 +646,7 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0Transfo
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0TransformsItems0StringRegexp:
-    """
+    r"""
     Extract a match from the input using a regular expression.
 
     Attributes
@@ -655,7 +665,7 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0Transfo
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPolicy:
-    """
+    r"""
     Policy represents the Resolve and Resolution policies which apply to
     all EnvironmentSourceReferences in EnvironmentConfigs list.
 
@@ -680,7 +690,7 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPolicy:
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0:
-    """
+    r"""
     A PatchSet is a set of patches that can be reused from all resources within
     a Composition.
 
@@ -699,7 +709,7 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0:
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0:
-    """
+    r"""
     Patch objects are applied between composite and composed resources. Their
     behaviour depends on the Type selected. The default Type,
     FromCompositeFieldPath, copies a value from the composite resource to
@@ -746,7 +756,7 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0:
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0Combine:
-    """
+    r"""
     Combine is the patch configuration for a CombineFromComposite,
     CombineFromEnvironment, CombineToComposite or CombineToEnvironment patch.
 
@@ -775,7 +785,7 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0Com
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0CombineString:
-    """
+    r"""
     String declares that input variables should be combined into a single
     string, using the relevant settings for formatting purposes.
 
@@ -791,7 +801,7 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0Com
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0CombineVariablesItems0:
-    """
+    r"""
     A CombineVariable defines the source of a value that is combined with
     others to form and patch an output value. Currently, this only supports
     retrieving values from a field path.
@@ -808,7 +818,7 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0Com
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0Policy:
-    """
+    r"""
     Policy configures the specifics of patching behaviour.
 
     Attributes
@@ -829,8 +839,8 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0Pol
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0PolicyMergeOptions:
-    """
-    MergeOptions Specifies merge options on a field path
+    r"""
+    MergeOptions Specifies merge options on a field path.
 
     Attributes
     ----------
@@ -847,7 +857,7 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0Pol
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0TransformsItems0:
-    """
+    r"""
     Transform is a unit of process whose input is transformed into an output with
     the supplied configuration.
 
@@ -882,7 +892,7 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0Tra
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0TransformsItems0Convert:
-    """
+    r"""
     Convert is used to cast the input into the given output type.
 
     Attributes
@@ -909,7 +919,7 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0Tra
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0TransformsItems0Match:
-    """
+    r"""
     Match is a more complex version of Map that matches a list of patterns.
 
     Attributes
@@ -934,7 +944,7 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0Tra
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0TransformsItems0MatchPatternsItems0:
-    """
+    r"""
     MatchTransformPattern is a transform that returns the value that matches a
     pattern.
 
@@ -972,7 +982,7 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0Tra
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0TransformsItems0Math:
-    """
+    r"""
     Math is used to transform the input via mathematical operations such as
     multiplication.
 
@@ -999,7 +1009,7 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0Tra
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0TransformsItems0String:
-    """
+    r"""
     String is used to transform the input into a string or a different kind
     of string. Note that the input does not necessarily need to be a string.
 
@@ -1041,7 +1051,7 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0Tra
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0TransformsItems0StringJoin:
-    """
+    r"""
     Join defines parameters to join a slice of values to a string.
 
     Attributes
@@ -1056,7 +1066,7 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0Tra
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0TransformsItems0StringRegexp:
-    """
+    r"""
     Extract a match from the input using a regular expression.
 
     Attributes
@@ -1075,11 +1085,13 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0Tra
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecPipelineItems0:
-    """
+    r"""
     A PipelineStep in a Composition Function pipeline.
 
     Attributes
     ----------
+    credentials : [ApiextensionsCrossplaneIoV1CompositionSpecPipelineItems0CredentialsItems0], default is Undefined, optional
+        Credentials are optional credentials that the Composition Function needs.
     functionRef : ApiextensionsCrossplaneIoV1CompositionSpecPipelineItems0FunctionRef, default is Undefined, required
         function ref
     input : any, default is Undefined, optional
@@ -1091,6 +1103,8 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecPipelineItems0:
     """
 
 
+    credentials?: [ApiextensionsCrossplaneIoV1CompositionSpecPipelineItems0CredentialsItems0]
+
     functionRef: ApiextensionsCrossplaneIoV1CompositionSpecPipelineItems0FunctionRef
 
     input?: any
@@ -1098,8 +1112,50 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecPipelineItems0:
     step: str
 
 
-schema ApiextensionsCrossplaneIoV1CompositionSpecPipelineItems0FunctionRef:
+schema ApiextensionsCrossplaneIoV1CompositionSpecPipelineItems0CredentialsItems0:
+    r"""
+    FunctionCredentials are optional credentials that a Composition Function
+    needs to run.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name of this set of credentials.
+    secretRef : ApiextensionsCrossplaneIoV1CompositionSpecPipelineItems0CredentialsItems0SecretRef, default is Undefined, optional
+        secret ref
+    source : str, default is Undefined, required
+        Source of the function credentials.
     """
+
+
+    name: str
+
+    secretRef?: ApiextensionsCrossplaneIoV1CompositionSpecPipelineItems0CredentialsItems0SecretRef
+
+    source: "None" | "Secret"
+
+
+schema ApiextensionsCrossplaneIoV1CompositionSpecPipelineItems0CredentialsItems0SecretRef:
+    r"""
+    A SecretRef is a reference to a secret containing credentials that should
+    be supplied to the function.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name of the secret.
+    namespace : str, default is Undefined, required
+        Namespace of the secret.
+    """
+
+
+    name: str
+
+    namespace: str
+
+
+schema ApiextensionsCrossplaneIoV1CompositionSpecPipelineItems0FunctionRef:
+    r"""
     FunctionRef is a reference to the Composition Function this step should
     execute.
 
@@ -1114,7 +1170,7 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecPipelineItems0FunctionRef:
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecPublishConnectionDetailsWithStoreConfigRef:
-    """
+    r"""
     PublishConnectionDetailsWithStoreConfig specifies the secret store config
     with which the connection details of composite resources dynamically
     provisioned using this composition will be published.
@@ -1135,7 +1191,7 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecPublishConnectionDetailsWithSto
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0:
-    """
+    r"""
     ComposedTemplate is used to provide information about how the composed resource
     should be processed.
 
@@ -1155,7 +1211,7 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0:
         Either all or no entries must be named.
     patches : [ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0], default is Undefined, optional
         Patches will be applied as overlay to the base resource.
-    readinessChecks : [ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0ReadinessChecksItems0], default is [{"matchCondition": {"status": "True", "type": "Ready"}, "type": "MatchCondition"}], optional
+    readinessChecks : [ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0ReadinessChecksItems0], default is [{"matchCondition": {"type": "Ready", "status": "True"}, "type": "MatchCondition"}], optional
         ReadinessChecks allows users to define custom readiness checks. All checks
         have to return true in order for resource to be considered ready. The
         default readiness check is to have the "Ready" condition to be "True".
@@ -1170,11 +1226,11 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0:
 
     patches?: [ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0]
 
-    readinessChecks?: [ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0ReadinessChecksItems0] = [{"matchCondition": {"type": "Ready", "status": "True"}, "type": "MatchCondition"}]
+    readinessChecks?: [ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0ReadinessChecksItems0] = [{"matchCondition": {"status": "True", "type": "Ready"}, "type": "MatchCondition"}]
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0ConnectionDetailsItems0:
-    """
+    r"""
     ConnectionDetail includes the information about the propagation of the connection
     information from one secret to another.
 
@@ -1219,7 +1275,7 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0ConnectionDetail
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0:
-    """
+    r"""
     Patch objects are applied between composite and composed resources. Their
     behaviour depends on the Type selected. The default Type,
     FromCompositeFieldPath, copies a value from the composite resource to
@@ -1266,7 +1322,7 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0:
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0Combine:
-    """
+    r"""
     Combine is the patch configuration for a CombineFromComposite,
     CombineFromEnvironment, CombineToComposite or CombineToEnvironment patch.
 
@@ -1295,7 +1351,7 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0Com
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0CombineString:
-    """
+    r"""
     String declares that input variables should be combined into a single
     string, using the relevant settings for formatting purposes.
 
@@ -1311,7 +1367,7 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0Com
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0CombineVariablesItems0:
-    """
+    r"""
     A CombineVariable defines the source of a value that is combined with
     others to form and patch an output value. Currently, this only supports
     retrieving values from a field path.
@@ -1328,7 +1384,7 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0Com
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0Policy:
-    """
+    r"""
     Policy configures the specifics of patching behaviour.
 
     Attributes
@@ -1349,8 +1405,8 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0Pol
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0PolicyMergeOptions:
-    """
-    MergeOptions Specifies merge options on a field path
+    r"""
+    MergeOptions Specifies merge options on a field path.
 
     Attributes
     ----------
@@ -1367,7 +1423,7 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0Pol
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0TransformsItems0:
-    """
+    r"""
     Transform is a unit of process whose input is transformed into an output with
     the supplied configuration.
 
@@ -1402,7 +1458,7 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0Tra
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0TransformsItems0Convert:
-    """
+    r"""
     Convert is used to cast the input into the given output type.
 
     Attributes
@@ -1429,7 +1485,7 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0Tra
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0TransformsItems0Match:
-    """
+    r"""
     Match is a more complex version of Map that matches a list of patterns.
 
     Attributes
@@ -1454,7 +1510,7 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0Tra
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0TransformsItems0MatchPatternsItems0:
-    """
+    r"""
     MatchTransformPattern is a transform that returns the value that matches a
     pattern.
 
@@ -1492,7 +1548,7 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0Tra
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0TransformsItems0Math:
-    """
+    r"""
     Math is used to transform the input via mathematical operations such as
     multiplication.
 
@@ -1519,7 +1575,7 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0Tra
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0TransformsItems0String:
-    """
+    r"""
     String is used to transform the input into a string or a different kind
     of string. Note that the input does not necessarily need to be a string.
 
@@ -1561,7 +1617,7 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0Tra
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0TransformsItems0StringJoin:
-    """
+    r"""
     Join defines parameters to join a slice of values to a string.
 
     Attributes
@@ -1576,7 +1632,7 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0Tra
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0TransformsItems0StringRegexp:
-    """
+    r"""
     Extract a match from the input using a regular expression.
 
     Attributes
@@ -1595,9 +1651,9 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0Tra
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0ReadinessChecksItems0:
-    """
+    r"""
     ReadinessCheck is used to indicate how to tell whether a resource is ready
-    for consumption
+    for consumption.
 
     Attributes
     ----------
@@ -1626,7 +1682,7 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0ReadinessChecksI
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0ReadinessChecksItems0MatchCondition:
-    """
+    r"""
     MatchCondition specifies the condition you'd like to match if you're using "MatchCondition" type.
 
     Attributes

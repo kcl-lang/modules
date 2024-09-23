@@ -6,37 +6,42 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema Function:
-    """
-    Function is the CRD type for a request to deploy a long-running Function.
+    r"""
+    A Function installs an OCI compatible Crossplane package, extending
+    Crossplane with support for a new kind of composition function.
+
+
+    Read the Crossplane documentation for
+    [more information about Functions](https://docs.crossplane.io/latest/concepts/composition-functions).
 
     Attributes
     ----------
-    apiVersion : str, default is "pkg.crossplane.io/v1beta1", required
+    apiVersion : str, default is "pkg.crossplane.io/v1", required
         APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
     kind : str, default is "Function", required
         Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     metadata : v1.ObjectMeta, default is Undefined, optional
         metadata
-    spec : PkgCrossplaneIoV1beta1FunctionSpec, default is Undefined, optional
+    spec : PkgCrossplaneIoV1FunctionSpec, default is Undefined, optional
         spec
-    status : PkgCrossplaneIoV1beta1FunctionStatus, default is Undefined, optional
+    status : PkgCrossplaneIoV1FunctionStatus, default is Undefined, optional
         status
     """
 
 
-    apiVersion: "pkg.crossplane.io/v1beta1" = "pkg.crossplane.io/v1beta1"
+    apiVersion: "pkg.crossplane.io/v1" = "pkg.crossplane.io/v1"
 
     kind: "Function" = "Function"
 
     metadata?: v1.ObjectMeta
 
-    spec?: PkgCrossplaneIoV1beta1FunctionSpec
+    spec?: PkgCrossplaneIoV1FunctionSpec
 
-    status?: PkgCrossplaneIoV1beta1FunctionStatus
+    status?: PkgCrossplaneIoV1FunctionStatus
 
 
-schema PkgCrossplaneIoV1beta1FunctionSpec:
-    """
+schema PkgCrossplaneIoV1FunctionSpec:
+    r"""
     FunctionSpec specifies the configuration of a Function.
 
     Attributes
@@ -45,8 +50,8 @@ schema PkgCrossplaneIoV1beta1FunctionSpec:
         Map of string keys and values that can be used to organize and categorize
         (scope and select) objects. May match selectors of replication controllers
         and services.
-        More info: http://kubernetes.io/docs/user-guide/labels
-    controllerConfigRef : PkgCrossplaneIoV1beta1FunctionSpecControllerConfigRef, default is Undefined, optional
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+    controllerConfigRef : PkgCrossplaneIoV1FunctionSpecControllerConfigRef, default is Undefined, optional
         controller config ref
     ignoreCrossplaneConstraints : bool, default is Undefined, optional
         IgnoreCrossplaneConstraints indicates to the package manager whether to
@@ -57,7 +62,7 @@ schema PkgCrossplaneIoV1beta1FunctionSpec:
     packagePullPolicy : str, default is "IfNotPresent", optional
         PackagePullPolicy defines the pull policy for the package.
         Default is IfNotPresent.
-    packagePullSecrets : [PkgCrossplaneIoV1beta1FunctionSpecPackagePullSecretsItems0], default is Undefined, optional
+    packagePullSecrets : [PkgCrossplaneIoV1FunctionSpecPackagePullSecretsItems0], default is Undefined, optional
         PackagePullSecrets are named secrets in the same namespace that can be used
         to fetch packages from private registries.
     revisionActivationPolicy : str, default is "Automatic", optional
@@ -68,7 +73,7 @@ schema PkgCrossplaneIoV1beta1FunctionSpec:
         RevisionHistoryLimit dictates how the package controller cleans up old
         inactive package revisions.
         Defaults to 1. Can be disabled by explicitly setting to 0.
-    runtimeConfigRef : PkgCrossplaneIoV1beta1FunctionSpecRuntimeConfigRef, default is Undefined, optional
+    runtimeConfigRef : PkgCrossplaneIoV1FunctionSpecRuntimeConfigRef, default is Undefined, optional
         runtime config ref
     skipDependencyResolution : bool, default is Undefined, optional
         SkipDependencyResolution indicates to the package manager whether to skip
@@ -80,7 +85,7 @@ schema PkgCrossplaneIoV1beta1FunctionSpec:
 
     commonLabels?: {str:str}
 
-    controllerConfigRef?: PkgCrossplaneIoV1beta1FunctionSpecControllerConfigRef
+    controllerConfigRef?: PkgCrossplaneIoV1FunctionSpecControllerConfigRef
 
     ignoreCrossplaneConstraints?: bool = False
 
@@ -88,19 +93,19 @@ schema PkgCrossplaneIoV1beta1FunctionSpec:
 
     packagePullPolicy?: str = "IfNotPresent"
 
-    packagePullSecrets?: [PkgCrossplaneIoV1beta1FunctionSpecPackagePullSecretsItems0]
+    packagePullSecrets?: [PkgCrossplaneIoV1FunctionSpecPackagePullSecretsItems0]
 
     revisionActivationPolicy?: str = "Automatic"
 
     revisionHistoryLimit?: int = 1
 
-    runtimeConfigRef?: PkgCrossplaneIoV1beta1FunctionSpecRuntimeConfigRef
+    runtimeConfigRef?: PkgCrossplaneIoV1FunctionSpecRuntimeConfigRef
 
     skipDependencyResolution?: bool = False
 
 
-schema PkgCrossplaneIoV1beta1FunctionSpecControllerConfigRef:
-    """
+schema PkgCrossplaneIoV1FunctionSpecControllerConfigRef:
+    r"""
     ControllerConfigRef references a ControllerConfig resource that will be
     used to configure the packaged controller Deployment.
     Deprecated: Use RuntimeConfigReference instead.
@@ -115,8 +120,8 @@ schema PkgCrossplaneIoV1beta1FunctionSpecControllerConfigRef:
     name: str
 
 
-schema PkgCrossplaneIoV1beta1FunctionSpecPackagePullSecretsItems0:
-    """
+schema PkgCrossplaneIoV1FunctionSpecPackagePullSecretsItems0:
+    r"""
     LocalObjectReference contains enough information to let you locate the
     referenced object inside the same namespace.
 
@@ -132,8 +137,8 @@ schema PkgCrossplaneIoV1beta1FunctionSpecPackagePullSecretsItems0:
     name?: str
 
 
-schema PkgCrossplaneIoV1beta1FunctionSpecRuntimeConfigRef:
-    """
+schema PkgCrossplaneIoV1FunctionSpecRuntimeConfigRef:
+    r"""
     RuntimeConfigRef references a RuntimeConfig resource that will be used
     to configure the package runtime.
 
@@ -155,13 +160,13 @@ schema PkgCrossplaneIoV1beta1FunctionSpecRuntimeConfigRef:
     name: str
 
 
-schema PkgCrossplaneIoV1beta1FunctionStatus:
-    """
+schema PkgCrossplaneIoV1FunctionStatus:
+    r"""
     FunctionStatus represents the observed state of a Function.
 
     Attributes
     ----------
-    conditions : [PkgCrossplaneIoV1beta1FunctionStatusConditionsItems0], default is Undefined, optional
+    conditions : [PkgCrossplaneIoV1FunctionStatusConditionsItems0], default is Undefined, optional
         Conditions of the resource.
     currentIdentifier : str, default is Undefined, optional
         CurrentIdentifier is the most recent package source that was used to
@@ -177,15 +182,15 @@ schema PkgCrossplaneIoV1beta1FunctionStatus:
     """
 
 
-    conditions?: [PkgCrossplaneIoV1beta1FunctionStatusConditionsItems0]
+    conditions?: [PkgCrossplaneIoV1FunctionStatusConditionsItems0]
 
     currentIdentifier?: str
 
     currentRevision?: str
 
 
-schema PkgCrossplaneIoV1beta1FunctionStatusConditionsItems0:
-    """
+schema PkgCrossplaneIoV1FunctionStatusConditionsItems0:
+    r"""
     A Condition that may apply to a resource.
 
     Attributes
@@ -196,6 +201,10 @@ schema PkgCrossplaneIoV1beta1FunctionStatusConditionsItems0:
     message : str, default is Undefined, optional
         A Message containing details about this condition's last transition from
         one status to another, if any.
+    observedGeneration : int, default is Undefined, optional
+        ObservedGeneration represents the .metadata.generation that the condition was set based upon.
+        For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date
+        with respect to the current state of the instance.
     reason : str, default is Undefined, required
         A Reason for this condition's last transition from one status to another.
     status : str, default is Undefined, required
@@ -209,6 +218,8 @@ schema PkgCrossplaneIoV1beta1FunctionStatusConditionsItems0:
     lastTransitionTime: str
 
     message?: str
+
+    observedGeneration?: int
 
     reason: str
 

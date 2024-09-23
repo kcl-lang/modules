@@ -6,8 +6,16 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema Usage:
-    """
+    r"""
     A Usage defines a deletion blocking relationship between two resources.
+
+
+    Usages prevent accidental deletion of a single resource or deletion of
+    resources with dependent resources.
+
+
+    Read the Crossplane documentation for
+    [more information about Compositions](https://docs.crossplane.io/latest/concepts/usages).
 
     Attributes
     ----------
@@ -36,7 +44,7 @@ schema Usage:
 
 
 schema ApiextensionsCrossplaneIoV1alpha1UsageSpec:
-    """
+    r"""
     UsageSpec defines the desired state of Usage.
 
     Attributes
@@ -62,7 +70,7 @@ schema ApiextensionsCrossplaneIoV1alpha1UsageSpec:
 
 
 schema ApiextensionsCrossplaneIoV1alpha1UsageSpecBy:
-    """
+    r"""
     By is the resource that is "using the other resource".
 
     Attributes
@@ -89,7 +97,7 @@ schema ApiextensionsCrossplaneIoV1alpha1UsageSpecBy:
 
 
 schema ApiextensionsCrossplaneIoV1alpha1UsageSpecByResourceRef:
-    """
+    r"""
     Reference to the resource.
 
     Attributes
@@ -103,7 +111,7 @@ schema ApiextensionsCrossplaneIoV1alpha1UsageSpecByResourceRef:
 
 
 schema ApiextensionsCrossplaneIoV1alpha1UsageSpecByResourceSelector:
-    """
+    r"""
     Selector to the resource.
     This field will be ignored if ResourceRef is set.
 
@@ -123,7 +131,7 @@ schema ApiextensionsCrossplaneIoV1alpha1UsageSpecByResourceSelector:
 
 
 schema ApiextensionsCrossplaneIoV1alpha1UsageSpecOf:
-    """
+    r"""
     Of is the resource that is "being used".
 
     Attributes
@@ -150,7 +158,7 @@ schema ApiextensionsCrossplaneIoV1alpha1UsageSpecOf:
 
 
 schema ApiextensionsCrossplaneIoV1alpha1UsageSpecOfResourceRef:
-    """
+    r"""
     Reference to the resource.
 
     Attributes
@@ -164,7 +172,7 @@ schema ApiextensionsCrossplaneIoV1alpha1UsageSpecOfResourceRef:
 
 
 schema ApiextensionsCrossplaneIoV1alpha1UsageSpecOfResourceSelector:
-    """
+    r"""
     Selector to the resource.
     This field will be ignored if ResourceRef is set.
 
@@ -184,7 +192,7 @@ schema ApiextensionsCrossplaneIoV1alpha1UsageSpecOfResourceSelector:
 
 
 schema ApiextensionsCrossplaneIoV1alpha1UsageStatus:
-    """
+    r"""
     UsageStatus defines the observed state of Usage.
 
     Attributes
@@ -198,7 +206,7 @@ schema ApiextensionsCrossplaneIoV1alpha1UsageStatus:
 
 
 schema ApiextensionsCrossplaneIoV1alpha1UsageStatusConditionsItems0:
-    """
+    r"""
     A Condition that may apply to a resource.
 
     Attributes
@@ -209,6 +217,10 @@ schema ApiextensionsCrossplaneIoV1alpha1UsageStatusConditionsItems0:
     message : str, default is Undefined, optional
         A Message containing details about this condition's last transition from
         one status to another, if any.
+    observedGeneration : int, default is Undefined, optional
+        ObservedGeneration represents the .metadata.generation that the condition was set based upon.
+        For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date
+        with respect to the current state of the instance.
     reason : str, default is Undefined, required
         A Reason for this condition's last transition from one status to another.
     status : str, default is Undefined, required
@@ -222,6 +234,8 @@ schema ApiextensionsCrossplaneIoV1alpha1UsageStatusConditionsItems0:
     lastTransitionTime: str
 
     message?: str
+
+    observedGeneration?: int
 
     reason: str
 

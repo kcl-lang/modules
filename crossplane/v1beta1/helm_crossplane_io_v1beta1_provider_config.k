@@ -11,76 +11,76 @@ schema ProviderConfig:
 
     Attributes
     ----------
-    apiVersion : str, default is "helm.crossplane.io/v1alpha1", required
+    apiVersion : str, default is "helm.crossplane.io/v1beta1", required
         APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
     kind : str, default is "ProviderConfig", required
         Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     metadata : v1.ObjectMeta, default is Undefined, optional
         metadata
-    spec : HelmCrossplaneIoV1alpha1ProviderConfigSpec, default is Undefined, required
+    spec : HelmCrossplaneIoV1beta1ProviderConfigSpec, default is Undefined, required
         spec
-    status : HelmCrossplaneIoV1alpha1ProviderConfigStatus, default is Undefined, optional
+    status : HelmCrossplaneIoV1beta1ProviderConfigStatus, default is Undefined, optional
         status
     """
 
 
-    apiVersion: "helm.crossplane.io/v1alpha1" = "helm.crossplane.io/v1alpha1"
+    apiVersion: "helm.crossplane.io/v1beta1" = "helm.crossplane.io/v1beta1"
 
     kind: "ProviderConfig" = "ProviderConfig"
 
     metadata?: v1.ObjectMeta
 
-    spec: HelmCrossplaneIoV1alpha1ProviderConfigSpec
+    spec: HelmCrossplaneIoV1beta1ProviderConfigSpec
 
-    status?: HelmCrossplaneIoV1alpha1ProviderConfigStatus
+    status?: HelmCrossplaneIoV1beta1ProviderConfigStatus
 
 
-schema HelmCrossplaneIoV1alpha1ProviderConfigSpec:
+schema HelmCrossplaneIoV1beta1ProviderConfigSpec:
     r"""
-    A ProviderConfigSpec defines the desired state of a Provider.
+    A ProviderConfigSpec defines the desired state of a ProviderConfig.
 
     Attributes
     ----------
-    credentials : HelmCrossplaneIoV1alpha1ProviderConfigSpecCredentials, default is Undefined, required
+    credentials : HelmCrossplaneIoV1beta1ProviderConfigSpecCredentials, default is Undefined, required
         credentials
-    identity : HelmCrossplaneIoV1alpha1ProviderConfigSpecIdentity, default is Undefined, optional
+    identity : HelmCrossplaneIoV1beta1ProviderConfigSpecIdentity, default is Undefined, optional
         identity
     """
 
 
-    credentials: HelmCrossplaneIoV1alpha1ProviderConfigSpecCredentials
+    credentials: HelmCrossplaneIoV1beta1ProviderConfigSpecCredentials
 
-    identity?: HelmCrossplaneIoV1alpha1ProviderConfigSpecIdentity
+    identity?: HelmCrossplaneIoV1beta1ProviderConfigSpecIdentity
 
 
-schema HelmCrossplaneIoV1alpha1ProviderConfigSpecCredentials:
+schema HelmCrossplaneIoV1beta1ProviderConfigSpecCredentials:
     r"""
     Credentials used to connect to the Kubernetes API. Typically a
     kubeconfig file. Use InjectedIdentity for in-cluster config.
 
     Attributes
     ----------
-    env : HelmCrossplaneIoV1alpha1ProviderConfigSpecCredentialsEnv, default is Undefined, optional
+    env : HelmCrossplaneIoV1beta1ProviderConfigSpecCredentialsEnv, default is Undefined, optional
         env
-    fs : HelmCrossplaneIoV1alpha1ProviderConfigSpecCredentialsFs, default is Undefined, optional
+    fs : HelmCrossplaneIoV1beta1ProviderConfigSpecCredentialsFs, default is Undefined, optional
         fs
-    secretRef : HelmCrossplaneIoV1alpha1ProviderConfigSpecCredentialsSecretRef, default is Undefined, optional
+    secretRef : HelmCrossplaneIoV1beta1ProviderConfigSpecCredentialsSecretRef, default is Undefined, optional
         secret ref
     source : str, default is Undefined, required
         Source of the provider credentials.
     """
 
 
-    env?: HelmCrossplaneIoV1alpha1ProviderConfigSpecCredentialsEnv
+    env?: HelmCrossplaneIoV1beta1ProviderConfigSpecCredentialsEnv
 
-    fs?: HelmCrossplaneIoV1alpha1ProviderConfigSpecCredentialsFs
+    fs?: HelmCrossplaneIoV1beta1ProviderConfigSpecCredentialsFs
 
-    secretRef?: HelmCrossplaneIoV1alpha1ProviderConfigSpecCredentialsSecretRef
+    secretRef?: HelmCrossplaneIoV1beta1ProviderConfigSpecCredentialsSecretRef
 
     source: "None" | "Secret" | "InjectedIdentity" | "Environment" | "Filesystem"
 
 
-schema HelmCrossplaneIoV1alpha1ProviderConfigSpecCredentialsEnv:
+schema HelmCrossplaneIoV1beta1ProviderConfigSpecCredentialsEnv:
     r"""
     Env is a reference to an environment variable that contains credentials
     that must be used to connect to the provider.
@@ -95,7 +95,7 @@ schema HelmCrossplaneIoV1alpha1ProviderConfigSpecCredentialsEnv:
     name: str
 
 
-schema HelmCrossplaneIoV1alpha1ProviderConfigSpecCredentialsFs:
+schema HelmCrossplaneIoV1beta1ProviderConfigSpecCredentialsFs:
     r"""
     Fs is a reference to a filesystem location that contains credentials that
     must be used to connect to the provider.
@@ -110,7 +110,7 @@ schema HelmCrossplaneIoV1alpha1ProviderConfigSpecCredentialsFs:
     path: str
 
 
-schema HelmCrossplaneIoV1alpha1ProviderConfigSpecCredentialsSecretRef:
+schema HelmCrossplaneIoV1beta1ProviderConfigSpecCredentialsSecretRef:
     r"""
     A SecretRef is a reference to a secret key that contains the credentials
     that must be used to connect to the provider.
@@ -133,7 +133,7 @@ schema HelmCrossplaneIoV1alpha1ProviderConfigSpecCredentialsSecretRef:
     namespace: str
 
 
-schema HelmCrossplaneIoV1alpha1ProviderConfigSpecIdentity:
+schema HelmCrossplaneIoV1beta1ProviderConfigSpecIdentity:
     r"""
     Identity used to authenticate to the Kubernetes API. The identity
     credentials can be used to supplement kubeconfig 'credentials', for
@@ -141,11 +141,11 @@ schema HelmCrossplaneIoV1alpha1ProviderConfigSpecIdentity:
 
     Attributes
     ----------
-    env : HelmCrossplaneIoV1alpha1ProviderConfigSpecIdentityEnv, default is Undefined, optional
+    env : HelmCrossplaneIoV1beta1ProviderConfigSpecIdentityEnv, default is Undefined, optional
         env
-    fs : HelmCrossplaneIoV1alpha1ProviderConfigSpecIdentityFs, default is Undefined, optional
+    fs : HelmCrossplaneIoV1beta1ProviderConfigSpecIdentityFs, default is Undefined, optional
         fs
-    secretRef : HelmCrossplaneIoV1alpha1ProviderConfigSpecIdentitySecretRef, default is Undefined, optional
+    secretRef : HelmCrossplaneIoV1beta1ProviderConfigSpecIdentitySecretRef, default is Undefined, optional
         secret ref
     source : str, default is Undefined, required
         Source of the provider credentials.
@@ -154,18 +154,18 @@ schema HelmCrossplaneIoV1alpha1ProviderConfigSpecIdentity:
     """
 
 
-    env?: HelmCrossplaneIoV1alpha1ProviderConfigSpecIdentityEnv
+    env?: HelmCrossplaneIoV1beta1ProviderConfigSpecIdentityEnv
 
-    fs?: HelmCrossplaneIoV1alpha1ProviderConfigSpecIdentityFs
+    fs?: HelmCrossplaneIoV1beta1ProviderConfigSpecIdentityFs
 
-    secretRef?: HelmCrossplaneIoV1alpha1ProviderConfigSpecIdentitySecretRef
+    secretRef?: HelmCrossplaneIoV1beta1ProviderConfigSpecIdentitySecretRef
 
     source: "None" | "Secret" | "InjectedIdentity" | "Environment" | "Filesystem"
 
-    $type: "GoogleApplicationCredentials"
+    $type: "GoogleApplicationCredentials" | "AzureServicePrincipalCredentials" | "AzureWorkloadIdentityCredentials" | "UpboundTokens"
 
 
-schema HelmCrossplaneIoV1alpha1ProviderConfigSpecIdentityEnv:
+schema HelmCrossplaneIoV1beta1ProviderConfigSpecIdentityEnv:
     r"""
     Env is a reference to an environment variable that contains credentials
     that must be used to connect to the provider.
@@ -180,7 +180,7 @@ schema HelmCrossplaneIoV1alpha1ProviderConfigSpecIdentityEnv:
     name: str
 
 
-schema HelmCrossplaneIoV1alpha1ProviderConfigSpecIdentityFs:
+schema HelmCrossplaneIoV1beta1ProviderConfigSpecIdentityFs:
     r"""
     Fs is a reference to a filesystem location that contains credentials that
     must be used to connect to the provider.
@@ -195,7 +195,7 @@ schema HelmCrossplaneIoV1alpha1ProviderConfigSpecIdentityFs:
     path: str
 
 
-schema HelmCrossplaneIoV1alpha1ProviderConfigSpecIdentitySecretRef:
+schema HelmCrossplaneIoV1beta1ProviderConfigSpecIdentitySecretRef:
     r"""
     A SecretRef is a reference to a secret key that contains the credentials
     that must be used to connect to the provider.
@@ -218,25 +218,25 @@ schema HelmCrossplaneIoV1alpha1ProviderConfigSpecIdentitySecretRef:
     namespace: str
 
 
-schema HelmCrossplaneIoV1alpha1ProviderConfigStatus:
+schema HelmCrossplaneIoV1beta1ProviderConfigStatus:
     r"""
     A ProviderConfigStatus defines the status of a Provider.
 
     Attributes
     ----------
-    conditions : [HelmCrossplaneIoV1alpha1ProviderConfigStatusConditionsItems0], default is Undefined, optional
+    conditions : [HelmCrossplaneIoV1beta1ProviderConfigStatusConditionsItems0], default is Undefined, optional
         Conditions of the resource.
     users : int, default is Undefined, optional
         Users of this provider configuration.
     """
 
 
-    conditions?: [HelmCrossplaneIoV1alpha1ProviderConfigStatusConditionsItems0]
+    conditions?: [HelmCrossplaneIoV1beta1ProviderConfigStatusConditionsItems0]
 
     users?: int
 
 
-schema HelmCrossplaneIoV1alpha1ProviderConfigStatusConditionsItems0:
+schema HelmCrossplaneIoV1beta1ProviderConfigStatusConditionsItems0:
     r"""
     A Condition that may apply to a resource.
 

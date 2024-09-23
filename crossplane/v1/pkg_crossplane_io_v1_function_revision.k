@@ -6,37 +6,42 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema FunctionRevision:
-    """
-    A FunctionRevision that has been added to Crossplane.
+    r"""
+    A FunctionRevision represents a revision of a Function. Crossplane
+    creates new revisions when there are changes to the Function.
+
+
+    Crossplane creates and manages FunctionRevisions. Don't directly edit
+    FunctionRevisions.
 
     Attributes
     ----------
-    apiVersion : str, default is "pkg.crossplane.io/v1beta1", required
+    apiVersion : str, default is "pkg.crossplane.io/v1", required
         APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
     kind : str, default is "FunctionRevision", required
         Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     metadata : v1.ObjectMeta, default is Undefined, optional
         metadata
-    spec : PkgCrossplaneIoV1beta1FunctionRevisionSpec, default is Undefined, optional
+    spec : PkgCrossplaneIoV1FunctionRevisionSpec, default is Undefined, optional
         spec
-    status : PkgCrossplaneIoV1beta1FunctionRevisionStatus, default is Undefined, optional
+    status : PkgCrossplaneIoV1FunctionRevisionStatus, default is Undefined, optional
         status
     """
 
 
-    apiVersion: "pkg.crossplane.io/v1beta1" = "pkg.crossplane.io/v1beta1"
+    apiVersion: "pkg.crossplane.io/v1" = "pkg.crossplane.io/v1"
 
     kind: "FunctionRevision" = "FunctionRevision"
 
     metadata?: v1.ObjectMeta
 
-    spec?: PkgCrossplaneIoV1beta1FunctionRevisionSpec
+    spec?: PkgCrossplaneIoV1FunctionRevisionSpec
 
-    status?: PkgCrossplaneIoV1beta1FunctionRevisionStatus
+    status?: PkgCrossplaneIoV1FunctionRevisionStatus
 
 
-schema PkgCrossplaneIoV1beta1FunctionRevisionSpec:
-    """
+schema PkgCrossplaneIoV1FunctionRevisionSpec:
+    r"""
     FunctionRevisionSpec specifies configuration for a FunctionRevision.
 
     Attributes
@@ -45,8 +50,8 @@ schema PkgCrossplaneIoV1beta1FunctionRevisionSpec:
         Map of string keys and values that can be used to organize and categorize
         (scope and select) objects. May match selectors of replication controllers
         and services.
-        More info: http://kubernetes.io/docs/user-guide/labels
-    controllerConfigRef : PkgCrossplaneIoV1beta1FunctionRevisionSpecControllerConfigRef, default is Undefined, optional
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+    controllerConfigRef : PkgCrossplaneIoV1FunctionRevisionSpecControllerConfigRef, default is Undefined, optional
         controller config ref
     desiredState : str, default is Undefined, required
         DesiredState of the PackageRevision. Can be either Active or Inactive.
@@ -61,14 +66,14 @@ schema PkgCrossplaneIoV1beta1FunctionRevisionSpec:
         applied to any images pulled for the package, such as a provider's
         controller image.
         Default is IfNotPresent.
-    packagePullSecrets : [PkgCrossplaneIoV1beta1FunctionRevisionSpecPackagePullSecretsItems0], default is Undefined, optional
+    packagePullSecrets : [PkgCrossplaneIoV1FunctionRevisionSpecPackagePullSecretsItems0], default is Undefined, optional
         PackagePullSecrets are named secrets in the same namespace that can be
         used to fetch packages from private registries. They are also applied to
         any images pulled for the package, such as a provider's controller image.
     revision : int, default is Undefined, required
         Revision number. Indicates when the revision will be garbage collected
         based on the parent's RevisionHistoryLimit.
-    runtimeConfigRef : PkgCrossplaneIoV1beta1FunctionRevisionSpecRuntimeConfigRef, default is Undefined, optional
+    runtimeConfigRef : PkgCrossplaneIoV1FunctionRevisionSpecRuntimeConfigRef, default is Undefined, optional
         runtime config ref
     skipDependencyResolution : bool, default is Undefined, optional
         SkipDependencyResolution indicates to the package manager whether to skip
@@ -86,7 +91,7 @@ schema PkgCrossplaneIoV1beta1FunctionRevisionSpec:
 
     commonLabels?: {str:str}
 
-    controllerConfigRef?: PkgCrossplaneIoV1beta1FunctionRevisionSpecControllerConfigRef
+    controllerConfigRef?: PkgCrossplaneIoV1FunctionRevisionSpecControllerConfigRef
 
     desiredState: str
 
@@ -96,11 +101,11 @@ schema PkgCrossplaneIoV1beta1FunctionRevisionSpec:
 
     packagePullPolicy?: str = "IfNotPresent"
 
-    packagePullSecrets?: [PkgCrossplaneIoV1beta1FunctionRevisionSpecPackagePullSecretsItems0]
+    packagePullSecrets?: [PkgCrossplaneIoV1FunctionRevisionSpecPackagePullSecretsItems0]
 
     revision: int
 
-    runtimeConfigRef?: PkgCrossplaneIoV1beta1FunctionRevisionSpecRuntimeConfigRef
+    runtimeConfigRef?: PkgCrossplaneIoV1FunctionRevisionSpecRuntimeConfigRef
 
     skipDependencyResolution?: bool = False
 
@@ -109,8 +114,8 @@ schema PkgCrossplaneIoV1beta1FunctionRevisionSpec:
     tlsServerSecretName?: str
 
 
-schema PkgCrossplaneIoV1beta1FunctionRevisionSpecControllerConfigRef:
-    """
+schema PkgCrossplaneIoV1FunctionRevisionSpecControllerConfigRef:
+    r"""
     ControllerConfigRef references a ControllerConfig resource that will be
     used to configure the packaged controller Deployment.
     Deprecated: Use RuntimeConfigReference instead.
@@ -125,8 +130,8 @@ schema PkgCrossplaneIoV1beta1FunctionRevisionSpecControllerConfigRef:
     name: str
 
 
-schema PkgCrossplaneIoV1beta1FunctionRevisionSpecPackagePullSecretsItems0:
-    """
+schema PkgCrossplaneIoV1FunctionRevisionSpecPackagePullSecretsItems0:
+    r"""
     LocalObjectReference contains enough information to let you locate the
     referenced object inside the same namespace.
 
@@ -142,8 +147,8 @@ schema PkgCrossplaneIoV1beta1FunctionRevisionSpecPackagePullSecretsItems0:
     name?: str
 
 
-schema PkgCrossplaneIoV1beta1FunctionRevisionSpecRuntimeConfigRef:
-    """
+schema PkgCrossplaneIoV1FunctionRevisionSpecRuntimeConfigRef:
+    r"""
     RuntimeConfigRef references a RuntimeConfig resource that will be used
     to configure the package runtime.
 
@@ -165,13 +170,13 @@ schema PkgCrossplaneIoV1beta1FunctionRevisionSpecRuntimeConfigRef:
     name: str
 
 
-schema PkgCrossplaneIoV1beta1FunctionRevisionStatus:
-    """
+schema PkgCrossplaneIoV1FunctionRevisionStatus:
+    r"""
     FunctionRevisionStatus represents the observed state of a FunctionRevision.
 
     Attributes
     ----------
-    conditions : [PkgCrossplaneIoV1beta1FunctionRevisionStatusConditionsItems0], default is Undefined, optional
+    conditions : [PkgCrossplaneIoV1FunctionRevisionStatusConditionsItems0], default is Undefined, optional
         Conditions of the resource.
     endpoint : str, default is Undefined, optional
         Endpoint is the gRPC endpoint where Crossplane will send
@@ -182,16 +187,16 @@ schema PkgCrossplaneIoV1beta1FunctionRevisionStatus:
         installed dependencies
     invalidDependencies : int, default is Undefined, optional
         invalid dependencies
-    objectRefs : [PkgCrossplaneIoV1beta1FunctionRevisionStatusObjectRefsItems0], default is Undefined, optional
+    objectRefs : [PkgCrossplaneIoV1FunctionRevisionStatusObjectRefsItems0], default is Undefined, optional
         References to objects owned by PackageRevision.
-    permissionRequests : [PkgCrossplaneIoV1beta1FunctionRevisionStatusPermissionRequestsItems0], default is Undefined, optional
+    permissionRequests : [PkgCrossplaneIoV1FunctionRevisionStatusPermissionRequestsItems0], default is Undefined, optional
         PermissionRequests made by this package. The package declares that its
         controller needs these permissions to run. The RBAC manager is
         responsible for granting them.
     """
 
 
-    conditions?: [PkgCrossplaneIoV1beta1FunctionRevisionStatusConditionsItems0]
+    conditions?: [PkgCrossplaneIoV1FunctionRevisionStatusConditionsItems0]
 
     endpoint?: str
 
@@ -201,13 +206,13 @@ schema PkgCrossplaneIoV1beta1FunctionRevisionStatus:
 
     invalidDependencies?: int
 
-    objectRefs?: [PkgCrossplaneIoV1beta1FunctionRevisionStatusObjectRefsItems0]
+    objectRefs?: [PkgCrossplaneIoV1FunctionRevisionStatusObjectRefsItems0]
 
-    permissionRequests?: [PkgCrossplaneIoV1beta1FunctionRevisionStatusPermissionRequestsItems0]
+    permissionRequests?: [PkgCrossplaneIoV1FunctionRevisionStatusPermissionRequestsItems0]
 
 
-schema PkgCrossplaneIoV1beta1FunctionRevisionStatusConditionsItems0:
-    """
+schema PkgCrossplaneIoV1FunctionRevisionStatusConditionsItems0:
+    r"""
     A Condition that may apply to a resource.
 
     Attributes
@@ -218,6 +223,10 @@ schema PkgCrossplaneIoV1beta1FunctionRevisionStatusConditionsItems0:
     message : str, default is Undefined, optional
         A Message containing details about this condition's last transition from
         one status to another, if any.
+    observedGeneration : int, default is Undefined, optional
+        ObservedGeneration represents the .metadata.generation that the condition was set based upon.
+        For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date
+        with respect to the current state of the instance.
     reason : str, default is Undefined, required
         A Reason for this condition's last transition from one status to another.
     status : str, default is Undefined, required
@@ -232,6 +241,8 @@ schema PkgCrossplaneIoV1beta1FunctionRevisionStatusConditionsItems0:
 
     message?: str
 
+    observedGeneration?: int
+
     reason: str
 
     status: str
@@ -239,8 +250,8 @@ schema PkgCrossplaneIoV1beta1FunctionRevisionStatusConditionsItems0:
     $type: str
 
 
-schema PkgCrossplaneIoV1beta1FunctionRevisionStatusObjectRefsItems0:
-    """
+schema PkgCrossplaneIoV1FunctionRevisionStatusObjectRefsItems0:
+    r"""
     A TypedReference refers to an object by Name, Kind, and APIVersion. It is
     commonly used to reference cluster-scoped objects or objects where the
     namespace is already known.
@@ -267,8 +278,8 @@ schema PkgCrossplaneIoV1beta1FunctionRevisionStatusObjectRefsItems0:
     uid?: str
 
 
-schema PkgCrossplaneIoV1beta1FunctionRevisionStatusPermissionRequestsItems0:
-    """
+schema PkgCrossplaneIoV1FunctionRevisionStatusPermissionRequestsItems0:
+    r"""
     PolicyRule holds information that describes a policy rule, but does not contain information
     about who the rule applies to or which namespace the rule applies to.
 
