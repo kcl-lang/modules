@@ -1,0 +1,25 @@
+version: 1.17.1
+name: crossplane
+displayName: crossplane
+createdAt: "2024-09-23T18:08:10Z"
+description: '`crossplane` is the crossplane spec definition'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `crossplane` with tag `1.17.1` as dependency
+  ```
+  kcl mod add crossplane:1.17.1
+  ```
+
+  #### Pull `crossplane` with tag `1.17.1` to local
+  ```
+  kcl mod pull crossplane:1.17.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
