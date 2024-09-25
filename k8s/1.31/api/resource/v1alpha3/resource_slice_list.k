@@ -18,7 +18,7 @@ schema ResourceSliceList:
         Items is the list of resource ResourceSlices.
     kind : str, default is "ResourceSliceList", required
         Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-    listMeta : v1.ListMeta, default is Undefined, optional
+    metadata : v1.ListMeta, default is Undefined, optional
         Standard list metadata
     """
 
@@ -29,6 +29,6 @@ schema ResourceSliceList:
 
     kind: "ResourceSliceList" = "ResourceSliceList"
 
-    listMeta?: v1.ListMeta
+    metadata?: v1.ListMeta
 
 
