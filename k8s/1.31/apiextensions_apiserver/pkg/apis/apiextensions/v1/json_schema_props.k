@@ -11,9 +11,9 @@ schema JSONSchemaProps:
 
     Attributes
     ----------
-    $ref : str, default is Undefined, optional
+    "$ref" : str, default is Undefined, optional
         dollar ref
-    $schema : str, default is Undefined, optional
+    "$schema" : str, default is Undefined, optional
         dollar schema
     additionalItems : any, default is Undefined, optional
         JSONSchemaPropsOrBool represents JSONSchemaProps or a boolean value. Defaults to true for the boolean property.
@@ -87,9 +87,9 @@ schema JSONSchemaProps:
         type
     uniqueItems : bool, default is Undefined, optional
         unique items
-    x_kubernetes_embedded_resource : bool, default is Undefined, optional
+    "x-kubernetes-embedded-resource" : bool, default is Undefined, optional
         x-kubernetes-embedded-resource defines that the value is an embedded Kubernetes runtime.Object, with TypeMeta and ObjectMeta. The type must be object. It is allowed to further restrict the embedded object. kind, apiVersion and metadata are validated automatically. x-kubernetes-preserve-unknown-fields is allowed to be true, but does not have to be if the object is fully specified (up to kind, apiVersion, metadata).
-    x_kubernetes_int_or_string : bool, default is Undefined, optional
+    "x-kubernetes-int-or-string" : bool, default is Undefined, optional
         x-kubernetes-int-or-string specifies that this value is either an integer or a string. If this is true, an empty type is allowed and type as child of anyOf is permitted if following one of the following patterns:
 
         1) anyOf:
@@ -100,13 +100,13 @@ schema JSONSchemaProps:
              - type: integer
              - type: string
            - ... zero or more
-    x_kubernetes_list_map_keys : [str], default is Undefined, optional
+    "x-kubernetes-list-map-keys" : [str], default is Undefined, optional
         x-kubernetes-list-map-keys annotates an array with the x-kubernetes-list-type `map` by specifying the keys used as the index of the map.
 
         This tag MUST only be used on lists that have the "x-kubernetes-list-type" extension set to "map". Also, the values specified for this attribute must be a scalar typed field of the child structure (no nesting is supported).
 
         The properties specified must either be required or have a default value, to ensure those properties are present for all list items.
-    x_kubernetes_list_type : str, default is Undefined, optional
+    "x-kubernetes-list-type" : str, default is Undefined, optional
         x-kubernetes-list-type annotates an array to further describe its topology. This extension must only be used on lists and may have 3 possible values:
 
         1) `atomic`: the list is treated as a single entity, like a scalar.
@@ -121,7 +121,7 @@ schema JSONSchemaProps:
              used to identify them. Order is preserved upon merge. The map tag
              must only be used on a list with elements of type object.
         Defaults to atomic for arrays.
-    x_kubernetes_map_type : str, default is Undefined, optional
+    "x-kubernetes-map-type" : str, default is Undefined, optional
         x-kubernetes-map-type annotates an object to further describe its topology. This extension must only be used when type is object and may have 2 possible values:
 
         1) `granular`:
@@ -130,16 +130,16 @@ schema JSONSchemaProps:
              the default behaviour for all maps.
         2) `atomic`: the list is treated as a single entity, like a scalar.
              Atomic maps will be entirely replaced when updated.
-    x_kubernetes_preserve_unknown_fields : bool, default is Undefined, optional
+    "x-kubernetes-preserve-unknown-fields" : bool, default is Undefined, optional
         x-kubernetes-preserve-unknown-fields stops the API server decoding step from pruning fields which are not specified in the validation schema. This affects fields recursively, but switches back to normal pruning behaviour if nested properties or additionalProperties are specified in the schema. This can either be true or undefined. False is forbidden.
-    x_kubernetes_validations : [ValidationRule], default is Undefined, optional
+    "x-kubernetes-validations" : [ValidationRule], default is Undefined, optional
         x-kubernetes-validations describes a list of validation rules written in the CEL expression language.
     """
 
 
-    $ref?: str
+    "$ref"?: str
 
-    $schema?: str
+    "$schema"?: str
 
     additionalItems?: any
 
@@ -211,18 +211,18 @@ schema JSONSchemaProps:
 
     uniqueItems?: bool
 
-    x_kubernetes_embedded_resource?: bool
+    "x-kubernetes-embedded-resource"?: bool
 
-    x_kubernetes_int_or_string?: bool
+    "x-kubernetes-int-or-string"?: bool
 
-    x_kubernetes_list_map_keys?: [str]
+    "x-kubernetes-list-map-keys"?: [str]
 
-    x_kubernetes_list_type?: str
+    "x-kubernetes-list-type"?: str
 
-    x_kubernetes_map_type?: str
+    "x-kubernetes-map-type"?: str
 
-    x_kubernetes_preserve_unknown_fields?: bool
+    "x-kubernetes-preserve-unknown-fields"?: bool
 
-    x_kubernetes_validations?: [ValidationRule]
+    "x-kubernetes-validations"?: [ValidationRule]
 
 

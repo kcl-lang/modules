@@ -20288,7 +20288,7 @@
           "default": "ResourceSliceList",
           "readOnly": true
         },
-        "listMeta": {
+        "metadata": {
           "$ref": "#/definitions/k8s.apimachinery.pkg.apis.meta.v1.ListMeta",
           "description": "Standard list metadata"
         }
