@@ -43,31 +43,39 @@ jobs:
 
       - name: Publish to docker.io
         run: |
-          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
-            ./scripts/push_pkg_from.sh $file
-          done
+          if echo "${{ steps.changed-files.outputs.all_changed_files }}" | grep -q 'kcl.mod'; then
+            for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+              ./scripts/push_pkg_from.sh $file
+            done
+          fi
 
       - name: Publish to ghcr.io
         run: |
           kcl registry login -u ${{ secrets.DEPLOY_ACCESS_NAME }} -p ${{ secrets.DEPLOY_ACCESS_TOKEN }} ghcr.io
-          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
-            ./scripts/push_pkg_from.sh $file
-          done
+          if echo "${{ steps.changed-files.outputs.all_changed_files }}" | grep -q 'kcl.mod'; then
+            for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+              ./scripts/push_pkg_from.sh $file
+            done
+          fi
         env:
           KPM_REG: "ghcr.io"
           KPM_REPO: "kcl-lang"
 
       - name: Update artifacthub-pkg.yaml
         run: |
-          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
-            go run main.go $file
-          done
+          if echo "${{ steps.changed-files.outputs.all_changed_files }}" | grep -q 'kcl.mod'; then
+            for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+              go run main.go $file
+            done
+          fi
 
       - name: Commit and push changes
         run: |
-          git config --global user.name 'GitHub Action'
-          git config --global user.email 'action@github.com'
+          if echo "${{ steps.changed-files.outputs.all_changed_files }}" | grep -q 'kcl.mod'; then
+            git config --global user.name 'GitHub Action'
+            git config --global user.email 'action@github.com'
 
-          git add .
-          git commit -m "chore: update artifacthub-pkg.yaml"
-          git push
+            git add .
+            git commit -m "chore: update artifacthub-pkg.yaml"
+            git push
+          fi
