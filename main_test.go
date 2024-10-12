@@ -14,7 +14,7 @@ import (
 func TestUpdateReadmeAndMetadata(t *testing.T) {
 	pwd, err := os.Getwd()
 	assert.Equal(t, nil, err)
-	testDir := filepath.Join(pwd, "helloworld")
+	testDir := filepath.Join(pwd, "helloworld", "0.1.2")
 	modPath := filepath.Join(testDir, "kcl.mod")
 	ahPath := filepath.Join(".integration", "artifacthub", "helloworld", "0.1.2", "artifacthub-pkg.yaml")
 
