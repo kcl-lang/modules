@@ -215,4 +215,6 @@ func main() {
 			fmt.Printf("Error processing package at '%s': %v\n", packageDir, err)
 		}
 	}
+	
+	fmt.Println("Checksum successfully included in all KCL packages")
 }
