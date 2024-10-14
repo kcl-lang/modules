@@ -1,6 +1,6 @@
 [package]
 name = "podinfo"
-version = "0.1.1"
+version = "0.2.0"
 
 [dependencies]
-k8s = "1.29"
+k8s = "1.31.1"

@@ -1,7 +1,8 @@
 [package]
 name = "cert-manager"
-version = "0.1.2"
 description = "`cert-manager` module contains definitions for cert-manager"
+edition = "0.10.0"
+version = "0.2.0"
 
 [dependencies]
-k8s = "1.28"
+k8s = "1.31.1"

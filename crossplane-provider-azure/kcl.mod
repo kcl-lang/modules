@@ -1,7 +1,7 @@
 [package]
 name = "crossplane-provider-azure"
-version = "0.20.0"
+version = "0.20.1"
 description = "`crossplane-provider-azure` is the crossplane-provider-azure spec definition"
 
 [dependencies]
-k8s = "1.28"
+k8s = "1.31.1"

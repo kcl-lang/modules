@@ -1,8 +1,8 @@
 [package]
 name = "knative"
 edition = "*"
-version = "0.1.0"
+version = "0.1.1"
 description = "`knative` is the knative spec definition"
 
 [dependencies]
-k8s = "1.28"
+k8s = "1.31.1"

@@ -1,8 +1,8 @@
 [package]
 name = "cilium"
-edition = "*"
-version = "0.3.0"
 description = "`cilium` is the cilium spec definition"
+edition = "0.10.0"
+version = "0.4.0"
 
 [dependencies]
-k8s = "1.30"
+k8s = "1.31.1"
