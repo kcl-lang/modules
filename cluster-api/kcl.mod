@@ -1,8 +1,7 @@
 [package]
 name = "cluster-api"
-edition = "0.0.1"
-version = "1.7.4"
+edition = "0.10.0"
+version = "1.7.5"
 
 [dependencies]
-k8s = "1.30"
-
+k8s = "1.31.1"
