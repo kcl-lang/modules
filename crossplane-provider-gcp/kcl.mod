@@ -1,7 +1,7 @@
 [package]
 name = "crossplane-provider-gcp"
-version = "0.22.1"
+version = "0.22.2"
 description = "`crossplane-provider-gcp` is the crossplane-provider-gcp spec definition"
 
 [dependencies]
-k8s = "1.31.1"
+k8s = "1.31.2"

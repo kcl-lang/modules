@@ -1,7 +1,7 @@
 [package]
 name = "velero"
-version = "0.2.0"
+version = "0.2.1"
 description = "`velero` module contains definitions for velero.io"
 
 [dependencies]
-k8s = "1.31.1"
+k8s = "1.31.2"

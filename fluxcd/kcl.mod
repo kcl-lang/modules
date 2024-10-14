@@ -1,7 +1,7 @@
 [package]
 name = "fluxcd"
-version = "0.1.1"
+version = "0.1.2"
 description = "`fluxcd` is the fluxcd spec definition"
 
 [dependencies]
-k8s = "1.31.1"
+k8s = "1.31.2"

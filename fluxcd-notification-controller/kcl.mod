@@ -1,8 +1,8 @@
 [package]
 name = "fluxcd-notification-controller"
 edition = "v0.9.0"
-version = "v1.3.1"
+version = "v1.3.2"
 
 [dependencies]
-k8s = "1.31.1"
+k8s = "1.31.2"
 
