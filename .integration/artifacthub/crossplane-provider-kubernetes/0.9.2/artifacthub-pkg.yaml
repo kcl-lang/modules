@@ -1,0 +1,26 @@
+version: 0.9.2
+name: crossplane-provider-kubernetes
+displayName: crossplane-provider-kubernetes
+createdAt: "2024-10-14T10:24:25Z"
+description: '`crossplane-provider-kubernetes` is the crossplane-provider-kubernetes
+  spec definition'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `crossplane-provider-kubernetes` with tag `0.9.2` as dependency
+  ```
+  kcl mod add crossplane-provider-kubernetes:0.9.2
+  ```
+
+  #### Pull `crossplane-provider-kubernetes` with tag `0.9.2` to local
+  ```
+  kcl mod pull crossplane-provider-kubernetes:0.9.2
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

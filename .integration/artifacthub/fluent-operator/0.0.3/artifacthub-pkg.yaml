@@ -1,0 +1,25 @@
+version: 0.0.3
+name: fluent-operator
+displayName: fluent-operator
+createdAt: "2024-10-14T10:24:53Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `fluent-operator` with tag `0.0.3` as dependency
+  ```
+  kcl mod add fluent-operator:0.0.3
+  ```
+
+  #### Pull `fluent-operator` with tag `0.0.3` to local
+  ```
+  kcl mod pull fluent-operator:0.0.3
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

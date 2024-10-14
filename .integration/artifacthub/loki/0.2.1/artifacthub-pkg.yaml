@@ -1,0 +1,25 @@
+version: 0.2.1
+name: loki
+displayName: loki
+createdAt: "2024-10-14T10:26:21Z"
+description: '`loki` is the loki spec definition'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `loki` with tag `0.2.1` as dependency
+  ```
+  kcl mod add loki:0.2.1
+  ```
+
+  #### Pull `loki` with tag `0.2.1` to local
+  ```
+  kcl mod pull loki:0.2.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

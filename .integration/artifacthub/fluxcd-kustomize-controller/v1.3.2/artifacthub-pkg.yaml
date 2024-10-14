@@ -1,0 +1,25 @@
+version: v1.3.2
+name: fluxcd-kustomize-controller
+displayName: fluxcd-kustomize-controller
+createdAt: "2024-10-14T10:25:09Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `fluxcd-kustomize-controller` with tag `v1.3.2` as dependency
+  ```
+  kcl mod add fluxcd-kustomize-controller:v1.3.2
+  ```
+
+  #### Pull `fluxcd-kustomize-controller` with tag `v1.3.2` to local
+  ```
+  kcl mod pull fluxcd-kustomize-controller:v1.3.2
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

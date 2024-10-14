@@ -1,0 +1,25 @@
+version: 0.2.1
+name: secure-code-box
+displayName: secure-code-box
+createdAt: "2024-10-14T10:26:59Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `secure-code-box` with tag `0.2.1` as dependency
+  ```
+  kcl mod add secure-code-box:0.2.1
+  ```
+
+  #### Pull `secure-code-box` with tag `0.2.1` to local
+  ```
+  kcl mod pull secure-code-box:0.2.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

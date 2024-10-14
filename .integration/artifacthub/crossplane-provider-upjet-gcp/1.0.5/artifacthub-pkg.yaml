@@ -1,0 +1,26 @@
+version: 1.0.5
+name: crossplane-provider-upjet-gcp
+displayName: crossplane-provider-upjet-gcp
+createdAt: "2024-10-14T10:24:32Z"
+description: '`crossplane-provider-upjet-gcp` is the crossplane-provider-gcp-upjet
+  spec definition from https://github.com/crossplane-contrib/provider-upjet-gcp/'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `crossplane-provider-upjet-gcp` with tag `1.0.5` as dependency
+  ```
+  kcl mod add crossplane-provider-upjet-gcp:1.0.5
+  ```
+
+  #### Pull `crossplane-provider-upjet-gcp` with tag `1.0.5` to local
+  ```
+  kcl mod pull crossplane-provider-upjet-gcp:1.0.5
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

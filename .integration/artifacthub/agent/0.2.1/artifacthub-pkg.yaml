@@ -1,0 +1,25 @@
+version: 0.2.1
+name: agent
+displayName: agent
+createdAt: "2024-10-14T10:22:35Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `agent` with tag `0.2.1` as dependency
+  ```
+  kcl mod add agent:0.2.1
+  ```
+
+  #### Pull `agent` with tag `0.2.1` to local
+  ```
+  kcl mod pull agent:0.2.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

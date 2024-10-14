@@ -1,0 +1,26 @@
+version: 0.2.1
+name: strimzi-kafka-operator
+displayName: strimzi-kafka-operator
+createdAt: "2024-10-14T10:27:04Z"
+description: '`strimzi-kafka-operator` is the Apache Kafka Operator definition on
+  Kubernetes and OpenShift'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `strimzi-kafka-operator` with tag `0.2.1` as dependency
+  ```
+  kcl mod add strimzi-kafka-operator:0.2.1
+  ```
+
+  #### Pull `strimzi-kafka-operator` with tag `0.2.1` to local
+  ```
+  kcl mod pull strimzi-kafka-operator:0.2.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

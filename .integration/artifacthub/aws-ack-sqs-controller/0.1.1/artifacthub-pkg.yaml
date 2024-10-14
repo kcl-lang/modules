@@ -1,0 +1,25 @@
+version: 0.1.1
+name: aws-ack-sqs-controller
+displayName: aws-ack-sqs-controller
+createdAt: "2024-10-14T10:23:17Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `aws-ack-sqs-controller` with tag `0.1.1` as dependency
+  ```
+  kcl mod add aws-ack-sqs-controller:0.1.1
+  ```
+
+  #### Pull `aws-ack-sqs-controller` with tag `0.1.1` to local
+  ```
+  kcl mod pull aws-ack-sqs-controller:0.1.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

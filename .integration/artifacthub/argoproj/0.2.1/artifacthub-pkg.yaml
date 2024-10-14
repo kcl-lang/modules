@@ -1,0 +1,25 @@
+version: 0.2.1
+name: argoproj
+displayName: argoproj
+createdAt: "2024-10-14T10:22:52Z"
+description: '`argoproj` module contains definitions for argoproj'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `argoproj` with tag `0.2.1` as dependency
+  ```
+  kcl mod add argoproj:0.2.1
+  ```
+
+  #### Pull `argoproj` with tag `0.2.1` to local
+  ```
+  kcl mod pull argoproj:0.2.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

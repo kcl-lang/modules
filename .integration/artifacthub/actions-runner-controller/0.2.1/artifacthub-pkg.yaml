@@ -1,0 +1,25 @@
+version: 0.2.1
+name: actions-runner-controller
+displayName: actions-runner-controller
+createdAt: "2024-10-14T10:22:32Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `actions-runner-controller` with tag `0.2.1` as dependency
+  ```
+  kcl mod add actions-runner-controller:0.2.1
+  ```
+
+  #### Pull `actions-runner-controller` with tag `0.2.1` to local
+  ```
+  kcl mod pull actions-runner-controller:0.2.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

@@ -1,0 +1,25 @@
+version: 0.2.2
+name: karpenter
+displayName: karpenter
+createdAt: "2024-10-14T10:25:44Z"
+description: '`karpenter` is the kubernetes-sigs/karpenter spec definition.'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `karpenter` with tag `0.2.2` as dependency
+  ```
+  kcl mod add karpenter:0.2.2
+  ```
+
+  #### Pull `karpenter` with tag `0.2.2` to local
+  ```
+  kcl mod pull karpenter:0.2.2
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

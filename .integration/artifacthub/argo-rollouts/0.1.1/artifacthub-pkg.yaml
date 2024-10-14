@@ -1,0 +1,25 @@
+version: 0.1.1
+name: argo-rollouts
+displayName: argo-rollouts
+createdAt: "2024-10-14T10:22:46Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `argo-rollouts` with tag `0.1.1` as dependency
+  ```
+  kcl mod add argo-rollouts:0.1.1
+  ```
+
+  #### Pull `argo-rollouts` with tag `0.1.1` to local
+  ```
+  kcl mod pull argo-rollouts:0.1.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

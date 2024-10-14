@@ -1,0 +1,25 @@
+version: 1.7.6
+name: cluster-api
+displayName: cluster-api
+createdAt: "2024-10-14T10:24:02Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `cluster-api` with tag `1.7.6` as dependency
+  ```
+  kcl mod add cluster-api:1.7.6
+  ```
+
+  #### Pull `cluster-api` with tag `1.7.6` to local
+  ```
+  kcl mod pull cluster-api:1.7.6
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

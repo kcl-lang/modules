@@ -1,0 +1,25 @@
+version: 0.1.1
+name: minio-operator
+displayName: minio-operator
+createdAt: "2024-10-14T10:26:26Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `minio-operator` with tag `0.1.1` as dependency
+  ```
+  kcl mod add minio-operator:0.1.1
+  ```
+
+  #### Pull `minio-operator` with tag `0.1.1` to local
+  ```
+  kcl mod pull minio-operator:0.1.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

@@ -1,0 +1,25 @@
+version: 0.4.1
+name: cilium
+displayName: cilium
+createdAt: "2024-10-14T10:23:37Z"
+description: '`cilium` is the cilium spec definition'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `cilium` with tag `0.4.1` as dependency
+  ```
+  kcl mod add cilium:0.4.1
+  ```
+
+  #### Pull `cilium` with tag `0.4.1` to local
+  ```
+  kcl mod pull cilium:0.4.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

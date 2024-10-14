@@ -1,0 +1,25 @@
+version: 0.2.1
+name: openshift
+displayName: openshift
+createdAt: "2024-10-14T10:26:37Z"
+description: '`openshift` module contains definitions for openshift'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `openshift` with tag `0.2.1` as dependency
+  ```
+  kcl mod add openshift:0.2.1
+  ```
+
+  #### Pull `openshift` with tag `0.2.1` to local
+  ```
+  kcl mod pull openshift:0.2.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

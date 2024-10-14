@@ -1,0 +1,25 @@
+version: 0.1.2
+name: fluxcd
+displayName: fluxcd
+createdAt: "2024-10-14T10:25:17Z"
+description: '`fluxcd` is the fluxcd spec definition'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `fluxcd` with tag `0.1.2` as dependency
+  ```
+  kcl mod add fluxcd:0.1.2
+  ```
+
+  #### Pull `fluxcd` with tag `0.1.2` to local
+  ```
+  kcl mod pull fluxcd:0.1.2
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

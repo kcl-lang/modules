@@ -1,0 +1,25 @@
+version: 0.2.1
+name: kubeblocks
+displayName: kubeblocks
+createdAt: "2024-10-14T10:26:04Z"
+description: '`kubeblocks` is the kubeblocks spec definition'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `kubeblocks` with tag `0.2.1` as dependency
+  ```
+  kcl mod add kubeblocks:0.2.1
+  ```
+
+  #### Pull `kubeblocks` with tag `0.2.1` to local
+  ```
+  kcl mod pull kubeblocks:0.2.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

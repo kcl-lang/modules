@@ -1,0 +1,25 @@
+version: 0.1.3
+name: keda
+displayName: keda
+createdAt: "2024-10-14T10:25:51Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `keda` with tag `0.1.3` as dependency
+  ```
+  kcl mod add keda:0.1.3
+  ```
+
+  #### Pull `keda` with tag `0.1.3` to local
+  ```
+  kcl mod pull keda:0.1.3
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

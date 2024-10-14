@@ -1,0 +1,25 @@
+version: 0.3.1
+name: gateway-api
+displayName: gateway-api
+createdAt: "2024-10-14T10:25:22Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `gateway-api` with tag `0.3.1` as dependency
+  ```
+  kcl mod add gateway-api:0.3.1
+  ```
+
+  #### Pull `gateway-api` with tag `0.3.1` to local
+  ```
+  kcl mod pull gateway-api:0.3.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

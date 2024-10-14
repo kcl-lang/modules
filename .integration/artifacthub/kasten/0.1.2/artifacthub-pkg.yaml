@@ -1,0 +1,25 @@
+version: 0.1.2
+name: kasten
+displayName: kasten
+createdAt: "2024-10-14T10:25:47Z"
+description: '`kasten` module contains definitions for kasten'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `kasten` with tag `0.1.2` as dependency
+  ```
+  kcl mod add kasten:0.1.2
+  ```
+
+  #### Pull `kasten` with tag `0.1.2` to local
+  ```
+  kcl mod pull kasten:0.1.2
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

@@ -1,0 +1,25 @@
+version: 0.2.1
+name: layotto
+displayName: layotto
+createdAt: "2024-10-14T10:26:14Z"
+description: '`layotto` is the layotto spec definition'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `layotto` with tag `0.2.1` as dependency
+  ```
+  kcl mod add layotto:0.2.1
+  ```
+
+  #### Pull `layotto` with tag `0.2.1` to local
+  ```
+  kcl mod pull layotto:0.2.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
