@@ -1,7 +1,7 @@
 [package]
 name = "argoproj"
-version = "0.2.0"
+version = "0.2.1"
 description = "`argoproj` module contains definitions for argoproj"
 
 [dependencies]
-k8s = "1.31.1"
+k8s = "1.31.2"

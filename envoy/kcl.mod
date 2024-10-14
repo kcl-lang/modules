@@ -1,8 +1,8 @@
 [package]
 name = "envoy"
 edition = "*"
-version = "0.1.1"
+version = "0.1.2"
 description = "`envoy` is the envoy spec definition"
 
 [dependencies]
-k8s = "1.31.1"
+k8s = "1.31.2"

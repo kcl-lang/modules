@@ -1,7 +1,7 @@
 [package]
 name = "consul-k8s"
 edition = "0.10.0"
-version = "0.1.0"
+version = "0.1.1"
 
 [dependencies]
-k8s = "1.31.1"
+k8s = "1.31.2"

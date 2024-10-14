@@ -1,8 +1,8 @@
 [package]
 name = "fluxcd-kcl-controller"
 edition = "v0.9.0"
-version = "0.2.1"
+version = "0.2.2"
 
 [dependencies]
-k8s = "1.31.1"
+k8s = "1.31.2"
 

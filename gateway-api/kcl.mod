@@ -1,7 +1,7 @@
 [package]
 name = "gateway-api"
 edition = "0.0.1"
-version = "0.3.0"
+version = "0.3.1"
 
 [dependencies]
-k8s = "1.31.1"
+k8s = "1.31.2"
