@@ -1,0 +1,31 @@
+name: Include KCL Modules Checksum
+
+on:
+  push:
+
+jobs:
+  include_modules_checksum:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install kcl
+        run: wget -q https://kcl-lang.io/script/install-cli.sh -O - | /bin/bash
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+
+      - name: Login to GHCR
+        run: kcl registry login -u ${{ secrets.DEPLOY_ACCESS_NAME }} -p ${{ secrets.DEPLOY_ACCESS_TOKEN }} ghcr.io
+
+      - name: Get dependencies
+        run: go get -v ./...
+
+      - name: Run include checksum tool
+        run: go run ./Integrate-Checksum/main.go
