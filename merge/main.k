@@ -16,8 +16,8 @@ schema MergeAppend[a, b]:
     ).value => {"a": 6, "b": {"c": 7, "d": 3, "f": 8}, "e": [4, 5, 6, 7]}
     """
     value?: {str:} = {
-        k: [*v, *b[k]] if typeof(v) == "list" and typeof(b[k]) == "list" else v | b[k] \
-            if typeof(v) == typeof(b[k]) and typeof(v) not in ["str", "bool", "int", "float"] else b[k] or v \
+        k: [*v, *b[k]] if typeof(v) == "list" and typeof(b[k]) == "list" else v if typeof(b[k]) == "UndefinedType" else MergeAppend(v, b[k]).value \
+            if typeof(v) == typeof(b[k]) and typeof(v) not in ["str", "bool", "int", "float"] else b[k] if b[k] is not None else v \
         for k, v in a
     } | {k: v for k, v in b if not a[k]}
 
