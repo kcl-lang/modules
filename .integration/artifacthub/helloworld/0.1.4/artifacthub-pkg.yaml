@@ -1,0 +1,25 @@
+version: 0.1.4
+name: helloworld
+displayName: helloworld
+createdAt: "2024-10-23T08:56:32Z"
+description: This is a hello world package that contains a sub package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `helloworld` with tag `0.1.4` as dependency
+  ```
+  kcl mod add helloworld:0.1.4
+  ```
+
+  #### Pull `helloworld` with tag `0.1.4` to local
+  ```
+  kcl mod pull helloworld:0.1.4
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

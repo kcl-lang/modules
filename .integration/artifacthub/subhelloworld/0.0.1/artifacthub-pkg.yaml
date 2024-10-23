@@ -1,0 +1,25 @@
+version: 0.0.1
+name: subhelloworld
+displayName: subhelloworld
+createdAt: "2024-10-23T08:56:35Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `subhelloworld` with tag `0.0.1` as dependency
+  ```
+  kcl mod add subhelloworld:0.0.1
+  ```
+
+  #### Pull `subhelloworld` with tag `0.0.1` to local
+  ```
+  kcl mod pull subhelloworld:0.0.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
