@@ -1,0 +1,29 @@
+version: 0.11.0
+name: konfig
+displayName: konfig
+createdAt: "2024-10-24T08:43:02Z"
+description: Konfig provides users with an out-of-the-box, highly abstract configuration
+  interface. The original starting point of the model library is to improve the efficiency
+  and experience of YAML users. We hope to simplify the writing of user-side configuration
+  code by abstracting and encapsulating the model with more complex code into a unified
+  model.
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `konfig` with tag `0.11.0` as dependency
+  ```
+  kcl mod add konfig:0.11.0
+  ```
+
+  #### Pull `konfig` with tag `0.11.0` to local
+  ```
+  kcl mod pull konfig:0.11.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
