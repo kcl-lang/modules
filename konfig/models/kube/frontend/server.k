@@ -9,6 +9,7 @@ import models.kube.frontend.volume
 import models.kube.frontend.sidecar as s
 import models.kube.frontend.strategy
 import models.kube.frontend.storage
+import models.kube.frontend.deployment
 
 schema Server:
     """Server is abstaction of Deployment and StatefulSet.
@@ -143,3 +144,6 @@ schema Server:
 
     # extra resources
     extraResources?: {str: {str:}}
+
+    # Strategy for deployment
+    deploymentStrategy?: deployment.DeploymentStrategy
