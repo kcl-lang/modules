@@ -81,6 +81,8 @@ schema ServerBackend[inputConfig: server.Server]:
                         serviceAccountName = config.serviceAccount.name
                 }
             }
+            if config.deploymentStrategy:
+                strategy = config.deploymentStrategy
         }
     }
 
