@@ -191,7 +191,7 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpec:
 
 
 
-    rules : [GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0], default is [{"matches": {"value": [{"path": {"value": {"type": {"value": "PathPrefix", "x-order": 0}, "value": {"value": "/", "x-order": 1}}, "x-order": 0}}], "x-order": 0}}], optional
+    rules : [GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0], default is [{matches: [{path: {$type: "PathPrefix", value: "/"}}]}], optional
         Rules are a list of HTTP matchers, filters and actions.
     """
 
@@ -200,7 +200,7 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpec:
 
     parentRefs?: [GatewayNetworkingK8sIoV1HTTPRouteSpecParentRefsItems0]
 
-    rules?: [GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0] = [{"matches": {"value": [{"path": {"x-order": 0, "value": {"type": {"value": "PathPrefix", "x-order": 0}, "value": {"value": "/", "x-order": 1}}}}], "x-order": 0}}]
+    rules?: [GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0] = [{matches: [{path: {$type: "PathPrefix", value: "/"}}]}]
 
 
     check:
