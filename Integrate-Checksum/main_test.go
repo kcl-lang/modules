@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/json"
-	"os"
 	"runtime"
 	"testing"
 
@@ -11,6 +10,7 @@ import (
 	"gotest.tools/assert"
 	"kcl-lang.io/kpm/pkg/client"
 	"kcl-lang.io/kpm/pkg/constants"
+	"kcl-lang.io/kpm/pkg/utils"
 )
 
 // TestMainFunc tests the main functionality of the integrate checksum tool
@@ -24,20 +24,16 @@ func TestMainFunc(t *testing.T) {
 	err := mock.StartDockerRegistry()
 	assert.NilError(t, err)
 
-	// Push the test package to the local OCI registry
-	err = mock.PushTestPkgToRegistry()
+	// Push the test package to the local OCI registry.
+	pkgDir, err := mock.PushTestPkgToRegistry()
 	assert.NilError(t, err)
 
 	// Initialize the KPM client.
 	kpmClient, err := client.NewKpmClient()
 	assert.NilError(t, err, "Failed to initialize KPM client")
 
-	// Get the current working directory.
-	currentDir, err := os.Getwd()
-	assert.NilError(t, err, "Failed to get current working directory")
-
 	// Locate KCL module files in the current directory.
-	packageDirs, err := findKCLModFiles(currentDir)
+	packageDirs, err := findKCLModFiles(pkgDir)
 	assert.NilError(t, err, "Failed to locate KCL module files")
 	assert.Assert(t, len(packageDirs) > 0, "No KCL module files found")
 
@@ -82,9 +78,7 @@ func TestMainFunc(t *testing.T) {
 	assert.NilError(t, err, "Failed to marshal new manifest to JSON")
 
 	// Check if the manifest was updated correctly.
-	if string(newManifestJSON) == string(originalManifestJSON) {
-		t.Errorf("Failed to update the manifest; got %v", string(originalManifestJSON))
-	}
+	assert.Assert(t, string(newManifestJSON) != string(originalManifestJSON), "Failed to update the manifest")
 
 	// Revert the `Sum` field to its original value to ensure only that was changed.
 	newManifest.Annotations[constants.DEFAULT_KCL_OCI_MANIFEST_SUM] = dependency.Sum
@@ -93,6 +87,24 @@ func TestMainFunc(t *testing.T) {
 
 	// Compare the new manifest data with the expected manifest data.
 	assert.Equal(t, string(newManifestJSON), string(originalManifestJSON), "New manifest data mismatch")
+
+	// Pull the test package.
+	pkgPullPath, err := mock.PullTestPkg()
+	assert.NilError(t, err)
+
+	// Find KCL module files in the pulled package.
+	packagePullDir, err := findKCLModFiles(pkgPullPath)
+	assert.NilError(t, err, "Failed to locate KCL module files")
+
+	// Ensure that at least one KCL module file was found.
+	assert.Assert(t, len(packagePullDir) > 0, "No KCL module files found")
+
+	// Calculate the hash of the pulled KCL module directory to verify its integrity.
+	pulledSum, err := utils.HashDir(packagePullDir[0])
+	assert.NilError(t, err)
+
+	// Compare the hash of the pulled files with the expected dependency sum to check for unintended changes.
+	assert.Equal(t, pulledSum, dependency.Sum, "Unexpected changes detected in the package contents")
 
 	// Clean the environment after all tests have been run
 	err = mock.CleanTestEnv()

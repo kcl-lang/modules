@@ -18,3 +18,6 @@ rm -rf "$current_dir/scripts/"
 # Delete the 'kcl' binary
 cd "$SCRIPT_DIR/../../"
 rm -rf ./bin/
+
+cd "$SCRIPT_DIR"
+rm -rf ./oci/
