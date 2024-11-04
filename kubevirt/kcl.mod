@@ -1,6 +1,6 @@
 [package]
 name = "kubevirt"
-version = "0.2.1"
+version = "0.3.0"
 description = "`kubevirt` module contains definitions for kubevirt"
 
 [dependencies]
