@@ -4,5 +4,5 @@
 
 ## Resource
 
-+ Code sources are [here](https://github.com/kcl-lang/artifacthub/tree/main/kubevirt)
-+ Reference documents are [here][https://github.com/kcl-lang/artifacthub/tree/main/kubevirt/docs]
++ Code sources are [here](https://github.com/kcl-lang/modules/tree/main/kubevirt)
++ Reference documents are [here][https://github.com/kcl-lang/modules/tree/main/kubevirt/docs]
