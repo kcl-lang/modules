@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema CertificateRequest:
-    """
+    r"""
     A CertificateRequest is used to request a signed certificate from one of the
     configured issuers.
 
@@ -46,7 +46,7 @@ schema CertificateRequest:
 
 
 schema CertManagerIoV1CertificateRequestSpec:
-    """
+    r"""
     Specification of the desired state of the CertificateRequest resource.
     https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
 
@@ -126,7 +126,7 @@ schema CertManagerIoV1CertificateRequestSpec:
 
 
 schema CertManagerIoV1CertificateRequestSpecIssuerRef:
-    """
+    r"""
     Reference to the issuer responsible for issuing the certificate.
     If the issuer is namespace-scoped, it must be in the same namespace
     as the Certificate. If the issuer is cluster-scoped, it can be used
@@ -154,7 +154,7 @@ schema CertManagerIoV1CertificateRequestSpecIssuerRef:
 
 
 schema CertManagerIoV1CertificateRequestStatus:
-    """
+    r"""
     Status of the CertificateRequest.
     This is set and managed automatically.
     Read-only.
@@ -192,7 +192,7 @@ schema CertManagerIoV1CertificateRequestStatus:
 
 
 schema CertManagerIoV1CertificateRequestStatusConditionsItems0:
-    """
+    r"""
     CertificateRequestCondition contains condition information for a CertificateRequest.
 
     Attributes

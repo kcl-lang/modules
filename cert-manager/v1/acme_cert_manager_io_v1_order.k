@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema Order:
-    """
+    r"""
     Order is a type to represent an Order with an ACME server
 
     Attributes
@@ -36,7 +36,7 @@ schema Order:
 
 
 schema AcmeCertManagerIoV1OrderSpec:
-    """
+    r"""
     acme cert manager io v1 order spec
 
     Attributes
@@ -79,7 +79,7 @@ schema AcmeCertManagerIoV1OrderSpec:
 
 
 schema AcmeCertManagerIoV1OrderSpecIssuerRef:
-    """
+    r"""
     IssuerRef references a properly configured ACME-type Issuer which should
     be used to create this Order.
     If the Issuer does not exist, processing will be retried.
@@ -105,7 +105,7 @@ schema AcmeCertManagerIoV1OrderSpecIssuerRef:
 
 
 schema AcmeCertManagerIoV1OrderStatus:
-    """
+    r"""
     acme cert manager io v1 order status
 
     Attributes
@@ -155,7 +155,7 @@ schema AcmeCertManagerIoV1OrderStatus:
 
 
 schema AcmeCertManagerIoV1OrderStatusAuthorizationsItems0:
-    """
+    r"""
     ACMEAuthorization contains data returned from the ACME server on an
     authorization that must be completed in order validate a DNS name on an ACME
     Order resource.
@@ -201,7 +201,7 @@ schema AcmeCertManagerIoV1OrderStatusAuthorizationsItems0:
 
 
 schema AcmeCertManagerIoV1OrderStatusAuthorizationsItems0ChallengesItems0:
-    """
+    r"""
     Challenge specifies a challenge offered by the ACME server for an Order.
     An appropriate Challenge resource can be created to perform the ACME
     challenge process.

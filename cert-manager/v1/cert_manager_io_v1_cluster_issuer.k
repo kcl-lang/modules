@@ -4,9 +4,11 @@ Editing this file might prove futile when you re-run the KCL auto-gen generate c
 """
 import regex
 import k8s.apimachinery.pkg.apis.meta.v1
+_regex_match = regex.match
+
 
 schema ClusterIssuer:
-    """
+    r"""
     A ClusterIssuer represents a certificate issuing authority which can be
     referenced as part of `issuerRef` fields.
     It is similar to an Issuer, however it is cluster-scoped and therefore can
@@ -40,7 +42,7 @@ schema ClusterIssuer:
 
 
 schema CertManagerIoV1ClusterIssuerSpec:
-    """
+    r"""
     Desired state of the ClusterIssuer resource.
 
     Attributes
@@ -70,7 +72,7 @@ schema CertManagerIoV1ClusterIssuerSpec:
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcme:
-    """
+    r"""
     ACME configures this issuer to communicate with a RFC8555 (ACME) server
     to obtain signed x509 certificates.
 
@@ -161,11 +163,11 @@ schema CertManagerIoV1ClusterIssuerSpecAcme:
 
 
     check:
-        len(preferredChain) <= 64
+        len(preferredChain) <= 64 if preferredChain
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeExternalAccountBinding:
-    """
+    r"""
     ExternalAccountBinding is a reference to a CA external account of the ACME
     server.
     If set, upon registration cert-manager will attempt to associate the given
@@ -192,7 +194,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeExternalAccountBinding:
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeExternalAccountBindingKeySecretRef:
-    """
+    r"""
     keySecretRef is a Secret Key Selector referencing a data item in a Kubernetes
     Secret which holds the symmetric MAC key of the External Account Binding.
     The `key` is the index string that is paired with the key data in the
@@ -219,7 +221,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeExternalAccountBindingKeySecretRef:
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmePrivateKeySecretRef:
-    """
+    r"""
     PrivateKey is the name of a Kubernetes Secret resource that will be used to
     store the automatically generated ACME account private key.
     Optionally, a `key` may be specified to select a specific entry within
@@ -244,7 +246,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmePrivateKeySecretRef:
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0:
-    """
+    r"""
     An ACMEChallengeSolver describes how to solve ACME challenges for the issuer it is part of.
     A selector may be provided to use different solving strategies for different DNS names.
     Only one of HTTP01 or DNS01 must be provided.
@@ -268,7 +270,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0:
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Dns01:
-    """
+    r"""
     Configures cert-manager to attempt to complete authorizations by
     performing the DNS01 challenge flow.
 
@@ -320,7 +322,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Dns01:
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Dns01AcmeDNS:
-    """
+    r"""
     Use the 'ACME DNS' (https://github.com/joohoi/acme-dns) API to manage
     DNS01 challenge records.
 
@@ -339,7 +341,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Dns01AcmeDNS:
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Dns01AcmeDNSAccountSecretRef:
-    """
+    r"""
     A reference to a specific 'key' within a Secret resource.
     In some instances, `key` is a required field.
 
@@ -361,7 +363,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Dns01AcmeDNSAccountSecre
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Dns01Akamai:
-    """
+    r"""
     Use the Akamai DNS zone management API to manage DNS01 challenge records.
 
     Attributes
@@ -387,7 +389,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Dns01Akamai:
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Dns01AkamaiAccessTokenSecretRef:
-    """
+    r"""
     A reference to a specific 'key' within a Secret resource.
     In some instances, `key` is a required field.
 
@@ -409,7 +411,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Dns01AkamaiAccessTokenSe
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Dns01AkamaiClientSecretSecretRef:
-    """
+    r"""
     A reference to a specific 'key' within a Secret resource.
     In some instances, `key` is a required field.
 
@@ -431,7 +433,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Dns01AkamaiClientSecretS
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Dns01AkamaiClientTokenSecretRef:
-    """
+    r"""
     A reference to a specific 'key' within a Secret resource.
     In some instances, `key` is a required field.
 
@@ -453,7 +455,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Dns01AkamaiClientTokenSe
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Dns01AzureDNS:
-    """
+    r"""
     Use the Microsoft Azure DNS API to manage DNS01 challenge records.
 
     Attributes
@@ -499,7 +501,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Dns01AzureDNS:
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Dns01AzureDNSClientSecretSecretRef:
-    """
+    r"""
     Auth: Azure Service Principal:
     A reference to a Secret containing the password associated with the Service Principal.
     If set, ClientID and TenantID must also be set.
@@ -522,7 +524,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Dns01AzureDNSClientSecre
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Dns01AzureDNSManagedIdentity:
-    """
+    r"""
     Auth: Azure Workload Identity or Azure Managed Service Identity:
     Settings to enable Azure Workload Identity or Azure Managed Service Identity
     If set, ClientID, ClientSecret and TenantID must not be set.
@@ -543,7 +545,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Dns01AzureDNSManagedIden
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Dns01CloudDNS:
-    """
+    r"""
     Use the Google Cloud DNS API to manage DNS01 challenge records.
 
     Attributes
@@ -567,7 +569,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Dns01CloudDNS:
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Dns01CloudDNSServiceAccountSecretRef:
-    """
+    r"""
     A reference to a specific 'key' within a Secret resource.
     In some instances, `key` is a required field.
 
@@ -589,7 +591,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Dns01CloudDNSServiceAcco
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Dns01Cloudflare:
-    """
+    r"""
     Use the Cloudflare API to manage DNS01 challenge records.
 
     Attributes
@@ -611,7 +613,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Dns01Cloudflare:
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Dns01CloudflareAPIKeySecretRef:
-    """
+    r"""
     API key to use to authenticate with Cloudflare.
     Note: using an API token to authenticate is now the recommended method
     as it allows greater control of permissions.
@@ -634,7 +636,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Dns01CloudflareAPIKeySec
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Dns01CloudflareAPITokenSecretRef:
-    """
+    r"""
     API token used to authenticate with Cloudflare.
 
     Attributes
@@ -655,7 +657,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Dns01CloudflareAPITokenS
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Dns01Digitalocean:
-    """
+    r"""
     Use the DigitalOcean DNS API to manage DNS01 challenge records.
 
     Attributes
@@ -669,7 +671,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Dns01Digitalocean:
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Dns01DigitaloceanTokenSecretRef:
-    """
+    r"""
     A reference to a specific 'key' within a Secret resource.
     In some instances, `key` is a required field.
 
@@ -691,7 +693,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Dns01DigitaloceanTokenSe
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Dns01Rfc2136:
-    """
+    r"""
     Use RFC2136 ("Dynamic Updates in the Domain Name System") (https://datatracker.ietf.org/doc/rfc2136/)
     to manage DNS01 challenge records.
 
@@ -725,7 +727,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Dns01Rfc2136:
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Dns01Rfc2136TsigSecretSecretRef:
-    """
+    r"""
     The name of the secret containing the TSIG value.
     If ``tsigKeyName`` is defined, this field is required.
 
@@ -747,7 +749,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Dns01Rfc2136TsigSecretSe
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Dns01Route53:
-    """
+    r"""
     Use the AWS Route53 API to manage DNS01 challenge records.
 
     Attributes
@@ -790,7 +792,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Dns01Route53:
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Dns01Route53AccessKeyIDSecretRef:
-    """
+    r"""
     The SecretAccessKey is used for authentication. If set, pull the AWS
     access key ID from a key within a Kubernetes Secret.
     Cannot be set when AccessKeyID is set.
@@ -816,7 +818,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Dns01Route53AccessKeyIDS
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Dns01Route53Auth:
-    """
+    r"""
     Auth configures how cert-manager authenticates.
 
     Attributes
@@ -830,7 +832,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Dns01Route53Auth:
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Dns01Route53AuthKubernetes:
-    """
+    r"""
     Kubernetes authenticates with Route53 using AssumeRoleWithWebIdentity
     by passing a bound ServiceAccount token.
 
@@ -845,7 +847,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Dns01Route53AuthKubernet
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Dns01Route53AuthKubernetesServiceAccountRef:
-    """
+    r"""
     A reference to a service account that will be used to request a bound
     token (also known as "projected token"). To use this field, you must
     configure an RBAC rule to let cert-manager request a token.
@@ -868,7 +870,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Dns01Route53AuthKubernet
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Dns01Route53SecretAccessKeySecretRef:
-    """
+    r"""
     The SecretAccessKey is used for authentication.
     If neither the Access Key nor Key ID are set, we fall-back to using env
     vars, shared credentials file or AWS Instance metadata,
@@ -892,7 +894,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Dns01Route53SecretAccess
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Dns01Webhook:
-    """
+    r"""
     Configure an external webhook based DNS01 challenge solver to manage
     DNS01 challenge records.
 
@@ -927,7 +929,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Dns01Webhook:
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01:
-    """
+    r"""
     Configures cert-manager to attempt to complete authorizations by
     performing the HTTP01 challenge flow.
     It is not possible to obtain certificates for wildcard domain names
@@ -948,7 +950,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01:
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01GatewayHTTPRoute:
-    """
+    r"""
     The Gateway API is a sig-network community API that models service networking
     in Kubernetes (https://gateway-api.sigs.k8s.io/). The Gateway solver will
     create HTTPRoutes with the specified labels in the same namespace as the challenge.
@@ -978,7 +980,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01GatewayHTTPRoute:
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01GatewayHTTPRouteParentRefsItems0:
-    """
+    r"""
     ParentReference identifies an API object (usually a Gateway) that can be considered
     a parent of this resource (usually a route). There are two kinds of parent resources
     with "Core" support:
@@ -1131,25 +1133,25 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01GatewayHTTPRoutePa
 
 
     check:
-        len(group) <= 253
-        regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if group
-        len(kind) <= 63
-        len(kind) >= 1
-        regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$") if kind
+        len(group) <= 253 if group
+        _regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if group
+        len(kind) <= 63 if kind
+        len(kind) >= 1 if kind
+        _regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$") if kind
         len(name) <= 253
         len(name) >= 1
-        len(namespace) <= 63
-        len(namespace) >= 1
-        regex_match(str(namespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$") if namespace
-        port <= 65535
-        port >= 1
-        len(sectionName) <= 253
-        len(sectionName) >= 1
-        regex_match(str(sectionName), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if sectionName
+        len(namespace) <= 63 if namespace
+        len(namespace) >= 1 if namespace
+        _regex_match(str(namespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$") if namespace
+        port <= 65535 if port not in [None, Undefined]
+        port >= 1 if port not in [None, Undefined]
+        len(sectionName) <= 253 if sectionName
+        len(sectionName) >= 1 if sectionName
+        _regex_match(str(sectionName), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if sectionName
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01Ingress:
-    """
+    r"""
     The ingress based HTTP01 challenge solver will solve challenges by
     creating or modifying Ingress resources in order to route requests for
     '/.well-known/acme-challenge/XYZ' to 'challenge solver' pods that are
@@ -1198,7 +1200,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01Ingress:
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressIngressTemplate:
-    """
+    r"""
     Optional ingress template used to configure the ACME challenge solver
     ingress used for HTTP01 challenges.
 
@@ -1213,7 +1215,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressIngressTemp
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressIngressTemplateMetadata:
-    """
+    r"""
     ObjectMeta overrides for the ingress used to solve HTTP01 challenges.
     Only the 'labels' and 'annotations' fields may be set.
     If labels or annotations overlap with in-built values, the values here
@@ -1234,7 +1236,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressIngressTemp
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplate:
-    """
+    r"""
     Optional pod template used to configure the ACME challenge solver pods
     used for HTTP01 challenges.
 
@@ -1253,7 +1255,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplate
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplateMetadata:
-    """
+    r"""
     ObjectMeta overrides for the pod used to solve HTTP01 challenges.
     Only the 'labels' and 'annotations' fields may be set.
     If labels or annotations overlap with in-built values, the values here
@@ -1274,7 +1276,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplate
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplateSpec:
-    """
+    r"""
     PodSpec defines overrides for the HTTP01 challenge solver pod.
     Check ACMEChallengeSolverHTTP01IngressPodSpec to find out currently supported fields.
     All other fields will be ignored.
@@ -1312,7 +1314,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplate
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplateSpecAffinity:
-    """
+    r"""
     If specified, the pod's scheduling constraints
 
     Attributes
@@ -1334,7 +1336,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplate
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplateSpecAffinityNodeAffinity:
-    """
+    r"""
     Describes node affinity scheduling rules for the pod.
 
     Attributes
@@ -1360,7 +1362,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplate
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     An empty preferred scheduling term matches all objects with implicit weight 0
     (i.e. it's a no-op). A null preferred scheduling term matches no objects (i.e. is also a no-op).
 
@@ -1379,7 +1381,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplate
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0Preference:
-    """
+    r"""
     A node selector term, associated with the corresponding weight.
 
     Attributes
@@ -1397,7 +1399,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplate
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchExpressionsItems0:
-    """
+    r"""
     A node selector requirement is a selector that contains values, a key, and an operator
     that relates the key and values.
 
@@ -1425,7 +1427,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplate
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchFieldsItems0:
-    """
+    r"""
     A node selector requirement is a selector that contains values, a key, and an operator
     that relates the key and values.
 
@@ -1453,7 +1455,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplate
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution:
-    """
+    r"""
     If the affinity requirements specified by this field are not met at
     scheduling time, the pod will not be scheduled onto the node.
     If the affinity requirements specified by this field cease to be met
@@ -1471,7 +1473,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplate
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0:
-    """
+    r"""
     A null or empty node selector term matches no objects. The requirements of
     them are ANDed.
     The TopologySelectorTerm type implements a subset of the NodeSelectorTerm.
@@ -1491,7 +1493,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplate
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchExpressionsItems0:
-    """
+    r"""
     A node selector requirement is a selector that contains values, a key, and an operator
     that relates the key and values.
 
@@ -1519,7 +1521,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplate
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchFieldsItems0:
-    """
+    r"""
     A node selector requirement is a selector that contains values, a key, and an operator
     that relates the key and values.
 
@@ -1547,7 +1549,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplate
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplateSpecAffinityPodAffinity:
-    """
+    r"""
     Describes pod affinity scheduling rules (e.g. co-locate this pod in the same node, zone, etc. as some other pod(s)).
 
     Attributes
@@ -1579,7 +1581,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplate
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     The weights of all of the matched WeightedPodAffinityTerm fields are added per-node to find the most preferred node(s)
 
     Attributes
@@ -1598,7 +1600,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplate
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTerm:
-    """
+    r"""
     Required. A pod affinity term, associated with the corresponding weight.
 
     Attributes
@@ -1655,7 +1657,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplate
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector:
-    """
+    r"""
     A label query over a set of resources, in this case pods.
     If it's null, this PodAffinityTerm matches with no Pods.
 
@@ -1676,7 +1678,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplate
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
 
@@ -1703,7 +1705,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplate
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector:
-    """
+    r"""
     A label query over the set of namespaces that the term applies to.
     The term is applied to the union of the namespaces selected by this field
     and the ones listed in the namespaces field.
@@ -1727,7 +1729,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplate
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
 
@@ -1754,7 +1756,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplate
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     Defines a set of pods (namely those matching the labelSelector
     relative to the given namespace(s)) that this pod should be
     co-located (affinity) or not co-located (anti-affinity) with,
@@ -1816,7 +1818,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplate
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector:
-    """
+    r"""
     A label query over a set of resources, in this case pods.
     If it's null, this PodAffinityTerm matches with no Pods.
 
@@ -1837,7 +1839,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplate
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
 
@@ -1864,7 +1866,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplate
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector:
-    """
+    r"""
     A label query over the set of namespaces that the term applies to.
     The term is applied to the union of the namespaces selected by this field
     and the ones listed in the namespaces field.
@@ -1888,7 +1890,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplate
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
 
@@ -1915,7 +1917,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplate
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplateSpecAffinityPodAntiAffinity:
-    """
+    r"""
     Describes pod anti-affinity scheduling rules (e.g. avoid putting this pod in the same node, zone, etc. as some other pod(s)).
 
     Attributes
@@ -1947,7 +1949,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplate
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     The weights of all of the matched WeightedPodAffinityTerm fields are added per-node to find the most preferred node(s)
 
     Attributes
@@ -1966,7 +1968,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplate
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTerm:
-    """
+    r"""
     Required. A pod affinity term, associated with the corresponding weight.
 
     Attributes
@@ -2023,7 +2025,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplate
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector:
-    """
+    r"""
     A label query over a set of resources, in this case pods.
     If it's null, this PodAffinityTerm matches with no Pods.
 
@@ -2044,7 +2046,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplate
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
 
@@ -2071,7 +2073,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplate
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector:
-    """
+    r"""
     A label query over the set of namespaces that the term applies to.
     The term is applied to the union of the namespaces selected by this field
     and the ones listed in the namespaces field.
@@ -2095,7 +2097,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplate
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
 
@@ -2122,7 +2124,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplate
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     Defines a set of pods (namely those matching the labelSelector
     relative to the given namespace(s)) that this pod should be
     co-located (affinity) or not co-located (anti-affinity) with,
@@ -2184,7 +2186,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplate
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector:
-    """
+    r"""
     A label query over a set of resources, in this case pods.
     If it's null, this PodAffinityTerm matches with no Pods.
 
@@ -2205,7 +2207,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplate
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
 
@@ -2232,7 +2234,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplate
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector:
-    """
+    r"""
     A label query over the set of namespaces that the term applies to.
     The term is applied to the union of the namespaces selected by this field
     and the ones listed in the namespaces field.
@@ -2256,7 +2258,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplate
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
 
@@ -2283,7 +2285,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplate
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplateSpecImagePullSecretsItems0:
-    """
+    r"""
     LocalObjectReference contains enough information to let you locate the
     referenced object inside the same namespace.
 
@@ -2304,7 +2306,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplate
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplateSpecTolerationsItems0:
-    """
+    r"""
     The pod this Toleration is attached to tolerates any taint that matches
     the triple <key,value,effect> using the matching operator <operator>.
 
@@ -2344,7 +2346,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Http01IngressPodTemplate
 
 
 schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Selector:
-    """
+    r"""
     Selector selects a set of DNSNames on the Certificate resource that
     should be solved using this challenge solver.
     If not specified, the solver will be treated as the 'default' solver
@@ -2385,7 +2387,7 @@ schema CertManagerIoV1ClusterIssuerSpecAcmeSolversItems0Selector:
 
 
 schema CertManagerIoV1ClusterIssuerSpecCa:
-    """
+    r"""
     CA configures this issuer to sign certificates using a signing CA keypair
     stored in a Secret resource.
     This is used to build internal PKIs that are managed by cert-manager.
@@ -2422,7 +2424,7 @@ schema CertManagerIoV1ClusterIssuerSpecCa:
 
 
 schema CertManagerIoV1ClusterIssuerSpecSelfSigned:
-    """
+    r"""
     SelfSigned configures this issuer to 'self sign' certificates using the
     private key used to create the CertificateRequest object.
 
@@ -2439,7 +2441,7 @@ schema CertManagerIoV1ClusterIssuerSpecSelfSigned:
 
 
 schema CertManagerIoV1ClusterIssuerSpecVault:
-    """
+    r"""
     Vault configures this issuer to sign certificates using a HashiCorp Vault
     PKI backend.
 
@@ -2489,7 +2491,7 @@ schema CertManagerIoV1ClusterIssuerSpecVault:
 
 
 schema CertManagerIoV1ClusterIssuerSpecVaultAuth:
-    """
+    r"""
     Auth configures how cert-manager authenticates with the Vault server.
 
     Attributes
@@ -2515,7 +2517,7 @@ schema CertManagerIoV1ClusterIssuerSpecVaultAuth:
 
 
 schema CertManagerIoV1ClusterIssuerSpecVaultAuthAppRole:
-    """
+    r"""
     AppRole authenticates with Vault using the App Role auth mechanism,
     with the role and secret stored in a Kubernetes Secret resource.
 
@@ -2540,7 +2542,7 @@ schema CertManagerIoV1ClusterIssuerSpecVaultAuthAppRole:
 
 
 schema CertManagerIoV1ClusterIssuerSpecVaultAuthAppRoleSecretRef:
-    """
+    r"""
     Reference to a key in a Secret that contains the App Role secret used
     to authenticate with Vault.
     The `key` field must be specified and denotes which entry within the Secret
@@ -2564,7 +2566,7 @@ schema CertManagerIoV1ClusterIssuerSpecVaultAuthAppRoleSecretRef:
 
 
 schema CertManagerIoV1ClusterIssuerSpecVaultAuthClientCertificate:
-    """
+    r"""
     ClientCertificate authenticates with Vault by presenting a client
     certificate during the request's TLS handshake.
     Works only when using HTTPS protocol.
@@ -2594,7 +2596,7 @@ schema CertManagerIoV1ClusterIssuerSpecVaultAuthClientCertificate:
 
 
 schema CertManagerIoV1ClusterIssuerSpecVaultAuthKubernetes:
-    """
+    r"""
     Kubernetes authenticates with Vault by passing the ServiceAccount
     token stored in the named Secret resource to the Vault server.
 
@@ -2625,7 +2627,7 @@ schema CertManagerIoV1ClusterIssuerSpecVaultAuthKubernetes:
 
 
 schema CertManagerIoV1ClusterIssuerSpecVaultAuthKubernetesSecretRef:
-    """
+    r"""
     The required Secret field containing a Kubernetes ServiceAccount JWT used
     for authenticating with Vault. Use of 'ambient credentials' is not
     supported.
@@ -2648,7 +2650,7 @@ schema CertManagerIoV1ClusterIssuerSpecVaultAuthKubernetesSecretRef:
 
 
 schema CertManagerIoV1ClusterIssuerSpecVaultAuthKubernetesServiceAccountRef:
-    """
+    r"""
     A reference to a service account that will be used to request a bound
     token (also known as "projected token"). Compared to using "secretRef",
     using this field means that you don't rely on statically bound tokens. To
@@ -2671,7 +2673,7 @@ schema CertManagerIoV1ClusterIssuerSpecVaultAuthKubernetesServiceAccountRef:
 
 
 schema CertManagerIoV1ClusterIssuerSpecVaultAuthTokenSecretRef:
-    """
+    r"""
     TokenSecretRef authenticates with Vault by presenting a token.
 
     Attributes
@@ -2692,7 +2694,7 @@ schema CertManagerIoV1ClusterIssuerSpecVaultAuthTokenSecretRef:
 
 
 schema CertManagerIoV1ClusterIssuerSpecVaultCaBundleSecretRef:
-    """
+    r"""
     Reference to a Secret containing a bundle of PEM-encoded CAs to use when
     verifying the certificate chain presented by Vault when using HTTPS.
     Mutually exclusive with CABundle.
@@ -2718,7 +2720,7 @@ schema CertManagerIoV1ClusterIssuerSpecVaultCaBundleSecretRef:
 
 
 schema CertManagerIoV1ClusterIssuerSpecVaultClientCertSecretRef:
-    """
+    r"""
     Reference to a Secret containing a PEM-encoded Client Certificate to use when the
     Vault server requires mTLS.
 
@@ -2740,7 +2742,7 @@ schema CertManagerIoV1ClusterIssuerSpecVaultClientCertSecretRef:
 
 
 schema CertManagerIoV1ClusterIssuerSpecVaultClientKeySecretRef:
-    """
+    r"""
     Reference to a Secret containing a PEM-encoded Client Private Key to use when the
     Vault server requires mTLS.
 
@@ -2762,7 +2764,7 @@ schema CertManagerIoV1ClusterIssuerSpecVaultClientKeySecretRef:
 
 
 schema CertManagerIoV1ClusterIssuerSpecVenafi:
-    """
+    r"""
     Venafi configures this issuer to sign certificates using a Venafi TPP
     or Venafi Cloud policy zone.
 
@@ -2788,7 +2790,7 @@ schema CertManagerIoV1ClusterIssuerSpecVenafi:
 
 
 schema CertManagerIoV1ClusterIssuerSpecVenafiCloud:
-    """
+    r"""
     Cloud specifies the Venafi cloud configuration settings.
     Only one of TPP or Cloud may be specified.
 
@@ -2808,7 +2810,7 @@ schema CertManagerIoV1ClusterIssuerSpecVenafiCloud:
 
 
 schema CertManagerIoV1ClusterIssuerSpecVenafiCloudAPITokenSecretRef:
-    """
+    r"""
     APITokenSecretRef is a secret key selector for the Venafi Cloud API token.
 
     Attributes
@@ -2829,7 +2831,7 @@ schema CertManagerIoV1ClusterIssuerSpecVenafiCloudAPITokenSecretRef:
 
 
 schema CertManagerIoV1ClusterIssuerSpecVenafiTpp:
-    """
+    r"""
     TPP specifies Trust Protection Platform configuration settings.
     Only one of TPP or Cloud may be specified.
 
@@ -2860,7 +2862,7 @@ schema CertManagerIoV1ClusterIssuerSpecVenafiTpp:
 
 
 schema CertManagerIoV1ClusterIssuerSpecVenafiTppCaBundleSecretRef:
-    """
+    r"""
     Reference to a Secret containing a base64-encoded bundle of PEM CAs
     which will be used to validate the certificate chain presented by the TPP server.
     Only used if using HTTPS; ignored for HTTP. Mutually exclusive with CABundle.
@@ -2885,7 +2887,7 @@ schema CertManagerIoV1ClusterIssuerSpecVenafiTppCaBundleSecretRef:
 
 
 schema CertManagerIoV1ClusterIssuerSpecVenafiTppCredentialsRef:
-    """
+    r"""
     CredentialsRef is a reference to a Secret containing the Venafi TPP API credentials.
     The secret must contain the key 'access-token' for the Access Token Authentication,
     or two keys, 'username' and 'password' for the API Keys Authentication.
@@ -2902,7 +2904,7 @@ schema CertManagerIoV1ClusterIssuerSpecVenafiTppCredentialsRef:
 
 
 schema CertManagerIoV1ClusterIssuerStatus:
-    """
+    r"""
     Status of the ClusterIssuer. This is set and managed automatically.
 
     Attributes
@@ -2921,7 +2923,7 @@ schema CertManagerIoV1ClusterIssuerStatus:
 
 
 schema CertManagerIoV1ClusterIssuerStatusAcme:
-    """
+    r"""
     ACME specific status options.
     This field should only be set if the Issuer is configured to use an ACME
     server to issue certificates.
@@ -2950,7 +2952,7 @@ schema CertManagerIoV1ClusterIssuerStatusAcme:
 
 
 schema CertManagerIoV1ClusterIssuerStatusConditionsItems0:
-    """
+    r"""
     IssuerCondition contains condition information for an Issuer.
 
     Attributes

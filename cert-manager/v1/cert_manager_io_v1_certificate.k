@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema Certificate:
-    """
+    r"""
     A Certificate resource should be created to ensure an up to date and signed
     X.509 certificate is stored in the Kubernetes Secret resource named in `spec.secretName`.
 
@@ -40,7 +40,7 @@ schema Certificate:
 
 
 schema CertManagerIoV1CertificateSpec:
-    """
+    r"""
     Specification of the desired state of the Certificate resource.
     https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
 
@@ -231,7 +231,7 @@ schema CertManagerIoV1CertificateSpec:
 
 
 schema CertManagerIoV1CertificateSpecAdditionalOutputFormatsItems0:
-    """
+    r"""
     CertificateAdditionalOutputFormat defines an additional output format of a
     Certificate resource. These contain supplementary data formats of the signed
     certificate chain and paired private key.
@@ -248,7 +248,7 @@ schema CertManagerIoV1CertificateSpecAdditionalOutputFormatsItems0:
 
 
 schema CertManagerIoV1CertificateSpecIssuerRef:
-    """
+    r"""
     Reference to the issuer responsible for issuing the certificate.
     If the issuer is namespace-scoped, it must be in the same namespace
     as the Certificate. If the issuer is cluster-scoped, it can be used
@@ -276,7 +276,7 @@ schema CertManagerIoV1CertificateSpecIssuerRef:
 
 
 schema CertManagerIoV1CertificateSpecKeystores:
-    """
+    r"""
     Additional keystore output formats to be stored in the Certificate's Secret.
 
     Attributes
@@ -294,7 +294,7 @@ schema CertManagerIoV1CertificateSpecKeystores:
 
 
 schema CertManagerIoV1CertificateSpecKeystoresJks:
-    """
+    r"""
     JKS configures options for storing a JKS keystore in the
     `spec.secretName` Secret resource.
 
@@ -326,7 +326,7 @@ schema CertManagerIoV1CertificateSpecKeystoresJks:
 
 
 schema CertManagerIoV1CertificateSpecKeystoresJksPasswordSecretRef:
-    """
+    r"""
     PasswordSecretRef is a reference to a key in a Secret resource
     containing the password used to encrypt the JKS keystore.
 
@@ -348,7 +348,7 @@ schema CertManagerIoV1CertificateSpecKeystoresJksPasswordSecretRef:
 
 
 schema CertManagerIoV1CertificateSpecKeystoresPkcs12:
-    """
+    r"""
     PKCS12 configures options for storing a PKCS12 keystore in the
     `spec.secretName` Secret resource.
 
@@ -388,7 +388,7 @@ schema CertManagerIoV1CertificateSpecKeystoresPkcs12:
 
 
 schema CertManagerIoV1CertificateSpecKeystoresPkcs12PasswordSecretRef:
-    """
+    r"""
     PasswordSecretRef is a reference to a key in a Secret resource
     containing the password used to encrypt the PKCS12 keystore.
 
@@ -410,7 +410,7 @@ schema CertManagerIoV1CertificateSpecKeystoresPkcs12PasswordSecretRef:
 
 
 schema CertManagerIoV1CertificateSpecNameConstraints:
-    """
+    r"""
     x.509 certificate NameConstraint extension which MUST NOT be used in a non-CA certificate.
     More Info: https://datatracker.ietf.org/doc/html/rfc5280#section-4.2.1.10
 
@@ -438,7 +438,7 @@ schema CertManagerIoV1CertificateSpecNameConstraints:
 
 
 schema CertManagerIoV1CertificateSpecNameConstraintsExcluded:
-    """
+    r"""
     Excluded contains the constraints which must be disallowed. Any name matching a
     restriction in the excluded field is invalid regardless
     of information appearing in the permitted
@@ -467,7 +467,7 @@ schema CertManagerIoV1CertificateSpecNameConstraintsExcluded:
 
 
 schema CertManagerIoV1CertificateSpecNameConstraintsPermitted:
-    """
+    r"""
     Permitted contains the constraints in which the names must be located.
 
     Attributes
@@ -494,7 +494,7 @@ schema CertManagerIoV1CertificateSpecNameConstraintsPermitted:
 
 
 schema CertManagerIoV1CertificateSpecOtherNamesItems0:
-    """
+    r"""
     cert manager io v1 certificate spec other names items0
 
     Attributes
@@ -515,7 +515,7 @@ schema CertManagerIoV1CertificateSpecOtherNamesItems0:
 
 
 schema CertManagerIoV1CertificateSpecPrivateKey:
-    """
+    r"""
     Private key options. These include the key algorithm and size, the used
     encoding and the rotation policy.
 
@@ -574,7 +574,7 @@ schema CertManagerIoV1CertificateSpecPrivateKey:
 
 
 schema CertManagerIoV1CertificateSpecSecretTemplate:
-    """
+    r"""
     Defines annotations and labels to be copied to the Certificate's Secret.
     Labels and annotations on the Secret will be changed as they appear on the
     SecretTemplate when added or removed. SecretTemplate annotations are added
@@ -596,7 +596,7 @@ schema CertManagerIoV1CertificateSpecSecretTemplate:
 
 
 schema CertManagerIoV1CertificateSpecSubject:
-    """
+    r"""
     Requested set of X509 certificate subject attributes.
     More info: https://datatracker.ietf.org/doc/html/rfc5280#section-4.1.2.6
 
@@ -643,7 +643,7 @@ schema CertManagerIoV1CertificateSpecSubject:
 
 
 schema CertManagerIoV1CertificateStatus:
-    """
+    r"""
     Status of the Certificate.
     This is set and managed automatically.
     Read-only.
@@ -722,7 +722,7 @@ schema CertManagerIoV1CertificateStatus:
 
 
 schema CertManagerIoV1CertificateStatusConditionsItems0:
-    """
+    r"""
     CertificateCondition contains condition information for an Certificate.
 
     Attributes
