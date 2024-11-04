@@ -1,0 +1,25 @@
+version: 0.3.0
+name: kubevirt
+displayName: kubevirt
+createdAt: "2024-11-04T06:05:19Z"
+description: '`kubevirt` module contains definitions for kubevirt'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `kubevirt` with tag `0.3.0` as dependency
+  ```
+  kcl mod add kubevirt:0.3.0
+  ```
+
+  #### Pull `kubevirt` with tag `0.3.0` to local
+  ```
+  kcl mod pull kubevirt:0.3.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
