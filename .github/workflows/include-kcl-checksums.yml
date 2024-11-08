@@ -1,7 +1,16 @@
 name: Include KCL Modules Checksum
 
 on:
-  push:
+  workflow_dispatch:
+    inputs:
+      kpm_reg:
+        description: "Enter the KPM Registry"
+        required: true
+        default: "localhost:5001"
+      kpm_repo:
+        description: "Enter the KPM Repository"
+        required: true
+        default: "test"
 
 jobs:
   include_modules_checksum:
@@ -21,11 +30,19 @@ jobs:
         with:
           go-version-file: go.mod
 
-      - name: Login to GHCR
-        run: kcl registry login -u ${{ secrets.DEPLOY_ACCESS_NAME }} -p ${{ secrets.DEPLOY_ACCESS_TOKEN }} ghcr.io
+      - name: Run local registry for localhost
+        if: ${{ github.event.inputs.kpm_reg == 'localhost:5001' }}
+        run: ./scripts/reg.sh
+
+      - name: Login to registry
+        run: |
+          kcl registry login -u ${{ github.event.inputs.kpm_repo }} -p ${{ secrets.REGISTRY_ACCESS_TOKEN }} ${{ github.event.inputs.kpm_reg }}
 
       - name: Get dependencies
         run: go get -v ./...
 
       - name: Run include checksum tool
+        env:
+          KPM_REG: ${{ github.event.inputs.kpm_reg }}
+          KPM_REPO: ${{ github.event.inputs.kpm_repo }}
         run: go run ./Integrate-Checksum/main.go
