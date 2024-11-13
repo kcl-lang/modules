@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # create a directory to store user passwords
 mkdir -p ./scripts/registry_auth
