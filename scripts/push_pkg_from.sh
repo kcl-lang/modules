@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 KCL_MOD_FILE_PATH="$1"
 

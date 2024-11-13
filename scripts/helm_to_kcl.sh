@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # TODO: Make this take a normal helm package name and repo location.  This
 # script tries to avoid changing any local state, like your helm repository
 # list.  To do this with helm, you to link to the tgz of the helm package
