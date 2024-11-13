@@ -1,0 +1,25 @@
+version: v1.23.0
+name: edp-keycloak-operator
+displayName: edp-keycloak-operator
+createdAt: "2024-11-13T18:01:24Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `edp-keycloak-operator` with tag `v1.23.0` as dependency
+  ```
+  kcl mod add edp-keycloak-operator:v1.23.0
+  ```
+
+  #### Pull `edp-keycloak-operator` with tag `v1.23.0` to local
+  ```
+  kcl mod pull edp-keycloak-operator:v1.23.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
