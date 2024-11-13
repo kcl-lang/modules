@@ -1,0 +1,2577 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  name: keycloaks.v1.edp.epam.com
+spec:
+  group: v1.edp.epam.com
+  names:
+    kind: Keycloak
+    listKind: KeycloakList
+    plural: keycloaks
+    singular: keycloak
+  scope: Namespaced
+  versions:
+  - additionalPrinterColumns:
+    - description: Is connected to keycloak
+      jsonPath: .status.connected
+      name: Connected
+      type: boolean
+    name: v1
+    schema:
+      openAPIV3Schema:
+        description: Keycloak is the Schema for the keycloaks API.
+        properties:
+          apiVersion:
+            description: |-
+              APIVersion defines the versioned schema of this representation of an object.
+              Servers should convert recognized schemas to the latest internal value, and
+              may reject unrecognized values.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+            type: string
+          kind:
+            description: |-
+              Kind is a string value representing the REST resource this object represents.
+              Servers may infer this from the endpoint the client submits requests to.
+              Cannot be updated.
+              In CamelCase.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: KeycloakSpec defines the desired state of Keycloak.
+            properties:
+              adminType:
+                description: AdminType can be user or serviceAccount, if serviceAccount
+                  was specified, then client_credentials grant type should be used
+                  for getting admin realm token.
+                enum:
+                - serviceAccount
+                - user
+                type: string
+              caCert:
+                description: |-
+                  CACert defines the root certificate authority
+                  that api client use when verifying server certificates.
+                properties:
+                  configMapKeyRef:
+                    description: Selects a key of a ConfigMap.
+                    properties:
+                      key:
+                        description: The key to select.
+                        type: string
+                      name:
+                        description: |-
+                          Name of the referent.
+                          More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                          TODO: Add other useful fields. apiVersion, kind, uid?
+                        type: string
+                    required:
+                    - key
+                    type: object
+                    x-kubernetes-map-type: atomic
+                  secretKeyRef:
+                    description: Selects a key of a secret.
+                    properties:
+                      key:
+                        description: The key of the secret to select from.
+                        type: string
+                      name:
+                        description: |-
+                          Name of the referent.
+                          More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                          TODO: Add other useful fields. apiVersion, kind, uid?
+                        type: string
+                    required:
+                    - key
+                    type: object
+                    x-kubernetes-map-type: atomic
+                type: object
+              insecureSkipVerify:
+                description: |-
+                  InsecureSkipVerify controls whether api client verifies the server's
+                  certificate chain and host name. If InsecureSkipVerify is true, api client
+                  accepts any certificate presented by the server and any host name in that
+                  certificate.
+                type: boolean
+              secret:
+                description: Secret is a secret name which contains admin credentials.
+                type: string
+              url:
+                description: URL of keycloak service.
+                type: string
+            required:
+            - secret
+            - url
+            type: object
+          status:
+            default:
+              connected: false
+            description: KeycloakStatus defines the observed state of Keycloak.
+            properties:
+              connected:
+                description: Connected shows if keycloak service is up and running.
+                type: boolean
+            required:
+            - connected
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: null
+  storedVersions:
+  - v1
+
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  name: keycloakauthflows.v1.edp.epam.com
+spec:
+  group: v1.edp.epam.com
+  names:
+    kind: KeycloakAuthFlow
+    listKind: KeycloakAuthFlowList
+    plural: keycloakauthflows
+    singular: keycloakauthflow
+  scope: Namespaced
+  versions:
+  - additionalPrinterColumns:
+    - description: Reconcilation status
+      jsonPath: .status.value
+      name: Status
+      type: string
+    name: v1
+    schema:
+      openAPIV3Schema:
+        description: KeycloakAuthFlow is the Schema for the keycloak authentication
+          flow API.
+        properties:
+          apiVersion:
+            description: |-
+              APIVersion defines the versioned schema of this representation of an object.
+              Servers should convert recognized schemas to the latest internal value, and
+              may reject unrecognized values.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+            type: string
+          kind:
+            description: |-
+              Kind is a string value representing the REST resource this object represents.
+              Servers may infer this from the endpoint the client submits requests to.
+              Cannot be updated.
+              In CamelCase.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: KeycloakAuthFlowSpec defines the desired state of KeycloakAuthFlow.
+            properties:
+              alias:
+                description: Alias is display name for authentication flow.
+                type: string
+              authenticationExecutions:
+                description: AuthenticationExecutions is list of authentication executions
+                  for this auth flow.
+                items:
+                  description: AuthenticationExecution defines keycloak authentication
+                    execution.
+                  properties:
+                    alias:
+                      description: Alias is display name for this execution.
+                      type: string
+                    authenticator:
+                      description: Authenticator is name of authenticator.
+                      type: string
+                    authenticatorConfig:
+                      description: AuthenticatorConfig is configuration for authenticator.
+                      nullable: true
+                      properties:
+                        alias:
+                          description: Alias is display name for authenticator config.
+                          type: string
+                        config:
+                          additionalProperties:
+                            type: string
+                          description: Config is configuration for authenticator.
+                          type: object
+                      type: object
+                    authenticatorFlow:
+                      description: AuthenticatorFlow is true if this is auth flow.
+                      type: boolean
+                    priority:
+                      description: Priority is priority for this execution. Lower
+                        values have higher priority.
+                      type: integer
+                    requirement:
+                      description: 'Requirement is requirement for this execution.
+                        Available options: REQUIRED, ALTERNATIVE, DISABLED, CONDITIONAL.'
+                      type: string
+                  type: object
+                nullable: true
+                type: array
+              builtIn:
+                description: BuiltIn is true if this is built-in auth flow.
+                type: boolean
+              childRequirement:
+                description: 'ChildRequirement is requirement for child execution.
+                  Available options: REQUIRED, ALTERNATIVE, DISABLED, CONDITIONAL.'
+                type: string
+              childType:
+                description: 'ChildType is type for auth flow if it has a parent,
+                  available options: basic-flow, form-flow'
+                type: string
+              description:
+                description: Description is description for authentication flow.
+                type: string
+              parentName:
+                description: ParentName is name of parent auth flow.
+                type: string
+              providerId:
+                description: ProviderID for root auth flow and provider for child
+                  auth flows.
+                type: string
+              realm:
+                description: |-
+                  Deprecated: use RealmRef instead.
+                  Realm is name of KeycloakRealm custom resource.
+                type: string
+              realmRef:
+                description: RealmRef is reference to Realm custom resource.
+                properties:
+                  kind:
+                    description: Kind specifies the kind of the Keycloak resource.
+                    enum:
+                    - KeycloakRealm
+                    - ClusterKeycloakRealm
+                    type: string
+                  name:
+                    description: Name specifies the name of the Keycloak resource.
+                    type: string
+                type: object
+              topLevel:
+                description: TopLevel is true if this is root auth flow.
+                type: boolean
+            required:
+            - alias
+            - builtIn
+            - providerId
+            - topLevel
+            type: object
+          status:
+            description: KeycloakAuthFlowStatus defines the observed state of KeycloakAuthFlow.
+            properties:
+              failureCount:
+                format: int64
+                type: integer
+              value:
+                type: string
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: null
+  storedVersions:
+  - v1
+
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  name: keycloakclients.v1.edp.epam.com
+spec:
+  group: v1.edp.epam.com
+  names:
+    kind: KeycloakClient
+    listKind: KeycloakClientList
+    plural: keycloakclients
+    singular: keycloakclient
+  scope: Namespaced
+  versions:
+  - additionalPrinterColumns:
+    - description: Reconcilation status
+      jsonPath: .status.value
+      name: Status
+      type: string
+    name: v1
+    schema:
+      openAPIV3Schema:
+        description: KeycloakClient is the Schema for the keycloak clients API.
+        properties:
+          apiVersion:
+            description: |-
+              APIVersion defines the versioned schema of this representation of an object.
+              Servers should convert recognized schemas to the latest internal value, and
+              may reject unrecognized values.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+            type: string
+          kind:
+            description: |-
+              Kind is a string value representing the REST resource this object represents.
+              Servers may infer this from the endpoint the client submits requests to.
+              Cannot be updated.
+              In CamelCase.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: KeycloakClientSpec defines the desired state of KeycloakClient.
+            properties:
+              advancedProtocolMappers:
+                description: AdvancedProtocolMappers is a flag to enable advanced
+                  protocol mappers.
+                type: boolean
+              attributes:
+                additionalProperties:
+                  type: string
+                default:
+                  post.logout.redirect.uris: +
+                description: Attributes is a map of client attributes.
+                nullable: true
+                type: object
+              authorization:
+                description: Authorization is a client authorization configuration.
+                nullable: true
+                properties:
+                  permissions:
+                    items:
+                      properties:
+                        decisionStrategy:
+                          default: UNANIMOUS
+                          description: DecisionStrategy is a permission decision strategy.
+                          enum:
+                          - UNANIMOUS
+                          - AFFIRMATIVE
+                          - CONSENSUS
+                          type: string
+                        description:
+                          description: Description is a permission description.
+                          type: string
+                        logic:
+                          default: POSITIVE
+                          description: Logic is a permission logic.
+                          enum:
+                          - POSITIVE
+                          - NEGATIVE
+                          type: string
+                        name:
+                          description: Name is a permission name.
+                          type: string
+                        policies:
+                          description: |-
+                            Policies is a list of policies names.
+                            Specifies all the policies that must be applied to the scopes defined by this policy or permission.
+                          example:
+                          - policy1
+                          - policy2
+                          items:
+                            type: string
+                          nullable: true
+                          type: array
+                        resources:
+                          description: |-
+                            Resources is a list of resources names.
+                            Specifies that this permission must be applied to all resource instances of a given type.
+                          example:
+                          - resource1
+                          - resource2
+                          items:
+                            type: string
+                          nullable: true
+                          type: array
+                        scopes:
+                          description: |-
+                            Scopes is a list of authorization scopes names.
+                            Specifies that this permission must be applied to one or more scopes.
+                          example:
+                          - scope1
+                          - scope2
+                          items:
+                            type: string
+                          nullable: true
+                          type: array
+                        type:
+                          description: Type is a permission type.
+                          enum:
+                          - resource
+                          - scope
+                          type: string
+                      required:
+                      - name
+                      - type
+                      type: object
+                    type: array
+                  policies:
+                    items:
+                      description: Policy represents a client authorization policy.
+                      properties:
+                        aggregatedPolicy:
+                          description: AggregatedPolicy is an aggregated policy settings.
+                          properties:
+                            policies:
+                              description: |-
+                                Policies is a list of aggregated policies names.
+                                Specifies all the policies that must be applied to the scopes defined by this policy or permission.
+                              example:
+                                policies:
+                                - policy1
+                                - policy2
+                              items:
+                                type: string
+                              type: array
+                          required:
+                          - policies
+                          type: object
+                        clientPolicy:
+                          description: ClientPolicy is a client policy settings.
+                          properties:
+                            clients:
+                              description: Clients is a list of client names. Specifies
+                                which client(s) are allowed by this policy.
+                              example:
+                              - clients1
+                              - clients2
+                              items:
+                                type: string
+                              type: array
+                          required:
+                          - clients
+                          type: object
+                        decisionStrategy:
+                          default: UNANIMOUS
+                          description: DecisionStrategy is a policy decision strategy.
+                          enum:
+                          - UNANIMOUS
+                          - AFFIRMATIVE
+                          - CONSENSUS
+                          type: string
+                        description:
+                          description: Description is a policy description.
+                          type: string
+                        groupPolicy:
+                          description: GroupPolicy is a group policy settings.
+                          properties:
+                            groups:
+                              description: Groups is a list of group names. Specifies
+                                which group(s) are allowed by this policy.
+                              example: '{"groups":[{"name":"group1","extendChildren":true},{"name":"group2"}]}'
+                              items:
+                                description: GroupDefinition represents a group in
+                                  a GroupPolicyData.
+                                properties:
+                                  extendChildren:
+                                    description: ExtendChildren is a flag that specifies
+                                      whether to extend children.
+                                    type: boolean
+                                  name:
+                                    description: Name is a group name.
+                                    example: group1
+                                    type: string
+                                required:
+                                - name
+                                type: object
+                              type: array
+                            groupsClaim:
+                              description: |-
+                                GroupsClaim is a group claim.
+                                If defined, the policy will fetch user's groups from the given claim
+                                within an access token or ID token representing the identity asking permissions.
+                                If not defined, user's groups are obtained from your realm configuration.
+                              type: string
+                          type: object
+                        logic:
+                          default: POSITIVE
+                          description: Logic is a policy logic.
+                          enum:
+                          - POSITIVE
+                          - NEGATIVE
+                          type: string
+                        name:
+                          description: Name is a policy name.
+                          type: string
+                        rolePolicy:
+                          description: RolePolicy is a role policy settings.
+                          properties:
+                            roles:
+                              description: Roles is a list of role.
+                              example:
+                                roles:
+                                - name: role1
+                                  required: true
+                                - name: role2
+                              items:
+                                description: RoleDefinition represents a role in a
+                                  RolePolicyData.
+                                properties:
+                                  name:
+                                    description: Name is a role name.
+                                    example: role1
+                                    type: string
+                                  required:
+                                    description: Required is a flag that specifies
+                                      whether the role is required.
+                                    type: boolean
+                                required:
+                                - name
+                                type: object
+                              type: array
+                          required:
+                          - roles
+                          type: object
+                        timePolicy:
+                          description: ScopePolicy is a scope policy settings.
+                          properties:
+                            dayMonth:
+                              description: |-
+                                Day defines the month which the policy MUST be granted.
+                                You can also provide a range by filling the dayMonthEnd field.
+                                In this case, permission is granted only if current month is between or equal to the two values you provided.
+                              example: "1"
+                              type: string
+                            dayMonthEnd:
+                              example: "2"
+                              type: string
+                            hour:
+                              description: |-
+                                Hour defines the hour when the policy MUST be granted.
+                                You can also provide a range by filling the hourEnd.
+                                In this case, permission is granted only if current hour is between or equal to the two values you provided.
+                              example: "1"
+                              type: string
+                            hourEnd:
+                              example: "2"
+                              type: string
+                            minute:
+                              description: |-
+                                Minute defines the minute when the policy MUST be granted.
+                                You can also provide a range by filling the minuteEnd field.
+                                In this case, permission is granted only if current minute is between or equal to the two values you provided.
+                              example: "1"
+                              type: string
+                            minuteEnd:
+                              example: "2"
+                              type: string
+                            month:
+                              description: |-
+                                Month defines the month which the policy MUST be granted.
+                                You can also provide a range by filling the monthEnd.
+                                In this case, permission is granted only if current month is between or equal to the two values you provided.
+                              example: "1"
+                              type: string
+                            monthEnd:
+                              example: "2"
+                              type: string
+                            notBefore:
+                              description: |-
+                                NotBefore defines the time before which the policy MUST NOT be granted.
+                                Only granted if current date/time is after or equal to this value.
+                              example: "2024-03-03 00:00:00"
+                              type: string
+                            notOnOrAfter:
+                              description: |-
+                                NotOnOrAfter defines the time after which the policy MUST NOT be granted.
+                                Only granted if current date/time is before or equal to this value.
+                              example: "2024-04-04 00:00:00"
+                              type: string
+                          required:
+                          - notBefore
+                          - notOnOrAfter
+                          type: object
+                        type:
+                          description: Type is a policy type.
+                          enum:
+                          - aggregate
+                          - client
+                          - group
+                          - role
+                          - time
+                          - user
+                          type: string
+                        userPolicy:
+                          description: UserPolicy is a user policy settings.
+                          properties:
+                            users:
+                              description: Users is a list of usernames. Specifies
+                                which user(s) are allowed by this policy.
+                              example:
+                              - users1
+                              - users2
+                              items:
+                                type: string
+                              type: array
+                          required:
+                          - users
+                          type: object
+                      required:
+                      - name
+                      - type
+                      type: object
+                    type: array
+                  scopes:
+                    items:
+                      type: string
+                    type: array
+                type: object
+              authorizationServicesEnabled:
+                description: ServiceAccountsEnabled enable/disable fine-grained authorization
+                  support for a client.
+                type: boolean
+              bearerOnly:
+                description: BearerOnly is a flag to enable bearer-only.
+                type: boolean
+              clientAuthenticatorType:
+                default: client-secret
+                description: ClientAuthenticatorType is a client authenticator type.
+                type: string
+              clientId:
+                description: ClientId is a unique keycloak client ID referenced in
+                  URI and tokens.
+                type: string
+              clientRoles:
+                description: ClientRoles is a list of client roles names assigned
+                  to client.
+                items:
+                  type: string
+                nullable: true
+                type: array
+              consentRequired:
+                description: ConsentRequired is a flag to enable consent.
+                type: boolean
+              defaultClientScopes:
+                description: DefaultClientScopes is a list of default client scopes
+                  assigned to client.
+                items:
+                  type: string
+                nullable: true
+                type: array
+              description:
+                description: Description is a client description.
+                type: string
+              directAccess:
+                description: DirectAccess is a flag to set client as direct access.
+                type: boolean
+              enabled:
+                default: true
+                description: Enabled is a flag to enable client.
+                type: boolean
+              frontChannelLogout:
+                description: FrontChannelLogout is a flag to enable front channel
+                  logout.
+                type: boolean
+              fullScopeAllowed:
+                default: true
+                description: FullScopeAllowed is a flag to enable full scope.
+                type: boolean
+              implicitFlowEnabled:
+                description: ImplicitFlowEnabled is a flag to enable support for OpenID
+                  Connect redirect based authentication without authorization code.
+                type: boolean
+              name:
+                description: Name is a client name.
+                type: string
+              optionalClientScopes:
+                description: OptionalClientScopes is a list of optional client scopes
+                  assigned to client.
+                items:
+                  type: string
+                nullable: true
+                type: array
+              protocol:
+                description: Protocol is a client protocol.
+                nullable: true
+                type: string
+              protocolMappers:
+                description: ProtocolMappers is a list of protocol mappers assigned
+                  to client.
+                items:
+                  properties:
+                    config:
+                      additionalProperties:
+                        type: string
+                      description: Config is a map of protocol mapper configuration.
+                      nullable: true
+                      type: object
+                    name:
+                      description: Name is a protocol mapper name.
+                      type: string
+                    protocol:
+                      description: Protocol is a protocol name.
+                      type: string
+                    protocolMapper:
+                      description: ProtocolMapper is a protocol mapper name.
+                      type: string
+                  type: object
+                nullable: true
+                type: array
+              public:
+                description: Public is a flag to set client as public.
+                type: boolean
+              realmRef:
+                description: RealmRef is reference to Realm custom resource.
+                properties:
+                  kind:
+                    description: Kind specifies the kind of the Keycloak resource.
+                    enum:
+                    - KeycloakRealm
+                    - ClusterKeycloakRealm
+                    type: string
+                  name:
+                    description: Name specifies the name of the Keycloak resource.
+                    type: string
+                type: object
+              realmRoles:
+                description: RealmRoles is a list of realm roles assigned to client.
+                items:
+                  properties:
+                    composite:
+                      description: Composite is a realm composite role name.
+                      type: string
+                    name:
+                      description: Name is a realm role name.
+                      type: string
+                  required:
+                  - composite
+                  type: object
+                nullable: true
+                type: array
+              reconciliationStrategy:
+                description: ReconciliationStrategy is a strategy to reconcile client.
+                enum:
+                - full
+                - addOnly
+                type: string
+              redirectUris:
+                description: |-
+                  RedirectUris is a list of valid URI pattern a browser can redirect to after a successful login.
+                  Simple wildcards are allowed such as 'https://example.com/*'.
+                  Relative path can be specified too, such as /my/relative/path/*. Relative paths are relative to the client root URL.
+                  If not specified, spec.webUrl + "/*" will be used.
+                example:
+                - https://example.com/*
+                - /my/relative/path/*
+                items:
+                  type: string
+                nullable: true
+                type: array
+              secret:
+                description: |-
+                  Secret is kubernetes secret name where the client's secret will be stored.
+                  Secret should have the following format: $secretName:secretKey.
+                  If not specified, a client secret will be generated and stored in a secret with the name keycloak-client-{metadata.name}-secret.
+                  If keycloak client is public, secret property will be ignored.
+                example: $keycloak-secret:client_secret
+                type: string
+              serviceAccount:
+                description: ServiceAccount is a service account configuration.
+                nullable: true
+                properties:
+                  attributes:
+                    additionalProperties:
+                      type: string
+                    description: Attributes is a map of service account attributes.
+                    nullable: true
+                    type: object
+                  clientRoles:
+                    description: ClientRoles is a list of client roles assigned to
+                      service account.
+                    items:
+                      properties:
+                        clientId:
+                          description: ClientID is a client ID.
+                          type: string
+                        roles:
+                          description: Roles is a list of client roles names assigned
+                            to service account.
+                          items:
+                            type: string
+                          nullable: true
+                          type: array
+                      required:
+                      - clientId
+                      type: object
+                    nullable: true
+                    type: array
+                  enabled:
+                    description: Enabled is a flag to enable service account.
+                    type: boolean
+                  realmRoles:
+                    description: RealmRoles is a list of realm roles assigned to service
+                      account.
+                    items:
+                      type: string
+                    nullable: true
+                    type: array
+                type: object
+              standardFlowEnabled:
+                default: true
+                description: StandardFlowEnabled is a flag to enable standard flow.
+                type: boolean
+              surrogateAuthRequired:
+                description: SurrogateAuthRequired is a flag to enable surrogate auth.
+                type: boolean
+              targetRealm:
+                description: |-
+                  Deprecated: use RealmRef instead.
+                  TargetRealm is a realm name where client will be created.
+                  It has higher priority than RealmRef for backward compatibility.
+                  If both TargetRealm and RealmRef are specified, TargetRealm will be used for client creation.
+                type: string
+              webOrigins:
+                description: |-
+                  WebOrigins is a list of allowed CORS origins.
+                  To permit all origins of Valid Redirect URIs, add '+'. This does not include the '*' wildcard though.
+                  To permit all origins, explicitly add '*'.
+                  If not specified, the value from `WebUrl` is used
+                example:
+                - https://example.com/*
+                items:
+                  type: string
+                nullable: true
+                type: array
+              webUrl:
+                description: WebUrl is a client web url.
+                type: string
+            required:
+            - clientId
+            type: object
+          status:
+            description: KeycloakClientStatus defines the observed state of KeycloakClient.
+            properties:
+              clientId:
+                type: string
+              failureCount:
+                format: int64
+                type: integer
+              value:
+                type: string
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: null
+  storedVersions:
+  - v1
+
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  name: keycloakclientscopes.v1.edp.epam.com
+spec:
+  group: v1.edp.epam.com
+  names:
+    kind: KeycloakClientScope
+    listKind: KeycloakClientScopeList
+    plural: keycloakclientscopes
+    singular: keycloakclientscope
+  scope: Namespaced
+  versions:
+  - additionalPrinterColumns:
+    - description: Reconcilation status
+      jsonPath: .status.value
+      name: Status
+      type: string
+    name: v1
+    schema:
+      openAPIV3Schema:
+        description: KeycloakClientScope is the Schema for the keycloakclientscopes
+          API.
+        properties:
+          apiVersion:
+            description: |-
+              APIVersion defines the versioned schema of this representation of an object.
+              Servers should convert recognized schemas to the latest internal value, and
+              may reject unrecognized values.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+            type: string
+          kind:
+            description: |-
+              Kind is a string value representing the REST resource this object represents.
+              Servers may infer this from the endpoint the client submits requests to.
+              Cannot be updated.
+              In CamelCase.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: KeycloakClientScopeSpec defines the desired state of KeycloakClientScope.
+            properties:
+              attributes:
+                additionalProperties:
+                  type: string
+                description: Attributes is a map of client scope attributes.
+                nullable: true
+                type: object
+              default:
+                description: Default is a flag to set client scope as default.
+                type: boolean
+              description:
+                description: Description is a description of client scope.
+                type: string
+              name:
+                description: Name of keycloak client scope.
+                type: string
+              protocol:
+                description: Protocol is SSO protocol configuration which is being
+                  supplied by this client scope.
+                type: string
+              protocolMappers:
+                description: ProtocolMappers is a list of protocol mappers assigned
+                  to client scope.
+                items:
+                  properties:
+                    config:
+                      additionalProperties:
+                        type: string
+                      description: Config is a map of protocol mapper configuration.
+                      nullable: true
+                      type: object
+                    name:
+                      description: Name is a protocol mapper name.
+                      type: string
+                    protocol:
+                      description: Protocol is a protocol name.
+                      type: string
+                    protocolMapper:
+                      description: ProtocolMapper is a protocol mapper name.
+                      type: string
+                  type: object
+                nullable: true
+                type: array
+              realm:
+                description: |-
+                  Deprecated: use RealmRef instead.
+                  Realm is name of KeycloakRealm custom resource.
+                type: string
+              realmRef:
+                description: RealmRef is reference to Realm custom resource.
+                properties:
+                  kind:
+                    description: Kind specifies the kind of the Keycloak resource.
+                    enum:
+                    - KeycloakRealm
+                    - ClusterKeycloakRealm
+                    type: string
+                  name:
+                    description: Name specifies the name of the Keycloak resource.
+                    type: string
+                type: object
+            required:
+            - name
+            - protocol
+            type: object
+          status:
+            description: KeycloakClientScopeStatus defines the observed state of KeycloakClientScope.
+            properties:
+              failureCount:
+                format: int64
+                type: integer
+              id:
+                type: string
+              value:
+                type: string
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: null
+  storedVersions:
+  - v1
+
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  name: keycloakrealms.v1.edp.epam.com
+spec:
+  group: v1.edp.epam.com
+  names:
+    kind: KeycloakRealm
+    listKind: KeycloakRealmList
+    plural: keycloakrealms
+    singular: keycloakrealm
+  scope: Namespaced
+  versions:
+  - additionalPrinterColumns:
+    - description: Is the resource available
+      jsonPath: .status.available
+      name: Available
+      type: boolean
+    - description: Reconcilation status
+      jsonPath: .status.value
+      name: Status
+      type: string
+    name: v1
+    schema:
+      openAPIV3Schema:
+        description: KeycloakRealm is the Schema for the keycloak realms API.
+        properties:
+          apiVersion:
+            description: |-
+              APIVersion defines the versioned schema of this representation of an object.
+              Servers should convert recognized schemas to the latest internal value, and
+              may reject unrecognized values.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+            type: string
+          kind:
+            description: |-
+              Kind is a string value representing the REST resource this object represents.
+              Servers may infer this from the endpoint the client submits requests to.
+              Cannot be updated.
+              In CamelCase.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: KeycloakRealmSpec defines the desired state of KeycloakRealm.
+            properties:
+              browserFlow:
+                description: BrowserFlow specifies the authentication flow to use
+                  for the realm's browser clients.
+                nullable: true
+                type: string
+              browserSecurityHeaders:
+                additionalProperties:
+                  type: string
+                description: BrowserSecurityHeaders is a map of security headers to
+                  apply to HTTP responses from the realm's browser clients.
+                nullable: true
+                type: object
+              displayHtmlName:
+                description: DisplayHTMLName name to render in the UI
+                type: string
+              displayName:
+                description: DisplayName is the display name of the realm.
+                type: string
+              frontendUrl:
+                description: FrontendURL Set the frontend URL for the realm. Use in
+                  combination with the default hostname provider to override the base
+                  URL for frontend requests for a specific realm.
+                type: string
+              id:
+                description: ID is the ID of the realm.
+                nullable: true
+                type: string
+              keycloakOwner:
+                description: |-
+                  Deprecated: use KeycloakRef instead.
+                  KeycloakOwner specifies the name of the Keycloak instance that owns the realm.
+                nullable: true
+                type: string
+              keycloakRef:
+                description: KeycloakRef is reference to Keycloak custom resource.
+                properties:
+                  kind:
+                    description: Kind specifies the kind of the Keycloak resource.
+                    enum:
+                    - Keycloak
+                    - ClusterKeycloak
+                    type: string
+                  name:
+                    description: Name specifies the name of the Keycloak resource.
+                    type: string
+                type: object
+              passwordPolicy:
+                description: PasswordPolicies is a list of password policies to apply
+                  to the realm.
+                items:
+                  properties:
+                    type:
+                      description: Type of password policy.
+                      type: string
+                    value:
+                      description: Value of password policy.
+                      type: string
+                  required:
+                  - type
+                  - value
+                  type: object
+                nullable: true
+                type: array
+              realmEventConfig:
+                description: RealmEventConfig is the configuration for events in the
+                  realm.
+                nullable: true
+                properties:
+                  adminEventsDetailsEnabled:
+                    description: AdminEventsDetailsEnabled indicates whether to enable
+                      detailed admin events.
+                    type: boolean
+                  adminEventsEnabled:
+                    description: AdminEventsEnabled indicates whether to enable admin
+                      events.
+                    type: boolean
+                  enabledEventTypes:
+                    description: EnabledEventTypes is a list of event types to enable.
+                    items:
+                      type: string
+                    type: array
+                  eventsEnabled:
+                    description: EventsEnabled indicates whether to enable events.
+                    type: boolean
+                  eventsExpiration:
+                    description: EventsExpiration is the number of seconds after which
+                      events expire.
+                    type: integer
+                  eventsListeners:
+                    description: EventsListeners is a list of event listeners to enable.
+                    items:
+                      type: string
+                    type: array
+                type: object
+              realmName:
+                description: RealmName specifies the name of the realm.
+                type: string
+              themes:
+                description: Themes is a map of themes to apply to the realm.
+                nullable: true
+                properties:
+                  accountTheme:
+                    description: AccountTheme specifies the account theme to use for
+                      the realm.
+                    nullable: true
+                    type: string
+                  adminConsoleTheme:
+                    description: AdminConsoleTheme specifies the admin console theme
+                      to use for the realm.
+                    nullable: true
+                    type: string
+                  emailTheme:
+                    description: EmailTheme specifies the email theme to use for the
+                      realm.
+                    nullable: true
+                    type: string
+                  internationalizationEnabled:
+                    description: InternationalizationEnabled indicates whether to
+                      enable internationalization.
+                    nullable: true
+                    type: boolean
+                  loginTheme:
+                    description: LoginTheme specifies the login theme to use for the
+                      realm.
+                    nullable: true
+                    type: string
+                type: object
+              tokenSettings:
+                description: TokenSettings is the configuration for tokens in the
+                  realm.
+                nullable: true
+                properties:
+                  accessCodeLifespan:
+                    default: 60
+                    description: |-
+                      AccessCodeLifespan specifies max time(in seconds)a client has to finish the access token protocol.
+                      This should normally be 1 minute.
+                    type: integer
+                  accessToken:
+                    default: 900
+                    description: AccessTokenLifespanForImplicitFlow specifies max
+                      time(in seconds) before an access token is expired for implicit
+                      flow.
+                    type: integer
+                  accessTokenLifespan:
+                    default: 300
+                    description: |-
+                      AccessTokenLifespan specifies max time(in seconds) before an access token is expired.
+                      This value is recommended to be short relative to the SSO timeout.
+                    type: integer
+                  actionTokenGeneratedByAdminLifespan:
+                    default: 43200
+                    description: |-
+                      ActionTokenGeneratedByAdminLifespan specifies max time(in seconds) before an action permit sent to a user by administrator is expired.
+                      This value is recommended to be long to allow administrators to send e-mails for users that are currently offline.
+                      The default timeout can be overridden immediately before issuing the token.
+                    type: integer
+                  actionTokenGeneratedByUserLifespan:
+                    default: 300
+                    description: |-
+                      AccessCodeLifespanUserAction specifies max time(in seconds) before an action permit sent by a user (such as a forgot password e-mail) is expired.
+                      This value is recommended to be short because it's expected that the user would react to self-created action quickly.
+                    type: integer
+                  defaultSignatureAlgorithm:
+                    default: RS256
+                    description: DefaultSignatureAlgorithm specifies the default algorithm
+                      used to sign tokens for the realm
+                    enum:
+                    - ES256
+                    - ES384
+                    - ES512
+                    - EdDSA
+                    - HS256
+                    - HS384
+                    - HS512
+                    - PS256
+                    - PS384
+                    - PS512
+                    - RS256
+                    - RS384
+                    - RS512
+                    example: RS256
+                    type: string
+                  refreshTokenMaxReuse:
+                    default: 0
+                    description: |-
+                      RefreshTokenMaxReuse specifies maximum number of times a refresh token can be reused.
+                      When a different token is used, revocation is immediate.
+                    type: integer
+                  revokeRefreshToken:
+                    default: false
+                    description: |-
+                      RevokeRefreshToken if enabled a refresh token can only be used up to 'refreshTokenMaxReuse' and
+                      is revoked when a different token is used.
+                      Otherwise, refresh tokens are not revoked when used and can be used multiple times.
+                    type: boolean
+                type: object
+              users:
+                description: Users is a list of users to create in the realm.
+                items:
+                  properties:
+                    realmRoles:
+                      description: RealmRoles is a list of roles attached to keycloak
+                        user.
+                      items:
+                        type: string
+                      type: array
+                    username:
+                      description: Username of keycloak user.
+                      type: string
+                  required:
+                  - username
+                  type: object
+                nullable: true
+                type: array
+            required:
+            - realmName
+            type: object
+          status:
+            description: KeycloakRealmStatus defines the observed state of KeycloakRealm.
+            properties:
+              available:
+                type: boolean
+              failureCount:
+                format: int64
+                type: integer
+              value:
+                type: string
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: null
+  storedVersions:
+  - v1
+
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  name: keycloakrealmcomponents.v1.edp.epam.com
+spec:
+  group: v1.edp.epam.com
+  names:
+    kind: KeycloakRealmComponent
+    listKind: KeycloakRealmComponentList
+    plural: keycloakrealmcomponents
+    singular: keycloakrealmcomponent
+  scope: Namespaced
+  versions:
+  - additionalPrinterColumns:
+    - description: Reconcilation status
+      jsonPath: .status.value
+      name: Status
+      type: string
+    name: v1
+    schema:
+      openAPIV3Schema:
+        description: KeycloakRealmComponent is the Schema for the keycloak component
+          API.
+        properties:
+          apiVersion:
+            description: |-
+              APIVersion defines the versioned schema of this representation of an object.
+              Servers should convert recognized schemas to the latest internal value, and
+              may reject unrecognized values.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+            type: string
+          kind:
+            description: |-
+              Kind is a string value representing the REST resource this object represents.
+              Servers may infer this from the endpoint the client submits requests to.
+              Cannot be updated.
+              In CamelCase.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: KeycloakComponentSpec defines the desired state of KeycloakRealmComponent.
+            properties:
+              config:
+                additionalProperties:
+                  items:
+                    type: string
+                  type: array
+                description: |-
+                  Config is a map of component configuration.
+                  Map key is a name of configuration property, map value is an array value of configuration properties.
+                  Any configuration property can be a reference to k8s secret, in this case the property should be in format $secretName:secretKey.
+                example:
+                  bindCredential: '["$clientSecret:secretKey"]'
+                  bindDn: '["provider-client"]'
+                nullable: true
+                type: object
+              name:
+                description: Name of keycloak component.
+                type: string
+              parentRef:
+                description: |-
+                  ParentRef specifies a parent resource.
+                  If not specified, then parent is realm specified in realm field.
+                nullable: true
+                properties:
+                  kind:
+                    default: KeycloakRealm
+                    description: Kind is a kind of parent component. By default, it
+                      is KeycloakRealm.
+                    enum:
+                    - KeycloakRealm
+                    - KeycloakRealmComponent
+                    type: string
+                  name:
+                    description: |-
+                      Name is a name of parent component custom resource.
+                      For example, if Kind is KeycloakRealm, then Name is name of KeycloakRealm custom resource.
+                    type: string
+                required:
+                - name
+                type: object
+              providerId:
+                description: ProviderID is a provider ID of component.
+                type: string
+              providerType:
+                description: ProviderType is a provider type of component.
+                type: string
+              realm:
+                description: |-
+                  Deprecated: use RealmRef instead.
+                  Realm is name of KeycloakRealm custom resource.
+                type: string
+              realmRef:
+                description: RealmRef is reference to Realm custom resource.
+                properties:
+                  kind:
+                    description: Kind specifies the kind of the Keycloak resource.
+                    enum:
+                    - KeycloakRealm
+                    - ClusterKeycloakRealm
+                    type: string
+                  name:
+                    description: Name specifies the name of the Keycloak resource.
+                    type: string
+                type: object
+            required:
+            - name
+            - providerId
+            - providerType
+            type: object
+          status:
+            description: KeycloakComponentStatus defines the observed state of KeycloakRealmComponent.
+            properties:
+              failureCount:
+                format: int64
+                type: integer
+              value:
+                type: string
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: null
+  storedVersions:
+  - v1
+
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  name: keycloakrealmgroups.v1.edp.epam.com
+spec:
+  group: v1.edp.epam.com
+  names:
+    kind: KeycloakRealmGroup
+    listKind: KeycloakRealmGroupList
+    plural: keycloakrealmgroups
+    singular: keycloakrealmgroup
+  scope: Namespaced
+  versions:
+  - additionalPrinterColumns:
+    - description: Reconcilation status
+      jsonPath: .status.value
+      name: Status
+      type: string
+    name: v1
+    schema:
+      openAPIV3Schema:
+        description: KeycloakRealmGroup is the Schema for the keycloak group API.
+        properties:
+          apiVersion:
+            description: |-
+              APIVersion defines the versioned schema of this representation of an object.
+              Servers should convert recognized schemas to the latest internal value, and
+              may reject unrecognized values.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+            type: string
+          kind:
+            description: |-
+              Kind is a string value representing the REST resource this object represents.
+              Servers may infer this from the endpoint the client submits requests to.
+              Cannot be updated.
+              In CamelCase.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: KeycloakRealmGroupSpec defines the desired state of KeycloakRealmGroup.
+            properties:
+              access:
+                additionalProperties:
+                  type: boolean
+                description: Access is a map of group access.
+                nullable: true
+                type: object
+              attributes:
+                additionalProperties:
+                  items:
+                    type: string
+                  type: array
+                description: Attributes is a map of group attributes.
+                nullable: true
+                type: object
+              clientRoles:
+                description: ClientRoles is a list of client roles assigned to group.
+                items:
+                  properties:
+                    clientId:
+                      description: ClientID is a client ID.
+                      type: string
+                    roles:
+                      description: Roles is a list of client roles names assigned
+                        to service account.
+                      items:
+                        type: string
+                      nullable: true
+                      type: array
+                  required:
+                  - clientId
+                  type: object
+                nullable: true
+                type: array
+              name:
+                description: Name of keycloak group.
+                type: string
+              path:
+                description: Path is a group path.
+                type: string
+              realm:
+                description: |-
+                  Deprecated: use RealmRef instead.
+                  Realm is name of KeycloakRealm custom resource.
+                type: string
+              realmRef:
+                description: RealmRef is reference to Realm custom resource.
+                properties:
+                  kind:
+                    description: Kind specifies the kind of the Keycloak resource.
+                    enum:
+                    - KeycloakRealm
+                    - ClusterKeycloakRealm
+                    type: string
+                  name:
+                    description: Name specifies the name of the Keycloak resource.
+                    type: string
+                type: object
+              realmRoles:
+                description: RealmRoles is a list of realm roles assigned to group.
+                items:
+                  type: string
+                nullable: true
+                type: array
+              subGroups:
+                description: SubGroups is a list of subgroups assigned to group.
+                items:
+                  type: string
+                nullable: true
+                type: array
+            required:
+            - name
+            type: object
+          status:
+            description: KeycloakRealmGroupStatus defines the observed state of KeycloakRealmGroup.
+            properties:
+              failureCount:
+                format: int64
+                type: integer
+              id:
+                description: ID is a group ID.
+                type: string
+              value:
+                type: string
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: null
+  storedVersions:
+  - v1
+
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  name: keycloakrealmidentityproviders.v1.edp.epam.com
+spec:
+  group: v1.edp.epam.com
+  names:
+    kind: KeycloakRealmIdentityProvider
+    listKind: KeycloakRealmIdentityProviderList
+    plural: keycloakrealmidentityproviders
+    singular: keycloakrealmidentityprovider
+  scope: Namespaced
+  versions:
+  - additionalPrinterColumns:
+    - description: Reconcilation status
+      jsonPath: .status.value
+      name: Status
+      type: string
+    name: v1
+    schema:
+      openAPIV3Schema:
+        description: KeycloakRealmIdentityProvider is the Schema for the keycloak
+          realm identity provider API.
+        properties:
+          apiVersion:
+            description: |-
+              APIVersion defines the versioned schema of this representation of an object.
+              Servers should convert recognized schemas to the latest internal value, and
+              may reject unrecognized values.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+            type: string
+          kind:
+            description: |-
+              Kind is a string value representing the REST resource this object represents.
+              Servers may infer this from the endpoint the client submits requests to.
+              Cannot be updated.
+              In CamelCase.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: KeycloakRealmIdentityProviderSpec defines the desired state
+              of KeycloakRealmIdentityProvider.
+            properties:
+              addReadTokenRoleOnCreate:
+                description: AddReadTokenRoleOnCreate is a flag to add read token
+                  role on create.
+                type: boolean
+              alias:
+                description: Alias is a alias of identity provider.
+                type: string
+              authenticateByDefault:
+                description: AuthenticateByDefault is a flag to authenticate by default.
+                type: boolean
+              config:
+                additionalProperties:
+                  type: string
+                description: |-
+                  Config is a map of identity provider configuration.
+                  Map key is a name of configuration property, map value is a value of configuration property.
+                  Any value can be a reference to k8s secret, in this case value should be in format $secretName:secretKey.
+                example:
+                  clientId: provider-client
+                  clientSecret: $clientSecret:secretKey
+                type: object
+              displayName:
+                description: DisplayName is a display name of identity provider.
+                type: string
+              enabled:
+                description: Enabled is a flag to enable/disable identity provider.
+                type: boolean
+              firstBrokerLoginFlowAlias:
+                description: FirstBrokerLoginFlowAlias is a first broker login flow
+                  alias.
+                type: string
+              linkOnly:
+                description: LinkOnly is a flag to link only.
+                type: boolean
+              mappers:
+                description: Mappers is a list of identity provider mappers.
+                items:
+                  properties:
+                    config:
+                      additionalProperties:
+                        type: string
+                      description: Config is a map of identity provider mapper configuration.
+                      nullable: true
+                      type: object
+                    identityProviderAlias:
+                      description: IdentityProviderAlias is a identity provider alias.
+                      type: string
+                    identityProviderMapper:
+                      description: IdentityProviderMapper is a identity provider mapper.
+                      type: string
+                    name:
+                      description: Name is a name of identity provider mapper.
+                      type: string
+                  type: object
+                nullable: true
+                type: array
+              providerId:
+                description: ProviderID is a provider ID of identity provider.
+                type: string
+              realm:
+                description: |-
+                  Deprecated: use RealmRef instead.
+                  Realm is name of KeycloakRealm custom resource.
+                type: string
+              realmRef:
+                description: RealmRef is reference to Realm custom resource.
+                properties:
+                  kind:
+                    description: Kind specifies the kind of the Keycloak resource.
+                    enum:
+                    - KeycloakRealm
+                    - ClusterKeycloakRealm
+                    type: string
+                  name:
+                    description: Name specifies the name of the Keycloak resource.
+                    type: string
+                type: object
+              storeToken:
+                description: StoreToken is a flag to store token.
+                type: boolean
+              trustEmail:
+                description: TrustEmail is a flag to trust email.
+                type: boolean
+            required:
+            - alias
+            - config
+            - enabled
+            - providerId
+            type: object
+          status:
+            description: KeycloakRealmIdentityProviderStatus defines the observed
+              state of KeycloakRealmIdentityProvider.
+            properties:
+              failureCount:
+                format: int64
+                type: integer
+              value:
+                type: string
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: null
+  storedVersions:
+  - v1
+
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  name: keycloakrealmroles.v1.edp.epam.com
+spec:
+  group: v1.edp.epam.com
+  names:
+    kind: KeycloakRealmRole
+    listKind: KeycloakRealmRoleList
+    plural: keycloakrealmroles
+    singular: keycloakrealmrole
+  scope: Namespaced
+  versions:
+  - additionalPrinterColumns:
+    - description: Reconcilation status
+      jsonPath: .status.value
+      name: Status
+      type: string
+    name: v1
+    schema:
+      openAPIV3Schema:
+        description: KeycloakRealmRole is the Schema for the keycloak group API.
+        properties:
+          apiVersion:
+            description: |-
+              APIVersion defines the versioned schema of this representation of an object.
+              Servers should convert recognized schemas to the latest internal value, and
+              may reject unrecognized values.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+            type: string
+          kind:
+            description: |-
+              Kind is a string value representing the REST resource this object represents.
+              Servers may infer this from the endpoint the client submits requests to.
+              Cannot be updated.
+              In CamelCase.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: KeycloakRealmRoleSpec defines the desired state of KeycloakRealmRole.
+            properties:
+              attributes:
+                additionalProperties:
+                  items:
+                    type: string
+                  type: array
+                description: Attributes is a map of role attributes.
+                nullable: true
+                type: object
+              composite:
+                description: Composite is a flag if role is composite.
+                type: boolean
+              composites:
+                description: Composites is a list of composites roles assigned to
+                  role.
+                items:
+                  properties:
+                    name:
+                      description: Name is a name of composite role.
+                      type: string
+                  required:
+                  - name
+                  type: object
+                nullable: true
+                type: array
+              compositesClientRoles:
+                additionalProperties:
+                  items:
+                    properties:
+                      name:
+                        description: Name is a name of composite role.
+                        type: string
+                    required:
+                    - name
+                    type: object
+                  type: array
+                description: CompositesClientRoles is a map of composites client roles
+                  assigned to role.
+                example:
+                  client1:
+                  - name: role1
+                  - name: role2
+                  client2:
+                    name: role3
+                nullable: true
+                type: object
+              description:
+                description: Description is a role description.
+                type: string
+              isDefault:
+                description: IsDefault is a flag if role is default.
+                type: boolean
+              name:
+                description: Name of keycloak role.
+                type: string
+              realm:
+                description: |-
+                  Deprecated: use RealmRef instead.
+                  Realm is name of KeycloakRealm custom resource.
+                type: string
+              realmRef:
+                description: RealmRef is reference to Realm custom resource.
+                properties:
+                  kind:
+                    description: Kind specifies the kind of the Keycloak resource.
+                    enum:
+                    - KeycloakRealm
+                    - ClusterKeycloakRealm
+                    type: string
+                  name:
+                    description: Name specifies the name of the Keycloak resource.
+                    type: string
+                type: object
+            required:
+            - name
+            type: object
+          status:
+            description: KeycloakRealmRoleStatus defines the observed state of KeycloakRealmRole.
+            properties:
+              failureCount:
+                format: int64
+                type: integer
+              id:
+                description: ID is a role ID.
+                type: string
+              value:
+                type: string
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: null
+  storedVersions:
+  - v1
+
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  name: keycloakrealmrolebatches.v1.edp.epam.com
+spec:
+  group: v1.edp.epam.com
+  names:
+    kind: KeycloakRealmRoleBatch
+    listKind: KeycloakRealmRoleBatchList
+    plural: keycloakrealmrolebatches
+    singular: keycloakrealmrolebatch
+  scope: Namespaced
+  versions:
+  - additionalPrinterColumns:
+    - description: Reconcilation status
+      jsonPath: .status.value
+      name: Status
+      type: string
+    name: v1
+    schema:
+      openAPIV3Schema:
+        description: KeycloakRealmRoleBatch is the Schema for the keycloak roles API.
+        properties:
+          apiVersion:
+            description: |-
+              APIVersion defines the versioned schema of this representation of an object.
+              Servers should convert recognized schemas to the latest internal value, and
+              may reject unrecognized values.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+            type: string
+          kind:
+            description: |-
+              Kind is a string value representing the REST resource this object represents.
+              Servers may infer this from the endpoint the client submits requests to.
+              Cannot be updated.
+              In CamelCase.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: KeycloakRealmRoleBatchSpec defines the desired state of KeycloakRealmRoleBatch.
+            properties:
+              realm:
+                description: |-
+                  Deprecated: use RealmRef instead.
+                  Realm is name of KeycloakRealm custom resource.
+                type: string
+              realmRef:
+                description: RealmRef is reference to Realm custom resource.
+                properties:
+                  kind:
+                    description: Kind specifies the kind of the Keycloak resource.
+                    enum:
+                    - KeycloakRealm
+                    - ClusterKeycloakRealm
+                    type: string
+                  name:
+                    description: Name specifies the name of the Keycloak resource.
+                    type: string
+                type: object
+              roles:
+                description: Roles is a list of roles to be created.
+                items:
+                  properties:
+                    attributes:
+                      additionalProperties:
+                        items:
+                          type: string
+                        type: array
+                      description: Attributes is a map of role attributes.
+                      nullable: true
+                      type: object
+                    composite:
+                      description: Composite is a flag if role is composite.
+                      type: boolean
+                    composites:
+                      description: Composites is a list of composites roles assigned
+                        to role.
+                      items:
+                        properties:
+                          name:
+                            description: Name is a name of composite role.
+                            type: string
+                        required:
+                        - name
+                        type: object
+                      nullable: true
+                      type: array
+                    description:
+                      description: Description is a role description.
+                      type: string
+                    isDefault:
+                      description: IsDefault is a flag if role is default.
+                      type: boolean
+                    name:
+                      description: Name of keycloak role.
+                      type: string
+                  required:
+                  - name
+                  type: object
+                type: array
+            required:
+            - roles
+            type: object
+          status:
+            description: KeycloakRealmRoleBatchStatus defines the observed state of
+              KeycloakRealmRoleBatch.
+            properties:
+              failureCount:
+                format: int64
+                type: integer
+              value:
+                type: string
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: null
+  storedVersions:
+  - v1
+
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  name: keycloakrealmusers.v1.edp.epam.com
+spec:
+  group: v1.edp.epam.com
+  names:
+    kind: KeycloakRealmUser
+    listKind: KeycloakRealmUserList
+    plural: keycloakrealmusers
+    singular: keycloakrealmuser
+  scope: Namespaced
+  versions:
+  - additionalPrinterColumns:
+    - description: Reconcilation status
+      jsonPath: .status.value
+      name: Status
+      type: string
+    name: v1
+    schema:
+      openAPIV3Schema:
+        description: KeycloakRealmUser is the Schema for the keycloak user API.
+        properties:
+          apiVersion:
+            description: |-
+              APIVersion defines the versioned schema of this representation of an object.
+              Servers should convert recognized schemas to the latest internal value, and
+              may reject unrecognized values.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+            type: string
+          kind:
+            description: |-
+              Kind is a string value representing the REST resource this object represents.
+              Servers may infer this from the endpoint the client submits requests to.
+              Cannot be updated.
+              In CamelCase.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: KeycloakRealmUserSpec defines the desired state of KeycloakRealmUser.
+            properties:
+              attributes:
+                additionalProperties:
+                  type: string
+                description: Attributes is a map of user attributes.
+                nullable: true
+                type: object
+              email:
+                description: Email is a user email.
+                type: string
+              emailVerified:
+                description: EmailVerified is a user email verified flag.
+                type: boolean
+              enabled:
+                description: Enabled is a user enabled flag.
+                type: boolean
+              firstName:
+                description: FirstName is a user first name.
+                type: string
+              groups:
+                description: Groups is a list of groups assigned to user.
+                items:
+                  type: string
+                nullable: true
+                type: array
+              keepResource:
+                default: true
+                description: |-
+                  KeepResource, when set to false, results in the deletion of the KeycloakRealmUser Custom Resource (CR)
+                  from the cluster after the corresponding user is created in Keycloak. The user will continue to exist in Keycloak.
+                  When set to true, the CR will not be deleted after processing.
+                type: boolean
+              lastName:
+                description: LastName is a user last name.
+                type: string
+              password:
+                description: Password is a user password. Allows to keep user password
+                  within Custom Resource. For security concerns, it is recommended
+                  to use PasswordSecret instead.
+                type: string
+              passwordSecret:
+                description: PasswordSecret defines Kubernetes secret Name and Key,
+                  which holds User secret.
+                nullable: true
+                properties:
+                  key:
+                    description: Key is the key in the secret.
+                    type: string
+                  name:
+                    description: Name is the name of the secret.
+                    type: string
+                required:
+                - key
+                - name
+                type: object
+              realm:
+                description: |-
+                  Deprecated: use RealmRef instead.
+                  Realm is name of KeycloakRealm custom resource.
+                type: string
+              realmRef:
+                description: RealmRef is reference to Realm custom resource.
+                properties:
+                  kind:
+                    description: Kind specifies the kind of the Keycloak resource.
+                    enum:
+                    - KeycloakRealm
+                    - ClusterKeycloakRealm
+                    type: string
+                  name:
+                    description: Name specifies the name of the Keycloak resource.
+                    type: string
+                type: object
+              reconciliationStrategy:
+                description: |-
+                  ReconciliationStrategy is a strategy for reconciliation. Possible values: full, create-only.
+                  Default value: full. If set to create-only, user will be created only if it does not exist. If user exists, it will not be updated.
+                  If set to full, user will be created if it does not exist, or updated if it exists.
+                type: string
+              requiredUserActions:
+                description: 'RequiredUserActions is required action when user log
+                  in, example: CONFIGURE_TOTP, UPDATE_PASSWORD, UPDATE_PROFILE, VERIFY_EMAIL.'
+                items:
+                  type: string
+                nullable: true
+                type: array
+              roles:
+                description: Roles is a list of roles assigned to user.
+                items:
+                  type: string
+                nullable: true
+                type: array
+              username:
+                description: Username is a username in keycloak.
+                type: string
+            required:
+            - username
+            type: object
+          status:
+            description: KeycloakRealmUserStatus defines the observed state of KeycloakRealmUser.
+            properties:
+              failureCount:
+                format: int64
+                type: integer
+              value:
+                type: string
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: null
+  storedVersions:
+  - v1
+
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  name: clusterkeycloaks.v1.edp.epam.com
+spec:
+  group: v1.edp.epam.com
+  names:
+    kind: ClusterKeycloak
+    listKind: ClusterKeycloakList
+    plural: clusterkeycloaks
+    singular: clusterkeycloak
+  scope: Cluster
+  versions:
+  - additionalPrinterColumns:
+    - description: Is connected to keycloak
+      jsonPath: .status.connected
+      name: Connected
+      type: boolean
+    name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        description: ClusterKeycloak is the Schema for the clusterkeycloaks API.
+        properties:
+          apiVersion:
+            description: |-
+              APIVersion defines the versioned schema of this representation of an object.
+              Servers should convert recognized schemas to the latest internal value, and
+              may reject unrecognized values.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+            type: string
+          kind:
+            description: |-
+              Kind is a string value representing the REST resource this object represents.
+              Servers may infer this from the endpoint the client submits requests to.
+              Cannot be updated.
+              In CamelCase.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: ClusterKeycloakSpec defines the desired state of ClusterKeycloak.
+            properties:
+              adminType:
+                default: user
+                description: |-
+                  AdminType can be user or serviceAccount, if serviceAccount was specified,
+                  then client_credentials grant type should be used for getting admin realm token.
+                enum:
+                - serviceAccount
+                - user
+                type: string
+              caCert:
+                description: |-
+                  CACert defines the root certificate authority
+                  that api clients use when verifying server certificates.
+                  Resources should be in the namespace defined in operator OPERATOR_NAMESPACE env.
+                properties:
+                  configMapKeyRef:
+                    description: Selects a key of a ConfigMap.
+                    properties:
+                      key:
+                        description: The key to select.
+                        type: string
+                      name:
+                        description: |-
+                          Name of the referent.
+                          More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                          TODO: Add other useful fields. apiVersion, kind, uid?
+                        type: string
+                    required:
+                    - key
+                    type: object
+                    x-kubernetes-map-type: atomic
+                  secretKeyRef:
+                    description: Selects a key of a secret.
+                    properties:
+                      key:
+                        description: The key of the secret to select from.
+                        type: string
+                      name:
+                        description: |-
+                          Name of the referent.
+                          More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+                          TODO: Add other useful fields. apiVersion, kind, uid?
+                        type: string
+                    required:
+                    - key
+                    type: object
+                    x-kubernetes-map-type: atomic
+                type: object
+              insecureSkipVerify:
+                description: |-
+                  InsecureSkipVerify controls whether api client verifies the server's
+                  certificate chain and host name. If InsecureSkipVerify is true, api client
+                  accepts any certificate presented by the server and any host name in that
+                  certificate.
+                type: boolean
+              secret:
+                description: Secret is a secret name which contains admin credentials.
+                type: string
+              url:
+                description: URL of keycloak service.
+                type: string
+            required:
+            - secret
+            - url
+            type: object
+          status:
+            default:
+              connected: false
+            description: ClusterKeycloakStatus defines the observed state of ClusterKeycloak.
+            properties:
+              connected:
+                description: Connected shows if keycloak service is up and running.
+                type: boolean
+            required:
+            - connected
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: null
+  storedVersions:
+  - v1alpha1
+
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  creationTimestamp: null
+  name: clusterkeycloakrealms.v1.edp.epam.com
+spec:
+  group: v1.edp.epam.com
+  names:
+    kind: ClusterKeycloakRealm
+    listKind: ClusterKeycloakRealmList
+    plural: clusterkeycloakrealms
+    singular: clusterkeycloakrealm
+  scope: Cluster
+  versions:
+  - additionalPrinterColumns:
+    - description: Keycloak realm is available
+      jsonPath: .status.available
+      name: Available
+      type: boolean
+    name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        description: ClusterKeycloakRealm is the Schema for the clusterkeycloakrealms
+          API.
+        properties:
+          apiVersion:
+            description: |-
+              APIVersion defines the versioned schema of this representation of an object.
+              Servers should convert recognized schemas to the latest internal value, and
+              may reject unrecognized values.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+            type: string
+          kind:
+            description: |-
+              Kind is a string value representing the REST resource this object represents.
+              Servers may infer this from the endpoint the client submits requests to.
+              Cannot be updated.
+              In CamelCase.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: ClusterKeycloakRealmSpec defines the desired state of ClusterKeycloakRealm.
+            properties:
+              authenticationFlows:
+                description: AuthenticationFlow is the configuration for authentication
+                  flows in the realm.
+                nullable: true
+                properties:
+                  browserFlow:
+                    description: BrowserFlow specifies the authentication flow to
+                      use for the realm's browser clients.
+                    example: browser
+                    type: string
+                type: object
+              browserSecurityHeaders:
+                additionalProperties:
+                  type: string
+                description: BrowserSecurityHeaders is a map of security headers to
+                  apply to HTTP responses from the realm's browser clients.
+                nullable: true
+                type: object
+              clusterKeycloakRef:
+                description: ClusterKeycloakRef is a name of the ClusterKeycloak instance
+                  that owns the realm.
+                type: string
+              displayHtmlName:
+                description: DisplayHTMLName name to render in the UI.
+                type: string
+              displayName:
+                description: DisplayName is the display name of the realm.
+                type: string
+              frontendUrl:
+                description: |-
+                  FrontendURL Set the frontend URL for the realm.
+                  Use in combination with the default hostname provider to override the base URL for frontend requests for a specific realm.
+                type: string
+              localization:
+                description: Localization is the configuration for localization in
+                  the realm.
+                nullable: true
+                properties:
+                  internationalizationEnabled:
+                    description: InternationalizationEnabled indicates whether to
+                      enable internationalization.
+                    nullable: true
+                    type: boolean
+                type: object
+              passwordPolicy:
+                description: PasswordPolicies is a list of password policies to apply
+                  to the realm.
+                items:
+                  properties:
+                    type:
+                      description: Type of password policy.
+                      type: string
+                    value:
+                      description: Value of password policy.
+                      type: string
+                  required:
+                  - type
+                  - value
+                  type: object
+                nullable: true
+                type: array
+              realmEventConfig:
+                description: RealmEventConfig is the configuration for events in the
+                  realm.
+                nullable: true
+                properties:
+                  adminEventsDetailsEnabled:
+                    description: AdminEventsDetailsEnabled indicates whether to enable
+                      detailed admin events.
+                    type: boolean
+                  adminEventsEnabled:
+                    description: AdminEventsEnabled indicates whether to enable admin
+                      events.
+                    type: boolean
+                  enabledEventTypes:
+                    description: EnabledEventTypes is a list of event types to enable.
+                    items:
+                      type: string
+                    type: array
+                  eventsEnabled:
+                    description: EventsEnabled indicates whether to enable events.
+                    type: boolean
+                  eventsExpiration:
+                    description: EventsExpiration is the number of seconds after which
+                      events expire.
+                    type: integer
+                  eventsListeners:
+                    description: EventsListeners is a list of event listeners to enable.
+                    items:
+                      type: string
+                    type: array
+                type: object
+              realmName:
+                description: RealmName specifies the name of the realm.
+                type: string
+              themes:
+                description: Themes is a map of themes to apply to the realm.
+                nullable: true
+                properties:
+                  accountTheme:
+                    description: AccountTheme specifies the account theme to use for
+                      the realm.
+                    nullable: true
+                    type: string
+                  adminConsoleTheme:
+                    description: AdminConsoleTheme specifies the admin console theme
+                      to use for the realm.
+                    nullable: true
+                    type: string
+                  emailTheme:
+                    description: EmailTheme specifies the email theme to use for the
+                      realm.
+                    nullable: true
+                    type: string
+                  loginTheme:
+                    description: LoginTheme specifies the login theme to use for the
+                      realm.
+                    nullable: true
+                    type: string
+                type: object
+              tokenSettings:
+                description: TokenSettings is the configuration for tokens in the
+                  realm.
+                nullable: true
+                properties:
+                  accessCodeLifespan:
+                    default: 60
+                    description: |-
+                      AccessCodeLifespan specifies max time(in seconds)a client has to finish the access token protocol.
+                      This should normally be 1 minute.
+                    type: integer
+                  accessToken:
+                    default: 900
+                    description: AccessTokenLifespanForImplicitFlow specifies max
+                      time(in seconds) before an access token is expired for implicit
+                      flow.
+                    type: integer
+                  accessTokenLifespan:
+                    default: 300
+                    description: |-
+                      AccessTokenLifespan specifies max time(in seconds) before an access token is expired.
+                      This value is recommended to be short relative to the SSO timeout.
+                    type: integer
+                  actionTokenGeneratedByAdminLifespan:
+                    default: 43200
+                    description: |-
+                      ActionTokenGeneratedByAdminLifespan specifies max time(in seconds) before an action permit sent to a user by administrator is expired.
+                      This value is recommended to be long to allow administrators to send e-mails for users that are currently offline.
+                      The default timeout can be overridden immediately before issuing the token.
+                    type: integer
+                  actionTokenGeneratedByUserLifespan:
+                    default: 300
+                    description: |-
+                      AccessCodeLifespanUserAction specifies max time(in seconds) before an action permit sent by a user (such as a forgot password e-mail) is expired.
+                      This value is recommended to be short because it's expected that the user would react to self-created action quickly.
+                    type: integer
+                  defaultSignatureAlgorithm:
+                    default: RS256
+                    description: DefaultSignatureAlgorithm specifies the default algorithm
+                      used to sign tokens for the realm
+                    enum:
+                    - ES256
+                    - ES384
+                    - ES512
+                    - EdDSA
+                    - HS256
+                    - HS384
+                    - HS512
+                    - PS256
+                    - PS384
+                    - PS512
+                    - RS256
+                    - RS384
+                    - RS512
+                    example: RS256
+                    type: string
+                  refreshTokenMaxReuse:
+                    default: 0
+                    description: |-
+                      RefreshTokenMaxReuse specifies maximum number of times a refresh token can be reused.
+                      When a different token is used, revocation is immediate.
+                    type: integer
+                  revokeRefreshToken:
+                    default: false
+                    description: |-
+                      RevokeRefreshToken if enabled a refresh token can only be used up to 'refreshTokenMaxReuse' and
+                      is revoked when a different token is used.
+                      Otherwise, refresh tokens are not revoked when used and can be used multiple times.
+                    type: boolean
+                type: object
+            required:
+            - clusterKeycloakRef
+            - realmName
+            type: object
+          status:
+            description: ClusterKeycloakRealmStatus defines the observed state of
+              ClusterKeycloakRealm.
+            properties:
+              available:
+                type: boolean
+              failureCount:
+                format: int64
+                type: integer
+              value:
+                type: string
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: null
+  storedVersions:
+  - v1alpha1
+
+---
