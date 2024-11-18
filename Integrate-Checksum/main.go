@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"log"
 	"net/http"
 	"os"
 	"path/filepath"
@@ -22,7 +23,11 @@ import (
 	"kcl-lang.io/kpm/pkg/utils"
 )
 
-const KCLModFile = "kcl.mod"
+const (
+	KCLModFile      = "kcl.mod"
+	PKG_NAME_ENV    = "PKG_NAME"
+	PKG_VERSION_ENV = "PKG_VERSION"
+)
 
 // findKCLModFiles searches the specified root directory for all kcl.mod files and returns their paths.
 func findKCLModFiles(root string) ([]string, error) {
@@ -169,15 +174,14 @@ func tagManifest(repo *remote.Repository, manifestBytes []byte, dependency *pkg.
 }
 
 // processPackage processes the package directory and updates the OCI manifest if needed.
-func processPackage(packageDir string) error {
-	kpmClient, err := client.NewKpmClient()
-	if err != nil {
-		return fmt.Errorf("failed to create KPM client: %w", err)
-	}
-
+func processPackage(packageDir string, kpmClient *client.KpmClient, pkgName string, pkgVersion string) error {
 	dependency, err := resolveDependency(kpmClient, packageDir)
 	if err != nil {
 		return fmt.Errorf("failed to resolve dependency: %w", err)
+	}
+
+	if dependency.Name != pkgName || dependency.Version != pkgVersion {
+		return nil
 	}
 
 	manifest, err := fetchManifest(kpmClient, dependency)
@@ -210,11 +214,23 @@ func main() {
 		return
 	}
 
+	pkgName := os.Getenv(PKG_NAME_ENV)
+	pkgVersion := os.Getenv(PKG_VERSION_ENV)
+
+	if pkgName == "" || pkgVersion == "" {
+		log.Fatal("Environment variables PKG_NAME or PKG_VERSION are not set")
+	}
+
+	kpmClient, err := client.NewKpmClient()
+	if err != nil {
+		log.Fatalf("failed to create KPM client: %v", err)
+	}
+
 	for _, packageDir := range modFilePaths {
-		if err := processPackage(packageDir); err != nil {
-			fmt.Printf("Error processing package at '%s': %v\n", packageDir, err)
+		if err := processPackage(packageDir, kpmClient, pkgName, pkgVersion); err != nil {
+			log.Fatalf("Error processing package at '%s': %v", packageDir, err)
 		}
 	}
-	
-	fmt.Println("Checksum successfully included in all KCL packages")
+
+	fmt.Printf("Checksum successfully included in the package '%s' of version '%s'\n", pkgName, pkgVersion)
 }

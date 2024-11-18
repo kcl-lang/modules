@@ -11,6 +11,14 @@ on:
         description: "Enter the KPM Repository"
         required: true
         default: "test"
+      pkg_name:
+        description: "Enter the Package Name"
+        required: true
+        default: "test"
+      pkg_version:
+        description: "Enter the Package Version"
+        required: true
+        default: "0.0.1"
 
 jobs:
   include_modules_checksum:
@@ -36,7 +44,7 @@ jobs:
 
       - name: Login to registry
         run: |
-          kcl registry login -u ${{ github.event.inputs.kpm_repo }} -p ${{ secrets.REGISTRY_ACCESS_TOKEN }} ${{ github.event.inputs.kpm_reg }}
+          kcl registry login -u ${{ secrets.REGISTRY_ACCESS_NAME }} -p ${{ secrets.REGISTRY_ACCESS_TOKEN }} ${{ github.event.inputs.kpm_reg }}
 
       - name: Get dependencies
         run: go get -v ./...
@@ -45,4 +53,6 @@ jobs:
         env:
           KPM_REG: ${{ github.event.inputs.kpm_reg }}
           KPM_REPO: ${{ github.event.inputs.kpm_repo }}
+          PKG_NAME: ${{ github.event.inputs.pkg_name }}
+          PKG_VERSION: ${{ github.event.inputs.pkg_version }}
         run: go run ./Integrate-Checksum/main.go
