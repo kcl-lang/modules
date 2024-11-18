@@ -1,0 +1,25 @@
+version: v0.27.2
+name: sealed-secrets
+displayName: sealed-secrets
+createdAt: "2024-11-18T02:11:41Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `sealed-secrets` with tag `v0.27.2` as dependency
+  ```
+  kcl mod add sealed-secrets:v0.27.2
+  ```
+
+  #### Pull `sealed-secrets` with tag `v0.27.2` to local
+  ```
+  kcl mod pull sealed-secrets:v0.27.2
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
