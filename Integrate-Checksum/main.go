@@ -195,7 +195,7 @@ func processPackage(packageDir string, kpmClient *client.KpmClient, pkgName stri
 	}
 
 	if existingSum, ok := manifest.Annotations[constants.DEFAULT_KCL_OCI_MANIFEST_SUM]; ok && dependency.Sum == existingSum {
-		fmt.Printf("Manifest already up to date with matching checksum. ExistingSum: %s\n", existingSum)
+		log.Printf("Manifest already up to date with matching checksum. ExistingSum: %s\n", existingSum)
 		return nil
 	}
 
@@ -211,13 +211,13 @@ func processPackage(packageDir string, kpmClient *client.KpmClient, pkgName stri
 func main() {
 	currentDir, err := os.Getwd()
 	if err != nil {
-		fmt.Printf("Error getting current directory: %v\n", err)
+		log.Printf("Error getting current directory: %v\n", err)
 		return
 	}
 
 	modFilePaths, err := findKCLModFiles(currentDir)
 	if err != nil {
-		fmt.Printf("Error finding kcl.mod files: %v\n", err)
+		log.Printf("Error finding kcl.mod files: %v\n", err)
 		return
 	}
 
@@ -241,5 +241,5 @@ func main() {
 		}
 	}
 
-	fmt.Printf("Checksum successfully included in the package '%s' of version '%s'\n", pkgName, pkgVersion)
+	log.Printf("Checksum successfully included in the package '%s' of version '%s'\n", pkgName, pkgVersion)
 }
