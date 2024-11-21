@@ -1,0 +1,58 @@
+name: Include KCL Modules Checksum
+
+on:
+  workflow_dispatch:
+    inputs:
+      kpm_reg:
+        description: "Enter the KPM Registry"
+        required: true
+        default: "localhost:5001"
+      kpm_repo:
+        description: "Enter the KPM Repository"
+        required: true
+        default: "test"
+      pkg_name:
+        description: "Enter the Package Name"
+        required: true
+        default: "test"
+      pkg_version:
+        description: "Enter the Package Version"
+        required: true
+        default: "0.0.1"
+
+jobs:
+  include_modules_checksum:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install kcl
+        run: wget -q https://kcl-lang.io/script/install-cli.sh -O - | /bin/bash
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+
+      - name: Run local registry for localhost
+        if: ${{ github.event.inputs.kpm_reg == 'localhost:5001' }}
+        run: ./scripts/reg.sh
+
+      - name: Login to registry
+        run: |
+          kcl registry login -u ${{ secrets.REGISTRY_ACCESS_NAME }} -p ${{ secrets.REGISTRY_ACCESS_TOKEN }} ${{ github.event.inputs.kpm_reg }}
+
+      - name: Get dependencies
+        run: go get -v ./...
+
+      - name: Run include checksum tool
+        env:
+          KPM_REG: ${{ github.event.inputs.kpm_reg }}
+          KPM_REPO: ${{ github.event.inputs.kpm_repo }}
+          PKG_NAME: ${{ github.event.inputs.pkg_name }}
+          PKG_VERSION: ${{ github.event.inputs.pkg_version }}
+        run: go run ./Integrate-Checksum/main.go
