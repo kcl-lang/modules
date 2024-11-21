@@ -47,6 +47,9 @@ func findKCLModFiles(root string) ([]string, error) {
 	if err != nil {
 		return nil, fmt.Errorf("error walking directory '%s': %w", root, err)
 	}
+
+	log.Printf("Selected paths: %v", modFilePaths)
+
 	return modFilePaths, nil
 }
 
@@ -85,6 +88,8 @@ func resolveDependency(kpmClient *client.KpmClient, packageDir string) (*pkg.Dep
 	if dependency.Sum, err = utils.HashDir(packageDir); err != nil {
 		return nil, fmt.Errorf("failed to hash directory '%s': %w", packageDir, err)
 	}
+	log.Printf("Successfully hashed directory '%s': Sum = %s", packageDir, dependency.Sum)
+
 	dependency.FromKclPkg(kclPkg)
 
 	return dependency, nil
@@ -190,13 +195,15 @@ func processPackage(packageDir string, kpmClient *client.KpmClient, pkgName stri
 	}
 
 	if existingSum, ok := manifest.Annotations[constants.DEFAULT_KCL_OCI_MANIFEST_SUM]; ok && dependency.Sum == existingSum {
-		fmt.Println("Manifest already up to date with matching checksum.")
+		fmt.Printf("Manifest already up to date with matching checksum. ExistingSum: %s\n", existingSum)
 		return nil
 	}
 
 	if err := updateChecksum(manifest, kpmClient, dependency); err != nil {
 		return fmt.Errorf("failed to update checksum in manifest: %w", err)
 	}
+
+	log.Printf("Successfully updated manifest with new checksum: %s\n", dependency.Sum)
 
 	return nil
 }
@@ -220,6 +227,8 @@ func main() {
 	if pkgName == "" || pkgVersion == "" {
 		log.Fatal("Environment variables PKG_NAME or PKG_VERSION are not set")
 	}
+
+	log.Printf("Acquired package info - Name: %s, Version: %s", pkgName, pkgVersion)
 
 	kpmClient, err := client.NewKpmClient()
 	if err != nil {
