@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema AppProject:
-    """
+    r"""
     AppProject provides a logical grouping of applications, providing controls for:
     * where the apps may deploy to (cluster whitelist)
     * what may be deployed (repository whitelist, resource whitelist/blacklist)
@@ -41,7 +41,7 @@ schema AppProject:
 
 
 schema ArgoprojIoV1alpha1AppProjectSpec:
-    """
+    r"""
     AppProjectSpec is the specification of an AppProject
 
     Attributes
@@ -52,6 +52,8 @@ schema ArgoprojIoV1alpha1AppProjectSpec:
         ClusterResourceWhitelist contains list of whitelisted cluster level resources
     description : str, default is Undefined, optional
         Description contains optional project description
+    destinationServiceAccounts : [ArgoprojIoV1alpha1AppProjectSpecDestinationServiceAccountsItems0], default is Undefined, optional
+        DestinationServiceAccounts holds information about the service accounts to be impersonated for the application sync operation for each destination.
     destinations : [ArgoprojIoV1alpha1AppProjectSpecDestinationsItems0], default is Undefined, optional
         Destinations contains list of destinations available for deployment
     namespaceResourceBlacklist : [ArgoprojIoV1alpha1AppProjectSpecNamespaceResourceBlacklistItems0], default is Undefined, optional
@@ -81,6 +83,8 @@ schema ArgoprojIoV1alpha1AppProjectSpec:
 
     description?: str
 
+    destinationServiceAccounts?: [ArgoprojIoV1alpha1AppProjectSpecDestinationServiceAccountsItems0]
+
     destinations?: [ArgoprojIoV1alpha1AppProjectSpecDestinationsItems0]
 
     namespaceResourceBlacklist?: [ArgoprojIoV1alpha1AppProjectSpecNamespaceResourceBlacklistItems0]
@@ -103,7 +107,7 @@ schema ArgoprojIoV1alpha1AppProjectSpec:
 
 
 schema ArgoprojIoV1alpha1AppProjectSpecClusterResourceBlacklistItems0:
-    """
+    r"""
     GroupKind specifies a Group and a Kind, but does not force a version.  This is useful for identifying
     concepts during lookup stages without having partially valid types
 
@@ -122,7 +126,7 @@ schema ArgoprojIoV1alpha1AppProjectSpecClusterResourceBlacklistItems0:
 
 
 schema ArgoprojIoV1alpha1AppProjectSpecClusterResourceWhitelistItems0:
-    """
+    r"""
     GroupKind specifies a Group and a Kind, but does not force a version.  This is useful for identifying
     concepts during lookup stages without having partially valid types
 
@@ -140,8 +144,30 @@ schema ArgoprojIoV1alpha1AppProjectSpecClusterResourceWhitelistItems0:
     kind: str
 
 
-schema ArgoprojIoV1alpha1AppProjectSpecDestinationsItems0:
+schema ArgoprojIoV1alpha1AppProjectSpecDestinationServiceAccountsItems0:
+    r"""
+    ApplicationDestinationServiceAccount holds information about the service account to be impersonated for the application sync operation.
+
+    Attributes
+    ----------
+    defaultServiceAccount : str, default is Undefined, required
+        DefaultServiceAccount to be used for impersonation during the sync operation
+    namespace : str, default is Undefined, optional
+        Namespace specifies the target namespace for the application's resources.
+    server : str, default is Undefined, required
+        Server specifies the URL of the target cluster's Kubernetes control plane API.
     """
+
+
+    defaultServiceAccount: str
+
+    namespace?: str
+
+    server: str
+
+
+schema ArgoprojIoV1alpha1AppProjectSpecDestinationsItems0:
+    r"""
     ApplicationDestination holds information about the application's destination
 
     Attributes
@@ -164,7 +190,7 @@ schema ArgoprojIoV1alpha1AppProjectSpecDestinationsItems0:
 
 
 schema ArgoprojIoV1alpha1AppProjectSpecNamespaceResourceBlacklistItems0:
-    """
+    r"""
     GroupKind specifies a Group and a Kind, but does not force a version.  This is useful for identifying
     concepts during lookup stages without having partially valid types
 
@@ -183,7 +209,7 @@ schema ArgoprojIoV1alpha1AppProjectSpecNamespaceResourceBlacklistItems0:
 
 
 schema ArgoprojIoV1alpha1AppProjectSpecNamespaceResourceWhitelistItems0:
-    """
+    r"""
     GroupKind specifies a Group and a Kind, but does not force a version.  This is useful for identifying
     concepts during lookup stages without having partially valid types
 
@@ -202,7 +228,7 @@ schema ArgoprojIoV1alpha1AppProjectSpecNamespaceResourceWhitelistItems0:
 
 
 schema ArgoprojIoV1alpha1AppProjectSpecOrphanedResources:
-    """
+    r"""
     OrphanedResources specifies if controller should monitor orphaned resources of apps in this project
 
     Attributes
@@ -220,7 +246,7 @@ schema ArgoprojIoV1alpha1AppProjectSpecOrphanedResources:
 
 
 schema ArgoprojIoV1alpha1AppProjectSpecOrphanedResourcesIgnoreItems0:
-    """
+    r"""
     OrphanedResourceKey is a reference to a resource to be ignored from
 
     Attributes
@@ -242,7 +268,7 @@ schema ArgoprojIoV1alpha1AppProjectSpecOrphanedResourcesIgnoreItems0:
 
 
 schema ArgoprojIoV1alpha1AppProjectSpecRolesItems0:
-    """
+    r"""
     ProjectRole represents a role that has access to a project
 
     Attributes
@@ -272,7 +298,7 @@ schema ArgoprojIoV1alpha1AppProjectSpecRolesItems0:
 
 
 schema ArgoprojIoV1alpha1AppProjectSpecRolesItems0JwtTokensItems0:
-    """
+    r"""
     JWTToken holds the issuedAt and expiresAt values of a token
 
     Attributes
@@ -294,7 +320,7 @@ schema ArgoprojIoV1alpha1AppProjectSpecRolesItems0JwtTokensItems0:
 
 
 schema ArgoprojIoV1alpha1AppProjectSpecSignatureKeysItems0:
-    """
+    r"""
     SignatureKey is the specification of a key required to verify commit signatures with
 
     Attributes
@@ -308,7 +334,7 @@ schema ArgoprojIoV1alpha1AppProjectSpecSignatureKeysItems0:
 
 
 schema ArgoprojIoV1alpha1AppProjectSpecSyncWindowsItems0:
-    """
+    r"""
     SyncWindow contains the kind, time, duration and attributes that are used to assign the syncWindows to apps
 
     Attributes
@@ -350,7 +376,7 @@ schema ArgoprojIoV1alpha1AppProjectSpecSyncWindowsItems0:
 
 
 schema ArgoprojIoV1alpha1AppProjectStatus:
-    """
+    r"""
     AppProjectStatus contains status information for AppProject CRs
 
     Attributes
@@ -364,7 +390,7 @@ schema ArgoprojIoV1alpha1AppProjectStatus:
 
 
 schema ArgoprojIoV1alpha1AppProjectStatusJwtTokensByRoleAnon:
-    """
+    r"""
     JWTTokens represents a list of JWT tokens
 
     Attributes
@@ -378,7 +404,7 @@ schema ArgoprojIoV1alpha1AppProjectStatusJwtTokensByRoleAnon:
 
 
 schema ArgoprojIoV1alpha1AppProjectStatusJwtTokensByRoleAnonItemsItems0:
-    """
+    r"""
     JWTToken holds the issuedAt and expiresAt values of a token
 
     Attributes
