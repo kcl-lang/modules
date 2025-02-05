@@ -4,10 +4,11 @@ Editing this file might prove futile when you re-run the KCL auto-gen generate c
 """
 import regex
 import k8s.apimachinery.pkg.apis.meta.v1
+_regex_match = regex.match
 
 
 schema KnativeEventing:
-    """
+    r"""
     Schema for the knativeeventings API
 
     Attributes
@@ -37,7 +38,7 @@ schema KnativeEventing:
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpec:
-    """
+    r"""
     Spec defines the desired state of KnativeEventing
 
     Attributes
@@ -50,10 +51,12 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpec:
         The default broker type to use for the brokers Knative creates. If no value is provided, MTChannelBasedBroker will be used.
     deployments : [OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0], default is Undefined, optional
         A mapping of deployment name to override
-    high_availability : OperatorKnativeDevV1beta1KnativeEventingSpecHighAvailability, default is Undefined, optional
+    "high-availability" : OperatorKnativeDevV1beta1KnativeEventingSpecHighAvailability, default is Undefined, optional
         high availability
     manifests : [OperatorKnativeDevV1beta1KnativeEventingSpecManifestsItems0], default is Undefined, optional
         A list of eventing manifests, which will be installed by the operator
+    namespace : OperatorKnativeDevV1beta1KnativeEventingSpecNamespace, default is Undefined, optional
+        namespace
     podDisruptionBudgets : [OperatorKnativeDevV1beta1KnativeEventingSpecPodDisruptionBudgetsItems0], default is Undefined, optional
         A mapping of podDisruptionBudget name to override
     registry : OperatorKnativeDevV1beta1KnativeEventingSpecRegistry, default is Undefined, optional
@@ -79,9 +82,11 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpec:
 
     deployments?: [OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0]
 
-    high_availability?: OperatorKnativeDevV1beta1KnativeEventingSpecHighAvailability
+    "high-availability"?: OperatorKnativeDevV1beta1KnativeEventingSpecHighAvailability
 
     manifests?: [OperatorKnativeDevV1beta1KnativeEventingSpecManifestsItems0]
+
+    namespace?: OperatorKnativeDevV1beta1KnativeEventingSpecNamespace
 
     podDisruptionBudgets?: [OperatorKnativeDevV1beta1KnativeEventingSpecPodDisruptionBudgetsItems0]
 
@@ -99,7 +104,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpec:
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecAdditionalManifestsItems0:
-    """
+    r"""
     operator knative dev v1beta1 knative eventing spec additional manifests items0
 
     Attributes
@@ -113,7 +118,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecAdditionalManifestsItems0:
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0:
-    """
+    r"""
     operator knative dev v1beta1 knative eventing spec deployments items0
 
     Attributes
@@ -175,11 +180,11 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0:
 
 
     check:
-        replicas >= 0
+        replicas >= 0 if replicas not in [None, Undefined]
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0Affinity:
-    """
+    r"""
     If specified, the pod's scheduling constraints.
 
     Attributes
@@ -201,7 +206,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0Affinity:
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0AffinityNodeAffinity:
-    """
+    r"""
     Describes node affinity scheduling rules for the pod.
 
     Attributes
@@ -219,7 +224,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0AffinityNode
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0AffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     An empty preferred scheduling term matches all objects with implicit weight 0 (i.e. it's a no-op). A null preferred scheduling term matches no objects (i.e. is also a no-op).
 
     Attributes
@@ -237,7 +242,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0AffinityNode
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0AffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0Preference:
-    """
+    r"""
     A node selector term, associated with the corresponding weight.
 
     Attributes
@@ -255,7 +260,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0AffinityNode
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0AffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchExpressionsItems0:
-    """
+    r"""
     A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
     Attributes
@@ -277,7 +282,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0AffinityNode
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0AffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchFieldsItems0:
-    """
+    r"""
     A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
     Attributes
@@ -299,7 +304,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0AffinityNode
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0AffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution:
-    """
+    r"""
     If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to an update), the system may or may not try to eventually evict the pod from its node.
 
     Attributes
@@ -313,7 +318,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0AffinityNode
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0AffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0:
-    """
+    r"""
     A null or empty node selector term matches no objects. The requirements of them are ANDed. The TopologySelectorTerm type implements a subset of the NodeSelectorTerm.
 
     Attributes
@@ -331,7 +336,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0AffinityNode
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0AffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchExpressionsItems0:
-    """
+    r"""
     A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
     Attributes
@@ -353,7 +358,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0AffinityNode
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0AffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchFieldsItems0:
-    """
+    r"""
     A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
     Attributes
@@ -375,7 +380,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0AffinityNode
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0AffinityPodAffinity:
-    """
+    r"""
     Describes pod affinity scheduling rules (e.g. co-locate this pod in the same node, zone, etc. as some other pod(s)).
 
     Attributes
@@ -393,7 +398,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0AffinityPodA
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0AffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     The weights of all of the matched WeightedPodAffinityTerm fields are added per-node to find the most preferred node(s)
 
     Attributes
@@ -411,7 +416,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0AffinityPodA
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0AffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTerm:
-    """
+    r"""
     Required. A pod affinity term, associated with the corresponding weight.
 
     Attributes
@@ -433,7 +438,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0AffinityPodA
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0AffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector:
-    """
+    r"""
     A label query over a set of resources, in this case pods.
 
     Attributes
@@ -451,7 +456,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0AffinityPodA
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0AffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
     Attributes
@@ -473,7 +478,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0AffinityPodA
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0AffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     Defines a set of pods (namely those matching the labelSelector relative to the given namespace(s)) that this pod should be co-located (affinity) or not co-located (anti-affinity) with, where co-located is defined as running on a node whose value of the label with key <topologyKey> matches that of any node on which a pod of the set of pods is running
 
     Attributes
@@ -495,7 +500,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0AffinityPodA
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0AffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector:
-    """
+    r"""
     A label query over a set of resources, in this case pods.
 
     Attributes
@@ -513,7 +518,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0AffinityPodA
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0AffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
     Attributes
@@ -535,7 +540,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0AffinityPodA
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0AffinityPodAntiAffinity:
-    """
+    r"""
     Describes pod anti-affinity scheduling rules (e.g. avoid putting this pod in the same node, zone, etc. as some other pod(s)).
 
     Attributes
@@ -553,7 +558,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0AffinityPodA
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0AffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     The weights of all of the matched WeightedPodAffinityTerm fields are added per-node to find the most preferred node(s)
 
     Attributes
@@ -571,7 +576,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0AffinityPodA
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0AffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTerm:
-    """
+    r"""
     Required. A pod affinity term, associated with the corresponding weight.
 
     Attributes
@@ -593,7 +598,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0AffinityPodA
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0AffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector:
-    """
+    r"""
     A label query over a set of resources, in this case pods.
 
     Attributes
@@ -611,7 +616,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0AffinityPodA
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0AffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
     Attributes
@@ -633,7 +638,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0AffinityPodA
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0AffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     Defines a set of pods (namely those matching the labelSelector relative to the given namespace(s)) that this pod should be co-located (affinity) or not co-located (anti-affinity) with, where co-located is defined as running on a node whose value of the label with key <topologyKey> matches that of any node on which a pod of the set of pods is running
 
     Attributes
@@ -655,7 +660,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0AffinityPodA
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0AffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector:
-    """
+    r"""
     A label query over a set of resources, in this case pods.
 
     Attributes
@@ -673,7 +678,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0AffinityPodA
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0AffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
     Attributes
@@ -695,7 +700,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0AffinityPodA
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0EnvItems0:
-    """
+    r"""
     operator knative dev v1beta1 knative eventing spec deployments items0 env items0
 
     Attributes
@@ -713,7 +718,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0EnvItems0:
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0EnvItems0EnvVarsItems0:
-    """
+    r"""
     EnvVar represents an environment variable present in a Container.
 
     Attributes
@@ -735,7 +740,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0EnvItems0Env
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0EnvItems0EnvVarsItems0ValueFrom:
-    """
+    r"""
     Source for the environment variable's value. Cannot be used if value is not empty.
 
     Attributes
@@ -761,7 +766,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0EnvItems0Env
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0EnvItems0EnvVarsItems0ValueFromConfigMapKeyRef:
-    """
+    r"""
     Selects a key of a ConfigMap.
 
     Attributes
@@ -783,7 +788,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0EnvItems0Env
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0EnvItems0EnvVarsItems0ValueFromFieldRef:
-    """
+    r"""
     Selects a field of the pod: supports metadata.name, metadata.namespace, `metadata.labels['<KEY>']`, `metadata.annotations['<KEY>']`, spec.nodeName, spec.serviceAccountName, status.hostIP, status.podIP, status.podIPs.
 
     Attributes
@@ -801,7 +806,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0EnvItems0Env
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0EnvItems0EnvVarsItems0ValueFromResourceFieldRef:
-    """
+    r"""
     Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
 
     Attributes
@@ -823,11 +828,11 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0EnvItems0Env
 
 
     check:
-        regex.match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
+        _regex_match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0EnvItems0EnvVarsItems0ValueFromSecretKeyRef:
-    """
+    r"""
     Selects a key of a secret in the pod's namespace
 
     Attributes
@@ -849,7 +854,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0EnvItems0Env
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0LivenessProbesItems0:
-    """
+    r"""
     ProbesRequirementsOverride enables the user to override any container's env vars.
 
     Attributes
@@ -887,7 +892,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0LivenessProb
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0ReadinessProbesItems0:
-    """
+    r"""
     ProbesRequirementsOverride enables the user to override any container's env vars.
 
     Attributes
@@ -925,7 +930,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0ReadinessPro
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0ResourcesItems0:
-    """
+    r"""
     The pod this Resource is used to specify the requests and limits for a certain container based on the name.
 
     Attributes
@@ -947,7 +952,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0ResourcesIte
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0ResourcesItems0Limits:
-    """
+    r"""
     operator knative dev v1beta1 knative eventing spec deployments items0 resources items0 limits
 
     Attributes
@@ -965,12 +970,12 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0ResourcesIte
 
 
     check:
-        regex.match(str(cpu), r"^([+-]?[0-9.]+)([eEinumkKMGTP]*[-+]?[0-9]*)$") if cpu
-        regex.match(str(memory), r"^([+-]?[0-9.]+)([eEinumkKMGTP]*[-+]?[0-9]*)$") if memory
+        _regex_match(str(cpu), r"^([+-]?[0-9.]+)([eEinumkKMGTP]*[-+]?[0-9]*)$") if cpu
+        _regex_match(str(memory), r"^([+-]?[0-9.]+)([eEinumkKMGTP]*[-+]?[0-9]*)$") if memory
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0ResourcesItems0Requests:
-    """
+    r"""
     operator knative dev v1beta1 knative eventing spec deployments items0 resources items0 requests
 
     Attributes
@@ -988,12 +993,12 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0ResourcesIte
 
 
     check:
-        regex.match(str(cpu), r"^([+-]?[0-9.]+)([eEinumkKMGTP]*[-+]?[0-9]*)$") if cpu
-        regex.match(str(memory), r"^([+-]?[0-9.]+)([eEinumkKMGTP]*[-+]?[0-9]*)$") if memory
+        _regex_match(str(cpu), r"^([+-]?[0-9.]+)([eEinumkKMGTP]*[-+]?[0-9]*)$") if cpu
+        _regex_match(str(memory), r"^([+-]?[0-9.]+)([eEinumkKMGTP]*[-+]?[0-9]*)$") if memory
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0TolerationsItems0:
-    """
+    r"""
     The pod this Toleration is attached to tolerates any taint that matches the triple <key,value,effect> using the matching operator <operator>.
 
     Attributes
@@ -1023,7 +1028,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0TolerationsI
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0TopologySpreadConstraintsItems0:
-    """
+    r"""
     TopologySpreadConstraint specifies how to spread matching pods among the given topology.
 
     Attributes
@@ -1049,7 +1054,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0TopologySpre
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0TopologySpreadConstraintsItems0LabelSelector:
-    """
+    r"""
     LabelSelector is used to find matching pods. Pods that match this label selector are counted to determine the number of pods in their corresponding topology domain.
 
     Attributes
@@ -1067,7 +1072,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0TopologySpre
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0TopologySpreadConstraintsItems0LabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
     Attributes
@@ -1089,7 +1094,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecDeploymentsItems0TopologySpre
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecHighAvailability:
-    """
+    r"""
     Allows specification of HA control plane
 
     Attributes
@@ -1103,11 +1108,11 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecHighAvailability:
 
 
     check:
-        replicas >= 0
+        replicas >= 0 if replicas not in [None, Undefined]
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecManifestsItems0:
-    """
+    r"""
     operator knative dev v1beta1 knative eventing spec manifests items0
 
     Attributes
@@ -1120,12 +1125,32 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecManifestsItems0:
     URL?: str
 
 
-schema OperatorKnativeDevV1beta1KnativeEventingSpecPodDisruptionBudgetsItems0:
+schema OperatorKnativeDevV1beta1KnativeEventingSpecNamespace:
+    r"""
+    A field of namespace name to override the labels and annotations
+
+    Attributes
+    ----------
+    annotations : {str:str}, default is Undefined, optional
+        Annotations overrides labels for the namespace and its template.
+    labels : {str:str}, default is Undefined, optional
+        Labels overrides labels for the namespace and its template.
     """
+
+
+    annotations?: {str:str}
+
+    labels?: {str:str}
+
+
+schema OperatorKnativeDevV1beta1KnativeEventingSpecPodDisruptionBudgetsItems0:
+    r"""
     operator knative dev v1beta1 knative eventing spec pod disruption budgets items0
 
     Attributes
     ----------
+    maxUnavailable : int | str, default is Undefined, optional
+        An eviction is allowed if at most "maxUnavailable" pods selected by "selector" are unavailable after the eviction, i.e. even in absence of the evicted pod. For example, one can prevent all voluntary evictions by specifying 0. This is a mutually exclusive setting with "minAvailable".
     minAvailable : int | str, default is Undefined, optional
         An eviction is allowed if at least "minAvailable" pods selected by "selector" will still be available after the eviction, i.e. even in the absence of the evicted pod.  So for example you can prevent all voluntary evictions by specifying "100%".
     name : str, default is Undefined, optional
@@ -1133,13 +1158,15 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecPodDisruptionBudgetsItems0:
     """
 
 
+    maxUnavailable?: int | str
+
     minAvailable?: int | str
 
     name?: str
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecRegistry:
-    """
+    r"""
     A means to override the corresponding deployment images in the upstream. This affects both apps/v1.Deployment and caching.internal.knative.dev/v1alpha1.Image.
 
     Attributes
@@ -1161,7 +1188,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecRegistry:
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecRegistryImagePullSecretsItems0:
-    """
+    r"""
     operator knative dev v1beta1 knative eventing spec registry image pull secrets items0
 
     Attributes
@@ -1175,7 +1202,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecRegistryImagePullSecretsItems
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecServicesItems0:
-    """
+    r"""
     operator knative dev v1beta1 knative eventing spec services items0
 
     Attributes
@@ -1201,7 +1228,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecServicesItems0:
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecSource:
-    """
+    r"""
     The source configuration for Knative Eventing
 
     Attributes
@@ -1235,7 +1262,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecSource:
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecSourceCeph:
-    """
+    r"""
     Ceph settings
 
     Attributes
@@ -1249,7 +1276,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecSourceCeph:
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecSourceGithub:
-    """
+    r"""
     GitHub settings
 
     Attributes
@@ -1263,7 +1290,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecSourceGithub:
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecSourceGitlab:
-    """
+    r"""
     GitLab settings
 
     Attributes
@@ -1277,7 +1304,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecSourceGitlab:
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecSourceKafka:
-    """
+    r"""
     Apache Kafka settings
 
     Attributes
@@ -1291,7 +1318,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecSourceKafka:
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecSourceRabbitmq:
-    """
+    r"""
     RabbitMQ settings
 
     Attributes
@@ -1305,7 +1332,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecSourceRabbitmq:
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecSourceRedis:
-    """
+    r"""
     Redis settings
 
     Attributes
@@ -1319,7 +1346,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecSourceRedis:
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0:
-    """
+    r"""
     operator knative dev v1beta1 knative eventing spec workloads items0
 
     Attributes
@@ -1389,11 +1416,11 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0:
 
 
     check:
-        replicas >= 0
+        replicas >= 0 if replicas not in [None, Undefined]
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0Affinity:
-    """
+    r"""
     If specified, the pod's scheduling constraints.
 
     Attributes
@@ -1415,7 +1442,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0Affinity:
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0AffinityNodeAffinity:
-    """
+    r"""
     Describes node affinity scheduling rules for the pod.
 
     Attributes
@@ -1433,7 +1460,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0AffinityNodeAf
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0AffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     An empty preferred scheduling term matches all objects with implicit weight 0 (i.e. it's a no-op). A null preferred scheduling term matches no objects (i.e. is also a no-op).
 
     Attributes
@@ -1451,7 +1478,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0AffinityNodeAf
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0AffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0Preference:
-    """
+    r"""
     A node selector term, associated with the corresponding weight.
 
     Attributes
@@ -1469,7 +1496,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0AffinityNodeAf
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0AffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchExpressionsItems0:
-    """
+    r"""
     A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
     Attributes
@@ -1491,7 +1518,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0AffinityNodeAf
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0AffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchFieldsItems0:
-    """
+    r"""
     A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
     Attributes
@@ -1513,7 +1540,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0AffinityNodeAf
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0AffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution:
-    """
+    r"""
     If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to an update), the system may or may not try to eventually evict the pod from its node.
 
     Attributes
@@ -1527,7 +1554,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0AffinityNodeAf
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0AffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0:
-    """
+    r"""
     A null or empty node selector term matches no objects. The requirements of them are ANDed. The TopologySelectorTerm type implements a subset of the NodeSelectorTerm.
 
     Attributes
@@ -1545,7 +1572,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0AffinityNodeAf
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0AffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchExpressionsItems0:
-    """
+    r"""
     A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
     Attributes
@@ -1567,7 +1594,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0AffinityNodeAf
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0AffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchFieldsItems0:
-    """
+    r"""
     A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
     Attributes
@@ -1589,7 +1616,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0AffinityNodeAf
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0AffinityPodAffinity:
-    """
+    r"""
     Describes pod affinity scheduling rules (e.g. co-locate this pod in the same node, zone, etc. as some other pod(s)).
 
     Attributes
@@ -1607,7 +1634,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0AffinityPodAff
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0AffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     The weights of all of the matched WeightedPodAffinityTerm fields are added per-node to find the most preferred node(s)
 
     Attributes
@@ -1625,7 +1652,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0AffinityPodAff
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0AffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTerm:
-    """
+    r"""
     Required. A pod affinity term, associated with the corresponding weight.
 
     Attributes
@@ -1647,7 +1674,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0AffinityPodAff
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0AffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector:
-    """
+    r"""
     A label query over a set of resources, in this case pods.
 
     Attributes
@@ -1665,7 +1692,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0AffinityPodAff
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0AffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
     Attributes
@@ -1687,7 +1714,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0AffinityPodAff
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0AffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     Defines a set of pods (namely those matching the labelSelector relative to the given namespace(s)) that this pod should be co-located (affinity) or not co-located (anti-affinity) with, where co-located is defined as running on a node whose value of the label with key <topologyKey> matches that of any node on which a pod of the set of pods is running
 
     Attributes
@@ -1709,7 +1736,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0AffinityPodAff
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0AffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector:
-    """
+    r"""
     A label query over a set of resources, in this case pods.
 
     Attributes
@@ -1727,7 +1754,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0AffinityPodAff
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0AffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
     Attributes
@@ -1749,7 +1776,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0AffinityPodAff
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0AffinityPodAntiAffinity:
-    """
+    r"""
     Describes pod anti-affinity scheduling rules (e.g. avoid putting this pod in the same node, zone, etc. as some other pod(s)).
 
     Attributes
@@ -1767,7 +1794,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0AffinityPodAnt
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0AffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     The weights of all of the matched WeightedPodAffinityTerm fields are added per-node to find the most preferred node(s)
 
     Attributes
@@ -1785,7 +1812,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0AffinityPodAnt
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0AffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTerm:
-    """
+    r"""
     Required. A pod affinity term, associated with the corresponding weight.
 
     Attributes
@@ -1807,7 +1834,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0AffinityPodAnt
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0AffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector:
-    """
+    r"""
     A label query over a set of resources, in this case pods.
 
     Attributes
@@ -1825,7 +1852,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0AffinityPodAnt
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0AffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
     Attributes
@@ -1847,7 +1874,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0AffinityPodAnt
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0AffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     Defines a set of pods (namely those matching the labelSelector relative to the given namespace(s)) that this pod should be co-located (affinity) or not co-located (anti-affinity) with, where co-located is defined as running on a node whose value of the label with key <topologyKey> matches that of any node on which a pod of the set of pods is running
 
     Attributes
@@ -1869,7 +1896,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0AffinityPodAnt
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0AffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector:
-    """
+    r"""
     A label query over a set of resources, in this case pods.
 
     Attributes
@@ -1887,7 +1914,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0AffinityPodAnt
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0AffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
     Attributes
@@ -1909,7 +1936,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0AffinityPodAnt
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0EnvItems0:
-    """
+    r"""
     operator knative dev v1beta1 knative eventing spec workloads items0 env items0
 
     Attributes
@@ -1927,7 +1954,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0EnvItems0:
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0EnvItems0EnvVarsItems0:
-    """
+    r"""
     EnvVar represents an environment variable present in a Container.
 
     Attributes
@@ -1949,7 +1976,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0EnvItems0EnvVa
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0EnvItems0EnvVarsItems0ValueFrom:
-    """
+    r"""
     Source for the environment variable's value. Cannot be used if value is not empty.
 
     Attributes
@@ -1975,7 +2002,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0EnvItems0EnvVa
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0EnvItems0EnvVarsItems0ValueFromConfigMapKeyRef:
-    """
+    r"""
     Selects a key of a ConfigMap.
 
     Attributes
@@ -1997,7 +2024,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0EnvItems0EnvVa
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0EnvItems0EnvVarsItems0ValueFromFieldRef:
-    """
+    r"""
     Selects a field of the pod: supports metadata.name, metadata.namespace, `metadata.labels['<KEY>']`, `metadata.annotations['<KEY>']`, spec.nodeName, spec.serviceAccountName, status.hostIP, status.podIP, status.podIPs.
 
     Attributes
@@ -2015,7 +2042,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0EnvItems0EnvVa
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0EnvItems0EnvVarsItems0ValueFromResourceFieldRef:
-    """
+    r"""
     Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
 
     Attributes
@@ -2037,11 +2064,11 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0EnvItems0EnvVa
 
 
     check:
-        regex.match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
+        _regex_match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0EnvItems0EnvVarsItems0ValueFromSecretKeyRef:
-    """
+    r"""
     Selects a key of a secret in the pod's namespace
 
     Attributes
@@ -2063,7 +2090,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0EnvItems0EnvVa
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0LivenessProbesItems0:
-    """
+    r"""
     ProbesRequirementsOverride enables the user to override any container's env vars.
 
     Attributes
@@ -2101,7 +2128,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0LivenessProbes
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0ReadinessProbesItems0:
-    """
+    r"""
     ProbesRequirementsOverride enables the user to override any container's env vars.
 
     Attributes
@@ -2139,7 +2166,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0ReadinessProbe
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0ResourcesItems0:
-    """
+    r"""
     The pod this Resource is used to specify the requests and limits for a certain container based on the name.
 
     Attributes
@@ -2161,7 +2188,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0ResourcesItems
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0ResourcesItems0Limits:
-    """
+    r"""
     operator knative dev v1beta1 knative eventing spec workloads items0 resources items0 limits
 
     Attributes
@@ -2179,12 +2206,12 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0ResourcesItems
 
 
     check:
-        regex.match(str(cpu), r"^([+-]?[0-9.]+)([eEinumkKMGTP]*[-+]?[0-9]*)$") if cpu
-        regex.match(str(memory), r"^([+-]?[0-9.]+)([eEinumkKMGTP]*[-+]?[0-9]*)$") if memory
+        _regex_match(str(cpu), r"^([+-]?[0-9.]+)([eEinumkKMGTP]*[-+]?[0-9]*)$") if cpu
+        _regex_match(str(memory), r"^([+-]?[0-9.]+)([eEinumkKMGTP]*[-+]?[0-9]*)$") if memory
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0ResourcesItems0Requests:
-    """
+    r"""
     operator knative dev v1beta1 knative eventing spec workloads items0 resources items0 requests
 
     Attributes
@@ -2202,12 +2229,12 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0ResourcesItems
 
 
     check:
-        regex.match(str(cpu), r"^([+-]?[0-9.]+)([eEinumkKMGTP]*[-+]?[0-9]*)$") if cpu
-        regex.match(str(memory), r"^([+-]?[0-9.]+)([eEinumkKMGTP]*[-+]?[0-9]*)$") if memory
+        _regex_match(str(cpu), r"^([+-]?[0-9.]+)([eEinumkKMGTP]*[-+]?[0-9]*)$") if cpu
+        _regex_match(str(memory), r"^([+-]?[0-9.]+)([eEinumkKMGTP]*[-+]?[0-9]*)$") if memory
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0TolerationsItems0:
-    """
+    r"""
     The pod this Toleration is attached to tolerates any taint that matches the triple <key,value,effect> using the matching operator <operator>.
 
     Attributes
@@ -2237,7 +2264,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0TolerationsIte
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0TopologySpreadConstraintsItems0:
-    """
+    r"""
     TopologySpreadConstraint specifies how to spread matching pods among the given topology.
 
     Attributes
@@ -2263,7 +2290,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0TopologySpread
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0TopologySpreadConstraintsItems0LabelSelector:
-    """
+    r"""
     LabelSelector is used to find matching pods. Pods that match this label selector are counted to determine the number of pods in their corresponding topology domain.
 
     Attributes
@@ -2281,7 +2308,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0TopologySpread
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0TopologySpreadConstraintsItems0LabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
     Attributes
@@ -2303,7 +2330,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0TopologySpread
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0VolumeMountsItems0:
-    """
+    r"""
     VolumeMount describes a mounting of a Volume within a container.
 
     Attributes
@@ -2337,7 +2364,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingSpecWorkloadsItems0VolumeMountsIt
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingStatus:
-    """
+    r"""
     operator knative dev v1beta1 knative eventing status
 
     Attributes
@@ -2363,7 +2390,7 @@ schema OperatorKnativeDevV1beta1KnativeEventingStatus:
 
 
 schema OperatorKnativeDevV1beta1KnativeEventingStatusConditionsItems0:
-    """
+    r"""
     operator knative dev v1beta1 knative eventing status conditions items0
 
     Attributes

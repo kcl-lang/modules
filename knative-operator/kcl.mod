@@ -1,6 +1,6 @@
 [package]
-name = "knative-operator"
-version = "0.2.1"
+name = "operator"
+version = "1.17.2"
 
 [dependencies]
 k8s = "1.31.2"
