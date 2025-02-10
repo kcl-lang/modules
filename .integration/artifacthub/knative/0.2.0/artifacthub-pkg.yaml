@@ -1,0 +1,25 @@
+version: 0.2.0
+name: knative
+displayName: knative
+createdAt: "2025-02-10T02:42:18Z"
+description: KCL module for Knative Serving and Eventing
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `knative` with tag `0.2.0` as dependency
+  ```
+  kcl mod add knative:0.2.0
+  ```
+
+  #### Pull `knative` with tag `0.2.0` to local
+  ```
+  kcl mod pull knative:0.2.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

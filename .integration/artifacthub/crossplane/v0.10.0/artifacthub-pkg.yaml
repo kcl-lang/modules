@@ -1,0 +1,25 @@
+version: v0.10.0
+name: crossplane
+displayName: crossplane
+createdAt: "2025-02-10T02:42:07Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `crossplane` with tag `v0.10.0` as dependency
+  ```
+  kcl mod add crossplane:v0.10.0
+  ```
+
+  #### Pull `crossplane` with tag `v0.10.0` to local
+  ```
+  kcl mod pull crossplane:v0.10.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

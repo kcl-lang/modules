@@ -1,0 +1,25 @@
+version: 0.0.1
+name: operator
+displayName: operator
+createdAt: "2025-02-10T02:42:13Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `operator` with tag `0.0.1` as dependency
+  ```
+  kcl mod add operator:0.0.1
+  ```
+
+  #### Pull `operator` with tag `0.0.1` to local
+  ```
+  kcl mod pull operator:0.0.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
