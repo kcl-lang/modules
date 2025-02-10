@@ -1,8 +1,8 @@
 [package]
 name = "knative"
+version = "0.2.0"
 edition = "*"
-version = "0.1.2"
-description = "`knative` is the knative spec definition"
+description = "KCL module for Knative Serving and Eventing"
 
 [dependencies]
 k8s = "1.31.2"
