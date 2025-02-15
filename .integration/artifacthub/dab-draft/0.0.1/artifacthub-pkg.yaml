@@ -1,0 +1,25 @@
+version: 0.0.1
+name: dab-draft
+displayName: dab-draft
+createdAt: "2025-02-15T10:45:44Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `dab-draft` with tag `0.0.1` as dependency
+  ```
+  kcl mod add dab-draft:0.0.1
+  ```
+
+  #### Pull `dab-draft` with tag `0.0.1` to local
+  ```
+  kcl mod pull dab-draft:0.0.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
