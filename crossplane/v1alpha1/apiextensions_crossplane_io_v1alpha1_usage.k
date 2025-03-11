@@ -9,10 +9,8 @@ schema Usage:
     r"""
     A Usage defines a deletion blocking relationship between two resources.
 
-
     Usages prevent accidental deletion of a single resource or deletion of
     resources with dependent resources.
-
 
     Read the Crossplane documentation for
     [more information about Compositions](https://docs.crossplane.io/latest/concepts/usages).

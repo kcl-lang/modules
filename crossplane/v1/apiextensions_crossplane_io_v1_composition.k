@@ -10,7 +10,6 @@ schema Composition:
     A Composition defines a collection of managed resources or functions that
     Crossplane uses to create and manage new composite resources.
 
-
     Read the Crossplane documentation for
     [more information about Compositions](https://docs.crossplane.io/latest/concepts/compositions).
 
@@ -44,21 +43,16 @@ schema ApiextensionsCrossplaneIoV1CompositionSpec:
     ----------
     compositeTypeRef : ApiextensionsCrossplaneIoV1CompositionSpecCompositeTypeRef, default is Undefined, required
         composite type ref
-    environment : ApiextensionsCrossplaneIoV1CompositionSpecEnvironment, default is Undefined, optional
-        environment
     mode : str, default is "Resources", optional
         Mode controls what type or "mode" of Composition will be used.
-
 
         "Pipeline" indicates that a Composition specifies a pipeline of
         Composition Functions, each of which is responsible for producing
         composed resources that Crossplane should create or update.
 
-
         "Resources" indicates that a Composition uses what is commonly referred
         to as "Patch & Transform" or P&T composition. This mode of Composition
         uses an array of resources, each a template for a composed resource.
-
 
         All Compositions should use Pipeline mode. Resources mode is deprecated.
         Resources mode won't be removed in Crossplane 1.x, and will remain the
@@ -69,17 +63,14 @@ schema ApiextensionsCrossplaneIoV1CompositionSpec:
         resource in this Composition. PatchSets cannot themselves refer to other
         PatchSets.
 
-
         PatchSets are only used by the "Resources" mode of Composition. They
         are ignored by other modes.
-
 
         Deprecated: Use Composition Functions instead.
     pipeline : [ApiextensionsCrossplaneIoV1CompositionSpecPipelineItems0], default is Undefined, optional
         Pipeline is a list of composition function steps that will be used when a
         composite resource referring to this composition is created. One of
         resources and pipeline must be specified - you cannot specify both.
-
 
         The Pipeline is only used by the "Pipeline" mode of Composition. It is
         ignored by other modes.
@@ -89,10 +80,8 @@ schema ApiextensionsCrossplaneIoV1CompositionSpec:
         Resources is a list of resource templates that will be used when a
         composite resource referring to this composition is created.
 
-
         Resources are only used by the "Resources" mode of Composition. They are
         ignored by other modes.
-
 
         Deprecated: Use Composition Functions instead.
     writeConnectionSecretsToNamespace : str, default is Undefined, optional
@@ -108,8 +97,6 @@ schema ApiextensionsCrossplaneIoV1CompositionSpec:
 
 
     compositeTypeRef: ApiextensionsCrossplaneIoV1CompositionSpecCompositeTypeRef
-
-    environment?: ApiextensionsCrossplaneIoV1CompositionSpecEnvironment
 
     mode?: "Resources" | "Pipeline" = "Resources"
 
@@ -141,552 +128,6 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecCompositeTypeRef:
     apiVersion: str
 
     kind: str
-
-
-schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironment:
-    r"""
-    Environment configures the environment in which resources are rendered.
-
-
-    THIS IS AN ALPHA FIELD. Do not use it in production. It is not honored
-    unless the relevant Crossplane feature flag is enabled, and may be
-    changed or removed without notice.
-
-    Attributes
-    ----------
-    defaultData : {str:any}, default is Undefined, optional
-        DefaultData statically defines the initial state of the environment.
-        It has the same schema-less structure as the data field in
-        environment configs.
-        It is overwritten by the selected environment configs.
-    environmentConfigs : [ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentEnvironmentConfigsItems0], default is Undefined, optional
-        EnvironmentConfigs selects a list of `EnvironmentConfig`s. The resolved
-        resources are stored in the composite resource at
-        `spec.environmentConfigRefs` and is only updated if it is null.
-
-
-        The list of references is used to compute an in-memory environment at
-        compose time. The data of all object is merged in the order they are
-        listed, meaning the values of EnvironmentConfigs with a larger index take
-        priority over ones with smaller indices.
-
-
-        The computed environment can be accessed in a composition using
-        `FromEnvironmentFieldPath` and `CombineFromEnvironment` patches.
-    patches : [ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0], default is Undefined, optional
-        Patches is a list of environment patches that are executed before a
-        composition's resources are composed.
-    policy : ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPolicy, default is Undefined, optional
-        policy
-    """
-
-
-    defaultData?: {str:any}
-
-    environmentConfigs?: [ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentEnvironmentConfigsItems0]
-
-    patches?: [ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0]
-
-    policy?: ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPolicy
-
-
-schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentEnvironmentConfigsItems0:
-    r"""
-    EnvironmentSource selects a EnvironmentConfig resource.
-
-    Attributes
-    ----------
-    ref : ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentEnvironmentConfigsItems0Ref, default is Undefined, optional
-        ref
-    selector : ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentEnvironmentConfigsItems0Selector, default is Undefined, optional
-        selector
-    $type : str, default is "Reference", optional
-        Type specifies the way the EnvironmentConfig is selected.
-        Default is `Reference`
-    """
-
-
-    ref?: ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentEnvironmentConfigsItems0Ref
-
-    selector?: ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentEnvironmentConfigsItems0Selector
-
-    $type?: "Reference" | "Selector" = "Reference"
-
-
-schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentEnvironmentConfigsItems0Ref:
-    r"""
-    Ref is a named reference to a single EnvironmentConfig.
-    Either Ref or Selector is required.
-
-    Attributes
-    ----------
-    name : str, default is Undefined, required
-        The name of the object.
-    """
-
-
-    name: str
-
-
-schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentEnvironmentConfigsItems0Selector:
-    r"""
-    Selector selects EnvironmentConfig(s) via labels.
-
-    Attributes
-    ----------
-    matchLabels : [ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentEnvironmentConfigsItems0SelectorMatchLabelsItems0], default is Undefined, optional
-        MatchLabels ensures an object with matching labels is selected.
-    maxMatch : int, default is Undefined, optional
-        MaxMatch specifies the number of extracted EnvironmentConfigs in Multiple mode, extracts all if nil.
-    minMatch : int, default is Undefined, optional
-        MinMatch specifies the required minimum of extracted EnvironmentConfigs in Multiple mode.
-    mode : str, default is "Single", optional
-        Mode specifies retrieval strategy: "Single" or "Multiple".
-    sortByFieldPath : str, default is "metadata.name", optional
-        SortByFieldPath is the path to the field based on which list of EnvironmentConfigs is alphabetically sorted.
-    """
-
-
-    matchLabels?: [ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentEnvironmentConfigsItems0SelectorMatchLabelsItems0]
-
-    maxMatch?: int
-
-    minMatch?: int
-
-    mode?: "Single" | "Multiple" = "Single"
-
-    sortByFieldPath?: str = "metadata.name"
-
-
-schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentEnvironmentConfigsItems0SelectorMatchLabelsItems0:
-    r"""
-    An EnvironmentSourceSelectorLabelMatcher acts like a k8s label selector but
-    can draw the label value from a different path.
-
-    Attributes
-    ----------
-    fromFieldPathPolicy : str, default is "Required", optional
-        FromFieldPathPolicy specifies the policy for the valueFromFieldPath.
-        The default is Required, meaning that an error will be returned if the
-        field is not found in the composite resource.
-        Optional means that if the field is not found in the composite resource,
-        that label pair will just be skipped. N.B. other specified label
-        matchers will still be used to retrieve the desired
-        environment config, if any.
-    key : str, default is Undefined, required
-        Key of the label to match.
-    $type : str, default is "FromCompositeFieldPath", optional
-        Type specifies where the value for a label comes from.
-    value : str, default is Undefined, optional
-        Value specifies a literal label value.
-    valueFromFieldPath : str, default is Undefined, optional
-        ValueFromFieldPath specifies the field path to look for the label value.
-    """
-
-
-    fromFieldPathPolicy?: "Optional" | "Required" = "Required"
-
-    key: str
-
-    $type?: "FromCompositeFieldPath" | "Value" = "FromCompositeFieldPath"
-
-    value?: str
-
-    valueFromFieldPath?: str
-
-
-schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0:
-    r"""
-    EnvironmentPatch is a patch for a Composition environment.
-
-    Attributes
-    ----------
-    combine : ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0Combine, default is Undefined, optional
-        combine
-    fromFieldPath : str, default is Undefined, optional
-        FromFieldPath is the path of the field on the resource whose value is
-        to be used as input. Required when type is FromCompositeFieldPath or
-        ToCompositeFieldPath.
-    policy : ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0Policy, default is Undefined, optional
-        policy
-    toFieldPath : str, default is Undefined, optional
-        ToFieldPath is the path of the field on the resource whose value will
-        be changed with the result of transforms. Leave empty if you'd like to
-        propagate to the same path as fromFieldPath.
-    transforms : [ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0TransformsItems0], default is Undefined, optional
-        Transforms are the list of functions that are used as a FIFO pipe for the
-        input to be transformed.
-    $type : str, default is "FromCompositeFieldPath", optional
-        Type sets the patching behaviour to be used. Each patch type may require
-        its own fields to be set on the Patch object.
-    """
-
-
-    combine?: ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0Combine
-
-    fromFieldPath?: str
-
-    policy?: ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0Policy
-
-    toFieldPath?: str
-
-    transforms?: [ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0TransformsItems0]
-
-    $type?: "FromCompositeFieldPath" | "ToCompositeFieldPath" | "CombineFromComposite" | "CombineToComposite" = "FromCompositeFieldPath"
-
-
-schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0Combine:
-    r"""
-    Combine is the patch configuration for a CombineFromComposite or
-    CombineToComposite patch.
-
-    Attributes
-    ----------
-    strategy : str, default is Undefined, required
-        Strategy defines the strategy to use to combine the input variable values.
-        Currently only string is supported.
-    string : ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0CombineString, default is Undefined, optional
-        string
-    variables : [ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0CombineVariablesItems0], default is Undefined, required
-        Variables are the list of variables whose values will be retrieved and
-        combined.
-    """
-
-
-    strategy: "string"
-
-    string?: ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0CombineString
-
-    variables: [ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0CombineVariablesItems0]
-
-
-    check:
-        len(variables) >= 1
-
-
-schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0CombineString:
-    r"""
-    String declares that input variables should be combined into a single
-    string, using the relevant settings for formatting purposes.
-
-    Attributes
-    ----------
-    fmt : str, default is Undefined, required
-        Format the input using a Go format string. See
-        https://golang.org/pkg/fmt/ for details.
-    """
-
-
-    fmt: str
-
-
-schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0CombineVariablesItems0:
-    r"""
-    A CombineVariable defines the source of a value that is combined with
-    others to form and patch an output value. Currently, this only supports
-    retrieving values from a field path.
-
-    Attributes
-    ----------
-    fromFieldPath : str, default is Undefined, required
-        FromFieldPath is the path of the field on the source whose value is
-        to be used as input.
-    """
-
-
-    fromFieldPath: str
-
-
-schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0Policy:
-    r"""
-    Policy configures the specifics of patching behaviour.
-
-    Attributes
-    ----------
-    fromFieldPath : str, default is Undefined, optional
-        FromFieldPath specifies how to patch from a field path. The default is
-        'Optional', which means the patch will be a no-op if the specified
-        fromFieldPath does not exist. Use 'Required' if the patch should fail if
-        the specified path does not exist.
-    mergeOptions : ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0PolicyMergeOptions, default is Undefined, optional
-        merge options
-    """
-
-
-    fromFieldPath?: "Optional" | "Required"
-
-    mergeOptions?: ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0PolicyMergeOptions
-
-
-schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0PolicyMergeOptions:
-    r"""
-    MergeOptions Specifies merge options on a field path.
-
-    Attributes
-    ----------
-    appendSlice : bool, default is Undefined, optional
-        Specifies that already existing elements in a merged slice should be preserved
-    keepMapValues : bool, default is Undefined, optional
-        Specifies that already existing values in a merged map should be preserved
-    """
-
-
-    appendSlice?: bool
-
-    keepMapValues?: bool
-
-
-schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0TransformsItems0:
-    r"""
-    Transform is a unit of process whose input is transformed into an output with
-    the supplied configuration.
-
-    Attributes
-    ----------
-    convert : ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0TransformsItems0Convert, default is Undefined, optional
-        convert
-    $map : {str:any}, default is Undefined, optional
-        Map uses the input as a key in the given map and returns the value.
-    match : ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0TransformsItems0Match, default is Undefined, optional
-        match
-    math : ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0TransformsItems0Math, default is Undefined, optional
-        math
-    string : ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0TransformsItems0String, default is Undefined, optional
-        string
-    $type : str, default is Undefined, required
-        Type of the transform to be run.
-    """
-
-
-    convert?: ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0TransformsItems0Convert
-
-    $map?: {str:any}
-
-    match?: ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0TransformsItems0Match
-
-    math?: ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0TransformsItems0Math
-
-    string?: ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0TransformsItems0String
-
-    $type: "map" | "match" | "math" | "string" | "convert"
-
-
-schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0TransformsItems0Convert:
-    r"""
-    Convert is used to cast the input into the given output type.
-
-    Attributes
-    ----------
-    format : str, default is Undefined, optional
-        The expected input format.
-
-
-        * `quantity` - parses the input as a K8s [`resource.Quantity`](https://pkg.go.dev/k8s.io/apimachinery/pkg/api/resource#Quantity).
-        Only used during `string -> float64` conversions.
-        * `json` - parses the input as a JSON string.
-        Only used during `string -> object` or `string -> list` conversions.
-
-
-        If this property is null, the default conversion is applied.
-    toType : str, default is Undefined, required
-        ToType is the type of the output of this transform.
-    """
-
-
-    format?: "none" | "quantity" | "json"
-
-    toType: "string" | "int" | "int64" | "bool" | "float64" | "object" | "array"
-
-
-schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0TransformsItems0Match:
-    r"""
-    Match is a more complex version of Map that matches a list of patterns.
-
-    Attributes
-    ----------
-    fallbackTo : str, default is "Value", optional
-        Determines to what value the transform should fallback if no pattern matches.
-    fallbackValue : any, default is Undefined, optional
-        The fallback value that should be returned by the transform if now pattern
-        matches.
-    patterns : [ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0TransformsItems0MatchPatternsItems0], default is Undefined, optional
-        The patterns that should be tested against the input string.
-        Patterns are tested in order. The value of the first match is used as
-        result of this transform.
-    """
-
-
-    fallbackTo?: "Value" | "Input" = "Value"
-
-    fallbackValue?: any
-
-    patterns?: [ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0TransformsItems0MatchPatternsItems0]
-
-
-schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0TransformsItems0MatchPatternsItems0:
-    r"""
-    MatchTransformPattern is a transform that returns the value that matches a
-    pattern.
-
-    Attributes
-    ----------
-    literal : str, default is Undefined, optional
-        Literal exactly matches the input string (case sensitive).
-        Is required if `type` is `literal`.
-    regexp : str, default is Undefined, optional
-        Regexp to match against the input string.
-        Is required if `type` is `regexp`.
-    result : any, default is Undefined, required
-        The value that is used as result of the transform if the pattern matches.
-    $type : str, default is "literal", required
-        Type specifies how the pattern matches the input.
-
-
-        * `literal` - the pattern value has to exactly match (case sensitive) the
-        input string. This is the default.
-
-
-        * `regexp` - the pattern treated as a regular expression against
-        which the input string is tested. Crossplane will throw an error if the
-        key is not a valid regexp.
-    """
-
-
-    literal?: str
-
-    regexp?: str
-
-    result: any
-
-    $type: "literal" | "regexp" = "literal"
-
-
-schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0TransformsItems0Math:
-    r"""
-    Math is used to transform the input via mathematical operations such as
-    multiplication.
-
-    Attributes
-    ----------
-    clampMax : int, default is Undefined, optional
-        ClampMax makes sure that the value is not bigger than the given value.
-    clampMin : int, default is Undefined, optional
-        ClampMin makes sure that the value is not smaller than the given value.
-    multiply : int, default is Undefined, optional
-        Multiply the value.
-    $type : str, default is "Multiply", optional
-        Type of the math transform to be run.
-    """
-
-
-    clampMax?: int
-
-    clampMin?: int
-
-    multiply?: int
-
-    $type?: "Multiply" | "ClampMin" | "ClampMax" = "Multiply"
-
-
-schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0TransformsItems0String:
-    r"""
-    String is used to transform the input into a string or a different kind
-    of string. Note that the input does not necessarily need to be a string.
-
-    Attributes
-    ----------
-    convert : str, default is Undefined, optional
-        Optional conversion method to be specified.
-        `ToUpper` and `ToLower` change the letter case of the input string.
-        `ToBase64` and `FromBase64` perform a base64 conversion based on the input string.
-        `ToJson` converts any input value into its raw JSON representation.
-        `ToSha1`, `ToSha256` and `ToSha512` generate a hash value based on the input
-        converted to JSON.
-        `ToAdler32` generate a addler32 hash based on the input string.
-    fmt : str, default is Undefined, optional
-        Format the input using a Go format string. See
-        https://golang.org/pkg/fmt/ for details.
-    join : ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0TransformsItems0StringJoin, default is Undefined, optional
-        join
-    regexp : ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0TransformsItems0StringRegexp, default is Undefined, optional
-        regexp
-    trim : str, default is Undefined, optional
-        Trim the prefix or suffix from the input
-    $type : str, default is "Format", optional
-        Type of the string transform to be run.
-    """
-
-
-    convert?: "ToUpper" | "ToLower" | "ToBase64" | "FromBase64" | "ToJson" | "ToSha1" | "ToSha256" | "ToSha512" | "ToAdler32"
-
-    fmt?: str
-
-    join?: ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0TransformsItems0StringJoin
-
-    regexp?: ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0TransformsItems0StringRegexp
-
-    trim?: str
-
-    $type?: "Format" | "Convert" | "TrimPrefix" | "TrimSuffix" | "Regexp" | "Join" = "Format"
-
-
-schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0TransformsItems0StringJoin:
-    r"""
-    Join defines parameters to join a slice of values to a string.
-
-    Attributes
-    ----------
-    separator : str, default is Undefined, required
-        Separator defines the character that should separate the values from each
-        other in the joined string.
-    """
-
-
-    separator: str
-
-
-schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPatchesItems0TransformsItems0StringRegexp:
-    r"""
-    Extract a match from the input using a regular expression.
-
-    Attributes
-    ----------
-    group : int, default is Undefined, optional
-        Group number to match. 0 (the default) matches the entire expression.
-    match : str, default is Undefined, required
-        Match string. May optionally include submatches, aka capture groups.
-        See https://pkg.go.dev/regexp/ for details.
-    """
-
-
-    group?: int
-
-    match: str
-
-
-schema ApiextensionsCrossplaneIoV1CompositionSpecEnvironmentPolicy:
-    r"""
-    Policy represents the Resolve and Resolution policies which apply to
-    all EnvironmentSourceReferences in EnvironmentConfigs list.
-
-    Attributes
-    ----------
-    resolution : str, default is "Required", optional
-        Resolution specifies whether resolution of this reference is required.
-        The default is 'Required', which means the reconcile will fail if the
-        reference cannot be resolved. 'Optional' means this reference will be
-        a no-op if it cannot be resolved.
-    resolve : str, default is Undefined, optional
-        Resolve specifies when this reference should be resolved. The default
-        is 'IfNotPresent', which will attempt to resolve the reference only when
-        the corresponding field is not present. Use 'Always' to resolve the
-        reference on every reconcile.
-    """
-
-
-    resolution?: "Required" | "Optional" = "Required"
-
-    resolve?: "Always" | "IfNotPresent"
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0:
@@ -721,8 +162,8 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0:
         combine
     fromFieldPath : str, default is Undefined, optional
         FromFieldPath is the path of the field on the resource whose value is
-        to be used as input. Required when type is FromCompositeFieldPath,
-        FromEnvironmentFieldPath, ToCompositeFieldPath, ToEnvironmentFieldPath.
+        to be used as input. Required when type is FromCompositeFieldPath or
+        ToCompositeFieldPath.
     patchSetName : str, default is Undefined, optional
         PatchSetName to include patches from. Required when type is PatchSet.
     policy : ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0Policy, default is Undefined, optional
@@ -752,13 +193,13 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0:
 
     transforms?: [ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0TransformsItems0]
 
-    $type?: "FromCompositeFieldPath" | "FromEnvironmentFieldPath" | "PatchSet" | "ToCompositeFieldPath" | "ToEnvironmentFieldPath" | "CombineFromEnvironment" | "CombineFromComposite" | "CombineToComposite" | "CombineToEnvironment" = "FromCompositeFieldPath"
+    $type?: "FromCompositeFieldPath" | "PatchSet" | "ToCompositeFieldPath" | "CombineFromComposite" | "CombineToComposite" = "FromCompositeFieldPath"
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0Combine:
     r"""
-    Combine is the patch configuration for a CombineFromComposite,
-    CombineFromEnvironment, CombineToComposite or CombineToEnvironment patch.
+    Combine is the patch configuration for a CombineFromComposite or
+    CombineToComposite patch.
 
     Attributes
     ----------
@@ -900,12 +341,10 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0Tra
     format : str, default is Undefined, optional
         The expected input format.
 
-
         * `quantity` - parses the input as a K8s [`resource.Quantity`](https://pkg.go.dev/k8s.io/apimachinery/pkg/api/resource#Quantity).
         Only used during `string -> float64` conversions.
         * `json` - parses the input as a JSON string.
         Only used during `string -> object` or `string -> list` conversions.
-
 
         If this property is null, the default conversion is applied.
     toType : str, default is Undefined, required
@@ -961,10 +400,8 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0Tra
     $type : str, default is "literal", required
         Type specifies how the pattern matches the input.
 
-
         * `literal` - the pattern value has to exactly match (case sensitive) the
         input string. This is the default.
-
 
         * `regexp` - the pattern treated as a regular expression against
         which the input string is tested. Crossplane will throw an error if the
@@ -1175,7 +612,6 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecPublishConnectionDetailsWithSto
     with which the connection details of composite resources dynamically
     provisioned using this composition will be published.
 
-
     THIS IS AN ALPHA FIELD. Do not use it in production. It is not honored
     unless the relevant Crossplane feature flag is enabled, and may be
     changed or removed without notice.
@@ -1287,8 +723,8 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0:
         combine
     fromFieldPath : str, default is Undefined, optional
         FromFieldPath is the path of the field on the resource whose value is
-        to be used as input. Required when type is FromCompositeFieldPath,
-        FromEnvironmentFieldPath, ToCompositeFieldPath, ToEnvironmentFieldPath.
+        to be used as input. Required when type is FromCompositeFieldPath or
+        ToCompositeFieldPath.
     patchSetName : str, default is Undefined, optional
         PatchSetName to include patches from. Required when type is PatchSet.
     policy : ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0Policy, default is Undefined, optional
@@ -1318,13 +754,13 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0:
 
     transforms?: [ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0TransformsItems0]
 
-    $type?: "FromCompositeFieldPath" | "FromEnvironmentFieldPath" | "PatchSet" | "ToCompositeFieldPath" | "ToEnvironmentFieldPath" | "CombineFromEnvironment" | "CombineFromComposite" | "CombineToComposite" | "CombineToEnvironment" = "FromCompositeFieldPath"
+    $type?: "FromCompositeFieldPath" | "PatchSet" | "ToCompositeFieldPath" | "CombineFromComposite" | "CombineToComposite" = "FromCompositeFieldPath"
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0Combine:
     r"""
-    Combine is the patch configuration for a CombineFromComposite,
-    CombineFromEnvironment, CombineToComposite or CombineToEnvironment patch.
+    Combine is the patch configuration for a CombineFromComposite or
+    CombineToComposite patch.
 
     Attributes
     ----------
@@ -1466,12 +902,10 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0Tra
     format : str, default is Undefined, optional
         The expected input format.
 
-
         * `quantity` - parses the input as a K8s [`resource.Quantity`](https://pkg.go.dev/k8s.io/apimachinery/pkg/api/resource#Quantity).
         Only used during `string -> float64` conversions.
         * `json` - parses the input as a JSON string.
         Only used during `string -> object` or `string -> list` conversions.
-
 
         If this property is null, the default conversion is applied.
     toType : str, default is Undefined, required
@@ -1527,10 +961,8 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0Tra
     $type : str, default is "literal", required
         Type specifies how the pattern matches the input.
 
-
         * `literal` - the pattern value has to exactly match (case sensitive) the
         input string. This is the default.
-
 
         * `regexp` - the pattern treated as a regular expression against
         which the input string is tested. Crossplane will throw an error if the

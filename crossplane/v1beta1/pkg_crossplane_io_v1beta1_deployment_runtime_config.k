@@ -12,7 +12,6 @@ schema DeploymentRuntimeConfig:
     The DeploymentRuntimeConfig provides settings for the Kubernetes Deployment
     of a Provider or composition function package.
 
-
     Read the Crossplane documentation for
     [more information about DeploymentRuntimeConfigs](https://docs.crossplane.io/latest/concepts/providers/#runtime-configuration).
 
@@ -231,9 +230,6 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecSt
     r"""
     Rolling update config params. Present only if DeploymentStrategyType =
     RollingUpdate.
-    ---
-    TODO: Update this to follow our convention for oneOf, whatever we decide it
-    to be.
 
     Attributes
     ----------
@@ -401,9 +397,11 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         Cannot be updated.
         More info: https://kubernetes.io/docs/concepts/workloads/pods/init-containers/
     nodeName : str, default is Undefined, optional
-        NodeName is a request to schedule this pod onto a specific node. If it is non-empty,
-        the scheduler simply schedules this pod onto that node, assuming that it fits resource
-        requirements.
+        NodeName indicates in which node this pod is scheduled.
+        If empty, this pod is a candidate for scheduling by the scheduler defined in schedulerName.
+        Once this field is set, the kubelet for this node becomes responsible for the lifecycle of this pod.
+        This field should not be used to express a desire for the pod to be scheduled on a specific node.
+        https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodename
     nodeSelector : {str:str}, default is Undefined, optional
         NodeSelector is a selector which must be true for the pod to fit on a node.
         Selector which must match a node's labels for the pod to be scheduled on that node.
@@ -446,10 +444,8 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         will be made available to those containers which consume them
         by name.
 
-
         This is an alpha field and requires enabling the
         DynamicResourceAllocation feature gate.
-
 
         This field is immutable.
     restartPolicy : str, default is Undefined, optional
@@ -470,7 +466,6 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         SchedulingGates is an opaque list of values that if specified will block scheduling the pod.
         If schedulingGates is not empty, the pod will stay in the SchedulingGated state and the
         scheduler will not attempt to schedule the pod.
-
 
         SchedulingGates can only be set at pod creation time, and be removed only afterwards.
     securityContext : PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecSecurityContext, default is Undefined, optional
@@ -597,7 +592,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
     check:
-        all _, overhead in overhead {_regex_match(str(overhead), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if overhead } if overhead
+        all _, overhead in overhead { _regex_match(str(overhead), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if overhead } if overhead
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecAffinity:
@@ -903,7 +898,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         pod labels will be ignored. The default value is empty.
         The same key is forbidden to exist in both matchLabelKeys and labelSelector.
         Also, matchLabelKeys cannot be set when labelSelector isn't set.
-        This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.
+        This is a beta field and requires enabling MatchLabelKeysInPodAffinity feature gate (enabled by default).
     mismatchLabelKeys : [str], default is Undefined, optional
         MismatchLabelKeys is a set of pod label keys to select which pods will
         be taken into consideration. The keys are used to lookup values from the
@@ -913,7 +908,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         pod labels will be ignored. The default value is empty.
         The same key is forbidden to exist in both mismatchLabelKeys and labelSelector.
         Also, mismatchLabelKeys cannot be set when labelSelector isn't set.
-        This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.
+        This is a beta field and requires enabling MatchLabelKeysInPodAffinity feature gate (enabled by default).
     namespaceSelector : PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector, default is Undefined, optional
         namespace selector
     namespaces : [str], default is Undefined, optional
@@ -1064,7 +1059,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         pod labels will be ignored. The default value is empty.
         The same key is forbidden to exist in both matchLabelKeys and labelSelector.
         Also, matchLabelKeys cannot be set when labelSelector isn't set.
-        This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.
+        This is a beta field and requires enabling MatchLabelKeysInPodAffinity feature gate (enabled by default).
     mismatchLabelKeys : [str], default is Undefined, optional
         MismatchLabelKeys is a set of pod label keys to select which pods will
         be taken into consideration. The keys are used to lookup values from the
@@ -1074,7 +1069,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         pod labels will be ignored. The default value is empty.
         The same key is forbidden to exist in both mismatchLabelKeys and labelSelector.
         Also, mismatchLabelKeys cannot be set when labelSelector isn't set.
-        This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.
+        This is a beta field and requires enabling MatchLabelKeysInPodAffinity feature gate (enabled by default).
     namespaceSelector : PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector, default is Undefined, optional
         namespace selector
     namespaces : [str], default is Undefined, optional
@@ -1271,7 +1266,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         pod labels will be ignored. The default value is empty.
         The same key is forbidden to exist in both matchLabelKeys and labelSelector.
         Also, matchLabelKeys cannot be set when labelSelector isn't set.
-        This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.
+        This is a beta field and requires enabling MatchLabelKeysInPodAffinity feature gate (enabled by default).
     mismatchLabelKeys : [str], default is Undefined, optional
         MismatchLabelKeys is a set of pod label keys to select which pods will
         be taken into consideration. The keys are used to lookup values from the
@@ -1281,7 +1276,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         pod labels will be ignored. The default value is empty.
         The same key is forbidden to exist in both mismatchLabelKeys and labelSelector.
         Also, mismatchLabelKeys cannot be set when labelSelector isn't set.
-        This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.
+        This is a beta field and requires enabling MatchLabelKeysInPodAffinity feature gate (enabled by default).
     namespaceSelector : PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector, default is Undefined, optional
         namespace selector
     namespaces : [str], default is Undefined, optional
@@ -1432,7 +1427,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         pod labels will be ignored. The default value is empty.
         The same key is forbidden to exist in both matchLabelKeys and labelSelector.
         Also, matchLabelKeys cannot be set when labelSelector isn't set.
-        This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.
+        This is a beta field and requires enabling MatchLabelKeysInPodAffinity feature gate (enabled by default).
     mismatchLabelKeys : [str], default is Undefined, optional
         MismatchLabelKeys is a set of pod label keys to select which pods will
         be taken into consideration. The keys are used to lookup values from the
@@ -1442,7 +1437,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         pod labels will be ignored. The default value is empty.
         The same key is forbidden to exist in both mismatchLabelKeys and labelSelector.
         Also, mismatchLabelKeys cannot be set when labelSelector isn't set.
-        This is an alpha field and requires enabling MatchLabelKeysInPodAffinity feature gate.
+        This is a beta field and requires enabling MatchLabelKeysInPodAffinity feature gate (enabled by default).
     namespaceSelector : PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector, default is Undefined, optional
         namespace selector
     namespaces : [str], default is Undefined, optional
@@ -1781,14 +1776,16 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
     ----------
     name : str, default is Undefined, optional
         Name of the referent.
+        This field is effectively required, but due to backwards compatibility is
+        allowed to be empty. Instances of this type with an empty value here are
+        almost certainly wrong.
         More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the ConfigMap must be defined
     """
 
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
@@ -1801,14 +1798,16 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
     ----------
     name : str, default is Undefined, optional
         Name of the referent.
+        This field is effectively required, but due to backwards compatibility is
+        allowed to be empty. Instances of this type with an empty value here are
+        almost certainly wrong.
         More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret must be defined
     """
 
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
@@ -1879,8 +1878,10 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         The key to select.
     name : str, default is Undefined, optional
         Name of the referent.
+        This field is effectively required, but due to backwards compatibility is
+        allowed to be empty. Instances of this type with an empty value here are
+        almost certainly wrong.
         More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the ConfigMap or its key must be defined
     """
@@ -1888,7 +1889,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
@@ -1949,8 +1950,10 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
         Name of the referent.
+        This field is effectively required, but due to backwards compatibility is
+        allowed to be empty. Instances of this type with an empty value here are
+        almost certainly wrong.
         More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -1958,7 +1961,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
@@ -2357,14 +2360,13 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         Service is the name of the service to place in the gRPC HealthCheckRequest
         (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
 
-
         If this is not specified, the default behavior is defined by gRPC.
     """
 
 
     port: int
 
-    service?: str
+    service?: str = ""
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0LivenessProbeHTTPGet:
@@ -2575,14 +2577,13 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         Service is the name of the service to place in the gRPC HealthCheckRequest
         (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
 
-
         If this is not specified, the default behavior is defined by gRPC.
     """
 
 
     port: int
 
-    service?: str
+    service?: str = ""
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0ReadinessProbeHTTPGet:
@@ -2690,10 +2691,8 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         Claims lists the names of resources, defined in spec.resourceClaims,
         that are used by this container.
 
-
         This is an alpha field and requires enabling the
         DynamicResourceAllocation feature gate.
-
 
         This field is immutable. It can only be set for containers.
     limits : {str:int | str}, default is Undefined, optional
@@ -2715,8 +2714,8 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
     check:
-        all _, limits in limits {_regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests {_regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0ResourcesClaimsItems0:
@@ -2729,10 +2728,16 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         Name must match the name of one entry in pod.spec.resourceClaims of
         the Pod where this field is used. It makes that resource available
         inside a container.
+    request : str, default is Undefined, optional
+        Request is the name chosen for a request in the referenced claim.
+        If empty, everything from the claim is made available, otherwise
+        only the result of this request.
     """
 
 
     name: str
+
+    request?: str
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0SecurityContext:
@@ -2762,7 +2767,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         Note that this field cannot be set when spec.os.name is windows.
     procMount : str, default is Undefined, optional
         procMount denotes the type of proc mount to use for the containers.
-        The default is DefaultProcMount which uses the container runtime defaults for
+        The default value is Default which uses the container runtime defaults for
         readonly paths and masked paths.
         This requires the ProcMountType feature flag to be enabled.
         Note that this field cannot be set when spec.os.name is windows.
@@ -2918,7 +2923,6 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         type indicates which kind of seccomp profile will be applied.
         Valid options are:
 
-
         Localhost - a profile defined in a file on the node should be used.
         RuntimeDefault - the container runtime default profile should be used.
         Unconfined - no profile should be applied.
@@ -3068,14 +3072,13 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         Service is the name of the service to place in the gRPC HealthCheckRequest
         (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
 
-
         If this is not specified, the default behavior is defined by gRPC.
     """
 
 
     port: int
 
-    service?: str
+    service?: str = ""
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0StartupProbeHTTPGet:
@@ -3194,9 +3197,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         RecursiveReadOnly specifies whether read-only mounts should be handled
         recursively.
 
-
         If ReadOnly is false, this field has no meaning and must be unspecified.
-
 
         If ReadOnly is true, and this field is set to Disabled, the mount is not made
         recursively read-only.  If this field is set to IfPossible, the mount is made
@@ -3205,10 +3206,8 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         supported by the container runtime, otherwise the pod will not be started and
         an error will be generated to indicate the reason.
 
-
         If this field is set to IfPossible or Enabled, MountPropagation must be set to
         None (or be unspecified, which defaults to None).
-
 
         If this field is not specified, it is treated as an equivalent of Disabled.
     subPath : str, default is Undefined, optional
@@ -3294,7 +3293,6 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
     removed or restarted. The kubelet may evict a Pod if an ephemeral container causes the
     Pod to exceed its resource allocation.
 
-
     To add an ephemeral container, use the ephemeralcontainers subresource of an existing
     Pod. Ephemeral containers may not be removed or restarted.
 
@@ -3377,7 +3375,6 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         If set, the name of the container from PodSpec that this ephemeral container targets.
         The ephemeral container will be run in the namespaces (IPC, PID, etc) of this container.
         If not set then the ephemeral container uses the namespaces configured in the Pod spec.
-
 
         The container runtime must implement support for this feature. If the runtime does not
         support namespace targeting then the result of setting this field is undefined.
@@ -3494,14 +3491,16 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
     ----------
     name : str, default is Undefined, optional
         Name of the referent.
+        This field is effectively required, but due to backwards compatibility is
+        allowed to be empty. Instances of this type with an empty value here are
+        almost certainly wrong.
         More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the ConfigMap must be defined
     """
 
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
@@ -3514,14 +3513,16 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
     ----------
     name : str, default is Undefined, optional
         Name of the referent.
+        This field is effectively required, but due to backwards compatibility is
+        allowed to be empty. Instances of this type with an empty value here are
+        almost certainly wrong.
         More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret must be defined
     """
 
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
@@ -3592,8 +3593,10 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         The key to select.
     name : str, default is Undefined, optional
         Name of the referent.
+        This field is effectively required, but due to backwards compatibility is
+        allowed to be empty. Instances of this type with an empty value here are
+        almost certainly wrong.
         More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the ConfigMap or its key must be defined
     """
@@ -3601,7 +3604,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
@@ -3662,8 +3665,10 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
         Name of the referent.
+        This field is effectively required, but due to backwards compatibility is
+        allowed to be empty. Instances of this type with an empty value here are
+        almost certainly wrong.
         More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -3671,7 +3676,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
@@ -4066,14 +4071,13 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         Service is the name of the service to place in the gRPC HealthCheckRequest
         (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
 
-
         If this is not specified, the default behavior is defined by gRPC.
     """
 
 
     port: int
 
-    service?: str
+    service?: str = ""
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0LivenessProbeHTTPGet:
@@ -4281,14 +4285,13 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         Service is the name of the service to place in the gRPC HealthCheckRequest
         (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
 
-
         If this is not specified, the default behavior is defined by gRPC.
     """
 
 
     port: int
 
-    service?: str
+    service?: str = ""
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0ReadinessProbeHTTPGet:
@@ -4395,10 +4398,8 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         Claims lists the names of resources, defined in spec.resourceClaims,
         that are used by this container.
 
-
         This is an alpha field and requires enabling the
         DynamicResourceAllocation feature gate.
-
 
         This field is immutable. It can only be set for containers.
     limits : {str:int | str}, default is Undefined, optional
@@ -4420,8 +4421,8 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
     check:
-        all _, limits in limits {_regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests {_regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0ResourcesClaimsItems0:
@@ -4434,10 +4435,16 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         Name must match the name of one entry in pod.spec.resourceClaims of
         the Pod where this field is used. It makes that resource available
         inside a container.
+    request : str, default is Undefined, optional
+        Request is the name chosen for a request in the referenced claim.
+        If empty, everything from the claim is made available, otherwise
+        only the result of this request.
     """
 
 
     name: str
+
+    request?: str
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0SecurityContext:
@@ -4466,7 +4473,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         Note that this field cannot be set when spec.os.name is windows.
     procMount : str, default is Undefined, optional
         procMount denotes the type of proc mount to use for the containers.
-        The default is DefaultProcMount which uses the container runtime defaults for
+        The default value is Default which uses the container runtime defaults for
         readonly paths and masked paths.
         This requires the ProcMountType feature flag to be enabled.
         Note that this field cannot be set when spec.os.name is windows.
@@ -4622,7 +4629,6 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         type indicates which kind of seccomp profile will be applied.
         Valid options are:
 
-
         Localhost - a profile defined in a file on the node should be used.
         RuntimeDefault - the container runtime default profile should be used.
         Unconfined - no profile should be applied.
@@ -4766,14 +4772,13 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         Service is the name of the service to place in the gRPC HealthCheckRequest
         (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
 
-
         If this is not specified, the default behavior is defined by gRPC.
     """
 
 
     port: int
 
-    service?: str
+    service?: str = ""
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0StartupProbeHTTPGet:
@@ -4892,9 +4897,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         RecursiveReadOnly specifies whether read-only mounts should be handled
         recursively.
 
-
         If ReadOnly is false, this field has no meaning and must be unspecified.
-
 
         If ReadOnly is true, and this field is set to Disabled, the mount is not made
         recursively read-only.  If this field is set to IfPossible, the mount is made
@@ -4903,10 +4906,8 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         supported by the container runtime, otherwise the pod will not be started and
         an error will be generated to indicate the reason.
 
-
         If this field is set to IfPossible or Enabled, MountPropagation must be set to
         None (or be unspecified, which defaults to None).
-
 
         If this field is not specified, it is treated as an equivalent of Disabled.
     subPath : str, default is Undefined, optional
@@ -4963,12 +4964,14 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
     ----------
     name : str, default is Undefined, required
         Name of the referent.
+        This field is effectively required, but due to backwards compatibility is
+        allowed to be empty. Instances of this type with an empty value here are
+        almost certainly wrong.
         More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
     """
 
 
-    name: str
+    name: str = ""
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0:
@@ -5181,14 +5184,16 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
     ----------
     name : str, default is Undefined, optional
         Name of the referent.
+        This field is effectively required, but due to backwards compatibility is
+        allowed to be empty. Instances of this type with an empty value here are
+        almost certainly wrong.
         More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the ConfigMap must be defined
     """
 
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
@@ -5201,14 +5206,16 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
     ----------
     name : str, default is Undefined, optional
         Name of the referent.
+        This field is effectively required, but due to backwards compatibility is
+        allowed to be empty. Instances of this type with an empty value here are
+        almost certainly wrong.
         More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret must be defined
     """
 
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
@@ -5279,8 +5286,10 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         The key to select.
     name : str, default is Undefined, optional
         Name of the referent.
+        This field is effectively required, but due to backwards compatibility is
+        allowed to be empty. Instances of this type with an empty value here are
+        almost certainly wrong.
         More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the ConfigMap or its key must be defined
     """
@@ -5288,7 +5297,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
@@ -5349,8 +5358,10 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         The key of the secret to select from.  Must be a valid secret key.
     name : str, default is Undefined, optional
         Name of the referent.
+        This field is effectively required, but due to backwards compatibility is
+        allowed to be empty. Instances of this type with an empty value here are
+        almost certainly wrong.
         More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -5358,7 +5369,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
@@ -5757,14 +5768,13 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         Service is the name of the service to place in the gRPC HealthCheckRequest
         (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
 
-
         If this is not specified, the default behavior is defined by gRPC.
     """
 
 
     port: int
 
-    service?: str
+    service?: str = ""
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0LivenessProbeHTTPGet:
@@ -5975,14 +5985,13 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         Service is the name of the service to place in the gRPC HealthCheckRequest
         (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
 
-
         If this is not specified, the default behavior is defined by gRPC.
     """
 
 
     port: int
 
-    service?: str
+    service?: str = ""
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0ReadinessProbeHTTPGet:
@@ -6090,10 +6099,8 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         Claims lists the names of resources, defined in spec.resourceClaims,
         that are used by this container.
 
-
         This is an alpha field and requires enabling the
         DynamicResourceAllocation feature gate.
-
 
         This field is immutable. It can only be set for containers.
     limits : {str:int | str}, default is Undefined, optional
@@ -6115,8 +6122,8 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
     check:
-        all _, limits in limits {_regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests {_regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0ResourcesClaimsItems0:
@@ -6129,10 +6136,16 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         Name must match the name of one entry in pod.spec.resourceClaims of
         the Pod where this field is used. It makes that resource available
         inside a container.
+    request : str, default is Undefined, optional
+        Request is the name chosen for a request in the referenced claim.
+        If empty, everything from the claim is made available, otherwise
+        only the result of this request.
     """
 
 
     name: str
+
+    request?: str
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0SecurityContext:
@@ -6162,7 +6175,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         Note that this field cannot be set when spec.os.name is windows.
     procMount : str, default is Undefined, optional
         procMount denotes the type of proc mount to use for the containers.
-        The default is DefaultProcMount which uses the container runtime defaults for
+        The default value is Default which uses the container runtime defaults for
         readonly paths and masked paths.
         This requires the ProcMountType feature flag to be enabled.
         Note that this field cannot be set when spec.os.name is windows.
@@ -6318,7 +6331,6 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         type indicates which kind of seccomp profile will be applied.
         Valid options are:
 
-
         Localhost - a profile defined in a file on the node should be used.
         RuntimeDefault - the container runtime default profile should be used.
         Unconfined - no profile should be applied.
@@ -6468,14 +6480,13 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         Service is the name of the service to place in the gRPC HealthCheckRequest
         (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
 
-
         If this is not specified, the default behavior is defined by gRPC.
     """
 
 
     port: int
 
-    service?: str
+    service?: str = ""
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0StartupProbeHTTPGet:
@@ -6594,9 +6605,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         RecursiveReadOnly specifies whether read-only mounts should be handled
         recursively.
 
-
         If ReadOnly is false, this field has no meaning and must be unspecified.
-
 
         If ReadOnly is true, and this field is set to Disabled, the mount is not made
         recursively read-only.  If this field is set to IfPossible, the mount is made
@@ -6605,10 +6614,8 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         supported by the container runtime, otherwise the pod will not be started and
         an error will be generated to indicate the reason.
 
-
         If this field is set to IfPossible or Enabled, MountPropagation must be set to
         None (or be unspecified, which defaults to None).
-
 
         If this field is not specified, it is treated as an equivalent of Disabled.
     subPath : str, default is Undefined, optional
@@ -6642,10 +6649,8 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
     Specifies the OS of the containers in the pod.
     Some pod and container fields are restricted if this is set.
 
-
     If the OS field is set to linux, the following fields must be unset:
     -securityContext.windowsOptions
-
 
     If the OS field is set to windows, following fields must be unset:
     - spec.hostPID
@@ -6661,6 +6666,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
     - spec.securityContext.runAsUser
     - spec.securityContext.runAsGroup
     - spec.securityContext.supplementalGroups
+    - spec.securityContext.supplementalGroupsPolicy
     - spec.containers[*].securityContext.appArmorProfile
     - spec.containers[*].securityContext.seLinuxOptions
     - spec.containers[*].securityContext.seccompProfile
@@ -6701,7 +6707,10 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecResourceClaimsItems0:
     r"""
-    PodResourceClaim references exactly one ResourceClaim through a ClaimSource.
+    PodResourceClaim references exactly one ResourceClaim, either directly
+    or by naming a ResourceClaimTemplate which is then turned into a ResourceClaim
+    for the pod.
+
     It adds a name to it that uniquely identifies the ResourceClaim inside the Pod.
     Containers that need access to the ResourceClaim reference it with this name.
 
@@ -6710,29 +6719,15 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
     name : str, default is Undefined, required
         Name uniquely identifies this resource claim inside the pod.
         This must be a DNS_LABEL.
-    source : PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecResourceClaimsItems0Source, default is Undefined, optional
-        source
-    """
-
-
-    name: str
-
-    source?: PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecResourceClaimsItems0Source
-
-
-schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecResourceClaimsItems0Source:
-    r"""
-    Source describes where to find the ResourceClaim.
-
-    Attributes
-    ----------
     resourceClaimName : str, default is Undefined, optional
         ResourceClaimName is the name of a ResourceClaim object in the same
         namespace as this pod.
+
+        Exactly one of ResourceClaimName and ResourceClaimTemplateName must
+        be set.
     resourceClaimTemplateName : str, default is Undefined, optional
         ResourceClaimTemplateName is the name of a ResourceClaimTemplate
         object in the same namespace as this pod.
-
 
         The template will be used to create a new ResourceClaim, which will
         be bound to this pod. When this pod is deleted, the ResourceClaim
@@ -6740,12 +6735,16 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         generated component, will be used to form a unique name for the
         ResourceClaim, which will be recorded in pod.status.resourceClaimStatuses.
 
-
         This field is immutable and no changes will be made to the
         corresponding ResourceClaim by the control plane after creating the
         ResourceClaim.
+
+        Exactly one of ResourceClaimName and ResourceClaimTemplateName must
+        be set.
     """
 
+
+    name: str
 
     resourceClaimName?: str
 
@@ -6781,11 +6780,9 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         Some volume types allow the Kubelet to change the ownership of that volume
         to be owned by the pod:
 
-
         1. The owning GID will be the FSGroup
         2. The setgid bit is set (new files created in the volume will be owned by FSGroup)
         3. The permission bits are OR'd with rw-rw----
-
 
         If unset, the Kubelet will not modify the ownership and permissions of any volume.
         Note that this field cannot be set when spec.os.name is windows.
@@ -6823,12 +6820,20 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
     seccompProfile : PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecSecurityContextSeccompProfile, default is Undefined, optional
         seccomp profile
     supplementalGroups : [int], default is Undefined, optional
-        A list of groups applied to the first process run in each container, in addition
-        to the container's primary GID, the fsGroup (if specified), and group memberships
-        defined in the container image for the uid of the container process. If unspecified,
-        no additional groups are added to any container. Note that group memberships
-        defined in the container image for the uid of the container process are still effective,
-        even if they are not included in this list.
+        A list of groups applied to the first process run in each container, in
+        addition to the container's primary GID and fsGroup (if specified).  If
+        the SupplementalGroupsPolicy feature is enabled, the
+        supplementalGroupsPolicy field determines whether these are in addition
+        to or instead of any group memberships defined in the container image.
+        If unspecified, no additional groups are added, though group memberships
+        defined in the container image may still be used, depending on the
+        supplementalGroupsPolicy field.
+        Note that this field cannot be set when spec.os.name is windows.
+    supplementalGroupsPolicy : str, default is Undefined, optional
+        Defines how supplemental groups of the first container processes are calculated.
+        Valid values are "Merge" and "Strict". If not specified, "Merge" is used.
+        (Alpha) Using the field requires the SupplementalGroupsPolicy feature gate to be enabled
+        and the container runtime must implement support for this feature.
         Note that this field cannot be set when spec.os.name is windows.
     sysctls : [PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecSecurityContextSysctlsItems0], default is Undefined, optional
         Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported
@@ -6856,6 +6861,8 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
     seccompProfile?: PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecSecurityContextSeccompProfile
 
     supplementalGroups?: [int]
+
+    supplementalGroupsPolicy?: str
 
     sysctls?: [PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecSecurityContextSysctlsItems0]
 
@@ -6934,7 +6941,6 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
     $type : str, default is Undefined, required
         type indicates which kind of seccomp profile will be applied.
         Valid options are:
-
 
         Localhost - a profile defined in a file on the node should be used.
         RuntimeDefault - the container runtime default profile should be used.
@@ -7060,7 +7066,6 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         Keys that don't exist in the incoming pod labels will
         be ignored. A null or empty list means only match against labelSelector.
 
-
         This is a beta field and requires the MatchLabelKeysInPodTopologySpread feature gate to be enabled (enabled by default).
     maxSkew : int, default is Undefined, required
         MaxSkew describes the degree to which pods may be unevenly distributed.
@@ -7092,7 +7097,6 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         Valid values are integers greater than 0.
         When value is not nil, WhenUnsatisfiable must be DoNotSchedule.
 
-
         For example, in a 3-zone cluster, MaxSkew is set to 2, MinDomains is set to 5 and pods with the same
         labelSelector spread as 2/2/2:
         | zone1 | zone2 | zone3 |
@@ -7107,7 +7111,6 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         - Honor: only nodes matching nodeAffinity/nodeSelector are included in the calculations.
         - Ignore: nodeAffinity/nodeSelector are ignored. All nodes are included in the calculations.
 
-
         If this value is nil, the behavior is equivalent to the Honor policy.
         This is a beta-level feature default enabled by the NodeInclusionPolicyInPodTopologySpread feature flag.
     nodeTaintsPolicy : str, default is Undefined, optional
@@ -7116,7 +7119,6 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         - Honor: nodes without taints, along with tainted nodes for which the incoming pod
         has a toleration, are included.
         - Ignore: node taints are ignored. All nodes are included.
-
 
         If this value is nil, the behavior is equivalent to the Ignore policy.
         This is a beta-level feature default enabled by the NodeInclusionPolicyInPodTopologySpread feature flag.
@@ -7259,6 +7261,8 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         glusterfs
     hostPath : PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0HostPath, default is Undefined, optional
         host path
+    image : PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0Image, default is Undefined, optional
+        image
     iscsi : PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0Iscsi, default is Undefined, optional
         iscsi
     name : str, default is Undefined, required
@@ -7324,6 +7328,8 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
     hostPath?: PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0HostPath
 
+    image?: PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0Image
+
     iscsi?: PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0Iscsi
 
     name: str
@@ -7364,7 +7370,6 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         Tip: Ensure that the filesystem type is supported by the host operating system.
         Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
         More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
-        TODO: how do we prevent errors in the filesystem from compromising the machine
     partition : int, default is Undefined, optional
         partition is the partition in the volume that you want to mount.
         If omitted, the default is to mount by volume name.
@@ -7400,7 +7405,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         diskName is the Name of the data disk in the blob storage
     diskURI : str, default is Undefined, required
         diskURI is the URI of data disk in the blob storage
-    fsType : str, default is Undefined, optional
+    fsType : str, default is "ext4", optional
         fsType is Filesystem type to mount.
         Must be a filesystem type supported by the host operating system.
         Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
@@ -7418,11 +7423,11 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
     diskURI: str
 
-    fsType?: str
+    fsType?: str = "ext4"
 
     kind?: str
 
-    readOnly?: bool
+    readOnly?: bool = False
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0AzureFile:
@@ -7496,12 +7501,14 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
     ----------
     name : str, default is Undefined, optional
         Name of the referent.
+        This field is effectively required, but due to backwards compatibility is
+        allowed to be empty. Instances of this type with an empty value here are
+        almost certainly wrong.
         More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0Cinder:
@@ -7546,12 +7553,14 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
     ----------
     name : str, default is Undefined, optional
         Name of the referent.
+        This field is effectively required, but due to backwards compatibility is
+        allowed to be empty. Instances of this type with an empty value here are
+        almost certainly wrong.
         More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0ConfigMap:
@@ -7578,8 +7587,10 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         relative and may not contain the '..' path or start with '..'.
     name : str, default is Undefined, optional
         Name of the referent.
+        This field is effectively required, but due to backwards compatibility is
+        allowed to be empty. Instances of this type with an empty value here are
+        almost certainly wrong.
         More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         optional specify whether the ConfigMap or its keys must be defined
     """
@@ -7589,7 +7600,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
     items?: [PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0ConfigMapItemsItems0]
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
@@ -7671,12 +7682,14 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
     ----------
     name : str, default is Undefined, optional
         Name of the referent.
+        This field is effectively required, but due to backwards compatibility is
+        allowed to be empty. Instances of this type with an empty value here are
+        almost certainly wrong.
         More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0DownwardAPI:
@@ -7817,7 +7830,6 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
     The volume's lifecycle is tied to the pod that defines it - it will be created before the pod starts,
     and deleted when the pod is removed.
 
-
     Use this if:
     a) the volume is only needed while the pod runs,
     b) features of normal volumes like restoring from snapshot or capacity
@@ -7828,16 +7840,13 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
        information on the connection between this volume type
        and PersistentVolumeClaim).
 
-
     Use PersistentVolumeClaim or one of the vendor-specific
     APIs for volumes that persist for longer than the lifecycle
     of an individual pod.
 
-
     Use CSI for light-weight local ephemeral volumes if the CSI driver is meant to
     be used that way - see the documentation of the driver for
     more information.
-
 
     A pod can use both types of ephemeral volumes and
     persistent volumes at the same time.
@@ -7862,7 +7871,6 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
     entry. Pod validation will reject the pod if the concatenated name
     is not valid for a PVC (for example, too long).
 
-
     An existing PVC with that name that is not owned by the pod
     will *not* be used for the pod to avoid using an unrelated
     volume by mistake. Starting the pod is then blocked until
@@ -7872,10 +7880,8 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
     this should not be necessary, but it may be useful when
     manually reconstructing a broken cluster.
 
-
     This field is read-only and no changes will be made by Kubernetes
     to the PVC after it has been created.
-
 
     Required, must not be nil.
 
@@ -7960,7 +7966,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         set to a Pending state, as reflected by the modifyVolumeStatus field, until such as a resource
         exists.
         More info: https://kubernetes.io/docs/concepts/storage/volume-attributes-classes/
-        (Alpha) Using this field requires the VolumeAttributesClass feature gate to be enabled.
+        (Beta) Using this field requires the VolumeAttributesClass feature gate to be enabled (off by default).
     volumeMode : str, default is Undefined, optional
         volumeMode defines what type of volume is required by the claim.
         Value of Filesystem is implied when not included in claim spec.
@@ -8098,8 +8104,8 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 
     check:
-        all _, limits in limits {_regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests {_regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0EphemeralVolumeClaimTemplateSpecSelector:
@@ -8159,7 +8165,6 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         fsType is the filesystem type to mount.
         Must be a filesystem type supported by the host operating system.
         Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
-        TODO: how do we prevent errors in the filesystem from compromising the machine
     lun : int, default is Undefined, optional
         lun is Optional: FC target lun number
     readOnly : bool, default is Undefined, optional
@@ -8230,12 +8235,14 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
     ----------
     name : str, default is Undefined, optional
         Name of the referent.
+        This field is effectively required, but due to backwards compatibility is
+        allowed to be empty. Instances of this type with an empty value here are
+        almost certainly wrong.
         More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0Flocker:
@@ -8270,7 +8277,6 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         Tip: Ensure that the filesystem type is supported by the host operating system.
         Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
         More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
-        TODO: how do we prevent errors in the filesystem from compromising the machine
     partition : int, default is Undefined, optional
         partition is the partition in the volume that you want to mount.
         If omitted, the default is to mount by volume name.
@@ -8358,9 +8364,6 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
     used for system agents or other privileged things that are allowed
     to see the host machine. Most containers will NOT need this.
     More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath
-    ---
-    TODO(jonesdl) We need to restrict who can use host directory mounts and who can/can not
-    mount host directories as read/write.
 
     Attributes
     ----------
@@ -8380,6 +8383,46 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
     $type?: str
 
 
+schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0Image:
+    r"""
+    image represents an OCI object (a container image or artifact) pulled and mounted on the kubelet's host machine.
+    The volume is resolved at pod startup depending on which PullPolicy value is provided:
+
+    - Always: the kubelet always attempts to pull the reference. Container creation will fail If the pull fails.
+    - Never: the kubelet never pulls the reference and only uses a local image or artifact. Container creation will fail if the reference isn't present.
+    - IfNotPresent: the kubelet pulls if the reference isn't already present on disk. Container creation will fail if the reference isn't present and the pull fails.
+
+    The volume gets re-resolved if the pod gets deleted and recreated, which means that new remote content will become available on pod recreation.
+    A failure to resolve or pull the image during pod startup will block containers from starting and may add significant latency. Failures will be retried using normal volume backoff and will be reported on the pod reason and message.
+    The types of objects that may be mounted by this volume are defined by the container runtime implementation on a host machine and at minimum must include all valid types supported by the container image field.
+    The OCI object gets mounted in a single directory (spec.containers[*].volumeMounts.mountPath) by merging the manifest layers in the same way as for container images.
+    The volume will be mounted read-only (ro) and non-executable files (noexec).
+    Sub path mounts for containers are not supported (spec.containers[*].volumeMounts.subpath).
+    The field spec.securityContext.fsGroupChangePolicy has no effect on this volume type.
+
+    Attributes
+    ----------
+    pullPolicy : str, default is Undefined, optional
+        Policy for pulling OCI objects. Possible values are:
+        Always: the kubelet always attempts to pull the reference. Container creation will fail If the pull fails.
+        Never: the kubelet never pulls the reference and only uses a local image or artifact. Container creation will fail if the reference isn't present.
+        IfNotPresent: the kubelet pulls if the reference isn't already present on disk. Container creation will fail if the reference isn't present and the pull fails.
+        Defaults to Always if :latest tag is specified, or IfNotPresent otherwise.
+    reference : str, default is Undefined, optional
+        Required: Image or artifact reference to be used.
+        Behaves in the same way as pod.spec.containers[*].image.
+        Pull secrets will be assembled in the same way as for the container image by looking up node credentials, SA image pull secrets, and pod spec image pull secrets.
+        More info: https://kubernetes.io/docs/concepts/containers/images
+        This field is optional to allow higher level config management to default or override
+        container images in workload controllers like Deployments and StatefulSets.
+    """
+
+
+    pullPolicy?: str
+
+    reference?: str
+
+
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0Iscsi:
     r"""
     iscsi represents an ISCSI Disk resource that is attached to a
@@ -8397,14 +8440,13 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         Tip: Ensure that the filesystem type is supported by the host operating system.
         Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
         More info: https://kubernetes.io/docs/concepts/storage/volumes#iscsi
-        TODO: how do we prevent errors in the filesystem from compromising the machine
     initiatorName : str, default is Undefined, optional
         initiatorName is the custom iSCSI Initiator Name.
         If initiatorName is specified with iscsiInterface simultaneously, new iSCSI interface
         <target portal>:<volume name> will be created for the connection.
     iqn : str, default is Undefined, required
         iqn is the target iSCSI Qualified Name.
-    iscsiInterface : str, default is Undefined, optional
+    iscsiInterface : str, default is "default", optional
         iscsiInterface is the interface Name that uses an iSCSI transport.
         Defaults to 'default' (tcp).
     lun : int, default is Undefined, required
@@ -8433,7 +8475,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
     iqn: str
 
-    iscsiInterface?: str
+    iscsiInterface?: str = "default"
 
     lun: int
 
@@ -8454,12 +8496,14 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
     ----------
     name : str, default is Undefined, optional
         Name of the referent.
+        This field is effectively required, but due to backwards compatibility is
+        allowed to be empty. Instances of this type with an empty value here are
+        almost certainly wrong.
         More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0Nfs:
@@ -8570,7 +8614,8 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         This might be in conflict with other options that affect the file
         mode, like fsGroup, and the result can be other mode bits set.
     sources : [PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0ProjectedSourcesItems0], default is Undefined, optional
-        sources is the list of volume projections
+        sources is the list of volume projections. Each entry in this list
+        handles one source.
     """
 
 
@@ -8581,7 +8626,8 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0ProjectedSourcesItems0:
     r"""
-    Projection that may be projected along with other supported volume types
+    Projection that may be projected along with other supported volume types.
+    Exactly one of these fields must be set.
 
     Attributes
     ----------
@@ -8614,13 +8660,10 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
     ClusterTrustBundle allows a pod to access the `.spec.trustBundle` field
     of ClusterTrustBundle objects in an auto-updating file.
 
-
     Alpha, gated by the ClusterTrustBundleProjection feature gate.
-
 
     ClusterTrustBundle objects can either be selected by name, or by the
     combination of signer name and a label selector.
-
 
     Kubelet performs aggressive normalization of the PEM contents written
     into the pod filesystem.  Esoteric PEM features such as inter-block
@@ -8727,8 +8770,10 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         relative and may not contain the '..' path or start with '..'.
     name : str, default is Undefined, optional
         Name of the referent.
+        This field is effectively required, but due to backwards compatibility is
+        allowed to be empty. Instances of this type with an empty value here are
+        almost certainly wrong.
         More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         optional specify whether the ConfigMap or its keys must be defined
     """
@@ -8736,7 +8781,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
     items?: [PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0ProjectedSourcesItems0ConfigMapItemsItems0]
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
@@ -8877,8 +8922,10 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         relative and may not contain the '..' path or start with '..'.
     name : str, default is Undefined, optional
         Name of the referent.
+        This field is effectively required, but due to backwards compatibility is
+        allowed to be empty. Instances of this type with an empty value here are
+        almost certainly wrong.
         More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
     optional : bool, default is Undefined, optional
         optional field specify whether the Secret or its key must be defined
     """
@@ -8886,7 +8933,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
     items?: [PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0ProjectedSourcesItems0SecretItemsItems0]
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
@@ -9004,18 +9051,17 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         Tip: Ensure that the filesystem type is supported by the host operating system.
         Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.
         More info: https://kubernetes.io/docs/concepts/storage/volumes#rbd
-        TODO: how do we prevent errors in the filesystem from compromising the machine
     image : str, default is Undefined, required
         image is the rados image name.
         More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
-    keyring : str, default is Undefined, optional
+    keyring : str, default is "/etc/ceph/keyring", optional
         keyring is the path to key ring for RBDUser.
         Default is /etc/ceph/keyring.
         More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
     monitors : [str], default is Undefined, required
         monitors is a collection of Ceph monitors.
         More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
-    pool : str, default is Undefined, optional
+    pool : str, default is "rbd", optional
         pool is the rados pool name.
         Default is rbd.
         More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
@@ -9025,7 +9071,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
     secretRef : PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0RbdSecretRef, default is Undefined, optional
         secret ref
-    user : str, default is Undefined, optional
+    user : str, default is "admin", optional
         user is the rados user name.
         Default is admin.
         More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
@@ -9036,17 +9082,17 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
     image: str
 
-    keyring?: str
+    keyring?: str = "/etc/ceph/keyring"
 
     monitors: [str]
 
-    pool?: str
+    pool?: str = "rbd"
 
     readOnly?: bool
 
     secretRef?: PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0RbdSecretRef
 
-    user?: str
+    user?: str = "admin"
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0RbdSecretRef:
@@ -9060,12 +9106,14 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
     ----------
     name : str, default is Undefined, optional
         Name of the referent.
+        This field is effectively required, but due to backwards compatibility is
+        allowed to be empty. Instances of this type with an empty value here are
+        almost certainly wrong.
         More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0ScaleIO:
@@ -9074,7 +9122,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
     Attributes
     ----------
-    fsType : str, default is Undefined, optional
+    fsType : str, default is "xfs", optional
         fsType is the filesystem type to mount.
         Must be a filesystem type supported by the host operating system.
         Ex. "ext4", "xfs", "ntfs".
@@ -9090,7 +9138,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         secret ref
     sslEnabled : bool, default is Undefined, optional
         sslEnabled Flag enable/disable SSL communication with Gateway, default false
-    storageMode : str, default is Undefined, optional
+    storageMode : str, default is "ThinProvisioned", optional
         storageMode indicates whether the storage for a volume should be ThickProvisioned or ThinProvisioned.
         Default is ThinProvisioned.
     storagePool : str, default is Undefined, optional
@@ -9103,7 +9151,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
     """
 
 
-    fsType?: str
+    fsType?: str = "xfs"
 
     gateway: str
 
@@ -9115,7 +9163,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
     sslEnabled?: bool
 
-    storageMode?: str
+    storageMode?: str = "ThinProvisioned"
 
     storagePool?: str
 
@@ -9133,12 +9181,14 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
     ----------
     name : str, default is Undefined, optional
         Name of the referent.
+        This field is effectively required, but due to backwards compatibility is
+        allowed to be empty. Instances of this type with an empty value here are
+        almost certainly wrong.
         More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0Secret:
@@ -9259,12 +9309,14 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
     ----------
     name : str, default is Undefined, optional
         Name of the referent.
+        This field is effectively required, but due to backwards compatibility is
+        allowed to be empty. Instances of this type with an empty value here are
+        almost certainly wrong.
         More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0VsphereVolume:

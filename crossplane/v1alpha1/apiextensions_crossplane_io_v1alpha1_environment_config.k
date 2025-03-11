@@ -10,7 +10,6 @@ schema EnvironmentConfig:
     An EnvironmentConfig contains user-defined unstructured values for
     use in a Composition.
 
-
     Read the Crossplane documentation for
     [more information about EnvironmentConfigs](https://docs.crossplane.io/latest/concepts/environment-configs).
 

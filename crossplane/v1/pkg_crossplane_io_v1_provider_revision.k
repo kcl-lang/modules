@@ -10,7 +10,6 @@ schema ProviderRevision:
     A ProviderRevision represents a revision of a Provider. Crossplane
     creates new revisions when there are changes to a Provider.
 
-
     Crossplane creates and manages ProviderRevisions. Don't directly edit
     ProviderRevisions.
 
@@ -139,12 +138,14 @@ schema PkgCrossplaneIoV1ProviderRevisionSpecPackagePullSecretsItems0:
     ----------
     name : str, default is Undefined, optional
         Name of the referent.
+        This field is effectively required, but due to backwards compatibility is
+        allowed to be empty. Instances of this type with an empty value here are
+        almost certainly wrong.
         More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema PkgCrossplaneIoV1ProviderRevisionSpecRuntimeConfigRef:
