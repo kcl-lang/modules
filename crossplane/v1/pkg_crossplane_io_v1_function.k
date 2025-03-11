@@ -10,7 +10,6 @@ schema Function:
     A Function installs an OCI compatible Crossplane package, extending
     Crossplane with support for a new kind of composition function.
 
-
     Read the Crossplane documentation for
     [more information about Functions](https://docs.crossplane.io/latest/concepts/composition-functions).
 
@@ -129,12 +128,14 @@ schema PkgCrossplaneIoV1FunctionSpecPackagePullSecretsItems0:
     ----------
     name : str, default is Undefined, optional
         Name of the referent.
+        This field is effectively required, but due to backwards compatibility is
+        allowed to be empty. Instances of this type with an empty value here are
+        almost certainly wrong.
         More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema PkgCrossplaneIoV1FunctionSpecRuntimeConfigRef:

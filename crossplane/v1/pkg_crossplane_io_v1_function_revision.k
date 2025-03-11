@@ -10,7 +10,6 @@ schema FunctionRevision:
     A FunctionRevision represents a revision of a Function. Crossplane
     creates new revisions when there are changes to the Function.
 
-
     Crossplane creates and manages FunctionRevisions. Don't directly edit
     FunctionRevisions.
 
@@ -139,12 +138,14 @@ schema PkgCrossplaneIoV1FunctionRevisionSpecPackagePullSecretsItems0:
     ----------
     name : str, default is Undefined, optional
         Name of the referent.
+        This field is effectively required, but due to backwards compatibility is
+        allowed to be empty. Instances of this type with an empty value here are
+        almost certainly wrong.
         More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema PkgCrossplaneIoV1FunctionRevisionSpecRuntimeConfigRef:

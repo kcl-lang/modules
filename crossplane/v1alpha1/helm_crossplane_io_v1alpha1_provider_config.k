@@ -55,8 +55,7 @@ schema HelmCrossplaneIoV1alpha1ProviderConfigSpec:
 
 schema HelmCrossplaneIoV1alpha1ProviderConfigSpecCredentials:
     r"""
-    Credentials used to connect to the Kubernetes API. Typically a
-    kubeconfig file. Use InjectedIdentity for in-cluster config.
+    Credentials used to connect to the Kubernetes API. Typically a kubeconfig file. Use InjectedIdentity for in-cluster config.
 
     Attributes
     ----------
@@ -82,8 +81,7 @@ schema HelmCrossplaneIoV1alpha1ProviderConfigSpecCredentials:
 
 schema HelmCrossplaneIoV1alpha1ProviderConfigSpecCredentialsEnv:
     r"""
-    Env is a reference to an environment variable that contains credentials
-    that must be used to connect to the provider.
+    Env is a reference to an environment variable that contains credentials that must be used to connect to the provider.
 
     Attributes
     ----------
@@ -97,8 +95,7 @@ schema HelmCrossplaneIoV1alpha1ProviderConfigSpecCredentialsEnv:
 
 schema HelmCrossplaneIoV1alpha1ProviderConfigSpecCredentialsFs:
     r"""
-    Fs is a reference to a filesystem location that contains credentials that
-    must be used to connect to the provider.
+    Fs is a reference to a filesystem location that contains credentials that must be used to connect to the provider.
 
     Attributes
     ----------
@@ -112,8 +109,7 @@ schema HelmCrossplaneIoV1alpha1ProviderConfigSpecCredentialsFs:
 
 schema HelmCrossplaneIoV1alpha1ProviderConfigSpecCredentialsSecretRef:
     r"""
-    A SecretRef is a reference to a secret key that contains the credentials
-    that must be used to connect to the provider.
+    A SecretRef is a reference to a secret key that contains the credentials that must be used to connect to the provider.
 
     Attributes
     ----------
@@ -135,9 +131,7 @@ schema HelmCrossplaneIoV1alpha1ProviderConfigSpecCredentialsSecretRef:
 
 schema HelmCrossplaneIoV1alpha1ProviderConfigSpecIdentity:
     r"""
-    Identity used to authenticate to the Kubernetes API. The identity
-    credentials can be used to supplement kubeconfig 'credentials', for
-    example by configuring a bearer token source such as OAuth.
+    Identity used to authenticate to the Kubernetes API. The identity credentials can be used to supplement kubeconfig 'credentials', for example by configuring a bearer token source such as OAuth.
 
     Attributes
     ----------
@@ -167,8 +161,7 @@ schema HelmCrossplaneIoV1alpha1ProviderConfigSpecIdentity:
 
 schema HelmCrossplaneIoV1alpha1ProviderConfigSpecIdentityEnv:
     r"""
-    Env is a reference to an environment variable that contains credentials
-    that must be used to connect to the provider.
+    Env is a reference to an environment variable that contains credentials that must be used to connect to the provider.
 
     Attributes
     ----------
@@ -182,8 +175,7 @@ schema HelmCrossplaneIoV1alpha1ProviderConfigSpecIdentityEnv:
 
 schema HelmCrossplaneIoV1alpha1ProviderConfigSpecIdentityFs:
     r"""
-    Fs is a reference to a filesystem location that contains credentials that
-    must be used to connect to the provider.
+    Fs is a reference to a filesystem location that contains credentials that must be used to connect to the provider.
 
     Attributes
     ----------
@@ -197,8 +189,7 @@ schema HelmCrossplaneIoV1alpha1ProviderConfigSpecIdentityFs:
 
 schema HelmCrossplaneIoV1alpha1ProviderConfigSpecIdentitySecretRef:
     r"""
-    A SecretRef is a reference to a secret key that contains the credentials
-    that must be used to connect to the provider.
+    A SecretRef is a reference to a secret key that contains the credentials that must be used to connect to the provider.
 
     Attributes
     ----------
@@ -243,30 +234,21 @@ schema HelmCrossplaneIoV1alpha1ProviderConfigStatusConditionsItems0:
     Attributes
     ----------
     lastTransitionTime : str, default is Undefined, required
-        LastTransitionTime is the last time this condition transitioned from one
-        status to another.
+        LastTransitionTime is the last time this condition transitioned from one status to another.
     message : str, default is Undefined, optional
-        A Message containing details about this condition's last transition from
-        one status to another, if any.
-    observedGeneration : int, default is Undefined, optional
-        ObservedGeneration represents the .metadata.generation that the condition was set based upon.
-        For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date
-        with respect to the current state of the instance.
+        A Message containing details about this condition's last transition from one status to another, if any.
     reason : str, default is Undefined, required
         A Reason for this condition's last transition from one status to another.
     status : str, default is Undefined, required
         Status of this condition; is it currently True, False, or Unknown?
     $type : str, default is Undefined, required
-        Type of this condition. At most one of each condition type may apply to
-        a resource at any point in time.
+        Type of this condition. At most one of each condition type may apply to a resource at any point in time.
     """
 
 
     lastTransitionTime: str
 
     message?: str
-
-    observedGeneration?: int
 
     reason: str
 

@@ -10,7 +10,6 @@ schema Provider:
     A Provider installs an OCI compatible Crossplane package, extending
     Crossplane with support for new kinds of managed resources.
 
-
     Read the Crossplane documentation for
     [more information about Providers](https://docs.crossplane.io/latest/concepts/providers).
 
@@ -130,12 +129,14 @@ schema PkgCrossplaneIoV1ProviderSpecPackagePullSecretsItems0:
     ----------
     name : str, default is Undefined, optional
         Name of the referent.
+        This field is effectively required, but due to backwards compatibility is
+        allowed to be empty. Instances of this type with an empty value here are
+        almost certainly wrong.
         More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema PkgCrossplaneIoV1ProviderSpecRuntimeConfigRef:
