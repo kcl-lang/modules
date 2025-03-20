@@ -7,92 +7,73 @@ import k8s.apimachinery.pkg.apis.meta.v1
 _regex_match = regex.match
 
 
-schema InMemoryCluster:
+schema Phase1Obj:
     r"""
-    InMemoryCluster is the schema for the in-memory cluster API.
+    Phase1Obj defines an object with conditions and experimental conditions.
 
     Attributes
     ----------
-    apiVersion : str, default is "infrastructure.cluster.x-k8s.io/v1alpha1", required
+    apiVersion : str, default is "test.cluster.x-k8s.io/v1alpha1", required
         APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-    kind : str, default is "InMemoryCluster", required
+    kind : str, default is "Phase1Obj", required
         Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     metadata : v1.ObjectMeta, default is Undefined, optional
         metadata
-    spec : InfrastructureClusterxK8sIoV1alpha1InMemoryClusterSpec, default is Undefined, optional
+    spec : TestClusterxK8sIoV1alpha1Phase1ObjSpec, default is Undefined, optional
         spec
-    status : InfrastructureClusterxK8sIoV1alpha1InMemoryClusterStatus, default is Undefined, optional
+    status : TestClusterxK8sIoV1alpha1Phase1ObjStatus, default is Undefined, optional
         status
     """
 
 
-    apiVersion: "infrastructure.cluster.x-k8s.io/v1alpha1" = "infrastructure.cluster.x-k8s.io/v1alpha1"
+    apiVersion: "test.cluster.x-k8s.io/v1alpha1" = "test.cluster.x-k8s.io/v1alpha1"
 
-    kind: "InMemoryCluster" = "InMemoryCluster"
+    kind: "Phase1Obj" = "Phase1Obj"
 
     metadata?: v1.ObjectMeta
 
-    spec?: InfrastructureClusterxK8sIoV1alpha1InMemoryClusterSpec
+    spec?: TestClusterxK8sIoV1alpha1Phase1ObjSpec
 
-    status?: InfrastructureClusterxK8sIoV1alpha1InMemoryClusterStatus
+    status?: TestClusterxK8sIoV1alpha1Phase1ObjStatus
 
 
-schema InfrastructureClusterxK8sIoV1alpha1InMemoryClusterSpec:
+schema TestClusterxK8sIoV1alpha1Phase1ObjSpec:
     r"""
-    InMemoryClusterSpec defines the desired state of the InMemoryCluster.
+    Phase1ObjSpec defines the spec of a Phase1Obj.
 
     Attributes
     ----------
-    controlPlaneEndpoint : InfrastructureClusterxK8sIoV1alpha1InMemoryClusterSpecControlPlaneEndpoint, default is Undefined, optional
-        control plane endpoint
+    foo : str, default is Undefined, optional
+        foo
     """
 
 
-    controlPlaneEndpoint?: InfrastructureClusterxK8sIoV1alpha1InMemoryClusterSpecControlPlaneEndpoint
+    foo?: str
 
 
-schema InfrastructureClusterxK8sIoV1alpha1InMemoryClusterSpecControlPlaneEndpoint:
+schema TestClusterxK8sIoV1alpha1Phase1ObjStatus:
     r"""
-    ControlPlaneEndpoint represents the endpoint used to communicate with the control plane.
+    Phase1ObjStatus defines the status of a Phase1Obj.
 
     Attributes
     ----------
-    host : str, default is Undefined, required
-        Host is the hostname on which the API server is serving.
-    port : int, default is Undefined, required
-        Port is the port on which the API server is serving.
-        Defaults to 6443 if not set.
-    """
-
-
-    host: str
-
-    port: int
-
-
-schema InfrastructureClusterxK8sIoV1alpha1InMemoryClusterStatus:
-    r"""
-    InMemoryClusterStatus defines the observed state of the InMemoryCluster.
-
-    Attributes
-    ----------
-    conditions : [InfrastructureClusterxK8sIoV1alpha1InMemoryClusterStatusConditionsItems0], default is Undefined, optional
-        Conditions defines current service state of the InMemoryCluster.
-    ready : bool, default is Undefined, optional
-        Ready denotes that the in-memory cluster (infrastructure) is ready.
-    v1beta2 : InfrastructureClusterxK8sIoV1alpha1InMemoryClusterStatusV1beta2, default is Undefined, optional
+    bar : str, default is Undefined, optional
+        bar
+    conditions : [TestClusterxK8sIoV1alpha1Phase1ObjStatusConditionsItems0], default is Undefined, optional
+        Conditions provide observations of the operational state of a Cluster API resource.
+    v1beta2 : TestClusterxK8sIoV1alpha1Phase1ObjStatusV1beta2, default is Undefined, optional
         v1beta2
     """
 
 
-    conditions?: [InfrastructureClusterxK8sIoV1alpha1InMemoryClusterStatusConditionsItems0]
+    bar?: str
 
-    ready?: bool
+    conditions?: [TestClusterxK8sIoV1alpha1Phase1ObjStatusConditionsItems0]
 
-    v1beta2?: InfrastructureClusterxK8sIoV1alpha1InMemoryClusterStatusV1beta2
+    v1beta2?: TestClusterxK8sIoV1alpha1Phase1ObjStatusV1beta2
 
 
-schema InfrastructureClusterxK8sIoV1alpha1InMemoryClusterStatusConditionsItems0:
+schema TestClusterxK8sIoV1alpha1Phase1ObjStatusConditionsItems0:
     r"""
     Condition defines an observation of a Cluster API resource operational state.
 
@@ -135,25 +116,25 @@ schema InfrastructureClusterxK8sIoV1alpha1InMemoryClusterStatusConditionsItems0:
     $type: str
 
 
-schema InfrastructureClusterxK8sIoV1alpha1InMemoryClusterStatusV1beta2:
+schema TestClusterxK8sIoV1alpha1Phase1ObjStatusV1beta2:
     r"""
-    v1beta2 groups all the fields that will be added or modified in InMemoryCluster's status with the V1Beta2 version.
+    Phase1ObjStatusV1Beta2 defines the status.V1Beta2 of a Phase1Obj.
 
     Attributes
     ----------
-    conditions : [InfrastructureClusterxK8sIoV1alpha1InMemoryClusterStatusV1beta2ConditionsItems0], default is Undefined, optional
-        conditions represents the observations of a InMemoryCluster's current state.
+    conditions : [TestClusterxK8sIoV1alpha1Phase1ObjStatusV1beta2ConditionsItems0], default is Undefined, optional
+        conditions
     """
 
 
-    conditions?: [InfrastructureClusterxK8sIoV1alpha1InMemoryClusterStatusV1beta2ConditionsItems0]
+    conditions?: [TestClusterxK8sIoV1alpha1Phase1ObjStatusV1beta2ConditionsItems0]
 
 
     check:
         len(conditions) <= 32 if conditions
 
 
-schema InfrastructureClusterxK8sIoV1alpha1InMemoryClusterStatusV1beta2ConditionsItems0:
+schema TestClusterxK8sIoV1alpha1Phase1ObjStatusV1beta2ConditionsItems0:
     r"""
     Condition contains details for one aspect of the current state of this API Resource.
 

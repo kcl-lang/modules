@@ -8,7 +8,7 @@ _regex_match = regex.match
 
 
 schema ClusterClass:
-    """
+    r"""
     ClusterClass is a template which can be used to create managed topologies.
 
     Attributes
@@ -38,7 +38,7 @@ schema ClusterClass:
 
 
 schema ClusterxK8sIoV1beta1ClusterClassSpec:
-    """
+    r"""
     ClusterClassSpec describes the desired state of the ClusterClass.
 
     Attributes
@@ -48,11 +48,11 @@ schema ClusterxK8sIoV1beta1ClusterClassSpec:
     infrastructure : ClusterxK8sIoV1beta1ClusterClassSpecInfrastructure, default is Undefined, optional
         infrastructure
     patches : [ClusterxK8sIoV1beta1ClusterClassSpecPatchesItems0], default is Undefined, optional
-        Patches defines the patches which are applied to customize
+        patches defines the patches which are applied to customize
         referenced templates of a ClusterClass.
         Note: Patches will be applied in the order of the array.
     variables : [ClusterxK8sIoV1beta1ClusterClassSpecVariablesItems0], default is Undefined, optional
-        Variables defines the variables which can be configured
+        variables defines the variables which can be configured
         in the Cluster topology and are then used in patches.
     workers : ClusterxK8sIoV1beta1ClusterClassSpecWorkers, default is Undefined, optional
         workers
@@ -71,8 +71,8 @@ schema ClusterxK8sIoV1beta1ClusterClassSpec:
 
 
 schema ClusterxK8sIoV1beta1ClusterClassSpecControlPlane:
-    """
-    ControlPlane is a reference to a local struct that holds the details
+    r"""
+    controlPlane is a reference to a local struct that holds the details
     for provisioning the Control Plane for the Cluster.
 
     Attributes
@@ -86,17 +86,17 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecControlPlane:
     namingStrategy : ClusterxK8sIoV1beta1ClusterClassSpecControlPlaneNamingStrategy, default is Undefined, optional
         naming strategy
     nodeDeletionTimeout : str, default is Undefined, optional
-        NodeDeletionTimeout defines how long the controller will attempt to delete the Node that the Machine
+        nodeDeletionTimeout defines how long the controller will attempt to delete the Node that the Machine
         hosts after the Machine is marked for deletion. A duration of 0 will retry deletion indefinitely.
         Defaults to 10 seconds.
         NOTE: This value can be overridden while defining a Cluster.Topology.
     nodeDrainTimeout : str, default is Undefined, optional
-        NodeDrainTimeout is the total amount of time that the controller will spend on draining a node.
+        nodeDrainTimeout is the total amount of time that the controller will spend on draining a node.
         The default value is 0, meaning that the node can be drained without any time limitations.
         NOTE: NodeDrainTimeout is different from `kubectl drain --timeout`
         NOTE: This value can be overridden while defining a Cluster.Topology.
     nodeVolumeDetachTimeout : str, default is Undefined, optional
-        NodeVolumeDetachTimeout is the total amount of time that the controller will spend on waiting for all volumes
+        nodeVolumeDetachTimeout is the total amount of time that the controller will spend on waiting for all volumes
         to be detached. The default value is 0, meaning that the volumes can be detached without any time limitations.
         NOTE: This value can be overridden while defining a Cluster.Topology.
     ref : ClusterxK8sIoV1beta1ClusterClassSpecControlPlaneRef, default is Undefined, required
@@ -122,8 +122,8 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecControlPlane:
 
 
 schema ClusterxK8sIoV1beta1ClusterClassSpecControlPlaneMachineHealthCheck:
-    """
-    MachineHealthCheck defines a MachineHealthCheck for this ControlPlaneClass.
+    r"""
+    machineHealthCheck defines a MachineHealthCheck for this ControlPlaneClass.
     This field is supported if and only if the ControlPlane provider template
     referenced above is Machine based and supports setting replicas.
 
@@ -133,10 +133,9 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecControlPlaneMachineHealthCheck:
         Any further remediation is only allowed if at most "MaxUnhealthy" machines selected by
         "selector" are not healthy.
     nodeStartupTimeout : str, default is Undefined, optional
-        NodeStartupTimeout allows to set the maximum time for MachineHealthCheck
+        nodeStartupTimeout allows to set the maximum time for MachineHealthCheck
         to consider a Machine unhealthy if a corresponding Node isn't associated
         through a `Spec.ProviderID` field.
-
 
         The duration set in this field is compared to the greatest of:
         - Cluster's infrastructure ready condition timestamp (if and when available)
@@ -144,13 +143,12 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecControlPlaneMachineHealthCheck:
         - Machine's infrastructure ready condition timestamp (if and when available)
         - Machine's metadata creation timestamp
 
-
         Defaults to 10 minutes.
         If you wish to disable this feature, set the value explicitly to 0.
     remediationTemplate : ClusterxK8sIoV1beta1ClusterClassSpecControlPlaneMachineHealthCheckRemediationTemplate, default is Undefined, optional
         remediation template
     unhealthyConditions : [ClusterxK8sIoV1beta1ClusterClassSpecControlPlaneMachineHealthCheckUnhealthyConditionsItems0], default is Undefined, optional
-        UnhealthyConditions contains a list of the conditions that determine
+        unhealthyConditions contains a list of the conditions that determine
         whether a node is considered unhealthy. The conditions are combined in a
         logical OR, i.e. if any of the conditions is met, the node is unhealthy.
     unhealthyRange : str, default is Undefined, optional
@@ -178,10 +176,9 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecControlPlaneMachineHealthCheck:
 
 
 schema ClusterxK8sIoV1beta1ClusterClassSpecControlPlaneMachineHealthCheckRemediationTemplate:
-    """
-    RemediationTemplate is a reference to a remediation template
+    r"""
+    remediationTemplate is a reference to a remediation template
     provided by an infrastructure provider.
-
 
     This field is completely optional, when filled, the MachineHealthCheck controller
     creates a new object from the template referenced and hands off remediation of the machine to
@@ -199,7 +196,6 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecControlPlaneMachineHealthCheckRemedia
         the event) or if no container name is specified "spec.containers[2]" (container with
         index 2 in this pod). This syntax is chosen only to have some well-defined way of
         referencing a part of an object.
-        TODO: this design is not final and this field is subject to change in the future.
     kind : str, default is Undefined, optional
         Kind of the referent.
         More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
@@ -234,7 +230,7 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecControlPlaneMachineHealthCheckRemedia
 
 
 schema ClusterxK8sIoV1beta1ClusterClassSpecControlPlaneMachineHealthCheckUnhealthyConditionsItems0:
-    """
+    r"""
     UnhealthyCondition represents a Node condition type and value with a timeout
     specified as a duration.  When the named condition has been in the given
     status for at least the timeout value, a node is considered unhealthy.
@@ -263,10 +259,9 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecControlPlaneMachineHealthCheckUnhealt
 
 
 schema ClusterxK8sIoV1beta1ClusterClassSpecControlPlaneMachineInfrastructure:
-    """
-    MachineInfrastructure defines the metadata and infrastructure information
+    r"""
+    machineInfrastructure defines the metadata and infrastructure information
     for control plane machines.
-
 
     This field is supported if and only if the control plane provider template
     referenced above is Machine based and supports setting replicas.
@@ -282,8 +277,8 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecControlPlaneMachineInfrastructure:
 
 
 schema ClusterxK8sIoV1beta1ClusterClassSpecControlPlaneMachineInfrastructureRef:
-    """
-    Ref is a required reference to a custom resource
+    r"""
+    ref is a required reference to a custom resource
     offered by a provider.
 
     Attributes
@@ -298,7 +293,6 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecControlPlaneMachineInfrastructureRef:
         the event) or if no container name is specified "spec.containers[2]" (container with
         index 2 in this pod). This syntax is chosen only to have some well-defined way of
         referencing a part of an object.
-        TODO: this design is not final and this field is subject to change in the future.
     kind : str, default is Undefined, optional
         Kind of the referent.
         More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
@@ -333,12 +327,11 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecControlPlaneMachineInfrastructureRef:
 
 
 schema ClusterxK8sIoV1beta1ClusterClassSpecControlPlaneMetadata:
-    """
-    Metadata is the metadata applied to the ControlPlane and the Machines of the ControlPlane
+    r"""
+    metadata is the metadata applied to the ControlPlane and the Machines of the ControlPlane
     if the ControlPlaneTemplate referenced is machine based. If not, it is applied only to the
     ControlPlane.
     At runtime this metadata is merged with the corresponding metadata from the topology.
-
 
     This field is supported if and only if the control plane provider template
     referenced is Machine based.
@@ -346,7 +339,7 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecControlPlaneMetadata:
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        Annotations is an unstructured key value map stored with a resource that may be
+        annotations is an unstructured key value map stored with a resource that may be
         set by external tools to store and retrieve arbitrary metadata. They are not
         queryable and should be preserved when modifying objects.
         More info: http://kubernetes.io/docs/user-guide/annotations
@@ -364,13 +357,13 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecControlPlaneMetadata:
 
 
 schema ClusterxK8sIoV1beta1ClusterClassSpecControlPlaneNamingStrategy:
-    """
-    NamingStrategy allows changing the naming pattern used when creating the control plane provider object.
+    r"""
+    namingStrategy allows changing the naming pattern used when creating the control plane provider object.
 
     Attributes
     ----------
     template : str, default is Undefined, optional
-        Template defines the template to use for generating the name of the ControlPlane object.
+        template defines the template to use for generating the name of the ControlPlane object.
         If not defined, it will fallback to `{{ .cluster.name }}-{{ .random }}`.
         If the templated string exceeds 63 characters, it will be trimmed to 58 characters and will
         get concatenated with a random suffix of length 5.
@@ -384,8 +377,8 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecControlPlaneNamingStrategy:
 
 
 schema ClusterxK8sIoV1beta1ClusterClassSpecControlPlaneRef:
-    """
-    Ref is a required reference to a custom resource
+    r"""
+    ref is a required reference to a custom resource
     offered by a provider.
 
     Attributes
@@ -400,7 +393,6 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecControlPlaneRef:
         the event) or if no container name is specified "spec.containers[2]" (container with
         index 2 in this pod). This syntax is chosen only to have some well-defined way of
         referencing a part of an object.
-        TODO: this design is not final and this field is subject to change in the future.
     kind : str, default is Undefined, optional
         Kind of the referent.
         More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
@@ -435,8 +427,8 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecControlPlaneRef:
 
 
 schema ClusterxK8sIoV1beta1ClusterClassSpecInfrastructure:
-    """
-    Infrastructure is a reference to a provider-specific template that holds
+    r"""
+    infrastructure is a reference to a provider-specific template that holds
     the details for provisioning infrastructure specific cluster
     for the underlying provider.
     The underlying provider is responsible for the implementation
@@ -453,8 +445,8 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecInfrastructure:
 
 
 schema ClusterxK8sIoV1beta1ClusterClassSpecInfrastructureRef:
-    """
-    Ref is a required reference to a custom resource
+    r"""
+    ref is a required reference to a custom resource
     offered by a provider.
 
     Attributes
@@ -469,7 +461,6 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecInfrastructureRef:
         the event) or if no container name is specified "spec.containers[2]" (container with
         index 2 in this pod). This syntax is chosen only to have some well-defined way of
         referencing a part of an object.
-        TODO: this design is not final and this field is subject to change in the future.
     kind : str, default is Undefined, optional
         Kind of the referent.
         More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
@@ -504,19 +495,19 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecInfrastructureRef:
 
 
 schema ClusterxK8sIoV1beta1ClusterClassSpecPatchesItems0:
-    """
+    r"""
     ClusterClassPatch defines a patch which is applied to customize the referenced templates.
 
     Attributes
     ----------
     definitions : [ClusterxK8sIoV1beta1ClusterClassSpecPatchesItems0DefinitionsItems0], default is Undefined, optional
-        Definitions define inline patches.
+        definitions define inline patches.
         Note: Patches will be applied in the order of the array.
         Note: Exactly one of Definitions or External must be set.
     description : str, default is Undefined, optional
-        Description is a human-readable description of this patch.
+        description is a human-readable description of this patch.
     enabledIf : str, default is Undefined, optional
-        EnabledIf is a Go template to be used to calculate if a patch should be enabled.
+        enabledIf is a Go template to be used to calculate if a patch should be enabled.
         It can reference variables defined in .spec.variables and builtin variables.
         The patch will be enabled if the template evaluates to `true`, otherwise it will
         be disabled.
@@ -524,7 +515,7 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecPatchesItems0:
     external : ClusterxK8sIoV1beta1ClusterClassSpecPatchesItems0External, default is Undefined, optional
         external
     name : str, default is Undefined, required
-        Name of the patch.
+        name of the patch.
     """
 
 
@@ -540,13 +531,13 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecPatchesItems0:
 
 
 schema ClusterxK8sIoV1beta1ClusterClassSpecPatchesItems0DefinitionsItems0:
-    """
+    r"""
     PatchDefinition defines a patch which is applied to customize the referenced templates.
 
     Attributes
     ----------
     jsonPatches : [ClusterxK8sIoV1beta1ClusterClassSpecPatchesItems0DefinitionsItems0JSONPatchesItems0], default is Undefined, required
-        JSONPatches defines the patches which should be applied on the templates
+        jsonPatches defines the patches which should be applied on the templates
         matching the selector.
         Note: Patches will be applied in the order of the array.
     selector : ClusterxK8sIoV1beta1ClusterClassSpecPatchesItems0DefinitionsItems0Selector, default is Undefined, required
@@ -560,22 +551,22 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecPatchesItems0DefinitionsItems0:
 
 
 schema ClusterxK8sIoV1beta1ClusterClassSpecPatchesItems0DefinitionsItems0JSONPatchesItems0:
-    """
+    r"""
     JSONPatch defines a JSON patch.
 
     Attributes
     ----------
     op : str, default is Undefined, required
-        Op defines the operation of the patch.
+        op defines the operation of the patch.
         Note: Only `add`, `replace` and `remove` are supported.
     path : str, default is Undefined, required
-        Path defines the path of the patch.
+        path defines the path of the patch.
         Note: Only the spec of a template can be patched, thus the path has to start with /spec/.
         Note: For now the only allowed array modifications are `append` and `prepend`, i.e.:
         * for op: `add`: only index 0 (prepend) and - (append) are allowed
         * for op: `replace` or `remove`: no indexes are allowed
     value : any, default is Undefined, optional
-        Value defines the value of the patch.
+        value defines the value of the patch.
         Note: Either Value or ValueFrom is required for add and replace
         operations. Only one of them is allowed to be set at the same time.
         Note: We have to use apiextensionsv1.JSON instead of our JSON type,
@@ -597,19 +588,19 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecPatchesItems0DefinitionsItems0JSONPat
 
 
 schema ClusterxK8sIoV1beta1ClusterClassSpecPatchesItems0DefinitionsItems0JSONPatchesItems0ValueFrom:
-    """
-    ValueFrom defines the value of the patch.
+    r"""
+    valueFrom defines the value of the patch.
     Note: Either Value or ValueFrom is required for add and replace
     operations. Only one of them is allowed to be set at the same time.
 
     Attributes
     ----------
     template : str, default is Undefined, optional
-        Template is the Go template to be used to calculate the value.
+        template is the Go template to be used to calculate the value.
         A template can reference variables defined in .spec.variables and builtin variables.
         Note: The template must evaluate to a valid YAML or JSON value.
     variable : str, default is Undefined, optional
-        Variable is the variable to be used as value.
+        variable is the variable to be used as value.
         Variable can be one of the variables defined in .spec.variables or a builtin variable.
     """
 
@@ -620,15 +611,15 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecPatchesItems0DefinitionsItems0JSONPat
 
 
 schema ClusterxK8sIoV1beta1ClusterClassSpecPatchesItems0DefinitionsItems0Selector:
-    """
-    Selector defines on which templates the patch should be applied.
+    r"""
+    selector defines on which templates the patch should be applied.
 
     Attributes
     ----------
     apiVersion : str, default is Undefined, required
-        APIVersion filters templates by apiVersion.
+        apiVersion filters templates by apiVersion.
     kind : str, default is Undefined, required
-        Kind filters templates by kind.
+        kind filters templates by kind.
     matchResources : ClusterxK8sIoV1beta1ClusterClassSpecPatchesItems0DefinitionsItems0SelectorMatchResources, default is Undefined, required
         match resources
     """
@@ -642,17 +633,17 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecPatchesItems0DefinitionsItems0Selecto
 
 
 schema ClusterxK8sIoV1beta1ClusterClassSpecPatchesItems0DefinitionsItems0SelectorMatchResources:
-    """
-    MatchResources selects templates based on where they are referenced.
+    r"""
+    matchResources selects templates based on where they are referenced.
 
     Attributes
     ----------
     controlPlane : bool, default is Undefined, optional
-        ControlPlane selects templates referenced in .spec.ControlPlane.
+        controlPlane selects templates referenced in .spec.ControlPlane.
         Note: this will match the controlPlane and also the controlPlane
         machineInfrastructure (depending on the kind and apiVersion).
     infrastructureCluster : bool, default is Undefined, optional
-        InfrastructureCluster selects templates referenced in .spec.infrastructure.
+        infrastructureCluster selects templates referenced in .spec.infrastructure.
     machineDeploymentClass : ClusterxK8sIoV1beta1ClusterClassSpecPatchesItems0DefinitionsItems0SelectorMatchResourcesMachineDeploymentClass, default is Undefined, optional
         machine deployment class
     machinePoolClass : ClusterxK8sIoV1beta1ClusterClassSpecPatchesItems0DefinitionsItems0SelectorMatchResourcesMachinePoolClass, default is Undefined, optional
@@ -670,14 +661,14 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecPatchesItems0DefinitionsItems0Selecto
 
 
 schema ClusterxK8sIoV1beta1ClusterClassSpecPatchesItems0DefinitionsItems0SelectorMatchResourcesMachineDeploymentClass:
-    """
-    MachineDeploymentClass selects templates referenced in specific MachineDeploymentClasses in
+    r"""
+    machineDeploymentClass selects templates referenced in specific MachineDeploymentClasses in
     .spec.workers.machineDeployments.
 
     Attributes
     ----------
     names : [str], default is Undefined, optional
-        Names selects templates by class names.
+        names selects templates by class names.
     """
 
 
@@ -685,14 +676,14 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecPatchesItems0DefinitionsItems0Selecto
 
 
 schema ClusterxK8sIoV1beta1ClusterClassSpecPatchesItems0DefinitionsItems0SelectorMatchResourcesMachinePoolClass:
-    """
-    MachinePoolClass selects templates referenced in specific MachinePoolClasses in
+    r"""
+    machinePoolClass selects templates referenced in specific MachinePoolClasses in
     .spec.workers.machinePools.
 
     Attributes
     ----------
     names : [str], default is Undefined, optional
-        Names selects templates by class names.
+        names selects templates by class names.
     """
 
 
@@ -700,22 +691,22 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecPatchesItems0DefinitionsItems0Selecto
 
 
 schema ClusterxK8sIoV1beta1ClusterClassSpecPatchesItems0External:
-    """
-    External defines an external patch.
+    r"""
+    external defines an external patch.
     Note: Exactly one of Definitions or External must be set.
 
     Attributes
     ----------
     discoverVariablesExtension : str, default is Undefined, optional
-        DiscoverVariablesExtension references an extension which is called to discover variables.
+        discoverVariablesExtension references an extension which is called to discover variables.
     generateExtension : str, default is Undefined, optional
-        GenerateExtension references an extension which is called to generate patches.
+        generateExtension references an extension which is called to generate patches.
     settings : {str:str}, default is Undefined, optional
-        Settings defines key value pairs to be passed to the extensions.
+        settings defines key value pairs to be passed to the extensions.
         Values defined here take precedence over the values defined in the
         corresponding ExtensionConfig.
     validateExtension : str, default is Undefined, optional
-        ValidateExtension references an extension which is called to validate the topology.
+        validateExtension references an extension which is called to validate the topology.
     """
 
 
@@ -729,7 +720,7 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecPatchesItems0External:
 
 
 schema ClusterxK8sIoV1beta1ClusterClassSpecVariablesItems0:
-    """
+    r"""
     ClusterClassVariable defines a variable which can
     be configured in the Cluster topology and used in patches.
 
@@ -738,9 +729,9 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecVariablesItems0:
     metadata : ClusterxK8sIoV1beta1ClusterClassSpecVariablesItems0Metadata, default is Undefined, optional
         metadata
     name : str, default is Undefined, required
-        Name of the variable.
+        name of the variable.
     required : bool, default is Undefined, required
-        Required specifies if the variable is required.
+        required specifies if the variable is required.
         Note: this applies to the variable as a whole and thus the
         top-level object defined in the schema. If nested fields are
         required, this will be specified inside the schema.
@@ -759,15 +750,17 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecVariablesItems0:
 
 
 schema ClusterxK8sIoV1beta1ClusterClassSpecVariablesItems0Metadata:
-    """
-    Metadata is the metadata of a variable.
+    r"""
+    metadata is the metadata of a variable.
     It can be used to add additional data for higher level tools to
     a ClusterClassVariable.
+
+    Deprecated: This field is deprecated and is going to be removed in the next apiVersion. Please use XMetadata in JSONSchemaProps instead.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        Annotations is an unstructured key value map that can be used to store and
+        annotations is an unstructured key value map that can be used to store and
         retrieve arbitrary metadata.
         They are not queryable.
     labels : {str:str}, default is Undefined, optional
@@ -782,8 +775,8 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecVariablesItems0Metadata:
 
 
 schema ClusterxK8sIoV1beta1ClusterClassSpecVariablesItems0Schema:
-    """
-    Schema defines the schema of the variable.
+    r"""
+    schema defines the schema of the variable.
 
     Attributes
     ----------
@@ -796,93 +789,137 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecVariablesItems0Schema:
 
 
 schema ClusterxK8sIoV1beta1ClusterClassSpecVariablesItems0SchemaOpenAPIV3Schema:
-    """
-    OpenAPIV3Schema defines the schema of a variable via OpenAPI v3
+    r"""
+    openAPIV3Schema defines the schema of a variable via OpenAPI v3
     schema. The schema is a subset of the schema used in
     Kubernetes CRDs.
 
     Attributes
     ----------
     additionalProperties : any, default is Undefined, optional
-        AdditionalProperties specifies the schema of values in a map (keys are always strings).
+        additionalProperties specifies the schema of values in a map (keys are always strings).
         NOTE: Can only be set if type is object.
         NOTE: AdditionalProperties is mutually exclusive with Properties.
         NOTE: This field uses PreserveUnknownFields and Schemaless,
         because recursive validation is not possible.
+    allOf : any, default is Undefined, optional
+        allOf specifies that the variable must validate against all of the subschemas in the array.
+        NOTE: This field uses PreserveUnknownFields and Schemaless,
+        because recursive validation is not possible.
+    anyOf : any, default is Undefined, optional
+        anyOf specifies that the variable must validate against one or more of the subschemas in the array.
+        NOTE: This field uses PreserveUnknownFields and Schemaless,
+        because recursive validation is not possible.
     default : any, default is Undefined, optional
-        Default is the default value of the variable.
+        default is the default value of the variable.
         NOTE: Can be set for all types.
     description : str, default is Undefined, optional
-        Description is a human-readable description of this variable.
+        description is a human-readable description of this variable.
     enum : [any], default is Undefined, optional
-        Enum is the list of valid values of the variable.
+        enum is the list of valid values of the variable.
         NOTE: Can be set for all types.
     example : any, default is Undefined, optional
-        Example is an example for this variable.
+        example is an example for this variable.
     exclusiveMaximum : bool, default is Undefined, optional
-        ExclusiveMaximum specifies if the Maximum is exclusive.
+        exclusiveMaximum specifies if the Maximum is exclusive.
         NOTE: Can only be set if type is integer or number.
     exclusiveMinimum : bool, default is Undefined, optional
-        ExclusiveMinimum specifies if the Minimum is exclusive.
+        exclusiveMinimum specifies if the Minimum is exclusive.
         NOTE: Can only be set if type is integer or number.
     format : str, default is Undefined, optional
-        Format is an OpenAPI v3 format string. Unknown formats are ignored.
+        format is an OpenAPI v3 format string. Unknown formats are ignored.
         For a list of supported formats please see: (of the k8s.io/apiextensions-apiserver version we're currently using)
         https://github.com/kubernetes/apiextensions-apiserver/blob/master/pkg/apiserver/validation/formats.go
         NOTE: Can only be set if type is string.
     items : any, default is Undefined, optional
-        Items specifies fields of an array.
+        items specifies fields of an array.
         NOTE: Can only be set if type is array.
         NOTE: This field uses PreserveUnknownFields and Schemaless,
         because recursive validation is not possible.
     maxItems : int, default is Undefined, optional
-        MaxItems is the max length of an array variable.
+        maxItems is the max length of an array variable.
         NOTE: Can only be set if type is array.
     maxLength : int, default is Undefined, optional
-        MaxLength is the max length of a string variable.
+        maxLength is the max length of a string variable.
         NOTE: Can only be set if type is string.
+    maxProperties : int, default is Undefined, optional
+        maxProperties is the maximum amount of entries in a map or properties in an object.
+        NOTE: Can only be set if type is object.
     maximum : int, default is Undefined, optional
-        Maximum is the maximum of an integer or number variable.
+        maximum is the maximum of an integer or number variable.
         If ExclusiveMaximum is false, the variable is valid if it is lower than, or equal to, the value of Maximum.
         If ExclusiveMaximum is true, the variable is valid if it is strictly lower than the value of Maximum.
         NOTE: Can only be set if type is integer or number.
     minItems : int, default is Undefined, optional
-        MinItems is the min length of an array variable.
+        minItems is the min length of an array variable.
         NOTE: Can only be set if type is array.
     minLength : int, default is Undefined, optional
-        MinLength is the min length of a string variable.
+        minLength is the min length of a string variable.
         NOTE: Can only be set if type is string.
+    minProperties : int, default is Undefined, optional
+        minProperties is the minimum amount of entries in a map or properties in an object.
+        NOTE: Can only be set if type is object.
     minimum : int, default is Undefined, optional
-        Minimum is the minimum of an integer or number variable.
+        minimum is the minimum of an integer or number variable.
         If ExclusiveMinimum is false, the variable is valid if it is greater than, or equal to, the value of Minimum.
         If ExclusiveMinimum is true, the variable is valid if it is strictly greater than the value of Minimum.
         NOTE: Can only be set if type is integer or number.
+    $not : any, default is Undefined, optional
+        not specifies that the variable must not validate against the subschema.
+        NOTE: This field uses PreserveUnknownFields and Schemaless,
+        because recursive validation is not possible.
+    oneOf : any, default is Undefined, optional
+        oneOf specifies that the variable must validate against exactly one of the subschemas in the array.
+        NOTE: This field uses PreserveUnknownFields and Schemaless,
+        because recursive validation is not possible.
     pattern : str, default is Undefined, optional
-        Pattern is the regex which a string variable must match.
+        pattern is the regex which a string variable must match.
         NOTE: Can only be set if type is string.
     properties : any, default is Undefined, optional
-        Properties specifies fields of an object.
+        properties specifies fields of an object.
         NOTE: Can only be set if type is object.
         NOTE: Properties is mutually exclusive with AdditionalProperties.
         NOTE: This field uses PreserveUnknownFields and Schemaless,
         because recursive validation is not possible.
     required : [str], default is Undefined, optional
-        Required specifies which fields of an object are required.
+        required specifies which fields of an object are required.
         NOTE: Can only be set if type is object.
-    $type : str, default is Undefined, required
-        Type is the type of the variable.
+    $type : str, default is Undefined, optional
+        type is the type of the variable.
         Valid values are: object, array, string, integer, number or boolean.
     uniqueItems : bool, default is Undefined, optional
-        UniqueItems specifies if items in an array must be unique.
+        uniqueItems specifies if items in an array must be unique.
         NOTE: Can only be set if type is array.
-    x_kubernetes_preserve_unknown_fields : bool, default is Undefined, optional
-        XPreserveUnknownFields allows setting fields in a variable object
+    "x-kubernetes-int-or-string" : bool, default is Undefined, optional
+        x-kubernetes-int-or-string specifies that this value is
+        either an integer or a string. If this is true, an empty
+        type is allowed and type as child of anyOf is permitted
+        if following one of the following patterns:
+
+        1) anyOf:
+           - type: integer
+           - type: string
+        2) allOf:
+           - anyOf:
+             - type: integer
+             - type: string
+           - ... zero or more
+    "x-kubernetes-preserve-unknown-fields" : bool, default is Undefined, optional
+        x-kubernetes-preserve-unknown-fields allows setting fields in a variable object
         which are not defined in the variable schema. This affects fields recursively,
         except if nested properties or additionalProperties are specified in the schema.
+    "x-kubernetes-validations" : [ClusterxK8sIoV1beta1ClusterClassSpecVariablesItems0SchemaOpenAPIV3SchemaXKubernetesValidationsItems0], default is Undefined, optional
+        x-kubernetes-validations describes a list of validation rules written in the CEL expression language.
+    "x-metadata" : ClusterxK8sIoV1beta1ClusterClassSpecVariablesItems0SchemaOpenAPIV3SchemaXMetadata, default is Undefined, optional
+        x metadata
     """
 
 
     additionalProperties?: any
+
+    allOf?: any
+
+    anyOf?: any
 
     default?: any
 
@@ -904,13 +941,21 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecVariablesItems0SchemaOpenAPIV3Schema:
 
     maxLength?: int
 
+    maxProperties?: int
+
     maximum?: int
 
     minItems?: int
 
     minLength?: int
 
+    minProperties?: int
+
     minimum?: int
+
+    $not?: any
+
+    oneOf?: any
 
     pattern?: str
 
@@ -918,26 +963,151 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecVariablesItems0SchemaOpenAPIV3Schema:
 
     required?: [str]
 
-    $type: str
+    $type?: str
 
     uniqueItems?: bool
 
-    x_kubernetes_preserve_unknown_fields?: bool
+    "x-kubernetes-int-or-string"?: bool
+
+    "x-kubernetes-preserve-unknown-fields"?: bool
+
+    "x-kubernetes-validations"?: [ClusterxK8sIoV1beta1ClusterClassSpecVariablesItems0SchemaOpenAPIV3SchemaXKubernetesValidationsItems0]
+
+    "x-metadata"?: ClusterxK8sIoV1beta1ClusterClassSpecVariablesItems0SchemaOpenAPIV3SchemaXMetadata
+
+
+schema ClusterxK8sIoV1beta1ClusterClassSpecVariablesItems0SchemaOpenAPIV3SchemaXKubernetesValidationsItems0:
+    r"""
+    ValidationRule describes a validation rule written in the CEL expression language.
+
+    Attributes
+    ----------
+    fieldPath : str, default is Undefined, optional
+        fieldPath represents the field path returned when the validation fails.
+        It must be a relative JSON path (i.e. with array notation) scoped to the location of this x-kubernetes-validations extension in the schema and refer to an existing field.
+        e.g. when validation checks if a specific attribute `foo` under a map `testMap`, the fieldPath could be set to `.testMap.foo`
+        If the validation checks two lists must have unique attributes, the fieldPath could be set to either of the list: e.g. `.testList`
+        It does not support list numeric index.
+        It supports child operation to refer to an existing field currently. Refer to [JSONPath support in Kubernetes](https://kubernetes.io/docs/reference/kubectl/jsonpath/) for more info.
+        Numeric index of array is not supported.
+        For field name which contains special characters, use `['specialName']` to refer the field name.
+        e.g. for attribute `foo.34$` appears in a list `testList`, the fieldPath could be set to `.testList['foo.34$']`
+    message : str, default is Undefined, optional
+        message represents the message displayed when validation fails. The message is required if the Rule contains
+        line breaks. The message must not contain line breaks.
+        If unset, the message is "failed rule: {Rule}".
+        e.g. "must be a URL with the host matching spec.host"
+    messageExpression : str, default is Undefined, optional
+        messageExpression declares a CEL expression that evaluates to the validation failure message that is returned when this rule fails.
+        Since messageExpression is used as a failure message, it must evaluate to a string.
+        If both message and messageExpression are present on a rule, then messageExpression will be used if validation
+        fails. If messageExpression results in a runtime error, the validation failure message is produced
+        as if the messageExpression field were unset. If messageExpression evaluates to an empty string, a string with only spaces, or a string
+        that contains line breaks, then the validation failure message will also be produced as if the messageExpression field were unset.
+        messageExpression has access to all the same variables as the rule; the only difference is the return type.
+        Example:
+        "x must be less than max ("+string(self.max)+")"
+    reason : str, default is "FieldValueInvalid", optional
+        reason provides a machine-readable validation failure reason that is returned to the caller when a request fails this validation rule.
+        The currently supported reasons are: "FieldValueInvalid", "FieldValueForbidden", "FieldValueRequired", "FieldValueDuplicate".
+        If not set, default to use "FieldValueInvalid".
+        All future added reasons must be accepted by clients when reading this value and unknown reasons should be treated as FieldValueInvalid.
+    $rule : str, default is Undefined, required
+        rule represents the expression which will be evaluated by CEL.
+        ref: https://github.com/google/cel-spec
+        The Rule is scoped to the location of the x-kubernetes-validations extension in the schema.
+        The `self` variable in the CEL expression is bound to the scoped value.
+        If the Rule is scoped to an object with properties, the accessible properties of the object are field selectable
+        via `self.field` and field presence can be checked via `has(self.field)`.
+        If the Rule is scoped to an object with additionalProperties (i.e. a map) the value of the map
+        are accessible via `self[mapKey]`, map containment can be checked via `mapKey in self` and all entries of the map
+        are accessible via CEL macros and functions such as `self.all(...)`.
+        If the Rule is scoped to an array, the elements of the array are accessible via `self[i]` and also by macros and
+        functions.
+        If the Rule is scoped to a scalar, `self` is bound to the scalar value.
+        Examples:
+        - Rule scoped to a map of objects: {"rule": "self.components['Widget'].priority < 10"}
+        - Rule scoped to a list of integers: {"rule": "self.values.all(value, value >= 0 && value < 100)"}
+        - Rule scoped to a string value: {"rule": "self.startsWith('kube')"}
+
+        Unknown data preserved in custom resources via x-kubernetes-preserve-unknown-fields is not accessible in CEL
+        expressions. This includes:
+        - Unknown field values that are preserved by object schemas with x-kubernetes-preserve-unknown-fields.
+        - Object properties where the property schema is of an "unknown type". An "unknown type" is recursively defined as:
+          - A schema with no type and x-kubernetes-preserve-unknown-fields set to true
+          - An array where the items schema is of an "unknown type"
+          - An object where the additionalProperties schema is of an "unknown type"
+
+        Only property names of the form `[a-zA-Z_.-/][a-zA-Z0-9_.-/]*` are accessible.
+        Accessible property names are escaped according to the following rules when accessed in the expression:
+        - '__' escapes to '__underscores__'
+        - '.' escapes to '__dot__'
+        - '-' escapes to '__dash__'
+        - '/' escapes to '__slash__'
+        - Property names that exactly match a CEL RESERVED keyword escape to '__{keyword}__'. The keywords are:
+        	  "true", "false", "null", "in", "as", "break", "const", "continue", "else", "for", "function", "if",
+        	  "import", "let", "loop", "package", "namespace", "return".
+        Examples:
+          - Rule accessing a property named "namespace": {"rule": "self.__namespace__ > 0"}
+          - Rule accessing a property named "x-prop": {"rule": "self.x__dash__prop > 0"}
+          - Rule accessing a property named "redact__d": {"rule": "self.redact__underscores__d > 0"}
+
+        If `rule` makes use of the `oldSelf` variable it is implicitly a
+        `transition rule`.
+
+        By default, the `oldSelf` variable is the same type as `self`.
+
+        Transition rules by default are applied only on UPDATE requests and are
+        skipped if an old value could not be found.
+    """
+
+
+    fieldPath?: str
+
+    message?: str
+
+    messageExpression?: str
+
+    reason?: "FieldValueInvalid" | "FieldValueForbidden" | "FieldValueRequired" | "FieldValueDuplicate" = "FieldValueInvalid"
+
+    $rule: str
+
+
+schema ClusterxK8sIoV1beta1ClusterClassSpecVariablesItems0SchemaOpenAPIV3SchemaXMetadata:
+    r"""
+    x-metadata is the metadata of a variable or a nested field within a variable.
+    It can be used to add additional data for higher level tools.
+
+    Attributes
+    ----------
+    annotations : {str:str}, default is Undefined, optional
+        annotations is an unstructured key value map that can be used to store and
+        retrieve arbitrary metadata.
+        They are not queryable.
+    labels : {str:str}, default is Undefined, optional
+        Map of string keys and values that can be used to organize and categorize
+        (scope and select) variables.
+    """
+
+
+    annotations?: {str:str}
+
+    labels?: {str:str}
 
 
 schema ClusterxK8sIoV1beta1ClusterClassSpecWorkers:
-    """
-    Workers describes the worker nodes for the cluster.
+    r"""
+    workers describes the worker nodes for the cluster.
     It is a collection of node types which can be used to create
     the worker nodes of the cluster.
 
     Attributes
     ----------
     machineDeployments : [ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0], default is Undefined, optional
-        MachineDeployments is a list of machine deployment classes that can be used to create
+        machineDeployments is a list of machine deployment classes that can be used to create
         a set of worker nodes.
     machinePools : [ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachinePoolsItems0], default is Undefined, optional
-        MachinePools is a list of machine pool classes that can be used to create
+        machinePools is a list of machine pool classes that can be used to create
         a set of worker nodes.
     """
 
@@ -948,18 +1118,18 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecWorkers:
 
 
 schema ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0:
-    """
+    r"""
     MachineDeploymentClass serves as a template to define a set of worker nodes of the cluster
     provisioned using the `ClusterClass`.
 
     Attributes
     ----------
     class : str, default is Undefined, required
-        Class denotes a type of worker node present in the cluster,
+        class denotes a type of worker node present in the cluster,
         this name MUST be unique within a ClusterClass and can be referenced
         in the Cluster to create a managed MachineDeployment.
     failureDomain : str, default is Undefined, optional
-        FailureDomain is the failure domain the machines will be created in.
+        failureDomain is the failure domain the machines will be created in.
         Must match a key in the FailureDomains map stored on the cluster object.
         NOTE: This value can be overridden while defining a Cluster.Topology using this MachineDeploymentClass.
     machineHealthCheck : ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0MachineHealthCheck, default is Undefined, optional
@@ -973,17 +1143,17 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0:
     namingStrategy : ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0NamingStrategy, default is Undefined, optional
         naming strategy
     nodeDeletionTimeout : str, default is Undefined, optional
-        NodeDeletionTimeout defines how long the controller will attempt to delete the Node that the Machine
+        nodeDeletionTimeout defines how long the controller will attempt to delete the Node that the Machine
         hosts after the Machine is marked for deletion. A duration of 0 will retry deletion indefinitely.
         Defaults to 10 seconds.
         NOTE: This value can be overridden while defining a Cluster.Topology using this MachineDeploymentClass.
     nodeDrainTimeout : str, default is Undefined, optional
-        NodeDrainTimeout is the total amount of time that the controller will spend on draining a node.
+        nodeDrainTimeout is the total amount of time that the controller will spend on draining a node.
         The default value is 0, meaning that the node can be drained without any time limitations.
         NOTE: NodeDrainTimeout is different from `kubectl drain --timeout`
         NOTE: This value can be overridden while defining a Cluster.Topology using this MachineDeploymentClass.
     nodeVolumeDetachTimeout : str, default is Undefined, optional
-        NodeVolumeDetachTimeout is the total amount of time that the controller will spend on waiting for all volumes
+        nodeVolumeDetachTimeout is the total amount of time that the controller will spend on waiting for all volumes
         to be detached. The default value is 0, meaning that the volumes can be detached without any time limitations.
         NOTE: This value can be overridden while defining a Cluster.Topology using this MachineDeploymentClass.
     strategy : ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0Strategy, default is Undefined, optional
@@ -1015,8 +1185,8 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0:
 
 
 schema ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0MachineHealthCheck:
-    """
-    MachineHealthCheck defines a MachineHealthCheck for this MachineDeploymentClass.
+    r"""
+    machineHealthCheck defines a MachineHealthCheck for this MachineDeploymentClass.
 
     Attributes
     ----------
@@ -1024,10 +1194,9 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0Machin
         Any further remediation is only allowed if at most "MaxUnhealthy" machines selected by
         "selector" are not healthy.
     nodeStartupTimeout : str, default is Undefined, optional
-        NodeStartupTimeout allows to set the maximum time for MachineHealthCheck
+        nodeStartupTimeout allows to set the maximum time for MachineHealthCheck
         to consider a Machine unhealthy if a corresponding Node isn't associated
         through a `Spec.ProviderID` field.
-
 
         The duration set in this field is compared to the greatest of:
         - Cluster's infrastructure ready condition timestamp (if and when available)
@@ -1035,13 +1204,12 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0Machin
         - Machine's infrastructure ready condition timestamp (if and when available)
         - Machine's metadata creation timestamp
 
-
         Defaults to 10 minutes.
         If you wish to disable this feature, set the value explicitly to 0.
     remediationTemplate : ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0MachineHealthCheckRemediationTemplate, default is Undefined, optional
         remediation template
     unhealthyConditions : [ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0MachineHealthCheckUnhealthyConditionsItems0], default is Undefined, optional
-        UnhealthyConditions contains a list of the conditions that determine
+        unhealthyConditions contains a list of the conditions that determine
         whether a node is considered unhealthy. The conditions are combined in a
         logical OR, i.e. if any of the conditions is met, the node is unhealthy.
     unhealthyRange : str, default is Undefined, optional
@@ -1069,10 +1237,9 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0Machin
 
 
 schema ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0MachineHealthCheckRemediationTemplate:
-    """
-    RemediationTemplate is a reference to a remediation template
+    r"""
+    remediationTemplate is a reference to a remediation template
     provided by an infrastructure provider.
-
 
     This field is completely optional, when filled, the MachineHealthCheck controller
     creates a new object from the template referenced and hands off remediation of the machine to
@@ -1090,7 +1257,6 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0Machin
         the event) or if no container name is specified "spec.containers[2]" (container with
         index 2 in this pod). This syntax is chosen only to have some well-defined way of
         referencing a part of an object.
-        TODO: this design is not final and this field is subject to change in the future.
     kind : str, default is Undefined, optional
         Kind of the referent.
         More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
@@ -1125,7 +1291,7 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0Machin
 
 
 schema ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0MachineHealthCheckUnhealthyConditionsItems0:
-    """
+    r"""
     UnhealthyCondition represents a Node condition type and value with a timeout
     specified as a duration.  When the named condition has been in the given
     status for at least the timeout value, a node is considered unhealthy.
@@ -1154,13 +1320,13 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0Machin
 
 
 schema ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0NamingStrategy:
-    """
-    NamingStrategy allows changing the naming pattern used when creating the MachineDeployment.
+    r"""
+    namingStrategy allows changing the naming pattern used when creating the MachineDeployment.
 
     Attributes
     ----------
     template : str, default is Undefined, optional
-        Template defines the template to use for generating the name of the MachineDeployment object.
+        template defines the template to use for generating the name of the MachineDeployment object.
         If not defined, it will fallback to `{{ .cluster.name }}-{{ .machineDeployment.topologyName }}-{{ .random }}`.
         If the templated string exceeds 63 characters, it will be trimmed to 58 characters and will
         get concatenated with a random suffix of length 5.
@@ -1175,7 +1341,7 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0Naming
 
 
 schema ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0Strategy:
-    """
+    r"""
     The deployment strategy to use to replace existing machines with
     new ones.
     NOTE: This value can be overridden while defining a Cluster.Topology using this MachineDeploymentClass.
@@ -1187,7 +1353,7 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0Strate
     rollingUpdate : ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0StrategyRollingUpdate, default is Undefined, optional
         rolling update
     $type : str, default is Undefined, optional
-        Type of deployment. Allowed values are RollingUpdate and OnDelete.
+        type of deployment. Allowed values are RollingUpdate and OnDelete.
         The default is RollingUpdate.
     """
 
@@ -1200,28 +1366,24 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0Strate
 
 
 schema ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0StrategyRemediation:
-    """
-    Remediation controls the strategy of remediating unhealthy machines
+    r"""
+    remediation controls the strategy of remediating unhealthy machines
     and how remediating operations should occur during the lifecycle of the dependant MachineSets.
 
     Attributes
     ----------
     maxInFlight : int | str, default is Undefined, optional
-        MaxInFlight determines how many in flight remediations should happen at the same time.
-
+        maxInFlight determines how many in flight remediations should happen at the same time.
 
         Remediation only happens on the MachineSet with the most current revision, while
         older MachineSets (usually present during rollout operations) aren't allowed to remediate.
 
-
         Note: In general (independent of remediations), unhealthy machines are always
         prioritized during scale down operations over healthy ones.
-
 
         MaxInFlight can be set to a fixed number or a percentage.
         Example: when this is set to 20%, the MachineSet controller deletes at most 20% of
         the desired replicas.
-
 
         If not set, remediation is limited to all machines (bounded by replicas)
         under the active MachineSet's management.
@@ -1232,14 +1394,14 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0Strate
 
 
 schema ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0StrategyRollingUpdate:
-    """
+    r"""
     Rolling update config params. Present only if
     MachineDeploymentStrategyType = RollingUpdate.
 
     Attributes
     ----------
     deletePolicy : str, default is Undefined, optional
-        DeletePolicy defines the policy used by the MachineDeployment to identify nodes to delete when downscaling.
+        deletePolicy defines the policy used by the MachineDeployment to identify nodes to delete when downscaling.
         Valid values are "Random, "Newest", "Oldest"
         When no value is supplied, the default DeletePolicy of MachineSet is used
     maxSurge : int | str, default is Undefined, optional
@@ -1280,8 +1442,8 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0Strate
 
 
 schema ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0Template:
-    """
-    Template is a local struct containing a collection of templates for creation of
+    r"""
+    template is a local struct containing a collection of templates for creation of
     MachineDeployment objects representing a set of worker nodes.
 
     Attributes
@@ -1303,8 +1465,8 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0Templa
 
 
 schema ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0TemplateBootstrap:
-    """
-    Bootstrap contains the bootstrap template reference to be used
+    r"""
+    bootstrap contains the bootstrap template reference to be used
     for the creation of worker Machines.
 
     Attributes
@@ -1318,8 +1480,8 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0Templa
 
 
 schema ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0TemplateBootstrapRef:
-    """
-    Ref is a required reference to a custom resource
+    r"""
+    ref is a required reference to a custom resource
     offered by a provider.
 
     Attributes
@@ -1334,7 +1496,6 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0Templa
         the event) or if no container name is specified "spec.containers[2]" (container with
         index 2 in this pod). This syntax is chosen only to have some well-defined way of
         referencing a part of an object.
-        TODO: this design is not final and this field is subject to change in the future.
     kind : str, default is Undefined, optional
         Kind of the referent.
         More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
@@ -1369,8 +1530,8 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0Templa
 
 
 schema ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0TemplateInfrastructure:
-    """
-    Infrastructure contains the infrastructure template reference to be used
+    r"""
+    infrastructure contains the infrastructure template reference to be used
     for the creation of worker Machines.
 
     Attributes
@@ -1384,8 +1545,8 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0Templa
 
 
 schema ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0TemplateInfrastructureRef:
-    """
-    Ref is a required reference to a custom resource
+    r"""
+    ref is a required reference to a custom resource
     offered by a provider.
 
     Attributes
@@ -1400,7 +1561,6 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0Templa
         the event) or if no container name is specified "spec.containers[2]" (container with
         index 2 in this pod). This syntax is chosen only to have some well-defined way of
         referencing a part of an object.
-        TODO: this design is not final and this field is subject to change in the future.
     kind : str, default is Undefined, optional
         Kind of the referent.
         More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
@@ -1435,14 +1595,14 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0Templa
 
 
 schema ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0TemplateMetadata:
-    """
-    Metadata is the metadata applied to the MachineDeployment and the machines of the MachineDeployment.
+    r"""
+    metadata is the metadata applied to the MachineDeployment and the machines of the MachineDeployment.
     At runtime this metadata is merged with the corresponding metadata from the topology.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        Annotations is an unstructured key value map stored with a resource that may be
+        annotations is an unstructured key value map stored with a resource that may be
         set by external tools to store and retrieve arbitrary metadata. They are not
         queryable and should be preserved when modifying objects.
         More info: http://kubernetes.io/docs/user-guide/annotations
@@ -1460,18 +1620,18 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0Templa
 
 
 schema ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachinePoolsItems0:
-    """
+    r"""
     MachinePoolClass serves as a template to define a pool of worker nodes of the cluster
     provisioned using `ClusterClass`.
 
     Attributes
     ----------
     class : str, default is Undefined, required
-        Class denotes a type of machine pool present in the cluster,
+        class denotes a type of machine pool present in the cluster,
         this name MUST be unique within a ClusterClass and can be referenced
         in the Cluster to create a managed MachinePool.
     failureDomains : [str], default is Undefined, optional
-        FailureDomains is the list of failure domains the MachinePool should be attached to.
+        failureDomains is the list of failure domains the MachinePool should be attached to.
         Must match a key in the FailureDomains map stored on the cluster object.
         NOTE: This value can be overridden while defining a Cluster.Topology using this MachinePoolClass.
     minReadySeconds : int, default is Undefined, optional
@@ -1483,17 +1643,17 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachinePoolsItems0:
     namingStrategy : ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachinePoolsItems0NamingStrategy, default is Undefined, optional
         naming strategy
     nodeDeletionTimeout : str, default is Undefined, optional
-        NodeDeletionTimeout defines how long the controller will attempt to delete the Node that the Machine
+        nodeDeletionTimeout defines how long the controller will attempt to delete the Node that the Machine
         hosts after the Machine Pool is marked for deletion. A duration of 0 will retry deletion indefinitely.
         Defaults to 10 seconds.
         NOTE: This value can be overridden while defining a Cluster.Topology using this MachinePoolClass.
     nodeDrainTimeout : str, default is Undefined, optional
-        NodeDrainTimeout is the total amount of time that the controller will spend on draining a node.
+        nodeDrainTimeout is the total amount of time that the controller will spend on draining a node.
         The default value is 0, meaning that the node can be drained without any time limitations.
         NOTE: NodeDrainTimeout is different from `kubectl drain --timeout`
         NOTE: This value can be overridden while defining a Cluster.Topology using this MachinePoolClass.
     nodeVolumeDetachTimeout : str, default is Undefined, optional
-        NodeVolumeDetachTimeout is the total amount of time that the controller will spend on waiting for all volumes
+        nodeVolumeDetachTimeout is the total amount of time that the controller will spend on waiting for all volumes
         to be detached. The default value is 0, meaning that the volumes can be detached without any time limitations.
         NOTE: This value can be overridden while defining a Cluster.Topology using this MachinePoolClass.
     template : ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachinePoolsItems0Template, default is Undefined, required
@@ -1519,13 +1679,13 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachinePoolsItems0:
 
 
 schema ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachinePoolsItems0NamingStrategy:
-    """
-    NamingStrategy allows changing the naming pattern used when creating the MachinePool.
+    r"""
+    namingStrategy allows changing the naming pattern used when creating the MachinePool.
 
     Attributes
     ----------
     template : str, default is Undefined, optional
-        Template defines the template to use for generating the name of the MachinePool object.
+        template defines the template to use for generating the name of the MachinePool object.
         If not defined, it will fallback to `{{ .cluster.name }}-{{ .machinePool.topologyName }}-{{ .random }}`.
         If the templated string exceeds 63 characters, it will be trimmed to 58 characters and will
         get concatenated with a random suffix of length 5.
@@ -1540,8 +1700,8 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachinePoolsItems0NamingStrate
 
 
 schema ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachinePoolsItems0Template:
-    """
-    Template is a local struct containing a collection of templates for creation of
+    r"""
+    template is a local struct containing a collection of templates for creation of
     MachinePools objects representing a pool of worker nodes.
 
     Attributes
@@ -1563,8 +1723,8 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachinePoolsItems0Template:
 
 
 schema ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachinePoolsItems0TemplateBootstrap:
-    """
-    Bootstrap contains the bootstrap template reference to be used
+    r"""
+    bootstrap contains the bootstrap template reference to be used
     for the creation of the Machines in the MachinePool.
 
     Attributes
@@ -1578,8 +1738,8 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachinePoolsItems0TemplateBoot
 
 
 schema ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachinePoolsItems0TemplateBootstrapRef:
-    """
-    Ref is a required reference to a custom resource
+    r"""
+    ref is a required reference to a custom resource
     offered by a provider.
 
     Attributes
@@ -1594,7 +1754,6 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachinePoolsItems0TemplateBoot
         the event) or if no container name is specified "spec.containers[2]" (container with
         index 2 in this pod). This syntax is chosen only to have some well-defined way of
         referencing a part of an object.
-        TODO: this design is not final and this field is subject to change in the future.
     kind : str, default is Undefined, optional
         Kind of the referent.
         More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
@@ -1629,8 +1788,8 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachinePoolsItems0TemplateBoot
 
 
 schema ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachinePoolsItems0TemplateInfrastructure:
-    """
-    Infrastructure contains the infrastructure template reference to be used
+    r"""
+    infrastructure contains the infrastructure template reference to be used
     for the creation of the MachinePool.
 
     Attributes
@@ -1644,8 +1803,8 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachinePoolsItems0TemplateInfr
 
 
 schema ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachinePoolsItems0TemplateInfrastructureRef:
-    """
-    Ref is a required reference to a custom resource
+    r"""
+    ref is a required reference to a custom resource
     offered by a provider.
 
     Attributes
@@ -1660,7 +1819,6 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachinePoolsItems0TemplateInfr
         the event) or if no container name is specified "spec.containers[2]" (container with
         index 2 in this pod). This syntax is chosen only to have some well-defined way of
         referencing a part of an object.
-        TODO: this design is not final and this field is subject to change in the future.
     kind : str, default is Undefined, optional
         Kind of the referent.
         More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
@@ -1695,14 +1853,14 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachinePoolsItems0TemplateInfr
 
 
 schema ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachinePoolsItems0TemplateMetadata:
-    """
-    Metadata is the metadata applied to the MachinePool.
+    r"""
+    metadata is the metadata applied to the MachinePool.
     At runtime this metadata is merged with the corresponding metadata from the topology.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        Annotations is an unstructured key value map stored with a resource that may be
+        annotations is an unstructured key value map stored with a resource that may be
         set by external tools to store and retrieve arbitrary metadata. They are not
         queryable and should be preserved when modifying objects.
         More info: http://kubernetes.io/docs/user-guide/annotations
@@ -1720,17 +1878,19 @@ schema ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachinePoolsItems0TemplateMeta
 
 
 schema ClusterxK8sIoV1beta1ClusterClassStatus:
-    """
+    r"""
     ClusterClassStatus defines the observed state of the ClusterClass.
 
     Attributes
     ----------
     conditions : [ClusterxK8sIoV1beta1ClusterClassStatusConditionsItems0], default is Undefined, optional
-        Conditions defines current observed state of the ClusterClass.
+        conditions defines current observed state of the ClusterClass.
     observedGeneration : int, default is Undefined, optional
-        ObservedGeneration is the latest generation observed by the controller.
+        observedGeneration is the latest generation observed by the controller.
+    v1beta2 : ClusterxK8sIoV1beta1ClusterClassStatusV1beta2, default is Undefined, optional
+        v1beta2
     variables : [ClusterxK8sIoV1beta1ClusterClassStatusVariablesItems0], default is Undefined, optional
-        Variables is a list of ClusterClassStatusVariable that are defined for the ClusterClass.
+        variables is a list of ClusterClassStatusVariable that are defined for the ClusterClass.
     """
 
 
@@ -1738,11 +1898,13 @@ schema ClusterxK8sIoV1beta1ClusterClassStatus:
 
     observedGeneration?: int
 
+    v1beta2?: ClusterxK8sIoV1beta1ClusterClassStatusV1beta2
+
     variables?: [ClusterxK8sIoV1beta1ClusterClassStatusVariablesItems0]
 
 
 schema ClusterxK8sIoV1beta1ClusterClassStatusConditionsItems0:
-    """
+    r"""
     Condition defines an observation of a Cluster API resource operational state.
 
     Attributes
@@ -1757,15 +1919,15 @@ schema ClusterxK8sIoV1beta1ClusterClassStatusConditionsItems0:
     reason : str, default is Undefined, optional
         The reason for the condition's last transition in CamelCase.
         The specific API may choose whether or not this field is considered a guaranteed API.
-        This field may not be empty.
+        This field may be empty.
     severity : str, default is Undefined, optional
-        Severity provides an explicit classification of Reason code, so the users or machines can immediately
+        severity provides an explicit classification of Reason code, so the users or machines can immediately
         understand the current situation and act accordingly.
         The Severity field MUST be set only when Status=False.
     status : str, default is Undefined, required
-        Status of the condition, one of True, False, Unknown.
+        status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
-        Type of condition in CamelCase or in foo.example.com/CamelCase.
+        type of condition in CamelCase or in foo.example.com/CamelCase.
         Many .condition.type values are consistent across resources like Available, but because arbitrary conditions
         can be useful (see .node.status.conditions), the ability to deconflict is important.
     """
@@ -1784,18 +1946,89 @@ schema ClusterxK8sIoV1beta1ClusterClassStatusConditionsItems0:
     $type: str
 
 
-schema ClusterxK8sIoV1beta1ClusterClassStatusVariablesItems0:
+schema ClusterxK8sIoV1beta1ClusterClassStatusV1beta2:
+    r"""
+    v1beta2 groups all the fields that will be added or modified in ClusterClass's status with the V1Beta2 version.
+
+    Attributes
+    ----------
+    conditions : [ClusterxK8sIoV1beta1ClusterClassStatusV1beta2ConditionsItems0], default is Undefined, optional
+        conditions represents the observations of a ClusterClass's current state.
+        Known condition types are VariablesReady, RefVersionsUpToDate, Paused.
     """
+
+
+    conditions?: [ClusterxK8sIoV1beta1ClusterClassStatusV1beta2ConditionsItems0]
+
+
+    check:
+        len(conditions) <= 32 if conditions
+
+
+schema ClusterxK8sIoV1beta1ClusterClassStatusV1beta2ConditionsItems0:
+    r"""
+    Condition contains details for one aspect of the current state of this API Resource.
+
+    Attributes
+    ----------
+    lastTransitionTime : str, default is Undefined, required
+        lastTransitionTime is the last time the condition transitioned from one status to another.
+        This should be when the underlying condition changed.  If that is not known, then using the time when the API field changed is acceptable.
+    message : str, default is Undefined, required
+        message is a human readable message indicating details about the transition.
+        This may be an empty string.
+    observedGeneration : int, default is Undefined, optional
+        observedGeneration represents the .metadata.generation that the condition was set based upon.
+        For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date
+        with respect to the current state of the instance.
+    reason : str, default is Undefined, required
+        reason contains a programmatic identifier indicating the reason for the condition's last transition.
+        Producers of specific condition types may define expected values and meanings for this field,
+        and whether the values are considered a guaranteed API.
+        The value should be a CamelCase string.
+        This field may not be empty.
+    status : str, default is Undefined, required
+        status of the condition, one of True, False, Unknown.
+    $type : str, default is Undefined, required
+        type of condition in CamelCase or in foo.example.com/CamelCase.
+    """
+
+
+    lastTransitionTime: str
+
+    message: str
+
+    observedGeneration?: int
+
+    reason: str
+
+    status: "True" | "False" | "Unknown"
+
+    $type: str
+
+
+    check:
+        len(message) <= 32768
+        observedGeneration >= 0 if observedGeneration not in [None, Undefined]
+        len(reason) <= 1024
+        len(reason) >= 1
+        _regex_match(str(reason), r"^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$")
+        len($type) <= 316
+        _regex_match(str($type), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$")
+
+
+schema ClusterxK8sIoV1beta1ClusterClassStatusVariablesItems0:
+    r"""
     ClusterClassStatusVariable defines a variable which appears in the status of a ClusterClass.
 
     Attributes
     ----------
     definitions : [ClusterxK8sIoV1beta1ClusterClassStatusVariablesItems0DefinitionsItems0], default is Undefined, required
-        Definitions is a list of definitions for a variable.
+        definitions is a list of definitions for a variable.
     definitionsConflict : bool, default is Undefined, optional
-        DefinitionsConflict specifies whether or not there are conflicting definitions for a single variable name.
+        definitionsConflict specifies whether or not there are conflicting definitions for a single variable name.
     name : str, default is Undefined, required
-        Name is the name of the variable.
+        name is the name of the variable.
     """
 
 
@@ -1807,19 +2040,19 @@ schema ClusterxK8sIoV1beta1ClusterClassStatusVariablesItems0:
 
 
 schema ClusterxK8sIoV1beta1ClusterClassStatusVariablesItems0DefinitionsItems0:
-    """
+    r"""
     ClusterClassStatusVariableDefinition defines a variable which appears in the status of a ClusterClass.
 
     Attributes
     ----------
     from : str, default is Undefined, required
-        From specifies the origin of the variable definition.
+        from specifies the origin of the variable definition.
         This will be `inline` for variables defined in the ClusterClass or the name of a patch defined in the ClusterClass
         for variables discovered from a DiscoverVariables runtime extensions.
     metadata : ClusterxK8sIoV1beta1ClusterClassStatusVariablesItems0DefinitionsItems0Metadata, default is Undefined, optional
         metadata
     required : bool, default is Undefined, required
-        Required specifies if the variable is required.
+        required specifies if the variable is required.
         Note: this applies to the variable as a whole and thus the
         top-level object defined in the schema. If nested fields are
         required, this will be specified inside the schema.
@@ -1838,15 +2071,17 @@ schema ClusterxK8sIoV1beta1ClusterClassStatusVariablesItems0DefinitionsItems0:
 
 
 schema ClusterxK8sIoV1beta1ClusterClassStatusVariablesItems0DefinitionsItems0Metadata:
-    """
-    Metadata is the metadata of a variable.
+    r"""
+    metadata is the metadata of a variable.
     It can be used to add additional data for higher level tools to
     a ClusterClassVariable.
+
+    Deprecated: This field is deprecated and is going to be removed in the next apiVersion.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        Annotations is an unstructured key value map that can be used to store and
+        annotations is an unstructured key value map that can be used to store and
         retrieve arbitrary metadata.
         They are not queryable.
     labels : {str:str}, default is Undefined, optional
@@ -1861,8 +2096,8 @@ schema ClusterxK8sIoV1beta1ClusterClassStatusVariablesItems0DefinitionsItems0Met
 
 
 schema ClusterxK8sIoV1beta1ClusterClassStatusVariablesItems0DefinitionsItems0Schema:
-    """
-    Schema defines the schema of the variable.
+    r"""
+    schema defines the schema of the variable.
 
     Attributes
     ----------
@@ -1875,93 +2110,137 @@ schema ClusterxK8sIoV1beta1ClusterClassStatusVariablesItems0DefinitionsItems0Sch
 
 
 schema ClusterxK8sIoV1beta1ClusterClassStatusVariablesItems0DefinitionsItems0SchemaOpenAPIV3Schema:
-    """
-    OpenAPIV3Schema defines the schema of a variable via OpenAPI v3
+    r"""
+    openAPIV3Schema defines the schema of a variable via OpenAPI v3
     schema. The schema is a subset of the schema used in
     Kubernetes CRDs.
 
     Attributes
     ----------
     additionalProperties : any, default is Undefined, optional
-        AdditionalProperties specifies the schema of values in a map (keys are always strings).
+        additionalProperties specifies the schema of values in a map (keys are always strings).
         NOTE: Can only be set if type is object.
         NOTE: AdditionalProperties is mutually exclusive with Properties.
         NOTE: This field uses PreserveUnknownFields and Schemaless,
         because recursive validation is not possible.
+    allOf : any, default is Undefined, optional
+        allOf specifies that the variable must validate against all of the subschemas in the array.
+        NOTE: This field uses PreserveUnknownFields and Schemaless,
+        because recursive validation is not possible.
+    anyOf : any, default is Undefined, optional
+        anyOf specifies that the variable must validate against one or more of the subschemas in the array.
+        NOTE: This field uses PreserveUnknownFields and Schemaless,
+        because recursive validation is not possible.
     default : any, default is Undefined, optional
-        Default is the default value of the variable.
+        default is the default value of the variable.
         NOTE: Can be set for all types.
     description : str, default is Undefined, optional
-        Description is a human-readable description of this variable.
+        description is a human-readable description of this variable.
     enum : [any], default is Undefined, optional
-        Enum is the list of valid values of the variable.
+        enum is the list of valid values of the variable.
         NOTE: Can be set for all types.
     example : any, default is Undefined, optional
-        Example is an example for this variable.
+        example is an example for this variable.
     exclusiveMaximum : bool, default is Undefined, optional
-        ExclusiveMaximum specifies if the Maximum is exclusive.
+        exclusiveMaximum specifies if the Maximum is exclusive.
         NOTE: Can only be set if type is integer or number.
     exclusiveMinimum : bool, default is Undefined, optional
-        ExclusiveMinimum specifies if the Minimum is exclusive.
+        exclusiveMinimum specifies if the Minimum is exclusive.
         NOTE: Can only be set if type is integer or number.
     format : str, default is Undefined, optional
-        Format is an OpenAPI v3 format string. Unknown formats are ignored.
+        format is an OpenAPI v3 format string. Unknown formats are ignored.
         For a list of supported formats please see: (of the k8s.io/apiextensions-apiserver version we're currently using)
         https://github.com/kubernetes/apiextensions-apiserver/blob/master/pkg/apiserver/validation/formats.go
         NOTE: Can only be set if type is string.
     items : any, default is Undefined, optional
-        Items specifies fields of an array.
+        items specifies fields of an array.
         NOTE: Can only be set if type is array.
         NOTE: This field uses PreserveUnknownFields and Schemaless,
         because recursive validation is not possible.
     maxItems : int, default is Undefined, optional
-        MaxItems is the max length of an array variable.
+        maxItems is the max length of an array variable.
         NOTE: Can only be set if type is array.
     maxLength : int, default is Undefined, optional
-        MaxLength is the max length of a string variable.
+        maxLength is the max length of a string variable.
         NOTE: Can only be set if type is string.
+    maxProperties : int, default is Undefined, optional
+        maxProperties is the maximum amount of entries in a map or properties in an object.
+        NOTE: Can only be set if type is object.
     maximum : int, default is Undefined, optional
-        Maximum is the maximum of an integer or number variable.
+        maximum is the maximum of an integer or number variable.
         If ExclusiveMaximum is false, the variable is valid if it is lower than, or equal to, the value of Maximum.
         If ExclusiveMaximum is true, the variable is valid if it is strictly lower than the value of Maximum.
         NOTE: Can only be set if type is integer or number.
     minItems : int, default is Undefined, optional
-        MinItems is the min length of an array variable.
+        minItems is the min length of an array variable.
         NOTE: Can only be set if type is array.
     minLength : int, default is Undefined, optional
-        MinLength is the min length of a string variable.
+        minLength is the min length of a string variable.
         NOTE: Can only be set if type is string.
+    minProperties : int, default is Undefined, optional
+        minProperties is the minimum amount of entries in a map or properties in an object.
+        NOTE: Can only be set if type is object.
     minimum : int, default is Undefined, optional
-        Minimum is the minimum of an integer or number variable.
+        minimum is the minimum of an integer or number variable.
         If ExclusiveMinimum is false, the variable is valid if it is greater than, or equal to, the value of Minimum.
         If ExclusiveMinimum is true, the variable is valid if it is strictly greater than the value of Minimum.
         NOTE: Can only be set if type is integer or number.
+    $not : any, default is Undefined, optional
+        not specifies that the variable must not validate against the subschema.
+        NOTE: This field uses PreserveUnknownFields and Schemaless,
+        because recursive validation is not possible.
+    oneOf : any, default is Undefined, optional
+        oneOf specifies that the variable must validate against exactly one of the subschemas in the array.
+        NOTE: This field uses PreserveUnknownFields and Schemaless,
+        because recursive validation is not possible.
     pattern : str, default is Undefined, optional
-        Pattern is the regex which a string variable must match.
+        pattern is the regex which a string variable must match.
         NOTE: Can only be set if type is string.
     properties : any, default is Undefined, optional
-        Properties specifies fields of an object.
+        properties specifies fields of an object.
         NOTE: Can only be set if type is object.
         NOTE: Properties is mutually exclusive with AdditionalProperties.
         NOTE: This field uses PreserveUnknownFields and Schemaless,
         because recursive validation is not possible.
     required : [str], default is Undefined, optional
-        Required specifies which fields of an object are required.
+        required specifies which fields of an object are required.
         NOTE: Can only be set if type is object.
-    $type : str, default is Undefined, required
-        Type is the type of the variable.
+    $type : str, default is Undefined, optional
+        type is the type of the variable.
         Valid values are: object, array, string, integer, number or boolean.
     uniqueItems : bool, default is Undefined, optional
-        UniqueItems specifies if items in an array must be unique.
+        uniqueItems specifies if items in an array must be unique.
         NOTE: Can only be set if type is array.
-    x_kubernetes_preserve_unknown_fields : bool, default is Undefined, optional
-        XPreserveUnknownFields allows setting fields in a variable object
+    "x-kubernetes-int-or-string" : bool, default is Undefined, optional
+        x-kubernetes-int-or-string specifies that this value is
+        either an integer or a string. If this is true, an empty
+        type is allowed and type as child of anyOf is permitted
+        if following one of the following patterns:
+
+        1) anyOf:
+           - type: integer
+           - type: string
+        2) allOf:
+           - anyOf:
+             - type: integer
+             - type: string
+           - ... zero or more
+    "x-kubernetes-preserve-unknown-fields" : bool, default is Undefined, optional
+        x-kubernetes-preserve-unknown-fields allows setting fields in a variable object
         which are not defined in the variable schema. This affects fields recursively,
         except if nested properties or additionalProperties are specified in the schema.
+    "x-kubernetes-validations" : [ClusterxK8sIoV1beta1ClusterClassStatusVariablesItems0DefinitionsItems0SchemaOpenAPIV3SchemaXKubernetesValidationsItems0], default is Undefined, optional
+        x-kubernetes-validations describes a list of validation rules written in the CEL expression language.
+    "x-metadata" : ClusterxK8sIoV1beta1ClusterClassStatusVariablesItems0DefinitionsItems0SchemaOpenAPIV3SchemaXMetadata, default is Undefined, optional
+        x metadata
     """
 
 
     additionalProperties?: any
+
+    allOf?: any
+
+    anyOf?: any
 
     default?: any
 
@@ -1983,13 +2262,21 @@ schema ClusterxK8sIoV1beta1ClusterClassStatusVariablesItems0DefinitionsItems0Sch
 
     maxLength?: int
 
+    maxProperties?: int
+
     maximum?: int
 
     minItems?: int
 
     minLength?: int
 
+    minProperties?: int
+
     minimum?: int
+
+    $not?: any
+
+    oneOf?: any
 
     pattern?: str
 
@@ -1997,10 +2284,135 @@ schema ClusterxK8sIoV1beta1ClusterClassStatusVariablesItems0DefinitionsItems0Sch
 
     required?: [str]
 
-    $type: str
+    $type?: str
 
     uniqueItems?: bool
 
-    x_kubernetes_preserve_unknown_fields?: bool
+    "x-kubernetes-int-or-string"?: bool
+
+    "x-kubernetes-preserve-unknown-fields"?: bool
+
+    "x-kubernetes-validations"?: [ClusterxK8sIoV1beta1ClusterClassStatusVariablesItems0DefinitionsItems0SchemaOpenAPIV3SchemaXKubernetesValidationsItems0]
+
+    "x-metadata"?: ClusterxK8sIoV1beta1ClusterClassStatusVariablesItems0DefinitionsItems0SchemaOpenAPIV3SchemaXMetadata
+
+
+schema ClusterxK8sIoV1beta1ClusterClassStatusVariablesItems0DefinitionsItems0SchemaOpenAPIV3SchemaXKubernetesValidationsItems0:
+    r"""
+    ValidationRule describes a validation rule written in the CEL expression language.
+
+    Attributes
+    ----------
+    fieldPath : str, default is Undefined, optional
+        fieldPath represents the field path returned when the validation fails.
+        It must be a relative JSON path (i.e. with array notation) scoped to the location of this x-kubernetes-validations extension in the schema and refer to an existing field.
+        e.g. when validation checks if a specific attribute `foo` under a map `testMap`, the fieldPath could be set to `.testMap.foo`
+        If the validation checks two lists must have unique attributes, the fieldPath could be set to either of the list: e.g. `.testList`
+        It does not support list numeric index.
+        It supports child operation to refer to an existing field currently. Refer to [JSONPath support in Kubernetes](https://kubernetes.io/docs/reference/kubectl/jsonpath/) for more info.
+        Numeric index of array is not supported.
+        For field name which contains special characters, use `['specialName']` to refer the field name.
+        e.g. for attribute `foo.34$` appears in a list `testList`, the fieldPath could be set to `.testList['foo.34$']`
+    message : str, default is Undefined, optional
+        message represents the message displayed when validation fails. The message is required if the Rule contains
+        line breaks. The message must not contain line breaks.
+        If unset, the message is "failed rule: {Rule}".
+        e.g. "must be a URL with the host matching spec.host"
+    messageExpression : str, default is Undefined, optional
+        messageExpression declares a CEL expression that evaluates to the validation failure message that is returned when this rule fails.
+        Since messageExpression is used as a failure message, it must evaluate to a string.
+        If both message and messageExpression are present on a rule, then messageExpression will be used if validation
+        fails. If messageExpression results in a runtime error, the validation failure message is produced
+        as if the messageExpression field were unset. If messageExpression evaluates to an empty string, a string with only spaces, or a string
+        that contains line breaks, then the validation failure message will also be produced as if the messageExpression field were unset.
+        messageExpression has access to all the same variables as the rule; the only difference is the return type.
+        Example:
+        "x must be less than max ("+string(self.max)+")"
+    reason : str, default is "FieldValueInvalid", optional
+        reason provides a machine-readable validation failure reason that is returned to the caller when a request fails this validation rule.
+        The currently supported reasons are: "FieldValueInvalid", "FieldValueForbidden", "FieldValueRequired", "FieldValueDuplicate".
+        If not set, default to use "FieldValueInvalid".
+        All future added reasons must be accepted by clients when reading this value and unknown reasons should be treated as FieldValueInvalid.
+    $rule : str, default is Undefined, required
+        rule represents the expression which will be evaluated by CEL.
+        ref: https://github.com/google/cel-spec
+        The Rule is scoped to the location of the x-kubernetes-validations extension in the schema.
+        The `self` variable in the CEL expression is bound to the scoped value.
+        If the Rule is scoped to an object with properties, the accessible properties of the object are field selectable
+        via `self.field` and field presence can be checked via `has(self.field)`.
+        If the Rule is scoped to an object with additionalProperties (i.e. a map) the value of the map
+        are accessible via `self[mapKey]`, map containment can be checked via `mapKey in self` and all entries of the map
+        are accessible via CEL macros and functions such as `self.all(...)`.
+        If the Rule is scoped to an array, the elements of the array are accessible via `self[i]` and also by macros and
+        functions.
+        If the Rule is scoped to a scalar, `self` is bound to the scalar value.
+        Examples:
+        - Rule scoped to a map of objects: {"rule": "self.components['Widget'].priority < 10"}
+        - Rule scoped to a list of integers: {"rule": "self.values.all(value, value >= 0 && value < 100)"}
+        - Rule scoped to a string value: {"rule": "self.startsWith('kube')"}
+
+        Unknown data preserved in custom resources via x-kubernetes-preserve-unknown-fields is not accessible in CEL
+        expressions. This includes:
+        - Unknown field values that are preserved by object schemas with x-kubernetes-preserve-unknown-fields.
+        - Object properties where the property schema is of an "unknown type". An "unknown type" is recursively defined as:
+          - A schema with no type and x-kubernetes-preserve-unknown-fields set to true
+          - An array where the items schema is of an "unknown type"
+          - An object where the additionalProperties schema is of an "unknown type"
+
+        Only property names of the form `[a-zA-Z_.-/][a-zA-Z0-9_.-/]*` are accessible.
+        Accessible property names are escaped according to the following rules when accessed in the expression:
+        - '__' escapes to '__underscores__'
+        - '.' escapes to '__dot__'
+        - '-' escapes to '__dash__'
+        - '/' escapes to '__slash__'
+        - Property names that exactly match a CEL RESERVED keyword escape to '__{keyword}__'. The keywords are:
+        	  "true", "false", "null", "in", "as", "break", "const", "continue", "else", "for", "function", "if",
+        	  "import", "let", "loop", "package", "namespace", "return".
+        Examples:
+          - Rule accessing a property named "namespace": {"rule": "self.__namespace__ > 0"}
+          - Rule accessing a property named "x-prop": {"rule": "self.x__dash__prop > 0"}
+          - Rule accessing a property named "redact__d": {"rule": "self.redact__underscores__d > 0"}
+
+        If `rule` makes use of the `oldSelf` variable it is implicitly a
+        `transition rule`.
+
+        By default, the `oldSelf` variable is the same type as `self`.
+
+        Transition rules by default are applied only on UPDATE requests and are
+        skipped if an old value could not be found.
+    """
+
+
+    fieldPath?: str
+
+    message?: str
+
+    messageExpression?: str
+
+    reason?: "FieldValueInvalid" | "FieldValueForbidden" | "FieldValueRequired" | "FieldValueDuplicate" = "FieldValueInvalid"
+
+    $rule: str
+
+
+schema ClusterxK8sIoV1beta1ClusterClassStatusVariablesItems0DefinitionsItems0SchemaOpenAPIV3SchemaXMetadata:
+    r"""
+    x-metadata is the metadata of a variable or a nested field within a variable.
+    It can be used to add additional data for higher level tools.
+
+    Attributes
+    ----------
+    annotations : {str:str}, default is Undefined, optional
+        annotations is an unstructured key value map that can be used to store and
+        retrieve arbitrary metadata.
+        They are not queryable.
+    labels : {str:str}, default is Undefined, optional
+        Map of string keys and values that can be used to organize and categorize
+        (scope and select) variables.
+    """
+
+
+    annotations?: {str:str}
+
+    labels?: {str:str}
 
 

@@ -6,9 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ClusterResourceSet:
-    """
+    r"""
     ClusterResourceSet is the Schema for the clusterresourcesets API.
-
 
     Deprecated: This type will be removed in one of the next releases.
 
@@ -39,7 +38,7 @@ schema ClusterResourceSet:
 
 
 schema AddonsClusterxK8sIoV1alpha4ClusterResourceSetSpec:
-    """
+    r"""
     ClusterResourceSetSpec defines the desired state of ClusterResourceSet.
 
     Attributes
@@ -47,9 +46,9 @@ schema AddonsClusterxK8sIoV1alpha4ClusterResourceSetSpec:
     clusterSelector : AddonsClusterxK8sIoV1alpha4ClusterResourceSetSpecClusterSelector, default is Undefined, required
         cluster selector
     resources : [AddonsClusterxK8sIoV1alpha4ClusterResourceSetSpecResourcesItems0], default is Undefined, optional
-        Resources is a list of Secrets/ConfigMaps where each contains 1 or more resources to be applied to remote clusters.
+        resources is a list of Secrets/ConfigMaps where each contains 1 or more resources to be applied to remote clusters.
     strategy : str, default is Undefined, optional
-        Strategy is the strategy to be used during applying resources. Defaults to ApplyOnce. This field is immutable.
+        strategy is the strategy to be used during applying resources. Defaults to ApplyOnce. This field is immutable.
     """
 
 
@@ -61,7 +60,7 @@ schema AddonsClusterxK8sIoV1alpha4ClusterResourceSetSpec:
 
 
 schema AddonsClusterxK8sIoV1alpha4ClusterResourceSetSpecClusterSelector:
-    """
+    r"""
     Label selector for Clusters. The Clusters that are
     selected by this will be the ones affected by this ClusterResourceSet.
     It must match the Cluster labels. This field is immutable.
@@ -84,7 +83,7 @@ schema AddonsClusterxK8sIoV1alpha4ClusterResourceSetSpecClusterSelector:
 
 
 schema AddonsClusterxK8sIoV1alpha4ClusterResourceSetSpecClusterSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
 
@@ -111,15 +110,15 @@ schema AddonsClusterxK8sIoV1alpha4ClusterResourceSetSpecClusterSelectorMatchExpr
 
 
 schema AddonsClusterxK8sIoV1alpha4ClusterResourceSetSpecResourcesItems0:
-    """
+    r"""
     ResourceRef specifies a resource.
 
     Attributes
     ----------
     kind : str, default is Undefined, required
-        Kind of the resource. Supported kinds are: Secrets and ConfigMaps.
+        kind of the resource. Supported kinds are: Secrets and ConfigMaps.
     name : str, default is Undefined, required
-        Name of the resource that is in the same namespace with ClusterResourceSet object.
+        name of the resource that is in the same namespace with ClusterResourceSet object.
     """
 
 
@@ -133,15 +132,15 @@ schema AddonsClusterxK8sIoV1alpha4ClusterResourceSetSpecResourcesItems0:
 
 
 schema AddonsClusterxK8sIoV1alpha4ClusterResourceSetStatus:
-    """
+    r"""
     ClusterResourceSetStatus defines the observed state of ClusterResourceSet.
 
     Attributes
     ----------
     conditions : [AddonsClusterxK8sIoV1alpha4ClusterResourceSetStatusConditionsItems0], default is Undefined, optional
-        Conditions defines current state of the ClusterResourceSet.
+        conditions defines current state of the ClusterResourceSet.
     observedGeneration : int, default is Undefined, optional
-        ObservedGeneration reflects the generation of the most recently observed ClusterResourceSet.
+        observedGeneration reflects the generation of the most recently observed ClusterResourceSet.
     """
 
 
@@ -151,7 +150,7 @@ schema AddonsClusterxK8sIoV1alpha4ClusterResourceSetStatus:
 
 
 schema AddonsClusterxK8sIoV1alpha4ClusterResourceSetStatusConditionsItems0:
-    """
+    r"""
     Condition defines an observation of a Cluster API resource operational state.
 
     Attributes
@@ -168,13 +167,13 @@ schema AddonsClusterxK8sIoV1alpha4ClusterResourceSetStatusConditionsItems0:
         The specific API may choose whether or not this field is considered a guaranteed API.
         This field may not be empty.
     severity : str, default is Undefined, optional
-        Severity provides an explicit classification of Reason code, so the users or machines can immediately
+        severity provides an explicit classification of Reason code, so the users or machines can immediately
         understand the current situation and act accordingly.
         The Severity field MUST be set only when Status=False.
     status : str, default is Undefined, required
-        Status of the condition, one of True, False, Unknown.
+        status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
-        Type of condition in CamelCase or in foo.example.com/CamelCase.
+        type of condition in CamelCase or in foo.example.com/CamelCase.
         Many .condition.type values are consistent across resources like Available, but because arbitrary conditions
         can be useful (see .node.status.conditions), the ability to deconflict is important.
     """

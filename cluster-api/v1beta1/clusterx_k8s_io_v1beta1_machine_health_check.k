@@ -8,7 +8,7 @@ _regex_match = regex.match
 
 
 schema MachineHealthCheck:
-    """
+    r"""
     MachineHealthCheck is the Schema for the machinehealthchecks API.
 
     Attributes
@@ -38,21 +38,22 @@ schema MachineHealthCheck:
 
 
 schema ClusterxK8sIoV1beta1MachineHealthCheckSpec:
-    """
+    r"""
     Specification of machine health check policy
 
     Attributes
     ----------
     clusterName : str, default is Undefined, required
-        ClusterName is the name of the Cluster this object belongs to.
+        clusterName is the name of the Cluster this object belongs to.
     maxUnhealthy : int | str, default is Undefined, optional
         Any further remediation is only allowed if at most "MaxUnhealthy" machines selected by
         "selector" are not healthy.
+
+        Deprecated: This field is deprecated and is going to be removed in the next apiVersion. Please see https://github.com/kubernetes-sigs/cluster-api/issues/10722 for more details.
     nodeStartupTimeout : str, default is Undefined, optional
-        NodeStartupTimeout allows to set the maximum time for MachineHealthCheck
+        nodeStartupTimeout allows to set the maximum time for MachineHealthCheck
         to consider a Machine unhealthy if a corresponding Node isn't associated
         through a `Spec.ProviderID` field.
-
 
         The duration set in this field is compared to the greatest of:
         - Cluster's infrastructure ready condition timestamp (if and when available)
@@ -60,15 +61,14 @@ schema ClusterxK8sIoV1beta1MachineHealthCheckSpec:
         - Machine's infrastructure ready condition timestamp (if and when available)
         - Machine's metadata creation timestamp
 
-
         Defaults to 10 minutes.
         If you wish to disable this feature, set the value explicitly to 0.
     remediationTemplate : ClusterxK8sIoV1beta1MachineHealthCheckSpecRemediationTemplate, default is Undefined, optional
         remediation template
     selector : ClusterxK8sIoV1beta1MachineHealthCheckSpecSelector, default is Undefined, required
         selector
-    unhealthyConditions : [ClusterxK8sIoV1beta1MachineHealthCheckSpecUnhealthyConditionsItems0], default is Undefined, required
-        UnhealthyConditions contains a list of the conditions that determine
+    unhealthyConditions : [ClusterxK8sIoV1beta1MachineHealthCheckSpecUnhealthyConditionsItems0], default is Undefined, optional
+        unhealthyConditions contains a list of the conditions that determine
         whether a node is considered unhealthy.  The conditions are combined in a
         logical OR, i.e. if any of the conditions is met, the node is unhealthy.
     unhealthyRange : str, default is Undefined, optional
@@ -77,6 +77,8 @@ schema ClusterxK8sIoV1beta1MachineHealthCheckSpec:
         Eg. "[3-5]" - This means that remediation will be allowed only when:
         (a) there are at least 3 unhealthy machines (and)
         (b) there are at most 5 unhealthy machines
+
+        Deprecated: This field is deprecated and is going to be removed in the next apiVersion. Please see https://github.com/kubernetes-sigs/cluster-api/issues/10722 for more details.
     """
 
 
@@ -90,22 +92,20 @@ schema ClusterxK8sIoV1beta1MachineHealthCheckSpec:
 
     selector: ClusterxK8sIoV1beta1MachineHealthCheckSpecSelector
 
-    unhealthyConditions: [ClusterxK8sIoV1beta1MachineHealthCheckSpecUnhealthyConditionsItems0]
+    unhealthyConditions?: [ClusterxK8sIoV1beta1MachineHealthCheckSpecUnhealthyConditionsItems0]
 
     unhealthyRange?: str
 
 
     check:
         len(clusterName) >= 1
-        len(unhealthyConditions) >= 1
         _regex_match(str(unhealthyRange), r"^\[[0-9]+-[0-9]+\]$") if unhealthyRange
 
 
 schema ClusterxK8sIoV1beta1MachineHealthCheckSpecRemediationTemplate:
-    """
-    RemediationTemplate is a reference to a remediation template
+    r"""
+    remediationTemplate is a reference to a remediation template
     provided by an infrastructure provider.
-
 
     This field is completely optional, when filled, the MachineHealthCheck controller
     creates a new object from the template referenced and hands off remediation of the machine to
@@ -123,7 +123,6 @@ schema ClusterxK8sIoV1beta1MachineHealthCheckSpecRemediationTemplate:
         the event) or if no container name is specified "spec.containers[2]" (container with
         index 2 in this pod). This syntax is chosen only to have some well-defined way of
         referencing a part of an object.
-        TODO: this design is not final and this field is subject to change in the future.
     kind : str, default is Undefined, optional
         Kind of the referent.
         More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
@@ -158,7 +157,7 @@ schema ClusterxK8sIoV1beta1MachineHealthCheckSpecRemediationTemplate:
 
 
 schema ClusterxK8sIoV1beta1MachineHealthCheckSpecSelector:
-    """
+    r"""
     Label selector to match machines whose health will be exercised
 
     Attributes
@@ -178,7 +177,7 @@ schema ClusterxK8sIoV1beta1MachineHealthCheckSpecSelector:
 
 
 schema ClusterxK8sIoV1beta1MachineHealthCheckSpecSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
 
@@ -205,7 +204,7 @@ schema ClusterxK8sIoV1beta1MachineHealthCheckSpecSelectorMatchExpressionsItems0:
 
 
 schema ClusterxK8sIoV1beta1MachineHealthCheckSpecUnhealthyConditionsItems0:
-    """
+    r"""
     UnhealthyCondition represents a Node condition type and value with a timeout
     specified as a duration.  When the named condition has been in the given
     status for at least the timeout value, a node is considered unhealthy.
@@ -234,24 +233,26 @@ schema ClusterxK8sIoV1beta1MachineHealthCheckSpecUnhealthyConditionsItems0:
 
 
 schema ClusterxK8sIoV1beta1MachineHealthCheckStatus:
-    """
+    r"""
     Most recently observed status of MachineHealthCheck resource
 
     Attributes
     ----------
     conditions : [ClusterxK8sIoV1beta1MachineHealthCheckStatusConditionsItems0], default is Undefined, optional
-        Conditions defines current service state of the MachineHealthCheck.
+        conditions defines current service state of the MachineHealthCheck.
     currentHealthy : int, default is Undefined, optional
         total number of healthy machines counted by this machine health check
     expectedMachines : int, default is Undefined, optional
         total number of machines counted by this machine health check
     observedGeneration : int, default is Undefined, optional
-        ObservedGeneration is the latest generation observed by the controller.
+        observedGeneration is the latest generation observed by the controller.
     remediationsAllowed : int, default is Undefined, optional
-        RemediationsAllowed is the number of further remediations allowed by this machine health check before
+        remediationsAllowed is the number of further remediations allowed by this machine health check before
         maxUnhealthy short circuiting will be applied
     targets : [str], default is Undefined, optional
-        Targets shows the current list of machines the machine health check is watching
+        targets shows the current list of machines the machine health check is watching
+    v1beta2 : ClusterxK8sIoV1beta1MachineHealthCheckStatusV1beta2, default is Undefined, optional
+        v1beta2
     """
 
 
@@ -267,6 +268,8 @@ schema ClusterxK8sIoV1beta1MachineHealthCheckStatus:
 
     targets?: [str]
 
+    v1beta2?: ClusterxK8sIoV1beta1MachineHealthCheckStatusV1beta2
+
 
     check:
         currentHealthy >= 0 if currentHealthy not in [None, Undefined]
@@ -275,7 +278,7 @@ schema ClusterxK8sIoV1beta1MachineHealthCheckStatus:
 
 
 schema ClusterxK8sIoV1beta1MachineHealthCheckStatusConditionsItems0:
-    """
+    r"""
     Condition defines an observation of a Cluster API resource operational state.
 
     Attributes
@@ -290,15 +293,15 @@ schema ClusterxK8sIoV1beta1MachineHealthCheckStatusConditionsItems0:
     reason : str, default is Undefined, optional
         The reason for the condition's last transition in CamelCase.
         The specific API may choose whether or not this field is considered a guaranteed API.
-        This field may not be empty.
+        This field may be empty.
     severity : str, default is Undefined, optional
-        Severity provides an explicit classification of Reason code, so the users or machines can immediately
+        severity provides an explicit classification of Reason code, so the users or machines can immediately
         understand the current situation and act accordingly.
         The Severity field MUST be set only when Status=False.
     status : str, default is Undefined, required
-        Status of the condition, one of True, False, Unknown.
+        status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
-        Type of condition in CamelCase or in foo.example.com/CamelCase.
+        type of condition in CamelCase or in foo.example.com/CamelCase.
         Many .condition.type values are consistent across resources like Available, but because arbitrary conditions
         can be useful (see .node.status.conditions), the ability to deconflict is important.
     """
@@ -315,5 +318,76 @@ schema ClusterxK8sIoV1beta1MachineHealthCheckStatusConditionsItems0:
     status: str
 
     $type: str
+
+
+schema ClusterxK8sIoV1beta1MachineHealthCheckStatusV1beta2:
+    r"""
+    v1beta2 groups all the fields that will be added or modified in MachineHealthCheck's status with the V1Beta2 version.
+
+    Attributes
+    ----------
+    conditions : [ClusterxK8sIoV1beta1MachineHealthCheckStatusV1beta2ConditionsItems0], default is Undefined, optional
+        conditions represents the observations of a MachineHealthCheck's current state.
+        Known condition types are RemediationAllowed, Paused.
+    """
+
+
+    conditions?: [ClusterxK8sIoV1beta1MachineHealthCheckStatusV1beta2ConditionsItems0]
+
+
+    check:
+        len(conditions) <= 32 if conditions
+
+
+schema ClusterxK8sIoV1beta1MachineHealthCheckStatusV1beta2ConditionsItems0:
+    r"""
+    Condition contains details for one aspect of the current state of this API Resource.
+
+    Attributes
+    ----------
+    lastTransitionTime : str, default is Undefined, required
+        lastTransitionTime is the last time the condition transitioned from one status to another.
+        This should be when the underlying condition changed.  If that is not known, then using the time when the API field changed is acceptable.
+    message : str, default is Undefined, required
+        message is a human readable message indicating details about the transition.
+        This may be an empty string.
+    observedGeneration : int, default is Undefined, optional
+        observedGeneration represents the .metadata.generation that the condition was set based upon.
+        For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date
+        with respect to the current state of the instance.
+    reason : str, default is Undefined, required
+        reason contains a programmatic identifier indicating the reason for the condition's last transition.
+        Producers of specific condition types may define expected values and meanings for this field,
+        and whether the values are considered a guaranteed API.
+        The value should be a CamelCase string.
+        This field may not be empty.
+    status : str, default is Undefined, required
+        status of the condition, one of True, False, Unknown.
+    $type : str, default is Undefined, required
+        type of condition in CamelCase or in foo.example.com/CamelCase.
+    """
+
+
+    lastTransitionTime: str
+
+    message: str
+
+    observedGeneration?: int
+
+    reason: str
+
+    status: "True" | "False" | "Unknown"
+
+    $type: str
+
+
+    check:
+        len(message) <= 32768
+        observedGeneration >= 0 if observedGeneration not in [None, Undefined]
+        len(reason) <= 1024
+        len(reason) >= 1
+        _regex_match(str(reason), r"^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$")
+        len($type) <= 316
+        _regex_match(str($type), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$")
 
 

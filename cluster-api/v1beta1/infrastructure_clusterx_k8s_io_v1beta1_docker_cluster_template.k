@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema DockerClusterTemplate:
-    """
+    r"""
     DockerClusterTemplate is the Schema for the dockerclustertemplates API.
 
     Attributes
@@ -32,7 +32,7 @@ schema DockerClusterTemplate:
 
 
 schema InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpec:
-    """
+    r"""
     DockerClusterTemplateSpec defines the desired state of DockerClusterTemplate.
 
     Attributes
@@ -46,7 +46,7 @@ schema InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpec:
 
 
 schema InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpecTemplate:
-    """
+    r"""
     DockerClusterTemplateResource describes the data needed to create a DockerCluster from a template.
 
     Attributes
@@ -64,14 +64,14 @@ schema InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpecTemplate:
 
 
 schema InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpecTemplateMetadata:
-    """
+    r"""
     Standard object's metadata.
     More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        Annotations is an unstructured key value map stored with a resource that may be
+        annotations is an unstructured key value map stored with a resource that may be
         set by external tools to store and retrieve arbitrary metadata. They are not
         queryable and should be preserved when modifying objects.
         More info: http://kubernetes.io/docs/user-guide/annotations
@@ -89,7 +89,7 @@ schema InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpecTemplateMetada
 
 
 schema InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpecTemplateSpec:
-    """
+    r"""
     DockerClusterSpec defines the desired state of DockerCluster.
 
     Attributes
@@ -114,7 +114,7 @@ schema InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpecTemplateSpec:
 
 
 schema InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpecTemplateSpecControlPlaneEndpoint:
-    """
+    r"""
     ControlPlaneEndpoint represents the endpoint used to communicate with the control plane.
 
     Attributes
@@ -133,16 +133,16 @@ schema InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpecTemplateSpecCo
 
 
 schema InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpecTemplateSpecFailureDomainsAnon:
-    """
+    r"""
     FailureDomainSpec is the Schema for Cluster API failure domains.
     It allows controllers to understand how many failure domains a cluster can optionally span across.
 
     Attributes
     ----------
     attributes : {str:str}, default is Undefined, optional
-        Attributes is a free form map of attributes an infrastructure provider might use or require.
+        attributes is a free form map of attributes an infrastructure provider might use or require.
     controlPlane : bool, default is Undefined, optional
-        ControlPlane determines if this failure domain is suitable for use by control plane machines.
+        controlPlane determines if this failure domain is suitable for use by control plane machines.
     """
 
 
@@ -152,7 +152,7 @@ schema InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpecTemplateSpecFa
 
 
 schema InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpecTemplateSpecLoadBalancer:
-    """
+    r"""
     LoadBalancer allows defining configurations for the cluster load balancer.
 
     Attributes
@@ -176,7 +176,7 @@ schema InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpecTemplateSpecLo
 
 
 schema InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpecTemplateSpecLoadBalancerCustomHAProxyConfigTemplateRef:
-    """
+    r"""
     CustomHAProxyConfigTemplateRef allows you to replace the default HAProxy config file.
     This field is a reference to a config map that contains the configuration template. The key of the config map should be equal to 'value'.
     The content of the config map will be processed and will replace the default HAProxy config file. Please use it with caution, as there are
@@ -190,11 +190,13 @@ schema InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpecTemplateSpecLo
     ----------
     name : str, default is Undefined, optional
         Name of the referent.
+        This field is effectively required, but due to backwards compatibility is
+        allowed to be empty. Instances of this type with an empty value here are
+        almost certainly wrong.
         More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
     """
 
 
-    name?: str
+    name?: str = ""
 
 

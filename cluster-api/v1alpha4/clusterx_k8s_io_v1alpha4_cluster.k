@@ -6,9 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema Cluster:
-    """
+    r"""
     Cluster is the Schema for the clusters API.
-
 
     Deprecated: This type will be removed in one of the next releases.
 
@@ -39,7 +38,7 @@ schema Cluster:
 
 
 schema ClusterxK8sIoV1alpha4ClusterSpec:
-    """
+    r"""
     ClusterSpec defines the desired state of Cluster.
 
     Attributes
@@ -53,7 +52,7 @@ schema ClusterxK8sIoV1alpha4ClusterSpec:
     infrastructureRef : ClusterxK8sIoV1alpha4ClusterSpecInfrastructureRef, default is Undefined, optional
         infrastructure ref
     paused : bool, default is Undefined, optional
-        Paused can be used to prevent controllers from processing the Cluster and all its associated objects.
+        paused can be used to prevent controllers from processing the Cluster and all its associated objects.
     topology : ClusterxK8sIoV1alpha4ClusterSpecTopology, default is Undefined, optional
         topology
     """
@@ -73,13 +72,13 @@ schema ClusterxK8sIoV1alpha4ClusterSpec:
 
 
 schema ClusterxK8sIoV1alpha4ClusterSpecClusterNetwork:
-    """
+    r"""
     Cluster network configuration.
 
     Attributes
     ----------
     apiServerPort : int, default is Undefined, optional
-        APIServerPort specifies the port the API Server should bind to.
+        apiServerPort specifies the port the API Server should bind to.
         Defaults to 6443.
     pods : ClusterxK8sIoV1alpha4ClusterSpecClusterNetworkPods, default is Undefined, optional
         pods
@@ -100,7 +99,7 @@ schema ClusterxK8sIoV1alpha4ClusterSpecClusterNetwork:
 
 
 schema ClusterxK8sIoV1alpha4ClusterSpecClusterNetworkPods:
-    """
+    r"""
     The network ranges from which Pod networks are allocated.
 
     Attributes
@@ -114,7 +113,7 @@ schema ClusterxK8sIoV1alpha4ClusterSpecClusterNetworkPods:
 
 
 schema ClusterxK8sIoV1alpha4ClusterSpecClusterNetworkServices:
-    """
+    r"""
     The network ranges from which service VIPs are allocated.
 
     Attributes
@@ -128,8 +127,8 @@ schema ClusterxK8sIoV1alpha4ClusterSpecClusterNetworkServices:
 
 
 schema ClusterxK8sIoV1alpha4ClusterSpecControlPlaneEndpoint:
-    """
-    ControlPlaneEndpoint represents the endpoint used to communicate with the control plane.
+    r"""
+    controlPlaneEndpoint represents the endpoint used to communicate with the control plane.
 
     Attributes
     ----------
@@ -146,8 +145,8 @@ schema ClusterxK8sIoV1alpha4ClusterSpecControlPlaneEndpoint:
 
 
 schema ClusterxK8sIoV1alpha4ClusterSpecControlPlaneRef:
-    """
-    ControlPlaneRef is an optional reference to a provider-specific resource that holds
+    r"""
+    controlPlaneRef is an optional reference to a provider-specific resource that holds
     the details for provisioning the Control Plane for a Cluster.
 
     Attributes
@@ -162,7 +161,6 @@ schema ClusterxK8sIoV1alpha4ClusterSpecControlPlaneRef:
         the event) or if no container name is specified "spec.containers[2]" (container with
         index 2 in this pod). This syntax is chosen only to have some well-defined way of
         referencing a part of an object.
-        TODO: this design is not final and this field is subject to change in the future.
     kind : str, default is Undefined, optional
         Kind of the referent.
         More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
@@ -197,8 +195,8 @@ schema ClusterxK8sIoV1alpha4ClusterSpecControlPlaneRef:
 
 
 schema ClusterxK8sIoV1alpha4ClusterSpecInfrastructureRef:
-    """
-    InfrastructureRef is a reference to a provider-specific resource that holds the details
+    r"""
+    infrastructureRef is a reference to a provider-specific resource that holds the details
     for provisioning infrastructure for a cluster in said provider.
 
     Attributes
@@ -213,7 +211,6 @@ schema ClusterxK8sIoV1alpha4ClusterSpecInfrastructureRef:
         the event) or if no container name is specified "spec.containers[2]" (container with
         index 2 in this pod). This syntax is chosen only to have some well-defined way of
         referencing a part of an object.
-        TODO: this design is not final and this field is subject to change in the future.
     kind : str, default is Undefined, optional
         Kind of the referent.
         More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
@@ -248,7 +245,7 @@ schema ClusterxK8sIoV1alpha4ClusterSpecInfrastructureRef:
 
 
 schema ClusterxK8sIoV1alpha4ClusterSpecTopology:
-    """
+    r"""
     This encapsulates the topology for the cluster.
     NOTE: It is required to enable the ClusterTopology
     feature gate flag to activate managed topologies support;
@@ -261,7 +258,7 @@ schema ClusterxK8sIoV1alpha4ClusterSpecTopology:
     controlPlane : ClusterxK8sIoV1alpha4ClusterSpecTopologyControlPlane, default is Undefined, optional
         control plane
     rolloutAfter : str, default is Undefined, optional
-        RolloutAfter performs a rollout of the entire cluster one component at a time,
+        rolloutAfter performs a rollout of the entire cluster one component at a time,
         control plane first and then machine deployments.
     version : str, default is Undefined, required
         The Kubernetes version of the cluster.
@@ -282,15 +279,15 @@ schema ClusterxK8sIoV1alpha4ClusterSpecTopology:
 
 
 schema ClusterxK8sIoV1alpha4ClusterSpecTopologyControlPlane:
-    """
-    ControlPlane describes the cluster control plane.
+    r"""
+    controlPlane describes the cluster control plane.
 
     Attributes
     ----------
     metadata : ClusterxK8sIoV1alpha4ClusterSpecTopologyControlPlaneMetadata, default is Undefined, optional
         metadata
     replicas : int, default is Undefined, optional
-        Replicas is the number of control plane nodes.
+        replicas is the number of control plane nodes.
         If the value is nil, the ControlPlane object is created without the number of Replicas
         and it's assumed that the control plane controller does not implement support for this field.
         When specified against a control plane provider that lacks support for this field, this value will be ignored.
@@ -303,10 +300,9 @@ schema ClusterxK8sIoV1alpha4ClusterSpecTopologyControlPlane:
 
 
 schema ClusterxK8sIoV1alpha4ClusterSpecTopologyControlPlaneMetadata:
-    """
-    Metadata is the metadata applied to the machines of the ControlPlane.
+    r"""
+    metadata is the metadata applied to the machines of the ControlPlane.
     At runtime this metadata is merged with the corresponding metadata from the ClusterClass.
-
 
     This field is supported if and only if the control plane provider template
     referenced in the ClusterClass is Machine based.
@@ -314,7 +310,7 @@ schema ClusterxK8sIoV1alpha4ClusterSpecTopologyControlPlaneMetadata:
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        Annotations is an unstructured key value map stored with a resource that may be
+        annotations is an unstructured key value map stored with a resource that may be
         set by external tools to store and retrieve arbitrary metadata. They are not
         queryable and should be preserved when modifying objects.
         More info: http://kubernetes.io/docs/user-guide/annotations
@@ -332,14 +328,14 @@ schema ClusterxK8sIoV1alpha4ClusterSpecTopologyControlPlaneMetadata:
 
 
 schema ClusterxK8sIoV1alpha4ClusterSpecTopologyWorkers:
-    """
-    Workers encapsulates the different constructs that form the worker nodes
+    r"""
+    workers encapsulates the different constructs that form the worker nodes
     for the cluster.
 
     Attributes
     ----------
     machineDeployments : [ClusterxK8sIoV1alpha4ClusterSpecTopologyWorkersMachineDeploymentsItems0], default is Undefined, optional
-        MachineDeployments is a list of machine deployments in the cluster.
+        machineDeployments is a list of machine deployments in the cluster.
     """
 
 
@@ -347,25 +343,25 @@ schema ClusterxK8sIoV1alpha4ClusterSpecTopologyWorkers:
 
 
 schema ClusterxK8sIoV1alpha4ClusterSpecTopologyWorkersMachineDeploymentsItems0:
-    """
+    r"""
     MachineDeploymentTopology specifies the different parameters for a set of worker nodes in the topology.
     This set of nodes is managed by a MachineDeployment object whose lifecycle is managed by the Cluster controller.
 
     Attributes
     ----------
     class : str, default is Undefined, required
-        Class is the name of the MachineDeploymentClass used to create the set of worker nodes.
+        class is the name of the MachineDeploymentClass used to create the set of worker nodes.
         This should match one of the deployment classes defined in the ClusterClass object
         mentioned in the `Cluster.Spec.Class` field.
     metadata : ClusterxK8sIoV1alpha4ClusterSpecTopologyWorkersMachineDeploymentsItems0Metadata, default is Undefined, optional
         metadata
     name : str, default is Undefined, required
-        Name is the unique identifier for this MachineDeploymentTopology.
+        name is the unique identifier for this MachineDeploymentTopology.
         The value is used with other unique identifiers to create a MachineDeployment's Name
         (e.g. cluster's name, etc). In case the name is greater than the allowed maximum length,
         the values are hashed together.
     replicas : int, default is Undefined, optional
-        Replicas is the number of worker nodes belonging to this set.
+        replicas is the number of worker nodes belonging to this set.
         If the value is nil, the MachineDeployment is created without the number of Replicas (defaulting to zero)
         and it's assumed that an external entity (like cluster autoscaler) is responsible for the management
         of this value.
@@ -382,14 +378,14 @@ schema ClusterxK8sIoV1alpha4ClusterSpecTopologyWorkersMachineDeploymentsItems0:
 
 
 schema ClusterxK8sIoV1alpha4ClusterSpecTopologyWorkersMachineDeploymentsItems0Metadata:
-    """
-    Metadata is the metadata applied to the machines of the MachineDeployment.
+    r"""
+    metadata is the metadata applied to the machines of the MachineDeployment.
     At runtime this metadata is merged with the corresponding metadata from the ClusterClass.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        Annotations is an unstructured key value map stored with a resource that may be
+        annotations is an unstructured key value map stored with a resource that may be
         set by external tools to store and retrieve arbitrary metadata. They are not
         queryable and should be preserved when modifying objects.
         More info: http://kubernetes.io/docs/user-guide/annotations
@@ -407,30 +403,30 @@ schema ClusterxK8sIoV1alpha4ClusterSpecTopologyWorkersMachineDeploymentsItems0Me
 
 
 schema ClusterxK8sIoV1alpha4ClusterStatus:
-    """
+    r"""
     ClusterStatus defines the observed state of Cluster.
 
     Attributes
     ----------
     conditions : [ClusterxK8sIoV1alpha4ClusterStatusConditionsItems0], default is Undefined, optional
-        Conditions defines current service state of the cluster.
+        conditions defines current service state of the cluster.
     controlPlaneReady : bool, default is Undefined, optional
-        ControlPlaneReady defines if the control plane is ready.
+        controlPlaneReady defines if the control plane is ready.
     failureDomains : {str:ClusterxK8sIoV1alpha4ClusterStatusFailureDomainsAnon}, default is Undefined, optional
-        FailureDomains is a slice of failure domain objects synced from the infrastructure provider.
+        failureDomains is a slice of failure domain objects synced from the infrastructure provider.
     failureMessage : str, default is Undefined, optional
-        FailureMessage indicates that there is a fatal problem reconciling the
+        failureMessage indicates that there is a fatal problem reconciling the
         state, and will be set to a descriptive error message.
     failureReason : str, default is Undefined, optional
-        FailureReason indicates that there is a fatal problem reconciling the
+        failureReason indicates that there is a fatal problem reconciling the
         state, and will be set to a token value suitable for
         programmatic interpretation.
     infrastructureReady : bool, default is Undefined, optional
-        InfrastructureReady is the state of the infrastructure provider.
+        infrastructureReady is the state of the infrastructure provider.
     observedGeneration : int, default is Undefined, optional
-        ObservedGeneration is the latest generation observed by the controller.
+        observedGeneration is the latest generation observed by the controller.
     phase : str, default is Undefined, optional
-        Phase represents the current phase of cluster actuation.
+        phase represents the current phase of cluster actuation.
         E.g. Pending, Running, Terminating, Failed etc.
     """
 
@@ -453,7 +449,7 @@ schema ClusterxK8sIoV1alpha4ClusterStatus:
 
 
 schema ClusterxK8sIoV1alpha4ClusterStatusConditionsItems0:
-    """
+    r"""
     Condition defines an observation of a Cluster API resource operational state.
 
     Attributes
@@ -470,13 +466,13 @@ schema ClusterxK8sIoV1alpha4ClusterStatusConditionsItems0:
         The specific API may choose whether or not this field is considered a guaranteed API.
         This field may not be empty.
     severity : str, default is Undefined, optional
-        Severity provides an explicit classification of Reason code, so the users or machines can immediately
+        severity provides an explicit classification of Reason code, so the users or machines can immediately
         understand the current situation and act accordingly.
         The Severity field MUST be set only when Status=False.
     status : str, default is Undefined, required
-        Status of the condition, one of True, False, Unknown.
+        status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
-        Type of condition in CamelCase or in foo.example.com/CamelCase.
+        type of condition in CamelCase or in foo.example.com/CamelCase.
         Many .condition.type values are consistent across resources like Available, but because arbitrary conditions
         can be useful (see .node.status.conditions), the ability to deconflict is important.
     """
@@ -496,16 +492,16 @@ schema ClusterxK8sIoV1alpha4ClusterStatusConditionsItems0:
 
 
 schema ClusterxK8sIoV1alpha4ClusterStatusFailureDomainsAnon:
-    """
+    r"""
     FailureDomainSpec is the Schema for Cluster API failure domains.
     It allows controllers to understand how many failure domains a cluster can optionally span across.
 
     Attributes
     ----------
     attributes : {str:str}, default is Undefined, optional
-        Attributes is a free form map of attributes an infrastructure provider might use or require.
+        attributes is a free form map of attributes an infrastructure provider might use or require.
     controlPlane : bool, default is Undefined, optional
-        ControlPlane determines if this failure domain is suitable for use by control plane machines.
+        controlPlane determines if this failure domain is suitable for use by control plane machines.
     """
 
 

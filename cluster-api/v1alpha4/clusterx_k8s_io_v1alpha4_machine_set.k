@@ -6,9 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema MachineSet:
-    """
+    r"""
     MachineSet is the Schema for the machinesets API.
-
 
     Deprecated: This type will be removed in one of the next releases.
 
@@ -39,21 +38,21 @@ schema MachineSet:
 
 
 schema ClusterxK8sIoV1alpha4MachineSetSpec:
-    """
+    r"""
     MachineSetSpec defines the desired state of MachineSet.
 
     Attributes
     ----------
     clusterName : str, default is Undefined, required
-        ClusterName is the name of the Cluster this object belongs to.
+        clusterName is the name of the Cluster this object belongs to.
     deletePolicy : str, default is Undefined, optional
-        DeletePolicy defines the policy used to identify nodes to delete when downscaling.
+        deletePolicy defines the policy used to identify nodes to delete when downscaling.
         Defaults to "Random".  Valid values are "Random, "Newest", "Oldest"
     minReadySeconds : int, default is Undefined, optional
-        MinReadySeconds is the minimum number of seconds for which a newly created machine should be ready.
+        minReadySeconds is the minimum number of seconds for which a newly created machine should be ready.
         Defaults to 0 (machine will be considered available as soon as it is ready)
     replicas : int, default is 1, optional
-        Replicas is the number of desired replicas.
+        replicas is the number of desired replicas.
         This is a pointer to distinguish between explicit zero and unspecified.
         Defaults to 1.
     selector : ClusterxK8sIoV1alpha4MachineSetSpecSelector, default is Undefined, required
@@ -81,8 +80,8 @@ schema ClusterxK8sIoV1alpha4MachineSetSpec:
 
 
 schema ClusterxK8sIoV1alpha4MachineSetSpecSelector:
-    """
-    Selector is a label query over machines that should match the replica count.
+    r"""
+    selector is a label query over machines that should match the replica count.
     Label keys and values that must match in order to be controlled by this MachineSet.
     It must match the machine template's labels.
     More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors
@@ -104,7 +103,7 @@ schema ClusterxK8sIoV1alpha4MachineSetSpecSelector:
 
 
 schema ClusterxK8sIoV1alpha4MachineSetSpecSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
 
@@ -131,8 +130,8 @@ schema ClusterxK8sIoV1alpha4MachineSetSpecSelectorMatchExpressionsItems0:
 
 
 schema ClusterxK8sIoV1alpha4MachineSetSpecTemplate:
-    """
-    Template is the object that describes the machine that will be created if
+    r"""
+    template is the object that describes the machine that will be created if
     insufficient replicas are detected.
     Object references to custom resources are treated as templates.
 
@@ -151,14 +150,14 @@ schema ClusterxK8sIoV1alpha4MachineSetSpecTemplate:
 
 
 schema ClusterxK8sIoV1alpha4MachineSetSpecTemplateMetadata:
-    """
+    r"""
     Standard object's metadata.
     More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        Annotations is an unstructured key value map stored with a resource that may be
+        annotations is an unstructured key value map stored with a resource that may be
         set by external tools to store and retrieve arbitrary metadata. They are not
         queryable and should be preserved when modifying objects.
         More info: http://kubernetes.io/docs/user-guide/annotations
@@ -176,7 +175,7 @@ schema ClusterxK8sIoV1alpha4MachineSetSpecTemplateMetadata:
 
 
 schema ClusterxK8sIoV1alpha4MachineSetSpecTemplateSpec:
-    """
+    r"""
     Specification of the desired behavior of the machine.
     More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
 
@@ -185,18 +184,18 @@ schema ClusterxK8sIoV1alpha4MachineSetSpecTemplateSpec:
     bootstrap : ClusterxK8sIoV1alpha4MachineSetSpecTemplateSpecBootstrap, default is Undefined, required
         bootstrap
     clusterName : str, default is Undefined, required
-        ClusterName is the name of the Cluster this object belongs to.
+        clusterName is the name of the Cluster this object belongs to.
     failureDomain : str, default is Undefined, optional
-        FailureDomain is the failure domain the machine will be created in.
+        failureDomain is the failure domain the machine will be created in.
         Must match a key in the FailureDomains map stored on the cluster object.
     infrastructureRef : ClusterxK8sIoV1alpha4MachineSetSpecTemplateSpecInfrastructureRef, default is Undefined, required
         infrastructure ref
     nodeDrainTimeout : str, default is Undefined, optional
-        NodeDrainTimeout is the total amount of time that the controller will spend on draining a node.
+        nodeDrainTimeout is the total amount of time that the controller will spend on draining a node.
         The default value is 0, meaning that the node can be drained without any time limitations.
         NOTE: NodeDrainTimeout is different from `kubectl drain --timeout`
     providerID : str, default is Undefined, optional
-        ProviderID is the identification ID of the machine provided by the provider.
+        providerID is the identification ID of the machine provided by the provider.
         This field must match the provider ID as seen on the node object corresponding to this machine.
         This field is required by higher level consumers of cluster-api. Example use case is cluster autoscaler
         with cluster-api as provider. Clean-up logic in the autoscaler compares machines to nodes to find out
@@ -207,7 +206,7 @@ schema ClusterxK8sIoV1alpha4MachineSetSpecTemplateSpec:
         This field will be set by the actuators and consumed by higher level entities like autoscaler that will
         be interfacing with cluster-api as generic provider.
     version : str, default is Undefined, optional
-        Version defines the desired Kubernetes version.
+        version defines the desired Kubernetes version.
         This field is meant to be optionally used by bootstrap providers.
     """
 
@@ -232,8 +231,8 @@ schema ClusterxK8sIoV1alpha4MachineSetSpecTemplateSpec:
 
 
 schema ClusterxK8sIoV1alpha4MachineSetSpecTemplateSpecBootstrap:
-    """
-    Bootstrap is a reference to a local struct which encapsulates
+    r"""
+    bootstrap is a reference to a local struct which encapsulates
     fields to configure the Machine’s bootstrapping mechanism.
 
     Attributes
@@ -241,7 +240,7 @@ schema ClusterxK8sIoV1alpha4MachineSetSpecTemplateSpecBootstrap:
     configRef : ClusterxK8sIoV1alpha4MachineSetSpecTemplateSpecBootstrapConfigRef, default is Undefined, optional
         config ref
     dataSecretName : str, default is Undefined, optional
-        DataSecretName is the name of the secret that stores the bootstrap data script.
+        dataSecretName is the name of the secret that stores the bootstrap data script.
         If nil, the Machine should remain in the Pending state.
     """
 
@@ -252,8 +251,8 @@ schema ClusterxK8sIoV1alpha4MachineSetSpecTemplateSpecBootstrap:
 
 
 schema ClusterxK8sIoV1alpha4MachineSetSpecTemplateSpecBootstrapConfigRef:
-    """
-    ConfigRef is a reference to a bootstrap provider-specific resource
+    r"""
+    configRef is a reference to a bootstrap provider-specific resource
     that holds configuration details. The reference is optional to
     allow users/operators to specify Bootstrap.DataSecretName without
     the need of a controller.
@@ -270,7 +269,6 @@ schema ClusterxK8sIoV1alpha4MachineSetSpecTemplateSpecBootstrapConfigRef:
         the event) or if no container name is specified "spec.containers[2]" (container with
         index 2 in this pod). This syntax is chosen only to have some well-defined way of
         referencing a part of an object.
-        TODO: this design is not final and this field is subject to change in the future.
     kind : str, default is Undefined, optional
         Kind of the referent.
         More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
@@ -305,8 +303,8 @@ schema ClusterxK8sIoV1alpha4MachineSetSpecTemplateSpecBootstrapConfigRef:
 
 
 schema ClusterxK8sIoV1alpha4MachineSetSpecTemplateSpecInfrastructureRef:
-    """
-    InfrastructureRef is a required reference to a custom resource
+    r"""
+    infrastructureRef is a required reference to a custom resource
     offered by an infrastructure provider.
 
     Attributes
@@ -321,7 +319,6 @@ schema ClusterxK8sIoV1alpha4MachineSetSpecTemplateSpecInfrastructureRef:
         the event) or if no container name is specified "spec.containers[2]" (container with
         index 2 in this pod). This syntax is chosen only to have some well-defined way of
         referencing a part of an object.
-        TODO: this design is not final and this field is subject to change in the future.
     kind : str, default is Undefined, optional
         Kind of the referent.
         More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
@@ -356,7 +353,7 @@ schema ClusterxK8sIoV1alpha4MachineSetSpecTemplateSpecInfrastructureRef:
 
 
 schema ClusterxK8sIoV1alpha4MachineSetStatus:
-    """
+    r"""
     MachineSetStatus defines the observed state of MachineSet.
 
     Attributes
@@ -364,7 +361,7 @@ schema ClusterxK8sIoV1alpha4MachineSetStatus:
     availableReplicas : int, default is Undefined, optional
         The number of available replicas (ready for at least minReadySeconds) for this MachineSet.
     conditions : [ClusterxK8sIoV1alpha4MachineSetStatusConditionsItems0], default is Undefined, optional
-        Conditions defines current service state of the MachineSet.
+        conditions defines current service state of the MachineSet.
     failureMessage : str, default is Undefined, optional
         failure message
     failureReason : str, default is Undefined, optional
@@ -373,7 +370,6 @@ schema ClusterxK8sIoV1alpha4MachineSetStatus:
         will be populated with a succinct value suitable for machine
         interpretation, while FailureMessage will contain a more verbose
         string suitable for logging and human consumption.
-
 
         These fields should not be set for transitive errors that a
         controller faces that are expected to be fixed automatically over
@@ -384,20 +380,19 @@ schema ClusterxK8sIoV1alpha4MachineSetStatus:
         spec, values that are unsupported by the machine controller, or the
         responsible machine controller itself being critically misconfigured.
 
-
         Any transient errors that occur during the reconciliation of Machines
         can be added as events to the MachineSet object and/or logged in the
         controller's output.
     fullyLabeledReplicas : int, default is Undefined, optional
         The number of replicas that have labels matching the labels of the machine template of the MachineSet.
     observedGeneration : int, default is Undefined, optional
-        ObservedGeneration reflects the generation of the most recently observed MachineSet.
+        observedGeneration reflects the generation of the most recently observed MachineSet.
     readyReplicas : int, default is Undefined, optional
         The number of ready replicas for this MachineSet. A machine is considered ready when the node has been created and is "Ready".
     replicas : int, default is Undefined, optional
-        Replicas is the most recently observed number of replicas.
+        replicas is the most recently observed number of replicas.
     selector : str, default is Undefined, optional
-        Selector is the same as the label selector but in the string format to avoid introspection
+        selector is the same as the label selector but in the string format to avoid introspection
         by clients. The string will be in the same format as the query-param syntax.
         More info about label selectors: http://kubernetes.io/docs/user-guide/labels#label-selectors
     """
@@ -423,7 +418,7 @@ schema ClusterxK8sIoV1alpha4MachineSetStatus:
 
 
 schema ClusterxK8sIoV1alpha4MachineSetStatusConditionsItems0:
-    """
+    r"""
     Condition defines an observation of a Cluster API resource operational state.
 
     Attributes
@@ -440,13 +435,13 @@ schema ClusterxK8sIoV1alpha4MachineSetStatusConditionsItems0:
         The specific API may choose whether or not this field is considered a guaranteed API.
         This field may not be empty.
     severity : str, default is Undefined, optional
-        Severity provides an explicit classification of Reason code, so the users or machines can immediately
+        severity provides an explicit classification of Reason code, so the users or machines can immediately
         understand the current situation and act accordingly.
         The Severity field MUST be set only when Status=False.
     status : str, default is Undefined, required
-        Status of the condition, one of True, False, Unknown.
+        status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
-        Type of condition in CamelCase or in foo.example.com/CamelCase.
+        type of condition in CamelCase or in foo.example.com/CamelCase.
         Many .condition.type values are consistent across resources like Available, but because arbitrary conditions
         can be useful (see .node.status.conditions), the ability to deconflict is important.
     """

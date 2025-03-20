@@ -11,45 +11,49 @@ schema IPAddressClaim:
 
     Attributes
     ----------
-    apiVersion : str, default is "ipam.cluster.x-k8s.io/v1alpha1", required
+    apiVersion : str, default is "ipam.cluster.x-k8s.io/v1beta1", required
         APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
     kind : str, default is "IPAddressClaim", required
         Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     metadata : v1.ObjectMeta, default is Undefined, optional
         metadata
-    spec : IpamClusterxK8sIoV1alpha1IPAddressClaimSpec, default is Undefined, optional
+    spec : IpamClusterxK8sIoV1beta1IPAddressClaimSpec, default is Undefined, optional
         spec
-    status : IpamClusterxK8sIoV1alpha1IPAddressClaimStatus, default is Undefined, optional
+    status : IpamClusterxK8sIoV1beta1IPAddressClaimStatus, default is Undefined, optional
         status
     """
 
 
-    apiVersion: "ipam.cluster.x-k8s.io/v1alpha1" = "ipam.cluster.x-k8s.io/v1alpha1"
+    apiVersion: "ipam.cluster.x-k8s.io/v1beta1" = "ipam.cluster.x-k8s.io/v1beta1"
 
     kind: "IPAddressClaim" = "IPAddressClaim"
 
     metadata?: v1.ObjectMeta
 
-    spec?: IpamClusterxK8sIoV1alpha1IPAddressClaimSpec
+    spec?: IpamClusterxK8sIoV1beta1IPAddressClaimSpec
 
-    status?: IpamClusterxK8sIoV1alpha1IPAddressClaimStatus
+    status?: IpamClusterxK8sIoV1beta1IPAddressClaimStatus
 
 
-schema IpamClusterxK8sIoV1alpha1IPAddressClaimSpec:
+schema IpamClusterxK8sIoV1beta1IPAddressClaimSpec:
     r"""
     IPAddressClaimSpec is the desired state of an IPAddressClaim.
 
     Attributes
     ----------
-    poolRef : IpamClusterxK8sIoV1alpha1IPAddressClaimSpecPoolRef, default is Undefined, required
+    clusterName : str, default is Undefined, optional
+        clusterName is the name of the Cluster this object belongs to.
+    poolRef : IpamClusterxK8sIoV1beta1IPAddressClaimSpecPoolRef, default is Undefined, required
         pool ref
     """
 
 
-    poolRef: IpamClusterxK8sIoV1alpha1IPAddressClaimSpecPoolRef
+    clusterName?: str
+
+    poolRef: IpamClusterxK8sIoV1beta1IPAddressClaimSpecPoolRef
 
 
-schema IpamClusterxK8sIoV1alpha1IPAddressClaimSpecPoolRef:
+schema IpamClusterxK8sIoV1beta1IPAddressClaimSpecPoolRef:
     r"""
     poolRef is a reference to the pool from which an IP address should be created.
 
@@ -73,25 +77,25 @@ schema IpamClusterxK8sIoV1alpha1IPAddressClaimSpecPoolRef:
     name: str
 
 
-schema IpamClusterxK8sIoV1alpha1IPAddressClaimStatus:
+schema IpamClusterxK8sIoV1beta1IPAddressClaimStatus:
     r"""
     IPAddressClaimStatus is the observed status of a IPAddressClaim.
 
     Attributes
     ----------
-    addressRef : IpamClusterxK8sIoV1alpha1IPAddressClaimStatusAddressRef, default is Undefined, optional
+    addressRef : IpamClusterxK8sIoV1beta1IPAddressClaimStatusAddressRef, default is Undefined, optional
         address ref
-    conditions : [IpamClusterxK8sIoV1alpha1IPAddressClaimStatusConditionsItems0], default is Undefined, optional
+    conditions : [IpamClusterxK8sIoV1beta1IPAddressClaimStatusConditionsItems0], default is Undefined, optional
         conditions summarises the current state of the IPAddressClaim
     """
 
 
-    addressRef?: IpamClusterxK8sIoV1alpha1IPAddressClaimStatusAddressRef
+    addressRef?: IpamClusterxK8sIoV1beta1IPAddressClaimStatusAddressRef
 
-    conditions?: [IpamClusterxK8sIoV1alpha1IPAddressClaimStatusConditionsItems0]
+    conditions?: [IpamClusterxK8sIoV1beta1IPAddressClaimStatusConditionsItems0]
 
 
-schema IpamClusterxK8sIoV1alpha1IPAddressClaimStatusAddressRef:
+schema IpamClusterxK8sIoV1beta1IPAddressClaimStatusAddressRef:
     r"""
     addressRef is a reference to the address that was created for this claim.
 
@@ -109,7 +113,7 @@ schema IpamClusterxK8sIoV1alpha1IPAddressClaimStatusAddressRef:
     name?: str = ""
 
 
-schema IpamClusterxK8sIoV1alpha1IPAddressClaimStatusConditionsItems0:
+schema IpamClusterxK8sIoV1beta1IPAddressClaimStatusConditionsItems0:
     r"""
     Condition defines an observation of a Cluster API resource operational state.
 

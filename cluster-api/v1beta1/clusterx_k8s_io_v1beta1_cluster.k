@@ -8,7 +8,7 @@ _regex_match = regex.match
 
 
 schema Cluster:
-    """
+    r"""
     Cluster is the Schema for the clusters API.
 
     Attributes
@@ -38,11 +38,15 @@ schema Cluster:
 
 
 schema ClusterxK8sIoV1beta1ClusterSpec:
-    """
+    r"""
     ClusterSpec defines the desired state of Cluster.
 
     Attributes
     ----------
+    availabilityGates : [ClusterxK8sIoV1beta1ClusterSpecAvailabilityGatesItems0], default is Undefined, optional
+        availabilityGates specifies additional conditions to include when evaluating Cluster Available condition.
+
+        NOTE: this field is considered only for computing v1beta2 conditions.
     clusterNetwork : ClusterxK8sIoV1beta1ClusterSpecClusterNetwork, default is Undefined, optional
         cluster network
     controlPlaneEndpoint : ClusterxK8sIoV1beta1ClusterSpecControlPlaneEndpoint, default is Undefined, optional
@@ -52,11 +56,13 @@ schema ClusterxK8sIoV1beta1ClusterSpec:
     infrastructureRef : ClusterxK8sIoV1beta1ClusterSpecInfrastructureRef, default is Undefined, optional
         infrastructure ref
     paused : bool, default is Undefined, optional
-        Paused can be used to prevent controllers from processing the Cluster and all its associated objects.
+        paused can be used to prevent controllers from processing the Cluster and all its associated objects.
     topology : ClusterxK8sIoV1beta1ClusterSpecTopology, default is Undefined, optional
         topology
     """
 
+
+    availabilityGates?: [ClusterxK8sIoV1beta1ClusterSpecAvailabilityGatesItems0]
 
     clusterNetwork?: ClusterxK8sIoV1beta1ClusterSpecClusterNetwork
 
@@ -71,14 +77,40 @@ schema ClusterxK8sIoV1beta1ClusterSpec:
     topology?: ClusterxK8sIoV1beta1ClusterSpecTopology
 
 
-schema ClusterxK8sIoV1beta1ClusterSpecClusterNetwork:
+    check:
+        len(availabilityGates) <= 32 if availabilityGates
+
+
+schema ClusterxK8sIoV1beta1ClusterSpecAvailabilityGatesItems0:
+    r"""
+    ClusterAvailabilityGate contains the type of a Cluster condition to be used as availability gate.
+
+    Attributes
+    ----------
+    conditionType : str, default is Undefined, required
+        conditionType refers to a positive polarity condition (status true means good) with matching type in the Cluster's condition list.
+        If the conditions doesn't exist, it will be treated as unknown.
+        Note: Both Cluster API conditions or conditions added by 3rd party controllers can be used as availability gates.
     """
+
+
+    conditionType: str
+
+
+    check:
+        len(conditionType) <= 316
+        len(conditionType) >= 1
+        _regex_match(str(conditionType), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$")
+
+
+schema ClusterxK8sIoV1beta1ClusterSpecClusterNetwork:
+    r"""
     Cluster network configuration.
 
     Attributes
     ----------
     apiServerPort : int, default is Undefined, optional
-        APIServerPort specifies the port the API Server should bind to.
+        apiServerPort specifies the port the API Server should bind to.
         Defaults to 6443.
     pods : ClusterxK8sIoV1beta1ClusterSpecClusterNetworkPods, default is Undefined, optional
         pods
@@ -99,7 +131,7 @@ schema ClusterxK8sIoV1beta1ClusterSpecClusterNetwork:
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecClusterNetworkPods:
-    """
+    r"""
     The network ranges from which Pod networks are allocated.
 
     Attributes
@@ -113,7 +145,7 @@ schema ClusterxK8sIoV1beta1ClusterSpecClusterNetworkPods:
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecClusterNetworkServices:
-    """
+    r"""
     The network ranges from which service VIPs are allocated.
 
     Attributes
@@ -127,8 +159,8 @@ schema ClusterxK8sIoV1beta1ClusterSpecClusterNetworkServices:
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecControlPlaneEndpoint:
-    """
-    ControlPlaneEndpoint represents the endpoint used to communicate with the control plane.
+    r"""
+    controlPlaneEndpoint represents the endpoint used to communicate with the control plane.
 
     Attributes
     ----------
@@ -145,8 +177,8 @@ schema ClusterxK8sIoV1beta1ClusterSpecControlPlaneEndpoint:
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecControlPlaneRef:
-    """
-    ControlPlaneRef is an optional reference to a provider-specific resource that holds
+    r"""
+    controlPlaneRef is an optional reference to a provider-specific resource that holds
     the details for provisioning the Control Plane for a Cluster.
 
     Attributes
@@ -161,7 +193,6 @@ schema ClusterxK8sIoV1beta1ClusterSpecControlPlaneRef:
         the event) or if no container name is specified "spec.containers[2]" (container with
         index 2 in this pod). This syntax is chosen only to have some well-defined way of
         referencing a part of an object.
-        TODO: this design is not final and this field is subject to change in the future.
     kind : str, default is Undefined, optional
         Kind of the referent.
         More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
@@ -196,8 +227,8 @@ schema ClusterxK8sIoV1beta1ClusterSpecControlPlaneRef:
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecInfrastructureRef:
-    """
-    InfrastructureRef is a reference to a provider-specific resource that holds the details
+    r"""
+    infrastructureRef is a reference to a provider-specific resource that holds the details
     for provisioning infrastructure for a cluster in said provider.
 
     Attributes
@@ -212,7 +243,6 @@ schema ClusterxK8sIoV1beta1ClusterSpecInfrastructureRef:
         the event) or if no container name is specified "spec.containers[2]" (container with
         index 2 in this pod). This syntax is chosen only to have some well-defined way of
         referencing a part of an object.
-        TODO: this design is not final and this field is subject to change in the future.
     kind : str, default is Undefined, optional
         Kind of the referent.
         More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
@@ -247,7 +277,7 @@ schema ClusterxK8sIoV1beta1ClusterSpecInfrastructureRef:
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopology:
-    """
+    r"""
     This encapsulates the topology for the cluster.
     NOTE: It is required to enable the ClusterTopology
     feature gate flag to activate managed topologies support;
@@ -257,16 +287,19 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopology:
     ----------
     class : str, default is Undefined, required
         The name of the ClusterClass object to create the topology.
+    classNamespace : str, default is Undefined, optional
+        classNamespace is the namespace of the ClusterClass object to create the topology.
+        If the namespace is empty or not set, it is defaulted to the namespace of the cluster object.
+        Value must follow the DNS1123Subdomain syntax.
     controlPlane : ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlane, default is Undefined, optional
         control plane
     rolloutAfter : str, default is Undefined, optional
-        RolloutAfter performs a rollout of the entire cluster one component at a time,
+        rolloutAfter performs a rollout of the entire cluster one component at a time,
         control plane first and then machine deployments.
-
 
         Deprecated: This field has no function and is going to be removed in the next apiVersion.
     variables : [ClusterxK8sIoV1beta1ClusterSpecTopologyVariablesItems0], default is Undefined, optional
-        Variables can be used to customize the Cluster through
+        variables can be used to customize the Cluster through
         patches. They must comply to the corresponding
         VariableClasses defined in the ClusterClass.
     version : str, default is Undefined, required
@@ -277,6 +310,8 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopology:
 
 
     class: str
+
+    classNamespace?: str
 
     controlPlane?: ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlane
 
@@ -289,9 +324,15 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopology:
     workers?: ClusterxK8sIoV1beta1ClusterSpecTopologyWorkers
 
 
+    check:
+        len(classNamespace) <= 253 if classNamespace
+        len(classNamespace) >= 1 if classNamespace
+        _regex_match(str(classNamespace), r"^[a-z0-9](?:[-a-z0-9]*[a-z0-9])?(?:\.[a-z0-9](?:[-a-z0-9]*[a-z0-9])?)*$") if classNamespace
+
+
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlane:
-    """
-    ControlPlane describes the cluster control plane.
+    r"""
+    controlPlane describes the cluster control plane.
 
     Attributes
     ----------
@@ -300,18 +341,18 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlane:
     metadata : ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneMetadata, default is Undefined, optional
         metadata
     nodeDeletionTimeout : str, default is Undefined, optional
-        NodeDeletionTimeout defines how long the controller will attempt to delete the Node that the Machine
+        nodeDeletionTimeout defines how long the controller will attempt to delete the Node that the Machine
         hosts after the Machine is marked for deletion. A duration of 0 will retry deletion indefinitely.
         Defaults to 10 seconds.
     nodeDrainTimeout : str, default is Undefined, optional
-        NodeDrainTimeout is the total amount of time that the controller will spend on draining a node.
+        nodeDrainTimeout is the total amount of time that the controller will spend on draining a node.
         The default value is 0, meaning that the node can be drained without any time limitations.
         NOTE: NodeDrainTimeout is different from `kubectl drain --timeout`
     nodeVolumeDetachTimeout : str, default is Undefined, optional
-        NodeVolumeDetachTimeout is the total amount of time that the controller will spend on waiting for all volumes
+        nodeVolumeDetachTimeout is the total amount of time that the controller will spend on waiting for all volumes
         to be detached. The default value is 0, meaning that the volumes can be detached without any time limitations.
     replicas : int, default is Undefined, optional
-        Replicas is the number of control plane nodes.
+        replicas is the number of control plane nodes.
         If the value is nil, the ControlPlane object is created without the number of Replicas
         and it's assumed that the control plane controller does not implement support for this field.
         When specified against a control plane provider that lacks support for this field, this value will be ignored.
@@ -336,22 +377,19 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlane:
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneMachineHealthCheck:
-    """
-    MachineHealthCheck allows to enable, disable and override
+    r"""
+    machineHealthCheck allows to enable, disable and override
     the MachineHealthCheck configuration in the ClusterClass for this control plane.
 
     Attributes
     ----------
     enable : bool, default is Undefined, optional
-        Enable controls if a MachineHealthCheck should be created for the target machines.
-
+        enable controls if a MachineHealthCheck should be created for the target machines.
 
         If false: No MachineHealthCheck will be created.
 
-
         If not set(default): A MachineHealthCheck will be created if it is defined here or
          in the associated ClusterClass. If no MachineHealthCheck is defined then none will be created.
-
 
         If true: A MachineHealthCheck is guaranteed to be created. Cluster validation will
         block if `enable` is true and no MachineHealthCheck definition is available.
@@ -359,10 +397,9 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneMachineHealthCheck:
         Any further remediation is only allowed if at most "MaxUnhealthy" machines selected by
         "selector" are not healthy.
     nodeStartupTimeout : str, default is Undefined, optional
-        NodeStartupTimeout allows to set the maximum time for MachineHealthCheck
+        nodeStartupTimeout allows to set the maximum time for MachineHealthCheck
         to consider a Machine unhealthy if a corresponding Node isn't associated
         through a `Spec.ProviderID` field.
-
 
         The duration set in this field is compared to the greatest of:
         - Cluster's infrastructure ready condition timestamp (if and when available)
@@ -370,13 +407,12 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneMachineHealthCheck:
         - Machine's infrastructure ready condition timestamp (if and when available)
         - Machine's metadata creation timestamp
 
-
         Defaults to 10 minutes.
         If you wish to disable this feature, set the value explicitly to 0.
     remediationTemplate : ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneMachineHealthCheckRemediationTemplate, default is Undefined, optional
         remediation template
     unhealthyConditions : [ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneMachineHealthCheckUnhealthyConditionsItems0], default is Undefined, optional
-        UnhealthyConditions contains a list of the conditions that determine
+        unhealthyConditions contains a list of the conditions that determine
         whether a node is considered unhealthy. The conditions are combined in a
         logical OR, i.e. if any of the conditions is met, the node is unhealthy.
     unhealthyRange : str, default is Undefined, optional
@@ -406,10 +442,9 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneMachineHealthCheck:
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneMachineHealthCheckRemediationTemplate:
-    """
-    RemediationTemplate is a reference to a remediation template
+    r"""
+    remediationTemplate is a reference to a remediation template
     provided by an infrastructure provider.
-
 
     This field is completely optional, when filled, the MachineHealthCheck controller
     creates a new object from the template referenced and hands off remediation of the machine to
@@ -427,7 +462,6 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneMachineHealthCheckReme
         the event) or if no container name is specified "spec.containers[2]" (container with
         index 2 in this pod). This syntax is chosen only to have some well-defined way of
         referencing a part of an object.
-        TODO: this design is not final and this field is subject to change in the future.
     kind : str, default is Undefined, optional
         Kind of the referent.
         More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
@@ -462,7 +496,7 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneMachineHealthCheckReme
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneMachineHealthCheckUnhealthyConditionsItems0:
-    """
+    r"""
     UnhealthyCondition represents a Node condition type and value with a timeout
     specified as a duration.  When the named condition has been in the given
     status for at least the timeout value, a node is considered unhealthy.
@@ -491,8 +525,8 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneMachineHealthCheckUnhe
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneMetadata:
-    """
-    Metadata is the metadata applied to the ControlPlane and the Machines of the ControlPlane
+    r"""
+    metadata is the metadata applied to the ControlPlane and the Machines of the ControlPlane
     if the ControlPlaneTemplate referenced by the ClusterClass is machine based. If not, it
     is applied only to the ControlPlane.
     At runtime this metadata is merged with the corresponding metadata from the ClusterClass.
@@ -500,7 +534,7 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneMetadata:
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        Annotations is an unstructured key value map stored with a resource that may be
+        annotations is an unstructured key value map stored with a resource that may be
         set by external tools to store and retrieve arbitrary metadata. They are not
         queryable and should be preserved when modifying objects.
         More info: http://kubernetes.io/docs/user-guide/annotations
@@ -518,13 +552,13 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneMetadata:
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneVariables:
-    """
-    Variables can be used to customize the ControlPlane through patches.
+    r"""
+    variables can be used to customize the ControlPlane through patches.
 
     Attributes
     ----------
     overrides : [ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneVariablesOverridesItems0], default is Undefined, optional
-        Overrides can be used to override Cluster level variables.
+        overrides can be used to override Cluster level variables.
     """
 
 
@@ -532,21 +566,20 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneVariables:
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneVariablesOverridesItems0:
-    """
+    r"""
     ClusterVariable can be used to customize the Cluster through patches. Each ClusterVariable is associated with a
     Variable definition in the ClusterClass `status` variables.
 
     Attributes
     ----------
     definitionFrom : str, default is Undefined, optional
-        DefinitionFrom specifies where the definition of this Variable is from. DefinitionFrom is `inline` when the
-        definition is from the ClusterClass `.spec.variables` or the name of a patch defined in the ClusterClass
-        `.spec.patches` where the patch is external and provides external variables.
-        This field is mandatory if the variable has `DefinitionsConflict: true` in ClusterClass `status.variables[]`
+        definitionFrom specifies where the definition of this Variable is from.
+
+        Deprecated: This field is deprecated, must not be set anymore and is going to be removed in the next apiVersion.
     name : str, default is Undefined, required
-        Name of the variable.
+        name of the variable.
     value : any, default is Undefined, required
-        Value of the variable.
+        value of the variable.
         Note: the value will be validated against the schema of the corresponding ClusterClassVariable
         from the ClusterClass.
         Note: We have to use apiextensionsv1.JSON instead of a custom JSON type, because controller-tools has a
@@ -564,21 +597,20 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneVariablesOverridesItem
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyVariablesItems0:
-    """
+    r"""
     ClusterVariable can be used to customize the Cluster through patches. Each ClusterVariable is associated with a
     Variable definition in the ClusterClass `status` variables.
 
     Attributes
     ----------
     definitionFrom : str, default is Undefined, optional
-        DefinitionFrom specifies where the definition of this Variable is from. DefinitionFrom is `inline` when the
-        definition is from the ClusterClass `.spec.variables` or the name of a patch defined in the ClusterClass
-        `.spec.patches` where the patch is external and provides external variables.
-        This field is mandatory if the variable has `DefinitionsConflict: true` in ClusterClass `status.variables[]`
+        definitionFrom specifies where the definition of this Variable is from.
+
+        Deprecated: This field is deprecated, must not be set anymore and is going to be removed in the next apiVersion.
     name : str, default is Undefined, required
-        Name of the variable.
+        name of the variable.
     value : any, default is Undefined, required
-        Value of the variable.
+        value of the variable.
         Note: the value will be validated against the schema of the corresponding ClusterClassVariable
         from the ClusterClass.
         Note: We have to use apiextensionsv1.JSON instead of a custom JSON type, because controller-tools has a
@@ -596,16 +628,16 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyVariablesItems0:
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkers:
-    """
-    Workers encapsulates the different constructs that form the worker nodes
+    r"""
+    workers encapsulates the different constructs that form the worker nodes
     for the cluster.
 
     Attributes
     ----------
     machineDeployments : [ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0], default is Undefined, optional
-        MachineDeployments is a list of machine deployments in the cluster.
+        machineDeployments is a list of machine deployments in the cluster.
     machinePools : [ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachinePoolsItems0], default is Undefined, optional
-        MachinePools is a list of machine pools in the cluster.
+        machinePools is a list of machine pools in the cluster.
     """
 
 
@@ -615,18 +647,18 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkers:
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0:
-    """
+    r"""
     MachineDeploymentTopology specifies the different parameters for a set of worker nodes in the topology.
     This set of nodes is managed by a MachineDeployment object whose lifecycle is managed by the Cluster controller.
 
     Attributes
     ----------
     class : str, default is Undefined, required
-        Class is the name of the MachineDeploymentClass used to create the set of worker nodes.
+        class is the name of the MachineDeploymentClass used to create the set of worker nodes.
         This should match one of the deployment classes defined in the ClusterClass object
         mentioned in the `Cluster.Spec.Class` field.
     failureDomain : str, default is Undefined, optional
-        FailureDomain is the failure domain the machines will be created in.
+        failureDomain is the failure domain the machines will be created in.
         Must match a key in the FailureDomains map stored on the cluster object.
     machineHealthCheck : ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0MachineHealthCheck, default is Undefined, optional
         machine health check
@@ -638,23 +670,23 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0:
         Defaults to 0 (machine will be considered available as soon as it
         is ready)
     name : str, default is Undefined, required
-        Name is the unique identifier for this MachineDeploymentTopology.
+        name is the unique identifier for this MachineDeploymentTopology.
         The value is used with other unique identifiers to create a MachineDeployment's Name
         (e.g. cluster's name, etc). In case the name is greater than the allowed maximum length,
         the values are hashed together.
     nodeDeletionTimeout : str, default is Undefined, optional
-        NodeDeletionTimeout defines how long the controller will attempt to delete the Node that the Machine
+        nodeDeletionTimeout defines how long the controller will attempt to delete the Node that the Machine
         hosts after the Machine is marked for deletion. A duration of 0 will retry deletion indefinitely.
         Defaults to 10 seconds.
     nodeDrainTimeout : str, default is Undefined, optional
-        NodeDrainTimeout is the total amount of time that the controller will spend on draining a node.
+        nodeDrainTimeout is the total amount of time that the controller will spend on draining a node.
         The default value is 0, meaning that the node can be drained without any time limitations.
         NOTE: NodeDrainTimeout is different from `kubectl drain --timeout`
     nodeVolumeDetachTimeout : str, default is Undefined, optional
-        NodeVolumeDetachTimeout is the total amount of time that the controller will spend on waiting for all volumes
+        nodeVolumeDetachTimeout is the total amount of time that the controller will spend on waiting for all volumes
         to be detached. The default value is 0, meaning that the volumes can be detached without any time limitations.
     replicas : int, default is Undefined, optional
-        Replicas is the number of worker nodes belonging to this set.
+        replicas is the number of worker nodes belonging to this set.
         If the value is nil, the MachineDeployment is created without the number of Replicas (defaulting to 1)
         and it's assumed that an external entity (like cluster autoscaler) is responsible for the management
         of this value.
@@ -691,22 +723,19 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0:
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0MachineHealthCheck:
-    """
-    MachineHealthCheck allows to enable, disable and override
+    r"""
+    machineHealthCheck allows to enable, disable and override
     the MachineHealthCheck configuration in the ClusterClass for this MachineDeployment.
 
     Attributes
     ----------
     enable : bool, default is Undefined, optional
-        Enable controls if a MachineHealthCheck should be created for the target machines.
-
+        enable controls if a MachineHealthCheck should be created for the target machines.
 
         If false: No MachineHealthCheck will be created.
 
-
         If not set(default): A MachineHealthCheck will be created if it is defined here or
          in the associated ClusterClass. If no MachineHealthCheck is defined then none will be created.
-
 
         If true: A MachineHealthCheck is guaranteed to be created. Cluster validation will
         block if `enable` is true and no MachineHealthCheck definition is available.
@@ -714,10 +743,9 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Mac
         Any further remediation is only allowed if at most "MaxUnhealthy" machines selected by
         "selector" are not healthy.
     nodeStartupTimeout : str, default is Undefined, optional
-        NodeStartupTimeout allows to set the maximum time for MachineHealthCheck
+        nodeStartupTimeout allows to set the maximum time for MachineHealthCheck
         to consider a Machine unhealthy if a corresponding Node isn't associated
         through a `Spec.ProviderID` field.
-
 
         The duration set in this field is compared to the greatest of:
         - Cluster's infrastructure ready condition timestamp (if and when available)
@@ -725,13 +753,12 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Mac
         - Machine's infrastructure ready condition timestamp (if and when available)
         - Machine's metadata creation timestamp
 
-
         Defaults to 10 minutes.
         If you wish to disable this feature, set the value explicitly to 0.
     remediationTemplate : ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0MachineHealthCheckRemediationTemplate, default is Undefined, optional
         remediation template
     unhealthyConditions : [ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0MachineHealthCheckUnhealthyConditionsItems0], default is Undefined, optional
-        UnhealthyConditions contains a list of the conditions that determine
+        unhealthyConditions contains a list of the conditions that determine
         whether a node is considered unhealthy. The conditions are combined in a
         logical OR, i.e. if any of the conditions is met, the node is unhealthy.
     unhealthyRange : str, default is Undefined, optional
@@ -761,10 +788,9 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Mac
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0MachineHealthCheckRemediationTemplate:
-    """
-    RemediationTemplate is a reference to a remediation template
+    r"""
+    remediationTemplate is a reference to a remediation template
     provided by an infrastructure provider.
-
 
     This field is completely optional, when filled, the MachineHealthCheck controller
     creates a new object from the template referenced and hands off remediation of the machine to
@@ -782,7 +808,6 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Mac
         the event) or if no container name is specified "spec.containers[2]" (container with
         index 2 in this pod). This syntax is chosen only to have some well-defined way of
         referencing a part of an object.
-        TODO: this design is not final and this field is subject to change in the future.
     kind : str, default is Undefined, optional
         Kind of the referent.
         More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
@@ -817,7 +842,7 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Mac
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0MachineHealthCheckUnhealthyConditionsItems0:
-    """
+    r"""
     UnhealthyCondition represents a Node condition type and value with a timeout
     specified as a duration.  When the named condition has been in the given
     status for at least the timeout value, a node is considered unhealthy.
@@ -846,14 +871,14 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Mac
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Metadata:
-    """
-    Metadata is the metadata applied to the MachineDeployment and the machines of the MachineDeployment.
+    r"""
+    metadata is the metadata applied to the MachineDeployment and the machines of the MachineDeployment.
     At runtime this metadata is merged with the corresponding metadata from the ClusterClass.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        Annotations is an unstructured key value map stored with a resource that may be
+        annotations is an unstructured key value map stored with a resource that may be
         set by external tools to store and retrieve arbitrary metadata. They are not
         queryable and should be preserved when modifying objects.
         More info: http://kubernetes.io/docs/user-guide/annotations
@@ -871,7 +896,7 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Met
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Strategy:
-    """
+    r"""
     The deployment strategy to use to replace existing machines with
     new ones.
 
@@ -882,7 +907,7 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Str
     rollingUpdate : ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0StrategyRollingUpdate, default is Undefined, optional
         rolling update
     $type : str, default is Undefined, optional
-        Type of deployment. Allowed values are RollingUpdate and OnDelete.
+        type of deployment. Allowed values are RollingUpdate and OnDelete.
         The default is RollingUpdate.
     """
 
@@ -895,28 +920,24 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Str
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0StrategyRemediation:
-    """
-    Remediation controls the strategy of remediating unhealthy machines
+    r"""
+    remediation controls the strategy of remediating unhealthy machines
     and how remediating operations should occur during the lifecycle of the dependant MachineSets.
 
     Attributes
     ----------
     maxInFlight : int | str, default is Undefined, optional
-        MaxInFlight determines how many in flight remediations should happen at the same time.
-
+        maxInFlight determines how many in flight remediations should happen at the same time.
 
         Remediation only happens on the MachineSet with the most current revision, while
         older MachineSets (usually present during rollout operations) aren't allowed to remediate.
 
-
         Note: In general (independent of remediations), unhealthy machines are always
         prioritized during scale down operations over healthy ones.
-
 
         MaxInFlight can be set to a fixed number or a percentage.
         Example: when this is set to 20%, the MachineSet controller deletes at most 20% of
         the desired replicas.
-
 
         If not set, remediation is limited to all machines (bounded by replicas)
         under the active MachineSet's management.
@@ -927,14 +948,14 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Str
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0StrategyRollingUpdate:
-    """
+    r"""
     Rolling update config params. Present only if
     MachineDeploymentStrategyType = RollingUpdate.
 
     Attributes
     ----------
     deletePolicy : str, default is Undefined, optional
-        DeletePolicy defines the policy used by the MachineDeployment to identify nodes to delete when downscaling.
+        deletePolicy defines the policy used by the MachineDeployment to identify nodes to delete when downscaling.
         Valid values are "Random, "Newest", "Oldest"
         When no value is supplied, the default DeletePolicy of MachineSet is used
     maxSurge : int | str, default is Undefined, optional
@@ -975,13 +996,13 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Str
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Variables:
-    """
-    Variables can be used to customize the MachineDeployment through patches.
+    r"""
+    variables can be used to customize the MachineDeployment through patches.
 
     Attributes
     ----------
     overrides : [ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0VariablesOverridesItems0], default is Undefined, optional
-        Overrides can be used to override Cluster level variables.
+        overrides can be used to override Cluster level variables.
     """
 
 
@@ -989,21 +1010,20 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Var
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0VariablesOverridesItems0:
-    """
+    r"""
     ClusterVariable can be used to customize the Cluster through patches. Each ClusterVariable is associated with a
     Variable definition in the ClusterClass `status` variables.
 
     Attributes
     ----------
     definitionFrom : str, default is Undefined, optional
-        DefinitionFrom specifies where the definition of this Variable is from. DefinitionFrom is `inline` when the
-        definition is from the ClusterClass `.spec.variables` or the name of a patch defined in the ClusterClass
-        `.spec.patches` where the patch is external and provides external variables.
-        This field is mandatory if the variable has `DefinitionsConflict: true` in ClusterClass `status.variables[]`
+        definitionFrom specifies where the definition of this Variable is from.
+
+        Deprecated: This field is deprecated, must not be set anymore and is going to be removed in the next apiVersion.
     name : str, default is Undefined, required
-        Name of the variable.
+        name of the variable.
     value : any, default is Undefined, required
-        Value of the variable.
+        value of the variable.
         Note: the value will be validated against the schema of the corresponding ClusterClassVariable
         from the ClusterClass.
         Note: We have to use apiextensionsv1.JSON instead of a custom JSON type, because controller-tools has a
@@ -1021,18 +1041,18 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Var
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachinePoolsItems0:
-    """
+    r"""
     MachinePoolTopology specifies the different parameters for a pool of worker nodes in the topology.
     This pool of nodes is managed by a MachinePool object whose lifecycle is managed by the Cluster controller.
 
     Attributes
     ----------
     class : str, default is Undefined, required
-        Class is the name of the MachinePoolClass used to create the pool of worker nodes.
+        class is the name of the MachinePoolClass used to create the pool of worker nodes.
         This should match one of the deployment classes defined in the ClusterClass object
         mentioned in the `Cluster.Spec.Class` field.
     failureDomains : [str], default is Undefined, optional
-        FailureDomains is the list of failure domains the machine pool will be created in.
+        failureDomains is the list of failure domains the machine pool will be created in.
         Must match a key in the FailureDomains map stored on the cluster object.
     metadata : ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachinePoolsItems0Metadata, default is Undefined, optional
         metadata
@@ -1042,23 +1062,23 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachinePoolsItems0:
         Defaults to 0 (machine will be considered available as soon as it
         is ready)
     name : str, default is Undefined, required
-        Name is the unique identifier for this MachinePoolTopology.
+        name is the unique identifier for this MachinePoolTopology.
         The value is used with other unique identifiers to create a MachinePool's Name
         (e.g. cluster's name, etc). In case the name is greater than the allowed maximum length,
         the values are hashed together.
     nodeDeletionTimeout : str, default is Undefined, optional
-        NodeDeletionTimeout defines how long the controller will attempt to delete the Node that the MachinePool
+        nodeDeletionTimeout defines how long the controller will attempt to delete the Node that the MachinePool
         hosts after the MachinePool is marked for deletion. A duration of 0 will retry deletion indefinitely.
         Defaults to 10 seconds.
     nodeDrainTimeout : str, default is Undefined, optional
-        NodeDrainTimeout is the total amount of time that the controller will spend on draining a node.
+        nodeDrainTimeout is the total amount of time that the controller will spend on draining a node.
         The default value is 0, meaning that the node can be drained without any time limitations.
         NOTE: NodeDrainTimeout is different from `kubectl drain --timeout`
     nodeVolumeDetachTimeout : str, default is Undefined, optional
-        NodeVolumeDetachTimeout is the total amount of time that the controller will spend on waiting for all volumes
+        nodeVolumeDetachTimeout is the total amount of time that the controller will spend on waiting for all volumes
         to be detached. The default value is 0, meaning that the volumes can be detached without any time limitations.
     replicas : int, default is Undefined, optional
-        Replicas is the number of nodes belonging to this pool.
+        replicas is the number of nodes belonging to this pool.
         If the value is nil, the MachinePool is created without the number of Replicas (defaulting to 1)
         and it's assumed that an external entity (like cluster autoscaler) is responsible for the management
         of this value.
@@ -1089,14 +1109,14 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachinePoolsItems0:
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachinePoolsItems0Metadata:
-    """
-    Metadata is the metadata applied to the MachinePool.
+    r"""
+    metadata is the metadata applied to the MachinePool.
     At runtime this metadata is merged with the corresponding metadata from the ClusterClass.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        Annotations is an unstructured key value map stored with a resource that may be
+        annotations is an unstructured key value map stored with a resource that may be
         set by external tools to store and retrieve arbitrary metadata. They are not
         queryable and should be preserved when modifying objects.
         More info: http://kubernetes.io/docs/user-guide/annotations
@@ -1114,13 +1134,13 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachinePoolsItems0Metadata:
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachinePoolsItems0Variables:
-    """
-    Variables can be used to customize the MachinePool through patches.
+    r"""
+    variables can be used to customize the MachinePool through patches.
 
     Attributes
     ----------
     overrides : [ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachinePoolsItems0VariablesOverridesItems0], default is Undefined, optional
-        Overrides can be used to override Cluster level variables.
+        overrides can be used to override Cluster level variables.
     """
 
 
@@ -1128,21 +1148,20 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachinePoolsItems0Variables
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachinePoolsItems0VariablesOverridesItems0:
-    """
+    r"""
     ClusterVariable can be used to customize the Cluster through patches. Each ClusterVariable is associated with a
     Variable definition in the ClusterClass `status` variables.
 
     Attributes
     ----------
     definitionFrom : str, default is Undefined, optional
-        DefinitionFrom specifies where the definition of this Variable is from. DefinitionFrom is `inline` when the
-        definition is from the ClusterClass `.spec.variables` or the name of a patch defined in the ClusterClass
-        `.spec.patches` where the patch is external and provides external variables.
-        This field is mandatory if the variable has `DefinitionsConflict: true` in ClusterClass `status.variables[]`
+        definitionFrom specifies where the definition of this Variable is from.
+
+        Deprecated: This field is deprecated, must not be set anymore and is going to be removed in the next apiVersion.
     name : str, default is Undefined, required
-        Name of the variable.
+        name of the variable.
     value : any, default is Undefined, required
-        Value of the variable.
+        value of the variable.
         Note: the value will be validated against the schema of the corresponding ClusterClassVariable
         from the ClusterClass.
         Note: We have to use apiextensionsv1.JSON instead of a custom JSON type, because controller-tools has a
@@ -1160,31 +1179,41 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachinePoolsItems0Variables
 
 
 schema ClusterxK8sIoV1beta1ClusterStatus:
-    """
+    r"""
     ClusterStatus defines the observed state of Cluster.
 
     Attributes
     ----------
     conditions : [ClusterxK8sIoV1beta1ClusterStatusConditionsItems0], default is Undefined, optional
-        Conditions defines current service state of the cluster.
+        conditions defines current service state of the cluster.
     controlPlaneReady : bool, default is Undefined, optional
-        ControlPlaneReady defines if the control plane is ready.
+        controlPlaneReady denotes if the control plane became ready during initial provisioning
+        to receive requests.
+        NOTE: this field is part of the Cluster API contract and it is used to orchestrate provisioning.
+        The value of this field is never updated after provisioning is completed. Please use conditions
+        to check the operational state of the control plane.
     failureDomains : {str:ClusterxK8sIoV1beta1ClusterStatusFailureDomainsAnon}, default is Undefined, optional
-        FailureDomains is a slice of failure domain objects synced from the infrastructure provider.
+        failureDomains is a slice of failure domain objects synced from the infrastructure provider.
     failureMessage : str, default is Undefined, optional
-        FailureMessage indicates that there is a fatal problem reconciling the
+        failureMessage indicates that there is a fatal problem reconciling the
         state, and will be set to a descriptive error message.
+
+        Deprecated: This field is deprecated and is going to be removed in the next apiVersion. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.
     failureReason : str, default is Undefined, optional
-        FailureReason indicates that there is a fatal problem reconciling the
+        failureReason indicates that there is a fatal problem reconciling the
         state, and will be set to a token value suitable for
         programmatic interpretation.
+
+        Deprecated: This field is deprecated and is going to be removed in the next apiVersion. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.
     infrastructureReady : bool, default is Undefined, optional
-        InfrastructureReady is the state of the infrastructure provider.
+        infrastructureReady is the state of the infrastructure provider.
     observedGeneration : int, default is Undefined, optional
-        ObservedGeneration is the latest generation observed by the controller.
+        observedGeneration is the latest generation observed by the controller.
     phase : str, default is Undefined, optional
-        Phase represents the current phase of cluster actuation.
+        phase represents the current phase of cluster actuation.
         E.g. Pending, Running, Terminating, Failed etc.
+    v1beta2 : ClusterxK8sIoV1beta1ClusterStatusV1beta2, default is Undefined, optional
+        v1beta2
     """
 
 
@@ -1204,9 +1233,11 @@ schema ClusterxK8sIoV1beta1ClusterStatus:
 
     phase?: str
 
+    v1beta2?: ClusterxK8sIoV1beta1ClusterStatusV1beta2
+
 
 schema ClusterxK8sIoV1beta1ClusterStatusConditionsItems0:
-    """
+    r"""
     Condition defines an observation of a Cluster API resource operational state.
 
     Attributes
@@ -1221,15 +1252,15 @@ schema ClusterxK8sIoV1beta1ClusterStatusConditionsItems0:
     reason : str, default is Undefined, optional
         The reason for the condition's last transition in CamelCase.
         The specific API may choose whether or not this field is considered a guaranteed API.
-        This field may not be empty.
+        This field may be empty.
     severity : str, default is Undefined, optional
-        Severity provides an explicit classification of Reason code, so the users or machines can immediately
+        severity provides an explicit classification of Reason code, so the users or machines can immediately
         understand the current situation and act accordingly.
         The Severity field MUST be set only when Status=False.
     status : str, default is Undefined, required
-        Status of the condition, one of True, False, Unknown.
+        status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
-        Type of condition in CamelCase or in foo.example.com/CamelCase.
+        type of condition in CamelCase or in foo.example.com/CamelCase.
         Many .condition.type values are consistent across resources like Available, but because arbitrary conditions
         can be useful (see .node.status.conditions), the ability to deconflict is important.
     """
@@ -1249,21 +1280,164 @@ schema ClusterxK8sIoV1beta1ClusterStatusConditionsItems0:
 
 
 schema ClusterxK8sIoV1beta1ClusterStatusFailureDomainsAnon:
-    """
+    r"""
     FailureDomainSpec is the Schema for Cluster API failure domains.
     It allows controllers to understand how many failure domains a cluster can optionally span across.
 
     Attributes
     ----------
     attributes : {str:str}, default is Undefined, optional
-        Attributes is a free form map of attributes an infrastructure provider might use or require.
+        attributes is a free form map of attributes an infrastructure provider might use or require.
     controlPlane : bool, default is Undefined, optional
-        ControlPlane determines if this failure domain is suitable for use by control plane machines.
+        controlPlane determines if this failure domain is suitable for use by control plane machines.
     """
 
 
     attributes?: {str:str}
 
     controlPlane?: bool
+
+
+schema ClusterxK8sIoV1beta1ClusterStatusV1beta2:
+    r"""
+    v1beta2 groups all the fields that will be added or modified in Cluster's status with the V1Beta2 version.
+
+    Attributes
+    ----------
+    conditions : [ClusterxK8sIoV1beta1ClusterStatusV1beta2ConditionsItems0], default is Undefined, optional
+        conditions represents the observations of a Cluster's current state.
+        Known condition types are Available, InfrastructureReady, ControlPlaneInitialized, ControlPlaneAvailable, WorkersAvailable, MachinesReady
+        MachinesUpToDate, RemoteConnectionProbe, ScalingUp, ScalingDown, Remediating, Deleting, Paused.
+        Additionally, a TopologyReconciled condition will be added in case the Cluster is referencing a ClusterClass / defining a managed Topology.
+    controlPlane : ClusterxK8sIoV1beta1ClusterStatusV1beta2ControlPlane, default is Undefined, optional
+        control plane
+    workers : ClusterxK8sIoV1beta1ClusterStatusV1beta2Workers, default is Undefined, optional
+        workers
+    """
+
+
+    conditions?: [ClusterxK8sIoV1beta1ClusterStatusV1beta2ConditionsItems0]
+
+    controlPlane?: ClusterxK8sIoV1beta1ClusterStatusV1beta2ControlPlane
+
+    workers?: ClusterxK8sIoV1beta1ClusterStatusV1beta2Workers
+
+
+    check:
+        len(conditions) <= 32 if conditions
+
+
+schema ClusterxK8sIoV1beta1ClusterStatusV1beta2ConditionsItems0:
+    r"""
+    Condition contains details for one aspect of the current state of this API Resource.
+
+    Attributes
+    ----------
+    lastTransitionTime : str, default is Undefined, required
+        lastTransitionTime is the last time the condition transitioned from one status to another.
+        This should be when the underlying condition changed.  If that is not known, then using the time when the API field changed is acceptable.
+    message : str, default is Undefined, required
+        message is a human readable message indicating details about the transition.
+        This may be an empty string.
+    observedGeneration : int, default is Undefined, optional
+        observedGeneration represents the .metadata.generation that the condition was set based upon.
+        For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date
+        with respect to the current state of the instance.
+    reason : str, default is Undefined, required
+        reason contains a programmatic identifier indicating the reason for the condition's last transition.
+        Producers of specific condition types may define expected values and meanings for this field,
+        and whether the values are considered a guaranteed API.
+        The value should be a CamelCase string.
+        This field may not be empty.
+    status : str, default is Undefined, required
+        status of the condition, one of True, False, Unknown.
+    $type : str, default is Undefined, required
+        type of condition in CamelCase or in foo.example.com/CamelCase.
+    """
+
+
+    lastTransitionTime: str
+
+    message: str
+
+    observedGeneration?: int
+
+    reason: str
+
+    status: "True" | "False" | "Unknown"
+
+    $type: str
+
+
+    check:
+        len(message) <= 32768
+        observedGeneration >= 0 if observedGeneration not in [None, Undefined]
+        len(reason) <= 1024
+        len(reason) >= 1
+        _regex_match(str(reason), r"^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$")
+        len($type) <= 316
+        _regex_match(str($type), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$")
+
+
+schema ClusterxK8sIoV1beta1ClusterStatusV1beta2ControlPlane:
+    r"""
+    controlPlane groups all the observations about Cluster's ControlPlane current state.
+
+    Attributes
+    ----------
+    availableReplicas : int, default is Undefined, optional
+        availableReplicas is the total number of available control plane machines in this cluster. A machine is considered available when Machine's Available condition is true.
+    desiredReplicas : int, default is Undefined, optional
+        desiredReplicas is the total number of desired control plane machines in this cluster.
+    readyReplicas : int, default is Undefined, optional
+        readyReplicas is the total number of ready control plane machines in this cluster. A machine is considered ready when Machine's Ready condition is true.
+    replicas : int, default is Undefined, optional
+        replicas is the total number of control plane machines in this cluster.
+        NOTE: replicas also includes machines still being provisioned or being deleted.
+    upToDateReplicas : int, default is Undefined, optional
+        upToDateReplicas is the number of up-to-date control plane machines in this cluster. A machine is considered up-to-date when Machine's UpToDate condition is true.
+    """
+
+
+    availableReplicas?: int
+
+    desiredReplicas?: int
+
+    readyReplicas?: int
+
+    replicas?: int
+
+    upToDateReplicas?: int
+
+
+schema ClusterxK8sIoV1beta1ClusterStatusV1beta2Workers:
+    r"""
+    workers groups all the observations about Cluster's Workers current state.
+
+    Attributes
+    ----------
+    availableReplicas : int, default is Undefined, optional
+        availableReplicas is the total number of available worker machines in this cluster. A machine is considered available when Machine's Available condition is true.
+    desiredReplicas : int, default is Undefined, optional
+        desiredReplicas is the total number of desired worker machines in this cluster.
+    readyReplicas : int, default is Undefined, optional
+        readyReplicas is the total number of ready worker machines in this cluster. A machine is considered ready when Machine's Ready condition is true.
+    replicas : int, default is Undefined, optional
+        replicas is the total number of worker machines in this cluster.
+        NOTE: replicas also includes machines still being provisioned or being deleted.
+    upToDateReplicas : int, default is Undefined, optional
+        upToDateReplicas is the number of up-to-date worker machines in this cluster. A machine is considered up-to-date when Machine's UpToDate condition is true.
+    """
+
+
+    availableReplicas?: int
+
+    desiredReplicas?: int
+
+    readyReplicas?: int
+
+    replicas?: int
+
+    upToDateReplicas?: int
 
 

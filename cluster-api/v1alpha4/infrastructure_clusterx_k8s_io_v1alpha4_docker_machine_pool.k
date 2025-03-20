@@ -6,9 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema DockerMachinePool:
-    """
+    r"""
     DockerMachinePool is the Schema for the dockermachinepools API.
-
 
     Deprecated: This type will be removed in one of the next releases.
 
@@ -39,7 +38,7 @@ schema DockerMachinePool:
 
 
 schema InfrastructureClusterxK8sIoV1alpha4DockerMachinePoolSpec:
-    """
+    r"""
     DockerMachinePoolSpec defines the desired state of DockerMachinePool.
 
     Attributes
@@ -61,7 +60,7 @@ schema InfrastructureClusterxK8sIoV1alpha4DockerMachinePoolSpec:
 
 
 schema InfrastructureClusterxK8sIoV1alpha4DockerMachinePoolSpecTemplate:
-    """
+    r"""
     Template contains the details used to build a replica machine within the Machine Pool
 
     Attributes
@@ -86,7 +85,7 @@ schema InfrastructureClusterxK8sIoV1alpha4DockerMachinePoolSpecTemplate:
 
 
 schema InfrastructureClusterxK8sIoV1alpha4DockerMachinePoolSpecTemplateExtraMountsItems0:
-    """
+    r"""
     Mount specifies a host volume to mount into a container.
     This is a simplified version of kind v1alpha4.Mount types.
 
@@ -111,7 +110,7 @@ schema InfrastructureClusterxK8sIoV1alpha4DockerMachinePoolSpecTemplateExtraMoun
 
 
 schema InfrastructureClusterxK8sIoV1alpha4DockerMachinePoolStatus:
-    """
+    r"""
     DockerMachinePoolStatus defines the observed state of DockerMachinePool.
 
     Attributes
@@ -141,7 +140,7 @@ schema InfrastructureClusterxK8sIoV1alpha4DockerMachinePoolStatus:
 
 
 schema InfrastructureClusterxK8sIoV1alpha4DockerMachinePoolStatusConditionsItems0:
-    """
+    r"""
     Condition defines an observation of a Cluster API resource operational state.
 
     Attributes
@@ -158,13 +157,13 @@ schema InfrastructureClusterxK8sIoV1alpha4DockerMachinePoolStatusConditionsItems
         The specific API may choose whether or not this field is considered a guaranteed API.
         This field may not be empty.
     severity : str, default is Undefined, optional
-        Severity provides an explicit classification of Reason code, so the users or machines can immediately
+        severity provides an explicit classification of Reason code, so the users or machines can immediately
         understand the current situation and act accordingly.
         The Severity field MUST be set only when Status=False.
     status : str, default is Undefined, required
-        Status of the condition, one of True, False, Unknown.
+        status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
-        Type of condition in CamelCase or in foo.example.com/CamelCase.
+        type of condition in CamelCase or in foo.example.com/CamelCase.
         Many .condition.type values are consistent across resources like Available, but because arbitrary conditions
         can be useful (see .node.status.conditions), the ability to deconflict is important.
     """
@@ -184,7 +183,7 @@ schema InfrastructureClusterxK8sIoV1alpha4DockerMachinePoolStatusConditionsItems
 
 
 schema InfrastructureClusterxK8sIoV1alpha4DockerMachinePoolStatusInstancesItems0:
-    """
+    r"""
     DockerMachinePoolInstanceStatus contains status information about a DockerMachinePool.
 
     Attributes
@@ -219,7 +218,7 @@ schema InfrastructureClusterxK8sIoV1alpha4DockerMachinePoolStatusInstancesItems0
 
 
 schema InfrastructureClusterxK8sIoV1alpha4DockerMachinePoolStatusInstancesItems0AddressesItems0:
-    """
+    r"""
     MachineAddress contains information for the node's address.
 
     Attributes

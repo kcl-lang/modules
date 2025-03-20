@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ClusterResourceSetBinding:
-    """
+    r"""
     ClusterResourceSetBinding lists all matching ClusterResourceSets with the cluster it belongs to.
 
     Attributes
@@ -32,15 +32,15 @@ schema ClusterResourceSetBinding:
 
 
 schema AddonsClusterxK8sIoV1beta1ClusterResourceSetBindingSpec:
-    """
+    r"""
     ClusterResourceSetBindingSpec defines the desired state of ClusterResourceSetBinding.
 
     Attributes
     ----------
     bindings : [AddonsClusterxK8sIoV1beta1ClusterResourceSetBindingSpecBindingsItems0], default is Undefined, optional
-        Bindings is a list of ClusterResourceSets and their resources.
+        bindings is a list of ClusterResourceSets and their resources.
     clusterName : str, default is Undefined, optional
-        ClusterName is the name of the Cluster this binding applies to.
+        clusterName is the name of the Cluster this binding applies to.
         Note: this field mandatory in v1beta2.
     """
 
@@ -51,15 +51,15 @@ schema AddonsClusterxK8sIoV1beta1ClusterResourceSetBindingSpec:
 
 
 schema AddonsClusterxK8sIoV1beta1ClusterResourceSetBindingSpecBindingsItems0:
-    """
+    r"""
     ResourceSetBinding keeps info on all of the resources in a ClusterResourceSet.
 
     Attributes
     ----------
     clusterResourceSetName : str, default is Undefined, required
-        ClusterResourceSetName is the name of the ClusterResourceSet that is applied to the owner cluster of the binding.
+        clusterResourceSetName is the name of the ClusterResourceSet that is applied to the owner cluster of the binding.
     resources : [AddonsClusterxK8sIoV1beta1ClusterResourceSetBindingSpecBindingsItems0ResourcesItems0], default is Undefined, optional
-        Resources is a list of resources that the ClusterResourceSet has.
+        resources is a list of resources that the ClusterResourceSet has.
     """
 
 
@@ -69,22 +69,22 @@ schema AddonsClusterxK8sIoV1beta1ClusterResourceSetBindingSpecBindingsItems0:
 
 
 schema AddonsClusterxK8sIoV1beta1ClusterResourceSetBindingSpecBindingsItems0ResourcesItems0:
-    """
+    r"""
     ResourceBinding shows the status of a resource that belongs to a ClusterResourceSet matched by the owner cluster of the ClusterResourceSetBinding object.
 
     Attributes
     ----------
     applied : bool, default is Undefined, required
-        Applied is to track if a resource is applied to the cluster or not.
+        applied is to track if a resource is applied to the cluster or not.
     hash : str, default is Undefined, optional
-        Hash is the hash of a resource's data. This can be used to decide if a resource is changed.
+        hash is the hash of a resource's data. This can be used to decide if a resource is changed.
         For "ApplyOnce" ClusterResourceSet.spec.strategy, this is no-op as that strategy does not act on change.
     kind : str, default is Undefined, required
-        Kind of the resource. Supported kinds are: Secrets and ConfigMaps.
+        kind of the resource. Supported kinds are: Secrets and ConfigMaps.
     lastAppliedTime : str, default is Undefined, optional
-        LastAppliedTime identifies when this resource was last applied to the cluster.
+        lastAppliedTime identifies when this resource was last applied to the cluster.
     name : str, default is Undefined, required
-        Name of the resource that is in the same namespace with ClusterResourceSet object.
+        name of the resource that is in the same namespace with ClusterResourceSet object.
     """
 
 

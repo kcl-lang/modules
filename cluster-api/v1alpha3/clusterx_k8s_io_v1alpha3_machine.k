@@ -6,9 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema Machine:
-    """
+    r"""
     Machine is the Schema for the machines API.
-
 
     Deprecated: This type will be removed in one of the next releases.
 
@@ -39,7 +38,7 @@ schema Machine:
 
 
 schema ClusterxK8sIoV1alpha3MachineSpec:
-    """
+    r"""
     MachineSpec defines the desired state of Machine.
 
     Attributes
@@ -47,18 +46,18 @@ schema ClusterxK8sIoV1alpha3MachineSpec:
     bootstrap : ClusterxK8sIoV1alpha3MachineSpecBootstrap, default is Undefined, required
         bootstrap
     clusterName : str, default is Undefined, required
-        ClusterName is the name of the Cluster this object belongs to.
+        clusterName is the name of the Cluster this object belongs to.
     failureDomain : str, default is Undefined, optional
-        FailureDomain is the failure domain the machine will be created in.
+        failureDomain is the failure domain the machine will be created in.
         Must match a key in the FailureDomains map stored on the cluster object.
     infrastructureRef : ClusterxK8sIoV1alpha3MachineSpecInfrastructureRef, default is Undefined, required
         infrastructure ref
     nodeDrainTimeout : str, default is Undefined, optional
-        NodeDrainTimeout is the total amount of time that the controller will spend on draining a node.
+        nodeDrainTimeout is the total amount of time that the controller will spend on draining a node.
         The default value is 0, meaning that the node can be drained without any time limitations.
         NOTE: NodeDrainTimeout is different from `kubectl drain --timeout`
     providerID : str, default is Undefined, optional
-        ProviderID is the identification ID of the machine provided by the provider.
+        providerID is the identification ID of the machine provided by the provider.
         This field must match the provider ID as seen on the node object corresponding to this machine.
         This field is required by higher level consumers of cluster-api. Example use case is cluster autoscaler
         with cluster-api as provider. Clean-up logic in the autoscaler compares machines to nodes to find out
@@ -69,7 +68,7 @@ schema ClusterxK8sIoV1alpha3MachineSpec:
         This field will be set by the actuators and consumed by higher level entities like autoscaler that will
         be interfacing with cluster-api as generic provider.
     version : str, default is Undefined, optional
-        Version defines the desired Kubernetes version.
+        version defines the desired Kubernetes version.
         This field is meant to be optionally used by bootstrap providers.
     """
 
@@ -94,8 +93,8 @@ schema ClusterxK8sIoV1alpha3MachineSpec:
 
 
 schema ClusterxK8sIoV1alpha3MachineSpecBootstrap:
-    """
-    Bootstrap is a reference to a local struct which encapsulates
+    r"""
+    bootstrap is a reference to a local struct which encapsulates
     fields to configure the Machine’s bootstrapping mechanism.
 
     Attributes
@@ -103,13 +102,12 @@ schema ClusterxK8sIoV1alpha3MachineSpecBootstrap:
     configRef : ClusterxK8sIoV1alpha3MachineSpecBootstrapConfigRef, default is Undefined, optional
         config ref
     data : str, default is Undefined, optional
-        Data contains the bootstrap data, such as cloud-init details scripts.
+        data contains the bootstrap data, such as cloud-init details scripts.
         If nil, the Machine should remain in the Pending state.
-
 
         Deprecated: Switch to DataSecretName.
     dataSecretName : str, default is Undefined, optional
-        DataSecretName is the name of the secret that stores the bootstrap data script.
+        dataSecretName is the name of the secret that stores the bootstrap data script.
         If nil, the Machine should remain in the Pending state.
     """
 
@@ -122,8 +120,8 @@ schema ClusterxK8sIoV1alpha3MachineSpecBootstrap:
 
 
 schema ClusterxK8sIoV1alpha3MachineSpecBootstrapConfigRef:
-    """
-    ConfigRef is a reference to a bootstrap provider-specific resource
+    r"""
+    configRef is a reference to a bootstrap provider-specific resource
     that holds configuration details. The reference is optional to
     allow users/operators to specify Bootstrap.Data without
     the need of a controller.
@@ -140,7 +138,6 @@ schema ClusterxK8sIoV1alpha3MachineSpecBootstrapConfigRef:
         the event) or if no container name is specified "spec.containers[2]" (container with
         index 2 in this pod). This syntax is chosen only to have some well-defined way of
         referencing a part of an object.
-        TODO: this design is not final and this field is subject to change in the future.
     kind : str, default is Undefined, optional
         Kind of the referent.
         More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
@@ -175,8 +172,8 @@ schema ClusterxK8sIoV1alpha3MachineSpecBootstrapConfigRef:
 
 
 schema ClusterxK8sIoV1alpha3MachineSpecInfrastructureRef:
-    """
-    InfrastructureRef is a required reference to a custom resource
+    r"""
+    infrastructureRef is a required reference to a custom resource
     offered by an infrastructure provider.
 
     Attributes
@@ -191,7 +188,6 @@ schema ClusterxK8sIoV1alpha3MachineSpecInfrastructureRef:
         the event) or if no container name is specified "spec.containers[2]" (container with
         index 2 in this pod). This syntax is chosen only to have some well-defined way of
         referencing a part of an object.
-        TODO: this design is not final and this field is subject to change in the future.
     kind : str, default is Undefined, optional
         Kind of the referent.
         More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
@@ -226,23 +222,22 @@ schema ClusterxK8sIoV1alpha3MachineSpecInfrastructureRef:
 
 
 schema ClusterxK8sIoV1alpha3MachineStatus:
-    """
+    r"""
     MachineStatus defines the observed state of Machine.
 
     Attributes
     ----------
     addresses : [ClusterxK8sIoV1alpha3MachineStatusAddressesItems0], default is Undefined, optional
-        Addresses is a list of addresses assigned to the machine.
+        addresses is a list of addresses assigned to the machine.
         This field is copied from the infrastructure provider reference.
     bootstrapReady : bool, default is Undefined, optional
-        BootstrapReady is the state of the bootstrap provider.
+        bootstrapReady is the state of the bootstrap provider.
     conditions : [ClusterxK8sIoV1alpha3MachineStatusConditionsItems0], default is Undefined, optional
-        Conditions defines current service state of the Machine.
+        conditions defines current service state of the Machine.
     failureMessage : str, default is Undefined, optional
-        FailureMessage will be set in the event that there is a terminal problem
+        failureMessage will be set in the event that there is a terminal problem
         reconciling the Machine and will contain a more verbose string suitable
         for logging and human consumption.
-
 
         This field should not be set for transitive errors that a controller
         faces that are expected to be fixed automatically over
@@ -252,16 +247,14 @@ schema ClusterxK8sIoV1alpha3MachineStatus:
         of terminal errors would be invalid combinations of settings in the
         spec, values that are unsupported by the controller, or the
         responsible controller itself being critically misconfigured.
-
 
         Any transient errors that occur during the reconciliation of Machines
         can be added as events to the Machine object and/or logged in the
         controller's output.
     failureReason : str, default is Undefined, optional
-        FailureReason will be set in the event that there is a terminal problem
+        failureReason will be set in the event that there is a terminal problem
         reconciling the Machine and will contain a succinct value suitable
         for machine interpretation.
-
 
         This field should not be set for transitive errors that a controller
         faces that are expected to be fixed automatically over
@@ -272,23 +265,22 @@ schema ClusterxK8sIoV1alpha3MachineStatus:
         spec, values that are unsupported by the controller, or the
         responsible controller itself being critically misconfigured.
 
-
         Any transient errors that occur during the reconciliation of Machines
         can be added as events to the Machine object and/or logged in the
         controller's output.
     infrastructureReady : bool, default is Undefined, optional
-        InfrastructureReady is the state of the infrastructure provider.
+        infrastructureReady is the state of the infrastructure provider.
     lastUpdated : str, default is Undefined, optional
-        LastUpdated identifies when the phase of the Machine last transitioned.
+        lastUpdated identifies when the phase of the Machine last transitioned.
     nodeRef : ClusterxK8sIoV1alpha3MachineStatusNodeRef, default is Undefined, optional
         node ref
     observedGeneration : int, default is Undefined, optional
-        ObservedGeneration is the latest generation observed by the controller.
+        observedGeneration is the latest generation observed by the controller.
     phase : str, default is Undefined, optional
-        Phase represents the current phase of machine actuation.
+        phase represents the current phase of machine actuation.
         E.g. Pending, Running, Terminating, Failed etc.
     version : str, default is Undefined, optional
-        Version specifies the current version of Kubernetes running
+        version specifies the current version of Kubernetes running
         on the corresponding Node. This is meant to be a means of bubbling
         up status from the Node to the Machine.
         It is entirely optional, but useful for end-user UX if it’s present.
@@ -319,7 +311,7 @@ schema ClusterxK8sIoV1alpha3MachineStatus:
 
 
 schema ClusterxK8sIoV1alpha3MachineStatusAddressesItems0:
-    """
+    r"""
     MachineAddress contains information for the node's address.
 
     Attributes
@@ -337,7 +329,7 @@ schema ClusterxK8sIoV1alpha3MachineStatusAddressesItems0:
 
 
 schema ClusterxK8sIoV1alpha3MachineStatusConditionsItems0:
-    """
+    r"""
     Condition defines an observation of a Cluster API resource operational state.
 
     Attributes
@@ -354,13 +346,13 @@ schema ClusterxK8sIoV1alpha3MachineStatusConditionsItems0:
         The specific API may choose whether or not this field is considered a guaranteed API.
         This field may not be empty.
     severity : str, default is Undefined, optional
-        Severity provides an explicit classification of Reason code, so the users or machines can immediately
+        severity provides an explicit classification of Reason code, so the users or machines can immediately
         understand the current situation and act accordingly.
         The Severity field MUST be set only when Status=False.
     status : str, default is Undefined, required
-        Status of the condition, one of True, False, Unknown.
+        status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
-        Type of condition in CamelCase or in foo.example.com/CamelCase.
+        type of condition in CamelCase or in foo.example.com/CamelCase.
         Many .condition.type values are consistent across resources like Available, but because arbitrary conditions
         can be useful (see .node.status.conditions), the ability to deconflict is important.
     """
@@ -380,8 +372,8 @@ schema ClusterxK8sIoV1alpha3MachineStatusConditionsItems0:
 
 
 schema ClusterxK8sIoV1alpha3MachineStatusNodeRef:
-    """
-    NodeRef will point to the corresponding Node if it exists.
+    r"""
+    nodeRef will point to the corresponding Node if it exists.
 
     Attributes
     ----------
@@ -395,7 +387,6 @@ schema ClusterxK8sIoV1alpha3MachineStatusNodeRef:
         the event) or if no container name is specified "spec.containers[2]" (container with
         index 2 in this pod). This syntax is chosen only to have some well-defined way of
         referencing a part of an object.
-        TODO: this design is not final and this field is subject to change in the future.
     kind : str, default is Undefined, optional
         Kind of the referent.
         More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
