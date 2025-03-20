@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema Cluster:
-    """
+    r"""
     Cluster is the Schema for the clusters API.
 
     Attributes
@@ -36,7 +36,7 @@ schema Cluster:
 
 
 schema ClusterxK8sIoV1alpha3ClusterSpec:
-    """
+    r"""
     ClusterSpec defines the desired state of Cluster.
 
     Attributes
@@ -66,7 +66,7 @@ schema ClusterxK8sIoV1alpha3ClusterSpec:
 
 
 schema ClusterxK8sIoV1alpha3ClusterSpecClusterNetwork:
-    """
+    r"""
     Cluster network configuration.
 
     Attributes
@@ -93,7 +93,7 @@ schema ClusterxK8sIoV1alpha3ClusterSpecClusterNetwork:
 
 
 schema ClusterxK8sIoV1alpha3ClusterSpecClusterNetworkPods:
-    """
+    r"""
     The network ranges from which Pod networks are allocated.
 
     Attributes
@@ -107,7 +107,7 @@ schema ClusterxK8sIoV1alpha3ClusterSpecClusterNetworkPods:
 
 
 schema ClusterxK8sIoV1alpha3ClusterSpecClusterNetworkServices:
-    """
+    r"""
     The network ranges from which service VIPs are allocated.
 
     Attributes
@@ -121,7 +121,7 @@ schema ClusterxK8sIoV1alpha3ClusterSpecClusterNetworkServices:
 
 
 schema ClusterxK8sIoV1alpha3ClusterSpecControlPlaneEndpoint:
-    """
+    r"""
     ControlPlaneEndpoint represents the endpoint used to communicate with the control plane.
 
     Attributes
@@ -139,7 +139,7 @@ schema ClusterxK8sIoV1alpha3ClusterSpecControlPlaneEndpoint:
 
 
 schema ClusterxK8sIoV1alpha3ClusterSpecControlPlaneRef:
-    """
+    r"""
     ControlPlaneRef is an optional reference to a provider-specific resource that holds
     the details for provisioning the Control Plane for a Cluster.
 
@@ -190,7 +190,7 @@ schema ClusterxK8sIoV1alpha3ClusterSpecControlPlaneRef:
 
 
 schema ClusterxK8sIoV1alpha3ClusterSpecInfrastructureRef:
-    """
+    r"""
     InfrastructureRef is a reference to a provider-specific resource that holds the details
     for provisioning infrastructure for a cluster in said provider.
 
@@ -241,7 +241,7 @@ schema ClusterxK8sIoV1alpha3ClusterSpecInfrastructureRef:
 
 
 schema ClusterxK8sIoV1alpha3ClusterStatus:
-    """
+    r"""
     ClusterStatus defines the observed state of Cluster.
 
     Attributes
@@ -291,7 +291,7 @@ schema ClusterxK8sIoV1alpha3ClusterStatus:
 
 
 schema ClusterxK8sIoV1alpha3ClusterStatusConditionsItems0:
-    """
+    r"""
     Condition defines an observation of a Cluster API resource operational state.
 
     Attributes
@@ -334,7 +334,7 @@ schema ClusterxK8sIoV1alpha3ClusterStatusConditionsItems0:
 
 
 schema ClusterxK8sIoV1alpha3ClusterStatusFailureDomainsAnon:
-    """
+    r"""
     FailureDomainSpec is the Schema for Cluster API failure domains.
     It allows controllers to understand how many failure domains a cluster can optionally span across.
 

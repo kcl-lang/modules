@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema MachineDeployment:
-    """
+    r"""
     MachineDeployment is the Schema for the machinedeployments API.
 
 
@@ -39,7 +39,7 @@ schema MachineDeployment:
 
 
 schema ClusterxK8sIoV1alpha4MachineDeploymentSpec:
-    """
+    r"""
     MachineDeploymentSpec defines the desired state of MachineDeployment.
 
     Attributes
@@ -99,7 +99,7 @@ schema ClusterxK8sIoV1alpha4MachineDeploymentSpec:
 
 
 schema ClusterxK8sIoV1alpha4MachineDeploymentSpecSelector:
-    """
+    r"""
     Label selector for machines. Existing MachineSets whose machines are
     selected by this will be the ones affected by this deployment.
     It must match the machine template's labels.
@@ -121,7 +121,7 @@ schema ClusterxK8sIoV1alpha4MachineDeploymentSpecSelector:
 
 
 schema ClusterxK8sIoV1alpha4MachineDeploymentSpecSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
 
@@ -148,7 +148,7 @@ schema ClusterxK8sIoV1alpha4MachineDeploymentSpecSelectorMatchExpressionsItems0:
 
 
 schema ClusterxK8sIoV1alpha4MachineDeploymentSpecStrategy:
-    """
+    r"""
     The deployment strategy to use to replace existing machines with
     new ones.
 
@@ -168,7 +168,7 @@ schema ClusterxK8sIoV1alpha4MachineDeploymentSpecStrategy:
 
 
 schema ClusterxK8sIoV1alpha4MachineDeploymentSpecStrategyRollingUpdate:
-    """
+    r"""
     Rolling update config params. Present only if
     MachineDeploymentStrategyType = RollingUpdate.
 
@@ -216,7 +216,7 @@ schema ClusterxK8sIoV1alpha4MachineDeploymentSpecStrategyRollingUpdate:
 
 
 schema ClusterxK8sIoV1alpha4MachineDeploymentSpecTemplate:
-    """
+    r"""
     Template describes the machines that will be created.
 
     Attributes
@@ -234,7 +234,7 @@ schema ClusterxK8sIoV1alpha4MachineDeploymentSpecTemplate:
 
 
 schema ClusterxK8sIoV1alpha4MachineDeploymentSpecTemplateMetadata:
-    """
+    r"""
     Standard object's metadata.
     More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
 
@@ -259,7 +259,7 @@ schema ClusterxK8sIoV1alpha4MachineDeploymentSpecTemplateMetadata:
 
 
 schema ClusterxK8sIoV1alpha4MachineDeploymentSpecTemplateSpec:
-    """
+    r"""
     Specification of the desired behavior of the machine.
     More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
 
@@ -315,7 +315,7 @@ schema ClusterxK8sIoV1alpha4MachineDeploymentSpecTemplateSpec:
 
 
 schema ClusterxK8sIoV1alpha4MachineDeploymentSpecTemplateSpecBootstrap:
-    """
+    r"""
     Bootstrap is a reference to a local struct which encapsulates
     fields to configure the Machine’s bootstrapping mechanism.
 
@@ -335,7 +335,7 @@ schema ClusterxK8sIoV1alpha4MachineDeploymentSpecTemplateSpecBootstrap:
 
 
 schema ClusterxK8sIoV1alpha4MachineDeploymentSpecTemplateSpecBootstrapConfigRef:
-    """
+    r"""
     ConfigRef is a reference to a bootstrap provider-specific resource
     that holds configuration details. The reference is optional to
     allow users/operators to specify Bootstrap.DataSecretName without
@@ -388,7 +388,7 @@ schema ClusterxK8sIoV1alpha4MachineDeploymentSpecTemplateSpecBootstrapConfigRef:
 
 
 schema ClusterxK8sIoV1alpha4MachineDeploymentSpecTemplateSpecInfrastructureRef:
-    """
+    r"""
     InfrastructureRef is a required reference to a custom resource
     offered by an infrastructure provider.
 
@@ -439,7 +439,7 @@ schema ClusterxK8sIoV1alpha4MachineDeploymentSpecTemplateSpecInfrastructureRef:
 
 
 schema ClusterxK8sIoV1alpha4MachineDeploymentStatus:
-    """
+    r"""
     MachineDeploymentStatus defines the observed state of MachineDeployment.
 
     Attributes
@@ -494,7 +494,7 @@ schema ClusterxK8sIoV1alpha4MachineDeploymentStatus:
 
 
 schema ClusterxK8sIoV1alpha4MachineDeploymentStatusConditionsItems0:
-    """
+    r"""
     Condition defines an observation of a Cluster API resource operational state.
 
     Attributes

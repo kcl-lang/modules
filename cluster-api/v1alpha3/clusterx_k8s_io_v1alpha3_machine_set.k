@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema MachineSet:
-    """
+    r"""
     MachineSet is the Schema for the machinesets API.
 
 
@@ -39,7 +39,7 @@ schema MachineSet:
 
 
 schema ClusterxK8sIoV1alpha3MachineSetSpec:
-    """
+    r"""
     MachineSetSpec defines the desired state of MachineSet.
 
     Attributes
@@ -81,7 +81,7 @@ schema ClusterxK8sIoV1alpha3MachineSetSpec:
 
 
 schema ClusterxK8sIoV1alpha3MachineSetSpecSelector:
-    """
+    r"""
     Selector is a label query over machines that should match the replica count.
     Label keys and values that must match in order to be controlled by this MachineSet.
     It must match the machine template's labels.
@@ -104,7 +104,7 @@ schema ClusterxK8sIoV1alpha3MachineSetSpecSelector:
 
 
 schema ClusterxK8sIoV1alpha3MachineSetSpecSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
 
@@ -131,7 +131,7 @@ schema ClusterxK8sIoV1alpha3MachineSetSpecSelectorMatchExpressionsItems0:
 
 
 schema ClusterxK8sIoV1alpha3MachineSetSpecTemplate:
-    """
+    r"""
     Template is the object that describes the machine that will be created if
     insufficient replicas are detected.
     Object references to custom resources are treated as templates.
@@ -151,7 +151,7 @@ schema ClusterxK8sIoV1alpha3MachineSetSpecTemplate:
 
 
 schema ClusterxK8sIoV1alpha3MachineSetSpecTemplateMetadata:
-    """
+    r"""
     Standard object's metadata.
     More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
 
@@ -236,7 +236,7 @@ schema ClusterxK8sIoV1alpha3MachineSetSpecTemplateMetadata:
 
 
 schema ClusterxK8sIoV1alpha3MachineSetSpecTemplateMetadataOwnerReferencesItems0:
-    """
+    r"""
     OwnerReference contains enough information to let you identify an owning
     object. An owning object must be in the same namespace as the dependent, or
     be cluster-scoped, so there is no namespace field.
@@ -282,7 +282,7 @@ schema ClusterxK8sIoV1alpha3MachineSetSpecTemplateMetadataOwnerReferencesItems0:
 
 
 schema ClusterxK8sIoV1alpha3MachineSetSpecTemplateSpec:
-    """
+    r"""
     Specification of the desired behavior of the machine.
     More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
 
@@ -338,7 +338,7 @@ schema ClusterxK8sIoV1alpha3MachineSetSpecTemplateSpec:
 
 
 schema ClusterxK8sIoV1alpha3MachineSetSpecTemplateSpecBootstrap:
-    """
+    r"""
     Bootstrap is a reference to a local struct which encapsulates
     fields to configure the Machine’s bootstrapping mechanism.
 
@@ -366,7 +366,7 @@ schema ClusterxK8sIoV1alpha3MachineSetSpecTemplateSpecBootstrap:
 
 
 schema ClusterxK8sIoV1alpha3MachineSetSpecTemplateSpecBootstrapConfigRef:
-    """
+    r"""
     ConfigRef is a reference to a bootstrap provider-specific resource
     that holds configuration details. The reference is optional to
     allow users/operators to specify Bootstrap.Data without
@@ -419,7 +419,7 @@ schema ClusterxK8sIoV1alpha3MachineSetSpecTemplateSpecBootstrapConfigRef:
 
 
 schema ClusterxK8sIoV1alpha3MachineSetSpecTemplateSpecInfrastructureRef:
-    """
+    r"""
     InfrastructureRef is a required reference to a custom resource
     offered by an infrastructure provider.
 
@@ -470,7 +470,7 @@ schema ClusterxK8sIoV1alpha3MachineSetSpecTemplateSpecInfrastructureRef:
 
 
 schema ClusterxK8sIoV1alpha3MachineSetStatus:
-    """
+    r"""
     MachineSetStatus defines the observed state of MachineSet.
 
     Attributes

@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema KubeadmConfigTemplate:
-    """
+    r"""
     KubeadmConfigTemplate is the Schema for the kubeadmconfigtemplates API.
 
 
@@ -35,7 +35,7 @@ schema KubeadmConfigTemplate:
 
 
 schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpec:
-    """
+    r"""
     KubeadmConfigTemplateSpec defines the desired state of KubeadmConfigTemplate.
 
     Attributes
@@ -49,7 +49,7 @@ schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpec:
 
 
 schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplate:
-    """
+    r"""
     KubeadmConfigTemplateResource defines the Template structure.
 
     Attributes
@@ -63,7 +63,7 @@ schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplate:
 
 
 schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpec:
-    """
+    r"""
     KubeadmConfigSpec defines the desired state of KubeadmConfig.
     Either ClusterConfiguration and InitConfiguration should be defined or the JoinConfiguration should be defined.
 
@@ -139,7 +139,7 @@ schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpec:
 
 
 schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecClusterConfiguration:
-    """
+    r"""
     ClusterConfiguration along with InitConfiguration are the configurations necessary for the init command
 
     Attributes
@@ -228,7 +228,7 @@ schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecCluste
 
 
 schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecClusterConfigurationAPIServer:
-    """
+    r"""
     APIServer contains extra settings for the API server control plane component
 
     Attributes
@@ -256,7 +256,7 @@ schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecCluste
 
 
 schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecClusterConfigurationAPIServerExtraVolumesItems0:
-    """
+    r"""
     HostPathMount contains elements describing volumes that are mounted from the
     host.
 
@@ -288,7 +288,7 @@ schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecCluste
 
 
 schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecClusterConfigurationControllerManager:
-    """
+    r"""
     ControllerManager contains extra settings for the controller manager control plane component
 
     Attributes
@@ -308,7 +308,7 @@ schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecCluste
 
 
 schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecClusterConfigurationControllerManagerExtraVolumesItems0:
-    """
+    r"""
     HostPathMount contains elements describing volumes that are mounted from the
     host.
 
@@ -340,7 +340,7 @@ schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecCluste
 
 
 schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecClusterConfigurationDNS:
-    """
+    r"""
     DNS defines the options for the DNS add-on installed in the cluster.
 
     Attributes
@@ -360,7 +360,7 @@ schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecCluste
 
 
 schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecClusterConfigurationEtcd:
-    """
+    r"""
     Etcd holds configuration for etcd.
     NB: This value defaults to a Local (stacked) etcd
 
@@ -379,7 +379,7 @@ schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecCluste
 
 
 schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecClusterConfigurationEtcdExternal:
-    """
+    r"""
     External describes how to connect to an external etcd cluster
     Local and External are mutually exclusive
 
@@ -409,7 +409,7 @@ schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecCluste
 
 
 schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecClusterConfigurationEtcdLocal:
-    """
+    r"""
     Local provides configuration knobs for configuring the local etcd instance
     Local and External are mutually exclusive
 
@@ -448,7 +448,7 @@ schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecCluste
 
 
 schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecClusterConfigurationNetworking:
-    """
+    r"""
     Networking holds configuration for the networking topology of the cluster.
     NB: This value defaults to the Cluster object spec.clusterNetwork.
 
@@ -475,7 +475,7 @@ schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecCluste
 
 
 schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecClusterConfigurationScheduler:
-    """
+    r"""
     Scheduler contains extra settings for the scheduler control plane component
 
     Attributes
@@ -495,7 +495,7 @@ schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecCluste
 
 
 schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecClusterConfigurationSchedulerExtraVolumesItems0:
-    """
+    r"""
     HostPathMount contains elements describing volumes that are mounted from the
     host.
 
@@ -527,7 +527,7 @@ schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecCluste
 
 
 schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecDiskSetup:
-    """
+    r"""
     DiskSetup specifies options for the creation of partition tables and file systems on devices.
 
     Attributes
@@ -545,7 +545,7 @@ schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecDiskSe
 
 
 schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecDiskSetupFilesystemsItems0:
-    """
+    r"""
     Filesystem defines the file systems to be created.
 
     Attributes
@@ -585,7 +585,7 @@ schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecDiskSe
 
 
 schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecDiskSetupPartitionsItems0:
-    """
+    r"""
     Partition defines how to create and layout a partition.
 
     Attributes
@@ -616,7 +616,7 @@ schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecDiskSe
 
 
 schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecFilesItems0:
-    """
+    r"""
     File defines the input for generating write_files in cloud-init.
 
     Attributes
@@ -650,7 +650,7 @@ schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecFilesI
 
 
 schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecFilesItems0ContentFrom:
-    """
+    r"""
     ContentFrom is a referenced source of content to populate the file.
 
     Attributes
@@ -664,7 +664,7 @@ schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecFilesI
 
 
 schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecFilesItems0ContentFromSecret:
-    """
+    r"""
     Secret represents a secret that should populate this file.
 
     Attributes
@@ -682,7 +682,7 @@ schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecFilesI
 
 
 schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecInitConfiguration:
-    """
+    r"""
     InitConfiguration along with ClusterConfiguration are the configurations necessary for the init command
 
     Attributes
@@ -720,7 +720,7 @@ schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecInitCo
 
 
 schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecInitConfigurationBootstrapTokensItems0:
-    """
+    r"""
     BootstrapToken describes one bootstrap token, stored as a Secret in the cluster.
 
     Attributes
@@ -760,7 +760,7 @@ schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecInitCo
 
 
 schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecInitConfigurationLocalAPIEndpoint:
-    """
+    r"""
     LocalAPIEndpoint represents the endpoint of the API server instance that's deployed on this control plane node
     In HA setups, this differs from ClusterConfiguration.ControlPlaneEndpoint in the sense that ControlPlaneEndpoint
     is the global endpoint for the cluster, which then loadbalances the requests to each individual API server. This
@@ -784,7 +784,7 @@ schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecInitCo
 
 
 schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecInitConfigurationNodeRegistration:
-    """
+    r"""
     NodeRegistration holds fields that relate to registering the new control-plane node to the cluster.
     When used in the context of control plane nodes, NodeRegistration should remain consistent
     across both InitConfiguration and JoinConfiguration
@@ -822,7 +822,7 @@ schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecInitCo
 
 
 schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecInitConfigurationNodeRegistrationTaintsItems0:
-    """
+    r"""
     The node this Taint is attached to has the "effect" on
     any pod that does not tolerate the Taint.
 
@@ -852,7 +852,7 @@ schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecInitCo
 
 
 schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecJoinConfiguration:
-    """
+    r"""
     JoinConfiguration is the kubeadm configuration for the join command
 
     Attributes
@@ -896,7 +896,7 @@ schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecJoinCo
 
 
 schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecJoinConfigurationControlPlane:
-    """
+    r"""
     ControlPlane defines the additional control plane instance to be deployed on the joining node.
     If nil, no additional control plane instance will be deployed.
 
@@ -911,7 +911,7 @@ schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecJoinCo
 
 
 schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecJoinConfigurationControlPlaneLocalAPIEndpoint:
-    """
+    r"""
     LocalAPIEndpoint represents the endpoint of the API server instance to be deployed on this node.
 
     Attributes
@@ -930,7 +930,7 @@ schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecJoinCo
 
 
 schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecJoinConfigurationDiscovery:
-    """
+    r"""
     Discovery specifies the options for the kubelet to use during the TLS Bootstrap process
     TODO: revisit when there is defaulting from k/k
 
@@ -959,7 +959,7 @@ schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecJoinCo
 
 
 schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecJoinConfigurationDiscoveryBootstrapToken:
-    """
+    r"""
     BootstrapToken is used to set the options for bootstrap token based discovery
     BootstrapToken and File are mutually exclusive
 
@@ -996,7 +996,7 @@ schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecJoinCo
 
 
 schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecJoinConfigurationDiscoveryFile:
-    """
+    r"""
     File is used to specify a file or URL to a kubeconfig file from which to load cluster information
     BootstrapToken and File are mutually exclusive
 
@@ -1011,7 +1011,7 @@ schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecJoinCo
 
 
 schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecJoinConfigurationNodeRegistration:
-    """
+    r"""
     NodeRegistration holds fields that relate to registering the new control-plane node to the cluster.
     When used in the context of control plane nodes, NodeRegistration should remain consistent
     across both InitConfiguration and JoinConfiguration
@@ -1049,7 +1049,7 @@ schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecJoinCo
 
 
 schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecJoinConfigurationNodeRegistrationTaintsItems0:
-    """
+    r"""
     The node this Taint is attached to has the "effect" on
     any pod that does not tolerate the Taint.
 
@@ -1079,7 +1079,7 @@ schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecJoinCo
 
 
 schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecNtp:
-    """
+    r"""
     NTP specifies NTP configuration
 
     Attributes
@@ -1097,7 +1097,7 @@ schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecNtp:
 
 
 schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecUsersItems0:
-    """
+    r"""
     User defines the input for a generated user in cloud-init.
 
     Attributes

@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema DockerClusterTemplate:
-    """
+    r"""
     DockerClusterTemplate is the Schema for the dockerclustertemplates API.
 
 
@@ -35,7 +35,7 @@ schema DockerClusterTemplate:
 
 
 schema InfrastructureClusterxK8sIoV1alpha4DockerClusterTemplateSpec:
-    """
+    r"""
     DockerClusterTemplateSpec defines the desired state of DockerClusterTemplate.
 
     Attributes
@@ -49,7 +49,7 @@ schema InfrastructureClusterxK8sIoV1alpha4DockerClusterTemplateSpec:
 
 
 schema InfrastructureClusterxK8sIoV1alpha4DockerClusterTemplateSpecTemplate:
-    """
+    r"""
     DockerClusterTemplateResource describes the data needed to create a DockerCluster from a template.
 
     Attributes
@@ -63,7 +63,7 @@ schema InfrastructureClusterxK8sIoV1alpha4DockerClusterTemplateSpecTemplate:
 
 
 schema InfrastructureClusterxK8sIoV1alpha4DockerClusterTemplateSpecTemplateSpec:
-    """
+    r"""
     DockerClusterSpec defines the desired state of DockerCluster.
 
     Attributes
@@ -88,7 +88,7 @@ schema InfrastructureClusterxK8sIoV1alpha4DockerClusterTemplateSpecTemplateSpec:
 
 
 schema InfrastructureClusterxK8sIoV1alpha4DockerClusterTemplateSpecTemplateSpecControlPlaneEndpoint:
-    """
+    r"""
     ControlPlaneEndpoint represents the endpoint used to communicate with the control plane.
 
     Attributes
@@ -106,7 +106,7 @@ schema InfrastructureClusterxK8sIoV1alpha4DockerClusterTemplateSpecTemplateSpecC
 
 
 schema InfrastructureClusterxK8sIoV1alpha4DockerClusterTemplateSpecTemplateSpecFailureDomainsAnon:
-    """
+    r"""
     FailureDomainSpec is the Schema for Cluster API failure domains.
     It allows controllers to understand how many failure domains a cluster can optionally span across.
 
@@ -125,7 +125,7 @@ schema InfrastructureClusterxK8sIoV1alpha4DockerClusterTemplateSpecTemplateSpecF
 
 
 schema InfrastructureClusterxK8sIoV1alpha4DockerClusterTemplateSpecTemplateSpecLoadBalancer:
-    """
+    r"""
     LoadBalancer allows defining configurations for the cluster load balancer.
 
     Attributes

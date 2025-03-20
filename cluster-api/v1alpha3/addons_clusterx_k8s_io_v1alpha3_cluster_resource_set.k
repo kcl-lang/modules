@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ClusterResourceSet:
-    """
+    r"""
     ClusterResourceSet is the Schema for the clusterresourcesets API.
 
 
@@ -39,7 +39,7 @@ schema ClusterResourceSet:
 
 
 schema AddonsClusterxK8sIoV1alpha3ClusterResourceSetSpec:
-    """
+    r"""
     ClusterResourceSetSpec defines the desired state of ClusterResourceSet.
 
     Attributes
@@ -61,7 +61,7 @@ schema AddonsClusterxK8sIoV1alpha3ClusterResourceSetSpec:
 
 
 schema AddonsClusterxK8sIoV1alpha3ClusterResourceSetSpecClusterSelector:
-    """
+    r"""
     Label selector for Clusters. The Clusters that are
     selected by this will be the ones affected by this ClusterResourceSet.
     It must match the Cluster labels. This field is immutable.
@@ -83,7 +83,7 @@ schema AddonsClusterxK8sIoV1alpha3ClusterResourceSetSpecClusterSelector:
 
 
 schema AddonsClusterxK8sIoV1alpha3ClusterResourceSetSpecClusterSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
 
@@ -110,7 +110,7 @@ schema AddonsClusterxK8sIoV1alpha3ClusterResourceSetSpecClusterSelectorMatchExpr
 
 
 schema AddonsClusterxK8sIoV1alpha3ClusterResourceSetSpecResourcesItems0:
-    """
+    r"""
     ResourceRef specifies a resource.
 
     Attributes
@@ -132,7 +132,7 @@ schema AddonsClusterxK8sIoV1alpha3ClusterResourceSetSpecResourcesItems0:
 
 
 schema AddonsClusterxK8sIoV1alpha3ClusterResourceSetStatus:
-    """
+    r"""
     ClusterResourceSetStatus defines the observed state of ClusterResourceSet.
 
     Attributes
@@ -150,7 +150,7 @@ schema AddonsClusterxK8sIoV1alpha3ClusterResourceSetStatus:
 
 
 schema AddonsClusterxK8sIoV1alpha3ClusterResourceSetStatusConditionsItems0:
-    """
+    r"""
     Condition defines an observation of a Cluster API resource operational state.
 
     Attributes

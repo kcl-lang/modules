@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema Machine:
-    """
+    r"""
     Machine is the Schema for the machines API.
 
 
@@ -39,7 +39,7 @@ schema Machine:
 
 
 schema ClusterxK8sIoV1alpha3MachineSpec:
-    """
+    r"""
     MachineSpec defines the desired state of Machine.
 
     Attributes
@@ -94,7 +94,7 @@ schema ClusterxK8sIoV1alpha3MachineSpec:
 
 
 schema ClusterxK8sIoV1alpha3MachineSpecBootstrap:
-    """
+    r"""
     Bootstrap is a reference to a local struct which encapsulates
     fields to configure the Machine’s bootstrapping mechanism.
 
@@ -122,7 +122,7 @@ schema ClusterxK8sIoV1alpha3MachineSpecBootstrap:
 
 
 schema ClusterxK8sIoV1alpha3MachineSpecBootstrapConfigRef:
-    """
+    r"""
     ConfigRef is a reference to a bootstrap provider-specific resource
     that holds configuration details. The reference is optional to
     allow users/operators to specify Bootstrap.Data without
@@ -175,7 +175,7 @@ schema ClusterxK8sIoV1alpha3MachineSpecBootstrapConfigRef:
 
 
 schema ClusterxK8sIoV1alpha3MachineSpecInfrastructureRef:
-    """
+    r"""
     InfrastructureRef is a required reference to a custom resource
     offered by an infrastructure provider.
 
@@ -226,7 +226,7 @@ schema ClusterxK8sIoV1alpha3MachineSpecInfrastructureRef:
 
 
 schema ClusterxK8sIoV1alpha3MachineStatus:
-    """
+    r"""
     MachineStatus defines the observed state of Machine.
 
     Attributes
@@ -319,7 +319,7 @@ schema ClusterxK8sIoV1alpha3MachineStatus:
 
 
 schema ClusterxK8sIoV1alpha3MachineStatusAddressesItems0:
-    """
+    r"""
     MachineAddress contains information for the node's address.
 
     Attributes
@@ -337,7 +337,7 @@ schema ClusterxK8sIoV1alpha3MachineStatusAddressesItems0:
 
 
 schema ClusterxK8sIoV1alpha3MachineStatusConditionsItems0:
-    """
+    r"""
     Condition defines an observation of a Cluster API resource operational state.
 
     Attributes
@@ -380,7 +380,7 @@ schema ClusterxK8sIoV1alpha3MachineStatusConditionsItems0:
 
 
 schema ClusterxK8sIoV1alpha3MachineStatusNodeRef:
-    """
+    r"""
     NodeRef will point to the corresponding Node if it exists.
 
     Attributes

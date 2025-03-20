@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema KubeadmControlPlane:
-    """
+    r"""
     KubeadmControlPlane is the Schema for the KubeadmControlPlane API.
 
 
@@ -39,7 +39,7 @@ schema KubeadmControlPlane:
 
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpec:
-    """
+    r"""
     KubeadmControlPlaneSpec defines the desired state of KubeadmControlPlane.
 
     Attributes
@@ -77,7 +77,7 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpec:
 
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec:
-    """
+    r"""
     KubeadmConfigSpec is a KubeadmConfigSpec
     to use for initializing and joining machines to the control plane.
 
@@ -153,7 +153,7 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
 
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecClusterConfiguration:
-    """
+    r"""
     ClusterConfiguration along with InitConfiguration are the configurations necessary for the init command
 
     Attributes
@@ -242,7 +242,7 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
 
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecClusterConfigurationAPIServer:
-    """
+    r"""
     APIServer contains extra settings for the API server control plane component
 
     Attributes
@@ -270,7 +270,7 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
 
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecClusterConfigurationAPIServerExtraVolumesItems0:
-    """
+    r"""
     HostPathMount contains elements describing volumes that are mounted from the
     host.
 
@@ -302,7 +302,7 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
 
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecClusterConfigurationControllerManager:
-    """
+    r"""
     ControllerManager contains extra settings for the controller manager control plane component
 
     Attributes
@@ -322,7 +322,7 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
 
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecClusterConfigurationControllerManagerExtraVolumesItems0:
-    """
+    r"""
     HostPathMount contains elements describing volumes that are mounted from the
     host.
 
@@ -354,7 +354,7 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
 
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecClusterConfigurationDNS:
-    """
+    r"""
     DNS defines the options for the DNS add-on installed in the cluster.
 
     Attributes
@@ -374,7 +374,7 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
 
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecClusterConfigurationEtcd:
-    """
+    r"""
     Etcd holds configuration for etcd.
     NB: This value defaults to a Local (stacked) etcd
 
@@ -393,7 +393,7 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
 
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecClusterConfigurationEtcdExternal:
-    """
+    r"""
     External describes how to connect to an external etcd cluster
     Local and External are mutually exclusive
 
@@ -423,7 +423,7 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
 
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecClusterConfigurationEtcdLocal:
-    """
+    r"""
     Local provides configuration knobs for configuring the local etcd instance
     Local and External are mutually exclusive
 
@@ -462,7 +462,7 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
 
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecClusterConfigurationNetworking:
-    """
+    r"""
     Networking holds configuration for the networking topology of the cluster.
     NB: This value defaults to the Cluster object spec.clusterNetwork.
 
@@ -489,7 +489,7 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
 
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecClusterConfigurationScheduler:
-    """
+    r"""
     Scheduler contains extra settings for the scheduler control plane component
 
     Attributes
@@ -509,7 +509,7 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
 
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecClusterConfigurationSchedulerExtraVolumesItems0:
-    """
+    r"""
     HostPathMount contains elements describing volumes that are mounted from the
     host.
 
@@ -541,7 +541,7 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
 
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecDiskSetup:
-    """
+    r"""
     DiskSetup specifies options for the creation of partition tables and file systems on devices.
 
     Attributes
@@ -559,7 +559,7 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
 
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecDiskSetupFilesystemsItems0:
-    """
+    r"""
     Filesystem defines the file systems to be created.
 
     Attributes
@@ -599,7 +599,7 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
 
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecDiskSetupPartitionsItems0:
-    """
+    r"""
     Partition defines how to create and layout a partition.
 
     Attributes
@@ -630,7 +630,7 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
 
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecFilesItems0:
-    """
+    r"""
     File defines the input for generating write_files in cloud-init.
 
     Attributes
@@ -664,7 +664,7 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
 
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecFilesItems0ContentFrom:
-    """
+    r"""
     ContentFrom is a referenced source of content to populate the file.
 
     Attributes
@@ -678,7 +678,7 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
 
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecFilesItems0ContentFromSecret:
-    """
+    r"""
     Secret represents a secret that should populate this file.
 
     Attributes
@@ -696,7 +696,7 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
 
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecInitConfiguration:
-    """
+    r"""
     InitConfiguration along with ClusterConfiguration are the configurations necessary for the init command
 
     Attributes
@@ -734,7 +734,7 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
 
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecInitConfigurationBootstrapTokensItems0:
-    """
+    r"""
     BootstrapToken describes one bootstrap token, stored as a Secret in the cluster.
 
     Attributes
@@ -774,7 +774,7 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
 
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecInitConfigurationLocalAPIEndpoint:
-    """
+    r"""
     LocalAPIEndpoint represents the endpoint of the API server instance that's deployed on this control plane node
     In HA setups, this differs from ClusterConfiguration.ControlPlaneEndpoint in the sense that ControlPlaneEndpoint
     is the global endpoint for the cluster, which then loadbalances the requests to each individual API server. This
@@ -798,7 +798,7 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
 
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecInitConfigurationNodeRegistration:
-    """
+    r"""
     NodeRegistration holds fields that relate to registering the new control-plane node to the cluster.
     When used in the context of control plane nodes, NodeRegistration should remain consistent
     across both InitConfiguration and JoinConfiguration
@@ -836,7 +836,7 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
 
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecInitConfigurationNodeRegistrationTaintsItems0:
-    """
+    r"""
     The node this Taint is attached to has the "effect" on
     any pod that does not tolerate the Taint.
 
@@ -866,7 +866,7 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
 
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecJoinConfiguration:
-    """
+    r"""
     JoinConfiguration is the kubeadm configuration for the join command
 
     Attributes
@@ -910,7 +910,7 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
 
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecJoinConfigurationControlPlane:
-    """
+    r"""
     ControlPlane defines the additional control plane instance to be deployed on the joining node.
     If nil, no additional control plane instance will be deployed.
 
@@ -925,7 +925,7 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
 
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecJoinConfigurationControlPlaneLocalAPIEndpoint:
-    """
+    r"""
     LocalAPIEndpoint represents the endpoint of the API server instance to be deployed on this node.
 
     Attributes
@@ -944,7 +944,7 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
 
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecJoinConfigurationDiscovery:
-    """
+    r"""
     Discovery specifies the options for the kubelet to use during the TLS Bootstrap process
     TODO: revisit when there is defaulting from k/k
 
@@ -973,7 +973,7 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
 
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecJoinConfigurationDiscoveryBootstrapToken:
-    """
+    r"""
     BootstrapToken is used to set the options for bootstrap token based discovery
     BootstrapToken and File are mutually exclusive
 
@@ -1010,7 +1010,7 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
 
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecJoinConfigurationDiscoveryFile:
-    """
+    r"""
     File is used to specify a file or URL to a kubeconfig file from which to load cluster information
     BootstrapToken and File are mutually exclusive
 
@@ -1025,7 +1025,7 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
 
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecJoinConfigurationNodeRegistration:
-    """
+    r"""
     NodeRegistration holds fields that relate to registering the new control-plane node to the cluster.
     When used in the context of control plane nodes, NodeRegistration should remain consistent
     across both InitConfiguration and JoinConfiguration
@@ -1063,7 +1063,7 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
 
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecJoinConfigurationNodeRegistrationTaintsItems0:
-    """
+    r"""
     The node this Taint is attached to has the "effect" on
     any pod that does not tolerate the Taint.
 
@@ -1093,7 +1093,7 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
 
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecNtp:
-    """
+    r"""
     NTP specifies NTP configuration
 
     Attributes
@@ -1111,7 +1111,7 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
 
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecUsersItems0:
-    """
+    r"""
     User defines the input for a generated user in cloud-init.
 
     Attributes
@@ -1165,7 +1165,7 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
 
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecMachineTemplate:
-    """
+    r"""
     MachineTemplate contains information about how machines
     should be shaped when creating or updating a control plane.
 
@@ -1190,7 +1190,7 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecMachineTemplate:
 
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecMachineTemplateInfrastructureRef:
-    """
+    r"""
     InfrastructureRef is a required reference to a custom resource
     offered by an infrastructure provider.
 
@@ -1241,7 +1241,7 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecMachineTemplateIn
 
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecMachineTemplateMetadata:
-    """
+    r"""
     Standard object's metadata.
     More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
 
@@ -1266,7 +1266,7 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecMachineTemplateMe
 
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecRolloutStrategy:
-    """
+    r"""
     The RolloutStrategy to use to replace control plane machines with
     new ones.
 
@@ -1287,7 +1287,7 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecRolloutStrategy:
 
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecRolloutStrategyRollingUpdate:
-    """
+    r"""
     Rolling update config params. Present only if
     RolloutStrategyType = RollingUpdate.
 
@@ -1307,7 +1307,7 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecRolloutStrategyRo
 
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneStatus:
-    """
+    r"""
     KubeadmControlPlaneStatus defines the observed state of KubeadmControlPlane.
 
     Attributes
@@ -1381,7 +1381,7 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneStatus:
 
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneStatusConditionsItems0:
-    """
+    r"""
     Condition defines an observation of a Cluster API resource operational state.
 
     Attributes

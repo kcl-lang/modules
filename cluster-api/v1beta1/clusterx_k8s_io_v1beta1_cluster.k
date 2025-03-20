@@ -8,7 +8,7 @@ _regex_match = regex.match
 
 
 schema Cluster:
-    """
+    r"""
     Cluster is the Schema for the clusters API.
 
     Attributes
@@ -38,7 +38,7 @@ schema Cluster:
 
 
 schema ClusterxK8sIoV1beta1ClusterSpec:
-    """
+    r"""
     ClusterSpec defines the desired state of Cluster.
 
     Attributes
@@ -72,7 +72,7 @@ schema ClusterxK8sIoV1beta1ClusterSpec:
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecClusterNetwork:
-    """
+    r"""
     Cluster network configuration.
 
     Attributes
@@ -99,7 +99,7 @@ schema ClusterxK8sIoV1beta1ClusterSpecClusterNetwork:
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecClusterNetworkPods:
-    """
+    r"""
     The network ranges from which Pod networks are allocated.
 
     Attributes
@@ -113,7 +113,7 @@ schema ClusterxK8sIoV1beta1ClusterSpecClusterNetworkPods:
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecClusterNetworkServices:
-    """
+    r"""
     The network ranges from which service VIPs are allocated.
 
     Attributes
@@ -127,7 +127,7 @@ schema ClusterxK8sIoV1beta1ClusterSpecClusterNetworkServices:
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecControlPlaneEndpoint:
-    """
+    r"""
     ControlPlaneEndpoint represents the endpoint used to communicate with the control plane.
 
     Attributes
@@ -145,7 +145,7 @@ schema ClusterxK8sIoV1beta1ClusterSpecControlPlaneEndpoint:
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecControlPlaneRef:
-    """
+    r"""
     ControlPlaneRef is an optional reference to a provider-specific resource that holds
     the details for provisioning the Control Plane for a Cluster.
 
@@ -196,7 +196,7 @@ schema ClusterxK8sIoV1beta1ClusterSpecControlPlaneRef:
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecInfrastructureRef:
-    """
+    r"""
     InfrastructureRef is a reference to a provider-specific resource that holds the details
     for provisioning infrastructure for a cluster in said provider.
 
@@ -247,7 +247,7 @@ schema ClusterxK8sIoV1beta1ClusterSpecInfrastructureRef:
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopology:
-    """
+    r"""
     This encapsulates the topology for the cluster.
     NOTE: It is required to enable the ClusterTopology
     feature gate flag to activate managed topologies support;
@@ -290,7 +290,7 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopology:
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlane:
-    """
+    r"""
     ControlPlane describes the cluster control plane.
 
     Attributes
@@ -336,7 +336,7 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlane:
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneMachineHealthCheck:
-    """
+    r"""
     MachineHealthCheck allows to enable, disable and override
     the MachineHealthCheck configuration in the ClusterClass for this control plane.
 
@@ -406,7 +406,7 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneMachineHealthCheck:
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneMachineHealthCheckRemediationTemplate:
-    """
+    r"""
     RemediationTemplate is a reference to a remediation template
     provided by an infrastructure provider.
 
@@ -462,7 +462,7 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneMachineHealthCheckReme
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneMachineHealthCheckUnhealthyConditionsItems0:
-    """
+    r"""
     UnhealthyCondition represents a Node condition type and value with a timeout
     specified as a duration.  When the named condition has been in the given
     status for at least the timeout value, a node is considered unhealthy.
@@ -491,7 +491,7 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneMachineHealthCheckUnhe
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneMetadata:
-    """
+    r"""
     Metadata is the metadata applied to the ControlPlane and the Machines of the ControlPlane
     if the ControlPlaneTemplate referenced by the ClusterClass is machine based. If not, it
     is applied only to the ControlPlane.
@@ -518,7 +518,7 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneMetadata:
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneVariables:
-    """
+    r"""
     Variables can be used to customize the ControlPlane through patches.
 
     Attributes
@@ -532,17 +532,17 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneVariables:
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneVariablesOverridesItems0:
-    """
+    r"""
     ClusterVariable can be used to customize the Cluster through patches. Each ClusterVariable is associated with a
     Variable definition in the ClusterClass `status` variables.
 
     Attributes
     ----------
     definitionFrom : str, default is Undefined, optional
-        DefinitionFrom specifies where the definition of this Variable is from. DefinitionFrom is `inline` when the
-        definition is from the ClusterClass `.spec.variables` or the name of a patch defined in the ClusterClass
-        `.spec.patches` where the patch is external and provides external variables.
-        This field is mandatory if the variable has `DefinitionsConflict: true` in ClusterClass `status.variables[]`
+        DefinitionFrom specifies where the definition of this Variable is from.
+
+
+        Deprecated: This field is deprecated, must not be set anymore and is going to be removed in the next apiVersion.
     name : str, default is Undefined, required
         Name of the variable.
     value : any, default is Undefined, required
@@ -564,17 +564,17 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneVariablesOverridesItem
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyVariablesItems0:
-    """
+    r"""
     ClusterVariable can be used to customize the Cluster through patches. Each ClusterVariable is associated with a
     Variable definition in the ClusterClass `status` variables.
 
     Attributes
     ----------
     definitionFrom : str, default is Undefined, optional
-        DefinitionFrom specifies where the definition of this Variable is from. DefinitionFrom is `inline` when the
-        definition is from the ClusterClass `.spec.variables` or the name of a patch defined in the ClusterClass
-        `.spec.patches` where the patch is external and provides external variables.
-        This field is mandatory if the variable has `DefinitionsConflict: true` in ClusterClass `status.variables[]`
+        DefinitionFrom specifies where the definition of this Variable is from.
+
+
+        Deprecated: This field is deprecated, must not be set anymore and is going to be removed in the next apiVersion.
     name : str, default is Undefined, required
         Name of the variable.
     value : any, default is Undefined, required
@@ -596,7 +596,7 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyVariablesItems0:
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkers:
-    """
+    r"""
     Workers encapsulates the different constructs that form the worker nodes
     for the cluster.
 
@@ -615,7 +615,7 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkers:
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0:
-    """
+    r"""
     MachineDeploymentTopology specifies the different parameters for a set of worker nodes in the topology.
     This set of nodes is managed by a MachineDeployment object whose lifecycle is managed by the Cluster controller.
 
@@ -691,7 +691,7 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0:
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0MachineHealthCheck:
-    """
+    r"""
     MachineHealthCheck allows to enable, disable and override
     the MachineHealthCheck configuration in the ClusterClass for this MachineDeployment.
 
@@ -761,7 +761,7 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Mac
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0MachineHealthCheckRemediationTemplate:
-    """
+    r"""
     RemediationTemplate is a reference to a remediation template
     provided by an infrastructure provider.
 
@@ -817,7 +817,7 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Mac
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0MachineHealthCheckUnhealthyConditionsItems0:
-    """
+    r"""
     UnhealthyCondition represents a Node condition type and value with a timeout
     specified as a duration.  When the named condition has been in the given
     status for at least the timeout value, a node is considered unhealthy.
@@ -846,7 +846,7 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Mac
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Metadata:
-    """
+    r"""
     Metadata is the metadata applied to the MachineDeployment and the machines of the MachineDeployment.
     At runtime this metadata is merged with the corresponding metadata from the ClusterClass.
 
@@ -871,7 +871,7 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Met
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Strategy:
-    """
+    r"""
     The deployment strategy to use to replace existing machines with
     new ones.
 
@@ -895,7 +895,7 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Str
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0StrategyRemediation:
-    """
+    r"""
     Remediation controls the strategy of remediating unhealthy machines
     and how remediating operations should occur during the lifecycle of the dependant MachineSets.
 
@@ -927,7 +927,7 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Str
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0StrategyRollingUpdate:
-    """
+    r"""
     Rolling update config params. Present only if
     MachineDeploymentStrategyType = RollingUpdate.
 
@@ -975,7 +975,7 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Str
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Variables:
-    """
+    r"""
     Variables can be used to customize the MachineDeployment through patches.
 
     Attributes
@@ -989,17 +989,17 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Var
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0VariablesOverridesItems0:
-    """
+    r"""
     ClusterVariable can be used to customize the Cluster through patches. Each ClusterVariable is associated with a
     Variable definition in the ClusterClass `status` variables.
 
     Attributes
     ----------
     definitionFrom : str, default is Undefined, optional
-        DefinitionFrom specifies where the definition of this Variable is from. DefinitionFrom is `inline` when the
-        definition is from the ClusterClass `.spec.variables` or the name of a patch defined in the ClusterClass
-        `.spec.patches` where the patch is external and provides external variables.
-        This field is mandatory if the variable has `DefinitionsConflict: true` in ClusterClass `status.variables[]`
+        DefinitionFrom specifies where the definition of this Variable is from.
+
+
+        Deprecated: This field is deprecated, must not be set anymore and is going to be removed in the next apiVersion.
     name : str, default is Undefined, required
         Name of the variable.
     value : any, default is Undefined, required
@@ -1021,7 +1021,7 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Var
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachinePoolsItems0:
-    """
+    r"""
     MachinePoolTopology specifies the different parameters for a pool of worker nodes in the topology.
     This pool of nodes is managed by a MachinePool object whose lifecycle is managed by the Cluster controller.
 
@@ -1089,7 +1089,7 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachinePoolsItems0:
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachinePoolsItems0Metadata:
-    """
+    r"""
     Metadata is the metadata applied to the MachinePool.
     At runtime this metadata is merged with the corresponding metadata from the ClusterClass.
 
@@ -1114,7 +1114,7 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachinePoolsItems0Metadata:
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachinePoolsItems0Variables:
-    """
+    r"""
     Variables can be used to customize the MachinePool through patches.
 
     Attributes
@@ -1128,17 +1128,17 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachinePoolsItems0Variables
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachinePoolsItems0VariablesOverridesItems0:
-    """
+    r"""
     ClusterVariable can be used to customize the Cluster through patches. Each ClusterVariable is associated with a
     Variable definition in the ClusterClass `status` variables.
 
     Attributes
     ----------
     definitionFrom : str, default is Undefined, optional
-        DefinitionFrom specifies where the definition of this Variable is from. DefinitionFrom is `inline` when the
-        definition is from the ClusterClass `.spec.variables` or the name of a patch defined in the ClusterClass
-        `.spec.patches` where the patch is external and provides external variables.
-        This field is mandatory if the variable has `DefinitionsConflict: true` in ClusterClass `status.variables[]`
+        DefinitionFrom specifies where the definition of this Variable is from.
+
+
+        Deprecated: This field is deprecated, must not be set anymore and is going to be removed in the next apiVersion.
     name : str, default is Undefined, required
         Name of the variable.
     value : any, default is Undefined, required
@@ -1160,7 +1160,7 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachinePoolsItems0Variables
 
 
 schema ClusterxK8sIoV1beta1ClusterStatus:
-    """
+    r"""
     ClusterStatus defines the observed state of Cluster.
 
     Attributes
@@ -1168,7 +1168,11 @@ schema ClusterxK8sIoV1beta1ClusterStatus:
     conditions : [ClusterxK8sIoV1beta1ClusterStatusConditionsItems0], default is Undefined, optional
         Conditions defines current service state of the cluster.
     controlPlaneReady : bool, default is Undefined, optional
-        ControlPlaneReady defines if the control plane is ready.
+        ControlPlaneReady denotes if the control plane became ready during initial provisioning
+        to receive requests.
+        NOTE: this field is part of the Cluster API contract and it is used to orchestrate provisioning.
+        The value of this field is never updated after provisioning is completed. Please use conditions
+        to check the operational state of the control plane.
     failureDomains : {str:ClusterxK8sIoV1beta1ClusterStatusFailureDomainsAnon}, default is Undefined, optional
         FailureDomains is a slice of failure domain objects synced from the infrastructure provider.
     failureMessage : str, default is Undefined, optional
@@ -1206,7 +1210,7 @@ schema ClusterxK8sIoV1beta1ClusterStatus:
 
 
 schema ClusterxK8sIoV1beta1ClusterStatusConditionsItems0:
-    """
+    r"""
     Condition defines an observation of a Cluster API resource operational state.
 
     Attributes
@@ -1249,7 +1253,7 @@ schema ClusterxK8sIoV1beta1ClusterStatusConditionsItems0:
 
 
 schema ClusterxK8sIoV1beta1ClusterStatusFailureDomainsAnon:
-    """
+    r"""
     FailureDomainSpec is the Schema for Cluster API failure domains.
     It allows controllers to understand how many failure domains a cluster can optionally span across.
 

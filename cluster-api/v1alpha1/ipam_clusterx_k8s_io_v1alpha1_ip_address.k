@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema IPAddress:
-    """
+    r"""
     IPAddress is the Schema for the ipaddress API.
 
     Attributes
@@ -32,7 +32,7 @@ schema IPAddress:
 
 
 schema IpamClusterxK8sIoV1alpha1IPAddressSpec:
-    """
+    r"""
     IPAddressSpec is the desired state of an IPAddress.
 
     Attributes
@@ -62,23 +62,27 @@ schema IpamClusterxK8sIoV1alpha1IPAddressSpec:
 
 
 schema IpamClusterxK8sIoV1alpha1IPAddressSpecClaimRef:
-    """
+    r"""
     ClaimRef is a reference to the claim this IPAddress was created for.
 
     Attributes
     ----------
     name : str, default is Undefined, optional
         Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        This field is effectively required, but due to backwards compatibility is
+        allowed to be empty. Instances of this type with an empty value here are
+        almost certainly wrong.
         TODO: Add other useful fields. apiVersion, kind, uid?
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema IpamClusterxK8sIoV1alpha1IPAddressSpecPoolRef:
-    """
+    r"""
     PoolRef is a reference to the pool that this IPAddress was created from.
 
     Attributes

@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema DockerMachine:
-    """
+    r"""
     DockerMachine is the Schema for the dockermachines API.
 
     Attributes
@@ -36,7 +36,7 @@ schema DockerMachine:
 
 
 schema InfrastructureClusterxK8sIoV1beta1DockerMachineSpec:
-    """
+    r"""
     DockerMachineSpec defines the desired state of DockerMachine.
 
     Attributes
@@ -79,7 +79,7 @@ schema InfrastructureClusterxK8sIoV1beta1DockerMachineSpec:
 
 
 schema InfrastructureClusterxK8sIoV1beta1DockerMachineSpecExtraMountsItems0:
-    """
+    r"""
     Mount specifies a host volume to mount into a container.
     This is a simplified version of kind v1alpha4.Mount types.
 
@@ -104,7 +104,7 @@ schema InfrastructureClusterxK8sIoV1beta1DockerMachineSpecExtraMountsItems0:
 
 
 schema InfrastructureClusterxK8sIoV1beta1DockerMachineStatus:
-    """
+    r"""
     DockerMachineStatus defines the observed state of DockerMachine.
 
     Attributes
@@ -131,7 +131,7 @@ schema InfrastructureClusterxK8sIoV1beta1DockerMachineStatus:
 
 
 schema InfrastructureClusterxK8sIoV1beta1DockerMachineStatusAddressesItems0:
-    """
+    r"""
     MachineAddress contains information for the node's address.
 
     Attributes
@@ -149,7 +149,7 @@ schema InfrastructureClusterxK8sIoV1beta1DockerMachineStatusAddressesItems0:
 
 
 schema InfrastructureClusterxK8sIoV1beta1DockerMachineStatusConditionsItems0:
-    """
+    r"""
     Condition defines an observation of a Cluster API resource operational state.
 
     Attributes

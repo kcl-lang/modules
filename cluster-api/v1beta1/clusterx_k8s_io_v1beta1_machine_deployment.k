@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema MachineDeployment:
-    """
+    r"""
     MachineDeployment is the Schema for the machinedeployments API.
 
     Attributes
@@ -36,7 +36,7 @@ schema MachineDeployment:
 
 
 schema ClusterxK8sIoV1beta1MachineDeploymentSpec:
-    """
+    r"""
     MachineDeploymentSpec defines the desired state of MachineDeployment.
 
     Attributes
@@ -77,6 +77,9 @@ schema ClusterxK8sIoV1beta1MachineDeploymentSpec:
         The number of old MachineSets to retain to allow rollback.
         This is a pointer to distinguish between explicit zero and not specified.
         Defaults to 1.
+
+
+        Deprecated: This field is deprecated and is going to be removed in the next apiVersion. Please see https://github.com/kubernetes-sigs/cluster-api/issues/10479 for more details.
     rolloutAfter : str, default is Undefined, optional
         RolloutAfter is a field to indicate a rollout should be performed
         after the specified time even if no changes have been made to the
@@ -119,7 +122,7 @@ schema ClusterxK8sIoV1beta1MachineDeploymentSpec:
 
 
 schema ClusterxK8sIoV1beta1MachineDeploymentSpecSelector:
-    """
+    r"""
     Label selector for machines. Existing MachineSets whose machines are
     selected by this will be the ones affected by this deployment.
     It must match the machine template's labels.
@@ -141,7 +144,7 @@ schema ClusterxK8sIoV1beta1MachineDeploymentSpecSelector:
 
 
 schema ClusterxK8sIoV1beta1MachineDeploymentSpecSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
 
@@ -168,7 +171,7 @@ schema ClusterxK8sIoV1beta1MachineDeploymentSpecSelectorMatchExpressionsItems0:
 
 
 schema ClusterxK8sIoV1beta1MachineDeploymentSpecStrategy:
-    """
+    r"""
     The deployment strategy to use to replace existing machines with
     new ones.
 
@@ -192,7 +195,7 @@ schema ClusterxK8sIoV1beta1MachineDeploymentSpecStrategy:
 
 
 schema ClusterxK8sIoV1beta1MachineDeploymentSpecStrategyRemediation:
-    """
+    r"""
     Remediation controls the strategy of remediating unhealthy machines
     and how remediating operations should occur during the lifecycle of the dependant MachineSets.
 
@@ -224,7 +227,7 @@ schema ClusterxK8sIoV1beta1MachineDeploymentSpecStrategyRemediation:
 
 
 schema ClusterxK8sIoV1beta1MachineDeploymentSpecStrategyRollingUpdate:
-    """
+    r"""
     Rolling update config params. Present only if
     MachineDeploymentStrategyType = RollingUpdate.
 
@@ -272,7 +275,7 @@ schema ClusterxK8sIoV1beta1MachineDeploymentSpecStrategyRollingUpdate:
 
 
 schema ClusterxK8sIoV1beta1MachineDeploymentSpecTemplate:
-    """
+    r"""
     Template describes the machines that will be created.
 
     Attributes
@@ -290,7 +293,7 @@ schema ClusterxK8sIoV1beta1MachineDeploymentSpecTemplate:
 
 
 schema ClusterxK8sIoV1beta1MachineDeploymentSpecTemplateMetadata:
-    """
+    r"""
     Standard object's metadata.
     More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
 
@@ -315,7 +318,7 @@ schema ClusterxK8sIoV1beta1MachineDeploymentSpecTemplateMetadata:
 
 
 schema ClusterxK8sIoV1beta1MachineDeploymentSpecTemplateSpec:
-    """
+    r"""
     Specification of the desired behavior of the machine.
     More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
 
@@ -382,7 +385,7 @@ schema ClusterxK8sIoV1beta1MachineDeploymentSpecTemplateSpec:
 
 
 schema ClusterxK8sIoV1beta1MachineDeploymentSpecTemplateSpecBootstrap:
-    """
+    r"""
     Bootstrap is a reference to a local struct which encapsulates
     fields to configure the Machine’s bootstrapping mechanism.
 
@@ -402,7 +405,7 @@ schema ClusterxK8sIoV1beta1MachineDeploymentSpecTemplateSpecBootstrap:
 
 
 schema ClusterxK8sIoV1beta1MachineDeploymentSpecTemplateSpecBootstrapConfigRef:
-    """
+    r"""
     ConfigRef is a reference to a bootstrap provider-specific resource
     that holds configuration details. The reference is optional to
     allow users/operators to specify Bootstrap.DataSecretName without
@@ -455,7 +458,7 @@ schema ClusterxK8sIoV1beta1MachineDeploymentSpecTemplateSpecBootstrapConfigRef:
 
 
 schema ClusterxK8sIoV1beta1MachineDeploymentSpecTemplateSpecInfrastructureRef:
-    """
+    r"""
     InfrastructureRef is a required reference to a custom resource
     offered by an infrastructure provider.
 
@@ -506,7 +509,7 @@ schema ClusterxK8sIoV1beta1MachineDeploymentSpecTemplateSpecInfrastructureRef:
 
 
 schema ClusterxK8sIoV1beta1MachineDeploymentStatus:
-    """
+    r"""
     MachineDeploymentStatus defines the observed state of MachineDeployment.
 
     Attributes
@@ -561,7 +564,7 @@ schema ClusterxK8sIoV1beta1MachineDeploymentStatus:
 
 
 schema ClusterxK8sIoV1beta1MachineDeploymentStatusConditionsItems0:
-    """
+    r"""
     Condition defines an observation of a Cluster API resource operational state.
 
     Attributes

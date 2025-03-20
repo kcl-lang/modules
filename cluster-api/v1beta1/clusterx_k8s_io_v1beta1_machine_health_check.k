@@ -8,7 +8,7 @@ _regex_match = regex.match
 
 
 schema MachineHealthCheck:
-    """
+    r"""
     MachineHealthCheck is the Schema for the machinehealthchecks API.
 
     Attributes
@@ -38,7 +38,7 @@ schema MachineHealthCheck:
 
 
 schema ClusterxK8sIoV1beta1MachineHealthCheckSpec:
-    """
+    r"""
     Specification of machine health check policy
 
     Attributes
@@ -48,6 +48,9 @@ schema ClusterxK8sIoV1beta1MachineHealthCheckSpec:
     maxUnhealthy : int | str, default is Undefined, optional
         Any further remediation is only allowed if at most "MaxUnhealthy" machines selected by
         "selector" are not healthy.
+
+
+        Deprecated: This field is deprecated and is going to be removed in the next apiVersion. Please see https://github.com/kubernetes-sigs/cluster-api/issues/10722 for more details.
     nodeStartupTimeout : str, default is Undefined, optional
         NodeStartupTimeout allows to set the maximum time for MachineHealthCheck
         to consider a Machine unhealthy if a corresponding Node isn't associated
@@ -67,7 +70,7 @@ schema ClusterxK8sIoV1beta1MachineHealthCheckSpec:
         remediation template
     selector : ClusterxK8sIoV1beta1MachineHealthCheckSpecSelector, default is Undefined, required
         selector
-    unhealthyConditions : [ClusterxK8sIoV1beta1MachineHealthCheckSpecUnhealthyConditionsItems0], default is Undefined, required
+    unhealthyConditions : [ClusterxK8sIoV1beta1MachineHealthCheckSpecUnhealthyConditionsItems0], default is Undefined, optional
         UnhealthyConditions contains a list of the conditions that determine
         whether a node is considered unhealthy.  The conditions are combined in a
         logical OR, i.e. if any of the conditions is met, the node is unhealthy.
@@ -77,6 +80,9 @@ schema ClusterxK8sIoV1beta1MachineHealthCheckSpec:
         Eg. "[3-5]" - This means that remediation will be allowed only when:
         (a) there are at least 3 unhealthy machines (and)
         (b) there are at most 5 unhealthy machines
+
+
+        Deprecated: This field is deprecated and is going to be removed in the next apiVersion. Please see https://github.com/kubernetes-sigs/cluster-api/issues/10722 for more details.
     """
 
 
@@ -90,19 +96,18 @@ schema ClusterxK8sIoV1beta1MachineHealthCheckSpec:
 
     selector: ClusterxK8sIoV1beta1MachineHealthCheckSpecSelector
 
-    unhealthyConditions: [ClusterxK8sIoV1beta1MachineHealthCheckSpecUnhealthyConditionsItems0]
+    unhealthyConditions?: [ClusterxK8sIoV1beta1MachineHealthCheckSpecUnhealthyConditionsItems0]
 
     unhealthyRange?: str
 
 
     check:
         len(clusterName) >= 1
-        len(unhealthyConditions) >= 1
         _regex_match(str(unhealthyRange), r"^\[[0-9]+-[0-9]+\]$") if unhealthyRange
 
 
 schema ClusterxK8sIoV1beta1MachineHealthCheckSpecRemediationTemplate:
-    """
+    r"""
     RemediationTemplate is a reference to a remediation template
     provided by an infrastructure provider.
 
@@ -158,7 +163,7 @@ schema ClusterxK8sIoV1beta1MachineHealthCheckSpecRemediationTemplate:
 
 
 schema ClusterxK8sIoV1beta1MachineHealthCheckSpecSelector:
-    """
+    r"""
     Label selector to match machines whose health will be exercised
 
     Attributes
@@ -178,7 +183,7 @@ schema ClusterxK8sIoV1beta1MachineHealthCheckSpecSelector:
 
 
 schema ClusterxK8sIoV1beta1MachineHealthCheckSpecSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
 
@@ -205,7 +210,7 @@ schema ClusterxK8sIoV1beta1MachineHealthCheckSpecSelectorMatchExpressionsItems0:
 
 
 schema ClusterxK8sIoV1beta1MachineHealthCheckSpecUnhealthyConditionsItems0:
-    """
+    r"""
     UnhealthyCondition represents a Node condition type and value with a timeout
     specified as a duration.  When the named condition has been in the given
     status for at least the timeout value, a node is considered unhealthy.
@@ -234,7 +239,7 @@ schema ClusterxK8sIoV1beta1MachineHealthCheckSpecUnhealthyConditionsItems0:
 
 
 schema ClusterxK8sIoV1beta1MachineHealthCheckStatus:
-    """
+    r"""
     Most recently observed status of MachineHealthCheck resource
 
     Attributes
@@ -275,7 +280,7 @@ schema ClusterxK8sIoV1beta1MachineHealthCheckStatus:
 
 
 schema ClusterxK8sIoV1beta1MachineHealthCheckStatusConditionsItems0:
-    """
+    r"""
     Condition defines an observation of a Cluster API resource operational state.
 
     Attributes
