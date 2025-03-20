@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema DockerMachinePoolTemplate:
-    """
+    r"""
     DockerMachinePoolTemplate is the Schema for the dockermachinepooltemplates API.
 
     Attributes
@@ -32,7 +32,7 @@ schema DockerMachinePoolTemplate:
 
 
 schema InfrastructureClusterxK8sIoV1beta1DockerMachinePoolTemplateSpec:
-    """
+    r"""
     DockerMachinePoolTemplateSpec defines the desired state of DockerMachinePoolTemplate.
 
     Attributes
@@ -46,7 +46,7 @@ schema InfrastructureClusterxK8sIoV1beta1DockerMachinePoolTemplateSpec:
 
 
 schema InfrastructureClusterxK8sIoV1beta1DockerMachinePoolTemplateSpecTemplate:
-    """
+    r"""
     DockerMachinePoolTemplateResource describes the data needed to create a DockerMachine from a template.
 
     Attributes
@@ -64,7 +64,7 @@ schema InfrastructureClusterxK8sIoV1beta1DockerMachinePoolTemplateSpecTemplate:
 
 
 schema InfrastructureClusterxK8sIoV1beta1DockerMachinePoolTemplateSpecTemplateMetadata:
-    """
+    r"""
     Standard object's metadata.
     More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
 
@@ -89,7 +89,7 @@ schema InfrastructureClusterxK8sIoV1beta1DockerMachinePoolTemplateSpecTemplateMe
 
 
 schema InfrastructureClusterxK8sIoV1beta1DockerMachinePoolTemplateSpecTemplateSpec:
-    """
+    r"""
     DockerMachinePoolSpec defines the desired state of DockerMachinePool.
 
     Attributes
@@ -111,7 +111,7 @@ schema InfrastructureClusterxK8sIoV1beta1DockerMachinePoolTemplateSpecTemplateSp
 
 
 schema InfrastructureClusterxK8sIoV1beta1DockerMachinePoolTemplateSpecTemplateSpecTemplate:
-    """
+    r"""
     Template contains the details used to build a replica machine within the Machine Pool
 
     Attributes
@@ -136,7 +136,7 @@ schema InfrastructureClusterxK8sIoV1beta1DockerMachinePoolTemplateSpecTemplateSp
 
 
 schema InfrastructureClusterxK8sIoV1beta1DockerMachinePoolTemplateSpecTemplateSpecTemplateExtraMountsItems0:
-    """
+    r"""
     Mount specifies a host volume to mount into a container.
     This is a simplified version of kind v1alpha4.Mount types.
 

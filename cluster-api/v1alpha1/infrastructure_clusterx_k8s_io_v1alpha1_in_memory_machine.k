@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema InMemoryMachine:
-    """
+    r"""
     InMemoryMachine is the schema for the in-memory machine API.
 
     Attributes
@@ -36,7 +36,7 @@ schema InMemoryMachine:
 
 
 schema InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpec:
-    """
+    r"""
     InMemoryMachineSpec defines the desired state of InMemoryMachine.
 
     Attributes
@@ -54,7 +54,7 @@ schema InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpec:
 
 
 schema InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpecBehaviour:
-    """
+    r"""
     Behaviour of the InMemoryMachine; this will allow to make a simulation more alike to real use cases
     e.g. by defining the duration of the provisioning phase mimicking the performances of the target infrastructure.
 
@@ -81,7 +81,7 @@ schema InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpecBehaviour:
 
 
 schema InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpecBehaviourAPIServer:
-    """
+    r"""
     APIServer defines the behaviour of the APIServer hosted on the InMemoryMachine.
 
     Attributes
@@ -95,7 +95,7 @@ schema InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpecBehaviourAPIServer:
 
 
 schema InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpecBehaviourAPIServerProvisioning:
-    """
+    r"""
     Provisioning defines variables influencing how the APIServer hosted on the InMemoryMachine is going to be provisioned.
     NOTE: APIServer provisioning includes all the steps from starting the static Pod to the Pod become ready and being registered in K8s.
 
@@ -116,7 +116,7 @@ schema InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpecBehaviourAPIServerP
 
 
 schema InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpecBehaviourEtcd:
-    """
+    r"""
     Etcd defines the behaviour of the etcd member hosted on the InMemoryMachine.
 
     Attributes
@@ -130,7 +130,7 @@ schema InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpecBehaviourEtcd:
 
 
 schema InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpecBehaviourEtcdProvisioning:
-    """
+    r"""
     Provisioning defines variables influencing how the etcd member hosted on the InMemoryMachine is going to be provisioned.
     NOTE: Etcd provisioning includes all the steps from starting the static Pod to the Pod become ready and being registered in K8s.
 
@@ -151,7 +151,7 @@ schema InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpecBehaviourEtcdProvis
 
 
 schema InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpecBehaviourNode:
-    """
+    r"""
     Node defines the behaviour of the Node (the kubelet) hosted on the InMemoryMachine.
 
     Attributes
@@ -165,7 +165,7 @@ schema InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpecBehaviourNode:
 
 
 schema InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpecBehaviourNodeProvisioning:
-    """
+    r"""
     Provisioning defines variables influencing how the Node (the kubelet) hosted on the InMemoryMachine is going to be provisioned.
     NOTE: Node provisioning includes all the steps from starting kubelet to the node become ready, get a provider ID, and being registered in K8s.
 
@@ -186,7 +186,7 @@ schema InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpecBehaviourNodeProvis
 
 
 schema InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpecBehaviourVM:
-    """
+    r"""
     VM defines the behaviour of the VM implementing the InMemoryMachine.
 
     Attributes
@@ -200,7 +200,7 @@ schema InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpecBehaviourVM:
 
 
 schema InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpecBehaviourVMProvisioning:
-    """
+    r"""
     Provisioning defines variables influencing how the VM implementing the InMemoryMachine is going to be provisioned.
     NOTE: VM provisioning includes all the steps from creation to power-on.
 
@@ -221,7 +221,7 @@ schema InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpecBehaviourVMProvisio
 
 
 schema InfrastructureClusterxK8sIoV1alpha1InMemoryMachineStatus:
-    """
+    r"""
     InMemoryMachineStatus defines the observed state of InMemoryMachine.
 
     Attributes
@@ -239,7 +239,7 @@ schema InfrastructureClusterxK8sIoV1alpha1InMemoryMachineStatus:
 
 
 schema InfrastructureClusterxK8sIoV1alpha1InMemoryMachineStatusConditionsItems0:
-    """
+    r"""
     Condition defines an observation of a Cluster API resource operational state.
 
     Attributes

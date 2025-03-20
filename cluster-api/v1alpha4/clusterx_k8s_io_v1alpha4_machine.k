@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema Machine:
-    """
+    r"""
     Machine is the Schema for the machines API.
 
 
@@ -39,7 +39,7 @@ schema Machine:
 
 
 schema ClusterxK8sIoV1alpha4MachineSpec:
-    """
+    r"""
     MachineSpec defines the desired state of Machine.
 
     Attributes
@@ -94,7 +94,7 @@ schema ClusterxK8sIoV1alpha4MachineSpec:
 
 
 schema ClusterxK8sIoV1alpha4MachineSpecBootstrap:
-    """
+    r"""
     Bootstrap is a reference to a local struct which encapsulates
     fields to configure the Machine’s bootstrapping mechanism.
 
@@ -114,7 +114,7 @@ schema ClusterxK8sIoV1alpha4MachineSpecBootstrap:
 
 
 schema ClusterxK8sIoV1alpha4MachineSpecBootstrapConfigRef:
-    """
+    r"""
     ConfigRef is a reference to a bootstrap provider-specific resource
     that holds configuration details. The reference is optional to
     allow users/operators to specify Bootstrap.DataSecretName without
@@ -167,7 +167,7 @@ schema ClusterxK8sIoV1alpha4MachineSpecBootstrapConfigRef:
 
 
 schema ClusterxK8sIoV1alpha4MachineSpecInfrastructureRef:
-    """
+    r"""
     InfrastructureRef is a required reference to a custom resource
     offered by an infrastructure provider.
 
@@ -218,7 +218,7 @@ schema ClusterxK8sIoV1alpha4MachineSpecInfrastructureRef:
 
 
 schema ClusterxK8sIoV1alpha4MachineStatus:
-    """
+    r"""
     MachineStatus defines the observed state of Machine.
 
     Attributes
@@ -315,7 +315,7 @@ schema ClusterxK8sIoV1alpha4MachineStatus:
 
 
 schema ClusterxK8sIoV1alpha4MachineStatusAddressesItems0:
-    """
+    r"""
     MachineAddress contains information for the node's address.
 
     Attributes
@@ -333,7 +333,7 @@ schema ClusterxK8sIoV1alpha4MachineStatusAddressesItems0:
 
 
 schema ClusterxK8sIoV1alpha4MachineStatusConditionsItems0:
-    """
+    r"""
     Condition defines an observation of a Cluster API resource operational state.
 
     Attributes
@@ -376,7 +376,7 @@ schema ClusterxK8sIoV1alpha4MachineStatusConditionsItems0:
 
 
 schema ClusterxK8sIoV1alpha4MachineStatusNodeInfo:
-    """
+    r"""
     NodeInfo is a set of ids/uuids to uniquely identify the node.
     More info: https://kubernetes.io/docs/concepts/nodes/node/#info
 
@@ -431,7 +431,7 @@ schema ClusterxK8sIoV1alpha4MachineStatusNodeInfo:
 
 
 schema ClusterxK8sIoV1alpha4MachineStatusNodeRef:
-    """
+    r"""
     NodeRef will point to the corresponding Node if it exists.
 
     Attributes

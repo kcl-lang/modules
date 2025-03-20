@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema InMemoryCluster:
-    """
+    r"""
     InMemoryCluster is the schema for the in-memory cluster API.
 
     Attributes
@@ -36,7 +36,7 @@ schema InMemoryCluster:
 
 
 schema InfrastructureClusterxK8sIoV1alpha1InMemoryClusterSpec:
-    """
+    r"""
     InMemoryClusterSpec defines the desired state of the InMemoryCluster.
 
     Attributes
@@ -50,7 +50,7 @@ schema InfrastructureClusterxK8sIoV1alpha1InMemoryClusterSpec:
 
 
 schema InfrastructureClusterxK8sIoV1alpha1InMemoryClusterSpecControlPlaneEndpoint:
-    """
+    r"""
     ControlPlaneEndpoint represents the endpoint used to communicate with the control plane.
 
     Attributes
@@ -69,7 +69,7 @@ schema InfrastructureClusterxK8sIoV1alpha1InMemoryClusterSpecControlPlaneEndpoin
 
 
 schema InfrastructureClusterxK8sIoV1alpha1InMemoryClusterStatus:
-    """
+    r"""
     InMemoryClusterStatus defines the observed state of the InMemoryCluster.
 
     Attributes
@@ -87,7 +87,7 @@ schema InfrastructureClusterxK8sIoV1alpha1InMemoryClusterStatus:
 
 
 schema InfrastructureClusterxK8sIoV1alpha1InMemoryClusterStatusConditionsItems0:
-    """
+    r"""
     Condition defines an observation of a Cluster API resource operational state.
 
     Attributes

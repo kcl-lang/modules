@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema MachineHealthCheck:
-    """
+    r"""
     MachineHealthCheck is the Schema for the machinehealthchecks API.
 
 
@@ -39,7 +39,7 @@ schema MachineHealthCheck:
 
 
 schema ClusterxK8sIoV1alpha3MachineHealthCheckSpec:
-    """
+    r"""
     Specification of machine health check policy
 
     Attributes
@@ -82,7 +82,7 @@ schema ClusterxK8sIoV1alpha3MachineHealthCheckSpec:
 
 
 schema ClusterxK8sIoV1alpha3MachineHealthCheckSpecRemediationTemplate:
-    """
+    r"""
     RemediationTemplate is a reference to a remediation template
     provided by an infrastructure provider.
 
@@ -138,7 +138,7 @@ schema ClusterxK8sIoV1alpha3MachineHealthCheckSpecRemediationTemplate:
 
 
 schema ClusterxK8sIoV1alpha3MachineHealthCheckSpecSelector:
-    """
+    r"""
     Label selector to match machines whose health will be exercised
 
     Attributes
@@ -158,7 +158,7 @@ schema ClusterxK8sIoV1alpha3MachineHealthCheckSpecSelector:
 
 
 schema ClusterxK8sIoV1alpha3MachineHealthCheckSpecSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
 
@@ -185,7 +185,7 @@ schema ClusterxK8sIoV1alpha3MachineHealthCheckSpecSelectorMatchExpressionsItems0
 
 
 schema ClusterxK8sIoV1alpha3MachineHealthCheckSpecUnhealthyConditionsItems0:
-    """
+    r"""
     UnhealthyCondition represents a Node condition type and value with a timeout
     specified as a duration.  When the named condition has been in the given
     status for at least the timeout value, a node is considered unhealthy.
@@ -214,7 +214,7 @@ schema ClusterxK8sIoV1alpha3MachineHealthCheckSpecUnhealthyConditionsItems0:
 
 
 schema ClusterxK8sIoV1alpha3MachineHealthCheckStatus:
-    """
+    r"""
     Most recently observed status of MachineHealthCheck resource
 
     Attributes
@@ -255,7 +255,7 @@ schema ClusterxK8sIoV1alpha3MachineHealthCheckStatus:
 
 
 schema ClusterxK8sIoV1alpha3MachineHealthCheckStatusConditionsItems0:
-    """
+    r"""
     Condition defines an observation of a Cluster API resource operational state.
 
     Attributes

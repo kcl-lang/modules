@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema DockerMachineTemplate:
-    """
+    r"""
     DockerMachineTemplate is the Schema for the dockermachinetemplates API.
 
 
@@ -35,7 +35,7 @@ schema DockerMachineTemplate:
 
 
 schema InfrastructureClusterxK8sIoV1alpha4DockerMachineTemplateSpec:
-    """
+    r"""
     DockerMachineTemplateSpec defines the desired state of DockerMachineTemplate.
 
     Attributes
@@ -49,7 +49,7 @@ schema InfrastructureClusterxK8sIoV1alpha4DockerMachineTemplateSpec:
 
 
 schema InfrastructureClusterxK8sIoV1alpha4DockerMachineTemplateSpecTemplate:
-    """
+    r"""
     DockerMachineTemplateResource describes the data needed to create a DockerMachine from a template.
 
     Attributes
@@ -63,7 +63,7 @@ schema InfrastructureClusterxK8sIoV1alpha4DockerMachineTemplateSpecTemplate:
 
 
 schema InfrastructureClusterxK8sIoV1alpha4DockerMachineTemplateSpecTemplateSpec:
-    """
+    r"""
     Spec is the specification of the desired behavior of the machine.
 
     Attributes
@@ -97,7 +97,7 @@ schema InfrastructureClusterxK8sIoV1alpha4DockerMachineTemplateSpecTemplateSpec:
 
 
 schema InfrastructureClusterxK8sIoV1alpha4DockerMachineTemplateSpecTemplateSpecExtraMountsItems0:
-    """
+    r"""
     Mount specifies a host volume to mount into a container.
     This is a simplified version of kind v1alpha4.Mount types.
 

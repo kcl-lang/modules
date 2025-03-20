@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema DockerCluster:
-    """
+    r"""
     DockerCluster is the Schema for the dockerclusters API.
 
     Attributes
@@ -36,7 +36,7 @@ schema DockerCluster:
 
 
 schema InfrastructureClusterxK8sIoV1beta1DockerClusterSpec:
-    """
+    r"""
     DockerClusterSpec defines the desired state of DockerCluster.
 
     Attributes
@@ -61,7 +61,7 @@ schema InfrastructureClusterxK8sIoV1beta1DockerClusterSpec:
 
 
 schema InfrastructureClusterxK8sIoV1beta1DockerClusterSpecControlPlaneEndpoint:
-    """
+    r"""
     ControlPlaneEndpoint represents the endpoint used to communicate with the control plane.
 
     Attributes
@@ -80,7 +80,7 @@ schema InfrastructureClusterxK8sIoV1beta1DockerClusterSpecControlPlaneEndpoint:
 
 
 schema InfrastructureClusterxK8sIoV1beta1DockerClusterSpecFailureDomainsAnon:
-    """
+    r"""
     FailureDomainSpec is the Schema for Cluster API failure domains.
     It allows controllers to understand how many failure domains a cluster can optionally span across.
 
@@ -99,7 +99,7 @@ schema InfrastructureClusterxK8sIoV1beta1DockerClusterSpecFailureDomainsAnon:
 
 
 schema InfrastructureClusterxK8sIoV1beta1DockerClusterSpecLoadBalancer:
-    """
+    r"""
     LoadBalancer allows defining configurations for the cluster load balancer.
 
     Attributes
@@ -123,7 +123,7 @@ schema InfrastructureClusterxK8sIoV1beta1DockerClusterSpecLoadBalancer:
 
 
 schema InfrastructureClusterxK8sIoV1beta1DockerClusterSpecLoadBalancerCustomHAProxyConfigTemplateRef:
-    """
+    r"""
     CustomHAProxyConfigTemplateRef allows you to replace the default HAProxy config file.
     This field is a reference to a config map that contains the configuration template. The key of the config map should be equal to 'value'.
     The content of the config map will be processed and will replace the default HAProxy config file. Please use it with caution, as there are
@@ -137,16 +137,20 @@ schema InfrastructureClusterxK8sIoV1beta1DockerClusterSpecLoadBalancerCustomHAPr
     ----------
     name : str, default is Undefined, optional
         Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        This field is effectively required, but due to backwards compatibility is
+        allowed to be empty. Instances of this type with an empty value here are
+        almost certainly wrong.
         TODO: Add other useful fields. apiVersion, kind, uid?
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        TODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema InfrastructureClusterxK8sIoV1beta1DockerClusterStatus:
-    """
+    r"""
     DockerClusterStatus defines the observed state of DockerCluster.
 
     Attributes
@@ -169,7 +173,7 @@ schema InfrastructureClusterxK8sIoV1beta1DockerClusterStatus:
 
 
 schema InfrastructureClusterxK8sIoV1beta1DockerClusterStatusConditionsItems0:
-    """
+    r"""
     Condition defines an observation of a Cluster API resource operational state.
 
     Attributes
@@ -212,7 +216,7 @@ schema InfrastructureClusterxK8sIoV1beta1DockerClusterStatusConditionsItems0:
 
 
 schema InfrastructureClusterxK8sIoV1beta1DockerClusterStatusFailureDomainsAnon:
-    """
+    r"""
     FailureDomainSpec is the Schema for Cluster API failure domains.
     It allows controllers to understand how many failure domains a cluster can optionally span across.
 

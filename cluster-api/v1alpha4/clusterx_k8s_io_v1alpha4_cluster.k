@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema Cluster:
-    """
+    r"""
     Cluster is the Schema for the clusters API.
 
 
@@ -39,7 +39,7 @@ schema Cluster:
 
 
 schema ClusterxK8sIoV1alpha4ClusterSpec:
-    """
+    r"""
     ClusterSpec defines the desired state of Cluster.
 
     Attributes
@@ -73,7 +73,7 @@ schema ClusterxK8sIoV1alpha4ClusterSpec:
 
 
 schema ClusterxK8sIoV1alpha4ClusterSpecClusterNetwork:
-    """
+    r"""
     Cluster network configuration.
 
     Attributes
@@ -100,7 +100,7 @@ schema ClusterxK8sIoV1alpha4ClusterSpecClusterNetwork:
 
 
 schema ClusterxK8sIoV1alpha4ClusterSpecClusterNetworkPods:
-    """
+    r"""
     The network ranges from which Pod networks are allocated.
 
     Attributes
@@ -114,7 +114,7 @@ schema ClusterxK8sIoV1alpha4ClusterSpecClusterNetworkPods:
 
 
 schema ClusterxK8sIoV1alpha4ClusterSpecClusterNetworkServices:
-    """
+    r"""
     The network ranges from which service VIPs are allocated.
 
     Attributes
@@ -128,7 +128,7 @@ schema ClusterxK8sIoV1alpha4ClusterSpecClusterNetworkServices:
 
 
 schema ClusterxK8sIoV1alpha4ClusterSpecControlPlaneEndpoint:
-    """
+    r"""
     ControlPlaneEndpoint represents the endpoint used to communicate with the control plane.
 
     Attributes
@@ -146,7 +146,7 @@ schema ClusterxK8sIoV1alpha4ClusterSpecControlPlaneEndpoint:
 
 
 schema ClusterxK8sIoV1alpha4ClusterSpecControlPlaneRef:
-    """
+    r"""
     ControlPlaneRef is an optional reference to a provider-specific resource that holds
     the details for provisioning the Control Plane for a Cluster.
 
@@ -197,7 +197,7 @@ schema ClusterxK8sIoV1alpha4ClusterSpecControlPlaneRef:
 
 
 schema ClusterxK8sIoV1alpha4ClusterSpecInfrastructureRef:
-    """
+    r"""
     InfrastructureRef is a reference to a provider-specific resource that holds the details
     for provisioning infrastructure for a cluster in said provider.
 
@@ -248,7 +248,7 @@ schema ClusterxK8sIoV1alpha4ClusterSpecInfrastructureRef:
 
 
 schema ClusterxK8sIoV1alpha4ClusterSpecTopology:
-    """
+    r"""
     This encapsulates the topology for the cluster.
     NOTE: It is required to enable the ClusterTopology
     feature gate flag to activate managed topologies support;
@@ -282,7 +282,7 @@ schema ClusterxK8sIoV1alpha4ClusterSpecTopology:
 
 
 schema ClusterxK8sIoV1alpha4ClusterSpecTopologyControlPlane:
-    """
+    r"""
     ControlPlane describes the cluster control plane.
 
     Attributes
@@ -303,7 +303,7 @@ schema ClusterxK8sIoV1alpha4ClusterSpecTopologyControlPlane:
 
 
 schema ClusterxK8sIoV1alpha4ClusterSpecTopologyControlPlaneMetadata:
-    """
+    r"""
     Metadata is the metadata applied to the machines of the ControlPlane.
     At runtime this metadata is merged with the corresponding metadata from the ClusterClass.
 
@@ -332,7 +332,7 @@ schema ClusterxK8sIoV1alpha4ClusterSpecTopologyControlPlaneMetadata:
 
 
 schema ClusterxK8sIoV1alpha4ClusterSpecTopologyWorkers:
-    """
+    r"""
     Workers encapsulates the different constructs that form the worker nodes
     for the cluster.
 
@@ -347,7 +347,7 @@ schema ClusterxK8sIoV1alpha4ClusterSpecTopologyWorkers:
 
 
 schema ClusterxK8sIoV1alpha4ClusterSpecTopologyWorkersMachineDeploymentsItems0:
-    """
+    r"""
     MachineDeploymentTopology specifies the different parameters for a set of worker nodes in the topology.
     This set of nodes is managed by a MachineDeployment object whose lifecycle is managed by the Cluster controller.
 
@@ -382,7 +382,7 @@ schema ClusterxK8sIoV1alpha4ClusterSpecTopologyWorkersMachineDeploymentsItems0:
 
 
 schema ClusterxK8sIoV1alpha4ClusterSpecTopologyWorkersMachineDeploymentsItems0Metadata:
-    """
+    r"""
     Metadata is the metadata applied to the machines of the MachineDeployment.
     At runtime this metadata is merged with the corresponding metadata from the ClusterClass.
 
@@ -407,7 +407,7 @@ schema ClusterxK8sIoV1alpha4ClusterSpecTopologyWorkersMachineDeploymentsItems0Me
 
 
 schema ClusterxK8sIoV1alpha4ClusterStatus:
-    """
+    r"""
     ClusterStatus defines the observed state of Cluster.
 
     Attributes
@@ -453,7 +453,7 @@ schema ClusterxK8sIoV1alpha4ClusterStatus:
 
 
 schema ClusterxK8sIoV1alpha4ClusterStatusConditionsItems0:
-    """
+    r"""
     Condition defines an observation of a Cluster API resource operational state.
 
     Attributes
@@ -496,7 +496,7 @@ schema ClusterxK8sIoV1alpha4ClusterStatusConditionsItems0:
 
 
 schema ClusterxK8sIoV1alpha4ClusterStatusFailureDomainsAnon:
-    """
+    r"""
     FailureDomainSpec is the Schema for Cluster API failure domains.
     It allows controllers to understand how many failure domains a cluster can optionally span across.
 

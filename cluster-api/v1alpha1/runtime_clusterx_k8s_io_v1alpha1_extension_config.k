@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ExtensionConfig:
-    """
+    r"""
     ExtensionConfig is the Schema for the ExtensionConfig API.
 
     Attributes
@@ -36,7 +36,7 @@ schema ExtensionConfig:
 
 
 schema RuntimeClusterxK8sIoV1alpha1ExtensionConfigSpec:
-    """
+    r"""
     ExtensionConfigSpec is the desired state of the ExtensionConfig
 
     Attributes
@@ -60,7 +60,7 @@ schema RuntimeClusterxK8sIoV1alpha1ExtensionConfigSpec:
 
 
 schema RuntimeClusterxK8sIoV1alpha1ExtensionConfigSpecClientConfig:
-    """
+    r"""
     ClientConfig defines how to communicate with the Extension server.
 
     Attributes
@@ -100,7 +100,7 @@ schema RuntimeClusterxK8sIoV1alpha1ExtensionConfigSpecClientConfig:
 
 
 schema RuntimeClusterxK8sIoV1alpha1ExtensionConfigSpecClientConfigService:
-    """
+    r"""
     Service is a reference to the Kubernetes service for the Extension server.
     Note: Exactly one of `url` or `service` must be specified.
 
@@ -133,7 +133,7 @@ schema RuntimeClusterxK8sIoV1alpha1ExtensionConfigSpecClientConfigService:
 
 
 schema RuntimeClusterxK8sIoV1alpha1ExtensionConfigSpecNamespaceSelector:
-    """
+    r"""
     NamespaceSelector decides whether to call the hook for an object based
     on whether the namespace for that object matches the selector.
     Defaults to the empty LabelSelector, which matches all objects.
@@ -155,7 +155,7 @@ schema RuntimeClusterxK8sIoV1alpha1ExtensionConfigSpecNamespaceSelector:
 
 
 schema RuntimeClusterxK8sIoV1alpha1ExtensionConfigSpecNamespaceSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
 
@@ -182,7 +182,7 @@ schema RuntimeClusterxK8sIoV1alpha1ExtensionConfigSpecNamespaceSelectorMatchExpr
 
 
 schema RuntimeClusterxK8sIoV1alpha1ExtensionConfigStatus:
-    """
+    r"""
     ExtensionConfigStatus is the current state of the ExtensionConfig
 
     Attributes
@@ -200,7 +200,7 @@ schema RuntimeClusterxK8sIoV1alpha1ExtensionConfigStatus:
 
 
 schema RuntimeClusterxK8sIoV1alpha1ExtensionConfigStatusConditionsItems0:
-    """
+    r"""
     Condition defines an observation of a Cluster API resource operational state.
 
     Attributes
@@ -243,7 +243,7 @@ schema RuntimeClusterxK8sIoV1alpha1ExtensionConfigStatusConditionsItems0:
 
 
 schema RuntimeClusterxK8sIoV1alpha1ExtensionConfigStatusHandlersItems0:
-    """
+    r"""
     ExtensionHandler specifies the details of a handler for a particular runtime hook registered by an Extension server.
 
     Attributes
@@ -271,7 +271,7 @@ schema RuntimeClusterxK8sIoV1alpha1ExtensionConfigStatusHandlersItems0:
 
 
 schema RuntimeClusterxK8sIoV1alpha1ExtensionConfigStatusHandlersItems0RequestHook:
-    """
+    r"""
     RequestHook defines the versioned runtime hook which this ExtensionHandler serves.
 
     Attributes

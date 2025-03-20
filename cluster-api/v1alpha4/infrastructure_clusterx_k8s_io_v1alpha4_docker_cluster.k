@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema DockerCluster:
-    """
+    r"""
     DockerCluster is the Schema for the dockerclusters API.
 
 
@@ -39,7 +39,7 @@ schema DockerCluster:
 
 
 schema InfrastructureClusterxK8sIoV1alpha4DockerClusterSpec:
-    """
+    r"""
     DockerClusterSpec defines the desired state of DockerCluster.
 
     Attributes
@@ -64,7 +64,7 @@ schema InfrastructureClusterxK8sIoV1alpha4DockerClusterSpec:
 
 
 schema InfrastructureClusterxK8sIoV1alpha4DockerClusterSpecControlPlaneEndpoint:
-    """
+    r"""
     ControlPlaneEndpoint represents the endpoint used to communicate with the control plane.
 
     Attributes
@@ -82,7 +82,7 @@ schema InfrastructureClusterxK8sIoV1alpha4DockerClusterSpecControlPlaneEndpoint:
 
 
 schema InfrastructureClusterxK8sIoV1alpha4DockerClusterSpecFailureDomainsAnon:
-    """
+    r"""
     FailureDomainSpec is the Schema for Cluster API failure domains.
     It allows controllers to understand how many failure domains a cluster can optionally span across.
 
@@ -101,7 +101,7 @@ schema InfrastructureClusterxK8sIoV1alpha4DockerClusterSpecFailureDomainsAnon:
 
 
 schema InfrastructureClusterxK8sIoV1alpha4DockerClusterSpecLoadBalancer:
-    """
+    r"""
     LoadBalancer allows defining configurations for the cluster load balancer.
 
     Attributes
@@ -121,7 +121,7 @@ schema InfrastructureClusterxK8sIoV1alpha4DockerClusterSpecLoadBalancer:
 
 
 schema InfrastructureClusterxK8sIoV1alpha4DockerClusterStatus:
-    """
+    r"""
     DockerClusterStatus defines the observed state of DockerCluster.
 
     Attributes
@@ -144,7 +144,7 @@ schema InfrastructureClusterxK8sIoV1alpha4DockerClusterStatus:
 
 
 schema InfrastructureClusterxK8sIoV1alpha4DockerClusterStatusConditionsItems0:
-    """
+    r"""
     Condition defines an observation of a Cluster API resource operational state.
 
     Attributes
@@ -187,7 +187,7 @@ schema InfrastructureClusterxK8sIoV1alpha4DockerClusterStatusConditionsItems0:
 
 
 schema InfrastructureClusterxK8sIoV1alpha4DockerClusterStatusFailureDomainsAnon:
-    """
+    r"""
     FailureDomainSpec is the Schema for Cluster API failure domains.
     It allows controllers to understand how many failure domains a cluster can optionally span across.
 

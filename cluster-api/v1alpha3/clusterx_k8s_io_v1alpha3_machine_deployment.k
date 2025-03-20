@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema MachineDeployment:
-    """
+    r"""
     MachineDeployment is the Schema for the machinedeployments API.
 
 
@@ -39,7 +39,7 @@ schema MachineDeployment:
 
 
 schema ClusterxK8sIoV1alpha3MachineDeploymentSpec:
-    """
+    r"""
     MachineDeploymentSpec defines the desired state of MachineDeployment.
 
     Attributes
@@ -99,7 +99,7 @@ schema ClusterxK8sIoV1alpha3MachineDeploymentSpec:
 
 
 schema ClusterxK8sIoV1alpha3MachineDeploymentSpecSelector:
-    """
+    r"""
     Label selector for machines. Existing MachineSets whose machines are
     selected by this will be the ones affected by this deployment.
     It must match the machine template's labels.
@@ -121,7 +121,7 @@ schema ClusterxK8sIoV1alpha3MachineDeploymentSpecSelector:
 
 
 schema ClusterxK8sIoV1alpha3MachineDeploymentSpecSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
 
@@ -148,7 +148,7 @@ schema ClusterxK8sIoV1alpha3MachineDeploymentSpecSelectorMatchExpressionsItems0:
 
 
 schema ClusterxK8sIoV1alpha3MachineDeploymentSpecStrategy:
-    """
+    r"""
     The deployment strategy to use to replace existing machines with
     new ones.
 
@@ -169,7 +169,7 @@ schema ClusterxK8sIoV1alpha3MachineDeploymentSpecStrategy:
 
 
 schema ClusterxK8sIoV1alpha3MachineDeploymentSpecStrategyRollingUpdate:
-    """
+    r"""
     Rolling update config params. Present only if
     MachineDeploymentStrategyType = RollingUpdate.
 
@@ -211,7 +211,7 @@ schema ClusterxK8sIoV1alpha3MachineDeploymentSpecStrategyRollingUpdate:
 
 
 schema ClusterxK8sIoV1alpha3MachineDeploymentSpecTemplate:
-    """
+    r"""
     Template describes the machines that will be created.
 
     Attributes
@@ -229,7 +229,7 @@ schema ClusterxK8sIoV1alpha3MachineDeploymentSpecTemplate:
 
 
 schema ClusterxK8sIoV1alpha3MachineDeploymentSpecTemplateMetadata:
-    """
+    r"""
     Standard object's metadata.
     More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
 
@@ -314,7 +314,7 @@ schema ClusterxK8sIoV1alpha3MachineDeploymentSpecTemplateMetadata:
 
 
 schema ClusterxK8sIoV1alpha3MachineDeploymentSpecTemplateMetadataOwnerReferencesItems0:
-    """
+    r"""
     OwnerReference contains enough information to let you identify an owning
     object. An owning object must be in the same namespace as the dependent, or
     be cluster-scoped, so there is no namespace field.
@@ -360,7 +360,7 @@ schema ClusterxK8sIoV1alpha3MachineDeploymentSpecTemplateMetadataOwnerReferences
 
 
 schema ClusterxK8sIoV1alpha3MachineDeploymentSpecTemplateSpec:
-    """
+    r"""
     Specification of the desired behavior of the machine.
     More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
 
@@ -416,7 +416,7 @@ schema ClusterxK8sIoV1alpha3MachineDeploymentSpecTemplateSpec:
 
 
 schema ClusterxK8sIoV1alpha3MachineDeploymentSpecTemplateSpecBootstrap:
-    """
+    r"""
     Bootstrap is a reference to a local struct which encapsulates
     fields to configure the Machine’s bootstrapping mechanism.
 
@@ -444,7 +444,7 @@ schema ClusterxK8sIoV1alpha3MachineDeploymentSpecTemplateSpecBootstrap:
 
 
 schema ClusterxK8sIoV1alpha3MachineDeploymentSpecTemplateSpecBootstrapConfigRef:
-    """
+    r"""
     ConfigRef is a reference to a bootstrap provider-specific resource
     that holds configuration details. The reference is optional to
     allow users/operators to specify Bootstrap.Data without
@@ -497,7 +497,7 @@ schema ClusterxK8sIoV1alpha3MachineDeploymentSpecTemplateSpecBootstrapConfigRef:
 
 
 schema ClusterxK8sIoV1alpha3MachineDeploymentSpecTemplateSpecInfrastructureRef:
-    """
+    r"""
     InfrastructureRef is a required reference to a custom resource
     offered by an infrastructure provider.
 
@@ -548,7 +548,7 @@ schema ClusterxK8sIoV1alpha3MachineDeploymentSpecTemplateSpecInfrastructureRef:
 
 
 schema ClusterxK8sIoV1alpha3MachineDeploymentStatus:
-    """
+    r"""
     MachineDeploymentStatus defines the observed state of MachineDeployment.
 
     Attributes

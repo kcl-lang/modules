@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema MachinePool:
-    """
+    r"""
     MachinePool is the Schema for the machinepools API.
 
 
@@ -39,7 +39,7 @@ schema MachinePool:
 
 
 schema ClusterxK8sIoV1alpha3MachinePoolSpec:
-    """
+    r"""
     MachinePoolSpec defines the desired state of MachinePool.
 
     Attributes
@@ -86,7 +86,7 @@ schema ClusterxK8sIoV1alpha3MachinePoolSpec:
 
 
 schema ClusterxK8sIoV1alpha3MachinePoolSpecStrategy:
-    """
+    r"""
     The deployment strategy to use to replace existing machine instances with
     new ones.
 
@@ -107,7 +107,7 @@ schema ClusterxK8sIoV1alpha3MachinePoolSpecStrategy:
 
 
 schema ClusterxK8sIoV1alpha3MachinePoolSpecStrategyRollingUpdate:
-    """
+    r"""
     Rolling update config params. Present only if
     MachineDeploymentStrategyType = RollingUpdate.
 
@@ -149,7 +149,7 @@ schema ClusterxK8sIoV1alpha3MachinePoolSpecStrategyRollingUpdate:
 
 
 schema ClusterxK8sIoV1alpha3MachinePoolSpecTemplate:
-    """
+    r"""
     Template describes the machines that will be created.
 
     Attributes
@@ -167,7 +167,7 @@ schema ClusterxK8sIoV1alpha3MachinePoolSpecTemplate:
 
 
 schema ClusterxK8sIoV1alpha3MachinePoolSpecTemplateMetadata:
-    """
+    r"""
     Standard object's metadata.
     More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
 
@@ -252,7 +252,7 @@ schema ClusterxK8sIoV1alpha3MachinePoolSpecTemplateMetadata:
 
 
 schema ClusterxK8sIoV1alpha3MachinePoolSpecTemplateMetadataOwnerReferencesItems0:
-    """
+    r"""
     OwnerReference contains enough information to let you identify an owning
     object. An owning object must be in the same namespace as the dependent, or
     be cluster-scoped, so there is no namespace field.
@@ -298,7 +298,7 @@ schema ClusterxK8sIoV1alpha3MachinePoolSpecTemplateMetadataOwnerReferencesItems0
 
 
 schema ClusterxK8sIoV1alpha3MachinePoolSpecTemplateSpec:
-    """
+    r"""
     Specification of the desired behavior of the machine.
     More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
 
@@ -354,7 +354,7 @@ schema ClusterxK8sIoV1alpha3MachinePoolSpecTemplateSpec:
 
 
 schema ClusterxK8sIoV1alpha3MachinePoolSpecTemplateSpecBootstrap:
-    """
+    r"""
     Bootstrap is a reference to a local struct which encapsulates
     fields to configure the Machine’s bootstrapping mechanism.
 
@@ -382,7 +382,7 @@ schema ClusterxK8sIoV1alpha3MachinePoolSpecTemplateSpecBootstrap:
 
 
 schema ClusterxK8sIoV1alpha3MachinePoolSpecTemplateSpecBootstrapConfigRef:
-    """
+    r"""
     ConfigRef is a reference to a bootstrap provider-specific resource
     that holds configuration details. The reference is optional to
     allow users/operators to specify Bootstrap.Data without
@@ -435,7 +435,7 @@ schema ClusterxK8sIoV1alpha3MachinePoolSpecTemplateSpecBootstrapConfigRef:
 
 
 schema ClusterxK8sIoV1alpha3MachinePoolSpecTemplateSpecInfrastructureRef:
-    """
+    r"""
     InfrastructureRef is a required reference to a custom resource
     offered by an infrastructure provider.
 
@@ -486,7 +486,7 @@ schema ClusterxK8sIoV1alpha3MachinePoolSpecTemplateSpecInfrastructureRef:
 
 
 schema ClusterxK8sIoV1alpha3MachinePoolStatus:
-    """
+    r"""
     MachinePoolStatus defines the observed state of MachinePool.
 
     Attributes
@@ -551,7 +551,7 @@ schema ClusterxK8sIoV1alpha3MachinePoolStatus:
 
 
 schema ClusterxK8sIoV1alpha3MachinePoolStatusConditionsItems0:
-    """
+    r"""
     Condition defines an observation of a Cluster API resource operational state.
 
     Attributes
@@ -594,7 +594,7 @@ schema ClusterxK8sIoV1alpha3MachinePoolStatusConditionsItems0:
 
 
 schema ClusterxK8sIoV1alpha3MachinePoolStatusNodeRefsItems0:
-    """
+    r"""
     ObjectReference contains enough information to let you inspect or modify the referred object.
     ---
     New uses of this type are discouraged because of difficulty describing its usage when embedded in APIs.

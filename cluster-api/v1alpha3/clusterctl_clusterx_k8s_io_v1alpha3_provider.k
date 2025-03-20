@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema Provider:
-    """
+    r"""
     Provider defines an entry in the provider inventory.
 
     Attributes

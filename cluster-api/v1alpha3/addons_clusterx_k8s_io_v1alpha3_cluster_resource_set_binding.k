@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ClusterResourceSetBinding:
-    """
+    r"""
     ClusterResourceSetBinding lists all matching ClusterResourceSets with the cluster it belongs to.
 
 
@@ -35,7 +35,7 @@ schema ClusterResourceSetBinding:
 
 
 schema AddonsClusterxK8sIoV1alpha3ClusterResourceSetBindingSpec:
-    """
+    r"""
     ClusterResourceSetBindingSpec defines the desired state of ClusterResourceSetBinding.
 
     Attributes
@@ -49,7 +49,7 @@ schema AddonsClusterxK8sIoV1alpha3ClusterResourceSetBindingSpec:
 
 
 schema AddonsClusterxK8sIoV1alpha3ClusterResourceSetBindingSpecBindingsItems0:
-    """
+    r"""
     ResourceSetBinding keeps info on all of the resources in a ClusterResourceSet.
 
     Attributes
@@ -67,7 +67,7 @@ schema AddonsClusterxK8sIoV1alpha3ClusterResourceSetBindingSpecBindingsItems0:
 
 
 schema AddonsClusterxK8sIoV1alpha3ClusterResourceSetBindingSpecBindingsItems0ResourcesItems0:
-    """
+    r"""
     ResourceBinding shows the status of a resource that belongs to a ClusterResourceSet matched by the owner cluster of the ClusterResourceSetBinding object.
 
     Attributes

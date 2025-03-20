@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ClusterClass:
-    """
+    r"""
     ClusterClass is a template which can be used to create managed topologies.
 
 
@@ -35,7 +35,7 @@ schema ClusterClass:
 
 
 schema ClusterxK8sIoV1alpha4ClusterClassSpec:
-    """
+    r"""
     ClusterClassSpec describes the desired state of the ClusterClass.
 
     Attributes
@@ -57,7 +57,7 @@ schema ClusterxK8sIoV1alpha4ClusterClassSpec:
 
 
 schema ClusterxK8sIoV1alpha4ClusterClassSpecControlPlane:
-    """
+    r"""
     ControlPlane is a reference to a local struct that holds the details
     for provisioning the Control Plane for the Cluster.
 
@@ -80,7 +80,7 @@ schema ClusterxK8sIoV1alpha4ClusterClassSpecControlPlane:
 
 
 schema ClusterxK8sIoV1alpha4ClusterClassSpecControlPlaneMachineInfrastructure:
-    """
+    r"""
     MachineTemplate defines the metadata and infrastructure information
     for control plane machines.
 
@@ -99,7 +99,7 @@ schema ClusterxK8sIoV1alpha4ClusterClassSpecControlPlaneMachineInfrastructure:
 
 
 schema ClusterxK8sIoV1alpha4ClusterClassSpecControlPlaneMachineInfrastructureRef:
-    """
+    r"""
     Ref is a required reference to a custom resource
     offered by a provider.
 
@@ -150,7 +150,7 @@ schema ClusterxK8sIoV1alpha4ClusterClassSpecControlPlaneMachineInfrastructureRef
 
 
 schema ClusterxK8sIoV1alpha4ClusterClassSpecControlPlaneMetadata:
-    """
+    r"""
     Metadata is the metadata applied to the machines of the ControlPlane.
     At runtime this metadata is merged with the corresponding metadata from the topology.
 
@@ -179,7 +179,7 @@ schema ClusterxK8sIoV1alpha4ClusterClassSpecControlPlaneMetadata:
 
 
 schema ClusterxK8sIoV1alpha4ClusterClassSpecControlPlaneRef:
-    """
+    r"""
     Ref is a required reference to a custom resource
     offered by a provider.
 
@@ -230,7 +230,7 @@ schema ClusterxK8sIoV1alpha4ClusterClassSpecControlPlaneRef:
 
 
 schema ClusterxK8sIoV1alpha4ClusterClassSpecInfrastructure:
-    """
+    r"""
     Infrastructure is a reference to a provider-specific template that holds
     the details for provisioning infrastructure specific cluster
     for the underlying provider.
@@ -248,7 +248,7 @@ schema ClusterxK8sIoV1alpha4ClusterClassSpecInfrastructure:
 
 
 schema ClusterxK8sIoV1alpha4ClusterClassSpecInfrastructureRef:
-    """
+    r"""
     Ref is a required reference to a custom resource
     offered by a provider.
 
@@ -299,7 +299,7 @@ schema ClusterxK8sIoV1alpha4ClusterClassSpecInfrastructureRef:
 
 
 schema ClusterxK8sIoV1alpha4ClusterClassSpecWorkers:
-    """
+    r"""
     Workers describes the worker nodes for the cluster.
     It is a collection of node types which can be used to create
     the worker nodes of the cluster.
@@ -316,7 +316,7 @@ schema ClusterxK8sIoV1alpha4ClusterClassSpecWorkers:
 
 
 schema ClusterxK8sIoV1alpha4ClusterClassSpecWorkersMachineDeploymentsItems0:
-    """
+    r"""
     MachineDeploymentClass serves as a template to define a set of worker nodes of the cluster
     provisioned using the `ClusterClass`.
 
@@ -337,7 +337,7 @@ schema ClusterxK8sIoV1alpha4ClusterClassSpecWorkersMachineDeploymentsItems0:
 
 
 schema ClusterxK8sIoV1alpha4ClusterClassSpecWorkersMachineDeploymentsItems0Template:
-    """
+    r"""
     Template is a local struct containing a collection of templates for creation of
     MachineDeployment objects representing a set of worker nodes.
 
@@ -360,7 +360,7 @@ schema ClusterxK8sIoV1alpha4ClusterClassSpecWorkersMachineDeploymentsItems0Templ
 
 
 schema ClusterxK8sIoV1alpha4ClusterClassSpecWorkersMachineDeploymentsItems0TemplateBootstrap:
-    """
+    r"""
     Bootstrap contains the bootstrap template reference to be used
     for the creation of worker Machines.
 
@@ -375,7 +375,7 @@ schema ClusterxK8sIoV1alpha4ClusterClassSpecWorkersMachineDeploymentsItems0Templ
 
 
 schema ClusterxK8sIoV1alpha4ClusterClassSpecWorkersMachineDeploymentsItems0TemplateBootstrapRef:
-    """
+    r"""
     Ref is a required reference to a custom resource
     offered by a provider.
 
@@ -426,7 +426,7 @@ schema ClusterxK8sIoV1alpha4ClusterClassSpecWorkersMachineDeploymentsItems0Templ
 
 
 schema ClusterxK8sIoV1alpha4ClusterClassSpecWorkersMachineDeploymentsItems0TemplateInfrastructure:
-    """
+    r"""
     Infrastructure contains the infrastructure template reference to be used
     for the creation of worker Machines.
 
@@ -441,7 +441,7 @@ schema ClusterxK8sIoV1alpha4ClusterClassSpecWorkersMachineDeploymentsItems0Templ
 
 
 schema ClusterxK8sIoV1alpha4ClusterClassSpecWorkersMachineDeploymentsItems0TemplateInfrastructureRef:
-    """
+    r"""
     Ref is a required reference to a custom resource
     offered by a provider.
 
@@ -492,7 +492,7 @@ schema ClusterxK8sIoV1alpha4ClusterClassSpecWorkersMachineDeploymentsItems0Templ
 
 
 schema ClusterxK8sIoV1alpha4ClusterClassSpecWorkersMachineDeploymentsItems0TemplateMetadata:
-    """
+    r"""
     Metadata is the metadata applied to the machines of the MachineDeployment.
     At runtime this metadata is merged with the corresponding metadata from the topology.
 

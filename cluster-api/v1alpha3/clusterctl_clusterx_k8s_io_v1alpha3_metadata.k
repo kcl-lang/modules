@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema Metadata:
-    """
+    r"""
     Metadata for a provider repository.
 
     Attributes
@@ -32,7 +32,7 @@ schema Metadata:
 
 
 schema ClusterctlClusterxK8sIoV1alpha3MetadataReleaseSeriesItems0:
-    """
+    r"""
     ReleaseSeries maps a provider release series (major/minor) with a API Version of Cluster API (contract).
 
     Attributes

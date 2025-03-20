@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema DockerCluster:
-    """
+    r"""
     DockerCluster is the Schema for the dockerclusters API.
 
 
@@ -39,7 +39,7 @@ schema DockerCluster:
 
 
 schema InfrastructureClusterxK8sIoV1alpha3DockerClusterSpec:
-    """
+    r"""
     DockerClusterSpec defines the desired state of DockerCluster.
 
     Attributes
@@ -60,7 +60,7 @@ schema InfrastructureClusterxK8sIoV1alpha3DockerClusterSpec:
 
 
 schema InfrastructureClusterxK8sIoV1alpha3DockerClusterSpecControlPlaneEndpoint:
-    """
+    r"""
     ControlPlaneEndpoint represents the endpoint used to communicate with the control plane.
 
     Attributes
@@ -78,7 +78,7 @@ schema InfrastructureClusterxK8sIoV1alpha3DockerClusterSpecControlPlaneEndpoint:
 
 
 schema InfrastructureClusterxK8sIoV1alpha3DockerClusterSpecFailureDomainsAnon:
-    """
+    r"""
     FailureDomainSpec is the Schema for Cluster API failure domains.
     It allows controllers to understand how many failure domains a cluster can optionally span across.
 
@@ -97,7 +97,7 @@ schema InfrastructureClusterxK8sIoV1alpha3DockerClusterSpecFailureDomainsAnon:
 
 
 schema InfrastructureClusterxK8sIoV1alpha3DockerClusterStatus:
-    """
+    r"""
     DockerClusterStatus defines the observed state of DockerCluster.
 
     Attributes
@@ -120,7 +120,7 @@ schema InfrastructureClusterxK8sIoV1alpha3DockerClusterStatus:
 
 
 schema InfrastructureClusterxK8sIoV1alpha3DockerClusterStatusConditionsItems0:
-    """
+    r"""
     Condition defines an observation of a Cluster API resource operational state.
 
     Attributes
@@ -163,7 +163,7 @@ schema InfrastructureClusterxK8sIoV1alpha3DockerClusterStatusConditionsItems0:
 
 
 schema InfrastructureClusterxK8sIoV1alpha3DockerClusterStatusFailureDomainsAnon:
-    """
+    r"""
     FailureDomainSpec is the Schema for Cluster API failure domains.
     It allows controllers to understand how many failure domains a cluster can optionally span across.
 
