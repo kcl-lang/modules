@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema Provider:
-    """
+    r"""
     Provider defines an entry in the provider inventory.
 
     Attributes
@@ -18,16 +18,15 @@ schema Provider:
     metadata : v1.ObjectMeta, default is Undefined, optional
         metadata
     providerName : str, default is Undefined, optional
-        ProviderName indicates the name of the provider.
+        providerName indicates the name of the provider.
     $type : str, default is Undefined, optional
-        Type indicates the type of the provider.
+        type indicates the type of the provider.
         See ProviderType for a list of supported values
     version : str, default is Undefined, optional
-        Version indicates the component version.
+        version indicates the component version.
     watchedNamespace : str, default is Undefined, optional
-        WatchedNamespace indicates the namespace where the provider controller is watching.
+        watchedNamespace indicates the namespace where the provider controller is watching.
         If empty the provider controller is watching for objects in all namespaces.
-
 
         Deprecated: providers complying with the Cluster API v1alpha4 contract or above must watch all namespaces; this field will be removed in a future version of this API
     """

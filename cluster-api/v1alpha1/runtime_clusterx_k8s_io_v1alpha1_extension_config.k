@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ExtensionConfig:
-    """
+    r"""
     ExtensionConfig is the Schema for the ExtensionConfig API.
 
     Attributes
@@ -36,7 +36,7 @@ schema ExtensionConfig:
 
 
 schema RuntimeClusterxK8sIoV1alpha1ExtensionConfigSpec:
-    """
+    r"""
     ExtensionConfigSpec is the desired state of the ExtensionConfig
 
     Attributes
@@ -46,7 +46,7 @@ schema RuntimeClusterxK8sIoV1alpha1ExtensionConfigSpec:
     namespaceSelector : RuntimeClusterxK8sIoV1alpha1ExtensionConfigSpecNamespaceSelector, default is Undefined, optional
         namespace selector
     settings : {str:str}, default is Undefined, optional
-        Settings defines key value pairs to be passed to all calls
+        settings defines key value pairs to be passed to all calls
         to all supported RuntimeExtensions.
         Note: Settings can be overridden on the ClusterClass.
     """
@@ -60,31 +60,27 @@ schema RuntimeClusterxK8sIoV1alpha1ExtensionConfigSpec:
 
 
 schema RuntimeClusterxK8sIoV1alpha1ExtensionConfigSpecClientConfig:
-    """
-    ClientConfig defines how to communicate with the Extension server.
+    r"""
+    clientConfig defines how to communicate with the Extension server.
 
     Attributes
     ----------
     caBundle : str, default is Undefined, optional
-        CABundle is a PEM encoded CA bundle which will be used to validate the Extension server's server certificate.
+        caBundle is a PEM encoded CA bundle which will be used to validate the Extension server's server certificate.
     service : RuntimeClusterxK8sIoV1alpha1ExtensionConfigSpecClientConfigService, default is Undefined, optional
         service
     url : str, default is Undefined, optional
-        URL gives the location of the Extension server, in standard URL form
+        url gives the location of the Extension server, in standard URL form
         (`scheme://host:port/path`).
         Note: Exactly one of `url` or `service` must be specified.
 
-
         The scheme must be "https".
-
 
         The `host` should not refer to a service running in the cluster; use
         the `service` field instead.
 
-
         A path is optional, and if present may be any string permissible in
         a URL. If a path is set it will be used as prefix to the hook-specific path.
-
 
         Attempting to use a user or basic auth e.g. "user:password@" is not
         allowed. Fragments ("#...") and query parameters ("?...") are not
@@ -100,24 +96,23 @@ schema RuntimeClusterxK8sIoV1alpha1ExtensionConfigSpecClientConfig:
 
 
 schema RuntimeClusterxK8sIoV1alpha1ExtensionConfigSpecClientConfigService:
-    """
-    Service is a reference to the Kubernetes service for the Extension server.
+    r"""
+    service is a reference to the Kubernetes service for the Extension server.
     Note: Exactly one of `url` or `service` must be specified.
-
 
     If the Extension server is running within a cluster, then you should use `service`.
 
     Attributes
     ----------
     name : str, default is Undefined, required
-        Name is the name of the service.
+        name is the name of the service.
     namespace : str, default is Undefined, required
-        Namespace is the namespace of the service.
+        namespace is the namespace of the service.
     path : str, default is Undefined, optional
-        Path is an optional URL path and if present may be any string permissible in
+        path is an optional URL path and if present may be any string permissible in
         a URL. If a path is set it will be used as prefix to the hook-specific path.
     port : int, default is Undefined, optional
-        Port is the port on the service that's hosting the Extension server.
+        port is the port on the service that's hosting the Extension server.
         Defaults to 443.
         Port should be a valid port number (1-65535, inclusive).
     """
@@ -133,8 +128,8 @@ schema RuntimeClusterxK8sIoV1alpha1ExtensionConfigSpecClientConfigService:
 
 
 schema RuntimeClusterxK8sIoV1alpha1ExtensionConfigSpecNamespaceSelector:
-    """
-    NamespaceSelector decides whether to call the hook for an object based
+    r"""
+    namespaceSelector decides whether to call the hook for an object based
     on whether the namespace for that object matches the selector.
     Defaults to the empty LabelSelector, which matches all objects.
 
@@ -155,7 +150,7 @@ schema RuntimeClusterxK8sIoV1alpha1ExtensionConfigSpecNamespaceSelector:
 
 
 schema RuntimeClusterxK8sIoV1alpha1ExtensionConfigSpecNamespaceSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
 
@@ -182,15 +177,15 @@ schema RuntimeClusterxK8sIoV1alpha1ExtensionConfigSpecNamespaceSelectorMatchExpr
 
 
 schema RuntimeClusterxK8sIoV1alpha1ExtensionConfigStatus:
-    """
+    r"""
     ExtensionConfigStatus is the current state of the ExtensionConfig
 
     Attributes
     ----------
     conditions : [RuntimeClusterxK8sIoV1alpha1ExtensionConfigStatusConditionsItems0], default is Undefined, optional
-        Conditions define the current service state of the ExtensionConfig.
+        conditions define the current service state of the ExtensionConfig.
     handlers : [RuntimeClusterxK8sIoV1alpha1ExtensionConfigStatusHandlersItems0], default is Undefined, optional
-        Handlers defines the current ExtensionHandlers supported by an Extension.
+        handlers defines the current ExtensionHandlers supported by an Extension.
     """
 
 
@@ -200,7 +195,7 @@ schema RuntimeClusterxK8sIoV1alpha1ExtensionConfigStatus:
 
 
 schema RuntimeClusterxK8sIoV1alpha1ExtensionConfigStatusConditionsItems0:
-    """
+    r"""
     Condition defines an observation of a Cluster API resource operational state.
 
     Attributes
@@ -215,15 +210,15 @@ schema RuntimeClusterxK8sIoV1alpha1ExtensionConfigStatusConditionsItems0:
     reason : str, default is Undefined, optional
         The reason for the condition's last transition in CamelCase.
         The specific API may choose whether or not this field is considered a guaranteed API.
-        This field may not be empty.
+        This field may be empty.
     severity : str, default is Undefined, optional
-        Severity provides an explicit classification of Reason code, so the users or machines can immediately
+        severity provides an explicit classification of Reason code, so the users or machines can immediately
         understand the current situation and act accordingly.
         The Severity field MUST be set only when Status=False.
     status : str, default is Undefined, required
-        Status of the condition, one of True, False, Unknown.
+        status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
-        Type of condition in CamelCase or in foo.example.com/CamelCase.
+        type of condition in CamelCase or in foo.example.com/CamelCase.
         Many .condition.type values are consistent across resources like Available, but because arbitrary conditions
         can be useful (see .node.status.conditions), the ability to deconflict is important.
     """
@@ -243,20 +238,20 @@ schema RuntimeClusterxK8sIoV1alpha1ExtensionConfigStatusConditionsItems0:
 
 
 schema RuntimeClusterxK8sIoV1alpha1ExtensionConfigStatusHandlersItems0:
-    """
+    r"""
     ExtensionHandler specifies the details of a handler for a particular runtime hook registered by an Extension server.
 
     Attributes
     ----------
     failurePolicy : str, default is Undefined, optional
-        FailurePolicy defines how failures in calls to the ExtensionHandler should be handled by a client.
+        failurePolicy defines how failures in calls to the ExtensionHandler should be handled by a client.
         Defaults to Fail if not set.
     name : str, default is Undefined, required
-        Name is the unique name of the ExtensionHandler.
+        name is the unique name of the ExtensionHandler.
     requestHook : RuntimeClusterxK8sIoV1alpha1ExtensionConfigStatusHandlersItems0RequestHook, default is Undefined, required
         request hook
     timeoutSeconds : int, default is Undefined, optional
-        TimeoutSeconds defines the timeout duration for client calls to the ExtensionHandler.
+        timeoutSeconds defines the timeout duration for client calls to the ExtensionHandler.
         Defaults to 10 is not set.
     """
 
@@ -271,15 +266,15 @@ schema RuntimeClusterxK8sIoV1alpha1ExtensionConfigStatusHandlersItems0:
 
 
 schema RuntimeClusterxK8sIoV1alpha1ExtensionConfigStatusHandlersItems0RequestHook:
-    """
-    RequestHook defines the versioned runtime hook which this ExtensionHandler serves.
+    r"""
+    requestHook defines the versioned runtime hook which this ExtensionHandler serves.
 
     Attributes
     ----------
     apiVersion : str, default is Undefined, required
-        APIVersion is the group and version of the Hook.
+        apiVersion is the group and version of the Hook.
     hook : str, default is Undefined, required
-        Hook is the name of the hook.
+        hook is the name of the hook.
     """
 
 

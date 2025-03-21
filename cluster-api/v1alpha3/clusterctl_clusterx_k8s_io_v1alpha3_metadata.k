@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema Metadata:
-    """
+    r"""
     Metadata for a provider repository.
 
     Attributes
@@ -32,20 +32,19 @@ schema Metadata:
 
 
 schema ClusterctlClusterxK8sIoV1alpha3MetadataReleaseSeriesItems0:
-    """
+    r"""
     ReleaseSeries maps a provider release series (major/minor) with a API Version of Cluster API (contract).
 
     Attributes
     ----------
     contract : str, default is Undefined, optional
-        Contract defines the Cluster API contract supported by this series.
-
+        contract defines the Cluster API contract supported by this series.
 
         The value is an API Version, e.g. `v1alpha3`.
     major : int, default is Undefined, optional
-        Major version of the release series
+        major version of the release series
     minor : int, default is Undefined, optional
-        Minor version of the release series
+        minor version of the release series
     """
 
 

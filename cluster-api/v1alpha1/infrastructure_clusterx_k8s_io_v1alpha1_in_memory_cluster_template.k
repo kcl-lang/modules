@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema InMemoryClusterTemplate:
-    """
+    r"""
     InMemoryClusterTemplate is the Schema for the inmemoryclustertemplates API.
 
     Attributes
@@ -32,7 +32,7 @@ schema InMemoryClusterTemplate:
 
 
 schema InfrastructureClusterxK8sIoV1alpha1InMemoryClusterTemplateSpec:
-    """
+    r"""
     InMemoryClusterTemplateSpec defines the desired state of InMemoryClusterTemplate.
 
     Attributes
@@ -46,7 +46,7 @@ schema InfrastructureClusterxK8sIoV1alpha1InMemoryClusterTemplateSpec:
 
 
 schema InfrastructureClusterxK8sIoV1alpha1InMemoryClusterTemplateSpecTemplate:
-    """
+    r"""
     InMemoryClusterTemplateResource describes the data needed to create a InMemoryCluster from a template.
 
     Attributes
@@ -64,14 +64,14 @@ schema InfrastructureClusterxK8sIoV1alpha1InMemoryClusterTemplateSpecTemplate:
 
 
 schema InfrastructureClusterxK8sIoV1alpha1InMemoryClusterTemplateSpecTemplateMetadata:
-    """
+    r"""
     Standard object's metadata.
     More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        Annotations is an unstructured key value map stored with a resource that may be
+        annotations is an unstructured key value map stored with a resource that may be
         set by external tools to store and retrieve arbitrary metadata. They are not
         queryable and should be preserved when modifying objects.
         More info: http://kubernetes.io/docs/user-guide/annotations
@@ -89,7 +89,7 @@ schema InfrastructureClusterxK8sIoV1alpha1InMemoryClusterTemplateSpecTemplateMet
 
 
 schema InfrastructureClusterxK8sIoV1alpha1InMemoryClusterTemplateSpecTemplateSpec:
-    """
+    r"""
     InMemoryClusterSpec defines the desired state of the InMemoryCluster.
 
     Attributes
@@ -103,7 +103,7 @@ schema InfrastructureClusterxK8sIoV1alpha1InMemoryClusterTemplateSpecTemplateSpe
 
 
 schema InfrastructureClusterxK8sIoV1alpha1InMemoryClusterTemplateSpecTemplateSpecControlPlaneEndpoint:
-    """
+    r"""
     ControlPlaneEndpoint represents the endpoint used to communicate with the control plane.
 
     Attributes

@@ -6,9 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema KubeadmConfigTemplate:
-    """
+    r"""
     KubeadmConfigTemplate is the Schema for the kubeadmconfigtemplates API.
-
 
     Deprecated: This type will be removed in one of the next releases.
 
@@ -35,7 +34,7 @@ schema KubeadmConfigTemplate:
 
 
 schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpec:
-    """
+    r"""
     KubeadmConfigTemplateSpec defines the desired state of KubeadmConfigTemplate.
 
     Attributes
@@ -49,7 +48,7 @@ schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpec:
 
 
 schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplate:
-    """
+    r"""
     KubeadmConfigTemplateResource defines the Template structure.
 
     Attributes
@@ -63,7 +62,7 @@ schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplate:
 
 
 schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpec:
-    """
+    r"""
     KubeadmConfigSpec defines the desired state of KubeadmConfig.
     Either ClusterConfiguration and InitConfiguration should be defined or the JoinConfiguration should be defined.
 
@@ -74,39 +73,36 @@ schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpec:
     diskSetup : BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecDiskSetup, default is Undefined, optional
         disk setup
     files : [BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecFilesItems0], default is Undefined, optional
-        Files specifies extra files to be passed to user_data upon creation.
+        files specifies extra files to be passed to user_data upon creation.
     format : str, default is Undefined, optional
-        Format specifies the output format of the bootstrap data
+        format specifies the output format of the bootstrap data
     initConfiguration : BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecInitConfiguration, default is Undefined, optional
         init configuration
     joinConfiguration : BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecJoinConfiguration, default is Undefined, optional
         join configuration
     mounts : [[str]], default is Undefined, optional
-        Mounts specifies a list of mount points to be setup.
+        mounts specifies a list of mount points to be setup.
     ntp : BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecNtp, default is Undefined, optional
         ntp
     postKubeadmCommands : [str], default is Undefined, optional
-        PostKubeadmCommands specifies extra commands to run after kubeadm runs
+        postKubeadmCommands specifies extra commands to run after kubeadm runs
     preKubeadmCommands : [str], default is Undefined, optional
-        PreKubeadmCommands specifies extra commands to run before kubeadm runs
+        preKubeadmCommands specifies extra commands to run before kubeadm runs
     useExperimentalRetryJoin : bool, default is Undefined, optional
-        UseExperimentalRetryJoin replaces a basic kubeadm command with a shell
+        useExperimentalRetryJoin replaces a basic kubeadm command with a shell
         script with retries for joins.
-
 
         This is meant to be an experimental temporary workaround on some environments
         where joins fail due to timing (and other issues). The long term goal is to add retries to
         kubeadm proper and use that functionality.
 
-
         This will add about 40KB to userdata
-
 
         For more information, refer to https://github.com/kubernetes-sigs/cluster-api/pull/2763#discussion_r397306055.
     users : [BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecUsersItems0], default is Undefined, optional
-        Users specifies extra users to add
+        users specifies extra users to add
     verbosity : int, default is Undefined, optional
-        Verbosity is the number for the kubeadm log level verbosity.
+        verbosity is the number for the kubeadm log level verbosity.
         It overrides the `--v` flag in kubeadm commands.
     """
 
@@ -139,8 +135,8 @@ schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpec:
 
 
 schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecClusterConfiguration:
-    """
-    ClusterConfiguration along with InitConfiguration are the configurations necessary for the init command
+    r"""
+    clusterConfiguration along with InitConfiguration are the configurations necessary for the init command
 
     Attributes
     ----------
@@ -232,7 +228,7 @@ schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecCluste
 
 
 schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecClusterConfigurationAPIServer:
-    """
+    r"""
     APIServer contains extra settings for the API server control plane component
 
     Attributes
@@ -241,8 +237,6 @@ schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecCluste
         CertSANs sets extra Subject Alternative Names for the API Server signing cert.
     extraArgs : {str:str}, default is Undefined, optional
         ExtraArgs is an extra set of flags to pass to the control plane component.
-        TODO: This is temporary and ideally we would like to switch all components to
-        use ComponentConfig + ConfigMaps.
     extraVolumes : [BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecClusterConfigurationAPIServerExtraVolumesItems0], default is Undefined, optional
         ExtraVolumes is an extra set of host volumes, mounted to the control plane component.
     timeoutForControlPlane : str, default is Undefined, optional
@@ -260,7 +254,7 @@ schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecCluste
 
 
 schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecClusterConfigurationAPIServerExtraVolumesItems0:
-    """
+    r"""
     HostPathMount contains elements describing volumes that are mounted from the
     host.
 
@@ -292,15 +286,13 @@ schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecCluste
 
 
 schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecClusterConfigurationControllerManager:
-    """
+    r"""
     ControllerManager contains extra settings for the controller manager control plane component
 
     Attributes
     ----------
     extraArgs : {str:str}, default is Undefined, optional
         ExtraArgs is an extra set of flags to pass to the control plane component.
-        TODO: This is temporary and ideally we would like to switch all components to
-        use ComponentConfig + ConfigMaps.
     extraVolumes : [BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecClusterConfigurationControllerManagerExtraVolumesItems0], default is Undefined, optional
         ExtraVolumes is an extra set of host volumes, mounted to the control plane component.
     """
@@ -312,7 +304,7 @@ schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecCluste
 
 
 schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecClusterConfigurationControllerManagerExtraVolumesItems0:
-    """
+    r"""
     HostPathMount contains elements describing volumes that are mounted from the
     host.
 
@@ -344,7 +336,7 @@ schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecCluste
 
 
 schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecClusterConfigurationDNS:
-    """
+    r"""
     DNS defines the options for the DNS add-on installed in the cluster.
 
     Attributes
@@ -368,7 +360,7 @@ schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecCluste
 
 
 schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecClusterConfigurationEtcd:
-    """
+    r"""
     Etcd holds configuration for etcd.
     NB: This value defaults to a Local (stacked) etcd
 
@@ -387,7 +379,7 @@ schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecCluste
 
 
 schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecClusterConfigurationEtcdExternal:
-    """
+    r"""
     External describes how to connect to an external etcd cluster
     Local and External are mutually exclusive
 
@@ -417,7 +409,7 @@ schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecCluste
 
 
 schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecClusterConfigurationEtcdLocal:
-    """
+    r"""
     Local provides configuration knobs for configuring the local etcd instance
     Local and External are mutually exclusive
 
@@ -456,7 +448,7 @@ schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecCluste
 
 
 schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecClusterConfigurationNetworking:
-    """
+    r"""
     Networking holds configuration for the networking topology of the cluster.
     NB: This value defaults to the Cluster object spec.clusterNetwork.
 
@@ -483,15 +475,13 @@ schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecCluste
 
 
 schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecClusterConfigurationScheduler:
-    """
+    r"""
     Scheduler contains extra settings for the scheduler control plane component
 
     Attributes
     ----------
     extraArgs : {str:str}, default is Undefined, optional
         ExtraArgs is an extra set of flags to pass to the control plane component.
-        TODO: This is temporary and ideally we would like to switch all components to
-        use ComponentConfig + ConfigMaps.
     extraVolumes : [BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecClusterConfigurationSchedulerExtraVolumesItems0], default is Undefined, optional
         ExtraVolumes is an extra set of host volumes, mounted to the control plane component.
     """
@@ -503,7 +493,7 @@ schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecCluste
 
 
 schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecClusterConfigurationSchedulerExtraVolumesItems0:
-    """
+    r"""
     HostPathMount contains elements describing volumes that are mounted from the
     host.
 
@@ -535,15 +525,15 @@ schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecCluste
 
 
 schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecDiskSetup:
-    """
-    DiskSetup specifies options for the creation of partition tables and file systems on devices.
+    r"""
+    diskSetup specifies options for the creation of partition tables and file systems on devices.
 
     Attributes
     ----------
     filesystems : [BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecDiskSetupFilesystemsItems0], default is Undefined, optional
-        Filesystems specifies the list of file systems to setup.
+        filesystems specifies the list of file systems to setup.
     partitions : [BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecDiskSetupPartitionsItems0], default is Undefined, optional
-        Partitions specifies the list of the partitions to setup.
+        partitions specifies the list of the partitions to setup.
     """
 
 
@@ -553,26 +543,26 @@ schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecDiskSe
 
 
 schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecDiskSetupFilesystemsItems0:
-    """
+    r"""
     Filesystem defines the file systems to be created.
 
     Attributes
     ----------
     device : str, default is Undefined, required
-        Device specifies the device name
+        device specifies the device name
     extraOpts : [str], default is Undefined, optional
-        ExtraOpts defined extra options to add to the command for creating the file system.
+        extraOpts defined extra options to add to the command for creating the file system.
     filesystem : str, default is Undefined, required
-        Filesystem specifies the file system type.
+        filesystem specifies the file system type.
     label : str, default is Undefined, required
-        Label specifies the file system label to be used. If set to None, no label is used.
+        label specifies the file system label to be used. If set to None, no label is used.
     overwrite : bool, default is Undefined, optional
-        Overwrite defines whether or not to overwrite any existing filesystem.
+        overwrite defines whether or not to overwrite any existing filesystem.
         If true, any pre-existing file system will be destroyed. Use with Caution.
     partition : str, default is Undefined, optional
-        Partition specifies the partition to use. The valid options are: "auto|any", "auto", "any", "none", and <NUM>, where NUM is the actual partition number.
+        partition specifies the partition to use. The valid options are: "auto|any", "auto", "any", "none", and <NUM>, where NUM is the actual partition number.
     replaceFS : str, default is Undefined, optional
-        ReplaceFS is a special directive, used for Microsoft Azure that instructs cloud-init to replace a file system of <FS_TYPE>.
+        replaceFS is a special directive, used for Microsoft Azure that instructs cloud-init to replace a file system of <FS_TYPE>.
         NOTE: unless you define a label, this requires the use of the 'any' partition directive.
     """
 
@@ -593,22 +583,22 @@ schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecDiskSe
 
 
 schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecDiskSetupPartitionsItems0:
-    """
+    r"""
     Partition defines how to create and layout a partition.
 
     Attributes
     ----------
     device : str, default is Undefined, required
-        Device is the name of the device.
+        device is the name of the device.
     layout : bool, default is Undefined, required
-        Layout specifies the device layout.
+        layout specifies the device layout.
         If it is true, a single partition will be created for the entire device.
         When layout is false, it means don't partition or ignore existing partitioning.
     overwrite : bool, default is Undefined, optional
-        Overwrite describes whether to skip checks and create the partition if a partition or filesystem is found on the device.
+        overwrite describes whether to skip checks and create the partition if a partition or filesystem is found on the device.
         Use with caution. Default is 'false'.
     tableType : str, default is Undefined, optional
-        TableType specifies the tupe of partition table. The following are supported:
+        tableType specifies the tupe of partition table. The following are supported:
         'mbr': default and setups a MS-DOS partition table
         'gpt': setups a GPT partition table
     """
@@ -624,23 +614,23 @@ schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecDiskSe
 
 
 schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecFilesItems0:
-    """
+    r"""
     File defines the input for generating write_files in cloud-init.
 
     Attributes
     ----------
     content : str, default is Undefined, optional
-        Content is the actual content of the file.
+        content is the actual content of the file.
     contentFrom : BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecFilesItems0ContentFrom, default is Undefined, optional
         content from
     encoding : str, default is Undefined, optional
-        Encoding specifies the encoding of the file contents.
+        encoding specifies the encoding of the file contents.
     owner : str, default is Undefined, optional
-        Owner specifies the ownership of the file, e.g. "root:root".
+        owner specifies the ownership of the file, e.g. "root:root".
     path : str, default is Undefined, required
-        Path specifies the full path on disk where to store the file.
+        path specifies the full path on disk where to store the file.
     permissions : str, default is Undefined, optional
-        Permissions specifies the permissions to assign to the file, e.g. "0640".
+        permissions specifies the permissions to assign to the file, e.g. "0640".
     """
 
 
@@ -658,8 +648,8 @@ schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecFilesI
 
 
 schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecFilesItems0ContentFrom:
-    """
-    ContentFrom is a referenced source of content to populate the file.
+    r"""
+    contentFrom is a referenced source of content to populate the file.
 
     Attributes
     ----------
@@ -672,15 +662,15 @@ schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecFilesI
 
 
 schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecFilesItems0ContentFromSecret:
-    """
-    Secret represents a secret that should populate this file.
+    r"""
+    secret represents a secret that should populate this file.
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        Key is the key in the secret's data map for this value.
+        key is the key in the secret's data map for this value.
     name : str, default is Undefined, required
-        Name of the secret in the KubeadmBootstrapConfig's namespace to use.
+        name of the secret in the KubeadmBootstrapConfig's namespace to use.
     """
 
 
@@ -690,8 +680,8 @@ schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecFilesI
 
 
 schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecInitConfiguration:
-    """
-    InitConfiguration along with ClusterConfiguration are the configurations necessary for the init command
+    r"""
+    initConfiguration along with ClusterConfiguration are the configurations necessary for the init command
 
     Attributes
     ----------
@@ -728,7 +718,7 @@ schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecInitCo
 
 
 schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecInitConfigurationBootstrapTokensItems0:
-    """
+    r"""
     BootstrapToken describes one bootstrap token, stored as a Secret in the cluster.
 
     Attributes
@@ -768,7 +758,7 @@ schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecInitCo
 
 
 schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecInitConfigurationLocalAPIEndpoint:
-    """
+    r"""
     LocalAPIEndpoint represents the endpoint of the API server instance that's deployed on this control plane node
     In HA setups, this differs from ClusterConfiguration.ControlPlaneEndpoint in the sense that ControlPlaneEndpoint
     is the global endpoint for the cluster, which then loadbalances the requests to each individual API server. This
@@ -792,7 +782,7 @@ schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecInitCo
 
 
 schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecInitConfigurationNodeRegistration:
-    """
+    r"""
     NodeRegistration holds fields that relate to registering the new control-plane node to the cluster.
     When used in the context of control plane nodes, NodeRegistration should remain consistent
     across both InitConfiguration and JoinConfiguration
@@ -826,7 +816,7 @@ schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecInitCo
 
 
 schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecInitConfigurationNodeRegistrationTaintsItems0:
-    """
+    r"""
     The node this Taint is attached to has the "effect" on
     any pod that does not tolerate the Taint.
 
@@ -856,8 +846,8 @@ schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecInitCo
 
 
 schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecJoinConfiguration:
-    """
-    JoinConfiguration is the kubeadm configuration for the join command
+    r"""
+    joinConfiguration is the kubeadm configuration for the join command
 
     Attributes
     ----------
@@ -870,7 +860,6 @@ schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecJoinCo
         CACertPath is the path to the SSL certificate authority used to
         secure comunications between node and control-plane.
         Defaults to "/etc/kubernetes/pki/ca.crt".
-        TODO: revisit when there is defaulting from k/k
     controlPlane : BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecJoinConfigurationControlPlane, default is Undefined, optional
         control plane
     discovery : BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecJoinConfigurationDiscovery, default is Undefined, optional
@@ -900,7 +889,7 @@ schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecJoinCo
 
 
 schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecJoinConfigurationControlPlane:
-    """
+    r"""
     ControlPlane defines the additional control plane instance to be deployed on the joining node.
     If nil, no additional control plane instance will be deployed.
 
@@ -915,7 +904,7 @@ schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecJoinCo
 
 
 schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecJoinConfigurationControlPlaneLocalAPIEndpoint:
-    """
+    r"""
     LocalAPIEndpoint represents the endpoint of the API server instance to be deployed on this node.
 
     Attributes
@@ -934,9 +923,8 @@ schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecJoinCo
 
 
 schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecJoinConfigurationDiscovery:
-    """
+    r"""
     Discovery specifies the options for the kubelet to use during the TLS Bootstrap process
-    TODO: revisit when there is defaulting from k/k
 
     Attributes
     ----------
@@ -950,7 +938,6 @@ schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecJoinCo
         TLSBootstrapToken is a token used for TLS bootstrapping.
         If .BootstrapToken is set, this field is defaulted to .BootstrapToken.Token, but can be overridden.
         If .File is set, this field **must be set** in case the KubeConfigFile does not contain any other authentication information
-        TODO: revisit when there is defaulting from k/k
     """
 
 
@@ -964,7 +951,7 @@ schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecJoinCo
 
 
 schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecJoinConfigurationDiscoveryBootstrapToken:
-    """
+    r"""
     BootstrapToken is used to set the options for bootstrap token based discovery
     BootstrapToken and File are mutually exclusive
 
@@ -1001,7 +988,7 @@ schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecJoinCo
 
 
 schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecJoinConfigurationDiscoveryFile:
-    """
+    r"""
     File is used to specify a file or URL to a kubeconfig file from which to load cluster information
     BootstrapToken and File are mutually exclusive
 
@@ -1016,7 +1003,7 @@ schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecJoinCo
 
 
 schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecJoinConfigurationNodeRegistration:
-    """
+    r"""
     NodeRegistration holds fields that relate to registering the new control-plane node to the cluster.
     When used in the context of control plane nodes, NodeRegistration should remain consistent
     across both InitConfiguration and JoinConfiguration
@@ -1050,7 +1037,7 @@ schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecJoinCo
 
 
 schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecJoinConfigurationNodeRegistrationTaintsItems0:
-    """
+    r"""
     The node this Taint is attached to has the "effect" on
     any pod that does not tolerate the Taint.
 
@@ -1080,15 +1067,15 @@ schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecJoinCo
 
 
 schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecNtp:
-    """
-    NTP specifies NTP configuration
+    r"""
+    ntp specifies NTP configuration
 
     Attributes
     ----------
     enabled : bool, default is Undefined, optional
-        Enabled specifies whether NTP should be enabled
+        enabled specifies whether NTP should be enabled
     servers : [str], default is Undefined, optional
-        Servers specifies which NTP servers to use
+        servers specifies which NTP servers to use
     """
 
 
@@ -1098,33 +1085,33 @@ schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecNtp:
 
 
 schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpecUsersItems0:
-    """
+    r"""
     User defines the input for a generated user in cloud-init.
 
     Attributes
     ----------
     gecos : str, default is Undefined, optional
-        Gecos specifies the gecos to use for the user
+        gecos specifies the gecos to use for the user
     groups : str, default is Undefined, optional
-        Groups specifies the additional groups for the user
+        groups specifies the additional groups for the user
     homeDir : str, default is Undefined, optional
-        HomeDir specifies the home directory to use for the user
+        homeDir specifies the home directory to use for the user
     inactive : bool, default is Undefined, optional
-        Inactive specifies whether to mark the user as inactive
+        inactive specifies whether to mark the user as inactive
     lockPassword : bool, default is Undefined, optional
-        LockPassword specifies if password login should be disabled
+        lockPassword specifies if password login should be disabled
     name : str, default is Undefined, required
-        Name specifies the user name
+        name specifies the user name
     passwd : str, default is Undefined, optional
-        Passwd specifies a hashed password for the user
+        passwd specifies a hashed password for the user
     primaryGroup : str, default is Undefined, optional
-        PrimaryGroup specifies the primary group for the user
+        primaryGroup specifies the primary group for the user
     shell : str, default is Undefined, optional
-        Shell specifies the user's shell
+        shell specifies the user's shell
     sshAuthorizedKeys : [str], default is Undefined, optional
-        SSHAuthorizedKeys specifies a list of ssh authorized keys for the user
+        sshAuthorizedKeys specifies a list of ssh authorized keys for the user
     sudo : str, default is Undefined, optional
-        Sudo specifies a sudo role for the user
+        sudo specifies a sudo role for the user
     """
 
 

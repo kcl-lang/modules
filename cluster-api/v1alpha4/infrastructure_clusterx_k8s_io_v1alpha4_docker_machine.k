@@ -6,9 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema DockerMachine:
-    """
+    r"""
     DockerMachine is the Schema for the dockermachines API.
-
 
     Deprecated: This type will be removed in one of the next releases.
 
@@ -39,7 +38,7 @@ schema DockerMachine:
 
 
 schema InfrastructureClusterxK8sIoV1alpha4DockerMachineSpec:
-    """
+    r"""
     DockerMachineSpec defines the desired state of DockerMachine.
 
     Attributes
@@ -73,7 +72,7 @@ schema InfrastructureClusterxK8sIoV1alpha4DockerMachineSpec:
 
 
 schema InfrastructureClusterxK8sIoV1alpha4DockerMachineSpecExtraMountsItems0:
-    """
+    r"""
     Mount specifies a host volume to mount into a container.
     This is a simplified version of kind v1alpha4.Mount types.
 
@@ -98,7 +97,7 @@ schema InfrastructureClusterxK8sIoV1alpha4DockerMachineSpecExtraMountsItems0:
 
 
 schema InfrastructureClusterxK8sIoV1alpha4DockerMachineStatus:
-    """
+    r"""
     DockerMachineStatus defines the observed state of DockerMachine.
 
     Attributes
@@ -125,7 +124,7 @@ schema InfrastructureClusterxK8sIoV1alpha4DockerMachineStatus:
 
 
 schema InfrastructureClusterxK8sIoV1alpha4DockerMachineStatusAddressesItems0:
-    """
+    r"""
     MachineAddress contains information for the node's address.
 
     Attributes
@@ -143,7 +142,7 @@ schema InfrastructureClusterxK8sIoV1alpha4DockerMachineStatusAddressesItems0:
 
 
 schema InfrastructureClusterxK8sIoV1alpha4DockerMachineStatusConditionsItems0:
-    """
+    r"""
     Condition defines an observation of a Cluster API resource operational state.
 
     Attributes
@@ -160,13 +159,13 @@ schema InfrastructureClusterxK8sIoV1alpha4DockerMachineStatusConditionsItems0:
         The specific API may choose whether or not this field is considered a guaranteed API.
         This field may not be empty.
     severity : str, default is Undefined, optional
-        Severity provides an explicit classification of Reason code, so the users or machines can immediately
+        severity provides an explicit classification of Reason code, so the users or machines can immediately
         understand the current situation and act accordingly.
         The Severity field MUST be set only when Status=False.
     status : str, default is Undefined, required
-        Status of the condition, one of True, False, Unknown.
+        status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
-        Type of condition in CamelCase or in foo.example.com/CamelCase.
+        type of condition in CamelCase or in foo.example.com/CamelCase.
         Many .condition.type values are consistent across resources like Available, but because arbitrary conditions
         can be useful (see .node.status.conditions), the ability to deconflict is important.
     """

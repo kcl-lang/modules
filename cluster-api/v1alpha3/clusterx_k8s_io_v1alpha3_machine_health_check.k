@@ -6,9 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema MachineHealthCheck:
-    """
+    r"""
     MachineHealthCheck is the Schema for the machinehealthchecks API.
-
 
     Deprecated: This type will be removed in one of the next releases.
 
@@ -39,13 +38,13 @@ schema MachineHealthCheck:
 
 
 schema ClusterxK8sIoV1alpha3MachineHealthCheckSpec:
-    """
+    r"""
     Specification of machine health check policy
 
     Attributes
     ----------
     clusterName : str, default is Undefined, required
-        ClusterName is the name of the Cluster this object belongs to.
+        clusterName is the name of the Cluster this object belongs to.
     maxUnhealthy : int | str, default is Undefined, optional
         Any further remediation is only allowed if at most "MaxUnhealthy" machines selected by
         "selector" are not healthy.
@@ -57,7 +56,7 @@ schema ClusterxK8sIoV1alpha3MachineHealthCheckSpec:
     selector : ClusterxK8sIoV1alpha3MachineHealthCheckSpecSelector, default is Undefined, required
         selector
     unhealthyConditions : [ClusterxK8sIoV1alpha3MachineHealthCheckSpecUnhealthyConditionsItems0], default is Undefined, required
-        UnhealthyConditions contains a list of the conditions that determine
+        unhealthyConditions contains a list of the conditions that determine
         whether a node is considered unhealthy.  The conditions are combined in a
         logical OR, i.e. if any of the conditions is met, the node is unhealthy.
     """
@@ -82,10 +81,9 @@ schema ClusterxK8sIoV1alpha3MachineHealthCheckSpec:
 
 
 schema ClusterxK8sIoV1alpha3MachineHealthCheckSpecRemediationTemplate:
-    """
-    RemediationTemplate is a reference to a remediation template
+    r"""
+    remediationTemplate is a reference to a remediation template
     provided by an infrastructure provider.
-
 
     This field is completely optional, when filled, the MachineHealthCheck controller
     creates a new object from the template referenced and hands off remediation of the machine to
@@ -103,7 +101,6 @@ schema ClusterxK8sIoV1alpha3MachineHealthCheckSpecRemediationTemplate:
         the event) or if no container name is specified "spec.containers[2]" (container with
         index 2 in this pod). This syntax is chosen only to have some well-defined way of
         referencing a part of an object.
-        TODO: this design is not final and this field is subject to change in the future.
     kind : str, default is Undefined, optional
         Kind of the referent.
         More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
@@ -138,7 +135,7 @@ schema ClusterxK8sIoV1alpha3MachineHealthCheckSpecRemediationTemplate:
 
 
 schema ClusterxK8sIoV1alpha3MachineHealthCheckSpecSelector:
-    """
+    r"""
     Label selector to match machines whose health will be exercised
 
     Attributes
@@ -158,7 +155,7 @@ schema ClusterxK8sIoV1alpha3MachineHealthCheckSpecSelector:
 
 
 schema ClusterxK8sIoV1alpha3MachineHealthCheckSpecSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
 
@@ -185,7 +182,7 @@ schema ClusterxK8sIoV1alpha3MachineHealthCheckSpecSelectorMatchExpressionsItems0
 
 
 schema ClusterxK8sIoV1alpha3MachineHealthCheckSpecUnhealthyConditionsItems0:
-    """
+    r"""
     UnhealthyCondition represents a Node condition type and value with a timeout
     specified as a duration.  When the named condition has been in the given
     status for at least the timeout value, a node is considered unhealthy.
@@ -214,24 +211,24 @@ schema ClusterxK8sIoV1alpha3MachineHealthCheckSpecUnhealthyConditionsItems0:
 
 
 schema ClusterxK8sIoV1alpha3MachineHealthCheckStatus:
-    """
+    r"""
     Most recently observed status of MachineHealthCheck resource
 
     Attributes
     ----------
     conditions : [ClusterxK8sIoV1alpha3MachineHealthCheckStatusConditionsItems0], default is Undefined, optional
-        Conditions defines current service state of the MachineHealthCheck.
+        conditions defines current service state of the MachineHealthCheck.
     currentHealthy : int, default is Undefined, optional
         total number of healthy machines counted by this machine health check
     expectedMachines : int, default is Undefined, optional
         total number of machines counted by this machine health check
     observedGeneration : int, default is Undefined, optional
-        ObservedGeneration is the latest generation observed by the controller.
+        observedGeneration is the latest generation observed by the controller.
     remediationsAllowed : int, default is Undefined, optional
-        RemediationsAllowed is the number of further remediations allowed by this machine health check before
+        remediationsAllowed is the number of further remediations allowed by this machine health check before
         maxUnhealthy short circuiting will be applied
     targets : [str], default is Undefined, optional
-        Targets shows the current list of machines the machine health check is watching
+        targets shows the current list of machines the machine health check is watching
     """
 
 
@@ -255,7 +252,7 @@ schema ClusterxK8sIoV1alpha3MachineHealthCheckStatus:
 
 
 schema ClusterxK8sIoV1alpha3MachineHealthCheckStatusConditionsItems0:
-    """
+    r"""
     Condition defines an observation of a Cluster API resource operational state.
 
     Attributes
@@ -272,13 +269,13 @@ schema ClusterxK8sIoV1alpha3MachineHealthCheckStatusConditionsItems0:
         The specific API may choose whether or not this field is considered a guaranteed API.
         This field may not be empty.
     severity : str, default is Undefined, optional
-        Severity provides an explicit classification of Reason code, so the users or machines can immediately
+        severity provides an explicit classification of Reason code, so the users or machines can immediately
         understand the current situation and act accordingly.
         The Severity field MUST be set only when Status=False.
     status : str, default is Undefined, required
-        Status of the condition, one of True, False, Unknown.
+        status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
-        Type of condition in CamelCase or in foo.example.com/CamelCase.
+        type of condition in CamelCase or in foo.example.com/CamelCase.
         Many .condition.type values are consistent across resources like Available, but because arbitrary conditions
         can be useful (see .node.status.conditions), the ability to deconflict is important.
     """

@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema Cluster:
-    """
+    r"""
     Cluster is the Schema for the clusters API.
 
     Attributes
@@ -36,7 +36,7 @@ schema Cluster:
 
 
 schema ClusterxK8sIoV1alpha3ClusterSpec:
-    """
+    r"""
     ClusterSpec defines the desired state of Cluster.
 
     Attributes
@@ -50,7 +50,7 @@ schema ClusterxK8sIoV1alpha3ClusterSpec:
     infrastructureRef : ClusterxK8sIoV1alpha3ClusterSpecInfrastructureRef, default is Undefined, optional
         infrastructure ref
     paused : bool, default is Undefined, optional
-        Paused can be used to prevent controllers from processing the Cluster and all its associated objects.
+        paused can be used to prevent controllers from processing the Cluster and all its associated objects.
     """
 
 
@@ -66,13 +66,13 @@ schema ClusterxK8sIoV1alpha3ClusterSpec:
 
 
 schema ClusterxK8sIoV1alpha3ClusterSpecClusterNetwork:
-    """
+    r"""
     Cluster network configuration.
 
     Attributes
     ----------
     apiServerPort : int, default is Undefined, optional
-        APIServerPort specifies the port the API Server should bind to.
+        apiServerPort specifies the port the API Server should bind to.
         Defaults to 6443.
     pods : ClusterxK8sIoV1alpha3ClusterSpecClusterNetworkPods, default is Undefined, optional
         pods
@@ -93,7 +93,7 @@ schema ClusterxK8sIoV1alpha3ClusterSpecClusterNetwork:
 
 
 schema ClusterxK8sIoV1alpha3ClusterSpecClusterNetworkPods:
-    """
+    r"""
     The network ranges from which Pod networks are allocated.
 
     Attributes
@@ -107,7 +107,7 @@ schema ClusterxK8sIoV1alpha3ClusterSpecClusterNetworkPods:
 
 
 schema ClusterxK8sIoV1alpha3ClusterSpecClusterNetworkServices:
-    """
+    r"""
     The network ranges from which service VIPs are allocated.
 
     Attributes
@@ -121,8 +121,8 @@ schema ClusterxK8sIoV1alpha3ClusterSpecClusterNetworkServices:
 
 
 schema ClusterxK8sIoV1alpha3ClusterSpecControlPlaneEndpoint:
-    """
-    ControlPlaneEndpoint represents the endpoint used to communicate with the control plane.
+    r"""
+    controlPlaneEndpoint represents the endpoint used to communicate with the control plane.
 
     Attributes
     ----------
@@ -139,8 +139,8 @@ schema ClusterxK8sIoV1alpha3ClusterSpecControlPlaneEndpoint:
 
 
 schema ClusterxK8sIoV1alpha3ClusterSpecControlPlaneRef:
-    """
-    ControlPlaneRef is an optional reference to a provider-specific resource that holds
+    r"""
+    controlPlaneRef is an optional reference to a provider-specific resource that holds
     the details for provisioning the Control Plane for a Cluster.
 
     Attributes
@@ -155,7 +155,6 @@ schema ClusterxK8sIoV1alpha3ClusterSpecControlPlaneRef:
         the event) or if no container name is specified "spec.containers[2]" (container with
         index 2 in this pod). This syntax is chosen only to have some well-defined way of
         referencing a part of an object.
-        TODO: this design is not final and this field is subject to change in the future.
     kind : str, default is Undefined, optional
         Kind of the referent.
         More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
@@ -190,8 +189,8 @@ schema ClusterxK8sIoV1alpha3ClusterSpecControlPlaneRef:
 
 
 schema ClusterxK8sIoV1alpha3ClusterSpecInfrastructureRef:
-    """
-    InfrastructureRef is a reference to a provider-specific resource that holds the details
+    r"""
+    infrastructureRef is a reference to a provider-specific resource that holds the details
     for provisioning infrastructure for a cluster in said provider.
 
     Attributes
@@ -206,7 +205,6 @@ schema ClusterxK8sIoV1alpha3ClusterSpecInfrastructureRef:
         the event) or if no container name is specified "spec.containers[2]" (container with
         index 2 in this pod). This syntax is chosen only to have some well-defined way of
         referencing a part of an object.
-        TODO: this design is not final and this field is subject to change in the future.
     kind : str, default is Undefined, optional
         Kind of the referent.
         More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
@@ -241,32 +239,32 @@ schema ClusterxK8sIoV1alpha3ClusterSpecInfrastructureRef:
 
 
 schema ClusterxK8sIoV1alpha3ClusterStatus:
-    """
+    r"""
     ClusterStatus defines the observed state of Cluster.
 
     Attributes
     ----------
     conditions : [ClusterxK8sIoV1alpha3ClusterStatusConditionsItems0], default is Undefined, optional
-        Conditions defines current service state of the cluster.
+        conditions defines current service state of the cluster.
     controlPlaneInitialized : bool, default is Undefined, optional
-        ControlPlaneInitialized defines if the control plane has been initialized.
+        controlPlaneInitialized defines if the control plane has been initialized.
     controlPlaneReady : bool, default is Undefined, optional
-        ControlPlaneReady defines if the control plane is ready.
+        controlPlaneReady defines if the control plane is ready.
     failureDomains : {str:ClusterxK8sIoV1alpha3ClusterStatusFailureDomainsAnon}, default is Undefined, optional
-        FailureDomains is a slice of failure domain objects synced from the infrastructure provider.
+        failureDomains is a slice of failure domain objects synced from the infrastructure provider.
     failureMessage : str, default is Undefined, optional
-        FailureMessage indicates that there is a fatal problem reconciling the
+        failureMessage indicates that there is a fatal problem reconciling the
         state, and will be set to a descriptive error message.
     failureReason : str, default is Undefined, optional
-        FailureReason indicates that there is a fatal problem reconciling the
+        failureReason indicates that there is a fatal problem reconciling the
         state, and will be set to a token value suitable for
         programmatic interpretation.
     infrastructureReady : bool, default is Undefined, optional
-        InfrastructureReady is the state of the infrastructure provider.
+        infrastructureReady is the state of the infrastructure provider.
     observedGeneration : int, default is Undefined, optional
-        ObservedGeneration is the latest generation observed by the controller.
+        observedGeneration is the latest generation observed by the controller.
     phase : str, default is Undefined, optional
-        Phase represents the current phase of cluster actuation.
+        phase represents the current phase of cluster actuation.
         E.g. Pending, Running, Terminating, Failed etc.
     """
 
@@ -291,7 +289,7 @@ schema ClusterxK8sIoV1alpha3ClusterStatus:
 
 
 schema ClusterxK8sIoV1alpha3ClusterStatusConditionsItems0:
-    """
+    r"""
     Condition defines an observation of a Cluster API resource operational state.
 
     Attributes
@@ -308,13 +306,13 @@ schema ClusterxK8sIoV1alpha3ClusterStatusConditionsItems0:
         The specific API may choose whether or not this field is considered a guaranteed API.
         This field may not be empty.
     severity : str, default is Undefined, optional
-        Severity provides an explicit classification of Reason code, so the users or machines can immediately
+        severity provides an explicit classification of Reason code, so the users or machines can immediately
         understand the current situation and act accordingly.
         The Severity field MUST be set only when Status=False.
     status : str, default is Undefined, required
-        Status of the condition, one of True, False, Unknown.
+        status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
-        Type of condition in CamelCase or in foo.example.com/CamelCase.
+        type of condition in CamelCase or in foo.example.com/CamelCase.
         Many .condition.type values are consistent across resources like Available, but because arbitrary conditions
         can be useful (see .node.status.conditions), the ability to deconflict is important.
     """
@@ -334,16 +332,16 @@ schema ClusterxK8sIoV1alpha3ClusterStatusConditionsItems0:
 
 
 schema ClusterxK8sIoV1alpha3ClusterStatusFailureDomainsAnon:
-    """
+    r"""
     FailureDomainSpec is the Schema for Cluster API failure domains.
     It allows controllers to understand how many failure domains a cluster can optionally span across.
 
     Attributes
     ----------
     attributes : {str:str}, default is Undefined, optional
-        Attributes is a free form map of attributes an infrastructure provider might use or require.
+        attributes is a free form map of attributes an infrastructure provider might use or require.
     controlPlane : bool, default is Undefined, optional
-        ControlPlane determines if this failure domain is suitable for use by control plane machines.
+        controlPlane determines if this failure domain is suitable for use by control plane machines.
     """
 
 

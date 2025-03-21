@@ -6,9 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema MachineDeployment:
-    """
+    r"""
     MachineDeployment is the Schema for the machinedeployments API.
-
 
     Deprecated: This type will be removed in one of the next releases.
 
@@ -39,13 +38,13 @@ schema MachineDeployment:
 
 
 schema ClusterxK8sIoV1alpha3MachineDeploymentSpec:
-    """
+    r"""
     MachineDeploymentSpec defines the desired state of MachineDeployment.
 
     Attributes
     ----------
     clusterName : str, default is Undefined, required
-        ClusterName is the name of the Cluster this object belongs to.
+        clusterName is the name of the Cluster this object belongs to.
     minReadySeconds : int, default is Undefined, optional
         Minimum number of seconds for which a newly created machine should
         be ready.
@@ -99,7 +98,7 @@ schema ClusterxK8sIoV1alpha3MachineDeploymentSpec:
 
 
 schema ClusterxK8sIoV1alpha3MachineDeploymentSpecSelector:
-    """
+    r"""
     Label selector for machines. Existing MachineSets whose machines are
     selected by this will be the ones affected by this deployment.
     It must match the machine template's labels.
@@ -121,7 +120,7 @@ schema ClusterxK8sIoV1alpha3MachineDeploymentSpecSelector:
 
 
 schema ClusterxK8sIoV1alpha3MachineDeploymentSpecSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
 
@@ -148,7 +147,7 @@ schema ClusterxK8sIoV1alpha3MachineDeploymentSpecSelectorMatchExpressionsItems0:
 
 
 schema ClusterxK8sIoV1alpha3MachineDeploymentSpecStrategy:
-    """
+    r"""
     The deployment strategy to use to replace existing machines with
     new ones.
 
@@ -157,7 +156,7 @@ schema ClusterxK8sIoV1alpha3MachineDeploymentSpecStrategy:
     rollingUpdate : ClusterxK8sIoV1alpha3MachineDeploymentSpecStrategyRollingUpdate, default is Undefined, optional
         rolling update
     $type : str, default is Undefined, optional
-        Type of deployment. Currently the only supported strategy is
+        type of deployment. Currently the only supported strategy is
         "RollingUpdate".
         Default is RollingUpdate.
     """
@@ -169,7 +168,7 @@ schema ClusterxK8sIoV1alpha3MachineDeploymentSpecStrategy:
 
 
 schema ClusterxK8sIoV1alpha3MachineDeploymentSpecStrategyRollingUpdate:
-    """
+    r"""
     Rolling update config params. Present only if
     MachineDeploymentStrategyType = RollingUpdate.
 
@@ -211,8 +210,8 @@ schema ClusterxK8sIoV1alpha3MachineDeploymentSpecStrategyRollingUpdate:
 
 
 schema ClusterxK8sIoV1alpha3MachineDeploymentSpecTemplate:
-    """
-    Template describes the machines that will be created.
+    r"""
+    template describes the machines that will be created.
 
     Attributes
     ----------
@@ -229,19 +228,19 @@ schema ClusterxK8sIoV1alpha3MachineDeploymentSpecTemplate:
 
 
 schema ClusterxK8sIoV1alpha3MachineDeploymentSpecTemplateMetadata:
-    """
+    r"""
     Standard object's metadata.
     More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        Annotations is an unstructured key value map stored with a resource that may be
+        annotations is an unstructured key value map stored with a resource that may be
         set by external tools to store and retrieve arbitrary metadata. They are not
         queryable and should be preserved when modifying objects.
         More info: http://kubernetes.io/docs/user-guide/annotations
     generateName : str, default is Undefined, optional
-        GenerateName is an optional prefix, used by the server, to generate a unique
+        generateName is an optional prefix, used by the server, to generate a unique
         name ONLY IF the Name field has not been provided.
         If this field is used, the name returned to the client will be different
         than the name passed. This value will also be combined with a unique suffix.
@@ -249,16 +248,13 @@ schema ClusterxK8sIoV1alpha3MachineDeploymentSpecTemplateMetadata:
         and may be truncated by the length of the suffix required to make the value
         unique on the server.
 
-
         If this field is specified and the generated name exists, the server will
         NOT return a 409 - instead, it will either return 201 Created or 500 with Reason
         ServerTimeout indicating a unique name could not be found in the time allotted, and the client
         should retry (optionally after the time indicated in the Retry-After header).
 
-
         Applied only if Name is not specified.
         More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#idempotency
-
 
         Deprecated: This field has no function and is going to be removed in a next release.
     labels : {str:str}, default is Undefined, optional
@@ -267,26 +263,23 @@ schema ClusterxK8sIoV1alpha3MachineDeploymentSpecTemplateMetadata:
         and services.
         More info: http://kubernetes.io/docs/user-guide/labels
     name : str, default is Undefined, optional
-        Name must be unique within a namespace. Is required when creating resources, although
+        name must be unique within a namespace. Is required when creating resources, although
         some resources may allow a client to request the generation of an appropriate name
         automatically. Name is primarily intended for creation idempotence and configuration
         definition.
         Cannot be updated.
         More info: http://kubernetes.io/docs/user-guide/identifiers#names
 
-
         Deprecated: This field has no function and is going to be removed in a next release.
     namespace : str, default is Undefined, optional
-        Namespace defines the space within each name must be unique. An empty namespace is
+        namespace defines the space within each name must be unique. An empty namespace is
         equivalent to the "default" namespace, but "default" is the canonical representation.
         Not all objects are required to be scoped to a namespace - the value of this field for
         those objects will be empty.
 
-
         Must be a DNS_LABEL.
         Cannot be updated.
         More info: http://kubernetes.io/docs/user-guide/namespaces
-
 
         Deprecated: This field has no function and is going to be removed in a next release.
     ownerReferences : [ClusterxK8sIoV1alpha3MachineDeploymentSpecTemplateMetadataOwnerReferencesItems0], default is Undefined, optional
@@ -294,7 +287,6 @@ schema ClusterxK8sIoV1alpha3MachineDeploymentSpecTemplateMetadata:
         been deleted, this object will be garbage collected. If this object is managed by a controller,
         then an entry in this list will point to this controller, with the controller field set to true.
         There cannot be more than one managing controller.
-
 
         Deprecated: This field has no function and is going to be removed in a next release.
     """
@@ -314,7 +306,7 @@ schema ClusterxK8sIoV1alpha3MachineDeploymentSpecTemplateMetadata:
 
 
 schema ClusterxK8sIoV1alpha3MachineDeploymentSpecTemplateMetadataOwnerReferencesItems0:
-    """
+    r"""
     OwnerReference contains enough information to let you identify an owning
     object. An owning object must be in the same namespace as the dependent, or
     be cluster-scoped, so there is no namespace field.
@@ -360,7 +352,7 @@ schema ClusterxK8sIoV1alpha3MachineDeploymentSpecTemplateMetadataOwnerReferences
 
 
 schema ClusterxK8sIoV1alpha3MachineDeploymentSpecTemplateSpec:
-    """
+    r"""
     Specification of the desired behavior of the machine.
     More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
 
@@ -369,18 +361,18 @@ schema ClusterxK8sIoV1alpha3MachineDeploymentSpecTemplateSpec:
     bootstrap : ClusterxK8sIoV1alpha3MachineDeploymentSpecTemplateSpecBootstrap, default is Undefined, required
         bootstrap
     clusterName : str, default is Undefined, required
-        ClusterName is the name of the Cluster this object belongs to.
+        clusterName is the name of the Cluster this object belongs to.
     failureDomain : str, default is Undefined, optional
-        FailureDomain is the failure domain the machine will be created in.
+        failureDomain is the failure domain the machine will be created in.
         Must match a key in the FailureDomains map stored on the cluster object.
     infrastructureRef : ClusterxK8sIoV1alpha3MachineDeploymentSpecTemplateSpecInfrastructureRef, default is Undefined, required
         infrastructure ref
     nodeDrainTimeout : str, default is Undefined, optional
-        NodeDrainTimeout is the total amount of time that the controller will spend on draining a node.
+        nodeDrainTimeout is the total amount of time that the controller will spend on draining a node.
         The default value is 0, meaning that the node can be drained without any time limitations.
         NOTE: NodeDrainTimeout is different from `kubectl drain --timeout`
     providerID : str, default is Undefined, optional
-        ProviderID is the identification ID of the machine provided by the provider.
+        providerID is the identification ID of the machine provided by the provider.
         This field must match the provider ID as seen on the node object corresponding to this machine.
         This field is required by higher level consumers of cluster-api. Example use case is cluster autoscaler
         with cluster-api as provider. Clean-up logic in the autoscaler compares machines to nodes to find out
@@ -391,7 +383,7 @@ schema ClusterxK8sIoV1alpha3MachineDeploymentSpecTemplateSpec:
         This field will be set by the actuators and consumed by higher level entities like autoscaler that will
         be interfacing with cluster-api as generic provider.
     version : str, default is Undefined, optional
-        Version defines the desired Kubernetes version.
+        version defines the desired Kubernetes version.
         This field is meant to be optionally used by bootstrap providers.
     """
 
@@ -416,8 +408,8 @@ schema ClusterxK8sIoV1alpha3MachineDeploymentSpecTemplateSpec:
 
 
 schema ClusterxK8sIoV1alpha3MachineDeploymentSpecTemplateSpecBootstrap:
-    """
-    Bootstrap is a reference to a local struct which encapsulates
+    r"""
+    bootstrap is a reference to a local struct which encapsulates
     fields to configure the Machine’s bootstrapping mechanism.
 
     Attributes
@@ -425,13 +417,12 @@ schema ClusterxK8sIoV1alpha3MachineDeploymentSpecTemplateSpecBootstrap:
     configRef : ClusterxK8sIoV1alpha3MachineDeploymentSpecTemplateSpecBootstrapConfigRef, default is Undefined, optional
         config ref
     data : str, default is Undefined, optional
-        Data contains the bootstrap data, such as cloud-init details scripts.
+        data contains the bootstrap data, such as cloud-init details scripts.
         If nil, the Machine should remain in the Pending state.
-
 
         Deprecated: Switch to DataSecretName.
     dataSecretName : str, default is Undefined, optional
-        DataSecretName is the name of the secret that stores the bootstrap data script.
+        dataSecretName is the name of the secret that stores the bootstrap data script.
         If nil, the Machine should remain in the Pending state.
     """
 
@@ -444,8 +435,8 @@ schema ClusterxK8sIoV1alpha3MachineDeploymentSpecTemplateSpecBootstrap:
 
 
 schema ClusterxK8sIoV1alpha3MachineDeploymentSpecTemplateSpecBootstrapConfigRef:
-    """
-    ConfigRef is a reference to a bootstrap provider-specific resource
+    r"""
+    configRef is a reference to a bootstrap provider-specific resource
     that holds configuration details. The reference is optional to
     allow users/operators to specify Bootstrap.Data without
     the need of a controller.
@@ -462,7 +453,6 @@ schema ClusterxK8sIoV1alpha3MachineDeploymentSpecTemplateSpecBootstrapConfigRef:
         the event) or if no container name is specified "spec.containers[2]" (container with
         index 2 in this pod). This syntax is chosen only to have some well-defined way of
         referencing a part of an object.
-        TODO: this design is not final and this field is subject to change in the future.
     kind : str, default is Undefined, optional
         Kind of the referent.
         More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
@@ -497,8 +487,8 @@ schema ClusterxK8sIoV1alpha3MachineDeploymentSpecTemplateSpecBootstrapConfigRef:
 
 
 schema ClusterxK8sIoV1alpha3MachineDeploymentSpecTemplateSpecInfrastructureRef:
-    """
-    InfrastructureRef is a required reference to a custom resource
+    r"""
+    infrastructureRef is a required reference to a custom resource
     offered by an infrastructure provider.
 
     Attributes
@@ -513,7 +503,6 @@ schema ClusterxK8sIoV1alpha3MachineDeploymentSpecTemplateSpecInfrastructureRef:
         the event) or if no container name is specified "spec.containers[2]" (container with
         index 2 in this pod). This syntax is chosen only to have some well-defined way of
         referencing a part of an object.
-        TODO: this design is not final and this field is subject to change in the future.
     kind : str, default is Undefined, optional
         Kind of the referent.
         More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
@@ -548,7 +537,7 @@ schema ClusterxK8sIoV1alpha3MachineDeploymentSpecTemplateSpecInfrastructureRef:
 
 
 schema ClusterxK8sIoV1alpha3MachineDeploymentStatus:
-    """
+    r"""
     MachineDeploymentStatus defines the observed state of MachineDeployment.
 
     Attributes
@@ -559,14 +548,14 @@ schema ClusterxK8sIoV1alpha3MachineDeploymentStatus:
     observedGeneration : int, default is Undefined, optional
         The generation observed by the deployment controller.
     phase : str, default is Undefined, optional
-        Phase represents the current phase of a MachineDeployment (ScalingUp, ScalingDown, Running, Failed, or Unknown).
+        phase represents the current phase of a MachineDeployment (ScalingUp, ScalingDown, Running, Failed, or Unknown).
     readyReplicas : int, default is Undefined, optional
         Total number of ready machines targeted by this deployment.
     replicas : int, default is Undefined, optional
         Total number of non-terminated machines targeted by this deployment
         (their labels match the selector).
     selector : str, default is Undefined, optional
-        Selector is the same as the label selector but in the string format to avoid introspection
+        selector is the same as the label selector but in the string format to avoid introspection
         by clients. The string will be in the same format as the query-param syntax.
         More info about label selectors: http://kubernetes.io/docs/user-guide/labels#label-selectors
     unavailableReplicas : int, default is Undefined, optional
