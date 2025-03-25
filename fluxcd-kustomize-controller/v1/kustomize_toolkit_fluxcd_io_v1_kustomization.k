@@ -8,7 +8,7 @@ _regex_match = regex.match
 
 
 schema Kustomization:
-    """
+    r"""
     Kustomization is the Schema for the kustomizations API.
 
     Attributes
@@ -38,7 +38,7 @@ schema Kustomization:
 
 
 schema KustomizeToolkitFluxcdIoV1KustomizationSpec:
-    """
+    r"""
     KustomizationSpec defines the configuration to calculate the desired state
     from a Source using Kustomize.
 
@@ -50,6 +50,11 @@ schema KustomizeToolkitFluxcdIoV1KustomizationSpec:
         Components specifies relative paths to specifications of other Components.
     decryption : KustomizeToolkitFluxcdIoV1KustomizationSpecDecryption, default is Undefined, optional
         decryption
+    deletionPolicy : str, default is Undefined, optional
+        DeletionPolicy can be used to control garbage collection when this
+        Kustomization is deleted. Valid values are ('MirrorPrune', 'Delete',
+        'Orphan'). 'MirrorPrune' mirrors the Prune field (orphan if false,
+        delete if true). Defaults to 'MirrorPrune'.
     dependsOn : [KustomizeToolkitFluxcdIoV1KustomizationSpecDependsOnItems0], default is Undefined, optional
         DependsOn may contain a meta.NamespacedObjectReference slice
         with references to Kustomization resources that must be ready before this
@@ -57,6 +62,10 @@ schema KustomizeToolkitFluxcdIoV1KustomizationSpec:
     force : bool, default is Undefined, optional
         Force instructs the controller to recreate resources
         when patching fails due to an immutable field change.
+    healthCheckExprs : [KustomizeToolkitFluxcdIoV1KustomizationSpecHealthCheckExprsItems0], default is Undefined, optional
+        HealthCheckExprs is a list of healthcheck expressions for evaluating the
+        health of custom resources using Common Expression Language (CEL).
+        The expressions are evaluated only when Wait or HealthChecks are specified.
     healthChecks : [KustomizeToolkitFluxcdIoV1KustomizationSpecHealthChecksItems0], default is Undefined, optional
         A list of resources to be included in the health assessment.
     images : [KustomizeToolkitFluxcdIoV1KustomizationSpecImagesItems0], default is Undefined, optional
@@ -114,9 +123,13 @@ schema KustomizeToolkitFluxcdIoV1KustomizationSpec:
 
     decryption?: KustomizeToolkitFluxcdIoV1KustomizationSpecDecryption
 
+    deletionPolicy?: "MirrorPrune" | "Delete" | "Orphan"
+
     dependsOn?: [KustomizeToolkitFluxcdIoV1KustomizationSpecDependsOnItems0]
 
     force?: bool = False
+
+    healthCheckExprs?: [KustomizeToolkitFluxcdIoV1KustomizationSpecHealthCheckExprsItems0]
 
     healthChecks?: [KustomizeToolkitFluxcdIoV1KustomizationSpecHealthChecksItems0]
 
@@ -166,7 +179,7 @@ schema KustomizeToolkitFluxcdIoV1KustomizationSpec:
 
 
 schema KustomizeToolkitFluxcdIoV1KustomizationSpecCommonMetadata:
-    """
+    r"""
     CommonMetadata specifies the common labels and annotations that are
     applied to all resources. Any existing label or annotation will be
     overridden if its key matches a common one.
@@ -186,7 +199,7 @@ schema KustomizeToolkitFluxcdIoV1KustomizationSpecCommonMetadata:
 
 
 schema KustomizeToolkitFluxcdIoV1KustomizationSpecDecryption:
-    """
+    r"""
     Decrypt Kubernetes secrets before applying them on the cluster.
 
     Attributes
@@ -204,7 +217,7 @@ schema KustomizeToolkitFluxcdIoV1KustomizationSpecDecryption:
 
 
 schema KustomizeToolkitFluxcdIoV1KustomizationSpecDecryptionSecretRef:
-    """
+    r"""
     The secret name containing the private OpenPGP keys used for decryption.
 
     Attributes
@@ -218,7 +231,7 @@ schema KustomizeToolkitFluxcdIoV1KustomizationSpecDecryptionSecretRef:
 
 
 schema KustomizeToolkitFluxcdIoV1KustomizationSpecDependsOnItems0:
-    """
+    r"""
     NamespacedObjectReference contains enough information to locate the referenced Kubernetes resource object in any
     namespace.
 
@@ -236,8 +249,41 @@ schema KustomizeToolkitFluxcdIoV1KustomizationSpecDependsOnItems0:
     namespace?: str
 
 
-schema KustomizeToolkitFluxcdIoV1KustomizationSpecHealthChecksItems0:
+schema KustomizeToolkitFluxcdIoV1KustomizationSpecHealthCheckExprsItems0:
+    r"""
+    CustomHealthCheck defines the health check for custom resources.
+
+    Attributes
+    ----------
+    apiVersion : str, default is Undefined, required
+        APIVersion of the custom resource under evaluation.
+    current : str, default is Undefined, required
+        Current is the CEL expression that determines if the status
+        of the custom resource has reached the desired state.
+    failed : str, default is Undefined, optional
+        Failed is the CEL expression that determines if the status
+        of the custom resource has failed to reach the desired state.
+    inProgress : str, default is Undefined, optional
+        InProgress is the CEL expression that determines if the status
+        of the custom resource has not yet reached the desired state.
+    kind : str, default is Undefined, required
+        Kind of the custom resource under evaluation.
     """
+
+
+    apiVersion: str
+
+    current: str
+
+    failed?: str
+
+    inProgress?: str
+
+    kind: str
+
+
+schema KustomizeToolkitFluxcdIoV1KustomizationSpecHealthChecksItems0:
+    r"""
     NamespacedObjectKindReference contains enough information to locate the typed referenced Kubernetes resource object
     in any namespace.
 
@@ -264,7 +310,7 @@ schema KustomizeToolkitFluxcdIoV1KustomizationSpecHealthChecksItems0:
 
 
 schema KustomizeToolkitFluxcdIoV1KustomizationSpecImagesItems0:
-    """
+    r"""
     Image contains an image name, a new name, a new tag or digest, which will replace the original name and tag.
 
     Attributes
@@ -291,7 +337,7 @@ schema KustomizeToolkitFluxcdIoV1KustomizationSpecImagesItems0:
 
 
 schema KustomizeToolkitFluxcdIoV1KustomizationSpecKubeConfig:
-    """
+    r"""
     The KubeConfig for reconciling the Kustomization on a remote cluster.
     When used in combination with KustomizationSpec.ServiceAccountName,
     forces the controller to act on behalf of that Service Account at the
@@ -311,7 +357,7 @@ schema KustomizeToolkitFluxcdIoV1KustomizationSpecKubeConfig:
 
 
 schema KustomizeToolkitFluxcdIoV1KustomizationSpecKubeConfigSecretRef:
-    """
+    r"""
     SecretRef holds the name of a secret that contains a key with
     the kubeconfig file as the value. If no key is set, the key will default
     to 'value'.
@@ -336,7 +382,7 @@ schema KustomizeToolkitFluxcdIoV1KustomizationSpecKubeConfigSecretRef:
 
 
 schema KustomizeToolkitFluxcdIoV1KustomizationSpecPatchesItems0:
-    """
+    r"""
     Patch contains an inline StrategicMerge or JSON6902 patch, and the target the patch should
     be applied to.
 
@@ -356,7 +402,7 @@ schema KustomizeToolkitFluxcdIoV1KustomizationSpecPatchesItems0:
 
 
 schema KustomizeToolkitFluxcdIoV1KustomizationSpecPatchesItems0Target:
-    """
+    r"""
     Target points to the resources that the patch document should be applied to.
 
     Attributes
@@ -405,7 +451,7 @@ schema KustomizeToolkitFluxcdIoV1KustomizationSpecPatchesItems0Target:
 
 
 schema KustomizeToolkitFluxcdIoV1KustomizationSpecPostBuild:
-    """
+    r"""
     PostBuild describes which actions to perform on the YAML manifest
     generated by building the kustomize overlay.
 
@@ -416,7 +462,7 @@ schema KustomizeToolkitFluxcdIoV1KustomizationSpecPostBuild:
         The variables defined in your YAML manifests that match any of the keys
         defined in the map will be substituted with the set value.
         Includes support for bash string replacement functions
-        e.g. $\{var:=default\}, $\{var:position\} and $\{var/substring/replacement\}.
+        e.g. ${var:=default}, ${var:position} and ${var/substring/replacement}.
     substituteFrom : [KustomizeToolkitFluxcdIoV1KustomizationSpecPostBuildSubstituteFromItems0], default is Undefined, optional
         SubstituteFrom holds references to ConfigMaps and Secrets containing
         the variables and their values to be substituted in the YAML manifests.
@@ -432,7 +478,7 @@ schema KustomizeToolkitFluxcdIoV1KustomizationSpecPostBuild:
 
 
 schema KustomizeToolkitFluxcdIoV1KustomizationSpecPostBuildSubstituteFromItems0:
-    """
+    r"""
     SubstituteReference contains a reference to a resource containing
     the variables name and value.
 
@@ -463,7 +509,7 @@ schema KustomizeToolkitFluxcdIoV1KustomizationSpecPostBuildSubstituteFromItems0:
 
 
 schema KustomizeToolkitFluxcdIoV1KustomizationSpecSourceRef:
-    """
+    r"""
     Reference of the source where the kustomization file is.
 
     Attributes
@@ -490,7 +536,7 @@ schema KustomizeToolkitFluxcdIoV1KustomizationSpecSourceRef:
 
 
 schema KustomizeToolkitFluxcdIoV1KustomizationStatus:
-    """
+    r"""
     KustomizationStatus defines the observed state of a kustomization.
 
     Attributes
@@ -499,6 +545,12 @@ schema KustomizeToolkitFluxcdIoV1KustomizationStatus:
         conditions
     inventory : KustomizeToolkitFluxcdIoV1KustomizationStatusInventory, default is Undefined, optional
         inventory
+    lastAppliedOriginRevision : str, default is Undefined, optional
+        The last successfully applied origin revision.
+        Equals the origin revision of the applied Artifact from the referenced Source.
+        Usually present on the Metadata of the applied Artifact and depends on the
+        Source type, e.g. for OCI it's the value associated with the key
+        "org.opencontainers.image.revision".
     lastAppliedRevision : str, default is Undefined, optional
         The last successfully applied revision.
         Equals the Revision of the applied Artifact from the referenced Source.
@@ -517,6 +569,8 @@ schema KustomizeToolkitFluxcdIoV1KustomizationStatus:
 
     inventory?: KustomizeToolkitFluxcdIoV1KustomizationStatusInventory
 
+    lastAppliedOriginRevision?: str
+
     lastAppliedRevision?: str
 
     lastAttemptedRevision?: str
@@ -527,24 +581,8 @@ schema KustomizeToolkitFluxcdIoV1KustomizationStatus:
 
 
 schema KustomizeToolkitFluxcdIoV1KustomizationStatusConditionsItems0:
-    """
+    r"""
     Condition contains details for one aspect of the current state of this API Resource.
-    ---
-    This struct is intended for direct use as an array at the field path .status.conditions.  For example,
-
-
-    	type FooStatus struct{
-    	    // Represents the observations of a foo's current state.
-    	    // Known .status.conditions.type are: "Available", "Progressing", and "Degraded"
-    	    // +patchMergeKey=type
-    	    // +patchStrategy=merge
-    	    // +listType=map
-    	    // +listMapKey=type
-    	    Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`
-
-
-    	    // other fields
-    	}
 
     Attributes
     ----------
@@ -568,10 +606,6 @@ schema KustomizeToolkitFluxcdIoV1KustomizationStatusConditionsItems0:
         status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
         type of condition in CamelCase or in foo.example.com/CamelCase.
-        ---
-        Many .condition.type values are consistent across resources like Available, but because arbitrary conditions can be
-        useful (see .node.status.conditions), the ability to deconflict is important.
-        The regex it matches is (dns1123SubdomainFmt/)?(qualifiedNameFmt)
     """
 
 
@@ -599,7 +633,7 @@ schema KustomizeToolkitFluxcdIoV1KustomizationStatusConditionsItems0:
 
 
 schema KustomizeToolkitFluxcdIoV1KustomizationStatusInventory:
-    """
+    r"""
     Inventory contains the list of Kubernetes resource object references that
     have been successfully applied.
 
@@ -614,7 +648,7 @@ schema KustomizeToolkitFluxcdIoV1KustomizationStatusInventory:
 
 
 schema KustomizeToolkitFluxcdIoV1KustomizationStatusInventoryEntriesItems0:
-    """
+    r"""
     ResourceRef contains the information necessary to locate a resource within a cluster.
 
     Attributes
