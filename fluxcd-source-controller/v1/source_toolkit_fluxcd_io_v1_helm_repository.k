@@ -8,7 +8,7 @@ _regex_match = regex.match
 
 
 schema HelmRepository:
-    """
+    r"""
     HelmRepository is the Schema for the helmrepositories API.
 
     Attributes
@@ -38,7 +38,7 @@ schema HelmRepository:
 
 
 schema SourceToolkitFluxcdIoV1HelmRepositorySpec:
-    """
+    r"""
     HelmRepositorySpec specifies the required configuration to produce an
     Artifact for a Helm repository index YAML.
 
@@ -115,7 +115,7 @@ schema SourceToolkitFluxcdIoV1HelmRepositorySpec:
 
 
 schema SourceToolkitFluxcdIoV1HelmRepositorySpecAccessFrom:
-    """
+    r"""
     AccessFrom specifies an Access Control List for allowing cross-namespace
     references to this object.
     NOTE: Not implemented, provisional as of https://github.com/fluxcd/flux2/pull/2092
@@ -132,7 +132,7 @@ schema SourceToolkitFluxcdIoV1HelmRepositorySpecAccessFrom:
 
 
 schema SourceToolkitFluxcdIoV1HelmRepositorySpecAccessFromNamespaceSelectorsItems0:
-    """
+    r"""
     NamespaceSelector selects the namespaces to which this ACL applies.
     An empty map of MatchLabels matches all namespaces in a cluster.
 
@@ -149,22 +149,19 @@ schema SourceToolkitFluxcdIoV1HelmRepositorySpecAccessFromNamespaceSelectorsItem
 
 
 schema SourceToolkitFluxcdIoV1HelmRepositorySpecCertSecretRef:
-    """
+    r"""
     CertSecretRef can be given the name of a Secret containing
     either or both of
-
 
     - a PEM-encoded client certificate (`tls.crt`) and private
     key (`tls.key`);
     - a PEM-encoded CA certificate (`ca.crt`)
-
 
     and whichever are supplied, will be used for connecting to the
     registry. The client cert and key are useful if you are
     authenticating with a certificate; the CA cert is useful if
     you are using a self-signed server certificate. The Secret must
     be of type `Opaque` or `kubernetes.io/tls`.
-
 
     It takes precedence over the values specified in the Secret referred
     to by `.spec.secretRef`.
@@ -180,7 +177,7 @@ schema SourceToolkitFluxcdIoV1HelmRepositorySpecCertSecretRef:
 
 
 schema SourceToolkitFluxcdIoV1HelmRepositorySpecSecretRef:
-    """
+    r"""
     SecretRef specifies the Secret containing authentication credentials
     for the HelmRepository.
     For HTTP/S basic auth the secret must contain 'username' and 'password'
@@ -199,7 +196,7 @@ schema SourceToolkitFluxcdIoV1HelmRepositorySpecSecretRef:
 
 
 schema SourceToolkitFluxcdIoV1HelmRepositoryStatus:
-    """
+    r"""
     HelmRepositoryStatus records the observed state of the HelmRepository.
 
     Attributes
@@ -234,7 +231,7 @@ schema SourceToolkitFluxcdIoV1HelmRepositoryStatus:
 
 
 schema SourceToolkitFluxcdIoV1HelmRepositoryStatusArtifact:
-    """
+    r"""
     Artifact represents the last successful HelmRepository reconciliation.
 
     Attributes
@@ -282,24 +279,8 @@ schema SourceToolkitFluxcdIoV1HelmRepositoryStatusArtifact:
 
 
 schema SourceToolkitFluxcdIoV1HelmRepositoryStatusConditionsItems0:
-    """
+    r"""
     Condition contains details for one aspect of the current state of this API Resource.
-    ---
-    This struct is intended for direct use as an array at the field path .status.conditions.  For example,
-
-
-    	type FooStatus struct{
-    	    // Represents the observations of a foo's current state.
-    	    // Known .status.conditions.type are: "Available", "Progressing", and "Degraded"
-    	    // +patchMergeKey=type
-    	    // +patchStrategy=merge
-    	    // +listType=map
-    	    // +listMapKey=type
-    	    Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`
-
-
-    	    // other fields
-    	}
 
     Attributes
     ----------
@@ -323,10 +304,6 @@ schema SourceToolkitFluxcdIoV1HelmRepositoryStatusConditionsItems0:
         status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
         type of condition in CamelCase or in foo.example.com/CamelCase.
-        ---
-        Many .condition.type values are consistent across resources like Available, but because arbitrary conditions can be
-        useful (see .node.status.conditions), the ability to deconflict is important.
-        The regex it matches is (dns1123SubdomainFmt/)?(qualifiedNameFmt)
     """
 
 

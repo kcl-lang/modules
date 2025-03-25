@@ -8,7 +8,7 @@ _regex_match = regex.match
 
 
 schema GitRepository:
-    """
+    r"""
     GitRepository is the Schema for the gitrepositories API.
 
     Attributes
@@ -38,7 +38,7 @@ schema GitRepository:
 
 
 schema SourceToolkitFluxcdIoV1GitRepositorySpec:
-    """
+    r"""
     GitRepositorySpec specifies the required configuration to produce an
     Artifact for a Git repository.
 
@@ -55,6 +55,9 @@ schema SourceToolkitFluxcdIoV1GitRepositorySpec:
         Interval at which the GitRepository URL is checked for updates.
         This interval is approximate and may be subject to jitter to ensure
         efficient use of resources.
+    provider : str, default is Undefined, optional
+        Provider used for authentication, can be 'azure', 'github', 'generic'.
+        When not specified, defaults to 'generic'.
     proxySecretRef : SourceToolkitFluxcdIoV1GitRepositorySpecProxySecretRef, default is Undefined, optional
         proxy secret ref
     recurseSubmodules : bool, default is Undefined, optional
@@ -82,6 +85,8 @@ schema SourceToolkitFluxcdIoV1GitRepositorySpec:
 
     interval: str
 
+    provider?: "generic" | "azure" | "github"
+
     proxySecretRef?: SourceToolkitFluxcdIoV1GitRepositorySpecProxySecretRef
 
     recurseSubmodules?: bool
@@ -106,7 +111,7 @@ schema SourceToolkitFluxcdIoV1GitRepositorySpec:
 
 
 schema SourceToolkitFluxcdIoV1GitRepositorySpecIncludeItems0:
-    """
+    r"""
     GitRepositoryInclude specifies a local reference to a GitRepository which
     Artifact (sub-)contents must be included, and where they should be placed.
 
@@ -131,7 +136,7 @@ schema SourceToolkitFluxcdIoV1GitRepositorySpecIncludeItems0:
 
 
 schema SourceToolkitFluxcdIoV1GitRepositorySpecIncludeItems0Repository:
-    """
+    r"""
     GitRepositoryRef specifies the GitRepository which Artifact contents
     must be included.
 
@@ -146,7 +151,7 @@ schema SourceToolkitFluxcdIoV1GitRepositorySpecIncludeItems0Repository:
 
 
 schema SourceToolkitFluxcdIoV1GitRepositorySpecProxySecretRef:
-    """
+    r"""
     ProxySecretRef specifies the Secret containing the proxy configuration
     to use while communicating with the Git server.
 
@@ -161,7 +166,7 @@ schema SourceToolkitFluxcdIoV1GitRepositorySpecProxySecretRef:
 
 
 schema SourceToolkitFluxcdIoV1GitRepositorySpecRef:
-    """
+    r"""
     Reference specifies the Git reference to resolve and monitor for
     changes, defaults to the 'master' branch.
 
@@ -172,12 +177,10 @@ schema SourceToolkitFluxcdIoV1GitRepositorySpecRef:
     commit : str, default is Undefined, optional
         Commit SHA to check out, takes precedence over all reference fields.
 
-
         This can be combined with Branch to shallow clone the branch, in which
         the commit is expected to exist.
     name : str, default is Undefined, optional
         Name of the reference to check out; takes precedence over Branch, Tag and SemVer.
-
 
         It must be a valid Git reference: https://git-scm.com/docs/git-check-ref-format#_description
         Examples: "refs/heads/main", "refs/tags/v0.1.0", "refs/pull/420/head", "refs/merge-requests/1/head"
@@ -200,7 +203,7 @@ schema SourceToolkitFluxcdIoV1GitRepositorySpecRef:
 
 
 schema SourceToolkitFluxcdIoV1GitRepositorySpecSecretRef:
-    """
+    r"""
     SecretRef specifies the Secret containing authentication credentials for
     the GitRepository.
     For HTTPS repositories the Secret must contain 'username' and 'password'
@@ -219,7 +222,7 @@ schema SourceToolkitFluxcdIoV1GitRepositorySpecSecretRef:
 
 
 schema SourceToolkitFluxcdIoV1GitRepositorySpecVerify:
-    """
+    r"""
     Verification specifies the configuration to verify the Git commit
     signature(s).
 
@@ -227,7 +230,6 @@ schema SourceToolkitFluxcdIoV1GitRepositorySpecVerify:
     ----------
     mode : str, default is "HEAD", optional
         Mode specifies which Git object(s) should be verified.
-
 
         The variants "head" and "HEAD" both imply the same thing, i.e. verify
         the commit that the HEAD of the Git repository points to. The variant
@@ -243,7 +245,7 @@ schema SourceToolkitFluxcdIoV1GitRepositorySpecVerify:
 
 
 schema SourceToolkitFluxcdIoV1GitRepositorySpecVerifySecretRef:
-    """
+    r"""
     SecretRef specifies the Secret containing the public keys of trusted Git
     authors.
 
@@ -258,7 +260,7 @@ schema SourceToolkitFluxcdIoV1GitRepositorySpecVerifySecretRef:
 
 
 schema SourceToolkitFluxcdIoV1GitRepositoryStatus:
-    """
+    r"""
     GitRepositoryStatus records the observed state of a Git repository.
 
     Attributes
@@ -312,7 +314,7 @@ schema SourceToolkitFluxcdIoV1GitRepositoryStatus:
 
 
 schema SourceToolkitFluxcdIoV1GitRepositoryStatusArtifact:
-    """
+    r"""
     Artifact represents the last successful GitRepository reconciliation.
 
     Attributes
@@ -360,24 +362,8 @@ schema SourceToolkitFluxcdIoV1GitRepositoryStatusArtifact:
 
 
 schema SourceToolkitFluxcdIoV1GitRepositoryStatusConditionsItems0:
-    """
+    r"""
     Condition contains details for one aspect of the current state of this API Resource.
-    ---
-    This struct is intended for direct use as an array at the field path .status.conditions.  For example,
-
-
-    	type FooStatus struct{
-    	    // Represents the observations of a foo's current state.
-    	    // Known .status.conditions.type are: "Available", "Progressing", and "Degraded"
-    	    // +patchMergeKey=type
-    	    // +patchStrategy=merge
-    	    // +listType=map
-    	    // +listMapKey=type
-    	    Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`
-
-
-    	    // other fields
-    	}
 
     Attributes
     ----------
@@ -401,10 +387,6 @@ schema SourceToolkitFluxcdIoV1GitRepositoryStatusConditionsItems0:
         status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
         type of condition in CamelCase or in foo.example.com/CamelCase.
-        ---
-        Many .condition.type values are consistent across resources like Available, but because arbitrary conditions can be
-        useful (see .node.status.conditions), the ability to deconflict is important.
-        The regex it matches is (dns1123SubdomainFmt/)?(qualifiedNameFmt)
     """
 
 
@@ -432,7 +414,7 @@ schema SourceToolkitFluxcdIoV1GitRepositoryStatusConditionsItems0:
 
 
 schema SourceToolkitFluxcdIoV1GitRepositoryStatusIncludedArtifactsItems0:
-    """
+    r"""
     Artifact represents the output of a Source reconciliation.
 
     Attributes
@@ -480,7 +462,7 @@ schema SourceToolkitFluxcdIoV1GitRepositoryStatusIncludedArtifactsItems0:
 
 
 schema SourceToolkitFluxcdIoV1GitRepositoryStatusObservedIncludeItems0:
-    """
+    r"""
     GitRepositoryInclude specifies a local reference to a GitRepository which
     Artifact (sub-)contents must be included, and where they should be placed.
 
@@ -505,7 +487,7 @@ schema SourceToolkitFluxcdIoV1GitRepositoryStatusObservedIncludeItems0:
 
 
 schema SourceToolkitFluxcdIoV1GitRepositoryStatusObservedIncludeItems0Repository:
-    """
+    r"""
     GitRepositoryRef specifies the GitRepository which Artifact contents
     must be included.
 

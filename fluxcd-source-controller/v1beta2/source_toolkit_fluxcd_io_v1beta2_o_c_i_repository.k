@@ -8,7 +8,7 @@ _regex_match = regex.match
 
 
 schema OCIRepository:
-    """
+    r"""
     OCIRepository is the Schema for the ocirepositories API
 
     Attributes
@@ -38,7 +38,7 @@ schema OCIRepository:
 
 
 schema SourceToolkitFluxcdIoV1beta2OCIRepositorySpec:
-    """
+    r"""
     OCIRepositorySpec defines the desired state of OCIRepository
 
     Attributes
@@ -60,6 +60,8 @@ schema SourceToolkitFluxcdIoV1beta2OCIRepositorySpec:
     provider : str, default is "generic", optional
         The provider used for authentication, can be 'aws', 'azure', 'gcp' or 'generic'.
         When not specified, defaults to 'generic'.
+    proxySecretRef : SourceToolkitFluxcdIoV1beta2OCIRepositorySpecProxySecretRef, default is Undefined, optional
+        proxy secret ref
     ref : SourceToolkitFluxcdIoV1beta2OCIRepositorySpecRef, default is Undefined, optional
         ref
     secretRef : SourceToolkitFluxcdIoV1beta2OCIRepositorySpecSecretRef, default is Undefined, optional
@@ -92,6 +94,8 @@ schema SourceToolkitFluxcdIoV1beta2OCIRepositorySpec:
 
     provider?: "generic" | "aws" | "azure" | "gcp" = "generic"
 
+    proxySecretRef?: SourceToolkitFluxcdIoV1beta2OCIRepositorySpecProxySecretRef
+
     ref?: SourceToolkitFluxcdIoV1beta2OCIRepositorySpecRef
 
     secretRef?: SourceToolkitFluxcdIoV1beta2OCIRepositorySpecSecretRef
@@ -114,22 +118,19 @@ schema SourceToolkitFluxcdIoV1beta2OCIRepositorySpec:
 
 
 schema SourceToolkitFluxcdIoV1beta2OCIRepositorySpecCertSecretRef:
-    """
+    r"""
     CertSecretRef can be given the name of a Secret containing
     either or both of
-
 
     - a PEM-encoded client certificate (`tls.crt`) and private
     key (`tls.key`);
     - a PEM-encoded CA certificate (`ca.crt`)
-
 
     and whichever are supplied, will be used for connecting to the
     registry. The client cert and key are useful if you are
     authenticating with a certificate; the CA cert is useful if
     you are using a self-signed server certificate. The Secret must
     be of type `Opaque` or `kubernetes.io/tls`.
-
 
     Note: Support for the `caFile`, `certFile` and `keyFile` keys have
     been deprecated.
@@ -145,7 +146,7 @@ schema SourceToolkitFluxcdIoV1beta2OCIRepositorySpecCertSecretRef:
 
 
 schema SourceToolkitFluxcdIoV1beta2OCIRepositorySpecLayerSelector:
-    """
+    r"""
     LayerSelector specifies which layer should be extracted from the OCI artifact.
     When not specified, the first layer found in the artifact is selected.
 
@@ -168,8 +169,23 @@ schema SourceToolkitFluxcdIoV1beta2OCIRepositorySpecLayerSelector:
     operation?: "extract" | "copy"
 
 
-schema SourceToolkitFluxcdIoV1beta2OCIRepositorySpecRef:
+schema SourceToolkitFluxcdIoV1beta2OCIRepositorySpecProxySecretRef:
+    r"""
+    ProxySecretRef specifies the Secret containing the proxy configuration
+    to use while communicating with the container registry.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name of the referent.
     """
+
+
+    name: str
+
+
+schema SourceToolkitFluxcdIoV1beta2OCIRepositorySpecRef:
+    r"""
     The OCI reference to pull and monitor for changes,
     defaults to the latest tag.
 
@@ -198,7 +214,7 @@ schema SourceToolkitFluxcdIoV1beta2OCIRepositorySpecRef:
 
 
 schema SourceToolkitFluxcdIoV1beta2OCIRepositorySpecSecretRef:
-    """
+    r"""
     SecretRef contains the secret name containing the registry login
     credentials to resolve image metadata.
     The secret must be of type kubernetes.io/dockerconfigjson.
@@ -214,7 +230,7 @@ schema SourceToolkitFluxcdIoV1beta2OCIRepositorySpecSecretRef:
 
 
 schema SourceToolkitFluxcdIoV1beta2OCIRepositorySpecVerify:
-    """
+    r"""
     Verify contains the secret name containing the trusted public keys
     used to verify the signature and specifies which provider to use to check
     whether OCI image is authentic.
@@ -241,7 +257,7 @@ schema SourceToolkitFluxcdIoV1beta2OCIRepositorySpecVerify:
 
 
 schema SourceToolkitFluxcdIoV1beta2OCIRepositorySpecVerifyMatchOIDCIdentityItems0:
-    """
+    r"""
     OIDCIdentityMatch specifies options for verifying the certificate identity,
     i.e. the issuer and the subject of the certificate.
 
@@ -264,7 +280,7 @@ schema SourceToolkitFluxcdIoV1beta2OCIRepositorySpecVerifyMatchOIDCIdentityItems
 
 
 schema SourceToolkitFluxcdIoV1beta2OCIRepositorySpecVerifySecretRef:
-    """
+    r"""
     SecretRef specifies the Kubernetes Secret containing the
     trusted public keys.
 
@@ -279,7 +295,7 @@ schema SourceToolkitFluxcdIoV1beta2OCIRepositorySpecVerifySecretRef:
 
 
 schema SourceToolkitFluxcdIoV1beta2OCIRepositoryStatus:
-    """
+    r"""
     OCIRepositoryStatus defines the observed state of OCIRepository
 
     Attributes
@@ -297,7 +313,6 @@ schema SourceToolkitFluxcdIoV1beta2OCIRepositoryStatus:
         be used to determine if the content configuration has changed and the
         artifact needs to be rebuilt.
         It has the format of `<algo>:<checksum>`, for example: `sha256:<checksum>`.
-
 
         Deprecated: Replaced with explicit fields for observed artifact content
         config in the status.
@@ -335,7 +350,7 @@ schema SourceToolkitFluxcdIoV1beta2OCIRepositoryStatus:
 
 
 schema SourceToolkitFluxcdIoV1beta2OCIRepositoryStatusArtifact:
-    """
+    r"""
     Artifact represents the output of the last successful OCI Repository sync.
 
     Attributes
@@ -383,24 +398,8 @@ schema SourceToolkitFluxcdIoV1beta2OCIRepositoryStatusArtifact:
 
 
 schema SourceToolkitFluxcdIoV1beta2OCIRepositoryStatusConditionsItems0:
-    """
+    r"""
     Condition contains details for one aspect of the current state of this API Resource.
-    ---
-    This struct is intended for direct use as an array at the field path .status.conditions.  For example,
-
-
-    	type FooStatus struct{
-    	    // Represents the observations of a foo's current state.
-    	    // Known .status.conditions.type are: "Available", "Progressing", and "Degraded"
-    	    // +patchMergeKey=type
-    	    // +patchStrategy=merge
-    	    // +listType=map
-    	    // +listMapKey=type
-    	    Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`
-
-
-    	    // other fields
-    	}
 
     Attributes
     ----------
@@ -424,10 +423,6 @@ schema SourceToolkitFluxcdIoV1beta2OCIRepositoryStatusConditionsItems0:
         status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
         type of condition in CamelCase or in foo.example.com/CamelCase.
-        ---
-        Many .condition.type values are consistent across resources like Available, but because arbitrary conditions can be
-        useful (see .node.status.conditions), the ability to deconflict is important.
-        The regex it matches is (dns1123SubdomainFmt/)?(qualifiedNameFmt)
     """
 
 
@@ -455,7 +450,7 @@ schema SourceToolkitFluxcdIoV1beta2OCIRepositoryStatusConditionsItems0:
 
 
 schema SourceToolkitFluxcdIoV1beta2OCIRepositoryStatusObservedLayerSelector:
-    """
+    r"""
     ObservedLayerSelector is the observed layer selector used for constructing
     the source artifact.
 
