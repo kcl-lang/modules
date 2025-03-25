@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema CrdUpgradeTestc:
-    """
+    r"""
     Test
 
     Attributes
