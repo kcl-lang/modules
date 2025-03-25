@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema Metal3Data:
-    """
+    r"""
     Metal3Data is the Schema for the metal3datas API.
 
     Attributes
@@ -36,7 +36,7 @@ schema Metal3Data:
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataSpec:
-    """
+    r"""
     Metal3DataSpec defines the desired state of Metal3Data.
 
     Attributes
@@ -52,7 +52,9 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataSpec:
     template : InfrastructureClusterxK8sIoV1beta1Metal3DataSpecTemplate, default is Undefined, required
         template
     templateReference : str, default is Undefined, optional
-        TemplateReference refers to the Template the Metal3MachineTemplate refers to. It can be matched against the key or it may also point to the name of the template Metal3Data refers to
+        TemplateReference refers to the Template the Metal3MachineTemplate refers to.
+        It can be matched against the key or it may also point to the name of the template
+        Metal3Data refers to
     """
 
 
@@ -70,7 +72,7 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataSpec:
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataSpecClaim:
-    """
+    r"""
     DataClaim points to the Metal3DataClaim the Metal3Data was created for.
 
     Attributes
@@ -78,17 +80,28 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataSpecClaim:
     apiVersion : str, default is Undefined, optional
         API version of the referent.
     fieldPath : str, default is Undefined, optional
-        If referring to a piece of an object instead of an entire object, this string should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2]. For example, if the object reference is to a container within a pod, this would take on a value like: "spec.containers{name}" (where "name" refers to the name of the container that triggered the event) or if no container name is specified "spec.containers[2]" (container with index 2 in this pod). This syntax is chosen only to have some well-defined way of referencing a part of an object. TODO: this design is not final and this field is subject to change in the future.
+        If referring to a piece of an object instead of an entire object, this string
+        should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2].
+        For example, if the object reference is to a container within a pod, this would take on a value like:
+        "spec.containers{name}" (where "name" refers to the name of the container that triggered
+        the event) or if no container name is specified "spec.containers[2]" (container with
+        index 2 in this pod). This syntax is chosen only to have some well-defined way of
+        referencing a part of an object.
     kind : str, default is Undefined, optional
-        Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+        Kind of the referent.
+        More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        Namespace of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
     resourceVersion : str, default is Undefined, optional
-        Specific resourceVersion to which this reference is made, if any. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+        Specific resourceVersion to which this reference is made, if any.
+        More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
     uid : str, default is Undefined, optional
-        UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
+        UID of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
     """
 
 
@@ -108,7 +121,7 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataSpecClaim:
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataSpecMetaData:
-    """
+    r"""
     MetaData points to the rendered MetaData secret.
 
     Attributes
@@ -126,7 +139,7 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataSpecMetaData:
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataSpecNetworkData:
-    """
+    r"""
     NetworkData points to the rendered NetworkData secret.
 
     Attributes
@@ -144,7 +157,7 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataSpecNetworkData:
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataSpecTemplate:
-    """
+    r"""
     DataTemplate is the Metal3DataTemplate this was generated from.
 
     Attributes
@@ -152,17 +165,28 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataSpecTemplate:
     apiVersion : str, default is Undefined, optional
         API version of the referent.
     fieldPath : str, default is Undefined, optional
-        If referring to a piece of an object instead of an entire object, this string should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2]. For example, if the object reference is to a container within a pod, this would take on a value like: "spec.containers{name}" (where "name" refers to the name of the container that triggered the event) or if no container name is specified "spec.containers[2]" (container with index 2 in this pod). This syntax is chosen only to have some well-defined way of referencing a part of an object. TODO: this design is not final and this field is subject to change in the future.
+        If referring to a piece of an object instead of an entire object, this string
+        should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2].
+        For example, if the object reference is to a container within a pod, this would take on a value like:
+        "spec.containers{name}" (where "name" refers to the name of the container that triggered
+        the event) or if no container name is specified "spec.containers[2]" (container with
+        index 2 in this pod). This syntax is chosen only to have some well-defined way of
+        referencing a part of an object.
     kind : str, default is Undefined, optional
-        Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+        Kind of the referent.
+        More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        Namespace of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
     resourceVersion : str, default is Undefined, optional
-        Specific resourceVersion to which this reference is made, if any. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+        Specific resourceVersion to which this reference is made, if any.
+        More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
     uid : str, default is Undefined, optional
-        UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
+        UID of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
     """
 
 
@@ -182,7 +206,7 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataSpecTemplate:
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataStatus:
-    """
+    r"""
     Metal3DataStatus defines the observed state of Metal3Data.
 
     Attributes

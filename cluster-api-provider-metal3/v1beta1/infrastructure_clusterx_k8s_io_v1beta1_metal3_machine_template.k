@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema Metal3MachineTemplate:
-    """
+    r"""
     Metal3MachineTemplate is the Schema for the metal3machinetemplates API.
 
     Attributes
@@ -32,13 +32,14 @@ schema Metal3MachineTemplate:
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpec:
-    """
+    r"""
     Metal3MachineTemplateSpec defines the desired state of Metal3MachineTemplate.
 
     Attributes
     ----------
     nodeReuse : bool, default is Undefined, optional
-        When set to True, CAPM3 Machine controller will pick the same pool of BMHs' that were released during the upgrade operation.
+        When set to True, CAPM3 Machine controller will
+        pick the same pool of BMHs' that were released during the upgrade operation.
     template : InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplate, default is Undefined, required
         template
     """
@@ -50,7 +51,7 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpec:
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplate:
-    """
+    r"""
     Metal3MachineTemplateResource describes the data needed to create a Metal3Machine from a template.
 
     Attributes
@@ -64,25 +65,29 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplate:
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpec:
-    """
+    r"""
     Spec is the specification of the desired behavior of the machine.
 
     Attributes
     ----------
     automatedCleaningMode : str, default is Undefined, optional
-        When set to disabled, automated cleaning of host disks will be skipped during provisioning and deprovisioning.
+        When set to disabled, automated cleaning of host disks will be skipped
+        during provisioning and deprovisioning.
+    customDeploy : InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpecCustomDeploy, default is Undefined, optional
+        custom deploy
     dataTemplate : InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpecDataTemplate, default is Undefined, optional
         data template
     hostSelector : InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpecHostSelector, default is Undefined, optional
         host selector
-    image : InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpecImage, default is Undefined, required
+    image : InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpecImage, default is Undefined, optional
         image
     metaData : InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpecMetaData, default is Undefined, optional
         meta data
     networkData : InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpecNetworkData, default is Undefined, optional
         network data
     providerID : str, default is Undefined, optional
-        ProviderID will be the Metal3 machine in ProviderID format (metal3://<bmh-uuid>)
+        ProviderID will be the Metal3 machine in ProviderID format
+        (metal3://<bmh-uuid>)
     userData : InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpecUserData, default is Undefined, optional
         user data
     """
@@ -90,11 +95,13 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpec:
 
     automatedCleaningMode?: "metadata" | "disabled"
 
+    customDeploy?: InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpecCustomDeploy
+
     dataTemplate?: InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpecDataTemplate
 
     hostSelector?: InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpecHostSelector
 
-    image: InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpecImage
+    image?: InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpecImage
 
     metaData?: InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpecMetaData
 
@@ -105,26 +112,55 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpec:
     userData?: InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpecUserData
 
 
-schema InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpecDataTemplate:
+schema InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpecCustomDeploy:
+    r"""
+    A custom deploy procedure.
+
+    Attributes
+    ----------
+    method : str, default is Undefined, required
+        Custom deploy method name.
+        This name is specific to the deploy ramdisk used. If you don't have
+        a custom deploy ramdisk, you shouldn't use CustomDeploy.
     """
-    MetadataTemplate is a reference to a Metal3DataTemplate object containing a template of metadata to be rendered. Metadata keys defined in the metadataTemplate take precedence over keys defined in metadata field.
+
+
+    method: str
+
+
+schema InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpecDataTemplate:
+    r"""
+    MetadataTemplate is a reference to a Metal3DataTemplate object containing
+    a template of metadata to be rendered. Metadata keys defined in the
+    metadataTemplate take precedence over keys defined in metadata field.
 
     Attributes
     ----------
     apiVersion : str, default is Undefined, optional
         API version of the referent.
     fieldPath : str, default is Undefined, optional
-        If referring to a piece of an object instead of an entire object, this string should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2]. For example, if the object reference is to a container within a pod, this would take on a value like: "spec.containers{name}" (where "name" refers to the name of the container that triggered the event) or if no container name is specified "spec.containers[2]" (container with index 2 in this pod). This syntax is chosen only to have some well-defined way of referencing a part of an object. TODO: this design is not final and this field is subject to change in the future.
+        If referring to a piece of an object instead of an entire object, this string
+        should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2].
+        For example, if the object reference is to a container within a pod, this would take on a value like:
+        "spec.containers{name}" (where "name" refers to the name of the container that triggered
+        the event) or if no container name is specified "spec.containers[2]" (container with
+        index 2 in this pod). This syntax is chosen only to have some well-defined way of
+        referencing a part of an object.
     kind : str, default is Undefined, optional
-        Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+        Kind of the referent.
+        More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        Namespace of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
     resourceVersion : str, default is Undefined, optional
-        Specific resourceVersion to which this reference is made, if any. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+        Specific resourceVersion to which this reference is made, if any.
+        More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
     uid : str, default is Undefined, optional
-        UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
+        UID of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
     """
 
 
@@ -144,8 +180,10 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpecDa
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpecHostSelector:
-    """
-    HostSelector specifies matching criteria for labels on BareMetalHosts. This is used to limit the set of BareMetalHost objects considered for claiming for a metal3machine.
+    r"""
+    HostSelector specifies matching criteria for labels on BareMetalHosts.
+    This is used to limit the set of BareMetalHost objects considered for
+    claiming for a metal3machine.
 
     Attributes
     ----------
@@ -162,7 +200,7 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpecHo
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpecHostSelectorMatchExpressionsItems0:
-    """
+    r"""
     infrastructure clusterx k8s io v1beta1 metal3 machine template spec template spec host selector match expressions items0
 
     Attributes
@@ -170,7 +208,8 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpecHo
     key : str, default is Undefined, required
         key
     operator : str, default is Undefined, required
-        Operator represents a key/field's relationship to value(s). See labels.Requirement and fields.Requirement for more details.
+        Operator represents a key/field's relationship to value(s).
+        See labels.Requirement and fields.Requirement for more details.
     values : [str], default is Undefined, required
         values
     """
@@ -184,7 +223,7 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpecHo
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpecImage:
-    """
+    r"""
     Image is the image to be provisioned.
 
     Attributes
@@ -192,7 +231,8 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpecIm
     checksum : str, default is Undefined, required
         Checksum is a md5sum, sha256sum or sha512sum value or a URL to retrieve one.
     checksumType : str, default is Undefined, optional
-        ChecksumType is the checksum algorithm for the image. e.g md5, sha256, sha512
+        ChecksumType is the checksum algorithm for the image.
+        e.g md5, sha256, sha512
     format : str, default is Undefined, optional
         DiskFormat contains the image disk format.
     url : str, default is Undefined, required
@@ -210,8 +250,9 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpecIm
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpecMetaData:
-    """
-    MetaData is an object storing the reference to the secret containing the Metadata given by the user.
+    r"""
+    MetaData is an object storing the reference to the secret containing the
+    Metadata given by the user.
 
     Attributes
     ----------
@@ -228,8 +269,9 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpecMe
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpecNetworkData:
-    """
-    NetworkData is an object storing the reference to the secret containing the network data given by the user.
+    r"""
+    NetworkData is an object storing the reference to the secret containing the
+    network data given by the user.
 
     Attributes
     ----------
@@ -246,8 +288,10 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpecNe
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpecUserData:
-    """
-    UserData references the Secret that holds user data needed by the bare metal operator. The Namespace is optional; it will default to the metal3machine's namespace if not specified.
+    r"""
+    UserData references the Secret that holds user data needed by the bare metal
+    operator. The Namespace is optional; it will default to the metal3machine's
+    namespace if not specified.
 
     Attributes
     ----------

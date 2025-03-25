@@ -1,7 +1,8 @@
 [package]
 name = "cluster-api-provider-metal3"
-edition = "v0.9.0"
-version = "1.7.2"
+edition = "*"
+version = "v1.9.3"
+description = "KCL package for https://github.com/metal3-io/cluster-api-provider-metal3 CRDs"
 
 [dependencies]
-k8s = { oci = "oci://ghcr.io/kcl-lang/k8s", tag = "1.31.2" }
+k8s = "1.31.2"
