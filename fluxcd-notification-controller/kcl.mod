@@ -1,8 +1,8 @@
 [package]
-name = "fluxcd-notification-controller"
-edition = "v0.9.0"
-version = "v1.3.2"
+name = "notification-controller"
+edition = "*"
+version = "v1.5.0"
+description = "KCL package for https://github.com/fluxcd/notification-controller CRDs"
 
 [dependencies]
 k8s = "1.31.2"
-

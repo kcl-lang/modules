@@ -8,7 +8,7 @@ _regex_match = regex.match
 
 
 schema Receiver:
-    """
+    r"""
     Receiver is the Schema for the receivers API
 
     Attributes
@@ -38,7 +38,7 @@ schema Receiver:
 
 
 schema NotificationToolkitFluxcdIoV1beta1ReceiverSpec:
-    """
+    r"""
     ReceiverSpec defines the desired state of Receiver
 
     Attributes
@@ -48,7 +48,7 @@ schema NotificationToolkitFluxcdIoV1beta1ReceiverSpec:
         e.g. 'push' for GitHub or 'Push Hook' for GitLab.
     resources : [NotificationToolkitFluxcdIoV1beta1ReceiverSpecResourcesItems0], default is Undefined, required
         A list of resources to be notified about changes.
-    secretRef : NotificationToolkitFluxcdIoV1beta1ReceiverSpecSecretRef, default is Undefined, optional
+    secretRef : NotificationToolkitFluxcdIoV1beta1ReceiverSpecSecretRef, default is Undefined, required
         secret ref
     suspend : bool, default is Undefined, optional
         This flag tells the controller to suspend subsequent events handling.
@@ -63,7 +63,7 @@ schema NotificationToolkitFluxcdIoV1beta1ReceiverSpec:
 
     resources: [NotificationToolkitFluxcdIoV1beta1ReceiverSpecResourcesItems0]
 
-    secretRef?: NotificationToolkitFluxcdIoV1beta1ReceiverSpecSecretRef
+    secretRef: NotificationToolkitFluxcdIoV1beta1ReceiverSpecSecretRef
 
     suspend?: bool
 
@@ -71,7 +71,7 @@ schema NotificationToolkitFluxcdIoV1beta1ReceiverSpec:
 
 
 schema NotificationToolkitFluxcdIoV1beta1ReceiverSpecResourcesItems0:
-    """
+    r"""
     CrossNamespaceObjectReference contains enough information to let you locate the
     typed referenced object at cluster level
 
@@ -79,7 +79,7 @@ schema NotificationToolkitFluxcdIoV1beta1ReceiverSpecResourcesItems0:
     ----------
     apiVersion : str, default is Undefined, optional
         API version of the referent
-    kind : str, default is Undefined, optional
+    kind : str, default is Undefined, required
         Kind of the referent
     matchLabels : {str:str}, default is Undefined, optional
         MatchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels
@@ -94,7 +94,7 @@ schema NotificationToolkitFluxcdIoV1beta1ReceiverSpecResourcesItems0:
 
     apiVersion?: str
 
-    kind?: "Bucket" | "GitRepository" | "Kustomization" | "HelmRelease" | "HelmChart" | "HelmRepository" | "ImageRepository" | "ImagePolicy" | "ImageUpdateAutomation" | "OCIRepository"
+    kind: "Bucket" | "GitRepository" | "Kustomization" | "HelmRelease" | "HelmChart" | "HelmRepository" | "ImageRepository" | "ImagePolicy" | "ImageUpdateAutomation" | "OCIRepository"
 
     matchLabels?: {str:str}
 
@@ -111,7 +111,7 @@ schema NotificationToolkitFluxcdIoV1beta1ReceiverSpecResourcesItems0:
 
 
 schema NotificationToolkitFluxcdIoV1beta1ReceiverSpecSecretRef:
-    """
+    r"""
     Secret reference containing the token used
     to validate the payload authenticity
 
@@ -126,7 +126,7 @@ schema NotificationToolkitFluxcdIoV1beta1ReceiverSpecSecretRef:
 
 
 schema NotificationToolkitFluxcdIoV1beta1ReceiverStatus:
-    """
+    r"""
     ReceiverStatus defines the observed state of Receiver
 
     Attributes
@@ -149,24 +149,8 @@ schema NotificationToolkitFluxcdIoV1beta1ReceiverStatus:
 
 
 schema NotificationToolkitFluxcdIoV1beta1ReceiverStatusConditionsItems0:
-    """
+    r"""
     Condition contains details for one aspect of the current state of this API Resource.
-    ---
-    This struct is intended for direct use as an array at the field path .status.conditions.  For example,
-
-
-    	type FooStatus struct{
-    	    // Represents the observations of a foo's current state.
-    	    // Known .status.conditions.type are: "Available", "Progressing", and "Degraded"
-    	    // +patchMergeKey=type
-    	    // +patchStrategy=merge
-    	    // +listType=map
-    	    // +listMapKey=type
-    	    Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`
-
-
-    	    // other fields
-    	}
 
     Attributes
     ----------
@@ -190,10 +174,6 @@ schema NotificationToolkitFluxcdIoV1beta1ReceiverStatusConditionsItems0:
         status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
         type of condition in CamelCase or in foo.example.com/CamelCase.
-        ---
-        Many .condition.type values are consistent across resources like Available, but because arbitrary conditions can be
-        useful (see .node.status.conditions), the ability to deconflict is important.
-        The regex it matches is (dns1123SubdomainFmt/)?(qualifiedNameFmt)
     """
 
 

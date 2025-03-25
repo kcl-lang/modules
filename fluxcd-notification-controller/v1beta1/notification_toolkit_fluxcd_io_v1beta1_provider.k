@@ -8,7 +8,7 @@ _regex_match = regex.match
 
 
 schema Provider:
-    """
+    r"""
     Provider is the Schema for the providers API
 
     Attributes
@@ -38,7 +38,7 @@ schema Provider:
 
 
 schema NotificationToolkitFluxcdIoV1beta1ProviderSpec:
-    """
+    r"""
     ProviderSpec defines the desired state of Provider
 
     Attributes
@@ -91,7 +91,7 @@ schema NotificationToolkitFluxcdIoV1beta1ProviderSpec:
 
 
 schema NotificationToolkitFluxcdIoV1beta1ProviderSpecCertSecretRef:
-    """
+    r"""
     CertSecretRef can be given the name of a secret containing
     a PEM-encoded CA certificate (`caFile`)
 
@@ -106,7 +106,7 @@ schema NotificationToolkitFluxcdIoV1beta1ProviderSpecCertSecretRef:
 
 
 schema NotificationToolkitFluxcdIoV1beta1ProviderSpecSecretRef:
-    """
+    r"""
     Secret reference containing the provider webhook URL
     using "address" as data key
 
@@ -121,7 +121,7 @@ schema NotificationToolkitFluxcdIoV1beta1ProviderSpecSecretRef:
 
 
 schema NotificationToolkitFluxcdIoV1beta1ProviderStatus:
-    """
+    r"""
     ProviderStatus defines the observed state of Provider
 
     Attributes
@@ -139,24 +139,8 @@ schema NotificationToolkitFluxcdIoV1beta1ProviderStatus:
 
 
 schema NotificationToolkitFluxcdIoV1beta1ProviderStatusConditionsItems0:
-    """
+    r"""
     Condition contains details for one aspect of the current state of this API Resource.
-    ---
-    This struct is intended for direct use as an array at the field path .status.conditions.  For example,
-
-
-    	type FooStatus struct{
-    	    // Represents the observations of a foo's current state.
-    	    // Known .status.conditions.type are: "Available", "Progressing", and "Degraded"
-    	    // +patchMergeKey=type
-    	    // +patchStrategy=merge
-    	    // +listType=map
-    	    // +listMapKey=type
-    	    Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`
-
-
-    	    // other fields
-    	}
 
     Attributes
     ----------
@@ -180,10 +164,6 @@ schema NotificationToolkitFluxcdIoV1beta1ProviderStatusConditionsItems0:
         status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
         type of condition in CamelCase or in foo.example.com/CamelCase.
-        ---
-        Many .condition.type values are consistent across resources like Available, but because arbitrary conditions can be
-        useful (see .node.status.conditions), the ability to deconflict is important.
-        The regex it matches is (dns1123SubdomainFmt/)?(qualifiedNameFmt)
     """
 
 
