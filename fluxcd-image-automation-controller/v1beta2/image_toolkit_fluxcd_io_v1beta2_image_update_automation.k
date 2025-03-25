@@ -8,7 +8,7 @@ _regex_match = regex.match
 
 
 schema ImageUpdateAutomation:
-    """
+    r"""
     ImageUpdateAutomation is the Schema for the imageupdateautomations API
 
     Attributes
@@ -38,7 +38,7 @@ schema ImageUpdateAutomation:
 
 
 schema ImageToolkitFluxcdIoV1beta2ImageUpdateAutomationSpec:
-    """
+    r"""
     ImageUpdateAutomationSpec defines the desired state of ImageUpdateAutomation
 
     Attributes
@@ -78,7 +78,7 @@ schema ImageToolkitFluxcdIoV1beta2ImageUpdateAutomationSpec:
 
 
 schema ImageToolkitFluxcdIoV1beta2ImageUpdateAutomationSpecGit:
-    """
+    r"""
     GitSpec contains all the git-specific definitions. This is
     technically optional, but in practice mandatory until there are
     other kinds of source allowed.
@@ -102,7 +102,7 @@ schema ImageToolkitFluxcdIoV1beta2ImageUpdateAutomationSpecGit:
 
 
 schema ImageToolkitFluxcdIoV1beta2ImageUpdateAutomationSpecGitCheckout:
-    """
+    r"""
     Checkout gives the parameters for cloning the git repository,
     ready to make changes. If not present, the `spec.ref` field from the
     referenced `GitRepository` or its default will be used.
@@ -118,7 +118,7 @@ schema ImageToolkitFluxcdIoV1beta2ImageUpdateAutomationSpecGitCheckout:
 
 
 schema ImageToolkitFluxcdIoV1beta2ImageUpdateAutomationSpecGitCheckoutRef:
-    """
+    r"""
     Reference gives a branch, tag or commit to clone from the Git
     repository.
 
@@ -129,12 +129,10 @@ schema ImageToolkitFluxcdIoV1beta2ImageUpdateAutomationSpecGitCheckoutRef:
     commit : str, default is Undefined, optional
         Commit SHA to check out, takes precedence over all reference fields.
 
-
         This can be combined with Branch to shallow clone the branch, in which
         the commit is expected to exist.
     name : str, default is Undefined, optional
         Name of the reference to check out; takes precedence over Branch, Tag and SemVer.
-
 
         It must be a valid Git reference: https://git-scm.com/docs/git-check-ref-format#_description
         Examples: "refs/heads/main", "refs/tags/v0.1.0", "refs/pull/420/head", "refs/merge-requests/1/head"
@@ -157,7 +155,7 @@ schema ImageToolkitFluxcdIoV1beta2ImageUpdateAutomationSpecGitCheckoutRef:
 
 
 schema ImageToolkitFluxcdIoV1beta2ImageUpdateAutomationSpecGitCommit:
-    """
+    r"""
     Commit specifies how to commit to the git repository.
 
     Attributes
@@ -167,6 +165,9 @@ schema ImageToolkitFluxcdIoV1beta2ImageUpdateAutomationSpecGitCommit:
     messageTemplate : str, default is Undefined, optional
         MessageTemplate provides a template for the commit message,
         into which will be interpolated the details of the change made.
+    messageTemplateValues : {str:str}, default is Undefined, optional
+        MessageTemplateValues provides additional values to be available to the
+        templating rendering.
     signingKey : ImageToolkitFluxcdIoV1beta2ImageUpdateAutomationSpecGitCommitSigningKey, default is Undefined, optional
         signing key
     """
@@ -176,11 +177,13 @@ schema ImageToolkitFluxcdIoV1beta2ImageUpdateAutomationSpecGitCommit:
 
     messageTemplate?: str
 
+    messageTemplateValues?: {str:str}
+
     signingKey?: ImageToolkitFluxcdIoV1beta2ImageUpdateAutomationSpecGitCommitSigningKey
 
 
 schema ImageToolkitFluxcdIoV1beta2ImageUpdateAutomationSpecGitCommitAuthor:
-    """
+    r"""
     Author gives the email and optionally the name to use as the
     author of commits.
 
@@ -199,21 +202,21 @@ schema ImageToolkitFluxcdIoV1beta2ImageUpdateAutomationSpecGitCommitAuthor:
 
 
 schema ImageToolkitFluxcdIoV1beta2ImageUpdateAutomationSpecGitCommitSigningKey:
-    """
+    r"""
     SigningKey provides the option to sign commits with a GPG key
 
     Attributes
     ----------
-    secretRef : ImageToolkitFluxcdIoV1beta2ImageUpdateAutomationSpecGitCommitSigningKeySecretRef, default is Undefined, optional
+    secretRef : ImageToolkitFluxcdIoV1beta2ImageUpdateAutomationSpecGitCommitSigningKeySecretRef, default is Undefined, required
         secret ref
     """
 
 
-    secretRef?: ImageToolkitFluxcdIoV1beta2ImageUpdateAutomationSpecGitCommitSigningKeySecretRef
+    secretRef: ImageToolkitFluxcdIoV1beta2ImageUpdateAutomationSpecGitCommitSigningKeySecretRef
 
 
 schema ImageToolkitFluxcdIoV1beta2ImageUpdateAutomationSpecGitCommitSigningKeySecretRef:
-    """
+    r"""
     SecretRef holds the name to a secret that contains a 'git.asc' key
     corresponding to the ASCII Armored file containing the GPG signing
     keypair as the value. It must be in the same namespace as the
@@ -230,7 +233,7 @@ schema ImageToolkitFluxcdIoV1beta2ImageUpdateAutomationSpecGitCommitSigningKeySe
 
 
 schema ImageToolkitFluxcdIoV1beta2ImageUpdateAutomationSpecGitPush:
-    """
+    r"""
     Push specifies how and where to push commits made by the
     automation. If missing, commits are pushed (back) to
     `.spec.checkout.branch` or its default.
@@ -262,7 +265,7 @@ schema ImageToolkitFluxcdIoV1beta2ImageUpdateAutomationSpecGitPush:
 
 
 schema ImageToolkitFluxcdIoV1beta2ImageUpdateAutomationSpecPolicySelector:
-    """
+    r"""
     PolicySelector allows to filter applied policies based on labels.
     By default includes all policies in namespace.
 
@@ -283,7 +286,7 @@ schema ImageToolkitFluxcdIoV1beta2ImageUpdateAutomationSpecPolicySelector:
 
 
 schema ImageToolkitFluxcdIoV1beta2ImageUpdateAutomationSpecPolicySelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
 
@@ -310,7 +313,7 @@ schema ImageToolkitFluxcdIoV1beta2ImageUpdateAutomationSpecPolicySelectorMatchEx
 
 
 schema ImageToolkitFluxcdIoV1beta2ImageUpdateAutomationSpecSourceRef:
-    """
+    r"""
     SourceRef refers to the resource giving access details
     to a git repository.
 
@@ -337,7 +340,7 @@ schema ImageToolkitFluxcdIoV1beta2ImageUpdateAutomationSpecSourceRef:
 
 
 schema ImageToolkitFluxcdIoV1beta2ImageUpdateAutomationSpecUpdate:
-    """
+    r"""
     Update gives the specification for how to update the files in
     the repository. This can be left empty, to use the default
     value.
@@ -359,7 +362,7 @@ schema ImageToolkitFluxcdIoV1beta2ImageUpdateAutomationSpecUpdate:
 
 
 schema ImageToolkitFluxcdIoV1beta2ImageUpdateAutomationStatus:
-    """
+    r"""
     ImageUpdateAutomationStatus defines the observed state of ImageUpdateAutomation
 
     Attributes
@@ -409,24 +412,8 @@ schema ImageToolkitFluxcdIoV1beta2ImageUpdateAutomationStatus:
 
 
 schema ImageToolkitFluxcdIoV1beta2ImageUpdateAutomationStatusConditionsItems0:
-    """
+    r"""
     Condition contains details for one aspect of the current state of this API Resource.
-    ---
-    This struct is intended for direct use as an array at the field path .status.conditions.  For example,
-
-
-    	type FooStatus struct{
-    	    // Represents the observations of a foo's current state.
-    	    // Known .status.conditions.type are: "Available", "Progressing", and "Degraded"
-    	    // +patchMergeKey=type
-    	    // +patchStrategy=merge
-    	    // +listType=map
-    	    // +listMapKey=type
-    	    Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`
-
-
-    	    // other fields
-    	}
 
     Attributes
     ----------
@@ -450,10 +437,6 @@ schema ImageToolkitFluxcdIoV1beta2ImageUpdateAutomationStatusConditionsItems0:
         status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
         type of condition in CamelCase or in foo.example.com/CamelCase.
-        ---
-        Many .condition.type values are consistent across resources like Available, but because arbitrary conditions can be
-        useful (see .node.status.conditions), the ability to deconflict is important.
-        The regex it matches is (dns1123SubdomainFmt/)?(qualifiedNameFmt)
     """
 
 
@@ -481,7 +464,7 @@ schema ImageToolkitFluxcdIoV1beta2ImageUpdateAutomationStatusConditionsItems0:
 
 
 schema ImageToolkitFluxcdIoV1beta2ImageUpdateAutomationStatusObservedPoliciesAnon:
-    """
+    r"""
     ImageRef represents an image reference.
 
     Attributes
