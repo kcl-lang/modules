@@ -8,7 +8,7 @@ _regex_match = regex.match
 
 
 schema GitRepository:
-    """
+    r"""
     GitRepository is the Schema for the gitrepositories API.
 
     Attributes
@@ -38,7 +38,7 @@ schema GitRepository:
 
 
 schema SourceToolkitFluxcdIoV1beta2GitRepositorySpec:
-    """
+    r"""
     GitRepositorySpec specifies the required configuration to produce an
     Artifact for a Git repository.
 
@@ -111,7 +111,7 @@ schema SourceToolkitFluxcdIoV1beta2GitRepositorySpec:
 
 
 schema SourceToolkitFluxcdIoV1beta2GitRepositorySpecAccessFrom:
-    """
+    r"""
     AccessFrom specifies an Access Control List for allowing cross-namespace
     references to this object.
     NOTE: Not implemented, provisional as of https://github.com/fluxcd/flux2/pull/2092
@@ -128,7 +128,7 @@ schema SourceToolkitFluxcdIoV1beta2GitRepositorySpecAccessFrom:
 
 
 schema SourceToolkitFluxcdIoV1beta2GitRepositorySpecAccessFromNamespaceSelectorsItems0:
-    """
+    r"""
     NamespaceSelector selects the namespaces to which this ACL applies.
     An empty map of MatchLabels matches all namespaces in a cluster.
 
@@ -145,7 +145,7 @@ schema SourceToolkitFluxcdIoV1beta2GitRepositorySpecAccessFromNamespaceSelectors
 
 
 schema SourceToolkitFluxcdIoV1beta2GitRepositorySpecIncludeItems0:
-    """
+    r"""
     GitRepositoryInclude specifies a local reference to a GitRepository which
     Artifact (sub-)contents must be included, and where they should be placed.
 
@@ -170,7 +170,7 @@ schema SourceToolkitFluxcdIoV1beta2GitRepositorySpecIncludeItems0:
 
 
 schema SourceToolkitFluxcdIoV1beta2GitRepositorySpecIncludeItems0Repository:
-    """
+    r"""
     GitRepositoryRef specifies the GitRepository which Artifact contents
     must be included.
 
@@ -185,7 +185,7 @@ schema SourceToolkitFluxcdIoV1beta2GitRepositorySpecIncludeItems0Repository:
 
 
 schema SourceToolkitFluxcdIoV1beta2GitRepositorySpecRef:
-    """
+    r"""
     Reference specifies the Git reference to resolve and monitor for
     changes, defaults to the 'master' branch.
 
@@ -196,12 +196,10 @@ schema SourceToolkitFluxcdIoV1beta2GitRepositorySpecRef:
     commit : str, default is Undefined, optional
         Commit SHA to check out, takes precedence over all reference fields.
 
-
         This can be combined with Branch to shallow clone the branch, in which
         the commit is expected to exist.
     name : str, default is Undefined, optional
         Name of the reference to check out; takes precedence over Branch, Tag and SemVer.
-
 
         It must be a valid Git reference: https://git-scm.com/docs/git-check-ref-format#_description
         Examples: "refs/heads/main", "refs/tags/v0.1.0", "refs/pull/420/head", "refs/merge-requests/1/head"
@@ -224,7 +222,7 @@ schema SourceToolkitFluxcdIoV1beta2GitRepositorySpecRef:
 
 
 schema SourceToolkitFluxcdIoV1beta2GitRepositorySpecSecretRef:
-    """
+    r"""
     SecretRef specifies the Secret containing authentication credentials for
     the GitRepository.
     For HTTPS repositories the Secret must contain 'username' and 'password'
@@ -243,7 +241,7 @@ schema SourceToolkitFluxcdIoV1beta2GitRepositorySpecSecretRef:
 
 
 schema SourceToolkitFluxcdIoV1beta2GitRepositorySpecVerify:
-    """
+    r"""
     Verification specifies the configuration to verify the Git commit
     signature(s).
 
@@ -262,7 +260,7 @@ schema SourceToolkitFluxcdIoV1beta2GitRepositorySpecVerify:
 
 
 schema SourceToolkitFluxcdIoV1beta2GitRepositorySpecVerifySecretRef:
-    """
+    r"""
     SecretRef specifies the Secret containing the public keys of trusted Git
     authors.
 
@@ -277,7 +275,7 @@ schema SourceToolkitFluxcdIoV1beta2GitRepositorySpecVerifySecretRef:
 
 
 schema SourceToolkitFluxcdIoV1beta2GitRepositoryStatus:
-    """
+    r"""
     GitRepositoryStatus records the observed state of a Git repository.
 
     Attributes
@@ -296,7 +294,6 @@ schema SourceToolkitFluxcdIoV1beta2GitRepositoryStatus:
         be used to determine if the content of the included repository has
         changed.
         It has the format of `<algo>:<checksum>`, for example: `sha256:<checksum>`.
-
 
         Deprecated: Replaced with explicit fields for observed artifact content
         config in the status.
@@ -348,7 +345,7 @@ schema SourceToolkitFluxcdIoV1beta2GitRepositoryStatus:
 
 
 schema SourceToolkitFluxcdIoV1beta2GitRepositoryStatusArtifact:
-    """
+    r"""
     Artifact represents the last successful GitRepository reconciliation.
 
     Attributes
@@ -396,24 +393,8 @@ schema SourceToolkitFluxcdIoV1beta2GitRepositoryStatusArtifact:
 
 
 schema SourceToolkitFluxcdIoV1beta2GitRepositoryStatusConditionsItems0:
-    """
+    r"""
     Condition contains details for one aspect of the current state of this API Resource.
-    ---
-    This struct is intended for direct use as an array at the field path .status.conditions.  For example,
-
-
-    	type FooStatus struct{
-    	    // Represents the observations of a foo's current state.
-    	    // Known .status.conditions.type are: "Available", "Progressing", and "Degraded"
-    	    // +patchMergeKey=type
-    	    // +patchStrategy=merge
-    	    // +listType=map
-    	    // +listMapKey=type
-    	    Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`
-
-
-    	    // other fields
-    	}
 
     Attributes
     ----------
@@ -437,10 +418,6 @@ schema SourceToolkitFluxcdIoV1beta2GitRepositoryStatusConditionsItems0:
         status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
         type of condition in CamelCase or in foo.example.com/CamelCase.
-        ---
-        Many .condition.type values are consistent across resources like Available, but because arbitrary conditions can be
-        useful (see .node.status.conditions), the ability to deconflict is important.
-        The regex it matches is (dns1123SubdomainFmt/)?(qualifiedNameFmt)
     """
 
 
@@ -468,7 +445,7 @@ schema SourceToolkitFluxcdIoV1beta2GitRepositoryStatusConditionsItems0:
 
 
 schema SourceToolkitFluxcdIoV1beta2GitRepositoryStatusIncludedArtifactsItems0:
-    """
+    r"""
     Artifact represents the output of a Source reconciliation.
 
     Attributes
@@ -516,7 +493,7 @@ schema SourceToolkitFluxcdIoV1beta2GitRepositoryStatusIncludedArtifactsItems0:
 
 
 schema SourceToolkitFluxcdIoV1beta2GitRepositoryStatusObservedIncludeItems0:
-    """
+    r"""
     GitRepositoryInclude specifies a local reference to a GitRepository which
     Artifact (sub-)contents must be included, and where they should be placed.
 
@@ -541,7 +518,7 @@ schema SourceToolkitFluxcdIoV1beta2GitRepositoryStatusObservedIncludeItems0:
 
 
 schema SourceToolkitFluxcdIoV1beta2GitRepositoryStatusObservedIncludeItems0Repository:
-    """
+    r"""
     GitRepositoryRef specifies the GitRepository which Artifact contents
     must be included.
 

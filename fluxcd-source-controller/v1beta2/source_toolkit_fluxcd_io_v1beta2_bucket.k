@@ -8,7 +8,7 @@ _regex_match = regex.match
 
 
 schema Bucket:
-    """
+    r"""
     Bucket is the Schema for the buckets API.
 
     Attributes
@@ -38,7 +38,7 @@ schema Bucket:
 
 
 schema SourceToolkitFluxcdIoV1beta2BucketSpec:
-    """
+    r"""
     BucketSpec specifies the required configuration to produce an Artifact for
     an object storage bucket.
 
@@ -48,6 +48,8 @@ schema SourceToolkitFluxcdIoV1beta2BucketSpec:
         access from
     bucketName : str, default is Undefined, required
         BucketName is the name of the object storage bucket.
+    certSecretRef : SourceToolkitFluxcdIoV1beta2BucketSpecCertSecretRef, default is Undefined, optional
+        cert secret ref
     endpoint : str, default is Undefined, required
         Endpoint is the object storage address the BucketName is located at.
     ignore : str, default is Undefined, optional
@@ -66,10 +68,14 @@ schema SourceToolkitFluxcdIoV1beta2BucketSpec:
         Provider of the object storage bucket.
         Defaults to 'generic', which expects an S3 (API) compatible object
         storage.
+    proxySecretRef : SourceToolkitFluxcdIoV1beta2BucketSpecProxySecretRef, default is Undefined, optional
+        proxy secret ref
     region : str, default is Undefined, optional
         Region of the Endpoint where the BucketName is located in.
     secretRef : SourceToolkitFluxcdIoV1beta2BucketSpecSecretRef, default is Undefined, optional
         secret ref
+    sts : SourceToolkitFluxcdIoV1beta2BucketSpecSts, default is Undefined, optional
+        sts
     suspend : bool, default is Undefined, optional
         Suspend tells the controller to suspend the reconciliation of this
         Bucket.
@@ -81,6 +87,8 @@ schema SourceToolkitFluxcdIoV1beta2BucketSpec:
     accessFrom?: SourceToolkitFluxcdIoV1beta2BucketSpecAccessFrom
 
     bucketName: str
+
+    certSecretRef?: SourceToolkitFluxcdIoV1beta2BucketSpecCertSecretRef
 
     endpoint: str
 
@@ -94,9 +102,13 @@ schema SourceToolkitFluxcdIoV1beta2BucketSpec:
 
     provider?: "generic" | "aws" | "gcp" | "azure" = "generic"
 
+    proxySecretRef?: SourceToolkitFluxcdIoV1beta2BucketSpecProxySecretRef
+
     region?: str
 
     secretRef?: SourceToolkitFluxcdIoV1beta2BucketSpecSecretRef
+
+    sts?: SourceToolkitFluxcdIoV1beta2BucketSpecSts
 
     suspend?: bool
 
@@ -109,7 +121,7 @@ schema SourceToolkitFluxcdIoV1beta2BucketSpec:
 
 
 schema SourceToolkitFluxcdIoV1beta2BucketSpecAccessFrom:
-    """
+    r"""
     AccessFrom specifies an Access Control List for allowing cross-namespace
     references to this object.
     NOTE: Not implemented, provisional as of https://github.com/fluxcd/flux2/pull/2092
@@ -126,7 +138,7 @@ schema SourceToolkitFluxcdIoV1beta2BucketSpecAccessFrom:
 
 
 schema SourceToolkitFluxcdIoV1beta2BucketSpecAccessFromNamespaceSelectorsItems0:
-    """
+    r"""
     NamespaceSelector selects the namespaces to which this ACL applies.
     An empty map of MatchLabels matches all namespaces in a cluster.
 
@@ -142,8 +154,50 @@ schema SourceToolkitFluxcdIoV1beta2BucketSpecAccessFromNamespaceSelectorsItems0:
     matchLabels?: {str:str}
 
 
-schema SourceToolkitFluxcdIoV1beta2BucketSpecSecretRef:
+schema SourceToolkitFluxcdIoV1beta2BucketSpecCertSecretRef:
+    r"""
+    CertSecretRef can be given the name of a Secret containing
+    either or both of
+
+    - a PEM-encoded client certificate (`tls.crt`) and private
+    key (`tls.key`);
+    - a PEM-encoded CA certificate (`ca.crt`)
+
+    and whichever are supplied, will be used for connecting to the
+    bucket. The client cert and key are useful if you are
+    authenticating with a certificate; the CA cert is useful if
+    you are using a self-signed server certificate. The Secret must
+    be of type `Opaque` or `kubernetes.io/tls`.
+
+    This field is only supported for the `generic` provider.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name of the referent.
     """
+
+
+    name: str
+
+
+schema SourceToolkitFluxcdIoV1beta2BucketSpecProxySecretRef:
+    r"""
+    ProxySecretRef specifies the Secret containing the proxy configuration
+    to use while communicating with the Bucket server.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name of the referent.
+    """
+
+
+    name: str
+
+
+schema SourceToolkitFluxcdIoV1beta2BucketSpecSecretRef:
+    r"""
     SecretRef specifies the Secret containing authentication credentials
     for the Bucket.
 
@@ -157,8 +211,86 @@ schema SourceToolkitFluxcdIoV1beta2BucketSpecSecretRef:
     name: str
 
 
-schema SourceToolkitFluxcdIoV1beta2BucketStatus:
+schema SourceToolkitFluxcdIoV1beta2BucketSpecSts:
+    r"""
+    STS specifies the required configuration to use a Security Token
+    Service for fetching temporary credentials to authenticate in a
+    Bucket provider.
+
+    This field is only supported for the `aws` and `generic` providers.
+
+    Attributes
+    ----------
+    certSecretRef : SourceToolkitFluxcdIoV1beta2BucketSpecStsCertSecretRef, default is Undefined, optional
+        cert secret ref
+    endpoint : str, default is Undefined, required
+        Endpoint is the HTTP/S endpoint of the Security Token Service from
+        where temporary credentials will be fetched.
+    provider : str, default is Undefined, required
+        Provider of the Security Token Service.
+    secretRef : SourceToolkitFluxcdIoV1beta2BucketSpecStsSecretRef, default is Undefined, optional
+        secret ref
     """
+
+
+    certSecretRef?: SourceToolkitFluxcdIoV1beta2BucketSpecStsCertSecretRef
+
+    endpoint: str
+
+    provider: "aws" | "ldap"
+
+    secretRef?: SourceToolkitFluxcdIoV1beta2BucketSpecStsSecretRef
+
+
+    check:
+        _regex_match(str(endpoint), r"^(http|https)://.*$")
+
+
+schema SourceToolkitFluxcdIoV1beta2BucketSpecStsCertSecretRef:
+    r"""
+    CertSecretRef can be given the name of a Secret containing
+    either or both of
+
+    - a PEM-encoded client certificate (`tls.crt`) and private
+    key (`tls.key`);
+    - a PEM-encoded CA certificate (`ca.crt`)
+
+    and whichever are supplied, will be used for connecting to the
+    STS endpoint. The client cert and key are useful if you are
+    authenticating with a certificate; the CA cert is useful if
+    you are using a self-signed server certificate. The Secret must
+    be of type `Opaque` or `kubernetes.io/tls`.
+
+    This field is only supported for the `ldap` provider.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name of the referent.
+    """
+
+
+    name: str
+
+
+schema SourceToolkitFluxcdIoV1beta2BucketSpecStsSecretRef:
+    r"""
+    SecretRef specifies the Secret containing authentication credentials
+    for the STS endpoint. This Secret must contain the fields `username`
+    and `password` and is supported only for the `ldap` provider.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name of the referent.
+    """
+
+
+    name: str
+
+
+schema SourceToolkitFluxcdIoV1beta2BucketStatus:
+    r"""
     BucketStatus records the observed state of a Bucket.
 
     Attributes
@@ -197,7 +329,7 @@ schema SourceToolkitFluxcdIoV1beta2BucketStatus:
 
 
 schema SourceToolkitFluxcdIoV1beta2BucketStatusArtifact:
-    """
+    r"""
     Artifact represents the last successful Bucket reconciliation.
 
     Attributes
@@ -245,24 +377,8 @@ schema SourceToolkitFluxcdIoV1beta2BucketStatusArtifact:
 
 
 schema SourceToolkitFluxcdIoV1beta2BucketStatusConditionsItems0:
-    """
+    r"""
     Condition contains details for one aspect of the current state of this API Resource.
-    ---
-    This struct is intended for direct use as an array at the field path .status.conditions.  For example,
-
-
-    	type FooStatus struct{
-    	    // Represents the observations of a foo's current state.
-    	    // Known .status.conditions.type are: "Available", "Progressing", and "Degraded"
-    	    // +patchMergeKey=type
-    	    // +patchStrategy=merge
-    	    // +listType=map
-    	    // +listMapKey=type
-    	    Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`
-
-
-    	    // other fields
-    	}
 
     Attributes
     ----------
@@ -286,10 +402,6 @@ schema SourceToolkitFluxcdIoV1beta2BucketStatusConditionsItems0:
         status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
         type of condition in CamelCase or in foo.example.com/CamelCase.
-        ---
-        Many .condition.type values are consistent across resources like Available, but because arbitrary conditions can be
-        useful (see .node.status.conditions), the ability to deconflict is important.
-        The regex it matches is (dns1123SubdomainFmt/)?(qualifiedNameFmt)
     """
 
 

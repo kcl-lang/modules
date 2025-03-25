@@ -8,7 +8,7 @@ _regex_match = regex.match
 
 
 schema GitRepository:
-    """
+    r"""
     GitRepository is the Schema for the gitrepositories API
 
     Attributes
@@ -38,7 +38,7 @@ schema GitRepository:
 
 
 schema SourceToolkitFluxcdIoV1beta1GitRepositorySpec:
-    """
+    r"""
     GitRepositorySpec defines the desired state of a Git repository.
 
     Attributes
@@ -105,7 +105,7 @@ schema SourceToolkitFluxcdIoV1beta1GitRepositorySpec:
 
 
 schema SourceToolkitFluxcdIoV1beta1GitRepositorySpecAccessFrom:
-    """
+    r"""
     AccessFrom defines an Access Control List for allowing cross-namespace references to this object.
 
     Attributes
@@ -120,7 +120,7 @@ schema SourceToolkitFluxcdIoV1beta1GitRepositorySpecAccessFrom:
 
 
 schema SourceToolkitFluxcdIoV1beta1GitRepositorySpecAccessFromNamespaceSelectorsItems0:
-    """
+    r"""
     NamespaceSelector selects the namespaces to which this ACL applies.
     An empty map of MatchLabels matches all namespaces in a cluster.
 
@@ -137,7 +137,7 @@ schema SourceToolkitFluxcdIoV1beta1GitRepositorySpecAccessFromNamespaceSelectors
 
 
 schema SourceToolkitFluxcdIoV1beta1GitRepositorySpecIncludeItems0:
-    """
+    r"""
     GitRepositoryInclude defines a source with a from and to path.
 
     Attributes
@@ -159,7 +159,7 @@ schema SourceToolkitFluxcdIoV1beta1GitRepositorySpecIncludeItems0:
 
 
 schema SourceToolkitFluxcdIoV1beta1GitRepositorySpecIncludeItems0Repository:
-    """
+    r"""
     Reference to a GitRepository to include.
 
     Attributes
@@ -173,7 +173,7 @@ schema SourceToolkitFluxcdIoV1beta1GitRepositorySpecIncludeItems0Repository:
 
 
 schema SourceToolkitFluxcdIoV1beta1GitRepositorySpecRef:
-    """
+    r"""
     The Git reference to checkout and monitor for changes, defaults to
     master branch.
 
@@ -200,7 +200,7 @@ schema SourceToolkitFluxcdIoV1beta1GitRepositorySpecRef:
 
 
 schema SourceToolkitFluxcdIoV1beta1GitRepositorySpecSecretRef:
-    """
+    r"""
     The secret name containing the Git credentials.
     For HTTPS repositories the secret must contain username and password
     fields.
@@ -218,7 +218,7 @@ schema SourceToolkitFluxcdIoV1beta1GitRepositorySpecSecretRef:
 
 
 schema SourceToolkitFluxcdIoV1beta1GitRepositorySpecVerify:
-    """
+    r"""
     Verify OpenPGP signature for the Git commit HEAD points to.
 
     Attributes
@@ -236,7 +236,7 @@ schema SourceToolkitFluxcdIoV1beta1GitRepositorySpecVerify:
 
 
 schema SourceToolkitFluxcdIoV1beta1GitRepositorySpecVerifySecretRef:
-    """
+    r"""
     The secret name containing the public keys of all trusted Git authors.
 
     Attributes
@@ -250,7 +250,7 @@ schema SourceToolkitFluxcdIoV1beta1GitRepositorySpecVerifySecretRef:
 
 
 schema SourceToolkitFluxcdIoV1beta1GitRepositoryStatus:
-    """
+    r"""
     GitRepositoryStatus defines the observed state of a Git repository.
 
     Attributes
@@ -287,14 +287,14 @@ schema SourceToolkitFluxcdIoV1beta1GitRepositoryStatus:
 
 
 schema SourceToolkitFluxcdIoV1beta1GitRepositoryStatusArtifact:
-    """
+    r"""
     Artifact represents the output of the last successful repository sync.
 
     Attributes
     ----------
     checksum : str, default is Undefined, optional
         Checksum is the SHA256 checksum of the artifact.
-    lastUpdateTime : str, default is Undefined, optional
+    lastUpdateTime : str, default is Undefined, required
         LastUpdateTime is the timestamp corresponding to the last update of this
         artifact.
     path : str, default is Undefined, required
@@ -310,7 +310,7 @@ schema SourceToolkitFluxcdIoV1beta1GitRepositoryStatusArtifact:
 
     checksum?: str
 
-    lastUpdateTime?: str
+    lastUpdateTime: str
 
     path: str
 
@@ -320,24 +320,8 @@ schema SourceToolkitFluxcdIoV1beta1GitRepositoryStatusArtifact:
 
 
 schema SourceToolkitFluxcdIoV1beta1GitRepositoryStatusConditionsItems0:
-    """
+    r"""
     Condition contains details for one aspect of the current state of this API Resource.
-    ---
-    This struct is intended for direct use as an array at the field path .status.conditions.  For example,
-
-
-    	type FooStatus struct{
-    	    // Represents the observations of a foo's current state.
-    	    // Known .status.conditions.type are: "Available", "Progressing", and "Degraded"
-    	    // +patchMergeKey=type
-    	    // +patchStrategy=merge
-    	    // +listType=map
-    	    // +listMapKey=type
-    	    Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`
-
-
-    	    // other fields
-    	}
 
     Attributes
     ----------
@@ -361,10 +345,6 @@ schema SourceToolkitFluxcdIoV1beta1GitRepositoryStatusConditionsItems0:
         status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
         type of condition in CamelCase or in foo.example.com/CamelCase.
-        ---
-        Many .condition.type values are consistent across resources like Available, but because arbitrary conditions can be
-        useful (see .node.status.conditions), the ability to deconflict is important.
-        The regex it matches is (dns1123SubdomainFmt/)?(qualifiedNameFmt)
     """
 
 
@@ -392,14 +372,14 @@ schema SourceToolkitFluxcdIoV1beta1GitRepositoryStatusConditionsItems0:
 
 
 schema SourceToolkitFluxcdIoV1beta1GitRepositoryStatusIncludedArtifactsItems0:
-    """
+    r"""
     Artifact represents the output of a source synchronisation.
 
     Attributes
     ----------
     checksum : str, default is Undefined, optional
         Checksum is the SHA256 checksum of the artifact.
-    lastUpdateTime : str, default is Undefined, optional
+    lastUpdateTime : str, default is Undefined, required
         LastUpdateTime is the timestamp corresponding to the last update of this
         artifact.
     path : str, default is Undefined, required
@@ -415,7 +395,7 @@ schema SourceToolkitFluxcdIoV1beta1GitRepositoryStatusIncludedArtifactsItems0:
 
     checksum?: str
 
-    lastUpdateTime?: str
+    lastUpdateTime: str
 
     path: str
 

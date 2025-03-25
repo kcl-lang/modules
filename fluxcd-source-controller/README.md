@@ -3,9 +3,20 @@
 ## Index
 
 - v1
+  - [Bucket](#bucket)
   - [GitRepository](#gitrepository)
   - [HelmChart](#helmchart)
   - [HelmRepository](#helmrepository)
+  - [SourceToolkitFluxcdIoV1BucketSpec](#sourcetoolkitfluxcdiov1bucketspec)
+  - [SourceToolkitFluxcdIoV1BucketSpecCertSecretRef](#sourcetoolkitfluxcdiov1bucketspeccertsecretref)
+  - [SourceToolkitFluxcdIoV1BucketSpecProxySecretRef](#sourcetoolkitfluxcdiov1bucketspecproxysecretref)
+  - [SourceToolkitFluxcdIoV1BucketSpecSecretRef](#sourcetoolkitfluxcdiov1bucketspecsecretref)
+  - [SourceToolkitFluxcdIoV1BucketSpecSts](#sourcetoolkitfluxcdiov1bucketspecsts)
+  - [SourceToolkitFluxcdIoV1BucketSpecStsCertSecretRef](#sourcetoolkitfluxcdiov1bucketspecstscertsecretref)
+  - [SourceToolkitFluxcdIoV1BucketSpecStsSecretRef](#sourcetoolkitfluxcdiov1bucketspecstssecretref)
+  - [SourceToolkitFluxcdIoV1BucketStatus](#sourcetoolkitfluxcdiov1bucketstatus)
+  - [SourceToolkitFluxcdIoV1BucketStatusArtifact](#sourcetoolkitfluxcdiov1bucketstatusartifact)
+  - [SourceToolkitFluxcdIoV1BucketStatusConditionsItems0](#sourcetoolkitfluxcdiov1bucketstatusconditionsitems0)
   - [SourceToolkitFluxcdIoV1GitRepositorySpec](#sourcetoolkitfluxcdiov1gitrepositoryspec)
   - [SourceToolkitFluxcdIoV1GitRepositorySpecIncludeItems0](#sourcetoolkitfluxcdiov1gitrepositoryspecincludeitems0)
   - [SourceToolkitFluxcdIoV1GitRepositorySpecIncludeItems0Repository](#sourcetoolkitfluxcdiov1gitrepositoryspecincludeitems0repository)
@@ -84,7 +95,12 @@
   - [SourceToolkitFluxcdIoV1beta2BucketSpec](#sourcetoolkitfluxcdiov1beta2bucketspec)
   - [SourceToolkitFluxcdIoV1beta2BucketSpecAccessFrom](#sourcetoolkitfluxcdiov1beta2bucketspecaccessfrom)
   - [SourceToolkitFluxcdIoV1beta2BucketSpecAccessFromNamespaceSelectorsItems0](#sourcetoolkitfluxcdiov1beta2bucketspecaccessfromnamespaceselectorsitems0)
+  - [SourceToolkitFluxcdIoV1beta2BucketSpecCertSecretRef](#sourcetoolkitfluxcdiov1beta2bucketspeccertsecretref)
+  - [SourceToolkitFluxcdIoV1beta2BucketSpecProxySecretRef](#sourcetoolkitfluxcdiov1beta2bucketspecproxysecretref)
   - [SourceToolkitFluxcdIoV1beta2BucketSpecSecretRef](#sourcetoolkitfluxcdiov1beta2bucketspecsecretref)
+  - [SourceToolkitFluxcdIoV1beta2BucketSpecSts](#sourcetoolkitfluxcdiov1beta2bucketspecsts)
+  - [SourceToolkitFluxcdIoV1beta2BucketSpecStsCertSecretRef](#sourcetoolkitfluxcdiov1beta2bucketspecstscertsecretref)
+  - [SourceToolkitFluxcdIoV1beta2BucketSpecStsSecretRef](#sourcetoolkitfluxcdiov1beta2bucketspecstssecretref)
   - [SourceToolkitFluxcdIoV1beta2BucketStatus](#sourcetoolkitfluxcdiov1beta2bucketstatus)
   - [SourceToolkitFluxcdIoV1beta2BucketStatusArtifact](#sourcetoolkitfluxcdiov1beta2bucketstatusartifact)
   - [SourceToolkitFluxcdIoV1beta2BucketStatusConditionsItems0](#sourcetoolkitfluxcdiov1beta2bucketstatusconditionsitems0)
@@ -124,6 +140,7 @@
   - [SourceToolkitFluxcdIoV1beta2OCIRepositorySpec](#sourcetoolkitfluxcdiov1beta2ocirepositoryspec)
   - [SourceToolkitFluxcdIoV1beta2OCIRepositorySpecCertSecretRef](#sourcetoolkitfluxcdiov1beta2ocirepositoryspeccertsecretref)
   - [SourceToolkitFluxcdIoV1beta2OCIRepositorySpecLayerSelector](#sourcetoolkitfluxcdiov1beta2ocirepositoryspeclayerselector)
+  - [SourceToolkitFluxcdIoV1beta2OCIRepositorySpecProxySecretRef](#sourcetoolkitfluxcdiov1beta2ocirepositoryspecproxysecretref)
   - [SourceToolkitFluxcdIoV1beta2OCIRepositorySpecRef](#sourcetoolkitfluxcdiov1beta2ocirepositoryspecref)
   - [SourceToolkitFluxcdIoV1beta2OCIRepositorySpecSecretRef](#sourcetoolkitfluxcdiov1beta2ocirepositoryspecsecretref)
   - [SourceToolkitFluxcdIoV1beta2OCIRepositorySpecVerify](#sourcetoolkitfluxcdiov1beta2ocirepositoryspecverify)
@@ -136,6 +153,19 @@
 
 ## Schemas
 
+### Bucket
+
+Bucket is the Schema for the buckets API.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**apiVersion** `required` `readOnly`|"source.toolkit.fluxcd.io/v1"|APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources|"source.toolkit.fluxcd.io/v1"|
+|**kind** `required` `readOnly`|"Bucket"|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds|"Bucket"|
+|**metadata**|[ObjectMeta](#objectmeta)|metadata||
+|**spec**|[SourceToolkitFluxcdIoV1BucketSpec](#sourcetoolkitfluxcdiov1bucketspec)|spec||
+|**status**|[SourceToolkitFluxcdIoV1BucketStatus](#sourcetoolkitfluxcdiov1bucketstatus)|status||
 ### GitRepository
 
 GitRepository is the Schema for the gitrepositories API.
@@ -175,6 +205,128 @@ HelmRepository is the Schema for the helmrepositories API.
 |**metadata**|[ObjectMeta](#objectmeta)|metadata||
 |**spec**|[SourceToolkitFluxcdIoV1HelmRepositorySpec](#sourcetoolkitfluxcdiov1helmrepositoryspec)|spec||
 |**status**|[SourceToolkitFluxcdIoV1HelmRepositoryStatus](#sourcetoolkitfluxcdiov1helmrepositorystatus)|status||
+### SourceToolkitFluxcdIoV1BucketSpec
+
+BucketSpec specifies the required configuration to produce an Artifact for an object storage bucket.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**bucketName** `required`|str|BucketName is the name of the object storage bucket.||
+|**certSecretRef**|[SourceToolkitFluxcdIoV1BucketSpecCertSecretRef](#sourcetoolkitfluxcdiov1bucketspeccertsecretref)|cert secret ref||
+|**endpoint** `required`|str|Endpoint is the object storage address the BucketName is located at.||
+|**ignore**|str|Ignore overrides the set of excluded patterns in the .sourceignore format<br />(which is the same as .gitignore). If not provided, a default will be used,<br />consult the documentation for your version to find out what those are.||
+|**insecure**|bool|Insecure allows connecting to a non-TLS HTTP Endpoint.||
+|**interval** `required`|str|Interval at which the Bucket Endpoint is checked for updates.<br />This interval is approximate and may be subject to jitter to ensure<br />efficient use of resources.||
+|**prefix**|str|Prefix to use for server-side filtering of files in the Bucket.||
+|**provider**|"generic" | "aws" | "gcp" | "azure"|Provider of the object storage bucket.<br />Defaults to 'generic', which expects an S3 (API) compatible object<br />storage.|"generic"|
+|**proxySecretRef**|[SourceToolkitFluxcdIoV1BucketSpecProxySecretRef](#sourcetoolkitfluxcdiov1bucketspecproxysecretref)|proxy secret ref||
+|**region**|str|Region of the Endpoint where the BucketName is located in.||
+|**secretRef**|[SourceToolkitFluxcdIoV1BucketSpecSecretRef](#sourcetoolkitfluxcdiov1bucketspecsecretref)|secret ref||
+|**sts**|[SourceToolkitFluxcdIoV1BucketSpecSts](#sourcetoolkitfluxcdiov1bucketspecsts)|sts||
+|**suspend**|bool|Suspend tells the controller to suspend the reconciliation of this<br />Bucket.||
+|**timeout**|str|Timeout for fetch operations, defaults to 60s.|"60s"|
+### SourceToolkitFluxcdIoV1BucketSpecCertSecretRef
+
+CertSecretRef can be given the name of a Secret containing either or both of  - a PEM-encoded client certificate (`tls.crt`) and private key (`tls.key`); - a PEM-encoded CA certificate (`ca.crt`)  and whichever are supplied, will be used for connecting to the bucket. The client cert and key are useful if you are authenticating with a certificate; the CA cert is useful if you are using a self-signed server certificate. The Secret must be of type `Opaque` or `kubernetes.io/tls`.  This field is only supported for the `generic` provider.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**name** `required`|str|Name of the referent.||
+### SourceToolkitFluxcdIoV1BucketSpecProxySecretRef
+
+ProxySecretRef specifies the Secret containing the proxy configuration to use while communicating with the Bucket server.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**name** `required`|str|Name of the referent.||
+### SourceToolkitFluxcdIoV1BucketSpecSecretRef
+
+SecretRef specifies the Secret containing authentication credentials for the Bucket.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**name** `required`|str|Name of the referent.||
+### SourceToolkitFluxcdIoV1BucketSpecSts
+
+STS specifies the required configuration to use a Security Token Service for fetching temporary credentials to authenticate in a Bucket provider.  This field is only supported for the `aws` and `generic` providers.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**certSecretRef**|[SourceToolkitFluxcdIoV1BucketSpecStsCertSecretRef](#sourcetoolkitfluxcdiov1bucketspecstscertsecretref)|cert secret ref||
+|**endpoint** `required`|str|Endpoint is the HTTP/S endpoint of the Security Token Service from<br />where temporary credentials will be fetched.||
+|**provider** `required`|"aws" | "ldap"|Provider of the Security Token Service.||
+|**secretRef**|[SourceToolkitFluxcdIoV1BucketSpecStsSecretRef](#sourcetoolkitfluxcdiov1bucketspecstssecretref)|secret ref||
+### SourceToolkitFluxcdIoV1BucketSpecStsCertSecretRef
+
+CertSecretRef can be given the name of a Secret containing either or both of  - a PEM-encoded client certificate (`tls.crt`) and private key (`tls.key`); - a PEM-encoded CA certificate (`ca.crt`)  and whichever are supplied, will be used for connecting to the STS endpoint. The client cert and key are useful if you are authenticating with a certificate; the CA cert is useful if you are using a self-signed server certificate. The Secret must be of type `Opaque` or `kubernetes.io/tls`.  This field is only supported for the `ldap` provider.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**name** `required`|str|Name of the referent.||
+### SourceToolkitFluxcdIoV1BucketSpecStsSecretRef
+
+SecretRef specifies the Secret containing authentication credentials for the STS endpoint. This Secret must contain the fields `username` and `password` and is supported only for the `ldap` provider.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**name** `required`|str|Name of the referent.||
+### SourceToolkitFluxcdIoV1BucketStatus
+
+BucketStatus records the observed state of a Bucket.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**artifact**|[SourceToolkitFluxcdIoV1BucketStatusArtifact](#sourcetoolkitfluxcdiov1bucketstatusartifact)|artifact||
+|**conditions**|[[SourceToolkitFluxcdIoV1BucketStatusConditionsItems0](#sourcetoolkitfluxcdiov1bucketstatusconditionsitems0)]|Conditions holds the conditions for the Bucket.||
+|**lastHandledReconcileAt**|str|LastHandledReconcileAt holds the value of the most recent<br />reconcile request value, so a change of the annotation value<br />can be detected.||
+|**observedGeneration**|int|ObservedGeneration is the last observed generation of the Bucket object.||
+|**observedIgnore**|str|ObservedIgnore is the observed exclusion patterns used for constructing<br />the source artifact.||
+|**url**|str|URL is the dynamic fetch link for the latest Artifact.<br />It is provided on a "best effort" basis, and using the precise<br />BucketStatus.Artifact data is recommended.||
+### SourceToolkitFluxcdIoV1BucketStatusArtifact
+
+Artifact represents the last successful Bucket reconciliation.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**digest**|str|Digest is the digest of the file in the form of '<algorithm>:<checksum>'.||
+|**lastUpdateTime** `required`|str|LastUpdateTime is the timestamp corresponding to the last update of the<br />Artifact.||
+|**metadata**|{str:str}|Metadata holds upstream information such as OCI annotations.||
+|**path** `required`|str|Path is the relative file path of the Artifact. It can be used to locate<br />the file in the root of the Artifact storage on the local file system of<br />the controller managing the Source.||
+|**revision** `required`|str|Revision is a human-readable identifier traceable in the origin source<br />system. It can be a Git commit SHA, Git tag, a Helm chart version, etc.||
+|**size**|int|Size is the number of bytes in the file.||
+|**url** `required`|str|URL is the HTTP address of the Artifact as exposed by the controller<br />managing the Source. It can be used to retrieve the Artifact for<br />consumption, e.g. by another controller applying the Artifact contents.||
+### SourceToolkitFluxcdIoV1BucketStatusConditionsItems0
+
+Condition contains details for one aspect of the current state of this API Resource.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**lastTransitionTime** `required`|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed.  If that is not known, then using the time when the API field changed is acceptable.||
+|**message** `required`|str|message is a human readable message indicating details about the transition.<br />This may be an empty string.||
+|**observedGeneration**|int|observedGeneration represents the .metadata.generation that the condition was set based upon.<br />For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date<br />with respect to the current state of the instance.||
+|**reason** `required`|str|reason contains a programmatic identifier indicating the reason for the condition's last transition.<br />Producers of specific condition types may define expected values and meanings for this field,<br />and whether the values are considered a guaranteed API.<br />The value should be a CamelCase string.<br />This field may not be empty.||
+|**status** `required`|"True" | "False" | "Unknown"|status of the condition, one of True, False, Unknown.||
+|**type** `required`|str|||
 ### SourceToolkitFluxcdIoV1GitRepositorySpec
 
 GitRepositorySpec specifies the required configuration to produce an Artifact for a Git repository.
@@ -186,6 +338,7 @@ GitRepositorySpec specifies the required configuration to produce an Artifact fo
 |**ignore**|str|Ignore overrides the set of excluded patterns in the .sourceignore format<br />(which is the same as .gitignore). If not provided, a default will be used,<br />consult the documentation for your version to find out what those are.||
 |**include**|[[SourceToolkitFluxcdIoV1GitRepositorySpecIncludeItems0](#sourcetoolkitfluxcdiov1gitrepositoryspecincludeitems0)]|Include specifies a list of GitRepository resources which Artifacts<br />should be included in the Artifact produced for this GitRepository.||
 |**interval** `required`|str|Interval at which the GitRepository URL is checked for updates.<br />This interval is approximate and may be subject to jitter to ensure<br />efficient use of resources.||
+|**provider**|"generic" | "azure" | "github"|Provider used for authentication, can be 'azure', 'github', 'generic'.<br />When not specified, defaults to 'generic'.||
 |**proxySecretRef**|[SourceToolkitFluxcdIoV1GitRepositorySpecProxySecretRef](#sourcetoolkitfluxcdiov1gitrepositoryspecproxysecretref)|proxy secret ref||
 |**recurseSubmodules**|bool|RecurseSubmodules enables the initialization of all submodules within<br />the GitRepository as cloned from the URL, using their default settings.||
 |**ref**|[SourceToolkitFluxcdIoV1GitRepositorySpecRef](#sourcetoolkitfluxcdiov1gitrepositoryspecref)|ref||
@@ -298,7 +451,7 @@ Artifact represents the last successful GitRepository reconciliation.
 |**url** `required`|str|URL is the HTTP address of the Artifact as exposed by the controller<br />managing the Source. It can be used to retrieve the Artifact for<br />consumption, e.g. by another controller applying the Artifact contents.||
 ### SourceToolkitFluxcdIoV1GitRepositoryStatusConditionsItems0
 
-Condition contains details for one aspect of the current state of this API Resource. --- This struct is intended for direct use as an array at the field path .status.conditions.  For example,  type FooStatus struct{ // Represents the observations of a foo's current state. // Known .status.conditions.type are: "Available", "Progressing", and "Degraded" // +patchMergeKey=type // +patchStrategy=merge // +listType=map // +listMapKey=type Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`  // other fields }
+Condition contains details for one aspect of the current state of this API Resource.
 
 #### Attributes
 
@@ -436,7 +589,7 @@ Artifact represents the output of the last successful reconciliation.
 |**url** `required`|str|URL is the HTTP address of the Artifact as exposed by the controller<br />managing the Source. It can be used to retrieve the Artifact for<br />consumption, e.g. by another controller applying the Artifact contents.||
 ### SourceToolkitFluxcdIoV1HelmChartStatusConditionsItems0
 
-Condition contains details for one aspect of the current state of this API Resource. --- This struct is intended for direct use as an array at the field path .status.conditions.  For example,  type FooStatus struct{ // Represents the observations of a foo's current state. // Known .status.conditions.type are: "Available", "Progressing", and "Degraded" // +patchMergeKey=type // +patchStrategy=merge // +listType=map // +listMapKey=type Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`  // other fields }
+Condition contains details for one aspect of the current state of this API Resource.
 
 #### Attributes
 
@@ -533,7 +686,7 @@ Artifact represents the last successful HelmRepository reconciliation.
 |**url** `required`|str|URL is the HTTP address of the Artifact as exposed by the controller<br />managing the Source. It can be used to retrieve the Artifact for<br />consumption, e.g. by another controller applying the Artifact contents.||
 ### SourceToolkitFluxcdIoV1HelmRepositoryStatusConditionsItems0
 
-Condition contains details for one aspect of the current state of this API Resource. --- This struct is intended for direct use as an array at the field path .status.conditions.  For example,  type FooStatus struct{ // Represents the observations of a foo's current state. // Known .status.conditions.type are: "Available", "Progressing", and "Degraded" // +patchMergeKey=type // +patchStrategy=merge // +listType=map // +listMapKey=type Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`  // other fields }
+Condition contains details for one aspect of the current state of this API Resource.
 
 #### Attributes
 
@@ -665,13 +818,13 @@ Artifact represents the output of the last successful Bucket sync.
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**checksum**|str|Checksum is the SHA256 checksum of the artifact.||
-|**lastUpdateTime**|str|LastUpdateTime is the timestamp corresponding to the last update of this<br />artifact.||
+|**lastUpdateTime** `required`|str|LastUpdateTime is the timestamp corresponding to the last update of this<br />artifact.||
 |**path** `required`|str|Path is the relative file path of this artifact.||
 |**revision**|str|Revision is a human readable identifier traceable in the origin source<br />system. It can be a Git commit SHA, Git tag, a Helm index timestamp, a Helm<br />chart version, etc.||
 |**url** `required`|str|URL is the HTTP address of this artifact.||
 ### SourceToolkitFluxcdIoV1beta1BucketStatusConditionsItems0
 
-Condition contains details for one aspect of the current state of this API Resource. --- This struct is intended for direct use as an array at the field path .status.conditions.  For example,  type FooStatus struct{ // Represents the observations of a foo's current state. // Known .status.conditions.type are: "Available", "Progressing", and "Degraded" // +patchMergeKey=type // +patchStrategy=merge // +listType=map // +listMapKey=type Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`  // other fields }
+Condition contains details for one aspect of the current state of this API Resource.
 
 #### Attributes
 
@@ -804,13 +957,13 @@ Artifact represents the output of the last successful repository sync.
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**checksum**|str|Checksum is the SHA256 checksum of the artifact.||
-|**lastUpdateTime**|str|LastUpdateTime is the timestamp corresponding to the last update of this<br />artifact.||
+|**lastUpdateTime** `required`|str|LastUpdateTime is the timestamp corresponding to the last update of this<br />artifact.||
 |**path** `required`|str|Path is the relative file path of this artifact.||
 |**revision**|str|Revision is a human readable identifier traceable in the origin source<br />system. It can be a Git commit SHA, Git tag, a Helm index timestamp, a Helm<br />chart version, etc.||
 |**url** `required`|str|URL is the HTTP address of this artifact.||
 ### SourceToolkitFluxcdIoV1beta1GitRepositoryStatusConditionsItems0
 
-Condition contains details for one aspect of the current state of this API Resource. --- This struct is intended for direct use as an array at the field path .status.conditions.  For example,  type FooStatus struct{ // Represents the observations of a foo's current state. // Known .status.conditions.type are: "Available", "Progressing", and "Degraded" // +patchMergeKey=type // +patchStrategy=merge // +listType=map // +listMapKey=type Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`  // other fields }
+Condition contains details for one aspect of the current state of this API Resource.
 
 #### Attributes
 
@@ -831,7 +984,7 @@ Artifact represents the output of a source synchronisation.
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**checksum**|str|Checksum is the SHA256 checksum of the artifact.||
-|**lastUpdateTime**|str|LastUpdateTime is the timestamp corresponding to the last update of this<br />artifact.||
+|**lastUpdateTime** `required`|str|LastUpdateTime is the timestamp corresponding to the last update of this<br />artifact.||
 |**path** `required`|str|Path is the relative file path of this artifact.||
 |**revision**|str|Revision is a human readable identifier traceable in the origin source<br />system. It can be a Git commit SHA, Git tag, a Helm index timestamp, a Helm<br />chart version, etc.||
 |**url** `required`|str|URL is the HTTP address of this artifact.||
@@ -903,13 +1056,13 @@ Artifact represents the output of the last successful chart sync.
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**checksum**|str|Checksum is the SHA256 checksum of the artifact.||
-|**lastUpdateTime**|str|LastUpdateTime is the timestamp corresponding to the last update of this<br />artifact.||
+|**lastUpdateTime** `required`|str|LastUpdateTime is the timestamp corresponding to the last update of this<br />artifact.||
 |**path** `required`|str|Path is the relative file path of this artifact.||
 |**revision**|str|Revision is a human readable identifier traceable in the origin source<br />system. It can be a Git commit SHA, Git tag, a Helm index timestamp, a Helm<br />chart version, etc.||
 |**url** `required`|str|URL is the HTTP address of this artifact.||
 ### SourceToolkitFluxcdIoV1beta1HelmChartStatusConditionsItems0
 
-Condition contains details for one aspect of the current state of this API Resource. --- This struct is intended for direct use as an array at the field path .status.conditions.  For example,  type FooStatus struct{ // Represents the observations of a foo's current state. // Known .status.conditions.type are: "Available", "Progressing", and "Degraded" // +patchMergeKey=type // +patchStrategy=merge // +listType=map // +listMapKey=type Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`  // other fields }
+Condition contains details for one aspect of the current state of this API Resource.
 
 #### Attributes
 
@@ -985,13 +1138,13 @@ Artifact represents the output of the last successful repository sync.
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**checksum**|str|Checksum is the SHA256 checksum of the artifact.||
-|**lastUpdateTime**|str|LastUpdateTime is the timestamp corresponding to the last update of this<br />artifact.||
+|**lastUpdateTime** `required`|str|LastUpdateTime is the timestamp corresponding to the last update of this<br />artifact.||
 |**path** `required`|str|Path is the relative file path of this artifact.||
 |**revision**|str|Revision is a human readable identifier traceable in the origin source<br />system. It can be a Git commit SHA, Git tag, a Helm index timestamp, a Helm<br />chart version, etc.||
 |**url** `required`|str|URL is the HTTP address of this artifact.||
 ### SourceToolkitFluxcdIoV1beta1HelmRepositoryStatusConditionsItems0
 
-Condition contains details for one aspect of the current state of this API Resource. --- This struct is intended for direct use as an array at the field path .status.conditions.  For example,  type FooStatus struct{ // Represents the observations of a foo's current state. // Known .status.conditions.type are: "Available", "Progressing", and "Degraded" // +patchMergeKey=type // +patchStrategy=merge // +listType=map // +listMapKey=type Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`  // other fields }
+Condition contains details for one aspect of the current state of this API Resource.
 
 #### Attributes
 
@@ -1078,14 +1231,17 @@ BucketSpec specifies the required configuration to produce an Artifact for an ob
 | --- | --- | --- | --- |
 |**accessFrom**|[SourceToolkitFluxcdIoV1beta2BucketSpecAccessFrom](#sourcetoolkitfluxcdiov1beta2bucketspecaccessfrom)|access from||
 |**bucketName** `required`|str|BucketName is the name of the object storage bucket.||
+|**certSecretRef**|[SourceToolkitFluxcdIoV1beta2BucketSpecCertSecretRef](#sourcetoolkitfluxcdiov1beta2bucketspeccertsecretref)|cert secret ref||
 |**endpoint** `required`|str|Endpoint is the object storage address the BucketName is located at.||
 |**ignore**|str|Ignore overrides the set of excluded patterns in the .sourceignore format<br />(which is the same as .gitignore). If not provided, a default will be used,<br />consult the documentation for your version to find out what those are.||
 |**insecure**|bool|Insecure allows connecting to a non-TLS HTTP Endpoint.||
 |**interval** `required`|str|Interval at which the Bucket Endpoint is checked for updates.<br />This interval is approximate and may be subject to jitter to ensure<br />efficient use of resources.||
 |**prefix**|str|Prefix to use for server-side filtering of files in the Bucket.||
 |**provider**|"generic" | "aws" | "gcp" | "azure"|Provider of the object storage bucket.<br />Defaults to 'generic', which expects an S3 (API) compatible object<br />storage.|"generic"|
+|**proxySecretRef**|[SourceToolkitFluxcdIoV1beta2BucketSpecProxySecretRef](#sourcetoolkitfluxcdiov1beta2bucketspecproxysecretref)|proxy secret ref||
 |**region**|str|Region of the Endpoint where the BucketName is located in.||
 |**secretRef**|[SourceToolkitFluxcdIoV1beta2BucketSpecSecretRef](#sourcetoolkitfluxcdiov1beta2bucketspecsecretref)|secret ref||
+|**sts**|[SourceToolkitFluxcdIoV1beta2BucketSpecSts](#sourcetoolkitfluxcdiov1beta2bucketspecsts)|sts||
 |**suspend**|bool|Suspend tells the controller to suspend the reconciliation of this<br />Bucket.||
 |**timeout**|str|Timeout for fetch operations, defaults to 60s.|"60s"|
 ### SourceToolkitFluxcdIoV1beta2BucketSpecAccessFrom
@@ -1106,9 +1262,57 @@ NamespaceSelector selects the namespaces to which this ACL applies. An empty map
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**matchLabels**|{str:str}|MatchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels<br />map is equivalent to an element of matchExpressions, whose key field is "key", the<br />operator is "In", and the values array contains only "value". The requirements are ANDed.||
+### SourceToolkitFluxcdIoV1beta2BucketSpecCertSecretRef
+
+CertSecretRef can be given the name of a Secret containing either or both of  - a PEM-encoded client certificate (`tls.crt`) and private key (`tls.key`); - a PEM-encoded CA certificate (`ca.crt`)  and whichever are supplied, will be used for connecting to the bucket. The client cert and key are useful if you are authenticating with a certificate; the CA cert is useful if you are using a self-signed server certificate. The Secret must be of type `Opaque` or `kubernetes.io/tls`.  This field is only supported for the `generic` provider.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**name** `required`|str|Name of the referent.||
+### SourceToolkitFluxcdIoV1beta2BucketSpecProxySecretRef
+
+ProxySecretRef specifies the Secret containing the proxy configuration to use while communicating with the Bucket server.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**name** `required`|str|Name of the referent.||
 ### SourceToolkitFluxcdIoV1beta2BucketSpecSecretRef
 
 SecretRef specifies the Secret containing authentication credentials for the Bucket.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**name** `required`|str|Name of the referent.||
+### SourceToolkitFluxcdIoV1beta2BucketSpecSts
+
+STS specifies the required configuration to use a Security Token Service for fetching temporary credentials to authenticate in a Bucket provider.  This field is only supported for the `aws` and `generic` providers.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**certSecretRef**|[SourceToolkitFluxcdIoV1beta2BucketSpecStsCertSecretRef](#sourcetoolkitfluxcdiov1beta2bucketspecstscertsecretref)|cert secret ref||
+|**endpoint** `required`|str|Endpoint is the HTTP/S endpoint of the Security Token Service from<br />where temporary credentials will be fetched.||
+|**provider** `required`|"aws" | "ldap"|Provider of the Security Token Service.||
+|**secretRef**|[SourceToolkitFluxcdIoV1beta2BucketSpecStsSecretRef](#sourcetoolkitfluxcdiov1beta2bucketspecstssecretref)|secret ref||
+### SourceToolkitFluxcdIoV1beta2BucketSpecStsCertSecretRef
+
+CertSecretRef can be given the name of a Secret containing either or both of  - a PEM-encoded client certificate (`tls.crt`) and private key (`tls.key`); - a PEM-encoded CA certificate (`ca.crt`)  and whichever are supplied, will be used for connecting to the STS endpoint. The client cert and key are useful if you are authenticating with a certificate; the CA cert is useful if you are using a self-signed server certificate. The Secret must be of type `Opaque` or `kubernetes.io/tls`.  This field is only supported for the `ldap` provider.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**name** `required`|str|Name of the referent.||
+### SourceToolkitFluxcdIoV1beta2BucketSpecStsSecretRef
+
+SecretRef specifies the Secret containing authentication credentials for the STS endpoint. This Secret must contain the fields `username` and `password` and is supported only for the `ldap` provider.
 
 #### Attributes
 
@@ -1146,7 +1350,7 @@ Artifact represents the last successful Bucket reconciliation.
 |**url** `required`|str|URL is the HTTP address of the Artifact as exposed by the controller<br />managing the Source. It can be used to retrieve the Artifact for<br />consumption, e.g. by another controller applying the Artifact contents.||
 ### SourceToolkitFluxcdIoV1beta2BucketStatusConditionsItems0
 
-Condition contains details for one aspect of the current state of this API Resource. --- This struct is intended for direct use as an array at the field path .status.conditions.  For example,  type FooStatus struct{ // Represents the observations of a foo's current state. // Known .status.conditions.type are: "Available", "Progressing", and "Degraded" // +patchMergeKey=type // +patchStrategy=merge // +listType=map // +listMapKey=type Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`  // other fields }
+Condition contains details for one aspect of the current state of this API Resource.
 
 #### Attributes
 
@@ -1292,7 +1496,7 @@ Artifact represents the last successful GitRepository reconciliation.
 |**url** `required`|str|URL is the HTTP address of the Artifact as exposed by the controller<br />managing the Source. It can be used to retrieve the Artifact for<br />consumption, e.g. by another controller applying the Artifact contents.||
 ### SourceToolkitFluxcdIoV1beta2GitRepositoryStatusConditionsItems0
 
-Condition contains details for one aspect of the current state of this API Resource. --- This struct is intended for direct use as an array at the field path .status.conditions.  For example,  type FooStatus struct{ // Represents the observations of a foo's current state. // Known .status.conditions.type are: "Available", "Progressing", and "Degraded" // +patchMergeKey=type // +patchStrategy=merge // +listType=map // +listMapKey=type Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`  // other fields }
+Condition contains details for one aspect of the current state of this API Resource.
 
 #### Attributes
 
@@ -1450,7 +1654,7 @@ Artifact represents the output of the last successful reconciliation.
 |**url** `required`|str|URL is the HTTP address of the Artifact as exposed by the controller<br />managing the Source. It can be used to retrieve the Artifact for<br />consumption, e.g. by another controller applying the Artifact contents.||
 ### SourceToolkitFluxcdIoV1beta2HelmChartStatusConditionsItems0
 
-Condition contains details for one aspect of the current state of this API Resource. --- This struct is intended for direct use as an array at the field path .status.conditions.  For example,  type FooStatus struct{ // Represents the observations of a foo's current state. // Known .status.conditions.type are: "Available", "Progressing", and "Degraded" // +patchMergeKey=type // +patchStrategy=merge // +listType=map // +listMapKey=type Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`  // other fields }
+Condition contains details for one aspect of the current state of this API Resource.
 
 #### Attributes
 
@@ -1547,7 +1751,7 @@ Artifact represents the last successful HelmRepository reconciliation.
 |**url** `required`|str|URL is the HTTP address of the Artifact as exposed by the controller<br />managing the Source. It can be used to retrieve the Artifact for<br />consumption, e.g. by another controller applying the Artifact contents.||
 ### SourceToolkitFluxcdIoV1beta2HelmRepositoryStatusConditionsItems0
 
-Condition contains details for one aspect of the current state of this API Resource. --- This struct is intended for direct use as an array at the field path .status.conditions.  For example,  type FooStatus struct{ // Represents the observations of a foo's current state. // Known .status.conditions.type are: "Available", "Progressing", and "Degraded" // +patchMergeKey=type // +patchStrategy=merge // +listType=map // +listMapKey=type Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`  // other fields }
+Condition contains details for one aspect of the current state of this API Resource.
 
 #### Attributes
 
@@ -1573,6 +1777,7 @@ OCIRepositorySpec defines the desired state of OCIRepository
 |**interval** `required`|str|Interval at which the OCIRepository URL is checked for updates.<br />This interval is approximate and may be subject to jitter to ensure<br />efficient use of resources.||
 |**layerSelector**|[SourceToolkitFluxcdIoV1beta2OCIRepositorySpecLayerSelector](#sourcetoolkitfluxcdiov1beta2ocirepositoryspeclayerselector)|layer selector||
 |**provider**|"generic" | "aws" | "azure" | "gcp"|The provider used for authentication, can be 'aws', 'azure', 'gcp' or 'generic'.<br />When not specified, defaults to 'generic'.|"generic"|
+|**proxySecretRef**|[SourceToolkitFluxcdIoV1beta2OCIRepositorySpecProxySecretRef](#sourcetoolkitfluxcdiov1beta2ocirepositoryspecproxysecretref)|proxy secret ref||
 |**ref**|[SourceToolkitFluxcdIoV1beta2OCIRepositorySpecRef](#sourcetoolkitfluxcdiov1beta2ocirepositoryspecref)|ref||
 |**secretRef**|[SourceToolkitFluxcdIoV1beta2OCIRepositorySpecSecretRef](#sourcetoolkitfluxcdiov1beta2ocirepositoryspecsecretref)|secret ref||
 |**serviceAccountName**|str|ServiceAccountName is the name of the Kubernetes ServiceAccount used to authenticate<br />the image pull if the service account has attached pull secrets. For more information:<br />https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#add-imagepullsecrets-to-a-service-account||
@@ -1599,6 +1804,15 @@ LayerSelector specifies which layer should be extracted from the OCI artifact. W
 | --- | --- | --- | --- |
 |**mediaType**|str|MediaType specifies the OCI media type of the layer<br />which should be extracted from the OCI Artifact. The<br />first layer matching this type is selected.||
 |**operation**|"extract" | "copy"|Operation specifies how the selected layer should be processed.<br />By default, the layer compressed content is extracted to storage.<br />When the operation is set to 'copy', the layer compressed content<br />is persisted to storage as it is.||
+### SourceToolkitFluxcdIoV1beta2OCIRepositorySpecProxySecretRef
+
+ProxySecretRef specifies the Secret containing the proxy configuration to use while communicating with the container registry.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**name** `required`|str|Name of the referent.||
 ### SourceToolkitFluxcdIoV1beta2OCIRepositorySpecRef
 
 The OCI reference to pull and monitor for changes, defaults to the latest tag.
@@ -1683,7 +1897,7 @@ Artifact represents the output of the last successful OCI Repository sync.
 |**url** `required`|str|URL is the HTTP address of the Artifact as exposed by the controller<br />managing the Source. It can be used to retrieve the Artifact for<br />consumption, e.g. by another controller applying the Artifact contents.||
 ### SourceToolkitFluxcdIoV1beta2OCIRepositoryStatusConditionsItems0
 
-Condition contains details for one aspect of the current state of this API Resource. --- This struct is intended for direct use as an array at the field path .status.conditions.  For example,  type FooStatus struct{ // Represents the observations of a foo's current state. // Known .status.conditions.type are: "Available", "Progressing", and "Degraded" // +patchMergeKey=type // +patchStrategy=merge // +listType=map // +listMapKey=type Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`  // other fields }
+Condition contains details for one aspect of the current state of this API Resource.
 
 #### Attributes
 

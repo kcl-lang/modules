@@ -7,148 +7,116 @@ import k8s.apimachinery.pkg.apis.meta.v1
 _regex_match = regex.match
 
 
-schema HelmRepository:
+schema Bucket:
     r"""
-    HelmRepository is the Schema for the helmrepositories API.
+    Bucket is the Schema for the buckets API.
 
     Attributes
     ----------
-    apiVersion : str, default is "source.toolkit.fluxcd.io/v1beta2", required
+    apiVersion : str, default is "source.toolkit.fluxcd.io/v1", required
         APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-    kind : str, default is "HelmRepository", required
+    kind : str, default is "Bucket", required
         Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     metadata : v1.ObjectMeta, default is Undefined, optional
         metadata
-    spec : SourceToolkitFluxcdIoV1beta2HelmRepositorySpec, default is Undefined, optional
+    spec : SourceToolkitFluxcdIoV1BucketSpec, default is Undefined, optional
         spec
-    status : SourceToolkitFluxcdIoV1beta2HelmRepositoryStatus, default is Undefined, optional
+    status : SourceToolkitFluxcdIoV1BucketStatus, default is Undefined, optional
         status
     """
 
 
-    apiVersion: "source.toolkit.fluxcd.io/v1beta2" = "source.toolkit.fluxcd.io/v1beta2"
+    apiVersion: "source.toolkit.fluxcd.io/v1" = "source.toolkit.fluxcd.io/v1"
 
-    kind: "HelmRepository" = "HelmRepository"
+    kind: "Bucket" = "Bucket"
 
     metadata?: v1.ObjectMeta
 
-    spec?: SourceToolkitFluxcdIoV1beta2HelmRepositorySpec
+    spec?: SourceToolkitFluxcdIoV1BucketSpec
 
-    status?: SourceToolkitFluxcdIoV1beta2HelmRepositoryStatus
+    status?: SourceToolkitFluxcdIoV1BucketStatus
 
 
-schema SourceToolkitFluxcdIoV1beta2HelmRepositorySpec:
+schema SourceToolkitFluxcdIoV1BucketSpec:
     r"""
-    HelmRepositorySpec specifies the required configuration to produce an
-    Artifact for a Helm repository index YAML.
+    BucketSpec specifies the required configuration to produce an Artifact for
+    an object storage bucket.
 
     Attributes
     ----------
-    accessFrom : SourceToolkitFluxcdIoV1beta2HelmRepositorySpecAccessFrom, default is Undefined, optional
-        access from
-    certSecretRef : SourceToolkitFluxcdIoV1beta2HelmRepositorySpecCertSecretRef, default is Undefined, optional
+    bucketName : str, default is Undefined, required
+        BucketName is the name of the object storage bucket.
+    certSecretRef : SourceToolkitFluxcdIoV1BucketSpecCertSecretRef, default is Undefined, optional
         cert secret ref
+    endpoint : str, default is Undefined, required
+        Endpoint is the object storage address the BucketName is located at.
+    ignore : str, default is Undefined, optional
+        Ignore overrides the set of excluded patterns in the .sourceignore format
+        (which is the same as .gitignore). If not provided, a default will be used,
+        consult the documentation for your version to find out what those are.
     insecure : bool, default is Undefined, optional
-        Insecure allows connecting to a non-TLS HTTP container registry.
-        This field is only taken into account if the .spec.type field is set to 'oci'.
-    interval : str, default is Undefined, optional
-        Interval at which the HelmRepository URL is checked for updates.
+        Insecure allows connecting to a non-TLS HTTP Endpoint.
+    interval : str, default is Undefined, required
+        Interval at which the Bucket Endpoint is checked for updates.
         This interval is approximate and may be subject to jitter to ensure
         efficient use of resources.
-    passCredentials : bool, default is Undefined, optional
-        PassCredentials allows the credentials from the SecretRef to be passed
-        on to a host that does not match the host as defined in URL.
-        This may be required if the host of the advertised chart URLs in the
-        index differ from the defined URL.
-        Enabling this should be done with caution, as it can potentially result
-        in credentials getting stolen in a MITM-attack.
+    prefix : str, default is Undefined, optional
+        Prefix to use for server-side filtering of files in the Bucket.
     provider : str, default is "generic", optional
-        Provider used for authentication, can be 'aws', 'azure', 'gcp' or 'generic'.
-        This field is optional, and only taken into account if the .spec.type field is set to 'oci'.
-        When not specified, defaults to 'generic'.
-    secretRef : SourceToolkitFluxcdIoV1beta2HelmRepositorySpecSecretRef, default is Undefined, optional
+        Provider of the object storage bucket.
+        Defaults to 'generic', which expects an S3 (API) compatible object
+        storage.
+    proxySecretRef : SourceToolkitFluxcdIoV1BucketSpecProxySecretRef, default is Undefined, optional
+        proxy secret ref
+    region : str, default is Undefined, optional
+        Region of the Endpoint where the BucketName is located in.
+    secretRef : SourceToolkitFluxcdIoV1BucketSpecSecretRef, default is Undefined, optional
         secret ref
+    sts : SourceToolkitFluxcdIoV1BucketSpecSts, default is Undefined, optional
+        sts
     suspend : bool, default is Undefined, optional
         Suspend tells the controller to suspend the reconciliation of this
-        HelmRepository.
-    timeout : str, default is Undefined, optional
-        Timeout is used for the index fetch operation for an HTTPS helm repository,
-        and for remote OCI Repository operations like pulling for an OCI helm
-        chart by the associated HelmChart.
-        Its default value is 60s.
-    $type : str, default is Undefined, optional
-        Type of the HelmRepository.
-        When this field is set to  "oci", the URL field value must be prefixed with "oci://".
-    url : str, default is Undefined, required
-        URL of the Helm repository, a valid URL contains at least a protocol and
-        host.
+        Bucket.
+    timeout : str, default is "60s", optional
+        Timeout for fetch operations, defaults to 60s.
     """
 
 
-    accessFrom?: SourceToolkitFluxcdIoV1beta2HelmRepositorySpecAccessFrom
+    bucketName: str
 
-    certSecretRef?: SourceToolkitFluxcdIoV1beta2HelmRepositorySpecCertSecretRef
+    certSecretRef?: SourceToolkitFluxcdIoV1BucketSpecCertSecretRef
+
+    endpoint: str
+
+    ignore?: str
 
     insecure?: bool
 
-    interval?: str
+    interval: str
 
-    passCredentials?: bool
+    prefix?: str
 
-    provider?: "generic" | "aws" | "azure" | "gcp" = "generic"
+    provider?: "generic" | "aws" | "gcp" | "azure" = "generic"
 
-    secretRef?: SourceToolkitFluxcdIoV1beta2HelmRepositorySpecSecretRef
+    proxySecretRef?: SourceToolkitFluxcdIoV1BucketSpecProxySecretRef
+
+    region?: str
+
+    secretRef?: SourceToolkitFluxcdIoV1BucketSpecSecretRef
+
+    sts?: SourceToolkitFluxcdIoV1BucketSpecSts
 
     suspend?: bool
 
-    timeout?: str
-
-    $type?: "default" | "oci"
-
-    url: str
+    timeout?: str = "60s"
 
 
     check:
-        _regex_match(str(interval), r"^([0-9]+(\.[0-9]+)?(ms|s|m|h))+$") if interval
+        _regex_match(str(interval), r"^([0-9]+(\.[0-9]+)?(ms|s|m|h))+$")
         _regex_match(str(timeout), r"^([0-9]+(\.[0-9]+)?(ms|s|m))+$") if timeout
-        _regex_match(str(url), r"^(http|https|oci)://.*$")
 
 
-schema SourceToolkitFluxcdIoV1beta2HelmRepositorySpecAccessFrom:
-    r"""
-    AccessFrom specifies an Access Control List for allowing cross-namespace
-    references to this object.
-    NOTE: Not implemented, provisional as of https://github.com/fluxcd/flux2/pull/2092
-
-    Attributes
-    ----------
-    namespaceSelectors : [SourceToolkitFluxcdIoV1beta2HelmRepositorySpecAccessFromNamespaceSelectorsItems0], default is Undefined, required
-        NamespaceSelectors is the list of namespace selectors to which this ACL applies.
-        Items in this list are evaluated using a logical OR operation.
-    """
-
-
-    namespaceSelectors: [SourceToolkitFluxcdIoV1beta2HelmRepositorySpecAccessFromNamespaceSelectorsItems0]
-
-
-schema SourceToolkitFluxcdIoV1beta2HelmRepositorySpecAccessFromNamespaceSelectorsItems0:
-    r"""
-    NamespaceSelector selects the namespaces to which this ACL applies.
-    An empty map of MatchLabels matches all namespaces in a cluster.
-
-    Attributes
-    ----------
-    matchLabels : {str:str}, default is Undefined, optional
-        MatchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels
-        map is equivalent to an element of matchExpressions, whose key field is "key", the
-        operator is "In", and the values array contains only "value". The requirements are ANDed.
-    """
-
-
-    matchLabels?: {str:str}
-
-
-schema SourceToolkitFluxcdIoV1beta2HelmRepositorySpecCertSecretRef:
+schema SourceToolkitFluxcdIoV1BucketSpecCertSecretRef:
     r"""
     CertSecretRef can be given the name of a Secret containing
     either or both of
@@ -158,13 +126,12 @@ schema SourceToolkitFluxcdIoV1beta2HelmRepositorySpecCertSecretRef:
     - a PEM-encoded CA certificate (`ca.crt`)
 
     and whichever are supplied, will be used for connecting to the
-    registry. The client cert and key are useful if you are
+    bucket. The client cert and key are useful if you are
     authenticating with a certificate; the CA cert is useful if
     you are using a self-signed server certificate. The Secret must
     be of type `Opaque` or `kubernetes.io/tls`.
 
-    It takes precedence over the values specified in the Secret referred
-    to by `.spec.secretRef`.
+    This field is only supported for the `generic` provider.
 
     Attributes
     ----------
@@ -176,14 +143,25 @@ schema SourceToolkitFluxcdIoV1beta2HelmRepositorySpecCertSecretRef:
     name: str
 
 
-schema SourceToolkitFluxcdIoV1beta2HelmRepositorySpecSecretRef:
+schema SourceToolkitFluxcdIoV1BucketSpecProxySecretRef:
+    r"""
+    ProxySecretRef specifies the Secret containing the proxy configuration
+    to use while communicating with the Bucket server.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name of the referent.
+    """
+
+
+    name: str
+
+
+schema SourceToolkitFluxcdIoV1BucketSpecSecretRef:
     r"""
     SecretRef specifies the Secret containing authentication credentials
-    for the HelmRepository.
-    For HTTP/S basic auth the secret must contain 'username' and 'password'
-    fields.
-    Support for TLS auth using the 'certFile' and 'keyFile', and/or 'caFile'
-    keys is deprecated. Please use `.spec.certSecretRef` instead.
+    for the Bucket.
 
     Attributes
     ----------
@@ -195,44 +173,126 @@ schema SourceToolkitFluxcdIoV1beta2HelmRepositorySpecSecretRef:
     name: str
 
 
-schema SourceToolkitFluxcdIoV1beta2HelmRepositoryStatus:
+schema SourceToolkitFluxcdIoV1BucketSpecSts:
     r"""
-    HelmRepositoryStatus records the observed state of the HelmRepository.
+    STS specifies the required configuration to use a Security Token
+    Service for fetching temporary credentials to authenticate in a
+    Bucket provider.
+
+    This field is only supported for the `aws` and `generic` providers.
 
     Attributes
     ----------
-    artifact : SourceToolkitFluxcdIoV1beta2HelmRepositoryStatusArtifact, default is Undefined, optional
+    certSecretRef : SourceToolkitFluxcdIoV1BucketSpecStsCertSecretRef, default is Undefined, optional
+        cert secret ref
+    endpoint : str, default is Undefined, required
+        Endpoint is the HTTP/S endpoint of the Security Token Service from
+        where temporary credentials will be fetched.
+    provider : str, default is Undefined, required
+        Provider of the Security Token Service.
+    secretRef : SourceToolkitFluxcdIoV1BucketSpecStsSecretRef, default is Undefined, optional
+        secret ref
+    """
+
+
+    certSecretRef?: SourceToolkitFluxcdIoV1BucketSpecStsCertSecretRef
+
+    endpoint: str
+
+    provider: "aws" | "ldap"
+
+    secretRef?: SourceToolkitFluxcdIoV1BucketSpecStsSecretRef
+
+
+    check:
+        _regex_match(str(endpoint), r"^(http|https)://.*$")
+
+
+schema SourceToolkitFluxcdIoV1BucketSpecStsCertSecretRef:
+    r"""
+    CertSecretRef can be given the name of a Secret containing
+    either or both of
+
+    - a PEM-encoded client certificate (`tls.crt`) and private
+    key (`tls.key`);
+    - a PEM-encoded CA certificate (`ca.crt`)
+
+    and whichever are supplied, will be used for connecting to the
+    STS endpoint. The client cert and key are useful if you are
+    authenticating with a certificate; the CA cert is useful if
+    you are using a self-signed server certificate. The Secret must
+    be of type `Opaque` or `kubernetes.io/tls`.
+
+    This field is only supported for the `ldap` provider.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name of the referent.
+    """
+
+
+    name: str
+
+
+schema SourceToolkitFluxcdIoV1BucketSpecStsSecretRef:
+    r"""
+    SecretRef specifies the Secret containing authentication credentials
+    for the STS endpoint. This Secret must contain the fields `username`
+    and `password` and is supported only for the `ldap` provider.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name of the referent.
+    """
+
+
+    name: str
+
+
+schema SourceToolkitFluxcdIoV1BucketStatus:
+    r"""
+    BucketStatus records the observed state of a Bucket.
+
+    Attributes
+    ----------
+    artifact : SourceToolkitFluxcdIoV1BucketStatusArtifact, default is Undefined, optional
         artifact
-    conditions : [SourceToolkitFluxcdIoV1beta2HelmRepositoryStatusConditionsItems0], default is Undefined, optional
-        Conditions holds the conditions for the HelmRepository.
+    conditions : [SourceToolkitFluxcdIoV1BucketStatusConditionsItems0], default is Undefined, optional
+        Conditions holds the conditions for the Bucket.
     lastHandledReconcileAt : str, default is Undefined, optional
         LastHandledReconcileAt holds the value of the most recent
         reconcile request value, so a change of the annotation value
         can be detected.
     observedGeneration : int, default is Undefined, optional
-        ObservedGeneration is the last observed generation of the HelmRepository
-        object.
+        ObservedGeneration is the last observed generation of the Bucket object.
+    observedIgnore : str, default is Undefined, optional
+        ObservedIgnore is the observed exclusion patterns used for constructing
+        the source artifact.
     url : str, default is Undefined, optional
         URL is the dynamic fetch link for the latest Artifact.
         It is provided on a "best effort" basis, and using the precise
-        HelmRepositoryStatus.Artifact data is recommended.
+        BucketStatus.Artifact data is recommended.
     """
 
 
-    artifact?: SourceToolkitFluxcdIoV1beta2HelmRepositoryStatusArtifact
+    artifact?: SourceToolkitFluxcdIoV1BucketStatusArtifact
 
-    conditions?: [SourceToolkitFluxcdIoV1beta2HelmRepositoryStatusConditionsItems0]
+    conditions?: [SourceToolkitFluxcdIoV1BucketStatusConditionsItems0]
 
     lastHandledReconcileAt?: str
 
     observedGeneration?: int
 
+    observedIgnore?: str
+
     url?: str
 
 
-schema SourceToolkitFluxcdIoV1beta2HelmRepositoryStatusArtifact:
+schema SourceToolkitFluxcdIoV1BucketStatusArtifact:
     r"""
-    Artifact represents the last successful HelmRepository reconciliation.
+    Artifact represents the last successful Bucket reconciliation.
 
     Attributes
     ----------
@@ -278,7 +338,7 @@ schema SourceToolkitFluxcdIoV1beta2HelmRepositoryStatusArtifact:
         _regex_match(str(digest), r"^[a-z0-9]+(?:[.+_-][a-z0-9]+)*:[a-zA-Z0-9=_-]+$") if digest
 
 
-schema SourceToolkitFluxcdIoV1beta2HelmRepositoryStatusConditionsItems0:
+schema SourceToolkitFluxcdIoV1BucketStatusConditionsItems0:
     r"""
     Condition contains details for one aspect of the current state of this API Resource.
 
