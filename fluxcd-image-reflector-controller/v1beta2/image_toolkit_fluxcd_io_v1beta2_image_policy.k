@@ -8,7 +8,7 @@ _regex_match = regex.match
 
 
 schema ImagePolicy:
-    """
+    r"""
     ImagePolicy is the Schema for the imagepolicies API
 
     Attributes
@@ -38,7 +38,7 @@ schema ImagePolicy:
 
 
 schema ImageToolkitFluxcdIoV1beta2ImagePolicySpec:
-    """
+    r"""
     ImagePolicySpec defines the parameters for calculating the
     ImagePolicy.
 
@@ -61,7 +61,7 @@ schema ImageToolkitFluxcdIoV1beta2ImagePolicySpec:
 
 
 schema ImageToolkitFluxcdIoV1beta2ImagePolicySpecFilterTags:
-    """
+    r"""
     FilterTags enables filtering for only a subset of tags based on a set of
     rules. If no rules are provided, all the tags from the repository will be
     ordered and compared.
@@ -83,7 +83,7 @@ schema ImageToolkitFluxcdIoV1beta2ImagePolicySpecFilterTags:
 
 
 schema ImageToolkitFluxcdIoV1beta2ImagePolicySpecImageRepositoryRef:
-    """
+    r"""
     ImageRepositoryRef points at the object specifying the image
     being scanned
 
@@ -102,7 +102,7 @@ schema ImageToolkitFluxcdIoV1beta2ImagePolicySpecImageRepositoryRef:
 
 
 schema ImageToolkitFluxcdIoV1beta2ImagePolicySpecPolicy:
-    """
+    r"""
     Policy gives the particulars of the policy to be followed in
     selecting the most recent image
 
@@ -125,7 +125,7 @@ schema ImageToolkitFluxcdIoV1beta2ImagePolicySpecPolicy:
 
 
 schema ImageToolkitFluxcdIoV1beta2ImagePolicySpecPolicyAlphabetical:
-    """
+    r"""
     Alphabetical set of rules to use for alphabetical ordering of the tags.
 
     Attributes
@@ -141,7 +141,7 @@ schema ImageToolkitFluxcdIoV1beta2ImagePolicySpecPolicyAlphabetical:
 
 
 schema ImageToolkitFluxcdIoV1beta2ImagePolicySpecPolicyNumerical:
-    """
+    r"""
     Numerical set of rules to use for numerical ordering of the tags.
 
     Attributes
@@ -157,7 +157,7 @@ schema ImageToolkitFluxcdIoV1beta2ImagePolicySpecPolicyNumerical:
 
 
 schema ImageToolkitFluxcdIoV1beta2ImagePolicySpecPolicySemver:
-    """
+    r"""
     SemVer gives a semantic version range to check against the tags
     available.
 
@@ -173,7 +173,7 @@ schema ImageToolkitFluxcdIoV1beta2ImagePolicySpecPolicySemver:
 
 
 schema ImageToolkitFluxcdIoV1beta2ImagePolicyStatus:
-    """
+    r"""
     ImagePolicyStatus defines the observed state of ImagePolicy
 
     Attributes
@@ -202,24 +202,8 @@ schema ImageToolkitFluxcdIoV1beta2ImagePolicyStatus:
 
 
 schema ImageToolkitFluxcdIoV1beta2ImagePolicyStatusConditionsItems0:
-    """
+    r"""
     Condition contains details for one aspect of the current state of this API Resource.
-    ---
-    This struct is intended for direct use as an array at the field path .status.conditions.  For example,
-
-
-    	type FooStatus struct{
-    	    // Represents the observations of a foo's current state.
-    	    // Known .status.conditions.type are: "Available", "Progressing", and "Degraded"
-    	    // +patchMergeKey=type
-    	    // +patchStrategy=merge
-    	    // +listType=map
-    	    // +listMapKey=type
-    	    Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`
-
-
-    	    // other fields
-    	}
 
     Attributes
     ----------
@@ -243,10 +227,6 @@ schema ImageToolkitFluxcdIoV1beta2ImagePolicyStatusConditionsItems0:
         status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
         type of condition in CamelCase or in foo.example.com/CamelCase.
-        ---
-        Many .condition.type values are consistent across resources like Available, but because arbitrary conditions can be
-        useful (see .node.status.conditions), the ability to deconflict is important.
-        The regex it matches is (dns1123SubdomainFmt/)?(qualifiedNameFmt)
     """
 
 

@@ -38,6 +38,7 @@
   - [ImageToolkitFluxcdIoV1beta2ImageRepositorySpecAccessFrom](#imagetoolkitfluxcdiov1beta2imagerepositoryspecaccessfrom)
   - [ImageToolkitFluxcdIoV1beta2ImageRepositorySpecAccessFromNamespaceSelectorsItems0](#imagetoolkitfluxcdiov1beta2imagerepositoryspecaccessfromnamespaceselectorsitems0)
   - [ImageToolkitFluxcdIoV1beta2ImageRepositorySpecCertSecretRef](#imagetoolkitfluxcdiov1beta2imagerepositoryspeccertsecretref)
+  - [ImageToolkitFluxcdIoV1beta2ImageRepositorySpecProxySecretRef](#imagetoolkitfluxcdiov1beta2imagerepositoryspecproxysecretref)
   - [ImageToolkitFluxcdIoV1beta2ImageRepositorySpecSecretRef](#imagetoolkitfluxcdiov1beta2imagerepositoryspecsecretref)
   - [ImageToolkitFluxcdIoV1beta2ImageRepositoryStatus](#imagetoolkitfluxcdiov1beta2imagerepositorystatus)
   - [ImageToolkitFluxcdIoV1beta2ImageRepositoryStatusConditionsItems0](#imagetoolkitfluxcdiov1beta2imagerepositorystatusconditionsitems0)
@@ -153,7 +154,7 @@ ImagePolicyStatus defines the observed state of ImagePolicy
 |**observedGeneration**|int|observed generation||
 ### ImageToolkitFluxcdIoV1beta1ImagePolicyStatusConditionsItems0
 
-Condition contains details for one aspect of the current state of this API Resource. --- This struct is intended for direct use as an array at the field path .status.conditions.  For example,  type FooStatus struct{ // Represents the observations of a foo's current state. // Known .status.conditions.type are: "Available", "Progressing", and "Degraded" // +patchMergeKey=type // +patchStrategy=merge // +listType=map // +listMapKey=type Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`  // other fields }
+Condition contains details for one aspect of the current state of this API Resource.
 
 #### Attributes
 
@@ -176,8 +177,8 @@ ImageRepositorySpec defines the parameters for scanning an image repository, e.g
 |**accessFrom**|[ImageToolkitFluxcdIoV1beta1ImageRepositorySpecAccessFrom](#imagetoolkitfluxcdiov1beta1imagerepositoryspecaccessfrom)|access from||
 |**certSecretRef**|[ImageToolkitFluxcdIoV1beta1ImageRepositorySpecCertSecretRef](#imagetoolkitfluxcdiov1beta1imagerepositoryspeccertsecretref)|cert secret ref||
 |**exclusionList**|[str]|ExclusionList is a list of regex strings used to exclude certain tags<br />from being stored in the database.||
-|**image**|str|Image is the name of the image repository||
-|**interval**|str|Interval is the length of time to wait between<br />scans of the image repository.||
+|**image** `required`|str|Image is the name of the image repository||
+|**interval** `required`|str|Interval is the length of time to wait between<br />scans of the image repository.||
 |**secretRef**|[ImageToolkitFluxcdIoV1beta1ImageRepositorySpecSecretRef](#imagetoolkitfluxcdiov1beta1imagerepositoryspecsecretref)|secret ref||
 |**serviceAccountName**|str|ServiceAccountName is the name of the Kubernetes ServiceAccount used to authenticate<br />the image pull if the service account has attached pull secrets.||
 |**suspend**|bool|This flag tells the controller to suspend subsequent image scans.<br />It does not apply to already started scans. Defaults to false.||
@@ -233,7 +234,7 @@ ImageRepositoryStatus defines the observed state of ImageRepository
 |**observedGeneration**|int|ObservedGeneration is the last reconciled generation.||
 ### ImageToolkitFluxcdIoV1beta1ImageRepositoryStatusConditionsItems0
 
-Condition contains details for one aspect of the current state of this API Resource. --- This struct is intended for direct use as an array at the field path .status.conditions.  For example,  type FooStatus struct{ // Represents the observations of a foo's current state. // Known .status.conditions.type are: "Available", "Progressing", and "Degraded" // +patchMergeKey=type // +patchStrategy=merge // +listType=map // +listMapKey=type Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`  // other fields }
+Condition contains details for one aspect of the current state of this API Resource.
 
 #### Attributes
 
@@ -364,7 +365,7 @@ ImagePolicyStatus defines the observed state of ImagePolicy
 |**observedPreviousImage**|str|ObservedPreviousImage is the observed previous LatestImage. It is used<br />to keep track of the previous and current images.||
 ### ImageToolkitFluxcdIoV1beta2ImagePolicyStatusConditionsItems0
 
-Condition contains details for one aspect of the current state of this API Resource. --- This struct is intended for direct use as an array at the field path .status.conditions.  For example,  type FooStatus struct{ // Represents the observations of a foo's current state. // Known .status.conditions.type are: "Available", "Progressing", and "Degraded" // +patchMergeKey=type // +patchStrategy=merge // +listType=map // +listMapKey=type Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`  // other fields }
+Condition contains details for one aspect of the current state of this API Resource.
 
 #### Attributes
 
@@ -387,10 +388,11 @@ ImageRepositorySpec defines the parameters for scanning an image repository, e.g
 |**accessFrom**|[ImageToolkitFluxcdIoV1beta2ImageRepositorySpecAccessFrom](#imagetoolkitfluxcdiov1beta2imagerepositoryspecaccessfrom)|access from||
 |**certSecretRef**|[ImageToolkitFluxcdIoV1beta2ImageRepositorySpecCertSecretRef](#imagetoolkitfluxcdiov1beta2imagerepositoryspeccertsecretref)|cert secret ref||
 |**exclusionList**|[str]|ExclusionList is a list of regex strings used to exclude certain tags<br />from being stored in the database.|["^.*\.sig$"]|
-|**image**|str|Image is the name of the image repository||
+|**image** `required`|str|Image is the name of the image repository||
 |**insecure**|bool|Insecure allows connecting to a non-TLS HTTP container registry.||
-|**interval**|str|Interval is the length of time to wait between<br />scans of the image repository.||
+|**interval** `required`|str|Interval is the length of time to wait between<br />scans of the image repository.||
 |**provider**|"generic" | "aws" | "azure" | "gcp"|The provider used for authentication, can be 'aws', 'azure', 'gcp' or 'generic'.<br />When not specified, defaults to 'generic'.|"generic"|
+|**proxySecretRef**|[ImageToolkitFluxcdIoV1beta2ImageRepositorySpecProxySecretRef](#imagetoolkitfluxcdiov1beta2imagerepositoryspecproxysecretref)|proxy secret ref||
 |**secretRef**|[ImageToolkitFluxcdIoV1beta2ImageRepositorySpecSecretRef](#imagetoolkitfluxcdiov1beta2imagerepositoryspecsecretref)|secret ref||
 |**serviceAccountName**|str|ServiceAccountName is the name of the Kubernetes ServiceAccount used to authenticate<br />the image pull if the service account has attached pull secrets.||
 |**suspend**|bool|This flag tells the controller to suspend subsequent image scans.<br />It does not apply to already started scans. Defaults to false.||
@@ -422,6 +424,15 @@ CertSecretRef can be given the name of a Secret containing either or both of  - 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**name** `required`|str|Name of the referent.||
+### ImageToolkitFluxcdIoV1beta2ImageRepositorySpecProxySecretRef
+
+ProxySecretRef specifies the Secret containing the proxy configuration to use while communicating with the container registry.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**name** `required`|str|Name of the referent.||
 ### ImageToolkitFluxcdIoV1beta2ImageRepositorySpecSecretRef
 
 SecretRef can be given the name of a secret containing credentials to use for the image registry. The secret should be created with `kubectl create secret docker-registry`, or the equivalent.
@@ -447,7 +458,7 @@ ImageRepositoryStatus defines the observed state of ImageRepository
 |**observedGeneration**|int|ObservedGeneration is the last reconciled generation.||
 ### ImageToolkitFluxcdIoV1beta2ImageRepositoryStatusConditionsItems0
 
-Condition contains details for one aspect of the current state of this API Resource. --- This struct is intended for direct use as an array at the field path .status.conditions.  For example,  type FooStatus struct{ // Represents the observations of a foo's current state. // Known .status.conditions.type are: "Available", "Progressing", and "Degraded" // +patchMergeKey=type // +patchStrategy=merge // +listType=map // +listMapKey=type Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`  // other fields }
+Condition contains details for one aspect of the current state of this API Resource.
 
 #### Attributes
 
