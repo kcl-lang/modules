@@ -8,7 +8,7 @@ _regex_match = regex.match
 
 
 schema Provider:
-    """
+    r"""
     Provider is the Schema for the providers API
 
     Attributes
@@ -34,7 +34,7 @@ schema Provider:
 
 
 schema NotificationToolkitFluxcdIoV1beta3ProviderSpec:
-    """
+    r"""
     ProviderSpec defines the desired state of the Provider.
 
     Attributes
@@ -99,10 +99,9 @@ schema NotificationToolkitFluxcdIoV1beta3ProviderSpec:
 
 
 schema NotificationToolkitFluxcdIoV1beta3ProviderSpecCertSecretRef:
-    """
+    r"""
     CertSecretRef specifies the Secret containing
     a PEM-encoded CA certificate (in the `ca.crt` key).
-
 
     Note: Support for the `caFile` key has
     been deprecated.
@@ -118,7 +117,7 @@ schema NotificationToolkitFluxcdIoV1beta3ProviderSpecCertSecretRef:
 
 
 schema NotificationToolkitFluxcdIoV1beta3ProviderSpecSecretRef:
-    """
+    r"""
     SecretRef specifies the Secret containing the authentication
     credentials for this Provider.
 

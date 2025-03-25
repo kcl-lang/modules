@@ -8,7 +8,7 @@ _regex_match = regex.match
 
 
 schema Receiver:
-    """
+    r"""
     Receiver is the Schema for the receivers API.
 
     Attributes
@@ -38,7 +38,7 @@ schema Receiver:
 
 
 schema NotificationToolkitFluxcdIoV1ReceiverSpec:
-    """
+    r"""
     ReceiverSpec defines the desired state of the Receiver.
 
     Attributes
@@ -48,6 +48,14 @@ schema NotificationToolkitFluxcdIoV1ReceiverSpec:
         e.g. 'push' for GitHub or 'Push Hook' for GitLab.
     interval : str, default is "10m", optional
         Interval at which to reconcile the Receiver with its Secret references.
+    resourceFilter : str, default is Undefined, optional
+        ResourceFilter is a CEL expression expected to return a boolean that is
+        evaluated for each resource referenced in the Resources field when a
+        webhook is received. If the expression returns false then the controller
+        will not request a reconciliation for the resource.
+        When the expression is specified the controller will parse it and mark
+        the object as terminally failed if the expression is invalid or does not
+        return a boolean.
     resources : [NotificationToolkitFluxcdIoV1ReceiverSpecResourcesItems0], default is Undefined, required
         A list of resources to be notified about changes.
     secretRef : NotificationToolkitFluxcdIoV1ReceiverSpecSecretRef, default is Undefined, required
@@ -65,6 +73,8 @@ schema NotificationToolkitFluxcdIoV1ReceiverSpec:
 
     interval?: str = "10m"
 
+    resourceFilter?: str
+
     resources: [NotificationToolkitFluxcdIoV1ReceiverSpecResourcesItems0]
 
     secretRef: NotificationToolkitFluxcdIoV1ReceiverSpecSecretRef
@@ -79,7 +89,7 @@ schema NotificationToolkitFluxcdIoV1ReceiverSpec:
 
 
 schema NotificationToolkitFluxcdIoV1ReceiverSpecResourcesItems0:
-    """
+    r"""
     CrossNamespaceObjectReference contains enough information to let you locate the
     typed referenced object at cluster level
 
@@ -121,7 +131,7 @@ schema NotificationToolkitFluxcdIoV1ReceiverSpecResourcesItems0:
 
 
 schema NotificationToolkitFluxcdIoV1ReceiverSpecSecretRef:
-    """
+    r"""
     SecretRef specifies the Secret containing the token used
     to validate the payload authenticity.
 
@@ -136,7 +146,7 @@ schema NotificationToolkitFluxcdIoV1ReceiverSpecSecretRef:
 
 
 schema NotificationToolkitFluxcdIoV1ReceiverStatus:
-    """
+    r"""
     ReceiverStatus defines the observed state of the Receiver.
 
     Attributes
@@ -165,24 +175,8 @@ schema NotificationToolkitFluxcdIoV1ReceiverStatus:
 
 
 schema NotificationToolkitFluxcdIoV1ReceiverStatusConditionsItems0:
-    """
+    r"""
     Condition contains details for one aspect of the current state of this API Resource.
-    ---
-    This struct is intended for direct use as an array at the field path .status.conditions.  For example,
-
-
-    	type FooStatus struct{
-    	    // Represents the observations of a foo's current state.
-    	    // Known .status.conditions.type are: "Available", "Progressing", and "Degraded"
-    	    // +patchMergeKey=type
-    	    // +patchStrategy=merge
-    	    // +listType=map
-    	    // +listMapKey=type
-    	    Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`
-
-
-    	    // other fields
-    	}
 
     Attributes
     ----------
@@ -206,10 +200,6 @@ schema NotificationToolkitFluxcdIoV1ReceiverStatusConditionsItems0:
         status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
         type of condition in CamelCase or in foo.example.com/CamelCase.
-        ---
-        Many .condition.type values are consistent across resources like Available, but because arbitrary conditions can be
-        useful (see .node.status.conditions), the ability to deconflict is important.
-        The regex it matches is (dns1123SubdomainFmt/)?(qualifiedNameFmt)
     """
 
 

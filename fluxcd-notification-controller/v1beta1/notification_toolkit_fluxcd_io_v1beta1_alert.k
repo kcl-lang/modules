@@ -8,7 +8,7 @@ _regex_match = regex.match
 
 
 schema Alert:
-    """
+    r"""
     Alert is the Schema for the alerts API
 
     Attributes
@@ -38,7 +38,7 @@ schema Alert:
 
 
 schema NotificationToolkitFluxcdIoV1beta1AlertSpec:
-    """
+    r"""
     AlertSpec defines an alerting rule for events involving a list of objects
 
     Attributes
@@ -74,7 +74,7 @@ schema NotificationToolkitFluxcdIoV1beta1AlertSpec:
 
 
 schema NotificationToolkitFluxcdIoV1beta1AlertSpecEventSourcesItems0:
-    """
+    r"""
     CrossNamespaceObjectReference contains enough information to let you locate the
     typed referenced object at cluster level
 
@@ -82,7 +82,7 @@ schema NotificationToolkitFluxcdIoV1beta1AlertSpecEventSourcesItems0:
     ----------
     apiVersion : str, default is Undefined, optional
         API version of the referent
-    kind : str, default is Undefined, optional
+    kind : str, default is Undefined, required
         Kind of the referent
     matchLabels : {str:str}, default is Undefined, optional
         MatchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels
@@ -97,7 +97,7 @@ schema NotificationToolkitFluxcdIoV1beta1AlertSpecEventSourcesItems0:
 
     apiVersion?: str
 
-    kind?: "Bucket" | "GitRepository" | "Kustomization" | "HelmRelease" | "HelmChart" | "HelmRepository" | "ImageRepository" | "ImagePolicy" | "ImageUpdateAutomation" | "OCIRepository"
+    kind: "Bucket" | "GitRepository" | "Kustomization" | "HelmRelease" | "HelmChart" | "HelmRepository" | "ImageRepository" | "ImagePolicy" | "ImageUpdateAutomation" | "OCIRepository"
 
     matchLabels?: {str:str}
 
@@ -114,7 +114,7 @@ schema NotificationToolkitFluxcdIoV1beta1AlertSpecEventSourcesItems0:
 
 
 schema NotificationToolkitFluxcdIoV1beta1AlertSpecProviderRef:
-    """
+    r"""
     Send events using this provider.
 
     Attributes
@@ -128,7 +128,7 @@ schema NotificationToolkitFluxcdIoV1beta1AlertSpecProviderRef:
 
 
 schema NotificationToolkitFluxcdIoV1beta1AlertStatus:
-    """
+    r"""
     AlertStatus defines the observed state of Alert
 
     Attributes
@@ -146,24 +146,8 @@ schema NotificationToolkitFluxcdIoV1beta1AlertStatus:
 
 
 schema NotificationToolkitFluxcdIoV1beta1AlertStatusConditionsItems0:
-    """
+    r"""
     Condition contains details for one aspect of the current state of this API Resource.
-    ---
-    This struct is intended for direct use as an array at the field path .status.conditions.  For example,
-
-
-    	type FooStatus struct{
-    	    // Represents the observations of a foo's current state.
-    	    // Known .status.conditions.type are: "Available", "Progressing", and "Degraded"
-    	    // +patchMergeKey=type
-    	    // +patchStrategy=merge
-    	    // +listType=map
-    	    // +listMapKey=type
-    	    Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`
-
-
-    	    // other fields
-    	}
 
     Attributes
     ----------
@@ -187,10 +171,6 @@ schema NotificationToolkitFluxcdIoV1beta1AlertStatusConditionsItems0:
         status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
         type of condition in CamelCase or in foo.example.com/CamelCase.
-        ---
-        Many .condition.type values are consistent across resources like Available, but because arbitrary conditions can be
-        useful (see .node.status.conditions), the ability to deconflict is important.
-        The regex it matches is (dns1123SubdomainFmt/)?(qualifiedNameFmt)
     """
 
 

@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema Alert:
-    """
+    r"""
     Alert is the Schema for the alerts API
 
     Attributes
@@ -32,7 +32,7 @@ schema Alert:
 
 
 schema NotificationToolkitFluxcdIoV1beta3AlertSpec:
-    """
+    r"""
     AlertSpec defines an alerting rule for events involving a list of objects.
 
     Attributes
@@ -59,6 +59,7 @@ schema NotificationToolkitFluxcdIoV1beta3AlertSpec:
         provider ref
     summary : str, default is Undefined, optional
         Summary holds a short description of the impact and affected cluster.
+        Deprecated: Use EventMetadata instead.
     suspend : bool, default is Undefined, optional
         Suspend tells the controller to suspend subsequent
         events handling for this Alert.
@@ -87,7 +88,7 @@ schema NotificationToolkitFluxcdIoV1beta3AlertSpec:
 
 
 schema NotificationToolkitFluxcdIoV1beta3AlertSpecEventSourcesItems0:
-    """
+    r"""
     CrossNamespaceObjectReference contains enough information to let you locate the
     typed referenced object at cluster level
 
@@ -129,7 +130,7 @@ schema NotificationToolkitFluxcdIoV1beta3AlertSpecEventSourcesItems0:
 
 
 schema NotificationToolkitFluxcdIoV1beta3AlertSpecProviderRef:
-    """
+    r"""
     ProviderRef specifies which Provider this Alert should use.
 
     Attributes
