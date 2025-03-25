@@ -1,8 +1,8 @@
 [package]
-name = "fluxcd-image-automation-controller"
-edition = "v0.9.0"
-version = "v0.38.2"
+name = "image-automation-controller"
+edition = "*"
+version = "v0.40.0"
+description = "KCL package for https://github.com/fluxcd/image-automation-controller CRDs"
 
 [dependencies]
 k8s = "1.31.2"
-

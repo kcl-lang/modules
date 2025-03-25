@@ -113,7 +113,7 @@ SigningKey provides the option to sign commits with a GPG key
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**secretRef**|[ImageToolkitFluxcdIoV1beta1ImageUpdateAutomationSpecGitCommitSigningKeySecretRef](#imagetoolkitfluxcdiov1beta1imageupdateautomationspecgitcommitsigningkeysecretref)|secret ref||
+|**secretRef** `required`|[ImageToolkitFluxcdIoV1beta1ImageUpdateAutomationSpecGitCommitSigningKeySecretRef](#imagetoolkitfluxcdiov1beta1imageupdateautomationspecgitcommitsigningkeysecretref)|secret ref||
 ### ImageToolkitFluxcdIoV1beta1ImageUpdateAutomationSpecGitCommitSigningKeySecretRef
 
 SecretRef holds the name to a secret that contains a 'git.asc' key corresponding to the ASCII Armored file containing the GPG signing keypair as the value. It must be in the same namespace as the ImageUpdateAutomation.
@@ -172,7 +172,7 @@ ImageUpdateAutomationStatus defines the observed state of ImageUpdateAutomation
 |**observedGeneration**|int|observed generation||
 ### ImageToolkitFluxcdIoV1beta1ImageUpdateAutomationStatusConditionsItems0
 
-Condition contains details for one aspect of the current state of this API Resource. --- This struct is intended for direct use as an array at the field path .status.conditions.  For example,  type FooStatus struct{ // Represents the observations of a foo's current state. // Known .status.conditions.type are: "Available", "Progressing", and "Degraded" // +patchMergeKey=type // +patchStrategy=merge // +listType=map // +listMapKey=type Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`  // other fields }
+Condition contains details for one aspect of the current state of this API Resource.
 
 #### Attributes
 
@@ -254,6 +254,7 @@ Commit specifies how to commit to the git repository.
 | --- | --- | --- | --- |
 |**author** `required`|[ImageToolkitFluxcdIoV1beta2ImageUpdateAutomationSpecGitCommitAuthor](#imagetoolkitfluxcdiov1beta2imageupdateautomationspecgitcommitauthor)|author||
 |**messageTemplate**|str|MessageTemplate provides a template for the commit message,<br />into which will be interpolated the details of the change made.||
+|**messageTemplateValues**|{str:str}|MessageTemplateValues provides additional values to be available to the<br />templating rendering.||
 |**signingKey**|[ImageToolkitFluxcdIoV1beta2ImageUpdateAutomationSpecGitCommitSigningKey](#imagetoolkitfluxcdiov1beta2imageupdateautomationspecgitcommitsigningkey)|signing key||
 ### ImageToolkitFluxcdIoV1beta2ImageUpdateAutomationSpecGitCommitAuthor
 
@@ -273,7 +274,7 @@ SigningKey provides the option to sign commits with a GPG key
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**secretRef**|[ImageToolkitFluxcdIoV1beta2ImageUpdateAutomationSpecGitCommitSigningKeySecretRef](#imagetoolkitfluxcdiov1beta2imageupdateautomationspecgitcommitsigningkeysecretref)|secret ref||
+|**secretRef** `required`|[ImageToolkitFluxcdIoV1beta2ImageUpdateAutomationSpecGitCommitSigningKeySecretRef](#imagetoolkitfluxcdiov1beta2imageupdateautomationspecgitcommitsigningkeysecretref)|secret ref||
 ### ImageToolkitFluxcdIoV1beta2ImageUpdateAutomationSpecGitCommitSigningKeySecretRef
 
 SecretRef holds the name to a secret that contains a 'git.asc' key corresponding to the ASCII Armored file containing the GPG signing keypair as the value. It must be in the same namespace as the ImageUpdateAutomation.
@@ -355,7 +356,7 @@ ImageUpdateAutomationStatus defines the observed state of ImageUpdateAutomation
 |**observedSourceRevision**|str|ObservedPolicies []ObservedPolicy `json:"observedPolicies,omitempty"`<br />ObservedSourceRevision is the last observed source revision. This can be<br />used to determine if the source has been updated since last observation.||
 ### ImageToolkitFluxcdIoV1beta2ImageUpdateAutomationStatusConditionsItems0
 
-Condition contains details for one aspect of the current state of this API Resource. --- This struct is intended for direct use as an array at the field path .status.conditions.  For example,  type FooStatus struct{ // Represents the observations of a foo's current state. // Known .status.conditions.type are: "Available", "Progressing", and "Degraded" // +patchMergeKey=type // +patchStrategy=merge // +listType=map // +listMapKey=type Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`  // other fields }
+Condition contains details for one aspect of the current state of this API Resource.
 
 #### Attributes
 

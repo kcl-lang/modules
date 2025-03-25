@@ -8,7 +8,7 @@ _regex_match = regex.match
 
 
 schema ImageUpdateAutomation:
-    """
+    r"""
     ImageUpdateAutomation is the Schema for the imageupdateautomations API
 
     Attributes
@@ -38,7 +38,7 @@ schema ImageUpdateAutomation:
 
 
 schema ImageToolkitFluxcdIoV1beta1ImageUpdateAutomationSpec:
-    """
+    r"""
     ImageUpdateAutomationSpec defines the desired state of ImageUpdateAutomation
 
     Attributes
@@ -74,7 +74,7 @@ schema ImageToolkitFluxcdIoV1beta1ImageUpdateAutomationSpec:
 
 
 schema ImageToolkitFluxcdIoV1beta1ImageUpdateAutomationSpecGit:
-    """
+    r"""
     GitSpec contains all the git-specific definitions. This is
     technically optional, but in practice mandatory until there are
     other kinds of source allowed.
@@ -98,7 +98,7 @@ schema ImageToolkitFluxcdIoV1beta1ImageUpdateAutomationSpecGit:
 
 
 schema ImageToolkitFluxcdIoV1beta1ImageUpdateAutomationSpecGitCheckout:
-    """
+    r"""
     Checkout gives the parameters for cloning the git repository,
     ready to make changes. If not present, the `spec.ref` field from the
     referenced `GitRepository` or its default will be used.
@@ -114,7 +114,7 @@ schema ImageToolkitFluxcdIoV1beta1ImageUpdateAutomationSpecGitCheckout:
 
 
 schema ImageToolkitFluxcdIoV1beta1ImageUpdateAutomationSpecGitCheckoutRef:
-    """
+    r"""
     Reference gives a branch, tag or commit to clone from the Git
     repository.
 
@@ -125,12 +125,10 @@ schema ImageToolkitFluxcdIoV1beta1ImageUpdateAutomationSpecGitCheckoutRef:
     commit : str, default is Undefined, optional
         Commit SHA to check out, takes precedence over all reference fields.
 
-
         This can be combined with Branch to shallow clone the branch, in which
         the commit is expected to exist.
     name : str, default is Undefined, optional
         Name of the reference to check out; takes precedence over Branch, Tag and SemVer.
-
 
         It must be a valid Git reference: https://git-scm.com/docs/git-check-ref-format#_description
         Examples: "refs/heads/main", "refs/tags/v0.1.0", "refs/pull/420/head", "refs/merge-requests/1/head"
@@ -153,7 +151,7 @@ schema ImageToolkitFluxcdIoV1beta1ImageUpdateAutomationSpecGitCheckoutRef:
 
 
 schema ImageToolkitFluxcdIoV1beta1ImageUpdateAutomationSpecGitCommit:
-    """
+    r"""
     Commit specifies how to commit to the git repository.
 
     Attributes
@@ -176,7 +174,7 @@ schema ImageToolkitFluxcdIoV1beta1ImageUpdateAutomationSpecGitCommit:
 
 
 schema ImageToolkitFluxcdIoV1beta1ImageUpdateAutomationSpecGitCommitAuthor:
-    """
+    r"""
     Author gives the email and optionally the name to use as the
     author of commits.
 
@@ -195,21 +193,21 @@ schema ImageToolkitFluxcdIoV1beta1ImageUpdateAutomationSpecGitCommitAuthor:
 
 
 schema ImageToolkitFluxcdIoV1beta1ImageUpdateAutomationSpecGitCommitSigningKey:
-    """
+    r"""
     SigningKey provides the option to sign commits with a GPG key
 
     Attributes
     ----------
-    secretRef : ImageToolkitFluxcdIoV1beta1ImageUpdateAutomationSpecGitCommitSigningKeySecretRef, default is Undefined, optional
+    secretRef : ImageToolkitFluxcdIoV1beta1ImageUpdateAutomationSpecGitCommitSigningKeySecretRef, default is Undefined, required
         secret ref
     """
 
 
-    secretRef?: ImageToolkitFluxcdIoV1beta1ImageUpdateAutomationSpecGitCommitSigningKeySecretRef
+    secretRef: ImageToolkitFluxcdIoV1beta1ImageUpdateAutomationSpecGitCommitSigningKeySecretRef
 
 
 schema ImageToolkitFluxcdIoV1beta1ImageUpdateAutomationSpecGitCommitSigningKeySecretRef:
-    """
+    r"""
     SecretRef holds the name to a secret that contains a 'git.asc' key
     corresponding to the ASCII Armored file containing the GPG signing
     keypair as the value. It must be in the same namespace as the
@@ -226,7 +224,7 @@ schema ImageToolkitFluxcdIoV1beta1ImageUpdateAutomationSpecGitCommitSigningKeySe
 
 
 schema ImageToolkitFluxcdIoV1beta1ImageUpdateAutomationSpecGitPush:
-    """
+    r"""
     Push specifies how and where to push commits made by the
     automation. If missing, commits are pushed (back) to
     `.spec.checkout.branch` or its default.
@@ -258,7 +256,7 @@ schema ImageToolkitFluxcdIoV1beta1ImageUpdateAutomationSpecGitPush:
 
 
 schema ImageToolkitFluxcdIoV1beta1ImageUpdateAutomationSpecSourceRef:
-    """
+    r"""
     SourceRef refers to the resource giving access details
     to a git repository.
 
@@ -285,7 +283,7 @@ schema ImageToolkitFluxcdIoV1beta1ImageUpdateAutomationSpecSourceRef:
 
 
 schema ImageToolkitFluxcdIoV1beta1ImageUpdateAutomationSpecUpdate:
-    """
+    r"""
     Update gives the specification for how to update the files in
     the repository. This can be left empty, to use the default
     value.
@@ -307,7 +305,7 @@ schema ImageToolkitFluxcdIoV1beta1ImageUpdateAutomationSpecUpdate:
 
 
 schema ImageToolkitFluxcdIoV1beta1ImageUpdateAutomationStatus:
-    """
+    r"""
     ImageUpdateAutomationStatus defines the observed state of ImageUpdateAutomation
 
     Attributes
@@ -346,24 +344,8 @@ schema ImageToolkitFluxcdIoV1beta1ImageUpdateAutomationStatus:
 
 
 schema ImageToolkitFluxcdIoV1beta1ImageUpdateAutomationStatusConditionsItems0:
-    """
+    r"""
     Condition contains details for one aspect of the current state of this API Resource.
-    ---
-    This struct is intended for direct use as an array at the field path .status.conditions.  For example,
-
-
-    	type FooStatus struct{
-    	    // Represents the observations of a foo's current state.
-    	    // Known .status.conditions.type are: "Available", "Progressing", and "Degraded"
-    	    // +patchMergeKey=type
-    	    // +patchStrategy=merge
-    	    // +listType=map
-    	    // +listMapKey=type
-    	    Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`
-
-
-    	    // other fields
-    	}
 
     Attributes
     ----------
@@ -387,10 +369,6 @@ schema ImageToolkitFluxcdIoV1beta1ImageUpdateAutomationStatusConditionsItems0:
         status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
         type of condition in CamelCase or in foo.example.com/CamelCase.
-        ---
-        Many .condition.type values are consistent across resources like Available, but because arbitrary conditions can be
-        useful (see .node.status.conditions), the ability to deconflict is important.
-        The regex it matches is (dns1123SubdomainFmt/)?(qualifiedNameFmt)
     """
 
 
