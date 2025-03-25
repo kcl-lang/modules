@@ -8,7 +8,7 @@ _regex_match = regex.match
 
 
 schema HelmRelease:
-    """
+    r"""
     HelmRelease is the Schema for the helmreleases API
 
     Attributes
@@ -38,12 +38,12 @@ schema HelmRelease:
 
 
 schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpec:
-    """
+    r"""
     HelmReleaseSpec defines the desired state of a Helm release.
 
     Attributes
     ----------
-    chart : HelmToolkitFluxcdIoV2beta1HelmReleaseSpecChart, default is Undefined, optional
+    chart : HelmToolkitFluxcdIoV2beta1HelmReleaseSpecChart, default is Undefined, required
         chart
     chartRef : HelmToolkitFluxcdIoV2beta1HelmReleaseSpecChartRef, default is Undefined, optional
         chart ref
@@ -70,12 +70,10 @@ schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpec:
         duration of the reconciliation, instead of being created and destroyed
         for each (step of a) Helm action.
 
-
         This can improve performance, but may cause issues with some Helm charts
         that for example do create Custom Resource Definitions during installation
         outside Helm's CRD lifecycle hooks, which are then not observed to be
         available by e.g. post-install hooks.
-
 
         If not set, it defaults to true.
     postRenderers : [HelmToolkitFluxcdIoV2beta1HelmReleaseSpecPostRenderersItems0], default is Undefined, optional
@@ -115,7 +113,7 @@ schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpec:
     """
 
 
-    chart?: HelmToolkitFluxcdIoV2beta1HelmReleaseSpecChart
+    chart: HelmToolkitFluxcdIoV2beta1HelmReleaseSpecChart
 
     chartRef?: HelmToolkitFluxcdIoV2beta1HelmReleaseSpecChartRef
 
@@ -172,7 +170,7 @@ schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpec:
 
 
 schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecChart:
-    """
+    r"""
     Chart defines the template of the v1beta2.HelmChart that should be created
     for this HelmRelease.
 
@@ -191,7 +189,7 @@ schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecChart:
 
 
 schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecChartMetadata:
-    """
+    r"""
     ObjectMeta holds the template for metadata like labels and annotations.
 
     Attributes
@@ -214,10 +212,9 @@ schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecChartMetadata:
 
 
 schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecChartRef:
-    """
+    r"""
     ChartRef holds a reference to a source controller resource containing the
     Helm chart artifact.
-
 
     Note: this field is provisional to the v2 API, and not actively used
     by v2beta1 HelmReleases.
@@ -253,7 +250,7 @@ schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecChartRef:
 
 
 schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecChartSpec:
-    """
+    r"""
     Spec holds the template for the v1beta2.HelmChartSpec for this HelmRelease.
 
     Attributes
@@ -310,14 +307,14 @@ schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecChartSpec:
 
 
 schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecChartSpecSourceRef:
-    """
+    r"""
     The name and namespace of the v1beta2.Source the chart is available at.
 
     Attributes
     ----------
     apiVersion : str, default is Undefined, optional
         APIVersion of the referent.
-    kind : str, default is Undefined, optional
+    kind : str, default is Undefined, required
         Kind of the referent.
     name : str, default is Undefined, required
         Name of the referent.
@@ -328,7 +325,7 @@ schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecChartSpecSourceRef:
 
     apiVersion?: str
 
-    kind?: "HelmRepository" | "GitRepository" | "Bucket"
+    kind: "HelmRepository" | "GitRepository" | "Bucket"
 
     name: str
 
@@ -343,7 +340,7 @@ schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecChartSpecSourceRef:
 
 
 schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecChartSpecVerify:
-    """
+    r"""
     Verify contains the secret name containing the trusted public keys
     used to verify the signature and specifies which provider to use to check
     whether OCI image is authentic.
@@ -365,7 +362,7 @@ schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecChartSpecVerify:
 
 
 schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecChartSpecVerifySecretRef:
-    """
+    r"""
     SecretRef specifies the Kubernetes Secret containing the
     trusted public keys.
 
@@ -380,7 +377,7 @@ schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecChartSpecVerifySecretRef:
 
 
 schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecDependsOnItems0:
-    """
+    r"""
     NamespacedObjectReference contains enough information to locate the referenced Kubernetes resource object in any
     namespace.
 
@@ -399,11 +396,10 @@ schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecDependsOnItems0:
 
 
 schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecDriftDetection:
-    """
+    r"""
     DriftDetection holds the configuration for detecting and handling
     differences between the manifest in the Helm storage and the resources
     currently existing in the cluster.
-
 
     Note: this field is provisional to the v2beta2 API, and not actively used
     by v2beta1 HelmReleases.
@@ -426,7 +422,7 @@ schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecDriftDetection:
 
 
 schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecDriftDetectionIgnoreItems0:
-    """
+    r"""
     IgnoreRule defines a rule to selectively disregard specific changes during
     the drift detection process.
 
@@ -446,7 +442,7 @@ schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecDriftDetectionIgnoreItems0:
 
 
 schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecDriftDetectionIgnoreItems0Target:
-    """
+    r"""
     Target is a selector for specifying Kubernetes objects to which this
     rule applies.
     If Target is not set, the Paths will be ignored for all Kubernetes
@@ -498,7 +494,7 @@ schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecDriftDetectionIgnoreItems0Target
 
 
 schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecInstall:
-    """
+    r"""
     Install holds the configuration for Helm install actions for this HelmRelease.
 
     Attributes
@@ -509,16 +505,12 @@ schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecInstall:
         `Create` or `CreateReplace`. Default is `Create` and if omitted
         CRDs are installed but not updated.
 
-
         Skip: do neither install nor replace (update) any CRDs.
-
 
         Create: new CRDs are created, existing CRDs are neither updated nor deleted.
 
-
         CreateReplace: new CRDs are created, existing CRDs are updated (replaced)
         but not deleted.
-
 
         By default, CRDs are applied (installed) during Helm install action.
         With this option users can opt-in to CRD replace existing CRDs on Helm
@@ -547,7 +539,6 @@ schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecInstall:
     skipCRDs : bool, default is Undefined, optional
         SkipCRDs tells the Helm install action to not install any CRDs. By default,
         CRDs are installed if not already present.
-
 
         Deprecated use CRD policy (`crds`) attribute with value `Skip` instead.
     timeout : str, default is Undefined, optional
@@ -583,7 +574,7 @@ schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecInstall:
 
 
 schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecInstallRemediation:
-    """
+    r"""
     Remediation holds the remediation configuration for when the Helm install
     action for the HelmRelease fails. The default is to not perform any action.
 
@@ -611,7 +602,7 @@ schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecInstallRemediation:
 
 
 schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecKubeConfig:
-    """
+    r"""
     KubeConfig for reconciling the HelmRelease on a remote cluster.
     When used in combination with HelmReleaseSpec.ServiceAccountName,
     forces the controller to act on behalf of that Service Account at the
@@ -631,7 +622,7 @@ schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecKubeConfig:
 
 
 schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecKubeConfigSecretRef:
-    """
+    r"""
     SecretRef holds the name of a secret that contains a key with
     the kubeconfig file as the value. If no key is set, the key will default
     to 'value'.
@@ -656,7 +647,7 @@ schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecKubeConfigSecretRef:
 
 
 schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecPostRenderersItems0:
-    """
+    r"""
     PostRenderer contains a Helm PostRenderer specification.
 
     Attributes
@@ -670,7 +661,7 @@ schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecPostRenderersItems0:
 
 
 schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecPostRenderersItems0Kustomize:
-    """
+    r"""
     Kustomization to apply as PostRenderer.
 
     Attributes
@@ -699,7 +690,7 @@ schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecPostRenderersItems0Kustomize:
 
 
 schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecPostRenderersItems0KustomizeImagesItems0:
-    """
+    r"""
     Image contains an image name, a new name, a new tag or digest, which will replace the original name and tag.
 
     Attributes
@@ -726,7 +717,7 @@ schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecPostRenderersItems0KustomizeImag
 
 
 schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecPostRenderersItems0KustomizePatchesItems0:
-    """
+    r"""
     Patch contains an inline StrategicMerge or JSON6902 patch, and the target the patch should
     be applied to.
 
@@ -746,7 +737,7 @@ schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecPostRenderersItems0KustomizePatc
 
 
 schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecPostRenderersItems0KustomizePatchesItems0Target:
-    """
+    r"""
     Target points to the resources that the patch document should be applied to.
 
     Attributes
@@ -795,7 +786,7 @@ schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecPostRenderersItems0KustomizePatc
 
 
 schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecPostRenderersItems0KustomizePatchesJson6902Items0:
-    """
+    r"""
     JSON6902Patch contains a JSON6902 patch and the target the patch should be applied to.
 
     Attributes
@@ -813,7 +804,7 @@ schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecPostRenderersItems0KustomizePatc
 
 
 schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecPostRenderersItems0KustomizePatchesJson6902Items0PatchItems0:
-    """
+    r"""
     JSON6902 is a JSON6902 operation object.
     https://datatracker.ietf.org/doc/html/rfc6902#section-4
 
@@ -845,7 +836,7 @@ schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecPostRenderersItems0KustomizePatc
 
 
 schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecPostRenderersItems0KustomizePatchesJson6902Items0Target:
-    """
+    r"""
     Target points to the resources that the patch document should be applied to.
 
     Attributes
@@ -894,7 +885,7 @@ schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecPostRenderersItems0KustomizePatc
 
 
 schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecRollback:
-    """
+    r"""
     Rollback holds the configuration for Helm rollback actions for this HelmRelease.
 
     Attributes
@@ -941,7 +932,7 @@ schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecRollback:
 
 
 schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecTest:
-    """
+    r"""
     Test holds the configuration for Helm test actions for this HelmRelease.
 
     Attributes
@@ -971,7 +962,7 @@ schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecTest:
 
 
 schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecUninstall:
-    """
+    r"""
     Uninstall holds the configuration for Helm uninstall actions for this HelmRelease.
 
     Attributes
@@ -1010,7 +1001,7 @@ schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecUninstall:
 
 
 schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecUpgrade:
-    """
+    r"""
     Upgrade holds the configuration for Helm upgrade actions for this HelmRelease.
 
     Attributes
@@ -1024,16 +1015,12 @@ schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecUpgrade:
         `Create` or `CreateReplace`. Default is `Skip` and if omitted
         CRDs are neither installed nor upgraded.
 
-
         Skip: do neither install nor replace (update) any CRDs.
-
 
         Create: new CRDs are created, existing CRDs are neither updated nor deleted.
 
-
         CreateReplace: new CRDs are created, existing CRDs are updated (replaced)
         but not deleted.
-
 
         By default, CRDs are not applied during Helm upgrade action. With this
         option users can opt-in to CRD upgrade, which is not (yet) natively supported by Helm.
@@ -1090,7 +1077,7 @@ schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecUpgrade:
 
 
 schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecUpgradeRemediation:
-    """
+    r"""
     Remediation holds the remediation configuration for when the Helm upgrade
     action for the HelmRelease fails. The default is to not perform any action.
 
@@ -1122,7 +1109,7 @@ schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecUpgradeRemediation:
 
 
 schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecValuesFromItems0:
-    """
+    r"""
     ValuesReference contains a reference to a resource containing Helm values,
     and optionally the key they can be found at.
 
@@ -1170,7 +1157,7 @@ schema HelmToolkitFluxcdIoV2beta1HelmReleaseSpecValuesFromItems0:
 
 
 schema HelmToolkitFluxcdIoV2beta1HelmReleaseStatus:
-    """
+    r"""
     HelmReleaseStatus defines the observed state of a HelmRelease.
 
     Attributes
@@ -1187,7 +1174,6 @@ schema HelmToolkitFluxcdIoV2beta1HelmReleaseStatus:
         History holds the history of Helm releases performed for this HelmRelease
         up to the last successfully completed release.
 
-
         Note: this field is provisional to the v2beta2 API, and not actively used
         by v2beta1 HelmReleases.
     installFailures : int, default is Undefined, optional
@@ -1199,20 +1185,17 @@ schema HelmToolkitFluxcdIoV2beta1HelmReleaseStatus:
         LastAttemptedConfigDigest is the digest for the config (better known as
         "values") of the last reconciliation attempt.
 
-
         Note: this field is provisional to the v2beta2 API, and not actively used
         by v2beta1 HelmReleases.
     lastAttemptedGeneration : int, default is Undefined, optional
         LastAttemptedGeneration is the last generation the controller attempted
         to reconcile.
 
-
         Note: this field is provisional to the v2beta2 API, and not actively used
         by v2beta1 HelmReleases.
     lastAttemptedReleaseAction : str, default is Undefined, optional
         LastAttemptedReleaseAction is the last release action performed for this
         HelmRelease. It is used to determine the active remediation strategy.
-
 
         Note: this field is provisional to the v2beta2 API, and not actively used
         by v2beta1 HelmReleases.
@@ -1225,7 +1208,6 @@ schema HelmToolkitFluxcdIoV2beta1HelmReleaseStatus:
         LastHandledForceAt holds the value of the most recent force request
         value, so a change of the annotation value can be detected.
 
-
         Note: this field is provisional to the v2beta2 API, and not actively used
         by v2beta1 HelmReleases.
     lastHandledReconcileAt : str, default is Undefined, optional
@@ -1235,7 +1217,6 @@ schema HelmToolkitFluxcdIoV2beta1HelmReleaseStatus:
     lastHandledResetAt : str, default is Undefined, optional
         LastHandledResetAt holds the value of the most recent reset request
         value, so a change of the annotation value can be detected.
-
 
         Note: this field is provisional to the v2beta2 API, and not actively used
         by v2beta1 HelmReleases.
@@ -1249,7 +1230,6 @@ schema HelmToolkitFluxcdIoV2beta1HelmReleaseStatus:
     storageNamespace : str, default is Undefined, optional
         StorageNamespace is the namespace of the Helm release storage for the
         current release.
-
 
         Note: this field is provisional to the v2beta2 API, and not actively used
         by v2beta1 HelmReleases.
@@ -1299,24 +1279,8 @@ schema HelmToolkitFluxcdIoV2beta1HelmReleaseStatus:
 
 
 schema HelmToolkitFluxcdIoV2beta1HelmReleaseStatusConditionsItems0:
-    """
+    r"""
     Condition contains details for one aspect of the current state of this API Resource.
-    ---
-    This struct is intended for direct use as an array at the field path .status.conditions.  For example,
-
-
-    	type FooStatus struct{
-    	    // Represents the observations of a foo's current state.
-    	    // Known .status.conditions.type are: "Available", "Progressing", and "Degraded"
-    	    // +patchMergeKey=type
-    	    // +patchStrategy=merge
-    	    // +listType=map
-    	    // +listMapKey=type
-    	    Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`
-
-
-    	    // other fields
-    	}
 
     Attributes
     ----------
@@ -1340,10 +1304,6 @@ schema HelmToolkitFluxcdIoV2beta1HelmReleaseStatusConditionsItems0:
         status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
         type of condition in CamelCase or in foo.example.com/CamelCase.
-        ---
-        Many .condition.type values are consistent across resources like Available, but because arbitrary conditions can be
-        useful (see .node.status.conditions), the ability to deconflict is important.
-        The regex it matches is (dns1123SubdomainFmt/)?(qualifiedNameFmt)
     """
 
 
@@ -1371,7 +1331,7 @@ schema HelmToolkitFluxcdIoV2beta1HelmReleaseStatusConditionsItems0:
 
 
 schema HelmToolkitFluxcdIoV2beta1HelmReleaseStatusHistoryItems0:
-    """
+    r"""
     Snapshot captures a point-in-time copy of the status information for a Helm release,
     as managed by the controller.
 
@@ -1449,7 +1409,7 @@ schema HelmToolkitFluxcdIoV2beta1HelmReleaseStatusHistoryItems0:
 
 
 schema HelmToolkitFluxcdIoV2beta1HelmReleaseStatusHistoryItems0TestHooksAnon:
-    """
+    r"""
     TestHookStatus holds the status information for a test hook as observed
     to be run by the controller.
 
