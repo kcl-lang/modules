@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema Metal3RemediationTemplate:
-    """
+    r"""
     Metal3RemediationTemplate is the Schema for the metal3remediationtemplates API.
 
     Attributes
@@ -36,7 +36,7 @@ schema Metal3RemediationTemplate:
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3RemediationTemplateSpec:
-    """
+    r"""
     Metal3RemediationTemplateSpec defines the desired state of Metal3RemediationTemplate.
 
     Attributes
@@ -50,7 +50,7 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3RemediationTemplateSpec:
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3RemediationTemplateSpecTemplate:
-    """
+    r"""
     Metal3RemediationTemplateResource describes the data needed to create a Metal3Remediation from a template.
 
     Attributes
@@ -64,7 +64,7 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3RemediationTemplateSpecTemplate:
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3RemediationTemplateSpecTemplateSpec:
-    """
+    r"""
     Spec is the specification of the desired behavior of the Metal3Remediation.
 
     Attributes
@@ -78,7 +78,7 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3RemediationTemplateSpecTemplateSp
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3RemediationTemplateSpecTemplateSpecStrategy:
-    """
+    r"""
     Strategy field defines remediation strategy.
 
     Attributes
@@ -100,7 +100,7 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3RemediationTemplateSpecTemplateSp
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3RemediationTemplateStatus:
-    """
+    r"""
     Metal3RemediationTemplateStatus defines the observed state of Metal3RemediationTemplate.
 
     Attributes
@@ -114,7 +114,7 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3RemediationTemplateStatus:
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3RemediationTemplateStatusStatus:
-    """
+    r"""
     Metal3RemediationStatus defines the observed state of Metal3Remediation
 
     Attributes
@@ -122,9 +122,11 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3RemediationTemplateStatusStatus:
     lastRemediated : str, default is Undefined, optional
         LastRemediated identifies when the host was last remediated
     phase : str, default is Undefined, optional
-        Phase represents the current phase of machine remediation. E.g. Pending, Running, Done etc.
+        Phase represents the current phase of machine remediation.
+        E.g. Pending, Running, Done etc.
     retryCount : int, default is Undefined, optional
-        RetryCount can be used as a counter during the remediation. Field can hold number of reboots etc.
+        RetryCount can be used as a counter during the remediation.
+        Field can hold number of reboots etc.
     """
 
 

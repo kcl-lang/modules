@@ -3,6 +3,3 @@
     name = "k8s"
     full_name = "k8s_1.31.2"
     version = "1.31.2"
-    reg = "ghcr.io"
-    repo = "kcl-lang/k8s"
-    oci_tag = "1.31.2"

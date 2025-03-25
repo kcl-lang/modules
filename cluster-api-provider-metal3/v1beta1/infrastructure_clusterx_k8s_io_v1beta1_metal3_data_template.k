@@ -8,7 +8,7 @@ _regex_match = regex.match
 
 
 schema Metal3DataTemplate:
-    """
+    r"""
     Metal3DataTemplate is the Schema for the metal3datatemplates API.
 
     Attributes
@@ -38,7 +38,7 @@ schema Metal3DataTemplate:
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpec:
-    """
+    r"""
     Metal3DataTemplateSpec defines the desired state of Metal3DataTemplate.
 
     Attributes
@@ -50,7 +50,9 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpec:
     networkData : InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkData, default is Undefined, optional
         network data
     templateReference : str, default is Undefined, optional
-        TemplateReference refers to the Template the Metal3MachineTemplate refers to. It can be matched against the key or it may also point to the name of the template Metal3Data refers to
+        TemplateReference refers to the Template the Metal3MachineTemplate refers to.
+        It can be matched against the key or it may also point to the name of the template
+        Metal3Data refers to
     """
 
 
@@ -68,7 +70,7 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpec:
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecMetaData:
-    """
+    r"""
     MetaData contains the information needed to generate the metadata secret
 
     Attributes
@@ -76,21 +78,25 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecMetaData:
     dnsServersFromIPPool : [InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecMetaDataDNSServersFromIPPoolItems0], default is Undefined, optional
         DNSServersFromPool is the list of metadata items to be rendered as dns servers.
     fromAnnotations : [InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecMetaDataFromAnnotationsItems0], default is Undefined, optional
-        FromAnnotations is the list of metadata items to be fetched from object Annotations
+        FromAnnotations is the list of metadata items to be fetched from object
+        Annotations
     fromHostInterfaces : [InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecMetaDataFromHostInterfacesItems0], default is Undefined, optional
-        FromHostInterfaces is the list of metadata items to be rendered as MAC addresses of the host interfaces.
+        FromHostInterfaces is the list of metadata items to be rendered as MAC
+        addresses of the host interfaces.
     fromLabels : [InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecMetaDataFromLabelsItems0], default is Undefined, optional
         FromLabels is the list of metadata items to be fetched from object labels
     gatewaysFromIPPool : [InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecMetaDataGatewaysFromIPPoolItems0], default is Undefined, optional
         GatewaysFromPool is the list of metadata items to be rendered as gateway addresses.
     indexes : [InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecMetaDataIndexesItems0], default is Undefined, optional
-        Indexes is the list of metadata items to be rendered from the index of the Metal3Data
+        Indexes is the list of metadata items to be rendered from the index of the
+        Metal3Data
     ipAddressesFromIPPool : [InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecMetaDataIPAddressesFromIPPoolItems0], default is Undefined, optional
         IPAddressesFromPool is the list of metadata items to be rendered as ip addresses.
     namespaces : [InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecMetaDataNamespacesItems0], default is Undefined, optional
         Namespaces is the list of metadata items to be rendered from the namespace
     objectNames : [InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecMetaDataObjectNamesItems0], default is Undefined, optional
-        ObjectNames is the list of metadata items to be rendered from the name of objects.
+        ObjectNames is the list of metadata items to be rendered from the name
+        of objects.
     prefixesFromIPPool : [InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecMetaDataPrefixesFromIPPoolItems0], default is Undefined, optional
         PrefixesFromPool is the list of metadata items to be rendered as network prefixes.
     strings : [InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecMetaDataStringsItems0], default is Undefined, optional
@@ -122,7 +128,7 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecMetaData:
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecMetaDataDNSServersFromIPPoolItems0:
-    """
+    r"""
     infrastructure clusterx k8s io v1beta1 metal3 data template spec meta data DNS servers from IP pool items0
 
     Attributes
@@ -148,8 +154,9 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecMetaDataDNSServer
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecMetaDataFromAnnotationsItems0:
-    """
-    MetaDataFromAnnotation contains the information to fetch an annotation content, if the label does not exist, it is rendered as empty string.
+    r"""
+    MetaDataFromAnnotation contains the information to fetch an annotation
+    content, if the label does not exist, it is rendered as empty string.
 
     Attributes
     ----------
@@ -170,13 +177,14 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecMetaDataFromAnnot
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecMetaDataFromHostInterfacesItems0:
-    """
+    r"""
     MetaDataHostInterface contains the information to render the object name.
 
     Attributes
     ----------
     interface : str, default is Undefined, required
-        Interface is the name of the interface in the BareMetalHost Status Hardware Details list of interfaces from which to fetch the MAC address.
+        Interface is the name of the interface in the BareMetalHost Status Hardware
+        Details list of interfaces from which to fetch the MAC address.
     key : str, default is Undefined, required
         Key will be used as the key to set in the metadata map for cloud-init
     """
@@ -188,8 +196,9 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecMetaDataFromHostI
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecMetaDataFromLabelsItems0:
-    """
-    MetaDataFromLabel contains the information to fetch a label content, if the label does not exist, it is rendered as empty string.
+    r"""
+    MetaDataFromLabel contains the information to fetch a label content, if the
+    label does not exist, it is rendered as empty string.
 
     Attributes
     ----------
@@ -210,7 +219,7 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecMetaDataFromLabel
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecMetaDataGatewaysFromIPPoolItems0:
-    """
+    r"""
     infrastructure clusterx k8s io v1beta1 metal3 data template spec meta data gateways from IP pool items0
 
     Attributes
@@ -236,7 +245,7 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecMetaDataGatewaysF
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecMetaDataIPAddressesFromIPPoolItems0:
-    """
+    r"""
     infrastructure clusterx k8s io v1beta1 metal3 data template spec meta data IP addresses from IP pool items0
 
     Attributes
@@ -262,7 +271,7 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecMetaDataIPAddress
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecMetaDataIndexesItems0:
-    """
+    r"""
     MetaDataIndex contains the information to render the index.
 
     Attributes
@@ -292,7 +301,7 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecMetaDataIndexesIt
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecMetaDataNamespacesItems0:
-    """
+    r"""
     MetaDataNamespace contains the information to render the namespace.
 
     Attributes
@@ -306,7 +315,7 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecMetaDataNamespace
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecMetaDataObjectNamesItems0:
-    """
+    r"""
     MetaDataObjectName contains the information to render the object name.
 
     Attributes
@@ -324,7 +333,7 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecMetaDataObjectNam
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecMetaDataPrefixesFromIPPoolItems0:
-    """
+    r"""
     infrastructure clusterx k8s io v1beta1 metal3 data template spec meta data prefixes from IP pool items0
 
     Attributes
@@ -350,7 +359,7 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecMetaDataPrefixesF
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecMetaDataStringsItems0:
-    """
+    r"""
     MetaDataString contains the information to render the string.
 
     Attributes
@@ -368,8 +377,9 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecMetaDataStringsIt
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkData:
-    """
-    NetworkData contains the information needed to generate the networkdata secret
+    r"""
+    NetworkData contains the information needed to generate the networkdata
+    secret
 
     Attributes
     ----------
@@ -390,7 +400,7 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkData:
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataLinks:
-    """
+    r"""
     Links is a structure containing lists of different types objects
 
     Attributes
@@ -412,7 +422,7 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataLinks:
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataLinksBondsItems0:
-    """
+    r"""
     NetworkDataLinkBond represents a bond link object.
 
     Attributes
@@ -420,7 +430,8 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataLinksB
     bondLinks : [str], default is Undefined, optional
         BondLinks is the list of links that are part of the bond.
     bondMode : str, default is Undefined, required
-        BondMode is the mode of bond used. It can be one of balance-rr, active-backup, balance-xor, broadcast, balance-tlb, balance-alb, 802.3ad
+        BondMode is the mode of bond used. It can be one of
+        balance-rr, active-backup, balance-xor, broadcast, balance-tlb, balance-alb, 802.3ad
     bondXmitHashPolicy : str, default is Undefined, optional
         Selects the transmit hash policy used for port selection in balance-xor and 802.3ad modes
     id : str, default is Undefined, required
@@ -450,15 +461,17 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataLinksB
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataLinksBondsItems0MacAddress:
-    """
-    MACAddress is the MAC address of the interface, containing the object used to render it.
+    r"""
+    MACAddress is the MAC address of the interface, containing the object
+    used to render it.
 
     Attributes
     ----------
     fromAnnotation : InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataLinksBondsItems0MacAddressFromAnnotation, default is Undefined, optional
         from annotation
     fromHostInterface : str, default is Undefined, optional
-        FromHostInterface contains the name of the interface in the BareMetalHost Introspection details from which to fetch the MAC address
+        FromHostInterface contains the name of the interface in the BareMetalHost
+        Introspection details from which to fetch the MAC address
     string : str, default is Undefined, optional
         String contains the MAC address given as a string
     """
@@ -472,8 +485,9 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataLinksB
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataLinksBondsItems0MacAddressFromAnnotation:
-    """
-    FromAnnotation references an object Annotation to retrieve the MAC address from
+    r"""
+    FromAnnotation references an object Annotation to retrieve the
+    MAC address from
 
     Attributes
     ----------
@@ -490,7 +504,7 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataLinksB
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataLinksEthernetsItems0:
-    """
+    r"""
     NetworkDataLinkEthernet represents an ethernet link object.
 
     Attributes
@@ -502,7 +516,8 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataLinksE
     mtu : int, default is 1500, optional
         MTU is the MTU of the interface
     $type : str, default is Undefined, required
-        Type is the type of the ethernet link. It can be one of: bridge, dvs, hw_veb, hyperv, ovs, tap, vhostuser, vif, phy
+        Type is the type of the ethernet link. It can be one of:
+        bridge, dvs, hw_veb, hyperv, ovs, tap, vhostuser, vif, phy
     """
 
 
@@ -520,15 +535,17 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataLinksE
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataLinksEthernetsItems0MacAddress:
-    """
-    MACAddress is the MAC address of the interface, containing the object used to render it.
+    r"""
+    MACAddress is the MAC address of the interface, containing the object
+    used to render it.
 
     Attributes
     ----------
     fromAnnotation : InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataLinksEthernetsItems0MacAddressFromAnnotation, default is Undefined, optional
         from annotation
     fromHostInterface : str, default is Undefined, optional
-        FromHostInterface contains the name of the interface in the BareMetalHost Introspection details from which to fetch the MAC address
+        FromHostInterface contains the name of the interface in the BareMetalHost
+        Introspection details from which to fetch the MAC address
     string : str, default is Undefined, optional
         String contains the MAC address given as a string
     """
@@ -542,8 +559,9 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataLinksE
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataLinksEthernetsItems0MacAddressFromAnnotation:
-    """
-    FromAnnotation references an object Annotation to retrieve the MAC address from
+    r"""
+    FromAnnotation references an object Annotation to retrieve the
+    MAC address from
 
     Attributes
     ----------
@@ -560,7 +578,7 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataLinksE
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataLinksVlansItems0:
-    """
+    r"""
     NetworkDataLinkVlan represents a vlan link object.
 
     Attributes
@@ -595,15 +613,17 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataLinksV
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataLinksVlansItems0MacAddress:
-    """
-    MACAddress is the MAC address of the interface, containing the object used to render it.
+    r"""
+    MACAddress is the MAC address of the interface, containing the object
+    used to render it.
 
     Attributes
     ----------
     fromAnnotation : InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataLinksVlansItems0MacAddressFromAnnotation, default is Undefined, optional
         from annotation
     fromHostInterface : str, default is Undefined, optional
-        FromHostInterface contains the name of the interface in the BareMetalHost Introspection details from which to fetch the MAC address
+        FromHostInterface contains the name of the interface in the BareMetalHost
+        Introspection details from which to fetch the MAC address
     string : str, default is Undefined, optional
         String contains the MAC address given as a string
     """
@@ -617,8 +637,9 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataLinksV
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataLinksVlansItems0MacAddressFromAnnotation:
-    """
-    FromAnnotation references an object Annotation to retrieve the MAC address from
+    r"""
+    FromAnnotation references an object Annotation to retrieve the
+    MAC address from
 
     Attributes
     ----------
@@ -635,7 +656,7 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataLinksV
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworks:
-    """
+    r"""
     Networks  is a structure containing lists of different types objects
 
     Attributes
@@ -665,7 +686,7 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetwor
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4DHCPItems0:
-    """
+    r"""
     NetworkDataIPv4DHCP represents an ipv4 DHCP network object.
 
     Attributes
@@ -687,7 +708,7 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetwor
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4DHCPItems0RoutesItems0:
-    """
+    r"""
     NetworkDataRoutev4 represents an ipv4 route object.
 
     Attributes
@@ -718,7 +739,7 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetwor
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4DHCPItems0RoutesItems0Gateway:
-    """
+    r"""
     Gateway is the IPv4 address of the gateway
 
     Attributes
@@ -740,7 +761,7 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetwor
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4DHCPItems0RoutesItems0Services:
-    """
+    r"""
     Services is a list of IPv4 services
 
     Attributes
@@ -758,11 +779,11 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetwor
 
 
     check:
-        all dns in dns {_regex_match(str(dns), r"^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))$") if dns } if dns
+        all dns in dns { _regex_match(str(dns), r"^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))$") if dns } if dns
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4Items0:
-    """
+    r"""
     NetworkDataIPv4 represents an ipv4 static network object.
 
     Attributes
@@ -792,13 +813,15 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetwor
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4Items0FromPoolRef:
-    """
+    r"""
     FromPoolRef is a reference to a IP pool to allocate an address from.
 
     Attributes
     ----------
     apiGroup : str, default is Undefined, optional
-        APIGroup is the group for the resource being referenced. If APIGroup is not specified, the specified Kind must be in the core API group. For any other third-party types, APIGroup is required.
+        APIGroup is the group for the resource being referenced.
+        If APIGroup is not specified, the specified Kind must be in the core API group.
+        For any other third-party types, APIGroup is required.
     kind : str, default is Undefined, required
         Kind is the type of resource being referenced
     name : str, default is Undefined, required
@@ -814,7 +837,7 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetwor
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4Items0RoutesItems0:
-    """
+    r"""
     NetworkDataRoutev4 represents an ipv4 route object.
 
     Attributes
@@ -845,7 +868,7 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetwor
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4Items0RoutesItems0Gateway:
-    """
+    r"""
     Gateway is the IPv4 address of the gateway
 
     Attributes
@@ -867,7 +890,7 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetwor
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4Items0RoutesItems0Services:
-    """
+    r"""
     Services is a list of IPv4 services
 
     Attributes
@@ -885,11 +908,11 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetwor
 
 
     check:
-        all dns in dns {_regex_match(str(dns), r"^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))$") if dns } if dns
+        all dns in dns { _regex_match(str(dns), r"^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))$") if dns } if dns
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6DHCPItems0:
-    """
+    r"""
     NetworkDataIPv6DHCP represents an ipv6 DHCP network object.
 
     Attributes
@@ -911,7 +934,7 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetwor
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6DHCPItems0RoutesItems0:
-    """
+    r"""
     NetworkDataRoutev6 represents an ipv6 route object.
 
     Attributes
@@ -942,7 +965,7 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetwor
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6DHCPItems0RoutesItems0Gateway:
-    """
+    r"""
     Gateway is the IPv6 address of the gateway
 
     Attributes
@@ -964,7 +987,7 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetwor
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6DHCPItems0RoutesItems0Services:
-    """
+    r"""
     Services is a list of IPv6 services
 
     Attributes
@@ -982,11 +1005,11 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetwor
 
 
     check:
-        all dns in dns {_regex_match(str(dns), r"^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:))$") if dns } if dns
+        all dns in dns { _regex_match(str(dns), r"^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:))$") if dns } if dns
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6Items0:
-    """
+    r"""
     NetworkDataIPv6 represents an ipv6 static network object.
 
     Attributes
@@ -1016,13 +1039,15 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetwor
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6Items0FromPoolRef:
-    """
+    r"""
     FromPoolRef is a reference to a IP pool to allocate an address from.
 
     Attributes
     ----------
     apiGroup : str, default is Undefined, optional
-        APIGroup is the group for the resource being referenced. If APIGroup is not specified, the specified Kind must be in the core API group. For any other third-party types, APIGroup is required.
+        APIGroup is the group for the resource being referenced.
+        If APIGroup is not specified, the specified Kind must be in the core API group.
+        For any other third-party types, APIGroup is required.
     kind : str, default is Undefined, required
         Kind is the type of resource being referenced
     name : str, default is Undefined, required
@@ -1038,7 +1063,7 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetwor
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6Items0RoutesItems0:
-    """
+    r"""
     NetworkDataRoutev6 represents an ipv6 route object.
 
     Attributes
@@ -1069,7 +1094,7 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetwor
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6Items0RoutesItems0Gateway:
-    """
+    r"""
     Gateway is the IPv6 address of the gateway
 
     Attributes
@@ -1091,7 +1116,7 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetwor
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6Items0RoutesItems0Services:
-    """
+    r"""
     Services is a list of IPv6 services
 
     Attributes
@@ -1109,11 +1134,11 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetwor
 
 
     check:
-        all dns in dns {_regex_match(str(dns), r"^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:))$") if dns } if dns
+        all dns in dns { _regex_match(str(dns), r"^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:))$") if dns } if dns
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6SLAACItems0:
-    """
+    r"""
     NetworkDataIPv6DHCP represents an ipv6 DHCP network object.
 
     Attributes
@@ -1135,7 +1160,7 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetwor
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6SLAACItems0RoutesItems0:
-    """
+    r"""
     NetworkDataRoutev6 represents an ipv6 route object.
 
     Attributes
@@ -1166,7 +1191,7 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetwor
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6SLAACItems0RoutesItems0Gateway:
-    """
+    r"""
     Gateway is the IPv6 address of the gateway
 
     Attributes
@@ -1188,7 +1213,7 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetwor
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6SLAACItems0RoutesItems0Services:
-    """
+    r"""
     Services is a list of IPv6 services
 
     Attributes
@@ -1206,11 +1231,11 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetwor
 
 
     check:
-        all dns in dns {_regex_match(str(dns), r"^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:))$") if dns } if dns
+        all dns in dns { _regex_match(str(dns), r"^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:))$") if dns } if dns
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataServices:
-    """
+    r"""
     Services  is a structure containing lists of different types objects
 
     Attributes
@@ -1228,11 +1253,11 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataServic
 
 
     check:
-        all dns in dns {_regex_match(str(dns), r"((^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))$)|(^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:))$))") if dns } if dns
+        all dns in dns { _regex_match(str(dns), r"((^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))$)|(^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:))$))") if dns } if dns
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateStatus:
-    """
+    r"""
     Metal3DataTemplateStatus defines the observed state of Metal3DataTemplate.
 
     Attributes

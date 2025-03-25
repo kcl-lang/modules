@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema Metal3Remediation:
-    """
+    r"""
     Metal3Remediation is the Schema for the metal3remediations API.
 
     Attributes
@@ -36,7 +36,7 @@ schema Metal3Remediation:
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3RemediationSpec:
-    """
+    r"""
     Metal3RemediationSpec defines the desired state of Metal3Remediation.
 
     Attributes
@@ -50,7 +50,7 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3RemediationSpec:
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3RemediationSpecStrategy:
-    """
+    r"""
     Strategy field defines remediation strategy.
 
     Attributes
@@ -72,7 +72,7 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3RemediationSpecStrategy:
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3RemediationStatus:
-    """
+    r"""
     Metal3RemediationStatus defines the observed state of Metal3Remediation.
 
     Attributes
@@ -80,9 +80,11 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3RemediationStatus:
     lastRemediated : str, default is Undefined, optional
         LastRemediated identifies when the host was last remediated
     phase : str, default is Undefined, optional
-        Phase represents the current phase of machine remediation. E.g. Pending, Running, Done etc.
+        Phase represents the current phase of machine remediation.
+        E.g. Pending, Running, Done etc.
     retryCount : int, default is Undefined, optional
-        RetryCount can be used as a counter during the remediation. Field can hold number of reboots etc.
+        RetryCount can be used as a counter during the remediation.
+        Field can hold number of reboots etc.
     """
 
 

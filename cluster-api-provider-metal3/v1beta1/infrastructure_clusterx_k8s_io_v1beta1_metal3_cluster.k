@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema Metal3Cluster:
-    """
+    r"""
     Metal3Cluster is the Schema for the metal3clusters API.
 
     Attributes
@@ -36,7 +36,7 @@ schema Metal3Cluster:
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3ClusterSpec:
-    """
+    r"""
     Metal3ClusterSpec defines the desired state of Metal3Cluster.
 
     Attributes
@@ -44,7 +44,9 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3ClusterSpec:
     controlPlaneEndpoint : InfrastructureClusterxK8sIoV1beta1Metal3ClusterSpecControlPlaneEndpoint, default is Undefined, optional
         control plane endpoint
     noCloudProvider : bool, default is Undefined, optional
-        Determines if the cluster is not to be deployed with an external cloud provider. If set to true, CAPM3 will use node labels to set providerID on the kubernetes nodes. If set to false, providerID is set on nodes by other entities and CAPM3 uses the value of the providerID on the m3m resource.
+        Determines if the cluster is not to be deployed with an external cloud provider.
+        If set to true, CAPM3 will use node labels to set providerID on the kubernetes nodes.
+        If set to false, providerID is set on nodes by other entities and CAPM3 uses the value of the providerID on the m3m resource.
     """
 
 
@@ -54,7 +56,7 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3ClusterSpec:
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3ClusterSpecControlPlaneEndpoint:
-    """
+    r"""
     ControlPlaneEndpoint represents the endpoint used to communicate with the control plane.
 
     Attributes
@@ -72,7 +74,7 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3ClusterSpecControlPlaneEndpoint:
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3ClusterStatus:
-    """
+    r"""
     Metal3ClusterStatus defines the observed state of Metal3Cluster.
 
     Attributes
@@ -80,13 +82,19 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3ClusterStatus:
     conditions : [InfrastructureClusterxK8sIoV1beta1Metal3ClusterStatusConditionsItems0], default is Undefined, optional
         Conditions defines current service state of the Metal3Cluster.
     failureMessage : str, default is Undefined, optional
-        FailureMessage indicates that there is a fatal problem reconciling the state, and will be set to a descriptive error message.
+        FailureMessage indicates that there is a fatal problem reconciling the
+        state, and will be set to a descriptive error message.
     failureReason : str, default is Undefined, optional
-        FailureReason indicates that there is a fatal problem reconciling the state, and will be set to a token value suitable for programmatic interpretation.
+        FailureReason indicates that there is a fatal problem reconciling the
+        state, and will be set to a token value suitable for
+        programmatic interpretation.
     lastUpdated : str, default is Undefined, optional
         LastUpdated identifies when this status was last observed.
     ready : bool, default is Undefined, optional
-        Ready denotes that the Metal3 cluster (infrastructure) is ready. In Baremetal case, it does not mean anything for now as no infrastructure steps need to be performed. Required by Cluster API. Set to True by the metal3Cluster controller after creation.
+        Ready denotes that the Metal3 cluster (infrastructure) is ready. In
+        Baremetal case, it does not mean anything for now as no infrastructure
+        steps need to be performed. Required by Cluster API. Set to True by the
+        metal3Cluster controller after creation.
     """
 
 
@@ -102,23 +110,32 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3ClusterStatus:
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3ClusterStatusConditionsItems0:
-    """
+    r"""
     Condition defines an observation of a Cluster API resource operational state.
 
     Attributes
     ----------
     lastTransitionTime : str, default is Undefined, required
-        Last time the condition transitioned from one status to another. This should be when the underlying condition changed. If that is not known, then using the time when the API field changed is acceptable.
+        Last time the condition transitioned from one status to another.
+        This should be when the underlying condition changed. If that is not known, then using the time when
+        the API field changed is acceptable.
     message : str, default is Undefined, optional
-        A human readable message indicating details about the transition. This field may be empty.
+        A human readable message indicating details about the transition.
+        This field may be empty.
     reason : str, default is Undefined, optional
-        The reason for the condition's last transition in CamelCase. The specific API may choose whether or not this field is considered a guaranteed API. This field may not be empty.
+        The reason for the condition's last transition in CamelCase.
+        The specific API may choose whether or not this field is considered a guaranteed API.
+        This field may be empty.
     severity : str, default is Undefined, optional
-        Severity provides an explicit classification of Reason code, so the users or machines can immediately understand the current situation and act accordingly. The Severity field MUST be set only when Status=False.
+        severity provides an explicit classification of Reason code, so the users or machines can immediately
+        understand the current situation and act accordingly.
+        The Severity field MUST be set only when Status=False.
     status : str, default is Undefined, required
-        Status of the condition, one of True, False, Unknown.
+        status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
-        Type of condition in CamelCase or in foo.example.com/CamelCase. Many .condition.type values are consistent across resources like Available, but because arbitrary conditions can be useful (see .node.status.conditions), the ability to deconflict is important.
+        type of condition in CamelCase or in foo.example.com/CamelCase.
+        Many .condition.type values are consistent across resources like Available, but because arbitrary conditions
+        can be useful (see .node.status.conditions), the ability to deconflict is important.
     """
 
 

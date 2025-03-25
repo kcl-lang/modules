@@ -8,7 +8,7 @@ _regex_match = regex.match
 
 
 schema BareMetalHost:
-    """
+    r"""
     BareMetalHost is the Schema for the baremetalhosts API
 
     Attributes
@@ -38,7 +38,7 @@ schema BareMetalHost:
 
 
 schema Metal3IoV1alpha1BareMetalHostSpec:
-    """
+    r"""
     BareMetalHostSpec defines the desired state of BareMetalHost
 
     Attributes
@@ -132,7 +132,7 @@ schema Metal3IoV1alpha1BareMetalHostSpec:
 
 
 schema Metal3IoV1alpha1BareMetalHostSpecBmc:
-    """
+    r"""
     How do we connect to the BMC?
 
     Attributes
@@ -154,7 +154,7 @@ schema Metal3IoV1alpha1BareMetalHostSpecBmc:
 
 
 schema Metal3IoV1alpha1BareMetalHostSpecConsumerRef:
-    """
+    r"""
     ConsumerRef can be used to store information about something that is using a host. When it is not empty, the host is considered "in use".
 
     Attributes
@@ -192,7 +192,7 @@ schema Metal3IoV1alpha1BareMetalHostSpecConsumerRef:
 
 
 schema Metal3IoV1alpha1BareMetalHostSpecCustomDeploy:
-    """
+    r"""
     A custom deploy procedure.
 
     Attributes
@@ -206,7 +206,7 @@ schema Metal3IoV1alpha1BareMetalHostSpecCustomDeploy:
 
 
 schema Metal3IoV1alpha1BareMetalHostSpecFirmware:
-    """
+    r"""
     BIOS configuration for bare metal server
 
     Attributes
@@ -228,7 +228,7 @@ schema Metal3IoV1alpha1BareMetalHostSpecFirmware:
 
 
 schema Metal3IoV1alpha1BareMetalHostSpecImage:
-    """
+    r"""
     Image holds the details of the image to be provisioned.
 
     Attributes
@@ -254,7 +254,7 @@ schema Metal3IoV1alpha1BareMetalHostSpecImage:
 
 
 schema Metal3IoV1alpha1BareMetalHostSpecMetaData:
-    """
+    r"""
     MetaData holds the reference to the Secret containing host metadata (e.g. meta_data.json) which is passed to the Config Drive.
 
     Attributes
@@ -272,7 +272,7 @@ schema Metal3IoV1alpha1BareMetalHostSpecMetaData:
 
 
 schema Metal3IoV1alpha1BareMetalHostSpecNetworkData:
-    """
+    r"""
     NetworkData holds the reference to the Secret containing network configuration (e.g content of network_data.json) which is passed to the Config Drive.
 
     Attributes
@@ -290,7 +290,7 @@ schema Metal3IoV1alpha1BareMetalHostSpecNetworkData:
 
 
 schema Metal3IoV1alpha1BareMetalHostSpecRaid:
-    """
+    r"""
     RAID configuration for bare metal server
 
     Attributes
@@ -312,7 +312,7 @@ schema Metal3IoV1alpha1BareMetalHostSpecRaid:
 
 
 schema Metal3IoV1alpha1BareMetalHostSpecRaidHardwareRAIDVolumesItems0:
-    """
+    r"""
     HardwareRAIDVolume defines the desired configuration of volume in hardware RAID
 
     Attributes
@@ -356,7 +356,7 @@ schema Metal3IoV1alpha1BareMetalHostSpecRaidHardwareRAIDVolumesItems0:
 
 
 schema Metal3IoV1alpha1BareMetalHostSpecRaidSoftwareRAIDVolumesItems0:
-    """
+    r"""
     SoftwareRAIDVolume defines the desired configuration of volume in software RAID
 
     Attributes
@@ -383,7 +383,7 @@ schema Metal3IoV1alpha1BareMetalHostSpecRaidSoftwareRAIDVolumesItems0:
 
 
 schema Metal3IoV1alpha1BareMetalHostSpecRaidSoftwareRAIDVolumesItems0PhysicalDisksItems0:
-    """
+    r"""
     RootDeviceHints holds the hints for specifying the storage location for the root filesystem for the image.
 
     Attributes
@@ -437,7 +437,7 @@ schema Metal3IoV1alpha1BareMetalHostSpecRaidSoftwareRAIDVolumesItems0PhysicalDis
 
 
 schema Metal3IoV1alpha1BareMetalHostSpecRootDeviceHints:
-    """
+    r"""
     Provide guidance about how to choose the device for the image being provisioned.
 
     Attributes
@@ -491,7 +491,7 @@ schema Metal3IoV1alpha1BareMetalHostSpecRootDeviceHints:
 
 
 schema Metal3IoV1alpha1BareMetalHostSpecTaintsItems0:
-    """
+    r"""
     The node this Taint is attached to has the "effect" on any pod that does not tolerate the Taint.
 
     Attributes
@@ -517,7 +517,7 @@ schema Metal3IoV1alpha1BareMetalHostSpecTaintsItems0:
 
 
 schema Metal3IoV1alpha1BareMetalHostSpecUserData:
-    """
+    r"""
     UserData holds the reference to the Secret containing the user data to be passed to the host before it boots.
 
     Attributes
@@ -535,7 +535,7 @@ schema Metal3IoV1alpha1BareMetalHostSpecUserData:
 
 
 schema Metal3IoV1alpha1BareMetalHostStatus:
-    """
+    r"""
     BareMetalHostStatus defines the observed state of BareMetalHost
 
     Attributes
@@ -593,7 +593,7 @@ schema Metal3IoV1alpha1BareMetalHostStatus:
 
 
 schema Metal3IoV1alpha1BareMetalHostStatusGoodCredentials:
-    """
+    r"""
     the last credentials we were able to validate as working
 
     Attributes
@@ -611,7 +611,7 @@ schema Metal3IoV1alpha1BareMetalHostStatusGoodCredentials:
 
 
 schema Metal3IoV1alpha1BareMetalHostStatusGoodCredentialsCredentials:
-    """
+    r"""
     SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace
 
     Attributes
@@ -629,7 +629,7 @@ schema Metal3IoV1alpha1BareMetalHostStatusGoodCredentialsCredentials:
 
 
 schema Metal3IoV1alpha1BareMetalHostStatusHardware:
-    """
+    r"""
     The hardware discovered to exist on the host.
 
     Attributes
@@ -667,7 +667,7 @@ schema Metal3IoV1alpha1BareMetalHostStatusHardware:
 
 
 schema Metal3IoV1alpha1BareMetalHostStatusHardwareCPU:
-    """
+    r"""
     CPU describes one processor on the host.
 
     Attributes
@@ -697,7 +697,7 @@ schema Metal3IoV1alpha1BareMetalHostStatusHardwareCPU:
 
 
 schema Metal3IoV1alpha1BareMetalHostStatusHardwareFirmware:
-    """
+    r"""
     Firmware describes the firmware on the host.
 
     Attributes
@@ -711,7 +711,7 @@ schema Metal3IoV1alpha1BareMetalHostStatusHardwareFirmware:
 
 
 schema Metal3IoV1alpha1BareMetalHostStatusHardwareFirmwareBios:
-    """
+    r"""
     The BIOS for this firmware
 
     Attributes
@@ -733,7 +733,7 @@ schema Metal3IoV1alpha1BareMetalHostStatusHardwareFirmwareBios:
 
 
 schema Metal3IoV1alpha1BareMetalHostStatusHardwareNicsItems0:
-    """
+    r"""
     NIC describes one network interface on the host.
 
     Attributes
@@ -781,7 +781,7 @@ schema Metal3IoV1alpha1BareMetalHostStatusHardwareNicsItems0:
 
 
 schema Metal3IoV1alpha1BareMetalHostStatusHardwareNicsItems0VlansItems0:
-    """
+    r"""
     VLAN represents the name and ID of a VLAN
 
     Attributes
@@ -804,7 +804,7 @@ schema Metal3IoV1alpha1BareMetalHostStatusHardwareNicsItems0VlansItems0:
 
 
 schema Metal3IoV1alpha1BareMetalHostStatusHardwareStorageItems0:
-    """
+    r"""
     Storage describes one storage device (disk, SSD, etc.) on the host.
 
     Attributes
@@ -858,7 +858,7 @@ schema Metal3IoV1alpha1BareMetalHostStatusHardwareStorageItems0:
 
 
 schema Metal3IoV1alpha1BareMetalHostStatusHardwareSystemVendor:
-    """
+    r"""
     HardwareSystemVendor stores details about the whole hardware system.
 
     Attributes
@@ -880,7 +880,7 @@ schema Metal3IoV1alpha1BareMetalHostStatusHardwareSystemVendor:
 
 
 schema Metal3IoV1alpha1BareMetalHostStatusOperationHistory:
-    """
+    r"""
     OperationHistory holds information about operations performed on this host.
 
     Attributes
@@ -906,7 +906,7 @@ schema Metal3IoV1alpha1BareMetalHostStatusOperationHistory:
 
 
 schema Metal3IoV1alpha1BareMetalHostStatusOperationHistoryDeprovision:
-    """
+    r"""
     OperationMetric contains metadata about an operation (inspection, provisioning, etc.) used for tracking metrics.
 
     Attributes
@@ -924,7 +924,7 @@ schema Metal3IoV1alpha1BareMetalHostStatusOperationHistoryDeprovision:
 
 
 schema Metal3IoV1alpha1BareMetalHostStatusOperationHistoryInspect:
-    """
+    r"""
     OperationMetric contains metadata about an operation (inspection, provisioning, etc.) used for tracking metrics.
 
     Attributes
@@ -942,7 +942,7 @@ schema Metal3IoV1alpha1BareMetalHostStatusOperationHistoryInspect:
 
 
 schema Metal3IoV1alpha1BareMetalHostStatusOperationHistoryProvision:
-    """
+    r"""
     OperationMetric contains metadata about an operation (inspection, provisioning, etc.) used for tracking metrics.
 
     Attributes
@@ -960,7 +960,7 @@ schema Metal3IoV1alpha1BareMetalHostStatusOperationHistoryProvision:
 
 
 schema Metal3IoV1alpha1BareMetalHostStatusOperationHistoryRegister:
-    """
+    r"""
     OperationMetric contains metadata about an operation (inspection, provisioning, etc.) used for tracking metrics.
 
     Attributes
@@ -978,7 +978,7 @@ schema Metal3IoV1alpha1BareMetalHostStatusOperationHistoryRegister:
 
 
 schema Metal3IoV1alpha1BareMetalHostStatusProvisioning:
-    """
+    r"""
     Information tracked by the provisioner.
 
     Attributes
@@ -1020,7 +1020,7 @@ schema Metal3IoV1alpha1BareMetalHostStatusProvisioning:
 
 
 schema Metal3IoV1alpha1BareMetalHostStatusProvisioningCustomDeploy:
-    """
+    r"""
     Custom deploy procedure applied to the host.
 
     Attributes
@@ -1034,7 +1034,7 @@ schema Metal3IoV1alpha1BareMetalHostStatusProvisioningCustomDeploy:
 
 
 schema Metal3IoV1alpha1BareMetalHostStatusProvisioningFirmware:
-    """
+    r"""
     The Bios set by the user
 
     Attributes
@@ -1056,7 +1056,7 @@ schema Metal3IoV1alpha1BareMetalHostStatusProvisioningFirmware:
 
 
 schema Metal3IoV1alpha1BareMetalHostStatusProvisioningImage:
-    """
+    r"""
     Image holds the details of the last image successfully provisioned to the host.
 
     Attributes
@@ -1082,7 +1082,7 @@ schema Metal3IoV1alpha1BareMetalHostStatusProvisioningImage:
 
 
 schema Metal3IoV1alpha1BareMetalHostStatusProvisioningRaid:
-    """
+    r"""
     The Raid set by the user
 
     Attributes
@@ -1104,7 +1104,7 @@ schema Metal3IoV1alpha1BareMetalHostStatusProvisioningRaid:
 
 
 schema Metal3IoV1alpha1BareMetalHostStatusProvisioningRaidHardwareRAIDVolumesItems0:
-    """
+    r"""
     HardwareRAIDVolume defines the desired configuration of volume in hardware RAID
 
     Attributes
@@ -1148,7 +1148,7 @@ schema Metal3IoV1alpha1BareMetalHostStatusProvisioningRaidHardwareRAIDVolumesIte
 
 
 schema Metal3IoV1alpha1BareMetalHostStatusProvisioningRaidSoftwareRAIDVolumesItems0:
-    """
+    r"""
     SoftwareRAIDVolume defines the desired configuration of volume in software RAID
 
     Attributes
@@ -1175,7 +1175,7 @@ schema Metal3IoV1alpha1BareMetalHostStatusProvisioningRaidSoftwareRAIDVolumesIte
 
 
 schema Metal3IoV1alpha1BareMetalHostStatusProvisioningRaidSoftwareRAIDVolumesItems0PhysicalDisksItems0:
-    """
+    r"""
     RootDeviceHints holds the hints for specifying the storage location for the root filesystem for the image.
 
     Attributes
@@ -1229,7 +1229,7 @@ schema Metal3IoV1alpha1BareMetalHostStatusProvisioningRaidSoftwareRAIDVolumesIte
 
 
 schema Metal3IoV1alpha1BareMetalHostStatusProvisioningRootDeviceHints:
-    """
+    r"""
     The RootDevicehints set by the user
 
     Attributes
@@ -1283,7 +1283,7 @@ schema Metal3IoV1alpha1BareMetalHostStatusProvisioningRootDeviceHints:
 
 
 schema Metal3IoV1alpha1BareMetalHostStatusTriedCredentials:
-    """
+    r"""
     the last credentials we sent to the provisioning backend
 
     Attributes
@@ -1301,7 +1301,7 @@ schema Metal3IoV1alpha1BareMetalHostStatusTriedCredentials:
 
 
 schema Metal3IoV1alpha1BareMetalHostStatusTriedCredentialsCredentials:
-    """
+    r"""
     SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace
 
     Attributes
