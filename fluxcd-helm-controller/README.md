@@ -216,7 +216,7 @@ The name and namespace of the v1.Source the chart is available at.
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**apiVersion**|str|APIVersion of the referent.||
-|**kind**|"HelmRepository" | "GitRepository" | "Bucket"|Kind of the referent.||
+|**kind** `required`|"HelmRepository" | "GitRepository" | "Bucket"|Kind of the referent.||
 |**name** `required`|str|Name of the referent.||
 |**namespace**|str|Namespace of the referent.||
 ### HelmToolkitFluxcdIoV2HelmReleaseSpecChartSpecVerify
@@ -295,6 +295,8 @@ Install holds the configuration for Helm install actions for this HelmRelease.
 |**createNamespace**|bool|CreateNamespace tells the Helm install action to create the<br />HelmReleaseSpec.TargetNamespace if it does not exist yet.<br />On uninstall, the namespace will not be garbage collected.||
 |**disableHooks**|bool|DisableHooks prevents hooks from running during the Helm install action.||
 |**disableOpenAPIValidation**|bool|DisableOpenAPIValidation prevents the Helm install action from validating<br />rendered templates against the Kubernetes OpenAPI Schema.||
+|**disableSchemaValidation**|bool|DisableSchemaValidation prevents the Helm install action from validating<br />the values against the JSON Schema.||
+|**disableTakeOwnership**|bool|DisableTakeOwnership disables taking ownership of existing resources<br />during the Helm install action. Defaults to false.||
 |**disableWait**|bool|DisableWait disables the waiting for resources to be ready after a Helm<br />install has been performed.||
 |**disableWaitForJobs**|bool|DisableWaitForJobs disables waiting for jobs to complete after a Helm<br />install has been performed.||
 |**remediation**|[HelmToolkitFluxcdIoV2HelmReleaseSpecInstallRemediation](#helmtoolkitfluxcdiov2helmreleasespecinstallremediation)|remediation||
@@ -449,6 +451,8 @@ Upgrade holds the configuration for Helm upgrade actions for this HelmRelease.
 |**crds**|"Skip" | "Create" | "CreateReplace"|CRDs upgrade CRDs from the Helm Chart's crds directory according<br />to the CRD upgrade policy provided here. Valid values are `Skip`,<br />`Create` or `CreateReplace`. Default is `Skip` and if omitted<br />CRDs are neither installed nor upgraded.<br /><br />Skip: do neither install nor replace (update) any CRDs.<br /><br />Create: new CRDs are created, existing CRDs are neither updated nor deleted.<br /><br />CreateReplace: new CRDs are created, existing CRDs are updated (replaced)<br />but not deleted.<br /><br />By default, CRDs are not applied during Helm upgrade action. With this<br />option users can opt-in to CRD upgrade, which is not (yet) natively supported by Helm.<br />https://helm.sh/docs/chart_best_practices/custom_resource_definitions.||
 |**disableHooks**|bool|DisableHooks prevents hooks from running during the Helm upgrade action.||
 |**disableOpenAPIValidation**|bool|DisableOpenAPIValidation prevents the Helm upgrade action from validating<br />rendered templates against the Kubernetes OpenAPI Schema.||
+|**disableSchemaValidation**|bool|DisableSchemaValidation prevents the Helm upgrade action from validating<br />the values against the JSON Schema.||
+|**disableTakeOwnership**|bool|DisableTakeOwnership disables taking ownership of existing resources<br />during the Helm upgrade action. Defaults to false.||
 |**disableWait**|bool|DisableWait disables the waiting for resources to be ready after a Helm<br />upgrade has been performed.||
 |**disableWaitForJobs**|bool|DisableWaitForJobs disables waiting for jobs to complete after a Helm<br />upgrade has been performed.||
 |**force**|bool|Force forces resource updates through a replacement strategy.||
@@ -509,7 +513,7 @@ HelmReleaseStatus defines the observed state of a HelmRelease.
 |**upgradeFailures**|int|UpgradeFailures is the upgrade failure count against the latest desired<br />state. It is reset after a successful reconciliation.||
 ### HelmToolkitFluxcdIoV2HelmReleaseStatusConditionsItems0
 
-Condition contains details for one aspect of the current state of this API Resource. --- This struct is intended for direct use as an array at the field path .status.conditions.  For example,  type FooStatus struct{ // Represents the observations of a foo's current state. // Known .status.conditions.type are: "Available", "Progressing", and "Degraded" // +patchMergeKey=type // +patchStrategy=merge // +listType=map // +listMapKey=type Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`  // other fields }
+Condition contains details for one aspect of the current state of this API Resource.
 
 #### Attributes
 
@@ -615,7 +619,7 @@ HelmReleaseSpec defines the desired state of a Helm release.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**chart**|[HelmToolkitFluxcdIoV2beta1HelmReleaseSpecChart](#helmtoolkitfluxcdiov2beta1helmreleasespecchart)|chart||
+|**chart** `required`|[HelmToolkitFluxcdIoV2beta1HelmReleaseSpecChart](#helmtoolkitfluxcdiov2beta1helmreleasespecchart)|chart||
 |**chartRef**|[HelmToolkitFluxcdIoV2beta1HelmReleaseSpecChartRef](#helmtoolkitfluxcdiov2beta1helmreleasespecchartref)|chart ref||
 |**dependsOn**|[[HelmToolkitFluxcdIoV2beta1HelmReleaseSpecDependsOnItems0](#helmtoolkitfluxcdiov2beta1helmreleasespecdependsonitems0)]|DependsOn may contain a meta.NamespacedObjectReference slice with<br />references to HelmRelease resources that must be ready before this HelmRelease<br />can be reconciled.||
 |**driftDetection**|[HelmToolkitFluxcdIoV2beta1HelmReleaseSpecDriftDetection](#helmtoolkitfluxcdiov2beta1helmreleasespecdriftdetection)|drift detection||
@@ -694,7 +698,7 @@ The name and namespace of the v1beta2.Source the chart is available at.
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**apiVersion**|str|APIVersion of the referent.||
-|**kind**|"HelmRepository" | "GitRepository" | "Bucket"|Kind of the referent.||
+|**kind** `required`|"HelmRepository" | "GitRepository" | "Bucket"|Kind of the referent.||
 |**name** `required`|str|Name of the referent.||
 |**namespace**|str|Namespace of the referent.||
 ### HelmToolkitFluxcdIoV2beta1HelmReleaseSpecChartSpecVerify
@@ -1015,7 +1019,7 @@ HelmReleaseStatus defines the observed state of a HelmRelease.
 |**upgradeFailures**|int|UpgradeFailures is the upgrade failure count against the latest desired<br />state. It is reset after a successful reconciliation.||
 ### HelmToolkitFluxcdIoV2beta1HelmReleaseStatusConditionsItems0
 
-Condition contains details for one aspect of the current state of this API Resource. --- This struct is intended for direct use as an array at the field path .status.conditions.  For example,  type FooStatus struct{ // Represents the observations of a foo's current state. // Known .status.conditions.type are: "Available", "Progressing", and "Degraded" // +patchMergeKey=type // +patchStrategy=merge // +listType=map // +listMapKey=type Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`  // other fields }
+Condition contains details for one aspect of the current state of this API Resource.
 
 #### Attributes
 
@@ -1175,7 +1179,7 @@ The name and namespace of the v1.Source the chart is available at.
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**apiVersion**|str|APIVersion of the referent.||
-|**kind**|"HelmRepository" | "GitRepository" | "Bucket"|Kind of the referent.||
+|**kind** `required`|"HelmRepository" | "GitRepository" | "Bucket"|Kind of the referent.||
 |**name** `required`|str|Name of the referent.||
 |**namespace**|str|Namespace of the referent.||
 ### HelmToolkitFluxcdIoV2beta2HelmReleaseSpecChartSpecVerify
@@ -1508,7 +1512,7 @@ HelmReleaseStatus defines the observed state of a HelmRelease.
 |**upgradeFailures**|int|UpgradeFailures is the upgrade failure count against the latest desired<br />state. It is reset after a successful reconciliation.||
 ### HelmToolkitFluxcdIoV2beta2HelmReleaseStatusConditionsItems0
 
-Condition contains details for one aspect of the current state of this API Resource. --- This struct is intended for direct use as an array at the field path .status.conditions.  For example,  type FooStatus struct{ // Represents the observations of a foo's current state. // Known .status.conditions.type are: "Available", "Progressing", and "Degraded" // +patchMergeKey=type // +patchStrategy=merge // +listType=map // +listMapKey=type Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`  // other fields }
+Condition contains details for one aspect of the current state of this API Resource.
 
 #### Attributes
 
