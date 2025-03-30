@@ -69,6 +69,7 @@ ReceiverSpec defines the desired state of the Receiver.
 | --- | --- | --- | --- |
 |**events**|[str]|Events specifies the list of event types to handle,<br />e.g. 'push' for GitHub or 'Push Hook' for GitLab.||
 |**interval**|str|Interval at which to reconcile the Receiver with its Secret references.|"10m"|
+|**resourceFilter**|str|ResourceFilter is a CEL expression expected to return a boolean that is<br />evaluated for each resource referenced in the Resources field when a<br />webhook is received. If the expression returns false then the controller<br />will not request a reconciliation for the resource.<br />When the expression is specified the controller will parse it and mark<br />the object as terminally failed if the expression is invalid or does not<br />return a boolean.||
 |**resources** `required`|[[NotificationToolkitFluxcdIoV1ReceiverSpecResourcesItems0](#notificationtoolkitfluxcdiov1receiverspecresourcesitems0)]|A list of resources to be notified about changes.||
 |**secretRef** `required`|[NotificationToolkitFluxcdIoV1ReceiverSpecSecretRef](#notificationtoolkitfluxcdiov1receiverspecsecretref)|secret ref||
 |**suspend**|bool|Suspend tells the controller to suspend subsequent<br />events handling for this receiver.||
@@ -109,7 +110,7 @@ ReceiverStatus defines the observed state of the Receiver.
 |**webhookPath**|str|WebhookPath is the generated incoming webhook address in the format<br />of '/hook/sha256sum(token+name+namespace)'.||
 ### NotificationToolkitFluxcdIoV1ReceiverStatusConditionsItems0
 
-Condition contains details for one aspect of the current state of this API Resource. --- This struct is intended for direct use as an array at the field path .status.conditions.  For example,  type FooStatus struct{ // Represents the observations of a foo's current state. // Known .status.conditions.type are: "Available", "Progressing", and "Degraded" // +patchMergeKey=type // +patchStrategy=merge // +listType=map // +listMapKey=type Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`  // other fields }
+Condition contains details for one aspect of the current state of this API Resource.
 
 #### Attributes
 
@@ -170,7 +171,7 @@ CrossNamespaceObjectReference contains enough information to let you locate the 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**apiVersion**|str|API version of the referent||
-|**kind**|"Bucket" | "GitRepository" | "Kustomization" | "HelmRelease" | "HelmChart" | "HelmRepository" | "ImageRepository" | "ImagePolicy" | "ImageUpdateAutomation" | "OCIRepository"|Kind of the referent||
+|**kind** `required`|"Bucket" | "GitRepository" | "Kustomization" | "HelmRelease" | "HelmChart" | "HelmRepository" | "ImageRepository" | "ImagePolicy" | "ImageUpdateAutomation" | "OCIRepository"|Kind of the referent||
 |**matchLabels**|{str:str}|MatchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels<br />map is equivalent to an element of matchExpressions, whose key field is "key", the<br />operator is "In", and the values array contains only "value". The requirements are ANDed.||
 |**name** `required`|str|Name of the referent||
 |**namespace**|str|Namespace of the referent||
@@ -195,7 +196,7 @@ AlertStatus defines the observed state of Alert
 |**observedGeneration**|int|ObservedGeneration is the last observed generation.||
 ### NotificationToolkitFluxcdIoV1beta1AlertStatusConditionsItems0
 
-Condition contains details for one aspect of the current state of this API Resource. --- This struct is intended for direct use as an array at the field path .status.conditions.  For example,  type FooStatus struct{ // Represents the observations of a foo's current state. // Known .status.conditions.type are: "Available", "Progressing", and "Degraded" // +patchMergeKey=type // +patchStrategy=merge // +listType=map // +listMapKey=type Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`  // other fields }
+Condition contains details for one aspect of the current state of this API Resource.
 
 #### Attributes
 
@@ -254,7 +255,7 @@ ProviderStatus defines the observed state of Provider
 |**observedGeneration**|int|ObservedGeneration is the last reconciled generation.||
 ### NotificationToolkitFluxcdIoV1beta1ProviderStatusConditionsItems0
 
-Condition contains details for one aspect of the current state of this API Resource. --- This struct is intended for direct use as an array at the field path .status.conditions.  For example,  type FooStatus struct{ // Represents the observations of a foo's current state. // Known .status.conditions.type are: "Available", "Progressing", and "Degraded" // +patchMergeKey=type // +patchStrategy=merge // +listType=map // +listMapKey=type Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`  // other fields }
+Condition contains details for one aspect of the current state of this API Resource.
 
 #### Attributes
 
@@ -276,7 +277,7 @@ ReceiverSpec defines the desired state of Receiver
 | --- | --- | --- | --- |
 |**events**|[str]|A list of events to handle,<br />e.g. 'push' for GitHub or 'Push Hook' for GitLab.||
 |**resources** `required`|[[NotificationToolkitFluxcdIoV1beta1ReceiverSpecResourcesItems0](#notificationtoolkitfluxcdiov1beta1receiverspecresourcesitems0)]|A list of resources to be notified about changes.||
-|**secretRef**|[NotificationToolkitFluxcdIoV1beta1ReceiverSpecSecretRef](#notificationtoolkitfluxcdiov1beta1receiverspecsecretref)|secret ref||
+|**secretRef** `required`|[NotificationToolkitFluxcdIoV1beta1ReceiverSpecSecretRef](#notificationtoolkitfluxcdiov1beta1receiverspecsecretref)|secret ref||
 |**suspend**|bool|This flag tells the controller to suspend subsequent events handling.<br />Defaults to false.||
 |**type** `required`|"generic" | "generic-hmac" | "github" | "gitlab" | "bitbucket" | "harbor" | "dockerhub" | "quay" | "gcr" | "nexus" | "acr"|||
 ### NotificationToolkitFluxcdIoV1beta1ReceiverSpecResourcesItems0
@@ -288,7 +289,7 @@ CrossNamespaceObjectReference contains enough information to let you locate the 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**apiVersion**|str|API version of the referent||
-|**kind**|"Bucket" | "GitRepository" | "Kustomization" | "HelmRelease" | "HelmChart" | "HelmRepository" | "ImageRepository" | "ImagePolicy" | "ImageUpdateAutomation" | "OCIRepository"|Kind of the referent||
+|**kind** `required`|"Bucket" | "GitRepository" | "Kustomization" | "HelmRelease" | "HelmChart" | "HelmRepository" | "ImageRepository" | "ImagePolicy" | "ImageUpdateAutomation" | "OCIRepository"|Kind of the referent||
 |**matchLabels**|{str:str}|MatchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels<br />map is equivalent to an element of matchExpressions, whose key field is "key", the<br />operator is "In", and the values array contains only "value". The requirements are ANDed.||
 |**name** `required`|str|Name of the referent||
 |**namespace**|str|Namespace of the referent||
@@ -314,7 +315,7 @@ ReceiverStatus defines the observed state of Receiver
 |**url**|str|Generated webhook URL in the format<br />of '/hook/sha256sum(token+name+namespace)'.||
 ### NotificationToolkitFluxcdIoV1beta1ReceiverStatusConditionsItems0
 
-Condition contains details for one aspect of the current state of this API Resource. --- This struct is intended for direct use as an array at the field path .status.conditions.  For example,  type FooStatus struct{ // Represents the observations of a foo's current state. // Known .status.conditions.type are: "Available", "Progressing", and "Degraded" // +patchMergeKey=type // +patchStrategy=merge // +listType=map // +listMapKey=type Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`  // other fields }
+Condition contains details for one aspect of the current state of this API Resource.
 
 #### Attributes
 
@@ -416,7 +417,7 @@ AlertStatus defines the observed state of the Alert.
 |**observedGeneration**|int|ObservedGeneration is the last observed generation.||
 ### NotificationToolkitFluxcdIoV1beta2AlertStatusConditionsItems0
 
-Condition contains details for one aspect of the current state of this API Resource. --- This struct is intended for direct use as an array at the field path .status.conditions.  For example,  type FooStatus struct{ // Represents the observations of a foo's current state. // Known .status.conditions.type are: "Available", "Progressing", and "Degraded" // +patchMergeKey=type // +patchStrategy=merge // +listType=map // +listMapKey=type Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`  // other fields }
+Condition contains details for one aspect of the current state of this API Resource.
 
 #### Attributes
 
@@ -477,7 +478,7 @@ ProviderStatus defines the observed state of the Provider.
 |**observedGeneration**|int|ObservedGeneration is the last reconciled generation.||
 ### NotificationToolkitFluxcdIoV1beta2ProviderStatusConditionsItems0
 
-Condition contains details for one aspect of the current state of this API Resource. --- This struct is intended for direct use as an array at the field path .status.conditions.  For example,  type FooStatus struct{ // Represents the observations of a foo's current state. // Known .status.conditions.type are: "Available", "Progressing", and "Degraded" // +patchMergeKey=type // +patchStrategy=merge // +listType=map // +listMapKey=type Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`  // other fields }
+Condition contains details for one aspect of the current state of this API Resource.
 
 #### Attributes
 
@@ -500,7 +501,7 @@ ReceiverSpec defines the desired state of the Receiver.
 |**events**|[str]|Events specifies the list of event types to handle,<br />e.g. 'push' for GitHub or 'Push Hook' for GitLab.||
 |**interval**|str|Interval at which to reconcile the Receiver with its Secret references.||
 |**resources** `required`|[[NotificationToolkitFluxcdIoV1beta2ReceiverSpecResourcesItems0](#notificationtoolkitfluxcdiov1beta2receiverspecresourcesitems0)]|A list of resources to be notified about changes.||
-|**secretRef**|[NotificationToolkitFluxcdIoV1beta2ReceiverSpecSecretRef](#notificationtoolkitfluxcdiov1beta2receiverspecsecretref)|secret ref||
+|**secretRef** `required`|[NotificationToolkitFluxcdIoV1beta2ReceiverSpecSecretRef](#notificationtoolkitfluxcdiov1beta2receiverspecsecretref)|secret ref||
 |**suspend**|bool|Suspend tells the controller to suspend subsequent<br />events handling for this receiver.||
 |**type** `required`|"generic" | "generic-hmac" | "github" | "gitlab" | "bitbucket" | "harbor" | "dockerhub" | "quay" | "gcr" | "nexus" | "acr"|||
 ### NotificationToolkitFluxcdIoV1beta2ReceiverSpecResourcesItems0
@@ -540,7 +541,7 @@ ReceiverStatus defines the observed state of the Receiver.
 |**webhookPath**|str|WebhookPath is the generated incoming webhook address in the format<br />of '/hook/sha256sum(token+name+namespace)'.||
 ### NotificationToolkitFluxcdIoV1beta2ReceiverStatusConditionsItems0
 
-Condition contains details for one aspect of the current state of this API Resource. --- This struct is intended for direct use as an array at the field path .status.conditions.  For example,  type FooStatus struct{ // Represents the observations of a foo's current state. // Known .status.conditions.type are: "Available", "Progressing", and "Degraded" // +patchMergeKey=type // +patchStrategy=merge // +listType=map // +listMapKey=type Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`  // other fields }
+Condition contains details for one aspect of the current state of this API Resource.
 
 #### Attributes
 
@@ -604,7 +605,7 @@ AlertSpec defines an alerting rule for events involving a list of objects.
 |**exclusionList**|[str]|ExclusionList specifies a list of Golang regular expressions<br />to be used for excluding messages.||
 |**inclusionList**|[str]|InclusionList specifies a list of Golang regular expressions<br />to be used for including messages.||
 |**providerRef** `required`|[NotificationToolkitFluxcdIoV1beta3AlertSpecProviderRef](#notificationtoolkitfluxcdiov1beta3alertspecproviderref)|provider ref||
-|**summary**|str|Summary holds a short description of the impact and affected cluster.||
+|**summary**|str|Summary holds a short description of the impact and affected cluster.<br />Deprecated: Use EventMetadata instead.||
 |**suspend**|bool|Suspend tells the controller to suspend subsequent<br />events handling for this Alert.||
 ### NotificationToolkitFluxcdIoV1beta3AlertSpecEventSourcesItems0
 

@@ -8,7 +8,7 @@ _regex_match = regex.match
 
 
 schema Alert:
-    """
+    r"""
     Alert is the Schema for the alerts API
 
     Attributes
@@ -38,7 +38,7 @@ schema Alert:
 
 
 schema NotificationToolkitFluxcdIoV1beta2AlertSpec:
-    """
+    r"""
     AlertSpec defines an alerting rule for events involving a list of objects.
 
     Attributes
@@ -93,7 +93,7 @@ schema NotificationToolkitFluxcdIoV1beta2AlertSpec:
 
 
 schema NotificationToolkitFluxcdIoV1beta2AlertSpecEventSourcesItems0:
-    """
+    r"""
     CrossNamespaceObjectReference contains enough information to let you locate the
     typed referenced object at cluster level
 
@@ -135,7 +135,7 @@ schema NotificationToolkitFluxcdIoV1beta2AlertSpecEventSourcesItems0:
 
 
 schema NotificationToolkitFluxcdIoV1beta2AlertSpecProviderRef:
-    """
+    r"""
     ProviderRef specifies which Provider this Alert should use.
 
     Attributes
@@ -149,7 +149,7 @@ schema NotificationToolkitFluxcdIoV1beta2AlertSpecProviderRef:
 
 
 schema NotificationToolkitFluxcdIoV1beta2AlertStatus:
-    """
+    r"""
     AlertStatus defines the observed state of the Alert.
 
     Attributes
@@ -173,24 +173,8 @@ schema NotificationToolkitFluxcdIoV1beta2AlertStatus:
 
 
 schema NotificationToolkitFluxcdIoV1beta2AlertStatusConditionsItems0:
-    """
+    r"""
     Condition contains details for one aspect of the current state of this API Resource.
-    ---
-    This struct is intended for direct use as an array at the field path .status.conditions.  For example,
-
-
-    	type FooStatus struct{
-    	    // Represents the observations of a foo's current state.
-    	    // Known .status.conditions.type are: "Available", "Progressing", and "Degraded"
-    	    // +patchMergeKey=type
-    	    // +patchStrategy=merge
-    	    // +listType=map
-    	    // +listMapKey=type
-    	    Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`
-
-
-    	    // other fields
-    	}
 
     Attributes
     ----------
@@ -214,10 +198,6 @@ schema NotificationToolkitFluxcdIoV1beta2AlertStatusConditionsItems0:
         status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
         type of condition in CamelCase or in foo.example.com/CamelCase.
-        ---
-        Many .condition.type values are consistent across resources like Available, but because arbitrary conditions can be
-        useful (see .node.status.conditions), the ability to deconflict is important.
-        The regex it matches is (dns1123SubdomainFmt/)?(qualifiedNameFmt)
     """
 
 
