@@ -8,7 +8,7 @@ _regex_match = regex.match
 
 
 schema ImageRepository:
-    """
+    r"""
     ImageRepository is the Schema for the imagerepositories API
 
     Attributes
@@ -38,7 +38,7 @@ schema ImageRepository:
 
 
 schema ImageToolkitFluxcdIoV1beta1ImageRepositorySpec:
-    """
+    r"""
     ImageRepositorySpec defines the parameters for scanning an image
     repository, e.g., `fluxcd/flux`.
 
@@ -51,9 +51,9 @@ schema ImageToolkitFluxcdIoV1beta1ImageRepositorySpec:
     exclusionList : [str], default is Undefined, optional
         ExclusionList is a list of regex strings used to exclude certain tags
         from being stored in the database.
-    image : str, default is Undefined, optional
+    image : str, default is Undefined, required
         Image is the name of the image repository
-    interval : str, default is Undefined, optional
+    interval : str, default is Undefined, required
         Interval is the length of time to wait between
         scans of the image repository.
     secretRef : ImageToolkitFluxcdIoV1beta1ImageRepositorySpecSecretRef, default is Undefined, optional
@@ -76,9 +76,9 @@ schema ImageToolkitFluxcdIoV1beta1ImageRepositorySpec:
 
     exclusionList?: [str]
 
-    image?: str
+    image: str
 
-    interval?: str
+    interval: str
 
     secretRef?: ImageToolkitFluxcdIoV1beta1ImageRepositorySpecSecretRef
 
@@ -90,13 +90,13 @@ schema ImageToolkitFluxcdIoV1beta1ImageRepositorySpec:
 
 
     check:
-        _regex_match(str(interval), r"^([0-9]+(\.[0-9]+)?(ms|s|m|h))+$") if interval
+        _regex_match(str(interval), r"^([0-9]+(\.[0-9]+)?(ms|s|m|h))+$")
         len(serviceAccountName) <= 253 if serviceAccountName
         _regex_match(str(timeout), r"^([0-9]+(\.[0-9]+)?(ms|s|m))+$") if timeout
 
 
 schema ImageToolkitFluxcdIoV1beta1ImageRepositorySpecAccessFrom:
-    """
+    r"""
     AccessFrom defines an ACL for allowing cross-namespace references
     to the ImageRepository object based on the caller's namespace labels.
 
@@ -112,7 +112,7 @@ schema ImageToolkitFluxcdIoV1beta1ImageRepositorySpecAccessFrom:
 
 
 schema ImageToolkitFluxcdIoV1beta1ImageRepositorySpecAccessFromNamespaceSelectorsItems0:
-    """
+    r"""
     NamespaceSelector selects the namespaces to which this ACL applies.
     An empty map of MatchLabels matches all namespaces in a cluster.
 
@@ -129,15 +129,13 @@ schema ImageToolkitFluxcdIoV1beta1ImageRepositorySpecAccessFromNamespaceSelector
 
 
 schema ImageToolkitFluxcdIoV1beta1ImageRepositorySpecCertSecretRef:
-    """
+    r"""
     CertSecretRef can be given the name of a secret containing
     either or both of
-
 
      - a PEM-encoded client certificate (`certFile`) and private
      key (`keyFile`);
      - a PEM-encoded CA certificate (`caFile`)
-
 
      and whichever are supplied, will be used for connecting to the
      registry. The client cert and key are useful if you are
@@ -155,7 +153,7 @@ schema ImageToolkitFluxcdIoV1beta1ImageRepositorySpecCertSecretRef:
 
 
 schema ImageToolkitFluxcdIoV1beta1ImageRepositorySpecSecretRef:
-    """
+    r"""
     SecretRef can be given the name of a secret containing
     credentials to use for the image registry. The secret should be
     created with `kubectl create secret docker-registry`, or the
@@ -172,7 +170,7 @@ schema ImageToolkitFluxcdIoV1beta1ImageRepositorySpecSecretRef:
 
 
 schema ImageToolkitFluxcdIoV1beta1ImageRepositoryStatus:
-    """
+    r"""
     ImageRepositoryStatus defines the observed state of ImageRepository
 
     Attributes
@@ -206,24 +204,8 @@ schema ImageToolkitFluxcdIoV1beta1ImageRepositoryStatus:
 
 
 schema ImageToolkitFluxcdIoV1beta1ImageRepositoryStatusConditionsItems0:
-    """
+    r"""
     Condition contains details for one aspect of the current state of this API Resource.
-    ---
-    This struct is intended for direct use as an array at the field path .status.conditions.  For example,
-
-
-    	type FooStatus struct{
-    	    // Represents the observations of a foo's current state.
-    	    // Known .status.conditions.type are: "Available", "Progressing", and "Degraded"
-    	    // +patchMergeKey=type
-    	    // +patchStrategy=merge
-    	    // +listType=map
-    	    // +listMapKey=type
-    	    Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`
-
-
-    	    // other fields
-    	}
 
     Attributes
     ----------
@@ -247,10 +229,6 @@ schema ImageToolkitFluxcdIoV1beta1ImageRepositoryStatusConditionsItems0:
         status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
         type of condition in CamelCase or in foo.example.com/CamelCase.
-        ---
-        Many .condition.type values are consistent across resources like Available, but because arbitrary conditions can be
-        useful (see .node.status.conditions), the ability to deconflict is important.
-        The regex it matches is (dns1123SubdomainFmt/)?(qualifiedNameFmt)
     """
 
 
@@ -278,7 +256,7 @@ schema ImageToolkitFluxcdIoV1beta1ImageRepositoryStatusConditionsItems0:
 
 
 schema ImageToolkitFluxcdIoV1beta1ImageRepositoryStatusLastScanResult:
-    """
+    r"""
     LastScanResult contains the number of fetched tags.
 
     Attributes
