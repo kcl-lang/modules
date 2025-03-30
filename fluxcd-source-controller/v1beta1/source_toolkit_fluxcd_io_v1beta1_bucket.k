@@ -8,7 +8,7 @@ _regex_match = regex.match
 
 
 schema Bucket:
-    """
+    r"""
     Bucket is the Schema for the buckets API
 
     Attributes
@@ -38,7 +38,7 @@ schema Bucket:
 
 
 schema SourceToolkitFluxcdIoV1beta1BucketSpec:
-    """
+    r"""
     BucketSpec defines the desired state of an S3 compatible bucket
 
     Attributes
@@ -94,7 +94,7 @@ schema SourceToolkitFluxcdIoV1beta1BucketSpec:
 
 
 schema SourceToolkitFluxcdIoV1beta1BucketSpecAccessFrom:
-    """
+    r"""
     AccessFrom defines an Access Control List for allowing cross-namespace references to this object.
 
     Attributes
@@ -109,7 +109,7 @@ schema SourceToolkitFluxcdIoV1beta1BucketSpecAccessFrom:
 
 
 schema SourceToolkitFluxcdIoV1beta1BucketSpecAccessFromNamespaceSelectorsItems0:
-    """
+    r"""
     NamespaceSelector selects the namespaces to which this ACL applies.
     An empty map of MatchLabels matches all namespaces in a cluster.
 
@@ -126,7 +126,7 @@ schema SourceToolkitFluxcdIoV1beta1BucketSpecAccessFromNamespaceSelectorsItems0:
 
 
 schema SourceToolkitFluxcdIoV1beta1BucketSpecSecretRef:
-    """
+    r"""
     The name of the secret containing authentication credentials
     for the Bucket.
 
@@ -141,7 +141,7 @@ schema SourceToolkitFluxcdIoV1beta1BucketSpecSecretRef:
 
 
 schema SourceToolkitFluxcdIoV1beta1BucketStatus:
-    """
+    r"""
     BucketStatus defines the observed state of a bucket
 
     Attributes
@@ -173,14 +173,14 @@ schema SourceToolkitFluxcdIoV1beta1BucketStatus:
 
 
 schema SourceToolkitFluxcdIoV1beta1BucketStatusArtifact:
-    """
+    r"""
     Artifact represents the output of the last successful Bucket sync.
 
     Attributes
     ----------
     checksum : str, default is Undefined, optional
         Checksum is the SHA256 checksum of the artifact.
-    lastUpdateTime : str, default is Undefined, optional
+    lastUpdateTime : str, default is Undefined, required
         LastUpdateTime is the timestamp corresponding to the last update of this
         artifact.
     path : str, default is Undefined, required
@@ -196,7 +196,7 @@ schema SourceToolkitFluxcdIoV1beta1BucketStatusArtifact:
 
     checksum?: str
 
-    lastUpdateTime?: str
+    lastUpdateTime: str
 
     path: str
 
@@ -206,24 +206,8 @@ schema SourceToolkitFluxcdIoV1beta1BucketStatusArtifact:
 
 
 schema SourceToolkitFluxcdIoV1beta1BucketStatusConditionsItems0:
-    """
+    r"""
     Condition contains details for one aspect of the current state of this API Resource.
-    ---
-    This struct is intended for direct use as an array at the field path .status.conditions.  For example,
-
-
-    	type FooStatus struct{
-    	    // Represents the observations of a foo's current state.
-    	    // Known .status.conditions.type are: "Available", "Progressing", and "Degraded"
-    	    // +patchMergeKey=type
-    	    // +patchStrategy=merge
-    	    // +listType=map
-    	    // +listMapKey=type
-    	    Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`
-
-
-    	    // other fields
-    	}
 
     Attributes
     ----------
@@ -247,10 +231,6 @@ schema SourceToolkitFluxcdIoV1beta1BucketStatusConditionsItems0:
         status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
         type of condition in CamelCase or in foo.example.com/CamelCase.
-        ---
-        Many .condition.type values are consistent across resources like Available, but because arbitrary conditions can be
-        useful (see .node.status.conditions), the ability to deconflict is important.
-        The regex it matches is (dns1123SubdomainFmt/)?(qualifiedNameFmt)
     """
 
 

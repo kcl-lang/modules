@@ -8,7 +8,7 @@ _regex_match = regex.match
 
 
 schema HelmChart:
-    """
+    r"""
     HelmChart is the Schema for the helmcharts API.
 
     Attributes
@@ -38,7 +38,7 @@ schema HelmChart:
 
 
 schema SourceToolkitFluxcdIoV1HelmChartSpec:
-    """
+    r"""
     HelmChartSpec specifies the desired state of a Helm chart.
 
     Attributes
@@ -101,7 +101,7 @@ schema SourceToolkitFluxcdIoV1HelmChartSpec:
 
 
 schema SourceToolkitFluxcdIoV1HelmChartSpecSourceRef:
-    """
+    r"""
     SourceRef is the reference to the Source the chart is available at.
 
     Attributes
@@ -124,7 +124,7 @@ schema SourceToolkitFluxcdIoV1HelmChartSpecSourceRef:
 
 
 schema SourceToolkitFluxcdIoV1HelmChartSpecVerify:
-    """
+    r"""
     Verify contains the secret name containing the trusted public keys
     used to verify the signature and specifies which provider to use to check
     whether OCI image is authentic.
@@ -153,7 +153,7 @@ schema SourceToolkitFluxcdIoV1HelmChartSpecVerify:
 
 
 schema SourceToolkitFluxcdIoV1HelmChartSpecVerifyMatchOIDCIdentityItems0:
-    """
+    r"""
     OIDCIdentityMatch specifies options for verifying the certificate identity,
     i.e. the issuer and the subject of the certificate.
 
@@ -176,7 +176,7 @@ schema SourceToolkitFluxcdIoV1HelmChartSpecVerifyMatchOIDCIdentityItems0:
 
 
 schema SourceToolkitFluxcdIoV1HelmChartSpecVerifySecretRef:
-    """
+    r"""
     SecretRef specifies the Kubernetes Secret containing the
     trusted public keys.
 
@@ -191,7 +191,7 @@ schema SourceToolkitFluxcdIoV1HelmChartSpecVerifySecretRef:
 
 
 schema SourceToolkitFluxcdIoV1HelmChartStatus:
-    """
+    r"""
     HelmChartStatus records the observed state of the HelmChart.
 
     Attributes
@@ -242,7 +242,7 @@ schema SourceToolkitFluxcdIoV1HelmChartStatus:
 
 
 schema SourceToolkitFluxcdIoV1HelmChartStatusArtifact:
-    """
+    r"""
     Artifact represents the output of the last successful reconciliation.
 
     Attributes
@@ -290,24 +290,8 @@ schema SourceToolkitFluxcdIoV1HelmChartStatusArtifact:
 
 
 schema SourceToolkitFluxcdIoV1HelmChartStatusConditionsItems0:
-    """
+    r"""
     Condition contains details for one aspect of the current state of this API Resource.
-    ---
-    This struct is intended for direct use as an array at the field path .status.conditions.  For example,
-
-
-    	type FooStatus struct{
-    	    // Represents the observations of a foo's current state.
-    	    // Known .status.conditions.type are: "Available", "Progressing", and "Degraded"
-    	    // +patchMergeKey=type
-    	    // +patchStrategy=merge
-    	    // +listType=map
-    	    // +listMapKey=type
-    	    Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`
-
-
-    	    // other fields
-    	}
 
     Attributes
     ----------
@@ -331,10 +315,6 @@ schema SourceToolkitFluxcdIoV1HelmChartStatusConditionsItems0:
         status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
         type of condition in CamelCase or in foo.example.com/CamelCase.
-        ---
-        Many .condition.type values are consistent across resources like Available, but because arbitrary conditions can be
-        useful (see .node.status.conditions), the ability to deconflict is important.
-        The regex it matches is (dns1123SubdomainFmt/)?(qualifiedNameFmt)
     """
 
 
