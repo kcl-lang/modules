@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema WorkflowArtifactGCTask:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task
 
     Attributes
@@ -36,7 +36,7 @@ schema WorkflowArtifactGCTask:
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpec:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec
 
     Attributes
@@ -50,7 +50,7 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpec:
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnon:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon
 
     Attributes
@@ -68,7 +68,7 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnon:
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLocation:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon archive location
 
     Attributes
@@ -118,7 +118,7 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLoc
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLocationArtifactory:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon archive location artifactory
 
     Attributes
@@ -140,7 +140,7 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLoc
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLocationArtifactoryPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon archive location artifactory password secret
 
     Attributes
@@ -156,13 +156,13 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLoc
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLocationArtifactoryUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon archive location artifactory username secret
 
     Attributes
@@ -178,13 +178,13 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLoc
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLocationAzure:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon archive location azure
 
     Attributes
@@ -214,7 +214,7 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLoc
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLocationAzureAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon archive location azure account key secret
 
     Attributes
@@ -230,13 +230,13 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLoc
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLocationGcs:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon archive location gcs
 
     Attributes
@@ -258,7 +258,7 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLoc
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLocationGcsServiceAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon archive location gcs service account key secret
 
     Attributes
@@ -274,13 +274,13 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLoc
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLocationGit:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon archive location git
 
     Attributes
@@ -295,6 +295,8 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLoc
         fetch
     insecureIgnoreHostKey : bool, default is Undefined, optional
         insecure ignore host key
+    insecureSkipTLS : bool, default is Undefined, optional
+        insecure skip TLS
     passwordSecret : ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLocationGitPasswordSecret, default is Undefined, optional
         password secret
     repo : str, default is Undefined, required
@@ -320,6 +322,8 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLoc
 
     insecureIgnoreHostKey?: bool
 
+    insecureSkipTLS?: bool
+
     passwordSecret?: ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLocationGitPasswordSecret
 
     repo: str
@@ -334,7 +338,7 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLoc
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLocationGitPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon archive location git password secret
 
     Attributes
@@ -350,13 +354,13 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLoc
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLocationGitSSHPrivateKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon archive location git SSH private key secret
 
     Attributes
@@ -372,13 +376,13 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLoc
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLocationGitUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon archive location git username secret
 
     Attributes
@@ -394,13 +398,13 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLoc
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLocationHTTP:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon archive location HTTP
 
     Attributes
@@ -422,7 +426,7 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLoc
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLocationHTTPAuth:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon archive location HTTP auth
 
     Attributes
@@ -444,7 +448,7 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLoc
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLocationHTTPAuthBasicAuth:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon archive location HTTP auth basic auth
 
     Attributes
@@ -462,7 +466,7 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLoc
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLocationHTTPAuthBasicAuthPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon archive location HTTP auth basic auth password secret
 
     Attributes
@@ -478,13 +482,13 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLoc
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLocationHTTPAuthBasicAuthUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon archive location HTTP auth basic auth username secret
 
     Attributes
@@ -500,13 +504,13 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLoc
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLocationHTTPAuthClientCert:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon archive location HTTP auth client cert
 
     Attributes
@@ -524,7 +528,7 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLoc
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLocationHTTPAuthClientCertClientCertSecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon archive location HTTP auth client cert client cert secret
 
     Attributes
@@ -540,13 +544,13 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLoc
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLocationHTTPAuthClientCertClientKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon archive location HTTP auth client cert client key secret
 
     Attributes
@@ -562,13 +566,13 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLoc
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLocationHTTPAuthOauth2:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon archive location HTTP auth oauth2
 
     Attributes
@@ -598,7 +602,7 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLoc
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLocationHTTPAuthOauth2ClientIDSecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon archive location HTTP auth oauth2 client ID secret
 
     Attributes
@@ -614,13 +618,13 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLoc
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLocationHTTPAuthOauth2ClientSecretSecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon archive location HTTP auth oauth2 client secret secret
 
     Attributes
@@ -636,13 +640,13 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLoc
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLocationHTTPAuthOauth2EndpointParamsItems0:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon archive location HTTP auth oauth2 endpoint params items0
 
     Attributes
@@ -660,7 +664,7 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLoc
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLocationHTTPAuthOauth2TokenURLSecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon archive location HTTP auth oauth2 token URL secret
 
     Attributes
@@ -676,13 +680,13 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLoc
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLocationHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon archive location HTTP headers items0
 
     Attributes
@@ -700,13 +704,15 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLoc
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLocationHdfs:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon archive location hdfs
 
     Attributes
     ----------
     addresses : [str], default is Undefined, optional
         addresses
+    dataTransferProtection : str, default is Undefined, optional
+        data transfer protection
     force : bool, default is Undefined, optional
         force
     hdfsUser : str, default is Undefined, optional
@@ -730,6 +736,8 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLoc
 
     addresses?: [str]
 
+    dataTransferProtection?: str
+
     force?: bool
 
     hdfsUser?: str
@@ -750,7 +758,7 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLoc
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLocationHdfsKrbCCacheSecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon archive location hdfs krb c cache secret
 
     Attributes
@@ -766,13 +774,13 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLoc
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLocationHdfsKrbConfigConfigMap:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon archive location hdfs krb config config map
 
     Attributes
@@ -788,13 +796,13 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLoc
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLocationHdfsKrbKeytabSecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon archive location hdfs krb keytab secret
 
     Attributes
@@ -810,13 +818,13 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLoc
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLocationOss:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon archive location oss
 
     Attributes
@@ -862,7 +870,7 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLoc
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLocationOssAccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon archive location oss access key secret
 
     Attributes
@@ -878,13 +886,13 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLoc
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLocationOssLifecycleRule:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon archive location oss lifecycle rule
 
     Attributes
@@ -902,7 +910,7 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLoc
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLocationOssSecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon archive location oss secret key secret
 
     Attributes
@@ -918,13 +926,13 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLoc
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLocationRaw:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon archive location raw
 
     Attributes
@@ -938,7 +946,7 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLoc
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLocationS3:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon archive location s3
 
     Attributes
@@ -965,6 +973,8 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLoc
         role a r n
     secretKeySecret : ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLocationS3SecretKeySecret, default is Undefined, optional
         secret key secret
+    sessionTokenSecret : ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLocationS3SessionTokenSecret, default is Undefined, optional
+        session token secret
     useSDKCreds : bool, default is Undefined, optional
         use s d k creds
     """
@@ -992,11 +1002,13 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLoc
 
     secretKeySecret?: ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLocationS3SecretKeySecret
 
+    sessionTokenSecret?: ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLocationS3SessionTokenSecret
+
     useSDKCreds?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLocationS3AccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon archive location s3 access key secret
 
     Attributes
@@ -1012,13 +1024,13 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLoc
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLocationS3CaSecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon archive location s3 ca secret
 
     Attributes
@@ -1034,13 +1046,13 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLoc
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLocationS3CreateBucketIfNotPresent:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon archive location s3 create bucket if not present
 
     Attributes
@@ -1054,7 +1066,7 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLoc
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLocationS3EncryptionOptions:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon archive location s3 encryption options
 
     Attributes
@@ -1080,7 +1092,7 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLoc
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLocationS3EncryptionOptionsServerSideCustomerKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon archive location s3 encryption options server side customer key secret
 
     Attributes
@@ -1096,13 +1108,13 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLoc
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLocationS3SecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon archive location s3 secret key secret
 
     Attributes
@@ -1118,13 +1130,35 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLoc
 
     key: str
 
-    name?: str
+    name?: str = ""
+
+    optional?: bool
+
+
+schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArchiveLocationS3SessionTokenSecret:
+    r"""
+    argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon archive location s3 session token secret
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsAnon:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon artifacts anon
 
     Attributes
@@ -1222,7 +1256,7 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsA
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsAnonArchive:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon artifacts anon archive
 
     Attributes
@@ -1244,7 +1278,7 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsA
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsAnonArchiveTar:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon artifacts anon archive tar
 
     Attributes
@@ -1258,7 +1292,7 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsA
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsAnonArtifactGC:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon artifacts anon artifact g c
 
     Attributes
@@ -1280,7 +1314,7 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsA
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsAnonArtifactGCPodMetadata:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon artifacts anon artifact g c pod metadata
 
     Attributes
@@ -1298,7 +1332,7 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsA
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsAnonArtifactory:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon artifacts anon artifactory
 
     Attributes
@@ -1320,7 +1354,7 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsA
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsAnonArtifactoryPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon artifacts anon artifactory password secret
 
     Attributes
@@ -1336,13 +1370,13 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsA
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsAnonArtifactoryUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon artifacts anon artifactory username secret
 
     Attributes
@@ -1358,13 +1392,13 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsA
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsAnonAzure:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon artifacts anon azure
 
     Attributes
@@ -1394,7 +1428,7 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsA
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsAnonAzureAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon artifacts anon azure account key secret
 
     Attributes
@@ -1410,13 +1444,13 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsA
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsAnonGcs:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon artifacts anon gcs
 
     Attributes
@@ -1438,7 +1472,7 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsA
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsAnonGcsServiceAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon artifacts anon gcs service account key secret
 
     Attributes
@@ -1454,13 +1488,13 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsA
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsAnonGit:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon artifacts anon git
 
     Attributes
@@ -1475,6 +1509,8 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsA
         fetch
     insecureIgnoreHostKey : bool, default is Undefined, optional
         insecure ignore host key
+    insecureSkipTLS : bool, default is Undefined, optional
+        insecure skip TLS
     passwordSecret : ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsAnonGitPasswordSecret, default is Undefined, optional
         password secret
     repo : str, default is Undefined, required
@@ -1500,6 +1536,8 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsA
 
     insecureIgnoreHostKey?: bool
 
+    insecureSkipTLS?: bool
+
     passwordSecret?: ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsAnonGitPasswordSecret
 
     repo: str
@@ -1514,7 +1552,7 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsA
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsAnonGitPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon artifacts anon git password secret
 
     Attributes
@@ -1530,13 +1568,13 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsA
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsAnonGitSSHPrivateKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon artifacts anon git SSH private key secret
 
     Attributes
@@ -1552,13 +1590,13 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsA
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsAnonGitUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon artifacts anon git username secret
 
     Attributes
@@ -1574,13 +1612,13 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsA
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsAnonHTTP:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon artifacts anon HTTP
 
     Attributes
@@ -1602,7 +1640,7 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsA
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsAnonHTTPAuth:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon artifacts anon HTTP auth
 
     Attributes
@@ -1624,7 +1662,7 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsA
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsAnonHTTPAuthBasicAuth:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon artifacts anon HTTP auth basic auth
 
     Attributes
@@ -1642,7 +1680,7 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsA
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsAnonHTTPAuthBasicAuthPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon artifacts anon HTTP auth basic auth password secret
 
     Attributes
@@ -1658,13 +1696,13 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsA
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsAnonHTTPAuthBasicAuthUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon artifacts anon HTTP auth basic auth username secret
 
     Attributes
@@ -1680,13 +1718,13 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsA
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsAnonHTTPAuthClientCert:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon artifacts anon HTTP auth client cert
 
     Attributes
@@ -1704,7 +1742,7 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsA
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsAnonHTTPAuthClientCertClientCertSecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon artifacts anon HTTP auth client cert client cert secret
 
     Attributes
@@ -1720,13 +1758,13 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsA
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsAnonHTTPAuthClientCertClientKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon artifacts anon HTTP auth client cert client key secret
 
     Attributes
@@ -1742,13 +1780,13 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsA
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsAnonHTTPAuthOauth2:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon artifacts anon HTTP auth oauth2
 
     Attributes
@@ -1778,7 +1816,7 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsA
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsAnonHTTPAuthOauth2ClientIDSecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon artifacts anon HTTP auth oauth2 client ID secret
 
     Attributes
@@ -1794,13 +1832,13 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsA
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsAnonHTTPAuthOauth2ClientSecretSecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon artifacts anon HTTP auth oauth2 client secret secret
 
     Attributes
@@ -1816,13 +1854,13 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsA
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsAnonHTTPAuthOauth2EndpointParamsItems0:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon artifacts anon HTTP auth oauth2 endpoint params items0
 
     Attributes
@@ -1840,7 +1878,7 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsA
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsAnonHTTPAuthOauth2TokenURLSecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon artifacts anon HTTP auth oauth2 token URL secret
 
     Attributes
@@ -1856,13 +1894,13 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsA
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsAnonHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon artifacts anon HTTP headers items0
 
     Attributes
@@ -1880,13 +1918,15 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsA
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsAnonHdfs:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon artifacts anon hdfs
 
     Attributes
     ----------
     addresses : [str], default is Undefined, optional
         addresses
+    dataTransferProtection : str, default is Undefined, optional
+        data transfer protection
     force : bool, default is Undefined, optional
         force
     hdfsUser : str, default is Undefined, optional
@@ -1910,6 +1950,8 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsA
 
     addresses?: [str]
 
+    dataTransferProtection?: str
+
     force?: bool
 
     hdfsUser?: str
@@ -1930,7 +1972,7 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsA
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsAnonHdfsKrbCCacheSecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon artifacts anon hdfs krb c cache secret
 
     Attributes
@@ -1946,13 +1988,13 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsA
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsAnonHdfsKrbConfigConfigMap:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon artifacts anon hdfs krb config config map
 
     Attributes
@@ -1968,13 +2010,13 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsA
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsAnonHdfsKrbKeytabSecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon artifacts anon hdfs krb keytab secret
 
     Attributes
@@ -1990,13 +2032,13 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsA
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsAnonOss:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon artifacts anon oss
 
     Attributes
@@ -2042,7 +2084,7 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsA
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsAnonOssAccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon artifacts anon oss access key secret
 
     Attributes
@@ -2058,13 +2100,13 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsA
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsAnonOssLifecycleRule:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon artifacts anon oss lifecycle rule
 
     Attributes
@@ -2082,7 +2124,7 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsA
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsAnonOssSecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon artifacts anon oss secret key secret
 
     Attributes
@@ -2098,13 +2140,13 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsA
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsAnonRaw:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon artifacts anon raw
 
     Attributes
@@ -2118,7 +2160,7 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsA
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsAnonS3:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon artifacts anon s3
 
     Attributes
@@ -2145,6 +2187,8 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsA
         role a r n
     secretKeySecret : ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsAnonS3SecretKeySecret, default is Undefined, optional
         secret key secret
+    sessionTokenSecret : ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsAnonS3SessionTokenSecret, default is Undefined, optional
+        session token secret
     useSDKCreds : bool, default is Undefined, optional
         use s d k creds
     """
@@ -2172,11 +2216,13 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsA
 
     secretKeySecret?: ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsAnonS3SecretKeySecret
 
+    sessionTokenSecret?: ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsAnonS3SessionTokenSecret
+
     useSDKCreds?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsAnonS3AccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon artifacts anon s3 access key secret
 
     Attributes
@@ -2192,13 +2238,13 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsA
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsAnonS3CaSecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon artifacts anon s3 ca secret
 
     Attributes
@@ -2214,13 +2260,13 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsA
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsAnonS3CreateBucketIfNotPresent:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon artifacts anon s3 create bucket if not present
 
     Attributes
@@ -2234,7 +2280,7 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsA
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsAnonS3EncryptionOptions:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon artifacts anon s3 encryption options
 
     Attributes
@@ -2260,7 +2306,7 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsA
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsAnonS3EncryptionOptionsServerSideCustomerKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon artifacts anon s3 encryption options server side customer key secret
 
     Attributes
@@ -2276,13 +2322,13 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsA
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsAnonS3SecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon artifacts anon s3 secret key secret
 
     Attributes
@@ -2298,13 +2344,35 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsA
 
     key: str
 
-    name?: str
+    name?: str = ""
+
+    optional?: bool
+
+
+schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskSpecArtifactsByNodeAnonArtifactsAnonS3SessionTokenSecret:
+    r"""
+    argoproj io v1alpha1 workflow artifact g c task spec artifacts by node anon artifacts anon s3 session token secret
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskStatus:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task status
 
     Attributes
@@ -2318,7 +2386,7 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskStatus:
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskStatusArtifactResultsByNodeAnon:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task status artifact results by node anon
 
     Attributes
@@ -2332,7 +2400,7 @@ schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskStatusArtifactResultsByNodeAnon:
 
 
 schema ArgoprojIoV1alpha1WorkflowArtifactGCTaskStatusArtifactResultsByNodeAnonArtifactResultsAnon:
-    """
+    r"""
     argoproj io v1alpha1 workflow artifact g c task status artifact results by node anon artifact results anon
 
     Attributes

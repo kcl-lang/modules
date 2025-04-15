@@ -8,7 +8,7 @@ _regex_match = regex.match
 
 
 schema ClusterWorkflowTemplate:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template
 
     Attributes
@@ -34,7 +34,7 @@ schema ClusterWorkflowTemplate:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpec:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec
 
     Attributes
@@ -212,7 +212,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpec:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinity:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec affinity
 
     Attributes
@@ -234,7 +234,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinity:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityNodeAffinity:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec affinity node affinity
 
     Attributes
@@ -252,7 +252,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityNodeAffinity:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec affinity node affinity preferred during scheduling ignored during execution items0
 
     Attributes
@@ -270,7 +270,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityNodeAffinityPreferre
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0Preference:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec affinity node affinity preferred during scheduling ignored during execution items0 preference
 
     Attributes
@@ -288,7 +288,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityNodeAffinityPreferre
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec affinity node affinity preferred during scheduling ignored during execution items0 preference match expressions items0
 
     Attributes
@@ -310,7 +310,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityNodeAffinityPreferre
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchFieldsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec affinity node affinity preferred during scheduling ignored during execution items0 preference match fields items0
 
     Attributes
@@ -332,7 +332,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityNodeAffinityPreferre
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec affinity node affinity required during scheduling ignored during execution
 
     Attributes
@@ -346,7 +346,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityNodeAffinityRequired
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec affinity node affinity required during scheduling ignored during execution node selector terms items0
 
     Attributes
@@ -364,7 +364,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityNodeAffinityRequired
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec affinity node affinity required during scheduling ignored during execution node selector terms items0 match expressions items0
 
     Attributes
@@ -386,7 +386,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityNodeAffinityRequired
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchFieldsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec affinity node affinity required during scheduling ignored during execution node selector terms items0 match fields items0
 
     Attributes
@@ -408,7 +408,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityNodeAffinityRequired
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAffinity:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec affinity pod affinity
 
     Attributes
@@ -426,7 +426,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAffinity:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec affinity pod affinity preferred during scheduling ignored during execution items0
 
     Attributes
@@ -444,13 +444,17 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAffinityPreferred
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTerm:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec affinity pod affinity preferred during scheduling ignored during execution items0 pod affinity term
 
     Attributes
     ----------
     labelSelector : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector, default is Undefined, optional
         label selector
+    matchLabelKeys : [str], default is Undefined, optional
+        match label keys
+    mismatchLabelKeys : [str], default is Undefined, optional
+        mismatch label keys
     namespaceSelector : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector, default is Undefined, optional
         namespace selector
     namespaces : [str], default is Undefined, optional
@@ -462,6 +466,10 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAffinityPreferred
 
     labelSelector?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector
 
+    matchLabelKeys?: [str]
+
+    mismatchLabelKeys?: [str]
+
     namespaceSelector?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector
 
     namespaces?: [str]
@@ -470,7 +478,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAffinityPreferred
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec affinity pod affinity preferred during scheduling ignored during execution items0 pod affinity term label selector
 
     Attributes
@@ -488,7 +496,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAffinityPreferred
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec affinity pod affinity preferred during scheduling ignored during execution items0 pod affinity term label selector match expressions items0
 
     Attributes
@@ -510,7 +518,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAffinityPreferred
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec affinity pod affinity preferred during scheduling ignored during execution items0 pod affinity term namespace selector
 
     Attributes
@@ -528,7 +536,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAffinityPreferred
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec affinity pod affinity preferred during scheduling ignored during execution items0 pod affinity term namespace selector match expressions items0
 
     Attributes
@@ -550,13 +558,17 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAffinityPreferred
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec affinity pod affinity required during scheduling ignored during execution items0
 
     Attributes
     ----------
     labelSelector : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector, default is Undefined, optional
         label selector
+    matchLabelKeys : [str], default is Undefined, optional
+        match label keys
+    mismatchLabelKeys : [str], default is Undefined, optional
+        mismatch label keys
     namespaceSelector : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector, default is Undefined, optional
         namespace selector
     namespaces : [str], default is Undefined, optional
@@ -568,6 +580,10 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAffinityRequiredD
 
     labelSelector?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector
 
+    matchLabelKeys?: [str]
+
+    mismatchLabelKeys?: [str]
+
     namespaceSelector?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector
 
     namespaces?: [str]
@@ -576,7 +592,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAffinityRequiredD
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec affinity pod affinity required during scheduling ignored during execution items0 label selector
 
     Attributes
@@ -594,7 +610,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAffinityRequiredD
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec affinity pod affinity required during scheduling ignored during execution items0 label selector match expressions items0
 
     Attributes
@@ -616,7 +632,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAffinityRequiredD
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec affinity pod affinity required during scheduling ignored during execution items0 namespace selector
 
     Attributes
@@ -634,7 +650,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAffinityRequiredD
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec affinity pod affinity required during scheduling ignored during execution items0 namespace selector match expressions items0
 
     Attributes
@@ -656,7 +672,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAffinityRequiredD
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAntiAffinity:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec affinity pod anti affinity
 
     Attributes
@@ -674,7 +690,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAntiAffinity:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec affinity pod anti affinity preferred during scheduling ignored during execution items0
 
     Attributes
@@ -692,13 +708,17 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAntiAffinityPrefe
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTerm:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec affinity pod anti affinity preferred during scheduling ignored during execution items0 pod affinity term
 
     Attributes
     ----------
     labelSelector : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector, default is Undefined, optional
         label selector
+    matchLabelKeys : [str], default is Undefined, optional
+        match label keys
+    mismatchLabelKeys : [str], default is Undefined, optional
+        mismatch label keys
     namespaceSelector : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector, default is Undefined, optional
         namespace selector
     namespaces : [str], default is Undefined, optional
@@ -710,6 +730,10 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAntiAffinityPrefe
 
     labelSelector?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector
 
+    matchLabelKeys?: [str]
+
+    mismatchLabelKeys?: [str]
+
     namespaceSelector?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector
 
     namespaces?: [str]
@@ -718,7 +742,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAntiAffinityPrefe
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec affinity pod anti affinity preferred during scheduling ignored during execution items0 pod affinity term label selector
 
     Attributes
@@ -736,7 +760,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAntiAffinityPrefe
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec affinity pod anti affinity preferred during scheduling ignored during execution items0 pod affinity term label selector match expressions items0
 
     Attributes
@@ -758,7 +782,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAntiAffinityPrefe
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec affinity pod anti affinity preferred during scheduling ignored during execution items0 pod affinity term namespace selector
 
     Attributes
@@ -776,7 +800,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAntiAffinityPrefe
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec affinity pod anti affinity preferred during scheduling ignored during execution items0 pod affinity term namespace selector match expressions items0
 
     Attributes
@@ -798,13 +822,17 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAntiAffinityPrefe
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec affinity pod anti affinity required during scheduling ignored during execution items0
 
     Attributes
     ----------
     labelSelector : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector, default is Undefined, optional
         label selector
+    matchLabelKeys : [str], default is Undefined, optional
+        match label keys
+    mismatchLabelKeys : [str], default is Undefined, optional
+        mismatch label keys
     namespaceSelector : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector, default is Undefined, optional
         namespace selector
     namespaces : [str], default is Undefined, optional
@@ -816,6 +844,10 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAntiAffinityRequi
 
     labelSelector?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector
 
+    matchLabelKeys?: [str]
+
+    mismatchLabelKeys?: [str]
+
     namespaceSelector?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector
 
     namespaces?: [str]
@@ -824,7 +856,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAntiAffinityRequi
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec affinity pod anti affinity required during scheduling ignored during execution items0 label selector
 
     Attributes
@@ -842,7 +874,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAntiAffinityRequi
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec affinity pod anti affinity required during scheduling ignored during execution items0 label selector match expressions items0
 
     Attributes
@@ -864,7 +896,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAntiAffinityRequi
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec affinity pod anti affinity required during scheduling ignored during execution items0 namespace selector
 
     Attributes
@@ -882,7 +914,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAntiAffinityRequi
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec affinity pod anti affinity required during scheduling ignored during execution items0 namespace selector match expressions items0
 
     Attributes
@@ -904,7 +936,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecAffinityPodAntiAffinityRequi
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArguments:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec arguments
 
     Attributes
@@ -922,7 +954,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArguments:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec arguments artifacts items0
 
     Attributes
@@ -1020,7 +1052,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0Archive:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec arguments artifacts items0 archive
 
     Attributes
@@ -1042,7 +1074,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0Arch
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0ArchiveTar:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec arguments artifacts items0 archive tar
 
     Attributes
@@ -1056,7 +1088,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0Arch
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0ArtifactGC:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec arguments artifacts items0 artifact g c
 
     Attributes
@@ -1078,7 +1110,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0Arti
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0ArtifactGCPodMetadata:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec arguments artifacts items0 artifact g c pod metadata
 
     Attributes
@@ -1096,7 +1128,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0Arti
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0Artifactory:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec arguments artifacts items0 artifactory
 
     Attributes
@@ -1118,7 +1150,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0Arti
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0ArtifactoryPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec arguments artifacts items0 artifactory password secret
 
     Attributes
@@ -1134,13 +1166,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0Arti
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0ArtifactoryUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec arguments artifacts items0 artifactory username secret
 
     Attributes
@@ -1156,13 +1188,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0Arti
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0Azure:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec arguments artifacts items0 azure
 
     Attributes
@@ -1192,7 +1224,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0Azur
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0AzureAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec arguments artifacts items0 azure account key secret
 
     Attributes
@@ -1208,13 +1240,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0Azur
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0Gcs:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec arguments artifacts items0 gcs
 
     Attributes
@@ -1236,7 +1268,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0Gcs:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0GcsServiceAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec arguments artifacts items0 gcs service account key secret
 
     Attributes
@@ -1252,13 +1284,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0GcsS
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0Git:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec arguments artifacts items0 git
 
     Attributes
@@ -1273,6 +1305,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0Git:
         fetch
     insecureIgnoreHostKey : bool, default is Undefined, optional
         insecure ignore host key
+    insecureSkipTLS : bool, default is Undefined, optional
+        insecure skip TLS
     passwordSecret : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0GitPasswordSecret, default is Undefined, optional
         password secret
     repo : str, default is Undefined, required
@@ -1298,6 +1332,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0Git:
 
     insecureIgnoreHostKey?: bool
 
+    insecureSkipTLS?: bool
+
     passwordSecret?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0GitPasswordSecret
 
     repo: str
@@ -1312,7 +1348,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0Git:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0GitPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec arguments artifacts items0 git password secret
 
     Attributes
@@ -1328,13 +1364,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0GitP
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0GitSSHPrivateKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec arguments artifacts items0 git SSH private key secret
 
     Attributes
@@ -1350,13 +1386,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0GitS
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0GitUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec arguments artifacts items0 git username secret
 
     Attributes
@@ -1372,13 +1408,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0GitU
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0HTTP:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec arguments artifacts items0 HTTP
 
     Attributes
@@ -1400,7 +1436,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0HTTP
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0HTTPAuth:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec arguments artifacts items0 HTTP auth
 
     Attributes
@@ -1422,7 +1458,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0HTTP
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0HTTPAuthBasicAuth:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec arguments artifacts items0 HTTP auth basic auth
 
     Attributes
@@ -1440,7 +1476,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0HTTP
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0HTTPAuthBasicAuthPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec arguments artifacts items0 HTTP auth basic auth password secret
 
     Attributes
@@ -1456,13 +1492,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0HTTP
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0HTTPAuthBasicAuthUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec arguments artifacts items0 HTTP auth basic auth username secret
 
     Attributes
@@ -1478,13 +1514,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0HTTP
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0HTTPAuthClientCert:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec arguments artifacts items0 HTTP auth client cert
 
     Attributes
@@ -1502,7 +1538,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0HTTP
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0HTTPAuthClientCertClientCertSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec arguments artifacts items0 HTTP auth client cert client cert secret
 
     Attributes
@@ -1518,13 +1554,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0HTTP
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0HTTPAuthClientCertClientKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec arguments artifacts items0 HTTP auth client cert client key secret
 
     Attributes
@@ -1540,13 +1576,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0HTTP
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0HTTPAuthOauth2:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec arguments artifacts items0 HTTP auth oauth2
 
     Attributes
@@ -1576,7 +1612,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0HTTP
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0HTTPAuthOauth2ClientIDSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec arguments artifacts items0 HTTP auth oauth2 client ID secret
 
     Attributes
@@ -1592,13 +1628,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0HTTP
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0HTTPAuthOauth2ClientSecretSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec arguments artifacts items0 HTTP auth oauth2 client secret secret
 
     Attributes
@@ -1614,13 +1650,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0HTTP
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0HTTPAuthOauth2EndpointParamsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec arguments artifacts items0 HTTP auth oauth2 endpoint params items0
 
     Attributes
@@ -1638,7 +1674,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0HTTP
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0HTTPAuthOauth2TokenURLSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec arguments artifacts items0 HTTP auth oauth2 token URL secret
 
     Attributes
@@ -1654,13 +1690,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0HTTP
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0HTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec arguments artifacts items0 HTTP headers items0
 
     Attributes
@@ -1678,13 +1714,15 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0HTTP
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0Hdfs:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec arguments artifacts items0 hdfs
 
     Attributes
     ----------
     addresses : [str], default is Undefined, optional
         addresses
+    dataTransferProtection : str, default is Undefined, optional
+        data transfer protection
     force : bool, default is Undefined, optional
         force
     hdfsUser : str, default is Undefined, optional
@@ -1708,6 +1746,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0Hdfs
 
     addresses?: [str]
 
+    dataTransferProtection?: str
+
     force?: bool
 
     hdfsUser?: str
@@ -1728,7 +1768,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0Hdfs
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0HdfsKrbCCacheSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec arguments artifacts items0 hdfs krb c cache secret
 
     Attributes
@@ -1744,13 +1784,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0Hdfs
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0HdfsKrbConfigConfigMap:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec arguments artifacts items0 hdfs krb config config map
 
     Attributes
@@ -1766,13 +1806,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0Hdfs
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0HdfsKrbKeytabSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec arguments artifacts items0 hdfs krb keytab secret
 
     Attributes
@@ -1788,13 +1828,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0Hdfs
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0Oss:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec arguments artifacts items0 oss
 
     Attributes
@@ -1840,7 +1880,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0Oss:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0OssAccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec arguments artifacts items0 oss access key secret
 
     Attributes
@@ -1856,13 +1896,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0OssA
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0OssLifecycleRule:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec arguments artifacts items0 oss lifecycle rule
 
     Attributes
@@ -1880,7 +1920,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0OssL
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0OssSecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec arguments artifacts items0 oss secret key secret
 
     Attributes
@@ -1896,13 +1936,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0OssS
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0Raw:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec arguments artifacts items0 raw
 
     Attributes
@@ -1916,7 +1956,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0Raw:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0S3:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec arguments artifacts items0 s3
 
     Attributes
@@ -1943,6 +1983,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0S3:
         role a r n
     secretKeySecret : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0S3SecretKeySecret, default is Undefined, optional
         secret key secret
+    sessionTokenSecret : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0S3SessionTokenSecret, default is Undefined, optional
+        session token secret
     useSDKCreds : bool, default is Undefined, optional
         use s d k creds
     """
@@ -1970,11 +2012,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0S3:
 
     secretKeySecret?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0S3SecretKeySecret
 
+    sessionTokenSecret?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0S3SessionTokenSecret
+
     useSDKCreds?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0S3AccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec arguments artifacts items0 s3 access key secret
 
     Attributes
@@ -1990,13 +2034,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0S3Ac
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0S3CaSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec arguments artifacts items0 s3 ca secret
 
     Attributes
@@ -2012,13 +2056,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0S3Ca
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0S3CreateBucketIfNotPresent:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec arguments artifacts items0 s3 create bucket if not present
 
     Attributes
@@ -2032,7 +2076,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0S3Cr
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0S3EncryptionOptions:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec arguments artifacts items0 s3 encryption options
 
     Attributes
@@ -2058,7 +2102,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0S3En
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0S3EncryptionOptionsServerSideCustomerKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec arguments artifacts items0 s3 encryption options server side customer key secret
 
     Attributes
@@ -2074,13 +2118,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0S3En
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0S3SecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec arguments artifacts items0 s3 secret key secret
 
     Attributes
@@ -2096,13 +2140,35 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0S3Se
 
     key: str
 
-    name?: str
+    name?: str = ""
+
+    optional?: bool
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsArtifactsItems0S3SessionTokenSecret:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec arguments artifacts items0 s3 session token secret
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec arguments parameters items0
 
     Attributes
@@ -2140,7 +2206,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsParametersItems0:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsParametersItems0ValueFrom:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec arguments parameters items0 value from
 
     Attributes
@@ -2186,7 +2252,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsParametersItems0Val
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsParametersItems0ValueFromConfigMapKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec arguments parameters items0 value from config map key ref
 
     Attributes
@@ -2202,13 +2268,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArgumentsParametersItems0Val
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArtifactGC:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec artifact g c
 
     Attributes
@@ -2238,7 +2304,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArtifactGC:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArtifactGCPodMetadata:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec artifact g c pod metadata
 
     Attributes
@@ -2256,7 +2322,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArtifactGCPodMetadata:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArtifactRepositoryRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec artifact repository ref
 
     Attributes
@@ -2274,7 +2340,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecArtifactRepositoryRef:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecDNSConfig:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec DNS config
 
     Attributes
@@ -2296,7 +2362,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecDNSConfig:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecDNSConfigOptionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec DNS config options items0
 
     Attributes
@@ -2314,7 +2380,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecDNSConfigOptionsItems0:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecExecutor:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec executor
 
     Attributes
@@ -2328,7 +2394,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecExecutor:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnon:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec hooks anon
 
     Attributes
@@ -2354,7 +2420,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnon:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArguments:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec hooks anon arguments
 
     Attributes
@@ -2372,7 +2438,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArguments:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec hooks anon arguments artifacts items0
 
     Attributes
@@ -2470,7 +2536,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsI
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsItems0Archive:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec hooks anon arguments artifacts items0 archive
 
     Attributes
@@ -2492,7 +2558,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsI
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsItems0ArchiveTar:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec hooks anon arguments artifacts items0 archive tar
 
     Attributes
@@ -2506,7 +2572,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsI
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsItems0ArtifactGC:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec hooks anon arguments artifacts items0 artifact g c
 
     Attributes
@@ -2528,7 +2594,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsI
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsItems0ArtifactGCPodMetadata:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec hooks anon arguments artifacts items0 artifact g c pod metadata
 
     Attributes
@@ -2546,7 +2612,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsI
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsItems0Artifactory:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec hooks anon arguments artifacts items0 artifactory
 
     Attributes
@@ -2568,7 +2634,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsI
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsItems0ArtifactoryPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec hooks anon arguments artifacts items0 artifactory password secret
 
     Attributes
@@ -2584,13 +2650,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsI
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsItems0ArtifactoryUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec hooks anon arguments artifacts items0 artifactory username secret
 
     Attributes
@@ -2606,13 +2672,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsI
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsItems0Azure:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec hooks anon arguments artifacts items0 azure
 
     Attributes
@@ -2642,7 +2708,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsI
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsItems0AzureAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec hooks anon arguments artifacts items0 azure account key secret
 
     Attributes
@@ -2658,13 +2724,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsI
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsItems0Gcs:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec hooks anon arguments artifacts items0 gcs
 
     Attributes
@@ -2686,7 +2752,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsI
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsItems0GcsServiceAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec hooks anon arguments artifacts items0 gcs service account key secret
 
     Attributes
@@ -2702,13 +2768,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsI
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsItems0Git:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec hooks anon arguments artifacts items0 git
 
     Attributes
@@ -2723,6 +2789,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsI
         fetch
     insecureIgnoreHostKey : bool, default is Undefined, optional
         insecure ignore host key
+    insecureSkipTLS : bool, default is Undefined, optional
+        insecure skip TLS
     passwordSecret : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsItems0GitPasswordSecret, default is Undefined, optional
         password secret
     repo : str, default is Undefined, required
@@ -2748,6 +2816,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsI
 
     insecureIgnoreHostKey?: bool
 
+    insecureSkipTLS?: bool
+
     passwordSecret?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsItems0GitPasswordSecret
 
     repo: str
@@ -2762,7 +2832,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsI
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsItems0GitPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec hooks anon arguments artifacts items0 git password secret
 
     Attributes
@@ -2778,13 +2848,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsI
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsItems0GitSSHPrivateKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec hooks anon arguments artifacts items0 git SSH private key secret
 
     Attributes
@@ -2800,13 +2870,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsI
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsItems0GitUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec hooks anon arguments artifacts items0 git username secret
 
     Attributes
@@ -2822,13 +2892,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsI
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsItems0HTTP:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec hooks anon arguments artifacts items0 HTTP
 
     Attributes
@@ -2850,7 +2920,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsI
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsItems0HTTPAuth:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec hooks anon arguments artifacts items0 HTTP auth
 
     Attributes
@@ -2872,7 +2942,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsI
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsItems0HTTPAuthBasicAuth:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec hooks anon arguments artifacts items0 HTTP auth basic auth
 
     Attributes
@@ -2890,7 +2960,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsI
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsItems0HTTPAuthBasicAuthPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec hooks anon arguments artifacts items0 HTTP auth basic auth password secret
 
     Attributes
@@ -2906,13 +2976,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsI
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsItems0HTTPAuthBasicAuthUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec hooks anon arguments artifacts items0 HTTP auth basic auth username secret
 
     Attributes
@@ -2928,13 +2998,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsI
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsItems0HTTPAuthClientCert:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec hooks anon arguments artifacts items0 HTTP auth client cert
 
     Attributes
@@ -2952,7 +3022,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsI
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsItems0HTTPAuthClientCertClientCertSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec hooks anon arguments artifacts items0 HTTP auth client cert client cert secret
 
     Attributes
@@ -2968,13 +3038,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsI
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsItems0HTTPAuthClientCertClientKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec hooks anon arguments artifacts items0 HTTP auth client cert client key secret
 
     Attributes
@@ -2990,13 +3060,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsI
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsItems0HTTPAuthOauth2:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec hooks anon arguments artifacts items0 HTTP auth oauth2
 
     Attributes
@@ -3026,7 +3096,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsI
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsItems0HTTPAuthOauth2ClientIDSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec hooks anon arguments artifacts items0 HTTP auth oauth2 client ID secret
 
     Attributes
@@ -3042,13 +3112,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsI
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsItems0HTTPAuthOauth2ClientSecretSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec hooks anon arguments artifacts items0 HTTP auth oauth2 client secret secret
 
     Attributes
@@ -3064,13 +3134,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsI
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsItems0HTTPAuthOauth2EndpointParamsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec hooks anon arguments artifacts items0 HTTP auth oauth2 endpoint params items0
 
     Attributes
@@ -3088,7 +3158,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsI
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsItems0HTTPAuthOauth2TokenURLSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec hooks anon arguments artifacts items0 HTTP auth oauth2 token URL secret
 
     Attributes
@@ -3104,13 +3174,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsI
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsItems0HTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec hooks anon arguments artifacts items0 HTTP headers items0
 
     Attributes
@@ -3128,13 +3198,15 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsI
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsItems0Hdfs:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec hooks anon arguments artifacts items0 hdfs
 
     Attributes
     ----------
     addresses : [str], default is Undefined, optional
         addresses
+    dataTransferProtection : str, default is Undefined, optional
+        data transfer protection
     force : bool, default is Undefined, optional
         force
     hdfsUser : str, default is Undefined, optional
@@ -3158,6 +3230,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsI
 
     addresses?: [str]
 
+    dataTransferProtection?: str
+
     force?: bool
 
     hdfsUser?: str
@@ -3178,7 +3252,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsI
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsItems0HdfsKrbCCacheSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec hooks anon arguments artifacts items0 hdfs krb c cache secret
 
     Attributes
@@ -3194,13 +3268,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsI
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsItems0HdfsKrbConfigConfigMap:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec hooks anon arguments artifacts items0 hdfs krb config config map
 
     Attributes
@@ -3216,13 +3290,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsI
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsItems0HdfsKrbKeytabSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec hooks anon arguments artifacts items0 hdfs krb keytab secret
 
     Attributes
@@ -3238,13 +3312,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsI
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsItems0Oss:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec hooks anon arguments artifacts items0 oss
 
     Attributes
@@ -3290,7 +3364,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsI
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsItems0OssAccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec hooks anon arguments artifacts items0 oss access key secret
 
     Attributes
@@ -3306,13 +3380,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsI
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsItems0OssLifecycleRule:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec hooks anon arguments artifacts items0 oss lifecycle rule
 
     Attributes
@@ -3330,7 +3404,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsI
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsItems0OssSecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec hooks anon arguments artifacts items0 oss secret key secret
 
     Attributes
@@ -3346,13 +3420,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsI
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsItems0Raw:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec hooks anon arguments artifacts items0 raw
 
     Attributes
@@ -3366,7 +3440,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsI
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsItems0S3:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec hooks anon arguments artifacts items0 s3
 
     Attributes
@@ -3393,6 +3467,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsI
         role a r n
     secretKeySecret : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsItems0S3SecretKeySecret, default is Undefined, optional
         secret key secret
+    sessionTokenSecret : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsItems0S3SessionTokenSecret, default is Undefined, optional
+        session token secret
     useSDKCreds : bool, default is Undefined, optional
         use s d k creds
     """
@@ -3420,11 +3496,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsI
 
     secretKeySecret?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsItems0S3SecretKeySecret
 
+    sessionTokenSecret?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsItems0S3SessionTokenSecret
+
     useSDKCreds?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsItems0S3AccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec hooks anon arguments artifacts items0 s3 access key secret
 
     Attributes
@@ -3440,13 +3518,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsI
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsItems0S3CaSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec hooks anon arguments artifacts items0 s3 ca secret
 
     Attributes
@@ -3462,13 +3540,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsI
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsItems0S3CreateBucketIfNotPresent:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec hooks anon arguments artifacts items0 s3 create bucket if not present
 
     Attributes
@@ -3482,7 +3560,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsI
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsItems0S3EncryptionOptions:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec hooks anon arguments artifacts items0 s3 encryption options
 
     Attributes
@@ -3508,7 +3586,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsI
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsItems0S3EncryptionOptionsServerSideCustomerKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec hooks anon arguments artifacts items0 s3 encryption options server side customer key secret
 
     Attributes
@@ -3524,13 +3602,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsI
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsItems0S3SecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec hooks anon arguments artifacts items0 s3 secret key secret
 
     Attributes
@@ -3546,13 +3624,35 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsI
 
     key: str
 
-    name?: str
+    name?: str = ""
+
+    optional?: bool
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsArtifactsItems0S3SessionTokenSecret:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec hooks anon arguments artifacts items0 s3 session token secret
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec hooks anon arguments parameters items0
 
     Attributes
@@ -3590,7 +3690,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsParameters
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsParametersItems0ValueFrom:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec hooks anon arguments parameters items0 value from
 
     Attributes
@@ -3636,7 +3736,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsParameters
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsParametersItems0ValueFromConfigMapKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec hooks anon arguments parameters items0 value from config map key ref
 
     Attributes
@@ -3652,13 +3752,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonArgumentsParameters
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonTemplateRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec hooks anon template ref
 
     Attributes
@@ -3680,25 +3780,25 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHooksAnonTemplateRef:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecHostAliasesItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec host aliases items0
 
     Attributes
     ----------
     hostnames : [str], default is Undefined, optional
         hostnames
-    ip : str, default is Undefined, optional
+    ip : str, default is Undefined, required
         ip
     """
 
 
     hostnames?: [str]
 
-    ip?: str
+    ip: str
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecImagePullSecretsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec image pull secrets items0
 
     Attributes
@@ -3708,11 +3808,11 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecImagePullSecretsItems0:
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecMetrics:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec metrics
 
     Attributes
@@ -3726,7 +3826,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecMetrics:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecMetricsPrometheusItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec metrics prometheus items0
 
     Attributes
@@ -3764,7 +3864,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecMetricsPrometheusItems0:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecMetricsPrometheusItems0Counter:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec metrics prometheus items0 counter
 
     Attributes
@@ -3778,7 +3878,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecMetricsPrometheusItems0Count
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecMetricsPrometheusItems0Gauge:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec metrics prometheus items0 gauge
 
     Attributes
@@ -3800,7 +3900,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecMetricsPrometheusItems0Gauge
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecMetricsPrometheusItems0Histogram:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec metrics prometheus items0 histogram
 
     Attributes
@@ -3818,7 +3918,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecMetricsPrometheusItems0Histo
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecMetricsPrometheusItems0LabelsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec metrics prometheus items0 labels items0
 
     Attributes
@@ -3836,7 +3936,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecMetricsPrometheusItems0Label
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecPodDisruptionBudget:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec pod disruption budget
 
     Attributes
@@ -3862,7 +3962,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecPodDisruptionBudget:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecPodDisruptionBudgetSelector:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec pod disruption budget selector
 
     Attributes
@@ -3880,7 +3980,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecPodDisruptionBudgetSelector:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecPodDisruptionBudgetSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec pod disruption budget selector match expressions items0
 
     Attributes
@@ -3902,7 +4002,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecPodDisruptionBudgetSelectorM
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecPodGC:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec pod g c
 
     Attributes
@@ -3924,7 +4024,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecPodGC:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecPodGCLabelSelector:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec pod g c label selector
 
     Attributes
@@ -3942,7 +4042,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecPodGCLabelSelector:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecPodGCLabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec pod g c label selector match expressions items0
 
     Attributes
@@ -3964,7 +4064,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecPodGCLabelSelectorMatchExpre
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecPodMetadata:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec pod metadata
 
     Attributes
@@ -3982,7 +4082,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecPodMetadata:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecRetryStrategy:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec retry strategy
 
     Attributes
@@ -4012,7 +4112,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecRetryStrategy:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecRetryStrategyAffinity:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec retry strategy affinity
 
     Attributes
@@ -4026,7 +4126,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecRetryStrategyAffinity:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecRetryStrategyBackoff:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec retry strategy backoff
 
     Attributes
@@ -4048,11 +4148,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecRetryStrategyBackoff:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecSecurityContext:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec security context
 
     Attributes
     ----------
+    appArmorProfile : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecSecurityContextAppArmorProfile, default is Undefined, optional
+        app armor profile
     fsGroup : int, default is Undefined, optional
         fs group
     fsGroupChangePolicy : str, default is Undefined, optional
@@ -4076,6 +4178,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecSecurityContext:
     """
 
 
+    appArmorProfile?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecSecurityContextAppArmorProfile
+
     fsGroup?: int
 
     fsGroupChangePolicy?: str
@@ -4097,8 +4201,26 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecSecurityContext:
     windowsOptions?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecSecurityContextWindowsOptions
 
 
-schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecSecurityContextSeLinuxOptions:
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecSecurityContextAppArmorProfile:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec security context app armor profile
+
+    Attributes
+    ----------
+    localhostProfile : str, default is Undefined, optional
+        localhost profile
+    $type : str, default is Undefined, required
+        type
     """
+
+
+    localhostProfile?: str
+
+    $type: str
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecSecurityContextSeLinuxOptions:
+    r"""
     argoproj io v1alpha1 cluster workflow template spec security context se linux options
 
     Attributes
@@ -4124,7 +4246,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecSecurityContextSeLinuxOption
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecSecurityContextSeccompProfile:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec security context seccomp profile
 
     Attributes
@@ -4142,7 +4264,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecSecurityContextSeccompProfil
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecSecurityContextSysctlsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec security context sysctls items0
 
     Attributes
@@ -4160,7 +4282,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecSecurityContextSysctlsItems0
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecSecurityContextWindowsOptions:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec security context windows options
 
     Attributes
@@ -4186,25 +4308,33 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecSecurityContextWindowsOption
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecSynchronization:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec synchronization
 
     Attributes
     ----------
     mutex : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecSynchronizationMutex, default is Undefined, optional
         mutex
+    mutexes : [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecSynchronizationMutexesItems0], default is Undefined, optional
+        mutexes
     semaphore : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecSynchronizationSemaphore, default is Undefined, optional
         semaphore
+    semaphores : [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecSynchronizationSemaphoresItems0], default is Undefined, optional
+        semaphores
     """
 
 
     mutex?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecSynchronizationMutex
 
+    mutexes?: [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecSynchronizationMutexesItems0]
+
     semaphore?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecSynchronizationSemaphore
+
+    semaphores?: [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecSynchronizationSemaphoresItems0]
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecSynchronizationMutex:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec synchronization mutex
 
     Attributes
@@ -4221,8 +4351,26 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecSynchronizationMutex:
     namespace?: str
 
 
-schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecSynchronizationSemaphore:
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecSynchronizationMutexesItems0:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec synchronization mutexes items0
+
+    Attributes
+    ----------
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
     """
+
+
+    name?: str
+
+    namespace?: str
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecSynchronizationSemaphore:
+    r"""
     argoproj io v1alpha1 cluster workflow template spec synchronization semaphore
 
     Attributes
@@ -4240,7 +4388,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecSynchronizationSemaphore:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecSynchronizationSemaphoreConfigMapKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec synchronization semaphore config map key ref
 
     Attributes
@@ -4256,13 +4404,53 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecSynchronizationSemaphoreConf
 
     key: str
 
-    name?: str
+    name?: str = ""
+
+    optional?: bool
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecSynchronizationSemaphoresItems0:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec synchronization semaphores items0
+
+    Attributes
+    ----------
+    configMapKeyRef : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecSynchronizationSemaphoresItems0ConfigMapKeyRef, default is Undefined, optional
+        config map key ref
+    namespace : str, default is Undefined, optional
+        namespace
+    """
+
+
+    configMapKeyRef?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecSynchronizationSemaphoresItems0ConfigMapKeyRef
+
+    namespace?: str
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecSynchronizationSemaphoresItems0ConfigMapKeyRef:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec synchronization semaphores items0 config map key ref
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTTLStrategy:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec TTL strategy
 
     Attributes
@@ -4284,7 +4472,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTTLStrategy:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaults:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults
 
     Attributes
@@ -4450,7 +4638,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaults:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinity:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults affinity
 
     Attributes
@@ -4472,7 +4660,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinity:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityNodeAffinity:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults affinity node affinity
 
     Attributes
@@ -4490,7 +4678,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityNode
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults affinity node affinity preferred during scheduling ignored during execution items0
 
     Attributes
@@ -4508,7 +4696,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityNode
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0Preference:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults affinity node affinity preferred during scheduling ignored during execution items0 preference
 
     Attributes
@@ -4526,7 +4714,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityNode
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults affinity node affinity preferred during scheduling ignored during execution items0 preference match expressions items0
 
     Attributes
@@ -4548,7 +4736,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityNode
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchFieldsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults affinity node affinity preferred during scheduling ignored during execution items0 preference match fields items0
 
     Attributes
@@ -4570,7 +4758,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityNode
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults affinity node affinity required during scheduling ignored during execution
 
     Attributes
@@ -4584,7 +4772,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityNode
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults affinity node affinity required during scheduling ignored during execution node selector terms items0
 
     Attributes
@@ -4602,7 +4790,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityNode
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults affinity node affinity required during scheduling ignored during execution node selector terms items0 match expressions items0
 
     Attributes
@@ -4624,7 +4812,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityNode
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchFieldsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults affinity node affinity required during scheduling ignored during execution node selector terms items0 match fields items0
 
     Attributes
@@ -4646,7 +4834,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityNode
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodAffinity:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults affinity pod affinity
 
     Attributes
@@ -4664,7 +4852,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodA
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults affinity pod affinity preferred during scheduling ignored during execution items0
 
     Attributes
@@ -4682,13 +4870,17 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodA
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTerm:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults affinity pod affinity preferred during scheduling ignored during execution items0 pod affinity term
 
     Attributes
     ----------
     labelSelector : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector, default is Undefined, optional
         label selector
+    matchLabelKeys : [str], default is Undefined, optional
+        match label keys
+    mismatchLabelKeys : [str], default is Undefined, optional
+        mismatch label keys
     namespaceSelector : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector, default is Undefined, optional
         namespace selector
     namespaces : [str], default is Undefined, optional
@@ -4700,6 +4892,10 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodA
 
     labelSelector?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector
 
+    matchLabelKeys?: [str]
+
+    mismatchLabelKeys?: [str]
+
     namespaceSelector?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector
 
     namespaces?: [str]
@@ -4708,7 +4904,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodA
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults affinity pod affinity preferred during scheduling ignored during execution items0 pod affinity term label selector
 
     Attributes
@@ -4726,7 +4922,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodA
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults affinity pod affinity preferred during scheduling ignored during execution items0 pod affinity term label selector match expressions items0
 
     Attributes
@@ -4748,7 +4944,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodA
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults affinity pod affinity preferred during scheduling ignored during execution items0 pod affinity term namespace selector
 
     Attributes
@@ -4766,7 +4962,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodA
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults affinity pod affinity preferred during scheduling ignored during execution items0 pod affinity term namespace selector match expressions items0
 
     Attributes
@@ -4788,13 +4984,17 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodA
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults affinity pod affinity required during scheduling ignored during execution items0
 
     Attributes
     ----------
     labelSelector : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector, default is Undefined, optional
         label selector
+    matchLabelKeys : [str], default is Undefined, optional
+        match label keys
+    mismatchLabelKeys : [str], default is Undefined, optional
+        mismatch label keys
     namespaceSelector : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector, default is Undefined, optional
         namespace selector
     namespaces : [str], default is Undefined, optional
@@ -4806,6 +5006,10 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodA
 
     labelSelector?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector
 
+    matchLabelKeys?: [str]
+
+    mismatchLabelKeys?: [str]
+
     namespaceSelector?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector
 
     namespaces?: [str]
@@ -4814,7 +5018,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodA
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults affinity pod affinity required during scheduling ignored during execution items0 label selector
 
     Attributes
@@ -4832,7 +5036,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodA
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults affinity pod affinity required during scheduling ignored during execution items0 label selector match expressions items0
 
     Attributes
@@ -4854,7 +5058,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodA
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults affinity pod affinity required during scheduling ignored during execution items0 namespace selector
 
     Attributes
@@ -4872,7 +5076,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodA
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults affinity pod affinity required during scheduling ignored during execution items0 namespace selector match expressions items0
 
     Attributes
@@ -4894,7 +5098,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodA
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodAntiAffinity:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults affinity pod anti affinity
 
     Attributes
@@ -4912,7 +5116,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodA
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults affinity pod anti affinity preferred during scheduling ignored during execution items0
 
     Attributes
@@ -4930,13 +5134,17 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodA
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTerm:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults affinity pod anti affinity preferred during scheduling ignored during execution items0 pod affinity term
 
     Attributes
     ----------
     labelSelector : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector, default is Undefined, optional
         label selector
+    matchLabelKeys : [str], default is Undefined, optional
+        match label keys
+    mismatchLabelKeys : [str], default is Undefined, optional
+        mismatch label keys
     namespaceSelector : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector, default is Undefined, optional
         namespace selector
     namespaces : [str], default is Undefined, optional
@@ -4948,6 +5156,10 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodA
 
     labelSelector?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector
 
+    matchLabelKeys?: [str]
+
+    mismatchLabelKeys?: [str]
+
     namespaceSelector?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector
 
     namespaces?: [str]
@@ -4956,7 +5168,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodA
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults affinity pod anti affinity preferred during scheduling ignored during execution items0 pod affinity term label selector
 
     Attributes
@@ -4974,7 +5186,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodA
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults affinity pod anti affinity preferred during scheduling ignored during execution items0 pod affinity term label selector match expressions items0
 
     Attributes
@@ -4996,7 +5208,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodA
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults affinity pod anti affinity preferred during scheduling ignored during execution items0 pod affinity term namespace selector
 
     Attributes
@@ -5014,7 +5226,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodA
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults affinity pod anti affinity preferred during scheduling ignored during execution items0 pod affinity term namespace selector match expressions items0
 
     Attributes
@@ -5036,13 +5248,17 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodA
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults affinity pod anti affinity required during scheduling ignored during execution items0
 
     Attributes
     ----------
     labelSelector : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector, default is Undefined, optional
         label selector
+    matchLabelKeys : [str], default is Undefined, optional
+        match label keys
+    mismatchLabelKeys : [str], default is Undefined, optional
+        mismatch label keys
     namespaceSelector : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector, default is Undefined, optional
         namespace selector
     namespaces : [str], default is Undefined, optional
@@ -5054,6 +5270,10 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodA
 
     labelSelector?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector
 
+    matchLabelKeys?: [str]
+
+    mismatchLabelKeys?: [str]
+
     namespaceSelector?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector
 
     namespaces?: [str]
@@ -5062,7 +5282,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodA
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults affinity pod anti affinity required during scheduling ignored during execution items0 label selector
 
     Attributes
@@ -5080,7 +5300,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodA
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults affinity pod anti affinity required during scheduling ignored during execution items0 label selector match expressions items0
 
     Attributes
@@ -5102,7 +5322,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodA
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults affinity pod anti affinity required during scheduling ignored during execution items0 namespace selector
 
     Attributes
@@ -5120,7 +5340,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodA
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults affinity pod anti affinity required during scheduling ignored during execution items0 namespace selector match expressions items0
 
     Attributes
@@ -5142,7 +5362,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsAffinityPodA
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocation:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults archive location
 
     Attributes
@@ -5192,7 +5412,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocat
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocationArtifactory:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults archive location artifactory
 
     Attributes
@@ -5214,7 +5434,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocat
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocationArtifactoryPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults archive location artifactory password secret
 
     Attributes
@@ -5230,13 +5450,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocat
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocationArtifactoryUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults archive location artifactory username secret
 
     Attributes
@@ -5252,13 +5472,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocat
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocationAzure:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults archive location azure
 
     Attributes
@@ -5288,7 +5508,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocat
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocationAzureAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults archive location azure account key secret
 
     Attributes
@@ -5304,13 +5524,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocat
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocationGcs:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults archive location gcs
 
     Attributes
@@ -5332,7 +5552,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocat
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocationGcsServiceAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults archive location gcs service account key secret
 
     Attributes
@@ -5348,13 +5568,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocat
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocationGit:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults archive location git
 
     Attributes
@@ -5369,6 +5589,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocat
         fetch
     insecureIgnoreHostKey : bool, default is Undefined, optional
         insecure ignore host key
+    insecureSkipTLS : bool, default is Undefined, optional
+        insecure skip TLS
     passwordSecret : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocationGitPasswordSecret, default is Undefined, optional
         password secret
     repo : str, default is Undefined, required
@@ -5394,6 +5616,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocat
 
     insecureIgnoreHostKey?: bool
 
+    insecureSkipTLS?: bool
+
     passwordSecret?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocationGitPasswordSecret
 
     repo: str
@@ -5408,7 +5632,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocat
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocationGitPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults archive location git password secret
 
     Attributes
@@ -5424,13 +5648,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocat
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocationGitSSHPrivateKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults archive location git SSH private key secret
 
     Attributes
@@ -5446,13 +5670,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocat
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocationGitUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults archive location git username secret
 
     Attributes
@@ -5468,13 +5692,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocat
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocationHTTP:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults archive location HTTP
 
     Attributes
@@ -5496,7 +5720,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocat
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocationHTTPAuth:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults archive location HTTP auth
 
     Attributes
@@ -5518,7 +5742,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocat
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocationHTTPAuthBasicAuth:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults archive location HTTP auth basic auth
 
     Attributes
@@ -5536,7 +5760,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocat
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocationHTTPAuthBasicAuthPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults archive location HTTP auth basic auth password secret
 
     Attributes
@@ -5552,13 +5776,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocat
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocationHTTPAuthBasicAuthUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults archive location HTTP auth basic auth username secret
 
     Attributes
@@ -5574,13 +5798,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocat
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocationHTTPAuthClientCert:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults archive location HTTP auth client cert
 
     Attributes
@@ -5598,7 +5822,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocat
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocationHTTPAuthClientCertClientCertSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults archive location HTTP auth client cert client cert secret
 
     Attributes
@@ -5614,13 +5838,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocat
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocationHTTPAuthClientCertClientKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults archive location HTTP auth client cert client key secret
 
     Attributes
@@ -5636,13 +5860,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocat
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocationHTTPAuthOauth2:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults archive location HTTP auth oauth2
 
     Attributes
@@ -5672,7 +5896,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocat
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocationHTTPAuthOauth2ClientIDSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults archive location HTTP auth oauth2 client ID secret
 
     Attributes
@@ -5688,13 +5912,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocat
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocationHTTPAuthOauth2ClientSecretSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults archive location HTTP auth oauth2 client secret secret
 
     Attributes
@@ -5710,13 +5934,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocat
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocationHTTPAuthOauth2EndpointParamsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults archive location HTTP auth oauth2 endpoint params items0
 
     Attributes
@@ -5734,7 +5958,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocat
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocationHTTPAuthOauth2TokenURLSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults archive location HTTP auth oauth2 token URL secret
 
     Attributes
@@ -5750,13 +5974,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocat
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocationHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults archive location HTTP headers items0
 
     Attributes
@@ -5774,13 +5998,15 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocat
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocationHdfs:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults archive location hdfs
 
     Attributes
     ----------
     addresses : [str], default is Undefined, optional
         addresses
+    dataTransferProtection : str, default is Undefined, optional
+        data transfer protection
     force : bool, default is Undefined, optional
         force
     hdfsUser : str, default is Undefined, optional
@@ -5804,6 +6030,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocat
 
     addresses?: [str]
 
+    dataTransferProtection?: str
+
     force?: bool
 
     hdfsUser?: str
@@ -5824,7 +6052,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocat
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocationHdfsKrbCCacheSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults archive location hdfs krb c cache secret
 
     Attributes
@@ -5840,13 +6068,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocat
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocationHdfsKrbConfigConfigMap:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults archive location hdfs krb config config map
 
     Attributes
@@ -5862,13 +6090,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocat
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocationHdfsKrbKeytabSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults archive location hdfs krb keytab secret
 
     Attributes
@@ -5884,13 +6112,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocat
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocationOss:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults archive location oss
 
     Attributes
@@ -5936,7 +6164,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocat
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocationOssAccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults archive location oss access key secret
 
     Attributes
@@ -5952,13 +6180,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocat
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocationOssLifecycleRule:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults archive location oss lifecycle rule
 
     Attributes
@@ -5976,7 +6204,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocat
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocationOssSecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults archive location oss secret key secret
 
     Attributes
@@ -5992,13 +6220,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocat
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocationRaw:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults archive location raw
 
     Attributes
@@ -6012,7 +6240,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocat
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocationS3:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults archive location s3
 
     Attributes
@@ -6039,6 +6267,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocat
         role a r n
     secretKeySecret : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocationS3SecretKeySecret, default is Undefined, optional
         secret key secret
+    sessionTokenSecret : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocationS3SessionTokenSecret, default is Undefined, optional
+        session token secret
     useSDKCreds : bool, default is Undefined, optional
         use s d k creds
     """
@@ -6066,11 +6296,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocat
 
     secretKeySecret?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocationS3SecretKeySecret
 
+    sessionTokenSecret?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocationS3SessionTokenSecret
+
     useSDKCreds?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocationS3AccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults archive location s3 access key secret
 
     Attributes
@@ -6086,13 +6318,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocat
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocationS3CaSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults archive location s3 ca secret
 
     Attributes
@@ -6108,13 +6340,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocat
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocationS3CreateBucketIfNotPresent:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults archive location s3 create bucket if not present
 
     Attributes
@@ -6128,7 +6360,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocat
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocationS3EncryptionOptions:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults archive location s3 encryption options
 
     Attributes
@@ -6154,7 +6386,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocat
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocationS3EncryptionOptionsServerSideCustomerKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults archive location s3 encryption options server side customer key secret
 
     Attributes
@@ -6170,13 +6402,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocat
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocationS3SecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults archive location s3 secret key secret
 
     Attributes
@@ -6192,13 +6424,35 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocat
 
     key: str
 
-    name?: str
+    name?: str = ""
+
+    optional?: bool
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsArchiveLocationS3SessionTokenSecret:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec template defaults archive location s3 session token secret
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainer:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container
 
     Attributes
@@ -6225,8 +6479,12 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainer:
         ports
     readinessProbe : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerReadinessProbe, default is Undefined, optional
         readiness probe
+    resizePolicy : [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerResizePolicyItems0], default is Undefined, optional
+        resize policy
     resources : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerResources, default is Undefined, optional
         resources
+    restartPolicy : str, default is Undefined, optional
+        restart policy
     securityContext : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSecurityContext, default is Undefined, optional
         security context
     startupProbe : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerStartupProbe, default is Undefined, optional
@@ -6272,7 +6530,11 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainer:
 
     readinessProbe?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerReadinessProbe
 
+    resizePolicy?: [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerResizePolicyItems0]
+
     resources?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerResources
+
+    restartPolicy?: str
 
     securityContext?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSecurityContext
 
@@ -6296,7 +6558,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainer:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerEnvFromItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container env from items0
 
     Attributes
@@ -6318,7 +6580,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerEnv
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerEnvFromItems0ConfigMapRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container env from items0 config map ref
 
     Attributes
@@ -6330,13 +6592,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerEnv
     """
 
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerEnvFromItems0SecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container env from items0 secret ref
 
     Attributes
@@ -6348,13 +6610,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerEnv
     """
 
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerEnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container env items0
 
     Attributes
@@ -6376,7 +6638,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerEnv
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerEnvItems0ValueFrom:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container env items0 value from
 
     Attributes
@@ -6402,7 +6664,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerEnv
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerEnvItems0ValueFromConfigMapKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container env items0 value from config map key ref
 
     Attributes
@@ -6418,13 +6680,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerEnv
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerEnvItems0ValueFromFieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container env items0 value from field ref
 
     Attributes
@@ -6442,7 +6704,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerEnv
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerEnvItems0ValueFromResourceFieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container env items0 value from resource field ref
 
     Attributes
@@ -6468,7 +6730,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerEnv
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerEnvItems0ValueFromSecretKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container env items0 value from secret key ref
 
     Attributes
@@ -6484,13 +6746,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerEnv
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerLifecycle:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container lifecycle
 
     Attributes
@@ -6508,7 +6770,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerLif
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerLifecyclePostStart:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container lifecycle post start
 
     Attributes
@@ -6517,6 +6779,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerLif
         exec
     httpGet : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerLifecyclePostStartHTTPGet, default is Undefined, optional
         http get
+    sleep : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerLifecyclePostStartSleep, default is Undefined, optional
+        sleep
     tcpSocket : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerLifecyclePostStartTCPSocket, default is Undefined, optional
         tcp socket
     """
@@ -6526,11 +6790,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerLif
 
     httpGet?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerLifecyclePostStartHTTPGet
 
+    sleep?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerLifecyclePostStartSleep
+
     tcpSocket?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerLifecyclePostStartTCPSocket
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerLifecyclePostStartExec:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container lifecycle post start exec
 
     Attributes
@@ -6544,7 +6810,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerLif
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerLifecyclePostStartHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container lifecycle post start HTTP get
 
     Attributes
@@ -6574,7 +6840,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerLif
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerLifecyclePostStartHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container lifecycle post start HTTP get HTTP headers items0
 
     Attributes
@@ -6591,8 +6857,22 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerLif
     value: str
 
 
-schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerLifecyclePostStartTCPSocket:
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerLifecyclePostStartSleep:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec template defaults container lifecycle post start sleep
+
+    Attributes
+    ----------
+    seconds : int, default is Undefined, required
+        seconds
     """
+
+
+    seconds: int
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerLifecyclePostStartTCPSocket:
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container lifecycle post start TCP socket
 
     Attributes
@@ -6610,7 +6890,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerLif
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerLifecyclePreStop:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container lifecycle pre stop
 
     Attributes
@@ -6619,6 +6899,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerLif
         exec
     httpGet : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerLifecyclePreStopHTTPGet, default is Undefined, optional
         http get
+    sleep : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerLifecyclePreStopSleep, default is Undefined, optional
+        sleep
     tcpSocket : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerLifecyclePreStopTCPSocket, default is Undefined, optional
         tcp socket
     """
@@ -6628,11 +6910,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerLif
 
     httpGet?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerLifecyclePreStopHTTPGet
 
+    sleep?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerLifecyclePreStopSleep
+
     tcpSocket?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerLifecyclePreStopTCPSocket
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerLifecyclePreStopExec:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container lifecycle pre stop exec
 
     Attributes
@@ -6646,7 +6930,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerLif
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerLifecyclePreStopHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container lifecycle pre stop HTTP get
 
     Attributes
@@ -6676,7 +6960,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerLif
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerLifecyclePreStopHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container lifecycle pre stop HTTP get HTTP headers items0
 
     Attributes
@@ -6693,8 +6977,22 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerLif
     value: str
 
 
-schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerLifecyclePreStopTCPSocket:
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerLifecyclePreStopSleep:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec template defaults container lifecycle pre stop sleep
+
+    Attributes
+    ----------
+    seconds : int, default is Undefined, required
+        seconds
     """
+
+
+    seconds: int
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerLifecyclePreStopTCPSocket:
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container lifecycle pre stop TCP socket
 
     Attributes
@@ -6712,7 +7010,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerLif
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerLivenessProbe:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container liveness probe
 
     Attributes
@@ -6762,7 +7060,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerLiv
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerLivenessProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container liveness probe exec
 
     Attributes
@@ -6776,7 +7074,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerLiv
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerLivenessProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container liveness probe grpc
 
     Attributes
@@ -6794,7 +7092,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerLiv
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerLivenessProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container liveness probe HTTP get
 
     Attributes
@@ -6824,7 +7122,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerLiv
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerLivenessProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container liveness probe HTTP get HTTP headers items0
 
     Attributes
@@ -6842,7 +7140,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerLiv
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerLivenessProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container liveness probe TCP socket
 
     Attributes
@@ -6860,7 +7158,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerLiv
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerPortsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container ports items0
 
     Attributes
@@ -6890,7 +7188,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerPor
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerReadinessProbe:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container readiness probe
 
     Attributes
@@ -6940,7 +7238,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerRea
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerReadinessProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container readiness probe exec
 
     Attributes
@@ -6954,7 +7252,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerRea
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerReadinessProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container readiness probe grpc
 
     Attributes
@@ -6972,7 +7270,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerRea
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerReadinessProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container readiness probe HTTP get
 
     Attributes
@@ -7002,7 +7300,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerRea
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerReadinessProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container readiness probe HTTP get HTTP headers items0
 
     Attributes
@@ -7020,7 +7318,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerRea
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerReadinessProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container readiness probe TCP socket
 
     Attributes
@@ -7037,8 +7335,26 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerRea
     port: int | str
 
 
-schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerResources:
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerResizePolicyItems0:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec template defaults container resize policy items0
+
+    Attributes
+    ----------
+    resourceName : str, default is Undefined, required
+        resource name
+    restartPolicy : str, default is Undefined, required
+        restart policy
     """
+
+
+    resourceName: str
+
+    restartPolicy: str
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerResources:
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container resources
 
     Attributes
@@ -7060,12 +7376,12 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerRes
 
 
     check:
-        all _, limits in limits {_regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests {_regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerResourcesClaimsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container resources claims items0
 
     Attributes
@@ -7079,13 +7395,15 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerRes
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSecurityContext:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container security context
 
     Attributes
     ----------
     allowPrivilegeEscalation : bool, default is Undefined, optional
         allow privilege escalation
+    appArmorProfile : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSecurityContextAppArmorProfile, default is Undefined, optional
+        app armor profile
     capabilities : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSecurityContextCapabilities, default is Undefined, optional
         capabilities
     privileged : bool, default is Undefined, optional
@@ -7111,6 +7429,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSec
 
     allowPrivilegeEscalation?: bool
 
+    appArmorProfile?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSecurityContextAppArmorProfile
+
     capabilities?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSecurityContextCapabilities
 
     privileged?: bool
@@ -7132,8 +7452,26 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSec
     windowsOptions?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSecurityContextWindowsOptions
 
 
-schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSecurityContextCapabilities:
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSecurityContextAppArmorProfile:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec template defaults container security context app armor profile
+
+    Attributes
+    ----------
+    localhostProfile : str, default is Undefined, optional
+        localhost profile
+    $type : str, default is Undefined, required
+        type
     """
+
+
+    localhostProfile?: str
+
+    $type: str
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSecurityContextCapabilities:
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container security context capabilities
 
     Attributes
@@ -7151,7 +7489,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSec
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSecurityContextSeLinuxOptions:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container security context se linux options
 
     Attributes
@@ -7177,7 +7515,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSec
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSecurityContextSeccompProfile:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container security context seccomp profile
 
     Attributes
@@ -7195,7 +7533,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSec
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSecurityContextWindowsOptions:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container security context windows options
 
     Attributes
@@ -7221,7 +7559,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSec
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container set
 
     Attributes
@@ -7243,7 +7581,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container set containers items0
 
     Attributes
@@ -7272,8 +7610,12 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
         ports
     readinessProbe : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0ReadinessProbe, default is Undefined, optional
         readiness probe
+    resizePolicy : [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0ResizePolicyItems0], default is Undefined, optional
+        resize policy
     resources : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0Resources, default is Undefined, optional
         resources
+    restartPolicy : str, default is Undefined, optional
+        restart policy
     securityContext : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0SecurityContext, default is Undefined, optional
         security context
     startupProbe : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0StartupProbe, default is Undefined, optional
@@ -7321,7 +7663,11 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
 
     readinessProbe?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0ReadinessProbe
 
+    resizePolicy?: [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0ResizePolicyItems0]
+
     resources?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0Resources
+
+    restartPolicy?: str
 
     securityContext?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0SecurityContext
 
@@ -7345,7 +7691,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0EnvFromItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container set containers items0 env from items0
 
     Attributes
@@ -7367,7 +7713,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0EnvFromItems0ConfigMapRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container set containers items0 env from items0 config map ref
 
     Attributes
@@ -7379,13 +7725,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
     """
 
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0EnvFromItems0SecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container set containers items0 env from items0 secret ref
 
     Attributes
@@ -7397,13 +7743,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
     """
 
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0EnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container set containers items0 env items0
 
     Attributes
@@ -7425,7 +7771,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0EnvItems0ValueFrom:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container set containers items0 env items0 value from
 
     Attributes
@@ -7451,7 +7797,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0EnvItems0ValueFromConfigMapKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container set containers items0 env items0 value from config map key ref
 
     Attributes
@@ -7467,13 +7813,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0EnvItems0ValueFromFieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container set containers items0 env items0 value from field ref
 
     Attributes
@@ -7491,7 +7837,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0EnvItems0ValueFromResourceFieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container set containers items0 env items0 value from resource field ref
 
     Attributes
@@ -7517,7 +7863,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0EnvItems0ValueFromSecretKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container set containers items0 env items0 value from secret key ref
 
     Attributes
@@ -7533,13 +7879,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0Lifecycle:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container set containers items0 lifecycle
 
     Attributes
@@ -7557,7 +7903,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0LifecyclePostStart:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container set containers items0 lifecycle post start
 
     Attributes
@@ -7566,6 +7912,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
         exec
     httpGet : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0LifecyclePostStartHTTPGet, default is Undefined, optional
         http get
+    sleep : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0LifecyclePostStartSleep, default is Undefined, optional
+        sleep
     tcpSocket : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0LifecyclePostStartTCPSocket, default is Undefined, optional
         tcp socket
     """
@@ -7575,11 +7923,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
 
     httpGet?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0LifecyclePostStartHTTPGet
 
+    sleep?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0LifecyclePostStartSleep
+
     tcpSocket?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0LifecyclePostStartTCPSocket
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0LifecyclePostStartExec:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container set containers items0 lifecycle post start exec
 
     Attributes
@@ -7593,7 +7943,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0LifecyclePostStartHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container set containers items0 lifecycle post start HTTP get
 
     Attributes
@@ -7623,7 +7973,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0LifecyclePostStartHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container set containers items0 lifecycle post start HTTP get HTTP headers items0
 
     Attributes
@@ -7640,8 +7990,22 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
     value: str
 
 
-schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0LifecyclePostStartTCPSocket:
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0LifecyclePostStartSleep:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec template defaults container set containers items0 lifecycle post start sleep
+
+    Attributes
+    ----------
+    seconds : int, default is Undefined, required
+        seconds
     """
+
+
+    seconds: int
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0LifecyclePostStartTCPSocket:
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container set containers items0 lifecycle post start TCP socket
 
     Attributes
@@ -7659,7 +8023,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0LifecyclePreStop:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container set containers items0 lifecycle pre stop
 
     Attributes
@@ -7668,6 +8032,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
         exec
     httpGet : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0LifecyclePreStopHTTPGet, default is Undefined, optional
         http get
+    sleep : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0LifecyclePreStopSleep, default is Undefined, optional
+        sleep
     tcpSocket : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0LifecyclePreStopTCPSocket, default is Undefined, optional
         tcp socket
     """
@@ -7677,11 +8043,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
 
     httpGet?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0LifecyclePreStopHTTPGet
 
+    sleep?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0LifecyclePreStopSleep
+
     tcpSocket?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0LifecyclePreStopTCPSocket
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0LifecyclePreStopExec:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container set containers items0 lifecycle pre stop exec
 
     Attributes
@@ -7695,7 +8063,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0LifecyclePreStopHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container set containers items0 lifecycle pre stop HTTP get
 
     Attributes
@@ -7725,7 +8093,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0LifecyclePreStopHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container set containers items0 lifecycle pre stop HTTP get HTTP headers items0
 
     Attributes
@@ -7742,8 +8110,22 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
     value: str
 
 
-schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0LifecyclePreStopTCPSocket:
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0LifecyclePreStopSleep:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec template defaults container set containers items0 lifecycle pre stop sleep
+
+    Attributes
+    ----------
+    seconds : int, default is Undefined, required
+        seconds
     """
+
+
+    seconds: int
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0LifecyclePreStopTCPSocket:
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container set containers items0 lifecycle pre stop TCP socket
 
     Attributes
@@ -7761,7 +8143,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0LivenessProbe:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container set containers items0 liveness probe
 
     Attributes
@@ -7811,7 +8193,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0LivenessProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container set containers items0 liveness probe exec
 
     Attributes
@@ -7825,7 +8207,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0LivenessProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container set containers items0 liveness probe grpc
 
     Attributes
@@ -7843,7 +8225,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0LivenessProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container set containers items0 liveness probe HTTP get
 
     Attributes
@@ -7873,7 +8255,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0LivenessProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container set containers items0 liveness probe HTTP get HTTP headers items0
 
     Attributes
@@ -7891,7 +8273,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0LivenessProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container set containers items0 liveness probe TCP socket
 
     Attributes
@@ -7909,7 +8291,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0PortsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container set containers items0 ports items0
 
     Attributes
@@ -7939,7 +8321,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0ReadinessProbe:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container set containers items0 readiness probe
 
     Attributes
@@ -7989,7 +8371,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0ReadinessProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container set containers items0 readiness probe exec
 
     Attributes
@@ -8003,7 +8385,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0ReadinessProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container set containers items0 readiness probe grpc
 
     Attributes
@@ -8021,7 +8403,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0ReadinessProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container set containers items0 readiness probe HTTP get
 
     Attributes
@@ -8051,7 +8433,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0ReadinessProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container set containers items0 readiness probe HTTP get HTTP headers items0
 
     Attributes
@@ -8069,7 +8451,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0ReadinessProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container set containers items0 readiness probe TCP socket
 
     Attributes
@@ -8086,8 +8468,26 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
     port: int | str
 
 
-schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0Resources:
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0ResizePolicyItems0:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec template defaults container set containers items0 resize policy items0
+
+    Attributes
+    ----------
+    resourceName : str, default is Undefined, required
+        resource name
+    restartPolicy : str, default is Undefined, required
+        restart policy
     """
+
+
+    resourceName: str
+
+    restartPolicy: str
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0Resources:
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container set containers items0 resources
 
     Attributes
@@ -8109,12 +8509,12 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
 
 
     check:
-        all _, limits in limits {_regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests {_regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0ResourcesClaimsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container set containers items0 resources claims items0
 
     Attributes
@@ -8128,13 +8528,15 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0SecurityContext:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container set containers items0 security context
 
     Attributes
     ----------
     allowPrivilegeEscalation : bool, default is Undefined, optional
         allow privilege escalation
+    appArmorProfile : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0SecurityContextAppArmorProfile, default is Undefined, optional
+        app armor profile
     capabilities : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0SecurityContextCapabilities, default is Undefined, optional
         capabilities
     privileged : bool, default is Undefined, optional
@@ -8160,6 +8562,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
 
     allowPrivilegeEscalation?: bool
 
+    appArmorProfile?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0SecurityContextAppArmorProfile
+
     capabilities?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0SecurityContextCapabilities
 
     privileged?: bool
@@ -8181,8 +8585,26 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
     windowsOptions?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0SecurityContextWindowsOptions
 
 
-schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0SecurityContextCapabilities:
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0SecurityContextAppArmorProfile:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec template defaults container set containers items0 security context app armor profile
+
+    Attributes
+    ----------
+    localhostProfile : str, default is Undefined, optional
+        localhost profile
+    $type : str, default is Undefined, required
+        type
     """
+
+
+    localhostProfile?: str
+
+    $type: str
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0SecurityContextCapabilities:
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container set containers items0 security context capabilities
 
     Attributes
@@ -8200,7 +8622,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0SecurityContextSeLinuxOptions:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container set containers items0 security context se linux options
 
     Attributes
@@ -8226,7 +8648,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0SecurityContextSeccompProfile:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container set containers items0 security context seccomp profile
 
     Attributes
@@ -8244,7 +8666,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0SecurityContextWindowsOptions:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container set containers items0 security context windows options
 
     Attributes
@@ -8270,7 +8692,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0StartupProbe:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container set containers items0 startup probe
 
     Attributes
@@ -8320,7 +8742,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0StartupProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container set containers items0 startup probe exec
 
     Attributes
@@ -8334,7 +8756,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0StartupProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container set containers items0 startup probe grpc
 
     Attributes
@@ -8352,7 +8774,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0StartupProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container set containers items0 startup probe HTTP get
 
     Attributes
@@ -8382,7 +8804,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0StartupProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container set containers items0 startup probe HTTP get HTTP headers items0
 
     Attributes
@@ -8400,7 +8822,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0StartupProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container set containers items0 startup probe TCP socket
 
     Attributes
@@ -8418,7 +8840,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0VolumeDevicesItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container set containers items0 volume devices items0
 
     Attributes
@@ -8436,7 +8858,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetContainersItems0VolumeMountsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container set containers items0 volume mounts items0
 
     Attributes
@@ -8449,6 +8871,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
         name
     readOnly : bool, default is Undefined, optional
         read only
+    recursiveReadOnly : str, default is Undefined, optional
+        recursive read only
     subPath : str, default is Undefined, optional
         sub path
     subPathExpr : str, default is Undefined, optional
@@ -8464,13 +8888,15 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
 
     readOnly?: bool
 
+    recursiveReadOnly?: str
+
     subPath?: str
 
     subPathExpr?: str
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetRetryStrategy:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container set retry strategy
 
     Attributes
@@ -8488,7 +8914,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSetVolumeMountsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container set volume mounts items0
 
     Attributes
@@ -8501,6 +8927,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
         name
     readOnly : bool, default is Undefined, optional
         read only
+    recursiveReadOnly : str, default is Undefined, optional
+        recursive read only
     subPath : str, default is Undefined, optional
         sub path
     subPathExpr : str, default is Undefined, optional
@@ -8516,13 +8944,15 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSet
 
     readOnly?: bool
 
+    recursiveReadOnly?: str
+
     subPath?: str
 
     subPathExpr?: str
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerStartupProbe:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container startup probe
 
     Attributes
@@ -8572,7 +9002,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSta
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerStartupProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container startup probe exec
 
     Attributes
@@ -8586,7 +9016,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSta
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerStartupProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container startup probe grpc
 
     Attributes
@@ -8604,7 +9034,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSta
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerStartupProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container startup probe HTTP get
 
     Attributes
@@ -8634,7 +9064,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSta
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerStartupProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container startup probe HTTP get HTTP headers items0
 
     Attributes
@@ -8652,7 +9082,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSta
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerStartupProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container startup probe TCP socket
 
     Attributes
@@ -8670,7 +9100,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerSta
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerVolumeDevicesItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container volume devices items0
 
     Attributes
@@ -8688,7 +9118,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerVol
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerVolumeMountsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults container volume mounts items0
 
     Attributes
@@ -8701,6 +9131,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerVol
         name
     readOnly : bool, default is Undefined, optional
         read only
+    recursiveReadOnly : str, default is Undefined, optional
+        recursive read only
     subPath : str, default is Undefined, optional
         sub path
     subPathExpr : str, default is Undefined, optional
@@ -8716,13 +9148,15 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsContainerVol
 
     readOnly?: bool
 
+    recursiveReadOnly?: str
+
     subPath?: str
 
     subPathExpr?: str
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDag:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag
 
     Attributes
@@ -8744,7 +9178,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDag:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0
 
     Attributes
@@ -8810,7 +9244,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0Arguments:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 arguments
 
     Attributes
@@ -8828,7 +9262,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 arguments artifacts items0
 
     Attributes
@@ -8926,7 +9360,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0Archive:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 arguments artifacts items0 archive
 
     Attributes
@@ -8948,7 +9382,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0ArchiveTar:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 arguments artifacts items0 archive tar
 
     Attributes
@@ -8962,7 +9396,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0ArtifactGC:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 arguments artifacts items0 artifact g c
 
     Attributes
@@ -8984,7 +9418,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0ArtifactGCPodMetadata:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 arguments artifacts items0 artifact g c pod metadata
 
     Attributes
@@ -9002,7 +9436,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0Artifactory:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 arguments artifacts items0 artifactory
 
     Attributes
@@ -9024,7 +9458,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0ArtifactoryPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 arguments artifacts items0 artifactory password secret
 
     Attributes
@@ -9040,13 +9474,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0ArtifactoryUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 arguments artifacts items0 artifactory username secret
 
     Attributes
@@ -9062,13 +9496,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0Azure:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 arguments artifacts items0 azure
 
     Attributes
@@ -9098,7 +9532,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0AzureAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 arguments artifacts items0 azure account key secret
 
     Attributes
@@ -9114,13 +9548,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0Gcs:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 arguments artifacts items0 gcs
 
     Attributes
@@ -9142,7 +9576,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0GcsServiceAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 arguments artifacts items0 gcs service account key secret
 
     Attributes
@@ -9158,13 +9592,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0Git:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 arguments artifacts items0 git
 
     Attributes
@@ -9179,6 +9613,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
         fetch
     insecureIgnoreHostKey : bool, default is Undefined, optional
         insecure ignore host key
+    insecureSkipTLS : bool, default is Undefined, optional
+        insecure skip TLS
     passwordSecret : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0GitPasswordSecret, default is Undefined, optional
         password secret
     repo : str, default is Undefined, required
@@ -9204,6 +9640,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
     insecureIgnoreHostKey?: bool
 
+    insecureSkipTLS?: bool
+
     passwordSecret?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0GitPasswordSecret
 
     repo: str
@@ -9218,7 +9656,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0GitPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 arguments artifacts items0 git password secret
 
     Attributes
@@ -9234,13 +9672,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0GitSSHPrivateKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 arguments artifacts items0 git SSH private key secret
 
     Attributes
@@ -9256,13 +9694,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0GitUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 arguments artifacts items0 git username secret
 
     Attributes
@@ -9278,13 +9716,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0HTTP:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 arguments artifacts items0 HTTP
 
     Attributes
@@ -9306,7 +9744,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0HTTPAuth:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 arguments artifacts items0 HTTP auth
 
     Attributes
@@ -9328,7 +9766,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0HTTPAuthBasicAuth:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 arguments artifacts items0 HTTP auth basic auth
 
     Attributes
@@ -9346,7 +9784,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0HTTPAuthBasicAuthPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 arguments artifacts items0 HTTP auth basic auth password secret
 
     Attributes
@@ -9362,13 +9800,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0HTTPAuthBasicAuthUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 arguments artifacts items0 HTTP auth basic auth username secret
 
     Attributes
@@ -9384,13 +9822,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0HTTPAuthClientCert:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 arguments artifacts items0 HTTP auth client cert
 
     Attributes
@@ -9408,7 +9846,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0HTTPAuthClientCertClientCertSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 arguments artifacts items0 HTTP auth client cert client cert secret
 
     Attributes
@@ -9424,13 +9862,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0HTTPAuthClientCertClientKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 arguments artifacts items0 HTTP auth client cert client key secret
 
     Attributes
@@ -9446,13 +9884,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0HTTPAuthOauth2:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 arguments artifacts items0 HTTP auth oauth2
 
     Attributes
@@ -9482,7 +9920,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0HTTPAuthOauth2ClientIDSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 arguments artifacts items0 HTTP auth oauth2 client ID secret
 
     Attributes
@@ -9498,13 +9936,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0HTTPAuthOauth2ClientSecretSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 arguments artifacts items0 HTTP auth oauth2 client secret secret
 
     Attributes
@@ -9520,13 +9958,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0HTTPAuthOauth2EndpointParamsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 arguments artifacts items0 HTTP auth oauth2 endpoint params items0
 
     Attributes
@@ -9544,7 +9982,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0HTTPAuthOauth2TokenURLSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 arguments artifacts items0 HTTP auth oauth2 token URL secret
 
     Attributes
@@ -9560,13 +9998,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0HTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 arguments artifacts items0 HTTP headers items0
 
     Attributes
@@ -9584,13 +10022,15 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0Hdfs:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 arguments artifacts items0 hdfs
 
     Attributes
     ----------
     addresses : [str], default is Undefined, optional
         addresses
+    dataTransferProtection : str, default is Undefined, optional
+        data transfer protection
     force : bool, default is Undefined, optional
         force
     hdfsUser : str, default is Undefined, optional
@@ -9614,6 +10054,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
     addresses?: [str]
 
+    dataTransferProtection?: str
+
     force?: bool
 
     hdfsUser?: str
@@ -9634,7 +10076,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0HdfsKrbCCacheSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 arguments artifacts items0 hdfs krb c cache secret
 
     Attributes
@@ -9650,13 +10092,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0HdfsKrbConfigConfigMap:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 arguments artifacts items0 hdfs krb config config map
 
     Attributes
@@ -9672,13 +10114,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0HdfsKrbKeytabSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 arguments artifacts items0 hdfs krb keytab secret
 
     Attributes
@@ -9694,13 +10136,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0Oss:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 arguments artifacts items0 oss
 
     Attributes
@@ -9746,7 +10188,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0OssAccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 arguments artifacts items0 oss access key secret
 
     Attributes
@@ -9762,13 +10204,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0OssLifecycleRule:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 arguments artifacts items0 oss lifecycle rule
 
     Attributes
@@ -9786,7 +10228,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0OssSecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 arguments artifacts items0 oss secret key secret
 
     Attributes
@@ -9802,13 +10244,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0Raw:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 arguments artifacts items0 raw
 
     Attributes
@@ -9822,7 +10264,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0S3:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 arguments artifacts items0 s3
 
     Attributes
@@ -9849,6 +10291,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
         role a r n
     secretKeySecret : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0S3SecretKeySecret, default is Undefined, optional
         secret key secret
+    sessionTokenSecret : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0S3SessionTokenSecret, default is Undefined, optional
+        session token secret
     useSDKCreds : bool, default is Undefined, optional
         use s d k creds
     """
@@ -9876,11 +10320,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
     secretKeySecret?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0S3SecretKeySecret
 
+    sessionTokenSecret?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0S3SessionTokenSecret
+
     useSDKCreds?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0S3AccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 arguments artifacts items0 s3 access key secret
 
     Attributes
@@ -9896,13 +10342,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0S3CaSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 arguments artifacts items0 s3 ca secret
 
     Attributes
@@ -9918,13 +10364,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0S3CreateBucketIfNotPresent:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 arguments artifacts items0 s3 create bucket if not present
 
     Attributes
@@ -9938,7 +10384,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0S3EncryptionOptions:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 arguments artifacts items0 s3 encryption options
 
     Attributes
@@ -9964,7 +10410,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0S3EncryptionOptionsServerSideCustomerKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 arguments artifacts items0 s3 encryption options server side customer key secret
 
     Attributes
@@ -9980,13 +10426,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0S3SecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 arguments artifacts items0 s3 secret key secret
 
     Attributes
@@ -10002,13 +10448,35 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
+
+    optional?: bool
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0S3SessionTokenSecret:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 arguments artifacts items0 s3 session token secret
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ArgumentsParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 arguments parameters items0
 
     Attributes
@@ -10046,7 +10514,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ArgumentsParametersItems0ValueFrom:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 arguments parameters items0 value from
 
     Attributes
@@ -10092,7 +10560,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ArgumentsParametersItems0ValueFromConfigMapKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 arguments parameters items0 value from config map key ref
 
     Attributes
@@ -10108,13 +10576,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0ContinueOn:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 continue on
 
     Attributes
@@ -10132,7 +10600,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnon:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 hooks anon
 
     Attributes
@@ -10158,7 +10626,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArguments:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 hooks anon arguments
 
     Attributes
@@ -10176,7 +10644,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 hooks anon arguments artifacts items0
 
     Attributes
@@ -10274,7 +10742,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0Archive:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 hooks anon arguments artifacts items0 archive
 
     Attributes
@@ -10296,7 +10764,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0ArchiveTar:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 hooks anon arguments artifacts items0 archive tar
 
     Attributes
@@ -10310,7 +10778,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0ArtifactGC:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 hooks anon arguments artifacts items0 artifact g c
 
     Attributes
@@ -10332,7 +10800,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0ArtifactGCPodMetadata:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 hooks anon arguments artifacts items0 artifact g c pod metadata
 
     Attributes
@@ -10350,7 +10818,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0Artifactory:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 hooks anon arguments artifacts items0 artifactory
 
     Attributes
@@ -10372,7 +10840,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0ArtifactoryPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 hooks anon arguments artifacts items0 artifactory password secret
 
     Attributes
@@ -10388,13 +10856,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0ArtifactoryUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 hooks anon arguments artifacts items0 artifactory username secret
 
     Attributes
@@ -10410,13 +10878,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0Azure:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 hooks anon arguments artifacts items0 azure
 
     Attributes
@@ -10446,7 +10914,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0AzureAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 hooks anon arguments artifacts items0 azure account key secret
 
     Attributes
@@ -10462,13 +10930,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0Gcs:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 hooks anon arguments artifacts items0 gcs
 
     Attributes
@@ -10490,7 +10958,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0GcsServiceAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 hooks anon arguments artifacts items0 gcs service account key secret
 
     Attributes
@@ -10506,13 +10974,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0Git:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 hooks anon arguments artifacts items0 git
 
     Attributes
@@ -10527,6 +10995,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
         fetch
     insecureIgnoreHostKey : bool, default is Undefined, optional
         insecure ignore host key
+    insecureSkipTLS : bool, default is Undefined, optional
+        insecure skip TLS
     passwordSecret : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0GitPasswordSecret, default is Undefined, optional
         password secret
     repo : str, default is Undefined, required
@@ -10552,6 +11022,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
     insecureIgnoreHostKey?: bool
 
+    insecureSkipTLS?: bool
+
     passwordSecret?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0GitPasswordSecret
 
     repo: str
@@ -10566,7 +11038,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0GitPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 hooks anon arguments artifacts items0 git password secret
 
     Attributes
@@ -10582,13 +11054,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0GitSSHPrivateKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 hooks anon arguments artifacts items0 git SSH private key secret
 
     Attributes
@@ -10604,13 +11076,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0GitUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 hooks anon arguments artifacts items0 git username secret
 
     Attributes
@@ -10626,13 +11098,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0HTTP:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 hooks anon arguments artifacts items0 HTTP
 
     Attributes
@@ -10654,7 +11126,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0HTTPAuth:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 hooks anon arguments artifacts items0 HTTP auth
 
     Attributes
@@ -10676,7 +11148,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0HTTPAuthBasicAuth:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 hooks anon arguments artifacts items0 HTTP auth basic auth
 
     Attributes
@@ -10694,7 +11166,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0HTTPAuthBasicAuthPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 hooks anon arguments artifacts items0 HTTP auth basic auth password secret
 
     Attributes
@@ -10710,13 +11182,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0HTTPAuthBasicAuthUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 hooks anon arguments artifacts items0 HTTP auth basic auth username secret
 
     Attributes
@@ -10732,13 +11204,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0HTTPAuthClientCert:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 hooks anon arguments artifacts items0 HTTP auth client cert
 
     Attributes
@@ -10756,7 +11228,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0HTTPAuthClientCertClientCertSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 hooks anon arguments artifacts items0 HTTP auth client cert client cert secret
 
     Attributes
@@ -10772,13 +11244,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0HTTPAuthClientCertClientKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 hooks anon arguments artifacts items0 HTTP auth client cert client key secret
 
     Attributes
@@ -10794,13 +11266,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0HTTPAuthOauth2:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 hooks anon arguments artifacts items0 HTTP auth oauth2
 
     Attributes
@@ -10830,7 +11302,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0HTTPAuthOauth2ClientIDSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 hooks anon arguments artifacts items0 HTTP auth oauth2 client ID secret
 
     Attributes
@@ -10846,13 +11318,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0HTTPAuthOauth2ClientSecretSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 hooks anon arguments artifacts items0 HTTP auth oauth2 client secret secret
 
     Attributes
@@ -10868,13 +11340,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0HTTPAuthOauth2EndpointParamsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 hooks anon arguments artifacts items0 HTTP auth oauth2 endpoint params items0
 
     Attributes
@@ -10892,7 +11364,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0HTTPAuthOauth2TokenURLSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 hooks anon arguments artifacts items0 HTTP auth oauth2 token URL secret
 
     Attributes
@@ -10908,13 +11380,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0HTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 hooks anon arguments artifacts items0 HTTP headers items0
 
     Attributes
@@ -10932,13 +11404,15 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0Hdfs:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 hooks anon arguments artifacts items0 hdfs
 
     Attributes
     ----------
     addresses : [str], default is Undefined, optional
         addresses
+    dataTransferProtection : str, default is Undefined, optional
+        data transfer protection
     force : bool, default is Undefined, optional
         force
     hdfsUser : str, default is Undefined, optional
@@ -10962,6 +11436,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
     addresses?: [str]
 
+    dataTransferProtection?: str
+
     force?: bool
 
     hdfsUser?: str
@@ -10982,7 +11458,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0HdfsKrbCCacheSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 hooks anon arguments artifacts items0 hdfs krb c cache secret
 
     Attributes
@@ -10998,13 +11474,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0HdfsKrbConfigConfigMap:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 hooks anon arguments artifacts items0 hdfs krb config config map
 
     Attributes
@@ -11020,13 +11496,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0HdfsKrbKeytabSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 hooks anon arguments artifacts items0 hdfs krb keytab secret
 
     Attributes
@@ -11042,13 +11518,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0Oss:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 hooks anon arguments artifacts items0 oss
 
     Attributes
@@ -11094,7 +11570,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0OssAccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 hooks anon arguments artifacts items0 oss access key secret
 
     Attributes
@@ -11110,13 +11586,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0OssLifecycleRule:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 hooks anon arguments artifacts items0 oss lifecycle rule
 
     Attributes
@@ -11134,7 +11610,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0OssSecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 hooks anon arguments artifacts items0 oss secret key secret
 
     Attributes
@@ -11150,13 +11626,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0Raw:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 hooks anon arguments artifacts items0 raw
 
     Attributes
@@ -11170,7 +11646,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0S3:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 hooks anon arguments artifacts items0 s3
 
     Attributes
@@ -11197,6 +11673,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
         role a r n
     secretKeySecret : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0S3SecretKeySecret, default is Undefined, optional
         secret key secret
+    sessionTokenSecret : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0S3SessionTokenSecret, default is Undefined, optional
+        session token secret
     useSDKCreds : bool, default is Undefined, optional
         use s d k creds
     """
@@ -11224,11 +11702,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
     secretKeySecret?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0S3SecretKeySecret
 
+    sessionTokenSecret?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0S3SessionTokenSecret
+
     useSDKCreds?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0S3AccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 hooks anon arguments artifacts items0 s3 access key secret
 
     Attributes
@@ -11244,13 +11724,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0S3CaSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 hooks anon arguments artifacts items0 s3 ca secret
 
     Attributes
@@ -11266,13 +11746,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0S3CreateBucketIfNotPresent:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 hooks anon arguments artifacts items0 s3 create bucket if not present
 
     Attributes
@@ -11286,7 +11766,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0S3EncryptionOptions:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 hooks anon arguments artifacts items0 s3 encryption options
 
     Attributes
@@ -11312,7 +11792,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0S3EncryptionOptionsServerSideCustomerKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 hooks anon arguments artifacts items0 s3 encryption options server side customer key secret
 
     Attributes
@@ -11328,13 +11808,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0S3SecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 hooks anon arguments artifacts items0 s3 secret key secret
 
     Attributes
@@ -11350,13 +11830,35 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
+
+    optional?: bool
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0S3SessionTokenSecret:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 hooks anon arguments artifacts items0 s3 session token secret
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 hooks anon arguments parameters items0
 
     Attributes
@@ -11394,7 +11896,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsParametersItems0ValueFrom:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 hooks anon arguments parameters items0 value from
 
     Attributes
@@ -11440,7 +11942,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsParametersItems0ValueFromConfigMapKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 hooks anon arguments parameters items0 value from config map key ref
 
     Attributes
@@ -11456,13 +11958,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0HooksAnonTemplateRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 hooks anon template ref
 
     Attributes
@@ -11484,7 +11986,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0TemplateRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 template ref
 
     Attributes
@@ -11506,7 +12008,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItems0WithSequence:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults dag tasks items0 with sequence
 
     Attributes
@@ -11532,7 +12034,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDagTasksItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsData:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults data
 
     Attributes
@@ -11550,7 +12052,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsData:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSource:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults data source
 
     Attributes
@@ -11564,7 +12066,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSource:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceArtifactPaths:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults data source artifact paths
 
     Attributes
@@ -11662,7 +12164,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceAr
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceArtifactPathsArchive:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults data source artifact paths archive
 
     Attributes
@@ -11684,7 +12186,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceAr
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceArtifactPathsArchiveTar:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults data source artifact paths archive tar
 
     Attributes
@@ -11698,7 +12200,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceAr
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceArtifactPathsArtifactGC:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults data source artifact paths artifact g c
 
     Attributes
@@ -11720,7 +12222,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceAr
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceArtifactPathsArtifactGCPodMetadata:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults data source artifact paths artifact g c pod metadata
 
     Attributes
@@ -11738,7 +12240,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceAr
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceArtifactPathsArtifactory:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults data source artifact paths artifactory
 
     Attributes
@@ -11760,7 +12262,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceAr
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceArtifactPathsArtifactoryPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults data source artifact paths artifactory password secret
 
     Attributes
@@ -11776,13 +12278,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceAr
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceArtifactPathsArtifactoryUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults data source artifact paths artifactory username secret
 
     Attributes
@@ -11798,13 +12300,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceAr
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceArtifactPathsAzure:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults data source artifact paths azure
 
     Attributes
@@ -11834,7 +12336,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceAr
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceArtifactPathsAzureAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults data source artifact paths azure account key secret
 
     Attributes
@@ -11850,13 +12352,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceAr
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceArtifactPathsGcs:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults data source artifact paths gcs
 
     Attributes
@@ -11878,7 +12380,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceAr
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceArtifactPathsGcsServiceAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults data source artifact paths gcs service account key secret
 
     Attributes
@@ -11894,13 +12396,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceAr
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceArtifactPathsGit:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults data source artifact paths git
 
     Attributes
@@ -11915,6 +12417,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceAr
         fetch
     insecureIgnoreHostKey : bool, default is Undefined, optional
         insecure ignore host key
+    insecureSkipTLS : bool, default is Undefined, optional
+        insecure skip TLS
     passwordSecret : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceArtifactPathsGitPasswordSecret, default is Undefined, optional
         password secret
     repo : str, default is Undefined, required
@@ -11940,6 +12444,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceAr
 
     insecureIgnoreHostKey?: bool
 
+    insecureSkipTLS?: bool
+
     passwordSecret?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceArtifactPathsGitPasswordSecret
 
     repo: str
@@ -11954,7 +12460,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceAr
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceArtifactPathsGitPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults data source artifact paths git password secret
 
     Attributes
@@ -11970,13 +12476,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceAr
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceArtifactPathsGitSSHPrivateKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults data source artifact paths git SSH private key secret
 
     Attributes
@@ -11992,13 +12498,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceAr
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceArtifactPathsGitUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults data source artifact paths git username secret
 
     Attributes
@@ -12014,13 +12520,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceAr
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceArtifactPathsHTTP:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults data source artifact paths HTTP
 
     Attributes
@@ -12042,7 +12548,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceAr
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceArtifactPathsHTTPAuth:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults data source artifact paths HTTP auth
 
     Attributes
@@ -12064,7 +12570,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceAr
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceArtifactPathsHTTPAuthBasicAuth:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults data source artifact paths HTTP auth basic auth
 
     Attributes
@@ -12082,7 +12588,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceAr
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceArtifactPathsHTTPAuthBasicAuthPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults data source artifact paths HTTP auth basic auth password secret
 
     Attributes
@@ -12098,13 +12604,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceAr
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceArtifactPathsHTTPAuthBasicAuthUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults data source artifact paths HTTP auth basic auth username secret
 
     Attributes
@@ -12120,13 +12626,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceAr
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceArtifactPathsHTTPAuthClientCert:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults data source artifact paths HTTP auth client cert
 
     Attributes
@@ -12144,7 +12650,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceAr
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceArtifactPathsHTTPAuthClientCertClientCertSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults data source artifact paths HTTP auth client cert client cert secret
 
     Attributes
@@ -12160,13 +12666,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceAr
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceArtifactPathsHTTPAuthClientCertClientKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults data source artifact paths HTTP auth client cert client key secret
 
     Attributes
@@ -12182,13 +12688,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceAr
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceArtifactPathsHTTPAuthOauth2:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults data source artifact paths HTTP auth oauth2
 
     Attributes
@@ -12218,7 +12724,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceAr
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceArtifactPathsHTTPAuthOauth2ClientIDSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults data source artifact paths HTTP auth oauth2 client ID secret
 
     Attributes
@@ -12234,13 +12740,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceAr
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceArtifactPathsHTTPAuthOauth2ClientSecretSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults data source artifact paths HTTP auth oauth2 client secret secret
 
     Attributes
@@ -12256,13 +12762,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceAr
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceArtifactPathsHTTPAuthOauth2EndpointParamsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults data source artifact paths HTTP auth oauth2 endpoint params items0
 
     Attributes
@@ -12280,7 +12786,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceAr
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceArtifactPathsHTTPAuthOauth2TokenURLSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults data source artifact paths HTTP auth oauth2 token URL secret
 
     Attributes
@@ -12296,13 +12802,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceAr
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceArtifactPathsHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults data source artifact paths HTTP headers items0
 
     Attributes
@@ -12320,13 +12826,15 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceAr
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceArtifactPathsHdfs:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults data source artifact paths hdfs
 
     Attributes
     ----------
     addresses : [str], default is Undefined, optional
         addresses
+    dataTransferProtection : str, default is Undefined, optional
+        data transfer protection
     force : bool, default is Undefined, optional
         force
     hdfsUser : str, default is Undefined, optional
@@ -12350,6 +12858,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceAr
 
     addresses?: [str]
 
+    dataTransferProtection?: str
+
     force?: bool
 
     hdfsUser?: str
@@ -12370,7 +12880,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceAr
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceArtifactPathsHdfsKrbCCacheSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults data source artifact paths hdfs krb c cache secret
 
     Attributes
@@ -12386,13 +12896,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceAr
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceArtifactPathsHdfsKrbConfigConfigMap:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults data source artifact paths hdfs krb config config map
 
     Attributes
@@ -12408,13 +12918,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceAr
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceArtifactPathsHdfsKrbKeytabSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults data source artifact paths hdfs krb keytab secret
 
     Attributes
@@ -12430,13 +12940,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceAr
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceArtifactPathsOss:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults data source artifact paths oss
 
     Attributes
@@ -12482,7 +12992,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceAr
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceArtifactPathsOssAccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults data source artifact paths oss access key secret
 
     Attributes
@@ -12498,13 +13008,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceAr
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceArtifactPathsOssLifecycleRule:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults data source artifact paths oss lifecycle rule
 
     Attributes
@@ -12522,7 +13032,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceAr
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceArtifactPathsOssSecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults data source artifact paths oss secret key secret
 
     Attributes
@@ -12538,13 +13048,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceAr
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceArtifactPathsRaw:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults data source artifact paths raw
 
     Attributes
@@ -12558,7 +13068,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceAr
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceArtifactPathsS3:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults data source artifact paths s3
 
     Attributes
@@ -12585,6 +13095,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceAr
         role a r n
     secretKeySecret : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceArtifactPathsS3SecretKeySecret, default is Undefined, optional
         secret key secret
+    sessionTokenSecret : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceArtifactPathsS3SessionTokenSecret, default is Undefined, optional
+        session token secret
     useSDKCreds : bool, default is Undefined, optional
         use s d k creds
     """
@@ -12612,11 +13124,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceAr
 
     secretKeySecret?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceArtifactPathsS3SecretKeySecret
 
+    sessionTokenSecret?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceArtifactPathsS3SessionTokenSecret
+
     useSDKCreds?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceArtifactPathsS3AccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults data source artifact paths s3 access key secret
 
     Attributes
@@ -12632,13 +13146,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceAr
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceArtifactPathsS3CaSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults data source artifact paths s3 ca secret
 
     Attributes
@@ -12654,13 +13168,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceAr
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceArtifactPathsS3CreateBucketIfNotPresent:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults data source artifact paths s3 create bucket if not present
 
     Attributes
@@ -12674,7 +13188,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceAr
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceArtifactPathsS3EncryptionOptions:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults data source artifact paths s3 encryption options
 
     Attributes
@@ -12700,7 +13214,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceAr
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceArtifactPathsS3EncryptionOptionsServerSideCustomerKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults data source artifact paths s3 encryption options server side customer key secret
 
     Attributes
@@ -12716,13 +13230,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceAr
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceArtifactPathsS3SecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults data source artifact paths s3 secret key secret
 
     Attributes
@@ -12738,13 +13252,35 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceAr
 
     key: str
 
-    name?: str
+    name?: str = ""
+
+    optional?: bool
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataSourceArtifactPathsS3SessionTokenSecret:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec template defaults data source artifact paths s3 session token secret
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataTransformationItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults data transformation items0
 
     Attributes
@@ -12758,7 +13294,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsDataTransfor
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsExecutor:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults executor
 
     Attributes
@@ -12772,7 +13308,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsExecutor:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsHTTP:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults HTTP
 
     Attributes
@@ -12814,7 +13350,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsHTTP:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsHTTPBodyFrom:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults HTTP body from
 
     Attributes
@@ -12828,7 +13364,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsHTTPBodyFrom
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults HTTP headers items0
 
     Attributes
@@ -12850,7 +13386,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsHTTPHeadersI
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsHTTPHeadersItems0ValueFrom:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults HTTP headers items0 value from
 
     Attributes
@@ -12864,7 +13400,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsHTTPHeadersI
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsHTTPHeadersItems0ValueFromSecretKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults HTTP headers items0 value from secret key ref
 
     Attributes
@@ -12880,31 +13416,31 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsHTTPHeadersI
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsHostAliasesItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults host aliases items0
 
     Attributes
     ----------
     hostnames : [str], default is Undefined, optional
         hostnames
-    ip : str, default is Undefined, optional
+    ip : str, default is Undefined, required
         ip
     """
 
 
     hostnames?: [str]
 
-    ip?: str
+    ip: str
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults init containers items0
 
     Attributes
@@ -12933,8 +13469,12 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContaine
         ports
     readinessProbe : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0ReadinessProbe, default is Undefined, optional
         readiness probe
+    resizePolicy : [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0ResizePolicyItems0], default is Undefined, optional
+        resize policy
     resources : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0Resources, default is Undefined, optional
         resources
+    restartPolicy : str, default is Undefined, optional
+        restart policy
     securityContext : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0SecurityContext, default is Undefined, optional
         security context
     startupProbe : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0StartupProbe, default is Undefined, optional
@@ -12982,7 +13522,11 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContaine
 
     readinessProbe?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0ReadinessProbe
 
+    resizePolicy?: [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0ResizePolicyItems0]
+
     resources?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0Resources
+
+    restartPolicy?: str
 
     securityContext?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0SecurityContext
 
@@ -13006,7 +13550,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContaine
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0EnvFromItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults init containers items0 env from items0
 
     Attributes
@@ -13028,7 +13572,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContaine
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0EnvFromItems0ConfigMapRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults init containers items0 env from items0 config map ref
 
     Attributes
@@ -13040,13 +13584,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContaine
     """
 
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0EnvFromItems0SecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults init containers items0 env from items0 secret ref
 
     Attributes
@@ -13058,13 +13602,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContaine
     """
 
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0EnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults init containers items0 env items0
 
     Attributes
@@ -13086,7 +13630,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContaine
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0EnvItems0ValueFrom:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults init containers items0 env items0 value from
 
     Attributes
@@ -13112,7 +13656,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContaine
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0EnvItems0ValueFromConfigMapKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults init containers items0 env items0 value from config map key ref
 
     Attributes
@@ -13128,13 +13672,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContaine
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0EnvItems0ValueFromFieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults init containers items0 env items0 value from field ref
 
     Attributes
@@ -13152,7 +13696,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContaine
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0EnvItems0ValueFromResourceFieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults init containers items0 env items0 value from resource field ref
 
     Attributes
@@ -13178,7 +13722,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContaine
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0EnvItems0ValueFromSecretKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults init containers items0 env items0 value from secret key ref
 
     Attributes
@@ -13194,13 +13738,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContaine
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0Lifecycle:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults init containers items0 lifecycle
 
     Attributes
@@ -13218,7 +13762,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContaine
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0LifecyclePostStart:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults init containers items0 lifecycle post start
 
     Attributes
@@ -13227,6 +13771,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContaine
         exec
     httpGet : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0LifecyclePostStartHTTPGet, default is Undefined, optional
         http get
+    sleep : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0LifecyclePostStartSleep, default is Undefined, optional
+        sleep
     tcpSocket : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0LifecyclePostStartTCPSocket, default is Undefined, optional
         tcp socket
     """
@@ -13236,11 +13782,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContaine
 
     httpGet?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0LifecyclePostStartHTTPGet
 
+    sleep?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0LifecyclePostStartSleep
+
     tcpSocket?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0LifecyclePostStartTCPSocket
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0LifecyclePostStartExec:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults init containers items0 lifecycle post start exec
 
     Attributes
@@ -13254,7 +13802,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContaine
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0LifecyclePostStartHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults init containers items0 lifecycle post start HTTP get
 
     Attributes
@@ -13284,7 +13832,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContaine
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0LifecyclePostStartHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults init containers items0 lifecycle post start HTTP get HTTP headers items0
 
     Attributes
@@ -13301,8 +13849,22 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContaine
     value: str
 
 
-schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0LifecyclePostStartTCPSocket:
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0LifecyclePostStartSleep:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec template defaults init containers items0 lifecycle post start sleep
+
+    Attributes
+    ----------
+    seconds : int, default is Undefined, required
+        seconds
     """
+
+
+    seconds: int
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0LifecyclePostStartTCPSocket:
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults init containers items0 lifecycle post start TCP socket
 
     Attributes
@@ -13320,7 +13882,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContaine
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0LifecyclePreStop:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults init containers items0 lifecycle pre stop
 
     Attributes
@@ -13329,6 +13891,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContaine
         exec
     httpGet : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0LifecyclePreStopHTTPGet, default is Undefined, optional
         http get
+    sleep : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0LifecyclePreStopSleep, default is Undefined, optional
+        sleep
     tcpSocket : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0LifecyclePreStopTCPSocket, default is Undefined, optional
         tcp socket
     """
@@ -13338,11 +13902,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContaine
 
     httpGet?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0LifecyclePreStopHTTPGet
 
+    sleep?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0LifecyclePreStopSleep
+
     tcpSocket?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0LifecyclePreStopTCPSocket
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0LifecyclePreStopExec:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults init containers items0 lifecycle pre stop exec
 
     Attributes
@@ -13356,7 +13922,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContaine
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0LifecyclePreStopHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults init containers items0 lifecycle pre stop HTTP get
 
     Attributes
@@ -13386,7 +13952,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContaine
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0LifecyclePreStopHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults init containers items0 lifecycle pre stop HTTP get HTTP headers items0
 
     Attributes
@@ -13403,8 +13969,22 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContaine
     value: str
 
 
-schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0LifecyclePreStopTCPSocket:
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0LifecyclePreStopSleep:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec template defaults init containers items0 lifecycle pre stop sleep
+
+    Attributes
+    ----------
+    seconds : int, default is Undefined, required
+        seconds
     """
+
+
+    seconds: int
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0LifecyclePreStopTCPSocket:
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults init containers items0 lifecycle pre stop TCP socket
 
     Attributes
@@ -13422,7 +14002,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContaine
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0LivenessProbe:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults init containers items0 liveness probe
 
     Attributes
@@ -13472,7 +14052,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContaine
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0LivenessProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults init containers items0 liveness probe exec
 
     Attributes
@@ -13486,7 +14066,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContaine
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0LivenessProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults init containers items0 liveness probe grpc
 
     Attributes
@@ -13504,7 +14084,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContaine
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0LivenessProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults init containers items0 liveness probe HTTP get
 
     Attributes
@@ -13534,7 +14114,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContaine
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0LivenessProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults init containers items0 liveness probe HTTP get HTTP headers items0
 
     Attributes
@@ -13552,7 +14132,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContaine
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0LivenessProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults init containers items0 liveness probe TCP socket
 
     Attributes
@@ -13570,7 +14150,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContaine
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0PortsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults init containers items0 ports items0
 
     Attributes
@@ -13600,7 +14180,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContaine
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0ReadinessProbe:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults init containers items0 readiness probe
 
     Attributes
@@ -13650,7 +14230,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContaine
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0ReadinessProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults init containers items0 readiness probe exec
 
     Attributes
@@ -13664,7 +14244,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContaine
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0ReadinessProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults init containers items0 readiness probe grpc
 
     Attributes
@@ -13682,7 +14262,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContaine
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0ReadinessProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults init containers items0 readiness probe HTTP get
 
     Attributes
@@ -13712,7 +14292,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContaine
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0ReadinessProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults init containers items0 readiness probe HTTP get HTTP headers items0
 
     Attributes
@@ -13730,7 +14310,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContaine
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0ReadinessProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults init containers items0 readiness probe TCP socket
 
     Attributes
@@ -13747,8 +14327,26 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContaine
     port: int | str
 
 
-schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0Resources:
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0ResizePolicyItems0:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec template defaults init containers items0 resize policy items0
+
+    Attributes
+    ----------
+    resourceName : str, default is Undefined, required
+        resource name
+    restartPolicy : str, default is Undefined, required
+        restart policy
     """
+
+
+    resourceName: str
+
+    restartPolicy: str
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0Resources:
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults init containers items0 resources
 
     Attributes
@@ -13770,12 +14368,12 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContaine
 
 
     check:
-        all _, limits in limits {_regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests {_regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0ResourcesClaimsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults init containers items0 resources claims items0
 
     Attributes
@@ -13789,13 +14387,15 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContaine
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0SecurityContext:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults init containers items0 security context
 
     Attributes
     ----------
     allowPrivilegeEscalation : bool, default is Undefined, optional
         allow privilege escalation
+    appArmorProfile : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0SecurityContextAppArmorProfile, default is Undefined, optional
+        app armor profile
     capabilities : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0SecurityContextCapabilities, default is Undefined, optional
         capabilities
     privileged : bool, default is Undefined, optional
@@ -13821,6 +14421,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContaine
 
     allowPrivilegeEscalation?: bool
 
+    appArmorProfile?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0SecurityContextAppArmorProfile
+
     capabilities?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0SecurityContextCapabilities
 
     privileged?: bool
@@ -13842,8 +14444,26 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContaine
     windowsOptions?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0SecurityContextWindowsOptions
 
 
-schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0SecurityContextCapabilities:
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0SecurityContextAppArmorProfile:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec template defaults init containers items0 security context app armor profile
+
+    Attributes
+    ----------
+    localhostProfile : str, default is Undefined, optional
+        localhost profile
+    $type : str, default is Undefined, required
+        type
     """
+
+
+    localhostProfile?: str
+
+    $type: str
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0SecurityContextCapabilities:
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults init containers items0 security context capabilities
 
     Attributes
@@ -13861,7 +14481,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContaine
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0SecurityContextSeLinuxOptions:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults init containers items0 security context se linux options
 
     Attributes
@@ -13887,7 +14507,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContaine
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0SecurityContextSeccompProfile:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults init containers items0 security context seccomp profile
 
     Attributes
@@ -13905,7 +14525,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContaine
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0SecurityContextWindowsOptions:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults init containers items0 security context windows options
 
     Attributes
@@ -13931,7 +14551,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContaine
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0StartupProbe:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults init containers items0 startup probe
 
     Attributes
@@ -13981,7 +14601,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContaine
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0StartupProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults init containers items0 startup probe exec
 
     Attributes
@@ -13995,7 +14615,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContaine
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0StartupProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults init containers items0 startup probe grpc
 
     Attributes
@@ -14013,7 +14633,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContaine
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0StartupProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults init containers items0 startup probe HTTP get
 
     Attributes
@@ -14043,7 +14663,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContaine
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0StartupProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults init containers items0 startup probe HTTP get HTTP headers items0
 
     Attributes
@@ -14061,7 +14681,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContaine
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0StartupProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults init containers items0 startup probe TCP socket
 
     Attributes
@@ -14079,7 +14699,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContaine
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0VolumeDevicesItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults init containers items0 volume devices items0
 
     Attributes
@@ -14097,7 +14717,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContaine
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContainersItems0VolumeMountsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults init containers items0 volume mounts items0
 
     Attributes
@@ -14110,6 +14730,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContaine
         name
     readOnly : bool, default is Undefined, optional
         read only
+    recursiveReadOnly : str, default is Undefined, optional
+        recursive read only
     subPath : str, default is Undefined, optional
         sub path
     subPathExpr : str, default is Undefined, optional
@@ -14125,13 +14747,15 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInitContaine
 
     readOnly?: bool
 
+    recursiveReadOnly?: str
+
     subPath?: str
 
     subPathExpr?: str
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputs:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults inputs
 
     Attributes
@@ -14149,7 +14773,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputs:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifactsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults inputs artifacts items0
 
     Attributes
@@ -14247,7 +14871,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifa
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifactsItems0Archive:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults inputs artifacts items0 archive
 
     Attributes
@@ -14269,7 +14893,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifa
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifactsItems0ArchiveTar:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults inputs artifacts items0 archive tar
 
     Attributes
@@ -14283,7 +14907,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifa
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifactsItems0ArtifactGC:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults inputs artifacts items0 artifact g c
 
     Attributes
@@ -14305,7 +14929,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifa
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifactsItems0ArtifactGCPodMetadata:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults inputs artifacts items0 artifact g c pod metadata
 
     Attributes
@@ -14323,7 +14947,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifa
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifactsItems0Artifactory:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults inputs artifacts items0 artifactory
 
     Attributes
@@ -14345,7 +14969,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifa
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifactsItems0ArtifactoryPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults inputs artifacts items0 artifactory password secret
 
     Attributes
@@ -14361,13 +14985,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifactsItems0ArtifactoryUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults inputs artifacts items0 artifactory username secret
 
     Attributes
@@ -14383,13 +15007,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifactsItems0Azure:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults inputs artifacts items0 azure
 
     Attributes
@@ -14419,7 +15043,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifa
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifactsItems0AzureAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults inputs artifacts items0 azure account key secret
 
     Attributes
@@ -14435,13 +15059,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifactsItems0Gcs:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults inputs artifacts items0 gcs
 
     Attributes
@@ -14463,7 +15087,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifa
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifactsItems0GcsServiceAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults inputs artifacts items0 gcs service account key secret
 
     Attributes
@@ -14479,13 +15103,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifactsItems0Git:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults inputs artifacts items0 git
 
     Attributes
@@ -14500,6 +15124,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifa
         fetch
     insecureIgnoreHostKey : bool, default is Undefined, optional
         insecure ignore host key
+    insecureSkipTLS : bool, default is Undefined, optional
+        insecure skip TLS
     passwordSecret : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifactsItems0GitPasswordSecret, default is Undefined, optional
         password secret
     repo : str, default is Undefined, required
@@ -14525,6 +15151,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifa
 
     insecureIgnoreHostKey?: bool
 
+    insecureSkipTLS?: bool
+
     passwordSecret?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifactsItems0GitPasswordSecret
 
     repo: str
@@ -14539,7 +15167,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifa
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifactsItems0GitPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults inputs artifacts items0 git password secret
 
     Attributes
@@ -14555,13 +15183,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifactsItems0GitSSHPrivateKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults inputs artifacts items0 git SSH private key secret
 
     Attributes
@@ -14577,13 +15205,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifactsItems0GitUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults inputs artifacts items0 git username secret
 
     Attributes
@@ -14599,13 +15227,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifactsItems0HTTP:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults inputs artifacts items0 HTTP
 
     Attributes
@@ -14627,7 +15255,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifa
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifactsItems0HTTPAuth:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults inputs artifacts items0 HTTP auth
 
     Attributes
@@ -14649,7 +15277,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifa
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifactsItems0HTTPAuthBasicAuth:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults inputs artifacts items0 HTTP auth basic auth
 
     Attributes
@@ -14667,7 +15295,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifa
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifactsItems0HTTPAuthBasicAuthPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults inputs artifacts items0 HTTP auth basic auth password secret
 
     Attributes
@@ -14683,13 +15311,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifactsItems0HTTPAuthBasicAuthUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults inputs artifacts items0 HTTP auth basic auth username secret
 
     Attributes
@@ -14705,13 +15333,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifactsItems0HTTPAuthClientCert:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults inputs artifacts items0 HTTP auth client cert
 
     Attributes
@@ -14729,7 +15357,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifa
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifactsItems0HTTPAuthClientCertClientCertSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults inputs artifacts items0 HTTP auth client cert client cert secret
 
     Attributes
@@ -14745,13 +15373,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifactsItems0HTTPAuthClientCertClientKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults inputs artifacts items0 HTTP auth client cert client key secret
 
     Attributes
@@ -14767,13 +15395,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifactsItems0HTTPAuthOauth2:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults inputs artifacts items0 HTTP auth oauth2
 
     Attributes
@@ -14803,7 +15431,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifa
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifactsItems0HTTPAuthOauth2ClientIDSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults inputs artifacts items0 HTTP auth oauth2 client ID secret
 
     Attributes
@@ -14819,13 +15447,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifactsItems0HTTPAuthOauth2ClientSecretSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults inputs artifacts items0 HTTP auth oauth2 client secret secret
 
     Attributes
@@ -14841,13 +15469,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifactsItems0HTTPAuthOauth2EndpointParamsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults inputs artifacts items0 HTTP auth oauth2 endpoint params items0
 
     Attributes
@@ -14865,7 +15493,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifa
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifactsItems0HTTPAuthOauth2TokenURLSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults inputs artifacts items0 HTTP auth oauth2 token URL secret
 
     Attributes
@@ -14881,13 +15509,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifactsItems0HTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults inputs artifacts items0 HTTP headers items0
 
     Attributes
@@ -14905,13 +15533,15 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifa
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifactsItems0Hdfs:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults inputs artifacts items0 hdfs
 
     Attributes
     ----------
     addresses : [str], default is Undefined, optional
         addresses
+    dataTransferProtection : str, default is Undefined, optional
+        data transfer protection
     force : bool, default is Undefined, optional
         force
     hdfsUser : str, default is Undefined, optional
@@ -14935,6 +15565,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifa
 
     addresses?: [str]
 
+    dataTransferProtection?: str
+
     force?: bool
 
     hdfsUser?: str
@@ -14955,7 +15587,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifa
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifactsItems0HdfsKrbCCacheSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults inputs artifacts items0 hdfs krb c cache secret
 
     Attributes
@@ -14971,13 +15603,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifactsItems0HdfsKrbConfigConfigMap:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults inputs artifacts items0 hdfs krb config config map
 
     Attributes
@@ -14993,13 +15625,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifactsItems0HdfsKrbKeytabSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults inputs artifacts items0 hdfs krb keytab secret
 
     Attributes
@@ -15015,13 +15647,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifactsItems0Oss:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults inputs artifacts items0 oss
 
     Attributes
@@ -15067,7 +15699,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifa
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifactsItems0OssAccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults inputs artifacts items0 oss access key secret
 
     Attributes
@@ -15083,13 +15715,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifactsItems0OssLifecycleRule:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults inputs artifacts items0 oss lifecycle rule
 
     Attributes
@@ -15107,7 +15739,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifa
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifactsItems0OssSecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults inputs artifacts items0 oss secret key secret
 
     Attributes
@@ -15123,13 +15755,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifactsItems0Raw:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults inputs artifacts items0 raw
 
     Attributes
@@ -15143,7 +15775,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifa
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifactsItems0S3:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults inputs artifacts items0 s3
 
     Attributes
@@ -15170,6 +15802,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifa
         role a r n
     secretKeySecret : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifactsItems0S3SecretKeySecret, default is Undefined, optional
         secret key secret
+    sessionTokenSecret : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifactsItems0S3SessionTokenSecret, default is Undefined, optional
+        session token secret
     useSDKCreds : bool, default is Undefined, optional
         use s d k creds
     """
@@ -15197,11 +15831,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifa
 
     secretKeySecret?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifactsItems0S3SecretKeySecret
 
+    sessionTokenSecret?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifactsItems0S3SessionTokenSecret
+
     useSDKCreds?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifactsItems0S3AccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults inputs artifacts items0 s3 access key secret
 
     Attributes
@@ -15217,13 +15853,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifactsItems0S3CaSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults inputs artifacts items0 s3 ca secret
 
     Attributes
@@ -15239,13 +15875,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifactsItems0S3CreateBucketIfNotPresent:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults inputs artifacts items0 s3 create bucket if not present
 
     Attributes
@@ -15259,7 +15895,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifa
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifactsItems0S3EncryptionOptions:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults inputs artifacts items0 s3 encryption options
 
     Attributes
@@ -15285,7 +15921,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifa
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifactsItems0S3EncryptionOptionsServerSideCustomerKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults inputs artifacts items0 s3 encryption options server side customer key secret
 
     Attributes
@@ -15301,13 +15937,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifactsItems0S3SecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults inputs artifacts items0 s3 secret key secret
 
     Attributes
@@ -15323,13 +15959,35 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
+
+    optional?: bool
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsArtifactsItems0S3SessionTokenSecret:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec template defaults inputs artifacts items0 s3 session token secret
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults inputs parameters items0
 
     Attributes
@@ -15367,7 +16025,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsParame
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsParametersItems0ValueFrom:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults inputs parameters items0 value from
 
     Attributes
@@ -15413,7 +16071,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsParame
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsParametersItems0ValueFromConfigMapKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults inputs parameters items0 value from config map key ref
 
     Attributes
@@ -15429,13 +16087,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsInputsParame
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsMemoize:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults memoize
 
     Attributes
@@ -15457,7 +16115,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsMemoize:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsMemoizeCache:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults memoize cache
 
     Attributes
@@ -15471,7 +16129,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsMemoizeCache
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsMemoizeCacheConfigMap:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults memoize cache config map
 
     Attributes
@@ -15487,13 +16145,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsMemoizeCache
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsMetadata:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults metadata
 
     Attributes
@@ -15511,7 +16169,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsMetadata:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsMetrics:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults metrics
 
     Attributes
@@ -15525,7 +16183,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsMetrics:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsMetricsPrometheusItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults metrics prometheus items0
 
     Attributes
@@ -15563,7 +16221,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsMetricsProme
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsMetricsPrometheusItems0Counter:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults metrics prometheus items0 counter
 
     Attributes
@@ -15577,7 +16235,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsMetricsProme
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsMetricsPrometheusItems0Gauge:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults metrics prometheus items0 gauge
 
     Attributes
@@ -15599,7 +16257,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsMetricsProme
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsMetricsPrometheusItems0Histogram:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults metrics prometheus items0 histogram
 
     Attributes
@@ -15617,7 +16275,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsMetricsProme
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsMetricsPrometheusItems0LabelsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults metrics prometheus items0 labels items0
 
     Attributes
@@ -15635,7 +16293,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsMetricsProme
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputs:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults outputs
 
     Attributes
@@ -15661,7 +16319,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputs:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtifactsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults outputs artifacts items0
 
     Attributes
@@ -15759,7 +16417,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtif
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtifactsItems0Archive:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults outputs artifacts items0 archive
 
     Attributes
@@ -15781,7 +16439,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtif
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtifactsItems0ArchiveTar:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults outputs artifacts items0 archive tar
 
     Attributes
@@ -15795,7 +16453,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtif
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtifactsItems0ArtifactGC:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults outputs artifacts items0 artifact g c
 
     Attributes
@@ -15817,7 +16475,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtif
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtifactsItems0ArtifactGCPodMetadata:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults outputs artifacts items0 artifact g c pod metadata
 
     Attributes
@@ -15835,7 +16493,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtif
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtifactsItems0Artifactory:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults outputs artifacts items0 artifactory
 
     Attributes
@@ -15857,7 +16515,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtif
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtifactsItems0ArtifactoryPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults outputs artifacts items0 artifactory password secret
 
     Attributes
@@ -15873,13 +16531,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtifactsItems0ArtifactoryUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults outputs artifacts items0 artifactory username secret
 
     Attributes
@@ -15895,13 +16553,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtifactsItems0Azure:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults outputs artifacts items0 azure
 
     Attributes
@@ -15931,7 +16589,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtif
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtifactsItems0AzureAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults outputs artifacts items0 azure account key secret
 
     Attributes
@@ -15947,13 +16605,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtifactsItems0Gcs:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults outputs artifacts items0 gcs
 
     Attributes
@@ -15975,7 +16633,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtif
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtifactsItems0GcsServiceAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults outputs artifacts items0 gcs service account key secret
 
     Attributes
@@ -15991,13 +16649,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtifactsItems0Git:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults outputs artifacts items0 git
 
     Attributes
@@ -16012,6 +16670,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtif
         fetch
     insecureIgnoreHostKey : bool, default is Undefined, optional
         insecure ignore host key
+    insecureSkipTLS : bool, default is Undefined, optional
+        insecure skip TLS
     passwordSecret : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtifactsItems0GitPasswordSecret, default is Undefined, optional
         password secret
     repo : str, default is Undefined, required
@@ -16037,6 +16697,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtif
 
     insecureIgnoreHostKey?: bool
 
+    insecureSkipTLS?: bool
+
     passwordSecret?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtifactsItems0GitPasswordSecret
 
     repo: str
@@ -16051,7 +16713,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtif
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtifactsItems0GitPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults outputs artifacts items0 git password secret
 
     Attributes
@@ -16067,13 +16729,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtifactsItems0GitSSHPrivateKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults outputs artifacts items0 git SSH private key secret
 
     Attributes
@@ -16089,13 +16751,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtifactsItems0GitUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults outputs artifacts items0 git username secret
 
     Attributes
@@ -16111,13 +16773,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtifactsItems0HTTP:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults outputs artifacts items0 HTTP
 
     Attributes
@@ -16139,7 +16801,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtif
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtifactsItems0HTTPAuth:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults outputs artifacts items0 HTTP auth
 
     Attributes
@@ -16161,7 +16823,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtif
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtifactsItems0HTTPAuthBasicAuth:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults outputs artifacts items0 HTTP auth basic auth
 
     Attributes
@@ -16179,7 +16841,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtif
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtifactsItems0HTTPAuthBasicAuthPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults outputs artifacts items0 HTTP auth basic auth password secret
 
     Attributes
@@ -16195,13 +16857,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtifactsItems0HTTPAuthBasicAuthUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults outputs artifacts items0 HTTP auth basic auth username secret
 
     Attributes
@@ -16217,13 +16879,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtifactsItems0HTTPAuthClientCert:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults outputs artifacts items0 HTTP auth client cert
 
     Attributes
@@ -16241,7 +16903,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtif
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtifactsItems0HTTPAuthClientCertClientCertSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults outputs artifacts items0 HTTP auth client cert client cert secret
 
     Attributes
@@ -16257,13 +16919,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtifactsItems0HTTPAuthClientCertClientKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults outputs artifacts items0 HTTP auth client cert client key secret
 
     Attributes
@@ -16279,13 +16941,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtifactsItems0HTTPAuthOauth2:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults outputs artifacts items0 HTTP auth oauth2
 
     Attributes
@@ -16315,7 +16977,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtif
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtifactsItems0HTTPAuthOauth2ClientIDSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults outputs artifacts items0 HTTP auth oauth2 client ID secret
 
     Attributes
@@ -16331,13 +16993,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtifactsItems0HTTPAuthOauth2ClientSecretSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults outputs artifacts items0 HTTP auth oauth2 client secret secret
 
     Attributes
@@ -16353,13 +17015,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtifactsItems0HTTPAuthOauth2EndpointParamsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults outputs artifacts items0 HTTP auth oauth2 endpoint params items0
 
     Attributes
@@ -16377,7 +17039,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtif
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtifactsItems0HTTPAuthOauth2TokenURLSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults outputs artifacts items0 HTTP auth oauth2 token URL secret
 
     Attributes
@@ -16393,13 +17055,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtifactsItems0HTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults outputs artifacts items0 HTTP headers items0
 
     Attributes
@@ -16417,13 +17079,15 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtif
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtifactsItems0Hdfs:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults outputs artifacts items0 hdfs
 
     Attributes
     ----------
     addresses : [str], default is Undefined, optional
         addresses
+    dataTransferProtection : str, default is Undefined, optional
+        data transfer protection
     force : bool, default is Undefined, optional
         force
     hdfsUser : str, default is Undefined, optional
@@ -16447,6 +17111,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtif
 
     addresses?: [str]
 
+    dataTransferProtection?: str
+
     force?: bool
 
     hdfsUser?: str
@@ -16467,7 +17133,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtif
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtifactsItems0HdfsKrbCCacheSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults outputs artifacts items0 hdfs krb c cache secret
 
     Attributes
@@ -16483,13 +17149,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtifactsItems0HdfsKrbConfigConfigMap:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults outputs artifacts items0 hdfs krb config config map
 
     Attributes
@@ -16505,13 +17171,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtifactsItems0HdfsKrbKeytabSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults outputs artifacts items0 hdfs krb keytab secret
 
     Attributes
@@ -16527,13 +17193,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtifactsItems0Oss:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults outputs artifacts items0 oss
 
     Attributes
@@ -16579,7 +17245,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtif
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtifactsItems0OssAccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults outputs artifacts items0 oss access key secret
 
     Attributes
@@ -16595,13 +17261,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtifactsItems0OssLifecycleRule:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults outputs artifacts items0 oss lifecycle rule
 
     Attributes
@@ -16619,7 +17285,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtif
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtifactsItems0OssSecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults outputs artifacts items0 oss secret key secret
 
     Attributes
@@ -16635,13 +17301,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtifactsItems0Raw:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults outputs artifacts items0 raw
 
     Attributes
@@ -16655,7 +17321,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtif
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtifactsItems0S3:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults outputs artifacts items0 s3
 
     Attributes
@@ -16682,6 +17348,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtif
         role a r n
     secretKeySecret : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtifactsItems0S3SecretKeySecret, default is Undefined, optional
         secret key secret
+    sessionTokenSecret : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtifactsItems0S3SessionTokenSecret, default is Undefined, optional
+        session token secret
     useSDKCreds : bool, default is Undefined, optional
         use s d k creds
     """
@@ -16709,11 +17377,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtif
 
     secretKeySecret?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtifactsItems0S3SecretKeySecret
 
+    sessionTokenSecret?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtifactsItems0S3SessionTokenSecret
+
     useSDKCreds?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtifactsItems0S3AccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults outputs artifacts items0 s3 access key secret
 
     Attributes
@@ -16729,13 +17399,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtifactsItems0S3CaSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults outputs artifacts items0 s3 ca secret
 
     Attributes
@@ -16751,13 +17421,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtifactsItems0S3CreateBucketIfNotPresent:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults outputs artifacts items0 s3 create bucket if not present
 
     Attributes
@@ -16771,7 +17441,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtif
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtifactsItems0S3EncryptionOptions:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults outputs artifacts items0 s3 encryption options
 
     Attributes
@@ -16797,7 +17467,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtif
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtifactsItems0S3EncryptionOptionsServerSideCustomerKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults outputs artifacts items0 s3 encryption options server side customer key secret
 
     Attributes
@@ -16813,13 +17483,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtifactsItems0S3SecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults outputs artifacts items0 s3 secret key secret
 
     Attributes
@@ -16835,13 +17505,35 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
+
+    optional?: bool
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsArtifactsItems0S3SessionTokenSecret:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec template defaults outputs artifacts items0 s3 session token secret
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults outputs parameters items0
 
     Attributes
@@ -16879,7 +17571,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsParam
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsParametersItems0ValueFrom:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults outputs parameters items0 value from
 
     Attributes
@@ -16925,7 +17617,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsParam
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsParametersItems0ValueFromConfigMapKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults outputs parameters items0 value from config map key ref
 
     Attributes
@@ -16941,13 +17633,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsOutputsParam
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResource:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults resource
 
     Attributes
@@ -16989,7 +17681,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResource:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceManifestFrom:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults resource manifest from
 
     Attributes
@@ -17003,7 +17695,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceMani
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceManifestFromArtifact:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults resource manifest from artifact
 
     Attributes
@@ -17101,7 +17793,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceMani
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceManifestFromArtifactArchive:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults resource manifest from artifact archive
 
     Attributes
@@ -17123,7 +17815,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceMani
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceManifestFromArtifactArchiveTar:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults resource manifest from artifact archive tar
 
     Attributes
@@ -17137,7 +17829,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceMani
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceManifestFromArtifactArtifactGC:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults resource manifest from artifact artifact g c
 
     Attributes
@@ -17159,7 +17851,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceMani
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceManifestFromArtifactArtifactGCPodMetadata:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults resource manifest from artifact artifact g c pod metadata
 
     Attributes
@@ -17177,7 +17869,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceMani
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceManifestFromArtifactArtifactory:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults resource manifest from artifact artifactory
 
     Attributes
@@ -17199,7 +17891,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceMani
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceManifestFromArtifactArtifactoryPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults resource manifest from artifact artifactory password secret
 
     Attributes
@@ -17215,13 +17907,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceMani
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceManifestFromArtifactArtifactoryUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults resource manifest from artifact artifactory username secret
 
     Attributes
@@ -17237,13 +17929,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceMani
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceManifestFromArtifactAzure:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults resource manifest from artifact azure
 
     Attributes
@@ -17273,7 +17965,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceMani
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceManifestFromArtifactAzureAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults resource manifest from artifact azure account key secret
 
     Attributes
@@ -17289,13 +17981,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceMani
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceManifestFromArtifactGcs:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults resource manifest from artifact gcs
 
     Attributes
@@ -17317,7 +18009,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceMani
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceManifestFromArtifactGcsServiceAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults resource manifest from artifact gcs service account key secret
 
     Attributes
@@ -17333,13 +18025,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceMani
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceManifestFromArtifactGit:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults resource manifest from artifact git
 
     Attributes
@@ -17354,6 +18046,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceMani
         fetch
     insecureIgnoreHostKey : bool, default is Undefined, optional
         insecure ignore host key
+    insecureSkipTLS : bool, default is Undefined, optional
+        insecure skip TLS
     passwordSecret : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceManifestFromArtifactGitPasswordSecret, default is Undefined, optional
         password secret
     repo : str, default is Undefined, required
@@ -17379,6 +18073,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceMani
 
     insecureIgnoreHostKey?: bool
 
+    insecureSkipTLS?: bool
+
     passwordSecret?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceManifestFromArtifactGitPasswordSecret
 
     repo: str
@@ -17393,7 +18089,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceMani
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceManifestFromArtifactGitPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults resource manifest from artifact git password secret
 
     Attributes
@@ -17409,13 +18105,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceMani
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceManifestFromArtifactGitSSHPrivateKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults resource manifest from artifact git SSH private key secret
 
     Attributes
@@ -17431,13 +18127,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceMani
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceManifestFromArtifactGitUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults resource manifest from artifact git username secret
 
     Attributes
@@ -17453,13 +18149,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceMani
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceManifestFromArtifactHTTP:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults resource manifest from artifact HTTP
 
     Attributes
@@ -17481,7 +18177,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceMani
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceManifestFromArtifactHTTPAuth:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults resource manifest from artifact HTTP auth
 
     Attributes
@@ -17503,7 +18199,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceMani
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceManifestFromArtifactHTTPAuthBasicAuth:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults resource manifest from artifact HTTP auth basic auth
 
     Attributes
@@ -17521,7 +18217,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceMani
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceManifestFromArtifactHTTPAuthBasicAuthPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults resource manifest from artifact HTTP auth basic auth password secret
 
     Attributes
@@ -17537,13 +18233,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceMani
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceManifestFromArtifactHTTPAuthBasicAuthUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults resource manifest from artifact HTTP auth basic auth username secret
 
     Attributes
@@ -17559,13 +18255,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceMani
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceManifestFromArtifactHTTPAuthClientCert:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults resource manifest from artifact HTTP auth client cert
 
     Attributes
@@ -17583,7 +18279,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceMani
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceManifestFromArtifactHTTPAuthClientCertClientCertSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults resource manifest from artifact HTTP auth client cert client cert secret
 
     Attributes
@@ -17599,13 +18295,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceMani
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceManifestFromArtifactHTTPAuthClientCertClientKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults resource manifest from artifact HTTP auth client cert client key secret
 
     Attributes
@@ -17621,13 +18317,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceMani
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceManifestFromArtifactHTTPAuthOauth2:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults resource manifest from artifact HTTP auth oauth2
 
     Attributes
@@ -17657,7 +18353,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceMani
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceManifestFromArtifactHTTPAuthOauth2ClientIDSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults resource manifest from artifact HTTP auth oauth2 client ID secret
 
     Attributes
@@ -17673,13 +18369,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceMani
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceManifestFromArtifactHTTPAuthOauth2ClientSecretSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults resource manifest from artifact HTTP auth oauth2 client secret secret
 
     Attributes
@@ -17695,13 +18391,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceMani
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceManifestFromArtifactHTTPAuthOauth2EndpointParamsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults resource manifest from artifact HTTP auth oauth2 endpoint params items0
 
     Attributes
@@ -17719,7 +18415,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceMani
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceManifestFromArtifactHTTPAuthOauth2TokenURLSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults resource manifest from artifact HTTP auth oauth2 token URL secret
 
     Attributes
@@ -17735,13 +18431,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceMani
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceManifestFromArtifactHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults resource manifest from artifact HTTP headers items0
 
     Attributes
@@ -17759,13 +18455,15 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceMani
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceManifestFromArtifactHdfs:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults resource manifest from artifact hdfs
 
     Attributes
     ----------
     addresses : [str], default is Undefined, optional
         addresses
+    dataTransferProtection : str, default is Undefined, optional
+        data transfer protection
     force : bool, default is Undefined, optional
         force
     hdfsUser : str, default is Undefined, optional
@@ -17789,6 +18487,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceMani
 
     addresses?: [str]
 
+    dataTransferProtection?: str
+
     force?: bool
 
     hdfsUser?: str
@@ -17809,7 +18509,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceMani
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceManifestFromArtifactHdfsKrbCCacheSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults resource manifest from artifact hdfs krb c cache secret
 
     Attributes
@@ -17825,13 +18525,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceMani
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceManifestFromArtifactHdfsKrbConfigConfigMap:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults resource manifest from artifact hdfs krb config config map
 
     Attributes
@@ -17847,13 +18547,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceMani
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceManifestFromArtifactHdfsKrbKeytabSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults resource manifest from artifact hdfs krb keytab secret
 
     Attributes
@@ -17869,13 +18569,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceMani
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceManifestFromArtifactOss:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults resource manifest from artifact oss
 
     Attributes
@@ -17921,7 +18621,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceMani
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceManifestFromArtifactOssAccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults resource manifest from artifact oss access key secret
 
     Attributes
@@ -17937,13 +18637,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceMani
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceManifestFromArtifactOssLifecycleRule:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults resource manifest from artifact oss lifecycle rule
 
     Attributes
@@ -17961,7 +18661,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceMani
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceManifestFromArtifactOssSecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults resource manifest from artifact oss secret key secret
 
     Attributes
@@ -17977,13 +18677,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceMani
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceManifestFromArtifactRaw:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults resource manifest from artifact raw
 
     Attributes
@@ -17997,7 +18697,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceMani
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceManifestFromArtifactS3:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults resource manifest from artifact s3
 
     Attributes
@@ -18024,6 +18724,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceMani
         role a r n
     secretKeySecret : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceManifestFromArtifactS3SecretKeySecret, default is Undefined, optional
         secret key secret
+    sessionTokenSecret : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceManifestFromArtifactS3SessionTokenSecret, default is Undefined, optional
+        session token secret
     useSDKCreds : bool, default is Undefined, optional
         use s d k creds
     """
@@ -18051,11 +18753,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceMani
 
     secretKeySecret?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceManifestFromArtifactS3SecretKeySecret
 
+    sessionTokenSecret?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceManifestFromArtifactS3SessionTokenSecret
+
     useSDKCreds?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceManifestFromArtifactS3AccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults resource manifest from artifact s3 access key secret
 
     Attributes
@@ -18071,13 +18775,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceMani
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceManifestFromArtifactS3CaSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults resource manifest from artifact s3 ca secret
 
     Attributes
@@ -18093,13 +18797,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceMani
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceManifestFromArtifactS3CreateBucketIfNotPresent:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults resource manifest from artifact s3 create bucket if not present
 
     Attributes
@@ -18113,7 +18817,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceMani
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceManifestFromArtifactS3EncryptionOptions:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults resource manifest from artifact s3 encryption options
 
     Attributes
@@ -18139,7 +18843,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceMani
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceManifestFromArtifactS3EncryptionOptionsServerSideCustomerKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults resource manifest from artifact s3 encryption options server side customer key secret
 
     Attributes
@@ -18155,13 +18859,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceMani
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceManifestFromArtifactS3SecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults resource manifest from artifact s3 secret key secret
 
     Attributes
@@ -18177,13 +18881,35 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceMani
 
     key: str
 
-    name?: str
+    name?: str = ""
+
+    optional?: bool
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsResourceManifestFromArtifactS3SessionTokenSecret:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec template defaults resource manifest from artifact s3 session token secret
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsRetryStrategy:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults retry strategy
 
     Attributes
@@ -18213,7 +18939,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsRetryStrateg
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsRetryStrategyAffinity:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults retry strategy affinity
 
     Attributes
@@ -18227,7 +18953,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsRetryStrateg
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsRetryStrategyBackoff:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults retry strategy backoff
 
     Attributes
@@ -18249,7 +18975,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsRetryStrateg
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScript:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults script
 
     Attributes
@@ -18276,8 +19002,12 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScript:
         ports
     readinessProbe : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptReadinessProbe, default is Undefined, optional
         readiness probe
+    resizePolicy : [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptResizePolicyItems0], default is Undefined, optional
+        resize policy
     resources : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptResources, default is Undefined, optional
         resources
+    restartPolicy : str, default is Undefined, optional
+        restart policy
     securityContext : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptSecurityContext, default is Undefined, optional
         security context
     source : str, default is Undefined, required
@@ -18325,7 +19055,11 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScript:
 
     readinessProbe?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptReadinessProbe
 
+    resizePolicy?: [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptResizePolicyItems0]
+
     resources?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptResources
+
+    restartPolicy?: str
 
     securityContext?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptSecurityContext
 
@@ -18351,7 +19085,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScript:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptEnvFromItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults script env from items0
 
     Attributes
@@ -18373,7 +19107,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptEnvFro
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptEnvFromItems0ConfigMapRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults script env from items0 config map ref
 
     Attributes
@@ -18385,13 +19119,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptEnvFro
     """
 
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptEnvFromItems0SecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults script env from items0 secret ref
 
     Attributes
@@ -18403,13 +19137,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptEnvFro
     """
 
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptEnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults script env items0
 
     Attributes
@@ -18431,7 +19165,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptEnvIte
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptEnvItems0ValueFrom:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults script env items0 value from
 
     Attributes
@@ -18457,7 +19191,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptEnvIte
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptEnvItems0ValueFromConfigMapKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults script env items0 value from config map key ref
 
     Attributes
@@ -18473,13 +19207,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptEnvIte
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptEnvItems0ValueFromFieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults script env items0 value from field ref
 
     Attributes
@@ -18497,7 +19231,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptEnvIte
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptEnvItems0ValueFromResourceFieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults script env items0 value from resource field ref
 
     Attributes
@@ -18523,7 +19257,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptEnvIte
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptEnvItems0ValueFromSecretKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults script env items0 value from secret key ref
 
     Attributes
@@ -18539,13 +19273,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptEnvIte
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptLifecycle:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults script lifecycle
 
     Attributes
@@ -18563,7 +19297,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptLifecy
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptLifecyclePostStart:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults script lifecycle post start
 
     Attributes
@@ -18572,6 +19306,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptLifecy
         exec
     httpGet : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptLifecyclePostStartHTTPGet, default is Undefined, optional
         http get
+    sleep : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptLifecyclePostStartSleep, default is Undefined, optional
+        sleep
     tcpSocket : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptLifecyclePostStartTCPSocket, default is Undefined, optional
         tcp socket
     """
@@ -18581,11 +19317,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptLifecy
 
     httpGet?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptLifecyclePostStartHTTPGet
 
+    sleep?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptLifecyclePostStartSleep
+
     tcpSocket?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptLifecyclePostStartTCPSocket
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptLifecyclePostStartExec:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults script lifecycle post start exec
 
     Attributes
@@ -18599,7 +19337,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptLifecy
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptLifecyclePostStartHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults script lifecycle post start HTTP get
 
     Attributes
@@ -18629,7 +19367,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptLifecy
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptLifecyclePostStartHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults script lifecycle post start HTTP get HTTP headers items0
 
     Attributes
@@ -18646,8 +19384,22 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptLifecy
     value: str
 
 
-schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptLifecyclePostStartTCPSocket:
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptLifecyclePostStartSleep:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec template defaults script lifecycle post start sleep
+
+    Attributes
+    ----------
+    seconds : int, default is Undefined, required
+        seconds
     """
+
+
+    seconds: int
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptLifecyclePostStartTCPSocket:
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults script lifecycle post start TCP socket
 
     Attributes
@@ -18665,7 +19417,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptLifecy
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptLifecyclePreStop:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults script lifecycle pre stop
 
     Attributes
@@ -18674,6 +19426,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptLifecy
         exec
     httpGet : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptLifecyclePreStopHTTPGet, default is Undefined, optional
         http get
+    sleep : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptLifecyclePreStopSleep, default is Undefined, optional
+        sleep
     tcpSocket : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptLifecyclePreStopTCPSocket, default is Undefined, optional
         tcp socket
     """
@@ -18683,11 +19437,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptLifecy
 
     httpGet?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptLifecyclePreStopHTTPGet
 
+    sleep?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptLifecyclePreStopSleep
+
     tcpSocket?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptLifecyclePreStopTCPSocket
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptLifecyclePreStopExec:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults script lifecycle pre stop exec
 
     Attributes
@@ -18701,7 +19457,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptLifecy
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptLifecyclePreStopHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults script lifecycle pre stop HTTP get
 
     Attributes
@@ -18731,7 +19487,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptLifecy
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptLifecyclePreStopHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults script lifecycle pre stop HTTP get HTTP headers items0
 
     Attributes
@@ -18748,8 +19504,22 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptLifecy
     value: str
 
 
-schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptLifecyclePreStopTCPSocket:
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptLifecyclePreStopSleep:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec template defaults script lifecycle pre stop sleep
+
+    Attributes
+    ----------
+    seconds : int, default is Undefined, required
+        seconds
     """
+
+
+    seconds: int
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptLifecyclePreStopTCPSocket:
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults script lifecycle pre stop TCP socket
 
     Attributes
@@ -18767,7 +19537,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptLifecy
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptLivenessProbe:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults script liveness probe
 
     Attributes
@@ -18817,7 +19587,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptLivene
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptLivenessProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults script liveness probe exec
 
     Attributes
@@ -18831,7 +19601,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptLivene
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptLivenessProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults script liveness probe grpc
 
     Attributes
@@ -18849,7 +19619,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptLivene
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptLivenessProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults script liveness probe HTTP get
 
     Attributes
@@ -18879,7 +19649,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptLivene
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptLivenessProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults script liveness probe HTTP get HTTP headers items0
 
     Attributes
@@ -18897,7 +19667,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptLivene
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptLivenessProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults script liveness probe TCP socket
 
     Attributes
@@ -18915,7 +19685,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptLivene
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptPortsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults script ports items0
 
     Attributes
@@ -18945,7 +19715,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptPortsI
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptReadinessProbe:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults script readiness probe
 
     Attributes
@@ -18995,7 +19765,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptReadin
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptReadinessProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults script readiness probe exec
 
     Attributes
@@ -19009,7 +19779,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptReadin
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptReadinessProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults script readiness probe grpc
 
     Attributes
@@ -19027,7 +19797,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptReadin
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptReadinessProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults script readiness probe HTTP get
 
     Attributes
@@ -19057,7 +19827,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptReadin
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptReadinessProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults script readiness probe HTTP get HTTP headers items0
 
     Attributes
@@ -19075,7 +19845,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptReadin
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptReadinessProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults script readiness probe TCP socket
 
     Attributes
@@ -19092,8 +19862,26 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptReadin
     port: int | str
 
 
-schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptResources:
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptResizePolicyItems0:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec template defaults script resize policy items0
+
+    Attributes
+    ----------
+    resourceName : str, default is Undefined, required
+        resource name
+    restartPolicy : str, default is Undefined, required
+        restart policy
     """
+
+
+    resourceName: str
+
+    restartPolicy: str
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptResources:
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults script resources
 
     Attributes
@@ -19115,12 +19903,12 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptResour
 
 
     check:
-        all _, limits in limits {_regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests {_regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptResourcesClaimsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults script resources claims items0
 
     Attributes
@@ -19134,13 +19922,15 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptResour
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptSecurityContext:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults script security context
 
     Attributes
     ----------
     allowPrivilegeEscalation : bool, default is Undefined, optional
         allow privilege escalation
+    appArmorProfile : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptSecurityContextAppArmorProfile, default is Undefined, optional
+        app armor profile
     capabilities : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptSecurityContextCapabilities, default is Undefined, optional
         capabilities
     privileged : bool, default is Undefined, optional
@@ -19166,6 +19956,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptSecuri
 
     allowPrivilegeEscalation?: bool
 
+    appArmorProfile?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptSecurityContextAppArmorProfile
+
     capabilities?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptSecurityContextCapabilities
 
     privileged?: bool
@@ -19187,8 +19979,26 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptSecuri
     windowsOptions?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptSecurityContextWindowsOptions
 
 
-schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptSecurityContextCapabilities:
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptSecurityContextAppArmorProfile:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec template defaults script security context app armor profile
+
+    Attributes
+    ----------
+    localhostProfile : str, default is Undefined, optional
+        localhost profile
+    $type : str, default is Undefined, required
+        type
     """
+
+
+    localhostProfile?: str
+
+    $type: str
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptSecurityContextCapabilities:
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults script security context capabilities
 
     Attributes
@@ -19206,7 +20016,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptSecuri
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptSecurityContextSeLinuxOptions:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults script security context se linux options
 
     Attributes
@@ -19232,7 +20042,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptSecuri
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptSecurityContextSeccompProfile:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults script security context seccomp profile
 
     Attributes
@@ -19250,7 +20060,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptSecuri
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptSecurityContextWindowsOptions:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults script security context windows options
 
     Attributes
@@ -19276,7 +20086,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptSecuri
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptStartupProbe:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults script startup probe
 
     Attributes
@@ -19326,7 +20136,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptStartu
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptStartupProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults script startup probe exec
 
     Attributes
@@ -19340,7 +20150,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptStartu
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptStartupProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults script startup probe grpc
 
     Attributes
@@ -19358,7 +20168,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptStartu
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptStartupProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults script startup probe HTTP get
 
     Attributes
@@ -19388,7 +20198,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptStartu
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptStartupProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults script startup probe HTTP get HTTP headers items0
 
     Attributes
@@ -19406,7 +20216,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptStartu
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptStartupProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults script startup probe TCP socket
 
     Attributes
@@ -19424,7 +20234,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptStartu
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptVolumeDevicesItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults script volume devices items0
 
     Attributes
@@ -19442,7 +20252,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptVolume
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptVolumeMountsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults script volume mounts items0
 
     Attributes
@@ -19455,6 +20265,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptVolume
         name
     readOnly : bool, default is Undefined, optional
         read only
+    recursiveReadOnly : str, default is Undefined, optional
+        recursive read only
     subPath : str, default is Undefined, optional
         sub path
     subPathExpr : str, default is Undefined, optional
@@ -19470,17 +20282,21 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsScriptVolume
 
     readOnly?: bool
 
+    recursiveReadOnly?: str
+
     subPath?: str
 
     subPathExpr?: str
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSecurityContext:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults security context
 
     Attributes
     ----------
+    appArmorProfile : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSecurityContextAppArmorProfile, default is Undefined, optional
+        app armor profile
     fsGroup : int, default is Undefined, optional
         fs group
     fsGroupChangePolicy : str, default is Undefined, optional
@@ -19504,6 +20320,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSecurityCont
     """
 
 
+    appArmorProfile?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSecurityContextAppArmorProfile
+
     fsGroup?: int
 
     fsGroupChangePolicy?: str
@@ -19525,8 +20343,26 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSecurityCont
     windowsOptions?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSecurityContextWindowsOptions
 
 
-schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSecurityContextSeLinuxOptions:
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSecurityContextAppArmorProfile:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec template defaults security context app armor profile
+
+    Attributes
+    ----------
+    localhostProfile : str, default is Undefined, optional
+        localhost profile
+    $type : str, default is Undefined, required
+        type
     """
+
+
+    localhostProfile?: str
+
+    $type: str
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSecurityContextSeLinuxOptions:
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults security context se linux options
 
     Attributes
@@ -19552,7 +20388,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSecurityCont
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSecurityContextSeccompProfile:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults security context seccomp profile
 
     Attributes
@@ -19570,7 +20406,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSecurityCont
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSecurityContextSysctlsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults security context sysctls items0
 
     Attributes
@@ -19588,7 +20424,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSecurityCont
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSecurityContextWindowsOptions:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults security context windows options
 
     Attributes
@@ -19614,7 +20450,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSecurityCont
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults sidecars items0
 
     Attributes
@@ -19643,8 +20479,12 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItem
         ports
     readinessProbe : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0ReadinessProbe, default is Undefined, optional
         readiness probe
+    resizePolicy : [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0ResizePolicyItems0], default is Undefined, optional
+        resize policy
     resources : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0Resources, default is Undefined, optional
         resources
+    restartPolicy : str, default is Undefined, optional
+        restart policy
     securityContext : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0SecurityContext, default is Undefined, optional
         security context
     startupProbe : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0StartupProbe, default is Undefined, optional
@@ -19692,7 +20532,11 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItem
 
     readinessProbe?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0ReadinessProbe
 
+    resizePolicy?: [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0ResizePolicyItems0]
+
     resources?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0Resources
+
+    restartPolicy?: str
 
     securityContext?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0SecurityContext
 
@@ -19716,7 +20560,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0EnvFromItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults sidecars items0 env from items0
 
     Attributes
@@ -19738,7 +20582,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0EnvFromItems0ConfigMapRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults sidecars items0 env from items0 config map ref
 
     Attributes
@@ -19750,13 +20594,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItem
     """
 
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0EnvFromItems0SecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults sidecars items0 env from items0 secret ref
 
     Attributes
@@ -19768,13 +20612,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItem
     """
 
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0EnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults sidecars items0 env items0
 
     Attributes
@@ -19796,7 +20640,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0EnvItems0ValueFrom:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults sidecars items0 env items0 value from
 
     Attributes
@@ -19822,7 +20666,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0EnvItems0ValueFromConfigMapKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults sidecars items0 env items0 value from config map key ref
 
     Attributes
@@ -19838,13 +20682,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0EnvItems0ValueFromFieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults sidecars items0 env items0 value from field ref
 
     Attributes
@@ -19862,7 +20706,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0EnvItems0ValueFromResourceFieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults sidecars items0 env items0 value from resource field ref
 
     Attributes
@@ -19888,7 +20732,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0EnvItems0ValueFromSecretKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults sidecars items0 env items0 value from secret key ref
 
     Attributes
@@ -19904,13 +20748,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0Lifecycle:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults sidecars items0 lifecycle
 
     Attributes
@@ -19928,7 +20772,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0LifecyclePostStart:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults sidecars items0 lifecycle post start
 
     Attributes
@@ -19937,6 +20781,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItem
         exec
     httpGet : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0LifecyclePostStartHTTPGet, default is Undefined, optional
         http get
+    sleep : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0LifecyclePostStartSleep, default is Undefined, optional
+        sleep
     tcpSocket : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0LifecyclePostStartTCPSocket, default is Undefined, optional
         tcp socket
     """
@@ -19946,11 +20792,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItem
 
     httpGet?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0LifecyclePostStartHTTPGet
 
+    sleep?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0LifecyclePostStartSleep
+
     tcpSocket?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0LifecyclePostStartTCPSocket
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0LifecyclePostStartExec:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults sidecars items0 lifecycle post start exec
 
     Attributes
@@ -19964,7 +20812,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0LifecyclePostStartHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults sidecars items0 lifecycle post start HTTP get
 
     Attributes
@@ -19994,7 +20842,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0LifecyclePostStartHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults sidecars items0 lifecycle post start HTTP get HTTP headers items0
 
     Attributes
@@ -20011,8 +20859,22 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItem
     value: str
 
 
-schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0LifecyclePostStartTCPSocket:
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0LifecyclePostStartSleep:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec template defaults sidecars items0 lifecycle post start sleep
+
+    Attributes
+    ----------
+    seconds : int, default is Undefined, required
+        seconds
     """
+
+
+    seconds: int
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0LifecyclePostStartTCPSocket:
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults sidecars items0 lifecycle post start TCP socket
 
     Attributes
@@ -20030,7 +20892,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0LifecyclePreStop:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults sidecars items0 lifecycle pre stop
 
     Attributes
@@ -20039,6 +20901,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItem
         exec
     httpGet : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0LifecyclePreStopHTTPGet, default is Undefined, optional
         http get
+    sleep : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0LifecyclePreStopSleep, default is Undefined, optional
+        sleep
     tcpSocket : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0LifecyclePreStopTCPSocket, default is Undefined, optional
         tcp socket
     """
@@ -20048,11 +20912,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItem
 
     httpGet?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0LifecyclePreStopHTTPGet
 
+    sleep?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0LifecyclePreStopSleep
+
     tcpSocket?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0LifecyclePreStopTCPSocket
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0LifecyclePreStopExec:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults sidecars items0 lifecycle pre stop exec
 
     Attributes
@@ -20066,7 +20932,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0LifecyclePreStopHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults sidecars items0 lifecycle pre stop HTTP get
 
     Attributes
@@ -20096,7 +20962,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0LifecyclePreStopHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults sidecars items0 lifecycle pre stop HTTP get HTTP headers items0
 
     Attributes
@@ -20113,8 +20979,22 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItem
     value: str
 
 
-schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0LifecyclePreStopTCPSocket:
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0LifecyclePreStopSleep:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec template defaults sidecars items0 lifecycle pre stop sleep
+
+    Attributes
+    ----------
+    seconds : int, default is Undefined, required
+        seconds
     """
+
+
+    seconds: int
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0LifecyclePreStopTCPSocket:
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults sidecars items0 lifecycle pre stop TCP socket
 
     Attributes
@@ -20132,7 +21012,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0LivenessProbe:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults sidecars items0 liveness probe
 
     Attributes
@@ -20182,7 +21062,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0LivenessProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults sidecars items0 liveness probe exec
 
     Attributes
@@ -20196,7 +21076,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0LivenessProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults sidecars items0 liveness probe grpc
 
     Attributes
@@ -20214,7 +21094,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0LivenessProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults sidecars items0 liveness probe HTTP get
 
     Attributes
@@ -20244,7 +21124,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0LivenessProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults sidecars items0 liveness probe HTTP get HTTP headers items0
 
     Attributes
@@ -20262,7 +21142,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0LivenessProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults sidecars items0 liveness probe TCP socket
 
     Attributes
@@ -20280,7 +21160,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0PortsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults sidecars items0 ports items0
 
     Attributes
@@ -20310,7 +21190,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0ReadinessProbe:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults sidecars items0 readiness probe
 
     Attributes
@@ -20360,7 +21240,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0ReadinessProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults sidecars items0 readiness probe exec
 
     Attributes
@@ -20374,7 +21254,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0ReadinessProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults sidecars items0 readiness probe grpc
 
     Attributes
@@ -20392,7 +21272,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0ReadinessProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults sidecars items0 readiness probe HTTP get
 
     Attributes
@@ -20422,7 +21302,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0ReadinessProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults sidecars items0 readiness probe HTTP get HTTP headers items0
 
     Attributes
@@ -20440,7 +21320,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0ReadinessProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults sidecars items0 readiness probe TCP socket
 
     Attributes
@@ -20457,8 +21337,26 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItem
     port: int | str
 
 
-schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0Resources:
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0ResizePolicyItems0:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec template defaults sidecars items0 resize policy items0
+
+    Attributes
+    ----------
+    resourceName : str, default is Undefined, required
+        resource name
+    restartPolicy : str, default is Undefined, required
+        restart policy
     """
+
+
+    resourceName: str
+
+    restartPolicy: str
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0Resources:
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults sidecars items0 resources
 
     Attributes
@@ -20480,12 +21378,12 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItem
 
 
     check:
-        all _, limits in limits {_regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests {_regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0ResourcesClaimsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults sidecars items0 resources claims items0
 
     Attributes
@@ -20499,13 +21397,15 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0SecurityContext:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults sidecars items0 security context
 
     Attributes
     ----------
     allowPrivilegeEscalation : bool, default is Undefined, optional
         allow privilege escalation
+    appArmorProfile : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0SecurityContextAppArmorProfile, default is Undefined, optional
+        app armor profile
     capabilities : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0SecurityContextCapabilities, default is Undefined, optional
         capabilities
     privileged : bool, default is Undefined, optional
@@ -20531,6 +21431,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItem
 
     allowPrivilegeEscalation?: bool
 
+    appArmorProfile?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0SecurityContextAppArmorProfile
+
     capabilities?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0SecurityContextCapabilities
 
     privileged?: bool
@@ -20552,8 +21454,26 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItem
     windowsOptions?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0SecurityContextWindowsOptions
 
 
-schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0SecurityContextCapabilities:
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0SecurityContextAppArmorProfile:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec template defaults sidecars items0 security context app armor profile
+
+    Attributes
+    ----------
+    localhostProfile : str, default is Undefined, optional
+        localhost profile
+    $type : str, default is Undefined, required
+        type
     """
+
+
+    localhostProfile?: str
+
+    $type: str
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0SecurityContextCapabilities:
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults sidecars items0 security context capabilities
 
     Attributes
@@ -20571,7 +21491,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0SecurityContextSeLinuxOptions:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults sidecars items0 security context se linux options
 
     Attributes
@@ -20597,7 +21517,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0SecurityContextSeccompProfile:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults sidecars items0 security context seccomp profile
 
     Attributes
@@ -20615,7 +21535,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0SecurityContextWindowsOptions:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults sidecars items0 security context windows options
 
     Attributes
@@ -20641,7 +21561,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0StartupProbe:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults sidecars items0 startup probe
 
     Attributes
@@ -20691,7 +21611,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0StartupProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults sidecars items0 startup probe exec
 
     Attributes
@@ -20705,7 +21625,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0StartupProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults sidecars items0 startup probe grpc
 
     Attributes
@@ -20723,7 +21643,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0StartupProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults sidecars items0 startup probe HTTP get
 
     Attributes
@@ -20753,7 +21673,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0StartupProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults sidecars items0 startup probe HTTP get HTTP headers items0
 
     Attributes
@@ -20771,7 +21691,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0StartupProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults sidecars items0 startup probe TCP socket
 
     Attributes
@@ -20789,7 +21709,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0VolumeDevicesItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults sidecars items0 volume devices items0
 
     Attributes
@@ -20807,7 +21727,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItems0VolumeMountsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults sidecars items0 volume mounts items0
 
     Attributes
@@ -20820,6 +21740,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItem
         name
     readOnly : bool, default is Undefined, optional
         read only
+    recursiveReadOnly : str, default is Undefined, optional
+        recursive read only
     subPath : str, default is Undefined, optional
         sub path
     subPathExpr : str, default is Undefined, optional
@@ -20835,13 +21757,15 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSidecarsItem
 
     readOnly?: bool
 
+    recursiveReadOnly?: str
+
     subPath?: str
 
     subPathExpr?: str
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSuspend:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults suspend
 
     Attributes
@@ -20855,25 +21779,33 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSuspend:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSynchronization:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults synchronization
 
     Attributes
     ----------
     mutex : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSynchronizationMutex, default is Undefined, optional
         mutex
+    mutexes : [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSynchronizationMutexesItems0], default is Undefined, optional
+        mutexes
     semaphore : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSynchronizationSemaphore, default is Undefined, optional
         semaphore
+    semaphores : [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSynchronizationSemaphoresItems0], default is Undefined, optional
+        semaphores
     """
 
 
     mutex?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSynchronizationMutex
 
+    mutexes?: [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSynchronizationMutexesItems0]
+
     semaphore?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSynchronizationSemaphore
+
+    semaphores?: [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSynchronizationSemaphoresItems0]
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSynchronizationMutex:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults synchronization mutex
 
     Attributes
@@ -20890,8 +21822,26 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSynchronizat
     namespace?: str
 
 
-schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSynchronizationSemaphore:
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSynchronizationMutexesItems0:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec template defaults synchronization mutexes items0
+
+    Attributes
+    ----------
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
     """
+
+
+    name?: str
+
+    namespace?: str
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSynchronizationSemaphore:
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults synchronization semaphore
 
     Attributes
@@ -20909,7 +21859,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSynchronizat
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSynchronizationSemaphoreConfigMapKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults synchronization semaphore config map key ref
 
     Attributes
@@ -20925,13 +21875,53 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSynchronizat
 
     key: str
 
-    name?: str
+    name?: str = ""
+
+    optional?: bool
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSynchronizationSemaphoresItems0:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec template defaults synchronization semaphores items0
+
+    Attributes
+    ----------
+    configMapKeyRef : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSynchronizationSemaphoresItems0ConfigMapKeyRef, default is Undefined, optional
+        config map key ref
+    namespace : str, default is Undefined, optional
+        namespace
+    """
+
+
+    configMapKeyRef?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSynchronizationSemaphoresItems0ConfigMapKeyRef
+
+    namespace?: str
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsSynchronizationSemaphoresItems0ConfigMapKeyRef:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec template defaults synchronization semaphores items0 config map key ref
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsTolerationsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults tolerations items0
 
     Attributes
@@ -20961,7 +21951,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsTolerationsI
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0
 
     Attributes
@@ -21091,7 +22081,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0AwsElasticBlockStore:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 aws elastic block store
 
     Attributes
@@ -21117,7 +22107,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0AzureDisk:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 azure disk
 
     Attributes
@@ -21151,7 +22141,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0AzureFile:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 azure file
 
     Attributes
@@ -21173,7 +22163,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0Cephfs:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 cephfs
 
     Attributes
@@ -21207,7 +22197,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0CephfsSecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 cephfs secret ref
 
     Attributes
@@ -21217,11 +22207,11 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0Cinder:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 cinder
 
     Attributes
@@ -21247,7 +22237,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0CinderSecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 cinder secret ref
 
     Attributes
@@ -21257,11 +22247,11 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0ConfigMap:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 config map
 
     Attributes
@@ -21281,13 +22271,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
 
     items?: [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0ConfigMapItemsItems0]
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0ConfigMapItemsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 config map items items0
 
     Attributes
@@ -21309,7 +22299,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0Csi:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 csi
 
     Attributes
@@ -21339,7 +22329,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0CsiNodePublishSecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 csi node publish secret ref
 
     Attributes
@@ -21349,11 +22339,11 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0DownwardAPI:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 downward API
 
     Attributes
@@ -21371,7 +22361,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0DownwardAPIItemsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 downward API items items0
 
     Attributes
@@ -21397,7 +22387,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0DownwardAPIItemsItems0FieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 downward API items items0 field ref
 
     Attributes
@@ -21415,7 +22405,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0DownwardAPIItemsItems0ResourceFieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 downward API items items0 resource field ref
 
     Attributes
@@ -21441,7 +22431,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0EmptyDir:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 empty dir
 
     Attributes
@@ -21463,7 +22453,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0Ephemeral:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 ephemeral
 
     Attributes
@@ -21477,7 +22467,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0EphemeralVolumeClaimTemplate:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 ephemeral volume claim template
 
     Attributes
@@ -21495,7 +22485,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0EphemeralVolumeClaimTemplateSpec:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 ephemeral volume claim template spec
 
     Attributes
@@ -21512,6 +22502,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
         selector
     storageClassName : str, default is Undefined, optional
         storage class name
+    volumeAttributesClassName : str, default is Undefined, optional
+        volume attributes class name
     volumeMode : str, default is Undefined, optional
         volume mode
     volumeName : str, default is Undefined, optional
@@ -21531,13 +22523,15 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
 
     storageClassName?: str
 
+    volumeAttributesClassName?: str
+
     volumeMode?: str
 
     volumeName?: str
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0EphemeralVolumeClaimTemplateSpecDataSource:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 ephemeral volume claim template spec data source
 
     Attributes
@@ -21559,7 +22553,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0EphemeralVolumeClaimTemplateSpecDataSourceRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 ephemeral volume claim template spec data source ref
 
     Attributes
@@ -21585,13 +22579,11 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0EphemeralVolumeClaimTemplateSpecResources:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 ephemeral volume claim template spec resources
 
     Attributes
     ----------
-    claims : [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0EphemeralVolumeClaimTemplateSpecResourcesClaimsItems0], default is Undefined, optional
-        claims
     limits : {str:int | str}, default is Undefined, optional
         limits
     requests : {str:int | str}, default is Undefined, optional
@@ -21599,34 +22591,18 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
     """
 
 
-    claims?: [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0EphemeralVolumeClaimTemplateSpecResourcesClaimsItems0]
-
     limits?: {str:int | str}
 
     requests?: {str:int | str}
 
 
     check:
-        all _, limits in limits {_regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests {_regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
-
-
-schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0EphemeralVolumeClaimTemplateSpecResourcesClaimsItems0:
-    """
-    argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 ephemeral volume claim template spec resources claims items0
-
-    Attributes
-    ----------
-    name : str, default is Undefined, required
-        name
-    """
-
-
-    name: str
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0EphemeralVolumeClaimTemplateSpecSelector:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 ephemeral volume claim template spec selector
 
     Attributes
@@ -21644,7 +22620,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0EphemeralVolumeClaimTemplateSpecSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 ephemeral volume claim template spec selector match expressions items0
 
     Attributes
@@ -21666,7 +22642,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0Fc:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 fc
 
     Attributes
@@ -21696,7 +22672,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0FlexVolume:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 flex volume
 
     Attributes
@@ -21726,7 +22702,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0FlexVolumeSecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 flex volume secret ref
 
     Attributes
@@ -21736,11 +22712,11 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0Flocker:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 flocker
 
     Attributes
@@ -21758,7 +22734,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0GcePersistentDisk:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 gce persistent disk
 
     Attributes
@@ -21784,7 +22760,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0GitRepo:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 git repo
 
     Attributes
@@ -21806,7 +22782,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0Glusterfs:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 glusterfs
 
     Attributes
@@ -21828,7 +22804,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0HostPath:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 host path
 
     Attributes
@@ -21846,7 +22822,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0Iscsi:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 iscsi
 
     Attributes
@@ -21900,7 +22876,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0IscsiSecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 iscsi secret ref
 
     Attributes
@@ -21910,11 +22886,11 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0Nfs:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 nfs
 
     Attributes
@@ -21936,7 +22912,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0PersistentVolumeClaim:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 persistent volume claim
 
     Attributes
@@ -21954,7 +22930,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0PhotonPersistentDisk:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 photon persistent disk
 
     Attributes
@@ -21972,7 +22948,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0PortworxVolume:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 portworx volume
 
     Attributes
@@ -21994,7 +22970,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0Projected:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 projected
 
     Attributes
@@ -22012,11 +22988,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0ProjectedSourcesItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 projected sources items0
 
     Attributes
     ----------
+    clusterTrustBundle : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0ProjectedSourcesItems0ClusterTrustBundle, default is Undefined, optional
+        cluster trust bundle
     configMap : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0ProjectedSourcesItems0ConfigMap, default is Undefined, optional
         config map
     downwardAPI : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0ProjectedSourcesItems0DownwardAPI, default is Undefined, optional
@@ -22028,6 +23006,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
     """
 
 
+    clusterTrustBundle?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0ProjectedSourcesItems0ClusterTrustBundle
+
     configMap?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0ProjectedSourcesItems0ConfigMap
 
     downwardAPI?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0ProjectedSourcesItems0DownwardAPI
@@ -22037,8 +23017,78 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
     serviceAccountToken?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0ProjectedSourcesItems0ServiceAccountToken
 
 
-schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0ProjectedSourcesItems0ConfigMap:
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0ProjectedSourcesItems0ClusterTrustBundle:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 projected sources items0 cluster trust bundle
+
+    Attributes
+    ----------
+    labelSelector : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0ProjectedSourcesItems0ClusterTrustBundleLabelSelector, default is Undefined, optional
+        label selector
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    path : str, default is Undefined, required
+        path
+    signerName : str, default is Undefined, optional
+        signer name
     """
+
+
+    labelSelector?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0ProjectedSourcesItems0ClusterTrustBundleLabelSelector
+
+    name?: str
+
+    optional?: bool
+
+    path: str
+
+    signerName?: str
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0ProjectedSourcesItems0ClusterTrustBundleLabelSelector:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 projected sources items0 cluster trust bundle label selector
+
+    Attributes
+    ----------
+    matchExpressions : [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0ProjectedSourcesItems0ClusterTrustBundleLabelSelectorMatchExpressionsItems0], default is Undefined, optional
+        match expressions
+    matchLabels : {str:str}, default is Undefined, optional
+        match labels
+    """
+
+
+    matchExpressions?: [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0ProjectedSourcesItems0ClusterTrustBundleLabelSelectorMatchExpressionsItems0]
+
+    matchLabels?: {str:str}
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0ProjectedSourcesItems0ClusterTrustBundleLabelSelectorMatchExpressionsItems0:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 projected sources items0 cluster trust bundle label selector match expressions items0
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    operator : str, default is Undefined, required
+        operator
+    values : [str], default is Undefined, optional
+        values
+    """
+
+
+    key: str
+
+    operator: str
+
+    values?: [str]
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0ProjectedSourcesItems0ConfigMap:
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 projected sources items0 config map
 
     Attributes
@@ -22054,13 +23104,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
 
     items?: [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0ProjectedSourcesItems0ConfigMapItemsItems0]
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0ProjectedSourcesItems0ConfigMapItemsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 projected sources items0 config map items items0
 
     Attributes
@@ -22082,7 +23132,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0ProjectedSourcesItems0DownwardAPI:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 projected sources items0 downward API
 
     Attributes
@@ -22096,7 +23146,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 projected sources items0 downward API items items0
 
     Attributes
@@ -22122,7 +23172,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0FieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 projected sources items0 downward API items items0 field ref
 
     Attributes
@@ -22140,7 +23190,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0ResourceFieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 projected sources items0 downward API items items0 resource field ref
 
     Attributes
@@ -22166,7 +23216,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0ProjectedSourcesItems0Secret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 projected sources items0 secret
 
     Attributes
@@ -22182,13 +23232,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
 
     items?: [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0ProjectedSourcesItems0SecretItemsItems0]
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0ProjectedSourcesItems0SecretItemsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 projected sources items0 secret items items0
 
     Attributes
@@ -22210,7 +23260,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0ProjectedSourcesItems0ServiceAccountToken:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 projected sources items0 service account token
 
     Attributes
@@ -22232,7 +23282,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0Quobyte:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 quobyte
 
     Attributes
@@ -22266,7 +23316,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0Rbd:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 rbd
 
     Attributes
@@ -22308,7 +23358,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0RbdSecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 rbd secret ref
 
     Attributes
@@ -22318,11 +23368,11 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0ScaleIO:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 scale i o
 
     Attributes
@@ -22372,7 +23422,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0ScaleIOSecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 scale i o secret ref
 
     Attributes
@@ -22382,11 +23432,11 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0Secret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 secret
 
     Attributes
@@ -22412,7 +23462,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0SecretItemsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 secret items items0
 
     Attributes
@@ -22434,7 +23484,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0Storageos:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 storageos
 
     Attributes
@@ -22464,7 +23514,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0StorageosSecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 storageos secret ref
 
     Attributes
@@ -22474,11 +23524,11 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems0VsphereVolume:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec template defaults volumes items0 vsphere volume
 
     Attributes
@@ -22504,7 +23554,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplateDefaultsVolumesItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0
 
     Attributes
@@ -22670,7 +23720,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0Affinity:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 affinity
 
     Attributes
@@ -22692,7 +23742,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0Affinity:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityNodeAffinity:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 affinity node affinity
 
     Attributes
@@ -22710,7 +23760,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityNodeA
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 affinity node affinity preferred during scheduling ignored during execution items0
 
     Attributes
@@ -22728,7 +23778,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityNodeA
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0Preference:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 affinity node affinity preferred during scheduling ignored during execution items0 preference
 
     Attributes
@@ -22746,7 +23796,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityNodeA
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 affinity node affinity preferred during scheduling ignored during execution items0 preference match expressions items0
 
     Attributes
@@ -22768,7 +23818,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityNodeA
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchFieldsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 affinity node affinity preferred during scheduling ignored during execution items0 preference match fields items0
 
     Attributes
@@ -22790,7 +23840,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityNodeA
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 affinity node affinity required during scheduling ignored during execution
 
     Attributes
@@ -22804,7 +23854,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityNodeA
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 affinity node affinity required during scheduling ignored during execution node selector terms items0
 
     Attributes
@@ -22822,7 +23872,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityNodeA
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 affinity node affinity required during scheduling ignored during execution node selector terms items0 match expressions items0
 
     Attributes
@@ -22844,7 +23894,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityNodeA
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchFieldsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 affinity node affinity required during scheduling ignored during execution node selector terms items0 match fields items0
 
     Attributes
@@ -22866,7 +23916,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityNodeA
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAffinity:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 affinity pod affinity
 
     Attributes
@@ -22884,7 +23934,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAf
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 affinity pod affinity preferred during scheduling ignored during execution items0
 
     Attributes
@@ -22902,13 +23952,17 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAf
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTerm:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 affinity pod affinity preferred during scheduling ignored during execution items0 pod affinity term
 
     Attributes
     ----------
     labelSelector : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector, default is Undefined, optional
         label selector
+    matchLabelKeys : [str], default is Undefined, optional
+        match label keys
+    mismatchLabelKeys : [str], default is Undefined, optional
+        mismatch label keys
     namespaceSelector : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector, default is Undefined, optional
         namespace selector
     namespaces : [str], default is Undefined, optional
@@ -22920,6 +23974,10 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAf
 
     labelSelector?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector
 
+    matchLabelKeys?: [str]
+
+    mismatchLabelKeys?: [str]
+
     namespaceSelector?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector
 
     namespaces?: [str]
@@ -22928,7 +23986,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAf
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 affinity pod affinity preferred during scheduling ignored during execution items0 pod affinity term label selector
 
     Attributes
@@ -22946,7 +24004,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAf
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 affinity pod affinity preferred during scheduling ignored during execution items0 pod affinity term label selector match expressions items0
 
     Attributes
@@ -22968,7 +24026,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAf
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 affinity pod affinity preferred during scheduling ignored during execution items0 pod affinity term namespace selector
 
     Attributes
@@ -22986,7 +24044,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAf
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 affinity pod affinity preferred during scheduling ignored during execution items0 pod affinity term namespace selector match expressions items0
 
     Attributes
@@ -23008,13 +24066,17 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAf
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 affinity pod affinity required during scheduling ignored during execution items0
 
     Attributes
     ----------
     labelSelector : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector, default is Undefined, optional
         label selector
+    matchLabelKeys : [str], default is Undefined, optional
+        match label keys
+    mismatchLabelKeys : [str], default is Undefined, optional
+        mismatch label keys
     namespaceSelector : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector, default is Undefined, optional
         namespace selector
     namespaces : [str], default is Undefined, optional
@@ -23026,6 +24088,10 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAf
 
     labelSelector?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector
 
+    matchLabelKeys?: [str]
+
+    mismatchLabelKeys?: [str]
+
     namespaceSelector?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector
 
     namespaces?: [str]
@@ -23034,7 +24100,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAf
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 affinity pod affinity required during scheduling ignored during execution items0 label selector
 
     Attributes
@@ -23052,7 +24118,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAf
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 affinity pod affinity required during scheduling ignored during execution items0 label selector match expressions items0
 
     Attributes
@@ -23074,7 +24140,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAf
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 affinity pod affinity required during scheduling ignored during execution items0 namespace selector
 
     Attributes
@@ -23092,7 +24158,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAf
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 affinity pod affinity required during scheduling ignored during execution items0 namespace selector match expressions items0
 
     Attributes
@@ -23114,7 +24180,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAf
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAntiAffinity:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 affinity pod anti affinity
 
     Attributes
@@ -23132,7 +24198,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAn
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 affinity pod anti affinity preferred during scheduling ignored during execution items0
 
     Attributes
@@ -23150,13 +24216,17 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAn
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTerm:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 affinity pod anti affinity preferred during scheduling ignored during execution items0 pod affinity term
 
     Attributes
     ----------
     labelSelector : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector, default is Undefined, optional
         label selector
+    matchLabelKeys : [str], default is Undefined, optional
+        match label keys
+    mismatchLabelKeys : [str], default is Undefined, optional
+        mismatch label keys
     namespaceSelector : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector, default is Undefined, optional
         namespace selector
     namespaces : [str], default is Undefined, optional
@@ -23168,6 +24238,10 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAn
 
     labelSelector?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector
 
+    matchLabelKeys?: [str]
+
+    mismatchLabelKeys?: [str]
+
     namespaceSelector?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector
 
     namespaces?: [str]
@@ -23176,7 +24250,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAn
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 affinity pod anti affinity preferred during scheduling ignored during execution items0 pod affinity term label selector
 
     Attributes
@@ -23194,7 +24268,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAn
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 affinity pod anti affinity preferred during scheduling ignored during execution items0 pod affinity term label selector match expressions items0
 
     Attributes
@@ -23216,7 +24290,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAn
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 affinity pod anti affinity preferred during scheduling ignored during execution items0 pod affinity term namespace selector
 
     Attributes
@@ -23234,7 +24308,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAn
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 affinity pod anti affinity preferred during scheduling ignored during execution items0 pod affinity term namespace selector match expressions items0
 
     Attributes
@@ -23256,13 +24330,17 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAn
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 affinity pod anti affinity required during scheduling ignored during execution items0
 
     Attributes
     ----------
     labelSelector : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector, default is Undefined, optional
         label selector
+    matchLabelKeys : [str], default is Undefined, optional
+        match label keys
+    mismatchLabelKeys : [str], default is Undefined, optional
+        mismatch label keys
     namespaceSelector : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector, default is Undefined, optional
         namespace selector
     namespaces : [str], default is Undefined, optional
@@ -23274,6 +24352,10 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAn
 
     labelSelector?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector
 
+    matchLabelKeys?: [str]
+
+    mismatchLabelKeys?: [str]
+
     namespaceSelector?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector
 
     namespaces?: [str]
@@ -23282,7 +24364,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAn
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 affinity pod anti affinity required during scheduling ignored during execution items0 label selector
 
     Attributes
@@ -23300,7 +24382,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAn
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 affinity pod anti affinity required during scheduling ignored during execution items0 label selector match expressions items0
 
     Attributes
@@ -23322,7 +24404,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAn
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 affinity pod anti affinity required during scheduling ignored during execution items0 namespace selector
 
     Attributes
@@ -23340,7 +24422,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAn
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 affinity pod anti affinity required during scheduling ignored during execution items0 namespace selector match expressions items0
 
     Attributes
@@ -23362,7 +24444,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0AffinityPodAn
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocation:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 archive location
 
     Attributes
@@ -23412,7 +24494,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocati
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocationArtifactory:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 archive location artifactory
 
     Attributes
@@ -23434,7 +24516,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocati
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocationArtifactoryPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 archive location artifactory password secret
 
     Attributes
@@ -23450,13 +24532,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocati
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocationArtifactoryUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 archive location artifactory username secret
 
     Attributes
@@ -23472,13 +24554,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocati
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocationAzure:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 archive location azure
 
     Attributes
@@ -23508,7 +24590,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocati
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocationAzureAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 archive location azure account key secret
 
     Attributes
@@ -23524,13 +24606,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocati
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocationGcs:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 archive location gcs
 
     Attributes
@@ -23552,7 +24634,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocati
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocationGcsServiceAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 archive location gcs service account key secret
 
     Attributes
@@ -23568,13 +24650,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocati
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocationGit:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 archive location git
 
     Attributes
@@ -23589,6 +24671,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocati
         fetch
     insecureIgnoreHostKey : bool, default is Undefined, optional
         insecure ignore host key
+    insecureSkipTLS : bool, default is Undefined, optional
+        insecure skip TLS
     passwordSecret : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocationGitPasswordSecret, default is Undefined, optional
         password secret
     repo : str, default is Undefined, required
@@ -23614,6 +24698,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocati
 
     insecureIgnoreHostKey?: bool
 
+    insecureSkipTLS?: bool
+
     passwordSecret?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocationGitPasswordSecret
 
     repo: str
@@ -23628,7 +24714,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocati
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocationGitPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 archive location git password secret
 
     Attributes
@@ -23644,13 +24730,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocati
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocationGitSSHPrivateKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 archive location git SSH private key secret
 
     Attributes
@@ -23666,13 +24752,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocati
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocationGitUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 archive location git username secret
 
     Attributes
@@ -23688,13 +24774,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocati
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocationHTTP:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 archive location HTTP
 
     Attributes
@@ -23716,7 +24802,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocati
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocationHTTPAuth:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 archive location HTTP auth
 
     Attributes
@@ -23738,7 +24824,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocati
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocationHTTPAuthBasicAuth:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 archive location HTTP auth basic auth
 
     Attributes
@@ -23756,7 +24842,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocati
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocationHTTPAuthBasicAuthPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 archive location HTTP auth basic auth password secret
 
     Attributes
@@ -23772,13 +24858,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocati
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocationHTTPAuthBasicAuthUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 archive location HTTP auth basic auth username secret
 
     Attributes
@@ -23794,13 +24880,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocati
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocationHTTPAuthClientCert:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 archive location HTTP auth client cert
 
     Attributes
@@ -23818,7 +24904,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocati
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocationHTTPAuthClientCertClientCertSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 archive location HTTP auth client cert client cert secret
 
     Attributes
@@ -23834,13 +24920,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocati
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocationHTTPAuthClientCertClientKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 archive location HTTP auth client cert client key secret
 
     Attributes
@@ -23856,13 +24942,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocati
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocationHTTPAuthOauth2:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 archive location HTTP auth oauth2
 
     Attributes
@@ -23892,7 +24978,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocati
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocationHTTPAuthOauth2ClientIDSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 archive location HTTP auth oauth2 client ID secret
 
     Attributes
@@ -23908,13 +24994,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocati
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocationHTTPAuthOauth2ClientSecretSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 archive location HTTP auth oauth2 client secret secret
 
     Attributes
@@ -23930,13 +25016,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocati
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocationHTTPAuthOauth2EndpointParamsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 archive location HTTP auth oauth2 endpoint params items0
 
     Attributes
@@ -23954,7 +25040,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocati
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocationHTTPAuthOauth2TokenURLSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 archive location HTTP auth oauth2 token URL secret
 
     Attributes
@@ -23970,13 +25056,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocati
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocationHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 archive location HTTP headers items0
 
     Attributes
@@ -23994,13 +25080,15 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocati
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocationHdfs:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 archive location hdfs
 
     Attributes
     ----------
     addresses : [str], default is Undefined, optional
         addresses
+    dataTransferProtection : str, default is Undefined, optional
+        data transfer protection
     force : bool, default is Undefined, optional
         force
     hdfsUser : str, default is Undefined, optional
@@ -24024,6 +25112,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocati
 
     addresses?: [str]
 
+    dataTransferProtection?: str
+
     force?: bool
 
     hdfsUser?: str
@@ -24044,7 +25134,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocati
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocationHdfsKrbCCacheSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 archive location hdfs krb c cache secret
 
     Attributes
@@ -24060,13 +25150,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocati
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocationHdfsKrbConfigConfigMap:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 archive location hdfs krb config config map
 
     Attributes
@@ -24082,13 +25172,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocati
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocationHdfsKrbKeytabSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 archive location hdfs krb keytab secret
 
     Attributes
@@ -24104,13 +25194,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocati
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocationOss:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 archive location oss
 
     Attributes
@@ -24156,7 +25246,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocati
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocationOssAccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 archive location oss access key secret
 
     Attributes
@@ -24172,13 +25262,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocati
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocationOssLifecycleRule:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 archive location oss lifecycle rule
 
     Attributes
@@ -24196,7 +25286,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocati
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocationOssSecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 archive location oss secret key secret
 
     Attributes
@@ -24212,13 +25302,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocati
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocationRaw:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 archive location raw
 
     Attributes
@@ -24232,7 +25322,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocati
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocationS3:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 archive location s3
 
     Attributes
@@ -24259,6 +25349,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocati
         role a r n
     secretKeySecret : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocationS3SecretKeySecret, default is Undefined, optional
         secret key secret
+    sessionTokenSecret : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocationS3SessionTokenSecret, default is Undefined, optional
+        session token secret
     useSDKCreds : bool, default is Undefined, optional
         use s d k creds
     """
@@ -24286,11 +25378,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocati
 
     secretKeySecret?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocationS3SecretKeySecret
 
+    sessionTokenSecret?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocationS3SessionTokenSecret
+
     useSDKCreds?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocationS3AccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 archive location s3 access key secret
 
     Attributes
@@ -24306,13 +25400,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocati
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocationS3CaSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 archive location s3 ca secret
 
     Attributes
@@ -24328,13 +25422,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocati
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocationS3CreateBucketIfNotPresent:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 archive location s3 create bucket if not present
 
     Attributes
@@ -24348,7 +25442,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocati
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocationS3EncryptionOptions:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 archive location s3 encryption options
 
     Attributes
@@ -24374,7 +25468,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocati
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocationS3EncryptionOptionsServerSideCustomerKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 archive location s3 encryption options server side customer key secret
 
     Attributes
@@ -24390,13 +25484,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocati
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocationS3SecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 archive location s3 secret key secret
 
     Attributes
@@ -24412,13 +25506,35 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocati
 
     key: str
 
-    name?: str
+    name?: str = ""
+
+    optional?: bool
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ArchiveLocationS3SessionTokenSecret:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec templates items0 archive location s3 session token secret
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0Container:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container
 
     Attributes
@@ -24445,8 +25561,12 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0Container:
         ports
     readinessProbe : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerReadinessProbe, default is Undefined, optional
         readiness probe
+    resizePolicy : [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerResizePolicyItems0], default is Undefined, optional
+        resize policy
     resources : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerResources, default is Undefined, optional
         resources
+    restartPolicy : str, default is Undefined, optional
+        restart policy
     securityContext : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSecurityContext, default is Undefined, optional
         security context
     startupProbe : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerStartupProbe, default is Undefined, optional
@@ -24492,7 +25612,11 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0Container:
 
     readinessProbe?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerReadinessProbe
 
+    resizePolicy?: [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerResizePolicyItems0]
+
     resources?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerResources
+
+    restartPolicy?: str
 
     securityContext?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSecurityContext
 
@@ -24516,7 +25640,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0Container:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerEnvFromItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container env from items0
 
     Attributes
@@ -24538,7 +25662,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerEnvF
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerEnvFromItems0ConfigMapRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container env from items0 config map ref
 
     Attributes
@@ -24550,13 +25674,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerEnvF
     """
 
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerEnvFromItems0SecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container env from items0 secret ref
 
     Attributes
@@ -24568,13 +25692,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerEnvF
     """
 
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerEnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container env items0
 
     Attributes
@@ -24596,7 +25720,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerEnvI
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerEnvItems0ValueFrom:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container env items0 value from
 
     Attributes
@@ -24622,7 +25746,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerEnvI
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerEnvItems0ValueFromConfigMapKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container env items0 value from config map key ref
 
     Attributes
@@ -24638,13 +25762,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerEnvI
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerEnvItems0ValueFromFieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container env items0 value from field ref
 
     Attributes
@@ -24662,7 +25786,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerEnvI
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerEnvItems0ValueFromResourceFieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container env items0 value from resource field ref
 
     Attributes
@@ -24688,7 +25812,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerEnvI
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerEnvItems0ValueFromSecretKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container env items0 value from secret key ref
 
     Attributes
@@ -24704,13 +25828,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerEnvI
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerLifecycle:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container lifecycle
 
     Attributes
@@ -24728,7 +25852,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerLife
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerLifecyclePostStart:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container lifecycle post start
 
     Attributes
@@ -24737,6 +25861,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerLife
         exec
     httpGet : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerLifecyclePostStartHTTPGet, default is Undefined, optional
         http get
+    sleep : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerLifecyclePostStartSleep, default is Undefined, optional
+        sleep
     tcpSocket : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerLifecyclePostStartTCPSocket, default is Undefined, optional
         tcp socket
     """
@@ -24746,11 +25872,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerLife
 
     httpGet?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerLifecyclePostStartHTTPGet
 
+    sleep?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerLifecyclePostStartSleep
+
     tcpSocket?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerLifecyclePostStartTCPSocket
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerLifecyclePostStartExec:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container lifecycle post start exec
 
     Attributes
@@ -24764,7 +25892,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerLife
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerLifecyclePostStartHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container lifecycle post start HTTP get
 
     Attributes
@@ -24794,7 +25922,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerLife
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerLifecyclePostStartHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container lifecycle post start HTTP get HTTP headers items0
 
     Attributes
@@ -24811,8 +25939,22 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerLife
     value: str
 
 
-schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerLifecyclePostStartTCPSocket:
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerLifecyclePostStartSleep:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec templates items0 container lifecycle post start sleep
+
+    Attributes
+    ----------
+    seconds : int, default is Undefined, required
+        seconds
     """
+
+
+    seconds: int
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerLifecyclePostStartTCPSocket:
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container lifecycle post start TCP socket
 
     Attributes
@@ -24830,7 +25972,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerLife
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerLifecyclePreStop:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container lifecycle pre stop
 
     Attributes
@@ -24839,6 +25981,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerLife
         exec
     httpGet : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerLifecyclePreStopHTTPGet, default is Undefined, optional
         http get
+    sleep : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerLifecyclePreStopSleep, default is Undefined, optional
+        sleep
     tcpSocket : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerLifecyclePreStopTCPSocket, default is Undefined, optional
         tcp socket
     """
@@ -24848,11 +25992,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerLife
 
     httpGet?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerLifecyclePreStopHTTPGet
 
+    sleep?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerLifecyclePreStopSleep
+
     tcpSocket?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerLifecyclePreStopTCPSocket
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerLifecyclePreStopExec:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container lifecycle pre stop exec
 
     Attributes
@@ -24866,7 +26012,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerLife
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerLifecyclePreStopHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container lifecycle pre stop HTTP get
 
     Attributes
@@ -24896,7 +26042,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerLife
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerLifecyclePreStopHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container lifecycle pre stop HTTP get HTTP headers items0
 
     Attributes
@@ -24913,8 +26059,22 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerLife
     value: str
 
 
-schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerLifecyclePreStopTCPSocket:
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerLifecyclePreStopSleep:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec templates items0 container lifecycle pre stop sleep
+
+    Attributes
+    ----------
+    seconds : int, default is Undefined, required
+        seconds
     """
+
+
+    seconds: int
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerLifecyclePreStopTCPSocket:
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container lifecycle pre stop TCP socket
 
     Attributes
@@ -24932,7 +26092,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerLife
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerLivenessProbe:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container liveness probe
 
     Attributes
@@ -24982,7 +26142,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerLive
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerLivenessProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container liveness probe exec
 
     Attributes
@@ -24996,7 +26156,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerLive
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerLivenessProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container liveness probe grpc
 
     Attributes
@@ -25014,7 +26174,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerLive
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerLivenessProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container liveness probe HTTP get
 
     Attributes
@@ -25044,7 +26204,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerLive
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerLivenessProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container liveness probe HTTP get HTTP headers items0
 
     Attributes
@@ -25062,7 +26222,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerLive
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerLivenessProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container liveness probe TCP socket
 
     Attributes
@@ -25080,7 +26240,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerLive
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerPortsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container ports items0
 
     Attributes
@@ -25110,7 +26270,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerPort
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerReadinessProbe:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container readiness probe
 
     Attributes
@@ -25160,7 +26320,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerRead
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerReadinessProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container readiness probe exec
 
     Attributes
@@ -25174,7 +26334,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerRead
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerReadinessProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container readiness probe grpc
 
     Attributes
@@ -25192,7 +26352,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerRead
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerReadinessProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container readiness probe HTTP get
 
     Attributes
@@ -25222,7 +26382,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerRead
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerReadinessProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container readiness probe HTTP get HTTP headers items0
 
     Attributes
@@ -25240,7 +26400,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerRead
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerReadinessProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container readiness probe TCP socket
 
     Attributes
@@ -25257,8 +26417,26 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerRead
     port: int | str
 
 
-schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerResources:
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerResizePolicyItems0:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec templates items0 container resize policy items0
+
+    Attributes
+    ----------
+    resourceName : str, default is Undefined, required
+        resource name
+    restartPolicy : str, default is Undefined, required
+        restart policy
     """
+
+
+    resourceName: str
+
+    restartPolicy: str
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerResources:
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container resources
 
     Attributes
@@ -25280,12 +26458,12 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerReso
 
 
     check:
-        all _, limits in limits {_regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests {_regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerResourcesClaimsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container resources claims items0
 
     Attributes
@@ -25299,13 +26477,15 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerReso
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSecurityContext:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container security context
 
     Attributes
     ----------
     allowPrivilegeEscalation : bool, default is Undefined, optional
         allow privilege escalation
+    appArmorProfile : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSecurityContextAppArmorProfile, default is Undefined, optional
+        app armor profile
     capabilities : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSecurityContextCapabilities, default is Undefined, optional
         capabilities
     privileged : bool, default is Undefined, optional
@@ -25331,6 +26511,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSecu
 
     allowPrivilegeEscalation?: bool
 
+    appArmorProfile?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSecurityContextAppArmorProfile
+
     capabilities?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSecurityContextCapabilities
 
     privileged?: bool
@@ -25352,8 +26534,26 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSecu
     windowsOptions?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSecurityContextWindowsOptions
 
 
-schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSecurityContextCapabilities:
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSecurityContextAppArmorProfile:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec templates items0 container security context app armor profile
+
+    Attributes
+    ----------
+    localhostProfile : str, default is Undefined, optional
+        localhost profile
+    $type : str, default is Undefined, required
+        type
     """
+
+
+    localhostProfile?: str
+
+    $type: str
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSecurityContextCapabilities:
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container security context capabilities
 
     Attributes
@@ -25371,7 +26571,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSecu
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSecurityContextSeLinuxOptions:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container security context se linux options
 
     Attributes
@@ -25397,7 +26597,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSecu
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSecurityContextSeccompProfile:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container security context seccomp profile
 
     Attributes
@@ -25415,7 +26615,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSecu
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSecurityContextWindowsOptions:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container security context windows options
 
     Attributes
@@ -25441,7 +26641,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSecu
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSet:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container set
 
     Attributes
@@ -25463,7 +26663,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSet:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container set containers items0
 
     Attributes
@@ -25492,8 +26692,12 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetC
         ports
     readinessProbe : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0ReadinessProbe, default is Undefined, optional
         readiness probe
+    resizePolicy : [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0ResizePolicyItems0], default is Undefined, optional
+        resize policy
     resources : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0Resources, default is Undefined, optional
         resources
+    restartPolicy : str, default is Undefined, optional
+        restart policy
     securityContext : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0SecurityContext, default is Undefined, optional
         security context
     startupProbe : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0StartupProbe, default is Undefined, optional
@@ -25541,7 +26745,11 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetC
 
     readinessProbe?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0ReadinessProbe
 
+    resizePolicy?: [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0ResizePolicyItems0]
+
     resources?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0Resources
+
+    restartPolicy?: str
 
     securityContext?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0SecurityContext
 
@@ -25565,7 +26773,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetC
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0EnvFromItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container set containers items0 env from items0
 
     Attributes
@@ -25587,7 +26795,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetC
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0EnvFromItems0ConfigMapRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container set containers items0 env from items0 config map ref
 
     Attributes
@@ -25599,13 +26807,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetC
     """
 
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0EnvFromItems0SecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container set containers items0 env from items0 secret ref
 
     Attributes
@@ -25617,13 +26825,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetC
     """
 
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0EnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container set containers items0 env items0
 
     Attributes
@@ -25645,7 +26853,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetC
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0EnvItems0ValueFrom:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container set containers items0 env items0 value from
 
     Attributes
@@ -25671,7 +26879,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetC
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0EnvItems0ValueFromConfigMapKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container set containers items0 env items0 value from config map key ref
 
     Attributes
@@ -25687,13 +26895,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetC
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0EnvItems0ValueFromFieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container set containers items0 env items0 value from field ref
 
     Attributes
@@ -25711,7 +26919,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetC
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0EnvItems0ValueFromResourceFieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container set containers items0 env items0 value from resource field ref
 
     Attributes
@@ -25737,7 +26945,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetC
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0EnvItems0ValueFromSecretKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container set containers items0 env items0 value from secret key ref
 
     Attributes
@@ -25753,13 +26961,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetC
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0Lifecycle:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container set containers items0 lifecycle
 
     Attributes
@@ -25777,7 +26985,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetC
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0LifecyclePostStart:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container set containers items0 lifecycle post start
 
     Attributes
@@ -25786,6 +26994,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetC
         exec
     httpGet : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0LifecyclePostStartHTTPGet, default is Undefined, optional
         http get
+    sleep : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0LifecyclePostStartSleep, default is Undefined, optional
+        sleep
     tcpSocket : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0LifecyclePostStartTCPSocket, default is Undefined, optional
         tcp socket
     """
@@ -25795,11 +27005,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetC
 
     httpGet?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0LifecyclePostStartHTTPGet
 
+    sleep?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0LifecyclePostStartSleep
+
     tcpSocket?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0LifecyclePostStartTCPSocket
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0LifecyclePostStartExec:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container set containers items0 lifecycle post start exec
 
     Attributes
@@ -25813,7 +27025,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetC
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0LifecyclePostStartHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container set containers items0 lifecycle post start HTTP get
 
     Attributes
@@ -25843,7 +27055,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetC
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0LifecyclePostStartHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container set containers items0 lifecycle post start HTTP get HTTP headers items0
 
     Attributes
@@ -25860,8 +27072,22 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetC
     value: str
 
 
-schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0LifecyclePostStartTCPSocket:
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0LifecyclePostStartSleep:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec templates items0 container set containers items0 lifecycle post start sleep
+
+    Attributes
+    ----------
+    seconds : int, default is Undefined, required
+        seconds
     """
+
+
+    seconds: int
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0LifecyclePostStartTCPSocket:
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container set containers items0 lifecycle post start TCP socket
 
     Attributes
@@ -25879,7 +27105,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetC
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0LifecyclePreStop:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container set containers items0 lifecycle pre stop
 
     Attributes
@@ -25888,6 +27114,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetC
         exec
     httpGet : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0LifecyclePreStopHTTPGet, default is Undefined, optional
         http get
+    sleep : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0LifecyclePreStopSleep, default is Undefined, optional
+        sleep
     tcpSocket : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0LifecyclePreStopTCPSocket, default is Undefined, optional
         tcp socket
     """
@@ -25897,11 +27125,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetC
 
     httpGet?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0LifecyclePreStopHTTPGet
 
+    sleep?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0LifecyclePreStopSleep
+
     tcpSocket?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0LifecyclePreStopTCPSocket
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0LifecyclePreStopExec:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container set containers items0 lifecycle pre stop exec
 
     Attributes
@@ -25915,7 +27145,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetC
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0LifecyclePreStopHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container set containers items0 lifecycle pre stop HTTP get
 
     Attributes
@@ -25945,7 +27175,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetC
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0LifecyclePreStopHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container set containers items0 lifecycle pre stop HTTP get HTTP headers items0
 
     Attributes
@@ -25962,8 +27192,22 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetC
     value: str
 
 
-schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0LifecyclePreStopTCPSocket:
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0LifecyclePreStopSleep:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec templates items0 container set containers items0 lifecycle pre stop sleep
+
+    Attributes
+    ----------
+    seconds : int, default is Undefined, required
+        seconds
     """
+
+
+    seconds: int
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0LifecyclePreStopTCPSocket:
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container set containers items0 lifecycle pre stop TCP socket
 
     Attributes
@@ -25981,7 +27225,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetC
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0LivenessProbe:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container set containers items0 liveness probe
 
     Attributes
@@ -26031,7 +27275,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetC
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0LivenessProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container set containers items0 liveness probe exec
 
     Attributes
@@ -26045,7 +27289,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetC
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0LivenessProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container set containers items0 liveness probe grpc
 
     Attributes
@@ -26063,7 +27307,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetC
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0LivenessProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container set containers items0 liveness probe HTTP get
 
     Attributes
@@ -26093,7 +27337,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetC
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0LivenessProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container set containers items0 liveness probe HTTP get HTTP headers items0
 
     Attributes
@@ -26111,7 +27355,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetC
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0LivenessProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container set containers items0 liveness probe TCP socket
 
     Attributes
@@ -26129,7 +27373,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetC
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0PortsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container set containers items0 ports items0
 
     Attributes
@@ -26159,7 +27403,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetC
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0ReadinessProbe:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container set containers items0 readiness probe
 
     Attributes
@@ -26209,7 +27453,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetC
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0ReadinessProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container set containers items0 readiness probe exec
 
     Attributes
@@ -26223,7 +27467,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetC
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0ReadinessProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container set containers items0 readiness probe grpc
 
     Attributes
@@ -26241,7 +27485,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetC
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0ReadinessProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container set containers items0 readiness probe HTTP get
 
     Attributes
@@ -26271,7 +27515,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetC
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0ReadinessProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container set containers items0 readiness probe HTTP get HTTP headers items0
 
     Attributes
@@ -26289,7 +27533,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetC
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0ReadinessProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container set containers items0 readiness probe TCP socket
 
     Attributes
@@ -26306,8 +27550,26 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetC
     port: int | str
 
 
-schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0Resources:
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0ResizePolicyItems0:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec templates items0 container set containers items0 resize policy items0
+
+    Attributes
+    ----------
+    resourceName : str, default is Undefined, required
+        resource name
+    restartPolicy : str, default is Undefined, required
+        restart policy
     """
+
+
+    resourceName: str
+
+    restartPolicy: str
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0Resources:
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container set containers items0 resources
 
     Attributes
@@ -26329,12 +27591,12 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetC
 
 
     check:
-        all _, limits in limits {_regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests {_regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0ResourcesClaimsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container set containers items0 resources claims items0
 
     Attributes
@@ -26348,13 +27610,15 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetC
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0SecurityContext:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container set containers items0 security context
 
     Attributes
     ----------
     allowPrivilegeEscalation : bool, default is Undefined, optional
         allow privilege escalation
+    appArmorProfile : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0SecurityContextAppArmorProfile, default is Undefined, optional
+        app armor profile
     capabilities : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0SecurityContextCapabilities, default is Undefined, optional
         capabilities
     privileged : bool, default is Undefined, optional
@@ -26380,6 +27644,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetC
 
     allowPrivilegeEscalation?: bool
 
+    appArmorProfile?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0SecurityContextAppArmorProfile
+
     capabilities?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0SecurityContextCapabilities
 
     privileged?: bool
@@ -26401,8 +27667,26 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetC
     windowsOptions?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0SecurityContextWindowsOptions
 
 
-schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0SecurityContextCapabilities:
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0SecurityContextAppArmorProfile:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec templates items0 container set containers items0 security context app armor profile
+
+    Attributes
+    ----------
+    localhostProfile : str, default is Undefined, optional
+        localhost profile
+    $type : str, default is Undefined, required
+        type
     """
+
+
+    localhostProfile?: str
+
+    $type: str
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0SecurityContextCapabilities:
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container set containers items0 security context capabilities
 
     Attributes
@@ -26420,7 +27704,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetC
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0SecurityContextSeLinuxOptions:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container set containers items0 security context se linux options
 
     Attributes
@@ -26446,7 +27730,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetC
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0SecurityContextSeccompProfile:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container set containers items0 security context seccomp profile
 
     Attributes
@@ -26464,7 +27748,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetC
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0SecurityContextWindowsOptions:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container set containers items0 security context windows options
 
     Attributes
@@ -26490,7 +27774,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetC
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0StartupProbe:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container set containers items0 startup probe
 
     Attributes
@@ -26540,7 +27824,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetC
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0StartupProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container set containers items0 startup probe exec
 
     Attributes
@@ -26554,7 +27838,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetC
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0StartupProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container set containers items0 startup probe grpc
 
     Attributes
@@ -26572,7 +27856,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetC
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0StartupProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container set containers items0 startup probe HTTP get
 
     Attributes
@@ -26602,7 +27886,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetC
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0StartupProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container set containers items0 startup probe HTTP get HTTP headers items0
 
     Attributes
@@ -26620,7 +27904,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetC
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0StartupProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container set containers items0 startup probe TCP socket
 
     Attributes
@@ -26638,7 +27922,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetC
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0VolumeDevicesItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container set containers items0 volume devices items0
 
     Attributes
@@ -26656,7 +27940,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetC
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetContainersItems0VolumeMountsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container set containers items0 volume mounts items0
 
     Attributes
@@ -26669,6 +27953,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetC
         name
     readOnly : bool, default is Undefined, optional
         read only
+    recursiveReadOnly : str, default is Undefined, optional
+        recursive read only
     subPath : str, default is Undefined, optional
         sub path
     subPathExpr : str, default is Undefined, optional
@@ -26684,13 +27970,15 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetC
 
     readOnly?: bool
 
+    recursiveReadOnly?: str
+
     subPath?: str
 
     subPathExpr?: str
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetRetryStrategy:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container set retry strategy
 
     Attributes
@@ -26708,7 +27996,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetR
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetVolumeMountsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container set volume mounts items0
 
     Attributes
@@ -26721,6 +28009,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetV
         name
     readOnly : bool, default is Undefined, optional
         read only
+    recursiveReadOnly : str, default is Undefined, optional
+        recursive read only
     subPath : str, default is Undefined, optional
         sub path
     subPathExpr : str, default is Undefined, optional
@@ -26736,13 +28026,15 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerSetV
 
     readOnly?: bool
 
+    recursiveReadOnly?: str
+
     subPath?: str
 
     subPathExpr?: str
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerStartupProbe:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container startup probe
 
     Attributes
@@ -26792,7 +28084,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerStar
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerStartupProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container startup probe exec
 
     Attributes
@@ -26806,7 +28098,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerStar
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerStartupProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container startup probe grpc
 
     Attributes
@@ -26824,7 +28116,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerStar
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerStartupProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container startup probe HTTP get
 
     Attributes
@@ -26854,7 +28146,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerStar
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerStartupProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container startup probe HTTP get HTTP headers items0
 
     Attributes
@@ -26872,7 +28164,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerStar
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerStartupProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container startup probe TCP socket
 
     Attributes
@@ -26890,7 +28182,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerStar
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerVolumeDevicesItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container volume devices items0
 
     Attributes
@@ -26908,7 +28200,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerVolu
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerVolumeMountsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 container volume mounts items0
 
     Attributes
@@ -26921,6 +28213,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerVolu
         name
     readOnly : bool, default is Undefined, optional
         read only
+    recursiveReadOnly : str, default is Undefined, optional
+        recursive read only
     subPath : str, default is Undefined, optional
         sub path
     subPathExpr : str, default is Undefined, optional
@@ -26936,13 +28230,15 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ContainerVolu
 
     readOnly?: bool
 
+    recursiveReadOnly?: str
+
     subPath?: str
 
     subPathExpr?: str
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0Dag:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag
 
     Attributes
@@ -26964,7 +28260,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0Dag:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0
 
     Attributes
@@ -27030,7 +28326,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0Arguments:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 arguments
 
     Attributes
@@ -27048,7 +28344,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 arguments artifacts items0
 
     Attributes
@@ -27146,7 +28442,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0Archive:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 arguments artifacts items0 archive
 
     Attributes
@@ -27168,7 +28464,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0ArchiveTar:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 arguments artifacts items0 archive tar
 
     Attributes
@@ -27182,7 +28478,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0ArtifactGC:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 arguments artifacts items0 artifact g c
 
     Attributes
@@ -27204,7 +28500,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0ArtifactGCPodMetadata:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 arguments artifacts items0 artifact g c pod metadata
 
     Attributes
@@ -27222,7 +28518,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0Artifactory:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 arguments artifacts items0 artifactory
 
     Attributes
@@ -27244,7 +28540,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0ArtifactoryPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 arguments artifacts items0 artifactory password secret
 
     Attributes
@@ -27260,13 +28556,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0ArtifactoryUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 arguments artifacts items0 artifactory username secret
 
     Attributes
@@ -27282,13 +28578,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0Azure:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 arguments artifacts items0 azure
 
     Attributes
@@ -27318,7 +28614,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0AzureAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 arguments artifacts items0 azure account key secret
 
     Attributes
@@ -27334,13 +28630,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0Gcs:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 arguments artifacts items0 gcs
 
     Attributes
@@ -27362,7 +28658,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0GcsServiceAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 arguments artifacts items0 gcs service account key secret
 
     Attributes
@@ -27378,13 +28674,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0Git:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 arguments artifacts items0 git
 
     Attributes
@@ -27399,6 +28695,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
         fetch
     insecureIgnoreHostKey : bool, default is Undefined, optional
         insecure ignore host key
+    insecureSkipTLS : bool, default is Undefined, optional
+        insecure skip TLS
     passwordSecret : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0GitPasswordSecret, default is Undefined, optional
         password secret
     repo : str, default is Undefined, required
@@ -27424,6 +28722,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
     insecureIgnoreHostKey?: bool
 
+    insecureSkipTLS?: bool
+
     passwordSecret?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0GitPasswordSecret
 
     repo: str
@@ -27438,7 +28738,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0GitPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 arguments artifacts items0 git password secret
 
     Attributes
@@ -27454,13 +28754,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0GitSSHPrivateKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 arguments artifacts items0 git SSH private key secret
 
     Attributes
@@ -27476,13 +28776,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0GitUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 arguments artifacts items0 git username secret
 
     Attributes
@@ -27498,13 +28798,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0HTTP:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 arguments artifacts items0 HTTP
 
     Attributes
@@ -27526,7 +28826,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0HTTPAuth:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 arguments artifacts items0 HTTP auth
 
     Attributes
@@ -27548,7 +28848,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0HTTPAuthBasicAuth:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 arguments artifacts items0 HTTP auth basic auth
 
     Attributes
@@ -27566,7 +28866,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0HTTPAuthBasicAuthPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 arguments artifacts items0 HTTP auth basic auth password secret
 
     Attributes
@@ -27582,13 +28882,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0HTTPAuthBasicAuthUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 arguments artifacts items0 HTTP auth basic auth username secret
 
     Attributes
@@ -27604,13 +28904,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0HTTPAuthClientCert:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 arguments artifacts items0 HTTP auth client cert
 
     Attributes
@@ -27628,7 +28928,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0HTTPAuthClientCertClientCertSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 arguments artifacts items0 HTTP auth client cert client cert secret
 
     Attributes
@@ -27644,13 +28944,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0HTTPAuthClientCertClientKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 arguments artifacts items0 HTTP auth client cert client key secret
 
     Attributes
@@ -27666,13 +28966,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0HTTPAuthOauth2:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 arguments artifacts items0 HTTP auth oauth2
 
     Attributes
@@ -27702,7 +29002,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0HTTPAuthOauth2ClientIDSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 arguments artifacts items0 HTTP auth oauth2 client ID secret
 
     Attributes
@@ -27718,13 +29018,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0HTTPAuthOauth2ClientSecretSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 arguments artifacts items0 HTTP auth oauth2 client secret secret
 
     Attributes
@@ -27740,13 +29040,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0HTTPAuthOauth2EndpointParamsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 arguments artifacts items0 HTTP auth oauth2 endpoint params items0
 
     Attributes
@@ -27764,7 +29064,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0HTTPAuthOauth2TokenURLSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 arguments artifacts items0 HTTP auth oauth2 token URL secret
 
     Attributes
@@ -27780,13 +29080,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0HTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 arguments artifacts items0 HTTP headers items0
 
     Attributes
@@ -27804,13 +29104,15 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0Hdfs:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 arguments artifacts items0 hdfs
 
     Attributes
     ----------
     addresses : [str], default is Undefined, optional
         addresses
+    dataTransferProtection : str, default is Undefined, optional
+        data transfer protection
     force : bool, default is Undefined, optional
         force
     hdfsUser : str, default is Undefined, optional
@@ -27834,6 +29136,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
     addresses?: [str]
 
+    dataTransferProtection?: str
+
     force?: bool
 
     hdfsUser?: str
@@ -27854,7 +29158,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0HdfsKrbCCacheSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 arguments artifacts items0 hdfs krb c cache secret
 
     Attributes
@@ -27870,13 +29174,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0HdfsKrbConfigConfigMap:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 arguments artifacts items0 hdfs krb config config map
 
     Attributes
@@ -27892,13 +29196,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0HdfsKrbKeytabSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 arguments artifacts items0 hdfs krb keytab secret
 
     Attributes
@@ -27914,13 +29218,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0Oss:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 arguments artifacts items0 oss
 
     Attributes
@@ -27966,7 +29270,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0OssAccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 arguments artifacts items0 oss access key secret
 
     Attributes
@@ -27982,13 +29286,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0OssLifecycleRule:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 arguments artifacts items0 oss lifecycle rule
 
     Attributes
@@ -28006,7 +29310,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0OssSecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 arguments artifacts items0 oss secret key secret
 
     Attributes
@@ -28022,13 +29326,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0Raw:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 arguments artifacts items0 raw
 
     Attributes
@@ -28042,7 +29346,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0S3:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 arguments artifacts items0 s3
 
     Attributes
@@ -28069,6 +29373,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
         role a r n
     secretKeySecret : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0S3SecretKeySecret, default is Undefined, optional
         secret key secret
+    sessionTokenSecret : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0S3SessionTokenSecret, default is Undefined, optional
+        session token secret
     useSDKCreds : bool, default is Undefined, optional
         use s d k creds
     """
@@ -28096,11 +29402,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
     secretKeySecret?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0S3SecretKeySecret
 
+    sessionTokenSecret?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0S3SessionTokenSecret
+
     useSDKCreds?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0S3AccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 arguments artifacts items0 s3 access key secret
 
     Attributes
@@ -28116,13 +29424,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0S3CaSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 arguments artifacts items0 s3 ca secret
 
     Attributes
@@ -28138,13 +29446,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0S3CreateBucketIfNotPresent:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 arguments artifacts items0 s3 create bucket if not present
 
     Attributes
@@ -28158,7 +29466,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0S3EncryptionOptions:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 arguments artifacts items0 s3 encryption options
 
     Attributes
@@ -28184,7 +29492,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0S3EncryptionOptionsServerSideCustomerKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 arguments artifacts items0 s3 encryption options server side customer key secret
 
     Attributes
@@ -28200,13 +29508,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0S3SecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 arguments artifacts items0 s3 secret key secret
 
     Attributes
@@ -28222,13 +29530,35 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
     key: str
 
-    name?: str
+    name?: str = ""
+
+    optional?: bool
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0S3SessionTokenSecret:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 arguments artifacts items0 s3 session token secret
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ArgumentsParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 arguments parameters items0
 
     Attributes
@@ -28266,7 +29596,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ArgumentsParametersItems0ValueFrom:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 arguments parameters items0 value from
 
     Attributes
@@ -28312,7 +29642,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ArgumentsParametersItems0ValueFromConfigMapKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 arguments parameters items0 value from config map key ref
 
     Attributes
@@ -28328,13 +29658,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0ContinueOn:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 continue on
 
     Attributes
@@ -28352,7 +29682,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnon:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 hooks anon
 
     Attributes
@@ -28378,7 +29708,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArguments:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 hooks anon arguments
 
     Attributes
@@ -28396,7 +29726,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 hooks anon arguments artifacts items0
 
     Attributes
@@ -28494,7 +29824,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0Archive:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 archive
 
     Attributes
@@ -28516,7 +29846,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0ArchiveTar:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 archive tar
 
     Attributes
@@ -28530,7 +29860,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0ArtifactGC:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 artifact g c
 
     Attributes
@@ -28552,7 +29882,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0ArtifactGCPodMetadata:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 artifact g c pod metadata
 
     Attributes
@@ -28570,7 +29900,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0Artifactory:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 artifactory
 
     Attributes
@@ -28592,7 +29922,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0ArtifactoryPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 artifactory password secret
 
     Attributes
@@ -28608,13 +29938,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0ArtifactoryUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 artifactory username secret
 
     Attributes
@@ -28630,13 +29960,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0Azure:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 azure
 
     Attributes
@@ -28666,7 +29996,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0AzureAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 azure account key secret
 
     Attributes
@@ -28682,13 +30012,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0Gcs:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 gcs
 
     Attributes
@@ -28710,7 +30040,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0GcsServiceAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 gcs service account key secret
 
     Attributes
@@ -28726,13 +30056,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0Git:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 git
 
     Attributes
@@ -28747,6 +30077,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
         fetch
     insecureIgnoreHostKey : bool, default is Undefined, optional
         insecure ignore host key
+    insecureSkipTLS : bool, default is Undefined, optional
+        insecure skip TLS
     passwordSecret : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0GitPasswordSecret, default is Undefined, optional
         password secret
     repo : str, default is Undefined, required
@@ -28772,6 +30104,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
     insecureIgnoreHostKey?: bool
 
+    insecureSkipTLS?: bool
+
     passwordSecret?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0GitPasswordSecret
 
     repo: str
@@ -28786,7 +30120,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0GitPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 git password secret
 
     Attributes
@@ -28802,13 +30136,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0GitSSHPrivateKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 git SSH private key secret
 
     Attributes
@@ -28824,13 +30158,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0GitUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 git username secret
 
     Attributes
@@ -28846,13 +30180,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0HTTP:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 HTTP
 
     Attributes
@@ -28874,7 +30208,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0HTTPAuth:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 HTTP auth
 
     Attributes
@@ -28896,7 +30230,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0HTTPAuthBasicAuth:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 HTTP auth basic auth
 
     Attributes
@@ -28914,7 +30248,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0HTTPAuthBasicAuthPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 HTTP auth basic auth password secret
 
     Attributes
@@ -28930,13 +30264,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0HTTPAuthBasicAuthUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 HTTP auth basic auth username secret
 
     Attributes
@@ -28952,13 +30286,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0HTTPAuthClientCert:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 HTTP auth client cert
 
     Attributes
@@ -28976,7 +30310,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0HTTPAuthClientCertClientCertSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 HTTP auth client cert client cert secret
 
     Attributes
@@ -28992,13 +30326,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0HTTPAuthClientCertClientKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 HTTP auth client cert client key secret
 
     Attributes
@@ -29014,13 +30348,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0HTTPAuthOauth2:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 HTTP auth oauth2
 
     Attributes
@@ -29050,7 +30384,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0HTTPAuthOauth2ClientIDSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 HTTP auth oauth2 client ID secret
 
     Attributes
@@ -29066,13 +30400,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0HTTPAuthOauth2ClientSecretSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 HTTP auth oauth2 client secret secret
 
     Attributes
@@ -29088,13 +30422,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0HTTPAuthOauth2EndpointParamsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 HTTP auth oauth2 endpoint params items0
 
     Attributes
@@ -29112,7 +30446,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0HTTPAuthOauth2TokenURLSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 HTTP auth oauth2 token URL secret
 
     Attributes
@@ -29128,13 +30462,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0HTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 HTTP headers items0
 
     Attributes
@@ -29152,13 +30486,15 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0Hdfs:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 hdfs
 
     Attributes
     ----------
     addresses : [str], default is Undefined, optional
         addresses
+    dataTransferProtection : str, default is Undefined, optional
+        data transfer protection
     force : bool, default is Undefined, optional
         force
     hdfsUser : str, default is Undefined, optional
@@ -29182,6 +30518,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
     addresses?: [str]
 
+    dataTransferProtection?: str
+
     force?: bool
 
     hdfsUser?: str
@@ -29202,7 +30540,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0HdfsKrbCCacheSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 hdfs krb c cache secret
 
     Attributes
@@ -29218,13 +30556,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0HdfsKrbConfigConfigMap:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 hdfs krb config config map
 
     Attributes
@@ -29240,13 +30578,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0HdfsKrbKeytabSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 hdfs krb keytab secret
 
     Attributes
@@ -29262,13 +30600,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0Oss:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 oss
 
     Attributes
@@ -29314,7 +30652,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0OssAccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 oss access key secret
 
     Attributes
@@ -29330,13 +30668,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0OssLifecycleRule:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 oss lifecycle rule
 
     Attributes
@@ -29354,7 +30692,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0OssSecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 oss secret key secret
 
     Attributes
@@ -29370,13 +30708,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0Raw:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 raw
 
     Attributes
@@ -29390,7 +30728,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0S3:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 s3
 
     Attributes
@@ -29417,6 +30755,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
         role a r n
     secretKeySecret : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0S3SecretKeySecret, default is Undefined, optional
         secret key secret
+    sessionTokenSecret : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0S3SessionTokenSecret, default is Undefined, optional
+        session token secret
     useSDKCreds : bool, default is Undefined, optional
         use s d k creds
     """
@@ -29444,11 +30784,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
     secretKeySecret?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0S3SecretKeySecret
 
+    sessionTokenSecret?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0S3SessionTokenSecret
+
     useSDKCreds?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0S3AccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 s3 access key secret
 
     Attributes
@@ -29464,13 +30806,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0S3CaSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 s3 ca secret
 
     Attributes
@@ -29486,13 +30828,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0S3CreateBucketIfNotPresent:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 s3 create bucket if not present
 
     Attributes
@@ -29506,7 +30848,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0S3EncryptionOptions:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 s3 encryption options
 
     Attributes
@@ -29532,7 +30874,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0S3EncryptionOptionsServerSideCustomerKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 s3 encryption options server side customer key secret
 
     Attributes
@@ -29548,13 +30890,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0S3SecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 s3 secret key secret
 
     Attributes
@@ -29570,13 +30912,35 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
     key: str
 
-    name?: str
+    name?: str = ""
+
+    optional?: bool
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0S3SessionTokenSecret:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 s3 session token secret
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 hooks anon arguments parameters items0
 
     Attributes
@@ -29614,7 +30978,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsParametersItems0ValueFrom:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 hooks anon arguments parameters items0 value from
 
     Attributes
@@ -29660,7 +31024,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsParametersItems0ValueFromConfigMapKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 hooks anon arguments parameters items0 value from config map key ref
 
     Attributes
@@ -29676,13 +31040,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0HooksAnonTemplateRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 hooks anon template ref
 
     Attributes
@@ -29704,7 +31068,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0TemplateRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 template ref
 
     Attributes
@@ -29726,7 +31090,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems0WithSequence:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 dag tasks items0 with sequence
 
     Attributes
@@ -29752,7 +31116,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DagTasksItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0Data:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 data
 
     Attributes
@@ -29770,7 +31134,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0Data:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSource:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 data source
 
     Attributes
@@ -29784,7 +31148,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSource:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArtifactPaths:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 data source artifact paths
 
     Attributes
@@ -29882,7 +31246,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArt
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArtifactPathsArchive:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 data source artifact paths archive
 
     Attributes
@@ -29904,7 +31268,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArt
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArtifactPathsArchiveTar:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 data source artifact paths archive tar
 
     Attributes
@@ -29918,7 +31282,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArt
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArtifactPathsArtifactGC:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 data source artifact paths artifact g c
 
     Attributes
@@ -29940,7 +31304,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArt
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArtifactPathsArtifactGCPodMetadata:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 data source artifact paths artifact g c pod metadata
 
     Attributes
@@ -29958,7 +31322,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArt
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArtifactPathsArtifactory:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 data source artifact paths artifactory
 
     Attributes
@@ -29980,7 +31344,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArt
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArtifactPathsArtifactoryPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 data source artifact paths artifactory password secret
 
     Attributes
@@ -29996,13 +31360,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArt
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArtifactPathsArtifactoryUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 data source artifact paths artifactory username secret
 
     Attributes
@@ -30018,13 +31382,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArt
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArtifactPathsAzure:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 data source artifact paths azure
 
     Attributes
@@ -30054,7 +31418,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArt
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArtifactPathsAzureAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 data source artifact paths azure account key secret
 
     Attributes
@@ -30070,13 +31434,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArt
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArtifactPathsGcs:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 data source artifact paths gcs
 
     Attributes
@@ -30098,7 +31462,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArt
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArtifactPathsGcsServiceAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 data source artifact paths gcs service account key secret
 
     Attributes
@@ -30114,13 +31478,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArt
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArtifactPathsGit:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 data source artifact paths git
 
     Attributes
@@ -30135,6 +31499,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArt
         fetch
     insecureIgnoreHostKey : bool, default is Undefined, optional
         insecure ignore host key
+    insecureSkipTLS : bool, default is Undefined, optional
+        insecure skip TLS
     passwordSecret : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArtifactPathsGitPasswordSecret, default is Undefined, optional
         password secret
     repo : str, default is Undefined, required
@@ -30160,6 +31526,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArt
 
     insecureIgnoreHostKey?: bool
 
+    insecureSkipTLS?: bool
+
     passwordSecret?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArtifactPathsGitPasswordSecret
 
     repo: str
@@ -30174,7 +31542,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArt
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArtifactPathsGitPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 data source artifact paths git password secret
 
     Attributes
@@ -30190,13 +31558,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArt
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArtifactPathsGitSSHPrivateKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 data source artifact paths git SSH private key secret
 
     Attributes
@@ -30212,13 +31580,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArt
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArtifactPathsGitUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 data source artifact paths git username secret
 
     Attributes
@@ -30234,13 +31602,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArt
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArtifactPathsHTTP:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 data source artifact paths HTTP
 
     Attributes
@@ -30262,7 +31630,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArt
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArtifactPathsHTTPAuth:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 data source artifact paths HTTP auth
 
     Attributes
@@ -30284,7 +31652,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArt
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArtifactPathsHTTPAuthBasicAuth:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 data source artifact paths HTTP auth basic auth
 
     Attributes
@@ -30302,7 +31670,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArt
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArtifactPathsHTTPAuthBasicAuthPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 data source artifact paths HTTP auth basic auth password secret
 
     Attributes
@@ -30318,13 +31686,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArt
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArtifactPathsHTTPAuthBasicAuthUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 data source artifact paths HTTP auth basic auth username secret
 
     Attributes
@@ -30340,13 +31708,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArt
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArtifactPathsHTTPAuthClientCert:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 data source artifact paths HTTP auth client cert
 
     Attributes
@@ -30364,7 +31732,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArt
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArtifactPathsHTTPAuthClientCertClientCertSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 data source artifact paths HTTP auth client cert client cert secret
 
     Attributes
@@ -30380,13 +31748,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArt
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArtifactPathsHTTPAuthClientCertClientKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 data source artifact paths HTTP auth client cert client key secret
 
     Attributes
@@ -30402,13 +31770,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArt
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArtifactPathsHTTPAuthOauth2:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 data source artifact paths HTTP auth oauth2
 
     Attributes
@@ -30438,7 +31806,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArt
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArtifactPathsHTTPAuthOauth2ClientIDSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 data source artifact paths HTTP auth oauth2 client ID secret
 
     Attributes
@@ -30454,13 +31822,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArt
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArtifactPathsHTTPAuthOauth2ClientSecretSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 data source artifact paths HTTP auth oauth2 client secret secret
 
     Attributes
@@ -30476,13 +31844,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArt
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArtifactPathsHTTPAuthOauth2EndpointParamsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 data source artifact paths HTTP auth oauth2 endpoint params items0
 
     Attributes
@@ -30500,7 +31868,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArt
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArtifactPathsHTTPAuthOauth2TokenURLSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 data source artifact paths HTTP auth oauth2 token URL secret
 
     Attributes
@@ -30516,13 +31884,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArt
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArtifactPathsHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 data source artifact paths HTTP headers items0
 
     Attributes
@@ -30540,13 +31908,15 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArt
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArtifactPathsHdfs:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 data source artifact paths hdfs
 
     Attributes
     ----------
     addresses : [str], default is Undefined, optional
         addresses
+    dataTransferProtection : str, default is Undefined, optional
+        data transfer protection
     force : bool, default is Undefined, optional
         force
     hdfsUser : str, default is Undefined, optional
@@ -30570,6 +31940,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArt
 
     addresses?: [str]
 
+    dataTransferProtection?: str
+
     force?: bool
 
     hdfsUser?: str
@@ -30590,7 +31962,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArt
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArtifactPathsHdfsKrbCCacheSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 data source artifact paths hdfs krb c cache secret
 
     Attributes
@@ -30606,13 +31978,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArt
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArtifactPathsHdfsKrbConfigConfigMap:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 data source artifact paths hdfs krb config config map
 
     Attributes
@@ -30628,13 +32000,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArt
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArtifactPathsHdfsKrbKeytabSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 data source artifact paths hdfs krb keytab secret
 
     Attributes
@@ -30650,13 +32022,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArt
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArtifactPathsOss:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 data source artifact paths oss
 
     Attributes
@@ -30702,7 +32074,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArt
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArtifactPathsOssAccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 data source artifact paths oss access key secret
 
     Attributes
@@ -30718,13 +32090,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArt
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArtifactPathsOssLifecycleRule:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 data source artifact paths oss lifecycle rule
 
     Attributes
@@ -30742,7 +32114,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArt
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArtifactPathsOssSecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 data source artifact paths oss secret key secret
 
     Attributes
@@ -30758,13 +32130,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArt
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArtifactPathsRaw:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 data source artifact paths raw
 
     Attributes
@@ -30778,7 +32150,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArt
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArtifactPathsS3:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 data source artifact paths s3
 
     Attributes
@@ -30805,6 +32177,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArt
         role a r n
     secretKeySecret : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArtifactPathsS3SecretKeySecret, default is Undefined, optional
         secret key secret
+    sessionTokenSecret : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArtifactPathsS3SessionTokenSecret, default is Undefined, optional
+        session token secret
     useSDKCreds : bool, default is Undefined, optional
         use s d k creds
     """
@@ -30832,11 +32206,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArt
 
     secretKeySecret?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArtifactPathsS3SecretKeySecret
 
+    sessionTokenSecret?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArtifactPathsS3SessionTokenSecret
+
     useSDKCreds?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArtifactPathsS3AccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 data source artifact paths s3 access key secret
 
     Attributes
@@ -30852,13 +32228,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArt
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArtifactPathsS3CaSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 data source artifact paths s3 ca secret
 
     Attributes
@@ -30874,13 +32250,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArt
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArtifactPathsS3CreateBucketIfNotPresent:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 data source artifact paths s3 create bucket if not present
 
     Attributes
@@ -30894,7 +32270,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArt
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArtifactPathsS3EncryptionOptions:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 data source artifact paths s3 encryption options
 
     Attributes
@@ -30920,7 +32296,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArt
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArtifactPathsS3EncryptionOptionsServerSideCustomerKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 data source artifact paths s3 encryption options server side customer key secret
 
     Attributes
@@ -30936,13 +32312,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArt
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArtifactPathsS3SecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 data source artifact paths s3 secret key secret
 
     Attributes
@@ -30958,13 +32334,35 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArt
 
     key: str
 
-    name?: str
+    name?: str = ""
+
+    optional?: bool
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataSourceArtifactPathsS3SessionTokenSecret:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec templates items0 data source artifact paths s3 session token secret
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataTransformationItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 data transformation items0
 
     Attributes
@@ -30978,7 +32376,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0DataTransform
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0Executor:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 executor
 
     Attributes
@@ -30992,7 +32390,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0Executor:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0HTTP:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 HTTP
 
     Attributes
@@ -31034,7 +32432,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0HTTP:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0HTTPBodyFrom:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 HTTP body from
 
     Attributes
@@ -31048,7 +32446,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0HTTPBodyFrom:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0HTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 HTTP headers items0
 
     Attributes
@@ -31070,7 +32468,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0HTTPHeadersIt
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0HTTPHeadersItems0ValueFrom:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 HTTP headers items0 value from
 
     Attributes
@@ -31084,7 +32482,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0HTTPHeadersIt
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0HTTPHeadersItems0ValueFromSecretKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 HTTP headers items0 value from secret key ref
 
     Attributes
@@ -31100,31 +32498,31 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0HTTPHeadersIt
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0HostAliasesItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 host aliases items0
 
     Attributes
     ----------
     hostnames : [str], default is Undefined, optional
         hostnames
-    ip : str, default is Undefined, optional
+    ip : str, default is Undefined, required
         ip
     """
 
 
     hostnames?: [str]
 
-    ip?: str
+    ip: str
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 init containers items0
 
     Attributes
@@ -31153,8 +32551,12 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainer
         ports
     readinessProbe : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0ReadinessProbe, default is Undefined, optional
         readiness probe
+    resizePolicy : [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0ResizePolicyItems0], default is Undefined, optional
+        resize policy
     resources : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0Resources, default is Undefined, optional
         resources
+    restartPolicy : str, default is Undefined, optional
+        restart policy
     securityContext : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0SecurityContext, default is Undefined, optional
         security context
     startupProbe : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0StartupProbe, default is Undefined, optional
@@ -31202,7 +32604,11 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainer
 
     readinessProbe?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0ReadinessProbe
 
+    resizePolicy?: [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0ResizePolicyItems0]
+
     resources?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0Resources
+
+    restartPolicy?: str
 
     securityContext?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0SecurityContext
 
@@ -31226,7 +32632,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainer
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0EnvFromItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 init containers items0 env from items0
 
     Attributes
@@ -31248,7 +32654,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainer
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0EnvFromItems0ConfigMapRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 init containers items0 env from items0 config map ref
 
     Attributes
@@ -31260,13 +32666,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainer
     """
 
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0EnvFromItems0SecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 init containers items0 env from items0 secret ref
 
     Attributes
@@ -31278,13 +32684,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainer
     """
 
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0EnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 init containers items0 env items0
 
     Attributes
@@ -31306,7 +32712,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainer
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0EnvItems0ValueFrom:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 init containers items0 env items0 value from
 
     Attributes
@@ -31332,7 +32738,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainer
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0EnvItems0ValueFromConfigMapKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 init containers items0 env items0 value from config map key ref
 
     Attributes
@@ -31348,13 +32754,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainer
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0EnvItems0ValueFromFieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 init containers items0 env items0 value from field ref
 
     Attributes
@@ -31372,7 +32778,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainer
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0EnvItems0ValueFromResourceFieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 init containers items0 env items0 value from resource field ref
 
     Attributes
@@ -31398,7 +32804,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainer
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0EnvItems0ValueFromSecretKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 init containers items0 env items0 value from secret key ref
 
     Attributes
@@ -31414,13 +32820,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainer
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0Lifecycle:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 init containers items0 lifecycle
 
     Attributes
@@ -31438,7 +32844,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainer
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0LifecyclePostStart:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 init containers items0 lifecycle post start
 
     Attributes
@@ -31447,6 +32853,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainer
         exec
     httpGet : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0LifecyclePostStartHTTPGet, default is Undefined, optional
         http get
+    sleep : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0LifecyclePostStartSleep, default is Undefined, optional
+        sleep
     tcpSocket : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0LifecyclePostStartTCPSocket, default is Undefined, optional
         tcp socket
     """
@@ -31456,11 +32864,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainer
 
     httpGet?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0LifecyclePostStartHTTPGet
 
+    sleep?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0LifecyclePostStartSleep
+
     tcpSocket?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0LifecyclePostStartTCPSocket
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0LifecyclePostStartExec:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 init containers items0 lifecycle post start exec
 
     Attributes
@@ -31474,7 +32884,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainer
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0LifecyclePostStartHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 init containers items0 lifecycle post start HTTP get
 
     Attributes
@@ -31504,7 +32914,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainer
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0LifecyclePostStartHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 init containers items0 lifecycle post start HTTP get HTTP headers items0
 
     Attributes
@@ -31521,8 +32931,22 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainer
     value: str
 
 
-schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0LifecyclePostStartTCPSocket:
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0LifecyclePostStartSleep:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec templates items0 init containers items0 lifecycle post start sleep
+
+    Attributes
+    ----------
+    seconds : int, default is Undefined, required
+        seconds
     """
+
+
+    seconds: int
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0LifecyclePostStartTCPSocket:
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 init containers items0 lifecycle post start TCP socket
 
     Attributes
@@ -31540,7 +32964,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainer
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0LifecyclePreStop:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 init containers items0 lifecycle pre stop
 
     Attributes
@@ -31549,6 +32973,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainer
         exec
     httpGet : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0LifecyclePreStopHTTPGet, default is Undefined, optional
         http get
+    sleep : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0LifecyclePreStopSleep, default is Undefined, optional
+        sleep
     tcpSocket : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0LifecyclePreStopTCPSocket, default is Undefined, optional
         tcp socket
     """
@@ -31558,11 +32984,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainer
 
     httpGet?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0LifecyclePreStopHTTPGet
 
+    sleep?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0LifecyclePreStopSleep
+
     tcpSocket?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0LifecyclePreStopTCPSocket
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0LifecyclePreStopExec:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 init containers items0 lifecycle pre stop exec
 
     Attributes
@@ -31576,7 +33004,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainer
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0LifecyclePreStopHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 init containers items0 lifecycle pre stop HTTP get
 
     Attributes
@@ -31606,7 +33034,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainer
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0LifecyclePreStopHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 init containers items0 lifecycle pre stop HTTP get HTTP headers items0
 
     Attributes
@@ -31623,8 +33051,22 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainer
     value: str
 
 
-schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0LifecyclePreStopTCPSocket:
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0LifecyclePreStopSleep:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec templates items0 init containers items0 lifecycle pre stop sleep
+
+    Attributes
+    ----------
+    seconds : int, default is Undefined, required
+        seconds
     """
+
+
+    seconds: int
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0LifecyclePreStopTCPSocket:
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 init containers items0 lifecycle pre stop TCP socket
 
     Attributes
@@ -31642,7 +33084,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainer
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0LivenessProbe:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 init containers items0 liveness probe
 
     Attributes
@@ -31692,7 +33134,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainer
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0LivenessProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 init containers items0 liveness probe exec
 
     Attributes
@@ -31706,7 +33148,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainer
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0LivenessProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 init containers items0 liveness probe grpc
 
     Attributes
@@ -31724,7 +33166,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainer
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0LivenessProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 init containers items0 liveness probe HTTP get
 
     Attributes
@@ -31754,7 +33196,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainer
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0LivenessProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 init containers items0 liveness probe HTTP get HTTP headers items0
 
     Attributes
@@ -31772,7 +33214,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainer
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0LivenessProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 init containers items0 liveness probe TCP socket
 
     Attributes
@@ -31790,7 +33232,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainer
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0PortsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 init containers items0 ports items0
 
     Attributes
@@ -31820,7 +33262,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainer
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0ReadinessProbe:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 init containers items0 readiness probe
 
     Attributes
@@ -31870,7 +33312,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainer
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0ReadinessProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 init containers items0 readiness probe exec
 
     Attributes
@@ -31884,7 +33326,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainer
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0ReadinessProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 init containers items0 readiness probe grpc
 
     Attributes
@@ -31902,7 +33344,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainer
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0ReadinessProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 init containers items0 readiness probe HTTP get
 
     Attributes
@@ -31932,7 +33374,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainer
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0ReadinessProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 init containers items0 readiness probe HTTP get HTTP headers items0
 
     Attributes
@@ -31950,7 +33392,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainer
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0ReadinessProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 init containers items0 readiness probe TCP socket
 
     Attributes
@@ -31967,8 +33409,26 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainer
     port: int | str
 
 
-schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0Resources:
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0ResizePolicyItems0:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec templates items0 init containers items0 resize policy items0
+
+    Attributes
+    ----------
+    resourceName : str, default is Undefined, required
+        resource name
+    restartPolicy : str, default is Undefined, required
+        restart policy
     """
+
+
+    resourceName: str
+
+    restartPolicy: str
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0Resources:
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 init containers items0 resources
 
     Attributes
@@ -31990,12 +33450,12 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainer
 
 
     check:
-        all _, limits in limits {_regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests {_regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0ResourcesClaimsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 init containers items0 resources claims items0
 
     Attributes
@@ -32009,13 +33469,15 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainer
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0SecurityContext:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 init containers items0 security context
 
     Attributes
     ----------
     allowPrivilegeEscalation : bool, default is Undefined, optional
         allow privilege escalation
+    appArmorProfile : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0SecurityContextAppArmorProfile, default is Undefined, optional
+        app armor profile
     capabilities : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0SecurityContextCapabilities, default is Undefined, optional
         capabilities
     privileged : bool, default is Undefined, optional
@@ -32041,6 +33503,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainer
 
     allowPrivilegeEscalation?: bool
 
+    appArmorProfile?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0SecurityContextAppArmorProfile
+
     capabilities?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0SecurityContextCapabilities
 
     privileged?: bool
@@ -32062,8 +33526,26 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainer
     windowsOptions?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0SecurityContextWindowsOptions
 
 
-schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0SecurityContextCapabilities:
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0SecurityContextAppArmorProfile:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec templates items0 init containers items0 security context app armor profile
+
+    Attributes
+    ----------
+    localhostProfile : str, default is Undefined, optional
+        localhost profile
+    $type : str, default is Undefined, required
+        type
     """
+
+
+    localhostProfile?: str
+
+    $type: str
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0SecurityContextCapabilities:
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 init containers items0 security context capabilities
 
     Attributes
@@ -32081,7 +33563,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainer
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0SecurityContextSeLinuxOptions:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 init containers items0 security context se linux options
 
     Attributes
@@ -32107,7 +33589,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainer
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0SecurityContextSeccompProfile:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 init containers items0 security context seccomp profile
 
     Attributes
@@ -32125,7 +33607,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainer
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0SecurityContextWindowsOptions:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 init containers items0 security context windows options
 
     Attributes
@@ -32151,7 +33633,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainer
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0StartupProbe:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 init containers items0 startup probe
 
     Attributes
@@ -32201,7 +33683,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainer
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0StartupProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 init containers items0 startup probe exec
 
     Attributes
@@ -32215,7 +33697,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainer
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0StartupProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 init containers items0 startup probe grpc
 
     Attributes
@@ -32233,7 +33715,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainer
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0StartupProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 init containers items0 startup probe HTTP get
 
     Attributes
@@ -32263,7 +33745,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainer
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0StartupProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 init containers items0 startup probe HTTP get HTTP headers items0
 
     Attributes
@@ -32281,7 +33763,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainer
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0StartupProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 init containers items0 startup probe TCP socket
 
     Attributes
@@ -32299,7 +33781,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainer
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0VolumeDevicesItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 init containers items0 volume devices items0
 
     Attributes
@@ -32317,7 +33799,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainer
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainersItems0VolumeMountsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 init containers items0 volume mounts items0
 
     Attributes
@@ -32330,6 +33812,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainer
         name
     readOnly : bool, default is Undefined, optional
         read only
+    recursiveReadOnly : str, default is Undefined, optional
+        recursive read only
     subPath : str, default is Undefined, optional
         sub path
     subPathExpr : str, default is Undefined, optional
@@ -32345,13 +33829,15 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InitContainer
 
     readOnly?: bool
 
+    recursiveReadOnly?: str
+
     subPath?: str
 
     subPathExpr?: str
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0Inputs:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 inputs
 
     Attributes
@@ -32369,7 +33855,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0Inputs:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifactsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 inputs artifacts items0
 
     Attributes
@@ -32467,7 +33953,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifac
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifactsItems0Archive:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 inputs artifacts items0 archive
 
     Attributes
@@ -32489,7 +33975,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifac
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifactsItems0ArchiveTar:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 inputs artifacts items0 archive tar
 
     Attributes
@@ -32503,7 +33989,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifac
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifactsItems0ArtifactGC:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 inputs artifacts items0 artifact g c
 
     Attributes
@@ -32525,7 +34011,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifac
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifactsItems0ArtifactGCPodMetadata:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 inputs artifacts items0 artifact g c pod metadata
 
     Attributes
@@ -32543,7 +34029,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifac
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifactsItems0Artifactory:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 inputs artifacts items0 artifactory
 
     Attributes
@@ -32565,7 +34051,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifac
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifactsItems0ArtifactoryPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 inputs artifacts items0 artifactory password secret
 
     Attributes
@@ -32581,13 +34067,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifac
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifactsItems0ArtifactoryUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 inputs artifacts items0 artifactory username secret
 
     Attributes
@@ -32603,13 +34089,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifac
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifactsItems0Azure:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 inputs artifacts items0 azure
 
     Attributes
@@ -32639,7 +34125,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifac
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifactsItems0AzureAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 inputs artifacts items0 azure account key secret
 
     Attributes
@@ -32655,13 +34141,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifac
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifactsItems0Gcs:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 inputs artifacts items0 gcs
 
     Attributes
@@ -32683,7 +34169,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifac
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifactsItems0GcsServiceAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 inputs artifacts items0 gcs service account key secret
 
     Attributes
@@ -32699,13 +34185,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifac
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifactsItems0Git:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 inputs artifacts items0 git
 
     Attributes
@@ -32720,6 +34206,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifac
         fetch
     insecureIgnoreHostKey : bool, default is Undefined, optional
         insecure ignore host key
+    insecureSkipTLS : bool, default is Undefined, optional
+        insecure skip TLS
     passwordSecret : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifactsItems0GitPasswordSecret, default is Undefined, optional
         password secret
     repo : str, default is Undefined, required
@@ -32745,6 +34233,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifac
 
     insecureIgnoreHostKey?: bool
 
+    insecureSkipTLS?: bool
+
     passwordSecret?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifactsItems0GitPasswordSecret
 
     repo: str
@@ -32759,7 +34249,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifac
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifactsItems0GitPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 inputs artifacts items0 git password secret
 
     Attributes
@@ -32775,13 +34265,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifac
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifactsItems0GitSSHPrivateKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 inputs artifacts items0 git SSH private key secret
 
     Attributes
@@ -32797,13 +34287,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifac
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifactsItems0GitUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 inputs artifacts items0 git username secret
 
     Attributes
@@ -32819,13 +34309,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifac
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifactsItems0HTTP:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 inputs artifacts items0 HTTP
 
     Attributes
@@ -32847,7 +34337,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifac
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifactsItems0HTTPAuth:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 inputs artifacts items0 HTTP auth
 
     Attributes
@@ -32869,7 +34359,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifac
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifactsItems0HTTPAuthBasicAuth:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 inputs artifacts items0 HTTP auth basic auth
 
     Attributes
@@ -32887,7 +34377,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifac
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifactsItems0HTTPAuthBasicAuthPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 inputs artifacts items0 HTTP auth basic auth password secret
 
     Attributes
@@ -32903,13 +34393,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifac
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifactsItems0HTTPAuthBasicAuthUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 inputs artifacts items0 HTTP auth basic auth username secret
 
     Attributes
@@ -32925,13 +34415,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifac
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifactsItems0HTTPAuthClientCert:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 inputs artifacts items0 HTTP auth client cert
 
     Attributes
@@ -32949,7 +34439,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifac
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifactsItems0HTTPAuthClientCertClientCertSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 inputs artifacts items0 HTTP auth client cert client cert secret
 
     Attributes
@@ -32965,13 +34455,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifac
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifactsItems0HTTPAuthClientCertClientKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 inputs artifacts items0 HTTP auth client cert client key secret
 
     Attributes
@@ -32987,13 +34477,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifac
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifactsItems0HTTPAuthOauth2:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 inputs artifacts items0 HTTP auth oauth2
 
     Attributes
@@ -33023,7 +34513,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifac
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifactsItems0HTTPAuthOauth2ClientIDSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 inputs artifacts items0 HTTP auth oauth2 client ID secret
 
     Attributes
@@ -33039,13 +34529,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifac
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifactsItems0HTTPAuthOauth2ClientSecretSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 inputs artifacts items0 HTTP auth oauth2 client secret secret
 
     Attributes
@@ -33061,13 +34551,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifac
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifactsItems0HTTPAuthOauth2EndpointParamsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 inputs artifacts items0 HTTP auth oauth2 endpoint params items0
 
     Attributes
@@ -33085,7 +34575,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifac
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifactsItems0HTTPAuthOauth2TokenURLSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 inputs artifacts items0 HTTP auth oauth2 token URL secret
 
     Attributes
@@ -33101,13 +34591,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifac
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifactsItems0HTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 inputs artifacts items0 HTTP headers items0
 
     Attributes
@@ -33125,13 +34615,15 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifac
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifactsItems0Hdfs:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 inputs artifacts items0 hdfs
 
     Attributes
     ----------
     addresses : [str], default is Undefined, optional
         addresses
+    dataTransferProtection : str, default is Undefined, optional
+        data transfer protection
     force : bool, default is Undefined, optional
         force
     hdfsUser : str, default is Undefined, optional
@@ -33155,6 +34647,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifac
 
     addresses?: [str]
 
+    dataTransferProtection?: str
+
     force?: bool
 
     hdfsUser?: str
@@ -33175,7 +34669,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifac
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifactsItems0HdfsKrbCCacheSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 inputs artifacts items0 hdfs krb c cache secret
 
     Attributes
@@ -33191,13 +34685,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifac
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifactsItems0HdfsKrbConfigConfigMap:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 inputs artifacts items0 hdfs krb config config map
 
     Attributes
@@ -33213,13 +34707,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifac
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifactsItems0HdfsKrbKeytabSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 inputs artifacts items0 hdfs krb keytab secret
 
     Attributes
@@ -33235,13 +34729,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifac
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifactsItems0Oss:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 inputs artifacts items0 oss
 
     Attributes
@@ -33287,7 +34781,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifac
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifactsItems0OssAccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 inputs artifacts items0 oss access key secret
 
     Attributes
@@ -33303,13 +34797,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifac
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifactsItems0OssLifecycleRule:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 inputs artifacts items0 oss lifecycle rule
 
     Attributes
@@ -33327,7 +34821,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifac
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifactsItems0OssSecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 inputs artifacts items0 oss secret key secret
 
     Attributes
@@ -33343,13 +34837,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifac
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifactsItems0Raw:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 inputs artifacts items0 raw
 
     Attributes
@@ -33363,7 +34857,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifac
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifactsItems0S3:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 inputs artifacts items0 s3
 
     Attributes
@@ -33390,6 +34884,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifac
         role a r n
     secretKeySecret : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifactsItems0S3SecretKeySecret, default is Undefined, optional
         secret key secret
+    sessionTokenSecret : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifactsItems0S3SessionTokenSecret, default is Undefined, optional
+        session token secret
     useSDKCreds : bool, default is Undefined, optional
         use s d k creds
     """
@@ -33417,11 +34913,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifac
 
     secretKeySecret?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifactsItems0S3SecretKeySecret
 
+    sessionTokenSecret?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifactsItems0S3SessionTokenSecret
+
     useSDKCreds?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifactsItems0S3AccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 inputs artifacts items0 s3 access key secret
 
     Attributes
@@ -33437,13 +34935,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifac
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifactsItems0S3CaSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 inputs artifacts items0 s3 ca secret
 
     Attributes
@@ -33459,13 +34957,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifac
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifactsItems0S3CreateBucketIfNotPresent:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 inputs artifacts items0 s3 create bucket if not present
 
     Attributes
@@ -33479,7 +34977,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifac
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifactsItems0S3EncryptionOptions:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 inputs artifacts items0 s3 encryption options
 
     Attributes
@@ -33505,7 +35003,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifac
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifactsItems0S3EncryptionOptionsServerSideCustomerKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 inputs artifacts items0 s3 encryption options server side customer key secret
 
     Attributes
@@ -33521,13 +35019,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifac
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifactsItems0S3SecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 inputs artifacts items0 s3 secret key secret
 
     Attributes
@@ -33543,13 +35041,35 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifac
 
     key: str
 
-    name?: str
+    name?: str = ""
+
+    optional?: bool
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsArtifactsItems0S3SessionTokenSecret:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec templates items0 inputs artifacts items0 s3 session token secret
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 inputs parameters items0
 
     Attributes
@@ -33587,7 +35107,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsParamet
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsParametersItems0ValueFrom:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 inputs parameters items0 value from
 
     Attributes
@@ -33633,7 +35153,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsParamet
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsParametersItems0ValueFromConfigMapKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 inputs parameters items0 value from config map key ref
 
     Attributes
@@ -33649,13 +35169,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0InputsParamet
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0Memoize:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 memoize
 
     Attributes
@@ -33677,7 +35197,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0Memoize:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0MemoizeCache:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 memoize cache
 
     Attributes
@@ -33691,7 +35211,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0MemoizeCache:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0MemoizeCacheConfigMap:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 memoize cache config map
 
     Attributes
@@ -33707,13 +35227,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0MemoizeCacheC
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0Metadata:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 metadata
 
     Attributes
@@ -33731,7 +35251,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0Metadata:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0Metrics:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 metrics
 
     Attributes
@@ -33745,7 +35265,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0Metrics:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0MetricsPrometheusItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 metrics prometheus items0
 
     Attributes
@@ -33783,7 +35303,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0MetricsPromet
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0MetricsPrometheusItems0Counter:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 metrics prometheus items0 counter
 
     Attributes
@@ -33797,7 +35317,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0MetricsPromet
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0MetricsPrometheusItems0Gauge:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 metrics prometheus items0 gauge
 
     Attributes
@@ -33819,7 +35339,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0MetricsPromet
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0MetricsPrometheusItems0Histogram:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 metrics prometheus items0 histogram
 
     Attributes
@@ -33837,7 +35357,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0MetricsPromet
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0MetricsPrometheusItems0LabelsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 metrics prometheus items0 labels items0
 
     Attributes
@@ -33855,7 +35375,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0MetricsPromet
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0Outputs:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 outputs
 
     Attributes
@@ -33881,7 +35401,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0Outputs:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifactsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 outputs artifacts items0
 
     Attributes
@@ -33979,7 +35499,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifa
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifactsItems0Archive:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 outputs artifacts items0 archive
 
     Attributes
@@ -34001,7 +35521,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifa
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifactsItems0ArchiveTar:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 outputs artifacts items0 archive tar
 
     Attributes
@@ -34015,7 +35535,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifa
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifactsItems0ArtifactGC:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 outputs artifacts items0 artifact g c
 
     Attributes
@@ -34037,7 +35557,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifa
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifactsItems0ArtifactGCPodMetadata:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 outputs artifacts items0 artifact g c pod metadata
 
     Attributes
@@ -34055,7 +35575,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifa
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifactsItems0Artifactory:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 outputs artifacts items0 artifactory
 
     Attributes
@@ -34077,7 +35597,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifa
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifactsItems0ArtifactoryPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 outputs artifacts items0 artifactory password secret
 
     Attributes
@@ -34093,13 +35613,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifactsItems0ArtifactoryUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 outputs artifacts items0 artifactory username secret
 
     Attributes
@@ -34115,13 +35635,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifactsItems0Azure:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 outputs artifacts items0 azure
 
     Attributes
@@ -34151,7 +35671,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifa
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifactsItems0AzureAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 outputs artifacts items0 azure account key secret
 
     Attributes
@@ -34167,13 +35687,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifactsItems0Gcs:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 outputs artifacts items0 gcs
 
     Attributes
@@ -34195,7 +35715,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifa
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifactsItems0GcsServiceAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 outputs artifacts items0 gcs service account key secret
 
     Attributes
@@ -34211,13 +35731,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifactsItems0Git:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 outputs artifacts items0 git
 
     Attributes
@@ -34232,6 +35752,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifa
         fetch
     insecureIgnoreHostKey : bool, default is Undefined, optional
         insecure ignore host key
+    insecureSkipTLS : bool, default is Undefined, optional
+        insecure skip TLS
     passwordSecret : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifactsItems0GitPasswordSecret, default is Undefined, optional
         password secret
     repo : str, default is Undefined, required
@@ -34257,6 +35779,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifa
 
     insecureIgnoreHostKey?: bool
 
+    insecureSkipTLS?: bool
+
     passwordSecret?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifactsItems0GitPasswordSecret
 
     repo: str
@@ -34271,7 +35795,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifa
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifactsItems0GitPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 outputs artifacts items0 git password secret
 
     Attributes
@@ -34287,13 +35811,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifactsItems0GitSSHPrivateKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 outputs artifacts items0 git SSH private key secret
 
     Attributes
@@ -34309,13 +35833,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifactsItems0GitUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 outputs artifacts items0 git username secret
 
     Attributes
@@ -34331,13 +35855,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifactsItems0HTTP:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 outputs artifacts items0 HTTP
 
     Attributes
@@ -34359,7 +35883,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifa
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifactsItems0HTTPAuth:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 outputs artifacts items0 HTTP auth
 
     Attributes
@@ -34381,7 +35905,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifa
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifactsItems0HTTPAuthBasicAuth:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 outputs artifacts items0 HTTP auth basic auth
 
     Attributes
@@ -34399,7 +35923,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifa
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifactsItems0HTTPAuthBasicAuthPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 outputs artifacts items0 HTTP auth basic auth password secret
 
     Attributes
@@ -34415,13 +35939,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifactsItems0HTTPAuthBasicAuthUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 outputs artifacts items0 HTTP auth basic auth username secret
 
     Attributes
@@ -34437,13 +35961,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifactsItems0HTTPAuthClientCert:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 outputs artifacts items0 HTTP auth client cert
 
     Attributes
@@ -34461,7 +35985,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifa
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifactsItems0HTTPAuthClientCertClientCertSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 outputs artifacts items0 HTTP auth client cert client cert secret
 
     Attributes
@@ -34477,13 +36001,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifactsItems0HTTPAuthClientCertClientKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 outputs artifacts items0 HTTP auth client cert client key secret
 
     Attributes
@@ -34499,13 +36023,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifactsItems0HTTPAuthOauth2:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 outputs artifacts items0 HTTP auth oauth2
 
     Attributes
@@ -34535,7 +36059,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifa
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifactsItems0HTTPAuthOauth2ClientIDSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 outputs artifacts items0 HTTP auth oauth2 client ID secret
 
     Attributes
@@ -34551,13 +36075,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifactsItems0HTTPAuthOauth2ClientSecretSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 outputs artifacts items0 HTTP auth oauth2 client secret secret
 
     Attributes
@@ -34573,13 +36097,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifactsItems0HTTPAuthOauth2EndpointParamsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 outputs artifacts items0 HTTP auth oauth2 endpoint params items0
 
     Attributes
@@ -34597,7 +36121,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifa
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifactsItems0HTTPAuthOauth2TokenURLSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 outputs artifacts items0 HTTP auth oauth2 token URL secret
 
     Attributes
@@ -34613,13 +36137,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifactsItems0HTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 outputs artifacts items0 HTTP headers items0
 
     Attributes
@@ -34637,13 +36161,15 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifa
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifactsItems0Hdfs:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 outputs artifacts items0 hdfs
 
     Attributes
     ----------
     addresses : [str], default is Undefined, optional
         addresses
+    dataTransferProtection : str, default is Undefined, optional
+        data transfer protection
     force : bool, default is Undefined, optional
         force
     hdfsUser : str, default is Undefined, optional
@@ -34667,6 +36193,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifa
 
     addresses?: [str]
 
+    dataTransferProtection?: str
+
     force?: bool
 
     hdfsUser?: str
@@ -34687,7 +36215,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifa
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifactsItems0HdfsKrbCCacheSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 outputs artifacts items0 hdfs krb c cache secret
 
     Attributes
@@ -34703,13 +36231,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifactsItems0HdfsKrbConfigConfigMap:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 outputs artifacts items0 hdfs krb config config map
 
     Attributes
@@ -34725,13 +36253,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifactsItems0HdfsKrbKeytabSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 outputs artifacts items0 hdfs krb keytab secret
 
     Attributes
@@ -34747,13 +36275,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifactsItems0Oss:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 outputs artifacts items0 oss
 
     Attributes
@@ -34799,7 +36327,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifa
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifactsItems0OssAccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 outputs artifacts items0 oss access key secret
 
     Attributes
@@ -34815,13 +36343,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifactsItems0OssLifecycleRule:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 outputs artifacts items0 oss lifecycle rule
 
     Attributes
@@ -34839,7 +36367,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifa
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifactsItems0OssSecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 outputs artifacts items0 oss secret key secret
 
     Attributes
@@ -34855,13 +36383,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifactsItems0Raw:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 outputs artifacts items0 raw
 
     Attributes
@@ -34875,7 +36403,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifa
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifactsItems0S3:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 outputs artifacts items0 s3
 
     Attributes
@@ -34902,6 +36430,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifa
         role a r n
     secretKeySecret : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifactsItems0S3SecretKeySecret, default is Undefined, optional
         secret key secret
+    sessionTokenSecret : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifactsItems0S3SessionTokenSecret, default is Undefined, optional
+        session token secret
     useSDKCreds : bool, default is Undefined, optional
         use s d k creds
     """
@@ -34929,11 +36459,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifa
 
     secretKeySecret?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifactsItems0S3SecretKeySecret
 
+    sessionTokenSecret?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifactsItems0S3SessionTokenSecret
+
     useSDKCreds?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifactsItems0S3AccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 outputs artifacts items0 s3 access key secret
 
     Attributes
@@ -34949,13 +36481,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifactsItems0S3CaSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 outputs artifacts items0 s3 ca secret
 
     Attributes
@@ -34971,13 +36503,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifactsItems0S3CreateBucketIfNotPresent:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 outputs artifacts items0 s3 create bucket if not present
 
     Attributes
@@ -34991,7 +36523,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifa
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifactsItems0S3EncryptionOptions:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 outputs artifacts items0 s3 encryption options
 
     Attributes
@@ -35017,7 +36549,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifa
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifactsItems0S3EncryptionOptionsServerSideCustomerKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 outputs artifacts items0 s3 encryption options server side customer key secret
 
     Attributes
@@ -35033,13 +36565,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifactsItems0S3SecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 outputs artifacts items0 s3 secret key secret
 
     Attributes
@@ -35055,13 +36587,35 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
+
+    optional?: bool
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsArtifactsItems0S3SessionTokenSecret:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec templates items0 outputs artifacts items0 s3 session token secret
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 outputs parameters items0
 
     Attributes
@@ -35099,7 +36653,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsParame
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsParametersItems0ValueFrom:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 outputs parameters items0 value from
 
     Attributes
@@ -35145,7 +36699,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsParame
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsParametersItems0ValueFromConfigMapKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 outputs parameters items0 value from config map key ref
 
     Attributes
@@ -35161,13 +36715,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0OutputsParame
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0Resource:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 resource
 
     Attributes
@@ -35209,7 +36763,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0Resource:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManifestFrom:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 resource manifest from
 
     Attributes
@@ -35223,7 +36777,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManif
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManifestFromArtifact:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 resource manifest from artifact
 
     Attributes
@@ -35321,7 +36875,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManif
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManifestFromArtifactArchive:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 resource manifest from artifact archive
 
     Attributes
@@ -35343,7 +36897,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManif
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManifestFromArtifactArchiveTar:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 resource manifest from artifact archive tar
 
     Attributes
@@ -35357,7 +36911,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManif
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManifestFromArtifactArtifactGC:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 resource manifest from artifact artifact g c
 
     Attributes
@@ -35379,7 +36933,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManif
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManifestFromArtifactArtifactGCPodMetadata:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 resource manifest from artifact artifact g c pod metadata
 
     Attributes
@@ -35397,7 +36951,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManif
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManifestFromArtifactArtifactory:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 resource manifest from artifact artifactory
 
     Attributes
@@ -35419,7 +36973,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManif
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManifestFromArtifactArtifactoryPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 resource manifest from artifact artifactory password secret
 
     Attributes
@@ -35435,13 +36989,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManifestFromArtifactArtifactoryUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 resource manifest from artifact artifactory username secret
 
     Attributes
@@ -35457,13 +37011,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManifestFromArtifactAzure:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 resource manifest from artifact azure
 
     Attributes
@@ -35493,7 +37047,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManif
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManifestFromArtifactAzureAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 resource manifest from artifact azure account key secret
 
     Attributes
@@ -35509,13 +37063,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManifestFromArtifactGcs:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 resource manifest from artifact gcs
 
     Attributes
@@ -35537,7 +37091,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManif
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManifestFromArtifactGcsServiceAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 resource manifest from artifact gcs service account key secret
 
     Attributes
@@ -35553,13 +37107,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManifestFromArtifactGit:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 resource manifest from artifact git
 
     Attributes
@@ -35574,6 +37128,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManif
         fetch
     insecureIgnoreHostKey : bool, default is Undefined, optional
         insecure ignore host key
+    insecureSkipTLS : bool, default is Undefined, optional
+        insecure skip TLS
     passwordSecret : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManifestFromArtifactGitPasswordSecret, default is Undefined, optional
         password secret
     repo : str, default is Undefined, required
@@ -35599,6 +37155,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManif
 
     insecureIgnoreHostKey?: bool
 
+    insecureSkipTLS?: bool
+
     passwordSecret?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManifestFromArtifactGitPasswordSecret
 
     repo: str
@@ -35613,7 +37171,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManif
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManifestFromArtifactGitPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 resource manifest from artifact git password secret
 
     Attributes
@@ -35629,13 +37187,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManifestFromArtifactGitSSHPrivateKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 resource manifest from artifact git SSH private key secret
 
     Attributes
@@ -35651,13 +37209,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManifestFromArtifactGitUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 resource manifest from artifact git username secret
 
     Attributes
@@ -35673,13 +37231,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManifestFromArtifactHTTP:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 resource manifest from artifact HTTP
 
     Attributes
@@ -35701,7 +37259,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManif
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManifestFromArtifactHTTPAuth:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 resource manifest from artifact HTTP auth
 
     Attributes
@@ -35723,7 +37281,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManif
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManifestFromArtifactHTTPAuthBasicAuth:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 resource manifest from artifact HTTP auth basic auth
 
     Attributes
@@ -35741,7 +37299,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManif
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManifestFromArtifactHTTPAuthBasicAuthPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 resource manifest from artifact HTTP auth basic auth password secret
 
     Attributes
@@ -35757,13 +37315,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManifestFromArtifactHTTPAuthBasicAuthUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 resource manifest from artifact HTTP auth basic auth username secret
 
     Attributes
@@ -35779,13 +37337,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManifestFromArtifactHTTPAuthClientCert:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 resource manifest from artifact HTTP auth client cert
 
     Attributes
@@ -35803,7 +37361,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManif
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManifestFromArtifactHTTPAuthClientCertClientCertSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 resource manifest from artifact HTTP auth client cert client cert secret
 
     Attributes
@@ -35819,13 +37377,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManifestFromArtifactHTTPAuthClientCertClientKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 resource manifest from artifact HTTP auth client cert client key secret
 
     Attributes
@@ -35841,13 +37399,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManifestFromArtifactHTTPAuthOauth2:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 resource manifest from artifact HTTP auth oauth2
 
     Attributes
@@ -35877,7 +37435,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManif
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManifestFromArtifactHTTPAuthOauth2ClientIDSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 resource manifest from artifact HTTP auth oauth2 client ID secret
 
     Attributes
@@ -35893,13 +37451,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManifestFromArtifactHTTPAuthOauth2ClientSecretSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 resource manifest from artifact HTTP auth oauth2 client secret secret
 
     Attributes
@@ -35915,13 +37473,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManifestFromArtifactHTTPAuthOauth2EndpointParamsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 resource manifest from artifact HTTP auth oauth2 endpoint params items0
 
     Attributes
@@ -35939,7 +37497,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManif
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManifestFromArtifactHTTPAuthOauth2TokenURLSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 resource manifest from artifact HTTP auth oauth2 token URL secret
 
     Attributes
@@ -35955,13 +37513,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManifestFromArtifactHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 resource manifest from artifact HTTP headers items0
 
     Attributes
@@ -35979,13 +37537,15 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManif
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManifestFromArtifactHdfs:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 resource manifest from artifact hdfs
 
     Attributes
     ----------
     addresses : [str], default is Undefined, optional
         addresses
+    dataTransferProtection : str, default is Undefined, optional
+        data transfer protection
     force : bool, default is Undefined, optional
         force
     hdfsUser : str, default is Undefined, optional
@@ -36009,6 +37569,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManif
 
     addresses?: [str]
 
+    dataTransferProtection?: str
+
     force?: bool
 
     hdfsUser?: str
@@ -36029,7 +37591,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManif
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManifestFromArtifactHdfsKrbCCacheSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 resource manifest from artifact hdfs krb c cache secret
 
     Attributes
@@ -36045,13 +37607,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManifestFromArtifactHdfsKrbConfigConfigMap:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 resource manifest from artifact hdfs krb config config map
 
     Attributes
@@ -36067,13 +37629,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManifestFromArtifactHdfsKrbKeytabSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 resource manifest from artifact hdfs krb keytab secret
 
     Attributes
@@ -36089,13 +37651,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManifestFromArtifactOss:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 resource manifest from artifact oss
 
     Attributes
@@ -36141,7 +37703,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManif
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManifestFromArtifactOssAccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 resource manifest from artifact oss access key secret
 
     Attributes
@@ -36157,13 +37719,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManifestFromArtifactOssLifecycleRule:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 resource manifest from artifact oss lifecycle rule
 
     Attributes
@@ -36181,7 +37743,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManif
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManifestFromArtifactOssSecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 resource manifest from artifact oss secret key secret
 
     Attributes
@@ -36197,13 +37759,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManifestFromArtifactRaw:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 resource manifest from artifact raw
 
     Attributes
@@ -36217,7 +37779,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManif
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManifestFromArtifactS3:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 resource manifest from artifact s3
 
     Attributes
@@ -36244,6 +37806,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManif
         role a r n
     secretKeySecret : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManifestFromArtifactS3SecretKeySecret, default is Undefined, optional
         secret key secret
+    sessionTokenSecret : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManifestFromArtifactS3SessionTokenSecret, default is Undefined, optional
+        session token secret
     useSDKCreds : bool, default is Undefined, optional
         use s d k creds
     """
@@ -36271,11 +37835,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManif
 
     secretKeySecret?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManifestFromArtifactS3SecretKeySecret
 
+    sessionTokenSecret?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManifestFromArtifactS3SessionTokenSecret
+
     useSDKCreds?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManifestFromArtifactS3AccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 resource manifest from artifact s3 access key secret
 
     Attributes
@@ -36291,13 +37857,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManifestFromArtifactS3CaSecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 resource manifest from artifact s3 ca secret
 
     Attributes
@@ -36313,13 +37879,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManifestFromArtifactS3CreateBucketIfNotPresent:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 resource manifest from artifact s3 create bucket if not present
 
     Attributes
@@ -36333,7 +37899,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManif
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManifestFromArtifactS3EncryptionOptions:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 resource manifest from artifact s3 encryption options
 
     Attributes
@@ -36359,7 +37925,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManif
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManifestFromArtifactS3EncryptionOptionsServerSideCustomerKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 resource manifest from artifact s3 encryption options server side customer key secret
 
     Attributes
@@ -36375,13 +37941,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManifestFromArtifactS3SecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 resource manifest from artifact s3 secret key secret
 
     Attributes
@@ -36397,13 +37963,35 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManif
 
     key: str
 
-    name?: str
+    name?: str = ""
+
+    optional?: bool
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ResourceManifestFromArtifactS3SessionTokenSecret:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec templates items0 resource manifest from artifact s3 session token secret
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0RetryStrategy:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 retry strategy
 
     Attributes
@@ -36433,7 +38021,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0RetryStrategy
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0RetryStrategyAffinity:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 retry strategy affinity
 
     Attributes
@@ -36447,7 +38035,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0RetryStrategy
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0RetryStrategyBackoff:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 retry strategy backoff
 
     Attributes
@@ -36469,7 +38057,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0RetryStrategy
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0Script:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 script
 
     Attributes
@@ -36496,8 +38084,12 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0Script:
         ports
     readinessProbe : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptReadinessProbe, default is Undefined, optional
         readiness probe
+    resizePolicy : [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptResizePolicyItems0], default is Undefined, optional
+        resize policy
     resources : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptResources, default is Undefined, optional
         resources
+    restartPolicy : str, default is Undefined, optional
+        restart policy
     securityContext : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptSecurityContext, default is Undefined, optional
         security context
     source : str, default is Undefined, required
@@ -36545,7 +38137,11 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0Script:
 
     readinessProbe?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptReadinessProbe
 
+    resizePolicy?: [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptResizePolicyItems0]
+
     resources?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptResources
+
+    restartPolicy?: str
 
     securityContext?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptSecurityContext
 
@@ -36571,7 +38167,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0Script:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptEnvFromItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 script env from items0
 
     Attributes
@@ -36593,7 +38189,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptEnvFrom
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptEnvFromItems0ConfigMapRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 script env from items0 config map ref
 
     Attributes
@@ -36605,13 +38201,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptEnvFrom
     """
 
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptEnvFromItems0SecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 script env from items0 secret ref
 
     Attributes
@@ -36623,13 +38219,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptEnvFrom
     """
 
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptEnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 script env items0
 
     Attributes
@@ -36651,7 +38247,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptEnvItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptEnvItems0ValueFrom:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 script env items0 value from
 
     Attributes
@@ -36677,7 +38273,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptEnvItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptEnvItems0ValueFromConfigMapKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 script env items0 value from config map key ref
 
     Attributes
@@ -36693,13 +38289,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptEnvItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptEnvItems0ValueFromFieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 script env items0 value from field ref
 
     Attributes
@@ -36717,7 +38313,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptEnvItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptEnvItems0ValueFromResourceFieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 script env items0 value from resource field ref
 
     Attributes
@@ -36743,7 +38339,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptEnvItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptEnvItems0ValueFromSecretKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 script env items0 value from secret key ref
 
     Attributes
@@ -36759,13 +38355,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptEnvItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptLifecycle:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 script lifecycle
 
     Attributes
@@ -36783,7 +38379,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptLifecyc
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptLifecyclePostStart:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 script lifecycle post start
 
     Attributes
@@ -36792,6 +38388,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptLifecyc
         exec
     httpGet : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptLifecyclePostStartHTTPGet, default is Undefined, optional
         http get
+    sleep : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptLifecyclePostStartSleep, default is Undefined, optional
+        sleep
     tcpSocket : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptLifecyclePostStartTCPSocket, default is Undefined, optional
         tcp socket
     """
@@ -36801,11 +38399,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptLifecyc
 
     httpGet?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptLifecyclePostStartHTTPGet
 
+    sleep?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptLifecyclePostStartSleep
+
     tcpSocket?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptLifecyclePostStartTCPSocket
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptLifecyclePostStartExec:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 script lifecycle post start exec
 
     Attributes
@@ -36819,7 +38419,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptLifecyc
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptLifecyclePostStartHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 script lifecycle post start HTTP get
 
     Attributes
@@ -36849,7 +38449,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptLifecyc
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptLifecyclePostStartHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 script lifecycle post start HTTP get HTTP headers items0
 
     Attributes
@@ -36866,8 +38466,22 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptLifecyc
     value: str
 
 
-schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptLifecyclePostStartTCPSocket:
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptLifecyclePostStartSleep:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec templates items0 script lifecycle post start sleep
+
+    Attributes
+    ----------
+    seconds : int, default is Undefined, required
+        seconds
     """
+
+
+    seconds: int
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptLifecyclePostStartTCPSocket:
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 script lifecycle post start TCP socket
 
     Attributes
@@ -36885,7 +38499,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptLifecyc
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptLifecyclePreStop:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 script lifecycle pre stop
 
     Attributes
@@ -36894,6 +38508,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptLifecyc
         exec
     httpGet : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptLifecyclePreStopHTTPGet, default is Undefined, optional
         http get
+    sleep : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptLifecyclePreStopSleep, default is Undefined, optional
+        sleep
     tcpSocket : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptLifecyclePreStopTCPSocket, default is Undefined, optional
         tcp socket
     """
@@ -36903,11 +38519,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptLifecyc
 
     httpGet?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptLifecyclePreStopHTTPGet
 
+    sleep?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptLifecyclePreStopSleep
+
     tcpSocket?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptLifecyclePreStopTCPSocket
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptLifecyclePreStopExec:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 script lifecycle pre stop exec
 
     Attributes
@@ -36921,7 +38539,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptLifecyc
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptLifecyclePreStopHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 script lifecycle pre stop HTTP get
 
     Attributes
@@ -36951,7 +38569,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptLifecyc
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptLifecyclePreStopHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 script lifecycle pre stop HTTP get HTTP headers items0
 
     Attributes
@@ -36968,8 +38586,22 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptLifecyc
     value: str
 
 
-schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptLifecyclePreStopTCPSocket:
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptLifecyclePreStopSleep:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec templates items0 script lifecycle pre stop sleep
+
+    Attributes
+    ----------
+    seconds : int, default is Undefined, required
+        seconds
     """
+
+
+    seconds: int
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptLifecyclePreStopTCPSocket:
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 script lifecycle pre stop TCP socket
 
     Attributes
@@ -36987,7 +38619,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptLifecyc
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptLivenessProbe:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 script liveness probe
 
     Attributes
@@ -37037,7 +38669,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptLivenes
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptLivenessProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 script liveness probe exec
 
     Attributes
@@ -37051,7 +38683,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptLivenes
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptLivenessProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 script liveness probe grpc
 
     Attributes
@@ -37069,7 +38701,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptLivenes
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptLivenessProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 script liveness probe HTTP get
 
     Attributes
@@ -37099,7 +38731,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptLivenes
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptLivenessProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 script liveness probe HTTP get HTTP headers items0
 
     Attributes
@@ -37117,7 +38749,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptLivenes
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptLivenessProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 script liveness probe TCP socket
 
     Attributes
@@ -37135,7 +38767,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptLivenes
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptPortsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 script ports items0
 
     Attributes
@@ -37165,7 +38797,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptPortsIt
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptReadinessProbe:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 script readiness probe
 
     Attributes
@@ -37215,7 +38847,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptReadine
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptReadinessProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 script readiness probe exec
 
     Attributes
@@ -37229,7 +38861,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptReadine
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptReadinessProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 script readiness probe grpc
 
     Attributes
@@ -37247,7 +38879,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptReadine
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptReadinessProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 script readiness probe HTTP get
 
     Attributes
@@ -37277,7 +38909,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptReadine
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptReadinessProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 script readiness probe HTTP get HTTP headers items0
 
     Attributes
@@ -37295,7 +38927,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptReadine
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptReadinessProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 script readiness probe TCP socket
 
     Attributes
@@ -37312,8 +38944,26 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptReadine
     port: int | str
 
 
-schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptResources:
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptResizePolicyItems0:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec templates items0 script resize policy items0
+
+    Attributes
+    ----------
+    resourceName : str, default is Undefined, required
+        resource name
+    restartPolicy : str, default is Undefined, required
+        restart policy
     """
+
+
+    resourceName: str
+
+    restartPolicy: str
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptResources:
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 script resources
 
     Attributes
@@ -37335,12 +38985,12 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptResourc
 
 
     check:
-        all _, limits in limits {_regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests {_regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptResourcesClaimsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 script resources claims items0
 
     Attributes
@@ -37354,13 +39004,15 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptResourc
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptSecurityContext:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 script security context
 
     Attributes
     ----------
     allowPrivilegeEscalation : bool, default is Undefined, optional
         allow privilege escalation
+    appArmorProfile : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptSecurityContextAppArmorProfile, default is Undefined, optional
+        app armor profile
     capabilities : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptSecurityContextCapabilities, default is Undefined, optional
         capabilities
     privileged : bool, default is Undefined, optional
@@ -37386,6 +39038,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptSecurit
 
     allowPrivilegeEscalation?: bool
 
+    appArmorProfile?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptSecurityContextAppArmorProfile
+
     capabilities?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptSecurityContextCapabilities
 
     privileged?: bool
@@ -37407,8 +39061,26 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptSecurit
     windowsOptions?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptSecurityContextWindowsOptions
 
 
-schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptSecurityContextCapabilities:
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptSecurityContextAppArmorProfile:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec templates items0 script security context app armor profile
+
+    Attributes
+    ----------
+    localhostProfile : str, default is Undefined, optional
+        localhost profile
+    $type : str, default is Undefined, required
+        type
     """
+
+
+    localhostProfile?: str
+
+    $type: str
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptSecurityContextCapabilities:
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 script security context capabilities
 
     Attributes
@@ -37426,7 +39098,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptSecurit
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptSecurityContextSeLinuxOptions:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 script security context se linux options
 
     Attributes
@@ -37452,7 +39124,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptSecurit
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptSecurityContextSeccompProfile:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 script security context seccomp profile
 
     Attributes
@@ -37470,7 +39142,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptSecurit
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptSecurityContextWindowsOptions:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 script security context windows options
 
     Attributes
@@ -37496,7 +39168,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptSecurit
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptStartupProbe:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 script startup probe
 
     Attributes
@@ -37546,7 +39218,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptStartup
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptStartupProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 script startup probe exec
 
     Attributes
@@ -37560,7 +39232,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptStartup
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptStartupProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 script startup probe grpc
 
     Attributes
@@ -37578,7 +39250,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptStartup
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptStartupProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 script startup probe HTTP get
 
     Attributes
@@ -37608,7 +39280,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptStartup
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptStartupProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 script startup probe HTTP get HTTP headers items0
 
     Attributes
@@ -37626,7 +39298,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptStartup
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptStartupProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 script startup probe TCP socket
 
     Attributes
@@ -37644,7 +39316,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptStartup
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptVolumeDevicesItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 script volume devices items0
 
     Attributes
@@ -37662,7 +39334,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptVolumeD
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptVolumeMountsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 script volume mounts items0
 
     Attributes
@@ -37675,6 +39347,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptVolumeM
         name
     readOnly : bool, default is Undefined, optional
         read only
+    recursiveReadOnly : str, default is Undefined, optional
+        recursive read only
     subPath : str, default is Undefined, optional
         sub path
     subPathExpr : str, default is Undefined, optional
@@ -37690,17 +39364,21 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0ScriptVolumeM
 
     readOnly?: bool
 
+    recursiveReadOnly?: str
+
     subPath?: str
 
     subPathExpr?: str
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SecurityContext:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 security context
 
     Attributes
     ----------
+    appArmorProfile : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SecurityContextAppArmorProfile, default is Undefined, optional
+        app armor profile
     fsGroup : int, default is Undefined, optional
         fs group
     fsGroupChangePolicy : str, default is Undefined, optional
@@ -37724,6 +39402,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SecurityConte
     """
 
 
+    appArmorProfile?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SecurityContextAppArmorProfile
+
     fsGroup?: int
 
     fsGroupChangePolicy?: str
@@ -37745,8 +39425,26 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SecurityConte
     windowsOptions?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SecurityContextWindowsOptions
 
 
-schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SecurityContextSeLinuxOptions:
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SecurityContextAppArmorProfile:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec templates items0 security context app armor profile
+
+    Attributes
+    ----------
+    localhostProfile : str, default is Undefined, optional
+        localhost profile
+    $type : str, default is Undefined, required
+        type
     """
+
+
+    localhostProfile?: str
+
+    $type: str
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SecurityContextSeLinuxOptions:
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 security context se linux options
 
     Attributes
@@ -37772,7 +39470,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SecurityConte
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SecurityContextSeccompProfile:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 security context seccomp profile
 
     Attributes
@@ -37790,7 +39488,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SecurityConte
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SecurityContextSysctlsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 security context sysctls items0
 
     Attributes
@@ -37808,7 +39506,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SecurityConte
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SecurityContextWindowsOptions:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 security context windows options
 
     Attributes
@@ -37834,7 +39532,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SecurityConte
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 sidecars items0
 
     Attributes
@@ -37863,8 +39561,12 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems
         ports
     readinessProbe : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0ReadinessProbe, default is Undefined, optional
         readiness probe
+    resizePolicy : [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0ResizePolicyItems0], default is Undefined, optional
+        resize policy
     resources : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0Resources, default is Undefined, optional
         resources
+    restartPolicy : str, default is Undefined, optional
+        restart policy
     securityContext : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0SecurityContext, default is Undefined, optional
         security context
     startupProbe : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0StartupProbe, default is Undefined, optional
@@ -37912,7 +39614,11 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems
 
     readinessProbe?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0ReadinessProbe
 
+    resizePolicy?: [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0ResizePolicyItems0]
+
     resources?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0Resources
+
+    restartPolicy?: str
 
     securityContext?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0SecurityContext
 
@@ -37936,7 +39642,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0EnvFromItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 sidecars items0 env from items0
 
     Attributes
@@ -37958,7 +39664,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0EnvFromItems0ConfigMapRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 sidecars items0 env from items0 config map ref
 
     Attributes
@@ -37970,13 +39676,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems
     """
 
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0EnvFromItems0SecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 sidecars items0 env from items0 secret ref
 
     Attributes
@@ -37988,13 +39694,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems
     """
 
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0EnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 sidecars items0 env items0
 
     Attributes
@@ -38016,7 +39722,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0EnvItems0ValueFrom:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 sidecars items0 env items0 value from
 
     Attributes
@@ -38042,7 +39748,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0EnvItems0ValueFromConfigMapKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 sidecars items0 env items0 value from config map key ref
 
     Attributes
@@ -38058,13 +39764,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0EnvItems0ValueFromFieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 sidecars items0 env items0 value from field ref
 
     Attributes
@@ -38082,7 +39788,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0EnvItems0ValueFromResourceFieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 sidecars items0 env items0 value from resource field ref
 
     Attributes
@@ -38108,7 +39814,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0EnvItems0ValueFromSecretKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 sidecars items0 env items0 value from secret key ref
 
     Attributes
@@ -38124,13 +39830,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0Lifecycle:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 sidecars items0 lifecycle
 
     Attributes
@@ -38148,7 +39854,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0LifecyclePostStart:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 sidecars items0 lifecycle post start
 
     Attributes
@@ -38157,6 +39863,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems
         exec
     httpGet : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0LifecyclePostStartHTTPGet, default is Undefined, optional
         http get
+    sleep : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0LifecyclePostStartSleep, default is Undefined, optional
+        sleep
     tcpSocket : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0LifecyclePostStartTCPSocket, default is Undefined, optional
         tcp socket
     """
@@ -38166,11 +39874,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems
 
     httpGet?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0LifecyclePostStartHTTPGet
 
+    sleep?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0LifecyclePostStartSleep
+
     tcpSocket?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0LifecyclePostStartTCPSocket
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0LifecyclePostStartExec:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 sidecars items0 lifecycle post start exec
 
     Attributes
@@ -38184,7 +39894,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0LifecyclePostStartHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 sidecars items0 lifecycle post start HTTP get
 
     Attributes
@@ -38214,7 +39924,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0LifecyclePostStartHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 sidecars items0 lifecycle post start HTTP get HTTP headers items0
 
     Attributes
@@ -38231,8 +39941,22 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems
     value: str
 
 
-schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0LifecyclePostStartTCPSocket:
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0LifecyclePostStartSleep:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec templates items0 sidecars items0 lifecycle post start sleep
+
+    Attributes
+    ----------
+    seconds : int, default is Undefined, required
+        seconds
     """
+
+
+    seconds: int
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0LifecyclePostStartTCPSocket:
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 sidecars items0 lifecycle post start TCP socket
 
     Attributes
@@ -38250,7 +39974,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0LifecyclePreStop:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 sidecars items0 lifecycle pre stop
 
     Attributes
@@ -38259,6 +39983,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems
         exec
     httpGet : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0LifecyclePreStopHTTPGet, default is Undefined, optional
         http get
+    sleep : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0LifecyclePreStopSleep, default is Undefined, optional
+        sleep
     tcpSocket : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0LifecyclePreStopTCPSocket, default is Undefined, optional
         tcp socket
     """
@@ -38268,11 +39994,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems
 
     httpGet?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0LifecyclePreStopHTTPGet
 
+    sleep?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0LifecyclePreStopSleep
+
     tcpSocket?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0LifecyclePreStopTCPSocket
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0LifecyclePreStopExec:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 sidecars items0 lifecycle pre stop exec
 
     Attributes
@@ -38286,7 +40014,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0LifecyclePreStopHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 sidecars items0 lifecycle pre stop HTTP get
 
     Attributes
@@ -38316,7 +40044,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0LifecyclePreStopHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 sidecars items0 lifecycle pre stop HTTP get HTTP headers items0
 
     Attributes
@@ -38333,8 +40061,22 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems
     value: str
 
 
-schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0LifecyclePreStopTCPSocket:
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0LifecyclePreStopSleep:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec templates items0 sidecars items0 lifecycle pre stop sleep
+
+    Attributes
+    ----------
+    seconds : int, default is Undefined, required
+        seconds
     """
+
+
+    seconds: int
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0LifecyclePreStopTCPSocket:
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 sidecars items0 lifecycle pre stop TCP socket
 
     Attributes
@@ -38352,7 +40094,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0LivenessProbe:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 sidecars items0 liveness probe
 
     Attributes
@@ -38402,7 +40144,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0LivenessProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 sidecars items0 liveness probe exec
 
     Attributes
@@ -38416,7 +40158,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0LivenessProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 sidecars items0 liveness probe grpc
 
     Attributes
@@ -38434,7 +40176,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0LivenessProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 sidecars items0 liveness probe HTTP get
 
     Attributes
@@ -38464,7 +40206,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0LivenessProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 sidecars items0 liveness probe HTTP get HTTP headers items0
 
     Attributes
@@ -38482,7 +40224,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0LivenessProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 sidecars items0 liveness probe TCP socket
 
     Attributes
@@ -38500,7 +40242,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0PortsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 sidecars items0 ports items0
 
     Attributes
@@ -38530,7 +40272,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0ReadinessProbe:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 sidecars items0 readiness probe
 
     Attributes
@@ -38580,7 +40322,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0ReadinessProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 sidecars items0 readiness probe exec
 
     Attributes
@@ -38594,7 +40336,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0ReadinessProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 sidecars items0 readiness probe grpc
 
     Attributes
@@ -38612,7 +40354,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0ReadinessProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 sidecars items0 readiness probe HTTP get
 
     Attributes
@@ -38642,7 +40384,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0ReadinessProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 sidecars items0 readiness probe HTTP get HTTP headers items0
 
     Attributes
@@ -38660,7 +40402,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0ReadinessProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 sidecars items0 readiness probe TCP socket
 
     Attributes
@@ -38677,8 +40419,26 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems
     port: int | str
 
 
-schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0Resources:
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0ResizePolicyItems0:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec templates items0 sidecars items0 resize policy items0
+
+    Attributes
+    ----------
+    resourceName : str, default is Undefined, required
+        resource name
+    restartPolicy : str, default is Undefined, required
+        restart policy
     """
+
+
+    resourceName: str
+
+    restartPolicy: str
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0Resources:
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 sidecars items0 resources
 
     Attributes
@@ -38700,12 +40460,12 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems
 
 
     check:
-        all _, limits in limits {_regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests {_regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0ResourcesClaimsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 sidecars items0 resources claims items0
 
     Attributes
@@ -38719,13 +40479,15 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0SecurityContext:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 sidecars items0 security context
 
     Attributes
     ----------
     allowPrivilegeEscalation : bool, default is Undefined, optional
         allow privilege escalation
+    appArmorProfile : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0SecurityContextAppArmorProfile, default is Undefined, optional
+        app armor profile
     capabilities : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0SecurityContextCapabilities, default is Undefined, optional
         capabilities
     privileged : bool, default is Undefined, optional
@@ -38751,6 +40513,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems
 
     allowPrivilegeEscalation?: bool
 
+    appArmorProfile?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0SecurityContextAppArmorProfile
+
     capabilities?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0SecurityContextCapabilities
 
     privileged?: bool
@@ -38772,8 +40536,26 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems
     windowsOptions?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0SecurityContextWindowsOptions
 
 
-schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0SecurityContextCapabilities:
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0SecurityContextAppArmorProfile:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec templates items0 sidecars items0 security context app armor profile
+
+    Attributes
+    ----------
+    localhostProfile : str, default is Undefined, optional
+        localhost profile
+    $type : str, default is Undefined, required
+        type
     """
+
+
+    localhostProfile?: str
+
+    $type: str
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0SecurityContextCapabilities:
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 sidecars items0 security context capabilities
 
     Attributes
@@ -38791,7 +40573,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0SecurityContextSeLinuxOptions:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 sidecars items0 security context se linux options
 
     Attributes
@@ -38817,7 +40599,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0SecurityContextSeccompProfile:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 sidecars items0 security context seccomp profile
 
     Attributes
@@ -38835,7 +40617,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0SecurityContextWindowsOptions:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 sidecars items0 security context windows options
 
     Attributes
@@ -38861,7 +40643,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0StartupProbe:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 sidecars items0 startup probe
 
     Attributes
@@ -38911,7 +40693,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0StartupProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 sidecars items0 startup probe exec
 
     Attributes
@@ -38925,7 +40707,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0StartupProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 sidecars items0 startup probe grpc
 
     Attributes
@@ -38943,7 +40725,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0StartupProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 sidecars items0 startup probe HTTP get
 
     Attributes
@@ -38973,7 +40755,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0StartupProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 sidecars items0 startup probe HTTP get HTTP headers items0
 
     Attributes
@@ -38991,7 +40773,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0StartupProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 sidecars items0 startup probe TCP socket
 
     Attributes
@@ -39009,7 +40791,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0VolumeDevicesItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 sidecars items0 volume devices items0
 
     Attributes
@@ -39027,7 +40809,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems0VolumeMountsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 sidecars items0 volume mounts items0
 
     Attributes
@@ -39040,6 +40822,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems
         name
     readOnly : bool, default is Undefined, optional
         read only
+    recursiveReadOnly : str, default is Undefined, optional
+        recursive read only
     subPath : str, default is Undefined, optional
         sub path
     subPathExpr : str, default is Undefined, optional
@@ -39055,13 +40839,15 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SidecarsItems
 
     readOnly?: bool
 
+    recursiveReadOnly?: str
+
     subPath?: str
 
     subPathExpr?: str
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0Suspend:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 suspend
 
     Attributes
@@ -39075,25 +40861,33 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0Suspend:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0Synchronization:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 synchronization
 
     Attributes
     ----------
     mutex : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SynchronizationMutex, default is Undefined, optional
         mutex
+    mutexes : [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SynchronizationMutexesItems0], default is Undefined, optional
+        mutexes
     semaphore : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SynchronizationSemaphore, default is Undefined, optional
         semaphore
+    semaphores : [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SynchronizationSemaphoresItems0], default is Undefined, optional
+        semaphores
     """
 
 
     mutex?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SynchronizationMutex
 
+    mutexes?: [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SynchronizationMutexesItems0]
+
     semaphore?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SynchronizationSemaphore
+
+    semaphores?: [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SynchronizationSemaphoresItems0]
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SynchronizationMutex:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 synchronization mutex
 
     Attributes
@@ -39110,8 +40904,26 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0Synchronizati
     namespace?: str
 
 
-schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SynchronizationSemaphore:
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SynchronizationMutexesItems0:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec templates items0 synchronization mutexes items0
+
+    Attributes
+    ----------
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
     """
+
+
+    name?: str
+
+    namespace?: str
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SynchronizationSemaphore:
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 synchronization semaphore
 
     Attributes
@@ -39129,7 +40941,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0Synchronizati
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SynchronizationSemaphoreConfigMapKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 synchronization semaphore config map key ref
 
     Attributes
@@ -39145,13 +40957,53 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0Synchronizati
 
     key: str
 
-    name?: str
+    name?: str = ""
+
+    optional?: bool
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SynchronizationSemaphoresItems0:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec templates items0 synchronization semaphores items0
+
+    Attributes
+    ----------
+    configMapKeyRef : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SynchronizationSemaphoresItems0ConfigMapKeyRef, default is Undefined, optional
+        config map key ref
+    namespace : str, default is Undefined, optional
+        namespace
+    """
+
+
+    configMapKeyRef?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SynchronizationSemaphoresItems0ConfigMapKeyRef
+
+    namespace?: str
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0SynchronizationSemaphoresItems0ConfigMapKeyRef:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec templates items0 synchronization semaphores items0 config map key ref
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0TolerationsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 tolerations items0
 
     Attributes
@@ -39181,7 +41033,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0TolerationsIt
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0
 
     Attributes
@@ -39311,7 +41163,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0AwsElasticBlockStore:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 aws elastic block store
 
     Attributes
@@ -39337,7 +41189,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0AzureDisk:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 azure disk
 
     Attributes
@@ -39371,7 +41223,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0AzureFile:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 azure file
 
     Attributes
@@ -39393,7 +41245,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0Cephfs:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 cephfs
 
     Attributes
@@ -39427,7 +41279,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0CephfsSecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 cephfs secret ref
 
     Attributes
@@ -39437,11 +41289,11 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0Cinder:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 cinder
 
     Attributes
@@ -39467,7 +41319,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0CinderSecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 cinder secret ref
 
     Attributes
@@ -39477,11 +41329,11 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0ConfigMap:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 config map
 
     Attributes
@@ -39501,13 +41353,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
 
     items?: [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0ConfigMapItemsItems0]
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0ConfigMapItemsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 config map items items0
 
     Attributes
@@ -39529,7 +41381,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0Csi:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 csi
 
     Attributes
@@ -39559,7 +41411,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0CsiNodePublishSecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 csi node publish secret ref
 
     Attributes
@@ -39569,11 +41421,11 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0DownwardAPI:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 downward API
 
     Attributes
@@ -39591,7 +41443,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0DownwardAPIItemsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 downward API items items0
 
     Attributes
@@ -39617,7 +41469,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0DownwardAPIItemsItems0FieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 downward API items items0 field ref
 
     Attributes
@@ -39635,7 +41487,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0DownwardAPIItemsItems0ResourceFieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 downward API items items0 resource field ref
 
     Attributes
@@ -39661,7 +41513,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0EmptyDir:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 empty dir
 
     Attributes
@@ -39683,7 +41535,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0Ephemeral:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 ephemeral
 
     Attributes
@@ -39697,7 +41549,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0EphemeralVolumeClaimTemplate:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 ephemeral volume claim template
 
     Attributes
@@ -39715,7 +41567,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0EphemeralVolumeClaimTemplateSpec:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 ephemeral volume claim template spec
 
     Attributes
@@ -39732,6 +41584,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
         selector
     storageClassName : str, default is Undefined, optional
         storage class name
+    volumeAttributesClassName : str, default is Undefined, optional
+        volume attributes class name
     volumeMode : str, default is Undefined, optional
         volume mode
     volumeName : str, default is Undefined, optional
@@ -39751,13 +41605,15 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
 
     storageClassName?: str
 
+    volumeAttributesClassName?: str
+
     volumeMode?: str
 
     volumeName?: str
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0EphemeralVolumeClaimTemplateSpecDataSource:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 ephemeral volume claim template spec data source
 
     Attributes
@@ -39779,7 +41635,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0EphemeralVolumeClaimTemplateSpecDataSourceRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 ephemeral volume claim template spec data source ref
 
     Attributes
@@ -39805,13 +41661,11 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0EphemeralVolumeClaimTemplateSpecResources:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 ephemeral volume claim template spec resources
 
     Attributes
     ----------
-    claims : [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0EphemeralVolumeClaimTemplateSpecResourcesClaimsItems0], default is Undefined, optional
-        claims
     limits : {str:int | str}, default is Undefined, optional
         limits
     requests : {str:int | str}, default is Undefined, optional
@@ -39819,34 +41673,18 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
     """
 
 
-    claims?: [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0EphemeralVolumeClaimTemplateSpecResourcesClaimsItems0]
-
     limits?: {str:int | str}
 
     requests?: {str:int | str}
 
 
     check:
-        all _, limits in limits {_regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests {_regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
-
-
-schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0EphemeralVolumeClaimTemplateSpecResourcesClaimsItems0:
-    """
-    argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 ephemeral volume claim template spec resources claims items0
-
-    Attributes
-    ----------
-    name : str, default is Undefined, required
-        name
-    """
-
-
-    name: str
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0EphemeralVolumeClaimTemplateSpecSelector:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 ephemeral volume claim template spec selector
 
     Attributes
@@ -39864,7 +41702,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0EphemeralVolumeClaimTemplateSpecSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 ephemeral volume claim template spec selector match expressions items0
 
     Attributes
@@ -39886,7 +41724,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0Fc:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 fc
 
     Attributes
@@ -39916,7 +41754,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0FlexVolume:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 flex volume
 
     Attributes
@@ -39946,7 +41784,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0FlexVolumeSecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 flex volume secret ref
 
     Attributes
@@ -39956,11 +41794,11 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0Flocker:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 flocker
 
     Attributes
@@ -39978,7 +41816,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0GcePersistentDisk:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 gce persistent disk
 
     Attributes
@@ -40004,7 +41842,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0GitRepo:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 git repo
 
     Attributes
@@ -40026,7 +41864,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0Glusterfs:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 glusterfs
 
     Attributes
@@ -40048,7 +41886,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0HostPath:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 host path
 
     Attributes
@@ -40066,7 +41904,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0Iscsi:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 iscsi
 
     Attributes
@@ -40120,7 +41958,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0IscsiSecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 iscsi secret ref
 
     Attributes
@@ -40130,11 +41968,11 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0Nfs:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 nfs
 
     Attributes
@@ -40156,7 +41994,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0PersistentVolumeClaim:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 persistent volume claim
 
     Attributes
@@ -40174,7 +42012,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0PhotonPersistentDisk:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 photon persistent disk
 
     Attributes
@@ -40192,7 +42030,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0PortworxVolume:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 portworx volume
 
     Attributes
@@ -40214,7 +42052,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0Projected:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 projected
 
     Attributes
@@ -40232,11 +42070,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0ProjectedSourcesItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 projected sources items0
 
     Attributes
     ----------
+    clusterTrustBundle : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0ProjectedSourcesItems0ClusterTrustBundle, default is Undefined, optional
+        cluster trust bundle
     configMap : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0ProjectedSourcesItems0ConfigMap, default is Undefined, optional
         config map
     downwardAPI : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0ProjectedSourcesItems0DownwardAPI, default is Undefined, optional
@@ -40248,6 +42088,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
     """
 
 
+    clusterTrustBundle?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0ProjectedSourcesItems0ClusterTrustBundle
+
     configMap?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0ProjectedSourcesItems0ConfigMap
 
     downwardAPI?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0ProjectedSourcesItems0DownwardAPI
@@ -40257,8 +42099,78 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
     serviceAccountToken?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0ProjectedSourcesItems0ServiceAccountToken
 
 
-schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0ProjectedSourcesItems0ConfigMap:
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0ProjectedSourcesItems0ClusterTrustBundle:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 projected sources items0 cluster trust bundle
+
+    Attributes
+    ----------
+    labelSelector : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0ProjectedSourcesItems0ClusterTrustBundleLabelSelector, default is Undefined, optional
+        label selector
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    path : str, default is Undefined, required
+        path
+    signerName : str, default is Undefined, optional
+        signer name
     """
+
+
+    labelSelector?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0ProjectedSourcesItems0ClusterTrustBundleLabelSelector
+
+    name?: str
+
+    optional?: bool
+
+    path: str
+
+    signerName?: str
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0ProjectedSourcesItems0ClusterTrustBundleLabelSelector:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 projected sources items0 cluster trust bundle label selector
+
+    Attributes
+    ----------
+    matchExpressions : [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0ProjectedSourcesItems0ClusterTrustBundleLabelSelectorMatchExpressionsItems0], default is Undefined, optional
+        match expressions
+    matchLabels : {str:str}, default is Undefined, optional
+        match labels
+    """
+
+
+    matchExpressions?: [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0ProjectedSourcesItems0ClusterTrustBundleLabelSelectorMatchExpressionsItems0]
+
+    matchLabels?: {str:str}
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0ProjectedSourcesItems0ClusterTrustBundleLabelSelectorMatchExpressionsItems0:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 projected sources items0 cluster trust bundle label selector match expressions items0
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    operator : str, default is Undefined, required
+        operator
+    values : [str], default is Undefined, optional
+        values
+    """
+
+
+    key: str
+
+    operator: str
+
+    values?: [str]
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0ProjectedSourcesItems0ConfigMap:
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 projected sources items0 config map
 
     Attributes
@@ -40274,13 +42186,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
 
     items?: [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0ProjectedSourcesItems0ConfigMapItemsItems0]
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0ProjectedSourcesItems0ConfigMapItemsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 projected sources items0 config map items items0
 
     Attributes
@@ -40302,7 +42214,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0ProjectedSourcesItems0DownwardAPI:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 projected sources items0 downward API
 
     Attributes
@@ -40316,7 +42228,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 projected sources items0 downward API items items0
 
     Attributes
@@ -40342,7 +42254,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0FieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 projected sources items0 downward API items items0 field ref
 
     Attributes
@@ -40360,7 +42272,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0ResourceFieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 projected sources items0 downward API items items0 resource field ref
 
     Attributes
@@ -40386,7 +42298,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0ProjectedSourcesItems0Secret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 projected sources items0 secret
 
     Attributes
@@ -40402,13 +42314,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
 
     items?: [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0ProjectedSourcesItems0SecretItemsItems0]
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0ProjectedSourcesItems0SecretItemsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 projected sources items0 secret items items0
 
     Attributes
@@ -40430,7 +42342,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0ProjectedSourcesItems0ServiceAccountToken:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 projected sources items0 service account token
 
     Attributes
@@ -40452,7 +42364,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0Quobyte:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 quobyte
 
     Attributes
@@ -40486,7 +42398,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0Rbd:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 rbd
 
     Attributes
@@ -40528,7 +42440,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0RbdSecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 rbd secret ref
 
     Attributes
@@ -40538,11 +42450,11 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0ScaleIO:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 scale i o
 
     Attributes
@@ -40592,7 +42504,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0ScaleIOSecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 scale i o secret ref
 
     Attributes
@@ -40602,11 +42514,11 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0Secret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 secret
 
     Attributes
@@ -40632,7 +42544,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0SecretItemsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 secret items items0
 
     Attributes
@@ -40654,7 +42566,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0Storageos:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 storageos
 
     Attributes
@@ -40684,7 +42596,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0StorageosSecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 storageos secret ref
 
     Attributes
@@ -40694,11 +42606,11 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0VsphereVolume:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec templates items0 volumes items0 vsphere volume
 
     Attributes
@@ -40724,7 +42636,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTemplatesItems0VolumesItems0
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTolerationsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec tolerations items0
 
     Attributes
@@ -40754,7 +42666,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecTolerationsItems0:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumeClaimGC:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volume claim g c
 
     Attributes
@@ -40768,7 +42680,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumeClaimGC:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumeClaimTemplatesItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volume claim templates items0
 
     Attributes
@@ -40798,7 +42710,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumeClaimTemplatesItems0:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumeClaimTemplatesItems0Spec:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volume claim templates items0 spec
 
     Attributes
@@ -40815,6 +42727,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumeClaimTemplatesItems0Sp
         selector
     storageClassName : str, default is Undefined, optional
         storage class name
+    volumeAttributesClassName : str, default is Undefined, optional
+        volume attributes class name
     volumeMode : str, default is Undefined, optional
         volume mode
     volumeName : str, default is Undefined, optional
@@ -40834,13 +42748,15 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumeClaimTemplatesItems0Sp
 
     storageClassName?: str
 
+    volumeAttributesClassName?: str
+
     volumeMode?: str
 
     volumeName?: str
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumeClaimTemplatesItems0SpecDataSource:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volume claim templates items0 spec data source
 
     Attributes
@@ -40862,7 +42778,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumeClaimTemplatesItems0Sp
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumeClaimTemplatesItems0SpecDataSourceRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volume claim templates items0 spec data source ref
 
     Attributes
@@ -40888,13 +42804,11 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumeClaimTemplatesItems0Sp
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumeClaimTemplatesItems0SpecResources:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volume claim templates items0 spec resources
 
     Attributes
     ----------
-    claims : [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumeClaimTemplatesItems0SpecResourcesClaimsItems0], default is Undefined, optional
-        claims
     limits : {str:int | str}, default is Undefined, optional
         limits
     requests : {str:int | str}, default is Undefined, optional
@@ -40902,34 +42816,18 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumeClaimTemplatesItems0Sp
     """
 
 
-    claims?: [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumeClaimTemplatesItems0SpecResourcesClaimsItems0]
-
     limits?: {str:int | str}
 
     requests?: {str:int | str}
 
 
     check:
-        all _, limits in limits {_regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests {_regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
-
-
-schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumeClaimTemplatesItems0SpecResourcesClaimsItems0:
-    """
-    argoproj io v1alpha1 cluster workflow template spec volume claim templates items0 spec resources claims items0
-
-    Attributes
-    ----------
-    name : str, default is Undefined, required
-        name
-    """
-
-
-    name: str
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumeClaimTemplatesItems0SpecSelector:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volume claim templates items0 spec selector
 
     Attributes
@@ -40947,7 +42845,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumeClaimTemplatesItems0Sp
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumeClaimTemplatesItems0SpecSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volume claim templates items0 spec selector match expressions items0
 
     Attributes
@@ -40969,27 +42867,33 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumeClaimTemplatesItems0Sp
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumeClaimTemplatesItems0Status:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volume claim templates items0 status
 
     Attributes
     ----------
     accessModes : [str], default is Undefined, optional
         access modes
+    allocatedResourceStatuses : {str:str}, default is Undefined, optional
+        allocated resource statuses
     allocatedResources : {str:int | str}, default is Undefined, optional
         allocated resources
     capacity : {str:int | str}, default is Undefined, optional
         capacity
     conditions : [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumeClaimTemplatesItems0StatusConditionsItems0], default is Undefined, optional
         conditions
+    currentVolumeAttributesClassName : str, default is Undefined, optional
+        current volume attributes class name
+    modifyVolumeStatus : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumeClaimTemplatesItems0StatusModifyVolumeStatus, default is Undefined, optional
+        modify volume status
     phase : str, default is Undefined, optional
         phase
-    resizeStatus : str, default is Undefined, optional
-        resize status
     """
 
 
     accessModes?: [str]
+
+    allocatedResourceStatuses?: {str:str}
 
     allocatedResources?: {str:int | str}
 
@@ -40997,18 +42901,20 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumeClaimTemplatesItems0St
 
     conditions?: [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumeClaimTemplatesItems0StatusConditionsItems0]
 
-    phase?: str
+    currentVolumeAttributesClassName?: str
 
-    resizeStatus?: str
+    modifyVolumeStatus?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumeClaimTemplatesItems0StatusModifyVolumeStatus
+
+    phase?: str
 
 
     check:
-        all _, allocatedResources in allocatedResources {_regex_match(str(allocatedResources), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if allocatedResources } if allocatedResources
-        all _, capacity in capacity {_regex_match(str(capacity), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if capacity } if capacity
+        all _, allocatedResources in allocatedResources { _regex_match(str(allocatedResources), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if allocatedResources } if allocatedResources
+        all _, capacity in capacity { _regex_match(str(capacity), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if capacity } if capacity
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumeClaimTemplatesItems0StatusConditionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volume claim templates items0 status conditions items0
 
     Attributes
@@ -41041,8 +42947,26 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumeClaimTemplatesItems0St
     $type: str
 
 
-schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0:
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumeClaimTemplatesItems0StatusModifyVolumeStatus:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec volume claim templates items0 status modify volume status
+
+    Attributes
+    ----------
+    status : str, default is Undefined, required
+        status
+    targetVolumeAttributesClassName : str, default is Undefined, optional
+        target volume attributes class name
     """
+
+
+    status: str
+
+    targetVolumeAttributesClassName?: str
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0:
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0
 
     Attributes
@@ -41172,7 +43096,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0AwsElasticBlockStore:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 aws elastic block store
 
     Attributes
@@ -41198,7 +43122,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0AwsElasticBlock
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0AzureDisk:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 azure disk
 
     Attributes
@@ -41232,7 +43156,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0AzureDisk:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0AzureFile:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 azure file
 
     Attributes
@@ -41254,7 +43178,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0AzureFile:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0Cephfs:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 cephfs
 
     Attributes
@@ -41288,7 +43212,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0Cephfs:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0CephfsSecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 cephfs secret ref
 
     Attributes
@@ -41298,11 +43222,11 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0CephfsSecretRef
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0Cinder:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 cinder
 
     Attributes
@@ -41328,7 +43252,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0Cinder:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0CinderSecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 cinder secret ref
 
     Attributes
@@ -41338,11 +43262,11 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0CinderSecretRef
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0ConfigMap:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 config map
 
     Attributes
@@ -41362,13 +43286,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0ConfigMap:
 
     items?: [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0ConfigMapItemsItems0]
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0ConfigMapItemsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 config map items items0
 
     Attributes
@@ -41390,7 +43314,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0ConfigMapItemsI
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0Csi:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 csi
 
     Attributes
@@ -41420,7 +43344,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0Csi:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0CsiNodePublishSecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 csi node publish secret ref
 
     Attributes
@@ -41430,11 +43354,11 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0CsiNodePublishS
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0DownwardAPI:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 downward API
 
     Attributes
@@ -41452,7 +43376,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0DownwardAPI:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0DownwardAPIItemsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 downward API items items0
 
     Attributes
@@ -41478,7 +43402,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0DownwardAPIItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0DownwardAPIItemsItems0FieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 downward API items items0 field ref
 
     Attributes
@@ -41496,7 +43420,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0DownwardAPIItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0DownwardAPIItemsItems0ResourceFieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 downward API items items0 resource field ref
 
     Attributes
@@ -41522,7 +43446,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0DownwardAPIItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0EmptyDir:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 empty dir
 
     Attributes
@@ -41544,7 +43468,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0EmptyDir:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0Ephemeral:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 ephemeral
 
     Attributes
@@ -41558,7 +43482,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0Ephemeral:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0EphemeralVolumeClaimTemplate:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 ephemeral volume claim template
 
     Attributes
@@ -41576,7 +43500,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0EphemeralVolume
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0EphemeralVolumeClaimTemplateSpec:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 ephemeral volume claim template spec
 
     Attributes
@@ -41593,6 +43517,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0EphemeralVolume
         selector
     storageClassName : str, default is Undefined, optional
         storage class name
+    volumeAttributesClassName : str, default is Undefined, optional
+        volume attributes class name
     volumeMode : str, default is Undefined, optional
         volume mode
     volumeName : str, default is Undefined, optional
@@ -41612,13 +43538,15 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0EphemeralVolume
 
     storageClassName?: str
 
+    volumeAttributesClassName?: str
+
     volumeMode?: str
 
     volumeName?: str
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0EphemeralVolumeClaimTemplateSpecDataSource:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 ephemeral volume claim template spec data source
 
     Attributes
@@ -41640,7 +43568,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0EphemeralVolume
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0EphemeralVolumeClaimTemplateSpecDataSourceRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 ephemeral volume claim template spec data source ref
 
     Attributes
@@ -41666,13 +43594,11 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0EphemeralVolume
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0EphemeralVolumeClaimTemplateSpecResources:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 ephemeral volume claim template spec resources
 
     Attributes
     ----------
-    claims : [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0EphemeralVolumeClaimTemplateSpecResourcesClaimsItems0], default is Undefined, optional
-        claims
     limits : {str:int | str}, default is Undefined, optional
         limits
     requests : {str:int | str}, default is Undefined, optional
@@ -41680,34 +43606,18 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0EphemeralVolume
     """
 
 
-    claims?: [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0EphemeralVolumeClaimTemplateSpecResourcesClaimsItems0]
-
     limits?: {str:int | str}
 
     requests?: {str:int | str}
 
 
     check:
-        all _, limits in limits {_regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests {_regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
-
-
-schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0EphemeralVolumeClaimTemplateSpecResourcesClaimsItems0:
-    """
-    argoproj io v1alpha1 cluster workflow template spec volumes items0 ephemeral volume claim template spec resources claims items0
-
-    Attributes
-    ----------
-    name : str, default is Undefined, required
-        name
-    """
-
-
-    name: str
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0EphemeralVolumeClaimTemplateSpecSelector:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 ephemeral volume claim template spec selector
 
     Attributes
@@ -41725,7 +43635,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0EphemeralVolume
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0EphemeralVolumeClaimTemplateSpecSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 ephemeral volume claim template spec selector match expressions items0
 
     Attributes
@@ -41747,7 +43657,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0EphemeralVolume
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0Fc:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 fc
 
     Attributes
@@ -41777,7 +43687,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0Fc:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0FlexVolume:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 flex volume
 
     Attributes
@@ -41807,7 +43717,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0FlexVolume:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0FlexVolumeSecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 flex volume secret ref
 
     Attributes
@@ -41817,11 +43727,11 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0FlexVolumeSecre
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0Flocker:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 flocker
 
     Attributes
@@ -41839,7 +43749,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0Flocker:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0GcePersistentDisk:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 gce persistent disk
 
     Attributes
@@ -41865,7 +43775,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0GcePersistentDi
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0GitRepo:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 git repo
 
     Attributes
@@ -41887,7 +43797,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0GitRepo:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0Glusterfs:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 glusterfs
 
     Attributes
@@ -41909,7 +43819,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0Glusterfs:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0HostPath:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 host path
 
     Attributes
@@ -41927,7 +43837,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0HostPath:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0Iscsi:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 iscsi
 
     Attributes
@@ -41981,7 +43891,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0Iscsi:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0IscsiSecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 iscsi secret ref
 
     Attributes
@@ -41991,11 +43901,11 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0IscsiSecretRef:
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0Nfs:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 nfs
 
     Attributes
@@ -42017,7 +43927,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0Nfs:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0PersistentVolumeClaim:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 persistent volume claim
 
     Attributes
@@ -42035,7 +43945,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0PersistentVolum
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0PhotonPersistentDisk:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 photon persistent disk
 
     Attributes
@@ -42053,7 +43963,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0PhotonPersisten
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0PortworxVolume:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 portworx volume
 
     Attributes
@@ -42075,7 +43985,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0PortworxVolume:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0Projected:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 projected
 
     Attributes
@@ -42093,11 +44003,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0Projected:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0ProjectedSourcesItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 projected sources items0
 
     Attributes
     ----------
+    clusterTrustBundle : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0ProjectedSourcesItems0ClusterTrustBundle, default is Undefined, optional
+        cluster trust bundle
     configMap : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0ProjectedSourcesItems0ConfigMap, default is Undefined, optional
         config map
     downwardAPI : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0ProjectedSourcesItems0DownwardAPI, default is Undefined, optional
@@ -42109,6 +44021,8 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0ProjectedSource
     """
 
 
+    clusterTrustBundle?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0ProjectedSourcesItems0ClusterTrustBundle
+
     configMap?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0ProjectedSourcesItems0ConfigMap
 
     downwardAPI?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0ProjectedSourcesItems0DownwardAPI
@@ -42118,8 +44032,78 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0ProjectedSource
     serviceAccountToken?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0ProjectedSourcesItems0ServiceAccountToken
 
 
-schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0ProjectedSourcesItems0ConfigMap:
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0ProjectedSourcesItems0ClusterTrustBundle:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec volumes items0 projected sources items0 cluster trust bundle
+
+    Attributes
+    ----------
+    labelSelector : ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0ProjectedSourcesItems0ClusterTrustBundleLabelSelector, default is Undefined, optional
+        label selector
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    path : str, default is Undefined, required
+        path
+    signerName : str, default is Undefined, optional
+        signer name
     """
+
+
+    labelSelector?: ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0ProjectedSourcesItems0ClusterTrustBundleLabelSelector
+
+    name?: str
+
+    optional?: bool
+
+    path: str
+
+    signerName?: str
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0ProjectedSourcesItems0ClusterTrustBundleLabelSelector:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec volumes items0 projected sources items0 cluster trust bundle label selector
+
+    Attributes
+    ----------
+    matchExpressions : [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0ProjectedSourcesItems0ClusterTrustBundleLabelSelectorMatchExpressionsItems0], default is Undefined, optional
+        match expressions
+    matchLabels : {str:str}, default is Undefined, optional
+        match labels
+    """
+
+
+    matchExpressions?: [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0ProjectedSourcesItems0ClusterTrustBundleLabelSelectorMatchExpressionsItems0]
+
+    matchLabels?: {str:str}
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0ProjectedSourcesItems0ClusterTrustBundleLabelSelectorMatchExpressionsItems0:
+    r"""
+    argoproj io v1alpha1 cluster workflow template spec volumes items0 projected sources items0 cluster trust bundle label selector match expressions items0
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    operator : str, default is Undefined, required
+        operator
+    values : [str], default is Undefined, optional
+        values
+    """
+
+
+    key: str
+
+    operator: str
+
+    values?: [str]
+
+
+schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0ProjectedSourcesItems0ConfigMap:
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 projected sources items0 config map
 
     Attributes
@@ -42135,13 +44119,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0ProjectedSource
 
     items?: [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0ProjectedSourcesItems0ConfigMapItemsItems0]
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0ProjectedSourcesItems0ConfigMapItemsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 projected sources items0 config map items items0
 
     Attributes
@@ -42163,7 +44147,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0ProjectedSource
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0ProjectedSourcesItems0DownwardAPI:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 projected sources items0 downward API
 
     Attributes
@@ -42177,7 +44161,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0ProjectedSource
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 projected sources items0 downward API items items0
 
     Attributes
@@ -42203,7 +44187,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0ProjectedSource
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0FieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 projected sources items0 downward API items items0 field ref
 
     Attributes
@@ -42221,7 +44205,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0ProjectedSource
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0ResourceFieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 projected sources items0 downward API items items0 resource field ref
 
     Attributes
@@ -42247,7 +44231,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0ProjectedSource
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0ProjectedSourcesItems0Secret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 projected sources items0 secret
 
     Attributes
@@ -42263,13 +44247,13 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0ProjectedSource
 
     items?: [ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0ProjectedSourcesItems0SecretItemsItems0]
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0ProjectedSourcesItems0SecretItemsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 projected sources items0 secret items items0
 
     Attributes
@@ -42291,7 +44275,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0ProjectedSource
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0ProjectedSourcesItems0ServiceAccountToken:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 projected sources items0 service account token
 
     Attributes
@@ -42313,7 +44297,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0ProjectedSource
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0Quobyte:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 quobyte
 
     Attributes
@@ -42347,7 +44331,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0Quobyte:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0Rbd:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 rbd
 
     Attributes
@@ -42389,7 +44373,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0Rbd:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0RbdSecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 rbd secret ref
 
     Attributes
@@ -42399,11 +44383,11 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0RbdSecretRef:
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0ScaleIO:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 scale i o
 
     Attributes
@@ -42453,7 +44437,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0ScaleIO:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0ScaleIOSecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 scale i o secret ref
 
     Attributes
@@ -42463,11 +44447,11 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0ScaleIOSecretRe
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0Secret:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 secret
 
     Attributes
@@ -42493,7 +44477,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0Secret:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0SecretItemsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 secret items items0
 
     Attributes
@@ -42515,7 +44499,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0SecretItemsItem
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0Storageos:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 storageos
 
     Attributes
@@ -42545,7 +44529,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0Storageos:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0StorageosSecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 storageos secret ref
 
     Attributes
@@ -42555,11 +44539,11 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0StorageosSecret
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0VsphereVolume:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec volumes items0 vsphere volume
 
     Attributes
@@ -42585,7 +44569,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecVolumesItems0VsphereVolume:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecWorkflowMetadata:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec workflow metadata
 
     Attributes
@@ -42607,7 +44591,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecWorkflowMetadata:
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecWorkflowMetadataLabelsFromAnon:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec workflow metadata labels from anon
 
     Attributes
@@ -42621,7 +44605,7 @@ schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecWorkflowMetadataLabelsFromAn
 
 
 schema ArgoprojIoV1alpha1ClusterWorkflowTemplateSpecWorkflowTemplateRef:
-    """
+    r"""
     argoproj io v1alpha1 cluster workflow template spec workflow template ref
 
     Attributes

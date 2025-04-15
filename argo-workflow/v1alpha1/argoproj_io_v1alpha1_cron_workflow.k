@@ -8,7 +8,7 @@ _regex_match = regex.match
 
 
 schema CronWorkflow:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow
 
     Attributes
@@ -38,7 +38,7 @@ schema CronWorkflow:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpec:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec
 
     Attributes
@@ -47,7 +47,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpec:
         concurrency policy
     failedJobsHistoryLimit : int, default is Undefined, optional
         failed jobs history limit
-    schedule : str, default is Undefined, required
+    schedule : str, default is Undefined, optional
         schedule
     schedules : [str], default is Undefined, optional
         schedules
@@ -61,6 +61,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpec:
         suspend
     timezone : str, default is Undefined, optional
         timezone
+    when : str, default is Undefined, optional
+        when
     workflowMetadata : any, default is Undefined, optional
         workflow metadata
     workflowSpec : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpec, default is Undefined, required
@@ -72,7 +74,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpec:
 
     failedJobsHistoryLimit?: int
 
-    schedule: str
+    schedule?: str
 
     schedules?: [str]
 
@@ -86,27 +88,29 @@ schema ArgoprojIoV1alpha1CronWorkflowSpec:
 
     timezone?: str
 
+    when?: str
+
     workflowMetadata?: any
 
     workflowSpec: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpec
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecStopStrategy:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec stop strategy
 
     Attributes
     ----------
-    condition : str, default is Undefined, required
-        condition
+    expression : str, default is Undefined, required
+        expression
     """
 
 
-    condition: str
+    expression: str
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpec:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec
 
     Attributes
@@ -284,7 +288,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpec:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinity:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec affinity
 
     Attributes
@@ -306,7 +310,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinity:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityNodeAffinity:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec affinity node affinity
 
     Attributes
@@ -324,7 +328,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityNodeAffinity:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec affinity node affinity preferred during scheduling ignored during execution items0
 
     Attributes
@@ -342,7 +346,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityNodeAffinityPreferr
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0Preference:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec affinity node affinity preferred during scheduling ignored during execution items0 preference
 
     Attributes
@@ -360,7 +364,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityNodeAffinityPreferr
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec affinity node affinity preferred during scheduling ignored during execution items0 preference match expressions items0
 
     Attributes
@@ -382,7 +386,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityNodeAffinityPreferr
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchFieldsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec affinity node affinity preferred during scheduling ignored during execution items0 preference match fields items0
 
     Attributes
@@ -404,7 +408,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityNodeAffinityPreferr
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec affinity node affinity required during scheduling ignored during execution
 
     Attributes
@@ -418,7 +422,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityNodeAffinityRequire
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec affinity node affinity required during scheduling ignored during execution node selector terms items0
 
     Attributes
@@ -436,7 +440,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityNodeAffinityRequire
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec affinity node affinity required during scheduling ignored during execution node selector terms items0 match expressions items0
 
     Attributes
@@ -458,7 +462,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityNodeAffinityRequire
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchFieldsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec affinity node affinity required during scheduling ignored during execution node selector terms items0 match fields items0
 
     Attributes
@@ -480,7 +484,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityNodeAffinityRequire
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAffinity:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec affinity pod affinity
 
     Attributes
@@ -498,7 +502,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAffinity:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec affinity pod affinity preferred during scheduling ignored during execution items0
 
     Attributes
@@ -516,13 +520,17 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAffinityPreferre
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTerm:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec affinity pod affinity preferred during scheduling ignored during execution items0 pod affinity term
 
     Attributes
     ----------
     labelSelector : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector, default is Undefined, optional
         label selector
+    matchLabelKeys : [str], default is Undefined, optional
+        match label keys
+    mismatchLabelKeys : [str], default is Undefined, optional
+        mismatch label keys
     namespaceSelector : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector, default is Undefined, optional
         namespace selector
     namespaces : [str], default is Undefined, optional
@@ -534,6 +542,10 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAffinityPreferre
 
     labelSelector?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector
 
+    matchLabelKeys?: [str]
+
+    mismatchLabelKeys?: [str]
+
     namespaceSelector?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector
 
     namespaces?: [str]
@@ -542,7 +554,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAffinityPreferre
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec affinity pod affinity preferred during scheduling ignored during execution items0 pod affinity term label selector
 
     Attributes
@@ -560,7 +572,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAffinityPreferre
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec affinity pod affinity preferred during scheduling ignored during execution items0 pod affinity term label selector match expressions items0
 
     Attributes
@@ -582,7 +594,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAffinityPreferre
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec affinity pod affinity preferred during scheduling ignored during execution items0 pod affinity term namespace selector
 
     Attributes
@@ -600,7 +612,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAffinityPreferre
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec affinity pod affinity preferred during scheduling ignored during execution items0 pod affinity term namespace selector match expressions items0
 
     Attributes
@@ -622,13 +634,17 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAffinityPreferre
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec affinity pod affinity required during scheduling ignored during execution items0
 
     Attributes
     ----------
     labelSelector : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector, default is Undefined, optional
         label selector
+    matchLabelKeys : [str], default is Undefined, optional
+        match label keys
+    mismatchLabelKeys : [str], default is Undefined, optional
+        mismatch label keys
     namespaceSelector : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector, default is Undefined, optional
         namespace selector
     namespaces : [str], default is Undefined, optional
@@ -640,6 +656,10 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAffinityRequired
 
     labelSelector?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector
 
+    matchLabelKeys?: [str]
+
+    mismatchLabelKeys?: [str]
+
     namespaceSelector?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector
 
     namespaces?: [str]
@@ -648,7 +668,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAffinityRequired
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec affinity pod affinity required during scheduling ignored during execution items0 label selector
 
     Attributes
@@ -666,7 +686,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAffinityRequired
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec affinity pod affinity required during scheduling ignored during execution items0 label selector match expressions items0
 
     Attributes
@@ -688,7 +708,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAffinityRequired
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec affinity pod affinity required during scheduling ignored during execution items0 namespace selector
 
     Attributes
@@ -706,7 +726,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAffinityRequired
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec affinity pod affinity required during scheduling ignored during execution items0 namespace selector match expressions items0
 
     Attributes
@@ -728,7 +748,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAffinityRequired
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAntiAffinity:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec affinity pod anti affinity
 
     Attributes
@@ -746,7 +766,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAntiAffinity:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec affinity pod anti affinity preferred during scheduling ignored during execution items0
 
     Attributes
@@ -764,13 +784,17 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAntiAffinityPref
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTerm:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec affinity pod anti affinity preferred during scheduling ignored during execution items0 pod affinity term
 
     Attributes
     ----------
     labelSelector : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector, default is Undefined, optional
         label selector
+    matchLabelKeys : [str], default is Undefined, optional
+        match label keys
+    mismatchLabelKeys : [str], default is Undefined, optional
+        mismatch label keys
     namespaceSelector : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector, default is Undefined, optional
         namespace selector
     namespaces : [str], default is Undefined, optional
@@ -782,6 +806,10 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAntiAffinityPref
 
     labelSelector?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector
 
+    matchLabelKeys?: [str]
+
+    mismatchLabelKeys?: [str]
+
     namespaceSelector?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector
 
     namespaces?: [str]
@@ -790,7 +818,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAntiAffinityPref
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec affinity pod anti affinity preferred during scheduling ignored during execution items0 pod affinity term label selector
 
     Attributes
@@ -808,7 +836,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAntiAffinityPref
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec affinity pod anti affinity preferred during scheduling ignored during execution items0 pod affinity term label selector match expressions items0
 
     Attributes
@@ -830,7 +858,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAntiAffinityPref
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec affinity pod anti affinity preferred during scheduling ignored during execution items0 pod affinity term namespace selector
 
     Attributes
@@ -848,7 +876,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAntiAffinityPref
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec affinity pod anti affinity preferred during scheduling ignored during execution items0 pod affinity term namespace selector match expressions items0
 
     Attributes
@@ -870,13 +898,17 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAntiAffinityPref
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec affinity pod anti affinity required during scheduling ignored during execution items0
 
     Attributes
     ----------
     labelSelector : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector, default is Undefined, optional
         label selector
+    matchLabelKeys : [str], default is Undefined, optional
+        match label keys
+    mismatchLabelKeys : [str], default is Undefined, optional
+        mismatch label keys
     namespaceSelector : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector, default is Undefined, optional
         namespace selector
     namespaces : [str], default is Undefined, optional
@@ -888,6 +920,10 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAntiAffinityRequ
 
     labelSelector?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector
 
+    matchLabelKeys?: [str]
+
+    mismatchLabelKeys?: [str]
+
     namespaceSelector?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector
 
     namespaces?: [str]
@@ -896,7 +932,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAntiAffinityRequ
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec affinity pod anti affinity required during scheduling ignored during execution items0 label selector
 
     Attributes
@@ -914,7 +950,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAntiAffinityRequ
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec affinity pod anti affinity required during scheduling ignored during execution items0 label selector match expressions items0
 
     Attributes
@@ -936,7 +972,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAntiAffinityRequ
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec affinity pod anti affinity required during scheduling ignored during execution items0 namespace selector
 
     Attributes
@@ -954,7 +990,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAntiAffinityRequ
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec affinity pod anti affinity required during scheduling ignored during execution items0 namespace selector match expressions items0
 
     Attributes
@@ -976,7 +1012,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecAffinityPodAntiAffinityRequ
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArguments:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec arguments
 
     Attributes
@@ -994,7 +1030,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArguments:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec arguments artifacts items0
 
     Attributes
@@ -1092,7 +1128,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0Archive:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec arguments artifacts items0 archive
 
     Attributes
@@ -1114,7 +1150,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0Arc
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0ArchiveTar:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec arguments artifacts items0 archive tar
 
     Attributes
@@ -1128,7 +1164,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0Arc
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0ArtifactGC:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec arguments artifacts items0 artifact g c
 
     Attributes
@@ -1150,7 +1186,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0Art
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0ArtifactGCPodMetadata:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec arguments artifacts items0 artifact g c pod metadata
 
     Attributes
@@ -1168,7 +1204,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0Art
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0Artifactory:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec arguments artifacts items0 artifactory
 
     Attributes
@@ -1190,7 +1226,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0Art
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0ArtifactoryPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec arguments artifacts items0 artifactory password secret
 
     Attributes
@@ -1206,13 +1242,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0Art
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0ArtifactoryUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec arguments artifacts items0 artifactory username secret
 
     Attributes
@@ -1228,13 +1264,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0Art
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0Azure:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec arguments artifacts items0 azure
 
     Attributes
@@ -1264,7 +1300,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0Azu
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0AzureAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec arguments artifacts items0 azure account key secret
 
     Attributes
@@ -1280,13 +1316,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0Azu
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0Gcs:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec arguments artifacts items0 gcs
 
     Attributes
@@ -1308,7 +1344,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0Gcs
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0GcsServiceAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec arguments artifacts items0 gcs service account key secret
 
     Attributes
@@ -1324,13 +1360,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0Gcs
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0Git:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec arguments artifacts items0 git
 
     Attributes
@@ -1345,6 +1381,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0Git
         fetch
     insecureIgnoreHostKey : bool, default is Undefined, optional
         insecure ignore host key
+    insecureSkipTLS : bool, default is Undefined, optional
+        insecure skip TLS
     passwordSecret : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0GitPasswordSecret, default is Undefined, optional
         password secret
     repo : str, default is Undefined, required
@@ -1370,6 +1408,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0Git
 
     insecureIgnoreHostKey?: bool
 
+    insecureSkipTLS?: bool
+
     passwordSecret?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0GitPasswordSecret
 
     repo: str
@@ -1384,7 +1424,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0Git
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0GitPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec arguments artifacts items0 git password secret
 
     Attributes
@@ -1400,13 +1440,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0Git
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0GitSSHPrivateKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec arguments artifacts items0 git SSH private key secret
 
     Attributes
@@ -1422,13 +1462,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0Git
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0GitUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec arguments artifacts items0 git username secret
 
     Attributes
@@ -1444,13 +1484,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0Git
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0HTTP:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec arguments artifacts items0 HTTP
 
     Attributes
@@ -1472,7 +1512,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0HTT
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0HTTPAuth:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec arguments artifacts items0 HTTP auth
 
     Attributes
@@ -1494,7 +1534,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0HTT
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0HTTPAuthBasicAuth:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec arguments artifacts items0 HTTP auth basic auth
 
     Attributes
@@ -1512,7 +1552,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0HTT
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0HTTPAuthBasicAuthPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec arguments artifacts items0 HTTP auth basic auth password secret
 
     Attributes
@@ -1528,13 +1568,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0HTT
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0HTTPAuthBasicAuthUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec arguments artifacts items0 HTTP auth basic auth username secret
 
     Attributes
@@ -1550,13 +1590,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0HTT
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0HTTPAuthClientCert:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec arguments artifacts items0 HTTP auth client cert
 
     Attributes
@@ -1574,7 +1614,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0HTT
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0HTTPAuthClientCertClientCertSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec arguments artifacts items0 HTTP auth client cert client cert secret
 
     Attributes
@@ -1590,13 +1630,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0HTT
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0HTTPAuthClientCertClientKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec arguments artifacts items0 HTTP auth client cert client key secret
 
     Attributes
@@ -1612,13 +1652,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0HTT
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0HTTPAuthOauth2:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec arguments artifacts items0 HTTP auth oauth2
 
     Attributes
@@ -1648,7 +1688,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0HTT
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0HTTPAuthOauth2ClientIDSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec arguments artifacts items0 HTTP auth oauth2 client ID secret
 
     Attributes
@@ -1664,13 +1704,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0HTT
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0HTTPAuthOauth2ClientSecretSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec arguments artifacts items0 HTTP auth oauth2 client secret secret
 
     Attributes
@@ -1686,13 +1726,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0HTT
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0HTTPAuthOauth2EndpointParamsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec arguments artifacts items0 HTTP auth oauth2 endpoint params items0
 
     Attributes
@@ -1710,7 +1750,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0HTT
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0HTTPAuthOauth2TokenURLSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec arguments artifacts items0 HTTP auth oauth2 token URL secret
 
     Attributes
@@ -1726,13 +1766,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0HTT
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0HTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec arguments artifacts items0 HTTP headers items0
 
     Attributes
@@ -1750,13 +1790,15 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0HTT
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0Hdfs:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec arguments artifacts items0 hdfs
 
     Attributes
     ----------
     addresses : [str], default is Undefined, optional
         addresses
+    dataTransferProtection : str, default is Undefined, optional
+        data transfer protection
     force : bool, default is Undefined, optional
         force
     hdfsUser : str, default is Undefined, optional
@@ -1780,6 +1822,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0Hdf
 
     addresses?: [str]
 
+    dataTransferProtection?: str
+
     force?: bool
 
     hdfsUser?: str
@@ -1800,7 +1844,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0Hdf
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0HdfsKrbCCacheSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec arguments artifacts items0 hdfs krb c cache secret
 
     Attributes
@@ -1816,13 +1860,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0Hdf
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0HdfsKrbConfigConfigMap:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec arguments artifacts items0 hdfs krb config config map
 
     Attributes
@@ -1838,13 +1882,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0Hdf
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0HdfsKrbKeytabSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec arguments artifacts items0 hdfs krb keytab secret
 
     Attributes
@@ -1860,13 +1904,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0Hdf
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0Oss:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec arguments artifacts items0 oss
 
     Attributes
@@ -1912,7 +1956,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0Oss
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0OssAccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec arguments artifacts items0 oss access key secret
 
     Attributes
@@ -1928,13 +1972,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0Oss
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0OssLifecycleRule:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec arguments artifacts items0 oss lifecycle rule
 
     Attributes
@@ -1952,7 +1996,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0Oss
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0OssSecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec arguments artifacts items0 oss secret key secret
 
     Attributes
@@ -1968,13 +2012,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0Oss
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0Raw:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec arguments artifacts items0 raw
 
     Attributes
@@ -1988,7 +2032,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0Raw
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0S3:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec arguments artifacts items0 s3
 
     Attributes
@@ -2015,6 +2059,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0S3:
         role a r n
     secretKeySecret : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0S3SecretKeySecret, default is Undefined, optional
         secret key secret
+    sessionTokenSecret : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0S3SessionTokenSecret, default is Undefined, optional
+        session token secret
     useSDKCreds : bool, default is Undefined, optional
         use s d k creds
     """
@@ -2042,11 +2088,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0S3:
 
     secretKeySecret?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0S3SecretKeySecret
 
+    sessionTokenSecret?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0S3SessionTokenSecret
+
     useSDKCreds?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0S3AccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec arguments artifacts items0 s3 access key secret
 
     Attributes
@@ -2062,13 +2110,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0S3A
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0S3CaSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec arguments artifacts items0 s3 ca secret
 
     Attributes
@@ -2084,13 +2132,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0S3C
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0S3CreateBucketIfNotPresent:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec arguments artifacts items0 s3 create bucket if not present
 
     Attributes
@@ -2104,7 +2152,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0S3C
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0S3EncryptionOptions:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec arguments artifacts items0 s3 encryption options
 
     Attributes
@@ -2130,7 +2178,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0S3E
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0S3EncryptionOptionsServerSideCustomerKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec arguments artifacts items0 s3 encryption options server side customer key secret
 
     Attributes
@@ -2146,13 +2194,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0S3E
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0S3SecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec arguments artifacts items0 s3 secret key secret
 
     Attributes
@@ -2168,13 +2216,35 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0S3S
 
     key: str
 
-    name?: str
+    name?: str = ""
+
+    optional?: bool
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsArtifactsItems0S3SessionTokenSecret:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec arguments artifacts items0 s3 session token secret
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec arguments parameters items0
 
     Attributes
@@ -2212,7 +2282,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsParametersItems0:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsParametersItems0ValueFrom:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec arguments parameters items0 value from
 
     Attributes
@@ -2258,7 +2328,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsParametersItems0Va
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsParametersItems0ValueFromConfigMapKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec arguments parameters items0 value from config map key ref
 
     Attributes
@@ -2274,13 +2344,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArgumentsParametersItems0Va
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArtifactGC:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec artifact g c
 
     Attributes
@@ -2310,7 +2380,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArtifactGC:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArtifactGCPodMetadata:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec artifact g c pod metadata
 
     Attributes
@@ -2328,7 +2398,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArtifactGCPodMetadata:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArtifactRepositoryRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec artifact repository ref
 
     Attributes
@@ -2346,7 +2416,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecArtifactRepositoryRef:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecDNSConfig:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec DNS config
 
     Attributes
@@ -2368,7 +2438,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecDNSConfig:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecDNSConfigOptionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec DNS config options items0
 
     Attributes
@@ -2386,7 +2456,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecDNSConfigOptionsItems0:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecExecutor:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec executor
 
     Attributes
@@ -2400,7 +2470,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecExecutor:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnon:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec hooks anon
 
     Attributes
@@ -2426,7 +2496,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnon:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArguments:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec hooks anon arguments
 
     Attributes
@@ -2444,7 +2514,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArguments:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifactsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec hooks anon arguments artifacts items0
 
     Attributes
@@ -2542,7 +2612,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifacts
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifactsItems0Archive:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec hooks anon arguments artifacts items0 archive
 
     Attributes
@@ -2564,7 +2634,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifacts
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifactsItems0ArchiveTar:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec hooks anon arguments artifacts items0 archive tar
 
     Attributes
@@ -2578,7 +2648,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifacts
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifactsItems0ArtifactGC:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec hooks anon arguments artifacts items0 artifact g c
 
     Attributes
@@ -2600,7 +2670,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifacts
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifactsItems0ArtifactGCPodMetadata:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec hooks anon arguments artifacts items0 artifact g c pod metadata
 
     Attributes
@@ -2618,7 +2688,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifacts
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifactsItems0Artifactory:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec hooks anon arguments artifacts items0 artifactory
 
     Attributes
@@ -2640,7 +2710,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifacts
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifactsItems0ArtifactoryPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec hooks anon arguments artifacts items0 artifactory password secret
 
     Attributes
@@ -2656,13 +2726,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifacts
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifactsItems0ArtifactoryUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec hooks anon arguments artifacts items0 artifactory username secret
 
     Attributes
@@ -2678,13 +2748,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifacts
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifactsItems0Azure:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec hooks anon arguments artifacts items0 azure
 
     Attributes
@@ -2714,7 +2784,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifacts
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifactsItems0AzureAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec hooks anon arguments artifacts items0 azure account key secret
 
     Attributes
@@ -2730,13 +2800,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifacts
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifactsItems0Gcs:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec hooks anon arguments artifacts items0 gcs
 
     Attributes
@@ -2758,7 +2828,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifacts
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifactsItems0GcsServiceAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec hooks anon arguments artifacts items0 gcs service account key secret
 
     Attributes
@@ -2774,13 +2844,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifacts
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifactsItems0Git:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec hooks anon arguments artifacts items0 git
 
     Attributes
@@ -2795,6 +2865,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifacts
         fetch
     insecureIgnoreHostKey : bool, default is Undefined, optional
         insecure ignore host key
+    insecureSkipTLS : bool, default is Undefined, optional
+        insecure skip TLS
     passwordSecret : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifactsItems0GitPasswordSecret, default is Undefined, optional
         password secret
     repo : str, default is Undefined, required
@@ -2820,6 +2892,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifacts
 
     insecureIgnoreHostKey?: bool
 
+    insecureSkipTLS?: bool
+
     passwordSecret?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifactsItems0GitPasswordSecret
 
     repo: str
@@ -2834,7 +2908,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifacts
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifactsItems0GitPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec hooks anon arguments artifacts items0 git password secret
 
     Attributes
@@ -2850,13 +2924,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifacts
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifactsItems0GitSSHPrivateKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec hooks anon arguments artifacts items0 git SSH private key secret
 
     Attributes
@@ -2872,13 +2946,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifacts
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifactsItems0GitUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec hooks anon arguments artifacts items0 git username secret
 
     Attributes
@@ -2894,13 +2968,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifacts
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifactsItems0HTTP:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec hooks anon arguments artifacts items0 HTTP
 
     Attributes
@@ -2922,7 +2996,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifacts
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifactsItems0HTTPAuth:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec hooks anon arguments artifacts items0 HTTP auth
 
     Attributes
@@ -2944,7 +3018,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifacts
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifactsItems0HTTPAuthBasicAuth:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec hooks anon arguments artifacts items0 HTTP auth basic auth
 
     Attributes
@@ -2962,7 +3036,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifacts
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifactsItems0HTTPAuthBasicAuthPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec hooks anon arguments artifacts items0 HTTP auth basic auth password secret
 
     Attributes
@@ -2978,13 +3052,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifacts
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifactsItems0HTTPAuthBasicAuthUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec hooks anon arguments artifacts items0 HTTP auth basic auth username secret
 
     Attributes
@@ -3000,13 +3074,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifacts
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifactsItems0HTTPAuthClientCert:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec hooks anon arguments artifacts items0 HTTP auth client cert
 
     Attributes
@@ -3024,7 +3098,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifacts
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifactsItems0HTTPAuthClientCertClientCertSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec hooks anon arguments artifacts items0 HTTP auth client cert client cert secret
 
     Attributes
@@ -3040,13 +3114,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifacts
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifactsItems0HTTPAuthClientCertClientKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec hooks anon arguments artifacts items0 HTTP auth client cert client key secret
 
     Attributes
@@ -3062,13 +3136,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifacts
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifactsItems0HTTPAuthOauth2:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec hooks anon arguments artifacts items0 HTTP auth oauth2
 
     Attributes
@@ -3098,7 +3172,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifacts
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifactsItems0HTTPAuthOauth2ClientIDSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec hooks anon arguments artifacts items0 HTTP auth oauth2 client ID secret
 
     Attributes
@@ -3114,13 +3188,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifacts
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifactsItems0HTTPAuthOauth2ClientSecretSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec hooks anon arguments artifacts items0 HTTP auth oauth2 client secret secret
 
     Attributes
@@ -3136,13 +3210,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifacts
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifactsItems0HTTPAuthOauth2EndpointParamsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec hooks anon arguments artifacts items0 HTTP auth oauth2 endpoint params items0
 
     Attributes
@@ -3160,7 +3234,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifacts
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifactsItems0HTTPAuthOauth2TokenURLSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec hooks anon arguments artifacts items0 HTTP auth oauth2 token URL secret
 
     Attributes
@@ -3176,13 +3250,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifacts
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifactsItems0HTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec hooks anon arguments artifacts items0 HTTP headers items0
 
     Attributes
@@ -3200,13 +3274,15 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifacts
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifactsItems0Hdfs:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec hooks anon arguments artifacts items0 hdfs
 
     Attributes
     ----------
     addresses : [str], default is Undefined, optional
         addresses
+    dataTransferProtection : str, default is Undefined, optional
+        data transfer protection
     force : bool, default is Undefined, optional
         force
     hdfsUser : str, default is Undefined, optional
@@ -3230,6 +3306,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifacts
 
     addresses?: [str]
 
+    dataTransferProtection?: str
+
     force?: bool
 
     hdfsUser?: str
@@ -3250,7 +3328,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifacts
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifactsItems0HdfsKrbCCacheSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec hooks anon arguments artifacts items0 hdfs krb c cache secret
 
     Attributes
@@ -3266,13 +3344,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifacts
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifactsItems0HdfsKrbConfigConfigMap:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec hooks anon arguments artifacts items0 hdfs krb config config map
 
     Attributes
@@ -3288,13 +3366,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifacts
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifactsItems0HdfsKrbKeytabSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec hooks anon arguments artifacts items0 hdfs krb keytab secret
 
     Attributes
@@ -3310,13 +3388,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifacts
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifactsItems0Oss:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec hooks anon arguments artifacts items0 oss
 
     Attributes
@@ -3362,7 +3440,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifacts
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifactsItems0OssAccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec hooks anon arguments artifacts items0 oss access key secret
 
     Attributes
@@ -3378,13 +3456,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifacts
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifactsItems0OssLifecycleRule:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec hooks anon arguments artifacts items0 oss lifecycle rule
 
     Attributes
@@ -3402,7 +3480,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifacts
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifactsItems0OssSecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec hooks anon arguments artifacts items0 oss secret key secret
 
     Attributes
@@ -3418,13 +3496,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifacts
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifactsItems0Raw:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec hooks anon arguments artifacts items0 raw
 
     Attributes
@@ -3438,7 +3516,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifacts
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifactsItems0S3:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec hooks anon arguments artifacts items0 s3
 
     Attributes
@@ -3465,6 +3543,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifacts
         role a r n
     secretKeySecret : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifactsItems0S3SecretKeySecret, default is Undefined, optional
         secret key secret
+    sessionTokenSecret : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifactsItems0S3SessionTokenSecret, default is Undefined, optional
+        session token secret
     useSDKCreds : bool, default is Undefined, optional
         use s d k creds
     """
@@ -3492,11 +3572,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifacts
 
     secretKeySecret?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifactsItems0S3SecretKeySecret
 
+    sessionTokenSecret?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifactsItems0S3SessionTokenSecret
+
     useSDKCreds?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifactsItems0S3AccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec hooks anon arguments artifacts items0 s3 access key secret
 
     Attributes
@@ -3512,13 +3594,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifacts
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifactsItems0S3CaSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec hooks anon arguments artifacts items0 s3 ca secret
 
     Attributes
@@ -3534,13 +3616,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifacts
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifactsItems0S3CreateBucketIfNotPresent:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec hooks anon arguments artifacts items0 s3 create bucket if not present
 
     Attributes
@@ -3554,7 +3636,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifacts
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifactsItems0S3EncryptionOptions:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec hooks anon arguments artifacts items0 s3 encryption options
 
     Attributes
@@ -3580,7 +3662,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifacts
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifactsItems0S3EncryptionOptionsServerSideCustomerKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec hooks anon arguments artifacts items0 s3 encryption options server side customer key secret
 
     Attributes
@@ -3596,13 +3678,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifacts
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifactsItems0S3SecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec hooks anon arguments artifacts items0 s3 secret key secret
 
     Attributes
@@ -3618,13 +3700,35 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifacts
 
     key: str
 
-    name?: str
+    name?: str = ""
+
+    optional?: bool
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsArtifactsItems0S3SessionTokenSecret:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec hooks anon arguments artifacts items0 s3 session token secret
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec hooks anon arguments parameters items0
 
     Attributes
@@ -3662,7 +3766,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsParameter
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsParametersItems0ValueFrom:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec hooks anon arguments parameters items0 value from
 
     Attributes
@@ -3708,7 +3812,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsParameter
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsParametersItems0ValueFromConfigMapKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec hooks anon arguments parameters items0 value from config map key ref
 
     Attributes
@@ -3724,13 +3828,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonArgumentsParameter
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonTemplateRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec hooks anon template ref
 
     Attributes
@@ -3752,25 +3856,25 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHooksAnonTemplateRef:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecHostAliasesItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec host aliases items0
 
     Attributes
     ----------
     hostnames : [str], default is Undefined, optional
         hostnames
-    ip : str, default is Undefined, optional
+    ip : str, default is Undefined, required
         ip
     """
 
 
     hostnames?: [str]
 
-    ip?: str
+    ip: str
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecImagePullSecretsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec image pull secrets items0
 
     Attributes
@@ -3780,11 +3884,11 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecImagePullSecretsItems0:
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecMetrics:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec metrics
 
     Attributes
@@ -3798,7 +3902,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecMetrics:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecMetricsPrometheusItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec metrics prometheus items0
 
     Attributes
@@ -3836,7 +3940,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecMetricsPrometheusItems0:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecMetricsPrometheusItems0Counter:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec metrics prometheus items0 counter
 
     Attributes
@@ -3850,7 +3954,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecMetricsPrometheusItems0Coun
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecMetricsPrometheusItems0Gauge:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec metrics prometheus items0 gauge
 
     Attributes
@@ -3872,7 +3976,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecMetricsPrometheusItems0Gaug
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecMetricsPrometheusItems0Histogram:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec metrics prometheus items0 histogram
 
     Attributes
@@ -3890,7 +3994,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecMetricsPrometheusItems0Hist
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecMetricsPrometheusItems0LabelsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec metrics prometheus items0 labels items0
 
     Attributes
@@ -3908,7 +4012,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecMetricsPrometheusItems0Labe
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecPodDisruptionBudget:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec pod disruption budget
 
     Attributes
@@ -3934,7 +4038,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecPodDisruptionBudget:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecPodDisruptionBudgetSelector:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec pod disruption budget selector
 
     Attributes
@@ -3952,7 +4056,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecPodDisruptionBudgetSelector
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecPodDisruptionBudgetSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec pod disruption budget selector match expressions items0
 
     Attributes
@@ -3974,7 +4078,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecPodDisruptionBudgetSelector
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecPodGC:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec pod g c
 
     Attributes
@@ -3996,7 +4100,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecPodGC:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecPodGCLabelSelector:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec pod g c label selector
 
     Attributes
@@ -4014,7 +4118,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecPodGCLabelSelector:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecPodGCLabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec pod g c label selector match expressions items0
 
     Attributes
@@ -4036,7 +4140,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecPodGCLabelSelectorMatchExpr
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecPodMetadata:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec pod metadata
 
     Attributes
@@ -4054,7 +4158,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecPodMetadata:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecRetryStrategy:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec retry strategy
 
     Attributes
@@ -4084,7 +4188,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecRetryStrategy:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecRetryStrategyAffinity:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec retry strategy affinity
 
     Attributes
@@ -4098,7 +4202,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecRetryStrategyAffinity:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecRetryStrategyBackoff:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec retry strategy backoff
 
     Attributes
@@ -4120,11 +4224,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecRetryStrategyBackoff:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecSecurityContext:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec security context
 
     Attributes
     ----------
+    appArmorProfile : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecSecurityContextAppArmorProfile, default is Undefined, optional
+        app armor profile
     fsGroup : int, default is Undefined, optional
         fs group
     fsGroupChangePolicy : str, default is Undefined, optional
@@ -4148,6 +4254,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecSecurityContext:
     """
 
 
+    appArmorProfile?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecSecurityContextAppArmorProfile
+
     fsGroup?: int
 
     fsGroupChangePolicy?: str
@@ -4169,8 +4277,26 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecSecurityContext:
     windowsOptions?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecSecurityContextWindowsOptions
 
 
-schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecSecurityContextSeLinuxOptions:
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecSecurityContextAppArmorProfile:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec security context app armor profile
+
+    Attributes
+    ----------
+    localhostProfile : str, default is Undefined, optional
+        localhost profile
+    $type : str, default is Undefined, required
+        type
     """
+
+
+    localhostProfile?: str
+
+    $type: str
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecSecurityContextSeLinuxOptions:
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec security context se linux options
 
     Attributes
@@ -4196,7 +4322,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecSecurityContextSeLinuxOptio
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecSecurityContextSeccompProfile:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec security context seccomp profile
 
     Attributes
@@ -4214,7 +4340,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecSecurityContextSeccompProfi
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecSecurityContextSysctlsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec security context sysctls items0
 
     Attributes
@@ -4232,7 +4358,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecSecurityContextSysctlsItems
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecSecurityContextWindowsOptions:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec security context windows options
 
     Attributes
@@ -4258,25 +4384,33 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecSecurityContextWindowsOptio
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecSynchronization:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec synchronization
 
     Attributes
     ----------
     mutex : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecSynchronizationMutex, default is Undefined, optional
         mutex
+    mutexes : [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecSynchronizationMutexesItems0], default is Undefined, optional
+        mutexes
     semaphore : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecSynchronizationSemaphore, default is Undefined, optional
         semaphore
+    semaphores : [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecSynchronizationSemaphoresItems0], default is Undefined, optional
+        semaphores
     """
 
 
     mutex?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecSynchronizationMutex
 
+    mutexes?: [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecSynchronizationMutexesItems0]
+
     semaphore?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecSynchronizationSemaphore
+
+    semaphores?: [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecSynchronizationSemaphoresItems0]
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecSynchronizationMutex:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec synchronization mutex
 
     Attributes
@@ -4293,8 +4427,26 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecSynchronizationMutex:
     namespace?: str
 
 
-schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecSynchronizationSemaphore:
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecSynchronizationMutexesItems0:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec synchronization mutexes items0
+
+    Attributes
+    ----------
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
     """
+
+
+    name?: str
+
+    namespace?: str
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecSynchronizationSemaphore:
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec synchronization semaphore
 
     Attributes
@@ -4312,7 +4464,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecSynchronizationSemaphore:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecSynchronizationSemaphoreConfigMapKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec synchronization semaphore config map key ref
 
     Attributes
@@ -4328,13 +4480,53 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecSynchronizationSemaphoreCon
 
     key: str
 
-    name?: str
+    name?: str = ""
+
+    optional?: bool
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecSynchronizationSemaphoresItems0:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec synchronization semaphores items0
+
+    Attributes
+    ----------
+    configMapKeyRef : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecSynchronizationSemaphoresItems0ConfigMapKeyRef, default is Undefined, optional
+        config map key ref
+    namespace : str, default is Undefined, optional
+        namespace
+    """
+
+
+    configMapKeyRef?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecSynchronizationSemaphoresItems0ConfigMapKeyRef
+
+    namespace?: str
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecSynchronizationSemaphoresItems0ConfigMapKeyRef:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec synchronization semaphores items0 config map key ref
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTTLStrategy:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec TTL strategy
 
     Attributes
@@ -4356,7 +4548,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTTLStrategy:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaults:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults
 
     Attributes
@@ -4522,7 +4714,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaults:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinity:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults affinity
 
     Attributes
@@ -4544,7 +4736,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinity:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityNodeAffinity:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults affinity node affinity
 
     Attributes
@@ -4562,7 +4754,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityNod
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults affinity node affinity preferred during scheduling ignored during execution items0
 
     Attributes
@@ -4580,7 +4772,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityNod
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0Preference:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults affinity node affinity preferred during scheduling ignored during execution items0 preference
 
     Attributes
@@ -4598,7 +4790,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityNod
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults affinity node affinity preferred during scheduling ignored during execution items0 preference match expressions items0
 
     Attributes
@@ -4620,7 +4812,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityNod
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchFieldsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults affinity node affinity preferred during scheduling ignored during execution items0 preference match fields items0
 
     Attributes
@@ -4642,7 +4834,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityNod
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults affinity node affinity required during scheduling ignored during execution
 
     Attributes
@@ -4656,7 +4848,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityNod
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults affinity node affinity required during scheduling ignored during execution node selector terms items0
 
     Attributes
@@ -4674,7 +4866,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityNod
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults affinity node affinity required during scheduling ignored during execution node selector terms items0 match expressions items0
 
     Attributes
@@ -4696,7 +4888,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityNod
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchFieldsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults affinity node affinity required during scheduling ignored during execution node selector terms items0 match fields items0
 
     Attributes
@@ -4718,7 +4910,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityNod
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPodAffinity:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults affinity pod affinity
 
     Attributes
@@ -4736,7 +4928,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPod
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults affinity pod affinity preferred during scheduling ignored during execution items0
 
     Attributes
@@ -4754,13 +4946,17 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPod
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTerm:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults affinity pod affinity preferred during scheduling ignored during execution items0 pod affinity term
 
     Attributes
     ----------
     labelSelector : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector, default is Undefined, optional
         label selector
+    matchLabelKeys : [str], default is Undefined, optional
+        match label keys
+    mismatchLabelKeys : [str], default is Undefined, optional
+        mismatch label keys
     namespaceSelector : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector, default is Undefined, optional
         namespace selector
     namespaces : [str], default is Undefined, optional
@@ -4772,6 +4968,10 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPod
 
     labelSelector?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector
 
+    matchLabelKeys?: [str]
+
+    mismatchLabelKeys?: [str]
+
     namespaceSelector?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector
 
     namespaces?: [str]
@@ -4780,7 +4980,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPod
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults affinity pod affinity preferred during scheduling ignored during execution items0 pod affinity term label selector
 
     Attributes
@@ -4798,7 +4998,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPod
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults affinity pod affinity preferred during scheduling ignored during execution items0 pod affinity term label selector match expressions items0
 
     Attributes
@@ -4820,7 +5020,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPod
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults affinity pod affinity preferred during scheduling ignored during execution items0 pod affinity term namespace selector
 
     Attributes
@@ -4838,7 +5038,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPod
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults affinity pod affinity preferred during scheduling ignored during execution items0 pod affinity term namespace selector match expressions items0
 
     Attributes
@@ -4860,13 +5060,17 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPod
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults affinity pod affinity required during scheduling ignored during execution items0
 
     Attributes
     ----------
     labelSelector : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector, default is Undefined, optional
         label selector
+    matchLabelKeys : [str], default is Undefined, optional
+        match label keys
+    mismatchLabelKeys : [str], default is Undefined, optional
+        mismatch label keys
     namespaceSelector : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector, default is Undefined, optional
         namespace selector
     namespaces : [str], default is Undefined, optional
@@ -4878,6 +5082,10 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPod
 
     labelSelector?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector
 
+    matchLabelKeys?: [str]
+
+    mismatchLabelKeys?: [str]
+
     namespaceSelector?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector
 
     namespaces?: [str]
@@ -4886,7 +5094,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPod
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults affinity pod affinity required during scheduling ignored during execution items0 label selector
 
     Attributes
@@ -4904,7 +5112,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPod
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults affinity pod affinity required during scheduling ignored during execution items0 label selector match expressions items0
 
     Attributes
@@ -4926,7 +5134,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPod
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults affinity pod affinity required during scheduling ignored during execution items0 namespace selector
 
     Attributes
@@ -4944,7 +5152,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPod
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults affinity pod affinity required during scheduling ignored during execution items0 namespace selector match expressions items0
 
     Attributes
@@ -4966,7 +5174,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPod
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPodAntiAffinity:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults affinity pod anti affinity
 
     Attributes
@@ -4984,7 +5192,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPod
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults affinity pod anti affinity preferred during scheduling ignored during execution items0
 
     Attributes
@@ -5002,13 +5210,17 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPod
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTerm:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults affinity pod anti affinity preferred during scheduling ignored during execution items0 pod affinity term
 
     Attributes
     ----------
     labelSelector : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector, default is Undefined, optional
         label selector
+    matchLabelKeys : [str], default is Undefined, optional
+        match label keys
+    mismatchLabelKeys : [str], default is Undefined, optional
+        mismatch label keys
     namespaceSelector : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector, default is Undefined, optional
         namespace selector
     namespaces : [str], default is Undefined, optional
@@ -5020,6 +5232,10 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPod
 
     labelSelector?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector
 
+    matchLabelKeys?: [str]
+
+    mismatchLabelKeys?: [str]
+
     namespaceSelector?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector
 
     namespaces?: [str]
@@ -5028,7 +5244,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPod
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults affinity pod anti affinity preferred during scheduling ignored during execution items0 pod affinity term label selector
 
     Attributes
@@ -5046,7 +5262,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPod
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults affinity pod anti affinity preferred during scheduling ignored during execution items0 pod affinity term label selector match expressions items0
 
     Attributes
@@ -5068,7 +5284,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPod
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults affinity pod anti affinity preferred during scheduling ignored during execution items0 pod affinity term namespace selector
 
     Attributes
@@ -5086,7 +5302,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPod
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults affinity pod anti affinity preferred during scheduling ignored during execution items0 pod affinity term namespace selector match expressions items0
 
     Attributes
@@ -5108,13 +5324,17 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPod
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults affinity pod anti affinity required during scheduling ignored during execution items0
 
     Attributes
     ----------
     labelSelector : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector, default is Undefined, optional
         label selector
+    matchLabelKeys : [str], default is Undefined, optional
+        match label keys
+    mismatchLabelKeys : [str], default is Undefined, optional
+        mismatch label keys
     namespaceSelector : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector, default is Undefined, optional
         namespace selector
     namespaces : [str], default is Undefined, optional
@@ -5126,6 +5346,10 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPod
 
     labelSelector?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector
 
+    matchLabelKeys?: [str]
+
+    mismatchLabelKeys?: [str]
+
     namespaceSelector?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector
 
     namespaces?: [str]
@@ -5134,7 +5358,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPod
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults affinity pod anti affinity required during scheduling ignored during execution items0 label selector
 
     Attributes
@@ -5152,7 +5376,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPod
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults affinity pod anti affinity required during scheduling ignored during execution items0 label selector match expressions items0
 
     Attributes
@@ -5174,7 +5398,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPod
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults affinity pod anti affinity required during scheduling ignored during execution items0 namespace selector
 
     Attributes
@@ -5192,7 +5416,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPod
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults affinity pod anti affinity required during scheduling ignored during execution items0 namespace selector match expressions items0
 
     Attributes
@@ -5214,7 +5438,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsAffinityPod
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLocation:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults archive location
 
     Attributes
@@ -5264,7 +5488,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLoca
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLocationArtifactory:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults archive location artifactory
 
     Attributes
@@ -5286,7 +5510,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLoca
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLocationArtifactoryPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults archive location artifactory password secret
 
     Attributes
@@ -5302,13 +5526,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLoca
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLocationArtifactoryUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults archive location artifactory username secret
 
     Attributes
@@ -5324,13 +5548,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLoca
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLocationAzure:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults archive location azure
 
     Attributes
@@ -5360,7 +5584,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLoca
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLocationAzureAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults archive location azure account key secret
 
     Attributes
@@ -5376,13 +5600,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLoca
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLocationGcs:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults archive location gcs
 
     Attributes
@@ -5404,7 +5628,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLoca
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLocationGcsServiceAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults archive location gcs service account key secret
 
     Attributes
@@ -5420,13 +5644,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLoca
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLocationGit:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults archive location git
 
     Attributes
@@ -5441,6 +5665,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLoca
         fetch
     insecureIgnoreHostKey : bool, default is Undefined, optional
         insecure ignore host key
+    insecureSkipTLS : bool, default is Undefined, optional
+        insecure skip TLS
     passwordSecret : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLocationGitPasswordSecret, default is Undefined, optional
         password secret
     repo : str, default is Undefined, required
@@ -5466,6 +5692,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLoca
 
     insecureIgnoreHostKey?: bool
 
+    insecureSkipTLS?: bool
+
     passwordSecret?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLocationGitPasswordSecret
 
     repo: str
@@ -5480,7 +5708,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLoca
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLocationGitPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults archive location git password secret
 
     Attributes
@@ -5496,13 +5724,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLoca
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLocationGitSSHPrivateKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults archive location git SSH private key secret
 
     Attributes
@@ -5518,13 +5746,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLoca
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLocationGitUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults archive location git username secret
 
     Attributes
@@ -5540,13 +5768,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLoca
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLocationHTTP:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults archive location HTTP
 
     Attributes
@@ -5568,7 +5796,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLoca
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLocationHTTPAuth:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults archive location HTTP auth
 
     Attributes
@@ -5590,7 +5818,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLoca
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLocationHTTPAuthBasicAuth:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults archive location HTTP auth basic auth
 
     Attributes
@@ -5608,7 +5836,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLoca
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLocationHTTPAuthBasicAuthPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults archive location HTTP auth basic auth password secret
 
     Attributes
@@ -5624,13 +5852,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLoca
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLocationHTTPAuthBasicAuthUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults archive location HTTP auth basic auth username secret
 
     Attributes
@@ -5646,13 +5874,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLoca
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLocationHTTPAuthClientCert:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults archive location HTTP auth client cert
 
     Attributes
@@ -5670,7 +5898,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLoca
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLocationHTTPAuthClientCertClientCertSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults archive location HTTP auth client cert client cert secret
 
     Attributes
@@ -5686,13 +5914,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLoca
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLocationHTTPAuthClientCertClientKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults archive location HTTP auth client cert client key secret
 
     Attributes
@@ -5708,13 +5936,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLoca
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLocationHTTPAuthOauth2:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults archive location HTTP auth oauth2
 
     Attributes
@@ -5744,7 +5972,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLoca
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLocationHTTPAuthOauth2ClientIDSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults archive location HTTP auth oauth2 client ID secret
 
     Attributes
@@ -5760,13 +5988,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLoca
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLocationHTTPAuthOauth2ClientSecretSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults archive location HTTP auth oauth2 client secret secret
 
     Attributes
@@ -5782,13 +6010,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLoca
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLocationHTTPAuthOauth2EndpointParamsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults archive location HTTP auth oauth2 endpoint params items0
 
     Attributes
@@ -5806,7 +6034,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLoca
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLocationHTTPAuthOauth2TokenURLSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults archive location HTTP auth oauth2 token URL secret
 
     Attributes
@@ -5822,13 +6050,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLoca
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLocationHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults archive location HTTP headers items0
 
     Attributes
@@ -5846,13 +6074,15 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLoca
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLocationHdfs:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults archive location hdfs
 
     Attributes
     ----------
     addresses : [str], default is Undefined, optional
         addresses
+    dataTransferProtection : str, default is Undefined, optional
+        data transfer protection
     force : bool, default is Undefined, optional
         force
     hdfsUser : str, default is Undefined, optional
@@ -5876,6 +6106,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLoca
 
     addresses?: [str]
 
+    dataTransferProtection?: str
+
     force?: bool
 
     hdfsUser?: str
@@ -5896,7 +6128,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLoca
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLocationHdfsKrbCCacheSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults archive location hdfs krb c cache secret
 
     Attributes
@@ -5912,13 +6144,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLoca
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLocationHdfsKrbConfigConfigMap:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults archive location hdfs krb config config map
 
     Attributes
@@ -5934,13 +6166,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLoca
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLocationHdfsKrbKeytabSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults archive location hdfs krb keytab secret
 
     Attributes
@@ -5956,13 +6188,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLoca
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLocationOss:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults archive location oss
 
     Attributes
@@ -6008,7 +6240,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLoca
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLocationOssAccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults archive location oss access key secret
 
     Attributes
@@ -6024,13 +6256,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLoca
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLocationOssLifecycleRule:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults archive location oss lifecycle rule
 
     Attributes
@@ -6048,7 +6280,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLoca
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLocationOssSecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults archive location oss secret key secret
 
     Attributes
@@ -6064,13 +6296,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLoca
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLocationRaw:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults archive location raw
 
     Attributes
@@ -6084,7 +6316,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLoca
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLocationS3:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults archive location s3
 
     Attributes
@@ -6111,6 +6343,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLoca
         role a r n
     secretKeySecret : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLocationS3SecretKeySecret, default is Undefined, optional
         secret key secret
+    sessionTokenSecret : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLocationS3SessionTokenSecret, default is Undefined, optional
+        session token secret
     useSDKCreds : bool, default is Undefined, optional
         use s d k creds
     """
@@ -6138,11 +6372,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLoca
 
     secretKeySecret?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLocationS3SecretKeySecret
 
+    sessionTokenSecret?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLocationS3SessionTokenSecret
+
     useSDKCreds?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLocationS3AccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults archive location s3 access key secret
 
     Attributes
@@ -6158,13 +6394,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLoca
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLocationS3CaSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults archive location s3 ca secret
 
     Attributes
@@ -6180,13 +6416,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLoca
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLocationS3CreateBucketIfNotPresent:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults archive location s3 create bucket if not present
 
     Attributes
@@ -6200,7 +6436,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLoca
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLocationS3EncryptionOptions:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults archive location s3 encryption options
 
     Attributes
@@ -6226,7 +6462,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLoca
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLocationS3EncryptionOptionsServerSideCustomerKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults archive location s3 encryption options server side customer key secret
 
     Attributes
@@ -6242,13 +6478,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLoca
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLocationS3SecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults archive location s3 secret key secret
 
     Attributes
@@ -6264,13 +6500,35 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLoca
 
     key: str
 
-    name?: str
+    name?: str = ""
+
+    optional?: bool
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsArchiveLocationS3SessionTokenSecret:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec template defaults archive location s3 session token secret
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainer:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container
 
     Attributes
@@ -6297,8 +6555,12 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainer:
         ports
     readinessProbe : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerReadinessProbe, default is Undefined, optional
         readiness probe
+    resizePolicy : [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerResizePolicyItems0], default is Undefined, optional
+        resize policy
     resources : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerResources, default is Undefined, optional
         resources
+    restartPolicy : str, default is Undefined, optional
+        restart policy
     securityContext : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSecurityContext, default is Undefined, optional
         security context
     startupProbe : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerStartupProbe, default is Undefined, optional
@@ -6344,7 +6606,11 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainer:
 
     readinessProbe?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerReadinessProbe
 
+    resizePolicy?: [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerResizePolicyItems0]
+
     resources?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerResources
+
+    restartPolicy?: str
 
     securityContext?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSecurityContext
 
@@ -6368,7 +6634,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainer:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerEnvFromItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container env from items0
 
     Attributes
@@ -6390,7 +6656,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerEn
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerEnvFromItems0ConfigMapRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container env from items0 config map ref
 
     Attributes
@@ -6402,13 +6668,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerEn
     """
 
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerEnvFromItems0SecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container env from items0 secret ref
 
     Attributes
@@ -6420,13 +6686,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerEn
     """
 
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerEnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container env items0
 
     Attributes
@@ -6448,7 +6714,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerEn
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerEnvItems0ValueFrom:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container env items0 value from
 
     Attributes
@@ -6474,7 +6740,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerEn
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerEnvItems0ValueFromConfigMapKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container env items0 value from config map key ref
 
     Attributes
@@ -6490,13 +6756,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerEn
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerEnvItems0ValueFromFieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container env items0 value from field ref
 
     Attributes
@@ -6514,7 +6780,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerEn
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerEnvItems0ValueFromResourceFieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container env items0 value from resource field ref
 
     Attributes
@@ -6540,7 +6806,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerEn
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerEnvItems0ValueFromSecretKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container env items0 value from secret key ref
 
     Attributes
@@ -6556,13 +6822,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerEn
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerLifecycle:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container lifecycle
 
     Attributes
@@ -6580,7 +6846,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerLi
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerLifecyclePostStart:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container lifecycle post start
 
     Attributes
@@ -6589,6 +6855,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerLi
         exec
     httpGet : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerLifecyclePostStartHTTPGet, default is Undefined, optional
         http get
+    sleep : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerLifecyclePostStartSleep, default is Undefined, optional
+        sleep
     tcpSocket : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerLifecyclePostStartTCPSocket, default is Undefined, optional
         tcp socket
     """
@@ -6598,11 +6866,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerLi
 
     httpGet?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerLifecyclePostStartHTTPGet
 
+    sleep?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerLifecyclePostStartSleep
+
     tcpSocket?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerLifecyclePostStartTCPSocket
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerLifecyclePostStartExec:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container lifecycle post start exec
 
     Attributes
@@ -6616,7 +6886,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerLi
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerLifecyclePostStartHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container lifecycle post start HTTP get
 
     Attributes
@@ -6646,7 +6916,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerLi
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerLifecyclePostStartHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container lifecycle post start HTTP get HTTP headers items0
 
     Attributes
@@ -6663,8 +6933,22 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerLi
     value: str
 
 
-schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerLifecyclePostStartTCPSocket:
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerLifecyclePostStartSleep:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec template defaults container lifecycle post start sleep
+
+    Attributes
+    ----------
+    seconds : int, default is Undefined, required
+        seconds
     """
+
+
+    seconds: int
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerLifecyclePostStartTCPSocket:
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container lifecycle post start TCP socket
 
     Attributes
@@ -6682,7 +6966,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerLi
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerLifecyclePreStop:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container lifecycle pre stop
 
     Attributes
@@ -6691,6 +6975,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerLi
         exec
     httpGet : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerLifecyclePreStopHTTPGet, default is Undefined, optional
         http get
+    sleep : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerLifecyclePreStopSleep, default is Undefined, optional
+        sleep
     tcpSocket : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerLifecyclePreStopTCPSocket, default is Undefined, optional
         tcp socket
     """
@@ -6700,11 +6986,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerLi
 
     httpGet?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerLifecyclePreStopHTTPGet
 
+    sleep?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerLifecyclePreStopSleep
+
     tcpSocket?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerLifecyclePreStopTCPSocket
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerLifecyclePreStopExec:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container lifecycle pre stop exec
 
     Attributes
@@ -6718,7 +7006,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerLi
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerLifecyclePreStopHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container lifecycle pre stop HTTP get
 
     Attributes
@@ -6748,7 +7036,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerLi
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerLifecyclePreStopHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container lifecycle pre stop HTTP get HTTP headers items0
 
     Attributes
@@ -6765,8 +7053,22 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerLi
     value: str
 
 
-schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerLifecyclePreStopTCPSocket:
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerLifecyclePreStopSleep:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec template defaults container lifecycle pre stop sleep
+
+    Attributes
+    ----------
+    seconds : int, default is Undefined, required
+        seconds
     """
+
+
+    seconds: int
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerLifecyclePreStopTCPSocket:
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container lifecycle pre stop TCP socket
 
     Attributes
@@ -6784,7 +7086,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerLi
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerLivenessProbe:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container liveness probe
 
     Attributes
@@ -6834,7 +7136,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerLi
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerLivenessProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container liveness probe exec
 
     Attributes
@@ -6848,7 +7150,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerLi
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerLivenessProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container liveness probe grpc
 
     Attributes
@@ -6866,7 +7168,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerLi
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerLivenessProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container liveness probe HTTP get
 
     Attributes
@@ -6896,7 +7198,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerLi
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerLivenessProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container liveness probe HTTP get HTTP headers items0
 
     Attributes
@@ -6914,7 +7216,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerLi
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerLivenessProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container liveness probe TCP socket
 
     Attributes
@@ -6932,7 +7234,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerLi
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerPortsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container ports items0
 
     Attributes
@@ -6962,7 +7264,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerPo
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerReadinessProbe:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container readiness probe
 
     Attributes
@@ -7012,7 +7314,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerRe
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerReadinessProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container readiness probe exec
 
     Attributes
@@ -7026,7 +7328,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerRe
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerReadinessProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container readiness probe grpc
 
     Attributes
@@ -7044,7 +7346,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerRe
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerReadinessProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container readiness probe HTTP get
 
     Attributes
@@ -7074,7 +7376,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerRe
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerReadinessProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container readiness probe HTTP get HTTP headers items0
 
     Attributes
@@ -7092,7 +7394,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerRe
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerReadinessProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container readiness probe TCP socket
 
     Attributes
@@ -7109,8 +7411,26 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerRe
     port: int | str
 
 
-schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerResources:
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerResizePolicyItems0:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec template defaults container resize policy items0
+
+    Attributes
+    ----------
+    resourceName : str, default is Undefined, required
+        resource name
+    restartPolicy : str, default is Undefined, required
+        restart policy
     """
+
+
+    resourceName: str
+
+    restartPolicy: str
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerResources:
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container resources
 
     Attributes
@@ -7132,12 +7452,12 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerRe
 
 
     check:
-        all _, limits in limits {_regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests {_regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerResourcesClaimsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container resources claims items0
 
     Attributes
@@ -7151,13 +7471,15 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerRe
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSecurityContext:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container security context
 
     Attributes
     ----------
     allowPrivilegeEscalation : bool, default is Undefined, optional
         allow privilege escalation
+    appArmorProfile : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSecurityContextAppArmorProfile, default is Undefined, optional
+        app armor profile
     capabilities : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSecurityContextCapabilities, default is Undefined, optional
         capabilities
     privileged : bool, default is Undefined, optional
@@ -7183,6 +7505,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
 
     allowPrivilegeEscalation?: bool
 
+    appArmorProfile?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSecurityContextAppArmorProfile
+
     capabilities?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSecurityContextCapabilities
 
     privileged?: bool
@@ -7204,8 +7528,26 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
     windowsOptions?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSecurityContextWindowsOptions
 
 
-schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSecurityContextCapabilities:
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSecurityContextAppArmorProfile:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec template defaults container security context app armor profile
+
+    Attributes
+    ----------
+    localhostProfile : str, default is Undefined, optional
+        localhost profile
+    $type : str, default is Undefined, required
+        type
     """
+
+
+    localhostProfile?: str
+
+    $type: str
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSecurityContextCapabilities:
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container security context capabilities
 
     Attributes
@@ -7223,7 +7565,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSecurityContextSeLinuxOptions:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container security context se linux options
 
     Attributes
@@ -7249,7 +7591,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSecurityContextSeccompProfile:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container security context seccomp profile
 
     Attributes
@@ -7267,7 +7609,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSecurityContextWindowsOptions:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container security context windows options
 
     Attributes
@@ -7293,7 +7635,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSet:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container set
 
     Attributes
@@ -7315,7 +7657,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container set containers items0
 
     Attributes
@@ -7344,8 +7686,12 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
         ports
     readinessProbe : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0ReadinessProbe, default is Undefined, optional
         readiness probe
+    resizePolicy : [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0ResizePolicyItems0], default is Undefined, optional
+        resize policy
     resources : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0Resources, default is Undefined, optional
         resources
+    restartPolicy : str, default is Undefined, optional
+        restart policy
     securityContext : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0SecurityContext, default is Undefined, optional
         security context
     startupProbe : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0StartupProbe, default is Undefined, optional
@@ -7393,7 +7739,11 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
 
     readinessProbe?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0ReadinessProbe
 
+    resizePolicy?: [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0ResizePolicyItems0]
+
     resources?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0Resources
+
+    restartPolicy?: str
 
     securityContext?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0SecurityContext
 
@@ -7417,7 +7767,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0EnvFromItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container set containers items0 env from items0
 
     Attributes
@@ -7439,7 +7789,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0EnvFromItems0ConfigMapRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container set containers items0 env from items0 config map ref
 
     Attributes
@@ -7451,13 +7801,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
     """
 
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0EnvFromItems0SecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container set containers items0 env from items0 secret ref
 
     Attributes
@@ -7469,13 +7819,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
     """
 
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0EnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container set containers items0 env items0
 
     Attributes
@@ -7497,7 +7847,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0EnvItems0ValueFrom:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container set containers items0 env items0 value from
 
     Attributes
@@ -7523,7 +7873,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0EnvItems0ValueFromConfigMapKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container set containers items0 env items0 value from config map key ref
 
     Attributes
@@ -7539,13 +7889,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0EnvItems0ValueFromFieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container set containers items0 env items0 value from field ref
 
     Attributes
@@ -7563,7 +7913,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0EnvItems0ValueFromResourceFieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container set containers items0 env items0 value from resource field ref
 
     Attributes
@@ -7589,7 +7939,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0EnvItems0ValueFromSecretKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container set containers items0 env items0 value from secret key ref
 
     Attributes
@@ -7605,13 +7955,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0Lifecycle:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container set containers items0 lifecycle
 
     Attributes
@@ -7629,7 +7979,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0LifecyclePostStart:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container set containers items0 lifecycle post start
 
     Attributes
@@ -7638,6 +7988,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
         exec
     httpGet : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0LifecyclePostStartHTTPGet, default is Undefined, optional
         http get
+    sleep : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0LifecyclePostStartSleep, default is Undefined, optional
+        sleep
     tcpSocket : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0LifecyclePostStartTCPSocket, default is Undefined, optional
         tcp socket
     """
@@ -7647,11 +7999,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
 
     httpGet?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0LifecyclePostStartHTTPGet
 
+    sleep?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0LifecyclePostStartSleep
+
     tcpSocket?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0LifecyclePostStartTCPSocket
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0LifecyclePostStartExec:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container set containers items0 lifecycle post start exec
 
     Attributes
@@ -7665,7 +8019,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0LifecyclePostStartHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container set containers items0 lifecycle post start HTTP get
 
     Attributes
@@ -7695,7 +8049,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0LifecyclePostStartHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container set containers items0 lifecycle post start HTTP get HTTP headers items0
 
     Attributes
@@ -7712,8 +8066,22 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
     value: str
 
 
-schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0LifecyclePostStartTCPSocket:
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0LifecyclePostStartSleep:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec template defaults container set containers items0 lifecycle post start sleep
+
+    Attributes
+    ----------
+    seconds : int, default is Undefined, required
+        seconds
     """
+
+
+    seconds: int
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0LifecyclePostStartTCPSocket:
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container set containers items0 lifecycle post start TCP socket
 
     Attributes
@@ -7731,7 +8099,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0LifecyclePreStop:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container set containers items0 lifecycle pre stop
 
     Attributes
@@ -7740,6 +8108,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
         exec
     httpGet : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0LifecyclePreStopHTTPGet, default is Undefined, optional
         http get
+    sleep : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0LifecyclePreStopSleep, default is Undefined, optional
+        sleep
     tcpSocket : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0LifecyclePreStopTCPSocket, default is Undefined, optional
         tcp socket
     """
@@ -7749,11 +8119,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
 
     httpGet?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0LifecyclePreStopHTTPGet
 
+    sleep?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0LifecyclePreStopSleep
+
     tcpSocket?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0LifecyclePreStopTCPSocket
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0LifecyclePreStopExec:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container set containers items0 lifecycle pre stop exec
 
     Attributes
@@ -7767,7 +8139,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0LifecyclePreStopHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container set containers items0 lifecycle pre stop HTTP get
 
     Attributes
@@ -7797,7 +8169,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0LifecyclePreStopHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container set containers items0 lifecycle pre stop HTTP get HTTP headers items0
 
     Attributes
@@ -7814,8 +8186,22 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
     value: str
 
 
-schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0LifecyclePreStopTCPSocket:
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0LifecyclePreStopSleep:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec template defaults container set containers items0 lifecycle pre stop sleep
+
+    Attributes
+    ----------
+    seconds : int, default is Undefined, required
+        seconds
     """
+
+
+    seconds: int
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0LifecyclePreStopTCPSocket:
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container set containers items0 lifecycle pre stop TCP socket
 
     Attributes
@@ -7833,7 +8219,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0LivenessProbe:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container set containers items0 liveness probe
 
     Attributes
@@ -7883,7 +8269,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0LivenessProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container set containers items0 liveness probe exec
 
     Attributes
@@ -7897,7 +8283,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0LivenessProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container set containers items0 liveness probe grpc
 
     Attributes
@@ -7915,7 +8301,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0LivenessProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container set containers items0 liveness probe HTTP get
 
     Attributes
@@ -7945,7 +8331,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0LivenessProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container set containers items0 liveness probe HTTP get HTTP headers items0
 
     Attributes
@@ -7963,7 +8349,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0LivenessProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container set containers items0 liveness probe TCP socket
 
     Attributes
@@ -7981,7 +8367,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0PortsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container set containers items0 ports items0
 
     Attributes
@@ -8011,7 +8397,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0ReadinessProbe:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container set containers items0 readiness probe
 
     Attributes
@@ -8061,7 +8447,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0ReadinessProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container set containers items0 readiness probe exec
 
     Attributes
@@ -8075,7 +8461,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0ReadinessProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container set containers items0 readiness probe grpc
 
     Attributes
@@ -8093,7 +8479,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0ReadinessProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container set containers items0 readiness probe HTTP get
 
     Attributes
@@ -8123,7 +8509,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0ReadinessProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container set containers items0 readiness probe HTTP get HTTP headers items0
 
     Attributes
@@ -8141,7 +8527,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0ReadinessProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container set containers items0 readiness probe TCP socket
 
     Attributes
@@ -8158,8 +8544,26 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
     port: int | str
 
 
-schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0Resources:
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0ResizePolicyItems0:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec template defaults container set containers items0 resize policy items0
+
+    Attributes
+    ----------
+    resourceName : str, default is Undefined, required
+        resource name
+    restartPolicy : str, default is Undefined, required
+        restart policy
     """
+
+
+    resourceName: str
+
+    restartPolicy: str
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0Resources:
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container set containers items0 resources
 
     Attributes
@@ -8181,12 +8585,12 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
 
 
     check:
-        all _, limits in limits {_regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests {_regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0ResourcesClaimsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container set containers items0 resources claims items0
 
     Attributes
@@ -8200,13 +8604,15 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0SecurityContext:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container set containers items0 security context
 
     Attributes
     ----------
     allowPrivilegeEscalation : bool, default is Undefined, optional
         allow privilege escalation
+    appArmorProfile : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0SecurityContextAppArmorProfile, default is Undefined, optional
+        app armor profile
     capabilities : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0SecurityContextCapabilities, default is Undefined, optional
         capabilities
     privileged : bool, default is Undefined, optional
@@ -8232,6 +8638,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
 
     allowPrivilegeEscalation?: bool
 
+    appArmorProfile?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0SecurityContextAppArmorProfile
+
     capabilities?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0SecurityContextCapabilities
 
     privileged?: bool
@@ -8253,8 +8661,26 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
     windowsOptions?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0SecurityContextWindowsOptions
 
 
-schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0SecurityContextCapabilities:
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0SecurityContextAppArmorProfile:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec template defaults container set containers items0 security context app armor profile
+
+    Attributes
+    ----------
+    localhostProfile : str, default is Undefined, optional
+        localhost profile
+    $type : str, default is Undefined, required
+        type
     """
+
+
+    localhostProfile?: str
+
+    $type: str
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0SecurityContextCapabilities:
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container set containers items0 security context capabilities
 
     Attributes
@@ -8272,7 +8698,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0SecurityContextSeLinuxOptions:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container set containers items0 security context se linux options
 
     Attributes
@@ -8298,7 +8724,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0SecurityContextSeccompProfile:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container set containers items0 security context seccomp profile
 
     Attributes
@@ -8316,7 +8742,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0SecurityContextWindowsOptions:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container set containers items0 security context windows options
 
     Attributes
@@ -8342,7 +8768,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0StartupProbe:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container set containers items0 startup probe
 
     Attributes
@@ -8392,7 +8818,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0StartupProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container set containers items0 startup probe exec
 
     Attributes
@@ -8406,7 +8832,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0StartupProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container set containers items0 startup probe grpc
 
     Attributes
@@ -8424,7 +8850,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0StartupProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container set containers items0 startup probe HTTP get
 
     Attributes
@@ -8454,7 +8880,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0StartupProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container set containers items0 startup probe HTTP get HTTP headers items0
 
     Attributes
@@ -8472,7 +8898,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0StartupProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container set containers items0 startup probe TCP socket
 
     Attributes
@@ -8490,7 +8916,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0VolumeDevicesItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container set containers items0 volume devices items0
 
     Attributes
@@ -8508,7 +8934,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetContainersItems0VolumeMountsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container set containers items0 volume mounts items0
 
     Attributes
@@ -8521,6 +8947,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
         name
     readOnly : bool, default is Undefined, optional
         read only
+    recursiveReadOnly : str, default is Undefined, optional
+        recursive read only
     subPath : str, default is Undefined, optional
         sub path
     subPathExpr : str, default is Undefined, optional
@@ -8536,13 +8964,15 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
 
     readOnly?: bool
 
+    recursiveReadOnly?: str
+
     subPath?: str
 
     subPathExpr?: str
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetRetryStrategy:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container set retry strategy
 
     Attributes
@@ -8560,7 +8990,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSetVolumeMountsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container set volume mounts items0
 
     Attributes
@@ -8573,6 +9003,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
         name
     readOnly : bool, default is Undefined, optional
         read only
+    recursiveReadOnly : str, default is Undefined, optional
+        recursive read only
     subPath : str, default is Undefined, optional
         sub path
     subPathExpr : str, default is Undefined, optional
@@ -8588,13 +9020,15 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSe
 
     readOnly?: bool
 
+    recursiveReadOnly?: str
+
     subPath?: str
 
     subPathExpr?: str
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerStartupProbe:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container startup probe
 
     Attributes
@@ -8644,7 +9078,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSt
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerStartupProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container startup probe exec
 
     Attributes
@@ -8658,7 +9092,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSt
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerStartupProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container startup probe grpc
 
     Attributes
@@ -8676,7 +9110,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSt
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerStartupProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container startup probe HTTP get
 
     Attributes
@@ -8706,7 +9140,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSt
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerStartupProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container startup probe HTTP get HTTP headers items0
 
     Attributes
@@ -8724,7 +9158,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSt
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerStartupProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container startup probe TCP socket
 
     Attributes
@@ -8742,7 +9176,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerSt
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerVolumeDevicesItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container volume devices items0
 
     Attributes
@@ -8760,7 +9194,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerVo
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerVolumeMountsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults container volume mounts items0
 
     Attributes
@@ -8773,6 +9207,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerVo
         name
     readOnly : bool, default is Undefined, optional
         read only
+    recursiveReadOnly : str, default is Undefined, optional
+        recursive read only
     subPath : str, default is Undefined, optional
         sub path
     subPathExpr : str, default is Undefined, optional
@@ -8788,13 +9224,15 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsContainerVo
 
     readOnly?: bool
 
+    recursiveReadOnly?: str
+
     subPath?: str
 
     subPathExpr?: str
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDag:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag
 
     Attributes
@@ -8816,7 +9254,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDag:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0
 
     Attributes
@@ -8882,7 +9320,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0Arguments:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 arguments
 
     Attributes
@@ -8900,7 +9338,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 arguments artifacts items0
 
     Attributes
@@ -8998,7 +9436,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0Archive:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 arguments artifacts items0 archive
 
     Attributes
@@ -9020,7 +9458,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0ArchiveTar:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 arguments artifacts items0 archive tar
 
     Attributes
@@ -9034,7 +9472,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0ArtifactGC:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 arguments artifacts items0 artifact g c
 
     Attributes
@@ -9056,7 +9494,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0ArtifactGCPodMetadata:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 arguments artifacts items0 artifact g c pod metadata
 
     Attributes
@@ -9074,7 +9512,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0Artifactory:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 arguments artifacts items0 artifactory
 
     Attributes
@@ -9096,7 +9534,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0ArtifactoryPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 arguments artifacts items0 artifactory password secret
 
     Attributes
@@ -9112,13 +9550,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0ArtifactoryUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 arguments artifacts items0 artifactory username secret
 
     Attributes
@@ -9134,13 +9572,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0Azure:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 arguments artifacts items0 azure
 
     Attributes
@@ -9170,7 +9608,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0AzureAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 arguments artifacts items0 azure account key secret
 
     Attributes
@@ -9186,13 +9624,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0Gcs:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 arguments artifacts items0 gcs
 
     Attributes
@@ -9214,7 +9652,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0GcsServiceAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 arguments artifacts items0 gcs service account key secret
 
     Attributes
@@ -9230,13 +9668,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0Git:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 arguments artifacts items0 git
 
     Attributes
@@ -9251,6 +9689,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
         fetch
     insecureIgnoreHostKey : bool, default is Undefined, optional
         insecure ignore host key
+    insecureSkipTLS : bool, default is Undefined, optional
+        insecure skip TLS
     passwordSecret : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0GitPasswordSecret, default is Undefined, optional
         password secret
     repo : str, default is Undefined, required
@@ -9276,6 +9716,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
     insecureIgnoreHostKey?: bool
 
+    insecureSkipTLS?: bool
+
     passwordSecret?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0GitPasswordSecret
 
     repo: str
@@ -9290,7 +9732,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0GitPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 arguments artifacts items0 git password secret
 
     Attributes
@@ -9306,13 +9748,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0GitSSHPrivateKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 arguments artifacts items0 git SSH private key secret
 
     Attributes
@@ -9328,13 +9770,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0GitUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 arguments artifacts items0 git username secret
 
     Attributes
@@ -9350,13 +9792,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0HTTP:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 arguments artifacts items0 HTTP
 
     Attributes
@@ -9378,7 +9820,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0HTTPAuth:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 arguments artifacts items0 HTTP auth
 
     Attributes
@@ -9400,7 +9842,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0HTTPAuthBasicAuth:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 arguments artifacts items0 HTTP auth basic auth
 
     Attributes
@@ -9418,7 +9860,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0HTTPAuthBasicAuthPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 arguments artifacts items0 HTTP auth basic auth password secret
 
     Attributes
@@ -9434,13 +9876,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0HTTPAuthBasicAuthUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 arguments artifacts items0 HTTP auth basic auth username secret
 
     Attributes
@@ -9456,13 +9898,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0HTTPAuthClientCert:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 arguments artifacts items0 HTTP auth client cert
 
     Attributes
@@ -9480,7 +9922,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0HTTPAuthClientCertClientCertSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 arguments artifacts items0 HTTP auth client cert client cert secret
 
     Attributes
@@ -9496,13 +9938,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0HTTPAuthClientCertClientKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 arguments artifacts items0 HTTP auth client cert client key secret
 
     Attributes
@@ -9518,13 +9960,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0HTTPAuthOauth2:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 arguments artifacts items0 HTTP auth oauth2
 
     Attributes
@@ -9554,7 +9996,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0HTTPAuthOauth2ClientIDSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 arguments artifacts items0 HTTP auth oauth2 client ID secret
 
     Attributes
@@ -9570,13 +10012,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0HTTPAuthOauth2ClientSecretSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 arguments artifacts items0 HTTP auth oauth2 client secret secret
 
     Attributes
@@ -9592,13 +10034,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0HTTPAuthOauth2EndpointParamsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 arguments artifacts items0 HTTP auth oauth2 endpoint params items0
 
     Attributes
@@ -9616,7 +10058,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0HTTPAuthOauth2TokenURLSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 arguments artifacts items0 HTTP auth oauth2 token URL secret
 
     Attributes
@@ -9632,13 +10074,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0HTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 arguments artifacts items0 HTTP headers items0
 
     Attributes
@@ -9656,13 +10098,15 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0Hdfs:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 arguments artifacts items0 hdfs
 
     Attributes
     ----------
     addresses : [str], default is Undefined, optional
         addresses
+    dataTransferProtection : str, default is Undefined, optional
+        data transfer protection
     force : bool, default is Undefined, optional
         force
     hdfsUser : str, default is Undefined, optional
@@ -9686,6 +10130,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
     addresses?: [str]
 
+    dataTransferProtection?: str
+
     force?: bool
 
     hdfsUser?: str
@@ -9706,7 +10152,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0HdfsKrbCCacheSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 arguments artifacts items0 hdfs krb c cache secret
 
     Attributes
@@ -9722,13 +10168,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0HdfsKrbConfigConfigMap:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 arguments artifacts items0 hdfs krb config config map
 
     Attributes
@@ -9744,13 +10190,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0HdfsKrbKeytabSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 arguments artifacts items0 hdfs krb keytab secret
 
     Attributes
@@ -9766,13 +10212,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0Oss:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 arguments artifacts items0 oss
 
     Attributes
@@ -9818,7 +10264,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0OssAccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 arguments artifacts items0 oss access key secret
 
     Attributes
@@ -9834,13 +10280,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0OssLifecycleRule:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 arguments artifacts items0 oss lifecycle rule
 
     Attributes
@@ -9858,7 +10304,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0OssSecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 arguments artifacts items0 oss secret key secret
 
     Attributes
@@ -9874,13 +10320,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0Raw:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 arguments artifacts items0 raw
 
     Attributes
@@ -9894,7 +10340,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0S3:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 arguments artifacts items0 s3
 
     Attributes
@@ -9921,6 +10367,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
         role a r n
     secretKeySecret : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0S3SecretKeySecret, default is Undefined, optional
         secret key secret
+    sessionTokenSecret : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0S3SessionTokenSecret, default is Undefined, optional
+        session token secret
     useSDKCreds : bool, default is Undefined, optional
         use s d k creds
     """
@@ -9948,11 +10396,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
     secretKeySecret?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0S3SecretKeySecret
 
+    sessionTokenSecret?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0S3SessionTokenSecret
+
     useSDKCreds?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0S3AccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 arguments artifacts items0 s3 access key secret
 
     Attributes
@@ -9968,13 +10418,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0S3CaSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 arguments artifacts items0 s3 ca secret
 
     Attributes
@@ -9990,13 +10440,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0S3CreateBucketIfNotPresent:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 arguments artifacts items0 s3 create bucket if not present
 
     Attributes
@@ -10010,7 +10460,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0S3EncryptionOptions:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 arguments artifacts items0 s3 encryption options
 
     Attributes
@@ -10036,7 +10486,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0S3EncryptionOptionsServerSideCustomerKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 arguments artifacts items0 s3 encryption options server side customer key secret
 
     Attributes
@@ -10052,13 +10502,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0S3SecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 arguments artifacts items0 s3 secret key secret
 
     Attributes
@@ -10074,13 +10524,35 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
     key: str
 
-    name?: str
+    name?: str = ""
+
+    optional?: bool
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ArgumentsArtifactsItems0S3SessionTokenSecret:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 arguments artifacts items0 s3 session token secret
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ArgumentsParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 arguments parameters items0
 
     Attributes
@@ -10118,7 +10590,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ArgumentsParametersItems0ValueFrom:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 arguments parameters items0 value from
 
     Attributes
@@ -10164,7 +10636,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ArgumentsParametersItems0ValueFromConfigMapKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 arguments parameters items0 value from config map key ref
 
     Attributes
@@ -10180,13 +10652,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0ContinueOn:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 continue on
 
     Attributes
@@ -10204,7 +10676,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnon:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 hooks anon
 
     Attributes
@@ -10230,7 +10702,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArguments:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 hooks anon arguments
 
     Attributes
@@ -10248,7 +10720,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 hooks anon arguments artifacts items0
 
     Attributes
@@ -10346,7 +10818,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0Archive:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 hooks anon arguments artifacts items0 archive
 
     Attributes
@@ -10368,7 +10840,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0ArchiveTar:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 hooks anon arguments artifacts items0 archive tar
 
     Attributes
@@ -10382,7 +10854,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0ArtifactGC:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 hooks anon arguments artifacts items0 artifact g c
 
     Attributes
@@ -10404,7 +10876,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0ArtifactGCPodMetadata:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 hooks anon arguments artifacts items0 artifact g c pod metadata
 
     Attributes
@@ -10422,7 +10894,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0Artifactory:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 hooks anon arguments artifacts items0 artifactory
 
     Attributes
@@ -10444,7 +10916,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0ArtifactoryPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 hooks anon arguments artifacts items0 artifactory password secret
 
     Attributes
@@ -10460,13 +10932,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0ArtifactoryUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 hooks anon arguments artifacts items0 artifactory username secret
 
     Attributes
@@ -10482,13 +10954,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0Azure:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 hooks anon arguments artifacts items0 azure
 
     Attributes
@@ -10518,7 +10990,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0AzureAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 hooks anon arguments artifacts items0 azure account key secret
 
     Attributes
@@ -10534,13 +11006,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0Gcs:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 hooks anon arguments artifacts items0 gcs
 
     Attributes
@@ -10562,7 +11034,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0GcsServiceAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 hooks anon arguments artifacts items0 gcs service account key secret
 
     Attributes
@@ -10578,13 +11050,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0Git:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 hooks anon arguments artifacts items0 git
 
     Attributes
@@ -10599,6 +11071,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
         fetch
     insecureIgnoreHostKey : bool, default is Undefined, optional
         insecure ignore host key
+    insecureSkipTLS : bool, default is Undefined, optional
+        insecure skip TLS
     passwordSecret : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0GitPasswordSecret, default is Undefined, optional
         password secret
     repo : str, default is Undefined, required
@@ -10624,6 +11098,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
     insecureIgnoreHostKey?: bool
 
+    insecureSkipTLS?: bool
+
     passwordSecret?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0GitPasswordSecret
 
     repo: str
@@ -10638,7 +11114,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0GitPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 hooks anon arguments artifacts items0 git password secret
 
     Attributes
@@ -10654,13 +11130,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0GitSSHPrivateKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 hooks anon arguments artifacts items0 git SSH private key secret
 
     Attributes
@@ -10676,13 +11152,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0GitUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 hooks anon arguments artifacts items0 git username secret
 
     Attributes
@@ -10698,13 +11174,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0HTTP:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 hooks anon arguments artifacts items0 HTTP
 
     Attributes
@@ -10726,7 +11202,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0HTTPAuth:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 hooks anon arguments artifacts items0 HTTP auth
 
     Attributes
@@ -10748,7 +11224,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0HTTPAuthBasicAuth:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 hooks anon arguments artifacts items0 HTTP auth basic auth
 
     Attributes
@@ -10766,7 +11242,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0HTTPAuthBasicAuthPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 hooks anon arguments artifacts items0 HTTP auth basic auth password secret
 
     Attributes
@@ -10782,13 +11258,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0HTTPAuthBasicAuthUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 hooks anon arguments artifacts items0 HTTP auth basic auth username secret
 
     Attributes
@@ -10804,13 +11280,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0HTTPAuthClientCert:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 hooks anon arguments artifacts items0 HTTP auth client cert
 
     Attributes
@@ -10828,7 +11304,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0HTTPAuthClientCertClientCertSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 hooks anon arguments artifacts items0 HTTP auth client cert client cert secret
 
     Attributes
@@ -10844,13 +11320,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0HTTPAuthClientCertClientKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 hooks anon arguments artifacts items0 HTTP auth client cert client key secret
 
     Attributes
@@ -10866,13 +11342,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0HTTPAuthOauth2:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 hooks anon arguments artifacts items0 HTTP auth oauth2
 
     Attributes
@@ -10902,7 +11378,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0HTTPAuthOauth2ClientIDSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 hooks anon arguments artifacts items0 HTTP auth oauth2 client ID secret
 
     Attributes
@@ -10918,13 +11394,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0HTTPAuthOauth2ClientSecretSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 hooks anon arguments artifacts items0 HTTP auth oauth2 client secret secret
 
     Attributes
@@ -10940,13 +11416,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0HTTPAuthOauth2EndpointParamsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 hooks anon arguments artifacts items0 HTTP auth oauth2 endpoint params items0
 
     Attributes
@@ -10964,7 +11440,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0HTTPAuthOauth2TokenURLSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 hooks anon arguments artifacts items0 HTTP auth oauth2 token URL secret
 
     Attributes
@@ -10980,13 +11456,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0HTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 hooks anon arguments artifacts items0 HTTP headers items0
 
     Attributes
@@ -11004,13 +11480,15 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0Hdfs:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 hooks anon arguments artifacts items0 hdfs
 
     Attributes
     ----------
     addresses : [str], default is Undefined, optional
         addresses
+    dataTransferProtection : str, default is Undefined, optional
+        data transfer protection
     force : bool, default is Undefined, optional
         force
     hdfsUser : str, default is Undefined, optional
@@ -11034,6 +11512,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
     addresses?: [str]
 
+    dataTransferProtection?: str
+
     force?: bool
 
     hdfsUser?: str
@@ -11054,7 +11534,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0HdfsKrbCCacheSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 hooks anon arguments artifacts items0 hdfs krb c cache secret
 
     Attributes
@@ -11070,13 +11550,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0HdfsKrbConfigConfigMap:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 hooks anon arguments artifacts items0 hdfs krb config config map
 
     Attributes
@@ -11092,13 +11572,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0HdfsKrbKeytabSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 hooks anon arguments artifacts items0 hdfs krb keytab secret
 
     Attributes
@@ -11114,13 +11594,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0Oss:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 hooks anon arguments artifacts items0 oss
 
     Attributes
@@ -11166,7 +11646,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0OssAccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 hooks anon arguments artifacts items0 oss access key secret
 
     Attributes
@@ -11182,13 +11662,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0OssLifecycleRule:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 hooks anon arguments artifacts items0 oss lifecycle rule
 
     Attributes
@@ -11206,7 +11686,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0OssSecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 hooks anon arguments artifacts items0 oss secret key secret
 
     Attributes
@@ -11222,13 +11702,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0Raw:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 hooks anon arguments artifacts items0 raw
 
     Attributes
@@ -11242,7 +11722,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0S3:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 hooks anon arguments artifacts items0 s3
 
     Attributes
@@ -11269,6 +11749,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
         role a r n
     secretKeySecret : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0S3SecretKeySecret, default is Undefined, optional
         secret key secret
+    sessionTokenSecret : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0S3SessionTokenSecret, default is Undefined, optional
+        session token secret
     useSDKCreds : bool, default is Undefined, optional
         use s d k creds
     """
@@ -11296,11 +11778,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
     secretKeySecret?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0S3SecretKeySecret
 
+    sessionTokenSecret?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0S3SessionTokenSecret
+
     useSDKCreds?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0S3AccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 hooks anon arguments artifacts items0 s3 access key secret
 
     Attributes
@@ -11316,13 +11800,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0S3CaSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 hooks anon arguments artifacts items0 s3 ca secret
 
     Attributes
@@ -11338,13 +11822,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0S3CreateBucketIfNotPresent:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 hooks anon arguments artifacts items0 s3 create bucket if not present
 
     Attributes
@@ -11358,7 +11842,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0S3EncryptionOptions:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 hooks anon arguments artifacts items0 s3 encryption options
 
     Attributes
@@ -11384,7 +11868,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0S3EncryptionOptionsServerSideCustomerKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 hooks anon arguments artifacts items0 s3 encryption options server side customer key secret
 
     Attributes
@@ -11400,13 +11884,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0S3SecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 hooks anon arguments artifacts items0 s3 secret key secret
 
     Attributes
@@ -11422,13 +11906,35 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
     key: str
 
-    name?: str
+    name?: str = ""
+
+    optional?: bool
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsArtifactsItems0S3SessionTokenSecret:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 hooks anon arguments artifacts items0 s3 session token secret
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 hooks anon arguments parameters items0
 
     Attributes
@@ -11466,7 +11972,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsParametersItems0ValueFrom:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 hooks anon arguments parameters items0 value from
 
     Attributes
@@ -11512,7 +12018,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonArgumentsParametersItems0ValueFromConfigMapKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 hooks anon arguments parameters items0 value from config map key ref
 
     Attributes
@@ -11528,13 +12034,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0HooksAnonTemplateRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 hooks anon template ref
 
     Attributes
@@ -11556,7 +12062,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0TemplateRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 template ref
 
     Attributes
@@ -11578,7 +12084,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksItems0WithSequence:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults dag tasks items0 with sequence
 
     Attributes
@@ -11604,7 +12110,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDagTasksIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsData:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults data
 
     Attributes
@@ -11622,7 +12128,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsData:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSource:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults data source
 
     Attributes
@@ -11636,7 +12142,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSource:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceArtifactPaths:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults data source artifact paths
 
     Attributes
@@ -11734,7 +12240,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceA
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceArtifactPathsArchive:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults data source artifact paths archive
 
     Attributes
@@ -11756,7 +12262,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceA
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceArtifactPathsArchiveTar:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults data source artifact paths archive tar
 
     Attributes
@@ -11770,7 +12276,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceA
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceArtifactPathsArtifactGC:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults data source artifact paths artifact g c
 
     Attributes
@@ -11792,7 +12298,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceA
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceArtifactPathsArtifactGCPodMetadata:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults data source artifact paths artifact g c pod metadata
 
     Attributes
@@ -11810,7 +12316,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceA
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceArtifactPathsArtifactory:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults data source artifact paths artifactory
 
     Attributes
@@ -11832,7 +12338,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceA
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceArtifactPathsArtifactoryPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults data source artifact paths artifactory password secret
 
     Attributes
@@ -11848,13 +12354,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceA
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceArtifactPathsArtifactoryUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults data source artifact paths artifactory username secret
 
     Attributes
@@ -11870,13 +12376,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceA
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceArtifactPathsAzure:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults data source artifact paths azure
 
     Attributes
@@ -11906,7 +12412,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceA
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceArtifactPathsAzureAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults data source artifact paths azure account key secret
 
     Attributes
@@ -11922,13 +12428,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceA
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceArtifactPathsGcs:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults data source artifact paths gcs
 
     Attributes
@@ -11950,7 +12456,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceA
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceArtifactPathsGcsServiceAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults data source artifact paths gcs service account key secret
 
     Attributes
@@ -11966,13 +12472,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceA
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceArtifactPathsGit:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults data source artifact paths git
 
     Attributes
@@ -11987,6 +12493,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceA
         fetch
     insecureIgnoreHostKey : bool, default is Undefined, optional
         insecure ignore host key
+    insecureSkipTLS : bool, default is Undefined, optional
+        insecure skip TLS
     passwordSecret : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceArtifactPathsGitPasswordSecret, default is Undefined, optional
         password secret
     repo : str, default is Undefined, required
@@ -12012,6 +12520,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceA
 
     insecureIgnoreHostKey?: bool
 
+    insecureSkipTLS?: bool
+
     passwordSecret?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceArtifactPathsGitPasswordSecret
 
     repo: str
@@ -12026,7 +12536,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceA
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceArtifactPathsGitPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults data source artifact paths git password secret
 
     Attributes
@@ -12042,13 +12552,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceA
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceArtifactPathsGitSSHPrivateKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults data source artifact paths git SSH private key secret
 
     Attributes
@@ -12064,13 +12574,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceA
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceArtifactPathsGitUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults data source artifact paths git username secret
 
     Attributes
@@ -12086,13 +12596,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceA
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceArtifactPathsHTTP:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults data source artifact paths HTTP
 
     Attributes
@@ -12114,7 +12624,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceA
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceArtifactPathsHTTPAuth:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults data source artifact paths HTTP auth
 
     Attributes
@@ -12136,7 +12646,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceA
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceArtifactPathsHTTPAuthBasicAuth:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults data source artifact paths HTTP auth basic auth
 
     Attributes
@@ -12154,7 +12664,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceA
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceArtifactPathsHTTPAuthBasicAuthPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults data source artifact paths HTTP auth basic auth password secret
 
     Attributes
@@ -12170,13 +12680,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceA
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceArtifactPathsHTTPAuthBasicAuthUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults data source artifact paths HTTP auth basic auth username secret
 
     Attributes
@@ -12192,13 +12702,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceA
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceArtifactPathsHTTPAuthClientCert:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults data source artifact paths HTTP auth client cert
 
     Attributes
@@ -12216,7 +12726,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceA
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceArtifactPathsHTTPAuthClientCertClientCertSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults data source artifact paths HTTP auth client cert client cert secret
 
     Attributes
@@ -12232,13 +12742,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceA
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceArtifactPathsHTTPAuthClientCertClientKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults data source artifact paths HTTP auth client cert client key secret
 
     Attributes
@@ -12254,13 +12764,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceA
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceArtifactPathsHTTPAuthOauth2:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults data source artifact paths HTTP auth oauth2
 
     Attributes
@@ -12290,7 +12800,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceA
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceArtifactPathsHTTPAuthOauth2ClientIDSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults data source artifact paths HTTP auth oauth2 client ID secret
 
     Attributes
@@ -12306,13 +12816,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceA
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceArtifactPathsHTTPAuthOauth2ClientSecretSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults data source artifact paths HTTP auth oauth2 client secret secret
 
     Attributes
@@ -12328,13 +12838,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceA
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceArtifactPathsHTTPAuthOauth2EndpointParamsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults data source artifact paths HTTP auth oauth2 endpoint params items0
 
     Attributes
@@ -12352,7 +12862,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceA
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceArtifactPathsHTTPAuthOauth2TokenURLSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults data source artifact paths HTTP auth oauth2 token URL secret
 
     Attributes
@@ -12368,13 +12878,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceA
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceArtifactPathsHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults data source artifact paths HTTP headers items0
 
     Attributes
@@ -12392,13 +12902,15 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceA
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceArtifactPathsHdfs:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults data source artifact paths hdfs
 
     Attributes
     ----------
     addresses : [str], default is Undefined, optional
         addresses
+    dataTransferProtection : str, default is Undefined, optional
+        data transfer protection
     force : bool, default is Undefined, optional
         force
     hdfsUser : str, default is Undefined, optional
@@ -12422,6 +12934,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceA
 
     addresses?: [str]
 
+    dataTransferProtection?: str
+
     force?: bool
 
     hdfsUser?: str
@@ -12442,7 +12956,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceA
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceArtifactPathsHdfsKrbCCacheSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults data source artifact paths hdfs krb c cache secret
 
     Attributes
@@ -12458,13 +12972,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceA
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceArtifactPathsHdfsKrbConfigConfigMap:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults data source artifact paths hdfs krb config config map
 
     Attributes
@@ -12480,13 +12994,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceA
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceArtifactPathsHdfsKrbKeytabSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults data source artifact paths hdfs krb keytab secret
 
     Attributes
@@ -12502,13 +13016,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceA
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceArtifactPathsOss:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults data source artifact paths oss
 
     Attributes
@@ -12554,7 +13068,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceA
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceArtifactPathsOssAccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults data source artifact paths oss access key secret
 
     Attributes
@@ -12570,13 +13084,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceA
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceArtifactPathsOssLifecycleRule:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults data source artifact paths oss lifecycle rule
 
     Attributes
@@ -12594,7 +13108,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceA
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceArtifactPathsOssSecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults data source artifact paths oss secret key secret
 
     Attributes
@@ -12610,13 +13124,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceA
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceArtifactPathsRaw:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults data source artifact paths raw
 
     Attributes
@@ -12630,7 +13144,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceA
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceArtifactPathsS3:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults data source artifact paths s3
 
     Attributes
@@ -12657,6 +13171,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceA
         role a r n
     secretKeySecret : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceArtifactPathsS3SecretKeySecret, default is Undefined, optional
         secret key secret
+    sessionTokenSecret : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceArtifactPathsS3SessionTokenSecret, default is Undefined, optional
+        session token secret
     useSDKCreds : bool, default is Undefined, optional
         use s d k creds
     """
@@ -12684,11 +13200,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceA
 
     secretKeySecret?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceArtifactPathsS3SecretKeySecret
 
+    sessionTokenSecret?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceArtifactPathsS3SessionTokenSecret
+
     useSDKCreds?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceArtifactPathsS3AccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults data source artifact paths s3 access key secret
 
     Attributes
@@ -12704,13 +13222,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceA
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceArtifactPathsS3CaSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults data source artifact paths s3 ca secret
 
     Attributes
@@ -12726,13 +13244,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceA
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceArtifactPathsS3CreateBucketIfNotPresent:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults data source artifact paths s3 create bucket if not present
 
     Attributes
@@ -12746,7 +13264,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceA
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceArtifactPathsS3EncryptionOptions:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults data source artifact paths s3 encryption options
 
     Attributes
@@ -12772,7 +13290,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceA
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceArtifactPathsS3EncryptionOptionsServerSideCustomerKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults data source artifact paths s3 encryption options server side customer key secret
 
     Attributes
@@ -12788,13 +13306,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceA
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceArtifactPathsS3SecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults data source artifact paths s3 secret key secret
 
     Attributes
@@ -12810,13 +13328,35 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceA
 
     key: str
 
-    name?: str
+    name?: str = ""
+
+    optional?: bool
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataSourceArtifactPathsS3SessionTokenSecret:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec template defaults data source artifact paths s3 session token secret
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataTransformationItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults data transformation items0
 
     Attributes
@@ -12830,7 +13370,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsDataTransfo
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsExecutor:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults executor
 
     Attributes
@@ -12844,7 +13384,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsExecutor:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsHTTP:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults HTTP
 
     Attributes
@@ -12886,7 +13426,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsHTTP:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsHTTPBodyFrom:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults HTTP body from
 
     Attributes
@@ -12900,7 +13440,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsHTTPBodyFro
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults HTTP headers items0
 
     Attributes
@@ -12922,7 +13462,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsHTTPHeaders
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsHTTPHeadersItems0ValueFrom:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults HTTP headers items0 value from
 
     Attributes
@@ -12936,7 +13476,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsHTTPHeaders
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsHTTPHeadersItems0ValueFromSecretKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults HTTP headers items0 value from secret key ref
 
     Attributes
@@ -12952,31 +13492,31 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsHTTPHeaders
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsHostAliasesItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults host aliases items0
 
     Attributes
     ----------
     hostnames : [str], default is Undefined, optional
         hostnames
-    ip : str, default is Undefined, optional
+    ip : str, default is Undefined, required
         ip
     """
 
 
     hostnames?: [str]
 
-    ip?: str
+    ip: str
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults init containers items0
 
     Attributes
@@ -13005,8 +13545,12 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContain
         ports
     readinessProbe : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0ReadinessProbe, default is Undefined, optional
         readiness probe
+    resizePolicy : [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0ResizePolicyItems0], default is Undefined, optional
+        resize policy
     resources : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0Resources, default is Undefined, optional
         resources
+    restartPolicy : str, default is Undefined, optional
+        restart policy
     securityContext : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0SecurityContext, default is Undefined, optional
         security context
     startupProbe : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0StartupProbe, default is Undefined, optional
@@ -13054,7 +13598,11 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContain
 
     readinessProbe?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0ReadinessProbe
 
+    resizePolicy?: [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0ResizePolicyItems0]
+
     resources?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0Resources
+
+    restartPolicy?: str
 
     securityContext?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0SecurityContext
 
@@ -13078,7 +13626,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContain
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0EnvFromItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults init containers items0 env from items0
 
     Attributes
@@ -13100,7 +13648,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContain
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0EnvFromItems0ConfigMapRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults init containers items0 env from items0 config map ref
 
     Attributes
@@ -13112,13 +13660,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContain
     """
 
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0EnvFromItems0SecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults init containers items0 env from items0 secret ref
 
     Attributes
@@ -13130,13 +13678,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContain
     """
 
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0EnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults init containers items0 env items0
 
     Attributes
@@ -13158,7 +13706,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContain
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0EnvItems0ValueFrom:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults init containers items0 env items0 value from
 
     Attributes
@@ -13184,7 +13732,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContain
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0EnvItems0ValueFromConfigMapKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults init containers items0 env items0 value from config map key ref
 
     Attributes
@@ -13200,13 +13748,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContain
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0EnvItems0ValueFromFieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults init containers items0 env items0 value from field ref
 
     Attributes
@@ -13224,7 +13772,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContain
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0EnvItems0ValueFromResourceFieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults init containers items0 env items0 value from resource field ref
 
     Attributes
@@ -13250,7 +13798,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContain
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0EnvItems0ValueFromSecretKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults init containers items0 env items0 value from secret key ref
 
     Attributes
@@ -13266,13 +13814,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContain
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0Lifecycle:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults init containers items0 lifecycle
 
     Attributes
@@ -13290,7 +13838,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContain
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0LifecyclePostStart:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults init containers items0 lifecycle post start
 
     Attributes
@@ -13299,6 +13847,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContain
         exec
     httpGet : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0LifecyclePostStartHTTPGet, default is Undefined, optional
         http get
+    sleep : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0LifecyclePostStartSleep, default is Undefined, optional
+        sleep
     tcpSocket : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0LifecyclePostStartTCPSocket, default is Undefined, optional
         tcp socket
     """
@@ -13308,11 +13858,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContain
 
     httpGet?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0LifecyclePostStartHTTPGet
 
+    sleep?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0LifecyclePostStartSleep
+
     tcpSocket?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0LifecyclePostStartTCPSocket
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0LifecyclePostStartExec:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults init containers items0 lifecycle post start exec
 
     Attributes
@@ -13326,7 +13878,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContain
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0LifecyclePostStartHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults init containers items0 lifecycle post start HTTP get
 
     Attributes
@@ -13356,7 +13908,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContain
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0LifecyclePostStartHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults init containers items0 lifecycle post start HTTP get HTTP headers items0
 
     Attributes
@@ -13373,8 +13925,22 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContain
     value: str
 
 
-schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0LifecyclePostStartTCPSocket:
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0LifecyclePostStartSleep:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec template defaults init containers items0 lifecycle post start sleep
+
+    Attributes
+    ----------
+    seconds : int, default is Undefined, required
+        seconds
     """
+
+
+    seconds: int
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0LifecyclePostStartTCPSocket:
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults init containers items0 lifecycle post start TCP socket
 
     Attributes
@@ -13392,7 +13958,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContain
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0LifecyclePreStop:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults init containers items0 lifecycle pre stop
 
     Attributes
@@ -13401,6 +13967,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContain
         exec
     httpGet : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0LifecyclePreStopHTTPGet, default is Undefined, optional
         http get
+    sleep : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0LifecyclePreStopSleep, default is Undefined, optional
+        sleep
     tcpSocket : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0LifecyclePreStopTCPSocket, default is Undefined, optional
         tcp socket
     """
@@ -13410,11 +13978,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContain
 
     httpGet?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0LifecyclePreStopHTTPGet
 
+    sleep?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0LifecyclePreStopSleep
+
     tcpSocket?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0LifecyclePreStopTCPSocket
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0LifecyclePreStopExec:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults init containers items0 lifecycle pre stop exec
 
     Attributes
@@ -13428,7 +13998,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContain
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0LifecyclePreStopHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults init containers items0 lifecycle pre stop HTTP get
 
     Attributes
@@ -13458,7 +14028,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContain
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0LifecyclePreStopHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults init containers items0 lifecycle pre stop HTTP get HTTP headers items0
 
     Attributes
@@ -13475,8 +14045,22 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContain
     value: str
 
 
-schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0LifecyclePreStopTCPSocket:
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0LifecyclePreStopSleep:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec template defaults init containers items0 lifecycle pre stop sleep
+
+    Attributes
+    ----------
+    seconds : int, default is Undefined, required
+        seconds
     """
+
+
+    seconds: int
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0LifecyclePreStopTCPSocket:
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults init containers items0 lifecycle pre stop TCP socket
 
     Attributes
@@ -13494,7 +14078,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContain
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0LivenessProbe:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults init containers items0 liveness probe
 
     Attributes
@@ -13544,7 +14128,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContain
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0LivenessProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults init containers items0 liveness probe exec
 
     Attributes
@@ -13558,7 +14142,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContain
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0LivenessProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults init containers items0 liveness probe grpc
 
     Attributes
@@ -13576,7 +14160,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContain
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0LivenessProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults init containers items0 liveness probe HTTP get
 
     Attributes
@@ -13606,7 +14190,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContain
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0LivenessProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults init containers items0 liveness probe HTTP get HTTP headers items0
 
     Attributes
@@ -13624,7 +14208,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContain
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0LivenessProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults init containers items0 liveness probe TCP socket
 
     Attributes
@@ -13642,7 +14226,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContain
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0PortsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults init containers items0 ports items0
 
     Attributes
@@ -13672,7 +14256,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContain
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0ReadinessProbe:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults init containers items0 readiness probe
 
     Attributes
@@ -13722,7 +14306,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContain
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0ReadinessProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults init containers items0 readiness probe exec
 
     Attributes
@@ -13736,7 +14320,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContain
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0ReadinessProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults init containers items0 readiness probe grpc
 
     Attributes
@@ -13754,7 +14338,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContain
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0ReadinessProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults init containers items0 readiness probe HTTP get
 
     Attributes
@@ -13784,7 +14368,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContain
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0ReadinessProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults init containers items0 readiness probe HTTP get HTTP headers items0
 
     Attributes
@@ -13802,7 +14386,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContain
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0ReadinessProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults init containers items0 readiness probe TCP socket
 
     Attributes
@@ -13819,8 +14403,26 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContain
     port: int | str
 
 
-schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0Resources:
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0ResizePolicyItems0:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec template defaults init containers items0 resize policy items0
+
+    Attributes
+    ----------
+    resourceName : str, default is Undefined, required
+        resource name
+    restartPolicy : str, default is Undefined, required
+        restart policy
     """
+
+
+    resourceName: str
+
+    restartPolicy: str
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0Resources:
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults init containers items0 resources
 
     Attributes
@@ -13842,12 +14444,12 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContain
 
 
     check:
-        all _, limits in limits {_regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests {_regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0ResourcesClaimsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults init containers items0 resources claims items0
 
     Attributes
@@ -13861,13 +14463,15 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContain
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0SecurityContext:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults init containers items0 security context
 
     Attributes
     ----------
     allowPrivilegeEscalation : bool, default is Undefined, optional
         allow privilege escalation
+    appArmorProfile : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0SecurityContextAppArmorProfile, default is Undefined, optional
+        app armor profile
     capabilities : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0SecurityContextCapabilities, default is Undefined, optional
         capabilities
     privileged : bool, default is Undefined, optional
@@ -13893,6 +14497,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContain
 
     allowPrivilegeEscalation?: bool
 
+    appArmorProfile?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0SecurityContextAppArmorProfile
+
     capabilities?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0SecurityContextCapabilities
 
     privileged?: bool
@@ -13914,8 +14520,26 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContain
     windowsOptions?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0SecurityContextWindowsOptions
 
 
-schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0SecurityContextCapabilities:
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0SecurityContextAppArmorProfile:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec template defaults init containers items0 security context app armor profile
+
+    Attributes
+    ----------
+    localhostProfile : str, default is Undefined, optional
+        localhost profile
+    $type : str, default is Undefined, required
+        type
     """
+
+
+    localhostProfile?: str
+
+    $type: str
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0SecurityContextCapabilities:
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults init containers items0 security context capabilities
 
     Attributes
@@ -13933,7 +14557,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContain
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0SecurityContextSeLinuxOptions:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults init containers items0 security context se linux options
 
     Attributes
@@ -13959,7 +14583,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContain
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0SecurityContextSeccompProfile:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults init containers items0 security context seccomp profile
 
     Attributes
@@ -13977,7 +14601,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContain
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0SecurityContextWindowsOptions:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults init containers items0 security context windows options
 
     Attributes
@@ -14003,7 +14627,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContain
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0StartupProbe:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults init containers items0 startup probe
 
     Attributes
@@ -14053,7 +14677,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContain
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0StartupProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults init containers items0 startup probe exec
 
     Attributes
@@ -14067,7 +14691,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContain
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0StartupProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults init containers items0 startup probe grpc
 
     Attributes
@@ -14085,7 +14709,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContain
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0StartupProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults init containers items0 startup probe HTTP get
 
     Attributes
@@ -14115,7 +14739,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContain
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0StartupProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults init containers items0 startup probe HTTP get HTTP headers items0
 
     Attributes
@@ -14133,7 +14757,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContain
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0StartupProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults init containers items0 startup probe TCP socket
 
     Attributes
@@ -14151,7 +14775,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContain
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0VolumeDevicesItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults init containers items0 volume devices items0
 
     Attributes
@@ -14169,7 +14793,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContain
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContainersItems0VolumeMountsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults init containers items0 volume mounts items0
 
     Attributes
@@ -14182,6 +14806,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContain
         name
     readOnly : bool, default is Undefined, optional
         read only
+    recursiveReadOnly : str, default is Undefined, optional
+        recursive read only
     subPath : str, default is Undefined, optional
         sub path
     subPathExpr : str, default is Undefined, optional
@@ -14197,13 +14823,15 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInitContain
 
     readOnly?: bool
 
+    recursiveReadOnly?: str
+
     subPath?: str
 
     subPathExpr?: str
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputs:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults inputs
 
     Attributes
@@ -14221,7 +14849,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputs:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtifactsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults inputs artifacts items0
 
     Attributes
@@ -14319,7 +14947,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtif
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtifactsItems0Archive:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults inputs artifacts items0 archive
 
     Attributes
@@ -14341,7 +14969,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtif
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtifactsItems0ArchiveTar:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults inputs artifacts items0 archive tar
 
     Attributes
@@ -14355,7 +14983,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtif
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtifactsItems0ArtifactGC:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults inputs artifacts items0 artifact g c
 
     Attributes
@@ -14377,7 +15005,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtif
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtifactsItems0ArtifactGCPodMetadata:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults inputs artifacts items0 artifact g c pod metadata
 
     Attributes
@@ -14395,7 +15023,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtif
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtifactsItems0Artifactory:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults inputs artifacts items0 artifactory
 
     Attributes
@@ -14417,7 +15045,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtif
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtifactsItems0ArtifactoryPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults inputs artifacts items0 artifactory password secret
 
     Attributes
@@ -14433,13 +15061,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtifactsItems0ArtifactoryUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults inputs artifacts items0 artifactory username secret
 
     Attributes
@@ -14455,13 +15083,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtifactsItems0Azure:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults inputs artifacts items0 azure
 
     Attributes
@@ -14491,7 +15119,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtif
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtifactsItems0AzureAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults inputs artifacts items0 azure account key secret
 
     Attributes
@@ -14507,13 +15135,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtifactsItems0Gcs:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults inputs artifacts items0 gcs
 
     Attributes
@@ -14535,7 +15163,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtif
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtifactsItems0GcsServiceAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults inputs artifacts items0 gcs service account key secret
 
     Attributes
@@ -14551,13 +15179,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtifactsItems0Git:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults inputs artifacts items0 git
 
     Attributes
@@ -14572,6 +15200,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtif
         fetch
     insecureIgnoreHostKey : bool, default is Undefined, optional
         insecure ignore host key
+    insecureSkipTLS : bool, default is Undefined, optional
+        insecure skip TLS
     passwordSecret : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtifactsItems0GitPasswordSecret, default is Undefined, optional
         password secret
     repo : str, default is Undefined, required
@@ -14597,6 +15227,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtif
 
     insecureIgnoreHostKey?: bool
 
+    insecureSkipTLS?: bool
+
     passwordSecret?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtifactsItems0GitPasswordSecret
 
     repo: str
@@ -14611,7 +15243,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtif
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtifactsItems0GitPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults inputs artifacts items0 git password secret
 
     Attributes
@@ -14627,13 +15259,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtifactsItems0GitSSHPrivateKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults inputs artifacts items0 git SSH private key secret
 
     Attributes
@@ -14649,13 +15281,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtifactsItems0GitUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults inputs artifacts items0 git username secret
 
     Attributes
@@ -14671,13 +15303,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtifactsItems0HTTP:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults inputs artifacts items0 HTTP
 
     Attributes
@@ -14699,7 +15331,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtif
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtifactsItems0HTTPAuth:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults inputs artifacts items0 HTTP auth
 
     Attributes
@@ -14721,7 +15353,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtif
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtifactsItems0HTTPAuthBasicAuth:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults inputs artifacts items0 HTTP auth basic auth
 
     Attributes
@@ -14739,7 +15371,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtif
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtifactsItems0HTTPAuthBasicAuthPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults inputs artifacts items0 HTTP auth basic auth password secret
 
     Attributes
@@ -14755,13 +15387,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtifactsItems0HTTPAuthBasicAuthUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults inputs artifacts items0 HTTP auth basic auth username secret
 
     Attributes
@@ -14777,13 +15409,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtifactsItems0HTTPAuthClientCert:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults inputs artifacts items0 HTTP auth client cert
 
     Attributes
@@ -14801,7 +15433,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtif
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtifactsItems0HTTPAuthClientCertClientCertSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults inputs artifacts items0 HTTP auth client cert client cert secret
 
     Attributes
@@ -14817,13 +15449,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtifactsItems0HTTPAuthClientCertClientKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults inputs artifacts items0 HTTP auth client cert client key secret
 
     Attributes
@@ -14839,13 +15471,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtifactsItems0HTTPAuthOauth2:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults inputs artifacts items0 HTTP auth oauth2
 
     Attributes
@@ -14875,7 +15507,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtif
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtifactsItems0HTTPAuthOauth2ClientIDSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults inputs artifacts items0 HTTP auth oauth2 client ID secret
 
     Attributes
@@ -14891,13 +15523,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtifactsItems0HTTPAuthOauth2ClientSecretSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults inputs artifacts items0 HTTP auth oauth2 client secret secret
 
     Attributes
@@ -14913,13 +15545,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtifactsItems0HTTPAuthOauth2EndpointParamsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults inputs artifacts items0 HTTP auth oauth2 endpoint params items0
 
     Attributes
@@ -14937,7 +15569,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtif
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtifactsItems0HTTPAuthOauth2TokenURLSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults inputs artifacts items0 HTTP auth oauth2 token URL secret
 
     Attributes
@@ -14953,13 +15585,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtifactsItems0HTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults inputs artifacts items0 HTTP headers items0
 
     Attributes
@@ -14977,13 +15609,15 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtif
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtifactsItems0Hdfs:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults inputs artifacts items0 hdfs
 
     Attributes
     ----------
     addresses : [str], default is Undefined, optional
         addresses
+    dataTransferProtection : str, default is Undefined, optional
+        data transfer protection
     force : bool, default is Undefined, optional
         force
     hdfsUser : str, default is Undefined, optional
@@ -15007,6 +15641,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtif
 
     addresses?: [str]
 
+    dataTransferProtection?: str
+
     force?: bool
 
     hdfsUser?: str
@@ -15027,7 +15663,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtif
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtifactsItems0HdfsKrbCCacheSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults inputs artifacts items0 hdfs krb c cache secret
 
     Attributes
@@ -15043,13 +15679,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtifactsItems0HdfsKrbConfigConfigMap:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults inputs artifacts items0 hdfs krb config config map
 
     Attributes
@@ -15065,13 +15701,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtifactsItems0HdfsKrbKeytabSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults inputs artifacts items0 hdfs krb keytab secret
 
     Attributes
@@ -15087,13 +15723,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtifactsItems0Oss:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults inputs artifacts items0 oss
 
     Attributes
@@ -15139,7 +15775,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtif
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtifactsItems0OssAccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults inputs artifacts items0 oss access key secret
 
     Attributes
@@ -15155,13 +15791,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtifactsItems0OssLifecycleRule:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults inputs artifacts items0 oss lifecycle rule
 
     Attributes
@@ -15179,7 +15815,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtif
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtifactsItems0OssSecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults inputs artifacts items0 oss secret key secret
 
     Attributes
@@ -15195,13 +15831,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtifactsItems0Raw:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults inputs artifacts items0 raw
 
     Attributes
@@ -15215,7 +15851,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtif
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtifactsItems0S3:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults inputs artifacts items0 s3
 
     Attributes
@@ -15242,6 +15878,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtif
         role a r n
     secretKeySecret : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtifactsItems0S3SecretKeySecret, default is Undefined, optional
         secret key secret
+    sessionTokenSecret : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtifactsItems0S3SessionTokenSecret, default is Undefined, optional
+        session token secret
     useSDKCreds : bool, default is Undefined, optional
         use s d k creds
     """
@@ -15269,11 +15907,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtif
 
     secretKeySecret?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtifactsItems0S3SecretKeySecret
 
+    sessionTokenSecret?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtifactsItems0S3SessionTokenSecret
+
     useSDKCreds?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtifactsItems0S3AccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults inputs artifacts items0 s3 access key secret
 
     Attributes
@@ -15289,13 +15929,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtifactsItems0S3CaSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults inputs artifacts items0 s3 ca secret
 
     Attributes
@@ -15311,13 +15951,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtifactsItems0S3CreateBucketIfNotPresent:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults inputs artifacts items0 s3 create bucket if not present
 
     Attributes
@@ -15331,7 +15971,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtif
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtifactsItems0S3EncryptionOptions:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults inputs artifacts items0 s3 encryption options
 
     Attributes
@@ -15357,7 +15997,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtif
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtifactsItems0S3EncryptionOptionsServerSideCustomerKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults inputs artifacts items0 s3 encryption options server side customer key secret
 
     Attributes
@@ -15373,13 +16013,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtifactsItems0S3SecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults inputs artifacts items0 s3 secret key secret
 
     Attributes
@@ -15395,13 +16035,35 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
+
+    optional?: bool
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsArtifactsItems0S3SessionTokenSecret:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec template defaults inputs artifacts items0 s3 session token secret
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults inputs parameters items0
 
     Attributes
@@ -15439,7 +16101,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsParam
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsParametersItems0ValueFrom:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults inputs parameters items0 value from
 
     Attributes
@@ -15485,7 +16147,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsParam
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsParametersItems0ValueFromConfigMapKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults inputs parameters items0 value from config map key ref
 
     Attributes
@@ -15501,13 +16163,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsInputsParam
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsMemoize:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults memoize
 
     Attributes
@@ -15529,7 +16191,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsMemoize:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsMemoizeCache:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults memoize cache
 
     Attributes
@@ -15543,7 +16205,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsMemoizeCach
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsMemoizeCacheConfigMap:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults memoize cache config map
 
     Attributes
@@ -15559,13 +16221,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsMemoizeCach
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsMetadata:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults metadata
 
     Attributes
@@ -15583,7 +16245,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsMetadata:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsMetrics:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults metrics
 
     Attributes
@@ -15597,7 +16259,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsMetrics:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsMetricsPrometheusItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults metrics prometheus items0
 
     Attributes
@@ -15635,7 +16297,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsMetricsProm
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsMetricsPrometheusItems0Counter:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults metrics prometheus items0 counter
 
     Attributes
@@ -15649,7 +16311,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsMetricsProm
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsMetricsPrometheusItems0Gauge:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults metrics prometheus items0 gauge
 
     Attributes
@@ -15671,7 +16333,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsMetricsProm
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsMetricsPrometheusItems0Histogram:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults metrics prometheus items0 histogram
 
     Attributes
@@ -15689,7 +16351,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsMetricsProm
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsMetricsPrometheusItems0LabelsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults metrics prometheus items0 labels items0
 
     Attributes
@@ -15707,7 +16369,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsMetricsProm
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputs:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults outputs
 
     Attributes
@@ -15733,7 +16395,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputs:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArtifactsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults outputs artifacts items0
 
     Attributes
@@ -15831,7 +16493,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArti
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArtifactsItems0Archive:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults outputs artifacts items0 archive
 
     Attributes
@@ -15853,7 +16515,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArti
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArtifactsItems0ArchiveTar:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults outputs artifacts items0 archive tar
 
     Attributes
@@ -15867,7 +16529,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArti
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArtifactsItems0ArtifactGC:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults outputs artifacts items0 artifact g c
 
     Attributes
@@ -15889,7 +16551,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArti
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArtifactsItems0ArtifactGCPodMetadata:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults outputs artifacts items0 artifact g c pod metadata
 
     Attributes
@@ -15907,7 +16569,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArti
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArtifactsItems0Artifactory:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults outputs artifacts items0 artifactory
 
     Attributes
@@ -15929,7 +16591,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArti
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArtifactsItems0ArtifactoryPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults outputs artifacts items0 artifactory password secret
 
     Attributes
@@ -15945,13 +16607,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArti
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArtifactsItems0ArtifactoryUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults outputs artifacts items0 artifactory username secret
 
     Attributes
@@ -15967,13 +16629,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArti
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArtifactsItems0Azure:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults outputs artifacts items0 azure
 
     Attributes
@@ -16003,7 +16665,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArti
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArtifactsItems0AzureAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults outputs artifacts items0 azure account key secret
 
     Attributes
@@ -16019,13 +16681,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArti
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArtifactsItems0Gcs:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults outputs artifacts items0 gcs
 
     Attributes
@@ -16047,7 +16709,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArti
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArtifactsItems0GcsServiceAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults outputs artifacts items0 gcs service account key secret
 
     Attributes
@@ -16063,13 +16725,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArti
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArtifactsItems0Git:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults outputs artifacts items0 git
 
     Attributes
@@ -16084,6 +16746,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArti
         fetch
     insecureIgnoreHostKey : bool, default is Undefined, optional
         insecure ignore host key
+    insecureSkipTLS : bool, default is Undefined, optional
+        insecure skip TLS
     passwordSecret : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArtifactsItems0GitPasswordSecret, default is Undefined, optional
         password secret
     repo : str, default is Undefined, required
@@ -16109,6 +16773,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArti
 
     insecureIgnoreHostKey?: bool
 
+    insecureSkipTLS?: bool
+
     passwordSecret?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArtifactsItems0GitPasswordSecret
 
     repo: str
@@ -16123,7 +16789,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArti
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArtifactsItems0GitPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults outputs artifacts items0 git password secret
 
     Attributes
@@ -16139,13 +16805,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArti
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArtifactsItems0GitSSHPrivateKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults outputs artifacts items0 git SSH private key secret
 
     Attributes
@@ -16161,13 +16827,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArti
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArtifactsItems0GitUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults outputs artifacts items0 git username secret
 
     Attributes
@@ -16183,13 +16849,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArti
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArtifactsItems0HTTP:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults outputs artifacts items0 HTTP
 
     Attributes
@@ -16211,7 +16877,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArti
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArtifactsItems0HTTPAuth:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults outputs artifacts items0 HTTP auth
 
     Attributes
@@ -16233,7 +16899,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArti
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArtifactsItems0HTTPAuthBasicAuth:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults outputs artifacts items0 HTTP auth basic auth
 
     Attributes
@@ -16251,7 +16917,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArti
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArtifactsItems0HTTPAuthBasicAuthPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults outputs artifacts items0 HTTP auth basic auth password secret
 
     Attributes
@@ -16267,13 +16933,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArti
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArtifactsItems0HTTPAuthBasicAuthUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults outputs artifacts items0 HTTP auth basic auth username secret
 
     Attributes
@@ -16289,13 +16955,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArti
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArtifactsItems0HTTPAuthClientCert:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults outputs artifacts items0 HTTP auth client cert
 
     Attributes
@@ -16313,7 +16979,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArti
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArtifactsItems0HTTPAuthClientCertClientCertSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults outputs artifacts items0 HTTP auth client cert client cert secret
 
     Attributes
@@ -16329,13 +16995,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArti
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArtifactsItems0HTTPAuthClientCertClientKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults outputs artifacts items0 HTTP auth client cert client key secret
 
     Attributes
@@ -16351,13 +17017,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArti
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArtifactsItems0HTTPAuthOauth2:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults outputs artifacts items0 HTTP auth oauth2
 
     Attributes
@@ -16387,7 +17053,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArti
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArtifactsItems0HTTPAuthOauth2ClientIDSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults outputs artifacts items0 HTTP auth oauth2 client ID secret
 
     Attributes
@@ -16403,13 +17069,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArti
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArtifactsItems0HTTPAuthOauth2ClientSecretSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults outputs artifacts items0 HTTP auth oauth2 client secret secret
 
     Attributes
@@ -16425,13 +17091,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArti
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArtifactsItems0HTTPAuthOauth2EndpointParamsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults outputs artifacts items0 HTTP auth oauth2 endpoint params items0
 
     Attributes
@@ -16449,7 +17115,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArti
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArtifactsItems0HTTPAuthOauth2TokenURLSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults outputs artifacts items0 HTTP auth oauth2 token URL secret
 
     Attributes
@@ -16465,13 +17131,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArti
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArtifactsItems0HTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults outputs artifacts items0 HTTP headers items0
 
     Attributes
@@ -16489,13 +17155,15 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArti
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArtifactsItems0Hdfs:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults outputs artifacts items0 hdfs
 
     Attributes
     ----------
     addresses : [str], default is Undefined, optional
         addresses
+    dataTransferProtection : str, default is Undefined, optional
+        data transfer protection
     force : bool, default is Undefined, optional
         force
     hdfsUser : str, default is Undefined, optional
@@ -16519,6 +17187,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArti
 
     addresses?: [str]
 
+    dataTransferProtection?: str
+
     force?: bool
 
     hdfsUser?: str
@@ -16539,7 +17209,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArti
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArtifactsItems0HdfsKrbCCacheSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults outputs artifacts items0 hdfs krb c cache secret
 
     Attributes
@@ -16555,13 +17225,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArti
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArtifactsItems0HdfsKrbConfigConfigMap:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults outputs artifacts items0 hdfs krb config config map
 
     Attributes
@@ -16577,13 +17247,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArti
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArtifactsItems0HdfsKrbKeytabSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults outputs artifacts items0 hdfs krb keytab secret
 
     Attributes
@@ -16599,13 +17269,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArti
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArtifactsItems0Oss:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults outputs artifacts items0 oss
 
     Attributes
@@ -16651,7 +17321,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArti
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArtifactsItems0OssAccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults outputs artifacts items0 oss access key secret
 
     Attributes
@@ -16667,13 +17337,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArti
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArtifactsItems0OssLifecycleRule:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults outputs artifacts items0 oss lifecycle rule
 
     Attributes
@@ -16691,7 +17361,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArti
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArtifactsItems0OssSecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults outputs artifacts items0 oss secret key secret
 
     Attributes
@@ -16707,13 +17377,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArti
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArtifactsItems0Raw:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults outputs artifacts items0 raw
 
     Attributes
@@ -16727,7 +17397,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArti
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArtifactsItems0S3:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults outputs artifacts items0 s3
 
     Attributes
@@ -16754,6 +17424,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArti
         role a r n
     secretKeySecret : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArtifactsItems0S3SecretKeySecret, default is Undefined, optional
         secret key secret
+    sessionTokenSecret : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArtifactsItems0S3SessionTokenSecret, default is Undefined, optional
+        session token secret
     useSDKCreds : bool, default is Undefined, optional
         use s d k creds
     """
@@ -16781,11 +17453,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArti
 
     secretKeySecret?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArtifactsItems0S3SecretKeySecret
 
+    sessionTokenSecret?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArtifactsItems0S3SessionTokenSecret
+
     useSDKCreds?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArtifactsItems0S3AccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults outputs artifacts items0 s3 access key secret
 
     Attributes
@@ -16801,13 +17475,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArti
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArtifactsItems0S3CaSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults outputs artifacts items0 s3 ca secret
 
     Attributes
@@ -16823,13 +17497,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArti
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArtifactsItems0S3CreateBucketIfNotPresent:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults outputs artifacts items0 s3 create bucket if not present
 
     Attributes
@@ -16843,7 +17517,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArti
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArtifactsItems0S3EncryptionOptions:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults outputs artifacts items0 s3 encryption options
 
     Attributes
@@ -16869,7 +17543,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArti
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArtifactsItems0S3EncryptionOptionsServerSideCustomerKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults outputs artifacts items0 s3 encryption options server side customer key secret
 
     Attributes
@@ -16885,13 +17559,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArti
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArtifactsItems0S3SecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults outputs artifacts items0 s3 secret key secret
 
     Attributes
@@ -16907,13 +17581,35 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArti
 
     key: str
 
-    name?: str
+    name?: str = ""
+
+    optional?: bool
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsArtifactsItems0S3SessionTokenSecret:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec template defaults outputs artifacts items0 s3 session token secret
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults outputs parameters items0
 
     Attributes
@@ -16951,7 +17647,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsPara
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsParametersItems0ValueFrom:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults outputs parameters items0 value from
 
     Attributes
@@ -16997,7 +17693,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsPara
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsParametersItems0ValueFromConfigMapKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults outputs parameters items0 value from config map key ref
 
     Attributes
@@ -17013,13 +17709,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsOutputsPara
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResource:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults resource
 
     Attributes
@@ -17061,7 +17757,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResource:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceManifestFrom:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults resource manifest from
 
     Attributes
@@ -17075,7 +17771,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceMan
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceManifestFromArtifact:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults resource manifest from artifact
 
     Attributes
@@ -17173,7 +17869,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceMan
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceManifestFromArtifactArchive:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults resource manifest from artifact archive
 
     Attributes
@@ -17195,7 +17891,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceMan
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceManifestFromArtifactArchiveTar:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults resource manifest from artifact archive tar
 
     Attributes
@@ -17209,7 +17905,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceMan
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceManifestFromArtifactArtifactGC:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults resource manifest from artifact artifact g c
 
     Attributes
@@ -17231,7 +17927,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceMan
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceManifestFromArtifactArtifactGCPodMetadata:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults resource manifest from artifact artifact g c pod metadata
 
     Attributes
@@ -17249,7 +17945,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceMan
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceManifestFromArtifactArtifactory:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults resource manifest from artifact artifactory
 
     Attributes
@@ -17271,7 +17967,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceMan
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceManifestFromArtifactArtifactoryPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults resource manifest from artifact artifactory password secret
 
     Attributes
@@ -17287,13 +17983,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceMan
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceManifestFromArtifactArtifactoryUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults resource manifest from artifact artifactory username secret
 
     Attributes
@@ -17309,13 +18005,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceMan
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceManifestFromArtifactAzure:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults resource manifest from artifact azure
 
     Attributes
@@ -17345,7 +18041,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceMan
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceManifestFromArtifactAzureAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults resource manifest from artifact azure account key secret
 
     Attributes
@@ -17361,13 +18057,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceMan
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceManifestFromArtifactGcs:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults resource manifest from artifact gcs
 
     Attributes
@@ -17389,7 +18085,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceMan
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceManifestFromArtifactGcsServiceAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults resource manifest from artifact gcs service account key secret
 
     Attributes
@@ -17405,13 +18101,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceMan
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceManifestFromArtifactGit:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults resource manifest from artifact git
 
     Attributes
@@ -17426,6 +18122,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceMan
         fetch
     insecureIgnoreHostKey : bool, default is Undefined, optional
         insecure ignore host key
+    insecureSkipTLS : bool, default is Undefined, optional
+        insecure skip TLS
     passwordSecret : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceManifestFromArtifactGitPasswordSecret, default is Undefined, optional
         password secret
     repo : str, default is Undefined, required
@@ -17451,6 +18149,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceMan
 
     insecureIgnoreHostKey?: bool
 
+    insecureSkipTLS?: bool
+
     passwordSecret?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceManifestFromArtifactGitPasswordSecret
 
     repo: str
@@ -17465,7 +18165,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceMan
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceManifestFromArtifactGitPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults resource manifest from artifact git password secret
 
     Attributes
@@ -17481,13 +18181,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceMan
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceManifestFromArtifactGitSSHPrivateKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults resource manifest from artifact git SSH private key secret
 
     Attributes
@@ -17503,13 +18203,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceMan
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceManifestFromArtifactGitUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults resource manifest from artifact git username secret
 
     Attributes
@@ -17525,13 +18225,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceMan
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceManifestFromArtifactHTTP:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults resource manifest from artifact HTTP
 
     Attributes
@@ -17553,7 +18253,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceMan
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceManifestFromArtifactHTTPAuth:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults resource manifest from artifact HTTP auth
 
     Attributes
@@ -17575,7 +18275,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceMan
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceManifestFromArtifactHTTPAuthBasicAuth:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults resource manifest from artifact HTTP auth basic auth
 
     Attributes
@@ -17593,7 +18293,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceMan
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceManifestFromArtifactHTTPAuthBasicAuthPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults resource manifest from artifact HTTP auth basic auth password secret
 
     Attributes
@@ -17609,13 +18309,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceMan
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceManifestFromArtifactHTTPAuthBasicAuthUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults resource manifest from artifact HTTP auth basic auth username secret
 
     Attributes
@@ -17631,13 +18331,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceMan
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceManifestFromArtifactHTTPAuthClientCert:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults resource manifest from artifact HTTP auth client cert
 
     Attributes
@@ -17655,7 +18355,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceMan
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceManifestFromArtifactHTTPAuthClientCertClientCertSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults resource manifest from artifact HTTP auth client cert client cert secret
 
     Attributes
@@ -17671,13 +18371,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceMan
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceManifestFromArtifactHTTPAuthClientCertClientKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults resource manifest from artifact HTTP auth client cert client key secret
 
     Attributes
@@ -17693,13 +18393,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceMan
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceManifestFromArtifactHTTPAuthOauth2:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults resource manifest from artifact HTTP auth oauth2
 
     Attributes
@@ -17729,7 +18429,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceMan
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceManifestFromArtifactHTTPAuthOauth2ClientIDSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults resource manifest from artifact HTTP auth oauth2 client ID secret
 
     Attributes
@@ -17745,13 +18445,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceMan
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceManifestFromArtifactHTTPAuthOauth2ClientSecretSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults resource manifest from artifact HTTP auth oauth2 client secret secret
 
     Attributes
@@ -17767,13 +18467,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceMan
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceManifestFromArtifactHTTPAuthOauth2EndpointParamsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults resource manifest from artifact HTTP auth oauth2 endpoint params items0
 
     Attributes
@@ -17791,7 +18491,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceMan
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceManifestFromArtifactHTTPAuthOauth2TokenURLSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults resource manifest from artifact HTTP auth oauth2 token URL secret
 
     Attributes
@@ -17807,13 +18507,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceMan
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceManifestFromArtifactHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults resource manifest from artifact HTTP headers items0
 
     Attributes
@@ -17831,13 +18531,15 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceMan
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceManifestFromArtifactHdfs:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults resource manifest from artifact hdfs
 
     Attributes
     ----------
     addresses : [str], default is Undefined, optional
         addresses
+    dataTransferProtection : str, default is Undefined, optional
+        data transfer protection
     force : bool, default is Undefined, optional
         force
     hdfsUser : str, default is Undefined, optional
@@ -17861,6 +18563,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceMan
 
     addresses?: [str]
 
+    dataTransferProtection?: str
+
     force?: bool
 
     hdfsUser?: str
@@ -17881,7 +18585,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceMan
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceManifestFromArtifactHdfsKrbCCacheSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults resource manifest from artifact hdfs krb c cache secret
 
     Attributes
@@ -17897,13 +18601,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceMan
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceManifestFromArtifactHdfsKrbConfigConfigMap:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults resource manifest from artifact hdfs krb config config map
 
     Attributes
@@ -17919,13 +18623,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceMan
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceManifestFromArtifactHdfsKrbKeytabSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults resource manifest from artifact hdfs krb keytab secret
 
     Attributes
@@ -17941,13 +18645,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceMan
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceManifestFromArtifactOss:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults resource manifest from artifact oss
 
     Attributes
@@ -17993,7 +18697,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceMan
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceManifestFromArtifactOssAccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults resource manifest from artifact oss access key secret
 
     Attributes
@@ -18009,13 +18713,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceMan
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceManifestFromArtifactOssLifecycleRule:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults resource manifest from artifact oss lifecycle rule
 
     Attributes
@@ -18033,7 +18737,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceMan
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceManifestFromArtifactOssSecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults resource manifest from artifact oss secret key secret
 
     Attributes
@@ -18049,13 +18753,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceMan
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceManifestFromArtifactRaw:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults resource manifest from artifact raw
 
     Attributes
@@ -18069,7 +18773,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceMan
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceManifestFromArtifactS3:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults resource manifest from artifact s3
 
     Attributes
@@ -18096,6 +18800,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceMan
         role a r n
     secretKeySecret : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceManifestFromArtifactS3SecretKeySecret, default is Undefined, optional
         secret key secret
+    sessionTokenSecret : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceManifestFromArtifactS3SessionTokenSecret, default is Undefined, optional
+        session token secret
     useSDKCreds : bool, default is Undefined, optional
         use s d k creds
     """
@@ -18123,11 +18829,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceMan
 
     secretKeySecret?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceManifestFromArtifactS3SecretKeySecret
 
+    sessionTokenSecret?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceManifestFromArtifactS3SessionTokenSecret
+
     useSDKCreds?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceManifestFromArtifactS3AccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults resource manifest from artifact s3 access key secret
 
     Attributes
@@ -18143,13 +18851,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceMan
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceManifestFromArtifactS3CaSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults resource manifest from artifact s3 ca secret
 
     Attributes
@@ -18165,13 +18873,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceMan
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceManifestFromArtifactS3CreateBucketIfNotPresent:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults resource manifest from artifact s3 create bucket if not present
 
     Attributes
@@ -18185,7 +18893,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceMan
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceManifestFromArtifactS3EncryptionOptions:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults resource manifest from artifact s3 encryption options
 
     Attributes
@@ -18211,7 +18919,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceMan
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceManifestFromArtifactS3EncryptionOptionsServerSideCustomerKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults resource manifest from artifact s3 encryption options server side customer key secret
 
     Attributes
@@ -18227,13 +18935,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceMan
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceManifestFromArtifactS3SecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults resource manifest from artifact s3 secret key secret
 
     Attributes
@@ -18249,13 +18957,35 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceMan
 
     key: str
 
-    name?: str
+    name?: str = ""
+
+    optional?: bool
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsResourceManifestFromArtifactS3SessionTokenSecret:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec template defaults resource manifest from artifact s3 session token secret
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsRetryStrategy:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults retry strategy
 
     Attributes
@@ -18285,7 +19015,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsRetryStrate
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsRetryStrategyAffinity:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults retry strategy affinity
 
     Attributes
@@ -18299,7 +19029,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsRetryStrate
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsRetryStrategyBackoff:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults retry strategy backoff
 
     Attributes
@@ -18321,7 +19051,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsRetryStrate
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScript:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults script
 
     Attributes
@@ -18348,8 +19078,12 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScript:
         ports
     readinessProbe : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptReadinessProbe, default is Undefined, optional
         readiness probe
+    resizePolicy : [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptResizePolicyItems0], default is Undefined, optional
+        resize policy
     resources : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptResources, default is Undefined, optional
         resources
+    restartPolicy : str, default is Undefined, optional
+        restart policy
     securityContext : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptSecurityContext, default is Undefined, optional
         security context
     source : str, default is Undefined, required
@@ -18397,7 +19131,11 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScript:
 
     readinessProbe?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptReadinessProbe
 
+    resizePolicy?: [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptResizePolicyItems0]
+
     resources?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptResources
+
+    restartPolicy?: str
 
     securityContext?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptSecurityContext
 
@@ -18423,7 +19161,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScript:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptEnvFromItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults script env from items0
 
     Attributes
@@ -18445,7 +19183,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptEnvFr
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptEnvFromItems0ConfigMapRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults script env from items0 config map ref
 
     Attributes
@@ -18457,13 +19195,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptEnvFr
     """
 
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptEnvFromItems0SecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults script env from items0 secret ref
 
     Attributes
@@ -18475,13 +19213,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptEnvFr
     """
 
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptEnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults script env items0
 
     Attributes
@@ -18503,7 +19241,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptEnvIt
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptEnvItems0ValueFrom:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults script env items0 value from
 
     Attributes
@@ -18529,7 +19267,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptEnvIt
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptEnvItems0ValueFromConfigMapKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults script env items0 value from config map key ref
 
     Attributes
@@ -18545,13 +19283,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptEnvIt
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptEnvItems0ValueFromFieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults script env items0 value from field ref
 
     Attributes
@@ -18569,7 +19307,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptEnvIt
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptEnvItems0ValueFromResourceFieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults script env items0 value from resource field ref
 
     Attributes
@@ -18595,7 +19333,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptEnvIt
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptEnvItems0ValueFromSecretKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults script env items0 value from secret key ref
 
     Attributes
@@ -18611,13 +19349,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptEnvIt
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptLifecycle:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults script lifecycle
 
     Attributes
@@ -18635,7 +19373,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptLifec
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptLifecyclePostStart:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults script lifecycle post start
 
     Attributes
@@ -18644,6 +19382,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptLifec
         exec
     httpGet : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptLifecyclePostStartHTTPGet, default is Undefined, optional
         http get
+    sleep : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptLifecyclePostStartSleep, default is Undefined, optional
+        sleep
     tcpSocket : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptLifecyclePostStartTCPSocket, default is Undefined, optional
         tcp socket
     """
@@ -18653,11 +19393,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptLifec
 
     httpGet?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptLifecyclePostStartHTTPGet
 
+    sleep?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptLifecyclePostStartSleep
+
     tcpSocket?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptLifecyclePostStartTCPSocket
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptLifecyclePostStartExec:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults script lifecycle post start exec
 
     Attributes
@@ -18671,7 +19413,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptLifec
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptLifecyclePostStartHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults script lifecycle post start HTTP get
 
     Attributes
@@ -18701,7 +19443,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptLifec
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptLifecyclePostStartHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults script lifecycle post start HTTP get HTTP headers items0
 
     Attributes
@@ -18718,8 +19460,22 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptLifec
     value: str
 
 
-schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptLifecyclePostStartTCPSocket:
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptLifecyclePostStartSleep:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec template defaults script lifecycle post start sleep
+
+    Attributes
+    ----------
+    seconds : int, default is Undefined, required
+        seconds
     """
+
+
+    seconds: int
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptLifecyclePostStartTCPSocket:
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults script lifecycle post start TCP socket
 
     Attributes
@@ -18737,7 +19493,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptLifec
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptLifecyclePreStop:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults script lifecycle pre stop
 
     Attributes
@@ -18746,6 +19502,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptLifec
         exec
     httpGet : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptLifecyclePreStopHTTPGet, default is Undefined, optional
         http get
+    sleep : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptLifecyclePreStopSleep, default is Undefined, optional
+        sleep
     tcpSocket : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptLifecyclePreStopTCPSocket, default is Undefined, optional
         tcp socket
     """
@@ -18755,11 +19513,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptLifec
 
     httpGet?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptLifecyclePreStopHTTPGet
 
+    sleep?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptLifecyclePreStopSleep
+
     tcpSocket?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptLifecyclePreStopTCPSocket
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptLifecyclePreStopExec:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults script lifecycle pre stop exec
 
     Attributes
@@ -18773,7 +19533,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptLifec
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptLifecyclePreStopHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults script lifecycle pre stop HTTP get
 
     Attributes
@@ -18803,7 +19563,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptLifec
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptLifecyclePreStopHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults script lifecycle pre stop HTTP get HTTP headers items0
 
     Attributes
@@ -18820,8 +19580,22 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptLifec
     value: str
 
 
-schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptLifecyclePreStopTCPSocket:
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptLifecyclePreStopSleep:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec template defaults script lifecycle pre stop sleep
+
+    Attributes
+    ----------
+    seconds : int, default is Undefined, required
+        seconds
     """
+
+
+    seconds: int
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptLifecyclePreStopTCPSocket:
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults script lifecycle pre stop TCP socket
 
     Attributes
@@ -18839,7 +19613,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptLifec
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptLivenessProbe:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults script liveness probe
 
     Attributes
@@ -18889,7 +19663,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptLiven
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptLivenessProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults script liveness probe exec
 
     Attributes
@@ -18903,7 +19677,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptLiven
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptLivenessProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults script liveness probe grpc
 
     Attributes
@@ -18921,7 +19695,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptLiven
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptLivenessProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults script liveness probe HTTP get
 
     Attributes
@@ -18951,7 +19725,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptLiven
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptLivenessProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults script liveness probe HTTP get HTTP headers items0
 
     Attributes
@@ -18969,7 +19743,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptLiven
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptLivenessProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults script liveness probe TCP socket
 
     Attributes
@@ -18987,7 +19761,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptLiven
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptPortsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults script ports items0
 
     Attributes
@@ -19017,7 +19791,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptPorts
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptReadinessProbe:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults script readiness probe
 
     Attributes
@@ -19067,7 +19841,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptReadi
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptReadinessProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults script readiness probe exec
 
     Attributes
@@ -19081,7 +19855,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptReadi
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptReadinessProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults script readiness probe grpc
 
     Attributes
@@ -19099,7 +19873,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptReadi
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptReadinessProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults script readiness probe HTTP get
 
     Attributes
@@ -19129,7 +19903,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptReadi
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptReadinessProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults script readiness probe HTTP get HTTP headers items0
 
     Attributes
@@ -19147,7 +19921,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptReadi
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptReadinessProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults script readiness probe TCP socket
 
     Attributes
@@ -19164,8 +19938,26 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptReadi
     port: int | str
 
 
-schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptResources:
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptResizePolicyItems0:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec template defaults script resize policy items0
+
+    Attributes
+    ----------
+    resourceName : str, default is Undefined, required
+        resource name
+    restartPolicy : str, default is Undefined, required
+        restart policy
     """
+
+
+    resourceName: str
+
+    restartPolicy: str
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptResources:
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults script resources
 
     Attributes
@@ -19187,12 +19979,12 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptResou
 
 
     check:
-        all _, limits in limits {_regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests {_regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptResourcesClaimsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults script resources claims items0
 
     Attributes
@@ -19206,13 +19998,15 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptResou
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptSecurityContext:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults script security context
 
     Attributes
     ----------
     allowPrivilegeEscalation : bool, default is Undefined, optional
         allow privilege escalation
+    appArmorProfile : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptSecurityContextAppArmorProfile, default is Undefined, optional
+        app armor profile
     capabilities : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptSecurityContextCapabilities, default is Undefined, optional
         capabilities
     privileged : bool, default is Undefined, optional
@@ -19238,6 +20032,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptSecur
 
     allowPrivilegeEscalation?: bool
 
+    appArmorProfile?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptSecurityContextAppArmorProfile
+
     capabilities?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptSecurityContextCapabilities
 
     privileged?: bool
@@ -19259,8 +20055,26 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptSecur
     windowsOptions?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptSecurityContextWindowsOptions
 
 
-schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptSecurityContextCapabilities:
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptSecurityContextAppArmorProfile:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec template defaults script security context app armor profile
+
+    Attributes
+    ----------
+    localhostProfile : str, default is Undefined, optional
+        localhost profile
+    $type : str, default is Undefined, required
+        type
     """
+
+
+    localhostProfile?: str
+
+    $type: str
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptSecurityContextCapabilities:
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults script security context capabilities
 
     Attributes
@@ -19278,7 +20092,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptSecur
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptSecurityContextSeLinuxOptions:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults script security context se linux options
 
     Attributes
@@ -19304,7 +20118,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptSecur
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptSecurityContextSeccompProfile:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults script security context seccomp profile
 
     Attributes
@@ -19322,7 +20136,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptSecur
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptSecurityContextWindowsOptions:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults script security context windows options
 
     Attributes
@@ -19348,7 +20162,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptSecur
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptStartupProbe:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults script startup probe
 
     Attributes
@@ -19398,7 +20212,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptStart
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptStartupProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults script startup probe exec
 
     Attributes
@@ -19412,7 +20226,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptStart
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptStartupProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults script startup probe grpc
 
     Attributes
@@ -19430,7 +20244,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptStart
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptStartupProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults script startup probe HTTP get
 
     Attributes
@@ -19460,7 +20274,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptStart
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptStartupProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults script startup probe HTTP get HTTP headers items0
 
     Attributes
@@ -19478,7 +20292,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptStart
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptStartupProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults script startup probe TCP socket
 
     Attributes
@@ -19496,7 +20310,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptStart
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptVolumeDevicesItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults script volume devices items0
 
     Attributes
@@ -19514,7 +20328,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptVolum
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptVolumeMountsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults script volume mounts items0
 
     Attributes
@@ -19527,6 +20341,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptVolum
         name
     readOnly : bool, default is Undefined, optional
         read only
+    recursiveReadOnly : str, default is Undefined, optional
+        recursive read only
     subPath : str, default is Undefined, optional
         sub path
     subPathExpr : str, default is Undefined, optional
@@ -19542,17 +20358,21 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsScriptVolum
 
     readOnly?: bool
 
+    recursiveReadOnly?: str
+
     subPath?: str
 
     subPathExpr?: str
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSecurityContext:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults security context
 
     Attributes
     ----------
+    appArmorProfile : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSecurityContextAppArmorProfile, default is Undefined, optional
+        app armor profile
     fsGroup : int, default is Undefined, optional
         fs group
     fsGroupChangePolicy : str, default is Undefined, optional
@@ -19576,6 +20396,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSecurityCon
     """
 
 
+    appArmorProfile?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSecurityContextAppArmorProfile
+
     fsGroup?: int
 
     fsGroupChangePolicy?: str
@@ -19597,8 +20419,26 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSecurityCon
     windowsOptions?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSecurityContextWindowsOptions
 
 
-schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSecurityContextSeLinuxOptions:
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSecurityContextAppArmorProfile:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec template defaults security context app armor profile
+
+    Attributes
+    ----------
+    localhostProfile : str, default is Undefined, optional
+        localhost profile
+    $type : str, default is Undefined, required
+        type
     """
+
+
+    localhostProfile?: str
+
+    $type: str
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSecurityContextSeLinuxOptions:
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults security context se linux options
 
     Attributes
@@ -19624,7 +20464,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSecurityCon
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSecurityContextSeccompProfile:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults security context seccomp profile
 
     Attributes
@@ -19642,7 +20482,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSecurityCon
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSecurityContextSysctlsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults security context sysctls items0
 
     Attributes
@@ -19660,7 +20500,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSecurityCon
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSecurityContextWindowsOptions:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults security context windows options
 
     Attributes
@@ -19686,7 +20526,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSecurityCon
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults sidecars items0
 
     Attributes
@@ -19715,8 +20555,12 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsIte
         ports
     readinessProbe : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0ReadinessProbe, default is Undefined, optional
         readiness probe
+    resizePolicy : [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0ResizePolicyItems0], default is Undefined, optional
+        resize policy
     resources : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0Resources, default is Undefined, optional
         resources
+    restartPolicy : str, default is Undefined, optional
+        restart policy
     securityContext : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0SecurityContext, default is Undefined, optional
         security context
     startupProbe : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0StartupProbe, default is Undefined, optional
@@ -19764,7 +20608,11 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsIte
 
     readinessProbe?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0ReadinessProbe
 
+    resizePolicy?: [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0ResizePolicyItems0]
+
     resources?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0Resources
+
+    restartPolicy?: str
 
     securityContext?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0SecurityContext
 
@@ -19788,7 +20636,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0EnvFromItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults sidecars items0 env from items0
 
     Attributes
@@ -19810,7 +20658,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0EnvFromItems0ConfigMapRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults sidecars items0 env from items0 config map ref
 
     Attributes
@@ -19822,13 +20670,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsIte
     """
 
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0EnvFromItems0SecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults sidecars items0 env from items0 secret ref
 
     Attributes
@@ -19840,13 +20688,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsIte
     """
 
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0EnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults sidecars items0 env items0
 
     Attributes
@@ -19868,7 +20716,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0EnvItems0ValueFrom:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults sidecars items0 env items0 value from
 
     Attributes
@@ -19894,7 +20742,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0EnvItems0ValueFromConfigMapKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults sidecars items0 env items0 value from config map key ref
 
     Attributes
@@ -19910,13 +20758,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsIte
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0EnvItems0ValueFromFieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults sidecars items0 env items0 value from field ref
 
     Attributes
@@ -19934,7 +20782,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0EnvItems0ValueFromResourceFieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults sidecars items0 env items0 value from resource field ref
 
     Attributes
@@ -19960,7 +20808,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0EnvItems0ValueFromSecretKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults sidecars items0 env items0 value from secret key ref
 
     Attributes
@@ -19976,13 +20824,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsIte
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0Lifecycle:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults sidecars items0 lifecycle
 
     Attributes
@@ -20000,7 +20848,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0LifecyclePostStart:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults sidecars items0 lifecycle post start
 
     Attributes
@@ -20009,6 +20857,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsIte
         exec
     httpGet : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0LifecyclePostStartHTTPGet, default is Undefined, optional
         http get
+    sleep : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0LifecyclePostStartSleep, default is Undefined, optional
+        sleep
     tcpSocket : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0LifecyclePostStartTCPSocket, default is Undefined, optional
         tcp socket
     """
@@ -20018,11 +20868,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsIte
 
     httpGet?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0LifecyclePostStartHTTPGet
 
+    sleep?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0LifecyclePostStartSleep
+
     tcpSocket?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0LifecyclePostStartTCPSocket
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0LifecyclePostStartExec:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults sidecars items0 lifecycle post start exec
 
     Attributes
@@ -20036,7 +20888,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0LifecyclePostStartHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults sidecars items0 lifecycle post start HTTP get
 
     Attributes
@@ -20066,7 +20918,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0LifecyclePostStartHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults sidecars items0 lifecycle post start HTTP get HTTP headers items0
 
     Attributes
@@ -20083,8 +20935,22 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsIte
     value: str
 
 
-schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0LifecyclePostStartTCPSocket:
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0LifecyclePostStartSleep:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec template defaults sidecars items0 lifecycle post start sleep
+
+    Attributes
+    ----------
+    seconds : int, default is Undefined, required
+        seconds
     """
+
+
+    seconds: int
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0LifecyclePostStartTCPSocket:
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults sidecars items0 lifecycle post start TCP socket
 
     Attributes
@@ -20102,7 +20968,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0LifecyclePreStop:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults sidecars items0 lifecycle pre stop
 
     Attributes
@@ -20111,6 +20977,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsIte
         exec
     httpGet : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0LifecyclePreStopHTTPGet, default is Undefined, optional
         http get
+    sleep : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0LifecyclePreStopSleep, default is Undefined, optional
+        sleep
     tcpSocket : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0LifecyclePreStopTCPSocket, default is Undefined, optional
         tcp socket
     """
@@ -20120,11 +20988,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsIte
 
     httpGet?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0LifecyclePreStopHTTPGet
 
+    sleep?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0LifecyclePreStopSleep
+
     tcpSocket?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0LifecyclePreStopTCPSocket
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0LifecyclePreStopExec:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults sidecars items0 lifecycle pre stop exec
 
     Attributes
@@ -20138,7 +21008,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0LifecyclePreStopHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults sidecars items0 lifecycle pre stop HTTP get
 
     Attributes
@@ -20168,7 +21038,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0LifecyclePreStopHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults sidecars items0 lifecycle pre stop HTTP get HTTP headers items0
 
     Attributes
@@ -20185,8 +21055,22 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsIte
     value: str
 
 
-schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0LifecyclePreStopTCPSocket:
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0LifecyclePreStopSleep:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec template defaults sidecars items0 lifecycle pre stop sleep
+
+    Attributes
+    ----------
+    seconds : int, default is Undefined, required
+        seconds
     """
+
+
+    seconds: int
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0LifecyclePreStopTCPSocket:
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults sidecars items0 lifecycle pre stop TCP socket
 
     Attributes
@@ -20204,7 +21088,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0LivenessProbe:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults sidecars items0 liveness probe
 
     Attributes
@@ -20254,7 +21138,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0LivenessProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults sidecars items0 liveness probe exec
 
     Attributes
@@ -20268,7 +21152,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0LivenessProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults sidecars items0 liveness probe grpc
 
     Attributes
@@ -20286,7 +21170,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0LivenessProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults sidecars items0 liveness probe HTTP get
 
     Attributes
@@ -20316,7 +21200,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0LivenessProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults sidecars items0 liveness probe HTTP get HTTP headers items0
 
     Attributes
@@ -20334,7 +21218,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0LivenessProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults sidecars items0 liveness probe TCP socket
 
     Attributes
@@ -20352,7 +21236,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0PortsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults sidecars items0 ports items0
 
     Attributes
@@ -20382,7 +21266,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0ReadinessProbe:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults sidecars items0 readiness probe
 
     Attributes
@@ -20432,7 +21316,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0ReadinessProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults sidecars items0 readiness probe exec
 
     Attributes
@@ -20446,7 +21330,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0ReadinessProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults sidecars items0 readiness probe grpc
 
     Attributes
@@ -20464,7 +21348,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0ReadinessProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults sidecars items0 readiness probe HTTP get
 
     Attributes
@@ -20494,7 +21378,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0ReadinessProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults sidecars items0 readiness probe HTTP get HTTP headers items0
 
     Attributes
@@ -20512,7 +21396,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0ReadinessProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults sidecars items0 readiness probe TCP socket
 
     Attributes
@@ -20529,8 +21413,26 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsIte
     port: int | str
 
 
-schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0Resources:
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0ResizePolicyItems0:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec template defaults sidecars items0 resize policy items0
+
+    Attributes
+    ----------
+    resourceName : str, default is Undefined, required
+        resource name
+    restartPolicy : str, default is Undefined, required
+        restart policy
     """
+
+
+    resourceName: str
+
+    restartPolicy: str
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0Resources:
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults sidecars items0 resources
 
     Attributes
@@ -20552,12 +21454,12 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsIte
 
 
     check:
-        all _, limits in limits {_regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests {_regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0ResourcesClaimsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults sidecars items0 resources claims items0
 
     Attributes
@@ -20571,13 +21473,15 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0SecurityContext:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults sidecars items0 security context
 
     Attributes
     ----------
     allowPrivilegeEscalation : bool, default is Undefined, optional
         allow privilege escalation
+    appArmorProfile : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0SecurityContextAppArmorProfile, default is Undefined, optional
+        app armor profile
     capabilities : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0SecurityContextCapabilities, default is Undefined, optional
         capabilities
     privileged : bool, default is Undefined, optional
@@ -20603,6 +21507,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsIte
 
     allowPrivilegeEscalation?: bool
 
+    appArmorProfile?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0SecurityContextAppArmorProfile
+
     capabilities?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0SecurityContextCapabilities
 
     privileged?: bool
@@ -20624,8 +21530,26 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsIte
     windowsOptions?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0SecurityContextWindowsOptions
 
 
-schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0SecurityContextCapabilities:
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0SecurityContextAppArmorProfile:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec template defaults sidecars items0 security context app armor profile
+
+    Attributes
+    ----------
+    localhostProfile : str, default is Undefined, optional
+        localhost profile
+    $type : str, default is Undefined, required
+        type
     """
+
+
+    localhostProfile?: str
+
+    $type: str
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0SecurityContextCapabilities:
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults sidecars items0 security context capabilities
 
     Attributes
@@ -20643,7 +21567,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0SecurityContextSeLinuxOptions:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults sidecars items0 security context se linux options
 
     Attributes
@@ -20669,7 +21593,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0SecurityContextSeccompProfile:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults sidecars items0 security context seccomp profile
 
     Attributes
@@ -20687,7 +21611,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0SecurityContextWindowsOptions:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults sidecars items0 security context windows options
 
     Attributes
@@ -20713,7 +21637,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0StartupProbe:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults sidecars items0 startup probe
 
     Attributes
@@ -20763,7 +21687,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0StartupProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults sidecars items0 startup probe exec
 
     Attributes
@@ -20777,7 +21701,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0StartupProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults sidecars items0 startup probe grpc
 
     Attributes
@@ -20795,7 +21719,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0StartupProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults sidecars items0 startup probe HTTP get
 
     Attributes
@@ -20825,7 +21749,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0StartupProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults sidecars items0 startup probe HTTP get HTTP headers items0
 
     Attributes
@@ -20843,7 +21767,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0StartupProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults sidecars items0 startup probe TCP socket
 
     Attributes
@@ -20861,7 +21785,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0VolumeDevicesItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults sidecars items0 volume devices items0
 
     Attributes
@@ -20879,7 +21803,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsItems0VolumeMountsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults sidecars items0 volume mounts items0
 
     Attributes
@@ -20892,6 +21816,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsIte
         name
     readOnly : bool, default is Undefined, optional
         read only
+    recursiveReadOnly : str, default is Undefined, optional
+        recursive read only
     subPath : str, default is Undefined, optional
         sub path
     subPathExpr : str, default is Undefined, optional
@@ -20907,13 +21833,15 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSidecarsIte
 
     readOnly?: bool
 
+    recursiveReadOnly?: str
+
     subPath?: str
 
     subPathExpr?: str
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSuspend:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults suspend
 
     Attributes
@@ -20927,25 +21855,33 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSuspend:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSynchronization:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults synchronization
 
     Attributes
     ----------
     mutex : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSynchronizationMutex, default is Undefined, optional
         mutex
+    mutexes : [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSynchronizationMutexesItems0], default is Undefined, optional
+        mutexes
     semaphore : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSynchronizationSemaphore, default is Undefined, optional
         semaphore
+    semaphores : [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSynchronizationSemaphoresItems0], default is Undefined, optional
+        semaphores
     """
 
 
     mutex?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSynchronizationMutex
 
+    mutexes?: [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSynchronizationMutexesItems0]
+
     semaphore?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSynchronizationSemaphore
+
+    semaphores?: [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSynchronizationSemaphoresItems0]
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSynchronizationMutex:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults synchronization mutex
 
     Attributes
@@ -20962,8 +21898,26 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSynchroniza
     namespace?: str
 
 
-schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSynchronizationSemaphore:
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSynchronizationMutexesItems0:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec template defaults synchronization mutexes items0
+
+    Attributes
+    ----------
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
     """
+
+
+    name?: str
+
+    namespace?: str
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSynchronizationSemaphore:
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults synchronization semaphore
 
     Attributes
@@ -20981,7 +21935,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSynchroniza
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSynchronizationSemaphoreConfigMapKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults synchronization semaphore config map key ref
 
     Attributes
@@ -20997,13 +21951,53 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSynchroniza
 
     key: str
 
-    name?: str
+    name?: str = ""
+
+    optional?: bool
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSynchronizationSemaphoresItems0:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec template defaults synchronization semaphores items0
+
+    Attributes
+    ----------
+    configMapKeyRef : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSynchronizationSemaphoresItems0ConfigMapKeyRef, default is Undefined, optional
+        config map key ref
+    namespace : str, default is Undefined, optional
+        namespace
+    """
+
+
+    configMapKeyRef?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSynchronizationSemaphoresItems0ConfigMapKeyRef
+
+    namespace?: str
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsSynchronizationSemaphoresItems0ConfigMapKeyRef:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec template defaults synchronization semaphores items0 config map key ref
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsTolerationsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults tolerations items0
 
     Attributes
@@ -21033,7 +22027,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsTolerations
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0
 
     Attributes
@@ -21163,7 +22157,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0AwsElasticBlockStore:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 aws elastic block store
 
     Attributes
@@ -21189,7 +22183,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0AzureDisk:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 azure disk
 
     Attributes
@@ -21223,7 +22217,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0AzureFile:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 azure file
 
     Attributes
@@ -21245,7 +22239,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0Cephfs:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 cephfs
 
     Attributes
@@ -21279,7 +22273,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0CephfsSecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 cephfs secret ref
 
     Attributes
@@ -21289,11 +22283,11 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0Cinder:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 cinder
 
     Attributes
@@ -21319,7 +22313,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0CinderSecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 cinder secret ref
 
     Attributes
@@ -21329,11 +22323,11 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0ConfigMap:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 config map
 
     Attributes
@@ -21353,13 +22347,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
 
     items?: [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0ConfigMapItemsItems0]
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0ConfigMapItemsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 config map items items0
 
     Attributes
@@ -21381,7 +22375,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0Csi:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 csi
 
     Attributes
@@ -21411,7 +22405,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0CsiNodePublishSecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 csi node publish secret ref
 
     Attributes
@@ -21421,11 +22415,11 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0DownwardAPI:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 downward API
 
     Attributes
@@ -21443,7 +22437,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0DownwardAPIItemsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 downward API items items0
 
     Attributes
@@ -21469,7 +22463,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0DownwardAPIItemsItems0FieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 downward API items items0 field ref
 
     Attributes
@@ -21487,7 +22481,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0DownwardAPIItemsItems0ResourceFieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 downward API items items0 resource field ref
 
     Attributes
@@ -21513,7 +22507,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0EmptyDir:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 empty dir
 
     Attributes
@@ -21535,7 +22529,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0Ephemeral:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 ephemeral
 
     Attributes
@@ -21549,7 +22543,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0EphemeralVolumeClaimTemplate:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 ephemeral volume claim template
 
     Attributes
@@ -21567,7 +22561,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0EphemeralVolumeClaimTemplateSpec:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 ephemeral volume claim template spec
 
     Attributes
@@ -21584,6 +22578,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
         selector
     storageClassName : str, default is Undefined, optional
         storage class name
+    volumeAttributesClassName : str, default is Undefined, optional
+        volume attributes class name
     volumeMode : str, default is Undefined, optional
         volume mode
     volumeName : str, default is Undefined, optional
@@ -21603,13 +22599,15 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
 
     storageClassName?: str
 
+    volumeAttributesClassName?: str
+
     volumeMode?: str
 
     volumeName?: str
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0EphemeralVolumeClaimTemplateSpecDataSource:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 ephemeral volume claim template spec data source
 
     Attributes
@@ -21631,7 +22629,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0EphemeralVolumeClaimTemplateSpecDataSourceRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 ephemeral volume claim template spec data source ref
 
     Attributes
@@ -21657,13 +22655,11 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0EphemeralVolumeClaimTemplateSpecResources:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 ephemeral volume claim template spec resources
 
     Attributes
     ----------
-    claims : [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0EphemeralVolumeClaimTemplateSpecResourcesClaimsItems0], default is Undefined, optional
-        claims
     limits : {str:int | str}, default is Undefined, optional
         limits
     requests : {str:int | str}, default is Undefined, optional
@@ -21671,34 +22667,18 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
     """
 
 
-    claims?: [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0EphemeralVolumeClaimTemplateSpecResourcesClaimsItems0]
-
     limits?: {str:int | str}
 
     requests?: {str:int | str}
 
 
     check:
-        all _, limits in limits {_regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests {_regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
-
-
-schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0EphemeralVolumeClaimTemplateSpecResourcesClaimsItems0:
-    """
-    argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 ephemeral volume claim template spec resources claims items0
-
-    Attributes
-    ----------
-    name : str, default is Undefined, required
-        name
-    """
-
-
-    name: str
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0EphemeralVolumeClaimTemplateSpecSelector:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 ephemeral volume claim template spec selector
 
     Attributes
@@ -21716,7 +22696,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0EphemeralVolumeClaimTemplateSpecSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 ephemeral volume claim template spec selector match expressions items0
 
     Attributes
@@ -21738,7 +22718,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0Fc:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 fc
 
     Attributes
@@ -21768,7 +22748,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0FlexVolume:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 flex volume
 
     Attributes
@@ -21798,7 +22778,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0FlexVolumeSecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 flex volume secret ref
 
     Attributes
@@ -21808,11 +22788,11 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0Flocker:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 flocker
 
     Attributes
@@ -21830,7 +22810,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0GcePersistentDisk:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 gce persistent disk
 
     Attributes
@@ -21856,7 +22836,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0GitRepo:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 git repo
 
     Attributes
@@ -21878,7 +22858,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0Glusterfs:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 glusterfs
 
     Attributes
@@ -21900,7 +22880,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0HostPath:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 host path
 
     Attributes
@@ -21918,7 +22898,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0Iscsi:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 iscsi
 
     Attributes
@@ -21972,7 +22952,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0IscsiSecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 iscsi secret ref
 
     Attributes
@@ -21982,11 +22962,11 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0Nfs:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 nfs
 
     Attributes
@@ -22008,7 +22988,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0PersistentVolumeClaim:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 persistent volume claim
 
     Attributes
@@ -22026,7 +23006,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0PhotonPersistentDisk:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 photon persistent disk
 
     Attributes
@@ -22044,7 +23024,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0PortworxVolume:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 portworx volume
 
     Attributes
@@ -22066,7 +23046,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0Projected:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 projected
 
     Attributes
@@ -22084,11 +23064,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0ProjectedSourcesItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 projected sources items0
 
     Attributes
     ----------
+    clusterTrustBundle : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0ProjectedSourcesItems0ClusterTrustBundle, default is Undefined, optional
+        cluster trust bundle
     configMap : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0ProjectedSourcesItems0ConfigMap, default is Undefined, optional
         config map
     downwardAPI : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0ProjectedSourcesItems0DownwardAPI, default is Undefined, optional
@@ -22100,6 +23082,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
     """
 
 
+    clusterTrustBundle?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0ProjectedSourcesItems0ClusterTrustBundle
+
     configMap?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0ProjectedSourcesItems0ConfigMap
 
     downwardAPI?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0ProjectedSourcesItems0DownwardAPI
@@ -22109,8 +23093,78 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
     serviceAccountToken?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0ProjectedSourcesItems0ServiceAccountToken
 
 
-schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0ProjectedSourcesItems0ConfigMap:
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0ProjectedSourcesItems0ClusterTrustBundle:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 projected sources items0 cluster trust bundle
+
+    Attributes
+    ----------
+    labelSelector : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0ProjectedSourcesItems0ClusterTrustBundleLabelSelector, default is Undefined, optional
+        label selector
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    path : str, default is Undefined, required
+        path
+    signerName : str, default is Undefined, optional
+        signer name
     """
+
+
+    labelSelector?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0ProjectedSourcesItems0ClusterTrustBundleLabelSelector
+
+    name?: str
+
+    optional?: bool
+
+    path: str
+
+    signerName?: str
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0ProjectedSourcesItems0ClusterTrustBundleLabelSelector:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 projected sources items0 cluster trust bundle label selector
+
+    Attributes
+    ----------
+    matchExpressions : [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0ProjectedSourcesItems0ClusterTrustBundleLabelSelectorMatchExpressionsItems0], default is Undefined, optional
+        match expressions
+    matchLabels : {str:str}, default is Undefined, optional
+        match labels
+    """
+
+
+    matchExpressions?: [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0ProjectedSourcesItems0ClusterTrustBundleLabelSelectorMatchExpressionsItems0]
+
+    matchLabels?: {str:str}
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0ProjectedSourcesItems0ClusterTrustBundleLabelSelectorMatchExpressionsItems0:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 projected sources items0 cluster trust bundle label selector match expressions items0
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    operator : str, default is Undefined, required
+        operator
+    values : [str], default is Undefined, optional
+        values
+    """
+
+
+    key: str
+
+    operator: str
+
+    values?: [str]
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0ProjectedSourcesItems0ConfigMap:
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 projected sources items0 config map
 
     Attributes
@@ -22126,13 +23180,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
 
     items?: [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0ProjectedSourcesItems0ConfigMapItemsItems0]
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0ProjectedSourcesItems0ConfigMapItemsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 projected sources items0 config map items items0
 
     Attributes
@@ -22154,7 +23208,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0ProjectedSourcesItems0DownwardAPI:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 projected sources items0 downward API
 
     Attributes
@@ -22168,7 +23222,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 projected sources items0 downward API items items0
 
     Attributes
@@ -22194,7 +23248,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0FieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 projected sources items0 downward API items items0 field ref
 
     Attributes
@@ -22212,7 +23266,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0ResourceFieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 projected sources items0 downward API items items0 resource field ref
 
     Attributes
@@ -22238,7 +23292,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0ProjectedSourcesItems0Secret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 projected sources items0 secret
 
     Attributes
@@ -22254,13 +23308,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
 
     items?: [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0ProjectedSourcesItems0SecretItemsItems0]
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0ProjectedSourcesItems0SecretItemsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 projected sources items0 secret items items0
 
     Attributes
@@ -22282,7 +23336,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0ProjectedSourcesItems0ServiceAccountToken:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 projected sources items0 service account token
 
     Attributes
@@ -22304,7 +23358,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0Quobyte:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 quobyte
 
     Attributes
@@ -22338,7 +23392,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0Rbd:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 rbd
 
     Attributes
@@ -22380,7 +23434,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0RbdSecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 rbd secret ref
 
     Attributes
@@ -22390,11 +23444,11 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0ScaleIO:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 scale i o
 
     Attributes
@@ -22444,7 +23498,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0ScaleIOSecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 scale i o secret ref
 
     Attributes
@@ -22454,11 +23508,11 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0Secret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 secret
 
     Attributes
@@ -22484,7 +23538,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0SecretItemsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 secret items items0
 
     Attributes
@@ -22506,7 +23560,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0Storageos:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 storageos
 
     Attributes
@@ -22536,7 +23590,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0StorageosSecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 storageos secret ref
 
     Attributes
@@ -22546,11 +23600,11 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItems0VsphereVolume:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec template defaults volumes items0 vsphere volume
 
     Attributes
@@ -22576,7 +23630,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplateDefaultsVolumesItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0
 
     Attributes
@@ -22742,7 +23796,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0Affinity:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 affinity
 
     Attributes
@@ -22764,7 +23818,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0Affinity:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityNodeAffinity:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 affinity node affinity
 
     Attributes
@@ -22782,7 +23836,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityNode
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 affinity node affinity preferred during scheduling ignored during execution items0
 
     Attributes
@@ -22800,7 +23854,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityNode
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0Preference:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 affinity node affinity preferred during scheduling ignored during execution items0 preference
 
     Attributes
@@ -22818,7 +23872,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityNode
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 affinity node affinity preferred during scheduling ignored during execution items0 preference match expressions items0
 
     Attributes
@@ -22840,7 +23894,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityNode
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchFieldsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 affinity node affinity preferred during scheduling ignored during execution items0 preference match fields items0
 
     Attributes
@@ -22862,7 +23916,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityNode
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 affinity node affinity required during scheduling ignored during execution
 
     Attributes
@@ -22876,7 +23930,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityNode
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 affinity node affinity required during scheduling ignored during execution node selector terms items0
 
     Attributes
@@ -22894,7 +23948,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityNode
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 affinity node affinity required during scheduling ignored during execution node selector terms items0 match expressions items0
 
     Attributes
@@ -22916,7 +23970,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityNode
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchFieldsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 affinity node affinity required during scheduling ignored during execution node selector terms items0 match fields items0
 
     Attributes
@@ -22938,7 +23992,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityNode
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodAffinity:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 affinity pod affinity
 
     Attributes
@@ -22956,7 +24010,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodA
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 affinity pod affinity preferred during scheduling ignored during execution items0
 
     Attributes
@@ -22974,13 +24028,17 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodA
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTerm:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 affinity pod affinity preferred during scheduling ignored during execution items0 pod affinity term
 
     Attributes
     ----------
     labelSelector : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector, default is Undefined, optional
         label selector
+    matchLabelKeys : [str], default is Undefined, optional
+        match label keys
+    mismatchLabelKeys : [str], default is Undefined, optional
+        mismatch label keys
     namespaceSelector : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector, default is Undefined, optional
         namespace selector
     namespaces : [str], default is Undefined, optional
@@ -22992,6 +24050,10 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodA
 
     labelSelector?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector
 
+    matchLabelKeys?: [str]
+
+    mismatchLabelKeys?: [str]
+
     namespaceSelector?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector
 
     namespaces?: [str]
@@ -23000,7 +24062,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodA
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 affinity pod affinity preferred during scheduling ignored during execution items0 pod affinity term label selector
 
     Attributes
@@ -23018,7 +24080,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodA
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 affinity pod affinity preferred during scheduling ignored during execution items0 pod affinity term label selector match expressions items0
 
     Attributes
@@ -23040,7 +24102,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodA
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 affinity pod affinity preferred during scheduling ignored during execution items0 pod affinity term namespace selector
 
     Attributes
@@ -23058,7 +24120,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodA
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 affinity pod affinity preferred during scheduling ignored during execution items0 pod affinity term namespace selector match expressions items0
 
     Attributes
@@ -23080,13 +24142,17 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodA
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 affinity pod affinity required during scheduling ignored during execution items0
 
     Attributes
     ----------
     labelSelector : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector, default is Undefined, optional
         label selector
+    matchLabelKeys : [str], default is Undefined, optional
+        match label keys
+    mismatchLabelKeys : [str], default is Undefined, optional
+        mismatch label keys
     namespaceSelector : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector, default is Undefined, optional
         namespace selector
     namespaces : [str], default is Undefined, optional
@@ -23098,6 +24164,10 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodA
 
     labelSelector?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector
 
+    matchLabelKeys?: [str]
+
+    mismatchLabelKeys?: [str]
+
     namespaceSelector?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector
 
     namespaces?: [str]
@@ -23106,7 +24176,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodA
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 affinity pod affinity required during scheduling ignored during execution items0 label selector
 
     Attributes
@@ -23124,7 +24194,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodA
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 affinity pod affinity required during scheduling ignored during execution items0 label selector match expressions items0
 
     Attributes
@@ -23146,7 +24216,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodA
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 affinity pod affinity required during scheduling ignored during execution items0 namespace selector
 
     Attributes
@@ -23164,7 +24234,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodA
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 affinity pod affinity required during scheduling ignored during execution items0 namespace selector match expressions items0
 
     Attributes
@@ -23186,7 +24256,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodA
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodAntiAffinity:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 affinity pod anti affinity
 
     Attributes
@@ -23204,7 +24274,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodA
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 affinity pod anti affinity preferred during scheduling ignored during execution items0
 
     Attributes
@@ -23222,13 +24292,17 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodA
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTerm:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 affinity pod anti affinity preferred during scheduling ignored during execution items0 pod affinity term
 
     Attributes
     ----------
     labelSelector : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector, default is Undefined, optional
         label selector
+    matchLabelKeys : [str], default is Undefined, optional
+        match label keys
+    mismatchLabelKeys : [str], default is Undefined, optional
+        mismatch label keys
     namespaceSelector : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector, default is Undefined, optional
         namespace selector
     namespaces : [str], default is Undefined, optional
@@ -23240,6 +24314,10 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodA
 
     labelSelector?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector
 
+    matchLabelKeys?: [str]
+
+    mismatchLabelKeys?: [str]
+
     namespaceSelector?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector
 
     namespaces?: [str]
@@ -23248,7 +24326,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodA
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 affinity pod anti affinity preferred during scheduling ignored during execution items0 pod affinity term label selector
 
     Attributes
@@ -23266,7 +24344,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodA
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 affinity pod anti affinity preferred during scheduling ignored during execution items0 pod affinity term label selector match expressions items0
 
     Attributes
@@ -23288,7 +24366,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodA
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 affinity pod anti affinity preferred during scheduling ignored during execution items0 pod affinity term namespace selector
 
     Attributes
@@ -23306,7 +24384,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodA
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 affinity pod anti affinity preferred during scheduling ignored during execution items0 pod affinity term namespace selector match expressions items0
 
     Attributes
@@ -23328,13 +24406,17 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodA
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 affinity pod anti affinity required during scheduling ignored during execution items0
 
     Attributes
     ----------
     labelSelector : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector, default is Undefined, optional
         label selector
+    matchLabelKeys : [str], default is Undefined, optional
+        match label keys
+    mismatchLabelKeys : [str], default is Undefined, optional
+        mismatch label keys
     namespaceSelector : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector, default is Undefined, optional
         namespace selector
     namespaces : [str], default is Undefined, optional
@@ -23346,6 +24428,10 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodA
 
     labelSelector?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector
 
+    matchLabelKeys?: [str]
+
+    mismatchLabelKeys?: [str]
+
     namespaceSelector?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector
 
     namespaces?: [str]
@@ -23354,7 +24440,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodA
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 affinity pod anti affinity required during scheduling ignored during execution items0 label selector
 
     Attributes
@@ -23372,7 +24458,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodA
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 affinity pod anti affinity required during scheduling ignored during execution items0 label selector match expressions items0
 
     Attributes
@@ -23394,7 +24480,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodA
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 affinity pod anti affinity required during scheduling ignored during execution items0 namespace selector
 
     Attributes
@@ -23412,7 +24498,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodA
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 affinity pod anti affinity required during scheduling ignored during execution items0 namespace selector match expressions items0
 
     Attributes
@@ -23434,7 +24520,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0AffinityPodA
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocation:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 archive location
 
     Attributes
@@ -23484,7 +24570,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocat
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocationArtifactory:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 archive location artifactory
 
     Attributes
@@ -23506,7 +24592,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocat
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocationArtifactoryPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 archive location artifactory password secret
 
     Attributes
@@ -23522,13 +24608,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocat
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocationArtifactoryUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 archive location artifactory username secret
 
     Attributes
@@ -23544,13 +24630,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocat
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocationAzure:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 archive location azure
 
     Attributes
@@ -23580,7 +24666,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocat
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocationAzureAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 archive location azure account key secret
 
     Attributes
@@ -23596,13 +24682,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocat
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocationGcs:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 archive location gcs
 
     Attributes
@@ -23624,7 +24710,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocat
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocationGcsServiceAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 archive location gcs service account key secret
 
     Attributes
@@ -23640,13 +24726,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocat
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocationGit:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 archive location git
 
     Attributes
@@ -23661,6 +24747,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocat
         fetch
     insecureIgnoreHostKey : bool, default is Undefined, optional
         insecure ignore host key
+    insecureSkipTLS : bool, default is Undefined, optional
+        insecure skip TLS
     passwordSecret : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocationGitPasswordSecret, default is Undefined, optional
         password secret
     repo : str, default is Undefined, required
@@ -23686,6 +24774,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocat
 
     insecureIgnoreHostKey?: bool
 
+    insecureSkipTLS?: bool
+
     passwordSecret?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocationGitPasswordSecret
 
     repo: str
@@ -23700,7 +24790,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocat
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocationGitPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 archive location git password secret
 
     Attributes
@@ -23716,13 +24806,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocat
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocationGitSSHPrivateKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 archive location git SSH private key secret
 
     Attributes
@@ -23738,13 +24828,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocat
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocationGitUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 archive location git username secret
 
     Attributes
@@ -23760,13 +24850,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocat
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocationHTTP:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 archive location HTTP
 
     Attributes
@@ -23788,7 +24878,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocat
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocationHTTPAuth:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 archive location HTTP auth
 
     Attributes
@@ -23810,7 +24900,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocat
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocationHTTPAuthBasicAuth:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 archive location HTTP auth basic auth
 
     Attributes
@@ -23828,7 +24918,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocat
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocationHTTPAuthBasicAuthPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 archive location HTTP auth basic auth password secret
 
     Attributes
@@ -23844,13 +24934,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocat
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocationHTTPAuthBasicAuthUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 archive location HTTP auth basic auth username secret
 
     Attributes
@@ -23866,13 +24956,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocat
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocationHTTPAuthClientCert:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 archive location HTTP auth client cert
 
     Attributes
@@ -23890,7 +24980,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocat
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocationHTTPAuthClientCertClientCertSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 archive location HTTP auth client cert client cert secret
 
     Attributes
@@ -23906,13 +24996,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocat
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocationHTTPAuthClientCertClientKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 archive location HTTP auth client cert client key secret
 
     Attributes
@@ -23928,13 +25018,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocat
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocationHTTPAuthOauth2:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 archive location HTTP auth oauth2
 
     Attributes
@@ -23964,7 +25054,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocat
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocationHTTPAuthOauth2ClientIDSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 archive location HTTP auth oauth2 client ID secret
 
     Attributes
@@ -23980,13 +25070,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocat
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocationHTTPAuthOauth2ClientSecretSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 archive location HTTP auth oauth2 client secret secret
 
     Attributes
@@ -24002,13 +25092,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocat
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocationHTTPAuthOauth2EndpointParamsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 archive location HTTP auth oauth2 endpoint params items0
 
     Attributes
@@ -24026,7 +25116,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocat
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocationHTTPAuthOauth2TokenURLSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 archive location HTTP auth oauth2 token URL secret
 
     Attributes
@@ -24042,13 +25132,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocat
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocationHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 archive location HTTP headers items0
 
     Attributes
@@ -24066,13 +25156,15 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocat
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocationHdfs:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 archive location hdfs
 
     Attributes
     ----------
     addresses : [str], default is Undefined, optional
         addresses
+    dataTransferProtection : str, default is Undefined, optional
+        data transfer protection
     force : bool, default is Undefined, optional
         force
     hdfsUser : str, default is Undefined, optional
@@ -24096,6 +25188,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocat
 
     addresses?: [str]
 
+    dataTransferProtection?: str
+
     force?: bool
 
     hdfsUser?: str
@@ -24116,7 +25210,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocat
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocationHdfsKrbCCacheSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 archive location hdfs krb c cache secret
 
     Attributes
@@ -24132,13 +25226,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocat
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocationHdfsKrbConfigConfigMap:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 archive location hdfs krb config config map
 
     Attributes
@@ -24154,13 +25248,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocat
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocationHdfsKrbKeytabSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 archive location hdfs krb keytab secret
 
     Attributes
@@ -24176,13 +25270,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocat
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocationOss:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 archive location oss
 
     Attributes
@@ -24228,7 +25322,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocat
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocationOssAccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 archive location oss access key secret
 
     Attributes
@@ -24244,13 +25338,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocat
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocationOssLifecycleRule:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 archive location oss lifecycle rule
 
     Attributes
@@ -24268,7 +25362,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocat
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocationOssSecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 archive location oss secret key secret
 
     Attributes
@@ -24284,13 +25378,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocat
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocationRaw:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 archive location raw
 
     Attributes
@@ -24304,7 +25398,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocat
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocationS3:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 archive location s3
 
     Attributes
@@ -24331,6 +25425,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocat
         role a r n
     secretKeySecret : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocationS3SecretKeySecret, default is Undefined, optional
         secret key secret
+    sessionTokenSecret : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocationS3SessionTokenSecret, default is Undefined, optional
+        session token secret
     useSDKCreds : bool, default is Undefined, optional
         use s d k creds
     """
@@ -24358,11 +25454,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocat
 
     secretKeySecret?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocationS3SecretKeySecret
 
+    sessionTokenSecret?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocationS3SessionTokenSecret
+
     useSDKCreds?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocationS3AccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 archive location s3 access key secret
 
     Attributes
@@ -24378,13 +25476,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocat
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocationS3CaSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 archive location s3 ca secret
 
     Attributes
@@ -24400,13 +25498,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocat
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocationS3CreateBucketIfNotPresent:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 archive location s3 create bucket if not present
 
     Attributes
@@ -24420,7 +25518,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocat
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocationS3EncryptionOptions:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 archive location s3 encryption options
 
     Attributes
@@ -24446,7 +25544,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocat
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocationS3EncryptionOptionsServerSideCustomerKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 archive location s3 encryption options server side customer key secret
 
     Attributes
@@ -24462,13 +25560,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocat
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocationS3SecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 archive location s3 secret key secret
 
     Attributes
@@ -24484,13 +25582,35 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocat
 
     key: str
 
-    name?: str
+    name?: str = ""
+
+    optional?: bool
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ArchiveLocationS3SessionTokenSecret:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec templates items0 archive location s3 session token secret
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0Container:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container
 
     Attributes
@@ -24517,8 +25637,12 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0Container:
         ports
     readinessProbe : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerReadinessProbe, default is Undefined, optional
         readiness probe
+    resizePolicy : [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerResizePolicyItems0], default is Undefined, optional
+        resize policy
     resources : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerResources, default is Undefined, optional
         resources
+    restartPolicy : str, default is Undefined, optional
+        restart policy
     securityContext : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSecurityContext, default is Undefined, optional
         security context
     startupProbe : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerStartupProbe, default is Undefined, optional
@@ -24564,7 +25688,11 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0Container:
 
     readinessProbe?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerReadinessProbe
 
+    resizePolicy?: [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerResizePolicyItems0]
+
     resources?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerResources
+
+    restartPolicy?: str
 
     securityContext?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSecurityContext
 
@@ -24588,7 +25716,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0Container:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerEnvFromItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container env from items0
 
     Attributes
@@ -24610,7 +25738,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerEnv
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerEnvFromItems0ConfigMapRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container env from items0 config map ref
 
     Attributes
@@ -24622,13 +25750,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerEnv
     """
 
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerEnvFromItems0SecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container env from items0 secret ref
 
     Attributes
@@ -24640,13 +25768,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerEnv
     """
 
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerEnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container env items0
 
     Attributes
@@ -24668,7 +25796,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerEnv
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerEnvItems0ValueFrom:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container env items0 value from
 
     Attributes
@@ -24694,7 +25822,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerEnv
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerEnvItems0ValueFromConfigMapKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container env items0 value from config map key ref
 
     Attributes
@@ -24710,13 +25838,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerEnv
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerEnvItems0ValueFromFieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container env items0 value from field ref
 
     Attributes
@@ -24734,7 +25862,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerEnv
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerEnvItems0ValueFromResourceFieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container env items0 value from resource field ref
 
     Attributes
@@ -24760,7 +25888,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerEnv
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerEnvItems0ValueFromSecretKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container env items0 value from secret key ref
 
     Attributes
@@ -24776,13 +25904,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerEnv
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerLifecycle:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container lifecycle
 
     Attributes
@@ -24800,7 +25928,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerLif
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerLifecyclePostStart:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container lifecycle post start
 
     Attributes
@@ -24809,6 +25937,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerLif
         exec
     httpGet : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerLifecyclePostStartHTTPGet, default is Undefined, optional
         http get
+    sleep : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerLifecyclePostStartSleep, default is Undefined, optional
+        sleep
     tcpSocket : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerLifecyclePostStartTCPSocket, default is Undefined, optional
         tcp socket
     """
@@ -24818,11 +25948,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerLif
 
     httpGet?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerLifecyclePostStartHTTPGet
 
+    sleep?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerLifecyclePostStartSleep
+
     tcpSocket?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerLifecyclePostStartTCPSocket
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerLifecyclePostStartExec:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container lifecycle post start exec
 
     Attributes
@@ -24836,7 +25968,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerLif
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerLifecyclePostStartHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container lifecycle post start HTTP get
 
     Attributes
@@ -24866,7 +25998,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerLif
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerLifecyclePostStartHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container lifecycle post start HTTP get HTTP headers items0
 
     Attributes
@@ -24883,8 +26015,22 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerLif
     value: str
 
 
-schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerLifecyclePostStartTCPSocket:
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerLifecyclePostStartSleep:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container lifecycle post start sleep
+
+    Attributes
+    ----------
+    seconds : int, default is Undefined, required
+        seconds
     """
+
+
+    seconds: int
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerLifecyclePostStartTCPSocket:
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container lifecycle post start TCP socket
 
     Attributes
@@ -24902,7 +26048,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerLif
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerLifecyclePreStop:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container lifecycle pre stop
 
     Attributes
@@ -24911,6 +26057,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerLif
         exec
     httpGet : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerLifecyclePreStopHTTPGet, default is Undefined, optional
         http get
+    sleep : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerLifecyclePreStopSleep, default is Undefined, optional
+        sleep
     tcpSocket : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerLifecyclePreStopTCPSocket, default is Undefined, optional
         tcp socket
     """
@@ -24920,11 +26068,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerLif
 
     httpGet?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerLifecyclePreStopHTTPGet
 
+    sleep?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerLifecyclePreStopSleep
+
     tcpSocket?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerLifecyclePreStopTCPSocket
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerLifecyclePreStopExec:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container lifecycle pre stop exec
 
     Attributes
@@ -24938,7 +26088,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerLif
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerLifecyclePreStopHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container lifecycle pre stop HTTP get
 
     Attributes
@@ -24968,7 +26118,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerLif
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerLifecyclePreStopHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container lifecycle pre stop HTTP get HTTP headers items0
 
     Attributes
@@ -24985,8 +26135,22 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerLif
     value: str
 
 
-schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerLifecyclePreStopTCPSocket:
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerLifecyclePreStopSleep:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container lifecycle pre stop sleep
+
+    Attributes
+    ----------
+    seconds : int, default is Undefined, required
+        seconds
     """
+
+
+    seconds: int
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerLifecyclePreStopTCPSocket:
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container lifecycle pre stop TCP socket
 
     Attributes
@@ -25004,7 +26168,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerLif
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerLivenessProbe:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container liveness probe
 
     Attributes
@@ -25054,7 +26218,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerLiv
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerLivenessProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container liveness probe exec
 
     Attributes
@@ -25068,7 +26232,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerLiv
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerLivenessProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container liveness probe grpc
 
     Attributes
@@ -25086,7 +26250,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerLiv
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerLivenessProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container liveness probe HTTP get
 
     Attributes
@@ -25116,7 +26280,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerLiv
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerLivenessProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container liveness probe HTTP get HTTP headers items0
 
     Attributes
@@ -25134,7 +26298,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerLiv
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerLivenessProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container liveness probe TCP socket
 
     Attributes
@@ -25152,7 +26316,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerLiv
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerPortsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container ports items0
 
     Attributes
@@ -25182,7 +26346,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerPor
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerReadinessProbe:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container readiness probe
 
     Attributes
@@ -25232,7 +26396,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerRea
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerReadinessProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container readiness probe exec
 
     Attributes
@@ -25246,7 +26410,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerRea
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerReadinessProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container readiness probe grpc
 
     Attributes
@@ -25264,7 +26428,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerRea
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerReadinessProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container readiness probe HTTP get
 
     Attributes
@@ -25294,7 +26458,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerRea
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerReadinessProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container readiness probe HTTP get HTTP headers items0
 
     Attributes
@@ -25312,7 +26476,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerRea
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerReadinessProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container readiness probe TCP socket
 
     Attributes
@@ -25329,8 +26493,26 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerRea
     port: int | str
 
 
-schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerResources:
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerResizePolicyItems0:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container resize policy items0
+
+    Attributes
+    ----------
+    resourceName : str, default is Undefined, required
+        resource name
+    restartPolicy : str, default is Undefined, required
+        restart policy
     """
+
+
+    resourceName: str
+
+    restartPolicy: str
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerResources:
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container resources
 
     Attributes
@@ -25352,12 +26534,12 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerRes
 
 
     check:
-        all _, limits in limits {_regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests {_regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerResourcesClaimsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container resources claims items0
 
     Attributes
@@ -25371,13 +26553,15 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerRes
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSecurityContext:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container security context
 
     Attributes
     ----------
     allowPrivilegeEscalation : bool, default is Undefined, optional
         allow privilege escalation
+    appArmorProfile : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSecurityContextAppArmorProfile, default is Undefined, optional
+        app armor profile
     capabilities : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSecurityContextCapabilities, default is Undefined, optional
         capabilities
     privileged : bool, default is Undefined, optional
@@ -25403,6 +26587,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSec
 
     allowPrivilegeEscalation?: bool
 
+    appArmorProfile?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSecurityContextAppArmorProfile
+
     capabilities?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSecurityContextCapabilities
 
     privileged?: bool
@@ -25424,8 +26610,26 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSec
     windowsOptions?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSecurityContextWindowsOptions
 
 
-schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSecurityContextCapabilities:
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSecurityContextAppArmorProfile:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container security context app armor profile
+
+    Attributes
+    ----------
+    localhostProfile : str, default is Undefined, optional
+        localhost profile
+    $type : str, default is Undefined, required
+        type
     """
+
+
+    localhostProfile?: str
+
+    $type: str
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSecurityContextCapabilities:
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container security context capabilities
 
     Attributes
@@ -25443,7 +26647,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSec
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSecurityContextSeLinuxOptions:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container security context se linux options
 
     Attributes
@@ -25469,7 +26673,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSec
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSecurityContextSeccompProfile:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container security context seccomp profile
 
     Attributes
@@ -25487,7 +26691,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSec
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSecurityContextWindowsOptions:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container security context windows options
 
     Attributes
@@ -25513,7 +26717,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSec
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container set
 
     Attributes
@@ -25535,7 +26739,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container set containers items0
 
     Attributes
@@ -25564,8 +26768,12 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
         ports
     readinessProbe : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0ReadinessProbe, default is Undefined, optional
         readiness probe
+    resizePolicy : [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0ResizePolicyItems0], default is Undefined, optional
+        resize policy
     resources : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0Resources, default is Undefined, optional
         resources
+    restartPolicy : str, default is Undefined, optional
+        restart policy
     securityContext : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0SecurityContext, default is Undefined, optional
         security context
     startupProbe : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0StartupProbe, default is Undefined, optional
@@ -25613,7 +26821,11 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
 
     readinessProbe?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0ReadinessProbe
 
+    resizePolicy?: [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0ResizePolicyItems0]
+
     resources?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0Resources
+
+    restartPolicy?: str
 
     securityContext?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0SecurityContext
 
@@ -25637,7 +26849,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0EnvFromItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container set containers items0 env from items0
 
     Attributes
@@ -25659,7 +26871,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0EnvFromItems0ConfigMapRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container set containers items0 env from items0 config map ref
 
     Attributes
@@ -25671,13 +26883,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
     """
 
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0EnvFromItems0SecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container set containers items0 env from items0 secret ref
 
     Attributes
@@ -25689,13 +26901,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
     """
 
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0EnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container set containers items0 env items0
 
     Attributes
@@ -25717,7 +26929,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0EnvItems0ValueFrom:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container set containers items0 env items0 value from
 
     Attributes
@@ -25743,7 +26955,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0EnvItems0ValueFromConfigMapKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container set containers items0 env items0 value from config map key ref
 
     Attributes
@@ -25759,13 +26971,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0EnvItems0ValueFromFieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container set containers items0 env items0 value from field ref
 
     Attributes
@@ -25783,7 +26995,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0EnvItems0ValueFromResourceFieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container set containers items0 env items0 value from resource field ref
 
     Attributes
@@ -25809,7 +27021,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0EnvItems0ValueFromSecretKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container set containers items0 env items0 value from secret key ref
 
     Attributes
@@ -25825,13 +27037,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0Lifecycle:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container set containers items0 lifecycle
 
     Attributes
@@ -25849,7 +27061,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0LifecyclePostStart:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container set containers items0 lifecycle post start
 
     Attributes
@@ -25858,6 +27070,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
         exec
     httpGet : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0LifecyclePostStartHTTPGet, default is Undefined, optional
         http get
+    sleep : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0LifecyclePostStartSleep, default is Undefined, optional
+        sleep
     tcpSocket : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0LifecyclePostStartTCPSocket, default is Undefined, optional
         tcp socket
     """
@@ -25867,11 +27081,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
 
     httpGet?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0LifecyclePostStartHTTPGet
 
+    sleep?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0LifecyclePostStartSleep
+
     tcpSocket?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0LifecyclePostStartTCPSocket
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0LifecyclePostStartExec:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container set containers items0 lifecycle post start exec
 
     Attributes
@@ -25885,7 +27101,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0LifecyclePostStartHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container set containers items0 lifecycle post start HTTP get
 
     Attributes
@@ -25915,7 +27131,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0LifecyclePostStartHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container set containers items0 lifecycle post start HTTP get HTTP headers items0
 
     Attributes
@@ -25932,8 +27148,22 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
     value: str
 
 
-schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0LifecyclePostStartTCPSocket:
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0LifecyclePostStartSleep:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container set containers items0 lifecycle post start sleep
+
+    Attributes
+    ----------
+    seconds : int, default is Undefined, required
+        seconds
     """
+
+
+    seconds: int
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0LifecyclePostStartTCPSocket:
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container set containers items0 lifecycle post start TCP socket
 
     Attributes
@@ -25951,7 +27181,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0LifecyclePreStop:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container set containers items0 lifecycle pre stop
 
     Attributes
@@ -25960,6 +27190,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
         exec
     httpGet : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0LifecyclePreStopHTTPGet, default is Undefined, optional
         http get
+    sleep : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0LifecyclePreStopSleep, default is Undefined, optional
+        sleep
     tcpSocket : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0LifecyclePreStopTCPSocket, default is Undefined, optional
         tcp socket
     """
@@ -25969,11 +27201,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
 
     httpGet?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0LifecyclePreStopHTTPGet
 
+    sleep?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0LifecyclePreStopSleep
+
     tcpSocket?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0LifecyclePreStopTCPSocket
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0LifecyclePreStopExec:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container set containers items0 lifecycle pre stop exec
 
     Attributes
@@ -25987,7 +27221,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0LifecyclePreStopHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container set containers items0 lifecycle pre stop HTTP get
 
     Attributes
@@ -26017,7 +27251,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0LifecyclePreStopHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container set containers items0 lifecycle pre stop HTTP get HTTP headers items0
 
     Attributes
@@ -26034,8 +27268,22 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
     value: str
 
 
-schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0LifecyclePreStopTCPSocket:
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0LifecyclePreStopSleep:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container set containers items0 lifecycle pre stop sleep
+
+    Attributes
+    ----------
+    seconds : int, default is Undefined, required
+        seconds
     """
+
+
+    seconds: int
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0LifecyclePreStopTCPSocket:
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container set containers items0 lifecycle pre stop TCP socket
 
     Attributes
@@ -26053,7 +27301,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0LivenessProbe:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container set containers items0 liveness probe
 
     Attributes
@@ -26103,7 +27351,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0LivenessProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container set containers items0 liveness probe exec
 
     Attributes
@@ -26117,7 +27365,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0LivenessProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container set containers items0 liveness probe grpc
 
     Attributes
@@ -26135,7 +27383,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0LivenessProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container set containers items0 liveness probe HTTP get
 
     Attributes
@@ -26165,7 +27413,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0LivenessProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container set containers items0 liveness probe HTTP get HTTP headers items0
 
     Attributes
@@ -26183,7 +27431,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0LivenessProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container set containers items0 liveness probe TCP socket
 
     Attributes
@@ -26201,7 +27449,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0PortsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container set containers items0 ports items0
 
     Attributes
@@ -26231,7 +27479,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0ReadinessProbe:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container set containers items0 readiness probe
 
     Attributes
@@ -26281,7 +27529,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0ReadinessProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container set containers items0 readiness probe exec
 
     Attributes
@@ -26295,7 +27543,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0ReadinessProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container set containers items0 readiness probe grpc
 
     Attributes
@@ -26313,7 +27561,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0ReadinessProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container set containers items0 readiness probe HTTP get
 
     Attributes
@@ -26343,7 +27591,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0ReadinessProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container set containers items0 readiness probe HTTP get HTTP headers items0
 
     Attributes
@@ -26361,7 +27609,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0ReadinessProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container set containers items0 readiness probe TCP socket
 
     Attributes
@@ -26378,8 +27626,26 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
     port: int | str
 
 
-schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0Resources:
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0ResizePolicyItems0:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container set containers items0 resize policy items0
+
+    Attributes
+    ----------
+    resourceName : str, default is Undefined, required
+        resource name
+    restartPolicy : str, default is Undefined, required
+        restart policy
     """
+
+
+    resourceName: str
+
+    restartPolicy: str
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0Resources:
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container set containers items0 resources
 
     Attributes
@@ -26401,12 +27667,12 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
 
 
     check:
-        all _, limits in limits {_regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests {_regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0ResourcesClaimsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container set containers items0 resources claims items0
 
     Attributes
@@ -26420,13 +27686,15 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0SecurityContext:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container set containers items0 security context
 
     Attributes
     ----------
     allowPrivilegeEscalation : bool, default is Undefined, optional
         allow privilege escalation
+    appArmorProfile : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0SecurityContextAppArmorProfile, default is Undefined, optional
+        app armor profile
     capabilities : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0SecurityContextCapabilities, default is Undefined, optional
         capabilities
     privileged : bool, default is Undefined, optional
@@ -26452,6 +27720,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
 
     allowPrivilegeEscalation?: bool
 
+    appArmorProfile?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0SecurityContextAppArmorProfile
+
     capabilities?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0SecurityContextCapabilities
 
     privileged?: bool
@@ -26473,8 +27743,26 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
     windowsOptions?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0SecurityContextWindowsOptions
 
 
-schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0SecurityContextCapabilities:
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0SecurityContextAppArmorProfile:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container set containers items0 security context app armor profile
+
+    Attributes
+    ----------
+    localhostProfile : str, default is Undefined, optional
+        localhost profile
+    $type : str, default is Undefined, required
+        type
     """
+
+
+    localhostProfile?: str
+
+    $type: str
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0SecurityContextCapabilities:
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container set containers items0 security context capabilities
 
     Attributes
@@ -26492,7 +27780,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0SecurityContextSeLinuxOptions:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container set containers items0 security context se linux options
 
     Attributes
@@ -26518,7 +27806,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0SecurityContextSeccompProfile:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container set containers items0 security context seccomp profile
 
     Attributes
@@ -26536,7 +27824,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0SecurityContextWindowsOptions:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container set containers items0 security context windows options
 
     Attributes
@@ -26562,7 +27850,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0StartupProbe:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container set containers items0 startup probe
 
     Attributes
@@ -26612,7 +27900,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0StartupProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container set containers items0 startup probe exec
 
     Attributes
@@ -26626,7 +27914,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0StartupProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container set containers items0 startup probe grpc
 
     Attributes
@@ -26644,7 +27932,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0StartupProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container set containers items0 startup probe HTTP get
 
     Attributes
@@ -26674,7 +27962,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0StartupProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container set containers items0 startup probe HTTP get HTTP headers items0
 
     Attributes
@@ -26692,7 +27980,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0StartupProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container set containers items0 startup probe TCP socket
 
     Attributes
@@ -26710,7 +27998,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0VolumeDevicesItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container set containers items0 volume devices items0
 
     Attributes
@@ -26728,7 +28016,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetContainersItems0VolumeMountsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container set containers items0 volume mounts items0
 
     Attributes
@@ -26741,6 +28029,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
         name
     readOnly : bool, default is Undefined, optional
         read only
+    recursiveReadOnly : str, default is Undefined, optional
+        recursive read only
     subPath : str, default is Undefined, optional
         sub path
     subPathExpr : str, default is Undefined, optional
@@ -26756,13 +28046,15 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
 
     readOnly?: bool
 
+    recursiveReadOnly?: str
+
     subPath?: str
 
     subPathExpr?: str
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetRetryStrategy:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container set retry strategy
 
     Attributes
@@ -26780,7 +28072,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSetVolumeMountsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container set volume mounts items0
 
     Attributes
@@ -26793,6 +28085,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
         name
     readOnly : bool, default is Undefined, optional
         read only
+    recursiveReadOnly : str, default is Undefined, optional
+        recursive read only
     subPath : str, default is Undefined, optional
         sub path
     subPathExpr : str, default is Undefined, optional
@@ -26808,13 +28102,15 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSet
 
     readOnly?: bool
 
+    recursiveReadOnly?: str
+
     subPath?: str
 
     subPathExpr?: str
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerStartupProbe:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container startup probe
 
     Attributes
@@ -26864,7 +28160,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSta
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerStartupProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container startup probe exec
 
     Attributes
@@ -26878,7 +28174,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSta
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerStartupProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container startup probe grpc
 
     Attributes
@@ -26896,7 +28192,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSta
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerStartupProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container startup probe HTTP get
 
     Attributes
@@ -26926,7 +28222,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSta
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerStartupProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container startup probe HTTP get HTTP headers items0
 
     Attributes
@@ -26944,7 +28240,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSta
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerStartupProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container startup probe TCP socket
 
     Attributes
@@ -26962,7 +28258,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerSta
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerVolumeDevicesItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container volume devices items0
 
     Attributes
@@ -26980,7 +28276,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerVol
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerVolumeMountsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 container volume mounts items0
 
     Attributes
@@ -26993,6 +28289,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerVol
         name
     readOnly : bool, default is Undefined, optional
         read only
+    recursiveReadOnly : str, default is Undefined, optional
+        recursive read only
     subPath : str, default is Undefined, optional
         sub path
     subPathExpr : str, default is Undefined, optional
@@ -27008,13 +28306,15 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ContainerVol
 
     readOnly?: bool
 
+    recursiveReadOnly?: str
+
     subPath?: str
 
     subPathExpr?: str
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0Dag:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag
 
     Attributes
@@ -27036,7 +28336,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0Dag:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0
 
     Attributes
@@ -27102,7 +28402,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0Arguments:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 arguments
 
     Attributes
@@ -27120,7 +28420,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 arguments artifacts items0
 
     Attributes
@@ -27218,7 +28518,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0Archive:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 arguments artifacts items0 archive
 
     Attributes
@@ -27240,7 +28540,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0ArchiveTar:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 arguments artifacts items0 archive tar
 
     Attributes
@@ -27254,7 +28554,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0ArtifactGC:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 arguments artifacts items0 artifact g c
 
     Attributes
@@ -27276,7 +28576,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0ArtifactGCPodMetadata:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 arguments artifacts items0 artifact g c pod metadata
 
     Attributes
@@ -27294,7 +28594,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0Artifactory:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 arguments artifacts items0 artifactory
 
     Attributes
@@ -27316,7 +28616,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0ArtifactoryPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 arguments artifacts items0 artifactory password secret
 
     Attributes
@@ -27332,13 +28632,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0ArtifactoryUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 arguments artifacts items0 artifactory username secret
 
     Attributes
@@ -27354,13 +28654,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0Azure:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 arguments artifacts items0 azure
 
     Attributes
@@ -27390,7 +28690,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0AzureAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 arguments artifacts items0 azure account key secret
 
     Attributes
@@ -27406,13 +28706,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0Gcs:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 arguments artifacts items0 gcs
 
     Attributes
@@ -27434,7 +28734,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0GcsServiceAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 arguments artifacts items0 gcs service account key secret
 
     Attributes
@@ -27450,13 +28750,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0Git:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 arguments artifacts items0 git
 
     Attributes
@@ -27471,6 +28771,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
         fetch
     insecureIgnoreHostKey : bool, default is Undefined, optional
         insecure ignore host key
+    insecureSkipTLS : bool, default is Undefined, optional
+        insecure skip TLS
     passwordSecret : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0GitPasswordSecret, default is Undefined, optional
         password secret
     repo : str, default is Undefined, required
@@ -27496,6 +28798,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
     insecureIgnoreHostKey?: bool
 
+    insecureSkipTLS?: bool
+
     passwordSecret?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0GitPasswordSecret
 
     repo: str
@@ -27510,7 +28814,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0GitPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 arguments artifacts items0 git password secret
 
     Attributes
@@ -27526,13 +28830,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0GitSSHPrivateKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 arguments artifacts items0 git SSH private key secret
 
     Attributes
@@ -27548,13 +28852,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0GitUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 arguments artifacts items0 git username secret
 
     Attributes
@@ -27570,13 +28874,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0HTTP:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 arguments artifacts items0 HTTP
 
     Attributes
@@ -27598,7 +28902,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0HTTPAuth:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 arguments artifacts items0 HTTP auth
 
     Attributes
@@ -27620,7 +28924,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0HTTPAuthBasicAuth:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 arguments artifacts items0 HTTP auth basic auth
 
     Attributes
@@ -27638,7 +28942,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0HTTPAuthBasicAuthPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 arguments artifacts items0 HTTP auth basic auth password secret
 
     Attributes
@@ -27654,13 +28958,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0HTTPAuthBasicAuthUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 arguments artifacts items0 HTTP auth basic auth username secret
 
     Attributes
@@ -27676,13 +28980,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0HTTPAuthClientCert:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 arguments artifacts items0 HTTP auth client cert
 
     Attributes
@@ -27700,7 +29004,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0HTTPAuthClientCertClientCertSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 arguments artifacts items0 HTTP auth client cert client cert secret
 
     Attributes
@@ -27716,13 +29020,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0HTTPAuthClientCertClientKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 arguments artifacts items0 HTTP auth client cert client key secret
 
     Attributes
@@ -27738,13 +29042,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0HTTPAuthOauth2:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 arguments artifacts items0 HTTP auth oauth2
 
     Attributes
@@ -27774,7 +29078,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0HTTPAuthOauth2ClientIDSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 arguments artifacts items0 HTTP auth oauth2 client ID secret
 
     Attributes
@@ -27790,13 +29094,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0HTTPAuthOauth2ClientSecretSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 arguments artifacts items0 HTTP auth oauth2 client secret secret
 
     Attributes
@@ -27812,13 +29116,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0HTTPAuthOauth2EndpointParamsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 arguments artifacts items0 HTTP auth oauth2 endpoint params items0
 
     Attributes
@@ -27836,7 +29140,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0HTTPAuthOauth2TokenURLSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 arguments artifacts items0 HTTP auth oauth2 token URL secret
 
     Attributes
@@ -27852,13 +29156,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0HTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 arguments artifacts items0 HTTP headers items0
 
     Attributes
@@ -27876,13 +29180,15 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0Hdfs:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 arguments artifacts items0 hdfs
 
     Attributes
     ----------
     addresses : [str], default is Undefined, optional
         addresses
+    dataTransferProtection : str, default is Undefined, optional
+        data transfer protection
     force : bool, default is Undefined, optional
         force
     hdfsUser : str, default is Undefined, optional
@@ -27906,6 +29212,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
     addresses?: [str]
 
+    dataTransferProtection?: str
+
     force?: bool
 
     hdfsUser?: str
@@ -27926,7 +29234,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0HdfsKrbCCacheSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 arguments artifacts items0 hdfs krb c cache secret
 
     Attributes
@@ -27942,13 +29250,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0HdfsKrbConfigConfigMap:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 arguments artifacts items0 hdfs krb config config map
 
     Attributes
@@ -27964,13 +29272,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0HdfsKrbKeytabSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 arguments artifacts items0 hdfs krb keytab secret
 
     Attributes
@@ -27986,13 +29294,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0Oss:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 arguments artifacts items0 oss
 
     Attributes
@@ -28038,7 +29346,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0OssAccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 arguments artifacts items0 oss access key secret
 
     Attributes
@@ -28054,13 +29362,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0OssLifecycleRule:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 arguments artifacts items0 oss lifecycle rule
 
     Attributes
@@ -28078,7 +29386,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0OssSecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 arguments artifacts items0 oss secret key secret
 
     Attributes
@@ -28094,13 +29402,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0Raw:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 arguments artifacts items0 raw
 
     Attributes
@@ -28114,7 +29422,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0S3:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 arguments artifacts items0 s3
 
     Attributes
@@ -28141,6 +29449,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
         role a r n
     secretKeySecret : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0S3SecretKeySecret, default is Undefined, optional
         secret key secret
+    sessionTokenSecret : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0S3SessionTokenSecret, default is Undefined, optional
+        session token secret
     useSDKCreds : bool, default is Undefined, optional
         use s d k creds
     """
@@ -28168,11 +29478,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
     secretKeySecret?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0S3SecretKeySecret
 
+    sessionTokenSecret?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0S3SessionTokenSecret
+
     useSDKCreds?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0S3AccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 arguments artifacts items0 s3 access key secret
 
     Attributes
@@ -28188,13 +29500,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0S3CaSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 arguments artifacts items0 s3 ca secret
 
     Attributes
@@ -28210,13 +29522,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0S3CreateBucketIfNotPresent:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 arguments artifacts items0 s3 create bucket if not present
 
     Attributes
@@ -28230,7 +29542,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0S3EncryptionOptions:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 arguments artifacts items0 s3 encryption options
 
     Attributes
@@ -28256,7 +29568,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0S3EncryptionOptionsServerSideCustomerKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 arguments artifacts items0 s3 encryption options server side customer key secret
 
     Attributes
@@ -28272,13 +29584,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0S3SecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 arguments artifacts items0 s3 secret key secret
 
     Attributes
@@ -28294,13 +29606,35 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
+
+    optional?: bool
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ArgumentsArtifactsItems0S3SessionTokenSecret:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 arguments artifacts items0 s3 session token secret
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ArgumentsParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 arguments parameters items0
 
     Attributes
@@ -28338,7 +29672,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ArgumentsParametersItems0ValueFrom:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 arguments parameters items0 value from
 
     Attributes
@@ -28384,7 +29718,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ArgumentsParametersItems0ValueFromConfigMapKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 arguments parameters items0 value from config map key ref
 
     Attributes
@@ -28400,13 +29734,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0ContinueOn:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 continue on
 
     Attributes
@@ -28424,7 +29758,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnon:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 hooks anon
 
     Attributes
@@ -28450,7 +29784,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArguments:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 hooks anon arguments
 
     Attributes
@@ -28468,7 +29802,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 hooks anon arguments artifacts items0
 
     Attributes
@@ -28566,7 +29900,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0Archive:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 archive
 
     Attributes
@@ -28588,7 +29922,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0ArchiveTar:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 archive tar
 
     Attributes
@@ -28602,7 +29936,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0ArtifactGC:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 artifact g c
 
     Attributes
@@ -28624,7 +29958,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0ArtifactGCPodMetadata:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 artifact g c pod metadata
 
     Attributes
@@ -28642,7 +29976,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0Artifactory:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 artifactory
 
     Attributes
@@ -28664,7 +29998,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0ArtifactoryPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 artifactory password secret
 
     Attributes
@@ -28680,13 +30014,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0ArtifactoryUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 artifactory username secret
 
     Attributes
@@ -28702,13 +30036,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0Azure:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 azure
 
     Attributes
@@ -28738,7 +30072,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0AzureAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 azure account key secret
 
     Attributes
@@ -28754,13 +30088,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0Gcs:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 gcs
 
     Attributes
@@ -28782,7 +30116,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0GcsServiceAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 gcs service account key secret
 
     Attributes
@@ -28798,13 +30132,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0Git:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 git
 
     Attributes
@@ -28819,6 +30153,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
         fetch
     insecureIgnoreHostKey : bool, default is Undefined, optional
         insecure ignore host key
+    insecureSkipTLS : bool, default is Undefined, optional
+        insecure skip TLS
     passwordSecret : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0GitPasswordSecret, default is Undefined, optional
         password secret
     repo : str, default is Undefined, required
@@ -28844,6 +30180,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
     insecureIgnoreHostKey?: bool
 
+    insecureSkipTLS?: bool
+
     passwordSecret?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0GitPasswordSecret
 
     repo: str
@@ -28858,7 +30196,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0GitPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 git password secret
 
     Attributes
@@ -28874,13 +30212,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0GitSSHPrivateKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 git SSH private key secret
 
     Attributes
@@ -28896,13 +30234,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0GitUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 git username secret
 
     Attributes
@@ -28918,13 +30256,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0HTTP:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 HTTP
 
     Attributes
@@ -28946,7 +30284,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0HTTPAuth:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 HTTP auth
 
     Attributes
@@ -28968,7 +30306,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0HTTPAuthBasicAuth:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 HTTP auth basic auth
 
     Attributes
@@ -28986,7 +30324,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0HTTPAuthBasicAuthPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 HTTP auth basic auth password secret
 
     Attributes
@@ -29002,13 +30340,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0HTTPAuthBasicAuthUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 HTTP auth basic auth username secret
 
     Attributes
@@ -29024,13 +30362,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0HTTPAuthClientCert:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 HTTP auth client cert
 
     Attributes
@@ -29048,7 +30386,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0HTTPAuthClientCertClientCertSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 HTTP auth client cert client cert secret
 
     Attributes
@@ -29064,13 +30402,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0HTTPAuthClientCertClientKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 HTTP auth client cert client key secret
 
     Attributes
@@ -29086,13 +30424,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0HTTPAuthOauth2:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 HTTP auth oauth2
 
     Attributes
@@ -29122,7 +30460,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0HTTPAuthOauth2ClientIDSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 HTTP auth oauth2 client ID secret
 
     Attributes
@@ -29138,13 +30476,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0HTTPAuthOauth2ClientSecretSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 HTTP auth oauth2 client secret secret
 
     Attributes
@@ -29160,13 +30498,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0HTTPAuthOauth2EndpointParamsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 HTTP auth oauth2 endpoint params items0
 
     Attributes
@@ -29184,7 +30522,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0HTTPAuthOauth2TokenURLSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 HTTP auth oauth2 token URL secret
 
     Attributes
@@ -29200,13 +30538,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0HTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 HTTP headers items0
 
     Attributes
@@ -29224,13 +30562,15 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0Hdfs:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 hdfs
 
     Attributes
     ----------
     addresses : [str], default is Undefined, optional
         addresses
+    dataTransferProtection : str, default is Undefined, optional
+        data transfer protection
     force : bool, default is Undefined, optional
         force
     hdfsUser : str, default is Undefined, optional
@@ -29254,6 +30594,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
     addresses?: [str]
 
+    dataTransferProtection?: str
+
     force?: bool
 
     hdfsUser?: str
@@ -29274,7 +30616,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0HdfsKrbCCacheSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 hdfs krb c cache secret
 
     Attributes
@@ -29290,13 +30632,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0HdfsKrbConfigConfigMap:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 hdfs krb config config map
 
     Attributes
@@ -29312,13 +30654,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0HdfsKrbKeytabSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 hdfs krb keytab secret
 
     Attributes
@@ -29334,13 +30676,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0Oss:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 oss
 
     Attributes
@@ -29386,7 +30728,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0OssAccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 oss access key secret
 
     Attributes
@@ -29402,13 +30744,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0OssLifecycleRule:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 oss lifecycle rule
 
     Attributes
@@ -29426,7 +30768,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0OssSecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 oss secret key secret
 
     Attributes
@@ -29442,13 +30784,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0Raw:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 raw
 
     Attributes
@@ -29462,7 +30804,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0S3:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 s3
 
     Attributes
@@ -29489,6 +30831,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
         role a r n
     secretKeySecret : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0S3SecretKeySecret, default is Undefined, optional
         secret key secret
+    sessionTokenSecret : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0S3SessionTokenSecret, default is Undefined, optional
+        session token secret
     useSDKCreds : bool, default is Undefined, optional
         use s d k creds
     """
@@ -29516,11 +30860,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
     secretKeySecret?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0S3SecretKeySecret
 
+    sessionTokenSecret?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0S3SessionTokenSecret
+
     useSDKCreds?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0S3AccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 s3 access key secret
 
     Attributes
@@ -29536,13 +30882,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0S3CaSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 s3 ca secret
 
     Attributes
@@ -29558,13 +30904,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0S3CreateBucketIfNotPresent:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 s3 create bucket if not present
 
     Attributes
@@ -29578,7 +30924,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0S3EncryptionOptions:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 s3 encryption options
 
     Attributes
@@ -29604,7 +30950,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0S3EncryptionOptionsServerSideCustomerKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 s3 encryption options server side customer key secret
 
     Attributes
@@ -29620,13 +30966,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0S3SecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 s3 secret key secret
 
     Attributes
@@ -29642,13 +30988,35 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
+
+    optional?: bool
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsArtifactsItems0S3SessionTokenSecret:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 hooks anon arguments artifacts items0 s3 session token secret
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 hooks anon arguments parameters items0
 
     Attributes
@@ -29686,7 +31054,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsParametersItems0ValueFrom:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 hooks anon arguments parameters items0 value from
 
     Attributes
@@ -29732,7 +31100,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonArgumentsParametersItems0ValueFromConfigMapKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 hooks anon arguments parameters items0 value from config map key ref
 
     Attributes
@@ -29748,13 +31116,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0HooksAnonTemplateRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 hooks anon template ref
 
     Attributes
@@ -29776,7 +31144,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0TemplateRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 template ref
 
     Attributes
@@ -29798,7 +31166,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItems0WithSequence:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 dag tasks items0 with sequence
 
     Attributes
@@ -29824,7 +31192,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DagTasksItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0Data:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 data
 
     Attributes
@@ -29842,7 +31210,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0Data:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSource:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 data source
 
     Attributes
@@ -29856,7 +31224,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSource:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceArtifactPaths:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 data source artifact paths
 
     Attributes
@@ -29954,7 +31322,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceAr
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceArtifactPathsArchive:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 data source artifact paths archive
 
     Attributes
@@ -29976,7 +31344,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceAr
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceArtifactPathsArchiveTar:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 data source artifact paths archive tar
 
     Attributes
@@ -29990,7 +31358,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceAr
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceArtifactPathsArtifactGC:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 data source artifact paths artifact g c
 
     Attributes
@@ -30012,7 +31380,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceAr
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceArtifactPathsArtifactGCPodMetadata:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 data source artifact paths artifact g c pod metadata
 
     Attributes
@@ -30030,7 +31398,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceAr
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceArtifactPathsArtifactory:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 data source artifact paths artifactory
 
     Attributes
@@ -30052,7 +31420,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceAr
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceArtifactPathsArtifactoryPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 data source artifact paths artifactory password secret
 
     Attributes
@@ -30068,13 +31436,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceAr
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceArtifactPathsArtifactoryUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 data source artifact paths artifactory username secret
 
     Attributes
@@ -30090,13 +31458,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceAr
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceArtifactPathsAzure:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 data source artifact paths azure
 
     Attributes
@@ -30126,7 +31494,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceAr
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceArtifactPathsAzureAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 data source artifact paths azure account key secret
 
     Attributes
@@ -30142,13 +31510,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceAr
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceArtifactPathsGcs:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 data source artifact paths gcs
 
     Attributes
@@ -30170,7 +31538,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceAr
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceArtifactPathsGcsServiceAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 data source artifact paths gcs service account key secret
 
     Attributes
@@ -30186,13 +31554,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceAr
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceArtifactPathsGit:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 data source artifact paths git
 
     Attributes
@@ -30207,6 +31575,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceAr
         fetch
     insecureIgnoreHostKey : bool, default is Undefined, optional
         insecure ignore host key
+    insecureSkipTLS : bool, default is Undefined, optional
+        insecure skip TLS
     passwordSecret : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceArtifactPathsGitPasswordSecret, default is Undefined, optional
         password secret
     repo : str, default is Undefined, required
@@ -30232,6 +31602,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceAr
 
     insecureIgnoreHostKey?: bool
 
+    insecureSkipTLS?: bool
+
     passwordSecret?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceArtifactPathsGitPasswordSecret
 
     repo: str
@@ -30246,7 +31618,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceAr
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceArtifactPathsGitPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 data source artifact paths git password secret
 
     Attributes
@@ -30262,13 +31634,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceAr
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceArtifactPathsGitSSHPrivateKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 data source artifact paths git SSH private key secret
 
     Attributes
@@ -30284,13 +31656,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceAr
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceArtifactPathsGitUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 data source artifact paths git username secret
 
     Attributes
@@ -30306,13 +31678,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceAr
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceArtifactPathsHTTP:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 data source artifact paths HTTP
 
     Attributes
@@ -30334,7 +31706,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceAr
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceArtifactPathsHTTPAuth:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 data source artifact paths HTTP auth
 
     Attributes
@@ -30356,7 +31728,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceAr
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceArtifactPathsHTTPAuthBasicAuth:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 data source artifact paths HTTP auth basic auth
 
     Attributes
@@ -30374,7 +31746,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceAr
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceArtifactPathsHTTPAuthBasicAuthPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 data source artifact paths HTTP auth basic auth password secret
 
     Attributes
@@ -30390,13 +31762,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceAr
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceArtifactPathsHTTPAuthBasicAuthUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 data source artifact paths HTTP auth basic auth username secret
 
     Attributes
@@ -30412,13 +31784,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceAr
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceArtifactPathsHTTPAuthClientCert:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 data source artifact paths HTTP auth client cert
 
     Attributes
@@ -30436,7 +31808,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceAr
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceArtifactPathsHTTPAuthClientCertClientCertSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 data source artifact paths HTTP auth client cert client cert secret
 
     Attributes
@@ -30452,13 +31824,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceAr
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceArtifactPathsHTTPAuthClientCertClientKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 data source artifact paths HTTP auth client cert client key secret
 
     Attributes
@@ -30474,13 +31846,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceAr
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceArtifactPathsHTTPAuthOauth2:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 data source artifact paths HTTP auth oauth2
 
     Attributes
@@ -30510,7 +31882,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceAr
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceArtifactPathsHTTPAuthOauth2ClientIDSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 data source artifact paths HTTP auth oauth2 client ID secret
 
     Attributes
@@ -30526,13 +31898,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceAr
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceArtifactPathsHTTPAuthOauth2ClientSecretSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 data source artifact paths HTTP auth oauth2 client secret secret
 
     Attributes
@@ -30548,13 +31920,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceAr
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceArtifactPathsHTTPAuthOauth2EndpointParamsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 data source artifact paths HTTP auth oauth2 endpoint params items0
 
     Attributes
@@ -30572,7 +31944,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceAr
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceArtifactPathsHTTPAuthOauth2TokenURLSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 data source artifact paths HTTP auth oauth2 token URL secret
 
     Attributes
@@ -30588,13 +31960,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceAr
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceArtifactPathsHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 data source artifact paths HTTP headers items0
 
     Attributes
@@ -30612,13 +31984,15 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceAr
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceArtifactPathsHdfs:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 data source artifact paths hdfs
 
     Attributes
     ----------
     addresses : [str], default is Undefined, optional
         addresses
+    dataTransferProtection : str, default is Undefined, optional
+        data transfer protection
     force : bool, default is Undefined, optional
         force
     hdfsUser : str, default is Undefined, optional
@@ -30642,6 +32016,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceAr
 
     addresses?: [str]
 
+    dataTransferProtection?: str
+
     force?: bool
 
     hdfsUser?: str
@@ -30662,7 +32038,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceAr
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceArtifactPathsHdfsKrbCCacheSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 data source artifact paths hdfs krb c cache secret
 
     Attributes
@@ -30678,13 +32054,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceAr
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceArtifactPathsHdfsKrbConfigConfigMap:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 data source artifact paths hdfs krb config config map
 
     Attributes
@@ -30700,13 +32076,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceAr
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceArtifactPathsHdfsKrbKeytabSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 data source artifact paths hdfs krb keytab secret
 
     Attributes
@@ -30722,13 +32098,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceAr
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceArtifactPathsOss:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 data source artifact paths oss
 
     Attributes
@@ -30774,7 +32150,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceAr
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceArtifactPathsOssAccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 data source artifact paths oss access key secret
 
     Attributes
@@ -30790,13 +32166,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceAr
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceArtifactPathsOssLifecycleRule:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 data source artifact paths oss lifecycle rule
 
     Attributes
@@ -30814,7 +32190,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceAr
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceArtifactPathsOssSecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 data source artifact paths oss secret key secret
 
     Attributes
@@ -30830,13 +32206,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceAr
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceArtifactPathsRaw:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 data source artifact paths raw
 
     Attributes
@@ -30850,7 +32226,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceAr
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceArtifactPathsS3:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 data source artifact paths s3
 
     Attributes
@@ -30877,6 +32253,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceAr
         role a r n
     secretKeySecret : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceArtifactPathsS3SecretKeySecret, default is Undefined, optional
         secret key secret
+    sessionTokenSecret : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceArtifactPathsS3SessionTokenSecret, default is Undefined, optional
+        session token secret
     useSDKCreds : bool, default is Undefined, optional
         use s d k creds
     """
@@ -30904,11 +32282,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceAr
 
     secretKeySecret?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceArtifactPathsS3SecretKeySecret
 
+    sessionTokenSecret?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceArtifactPathsS3SessionTokenSecret
+
     useSDKCreds?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceArtifactPathsS3AccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 data source artifact paths s3 access key secret
 
     Attributes
@@ -30924,13 +32304,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceAr
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceArtifactPathsS3CaSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 data source artifact paths s3 ca secret
 
     Attributes
@@ -30946,13 +32326,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceAr
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceArtifactPathsS3CreateBucketIfNotPresent:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 data source artifact paths s3 create bucket if not present
 
     Attributes
@@ -30966,7 +32346,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceAr
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceArtifactPathsS3EncryptionOptions:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 data source artifact paths s3 encryption options
 
     Attributes
@@ -30992,7 +32372,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceAr
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceArtifactPathsS3EncryptionOptionsServerSideCustomerKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 data source artifact paths s3 encryption options server side customer key secret
 
     Attributes
@@ -31008,13 +32388,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceAr
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceArtifactPathsS3SecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 data source artifact paths s3 secret key secret
 
     Attributes
@@ -31030,13 +32410,35 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceAr
 
     key: str
 
-    name?: str
+    name?: str = ""
+
+    optional?: bool
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataSourceArtifactPathsS3SessionTokenSecret:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec templates items0 data source artifact paths s3 session token secret
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataTransformationItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 data transformation items0
 
     Attributes
@@ -31050,7 +32452,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0DataTransfor
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0Executor:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 executor
 
     Attributes
@@ -31064,7 +32466,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0Executor:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0HTTP:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 HTTP
 
     Attributes
@@ -31106,7 +32508,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0HTTP:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0HTTPBodyFrom:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 HTTP body from
 
     Attributes
@@ -31120,7 +32522,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0HTTPBodyFrom
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0HTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 HTTP headers items0
 
     Attributes
@@ -31142,7 +32544,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0HTTPHeadersI
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0HTTPHeadersItems0ValueFrom:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 HTTP headers items0 value from
 
     Attributes
@@ -31156,7 +32558,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0HTTPHeadersI
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0HTTPHeadersItems0ValueFromSecretKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 HTTP headers items0 value from secret key ref
 
     Attributes
@@ -31172,31 +32574,31 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0HTTPHeadersI
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0HostAliasesItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 host aliases items0
 
     Attributes
     ----------
     hostnames : [str], default is Undefined, optional
         hostnames
-    ip : str, default is Undefined, optional
+    ip : str, default is Undefined, required
         ip
     """
 
 
     hostnames?: [str]
 
-    ip?: str
+    ip: str
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 init containers items0
 
     Attributes
@@ -31225,8 +32627,12 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContaine
         ports
     readinessProbe : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0ReadinessProbe, default is Undefined, optional
         readiness probe
+    resizePolicy : [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0ResizePolicyItems0], default is Undefined, optional
+        resize policy
     resources : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0Resources, default is Undefined, optional
         resources
+    restartPolicy : str, default is Undefined, optional
+        restart policy
     securityContext : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0SecurityContext, default is Undefined, optional
         security context
     startupProbe : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0StartupProbe, default is Undefined, optional
@@ -31274,7 +32680,11 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContaine
 
     readinessProbe?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0ReadinessProbe
 
+    resizePolicy?: [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0ResizePolicyItems0]
+
     resources?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0Resources
+
+    restartPolicy?: str
 
     securityContext?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0SecurityContext
 
@@ -31298,7 +32708,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContaine
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0EnvFromItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 init containers items0 env from items0
 
     Attributes
@@ -31320,7 +32730,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContaine
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0EnvFromItems0ConfigMapRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 init containers items0 env from items0 config map ref
 
     Attributes
@@ -31332,13 +32742,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContaine
     """
 
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0EnvFromItems0SecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 init containers items0 env from items0 secret ref
 
     Attributes
@@ -31350,13 +32760,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContaine
     """
 
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0EnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 init containers items0 env items0
 
     Attributes
@@ -31378,7 +32788,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContaine
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0EnvItems0ValueFrom:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 init containers items0 env items0 value from
 
     Attributes
@@ -31404,7 +32814,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContaine
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0EnvItems0ValueFromConfigMapKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 init containers items0 env items0 value from config map key ref
 
     Attributes
@@ -31420,13 +32830,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContaine
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0EnvItems0ValueFromFieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 init containers items0 env items0 value from field ref
 
     Attributes
@@ -31444,7 +32854,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContaine
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0EnvItems0ValueFromResourceFieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 init containers items0 env items0 value from resource field ref
 
     Attributes
@@ -31470,7 +32880,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContaine
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0EnvItems0ValueFromSecretKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 init containers items0 env items0 value from secret key ref
 
     Attributes
@@ -31486,13 +32896,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContaine
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0Lifecycle:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 init containers items0 lifecycle
 
     Attributes
@@ -31510,7 +32920,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContaine
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0LifecyclePostStart:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 init containers items0 lifecycle post start
 
     Attributes
@@ -31519,6 +32929,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContaine
         exec
     httpGet : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0LifecyclePostStartHTTPGet, default is Undefined, optional
         http get
+    sleep : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0LifecyclePostStartSleep, default is Undefined, optional
+        sleep
     tcpSocket : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0LifecyclePostStartTCPSocket, default is Undefined, optional
         tcp socket
     """
@@ -31528,11 +32940,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContaine
 
     httpGet?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0LifecyclePostStartHTTPGet
 
+    sleep?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0LifecyclePostStartSleep
+
     tcpSocket?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0LifecyclePostStartTCPSocket
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0LifecyclePostStartExec:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 init containers items0 lifecycle post start exec
 
     Attributes
@@ -31546,7 +32960,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContaine
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0LifecyclePostStartHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 init containers items0 lifecycle post start HTTP get
 
     Attributes
@@ -31576,7 +32990,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContaine
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0LifecyclePostStartHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 init containers items0 lifecycle post start HTTP get HTTP headers items0
 
     Attributes
@@ -31593,8 +33007,22 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContaine
     value: str
 
 
-schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0LifecyclePostStartTCPSocket:
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0LifecyclePostStartSleep:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec templates items0 init containers items0 lifecycle post start sleep
+
+    Attributes
+    ----------
+    seconds : int, default is Undefined, required
+        seconds
     """
+
+
+    seconds: int
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0LifecyclePostStartTCPSocket:
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 init containers items0 lifecycle post start TCP socket
 
     Attributes
@@ -31612,7 +33040,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContaine
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0LifecyclePreStop:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 init containers items0 lifecycle pre stop
 
     Attributes
@@ -31621,6 +33049,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContaine
         exec
     httpGet : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0LifecyclePreStopHTTPGet, default is Undefined, optional
         http get
+    sleep : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0LifecyclePreStopSleep, default is Undefined, optional
+        sleep
     tcpSocket : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0LifecyclePreStopTCPSocket, default is Undefined, optional
         tcp socket
     """
@@ -31630,11 +33060,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContaine
 
     httpGet?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0LifecyclePreStopHTTPGet
 
+    sleep?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0LifecyclePreStopSleep
+
     tcpSocket?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0LifecyclePreStopTCPSocket
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0LifecyclePreStopExec:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 init containers items0 lifecycle pre stop exec
 
     Attributes
@@ -31648,7 +33080,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContaine
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0LifecyclePreStopHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 init containers items0 lifecycle pre stop HTTP get
 
     Attributes
@@ -31678,7 +33110,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContaine
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0LifecyclePreStopHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 init containers items0 lifecycle pre stop HTTP get HTTP headers items0
 
     Attributes
@@ -31695,8 +33127,22 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContaine
     value: str
 
 
-schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0LifecyclePreStopTCPSocket:
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0LifecyclePreStopSleep:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec templates items0 init containers items0 lifecycle pre stop sleep
+
+    Attributes
+    ----------
+    seconds : int, default is Undefined, required
+        seconds
     """
+
+
+    seconds: int
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0LifecyclePreStopTCPSocket:
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 init containers items0 lifecycle pre stop TCP socket
 
     Attributes
@@ -31714,7 +33160,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContaine
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0LivenessProbe:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 init containers items0 liveness probe
 
     Attributes
@@ -31764,7 +33210,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContaine
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0LivenessProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 init containers items0 liveness probe exec
 
     Attributes
@@ -31778,7 +33224,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContaine
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0LivenessProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 init containers items0 liveness probe grpc
 
     Attributes
@@ -31796,7 +33242,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContaine
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0LivenessProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 init containers items0 liveness probe HTTP get
 
     Attributes
@@ -31826,7 +33272,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContaine
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0LivenessProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 init containers items0 liveness probe HTTP get HTTP headers items0
 
     Attributes
@@ -31844,7 +33290,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContaine
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0LivenessProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 init containers items0 liveness probe TCP socket
 
     Attributes
@@ -31862,7 +33308,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContaine
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0PortsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 init containers items0 ports items0
 
     Attributes
@@ -31892,7 +33338,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContaine
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0ReadinessProbe:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 init containers items0 readiness probe
 
     Attributes
@@ -31942,7 +33388,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContaine
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0ReadinessProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 init containers items0 readiness probe exec
 
     Attributes
@@ -31956,7 +33402,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContaine
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0ReadinessProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 init containers items0 readiness probe grpc
 
     Attributes
@@ -31974,7 +33420,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContaine
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0ReadinessProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 init containers items0 readiness probe HTTP get
 
     Attributes
@@ -32004,7 +33450,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContaine
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0ReadinessProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 init containers items0 readiness probe HTTP get HTTP headers items0
 
     Attributes
@@ -32022,7 +33468,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContaine
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0ReadinessProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 init containers items0 readiness probe TCP socket
 
     Attributes
@@ -32039,8 +33485,26 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContaine
     port: int | str
 
 
-schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0Resources:
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0ResizePolicyItems0:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec templates items0 init containers items0 resize policy items0
+
+    Attributes
+    ----------
+    resourceName : str, default is Undefined, required
+        resource name
+    restartPolicy : str, default is Undefined, required
+        restart policy
     """
+
+
+    resourceName: str
+
+    restartPolicy: str
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0Resources:
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 init containers items0 resources
 
     Attributes
@@ -32062,12 +33526,12 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContaine
 
 
     check:
-        all _, limits in limits {_regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests {_regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0ResourcesClaimsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 init containers items0 resources claims items0
 
     Attributes
@@ -32081,13 +33545,15 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContaine
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0SecurityContext:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 init containers items0 security context
 
     Attributes
     ----------
     allowPrivilegeEscalation : bool, default is Undefined, optional
         allow privilege escalation
+    appArmorProfile : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0SecurityContextAppArmorProfile, default is Undefined, optional
+        app armor profile
     capabilities : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0SecurityContextCapabilities, default is Undefined, optional
         capabilities
     privileged : bool, default is Undefined, optional
@@ -32113,6 +33579,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContaine
 
     allowPrivilegeEscalation?: bool
 
+    appArmorProfile?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0SecurityContextAppArmorProfile
+
     capabilities?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0SecurityContextCapabilities
 
     privileged?: bool
@@ -32134,8 +33602,26 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContaine
     windowsOptions?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0SecurityContextWindowsOptions
 
 
-schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0SecurityContextCapabilities:
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0SecurityContextAppArmorProfile:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec templates items0 init containers items0 security context app armor profile
+
+    Attributes
+    ----------
+    localhostProfile : str, default is Undefined, optional
+        localhost profile
+    $type : str, default is Undefined, required
+        type
     """
+
+
+    localhostProfile?: str
+
+    $type: str
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0SecurityContextCapabilities:
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 init containers items0 security context capabilities
 
     Attributes
@@ -32153,7 +33639,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContaine
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0SecurityContextSeLinuxOptions:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 init containers items0 security context se linux options
 
     Attributes
@@ -32179,7 +33665,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContaine
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0SecurityContextSeccompProfile:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 init containers items0 security context seccomp profile
 
     Attributes
@@ -32197,7 +33683,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContaine
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0SecurityContextWindowsOptions:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 init containers items0 security context windows options
 
     Attributes
@@ -32223,7 +33709,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContaine
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0StartupProbe:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 init containers items0 startup probe
 
     Attributes
@@ -32273,7 +33759,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContaine
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0StartupProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 init containers items0 startup probe exec
 
     Attributes
@@ -32287,7 +33773,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContaine
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0StartupProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 init containers items0 startup probe grpc
 
     Attributes
@@ -32305,7 +33791,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContaine
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0StartupProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 init containers items0 startup probe HTTP get
 
     Attributes
@@ -32335,7 +33821,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContaine
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0StartupProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 init containers items0 startup probe HTTP get HTTP headers items0
 
     Attributes
@@ -32353,7 +33839,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContaine
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0StartupProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 init containers items0 startup probe TCP socket
 
     Attributes
@@ -32371,7 +33857,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContaine
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0VolumeDevicesItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 init containers items0 volume devices items0
 
     Attributes
@@ -32389,7 +33875,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContaine
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContainersItems0VolumeMountsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 init containers items0 volume mounts items0
 
     Attributes
@@ -32402,6 +33888,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContaine
         name
     readOnly : bool, default is Undefined, optional
         read only
+    recursiveReadOnly : str, default is Undefined, optional
+        recursive read only
     subPath : str, default is Undefined, optional
         sub path
     subPathExpr : str, default is Undefined, optional
@@ -32417,13 +33905,15 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InitContaine
 
     readOnly?: bool
 
+    recursiveReadOnly?: str
+
     subPath?: str
 
     subPathExpr?: str
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0Inputs:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 inputs
 
     Attributes
@@ -32441,7 +33931,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0Inputs:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifactsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 inputs artifacts items0
 
     Attributes
@@ -32539,7 +34029,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifa
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifactsItems0Archive:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 inputs artifacts items0 archive
 
     Attributes
@@ -32561,7 +34051,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifa
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifactsItems0ArchiveTar:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 inputs artifacts items0 archive tar
 
     Attributes
@@ -32575,7 +34065,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifa
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifactsItems0ArtifactGC:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 inputs artifacts items0 artifact g c
 
     Attributes
@@ -32597,7 +34087,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifa
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifactsItems0ArtifactGCPodMetadata:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 inputs artifacts items0 artifact g c pod metadata
 
     Attributes
@@ -32615,7 +34105,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifa
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifactsItems0Artifactory:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 inputs artifacts items0 artifactory
 
     Attributes
@@ -32637,7 +34127,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifa
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifactsItems0ArtifactoryPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 inputs artifacts items0 artifactory password secret
 
     Attributes
@@ -32653,13 +34143,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifactsItems0ArtifactoryUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 inputs artifacts items0 artifactory username secret
 
     Attributes
@@ -32675,13 +34165,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifactsItems0Azure:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 inputs artifacts items0 azure
 
     Attributes
@@ -32711,7 +34201,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifa
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifactsItems0AzureAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 inputs artifacts items0 azure account key secret
 
     Attributes
@@ -32727,13 +34217,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifactsItems0Gcs:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 inputs artifacts items0 gcs
 
     Attributes
@@ -32755,7 +34245,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifa
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifactsItems0GcsServiceAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 inputs artifacts items0 gcs service account key secret
 
     Attributes
@@ -32771,13 +34261,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifactsItems0Git:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 inputs artifacts items0 git
 
     Attributes
@@ -32792,6 +34282,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifa
         fetch
     insecureIgnoreHostKey : bool, default is Undefined, optional
         insecure ignore host key
+    insecureSkipTLS : bool, default is Undefined, optional
+        insecure skip TLS
     passwordSecret : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifactsItems0GitPasswordSecret, default is Undefined, optional
         password secret
     repo : str, default is Undefined, required
@@ -32817,6 +34309,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifa
 
     insecureIgnoreHostKey?: bool
 
+    insecureSkipTLS?: bool
+
     passwordSecret?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifactsItems0GitPasswordSecret
 
     repo: str
@@ -32831,7 +34325,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifa
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifactsItems0GitPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 inputs artifacts items0 git password secret
 
     Attributes
@@ -32847,13 +34341,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifactsItems0GitSSHPrivateKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 inputs artifacts items0 git SSH private key secret
 
     Attributes
@@ -32869,13 +34363,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifactsItems0GitUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 inputs artifacts items0 git username secret
 
     Attributes
@@ -32891,13 +34385,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifactsItems0HTTP:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 inputs artifacts items0 HTTP
 
     Attributes
@@ -32919,7 +34413,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifa
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifactsItems0HTTPAuth:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 inputs artifacts items0 HTTP auth
 
     Attributes
@@ -32941,7 +34435,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifa
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifactsItems0HTTPAuthBasicAuth:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 inputs artifacts items0 HTTP auth basic auth
 
     Attributes
@@ -32959,7 +34453,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifa
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifactsItems0HTTPAuthBasicAuthPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 inputs artifacts items0 HTTP auth basic auth password secret
 
     Attributes
@@ -32975,13 +34469,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifactsItems0HTTPAuthBasicAuthUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 inputs artifacts items0 HTTP auth basic auth username secret
 
     Attributes
@@ -32997,13 +34491,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifactsItems0HTTPAuthClientCert:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 inputs artifacts items0 HTTP auth client cert
 
     Attributes
@@ -33021,7 +34515,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifa
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifactsItems0HTTPAuthClientCertClientCertSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 inputs artifacts items0 HTTP auth client cert client cert secret
 
     Attributes
@@ -33037,13 +34531,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifactsItems0HTTPAuthClientCertClientKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 inputs artifacts items0 HTTP auth client cert client key secret
 
     Attributes
@@ -33059,13 +34553,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifactsItems0HTTPAuthOauth2:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 inputs artifacts items0 HTTP auth oauth2
 
     Attributes
@@ -33095,7 +34589,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifa
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifactsItems0HTTPAuthOauth2ClientIDSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 inputs artifacts items0 HTTP auth oauth2 client ID secret
 
     Attributes
@@ -33111,13 +34605,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifactsItems0HTTPAuthOauth2ClientSecretSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 inputs artifacts items0 HTTP auth oauth2 client secret secret
 
     Attributes
@@ -33133,13 +34627,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifactsItems0HTTPAuthOauth2EndpointParamsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 inputs artifacts items0 HTTP auth oauth2 endpoint params items0
 
     Attributes
@@ -33157,7 +34651,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifa
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifactsItems0HTTPAuthOauth2TokenURLSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 inputs artifacts items0 HTTP auth oauth2 token URL secret
 
     Attributes
@@ -33173,13 +34667,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifactsItems0HTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 inputs artifacts items0 HTTP headers items0
 
     Attributes
@@ -33197,13 +34691,15 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifa
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifactsItems0Hdfs:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 inputs artifacts items0 hdfs
 
     Attributes
     ----------
     addresses : [str], default is Undefined, optional
         addresses
+    dataTransferProtection : str, default is Undefined, optional
+        data transfer protection
     force : bool, default is Undefined, optional
         force
     hdfsUser : str, default is Undefined, optional
@@ -33227,6 +34723,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifa
 
     addresses?: [str]
 
+    dataTransferProtection?: str
+
     force?: bool
 
     hdfsUser?: str
@@ -33247,7 +34745,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifa
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifactsItems0HdfsKrbCCacheSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 inputs artifacts items0 hdfs krb c cache secret
 
     Attributes
@@ -33263,13 +34761,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifactsItems0HdfsKrbConfigConfigMap:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 inputs artifacts items0 hdfs krb config config map
 
     Attributes
@@ -33285,13 +34783,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifactsItems0HdfsKrbKeytabSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 inputs artifacts items0 hdfs krb keytab secret
 
     Attributes
@@ -33307,13 +34805,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifactsItems0Oss:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 inputs artifacts items0 oss
 
     Attributes
@@ -33359,7 +34857,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifa
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifactsItems0OssAccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 inputs artifacts items0 oss access key secret
 
     Attributes
@@ -33375,13 +34873,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifactsItems0OssLifecycleRule:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 inputs artifacts items0 oss lifecycle rule
 
     Attributes
@@ -33399,7 +34897,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifa
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifactsItems0OssSecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 inputs artifacts items0 oss secret key secret
 
     Attributes
@@ -33415,13 +34913,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifactsItems0Raw:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 inputs artifacts items0 raw
 
     Attributes
@@ -33435,7 +34933,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifa
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifactsItems0S3:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 inputs artifacts items0 s3
 
     Attributes
@@ -33462,6 +34960,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifa
         role a r n
     secretKeySecret : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifactsItems0S3SecretKeySecret, default is Undefined, optional
         secret key secret
+    sessionTokenSecret : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifactsItems0S3SessionTokenSecret, default is Undefined, optional
+        session token secret
     useSDKCreds : bool, default is Undefined, optional
         use s d k creds
     """
@@ -33489,11 +34989,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifa
 
     secretKeySecret?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifactsItems0S3SecretKeySecret
 
+    sessionTokenSecret?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifactsItems0S3SessionTokenSecret
+
     useSDKCreds?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifactsItems0S3AccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 inputs artifacts items0 s3 access key secret
 
     Attributes
@@ -33509,13 +35011,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifactsItems0S3CaSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 inputs artifacts items0 s3 ca secret
 
     Attributes
@@ -33531,13 +35033,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifactsItems0S3CreateBucketIfNotPresent:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 inputs artifacts items0 s3 create bucket if not present
 
     Attributes
@@ -33551,7 +35053,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifa
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifactsItems0S3EncryptionOptions:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 inputs artifacts items0 s3 encryption options
 
     Attributes
@@ -33577,7 +35079,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifa
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifactsItems0S3EncryptionOptionsServerSideCustomerKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 inputs artifacts items0 s3 encryption options server side customer key secret
 
     Attributes
@@ -33593,13 +35095,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifactsItems0S3SecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 inputs artifacts items0 s3 secret key secret
 
     Attributes
@@ -33615,13 +35117,35 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifa
 
     key: str
 
-    name?: str
+    name?: str = ""
+
+    optional?: bool
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsArtifactsItems0S3SessionTokenSecret:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec templates items0 inputs artifacts items0 s3 session token secret
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 inputs parameters items0
 
     Attributes
@@ -33659,7 +35183,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsParame
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsParametersItems0ValueFrom:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 inputs parameters items0 value from
 
     Attributes
@@ -33705,7 +35229,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsParame
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsParametersItems0ValueFromConfigMapKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 inputs parameters items0 value from config map key ref
 
     Attributes
@@ -33721,13 +35245,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0InputsParame
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0Memoize:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 memoize
 
     Attributes
@@ -33749,7 +35273,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0Memoize:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0MemoizeCache:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 memoize cache
 
     Attributes
@@ -33763,7 +35287,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0MemoizeCache
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0MemoizeCacheConfigMap:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 memoize cache config map
 
     Attributes
@@ -33779,13 +35303,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0MemoizeCache
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0Metadata:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 metadata
 
     Attributes
@@ -33803,7 +35327,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0Metadata:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0Metrics:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 metrics
 
     Attributes
@@ -33817,7 +35341,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0Metrics:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0MetricsPrometheusItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 metrics prometheus items0
 
     Attributes
@@ -33855,7 +35379,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0MetricsProme
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0MetricsPrometheusItems0Counter:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 metrics prometheus items0 counter
 
     Attributes
@@ -33869,7 +35393,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0MetricsProme
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0MetricsPrometheusItems0Gauge:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 metrics prometheus items0 gauge
 
     Attributes
@@ -33891,7 +35415,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0MetricsProme
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0MetricsPrometheusItems0Histogram:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 metrics prometheus items0 histogram
 
     Attributes
@@ -33909,7 +35433,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0MetricsProme
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0MetricsPrometheusItems0LabelsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 metrics prometheus items0 labels items0
 
     Attributes
@@ -33927,7 +35451,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0MetricsProme
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0Outputs:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 outputs
 
     Attributes
@@ -33953,7 +35477,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0Outputs:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtifactsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 outputs artifacts items0
 
     Attributes
@@ -34051,7 +35575,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtif
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtifactsItems0Archive:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 outputs artifacts items0 archive
 
     Attributes
@@ -34073,7 +35597,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtif
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtifactsItems0ArchiveTar:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 outputs artifacts items0 archive tar
 
     Attributes
@@ -34087,7 +35611,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtif
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtifactsItems0ArtifactGC:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 outputs artifacts items0 artifact g c
 
     Attributes
@@ -34109,7 +35633,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtif
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtifactsItems0ArtifactGCPodMetadata:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 outputs artifacts items0 artifact g c pod metadata
 
     Attributes
@@ -34127,7 +35651,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtif
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtifactsItems0Artifactory:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 outputs artifacts items0 artifactory
 
     Attributes
@@ -34149,7 +35673,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtif
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtifactsItems0ArtifactoryPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 outputs artifacts items0 artifactory password secret
 
     Attributes
@@ -34165,13 +35689,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtifactsItems0ArtifactoryUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 outputs artifacts items0 artifactory username secret
 
     Attributes
@@ -34187,13 +35711,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtifactsItems0Azure:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 outputs artifacts items0 azure
 
     Attributes
@@ -34223,7 +35747,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtif
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtifactsItems0AzureAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 outputs artifacts items0 azure account key secret
 
     Attributes
@@ -34239,13 +35763,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtifactsItems0Gcs:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 outputs artifacts items0 gcs
 
     Attributes
@@ -34267,7 +35791,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtif
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtifactsItems0GcsServiceAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 outputs artifacts items0 gcs service account key secret
 
     Attributes
@@ -34283,13 +35807,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtifactsItems0Git:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 outputs artifacts items0 git
 
     Attributes
@@ -34304,6 +35828,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtif
         fetch
     insecureIgnoreHostKey : bool, default is Undefined, optional
         insecure ignore host key
+    insecureSkipTLS : bool, default is Undefined, optional
+        insecure skip TLS
     passwordSecret : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtifactsItems0GitPasswordSecret, default is Undefined, optional
         password secret
     repo : str, default is Undefined, required
@@ -34329,6 +35855,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtif
 
     insecureIgnoreHostKey?: bool
 
+    insecureSkipTLS?: bool
+
     passwordSecret?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtifactsItems0GitPasswordSecret
 
     repo: str
@@ -34343,7 +35871,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtif
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtifactsItems0GitPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 outputs artifacts items0 git password secret
 
     Attributes
@@ -34359,13 +35887,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtifactsItems0GitSSHPrivateKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 outputs artifacts items0 git SSH private key secret
 
     Attributes
@@ -34381,13 +35909,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtifactsItems0GitUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 outputs artifacts items0 git username secret
 
     Attributes
@@ -34403,13 +35931,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtifactsItems0HTTP:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 outputs artifacts items0 HTTP
 
     Attributes
@@ -34431,7 +35959,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtif
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtifactsItems0HTTPAuth:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 outputs artifacts items0 HTTP auth
 
     Attributes
@@ -34453,7 +35981,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtif
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtifactsItems0HTTPAuthBasicAuth:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 outputs artifacts items0 HTTP auth basic auth
 
     Attributes
@@ -34471,7 +35999,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtif
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtifactsItems0HTTPAuthBasicAuthPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 outputs artifacts items0 HTTP auth basic auth password secret
 
     Attributes
@@ -34487,13 +36015,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtifactsItems0HTTPAuthBasicAuthUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 outputs artifacts items0 HTTP auth basic auth username secret
 
     Attributes
@@ -34509,13 +36037,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtifactsItems0HTTPAuthClientCert:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 outputs artifacts items0 HTTP auth client cert
 
     Attributes
@@ -34533,7 +36061,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtif
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtifactsItems0HTTPAuthClientCertClientCertSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 outputs artifacts items0 HTTP auth client cert client cert secret
 
     Attributes
@@ -34549,13 +36077,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtifactsItems0HTTPAuthClientCertClientKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 outputs artifacts items0 HTTP auth client cert client key secret
 
     Attributes
@@ -34571,13 +36099,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtifactsItems0HTTPAuthOauth2:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 outputs artifacts items0 HTTP auth oauth2
 
     Attributes
@@ -34607,7 +36135,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtif
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtifactsItems0HTTPAuthOauth2ClientIDSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 outputs artifacts items0 HTTP auth oauth2 client ID secret
 
     Attributes
@@ -34623,13 +36151,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtifactsItems0HTTPAuthOauth2ClientSecretSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 outputs artifacts items0 HTTP auth oauth2 client secret secret
 
     Attributes
@@ -34645,13 +36173,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtifactsItems0HTTPAuthOauth2EndpointParamsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 outputs artifacts items0 HTTP auth oauth2 endpoint params items0
 
     Attributes
@@ -34669,7 +36197,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtif
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtifactsItems0HTTPAuthOauth2TokenURLSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 outputs artifacts items0 HTTP auth oauth2 token URL secret
 
     Attributes
@@ -34685,13 +36213,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtifactsItems0HTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 outputs artifacts items0 HTTP headers items0
 
     Attributes
@@ -34709,13 +36237,15 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtif
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtifactsItems0Hdfs:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 outputs artifacts items0 hdfs
 
     Attributes
     ----------
     addresses : [str], default is Undefined, optional
         addresses
+    dataTransferProtection : str, default is Undefined, optional
+        data transfer protection
     force : bool, default is Undefined, optional
         force
     hdfsUser : str, default is Undefined, optional
@@ -34739,6 +36269,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtif
 
     addresses?: [str]
 
+    dataTransferProtection?: str
+
     force?: bool
 
     hdfsUser?: str
@@ -34759,7 +36291,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtif
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtifactsItems0HdfsKrbCCacheSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 outputs artifacts items0 hdfs krb c cache secret
 
     Attributes
@@ -34775,13 +36307,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtifactsItems0HdfsKrbConfigConfigMap:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 outputs artifacts items0 hdfs krb config config map
 
     Attributes
@@ -34797,13 +36329,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtifactsItems0HdfsKrbKeytabSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 outputs artifacts items0 hdfs krb keytab secret
 
     Attributes
@@ -34819,13 +36351,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtifactsItems0Oss:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 outputs artifacts items0 oss
 
     Attributes
@@ -34871,7 +36403,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtif
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtifactsItems0OssAccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 outputs artifacts items0 oss access key secret
 
     Attributes
@@ -34887,13 +36419,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtifactsItems0OssLifecycleRule:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 outputs artifacts items0 oss lifecycle rule
 
     Attributes
@@ -34911,7 +36443,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtif
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtifactsItems0OssSecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 outputs artifacts items0 oss secret key secret
 
     Attributes
@@ -34927,13 +36459,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtifactsItems0Raw:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 outputs artifacts items0 raw
 
     Attributes
@@ -34947,7 +36479,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtif
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtifactsItems0S3:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 outputs artifacts items0 s3
 
     Attributes
@@ -34974,6 +36506,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtif
         role a r n
     secretKeySecret : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtifactsItems0S3SecretKeySecret, default is Undefined, optional
         secret key secret
+    sessionTokenSecret : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtifactsItems0S3SessionTokenSecret, default is Undefined, optional
+        session token secret
     useSDKCreds : bool, default is Undefined, optional
         use s d k creds
     """
@@ -35001,11 +36535,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtif
 
     secretKeySecret?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtifactsItems0S3SecretKeySecret
 
+    sessionTokenSecret?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtifactsItems0S3SessionTokenSecret
+
     useSDKCreds?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtifactsItems0S3AccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 outputs artifacts items0 s3 access key secret
 
     Attributes
@@ -35021,13 +36557,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtifactsItems0S3CaSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 outputs artifacts items0 s3 ca secret
 
     Attributes
@@ -35043,13 +36579,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtifactsItems0S3CreateBucketIfNotPresent:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 outputs artifacts items0 s3 create bucket if not present
 
     Attributes
@@ -35063,7 +36599,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtif
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtifactsItems0S3EncryptionOptions:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 outputs artifacts items0 s3 encryption options
 
     Attributes
@@ -35089,7 +36625,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtif
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtifactsItems0S3EncryptionOptionsServerSideCustomerKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 outputs artifacts items0 s3 encryption options server side customer key secret
 
     Attributes
@@ -35105,13 +36641,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtifactsItems0S3SecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 outputs artifacts items0 s3 secret key secret
 
     Attributes
@@ -35127,13 +36663,35 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtif
 
     key: str
 
-    name?: str
+    name?: str = ""
+
+    optional?: bool
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsArtifactsItems0S3SessionTokenSecret:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec templates items0 outputs artifacts items0 s3 session token secret
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 outputs parameters items0
 
     Attributes
@@ -35171,7 +36729,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsParam
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsParametersItems0ValueFrom:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 outputs parameters items0 value from
 
     Attributes
@@ -35217,7 +36775,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsParam
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsParametersItems0ValueFromConfigMapKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 outputs parameters items0 value from config map key ref
 
     Attributes
@@ -35233,13 +36791,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0OutputsParam
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0Resource:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 resource
 
     Attributes
@@ -35281,7 +36839,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0Resource:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceManifestFrom:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 resource manifest from
 
     Attributes
@@ -35295,7 +36853,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceMani
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceManifestFromArtifact:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 resource manifest from artifact
 
     Attributes
@@ -35393,7 +36951,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceMani
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceManifestFromArtifactArchive:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 resource manifest from artifact archive
 
     Attributes
@@ -35415,7 +36973,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceMani
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceManifestFromArtifactArchiveTar:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 resource manifest from artifact archive tar
 
     Attributes
@@ -35429,7 +36987,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceMani
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceManifestFromArtifactArtifactGC:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 resource manifest from artifact artifact g c
 
     Attributes
@@ -35451,7 +37009,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceMani
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceManifestFromArtifactArtifactGCPodMetadata:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 resource manifest from artifact artifact g c pod metadata
 
     Attributes
@@ -35469,7 +37027,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceMani
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceManifestFromArtifactArtifactory:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 resource manifest from artifact artifactory
 
     Attributes
@@ -35491,7 +37049,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceMani
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceManifestFromArtifactArtifactoryPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 resource manifest from artifact artifactory password secret
 
     Attributes
@@ -35507,13 +37065,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceMani
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceManifestFromArtifactArtifactoryUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 resource manifest from artifact artifactory username secret
 
     Attributes
@@ -35529,13 +37087,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceMani
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceManifestFromArtifactAzure:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 resource manifest from artifact azure
 
     Attributes
@@ -35565,7 +37123,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceMani
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceManifestFromArtifactAzureAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 resource manifest from artifact azure account key secret
 
     Attributes
@@ -35581,13 +37139,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceMani
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceManifestFromArtifactGcs:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 resource manifest from artifact gcs
 
     Attributes
@@ -35609,7 +37167,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceMani
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceManifestFromArtifactGcsServiceAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 resource manifest from artifact gcs service account key secret
 
     Attributes
@@ -35625,13 +37183,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceMani
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceManifestFromArtifactGit:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 resource manifest from artifact git
 
     Attributes
@@ -35646,6 +37204,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceMani
         fetch
     insecureIgnoreHostKey : bool, default is Undefined, optional
         insecure ignore host key
+    insecureSkipTLS : bool, default is Undefined, optional
+        insecure skip TLS
     passwordSecret : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceManifestFromArtifactGitPasswordSecret, default is Undefined, optional
         password secret
     repo : str, default is Undefined, required
@@ -35671,6 +37231,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceMani
 
     insecureIgnoreHostKey?: bool
 
+    insecureSkipTLS?: bool
+
     passwordSecret?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceManifestFromArtifactGitPasswordSecret
 
     repo: str
@@ -35685,7 +37247,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceMani
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceManifestFromArtifactGitPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 resource manifest from artifact git password secret
 
     Attributes
@@ -35701,13 +37263,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceMani
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceManifestFromArtifactGitSSHPrivateKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 resource manifest from artifact git SSH private key secret
 
     Attributes
@@ -35723,13 +37285,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceMani
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceManifestFromArtifactGitUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 resource manifest from artifact git username secret
 
     Attributes
@@ -35745,13 +37307,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceMani
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceManifestFromArtifactHTTP:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 resource manifest from artifact HTTP
 
     Attributes
@@ -35773,7 +37335,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceMani
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceManifestFromArtifactHTTPAuth:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 resource manifest from artifact HTTP auth
 
     Attributes
@@ -35795,7 +37357,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceMani
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceManifestFromArtifactHTTPAuthBasicAuth:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 resource manifest from artifact HTTP auth basic auth
 
     Attributes
@@ -35813,7 +37375,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceMani
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceManifestFromArtifactHTTPAuthBasicAuthPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 resource manifest from artifact HTTP auth basic auth password secret
 
     Attributes
@@ -35829,13 +37391,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceMani
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceManifestFromArtifactHTTPAuthBasicAuthUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 resource manifest from artifact HTTP auth basic auth username secret
 
     Attributes
@@ -35851,13 +37413,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceMani
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceManifestFromArtifactHTTPAuthClientCert:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 resource manifest from artifact HTTP auth client cert
 
     Attributes
@@ -35875,7 +37437,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceMani
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceManifestFromArtifactHTTPAuthClientCertClientCertSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 resource manifest from artifact HTTP auth client cert client cert secret
 
     Attributes
@@ -35891,13 +37453,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceMani
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceManifestFromArtifactHTTPAuthClientCertClientKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 resource manifest from artifact HTTP auth client cert client key secret
 
     Attributes
@@ -35913,13 +37475,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceMani
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceManifestFromArtifactHTTPAuthOauth2:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 resource manifest from artifact HTTP auth oauth2
 
     Attributes
@@ -35949,7 +37511,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceMani
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceManifestFromArtifactHTTPAuthOauth2ClientIDSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 resource manifest from artifact HTTP auth oauth2 client ID secret
 
     Attributes
@@ -35965,13 +37527,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceMani
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceManifestFromArtifactHTTPAuthOauth2ClientSecretSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 resource manifest from artifact HTTP auth oauth2 client secret secret
 
     Attributes
@@ -35987,13 +37549,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceMani
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceManifestFromArtifactHTTPAuthOauth2EndpointParamsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 resource manifest from artifact HTTP auth oauth2 endpoint params items0
 
     Attributes
@@ -36011,7 +37573,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceMani
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceManifestFromArtifactHTTPAuthOauth2TokenURLSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 resource manifest from artifact HTTP auth oauth2 token URL secret
 
     Attributes
@@ -36027,13 +37589,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceMani
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceManifestFromArtifactHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 resource manifest from artifact HTTP headers items0
 
     Attributes
@@ -36051,13 +37613,15 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceMani
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceManifestFromArtifactHdfs:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 resource manifest from artifact hdfs
 
     Attributes
     ----------
     addresses : [str], default is Undefined, optional
         addresses
+    dataTransferProtection : str, default is Undefined, optional
+        data transfer protection
     force : bool, default is Undefined, optional
         force
     hdfsUser : str, default is Undefined, optional
@@ -36081,6 +37645,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceMani
 
     addresses?: [str]
 
+    dataTransferProtection?: str
+
     force?: bool
 
     hdfsUser?: str
@@ -36101,7 +37667,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceMani
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceManifestFromArtifactHdfsKrbCCacheSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 resource manifest from artifact hdfs krb c cache secret
 
     Attributes
@@ -36117,13 +37683,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceMani
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceManifestFromArtifactHdfsKrbConfigConfigMap:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 resource manifest from artifact hdfs krb config config map
 
     Attributes
@@ -36139,13 +37705,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceMani
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceManifestFromArtifactHdfsKrbKeytabSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 resource manifest from artifact hdfs krb keytab secret
 
     Attributes
@@ -36161,13 +37727,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceMani
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceManifestFromArtifactOss:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 resource manifest from artifact oss
 
     Attributes
@@ -36213,7 +37779,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceMani
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceManifestFromArtifactOssAccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 resource manifest from artifact oss access key secret
 
     Attributes
@@ -36229,13 +37795,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceMani
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceManifestFromArtifactOssLifecycleRule:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 resource manifest from artifact oss lifecycle rule
 
     Attributes
@@ -36253,7 +37819,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceMani
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceManifestFromArtifactOssSecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 resource manifest from artifact oss secret key secret
 
     Attributes
@@ -36269,13 +37835,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceMani
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceManifestFromArtifactRaw:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 resource manifest from artifact raw
 
     Attributes
@@ -36289,7 +37855,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceMani
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceManifestFromArtifactS3:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 resource manifest from artifact s3
 
     Attributes
@@ -36316,6 +37882,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceMani
         role a r n
     secretKeySecret : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceManifestFromArtifactS3SecretKeySecret, default is Undefined, optional
         secret key secret
+    sessionTokenSecret : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceManifestFromArtifactS3SessionTokenSecret, default is Undefined, optional
+        session token secret
     useSDKCreds : bool, default is Undefined, optional
         use s d k creds
     """
@@ -36343,11 +37911,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceMani
 
     secretKeySecret?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceManifestFromArtifactS3SecretKeySecret
 
+    sessionTokenSecret?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceManifestFromArtifactS3SessionTokenSecret
+
     useSDKCreds?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceManifestFromArtifactS3AccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 resource manifest from artifact s3 access key secret
 
     Attributes
@@ -36363,13 +37933,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceMani
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceManifestFromArtifactS3CaSecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 resource manifest from artifact s3 ca secret
 
     Attributes
@@ -36385,13 +37955,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceMani
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceManifestFromArtifactS3CreateBucketIfNotPresent:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 resource manifest from artifact s3 create bucket if not present
 
     Attributes
@@ -36405,7 +37975,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceMani
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceManifestFromArtifactS3EncryptionOptions:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 resource manifest from artifact s3 encryption options
 
     Attributes
@@ -36431,7 +38001,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceMani
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceManifestFromArtifactS3EncryptionOptionsServerSideCustomerKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 resource manifest from artifact s3 encryption options server side customer key secret
 
     Attributes
@@ -36447,13 +38017,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceMani
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceManifestFromArtifactS3SecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 resource manifest from artifact s3 secret key secret
 
     Attributes
@@ -36469,13 +38039,35 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceMani
 
     key: str
 
-    name?: str
+    name?: str = ""
+
+    optional?: bool
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ResourceManifestFromArtifactS3SessionTokenSecret:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec templates items0 resource manifest from artifact s3 session token secret
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0RetryStrategy:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 retry strategy
 
     Attributes
@@ -36505,7 +38097,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0RetryStrateg
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0RetryStrategyAffinity:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 retry strategy affinity
 
     Attributes
@@ -36519,7 +38111,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0RetryStrateg
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0RetryStrategyBackoff:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 retry strategy backoff
 
     Attributes
@@ -36541,7 +38133,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0RetryStrateg
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0Script:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 script
 
     Attributes
@@ -36568,8 +38160,12 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0Script:
         ports
     readinessProbe : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptReadinessProbe, default is Undefined, optional
         readiness probe
+    resizePolicy : [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptResizePolicyItems0], default is Undefined, optional
+        resize policy
     resources : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptResources, default is Undefined, optional
         resources
+    restartPolicy : str, default is Undefined, optional
+        restart policy
     securityContext : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptSecurityContext, default is Undefined, optional
         security context
     source : str, default is Undefined, required
@@ -36617,7 +38213,11 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0Script:
 
     readinessProbe?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptReadinessProbe
 
+    resizePolicy?: [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptResizePolicyItems0]
+
     resources?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptResources
+
+    restartPolicy?: str
 
     securityContext?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptSecurityContext
 
@@ -36643,7 +38243,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0Script:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptEnvFromItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 script env from items0
 
     Attributes
@@ -36665,7 +38265,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptEnvFro
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptEnvFromItems0ConfigMapRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 script env from items0 config map ref
 
     Attributes
@@ -36677,13 +38277,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptEnvFro
     """
 
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptEnvFromItems0SecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 script env from items0 secret ref
 
     Attributes
@@ -36695,13 +38295,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptEnvFro
     """
 
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptEnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 script env items0
 
     Attributes
@@ -36723,7 +38323,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptEnvIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptEnvItems0ValueFrom:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 script env items0 value from
 
     Attributes
@@ -36749,7 +38349,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptEnvIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptEnvItems0ValueFromConfigMapKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 script env items0 value from config map key ref
 
     Attributes
@@ -36765,13 +38365,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptEnvIte
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptEnvItems0ValueFromFieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 script env items0 value from field ref
 
     Attributes
@@ -36789,7 +38389,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptEnvIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptEnvItems0ValueFromResourceFieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 script env items0 value from resource field ref
 
     Attributes
@@ -36815,7 +38415,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptEnvIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptEnvItems0ValueFromSecretKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 script env items0 value from secret key ref
 
     Attributes
@@ -36831,13 +38431,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptEnvIte
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptLifecycle:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 script lifecycle
 
     Attributes
@@ -36855,7 +38455,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptLifecy
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptLifecyclePostStart:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 script lifecycle post start
 
     Attributes
@@ -36864,6 +38464,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptLifecy
         exec
     httpGet : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptLifecyclePostStartHTTPGet, default is Undefined, optional
         http get
+    sleep : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptLifecyclePostStartSleep, default is Undefined, optional
+        sleep
     tcpSocket : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptLifecyclePostStartTCPSocket, default is Undefined, optional
         tcp socket
     """
@@ -36873,11 +38475,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptLifecy
 
     httpGet?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptLifecyclePostStartHTTPGet
 
+    sleep?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptLifecyclePostStartSleep
+
     tcpSocket?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptLifecyclePostStartTCPSocket
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptLifecyclePostStartExec:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 script lifecycle post start exec
 
     Attributes
@@ -36891,7 +38495,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptLifecy
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptLifecyclePostStartHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 script lifecycle post start HTTP get
 
     Attributes
@@ -36921,7 +38525,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptLifecy
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptLifecyclePostStartHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 script lifecycle post start HTTP get HTTP headers items0
 
     Attributes
@@ -36938,8 +38542,22 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptLifecy
     value: str
 
 
-schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptLifecyclePostStartTCPSocket:
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptLifecyclePostStartSleep:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec templates items0 script lifecycle post start sleep
+
+    Attributes
+    ----------
+    seconds : int, default is Undefined, required
+        seconds
     """
+
+
+    seconds: int
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptLifecyclePostStartTCPSocket:
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 script lifecycle post start TCP socket
 
     Attributes
@@ -36957,7 +38575,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptLifecy
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptLifecyclePreStop:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 script lifecycle pre stop
 
     Attributes
@@ -36966,6 +38584,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptLifecy
         exec
     httpGet : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptLifecyclePreStopHTTPGet, default is Undefined, optional
         http get
+    sleep : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptLifecyclePreStopSleep, default is Undefined, optional
+        sleep
     tcpSocket : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptLifecyclePreStopTCPSocket, default is Undefined, optional
         tcp socket
     """
@@ -36975,11 +38595,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptLifecy
 
     httpGet?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptLifecyclePreStopHTTPGet
 
+    sleep?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptLifecyclePreStopSleep
+
     tcpSocket?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptLifecyclePreStopTCPSocket
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptLifecyclePreStopExec:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 script lifecycle pre stop exec
 
     Attributes
@@ -36993,7 +38615,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptLifecy
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptLifecyclePreStopHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 script lifecycle pre stop HTTP get
 
     Attributes
@@ -37023,7 +38645,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptLifecy
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptLifecyclePreStopHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 script lifecycle pre stop HTTP get HTTP headers items0
 
     Attributes
@@ -37040,8 +38662,22 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptLifecy
     value: str
 
 
-schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptLifecyclePreStopTCPSocket:
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptLifecyclePreStopSleep:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec templates items0 script lifecycle pre stop sleep
+
+    Attributes
+    ----------
+    seconds : int, default is Undefined, required
+        seconds
     """
+
+
+    seconds: int
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptLifecyclePreStopTCPSocket:
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 script lifecycle pre stop TCP socket
 
     Attributes
@@ -37059,7 +38695,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptLifecy
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptLivenessProbe:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 script liveness probe
 
     Attributes
@@ -37109,7 +38745,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptLivene
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptLivenessProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 script liveness probe exec
 
     Attributes
@@ -37123,7 +38759,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptLivene
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptLivenessProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 script liveness probe grpc
 
     Attributes
@@ -37141,7 +38777,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptLivene
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptLivenessProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 script liveness probe HTTP get
 
     Attributes
@@ -37171,7 +38807,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptLivene
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptLivenessProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 script liveness probe HTTP get HTTP headers items0
 
     Attributes
@@ -37189,7 +38825,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptLivene
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptLivenessProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 script liveness probe TCP socket
 
     Attributes
@@ -37207,7 +38843,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptLivene
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptPortsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 script ports items0
 
     Attributes
@@ -37237,7 +38873,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptPortsI
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptReadinessProbe:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 script readiness probe
 
     Attributes
@@ -37287,7 +38923,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptReadin
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptReadinessProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 script readiness probe exec
 
     Attributes
@@ -37301,7 +38937,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptReadin
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptReadinessProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 script readiness probe grpc
 
     Attributes
@@ -37319,7 +38955,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptReadin
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptReadinessProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 script readiness probe HTTP get
 
     Attributes
@@ -37349,7 +38985,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptReadin
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptReadinessProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 script readiness probe HTTP get HTTP headers items0
 
     Attributes
@@ -37367,7 +39003,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptReadin
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptReadinessProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 script readiness probe TCP socket
 
     Attributes
@@ -37384,8 +39020,26 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptReadin
     port: int | str
 
 
-schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptResources:
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptResizePolicyItems0:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec templates items0 script resize policy items0
+
+    Attributes
+    ----------
+    resourceName : str, default is Undefined, required
+        resource name
+    restartPolicy : str, default is Undefined, required
+        restart policy
     """
+
+
+    resourceName: str
+
+    restartPolicy: str
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptResources:
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 script resources
 
     Attributes
@@ -37407,12 +39061,12 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptResour
 
 
     check:
-        all _, limits in limits {_regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests {_regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptResourcesClaimsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 script resources claims items0
 
     Attributes
@@ -37426,13 +39080,15 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptResour
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptSecurityContext:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 script security context
 
     Attributes
     ----------
     allowPrivilegeEscalation : bool, default is Undefined, optional
         allow privilege escalation
+    appArmorProfile : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptSecurityContextAppArmorProfile, default is Undefined, optional
+        app armor profile
     capabilities : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptSecurityContextCapabilities, default is Undefined, optional
         capabilities
     privileged : bool, default is Undefined, optional
@@ -37458,6 +39114,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptSecuri
 
     allowPrivilegeEscalation?: bool
 
+    appArmorProfile?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptSecurityContextAppArmorProfile
+
     capabilities?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptSecurityContextCapabilities
 
     privileged?: bool
@@ -37479,8 +39137,26 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptSecuri
     windowsOptions?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptSecurityContextWindowsOptions
 
 
-schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptSecurityContextCapabilities:
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptSecurityContextAppArmorProfile:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec templates items0 script security context app armor profile
+
+    Attributes
+    ----------
+    localhostProfile : str, default is Undefined, optional
+        localhost profile
+    $type : str, default is Undefined, required
+        type
     """
+
+
+    localhostProfile?: str
+
+    $type: str
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptSecurityContextCapabilities:
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 script security context capabilities
 
     Attributes
@@ -37498,7 +39174,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptSecuri
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptSecurityContextSeLinuxOptions:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 script security context se linux options
 
     Attributes
@@ -37524,7 +39200,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptSecuri
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptSecurityContextSeccompProfile:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 script security context seccomp profile
 
     Attributes
@@ -37542,7 +39218,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptSecuri
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptSecurityContextWindowsOptions:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 script security context windows options
 
     Attributes
@@ -37568,7 +39244,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptSecuri
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptStartupProbe:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 script startup probe
 
     Attributes
@@ -37618,7 +39294,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptStartu
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptStartupProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 script startup probe exec
 
     Attributes
@@ -37632,7 +39308,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptStartu
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptStartupProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 script startup probe grpc
 
     Attributes
@@ -37650,7 +39326,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptStartu
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptStartupProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 script startup probe HTTP get
 
     Attributes
@@ -37680,7 +39356,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptStartu
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptStartupProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 script startup probe HTTP get HTTP headers items0
 
     Attributes
@@ -37698,7 +39374,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptStartu
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptStartupProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 script startup probe TCP socket
 
     Attributes
@@ -37716,7 +39392,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptStartu
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptVolumeDevicesItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 script volume devices items0
 
     Attributes
@@ -37734,7 +39410,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptVolume
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptVolumeMountsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 script volume mounts items0
 
     Attributes
@@ -37747,6 +39423,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptVolume
         name
     readOnly : bool, default is Undefined, optional
         read only
+    recursiveReadOnly : str, default is Undefined, optional
+        recursive read only
     subPath : str, default is Undefined, optional
         sub path
     subPathExpr : str, default is Undefined, optional
@@ -37762,17 +39440,21 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0ScriptVolume
 
     readOnly?: bool
 
+    recursiveReadOnly?: str
+
     subPath?: str
 
     subPathExpr?: str
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SecurityContext:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 security context
 
     Attributes
     ----------
+    appArmorProfile : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SecurityContextAppArmorProfile, default is Undefined, optional
+        app armor profile
     fsGroup : int, default is Undefined, optional
         fs group
     fsGroupChangePolicy : str, default is Undefined, optional
@@ -37796,6 +39478,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SecurityCont
     """
 
 
+    appArmorProfile?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SecurityContextAppArmorProfile
+
     fsGroup?: int
 
     fsGroupChangePolicy?: str
@@ -37817,8 +39501,26 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SecurityCont
     windowsOptions?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SecurityContextWindowsOptions
 
 
-schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SecurityContextSeLinuxOptions:
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SecurityContextAppArmorProfile:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec templates items0 security context app armor profile
+
+    Attributes
+    ----------
+    localhostProfile : str, default is Undefined, optional
+        localhost profile
+    $type : str, default is Undefined, required
+        type
     """
+
+
+    localhostProfile?: str
+
+    $type: str
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SecurityContextSeLinuxOptions:
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 security context se linux options
 
     Attributes
@@ -37844,7 +39546,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SecurityCont
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SecurityContextSeccompProfile:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 security context seccomp profile
 
     Attributes
@@ -37862,7 +39564,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SecurityCont
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SecurityContextSysctlsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 security context sysctls items0
 
     Attributes
@@ -37880,7 +39582,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SecurityCont
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SecurityContextWindowsOptions:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 security context windows options
 
     Attributes
@@ -37906,7 +39608,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SecurityCont
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 sidecars items0
 
     Attributes
@@ -37935,8 +39637,12 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItem
         ports
     readinessProbe : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0ReadinessProbe, default is Undefined, optional
         readiness probe
+    resizePolicy : [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0ResizePolicyItems0], default is Undefined, optional
+        resize policy
     resources : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0Resources, default is Undefined, optional
         resources
+    restartPolicy : str, default is Undefined, optional
+        restart policy
     securityContext : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0SecurityContext, default is Undefined, optional
         security context
     startupProbe : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0StartupProbe, default is Undefined, optional
@@ -37984,7 +39690,11 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItem
 
     readinessProbe?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0ReadinessProbe
 
+    resizePolicy?: [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0ResizePolicyItems0]
+
     resources?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0Resources
+
+    restartPolicy?: str
 
     securityContext?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0SecurityContext
 
@@ -38008,7 +39718,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0EnvFromItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 sidecars items0 env from items0
 
     Attributes
@@ -38030,7 +39740,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0EnvFromItems0ConfigMapRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 sidecars items0 env from items0 config map ref
 
     Attributes
@@ -38042,13 +39752,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItem
     """
 
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0EnvFromItems0SecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 sidecars items0 env from items0 secret ref
 
     Attributes
@@ -38060,13 +39770,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItem
     """
 
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0EnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 sidecars items0 env items0
 
     Attributes
@@ -38088,7 +39798,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0EnvItems0ValueFrom:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 sidecars items0 env items0 value from
 
     Attributes
@@ -38114,7 +39824,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0EnvItems0ValueFromConfigMapKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 sidecars items0 env items0 value from config map key ref
 
     Attributes
@@ -38130,13 +39840,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0EnvItems0ValueFromFieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 sidecars items0 env items0 value from field ref
 
     Attributes
@@ -38154,7 +39864,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0EnvItems0ValueFromResourceFieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 sidecars items0 env items0 value from resource field ref
 
     Attributes
@@ -38180,7 +39890,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0EnvItems0ValueFromSecretKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 sidecars items0 env items0 value from secret key ref
 
     Attributes
@@ -38196,13 +39906,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItem
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0Lifecycle:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 sidecars items0 lifecycle
 
     Attributes
@@ -38220,7 +39930,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0LifecyclePostStart:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 sidecars items0 lifecycle post start
 
     Attributes
@@ -38229,6 +39939,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItem
         exec
     httpGet : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0LifecyclePostStartHTTPGet, default is Undefined, optional
         http get
+    sleep : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0LifecyclePostStartSleep, default is Undefined, optional
+        sleep
     tcpSocket : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0LifecyclePostStartTCPSocket, default is Undefined, optional
         tcp socket
     """
@@ -38238,11 +39950,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItem
 
     httpGet?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0LifecyclePostStartHTTPGet
 
+    sleep?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0LifecyclePostStartSleep
+
     tcpSocket?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0LifecyclePostStartTCPSocket
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0LifecyclePostStartExec:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 sidecars items0 lifecycle post start exec
 
     Attributes
@@ -38256,7 +39970,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0LifecyclePostStartHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 sidecars items0 lifecycle post start HTTP get
 
     Attributes
@@ -38286,7 +40000,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0LifecyclePostStartHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 sidecars items0 lifecycle post start HTTP get HTTP headers items0
 
     Attributes
@@ -38303,8 +40017,22 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItem
     value: str
 
 
-schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0LifecyclePostStartTCPSocket:
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0LifecyclePostStartSleep:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec templates items0 sidecars items0 lifecycle post start sleep
+
+    Attributes
+    ----------
+    seconds : int, default is Undefined, required
+        seconds
     """
+
+
+    seconds: int
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0LifecyclePostStartTCPSocket:
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 sidecars items0 lifecycle post start TCP socket
 
     Attributes
@@ -38322,7 +40050,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0LifecyclePreStop:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 sidecars items0 lifecycle pre stop
 
     Attributes
@@ -38331,6 +40059,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItem
         exec
     httpGet : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0LifecyclePreStopHTTPGet, default is Undefined, optional
         http get
+    sleep : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0LifecyclePreStopSleep, default is Undefined, optional
+        sleep
     tcpSocket : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0LifecyclePreStopTCPSocket, default is Undefined, optional
         tcp socket
     """
@@ -38340,11 +40070,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItem
 
     httpGet?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0LifecyclePreStopHTTPGet
 
+    sleep?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0LifecyclePreStopSleep
+
     tcpSocket?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0LifecyclePreStopTCPSocket
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0LifecyclePreStopExec:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 sidecars items0 lifecycle pre stop exec
 
     Attributes
@@ -38358,7 +40090,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0LifecyclePreStopHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 sidecars items0 lifecycle pre stop HTTP get
 
     Attributes
@@ -38388,7 +40120,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0LifecyclePreStopHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 sidecars items0 lifecycle pre stop HTTP get HTTP headers items0
 
     Attributes
@@ -38405,8 +40137,22 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItem
     value: str
 
 
-schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0LifecyclePreStopTCPSocket:
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0LifecyclePreStopSleep:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec templates items0 sidecars items0 lifecycle pre stop sleep
+
+    Attributes
+    ----------
+    seconds : int, default is Undefined, required
+        seconds
     """
+
+
+    seconds: int
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0LifecyclePreStopTCPSocket:
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 sidecars items0 lifecycle pre stop TCP socket
 
     Attributes
@@ -38424,7 +40170,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0LivenessProbe:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 sidecars items0 liveness probe
 
     Attributes
@@ -38474,7 +40220,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0LivenessProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 sidecars items0 liveness probe exec
 
     Attributes
@@ -38488,7 +40234,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0LivenessProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 sidecars items0 liveness probe grpc
 
     Attributes
@@ -38506,7 +40252,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0LivenessProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 sidecars items0 liveness probe HTTP get
 
     Attributes
@@ -38536,7 +40282,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0LivenessProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 sidecars items0 liveness probe HTTP get HTTP headers items0
 
     Attributes
@@ -38554,7 +40300,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0LivenessProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 sidecars items0 liveness probe TCP socket
 
     Attributes
@@ -38572,7 +40318,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0PortsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 sidecars items0 ports items0
 
     Attributes
@@ -38602,7 +40348,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0ReadinessProbe:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 sidecars items0 readiness probe
 
     Attributes
@@ -38652,7 +40398,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0ReadinessProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 sidecars items0 readiness probe exec
 
     Attributes
@@ -38666,7 +40412,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0ReadinessProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 sidecars items0 readiness probe grpc
 
     Attributes
@@ -38684,7 +40430,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0ReadinessProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 sidecars items0 readiness probe HTTP get
 
     Attributes
@@ -38714,7 +40460,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0ReadinessProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 sidecars items0 readiness probe HTTP get HTTP headers items0
 
     Attributes
@@ -38732,7 +40478,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0ReadinessProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 sidecars items0 readiness probe TCP socket
 
     Attributes
@@ -38749,8 +40495,26 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItem
     port: int | str
 
 
-schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0Resources:
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0ResizePolicyItems0:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec templates items0 sidecars items0 resize policy items0
+
+    Attributes
+    ----------
+    resourceName : str, default is Undefined, required
+        resource name
+    restartPolicy : str, default is Undefined, required
+        restart policy
     """
+
+
+    resourceName: str
+
+    restartPolicy: str
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0Resources:
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 sidecars items0 resources
 
     Attributes
@@ -38772,12 +40536,12 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItem
 
 
     check:
-        all _, limits in limits {_regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests {_regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0ResourcesClaimsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 sidecars items0 resources claims items0
 
     Attributes
@@ -38791,13 +40555,15 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0SecurityContext:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 sidecars items0 security context
 
     Attributes
     ----------
     allowPrivilegeEscalation : bool, default is Undefined, optional
         allow privilege escalation
+    appArmorProfile : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0SecurityContextAppArmorProfile, default is Undefined, optional
+        app armor profile
     capabilities : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0SecurityContextCapabilities, default is Undefined, optional
         capabilities
     privileged : bool, default is Undefined, optional
@@ -38823,6 +40589,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItem
 
     allowPrivilegeEscalation?: bool
 
+    appArmorProfile?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0SecurityContextAppArmorProfile
+
     capabilities?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0SecurityContextCapabilities
 
     privileged?: bool
@@ -38844,8 +40612,26 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItem
     windowsOptions?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0SecurityContextWindowsOptions
 
 
-schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0SecurityContextCapabilities:
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0SecurityContextAppArmorProfile:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec templates items0 sidecars items0 security context app armor profile
+
+    Attributes
+    ----------
+    localhostProfile : str, default is Undefined, optional
+        localhost profile
+    $type : str, default is Undefined, required
+        type
     """
+
+
+    localhostProfile?: str
+
+    $type: str
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0SecurityContextCapabilities:
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 sidecars items0 security context capabilities
 
     Attributes
@@ -38863,7 +40649,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0SecurityContextSeLinuxOptions:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 sidecars items0 security context se linux options
 
     Attributes
@@ -38889,7 +40675,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0SecurityContextSeccompProfile:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 sidecars items0 security context seccomp profile
 
     Attributes
@@ -38907,7 +40693,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0SecurityContextWindowsOptions:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 sidecars items0 security context windows options
 
     Attributes
@@ -38933,7 +40719,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0StartupProbe:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 sidecars items0 startup probe
 
     Attributes
@@ -38983,7 +40769,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0StartupProbeExec:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 sidecars items0 startup probe exec
 
     Attributes
@@ -38997,7 +40783,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0StartupProbeGrpc:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 sidecars items0 startup probe grpc
 
     Attributes
@@ -39015,7 +40801,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0StartupProbeHTTPGet:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 sidecars items0 startup probe HTTP get
 
     Attributes
@@ -39045,7 +40831,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0StartupProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 sidecars items0 startup probe HTTP get HTTP headers items0
 
     Attributes
@@ -39063,7 +40849,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0StartupProbeTCPSocket:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 sidecars items0 startup probe TCP socket
 
     Attributes
@@ -39081,7 +40867,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0VolumeDevicesItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 sidecars items0 volume devices items0
 
     Attributes
@@ -39099,7 +40885,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItem
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItems0VolumeMountsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 sidecars items0 volume mounts items0
 
     Attributes
@@ -39112,6 +40898,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItem
         name
     readOnly : bool, default is Undefined, optional
         read only
+    recursiveReadOnly : str, default is Undefined, optional
+        recursive read only
     subPath : str, default is Undefined, optional
         sub path
     subPathExpr : str, default is Undefined, optional
@@ -39127,13 +40915,15 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SidecarsItem
 
     readOnly?: bool
 
+    recursiveReadOnly?: str
+
     subPath?: str
 
     subPathExpr?: str
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0Suspend:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 suspend
 
     Attributes
@@ -39147,25 +40937,33 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0Suspend:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0Synchronization:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 synchronization
 
     Attributes
     ----------
     mutex : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SynchronizationMutex, default is Undefined, optional
         mutex
+    mutexes : [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SynchronizationMutexesItems0], default is Undefined, optional
+        mutexes
     semaphore : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SynchronizationSemaphore, default is Undefined, optional
         semaphore
+    semaphores : [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SynchronizationSemaphoresItems0], default is Undefined, optional
+        semaphores
     """
 
 
     mutex?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SynchronizationMutex
 
+    mutexes?: [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SynchronizationMutexesItems0]
+
     semaphore?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SynchronizationSemaphore
+
+    semaphores?: [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SynchronizationSemaphoresItems0]
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SynchronizationMutex:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 synchronization mutex
 
     Attributes
@@ -39182,8 +40980,26 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0Synchronizat
     namespace?: str
 
 
-schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SynchronizationSemaphore:
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SynchronizationMutexesItems0:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec templates items0 synchronization mutexes items0
+
+    Attributes
+    ----------
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
     """
+
+
+    name?: str
+
+    namespace?: str
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SynchronizationSemaphore:
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 synchronization semaphore
 
     Attributes
@@ -39201,7 +41017,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0Synchronizat
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SynchronizationSemaphoreConfigMapKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 synchronization semaphore config map key ref
 
     Attributes
@@ -39217,13 +41033,53 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0Synchronizat
 
     key: str
 
-    name?: str
+    name?: str = ""
+
+    optional?: bool
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SynchronizationSemaphoresItems0:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec templates items0 synchronization semaphores items0
+
+    Attributes
+    ----------
+    configMapKeyRef : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SynchronizationSemaphoresItems0ConfigMapKeyRef, default is Undefined, optional
+        config map key ref
+    namespace : str, default is Undefined, optional
+        namespace
+    """
+
+
+    configMapKeyRef?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SynchronizationSemaphoresItems0ConfigMapKeyRef
+
+    namespace?: str
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0SynchronizationSemaphoresItems0ConfigMapKeyRef:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec templates items0 synchronization semaphores items0 config map key ref
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0TolerationsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 tolerations items0
 
     Attributes
@@ -39253,7 +41109,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0TolerationsI
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0
 
     Attributes
@@ -39383,7 +41239,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0AwsElasticBlockStore:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 aws elastic block store
 
     Attributes
@@ -39409,7 +41265,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0AzureDisk:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 azure disk
 
     Attributes
@@ -39443,7 +41299,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0AzureFile:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 azure file
 
     Attributes
@@ -39465,7 +41321,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0Cephfs:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 cephfs
 
     Attributes
@@ -39499,7 +41355,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0CephfsSecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 cephfs secret ref
 
     Attributes
@@ -39509,11 +41365,11 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0Cinder:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 cinder
 
     Attributes
@@ -39539,7 +41395,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0CinderSecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 cinder secret ref
 
     Attributes
@@ -39549,11 +41405,11 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0ConfigMap:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 config map
 
     Attributes
@@ -39573,13 +41429,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
 
     items?: [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0ConfigMapItemsItems0]
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0ConfigMapItemsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 config map items items0
 
     Attributes
@@ -39601,7 +41457,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0Csi:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 csi
 
     Attributes
@@ -39631,7 +41487,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0CsiNodePublishSecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 csi node publish secret ref
 
     Attributes
@@ -39641,11 +41497,11 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0DownwardAPI:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 downward API
 
     Attributes
@@ -39663,7 +41519,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0DownwardAPIItemsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 downward API items items0
 
     Attributes
@@ -39689,7 +41545,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0DownwardAPIItemsItems0FieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 downward API items items0 field ref
 
     Attributes
@@ -39707,7 +41563,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0DownwardAPIItemsItems0ResourceFieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 downward API items items0 resource field ref
 
     Attributes
@@ -39733,7 +41589,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0EmptyDir:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 empty dir
 
     Attributes
@@ -39755,7 +41611,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0Ephemeral:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 ephemeral
 
     Attributes
@@ -39769,7 +41625,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0EphemeralVolumeClaimTemplate:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 ephemeral volume claim template
 
     Attributes
@@ -39787,7 +41643,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0EphemeralVolumeClaimTemplateSpec:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 ephemeral volume claim template spec
 
     Attributes
@@ -39804,6 +41660,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
         selector
     storageClassName : str, default is Undefined, optional
         storage class name
+    volumeAttributesClassName : str, default is Undefined, optional
+        volume attributes class name
     volumeMode : str, default is Undefined, optional
         volume mode
     volumeName : str, default is Undefined, optional
@@ -39823,13 +41681,15 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
 
     storageClassName?: str
 
+    volumeAttributesClassName?: str
+
     volumeMode?: str
 
     volumeName?: str
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0EphemeralVolumeClaimTemplateSpecDataSource:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 ephemeral volume claim template spec data source
 
     Attributes
@@ -39851,7 +41711,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0EphemeralVolumeClaimTemplateSpecDataSourceRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 ephemeral volume claim template spec data source ref
 
     Attributes
@@ -39877,13 +41737,11 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0EphemeralVolumeClaimTemplateSpecResources:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 ephemeral volume claim template spec resources
 
     Attributes
     ----------
-    claims : [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0EphemeralVolumeClaimTemplateSpecResourcesClaimsItems0], default is Undefined, optional
-        claims
     limits : {str:int | str}, default is Undefined, optional
         limits
     requests : {str:int | str}, default is Undefined, optional
@@ -39891,34 +41749,18 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
     """
 
 
-    claims?: [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0EphemeralVolumeClaimTemplateSpecResourcesClaimsItems0]
-
     limits?: {str:int | str}
 
     requests?: {str:int | str}
 
 
     check:
-        all _, limits in limits {_regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests {_regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
-
-
-schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0EphemeralVolumeClaimTemplateSpecResourcesClaimsItems0:
-    """
-    argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 ephemeral volume claim template spec resources claims items0
-
-    Attributes
-    ----------
-    name : str, default is Undefined, required
-        name
-    """
-
-
-    name: str
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0EphemeralVolumeClaimTemplateSpecSelector:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 ephemeral volume claim template spec selector
 
     Attributes
@@ -39936,7 +41778,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0EphemeralVolumeClaimTemplateSpecSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 ephemeral volume claim template spec selector match expressions items0
 
     Attributes
@@ -39958,7 +41800,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0Fc:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 fc
 
     Attributes
@@ -39988,7 +41830,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0FlexVolume:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 flex volume
 
     Attributes
@@ -40018,7 +41860,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0FlexVolumeSecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 flex volume secret ref
 
     Attributes
@@ -40028,11 +41870,11 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0Flocker:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 flocker
 
     Attributes
@@ -40050,7 +41892,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0GcePersistentDisk:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 gce persistent disk
 
     Attributes
@@ -40076,7 +41918,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0GitRepo:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 git repo
 
     Attributes
@@ -40098,7 +41940,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0Glusterfs:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 glusterfs
 
     Attributes
@@ -40120,7 +41962,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0HostPath:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 host path
 
     Attributes
@@ -40138,7 +41980,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0Iscsi:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 iscsi
 
     Attributes
@@ -40192,7 +42034,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0IscsiSecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 iscsi secret ref
 
     Attributes
@@ -40202,11 +42044,11 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0Nfs:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 nfs
 
     Attributes
@@ -40228,7 +42070,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0PersistentVolumeClaim:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 persistent volume claim
 
     Attributes
@@ -40246,7 +42088,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0PhotonPersistentDisk:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 photon persistent disk
 
     Attributes
@@ -40264,7 +42106,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0PortworxVolume:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 portworx volume
 
     Attributes
@@ -40286,7 +42128,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0Projected:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 projected
 
     Attributes
@@ -40304,11 +42146,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0ProjectedSourcesItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 projected sources items0
 
     Attributes
     ----------
+    clusterTrustBundle : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0ProjectedSourcesItems0ClusterTrustBundle, default is Undefined, optional
+        cluster trust bundle
     configMap : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0ProjectedSourcesItems0ConfigMap, default is Undefined, optional
         config map
     downwardAPI : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0ProjectedSourcesItems0DownwardAPI, default is Undefined, optional
@@ -40320,6 +42164,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
     """
 
 
+    clusterTrustBundle?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0ProjectedSourcesItems0ClusterTrustBundle
+
     configMap?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0ProjectedSourcesItems0ConfigMap
 
     downwardAPI?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0ProjectedSourcesItems0DownwardAPI
@@ -40329,8 +42175,78 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
     serviceAccountToken?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0ProjectedSourcesItems0ServiceAccountToken
 
 
-schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0ProjectedSourcesItems0ConfigMap:
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0ProjectedSourcesItems0ClusterTrustBundle:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 projected sources items0 cluster trust bundle
+
+    Attributes
+    ----------
+    labelSelector : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0ProjectedSourcesItems0ClusterTrustBundleLabelSelector, default is Undefined, optional
+        label selector
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    path : str, default is Undefined, required
+        path
+    signerName : str, default is Undefined, optional
+        signer name
     """
+
+
+    labelSelector?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0ProjectedSourcesItems0ClusterTrustBundleLabelSelector
+
+    name?: str
+
+    optional?: bool
+
+    path: str
+
+    signerName?: str
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0ProjectedSourcesItems0ClusterTrustBundleLabelSelector:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 projected sources items0 cluster trust bundle label selector
+
+    Attributes
+    ----------
+    matchExpressions : [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0ProjectedSourcesItems0ClusterTrustBundleLabelSelectorMatchExpressionsItems0], default is Undefined, optional
+        match expressions
+    matchLabels : {str:str}, default is Undefined, optional
+        match labels
+    """
+
+
+    matchExpressions?: [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0ProjectedSourcesItems0ClusterTrustBundleLabelSelectorMatchExpressionsItems0]
+
+    matchLabels?: {str:str}
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0ProjectedSourcesItems0ClusterTrustBundleLabelSelectorMatchExpressionsItems0:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 projected sources items0 cluster trust bundle label selector match expressions items0
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    operator : str, default is Undefined, required
+        operator
+    values : [str], default is Undefined, optional
+        values
+    """
+
+
+    key: str
+
+    operator: str
+
+    values?: [str]
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0ProjectedSourcesItems0ConfigMap:
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 projected sources items0 config map
 
     Attributes
@@ -40346,13 +42262,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
 
     items?: [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0ProjectedSourcesItems0ConfigMapItemsItems0]
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0ProjectedSourcesItems0ConfigMapItemsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 projected sources items0 config map items items0
 
     Attributes
@@ -40374,7 +42290,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0ProjectedSourcesItems0DownwardAPI:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 projected sources items0 downward API
 
     Attributes
@@ -40388,7 +42304,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 projected sources items0 downward API items items0
 
     Attributes
@@ -40414,7 +42330,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0FieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 projected sources items0 downward API items items0 field ref
 
     Attributes
@@ -40432,7 +42348,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0ResourceFieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 projected sources items0 downward API items items0 resource field ref
 
     Attributes
@@ -40458,7 +42374,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0ProjectedSourcesItems0Secret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 projected sources items0 secret
 
     Attributes
@@ -40474,13 +42390,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
 
     items?: [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0ProjectedSourcesItems0SecretItemsItems0]
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0ProjectedSourcesItems0SecretItemsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 projected sources items0 secret items items0
 
     Attributes
@@ -40502,7 +42418,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0ProjectedSourcesItems0ServiceAccountToken:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 projected sources items0 service account token
 
     Attributes
@@ -40524,7 +42440,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0Quobyte:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 quobyte
 
     Attributes
@@ -40558,7 +42474,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0Rbd:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 rbd
 
     Attributes
@@ -40600,7 +42516,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0RbdSecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 rbd secret ref
 
     Attributes
@@ -40610,11 +42526,11 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0ScaleIO:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 scale i o
 
     Attributes
@@ -40664,7 +42580,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0ScaleIOSecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 scale i o secret ref
 
     Attributes
@@ -40674,11 +42590,11 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0Secret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 secret
 
     Attributes
@@ -40704,7 +42620,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0SecretItemsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 secret items items0
 
     Attributes
@@ -40726,7 +42642,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0Storageos:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 storageos
 
     Attributes
@@ -40756,7 +42672,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0StorageosSecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 storageos secret ref
 
     Attributes
@@ -40766,11 +42682,11 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems0VsphereVolume:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec templates items0 volumes items0 vsphere volume
 
     Attributes
@@ -40796,7 +42712,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTemplatesItems0VolumesItems
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTolerationsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec tolerations items0
 
     Attributes
@@ -40826,7 +42742,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecTolerationsItems0:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumeClaimGC:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volume claim g c
 
     Attributes
@@ -40840,7 +42756,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumeClaimGC:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumeClaimTemplatesItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volume claim templates items0
 
     Attributes
@@ -40870,7 +42786,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumeClaimTemplatesItems0:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumeClaimTemplatesItems0Spec:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volume claim templates items0 spec
 
     Attributes
@@ -40887,6 +42803,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumeClaimTemplatesItems0S
         selector
     storageClassName : str, default is Undefined, optional
         storage class name
+    volumeAttributesClassName : str, default is Undefined, optional
+        volume attributes class name
     volumeMode : str, default is Undefined, optional
         volume mode
     volumeName : str, default is Undefined, optional
@@ -40906,13 +42824,15 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumeClaimTemplatesItems0S
 
     storageClassName?: str
 
+    volumeAttributesClassName?: str
+
     volumeMode?: str
 
     volumeName?: str
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumeClaimTemplatesItems0SpecDataSource:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volume claim templates items0 spec data source
 
     Attributes
@@ -40934,7 +42854,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumeClaimTemplatesItems0S
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumeClaimTemplatesItems0SpecDataSourceRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volume claim templates items0 spec data source ref
 
     Attributes
@@ -40960,13 +42880,11 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumeClaimTemplatesItems0S
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumeClaimTemplatesItems0SpecResources:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volume claim templates items0 spec resources
 
     Attributes
     ----------
-    claims : [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumeClaimTemplatesItems0SpecResourcesClaimsItems0], default is Undefined, optional
-        claims
     limits : {str:int | str}, default is Undefined, optional
         limits
     requests : {str:int | str}, default is Undefined, optional
@@ -40974,34 +42892,18 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumeClaimTemplatesItems0S
     """
 
 
-    claims?: [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumeClaimTemplatesItems0SpecResourcesClaimsItems0]
-
     limits?: {str:int | str}
 
     requests?: {str:int | str}
 
 
     check:
-        all _, limits in limits {_regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests {_regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
-
-
-schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumeClaimTemplatesItems0SpecResourcesClaimsItems0:
-    """
-    argoproj io v1alpha1 cron workflow spec workflow spec volume claim templates items0 spec resources claims items0
-
-    Attributes
-    ----------
-    name : str, default is Undefined, required
-        name
-    """
-
-
-    name: str
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumeClaimTemplatesItems0SpecSelector:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volume claim templates items0 spec selector
 
     Attributes
@@ -41019,7 +42921,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumeClaimTemplatesItems0S
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumeClaimTemplatesItems0SpecSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volume claim templates items0 spec selector match expressions items0
 
     Attributes
@@ -41041,27 +42943,33 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumeClaimTemplatesItems0S
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumeClaimTemplatesItems0Status:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volume claim templates items0 status
 
     Attributes
     ----------
     accessModes : [str], default is Undefined, optional
         access modes
+    allocatedResourceStatuses : {str:str}, default is Undefined, optional
+        allocated resource statuses
     allocatedResources : {str:int | str}, default is Undefined, optional
         allocated resources
     capacity : {str:int | str}, default is Undefined, optional
         capacity
     conditions : [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumeClaimTemplatesItems0StatusConditionsItems0], default is Undefined, optional
         conditions
+    currentVolumeAttributesClassName : str, default is Undefined, optional
+        current volume attributes class name
+    modifyVolumeStatus : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumeClaimTemplatesItems0StatusModifyVolumeStatus, default is Undefined, optional
+        modify volume status
     phase : str, default is Undefined, optional
         phase
-    resizeStatus : str, default is Undefined, optional
-        resize status
     """
 
 
     accessModes?: [str]
+
+    allocatedResourceStatuses?: {str:str}
 
     allocatedResources?: {str:int | str}
 
@@ -41069,18 +42977,20 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumeClaimTemplatesItems0S
 
     conditions?: [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumeClaimTemplatesItems0StatusConditionsItems0]
 
-    phase?: str
+    currentVolumeAttributesClassName?: str
 
-    resizeStatus?: str
+    modifyVolumeStatus?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumeClaimTemplatesItems0StatusModifyVolumeStatus
+
+    phase?: str
 
 
     check:
-        all _, allocatedResources in allocatedResources {_regex_match(str(allocatedResources), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if allocatedResources } if allocatedResources
-        all _, capacity in capacity {_regex_match(str(capacity), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if capacity } if capacity
+        all _, allocatedResources in allocatedResources { _regex_match(str(allocatedResources), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if allocatedResources } if allocatedResources
+        all _, capacity in capacity { _regex_match(str(capacity), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if capacity } if capacity
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumeClaimTemplatesItems0StatusConditionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volume claim templates items0 status conditions items0
 
     Attributes
@@ -41113,8 +43023,26 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumeClaimTemplatesItems0S
     $type: str
 
 
-schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0:
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumeClaimTemplatesItems0StatusModifyVolumeStatus:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec volume claim templates items0 status modify volume status
+
+    Attributes
+    ----------
+    status : str, default is Undefined, required
+        status
+    targetVolumeAttributesClassName : str, default is Undefined, optional
+        target volume attributes class name
     """
+
+
+    status: str
+
+    targetVolumeAttributesClassName?: str
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0:
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0
 
     Attributes
@@ -41244,7 +43172,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0AwsElasticBlockStore:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 aws elastic block store
 
     Attributes
@@ -41270,7 +43198,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0AwsElasticBloc
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0AzureDisk:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 azure disk
 
     Attributes
@@ -41304,7 +43232,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0AzureDisk:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0AzureFile:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 azure file
 
     Attributes
@@ -41326,7 +43254,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0AzureFile:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0Cephfs:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 cephfs
 
     Attributes
@@ -41360,7 +43288,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0Cephfs:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0CephfsSecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 cephfs secret ref
 
     Attributes
@@ -41370,11 +43298,11 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0CephfsSecretRe
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0Cinder:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 cinder
 
     Attributes
@@ -41400,7 +43328,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0Cinder:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0CinderSecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 cinder secret ref
 
     Attributes
@@ -41410,11 +43338,11 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0CinderSecretRe
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0ConfigMap:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 config map
 
     Attributes
@@ -41434,13 +43362,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0ConfigMap:
 
     items?: [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0ConfigMapItemsItems0]
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0ConfigMapItemsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 config map items items0
 
     Attributes
@@ -41462,7 +43390,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0ConfigMapItems
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0Csi:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 csi
 
     Attributes
@@ -41492,7 +43420,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0Csi:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0CsiNodePublishSecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 csi node publish secret ref
 
     Attributes
@@ -41502,11 +43430,11 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0CsiNodePublish
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0DownwardAPI:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 downward API
 
     Attributes
@@ -41524,7 +43452,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0DownwardAPI:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0DownwardAPIItemsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 downward API items items0
 
     Attributes
@@ -41550,7 +43478,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0DownwardAPIIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0DownwardAPIItemsItems0FieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 downward API items items0 field ref
 
     Attributes
@@ -41568,7 +43496,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0DownwardAPIIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0DownwardAPIItemsItems0ResourceFieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 downward API items items0 resource field ref
 
     Attributes
@@ -41594,7 +43522,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0DownwardAPIIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0EmptyDir:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 empty dir
 
     Attributes
@@ -41616,7 +43544,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0EmptyDir:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0Ephemeral:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 ephemeral
 
     Attributes
@@ -41630,7 +43558,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0Ephemeral:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0EphemeralVolumeClaimTemplate:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 ephemeral volume claim template
 
     Attributes
@@ -41648,7 +43576,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0EphemeralVolum
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0EphemeralVolumeClaimTemplateSpec:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 ephemeral volume claim template spec
 
     Attributes
@@ -41665,6 +43593,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0EphemeralVolum
         selector
     storageClassName : str, default is Undefined, optional
         storage class name
+    volumeAttributesClassName : str, default is Undefined, optional
+        volume attributes class name
     volumeMode : str, default is Undefined, optional
         volume mode
     volumeName : str, default is Undefined, optional
@@ -41684,13 +43614,15 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0EphemeralVolum
 
     storageClassName?: str
 
+    volumeAttributesClassName?: str
+
     volumeMode?: str
 
     volumeName?: str
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0EphemeralVolumeClaimTemplateSpecDataSource:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 ephemeral volume claim template spec data source
 
     Attributes
@@ -41712,7 +43644,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0EphemeralVolum
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0EphemeralVolumeClaimTemplateSpecDataSourceRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 ephemeral volume claim template spec data source ref
 
     Attributes
@@ -41738,13 +43670,11 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0EphemeralVolum
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0EphemeralVolumeClaimTemplateSpecResources:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 ephemeral volume claim template spec resources
 
     Attributes
     ----------
-    claims : [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0EphemeralVolumeClaimTemplateSpecResourcesClaimsItems0], default is Undefined, optional
-        claims
     limits : {str:int | str}, default is Undefined, optional
         limits
     requests : {str:int | str}, default is Undefined, optional
@@ -41752,34 +43682,18 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0EphemeralVolum
     """
 
 
-    claims?: [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0EphemeralVolumeClaimTemplateSpecResourcesClaimsItems0]
-
     limits?: {str:int | str}
 
     requests?: {str:int | str}
 
 
     check:
-        all _, limits in limits {_regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests {_regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
-
-
-schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0EphemeralVolumeClaimTemplateSpecResourcesClaimsItems0:
-    """
-    argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 ephemeral volume claim template spec resources claims items0
-
-    Attributes
-    ----------
-    name : str, default is Undefined, required
-        name
-    """
-
-
-    name: str
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0EphemeralVolumeClaimTemplateSpecSelector:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 ephemeral volume claim template spec selector
 
     Attributes
@@ -41797,7 +43711,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0EphemeralVolum
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0EphemeralVolumeClaimTemplateSpecSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 ephemeral volume claim template spec selector match expressions items0
 
     Attributes
@@ -41819,7 +43733,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0EphemeralVolum
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0Fc:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 fc
 
     Attributes
@@ -41849,7 +43763,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0Fc:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0FlexVolume:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 flex volume
 
     Attributes
@@ -41879,7 +43793,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0FlexVolume:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0FlexVolumeSecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 flex volume secret ref
 
     Attributes
@@ -41889,11 +43803,11 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0FlexVolumeSecr
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0Flocker:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 flocker
 
     Attributes
@@ -41911,7 +43825,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0Flocker:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0GcePersistentDisk:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 gce persistent disk
 
     Attributes
@@ -41937,7 +43851,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0GcePersistentD
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0GitRepo:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 git repo
 
     Attributes
@@ -41959,7 +43873,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0GitRepo:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0Glusterfs:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 glusterfs
 
     Attributes
@@ -41981,7 +43895,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0Glusterfs:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0HostPath:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 host path
 
     Attributes
@@ -41999,7 +43913,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0HostPath:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0Iscsi:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 iscsi
 
     Attributes
@@ -42053,7 +43967,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0Iscsi:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0IscsiSecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 iscsi secret ref
 
     Attributes
@@ -42063,11 +43977,11 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0IscsiSecretRef
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0Nfs:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 nfs
 
     Attributes
@@ -42089,7 +44003,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0Nfs:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0PersistentVolumeClaim:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 persistent volume claim
 
     Attributes
@@ -42107,7 +44021,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0PersistentVolu
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0PhotonPersistentDisk:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 photon persistent disk
 
     Attributes
@@ -42125,7 +44039,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0PhotonPersiste
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0PortworxVolume:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 portworx volume
 
     Attributes
@@ -42147,7 +44061,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0PortworxVolume
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0Projected:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 projected
 
     Attributes
@@ -42165,11 +44079,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0Projected:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0ProjectedSourcesItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 projected sources items0
 
     Attributes
     ----------
+    clusterTrustBundle : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0ProjectedSourcesItems0ClusterTrustBundle, default is Undefined, optional
+        cluster trust bundle
     configMap : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0ProjectedSourcesItems0ConfigMap, default is Undefined, optional
         config map
     downwardAPI : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0ProjectedSourcesItems0DownwardAPI, default is Undefined, optional
@@ -42181,6 +44097,8 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0ProjectedSourc
     """
 
 
+    clusterTrustBundle?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0ProjectedSourcesItems0ClusterTrustBundle
+
     configMap?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0ProjectedSourcesItems0ConfigMap
 
     downwardAPI?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0ProjectedSourcesItems0DownwardAPI
@@ -42190,8 +44108,78 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0ProjectedSourc
     serviceAccountToken?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0ProjectedSourcesItems0ServiceAccountToken
 
 
-schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0ProjectedSourcesItems0ConfigMap:
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0ProjectedSourcesItems0ClusterTrustBundle:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 projected sources items0 cluster trust bundle
+
+    Attributes
+    ----------
+    labelSelector : ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0ProjectedSourcesItems0ClusterTrustBundleLabelSelector, default is Undefined, optional
+        label selector
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    path : str, default is Undefined, required
+        path
+    signerName : str, default is Undefined, optional
+        signer name
     """
+
+
+    labelSelector?: ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0ProjectedSourcesItems0ClusterTrustBundleLabelSelector
+
+    name?: str
+
+    optional?: bool
+
+    path: str
+
+    signerName?: str
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0ProjectedSourcesItems0ClusterTrustBundleLabelSelector:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 projected sources items0 cluster trust bundle label selector
+
+    Attributes
+    ----------
+    matchExpressions : [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0ProjectedSourcesItems0ClusterTrustBundleLabelSelectorMatchExpressionsItems0], default is Undefined, optional
+        match expressions
+    matchLabels : {str:str}, default is Undefined, optional
+        match labels
+    """
+
+
+    matchExpressions?: [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0ProjectedSourcesItems0ClusterTrustBundleLabelSelectorMatchExpressionsItems0]
+
+    matchLabels?: {str:str}
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0ProjectedSourcesItems0ClusterTrustBundleLabelSelectorMatchExpressionsItems0:
+    r"""
+    argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 projected sources items0 cluster trust bundle label selector match expressions items0
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    operator : str, default is Undefined, required
+        operator
+    values : [str], default is Undefined, optional
+        values
+    """
+
+
+    key: str
+
+    operator: str
+
+    values?: [str]
+
+
+schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0ProjectedSourcesItems0ConfigMap:
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 projected sources items0 config map
 
     Attributes
@@ -42207,13 +44195,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0ProjectedSourc
 
     items?: [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0ProjectedSourcesItems0ConfigMapItemsItems0]
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0ProjectedSourcesItems0ConfigMapItemsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 projected sources items0 config map items items0
 
     Attributes
@@ -42235,7 +44223,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0ProjectedSourc
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0ProjectedSourcesItems0DownwardAPI:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 projected sources items0 downward API
 
     Attributes
@@ -42249,7 +44237,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0ProjectedSourc
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 projected sources items0 downward API items items0
 
     Attributes
@@ -42275,7 +44263,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0ProjectedSourc
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0FieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 projected sources items0 downward API items items0 field ref
 
     Attributes
@@ -42293,7 +44281,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0ProjectedSourc
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0ResourceFieldRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 projected sources items0 downward API items items0 resource field ref
 
     Attributes
@@ -42319,7 +44307,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0ProjectedSourc
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0ProjectedSourcesItems0Secret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 projected sources items0 secret
 
     Attributes
@@ -42335,13 +44323,13 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0ProjectedSourc
 
     items?: [ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0ProjectedSourcesItems0SecretItemsItems0]
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0ProjectedSourcesItems0SecretItemsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 projected sources items0 secret items items0
 
     Attributes
@@ -42363,7 +44351,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0ProjectedSourc
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0ProjectedSourcesItems0ServiceAccountToken:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 projected sources items0 service account token
 
     Attributes
@@ -42385,7 +44373,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0ProjectedSourc
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0Quobyte:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 quobyte
 
     Attributes
@@ -42419,7 +44407,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0Quobyte:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0Rbd:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 rbd
 
     Attributes
@@ -42461,7 +44449,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0Rbd:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0RbdSecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 rbd secret ref
 
     Attributes
@@ -42471,11 +44459,11 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0RbdSecretRef:
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0ScaleIO:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 scale i o
 
     Attributes
@@ -42525,7 +44513,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0ScaleIO:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0ScaleIOSecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 scale i o secret ref
 
     Attributes
@@ -42535,11 +44523,11 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0ScaleIOSecretR
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0Secret:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 secret
 
     Attributes
@@ -42565,7 +44553,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0Secret:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0SecretItemsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 secret items items0
 
     Attributes
@@ -42587,7 +44575,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0SecretItemsIte
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0Storageos:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 storageos
 
     Attributes
@@ -42617,7 +44605,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0Storageos:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0StorageosSecretRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 storageos secret ref
 
     Attributes
@@ -42627,11 +44615,11 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0StorageosSecre
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0VsphereVolume:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec volumes items0 vsphere volume
 
     Attributes
@@ -42657,7 +44645,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecVolumesItems0VsphereVolume:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecWorkflowMetadata:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec workflow metadata
 
     Attributes
@@ -42679,7 +44667,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecWorkflowMetadata:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecWorkflowMetadataLabelsFromAnon:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec workflow metadata labels from anon
 
     Attributes
@@ -42693,7 +44681,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecWorkflowMetadataLabelsFromA
 
 
 schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecWorkflowTemplateRef:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow spec workflow spec workflow template ref
 
     Attributes
@@ -42711,7 +44699,7 @@ schema ArgoprojIoV1alpha1CronWorkflowSpecWorkflowSpecWorkflowTemplateRef:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowStatus:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow status
 
     Attributes
@@ -42745,7 +44733,7 @@ schema ArgoprojIoV1alpha1CronWorkflowStatus:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowStatusActiveItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow status active items0
 
     Attributes
@@ -42783,7 +44771,7 @@ schema ArgoprojIoV1alpha1CronWorkflowStatusActiveItems0:
 
 
 schema ArgoprojIoV1alpha1CronWorkflowStatusConditionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 cron workflow status conditions items0
 
     Attributes
