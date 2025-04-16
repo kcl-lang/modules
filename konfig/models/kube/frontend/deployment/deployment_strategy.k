@@ -21,3 +21,5 @@ schema DeploymentStrategy:
     rollingUpdate?: RollingUpdateDeployment
 
     $type?: str
+
+

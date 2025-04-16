@@ -10,6 +10,7 @@ import models.kube.frontend.sidecar as s
 import models.kube.frontend.strategy
 import models.kube.frontend.storage
 import models.kube.frontend.deployment
+import models.kube.frontend.affinity
 
 schema Server:
     """Server is abstaction of Deployment and StatefulSet.
@@ -20,7 +21,12 @@ schema Server:
         The name of the workload and service. 
         If not defined, a generated name ("{__META_APP_NAME}-{__META_ENV_TYPE_NAME}") will be used.
         The value of metadata.__META_APP_NAME will be extracted from the value of the "name" defined through option("app"),
-        and the value of metadata.__META_ENV_TYPE_NAME will be extracted from the value of the "name" defined through option("env").
+        and the value of __META_ENV_TYPE_NAME will be extracted from the value of the "name" defined through option("env").
+    namespace: str, default is Undefined, optional.
+        The namespace of the workload and service.
+        If not defined, a generated name ("{__META_APP_NAMESPACE}-{__META_ENV_TYPE_NAME}") will be used.
+        The value of metadata.__META_APP_NAMESPACE will be extracted from the value of the "name" defined through option("appns"),
+        and the value of __META_ENV_TYPE_NAME will be extracted from the value of the "name" defined through option("env").
     workloadType: "Deployment" | "StatefulSet", default is "Deployment", required.
         Application workload type, default to 'Deployment'
     renderType: "Server" | "KubeVelaApplication", default is "Server", optional. 
@@ -98,6 +104,9 @@ schema Server:
     # workload name
     name?: str
 
+    # workload namespace
+    namespace?: str
+
     # Application workload type, default to 'Deployment'
     workloadType: "Deployment" | "StatefulSet" = "Deployment"
 
@@ -147,3 +156,6 @@ schema Server:
 
     # Strategy for deployment
     deploymentStrategy?: deployment.DeploymentStrategy
+
+    # Affinity
+    affinity?: affinity.Affinity

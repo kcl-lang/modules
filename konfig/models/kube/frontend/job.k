@@ -17,7 +17,12 @@ schema Job:
         The name of the workload and service. 
         If not defined, a generated name ("{__META_APP_NAME}-{__META_ENV_TYPE_NAME}") will be used.
         The value of metadata.__META_APP_NAME will be extracted from the value of the "name" defined through option("app"),
-        and the value of metadata.__META_ENV_TYPE_NAME will be extracted from the value of the "name" defined through option("env").
+        and the value of __META_ENV_TYPE_NAME will be extracted from the value of the "name" defined through option("env").
+    namespace: str, default is Undefined, optional.
+        The namespace of the workload and service.
+        If not defined, a generated name ("{__META_APP_NAMESPACE}-{__META_ENV_TYPE_NAME}") will be used.
+        The value of metadata.__META_APP_NAMESPACE will be extracted from the value of the "name" defined through option("appns"),
+        and the value of __META_ENV_TYPE_NAME will be extracted from the value of the "name" defined through option("env").
     activeDeadlineSeconds: int, default is Undefined, optional.
         Specifies the duration in seconds relative to the startTime that the job may be active
         before the system tries to terminate it; value must be positive integer
@@ -87,6 +92,8 @@ schema Job:
 
     # job name
     name?: str
+    # job namespace
+    namespace?: str
     # subset of batchv1.JobSpec
     activeDeadlineSeconds?: int
     backoffLimit?: int = 6

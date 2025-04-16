@@ -9,7 +9,8 @@ mixin ConfigMapMixin for protocol.ServerProtocol:
         kubernetes: resource.ResourceMapping {
             ConfigMap = [v1.ConfigMap {
                 metadata: utils.MetadataBuilder(_c) | {
-                    name = _c?.name or "{}{}{}".format(metadata.__META_APP_NAME, metadata.__META_ENV_TYPE_NAME, _i)
+                    name = _c?.name or "{}-{}-{}".format(metadata.__META_APP_NAME, metadata.__META_ENV_TYPE_NAME, _i)
+                    namespace = _c?.namespace or "{}-{}".format(metadata.__META_APP_NAMESPACE, metadata.__META_ENV_TYPE_NAME)
                 }
                 data = _c?.data
                 binaryData = _c?.binaryData
