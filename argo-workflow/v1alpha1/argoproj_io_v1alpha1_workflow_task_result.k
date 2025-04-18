@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema WorkflowTaskResult:
-    """
+    r"""
     argoproj io v1alpha1 workflow task result
 
     Attributes
@@ -44,7 +44,7 @@ schema WorkflowTaskResult:
 
 
 schema ArgoprojIoV1alpha1WorkflowTaskResultOutputs:
-    """
+    r"""
     argoproj io v1alpha1 workflow task result outputs
 
     Attributes
@@ -70,7 +70,7 @@ schema ArgoprojIoV1alpha1WorkflowTaskResultOutputs:
 
 
 schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0:
-    """
+    r"""
     argoproj io v1alpha1 workflow task result outputs artifacts items0
 
     Attributes
@@ -168,7 +168,7 @@ schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0:
 
 
 schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0Archive:
-    """
+    r"""
     argoproj io v1alpha1 workflow task result outputs artifacts items0 archive
 
     Attributes
@@ -190,7 +190,7 @@ schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0Archive:
 
 
 schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0ArchiveTar:
-    """
+    r"""
     argoproj io v1alpha1 workflow task result outputs artifacts items0 archive tar
 
     Attributes
@@ -204,7 +204,7 @@ schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0ArchiveTar:
 
 
 schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0ArtifactGC:
-    """
+    r"""
     argoproj io v1alpha1 workflow task result outputs artifacts items0 artifact g c
 
     Attributes
@@ -226,7 +226,7 @@ schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0ArtifactGC:
 
 
 schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0ArtifactGCPodMetadata:
-    """
+    r"""
     argoproj io v1alpha1 workflow task result outputs artifacts items0 artifact g c pod metadata
 
     Attributes
@@ -244,7 +244,7 @@ schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0ArtifactGCPodMe
 
 
 schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0Artifactory:
-    """
+    r"""
     argoproj io v1alpha1 workflow task result outputs artifacts items0 artifactory
 
     Attributes
@@ -266,7 +266,7 @@ schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0Artifactory:
 
 
 schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0ArtifactoryPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow task result outputs artifacts items0 artifactory password secret
 
     Attributes
@@ -282,13 +282,13 @@ schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0ArtifactoryPass
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0ArtifactoryUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow task result outputs artifacts items0 artifactory username secret
 
     Attributes
@@ -304,13 +304,13 @@ schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0ArtifactoryUser
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0Azure:
-    """
+    r"""
     argoproj io v1alpha1 workflow task result outputs artifacts items0 azure
 
     Attributes
@@ -340,7 +340,7 @@ schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0Azure:
 
 
 schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0AzureAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow task result outputs artifacts items0 azure account key secret
 
     Attributes
@@ -356,13 +356,13 @@ schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0AzureAccountKey
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0Gcs:
-    """
+    r"""
     argoproj io v1alpha1 workflow task result outputs artifacts items0 gcs
 
     Attributes
@@ -384,7 +384,7 @@ schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0Gcs:
 
 
 schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0GcsServiceAccountKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow task result outputs artifacts items0 gcs service account key secret
 
     Attributes
@@ -400,13 +400,13 @@ schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0GcsServiceAccou
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0Git:
-    """
+    r"""
     argoproj io v1alpha1 workflow task result outputs artifacts items0 git
 
     Attributes
@@ -421,6 +421,8 @@ schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0Git:
         fetch
     insecureIgnoreHostKey : bool, default is Undefined, optional
         insecure ignore host key
+    insecureSkipTLS : bool, default is Undefined, optional
+        insecure skip TLS
     passwordSecret : ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0GitPasswordSecret, default is Undefined, optional
         password secret
     repo : str, default is Undefined, required
@@ -446,6 +448,8 @@ schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0Git:
 
     insecureIgnoreHostKey?: bool
 
+    insecureSkipTLS?: bool
+
     passwordSecret?: ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0GitPasswordSecret
 
     repo: str
@@ -460,7 +464,7 @@ schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0Git:
 
 
 schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0GitPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow task result outputs artifacts items0 git password secret
 
     Attributes
@@ -476,13 +480,13 @@ schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0GitPasswordSecr
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0GitSSHPrivateKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow task result outputs artifacts items0 git SSH private key secret
 
     Attributes
@@ -498,13 +502,13 @@ schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0GitSSHPrivateKe
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0GitUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow task result outputs artifacts items0 git username secret
 
     Attributes
@@ -520,13 +524,13 @@ schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0GitUsernameSecr
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0HTTP:
-    """
+    r"""
     argoproj io v1alpha1 workflow task result outputs artifacts items0 HTTP
 
     Attributes
@@ -548,7 +552,7 @@ schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0HTTP:
 
 
 schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0HTTPAuth:
-    """
+    r"""
     argoproj io v1alpha1 workflow task result outputs artifacts items0 HTTP auth
 
     Attributes
@@ -570,7 +574,7 @@ schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0HTTPAuth:
 
 
 schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0HTTPAuthBasicAuth:
-    """
+    r"""
     argoproj io v1alpha1 workflow task result outputs artifacts items0 HTTP auth basic auth
 
     Attributes
@@ -588,7 +592,7 @@ schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0HTTPAuthBasicAu
 
 
 schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0HTTPAuthBasicAuthPasswordSecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow task result outputs artifacts items0 HTTP auth basic auth password secret
 
     Attributes
@@ -604,13 +608,13 @@ schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0HTTPAuthBasicAu
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0HTTPAuthBasicAuthUsernameSecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow task result outputs artifacts items0 HTTP auth basic auth username secret
 
     Attributes
@@ -626,13 +630,13 @@ schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0HTTPAuthBasicAu
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0HTTPAuthClientCert:
-    """
+    r"""
     argoproj io v1alpha1 workflow task result outputs artifacts items0 HTTP auth client cert
 
     Attributes
@@ -650,7 +654,7 @@ schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0HTTPAuthClientC
 
 
 schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0HTTPAuthClientCertClientCertSecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow task result outputs artifacts items0 HTTP auth client cert client cert secret
 
     Attributes
@@ -666,13 +670,13 @@ schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0HTTPAuthClientC
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0HTTPAuthClientCertClientKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow task result outputs artifacts items0 HTTP auth client cert client key secret
 
     Attributes
@@ -688,13 +692,13 @@ schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0HTTPAuthClientC
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0HTTPAuthOauth2:
-    """
+    r"""
     argoproj io v1alpha1 workflow task result outputs artifacts items0 HTTP auth oauth2
 
     Attributes
@@ -724,7 +728,7 @@ schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0HTTPAuthOauth2:
 
 
 schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0HTTPAuthOauth2ClientIDSecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow task result outputs artifacts items0 HTTP auth oauth2 client ID secret
 
     Attributes
@@ -740,13 +744,13 @@ schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0HTTPAuthOauth2C
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0HTTPAuthOauth2ClientSecretSecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow task result outputs artifacts items0 HTTP auth oauth2 client secret secret
 
     Attributes
@@ -762,13 +766,13 @@ schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0HTTPAuthOauth2C
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0HTTPAuthOauth2EndpointParamsItems0:
-    """
+    r"""
     argoproj io v1alpha1 workflow task result outputs artifacts items0 HTTP auth oauth2 endpoint params items0
 
     Attributes
@@ -786,7 +790,7 @@ schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0HTTPAuthOauth2E
 
 
 schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0HTTPAuthOauth2TokenURLSecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow task result outputs artifacts items0 HTTP auth oauth2 token URL secret
 
     Attributes
@@ -802,13 +806,13 @@ schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0HTTPAuthOauth2T
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0HTTPHeadersItems0:
-    """
+    r"""
     argoproj io v1alpha1 workflow task result outputs artifacts items0 HTTP headers items0
 
     Attributes
@@ -826,13 +830,15 @@ schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0HTTPHeadersItem
 
 
 schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0Hdfs:
-    """
+    r"""
     argoproj io v1alpha1 workflow task result outputs artifacts items0 hdfs
 
     Attributes
     ----------
     addresses : [str], default is Undefined, optional
         addresses
+    dataTransferProtection : str, default is Undefined, optional
+        data transfer protection
     force : bool, default is Undefined, optional
         force
     hdfsUser : str, default is Undefined, optional
@@ -856,6 +862,8 @@ schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0Hdfs:
 
     addresses?: [str]
 
+    dataTransferProtection?: str
+
     force?: bool
 
     hdfsUser?: str
@@ -876,7 +884,7 @@ schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0Hdfs:
 
 
 schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0HdfsKrbCCacheSecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow task result outputs artifacts items0 hdfs krb c cache secret
 
     Attributes
@@ -892,13 +900,13 @@ schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0HdfsKrbCCacheSe
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0HdfsKrbConfigConfigMap:
-    """
+    r"""
     argoproj io v1alpha1 workflow task result outputs artifacts items0 hdfs krb config config map
 
     Attributes
@@ -914,13 +922,13 @@ schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0HdfsKrbConfigCo
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0HdfsKrbKeytabSecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow task result outputs artifacts items0 hdfs krb keytab secret
 
     Attributes
@@ -936,13 +944,13 @@ schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0HdfsKrbKeytabSe
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0Oss:
-    """
+    r"""
     argoproj io v1alpha1 workflow task result outputs artifacts items0 oss
 
     Attributes
@@ -988,7 +996,7 @@ schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0Oss:
 
 
 schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0OssAccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow task result outputs artifacts items0 oss access key secret
 
     Attributes
@@ -1004,13 +1012,13 @@ schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0OssAccessKeySec
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0OssLifecycleRule:
-    """
+    r"""
     argoproj io v1alpha1 workflow task result outputs artifacts items0 oss lifecycle rule
 
     Attributes
@@ -1028,7 +1036,7 @@ schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0OssLifecycleRul
 
 
 schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0OssSecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow task result outputs artifacts items0 oss secret key secret
 
     Attributes
@@ -1044,13 +1052,13 @@ schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0OssSecretKeySec
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0Raw:
-    """
+    r"""
     argoproj io v1alpha1 workflow task result outputs artifacts items0 raw
 
     Attributes
@@ -1064,7 +1072,7 @@ schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0Raw:
 
 
 schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0S3:
-    """
+    r"""
     argoproj io v1alpha1 workflow task result outputs artifacts items0 s3
 
     Attributes
@@ -1091,6 +1099,8 @@ schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0S3:
         role a r n
     secretKeySecret : ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0S3SecretKeySecret, default is Undefined, optional
         secret key secret
+    sessionTokenSecret : ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0S3SessionTokenSecret, default is Undefined, optional
+        session token secret
     useSDKCreds : bool, default is Undefined, optional
         use s d k creds
     """
@@ -1118,11 +1128,13 @@ schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0S3:
 
     secretKeySecret?: ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0S3SecretKeySecret
 
+    sessionTokenSecret?: ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0S3SessionTokenSecret
+
     useSDKCreds?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0S3AccessKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow task result outputs artifacts items0 s3 access key secret
 
     Attributes
@@ -1138,13 +1150,13 @@ schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0S3AccessKeySecr
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0S3CaSecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow task result outputs artifacts items0 s3 ca secret
 
     Attributes
@@ -1160,13 +1172,13 @@ schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0S3CaSecret:
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0S3CreateBucketIfNotPresent:
-    """
+    r"""
     argoproj io v1alpha1 workflow task result outputs artifacts items0 s3 create bucket if not present
 
     Attributes
@@ -1180,7 +1192,7 @@ schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0S3CreateBucketI
 
 
 schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0S3EncryptionOptions:
-    """
+    r"""
     argoproj io v1alpha1 workflow task result outputs artifacts items0 s3 encryption options
 
     Attributes
@@ -1206,7 +1218,7 @@ schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0S3EncryptionOpt
 
 
 schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0S3EncryptionOptionsServerSideCustomerKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow task result outputs artifacts items0 s3 encryption options server side customer key secret
 
     Attributes
@@ -1222,13 +1234,13 @@ schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0S3EncryptionOpt
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0S3SecretKeySecret:
-    """
+    r"""
     argoproj io v1alpha1 workflow task result outputs artifacts items0 s3 secret key secret
 
     Attributes
@@ -1244,13 +1256,35 @@ schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0S3SecretKeySecr
 
     key: str
 
-    name?: str
+    name?: str = ""
+
+    optional?: bool
+
+
+schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsArtifactsItems0S3SessionTokenSecret:
+    r"""
+    argoproj io v1alpha1 workflow task result outputs artifacts items0 s3 session token secret
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
 
     optional?: bool
 
 
 schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 workflow task result outputs parameters items0
 
     Attributes
@@ -1288,7 +1322,7 @@ schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsParametersItems0:
 
 
 schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsParametersItems0ValueFrom:
-    """
+    r"""
     argoproj io v1alpha1 workflow task result outputs parameters items0 value from
 
     Attributes
@@ -1334,7 +1368,7 @@ schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsParametersItems0ValueFrom:
 
 
 schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsParametersItems0ValueFromConfigMapKeyRef:
-    """
+    r"""
     argoproj io v1alpha1 workflow task result outputs parameters items0 value from config map key ref
 
     Attributes
@@ -1350,7 +1384,7 @@ schema ArgoprojIoV1alpha1WorkflowTaskResultOutputsParametersItems0ValueFromConfi
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
