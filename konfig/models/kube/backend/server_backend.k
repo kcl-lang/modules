@@ -24,7 +24,9 @@ schema ServerBackend[inputConfig: server.Server]:
     # Store the input config parameter, ensure it can be seen in protocol and mixin.
     config: server.Server = inputConfig
     # Workload name.
-    workloadName: str = config.name or "{}{}".format(metadata.__META_APP_NAME, metadata.__META_ENV_TYPE_NAME).lower()
+    workloadName: str = config.name or "{}-{}".format(metadata.__META_APP_NAME, metadata.__META_ENV_TYPE_NAME).lower()
+    # Workload namespace
+    workloadNamespace: str = config.namespace or "{}-{}".format(metadata.__META_APP_NAMESPACE, metadata.__META_ENV_TYPE_NAME).lower()
     # App variable contains labels, selector and environments.
     app: utils.ApplicationBuilder = utils.ApplicationBuilder {}
     # Main containers and sidecar contrainers.
@@ -39,7 +41,7 @@ schema ServerBackend[inputConfig: server.Server]:
         mainContainer = utils.volume_patch(config.volumes, [utils.ContainerFrontend2Kube({
             **config.mainContainer
             if config.mainContainer.useBuiltInEnv:
-                env += app.envs
+                env = config.mainContainer.env | app.envs
             name = config.mainContainer.name or "main"
             image = config.image
             resource = config?.schedulingStrategy?.resource
@@ -58,6 +60,7 @@ schema ServerBackend[inputConfig: server.Server]:
     workloadAttributes: {str:} = {
         metadata = utils.MetadataBuilder(config) | {
             name = workloadName
+            namespace = workloadNamespace
         }
         spec = {
             replicas = config.replicas
@@ -79,6 +82,8 @@ schema ServerBackend[inputConfig: server.Server]:
                     ]
                     if config.serviceAccount:
                         serviceAccountName = config.serviceAccount.name
+                    if config.affinity: 
+                        affinity = config.affinity
                 }
             }
             if config.deploymentStrategy:

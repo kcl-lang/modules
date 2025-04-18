@@ -9,7 +9,8 @@ mixin SecretMixin for protocol.ServerProtocol:
         kubernetes: resource.ResourceMapping {
             Secret = [v1.Secret {
                 metadata: utils.MetadataBuilder(_s) | {
-                    name = _s?.name or "{}{}{}".format(metadata.__META_APP_NAME, metadata.__META_ENV_TYPE_NAME, _i)
+                    name = _s?.name or "{}-{}-{}".format(metadata.__META_APP_NAME, metadata.__META_ENV_TYPE_NAME, _i)
+                    namespace = _s?.namespace or "{}-{}".format(metadata.__META_APP_NAMESPACE, metadata.__META_ENV_TYPE_NAME)
                 }
                 data = _s?.data
                 stringData = _s?.stringData

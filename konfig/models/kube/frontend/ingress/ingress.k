@@ -7,6 +7,8 @@ schema Ingress(common.Metadata):
 
     Attributes
     ----------
+    ingressClassName: str, default is Undefined, optional.
+        This field should reference an IngressClass resource specifying the name of the controller that will implement the class. If left unspecified, a default IngressClass will be assigned by the controller if any IngressClass has ingressclass.kubernetes.io/is-default-class set to true.
     rules: [networkingv1.IngressRule], default is Undefined, optional
         A list of host rules used to configure the Ingress. If unspecified, or no rule matches, all traffic is sent to the default backend.
     tls: [networkingv1.IngressTLS], default is Undefined, optional
@@ -39,5 +41,6 @@ schema Ingress(common.Metadata):
         ]
     }
     """
+    ingressClassName?: str
     rules?: [networkingv1.IngressRule]
     tls?: [networkingv1.IngressTLS]

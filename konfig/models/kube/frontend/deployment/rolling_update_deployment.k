@@ -21,3 +21,5 @@ schema RollingUpdateDeployment:
     maxSurge?: int | str
 
     maxUnavailable?: int | str
+
+

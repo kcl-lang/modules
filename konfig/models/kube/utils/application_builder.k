@@ -1,4 +1,5 @@
 import models.kube.metadata
+import models.kube.frontend.container.env as e
 
 schema ApplicationBuilder:
     """ApplicationBuilder contains the workload labels, selector and environments about the application
@@ -9,26 +10,24 @@ schema ApplicationBuilder:
         "app.kubernetes.io/name": metadata.__META_APP_NAME
         "app.kubernetes.io/env": metadata.__META_ENV_TYPE_NAME
         "app.kubernetes.io/instance": "{}-{}".format(metadata.__META_APP_NAME, metadata.__META_ENV_TYPE_NAME).lower()
-        "cluster.x-k8s.io/cluster-name": metadata.__META_CLUSTER_NAME
+        if metadata.__META_CLUSTER_NAME:
+            "cluster.x-k8s.io/cluster-name": metadata.__META_CLUSTER_NAME
     }
 
     selector: {str:str} = labels
 
-    envs: [{str:}] = [
-        {
-            name: "APP_NAME"
+    envs: e.EnvMap = {
+        APP_NAME: {
             value: metadata.__META_APP_NAME
         }
-        {
-            name: "ENVIRONMENT"
+        ENVIRONMENT: {
             value: metadata.__META_ENV_TYPE_NAME
         }
-        {
-            name: "INSTANCE"
+        INSTANCE: {
             value: "{}-{}".format(metadata.__META_APP_NAME, metadata.__META_ENV_TYPE_NAME).lower()
         }
-        {
-            name: "CLUSTER"
-            value: metadata.__META_CLUSTER_NAME
-        }
-    ]
+        if metadata.__META_CLUSTER_NAME:
+            CLUSTER: {
+                value: metadata.__META_CLUSTER_NAME
+            }
+    }
