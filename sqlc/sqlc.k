@@ -70,7 +70,7 @@ schema ConfigSql:
     # Directory of SQL migrations or path to single SQL file; or a list of paths.
     $schema: str
     # Directory of SQL queries or path to single SQL file; or a list of paths.
-    queries?: str
+    queries?: str|[str]
     # A collection of mappings to configure code generators.
     # See codegen for the supported keys.
     # https://docs.sqlc.dev/en/latest/reference/config.html#codegen
