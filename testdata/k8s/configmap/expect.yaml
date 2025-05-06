@@ -1,0 +1,8 @@
+apiVersion: v1
+data:
+  config: nginx.conf
+kind: ConfigMap
+metadata:
+  labels:
+    app: nginx
+  name: nginx-configmap

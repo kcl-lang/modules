@@ -1,15 +1,74 @@
 package main
 
 import (
+	"bytes"
+	"fmt"
 	"os"
 	"path/filepath"
 	"strings"
 	"testing"
 
+	assert2 "github.com/stretchr/testify/assert"
 	"gopkg.in/yaml.v2"
 	"gotest.tools/assert"
+	"kcl-lang.io/kcl-go"
 	"kcl-lang.io/kpm/pkg/utils"
 )
+
+func readFileString(t testing.TB, p string) (content string) {
+	data, err := os.ReadFile(p)
+	if err != nil {
+		t.Errorf("read file failed, %s", err)
+	}
+	data = bytes.ReplaceAll(data, []byte("\r\n"), []byte("\n"))
+	return string(data)
+}
+
+func TestK8sPackages(t *testing.T) {
+	type testCase struct {
+		name           string
+		input          string
+		expectFilepath string
+		expect         string
+		packagePath    string
+	}
+	var cases []testCase
+
+	casesPath := filepath.Join("testdata", "k8s")
+	caseFiles, err := os.ReadDir(casesPath)
+	if err != nil {
+		t.Fatal(err)
+	}
+	var versions []string
+	versions = append(versions, "1.31")
+	versions = append(versions, "1.32")
+
+	for _, v := range versions {
+		packagePath := filepath.Join("k8s", v)
+		for _, caseFile := range caseFiles {
+			input := filepath.Join(casesPath, caseFile.Name(), "input.k")
+			expectFilepath := filepath.Join(casesPath, caseFile.Name(), "expect.yaml")
+			cases = append(cases, testCase{
+				name:           v + "_" + caseFile.Name(),
+				input:          readFileString(t, input),
+				expectFilepath: expectFilepath,
+				expect:         readFileString(t, expectFilepath),
+				packagePath:    packagePath,
+			})
+		}
+	}
+
+	for _, testcase := range cases {
+		t.Run(testcase.name, func(t *testing.T) {
+			yaml := kcl.MustRun("main.k", kcl.WithCode(testcase.input), kcl.WithExternalPkgs("k8s="+testcase.packagePath)).GetRawYamlResult()
+			if err != nil {
+				t.Fatal(err)
+			}
+			fmt.Printf("result: %v\n", yaml)
+			assert2.Equal(t, testcase.expect, string(strings.ReplaceAll(yaml, "\r\n", "\n")))
+		})
+	}
+}
 
 func TestUpdateReadmeAndMetadata(t *testing.T) {
 	pwd, err := os.Getwd()
