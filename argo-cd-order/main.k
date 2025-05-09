@@ -31,7 +31,7 @@ schema ArgoCdManifestMetadataAnnotations:
     """
     [str]: any
     "argocd.argoproj.io/sync-wave": str
-    "argocd.argoproj.io/hook": str
+    "argocd.argoproj.io/hook"?: str
 
 patchResource = lambda resource: any, sync_wave: str, phase: str -> ArgoCdManifest {
         p.merge(resource, { metadata.annotations = validatedAnnotations({
