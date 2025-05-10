@@ -1,0 +1,25 @@
+version: 0.2.1
+name: argo-cd-order
+displayName: argo-cd-order
+createdAt: "2025-05-10T03:08:04Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `argo-cd-order` with tag `0.2.1` as dependency
+  ```
+  kcl mod add argo-cd-order:0.2.1
+  ```
+
+  #### Pull `argo-cd-order` with tag `0.2.1` to local
+  ```
+  kcl mod pull argo-cd-order:0.2.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
