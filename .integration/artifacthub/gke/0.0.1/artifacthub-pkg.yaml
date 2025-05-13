@@ -1,0 +1,25 @@
+version: 0.0.1
+name: gke
+displayName: gke
+createdAt: "2025-05-13T14:54:28Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `gke` with tag `0.0.1` as dependency
+  ```
+  kcl mod add gke:0.0.1
+  ```
+
+  #### Pull `gke` with tag `0.0.1` to local
+  ```
+  kcl mod pull gke:0.0.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
