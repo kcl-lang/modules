@@ -1,4 +1,4 @@
-version=1.32
+version=1.33
 spec_path=swagger.json
 script_path=main.py
 wget https://raw.githubusercontent.com/kubernetes/kubernetes/release-${version}/api/openapi-spec/swagger.json -O swagger.json

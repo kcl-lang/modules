@@ -42,6 +42,7 @@ func TestK8sPackages(t *testing.T) {
 	var versions []string
 	versions = append(versions, "1.31")
 	versions = append(versions, "1.32")
+	versions = append(versions, "1.33")
 
 	for _, v := range versions {
 		packagePath := filepath.Join("k8s", v)
