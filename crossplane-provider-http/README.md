@@ -1,4 +1,4 @@
-# crossplane-http
+# crossplane-provider-http
 
 ## Index
 

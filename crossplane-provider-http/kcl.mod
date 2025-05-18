@@ -1,5 +1,5 @@
 [package]
-name = "crossplane-http"
+name = "crossplane-provider-http"
 edition = "v0.11.1"
 version = "1.0.8"
 
