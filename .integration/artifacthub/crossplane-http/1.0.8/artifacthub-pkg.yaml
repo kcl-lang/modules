@@ -1,0 +1,25 @@
+version: 1.0.8
+name: crossplane-http
+displayName: crossplane-http
+createdAt: "2025-05-19T14:44:23Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `crossplane-http` with tag `1.0.8` as dependency
+  ```
+  kcl mod add crossplane-http:1.0.8
+  ```
+
+  #### Pull `crossplane-http` with tag `1.0.8` to local
+  ```
+  kcl mod pull crossplane-http:1.0.8
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
