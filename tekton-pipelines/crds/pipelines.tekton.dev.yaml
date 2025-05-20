@@ -1,0 +1,1678 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apiextensions.k8s.io/v1","kind":"CustomResourceDefinition","metadata":{"annotations":{"argocd.argoproj.io/sync-wave":"2"},"labels":{"app.kubernetes.io/instance":"default","app.kubernetes.io/part-of":"tekton-pipelines","pipeline.tekton.dev/release":"v1.0.0","version":"v1.0.0"},"name":"pipelines.tekton.dev"},"spec":{"conversion":{"strategy":"Webhook","webhook":{"clientConfig":{"service":{"name":"tekton-pipelines-webhook","namespace":"tekton-pipelines"}},"conversionReviewVersions":["v1beta1","v1"]}},"group":"tekton.dev","names":{"categories":["tekton","tekton-pipelines"],"kind":"Pipeline","plural":"pipelines","singular":"pipeline"},"preserveUnknownFields":false,"scope":"Namespaced","versions":[{"name":"v1beta1","schema":{"openAPIV3Schema":{"description":"Pipeline describes a list of Tasks to execute. It expresses how outputs\nof tasks feed into inputs of subsequent tasks.\n\nDeprecated: Please use v1.Pipeline instead.","properties":{"apiVersion":{"description":"APIVersion defines the versioned schema of this representation of an object.\nServers should convert recognized schemas to the latest internal value, and\nmay reject unrecognized values.\nMore info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources","type":"string"},"kind":{"description":"Kind is a string value representing the REST resource this object represents.\nServers may infer this from the endpoint the client submits requests to.\nCannot be updated.\nIn CamelCase.\nMore info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds","type":"string"},"metadata":{"type":"object"},"spec":{"description":"Spec holds the desired state of the Pipeline from the client","properties":{"description":{"description":"Description is a user-facing description of the pipeline that may be\nused to populate a UI.","type":"string"},"displayName":{"description":"DisplayName is a user-facing name of the pipeline that may be\nused to populate a UI.","type":"string"},"finally":{"description":"Finally declares the list of Tasks that execute just before leaving the Pipeline\ni.e. either after all Tasks are finished executing successfully\nor after a failure which would result in ending the Pipeline","items":{"description":"PipelineTask defines a task in a Pipeline, passing inputs from both\nParams and from the output of previous tasks.","properties":{"description":{"description":"Description is the description of this task within the context of a Pipeline.\nThis description may be used to populate a UI.","type":"string"},"displayName":{"description":"DisplayName is the display name of this task within the context of a Pipeline.\nThis display name may be used to populate a UI.","type":"string"},"matrix":{"description":"Matrix declares parameters used to fan out this task.","properties":{"include":{"description":"Include is a list of IncludeParams which allows passing in specific combinations of Parameters into the Matrix.","items":{"description":"IncludeParams allows passing in a specific combinations of Parameters into the Matrix.","properties":{"name":{"description":"Name the specified combination","type":"string"},"params":{"description":"Params takes only `Parameters` of type `\"string\"`\nThe names of the `params` must match the names of the `params` in the underlying `Task`","items":{"description":"Param declares an ParamValues to use for the parameter called name.","properties":{"name":{"type":"string"},"value":{"x-kubernetes-preserve-unknown-fields":true}},"required":["name","value"],"type":"object"},"type":"array","x-kubernetes-list-type":"atomic"}},"type":"object"},"type":"array","x-kubernetes-list-type":"atomic"},"params":{"description":"Params is a list of parameters used to fan out the pipelineTask\nParams takes only `Parameters` of type `\"array\"`\nEach array element is supplied to the `PipelineTask` by substituting `params` of type `\"string\"` in the underlying `Task`.\nThe names of the `params` in the `Matrix` must match the names of the `params` in the underlying `Task` that they will be substituting.","items":{"description":"Param declares an ParamValues to use for the parameter called name.","properties":{"name":{"type":"string"},"value":{"x-kubernetes-preserve-unknown-fields":true}},"required":["name","value"],"type":"object"},"type":"array","x-kubernetes-list-type":"atomic"}},"type":"object"},"name":{"description":"Name is the name of this task within the context of a Pipeline. Name is\nused as a coordinate with the `from` and `runAfter` fields to establish\nthe execution order of tasks relative to one another.","type":"string"},"onError":{"description":"OnError defines the exiting behavior of a PipelineRun on error\ncan be set to [ continue | stopAndFail ]","type":"string"},"params":{"description":"Parameters declares parameters passed to this task.","items":{"description":"Param declares an ParamValues to use for the parameter called name.","properties":{"name":{"type":"string"},"value":{"x-kubernetes-preserve-unknown-fields":true}},"required":["name","value"],"type":"object"},"type":"array","x-kubernetes-list-type":"atomic"},"pipelineRef":{"description":"PipelineRef is a reference to a pipeline definition\nNote: PipelineRef is in preview mode and not yet supported","properties":{"apiVersion":{"description":"API version of the referent","type":"string"},"bundle":{"description":"Bundle url reference to a Tekton Bundle.\n\nDeprecated: Please use ResolverRef with the bundles resolver instead.\nThe field is staying there for go client backward compatibility, but is not used/allowed anymore.","type":"string"},"name":{"description":"Name of the referent; More info: http://kubernetes.io/docs/user-guide/identifiers#names","type":"string"},"params":{"description":"Params contains the parameters used to identify the\nreferenced Tekton resource. Example entries might include\n\"repo\" or \"path\" but the set of params ultimately depends on\nthe chosen resolver.","items":{"description":"Param declares an ParamValues to use for the parameter called name.","properties":{"name":{"type":"string"},"value":{"x-kubernetes-preserve-unknown-fields":true}},"required":["name","value"],"type":"object"},"type":"array","x-kubernetes-list-type":"atomic"},"resolver":{"description":"Resolver is the name of the resolver that should perform\nresolution of the referenced Tekton resource, such as \"git\".","type":"string"}},"type":"object"},"pipelineSpec":{"description":"PipelineSpec is a specification of a pipeline\nNote: PipelineSpec is in preview mode and not yet supported\nSpecifying PipelineSpec can be disabled by setting\n`disable-inline-spec` feature flag.\nSee Pipeline.spec (API version: tekton.dev/v1beta1)","x-kubernetes-preserve-unknown-fields":true},"resources":{"description":"Deprecated: Unused, preserved only for backwards compatibility","properties":{"inputs":{"description":"Inputs holds the mapping from the PipelineResources declared in\nDeclaredPipelineResources to the input PipelineResources required by the Task.","items":{"description":"PipelineTaskInputResource maps the name of a declared PipelineResource input\ndependency in a Task to the resource in the Pipeline's DeclaredPipelineResources\nthat should be used. This input may come from a previous task.\n\nDeprecated: Unused, preserved only for backwards compatibility","properties":{"from":{"description":"From is the list of PipelineTask names that the resource has to come from.\n(Implies an ordering in the execution graph.)","items":{"type":"string"},"type":"array","x-kubernetes-list-type":"atomic"},"name":{"description":"Name is the name of the PipelineResource as declared by the Task.","type":"string"},"resource":{"description":"Resource is the name of the DeclaredPipelineResource to use.","type":"string"}},"required":["name","resource"],"type":"object"},"type":"array","x-kubernetes-list-type":"atomic"},"outputs":{"description":"Outputs holds the mapping from the PipelineResources declared in\nDeclaredPipelineResources to the input PipelineResources required by the Task.","items":{"description":"PipelineTaskOutputResource maps the name of a declared PipelineResource output\ndependency in a Task to the resource in the Pipeline's DeclaredPipelineResources\nthat should be used.\n\nDeprecated: Unused, preserved only for backwards compatibility","properties":{"name":{"description":"Name is the name of the PipelineResource as declared by the Task.","type":"string"},"resource":{"description":"Resource is the name of the DeclaredPipelineResource to use.","type":"string"}},"required":["name","resource"],"type":"object"},"type":"array","x-kubernetes-list-type":"atomic"}},"type":"object"},"retries":{"description":"Retries represents how many times this task should be retried in case of task failure: ConditionSucceeded set to False","type":"integer"},"runAfter":{"description":"RunAfter is the list of PipelineTask names that should be executed before\nthis Task executes. (Used to force a specific ordering in graph execution.)","items":{"type":"string"},"type":"array","x-kubernetes-list-type":"atomic"},"taskRef":{"description":"TaskRef is a reference to a task definition.","properties":{"apiVersion":{"description":"API version of the referent\nNote: A Task with non-empty APIVersion and Kind is considered a Custom Task","type":"string"},"bundle":{"description":"Bundle url reference to a Tekton Bundle.\n\nDeprecated: Please use ResolverRef with the bundles resolver instead.\nThe field is staying there for go client backward compatibility, but is not used/allowed anymore.","type":"string"},"kind":{"description":"TaskKind indicates the Kind of the Task:\n1. Namespaced Task when Kind is set to \"Task\". If Kind is \"\", it defaults to \"Task\".\n2. Custom Task when Kind is non-empty and APIVersion is non-empty","type":"string"},"name":{"description":"Name of the referent; More info: http://kubernetes.io/docs/user-guide/identifiers#names","type":"string"},"params":{"description":"Params contains the parameters used to identify the\nreferenced Tekton resource. Example entries might include\n\"repo\" or \"path\" but the set of params ultimately depends on\nthe chosen resolver.","items":{"description":"Param declares an ParamValues to use for the parameter called name.","properties":{"name":{"type":"string"},"value":{"x-kubernetes-preserve-unknown-fields":true}},"required":["name","value"],"type":"object"},"type":"array","x-kubernetes-list-type":"atomic"},"resolver":{"description":"Resolver is the name of the resolver that should perform\nresolution of the referenced Tekton resource, such as \"git\".","type":"string"}},"type":"object"},"taskSpec":{"description":"TaskSpec is a specification of a task\nSpecifying TaskSpec can be disabled by setting\n`disable-inline-spec` feature flag.\nSee Task.spec (API version: tekton.dev/v1beta1)","x-kubernetes-preserve-unknown-fields":true},"timeout":{"description":"Time after which the TaskRun times out. Defaults to 1 hour.\nRefer Go's ParseDuration documentation for expected format: https://golang.org/pkg/time/#ParseDuration","type":"string"},"when":{"description":"WhenExpressions is a list of when expressions that need to be true for the task to run","items":{"description":"WhenExpression allows a PipelineTask to declare expressions to be evaluated before the Task is run\nto determine whether the Task should be executed or skipped","properties":{"cel":{"description":"CEL is a string of Common Language Expression, which can be used to conditionally execute\nthe task based on the result of the expression evaluation\nMore info about CEL syntax: https://github.com/google/cel-spec/blob/master/doc/langdef.md","type":"string"},"input":{"description":"Input is the string for guard checking which can be a static input or an output from a parent Task","type":"string"},"operator":{"description":"Operator that represents an Input's relationship to the values","type":"string"},"values":{"description":"Values is an array of strings, which is compared against the input, for guard checking\nIt must be non-empty","items":{"type":"string"},"type":"array","x-kubernetes-list-type":"atomic"}},"type":"object"},"type":"array"},"workspaces":{"description":"Workspaces maps workspaces from the pipeline spec to the workspaces\ndeclared in the Task.","items":{"description":"WorkspacePipelineTaskBinding describes how a workspace passed into the pipeline should be\nmapped to a task's declared workspace.","properties":{"name":{"description":"Name is the name of the workspace as declared by the task","type":"string"},"subPath":{"description":"SubPath is optionally a directory on the volume which should be used\nfor this binding (i.e. the volume will be mounted at this sub directory).","type":"string"},"workspace":{"description":"Workspace is the name of the workspace declared by the pipeline","type":"string"}},"required":["name"],"type":"object"},"type":"array","x-kubernetes-list-type":"atomic"}},"type":"object"},"type":"array","x-kubernetes-list-type":"atomic"},"params":{"description":"Params declares a list of input parameters that must be supplied when\nthis Pipeline is run.","items":{"description":"ParamSpec defines arbitrary parameters needed beyond typed inputs (such as\nresources). Parameter values are provided by users as inputs on a TaskRun\nor PipelineRun.","properties":{"default":{"description":"Default is the value a parameter takes if no input value is supplied. If\ndefault is set, a Task may be executed without a supplied value for the\nparameter.","x-kubernetes-preserve-unknown-fields":true},"description":{"description":"Description is a user-facing description of the parameter that may be\nused to populate a UI.","type":"string"},"enum":{"description":"Enum declares a set of allowed param input values for tasks/pipelines that can be validated.\nIf Enum is not set, no input validation is performed for the param.","items":{"type":"string"},"type":"array"},"name":{"description":"Name declares the name by which a parameter is referenced.","type":"string"},"properties":{"additionalProperties":{"description":"PropertySpec defines the struct for object keys","properties":{"type":{"description":"ParamType indicates the type of an input parameter;\nUsed to distinguish between a single string and an array of strings.","type":"string"}},"type":"object"},"description":"Properties is the JSON Schema properties to support key-value pairs parameter.","type":"object"},"type":{"description":"Type is the user-specified type of the parameter. The possible types\nare currently \"string\", \"array\" and \"object\", and \"string\" is the default.","type":"string"}},"required":["name"],"type":"object"},"type":"array","x-kubernetes-list-type":"atomic"},"resources":{"description":"Deprecated: Unused, preserved only for backwards compatibility","items":{"description":"PipelineDeclaredResource is used by a Pipeline to declare the types of the\nPipelineResources that it will required to run and names which can be used to\nrefer to these PipelineResources in PipelineTaskResourceBindings.\n\nDeprecated: Unused, preserved only for backwards compatibility","properties":{"name":{"description":"Name is the name that will be used by the Pipeline to refer to this resource.\nIt does not directly correspond to the name of any PipelineResources Task\ninputs or outputs, and it does not correspond to the actual names of the\nPipelineResources that will be bound in the PipelineRun.","type":"string"},"optional":{"description":"Optional declares the resource as optional.\noptional: true - the resource is considered optional\noptional: false - the resource is considered required (default/equivalent of not specifying it)","type":"boolean"},"type":{"description":"Type is the type of the PipelineResource.","type":"string"}},"required":["name","type"],"type":"object"},"type":"array","x-kubernetes-list-type":"atomic"},"results":{"description":"Results are values that this pipeline can output once run","items":{"description":"PipelineResult used to describe the results of a pipeline","properties":{"description":{"description":"Description is a human-readable description of the result","type":"string"},"name":{"description":"Name the given name","type":"string"},"type":{"description":"Type is the user-specified type of the result.\nThe possible types are 'string', 'array', and 'object', with 'string' as the default.\n'array' and 'object' types are alpha features.","type":"string"},"value":{"description":"Value the expression used to retrieve the value","x-kubernetes-preserve-unknown-fields":true}},"required":["name","value"],"type":"object"},"type":"array","x-kubernetes-list-type":"atomic"},"tasks":{"description":"Tasks declares the graph of Tasks that execute when this Pipeline is run.","items":{"description":"PipelineTask defines a task in a Pipeline, passing inputs from both\nParams and from the output of previous tasks.","properties":{"description":{"description":"Description is the description of this task within the context of a Pipeline.\nThis description may be used to populate a UI.","type":"string"},"displayName":{"description":"DisplayName is the display name of this task within the context of a Pipeline.\nThis display name may be used to populate a UI.","type":"string"},"matrix":{"description":"Matrix declares parameters used to fan out this task.","properties":{"include":{"description":"Include is a list of IncludeParams which allows passing in specific combinations of Parameters into the Matrix.","items":{"description":"IncludeParams allows passing in a specific combinations of Parameters into the Matrix.","properties":{"name":{"description":"Name the specified combination","type":"string"},"params":{"description":"Params takes only `Parameters` of type `\"string\"`\nThe names of the `params` must match the names of the `params` in the underlying `Task`","items":{"description":"Param declares an ParamValues to use for the parameter called name.","properties":{"name":{"type":"string"},"value":{"x-kubernetes-preserve-unknown-fields":true}},"required":["name","value"],"type":"object"},"type":"array","x-kubernetes-list-type":"atomic"}},"type":"object"},"type":"array","x-kubernetes-list-type":"atomic"},"params":{"description":"Params is a list of parameters used to fan out the pipelineTask\nParams takes only `Parameters` of type `\"array\"`\nEach array element is supplied to the `PipelineTask` by substituting `params` of type `\"string\"` in the underlying `Task`.\nThe names of the `params` in the `Matrix` must match the names of the `params` in the underlying `Task` that they will be substituting.","items":{"description":"Param declares an ParamValues to use for the parameter called name.","properties":{"name":{"type":"string"},"value":{"x-kubernetes-preserve-unknown-fields":true}},"required":["name","value"],"type":"object"},"type":"array","x-kubernetes-list-type":"atomic"}},"type":"object"},"name":{"description":"Name is the name of this task within the context of a Pipeline. Name is\nused as a coordinate with the `from` and `runAfter` fields to establish\nthe execution order of tasks relative to one another.","type":"string"},"onError":{"description":"OnError defines the exiting behavior of a PipelineRun on error\ncan be set to [ continue | stopAndFail ]","type":"string"},"params":{"description":"Parameters declares parameters passed to this task.","items":{"description":"Param declares an ParamValues to use for the parameter called name.","properties":{"name":{"type":"string"},"value":{"x-kubernetes-preserve-unknown-fields":true}},"required":["name","value"],"type":"object"},"type":"array","x-kubernetes-list-type":"atomic"},"pipelineRef":{"description":"PipelineRef is a reference to a pipeline definition\nNote: PipelineRef is in preview mode and not yet supported","properties":{"apiVersion":{"description":"API version of the referent","type":"string"},"bundle":{"description":"Bundle url reference to a Tekton Bundle.\n\nDeprecated: Please use ResolverRef with the bundles resolver instead.\nThe field is staying there for go client backward compatibility, but is not used/allowed anymore.","type":"string"},"name":{"description":"Name of the referent; More info: http://kubernetes.io/docs/user-guide/identifiers#names","type":"string"},"params":{"description":"Params contains the parameters used to identify the\nreferenced Tekton resource. Example entries might include\n\"repo\" or \"path\" but the set of params ultimately depends on\nthe chosen resolver.","items":{"description":"Param declares an ParamValues to use for the parameter called name.","properties":{"name":{"type":"string"},"value":{"x-kubernetes-preserve-unknown-fields":true}},"required":["name","value"],"type":"object"},"type":"array","x-kubernetes-list-type":"atomic"},"resolver":{"description":"Resolver is the name of the resolver that should perform\nresolution of the referenced Tekton resource, such as \"git\".","type":"string"}},"type":"object"},"pipelineSpec":{"description":"PipelineSpec is a specification of a pipeline\nNote: PipelineSpec is in preview mode and not yet supported\nSpecifying PipelineSpec can be disabled by setting\n`disable-inline-spec` feature flag.\nSee Pipeline.spec (API version: tekton.dev/v1beta1)","x-kubernetes-preserve-unknown-fields":true},"resources":{"description":"Deprecated: Unused, preserved only for backwards compatibility","properties":{"inputs":{"description":"Inputs holds the mapping from the PipelineResources declared in\nDeclaredPipelineResources to the input PipelineResources required by the Task.","items":{"description":"PipelineTaskInputResource maps the name of a declared PipelineResource input\ndependency in a Task to the resource in the Pipeline's DeclaredPipelineResources\nthat should be used. This input may come from a previous task.\n\nDeprecated: Unused, preserved only for backwards compatibility","properties":{"from":{"description":"From is the list of PipelineTask names that the resource has to come from.\n(Implies an ordering in the execution graph.)","items":{"type":"string"},"type":"array","x-kubernetes-list-type":"atomic"},"name":{"description":"Name is the name of the PipelineResource as declared by the Task.","type":"string"},"resource":{"description":"Resource is the name of the DeclaredPipelineResource to use.","type":"string"}},"required":["name","resource"],"type":"object"},"type":"array","x-kubernetes-list-type":"atomic"},"outputs":{"description":"Outputs holds the mapping from the PipelineResources declared in\nDeclaredPipelineResources to the input PipelineResources required by the Task.","items":{"description":"PipelineTaskOutputResource maps the name of a declared PipelineResource output\ndependency in a Task to the resource in the Pipeline's DeclaredPipelineResources\nthat should be used.\n\nDeprecated: Unused, preserved only for backwards compatibility","properties":{"name":{"description":"Name is the name of the PipelineResource as declared by the Task.","type":"string"},"resource":{"description":"Resource is the name of the DeclaredPipelineResource to use.","type":"string"}},"required":["name","resource"],"type":"object"},"type":"array","x-kubernetes-list-type":"atomic"}},"type":"object"},"retries":{"description":"Retries represents how many times this task should be retried in case of task failure: ConditionSucceeded set to False","type":"integer"},"runAfter":{"description":"RunAfter is the list of PipelineTask names that should be executed before\nthis Task executes. (Used to force a specific ordering in graph execution.)","items":{"type":"string"},"type":"array","x-kubernetes-list-type":"atomic"},"taskRef":{"description":"TaskRef is a reference to a task definition.","properties":{"apiVersion":{"description":"API version of the referent\nNote: A Task with non-empty APIVersion and Kind is considered a Custom Task","type":"string"},"bundle":{"description":"Bundle url reference to a Tekton Bundle.\n\nDeprecated: Please use ResolverRef with the bundles resolver instead.\nThe field is staying there for go client backward compatibility, but is not used/allowed anymore.","type":"string"},"kind":{"description":"TaskKind indicates the Kind of the Task:\n1. Namespaced Task when Kind is set to \"Task\". If Kind is \"\", it defaults to \"Task\".\n2. Custom Task when Kind is non-empty and APIVersion is non-empty","type":"string"},"name":{"description":"Name of the referent; More info: http://kubernetes.io/docs/user-guide/identifiers#names","type":"string"},"params":{"description":"Params contains the parameters used to identify the\nreferenced Tekton resource. Example entries might include\n\"repo\" or \"path\" but the set of params ultimately depends on\nthe chosen resolver.","items":{"description":"Param declares an ParamValues to use for the parameter called name.","properties":{"name":{"type":"string"},"value":{"x-kubernetes-preserve-unknown-fields":true}},"required":["name","value"],"type":"object"},"type":"array","x-kubernetes-list-type":"atomic"},"resolver":{"description":"Resolver is the name of the resolver that should perform\nresolution of the referenced Tekton resource, such as \"git\".","type":"string"}},"type":"object"},"taskSpec":{"description":"TaskSpec is a specification of a task\nSpecifying TaskSpec can be disabled by setting\n`disable-inline-spec` feature flag.\nSee Task.spec (API version: tekton.dev/v1beta1)","x-kubernetes-preserve-unknown-fields":true},"timeout":{"description":"Time after which the TaskRun times out. Defaults to 1 hour.\nRefer Go's ParseDuration documentation for expected format: https://golang.org/pkg/time/#ParseDuration","type":"string"},"when":{"description":"WhenExpressions is a list of when expressions that need to be true for the task to run","items":{"description":"WhenExpression allows a PipelineTask to declare expressions to be evaluated before the Task is run\nto determine whether the Task should be executed or skipped","properties":{"cel":{"description":"CEL is a string of Common Language Expression, which can be used to conditionally execute\nthe task based on the result of the expression evaluation\nMore info about CEL syntax: https://github.com/google/cel-spec/blob/master/doc/langdef.md","type":"string"},"input":{"description":"Input is the string for guard checking which can be a static input or an output from a parent Task","type":"string"},"operator":{"description":"Operator that represents an Input's relationship to the values","type":"string"},"values":{"description":"Values is an array of strings, which is compared against the input, for guard checking\nIt must be non-empty","items":{"type":"string"},"type":"array","x-kubernetes-list-type":"atomic"}},"type":"object"},"type":"array"},"workspaces":{"description":"Workspaces maps workspaces from the pipeline spec to the workspaces\ndeclared in the Task.","items":{"description":"WorkspacePipelineTaskBinding describes how a workspace passed into the pipeline should be\nmapped to a task's declared workspace.","properties":{"name":{"description":"Name is the name of the workspace as declared by the task","type":"string"},"subPath":{"description":"SubPath is optionally a directory on the volume which should be used\nfor this binding (i.e. the volume will be mounted at this sub directory).","type":"string"},"workspace":{"description":"Workspace is the name of the workspace declared by the pipeline","type":"string"}},"required":["name"],"type":"object"},"type":"array","x-kubernetes-list-type":"atomic"}},"type":"object"},"type":"array","x-kubernetes-list-type":"atomic"},"workspaces":{"description":"Workspaces declares a set of named workspaces that are expected to be\nprovided by a PipelineRun.","items":{"description":"PipelineWorkspaceDeclaration creates a named slot in a Pipeline that a PipelineRun\nis expected to populate with a workspace binding.","properties":{"description":{"description":"Description is a human readable string describing how the workspace will be\nused in the Pipeline. It can be useful to include a bit of detail about which\ntasks are intended to have access to the data on the workspace.","type":"string"},"name":{"description":"Name is the name of a workspace to be provided by a PipelineRun.","type":"string"},"optional":{"description":"Optional marks a Workspace as not being required in PipelineRuns. By default\nthis field is false and so declared workspaces are required.","type":"boolean"}},"required":["name"],"type":"object"},"type":"array","x-kubernetes-list-type":"atomic"}},"type":"object"}},"type":"object"}},"served":true,"storage":false,"subresources":{"status":{}}},{"name":"v1","schema":{"openAPIV3Schema":{"description":"Pipeline describes a list of Tasks to execute. It expresses how outputs\nof tasks feed into inputs of subsequent tasks.","properties":{"apiVersion":{"description":"APIVersion defines the versioned schema of this representation of an object.\nServers should convert recognized schemas to the latest internal value, and\nmay reject unrecognized values.\nMore info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources","type":"string"},"kind":{"description":"Kind is a string value representing the REST resource this object represents.\nServers may infer this from the endpoint the client submits requests to.\nCannot be updated.\nIn CamelCase.\nMore info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds","type":"string"},"metadata":{"type":"object"},"spec":{"description":"Spec holds the desired state of the Pipeline from the client","properties":{"description":{"description":"Description is a user-facing description of the pipeline that may be\nused to populate a UI.","type":"string"},"displayName":{"description":"DisplayName is a user-facing name of the pipeline that may be\nused to populate a UI.","type":"string"},"finally":{"description":"Finally declares the list of Tasks that execute just before leaving the Pipeline\ni.e. either after all Tasks are finished executing successfully\nor after a failure which would result in ending the Pipeline","items":{"description":"PipelineTask defines a task in a Pipeline, passing inputs from both\nParams and from the output of previous tasks.","properties":{"description":{"description":"Description is the description of this task within the context of a Pipeline.\nThis description may be used to populate a UI.","type":"string"},"displayName":{"description":"DisplayName is the display name of this task within the context of a Pipeline.\nThis display name may be used to populate a UI.","type":"string"},"matrix":{"description":"Matrix declares parameters used to fan out this task.","properties":{"include":{"description":"Include is a list of IncludeParams which allows passing in specific combinations of Parameters into the Matrix.","items":{"description":"IncludeParams allows passing in a specific combinations of Parameters into the Matrix.","properties":{"name":{"description":"Name the specified combination","type":"string"},"params":{"description":"Params takes only `Parameters` of type `\"string\"`\nThe names of the `params` must match the names of the `params` in the underlying `Task`","items":{"description":"Param declares an ParamValues to use for the parameter called name.","properties":{"name":{"type":"string"},"value":{"x-kubernetes-preserve-unknown-fields":true}},"required":["name","value"],"type":"object"},"type":"array","x-kubernetes-list-type":"atomic"}},"type":"object"},"type":"array","x-kubernetes-list-type":"atomic"},"params":{"description":"Params is a list of parameters used to fan out the pipelineTask\nParams takes only `Parameters` of type `\"array\"`\nEach array element is supplied to the `PipelineTask` by substituting `params` of type `\"string\"` in the underlying `Task`.\nThe names of the `params` in the `Matrix` must match the names of the `params` in the underlying `Task` that they will be substituting.","items":{"description":"Param declares an ParamValues to use for the parameter called name.","properties":{"name":{"type":"string"},"value":{"x-kubernetes-preserve-unknown-fields":true}},"required":["name","value"],"type":"object"},"type":"array","x-kubernetes-list-type":"atomic"}},"type":"object"},"name":{"description":"Name is the name of this task within the context of a Pipeline. Name is\nused as a coordinate with the `from` and `runAfter` fields to establish\nthe execution order of tasks relative to one another.","type":"string"},"onError":{"description":"OnError defines the exiting behavior of a PipelineRun on error\ncan be set to [ continue | stopAndFail ]","type":"string"},"params":{"description":"Parameters declares parameters passed to this task.","items":{"description":"Param declares an ParamValues to use for the parameter called name.","properties":{"name":{"type":"string"},"value":{"x-kubernetes-preserve-unknown-fields":true}},"required":["name","value"],"type":"object"},"type":"array","x-kubernetes-list-type":"atomic"},"pipelineRef":{"description":"PipelineRef is a reference to a pipeline definition\nNote: PipelineRef is in preview mode and not yet supported","properties":{"apiVersion":{"description":"API version of the referent","type":"string"},"name":{"description":"Name of the referent; More info: http://kubernetes.io/docs/user-guide/identifiers#names","type":"string"},"params":{"description":"Params contains the parameters used to identify the\nreferenced Tekton resource. Example entries might include\n\"repo\" or \"path\" but the set of params ultimately depends on\nthe chosen resolver.","items":{"description":"Param declares an ParamValues to use for the parameter called name.","properties":{"name":{"type":"string"},"value":{"x-kubernetes-preserve-unknown-fields":true}},"required":["name","value"],"type":"object"},"type":"array","x-kubernetes-list-type":"atomic"},"resolver":{"description":"Resolver is the name of the resolver that should perform\nresolution of the referenced Tekton resource, such as \"git\".","type":"string"}},"type":"object"},"pipelineSpec":{"description":"PipelineSpec is a specification of a pipeline\nNote: PipelineSpec is in preview mode and not yet supported\nSpecifying PipelineSpec can be disabled by setting\n`disable-inline-spec` feature flag.\nSee Pipeline.spec (API version: tekton.dev/v1)","x-kubernetes-preserve-unknown-fields":true},"retries":{"description":"Retries represents how many times this task should be retried in case of task failure: ConditionSucceeded set to False","type":"integer"},"runAfter":{"description":"RunAfter is the list of PipelineTask names that should be executed before\nthis Task executes. (Used to force a specific ordering in graph execution.)","items":{"type":"string"},"type":"array","x-kubernetes-list-type":"atomic"},"taskRef":{"description":"TaskRef is a reference to a task definition.","properties":{"apiVersion":{"description":"API version of the referent\nNote: A Task with non-empty APIVersion and Kind is considered a Custom Task","type":"string"},"kind":{"description":"TaskKind indicates the Kind of the Task:\n1. Namespaced Task when Kind is set to \"Task\". If Kind is \"\", it defaults to \"Task\".\n2. Custom Task when Kind is non-empty and APIVersion is non-empty","type":"string"},"name":{"description":"Name of the referent; More info: http://kubernetes.io/docs/user-guide/identifiers#names","type":"string"},"params":{"description":"Params contains the parameters used to identify the\nreferenced Tekton resource. Example entries might include\n\"repo\" or \"path\" but the set of params ultimately depends on\nthe chosen resolver.","items":{"description":"Param declares an ParamValues to use for the parameter called name.","properties":{"name":{"type":"string"},"value":{"x-kubernetes-preserve-unknown-fields":true}},"required":["name","value"],"type":"object"},"type":"array","x-kubernetes-list-type":"atomic"},"resolver":{"description":"Resolver is the name of the resolver that should perform\nresolution of the referenced Tekton resource, such as \"git\".","type":"string"}},"type":"object"},"taskSpec":{"description":"TaskSpec is a specification of a task\nSpecifying TaskSpec can be disabled by setting\n`disable-inline-spec` feature flag.\nSee Task.spec (API version: tekton.dev/v1)","x-kubernetes-preserve-unknown-fields":true},"timeout":{"description":"Time after which the TaskRun times out. Defaults to 1 hour.\nRefer Go's ParseDuration documentation for expected format: https://golang.org/pkg/time/#ParseDuration","type":"string"},"when":{"description":"When is a list of when expressions that need to be true for the task to run","items":{"description":"WhenExpression allows a PipelineTask to declare expressions to be evaluated before the Task is run\nto determine whether the Task should be executed or skipped","properties":{"cel":{"description":"CEL is a string of Common Language Expression, which can be used to conditionally execute\nthe task based on the result of the expression evaluation\nMore info about CEL syntax: https://github.com/google/cel-spec/blob/master/doc/langdef.md","type":"string"},"input":{"description":"Input is the string for guard checking which can be a static input or an output from a parent Task","type":"string"},"operator":{"description":"Operator that represents an Input's relationship to the values","type":"string"},"values":{"description":"Values is an array of strings, which is compared against the input, for guard checking\nIt must be non-empty","items":{"type":"string"},"type":"array","x-kubernetes-list-type":"atomic"}},"type":"object"},"type":"array"},"workspaces":{"description":"Workspaces maps workspaces from the pipeline spec to the workspaces\ndeclared in the Task.","items":{"description":"WorkspacePipelineTaskBinding describes how a workspace passed into the pipeline should be\nmapped to a task's declared workspace.","properties":{"name":{"description":"Name is the name of the workspace as declared by the task","type":"string"},"subPath":{"description":"SubPath is optionally a directory on the volume which should be used\nfor this binding (i.e. the volume will be mounted at this sub directory).","type":"string"},"workspace":{"description":"Workspace is the name of the workspace declared by the pipeline","type":"string"}},"required":["name"],"type":"object"},"type":"array","x-kubernetes-list-type":"atomic"}},"type":"object"},"type":"array","x-kubernetes-list-type":"atomic"},"params":{"description":"Params declares a list of input parameters that must be supplied when\nthis Pipeline is run.","items":{"description":"ParamSpec defines arbitrary parameters needed beyond typed inputs (such as\nresources). Parameter values are provided by users as inputs on a TaskRun\nor PipelineRun.","properties":{"default":{"description":"Default is the value a parameter takes if no input value is supplied. If\ndefault is set, a Task may be executed without a supplied value for the\nparameter.","x-kubernetes-preserve-unknown-fields":true},"description":{"description":"Description is a user-facing description of the parameter that may be\nused to populate a UI.","type":"string"},"enum":{"description":"Enum declares a set of allowed param input values for tasks/pipelines that can be validated.\nIf Enum is not set, no input validation is performed for the param.","items":{"type":"string"},"type":"array"},"name":{"description":"Name declares the name by which a parameter is referenced.","type":"string"},"properties":{"additionalProperties":{"description":"PropertySpec defines the struct for object keys","properties":{"type":{"description":"ParamType indicates the type of an input parameter;\nUsed to distinguish between a single string and an array of strings.","type":"string"}},"type":"object"},"description":"Properties is the JSON Schema properties to support key-value pairs parameter.","type":"object"},"type":{"description":"Type is the user-specified type of the parameter. The possible types\nare currently \"string\", \"array\" and \"object\", and \"string\" is the default.","type":"string"}},"required":["name"],"type":"object"},"type":"array","x-kubernetes-list-type":"atomic"},"results":{"description":"Results are values that this pipeline can output once run","items":{"description":"PipelineResult used to describe the results of a pipeline","properties":{"description":{"description":"Description is a human-readable description of the result","type":"string"},"name":{"description":"Name the given name","type":"string"},"type":{"description":"Type is the user-specified type of the result.\nThe possible types are 'string', 'array', and 'object', with 'string' as the default.\n'array' and 'object' types are alpha features.","type":"string"},"value":{"description":"Value the expression used to retrieve the value","x-kubernetes-preserve-unknown-fields":true}},"required":["name","value"],"type":"object"},"type":"array","x-kubernetes-list-type":"atomic"},"tasks":{"description":"Tasks declares the graph of Tasks that execute when this Pipeline is run.","items":{"description":"PipelineTask defines a task in a Pipeline, passing inputs from both\nParams and from the output of previous tasks.","properties":{"description":{"description":"Description is the description of this task within the context of a Pipeline.\nThis description may be used to populate a UI.","type":"string"},"displayName":{"description":"DisplayName is the display name of this task within the context of a Pipeline.\nThis display name may be used to populate a UI.","type":"string"},"matrix":{"description":"Matrix declares parameters used to fan out this task.","properties":{"include":{"description":"Include is a list of IncludeParams which allows passing in specific combinations of Parameters into the Matrix.","items":{"description":"IncludeParams allows passing in a specific combinations of Parameters into the Matrix.","properties":{"name":{"description":"Name the specified combination","type":"string"},"params":{"description":"Params takes only `Parameters` of type `\"string\"`\nThe names of the `params` must match the names of the `params` in the underlying `Task`","items":{"description":"Param declares an ParamValues to use for the parameter called name.","properties":{"name":{"type":"string"},"value":{"x-kubernetes-preserve-unknown-fields":true}},"required":["name","value"],"type":"object"},"type":"array","x-kubernetes-list-type":"atomic"}},"type":"object"},"type":"array","x-kubernetes-list-type":"atomic"},"params":{"description":"Params is a list of parameters used to fan out the pipelineTask\nParams takes only `Parameters` of type `\"array\"`\nEach array element is supplied to the `PipelineTask` by substituting `params` of type `\"string\"` in the underlying `Task`.\nThe names of the `params` in the `Matrix` must match the names of the `params` in the underlying `Task` that they will be substituting.","items":{"description":"Param declares an ParamValues to use for the parameter called name.","properties":{"name":{"type":"string"},"value":{"x-kubernetes-preserve-unknown-fields":true}},"required":["name","value"],"type":"object"},"type":"array","x-kubernetes-list-type":"atomic"}},"type":"object"},"name":{"description":"Name is the name of this task within the context of a Pipeline. Name is\nused as a coordinate with the `from` and `runAfter` fields to establish\nthe execution order of tasks relative to one another.","type":"string"},"onError":{"description":"OnError defines the exiting behavior of a PipelineRun on error\ncan be set to [ continue | stopAndFail ]","type":"string"},"params":{"description":"Parameters declares parameters passed to this task.","items":{"description":"Param declares an ParamValues to use for the parameter called name.","properties":{"name":{"type":"string"},"value":{"x-kubernetes-preserve-unknown-fields":true}},"required":["name","value"],"type":"object"},"type":"array","x-kubernetes-list-type":"atomic"},"pipelineRef":{"description":"PipelineRef is a reference to a pipeline definition\nNote: PipelineRef is in preview mode and not yet supported","properties":{"apiVersion":{"description":"API version of the referent","type":"string"},"name":{"description":"Name of the referent; More info: http://kubernetes.io/docs/user-guide/identifiers#names","type":"string"},"params":{"description":"Params contains the parameters used to identify the\nreferenced Tekton resource. Example entries might include\n\"repo\" or \"path\" but the set of params ultimately depends on\nthe chosen resolver.","items":{"description":"Param declares an ParamValues to use for the parameter called name.","properties":{"name":{"type":"string"},"value":{"x-kubernetes-preserve-unknown-fields":true}},"required":["name","value"],"type":"object"},"type":"array","x-kubernetes-list-type":"atomic"},"resolver":{"description":"Resolver is the name of the resolver that should perform\nresolution of the referenced Tekton resource, such as \"git\".","type":"string"}},"type":"object"},"pipelineSpec":{"description":"PipelineSpec is a specification of a pipeline\nNote: PipelineSpec is in preview mode and not yet supported\nSpecifying PipelineSpec can be disabled by setting\n`disable-inline-spec` feature flag.\nSee Pipeline.spec (API version: tekton.dev/v1)","x-kubernetes-preserve-unknown-fields":true},"retries":{"description":"Retries represents how many times this task should be retried in case of task failure: ConditionSucceeded set to False","type":"integer"},"runAfter":{"description":"RunAfter is the list of PipelineTask names that should be executed before\nthis Task executes. (Used to force a specific ordering in graph execution.)","items":{"type":"string"},"type":"array","x-kubernetes-list-type":"atomic"},"taskRef":{"description":"TaskRef is a reference to a task definition.","properties":{"apiVersion":{"description":"API version of the referent\nNote: A Task with non-empty APIVersion and Kind is considered a Custom Task","type":"string"},"kind":{"description":"TaskKind indicates the Kind of the Task:\n1. Namespaced Task when Kind is set to \"Task\". If Kind is \"\", it defaults to \"Task\".\n2. Custom Task when Kind is non-empty and APIVersion is non-empty","type":"string"},"name":{"description":"Name of the referent; More info: http://kubernetes.io/docs/user-guide/identifiers#names","type":"string"},"params":{"description":"Params contains the parameters used to identify the\nreferenced Tekton resource. Example entries might include\n\"repo\" or \"path\" but the set of params ultimately depends on\nthe chosen resolver.","items":{"description":"Param declares an ParamValues to use for the parameter called name.","properties":{"name":{"type":"string"},"value":{"x-kubernetes-preserve-unknown-fields":true}},"required":["name","value"],"type":"object"},"type":"array","x-kubernetes-list-type":"atomic"},"resolver":{"description":"Resolver is the name of the resolver that should perform\nresolution of the referenced Tekton resource, such as \"git\".","type":"string"}},"type":"object"},"taskSpec":{"description":"TaskSpec is a specification of a task\nSpecifying TaskSpec can be disabled by setting\n`disable-inline-spec` feature flag.\nSee Task.spec (API version: tekton.dev/v1)","x-kubernetes-preserve-unknown-fields":true},"timeout":{"description":"Time after which the TaskRun times out. Defaults to 1 hour.\nRefer Go's ParseDuration documentation for expected format: https://golang.org/pkg/time/#ParseDuration","type":"string"},"when":{"description":"When is a list of when expressions that need to be true for the task to run","items":{"description":"WhenExpression allows a PipelineTask to declare expressions to be evaluated before the Task is run\nto determine whether the Task should be executed or skipped","properties":{"cel":{"description":"CEL is a string of Common Language Expression, which can be used to conditionally execute\nthe task based on the result of the expression evaluation\nMore info about CEL syntax: https://github.com/google/cel-spec/blob/master/doc/langdef.md","type":"string"},"input":{"description":"Input is the string for guard checking which can be a static input or an output from a parent Task","type":"string"},"operator":{"description":"Operator that represents an Input's relationship to the values","type":"string"},"values":{"description":"Values is an array of strings, which is compared against the input, for guard checking\nIt must be non-empty","items":{"type":"string"},"type":"array","x-kubernetes-list-type":"atomic"}},"type":"object"},"type":"array"},"workspaces":{"description":"Workspaces maps workspaces from the pipeline spec to the workspaces\ndeclared in the Task.","items":{"description":"WorkspacePipelineTaskBinding describes how a workspace passed into the pipeline should be\nmapped to a task's declared workspace.","properties":{"name":{"description":"Name is the name of the workspace as declared by the task","type":"string"},"subPath":{"description":"SubPath is optionally a directory on the volume which should be used\nfor this binding (i.e. the volume will be mounted at this sub directory).","type":"string"},"workspace":{"description":"Workspace is the name of the workspace declared by the pipeline","type":"string"}},"required":["name"],"type":"object"},"type":"array","x-kubernetes-list-type":"atomic"}},"type":"object"},"type":"array","x-kubernetes-list-type":"atomic"},"workspaces":{"description":"Workspaces declares a set of named workspaces that are expected to be\nprovided by a PipelineRun.","items":{"description":"PipelineWorkspaceDeclaration creates a named slot in a Pipeline that a PipelineRun\nis expected to populate with a workspace binding.","properties":{"description":{"description":"Description is a human readable string describing how the workspace will be\nused in the Pipeline. It can be useful to include a bit of detail about which\ntasks are intended to have access to the data on the workspace.","type":"string"},"name":{"description":"Name is the name of a workspace to be provided by a PipelineRun.","type":"string"},"optional":{"description":"Optional marks a Workspace as not being required in PipelineRuns. By default\nthis field is false and so declared workspaces are required.","type":"boolean"}},"required":["name"],"type":"object"},"type":"array","x-kubernetes-list-type":"atomic"}},"type":"object"}},"type":"object"}},"served":true,"storage":true,"subresources":{"status":{}}}]}}
+  creationTimestamp: "2025-05-20T13:06:36Z"
+  generation: 2
+  labels:
+    app.kubernetes.io/instance: default
+    app.kubernetes.io/part-of: tekton-pipelines
+    pipeline.tekton.dev/release: v1.0.0
+    version: v1.0.0
+  name: pipelines.tekton.dev
+  resourceVersion: "4299"
+  uid: 0c9dd53a-e10d-4bb3-8718-d284feef8c0c
+spec:
+  conversion:
+    strategy: Webhook
+    webhook:
+      clientConfig:
+        caBundle: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUN2akNDQW1TZ0F3SUJBZ0lRTWlsMDRqdC8xYzZIeTZKdmZLQ2xvekFLQmdncWhrak9QUVFEQWpCT01SUXcKRWdZRFZRUUtFd3RyYm1GMGFYWmxMbVJsZGpFMk1EUUdBMVVFQXhNdGRHVnJkRzl1TFhCcGNHVnNhVzVsY3kxMwpaV0pvYjI5ckxuUmxhM1J2Ymkxd2FYQmxiR2x1WlhNdWMzWmpNQjRYRFRJMU1EVXlNREV6TURZME0xb1hEVEkxCk1EVXlOekV6TURZME0xb3dUakVVTUJJR0ExVUVDaE1MYTI1aGRHbDJaUzVrWlhZeE5qQTBCZ05WQkFNVExYUmwKYTNSdmJpMXdhWEJsYkdsdVpYTXRkMlZpYUc5dmF5NTBaV3QwYjI0dGNHbHdaV3hwYm1WekxuTjJZekJaTUJNRwpCeXFHU000OUFnRUdDQ3FHU000OUF3RUhBMElBQkJtSGxXQXlvaEl4WVl5cmtUY2xKVXZXYkh5ZWlJUGZoaUh2Cnl5NlhOdVdzTGRIZXN5OFIxbGNVckhwTjltUkdIdnJpdFVXNURYdVRmY2FwSUtzMEF1S2pnZ0VpTUlJQkhqQU8KQmdOVkhROEJBZjhFQkFNQ0FvUXdIUVlEVlIwbEJCWXdGQVlJS3dZQkJRVUhBd0VHQ0NzR0FRVUZCd01DTUE4RwpBMVVkRXdFQi93UUZNQU1CQWY4d0hRWURWUjBPQkJZRUZCZDJueTNiSy9rMis4VGdIclBscklZcVIzNTBNSUc4CkJnTlZIUkVFZ2JRd2diR0NHSFJsYTNSdmJpMXdhWEJsYkdsdVpYTXRkMlZpYUc5dmE0SXBkR1ZyZEc5dUxYQnAKY0dWc2FXNWxjeTEzWldKb2IyOXJMblJsYTNSdmJpMXdhWEJsYkdsdVpYT0NMWFJsYTNSdmJpMXdhWEJsYkdsdQpaWE10ZDJWaWFHOXZheTUwWld0MGIyNHRjR2x3Wld4cGJtVnpMbk4yWTRJN2RHVnJkRzl1TFhCcGNHVnNhVzVsCmN5MTNaV0pvYjI5ckxuUmxhM1J2Ymkxd2FYQmxiR2x1WlhNdWMzWmpMbU5zZFhOMFpYSXViRzlqWVd3d0NnWUkKS29aSXpqMEVBd0lEU0FBd1JRSWhBTG84YVRuNE5pL2NJVVdUUUFQdDNTOGhkT01UYklORHU5N3J5c3V4OFFEegpBaUJnZHI4bE56dVZQdVNlR2pSWXVvd2xFbWdRSDFUUW5NcEVybXRPMWpKb2dBPT0KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=
+        service:
+          name: tekton-pipelines-webhook
+          namespace: tekton-pipelines
+          path: /resource-conversion
+          port: 443
+      conversionReviewVersions:
+      - v1beta1
+      - v1
+  group: tekton.dev
+  names:
+    categories:
+    - tekton
+    - tekton-pipelines
+    kind: Pipeline
+    listKind: PipelineList
+    plural: pipelines
+    singular: pipeline
+  scope: Namespaced
+  versions:
+  - name: v1beta1
+    schema:
+      openAPIV3Schema:
+        description: |-
+          Pipeline describes a list of Tasks to execute. It expresses how outputs
+          of tasks feed into inputs of subsequent tasks.
+
+          Deprecated: Please use v1.Pipeline instead.
+        properties:
+          apiVersion:
+            description: |-
+              APIVersion defines the versioned schema of this representation of an object.
+              Servers should convert recognized schemas to the latest internal value, and
+              may reject unrecognized values.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+            type: string
+          kind:
+            description: |-
+              Kind is a string value representing the REST resource this object represents.
+              Servers may infer this from the endpoint the client submits requests to.
+              Cannot be updated.
+              In CamelCase.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: Spec holds the desired state of the Pipeline from the client
+            properties:
+              description:
+                description: |-
+                  Description is a user-facing description of the pipeline that may be
+                  used to populate a UI.
+                type: string
+              displayName:
+                description: |-
+                  DisplayName is a user-facing name of the pipeline that may be
+                  used to populate a UI.
+                type: string
+              finally:
+                description: |-
+                  Finally declares the list of Tasks that execute just before leaving the Pipeline
+                  i.e. either after all Tasks are finished executing successfully
+                  or after a failure which would result in ending the Pipeline
+                items:
+                  description: |-
+                    PipelineTask defines a task in a Pipeline, passing inputs from both
+                    Params and from the output of previous tasks.
+                  properties:
+                    description:
+                      description: |-
+                        Description is the description of this task within the context of a Pipeline.
+                        This description may be used to populate a UI.
+                      type: string
+                    displayName:
+                      description: |-
+                        DisplayName is the display name of this task within the context of a Pipeline.
+                        This display name may be used to populate a UI.
+                      type: string
+                    matrix:
+                      description: Matrix declares parameters used to fan out this
+                        task.
+                      properties:
+                        include:
+                          description: Include is a list of IncludeParams which allows
+                            passing in specific combinations of Parameters into the
+                            Matrix.
+                          items:
+                            description: IncludeParams allows passing in a specific
+                              combinations of Parameters into the Matrix.
+                            properties:
+                              name:
+                                description: Name the specified combination
+                                type: string
+                              params:
+                                description: |-
+                                  Params takes only `Parameters` of type `"string"`
+                                  The names of the `params` must match the names of the `params` in the underlying `Task`
+                                items:
+                                  description: Param declares an ParamValues to use
+                                    for the parameter called name.
+                                  properties:
+                                    name:
+                                      type: string
+                                    value:
+                                      x-kubernetes-preserve-unknown-fields: true
+                                  required:
+                                  - name
+                                  - value
+                                  type: object
+                                type: array
+                                x-kubernetes-list-type: atomic
+                            type: object
+                          type: array
+                          x-kubernetes-list-type: atomic
+                        params:
+                          description: |-
+                            Params is a list of parameters used to fan out the pipelineTask
+                            Params takes only `Parameters` of type `"array"`
+                            Each array element is supplied to the `PipelineTask` by substituting `params` of type `"string"` in the underlying `Task`.
+                            The names of the `params` in the `Matrix` must match the names of the `params` in the underlying `Task` that they will be substituting.
+                          items:
+                            description: Param declares an ParamValues to use for
+                              the parameter called name.
+                            properties:
+                              name:
+                                type: string
+                              value:
+                                x-kubernetes-preserve-unknown-fields: true
+                            required:
+                            - name
+                            - value
+                            type: object
+                          type: array
+                          x-kubernetes-list-type: atomic
+                      type: object
+                    name:
+                      description: |-
+                        Name is the name of this task within the context of a Pipeline. Name is
+                        used as a coordinate with the `from` and `runAfter` fields to establish
+                        the execution order of tasks relative to one another.
+                      type: string
+                    onError:
+                      description: |-
+                        OnError defines the exiting behavior of a PipelineRun on error
+                        can be set to [ continue | stopAndFail ]
+                      type: string
+                    params:
+                      description: Parameters declares parameters passed to this task.
+                      items:
+                        description: Param declares an ParamValues to use for the
+                          parameter called name.
+                        properties:
+                          name:
+                            type: string
+                          value:
+                            x-kubernetes-preserve-unknown-fields: true
+                        required:
+                        - name
+                        - value
+                        type: object
+                      type: array
+                      x-kubernetes-list-type: atomic
+                    pipelineRef:
+                      description: |-
+                        PipelineRef is a reference to a pipeline definition
+                        Note: PipelineRef is in preview mode and not yet supported
+                      properties:
+                        apiVersion:
+                          description: API version of the referent
+                          type: string
+                        bundle:
+                          description: |-
+                            Bundle url reference to a Tekton Bundle.
+
+                            Deprecated: Please use ResolverRef with the bundles resolver instead.
+                            The field is staying there for go client backward compatibility, but is not used/allowed anymore.
+                          type: string
+                        name:
+                          description: 'Name of the referent; More info: http://kubernetes.io/docs/user-guide/identifiers#names'
+                          type: string
+                        params:
+                          description: |-
+                            Params contains the parameters used to identify the
+                            referenced Tekton resource. Example entries might include
+                            "repo" or "path" but the set of params ultimately depends on
+                            the chosen resolver.
+                          items:
+                            description: Param declares an ParamValues to use for
+                              the parameter called name.
+                            properties:
+                              name:
+                                type: string
+                              value:
+                                x-kubernetes-preserve-unknown-fields: true
+                            required:
+                            - name
+                            - value
+                            type: object
+                          type: array
+                          x-kubernetes-list-type: atomic
+                        resolver:
+                          description: |-
+                            Resolver is the name of the resolver that should perform
+                            resolution of the referenced Tekton resource, such as "git".
+                          type: string
+                      type: object
+                    pipelineSpec:
+                      description: |-
+                        PipelineSpec is a specification of a pipeline
+                        Note: PipelineSpec is in preview mode and not yet supported
+                        Specifying PipelineSpec can be disabled by setting
+                        `disable-inline-spec` feature flag.
+                        See Pipeline.spec (API version: tekton.dev/v1beta1)
+                      x-kubernetes-preserve-unknown-fields: true
+                    resources:
+                      description: 'Deprecated: Unused, preserved only for backwards
+                        compatibility'
+                      properties:
+                        inputs:
+                          description: |-
+                            Inputs holds the mapping from the PipelineResources declared in
+                            DeclaredPipelineResources to the input PipelineResources required by the Task.
+                          items:
+                            description: |-
+                              PipelineTaskInputResource maps the name of a declared PipelineResource input
+                              dependency in a Task to the resource in the Pipeline's DeclaredPipelineResources
+                              that should be used. This input may come from a previous task.
+
+                              Deprecated: Unused, preserved only for backwards compatibility
+                            properties:
+                              from:
+                                description: |-
+                                  From is the list of PipelineTask names that the resource has to come from.
+                                  (Implies an ordering in the execution graph.)
+                                items:
+                                  type: string
+                                type: array
+                                x-kubernetes-list-type: atomic
+                              name:
+                                description: Name is the name of the PipelineResource
+                                  as declared by the Task.
+                                type: string
+                              resource:
+                                description: Resource is the name of the DeclaredPipelineResource
+                                  to use.
+                                type: string
+                            required:
+                            - name
+                            - resource
+                            type: object
+                          type: array
+                          x-kubernetes-list-type: atomic
+                        outputs:
+                          description: |-
+                            Outputs holds the mapping from the PipelineResources declared in
+                            DeclaredPipelineResources to the input PipelineResources required by the Task.
+                          items:
+                            description: |-
+                              PipelineTaskOutputResource maps the name of a declared PipelineResource output
+                              dependency in a Task to the resource in the Pipeline's DeclaredPipelineResources
+                              that should be used.
+
+                              Deprecated: Unused, preserved only for backwards compatibility
+                            properties:
+                              name:
+                                description: Name is the name of the PipelineResource
+                                  as declared by the Task.
+                                type: string
+                              resource:
+                                description: Resource is the name of the DeclaredPipelineResource
+                                  to use.
+                                type: string
+                            required:
+                            - name
+                            - resource
+                            type: object
+                          type: array
+                          x-kubernetes-list-type: atomic
+                      type: object
+                    retries:
+                      description: 'Retries represents how many times this task should
+                        be retried in case of task failure: ConditionSucceeded set
+                        to False'
+                      type: integer
+                    runAfter:
+                      description: |-
+                        RunAfter is the list of PipelineTask names that should be executed before
+                        this Task executes. (Used to force a specific ordering in graph execution.)
+                      items:
+                        type: string
+                      type: array
+                      x-kubernetes-list-type: atomic
+                    taskRef:
+                      description: TaskRef is a reference to a task definition.
+                      properties:
+                        apiVersion:
+                          description: |-
+                            API version of the referent
+                            Note: A Task with non-empty APIVersion and Kind is considered a Custom Task
+                          type: string
+                        bundle:
+                          description: |-
+                            Bundle url reference to a Tekton Bundle.
+
+                            Deprecated: Please use ResolverRef with the bundles resolver instead.
+                            The field is staying there for go client backward compatibility, but is not used/allowed anymore.
+                          type: string
+                        kind:
+                          description: |-
+                            TaskKind indicates the Kind of the Task:
+                            1. Namespaced Task when Kind is set to "Task". If Kind is "", it defaults to "Task".
+                            2. Custom Task when Kind is non-empty and APIVersion is non-empty
+                          type: string
+                        name:
+                          description: 'Name of the referent; More info: http://kubernetes.io/docs/user-guide/identifiers#names'
+                          type: string
+                        params:
+                          description: |-
+                            Params contains the parameters used to identify the
+                            referenced Tekton resource. Example entries might include
+                            "repo" or "path" but the set of params ultimately depends on
+                            the chosen resolver.
+                          items:
+                            description: Param declares an ParamValues to use for
+                              the parameter called name.
+                            properties:
+                              name:
+                                type: string
+                              value:
+                                x-kubernetes-preserve-unknown-fields: true
+                            required:
+                            - name
+                            - value
+                            type: object
+                          type: array
+                          x-kubernetes-list-type: atomic
+                        resolver:
+                          description: |-
+                            Resolver is the name of the resolver that should perform
+                            resolution of the referenced Tekton resource, such as "git".
+                          type: string
+                      type: object
+                    taskSpec:
+                      description: |-
+                        TaskSpec is a specification of a task
+                        Specifying TaskSpec can be disabled by setting
+                        `disable-inline-spec` feature flag.
+                        See Task.spec (API version: tekton.dev/v1beta1)
+                      x-kubernetes-preserve-unknown-fields: true
+                    timeout:
+                      description: |-
+                        Time after which the TaskRun times out. Defaults to 1 hour.
+                        Refer Go's ParseDuration documentation for expected format: https://golang.org/pkg/time/#ParseDuration
+                      type: string
+                    when:
+                      description: WhenExpressions is a list of when expressions that
+                        need to be true for the task to run
+                      items:
+                        description: |-
+                          WhenExpression allows a PipelineTask to declare expressions to be evaluated before the Task is run
+                          to determine whether the Task should be executed or skipped
+                        properties:
+                          cel:
+                            description: |-
+                              CEL is a string of Common Language Expression, which can be used to conditionally execute
+                              the task based on the result of the expression evaluation
+                              More info about CEL syntax: https://github.com/google/cel-spec/blob/master/doc/langdef.md
+                            type: string
+                          input:
+                            description: Input is the string for guard checking which
+                              can be a static input or an output from a parent Task
+                            type: string
+                          operator:
+                            description: Operator that represents an Input's relationship
+                              to the values
+                            type: string
+                          values:
+                            description: |-
+                              Values is an array of strings, which is compared against the input, for guard checking
+                              It must be non-empty
+                            items:
+                              type: string
+                            type: array
+                            x-kubernetes-list-type: atomic
+                        type: object
+                      type: array
+                    workspaces:
+                      description: |-
+                        Workspaces maps workspaces from the pipeline spec to the workspaces
+                        declared in the Task.
+                      items:
+                        description: |-
+                          WorkspacePipelineTaskBinding describes how a workspace passed into the pipeline should be
+                          mapped to a task's declared workspace.
+                        properties:
+                          name:
+                            description: Name is the name of the workspace as declared
+                              by the task
+                            type: string
+                          subPath:
+                            description: |-
+                              SubPath is optionally a directory on the volume which should be used
+                              for this binding (i.e. the volume will be mounted at this sub directory).
+                            type: string
+                          workspace:
+                            description: Workspace is the name of the workspace declared
+                              by the pipeline
+                            type: string
+                        required:
+                        - name
+                        type: object
+                      type: array
+                      x-kubernetes-list-type: atomic
+                  type: object
+                type: array
+                x-kubernetes-list-type: atomic
+              params:
+                description: |-
+                  Params declares a list of input parameters that must be supplied when
+                  this Pipeline is run.
+                items:
+                  description: |-
+                    ParamSpec defines arbitrary parameters needed beyond typed inputs (such as
+                    resources). Parameter values are provided by users as inputs on a TaskRun
+                    or PipelineRun.
+                  properties:
+                    default:
+                      description: |-
+                        Default is the value a parameter takes if no input value is supplied. If
+                        default is set, a Task may be executed without a supplied value for the
+                        parameter.
+                      x-kubernetes-preserve-unknown-fields: true
+                    description:
+                      description: |-
+                        Description is a user-facing description of the parameter that may be
+                        used to populate a UI.
+                      type: string
+                    enum:
+                      description: |-
+                        Enum declares a set of allowed param input values for tasks/pipelines that can be validated.
+                        If Enum is not set, no input validation is performed for the param.
+                      items:
+                        type: string
+                      type: array
+                    name:
+                      description: Name declares the name by which a parameter is
+                        referenced.
+                      type: string
+                    properties:
+                      additionalProperties:
+                        description: PropertySpec defines the struct for object keys
+                        properties:
+                          type:
+                            description: |-
+                              ParamType indicates the type of an input parameter;
+                              Used to distinguish between a single string and an array of strings.
+                            type: string
+                        type: object
+                      description: Properties is the JSON Schema properties to support
+                        key-value pairs parameter.
+                      type: object
+                    type:
+                      description: |-
+                        Type is the user-specified type of the parameter. The possible types
+                        are currently "string", "array" and "object", and "string" is the default.
+                      type: string
+                  required:
+                  - name
+                  type: object
+                type: array
+                x-kubernetes-list-type: atomic
+              resources:
+                description: 'Deprecated: Unused, preserved only for backwards compatibility'
+                items:
+                  description: |-
+                    PipelineDeclaredResource is used by a Pipeline to declare the types of the
+                    PipelineResources that it will required to run and names which can be used to
+                    refer to these PipelineResources in PipelineTaskResourceBindings.
+
+                    Deprecated: Unused, preserved only for backwards compatibility
+                  properties:
+                    name:
+                      description: |-
+                        Name is the name that will be used by the Pipeline to refer to this resource.
+                        It does not directly correspond to the name of any PipelineResources Task
+                        inputs or outputs, and it does not correspond to the actual names of the
+                        PipelineResources that will be bound in the PipelineRun.
+                      type: string
+                    optional:
+                      description: |-
+                        Optional declares the resource as optional.
+                        optional: true - the resource is considered optional
+                        optional: false - the resource is considered required (default/equivalent of not specifying it)
+                      type: boolean
+                    type:
+                      description: Type is the type of the PipelineResource.
+                      type: string
+                  required:
+                  - name
+                  - type
+                  type: object
+                type: array
+                x-kubernetes-list-type: atomic
+              results:
+                description: Results are values that this pipeline can output once
+                  run
+                items:
+                  description: PipelineResult used to describe the results of a pipeline
+                  properties:
+                    description:
+                      description: Description is a human-readable description of
+                        the result
+                      type: string
+                    name:
+                      description: Name the given name
+                      type: string
+                    type:
+                      description: |-
+                        Type is the user-specified type of the result.
+                        The possible types are 'string', 'array', and 'object', with 'string' as the default.
+                        'array' and 'object' types are alpha features.
+                      type: string
+                    value:
+                      description: Value the expression used to retrieve the value
+                      x-kubernetes-preserve-unknown-fields: true
+                  required:
+                  - name
+                  - value
+                  type: object
+                type: array
+                x-kubernetes-list-type: atomic
+              tasks:
+                description: Tasks declares the graph of Tasks that execute when this
+                  Pipeline is run.
+                items:
+                  description: |-
+                    PipelineTask defines a task in a Pipeline, passing inputs from both
+                    Params and from the output of previous tasks.
+                  properties:
+                    description:
+                      description: |-
+                        Description is the description of this task within the context of a Pipeline.
+                        This description may be used to populate a UI.
+                      type: string
+                    displayName:
+                      description: |-
+                        DisplayName is the display name of this task within the context of a Pipeline.
+                        This display name may be used to populate a UI.
+                      type: string
+                    matrix:
+                      description: Matrix declares parameters used to fan out this
+                        task.
+                      properties:
+                        include:
+                          description: Include is a list of IncludeParams which allows
+                            passing in specific combinations of Parameters into the
+                            Matrix.
+                          items:
+                            description: IncludeParams allows passing in a specific
+                              combinations of Parameters into the Matrix.
+                            properties:
+                              name:
+                                description: Name the specified combination
+                                type: string
+                              params:
+                                description: |-
+                                  Params takes only `Parameters` of type `"string"`
+                                  The names of the `params` must match the names of the `params` in the underlying `Task`
+                                items:
+                                  description: Param declares an ParamValues to use
+                                    for the parameter called name.
+                                  properties:
+                                    name:
+                                      type: string
+                                    value:
+                                      x-kubernetes-preserve-unknown-fields: true
+                                  required:
+                                  - name
+                                  - value
+                                  type: object
+                                type: array
+                                x-kubernetes-list-type: atomic
+                            type: object
+                          type: array
+                          x-kubernetes-list-type: atomic
+                        params:
+                          description: |-
+                            Params is a list of parameters used to fan out the pipelineTask
+                            Params takes only `Parameters` of type `"array"`
+                            Each array element is supplied to the `PipelineTask` by substituting `params` of type `"string"` in the underlying `Task`.
+                            The names of the `params` in the `Matrix` must match the names of the `params` in the underlying `Task` that they will be substituting.
+                          items:
+                            description: Param declares an ParamValues to use for
+                              the parameter called name.
+                            properties:
+                              name:
+                                type: string
+                              value:
+                                x-kubernetes-preserve-unknown-fields: true
+                            required:
+                            - name
+                            - value
+                            type: object
+                          type: array
+                          x-kubernetes-list-type: atomic
+                      type: object
+                    name:
+                      description: |-
+                        Name is the name of this task within the context of a Pipeline. Name is
+                        used as a coordinate with the `from` and `runAfter` fields to establish
+                        the execution order of tasks relative to one another.
+                      type: string
+                    onError:
+                      description: |-
+                        OnError defines the exiting behavior of a PipelineRun on error
+                        can be set to [ continue | stopAndFail ]
+                      type: string
+                    params:
+                      description: Parameters declares parameters passed to this task.
+                      items:
+                        description: Param declares an ParamValues to use for the
+                          parameter called name.
+                        properties:
+                          name:
+                            type: string
+                          value:
+                            x-kubernetes-preserve-unknown-fields: true
+                        required:
+                        - name
+                        - value
+                        type: object
+                      type: array
+                      x-kubernetes-list-type: atomic
+                    pipelineRef:
+                      description: |-
+                        PipelineRef is a reference to a pipeline definition
+                        Note: PipelineRef is in preview mode and not yet supported
+                      properties:
+                        apiVersion:
+                          description: API version of the referent
+                          type: string
+                        bundle:
+                          description: |-
+                            Bundle url reference to a Tekton Bundle.
+
+                            Deprecated: Please use ResolverRef with the bundles resolver instead.
+                            The field is staying there for go client backward compatibility, but is not used/allowed anymore.
+                          type: string
+                        name:
+                          description: 'Name of the referent; More info: http://kubernetes.io/docs/user-guide/identifiers#names'
+                          type: string
+                        params:
+                          description: |-
+                            Params contains the parameters used to identify the
+                            referenced Tekton resource. Example entries might include
+                            "repo" or "path" but the set of params ultimately depends on
+                            the chosen resolver.
+                          items:
+                            description: Param declares an ParamValues to use for
+                              the parameter called name.
+                            properties:
+                              name:
+                                type: string
+                              value:
+                                x-kubernetes-preserve-unknown-fields: true
+                            required:
+                            - name
+                            - value
+                            type: object
+                          type: array
+                          x-kubernetes-list-type: atomic
+                        resolver:
+                          description: |-
+                            Resolver is the name of the resolver that should perform
+                            resolution of the referenced Tekton resource, such as "git".
+                          type: string
+                      type: object
+                    pipelineSpec:
+                      description: |-
+                        PipelineSpec is a specification of a pipeline
+                        Note: PipelineSpec is in preview mode and not yet supported
+                        Specifying PipelineSpec can be disabled by setting
+                        `disable-inline-spec` feature flag.
+                        See Pipeline.spec (API version: tekton.dev/v1beta1)
+                      x-kubernetes-preserve-unknown-fields: true
+                    resources:
+                      description: 'Deprecated: Unused, preserved only for backwards
+                        compatibility'
+                      properties:
+                        inputs:
+                          description: |-
+                            Inputs holds the mapping from the PipelineResources declared in
+                            DeclaredPipelineResources to the input PipelineResources required by the Task.
+                          items:
+                            description: |-
+                              PipelineTaskInputResource maps the name of a declared PipelineResource input
+                              dependency in a Task to the resource in the Pipeline's DeclaredPipelineResources
+                              that should be used. This input may come from a previous task.
+
+                              Deprecated: Unused, preserved only for backwards compatibility
+                            properties:
+                              from:
+                                description: |-
+                                  From is the list of PipelineTask names that the resource has to come from.
+                                  (Implies an ordering in the execution graph.)
+                                items:
+                                  type: string
+                                type: array
+                                x-kubernetes-list-type: atomic
+                              name:
+                                description: Name is the name of the PipelineResource
+                                  as declared by the Task.
+                                type: string
+                              resource:
+                                description: Resource is the name of the DeclaredPipelineResource
+                                  to use.
+                                type: string
+                            required:
+                            - name
+                            - resource
+                            type: object
+                          type: array
+                          x-kubernetes-list-type: atomic
+                        outputs:
+                          description: |-
+                            Outputs holds the mapping from the PipelineResources declared in
+                            DeclaredPipelineResources to the input PipelineResources required by the Task.
+                          items:
+                            description: |-
+                              PipelineTaskOutputResource maps the name of a declared PipelineResource output
+                              dependency in a Task to the resource in the Pipeline's DeclaredPipelineResources
+                              that should be used.
+
+                              Deprecated: Unused, preserved only for backwards compatibility
+                            properties:
+                              name:
+                                description: Name is the name of the PipelineResource
+                                  as declared by the Task.
+                                type: string
+                              resource:
+                                description: Resource is the name of the DeclaredPipelineResource
+                                  to use.
+                                type: string
+                            required:
+                            - name
+                            - resource
+                            type: object
+                          type: array
+                          x-kubernetes-list-type: atomic
+                      type: object
+                    retries:
+                      description: 'Retries represents how many times this task should
+                        be retried in case of task failure: ConditionSucceeded set
+                        to False'
+                      type: integer
+                    runAfter:
+                      description: |-
+                        RunAfter is the list of PipelineTask names that should be executed before
+                        this Task executes. (Used to force a specific ordering in graph execution.)
+                      items:
+                        type: string
+                      type: array
+                      x-kubernetes-list-type: atomic
+                    taskRef:
+                      description: TaskRef is a reference to a task definition.
+                      properties:
+                        apiVersion:
+                          description: |-
+                            API version of the referent
+                            Note: A Task with non-empty APIVersion and Kind is considered a Custom Task
+                          type: string
+                        bundle:
+                          description: |-
+                            Bundle url reference to a Tekton Bundle.
+
+                            Deprecated: Please use ResolverRef with the bundles resolver instead.
+                            The field is staying there for go client backward compatibility, but is not used/allowed anymore.
+                          type: string
+                        kind:
+                          description: |-
+                            TaskKind indicates the Kind of the Task:
+                            1. Namespaced Task when Kind is set to "Task". If Kind is "", it defaults to "Task".
+                            2. Custom Task when Kind is non-empty and APIVersion is non-empty
+                          type: string
+                        name:
+                          description: 'Name of the referent; More info: http://kubernetes.io/docs/user-guide/identifiers#names'
+                          type: string
+                        params:
+                          description: |-
+                            Params contains the parameters used to identify the
+                            referenced Tekton resource. Example entries might include
+                            "repo" or "path" but the set of params ultimately depends on
+                            the chosen resolver.
+                          items:
+                            description: Param declares an ParamValues to use for
+                              the parameter called name.
+                            properties:
+                              name:
+                                type: string
+                              value:
+                                x-kubernetes-preserve-unknown-fields: true
+                            required:
+                            - name
+                            - value
+                            type: object
+                          type: array
+                          x-kubernetes-list-type: atomic
+                        resolver:
+                          description: |-
+                            Resolver is the name of the resolver that should perform
+                            resolution of the referenced Tekton resource, such as "git".
+                          type: string
+                      type: object
+                    taskSpec:
+                      description: |-
+                        TaskSpec is a specification of a task
+                        Specifying TaskSpec can be disabled by setting
+                        `disable-inline-spec` feature flag.
+                        See Task.spec (API version: tekton.dev/v1beta1)
+                      x-kubernetes-preserve-unknown-fields: true
+                    timeout:
+                      description: |-
+                        Time after which the TaskRun times out. Defaults to 1 hour.
+                        Refer Go's ParseDuration documentation for expected format: https://golang.org/pkg/time/#ParseDuration
+                      type: string
+                    when:
+                      description: WhenExpressions is a list of when expressions that
+                        need to be true for the task to run
+                      items:
+                        description: |-
+                          WhenExpression allows a PipelineTask to declare expressions to be evaluated before the Task is run
+                          to determine whether the Task should be executed or skipped
+                        properties:
+                          cel:
+                            description: |-
+                              CEL is a string of Common Language Expression, which can be used to conditionally execute
+                              the task based on the result of the expression evaluation
+                              More info about CEL syntax: https://github.com/google/cel-spec/blob/master/doc/langdef.md
+                            type: string
+                          input:
+                            description: Input is the string for guard checking which
+                              can be a static input or an output from a parent Task
+                            type: string
+                          operator:
+                            description: Operator that represents an Input's relationship
+                              to the values
+                            type: string
+                          values:
+                            description: |-
+                              Values is an array of strings, which is compared against the input, for guard checking
+                              It must be non-empty
+                            items:
+                              type: string
+                            type: array
+                            x-kubernetes-list-type: atomic
+                        type: object
+                      type: array
+                    workspaces:
+                      description: |-
+                        Workspaces maps workspaces from the pipeline spec to the workspaces
+                        declared in the Task.
+                      items:
+                        description: |-
+                          WorkspacePipelineTaskBinding describes how a workspace passed into the pipeline should be
+                          mapped to a task's declared workspace.
+                        properties:
+                          name:
+                            description: Name is the name of the workspace as declared
+                              by the task
+                            type: string
+                          subPath:
+                            description: |-
+                              SubPath is optionally a directory on the volume which should be used
+                              for this binding (i.e. the volume will be mounted at this sub directory).
+                            type: string
+                          workspace:
+                            description: Workspace is the name of the workspace declared
+                              by the pipeline
+                            type: string
+                        required:
+                        - name
+                        type: object
+                      type: array
+                      x-kubernetes-list-type: atomic
+                  type: object
+                type: array
+                x-kubernetes-list-type: atomic
+              workspaces:
+                description: |-
+                  Workspaces declares a set of named workspaces that are expected to be
+                  provided by a PipelineRun.
+                items:
+                  description: |-
+                    PipelineWorkspaceDeclaration creates a named slot in a Pipeline that a PipelineRun
+                    is expected to populate with a workspace binding.
+                  properties:
+                    description:
+                      description: |-
+                        Description is a human readable string describing how the workspace will be
+                        used in the Pipeline. It can be useful to include a bit of detail about which
+                        tasks are intended to have access to the data on the workspace.
+                      type: string
+                    name:
+                      description: Name is the name of a workspace to be provided
+                        by a PipelineRun.
+                      type: string
+                    optional:
+                      description: |-
+                        Optional marks a Workspace as not being required in PipelineRuns. By default
+                        this field is false and so declared workspaces are required.
+                      type: boolean
+                  required:
+                  - name
+                  type: object
+                type: array
+                x-kubernetes-list-type: atomic
+            type: object
+        type: object
+    served: true
+    storage: false
+    subresources:
+      status: {}
+  - name: v1
+    schema:
+      openAPIV3Schema:
+        description: |-
+          Pipeline describes a list of Tasks to execute. It expresses how outputs
+          of tasks feed into inputs of subsequent tasks.
+        properties:
+          apiVersion:
+            description: |-
+              APIVersion defines the versioned schema of this representation of an object.
+              Servers should convert recognized schemas to the latest internal value, and
+              may reject unrecognized values.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+            type: string
+          kind:
+            description: |-
+              Kind is a string value representing the REST resource this object represents.
+              Servers may infer this from the endpoint the client submits requests to.
+              Cannot be updated.
+              In CamelCase.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: Spec holds the desired state of the Pipeline from the client
+            properties:
+              description:
+                description: |-
+                  Description is a user-facing description of the pipeline that may be
+                  used to populate a UI.
+                type: string
+              displayName:
+                description: |-
+                  DisplayName is a user-facing name of the pipeline that may be
+                  used to populate a UI.
+                type: string
+              finally:
+                description: |-
+                  Finally declares the list of Tasks that execute just before leaving the Pipeline
+                  i.e. either after all Tasks are finished executing successfully
+                  or after a failure which would result in ending the Pipeline
+                items:
+                  description: |-
+                    PipelineTask defines a task in a Pipeline, passing inputs from both
+                    Params and from the output of previous tasks.
+                  properties:
+                    description:
+                      description: |-
+                        Description is the description of this task within the context of a Pipeline.
+                        This description may be used to populate a UI.
+                      type: string
+                    displayName:
+                      description: |-
+                        DisplayName is the display name of this task within the context of a Pipeline.
+                        This display name may be used to populate a UI.
+                      type: string
+                    matrix:
+                      description: Matrix declares parameters used to fan out this
+                        task.
+                      properties:
+                        include:
+                          description: Include is a list of IncludeParams which allows
+                            passing in specific combinations of Parameters into the
+                            Matrix.
+                          items:
+                            description: IncludeParams allows passing in a specific
+                              combinations of Parameters into the Matrix.
+                            properties:
+                              name:
+                                description: Name the specified combination
+                                type: string
+                              params:
+                                description: |-
+                                  Params takes only `Parameters` of type `"string"`
+                                  The names of the `params` must match the names of the `params` in the underlying `Task`
+                                items:
+                                  description: Param declares an ParamValues to use
+                                    for the parameter called name.
+                                  properties:
+                                    name:
+                                      type: string
+                                    value:
+                                      x-kubernetes-preserve-unknown-fields: true
+                                  required:
+                                  - name
+                                  - value
+                                  type: object
+                                type: array
+                                x-kubernetes-list-type: atomic
+                            type: object
+                          type: array
+                          x-kubernetes-list-type: atomic
+                        params:
+                          description: |-
+                            Params is a list of parameters used to fan out the pipelineTask
+                            Params takes only `Parameters` of type `"array"`
+                            Each array element is supplied to the `PipelineTask` by substituting `params` of type `"string"` in the underlying `Task`.
+                            The names of the `params` in the `Matrix` must match the names of the `params` in the underlying `Task` that they will be substituting.
+                          items:
+                            description: Param declares an ParamValues to use for
+                              the parameter called name.
+                            properties:
+                              name:
+                                type: string
+                              value:
+                                x-kubernetes-preserve-unknown-fields: true
+                            required:
+                            - name
+                            - value
+                            type: object
+                          type: array
+                          x-kubernetes-list-type: atomic
+                      type: object
+                    name:
+                      description: |-
+                        Name is the name of this task within the context of a Pipeline. Name is
+                        used as a coordinate with the `from` and `runAfter` fields to establish
+                        the execution order of tasks relative to one another.
+                      type: string
+                    onError:
+                      description: |-
+                        OnError defines the exiting behavior of a PipelineRun on error
+                        can be set to [ continue | stopAndFail ]
+                      type: string
+                    params:
+                      description: Parameters declares parameters passed to this task.
+                      items:
+                        description: Param declares an ParamValues to use for the
+                          parameter called name.
+                        properties:
+                          name:
+                            type: string
+                          value:
+                            x-kubernetes-preserve-unknown-fields: true
+                        required:
+                        - name
+                        - value
+                        type: object
+                      type: array
+                      x-kubernetes-list-type: atomic
+                    pipelineRef:
+                      description: |-
+                        PipelineRef is a reference to a pipeline definition
+                        Note: PipelineRef is in preview mode and not yet supported
+                      properties:
+                        apiVersion:
+                          description: API version of the referent
+                          type: string
+                        name:
+                          description: 'Name of the referent; More info: http://kubernetes.io/docs/user-guide/identifiers#names'
+                          type: string
+                        params:
+                          description: |-
+                            Params contains the parameters used to identify the
+                            referenced Tekton resource. Example entries might include
+                            "repo" or "path" but the set of params ultimately depends on
+                            the chosen resolver.
+                          items:
+                            description: Param declares an ParamValues to use for
+                              the parameter called name.
+                            properties:
+                              name:
+                                type: string
+                              value:
+                                x-kubernetes-preserve-unknown-fields: true
+                            required:
+                            - name
+                            - value
+                            type: object
+                          type: array
+                          x-kubernetes-list-type: atomic
+                        resolver:
+                          description: |-
+                            Resolver is the name of the resolver that should perform
+                            resolution of the referenced Tekton resource, such as "git".
+                          type: string
+                      type: object
+                    pipelineSpec:
+                      description: |-
+                        PipelineSpec is a specification of a pipeline
+                        Note: PipelineSpec is in preview mode and not yet supported
+                        Specifying PipelineSpec can be disabled by setting
+                        `disable-inline-spec` feature flag.
+                        See Pipeline.spec (API version: tekton.dev/v1)
+                      x-kubernetes-preserve-unknown-fields: true
+                    retries:
+                      description: 'Retries represents how many times this task should
+                        be retried in case of task failure: ConditionSucceeded set
+                        to False'
+                      type: integer
+                    runAfter:
+                      description: |-
+                        RunAfter is the list of PipelineTask names that should be executed before
+                        this Task executes. (Used to force a specific ordering in graph execution.)
+                      items:
+                        type: string
+                      type: array
+                      x-kubernetes-list-type: atomic
+                    taskRef:
+                      description: TaskRef is a reference to a task definition.
+                      properties:
+                        apiVersion:
+                          description: |-
+                            API version of the referent
+                            Note: A Task with non-empty APIVersion and Kind is considered a Custom Task
+                          type: string
+                        kind:
+                          description: |-
+                            TaskKind indicates the Kind of the Task:
+                            1. Namespaced Task when Kind is set to "Task". If Kind is "", it defaults to "Task".
+                            2. Custom Task when Kind is non-empty and APIVersion is non-empty
+                          type: string
+                        name:
+                          description: 'Name of the referent; More info: http://kubernetes.io/docs/user-guide/identifiers#names'
+                          type: string
+                        params:
+                          description: |-
+                            Params contains the parameters used to identify the
+                            referenced Tekton resource. Example entries might include
+                            "repo" or "path" but the set of params ultimately depends on
+                            the chosen resolver.
+                          items:
+                            description: Param declares an ParamValues to use for
+                              the parameter called name.
+                            properties:
+                              name:
+                                type: string
+                              value:
+                                x-kubernetes-preserve-unknown-fields: true
+                            required:
+                            - name
+                            - value
+                            type: object
+                          type: array
+                          x-kubernetes-list-type: atomic
+                        resolver:
+                          description: |-
+                            Resolver is the name of the resolver that should perform
+                            resolution of the referenced Tekton resource, such as "git".
+                          type: string
+                      type: object
+                    taskSpec:
+                      description: |-
+                        TaskSpec is a specification of a task
+                        Specifying TaskSpec can be disabled by setting
+                        `disable-inline-spec` feature flag.
+                        See Task.spec (API version: tekton.dev/v1)
+                      x-kubernetes-preserve-unknown-fields: true
+                    timeout:
+                      description: |-
+                        Time after which the TaskRun times out. Defaults to 1 hour.
+                        Refer Go's ParseDuration documentation for expected format: https://golang.org/pkg/time/#ParseDuration
+                      type: string
+                    when:
+                      description: When is a list of when expressions that need to
+                        be true for the task to run
+                      items:
+                        description: |-
+                          WhenExpression allows a PipelineTask to declare expressions to be evaluated before the Task is run
+                          to determine whether the Task should be executed or skipped
+                        properties:
+                          cel:
+                            description: |-
+                              CEL is a string of Common Language Expression, which can be used to conditionally execute
+                              the task based on the result of the expression evaluation
+                              More info about CEL syntax: https://github.com/google/cel-spec/blob/master/doc/langdef.md
+                            type: string
+                          input:
+                            description: Input is the string for guard checking which
+                              can be a static input or an output from a parent Task
+                            type: string
+                          operator:
+                            description: Operator that represents an Input's relationship
+                              to the values
+                            type: string
+                          values:
+                            description: |-
+                              Values is an array of strings, which is compared against the input, for guard checking
+                              It must be non-empty
+                            items:
+                              type: string
+                            type: array
+                            x-kubernetes-list-type: atomic
+                        type: object
+                      type: array
+                    workspaces:
+                      description: |-
+                        Workspaces maps workspaces from the pipeline spec to the workspaces
+                        declared in the Task.
+                      items:
+                        description: |-
+                          WorkspacePipelineTaskBinding describes how a workspace passed into the pipeline should be
+                          mapped to a task's declared workspace.
+                        properties:
+                          name:
+                            description: Name is the name of the workspace as declared
+                              by the task
+                            type: string
+                          subPath:
+                            description: |-
+                              SubPath is optionally a directory on the volume which should be used
+                              for this binding (i.e. the volume will be mounted at this sub directory).
+                            type: string
+                          workspace:
+                            description: Workspace is the name of the workspace declared
+                              by the pipeline
+                            type: string
+                        required:
+                        - name
+                        type: object
+                      type: array
+                      x-kubernetes-list-type: atomic
+                  type: object
+                type: array
+                x-kubernetes-list-type: atomic
+              params:
+                description: |-
+                  Params declares a list of input parameters that must be supplied when
+                  this Pipeline is run.
+                items:
+                  description: |-
+                    ParamSpec defines arbitrary parameters needed beyond typed inputs (such as
+                    resources). Parameter values are provided by users as inputs on a TaskRun
+                    or PipelineRun.
+                  properties:
+                    default:
+                      description: |-
+                        Default is the value a parameter takes if no input value is supplied. If
+                        default is set, a Task may be executed without a supplied value for the
+                        parameter.
+                      x-kubernetes-preserve-unknown-fields: true
+                    description:
+                      description: |-
+                        Description is a user-facing description of the parameter that may be
+                        used to populate a UI.
+                      type: string
+                    enum:
+                      description: |-
+                        Enum declares a set of allowed param input values for tasks/pipelines that can be validated.
+                        If Enum is not set, no input validation is performed for the param.
+                      items:
+                        type: string
+                      type: array
+                    name:
+                      description: Name declares the name by which a parameter is
+                        referenced.
+                      type: string
+                    properties:
+                      additionalProperties:
+                        description: PropertySpec defines the struct for object keys
+                        properties:
+                          type:
+                            description: |-
+                              ParamType indicates the type of an input parameter;
+                              Used to distinguish between a single string and an array of strings.
+                            type: string
+                        type: object
+                      description: Properties is the JSON Schema properties to support
+                        key-value pairs parameter.
+                      type: object
+                    type:
+                      description: |-
+                        Type is the user-specified type of the parameter. The possible types
+                        are currently "string", "array" and "object", and "string" is the default.
+                      type: string
+                  required:
+                  - name
+                  type: object
+                type: array
+                x-kubernetes-list-type: atomic
+              results:
+                description: Results are values that this pipeline can output once
+                  run
+                items:
+                  description: PipelineResult used to describe the results of a pipeline
+                  properties:
+                    description:
+                      description: Description is a human-readable description of
+                        the result
+                      type: string
+                    name:
+                      description: Name the given name
+                      type: string
+                    type:
+                      description: |-
+                        Type is the user-specified type of the result.
+                        The possible types are 'string', 'array', and 'object', with 'string' as the default.
+                        'array' and 'object' types are alpha features.
+                      type: string
+                    value:
+                      description: Value the expression used to retrieve the value
+                      x-kubernetes-preserve-unknown-fields: true
+                  required:
+                  - name
+                  - value
+                  type: object
+                type: array
+                x-kubernetes-list-type: atomic
+              tasks:
+                description: Tasks declares the graph of Tasks that execute when this
+                  Pipeline is run.
+                items:
+                  description: |-
+                    PipelineTask defines a task in a Pipeline, passing inputs from both
+                    Params and from the output of previous tasks.
+                  properties:
+                    description:
+                      description: |-
+                        Description is the description of this task within the context of a Pipeline.
+                        This description may be used to populate a UI.
+                      type: string
+                    displayName:
+                      description: |-
+                        DisplayName is the display name of this task within the context of a Pipeline.
+                        This display name may be used to populate a UI.
+                      type: string
+                    matrix:
+                      description: Matrix declares parameters used to fan out this
+                        task.
+                      properties:
+                        include:
+                          description: Include is a list of IncludeParams which allows
+                            passing in specific combinations of Parameters into the
+                            Matrix.
+                          items:
+                            description: IncludeParams allows passing in a specific
+                              combinations of Parameters into the Matrix.
+                            properties:
+                              name:
+                                description: Name the specified combination
+                                type: string
+                              params:
+                                description: |-
+                                  Params takes only `Parameters` of type `"string"`
+                                  The names of the `params` must match the names of the `params` in the underlying `Task`
+                                items:
+                                  description: Param declares an ParamValues to use
+                                    for the parameter called name.
+                                  properties:
+                                    name:
+                                      type: string
+                                    value:
+                                      x-kubernetes-preserve-unknown-fields: true
+                                  required:
+                                  - name
+                                  - value
+                                  type: object
+                                type: array
+                                x-kubernetes-list-type: atomic
+                            type: object
+                          type: array
+                          x-kubernetes-list-type: atomic
+                        params:
+                          description: |-
+                            Params is a list of parameters used to fan out the pipelineTask
+                            Params takes only `Parameters` of type `"array"`
+                            Each array element is supplied to the `PipelineTask` by substituting `params` of type `"string"` in the underlying `Task`.
+                            The names of the `params` in the `Matrix` must match the names of the `params` in the underlying `Task` that they will be substituting.
+                          items:
+                            description: Param declares an ParamValues to use for
+                              the parameter called name.
+                            properties:
+                              name:
+                                type: string
+                              value:
+                                x-kubernetes-preserve-unknown-fields: true
+                            required:
+                            - name
+                            - value
+                            type: object
+                          type: array
+                          x-kubernetes-list-type: atomic
+                      type: object
+                    name:
+                      description: |-
+                        Name is the name of this task within the context of a Pipeline. Name is
+                        used as a coordinate with the `from` and `runAfter` fields to establish
+                        the execution order of tasks relative to one another.
+                      type: string
+                    onError:
+                      description: |-
+                        OnError defines the exiting behavior of a PipelineRun on error
+                        can be set to [ continue | stopAndFail ]
+                      type: string
+                    params:
+                      description: Parameters declares parameters passed to this task.
+                      items:
+                        description: Param declares an ParamValues to use for the
+                          parameter called name.
+                        properties:
+                          name:
+                            type: string
+                          value:
+                            x-kubernetes-preserve-unknown-fields: true
+                        required:
+                        - name
+                        - value
+                        type: object
+                      type: array
+                      x-kubernetes-list-type: atomic
+                    pipelineRef:
+                      description: |-
+                        PipelineRef is a reference to a pipeline definition
+                        Note: PipelineRef is in preview mode and not yet supported
+                      properties:
+                        apiVersion:
+                          description: API version of the referent
+                          type: string
+                        name:
+                          description: 'Name of the referent; More info: http://kubernetes.io/docs/user-guide/identifiers#names'
+                          type: string
+                        params:
+                          description: |-
+                            Params contains the parameters used to identify the
+                            referenced Tekton resource. Example entries might include
+                            "repo" or "path" but the set of params ultimately depends on
+                            the chosen resolver.
+                          items:
+                            description: Param declares an ParamValues to use for
+                              the parameter called name.
+                            properties:
+                              name:
+                                type: string
+                              value:
+                                x-kubernetes-preserve-unknown-fields: true
+                            required:
+                            - name
+                            - value
+                            type: object
+                          type: array
+                          x-kubernetes-list-type: atomic
+                        resolver:
+                          description: |-
+                            Resolver is the name of the resolver that should perform
+                            resolution of the referenced Tekton resource, such as "git".
+                          type: string
+                      type: object
+                    pipelineSpec:
+                      description: |-
+                        PipelineSpec is a specification of a pipeline
+                        Note: PipelineSpec is in preview mode and not yet supported
+                        Specifying PipelineSpec can be disabled by setting
+                        `disable-inline-spec` feature flag.
+                        See Pipeline.spec (API version: tekton.dev/v1)
+                      x-kubernetes-preserve-unknown-fields: true
+                    retries:
+                      description: 'Retries represents how many times this task should
+                        be retried in case of task failure: ConditionSucceeded set
+                        to False'
+                      type: integer
+                    runAfter:
+                      description: |-
+                        RunAfter is the list of PipelineTask names that should be executed before
+                        this Task executes. (Used to force a specific ordering in graph execution.)
+                      items:
+                        type: string
+                      type: array
+                      x-kubernetes-list-type: atomic
+                    taskRef:
+                      description: TaskRef is a reference to a task definition.
+                      properties:
+                        apiVersion:
+                          description: |-
+                            API version of the referent
+                            Note: A Task with non-empty APIVersion and Kind is considered a Custom Task
+                          type: string
+                        kind:
+                          description: |-
+                            TaskKind indicates the Kind of the Task:
+                            1. Namespaced Task when Kind is set to "Task". If Kind is "", it defaults to "Task".
+                            2. Custom Task when Kind is non-empty and APIVersion is non-empty
+                          type: string
+                        name:
+                          description: 'Name of the referent; More info: http://kubernetes.io/docs/user-guide/identifiers#names'
+                          type: string
+                        params:
+                          description: |-
+                            Params contains the parameters used to identify the
+                            referenced Tekton resource. Example entries might include
+                            "repo" or "path" but the set of params ultimately depends on
+                            the chosen resolver.
+                          items:
+                            description: Param declares an ParamValues to use for
+                              the parameter called name.
+                            properties:
+                              name:
+                                type: string
+                              value:
+                                x-kubernetes-preserve-unknown-fields: true
+                            required:
+                            - name
+                            - value
+                            type: object
+                          type: array
+                          x-kubernetes-list-type: atomic
+                        resolver:
+                          description: |-
+                            Resolver is the name of the resolver that should perform
+                            resolution of the referenced Tekton resource, such as "git".
+                          type: string
+                      type: object
+                    taskSpec:
+                      description: |-
+                        TaskSpec is a specification of a task
+                        Specifying TaskSpec can be disabled by setting
+                        `disable-inline-spec` feature flag.
+                        See Task.spec (API version: tekton.dev/v1)
+                      x-kubernetes-preserve-unknown-fields: true
+                    timeout:
+                      description: |-
+                        Time after which the TaskRun times out. Defaults to 1 hour.
+                        Refer Go's ParseDuration documentation for expected format: https://golang.org/pkg/time/#ParseDuration
+                      type: string
+                    when:
+                      description: When is a list of when expressions that need to
+                        be true for the task to run
+                      items:
+                        description: |-
+                          WhenExpression allows a PipelineTask to declare expressions to be evaluated before the Task is run
+                          to determine whether the Task should be executed or skipped
+                        properties:
+                          cel:
+                            description: |-
+                              CEL is a string of Common Language Expression, which can be used to conditionally execute
+                              the task based on the result of the expression evaluation
+                              More info about CEL syntax: https://github.com/google/cel-spec/blob/master/doc/langdef.md
+                            type: string
+                          input:
+                            description: Input is the string for guard checking which
+                              can be a static input or an output from a parent Task
+                            type: string
+                          operator:
+                            description: Operator that represents an Input's relationship
+                              to the values
+                            type: string
+                          values:
+                            description: |-
+                              Values is an array of strings, which is compared against the input, for guard checking
+                              It must be non-empty
+                            items:
+                              type: string
+                            type: array
+                            x-kubernetes-list-type: atomic
+                        type: object
+                      type: array
+                    workspaces:
+                      description: |-
+                        Workspaces maps workspaces from the pipeline spec to the workspaces
+                        declared in the Task.
+                      items:
+                        description: |-
+                          WorkspacePipelineTaskBinding describes how a workspace passed into the pipeline should be
+                          mapped to a task's declared workspace.
+                        properties:
+                          name:
+                            description: Name is the name of the workspace as declared
+                              by the task
+                            type: string
+                          subPath:
+                            description: |-
+                              SubPath is optionally a directory on the volume which should be used
+                              for this binding (i.e. the volume will be mounted at this sub directory).
+                            type: string
+                          workspace:
+                            description: Workspace is the name of the workspace declared
+                              by the pipeline
+                            type: string
+                        required:
+                        - name
+                        type: object
+                      type: array
+                      x-kubernetes-list-type: atomic
+                  type: object
+                type: array
+                x-kubernetes-list-type: atomic
+              workspaces:
+                description: |-
+                  Workspaces declares a set of named workspaces that are expected to be
+                  provided by a PipelineRun.
+                items:
+                  description: |-
+                    PipelineWorkspaceDeclaration creates a named slot in a Pipeline that a PipelineRun
+                    is expected to populate with a workspace binding.
+                  properties:
+                    description:
+                      description: |-
+                        Description is a human readable string describing how the workspace will be
+                        used in the Pipeline. It can be useful to include a bit of detail about which
+                        tasks are intended to have access to the data on the workspace.
+                      type: string
+                    name:
+                      description: Name is the name of a workspace to be provided
+                        by a PipelineRun.
+                      type: string
+                    optional:
+                      description: |-
+                        Optional marks a Workspace as not being required in PipelineRuns. By default
+                        this field is false and so declared workspaces are required.
+                      type: boolean
+                  required:
+                  - name
+                  type: object
+                type: array
+                x-kubernetes-list-type: atomic
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    categories:
+    - tekton
+    - tekton-pipelines
+    kind: Pipeline
+    listKind: PipelineList
+    plural: pipelines
+    singular: pipeline
+  conditions:
+  - lastTransitionTime: "2025-05-20T13:06:36Z"
+    message: no conflicts found
+    reason: NoConflicts
+    status: "True"
+    type: NamesAccepted
+  - lastTransitionTime: "2025-05-20T13:06:37Z"
+    message: the initial names have been accepted
+    reason: InitialNamesAccepted
+    status: "True"
+    type: Established
+  storedVersions:
+  - v1
