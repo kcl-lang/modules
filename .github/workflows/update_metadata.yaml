@@ -65,6 +65,9 @@ jobs:
         run: |
           if echo "${{ steps.changed-files.outputs.all_changed_files }}" | grep -q 'kcl.mod'; then
             for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+              if [[ "$file" == *.go ]]; then
+                continue
+              fi
               go run main.go $file
             done
           fi
