@@ -1,0 +1,347 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apiextensions.k8s.io/v1","kind":"CustomResourceDefinition","metadata":{"annotations":{"argocd.argoproj.io/sync-wave":"2"},"labels":{"resolution.tekton.dev/release":"devel"},"name":"resolutionrequests.resolution.tekton.dev"},"spec":{"conversion":{"strategy":"Webhook","webhook":{"clientConfig":{"service":{"name":"tekton-pipelines-webhook","namespace":"tekton-pipelines"}},"conversionReviewVersions":["v1alpha1","v1beta1"]}},"group":"resolution.tekton.dev","names":{"categories":["tekton","tekton-pipelines"],"kind":"ResolutionRequest","plural":"resolutionrequests","shortNames":["resolutionrequest","resolutionrequests"],"singular":"resolutionrequest"},"scope":"Namespaced","versions":[{"additionalPrinterColumns":[{"jsonPath":".status.conditions[?(@.type=='Succeeded')].status","name":"Succeeded","type":"string"},{"jsonPath":".status.conditions[?(@.type=='Succeeded')].reason","name":"Reason","type":"string"}],"deprecated":true,"name":"v1alpha1","schema":{"openAPIV3Schema":{"description":"ResolutionRequest is an object for requesting the content of\na Tekton resource like a pipeline.yaml.","properties":{"apiVersion":{"description":"APIVersion defines the versioned schema of this representation of an object.\nServers should convert recognized schemas to the latest internal value, and\nmay reject unrecognized values.\nMore info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources","type":"string"},"kind":{"description":"Kind is a string value representing the REST resource this object represents.\nServers may infer this from the endpoint the client submits requests to.\nCannot be updated.\nIn CamelCase.\nMore info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds","type":"string"},"metadata":{"type":"object"},"spec":{"description":"Spec holds the information for the request part of the resource request.","properties":{"params":{"additionalProperties":{"type":"string"},"description":"Parameters are the runtime attributes passed to\nthe resolver to help it figure out how to resolve the\nresource being requested. For example: repo URL, commit SHA,\npath to file, the kind of authentication to leverage, etc.","type":"object"}},"type":"object"},"status":{"description":"Status communicates the state of the request and, ultimately,\nthe content of the resolved resource.","properties":{"annotations":{"additionalProperties":{"type":"string"},"description":"Annotations is additional Status fields for the Resource to save some\nadditional State as well as convey more information to the user. This is\nroughly akin to Annotations on any k8s resource, just the reconciler conveying\nricher information outwards.","type":"object"},"conditions":{"description":"Conditions the latest available observations of a resource's current state.","items":{"description":"Condition defines a readiness condition for a Knative resource.\nSee: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#typical-status-properties","properties":{"lastTransitionTime":{"description":"LastTransitionTime is the last time the condition transitioned from one status to another.\nWe use VolatileTime in place of metav1.Time to exclude this from creating equality.Semantic\ndifferences (all other things held constant).","type":"string"},"message":{"description":"A human readable message indicating details about the transition.","type":"string"},"reason":{"description":"The reason for the condition's last transition.","type":"string"},"severity":{"description":"Severity with which to treat failures of this type of condition.\nWhen this is not specified, it defaults to Error.","type":"string"},"status":{"description":"Status of the condition, one of True, False, Unknown.","type":"string"},"type":{"description":"Type of condition.","type":"string"}},"required":["status","type"],"type":"object"},"type":"array"},"data":{"description":"Data is a string representation of the resolved content\nof the requested resource in-lined into the ResolutionRequest\nobject.","type":"string"},"observedGeneration":{"description":"ObservedGeneration is the 'Generation' of the Service that\nwas last processed by the controller.","format":"int64","type":"integer"},"refSource":{"description":"RefSource is the source reference of the remote data that records where the remote\nfile came from including the url, digest and the entrypoint.","x-kubernetes-preserve-unknown-fields":true}},"required":["data","refSource"],"type":"object"}},"type":"object"}},"served":true,"storage":false,"subresources":{"status":{}}},{"additionalPrinterColumns":[{"jsonPath":".metadata.ownerReferences[0].kind","name":"OwnerKind","type":"string"},{"jsonPath":".metadata.ownerReferences[0].name","name":"Owner","type":"string"},{"jsonPath":".status.conditions[?(@.type=='Succeeded')].status","name":"Succeeded","type":"string"},{"jsonPath":".status.conditions[?(@.type=='Succeeded')].reason","name":"Reason","type":"string"},{"jsonPath":".metadata.creationTimestamp","name":"StartTime","type":"string"},{"jsonPath":".status.conditions[?(@.type=='Succeeded')].lastTransitionTime","name":"EndTime","type":"string"}],"name":"v1beta1","schema":{"openAPIV3Schema":{"description":"ResolutionRequest is an object for requesting the content of\na Tekton resource like a pipeline.yaml.","properties":{"apiVersion":{"description":"APIVersion defines the versioned schema of this representation of an object.\nServers should convert recognized schemas to the latest internal value, and\nmay reject unrecognized values.\nMore info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources","type":"string"},"kind":{"description":"Kind is a string value representing the REST resource this object represents.\nServers may infer this from the endpoint the client submits requests to.\nCannot be updated.\nIn CamelCase.\nMore info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds","type":"string"},"metadata":{"type":"object"},"spec":{"description":"Spec holds the information for the request part of the resource request.","properties":{"params":{"description":"Parameters are the runtime attributes passed to\nthe resolver to help it figure out how to resolve the\nresource being requested. For example: repo URL, commit SHA,\npath to file, the kind of authentication to leverage, etc.","items":{"description":"Param declares an ParamValues to use for the parameter called name.","properties":{"name":{"type":"string"},"value":{"x-kubernetes-preserve-unknown-fields":true}},"required":["name","value"],"type":"object"},"type":"array","x-kubernetes-list-type":"atomic"},"url":{"description":"URL is the runtime url passed to the resolver\nto help it figure out how to resolver the resource being\nrequested.\nThis is currently at an ALPHA stability level and subject to\nalpha API compatibility policies.","type":"string"}},"type":"object"},"status":{"description":"Status communicates the state of the request and, ultimately,\nthe content of the resolved resource.","properties":{"annotations":{"additionalProperties":{"type":"string"},"description":"Annotations is additional Status fields for the Resource to save some\nadditional State as well as convey more information to the user. This is\nroughly akin to Annotations on any k8s resource, just the reconciler conveying\nricher information outwards.","type":"object"},"conditions":{"description":"Conditions the latest available observations of a resource's current state.","items":{"description":"Condition defines a readiness condition for a Knative resource.\nSee: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#typical-status-properties","properties":{"lastTransitionTime":{"description":"LastTransitionTime is the last time the condition transitioned from one status to another.\nWe use VolatileTime in place of metav1.Time to exclude this from creating equality.Semantic\ndifferences (all other things held constant).","type":"string"},"message":{"description":"A human readable message indicating details about the transition.","type":"string"},"reason":{"description":"The reason for the condition's last transition.","type":"string"},"severity":{"description":"Severity with which to treat failures of this type of condition.\nWhen this is not specified, it defaults to Error.","type":"string"},"status":{"description":"Status of the condition, one of True, False, Unknown.","type":"string"},"type":{"description":"Type of condition.","type":"string"}},"required":["status","type"],"type":"object"},"type":"array"},"data":{"description":"Data is a string representation of the resolved content\nof the requested resource in-lined into the ResolutionRequest\nobject.","type":"string"},"observedGeneration":{"description":"ObservedGeneration is the 'Generation' of the Service that\nwas last processed by the controller.","format":"int64","type":"integer"},"refSource":{"description":"RefSource is the source reference of the remote data that records the url, digest\nand the entrypoint.","x-kubernetes-preserve-unknown-fields":true},"source":{"description":"Deprecated: Use RefSource instead","x-kubernetes-preserve-unknown-fields":true}},"required":["data","refSource","source"],"type":"object"}},"type":"object"}},"served":true,"storage":true,"subresources":{"status":{}}}]}}
+  creationTimestamp: "2025-05-20T13:06:36Z"
+  generation: 2
+  labels:
+    resolution.tekton.dev/release: devel
+  name: resolutionrequests.resolution.tekton.dev
+  resourceVersion: "4275"
+  uid: d8ccab0e-0921-4fe2-a51c-c20e52c8b52f
+spec:
+  conversion:
+    strategy: Webhook
+    webhook:
+      clientConfig:
+        caBundle: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUN2akNDQW1TZ0F3SUJBZ0lRTWlsMDRqdC8xYzZIeTZKdmZLQ2xvekFLQmdncWhrak9QUVFEQWpCT01SUXcKRWdZRFZRUUtFd3RyYm1GMGFYWmxMbVJsZGpFMk1EUUdBMVVFQXhNdGRHVnJkRzl1TFhCcGNHVnNhVzVsY3kxMwpaV0pvYjI5ckxuUmxhM1J2Ymkxd2FYQmxiR2x1WlhNdWMzWmpNQjRYRFRJMU1EVXlNREV6TURZME0xb1hEVEkxCk1EVXlOekV6TURZME0xb3dUakVVTUJJR0ExVUVDaE1MYTI1aGRHbDJaUzVrWlhZeE5qQTBCZ05WQkFNVExYUmwKYTNSdmJpMXdhWEJsYkdsdVpYTXRkMlZpYUc5dmF5NTBaV3QwYjI0dGNHbHdaV3hwYm1WekxuTjJZekJaTUJNRwpCeXFHU000OUFnRUdDQ3FHU000OUF3RUhBMElBQkJtSGxXQXlvaEl4WVl5cmtUY2xKVXZXYkh5ZWlJUGZoaUh2Cnl5NlhOdVdzTGRIZXN5OFIxbGNVckhwTjltUkdIdnJpdFVXNURYdVRmY2FwSUtzMEF1S2pnZ0VpTUlJQkhqQU8KQmdOVkhROEJBZjhFQkFNQ0FvUXdIUVlEVlIwbEJCWXdGQVlJS3dZQkJRVUhBd0VHQ0NzR0FRVUZCd01DTUE4RwpBMVVkRXdFQi93UUZNQU1CQWY4d0hRWURWUjBPQkJZRUZCZDJueTNiSy9rMis4VGdIclBscklZcVIzNTBNSUc4CkJnTlZIUkVFZ2JRd2diR0NHSFJsYTNSdmJpMXdhWEJsYkdsdVpYTXRkMlZpYUc5dmE0SXBkR1ZyZEc5dUxYQnAKY0dWc2FXNWxjeTEzWldKb2IyOXJMblJsYTNSdmJpMXdhWEJsYkdsdVpYT0NMWFJsYTNSdmJpMXdhWEJsYkdsdQpaWE10ZDJWaWFHOXZheTUwWld0MGIyNHRjR2x3Wld4cGJtVnpMbk4yWTRJN2RHVnJkRzl1TFhCcGNHVnNhVzVsCmN5MTNaV0pvYjI5ckxuUmxhM1J2Ymkxd2FYQmxiR2x1WlhNdWMzWmpMbU5zZFhOMFpYSXViRzlqWVd3d0NnWUkKS29aSXpqMEVBd0lEU0FBd1JRSWhBTG84YVRuNE5pL2NJVVdUUUFQdDNTOGhkT01UYklORHU5N3J5c3V4OFFEegpBaUJnZHI4bE56dVZQdVNlR2pSWXVvd2xFbWdRSDFUUW5NcEVybXRPMWpKb2dBPT0KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=
+        service:
+          name: tekton-pipelines-webhook
+          namespace: tekton-pipelines
+          path: /resource-conversion
+          port: 443
+      conversionReviewVersions:
+      - v1alpha1
+      - v1beta1
+  group: resolution.tekton.dev
+  names:
+    categories:
+    - tekton
+    - tekton-pipelines
+    kind: ResolutionRequest
+    listKind: ResolutionRequestList
+    plural: resolutionrequests
+    shortNames:
+    - resolutionrequest
+    - resolutionrequests
+    singular: resolutionrequest
+  scope: Namespaced
+  versions:
+  - additionalPrinterColumns:
+    - jsonPath: .status.conditions[?(@.type=='Succeeded')].status
+      name: Succeeded
+      type: string
+    - jsonPath: .status.conditions[?(@.type=='Succeeded')].reason
+      name: Reason
+      type: string
+    deprecated: true
+    name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        description: |-
+          ResolutionRequest is an object for requesting the content of
+          a Tekton resource like a pipeline.yaml.
+        properties:
+          apiVersion:
+            description: |-
+              APIVersion defines the versioned schema of this representation of an object.
+              Servers should convert recognized schemas to the latest internal value, and
+              may reject unrecognized values.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+            type: string
+          kind:
+            description: |-
+              Kind is a string value representing the REST resource this object represents.
+              Servers may infer this from the endpoint the client submits requests to.
+              Cannot be updated.
+              In CamelCase.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: Spec holds the information for the request part of the resource
+              request.
+            properties:
+              params:
+                additionalProperties:
+                  type: string
+                description: |-
+                  Parameters are the runtime attributes passed to
+                  the resolver to help it figure out how to resolve the
+                  resource being requested. For example: repo URL, commit SHA,
+                  path to file, the kind of authentication to leverage, etc.
+                type: object
+            type: object
+          status:
+            description: |-
+              Status communicates the state of the request and, ultimately,
+              the content of the resolved resource.
+            properties:
+              annotations:
+                additionalProperties:
+                  type: string
+                description: |-
+                  Annotations is additional Status fields for the Resource to save some
+                  additional State as well as convey more information to the user. This is
+                  roughly akin to Annotations on any k8s resource, just the reconciler conveying
+                  richer information outwards.
+                type: object
+              conditions:
+                description: Conditions the latest available observations of a resource's
+                  current state.
+                items:
+                  description: |-
+                    Condition defines a readiness condition for a Knative resource.
+                    See: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#typical-status-properties
+                  properties:
+                    lastTransitionTime:
+                      description: |-
+                        LastTransitionTime is the last time the condition transitioned from one status to another.
+                        We use VolatileTime in place of metav1.Time to exclude this from creating equality.Semantic
+                        differences (all other things held constant).
+                      type: string
+                    message:
+                      description: A human readable message indicating details about
+                        the transition.
+                      type: string
+                    reason:
+                      description: The reason for the condition's last transition.
+                      type: string
+                    severity:
+                      description: |-
+                        Severity with which to treat failures of this type of condition.
+                        When this is not specified, it defaults to Error.
+                      type: string
+                    status:
+                      description: Status of the condition, one of True, False, Unknown.
+                      type: string
+                    type:
+                      description: Type of condition.
+                      type: string
+                  required:
+                  - status
+                  - type
+                  type: object
+                type: array
+              data:
+                description: |-
+                  Data is a string representation of the resolved content
+                  of the requested resource in-lined into the ResolutionRequest
+                  object.
+                type: string
+              observedGeneration:
+                description: |-
+                  ObservedGeneration is the 'Generation' of the Service that
+                  was last processed by the controller.
+                format: int64
+                type: integer
+              refSource:
+                description: |-
+                  RefSource is the source reference of the remote data that records where the remote
+                  file came from including the url, digest and the entrypoint.
+                x-kubernetes-preserve-unknown-fields: true
+            required:
+            - data
+            - refSource
+            type: object
+        type: object
+    served: true
+    storage: false
+    subresources:
+      status: {}
+  - additionalPrinterColumns:
+    - jsonPath: .metadata.ownerReferences[0].kind
+      name: OwnerKind
+      type: string
+    - jsonPath: .metadata.ownerReferences[0].name
+      name: Owner
+      type: string
+    - jsonPath: .status.conditions[?(@.type=='Succeeded')].status
+      name: Succeeded
+      type: string
+    - jsonPath: .status.conditions[?(@.type=='Succeeded')].reason
+      name: Reason
+      type: string
+    - jsonPath: .metadata.creationTimestamp
+      name: StartTime
+      type: string
+    - jsonPath: .status.conditions[?(@.type=='Succeeded')].lastTransitionTime
+      name: EndTime
+      type: string
+    name: v1beta1
+    schema:
+      openAPIV3Schema:
+        description: |-
+          ResolutionRequest is an object for requesting the content of
+          a Tekton resource like a pipeline.yaml.
+        properties:
+          apiVersion:
+            description: |-
+              APIVersion defines the versioned schema of this representation of an object.
+              Servers should convert recognized schemas to the latest internal value, and
+              may reject unrecognized values.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+            type: string
+          kind:
+            description: |-
+              Kind is a string value representing the REST resource this object represents.
+              Servers may infer this from the endpoint the client submits requests to.
+              Cannot be updated.
+              In CamelCase.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: Spec holds the information for the request part of the resource
+              request.
+            properties:
+              params:
+                description: |-
+                  Parameters are the runtime attributes passed to
+                  the resolver to help it figure out how to resolve the
+                  resource being requested. For example: repo URL, commit SHA,
+                  path to file, the kind of authentication to leverage, etc.
+                items:
+                  description: Param declares an ParamValues to use for the parameter
+                    called name.
+                  properties:
+                    name:
+                      type: string
+                    value:
+                      x-kubernetes-preserve-unknown-fields: true
+                  required:
+                  - name
+                  - value
+                  type: object
+                type: array
+                x-kubernetes-list-type: atomic
+              url:
+                description: |-
+                  URL is the runtime url passed to the resolver
+                  to help it figure out how to resolver the resource being
+                  requested.
+                  This is currently at an ALPHA stability level and subject to
+                  alpha API compatibility policies.
+                type: string
+            type: object
+          status:
+            description: |-
+              Status communicates the state of the request and, ultimately,
+              the content of the resolved resource.
+            properties:
+              annotations:
+                additionalProperties:
+                  type: string
+                description: |-
+                  Annotations is additional Status fields for the Resource to save some
+                  additional State as well as convey more information to the user. This is
+                  roughly akin to Annotations on any k8s resource, just the reconciler conveying
+                  richer information outwards.
+                type: object
+              conditions:
+                description: Conditions the latest available observations of a resource's
+                  current state.
+                items:
+                  description: |-
+                    Condition defines a readiness condition for a Knative resource.
+                    See: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#typical-status-properties
+                  properties:
+                    lastTransitionTime:
+                      description: |-
+                        LastTransitionTime is the last time the condition transitioned from one status to another.
+                        We use VolatileTime in place of metav1.Time to exclude this from creating equality.Semantic
+                        differences (all other things held constant).
+                      type: string
+                    message:
+                      description: A human readable message indicating details about
+                        the transition.
+                      type: string
+                    reason:
+                      description: The reason for the condition's last transition.
+                      type: string
+                    severity:
+                      description: |-
+                        Severity with which to treat failures of this type of condition.
+                        When this is not specified, it defaults to Error.
+                      type: string
+                    status:
+                      description: Status of the condition, one of True, False, Unknown.
+                      type: string
+                    type:
+                      description: Type of condition.
+                      type: string
+                  required:
+                  - status
+                  - type
+                  type: object
+                type: array
+              data:
+                description: |-
+                  Data is a string representation of the resolved content
+                  of the requested resource in-lined into the ResolutionRequest
+                  object.
+                type: string
+              observedGeneration:
+                description: |-
+                  ObservedGeneration is the 'Generation' of the Service that
+                  was last processed by the controller.
+                format: int64
+                type: integer
+              refSource:
+                description: |-
+                  RefSource is the source reference of the remote data that records the url, digest
+                  and the entrypoint.
+                x-kubernetes-preserve-unknown-fields: true
+              source:
+                description: 'Deprecated: Use RefSource instead'
+                x-kubernetes-preserve-unknown-fields: true
+            required:
+            - data
+            - refSource
+            - source
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    categories:
+    - tekton
+    - tekton-pipelines
+    kind: ResolutionRequest
+    listKind: ResolutionRequestList
+    plural: resolutionrequests
+    shortNames:
+    - resolutionrequest
+    - resolutionrequests
+    singular: resolutionrequest
+  conditions:
+  - lastTransitionTime: "2025-05-20T13:06:36Z"
+    message: no conflicts found
+    reason: NoConflicts
+    status: "True"
+    type: NamesAccepted
+  - lastTransitionTime: "2025-05-20T13:06:36Z"
+    message: the initial names have been accepted
+    reason: InitialNamesAccepted
+    status: "True"
+    type: Established
+  storedVersions:
+  - v1beta1
