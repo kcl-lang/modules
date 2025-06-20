@@ -1,0 +1,25 @@
+version: v1.10.1
+name: cluster-api-metal3-ipam
+displayName: cluster-api-metal3-ipam
+createdAt: "2025-06-20T05:16:28Z"
+description: KCL package for https://github.com/metal3-io/ip-address-manager CRDs
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `cluster-api-metal3-ipam` with tag `v1.10.1` as dependency
+  ```
+  kcl mod add cluster-api-metal3-ipam:v1.10.1
+  ```
+
+  #### Pull `cluster-api-metal3-ipam` with tag `v1.10.1` to local
+  ```
+  kcl mod pull cluster-api-metal3-ipam:v1.10.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
