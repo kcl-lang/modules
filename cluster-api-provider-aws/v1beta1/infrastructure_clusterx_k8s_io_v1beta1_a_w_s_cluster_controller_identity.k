@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema AWSClusterControllerIdentity:
-    """
+    r"""
     AWSClusterControllerIdentity is the Schema for the awsclustercontrolleridentities API
     It is used to grant access to use Cluster API Provider AWS Controller credentials.
 
@@ -33,7 +33,7 @@ schema AWSClusterControllerIdentity:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterControllerIdentitySpec:
-    """
+    r"""
     Spec for this AWSClusterControllerIdentity.
 
     Attributes
@@ -47,7 +47,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterControllerIdentitySpec:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterControllerIdentitySpecAllowedNamespaces:
-    """
+    r"""
     AllowedNamespaces is used to identify which namespaces are allowed to use the identity from.
     Namespaces can be selected either using an array of namespaces or with label selector.
     An empty allowedNamespaces object indicates that AWSClusters can use this identity from any namespace.
@@ -69,7 +69,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterControllerIdentitySpecAllowed
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterControllerIdentitySpecAllowedNamespacesSelector:
-    """
+    r"""
     An empty selector indicates that AWSClusters cannot use this
     AWSClusterIdentity from any namespace.
 
@@ -90,7 +90,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterControllerIdentitySpecAllowed
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterControllerIdentitySpecAllowedNamespacesSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
 

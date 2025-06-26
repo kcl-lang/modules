@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema AWSClusterStaticIdentity:
-    """
+    r"""
     AWSClusterStaticIdentity is the Schema for the awsclusterstaticidentities API
     It represents a reference to an AWS access key ID and secret access key, stored in a secret.
 
@@ -33,7 +33,7 @@ schema AWSClusterStaticIdentity:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterStaticIdentitySpec:
-    """
+    r"""
     Spec for this AWSClusterStaticIdentity
 
     Attributes
@@ -55,7 +55,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterStaticIdentitySpec:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterStaticIdentitySpecAllowedNamespaces:
-    """
+    r"""
     AllowedNamespaces is used to identify which namespaces are allowed to use the identity from.
     Namespaces can be selected either using an array of namespaces or with label selector.
     An empty allowedNamespaces object indicates that AWSClusters can use this identity from any namespace.
@@ -77,7 +77,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterStaticIdentitySpecAllowedName
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterStaticIdentitySpecAllowedNamespacesSelector:
-    """
+    r"""
     An empty selector indicates that AWSClusters cannot use this
     AWSClusterIdentity from any namespace.
 
@@ -98,7 +98,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterStaticIdentitySpecAllowedName
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterStaticIdentitySpecAllowedNamespacesSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
 

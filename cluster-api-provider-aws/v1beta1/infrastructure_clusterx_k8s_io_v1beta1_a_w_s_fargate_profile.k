@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema AWSFargateProfile:
-    """
+    r"""
     AWSFargateProfile is the Schema for the awsfargateprofiles API.
 
     Attributes
@@ -36,7 +36,7 @@ schema AWSFargateProfile:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSFargateProfileSpec:
-    """
+    r"""
     FargateProfileSpec defines the desired state of FargateProfile.
 
     Attributes
@@ -79,7 +79,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSFargateProfileSpec:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSFargateProfileSpecSelectorsItems0:
-    """
+    r"""
     FargateSelector specifies a selector for pods that should run on this fargate pool.
 
     Attributes
@@ -97,7 +97,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSFargateProfileSpecSelectorsItems0:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSFargateProfileStatus:
-    """
+    r"""
     FargateProfileStatus defines the observed state of FargateProfile.
 
     Attributes
@@ -109,7 +109,6 @@ schema InfrastructureClusterxK8sIoV1beta1AWSFargateProfileStatus:
         reconciling the FargateProfile and will contain a more verbose string suitable
         for logging and human consumption.
 
-
         This field should not be set for transitive errors that a controller
         faces that are expected to be fixed automatically over
         time (like service outages), but instead indicate that something is
@@ -118,7 +117,6 @@ schema InfrastructureClusterxK8sIoV1beta1AWSFargateProfileStatus:
         of terminal errors would be invalid combinations of settings in the
         spec, values that are unsupported by the controller, or the
         responsible controller itself being critically misconfigured.
-
 
         Any transient errors that occur during the reconciliation of
         FargateProfiles can be added as events to the FargateProfile
@@ -128,7 +126,6 @@ schema InfrastructureClusterxK8sIoV1beta1AWSFargateProfileStatus:
         reconciling the FargateProfile and will contain a succinct value suitable
         for machine interpretation.
 
-
         This field should not be set for transitive errors that a controller
         faces that are expected to be fixed automatically over
         time (like service outages), but instead indicate that something is
@@ -137,7 +134,6 @@ schema InfrastructureClusterxK8sIoV1beta1AWSFargateProfileStatus:
         of terminal errors would be invalid combinations of settings in the
         spec, values that are unsupported by the controller, or the
         responsible controller itself being critically misconfigured.
-
 
         Any transient errors that occur during the reconciliation of
         FargateProfiles can be added as events to the FargateProfile object
@@ -157,7 +153,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSFargateProfileStatus:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSFargateProfileStatusConditionsItems0:
-    """
+    r"""
     Condition defines an observation of a Cluster API resource operational state.
 
     Attributes
@@ -172,15 +168,15 @@ schema InfrastructureClusterxK8sIoV1beta1AWSFargateProfileStatusConditionsItems0
     reason : str, default is Undefined, optional
         The reason for the condition's last transition in CamelCase.
         The specific API may choose whether or not this field is considered a guaranteed API.
-        This field may not be empty.
+        This field may be empty.
     severity : str, default is Undefined, optional
-        Severity provides an explicit classification of Reason code, so the users or machines can immediately
+        severity provides an explicit classification of Reason code, so the users or machines can immediately
         understand the current situation and act accordingly.
         The Severity field MUST be set only when Status=False.
     status : str, default is Undefined, required
-        Status of the condition, one of True, False, Unknown.
+        status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
-        Type of condition in CamelCase or in foo.example.com/CamelCase.
+        type of condition in CamelCase or in foo.example.com/CamelCase.
         Many .condition.type values are consistent across resources like Available, but because arbitrary conditions
         can be useful (see .node.status.conditions), the ability to deconflict is important.
     """

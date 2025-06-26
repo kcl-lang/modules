@@ -8,7 +8,7 @@ _regex_match = regex.match
 
 
 schema ROSAControlPlane:
-    """
+    r"""
     ROSAControlPlane is the Schema for the ROSAControlPlanes API.
 
     Attributes
@@ -38,7 +38,7 @@ schema ROSAControlPlane:
 
 
 schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpec:
-    """
+    r"""
     RosaControlPlaneSpec defines the desired state of ROSAControlPlane.
 
     Attributes
@@ -53,9 +53,13 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpec:
         should match the AvailabilityZones of the provided Subnets.
         a machinepool will be created for each availabilityZone.
     billingAccount : str, default is Undefined, optional
-        BillingAccount is an optional AWS account to use for billing the subscription fees for ROSA clusters.
-        The cost of running each ROSA cluster will be billed to the infrastructure account in which the cluster
+        BillingAccount is an optional AWS account to use for billing the subscription fees for ROSA HCP clusters.
+        The cost of running each ROSA HCP cluster will be billed to the infrastructure account in which the cluster
         is running.
+    channelGroup : str, default is "stable", required
+        OpenShift version channel group, default is stable.
+    clusterRegistryConfig : ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecClusterRegistryConfig, default is Undefined, optional
+        cluster registry config
     controlPlaneEndpoint : ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecControlPlaneEndpoint, default is Undefined, optional
         control plane endpoint
     credentialsSecretRef : ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecCredentialsSecretRef, default is Undefined, optional
@@ -79,7 +83,6 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpec:
         ExternalAuthProviders are external OIDC identity providers that can issue tokens for this cluster.
         Can only be set if "enableExternalAuthProviders" is set to "True".
 
-
         At most one provider can be configured.
     identityRef : ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecIdentityRef, default is Undefined, optional
         identity ref
@@ -90,7 +93,7 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpec:
     oidcID : str, default is Undefined, required
         The ID of the internal OpenID Connect Provider.
     provisionShardID : str, default is Undefined, optional
-        ProvisionShardID defines the shard where rosa control plane components will be hosted.
+        ProvisionShardID defines the shard where ROSA hosted control plane components will be hosted.
     region : str, default is Undefined, required
         The AWS Region the cluster lives in.
     rolesRef : ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecRolesRef, default is Undefined, required
@@ -107,6 +110,12 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpec:
         access to the cluster account in order to provide support.
     version : str, default is Undefined, required
         OpenShift semantic version, for example "4.14.5".
+    versionGate : str, default is "WaitForAcknowledge", required
+        VersionGate requires acknowledgment when upgrading ROSA-HCP y-stream versions (e.g., from 4.15 to 4.16).
+        Default is WaitForAcknowledge.
+        WaitForAcknowledge: If acknowledgment is required, the upgrade will not proceed until VersionGate is set to Acknowledge or AlwaysAcknowledge.
+        Acknowledge: If acknowledgment is required, apply it for the upgrade. After upgrade is done set the version gate to WaitForAcknowledge.
+        AlwaysAcknowledge: If acknowledgment is required, apply it and proceed with the upgrade.
     workerRoleARN : str, default is Undefined, required
         WorkerRoleARN is an AWS IAM role that will be attached to worker instances.
     """
@@ -119,6 +128,10 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpec:
     availabilityZones: [str]
 
     billingAccount?: str
+
+    channelGroup: "stable" | "candidate" | "nightly" = "stable"
+
+    clusterRegistryConfig?: ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecClusterRegistryConfig
 
     controlPlaneEndpoint?: ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecControlPlaneEndpoint
 
@@ -158,19 +171,100 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpec:
 
     version: str
 
+    versionGate: "Acknowledge" | "WaitForAcknowledge" | "AlwaysAcknowledge" = "WaitForAcknowledge"
+
     workerRoleARN: str
 
 
     check:
-        len(domainPrefix) <= 15
+        len(domainPrefix) <= 15 if domainPrefix
         _regex_match(str(domainPrefix), r"^[a-z]([-a-z0-9]*[a-z0-9])?$") if domainPrefix
-        len(externalAuthProviders) <= 1
+        len(externalAuthProviders) <= 1 if externalAuthProviders
         len(rosaClusterName) <= 54
         _regex_match(str(rosaClusterName), r"^[a-z]([-a-z0-9]*[a-z0-9])?$")
 
 
-schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecControlPlaneEndpoint:
+schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecClusterRegistryConfig:
+    r"""
+    ClusterRegistryConfig represents registry config used with the cluster.
+
+    Attributes
+    ----------
+    additionalTrustedCAs : {str:str}, default is Undefined, optional
+        AdditionalTrustedCAs containing the registry hostname as the key, and the PEM-encoded certificate as the value,
+        for each additional registry CA to trust.
+    allowedRegistriesForImport : [ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecClusterRegistryConfigAllowedRegistriesForImportItems0], default is Undefined, optional
+        AllowedRegistriesForImport limits the container image registries that normal users may import
+        images from. Set this list to the registries that you trust to contain valid Docker
+        images and that you want applications to be able to import from.
+    registrySources : ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecClusterRegistryConfigRegistrySources, default is Undefined, optional
+        registry sources
     """
+
+
+    additionalTrustedCAs?: {str:str}
+
+    allowedRegistriesForImport?: [ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecClusterRegistryConfigAllowedRegistriesForImportItems0]
+
+    registrySources?: ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecClusterRegistryConfigRegistrySources
+
+
+schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecClusterRegistryConfigAllowedRegistriesForImportItems0:
+    r"""
+    RegistryLocation contains a location of the registry specified by the registry domain name.
+
+    Attributes
+    ----------
+    domainName : str, default is Undefined, optional
+        domainName specifies a domain name for the registry. The domain name might include wildcards, like '*' or '??'.
+        In case the registry use non-standard (80 or 443) port, the port should be included in the domain name as well.
+    insecure : bool, default is Undefined, optional
+        insecure indicates whether the registry is secure (https) or insecure (http), default is secured.
+    """
+
+
+    domainName?: str
+
+    insecure?: bool = False
+
+
+schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecClusterRegistryConfigRegistrySources:
+    r"""
+    RegistrySources contains configuration that determines how the container runtime
+    should treat individual registries when accessing images. It does not contain configuration
+    for the internal cluster registry. AllowedRegistries, BlockedRegistries are mutually exclusive.
+
+    Attributes
+    ----------
+    allowedRegistries : [str], default is Undefined, optional
+        AllowedRegistries are the registries for which image pull and push actions are allowed.
+        To specify all subdomains, add the asterisk (*) wildcard character as a prefix to the domain name,
+        For example, *.example.com.
+        You can specify an individual repository within a registry, For example: reg1.io/myrepo/myapp:latest.
+        All other registries are blocked.
+    blockedRegistries : [str], default is Undefined, optional
+        BlockedRegistries are the registries for which image pull and push actions are denied.
+        To specify all subdomains, add the asterisk (*) wildcard character as a prefix to the domain name,
+        For example, *.example.com.
+        You can specify an individual repository within a registry, For example: reg1.io/myrepo/myapp:latest.
+        All other registries are allowed.
+    insecureRegistries : [str], default is Undefined, optional
+        InsecureRegistries are registries which do not have a valid TLS certificate or only support HTTP connections.
+        To specify all subdomains, add the asterisk (*) wildcard character as a prefix to the domain name,
+        For example, *.example.com.
+        You can specify an individual repository within a registry, For example: reg1.io/myrepo/myapp:latest.
+    """
+
+
+    allowedRegistries?: [str]
+
+    blockedRegistries?: [str]
+
+    insecureRegistries?: [str]
+
+
+schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecControlPlaneEndpoint:
+    r"""
     ControlPlaneEndpoint represents the endpoint used to communicate with the control plane.
 
     Attributes
@@ -188,7 +282,7 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecControlPlaneEndpoint:
 
 
 schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecCredentialsSecretRef:
-    """
+    r"""
     CredentialsSecretRef references a secret with necessary credentials to connect to the OCM API.
     The secret should contain the following data keys:
     - ocmToken: eyJhbGciOiJIUzI1NiIsI....
@@ -198,22 +292,23 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecCredentialsSecretRef:
     ----------
     name : str, default is Undefined, optional
         Name of the referent.
+        This field is effectively required, but due to backwards compatibility is
+        allowed to be empty. Instances of this type with an empty value here are
+        almost certainly wrong.
         More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecDefaultMachinePoolSpec:
-    """
+    r"""
     DefaultMachinePoolSpec defines the configuration for the default machinepool(s) provisioned as part of the cluster creation.
     One MachinePool will be created with this configuration per AvailabilityZone. Those default machinepools are required for openshift cluster operators
     to work properly.
     As these machinepool not created using ROSAMachinePool CR, they will not be visible/managed by ROSA CAPI provider.
     `rosa list machinepools -c <rosaClusterName>` can be used to view those machinepools.
-
 
     This field will be removed in the future once the current limitation is resolved.
 
@@ -223,6 +318,8 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecDefaultMachinePoolSpe
         autoscaling
     instanceType : str, default is Undefined, optional
         The instance type to use, for example `r5.xlarge`. Instance type ref; https://aws.amazon.com/ec2/instance-types/
+    volumeSize : int, default is Undefined, optional
+        VolumeSize set the disk volume size for the default workers machine pool in Gib. The default is 300 GiB.
     """
 
 
@@ -230,9 +327,16 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecDefaultMachinePoolSpe
 
     instanceType?: str
 
+    volumeSize?: int
+
+
+    check:
+        volumeSize <= 16384 if volumeSize not in [None, Undefined]
+        volumeSize >= 75 if volumeSize not in [None, Undefined]
+
 
 schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecDefaultMachinePoolSpecAutoscaling:
-    """
+    r"""
     Autoscaling specifies auto scaling behaviour for the default MachinePool. Autoscaling min/max value
     must be equal or multiple of the availability zones count.
 
@@ -251,12 +355,12 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecDefaultMachinePoolSpe
 
 
     check:
-        maxReplicas >= 1
-        minReplicas >= 1
+        maxReplicas >= 1 if maxReplicas not in [None, Undefined]
+        minReplicas >= 1 if minReplicas not in [None, Undefined]
 
 
 schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecExternalAuthProvidersItems0:
-    """
+    r"""
     ExternalAuthProvider is an external OIDC identity provider that can issue tokens for this cluster
 
     Attributes
@@ -288,11 +392,11 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecExternalAuthProviders
 
     check:
         len(name) >= 1
-        len(oidcClients) <= 20
+        len(oidcClients) <= 20 if oidcClients
 
 
 schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecExternalAuthProvidersItems0ClaimMappings:
-    """
+    r"""
     ClaimMappings describes rules on how to transform information from an
     ID token into a cluster identity
 
@@ -311,7 +415,7 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecExternalAuthProviders
 
 
 schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecExternalAuthProvidersItems0ClaimMappingsGroups:
-    """
+    r"""
     Groups is a name of the claim that should be used to construct
     groups for the cluster identity.
     The referenced claim must use array of strings values.
@@ -324,9 +428,7 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecExternalAuthProviders
         Prefix is a string to prefix the value from the token in the result of the
         claim mapping.
 
-
         By default, no prefixing occurs.
-
 
         Example: if `prefix` is set to "myoidc:"" and the `claim` in JWT contains
         an array of strings "a", "b" and  "c", the mapping will result in an
@@ -340,10 +442,9 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecExternalAuthProviders
 
 
 schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecExternalAuthProvidersItems0ClaimMappingsUsername:
-    """
+    r"""
     Username is a name of the claim that should be used to construct
     usernames for the cluster identity.
-
 
     Default value: "sub"
 
@@ -356,13 +457,10 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecExternalAuthProviders
     prefixPolicy : str, default is Undefined, optional
         PrefixPolicy specifies how a prefix should apply.
 
-
         By default, claims other than `email` will be prefixed with the issuer URL to
         prevent naming clashes with other plugins.
 
-
         Set to "NoPrefix" to disable prefixing.
-
 
         Example:
             (1) `prefix` is set to "myoidc:" and `claim` is set to "username".
@@ -387,11 +485,11 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecExternalAuthProviders
 
 
     check:
-        len(prefix) >= 1
+        len(prefix) >= 1 if prefix
 
 
 schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecExternalAuthProvidersItems0ClaimValidationRulesItems0:
-    """
+    r"""
     TokenClaimValidationRule validates token claims to authenticate users.
 
     Attributes
@@ -409,7 +507,7 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecExternalAuthProviders
 
 
 schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecExternalAuthProvidersItems0ClaimValidationRulesItems0RequiredClaim:
-    """
+    r"""
     RequiredClaim allows configuring a required claim name and its expected value
 
     Attributes
@@ -433,7 +531,7 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecExternalAuthProviders
 
 
 schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecExternalAuthProvidersItems0Issuer:
-    """
+    r"""
     Issuer describes attributes of the OIDC token issuer
 
     Attributes
@@ -461,12 +559,12 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecExternalAuthProviders
     check:
         len(audiences) >= 1
         len(audiences) <= 10
-        all audiences in audiences {len(audiences) >= 1 }
+        all audiences in audiences { len(audiences) >= 1 if audiences not in [None, Undefined] } if audiences
         _regex_match(str(issuerURL), r"^https:\/\/[^\s]")
 
 
 schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecExternalAuthProvidersItems0IssuerIssuerCertificateAuthority:
-    """
+    r"""
     CertificateAuthority is a reference to a config map in the
     configuration namespace. The .data of the configMap must contain
     the "ca-bundle.crt" key.
@@ -483,7 +581,7 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecExternalAuthProviders
 
 
 schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecExternalAuthProvidersItems0OidcClientsItems0:
-    """
+    r"""
     OIDCClientConfig contains configuration for the platform's client that
     need to request tokens from the issuer.
 
@@ -524,7 +622,7 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecExternalAuthProviders
 
 
 schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecExternalAuthProvidersItems0OidcClientsItems0ClientSecret:
-    """
+    r"""
     ClientSecret refers to a secret that
     contains the client secret in the `clientSecret` key of the `.data` field
 
@@ -539,7 +637,7 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecExternalAuthProviders
 
 
 schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecIdentityRef:
-    """
+    r"""
     IdentityRef is a reference to an identity to be used when reconciling the managed control plane.
     If no identity is specified, the default identity for this controller will be used.
 
@@ -562,7 +660,7 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecIdentityRef:
 
 
 schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecNetwork:
-    """
+    r"""
     Network config for the ROSA HCP cluster.
 
     Attributes
@@ -592,7 +690,7 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecNetwork:
 
 
 schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecRolesRef:
-    """
+    r"""
     AWS IAM roles used to perform credential requests by the openshift operators.
 
     Attributes
@@ -600,9 +698,7 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecRolesRef:
     controlPlaneOperatorARN : str, default is Undefined, required
         ControlPlaneOperatorARN  is an ARN value referencing a role appropriate for the Control Plane Operator.
 
-
         The following is an example of a valid policy document:
-
 
         {
         	"Version": "2012-10-17",
@@ -640,9 +736,7 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecRolesRef:
     imageRegistryARN : str, default is Undefined, required
         ImageRegistryARN is an ARN value referencing a role appropriate for the Image Registry Operator.
 
-
         The following is an example of a valid policy document:
-
 
         {
         	"Version": "2012-10-17",
@@ -695,12 +789,9 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecRolesRef:
         		]
         	}
 
-
         IngressARN is an ARN value referencing a role appropriate for the Ingress Operator.
 
-
         The following is an example of a valid policy document:
-
 
         {
         	"Version": "2012-10-17",
@@ -732,9 +823,7 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecRolesRef:
         KubeCloudControllerARN is an ARN value referencing a role appropriate for the KCM/KCC.
         Source: https://cloud-provider-aws.sigs.k8s.io/prerequisites/#iam-policies
 
-
         The following is an example of a valid policy document:
-
 
          {
          "Version": "2012-10-17",
@@ -809,9 +898,7 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecRolesRef:
     networkARN : str, default is Undefined, required
         NetworkARN is an ARN value referencing a role appropriate for the Network Operator.
 
-
         The following is an example of a valid policy document:
-
 
         {
         	"Version": "2012-10-17",
@@ -836,9 +923,7 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecRolesRef:
     nodePoolManagementARN : str, default is Undefined, required
         NodePoolManagementARN is an ARN value referencing a role appropriate for the CAPI Controller.
 
-
         The following is an example of a valid policy document:
-
 
         {
           "Version": "2012-10-17",
@@ -948,9 +1033,7 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecRolesRef:
     storageARN : str, default is Undefined, required
         StorageARN is an ARN value referencing a role appropriate for the Storage Operator.
 
-
         The following is an example of a valid policy document:
-
 
         {
         	"Version": "2012-10-17",
@@ -998,11 +1081,13 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecRolesRef:
 
 
 schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneStatus:
-    """
+    r"""
     RosaControlPlaneStatus defines the observed state of ROSAControlPlane.
 
     Attributes
     ----------
+    availableUpgrades : [str], default is Undefined, optional
+        Available upgrades for the ROSA hosted control plane.
     conditions : [ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneStatusConditionsItems0], default is Undefined, optional
         Conditions specifies the conditions for the managed control plane
     consoleURL : str, default is Undefined, optional
@@ -1013,7 +1098,6 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneStatus:
     failureMessage : str, default is Undefined, optional
         FailureMessage will be set in the event that there is a terminal problem
         reconciling the state and will be set to a descriptive error message.
-
 
         This field should not be set for transitive errors that a controller
         faces that are expected to be fixed automatically over
@@ -1031,6 +1115,8 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneStatus:
         Ready denotes that the ROSAControlPlane API Server is ready to receive requests.
     """
 
+
+    availableUpgrades?: [str]
 
     conditions?: [ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneStatusConditionsItems0]
 
@@ -1050,7 +1136,7 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneStatus:
 
 
 schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneStatusConditionsItems0:
-    """
+    r"""
     Condition defines an observation of a Cluster API resource operational state.
 
     Attributes
@@ -1065,15 +1151,15 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneStatusConditionsItems0:
     reason : str, default is Undefined, optional
         The reason for the condition's last transition in CamelCase.
         The specific API may choose whether or not this field is considered a guaranteed API.
-        This field may not be empty.
+        This field may be empty.
     severity : str, default is Undefined, optional
-        Severity provides an explicit classification of Reason code, so the users or machines can immediately
+        severity provides an explicit classification of Reason code, so the users or machines can immediately
         understand the current situation and act accordingly.
         The Severity field MUST be set only when Status=False.
     status : str, default is Undefined, required
-        Status of the condition, one of True, False, Unknown.
+        status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
-        Type of condition in CamelCase or in foo.example.com/CamelCase.
+        type of condition in CamelCase or in foo.example.com/CamelCase.
         Many .condition.type values are consistent across resources like Available, but because arbitrary conditions
         can be useful (see .node.status.conditions), the ability to deconflict is important.
     """

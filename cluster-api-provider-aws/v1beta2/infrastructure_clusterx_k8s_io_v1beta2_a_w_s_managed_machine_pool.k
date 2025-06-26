@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema AWSManagedMachinePool:
-    """
+    r"""
     AWSManagedMachinePool is the Schema for the awsmanagedmachinepools API.
 
     Attributes
@@ -36,7 +36,7 @@ schema AWSManagedMachinePool:
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpec:
-    """
+    r"""
     AWSManagedMachinePoolSpec defines the desired state of AWSManagedMachinePool.
 
     Attributes
@@ -136,11 +136,11 @@ schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpec:
 
 
     check:
-        len(amiVersion) >= 2
+        len(amiVersion) >= 2 if amiVersion
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpecAwsLaunchTemplate:
-    """
+    r"""
     AWSLaunchTemplate specifies the launch template to use to create the managed node group.
     If AWSLaunchTemplate is specified, certain node group configuraions outside of launch template
     are prohibited (https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html).
@@ -153,6 +153,8 @@ schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpecAwsLaunchTempl
         at the cluster level or in the actuator.
     ami : InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpecAwsLaunchTemplateAmi, default is Undefined, optional
         ami
+    capacityReservationId : str, default is Undefined, optional
+        CapacityReservationID specifies the target Capacity Reservation into which the instance should be launched.
     iamInstanceProfile : str, default is Undefined, optional
         The name or the Amazon Resource Name (ARN) of the instance profile associated
         with the IAM role for the instance. The instance profile contains the IAM
@@ -178,8 +180,17 @@ schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpecAwsLaunchTempl
         instance metadata options
     instanceType : str, default is Undefined, optional
         InstanceType is the type of instance to create. Example: m4.xlarge
+    marketType : str, default is Undefined, optional
+        MarketType specifies the type of market for the EC2 instance. Valid values include:
+        "OnDemand" (default): The instance runs as a standard OnDemand instance.
+        "Spot": The instance runs as a Spot instance. When SpotMarketOptions is provided, the marketType defaults to "Spot".
+        "CapacityBlock": The instance utilizes pre-purchased compute capacity (capacity blocks) with AWS Capacity Reservations.
+         If this value is selected, CapacityReservationID must be specified to identify the target reservation.
+        If marketType is not specified and spotMarketOptions is provided, the marketType defaults to "Spot".
     name : str, default is Undefined, optional
         The name of the launch template.
+    nonRootVolumes : [InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpecAwsLaunchTemplateNonRootVolumesItems0], default is Undefined, optional
+        Configuration options for the non root storage volumes.
     privateDnsName : InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpecAwsLaunchTemplatePrivateDNSName, default is Undefined, optional
         private Dns name
     rootVolume : InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpecAwsLaunchTemplateRootVolume, default is Undefined, optional
@@ -202,6 +213,8 @@ schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpecAwsLaunchTempl
 
     ami?: InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpecAwsLaunchTemplateAmi
 
+    capacityReservationId?: str
+
     iamInstanceProfile?: str
 
     imageLookupBaseOS?: str
@@ -214,7 +227,11 @@ schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpecAwsLaunchTempl
 
     instanceType?: str
 
+    marketType?: "OnDemand" | "Spot" | "CapacityBlock"
+
     name?: str
+
+    nonRootVolumes?: [InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpecAwsLaunchTemplateNonRootVolumesItems0]
 
     privateDnsName?: InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpecAwsLaunchTemplatePrivateDNSName
 
@@ -228,7 +245,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpecAwsLaunchTempl
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpecAwsLaunchTemplateAdditionalSecurityGroupsItems0:
-    """
+    r"""
     AWSResourceReference is a reference to a specific AWS resource by ID or filters.
     Only one of ID or Filters may be specified. Specifying more than one will result in
     a validation error.
@@ -250,7 +267,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpecAwsLaunchTempl
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpecAwsLaunchTemplateAdditionalSecurityGroupsItems0FiltersItems0:
-    """
+    r"""
     Filter is a filter used to identify an AWS resource.
 
     Attributes
@@ -268,7 +285,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpecAwsLaunchTempl
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpecAwsLaunchTemplateAmi:
-    """
+    r"""
     AMI is the reference to the AMI from which to create the machine instance.
 
     Attributes
@@ -280,13 +297,13 @@ schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpecAwsLaunchTempl
     """
 
 
-    eksLookupType?: "AmazonLinux" | "AmazonLinuxGPU"
+    eksLookupType?: "AmazonLinux" | "AmazonLinuxGPU" | "AmazonLinux2023" | "AmazonLinux2023GPU"
 
     id?: str
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpecAwsLaunchTemplateInstanceMetadataOptions:
-    """
+    r"""
     InstanceMetadataOptions defines the behavior for applying metadata to instances.
 
     Attributes
@@ -294,20 +311,16 @@ schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpecAwsLaunchTempl
     httpEndpoint : str, default is "enabled", optional
         Enables or disables the HTTP metadata endpoint on your instances.
 
-
         If you specify a value of disabled, you cannot access your instance metadata.
-
 
         Default: enabled
     httpPutResponseHopLimit : int, default is 1, optional
         The desired HTTP PUT response hop limit for instance metadata requests. The
         larger the number, the further instance metadata requests can travel.
 
-
         Default: 1
     httpTokens : str, default is "optional", optional
         The state of token usage for your instance metadata requests.
-
 
         If the state is optional, you can choose to retrieve instance metadata with
         or without a session token on your request. If you retrieve the IAM role
@@ -315,12 +328,10 @@ schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpecAwsLaunchTempl
         If you retrieve the IAM role credentials using a valid session token, the
         version 2.0 role credentials are returned.
 
-
         If the state is required, you must send a session token with any instance
         metadata retrieval requests. In this state, retrieving the IAM role credentials
         always returns the version 2.0 credentials; the version 1.0 credentials are
         not available.
-
 
         Default: optional
     instanceMetadataTags : str, default is "disabled", optional
@@ -328,7 +339,6 @@ schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpecAwsLaunchTempl
         Set to disabled to turn off access to instance tags from the instance metadata.
         For more information, see Work with instance tags using the instance metadata
         (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#work-with-tags-in-IMDS).
-
 
         Default: disabled
     """
@@ -344,12 +354,57 @@ schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpecAwsLaunchTempl
 
 
     check:
-        httpPutResponseHopLimit <= 64
-        httpPutResponseHopLimit >= 1
+        httpPutResponseHopLimit <= 64 if httpPutResponseHopLimit not in [None, Undefined]
+        httpPutResponseHopLimit >= 1 if httpPutResponseHopLimit not in [None, Undefined]
+
+
+schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpecAwsLaunchTemplateNonRootVolumesItems0:
+    r"""
+    Volume encapsulates the configuration options for the storage device.
+
+    Attributes
+    ----------
+    deviceName : str, default is Undefined, optional
+        Device name
+    encrypted : bool, default is Undefined, optional
+        Encrypted is whether the volume should be encrypted or not.
+    encryptionKey : str, default is Undefined, optional
+        EncryptionKey is the KMS key to use to encrypt the volume. Can be either a KMS key ID or ARN.
+        If Encrypted is set and this is omitted, the default AWS key will be used.
+        The key must already exist and be accessible by the controller.
+    iops : int, default is Undefined, optional
+        IOPS is the number of IOPS requested for the disk. Not applicable to all types.
+    size : int, default is Undefined, required
+        Size specifies size (in Gi) of the storage device.
+        Must be greater than the image snapshot size or 8 (whichever is greater).
+    throughput : int, default is Undefined, optional
+        Throughput to provision in MiB/s supported for the volume type. Not applicable to all types.
+    $type : str, default is Undefined, optional
+        Type is the type of the volume (e.g. gp2, io1, etc...).
+    """
+
+
+    deviceName?: str
+
+    encrypted?: bool
+
+    encryptionKey?: str
+
+    iops?: int
+
+    size: int
+
+    throughput?: int
+
+    $type?: str
+
+
+    check:
+        size >= 8
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpecAwsLaunchTemplatePrivateDNSName:
-    """
+    r"""
     PrivateDNSName is the options for the instance hostname.
 
     Attributes
@@ -371,7 +426,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpecAwsLaunchTempl
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpecAwsLaunchTemplateRootVolume:
-    """
+    r"""
     RootVolume encapsulates the configuration options for the root volume
 
     Attributes
@@ -416,7 +471,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpecAwsLaunchTempl
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpecAwsLaunchTemplateSpotMarketOptions:
-    """
+    r"""
     SpotMarketOptions are options for configuring AWSMachinePool instances to be run using AWS Spot instances.
 
     Attributes
@@ -430,7 +485,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpecAwsLaunchTempl
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpecRemoteAccess:
-    """
+    r"""
     RemoteAccess specifies how machines can be accessed remotely
 
     Attributes
@@ -453,7 +508,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpecRemoteAccess:
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpecScaling:
-    """
+    r"""
     Scaling specifies scaling for the ASG behind this pool
 
     Attributes
@@ -471,7 +526,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpecScaling:
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpecTaintsItems0:
-    """
+    r"""
     Taint defines the specs for a Kubernetes taint.
 
     Attributes
@@ -493,7 +548,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpecTaintsItems0:
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpecUpdateConfig:
-    """
+    r"""
     UpdateConfig holds the optional config to control the behaviour of the update
     to the nodegroup.
 
@@ -514,14 +569,14 @@ schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpecUpdateConfig:
 
 
     check:
-        maxUnavailable <= 100
-        maxUnavailable >= 1
-        maxUnavailablePercentage <= 100
-        maxUnavailablePercentage >= 1
+        maxUnavailable <= 100 if maxUnavailable not in [None, Undefined]
+        maxUnavailable >= 1 if maxUnavailable not in [None, Undefined]
+        maxUnavailablePercentage <= 100 if maxUnavailablePercentage not in [None, Undefined]
+        maxUnavailablePercentage >= 1 if maxUnavailablePercentage not in [None, Undefined]
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolStatus:
-    """
+    r"""
     AWSManagedMachinePoolStatus defines the observed state of AWSManagedMachinePool.
 
     Attributes
@@ -533,7 +588,6 @@ schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolStatus:
         reconciling the MachinePool and will contain a more verbose string suitable
         for logging and human consumption.
 
-
         This field should not be set for transitive errors that a controller
         faces that are expected to be fixed automatically over
         time (like service outages), but instead indicate that something is
@@ -543,7 +597,6 @@ schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolStatus:
         spec, values that are unsupported by the controller, or the
         responsible controller itself being critically misconfigured.
 
-
         Any transient errors that occur during the reconciliation of MachinePools
         can be added as events to the MachinePool object and/or logged in the
         controller's output.
@@ -551,7 +604,6 @@ schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolStatus:
         FailureReason will be set in the event that there is a terminal problem
         reconciling the MachinePool and will contain a succinct value suitable
         for machine interpretation.
-
 
         This field should not be set for transitive errors that a controller
         faces that are expected to be fixed automatically over
@@ -561,7 +613,6 @@ schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolStatus:
         of terminal errors would be invalid combinations of settings in the
         spec, values that are unsupported by the controller, or the
         responsible controller itself being critically misconfigured.
-
 
         Any transient errors that occur during the reconciliation of MachinePools
         can be added as events to the MachinePool object and/or logged in the
@@ -594,7 +645,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolStatus:
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolStatusConditionsItems0:
-    """
+    r"""
     Condition defines an observation of a Cluster API resource operational state.
 
     Attributes
@@ -609,15 +660,15 @@ schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolStatusConditionsIt
     reason : str, default is Undefined, optional
         The reason for the condition's last transition in CamelCase.
         The specific API may choose whether or not this field is considered a guaranteed API.
-        This field may not be empty.
+        This field may be empty.
     severity : str, default is Undefined, optional
-        Severity provides an explicit classification of Reason code, so the users or machines can immediately
+        severity provides an explicit classification of Reason code, so the users or machines can immediately
         understand the current situation and act accordingly.
         The Severity field MUST be set only when Status=False.
     status : str, default is Undefined, required
-        Status of the condition, one of True, False, Unknown.
+        status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
-        Type of condition in CamelCase or in foo.example.com/CamelCase.
+        type of condition in CamelCase or in foo.example.com/CamelCase.
         Many .condition.type values are consistent across resources like Available, but because arbitrary conditions
         can be useful (see .node.status.conditions), the ability to deconflict is important.
     """

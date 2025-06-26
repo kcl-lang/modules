@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema AWSMachinePool:
-    """
+    r"""
     AWSMachinePool is the Schema for the awsmachinepools API.
 
     Attributes
@@ -36,7 +36,7 @@ schema AWSMachinePool:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSMachinePoolSpec:
-    """
+    r"""
     AWSMachinePoolSpec defines the desired state of AWSMachinePool.
 
     Attributes
@@ -102,7 +102,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachinePoolSpec:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSMachinePoolSpecAwsLaunchTemplate:
-    """
+    r"""
     AWSLaunchTemplate specifies the launch template and version to use when an instance is launched.
 
     Attributes
@@ -180,7 +180,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachinePoolSpecAwsLaunchTemplate:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSMachinePoolSpecAwsLaunchTemplateAdditionalSecurityGroupsItems0:
-    """
+    r"""
     AWSResourceReference is a reference to a specific AWS resource by ID or filters.
     Only one of ID or Filters may be specified. Specifying more than one will result in
     a validation error.
@@ -202,7 +202,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachinePoolSpecAwsLaunchTemplateAddi
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSMachinePoolSpecAwsLaunchTemplateAdditionalSecurityGroupsItems0FiltersItems0:
-    """
+    r"""
     Filter is a filter used to identify an AWS resource.
 
     Attributes
@@ -220,7 +220,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachinePoolSpecAwsLaunchTemplateAddi
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSMachinePoolSpecAwsLaunchTemplateAmi:
-    """
+    r"""
     AMI is the reference to the AMI from which to create the machine instance.
 
     Attributes
@@ -232,13 +232,13 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachinePoolSpecAwsLaunchTemplateAmi:
     """
 
 
-    eksLookupType?: "AmazonLinux" | "AmazonLinuxGPU"
+    eksLookupType?: "AmazonLinux" | "AmazonLinuxGPU" | "AmazonLinux2023" | "AmazonLinux2023GPU"
 
     id?: str
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSMachinePoolSpecAwsLaunchTemplateRootVolume:
-    """
+    r"""
     RootVolume encapsulates the configuration options for the root volume
 
     Attributes
@@ -283,7 +283,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachinePoolSpecAwsLaunchTemplateRoot
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSMachinePoolSpecAwsLaunchTemplateSpotMarketOptions:
-    """
+    r"""
     SpotMarketOptions are options for configuring AWSMachinePool instances to be run using AWS Spot instances.
 
     Attributes
@@ -297,7 +297,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachinePoolSpecAwsLaunchTemplateSpot
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSMachinePoolSpecMixedInstancesPolicy:
-    """
+    r"""
     MixedInstancesPolicy describes how multiple instance types will be used by the ASG.
 
     Attributes
@@ -315,7 +315,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachinePoolSpecMixedInstancesPolicy:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSMachinePoolSpecMixedInstancesPolicyInstancesDistribution:
-    """
+    r"""
     InstancesDistribution to configure distribution of On-Demand Instances and Spot Instances.
 
     Attributes
@@ -341,7 +341,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachinePoolSpecMixedInstancesPolicyI
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSMachinePoolSpecMixedInstancesPolicyOverridesItems0:
-    """
+    r"""
     Overrides are used to override the instance type specified by the launch template with multiple
     instance types that can be used to launch On-Demand Instances and Spot Instances.
 
@@ -356,7 +356,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachinePoolSpecMixedInstancesPolicyO
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSMachinePoolSpecRefreshPreferences:
-    """
+    r"""
     RefreshPreferences describes set of preferences associated with the instance refresh request.
 
     Attributes
@@ -383,7 +383,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachinePoolSpecRefreshPreferences:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSMachinePoolSpecSubnetsItems0:
-    """
+    r"""
     AWSResourceReference is a reference to a specific AWS resource by ID or filters.
     Only one of ID or Filters may be specified. Specifying more than one will result in
     a validation error.
@@ -405,7 +405,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachinePoolSpecSubnetsItems0:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSMachinePoolSpecSubnetsItems0FiltersItems0:
-    """
+    r"""
     Filter is a filter used to identify an AWS resource.
 
     Attributes
@@ -423,7 +423,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachinePoolSpecSubnetsItems0FiltersI
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSMachinePoolStatus:
-    """
+    r"""
     AWSMachinePoolStatus defines the observed state of AWSMachinePool.
 
     Attributes
@@ -437,7 +437,6 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachinePoolStatus:
         reconciling the Machine and will contain a more verbose string suitable
         for logging and human consumption.
 
-
         This field should not be set for transitive errors that a controller
         faces that are expected to be fixed automatically over
         time (like service outages), but instead indicate that something is
@@ -446,7 +445,6 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachinePoolStatus:
         of terminal errors would be invalid combinations of settings in the
         spec, values that are unsupported by the controller, or the
         responsible controller itself being critically misconfigured.
-
 
         Any transient errors that occur during the reconciliation of Machines
         can be added as events to the Machine object and/or logged in the
@@ -456,7 +454,6 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachinePoolStatus:
         reconciling the Machine and will contain a succinct value suitable
         for machine interpretation.
 
-
         This field should not be set for transitive errors that a controller
         faces that are expected to be fixed automatically over
         time (like service outages), but instead indicate that something is
@@ -465,7 +462,6 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachinePoolStatus:
         of terminal errors would be invalid combinations of settings in the
         spec, values that are unsupported by the controller, or the
         responsible controller itself being critically misconfigured.
-
 
         Any transient errors that occur during the reconciliation of Machines
         can be added as events to the Machine object and/or logged in the
@@ -503,7 +499,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachinePoolStatus:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSMachinePoolStatusConditionsItems0:
-    """
+    r"""
     Condition defines an observation of a Cluster API resource operational state.
 
     Attributes
@@ -518,15 +514,15 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachinePoolStatusConditionsItems0:
     reason : str, default is Undefined, optional
         The reason for the condition's last transition in CamelCase.
         The specific API may choose whether or not this field is considered a guaranteed API.
-        This field may not be empty.
+        This field may be empty.
     severity : str, default is Undefined, optional
-        Severity provides an explicit classification of Reason code, so the users or machines can immediately
+        severity provides an explicit classification of Reason code, so the users or machines can immediately
         understand the current situation and act accordingly.
         The Severity field MUST be set only when Status=False.
     status : str, default is Undefined, required
-        Status of the condition, one of True, False, Unknown.
+        status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
-        Type of condition in CamelCase or in foo.example.com/CamelCase.
+        type of condition in CamelCase or in foo.example.com/CamelCase.
         Many .condition.type values are consistent across resources like Available, but because arbitrary conditions
         can be useful (see .node.status.conditions), the ability to deconflict is important.
     """
@@ -546,7 +542,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachinePoolStatusConditionsItems0:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSMachinePoolStatusInstancesItems0:
-    """
+    r"""
     AWSMachinePoolInstanceStatus defines the status of the AWSMachinePoolInstance.
 
     Attributes

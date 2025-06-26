@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema AWSManagedMachinePool:
-    """
+    r"""
     AWSManagedMachinePool is the Schema for the awsmanagedmachinepools API.
 
     Attributes
@@ -36,7 +36,7 @@ schema AWSManagedMachinePool:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSManagedMachinePoolSpec:
-    """
+    r"""
     AWSManagedMachinePoolSpec defines the desired state of AWSManagedMachinePool.
 
     Attributes
@@ -132,11 +132,11 @@ schema InfrastructureClusterxK8sIoV1beta1AWSManagedMachinePoolSpec:
 
 
     check:
-        len(amiVersion) >= 2
+        len(amiVersion) >= 2 if amiVersion
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSManagedMachinePoolSpecAwsLaunchTemplate:
-    """
+    r"""
     AWSLaunchTemplate specifies the launch template to use to create the managed node group.
     If AWSLaunchTemplate is specified, certain node group configuraions outside of launch template
     are prohibited (https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html).
@@ -216,7 +216,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSManagedMachinePoolSpecAwsLaunchTempl
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSManagedMachinePoolSpecAwsLaunchTemplateAdditionalSecurityGroupsItems0:
-    """
+    r"""
     AWSResourceReference is a reference to a specific AWS resource by ID or filters.
     Only one of ID or Filters may be specified. Specifying more than one will result in
     a validation error.
@@ -238,7 +238,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSManagedMachinePoolSpecAwsLaunchTempl
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSManagedMachinePoolSpecAwsLaunchTemplateAdditionalSecurityGroupsItems0FiltersItems0:
-    """
+    r"""
     Filter is a filter used to identify an AWS resource.
 
     Attributes
@@ -256,7 +256,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSManagedMachinePoolSpecAwsLaunchTempl
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSManagedMachinePoolSpecAwsLaunchTemplateAmi:
-    """
+    r"""
     AMI is the reference to the AMI from which to create the machine instance.
 
     Attributes
@@ -268,13 +268,13 @@ schema InfrastructureClusterxK8sIoV1beta1AWSManagedMachinePoolSpecAwsLaunchTempl
     """
 
 
-    eksLookupType?: "AmazonLinux" | "AmazonLinuxGPU"
+    eksLookupType?: "AmazonLinux" | "AmazonLinuxGPU" | "AmazonLinux2023" | "AmazonLinux2023GPU"
 
     id?: str
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSManagedMachinePoolSpecAwsLaunchTemplateRootVolume:
-    """
+    r"""
     RootVolume encapsulates the configuration options for the root volume
 
     Attributes
@@ -319,7 +319,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSManagedMachinePoolSpecAwsLaunchTempl
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSManagedMachinePoolSpecAwsLaunchTemplateSpotMarketOptions:
-    """
+    r"""
     SpotMarketOptions are options for configuring AWSMachinePool instances to be run using AWS Spot instances.
 
     Attributes
@@ -333,7 +333,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSManagedMachinePoolSpecAwsLaunchTempl
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSManagedMachinePoolSpecRemoteAccess:
-    """
+    r"""
     RemoteAccess specifies how machines can be accessed remotely
 
     Attributes
@@ -356,7 +356,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSManagedMachinePoolSpecRemoteAccess:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSManagedMachinePoolSpecScaling:
-    """
+    r"""
     Scaling specifies scaling for the ASG behind this pool
 
     Attributes
@@ -374,7 +374,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSManagedMachinePoolSpecScaling:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSManagedMachinePoolSpecTaintsItems0:
-    """
+    r"""
     Taint defines the specs for a Kubernetes taint.
 
     Attributes
@@ -396,7 +396,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSManagedMachinePoolSpecTaintsItems0:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSManagedMachinePoolSpecUpdateConfig:
-    """
+    r"""
     UpdateConfig holds the optional config to control the behaviour of the update
     to the nodegroup.
 
@@ -417,14 +417,14 @@ schema InfrastructureClusterxK8sIoV1beta1AWSManagedMachinePoolSpecUpdateConfig:
 
 
     check:
-        maxUnavailable <= 100
-        maxUnavailable >= 1
-        maxUnavailablePrecentage <= 100
-        maxUnavailablePrecentage >= 1
+        maxUnavailable <= 100 if maxUnavailable not in [None, Undefined]
+        maxUnavailable >= 1 if maxUnavailable not in [None, Undefined]
+        maxUnavailablePrecentage <= 100 if maxUnavailablePrecentage not in [None, Undefined]
+        maxUnavailablePrecentage >= 1 if maxUnavailablePrecentage not in [None, Undefined]
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSManagedMachinePoolStatus:
-    """
+    r"""
     AWSManagedMachinePoolStatus defines the observed state of AWSManagedMachinePool.
 
     Attributes
@@ -436,7 +436,6 @@ schema InfrastructureClusterxK8sIoV1beta1AWSManagedMachinePoolStatus:
         reconciling the MachinePool and will contain a more verbose string suitable
         for logging and human consumption.
 
-
         This field should not be set for transitive errors that a controller
         faces that are expected to be fixed automatically over
         time (like service outages), but instead indicate that something is
@@ -446,7 +445,6 @@ schema InfrastructureClusterxK8sIoV1beta1AWSManagedMachinePoolStatus:
         spec, values that are unsupported by the controller, or the
         responsible controller itself being critically misconfigured.
 
-
         Any transient errors that occur during the reconciliation of MachinePools
         can be added as events to the MachinePool object and/or logged in the
         controller's output.
@@ -454,7 +452,6 @@ schema InfrastructureClusterxK8sIoV1beta1AWSManagedMachinePoolStatus:
         FailureReason will be set in the event that there is a terminal problem
         reconciling the MachinePool and will contain a succinct value suitable
         for machine interpretation.
-
 
         This field should not be set for transitive errors that a controller
         faces that are expected to be fixed automatically over
@@ -464,7 +461,6 @@ schema InfrastructureClusterxK8sIoV1beta1AWSManagedMachinePoolStatus:
         of terminal errors would be invalid combinations of settings in the
         spec, values that are unsupported by the controller, or the
         responsible controller itself being critically misconfigured.
-
 
         Any transient errors that occur during the reconciliation of MachinePools
         can be added as events to the MachinePool object and/or logged in the
@@ -497,7 +493,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSManagedMachinePoolStatus:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSManagedMachinePoolStatusConditionsItems0:
-    """
+    r"""
     Condition defines an observation of a Cluster API resource operational state.
 
     Attributes
@@ -512,15 +508,15 @@ schema InfrastructureClusterxK8sIoV1beta1AWSManagedMachinePoolStatusConditionsIt
     reason : str, default is Undefined, optional
         The reason for the condition's last transition in CamelCase.
         The specific API may choose whether or not this field is considered a guaranteed API.
-        This field may not be empty.
+        This field may be empty.
     severity : str, default is Undefined, optional
-        Severity provides an explicit classification of Reason code, so the users or machines can immediately
+        severity provides an explicit classification of Reason code, so the users or machines can immediately
         understand the current situation and act accordingly.
         The Severity field MUST be set only when Status=False.
     status : str, default is Undefined, required
-        Status of the condition, one of True, False, Unknown.
+        status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
-        Type of condition in CamelCase or in foo.example.com/CamelCase.
+        type of condition in CamelCase or in foo.example.com/CamelCase.
         Many .condition.type values are consistent across resources like Available, but because arbitrary conditions
         can be useful (see .node.status.conditions), the ability to deconflict is important.
     """

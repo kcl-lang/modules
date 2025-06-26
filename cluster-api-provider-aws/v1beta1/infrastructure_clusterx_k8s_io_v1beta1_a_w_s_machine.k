@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema AWSMachine:
-    """
+    r"""
     AWSMachine is the schema for Amazon EC2 machines.
 
     Attributes
@@ -36,7 +36,7 @@ schema AWSMachine:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSMachineSpec:
-    """
+    r"""
     AWSMachineSpec defines the desired state of an Amazon EC2 instance.
 
     Attributes
@@ -160,11 +160,11 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachineSpec:
 
     check:
         len(instanceType) >= 2
-        len(networkInterfaces) <= 2
+        len(networkInterfaces) <= 2 if networkInterfaces
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSMachineSpecAdditionalSecurityGroupsItems0:
-    """
+    r"""
     AWSResourceReference is a reference to a specific AWS resource by ID or filters.
     Only one of ID or Filters may be specified. Specifying more than one will result in
     a validation error.
@@ -191,7 +191,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachineSpecAdditionalSecurityGroupsI
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSMachineSpecAdditionalSecurityGroupsItems0FiltersItems0:
-    """
+    r"""
     Filter is a filter used to identify an AWS resource.
 
     Attributes
@@ -209,7 +209,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachineSpecAdditionalSecurityGroupsI
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSMachineSpecAmi:
-    """
+    r"""
     AMI is the reference to the AMI from which to create the machine instance.
 
     Attributes
@@ -227,7 +227,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachineSpecAmi:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSMachineSpecCloudInit:
-    """
+    r"""
     CloudInit defines options related to the bootstrapping systems where
     CloudInit is used.
 
@@ -261,7 +261,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachineSpecCloudInit:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSMachineSpecIgnition:
-    """
+    r"""
     Ignition defined options related to the bootstrapping systems where Ignition is used.
 
     Attributes
@@ -275,7 +275,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachineSpecIgnition:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSMachineSpecNonRootVolumesItems0:
-    """
+    r"""
     Volume encapsulates the configuration options for the storage device.
 
     Attributes
@@ -320,7 +320,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachineSpecNonRootVolumesItems0:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSMachineSpecRootVolume:
-    """
+    r"""
     RootVolume encapsulates the configuration options for the root volume
 
     Attributes
@@ -365,7 +365,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachineSpecRootVolume:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSMachineSpecSpotMarketOptions:
-    """
+    r"""
     SpotMarketOptions allows users to configure instances to be run using AWS Spot instances.
 
     Attributes
@@ -379,7 +379,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachineSpecSpotMarketOptions:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSMachineSpecSubnet:
-    """
+    r"""
     Subnet is a reference to the subnet to use for this instance. If not specified,
     the cluster subnet will be used.
 
@@ -405,7 +405,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachineSpecSubnet:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSMachineSpecSubnetFiltersItems0:
-    """
+    r"""
     Filter is a filter used to identify an AWS resource.
 
     Attributes
@@ -423,7 +423,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachineSpecSubnetFiltersItems0:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSMachineStatus:
-    """
+    r"""
     AWSMachineStatus defines the observed state of AWSMachine.
 
     Attributes
@@ -437,7 +437,6 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachineStatus:
         reconciling the Machine and will contain a more verbose string suitable
         for logging and human consumption.
 
-
         This field should not be set for transitive errors that a controller
         faces that are expected to be fixed automatically over
         time (like service outages), but instead indicate that something is
@@ -446,7 +445,6 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachineStatus:
         of terminal errors would be invalid combinations of settings in the
         spec, values that are unsupported by the controller, or the
         responsible controller itself being critically misconfigured.
-
 
         Any transient errors that occur during the reconciliation of Machines
         can be added as events to the Machine object and/or logged in the
@@ -456,7 +454,6 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachineStatus:
         reconciling the Machine and will contain a succinct value suitable
         for machine interpretation.
 
-
         This field should not be set for transitive errors that a controller
         faces that are expected to be fixed automatically over
         time (like service outages), but instead indicate that something is
@@ -465,7 +462,6 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachineStatus:
         of terminal errors would be invalid combinations of settings in the
         spec, values that are unsupported by the controller, or the
         responsible controller itself being critically misconfigured.
-
 
         Any transient errors that occur during the reconciliation of Machines
         can be added as events to the Machine object and/or logged in the
@@ -496,7 +492,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachineStatus:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSMachineStatusAddressesItems0:
-    """
+    r"""
     MachineAddress contains information for the node's address.
 
     Attributes
@@ -514,7 +510,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachineStatusAddressesItems0:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSMachineStatusConditionsItems0:
-    """
+    r"""
     Condition defines an observation of a Cluster API resource operational state.
 
     Attributes
@@ -529,15 +525,15 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachineStatusConditionsItems0:
     reason : str, default is Undefined, optional
         The reason for the condition's last transition in CamelCase.
         The specific API may choose whether or not this field is considered a guaranteed API.
-        This field may not be empty.
+        This field may be empty.
     severity : str, default is Undefined, optional
-        Severity provides an explicit classification of Reason code, so the users or machines can immediately
+        severity provides an explicit classification of Reason code, so the users or machines can immediately
         understand the current situation and act accordingly.
         The Severity field MUST be set only when Status=False.
     status : str, default is Undefined, required
-        Status of the condition, one of True, False, Unknown.
+        status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
-        Type of condition in CamelCase or in foo.example.com/CamelCase.
+        type of condition in CamelCase or in foo.example.com/CamelCase.
         Many .condition.type values are consistent across resources like Available, but because arbitrary conditions
         can be useful (see .node.status.conditions), the ability to deconflict is important.
     """

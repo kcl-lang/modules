@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema EKSConfigTemplate:
-    """
+    r"""
     EKSConfigTemplate is the Amazon EKS Bootstrap Configuration Template API.
 
     Attributes
@@ -32,7 +32,7 @@ schema EKSConfigTemplate:
 
 
 schema BootstrapClusterxK8sIoV1beta2EKSConfigTemplateSpec:
-    """
+    r"""
     EKSConfigTemplateSpec defines the desired state of templated EKSConfig Amazon EKS Bootstrap Configuration resources.
 
     Attributes
@@ -46,7 +46,7 @@ schema BootstrapClusterxK8sIoV1beta2EKSConfigTemplateSpec:
 
 
 schema BootstrapClusterxK8sIoV1beta2EKSConfigTemplateSpecTemplate:
-    """
+    r"""
     EKSConfigTemplateResource defines the Template structure.
 
     Attributes
@@ -60,7 +60,7 @@ schema BootstrapClusterxK8sIoV1beta2EKSConfigTemplateSpecTemplate:
 
 
 schema BootstrapClusterxK8sIoV1beta2EKSConfigTemplateSpecTemplateSpec:
-    """
+    r"""
     EKSConfigSpec defines the desired state of Amazon EKS Bootstrap Configuration.
 
     Attributes
@@ -136,7 +136,7 @@ schema BootstrapClusterxK8sIoV1beta2EKSConfigTemplateSpecTemplateSpec:
 
 
 schema BootstrapClusterxK8sIoV1beta2EKSConfigTemplateSpecTemplateSpecDiskSetup:
-    """
+    r"""
     DiskSetup specifies options for the creation of partition tables and file systems on devices.
 
     Attributes
@@ -154,7 +154,7 @@ schema BootstrapClusterxK8sIoV1beta2EKSConfigTemplateSpecTemplateSpecDiskSetup:
 
 
 schema BootstrapClusterxK8sIoV1beta2EKSConfigTemplateSpecTemplateSpecDiskSetupFilesystemsItems0:
-    """
+    r"""
     Filesystem defines the file systems to be created.
 
     Attributes
@@ -189,7 +189,7 @@ schema BootstrapClusterxK8sIoV1beta2EKSConfigTemplateSpecTemplateSpecDiskSetupFi
 
 
 schema BootstrapClusterxK8sIoV1beta2EKSConfigTemplateSpecTemplateSpecDiskSetupPartitionsItems0:
-    """
+    r"""
     Partition defines how to create and layout a partition.
 
     Attributes
@@ -220,7 +220,7 @@ schema BootstrapClusterxK8sIoV1beta2EKSConfigTemplateSpecTemplateSpecDiskSetupPa
 
 
 schema BootstrapClusterxK8sIoV1beta2EKSConfigTemplateSpecTemplateSpecFilesItems0:
-    """
+    r"""
     File defines the input for generating write_files in cloud-init.
 
     Attributes
@@ -258,7 +258,7 @@ schema BootstrapClusterxK8sIoV1beta2EKSConfigTemplateSpecTemplateSpecFilesItems0
 
 
 schema BootstrapClusterxK8sIoV1beta2EKSConfigTemplateSpecTemplateSpecFilesItems0ContentFrom:
-    """
+    r"""
     ContentFrom is a referenced source of content to populate the file.
 
     Attributes
@@ -272,7 +272,7 @@ schema BootstrapClusterxK8sIoV1beta2EKSConfigTemplateSpecTemplateSpecFilesItems0
 
 
 schema BootstrapClusterxK8sIoV1beta2EKSConfigTemplateSpecTemplateSpecFilesItems0ContentFromSecret:
-    """
+    r"""
     Secret represents a secret that should populate this file.
 
     Attributes
@@ -290,7 +290,7 @@ schema BootstrapClusterxK8sIoV1beta2EKSConfigTemplateSpecTemplateSpecFilesItems0
 
 
 schema BootstrapClusterxK8sIoV1beta2EKSConfigTemplateSpecTemplateSpecNtp:
-    """
+    r"""
     NTP specifies NTP configuration
 
     Attributes
@@ -308,7 +308,7 @@ schema BootstrapClusterxK8sIoV1beta2EKSConfigTemplateSpecTemplateSpecNtp:
 
 
 schema BootstrapClusterxK8sIoV1beta2EKSConfigTemplateSpecTemplateSpecPauseContainer:
-    """
+    r"""
     PauseContainer allows customization of the pause container to use.
 
     Attributes
@@ -326,7 +326,7 @@ schema BootstrapClusterxK8sIoV1beta2EKSConfigTemplateSpecTemplateSpecPauseContai
 
 
 schema BootstrapClusterxK8sIoV1beta2EKSConfigTemplateSpecTemplateSpecUsersItems0:
-    """
+    r"""
     User defines the input for a generated user in cloud-init.
 
     Attributes
@@ -384,7 +384,7 @@ schema BootstrapClusterxK8sIoV1beta2EKSConfigTemplateSpecTemplateSpecUsersItems0
 
 
 schema BootstrapClusterxK8sIoV1beta2EKSConfigTemplateSpecTemplateSpecUsersItems0PasswdFrom:
-    """
+    r"""
     PasswdFrom is a referenced source of passwd to populate the passwd.
 
     Attributes
@@ -398,7 +398,7 @@ schema BootstrapClusterxK8sIoV1beta2EKSConfigTemplateSpecTemplateSpecUsersItems0
 
 
 schema BootstrapClusterxK8sIoV1beta2EKSConfigTemplateSpecTemplateSpecUsersItems0PasswdFromSecret:
-    """
+    r"""
     Secret represents a secret that should populate this password.
 
     Attributes

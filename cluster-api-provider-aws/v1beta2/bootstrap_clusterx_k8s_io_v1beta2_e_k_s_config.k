@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema EKSConfig:
-    """
+    r"""
     EKSConfig is the schema for the Amazon EKS Machine Bootstrap Configuration API.
 
     Attributes
@@ -36,7 +36,7 @@ schema EKSConfig:
 
 
 schema BootstrapClusterxK8sIoV1beta2EKSConfigSpec:
-    """
+    r"""
     EKSConfigSpec defines the desired state of Amazon EKS Bootstrap Configuration.
 
     Attributes
@@ -112,7 +112,7 @@ schema BootstrapClusterxK8sIoV1beta2EKSConfigSpec:
 
 
 schema BootstrapClusterxK8sIoV1beta2EKSConfigSpecDiskSetup:
-    """
+    r"""
     DiskSetup specifies options for the creation of partition tables and file systems on devices.
 
     Attributes
@@ -130,7 +130,7 @@ schema BootstrapClusterxK8sIoV1beta2EKSConfigSpecDiskSetup:
 
 
 schema BootstrapClusterxK8sIoV1beta2EKSConfigSpecDiskSetupFilesystemsItems0:
-    """
+    r"""
     Filesystem defines the file systems to be created.
 
     Attributes
@@ -165,7 +165,7 @@ schema BootstrapClusterxK8sIoV1beta2EKSConfigSpecDiskSetupFilesystemsItems0:
 
 
 schema BootstrapClusterxK8sIoV1beta2EKSConfigSpecDiskSetupPartitionsItems0:
-    """
+    r"""
     Partition defines how to create and layout a partition.
 
     Attributes
@@ -196,7 +196,7 @@ schema BootstrapClusterxK8sIoV1beta2EKSConfigSpecDiskSetupPartitionsItems0:
 
 
 schema BootstrapClusterxK8sIoV1beta2EKSConfigSpecFilesItems0:
-    """
+    r"""
     File defines the input for generating write_files in cloud-init.
 
     Attributes
@@ -234,7 +234,7 @@ schema BootstrapClusterxK8sIoV1beta2EKSConfigSpecFilesItems0:
 
 
 schema BootstrapClusterxK8sIoV1beta2EKSConfigSpecFilesItems0ContentFrom:
-    """
+    r"""
     ContentFrom is a referenced source of content to populate the file.
 
     Attributes
@@ -248,7 +248,7 @@ schema BootstrapClusterxK8sIoV1beta2EKSConfigSpecFilesItems0ContentFrom:
 
 
 schema BootstrapClusterxK8sIoV1beta2EKSConfigSpecFilesItems0ContentFromSecret:
-    """
+    r"""
     Secret represents a secret that should populate this file.
 
     Attributes
@@ -266,7 +266,7 @@ schema BootstrapClusterxK8sIoV1beta2EKSConfigSpecFilesItems0ContentFromSecret:
 
 
 schema BootstrapClusterxK8sIoV1beta2EKSConfigSpecNtp:
-    """
+    r"""
     NTP specifies NTP configuration
 
     Attributes
@@ -284,7 +284,7 @@ schema BootstrapClusterxK8sIoV1beta2EKSConfigSpecNtp:
 
 
 schema BootstrapClusterxK8sIoV1beta2EKSConfigSpecPauseContainer:
-    """
+    r"""
     PauseContainer allows customization of the pause container to use.
 
     Attributes
@@ -302,7 +302,7 @@ schema BootstrapClusterxK8sIoV1beta2EKSConfigSpecPauseContainer:
 
 
 schema BootstrapClusterxK8sIoV1beta2EKSConfigSpecUsersItems0:
-    """
+    r"""
     User defines the input for a generated user in cloud-init.
 
     Attributes
@@ -360,7 +360,7 @@ schema BootstrapClusterxK8sIoV1beta2EKSConfigSpecUsersItems0:
 
 
 schema BootstrapClusterxK8sIoV1beta2EKSConfigSpecUsersItems0PasswdFrom:
-    """
+    r"""
     PasswdFrom is a referenced source of passwd to populate the passwd.
 
     Attributes
@@ -374,7 +374,7 @@ schema BootstrapClusterxK8sIoV1beta2EKSConfigSpecUsersItems0PasswdFrom:
 
 
 schema BootstrapClusterxK8sIoV1beta2EKSConfigSpecUsersItems0PasswdFromSecret:
-    """
+    r"""
     Secret represents a secret that should populate this password.
 
     Attributes
@@ -392,7 +392,7 @@ schema BootstrapClusterxK8sIoV1beta2EKSConfigSpecUsersItems0PasswdFromSecret:
 
 
 schema BootstrapClusterxK8sIoV1beta2EKSConfigStatus:
-    """
+    r"""
     EKSConfigStatus defines the observed state of the Amazon EKS Bootstrap Configuration.
 
     Attributes
@@ -426,7 +426,7 @@ schema BootstrapClusterxK8sIoV1beta2EKSConfigStatus:
 
 
 schema BootstrapClusterxK8sIoV1beta2EKSConfigStatusConditionsItems0:
-    """
+    r"""
     Condition defines an observation of a Cluster API resource operational state.
 
     Attributes
@@ -441,15 +441,15 @@ schema BootstrapClusterxK8sIoV1beta2EKSConfigStatusConditionsItems0:
     reason : str, default is Undefined, optional
         The reason for the condition's last transition in CamelCase.
         The specific API may choose whether or not this field is considered a guaranteed API.
-        This field may not be empty.
+        This field may be empty.
     severity : str, default is Undefined, optional
-        Severity provides an explicit classification of Reason code, so the users or machines can immediately
+        severity provides an explicit classification of Reason code, so the users or machines can immediately
         understand the current situation and act accordingly.
         The Severity field MUST be set only when Status=False.
     status : str, default is Undefined, required
-        Status of the condition, one of True, False, Unknown.
+        status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
-        Type of condition in CamelCase or in foo.example.com/CamelCase.
+        type of condition in CamelCase or in foo.example.com/CamelCase.
         Many .condition.type values are consistent across resources like Available, but because arbitrary conditions
         can be useful (see .node.status.conditions), the ability to deconflict is important.
     """

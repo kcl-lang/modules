@@ -8,7 +8,7 @@ _regex_match = regex.match
 
 
 schema ROSAMachinePool:
-    """
+    r"""
     ROSAMachinePool is the Schema for the rosamachinepools API.
 
     Attributes
@@ -38,7 +38,7 @@ schema ROSAMachinePool:
 
 
 schema InfrastructureClusterxK8sIoV1beta2ROSAMachinePoolSpec:
-    """
+    r"""
     RosaMachinePoolSpec defines the desired state of RosaMachinePool.
 
     Attributes
@@ -48,9 +48,9 @@ schema InfrastructureClusterxK8sIoV1beta2ROSAMachinePoolSpec:
         with all node instances of the machine pool.
     additionalTags : {str:str}, default is Undefined, optional
         AdditionalTags are user-defined tags to be added on the underlying EC2 instances associated with this machine pool.
-    autoRepair : bool, default is Undefined, optional
+    autoRepair : bool, default is True, optional
         AutoRepair specifies whether health checks should be enabled for machines
-        in the NodePool. The default is false.
+        in the NodePool. The default is true.
     autoscaling : InfrastructureClusterxK8sIoV1beta2ROSAMachinePoolSpecAutoscaling, default is Undefined, optional
         autoscaling
     availabilityZone : str, default is Undefined, optional
@@ -64,7 +64,6 @@ schema InfrastructureClusterxK8sIoV1beta2ROSAMachinePoolSpec:
         NodeDrainGracePeriod is grace period for how long Pod Disruption Budget-protected workloads will be
         respected during upgrades. After this grace period, any workloads protected by Pod Disruption
         Budgets that have not been successfully drained from a node will be forcibly evicted.
-
 
         Valid values are from 0 to 1 week(10080m|168h) .
         0 or empty value means that the MachinePool can be drained without any time limitation.
@@ -80,9 +79,13 @@ schema InfrastructureClusterxK8sIoV1beta2ROSAMachinePoolSpec:
     tuningConfigs : [str], default is Undefined, optional
         TuningConfigs specifies the names of the tuning configs to be applied to this MachinePool.
         Tuning configs must already exist.
+    updateConfig : InfrastructureClusterxK8sIoV1beta2ROSAMachinePoolSpecUpdateConfig, default is Undefined, optional
+        update config
     version : str, default is Undefined, optional
         Version specifies the OpenShift version of the nodes associated with this machinepool.
         ROSAControlPlane version is used if not set.
+    volumeSize : int, default is Undefined, optional
+        VolumeSize set the disk volume size for the machine pool, in Gib. The default is 300 GiB.
     """
 
 
@@ -90,7 +93,7 @@ schema InfrastructureClusterxK8sIoV1beta2ROSAMachinePoolSpec:
 
     additionalTags?: {str:str}
 
-    autoRepair?: bool = False
+    autoRepair?: bool = True
 
     autoscaling?: InfrastructureClusterxK8sIoV1beta2ROSAMachinePoolSpecAutoscaling
 
@@ -112,16 +115,22 @@ schema InfrastructureClusterxK8sIoV1beta2ROSAMachinePoolSpec:
 
     tuningConfigs?: [str]
 
+    updateConfig?: InfrastructureClusterxK8sIoV1beta2ROSAMachinePoolSpecUpdateConfig
+
     version?: str
+
+    volumeSize?: int
 
 
     check:
         len(nodePoolName) <= 15
         _regex_match(str(nodePoolName), r"^[a-z]([-a-z0-9]*[a-z0-9])?$")
+        volumeSize <= 16384 if volumeSize not in [None, Undefined]
+        volumeSize >= 75 if volumeSize not in [None, Undefined]
 
 
 schema InfrastructureClusterxK8sIoV1beta2ROSAMachinePoolSpecAutoscaling:
-    """
+    r"""
     Autoscaling specifies auto scaling behaviour for this MachinePool.
     required if Replicas is not configured
 
@@ -140,12 +149,12 @@ schema InfrastructureClusterxK8sIoV1beta2ROSAMachinePoolSpecAutoscaling:
 
 
     check:
-        maxReplicas >= 1
-        minReplicas >= 1
+        maxReplicas >= 1 if maxReplicas not in [None, Undefined]
+        minReplicas >= 1 if minReplicas not in [None, Undefined]
 
 
 schema InfrastructureClusterxK8sIoV1beta2ROSAMachinePoolSpecTaintsItems0:
-    """
+    r"""
     RosaTaint represents a taint to be applied to a node.
 
     Attributes
@@ -171,18 +180,78 @@ schema InfrastructureClusterxK8sIoV1beta2ROSAMachinePoolSpecTaintsItems0:
         _regex_match(str(value), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if value
 
 
-schema InfrastructureClusterxK8sIoV1beta2ROSAMachinePoolStatus:
+schema InfrastructureClusterxK8sIoV1beta2ROSAMachinePoolSpecUpdateConfig:
+    r"""
+    UpdateConfig specifies update configurations.
+
+    Attributes
+    ----------
+    rollingUpdate : InfrastructureClusterxK8sIoV1beta2ROSAMachinePoolSpecUpdateConfigRollingUpdate, default is Undefined, optional
+        rolling update
     """
+
+
+    rollingUpdate?: InfrastructureClusterxK8sIoV1beta2ROSAMachinePoolSpecUpdateConfigRollingUpdate
+
+
+schema InfrastructureClusterxK8sIoV1beta2ROSAMachinePoolSpecUpdateConfigRollingUpdate:
+    r"""
+    RollingUpdate specifies MaxUnavailable & MaxSurge number of nodes during update.
+
+    Attributes
+    ----------
+    maxSurge : int | str, default is 1, optional
+        MaxSurge is the maximum number of nodes that can be provisioned above the desired number of nodes.
+        Value can be an absolute number (ex: 5) or a percentage of desired nodes (ex: 10%).
+        Absolute number is calculated from percentage by rounding up.
+
+        MaxSurge can not be 0 if MaxUnavailable is 0, default is 1.
+        Both MaxSurge & MaxUnavailable must use the same units (absolute value or percentage).
+
+        Example: when MaxSurge is set to 30%, new nodes can be provisioned immediately
+        when the rolling update starts, such that the total number of old and new
+        nodes do not exceed 130% of desired nodes. Once old nodes have been
+        deleted, new nodes can be provisioned, ensuring that total number of nodes
+        running at any time during the update is at most 130% of desired nodes.
+    maxUnavailable : int | str, default is Undefined, optional
+        MaxUnavailable is the maximum number of nodes that can be unavailable during the update.
+        Value can be an absolute number (ex: 5) or a percentage of desired nodes (ex: 10%).
+        Absolute number is calculated from percentage by rounding down.
+
+        MaxUnavailable can not be 0 if MaxSurge is 0, default is 0.
+        Both MaxUnavailable & MaxSurge must use the same units (absolute value or percentage).
+
+        Example: when MaxUnavailable is set to 30%, old nodes can be deleted down to 70% of
+        desired nodes immediately when the rolling update starts. Once new nodes
+        are ready, more old nodes be deleted, followed by provisioning new nodes,
+        ensuring that the total number of nodes available at all times during the
+        update is at least 70% of desired nodes.
+    """
+
+
+    maxSurge?: int | str = 1
+
+    maxUnavailable?: int | str = 0
+
+
+    check:
+        _regex_match(str(maxSurge), r"^((100|[0-9]{1,2})%|[0-9]+)$") if maxSurge
+        _regex_match(str(maxUnavailable), r"^((100|[0-9]{1,2})%|[0-9]+)$") if maxUnavailable
+
+
+schema InfrastructureClusterxK8sIoV1beta2ROSAMachinePoolStatus:
+    r"""
     RosaMachinePoolStatus defines the observed state of RosaMachinePool.
 
     Attributes
     ----------
+    availableUpgrades : [str], default is Undefined, optional
+        Available upgrades for the ROSA MachinePool.
     conditions : [InfrastructureClusterxK8sIoV1beta2ROSAMachinePoolStatusConditionsItems0], default is Undefined, optional
         Conditions defines current service state of the managed machine pool
     failureMessage : str, default is Undefined, optional
         FailureMessage will be set in the event that there is a terminal problem
         reconciling the state and will be set to a descriptive error message.
-
 
         This field should not be set for transitive errors that a controller
         faces that are expected to be fixed automatically over
@@ -199,6 +268,8 @@ schema InfrastructureClusterxK8sIoV1beta2ROSAMachinePoolStatus:
     """
 
 
+    availableUpgrades?: [str]
+
     conditions?: [InfrastructureClusterxK8sIoV1beta2ROSAMachinePoolStatusConditionsItems0]
 
     failureMessage?: str
@@ -211,7 +282,7 @@ schema InfrastructureClusterxK8sIoV1beta2ROSAMachinePoolStatus:
 
 
 schema InfrastructureClusterxK8sIoV1beta2ROSAMachinePoolStatusConditionsItems0:
-    """
+    r"""
     Condition defines an observation of a Cluster API resource operational state.
 
     Attributes
@@ -226,15 +297,15 @@ schema InfrastructureClusterxK8sIoV1beta2ROSAMachinePoolStatusConditionsItems0:
     reason : str, default is Undefined, optional
         The reason for the condition's last transition in CamelCase.
         The specific API may choose whether or not this field is considered a guaranteed API.
-        This field may not be empty.
+        This field may be empty.
     severity : str, default is Undefined, optional
-        Severity provides an explicit classification of Reason code, so the users or machines can immediately
+        severity provides an explicit classification of Reason code, so the users or machines can immediately
         understand the current situation and act accordingly.
         The Severity field MUST be set only when Status=False.
     status : str, default is Undefined, required
-        Status of the condition, one of True, False, Unknown.
+        status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
-        Type of condition in CamelCase or in foo.example.com/CamelCase.
+        type of condition in CamelCase or in foo.example.com/CamelCase.
         Many .condition.type values are consistent across resources like Available, but because arbitrary conditions
         can be useful (see .node.status.conditions), the ability to deconflict is important.
     """

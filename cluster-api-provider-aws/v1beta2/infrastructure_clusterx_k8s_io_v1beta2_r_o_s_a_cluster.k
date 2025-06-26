@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ROSACluster:
-    """
+    r"""
     ROSACluster is the Schema for the ROSAClusters API.
 
     Attributes
@@ -36,7 +36,7 @@ schema ROSACluster:
 
 
 schema InfrastructureClusterxK8sIoV1beta2ROSAClusterSpec:
-    """
+    r"""
     ROSAClusterSpec defines the desired state of ROSACluster.
 
     Attributes
@@ -50,7 +50,7 @@ schema InfrastructureClusterxK8sIoV1beta2ROSAClusterSpec:
 
 
 schema InfrastructureClusterxK8sIoV1beta2ROSAClusterSpecControlPlaneEndpoint:
-    """
+    r"""
     ControlPlaneEndpoint represents the endpoint used to communicate with the control plane.
 
     Attributes
@@ -68,11 +68,13 @@ schema InfrastructureClusterxK8sIoV1beta2ROSAClusterSpecControlPlaneEndpoint:
 
 
 schema InfrastructureClusterxK8sIoV1beta2ROSAClusterStatus:
-    """
+    r"""
     ROSAClusterStatus defines the observed state of ROSACluster.
 
     Attributes
     ----------
+    conditions : [InfrastructureClusterxK8sIoV1beta2ROSAClusterStatusConditionsItems0], default is Undefined, optional
+        Conditions defines current service state of the ROSACluster.
     failureDomains : {str:InfrastructureClusterxK8sIoV1beta2ROSAClusterStatusFailureDomainsAnon}, default is Undefined, optional
         FailureDomains specifies a list fo available availability zones that can be used
     ready : bool, default is Undefined, optional
@@ -80,22 +82,67 @@ schema InfrastructureClusterxK8sIoV1beta2ROSAClusterStatus:
     """
 
 
+    conditions?: [InfrastructureClusterxK8sIoV1beta2ROSAClusterStatusConditionsItems0]
+
     failureDomains?: {str:InfrastructureClusterxK8sIoV1beta2ROSAClusterStatusFailureDomainsAnon}
 
     ready?: bool
 
 
-schema InfrastructureClusterxK8sIoV1beta2ROSAClusterStatusFailureDomainsAnon:
+schema InfrastructureClusterxK8sIoV1beta2ROSAClusterStatusConditionsItems0:
+    r"""
+    Condition defines an observation of a Cluster API resource operational state.
+
+    Attributes
+    ----------
+    lastTransitionTime : str, default is Undefined, required
+        Last time the condition transitioned from one status to another.
+        This should be when the underlying condition changed. If that is not known, then using the time when
+        the API field changed is acceptable.
+    message : str, default is Undefined, optional
+        A human readable message indicating details about the transition.
+        This field may be empty.
+    reason : str, default is Undefined, optional
+        The reason for the condition's last transition in CamelCase.
+        The specific API may choose whether or not this field is considered a guaranteed API.
+        This field may be empty.
+    severity : str, default is Undefined, optional
+        severity provides an explicit classification of Reason code, so the users or machines can immediately
+        understand the current situation and act accordingly.
+        The Severity field MUST be set only when Status=False.
+    status : str, default is Undefined, required
+        status of the condition, one of True, False, Unknown.
+    $type : str, default is Undefined, required
+        type of condition in CamelCase or in foo.example.com/CamelCase.
+        Many .condition.type values are consistent across resources like Available, but because arbitrary conditions
+        can be useful (see .node.status.conditions), the ability to deconflict is important.
     """
+
+
+    lastTransitionTime: str
+
+    message?: str
+
+    reason?: str
+
+    severity?: str
+
+    status: str
+
+    $type: str
+
+
+schema InfrastructureClusterxK8sIoV1beta2ROSAClusterStatusFailureDomainsAnon:
+    r"""
     FailureDomainSpec is the Schema for Cluster API failure domains.
     It allows controllers to understand how many failure domains a cluster can optionally span across.
 
     Attributes
     ----------
     attributes : {str:str}, default is Undefined, optional
-        Attributes is a free form map of attributes an infrastructure provider might use or require.
+        attributes is a free form map of attributes an infrastructure provider might use or require.
     controlPlane : bool, default is Undefined, optional
-        ControlPlane determines if this failure domain is suitable for use by control plane machines.
+        controlPlane determines if this failure domain is suitable for use by control plane machines.
     """
 
 

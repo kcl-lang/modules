@@ -1,7 +1,9 @@
 [package]
 name = "cluster-api-provider-aws"
-edition = "v0.9.0"
-version = "v2.5.4"
+edition = "*"
+version = "v2.8.4"
+description = "KCL package for https://github.com/kubernetes-sigs/cluster-api-provider-aws CRDs"
 
 [dependencies]
-k8s = { oci = "oci://ghcr.io/kcl-lang/k8s", tag = "1.31.2" }
+k8s = "1.32.4"
+cluster-api = "v1.10.3"

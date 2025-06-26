@@ -8,7 +8,7 @@ _regex_match = regex.match
 
 
 schema AWSCluster:
-    """
+    r"""
     AWSCluster is the schema for Amazon EC2 based Kubernetes Cluster API.
 
     Attributes
@@ -38,7 +38,7 @@ schema AWSCluster:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterSpec:
-    """
+    r"""
     AWSClusterSpec defines the desired state of an EC2-based Kubernetes cluster.
 
     Attributes
@@ -113,7 +113,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterSpec:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterSpecBastion:
-    """
+    r"""
     Bastion contains options to configure the bastion host.
 
     Attributes
@@ -149,7 +149,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterSpecBastion:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterSpecControlPlaneEndpoint:
-    """
+    r"""
     ControlPlaneEndpoint represents the endpoint used to communicate with the control plane.
 
     Attributes
@@ -167,7 +167,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterSpecControlPlaneEndpoint:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterSpecControlPlaneLoadBalancer:
-    """
+    r"""
     ControlPlaneLoadBalancer is optional configuration for customizing control plane behavior.
 
     Attributes
@@ -178,12 +178,10 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterSpecControlPlaneLoadBalancer:
     crossZoneLoadBalancing : bool, default is Undefined, optional
         CrossZoneLoadBalancing enables the classic ELB cross availability zone balancing.
 
-
         With cross-zone load balancing, each load balancer node for your Classic Load Balancer
         distributes requests evenly across the registered instances in all enabled Availability Zones.
         If cross-zone load balancing is disabled, each load balancer node distributes requests evenly across
         the registered instances in its Availability Zone only.
-
 
         Defaults to false.
     healthCheckProtocol : str, default is Undefined, optional
@@ -215,12 +213,12 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterSpecControlPlaneLoadBalancer:
 
 
     check:
-        len(name) <= 32
+        len(name) <= 32 if name
         _regex_match(str(name), r"^[A-Za-z0-9]([A-Za-z0-9]{0,31}|[-A-Za-z0-9]{0,30}[A-Za-z0-9])$") if name
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterSpecIdentityRef:
-    """
+    r"""
     IdentityRef is a reference to an identity to be used when reconciling the managed control plane.
     If no identity is specified, the default identity for this controller will be used.
 
@@ -243,7 +241,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterSpecIdentityRef:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterSpecNetwork:
-    """
+    r"""
     NetworkSpec encapsulates all things related to AWS network.
 
     Attributes
@@ -270,7 +268,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterSpecNetwork:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterSpecNetworkCni:
-    """
+    r"""
     CNI configuration
 
     Attributes
@@ -285,7 +283,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterSpecNetworkCni:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterSpecNetworkCniCniIngressRulesItems0:
-    """
+    r"""
     CNIIngressRule defines an AWS ingress rule for CNI requirements.
 
     Attributes
@@ -311,7 +309,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterSpecNetworkCniCniIngressRules
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterSpecNetworkSubnetsItems0:
-    """
+    r"""
     SubnetSpec configures an AWS Subnet.
 
     Attributes
@@ -361,7 +359,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterSpecNetworkSubnetsItems0:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterSpecNetworkVpc:
-    """
+    r"""
     VPC configuration.
 
     Attributes
@@ -407,11 +405,11 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterSpecNetworkVpc:
 
 
     check:
-        availabilityZoneUsageLimit >= 1
+        availabilityZoneUsageLimit >= 1 if availabilityZoneUsageLimit not in [None, Undefined]
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterSpecNetworkVpcIPV6:
-    """
+    r"""
     IPv6 contains ipv6 specific settings for the network. Supported only in managed clusters.
     This field cannot be set on AWSCluster object.
 
@@ -434,7 +432,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterSpecNetworkVpcIPV6:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterSpecS3Bucket:
-    """
+    r"""
     S3Bucket contains options to configure a supporting S3 bucket for this
     cluster - currently used for nodes requiring Ignition
     (https://coreos.github.io/ignition/) for bootstrapping (requires
@@ -467,7 +465,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterSpecS3Bucket:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterStatus:
-    """
+    r"""
     AWSClusterStatus defines the observed state of AWSCluster.
 
     Attributes
@@ -497,7 +495,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterStatus:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterStatusBastion:
-    """
+    r"""
     Instance describes an AWS instance.
 
     Attributes
@@ -596,7 +594,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterStatusBastion:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterStatusBastionAddressesItems0:
-    """
+    r"""
     MachineAddress contains information for the node's address.
 
     Attributes
@@ -614,7 +612,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterStatusBastionAddressesItems0:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterStatusBastionNonRootVolumesItems0:
-    """
+    r"""
     Volume encapsulates the configuration options for the storage device.
 
     Attributes
@@ -659,7 +657,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterStatusBastionNonRootVolumesIt
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterStatusBastionRootVolume:
-    """
+    r"""
     Configuration options for the root storage volume.
 
     Attributes
@@ -704,7 +702,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterStatusBastionRootVolume:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterStatusBastionSpotMarketOptions:
-    """
+    r"""
     SpotMarketOptions option for configuring instances to be run using AWS Spot instances.
 
     Attributes
@@ -718,7 +716,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterStatusBastionSpotMarketOption
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterStatusConditionsItems0:
-    """
+    r"""
     Condition defines an observation of a Cluster API resource operational state.
 
     Attributes
@@ -733,15 +731,15 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterStatusConditionsItems0:
     reason : str, default is Undefined, optional
         The reason for the condition's last transition in CamelCase.
         The specific API may choose whether or not this field is considered a guaranteed API.
-        This field may not be empty.
+        This field may be empty.
     severity : str, default is Undefined, optional
-        Severity provides an explicit classification of Reason code, so the users or machines can immediately
+        severity provides an explicit classification of Reason code, so the users or machines can immediately
         understand the current situation and act accordingly.
         The Severity field MUST be set only when Status=False.
     status : str, default is Undefined, required
-        Status of the condition, one of True, False, Unknown.
+        status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
-        Type of condition in CamelCase or in foo.example.com/CamelCase.
+        type of condition in CamelCase or in foo.example.com/CamelCase.
         Many .condition.type values are consistent across resources like Available, but because arbitrary conditions
         can be useful (see .node.status.conditions), the ability to deconflict is important.
     """
@@ -761,16 +759,16 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterStatusConditionsItems0:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterStatusFailureDomainsAnon:
-    """
+    r"""
     FailureDomainSpec is the Schema for Cluster API failure domains.
     It allows controllers to understand how many failure domains a cluster can optionally span across.
 
     Attributes
     ----------
     attributes : {str:str}, default is Undefined, optional
-        Attributes is a free form map of attributes an infrastructure provider might use or require.
+        attributes is a free form map of attributes an infrastructure provider might use or require.
     controlPlane : bool, default is Undefined, optional
-        ControlPlane determines if this failure domain is suitable for use by control plane machines.
+        controlPlane determines if this failure domain is suitable for use by control plane machines.
     """
 
 
@@ -780,7 +778,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterStatusFailureDomainsAnon:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterStatusNetworkStatus:
-    """
+    r"""
     NetworkStatus encapsulates AWS networking resources.
 
     Attributes
@@ -798,7 +796,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterStatusNetworkStatus:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterStatusNetworkStatusAPIServerElb:
-    """
+    r"""
     APIServerELB is the Kubernetes api server classic load balancer.
 
     Attributes
@@ -849,7 +847,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterStatusNetworkStatusAPIServerE
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterStatusNetworkStatusAPIServerElbAttributes:
-    """
+    r"""
     Attributes defines extra attributes associated with the load balancer.
 
     Attributes
@@ -868,7 +866,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterStatusNetworkStatusAPIServerE
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterStatusNetworkStatusAPIServerElbHealthChecks:
-    """
+    r"""
     HealthCheck is the classic elb health check associated with the load balancer.
 
     Attributes
@@ -902,7 +900,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterStatusNetworkStatusAPIServerE
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterStatusNetworkStatusAPIServerElbListenersItems0:
-    """
+    r"""
     ClassicELBListener defines an AWS classic load balancer listener.
 
     Attributes
@@ -928,7 +926,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterStatusNetworkStatusAPIServerE
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterStatusNetworkStatusSecurityGroupsAnon:
-    """
+    r"""
     SecurityGroup defines an AWS security group.
 
     Attributes
@@ -954,7 +952,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterStatusNetworkStatusSecurityGr
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterStatusNetworkStatusSecurityGroupsAnonIngressRuleItems0:
-    """
+    r"""
     IngressRule defines an AWS ingress rule for security groups.
 
     Attributes
