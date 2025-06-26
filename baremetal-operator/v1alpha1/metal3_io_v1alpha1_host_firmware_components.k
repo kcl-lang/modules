@@ -7,101 +7,126 @@ import k8s.apimachinery.pkg.apis.meta.v1
 _regex_match = regex.match
 
 
-schema PreprovisioningImage:
+schema HostFirmwareComponents:
     r"""
-    PreprovisioningImage is the Schema for the preprovisioningimages API.
+    HostFirmwareComponents is the Schema for the hostfirmwarecomponents API.
 
     Attributes
     ----------
     apiVersion : str, default is "metal3.io/v1alpha1", required
         APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-    kind : str, default is "PreprovisioningImage", required
+    kind : str, default is "HostFirmwareComponents", required
         Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     metadata : v1.ObjectMeta, default is Undefined, optional
         metadata
-    spec : Metal3IoV1alpha1PreprovisioningImageSpec, default is Undefined, optional
+    spec : Metal3IoV1alpha1HostFirmwareComponentsSpec, default is Undefined, optional
         spec
-    status : Metal3IoV1alpha1PreprovisioningImageStatus, default is Undefined, optional
+    status : Metal3IoV1alpha1HostFirmwareComponentsStatus, default is Undefined, optional
         status
     """
 
 
     apiVersion: "metal3.io/v1alpha1" = "metal3.io/v1alpha1"
 
-    kind: "PreprovisioningImage" = "PreprovisioningImage"
+    kind: "HostFirmwareComponents" = "HostFirmwareComponents"
 
     metadata?: v1.ObjectMeta
 
-    spec?: Metal3IoV1alpha1PreprovisioningImageSpec
+    spec?: Metal3IoV1alpha1HostFirmwareComponentsSpec
 
-    status?: Metal3IoV1alpha1PreprovisioningImageStatus
+    status?: Metal3IoV1alpha1HostFirmwareComponentsStatus
 
 
-schema Metal3IoV1alpha1PreprovisioningImageSpec:
+schema Metal3IoV1alpha1HostFirmwareComponentsSpec:
     r"""
-    PreprovisioningImageSpec defines the desired state of PreprovisioningImage.
+    HostFirmwareComponentsSpec defines the desired state of HostFirmwareComponents.
 
     Attributes
     ----------
-    acceptFormats : [str], default is Undefined, optional
-        acceptFormats is a list of acceptable image formats.
-    architecture : str, default is Undefined, optional
-        architecture is the processor architecture for which to build the image.
-    networkDataName : str, default is Undefined, optional
-        networkDataName is the name of a Secret in the local namespace that
-        contains network data to build in to the image.
+    updates : [Metal3IoV1alpha1HostFirmwareComponentsSpecUpdatesItems0], default is Undefined, required
+        updates
     """
 
 
-    acceptFormats?: [str]
-
-    architecture?: str
-
-    networkDataName?: str
+    updates: [Metal3IoV1alpha1HostFirmwareComponentsSpecUpdatesItems0]
 
 
-schema Metal3IoV1alpha1PreprovisioningImageStatus:
+schema Metal3IoV1alpha1HostFirmwareComponentsSpecUpdatesItems0:
     r"""
-    PreprovisioningImageStatus defines the observed state of PreprovisioningImage.
+    FirmwareUpdate defines a firmware update specification.
 
     Attributes
     ----------
-    architecture : str, default is Undefined, optional
-        architecture is the processor architecture for which the image is built
-    conditions : [Metal3IoV1alpha1PreprovisioningImageStatusConditionsItems0], default is Undefined, optional
-        conditions describe the state of the built image
-    extraKernelParams : str, default is Undefined, optional
-        extraKernelParams is a string with extra parameters to pass to the
-        kernel when booting the image over network. Only makes sense for initrd images.
-    format : str, default is Undefined, optional
-        format is the type of image that is available at the download url:
-        either iso or initrd.
-    imageUrl : str, default is Undefined, optional
-        imageUrl is the URL from which the built image can be downloaded.
-    kernelUrl : str, default is Undefined, optional
-        kernelUrl is the URL from which the kernel of the image can be downloaded.
-        Only makes sense for initrd images.
-    networkData : Metal3IoV1alpha1PreprovisioningImageStatusNetworkData, default is Undefined, optional
-        network data
+    component : str, default is Undefined, required
+        component
+    url : str, default is Undefined, required
+        url
     """
 
 
-    architecture?: str
+    component: str
 
-    conditions?: [Metal3IoV1alpha1PreprovisioningImageStatusConditionsItems0]
-
-    extraKernelParams?: str
-
-    format?: "iso" | "initrd"
-
-    imageUrl?: str
-
-    kernelUrl?: str
-
-    networkData?: Metal3IoV1alpha1PreprovisioningImageStatusNetworkData
+    url: str
 
 
-schema Metal3IoV1alpha1PreprovisioningImageStatusConditionsItems0:
+schema Metal3IoV1alpha1HostFirmwareComponentsStatus:
+    r"""
+    HostFirmwareComponentsStatus defines the observed state of HostFirmwareComponents.
+
+    Attributes
+    ----------
+    components : [Metal3IoV1alpha1HostFirmwareComponentsStatusComponentsItems0], default is Undefined, optional
+        Components is the list of all available firmware components and their information.
+    conditions : [Metal3IoV1alpha1HostFirmwareComponentsStatusConditionsItems0], default is Undefined, optional
+        Track whether updates stored in the spec are valid based on the schema
+    lastUpdated : str, default is Undefined, optional
+        Time that the status was last updated
+    updates : [Metal3IoV1alpha1HostFirmwareComponentsStatusUpdatesItems0], default is Undefined, optional
+        Updates is the list of all firmware components that should be updated
+        they are specified via name and url fields.
+    """
+
+
+    components?: [Metal3IoV1alpha1HostFirmwareComponentsStatusComponentsItems0]
+
+    conditions?: [Metal3IoV1alpha1HostFirmwareComponentsStatusConditionsItems0]
+
+    lastUpdated?: str
+
+    updates?: [Metal3IoV1alpha1HostFirmwareComponentsStatusUpdatesItems0]
+
+
+schema Metal3IoV1alpha1HostFirmwareComponentsStatusComponentsItems0:
+    r"""
+    FirmwareComponentStatus defines the status of a firmware component.
+
+    Attributes
+    ----------
+    component : str, default is Undefined, required
+        component
+    currentVersion : str, default is Undefined, optional
+        current version
+    initialVersion : str, default is Undefined, required
+        initial version
+    lastVersionFlashed : str, default is Undefined, optional
+        last version flashed
+    updatedAt : str, default is Undefined, optional
+        updated at
+    """
+
+
+    component: str
+
+    currentVersion?: str
+
+    initialVersion: str
+
+    lastVersionFlashed?: str
+
+    updatedAt?: str
+
+
+schema Metal3IoV1alpha1HostFirmwareComponentsStatusConditionsItems0:
     r"""
     Condition contains details for one aspect of the current state of this API Resource.
 
@@ -153,22 +178,21 @@ schema Metal3IoV1alpha1PreprovisioningImageStatusConditionsItems0:
         _regex_match(str($type), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$")
 
 
-schema Metal3IoV1alpha1PreprovisioningImageStatusNetworkData:
+schema Metal3IoV1alpha1HostFirmwareComponentsStatusUpdatesItems0:
     r"""
-    networkData is a reference to the version of the Secret containing the
-    network data used to build the image.
+    FirmwareUpdate defines a firmware update specification.
 
     Attributes
     ----------
-    name : str, default is Undefined, optional
-        name
-    version : str, default is Undefined, optional
-        version
+    component : str, default is Undefined, required
+        component
+    url : str, default is Undefined, required
+        url
     """
 
 
-    name?: str
+    component: str
 
-    version?: str
+    url: str
 
 

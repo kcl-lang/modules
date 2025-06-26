@@ -4,10 +4,11 @@ Editing this file might prove futile when you re-run the KCL auto-gen generate c
 """
 import regex
 import k8s.apimachinery.pkg.apis.meta.v1
+_regex_match = regex.match
 
 
 schema BareMetalHost:
-    """
+    r"""
     BareMetalHost is the Schema for the baremetalhosts API
 
     Attributes
@@ -37,31 +38,51 @@ schema BareMetalHost:
 
 
 schema Metal3IoV1alpha1BareMetalHostSpec:
-    """
-    BareMetalHostSpec defines the desired state of BareMetalHost
+    r"""
+    BareMetalHostSpec defines the desired state of BareMetalHost.
 
     Attributes
     ----------
+    architecture : str, default is Undefined, optional
+        CPU architecture of the host, e.g. "x86_64" or "aarch64". If unset,
+        eventually populated by inspection.
     automatedCleaningMode : str, default is "metadata", optional
-        When set to disabled, automated cleaning will be avoided during provisioning and deprovisioning.
+        When set to disabled, automated cleaning will be skipped
+        during provisioning and deprovisioning.
     bmc : Metal3IoV1alpha1BareMetalHostSpecBmc, default is Undefined, optional
         bmc
     bootMACAddress : str, default is Undefined, optional
-        Which MAC address will PXE boot? This is optional for some types, but required for libvirt VMs driven by vbmc.
+        The MAC address of the NIC used for provisioning the host. In case
+        of network boot, this is the MAC address of the PXE booting
+        interface. The MAC address of the BMC must never be used here!
     bootMode : str, default is Undefined, optional
-        Select the method of initializing the hardware during boot. Defaults to UEFI.
+        Select the method of initializing the hardware during boot.
+        Defaults to UEFI. Legacy boot should only be used for hardware that
+        does not support UEFI correctly. Set to UEFISecureBoot to turn
+        secure boot on automatically after provisioning.
     consumerRef : Metal3IoV1alpha1BareMetalHostSpecConsumerRef, default is Undefined, optional
         consumer ref
     customDeploy : Metal3IoV1alpha1BareMetalHostSpecCustomDeploy, default is Undefined, optional
         custom deploy
     description : str, default is Undefined, optional
-        Description is a human-entered text used to help identify the host
+        Description is a human-entered text used to help identify the host.
+    disablePowerOff : bool, default is Undefined, optional
+        When set to true, power off of the node will be disabled,
+        instead, a reboot will be used in place of power on/off
     externallyProvisioned : bool, default is Undefined, optional
-        ExternallyProvisioned means something else is managing the image running on the host and the operator should only manage the power status and hardware inventory inspection. If the Image field is filled in, this field is ignored.
+        ExternallyProvisioned means something else has provisioned the
+        image running on the host, and the operator should only manage
+        the power status. This field is used for integration with already
+        provisioned hosts and when pivoting hosts between clusters. If
+        unsure, leave this field as false.
     firmware : Metal3IoV1alpha1BareMetalHostSpecFirmware, default is Undefined, optional
         firmware
     hardwareProfile : str, default is Undefined, optional
-        What is the name of the hardware profile for this host? It should only be necessary to set this when inspection cannot automatically determine the profile.
+        What is the name of the hardware profile for this host?
+        Hardware profiles are deprecated and should not be used.
+        Use the separate fields Architecture and RootDeviceHints instead.
+        Set to "empty" to prepare for the future version of the API
+        without hardware profiles.
     image : Metal3IoV1alpha1BareMetalHostSpecImage, default is Undefined, optional
         image
     metaData : Metal3IoV1alpha1BareMetalHostSpecMetaData, default is Undefined, optional
@@ -69,19 +90,28 @@ schema Metal3IoV1alpha1BareMetalHostSpec:
     networkData : Metal3IoV1alpha1BareMetalHostSpecNetworkData, default is Undefined, optional
         network data
     online : bool, default is Undefined, required
-        Should the server be online?
+        Should the host be powered on? If the host is currently in a stable
+        state (e.g. provisioned), its power state will be forced to match
+        this value.
     preprovisioningNetworkDataName : str, default is Undefined, optional
-        PreprovisioningNetworkDataName is the name of the Secret in the local namespace containing network configuration (e.g content of network_data.json) which is passed to the preprovisioning image, and to the Config Drive if not overridden by specifying NetworkData.
+        PreprovisioningNetworkDataName is the name of the Secret in the
+        local namespace containing network configuration which is passed to
+        the preprovisioning image, and to the Config Drive if not overridden
+        by specifying NetworkData.
     raid : Metal3IoV1alpha1BareMetalHostSpecRaid, default is Undefined, optional
         raid
     rootDeviceHints : Metal3IoV1alpha1BareMetalHostSpecRootDeviceHints, default is Undefined, optional
         root device hints
     taints : [Metal3IoV1alpha1BareMetalHostSpecTaintsItems0], default is Undefined, optional
-        Taints is the full, authoritative list of taints to apply to the corresponding Machine. This list will overwrite any modifications made to the Machine on an ongoing basis.
+        Taints is the full, authoritative list of taints to apply to
+        the corresponding Machine. This list will overwrite any
+        modifications made to the Machine on an ongoing basis.
     userData : Metal3IoV1alpha1BareMetalHostSpecUserData, default is Undefined, optional
         user data
     """
 
+
+    architecture?: str
 
     automatedCleaningMode?: "metadata" | "disabled" = "metadata"
 
@@ -96,6 +126,8 @@ schema Metal3IoV1alpha1BareMetalHostSpec:
     customDeploy?: Metal3IoV1alpha1BareMetalHostSpecCustomDeploy
 
     description?: str
+
+    disablePowerOff?: bool
 
     externallyProvisioned?: bool
 
@@ -123,21 +155,28 @@ schema Metal3IoV1alpha1BareMetalHostSpec:
 
 
     check:
-        regex.match(str(bootMACAddress), r"[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}") if bootMACAddress
+        _regex_match(str(bootMACAddress), r"[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}") if bootMACAddress
 
 
 schema Metal3IoV1alpha1BareMetalHostSpecBmc:
-    """
-    How do we connect to the BMC?
+    r"""
+    How do we connect to the BMC (Baseboard Management Controller) on
+    the host?
 
     Attributes
     ----------
     address : str, default is Undefined, required
         Address holds the URL for accessing the controller on the network.
+        The scheme part designates the driver to use with the host.
     credentialsName : str, default is Undefined, required
-        The name of the secret containing the BMC credentials (requires keys "username" and "password").
+        The name of the secret containing the BMC credentials (requires
+        keys "username" and "password").
     disableCertificateVerification : bool, default is Undefined, optional
-        DisableCertificateVerification disables verification of server certificates when using HTTPS to connect to the BMC. This is required when the server certificate is self-signed, but is insecure because it allows a man-in-the-middle to intercept the connection.
+        DisableCertificateVerification disables verification of server
+        certificates when using HTTPS to connect to the BMC. This is
+        required when the server certificate is self-signed, but is
+        insecure because it allows a man-in-the-middle to intercept the
+        connection.
     """
 
 
@@ -149,25 +188,39 @@ schema Metal3IoV1alpha1BareMetalHostSpecBmc:
 
 
 schema Metal3IoV1alpha1BareMetalHostSpecConsumerRef:
-    """
-    ConsumerRef can be used to store information about something that is using a host. When it is not empty, the host is considered "in use".
+    r"""
+    ConsumerRef can be used to store information about something
+    that is using a host. When it is not empty, the host is
+    considered "in use". The common use case is a link to a Machine
+    resource when the host is used by Cluster API.
 
     Attributes
     ----------
     apiVersion : str, default is Undefined, optional
         API version of the referent.
     fieldPath : str, default is Undefined, optional
-        If referring to a piece of an object instead of an entire object, this string should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2]. For example, if the object reference is to a container within a pod, this would take on a value like: "spec.containers{name}" (where "name" refers to the name of the container that triggered the event) or if no container name is specified "spec.containers[2]" (container with index 2 in this pod). This syntax is chosen only to have some well-defined way of referencing a part of an object. TODO: this design is not final and this field is subject to change in the future.
+        If referring to a piece of an object instead of an entire object, this string
+        should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2].
+        For example, if the object reference is to a container within a pod, this would take on a value like:
+        "spec.containers{name}" (where "name" refers to the name of the container that triggered
+        the event) or if no container name is specified "spec.containers[2]" (container with
+        index 2 in this pod). This syntax is chosen only to have some well-defined way of
+        referencing a part of an object.
     kind : str, default is Undefined, optional
-        Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+        Kind of the referent.
+        More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        Name of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        Namespace of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
     resourceVersion : str, default is Undefined, optional
-        Specific resourceVersion to which this reference is made, if any. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+        Specific resourceVersion to which this reference is made, if any.
+        More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
     uid : str, default is Undefined, optional
-        UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
+        UID of the referent.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
     """
 
 
@@ -187,13 +240,18 @@ schema Metal3IoV1alpha1BareMetalHostSpecConsumerRef:
 
 
 schema Metal3IoV1alpha1BareMetalHostSpecCustomDeploy:
-    """
-    A custom deploy procedure.
+    r"""
+    A custom deploy procedure. This is an advanced feature that allows
+    using a custom deploy step provided by a site-specific deployment
+    ramdisk. Most users will want to use "image" instead. Setting this
+    field triggers provisioning.
 
     Attributes
     ----------
     method : str, default is Undefined, required
-        Custom deploy method name. This name is specific to the deploy ramdisk used. If you don't have a custom deploy ramdisk, you shouldn't use CustomDeploy.
+        Custom deploy method name.
+        This name is specific to the deploy ramdisk used. If you don't have
+        a custom deploy ramdisk, you shouldn't use CustomDeploy.
     """
 
 
@@ -201,17 +259,21 @@ schema Metal3IoV1alpha1BareMetalHostSpecCustomDeploy:
 
 
 schema Metal3IoV1alpha1BareMetalHostSpecFirmware:
-    """
-    BIOS configuration for bare metal server
+    r"""
+    Firmware (BIOS) configuration for bare metal server. If set, the
+    requested settings will be applied before the host is provisioned.
+    Only some vendor drivers support this field. An alternative is to
+    use HostFirmwareSettings resources that allow changing arbitrary
+    values and support the generic Redfish-based drivers.
 
     Attributes
     ----------
     simultaneousMultithreadingEnabled : bool, default is Undefined, optional
-        Allows a single physical processor core to appear as several logical processors. This supports following options: true, false.
+        Allows a single physical processor core to appear as several logical processors.
     sriovEnabled : bool, default is Undefined, optional
-        SR-IOV support enables a hypervisor to create virtual instances of a PCI-express device, potentially increasing performance. This supports following options: true, false.
+        SR-IOV support enables a hypervisor to create virtual instances of a PCI-express device, potentially increasing performance.
     virtualizationEnabled : bool, default is Undefined, optional
-        Supports the virtualization of platform hardware. This supports following options: true, false.
+        Supports the virtualization of platform hardware.
     """
 
 
@@ -223,17 +285,23 @@ schema Metal3IoV1alpha1BareMetalHostSpecFirmware:
 
 
 schema Metal3IoV1alpha1BareMetalHostSpecImage:
-    """
-    Image holds the details of the image to be provisioned.
+    r"""
+    Image holds the details of the image to be provisioned. Populating
+    the image will cause the host to start provisioning.
 
     Attributes
     ----------
     checksum : str, default is Undefined, optional
-        Checksum is the checksum for the image.
+        Checksum is the checksum for the image. Required for all formats
+        except for "live-iso".
     checksumType : str, default is Undefined, optional
-        ChecksumType is the checksum algorithm for the image. e.g md5, sha256, sha512
+        ChecksumType is the checksum algorithm for the image, e.g md5, sha256 or sha512.
+        The special value "auto" can be used to detect the algorithm from the checksum.
+        If missing, MD5 is used. If in doubt, use "auto".
     format : str, default is Undefined, optional
-        DiskFormat contains the format of the image (raw, qcow2, ...). Needs to be set to raw for raw images streaming. Note live-iso means an iso referenced by the url will be live-booted and not deployed to disk, and in this case the checksum options are not required and if specified will be ignored.
+        Format contains the format of the image (raw, qcow2, ...).
+        When set to "live-iso", an ISO 9660 image referenced by the url will
+        be live-booted and not deployed to disk.
     url : str, default is Undefined, required
         URL is a location of an image to deploy.
     """
@@ -241,7 +309,7 @@ schema Metal3IoV1alpha1BareMetalHostSpecImage:
 
     checksum?: str
 
-    checksumType?: "md5" | "sha256" | "sha512"
+    checksumType?: "md5" | "sha256" | "sha512" | "auto"
 
     format?: "raw" | "qcow2" | "vdi" | "vmdk" | "live-iso"
 
@@ -249,15 +317,17 @@ schema Metal3IoV1alpha1BareMetalHostSpecImage:
 
 
 schema Metal3IoV1alpha1BareMetalHostSpecMetaData:
-    """
-    MetaData holds the reference to the Secret containing host metadata (e.g. meta_data.json) which is passed to the Config Drive.
+    r"""
+    MetaData holds the reference to the Secret containing host metadata
+    which is passed to the Config Drive. By default, metadata will be
+    generated for the host, so most users do not need to set this field.
 
     Attributes
     ----------
     name : str, default is Undefined, optional
-        Name is unique within a namespace to reference a secret resource.
+        name is unique within a namespace to reference a secret resource.
     namespace : str, default is Undefined, optional
-        Namespace defines the space within which the secret name must be unique.
+        namespace defines the space within which the secret name must be unique.
     """
 
 
@@ -267,15 +337,17 @@ schema Metal3IoV1alpha1BareMetalHostSpecMetaData:
 
 
 schema Metal3IoV1alpha1BareMetalHostSpecNetworkData:
-    """
-    NetworkData holds the reference to the Secret containing network configuration (e.g content of network_data.json) which is passed to the Config Drive.
+    r"""
+    NetworkData holds the reference to the Secret containing network
+    configuration which is passed to the Config Drive and interpreted
+    by the first boot software such as cloud-init.
 
     Attributes
     ----------
     name : str, default is Undefined, optional
-        Name is unique within a namespace to reference a secret resource.
+        name is unique within a namespace to reference a secret resource.
     namespace : str, default is Undefined, optional
-        Namespace defines the space within which the secret name must be unique.
+        namespace defines the space within which the secret name must be unique.
     """
 
 
@@ -285,15 +357,27 @@ schema Metal3IoV1alpha1BareMetalHostSpecNetworkData:
 
 
 schema Metal3IoV1alpha1BareMetalHostSpecRaid:
-    """
-    RAID configuration for bare metal server
+    r"""
+    RAID configuration for bare metal server. If set, the RAID settings
+    will be applied before the host is provisioned. If not, the current
+    settings will not be modified. Only one of the sub-fields
+    hardwareRAIDVolumes and softwareRAIDVolumes can be set at the same
+    time.
 
     Attributes
     ----------
     hardwareRAIDVolumes : [Metal3IoV1alpha1BareMetalHostSpecRaidHardwareRAIDVolumesItems0], default is Undefined, optional
-        The list of logical disks for hardware RAID, if rootDeviceHints isn't used, first volume is root volume. You can set the value of this field to `[]` to clear all the hardware RAID configurations.
+        The list of logical disks for hardware RAID, if rootDeviceHints isn't used, first volume is root volume.
+        You can set the value of this field to `[]` to clear all the hardware RAID configurations.
     softwareRAIDVolumes : [Metal3IoV1alpha1BareMetalHostSpecRaidSoftwareRAIDVolumesItems0], default is Undefined, optional
-        The list of logical disks for software RAID, if rootDeviceHints isn't used, first volume is root volume. If HardwareRAIDVolumes is set this item will be invalid. The number of created Software RAID devices must be 1 or 2. If there is only one Software RAID device, it has to be a RAID-1. If there are two, the first one has to be a RAID-1, while the RAID level for the second one can be 0, 1, or 1+0. As the first RAID device will be the deployment device, enforcing a RAID-1 reduces the risk of ending up with a non-booting node in case of a disk failure. Software RAID will always be deleted.
+        The list of logical disks for software RAID, if rootDeviceHints isn't used, first volume is root volume.
+        If HardwareRAIDVolumes is set this item will be invalid.
+        The number of created Software RAID devices must be 1 or 2.
+        If there is only one Software RAID device, it has to be a RAID-1.
+        If there are two, the first one has to be a RAID-1, while the RAID level for the second one can be 0, 1, or 1+0.
+        As the first RAID device will be the deployment device,
+        enforcing a RAID-1 reduces the risk of ending up with a non-booting host in case of a disk failure.
+        Software RAID will always be deleted.
     """
 
 
@@ -303,29 +387,37 @@ schema Metal3IoV1alpha1BareMetalHostSpecRaid:
 
 
     check:
-        len(softwareRAIDVolumes) <= 2
+        len(softwareRAIDVolumes) <= 2 if softwareRAIDVolumes
 
 
 schema Metal3IoV1alpha1BareMetalHostSpecRaidHardwareRAIDVolumesItems0:
-    """
-    HardwareRAIDVolume defines the desired configuration of volume in hardware RAID
+    r"""
+    HardwareRAIDVolume defines the desired configuration of volume in hardware RAID.
 
     Attributes
     ----------
     controller : str, default is Undefined, optional
-        The name of the RAID controller to use
+        The name of the RAID controller to use.
     level : str, default is Undefined, required
-        RAID level for the logical disk. The following levels are supported: 0;1;2;5;6;1+0;5+0;6+0.
+        RAID level for the logical disk. The following levels are supported:
+        0, 1, 2, 5, 6, 1+0, 5+0, 6+0 (drivers may support only some of them).
     name : str, default is Undefined, optional
-        Name of the volume. Should be unique within the Node. If not specified, volume name will be auto-generated.
+        Name of the volume. Should be unique within the Node. If not
+        specified, the name will be auto-generated.
     numberOfPhysicalDisks : int, default is Undefined, optional
-        Integer, number of physical disks to use for the logical disk. Defaults to minimum number of disks required for the particular RAID level.
+        Integer, number of physical disks to use for the logical disk.
+        Defaults to minimum number of disks required for the particular RAID
+        level.
     physicalDisks : [str], default is Undefined, optional
-        Optional list of physical disk names to be used for the Hardware RAID volumes. The disk names are interpreted by the Hardware RAID controller, and the format is hardware specific.
+        Optional list of physical disk names to be used for the hardware RAID volumes. The disk names are interpreted
+        by the hardware RAID controller, and the format is hardware specific.
     rotational : bool, default is Undefined, optional
-        Select disks with only rotational or solid-state storage
+        Select disks with only rotational (if set to true) or solid-state
+        (if set to false) storage. By default, any disks can be picked.
     sizeGibibytes : int, default is Undefined, optional
-        Size (Integer) of the logical disk to be created in GiB. If unspecified or set be 0, the maximum capacity of disk will be used for logical disk.
+        Size of the logical disk to be created in GiB. If unspecified or
+        set be 0, the maximum capacity of disk will be used for logical
+        disk.
     """
 
 
@@ -345,23 +437,25 @@ schema Metal3IoV1alpha1BareMetalHostSpecRaidHardwareRAIDVolumesItems0:
 
 
     check:
-        len(name) <= 64
-        numberOfPhysicalDisks >= 1
-        sizeGibibytes >= 0
+        len(name) <= 64 if name
+        numberOfPhysicalDisks >= 1 if numberOfPhysicalDisks not in [None, Undefined]
+        sizeGibibytes >= 0 if sizeGibibytes not in [None, Undefined]
 
 
 schema Metal3IoV1alpha1BareMetalHostSpecRaidSoftwareRAIDVolumesItems0:
-    """
-    SoftwareRAIDVolume defines the desired configuration of volume in software RAID
+    r"""
+    SoftwareRAIDVolume defines the desired configuration of volume in software RAID.
 
     Attributes
     ----------
     level : str, default is Undefined, required
-        RAID level for the logical disk. The following levels are supported: 0;1;1+0.
+        RAID level for the logical disk. The following levels are supported:
+        0, 1 and 1+0.
     physicalDisks : [Metal3IoV1alpha1BareMetalHostSpecRaidSoftwareRAIDVolumesItems0PhysicalDisksItems0], default is Undefined, optional
         A list of device hints, the number of items should be greater than or equal to 2.
     sizeGibibytes : int, default is Undefined, optional
-        Size (Integer) of the logical disk to be created in GiB. If unspecified or set be 0, the maximum capacity of disk will be used for logical disk.
+        Size of the logical disk to be created in GiB.
+        If unspecified or set be 0, the maximum capacity of disk will be used for logical disk.
     """
 
 
@@ -373,36 +467,46 @@ schema Metal3IoV1alpha1BareMetalHostSpecRaidSoftwareRAIDVolumesItems0:
 
 
     check:
-        len(physicalDisks) >= 2
-        sizeGibibytes >= 0
+        len(physicalDisks) >= 2 if physicalDisks
+        sizeGibibytes >= 0 if sizeGibibytes not in [None, Undefined]
 
 
 schema Metal3IoV1alpha1BareMetalHostSpecRaidSoftwareRAIDVolumesItems0PhysicalDisksItems0:
-    """
-    RootDeviceHints holds the hints for specifying the storage location for the root filesystem for the image.
+    r"""
+    RootDeviceHints holds the hints for specifying the storage location
+    for the root filesystem for the image.
 
     Attributes
     ----------
     deviceName : str, default is Undefined, optional
-        A Linux device name like "/dev/vda". The hint must match the actual value exactly.
+        A Linux device name like "/dev/vda", or a by-path link to it like
+        "/dev/disk/by-path/pci-0000:01:00.0-scsi-0:2:0:0". The hint must match
+        the actual value exactly.
     hctl : str, default is Undefined, optional
-        A SCSI bus address like 0:0:0:0. The hint must match the actual value exactly.
+        A SCSI bus address like 0:0:0:0. The hint must match the actual
+        value exactly.
     minSizeGigabytes : int, default is Undefined, optional
         The minimum size of the device in Gigabytes.
     model : str, default is Undefined, optional
-        A vendor-specific device identifier. The hint can be a substring of the actual value.
+        A vendor-specific device identifier. The hint can be a
+        substring of the actual value.
     rotational : bool, default is Undefined, optional
         True if the device should use spinning media, false otherwise.
     serialNumber : str, default is Undefined, optional
-        Device serial number. The hint must match the actual value exactly.
+        Device serial number. The hint must match the actual value
+        exactly.
     vendor : str, default is Undefined, optional
-        The name of the vendor or manufacturer of the device. The hint can be a substring of the actual value.
+        The name of the vendor or manufacturer of the device. The hint
+        can be a substring of the actual value.
     wwn : str, default is Undefined, optional
-        Unique storage identifier. The hint must match the actual value exactly.
+        Unique storage identifier. The hint must match the actual value
+        exactly.
     wwnVendorExtension : str, default is Undefined, optional
-        Unique vendor storage identifier. The hint must match the actual value exactly.
+        Unique vendor storage identifier. The hint must match the
+        actual value exactly.
     wwnWithExtension : str, default is Undefined, optional
-        Unique storage identifier with the vendor extension appended. The hint must match the actual value exactly.
+        Unique storage identifier with the vendor extension
+        appended. The hint must match the actual value exactly.
     """
 
 
@@ -428,35 +532,46 @@ schema Metal3IoV1alpha1BareMetalHostSpecRaidSoftwareRAIDVolumesItems0PhysicalDis
 
 
     check:
-        minSizeGigabytes >= 0
+        minSizeGigabytes >= 0 if minSizeGigabytes not in [None, Undefined]
 
 
 schema Metal3IoV1alpha1BareMetalHostSpecRootDeviceHints:
-    """
-    Provide guidance about how to choose the device for the image being provisioned.
+    r"""
+    Provide guidance about how to choose the device for the image
+    being provisioned. The default is currently to use /dev/sda as
+    the root device.
 
     Attributes
     ----------
     deviceName : str, default is Undefined, optional
-        A Linux device name like "/dev/vda". The hint must match the actual value exactly.
+        A Linux device name like "/dev/vda", or a by-path link to it like
+        "/dev/disk/by-path/pci-0000:01:00.0-scsi-0:2:0:0". The hint must match
+        the actual value exactly.
     hctl : str, default is Undefined, optional
-        A SCSI bus address like 0:0:0:0. The hint must match the actual value exactly.
+        A SCSI bus address like 0:0:0:0. The hint must match the actual
+        value exactly.
     minSizeGigabytes : int, default is Undefined, optional
         The minimum size of the device in Gigabytes.
     model : str, default is Undefined, optional
-        A vendor-specific device identifier. The hint can be a substring of the actual value.
+        A vendor-specific device identifier. The hint can be a
+        substring of the actual value.
     rotational : bool, default is Undefined, optional
         True if the device should use spinning media, false otherwise.
     serialNumber : str, default is Undefined, optional
-        Device serial number. The hint must match the actual value exactly.
+        Device serial number. The hint must match the actual value
+        exactly.
     vendor : str, default is Undefined, optional
-        The name of the vendor or manufacturer of the device. The hint can be a substring of the actual value.
+        The name of the vendor or manufacturer of the device. The hint
+        can be a substring of the actual value.
     wwn : str, default is Undefined, optional
-        Unique storage identifier. The hint must match the actual value exactly.
+        Unique storage identifier. The hint must match the actual value
+        exactly.
     wwnVendorExtension : str, default is Undefined, optional
-        Unique vendor storage identifier. The hint must match the actual value exactly.
+        Unique vendor storage identifier. The hint must match the
+        actual value exactly.
     wwnWithExtension : str, default is Undefined, optional
-        Unique storage identifier with the vendor extension appended. The hint must match the actual value exactly.
+        Unique storage identifier with the vendor extension
+        appended. The hint must match the actual value exactly.
     """
 
 
@@ -482,21 +597,25 @@ schema Metal3IoV1alpha1BareMetalHostSpecRootDeviceHints:
 
 
     check:
-        minSizeGigabytes >= 0
+        minSizeGigabytes >= 0 if minSizeGigabytes not in [None, Undefined]
 
 
 schema Metal3IoV1alpha1BareMetalHostSpecTaintsItems0:
-    """
-    The node this Taint is attached to has the "effect" on any pod that does not tolerate the Taint.
+    r"""
+    The node this Taint is attached to has the "effect" on
+    any pod that does not tolerate the Taint.
 
     Attributes
     ----------
     effect : str, default is Undefined, required
-        Required. The effect of the taint on pods that do not tolerate the taint. Valid effects are NoSchedule, PreferNoSchedule and NoExecute.
+        Required. The effect of the taint on pods
+        that do not tolerate the taint.
+        Valid effects are NoSchedule, PreferNoSchedule and NoExecute.
     key : str, default is Undefined, required
         Required. The taint key to be applied to a node.
     timeAdded : str, default is Undefined, optional
-        TimeAdded represents the time at which the taint was added. It is only written for NoExecute taints.
+        TimeAdded represents the time at which the taint was added.
+        It is only written for NoExecute taints.
     value : str, default is Undefined, optional
         The taint value corresponding to the taint key.
     """
@@ -512,15 +631,18 @@ schema Metal3IoV1alpha1BareMetalHostSpecTaintsItems0:
 
 
 schema Metal3IoV1alpha1BareMetalHostSpecUserData:
-    """
-    UserData holds the reference to the Secret containing the user data to be passed to the host before it boots.
+    r"""
+    UserData holds the reference to the Secret containing the user data
+    which is passed to the Config Drive and interpreted by the
+    first-boot software such as cloud-init. The format of user data is
+    specific to the first-boot software.
 
     Attributes
     ----------
     name : str, default is Undefined, optional
-        Name is unique within a namespace to reference a secret resource.
+        name is unique within a namespace to reference a secret resource.
     namespace : str, default is Undefined, optional
-        Namespace defines the space within which the secret name must be unique.
+        namespace defines the space within which the secret name must be unique.
     """
 
 
@@ -530,23 +652,25 @@ schema Metal3IoV1alpha1BareMetalHostSpecUserData:
 
 
 schema Metal3IoV1alpha1BareMetalHostStatus:
-    """
-    BareMetalHostStatus defines the observed state of BareMetalHost
+    r"""
+    BareMetalHostStatus defines the observed state of BareMetalHost.
 
     Attributes
     ----------
     errorCount : int, default is Undefined, required
         ErrorCount records how many times the host has encoutered an error since the last successful operation
     errorMessage : str, default is Undefined, required
-        the last error message reported by the provisioning subsystem
+        The last error message reported by the provisioning subsystem.
     errorType : str, default is Undefined, optional
-        ErrorType indicates the type of failure encountered when the OperationalStatus is OperationalStatusError
+        ErrorType indicates the type of failure encountered when the
+        OperationalStatus is OperationalStatusError
     goodCredentials : Metal3IoV1alpha1BareMetalHostStatusGoodCredentials, default is Undefined, optional
         good credentials
     hardware : Metal3IoV1alpha1BareMetalHostStatusHardware, default is Undefined, optional
         hardware
-    hardwareProfile : str, default is Undefined, required
+    hardwareProfile : str, default is Undefined, optional
         The name of the profile matching the hardware details.
+        Hardware profiles are deprecated and should not be relied on.
     lastUpdated : str, default is Undefined, optional
         LastUpdated identifies when this status was last observed.
     operationHistory : Metal3IoV1alpha1BareMetalHostStatusOperationHistory, default is Undefined, optional
@@ -554,7 +678,9 @@ schema Metal3IoV1alpha1BareMetalHostStatus:
     operationalStatus : str, default is Undefined, required
         OperationalStatus holds the status of the host
     poweredOn : bool, default is Undefined, required
-        indicator for whether or not the host is powered on
+        The currently detected power state of the host. This field may get
+        briefly out of sync with the actual state of the hardware while
+        provisioning processes are running.
     provisioning : Metal3IoV1alpha1BareMetalHostStatusProvisioning, default is Undefined, required
         provisioning
     triedCredentials : Metal3IoV1alpha1BareMetalHostStatusTriedCredentials, default is Undefined, optional
@@ -566,19 +692,19 @@ schema Metal3IoV1alpha1BareMetalHostStatus:
 
     errorMessage: str
 
-    errorType?: "provisioned registration error" | "registration error" | "inspection error" | "preparation error" | "provisioning error" | "power management error"
+    errorType?: "provisioned registration error" | "registration error" | "inspection error" | "preparation error" | "provisioning error" | "power management error" | "servicing error"
 
     goodCredentials?: Metal3IoV1alpha1BareMetalHostStatusGoodCredentials
 
     hardware?: Metal3IoV1alpha1BareMetalHostStatusHardware
 
-    hardwareProfile: str
+    hardwareProfile?: str
 
     lastUpdated?: str
 
     operationHistory?: Metal3IoV1alpha1BareMetalHostStatusOperationHistory
 
-    operationalStatus: "" | "OK" | "discovered" | "error" | "delayed" | "detached"
+    operationalStatus: "" | "OK" | "discovered" | "error" | "delayed" | "detached" | "servicing"
 
     poweredOn: bool
 
@@ -588,8 +714,8 @@ schema Metal3IoV1alpha1BareMetalHostStatus:
 
 
 schema Metal3IoV1alpha1BareMetalHostStatusGoodCredentials:
-    """
-    the last credentials we were able to validate as working
+    r"""
+    The last credentials we were able to validate as working.
 
     Attributes
     ----------
@@ -606,15 +732,16 @@ schema Metal3IoV1alpha1BareMetalHostStatusGoodCredentials:
 
 
 schema Metal3IoV1alpha1BareMetalHostStatusGoodCredentialsCredentials:
-    """
-    SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace
+    r"""
+    SecretReference represents a Secret Reference. It has enough information to retrieve secret
+    in any namespace
 
     Attributes
     ----------
     name : str, default is Undefined, optional
-        Name is unique within a namespace to reference a secret resource.
+        name is unique within a namespace to reference a secret resource.
     namespace : str, default is Undefined, optional
-        Namespace defines the space within which the secret name must be unique.
+        namespace defines the space within which the secret name must be unique.
     """
 
 
@@ -624,8 +751,10 @@ schema Metal3IoV1alpha1BareMetalHostStatusGoodCredentialsCredentials:
 
 
 schema Metal3IoV1alpha1BareMetalHostStatusHardware:
-    """
+    r"""
     The hardware discovered to exist on the host.
+    This field will be removed in the next API version in favour of the
+    separate HardwareData resource.
 
     Attributes
     ----------
@@ -636,11 +765,11 @@ schema Metal3IoV1alpha1BareMetalHostStatusHardware:
     hostname : str, default is Undefined, optional
         hostname
     nics : [Metal3IoV1alpha1BareMetalHostStatusHardwareNicsItems0], default is Undefined, optional
-        nics
+        List of network interfaces for the host.
     ramMebibytes : int, default is Undefined, optional
-        ram mebibytes
+        The host's amount of memory in Mebibytes.
     storage : [Metal3IoV1alpha1BareMetalHostStatusHardwareStorageItems0], default is Undefined, optional
-        storage
+        List of storage (disk, SSD, etc.) available to the host.
     systemVendor : Metal3IoV1alpha1BareMetalHostStatusHardwareSystemVendor, default is Undefined, optional
         system vendor
     """
@@ -662,8 +791,8 @@ schema Metal3IoV1alpha1BareMetalHostStatusHardware:
 
 
 schema Metal3IoV1alpha1BareMetalHostStatusHardwareCPU:
-    """
-    CPU describes one processor on the host.
+    r"""
+    Details of the CPU(s) in the system.
 
     Attributes
     ----------
@@ -692,8 +821,8 @@ schema Metal3IoV1alpha1BareMetalHostStatusHardwareCPU:
 
 
 schema Metal3IoV1alpha1BareMetalHostStatusHardwareFirmware:
-    """
-    Firmware describes the firmware on the host.
+    r"""
+    System firmware information.
 
     Attributes
     ----------
@@ -706,7 +835,7 @@ schema Metal3IoV1alpha1BareMetalHostStatusHardwareFirmware:
 
 
 schema Metal3IoV1alpha1BareMetalHostStatusHardwareFirmwareBios:
-    """
+    r"""
     The BIOS for this firmware
 
     Attributes
@@ -728,13 +857,15 @@ schema Metal3IoV1alpha1BareMetalHostStatusHardwareFirmwareBios:
 
 
 schema Metal3IoV1alpha1BareMetalHostStatusHardwareNicsItems0:
-    """
+    r"""
     NIC describes one network interface on the host.
 
     Attributes
     ----------
     ip : str, default is Undefined, optional
-        The IP address of the interface. This will be an IPv4 or IPv6 address if one is present.  If both IPv4 and IPv6 addresses are present in a dual-stack environment, two nics will be output, one with each IP.
+        The IP address of the interface. This will be an IPv4 or IPv6 address
+        if one is present.  If both IPv4 and IPv6 addresses are present in a
+        dual-stack environment, two nics will be output, one with each IP.
     mac : str, default is Undefined, optional
         The device MAC address
     model : str, default is Undefined, optional
@@ -770,14 +901,14 @@ schema Metal3IoV1alpha1BareMetalHostStatusHardwareNicsItems0:
 
 
     check:
-        regex.match(str(mac), r"[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}") if mac
-        vlanId <= 4094
-        vlanId >= 0
+        _regex_match(str(mac), r"[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}") if mac
+        vlanId <= 4094 if vlanId not in [None, Undefined]
+        vlanId >= 0 if vlanId not in [None, Undefined]
 
 
 schema Metal3IoV1alpha1BareMetalHostStatusHardwareNicsItems0VlansItems0:
-    """
-    VLAN represents the name and ID of a VLAN
+    r"""
+    VLAN represents the name and ID of a VLAN.
 
     Attributes
     ----------
@@ -794,24 +925,33 @@ schema Metal3IoV1alpha1BareMetalHostStatusHardwareNicsItems0VlansItems0:
 
 
     check:
-        id <= 4094
-        id >= 0
+        id <= 4094 if id not in [None, Undefined]
+        id >= 0 if id not in [None, Undefined]
 
 
 schema Metal3IoV1alpha1BareMetalHostStatusHardwareStorageItems0:
-    """
+    r"""
     Storage describes one storage device (disk, SSD, etc.) on the host.
 
     Attributes
     ----------
+    alternateNames : [str], default is Undefined, optional
+        A list of alternate Linux device names of the disk, e.g. "/dev/sda".
+        Note that this list is not exhaustive, and names may not be stable
+        across reboots.
     hctl : str, default is Undefined, optional
         The SCSI location of the device
     model : str, default is Undefined, optional
         Hardware model
     name : str, default is Undefined, optional
-        The Linux device name of the disk, e.g. "/dev/sda". Note that this may not be stable across reboots.
+        A Linux device name of the disk, e.g.
+        "/dev/disk/by-path/pci-0000:01:00.0-scsi-0:2:0:0". This will be a name
+        that is stable across reboots if one is available.
     rotational : bool, default is Undefined, optional
-        Whether this disk represents rotational storage. This field is not recommended for usage, please prefer using 'Type' field instead, this field will be deprecated eventually.
+        Whether this disk represents rotational storage.
+        This field is not recommended for usage, please
+        prefer using 'Type' field instead, this field
+        will be deprecated eventually.
     serialNumber : str, default is Undefined, optional
         The serial number of the device
     sizeBytes : int, default is Undefined, optional
@@ -828,6 +968,8 @@ schema Metal3IoV1alpha1BareMetalHostStatusHardwareStorageItems0:
         The WWN with the extension
     """
 
+
+    alternateNames?: [str]
 
     hctl?: str
 
@@ -853,8 +995,8 @@ schema Metal3IoV1alpha1BareMetalHostStatusHardwareStorageItems0:
 
 
 schema Metal3IoV1alpha1BareMetalHostStatusHardwareSystemVendor:
-    """
-    HardwareSystemVendor stores details about the whole hardware system.
+    r"""
+    System vendor information.
 
     Attributes
     ----------
@@ -875,8 +1017,9 @@ schema Metal3IoV1alpha1BareMetalHostStatusHardwareSystemVendor:
 
 
 schema Metal3IoV1alpha1BareMetalHostStatusOperationHistory:
-    """
-    OperationHistory holds information about operations performed on this host.
+    r"""
+    OperationHistory holds information about operations performed
+    on this host.
 
     Attributes
     ----------
@@ -901,8 +1044,9 @@ schema Metal3IoV1alpha1BareMetalHostStatusOperationHistory:
 
 
 schema Metal3IoV1alpha1BareMetalHostStatusOperationHistoryDeprovision:
-    """
-    OperationMetric contains metadata about an operation (inspection, provisioning, etc.) used for tracking metrics.
+    r"""
+    OperationMetric contains metadata about an operation (inspection,
+    provisioning, etc.) used for tracking metrics.
 
     Attributes
     ----------
@@ -919,8 +1063,9 @@ schema Metal3IoV1alpha1BareMetalHostStatusOperationHistoryDeprovision:
 
 
 schema Metal3IoV1alpha1BareMetalHostStatusOperationHistoryInspect:
-    """
-    OperationMetric contains metadata about an operation (inspection, provisioning, etc.) used for tracking metrics.
+    r"""
+    OperationMetric contains metadata about an operation (inspection,
+    provisioning, etc.) used for tracking metrics.
 
     Attributes
     ----------
@@ -937,8 +1082,9 @@ schema Metal3IoV1alpha1BareMetalHostStatusOperationHistoryInspect:
 
 
 schema Metal3IoV1alpha1BareMetalHostStatusOperationHistoryProvision:
-    """
-    OperationMetric contains metadata about an operation (inspection, provisioning, etc.) used for tracking metrics.
+    r"""
+    OperationMetric contains metadata about an operation (inspection,
+    provisioning, etc.) used for tracking metrics.
 
     Attributes
     ----------
@@ -955,8 +1101,9 @@ schema Metal3IoV1alpha1BareMetalHostStatusOperationHistoryProvision:
 
 
 schema Metal3IoV1alpha1BareMetalHostStatusOperationHistoryRegister:
-    """
-    OperationMetric contains metadata about an operation (inspection, provisioning, etc.) used for tracking metrics.
+    r"""
+    OperationMetric contains metadata about an operation (inspection,
+    provisioning, etc.) used for tracking metrics.
 
     Attributes
     ----------
@@ -973,15 +1120,16 @@ schema Metal3IoV1alpha1BareMetalHostStatusOperationHistoryRegister:
 
 
 schema Metal3IoV1alpha1BareMetalHostStatusProvisioning:
-    """
+    r"""
     Information tracked by the provisioner.
 
     Attributes
     ----------
     ID : str, default is Undefined, required
-        The machine's UUID from the underlying provisioning tool
+        The hosts's ID from the underlying provisioning tool (e.g. the
+        Ironic node UUID).
     bootMode : str, default is Undefined, optional
-        BootMode indicates the boot mode used to provision the node
+        BootMode indicates the boot mode used to provision the host.
     customDeploy : Metal3IoV1alpha1BareMetalHostStatusProvisioningCustomDeploy, default is Undefined, optional
         custom deploy
     firmware : Metal3IoV1alpha1BareMetalHostStatusProvisioningFirmware, default is Undefined, optional
@@ -993,7 +1141,7 @@ schema Metal3IoV1alpha1BareMetalHostStatusProvisioning:
     rootDeviceHints : Metal3IoV1alpha1BareMetalHostStatusProvisioningRootDeviceHints, default is Undefined, optional
         root device hints
     state : str, default is Undefined, required
-        An indiciator for what the provisioner is doing with the host.
+        An indicator for what the provisioner is doing with the host.
     """
 
 
@@ -1015,13 +1163,15 @@ schema Metal3IoV1alpha1BareMetalHostStatusProvisioning:
 
 
 schema Metal3IoV1alpha1BareMetalHostStatusProvisioningCustomDeploy:
-    """
+    r"""
     Custom deploy procedure applied to the host.
 
     Attributes
     ----------
     method : str, default is Undefined, required
-        Custom deploy method name. This name is specific to the deploy ramdisk used. If you don't have a custom deploy ramdisk, you shouldn't use CustomDeploy.
+        Custom deploy method name.
+        This name is specific to the deploy ramdisk used. If you don't have
+        a custom deploy ramdisk, you shouldn't use CustomDeploy.
     """
 
 
@@ -1029,17 +1179,17 @@ schema Metal3IoV1alpha1BareMetalHostStatusProvisioningCustomDeploy:
 
 
 schema Metal3IoV1alpha1BareMetalHostStatusProvisioningFirmware:
-    """
-    The Bios set by the user
+    r"""
+    The firmware settings that have been applied.
 
     Attributes
     ----------
     simultaneousMultithreadingEnabled : bool, default is Undefined, optional
-        Allows a single physical processor core to appear as several logical processors. This supports following options: true, false.
+        Allows a single physical processor core to appear as several logical processors.
     sriovEnabled : bool, default is Undefined, optional
-        SR-IOV support enables a hypervisor to create virtual instances of a PCI-express device, potentially increasing performance. This supports following options: true, false.
+        SR-IOV support enables a hypervisor to create virtual instances of a PCI-express device, potentially increasing performance.
     virtualizationEnabled : bool, default is Undefined, optional
-        Supports the virtualization of platform hardware. This supports following options: true, false.
+        Supports the virtualization of platform hardware.
     """
 
 
@@ -1051,17 +1201,23 @@ schema Metal3IoV1alpha1BareMetalHostStatusProvisioningFirmware:
 
 
 schema Metal3IoV1alpha1BareMetalHostStatusProvisioningImage:
-    """
-    Image holds the details of the last image successfully provisioned to the host.
+    r"""
+    Image holds the details of the last image successfully
+    provisioned to the host.
 
     Attributes
     ----------
     checksum : str, default is Undefined, optional
-        Checksum is the checksum for the image.
+        Checksum is the checksum for the image. Required for all formats
+        except for "live-iso".
     checksumType : str, default is Undefined, optional
-        ChecksumType is the checksum algorithm for the image. e.g md5, sha256, sha512
+        ChecksumType is the checksum algorithm for the image, e.g md5, sha256 or sha512.
+        The special value "auto" can be used to detect the algorithm from the checksum.
+        If missing, MD5 is used. If in doubt, use "auto".
     format : str, default is Undefined, optional
-        DiskFormat contains the format of the image (raw, qcow2, ...). Needs to be set to raw for raw images streaming. Note live-iso means an iso referenced by the url will be live-booted and not deployed to disk, and in this case the checksum options are not required and if specified will be ignored.
+        Format contains the format of the image (raw, qcow2, ...).
+        When set to "live-iso", an ISO 9660 image referenced by the url will
+        be live-booted and not deployed to disk.
     url : str, default is Undefined, required
         URL is a location of an image to deploy.
     """
@@ -1069,7 +1225,7 @@ schema Metal3IoV1alpha1BareMetalHostStatusProvisioningImage:
 
     checksum?: str
 
-    checksumType?: "md5" | "sha256" | "sha512"
+    checksumType?: "md5" | "sha256" | "sha512" | "auto"
 
     format?: "raw" | "qcow2" | "vdi" | "vmdk" | "live-iso"
 
@@ -1077,15 +1233,23 @@ schema Metal3IoV1alpha1BareMetalHostStatusProvisioningImage:
 
 
 schema Metal3IoV1alpha1BareMetalHostStatusProvisioningRaid:
-    """
-    The Raid set by the user
+    r"""
+    The RAID configuration that has been applied.
 
     Attributes
     ----------
     hardwareRAIDVolumes : [Metal3IoV1alpha1BareMetalHostStatusProvisioningRaidHardwareRAIDVolumesItems0], default is Undefined, optional
-        The list of logical disks for hardware RAID, if rootDeviceHints isn't used, first volume is root volume. You can set the value of this field to `[]` to clear all the hardware RAID configurations.
+        The list of logical disks for hardware RAID, if rootDeviceHints isn't used, first volume is root volume.
+        You can set the value of this field to `[]` to clear all the hardware RAID configurations.
     softwareRAIDVolumes : [Metal3IoV1alpha1BareMetalHostStatusProvisioningRaidSoftwareRAIDVolumesItems0], default is Undefined, optional
-        The list of logical disks for software RAID, if rootDeviceHints isn't used, first volume is root volume. If HardwareRAIDVolumes is set this item will be invalid. The number of created Software RAID devices must be 1 or 2. If there is only one Software RAID device, it has to be a RAID-1. If there are two, the first one has to be a RAID-1, while the RAID level for the second one can be 0, 1, or 1+0. As the first RAID device will be the deployment device, enforcing a RAID-1 reduces the risk of ending up with a non-booting node in case of a disk failure. Software RAID will always be deleted.
+        The list of logical disks for software RAID, if rootDeviceHints isn't used, first volume is root volume.
+        If HardwareRAIDVolumes is set this item will be invalid.
+        The number of created Software RAID devices must be 1 or 2.
+        If there is only one Software RAID device, it has to be a RAID-1.
+        If there are two, the first one has to be a RAID-1, while the RAID level for the second one can be 0, 1, or 1+0.
+        As the first RAID device will be the deployment device,
+        enforcing a RAID-1 reduces the risk of ending up with a non-booting host in case of a disk failure.
+        Software RAID will always be deleted.
     """
 
 
@@ -1095,29 +1259,37 @@ schema Metal3IoV1alpha1BareMetalHostStatusProvisioningRaid:
 
 
     check:
-        len(softwareRAIDVolumes) <= 2
+        len(softwareRAIDVolumes) <= 2 if softwareRAIDVolumes
 
 
 schema Metal3IoV1alpha1BareMetalHostStatusProvisioningRaidHardwareRAIDVolumesItems0:
-    """
-    HardwareRAIDVolume defines the desired configuration of volume in hardware RAID
+    r"""
+    HardwareRAIDVolume defines the desired configuration of volume in hardware RAID.
 
     Attributes
     ----------
     controller : str, default is Undefined, optional
-        The name of the RAID controller to use
+        The name of the RAID controller to use.
     level : str, default is Undefined, required
-        RAID level for the logical disk. The following levels are supported: 0;1;2;5;6;1+0;5+0;6+0.
+        RAID level for the logical disk. The following levels are supported:
+        0, 1, 2, 5, 6, 1+0, 5+0, 6+0 (drivers may support only some of them).
     name : str, default is Undefined, optional
-        Name of the volume. Should be unique within the Node. If not specified, volume name will be auto-generated.
+        Name of the volume. Should be unique within the Node. If not
+        specified, the name will be auto-generated.
     numberOfPhysicalDisks : int, default is Undefined, optional
-        Integer, number of physical disks to use for the logical disk. Defaults to minimum number of disks required for the particular RAID level.
+        Integer, number of physical disks to use for the logical disk.
+        Defaults to minimum number of disks required for the particular RAID
+        level.
     physicalDisks : [str], default is Undefined, optional
-        Optional list of physical disk names to be used for the Hardware RAID volumes. The disk names are interpreted by the Hardware RAID controller, and the format is hardware specific.
+        Optional list of physical disk names to be used for the hardware RAID volumes. The disk names are interpreted
+        by the hardware RAID controller, and the format is hardware specific.
     rotational : bool, default is Undefined, optional
-        Select disks with only rotational or solid-state storage
+        Select disks with only rotational (if set to true) or solid-state
+        (if set to false) storage. By default, any disks can be picked.
     sizeGibibytes : int, default is Undefined, optional
-        Size (Integer) of the logical disk to be created in GiB. If unspecified or set be 0, the maximum capacity of disk will be used for logical disk.
+        Size of the logical disk to be created in GiB. If unspecified or
+        set be 0, the maximum capacity of disk will be used for logical
+        disk.
     """
 
 
@@ -1137,23 +1309,25 @@ schema Metal3IoV1alpha1BareMetalHostStatusProvisioningRaidHardwareRAIDVolumesIte
 
 
     check:
-        len(name) <= 64
-        numberOfPhysicalDisks >= 1
-        sizeGibibytes >= 0
+        len(name) <= 64 if name
+        numberOfPhysicalDisks >= 1 if numberOfPhysicalDisks not in [None, Undefined]
+        sizeGibibytes >= 0 if sizeGibibytes not in [None, Undefined]
 
 
 schema Metal3IoV1alpha1BareMetalHostStatusProvisioningRaidSoftwareRAIDVolumesItems0:
-    """
-    SoftwareRAIDVolume defines the desired configuration of volume in software RAID
+    r"""
+    SoftwareRAIDVolume defines the desired configuration of volume in software RAID.
 
     Attributes
     ----------
     level : str, default is Undefined, required
-        RAID level for the logical disk. The following levels are supported: 0;1;1+0.
+        RAID level for the logical disk. The following levels are supported:
+        0, 1 and 1+0.
     physicalDisks : [Metal3IoV1alpha1BareMetalHostStatusProvisioningRaidSoftwareRAIDVolumesItems0PhysicalDisksItems0], default is Undefined, optional
         A list of device hints, the number of items should be greater than or equal to 2.
     sizeGibibytes : int, default is Undefined, optional
-        Size (Integer) of the logical disk to be created in GiB. If unspecified or set be 0, the maximum capacity of disk will be used for logical disk.
+        Size of the logical disk to be created in GiB.
+        If unspecified or set be 0, the maximum capacity of disk will be used for logical disk.
     """
 
 
@@ -1165,36 +1339,46 @@ schema Metal3IoV1alpha1BareMetalHostStatusProvisioningRaidSoftwareRAIDVolumesIte
 
 
     check:
-        len(physicalDisks) >= 2
-        sizeGibibytes >= 0
+        len(physicalDisks) >= 2 if physicalDisks
+        sizeGibibytes >= 0 if sizeGibibytes not in [None, Undefined]
 
 
 schema Metal3IoV1alpha1BareMetalHostStatusProvisioningRaidSoftwareRAIDVolumesItems0PhysicalDisksItems0:
-    """
-    RootDeviceHints holds the hints for specifying the storage location for the root filesystem for the image.
+    r"""
+    RootDeviceHints holds the hints for specifying the storage location
+    for the root filesystem for the image.
 
     Attributes
     ----------
     deviceName : str, default is Undefined, optional
-        A Linux device name like "/dev/vda". The hint must match the actual value exactly.
+        A Linux device name like "/dev/vda", or a by-path link to it like
+        "/dev/disk/by-path/pci-0000:01:00.0-scsi-0:2:0:0". The hint must match
+        the actual value exactly.
     hctl : str, default is Undefined, optional
-        A SCSI bus address like 0:0:0:0. The hint must match the actual value exactly.
+        A SCSI bus address like 0:0:0:0. The hint must match the actual
+        value exactly.
     minSizeGigabytes : int, default is Undefined, optional
         The minimum size of the device in Gigabytes.
     model : str, default is Undefined, optional
-        A vendor-specific device identifier. The hint can be a substring of the actual value.
+        A vendor-specific device identifier. The hint can be a
+        substring of the actual value.
     rotational : bool, default is Undefined, optional
         True if the device should use spinning media, false otherwise.
     serialNumber : str, default is Undefined, optional
-        Device serial number. The hint must match the actual value exactly.
+        Device serial number. The hint must match the actual value
+        exactly.
     vendor : str, default is Undefined, optional
-        The name of the vendor or manufacturer of the device. The hint can be a substring of the actual value.
+        The name of the vendor or manufacturer of the device. The hint
+        can be a substring of the actual value.
     wwn : str, default is Undefined, optional
-        Unique storage identifier. The hint must match the actual value exactly.
+        Unique storage identifier. The hint must match the actual value
+        exactly.
     wwnVendorExtension : str, default is Undefined, optional
-        Unique vendor storage identifier. The hint must match the actual value exactly.
+        Unique vendor storage identifier. The hint must match the
+        actual value exactly.
     wwnWithExtension : str, default is Undefined, optional
-        Unique storage identifier with the vendor extension appended. The hint must match the actual value exactly.
+        Unique storage identifier with the vendor extension
+        appended. The hint must match the actual value exactly.
     """
 
 
@@ -1220,35 +1404,44 @@ schema Metal3IoV1alpha1BareMetalHostStatusProvisioningRaidSoftwareRAIDVolumesIte
 
 
     check:
-        minSizeGigabytes >= 0
+        minSizeGigabytes >= 0 if minSizeGigabytes not in [None, Undefined]
 
 
 schema Metal3IoV1alpha1BareMetalHostStatusProvisioningRootDeviceHints:
-    """
-    The RootDevicehints set by the user
+    r"""
+    The root device hints used to provision the host.
 
     Attributes
     ----------
     deviceName : str, default is Undefined, optional
-        A Linux device name like "/dev/vda". The hint must match the actual value exactly.
+        A Linux device name like "/dev/vda", or a by-path link to it like
+        "/dev/disk/by-path/pci-0000:01:00.0-scsi-0:2:0:0". The hint must match
+        the actual value exactly.
     hctl : str, default is Undefined, optional
-        A SCSI bus address like 0:0:0:0. The hint must match the actual value exactly.
+        A SCSI bus address like 0:0:0:0. The hint must match the actual
+        value exactly.
     minSizeGigabytes : int, default is Undefined, optional
         The minimum size of the device in Gigabytes.
     model : str, default is Undefined, optional
-        A vendor-specific device identifier. The hint can be a substring of the actual value.
+        A vendor-specific device identifier. The hint can be a
+        substring of the actual value.
     rotational : bool, default is Undefined, optional
         True if the device should use spinning media, false otherwise.
     serialNumber : str, default is Undefined, optional
-        Device serial number. The hint must match the actual value exactly.
+        Device serial number. The hint must match the actual value
+        exactly.
     vendor : str, default is Undefined, optional
-        The name of the vendor or manufacturer of the device. The hint can be a substring of the actual value.
+        The name of the vendor or manufacturer of the device. The hint
+        can be a substring of the actual value.
     wwn : str, default is Undefined, optional
-        Unique storage identifier. The hint must match the actual value exactly.
+        Unique storage identifier. The hint must match the actual value
+        exactly.
     wwnVendorExtension : str, default is Undefined, optional
-        Unique vendor storage identifier. The hint must match the actual value exactly.
+        Unique vendor storage identifier. The hint must match the
+        actual value exactly.
     wwnWithExtension : str, default is Undefined, optional
-        Unique storage identifier with the vendor extension appended. The hint must match the actual value exactly.
+        Unique storage identifier with the vendor extension
+        appended. The hint must match the actual value exactly.
     """
 
 
@@ -1274,12 +1467,12 @@ schema Metal3IoV1alpha1BareMetalHostStatusProvisioningRootDeviceHints:
 
 
     check:
-        minSizeGigabytes >= 0
+        minSizeGigabytes >= 0 if minSizeGigabytes not in [None, Undefined]
 
 
 schema Metal3IoV1alpha1BareMetalHostStatusTriedCredentials:
-    """
-    the last credentials we sent to the provisioning backend
+    r"""
+    The last credentials we sent to the provisioning backend.
 
     Attributes
     ----------
@@ -1296,15 +1489,16 @@ schema Metal3IoV1alpha1BareMetalHostStatusTriedCredentials:
 
 
 schema Metal3IoV1alpha1BareMetalHostStatusTriedCredentialsCredentials:
-    """
-    SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace
+    r"""
+    SecretReference represents a Secret Reference. It has enough information to retrieve secret
+    in any namespace
 
     Attributes
     ----------
     name : str, default is Undefined, optional
-        Name is unique within a namespace to reference a secret resource.
+        name is unique within a namespace to reference a secret resource.
     namespace : str, default is Undefined, optional
-        Namespace defines the space within which the secret name must be unique.
+        namespace defines the space within which the secret name must be unique.
     """
 
 
