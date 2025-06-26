@@ -35,7 +35,7 @@ schema KubeadmConfigTemplate:
 
 schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpec:
     r"""
-    KubeadmConfigTemplateSpec defines the desired state of KubeadmConfigTemplate.
+    spec is the desired state of KubeadmConfigTemplate.
 
     Attributes
     ----------
@@ -49,7 +49,7 @@ schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpec:
 
 schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplate:
     r"""
-    KubeadmConfigTemplateResource defines the Template structure.
+    template defines the desired state of KubeadmConfigTemplate.
 
     Attributes
     ----------
@@ -67,7 +67,7 @@ schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplate:
 
 schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateMetadata:
     r"""
-    Standard object's metadata.
+    metadata is the standard object's metadata.
     More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
 
     Attributes
@@ -78,7 +78,7 @@ schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateMetadata:
         queryable and should be preserved when modifying objects.
         More info: http://kubernetes.io/docs/user-guide/annotations
     labels : {str:str}, default is Undefined, optional
-        Map of string keys and values that can be used to organize and categorize
+        labels is a map of string keys and values that can be used to organize and categorize
         (scope and select) objects. May match selectors of replication controllers
         and services.
         More info: http://kubernetes.io/docs/user-guide/labels
@@ -92,11 +92,14 @@ schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateMetadata:
 
 schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpec:
     r"""
-    KubeadmConfigSpec defines the desired state of KubeadmConfig.
-    Either ClusterConfiguration and InitConfiguration should be defined or the JoinConfiguration should be defined.
+    spec is the desired state of KubeadmConfig.
 
     Attributes
     ----------
+    bootCommands : [str], default is Undefined, optional
+        bootCommands specifies extra commands to run very early in the boot process via the cloud-init bootcmd
+        module. bootcmd will run on every boot, 'cloud-init-per' command can be used to make bootcmd run exactly
+        once. This is typically run in the cloud-init.service systemd unit. This has no effect in Ignition.
     clusterConfiguration : BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecClusterConfiguration, default is Undefined, optional
         cluster configuration
     diskSetup : BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecDiskSetup, default is Undefined, optional
@@ -116,9 +119,13 @@ schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpec:
     ntp : BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecNtp, default is Undefined, optional
         ntp
     postKubeadmCommands : [str], default is Undefined, optional
-        postKubeadmCommands specifies extra commands to run after kubeadm runs
+        postKubeadmCommands specifies extra commands to run after kubeadm runs.
+        With cloud-init, this is appended to the runcmd module configuration, and is typically executed in
+        the cloud-final.service systemd unit. In Ignition, this is appended to /etc/kubeadm.sh.
     preKubeadmCommands : [str], default is Undefined, optional
-        preKubeadmCommands specifies extra commands to run before kubeadm runs
+        preKubeadmCommands specifies extra commands to run before kubeadm runs.
+        With cloud-init, this is prepended to the runcmd module configuration, and is typically executed in
+        the cloud-final.service systemd unit. In Ignition, this is prepended to /etc/kubeadm.sh.
     useExperimentalRetryJoin : bool, default is Undefined, optional
         useExperimentalRetryJoin replaces a basic kubeadm command with a shell
         script with retries for joins.
@@ -140,6 +147,8 @@ schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpec:
         It overrides the `--v` flag in kubeadm commands.
     """
 
+
+    bootCommands?: [str]
 
     clusterConfiguration?: BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecClusterConfiguration
 
@@ -170,6 +179,21 @@ schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpec:
     verbosity?: int
 
 
+    check:
+        len(bootCommands) <= 1000 if bootCommands
+        all bootCommands in bootCommands { len(bootCommands) <= 10240 if bootCommands not in [None, Undefined] } if bootCommands
+        all bootCommands in bootCommands { len(bootCommands) >= 1 if bootCommands not in [None, Undefined] } if bootCommands
+        len(files) <= 200 if files
+        len(mounts) <= 100 if mounts
+        len(postKubeadmCommands) <= 1000 if postKubeadmCommands
+        all postKubeadmCommands in postKubeadmCommands { len(postKubeadmCommands) <= 10240 if postKubeadmCommands not in [None, Undefined] } if postKubeadmCommands
+        all postKubeadmCommands in postKubeadmCommands { len(postKubeadmCommands) >= 1 if postKubeadmCommands not in [None, Undefined] } if postKubeadmCommands
+        len(preKubeadmCommands) <= 1000 if preKubeadmCommands
+        all preKubeadmCommands in preKubeadmCommands { len(preKubeadmCommands) <= 10240 if preKubeadmCommands not in [None, Undefined] } if preKubeadmCommands
+        all preKubeadmCommands in preKubeadmCommands { len(preKubeadmCommands) >= 1 if preKubeadmCommands not in [None, Undefined] } if preKubeadmCommands
+        len(users) <= 100 if users
+
+
 schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecClusterConfiguration:
     r"""
     clusterConfiguration along with InitConfiguration are the configurations necessary for the init command
@@ -187,7 +211,7 @@ schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecCluster
         certificatesDir specifies where to store or look for all required certificates.
         NB: if not provided, this will default to `/etc/kubernetes/pki`
     clusterName : str, default is Undefined, optional
-        The cluster name
+        clusterName is the cluster name
     controlPlaneEndpoint : str, default is Undefined, optional
         controlPlaneEndpoint sets a stable IP address or DNS name for the control plane; it
         can be a valid IP address or a RFC-1123 DNS subdomain, both with optional TCP port.
@@ -266,6 +290,19 @@ schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecCluster
     scheduler?: BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecClusterConfigurationScheduler
 
 
+    check:
+        len(certificatesDir) <= 512 if certificatesDir
+        len(certificatesDir) >= 1 if certificatesDir
+        len(clusterName) <= 63 if clusterName
+        len(clusterName) >= 1 if clusterName
+        len(controlPlaneEndpoint) <= 512 if controlPlaneEndpoint
+        len(controlPlaneEndpoint) >= 1 if controlPlaneEndpoint
+        len(imageRepository) <= 512 if imageRepository
+        len(imageRepository) >= 1 if imageRepository
+        len(kubernetesVersion) <= 256 if kubernetesVersion
+        len(kubernetesVersion) >= 1 if kubernetesVersion
+
+
 schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecClusterConfigurationAPIServer:
     r"""
     apiServer contains extra settings for the API server control plane component
@@ -296,6 +333,14 @@ schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecCluster
     extraVolumes?: [BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecClusterConfigurationAPIServerExtraVolumesItems0]
 
     timeoutForControlPlane?: str
+
+
+    check:
+        len(certSANs) <= 100 if certSANs
+        all certSANs in certSANs { len(certSANs) <= 253 if certSANs not in [None, Undefined] } if certSANs
+        all certSANs in certSANs { len(certSANs) >= 1 if certSANs not in [None, Undefined] } if certSANs
+        len(extraEnvs) <= 100 if extraEnvs
+        len(extraVolumes) <= 100 if extraVolumes
 
 
 schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecClusterConfigurationAPIServerExtraEnvsItems0:
@@ -484,6 +529,15 @@ schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecCluster
     readOnly?: bool
 
 
+    check:
+        len(hostPath) <= 512
+        len(hostPath) >= 1
+        len(mountPath) <= 512
+        len(mountPath) >= 1
+        len(name) <= 512
+        len(name) >= 1
+
+
 schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecClusterConfigurationControllerManager:
     r"""
     controllerManager contains extra settings for the controller manager control plane component
@@ -506,6 +560,11 @@ schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecCluster
     extraEnvs?: [BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecClusterConfigurationControllerManagerExtraEnvsItems0]
 
     extraVolumes?: [BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecClusterConfigurationControllerManagerExtraVolumesItems0]
+
+
+    check:
+        len(extraEnvs) <= 100 if extraEnvs
+        len(extraVolumes) <= 100 if extraVolumes
 
 
 schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecClusterConfigurationControllerManagerExtraEnvsItems0:
@@ -694,6 +753,15 @@ schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecCluster
     readOnly?: bool
 
 
+    check:
+        len(hostPath) <= 512
+        len(hostPath) >= 1
+        len(mountPath) <= 512
+        len(mountPath) >= 1
+        len(name) <= 512
+        len(name) >= 1
+
+
 schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecClusterConfigurationDNS:
     r"""
     dns defines the options for the DNS add-on installed in the cluster.
@@ -712,6 +780,13 @@ schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecCluster
     imageRepository?: str
 
     imageTag?: str
+
+
+    check:
+        len(imageRepository) <= 512 if imageRepository
+        len(imageRepository) >= 1 if imageRepository
+        len(imageTag) <= 256 if imageTag
+        len(imageTag) >= 1 if imageTag
 
 
 schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecClusterConfigurationEtcd:
@@ -763,6 +838,18 @@ schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecCluster
     keyFile: str
 
 
+    check:
+        len(caFile) <= 512
+        len(caFile) >= 1
+        len(certFile) <= 512
+        len(certFile) >= 1
+        len(endpoints) <= 50
+        all endpoints in endpoints { len(endpoints) <= 512 if endpoints not in [None, Undefined] } if endpoints
+        all endpoints in endpoints { len(endpoints) >= 1 if endpoints not in [None, Undefined] } if endpoints
+        len(keyFile) <= 512
+        len(keyFile) >= 1
+
+
 schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecClusterConfigurationEtcdLocal:
     r"""
     local provides configuration knobs for configuring the local etcd instance
@@ -806,6 +893,22 @@ schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecCluster
     peerCertSANs?: [str]
 
     serverCertSANs?: [str]
+
+
+    check:
+        len(dataDir) <= 512 if dataDir
+        len(dataDir) >= 1 if dataDir
+        len(extraEnvs) <= 100 if extraEnvs
+        len(imageRepository) <= 512 if imageRepository
+        len(imageRepository) >= 1 if imageRepository
+        len(imageTag) <= 256 if imageTag
+        len(imageTag) >= 1 if imageTag
+        len(peerCertSANs) <= 100 if peerCertSANs
+        all peerCertSANs in peerCertSANs { len(peerCertSANs) <= 253 if peerCertSANs not in [None, Undefined] } if peerCertSANs
+        all peerCertSANs in peerCertSANs { len(peerCertSANs) >= 1 if peerCertSANs not in [None, Undefined] } if peerCertSANs
+        len(serverCertSANs) <= 100 if serverCertSANs
+        all serverCertSANs in serverCertSANs { len(serverCertSANs) <= 253 if serverCertSANs not in [None, Undefined] } if serverCertSANs
+        all serverCertSANs in serverCertSANs { len(serverCertSANs) >= 1 if serverCertSANs not in [None, Undefined] } if serverCertSANs
 
 
 schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecClusterConfigurationEtcdLocalExtraEnvsItems0:
@@ -989,6 +1092,15 @@ schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecCluster
     serviceSubnet?: str
 
 
+    check:
+        len(dnsDomain) <= 253 if dnsDomain
+        len(dnsDomain) >= 1 if dnsDomain
+        len(podSubnet) <= 1024 if podSubnet
+        len(podSubnet) >= 1 if podSubnet
+        len(serviceSubnet) <= 1024 if serviceSubnet
+        len(serviceSubnet) >= 1 if serviceSubnet
+
+
 schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecClusterConfigurationScheduler:
     r"""
     scheduler contains extra settings for the scheduler control plane component
@@ -1011,6 +1123,11 @@ schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecCluster
     extraEnvs?: [BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecClusterConfigurationSchedulerExtraEnvsItems0]
 
     extraVolumes?: [BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecClusterConfigurationSchedulerExtraVolumesItems0]
+
+
+    check:
+        len(extraEnvs) <= 100 if extraEnvs
+        len(extraVolumes) <= 100 if extraVolumes
 
 
 schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecClusterConfigurationSchedulerExtraEnvsItems0:
@@ -1199,6 +1316,15 @@ schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecCluster
     readOnly?: bool
 
 
+    check:
+        len(hostPath) <= 512
+        len(hostPath) >= 1
+        len(mountPath) <= 512
+        len(mountPath) >= 1
+        len(name) <= 512
+        len(name) >= 1
+
+
 schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecDiskSetup:
     r"""
     diskSetup specifies options for the creation of partition tables and file systems on devices.
@@ -1217,6 +1343,11 @@ schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecDiskSet
     partitions?: [BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecDiskSetupPartitionsItems0]
 
 
+    check:
+        len(filesystems) <= 100 if filesystems
+        len(partitions) <= 100 if partitions
+
+
 schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecDiskSetupFilesystemsItems0:
     r"""
     Filesystem defines the file systems to be created.
@@ -1229,7 +1360,7 @@ schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecDiskSet
         extraOpts defined extra options to add to the command for creating the file system.
     filesystem : str, default is Undefined, required
         filesystem specifies the file system type.
-    label : str, default is Undefined, required
+    label : str, default is Undefined, optional
         label specifies the file system label to be used. If set to None, no label is used.
     overwrite : bool, default is Undefined, optional
         overwrite defines whether or not to overwrite any existing filesystem.
@@ -1248,13 +1379,29 @@ schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecDiskSet
 
     filesystem: str
 
-    label: str
+    label?: str
 
     overwrite?: bool
 
     partition?: str
 
     replaceFS?: str
+
+
+    check:
+        len(device) <= 256
+        len(device) >= 1
+        len(extraOpts) <= 100 if extraOpts
+        all extraOpts in extraOpts { len(extraOpts) <= 256 if extraOpts not in [None, Undefined] } if extraOpts
+        all extraOpts in extraOpts { len(extraOpts) >= 1 if extraOpts not in [None, Undefined] } if extraOpts
+        len(filesystem) <= 128
+        len(filesystem) >= 1
+        len(label) <= 512 if label
+        len(label) >= 1 if label
+        len(partition) <= 128 if partition
+        len(partition) >= 1 if partition
+        len(replaceFS) <= 128 if replaceFS
+        len(replaceFS) >= 1 if replaceFS
 
 
 schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecDiskSetupPartitionsItems0:
@@ -1285,7 +1432,12 @@ schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecDiskSet
 
     overwrite?: bool
 
-    tableType?: str
+    tableType?: "mbr" | "gpt"
+
+
+    check:
+        len(device) <= 256
+        len(device) >= 1
 
 
 schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecFilesItems0:
@@ -1326,6 +1478,17 @@ schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecFilesIt
     permissions?: str
 
 
+    check:
+        len(content) <= 10240 if content
+        len(content) >= 1 if content
+        len(owner) <= 256 if owner
+        len(owner) >= 1 if owner
+        len(path) <= 512
+        len(path) >= 1
+        len(permissions) <= 16 if permissions
+        len(permissions) >= 1 if permissions
+
+
 schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecFilesItems0ContentFrom:
     r"""
     contentFrom is a referenced source of content to populate the file.
@@ -1356,6 +1519,13 @@ schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecFilesIt
     key: str
 
     name: str
+
+
+    check:
+        len(key) <= 256
+        len(key) >= 1
+        len(name) <= 253
+        len(name) >= 1
 
 
 schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecIgnition:
@@ -1391,6 +1561,11 @@ schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecIgnitio
     additionalConfig?: str
 
     strict?: bool
+
+
+    check:
+        len(additionalConfig) <= 32768 if additionalConfig
+        len(additionalConfig) >= 1 if additionalConfig
 
 
 schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecInitConfiguration:
@@ -1441,6 +1616,13 @@ schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecInitCon
     skipPhases?: [str]
 
 
+    check:
+        len(bootstrapTokens) <= 100 if bootstrapTokens
+        len(skipPhases) <= 50 if skipPhases
+        all skipPhases in skipPhases { len(skipPhases) <= 256 if skipPhases not in [None, Undefined] } if skipPhases
+        all skipPhases in skipPhases { len(skipPhases) >= 1 if skipPhases not in [None, Undefined] } if skipPhases
+
+
 schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecInitConfigurationBootstrapTokensItems0:
     r"""
     BootstrapToken describes one bootstrap token, stored as a Secret in the cluster.
@@ -1481,6 +1663,17 @@ schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecInitCon
     usages?: [str]
 
 
+    check:
+        len(description) <= 512 if description
+        len(description) >= 1 if description
+        len(groups) <= 100 if groups
+        all groups in groups { len(groups) <= 256 if groups not in [None, Undefined] } if groups
+        all groups in groups { len(groups) >= 1 if groups not in [None, Undefined] } if groups
+        len(usages) <= 100 if usages
+        all usages in usages { len(usages) <= 256 if usages not in [None, Undefined] } if usages
+        all usages in usages { len(usages) >= 1 if usages not in [None, Undefined] } if usages
+
+
 schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecInitConfigurationLocalAPIEndpoint:
     r"""
     localAPIEndpoint represents the endpoint of the API server instance that's deployed on this control plane node
@@ -1503,6 +1696,11 @@ schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecInitCon
     advertiseAddress?: str
 
     bindPort?: int
+
+
+    check:
+        len(advertiseAddress) <= 39 if advertiseAddress
+        len(advertiseAddress) >= 1 if advertiseAddress
 
 
 schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecInitConfigurationNodeRegistration:
@@ -1555,6 +1753,17 @@ schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecInitCon
     name?: str
 
     taints?: [BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecInitConfigurationNodeRegistrationTaintsItems0]
+
+
+    check:
+        len(criSocket) <= 512 if criSocket
+        len(criSocket) >= 1 if criSocket
+        len(ignorePreflightErrors) <= 50 if ignorePreflightErrors
+        all ignorePreflightErrors in ignorePreflightErrors { len(ignorePreflightErrors) <= 512 if ignorePreflightErrors not in [None, Undefined] } if ignorePreflightErrors
+        all ignorePreflightErrors in ignorePreflightErrors { len(ignorePreflightErrors) >= 1 if ignorePreflightErrors not in [None, Undefined] } if ignorePreflightErrors
+        len(name) <= 253 if name
+        len(name) >= 1 if name
+        len(taints) <= 100 if taints
 
 
 schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecInitConfigurationNodeRegistrationTaintsItems0:
@@ -1611,6 +1820,11 @@ schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecInitCon
     directory?: str
 
 
+    check:
+        len(directory) <= 512 if directory
+        len(directory) >= 1 if directory
+
+
 schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecJoinConfiguration:
     r"""
     joinConfiguration is the kubeadm configuration for the join command
@@ -1664,6 +1878,14 @@ schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecJoinCon
     skipPhases?: [str]
 
 
+    check:
+        len(caCertPath) <= 512 if caCertPath
+        len(caCertPath) >= 1 if caCertPath
+        len(skipPhases) <= 50 if skipPhases
+        all skipPhases in skipPhases { len(skipPhases) <= 256 if skipPhases not in [None, Undefined] } if skipPhases
+        all skipPhases in skipPhases { len(skipPhases) >= 1 if skipPhases not in [None, Undefined] } if skipPhases
+
+
 schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecJoinConfigurationControlPlane:
     r"""
     controlPlane defines the additional control plane instance to be deployed on the joining node.
@@ -1698,6 +1920,11 @@ schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecJoinCon
     bindPort?: int
 
 
+    check:
+        len(advertiseAddress) <= 39 if advertiseAddress
+        len(advertiseAddress) >= 1 if advertiseAddress
+
+
 schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecJoinConfigurationDiscovery:
     r"""
     discovery specifies the options for the kubelet to use during the TLS Bootstrap process
@@ -1726,6 +1953,11 @@ schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecJoinCon
     tlsBootstrapToken?: str
 
 
+    check:
+        len(tlsBootstrapToken) <= 512 if tlsBootstrapToken
+        len(tlsBootstrapToken) >= 1 if tlsBootstrapToken
+
+
 schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecJoinConfigurationDiscoveryBootstrapToken:
     r"""
     bootstrapToken is used to set the options for bootstrap token based discovery
@@ -1744,7 +1976,7 @@ schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecJoinCon
         SHA-256 hash of the Subject Public Key Info (SPKI) object in DER-encoded
         ASN.1. These hashes can be calculated using, for example, OpenSSL:
         openssl x509 -pubkey -in ca.crt openssl rsa -pubin -outform der 2>&/dev/null | openssl dgst -sha256 -hex
-    token : str, default is Undefined, required
+    token : str, default is Undefined, optional
         token is a token used to validate cluster information
         fetched from the control-plane.
     unsafeSkipCAVerification : bool, default is Undefined, optional
@@ -1758,9 +1990,19 @@ schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecJoinCon
 
     caCertHashes?: [str]
 
-    token: str
+    token?: str
 
     unsafeSkipCAVerification?: bool
+
+
+    check:
+        len(apiServerEndpoint) <= 512 if apiServerEndpoint
+        len(apiServerEndpoint) >= 1 if apiServerEndpoint
+        len(caCertHashes) <= 100 if caCertHashes
+        all caCertHashes in caCertHashes { len(caCertHashes) <= 512 if caCertHashes not in [None, Undefined] } if caCertHashes
+        all caCertHashes in caCertHashes { len(caCertHashes) >= 1 if caCertHashes not in [None, Undefined] } if caCertHashes
+        len(token) <= 512 if token
+        len(token) >= 1 if token
 
 
 schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecJoinConfigurationDiscoveryFile:
@@ -1780,6 +2022,11 @@ schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecJoinCon
     kubeConfig?: BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecJoinConfigurationDiscoveryFileKubeConfig
 
     kubeConfigPath: str
+
+
+    check:
+        len(kubeConfigPath) <= 512
+        len(kubeConfigPath) >= 1
 
 
 schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecJoinConfigurationDiscoveryFileKubeConfig:
@@ -1850,6 +2097,17 @@ schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecJoinCon
     tlsServerName?: str
 
 
+    check:
+        len(certificateAuthorityData) <= 51200 if certificateAuthorityData
+        len(certificateAuthorityData) >= 1 if certificateAuthorityData
+        len(proxyURL) <= 512 if proxyURL
+        len(proxyURL) >= 1 if proxyURL
+        len(server) <= 512 if server
+        len(server) >= 1 if server
+        len(tlsServerName) <= 512 if tlsServerName
+        len(tlsServerName) >= 1 if tlsServerName
+
+
 schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecJoinConfigurationDiscoveryFileKubeConfigUser:
     r"""
     user contains information that describes identity information.
@@ -1887,6 +2145,11 @@ schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecJoinCon
     name: str
 
 
+    check:
+        len(name) <= 256
+        len(name) >= 1
+
+
 schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecJoinConfigurationDiscoveryFileKubeConfigUserExec:
     r"""
     exec specifies a custom exec-based authentication plugin for the kubernetes cluster.
@@ -1894,11 +2157,11 @@ schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecJoinCon
     Attributes
     ----------
     apiVersion : str, default is Undefined, optional
-        Preferred input version of the ExecInfo. The returned ExecCredentials MUST use
+        apiVersion is preferred input version of the ExecInfo. The returned ExecCredentials MUST use
         the same encoding version as the input.
         Defaults to client.authentication.k8s.io/v1 if not set.
     args : [str], default is Undefined, optional
-        Arguments to pass to the command when executing it.
+        args is the arguments to pass to the command when executing it.
     command : str, default is Undefined, required
         command to execute.
     env : [BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecJoinConfigurationDiscoveryFileKubeConfigUserExecEnvItems0], default is Undefined, optional
@@ -1925,6 +2188,17 @@ schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecJoinCon
     provideClusterInfo?: bool
 
 
+    check:
+        len(apiVersion) <= 512 if apiVersion
+        len(apiVersion) >= 1 if apiVersion
+        len(args) <= 100 if args
+        all args in args { len(args) <= 512 if args not in [None, Undefined] } if args
+        all args in args { len(args) >= 1 if args not in [None, Undefined] } if args
+        len(command) <= 1024
+        len(command) >= 1
+        len(env) <= 100 if env
+
+
 schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecJoinConfigurationDiscoveryFileKubeConfigUserExecEnvItems0:
     r"""
     KubeConfigAuthExecEnv is used for setting environment variables when executing an exec-based
@@ -1933,15 +2207,22 @@ schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecJoinCon
     Attributes
     ----------
     name : str, default is Undefined, required
-        name
+        name of the environment variable
     value : str, default is Undefined, required
-        value
+        value of the environment variable
     """
 
 
     name: str
 
     value: str
+
+
+    check:
+        len(name) <= 512
+        len(name) >= 1
+        len(value) <= 512
+        len(value) >= 1
 
 
 schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecJoinConfigurationNodeRegistration:
@@ -1994,6 +2275,17 @@ schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecJoinCon
     name?: str
 
     taints?: [BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecJoinConfigurationNodeRegistrationTaintsItems0]
+
+
+    check:
+        len(criSocket) <= 512 if criSocket
+        len(criSocket) >= 1 if criSocket
+        len(ignorePreflightErrors) <= 50 if ignorePreflightErrors
+        all ignorePreflightErrors in ignorePreflightErrors { len(ignorePreflightErrors) <= 512 if ignorePreflightErrors not in [None, Undefined] } if ignorePreflightErrors
+        all ignorePreflightErrors in ignorePreflightErrors { len(ignorePreflightErrors) >= 1 if ignorePreflightErrors not in [None, Undefined] } if ignorePreflightErrors
+        len(name) <= 253 if name
+        len(name) >= 1 if name
+        len(taints) <= 100 if taints
 
 
 schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecJoinConfigurationNodeRegistrationTaintsItems0:
@@ -2050,6 +2342,11 @@ schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecJoinCon
     directory?: str
 
 
+    check:
+        len(directory) <= 512 if directory
+        len(directory) >= 1 if directory
+
+
 schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecNtp:
     r"""
     ntp specifies NTP configuration
@@ -2066,6 +2363,12 @@ schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecNtp:
     enabled?: bool
 
     servers?: [str]
+
+
+    check:
+        len(servers) <= 100 if servers
+        all servers in servers { len(servers) <= 512 if servers not in [None, Undefined] } if servers
+        all servers in servers { len(servers) >= 1 if servers not in [None, Undefined] } if servers
 
 
 schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecUsersItems0:
@@ -2126,6 +2429,28 @@ schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecUsersIt
     sudo?: str
 
 
+    check:
+        len(gecos) <= 256 if gecos
+        len(gecos) >= 1 if gecos
+        len(groups) <= 256 if groups
+        len(groups) >= 1 if groups
+        len(homeDir) <= 256 if homeDir
+        len(homeDir) >= 1 if homeDir
+        len(name) <= 256
+        len(name) >= 1
+        len(passwd) <= 256 if passwd
+        len(passwd) >= 1 if passwd
+        len(primaryGroup) <= 256 if primaryGroup
+        len(primaryGroup) >= 1 if primaryGroup
+        len(shell) <= 256 if shell
+        len(shell) >= 1 if shell
+        len(sshAuthorizedKeys) <= 100 if sshAuthorizedKeys
+        all sshAuthorizedKeys in sshAuthorizedKeys { len(sshAuthorizedKeys) <= 2048 if sshAuthorizedKeys not in [None, Undefined] } if sshAuthorizedKeys
+        all sshAuthorizedKeys in sshAuthorizedKeys { len(sshAuthorizedKeys) >= 1 if sshAuthorizedKeys not in [None, Undefined] } if sshAuthorizedKeys
+        len(sudo) <= 256 if sudo
+        len(sudo) >= 1 if sudo
+
+
 schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecUsersItems0PasswdFrom:
     r"""
     passwdFrom is a referenced source of passwd to populate the passwd.
@@ -2156,5 +2481,12 @@ schema BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecUsersIt
     key: str
 
     name: str
+
+
+    check:
+        len(key) <= 256
+        len(key) >= 1
+        len(name) <= 253
+        len(name) >= 1
 
 

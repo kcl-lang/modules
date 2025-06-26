@@ -39,7 +39,7 @@ schema Cluster:
 
 schema ClusterxK8sIoV1alpha4ClusterSpec:
     r"""
-    ClusterSpec defines the desired state of Cluster.
+    spec is the desired state of Cluster.
 
     Attributes
     ----------
@@ -73,7 +73,7 @@ schema ClusterxK8sIoV1alpha4ClusterSpec:
 
 schema ClusterxK8sIoV1alpha4ClusterSpecClusterNetwork:
     r"""
-    Cluster network configuration.
+    clusterNetwork is the cluster network configuration.
 
     Attributes
     ----------
@@ -83,7 +83,7 @@ schema ClusterxK8sIoV1alpha4ClusterSpecClusterNetwork:
     pods : ClusterxK8sIoV1alpha4ClusterSpecClusterNetworkPods, default is Undefined, optional
         pods
     serviceDomain : str, default is Undefined, optional
-        Domain name for services.
+        serviceDomain is the domain name for services.
     services : ClusterxK8sIoV1alpha4ClusterSpecClusterNetworkServices, default is Undefined, optional
         services
     """
@@ -100,12 +100,12 @@ schema ClusterxK8sIoV1alpha4ClusterSpecClusterNetwork:
 
 schema ClusterxK8sIoV1alpha4ClusterSpecClusterNetworkPods:
     r"""
-    The network ranges from which Pod networks are allocated.
+    pods is the network ranges from which Pod networks are allocated.
 
     Attributes
     ----------
     cidrBlocks : [str], default is Undefined, required
-        cidr blocks
+        cidrBlocks is a list of CIDR blocks.
     """
 
 
@@ -114,12 +114,12 @@ schema ClusterxK8sIoV1alpha4ClusterSpecClusterNetworkPods:
 
 schema ClusterxK8sIoV1alpha4ClusterSpecClusterNetworkServices:
     r"""
-    The network ranges from which service VIPs are allocated.
+    services is the network ranges from which service VIPs are allocated.
 
     Attributes
     ----------
     cidrBlocks : [str], default is Undefined, required
-        cidr blocks
+        cidrBlocks is a list of CIDR blocks.
     """
 
 
@@ -133,9 +133,9 @@ schema ClusterxK8sIoV1alpha4ClusterSpecControlPlaneEndpoint:
     Attributes
     ----------
     host : str, default is Undefined, required
-        The hostname on which the API server is serving.
+        host is the hostname on which the API server is serving.
     port : int, default is Undefined, required
-        The port on which the API server is serving.
+        port is the port on which the API server is serving.
     """
 
 
@@ -246,7 +246,7 @@ schema ClusterxK8sIoV1alpha4ClusterSpecInfrastructureRef:
 
 schema ClusterxK8sIoV1alpha4ClusterSpecTopology:
     r"""
-    This encapsulates the topology for the cluster.
+    topology encapsulates the topology for the cluster.
     NOTE: It is required to enable the ClusterTopology
     feature gate flag to activate managed topologies support;
     this feature is highly experimental, and parts of it might still be not implemented.
@@ -254,14 +254,14 @@ schema ClusterxK8sIoV1alpha4ClusterSpecTopology:
     Attributes
     ----------
     class : str, default is Undefined, required
-        The name of the ClusterClass object to create the topology.
+        class is the name of the ClusterClass object to create the topology.
     controlPlane : ClusterxK8sIoV1alpha4ClusterSpecTopologyControlPlane, default is Undefined, optional
         control plane
     rolloutAfter : str, default is Undefined, optional
         rolloutAfter performs a rollout of the entire cluster one component at a time,
         control plane first and then machine deployments.
     version : str, default is Undefined, required
-        The Kubernetes version of the cluster.
+        version is the Kubernetes version of the cluster.
     workers : ClusterxK8sIoV1alpha4ClusterSpecTopologyWorkers, default is Undefined, optional
         workers
     """
@@ -315,7 +315,7 @@ schema ClusterxK8sIoV1alpha4ClusterSpecTopologyControlPlaneMetadata:
         queryable and should be preserved when modifying objects.
         More info: http://kubernetes.io/docs/user-guide/annotations
     labels : {str:str}, default is Undefined, optional
-        Map of string keys and values that can be used to organize and categorize
+        labels is a map of string keys and values that can be used to organize and categorize
         (scope and select) objects. May match selectors of replication controllers
         and services.
         More info: http://kubernetes.io/docs/user-guide/labels
@@ -390,7 +390,7 @@ schema ClusterxK8sIoV1alpha4ClusterSpecTopologyWorkersMachineDeploymentsItems0Me
         queryable and should be preserved when modifying objects.
         More info: http://kubernetes.io/docs/user-guide/annotations
     labels : {str:str}, default is Undefined, optional
-        Map of string keys and values that can be used to organize and categorize
+        labels is a map of string keys and values that can be used to organize and categorize
         (scope and select) objects. May match selectors of replication controllers
         and services.
         More info: http://kubernetes.io/docs/user-guide/labels
@@ -404,7 +404,7 @@ schema ClusterxK8sIoV1alpha4ClusterSpecTopologyWorkersMachineDeploymentsItems0Me
 
 schema ClusterxK8sIoV1alpha4ClusterStatus:
     r"""
-    ClusterStatus defines the observed state of Cluster.
+    status is the observed state of Cluster.
 
     Attributes
     ----------
@@ -455,14 +455,14 @@ schema ClusterxK8sIoV1alpha4ClusterStatusConditionsItems0:
     Attributes
     ----------
     lastTransitionTime : str, default is Undefined, optional
-        Last time the condition transitioned from one status to another.
+        lastTransitionTime is the last time the condition transitioned from one status to another.
         This should be when the underlying condition changed. If that is not known, then using the time when
         the API field changed is acceptable.
     message : str, default is Undefined, optional
-        A human readable message indicating details about the transition.
+        message is a human readable message indicating details about the transition.
         This field may be empty.
     reason : str, default is Undefined, optional
-        The reason for the condition's last transition in CamelCase.
+        reason is the reason for the condition's last transition in CamelCase.
         The specific API may choose whether or not this field is considered a guaranteed API.
         This field may not be empty.
     severity : str, default is Undefined, optional

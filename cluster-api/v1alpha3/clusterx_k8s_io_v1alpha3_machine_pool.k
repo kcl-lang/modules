@@ -39,7 +39,7 @@ schema MachinePool:
 
 schema ClusterxK8sIoV1alpha3MachinePoolSpec:
     r"""
-    MachinePoolSpec defines the desired state of MachinePool.
+    spec is the desired state of MachinePool.
 
     Attributes
     ----------
@@ -48,7 +48,7 @@ schema ClusterxK8sIoV1alpha3MachinePoolSpec:
     failureDomains : [str], default is Undefined, optional
         failureDomains is the list of failure domains this MachinePool should be attached to.
     minReadySeconds : int, default is Undefined, optional
-        Minimum number of seconds for which a newly created machine instances should
+        minReadySeconds is the minimum number of seconds for which a newly created machine instances should
         be ready.
         Defaults to 0 (machine instance will be considered available as soon as it
         is ready)
@@ -56,7 +56,7 @@ schema ClusterxK8sIoV1alpha3MachinePoolSpec:
         providerIDList are the identification IDs of machine instances provided by the provider.
         This field must match the provider IDs as seen on the node objects corresponding to a machine pool's machine instances.
     replicas : int, default is Undefined, optional
-        Number of desired machines. Defaults to 1.
+        replicas is the number of desired machines. Defaults to 1.
         This is a pointer to distinguish between explicit zero and not specified.
     strategy : ClusterxK8sIoV1alpha3MachinePoolSpecStrategy, default is Undefined, optional
         strategy
@@ -86,7 +86,7 @@ schema ClusterxK8sIoV1alpha3MachinePoolSpec:
 
 schema ClusterxK8sIoV1alpha3MachinePoolSpecStrategy:
     r"""
-    The deployment strategy to use to replace existing machine instances with
+    strategy is the deployment strategy to use to replace existing machine instances with
     new ones.
 
     Attributes
@@ -107,13 +107,13 @@ schema ClusterxK8sIoV1alpha3MachinePoolSpecStrategy:
 
 schema ClusterxK8sIoV1alpha3MachinePoolSpecStrategyRollingUpdate:
     r"""
-    Rolling update config params. Present only if
+    rollingUpdate is the rolling update config params. Present only if
     MachineDeploymentStrategyType = RollingUpdate.
 
     Attributes
     ----------
     maxSurge : int | str, default is Undefined, optional
-        The maximum number of machines that can be scheduled above the
+        maxSurge is the maximum number of machines that can be scheduled above the
         desired number of machines.
         Value can be an absolute number (ex: 5) or a percentage of
         desired machines (ex: 10%).
@@ -127,7 +127,7 @@ schema ClusterxK8sIoV1alpha3MachinePoolSpecStrategyRollingUpdate:
         be scaled up further, ensuring that total number of machines running
         at any time during the update is at most 130% of desired machines.
     maxUnavailable : int | str, default is Undefined, optional
-        The maximum number of machines that can be unavailable during the update.
+        maxUnavailable is the maximum number of machines that can be unavailable during the update.
         Value can be an absolute number (ex: 5) or a percentage of desired
         machines (ex: 10%).
         Absolute number is calculated from percentage by rounding down.
@@ -167,7 +167,7 @@ schema ClusterxK8sIoV1alpha3MachinePoolSpecTemplate:
 
 schema ClusterxK8sIoV1alpha3MachinePoolSpecTemplateMetadata:
     r"""
-    Standard object's metadata.
+    metadata is the standard object's metadata.
     More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
 
     Attributes
@@ -196,7 +196,7 @@ schema ClusterxK8sIoV1alpha3MachinePoolSpecTemplateMetadata:
 
         Deprecated: This field has no function and is going to be removed in a next release.
     labels : {str:str}, default is Undefined, optional
-        Map of string keys and values that can be used to organize and categorize
+        labels is a map of string keys and values that can be used to organize and categorize
         (scope and select) objects. May match selectors of replication controllers
         and services.
         More info: http://kubernetes.io/docs/user-guide/labels
@@ -221,7 +221,7 @@ schema ClusterxK8sIoV1alpha3MachinePoolSpecTemplateMetadata:
 
         Deprecated: This field has no function and is going to be removed in a next release.
     ownerReferences : [ClusterxK8sIoV1alpha3MachinePoolSpecTemplateMetadataOwnerReferencesItems0], default is Undefined, optional
-        List of objects depended by this object. If ALL objects in the list have
+        ownerReferences is the list of objects depended by this object. If ALL objects in the list have
         been deleted, this object will be garbage collected. If this object is managed by a controller,
         then an entry in this list will point to this controller, with the controller field set to true.
         There cannot be more than one managing controller.
@@ -291,7 +291,7 @@ schema ClusterxK8sIoV1alpha3MachinePoolSpecTemplateMetadataOwnerReferencesItems0
 
 schema ClusterxK8sIoV1alpha3MachinePoolSpecTemplateSpec:
     r"""
-    Specification of the desired behavior of the machine.
+    spec is the specification of the desired behavior of the machine.
     More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
 
     Attributes
@@ -476,12 +476,12 @@ schema ClusterxK8sIoV1alpha3MachinePoolSpecTemplateSpecInfrastructureRef:
 
 schema ClusterxK8sIoV1alpha3MachinePoolStatus:
     r"""
-    MachinePoolStatus defines the observed state of MachinePool.
+    status is the observed state of MachinePool.
 
     Attributes
     ----------
     availableReplicas : int, default is Undefined, optional
-        The number of available replicas (ready for at least minReadySeconds) for this MachinePool.
+        availableReplicas is the number of available replicas (ready for at least minReadySeconds) for this MachinePool.
     bootstrapReady : bool, default is Undefined, optional
         bootstrapReady is the state of the bootstrap provider.
     conditions : [ClusterxK8sIoV1alpha3MachinePoolStatusConditionsItems0], default is Undefined, optional
@@ -502,11 +502,11 @@ schema ClusterxK8sIoV1alpha3MachinePoolStatus:
         phase represents the current phase of cluster actuation.
         E.g. Pending, Running, Terminating, Failed etc.
     readyReplicas : int, default is Undefined, optional
-        The number of ready replicas for this MachinePool. A machine is considered ready when the node has been created and is "Ready".
+        readyReplicas is the number of ready replicas for this MachinePool. A machine is considered ready when the node has been created and is "Ready".
     replicas : int, default is Undefined, optional
         replicas is the most recently observed number of replicas.
     unavailableReplicas : int, default is Undefined, optional
-        Total number of unavailable machine instances targeted by this machine pool.
+        unavailableReplicas is the total number of unavailable machine instances targeted by this machine pool.
         This is the total number of machine instances that are still required for
         the machine pool to have 100% available capacity. They may either
         be machine instances that are running but not yet available or machine instances
@@ -546,14 +546,14 @@ schema ClusterxK8sIoV1alpha3MachinePoolStatusConditionsItems0:
     Attributes
     ----------
     lastTransitionTime : str, default is Undefined, optional
-        Last time the condition transitioned from one status to another.
+        lastTransitionTime is the last time the condition transitioned from one status to another.
         This should be when the underlying condition changed. If that is not known, then using the time when
         the API field changed is acceptable.
     message : str, default is Undefined, optional
-        A human readable message indicating details about the transition.
+        message is a human readable message indicating details about the transition.
         This field may be empty.
     reason : str, default is Undefined, optional
-        The reason for the condition's last transition in CamelCase.
+        reason is the reason for the condition's last transition in CamelCase.
         The specific API may choose whether or not this field is considered a guaranteed API.
         This field may not be empty.
     severity : str, default is Undefined, optional

@@ -39,7 +39,7 @@ schema KubeadmControlPlane:
 
 schema ControlplaneClusterxK8sIoV1alpha3KubeadmControlPlaneSpec:
     r"""
-    KubeadmControlPlaneSpec defines the desired state of KubeadmControlPlane.
+    spec is the desired state of KubeadmControlPlane.
 
     Attributes
     ----------
@@ -52,7 +52,7 @@ schema ControlplaneClusterxK8sIoV1alpha3KubeadmControlPlaneSpec:
         The default value is 0, meaning that the node can be drained without any time limitations.
         NOTE: NodeDrainTimeout is different from `kubectl drain --timeout`
     replicas : int, default is Undefined, optional
-        Number of desired machines. Defaults to 1. When stacked etcd is used only
+        replicas is the number of desired machines. Defaults to 1. When stacked etcd is used only
         odd numbers are permitted, as per [etcd best practice](https://etcd.io/docs/v3.3.12/faq/#why-an-odd-number-of-cluster-members).
         This is a pointer to distinguish between explicit zero and not specified.
     rolloutStrategy : ControlplaneClusterxK8sIoV1alpha3KubeadmControlPlaneSpecRolloutStrategy, default is Undefined, optional
@@ -1210,7 +1210,7 @@ schema ControlplaneClusterxK8sIoV1alpha3KubeadmControlPlaneSpecKubeadmConfigSpec
 
 schema ControlplaneClusterxK8sIoV1alpha3KubeadmControlPlaneSpecRolloutStrategy:
     r"""
-    The RolloutStrategy to use to replace control plane machines with
+    rolloutStrategy is the RolloutStrategy to use to replace control plane machines with
     new ones.
 
     Attributes
@@ -1231,13 +1231,13 @@ schema ControlplaneClusterxK8sIoV1alpha3KubeadmControlPlaneSpecRolloutStrategy:
 
 schema ControlplaneClusterxK8sIoV1alpha3KubeadmControlPlaneSpecRolloutStrategyRollingUpdate:
     r"""
-    Rolling update config params. Present only if
+    rollingUpdate is the rolling update config params. Present only if
     RolloutStrategyType = RollingUpdate.
 
     Attributes
     ----------
     maxSurge : int | str, default is Undefined, optional
-        The maximum number of control planes that can be scheduled above or under the
+        maxSurge is the maximum number of control planes that can be scheduled above or under the
         desired number of control planes.
         Value can be an absolute number 1 or 0.
         Defaults to 1.
@@ -1251,14 +1251,14 @@ schema ControlplaneClusterxK8sIoV1alpha3KubeadmControlPlaneSpecRolloutStrategyRo
 
 schema ControlplaneClusterxK8sIoV1alpha3KubeadmControlPlaneStatus:
     r"""
-    KubeadmControlPlaneStatus defines the observed state of KubeadmControlPlane.
+    status is the observed state of KubeadmControlPlane.
 
     Attributes
     ----------
     conditions : [ControlplaneClusterxK8sIoV1alpha3KubeadmControlPlaneStatusConditionsItems0], default is Undefined, optional
         conditions defines current service state of the KubeadmControlPlane.
     failureMessage : str, default is Undefined, optional
-        ErrorMessage indicates that there is a terminal problem reconciling the
+        failureMessage indicates that there is a terminal problem reconciling the
         state, and will be set to a descriptive error message.
     failureReason : str, default is Undefined, optional
         failureReason indicates that there is a terminal problem reconciling the
@@ -1273,9 +1273,9 @@ schema ControlplaneClusterxK8sIoV1alpha3KubeadmControlPlaneStatus:
         ready denotes that the KubeadmControlPlane API Server is ready to
         receive requests.
     readyReplicas : int, default is Undefined, optional
-        Total number of fully running and ready control plane machines.
+        readyReplicas is the total number of fully running and ready control plane machines.
     replicas : int, default is Undefined, optional
-        Total number of non-terminated machines targeted by this control plane
+        replicas is the total number of non-terminated machines targeted by this control plane
         (their labels match the selector).
     selector : str, default is Undefined, optional
         selector is the label selector in string format to avoid introspection
@@ -1284,13 +1284,13 @@ schema ControlplaneClusterxK8sIoV1alpha3KubeadmControlPlaneStatus:
         describe.. The string will be in the same format as the query-param syntax.
         More info about label selectors: http://kubernetes.io/docs/user-guide/labels#label-selectors
     unavailableReplicas : int, default is Undefined, optional
-        Total number of unavailable machines targeted by this control plane.
+        unavailableReplicas is the total number of unavailable machines targeted by this control plane.
         This is the total number of machines that are still required for
         the deployment to have 100% available capacity. They may either
         be machines that are running but not yet ready or machines
         that still have not been created.
     updatedReplicas : int, default is Undefined, optional
-        Total number of non-terminated machines targeted by this control plane
+        updatedReplicas is the total number of non-terminated machines targeted by this control plane
         that have the desired template spec.
     """
 
@@ -1325,14 +1325,14 @@ schema ControlplaneClusterxK8sIoV1alpha3KubeadmControlPlaneStatusConditionsItems
     Attributes
     ----------
     lastTransitionTime : str, default is Undefined, optional
-        Last time the condition transitioned from one status to another.
+        lastTransitionTime is the last time the condition transitioned from one status to another.
         This should be when the underlying condition changed. If that is not known, then using the time when
         the API field changed is acceptable.
     message : str, default is Undefined, optional
-        A human readable message indicating details about the transition.
+        message is a human readable message indicating details about the transition.
         This field may be empty.
     reason : str, default is Undefined, optional
-        The reason for the condition's last transition in CamelCase.
+        reason is the reason for the condition's last transition in CamelCase.
         The specific API may choose whether or not this field is considered a guaranteed API.
         This field may not be empty.
     severity : str, default is Undefined, optional

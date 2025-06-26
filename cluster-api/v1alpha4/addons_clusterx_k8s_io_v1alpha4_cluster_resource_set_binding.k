@@ -35,7 +35,7 @@ schema ClusterResourceSetBinding:
 
 schema AddonsClusterxK8sIoV1alpha4ClusterResourceSetBindingSpec:
     r"""
-    ClusterResourceSetBindingSpec defines the desired state of ClusterResourceSetBinding.
+    spec is the desired state of ClusterResourceSetBinding.
 
     Attributes
     ----------

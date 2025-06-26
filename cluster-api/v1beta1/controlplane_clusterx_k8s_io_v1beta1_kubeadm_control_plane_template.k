@@ -35,7 +35,7 @@ schema KubeadmControlPlaneTemplate:
 
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpec:
     r"""
-    KubeadmControlPlaneTemplateSpec defines the desired state of KubeadmControlPlaneTemplate.
+    spec is the desired state of KubeadmControlPlaneTemplate.
 
     Attributes
     ----------
@@ -49,7 +49,7 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpec:
 
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplate:
     r"""
-    KubeadmControlPlaneTemplateResource describes the data needed to create a KubeadmControlPlane from a template.
+    template defines the desired state of KubeadmControlPlaneTemplate.
 
     Attributes
     ----------
@@ -67,7 +67,7 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplate:
 
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateMetadata:
     r"""
-    Standard object's metadata.
+    metadata is the standard object's metadata.
     More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
 
     Attributes
@@ -78,7 +78,7 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateMe
         queryable and should be preserved when modifying objects.
         More info: http://kubernetes.io/docs/user-guide/annotations
     labels : {str:str}, default is Undefined, optional
-        Map of string keys and values that can be used to organize and categorize
+        labels is a map of string keys and values that can be used to organize and categorize
         (scope and select) objects. May match selectors of replication controllers
         and services.
         More info: http://kubernetes.io/docs/user-guide/labels
@@ -92,11 +92,7 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateMe
 
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpec:
     r"""
-    KubeadmControlPlaneTemplateResourceSpec defines the desired state of KubeadmControlPlane.
-    NOTE: KubeadmControlPlaneTemplateResourceSpec is similar to KubeadmControlPlaneSpec but
-    omits Replicas and Version fields. These fields do not make sense on the KubeadmControlPlaneTemplate,
-    because they are calculated by the Cluster topology reconciler during reconciliation and thus cannot
-    be configured on the KubeadmControlPlaneTemplate.
+    spec is the desired state of KubeadmControlPlaneTemplateResource.
 
     Attributes
     ----------
@@ -141,6 +137,10 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
 
     Attributes
     ----------
+    bootCommands : [str], default is Undefined, optional
+        bootCommands specifies extra commands to run very early in the boot process via the cloud-init bootcmd
+        module. bootcmd will run on every boot, 'cloud-init-per' command can be used to make bootcmd run exactly
+        once. This is typically run in the cloud-init.service systemd unit. This has no effect in Ignition.
     clusterConfiguration : ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfiguration, default is Undefined, optional
         cluster configuration
     diskSetup : ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecDiskSetup, default is Undefined, optional
@@ -160,9 +160,13 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
     ntp : ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecNtp, default is Undefined, optional
         ntp
     postKubeadmCommands : [str], default is Undefined, optional
-        postKubeadmCommands specifies extra commands to run after kubeadm runs
+        postKubeadmCommands specifies extra commands to run after kubeadm runs.
+        With cloud-init, this is appended to the runcmd module configuration, and is typically executed in
+        the cloud-final.service systemd unit. In Ignition, this is appended to /etc/kubeadm.sh.
     preKubeadmCommands : [str], default is Undefined, optional
-        preKubeadmCommands specifies extra commands to run before kubeadm runs
+        preKubeadmCommands specifies extra commands to run before kubeadm runs.
+        With cloud-init, this is prepended to the runcmd module configuration, and is typically executed in
+        the cloud-final.service systemd unit. In Ignition, this is prepended to /etc/kubeadm.sh.
     useExperimentalRetryJoin : bool, default is Undefined, optional
         useExperimentalRetryJoin replaces a basic kubeadm command with a shell
         script with retries for joins.
@@ -184,6 +188,8 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
         It overrides the `--v` flag in kubeadm commands.
     """
 
+
+    bootCommands?: [str]
 
     clusterConfiguration?: ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfiguration
 
@@ -214,6 +220,21 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
     verbosity?: int
 
 
+    check:
+        len(bootCommands) <= 1000 if bootCommands
+        all bootCommands in bootCommands { len(bootCommands) <= 10240 if bootCommands not in [None, Undefined] } if bootCommands
+        all bootCommands in bootCommands { len(bootCommands) >= 1 if bootCommands not in [None, Undefined] } if bootCommands
+        len(files) <= 200 if files
+        len(mounts) <= 100 if mounts
+        len(postKubeadmCommands) <= 1000 if postKubeadmCommands
+        all postKubeadmCommands in postKubeadmCommands { len(postKubeadmCommands) <= 10240 if postKubeadmCommands not in [None, Undefined] } if postKubeadmCommands
+        all postKubeadmCommands in postKubeadmCommands { len(postKubeadmCommands) >= 1 if postKubeadmCommands not in [None, Undefined] } if postKubeadmCommands
+        len(preKubeadmCommands) <= 1000 if preKubeadmCommands
+        all preKubeadmCommands in preKubeadmCommands { len(preKubeadmCommands) <= 10240 if preKubeadmCommands not in [None, Undefined] } if preKubeadmCommands
+        all preKubeadmCommands in preKubeadmCommands { len(preKubeadmCommands) >= 1 if preKubeadmCommands not in [None, Undefined] } if preKubeadmCommands
+        len(users) <= 100 if users
+
+
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfiguration:
     r"""
     clusterConfiguration along with InitConfiguration are the configurations necessary for the init command
@@ -231,7 +252,7 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
         certificatesDir specifies where to store or look for all required certificates.
         NB: if not provided, this will default to `/etc/kubernetes/pki`
     clusterName : str, default is Undefined, optional
-        The cluster name
+        clusterName is the cluster name
     controlPlaneEndpoint : str, default is Undefined, optional
         controlPlaneEndpoint sets a stable IP address or DNS name for the control plane; it
         can be a valid IP address or a RFC-1123 DNS subdomain, both with optional TCP port.
@@ -310,6 +331,19 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
     scheduler?: ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationScheduler
 
 
+    check:
+        len(certificatesDir) <= 512 if certificatesDir
+        len(certificatesDir) >= 1 if certificatesDir
+        len(clusterName) <= 63 if clusterName
+        len(clusterName) >= 1 if clusterName
+        len(controlPlaneEndpoint) <= 512 if controlPlaneEndpoint
+        len(controlPlaneEndpoint) >= 1 if controlPlaneEndpoint
+        len(imageRepository) <= 512 if imageRepository
+        len(imageRepository) >= 1 if imageRepository
+        len(kubernetesVersion) <= 256 if kubernetesVersion
+        len(kubernetesVersion) >= 1 if kubernetesVersion
+
+
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationAPIServer:
     r"""
     apiServer contains extra settings for the API server control plane component
@@ -340,6 +374,14 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
     extraVolumes?: [ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationAPIServerExtraVolumesItems0]
 
     timeoutForControlPlane?: str
+
+
+    check:
+        len(certSANs) <= 100 if certSANs
+        all certSANs in certSANs { len(certSANs) <= 253 if certSANs not in [None, Undefined] } if certSANs
+        all certSANs in certSANs { len(certSANs) >= 1 if certSANs not in [None, Undefined] } if certSANs
+        len(extraEnvs) <= 100 if extraEnvs
+        len(extraVolumes) <= 100 if extraVolumes
 
 
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationAPIServerExtraEnvsItems0:
@@ -528,6 +570,15 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
     readOnly?: bool
 
 
+    check:
+        len(hostPath) <= 512
+        len(hostPath) >= 1
+        len(mountPath) <= 512
+        len(mountPath) >= 1
+        len(name) <= 512
+        len(name) >= 1
+
+
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationControllerManager:
     r"""
     controllerManager contains extra settings for the controller manager control plane component
@@ -550,6 +601,11 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
     extraEnvs?: [ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationControllerManagerExtraEnvsItems0]
 
     extraVolumes?: [ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationControllerManagerExtraVolumesItems0]
+
+
+    check:
+        len(extraEnvs) <= 100 if extraEnvs
+        len(extraVolumes) <= 100 if extraVolumes
 
 
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationControllerManagerExtraEnvsItems0:
@@ -738,6 +794,15 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
     readOnly?: bool
 
 
+    check:
+        len(hostPath) <= 512
+        len(hostPath) >= 1
+        len(mountPath) <= 512
+        len(mountPath) >= 1
+        len(name) <= 512
+        len(name) >= 1
+
+
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationDNS:
     r"""
     dns defines the options for the DNS add-on installed in the cluster.
@@ -756,6 +821,13 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
     imageRepository?: str
 
     imageTag?: str
+
+
+    check:
+        len(imageRepository) <= 512 if imageRepository
+        len(imageRepository) >= 1 if imageRepository
+        len(imageTag) <= 256 if imageTag
+        len(imageTag) >= 1 if imageTag
 
 
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationEtcd:
@@ -807,6 +879,18 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
     keyFile: str
 
 
+    check:
+        len(caFile) <= 512
+        len(caFile) >= 1
+        len(certFile) <= 512
+        len(certFile) >= 1
+        len(endpoints) <= 50
+        all endpoints in endpoints { len(endpoints) <= 512 if endpoints not in [None, Undefined] } if endpoints
+        all endpoints in endpoints { len(endpoints) >= 1 if endpoints not in [None, Undefined] } if endpoints
+        len(keyFile) <= 512
+        len(keyFile) >= 1
+
+
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationEtcdLocal:
     r"""
     local provides configuration knobs for configuring the local etcd instance
@@ -850,6 +934,22 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
     peerCertSANs?: [str]
 
     serverCertSANs?: [str]
+
+
+    check:
+        len(dataDir) <= 512 if dataDir
+        len(dataDir) >= 1 if dataDir
+        len(extraEnvs) <= 100 if extraEnvs
+        len(imageRepository) <= 512 if imageRepository
+        len(imageRepository) >= 1 if imageRepository
+        len(imageTag) <= 256 if imageTag
+        len(imageTag) >= 1 if imageTag
+        len(peerCertSANs) <= 100 if peerCertSANs
+        all peerCertSANs in peerCertSANs { len(peerCertSANs) <= 253 if peerCertSANs not in [None, Undefined] } if peerCertSANs
+        all peerCertSANs in peerCertSANs { len(peerCertSANs) >= 1 if peerCertSANs not in [None, Undefined] } if peerCertSANs
+        len(serverCertSANs) <= 100 if serverCertSANs
+        all serverCertSANs in serverCertSANs { len(serverCertSANs) <= 253 if serverCertSANs not in [None, Undefined] } if serverCertSANs
+        all serverCertSANs in serverCertSANs { len(serverCertSANs) >= 1 if serverCertSANs not in [None, Undefined] } if serverCertSANs
 
 
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationEtcdLocalExtraEnvsItems0:
@@ -1033,6 +1133,15 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
     serviceSubnet?: str
 
 
+    check:
+        len(dnsDomain) <= 253 if dnsDomain
+        len(dnsDomain) >= 1 if dnsDomain
+        len(podSubnet) <= 1024 if podSubnet
+        len(podSubnet) >= 1 if podSubnet
+        len(serviceSubnet) <= 1024 if serviceSubnet
+        len(serviceSubnet) >= 1 if serviceSubnet
+
+
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationScheduler:
     r"""
     scheduler contains extra settings for the scheduler control plane component
@@ -1055,6 +1164,11 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
     extraEnvs?: [ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationSchedulerExtraEnvsItems0]
 
     extraVolumes?: [ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationSchedulerExtraVolumesItems0]
+
+
+    check:
+        len(extraEnvs) <= 100 if extraEnvs
+        len(extraVolumes) <= 100 if extraVolumes
 
 
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationSchedulerExtraEnvsItems0:
@@ -1243,6 +1357,15 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
     readOnly?: bool
 
 
+    check:
+        len(hostPath) <= 512
+        len(hostPath) >= 1
+        len(mountPath) <= 512
+        len(mountPath) >= 1
+        len(name) <= 512
+        len(name) >= 1
+
+
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecDiskSetup:
     r"""
     diskSetup specifies options for the creation of partition tables and file systems on devices.
@@ -1261,6 +1384,11 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
     partitions?: [ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecDiskSetupPartitionsItems0]
 
 
+    check:
+        len(filesystems) <= 100 if filesystems
+        len(partitions) <= 100 if partitions
+
+
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecDiskSetupFilesystemsItems0:
     r"""
     Filesystem defines the file systems to be created.
@@ -1273,7 +1401,7 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
         extraOpts defined extra options to add to the command for creating the file system.
     filesystem : str, default is Undefined, required
         filesystem specifies the file system type.
-    label : str, default is Undefined, required
+    label : str, default is Undefined, optional
         label specifies the file system label to be used. If set to None, no label is used.
     overwrite : bool, default is Undefined, optional
         overwrite defines whether or not to overwrite any existing filesystem.
@@ -1292,13 +1420,29 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
 
     filesystem: str
 
-    label: str
+    label?: str
 
     overwrite?: bool
 
     partition?: str
 
     replaceFS?: str
+
+
+    check:
+        len(device) <= 256
+        len(device) >= 1
+        len(extraOpts) <= 100 if extraOpts
+        all extraOpts in extraOpts { len(extraOpts) <= 256 if extraOpts not in [None, Undefined] } if extraOpts
+        all extraOpts in extraOpts { len(extraOpts) >= 1 if extraOpts not in [None, Undefined] } if extraOpts
+        len(filesystem) <= 128
+        len(filesystem) >= 1
+        len(label) <= 512 if label
+        len(label) >= 1 if label
+        len(partition) <= 128 if partition
+        len(partition) >= 1 if partition
+        len(replaceFS) <= 128 if replaceFS
+        len(replaceFS) >= 1 if replaceFS
 
 
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecDiskSetupPartitionsItems0:
@@ -1329,7 +1473,12 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
 
     overwrite?: bool
 
-    tableType?: str
+    tableType?: "mbr" | "gpt"
+
+
+    check:
+        len(device) <= 256
+        len(device) >= 1
 
 
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecFilesItems0:
@@ -1370,6 +1519,17 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
     permissions?: str
 
 
+    check:
+        len(content) <= 10240 if content
+        len(content) >= 1 if content
+        len(owner) <= 256 if owner
+        len(owner) >= 1 if owner
+        len(path) <= 512
+        len(path) >= 1
+        len(permissions) <= 16 if permissions
+        len(permissions) >= 1 if permissions
+
+
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecFilesItems0ContentFrom:
     r"""
     contentFrom is a referenced source of content to populate the file.
@@ -1400,6 +1560,13 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
     key: str
 
     name: str
+
+
+    check:
+        len(key) <= 256
+        len(key) >= 1
+        len(name) <= 253
+        len(name) >= 1
 
 
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecIgnition:
@@ -1435,6 +1602,11 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
     additionalConfig?: str
 
     strict?: bool
+
+
+    check:
+        len(additionalConfig) <= 32768 if additionalConfig
+        len(additionalConfig) >= 1 if additionalConfig
 
 
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecInitConfiguration:
@@ -1485,6 +1657,13 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
     skipPhases?: [str]
 
 
+    check:
+        len(bootstrapTokens) <= 100 if bootstrapTokens
+        len(skipPhases) <= 50 if skipPhases
+        all skipPhases in skipPhases { len(skipPhases) <= 256 if skipPhases not in [None, Undefined] } if skipPhases
+        all skipPhases in skipPhases { len(skipPhases) >= 1 if skipPhases not in [None, Undefined] } if skipPhases
+
+
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecInitConfigurationBootstrapTokensItems0:
     r"""
     BootstrapToken describes one bootstrap token, stored as a Secret in the cluster.
@@ -1525,6 +1704,17 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
     usages?: [str]
 
 
+    check:
+        len(description) <= 512 if description
+        len(description) >= 1 if description
+        len(groups) <= 100 if groups
+        all groups in groups { len(groups) <= 256 if groups not in [None, Undefined] } if groups
+        all groups in groups { len(groups) >= 1 if groups not in [None, Undefined] } if groups
+        len(usages) <= 100 if usages
+        all usages in usages { len(usages) <= 256 if usages not in [None, Undefined] } if usages
+        all usages in usages { len(usages) >= 1 if usages not in [None, Undefined] } if usages
+
+
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecInitConfigurationLocalAPIEndpoint:
     r"""
     localAPIEndpoint represents the endpoint of the API server instance that's deployed on this control plane node
@@ -1547,6 +1737,11 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
     advertiseAddress?: str
 
     bindPort?: int
+
+
+    check:
+        len(advertiseAddress) <= 39 if advertiseAddress
+        len(advertiseAddress) >= 1 if advertiseAddress
 
 
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecInitConfigurationNodeRegistration:
@@ -1599,6 +1794,17 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
     name?: str
 
     taints?: [ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecInitConfigurationNodeRegistrationTaintsItems0]
+
+
+    check:
+        len(criSocket) <= 512 if criSocket
+        len(criSocket) >= 1 if criSocket
+        len(ignorePreflightErrors) <= 50 if ignorePreflightErrors
+        all ignorePreflightErrors in ignorePreflightErrors { len(ignorePreflightErrors) <= 512 if ignorePreflightErrors not in [None, Undefined] } if ignorePreflightErrors
+        all ignorePreflightErrors in ignorePreflightErrors { len(ignorePreflightErrors) >= 1 if ignorePreflightErrors not in [None, Undefined] } if ignorePreflightErrors
+        len(name) <= 253 if name
+        len(name) >= 1 if name
+        len(taints) <= 100 if taints
 
 
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecInitConfigurationNodeRegistrationTaintsItems0:
@@ -1655,6 +1861,11 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
     directory?: str
 
 
+    check:
+        len(directory) <= 512 if directory
+        len(directory) >= 1 if directory
+
+
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecJoinConfiguration:
     r"""
     joinConfiguration is the kubeadm configuration for the join command
@@ -1708,6 +1919,14 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
     skipPhases?: [str]
 
 
+    check:
+        len(caCertPath) <= 512 if caCertPath
+        len(caCertPath) >= 1 if caCertPath
+        len(skipPhases) <= 50 if skipPhases
+        all skipPhases in skipPhases { len(skipPhases) <= 256 if skipPhases not in [None, Undefined] } if skipPhases
+        all skipPhases in skipPhases { len(skipPhases) >= 1 if skipPhases not in [None, Undefined] } if skipPhases
+
+
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecJoinConfigurationControlPlane:
     r"""
     controlPlane defines the additional control plane instance to be deployed on the joining node.
@@ -1742,6 +1961,11 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
     bindPort?: int
 
 
+    check:
+        len(advertiseAddress) <= 39 if advertiseAddress
+        len(advertiseAddress) >= 1 if advertiseAddress
+
+
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecJoinConfigurationDiscovery:
     r"""
     discovery specifies the options for the kubelet to use during the TLS Bootstrap process
@@ -1770,6 +1994,11 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
     tlsBootstrapToken?: str
 
 
+    check:
+        len(tlsBootstrapToken) <= 512 if tlsBootstrapToken
+        len(tlsBootstrapToken) >= 1 if tlsBootstrapToken
+
+
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecJoinConfigurationDiscoveryBootstrapToken:
     r"""
     bootstrapToken is used to set the options for bootstrap token based discovery
@@ -1788,7 +2017,7 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
         SHA-256 hash of the Subject Public Key Info (SPKI) object in DER-encoded
         ASN.1. These hashes can be calculated using, for example, OpenSSL:
         openssl x509 -pubkey -in ca.crt openssl rsa -pubin -outform der 2>&/dev/null | openssl dgst -sha256 -hex
-    token : str, default is Undefined, required
+    token : str, default is Undefined, optional
         token is a token used to validate cluster information
         fetched from the control-plane.
     unsafeSkipCAVerification : bool, default is Undefined, optional
@@ -1802,9 +2031,19 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
 
     caCertHashes?: [str]
 
-    token: str
+    token?: str
 
     unsafeSkipCAVerification?: bool
+
+
+    check:
+        len(apiServerEndpoint) <= 512 if apiServerEndpoint
+        len(apiServerEndpoint) >= 1 if apiServerEndpoint
+        len(caCertHashes) <= 100 if caCertHashes
+        all caCertHashes in caCertHashes { len(caCertHashes) <= 512 if caCertHashes not in [None, Undefined] } if caCertHashes
+        all caCertHashes in caCertHashes { len(caCertHashes) >= 1 if caCertHashes not in [None, Undefined] } if caCertHashes
+        len(token) <= 512 if token
+        len(token) >= 1 if token
 
 
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecJoinConfigurationDiscoveryFile:
@@ -1824,6 +2063,11 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
     kubeConfig?: ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecJoinConfigurationDiscoveryFileKubeConfig
 
     kubeConfigPath: str
+
+
+    check:
+        len(kubeConfigPath) <= 512
+        len(kubeConfigPath) >= 1
 
 
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecJoinConfigurationDiscoveryFileKubeConfig:
@@ -1894,6 +2138,17 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
     tlsServerName?: str
 
 
+    check:
+        len(certificateAuthorityData) <= 51200 if certificateAuthorityData
+        len(certificateAuthorityData) >= 1 if certificateAuthorityData
+        len(proxyURL) <= 512 if proxyURL
+        len(proxyURL) >= 1 if proxyURL
+        len(server) <= 512 if server
+        len(server) >= 1 if server
+        len(tlsServerName) <= 512 if tlsServerName
+        len(tlsServerName) >= 1 if tlsServerName
+
+
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecJoinConfigurationDiscoveryFileKubeConfigUser:
     r"""
     user contains information that describes identity information.
@@ -1931,6 +2186,11 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
     name: str
 
 
+    check:
+        len(name) <= 256
+        len(name) >= 1
+
+
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecJoinConfigurationDiscoveryFileKubeConfigUserExec:
     r"""
     exec specifies a custom exec-based authentication plugin for the kubernetes cluster.
@@ -1938,11 +2198,11 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
     Attributes
     ----------
     apiVersion : str, default is Undefined, optional
-        Preferred input version of the ExecInfo. The returned ExecCredentials MUST use
+        apiVersion is preferred input version of the ExecInfo. The returned ExecCredentials MUST use
         the same encoding version as the input.
         Defaults to client.authentication.k8s.io/v1 if not set.
     args : [str], default is Undefined, optional
-        Arguments to pass to the command when executing it.
+        args is the arguments to pass to the command when executing it.
     command : str, default is Undefined, required
         command to execute.
     env : [ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecJoinConfigurationDiscoveryFileKubeConfigUserExecEnvItems0], default is Undefined, optional
@@ -1969,6 +2229,17 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
     provideClusterInfo?: bool
 
 
+    check:
+        len(apiVersion) <= 512 if apiVersion
+        len(apiVersion) >= 1 if apiVersion
+        len(args) <= 100 if args
+        all args in args { len(args) <= 512 if args not in [None, Undefined] } if args
+        all args in args { len(args) >= 1 if args not in [None, Undefined] } if args
+        len(command) <= 1024
+        len(command) >= 1
+        len(env) <= 100 if env
+
+
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecJoinConfigurationDiscoveryFileKubeConfigUserExecEnvItems0:
     r"""
     KubeConfigAuthExecEnv is used for setting environment variables when executing an exec-based
@@ -1977,15 +2248,22 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
     Attributes
     ----------
     name : str, default is Undefined, required
-        name
+        name of the environment variable
     value : str, default is Undefined, required
-        value
+        value of the environment variable
     """
 
 
     name: str
 
     value: str
+
+
+    check:
+        len(name) <= 512
+        len(name) >= 1
+        len(value) <= 512
+        len(value) >= 1
 
 
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecJoinConfigurationNodeRegistration:
@@ -2038,6 +2316,17 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
     name?: str
 
     taints?: [ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecJoinConfigurationNodeRegistrationTaintsItems0]
+
+
+    check:
+        len(criSocket) <= 512 if criSocket
+        len(criSocket) >= 1 if criSocket
+        len(ignorePreflightErrors) <= 50 if ignorePreflightErrors
+        all ignorePreflightErrors in ignorePreflightErrors { len(ignorePreflightErrors) <= 512 if ignorePreflightErrors not in [None, Undefined] } if ignorePreflightErrors
+        all ignorePreflightErrors in ignorePreflightErrors { len(ignorePreflightErrors) >= 1 if ignorePreflightErrors not in [None, Undefined] } if ignorePreflightErrors
+        len(name) <= 253 if name
+        len(name) >= 1 if name
+        len(taints) <= 100 if taints
 
 
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecJoinConfigurationNodeRegistrationTaintsItems0:
@@ -2094,6 +2383,11 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
     directory?: str
 
 
+    check:
+        len(directory) <= 512 if directory
+        len(directory) >= 1 if directory
+
+
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecNtp:
     r"""
     ntp specifies NTP configuration
@@ -2110,6 +2404,12 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
     enabled?: bool
 
     servers?: [str]
+
+
+    check:
+        len(servers) <= 100 if servers
+        all servers in servers { len(servers) <= 512 if servers not in [None, Undefined] } if servers
+        all servers in servers { len(servers) >= 1 if servers not in [None, Undefined] } if servers
 
 
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecUsersItems0:
@@ -2170,6 +2470,28 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
     sudo?: str
 
 
+    check:
+        len(gecos) <= 256 if gecos
+        len(gecos) >= 1 if gecos
+        len(groups) <= 256 if groups
+        len(groups) >= 1 if groups
+        len(homeDir) <= 256 if homeDir
+        len(homeDir) >= 1 if homeDir
+        len(name) <= 256
+        len(name) >= 1
+        len(passwd) <= 256 if passwd
+        len(passwd) >= 1 if passwd
+        len(primaryGroup) <= 256 if primaryGroup
+        len(primaryGroup) >= 1 if primaryGroup
+        len(shell) <= 256 if shell
+        len(shell) >= 1 if shell
+        len(sshAuthorizedKeys) <= 100 if sshAuthorizedKeys
+        all sshAuthorizedKeys in sshAuthorizedKeys { len(sshAuthorizedKeys) <= 2048 if sshAuthorizedKeys not in [None, Undefined] } if sshAuthorizedKeys
+        all sshAuthorizedKeys in sshAuthorizedKeys { len(sshAuthorizedKeys) >= 1 if sshAuthorizedKeys not in [None, Undefined] } if sshAuthorizedKeys
+        len(sudo) <= 256 if sudo
+        len(sudo) >= 1 if sudo
+
+
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecUsersItems0PasswdFrom:
     r"""
     passwdFrom is a referenced source of passwd to populate the passwd.
@@ -2202,15 +2524,22 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
     name: str
 
 
+    check:
+        len(key) <= 256
+        len(key) >= 1
+        len(name) <= 253
+        len(name) >= 1
+
+
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecMachineNamingStrategy:
     r"""
-    MachineNamingStrategy allows changing the naming pattern used when creating Machines.
+    machineNamingStrategy allows changing the naming pattern used when creating Machines.
     InfraMachines & KubeadmConfigs will use the same name as the corresponding Machines.
 
     Attributes
     ----------
     template : str, default is Undefined, optional
-        Template defines the template to use for generating the names of the Machine objects.
+        template defines the template to use for generating the names of the Machine objects.
         If not defined, it will fallback to `{{ .kubeadmControlPlane.name }}-{{ .random }}`.
         If the generated name string exceeds 63 characters, it will be trimmed to 58 characters and will
         get concatenated with a random suffix of length 5.
@@ -2218,7 +2547,8 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
         The template allows the following variables `.cluster.name`, `.kubeadmControlPlane.name` and `.random`.
         The variable `.cluster.name` retrieves the name of the cluster object that owns the Machines being created.
         The variable `.kubeadmControlPlane.name` retrieves the name of the KubeadmControlPlane object that owns the Machines being created.
-        The variable `.random` is substituted with random alphanumeric string, without vowels, of length 5.
+        The variable `.random` is substituted with random alphanumeric string, without vowels, of length 5. This variable is required
+        part of the template. If not provided, validation will fail.
     """
 
 
@@ -2227,6 +2557,7 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
 
     check:
         len(template) <= 256 if template
+        len(template) >= 1 if template
 
 
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecMachineTemplate:
@@ -2263,7 +2594,7 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
 
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecMachineTemplateMetadata:
     r"""
-    Standard object's metadata.
+    metadata is the standard object's metadata.
     More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
 
     Attributes
@@ -2274,7 +2605,7 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
         queryable and should be preserved when modifying objects.
         More info: http://kubernetes.io/docs/user-guide/annotations
     labels : {str:str}, default is Undefined, optional
-        Map of string keys and values that can be used to organize and categorize
+        labels is a map of string keys and values that can be used to organize and categorize
         (scope and select) objects. May match selectors of replication controllers
         and services.
         More info: http://kubernetes.io/docs/user-guide/labels
@@ -2288,7 +2619,7 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
 
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecRemediationStrategy:
     r"""
-    The RemediationStrategy that controls how control plane machine remediation happens.
+    remediationStrategy is the RemediationStrategy that controls how control plane machine remediation happens.
 
     Attributes
     ----------
@@ -2355,7 +2686,7 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
 
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecRolloutStrategy:
     r"""
-    The RolloutStrategy to use to replace control plane machines with
+    rolloutStrategy is the RolloutStrategy to use to replace control plane machines with
     new ones.
 
     Attributes
@@ -2371,18 +2702,18 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
 
     rollingUpdate?: ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecRolloutStrategyRollingUpdate
 
-    $type?: str
+    $type?: "RollingUpdate"
 
 
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecRolloutStrategyRollingUpdate:
     r"""
-    Rolling update config params. Present only if
+    rollingUpdate is the rolling update config params. Present only if
     RolloutStrategyType = RollingUpdate.
 
     Attributes
     ----------
     maxSurge : int | str, default is Undefined, optional
-        The maximum number of control planes that can be scheduled above or under the
+        maxSurge is the maximum number of control planes that can be scheduled above or under the
         desired number of control planes.
         Value can be an absolute number 1 or 0.
         Defaults to 1.

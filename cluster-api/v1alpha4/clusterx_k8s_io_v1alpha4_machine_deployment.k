@@ -39,30 +39,30 @@ schema MachineDeployment:
 
 schema ClusterxK8sIoV1alpha4MachineDeploymentSpec:
     r"""
-    MachineDeploymentSpec defines the desired state of MachineDeployment.
+    spec is the desired state of MachineDeployment.
 
     Attributes
     ----------
     clusterName : str, default is Undefined, required
         clusterName is the name of the Cluster this object belongs to.
     minReadySeconds : int, default is Undefined, optional
-        Minimum number of seconds for which a newly created machine should
+        minReadySeconds is the minimum number of seconds for which a newly created machine should
         be ready.
         Defaults to 0 (machine will be considered available as soon as it
         is ready)
     paused : bool, default is Undefined, optional
-        Indicates that the deployment is paused.
+        paused indicates that the deployment is paused.
     progressDeadlineSeconds : int, default is Undefined, optional
-        The maximum time in seconds for a deployment to make progress before it
+        progressDeadlineSeconds is the maximum time in seconds for a deployment to make progress before it
         is considered to be failed. The deployment controller will continue to
         process failed deployments and a condition with a ProgressDeadlineExceeded
         reason will be surfaced in the deployment status. Note that progress will
         not be estimated during the time a deployment is paused. Defaults to 600s.
     replicas : int, default is 1, optional
-        Number of desired machines. Defaults to 1.
+        replicas is the number of desired machines. Defaults to 1.
         This is a pointer to distinguish between explicit zero and not specified.
     revisionHistoryLimit : int, default is Undefined, optional
-        The number of old MachineSets to retain to allow rollback.
+        revisionHistoryLimit is the number of old MachineSets to retain to allow rollback.
         This is a pointer to distinguish between explicit zero and not specified.
         Defaults to 1.
     selector : ClusterxK8sIoV1alpha4MachineDeploymentSpecSelector, default is Undefined, required
@@ -99,7 +99,7 @@ schema ClusterxK8sIoV1alpha4MachineDeploymentSpec:
 
 schema ClusterxK8sIoV1alpha4MachineDeploymentSpecSelector:
     r"""
-    Label selector for machines. Existing MachineSets whose machines are
+    selector is the label selector for machines. Existing MachineSets whose machines are
     selected by this will be the ones affected by this deployment.
     It must match the machine template's labels.
 
@@ -148,7 +148,7 @@ schema ClusterxK8sIoV1alpha4MachineDeploymentSpecSelectorMatchExpressionsItems0:
 
 schema ClusterxK8sIoV1alpha4MachineDeploymentSpecStrategy:
     r"""
-    The deployment strategy to use to replace existing machines with
+    strategy is the deployment strategy to use to replace existing machines with
     new ones.
 
     Attributes
@@ -168,7 +168,7 @@ schema ClusterxK8sIoV1alpha4MachineDeploymentSpecStrategy:
 
 schema ClusterxK8sIoV1alpha4MachineDeploymentSpecStrategyRollingUpdate:
     r"""
-    Rolling update config params. Present only if
+    rollingUpdate is the rolling update config params. Present only if
     MachineDeploymentStrategyType = RollingUpdate.
 
     Attributes
@@ -178,7 +178,7 @@ schema ClusterxK8sIoV1alpha4MachineDeploymentSpecStrategyRollingUpdate:
         Valid values are "Random, "Newest", "Oldest"
         When no value is supplied, the default DeletePolicy of MachineSet is used
     maxSurge : int | str, default is Undefined, optional
-        The maximum number of machines that can be scheduled above the
+        maxSurge is the maximum number of machines that can be scheduled above the
         desired number of machines.
         Value can be an absolute number (ex: 5) or a percentage of
         desired machines (ex: 10%).
@@ -192,7 +192,7 @@ schema ClusterxK8sIoV1alpha4MachineDeploymentSpecStrategyRollingUpdate:
         be scaled up further, ensuring that total number of machines running
         at any time during the update is at most 130% of desired machines.
     maxUnavailable : int | str, default is Undefined, optional
-        The maximum number of machines that can be unavailable during the update.
+        maxUnavailable is the maximum number of machines that can be unavailable during the update.
         Value can be an absolute number (ex: 5) or a percentage of desired
         machines (ex: 10%).
         Absolute number is calculated from percentage by rounding down.
@@ -234,7 +234,7 @@ schema ClusterxK8sIoV1alpha4MachineDeploymentSpecTemplate:
 
 schema ClusterxK8sIoV1alpha4MachineDeploymentSpecTemplateMetadata:
     r"""
-    Standard object's metadata.
+    metadata is the standard object's metadata.
     More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
 
     Attributes
@@ -245,7 +245,7 @@ schema ClusterxK8sIoV1alpha4MachineDeploymentSpecTemplateMetadata:
         queryable and should be preserved when modifying objects.
         More info: http://kubernetes.io/docs/user-guide/annotations
     labels : {str:str}, default is Undefined, optional
-        Map of string keys and values that can be used to organize and categorize
+        labels is a map of string keys and values that can be used to organize and categorize
         (scope and select) objects. May match selectors of replication controllers
         and services.
         More info: http://kubernetes.io/docs/user-guide/labels
@@ -259,7 +259,7 @@ schema ClusterxK8sIoV1alpha4MachineDeploymentSpecTemplateMetadata:
 
 schema ClusterxK8sIoV1alpha4MachineDeploymentSpecTemplateSpec:
     r"""
-    Specification of the desired behavior of the machine.
+    spec is the specification of the desired behavior of the machine.
     More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
 
     Attributes
@@ -437,36 +437,36 @@ schema ClusterxK8sIoV1alpha4MachineDeploymentSpecTemplateSpecInfrastructureRef:
 
 schema ClusterxK8sIoV1alpha4MachineDeploymentStatus:
     r"""
-    MachineDeploymentStatus defines the observed state of MachineDeployment.
+    status is the observed state of MachineDeployment.
 
     Attributes
     ----------
     availableReplicas : int, default is Undefined, optional
-        Total number of available machines (ready for at least minReadySeconds)
+        availableReplicas is the total number of available machines (ready for at least minReadySeconds)
         targeted by this deployment.
     conditions : [ClusterxK8sIoV1alpha4MachineDeploymentStatusConditionsItems0], default is Undefined, optional
         conditions defines current service state of the MachineDeployment.
     observedGeneration : int, default is Undefined, optional
-        The generation observed by the deployment controller.
+        observedGeneration is the generation observed by the deployment controller.
     phase : str, default is Undefined, optional
         phase represents the current phase of a MachineDeployment (ScalingUp, ScalingDown, Running, Failed, or Unknown).
     readyReplicas : int, default is Undefined, optional
-        Total number of ready machines targeted by this deployment.
+        readyReplicas is the total number of ready machines targeted by this deployment.
     replicas : int, default is Undefined, optional
-        Total number of non-terminated machines targeted by this deployment
+        replicas is the total number of non-terminated machines targeted by this deployment
         (their labels match the selector).
     selector : str, default is Undefined, optional
         selector is the same as the label selector but in the string format to avoid introspection
         by clients. The string will be in the same format as the query-param syntax.
         More info about label selectors: http://kubernetes.io/docs/user-guide/labels#label-selectors
     unavailableReplicas : int, default is Undefined, optional
-        Total number of unavailable machines targeted by this deployment.
+        unavailableReplicas is the total number of unavailable machines targeted by this deployment.
         This is the total number of machines that are still required for
         the deployment to have 100% available capacity. They may either
         be machines that are running but not yet available or machines
         that still have not been created.
     updatedReplicas : int, default is Undefined, optional
-        Total number of non-terminated machines targeted by this deployment
+        updatedReplicas is the total number of non-terminated machines targeted by this deployment
         that have the desired template spec.
     """
 
@@ -497,14 +497,14 @@ schema ClusterxK8sIoV1alpha4MachineDeploymentStatusConditionsItems0:
     Attributes
     ----------
     lastTransitionTime : str, default is Undefined, optional
-        Last time the condition transitioned from one status to another.
+        lastTransitionTime is the last time the condition transitioned from one status to another.
         This should be when the underlying condition changed. If that is not known, then using the time when
         the API field changed is acceptable.
     message : str, default is Undefined, optional
-        A human readable message indicating details about the transition.
+        message is a human readable message indicating details about the transition.
         This field may be empty.
     reason : str, default is Undefined, optional
-        The reason for the condition's last transition in CamelCase.
+        reason is the reason for the condition's last transition in CamelCase.
         The specific API may choose whether or not this field is considered a guaranteed API.
         This field may not be empty.
     severity : str, default is Undefined, optional

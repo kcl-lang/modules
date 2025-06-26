@@ -37,7 +37,7 @@ schema Cluster:
 
 schema ClusterxK8sIoV1alpha3ClusterSpec:
     r"""
-    ClusterSpec defines the desired state of Cluster.
+    spec is the desired state of Cluster.
 
     Attributes
     ----------
@@ -67,7 +67,7 @@ schema ClusterxK8sIoV1alpha3ClusterSpec:
 
 schema ClusterxK8sIoV1alpha3ClusterSpecClusterNetwork:
     r"""
-    Cluster network configuration.
+    clusterNetwork is the cluster network configuration.
 
     Attributes
     ----------
@@ -77,7 +77,7 @@ schema ClusterxK8sIoV1alpha3ClusterSpecClusterNetwork:
     pods : ClusterxK8sIoV1alpha3ClusterSpecClusterNetworkPods, default is Undefined, optional
         pods
     serviceDomain : str, default is Undefined, optional
-        Domain name for services.
+        serviceDomain is the domain name for services.
     services : ClusterxK8sIoV1alpha3ClusterSpecClusterNetworkServices, default is Undefined, optional
         services
     """
@@ -94,12 +94,12 @@ schema ClusterxK8sIoV1alpha3ClusterSpecClusterNetwork:
 
 schema ClusterxK8sIoV1alpha3ClusterSpecClusterNetworkPods:
     r"""
-    The network ranges from which Pod networks are allocated.
+    pods is the network ranges from which Pod networks are allocated.
 
     Attributes
     ----------
     cidrBlocks : [str], default is Undefined, required
-        cidr blocks
+        cidrBlocks is a list of CIDR blocks.
     """
 
 
@@ -108,12 +108,12 @@ schema ClusterxK8sIoV1alpha3ClusterSpecClusterNetworkPods:
 
 schema ClusterxK8sIoV1alpha3ClusterSpecClusterNetworkServices:
     r"""
-    The network ranges from which service VIPs are allocated.
+    services is the network ranges from which service VIPs are allocated.
 
     Attributes
     ----------
     cidrBlocks : [str], default is Undefined, required
-        cidr blocks
+        cidrBlocks is a list of CIDR blocks.
     """
 
 
@@ -127,9 +127,9 @@ schema ClusterxK8sIoV1alpha3ClusterSpecControlPlaneEndpoint:
     Attributes
     ----------
     host : str, default is Undefined, required
-        The hostname on which the API server is serving.
+        host is the hostname on which the API server is serving.
     port : int, default is Undefined, required
-        The port on which the API server is serving.
+        port is the port on which the API server is serving.
     """
 
 
@@ -240,7 +240,7 @@ schema ClusterxK8sIoV1alpha3ClusterSpecInfrastructureRef:
 
 schema ClusterxK8sIoV1alpha3ClusterStatus:
     r"""
-    ClusterStatus defines the observed state of Cluster.
+    status is the observed state of Cluster.
 
     Attributes
     ----------
@@ -295,14 +295,14 @@ schema ClusterxK8sIoV1alpha3ClusterStatusConditionsItems0:
     Attributes
     ----------
     lastTransitionTime : str, default is Undefined, optional
-        Last time the condition transitioned from one status to another.
+        lastTransitionTime is the last time the condition transitioned from one status to another.
         This should be when the underlying condition changed. If that is not known, then using the time when
         the API field changed is acceptable.
     message : str, default is Undefined, optional
-        A human readable message indicating details about the transition.
+        message is a human readable message indicating details about the transition.
         This field may be empty.
     reason : str, default is Undefined, optional
-        The reason for the condition's last transition in CamelCase.
+        reason is the reason for the condition's last transition in CamelCase.
         The specific API may choose whether or not this field is considered a guaranteed API.
         This field may not be empty.
     severity : str, default is Undefined, optional

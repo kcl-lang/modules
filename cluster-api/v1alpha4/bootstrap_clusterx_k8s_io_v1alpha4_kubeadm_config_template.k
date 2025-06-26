@@ -35,7 +35,7 @@ schema KubeadmConfigTemplate:
 
 schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpec:
     r"""
-    KubeadmConfigTemplateSpec defines the desired state of KubeadmConfigTemplate.
+    spec is the desired state of KubeadmConfigTemplate.
 
     Attributes
     ----------
@@ -49,7 +49,7 @@ schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpec:
 
 schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplate:
     r"""
-    KubeadmConfigTemplateResource defines the Template structure.
+    template defines the desired state of KubeadmConfigTemplate.
 
     Attributes
     ----------
@@ -63,8 +63,7 @@ schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplate:
 
 schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpec:
     r"""
-    KubeadmConfigSpec defines the desired state of KubeadmConfig.
-    Either ClusterConfiguration and InitConfiguration should be defined or the JoinConfiguration should be defined.
+    spec is the desired state of KubeadmConfig.
 
     Attributes
     ----------
@@ -151,7 +150,7 @@ schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecCluste
         certificatesDir specifies where to store or look for all required certificates.
         NB: if not provided, this will default to `/etc/kubernetes/pki`
     clusterName : str, default is Undefined, optional
-        The cluster name
+        clusterName is the cluster name
     controlPlaneEndpoint : str, default is Undefined, optional
         controlPlaneEndpoint sets a stable IP address or DNS name for the control plane; it
         can be a valid IP address or a RFC-1123 DNS subdomain, both with optional TCP port.

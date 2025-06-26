@@ -5,65 +5,65 @@ Editing this file might prove futile when you re-run the KCL auto-gen generate c
 import k8s.apimachinery.pkg.apis.meta.v1
 
 
-schema DockerClusterTemplate:
+schema DevClusterTemplate:
     r"""
-    DockerClusterTemplate is the Schema for the dockerclustertemplates API.
+    DevClusterTemplate is the Schema for the DevClusterTemplate API.
 
     Attributes
     ----------
     apiVersion : str, default is "infrastructure.cluster.x-k8s.io/v1beta1", required
         APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-    kind : str, default is "DockerClusterTemplate", required
+    kind : str, default is "DevClusterTemplate", required
         Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     metadata : v1.ObjectMeta, default is Undefined, optional
         metadata
-    spec : InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpec, default is Undefined, optional
+    spec : InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpec, default is Undefined, optional
         spec
     """
 
 
     apiVersion: "infrastructure.cluster.x-k8s.io/v1beta1" = "infrastructure.cluster.x-k8s.io/v1beta1"
 
-    kind: "DockerClusterTemplate" = "DockerClusterTemplate"
+    kind: "DevClusterTemplate" = "DevClusterTemplate"
 
     metadata?: v1.ObjectMeta
 
-    spec?: InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpec
+    spec?: InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpec
 
 
-schema InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpec:
+schema InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpec:
     r"""
-    DockerClusterTemplateSpec defines the desired state of DockerClusterTemplate.
+    DevClusterTemplateSpec defines the desired state of DevClusterTemplate.
 
     Attributes
     ----------
-    template : InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpecTemplate, default is Undefined, required
+    template : InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpecTemplate, default is Undefined, required
         template
     """
 
 
-    template: InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpecTemplate
+    template: InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpecTemplate
 
 
-schema InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpecTemplate:
+schema InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpecTemplate:
     r"""
-    DockerClusterTemplateResource describes the data needed to create a DockerCluster from a template.
+    DevClusterTemplateResource describes the data needed to create a DevCluster from a template.
 
     Attributes
     ----------
-    metadata : InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpecTemplateMetadata, default is Undefined, optional
+    metadata : InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpecTemplateMetadata, default is Undefined, optional
         metadata
-    spec : InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpecTemplateSpec, default is Undefined, required
+    spec : InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpecTemplateSpec, default is Undefined, required
         spec
     """
 
 
-    metadata?: InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpecTemplateMetadata
+    metadata?: InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpecTemplateMetadata
 
-    spec: InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpecTemplateSpec
+    spec: InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpecTemplateSpec
 
 
-schema InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpecTemplateMetadata:
+schema InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpecTemplateMetadata:
     r"""
     Standard object's metadata.
     More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
@@ -88,51 +88,64 @@ schema InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpecTemplateMetada
     labels?: {str:str}
 
 
-schema InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpecTemplateSpec:
+schema InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpecTemplateSpec:
     r"""
-    DockerClusterSpec defines the desired state of DockerCluster.
+    DevClusterSpec defines the desired state of the DevCluster infrastructure.
 
     Attributes
     ----------
-    controlPlaneEndpoint : InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpecTemplateSpecControlPlaneEndpoint, default is Undefined, optional
+    backend : InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpecTemplateSpecBackend, default is Undefined, required
+        backend
+    controlPlaneEndpoint : InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpecTemplateSpecControlPlaneEndpoint, default is Undefined, optional
         control plane endpoint
-    failureDomains : {str:InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpecTemplateSpecFailureDomainsAnon}, default is Undefined, optional
-        FailureDomains are usually not defined in the spec.
+    """
+
+
+    backend: InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpecTemplateSpecBackend
+
+    controlPlaneEndpoint?: InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpecTemplateSpecControlPlaneEndpoint
+
+
+schema InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpecTemplateSpecBackend:
+    r"""
+    backend defines backends for a DevCluster.
+
+    Attributes
+    ----------
+    docker : InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpecTemplateSpecBackendDocker, default is Undefined, optional
+        docker
+    inMemory : any, default is Undefined, optional
+        inMemory defines a backend for a DevCluster that runs in memory.
+    """
+
+
+    docker?: InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpecTemplateSpecBackendDocker
+
+    inMemory?: any
+
+
+schema InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpecTemplateSpecBackendDocker:
+    r"""
+    docker defines a backend for a DevCluster using docker containers.
+
+    Attributes
+    ----------
+    failureDomains : {str:InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpecTemplateSpecBackendDockerFailureDomainsAnon}, default is Undefined, optional
+        failureDomains are usually not defined in the spec.
         The docker provider is special since failure domains don't mean anything in a local docker environment.
         Instead, the docker cluster controller will simply copy these into the Status and allow the Cluster API
         controllers to do what they will with the defined failure domains.
-    loadBalancer : InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpecTemplateSpecLoadBalancer, default is Undefined, optional
+    loadBalancer : InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpecTemplateSpecBackendDockerLoadBalancer, default is Undefined, optional
         load balancer
     """
 
 
-    controlPlaneEndpoint?: InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpecTemplateSpecControlPlaneEndpoint
+    failureDomains?: {str:InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpecTemplateSpecBackendDockerFailureDomainsAnon}
 
-    failureDomains?: {str:InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpecTemplateSpecFailureDomainsAnon}
-
-    loadBalancer?: InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpecTemplateSpecLoadBalancer
+    loadBalancer?: InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpecTemplateSpecBackendDockerLoadBalancer
 
 
-schema InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpecTemplateSpecControlPlaneEndpoint:
-    r"""
-    ControlPlaneEndpoint represents the endpoint used to communicate with the control plane.
-
-    Attributes
-    ----------
-    host : str, default is Undefined, required
-        Host is the hostname on which the API server is serving.
-    port : int, default is Undefined, required
-        Port is the port on which the API server is serving.
-        Defaults to 6443 if not set.
-    """
-
-
-    host: str
-
-    port: int
-
-
-schema InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpecTemplateSpecFailureDomainsAnon:
+schema InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpecTemplateSpecBackendDockerFailureDomainsAnon:
     r"""
     FailureDomainSpec is the Schema for Cluster API failure domains.
     It allows controllers to understand how many failure domains a cluster can optionally span across.
@@ -151,13 +164,13 @@ schema InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpecTemplateSpecFa
     controlPlane?: bool
 
 
-schema InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpecTemplateSpecLoadBalancer:
+schema InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpecTemplateSpecBackendDockerLoadBalancer:
     r"""
-    LoadBalancer allows defining configurations for the cluster load balancer.
+    loadBalancer allows defining configurations for the cluster load balancer.
 
     Attributes
     ----------
-    customHAProxyConfigTemplateRef : InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpecTemplateSpecLoadBalancerCustomHAProxyConfigTemplateRef, default is Undefined, optional
+    customHAProxyConfigTemplateRef : InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpecTemplateSpecBackendDockerLoadBalancerCustomHAProxyConfigTemplateRef, default is Undefined, optional
         custom h a proxy config template ref
     imageRepository : str, default is Undefined, optional
         ImageRepository sets the container registry to pull the haproxy image from.
@@ -168,14 +181,14 @@ schema InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpecTemplateSpecLo
     """
 
 
-    customHAProxyConfigTemplateRef?: InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpecTemplateSpecLoadBalancerCustomHAProxyConfigTemplateRef
+    customHAProxyConfigTemplateRef?: InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpecTemplateSpecBackendDockerLoadBalancerCustomHAProxyConfigTemplateRef
 
     imageRepository?: str
 
     imageTag?: str
 
 
-schema InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpecTemplateSpecLoadBalancerCustomHAProxyConfigTemplateRef:
+schema InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpecTemplateSpecBackendDockerLoadBalancerCustomHAProxyConfigTemplateRef:
     r"""
     CustomHAProxyConfigTemplateRef allows you to replace the default HAProxy config file.
     This field is a reference to a config map that contains the configuration template. The key of the config map should be equal to 'value'.
@@ -198,5 +211,24 @@ schema InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpecTemplateSpecLo
 
 
     name?: str = ""
+
+
+schema InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpecTemplateSpecControlPlaneEndpoint:
+    r"""
+    controlPlaneEndpoint represents the endpoint used to communicate with the control plane.
+
+    Attributes
+    ----------
+    host : str, default is Undefined, required
+        Host is the hostname on which the API server is serving.
+    port : int, default is Undefined, required
+        Port is the port on which the API server is serving.
+        Defaults to 6443 if not set.
+    """
+
+
+    host: str
+
+    port: int
 
 

@@ -39,7 +39,7 @@ schema MachineSet:
 
 schema ClusterxK8sIoV1alpha3MachineSetSpec:
     r"""
-    MachineSetSpec defines the desired state of MachineSet.
+    spec is the desired state of MachineSet.
 
     Attributes
     ----------
@@ -151,7 +151,7 @@ schema ClusterxK8sIoV1alpha3MachineSetSpecTemplate:
 
 schema ClusterxK8sIoV1alpha3MachineSetSpecTemplateMetadata:
     r"""
-    Standard object's metadata.
+    metadata is the standard object's metadata.
     More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
 
     Attributes
@@ -180,7 +180,7 @@ schema ClusterxK8sIoV1alpha3MachineSetSpecTemplateMetadata:
 
         Deprecated: This field has no function and is going to be removed in a next release.
     labels : {str:str}, default is Undefined, optional
-        Map of string keys and values that can be used to organize and categorize
+        labels is a map of string keys and values that can be used to organize and categorize
         (scope and select) objects. May match selectors of replication controllers
         and services.
         More info: http://kubernetes.io/docs/user-guide/labels
@@ -205,7 +205,7 @@ schema ClusterxK8sIoV1alpha3MachineSetSpecTemplateMetadata:
 
         Deprecated: This field has no function and is going to be removed in a next release.
     ownerReferences : [ClusterxK8sIoV1alpha3MachineSetSpecTemplateMetadataOwnerReferencesItems0], default is Undefined, optional
-        List of objects depended by this object. If ALL objects in the list have
+        ownerReferences is the list of objects depended by this object. If ALL objects in the list have
         been deleted, this object will be garbage collected. If this object is managed by a controller,
         then an entry in this list will point to this controller, with the controller field set to true.
         There cannot be more than one managing controller.
@@ -275,7 +275,7 @@ schema ClusterxK8sIoV1alpha3MachineSetSpecTemplateMetadataOwnerReferencesItems0:
 
 schema ClusterxK8sIoV1alpha3MachineSetSpecTemplateSpec:
     r"""
-    Specification of the desired behavior of the machine.
+    spec is the specification of the desired behavior of the machine.
     More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
 
     Attributes
@@ -460,15 +460,21 @@ schema ClusterxK8sIoV1alpha3MachineSetSpecTemplateSpecInfrastructureRef:
 
 schema ClusterxK8sIoV1alpha3MachineSetStatus:
     r"""
-    MachineSetStatus defines the observed state of MachineSet.
+    status is the observed state of MachineSet.
 
     Attributes
     ----------
     availableReplicas : int, default is Undefined, optional
-        The number of available replicas (ready for at least minReadySeconds) for this MachineSet.
+        availableReplicas is the number of available replicas (ready for at least minReadySeconds) for this MachineSet.
     failureMessage : str, default is Undefined, optional
-        failure message
+        failureMessage will be set in the event that there is a terminal problem
+        reconciling the Machine and will contain a more verbose string suitable
+        for logging and human consumption.
     failureReason : str, default is Undefined, optional
+        failureReason will be set in the event that there is a terminal problem
+        reconciling the Machine and will contain a succinct value suitable
+        for machine interpretation.
+
         In the event that there is a terminal problem reconciling the
         replicas, both FailureReason and FailureMessage will be set. FailureReason
         will be populated with a succinct value suitable for machine
@@ -488,11 +494,11 @@ schema ClusterxK8sIoV1alpha3MachineSetStatus:
         can be added as events to the MachineSet object and/or logged in the
         controller's output.
     fullyLabeledReplicas : int, default is Undefined, optional
-        The number of replicas that have labels matching the labels of the machine template of the MachineSet.
+        fullyLabeledReplicas is the number of replicas that have labels matching the labels of the machine template of the MachineSet.
     observedGeneration : int, default is Undefined, optional
         observedGeneration reflects the generation of the most recently observed MachineSet.
     readyReplicas : int, default is Undefined, optional
-        The number of ready replicas for this MachineSet. A machine is considered ready when the node has been created and is "Ready".
+        readyReplicas is the number of ready replicas for this MachineSet. A machine is considered ready when the node has been created and is "Ready".
     replicas : int, default is Undefined, optional
         replicas is the most recently observed number of replicas.
     selector : str, default is Undefined, optional

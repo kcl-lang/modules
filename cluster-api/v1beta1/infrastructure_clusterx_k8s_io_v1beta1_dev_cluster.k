@@ -7,81 +7,94 @@ import k8s.apimachinery.pkg.apis.meta.v1
 _regex_match = regex.match
 
 
-schema DockerCluster:
+schema DevCluster:
     r"""
-    DockerCluster is the Schema for the dockerclusters API.
+    DevCluster is the schema for the dev cluster infrastructure API.
 
     Attributes
     ----------
     apiVersion : str, default is "infrastructure.cluster.x-k8s.io/v1beta1", required
         APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-    kind : str, default is "DockerCluster", required
+    kind : str, default is "DevCluster", required
         Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     metadata : v1.ObjectMeta, default is Undefined, optional
         metadata
-    spec : InfrastructureClusterxK8sIoV1beta1DockerClusterSpec, default is Undefined, optional
+    spec : InfrastructureClusterxK8sIoV1beta1DevClusterSpec, default is Undefined, optional
         spec
-    status : InfrastructureClusterxK8sIoV1beta1DockerClusterStatus, default is Undefined, optional
+    status : InfrastructureClusterxK8sIoV1beta1DevClusterStatus, default is Undefined, optional
         status
     """
 
 
     apiVersion: "infrastructure.cluster.x-k8s.io/v1beta1" = "infrastructure.cluster.x-k8s.io/v1beta1"
 
-    kind: "DockerCluster" = "DockerCluster"
+    kind: "DevCluster" = "DevCluster"
 
     metadata?: v1.ObjectMeta
 
-    spec?: InfrastructureClusterxK8sIoV1beta1DockerClusterSpec
+    spec?: InfrastructureClusterxK8sIoV1beta1DevClusterSpec
 
-    status?: InfrastructureClusterxK8sIoV1beta1DockerClusterStatus
+    status?: InfrastructureClusterxK8sIoV1beta1DevClusterStatus
 
 
-schema InfrastructureClusterxK8sIoV1beta1DockerClusterSpec:
+schema InfrastructureClusterxK8sIoV1beta1DevClusterSpec:
     r"""
-    DockerClusterSpec defines the desired state of DockerCluster.
+    DevClusterSpec defines the desired state of the DevCluster infrastructure.
 
     Attributes
     ----------
-    controlPlaneEndpoint : InfrastructureClusterxK8sIoV1beta1DockerClusterSpecControlPlaneEndpoint, default is Undefined, optional
+    backend : InfrastructureClusterxK8sIoV1beta1DevClusterSpecBackend, default is Undefined, required
+        backend
+    controlPlaneEndpoint : InfrastructureClusterxK8sIoV1beta1DevClusterSpecControlPlaneEndpoint, default is Undefined, optional
         control plane endpoint
-    failureDomains : {str:InfrastructureClusterxK8sIoV1beta1DockerClusterSpecFailureDomainsAnon}, default is Undefined, optional
-        FailureDomains are usually not defined in the spec.
+    """
+
+
+    backend: InfrastructureClusterxK8sIoV1beta1DevClusterSpecBackend
+
+    controlPlaneEndpoint?: InfrastructureClusterxK8sIoV1beta1DevClusterSpecControlPlaneEndpoint
+
+
+schema InfrastructureClusterxK8sIoV1beta1DevClusterSpecBackend:
+    r"""
+    backend defines backends for a DevCluster.
+
+    Attributes
+    ----------
+    docker : InfrastructureClusterxK8sIoV1beta1DevClusterSpecBackendDocker, default is Undefined, optional
+        docker
+    inMemory : any, default is Undefined, optional
+        inMemory defines a backend for a DevCluster that runs in memory.
+    """
+
+
+    docker?: InfrastructureClusterxK8sIoV1beta1DevClusterSpecBackendDocker
+
+    inMemory?: any
+
+
+schema InfrastructureClusterxK8sIoV1beta1DevClusterSpecBackendDocker:
+    r"""
+    docker defines a backend for a DevCluster using docker containers.
+
+    Attributes
+    ----------
+    failureDomains : {str:InfrastructureClusterxK8sIoV1beta1DevClusterSpecBackendDockerFailureDomainsAnon}, default is Undefined, optional
+        failureDomains are usually not defined in the spec.
         The docker provider is special since failure domains don't mean anything in a local docker environment.
         Instead, the docker cluster controller will simply copy these into the Status and allow the Cluster API
         controllers to do what they will with the defined failure domains.
-    loadBalancer : InfrastructureClusterxK8sIoV1beta1DockerClusterSpecLoadBalancer, default is Undefined, optional
+    loadBalancer : InfrastructureClusterxK8sIoV1beta1DevClusterSpecBackendDockerLoadBalancer, default is Undefined, optional
         load balancer
     """
 
 
-    controlPlaneEndpoint?: InfrastructureClusterxK8sIoV1beta1DockerClusterSpecControlPlaneEndpoint
+    failureDomains?: {str:InfrastructureClusterxK8sIoV1beta1DevClusterSpecBackendDockerFailureDomainsAnon}
 
-    failureDomains?: {str:InfrastructureClusterxK8sIoV1beta1DockerClusterSpecFailureDomainsAnon}
-
-    loadBalancer?: InfrastructureClusterxK8sIoV1beta1DockerClusterSpecLoadBalancer
+    loadBalancer?: InfrastructureClusterxK8sIoV1beta1DevClusterSpecBackendDockerLoadBalancer
 
 
-schema InfrastructureClusterxK8sIoV1beta1DockerClusterSpecControlPlaneEndpoint:
-    r"""
-    ControlPlaneEndpoint represents the endpoint used to communicate with the control plane.
-
-    Attributes
-    ----------
-    host : str, default is Undefined, required
-        Host is the hostname on which the API server is serving.
-    port : int, default is Undefined, required
-        Port is the port on which the API server is serving.
-        Defaults to 6443 if not set.
-    """
-
-
-    host: str
-
-    port: int
-
-
-schema InfrastructureClusterxK8sIoV1beta1DockerClusterSpecFailureDomainsAnon:
+schema InfrastructureClusterxK8sIoV1beta1DevClusterSpecBackendDockerFailureDomainsAnon:
     r"""
     FailureDomainSpec is the Schema for Cluster API failure domains.
     It allows controllers to understand how many failure domains a cluster can optionally span across.
@@ -100,13 +113,13 @@ schema InfrastructureClusterxK8sIoV1beta1DockerClusterSpecFailureDomainsAnon:
     controlPlane?: bool
 
 
-schema InfrastructureClusterxK8sIoV1beta1DockerClusterSpecLoadBalancer:
+schema InfrastructureClusterxK8sIoV1beta1DevClusterSpecBackendDockerLoadBalancer:
     r"""
-    LoadBalancer allows defining configurations for the cluster load balancer.
+    loadBalancer allows defining configurations for the cluster load balancer.
 
     Attributes
     ----------
-    customHAProxyConfigTemplateRef : InfrastructureClusterxK8sIoV1beta1DockerClusterSpecLoadBalancerCustomHAProxyConfigTemplateRef, default is Undefined, optional
+    customHAProxyConfigTemplateRef : InfrastructureClusterxK8sIoV1beta1DevClusterSpecBackendDockerLoadBalancerCustomHAProxyConfigTemplateRef, default is Undefined, optional
         custom h a proxy config template ref
     imageRepository : str, default is Undefined, optional
         ImageRepository sets the container registry to pull the haproxy image from.
@@ -117,14 +130,14 @@ schema InfrastructureClusterxK8sIoV1beta1DockerClusterSpecLoadBalancer:
     """
 
 
-    customHAProxyConfigTemplateRef?: InfrastructureClusterxK8sIoV1beta1DockerClusterSpecLoadBalancerCustomHAProxyConfigTemplateRef
+    customHAProxyConfigTemplateRef?: InfrastructureClusterxK8sIoV1beta1DevClusterSpecBackendDockerLoadBalancerCustomHAProxyConfigTemplateRef
 
     imageRepository?: str
 
     imageTag?: str
 
 
-schema InfrastructureClusterxK8sIoV1beta1DockerClusterSpecLoadBalancerCustomHAProxyConfigTemplateRef:
+schema InfrastructureClusterxK8sIoV1beta1DevClusterSpecBackendDockerLoadBalancerCustomHAProxyConfigTemplateRef:
     r"""
     CustomHAProxyConfigTemplateRef allows you to replace the default HAProxy config file.
     This field is a reference to a config map that contains the configuration template. The key of the config map should be equal to 'value'.
@@ -149,34 +162,53 @@ schema InfrastructureClusterxK8sIoV1beta1DockerClusterSpecLoadBalancerCustomHAPr
     name?: str = ""
 
 
-schema InfrastructureClusterxK8sIoV1beta1DockerClusterStatus:
+schema InfrastructureClusterxK8sIoV1beta1DevClusterSpecControlPlaneEndpoint:
     r"""
-    DockerClusterStatus defines the observed state of DockerCluster.
+    controlPlaneEndpoint represents the endpoint used to communicate with the control plane.
 
     Attributes
     ----------
-    conditions : [InfrastructureClusterxK8sIoV1beta1DockerClusterStatusConditionsItems0], default is Undefined, optional
-        Conditions defines current service state of the DockerCluster.
-    failureDomains : {str:InfrastructureClusterxK8sIoV1beta1DockerClusterStatusFailureDomainsAnon}, default is Undefined, optional
-        FailureDomains don't mean much in CAPD since it's all local, but we can see how the rest of cluster API
+    host : str, default is Undefined, required
+        Host is the hostname on which the API server is serving.
+    port : int, default is Undefined, required
+        Port is the port on which the API server is serving.
+        Defaults to 6443 if not set.
+    """
+
+
+    host: str
+
+    port: int
+
+
+schema InfrastructureClusterxK8sIoV1beta1DevClusterStatus:
+    r"""
+    DevClusterStatus defines the observed state of the DevCluster.
+
+    Attributes
+    ----------
+    conditions : [InfrastructureClusterxK8sIoV1beta1DevClusterStatusConditionsItems0], default is Undefined, optional
+        conditions defines current service state of the DevCluster.
+    failureDomains : {str:InfrastructureClusterxK8sIoV1beta1DevClusterStatusFailureDomainsAnon}, default is Undefined, optional
+        failureDomains don't mean much in CAPD since it's all local, but we can see how the rest of cluster API
         will use this if we populate it.
     ready : bool, default is Undefined, optional
-        Ready denotes that the docker cluster (infrastructure) is ready.
-    v1beta2 : InfrastructureClusterxK8sIoV1beta1DockerClusterStatusV1beta2, default is Undefined, optional
+        ready denotes that the dev cluster infrastructure is ready.
+    v1beta2 : InfrastructureClusterxK8sIoV1beta1DevClusterStatusV1beta2, default is Undefined, optional
         v1beta2
     """
 
 
-    conditions?: [InfrastructureClusterxK8sIoV1beta1DockerClusterStatusConditionsItems0]
+    conditions?: [InfrastructureClusterxK8sIoV1beta1DevClusterStatusConditionsItems0]
 
-    failureDomains?: {str:InfrastructureClusterxK8sIoV1beta1DockerClusterStatusFailureDomainsAnon}
+    failureDomains?: {str:InfrastructureClusterxK8sIoV1beta1DevClusterStatusFailureDomainsAnon}
 
     ready?: bool
 
-    v1beta2?: InfrastructureClusterxK8sIoV1beta1DockerClusterStatusV1beta2
+    v1beta2?: InfrastructureClusterxK8sIoV1beta1DevClusterStatusV1beta2
 
 
-schema InfrastructureClusterxK8sIoV1beta1DockerClusterStatusConditionsItems0:
+schema InfrastructureClusterxK8sIoV1beta1DevClusterStatusConditionsItems0:
     r"""
     Condition defines an observation of a Cluster API resource operational state.
 
@@ -229,7 +261,7 @@ schema InfrastructureClusterxK8sIoV1beta1DockerClusterStatusConditionsItems0:
         len($type) >= 1
 
 
-schema InfrastructureClusterxK8sIoV1beta1DockerClusterStatusFailureDomainsAnon:
+schema InfrastructureClusterxK8sIoV1beta1DevClusterStatusFailureDomainsAnon:
     r"""
     FailureDomainSpec is the Schema for Cluster API failure domains.
     It allows controllers to understand how many failure domains a cluster can optionally span across.
@@ -248,26 +280,25 @@ schema InfrastructureClusterxK8sIoV1beta1DockerClusterStatusFailureDomainsAnon:
     controlPlane?: bool
 
 
-schema InfrastructureClusterxK8sIoV1beta1DockerClusterStatusV1beta2:
+schema InfrastructureClusterxK8sIoV1beta1DevClusterStatusV1beta2:
     r"""
-    v1beta2 groups all the fields that will be added or modified in DockerCluster's's status with the V1Beta2 version.
+    v1beta2 groups all the fields that will be added or modified in DevCluster's status with the V1Beta2 version.
 
     Attributes
     ----------
-    conditions : [InfrastructureClusterxK8sIoV1beta1DockerClusterStatusV1beta2ConditionsItems0], default is Undefined, optional
-        conditions represents the observations of a DockerCluster's current state.
-        Known condition types are Ready, LoadBalancerAvailable, Deleting, Paused.
+    conditions : [InfrastructureClusterxK8sIoV1beta1DevClusterStatusV1beta2ConditionsItems0], default is Undefined, optional
+        conditions represents the observations of a DevCluster's current state.
     """
 
 
-    conditions?: [InfrastructureClusterxK8sIoV1beta1DockerClusterStatusV1beta2ConditionsItems0]
+    conditions?: [InfrastructureClusterxK8sIoV1beta1DevClusterStatusV1beta2ConditionsItems0]
 
 
     check:
         len(conditions) <= 32 if conditions
 
 
-schema InfrastructureClusterxK8sIoV1beta1DockerClusterStatusV1beta2ConditionsItems0:
+schema InfrastructureClusterxK8sIoV1beta1DevClusterStatusV1beta2ConditionsItems0:
     r"""
     Condition contains details for one aspect of the current state of this API Resource.
 

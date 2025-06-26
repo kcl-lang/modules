@@ -6,48 +6,6 @@
   - [ExtensionConfig](#extensionconfig)
   - [IPAddress](#ipaddress)
   - [IPAddressClaim](#ipaddressclaim)
-  - [InMemoryCluster](#inmemorycluster)
-  - [InMemoryClusterTemplate](#inmemoryclustertemplate)
-  - [InMemoryMachine](#inmemorymachine)
-  - [InMemoryMachineTemplate](#inmemorymachinetemplate)
-  - [InfrastructureClusterxK8sIoV1alpha1InMemoryClusterSpec](#infrastructureclusterxk8siov1alpha1inmemoryclusterspec)
-  - [InfrastructureClusterxK8sIoV1alpha1InMemoryClusterSpecControlPlaneEndpoint](#infrastructureclusterxk8siov1alpha1inmemoryclusterspeccontrolplaneendpoint)
-  - [InfrastructureClusterxK8sIoV1alpha1InMemoryClusterStatus](#infrastructureclusterxk8siov1alpha1inmemoryclusterstatus)
-  - [InfrastructureClusterxK8sIoV1alpha1InMemoryClusterStatusConditionsItems0](#infrastructureclusterxk8siov1alpha1inmemoryclusterstatusconditionsitems0)
-  - [InfrastructureClusterxK8sIoV1alpha1InMemoryClusterStatusV1beta2](#infrastructureclusterxk8siov1alpha1inmemoryclusterstatusv1beta2)
-  - [InfrastructureClusterxK8sIoV1alpha1InMemoryClusterStatusV1beta2ConditionsItems0](#infrastructureclusterxk8siov1alpha1inmemoryclusterstatusv1beta2conditionsitems0)
-  - [InfrastructureClusterxK8sIoV1alpha1InMemoryClusterTemplateSpec](#infrastructureclusterxk8siov1alpha1inmemoryclustertemplatespec)
-  - [InfrastructureClusterxK8sIoV1alpha1InMemoryClusterTemplateSpecTemplate](#infrastructureclusterxk8siov1alpha1inmemoryclustertemplatespectemplate)
-  - [InfrastructureClusterxK8sIoV1alpha1InMemoryClusterTemplateSpecTemplateMetadata](#infrastructureclusterxk8siov1alpha1inmemoryclustertemplatespectemplatemetadata)
-  - [InfrastructureClusterxK8sIoV1alpha1InMemoryClusterTemplateSpecTemplateSpec](#infrastructureclusterxk8siov1alpha1inmemoryclustertemplatespectemplatespec)
-  - [InfrastructureClusterxK8sIoV1alpha1InMemoryClusterTemplateSpecTemplateSpecControlPlaneEndpoint](#infrastructureclusterxk8siov1alpha1inmemoryclustertemplatespectemplatespeccontrolplaneendpoint)
-  - [InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpec](#infrastructureclusterxk8siov1alpha1inmemorymachinespec)
-  - [InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpecBehaviour](#infrastructureclusterxk8siov1alpha1inmemorymachinespecbehaviour)
-  - [InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpecBehaviourAPIServer](#infrastructureclusterxk8siov1alpha1inmemorymachinespecbehaviourapiserver)
-  - [InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpecBehaviourAPIServerProvisioning](#infrastructureclusterxk8siov1alpha1inmemorymachinespecbehaviourapiserverprovisioning)
-  - [InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpecBehaviourEtcd](#infrastructureclusterxk8siov1alpha1inmemorymachinespecbehaviouretcd)
-  - [InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpecBehaviourEtcdProvisioning](#infrastructureclusterxk8siov1alpha1inmemorymachinespecbehaviouretcdprovisioning)
-  - [InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpecBehaviourNode](#infrastructureclusterxk8siov1alpha1inmemorymachinespecbehaviournode)
-  - [InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpecBehaviourNodeProvisioning](#infrastructureclusterxk8siov1alpha1inmemorymachinespecbehaviournodeprovisioning)
-  - [InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpecBehaviourVM](#infrastructureclusterxk8siov1alpha1inmemorymachinespecbehaviourvm)
-  - [InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpecBehaviourVMProvisioning](#infrastructureclusterxk8siov1alpha1inmemorymachinespecbehaviourvmprovisioning)
-  - [InfrastructureClusterxK8sIoV1alpha1InMemoryMachineStatus](#infrastructureclusterxk8siov1alpha1inmemorymachinestatus)
-  - [InfrastructureClusterxK8sIoV1alpha1InMemoryMachineStatusConditionsItems0](#infrastructureclusterxk8siov1alpha1inmemorymachinestatusconditionsitems0)
-  - [InfrastructureClusterxK8sIoV1alpha1InMemoryMachineStatusV1beta2](#infrastructureclusterxk8siov1alpha1inmemorymachinestatusv1beta2)
-  - [InfrastructureClusterxK8sIoV1alpha1InMemoryMachineStatusV1beta2ConditionsItems0](#infrastructureclusterxk8siov1alpha1inmemorymachinestatusv1beta2conditionsitems0)
-  - [InfrastructureClusterxK8sIoV1alpha1InMemoryMachineTemplateSpec](#infrastructureclusterxk8siov1alpha1inmemorymachinetemplatespec)
-  - [InfrastructureClusterxK8sIoV1alpha1InMemoryMachineTemplateSpecTemplate](#infrastructureclusterxk8siov1alpha1inmemorymachinetemplatespectemplate)
-  - [InfrastructureClusterxK8sIoV1alpha1InMemoryMachineTemplateSpecTemplateMetadata](#infrastructureclusterxk8siov1alpha1inmemorymachinetemplatespectemplatemetadata)
-  - [InfrastructureClusterxK8sIoV1alpha1InMemoryMachineTemplateSpecTemplateSpec](#infrastructureclusterxk8siov1alpha1inmemorymachinetemplatespectemplatespec)
-  - [InfrastructureClusterxK8sIoV1alpha1InMemoryMachineTemplateSpecTemplateSpecBehaviour](#infrastructureclusterxk8siov1alpha1inmemorymachinetemplatespectemplatespecbehaviour)
-  - [InfrastructureClusterxK8sIoV1alpha1InMemoryMachineTemplateSpecTemplateSpecBehaviourAPIServer](#infrastructureclusterxk8siov1alpha1inmemorymachinetemplatespectemplatespecbehaviourapiserver)
-  - [InfrastructureClusterxK8sIoV1alpha1InMemoryMachineTemplateSpecTemplateSpecBehaviourAPIServerProvisioning](#infrastructureclusterxk8siov1alpha1inmemorymachinetemplatespectemplatespecbehaviourapiserverprovisioning)
-  - [InfrastructureClusterxK8sIoV1alpha1InMemoryMachineTemplateSpecTemplateSpecBehaviourEtcd](#infrastructureclusterxk8siov1alpha1inmemorymachinetemplatespectemplatespecbehaviouretcd)
-  - [InfrastructureClusterxK8sIoV1alpha1InMemoryMachineTemplateSpecTemplateSpecBehaviourEtcdProvisioning](#infrastructureclusterxk8siov1alpha1inmemorymachinetemplatespectemplatespecbehaviouretcdprovisioning)
-  - [InfrastructureClusterxK8sIoV1alpha1InMemoryMachineTemplateSpecTemplateSpecBehaviourNode](#infrastructureclusterxk8siov1alpha1inmemorymachinetemplatespectemplatespecbehaviournode)
-  - [InfrastructureClusterxK8sIoV1alpha1InMemoryMachineTemplateSpecTemplateSpecBehaviourNodeProvisioning](#infrastructureclusterxk8siov1alpha1inmemorymachinetemplatespectemplatespecbehaviournodeprovisioning)
-  - [InfrastructureClusterxK8sIoV1alpha1InMemoryMachineTemplateSpecTemplateSpecBehaviourVM](#infrastructureclusterxk8siov1alpha1inmemorymachinetemplatespectemplatespecbehaviourvm)
-  - [InfrastructureClusterxK8sIoV1alpha1InMemoryMachineTemplateSpecTemplateSpecBehaviourVMProvisioning](#infrastructureclusterxk8siov1alpha1inmemorymachinetemplatespectemplatespecbehaviourvmprovisioning)
   - [IpamClusterxK8sIoV1alpha1IPAddressClaimSpec](#ipamclusterxk8siov1alpha1ipaddressclaimspec)
   - [IpamClusterxK8sIoV1alpha1IPAddressClaimSpecPoolRef](#ipamclusterxk8siov1alpha1ipaddressclaimspecpoolref)
   - [IpamClusterxK8sIoV1alpha1IPAddressClaimStatus](#ipamclusterxk8siov1alpha1ipaddressclaimstatus)
@@ -69,6 +27,8 @@
   - [RuntimeClusterxK8sIoV1alpha1ExtensionConfigStatusConditionsItems0](#runtimeclusterxk8siov1alpha1extensionconfigstatusconditionsitems0)
   - [RuntimeClusterxK8sIoV1alpha1ExtensionConfigStatusHandlersItems0](#runtimeclusterxk8siov1alpha1extensionconfigstatushandlersitems0)
   - [RuntimeClusterxK8sIoV1alpha1ExtensionConfigStatusHandlersItems0RequestHook](#runtimeclusterxk8siov1alpha1extensionconfigstatushandlersitems0requesthook)
+  - [RuntimeClusterxK8sIoV1alpha1ExtensionConfigStatusV1beta2](#runtimeclusterxk8siov1alpha1extensionconfigstatusv1beta2)
+  - [RuntimeClusterxK8sIoV1alpha1ExtensionConfigStatusV1beta2ConditionsItems0](#runtimeclusterxk8siov1alpha1extensionconfigstatusv1beta2conditionsitems0)
   - [TestClusterxK8sIoV1alpha1Phase0ObjSpec](#testclusterxk8siov1alpha1phase0objspec)
   - [TestClusterxK8sIoV1alpha1Phase0ObjStatus](#testclusterxk8siov1alpha1phase0objstatus)
   - [TestClusterxK8sIoV1alpha1Phase0ObjStatusConditionsItems0](#testclusterxk8siov1alpha1phase0objstatusconditionsitems0)
@@ -769,6 +729,7 @@
   - [ClusterResourceSet](#clusterresourceset)
   - [ClusterResourceSetBinding](#clusterresourcesetbinding)
   - [ClusterxK8sIoV1beta1ClusterClassSpec](#clusterxk8siov1beta1clusterclassspec)
+  - [ClusterxK8sIoV1beta1ClusterClassSpecAvailabilityGatesItems0](#clusterxk8siov1beta1clusterclassspecavailabilitygatesitems0)
   - [ClusterxK8sIoV1beta1ClusterClassSpecControlPlane](#clusterxk8siov1beta1clusterclassspeccontrolplane)
   - [ClusterxK8sIoV1beta1ClusterClassSpecControlPlaneMachineHealthCheck](#clusterxk8siov1beta1clusterclassspeccontrolplanemachinehealthcheck)
   - [ClusterxK8sIoV1beta1ClusterClassSpecControlPlaneMachineHealthCheckRemediationTemplate](#clusterxk8siov1beta1clusterclassspeccontrolplanemachinehealthcheckremediationtemplate)
@@ -777,8 +738,10 @@
   - [ClusterxK8sIoV1beta1ClusterClassSpecControlPlaneMachineInfrastructureRef](#clusterxk8siov1beta1clusterclassspeccontrolplanemachineinfrastructureref)
   - [ClusterxK8sIoV1beta1ClusterClassSpecControlPlaneMetadata](#clusterxk8siov1beta1clusterclassspeccontrolplanemetadata)
   - [ClusterxK8sIoV1beta1ClusterClassSpecControlPlaneNamingStrategy](#clusterxk8siov1beta1clusterclassspeccontrolplanenamingstrategy)
+  - [ClusterxK8sIoV1beta1ClusterClassSpecControlPlaneReadinessGatesItems0](#clusterxk8siov1beta1clusterclassspeccontrolplanereadinessgatesitems0)
   - [ClusterxK8sIoV1beta1ClusterClassSpecControlPlaneRef](#clusterxk8siov1beta1clusterclassspeccontrolplaneref)
   - [ClusterxK8sIoV1beta1ClusterClassSpecInfrastructure](#clusterxk8siov1beta1clusterclassspecinfrastructure)
+  - [ClusterxK8sIoV1beta1ClusterClassSpecInfrastructureNamingStrategy](#clusterxk8siov1beta1clusterclassspecinfrastructurenamingstrategy)
   - [ClusterxK8sIoV1beta1ClusterClassSpecInfrastructureRef](#clusterxk8siov1beta1clusterclassspecinfrastructureref)
   - [ClusterxK8sIoV1beta1ClusterClassSpecPatchesItems0](#clusterxk8siov1beta1clusterclassspecpatchesitems0)
   - [ClusterxK8sIoV1beta1ClusterClassSpecPatchesItems0DefinitionsItems0](#clusterxk8siov1beta1clusterclassspecpatchesitems0definitionsitems0)
@@ -801,6 +764,7 @@
   - [ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0MachineHealthCheckRemediationTemplate](#clusterxk8siov1beta1clusterclassspecworkersmachinedeploymentsitems0machinehealthcheckremediationtemplate)
   - [ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0MachineHealthCheckUnhealthyConditionsItems0](#clusterxk8siov1beta1clusterclassspecworkersmachinedeploymentsitems0machinehealthcheckunhealthyconditionsitems0)
   - [ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0NamingStrategy](#clusterxk8siov1beta1clusterclassspecworkersmachinedeploymentsitems0namingstrategy)
+  - [ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0ReadinessGatesItems0](#clusterxk8siov1beta1clusterclassspecworkersmachinedeploymentsitems0readinessgatesitems0)
   - [ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0Strategy](#clusterxk8siov1beta1clusterclassspecworkersmachinedeploymentsitems0strategy)
   - [ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0StrategyRemediation](#clusterxk8siov1beta1clusterclassspecworkersmachinedeploymentsitems0strategyremediation)
   - [ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0StrategyRollingUpdate](#clusterxk8siov1beta1clusterclassspecworkersmachinedeploymentsitems0strategyrollingupdate)
@@ -843,6 +807,7 @@
   - [ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneMachineHealthCheckRemediationTemplate](#clusterxk8siov1beta1clusterspectopologycontrolplanemachinehealthcheckremediationtemplate)
   - [ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneMachineHealthCheckUnhealthyConditionsItems0](#clusterxk8siov1beta1clusterspectopologycontrolplanemachinehealthcheckunhealthyconditionsitems0)
   - [ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneMetadata](#clusterxk8siov1beta1clusterspectopologycontrolplanemetadata)
+  - [ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneReadinessGatesItems0](#clusterxk8siov1beta1clusterspectopologycontrolplanereadinessgatesitems0)
   - [ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneVariables](#clusterxk8siov1beta1clusterspectopologycontrolplanevariables)
   - [ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneVariablesOverridesItems0](#clusterxk8siov1beta1clusterspectopologycontrolplanevariablesoverridesitems0)
   - [ClusterxK8sIoV1beta1ClusterSpecTopologyVariablesItems0](#clusterxk8siov1beta1clusterspectopologyvariablesitems0)
@@ -852,6 +817,7 @@
   - [ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0MachineHealthCheckRemediationTemplate](#clusterxk8siov1beta1clusterspectopologyworkersmachinedeploymentsitems0machinehealthcheckremediationtemplate)
   - [ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0MachineHealthCheckUnhealthyConditionsItems0](#clusterxk8siov1beta1clusterspectopologyworkersmachinedeploymentsitems0machinehealthcheckunhealthyconditionsitems0)
   - [ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Metadata](#clusterxk8siov1beta1clusterspectopologyworkersmachinedeploymentsitems0metadata)
+  - [ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0ReadinessGatesItems0](#clusterxk8siov1beta1clusterspectopologyworkersmachinedeploymentsitems0readinessgatesitems0)
   - [ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Strategy](#clusterxk8siov1beta1clusterspectopologyworkersmachinedeploymentsitems0strategy)
   - [ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0StrategyRemediation](#clusterxk8siov1beta1clusterspectopologyworkersmachinedeploymentsitems0strategyremediation)
   - [ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0StrategyRollingUpdate](#clusterxk8siov1beta1clusterspectopologyworkersmachinedeploymentsitems0strategyrollingupdate)
@@ -869,6 +835,7 @@
   - [ClusterxK8sIoV1beta1ClusterStatusV1beta2ControlPlane](#clusterxk8siov1beta1clusterstatusv1beta2controlplane)
   - [ClusterxK8sIoV1beta1ClusterStatusV1beta2Workers](#clusterxk8siov1beta1clusterstatusv1beta2workers)
   - [ClusterxK8sIoV1beta1MachineDeploymentSpec](#clusterxk8siov1beta1machinedeploymentspec)
+  - [ClusterxK8sIoV1beta1MachineDeploymentSpecMachineNamingStrategy](#clusterxk8siov1beta1machinedeploymentspecmachinenamingstrategy)
   - [ClusterxK8sIoV1beta1MachineDeploymentSpecSelector](#clusterxk8siov1beta1machinedeploymentspecselector)
   - [ClusterxK8sIoV1beta1MachineDeploymentSpecSelectorMatchExpressionsItems0](#clusterxk8siov1beta1machinedeploymentspecselectormatchexpressionsitems0)
   - [ClusterxK8sIoV1beta1MachineDeploymentSpecStrategy](#clusterxk8siov1beta1machinedeploymentspecstrategy)
@@ -920,6 +887,7 @@
   - [ClusterxK8sIoV1beta1MachinePoolStatusV1beta2](#clusterxk8siov1beta1machinepoolstatusv1beta2)
   - [ClusterxK8sIoV1beta1MachinePoolStatusV1beta2ConditionsItems0](#clusterxk8siov1beta1machinepoolstatusv1beta2conditionsitems0)
   - [ClusterxK8sIoV1beta1MachineSetSpec](#clusterxk8siov1beta1machinesetspec)
+  - [ClusterxK8sIoV1beta1MachineSetSpecMachineNamingStrategy](#clusterxk8siov1beta1machinesetspecmachinenamingstrategy)
   - [ClusterxK8sIoV1beta1MachineSetSpecSelector](#clusterxk8siov1beta1machinesetspecselector)
   - [ClusterxK8sIoV1beta1MachineSetSpecSelectorMatchExpressionsItems0](#clusterxk8siov1beta1machinesetspecselectormatchexpressionsitems0)
   - [ClusterxK8sIoV1beta1MachineSetSpecTemplate](#clusterxk8siov1beta1machinesetspectemplate)
@@ -1021,6 +989,7 @@
   - [ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneSpecMachineTemplate](#controlplaneclusterxk8siov1beta1kubeadmcontrolplanespecmachinetemplate)
   - [ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneSpecMachineTemplateInfrastructureRef](#controlplaneclusterxk8siov1beta1kubeadmcontrolplanespecmachinetemplateinfrastructureref)
   - [ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneSpecMachineTemplateMetadata](#controlplaneclusterxk8siov1beta1kubeadmcontrolplanespecmachinetemplatemetadata)
+  - [ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneSpecMachineTemplateReadinessGatesItems0](#controlplaneclusterxk8siov1beta1kubeadmcontrolplanespecmachinetemplatereadinessgatesitems0)
   - [ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneSpecRemediationStrategy](#controlplaneclusterxk8siov1beta1kubeadmcontrolplanespecremediationstrategy)
   - [ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneSpecRolloutBefore](#controlplaneclusterxk8siov1beta1kubeadmcontrolplanespecrolloutbefore)
   - [ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneSpecRolloutStrategy](#controlplaneclusterxk8siov1beta1kubeadmcontrolplanespecrolloutstrategy)
@@ -1111,6 +1080,10 @@
   - [ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecRolloutBefore](#controlplaneclusterxk8siov1beta1kubeadmcontrolplanetemplatespectemplatespecrolloutbefore)
   - [ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecRolloutStrategy](#controlplaneclusterxk8siov1beta1kubeadmcontrolplanetemplatespectemplatespecrolloutstrategy)
   - [ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecRolloutStrategyRollingUpdate](#controlplaneclusterxk8siov1beta1kubeadmcontrolplanetemplatespectemplatespecrolloutstrategyrollingupdate)
+  - [DevCluster](#devcluster)
+  - [DevClusterTemplate](#devclustertemplate)
+  - [DevMachine](#devmachine)
+  - [DevMachineTemplate](#devmachinetemplate)
   - [DockerCluster](#dockercluster)
   - [DockerClusterTemplate](#dockerclustertemplate)
   - [DockerMachine](#dockermachine)
@@ -1118,6 +1091,64 @@
   - [DockerMachinePoolTemplate](#dockermachinepooltemplate)
   - [DockerMachineTemplate](#dockermachinetemplate)
   - [IPAddressClaim](#ipaddressclaim)
+  - [InfrastructureClusterxK8sIoV1beta1DevClusterSpec](#infrastructureclusterxk8siov1beta1devclusterspec)
+  - [InfrastructureClusterxK8sIoV1beta1DevClusterSpecBackend](#infrastructureclusterxk8siov1beta1devclusterspecbackend)
+  - [InfrastructureClusterxK8sIoV1beta1DevClusterSpecBackendDocker](#infrastructureclusterxk8siov1beta1devclusterspecbackenddocker)
+  - [InfrastructureClusterxK8sIoV1beta1DevClusterSpecBackendDockerFailureDomainsAnon](#infrastructureclusterxk8siov1beta1devclusterspecbackenddockerfailuredomainsanon)
+  - [InfrastructureClusterxK8sIoV1beta1DevClusterSpecBackendDockerLoadBalancer](#infrastructureclusterxk8siov1beta1devclusterspecbackenddockerloadbalancer)
+  - [InfrastructureClusterxK8sIoV1beta1DevClusterSpecBackendDockerLoadBalancerCustomHAProxyConfigTemplateRef](#infrastructureclusterxk8siov1beta1devclusterspecbackenddockerloadbalancercustomhaproxyconfigtemplateref)
+  - [InfrastructureClusterxK8sIoV1beta1DevClusterSpecControlPlaneEndpoint](#infrastructureclusterxk8siov1beta1devclusterspeccontrolplaneendpoint)
+  - [InfrastructureClusterxK8sIoV1beta1DevClusterStatus](#infrastructureclusterxk8siov1beta1devclusterstatus)
+  - [InfrastructureClusterxK8sIoV1beta1DevClusterStatusConditionsItems0](#infrastructureclusterxk8siov1beta1devclusterstatusconditionsitems0)
+  - [InfrastructureClusterxK8sIoV1beta1DevClusterStatusFailureDomainsAnon](#infrastructureclusterxk8siov1beta1devclusterstatusfailuredomainsanon)
+  - [InfrastructureClusterxK8sIoV1beta1DevClusterStatusV1beta2](#infrastructureclusterxk8siov1beta1devclusterstatusv1beta2)
+  - [InfrastructureClusterxK8sIoV1beta1DevClusterStatusV1beta2ConditionsItems0](#infrastructureclusterxk8siov1beta1devclusterstatusv1beta2conditionsitems0)
+  - [InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpec](#infrastructureclusterxk8siov1beta1devclustertemplatespec)
+  - [InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpecTemplate](#infrastructureclusterxk8siov1beta1devclustertemplatespectemplate)
+  - [InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpecTemplateMetadata](#infrastructureclusterxk8siov1beta1devclustertemplatespectemplatemetadata)
+  - [InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpecTemplateSpec](#infrastructureclusterxk8siov1beta1devclustertemplatespectemplatespec)
+  - [InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpecTemplateSpecBackend](#infrastructureclusterxk8siov1beta1devclustertemplatespectemplatespecbackend)
+  - [InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpecTemplateSpecBackendDocker](#infrastructureclusterxk8siov1beta1devclustertemplatespectemplatespecbackenddocker)
+  - [InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpecTemplateSpecBackendDockerFailureDomainsAnon](#infrastructureclusterxk8siov1beta1devclustertemplatespectemplatespecbackenddockerfailuredomainsanon)
+  - [InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpecTemplateSpecBackendDockerLoadBalancer](#infrastructureclusterxk8siov1beta1devclustertemplatespectemplatespecbackenddockerloadbalancer)
+  - [InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpecTemplateSpecBackendDockerLoadBalancerCustomHAProxyConfigTemplateRef](#infrastructureclusterxk8siov1beta1devclustertemplatespectemplatespecbackenddockerloadbalancercustomhaproxyconfigtemplateref)
+  - [InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpecTemplateSpecControlPlaneEndpoint](#infrastructureclusterxk8siov1beta1devclustertemplatespectemplatespeccontrolplaneendpoint)
+  - [InfrastructureClusterxK8sIoV1beta1DevMachineSpec](#infrastructureclusterxk8siov1beta1devmachinespec)
+  - [InfrastructureClusterxK8sIoV1beta1DevMachineSpecBackend](#infrastructureclusterxk8siov1beta1devmachinespecbackend)
+  - [InfrastructureClusterxK8sIoV1beta1DevMachineSpecBackendDocker](#infrastructureclusterxk8siov1beta1devmachinespecbackenddocker)
+  - [InfrastructureClusterxK8sIoV1beta1DevMachineSpecBackendDockerExtraMountsItems0](#infrastructureclusterxk8siov1beta1devmachinespecbackenddockerextramountsitems0)
+  - [InfrastructureClusterxK8sIoV1beta1DevMachineSpecBackendInMemory](#infrastructureclusterxk8siov1beta1devmachinespecbackendinmemory)
+  - [InfrastructureClusterxK8sIoV1beta1DevMachineSpecBackendInMemoryAPIServer](#infrastructureclusterxk8siov1beta1devmachinespecbackendinmemoryapiserver)
+  - [InfrastructureClusterxK8sIoV1beta1DevMachineSpecBackendInMemoryAPIServerProvisioning](#infrastructureclusterxk8siov1beta1devmachinespecbackendinmemoryapiserverprovisioning)
+  - [InfrastructureClusterxK8sIoV1beta1DevMachineSpecBackendInMemoryEtcd](#infrastructureclusterxk8siov1beta1devmachinespecbackendinmemoryetcd)
+  - [InfrastructureClusterxK8sIoV1beta1DevMachineSpecBackendInMemoryEtcdProvisioning](#infrastructureclusterxk8siov1beta1devmachinespecbackendinmemoryetcdprovisioning)
+  - [InfrastructureClusterxK8sIoV1beta1DevMachineSpecBackendInMemoryNode](#infrastructureclusterxk8siov1beta1devmachinespecbackendinmemorynode)
+  - [InfrastructureClusterxK8sIoV1beta1DevMachineSpecBackendInMemoryNodeProvisioning](#infrastructureclusterxk8siov1beta1devmachinespecbackendinmemorynodeprovisioning)
+  - [InfrastructureClusterxK8sIoV1beta1DevMachineSpecBackendInMemoryVM](#infrastructureclusterxk8siov1beta1devmachinespecbackendinmemoryvm)
+  - [InfrastructureClusterxK8sIoV1beta1DevMachineSpecBackendInMemoryVMProvisioning](#infrastructureclusterxk8siov1beta1devmachinespecbackendinmemoryvmprovisioning)
+  - [InfrastructureClusterxK8sIoV1beta1DevMachineStatus](#infrastructureclusterxk8siov1beta1devmachinestatus)
+  - [InfrastructureClusterxK8sIoV1beta1DevMachineStatusAddressesItems0](#infrastructureclusterxk8siov1beta1devmachinestatusaddressesitems0)
+  - [InfrastructureClusterxK8sIoV1beta1DevMachineStatusBackend](#infrastructureclusterxk8siov1beta1devmachinestatusbackend)
+  - [InfrastructureClusterxK8sIoV1beta1DevMachineStatusBackendDocker](#infrastructureclusterxk8siov1beta1devmachinestatusbackenddocker)
+  - [InfrastructureClusterxK8sIoV1beta1DevMachineStatusConditionsItems0](#infrastructureclusterxk8siov1beta1devmachinestatusconditionsitems0)
+  - [InfrastructureClusterxK8sIoV1beta1DevMachineStatusV1beta2](#infrastructureclusterxk8siov1beta1devmachinestatusv1beta2)
+  - [InfrastructureClusterxK8sIoV1beta1DevMachineStatusV1beta2ConditionsItems0](#infrastructureclusterxk8siov1beta1devmachinestatusv1beta2conditionsitems0)
+  - [InfrastructureClusterxK8sIoV1beta1DevMachineTemplateSpec](#infrastructureclusterxk8siov1beta1devmachinetemplatespec)
+  - [InfrastructureClusterxK8sIoV1beta1DevMachineTemplateSpecTemplate](#infrastructureclusterxk8siov1beta1devmachinetemplatespectemplate)
+  - [InfrastructureClusterxK8sIoV1beta1DevMachineTemplateSpecTemplateMetadata](#infrastructureclusterxk8siov1beta1devmachinetemplatespectemplatemetadata)
+  - [InfrastructureClusterxK8sIoV1beta1DevMachineTemplateSpecTemplateSpec](#infrastructureclusterxk8siov1beta1devmachinetemplatespectemplatespec)
+  - [InfrastructureClusterxK8sIoV1beta1DevMachineTemplateSpecTemplateSpecBackend](#infrastructureclusterxk8siov1beta1devmachinetemplatespectemplatespecbackend)
+  - [InfrastructureClusterxK8sIoV1beta1DevMachineTemplateSpecTemplateSpecBackendDocker](#infrastructureclusterxk8siov1beta1devmachinetemplatespectemplatespecbackenddocker)
+  - [InfrastructureClusterxK8sIoV1beta1DevMachineTemplateSpecTemplateSpecBackendDockerExtraMountsItems0](#infrastructureclusterxk8siov1beta1devmachinetemplatespectemplatespecbackenddockerextramountsitems0)
+  - [InfrastructureClusterxK8sIoV1beta1DevMachineTemplateSpecTemplateSpecBackendInMemory](#infrastructureclusterxk8siov1beta1devmachinetemplatespectemplatespecbackendinmemory)
+  - [InfrastructureClusterxK8sIoV1beta1DevMachineTemplateSpecTemplateSpecBackendInMemoryAPIServer](#infrastructureclusterxk8siov1beta1devmachinetemplatespectemplatespecbackendinmemoryapiserver)
+  - [InfrastructureClusterxK8sIoV1beta1DevMachineTemplateSpecTemplateSpecBackendInMemoryAPIServerProvisioning](#infrastructureclusterxk8siov1beta1devmachinetemplatespectemplatespecbackendinmemoryapiserverprovisioning)
+  - [InfrastructureClusterxK8sIoV1beta1DevMachineTemplateSpecTemplateSpecBackendInMemoryEtcd](#infrastructureclusterxk8siov1beta1devmachinetemplatespectemplatespecbackendinmemoryetcd)
+  - [InfrastructureClusterxK8sIoV1beta1DevMachineTemplateSpecTemplateSpecBackendInMemoryEtcdProvisioning](#infrastructureclusterxk8siov1beta1devmachinetemplatespectemplatespecbackendinmemoryetcdprovisioning)
+  - [InfrastructureClusterxK8sIoV1beta1DevMachineTemplateSpecTemplateSpecBackendInMemoryNode](#infrastructureclusterxk8siov1beta1devmachinetemplatespectemplatespecbackendinmemorynode)
+  - [InfrastructureClusterxK8sIoV1beta1DevMachineTemplateSpecTemplateSpecBackendInMemoryNodeProvisioning](#infrastructureclusterxk8siov1beta1devmachinetemplatespectemplatespecbackendinmemorynodeprovisioning)
+  - [InfrastructureClusterxK8sIoV1beta1DevMachineTemplateSpecTemplateSpecBackendInMemoryVM](#infrastructureclusterxk8siov1beta1devmachinetemplatespectemplatespecbackendinmemoryvm)
+  - [InfrastructureClusterxK8sIoV1beta1DevMachineTemplateSpecTemplateSpecBackendInMemoryVMProvisioning](#infrastructureclusterxk8siov1beta1devmachinetemplatespectemplatespecbackendinmemoryvmprovisioning)
   - [InfrastructureClusterxK8sIoV1beta1DockerClusterSpec](#infrastructureclusterxk8siov1beta1dockerclusterspec)
   - [InfrastructureClusterxK8sIoV1beta1DockerClusterSpecControlPlaneEndpoint](#infrastructureclusterxk8siov1beta1dockerclusterspeccontrolplaneendpoint)
   - [InfrastructureClusterxK8sIoV1beta1DockerClusterSpecFailureDomainsAnon](#infrastructureclusterxk8siov1beta1dockerclusterspecfailuredomainsanon)
@@ -1166,6 +1197,8 @@
   - [IpamClusterxK8sIoV1beta1IPAddressClaimStatus](#ipamclusterxk8siov1beta1ipaddressclaimstatus)
   - [IpamClusterxK8sIoV1beta1IPAddressClaimStatusAddressRef](#ipamclusterxk8siov1beta1ipaddressclaimstatusaddressref)
   - [IpamClusterxK8sIoV1beta1IPAddressClaimStatusConditionsItems0](#ipamclusterxk8siov1beta1ipaddressclaimstatusconditionsitems0)
+  - [IpamClusterxK8sIoV1beta1IPAddressClaimStatusV1beta2](#ipamclusterxk8siov1beta1ipaddressclaimstatusv1beta2)
+  - [IpamClusterxK8sIoV1beta1IPAddressClaimStatusV1beta2ConditionsItems0](#ipamclusterxk8siov1beta1ipaddressclaimstatusv1beta2conditionsitems0)
   - [KubeadmConfig](#kubeadmconfig)
   - [KubeadmConfigTemplate](#kubeadmconfigtemplate)
   - [KubeadmControlPlane](#kubeadmcontrolplane)
@@ -1176,6 +1209,9 @@
   - [MachineHealthCheck](#machinehealthcheck)
   - [MachinePool](#machinepool)
   - [MachineSet](#machineset)
+  - [TestCluster](#testcluster)
+  - [TestClusterxK8sIoV1beta1TestClusterSpec](#testclusterxk8siov1beta1testclusterspec)
+  - [TestClusterxK8sIoV1beta1TestClusterStatus](#testclusterxk8siov1beta1testclusterstatus)
 
 ## Schemas
 
@@ -1217,447 +1253,9 @@ IPAddressClaim is the Schema for the ipaddressclaim API.
 |**metadata**|[ObjectMeta](#objectmeta)|metadata||
 |**spec**|[IpamClusterxK8sIoV1alpha1IPAddressClaimSpec](#ipamclusterxk8siov1alpha1ipaddressclaimspec)|spec||
 |**status**|[IpamClusterxK8sIoV1alpha1IPAddressClaimStatus](#ipamclusterxk8siov1alpha1ipaddressclaimstatus)|status||
-### InMemoryCluster
-
-InMemoryCluster is the schema for the in-memory cluster API.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**apiVersion** `required` `readOnly`|"infrastructure.cluster.x-k8s.io/v1alpha1"|APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources|"infrastructure.cluster.x-k8s.io/v1alpha1"|
-|**kind** `required` `readOnly`|"InMemoryCluster"|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds|"InMemoryCluster"|
-|**metadata**|[ObjectMeta](#objectmeta)|metadata||
-|**spec**|[InfrastructureClusterxK8sIoV1alpha1InMemoryClusterSpec](#infrastructureclusterxk8siov1alpha1inmemoryclusterspec)|spec||
-|**status**|[InfrastructureClusterxK8sIoV1alpha1InMemoryClusterStatus](#infrastructureclusterxk8siov1alpha1inmemoryclusterstatus)|status||
-### InMemoryClusterTemplate
-
-InMemoryClusterTemplate is the Schema for the inmemoryclustertemplates API.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**apiVersion** `required` `readOnly`|"infrastructure.cluster.x-k8s.io/v1alpha1"|APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources|"infrastructure.cluster.x-k8s.io/v1alpha1"|
-|**kind** `required` `readOnly`|"InMemoryClusterTemplate"|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds|"InMemoryClusterTemplate"|
-|**metadata**|[ObjectMeta](#objectmeta)|metadata||
-|**spec**|[InfrastructureClusterxK8sIoV1alpha1InMemoryClusterTemplateSpec](#infrastructureclusterxk8siov1alpha1inmemoryclustertemplatespec)|spec||
-### InMemoryMachine
-
-InMemoryMachine is the schema for the in-memory machine API.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**apiVersion** `required` `readOnly`|"infrastructure.cluster.x-k8s.io/v1alpha1"|APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources|"infrastructure.cluster.x-k8s.io/v1alpha1"|
-|**kind** `required` `readOnly`|"InMemoryMachine"|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds|"InMemoryMachine"|
-|**metadata**|[ObjectMeta](#objectmeta)|metadata||
-|**spec**|[InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpec](#infrastructureclusterxk8siov1alpha1inmemorymachinespec)|spec||
-|**status**|[InfrastructureClusterxK8sIoV1alpha1InMemoryMachineStatus](#infrastructureclusterxk8siov1alpha1inmemorymachinestatus)|status||
-### InMemoryMachineTemplate
-
-InMemoryMachineTemplate is the schema for the in-memory machine template API.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**apiVersion** `required` `readOnly`|"infrastructure.cluster.x-k8s.io/v1alpha1"|APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources|"infrastructure.cluster.x-k8s.io/v1alpha1"|
-|**kind** `required` `readOnly`|"InMemoryMachineTemplate"|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds|"InMemoryMachineTemplate"|
-|**metadata**|[ObjectMeta](#objectmeta)|metadata||
-|**spec**|[InfrastructureClusterxK8sIoV1alpha1InMemoryMachineTemplateSpec](#infrastructureclusterxk8siov1alpha1inmemorymachinetemplatespec)|spec||
-### InfrastructureClusterxK8sIoV1alpha1InMemoryClusterSpec
-
-InMemoryClusterSpec defines the desired state of the InMemoryCluster.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**controlPlaneEndpoint**|[InfrastructureClusterxK8sIoV1alpha1InMemoryClusterSpecControlPlaneEndpoint](#infrastructureclusterxk8siov1alpha1inmemoryclusterspeccontrolplaneendpoint)|control plane endpoint||
-### InfrastructureClusterxK8sIoV1alpha1InMemoryClusterSpecControlPlaneEndpoint
-
-ControlPlaneEndpoint represents the endpoint used to communicate with the control plane.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**host** `required`|str|Host is the hostname on which the API server is serving.||
-|**port** `required`|int|Port is the port on which the API server is serving.<br />Defaults to 6443 if not set.||
-### InfrastructureClusterxK8sIoV1alpha1InMemoryClusterStatus
-
-InMemoryClusterStatus defines the observed state of the InMemoryCluster.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**conditions**|[[InfrastructureClusterxK8sIoV1alpha1InMemoryClusterStatusConditionsItems0](#infrastructureclusterxk8siov1alpha1inmemoryclusterstatusconditionsitems0)]|Conditions defines current service state of the InMemoryCluster.||
-|**ready**|bool|Ready denotes that the in-memory cluster (infrastructure) is ready.||
-|**v1beta2**|[InfrastructureClusterxK8sIoV1alpha1InMemoryClusterStatusV1beta2](#infrastructureclusterxk8siov1alpha1inmemoryclusterstatusv1beta2)|v1beta2||
-### InfrastructureClusterxK8sIoV1alpha1InMemoryClusterStatusConditionsItems0
-
-Condition defines an observation of a Cluster API resource operational state.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**lastTransitionTime** `required`|str|Last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
-|**message**|str|A human readable message indicating details about the transition.<br />This field may be empty.||
-|**reason**|str|The reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may be empty.||
-|**severity**|str|severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
-|**status** `required`|str|status of the condition, one of True, False, Unknown.||
-|**type** `required`|str|||
-### InfrastructureClusterxK8sIoV1alpha1InMemoryClusterStatusV1beta2
-
-v1beta2 groups all the fields that will be added or modified in InMemoryCluster's status with the V1Beta2 version.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**conditions**|[[InfrastructureClusterxK8sIoV1alpha1InMemoryClusterStatusV1beta2ConditionsItems0](#infrastructureclusterxk8siov1alpha1inmemoryclusterstatusv1beta2conditionsitems0)]|conditions represents the observations of a InMemoryCluster's current state.||
-### InfrastructureClusterxK8sIoV1alpha1InMemoryClusterStatusV1beta2ConditionsItems0
-
-Condition contains details for one aspect of the current state of this API Resource.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**lastTransitionTime** `required`|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed.  If that is not known, then using the time when the API field changed is acceptable.||
-|**message** `required`|str|message is a human readable message indicating details about the transition.<br />This may be an empty string.||
-|**observedGeneration**|int|observedGeneration represents the .metadata.generation that the condition was set based upon.<br />For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date<br />with respect to the current state of the instance.||
-|**reason** `required`|str|reason contains a programmatic identifier indicating the reason for the condition's last transition.<br />Producers of specific condition types may define expected values and meanings for this field,<br />and whether the values are considered a guaranteed API.<br />The value should be a CamelCase string.<br />This field may not be empty.||
-|**status** `required`|"True" | "False" | "Unknown"|status of the condition, one of True, False, Unknown.||
-|**type** `required`|str|||
-### InfrastructureClusterxK8sIoV1alpha1InMemoryClusterTemplateSpec
-
-InMemoryClusterTemplateSpec defines the desired state of InMemoryClusterTemplate.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**template** `required`|[InfrastructureClusterxK8sIoV1alpha1InMemoryClusterTemplateSpecTemplate](#infrastructureclusterxk8siov1alpha1inmemoryclustertemplatespectemplate)|template||
-### InfrastructureClusterxK8sIoV1alpha1InMemoryClusterTemplateSpecTemplate
-
-InMemoryClusterTemplateResource describes the data needed to create a InMemoryCluster from a template.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**metadata**|[InfrastructureClusterxK8sIoV1alpha1InMemoryClusterTemplateSpecTemplateMetadata](#infrastructureclusterxk8siov1alpha1inmemoryclustertemplatespectemplatemetadata)|metadata||
-|**spec** `required`|[InfrastructureClusterxK8sIoV1alpha1InMemoryClusterTemplateSpecTemplateSpec](#infrastructureclusterxk8siov1alpha1inmemoryclustertemplatespectemplatespec)|spec||
-### InfrastructureClusterxK8sIoV1alpha1InMemoryClusterTemplateSpecTemplateMetadata
-
-Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**annotations**|{str:str}|annotations is an unstructured key value map stored with a resource that may be<br />set by external tools to store and retrieve arbitrary metadata. They are not<br />queryable and should be preserved when modifying objects.<br />More info: http://kubernetes.io/docs/user-guide/annotations||
-|**labels**|{str:str}|Map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
-### InfrastructureClusterxK8sIoV1alpha1InMemoryClusterTemplateSpecTemplateSpec
-
-InMemoryClusterSpec defines the desired state of the InMemoryCluster.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**controlPlaneEndpoint**|[InfrastructureClusterxK8sIoV1alpha1InMemoryClusterTemplateSpecTemplateSpecControlPlaneEndpoint](#infrastructureclusterxk8siov1alpha1inmemoryclustertemplatespectemplatespeccontrolplaneendpoint)|control plane endpoint||
-### InfrastructureClusterxK8sIoV1alpha1InMemoryClusterTemplateSpecTemplateSpecControlPlaneEndpoint
-
-ControlPlaneEndpoint represents the endpoint used to communicate with the control plane.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**host** `required`|str|Host is the hostname on which the API server is serving.||
-|**port** `required`|int|Port is the port on which the API server is serving.<br />Defaults to 6443 if not set.||
-### InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpec
-
-InMemoryMachineSpec defines the desired state of InMemoryMachine.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**behaviour**|[InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpecBehaviour](#infrastructureclusterxk8siov1alpha1inmemorymachinespecbehaviour)|behaviour||
-|**providerID**|str|ProviderID will be the container name in ProviderID format (in-memory:////<name>)||
-### InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpecBehaviour
-
-Behaviour of the InMemoryMachine; this will allow to make a simulation more alike to real use cases e.g. by defining the duration of the provisioning phase mimicking the performances of the target infrastructure.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**apiServer**|[InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpecBehaviourAPIServer](#infrastructureclusterxk8siov1alpha1inmemorymachinespecbehaviourapiserver)|api server||
-|**etcd**|[InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpecBehaviourEtcd](#infrastructureclusterxk8siov1alpha1inmemorymachinespecbehaviouretcd)|etcd||
-|**node**|[InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpecBehaviourNode](#infrastructureclusterxk8siov1alpha1inmemorymachinespecbehaviournode)|node||
-|**vm**|[InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpecBehaviourVM](#infrastructureclusterxk8siov1alpha1inmemorymachinespecbehaviourvm)|vm||
-### InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpecBehaviourAPIServer
-
-APIServer defines the behaviour of the APIServer hosted on the InMemoryMachine.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**provisioning**|[InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpecBehaviourAPIServerProvisioning](#infrastructureclusterxk8siov1alpha1inmemorymachinespecbehaviourapiserverprovisioning)|provisioning||
-### InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpecBehaviourAPIServerProvisioning
-
-Provisioning defines variables influencing how the APIServer hosted on the InMemoryMachine is going to be provisioned. NOTE: APIServer provisioning includes all the steps from starting the static Pod to the Pod become ready and being registered in K8s.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**startupDuration** `required`|str|StartupDuration defines the duration of the object provisioning phase.||
-|**startupJitter**|str|StartupJitter adds some randomness on StartupDuration; the actual duration will be StartupDuration plus an additional<br />amount chosen uniformly at random from the interval between zero and `StartupJitter*StartupDuration`.<br />NOTE: this is modeled as string because the usage of float is highly discouraged, as support for them varies across languages.||
-### InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpecBehaviourEtcd
-
-Etcd defines the behaviour of the etcd member hosted on the InMemoryMachine.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**provisioning**|[InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpecBehaviourEtcdProvisioning](#infrastructureclusterxk8siov1alpha1inmemorymachinespecbehaviouretcdprovisioning)|provisioning||
-### InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpecBehaviourEtcdProvisioning
-
-Provisioning defines variables influencing how the etcd member hosted on the InMemoryMachine is going to be provisioned. NOTE: Etcd provisioning includes all the steps from starting the static Pod to the Pod become ready and being registered in K8s.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**startupDuration** `required`|str|StartupDuration defines the duration of the object provisioning phase.||
-|**startupJitter**|str|StartupJitter adds some randomness on StartupDuration; the actual duration will be StartupDuration plus an additional<br />amount chosen uniformly at random from the interval between zero and `StartupJitter*StartupDuration`.<br />NOTE: this is modeled as string because the usage of float is highly discouraged, as support for them varies across languages.||
-### InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpecBehaviourNode
-
-Node defines the behaviour of the Node (the kubelet) hosted on the InMemoryMachine.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**provisioning**|[InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpecBehaviourNodeProvisioning](#infrastructureclusterxk8siov1alpha1inmemorymachinespecbehaviournodeprovisioning)|provisioning||
-### InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpecBehaviourNodeProvisioning
-
-Provisioning defines variables influencing how the Node (the kubelet) hosted on the InMemoryMachine is going to be provisioned. NOTE: Node provisioning includes all the steps from starting kubelet to the node become ready, get a provider ID, and being registered in K8s.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**startupDuration** `required`|str|StartupDuration defines the duration of the object provisioning phase.||
-|**startupJitter**|str|StartupJitter adds some randomness on StartupDuration; the actual duration will be StartupDuration plus an additional<br />amount chosen uniformly at random from the interval between zero and `StartupJitter*StartupDuration`.<br />NOTE: this is modeled as string because the usage of float is highly discouraged, as support for them varies across languages.||
-### InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpecBehaviourVM
-
-VM defines the behaviour of the VM implementing the InMemoryMachine.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**provisioning**|[InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpecBehaviourVMProvisioning](#infrastructureclusterxk8siov1alpha1inmemorymachinespecbehaviourvmprovisioning)|provisioning||
-### InfrastructureClusterxK8sIoV1alpha1InMemoryMachineSpecBehaviourVMProvisioning
-
-Provisioning defines variables influencing how the VM implementing the InMemoryMachine is going to be provisioned. NOTE: VM provisioning includes all the steps from creation to power-on.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**startupDuration** `required`|str|StartupDuration defines the duration of the object provisioning phase.||
-|**startupJitter**|str|StartupJitter adds some randomness on StartupDuration; the actual duration will be StartupDuration plus an additional<br />amount chosen uniformly at random from the interval between zero and `StartupJitter*StartupDuration`.<br />NOTE: this is modeled as string because the usage of float is highly discouraged, as support for them varies across languages.||
-### InfrastructureClusterxK8sIoV1alpha1InMemoryMachineStatus
-
-InMemoryMachineStatus defines the observed state of InMemoryMachine.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**conditions**|[[InfrastructureClusterxK8sIoV1alpha1InMemoryMachineStatusConditionsItems0](#infrastructureclusterxk8siov1alpha1inmemorymachinestatusconditionsitems0)]|Conditions defines current service state of the InMemoryMachine.||
-|**ready**|bool|Ready denotes that the machine is ready||
-|**v1beta2**|[InfrastructureClusterxK8sIoV1alpha1InMemoryMachineStatusV1beta2](#infrastructureclusterxk8siov1alpha1inmemorymachinestatusv1beta2)|v1beta2||
-### InfrastructureClusterxK8sIoV1alpha1InMemoryMachineStatusConditionsItems0
-
-Condition defines an observation of a Cluster API resource operational state.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**lastTransitionTime** `required`|str|Last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
-|**message**|str|A human readable message indicating details about the transition.<br />This field may be empty.||
-|**reason**|str|The reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may be empty.||
-|**severity**|str|severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
-|**status** `required`|str|status of the condition, one of True, False, Unknown.||
-|**type** `required`|str|||
-### InfrastructureClusterxK8sIoV1alpha1InMemoryMachineStatusV1beta2
-
-v1beta2 groups all the fields that will be added or modified in InMemoryMachine's status with the V1Beta2 version.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**conditions**|[[InfrastructureClusterxK8sIoV1alpha1InMemoryMachineStatusV1beta2ConditionsItems0](#infrastructureclusterxk8siov1alpha1inmemorymachinestatusv1beta2conditionsitems0)]|conditions represents the observations of a InMemoryMachine's current state.||
-### InfrastructureClusterxK8sIoV1alpha1InMemoryMachineStatusV1beta2ConditionsItems0
-
-Condition contains details for one aspect of the current state of this API Resource.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**lastTransitionTime** `required`|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed.  If that is not known, then using the time when the API field changed is acceptable.||
-|**message** `required`|str|message is a human readable message indicating details about the transition.<br />This may be an empty string.||
-|**observedGeneration**|int|observedGeneration represents the .metadata.generation that the condition was set based upon.<br />For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date<br />with respect to the current state of the instance.||
-|**reason** `required`|str|reason contains a programmatic identifier indicating the reason for the condition's last transition.<br />Producers of specific condition types may define expected values and meanings for this field,<br />and whether the values are considered a guaranteed API.<br />The value should be a CamelCase string.<br />This field may not be empty.||
-|**status** `required`|"True" | "False" | "Unknown"|status of the condition, one of True, False, Unknown.||
-|**type** `required`|str|||
-### InfrastructureClusterxK8sIoV1alpha1InMemoryMachineTemplateSpec
-
-InMemoryMachineTemplateSpec defines the desired state of InMemoryMachineTemplate.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**template** `required`|[InfrastructureClusterxK8sIoV1alpha1InMemoryMachineTemplateSpecTemplate](#infrastructureclusterxk8siov1alpha1inmemorymachinetemplatespectemplate)|template||
-### InfrastructureClusterxK8sIoV1alpha1InMemoryMachineTemplateSpecTemplate
-
-InMemoryMachineTemplateResource describes the data needed to create a InMemoryMachine from a template.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**metadata**|[InfrastructureClusterxK8sIoV1alpha1InMemoryMachineTemplateSpecTemplateMetadata](#infrastructureclusterxk8siov1alpha1inmemorymachinetemplatespectemplatemetadata)|metadata||
-|**spec** `required`|[InfrastructureClusterxK8sIoV1alpha1InMemoryMachineTemplateSpecTemplateSpec](#infrastructureclusterxk8siov1alpha1inmemorymachinetemplatespectemplatespec)|spec||
-### InfrastructureClusterxK8sIoV1alpha1InMemoryMachineTemplateSpecTemplateMetadata
-
-Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**annotations**|{str:str}|annotations is an unstructured key value map stored with a resource that may be<br />set by external tools to store and retrieve arbitrary metadata. They are not<br />queryable and should be preserved when modifying objects.<br />More info: http://kubernetes.io/docs/user-guide/annotations||
-|**labels**|{str:str}|Map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
-### InfrastructureClusterxK8sIoV1alpha1InMemoryMachineTemplateSpecTemplateSpec
-
-Spec is the specification of the desired behavior of the machine.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**behaviour**|[InfrastructureClusterxK8sIoV1alpha1InMemoryMachineTemplateSpecTemplateSpecBehaviour](#infrastructureclusterxk8siov1alpha1inmemorymachinetemplatespectemplatespecbehaviour)|behaviour||
-|**providerID**|str|ProviderID will be the container name in ProviderID format (in-memory:////<name>)||
-### InfrastructureClusterxK8sIoV1alpha1InMemoryMachineTemplateSpecTemplateSpecBehaviour
-
-Behaviour of the InMemoryMachine; this will allow to make a simulation more alike to real use cases e.g. by defining the duration of the provisioning phase mimicking the performances of the target infrastructure.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**apiServer**|[InfrastructureClusterxK8sIoV1alpha1InMemoryMachineTemplateSpecTemplateSpecBehaviourAPIServer](#infrastructureclusterxk8siov1alpha1inmemorymachinetemplatespectemplatespecbehaviourapiserver)|api server||
-|**etcd**|[InfrastructureClusterxK8sIoV1alpha1InMemoryMachineTemplateSpecTemplateSpecBehaviourEtcd](#infrastructureclusterxk8siov1alpha1inmemorymachinetemplatespectemplatespecbehaviouretcd)|etcd||
-|**node**|[InfrastructureClusterxK8sIoV1alpha1InMemoryMachineTemplateSpecTemplateSpecBehaviourNode](#infrastructureclusterxk8siov1alpha1inmemorymachinetemplatespectemplatespecbehaviournode)|node||
-|**vm**|[InfrastructureClusterxK8sIoV1alpha1InMemoryMachineTemplateSpecTemplateSpecBehaviourVM](#infrastructureclusterxk8siov1alpha1inmemorymachinetemplatespectemplatespecbehaviourvm)|vm||
-### InfrastructureClusterxK8sIoV1alpha1InMemoryMachineTemplateSpecTemplateSpecBehaviourAPIServer
-
-APIServer defines the behaviour of the APIServer hosted on the InMemoryMachine.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**provisioning**|[InfrastructureClusterxK8sIoV1alpha1InMemoryMachineTemplateSpecTemplateSpecBehaviourAPIServerProvisioning](#infrastructureclusterxk8siov1alpha1inmemorymachinetemplatespectemplatespecbehaviourapiserverprovisioning)|provisioning||
-### InfrastructureClusterxK8sIoV1alpha1InMemoryMachineTemplateSpecTemplateSpecBehaviourAPIServerProvisioning
-
-Provisioning defines variables influencing how the APIServer hosted on the InMemoryMachine is going to be provisioned. NOTE: APIServer provisioning includes all the steps from starting the static Pod to the Pod become ready and being registered in K8s.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**startupDuration** `required`|str|StartupDuration defines the duration of the object provisioning phase.||
-|**startupJitter**|str|StartupJitter adds some randomness on StartupDuration; the actual duration will be StartupDuration plus an additional<br />amount chosen uniformly at random from the interval between zero and `StartupJitter*StartupDuration`.<br />NOTE: this is modeled as string because the usage of float is highly discouraged, as support for them varies across languages.||
-### InfrastructureClusterxK8sIoV1alpha1InMemoryMachineTemplateSpecTemplateSpecBehaviourEtcd
-
-Etcd defines the behaviour of the etcd member hosted on the InMemoryMachine.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**provisioning**|[InfrastructureClusterxK8sIoV1alpha1InMemoryMachineTemplateSpecTemplateSpecBehaviourEtcdProvisioning](#infrastructureclusterxk8siov1alpha1inmemorymachinetemplatespectemplatespecbehaviouretcdprovisioning)|provisioning||
-### InfrastructureClusterxK8sIoV1alpha1InMemoryMachineTemplateSpecTemplateSpecBehaviourEtcdProvisioning
-
-Provisioning defines variables influencing how the etcd member hosted on the InMemoryMachine is going to be provisioned. NOTE: Etcd provisioning includes all the steps from starting the static Pod to the Pod become ready and being registered in K8s.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**startupDuration** `required`|str|StartupDuration defines the duration of the object provisioning phase.||
-|**startupJitter**|str|StartupJitter adds some randomness on StartupDuration; the actual duration will be StartupDuration plus an additional<br />amount chosen uniformly at random from the interval between zero and `StartupJitter*StartupDuration`.<br />NOTE: this is modeled as string because the usage of float is highly discouraged, as support for them varies across languages.||
-### InfrastructureClusterxK8sIoV1alpha1InMemoryMachineTemplateSpecTemplateSpecBehaviourNode
-
-Node defines the behaviour of the Node (the kubelet) hosted on the InMemoryMachine.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**provisioning**|[InfrastructureClusterxK8sIoV1alpha1InMemoryMachineTemplateSpecTemplateSpecBehaviourNodeProvisioning](#infrastructureclusterxk8siov1alpha1inmemorymachinetemplatespectemplatespecbehaviournodeprovisioning)|provisioning||
-### InfrastructureClusterxK8sIoV1alpha1InMemoryMachineTemplateSpecTemplateSpecBehaviourNodeProvisioning
-
-Provisioning defines variables influencing how the Node (the kubelet) hosted on the InMemoryMachine is going to be provisioned. NOTE: Node provisioning includes all the steps from starting kubelet to the node become ready, get a provider ID, and being registered in K8s.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**startupDuration** `required`|str|StartupDuration defines the duration of the object provisioning phase.||
-|**startupJitter**|str|StartupJitter adds some randomness on StartupDuration; the actual duration will be StartupDuration plus an additional<br />amount chosen uniformly at random from the interval between zero and `StartupJitter*StartupDuration`.<br />NOTE: this is modeled as string because the usage of float is highly discouraged, as support for them varies across languages.||
-### InfrastructureClusterxK8sIoV1alpha1InMemoryMachineTemplateSpecTemplateSpecBehaviourVM
-
-VM defines the behaviour of the VM implementing the InMemoryMachine.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**provisioning**|[InfrastructureClusterxK8sIoV1alpha1InMemoryMachineTemplateSpecTemplateSpecBehaviourVMProvisioning](#infrastructureclusterxk8siov1alpha1inmemorymachinetemplatespectemplatespecbehaviourvmprovisioning)|provisioning||
-### InfrastructureClusterxK8sIoV1alpha1InMemoryMachineTemplateSpecTemplateSpecBehaviourVMProvisioning
-
-Provisioning defines variables influencing how the VM implementing the InMemoryMachine is going to be provisioned. NOTE: VM provisioning includes all the steps from creation to power-on.
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**startupDuration** `required`|str|StartupDuration defines the duration of the object provisioning phase.||
-|**startupJitter**|str|StartupJitter adds some randomness on StartupDuration; the actual duration will be StartupDuration plus an additional<br />amount chosen uniformly at random from the interval between zero and `StartupJitter*StartupDuration`.<br />NOTE: this is modeled as string because the usage of float is highly discouraged, as support for them varies across languages.||
 ### IpamClusterxK8sIoV1alpha1IPAddressClaimSpec
 
-IPAddressClaimSpec is the desired state of an IPAddressClaim.
+spec is the desired state of IPAddressClaim.
 
 #### Attributes
 
@@ -1677,7 +1275,7 @@ poolRef is a reference to the pool from which an IP address should be created.
 |**name** `required`|str|Name is the name of resource being referenced||
 ### IpamClusterxK8sIoV1alpha1IPAddressClaimStatus
 
-IPAddressClaimStatus is the observed status of a IPAddressClaim.
+status is the observed state of IPAddressClaim.
 
 #### Attributes
 
@@ -1702,15 +1300,15 @@ Condition defines an observation of a Cluster API resource operational state.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime** `required`|str|Last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
-|**message**|str|A human readable message indicating details about the transition.<br />This field may be empty.||
-|**reason**|str|The reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may be empty.||
+|**lastTransitionTime** `required`|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
+|**message**|str|message is a human readable message indicating details about the transition.<br />This field may be empty.||
+|**reason**|str|reason is the reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may be empty.||
 |**severity**|str|severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
 |**status** `required`|str|status of the condition, one of True, False, Unknown.||
 |**type** `required`|str|||
 ### IpamClusterxK8sIoV1alpha1IPAddressSpec
 
-IPAddressSpec is the desired state of an IPAddress.
+spec is the desired state of IPAddress.
 
 #### Attributes
 
@@ -1795,7 +1393,7 @@ Phase3Obj defines an object with metav1.conditions.
 |**status**|[TestClusterxK8sIoV1alpha1Phase3ObjStatus](#testclusterxk8siov1alpha1phase3objstatus)|status||
 ### RuntimeClusterxK8sIoV1alpha1ExtensionConfigSpec
 
-ExtensionConfigSpec is the desired state of the ExtensionConfig
+spec is the desired state of the ExtensionConfig.
 
 #### Attributes
 
@@ -1850,7 +1448,7 @@ A label selector requirement is a selector that contains values, a key, and an o
 |**values**|[str]|values is an array of string values. If the operator is In or NotIn,<br />the values array must be non-empty. If the operator is Exists or DoesNotExist,<br />the values array must be empty. This array is replaced during a strategic<br />merge patch.||
 ### RuntimeClusterxK8sIoV1alpha1ExtensionConfigStatus
 
-ExtensionConfigStatus is the current state of the ExtensionConfig
+status is the current state of the ExtensionConfig
 
 #### Attributes
 
@@ -1858,6 +1456,7 @@ ExtensionConfigStatus is the current state of the ExtensionConfig
 | --- | --- | --- | --- |
 |**conditions**|[[RuntimeClusterxK8sIoV1alpha1ExtensionConfigStatusConditionsItems0](#runtimeclusterxk8siov1alpha1extensionconfigstatusconditionsitems0)]|conditions define the current service state of the ExtensionConfig.||
 |**handlers**|[[RuntimeClusterxK8sIoV1alpha1ExtensionConfigStatusHandlersItems0](#runtimeclusterxk8siov1alpha1extensionconfigstatushandlersitems0)]|handlers defines the current ExtensionHandlers supported by an Extension.||
+|**v1beta2**|[RuntimeClusterxK8sIoV1alpha1ExtensionConfigStatusV1beta2](#runtimeclusterxk8siov1alpha1extensionconfigstatusv1beta2)|v1beta2||
 ### RuntimeClusterxK8sIoV1alpha1ExtensionConfigStatusConditionsItems0
 
 Condition defines an observation of a Cluster API resource operational state.
@@ -1866,9 +1465,9 @@ Condition defines an observation of a Cluster API resource operational state.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime** `required`|str|Last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
-|**message**|str|A human readable message indicating details about the transition.<br />This field may be empty.||
-|**reason**|str|The reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may be empty.||
+|**lastTransitionTime** `required`|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
+|**message**|str|message is a human readable message indicating details about the transition.<br />This field may be empty.||
+|**reason**|str|reason is the reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may be empty.||
 |**severity**|str|severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
 |**status** `required`|str|status of the condition, one of True, False, Unknown.||
 |**type** `required`|str|||
@@ -1880,7 +1479,7 @@ ExtensionHandler specifies the details of a handler for a particular runtime hoo
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**failurePolicy**|str|failurePolicy defines how failures in calls to the ExtensionHandler should be handled by a client.<br />Defaults to Fail if not set.||
+|**failurePolicy**|"Ignore" | "Fail"|failurePolicy defines how failures in calls to the ExtensionHandler should be handled by a client.<br />Defaults to Fail if not set.||
 |**name** `required`|str|name is the unique name of the ExtensionHandler.||
 |**requestHook** `required`|[RuntimeClusterxK8sIoV1alpha1ExtensionConfigStatusHandlersItems0RequestHook](#runtimeclusterxk8siov1alpha1extensionconfigstatushandlersitems0requesthook)|request hook||
 |**timeoutSeconds**|int|timeoutSeconds defines the timeout duration for client calls to the ExtensionHandler.<br />Defaults to 10 is not set.||
@@ -1894,6 +1493,29 @@ requestHook defines the versioned runtime hook which this ExtensionHandler serve
 | --- | --- | --- | --- |
 |**apiVersion** `required`|str|apiVersion is the group and version of the Hook.||
 |**hook** `required`|str|hook is the name of the hook.||
+### RuntimeClusterxK8sIoV1alpha1ExtensionConfigStatusV1beta2
+
+v1beta2 groups all the fields that will be added or modified in ExtensionConfig's status with the V1Beta2 version.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**conditions**|[[RuntimeClusterxK8sIoV1alpha1ExtensionConfigStatusV1beta2ConditionsItems0](#runtimeclusterxk8siov1alpha1extensionconfigstatusv1beta2conditionsitems0)]|conditions represents the observations of a ExtensionConfig's current state.<br />Known condition types are Discovered, Paused.||
+### RuntimeClusterxK8sIoV1alpha1ExtensionConfigStatusV1beta2ConditionsItems0
+
+Condition contains details for one aspect of the current state of this API Resource.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**lastTransitionTime** `required`|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed.  If that is not known, then using the time when the API field changed is acceptable.||
+|**message** `required`|str|message is a human readable message indicating details about the transition.<br />This may be an empty string.||
+|**observedGeneration**|int|observedGeneration represents the .metadata.generation that the condition was set based upon.<br />For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date<br />with respect to the current state of the instance.||
+|**reason** `required`|str|reason contains a programmatic identifier indicating the reason for the condition's last transition.<br />Producers of specific condition types may define expected values and meanings for this field,<br />and whether the values are considered a guaranteed API.<br />The value should be a CamelCase string.<br />This field may not be empty.||
+|**status** `required`|"True" | "False" | "Unknown"|status of the condition, one of True, False, Unknown.||
+|**type** `required`|str|||
 ### TestClusterxK8sIoV1alpha1Phase0ObjSpec
 
 Phase0ObjSpec defines the spec of a Phase0Obj.
@@ -1921,9 +1543,9 @@ Condition defines an observation of a Cluster API resource operational state.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime** `required`|str|Last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
-|**message**|str|A human readable message indicating details about the transition.<br />This field may be empty.||
-|**reason**|str|The reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may be empty.||
+|**lastTransitionTime** `required`|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
+|**message**|str|message is a human readable message indicating details about the transition.<br />This field may be empty.||
+|**reason**|str|reason is the reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may be empty.||
 |**severity**|str|severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
 |**status** `required`|str|status of the condition, one of True, False, Unknown.||
 |**type** `required`|str|||
@@ -1955,15 +1577,15 @@ Condition defines an observation of a Cluster API resource operational state.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime** `required`|str|Last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
-|**message**|str|A human readable message indicating details about the transition.<br />This field may be empty.||
-|**reason**|str|The reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may be empty.||
+|**lastTransitionTime** `required`|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
+|**message**|str|message is a human readable message indicating details about the transition.<br />This field may be empty.||
+|**reason**|str|reason is the reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may be empty.||
 |**severity**|str|severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
 |**status** `required`|str|status of the condition, one of True, False, Unknown.||
 |**type** `required`|str|||
 ### TestClusterxK8sIoV1alpha1Phase1ObjStatusV1beta2
 
-Phase1ObjStatusV1Beta2 defines the status.V1Beta2 of a Phase1Obj.
+Phase1ObjV1Beta2Status defines the status.V1Beta2 of a Phase1Obj.
 
 #### Attributes
 
@@ -2020,7 +1642,7 @@ Condition contains details for one aspect of the current state of this API Resou
 |**type** `required`|str|||
 ### TestClusterxK8sIoV1alpha1Phase2ObjStatusDeprecated
 
-Phase2ObjStatusDeprecated defines the status.Deprecated of a Phase2Obj.
+Phase2ObjDeprecatedStatus defines the status.Deprecated of a Phase2Obj.
 
 #### Attributes
 
@@ -2029,7 +1651,7 @@ Phase2ObjStatusDeprecated defines the status.Deprecated of a Phase2Obj.
 |**v1beta1**|[TestClusterxK8sIoV1alpha1Phase2ObjStatusDeprecatedV1beta1](#testclusterxk8siov1alpha1phase2objstatusdeprecatedv1beta1)|v1beta1||
 ### TestClusterxK8sIoV1alpha1Phase2ObjStatusDeprecatedV1beta1
 
-Phase2ObjStatusDeprecatedV1Beta1 defines the status.Deprecated.V1Beta2 of a Phase2Obj.
+Phase2ObjDeprecatedV1Beta1Status defines the status.Deprecated.V1Beta2 of a Phase2Obj.
 
 #### Attributes
 
@@ -2044,9 +1666,9 @@ Condition defines an observation of a Cluster API resource operational state.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime** `required`|str|Last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
-|**message**|str|A human readable message indicating details about the transition.<br />This field may be empty.||
-|**reason**|str|The reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may be empty.||
+|**lastTransitionTime** `required`|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
+|**message**|str|message is a human readable message indicating details about the transition.<br />This field may be empty.||
+|**reason**|str|reason is the reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may be empty.||
 |**severity**|str|severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
 |**status** `required`|str|status of the condition, one of True, False, Unknown.||
 |**type** `required`|str|||
@@ -2085,7 +1707,7 @@ Condition contains details for one aspect of the current state of this API Resou
 |**type** `required`|str|||
 ### AddonsClusterxK8sIoV1alpha3ClusterResourceSetBindingSpec
 
-ClusterResourceSetBindingSpec defines the desired state of ClusterResourceSetBinding.
+spec is the desired state of ClusterResourceSetBinding.
 
 #### Attributes
 
@@ -2117,7 +1739,7 @@ ResourceBinding shows the status of a resource that belongs to a ClusterResource
 |**name** `required`|str|name of the resource that is in the same namespace with ClusterResourceSet object.||
 ### AddonsClusterxK8sIoV1alpha3ClusterResourceSetSpec
 
-ClusterResourceSetSpec defines the desired state of ClusterResourceSet.
+spec is the desired state of ClusterResourceSet.
 
 #### Attributes
 
@@ -2128,7 +1750,7 @@ ClusterResourceSetSpec defines the desired state of ClusterResourceSet.
 |**strategy** `readOnly`|"ApplyOnce"|strategy is the strategy to be used during applying resources. Defaults to ApplyOnce. This field is immutable.|"ApplyOnce"|
 ### AddonsClusterxK8sIoV1alpha3ClusterResourceSetSpecClusterSelector
 
-Label selector for Clusters. The Clusters that are selected by this will be the ones affected by this ClusterResourceSet. It must match the Cluster labels. This field is immutable.
+clusterSelector is the label selector for Clusters. The Clusters that are selected by this will be the ones affected by this ClusterResourceSet. It must match the Cluster labels. This field is immutable.
 
 #### Attributes
 
@@ -2159,7 +1781,7 @@ ResourceRef specifies a resource.
 |**name** `required`|str|name of the resource that is in the same namespace with ClusterResourceSet object.||
 ### AddonsClusterxK8sIoV1alpha3ClusterResourceSetStatus
 
-ClusterResourceSetStatus defines the observed state of ClusterResourceSet.
+status is the observed state of ClusterResourceSet.
 
 #### Attributes
 
@@ -2175,15 +1797,15 @@ Condition defines an observation of a Cluster API resource operational state.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime**|str|Last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
-|**message**|str|A human readable message indicating details about the transition.<br />This field may be empty.||
-|**reason**|str|The reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may not be empty.||
+|**lastTransitionTime**|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
+|**message**|str|message is a human readable message indicating details about the transition.<br />This field may be empty.||
+|**reason**|str|reason is the reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may not be empty.||
 |**severity**|str|severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
 |**status** `required`|str|status of the condition, one of True, False, Unknown.||
 |**type** `required`|str|||
 ### BootstrapClusterxK8sIoV1alpha3KubeadmConfigSpec
 
-KubeadmConfigSpec defines the desired state of KubeadmConfig. Either ClusterConfiguration and InitConfiguration should be defined or the JoinConfiguration should be defined.
+spec is the desired state of KubeadmConfig.
 
 #### Attributes
 
@@ -2606,7 +2228,7 @@ User defines the input for a generated user in cloud-init.
 |**sudo**|str|sudo specifies a sudo role for the user||
 ### BootstrapClusterxK8sIoV1alpha3KubeadmConfigStatus
 
-KubeadmConfigStatus defines the observed state of KubeadmConfig.
+status is the observed state of KubeadmConfig.
 
 #### Attributes
 
@@ -2627,15 +2249,15 @@ Condition defines an observation of a Cluster API resource operational state.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime**|str|Last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
-|**message**|str|A human readable message indicating details about the transition.<br />This field may be empty.||
-|**reason**|str|The reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may not be empty.||
+|**lastTransitionTime**|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
+|**message**|str|message is a human readable message indicating details about the transition.<br />This field may be empty.||
+|**reason**|str|reason is the reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may not be empty.||
 |**severity**|str|severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
 |**status** `required`|str|status of the condition, one of True, False, Unknown.||
 |**type** `required`|str|||
 ### BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpec
 
-KubeadmConfigTemplateSpec defines the desired state of KubeadmConfigTemplate.
+spec is the desired state of KubeadmConfigTemplate.
 
 #### Attributes
 
@@ -2644,7 +2266,7 @@ KubeadmConfigTemplateSpec defines the desired state of KubeadmConfigTemplate.
 |**template** `required`|[BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplate](#bootstrapclusterxk8siov1alpha3kubeadmconfigtemplatespectemplate)|template||
 ### BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplate
 
-KubeadmConfigTemplateResource defines the Template structure.
+template defines the desired state of KubeadmConfigTemplate.
 
 #### Attributes
 
@@ -2653,7 +2275,7 @@ KubeadmConfigTemplateResource defines the Template structure.
 |**spec**|[BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpec](#bootstrapclusterxk8siov1alpha3kubeadmconfigtemplatespectemplatespec)|spec||
 ### BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpec
 
-KubeadmConfigSpec defines the desired state of KubeadmConfig. Either ClusterConfiguration and InitConfiguration should be defined or the JoinConfiguration should be defined.
+spec is the desired state of KubeadmConfig.
 
 #### Attributes
 
@@ -3125,7 +2747,7 @@ ReleaseSeries maps a provider release series (major/minor) with a API Version of
 |**minor**|int|minor version of the release series||
 ### ClusterxK8sIoV1alpha3ClusterSpec
 
-ClusterSpec defines the desired state of Cluster.
+spec is the desired state of Cluster.
 
 #### Attributes
 
@@ -3138,7 +2760,7 @@ ClusterSpec defines the desired state of Cluster.
 |**paused**|bool|paused can be used to prevent controllers from processing the Cluster and all its associated objects.||
 ### ClusterxK8sIoV1alpha3ClusterSpecClusterNetwork
 
-Cluster network configuration.
+clusterNetwork is the cluster network configuration.
 
 #### Attributes
 
@@ -3146,26 +2768,26 @@ Cluster network configuration.
 | --- | --- | --- | --- |
 |**apiServerPort**|int|apiServerPort specifies the port the API Server should bind to.<br />Defaults to 6443.||
 |**pods**|[ClusterxK8sIoV1alpha3ClusterSpecClusterNetworkPods](#clusterxk8siov1alpha3clusterspecclusternetworkpods)|pods||
-|**serviceDomain**|str|Domain name for services.||
+|**serviceDomain**|str|serviceDomain is the domain name for services.||
 |**services**|[ClusterxK8sIoV1alpha3ClusterSpecClusterNetworkServices](#clusterxk8siov1alpha3clusterspecclusternetworkservices)|services||
 ### ClusterxK8sIoV1alpha3ClusterSpecClusterNetworkPods
 
-The network ranges from which Pod networks are allocated.
+pods is the network ranges from which Pod networks are allocated.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**cidrBlocks** `required`|[str]|cidr blocks||
+|**cidrBlocks** `required`|[str]|cidrBlocks is a list of CIDR blocks.||
 ### ClusterxK8sIoV1alpha3ClusterSpecClusterNetworkServices
 
-The network ranges from which service VIPs are allocated.
+services is the network ranges from which service VIPs are allocated.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**cidrBlocks** `required`|[str]|cidr blocks||
+|**cidrBlocks** `required`|[str]|cidrBlocks is a list of CIDR blocks.||
 ### ClusterxK8sIoV1alpha3ClusterSpecControlPlaneEndpoint
 
 controlPlaneEndpoint represents the endpoint used to communicate with the control plane.
@@ -3174,8 +2796,8 @@ controlPlaneEndpoint represents the endpoint used to communicate with the contro
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**host** `required`|str|The hostname on which the API server is serving.||
-|**port** `required`|int|The port on which the API server is serving.||
+|**host** `required`|str|host is the hostname on which the API server is serving.||
+|**port** `required`|int|port is the port on which the API server is serving.||
 ### ClusterxK8sIoV1alpha3ClusterSpecControlPlaneRef
 
 controlPlaneRef is an optional reference to a provider-specific resource that holds the details for provisioning the Control Plane for a Cluster.
@@ -3208,7 +2830,7 @@ infrastructureRef is a reference to a provider-specific resource that holds the 
 |**uid**|str|UID of the referent.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids||
 ### ClusterxK8sIoV1alpha3ClusterStatus
 
-ClusterStatus defines the observed state of Cluster.
+status is the observed state of Cluster.
 
 #### Attributes
 
@@ -3231,9 +2853,9 @@ Condition defines an observation of a Cluster API resource operational state.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime**|str|Last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
-|**message**|str|A human readable message indicating details about the transition.<br />This field may be empty.||
-|**reason**|str|The reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may not be empty.||
+|**lastTransitionTime**|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
+|**message**|str|message is a human readable message indicating details about the transition.<br />This field may be empty.||
+|**reason**|str|reason is the reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may not be empty.||
 |**severity**|str|severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
 |**status** `required`|str|status of the condition, one of True, False, Unknown.||
 |**type** `required`|str|||
@@ -3249,24 +2871,24 @@ FailureDomainSpec is the Schema for Cluster API failure domains. It allows contr
 |**controlPlane**|bool|controlPlane determines if this failure domain is suitable for use by control plane machines.||
 ### ClusterxK8sIoV1alpha3MachineDeploymentSpec
 
-MachineDeploymentSpec defines the desired state of MachineDeployment.
+spec is the desired state of MachineDeployment.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**clusterName** `required`|str|clusterName is the name of the Cluster this object belongs to.||
-|**minReadySeconds**|int|Minimum number of seconds for which a newly created machine should<br />be ready.<br />Defaults to 0 (machine will be considered available as soon as it<br />is ready)||
-|**paused**|bool|Indicates that the deployment is paused.||
-|**progressDeadlineSeconds**|int|The maximum time in seconds for a deployment to make progress before it<br />is considered to be failed. The deployment controller will continue to<br />process failed deployments and a condition with a ProgressDeadlineExceeded<br />reason will be surfaced in the deployment status. Note that progress will<br />not be estimated during the time a deployment is paused. Defaults to 600s.||
-|**replicas**|int|Number of desired machines. Defaults to 1.<br />This is a pointer to distinguish between explicit zero and not specified.||
-|**revisionHistoryLimit**|int|The number of old MachineSets to retain to allow rollback.<br />This is a pointer to distinguish between explicit zero and not specified.<br />Defaults to 1.||
+|**minReadySeconds**|int|minReadySeconds is the minimum number of seconds for which a newly created machine should<br />be ready.<br />Defaults to 0 (machine will be considered available as soon as it<br />is ready)||
+|**paused**|bool|paused indicates that the deployment is paused.||
+|**progressDeadlineSeconds**|int|progressDeadlineSeconds is the maximum time in seconds for a deployment to make progress before it<br />is considered to be failed. The deployment controller will continue to<br />process failed deployments and a condition with a ProgressDeadlineExceeded<br />reason will be surfaced in the deployment status. Note that progress will<br />not be estimated during the time a deployment is paused. Defaults to 600s.||
+|**replicas**|int|replicas is the number of desired machines. Defaults to 1.<br />This is a pointer to distinguish between explicit zero and not specified.||
+|**revisionHistoryLimit**|int|revisionHistoryLimit is the number of old MachineSets to retain to allow rollback.<br />This is a pointer to distinguish between explicit zero and not specified.<br />Defaults to 1.||
 |**selector** `required`|[ClusterxK8sIoV1alpha3MachineDeploymentSpecSelector](#clusterxk8siov1alpha3machinedeploymentspecselector)|selector||
 |**strategy**|[ClusterxK8sIoV1alpha3MachineDeploymentSpecStrategy](#clusterxk8siov1alpha3machinedeploymentspecstrategy)|strategy||
 |**template** `required`|[ClusterxK8sIoV1alpha3MachineDeploymentSpecTemplate](#clusterxk8siov1alpha3machinedeploymentspectemplate)|template||
 ### ClusterxK8sIoV1alpha3MachineDeploymentSpecSelector
 
-Label selector for machines. Existing MachineSets whose machines are selected by this will be the ones affected by this deployment. It must match the machine template's labels.
+selector is the label selector for machines. Existing MachineSets whose machines are selected by this will be the ones affected by this deployment. It must match the machine template's labels.
 
 #### Attributes
 
@@ -3287,7 +2909,7 @@ A label selector requirement is a selector that contains values, a key, and an o
 |**values**|[str]|values is an array of string values. If the operator is In or NotIn,<br />the values array must be non-empty. If the operator is Exists or DoesNotExist,<br />the values array must be empty. This array is replaced during a strategic<br />merge patch.||
 ### ClusterxK8sIoV1alpha3MachineDeploymentSpecStrategy
 
-The deployment strategy to use to replace existing machines with new ones.
+strategy is the deployment strategy to use to replace existing machines with new ones.
 
 #### Attributes
 
@@ -3297,14 +2919,14 @@ The deployment strategy to use to replace existing machines with new ones.
 |**type**|str|||
 ### ClusterxK8sIoV1alpha3MachineDeploymentSpecStrategyRollingUpdate
 
-Rolling update config params. Present only if MachineDeploymentStrategyType = RollingUpdate.
+rollingUpdate is the rolling update config params. Present only if MachineDeploymentStrategyType = RollingUpdate.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**maxSurge**|int | str|The maximum number of machines that can be scheduled above the<br />desired number of machines.<br />Value can be an absolute number (ex: 5) or a percentage of<br />desired machines (ex: 10%).<br />This can not be 0 if MaxUnavailable is 0.<br />Absolute number is calculated from percentage by rounding up.<br />Defaults to 1.<br />Example: when this is set to 30%, the new MachineSet can be scaled<br />up immediately when the rolling update starts, such that the total<br />number of old and new machines do not exceed 130% of desired<br />machines. Once old machines have been killed, new MachineSet can<br />be scaled up further, ensuring that total number of machines running<br />at any time during the update is at most 130% of desired machines.||
-|**maxUnavailable**|int | str|The maximum number of machines that can be unavailable during the update.<br />Value can be an absolute number (ex: 5) or a percentage of desired<br />machines (ex: 10%).<br />Absolute number is calculated from percentage by rounding down.<br />This can not be 0 if MaxSurge is 0.<br />Defaults to 0.<br />Example: when this is set to 30%, the old MachineSet can be scaled<br />down to 70% of desired machines immediately when the rolling update<br />starts. Once new machines are ready, old MachineSet can be scaled<br />down further, followed by scaling up the new MachineSet, ensuring<br />that the total number of machines available at all times<br />during the update is at least 70% of desired machines.||
+|**maxSurge**|int | str|maxSurge is the maximum number of machines that can be scheduled above the<br />desired number of machines.<br />Value can be an absolute number (ex: 5) or a percentage of<br />desired machines (ex: 10%).<br />This can not be 0 if MaxUnavailable is 0.<br />Absolute number is calculated from percentage by rounding up.<br />Defaults to 1.<br />Example: when this is set to 30%, the new MachineSet can be scaled<br />up immediately when the rolling update starts, such that the total<br />number of old and new machines do not exceed 130% of desired<br />machines. Once old machines have been killed, new MachineSet can<br />be scaled up further, ensuring that total number of machines running<br />at any time during the update is at most 130% of desired machines.||
+|**maxUnavailable**|int | str|maxUnavailable is the maximum number of machines that can be unavailable during the update.<br />Value can be an absolute number (ex: 5) or a percentage of desired<br />machines (ex: 10%).<br />Absolute number is calculated from percentage by rounding down.<br />This can not be 0 if MaxSurge is 0.<br />Defaults to 0.<br />Example: when this is set to 30%, the old MachineSet can be scaled<br />down to 70% of desired machines immediately when the rolling update<br />starts. Once new machines are ready, old MachineSet can be scaled<br />down further, followed by scaling up the new MachineSet, ensuring<br />that the total number of machines available at all times<br />during the update is at least 70% of desired machines.||
 ### ClusterxK8sIoV1alpha3MachineDeploymentSpecTemplate
 
 template describes the machines that will be created.
@@ -3317,7 +2939,7 @@ template describes the machines that will be created.
 |**spec**|[ClusterxK8sIoV1alpha3MachineDeploymentSpecTemplateSpec](#clusterxk8siov1alpha3machinedeploymentspectemplatespec)|spec||
 ### ClusterxK8sIoV1alpha3MachineDeploymentSpecTemplateMetadata
 
-Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+metadata is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
 
 #### Attributes
 
@@ -3325,10 +2947,10 @@ Standard object's metadata. More info: https://git.k8s.io/community/contributors
 | --- | --- | --- | --- |
 |**annotations**|{str:str}|annotations is an unstructured key value map stored with a resource that may be<br />set by external tools to store and retrieve arbitrary metadata. They are not<br />queryable and should be preserved when modifying objects.<br />More info: http://kubernetes.io/docs/user-guide/annotations||
 |**generateName**|str|generateName is an optional prefix, used by the server, to generate a unique<br />name ONLY IF the Name field has not been provided.<br />If this field is used, the name returned to the client will be different<br />than the name passed. This value will also be combined with a unique suffix.<br />The provided value has the same validation rules as the Name field,<br />and may be truncated by the length of the suffix required to make the value<br />unique on the server.<br /><br />If this field is specified and the generated name exists, the server will<br />NOT return a 409 - instead, it will either return 201 Created or 500 with Reason<br />ServerTimeout indicating a unique name could not be found in the time allotted, and the client<br />should retry (optionally after the time indicated in the Retry-After header).<br /><br />Applied only if Name is not specified.<br />More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#idempotency<br /><br />Deprecated: This field has no function and is going to be removed in a next release.||
-|**labels**|{str:str}|Map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
+|**labels**|{str:str}|labels is a map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
 |**name**|str|name must be unique within a namespace. Is required when creating resources, although<br />some resources may allow a client to request the generation of an appropriate name<br />automatically. Name is primarily intended for creation idempotence and configuration<br />definition.<br />Cannot be updated.<br />More info: http://kubernetes.io/docs/user-guide/identifiers#names<br /><br />Deprecated: This field has no function and is going to be removed in a next release.||
 |**namespace**|str|namespace defines the space within each name must be unique. An empty namespace is<br />equivalent to the "default" namespace, but "default" is the canonical representation.<br />Not all objects are required to be scoped to a namespace - the value of this field for<br />those objects will be empty.<br /><br />Must be a DNS_LABEL.<br />Cannot be updated.<br />More info: http://kubernetes.io/docs/user-guide/namespaces<br /><br />Deprecated: This field has no function and is going to be removed in a next release.||
-|**ownerReferences**|[[ClusterxK8sIoV1alpha3MachineDeploymentSpecTemplateMetadataOwnerReferencesItems0](#clusterxk8siov1alpha3machinedeploymentspectemplatemetadataownerreferencesitems0)]|List of objects depended by this object. If ALL objects in the list have<br />been deleted, this object will be garbage collected. If this object is managed by a controller,<br />then an entry in this list will point to this controller, with the controller field set to true.<br />There cannot be more than one managing controller.<br /><br />Deprecated: This field has no function and is going to be removed in a next release.||
+|**ownerReferences**|[[ClusterxK8sIoV1alpha3MachineDeploymentSpecTemplateMetadataOwnerReferencesItems0](#clusterxk8siov1alpha3machinedeploymentspectemplatemetadataownerreferencesitems0)]|ownerReferences is the list of objects depended by this object. If ALL objects in the list have<br />been deleted, this object will be garbage collected. If this object is managed by a controller,<br />then an entry in this list will point to this controller, with the controller field set to true.<br />There cannot be more than one managing controller.<br /><br />Deprecated: This field has no function and is going to be removed in a next release.||
 ### ClusterxK8sIoV1alpha3MachineDeploymentSpecTemplateMetadataOwnerReferencesItems0
 
 OwnerReference contains enough information to let you identify an owning object. An owning object must be in the same namespace as the dependent, or be cluster-scoped, so there is no namespace field.
@@ -3345,7 +2967,7 @@ OwnerReference contains enough information to let you identify an owning object.
 |**uid** `required`|str|UID of the referent.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids||
 ### ClusterxK8sIoV1alpha3MachineDeploymentSpecTemplateSpec
 
-Specification of the desired behavior of the machine. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+spec is the specification of the desired behavior of the machine. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
 
 #### Attributes
 
@@ -3401,31 +3023,31 @@ infrastructureRef is a required reference to a custom resource offered by an inf
 |**uid**|str|UID of the referent.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids||
 ### ClusterxK8sIoV1alpha3MachineDeploymentStatus
 
-MachineDeploymentStatus defines the observed state of MachineDeployment.
+status is the observed state of MachineDeployment.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**availableReplicas**|int|Total number of available machines (ready for at least minReadySeconds)<br />targeted by this deployment.||
-|**observedGeneration**|int|The generation observed by the deployment controller.||
+|**availableReplicas**|int|availableReplicas is the total number of available machines (ready for at least minReadySeconds)<br />targeted by this deployment.||
+|**observedGeneration**|int|observedGeneration is the generation observed by the deployment controller.||
 |**phase**|str|phase represents the current phase of a MachineDeployment (ScalingUp, ScalingDown, Running, Failed, or Unknown).||
-|**readyReplicas**|int|Total number of ready machines targeted by this deployment.||
-|**replicas**|int|Total number of non-terminated machines targeted by this deployment<br />(their labels match the selector).||
+|**readyReplicas**|int|readyReplicas is the total number of ready machines targeted by this deployment.||
+|**replicas**|int|replicas is the total number of non-terminated machines targeted by this deployment<br />(their labels match the selector).||
 |**selector**|str|selector is the same as the label selector but in the string format to avoid introspection<br />by clients. The string will be in the same format as the query-param syntax.<br />More info about label selectors: http://kubernetes.io/docs/user-guide/labels#label-selectors||
-|**unavailableReplicas**|int|Total number of unavailable machines targeted by this deployment.<br />This is the total number of machines that are still required for<br />the deployment to have 100% available capacity. They may either<br />be machines that are running but not yet available or machines<br />that still have not been created.||
-|**updatedReplicas**|int|Total number of non-terminated machines targeted by this deployment<br />that have the desired template spec.||
+|**unavailableReplicas**|int|unavailableReplicas is the total number of unavailable machines targeted by this deployment.<br />This is the total number of machines that are still required for<br />the deployment to have 100% available capacity. They may either<br />be machines that are running but not yet available or machines<br />that still have not been created.||
+|**updatedReplicas**|int|updatedReplicas is the total number of non-terminated machines targeted by this deployment<br />that have the desired template spec.||
 ### ClusterxK8sIoV1alpha3MachineHealthCheckSpec
 
-Specification of machine health check policy
+spec is the specification of machine health check policy
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**clusterName** `required`|str|clusterName is the name of the Cluster this object belongs to.||
-|**maxUnhealthy**|int | str|Any further remediation is only allowed if at most "MaxUnhealthy" machines selected by<br />"selector" are not healthy.||
-|**nodeStartupTimeout**|str|Machines older than this duration without a node will be considered to have<br />failed and will be remediated.||
+|**maxUnhealthy**|int | str|maxUnhealthy specifies the maximum number of unhealthy machines allowed.<br />Any further remediation is only allowed if at most "maxUnhealthy" machines selected by<br />"selector" are not healthy.||
+|**nodeStartupTimeout**|str|nodeStartupTimeout is the duration after which machines without a node will be considered to<br />have failed and will be remediated.||
 |**remediationTemplate**|[ClusterxK8sIoV1alpha3MachineHealthCheckSpecRemediationTemplate](#clusterxk8siov1alpha3machinehealthcheckspecremediationtemplate)|remediation template||
 |**selector** `required`|[ClusterxK8sIoV1alpha3MachineHealthCheckSpecSelector](#clusterxk8siov1alpha3machinehealthcheckspecselector)|selector||
 |**unhealthyConditions** `required`|[[ClusterxK8sIoV1alpha3MachineHealthCheckSpecUnhealthyConditionsItems0](#clusterxk8siov1alpha3machinehealthcheckspecunhealthyconditionsitems0)]|unhealthyConditions contains a list of the conditions that determine<br />whether a node is considered unhealthy.  The conditions are combined in a<br />logical OR, i.e. if any of the conditions is met, the node is unhealthy.||
@@ -3446,7 +3068,7 @@ remediationTemplate is a reference to a remediation template provided by an infr
 |**uid**|str|UID of the referent.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids||
 ### ClusterxK8sIoV1alpha3MachineHealthCheckSpecSelector
 
-Label selector to match machines whose health will be exercised
+selector is the label selector to match machines whose health will be exercised
 
 #### Attributes
 
@@ -3473,20 +3095,20 @@ UnhealthyCondition represents a Node condition type and value with a timeout spe
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**status** `required`|str|status||
-|**timeout** `required`|str|timeout||
+|**status** `required`|str|status of the condition, one of True, False, Unknown.||
+|**timeout** `required`|str|timeout is the duration that a node must be in a given status for,<br />after which the node is considered unhealthy.<br />For example, with a value of "1h", the node must match the status<br />for at least 1 hour before being considered unhealthy.||
 |**type** `required`|str|||
 ### ClusterxK8sIoV1alpha3MachineHealthCheckStatus
 
-Most recently observed status of MachineHealthCheck resource
+status is the most recently observed status of MachineHealthCheck resource
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**conditions**|[[ClusterxK8sIoV1alpha3MachineHealthCheckStatusConditionsItems0](#clusterxk8siov1alpha3machinehealthcheckstatusconditionsitems0)]|conditions defines current service state of the MachineHealthCheck.||
-|**currentHealthy**|int|total number of healthy machines counted by this machine health check||
-|**expectedMachines**|int|total number of machines counted by this machine health check||
+|**currentHealthy**|int|currentHealthy is the total number of healthy machines counted by this machine health check||
+|**expectedMachines**|int|expectedMachines is the total number of machines counted by this machine health check||
 |**observedGeneration**|int|observedGeneration is the latest generation observed by the controller.||
 |**remediationsAllowed**|int|remediationsAllowed is the number of further remediations allowed by this machine health check before<br />maxUnhealthy short circuiting will be applied||
 |**targets**|[str]|targets shows the current list of machines the machine health check is watching||
@@ -3498,15 +3120,15 @@ Condition defines an observation of a Cluster API resource operational state.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime**|str|Last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
-|**message**|str|A human readable message indicating details about the transition.<br />This field may be empty.||
-|**reason**|str|The reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may not be empty.||
+|**lastTransitionTime**|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
+|**message**|str|message is a human readable message indicating details about the transition.<br />This field may be empty.||
+|**reason**|str|reason is the reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may not be empty.||
 |**severity**|str|severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
 |**status** `required`|str|status of the condition, one of True, False, Unknown.||
 |**type** `required`|str|||
 ### ClusterxK8sIoV1alpha3MachinePoolSpec
 
-MachinePoolSpec defines the desired state of MachinePool.
+spec is the desired state of MachinePool.
 
 #### Attributes
 
@@ -3514,14 +3136,14 @@ MachinePoolSpec defines the desired state of MachinePool.
 | --- | --- | --- | --- |
 |**clusterName** `required`|str|clusterName is the name of the Cluster this object belongs to.||
 |**failureDomains**|[str]|failureDomains is the list of failure domains this MachinePool should be attached to.||
-|**minReadySeconds**|int|Minimum number of seconds for which a newly created machine instances should<br />be ready.<br />Defaults to 0 (machine instance will be considered available as soon as it<br />is ready)||
+|**minReadySeconds**|int|minReadySeconds is the minimum number of seconds for which a newly created machine instances should<br />be ready.<br />Defaults to 0 (machine instance will be considered available as soon as it<br />is ready)||
 |**providerIDList**|[str]|providerIDList are the identification IDs of machine instances provided by the provider.<br />This field must match the provider IDs as seen on the node objects corresponding to a machine pool's machine instances.||
-|**replicas**|int|Number of desired machines. Defaults to 1.<br />This is a pointer to distinguish between explicit zero and not specified.||
+|**replicas**|int|replicas is the number of desired machines. Defaults to 1.<br />This is a pointer to distinguish between explicit zero and not specified.||
 |**strategy**|[ClusterxK8sIoV1alpha3MachinePoolSpecStrategy](#clusterxk8siov1alpha3machinepoolspecstrategy)|strategy||
 |**template** `required`|[ClusterxK8sIoV1alpha3MachinePoolSpecTemplate](#clusterxk8siov1alpha3machinepoolspectemplate)|template||
 ### ClusterxK8sIoV1alpha3MachinePoolSpecStrategy
 
-The deployment strategy to use to replace existing machine instances with new ones.
+strategy is the deployment strategy to use to replace existing machine instances with new ones.
 
 #### Attributes
 
@@ -3531,14 +3153,14 @@ The deployment strategy to use to replace existing machine instances with new on
 |**type**|str|||
 ### ClusterxK8sIoV1alpha3MachinePoolSpecStrategyRollingUpdate
 
-Rolling update config params. Present only if MachineDeploymentStrategyType = RollingUpdate.
+rollingUpdate is the rolling update config params. Present only if MachineDeploymentStrategyType = RollingUpdate.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**maxSurge**|int | str|The maximum number of machines that can be scheduled above the<br />desired number of machines.<br />Value can be an absolute number (ex: 5) or a percentage of<br />desired machines (ex: 10%).<br />This can not be 0 if MaxUnavailable is 0.<br />Absolute number is calculated from percentage by rounding up.<br />Defaults to 1.<br />Example: when this is set to 30%, the new MachineSet can be scaled<br />up immediately when the rolling update starts, such that the total<br />number of old and new machines do not exceed 130% of desired<br />machines. Once old machines have been killed, new MachineSet can<br />be scaled up further, ensuring that total number of machines running<br />at any time during the update is at most 130% of desired machines.||
-|**maxUnavailable**|int | str|The maximum number of machines that can be unavailable during the update.<br />Value can be an absolute number (ex: 5) or a percentage of desired<br />machines (ex: 10%).<br />Absolute number is calculated from percentage by rounding down.<br />This can not be 0 if MaxSurge is 0.<br />Defaults to 0.<br />Example: when this is set to 30%, the old MachineSet can be scaled<br />down to 70% of desired machines immediately when the rolling update<br />starts. Once new machines are ready, old MachineSet can be scaled<br />down further, followed by scaling up the new MachineSet, ensuring<br />that the total number of machines available at all times<br />during the update is at least 70% of desired machines.||
+|**maxSurge**|int | str|maxSurge is the maximum number of machines that can be scheduled above the<br />desired number of machines.<br />Value can be an absolute number (ex: 5) or a percentage of<br />desired machines (ex: 10%).<br />This can not be 0 if MaxUnavailable is 0.<br />Absolute number is calculated from percentage by rounding up.<br />Defaults to 1.<br />Example: when this is set to 30%, the new MachineSet can be scaled<br />up immediately when the rolling update starts, such that the total<br />number of old and new machines do not exceed 130% of desired<br />machines. Once old machines have been killed, new MachineSet can<br />be scaled up further, ensuring that total number of machines running<br />at any time during the update is at most 130% of desired machines.||
+|**maxUnavailable**|int | str|maxUnavailable is the maximum number of machines that can be unavailable during the update.<br />Value can be an absolute number (ex: 5) or a percentage of desired<br />machines (ex: 10%).<br />Absolute number is calculated from percentage by rounding down.<br />This can not be 0 if MaxSurge is 0.<br />Defaults to 0.<br />Example: when this is set to 30%, the old MachineSet can be scaled<br />down to 70% of desired machines immediately when the rolling update<br />starts. Once new machines are ready, old MachineSet can be scaled<br />down further, followed by scaling up the new MachineSet, ensuring<br />that the total number of machines available at all times<br />during the update is at least 70% of desired machines.||
 ### ClusterxK8sIoV1alpha3MachinePoolSpecTemplate
 
 template describes the machines that will be created.
@@ -3551,7 +3173,7 @@ template describes the machines that will be created.
 |**spec**|[ClusterxK8sIoV1alpha3MachinePoolSpecTemplateSpec](#clusterxk8siov1alpha3machinepoolspectemplatespec)|spec||
 ### ClusterxK8sIoV1alpha3MachinePoolSpecTemplateMetadata
 
-Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+metadata is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
 
 #### Attributes
 
@@ -3559,10 +3181,10 @@ Standard object's metadata. More info: https://git.k8s.io/community/contributors
 | --- | --- | --- | --- |
 |**annotations**|{str:str}|annotations is an unstructured key value map stored with a resource that may be<br />set by external tools to store and retrieve arbitrary metadata. They are not<br />queryable and should be preserved when modifying objects.<br />More info: http://kubernetes.io/docs/user-guide/annotations||
 |**generateName**|str|generateName is an optional prefix, used by the server, to generate a unique<br />name ONLY IF the Name field has not been provided.<br />If this field is used, the name returned to the client will be different<br />than the name passed. This value will also be combined with a unique suffix.<br />The provided value has the same validation rules as the Name field,<br />and may be truncated by the length of the suffix required to make the value<br />unique on the server.<br /><br />If this field is specified and the generated name exists, the server will<br />NOT return a 409 - instead, it will either return 201 Created or 500 with Reason<br />ServerTimeout indicating a unique name could not be found in the time allotted, and the client<br />should retry (optionally after the time indicated in the Retry-After header).<br /><br />Applied only if Name is not specified.<br />More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#idempotency<br /><br />Deprecated: This field has no function and is going to be removed in a next release.||
-|**labels**|{str:str}|Map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
+|**labels**|{str:str}|labels is a map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
 |**name**|str|name must be unique within a namespace. Is required when creating resources, although<br />some resources may allow a client to request the generation of an appropriate name<br />automatically. Name is primarily intended for creation idempotence and configuration<br />definition.<br />Cannot be updated.<br />More info: http://kubernetes.io/docs/user-guide/identifiers#names<br /><br />Deprecated: This field has no function and is going to be removed in a next release.||
 |**namespace**|str|namespace defines the space within each name must be unique. An empty namespace is<br />equivalent to the "default" namespace, but "default" is the canonical representation.<br />Not all objects are required to be scoped to a namespace - the value of this field for<br />those objects will be empty.<br /><br />Must be a DNS_LABEL.<br />Cannot be updated.<br />More info: http://kubernetes.io/docs/user-guide/namespaces<br /><br />Deprecated: This field has no function and is going to be removed in a next release.||
-|**ownerReferences**|[[ClusterxK8sIoV1alpha3MachinePoolSpecTemplateMetadataOwnerReferencesItems0](#clusterxk8siov1alpha3machinepoolspectemplatemetadataownerreferencesitems0)]|List of objects depended by this object. If ALL objects in the list have<br />been deleted, this object will be garbage collected. If this object is managed by a controller,<br />then an entry in this list will point to this controller, with the controller field set to true.<br />There cannot be more than one managing controller.<br /><br />Deprecated: This field has no function and is going to be removed in a next release.||
+|**ownerReferences**|[[ClusterxK8sIoV1alpha3MachinePoolSpecTemplateMetadataOwnerReferencesItems0](#clusterxk8siov1alpha3machinepoolspectemplatemetadataownerreferencesitems0)]|ownerReferences is the list of objects depended by this object. If ALL objects in the list have<br />been deleted, this object will be garbage collected. If this object is managed by a controller,<br />then an entry in this list will point to this controller, with the controller field set to true.<br />There cannot be more than one managing controller.<br /><br />Deprecated: This field has no function and is going to be removed in a next release.||
 ### ClusterxK8sIoV1alpha3MachinePoolSpecTemplateMetadataOwnerReferencesItems0
 
 OwnerReference contains enough information to let you identify an owning object. An owning object must be in the same namespace as the dependent, or be cluster-scoped, so there is no namespace field.
@@ -3579,7 +3201,7 @@ OwnerReference contains enough information to let you identify an owning object.
 |**uid** `required`|str|UID of the referent.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids||
 ### ClusterxK8sIoV1alpha3MachinePoolSpecTemplateSpec
 
-Specification of the desired behavior of the machine. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+spec is the specification of the desired behavior of the machine. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
 
 #### Attributes
 
@@ -3635,13 +3257,13 @@ infrastructureRef is a required reference to a custom resource offered by an inf
 |**uid**|str|UID of the referent.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids||
 ### ClusterxK8sIoV1alpha3MachinePoolStatus
 
-MachinePoolStatus defines the observed state of MachinePool.
+status is the observed state of MachinePool.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**availableReplicas**|int|The number of available replicas (ready for at least minReadySeconds) for this MachinePool.||
+|**availableReplicas**|int|availableReplicas is the number of available replicas (ready for at least minReadySeconds) for this MachinePool.||
 |**bootstrapReady**|bool|bootstrapReady is the state of the bootstrap provider.||
 |**conditions**|[[ClusterxK8sIoV1alpha3MachinePoolStatusConditionsItems0](#clusterxk8siov1alpha3machinepoolstatusconditionsitems0)]|conditions define the current service state of the MachinePool.||
 |**failureMessage**|str|failureMessage indicates that there is a problem reconciling the state,<br />and will be set to a descriptive error message.||
@@ -3650,9 +3272,9 @@ MachinePoolStatus defines the observed state of MachinePool.
 |**nodeRefs**|[[ClusterxK8sIoV1alpha3MachinePoolStatusNodeRefsItems0](#clusterxk8siov1alpha3machinepoolstatusnoderefsitems0)]|nodeRefs will point to the corresponding Nodes if it they exist.||
 |**observedGeneration**|int|observedGeneration is the latest generation observed by the controller.||
 |**phase**|str|phase represents the current phase of cluster actuation.<br />E.g. Pending, Running, Terminating, Failed etc.||
-|**readyReplicas**|int|The number of ready replicas for this MachinePool. A machine is considered ready when the node has been created and is "Ready".||
+|**readyReplicas**|int|readyReplicas is the number of ready replicas for this MachinePool. A machine is considered ready when the node has been created and is "Ready".||
 |**replicas**|int|replicas is the most recently observed number of replicas.||
-|**unavailableReplicas**|int|Total number of unavailable machine instances targeted by this machine pool.<br />This is the total number of machine instances that are still required for<br />the machine pool to have 100% available capacity. They may either<br />be machine instances that are running but not yet available or machine instances<br />that still have not been created.||
+|**unavailableReplicas**|int|unavailableReplicas is the total number of unavailable machine instances targeted by this machine pool.<br />This is the total number of machine instances that are still required for<br />the machine pool to have 100% available capacity. They may either<br />be machine instances that are running but not yet available or machine instances<br />that still have not been created.||
 ### ClusterxK8sIoV1alpha3MachinePoolStatusConditionsItems0
 
 Condition defines an observation of a Cluster API resource operational state.
@@ -3661,9 +3283,9 @@ Condition defines an observation of a Cluster API resource operational state.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime**|str|Last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
-|**message**|str|A human readable message indicating details about the transition.<br />This field may be empty.||
-|**reason**|str|The reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may not be empty.||
+|**lastTransitionTime**|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
+|**message**|str|message is a human readable message indicating details about the transition.<br />This field may be empty.||
+|**reason**|str|reason is the reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may not be empty.||
 |**severity**|str|severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
 |**status** `required`|str|status of the condition, one of True, False, Unknown.||
 |**type** `required`|str|||
@@ -3684,7 +3306,7 @@ ObjectReference contains enough information to let you inspect or modify the ref
 |**uid**|str|UID of the referent.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids||
 ### ClusterxK8sIoV1alpha3MachineSetSpec
 
-MachineSetSpec defines the desired state of MachineSet.
+spec is the desired state of MachineSet.
 
 #### Attributes
 
@@ -3729,7 +3351,7 @@ template is the object that describes the machine that will be created if insuff
 |**spec**|[ClusterxK8sIoV1alpha3MachineSetSpecTemplateSpec](#clusterxk8siov1alpha3machinesetspectemplatespec)|spec||
 ### ClusterxK8sIoV1alpha3MachineSetSpecTemplateMetadata
 
-Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+metadata is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
 
 #### Attributes
 
@@ -3737,10 +3359,10 @@ Standard object's metadata. More info: https://git.k8s.io/community/contributors
 | --- | --- | --- | --- |
 |**annotations**|{str:str}|annotations is an unstructured key value map stored with a resource that may be<br />set by external tools to store and retrieve arbitrary metadata. They are not<br />queryable and should be preserved when modifying objects.<br />More info: http://kubernetes.io/docs/user-guide/annotations||
 |**generateName**|str|generateName is an optional prefix, used by the server, to generate a unique<br />name ONLY IF the Name field has not been provided.<br />If this field is used, the name returned to the client will be different<br />than the name passed. This value will also be combined with a unique suffix.<br />The provided value has the same validation rules as the Name field,<br />and may be truncated by the length of the suffix required to make the value<br />unique on the server.<br /><br />If this field is specified and the generated name exists, the server will<br />NOT return a 409 - instead, it will either return 201 Created or 500 with Reason<br />ServerTimeout indicating a unique name could not be found in the time allotted, and the client<br />should retry (optionally after the time indicated in the Retry-After header).<br /><br />Applied only if Name is not specified.<br />More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#idempotency<br /><br />Deprecated: This field has no function and is going to be removed in a next release.||
-|**labels**|{str:str}|Map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
+|**labels**|{str:str}|labels is a map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
 |**name**|str|name must be unique within a namespace. Is required when creating resources, although<br />some resources may allow a client to request the generation of an appropriate name<br />automatically. Name is primarily intended for creation idempotence and configuration<br />definition.<br />Cannot be updated.<br />More info: http://kubernetes.io/docs/user-guide/identifiers#names<br /><br />Deprecated: This field has no function and is going to be removed in a next release.||
 |**namespace**|str|namespace defines the space within each name must be unique. An empty namespace is<br />equivalent to the "default" namespace, but "default" is the canonical representation.<br />Not all objects are required to be scoped to a namespace - the value of this field for<br />those objects will be empty.<br /><br />Must be a DNS_LABEL.<br />Cannot be updated.<br />More info: http://kubernetes.io/docs/user-guide/namespaces<br /><br />Deprecated: This field has no function and is going to be removed in a next release.||
-|**ownerReferences**|[[ClusterxK8sIoV1alpha3MachineSetSpecTemplateMetadataOwnerReferencesItems0](#clusterxk8siov1alpha3machinesetspectemplatemetadataownerreferencesitems0)]|List of objects depended by this object. If ALL objects in the list have<br />been deleted, this object will be garbage collected. If this object is managed by a controller,<br />then an entry in this list will point to this controller, with the controller field set to true.<br />There cannot be more than one managing controller.<br /><br />Deprecated: This field has no function and is going to be removed in a next release.||
+|**ownerReferences**|[[ClusterxK8sIoV1alpha3MachineSetSpecTemplateMetadataOwnerReferencesItems0](#clusterxk8siov1alpha3machinesetspectemplatemetadataownerreferencesitems0)]|ownerReferences is the list of objects depended by this object. If ALL objects in the list have<br />been deleted, this object will be garbage collected. If this object is managed by a controller,<br />then an entry in this list will point to this controller, with the controller field set to true.<br />There cannot be more than one managing controller.<br /><br />Deprecated: This field has no function and is going to be removed in a next release.||
 ### ClusterxK8sIoV1alpha3MachineSetSpecTemplateMetadataOwnerReferencesItems0
 
 OwnerReference contains enough information to let you identify an owning object. An owning object must be in the same namespace as the dependent, or be cluster-scoped, so there is no namespace field.
@@ -3757,7 +3379,7 @@ OwnerReference contains enough information to let you identify an owning object.
 |**uid** `required`|str|UID of the referent.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids||
 ### ClusterxK8sIoV1alpha3MachineSetSpecTemplateSpec
 
-Specification of the desired behavior of the machine. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+spec is the specification of the desired behavior of the machine. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
 
 #### Attributes
 
@@ -3813,23 +3435,23 @@ infrastructureRef is a required reference to a custom resource offered by an inf
 |**uid**|str|UID of the referent.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids||
 ### ClusterxK8sIoV1alpha3MachineSetStatus
 
-MachineSetStatus defines the observed state of MachineSet.
+status is the observed state of MachineSet.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**availableReplicas**|int|The number of available replicas (ready for at least minReadySeconds) for this MachineSet.||
-|**failureMessage**|str|failure message||
-|**failureReason**|str|In the event that there is a terminal problem reconciling the<br />replicas, both FailureReason and FailureMessage will be set. FailureReason<br />will be populated with a succinct value suitable for machine<br />interpretation, while FailureMessage will contain a more verbose<br />string suitable for logging and human consumption.<br /><br />These fields should not be set for transitive errors that a<br />controller faces that are expected to be fixed automatically over<br />time (like service outages), but instead indicate that something is<br />fundamentally wrong with the MachineTemplate's spec or the configuration of<br />the machine controller, and that manual intervention is required. Examples<br />of terminal errors would be invalid combinations of settings in the<br />spec, values that are unsupported by the machine controller, or the<br />responsible machine controller itself being critically misconfigured.<br /><br />Any transient errors that occur during the reconciliation of Machines<br />can be added as events to the MachineSet object and/or logged in the<br />controller's output.||
-|**fullyLabeledReplicas**|int|The number of replicas that have labels matching the labels of the machine template of the MachineSet.||
+|**availableReplicas**|int|availableReplicas is the number of available replicas (ready for at least minReadySeconds) for this MachineSet.||
+|**failureMessage**|str|failureMessage will be set in the event that there is a terminal problem<br />reconciling the Machine and will contain a more verbose string suitable<br />for logging and human consumption.||
+|**failureReason**|str|failureReason will be set in the event that there is a terminal problem<br />reconciling the Machine and will contain a succinct value suitable<br />for machine interpretation.<br /><br />In the event that there is a terminal problem reconciling the<br />replicas, both FailureReason and FailureMessage will be set. FailureReason<br />will be populated with a succinct value suitable for machine<br />interpretation, while FailureMessage will contain a more verbose<br />string suitable for logging and human consumption.<br /><br />These fields should not be set for transitive errors that a<br />controller faces that are expected to be fixed automatically over<br />time (like service outages), but instead indicate that something is<br />fundamentally wrong with the MachineTemplate's spec or the configuration of<br />the machine controller, and that manual intervention is required. Examples<br />of terminal errors would be invalid combinations of settings in the<br />spec, values that are unsupported by the machine controller, or the<br />responsible machine controller itself being critically misconfigured.<br /><br />Any transient errors that occur during the reconciliation of Machines<br />can be added as events to the MachineSet object and/or logged in the<br />controller's output.||
+|**fullyLabeledReplicas**|int|fullyLabeledReplicas is the number of replicas that have labels matching the labels of the machine template of the MachineSet.||
 |**observedGeneration**|int|observedGeneration reflects the generation of the most recently observed MachineSet.||
-|**readyReplicas**|int|The number of ready replicas for this MachineSet. A machine is considered ready when the node has been created and is "Ready".||
+|**readyReplicas**|int|readyReplicas is the number of ready replicas for this MachineSet. A machine is considered ready when the node has been created and is "Ready".||
 |**replicas**|int|replicas is the most recently observed number of replicas.||
 |**selector**|str|selector is the same as the label selector but in the string format to avoid introspection<br />by clients. The string will be in the same format as the query-param syntax.<br />More info about label selectors: http://kubernetes.io/docs/user-guide/labels#label-selectors||
 ### ClusterxK8sIoV1alpha3MachineSpec
 
-MachineSpec defines the desired state of Machine.
+spec is the desired state of Machine.
 
 #### Attributes
 
@@ -3885,7 +3507,7 @@ infrastructureRef is a required reference to a custom resource offered by an inf
 |**uid**|str|UID of the referent.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids||
 ### ClusterxK8sIoV1alpha3MachineStatus
 
-MachineStatus defines the observed state of Machine.
+status is the observed state of Machine.
 
 #### Attributes
 
@@ -3910,7 +3532,7 @@ MachineAddress contains information for the node's address.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**address** `required`|str|The machine address.||
+|**address** `required`|str|address is the machine address.||
 |**type** `required`|str|||
 ### ClusterxK8sIoV1alpha3MachineStatusConditionsItems0
 
@@ -3920,9 +3542,9 @@ Condition defines an observation of a Cluster API resource operational state.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime**|str|Last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
-|**message**|str|A human readable message indicating details about the transition.<br />This field may be empty.||
-|**reason**|str|The reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may not be empty.||
+|**lastTransitionTime**|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
+|**message**|str|message is a human readable message indicating details about the transition.<br />This field may be empty.||
+|**reason**|str|reason is the reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may not be empty.||
 |**severity**|str|severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
 |**status** `required`|str|status of the condition, one of True, False, Unknown.||
 |**type** `required`|str|||
@@ -3943,7 +3565,7 @@ nodeRef will point to the corresponding Node if it exists.
 |**uid**|str|UID of the referent.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids||
 ### ControlplaneClusterxK8sIoV1alpha3KubeadmControlPlaneSpec
 
-KubeadmControlPlaneSpec defines the desired state of KubeadmControlPlane.
+spec is the desired state of KubeadmControlPlane.
 
 #### Attributes
 
@@ -3952,7 +3574,7 @@ KubeadmControlPlaneSpec defines the desired state of KubeadmControlPlane.
 |**infrastructureTemplate** `required`|[ControlplaneClusterxK8sIoV1alpha3KubeadmControlPlaneSpecInfrastructureTemplate](#controlplaneclusterxk8siov1alpha3kubeadmcontrolplanespecinfrastructuretemplate)|infrastructure template||
 |**kubeadmConfigSpec** `required`|[ControlplaneClusterxK8sIoV1alpha3KubeadmControlPlaneSpecKubeadmConfigSpec](#controlplaneclusterxk8siov1alpha3kubeadmcontrolplanespeckubeadmconfigspec)|kubeadm config spec||
 |**nodeDrainTimeout**|str|nodeDrainTimeout is the total amount of time that the controller will spend on draining a controlplane node<br />The default value is 0, meaning that the node can be drained without any time limitations.<br />NOTE: NodeDrainTimeout is different from `kubectl drain --timeout`||
-|**replicas**|int|Number of desired machines. Defaults to 1. When stacked etcd is used only<br />odd numbers are permitted, as per [etcd best practice](https://etcd.io/docs/v3.3.12/faq/#why-an-odd-number-of-cluster-members).<br />This is a pointer to distinguish between explicit zero and not specified.||
+|**replicas**|int|replicas is the number of desired machines. Defaults to 1. When stacked etcd is used only<br />odd numbers are permitted, as per [etcd best practice](https://etcd.io/docs/v3.3.12/faq/#why-an-odd-number-of-cluster-members).<br />This is a pointer to distinguish between explicit zero and not specified.||
 |**rolloutStrategy**|[ControlplaneClusterxK8sIoV1alpha3KubeadmControlPlaneSpecRolloutStrategy](#controlplaneclusterxk8siov1alpha3kubeadmcontrolplanespecrolloutstrategy)|rollout strategy||
 |**upgradeAfter**|str|upgradeAfter is a field to indicate an upgrade should be performed<br />after the specified time even if no changes have been made to the<br />KubeadmControlPlane||
 |**version** `required`|str|version defines the desired Kubernetes version.||
@@ -4396,7 +4018,7 @@ User defines the input for a generated user in cloud-init.
 |**sudo**|str|sudo specifies a sudo role for the user||
 ### ControlplaneClusterxK8sIoV1alpha3KubeadmControlPlaneSpecRolloutStrategy
 
-The RolloutStrategy to use to replace control plane machines with new ones.
+rolloutStrategy is the RolloutStrategy to use to replace control plane machines with new ones.
 
 #### Attributes
 
@@ -4406,32 +4028,32 @@ The RolloutStrategy to use to replace control plane machines with new ones.
 |**type**|str|||
 ### ControlplaneClusterxK8sIoV1alpha3KubeadmControlPlaneSpecRolloutStrategyRollingUpdate
 
-Rolling update config params. Present only if RolloutStrategyType = RollingUpdate.
+rollingUpdate is the rolling update config params. Present only if RolloutStrategyType = RollingUpdate.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**maxSurge**|int | str|The maximum number of control planes that can be scheduled above or under the<br />desired number of control planes.<br />Value can be an absolute number 1 or 0.<br />Defaults to 1.<br />Example: when this is set to 1, the control plane can be scaled<br />up immediately when the rolling update starts.||
+|**maxSurge**|int | str|maxSurge is the maximum number of control planes that can be scheduled above or under the<br />desired number of control planes.<br />Value can be an absolute number 1 or 0.<br />Defaults to 1.<br />Example: when this is set to 1, the control plane can be scaled<br />up immediately when the rolling update starts.||
 ### ControlplaneClusterxK8sIoV1alpha3KubeadmControlPlaneStatus
 
-KubeadmControlPlaneStatus defines the observed state of KubeadmControlPlane.
+status is the observed state of KubeadmControlPlane.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**conditions**|[[ControlplaneClusterxK8sIoV1alpha3KubeadmControlPlaneStatusConditionsItems0](#controlplaneclusterxk8siov1alpha3kubeadmcontrolplanestatusconditionsitems0)]|conditions defines current service state of the KubeadmControlPlane.||
-|**failureMessage**|str|ErrorMessage indicates that there is a terminal problem reconciling the<br />state, and will be set to a descriptive error message.||
+|**failureMessage**|str|failureMessage indicates that there is a terminal problem reconciling the<br />state, and will be set to a descriptive error message.||
 |**failureReason**|str|failureReason indicates that there is a terminal problem reconciling the<br />state, and will be set to a token value suitable for<br />programmatic interpretation.||
 |**initialized**|bool|initialized denotes whether or not the control plane has the<br />uploaded kubeadm-config configmap.||
 |**observedGeneration**|int|observedGeneration is the latest generation observed by the controller.||
 |**ready**|bool|ready denotes that the KubeadmControlPlane API Server is ready to<br />receive requests.||
-|**readyReplicas**|int|Total number of fully running and ready control plane machines.||
-|**replicas**|int|Total number of non-terminated machines targeted by this control plane<br />(their labels match the selector).||
+|**readyReplicas**|int|readyReplicas is the total number of fully running and ready control plane machines.||
+|**replicas**|int|replicas is the total number of non-terminated machines targeted by this control plane<br />(their labels match the selector).||
 |**selector**|str|selector is the label selector in string format to avoid introspection<br />by clients, and is used to provide the CRD-based integration for the<br />scale subresource and additional integrations for things like kubectl<br />describe.. The string will be in the same format as the query-param syntax.<br />More info about label selectors: http://kubernetes.io/docs/user-guide/labels#label-selectors||
-|**unavailableReplicas**|int|Total number of unavailable machines targeted by this control plane.<br />This is the total number of machines that are still required for<br />the deployment to have 100% available capacity. They may either<br />be machines that are running but not yet ready or machines<br />that still have not been created.||
-|**updatedReplicas**|int|Total number of non-terminated machines targeted by this control plane<br />that have the desired template spec.||
+|**unavailableReplicas**|int|unavailableReplicas is the total number of unavailable machines targeted by this control plane.<br />This is the total number of machines that are still required for<br />the deployment to have 100% available capacity. They may either<br />be machines that are running but not yet ready or machines<br />that still have not been created.||
+|**updatedReplicas**|int|updatedReplicas is the total number of non-terminated machines targeted by this control plane<br />that have the desired template spec.||
 ### ControlplaneClusterxK8sIoV1alpha3KubeadmControlPlaneStatusConditionsItems0
 
 Condition defines an observation of a Cluster API resource operational state.
@@ -4440,9 +4062,9 @@ Condition defines an observation of a Cluster API resource operational state.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime**|str|Last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
-|**message**|str|A human readable message indicating details about the transition.<br />This field may be empty.||
-|**reason**|str|The reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may not be empty.||
+|**lastTransitionTime**|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
+|**message**|str|message is a human readable message indicating details about the transition.<br />This field may be empty.||
+|**reason**|str|reason is the reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may not be empty.||
 |**severity**|str|severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
 |**status** `required`|str|status of the condition, one of True, False, Unknown.||
 |**type** `required`|str|||
@@ -4546,9 +4168,9 @@ Condition defines an observation of a Cluster API resource operational state.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime**|str|Last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
-|**message**|str|A human readable message indicating details about the transition.<br />This field may be empty.||
-|**reason**|str|The reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may not be empty.||
+|**lastTransitionTime**|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
+|**message**|str|message is a human readable message indicating details about the transition.<br />This field may be empty.||
+|**reason**|str|reason is the reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may not be empty.||
 |**severity**|str|severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
 |**status** `required`|str|status of the condition, one of True, False, Unknown.||
 |**type** `required`|str|||
@@ -4616,9 +4238,9 @@ Condition defines an observation of a Cluster API resource operational state.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime**|str|Last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
-|**message**|str|A human readable message indicating details about the transition.<br />This field may be empty.||
-|**reason**|str|The reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may not be empty.||
+|**lastTransitionTime**|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
+|**message**|str|message is a human readable message indicating details about the transition.<br />This field may be empty.||
+|**reason**|str|reason is the reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may not be empty.||
 |**severity**|str|severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
 |**status** `required`|str|status of the condition, one of True, False, Unknown.||
 |**type** `required`|str|||
@@ -4644,7 +4266,7 @@ MachineAddress contains information for the node's address.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**address** `required`|str|The machine address.||
+|**address** `required`|str|address is the machine address.||
 |**type** `required`|str|||
 ### InfrastructureClusterxK8sIoV1alpha3DockerMachineSpec
 
@@ -4690,7 +4312,7 @@ MachineAddress contains information for the node's address.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**address** `required`|str|The machine address.||
+|**address** `required`|str|address is the machine address.||
 |**type** `required`|str|||
 ### InfrastructureClusterxK8sIoV1alpha3DockerMachineStatusConditionsItems0
 
@@ -4700,9 +4322,9 @@ Condition defines an observation of a Cluster API resource operational state.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime**|str|Last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
-|**message**|str|A human readable message indicating details about the transition.<br />This field may be empty.||
-|**reason**|str|The reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may not be empty.||
+|**lastTransitionTime**|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
+|**message**|str|message is a human readable message indicating details about the transition.<br />This field may be empty.||
+|**reason**|str|reason is the reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may not be empty.||
 |**severity**|str|severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
 |**status** `required`|str|status of the condition, one of True, False, Unknown.||
 |**type** `required`|str|||
@@ -4862,7 +4484,7 @@ Metadata for a provider repository.
 |**apiVersion** `required` `readOnly`|"clusterctl.cluster.x-k8s.io/v1alpha3"|APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources|"clusterctl.cluster.x-k8s.io/v1alpha3"|
 |**kind** `required` `readOnly`|"Metadata"|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds|"Metadata"|
 |**metadata**|[ObjectMeta](#objectmeta)|metadata||
-|**releaseSeries**|[[ClusterctlClusterxK8sIoV1alpha3MetadataReleaseSeriesItems0](#clusterctlclusterxk8siov1alpha3metadatareleaseseriesitems0)]|release series||
+|**releaseSeries**|[[ClusterctlClusterxK8sIoV1alpha3MetadataReleaseSeriesItems0](#clusterctlclusterxk8siov1alpha3metadatareleaseseriesitems0)]|releaseSeries maps a provider release series (major/minor) with an API Version of Cluster API (contract).||
 ### Provider
 
 Provider defines an entry in the provider inventory.
@@ -4880,7 +4502,7 @@ Provider defines an entry in the provider inventory.
 |**watchedNamespace**|str|watchedNamespace indicates the namespace where the provider controller is watching.<br />If empty the provider controller is watching for objects in all namespaces.<br /><br />Deprecated: providers complying with the Cluster API v1alpha4 contract or above must watch all namespaces; this field will be removed in a future version of this API||
 ### AddonsClusterxK8sIoV1alpha4ClusterResourceSetBindingSpec
 
-ClusterResourceSetBindingSpec defines the desired state of ClusterResourceSetBinding.
+spec is the desired state of ClusterResourceSetBinding.
 
 #### Attributes
 
@@ -4912,7 +4534,7 @@ ResourceBinding shows the status of a resource that belongs to a ClusterResource
 |**name** `required`|str|name of the resource that is in the same namespace with ClusterResourceSet object.||
 ### AddonsClusterxK8sIoV1alpha4ClusterResourceSetSpec
 
-ClusterResourceSetSpec defines the desired state of ClusterResourceSet.
+spec is the desired state of ClusterResourceSet.
 
 #### Attributes
 
@@ -4923,7 +4545,7 @@ ClusterResourceSetSpec defines the desired state of ClusterResourceSet.
 |**strategy** `readOnly`|"ApplyOnce"|strategy is the strategy to be used during applying resources. Defaults to ApplyOnce. This field is immutable.|"ApplyOnce"|
 ### AddonsClusterxK8sIoV1alpha4ClusterResourceSetSpecClusterSelector
 
-Label selector for Clusters. The Clusters that are selected by this will be the ones affected by this ClusterResourceSet. It must match the Cluster labels. This field is immutable. Label selector cannot be empty.
+clusterSelector is the label selector for Clusters. The Clusters that are selected by this will be the ones affected by this ClusterResourceSet. It must match the Cluster labels. This field is immutable. Label selector cannot be empty.
 
 #### Attributes
 
@@ -4954,7 +4576,7 @@ ResourceRef specifies a resource.
 |**name** `required`|str|name of the resource that is in the same namespace with ClusterResourceSet object.||
 ### AddonsClusterxK8sIoV1alpha4ClusterResourceSetStatus
 
-ClusterResourceSetStatus defines the observed state of ClusterResourceSet.
+status is the observed state of ClusterResourceSet.
 
 #### Attributes
 
@@ -4970,15 +4592,15 @@ Condition defines an observation of a Cluster API resource operational state.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime**|str|Last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
-|**message**|str|A human readable message indicating details about the transition.<br />This field may be empty.||
-|**reason**|str|The reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may not be empty.||
+|**lastTransitionTime**|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
+|**message**|str|message is a human readable message indicating details about the transition.<br />This field may be empty.||
+|**reason**|str|reason is the reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may not be empty.||
 |**severity**|str|severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
 |**status** `required`|str|status of the condition, one of True, False, Unknown.||
 |**type** `required`|str|||
 ### BootstrapClusterxK8sIoV1alpha4KubeadmConfigSpec
 
-KubeadmConfigSpec defines the desired state of KubeadmConfig. Either ClusterConfiguration and InitConfiguration should be defined or the JoinConfiguration should be defined.
+spec is the desired state of KubeadmConfig.
 
 #### Attributes
 
@@ -5008,7 +4630,7 @@ clusterConfiguration along with InitConfiguration are the configurations necessa
 |**apiServer**|[BootstrapClusterxK8sIoV1alpha4KubeadmConfigSpecClusterConfigurationAPIServer](#bootstrapclusterxk8siov1alpha4kubeadmconfigspecclusterconfigurationapiserver)|api server||
 |**apiVersion**|str|APIVersion defines the versioned schema of this representation of an object.<br />Servers should convert recognized schemas to the latest internal value, and<br />may reject unrecognized values.<br />More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources||
 |**certificatesDir**|str|certificatesDir specifies where to store or look for all required certificates.<br />NB: if not provided, this will default to `/etc/kubernetes/pki`||
-|**clusterName**|str|The cluster name||
+|**clusterName**|str|clusterName is the cluster name||
 |**controlPlaneEndpoint**|str|controlPlaneEndpoint sets a stable IP address or DNS name for the control plane; it<br />can be a valid IP address or a RFC-1123 DNS subdomain, both with optional TCP port.<br />In case the ControlPlaneEndpoint is not specified, the AdvertiseAddress + BindPort<br />are used; in case the ControlPlaneEndpoint is specified but without a TCP port,<br />the BindPort is used.<br />Possible usages are:<br />e.g. In a cluster with more than one control plane instances, this field should be<br />assigned the address of the external load balancer in front of the<br />control plane instances.<br />e.g.  in environments with enforced node recycling, the ControlPlaneEndpoint<br />could be used for assigning a stable DNS to the control plane.<br />NB: This value defaults to the first value in the Cluster object status.apiEndpoints array.||
 |**controllerManager**|[BootstrapClusterxK8sIoV1alpha4KubeadmConfigSpecClusterConfigurationControllerManager](#bootstrapclusterxk8siov1alpha4kubeadmconfigspecclusterconfigurationcontrollermanager)|controller manager||
 |**dns**|[BootstrapClusterxK8sIoV1alpha4KubeadmConfigSpecClusterConfigurationDNS](#bootstrapclusterxk8siov1alpha4kubeadmconfigspecclusterconfigurationdns)|dns||
@@ -5401,7 +5023,7 @@ User defines the input for a generated user in cloud-init.
 |**sudo**|str|sudo specifies a sudo role for the user||
 ### BootstrapClusterxK8sIoV1alpha4KubeadmConfigStatus
 
-KubeadmConfigStatus defines the observed state of KubeadmConfig.
+status is the observed state of KubeadmConfig.
 
 #### Attributes
 
@@ -5421,15 +5043,15 @@ Condition defines an observation of a Cluster API resource operational state.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime**|str|Last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
-|**message**|str|A human readable message indicating details about the transition.<br />This field may be empty.||
-|**reason**|str|The reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may not be empty.||
+|**lastTransitionTime**|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
+|**message**|str|message is a human readable message indicating details about the transition.<br />This field may be empty.||
+|**reason**|str|reason is the reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may not be empty.||
 |**severity**|str|severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
 |**status** `required`|str|status of the condition, one of True, False, Unknown.||
 |**type** `required`|str|||
 ### BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpec
 
-KubeadmConfigTemplateSpec defines the desired state of KubeadmConfigTemplate.
+spec is the desired state of KubeadmConfigTemplate.
 
 #### Attributes
 
@@ -5438,7 +5060,7 @@ KubeadmConfigTemplateSpec defines the desired state of KubeadmConfigTemplate.
 |**template** `required`|[BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplate](#bootstrapclusterxk8siov1alpha4kubeadmconfigtemplatespectemplate)|template||
 ### BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplate
 
-KubeadmConfigTemplateResource defines the Template structure.
+template defines the desired state of KubeadmConfigTemplate.
 
 #### Attributes
 
@@ -5447,7 +5069,7 @@ KubeadmConfigTemplateResource defines the Template structure.
 |**spec**|[BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpec](#bootstrapclusterxk8siov1alpha4kubeadmconfigtemplatespectemplatespec)|spec||
 ### BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpec
 
-KubeadmConfigSpec defines the desired state of KubeadmConfig. Either ClusterConfiguration and InitConfiguration should be defined or the JoinConfiguration should be defined.
+spec is the desired state of KubeadmConfig.
 
 #### Attributes
 
@@ -5477,7 +5099,7 @@ clusterConfiguration along with InitConfiguration are the configurations necessa
 |**apiServer**|[BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecClusterConfigurationAPIServer](#bootstrapclusterxk8siov1alpha4kubeadmconfigtemplatespectemplatespecclusterconfigurationapiserver)|api server||
 |**apiVersion**|str|APIVersion defines the versioned schema of this representation of an object.<br />Servers should convert recognized schemas to the latest internal value, and<br />may reject unrecognized values.<br />More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources||
 |**certificatesDir**|str|certificatesDir specifies where to store or look for all required certificates.<br />NB: if not provided, this will default to `/etc/kubernetes/pki`||
-|**clusterName**|str|The cluster name||
+|**clusterName**|str|clusterName is the cluster name||
 |**controlPlaneEndpoint**|str|controlPlaneEndpoint sets a stable IP address or DNS name for the control plane; it<br />can be a valid IP address or a RFC-1123 DNS subdomain, both with optional TCP port.<br />In case the ControlPlaneEndpoint is not specified, the AdvertiseAddress + BindPort<br />are used; in case the ControlPlaneEndpoint is specified but without a TCP port,<br />the BindPort is used.<br />Possible usages are:<br />e.g. In a cluster with more than one control plane instances, this field should be<br />assigned the address of the external load balancer in front of the<br />control plane instances.<br />e.g.  in environments with enforced node recycling, the ControlPlaneEndpoint<br />could be used for assigning a stable DNS to the control plane.<br />NB: This value defaults to the first value in the Cluster object status.apiEndpoints array.||
 |**controllerManager**|[BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecClusterConfigurationControllerManager](#bootstrapclusterxk8siov1alpha4kubeadmconfigtemplatespectemplatespecclusterconfigurationcontrollermanager)|controller manager||
 |**dns**|[BootstrapClusterxK8sIoV1alpha4KubeadmConfigTemplateSpecTemplateSpecClusterConfigurationDNS](#bootstrapclusterxk8siov1alpha4kubeadmconfigtemplatespectemplatespecclusterconfigurationdns)|dns||
@@ -5920,7 +5542,7 @@ ClusterResourceSetBinding lists all matching ClusterResourceSets with the cluste
 |**spec**|[AddonsClusterxK8sIoV1alpha4ClusterResourceSetBindingSpec](#addonsclusterxk8siov1alpha4clusterresourcesetbindingspec)|spec||
 ### ClusterxK8sIoV1alpha4ClusterClassSpec
 
-ClusterClassSpec describes the desired state of the ClusterClass.
+spec is the desired state of ClusterClass.
 
 #### Attributes
 
@@ -5942,7 +5564,7 @@ controlPlane is a reference to a local struct that holds the details for provisi
 |**ref** `required`|[ClusterxK8sIoV1alpha4ClusterClassSpecControlPlaneRef](#clusterxk8siov1alpha4clusterclassspeccontrolplaneref)|ref||
 ### ClusterxK8sIoV1alpha4ClusterClassSpecControlPlaneMachineInfrastructure
 
-MachineTemplate defines the metadata and infrastructure information for control plane machines.  This field is supported if and only if the control plane provider template referenced above is Machine based and supports setting replicas.
+machineInfrastructure defines the metadata and infrastructure information for control plane machines.  This field is supported if and only if the control plane provider template referenced above is Machine based and supports setting replicas.
 
 #### Attributes
 
@@ -5973,7 +5595,7 @@ metadata is the metadata applied to the machines of the ControlPlane. At runtime
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**annotations**|{str:str}|annotations is an unstructured key value map stored with a resource that may be<br />set by external tools to store and retrieve arbitrary metadata. They are not<br />queryable and should be preserved when modifying objects.<br />More info: http://kubernetes.io/docs/user-guide/annotations||
-|**labels**|{str:str}|Map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
+|**labels**|{str:str}|labels is a map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
 ### ClusterxK8sIoV1alpha4ClusterClassSpecControlPlaneRef
 
 ref is a required reference to a custom resource offered by a provider.
@@ -6100,10 +5722,10 @@ metadata is the metadata applied to the machines of the MachineDeployment. At ru
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**annotations**|{str:str}|annotations is an unstructured key value map stored with a resource that may be<br />set by external tools to store and retrieve arbitrary metadata. They are not<br />queryable and should be preserved when modifying objects.<br />More info: http://kubernetes.io/docs/user-guide/annotations||
-|**labels**|{str:str}|Map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
+|**labels**|{str:str}|labels is a map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
 ### ClusterxK8sIoV1alpha4ClusterSpec
 
-ClusterSpec defines the desired state of Cluster.
+spec is the desired state of Cluster.
 
 #### Attributes
 
@@ -6117,7 +5739,7 @@ ClusterSpec defines the desired state of Cluster.
 |**topology**|[ClusterxK8sIoV1alpha4ClusterSpecTopology](#clusterxk8siov1alpha4clusterspectopology)|topology||
 ### ClusterxK8sIoV1alpha4ClusterSpecClusterNetwork
 
-Cluster network configuration.
+clusterNetwork is the cluster network configuration.
 
 #### Attributes
 
@@ -6125,26 +5747,26 @@ Cluster network configuration.
 | --- | --- | --- | --- |
 |**apiServerPort**|int|apiServerPort specifies the port the API Server should bind to.<br />Defaults to 6443.||
 |**pods**|[ClusterxK8sIoV1alpha4ClusterSpecClusterNetworkPods](#clusterxk8siov1alpha4clusterspecclusternetworkpods)|pods||
-|**serviceDomain**|str|Domain name for services.||
+|**serviceDomain**|str|serviceDomain is the domain name for services.||
 |**services**|[ClusterxK8sIoV1alpha4ClusterSpecClusterNetworkServices](#clusterxk8siov1alpha4clusterspecclusternetworkservices)|services||
 ### ClusterxK8sIoV1alpha4ClusterSpecClusterNetworkPods
 
-The network ranges from which Pod networks are allocated.
+pods is the network ranges from which Pod networks are allocated.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**cidrBlocks** `required`|[str]|cidr blocks||
+|**cidrBlocks** `required`|[str]|cidrBlocks is a list of CIDR blocks.||
 ### ClusterxK8sIoV1alpha4ClusterSpecClusterNetworkServices
 
-The network ranges from which service VIPs are allocated.
+services is the network ranges from which service VIPs are allocated.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**cidrBlocks** `required`|[str]|cidr blocks||
+|**cidrBlocks** `required`|[str]|cidrBlocks is a list of CIDR blocks.||
 ### ClusterxK8sIoV1alpha4ClusterSpecControlPlaneEndpoint
 
 controlPlaneEndpoint represents the endpoint used to communicate with the control plane.
@@ -6153,8 +5775,8 @@ controlPlaneEndpoint represents the endpoint used to communicate with the contro
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**host** `required`|str|The hostname on which the API server is serving.||
-|**port** `required`|int|The port on which the API server is serving.||
+|**host** `required`|str|host is the hostname on which the API server is serving.||
+|**port** `required`|int|port is the port on which the API server is serving.||
 ### ClusterxK8sIoV1alpha4ClusterSpecControlPlaneRef
 
 controlPlaneRef is an optional reference to a provider-specific resource that holds the details for provisioning the Control Plane for a Cluster.
@@ -6187,16 +5809,16 @@ infrastructureRef is a reference to a provider-specific resource that holds the 
 |**uid**|str|UID of the referent.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids||
 ### ClusterxK8sIoV1alpha4ClusterSpecTopology
 
-This encapsulates the topology for the cluster. NOTE: It is required to enable the ClusterTopology feature gate flag to activate managed topologies support; this feature is highly experimental, and parts of it might still be not implemented.
+topology encapsulates the topology for the cluster. NOTE: It is required to enable the ClusterTopology feature gate flag to activate managed topologies support; this feature is highly experimental, and parts of it might still be not implemented.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**class** `required`|str|The name of the ClusterClass object to create the topology.||
+|**class** `required`|str|class is the name of the ClusterClass object to create the topology.||
 |**controlPlane**|[ClusterxK8sIoV1alpha4ClusterSpecTopologyControlPlane](#clusterxk8siov1alpha4clusterspectopologycontrolplane)|control plane||
 |**rolloutAfter**|str|rolloutAfter performs a rollout of the entire cluster one component at a time,<br />control plane first and then machine deployments.||
-|**version** `required`|str|The Kubernetes version of the cluster.||
+|**version** `required`|str|version is the Kubernetes version of the cluster.||
 |**workers**|[ClusterxK8sIoV1alpha4ClusterSpecTopologyWorkers](#clusterxk8siov1alpha4clusterspectopologyworkers)|workers||
 ### ClusterxK8sIoV1alpha4ClusterSpecTopologyControlPlane
 
@@ -6217,7 +5839,7 @@ metadata is the metadata applied to the machines of the ControlPlane. At runtime
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**annotations**|{str:str}|annotations is an unstructured key value map stored with a resource that may be<br />set by external tools to store and retrieve arbitrary metadata. They are not<br />queryable and should be preserved when modifying objects.<br />More info: http://kubernetes.io/docs/user-guide/annotations||
-|**labels**|{str:str}|Map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
+|**labels**|{str:str}|labels is a map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
 ### ClusterxK8sIoV1alpha4ClusterSpecTopologyWorkers
 
 workers encapsulates the different constructs that form the worker nodes for the cluster.
@@ -6248,10 +5870,10 @@ metadata is the metadata applied to the machines of the MachineDeployment. At ru
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**annotations**|{str:str}|annotations is an unstructured key value map stored with a resource that may be<br />set by external tools to store and retrieve arbitrary metadata. They are not<br />queryable and should be preserved when modifying objects.<br />More info: http://kubernetes.io/docs/user-guide/annotations||
-|**labels**|{str:str}|Map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
+|**labels**|{str:str}|labels is a map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
 ### ClusterxK8sIoV1alpha4ClusterStatus
 
-ClusterStatus defines the observed state of Cluster.
+status is the observed state of Cluster.
 
 #### Attributes
 
@@ -6273,9 +5895,9 @@ Condition defines an observation of a Cluster API resource operational state.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime**|str|Last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
-|**message**|str|A human readable message indicating details about the transition.<br />This field may be empty.||
-|**reason**|str|The reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may not be empty.||
+|**lastTransitionTime**|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
+|**message**|str|message is a human readable message indicating details about the transition.<br />This field may be empty.||
+|**reason**|str|reason is the reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may not be empty.||
 |**severity**|str|severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
 |**status** `required`|str|status of the condition, one of True, False, Unknown.||
 |**type** `required`|str|||
@@ -6291,24 +5913,24 @@ FailureDomainSpec is the Schema for Cluster API failure domains. It allows contr
 |**controlPlane**|bool|controlPlane determines if this failure domain is suitable for use by control plane machines.||
 ### ClusterxK8sIoV1alpha4MachineDeploymentSpec
 
-MachineDeploymentSpec defines the desired state of MachineDeployment.
+spec is the desired state of MachineDeployment.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**clusterName** `required`|str|clusterName is the name of the Cluster this object belongs to.||
-|**minReadySeconds**|int|Minimum number of seconds for which a newly created machine should<br />be ready.<br />Defaults to 0 (machine will be considered available as soon as it<br />is ready)||
-|**paused**|bool|Indicates that the deployment is paused.||
-|**progressDeadlineSeconds**|int|The maximum time in seconds for a deployment to make progress before it<br />is considered to be failed. The deployment controller will continue to<br />process failed deployments and a condition with a ProgressDeadlineExceeded<br />reason will be surfaced in the deployment status. Note that progress will<br />not be estimated during the time a deployment is paused. Defaults to 600s.||
-|**replicas**|int|Number of desired machines. Defaults to 1.<br />This is a pointer to distinguish between explicit zero and not specified.|1|
-|**revisionHistoryLimit**|int|The number of old MachineSets to retain to allow rollback.<br />This is a pointer to distinguish between explicit zero and not specified.<br />Defaults to 1.||
+|**minReadySeconds**|int|minReadySeconds is the minimum number of seconds for which a newly created machine should<br />be ready.<br />Defaults to 0 (machine will be considered available as soon as it<br />is ready)||
+|**paused**|bool|paused indicates that the deployment is paused.||
+|**progressDeadlineSeconds**|int|progressDeadlineSeconds is the maximum time in seconds for a deployment to make progress before it<br />is considered to be failed. The deployment controller will continue to<br />process failed deployments and a condition with a ProgressDeadlineExceeded<br />reason will be surfaced in the deployment status. Note that progress will<br />not be estimated during the time a deployment is paused. Defaults to 600s.||
+|**replicas**|int|replicas is the number of desired machines. Defaults to 1.<br />This is a pointer to distinguish between explicit zero and not specified.|1|
+|**revisionHistoryLimit**|int|revisionHistoryLimit is the number of old MachineSets to retain to allow rollback.<br />This is a pointer to distinguish between explicit zero and not specified.<br />Defaults to 1.||
 |**selector** `required`|[ClusterxK8sIoV1alpha4MachineDeploymentSpecSelector](#clusterxk8siov1alpha4machinedeploymentspecselector)|selector||
 |**strategy**|[ClusterxK8sIoV1alpha4MachineDeploymentSpecStrategy](#clusterxk8siov1alpha4machinedeploymentspecstrategy)|strategy||
 |**template** `required`|[ClusterxK8sIoV1alpha4MachineDeploymentSpecTemplate](#clusterxk8siov1alpha4machinedeploymentspectemplate)|template||
 ### ClusterxK8sIoV1alpha4MachineDeploymentSpecSelector
 
-Label selector for machines. Existing MachineSets whose machines are selected by this will be the ones affected by this deployment. It must match the machine template's labels.
+selector is the label selector for machines. Existing MachineSets whose machines are selected by this will be the ones affected by this deployment. It must match the machine template's labels.
 
 #### Attributes
 
@@ -6329,7 +5951,7 @@ A label selector requirement is a selector that contains values, a key, and an o
 |**values**|[str]|values is an array of string values. If the operator is In or NotIn,<br />the values array must be non-empty. If the operator is Exists or DoesNotExist,<br />the values array must be empty. This array is replaced during a strategic<br />merge patch.||
 ### ClusterxK8sIoV1alpha4MachineDeploymentSpecStrategy
 
-The deployment strategy to use to replace existing machines with new ones.
+strategy is the deployment strategy to use to replace existing machines with new ones.
 
 #### Attributes
 
@@ -6339,15 +5961,15 @@ The deployment strategy to use to replace existing machines with new ones.
 |**type**|"RollingUpdate" | "OnDelete"|||
 ### ClusterxK8sIoV1alpha4MachineDeploymentSpecStrategyRollingUpdate
 
-Rolling update config params. Present only if MachineDeploymentStrategyType = RollingUpdate.
+rollingUpdate is the rolling update config params. Present only if MachineDeploymentStrategyType = RollingUpdate.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**deletePolicy**|"Random" | "Newest" | "Oldest"|deletePolicy defines the policy used by the MachineDeployment to identify nodes to delete when downscaling.<br />Valid values are "Random, "Newest", "Oldest"<br />When no value is supplied, the default DeletePolicy of MachineSet is used||
-|**maxSurge**|int | str|The maximum number of machines that can be scheduled above the<br />desired number of machines.<br />Value can be an absolute number (ex: 5) or a percentage of<br />desired machines (ex: 10%).<br />This can not be 0 if MaxUnavailable is 0.<br />Absolute number is calculated from percentage by rounding up.<br />Defaults to 1.<br />Example: when this is set to 30%, the new MachineSet can be scaled<br />up immediately when the rolling update starts, such that the total<br />number of old and new machines do not exceed 130% of desired<br />machines. Once old machines have been killed, new MachineSet can<br />be scaled up further, ensuring that total number of machines running<br />at any time during the update is at most 130% of desired machines.||
-|**maxUnavailable**|int | str|The maximum number of machines that can be unavailable during the update.<br />Value can be an absolute number (ex: 5) or a percentage of desired<br />machines (ex: 10%).<br />Absolute number is calculated from percentage by rounding down.<br />This can not be 0 if MaxSurge is 0.<br />Defaults to 0.<br />Example: when this is set to 30%, the old MachineSet can be scaled<br />down to 70% of desired machines immediately when the rolling update<br />starts. Once new machines are ready, old MachineSet can be scaled<br />down further, followed by scaling up the new MachineSet, ensuring<br />that the total number of machines available at all times<br />during the update is at least 70% of desired machines.||
+|**maxSurge**|int | str|maxSurge is the maximum number of machines that can be scheduled above the<br />desired number of machines.<br />Value can be an absolute number (ex: 5) or a percentage of<br />desired machines (ex: 10%).<br />This can not be 0 if MaxUnavailable is 0.<br />Absolute number is calculated from percentage by rounding up.<br />Defaults to 1.<br />Example: when this is set to 30%, the new MachineSet can be scaled<br />up immediately when the rolling update starts, such that the total<br />number of old and new machines do not exceed 130% of desired<br />machines. Once old machines have been killed, new MachineSet can<br />be scaled up further, ensuring that total number of machines running<br />at any time during the update is at most 130% of desired machines.||
+|**maxUnavailable**|int | str|maxUnavailable is the maximum number of machines that can be unavailable during the update.<br />Value can be an absolute number (ex: 5) or a percentage of desired<br />machines (ex: 10%).<br />Absolute number is calculated from percentage by rounding down.<br />This can not be 0 if MaxSurge is 0.<br />Defaults to 0.<br />Example: when this is set to 30%, the old MachineSet can be scaled<br />down to 70% of desired machines immediately when the rolling update<br />starts. Once new machines are ready, old MachineSet can be scaled<br />down further, followed by scaling up the new MachineSet, ensuring<br />that the total number of machines available at all times<br />during the update is at least 70% of desired machines.||
 ### ClusterxK8sIoV1alpha4MachineDeploymentSpecTemplate
 
 template describes the machines that will be created.
@@ -6360,17 +5982,17 @@ template describes the machines that will be created.
 |**spec**|[ClusterxK8sIoV1alpha4MachineDeploymentSpecTemplateSpec](#clusterxk8siov1alpha4machinedeploymentspectemplatespec)|spec||
 ### ClusterxK8sIoV1alpha4MachineDeploymentSpecTemplateMetadata
 
-Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+metadata is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**annotations**|{str:str}|annotations is an unstructured key value map stored with a resource that may be<br />set by external tools to store and retrieve arbitrary metadata. They are not<br />queryable and should be preserved when modifying objects.<br />More info: http://kubernetes.io/docs/user-guide/annotations||
-|**labels**|{str:str}|Map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
+|**labels**|{str:str}|labels is a map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
 ### ClusterxK8sIoV1alpha4MachineDeploymentSpecTemplateSpec
 
-Specification of the desired behavior of the machine. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+spec is the specification of the desired behavior of the machine. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
 
 #### Attributes
 
@@ -6425,21 +6047,21 @@ infrastructureRef is a required reference to a custom resource offered by an inf
 |**uid**|str|UID of the referent.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids||
 ### ClusterxK8sIoV1alpha4MachineDeploymentStatus
 
-MachineDeploymentStatus defines the observed state of MachineDeployment.
+status is the observed state of MachineDeployment.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**availableReplicas**|int|Total number of available machines (ready for at least minReadySeconds)<br />targeted by this deployment.||
+|**availableReplicas**|int|availableReplicas is the total number of available machines (ready for at least minReadySeconds)<br />targeted by this deployment.||
 |**conditions**|[[ClusterxK8sIoV1alpha4MachineDeploymentStatusConditionsItems0](#clusterxk8siov1alpha4machinedeploymentstatusconditionsitems0)]|conditions defines current service state of the MachineDeployment.||
-|**observedGeneration**|int|The generation observed by the deployment controller.||
+|**observedGeneration**|int|observedGeneration is the generation observed by the deployment controller.||
 |**phase**|str|phase represents the current phase of a MachineDeployment (ScalingUp, ScalingDown, Running, Failed, or Unknown).||
-|**readyReplicas**|int|Total number of ready machines targeted by this deployment.||
-|**replicas**|int|Total number of non-terminated machines targeted by this deployment<br />(their labels match the selector).||
+|**readyReplicas**|int|readyReplicas is the total number of ready machines targeted by this deployment.||
+|**replicas**|int|replicas is the total number of non-terminated machines targeted by this deployment<br />(their labels match the selector).||
 |**selector**|str|selector is the same as the label selector but in the string format to avoid introspection<br />by clients. The string will be in the same format as the query-param syntax.<br />More info about label selectors: http://kubernetes.io/docs/user-guide/labels#label-selectors||
-|**unavailableReplicas**|int|Total number of unavailable machines targeted by this deployment.<br />This is the total number of machines that are still required for<br />the deployment to have 100% available capacity. They may either<br />be machines that are running but not yet available or machines<br />that still have not been created.||
-|**updatedReplicas**|int|Total number of non-terminated machines targeted by this deployment<br />that have the desired template spec.||
+|**unavailableReplicas**|int|unavailableReplicas is the total number of unavailable machines targeted by this deployment.<br />This is the total number of machines that are still required for<br />the deployment to have 100% available capacity. They may either<br />be machines that are running but not yet available or machines<br />that still have not been created.||
+|**updatedReplicas**|int|updatedReplicas is the total number of non-terminated machines targeted by this deployment<br />that have the desired template spec.||
 ### ClusterxK8sIoV1alpha4MachineDeploymentStatusConditionsItems0
 
 Condition defines an observation of a Cluster API resource operational state.
@@ -6448,27 +6070,27 @@ Condition defines an observation of a Cluster API resource operational state.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime**|str|Last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
-|**message**|str|A human readable message indicating details about the transition.<br />This field may be empty.||
-|**reason**|str|The reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may not be empty.||
+|**lastTransitionTime**|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
+|**message**|str|message is a human readable message indicating details about the transition.<br />This field may be empty.||
+|**reason**|str|reason is the reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may not be empty.||
 |**severity**|str|severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
 |**status** `required`|str|status of the condition, one of True, False, Unknown.||
 |**type** `required`|str|||
 ### ClusterxK8sIoV1alpha4MachineHealthCheckSpec
 
-Specification of machine health check policy
+spec is the specification of machine health check policy
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**clusterName** `required`|str|clusterName is the name of the Cluster this object belongs to.||
-|**maxUnhealthy**|int | str|Any further remediation is only allowed if at most "MaxUnhealthy" machines selected by<br />"selector" are not healthy.||
-|**nodeStartupTimeout**|str|Machines older than this duration without a node will be considered to have<br />failed and will be remediated.<br />If not set, this value is defaulted to 10 minutes.<br />If you wish to disable this feature, set the value explicitly to 0.||
+|**maxUnhealthy**|int | str|maxUnhealthy specifies the maximum number of unhealthy machines allowed.<br />Any further remediation is only allowed if at most "maxUnhealthy" machines selected by<br />"selector" are not healthy.||
+|**nodeStartupTimeout**|str|nodeStartupTimeout is the duration after which machines without a node will be considered to<br />have failed and will be remediated.<br />If not set, this value is defaulted to 10 minutes.<br />If you wish to disable this feature, set the value explicitly to 0.||
 |**remediationTemplate**|[ClusterxK8sIoV1alpha4MachineHealthCheckSpecRemediationTemplate](#clusterxk8siov1alpha4machinehealthcheckspecremediationtemplate)|remediation template||
 |**selector** `required`|[ClusterxK8sIoV1alpha4MachineHealthCheckSpecSelector](#clusterxk8siov1alpha4machinehealthcheckspecselector)|selector||
 |**unhealthyConditions** `required`|[[ClusterxK8sIoV1alpha4MachineHealthCheckSpecUnhealthyConditionsItems0](#clusterxk8siov1alpha4machinehealthcheckspecunhealthyconditionsitems0)]|unhealthyConditions contains a list of the conditions that determine<br />whether a node is considered unhealthy.  The conditions are combined in a<br />logical OR, i.e. if any of the conditions is met, the node is unhealthy.||
-|**unhealthyRange**|str|Any further remediation is only allowed if the number of machines selected by "selector" as not healthy<br />is within the range of "UnhealthyRange". Takes precedence over MaxUnhealthy.<br />Eg. "[3-5]" - This means that remediation will be allowed only when:<br />(a) there are at least 3 unhealthy machines (and)<br />(b) there are at most 5 unhealthy machines||
+|**unhealthyRange**|str|unhealthyRange specifies the range of unhealthy machines allowed.<br />Any further remediation is only allowed if the number of machines selected by "selector" as not healthy<br />is within the range of "unhealthyRange". Takes precedence over maxUnhealthy.<br />Eg. "[3-5]" - This means that remediation will be allowed only when:<br />(a) there are at least 3 unhealthy machines (and)<br />(b) there are at most 5 unhealthy machines||
 ### ClusterxK8sIoV1alpha4MachineHealthCheckSpecRemediationTemplate
 
 remediationTemplate is a reference to a remediation template provided by an infrastructure provider.  This field is completely optional, when filled, the MachineHealthCheck controller creates a new object from the template referenced and hands off remediation of the machine to a controller that lives outside of Cluster API.
@@ -6486,7 +6108,7 @@ remediationTemplate is a reference to a remediation template provided by an infr
 |**uid**|str|UID of the referent.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids||
 ### ClusterxK8sIoV1alpha4MachineHealthCheckSpecSelector
 
-Label selector to match machines whose health will be exercised
+selector is the label selector to match machines whose health will be exercised
 
 #### Attributes
 
@@ -6513,20 +6135,20 @@ UnhealthyCondition represents a Node condition type and value with a timeout spe
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**status** `required`|str|status||
-|**timeout** `required`|str|timeout||
+|**status** `required`|str|status of the condition, one of True, False, Unknown.||
+|**timeout** `required`|str|timeout is the duration that a node must be in a given status for,<br />after which the node is considered unhealthy.<br />For example, with a value of "1h", the node must match the status<br />for at least 1 hour before being considered unhealthy.||
 |**type** `required`|str|||
 ### ClusterxK8sIoV1alpha4MachineHealthCheckStatus
 
-Most recently observed status of MachineHealthCheck resource
+status is the most recently observed status of MachineHealthCheck resource
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**conditions**|[[ClusterxK8sIoV1alpha4MachineHealthCheckStatusConditionsItems0](#clusterxk8siov1alpha4machinehealthcheckstatusconditionsitems0)]|conditions defines current service state of the MachineHealthCheck.||
-|**currentHealthy**|int|total number of healthy machines counted by this machine health check||
-|**expectedMachines**|int|total number of machines counted by this machine health check||
+|**currentHealthy**|int|currentHealthy is the total number of healthy machines counted by this machine health check||
+|**expectedMachines**|int|expectedMachines is the total number of machines counted by this machine health check||
 |**observedGeneration**|int|observedGeneration is the latest generation observed by the controller.||
 |**remediationsAllowed**|int|remediationsAllowed is the number of further remediations allowed by this machine health check before<br />maxUnhealthy short circuiting will be applied||
 |**targets**|[str]|targets shows the current list of machines the machine health check is watching||
@@ -6538,15 +6160,15 @@ Condition defines an observation of a Cluster API resource operational state.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime**|str|Last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
-|**message**|str|A human readable message indicating details about the transition.<br />This field may be empty.||
-|**reason**|str|The reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may not be empty.||
+|**lastTransitionTime**|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
+|**message**|str|message is a human readable message indicating details about the transition.<br />This field may be empty.||
+|**reason**|str|reason is the reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may not be empty.||
 |**severity**|str|severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
 |**status** `required`|str|status of the condition, one of True, False, Unknown.||
 |**type** `required`|str|||
 ### ClusterxK8sIoV1alpha4MachinePoolSpec
 
-MachinePoolSpec defines the desired state of MachinePool.
+spec is the desired state of MachinePool.
 
 #### Attributes
 
@@ -6554,9 +6176,9 @@ MachinePoolSpec defines the desired state of MachinePool.
 | --- | --- | --- | --- |
 |**clusterName** `required`|str|clusterName is the name of the Cluster this object belongs to.||
 |**failureDomains**|[str]|failureDomains is the list of failure domains this MachinePool should be attached to.||
-|**minReadySeconds**|int|Minimum number of seconds for which a newly created machine instances should<br />be ready.<br />Defaults to 0 (machine instance will be considered available as soon as it<br />is ready)||
+|**minReadySeconds**|int|minReadySeconds is the minimum number of seconds for which a newly created machine instances should<br />be ready.<br />Defaults to 0 (machine instance will be considered available as soon as it<br />is ready)||
 |**providerIDList**|[str]|providerIDList are the identification IDs of machine instances provided by the provider.<br />This field must match the provider IDs as seen on the node objects corresponding to a machine pool's machine instances.||
-|**replicas**|int|Number of desired machines. Defaults to 1.<br />This is a pointer to distinguish between explicit zero and not specified.||
+|**replicas**|int|replicas is the number of desired machines. Defaults to 1.<br />This is a pointer to distinguish between explicit zero and not specified.||
 |**template** `required`|[ClusterxK8sIoV1alpha4MachinePoolSpecTemplate](#clusterxk8siov1alpha4machinepoolspectemplate)|template||
 ### ClusterxK8sIoV1alpha4MachinePoolSpecTemplate
 
@@ -6570,17 +6192,17 @@ template describes the machines that will be created.
 |**spec**|[ClusterxK8sIoV1alpha4MachinePoolSpecTemplateSpec](#clusterxk8siov1alpha4machinepoolspectemplatespec)|spec||
 ### ClusterxK8sIoV1alpha4MachinePoolSpecTemplateMetadata
 
-Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+metadata is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**annotations**|{str:str}|annotations is an unstructured key value map stored with a resource that may be<br />set by external tools to store and retrieve arbitrary metadata. They are not<br />queryable and should be preserved when modifying objects.<br />More info: http://kubernetes.io/docs/user-guide/annotations||
-|**labels**|{str:str}|Map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
+|**labels**|{str:str}|labels is a map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
 ### ClusterxK8sIoV1alpha4MachinePoolSpecTemplateSpec
 
-Specification of the desired behavior of the machine. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+spec is the specification of the desired behavior of the machine. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
 
 #### Attributes
 
@@ -6635,13 +6257,13 @@ infrastructureRef is a required reference to a custom resource offered by an inf
 |**uid**|str|UID of the referent.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids||
 ### ClusterxK8sIoV1alpha4MachinePoolStatus
 
-MachinePoolStatus defines the observed state of MachinePool.
+status is the observed state of MachinePool.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**availableReplicas**|int|The number of available replicas (ready for at least minReadySeconds) for this MachinePool.||
+|**availableReplicas**|int|availableReplicas is the number of available replicas (ready for at least minReadySeconds) for this MachinePool.||
 |**bootstrapReady**|bool|bootstrapReady is the state of the bootstrap provider.||
 |**conditions**|[[ClusterxK8sIoV1alpha4MachinePoolStatusConditionsItems0](#clusterxk8siov1alpha4machinepoolstatusconditionsitems0)]|conditions define the current service state of the MachinePool.||
 |**failureMessage**|str|failureMessage indicates that there is a problem reconciling the state,<br />and will be set to a descriptive error message.||
@@ -6650,9 +6272,9 @@ MachinePoolStatus defines the observed state of MachinePool.
 |**nodeRefs**|[[ClusterxK8sIoV1alpha4MachinePoolStatusNodeRefsItems0](#clusterxk8siov1alpha4machinepoolstatusnoderefsitems0)]|nodeRefs will point to the corresponding Nodes if it they exist.||
 |**observedGeneration**|int|observedGeneration is the latest generation observed by the controller.||
 |**phase**|str|phase represents the current phase of cluster actuation.<br />E.g. Pending, Running, Terminating, Failed etc.||
-|**readyReplicas**|int|The number of ready replicas for this MachinePool. A machine is considered ready when the node has been created and is "Ready".||
+|**readyReplicas**|int|readyReplicas is the number of ready replicas for this MachinePool. A machine is considered ready when the node has been created and is "Ready".||
 |**replicas**|int|replicas is the most recently observed number of replicas.||
-|**unavailableReplicas**|int|Total number of unavailable machine instances targeted by this machine pool.<br />This is the total number of machine instances that are still required for<br />the machine pool to have 100% available capacity. They may either<br />be machine instances that are running but not yet available or machine instances<br />that still have not been created.||
+|**unavailableReplicas**|int|unavailableReplicas is the total number of unavailable machine instances targeted by this machine pool.<br />This is the total number of machine instances that are still required for<br />the machine pool to have 100% available capacity. They may either<br />be machine instances that are running but not yet available or machine instances<br />that still have not been created.||
 ### ClusterxK8sIoV1alpha4MachinePoolStatusConditionsItems0
 
 Condition defines an observation of a Cluster API resource operational state.
@@ -6661,9 +6283,9 @@ Condition defines an observation of a Cluster API resource operational state.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime**|str|Last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
-|**message**|str|A human readable message indicating details about the transition.<br />This field may be empty.||
-|**reason**|str|The reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may not be empty.||
+|**lastTransitionTime**|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
+|**message**|str|message is a human readable message indicating details about the transition.<br />This field may be empty.||
+|**reason**|str|reason is the reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may not be empty.||
 |**severity**|str|severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
 |**status** `required`|str|status of the condition, one of True, False, Unknown.||
 |**type** `required`|str|||
@@ -6684,7 +6306,7 @@ ObjectReference contains enough information to let you inspect or modify the ref
 |**uid**|str|UID of the referent.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids||
 ### ClusterxK8sIoV1alpha4MachineSetSpec
 
-MachineSetSpec defines the desired state of MachineSet.
+spec is the desired state of MachineSet.
 
 #### Attributes
 
@@ -6729,17 +6351,17 @@ template is the object that describes the machine that will be created if insuff
 |**spec**|[ClusterxK8sIoV1alpha4MachineSetSpecTemplateSpec](#clusterxk8siov1alpha4machinesetspectemplatespec)|spec||
 ### ClusterxK8sIoV1alpha4MachineSetSpecTemplateMetadata
 
-Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+metadata is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**annotations**|{str:str}|annotations is an unstructured key value map stored with a resource that may be<br />set by external tools to store and retrieve arbitrary metadata. They are not<br />queryable and should be preserved when modifying objects.<br />More info: http://kubernetes.io/docs/user-guide/annotations||
-|**labels**|{str:str}|Map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
+|**labels**|{str:str}|labels is a map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
 ### ClusterxK8sIoV1alpha4MachineSetSpecTemplateSpec
 
-Specification of the desired behavior of the machine. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+spec is the specification of the desired behavior of the machine. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
 
 #### Attributes
 
@@ -6794,19 +6416,19 @@ infrastructureRef is a required reference to a custom resource offered by an inf
 |**uid**|str|UID of the referent.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids||
 ### ClusterxK8sIoV1alpha4MachineSetStatus
 
-MachineSetStatus defines the observed state of MachineSet.
+status is the observed state of MachineSet.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**availableReplicas**|int|The number of available replicas (ready for at least minReadySeconds) for this MachineSet.||
+|**availableReplicas**|int|availableReplicas is the number of available replicas (ready for at least minReadySeconds) for this MachineSet.||
 |**conditions**|[[ClusterxK8sIoV1alpha4MachineSetStatusConditionsItems0](#clusterxk8siov1alpha4machinesetstatusconditionsitems0)]|conditions defines current service state of the MachineSet.||
-|**failureMessage**|str|failure message||
-|**failureReason**|str|In the event that there is a terminal problem reconciling the<br />replicas, both FailureReason and FailureMessage will be set. FailureReason<br />will be populated with a succinct value suitable for machine<br />interpretation, while FailureMessage will contain a more verbose<br />string suitable for logging and human consumption.<br /><br />These fields should not be set for transitive errors that a<br />controller faces that are expected to be fixed automatically over<br />time (like service outages), but instead indicate that something is<br />fundamentally wrong with the MachineTemplate's spec or the configuration of<br />the machine controller, and that manual intervention is required. Examples<br />of terminal errors would be invalid combinations of settings in the<br />spec, values that are unsupported by the machine controller, or the<br />responsible machine controller itself being critically misconfigured.<br /><br />Any transient errors that occur during the reconciliation of Machines<br />can be added as events to the MachineSet object and/or logged in the<br />controller's output.||
-|**fullyLabeledReplicas**|int|The number of replicas that have labels matching the labels of the machine template of the MachineSet.||
+|**failureMessage**|str|failureMessage will be set in the event that there is a terminal problem<br />reconciling the Machine and will contain a more verbose string suitable<br />for logging and human consumption.||
+|**failureReason**|str|failureReason will be set in the event that there is a terminal problem<br />reconciling the Machine and will contain a succinct value suitable<br />for machine interpretation.<br /><br />In the event that there is a terminal problem reconciling the<br />replicas, both FailureReason and FailureMessage will be set. FailureReason<br />will be populated with a succinct value suitable for machine<br />interpretation, while FailureMessage will contain a more verbose<br />string suitable for logging and human consumption.<br /><br />These fields should not be set for transitive errors that a<br />controller faces that are expected to be fixed automatically over<br />time (like service outages), but instead indicate that something is<br />fundamentally wrong with the MachineTemplate's spec or the configuration of<br />the machine controller, and that manual intervention is required. Examples<br />of terminal errors would be invalid combinations of settings in the<br />spec, values that are unsupported by the machine controller, or the<br />responsible machine controller itself being critically misconfigured.<br /><br />Any transient errors that occur during the reconciliation of Machines<br />can be added as events to the MachineSet object and/or logged in the<br />controller's output.||
+|**fullyLabeledReplicas**|int|fullyLabeledReplicas is the number of replicas that have labels matching the labels of the machine template of the MachineSet.||
 |**observedGeneration**|int|observedGeneration reflects the generation of the most recently observed MachineSet.||
-|**readyReplicas**|int|The number of ready replicas for this MachineSet. A machine is considered ready when the node has been created and is "Ready".||
+|**readyReplicas**|int|readyReplicas is the number of ready replicas for this MachineSet. A machine is considered ready when the node has been created and is "Ready".||
 |**replicas**|int|replicas is the most recently observed number of replicas.||
 |**selector**|str|selector is the same as the label selector but in the string format to avoid introspection<br />by clients. The string will be in the same format as the query-param syntax.<br />More info about label selectors: http://kubernetes.io/docs/user-guide/labels#label-selectors||
 ### ClusterxK8sIoV1alpha4MachineSetStatusConditionsItems0
@@ -6817,15 +6439,15 @@ Condition defines an observation of a Cluster API resource operational state.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime**|str|Last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
-|**message**|str|A human readable message indicating details about the transition.<br />This field may be empty.||
-|**reason**|str|The reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may not be empty.||
+|**lastTransitionTime**|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
+|**message**|str|message is a human readable message indicating details about the transition.<br />This field may be empty.||
+|**reason**|str|reason is the reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may not be empty.||
 |**severity**|str|severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
 |**status** `required`|str|status of the condition, one of True, False, Unknown.||
 |**type** `required`|str|||
 ### ClusterxK8sIoV1alpha4MachineSpec
 
-MachineSpec defines the desired state of Machine.
+spec is the desired state of Machine.
 
 #### Attributes
 
@@ -6880,7 +6502,7 @@ infrastructureRef is a required reference to a custom resource offered by an inf
 |**uid**|str|UID of the referent.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids||
 ### ClusterxK8sIoV1alpha4MachineStatus
 
-MachineStatus defines the observed state of Machine.
+status is the observed state of Machine.
 
 #### Attributes
 
@@ -6906,7 +6528,7 @@ MachineAddress contains information for the node's address.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**address** `required`|str|The machine address.||
+|**address** `required`|str|address is the machine address.||
 |**type** `required`|str|||
 ### ClusterxK8sIoV1alpha4MachineStatusConditionsItems0
 
@@ -6916,9 +6538,9 @@ Condition defines an observation of a Cluster API resource operational state.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime**|str|Last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
-|**message**|str|A human readable message indicating details about the transition.<br />This field may be empty.||
-|**reason**|str|The reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may not be empty.||
+|**lastTransitionTime**|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
+|**message**|str|message is a human readable message indicating details about the transition.<br />This field may be empty.||
+|**reason**|str|reason is the reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may not be empty.||
 |**severity**|str|severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
 |**status** `required`|str|status of the condition, one of True, False, Unknown.||
 |**type** `required`|str|||
@@ -6957,7 +6579,7 @@ nodeRef will point to the corresponding Node if it exists.
 |**uid**|str|UID of the referent.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids||
 ### ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpec
 
-KubeadmControlPlaneSpec defines the desired state of KubeadmControlPlane.
+spec is the desired state of KubeadmControlPlane.
 
 #### Attributes
 
@@ -6965,7 +6587,7 @@ KubeadmControlPlaneSpec defines the desired state of KubeadmControlPlane.
 | --- | --- | --- | --- |
 |**kubeadmConfigSpec** `required`|[ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec](#controlplaneclusterxk8siov1alpha4kubeadmcontrolplanespeckubeadmconfigspec)|kubeadm config spec||
 |**machineTemplate** `required`|[ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecMachineTemplate](#controlplaneclusterxk8siov1alpha4kubeadmcontrolplanespecmachinetemplate)|machine template||
-|**replicas**|int|Number of desired machines. Defaults to 1. When stacked etcd is used only<br />odd numbers are permitted, as per [etcd best practice](https://etcd.io/docs/v3.3.12/faq/#why-an-odd-number-of-cluster-members).<br />This is a pointer to distinguish between explicit zero and not specified.||
+|**replicas**|int|replicas is the number of desired machines. Defaults to 1. When stacked etcd is used only<br />odd numbers are permitted, as per [etcd best practice](https://etcd.io/docs/v3.3.12/faq/#why-an-odd-number-of-cluster-members).<br />This is a pointer to distinguish between explicit zero and not specified.||
 |**rolloutAfter**|str|rolloutAfter is a field to indicate a rollout should be performed<br />after the specified time even if no changes have been made to the<br />KubeadmControlPlane.||
 |**rolloutStrategy**|[ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecRolloutStrategy](#controlplaneclusterxk8siov1alpha4kubeadmcontrolplanespecrolloutstrategy)|rollout strategy||
 |**version** `required`|str|version defines the desired Kubernetes version.||
@@ -7001,7 +6623,7 @@ clusterConfiguration along with InitConfiguration are the configurations necessa
 |**apiServer**|[ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecClusterConfigurationAPIServer](#controlplaneclusterxk8siov1alpha4kubeadmcontrolplanespeckubeadmconfigspecclusterconfigurationapiserver)|api server||
 |**apiVersion**|str|APIVersion defines the versioned schema of this representation of an object.<br />Servers should convert recognized schemas to the latest internal value, and<br />may reject unrecognized values.<br />More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources||
 |**certificatesDir**|str|certificatesDir specifies where to store or look for all required certificates.<br />NB: if not provided, this will default to `/etc/kubernetes/pki`||
-|**clusterName**|str|The cluster name||
+|**clusterName**|str|clusterName is the cluster name||
 |**controlPlaneEndpoint**|str|controlPlaneEndpoint sets a stable IP address or DNS name for the control plane; it<br />can be a valid IP address or a RFC-1123 DNS subdomain, both with optional TCP port.<br />In case the ControlPlaneEndpoint is not specified, the AdvertiseAddress + BindPort<br />are used; in case the ControlPlaneEndpoint is specified but without a TCP port,<br />the BindPort is used.<br />Possible usages are:<br />e.g. In a cluster with more than one control plane instances, this field should be<br />assigned the address of the external load balancer in front of the<br />control plane instances.<br />e.g.  in environments with enforced node recycling, the ControlPlaneEndpoint<br />could be used for assigning a stable DNS to the control plane.<br />NB: This value defaults to the first value in the Cluster object status.apiEndpoints array.||
 |**controllerManager**|[ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecClusterConfigurationControllerManager](#controlplaneclusterxk8siov1alpha4kubeadmcontrolplanespeckubeadmconfigspecclusterconfigurationcontrollermanager)|controller manager||
 |**dns**|[ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpecClusterConfigurationDNS](#controlplaneclusterxk8siov1alpha4kubeadmcontrolplanespeckubeadmconfigspecclusterconfigurationdns)|dns||
@@ -7420,17 +7042,17 @@ infrastructureRef is a required reference to a custom resource offered by an inf
 |**uid**|str|UID of the referent.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids||
 ### ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecMachineTemplateMetadata
 
-Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+metadata is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**annotations**|{str:str}|annotations is an unstructured key value map stored with a resource that may be<br />set by external tools to store and retrieve arbitrary metadata. They are not<br />queryable and should be preserved when modifying objects.<br />More info: http://kubernetes.io/docs/user-guide/annotations||
-|**labels**|{str:str}|Map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
+|**labels**|{str:str}|labels is a map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
 ### ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecRolloutStrategy
 
-The RolloutStrategy to use to replace control plane machines with new ones.
+rolloutStrategy is the RolloutStrategy to use to replace control plane machines with new ones.
 
 #### Attributes
 
@@ -7440,32 +7062,32 @@ The RolloutStrategy to use to replace control plane machines with new ones.
 |**type**|str|||
 ### ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecRolloutStrategyRollingUpdate
 
-Rolling update config params. Present only if RolloutStrategyType = RollingUpdate.
+rollingUpdate is the rolling update config params. Present only if RolloutStrategyType = RollingUpdate.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**maxSurge**|int | str|The maximum number of control planes that can be scheduled above or under the<br />desired number of control planes.<br />Value can be an absolute number 1 or 0.<br />Defaults to 1.<br />Example: when this is set to 1, the control plane can be scaled<br />up immediately when the rolling update starts.||
+|**maxSurge**|int | str|maxSurge is the maximum number of control planes that can be scheduled above or under the<br />desired number of control planes.<br />Value can be an absolute number 1 or 0.<br />Defaults to 1.<br />Example: when this is set to 1, the control plane can be scaled<br />up immediately when the rolling update starts.||
 ### ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneStatus
 
-KubeadmControlPlaneStatus defines the observed state of KubeadmControlPlane.
+status is the observed state of KubeadmControlPlane.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**conditions**|[[ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneStatusConditionsItems0](#controlplaneclusterxk8siov1alpha4kubeadmcontrolplanestatusconditionsitems0)]|conditions defines current service state of the KubeadmControlPlane.||
-|**failureMessage**|str|ErrorMessage indicates that there is a terminal problem reconciling the<br />state, and will be set to a descriptive error message.||
+|**failureMessage**|str|failureMessage indicates that there is a terminal problem reconciling the<br />state, and will be set to a descriptive error message.||
 |**failureReason**|str|failureReason indicates that there is a terminal problem reconciling the<br />state, and will be set to a token value suitable for<br />programmatic interpretation.||
 |**initialized**|bool|initialized denotes whether or not the control plane has the<br />uploaded kubeadm-config configmap.||
 |**observedGeneration**|int|observedGeneration is the latest generation observed by the controller.||
 |**ready**|bool|ready denotes that the KubeadmControlPlane API Server is ready to<br />receive requests.||
-|**readyReplicas**|int|Total number of fully running and ready control plane machines.||
-|**replicas**|int|Total number of non-terminated machines targeted by this control plane<br />(their labels match the selector).||
+|**readyReplicas**|int|readyReplicas is the total number of fully running and ready control plane machines.||
+|**replicas**|int|replicas is the total number of non-terminated machines targeted by this control plane<br />(their labels match the selector).||
 |**selector**|str|selector is the label selector in string format to avoid introspection<br />by clients, and is used to provide the CRD-based integration for the<br />scale subresource and additional integrations for things like kubectl<br />describe.. The string will be in the same format as the query-param syntax.<br />More info about label selectors: http://kubernetes.io/docs/user-guide/labels#label-selectors||
-|**unavailableReplicas**|int|Total number of unavailable machines targeted by this control plane.<br />This is the total number of machines that are still required for<br />the deployment to have 100% available capacity. They may either<br />be machines that are running but not yet ready or machines<br />that still have not been created.||
-|**updatedReplicas**|int|Total number of non-terminated machines targeted by this control plane<br />that have the desired template spec.||
+|**unavailableReplicas**|int|unavailableReplicas is the total number of unavailable machines targeted by this control plane.<br />This is the total number of machines that are still required for<br />the deployment to have 100% available capacity. They may either<br />be machines that are running but not yet ready or machines<br />that still have not been created.||
+|**updatedReplicas**|int|updatedReplicas is the total number of non-terminated machines targeted by this control plane<br />that have the desired template spec.||
 |**version**|str|version represents the minimum Kubernetes version for the control plane machines<br />in the cluster.||
 ### ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneStatusConditionsItems0
 
@@ -7475,15 +7097,15 @@ Condition defines an observation of a Cluster API resource operational state.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime**|str|Last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
-|**message**|str|A human readable message indicating details about the transition.<br />This field may be empty.||
-|**reason**|str|The reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may not be empty.||
+|**lastTransitionTime**|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
+|**message**|str|message is a human readable message indicating details about the transition.<br />This field may be empty.||
+|**reason**|str|reason is the reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may not be empty.||
 |**severity**|str|severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
 |**status** `required`|str|status of the condition, one of True, False, Unknown.||
 |**type** `required`|str|||
 ### ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneTemplateSpec
 
-KubeadmControlPlaneTemplateSpec defines the desired state of KubeadmControlPlaneTemplate.
+spec is the desired state of KubeadmControlPlaneTemplate.
 
 #### Attributes
 
@@ -7492,7 +7114,7 @@ KubeadmControlPlaneTemplateSpec defines the desired state of KubeadmControlPlane
 |**template** `required`|[ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneTemplateSpecTemplate](#controlplaneclusterxk8siov1alpha4kubeadmcontrolplanetemplatespectemplate)|template||
 ### ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneTemplateSpecTemplate
 
-KubeadmControlPlaneTemplateResource describes the data needed to create a KubeadmControlPlane from a template.
+template defines the desired state of KubeadmControlPlaneTemplate.
 
 #### Attributes
 
@@ -7501,7 +7123,7 @@ KubeadmControlPlaneTemplateResource describes the data needed to create a Kubead
 |**spec** `required`|[ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneTemplateSpecTemplateSpec](#controlplaneclusterxk8siov1alpha4kubeadmcontrolplanetemplatespectemplatespec)|spec||
 ### ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneTemplateSpecTemplateSpec
 
-KubeadmControlPlaneSpec defines the desired state of KubeadmControlPlane.
+spec is the desired state of KubeadmControlPlane.
 
 #### Attributes
 
@@ -7509,7 +7131,7 @@ KubeadmControlPlaneSpec defines the desired state of KubeadmControlPlane.
 | --- | --- | --- | --- |
 |**kubeadmConfigSpec** `required`|[ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpec](#controlplaneclusterxk8siov1alpha4kubeadmcontrolplanetemplatespectemplatespeckubeadmconfigspec)|kubeadm config spec||
 |**machineTemplate** `required`|[ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneTemplateSpecTemplateSpecMachineTemplate](#controlplaneclusterxk8siov1alpha4kubeadmcontrolplanetemplatespectemplatespecmachinetemplate)|machine template||
-|**replicas**|int|Number of desired machines. Defaults to 1. When stacked etcd is used only<br />odd numbers are permitted, as per [etcd best practice](https://etcd.io/docs/v3.3.12/faq/#why-an-odd-number-of-cluster-members).<br />This is a pointer to distinguish between explicit zero and not specified.||
+|**replicas**|int|replicas is the number of desired machines. Defaults to 1. When stacked etcd is used only<br />odd numbers are permitted, as per [etcd best practice](https://etcd.io/docs/v3.3.12/faq/#why-an-odd-number-of-cluster-members).<br />This is a pointer to distinguish between explicit zero and not specified.||
 |**rolloutAfter**|str|rolloutAfter is a field to indicate a rollout should be performed<br />after the specified time even if no changes have been made to the<br />KubeadmControlPlane.||
 |**rolloutStrategy**|[ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneTemplateSpecTemplateSpecRolloutStrategy](#controlplaneclusterxk8siov1alpha4kubeadmcontrolplanetemplatespectemplatespecrolloutstrategy)|rollout strategy||
 |**version** `required`|str|version defines the desired Kubernetes version.||
@@ -7545,7 +7167,7 @@ clusterConfiguration along with InitConfiguration are the configurations necessa
 |**apiServer**|[ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationAPIServer](#controlplaneclusterxk8siov1alpha4kubeadmcontrolplanetemplatespectemplatespeckubeadmconfigspecclusterconfigurationapiserver)|api server||
 |**apiVersion**|str|APIVersion defines the versioned schema of this representation of an object.<br />Servers should convert recognized schemas to the latest internal value, and<br />may reject unrecognized values.<br />More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources||
 |**certificatesDir**|str|certificatesDir specifies where to store or look for all required certificates.<br />NB: if not provided, this will default to `/etc/kubernetes/pki`||
-|**clusterName**|str|The cluster name||
+|**clusterName**|str|clusterName is the cluster name||
 |**controlPlaneEndpoint**|str|controlPlaneEndpoint sets a stable IP address or DNS name for the control plane; it<br />can be a valid IP address or a RFC-1123 DNS subdomain, both with optional TCP port.<br />In case the ControlPlaneEndpoint is not specified, the AdvertiseAddress + BindPort<br />are used; in case the ControlPlaneEndpoint is specified but without a TCP port,<br />the BindPort is used.<br />Possible usages are:<br />e.g. In a cluster with more than one control plane instances, this field should be<br />assigned the address of the external load balancer in front of the<br />control plane instances.<br />e.g.  in environments with enforced node recycling, the ControlPlaneEndpoint<br />could be used for assigning a stable DNS to the control plane.<br />NB: This value defaults to the first value in the Cluster object status.apiEndpoints array.||
 |**controllerManager**|[ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationControllerManager](#controlplaneclusterxk8siov1alpha4kubeadmcontrolplanetemplatespectemplatespeckubeadmconfigspecclusterconfigurationcontrollermanager)|controller manager||
 |**dns**|[ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationDNS](#controlplaneclusterxk8siov1alpha4kubeadmcontrolplanetemplatespectemplatespeckubeadmconfigspecclusterconfigurationdns)|dns||
@@ -7964,17 +7586,17 @@ infrastructureRef is a required reference to a custom resource offered by an inf
 |**uid**|str|UID of the referent.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids||
 ### ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneTemplateSpecTemplateSpecMachineTemplateMetadata
 
-Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+metadata is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**annotations**|{str:str}|annotations is an unstructured key value map stored with a resource that may be<br />set by external tools to store and retrieve arbitrary metadata. They are not<br />queryable and should be preserved when modifying objects.<br />More info: http://kubernetes.io/docs/user-guide/annotations||
-|**labels**|{str:str}|Map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
+|**labels**|{str:str}|labels is a map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
 ### ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneTemplateSpecTemplateSpecRolloutStrategy
 
-The RolloutStrategy to use to replace control plane machines with new ones.
+rolloutStrategy is the RolloutStrategy to use to replace control plane machines with new ones.
 
 #### Attributes
 
@@ -7984,13 +7606,13 @@ The RolloutStrategy to use to replace control plane machines with new ones.
 |**type**|str|||
 ### ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneTemplateSpecTemplateSpecRolloutStrategyRollingUpdate
 
-Rolling update config params. Present only if RolloutStrategyType = RollingUpdate.
+rollingUpdate is the rolling update config params. Present only if RolloutStrategyType = RollingUpdate.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**maxSurge**|int | str|The maximum number of control planes that can be scheduled above or under the<br />desired number of control planes.<br />Value can be an absolute number 1 or 0.<br />Defaults to 1.<br />Example: when this is set to 1, the control plane can be scaled<br />up immediately when the rolling update starts.||
+|**maxSurge**|int | str|maxSurge is the maximum number of control planes that can be scheduled above or under the<br />desired number of control planes.<br />Value can be an absolute number 1 or 0.<br />Defaults to 1.<br />Example: when this is set to 1, the control plane can be scaled<br />up immediately when the rolling update starts.||
 ### DockerCluster
 
 DockerCluster is the Schema for the dockerclusters API.  Deprecated: This type will be removed in one of the next releases.
@@ -8114,9 +7736,9 @@ Condition defines an observation of a Cluster API resource operational state.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime**|str|Last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
-|**message**|str|A human readable message indicating details about the transition.<br />This field may be empty.||
-|**reason**|str|The reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may not be empty.||
+|**lastTransitionTime**|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
+|**message**|str|message is a human readable message indicating details about the transition.<br />This field may be empty.||
+|**reason**|str|reason is the reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may not be empty.||
 |**severity**|str|severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
 |**status** `required`|str|status of the condition, one of True, False, Unknown.||
 |**type** `required`|str|||
@@ -8243,9 +7865,9 @@ Condition defines an observation of a Cluster API resource operational state.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime**|str|Last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
-|**message**|str|A human readable message indicating details about the transition.<br />This field may be empty.||
-|**reason**|str|The reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may not be empty.||
+|**lastTransitionTime**|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
+|**message**|str|message is a human readable message indicating details about the transition.<br />This field may be empty.||
+|**reason**|str|reason is the reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may not be empty.||
 |**severity**|str|severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
 |**status** `required`|str|status of the condition, one of True, False, Unknown.||
 |**type** `required`|str|||
@@ -8271,7 +7893,7 @@ MachineAddress contains information for the node's address.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**address** `required`|str|The machine address.||
+|**address** `required`|str|address is the machine address.||
 |**type** `required`|str|||
 ### InfrastructureClusterxK8sIoV1alpha4DockerMachineSpec
 
@@ -8317,7 +7939,7 @@ MachineAddress contains information for the node's address.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**address** `required`|str|The machine address.||
+|**address** `required`|str|address is the machine address.||
 |**type** `required`|str|||
 ### InfrastructureClusterxK8sIoV1alpha4DockerMachineStatusConditionsItems0
 
@@ -8327,9 +7949,9 @@ Condition defines an observation of a Cluster API resource operational state.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime**|str|Last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
-|**message**|str|A human readable message indicating details about the transition.<br />This field may be empty.||
-|**reason**|str|The reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may not be empty.||
+|**lastTransitionTime**|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
+|**message**|str|message is a human readable message indicating details about the transition.<br />This field may be empty.||
+|**reason**|str|reason is the reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may not be empty.||
 |**severity**|str|severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
 |**status** `required`|str|status of the condition, one of True, False, Unknown.||
 |**type** `required`|str|||
@@ -8492,7 +8114,7 @@ MachineSet is the Schema for the machinesets API.  Deprecated: This type will be
 |**status**|[ClusterxK8sIoV1alpha4MachineSetStatus](#clusterxk8siov1alpha4machinesetstatus)|status||
 ### AddonsClusterxK8sIoV1beta1ClusterResourceSetBindingSpec
 
-ClusterResourceSetBindingSpec defines the desired state of ClusterResourceSetBinding.
+spec is the desired state of ClusterResourceSetBinding.
 
 #### Attributes
 
@@ -8525,7 +8147,7 @@ ResourceBinding shows the status of a resource that belongs to a ClusterResource
 |**name** `required`|str|name of the resource that is in the same namespace with ClusterResourceSet object.||
 ### AddonsClusterxK8sIoV1beta1ClusterResourceSetSpec
 
-ClusterResourceSetSpec defines the desired state of ClusterResourceSet.
+spec is the desired state of ClusterResourceSet.
 
 #### Attributes
 
@@ -8536,7 +8158,7 @@ ClusterResourceSetSpec defines the desired state of ClusterResourceSet.
 |**strategy**|"ApplyOnce" | "Reconcile"|strategy is the strategy to be used during applying resources. Defaults to ApplyOnce. This field is immutable.||
 ### AddonsClusterxK8sIoV1beta1ClusterResourceSetSpecClusterSelector
 
-Label selector for Clusters. The Clusters that are selected by this will be the ones affected by this ClusterResourceSet. It must match the Cluster labels. This field is immutable. Label selector cannot be empty.
+clusterSelector is the label selector for Clusters. The Clusters that are selected by this will be the ones affected by this ClusterResourceSet. It must match the Cluster labels. This field is immutable. Label selector cannot be empty.
 
 #### Attributes
 
@@ -8567,7 +8189,7 @@ ResourceRef specifies a resource.
 |**name** `required`|str|name of the resource that is in the same namespace with ClusterResourceSet object.||
 ### AddonsClusterxK8sIoV1beta1ClusterResourceSetStatus
 
-ClusterResourceSetStatus defines the observed state of ClusterResourceSet.
+status is the observed state of ClusterResourceSet.
 
 #### Attributes
 
@@ -8584,9 +8206,9 @@ Condition defines an observation of a Cluster API resource operational state.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime** `required`|str|Last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
-|**message**|str|A human readable message indicating details about the transition.<br />This field may be empty.||
-|**reason**|str|The reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may be empty.||
+|**lastTransitionTime** `required`|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
+|**message**|str|message is a human readable message indicating details about the transition.<br />This field may be empty.||
+|**reason**|str|reason is the reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may be empty.||
 |**severity**|str|severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
 |**status** `required`|str|status of the condition, one of True, False, Unknown.||
 |**type** `required`|str|||
@@ -8615,12 +8237,13 @@ Condition contains details for one aspect of the current state of this API Resou
 |**type** `required`|str|||
 ### BootstrapClusterxK8sIoV1beta1KubeadmConfigSpec
 
-KubeadmConfigSpec defines the desired state of KubeadmConfig. Either ClusterConfiguration and InitConfiguration should be defined or the JoinConfiguration should be defined.
+spec is the desired state of KubeadmConfig.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
+|**bootCommands**|[str]|bootCommands specifies extra commands to run very early in the boot process via the cloud-init bootcmd<br />module. bootcmd will run on every boot, 'cloud-init-per' command can be used to make bootcmd run exactly<br />once. This is typically run in the cloud-init.service systemd unit. This has no effect in Ignition.||
 |**clusterConfiguration**|[BootstrapClusterxK8sIoV1beta1KubeadmConfigSpecClusterConfiguration](#bootstrapclusterxk8siov1beta1kubeadmconfigspecclusterconfiguration)|cluster configuration||
 |**diskSetup**|[BootstrapClusterxK8sIoV1beta1KubeadmConfigSpecDiskSetup](#bootstrapclusterxk8siov1beta1kubeadmconfigspecdisksetup)|disk setup||
 |**files**|[[BootstrapClusterxK8sIoV1beta1KubeadmConfigSpecFilesItems0](#bootstrapclusterxk8siov1beta1kubeadmconfigspecfilesitems0)]|files specifies extra files to be passed to user_data upon creation.||
@@ -8630,8 +8253,8 @@ KubeadmConfigSpec defines the desired state of KubeadmConfig. Either ClusterConf
 |**joinConfiguration**|[BootstrapClusterxK8sIoV1beta1KubeadmConfigSpecJoinConfiguration](#bootstrapclusterxk8siov1beta1kubeadmconfigspecjoinconfiguration)|join configuration||
 |**mounts**|[[str]]|mounts specifies a list of mount points to be setup.||
 |**ntp**|[BootstrapClusterxK8sIoV1beta1KubeadmConfigSpecNtp](#bootstrapclusterxk8siov1beta1kubeadmconfigspecntp)|ntp||
-|**postKubeadmCommands**|[str]|postKubeadmCommands specifies extra commands to run after kubeadm runs||
-|**preKubeadmCommands**|[str]|preKubeadmCommands specifies extra commands to run before kubeadm runs||
+|**postKubeadmCommands**|[str]|postKubeadmCommands specifies extra commands to run after kubeadm runs.<br />With cloud-init, this is appended to the runcmd module configuration, and is typically executed in<br />the cloud-final.service systemd unit. In Ignition, this is appended to /etc/kubeadm.sh.||
+|**preKubeadmCommands**|[str]|preKubeadmCommands specifies extra commands to run before kubeadm runs.<br />With cloud-init, this is prepended to the runcmd module configuration, and is typically executed in<br />the cloud-final.service systemd unit. In Ignition, this is prepended to /etc/kubeadm.sh.||
 |**useExperimentalRetryJoin**|bool|useExperimentalRetryJoin replaces a basic kubeadm command with a shell<br />script with retries for joins.<br /><br />This is meant to be an experimental temporary workaround on some environments<br />where joins fail due to timing (and other issues). The long term goal is to add retries to<br />kubeadm proper and use that functionality.<br /><br />This will add about 40KB to userdata<br /><br />For more information, refer to https://github.com/kubernetes-sigs/cluster-api/pull/2763#discussion_r397306055.<br /><br />Deprecated: This experimental fix is no longer needed and this field will be removed in a future release.<br />When removing also remove from staticcheck exclude-rules for SA1019 in golangci.yml||
 |**users**|[[BootstrapClusterxK8sIoV1beta1KubeadmConfigSpecUsersItems0](#bootstrapclusterxk8siov1beta1kubeadmconfigspecusersitems0)]|users specifies extra users to add||
 |**verbosity**|int|verbosity is the number for the kubeadm log level verbosity.<br />It overrides the `--v` flag in kubeadm commands.||
@@ -8646,7 +8269,7 @@ clusterConfiguration along with InitConfiguration are the configurations necessa
 |**apiServer**|[BootstrapClusterxK8sIoV1beta1KubeadmConfigSpecClusterConfigurationAPIServer](#bootstrapclusterxk8siov1beta1kubeadmconfigspecclusterconfigurationapiserver)|api server||
 |**apiVersion**|str|APIVersion defines the versioned schema of this representation of an object.<br />Servers should convert recognized schemas to the latest internal value, and<br />may reject unrecognized values.<br />More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources||
 |**certificatesDir**|str|certificatesDir specifies where to store or look for all required certificates.<br />NB: if not provided, this will default to `/etc/kubernetes/pki`||
-|**clusterName**|str|The cluster name||
+|**clusterName**|str|clusterName is the cluster name||
 |**controlPlaneEndpoint**|str|controlPlaneEndpoint sets a stable IP address or DNS name for the control plane; it<br />can be a valid IP address or a RFC-1123 DNS subdomain, both with optional TCP port.<br />In case the ControlPlaneEndpoint is not specified, the AdvertiseAddress + BindPort<br />are used; in case the ControlPlaneEndpoint is specified but without a TCP port,<br />the BindPort is used.<br />Possible usages are:<br />e.g. In a cluster with more than one control plane instances, this field should be<br />assigned the address of the external load balancer in front of the<br />control plane instances.<br />e.g.  in environments with enforced node recycling, the ControlPlaneEndpoint<br />could be used for assigning a stable DNS to the control plane.<br />NB: This value defaults to the first value in the Cluster object status.apiEndpoints array.||
 |**controllerManager**|[BootstrapClusterxK8sIoV1beta1KubeadmConfigSpecClusterConfigurationControllerManager](#bootstrapclusterxk8siov1beta1kubeadmconfigspecclusterconfigurationcontrollermanager)|controller manager||
 |**dns**|[BootstrapClusterxK8sIoV1beta1KubeadmConfigSpecClusterConfigurationDNS](#bootstrapclusterxk8siov1beta1kubeadmconfigspecclusterconfigurationdns)|dns||
@@ -9074,7 +8697,7 @@ Filesystem defines the file systems to be created.
 |**device** `required`|str|device specifies the device name||
 |**extraOpts**|[str]|extraOpts defined extra options to add to the command for creating the file system.||
 |**filesystem** `required`|str|filesystem specifies the file system type.||
-|**label** `required`|str|label specifies the file system label to be used. If set to None, no label is used.||
+|**label**|str|label specifies the file system label to be used. If set to None, no label is used.||
 |**overwrite**|bool|overwrite defines whether or not to overwrite any existing filesystem.<br />If true, any pre-existing file system will be destroyed. Use with Caution.||
 |**partition**|str|partition specifies the partition to use. The valid options are: "auto\|any", "auto", "any", "none", and <NUM>, where NUM is the actual partition number.||
 |**replaceFS**|str|replaceFS is a special directive, used for Microsoft Azure that instructs cloud-init to replace a file system of <FS_TYPE>.<br />NOTE: unless you define a label, this requires the use of the 'any' partition directive.||
@@ -9089,7 +8712,7 @@ Partition defines how to create and layout a partition.
 |**device** `required`|str|device is the name of the device.||
 |**layout** `required`|bool|layout specifies the device layout.<br />If it is true, a single partition will be created for the entire device.<br />When layout is false, it means don't partition or ignore existing partitioning.||
 |**overwrite**|bool|overwrite describes whether to skip checks and create the partition if a partition or filesystem is found on the device.<br />Use with caution. Default is 'false'.||
-|**tableType**|str|tableType specifies the tupe of partition table. The following are supported:<br />'mbr': default and setups a MS-DOS partition table<br />'gpt': setups a GPT partition table||
+|**tableType**|"mbr" | "gpt"|tableType specifies the tupe of partition table. The following are supported:<br />'mbr': default and setups a MS-DOS partition table<br />'gpt': setups a GPT partition table||
 ### BootstrapClusterxK8sIoV1beta1KubeadmConfigSpecFilesItems0
 
 File defines the input for generating write_files in cloud-init.
@@ -9275,7 +8898,7 @@ bootstrapToken is used to set the options for bootstrap token based discovery Bo
 | --- | --- | --- | --- |
 |**apiServerEndpoint**|str|apiServerEndpoint is an IP or domain name to the API server from which info will be fetched.||
 |**caCertHashes**|[str]|caCertHashes specifies a set of public key pins to verify<br />when token-based discovery is used. The root CA found during discovery<br />must match one of these values. Specifying an empty set disables root CA<br />pinning, which can be unsafe. Each hash is specified as "<type>:<value>",<br />where the only currently supported type is "sha256". This is a hex-encoded<br />SHA-256 hash of the Subject Public Key Info (SPKI) object in DER-encoded<br />ASN.1. These hashes can be calculated using, for example, OpenSSL:<br />openssl x509 -pubkey -in ca.crt openssl rsa -pubin -outform der 2>&/dev/null \| openssl dgst -sha256 -hex||
-|**token** `required`|str|token is a token used to validate cluster information<br />fetched from the control-plane.||
+|**token**|str|token is a token used to validate cluster information<br />fetched from the control-plane.||
 |**unsafeSkipCAVerification**|bool|unsafeSkipCAVerification allows token-based discovery<br />without CA verification via CACertHashes. This can weaken<br />the security of kubeadm since other nodes can impersonate the control-plane.||
 ### BootstrapClusterxK8sIoV1beta1KubeadmConfigSpecJoinConfigurationDiscoveryFile
 
@@ -9338,8 +8961,8 @@ exec specifies a custom exec-based authentication plugin for the kubernetes clus
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**apiVersion**|str|Preferred input version of the ExecInfo. The returned ExecCredentials MUST use<br />the same encoding version as the input.<br />Defaults to client.authentication.k8s.io/v1 if not set.||
-|**args**|[str]|Arguments to pass to the command when executing it.||
+|**apiVersion**|str|apiVersion is preferred input version of the ExecInfo. The returned ExecCredentials MUST use<br />the same encoding version as the input.<br />Defaults to client.authentication.k8s.io/v1 if not set.||
+|**args**|[str]|args is the arguments to pass to the command when executing it.||
 |**command** `required`|str|command to execute.||
 |**env**|[[BootstrapClusterxK8sIoV1beta1KubeadmConfigSpecJoinConfigurationDiscoveryFileKubeConfigUserExecEnvItems0](#bootstrapclusterxk8siov1beta1kubeadmconfigspecjoinconfigurationdiscoveryfilekubeconfiguserexecenvitems0)]|env defines additional environment variables to expose to the process. These<br />are unioned with the host's environment, as well as variables client-go uses<br />to pass argument to the plugin.||
 |**provideClusterInfo**|bool|provideClusterInfo determines whether or not to provide cluster information,<br />which could potentially contain very large CA data, to this exec plugin as a<br />part of the KUBERNETES_EXEC_INFO environment variable. By default, it is set<br />to false. Package k8s.io/client-go/tools/auth/exec provides helper methods for<br />reading this environment variable.||
@@ -9351,8 +8974,8 @@ KubeConfigAuthExecEnv is used for setting environment variables when executing a
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**name** `required`|str|name||
-|**value** `required`|str|value||
+|**name** `required`|str|name of the environment variable||
+|**value** `required`|str|value of the environment variable||
 ### BootstrapClusterxK8sIoV1beta1KubeadmConfigSpecJoinConfigurationNodeRegistration
 
 nodeRegistration holds fields that relate to registering the new control-plane node to the cluster. When used in the context of control plane nodes, NodeRegistration should remain consistent across both InitConfiguration and JoinConfiguration
@@ -9440,7 +9063,7 @@ secret represents a secret that should populate this password.
 |**name** `required`|str|name of the secret in the KubeadmBootstrapConfig's namespace to use.||
 ### BootstrapClusterxK8sIoV1beta1KubeadmConfigStatus
 
-KubeadmConfigStatus defines the observed state of KubeadmConfig.
+status is the observed state of KubeadmConfig.
 
 #### Attributes
 
@@ -9461,9 +9084,9 @@ Condition defines an observation of a Cluster API resource operational state.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime** `required`|str|Last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
-|**message**|str|A human readable message indicating details about the transition.<br />This field may be empty.||
-|**reason**|str|The reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may be empty.||
+|**lastTransitionTime** `required`|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
+|**message**|str|message is a human readable message indicating details about the transition.<br />This field may be empty.||
+|**reason**|str|reason is the reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may be empty.||
 |**severity**|str|severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
 |**status** `required`|str|status of the condition, one of True, False, Unknown.||
 |**type** `required`|str|||
@@ -9492,7 +9115,7 @@ Condition contains details for one aspect of the current state of this API Resou
 |**type** `required`|str|||
 ### BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpec
 
-KubeadmConfigTemplateSpec defines the desired state of KubeadmConfigTemplate.
+spec is the desired state of KubeadmConfigTemplate.
 
 #### Attributes
 
@@ -9501,7 +9124,7 @@ KubeadmConfigTemplateSpec defines the desired state of KubeadmConfigTemplate.
 |**template** `required`|[BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplate](#bootstrapclusterxk8siov1beta1kubeadmconfigtemplatespectemplate)|template||
 ### BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplate
 
-KubeadmConfigTemplateResource defines the Template structure.
+template defines the desired state of KubeadmConfigTemplate.
 
 #### Attributes
 
@@ -9511,22 +9134,23 @@ KubeadmConfigTemplateResource defines the Template structure.
 |**spec**|[BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpec](#bootstrapclusterxk8siov1beta1kubeadmconfigtemplatespectemplatespec)|spec||
 ### BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateMetadata
 
-Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+metadata is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**annotations**|{str:str}|annotations is an unstructured key value map stored with a resource that may be<br />set by external tools to store and retrieve arbitrary metadata. They are not<br />queryable and should be preserved when modifying objects.<br />More info: http://kubernetes.io/docs/user-guide/annotations||
-|**labels**|{str:str}|Map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
+|**labels**|{str:str}|labels is a map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
 ### BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpec
 
-KubeadmConfigSpec defines the desired state of KubeadmConfig. Either ClusterConfiguration and InitConfiguration should be defined or the JoinConfiguration should be defined.
+spec is the desired state of KubeadmConfig.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
+|**bootCommands**|[str]|bootCommands specifies extra commands to run very early in the boot process via the cloud-init bootcmd<br />module. bootcmd will run on every boot, 'cloud-init-per' command can be used to make bootcmd run exactly<br />once. This is typically run in the cloud-init.service systemd unit. This has no effect in Ignition.||
 |**clusterConfiguration**|[BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecClusterConfiguration](#bootstrapclusterxk8siov1beta1kubeadmconfigtemplatespectemplatespecclusterconfiguration)|cluster configuration||
 |**diskSetup**|[BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecDiskSetup](#bootstrapclusterxk8siov1beta1kubeadmconfigtemplatespectemplatespecdisksetup)|disk setup||
 |**files**|[[BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecFilesItems0](#bootstrapclusterxk8siov1beta1kubeadmconfigtemplatespectemplatespecfilesitems0)]|files specifies extra files to be passed to user_data upon creation.||
@@ -9536,8 +9160,8 @@ KubeadmConfigSpec defines the desired state of KubeadmConfig. Either ClusterConf
 |**joinConfiguration**|[BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecJoinConfiguration](#bootstrapclusterxk8siov1beta1kubeadmconfigtemplatespectemplatespecjoinconfiguration)|join configuration||
 |**mounts**|[[str]]|mounts specifies a list of mount points to be setup.||
 |**ntp**|[BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecNtp](#bootstrapclusterxk8siov1beta1kubeadmconfigtemplatespectemplatespecntp)|ntp||
-|**postKubeadmCommands**|[str]|postKubeadmCommands specifies extra commands to run after kubeadm runs||
-|**preKubeadmCommands**|[str]|preKubeadmCommands specifies extra commands to run before kubeadm runs||
+|**postKubeadmCommands**|[str]|postKubeadmCommands specifies extra commands to run after kubeadm runs.<br />With cloud-init, this is appended to the runcmd module configuration, and is typically executed in<br />the cloud-final.service systemd unit. In Ignition, this is appended to /etc/kubeadm.sh.||
+|**preKubeadmCommands**|[str]|preKubeadmCommands specifies extra commands to run before kubeadm runs.<br />With cloud-init, this is prepended to the runcmd module configuration, and is typically executed in<br />the cloud-final.service systemd unit. In Ignition, this is prepended to /etc/kubeadm.sh.||
 |**useExperimentalRetryJoin**|bool|useExperimentalRetryJoin replaces a basic kubeadm command with a shell<br />script with retries for joins.<br /><br />This is meant to be an experimental temporary workaround on some environments<br />where joins fail due to timing (and other issues). The long term goal is to add retries to<br />kubeadm proper and use that functionality.<br /><br />This will add about 40KB to userdata<br /><br />For more information, refer to https://github.com/kubernetes-sigs/cluster-api/pull/2763#discussion_r397306055.<br /><br />Deprecated: This experimental fix is no longer needed and this field will be removed in a future release.<br />When removing also remove from staticcheck exclude-rules for SA1019 in golangci.yml||
 |**users**|[[BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecUsersItems0](#bootstrapclusterxk8siov1beta1kubeadmconfigtemplatespectemplatespecusersitems0)]|users specifies extra users to add||
 |**verbosity**|int|verbosity is the number for the kubeadm log level verbosity.<br />It overrides the `--v` flag in kubeadm commands.||
@@ -9552,7 +9176,7 @@ clusterConfiguration along with InitConfiguration are the configurations necessa
 |**apiServer**|[BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecClusterConfigurationAPIServer](#bootstrapclusterxk8siov1beta1kubeadmconfigtemplatespectemplatespecclusterconfigurationapiserver)|api server||
 |**apiVersion**|str|APIVersion defines the versioned schema of this representation of an object.<br />Servers should convert recognized schemas to the latest internal value, and<br />may reject unrecognized values.<br />More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources||
 |**certificatesDir**|str|certificatesDir specifies where to store or look for all required certificates.<br />NB: if not provided, this will default to `/etc/kubernetes/pki`||
-|**clusterName**|str|The cluster name||
+|**clusterName**|str|clusterName is the cluster name||
 |**controlPlaneEndpoint**|str|controlPlaneEndpoint sets a stable IP address or DNS name for the control plane; it<br />can be a valid IP address or a RFC-1123 DNS subdomain, both with optional TCP port.<br />In case the ControlPlaneEndpoint is not specified, the AdvertiseAddress + BindPort<br />are used; in case the ControlPlaneEndpoint is specified but without a TCP port,<br />the BindPort is used.<br />Possible usages are:<br />e.g. In a cluster with more than one control plane instances, this field should be<br />assigned the address of the external load balancer in front of the<br />control plane instances.<br />e.g.  in environments with enforced node recycling, the ControlPlaneEndpoint<br />could be used for assigning a stable DNS to the control plane.<br />NB: This value defaults to the first value in the Cluster object status.apiEndpoints array.||
 |**controllerManager**|[BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecClusterConfigurationControllerManager](#bootstrapclusterxk8siov1beta1kubeadmconfigtemplatespectemplatespecclusterconfigurationcontrollermanager)|controller manager||
 |**dns**|[BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecClusterConfigurationDNS](#bootstrapclusterxk8siov1beta1kubeadmconfigtemplatespectemplatespecclusterconfigurationdns)|dns||
@@ -9980,7 +9604,7 @@ Filesystem defines the file systems to be created.
 |**device** `required`|str|device specifies the device name||
 |**extraOpts**|[str]|extraOpts defined extra options to add to the command for creating the file system.||
 |**filesystem** `required`|str|filesystem specifies the file system type.||
-|**label** `required`|str|label specifies the file system label to be used. If set to None, no label is used.||
+|**label**|str|label specifies the file system label to be used. If set to None, no label is used.||
 |**overwrite**|bool|overwrite defines whether or not to overwrite any existing filesystem.<br />If true, any pre-existing file system will be destroyed. Use with Caution.||
 |**partition**|str|partition specifies the partition to use. The valid options are: "auto\|any", "auto", "any", "none", and <NUM>, where NUM is the actual partition number.||
 |**replaceFS**|str|replaceFS is a special directive, used for Microsoft Azure that instructs cloud-init to replace a file system of <FS_TYPE>.<br />NOTE: unless you define a label, this requires the use of the 'any' partition directive.||
@@ -9995,7 +9619,7 @@ Partition defines how to create and layout a partition.
 |**device** `required`|str|device is the name of the device.||
 |**layout** `required`|bool|layout specifies the device layout.<br />If it is true, a single partition will be created for the entire device.<br />When layout is false, it means don't partition or ignore existing partitioning.||
 |**overwrite**|bool|overwrite describes whether to skip checks and create the partition if a partition or filesystem is found on the device.<br />Use with caution. Default is 'false'.||
-|**tableType**|str|tableType specifies the tupe of partition table. The following are supported:<br />'mbr': default and setups a MS-DOS partition table<br />'gpt': setups a GPT partition table||
+|**tableType**|"mbr" | "gpt"|tableType specifies the tupe of partition table. The following are supported:<br />'mbr': default and setups a MS-DOS partition table<br />'gpt': setups a GPT partition table||
 ### BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecFilesItems0
 
 File defines the input for generating write_files in cloud-init.
@@ -10181,7 +9805,7 @@ bootstrapToken is used to set the options for bootstrap token based discovery Bo
 | --- | --- | --- | --- |
 |**apiServerEndpoint**|str|apiServerEndpoint is an IP or domain name to the API server from which info will be fetched.||
 |**caCertHashes**|[str]|caCertHashes specifies a set of public key pins to verify<br />when token-based discovery is used. The root CA found during discovery<br />must match one of these values. Specifying an empty set disables root CA<br />pinning, which can be unsafe. Each hash is specified as "<type>:<value>",<br />where the only currently supported type is "sha256". This is a hex-encoded<br />SHA-256 hash of the Subject Public Key Info (SPKI) object in DER-encoded<br />ASN.1. These hashes can be calculated using, for example, OpenSSL:<br />openssl x509 -pubkey -in ca.crt openssl rsa -pubin -outform der 2>&/dev/null \| openssl dgst -sha256 -hex||
-|**token** `required`|str|token is a token used to validate cluster information<br />fetched from the control-plane.||
+|**token**|str|token is a token used to validate cluster information<br />fetched from the control-plane.||
 |**unsafeSkipCAVerification**|bool|unsafeSkipCAVerification allows token-based discovery<br />without CA verification via CACertHashes. This can weaken<br />the security of kubeadm since other nodes can impersonate the control-plane.||
 ### BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecJoinConfigurationDiscoveryFile
 
@@ -10244,8 +9868,8 @@ exec specifies a custom exec-based authentication plugin for the kubernetes clus
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**apiVersion**|str|Preferred input version of the ExecInfo. The returned ExecCredentials MUST use<br />the same encoding version as the input.<br />Defaults to client.authentication.k8s.io/v1 if not set.||
-|**args**|[str]|Arguments to pass to the command when executing it.||
+|**apiVersion**|str|apiVersion is preferred input version of the ExecInfo. The returned ExecCredentials MUST use<br />the same encoding version as the input.<br />Defaults to client.authentication.k8s.io/v1 if not set.||
+|**args**|[str]|args is the arguments to pass to the command when executing it.||
 |**command** `required`|str|command to execute.||
 |**env**|[[BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecJoinConfigurationDiscoveryFileKubeConfigUserExecEnvItems0](#bootstrapclusterxk8siov1beta1kubeadmconfigtemplatespectemplatespecjoinconfigurationdiscoveryfilekubeconfiguserexecenvitems0)]|env defines additional environment variables to expose to the process. These<br />are unioned with the host's environment, as well as variables client-go uses<br />to pass argument to the plugin.||
 |**provideClusterInfo**|bool|provideClusterInfo determines whether or not to provide cluster information,<br />which could potentially contain very large CA data, to this exec plugin as a<br />part of the KUBERNETES_EXEC_INFO environment variable. By default, it is set<br />to false. Package k8s.io/client-go/tools/auth/exec provides helper methods for<br />reading this environment variable.||
@@ -10257,8 +9881,8 @@ KubeConfigAuthExecEnv is used for setting environment variables when executing a
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**name** `required`|str|name||
-|**value** `required`|str|value||
+|**name** `required`|str|name of the environment variable||
+|**value** `required`|str|value of the environment variable||
 ### BootstrapClusterxK8sIoV1beta1KubeadmConfigTemplateSpecTemplateSpecJoinConfigurationNodeRegistration
 
 nodeRegistration holds fields that relate to registering the new control-plane node to the cluster. When used in the context of control plane nodes, NodeRegistration should remain consistent across both InitConfiguration and JoinConfiguration
@@ -10372,7 +9996,7 @@ ClusterClass is a template which can be used to create managed topologies.
 |**status**|[ClusterxK8sIoV1beta1ClusterClassStatus](#clusterxk8siov1beta1clusterclassstatus)|status||
 ### ClusterResourceSet
 
-ClusterResourceSet is the Schema for the clusterresourcesets API.
+ClusterResourceSet is the Schema for the clusterresourcesets API. For advanced use cases an add-on provider should be used instead.
 
 #### Attributes
 
@@ -10397,17 +10021,29 @@ ClusterResourceSetBinding lists all matching ClusterResourceSets with the cluste
 |**spec**|[AddonsClusterxK8sIoV1beta1ClusterResourceSetBindingSpec](#addonsclusterxk8siov1beta1clusterresourcesetbindingspec)|spec||
 ### ClusterxK8sIoV1beta1ClusterClassSpec
 
-ClusterClassSpec describes the desired state of the ClusterClass.
+spec is the desired state of ClusterClass.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
+|**availabilityGates**|[[ClusterxK8sIoV1beta1ClusterClassSpecAvailabilityGatesItems0](#clusterxk8siov1beta1clusterclassspecavailabilitygatesitems0)]|availabilityGates specifies additional conditions to include when evaluating Cluster Available condition.<br /><br />NOTE: this field is considered only for computing v1beta2 conditions.<br />NOTE: If a Cluster is using this ClusterClass, and this Cluster defines a custom list of availabilityGates,<br />such list overrides availabilityGates defined in this field.||
 |**controlPlane**|[ClusterxK8sIoV1beta1ClusterClassSpecControlPlane](#clusterxk8siov1beta1clusterclassspeccontrolplane)|control plane||
 |**infrastructure**|[ClusterxK8sIoV1beta1ClusterClassSpecInfrastructure](#clusterxk8siov1beta1clusterclassspecinfrastructure)|infrastructure||
+|**infrastructureNamingStrategy**|[ClusterxK8sIoV1beta1ClusterClassSpecInfrastructureNamingStrategy](#clusterxk8siov1beta1clusterclassspecinfrastructurenamingstrategy)|infrastructure naming strategy||
 |**patches**|[[ClusterxK8sIoV1beta1ClusterClassSpecPatchesItems0](#clusterxk8siov1beta1clusterclassspecpatchesitems0)]|patches defines the patches which are applied to customize<br />referenced templates of a ClusterClass.<br />Note: Patches will be applied in the order of the array.||
 |**variables**|[[ClusterxK8sIoV1beta1ClusterClassSpecVariablesItems0](#clusterxk8siov1beta1clusterclassspecvariablesitems0)]|variables defines the variables which can be configured<br />in the Cluster topology and are then used in patches.||
 |**workers**|[ClusterxK8sIoV1beta1ClusterClassSpecWorkers](#clusterxk8siov1beta1clusterclassspecworkers)|workers||
+### ClusterxK8sIoV1beta1ClusterClassSpecAvailabilityGatesItems0
+
+ClusterAvailabilityGate contains the type of a Cluster condition to be used as availability gate.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**conditionType** `required`|str|conditionType refers to a condition with matching type in the Cluster's condition list.<br />If the conditions doesn't exist, it will be treated as unknown.<br />Note: Both Cluster API conditions or conditions added by 3rd party controllers can be used as availability gates.||
+|**polarity**|"Positive" | "Negative"|polarity of the conditionType specified in this availabilityGate.<br />Valid values are Positive, Negative and omitted.<br />When omitted, the default behaviour will be Positive.<br />A positive polarity means that the condition should report a true status under normal conditions.<br />A negative polarity means that the condition should report a false status under normal conditions.||
 ### ClusterxK8sIoV1beta1ClusterClassSpecControlPlane
 
 controlPlane is a reference to a local struct that holds the details for provisioning the Control Plane for the Cluster.
@@ -10423,6 +10059,7 @@ controlPlane is a reference to a local struct that holds the details for provisi
 |**nodeDeletionTimeout**|str|nodeDeletionTimeout defines how long the controller will attempt to delete the Node that the Machine<br />hosts after the Machine is marked for deletion. A duration of 0 will retry deletion indefinitely.<br />Defaults to 10 seconds.<br />NOTE: This value can be overridden while defining a Cluster.Topology.||
 |**nodeDrainTimeout**|str|nodeDrainTimeout is the total amount of time that the controller will spend on draining a node.<br />The default value is 0, meaning that the node can be drained without any time limitations.<br />NOTE: NodeDrainTimeout is different from `kubectl drain --timeout`<br />NOTE: This value can be overridden while defining a Cluster.Topology.||
 |**nodeVolumeDetachTimeout**|str|nodeVolumeDetachTimeout is the total amount of time that the controller will spend on waiting for all volumes<br />to be detached. The default value is 0, meaning that the volumes can be detached without any time limitations.<br />NOTE: This value can be overridden while defining a Cluster.Topology.||
+|**readinessGates**|[[ClusterxK8sIoV1beta1ClusterClassSpecControlPlaneReadinessGatesItems0](#clusterxk8siov1beta1clusterclassspeccontrolplanereadinessgatesitems0)]|readinessGates specifies additional conditions to include when evaluating Machine Ready condition.<br /><br />This field can be used e.g. to instruct the machine controller to include in the computation for Machine's ready<br />computation a condition, managed by an external controllers, reporting the status of special software/hardware installed on the Machine.<br /><br />NOTE: This field is considered only for computing v1beta2 conditions.<br />NOTE: If a Cluster defines a custom list of readinessGates for the control plane,<br />such list overrides readinessGates defined in this field.<br />NOTE: Specific control plane provider implementations might automatically extend the list of readinessGates;<br />e.g. the kubeadm control provider adds ReadinessGates for the APIServerPodHealthy, SchedulerPodHealthy conditions, etc.||
 |**ref** `required`|[ClusterxK8sIoV1beta1ClusterClassSpecControlPlaneRef](#clusterxk8siov1beta1clusterclassspeccontrolplaneref)|ref||
 ### ClusterxK8sIoV1beta1ClusterClassSpecControlPlaneMachineHealthCheck
 
@@ -10432,11 +10069,11 @@ machineHealthCheck defines a MachineHealthCheck for this ControlPlaneClass. This
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**maxUnhealthy**|int | str|Any further remediation is only allowed if at most "MaxUnhealthy" machines selected by<br />"selector" are not healthy.||
+|**maxUnhealthy**|int | str|maxUnhealthy specifies the maximum number of unhealthy machines allowed.<br />Any further remediation is only allowed if at most "maxUnhealthy" machines selected by<br />"selector" are not healthy.||
 |**nodeStartupTimeout**|str|nodeStartupTimeout allows to set the maximum time for MachineHealthCheck<br />to consider a Machine unhealthy if a corresponding Node isn't associated<br />through a `Spec.ProviderID` field.<br /><br />The duration set in this field is compared to the greatest of:<br />- Cluster's infrastructure ready condition timestamp (if and when available)<br />- Control Plane's initialized condition timestamp (if and when available)<br />- Machine's infrastructure ready condition timestamp (if and when available)<br />- Machine's metadata creation timestamp<br /><br />Defaults to 10 minutes.<br />If you wish to disable this feature, set the value explicitly to 0.||
 |**remediationTemplate**|[ClusterxK8sIoV1beta1ClusterClassSpecControlPlaneMachineHealthCheckRemediationTemplate](#clusterxk8siov1beta1clusterclassspeccontrolplanemachinehealthcheckremediationtemplate)|remediation template||
 |**unhealthyConditions**|[[ClusterxK8sIoV1beta1ClusterClassSpecControlPlaneMachineHealthCheckUnhealthyConditionsItems0](#clusterxk8siov1beta1clusterclassspeccontrolplanemachinehealthcheckunhealthyconditionsitems0)]|unhealthyConditions contains a list of the conditions that determine<br />whether a node is considered unhealthy. The conditions are combined in a<br />logical OR, i.e. if any of the conditions is met, the node is unhealthy.||
-|**unhealthyRange**|str|Any further remediation is only allowed if the number of machines selected by "selector" as not healthy<br />is within the range of "UnhealthyRange". Takes precedence over MaxUnhealthy.<br />Eg. "[3-5]" - This means that remediation will be allowed only when:<br />(a) there are at least 3 unhealthy machines (and)<br />(b) there are at most 5 unhealthy machines||
+|**unhealthyRange**|str|unhealthyRange specifies the range of unhealthy machines allowed.<br />Any further remediation is only allowed if the number of machines selected by "selector" as not healthy<br />is within the range of "unhealthyRange". Takes precedence over maxUnhealthy.<br />Eg. "[3-5]" - This means that remediation will be allowed only when:<br />(a) there are at least 3 unhealthy machines (and)<br />(b) there are at most 5 unhealthy machines||
 ### ClusterxK8sIoV1beta1ClusterClassSpecControlPlaneMachineHealthCheckRemediationTemplate
 
 remediationTemplate is a reference to a remediation template provided by an infrastructure provider.  This field is completely optional, when filled, the MachineHealthCheck controller creates a new object from the template referenced and hands off remediation of the machine to a controller that lives outside of Cluster API.
@@ -10460,8 +10097,8 @@ UnhealthyCondition represents a Node condition type and value with a timeout spe
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**status** `required`|str|status||
-|**timeout** `required`|str|timeout||
+|**status** `required`|str|status of the condition, one of True, False, Unknown.||
+|**timeout** `required`|str|timeout is the duration that a node must be in a given status for,<br />after which the node is considered unhealthy.<br />For example, with a value of "1h", the node must match the status<br />for at least 1 hour before being considered unhealthy.||
 |**type** `required`|str|||
 ### ClusterxK8sIoV1beta1ClusterClassSpecControlPlaneMachineInfrastructure
 
@@ -10496,7 +10133,7 @@ metadata is the metadata applied to the ControlPlane and the Machines of the Con
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**annotations**|{str:str}|annotations is an unstructured key value map stored with a resource that may be<br />set by external tools to store and retrieve arbitrary metadata. They are not<br />queryable and should be preserved when modifying objects.<br />More info: http://kubernetes.io/docs/user-guide/annotations||
-|**labels**|{str:str}|Map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
+|**labels**|{str:str}|labels is a map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
 ### ClusterxK8sIoV1beta1ClusterClassSpecControlPlaneNamingStrategy
 
 namingStrategy allows changing the naming pattern used when creating the control plane provider object.
@@ -10506,6 +10143,16 @@ namingStrategy allows changing the naming pattern used when creating the control
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**template**|str|template defines the template to use for generating the name of the ControlPlane object.<br />If not defined, it will fallback to `{{ .cluster.name }}-{{ .random }}`.<br />If the templated string exceeds 63 characters, it will be trimmed to 58 characters and will<br />get concatenated with a random suffix of length 5.<br />The templating mechanism provides the following arguments:<br />* `.cluster.name`: The name of the cluster object.<br />* `.random`: A random alphanumeric string, without vowels, of length 5.||
+### ClusterxK8sIoV1beta1ClusterClassSpecControlPlaneReadinessGatesItems0
+
+MachineReadinessGate contains the type of a Machine condition to be used as a readiness gate.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**conditionType** `required`|str|conditionType refers to a condition with matching type in the Machine's condition list.<br />If the conditions doesn't exist, it will be treated as unknown.<br />Note: Both Cluster API conditions or conditions added by 3rd party controllers can be used as readiness gates.||
+|**polarity**|"Positive" | "Negative"|polarity of the conditionType specified in this readinessGate.<br />Valid values are Positive, Negative and omitted.<br />When omitted, the default behaviour will be Positive.<br />A positive polarity means that the condition should report a true status under normal conditions.<br />A negative polarity means that the condition should report a false status under normal conditions.||
 ### ClusterxK8sIoV1beta1ClusterClassSpecControlPlaneRef
 
 ref is a required reference to a custom resource offered by a provider.
@@ -10530,6 +10177,15 @@ infrastructure is a reference to a provider-specific template that holds the det
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**ref** `required`|[ClusterxK8sIoV1beta1ClusterClassSpecInfrastructureRef](#clusterxk8siov1beta1clusterclassspecinfrastructureref)|ref||
+### ClusterxK8sIoV1beta1ClusterClassSpecInfrastructureNamingStrategy
+
+infrastructureNamingStrategy allows changing the naming pattern used when creating the infrastructure object.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**template**|str|template defines the template to use for generating the name of the Infrastructure object.<br />If not defined, it will fallback to `{{ .cluster.name }}-{{ .random }}`.<br />If the templated string exceeds 63 characters, it will be trimmed to 58 characters and will<br />get concatenated with a random suffix of length 5.<br />The templating mechanism provides the following arguments:<br />* `.cluster.name`: The name of the cluster object.<br />* `.random`: A random alphanumeric string, without vowels, of length 5.||
 ### ClusterxK8sIoV1beta1ClusterClassSpecInfrastructureRef
 
 ref is a required reference to a custom resource offered by a provider.
@@ -10576,7 +10232,7 @@ JSONPatch defines a JSON patch.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**op** `required`|str|op defines the operation of the patch.<br />Note: Only `add`, `replace` and `remove` are supported.||
+|**op** `required`|"add" | "replace" | "remove"|op defines the operation of the patch.<br />Note: Only `add`, `replace` and `remove` are supported.||
 |**path** `required`|str|path defines the path of the patch.<br />Note: Only the spec of a template can be patched, thus the path has to start with /spec/.<br />Note: For now the only allowed array modifications are `append` and `prepend`, i.e.:<br />* for op: `add`: only index 0 (prepend) and - (append) are allowed<br />* for op: `replace` or `remove`: no indexes are allowed||
 |**value**|any|value defines the value of the patch.<br />Note: Either Value or ValueFrom is required for add and replace<br />operations. Only one of them is allowed to be set at the same time.<br />Note: We have to use apiextensionsv1.JSON instead of our JSON type,<br />because controller-tools has a hard-coded schema for apiextensionsv1.JSON<br />which cannot be produced by another type (unset type field).<br />Ref: https://github.com/kubernetes-sigs/controller-tools/blob/d0e03a142d0ecdd5491593e941ee1d6b5d91dba6/pkg/crd/known_types.go#L106-L111||
 |**valueFrom**|[ClusterxK8sIoV1beta1ClusterClassSpecPatchesItems0DefinitionsItems0JSONPatchesItems0ValueFrom](#clusterxk8siov1beta1clusterclassspecpatchesitems0definitionsitems0jsonpatchesitems0valuefrom)|value from||
@@ -10664,7 +10320,7 @@ metadata is the metadata of a variable. It can be used to add additional data fo
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**annotations**|{str:str}|annotations is an unstructured key value map that can be used to store and<br />retrieve arbitrary metadata.<br />They are not queryable.||
-|**labels**|{str:str}|Map of string keys and values that can be used to organize and categorize<br />(scope and select) variables.||
+|**labels**|{str:str}|labels is a map of string keys and values that can be used to organize and categorize<br />(scope and select) variables.||
 ### ClusterxK8sIoV1beta1ClusterClassSpecVariablesItems0Schema
 
 schema defines the schema of the variable.
@@ -10706,7 +10362,7 @@ openAPIV3Schema defines the schema of a variable via OpenAPI v3 schema. The sche
 |**pattern**|str|pattern is the regex which a string variable must match.<br />NOTE: Can only be set if type is string.||
 |**properties**|any|properties specifies fields of an object.<br />NOTE: Can only be set if type is object.<br />NOTE: Properties is mutually exclusive with AdditionalProperties.<br />NOTE: This field uses PreserveUnknownFields and Schemaless,<br />because recursive validation is not possible.||
 |**required**|[str]|required specifies which fields of an object are required.<br />NOTE: Can only be set if type is object.||
-|**type**|str|||
+|**type**|"object" | "array" | "string" | "integer" | "number" | "boolean"|||
 |**uniqueItems**|bool|uniqueItems specifies if items in an array must be unique.<br />NOTE: Can only be set if type is array.||
 |**x-kubernetes-int-or-string**|bool|||
 |**x-kubernetes-preserve-unknown-fields**|bool|||
@@ -10734,7 +10390,7 @@ x-metadata is the metadata of a variable or a nested field within a variable. It
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**annotations**|{str:str}|annotations is an unstructured key value map that can be used to store and<br />retrieve arbitrary metadata.<br />They are not queryable.||
-|**labels**|{str:str}|Map of string keys and values that can be used to organize and categorize<br />(scope and select) variables.||
+|**labels**|{str:str}|labels is a map of string keys and values that can be used to organize and categorize<br />(scope and select) variables.||
 ### ClusterxK8sIoV1beta1ClusterClassSpecWorkers
 
 workers describes the worker nodes for the cluster. It is a collection of node types which can be used to create the worker nodes of the cluster.
@@ -10756,11 +10412,12 @@ MachineDeploymentClass serves as a template to define a set of worker nodes of t
 |**class** `required`|str|class denotes a type of worker node present in the cluster,<br />this name MUST be unique within a ClusterClass and can be referenced<br />in the Cluster to create a managed MachineDeployment.||
 |**failureDomain**|str|failureDomain is the failure domain the machines will be created in.<br />Must match a key in the FailureDomains map stored on the cluster object.<br />NOTE: This value can be overridden while defining a Cluster.Topology using this MachineDeploymentClass.||
 |**machineHealthCheck**|[ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0MachineHealthCheck](#clusterxk8siov1beta1clusterclassspecworkersmachinedeploymentsitems0machinehealthcheck)|machine health check||
-|**minReadySeconds**|int|Minimum number of seconds for which a newly created machine should<br />be ready.<br />Defaults to 0 (machine will be considered available as soon as it<br />is ready)<br />NOTE: This value can be overridden while defining a Cluster.Topology using this MachineDeploymentClass.||
+|**minReadySeconds**|int|minReadySeconds is the minimum number of seconds for which a newly created machine should<br />be ready.<br />Defaults to 0 (machine will be considered available as soon as it<br />is ready)<br />NOTE: This value can be overridden while defining a Cluster.Topology using this MachineDeploymentClass.||
 |**namingStrategy**|[ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0NamingStrategy](#clusterxk8siov1beta1clusterclassspecworkersmachinedeploymentsitems0namingstrategy)|naming strategy||
 |**nodeDeletionTimeout**|str|nodeDeletionTimeout defines how long the controller will attempt to delete the Node that the Machine<br />hosts after the Machine is marked for deletion. A duration of 0 will retry deletion indefinitely.<br />Defaults to 10 seconds.<br />NOTE: This value can be overridden while defining a Cluster.Topology using this MachineDeploymentClass.||
 |**nodeDrainTimeout**|str|nodeDrainTimeout is the total amount of time that the controller will spend on draining a node.<br />The default value is 0, meaning that the node can be drained without any time limitations.<br />NOTE: NodeDrainTimeout is different from `kubectl drain --timeout`<br />NOTE: This value can be overridden while defining a Cluster.Topology using this MachineDeploymentClass.||
 |**nodeVolumeDetachTimeout**|str|nodeVolumeDetachTimeout is the total amount of time that the controller will spend on waiting for all volumes<br />to be detached. The default value is 0, meaning that the volumes can be detached without any time limitations.<br />NOTE: This value can be overridden while defining a Cluster.Topology using this MachineDeploymentClass.||
+|**readinessGates**|[[ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0ReadinessGatesItems0](#clusterxk8siov1beta1clusterclassspecworkersmachinedeploymentsitems0readinessgatesitems0)]|readinessGates specifies additional conditions to include when evaluating Machine Ready condition.<br /><br />This field can be used e.g. to instruct the machine controller to include in the computation for Machine's ready<br />computation a condition, managed by an external controllers, reporting the status of special software/hardware installed on the Machine.<br /><br />NOTE: This field is considered only for computing v1beta2 conditions.<br />NOTE: If a Cluster defines a custom list of readinessGates for a MachineDeployment using this MachineDeploymentClass,<br />such list overrides readinessGates defined in this field.||
 |**strategy**|[ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0Strategy](#clusterxk8siov1beta1clusterclassspecworkersmachinedeploymentsitems0strategy)|strategy||
 |**template** `required`|[ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0Template](#clusterxk8siov1beta1clusterclassspecworkersmachinedeploymentsitems0template)|template||
 ### ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0MachineHealthCheck
@@ -10771,11 +10428,11 @@ machineHealthCheck defines a MachineHealthCheck for this MachineDeploymentClass.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**maxUnhealthy**|int | str|Any further remediation is only allowed if at most "MaxUnhealthy" machines selected by<br />"selector" are not healthy.||
+|**maxUnhealthy**|int | str|maxUnhealthy specifies the maximum number of unhealthy machines allowed.<br />Any further remediation is only allowed if at most "maxUnhealthy" machines selected by<br />"selector" are not healthy.||
 |**nodeStartupTimeout**|str|nodeStartupTimeout allows to set the maximum time for MachineHealthCheck<br />to consider a Machine unhealthy if a corresponding Node isn't associated<br />through a `Spec.ProviderID` field.<br /><br />The duration set in this field is compared to the greatest of:<br />- Cluster's infrastructure ready condition timestamp (if and when available)<br />- Control Plane's initialized condition timestamp (if and when available)<br />- Machine's infrastructure ready condition timestamp (if and when available)<br />- Machine's metadata creation timestamp<br /><br />Defaults to 10 minutes.<br />If you wish to disable this feature, set the value explicitly to 0.||
 |**remediationTemplate**|[ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0MachineHealthCheckRemediationTemplate](#clusterxk8siov1beta1clusterclassspecworkersmachinedeploymentsitems0machinehealthcheckremediationtemplate)|remediation template||
 |**unhealthyConditions**|[[ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0MachineHealthCheckUnhealthyConditionsItems0](#clusterxk8siov1beta1clusterclassspecworkersmachinedeploymentsitems0machinehealthcheckunhealthyconditionsitems0)]|unhealthyConditions contains a list of the conditions that determine<br />whether a node is considered unhealthy. The conditions are combined in a<br />logical OR, i.e. if any of the conditions is met, the node is unhealthy.||
-|**unhealthyRange**|str|Any further remediation is only allowed if the number of machines selected by "selector" as not healthy<br />is within the range of "UnhealthyRange". Takes precedence over MaxUnhealthy.<br />Eg. "[3-5]" - This means that remediation will be allowed only when:<br />(a) there are at least 3 unhealthy machines (and)<br />(b) there are at most 5 unhealthy machines||
+|**unhealthyRange**|str|unhealthyRange specifies the range of unhealthy machines allowed.<br />Any further remediation is only allowed if the number of machines selected by "selector" as not healthy<br />is within the range of "unhealthyRange". Takes precedence over maxUnhealthy.<br />Eg. "[3-5]" - This means that remediation will be allowed only when:<br />(a) there are at least 3 unhealthy machines (and)<br />(b) there are at most 5 unhealthy machines||
 ### ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0MachineHealthCheckRemediationTemplate
 
 remediationTemplate is a reference to a remediation template provided by an infrastructure provider.  This field is completely optional, when filled, the MachineHealthCheck controller creates a new object from the template referenced and hands off remediation of the machine to a controller that lives outside of Cluster API.
@@ -10799,8 +10456,8 @@ UnhealthyCondition represents a Node condition type and value with a timeout spe
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**status** `required`|str|status||
-|**timeout** `required`|str|timeout||
+|**status** `required`|str|status of the condition, one of True, False, Unknown.||
+|**timeout** `required`|str|timeout is the duration that a node must be in a given status for,<br />after which the node is considered unhealthy.<br />For example, with a value of "1h", the node must match the status<br />for at least 1 hour before being considered unhealthy.||
 |**type** `required`|str|||
 ### ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0NamingStrategy
 
@@ -10811,9 +10468,19 @@ namingStrategy allows changing the naming pattern used when creating the Machine
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**template**|str|template defines the template to use for generating the name of the MachineDeployment object.<br />If not defined, it will fallback to `{{ .cluster.name }}-{{ .machineDeployment.topologyName }}-{{ .random }}`.<br />If the templated string exceeds 63 characters, it will be trimmed to 58 characters and will<br />get concatenated with a random suffix of length 5.<br />The templating mechanism provides the following arguments:<br />* `.cluster.name`: The name of the cluster object.<br />* `.random`: A random alphanumeric string, without vowels, of length 5.<br />* `.machineDeployment.topologyName`: The name of the MachineDeployment topology (Cluster.spec.topology.workers.machineDeployments[].name).||
+### ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0ReadinessGatesItems0
+
+MachineReadinessGate contains the type of a Machine condition to be used as a readiness gate.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**conditionType** `required`|str|conditionType refers to a condition with matching type in the Machine's condition list.<br />If the conditions doesn't exist, it will be treated as unknown.<br />Note: Both Cluster API conditions or conditions added by 3rd party controllers can be used as readiness gates.||
+|**polarity**|"Positive" | "Negative"|polarity of the conditionType specified in this readinessGate.<br />Valid values are Positive, Negative and omitted.<br />When omitted, the default behaviour will be Positive.<br />A positive polarity means that the condition should report a true status under normal conditions.<br />A negative polarity means that the condition should report a false status under normal conditions.||
 ### ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0Strategy
 
-The deployment strategy to use to replace existing machines with new ones. NOTE: This value can be overridden while defining a Cluster.Topology using this MachineDeploymentClass.
+strategy is the deployment strategy to use to replace existing machines with new ones. NOTE: This value can be overridden while defining a Cluster.Topology using this MachineDeploymentClass.
 
 #### Attributes
 
@@ -10833,15 +10500,15 @@ remediation controls the strategy of remediating unhealthy machines and how reme
 |**maxInFlight**|int | str|maxInFlight determines how many in flight remediations should happen at the same time.<br /><br />Remediation only happens on the MachineSet with the most current revision, while<br />older MachineSets (usually present during rollout operations) aren't allowed to remediate.<br /><br />Note: In general (independent of remediations), unhealthy machines are always<br />prioritized during scale down operations over healthy ones.<br /><br />MaxInFlight can be set to a fixed number or a percentage.<br />Example: when this is set to 20%, the MachineSet controller deletes at most 20% of<br />the desired replicas.<br /><br />If not set, remediation is limited to all machines (bounded by replicas)<br />under the active MachineSet's management.||
 ### ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0StrategyRollingUpdate
 
-Rolling update config params. Present only if MachineDeploymentStrategyType = RollingUpdate.
+rollingUpdate is the rolling update config params. Present only if MachineDeploymentStrategyType = RollingUpdate.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**deletePolicy**|"Random" | "Newest" | "Oldest"|deletePolicy defines the policy used by the MachineDeployment to identify nodes to delete when downscaling.<br />Valid values are "Random, "Newest", "Oldest"<br />When no value is supplied, the default DeletePolicy of MachineSet is used||
-|**maxSurge**|int | str|The maximum number of machines that can be scheduled above the<br />desired number of machines.<br />Value can be an absolute number (ex: 5) or a percentage of<br />desired machines (ex: 10%).<br />This can not be 0 if MaxUnavailable is 0.<br />Absolute number is calculated from percentage by rounding up.<br />Defaults to 1.<br />Example: when this is set to 30%, the new MachineSet can be scaled<br />up immediately when the rolling update starts, such that the total<br />number of old and new machines do not exceed 130% of desired<br />machines. Once old machines have been killed, new MachineSet can<br />be scaled up further, ensuring that total number of machines running<br />at any time during the update is at most 130% of desired machines.||
-|**maxUnavailable**|int | str|The maximum number of machines that can be unavailable during the update.<br />Value can be an absolute number (ex: 5) or a percentage of desired<br />machines (ex: 10%).<br />Absolute number is calculated from percentage by rounding down.<br />This can not be 0 if MaxSurge is 0.<br />Defaults to 0.<br />Example: when this is set to 30%, the old MachineSet can be scaled<br />down to 70% of desired machines immediately when the rolling update<br />starts. Once new machines are ready, old MachineSet can be scaled<br />down further, followed by scaling up the new MachineSet, ensuring<br />that the total number of machines available at all times<br />during the update is at least 70% of desired machines.||
+|**maxSurge**|int | str|maxSurge is the maximum number of machines that can be scheduled above the<br />desired number of machines.<br />Value can be an absolute number (ex: 5) or a percentage of<br />desired machines (ex: 10%).<br />This can not be 0 if MaxUnavailable is 0.<br />Absolute number is calculated from percentage by rounding up.<br />Defaults to 1.<br />Example: when this is set to 30%, the new MachineSet can be scaled<br />up immediately when the rolling update starts, such that the total<br />number of old and new machines do not exceed 130% of desired<br />machines. Once old machines have been killed, new MachineSet can<br />be scaled up further, ensuring that total number of machines running<br />at any time during the update is at most 130% of desired machines.||
+|**maxUnavailable**|int | str|maxUnavailable is the maximum number of machines that can be unavailable during the update.<br />Value can be an absolute number (ex: 5) or a percentage of desired<br />machines (ex: 10%).<br />Absolute number is calculated from percentage by rounding down.<br />This can not be 0 if MaxSurge is 0.<br />Defaults to 0.<br />Example: when this is set to 30%, the old MachineSet can be scaled<br />down to 70% of desired machines immediately when the rolling update<br />starts. Once new machines are ready, old MachineSet can be scaled<br />down further, followed by scaling up the new MachineSet, ensuring<br />that the total number of machines available at all times<br />during the update is at least 70% of desired machines.||
 ### ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachineDeploymentsItems0Template
 
 template is a local struct containing a collection of templates for creation of MachineDeployment objects representing a set of worker nodes.
@@ -10910,7 +10577,7 @@ metadata is the metadata applied to the MachineDeployment and the machines of th
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**annotations**|{str:str}|annotations is an unstructured key value map stored with a resource that may be<br />set by external tools to store and retrieve arbitrary metadata. They are not<br />queryable and should be preserved when modifying objects.<br />More info: http://kubernetes.io/docs/user-guide/annotations||
-|**labels**|{str:str}|Map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
+|**labels**|{str:str}|labels is a map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
 ### ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachinePoolsItems0
 
 MachinePoolClass serves as a template to define a pool of worker nodes of the cluster provisioned using `ClusterClass`.
@@ -10921,7 +10588,7 @@ MachinePoolClass serves as a template to define a pool of worker nodes of the cl
 | --- | --- | --- | --- |
 |**class** `required`|str|class denotes a type of machine pool present in the cluster,<br />this name MUST be unique within a ClusterClass and can be referenced<br />in the Cluster to create a managed MachinePool.||
 |**failureDomains**|[str]|failureDomains is the list of failure domains the MachinePool should be attached to.<br />Must match a key in the FailureDomains map stored on the cluster object.<br />NOTE: This value can be overridden while defining a Cluster.Topology using this MachinePoolClass.||
-|**minReadySeconds**|int|Minimum number of seconds for which a newly created machine pool should<br />be ready.<br />Defaults to 0 (machine will be considered available as soon as it<br />is ready)<br />NOTE: This value can be overridden while defining a Cluster.Topology using this MachinePoolClass.||
+|**minReadySeconds**|int|minReadySeconds is the minimum number of seconds for which a newly created machine pool should<br />be ready.<br />Defaults to 0 (machine will be considered available as soon as it<br />is ready)<br />NOTE: This value can be overridden while defining a Cluster.Topology using this MachinePoolClass.||
 |**namingStrategy**|[ClusterxK8sIoV1beta1ClusterClassSpecWorkersMachinePoolsItems0NamingStrategy](#clusterxk8siov1beta1clusterclassspecworkersmachinepoolsitems0namingstrategy)|naming strategy||
 |**nodeDeletionTimeout**|str|nodeDeletionTimeout defines how long the controller will attempt to delete the Node that the Machine<br />hosts after the Machine Pool is marked for deletion. A duration of 0 will retry deletion indefinitely.<br />Defaults to 10 seconds.<br />NOTE: This value can be overridden while defining a Cluster.Topology using this MachinePoolClass.||
 |**nodeDrainTimeout**|str|nodeDrainTimeout is the total amount of time that the controller will spend on draining a node.<br />The default value is 0, meaning that the node can be drained without any time limitations.<br />NOTE: NodeDrainTimeout is different from `kubectl drain --timeout`<br />NOTE: This value can be overridden while defining a Cluster.Topology using this MachinePoolClass.||
@@ -11004,10 +10671,10 @@ metadata is the metadata applied to the MachinePool. At runtime this metadata is
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**annotations**|{str:str}|annotations is an unstructured key value map stored with a resource that may be<br />set by external tools to store and retrieve arbitrary metadata. They are not<br />queryable and should be preserved when modifying objects.<br />More info: http://kubernetes.io/docs/user-guide/annotations||
-|**labels**|{str:str}|Map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
+|**labels**|{str:str}|labels is a map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
 ### ClusterxK8sIoV1beta1ClusterClassStatus
 
-ClusterClassStatus defines the observed state of the ClusterClass.
+status is the observed state of ClusterClass.
 
 #### Attributes
 
@@ -11025,9 +10692,9 @@ Condition defines an observation of a Cluster API resource operational state.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime** `required`|str|Last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
-|**message**|str|A human readable message indicating details about the transition.<br />This field may be empty.||
-|**reason**|str|The reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may be empty.||
+|**lastTransitionTime** `required`|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
+|**message**|str|message is a human readable message indicating details about the transition.<br />This field may be empty.||
+|**reason**|str|reason is the reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may be empty.||
 |**severity**|str|severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
 |**status** `required`|str|status of the condition, one of True, False, Unknown.||
 |**type** `required`|str|||
@@ -11086,7 +10753,7 @@ metadata is the metadata of a variable. It can be used to add additional data fo
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**annotations**|{str:str}|annotations is an unstructured key value map that can be used to store and<br />retrieve arbitrary metadata.<br />They are not queryable.||
-|**labels**|{str:str}|Map of string keys and values that can be used to organize and categorize<br />(scope and select) variables.||
+|**labels**|{str:str}|labels is a map of string keys and values that can be used to organize and categorize<br />(scope and select) variables.||
 ### ClusterxK8sIoV1beta1ClusterClassStatusVariablesItems0DefinitionsItems0Schema
 
 schema defines the schema of the variable.
@@ -11128,7 +10795,7 @@ openAPIV3Schema defines the schema of a variable via OpenAPI v3 schema. The sche
 |**pattern**|str|pattern is the regex which a string variable must match.<br />NOTE: Can only be set if type is string.||
 |**properties**|any|properties specifies fields of an object.<br />NOTE: Can only be set if type is object.<br />NOTE: Properties is mutually exclusive with AdditionalProperties.<br />NOTE: This field uses PreserveUnknownFields and Schemaless,<br />because recursive validation is not possible.||
 |**required**|[str]|required specifies which fields of an object are required.<br />NOTE: Can only be set if type is object.||
-|**type**|str|||
+|**type**|"object" | "array" | "string" | "integer" | "number" | "boolean"|||
 |**uniqueItems**|bool|uniqueItems specifies if items in an array must be unique.<br />NOTE: Can only be set if type is array.||
 |**x-kubernetes-int-or-string**|bool|||
 |**x-kubernetes-preserve-unknown-fields**|bool|||
@@ -11156,16 +10823,16 @@ x-metadata is the metadata of a variable or a nested field within a variable. It
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**annotations**|{str:str}|annotations is an unstructured key value map that can be used to store and<br />retrieve arbitrary metadata.<br />They are not queryable.||
-|**labels**|{str:str}|Map of string keys and values that can be used to organize and categorize<br />(scope and select) variables.||
+|**labels**|{str:str}|labels is a map of string keys and values that can be used to organize and categorize<br />(scope and select) variables.||
 ### ClusterxK8sIoV1beta1ClusterSpec
 
-ClusterSpec defines the desired state of Cluster.
+spec is the desired state of Cluster.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**availabilityGates**|[[ClusterxK8sIoV1beta1ClusterSpecAvailabilityGatesItems0](#clusterxk8siov1beta1clusterspecavailabilitygatesitems0)]|availabilityGates specifies additional conditions to include when evaluating Cluster Available condition.<br /><br />NOTE: this field is considered only for computing v1beta2 conditions.||
+|**availabilityGates**|[[ClusterxK8sIoV1beta1ClusterSpecAvailabilityGatesItems0](#clusterxk8siov1beta1clusterspecavailabilitygatesitems0)]|availabilityGates specifies additional conditions to include when evaluating Cluster Available condition.<br /><br />If this field is not defined and the Cluster implements a managed topology, availabilityGates<br />from the corresponding ClusterClass will be used, if any.<br /><br />NOTE: this field is considered only for computing v1beta2 conditions.||
 |**clusterNetwork**|[ClusterxK8sIoV1beta1ClusterSpecClusterNetwork](#clusterxk8siov1beta1clusterspecclusternetwork)|cluster network||
 |**controlPlaneEndpoint**|[ClusterxK8sIoV1beta1ClusterSpecControlPlaneEndpoint](#clusterxk8siov1beta1clusterspeccontrolplaneendpoint)|control plane endpoint||
 |**controlPlaneRef**|[ClusterxK8sIoV1beta1ClusterSpecControlPlaneRef](#clusterxk8siov1beta1clusterspeccontrolplaneref)|control plane ref||
@@ -11180,10 +10847,11 @@ ClusterAvailabilityGate contains the type of a Cluster condition to be used as a
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**conditionType** `required`|str|conditionType refers to a positive polarity condition (status true means good) with matching type in the Cluster's condition list.<br />If the conditions doesn't exist, it will be treated as unknown.<br />Note: Both Cluster API conditions or conditions added by 3rd party controllers can be used as availability gates.||
+|**conditionType** `required`|str|conditionType refers to a condition with matching type in the Cluster's condition list.<br />If the conditions doesn't exist, it will be treated as unknown.<br />Note: Both Cluster API conditions or conditions added by 3rd party controllers can be used as availability gates.||
+|**polarity**|"Positive" | "Negative"|polarity of the conditionType specified in this availabilityGate.<br />Valid values are Positive, Negative and omitted.<br />When omitted, the default behaviour will be Positive.<br />A positive polarity means that the condition should report a true status under normal conditions.<br />A negative polarity means that the condition should report a false status under normal conditions.||
 ### ClusterxK8sIoV1beta1ClusterSpecClusterNetwork
 
-Cluster network configuration.
+clusterNetwork represents the cluster network configuration.
 
 #### Attributes
 
@@ -11191,26 +10859,26 @@ Cluster network configuration.
 | --- | --- | --- | --- |
 |**apiServerPort**|int|apiServerPort specifies the port the API Server should bind to.<br />Defaults to 6443.||
 |**pods**|[ClusterxK8sIoV1beta1ClusterSpecClusterNetworkPods](#clusterxk8siov1beta1clusterspecclusternetworkpods)|pods||
-|**serviceDomain**|str|Domain name for services.||
+|**serviceDomain**|str|serviceDomain is the domain name for services.||
 |**services**|[ClusterxK8sIoV1beta1ClusterSpecClusterNetworkServices](#clusterxk8siov1beta1clusterspecclusternetworkservices)|services||
 ### ClusterxK8sIoV1beta1ClusterSpecClusterNetworkPods
 
-The network ranges from which Pod networks are allocated.
+pods is the network ranges from which Pod networks are allocated.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**cidrBlocks** `required`|[str]|cidr blocks||
+|**cidrBlocks** `required`|[str]|cidrBlocks is a list of CIDR blocks.||
 ### ClusterxK8sIoV1beta1ClusterSpecClusterNetworkServices
 
-The network ranges from which service VIPs are allocated.
+services is the network ranges from which service VIPs are allocated.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**cidrBlocks** `required`|[str]|cidr blocks||
+|**cidrBlocks** `required`|[str]|cidrBlocks is a list of CIDR blocks.||
 ### ClusterxK8sIoV1beta1ClusterSpecControlPlaneEndpoint
 
 controlPlaneEndpoint represents the endpoint used to communicate with the control plane.
@@ -11219,8 +10887,8 @@ controlPlaneEndpoint represents the endpoint used to communicate with the contro
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**host** `required`|str|The hostname on which the API server is serving.||
-|**port** `required`|int|The port on which the API server is serving.||
+|**host** `required`|str|host is the hostname on which the API server is serving.||
+|**port** `required`|int|port is the port on which the API server is serving.||
 ### ClusterxK8sIoV1beta1ClusterSpecControlPlaneRef
 
 controlPlaneRef is an optional reference to a provider-specific resource that holds the details for provisioning the Control Plane for a Cluster.
@@ -11253,18 +10921,18 @@ infrastructureRef is a reference to a provider-specific resource that holds the 
 |**uid**|str|UID of the referent.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids||
 ### ClusterxK8sIoV1beta1ClusterSpecTopology
 
-This encapsulates the topology for the cluster. NOTE: It is required to enable the ClusterTopology feature gate flag to activate managed topologies support; this feature is highly experimental, and parts of it might still be not implemented.
+topology encapsulates the topology for the cluster. NOTE: It is required to enable the ClusterTopology feature gate flag to activate managed topologies support; this feature is highly experimental, and parts of it might still be not implemented.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**class** `required`|str|The name of the ClusterClass object to create the topology.||
-|**classNamespace**|str|classNamespace is the namespace of the ClusterClass object to create the topology.<br />If the namespace is empty or not set, it is defaulted to the namespace of the cluster object.<br />Value must follow the DNS1123Subdomain syntax.||
+|**class** `required`|str|class is the name of the ClusterClass object to create the topology.||
+|**classNamespace**|str|classNamespace is the namespace of the ClusterClass that should be used for the topology.<br />If classNamespace is empty or not set, it is defaulted to the namespace of the Cluster object.<br />classNamespace must be a valid namespace name and because of that be at most 63 characters in length<br />and it must consist only of lower case alphanumeric characters or hyphens (-), and must start<br />and end with an alphanumeric character.||
 |**controlPlane**|[ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlane](#clusterxk8siov1beta1clusterspectopologycontrolplane)|control plane||
 |**rolloutAfter**|str|rolloutAfter performs a rollout of the entire cluster one component at a time,<br />control plane first and then machine deployments.<br /><br />Deprecated: This field has no function and is going to be removed in the next apiVersion.||
 |**variables**|[[ClusterxK8sIoV1beta1ClusterSpecTopologyVariablesItems0](#clusterxk8siov1beta1clusterspectopologyvariablesitems0)]|variables can be used to customize the Cluster through<br />patches. They must comply to the corresponding<br />VariableClasses defined in the ClusterClass.||
-|**version** `required`|str|The Kubernetes version of the cluster.||
+|**version** `required`|str|version is the Kubernetes version of the cluster.||
 |**workers**|[ClusterxK8sIoV1beta1ClusterSpecTopologyWorkers](#clusterxk8siov1beta1clusterspectopologyworkers)|workers||
 ### ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlane
 
@@ -11279,6 +10947,7 @@ controlPlane describes the cluster control plane.
 |**nodeDeletionTimeout**|str|nodeDeletionTimeout defines how long the controller will attempt to delete the Node that the Machine<br />hosts after the Machine is marked for deletion. A duration of 0 will retry deletion indefinitely.<br />Defaults to 10 seconds.||
 |**nodeDrainTimeout**|str|nodeDrainTimeout is the total amount of time that the controller will spend on draining a node.<br />The default value is 0, meaning that the node can be drained without any time limitations.<br />NOTE: NodeDrainTimeout is different from `kubectl drain --timeout`||
 |**nodeVolumeDetachTimeout**|str|nodeVolumeDetachTimeout is the total amount of time that the controller will spend on waiting for all volumes<br />to be detached. The default value is 0, meaning that the volumes can be detached without any time limitations.||
+|**readinessGates**|[[ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneReadinessGatesItems0](#clusterxk8siov1beta1clusterspectopologycontrolplanereadinessgatesitems0)]|readinessGates specifies additional conditions to include when evaluating Machine Ready condition.<br /><br />This field can be used e.g. to instruct the machine controller to include in the computation for Machine's ready<br />computation a condition, managed by an external controllers, reporting the status of special software/hardware installed on the Machine.<br /><br />If this field is not defined, readinessGates from the corresponding ControlPlaneClass will be used, if any.<br /><br />NOTE: This field is considered only for computing v1beta2 conditions.<br />NOTE: Specific control plane provider implementations might automatically extend the list of readinessGates;<br />e.g. the kubeadm control provider adds ReadinessGates for the APIServerPodHealthy, SchedulerPodHealthy conditions, etc.||
 |**replicas**|int|replicas is the number of control plane nodes.<br />If the value is nil, the ControlPlane object is created without the number of Replicas<br />and it's assumed that the control plane controller does not implement support for this field.<br />When specified against a control plane provider that lacks support for this field, this value will be ignored.||
 |**variables**|[ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneVariables](#clusterxk8siov1beta1clusterspectopologycontrolplanevariables)|variables||
 ### ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneMachineHealthCheck
@@ -11290,11 +10959,11 @@ machineHealthCheck allows to enable, disable and override the MachineHealthCheck
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**enable**|bool|enable controls if a MachineHealthCheck should be created for the target machines.<br /><br />If false: No MachineHealthCheck will be created.<br /><br />If not set(default): A MachineHealthCheck will be created if it is defined here or<br />in the associated ClusterClass. If no MachineHealthCheck is defined then none will be created.<br /><br />If true: A MachineHealthCheck is guaranteed to be created. Cluster validation will<br />block if `enable` is true and no MachineHealthCheck definition is available.||
-|**maxUnhealthy**|int | str|Any further remediation is only allowed if at most "MaxUnhealthy" machines selected by<br />"selector" are not healthy.||
+|**maxUnhealthy**|int | str|maxUnhealthy specifies the maximum number of unhealthy machines allowed.<br />Any further remediation is only allowed if at most "maxUnhealthy" machines selected by<br />"selector" are not healthy.||
 |**nodeStartupTimeout**|str|nodeStartupTimeout allows to set the maximum time for MachineHealthCheck<br />to consider a Machine unhealthy if a corresponding Node isn't associated<br />through a `Spec.ProviderID` field.<br /><br />The duration set in this field is compared to the greatest of:<br />- Cluster's infrastructure ready condition timestamp (if and when available)<br />- Control Plane's initialized condition timestamp (if and when available)<br />- Machine's infrastructure ready condition timestamp (if and when available)<br />- Machine's metadata creation timestamp<br /><br />Defaults to 10 minutes.<br />If you wish to disable this feature, set the value explicitly to 0.||
 |**remediationTemplate**|[ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneMachineHealthCheckRemediationTemplate](#clusterxk8siov1beta1clusterspectopologycontrolplanemachinehealthcheckremediationtemplate)|remediation template||
 |**unhealthyConditions**|[[ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneMachineHealthCheckUnhealthyConditionsItems0](#clusterxk8siov1beta1clusterspectopologycontrolplanemachinehealthcheckunhealthyconditionsitems0)]|unhealthyConditions contains a list of the conditions that determine<br />whether a node is considered unhealthy. The conditions are combined in a<br />logical OR, i.e. if any of the conditions is met, the node is unhealthy.||
-|**unhealthyRange**|str|Any further remediation is only allowed if the number of machines selected by "selector" as not healthy<br />is within the range of "UnhealthyRange". Takes precedence over MaxUnhealthy.<br />Eg. "[3-5]" - This means that remediation will be allowed only when:<br />(a) there are at least 3 unhealthy machines (and)<br />(b) there are at most 5 unhealthy machines||
+|**unhealthyRange**|str|unhealthyRange specifies the range of unhealthy machines allowed.<br />Any further remediation is only allowed if the number of machines selected by "selector" as not healthy<br />is within the range of "unhealthyRange". Takes precedence over maxUnhealthy.<br />Eg. "[3-5]" - This means that remediation will be allowed only when:<br />(a) there are at least 3 unhealthy machines (and)<br />(b) there are at most 5 unhealthy machines||
 ### ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneMachineHealthCheckRemediationTemplate
 
 remediationTemplate is a reference to a remediation template provided by an infrastructure provider.  This field is completely optional, when filled, the MachineHealthCheck controller creates a new object from the template referenced and hands off remediation of the machine to a controller that lives outside of Cluster API.
@@ -11318,8 +10987,8 @@ UnhealthyCondition represents a Node condition type and value with a timeout spe
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**status** `required`|str|status||
-|**timeout** `required`|str|timeout||
+|**status** `required`|str|status of the condition, one of True, False, Unknown.||
+|**timeout** `required`|str|timeout is the duration that a node must be in a given status for,<br />after which the node is considered unhealthy.<br />For example, with a value of "1h", the node must match the status<br />for at least 1 hour before being considered unhealthy.||
 |**type** `required`|str|||
 ### ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneMetadata
 
@@ -11330,7 +10999,17 @@ metadata is the metadata applied to the ControlPlane and the Machines of the Con
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**annotations**|{str:str}|annotations is an unstructured key value map stored with a resource that may be<br />set by external tools to store and retrieve arbitrary metadata. They are not<br />queryable and should be preserved when modifying objects.<br />More info: http://kubernetes.io/docs/user-guide/annotations||
-|**labels**|{str:str}|Map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
+|**labels**|{str:str}|labels is a map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
+### ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneReadinessGatesItems0
+
+MachineReadinessGate contains the type of a Machine condition to be used as a readiness gate.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**conditionType** `required`|str|conditionType refers to a condition with matching type in the Machine's condition list.<br />If the conditions doesn't exist, it will be treated as unknown.<br />Note: Both Cluster API conditions or conditions added by 3rd party controllers can be used as readiness gates.||
+|**polarity**|"Positive" | "Negative"|polarity of the conditionType specified in this readinessGate.<br />Valid values are Positive, Negative and omitted.<br />When omitted, the default behaviour will be Positive.<br />A positive polarity means that the condition should report a true status under normal conditions.<br />A negative polarity means that the condition should report a false status under normal conditions.||
 ### ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneVariables
 
 variables can be used to customize the ControlPlane through patches.
@@ -11384,11 +11063,12 @@ MachineDeploymentTopology specifies the different parameters for a set of worker
 |**failureDomain**|str|failureDomain is the failure domain the machines will be created in.<br />Must match a key in the FailureDomains map stored on the cluster object.||
 |**machineHealthCheck**|[ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0MachineHealthCheck](#clusterxk8siov1beta1clusterspectopologyworkersmachinedeploymentsitems0machinehealthcheck)|machine health check||
 |**metadata**|[ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Metadata](#clusterxk8siov1beta1clusterspectopologyworkersmachinedeploymentsitems0metadata)|metadata||
-|**minReadySeconds**|int|Minimum number of seconds for which a newly created machine should<br />be ready.<br />Defaults to 0 (machine will be considered available as soon as it<br />is ready)||
+|**minReadySeconds**|int|minReadySeconds is the minimum number of seconds for which a newly created machine should<br />be ready.<br />Defaults to 0 (machine will be considered available as soon as it<br />is ready)||
 |**name** `required`|str|name is the unique identifier for this MachineDeploymentTopology.<br />The value is used with other unique identifiers to create a MachineDeployment's Name<br />(e.g. cluster's name, etc). In case the name is greater than the allowed maximum length,<br />the values are hashed together.||
 |**nodeDeletionTimeout**|str|nodeDeletionTimeout defines how long the controller will attempt to delete the Node that the Machine<br />hosts after the Machine is marked for deletion. A duration of 0 will retry deletion indefinitely.<br />Defaults to 10 seconds.||
 |**nodeDrainTimeout**|str|nodeDrainTimeout is the total amount of time that the controller will spend on draining a node.<br />The default value is 0, meaning that the node can be drained without any time limitations.<br />NOTE: NodeDrainTimeout is different from `kubectl drain --timeout`||
 |**nodeVolumeDetachTimeout**|str|nodeVolumeDetachTimeout is the total amount of time that the controller will spend on waiting for all volumes<br />to be detached. The default value is 0, meaning that the volumes can be detached without any time limitations.||
+|**readinessGates**|[[ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0ReadinessGatesItems0](#clusterxk8siov1beta1clusterspectopologyworkersmachinedeploymentsitems0readinessgatesitems0)]|readinessGates specifies additional conditions to include when evaluating Machine Ready condition.<br /><br />This field can be used e.g. to instruct the machine controller to include in the computation for Machine's ready<br />computation a condition, managed by an external controllers, reporting the status of special software/hardware installed on the Machine.<br /><br />If this field is not defined, readinessGates from the corresponding MachineDeploymentClass will be used, if any.<br /><br />NOTE: This field is considered only for computing v1beta2 conditions.||
 |**replicas**|int|replicas is the number of worker nodes belonging to this set.<br />If the value is nil, the MachineDeployment is created without the number of Replicas (defaulting to 1)<br />and it's assumed that an external entity (like cluster autoscaler) is responsible for the management<br />of this value.||
 |**strategy**|[ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Strategy](#clusterxk8siov1beta1clusterspectopologyworkersmachinedeploymentsitems0strategy)|strategy||
 |**variables**|[ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Variables](#clusterxk8siov1beta1clusterspectopologyworkersmachinedeploymentsitems0variables)|variables||
@@ -11401,11 +11081,11 @@ machineHealthCheck allows to enable, disable and override the MachineHealthCheck
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**enable**|bool|enable controls if a MachineHealthCheck should be created for the target machines.<br /><br />If false: No MachineHealthCheck will be created.<br /><br />If not set(default): A MachineHealthCheck will be created if it is defined here or<br />in the associated ClusterClass. If no MachineHealthCheck is defined then none will be created.<br /><br />If true: A MachineHealthCheck is guaranteed to be created. Cluster validation will<br />block if `enable` is true and no MachineHealthCheck definition is available.||
-|**maxUnhealthy**|int | str|Any further remediation is only allowed if at most "MaxUnhealthy" machines selected by<br />"selector" are not healthy.||
+|**maxUnhealthy**|int | str|maxUnhealthy specifies the maximum number of unhealthy machines allowed.<br />Any further remediation is only allowed if at most "maxUnhealthy" machines selected by<br />"selector" are not healthy.||
 |**nodeStartupTimeout**|str|nodeStartupTimeout allows to set the maximum time for MachineHealthCheck<br />to consider a Machine unhealthy if a corresponding Node isn't associated<br />through a `Spec.ProviderID` field.<br /><br />The duration set in this field is compared to the greatest of:<br />- Cluster's infrastructure ready condition timestamp (if and when available)<br />- Control Plane's initialized condition timestamp (if and when available)<br />- Machine's infrastructure ready condition timestamp (if and when available)<br />- Machine's metadata creation timestamp<br /><br />Defaults to 10 minutes.<br />If you wish to disable this feature, set the value explicitly to 0.||
 |**remediationTemplate**|[ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0MachineHealthCheckRemediationTemplate](#clusterxk8siov1beta1clusterspectopologyworkersmachinedeploymentsitems0machinehealthcheckremediationtemplate)|remediation template||
 |**unhealthyConditions**|[[ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0MachineHealthCheckUnhealthyConditionsItems0](#clusterxk8siov1beta1clusterspectopologyworkersmachinedeploymentsitems0machinehealthcheckunhealthyconditionsitems0)]|unhealthyConditions contains a list of the conditions that determine<br />whether a node is considered unhealthy. The conditions are combined in a<br />logical OR, i.e. if any of the conditions is met, the node is unhealthy.||
-|**unhealthyRange**|str|Any further remediation is only allowed if the number of machines selected by "selector" as not healthy<br />is within the range of "UnhealthyRange". Takes precedence over MaxUnhealthy.<br />Eg. "[3-5]" - This means that remediation will be allowed only when:<br />(a) there are at least 3 unhealthy machines (and)<br />(b) there are at most 5 unhealthy machines||
+|**unhealthyRange**|str|unhealthyRange specifies the range of unhealthy machines allowed.<br />Any further remediation is only allowed if the number of machines selected by "selector" as not healthy<br />is within the range of "unhealthyRange". Takes precedence over maxUnhealthy.<br />Eg. "[3-5]" - This means that remediation will be allowed only when:<br />(a) there are at least 3 unhealthy machines (and)<br />(b) there are at most 5 unhealthy machines||
 ### ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0MachineHealthCheckRemediationTemplate
 
 remediationTemplate is a reference to a remediation template provided by an infrastructure provider.  This field is completely optional, when filled, the MachineHealthCheck controller creates a new object from the template referenced and hands off remediation of the machine to a controller that lives outside of Cluster API.
@@ -11429,8 +11109,8 @@ UnhealthyCondition represents a Node condition type and value with a timeout spe
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**status** `required`|str|status||
-|**timeout** `required`|str|timeout||
+|**status** `required`|str|status of the condition, one of True, False, Unknown.||
+|**timeout** `required`|str|timeout is the duration that a node must be in a given status for,<br />after which the node is considered unhealthy.<br />For example, with a value of "1h", the node must match the status<br />for at least 1 hour before being considered unhealthy.||
 |**type** `required`|str|||
 ### ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Metadata
 
@@ -11441,10 +11121,20 @@ metadata is the metadata applied to the MachineDeployment and the machines of th
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**annotations**|{str:str}|annotations is an unstructured key value map stored with a resource that may be<br />set by external tools to store and retrieve arbitrary metadata. They are not<br />queryable and should be preserved when modifying objects.<br />More info: http://kubernetes.io/docs/user-guide/annotations||
-|**labels**|{str:str}|Map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
+|**labels**|{str:str}|labels is a map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
+### ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0ReadinessGatesItems0
+
+MachineReadinessGate contains the type of a Machine condition to be used as a readiness gate.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**conditionType** `required`|str|conditionType refers to a condition with matching type in the Machine's condition list.<br />If the conditions doesn't exist, it will be treated as unknown.<br />Note: Both Cluster API conditions or conditions added by 3rd party controllers can be used as readiness gates.||
+|**polarity**|"Positive" | "Negative"|polarity of the conditionType specified in this readinessGate.<br />Valid values are Positive, Negative and omitted.<br />When omitted, the default behaviour will be Positive.<br />A positive polarity means that the condition should report a true status under normal conditions.<br />A negative polarity means that the condition should report a false status under normal conditions.||
 ### ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Strategy
 
-The deployment strategy to use to replace existing machines with new ones.
+strategy is the deployment strategy to use to replace existing machines with new ones.
 
 #### Attributes
 
@@ -11464,15 +11154,15 @@ remediation controls the strategy of remediating unhealthy machines and how reme
 |**maxInFlight**|int | str|maxInFlight determines how many in flight remediations should happen at the same time.<br /><br />Remediation only happens on the MachineSet with the most current revision, while<br />older MachineSets (usually present during rollout operations) aren't allowed to remediate.<br /><br />Note: In general (independent of remediations), unhealthy machines are always<br />prioritized during scale down operations over healthy ones.<br /><br />MaxInFlight can be set to a fixed number or a percentage.<br />Example: when this is set to 20%, the MachineSet controller deletes at most 20% of<br />the desired replicas.<br /><br />If not set, remediation is limited to all machines (bounded by replicas)<br />under the active MachineSet's management.||
 ### ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0StrategyRollingUpdate
 
-Rolling update config params. Present only if MachineDeploymentStrategyType = RollingUpdate.
+rollingUpdate is the rolling update config params. Present only if MachineDeploymentStrategyType = RollingUpdate.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**deletePolicy**|"Random" | "Newest" | "Oldest"|deletePolicy defines the policy used by the MachineDeployment to identify nodes to delete when downscaling.<br />Valid values are "Random, "Newest", "Oldest"<br />When no value is supplied, the default DeletePolicy of MachineSet is used||
-|**maxSurge**|int | str|The maximum number of machines that can be scheduled above the<br />desired number of machines.<br />Value can be an absolute number (ex: 5) or a percentage of<br />desired machines (ex: 10%).<br />This can not be 0 if MaxUnavailable is 0.<br />Absolute number is calculated from percentage by rounding up.<br />Defaults to 1.<br />Example: when this is set to 30%, the new MachineSet can be scaled<br />up immediately when the rolling update starts, such that the total<br />number of old and new machines do not exceed 130% of desired<br />machines. Once old machines have been killed, new MachineSet can<br />be scaled up further, ensuring that total number of machines running<br />at any time during the update is at most 130% of desired machines.||
-|**maxUnavailable**|int | str|The maximum number of machines that can be unavailable during the update.<br />Value can be an absolute number (ex: 5) or a percentage of desired<br />machines (ex: 10%).<br />Absolute number is calculated from percentage by rounding down.<br />This can not be 0 if MaxSurge is 0.<br />Defaults to 0.<br />Example: when this is set to 30%, the old MachineSet can be scaled<br />down to 70% of desired machines immediately when the rolling update<br />starts. Once new machines are ready, old MachineSet can be scaled<br />down further, followed by scaling up the new MachineSet, ensuring<br />that the total number of machines available at all times<br />during the update is at least 70% of desired machines.||
+|**maxSurge**|int | str|maxSurge is the maximum number of machines that can be scheduled above the<br />desired number of machines.<br />Value can be an absolute number (ex: 5) or a percentage of<br />desired machines (ex: 10%).<br />This can not be 0 if MaxUnavailable is 0.<br />Absolute number is calculated from percentage by rounding up.<br />Defaults to 1.<br />Example: when this is set to 30%, the new MachineSet can be scaled<br />up immediately when the rolling update starts, such that the total<br />number of old and new machines do not exceed 130% of desired<br />machines. Once old machines have been killed, new MachineSet can<br />be scaled up further, ensuring that total number of machines running<br />at any time during the update is at most 130% of desired machines.||
+|**maxUnavailable**|int | str|maxUnavailable is the maximum number of machines that can be unavailable during the update.<br />Value can be an absolute number (ex: 5) or a percentage of desired<br />machines (ex: 10%).<br />Absolute number is calculated from percentage by rounding down.<br />This can not be 0 if MaxSurge is 0.<br />Defaults to 0.<br />Example: when this is set to 30%, the old MachineSet can be scaled<br />down to 70% of desired machines immediately when the rolling update<br />starts. Once new machines are ready, old MachineSet can be scaled<br />down further, followed by scaling up the new MachineSet, ensuring<br />that the total number of machines available at all times<br />during the update is at least 70% of desired machines.||
 ### ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Variables
 
 variables can be used to customize the MachineDeployment through patches.
@@ -11504,7 +11194,7 @@ MachinePoolTopology specifies the different parameters for a pool of worker node
 |**class** `required`|str|class is the name of the MachinePoolClass used to create the pool of worker nodes.<br />This should match one of the deployment classes defined in the ClusterClass object<br />mentioned in the `Cluster.Spec.Class` field.||
 |**failureDomains**|[str]|failureDomains is the list of failure domains the machine pool will be created in.<br />Must match a key in the FailureDomains map stored on the cluster object.||
 |**metadata**|[ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachinePoolsItems0Metadata](#clusterxk8siov1beta1clusterspectopologyworkersmachinepoolsitems0metadata)|metadata||
-|**minReadySeconds**|int|Minimum number of seconds for which a newly created machine pool should<br />be ready.<br />Defaults to 0 (machine will be considered available as soon as it<br />is ready)||
+|**minReadySeconds**|int|minReadySeconds is the minimum number of seconds for which a newly created machine pool should<br />be ready.<br />Defaults to 0 (machine will be considered available as soon as it<br />is ready)||
 |**name** `required`|str|name is the unique identifier for this MachinePoolTopology.<br />The value is used with other unique identifiers to create a MachinePool's Name<br />(e.g. cluster's name, etc). In case the name is greater than the allowed maximum length,<br />the values are hashed together.||
 |**nodeDeletionTimeout**|str|nodeDeletionTimeout defines how long the controller will attempt to delete the Node that the MachinePool<br />hosts after the MachinePool is marked for deletion. A duration of 0 will retry deletion indefinitely.<br />Defaults to 10 seconds.||
 |**nodeDrainTimeout**|str|nodeDrainTimeout is the total amount of time that the controller will spend on draining a node.<br />The default value is 0, meaning that the node can be drained without any time limitations.<br />NOTE: NodeDrainTimeout is different from `kubectl drain --timeout`||
@@ -11520,7 +11210,7 @@ metadata is the metadata applied to the MachinePool. At runtime this metadata is
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**annotations**|{str:str}|annotations is an unstructured key value map stored with a resource that may be<br />set by external tools to store and retrieve arbitrary metadata. They are not<br />queryable and should be preserved when modifying objects.<br />More info: http://kubernetes.io/docs/user-guide/annotations||
-|**labels**|{str:str}|Map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
+|**labels**|{str:str}|labels is a map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
 ### ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachinePoolsItems0Variables
 
 variables can be used to customize the MachinePool through patches.
@@ -11543,7 +11233,7 @@ ClusterVariable can be used to customize the Cluster through patches. Each Clust
 |**value** `required`|any|value of the variable.<br />Note: the value will be validated against the schema of the corresponding ClusterClassVariable<br />from the ClusterClass.<br />Note: We have to use apiextensionsv1.JSON instead of a custom JSON type, because controller-tools has a<br />hard-coded schema for apiextensionsv1.JSON which cannot be produced by another type via controller-tools,<br />i.e. it is not possible to have no type field.<br />Ref: https://github.com/kubernetes-sigs/controller-tools/blob/d0e03a142d0ecdd5491593e941ee1d6b5d91dba6/pkg/crd/known_types.go#L106-L111||
 ### ClusterxK8sIoV1beta1ClusterStatus
 
-ClusterStatus defines the observed state of Cluster.
+status is the observed state of Cluster.
 
 #### Attributes
 
@@ -11556,7 +11246,7 @@ ClusterStatus defines the observed state of Cluster.
 |**failureReason**|str|failureReason indicates that there is a fatal problem reconciling the<br />state, and will be set to a token value suitable for<br />programmatic interpretation.<br /><br />Deprecated: This field is deprecated and is going to be removed in the next apiVersion. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.||
 |**infrastructureReady**|bool|infrastructureReady is the state of the infrastructure provider.||
 |**observedGeneration**|int|observedGeneration is the latest generation observed by the controller.||
-|**phase**|str|phase represents the current phase of cluster actuation.<br />E.g. Pending, Running, Terminating, Failed etc.||
+|**phase**|"Pending" | "Provisioning" | "Provisioned" | "Deleting" | "Failed" | "Unknown"|phase represents the current phase of cluster actuation.||
 |**v1beta2**|[ClusterxK8sIoV1beta1ClusterStatusV1beta2](#clusterxk8siov1beta1clusterstatusv1beta2)|v1beta2||
 ### ClusterxK8sIoV1beta1ClusterStatusConditionsItems0
 
@@ -11566,9 +11256,9 @@ Condition defines an observation of a Cluster API resource operational state.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime** `required`|str|Last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
-|**message**|str|A human readable message indicating details about the transition.<br />This field may be empty.||
-|**reason**|str|The reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may be empty.||
+|**lastTransitionTime** `required`|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
+|**message**|str|message is a human readable message indicating details about the transition.<br />This field may be empty.||
+|**reason**|str|reason is the reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may be empty.||
 |**severity**|str|severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
 |**status** `required`|str|status of the condition, one of True, False, Unknown.||
 |**type** `required`|str|||
@@ -11635,25 +11325,35 @@ workers groups all the observations about Cluster's Workers current state.
 |**upToDateReplicas**|int|upToDateReplicas is the number of up-to-date worker machines in this cluster. A machine is considered up-to-date when Machine's UpToDate condition is true.||
 ### ClusterxK8sIoV1beta1MachineDeploymentSpec
 
-MachineDeploymentSpec defines the desired state of MachineDeployment.
+spec is the desired state of MachineDeployment.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**clusterName** `required`|str|clusterName is the name of the Cluster this object belongs to.||
+|**machineNamingStrategy**|[ClusterxK8sIoV1beta1MachineDeploymentSpecMachineNamingStrategy](#clusterxk8siov1beta1machinedeploymentspecmachinenamingstrategy)|machine naming strategy||
 |**minReadySeconds**|int|minReadySeconds is the minimum number of seconds for which a Node for a newly created machine should be ready before considering the replica available.<br />Defaults to 0 (machine will be considered available as soon as the Node is ready)||
-|**paused**|bool|Indicates that the deployment is paused.||
-|**progressDeadlineSeconds**|int|The maximum time in seconds for a deployment to make progress before it<br />is considered to be failed. The deployment controller will continue to<br />process failed deployments and a condition with a ProgressDeadlineExceeded<br />reason will be surfaced in the deployment status. Note that progress will<br />not be estimated during the time a deployment is paused. Defaults to 600s.<br /><br />Deprecated: This field is deprecated and is going to be removed in the next apiVersion. Please see https://github.com/kubernetes-sigs/cluster-api/issues/11470 for more details.||
-|**replicas**|int|Number of desired machines.<br />This is a pointer to distinguish between explicit zero and not specified.<br /><br />Defaults to:<br />* if the Kubernetes autoscaler min size and max size annotations are set:<br />- if it's a new MachineDeployment, use min size<br />- if the replicas field of the old MachineDeployment is < min size, use min size<br />- if the replicas field of the old MachineDeployment is > max size, use max size<br />- if the replicas field of the old MachineDeployment is in the (min size, max size) range, keep the value from the oldMD<br />* otherwise use 1<br />Note: Defaulting will be run whenever the replicas field is not set:<br />* A new MachineDeployment is created with replicas not set.<br />* On an existing MachineDeployment the replicas field was first set and is now unset.<br />Those cases are especially relevant for the following Kubernetes autoscaler use cases:<br />* A new MachineDeployment is created and replicas should be managed by the autoscaler<br />* An existing MachineDeployment which initially wasn't controlled by the autoscaler<br />should be later controlled by the autoscaler||
-|**revisionHistoryLimit**|int|The number of old MachineSets to retain to allow rollback.<br />This is a pointer to distinguish between explicit zero and not specified.<br />Defaults to 1.<br /><br />Deprecated: This field is deprecated and is going to be removed in the next apiVersion. Please see https://github.com/kubernetes-sigs/cluster-api/issues/10479 for more details.||
+|**paused**|bool|paused indicates that the deployment is paused.||
+|**progressDeadlineSeconds**|int|progressDeadlineSeconds is the maximum time in seconds for a deployment to make progress before it<br />is considered to be failed. The deployment controller will continue to<br />process failed deployments and a condition with a ProgressDeadlineExceeded<br />reason will be surfaced in the deployment status. Note that progress will<br />not be estimated during the time a deployment is paused. Defaults to 600s.<br /><br />Deprecated: This field is deprecated and is going to be removed in the next apiVersion. Please see https://github.com/kubernetes-sigs/cluster-api/issues/11470 for more details.||
+|**replicas**|int|replicas is the number of desired machines.<br />This is a pointer to distinguish between explicit zero and not specified.<br /><br />Defaults to:<br />* if the Kubernetes autoscaler min size and max size annotations are set:<br />- if it's a new MachineDeployment, use min size<br />- if the replicas field of the old MachineDeployment is < min size, use min size<br />- if the replicas field of the old MachineDeployment is > max size, use max size<br />- if the replicas field of the old MachineDeployment is in the (min size, max size) range, keep the value from the oldMD<br />* otherwise use 1<br />Note: Defaulting will be run whenever the replicas field is not set:<br />* A new MachineDeployment is created with replicas not set.<br />* On an existing MachineDeployment the replicas field was first set and is now unset.<br />Those cases are especially relevant for the following Kubernetes autoscaler use cases:<br />* A new MachineDeployment is created and replicas should be managed by the autoscaler<br />* An existing MachineDeployment which initially wasn't controlled by the autoscaler<br />should be later controlled by the autoscaler||
+|**revisionHistoryLimit**|int|revisionHistoryLimit is the number of old MachineSets to retain to allow rollback.<br />This is a pointer to distinguish between explicit zero and not specified.<br />Defaults to 1.<br /><br />Deprecated: This field is deprecated and is going to be removed in the next apiVersion. Please see https://github.com/kubernetes-sigs/cluster-api/issues/10479 for more details.||
 |**rolloutAfter**|str|rolloutAfter is a field to indicate a rollout should be performed<br />after the specified time even if no changes have been made to the<br />MachineDeployment.<br />Example: In the YAML the time can be specified in the RFC3339 format.<br />To specify the rolloutAfter target as March 9, 2023, at 9 am UTC<br />use "2023-03-09T09:00:00Z".||
 |**selector** `required`|[ClusterxK8sIoV1beta1MachineDeploymentSpecSelector](#clusterxk8siov1beta1machinedeploymentspecselector)|selector||
 |**strategy**|[ClusterxK8sIoV1beta1MachineDeploymentSpecStrategy](#clusterxk8siov1beta1machinedeploymentspecstrategy)|strategy||
 |**template** `required`|[ClusterxK8sIoV1beta1MachineDeploymentSpecTemplate](#clusterxk8siov1beta1machinedeploymentspectemplate)|template||
+### ClusterxK8sIoV1beta1MachineDeploymentSpecMachineNamingStrategy
+
+machineNamingStrategy allows changing the naming pattern used when creating Machines. Note: InfraMachines & BootstrapConfigs will use the same name as the corresponding Machines.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**template**|str|template defines the template to use for generating the names of the<br />Machine objects.<br />If not defined, it will fallback to `{{ .machineSet.name }}-{{ .random }}`.<br />If the generated name string exceeds 63 characters, it will be trimmed to<br />58 characters and will<br />get concatenated with a random suffix of length 5.<br />Length of the template string must not exceed 256 characters.<br />The template allows the following variables `.cluster.name`,<br />`.machineSet.name` and `.random`.<br />The variable `.cluster.name` retrieves the name of the cluster object<br />that owns the Machines being created.<br />The variable `.machineSet.name` retrieves the name of the MachineSet<br />object that owns the Machines being created.<br />The variable `.random` is substituted with random alphanumeric string,<br />without vowels, of length 5. This variable is required part of the<br />template. If not provided, validation will fail.||
 ### ClusterxK8sIoV1beta1MachineDeploymentSpecSelector
 
-Label selector for machines. Existing MachineSets whose machines are selected by this will be the ones affected by this deployment. It must match the machine template's labels.
+selector is the label selector for machines. Existing MachineSets whose machines are selected by this will be the ones affected by this deployment. It must match the machine template's labels.
 
 #### Attributes
 
@@ -11674,7 +11374,7 @@ A label selector requirement is a selector that contains values, a key, and an o
 |**values**|[str]|values is an array of string values. If the operator is In or NotIn,<br />the values array must be non-empty. If the operator is Exists or DoesNotExist,<br />the values array must be empty. This array is replaced during a strategic<br />merge patch.||
 ### ClusterxK8sIoV1beta1MachineDeploymentSpecStrategy
 
-The deployment strategy to use to replace existing machines with new ones.
+strategy is the deployment strategy to use to replace existing machines with new ones.
 
 #### Attributes
 
@@ -11694,15 +11394,15 @@ remediation controls the strategy of remediating unhealthy machines and how reme
 |**maxInFlight**|int | str|maxInFlight determines how many in flight remediations should happen at the same time.<br /><br />Remediation only happens on the MachineSet with the most current revision, while<br />older MachineSets (usually present during rollout operations) aren't allowed to remediate.<br /><br />Note: In general (independent of remediations), unhealthy machines are always<br />prioritized during scale down operations over healthy ones.<br /><br />MaxInFlight can be set to a fixed number or a percentage.<br />Example: when this is set to 20%, the MachineSet controller deletes at most 20% of<br />the desired replicas.<br /><br />If not set, remediation is limited to all machines (bounded by replicas)<br />under the active MachineSet's management.||
 ### ClusterxK8sIoV1beta1MachineDeploymentSpecStrategyRollingUpdate
 
-Rolling update config params. Present only if MachineDeploymentStrategyType = RollingUpdate.
+rollingUpdate is the rolling update config params. Present only if MachineDeploymentStrategyType = RollingUpdate.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**deletePolicy**|"Random" | "Newest" | "Oldest"|deletePolicy defines the policy used by the MachineDeployment to identify nodes to delete when downscaling.<br />Valid values are "Random, "Newest", "Oldest"<br />When no value is supplied, the default DeletePolicy of MachineSet is used||
-|**maxSurge**|int | str|The maximum number of machines that can be scheduled above the<br />desired number of machines.<br />Value can be an absolute number (ex: 5) or a percentage of<br />desired machines (ex: 10%).<br />This can not be 0 if MaxUnavailable is 0.<br />Absolute number is calculated from percentage by rounding up.<br />Defaults to 1.<br />Example: when this is set to 30%, the new MachineSet can be scaled<br />up immediately when the rolling update starts, such that the total<br />number of old and new machines do not exceed 130% of desired<br />machines. Once old machines have been killed, new MachineSet can<br />be scaled up further, ensuring that total number of machines running<br />at any time during the update is at most 130% of desired machines.||
-|**maxUnavailable**|int | str|The maximum number of machines that can be unavailable during the update.<br />Value can be an absolute number (ex: 5) or a percentage of desired<br />machines (ex: 10%).<br />Absolute number is calculated from percentage by rounding down.<br />This can not be 0 if MaxSurge is 0.<br />Defaults to 0.<br />Example: when this is set to 30%, the old MachineSet can be scaled<br />down to 70% of desired machines immediately when the rolling update<br />starts. Once new machines are ready, old MachineSet can be scaled<br />down further, followed by scaling up the new MachineSet, ensuring<br />that the total number of machines available at all times<br />during the update is at least 70% of desired machines.||
+|**maxSurge**|int | str|maxSurge is the maximum number of machines that can be scheduled above the<br />desired number of machines.<br />Value can be an absolute number (ex: 5) or a percentage of<br />desired machines (ex: 10%).<br />This can not be 0 if MaxUnavailable is 0.<br />Absolute number is calculated from percentage by rounding up.<br />Defaults to 1.<br />Example: when this is set to 30%, the new MachineSet can be scaled<br />up immediately when the rolling update starts, such that the total<br />number of old and new machines do not exceed 130% of desired<br />machines. Once old machines have been killed, new MachineSet can<br />be scaled up further, ensuring that total number of machines running<br />at any time during the update is at most 130% of desired machines.||
+|**maxUnavailable**|int | str|maxUnavailable is the maximum number of machines that can be unavailable during the update.<br />Value can be an absolute number (ex: 5) or a percentage of desired<br />machines (ex: 10%).<br />Absolute number is calculated from percentage by rounding down.<br />This can not be 0 if MaxSurge is 0.<br />Defaults to 0.<br />Example: when this is set to 30%, the old MachineSet can be scaled<br />down to 70% of desired machines immediately when the rolling update<br />starts. Once new machines are ready, old MachineSet can be scaled<br />down further, followed by scaling up the new MachineSet, ensuring<br />that the total number of machines available at all times<br />during the update is at least 70% of desired machines.||
 ### ClusterxK8sIoV1beta1MachineDeploymentSpecTemplate
 
 template describes the machines that will be created.
@@ -11715,17 +11415,17 @@ template describes the machines that will be created.
 |**spec**|[ClusterxK8sIoV1beta1MachineDeploymentSpecTemplateSpec](#clusterxk8siov1beta1machinedeploymentspectemplatespec)|spec||
 ### ClusterxK8sIoV1beta1MachineDeploymentSpecTemplateMetadata
 
-Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+metadata is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**annotations**|{str:str}|annotations is an unstructured key value map stored with a resource that may be<br />set by external tools to store and retrieve arbitrary metadata. They are not<br />queryable and should be preserved when modifying objects.<br />More info: http://kubernetes.io/docs/user-guide/annotations||
-|**labels**|{str:str}|Map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
+|**labels**|{str:str}|labels is a map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
 ### ClusterxK8sIoV1beta1MachineDeploymentSpecTemplateSpec
 
-Specification of the desired behavior of the machine. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+spec is the specification of the desired behavior of the machine. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
 
 #### Attributes
 
@@ -11789,24 +11489,25 @@ MachineReadinessGate contains the type of a Machine condition to be used as a re
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**conditionType** `required`|str|conditionType refers to a positive polarity condition (status true means good) with matching type in the Machine's condition list.<br />If the conditions doesn't exist, it will be treated as unknown.<br />Note: Both Cluster API conditions or conditions added by 3rd party controllers can be used as readiness gates.||
+|**conditionType** `required`|str|conditionType refers to a condition with matching type in the Machine's condition list.<br />If the conditions doesn't exist, it will be treated as unknown.<br />Note: Both Cluster API conditions or conditions added by 3rd party controllers can be used as readiness gates.||
+|**polarity**|"Positive" | "Negative"|polarity of the conditionType specified in this readinessGate.<br />Valid values are Positive, Negative and omitted.<br />When omitted, the default behaviour will be Positive.<br />A positive polarity means that the condition should report a true status under normal conditions.<br />A negative polarity means that the condition should report a false status under normal conditions.||
 ### ClusterxK8sIoV1beta1MachineDeploymentStatus
 
-MachineDeploymentStatus defines the observed state of MachineDeployment.
+status is the observed state of MachineDeployment.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**availableReplicas**|int|Total number of available machines (ready for at least minReadySeconds)<br />targeted by this deployment.||
+|**availableReplicas**|int|availableReplicas is the total number of available machines (ready for at least minReadySeconds)<br />targeted by this deployment.||
 |**conditions**|[[ClusterxK8sIoV1beta1MachineDeploymentStatusConditionsItems0](#clusterxk8siov1beta1machinedeploymentstatusconditionsitems0)]|conditions defines current service state of the MachineDeployment.||
-|**observedGeneration**|int|The generation observed by the deployment controller.||
-|**phase**|str|phase represents the current phase of a MachineDeployment (ScalingUp, ScalingDown, Running, Failed, or Unknown).||
-|**readyReplicas**|int|Total number of ready machines targeted by this deployment.||
-|**replicas**|int|Total number of non-terminated machines targeted by this deployment<br />(their labels match the selector).||
+|**observedGeneration**|int|observedGeneration is the generation observed by the deployment controller.||
+|**phase**|"ScalingUp" | "ScalingDown" | "Running" | "Failed" | "Unknown"|phase represents the current phase of a MachineDeployment (ScalingUp, ScalingDown, Running, Failed, or Unknown).||
+|**readyReplicas**|int|readyReplicas is the total number of ready machines targeted by this deployment.||
+|**replicas**|int|replicas is the total number of non-terminated machines targeted by this deployment<br />(their labels match the selector).||
 |**selector**|str|selector is the same as the label selector but in the string format to avoid introspection<br />by clients. The string will be in the same format as the query-param syntax.<br />More info about label selectors: http://kubernetes.io/docs/user-guide/labels#label-selectors||
-|**unavailableReplicas**|int|Total number of unavailable machines targeted by this deployment.<br />This is the total number of machines that are still required for<br />the deployment to have 100% available capacity. They may either<br />be machines that are running but not yet available or machines<br />that still have not been created.<br /><br />Deprecated: This field is deprecated and is going to be removed in the next apiVersion. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.||
-|**updatedReplicas**|int|Total number of non-terminated machines targeted by this deployment<br />that have the desired template spec.||
+|**unavailableReplicas**|int|unavailableReplicas is the total number of unavailable machines targeted by this deployment.<br />This is the total number of machines that are still required for<br />the deployment to have 100% available capacity. They may either<br />be machines that are running but not yet available or machines<br />that still have not been created.<br /><br />Deprecated: This field is deprecated and is going to be removed in the next apiVersion. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.||
+|**updatedReplicas**|int|updatedReplicas is the total number of non-terminated machines targeted by this deployment<br />that have the desired template spec.||
 |**v1beta2**|[ClusterxK8sIoV1beta1MachineDeploymentStatusV1beta2](#clusterxk8siov1beta1machinedeploymentstatusv1beta2)|v1beta2||
 ### ClusterxK8sIoV1beta1MachineDeploymentStatusConditionsItems0
 
@@ -11816,9 +11517,9 @@ Condition defines an observation of a Cluster API resource operational state.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime** `required`|str|Last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
-|**message**|str|A human readable message indicating details about the transition.<br />This field may be empty.||
-|**reason**|str|The reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may be empty.||
+|**lastTransitionTime** `required`|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
+|**message**|str|message is a human readable message indicating details about the transition.<br />This field may be empty.||
+|**reason**|str|reason is the reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may be empty.||
 |**severity**|str|severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
 |**status** `required`|str|status of the condition, one of True, False, Unknown.||
 |**type** `required`|str|||
@@ -11975,19 +11676,19 @@ A label selector requirement is a selector that contains values, a key, and an o
 |**values**|[str]|values is an array of string values. If the operator is In or NotIn,<br />the values array must be non-empty. If the operator is Exists or DoesNotExist,<br />the values array must be empty. This array is replaced during a strategic<br />merge patch.||
 ### ClusterxK8sIoV1beta1MachineHealthCheckSpec
 
-Specification of machine health check policy
+spec is the specification of machine health check policy
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**clusterName** `required`|str|clusterName is the name of the Cluster this object belongs to.||
-|**maxUnhealthy**|int | str|Any further remediation is only allowed if at most "MaxUnhealthy" machines selected by<br />"selector" are not healthy.<br /><br />Deprecated: This field is deprecated and is going to be removed in the next apiVersion. Please see https://github.com/kubernetes-sigs/cluster-api/issues/10722 for more details.||
+|**maxUnhealthy**|int | str|maxUnhealthy specifies the maximum number of unhealthy machines allowed.<br />Any further remediation is only allowed if at most "maxUnhealthy" machines selected by<br />"selector" are not healthy.<br /><br />Deprecated: This field is deprecated and is going to be removed in the next apiVersion. Please see https://github.com/kubernetes-sigs/cluster-api/issues/10722 for more details.||
 |**nodeStartupTimeout**|str|nodeStartupTimeout allows to set the maximum time for MachineHealthCheck<br />to consider a Machine unhealthy if a corresponding Node isn't associated<br />through a `Spec.ProviderID` field.<br /><br />The duration set in this field is compared to the greatest of:<br />- Cluster's infrastructure ready condition timestamp (if and when available)<br />- Control Plane's initialized condition timestamp (if and when available)<br />- Machine's infrastructure ready condition timestamp (if and when available)<br />- Machine's metadata creation timestamp<br /><br />Defaults to 10 minutes.<br />If you wish to disable this feature, set the value explicitly to 0.||
 |**remediationTemplate**|[ClusterxK8sIoV1beta1MachineHealthCheckSpecRemediationTemplate](#clusterxk8siov1beta1machinehealthcheckspecremediationtemplate)|remediation template||
 |**selector** `required`|[ClusterxK8sIoV1beta1MachineHealthCheckSpecSelector](#clusterxk8siov1beta1machinehealthcheckspecselector)|selector||
 |**unhealthyConditions**|[[ClusterxK8sIoV1beta1MachineHealthCheckSpecUnhealthyConditionsItems0](#clusterxk8siov1beta1machinehealthcheckspecunhealthyconditionsitems0)]|unhealthyConditions contains a list of the conditions that determine<br />whether a node is considered unhealthy.  The conditions are combined in a<br />logical OR, i.e. if any of the conditions is met, the node is unhealthy.||
-|**unhealthyRange**|str|Any further remediation is only allowed if the number of machines selected by "selector" as not healthy<br />is within the range of "UnhealthyRange". Takes precedence over MaxUnhealthy.<br />Eg. "[3-5]" - This means that remediation will be allowed only when:<br />(a) there are at least 3 unhealthy machines (and)<br />(b) there are at most 5 unhealthy machines<br /><br />Deprecated: This field is deprecated and is going to be removed in the next apiVersion. Please see https://github.com/kubernetes-sigs/cluster-api/issues/10722 for more details.||
+|**unhealthyRange**|str|unhealthyRange specifies the range of unhealthy machines allowed.<br />Any further remediation is only allowed if the number of machines selected by "selector" as not healthy<br />is within the range of "unhealthyRange". Takes precedence over maxUnhealthy.<br />Eg. "[3-5]" - This means that remediation will be allowed only when:<br />(a) there are at least 3 unhealthy machines (and)<br />(b) there are at most 5 unhealthy machines<br /><br />Deprecated: This field is deprecated and is going to be removed in the next apiVersion. Please see https://github.com/kubernetes-sigs/cluster-api/issues/10722 for more details.||
 ### ClusterxK8sIoV1beta1MachineHealthCheckSpecRemediationTemplate
 
 remediationTemplate is a reference to a remediation template provided by an infrastructure provider.  This field is completely optional, when filled, the MachineHealthCheck controller creates a new object from the template referenced and hands off remediation of the machine to a controller that lives outside of Cluster API.
@@ -12005,7 +11706,7 @@ remediationTemplate is a reference to a remediation template provided by an infr
 |**uid**|str|UID of the referent.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids||
 ### ClusterxK8sIoV1beta1MachineHealthCheckSpecSelector
 
-Label selector to match machines whose health will be exercised
+selector is a label selector to match machines whose health will be exercised
 
 #### Attributes
 
@@ -12032,20 +11733,20 @@ UnhealthyCondition represents a Node condition type and value with a timeout spe
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**status** `required`|str|status||
-|**timeout** `required`|str|timeout||
+|**status** `required`|str|status of the condition, one of True, False, Unknown.||
+|**timeout** `required`|str|timeout is the duration that a node must be in a given status for,<br />after which the node is considered unhealthy.<br />For example, with a value of "1h", the node must match the status<br />for at least 1 hour before being considered unhealthy.||
 |**type** `required`|str|||
 ### ClusterxK8sIoV1beta1MachineHealthCheckStatus
 
-Most recently observed status of MachineHealthCheck resource
+status is the most recently observed status of MachineHealthCheck resource
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**conditions**|[[ClusterxK8sIoV1beta1MachineHealthCheckStatusConditionsItems0](#clusterxk8siov1beta1machinehealthcheckstatusconditionsitems0)]|conditions defines current service state of the MachineHealthCheck.||
-|**currentHealthy**|int|total number of healthy machines counted by this machine health check||
-|**expectedMachines**|int|total number of machines counted by this machine health check||
+|**currentHealthy**|int|currentHealthy is the total number of healthy machines counted by this machine health check||
+|**expectedMachines**|int|expectedMachines is the total number of machines counted by this machine health check||
 |**observedGeneration**|int|observedGeneration is the latest generation observed by the controller.||
 |**remediationsAllowed**|int|remediationsAllowed is the number of further remediations allowed by this machine health check before<br />maxUnhealthy short circuiting will be applied||
 |**targets**|[str]|targets shows the current list of machines the machine health check is watching||
@@ -12058,9 +11759,9 @@ Condition defines an observation of a Cluster API resource operational state.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime** `required`|str|Last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
-|**message**|str|A human readable message indicating details about the transition.<br />This field may be empty.||
-|**reason**|str|The reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may be empty.||
+|**lastTransitionTime** `required`|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
+|**message**|str|message is a human readable message indicating details about the transition.<br />This field may be empty.||
+|**reason**|str|reason is the reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may be empty.||
 |**severity**|str|severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
 |**status** `required`|str|status of the condition, one of True, False, Unknown.||
 |**type** `required`|str|||
@@ -12089,7 +11790,7 @@ Condition contains details for one aspect of the current state of this API Resou
 |**type** `required`|str|||
 ### ClusterxK8sIoV1beta1MachinePoolSpec
 
-MachinePoolSpec defines the desired state of MachinePool.
+spec is the desired state of MachinePool.
 
 #### Attributes
 
@@ -12097,9 +11798,9 @@ MachinePoolSpec defines the desired state of MachinePool.
 | --- | --- | --- | --- |
 |**clusterName** `required`|str|clusterName is the name of the Cluster this object belongs to.||
 |**failureDomains**|[str]|failureDomains is the list of failure domains this MachinePool should be attached to.||
-|**minReadySeconds**|int|Minimum number of seconds for which a newly created machine instances should<br />be ready.<br />Defaults to 0 (machine instance will be considered available as soon as it<br />is ready)||
+|**minReadySeconds**|int|minReadySeconds is the minimum number of seconds for which a newly created machine instances should<br />be ready.<br />Defaults to 0 (machine instance will be considered available as soon as it<br />is ready)||
 |**providerIDList**|[str]|providerIDList are the identification IDs of machine instances provided by the provider.<br />This field must match the provider IDs as seen on the node objects corresponding to a machine pool's machine instances.||
-|**replicas**|int|Number of desired machines. Defaults to 1.<br />This is a pointer to distinguish between explicit zero and not specified.||
+|**replicas**|int|replicas is the number of desired machines. Defaults to 1.<br />This is a pointer to distinguish between explicit zero and not specified.||
 |**template** `required`|[ClusterxK8sIoV1beta1MachinePoolSpecTemplate](#clusterxk8siov1beta1machinepoolspectemplate)|template||
 ### ClusterxK8sIoV1beta1MachinePoolSpecTemplate
 
@@ -12113,17 +11814,17 @@ template describes the machines that will be created.
 |**spec**|[ClusterxK8sIoV1beta1MachinePoolSpecTemplateSpec](#clusterxk8siov1beta1machinepoolspectemplatespec)|spec||
 ### ClusterxK8sIoV1beta1MachinePoolSpecTemplateMetadata
 
-Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+metadata is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**annotations**|{str:str}|annotations is an unstructured key value map stored with a resource that may be<br />set by external tools to store and retrieve arbitrary metadata. They are not<br />queryable and should be preserved when modifying objects.<br />More info: http://kubernetes.io/docs/user-guide/annotations||
-|**labels**|{str:str}|Map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
+|**labels**|{str:str}|labels is a map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
 ### ClusterxK8sIoV1beta1MachinePoolSpecTemplateSpec
 
-Specification of the desired behavior of the machine. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+spec is the specification of the desired behavior of the machine. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
 
 #### Attributes
 
@@ -12187,16 +11888,17 @@ MachineReadinessGate contains the type of a Machine condition to be used as a re
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**conditionType** `required`|str|conditionType refers to a positive polarity condition (status true means good) with matching type in the Machine's condition list.<br />If the conditions doesn't exist, it will be treated as unknown.<br />Note: Both Cluster API conditions or conditions added by 3rd party controllers can be used as readiness gates.||
+|**conditionType** `required`|str|conditionType refers to a condition with matching type in the Machine's condition list.<br />If the conditions doesn't exist, it will be treated as unknown.<br />Note: Both Cluster API conditions or conditions added by 3rd party controllers can be used as readiness gates.||
+|**polarity**|"Positive" | "Negative"|polarity of the conditionType specified in this readinessGate.<br />Valid values are Positive, Negative and omitted.<br />When omitted, the default behaviour will be Positive.<br />A positive polarity means that the condition should report a true status under normal conditions.<br />A negative polarity means that the condition should report a false status under normal conditions.||
 ### ClusterxK8sIoV1beta1MachinePoolStatus
 
-MachinePoolStatus defines the observed state of MachinePool.
+status is the observed state of MachinePool.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**availableReplicas**|int|The number of available replicas (ready for at least minReadySeconds) for this MachinePool.||
+|**availableReplicas**|int|availableReplicas is the number of available replicas (ready for at least minReadySeconds) for this MachinePool.||
 |**bootstrapReady**|bool|bootstrapReady is the state of the bootstrap provider.||
 |**conditions**|[[ClusterxK8sIoV1beta1MachinePoolStatusConditionsItems0](#clusterxk8siov1beta1machinepoolstatusconditionsitems0)]|conditions define the current service state of the MachinePool.||
 |**failureMessage**|str|failureMessage indicates that there is a problem reconciling the state,<br />and will be set to a descriptive error message.<br /><br />Deprecated: This field is deprecated and is going to be removed in the next apiVersion. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.||
@@ -12204,10 +11906,10 @@ MachinePoolStatus defines the observed state of MachinePool.
 |**infrastructureReady**|bool|infrastructureReady is the state of the infrastructure provider.||
 |**nodeRefs**|[[ClusterxK8sIoV1beta1MachinePoolStatusNodeRefsItems0](#clusterxk8siov1beta1machinepoolstatusnoderefsitems0)]|nodeRefs will point to the corresponding Nodes if it they exist.||
 |**observedGeneration**|int|observedGeneration is the latest generation observed by the controller.||
-|**phase**|str|phase represents the current phase of cluster actuation.<br />E.g. Pending, Running, Terminating, Failed etc.||
-|**readyReplicas**|int|The number of ready replicas for this MachinePool. A machine is considered ready when the node has been created and is "Ready".||
+|**phase**|"Pending" | "Provisioning" | "Provisioned" | "Running" | "ScalingUp" | "ScalingDown" | "Scaling" | "Deleting" | "Failed" | "Unknown"|phase represents the current phase of cluster actuation.||
+|**readyReplicas**|int|readyReplicas is the number of ready replicas for this MachinePool. A machine is considered ready when the node has been created and is "Ready".||
 |**replicas**|int|replicas is the most recently observed number of replicas.||
-|**unavailableReplicas**|int|Total number of unavailable machine instances targeted by this machine pool.<br />This is the total number of machine instances that are still required for<br />the machine pool to have 100% available capacity. They may either<br />be machine instances that are running but not yet available or machine instances<br />that still have not been created.<br /><br />Deprecated: This field is deprecated and is going to be removed in the next apiVersion. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.||
+|**unavailableReplicas**|int|unavailableReplicas is the total number of unavailable machine instances targeted by this machine pool.<br />This is the total number of machine instances that are still required for<br />the machine pool to have 100% available capacity. They may either<br />be machine instances that are running but not yet available or machine instances<br />that still have not been created.<br /><br />Deprecated: This field is deprecated and is going to be removed in the next apiVersion. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.||
 |**v1beta2**|[ClusterxK8sIoV1beta1MachinePoolStatusV1beta2](#clusterxk8siov1beta1machinepoolstatusv1beta2)|v1beta2||
 ### ClusterxK8sIoV1beta1MachinePoolStatusConditionsItems0
 
@@ -12217,9 +11919,9 @@ Condition defines an observation of a Cluster API resource operational state.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime** `required`|str|Last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
-|**message**|str|A human readable message indicating details about the transition.<br />This field may be empty.||
-|**reason**|str|The reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may be empty.||
+|**lastTransitionTime** `required`|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
+|**message**|str|message is a human readable message indicating details about the transition.<br />This field may be empty.||
+|**reason**|str|reason is the reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may be empty.||
 |**severity**|str|severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
 |**status** `required`|str|status of the condition, one of True, False, Unknown.||
 |**type** `required`|str|||
@@ -12266,7 +11968,7 @@ Condition contains details for one aspect of the current state of this API Resou
 |**type** `required`|str|||
 ### ClusterxK8sIoV1beta1MachineSetSpec
 
-MachineSetSpec defines the desired state of MachineSet.
+spec is the desired state of MachineSet.
 
 #### Attributes
 
@@ -12274,10 +11976,20 @@ MachineSetSpec defines the desired state of MachineSet.
 | --- | --- | --- | --- |
 |**clusterName** `required`|str|clusterName is the name of the Cluster this object belongs to.||
 |**deletePolicy**|"Random" | "Newest" | "Oldest"|deletePolicy defines the policy used to identify nodes to delete when downscaling.<br />Defaults to "Random".  Valid values are "Random, "Newest", "Oldest"||
+|**machineNamingStrategy**|[ClusterxK8sIoV1beta1MachineSetSpecMachineNamingStrategy](#clusterxk8siov1beta1machinesetspecmachinenamingstrategy)|machine naming strategy||
 |**minReadySeconds**|int|minReadySeconds is the minimum number of seconds for which a Node for a newly created machine should be ready before considering the replica available.<br />Defaults to 0 (machine will be considered available as soon as the Node is ready)||
 |**replicas**|int|replicas is the number of desired replicas.<br />This is a pointer to distinguish between explicit zero and unspecified.<br /><br />Defaults to:<br />* if the Kubernetes autoscaler min size and max size annotations are set:<br />- if it's a new MachineSet, use min size<br />- if the replicas field of the old MachineSet is < min size, use min size<br />- if the replicas field of the old MachineSet is > max size, use max size<br />- if the replicas field of the old MachineSet is in the (min size, max size) range, keep the value from the oldMS<br />* otherwise use 1<br />Note: Defaulting will be run whenever the replicas field is not set:<br />* A new MachineSet is created with replicas not set.<br />* On an existing MachineSet the replicas field was first set and is now unset.<br />Those cases are especially relevant for the following Kubernetes autoscaler use cases:<br />* A new MachineSet is created and replicas should be managed by the autoscaler<br />* An existing MachineSet which initially wasn't controlled by the autoscaler<br />should be later controlled by the autoscaler||
 |**selector** `required`|[ClusterxK8sIoV1beta1MachineSetSpecSelector](#clusterxk8siov1beta1machinesetspecselector)|selector||
 |**template**|[ClusterxK8sIoV1beta1MachineSetSpecTemplate](#clusterxk8siov1beta1machinesetspectemplate)|template||
+### ClusterxK8sIoV1beta1MachineSetSpecMachineNamingStrategy
+
+machineNamingStrategy allows changing the naming pattern used when creating Machines. Note: InfraMachines & BootstrapConfigs will use the same name as the corresponding Machines.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**template**|str|template defines the template to use for generating the names of the<br />Machine objects.<br />If not defined, it will fallback to `{{ .machineSet.name }}-{{ .random }}`.<br />If the generated name string exceeds 63 characters, it will be trimmed to<br />58 characters and will<br />get concatenated with a random suffix of length 5.<br />Length of the template string must not exceed 256 characters.<br />The template allows the following variables `.cluster.name`,<br />`.machineSet.name` and `.random`.<br />The variable `.cluster.name` retrieves the name of the cluster object<br />that owns the Machines being created.<br />The variable `.machineSet.name` retrieves the name of the MachineSet<br />object that owns the Machines being created.<br />The variable `.random` is substituted with random alphanumeric string,<br />without vowels, of length 5. This variable is required part of the<br />template. If not provided, validation will fail.||
 ### ClusterxK8sIoV1beta1MachineSetSpecSelector
 
 selector is a label query over machines that should match the replica count. Label keys and values that must match in order to be controlled by this MachineSet. It must match the machine template's labels. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors
@@ -12311,17 +12023,17 @@ template is the object that describes the machine that will be created if insuff
 |**spec**|[ClusterxK8sIoV1beta1MachineSetSpecTemplateSpec](#clusterxk8siov1beta1machinesetspectemplatespec)|spec||
 ### ClusterxK8sIoV1beta1MachineSetSpecTemplateMetadata
 
-Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+metadata is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**annotations**|{str:str}|annotations is an unstructured key value map stored with a resource that may be<br />set by external tools to store and retrieve arbitrary metadata. They are not<br />queryable and should be preserved when modifying objects.<br />More info: http://kubernetes.io/docs/user-guide/annotations||
-|**labels**|{str:str}|Map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
+|**labels**|{str:str}|labels is a map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
 ### ClusterxK8sIoV1beta1MachineSetSpecTemplateSpec
 
-Specification of the desired behavior of the machine. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+spec is the specification of the desired behavior of the machine. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
 
 #### Attributes
 
@@ -12385,22 +12097,23 @@ MachineReadinessGate contains the type of a Machine condition to be used as a re
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**conditionType** `required`|str|conditionType refers to a positive polarity condition (status true means good) with matching type in the Machine's condition list.<br />If the conditions doesn't exist, it will be treated as unknown.<br />Note: Both Cluster API conditions or conditions added by 3rd party controllers can be used as readiness gates.||
+|**conditionType** `required`|str|conditionType refers to a condition with matching type in the Machine's condition list.<br />If the conditions doesn't exist, it will be treated as unknown.<br />Note: Both Cluster API conditions or conditions added by 3rd party controllers can be used as readiness gates.||
+|**polarity**|"Positive" | "Negative"|polarity of the conditionType specified in this readinessGate.<br />Valid values are Positive, Negative and omitted.<br />When omitted, the default behaviour will be Positive.<br />A positive polarity means that the condition should report a true status under normal conditions.<br />A negative polarity means that the condition should report a false status under normal conditions.||
 ### ClusterxK8sIoV1beta1MachineSetStatus
 
-MachineSetStatus defines the observed state of MachineSet.
+status is the observed state of MachineSet.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**availableReplicas**|int|The number of available replicas (ready for at least minReadySeconds) for this MachineSet.||
+|**availableReplicas**|int|availableReplicas is the number of available replicas (ready for at least minReadySeconds) for this MachineSet.||
 |**conditions**|[[ClusterxK8sIoV1beta1MachineSetStatusConditionsItems0](#clusterxk8siov1beta1machinesetstatusconditionsitems0)]|conditions defines current service state of the MachineSet.||
-|**failureMessage**|str|Deprecated: This field is deprecated and is going to be removed in the next apiVersion. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.||
-|**failureReason**|str|In the event that there is a terminal problem reconciling the<br />replicas, both FailureReason and FailureMessage will be set. FailureReason<br />will be populated with a succinct value suitable for machine<br />interpretation, while FailureMessage will contain a more verbose<br />string suitable for logging and human consumption.<br /><br />These fields should not be set for transitive errors that a<br />controller faces that are expected to be fixed automatically over<br />time (like service outages), but instead indicate that something is<br />fundamentally wrong with the MachineTemplate's spec or the configuration of<br />the machine controller, and that manual intervention is required. Examples<br />of terminal errors would be invalid combinations of settings in the<br />spec, values that are unsupported by the machine controller, or the<br />responsible machine controller itself being critically misconfigured.<br /><br />Any transient errors that occur during the reconciliation of Machines<br />can be added as events to the MachineSet object and/or logged in the<br />controller's output.<br /><br />Deprecated: This field is deprecated and is going to be removed in the next apiVersion. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.||
-|**fullyLabeledReplicas**|int|The number of replicas that have labels matching the labels of the machine template of the MachineSet.<br /><br />Deprecated: This field is deprecated and is going to be removed in the next apiVersion. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.||
+|**failureMessage**|str|failureMessage will be set in the event that there is a terminal problem<br />reconciling the Machine and will contain a more verbose string suitable<br />for logging and human consumption.<br /><br />Deprecated: This field is deprecated and is going to be removed in the next apiVersion. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.||
+|**failureReason**|str|failureReason will be set in the event that there is a terminal problem<br />reconciling the Machine and will contain a succinct value suitable<br />for machine interpretation.<br /><br />In the event that there is a terminal problem reconciling the<br />replicas, both FailureReason and FailureMessage will be set. FailureReason<br />will be populated with a succinct value suitable for machine<br />interpretation, while FailureMessage will contain a more verbose<br />string suitable for logging and human consumption.<br /><br />These fields should not be set for transitive errors that a<br />controller faces that are expected to be fixed automatically over<br />time (like service outages), but instead indicate that something is<br />fundamentally wrong with the MachineTemplate's spec or the configuration of<br />the machine controller, and that manual intervention is required. Examples<br />of terminal errors would be invalid combinations of settings in the<br />spec, values that are unsupported by the machine controller, or the<br />responsible machine controller itself being critically misconfigured.<br /><br />Any transient errors that occur during the reconciliation of Machines<br />can be added as events to the MachineSet object and/or logged in the<br />controller's output.<br /><br />Deprecated: This field is deprecated and is going to be removed in the next apiVersion. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.||
+|**fullyLabeledReplicas**|int|fullyLabeledReplicas is the number of replicas that have labels matching the labels of the machine template of the MachineSet.<br /><br />Deprecated: This field is deprecated and is going to be removed in the next apiVersion. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.||
 |**observedGeneration**|int|observedGeneration reflects the generation of the most recently observed MachineSet.||
-|**readyReplicas**|int|The number of ready replicas for this MachineSet. A machine is considered ready when the node has been created and is "Ready".||
+|**readyReplicas**|int|readyReplicas is the number of ready replicas for this MachineSet. A machine is considered ready when the node has been created and is "Ready".||
 |**replicas**|int|replicas is the most recently observed number of replicas.||
 |**selector**|str|selector is the same as the label selector but in the string format to avoid introspection<br />by clients. The string will be in the same format as the query-param syntax.<br />More info about label selectors: http://kubernetes.io/docs/user-guide/labels#label-selectors||
 |**v1beta2**|[ClusterxK8sIoV1beta1MachineSetStatusV1beta2](#clusterxk8siov1beta1machinesetstatusv1beta2)|v1beta2||
@@ -12412,9 +12125,9 @@ Condition defines an observation of a Cluster API resource operational state.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime** `required`|str|Last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
-|**message**|str|A human readable message indicating details about the transition.<br />This field may be empty.||
-|**reason**|str|The reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may be empty.||
+|**lastTransitionTime** `required`|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
+|**message**|str|message is a human readable message indicating details about the transition.<br />This field may be empty.||
+|**reason**|str|reason is the reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may be empty.||
 |**severity**|str|severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
 |**status** `required`|str|status of the condition, one of True, False, Unknown.||
 |**type** `required`|str|||
@@ -12446,7 +12159,7 @@ Condition contains details for one aspect of the current state of this API Resou
 |**type** `required`|str|||
 ### ClusterxK8sIoV1beta1MachineSpec
 
-MachineSpec defines the desired state of Machine.
+spec is the desired state of Machine.
 
 #### Attributes
 
@@ -12510,10 +12223,11 @@ MachineReadinessGate contains the type of a Machine condition to be used as a re
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**conditionType** `required`|str|conditionType refers to a positive polarity condition (status true means good) with matching type in the Machine's condition list.<br />If the conditions doesn't exist, it will be treated as unknown.<br />Note: Both Cluster API conditions or conditions added by 3rd party controllers can be used as readiness gates.||
+|**conditionType** `required`|str|conditionType refers to a condition with matching type in the Machine's condition list.<br />If the conditions doesn't exist, it will be treated as unknown.<br />Note: Both Cluster API conditions or conditions added by 3rd party controllers can be used as readiness gates.||
+|**polarity**|"Positive" | "Negative"|polarity of the conditionType specified in this readinessGate.<br />Valid values are Positive, Negative and omitted.<br />When omitted, the default behaviour will be Positive.<br />A positive polarity means that the condition should report a true status under normal conditions.<br />A negative polarity means that the condition should report a false status under normal conditions.||
 ### ClusterxK8sIoV1beta1MachineStatus
 
-MachineStatus defines the observed state of Machine.
+status is the observed state of Machine.
 
 #### Attributes
 
@@ -12531,7 +12245,7 @@ MachineStatus defines the observed state of Machine.
 |**nodeInfo**|[ClusterxK8sIoV1beta1MachineStatusNodeInfo](#clusterxk8siov1beta1machinestatusnodeinfo)|node info||
 |**nodeRef**|[ClusterxK8sIoV1beta1MachineStatusNodeRef](#clusterxk8siov1beta1machinestatusnoderef)|node ref||
 |**observedGeneration**|int|observedGeneration is the latest generation observed by the controller.||
-|**phase**|str|phase represents the current phase of machine actuation.<br />E.g. Pending, Running, Terminating, Failed etc.||
+|**phase**|"Pending" | "Provisioning" | "Provisioned" | "Running" | "Deleting" | "Deleted" | "Failed" | "Unknown"|phase represents the current phase of machine actuation.||
 |**v1beta2**|[ClusterxK8sIoV1beta1MachineStatusV1beta2](#clusterxk8siov1beta1machinestatusv1beta2)|v1beta2||
 ### ClusterxK8sIoV1beta1MachineStatusAddressesItems0
 
@@ -12541,8 +12255,8 @@ MachineAddress contains information for the node's address.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**address** `required`|str|The machine address.||
-|**type** `required`|str|||
+|**address** `required`|str|address is the machine address.||
+|**type** `required`|"Hostname" | "ExternalIP" | "InternalIP" | "ExternalDNS" | "InternalDNS"|||
 ### ClusterxK8sIoV1beta1MachineStatusConditionsItems0
 
 Condition defines an observation of a Cluster API resource operational state.
@@ -12551,9 +12265,9 @@ Condition defines an observation of a Cluster API resource operational state.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime** `required`|str|Last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
-|**message**|str|A human readable message indicating details about the transition.<br />This field may be empty.||
-|**reason**|str|The reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may be empty.||
+|**lastTransitionTime** `required`|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
+|**message**|str|message is a human readable message indicating details about the transition.<br />This field may be empty.||
+|**reason**|str|reason is the reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may be empty.||
 |**severity**|str|severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
 |**status** `required`|str|status of the condition, one of True, False, Unknown.||
 |**type** `required`|str|||
@@ -12625,7 +12339,7 @@ Condition contains details for one aspect of the current state of this API Resou
 |**type** `required`|str|||
 ### ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneSpec
 
-KubeadmControlPlaneSpec defines the desired state of KubeadmControlPlane.
+spec is the desired state of KubeadmControlPlane.
 
 #### Attributes
 
@@ -12635,7 +12349,7 @@ KubeadmControlPlaneSpec defines the desired state of KubeadmControlPlane.
 |**machineNamingStrategy**|[ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneSpecMachineNamingStrategy](#controlplaneclusterxk8siov1beta1kubeadmcontrolplanespecmachinenamingstrategy)|machine naming strategy||
 |**machineTemplate** `required`|[ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneSpecMachineTemplate](#controlplaneclusterxk8siov1beta1kubeadmcontrolplanespecmachinetemplate)|machine template||
 |**remediationStrategy**|[ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneSpecRemediationStrategy](#controlplaneclusterxk8siov1beta1kubeadmcontrolplanespecremediationstrategy)|remediation strategy||
-|**replicas**|int|Number of desired machines. Defaults to 1. When stacked etcd is used only<br />odd numbers are permitted, as per [etcd best practice](https://etcd.io/docs/v3.3.12/faq/#why-an-odd-number-of-cluster-members).<br />This is a pointer to distinguish between explicit zero and not specified.||
+|**replicas**|int|replicas is the number of desired machines. Defaults to 1. When stacked etcd is used only<br />odd numbers are permitted, as per [etcd best practice](https://etcd.io/docs/v3.3.12/faq/#why-an-odd-number-of-cluster-members).<br />This is a pointer to distinguish between explicit zero and not specified.||
 |**rolloutAfter**|str|rolloutAfter is a field to indicate a rollout should be performed<br />after the specified time even if no changes have been made to the<br />KubeadmControlPlane.<br />Example: In the YAML the time can be specified in the RFC3339 format.<br />To specify the rolloutAfter target as March 9, 2023, at 9 am UTC<br />use "2023-03-09T09:00:00Z".||
 |**rolloutBefore**|[ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneSpecRolloutBefore](#controlplaneclusterxk8siov1beta1kubeadmcontrolplanespecrolloutbefore)|rollout before||
 |**rolloutStrategy**|[ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneSpecRolloutStrategy](#controlplaneclusterxk8siov1beta1kubeadmcontrolplanespecrolloutstrategy)|rollout strategy||
@@ -12648,6 +12362,7 @@ kubeadmConfigSpec is a KubeadmConfigSpec to use for initializing and joining mac
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
+|**bootCommands**|[str]|bootCommands specifies extra commands to run very early in the boot process via the cloud-init bootcmd<br />module. bootcmd will run on every boot, 'cloud-init-per' command can be used to make bootcmd run exactly<br />once. This is typically run in the cloud-init.service systemd unit. This has no effect in Ignition.||
 |**clusterConfiguration**|[ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneSpecKubeadmConfigSpecClusterConfiguration](#controlplaneclusterxk8siov1beta1kubeadmcontrolplanespeckubeadmconfigspecclusterconfiguration)|cluster configuration||
 |**diskSetup**|[ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneSpecKubeadmConfigSpecDiskSetup](#controlplaneclusterxk8siov1beta1kubeadmcontrolplanespeckubeadmconfigspecdisksetup)|disk setup||
 |**files**|[[ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneSpecKubeadmConfigSpecFilesItems0](#controlplaneclusterxk8siov1beta1kubeadmcontrolplanespeckubeadmconfigspecfilesitems0)]|files specifies extra files to be passed to user_data upon creation.||
@@ -12657,8 +12372,8 @@ kubeadmConfigSpec is a KubeadmConfigSpec to use for initializing and joining mac
 |**joinConfiguration**|[ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneSpecKubeadmConfigSpecJoinConfiguration](#controlplaneclusterxk8siov1beta1kubeadmcontrolplanespeckubeadmconfigspecjoinconfiguration)|join configuration||
 |**mounts**|[[str]]|mounts specifies a list of mount points to be setup.||
 |**ntp**|[ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneSpecKubeadmConfigSpecNtp](#controlplaneclusterxk8siov1beta1kubeadmcontrolplanespeckubeadmconfigspecntp)|ntp||
-|**postKubeadmCommands**|[str]|postKubeadmCommands specifies extra commands to run after kubeadm runs||
-|**preKubeadmCommands**|[str]|preKubeadmCommands specifies extra commands to run before kubeadm runs||
+|**postKubeadmCommands**|[str]|postKubeadmCommands specifies extra commands to run after kubeadm runs.<br />With cloud-init, this is appended to the runcmd module configuration, and is typically executed in<br />the cloud-final.service systemd unit. In Ignition, this is appended to /etc/kubeadm.sh.||
+|**preKubeadmCommands**|[str]|preKubeadmCommands specifies extra commands to run before kubeadm runs.<br />With cloud-init, this is prepended to the runcmd module configuration, and is typically executed in<br />the cloud-final.service systemd unit. In Ignition, this is prepended to /etc/kubeadm.sh.||
 |**useExperimentalRetryJoin**|bool|useExperimentalRetryJoin replaces a basic kubeadm command with a shell<br />script with retries for joins.<br /><br />This is meant to be an experimental temporary workaround on some environments<br />where joins fail due to timing (and other issues). The long term goal is to add retries to<br />kubeadm proper and use that functionality.<br /><br />This will add about 40KB to userdata<br /><br />For more information, refer to https://github.com/kubernetes-sigs/cluster-api/pull/2763#discussion_r397306055.<br /><br />Deprecated: This experimental fix is no longer needed and this field will be removed in a future release.<br />When removing also remove from staticcheck exclude-rules for SA1019 in golangci.yml||
 |**users**|[[ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneSpecKubeadmConfigSpecUsersItems0](#controlplaneclusterxk8siov1beta1kubeadmcontrolplanespeckubeadmconfigspecusersitems0)]|users specifies extra users to add||
 |**verbosity**|int|verbosity is the number for the kubeadm log level verbosity.<br />It overrides the `--v` flag in kubeadm commands.||
@@ -12673,7 +12388,7 @@ clusterConfiguration along with InitConfiguration are the configurations necessa
 |**apiServer**|[ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneSpecKubeadmConfigSpecClusterConfigurationAPIServer](#controlplaneclusterxk8siov1beta1kubeadmcontrolplanespeckubeadmconfigspecclusterconfigurationapiserver)|api server||
 |**apiVersion**|str|APIVersion defines the versioned schema of this representation of an object.<br />Servers should convert recognized schemas to the latest internal value, and<br />may reject unrecognized values.<br />More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources||
 |**certificatesDir**|str|certificatesDir specifies where to store or look for all required certificates.<br />NB: if not provided, this will default to `/etc/kubernetes/pki`||
-|**clusterName**|str|The cluster name||
+|**clusterName**|str|clusterName is the cluster name||
 |**controlPlaneEndpoint**|str|controlPlaneEndpoint sets a stable IP address or DNS name for the control plane; it<br />can be a valid IP address or a RFC-1123 DNS subdomain, both with optional TCP port.<br />In case the ControlPlaneEndpoint is not specified, the AdvertiseAddress + BindPort<br />are used; in case the ControlPlaneEndpoint is specified but without a TCP port,<br />the BindPort is used.<br />Possible usages are:<br />e.g. In a cluster with more than one control plane instances, this field should be<br />assigned the address of the external load balancer in front of the<br />control plane instances.<br />e.g.  in environments with enforced node recycling, the ControlPlaneEndpoint<br />could be used for assigning a stable DNS to the control plane.<br />NB: This value defaults to the first value in the Cluster object status.apiEndpoints array.||
 |**controllerManager**|[ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneSpecKubeadmConfigSpecClusterConfigurationControllerManager](#controlplaneclusterxk8siov1beta1kubeadmcontrolplanespeckubeadmconfigspecclusterconfigurationcontrollermanager)|controller manager||
 |**dns**|[ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneSpecKubeadmConfigSpecClusterConfigurationDNS](#controlplaneclusterxk8siov1beta1kubeadmcontrolplanespeckubeadmconfigspecclusterconfigurationdns)|dns||
@@ -13101,7 +12816,7 @@ Filesystem defines the file systems to be created.
 |**device** `required`|str|device specifies the device name||
 |**extraOpts**|[str]|extraOpts defined extra options to add to the command for creating the file system.||
 |**filesystem** `required`|str|filesystem specifies the file system type.||
-|**label** `required`|str|label specifies the file system label to be used. If set to None, no label is used.||
+|**label**|str|label specifies the file system label to be used. If set to None, no label is used.||
 |**overwrite**|bool|overwrite defines whether or not to overwrite any existing filesystem.<br />If true, any pre-existing file system will be destroyed. Use with Caution.||
 |**partition**|str|partition specifies the partition to use. The valid options are: "auto\|any", "auto", "any", "none", and <NUM>, where NUM is the actual partition number.||
 |**replaceFS**|str|replaceFS is a special directive, used for Microsoft Azure that instructs cloud-init to replace a file system of <FS_TYPE>.<br />NOTE: unless you define a label, this requires the use of the 'any' partition directive.||
@@ -13116,7 +12831,7 @@ Partition defines how to create and layout a partition.
 |**device** `required`|str|device is the name of the device.||
 |**layout** `required`|bool|layout specifies the device layout.<br />If it is true, a single partition will be created for the entire device.<br />When layout is false, it means don't partition or ignore existing partitioning.||
 |**overwrite**|bool|overwrite describes whether to skip checks and create the partition if a partition or filesystem is found on the device.<br />Use with caution. Default is 'false'.||
-|**tableType**|str|tableType specifies the tupe of partition table. The following are supported:<br />'mbr': default and setups a MS-DOS partition table<br />'gpt': setups a GPT partition table||
+|**tableType**|"mbr" | "gpt"|tableType specifies the tupe of partition table. The following are supported:<br />'mbr': default and setups a MS-DOS partition table<br />'gpt': setups a GPT partition table||
 ### ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneSpecKubeadmConfigSpecFilesItems0
 
 File defines the input for generating write_files in cloud-init.
@@ -13302,7 +13017,7 @@ bootstrapToken is used to set the options for bootstrap token based discovery Bo
 | --- | --- | --- | --- |
 |**apiServerEndpoint**|str|apiServerEndpoint is an IP or domain name to the API server from which info will be fetched.||
 |**caCertHashes**|[str]|caCertHashes specifies a set of public key pins to verify<br />when token-based discovery is used. The root CA found during discovery<br />must match one of these values. Specifying an empty set disables root CA<br />pinning, which can be unsafe. Each hash is specified as "<type>:<value>",<br />where the only currently supported type is "sha256". This is a hex-encoded<br />SHA-256 hash of the Subject Public Key Info (SPKI) object in DER-encoded<br />ASN.1. These hashes can be calculated using, for example, OpenSSL:<br />openssl x509 -pubkey -in ca.crt openssl rsa -pubin -outform der 2>&/dev/null \| openssl dgst -sha256 -hex||
-|**token** `required`|str|token is a token used to validate cluster information<br />fetched from the control-plane.||
+|**token**|str|token is a token used to validate cluster information<br />fetched from the control-plane.||
 |**unsafeSkipCAVerification**|bool|unsafeSkipCAVerification allows token-based discovery<br />without CA verification via CACertHashes. This can weaken<br />the security of kubeadm since other nodes can impersonate the control-plane.||
 ### ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneSpecKubeadmConfigSpecJoinConfigurationDiscoveryFile
 
@@ -13365,8 +13080,8 @@ exec specifies a custom exec-based authentication plugin for the kubernetes clus
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**apiVersion**|str|Preferred input version of the ExecInfo. The returned ExecCredentials MUST use<br />the same encoding version as the input.<br />Defaults to client.authentication.k8s.io/v1 if not set.||
-|**args**|[str]|Arguments to pass to the command when executing it.||
+|**apiVersion**|str|apiVersion is preferred input version of the ExecInfo. The returned ExecCredentials MUST use<br />the same encoding version as the input.<br />Defaults to client.authentication.k8s.io/v1 if not set.||
+|**args**|[str]|args is the arguments to pass to the command when executing it.||
 |**command** `required`|str|command to execute.||
 |**env**|[[ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneSpecKubeadmConfigSpecJoinConfigurationDiscoveryFileKubeConfigUserExecEnvItems0](#controlplaneclusterxk8siov1beta1kubeadmcontrolplanespeckubeadmconfigspecjoinconfigurationdiscoveryfilekubeconfiguserexecenvitems0)]|env defines additional environment variables to expose to the process. These<br />are unioned with the host's environment, as well as variables client-go uses<br />to pass argument to the plugin.||
 |**provideClusterInfo**|bool|provideClusterInfo determines whether or not to provide cluster information,<br />which could potentially contain very large CA data, to this exec plugin as a<br />part of the KUBERNETES_EXEC_INFO environment variable. By default, it is set<br />to false. Package k8s.io/client-go/tools/auth/exec provides helper methods for<br />reading this environment variable.||
@@ -13378,8 +13093,8 @@ KubeConfigAuthExecEnv is used for setting environment variables when executing a
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**name** `required`|str|name||
-|**value** `required`|str|value||
+|**name** `required`|str|name of the environment variable||
+|**value** `required`|str|value of the environment variable||
 ### ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneSpecKubeadmConfigSpecJoinConfigurationNodeRegistration
 
 nodeRegistration holds fields that relate to registering the new control-plane node to the cluster. When used in the context of control plane nodes, NodeRegistration should remain consistent across both InitConfiguration and JoinConfiguration
@@ -13467,13 +13182,13 @@ secret represents a secret that should populate this password.
 |**name** `required`|str|name of the secret in the KubeadmBootstrapConfig's namespace to use.||
 ### ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneSpecMachineNamingStrategy
 
-MachineNamingStrategy allows changing the naming pattern used when creating Machines. InfraMachines & KubeadmConfigs will use the same name as the corresponding Machines.
+machineNamingStrategy allows changing the naming pattern used when creating Machines. InfraMachines & KubeadmConfigs will use the same name as the corresponding Machines.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**template**|str|Template defines the template to use for generating the names of the Machine objects.<br />If not defined, it will fallback to `{{ .kubeadmControlPlane.name }}-{{ .random }}`.<br />If the generated name string exceeds 63 characters, it will be trimmed to 58 characters and will<br />get concatenated with a random suffix of length 5.<br />Length of the template string must not exceed 256 characters.<br />The template allows the following variables `.cluster.name`, `.kubeadmControlPlane.name` and `.random`.<br />The variable `.cluster.name` retrieves the name of the cluster object that owns the Machines being created.<br />The variable `.kubeadmControlPlane.name` retrieves the name of the KubeadmControlPlane object that owns the Machines being created.<br />The variable `.random` is substituted with random alphanumeric string, without vowels, of length 5.||
+|**template**|str|template defines the template to use for generating the names of the Machine objects.<br />If not defined, it will fallback to `{{ .kubeadmControlPlane.name }}-{{ .random }}`.<br />If the generated name string exceeds 63 characters, it will be trimmed to 58 characters and will<br />get concatenated with a random suffix of length 5.<br />Length of the template string must not exceed 256 characters.<br />The template allows the following variables `.cluster.name`, `.kubeadmControlPlane.name` and `.random`.<br />The variable `.cluster.name` retrieves the name of the cluster object that owns the Machines being created.<br />The variable `.kubeadmControlPlane.name` retrieves the name of the KubeadmControlPlane object that owns the Machines being created.<br />The variable `.random` is substituted with random alphanumeric string, without vowels, of length 5. This variable is required<br />part of the template. If not provided, validation will fail.||
 ### ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneSpecMachineTemplate
 
 machineTemplate contains information about how machines should be shaped when creating or updating a control plane.
@@ -13487,6 +13202,7 @@ machineTemplate contains information about how machines should be shaped when cr
 |**nodeDeletionTimeout**|str|nodeDeletionTimeout defines how long the machine controller will attempt to delete the Node that the Machine<br />hosts after the Machine is marked for deletion. A duration of 0 will retry deletion indefinitely.<br />If no value is provided, the default value for this property of the Machine resource will be used.||
 |**nodeDrainTimeout**|str|nodeDrainTimeout is the total amount of time that the controller will spend on draining a controlplane node<br />The default value is 0, meaning that the node can be drained without any time limitations.<br />NOTE: NodeDrainTimeout is different from `kubectl drain --timeout`||
 |**nodeVolumeDetachTimeout**|str|nodeVolumeDetachTimeout is the total amount of time that the controller will spend on waiting for all volumes<br />to be detached. The default value is 0, meaning that the volumes can be detached without any time limitations.||
+|**readinessGates**|[[ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneSpecMachineTemplateReadinessGatesItems0](#controlplaneclusterxk8siov1beta1kubeadmcontrolplanespecmachinetemplatereadinessgatesitems0)]|readinessGates specifies additional conditions to include when evaluating Machine Ready condition;<br />KubeadmControlPlane will always add readinessGates for the condition it is setting on the Machine:<br />APIServerPodHealthy, SchedulerPodHealthy, ControllerManagerPodHealthy, and if etcd is managed by CKP also<br />EtcdPodHealthy, EtcdMemberHealthy.<br /><br />This field can be used e.g. to instruct the machine controller to include in the computation for Machine's ready<br />computation a condition, managed by an external controllers, reporting the status of special software/hardware installed on the Machine.<br /><br />NOTE: This field is considered only for computing v1beta2 conditions.||
 ### ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneSpecMachineTemplateInfrastructureRef
 
 infrastructureRef is a required reference to a custom resource offered by an infrastructure provider.
@@ -13504,17 +13220,27 @@ infrastructureRef is a required reference to a custom resource offered by an inf
 |**uid**|str|UID of the referent.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids||
 ### ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneSpecMachineTemplateMetadata
 
-Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+metadata is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**annotations**|{str:str}|annotations is an unstructured key value map stored with a resource that may be<br />set by external tools to store and retrieve arbitrary metadata. They are not<br />queryable and should be preserved when modifying objects.<br />More info: http://kubernetes.io/docs/user-guide/annotations||
-|**labels**|{str:str}|Map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
+|**labels**|{str:str}|labels is a map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
+### ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneSpecMachineTemplateReadinessGatesItems0
+
+MachineReadinessGate contains the type of a Machine condition to be used as a readiness gate.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**conditionType** `required`|str|conditionType refers to a condition with matching type in the Machine's condition list.<br />If the conditions doesn't exist, it will be treated as unknown.<br />Note: Both Cluster API conditions or conditions added by 3rd party controllers can be used as readiness gates.||
+|**polarity**|"Positive" | "Negative"|polarity of the conditionType specified in this readinessGate.<br />Valid values are Positive, Negative and omitted.<br />When omitted, the default behaviour will be Positive.<br />A positive polarity means that the condition should report a true status under normal conditions.<br />A negative polarity means that the condition should report a false status under normal conditions.||
 ### ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneSpecRemediationStrategy
 
-The RemediationStrategy that controls how control plane machine remediation happens.
+remediationStrategy is the RemediationStrategy that controls how control plane machine remediation happens.
 
 #### Attributes
 
@@ -13534,43 +13260,43 @@ rolloutBefore is a field to indicate a rollout should be performed if the specif
 |**certificatesExpiryDays**|int|certificatesExpiryDays indicates a rollout needs to be performed if the<br />certificates of the machine will expire within the specified days.||
 ### ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneSpecRolloutStrategy
 
-The RolloutStrategy to use to replace control plane machines with new ones.
+rolloutStrategy is the RolloutStrategy to use to replace control plane machines with new ones.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**rollingUpdate**|[ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneSpecRolloutStrategyRollingUpdate](#controlplaneclusterxk8siov1beta1kubeadmcontrolplanespecrolloutstrategyrollingupdate)|rolling update||
-|**type**|str|||
+|**type** `readOnly`|"RollingUpdate"||"RollingUpdate"|
 ### ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneSpecRolloutStrategyRollingUpdate
 
-Rolling update config params. Present only if RolloutStrategyType = RollingUpdate.
+rollingUpdate is the rolling update config params. Present only if RolloutStrategyType = RollingUpdate.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**maxSurge**|int | str|The maximum number of control planes that can be scheduled above or under the<br />desired number of control planes.<br />Value can be an absolute number 1 or 0.<br />Defaults to 1.<br />Example: when this is set to 1, the control plane can be scaled<br />up immediately when the rolling update starts.||
+|**maxSurge**|int | str|maxSurge is the maximum number of control planes that can be scheduled above or under the<br />desired number of control planes.<br />Value can be an absolute number 1 or 0.<br />Defaults to 1.<br />Example: when this is set to 1, the control plane can be scaled<br />up immediately when the rolling update starts.||
 ### ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneStatus
 
-KubeadmControlPlaneStatus defines the observed state of KubeadmControlPlane.
+status is the observed state of KubeadmControlPlane.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**conditions**|[[ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneStatusConditionsItems0](#controlplaneclusterxk8siov1beta1kubeadmcontrolplanestatusconditionsitems0)]|conditions defines current service state of the KubeadmControlPlane.||
-|**failureMessage**|str|ErrorMessage indicates that there is a terminal problem reconciling the<br />state, and will be set to a descriptive error message.<br /><br />Deprecated: This field is deprecated and is going to be removed in the next apiVersion. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.||
+|**failureMessage**|str|failureMessage indicates that there is a terminal problem reconciling the<br />state, and will be set to a descriptive error message.<br /><br />Deprecated: This field is deprecated and is going to be removed in the next apiVersion. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.||
 |**failureReason**|str|failureReason indicates that there is a terminal problem reconciling the<br />state, and will be set to a token value suitable for<br />programmatic interpretation.<br /><br />Deprecated: This field is deprecated and is going to be removed in the next apiVersion. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.||
 |**initialized**|bool|initialized denotes that the KubeadmControlPlane API Server is initialized and thus<br />it can accept requests.<br />NOTE: this field is part of the Cluster API contract and it is used to orchestrate provisioning.<br />The value of this field is never updated after provisioning is completed. Please use conditions<br />to check the operational state of the control plane.||
 |**lastRemediation**|[ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneStatusLastRemediation](#controlplaneclusterxk8siov1beta1kubeadmcontrolplanestatuslastremediation)|last remediation||
 |**observedGeneration**|int|observedGeneration is the latest generation observed by the controller.||
 |**ready**|bool|ready denotes that the KubeadmControlPlane API Server became ready during initial provisioning<br />to receive requests.<br />NOTE: this field is part of the Cluster API contract and it is used to orchestrate provisioning.<br />The value of this field is never updated after provisioning is completed. Please use conditions<br />to check the operational state of the control plane.||
-|**readyReplicas**|int|Total number of fully running and ready control plane machines.||
-|**replicas**|int|Total number of non-terminated machines targeted by this control plane<br />(their labels match the selector).||
+|**readyReplicas**|int|readyReplicas is the total number of fully running and ready control plane machines.||
+|**replicas**|int|replicas is the total number of non-terminated machines targeted by this control plane<br />(their labels match the selector).||
 |**selector**|str|selector is the label selector in string format to avoid introspection<br />by clients, and is used to provide the CRD-based integration for the<br />scale subresource and additional integrations for things like kubectl<br />describe.. The string will be in the same format as the query-param syntax.<br />More info about label selectors: http://kubernetes.io/docs/user-guide/labels#label-selectors||
-|**unavailableReplicas**|int|Total number of unavailable machines targeted by this control plane.<br />This is the total number of machines that are still required for<br />the deployment to have 100% available capacity. They may either<br />be machines that are running but not yet ready or machines<br />that still have not been created.<br /><br />Deprecated: This field is deprecated and is going to be removed in the next apiVersion. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.||
-|**updatedReplicas**|int|Total number of non-terminated machines targeted by this control plane<br />that have the desired template spec.||
+|**unavailableReplicas**|int|unavailableReplicas is the total number of unavailable machines targeted by this control plane.<br />This is the total number of machines that are still required for<br />the deployment to have 100% available capacity. They may either<br />be machines that are running but not yet ready or machines<br />that still have not been created.<br /><br />Deprecated: This field is deprecated and is going to be removed in the next apiVersion. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.||
+|**updatedReplicas**|int|updatedReplicas is the total number of non-terminated machines targeted by this control plane<br />that have the desired template spec.||
 |**v1beta2**|[ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneStatusV1beta2](#controlplaneclusterxk8siov1beta1kubeadmcontrolplanestatusv1beta2)|v1beta2||
 |**version**|str|version represents the minimum Kubernetes version for the control plane machines<br />in the cluster.||
 ### ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneStatusConditionsItems0
@@ -13581,9 +13307,9 @@ Condition defines an observation of a Cluster API resource operational state.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime** `required`|str|Last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
-|**message**|str|A human readable message indicating details about the transition.<br />This field may be empty.||
-|**reason**|str|The reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may be empty.||
+|**lastTransitionTime** `required`|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
+|**message**|str|message is a human readable message indicating details about the transition.<br />This field may be empty.||
+|**reason**|str|reason is the reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may be empty.||
 |**severity**|str|severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
 |**status** `required`|str|status of the condition, one of True, False, Unknown.||
 |**type** `required`|str|||
@@ -13626,7 +13352,7 @@ Condition contains details for one aspect of the current state of this API Resou
 |**type** `required`|str|||
 ### ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpec
 
-KubeadmControlPlaneTemplateSpec defines the desired state of KubeadmControlPlaneTemplate.
+spec is the desired state of KubeadmControlPlaneTemplate.
 
 #### Attributes
 
@@ -13635,7 +13361,7 @@ KubeadmControlPlaneTemplateSpec defines the desired state of KubeadmControlPlane
 |**template** `required`|[ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplate](#controlplaneclusterxk8siov1beta1kubeadmcontrolplanetemplatespectemplate)|template||
 ### ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplate
 
-KubeadmControlPlaneTemplateResource describes the data needed to create a KubeadmControlPlane from a template.
+template defines the desired state of KubeadmControlPlaneTemplate.
 
 #### Attributes
 
@@ -13645,17 +13371,17 @@ KubeadmControlPlaneTemplateResource describes the data needed to create a Kubead
 |**spec** `required`|[ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpec](#controlplaneclusterxk8siov1beta1kubeadmcontrolplanetemplatespectemplatespec)|spec||
 ### ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateMetadata
 
-Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+metadata is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**annotations**|{str:str}|annotations is an unstructured key value map stored with a resource that may be<br />set by external tools to store and retrieve arbitrary metadata. They are not<br />queryable and should be preserved when modifying objects.<br />More info: http://kubernetes.io/docs/user-guide/annotations||
-|**labels**|{str:str}|Map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
+|**labels**|{str:str}|labels is a map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
 ### ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpec
 
-KubeadmControlPlaneTemplateResourceSpec defines the desired state of KubeadmControlPlane. NOTE: KubeadmControlPlaneTemplateResourceSpec is similar to KubeadmControlPlaneSpec but omits Replicas and Version fields. These fields do not make sense on the KubeadmControlPlaneTemplate, because they are calculated by the Cluster topology reconciler during reconciliation and thus cannot be configured on the KubeadmControlPlaneTemplate.
+spec is the desired state of KubeadmControlPlaneTemplateResource.
 
 #### Attributes
 
@@ -13676,6 +13402,7 @@ kubeadmConfigSpec is a KubeadmConfigSpec to use for initializing and joining mac
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
+|**bootCommands**|[str]|bootCommands specifies extra commands to run very early in the boot process via the cloud-init bootcmd<br />module. bootcmd will run on every boot, 'cloud-init-per' command can be used to make bootcmd run exactly<br />once. This is typically run in the cloud-init.service systemd unit. This has no effect in Ignition.||
 |**clusterConfiguration**|[ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfiguration](#controlplaneclusterxk8siov1beta1kubeadmcontrolplanetemplatespectemplatespeckubeadmconfigspecclusterconfiguration)|cluster configuration||
 |**diskSetup**|[ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecDiskSetup](#controlplaneclusterxk8siov1beta1kubeadmcontrolplanetemplatespectemplatespeckubeadmconfigspecdisksetup)|disk setup||
 |**files**|[[ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecFilesItems0](#controlplaneclusterxk8siov1beta1kubeadmcontrolplanetemplatespectemplatespeckubeadmconfigspecfilesitems0)]|files specifies extra files to be passed to user_data upon creation.||
@@ -13685,8 +13412,8 @@ kubeadmConfigSpec is a KubeadmConfigSpec to use for initializing and joining mac
 |**joinConfiguration**|[ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecJoinConfiguration](#controlplaneclusterxk8siov1beta1kubeadmcontrolplanetemplatespectemplatespeckubeadmconfigspecjoinconfiguration)|join configuration||
 |**mounts**|[[str]]|mounts specifies a list of mount points to be setup.||
 |**ntp**|[ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecNtp](#controlplaneclusterxk8siov1beta1kubeadmcontrolplanetemplatespectemplatespeckubeadmconfigspecntp)|ntp||
-|**postKubeadmCommands**|[str]|postKubeadmCommands specifies extra commands to run after kubeadm runs||
-|**preKubeadmCommands**|[str]|preKubeadmCommands specifies extra commands to run before kubeadm runs||
+|**postKubeadmCommands**|[str]|postKubeadmCommands specifies extra commands to run after kubeadm runs.<br />With cloud-init, this is appended to the runcmd module configuration, and is typically executed in<br />the cloud-final.service systemd unit. In Ignition, this is appended to /etc/kubeadm.sh.||
+|**preKubeadmCommands**|[str]|preKubeadmCommands specifies extra commands to run before kubeadm runs.<br />With cloud-init, this is prepended to the runcmd module configuration, and is typically executed in<br />the cloud-final.service systemd unit. In Ignition, this is prepended to /etc/kubeadm.sh.||
 |**useExperimentalRetryJoin**|bool|useExperimentalRetryJoin replaces a basic kubeadm command with a shell<br />script with retries for joins.<br /><br />This is meant to be an experimental temporary workaround on some environments<br />where joins fail due to timing (and other issues). The long term goal is to add retries to<br />kubeadm proper and use that functionality.<br /><br />This will add about 40KB to userdata<br /><br />For more information, refer to https://github.com/kubernetes-sigs/cluster-api/pull/2763#discussion_r397306055.<br /><br />Deprecated: This experimental fix is no longer needed and this field will be removed in a future release.<br />When removing also remove from staticcheck exclude-rules for SA1019 in golangci.yml||
 |**users**|[[ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecUsersItems0](#controlplaneclusterxk8siov1beta1kubeadmcontrolplanetemplatespectemplatespeckubeadmconfigspecusersitems0)]|users specifies extra users to add||
 |**verbosity**|int|verbosity is the number for the kubeadm log level verbosity.<br />It overrides the `--v` flag in kubeadm commands.||
@@ -13701,7 +13428,7 @@ clusterConfiguration along with InitConfiguration are the configurations necessa
 |**apiServer**|[ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationAPIServer](#controlplaneclusterxk8siov1beta1kubeadmcontrolplanetemplatespectemplatespeckubeadmconfigspecclusterconfigurationapiserver)|api server||
 |**apiVersion**|str|APIVersion defines the versioned schema of this representation of an object.<br />Servers should convert recognized schemas to the latest internal value, and<br />may reject unrecognized values.<br />More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources||
 |**certificatesDir**|str|certificatesDir specifies where to store or look for all required certificates.<br />NB: if not provided, this will default to `/etc/kubernetes/pki`||
-|**clusterName**|str|The cluster name||
+|**clusterName**|str|clusterName is the cluster name||
 |**controlPlaneEndpoint**|str|controlPlaneEndpoint sets a stable IP address or DNS name for the control plane; it<br />can be a valid IP address or a RFC-1123 DNS subdomain, both with optional TCP port.<br />In case the ControlPlaneEndpoint is not specified, the AdvertiseAddress + BindPort<br />are used; in case the ControlPlaneEndpoint is specified but without a TCP port,<br />the BindPort is used.<br />Possible usages are:<br />e.g. In a cluster with more than one control plane instances, this field should be<br />assigned the address of the external load balancer in front of the<br />control plane instances.<br />e.g.  in environments with enforced node recycling, the ControlPlaneEndpoint<br />could be used for assigning a stable DNS to the control plane.<br />NB: This value defaults to the first value in the Cluster object status.apiEndpoints array.||
 |**controllerManager**|[ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationControllerManager](#controlplaneclusterxk8siov1beta1kubeadmcontrolplanetemplatespectemplatespeckubeadmconfigspecclusterconfigurationcontrollermanager)|controller manager||
 |**dns**|[ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationDNS](#controlplaneclusterxk8siov1beta1kubeadmcontrolplanetemplatespectemplatespeckubeadmconfigspecclusterconfigurationdns)|dns||
@@ -14129,7 +13856,7 @@ Filesystem defines the file systems to be created.
 |**device** `required`|str|device specifies the device name||
 |**extraOpts**|[str]|extraOpts defined extra options to add to the command for creating the file system.||
 |**filesystem** `required`|str|filesystem specifies the file system type.||
-|**label** `required`|str|label specifies the file system label to be used. If set to None, no label is used.||
+|**label**|str|label specifies the file system label to be used. If set to None, no label is used.||
 |**overwrite**|bool|overwrite defines whether or not to overwrite any existing filesystem.<br />If true, any pre-existing file system will be destroyed. Use with Caution.||
 |**partition**|str|partition specifies the partition to use. The valid options are: "auto\|any", "auto", "any", "none", and <NUM>, where NUM is the actual partition number.||
 |**replaceFS**|str|replaceFS is a special directive, used for Microsoft Azure that instructs cloud-init to replace a file system of <FS_TYPE>.<br />NOTE: unless you define a label, this requires the use of the 'any' partition directive.||
@@ -14144,7 +13871,7 @@ Partition defines how to create and layout a partition.
 |**device** `required`|str|device is the name of the device.||
 |**layout** `required`|bool|layout specifies the device layout.<br />If it is true, a single partition will be created for the entire device.<br />When layout is false, it means don't partition or ignore existing partitioning.||
 |**overwrite**|bool|overwrite describes whether to skip checks and create the partition if a partition or filesystem is found on the device.<br />Use with caution. Default is 'false'.||
-|**tableType**|str|tableType specifies the tupe of partition table. The following are supported:<br />'mbr': default and setups a MS-DOS partition table<br />'gpt': setups a GPT partition table||
+|**tableType**|"mbr" | "gpt"|tableType specifies the tupe of partition table. The following are supported:<br />'mbr': default and setups a MS-DOS partition table<br />'gpt': setups a GPT partition table||
 ### ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecFilesItems0
 
 File defines the input for generating write_files in cloud-init.
@@ -14330,7 +14057,7 @@ bootstrapToken is used to set the options for bootstrap token based discovery Bo
 | --- | --- | --- | --- |
 |**apiServerEndpoint**|str|apiServerEndpoint is an IP or domain name to the API server from which info will be fetched.||
 |**caCertHashes**|[str]|caCertHashes specifies a set of public key pins to verify<br />when token-based discovery is used. The root CA found during discovery<br />must match one of these values. Specifying an empty set disables root CA<br />pinning, which can be unsafe. Each hash is specified as "<type>:<value>",<br />where the only currently supported type is "sha256". This is a hex-encoded<br />SHA-256 hash of the Subject Public Key Info (SPKI) object in DER-encoded<br />ASN.1. These hashes can be calculated using, for example, OpenSSL:<br />openssl x509 -pubkey -in ca.crt openssl rsa -pubin -outform der 2>&/dev/null \| openssl dgst -sha256 -hex||
-|**token** `required`|str|token is a token used to validate cluster information<br />fetched from the control-plane.||
+|**token**|str|token is a token used to validate cluster information<br />fetched from the control-plane.||
 |**unsafeSkipCAVerification**|bool|unsafeSkipCAVerification allows token-based discovery<br />without CA verification via CACertHashes. This can weaken<br />the security of kubeadm since other nodes can impersonate the control-plane.||
 ### ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecJoinConfigurationDiscoveryFile
 
@@ -14393,8 +14120,8 @@ exec specifies a custom exec-based authentication plugin for the kubernetes clus
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**apiVersion**|str|Preferred input version of the ExecInfo. The returned ExecCredentials MUST use<br />the same encoding version as the input.<br />Defaults to client.authentication.k8s.io/v1 if not set.||
-|**args**|[str]|Arguments to pass to the command when executing it.||
+|**apiVersion**|str|apiVersion is preferred input version of the ExecInfo. The returned ExecCredentials MUST use<br />the same encoding version as the input.<br />Defaults to client.authentication.k8s.io/v1 if not set.||
+|**args**|[str]|args is the arguments to pass to the command when executing it.||
 |**command** `required`|str|command to execute.||
 |**env**|[[ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecJoinConfigurationDiscoveryFileKubeConfigUserExecEnvItems0](#controlplaneclusterxk8siov1beta1kubeadmcontrolplanetemplatespectemplatespeckubeadmconfigspecjoinconfigurationdiscoveryfilekubeconfiguserexecenvitems0)]|env defines additional environment variables to expose to the process. These<br />are unioned with the host's environment, as well as variables client-go uses<br />to pass argument to the plugin.||
 |**provideClusterInfo**|bool|provideClusterInfo determines whether or not to provide cluster information,<br />which could potentially contain very large CA data, to this exec plugin as a<br />part of the KUBERNETES_EXEC_INFO environment variable. By default, it is set<br />to false. Package k8s.io/client-go/tools/auth/exec provides helper methods for<br />reading this environment variable.||
@@ -14406,8 +14133,8 @@ KubeConfigAuthExecEnv is used for setting environment variables when executing a
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**name** `required`|str|name||
-|**value** `required`|str|value||
+|**name** `required`|str|name of the environment variable||
+|**value** `required`|str|value of the environment variable||
 ### ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecJoinConfigurationNodeRegistration
 
 nodeRegistration holds fields that relate to registering the new control-plane node to the cluster. When used in the context of control plane nodes, NodeRegistration should remain consistent across both InitConfiguration and JoinConfiguration
@@ -14495,13 +14222,13 @@ secret represents a secret that should populate this password.
 |**name** `required`|str|name of the secret in the KubeadmBootstrapConfig's namespace to use.||
 ### ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecMachineNamingStrategy
 
-MachineNamingStrategy allows changing the naming pattern used when creating Machines. InfraMachines & KubeadmConfigs will use the same name as the corresponding Machines.
+machineNamingStrategy allows changing the naming pattern used when creating Machines. InfraMachines & KubeadmConfigs will use the same name as the corresponding Machines.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**template**|str|Template defines the template to use for generating the names of the Machine objects.<br />If not defined, it will fallback to `{{ .kubeadmControlPlane.name }}-{{ .random }}`.<br />If the generated name string exceeds 63 characters, it will be trimmed to 58 characters and will<br />get concatenated with a random suffix of length 5.<br />Length of the template string must not exceed 256 characters.<br />The template allows the following variables `.cluster.name`, `.kubeadmControlPlane.name` and `.random`.<br />The variable `.cluster.name` retrieves the name of the cluster object that owns the Machines being created.<br />The variable `.kubeadmControlPlane.name` retrieves the name of the KubeadmControlPlane object that owns the Machines being created.<br />The variable `.random` is substituted with random alphanumeric string, without vowels, of length 5.||
+|**template**|str|template defines the template to use for generating the names of the Machine objects.<br />If not defined, it will fallback to `{{ .kubeadmControlPlane.name }}-{{ .random }}`.<br />If the generated name string exceeds 63 characters, it will be trimmed to 58 characters and will<br />get concatenated with a random suffix of length 5.<br />Length of the template string must not exceed 256 characters.<br />The template allows the following variables `.cluster.name`, `.kubeadmControlPlane.name` and `.random`.<br />The variable `.cluster.name` retrieves the name of the cluster object that owns the Machines being created.<br />The variable `.kubeadmControlPlane.name` retrieves the name of the KubeadmControlPlane object that owns the Machines being created.<br />The variable `.random` is substituted with random alphanumeric string, without vowels, of length 5. This variable is required<br />part of the template. If not provided, validation will fail.||
 ### ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecMachineTemplate
 
 machineTemplate contains information about how machines should be shaped when creating or updating a control plane.
@@ -14516,17 +14243,17 @@ machineTemplate contains information about how machines should be shaped when cr
 |**nodeVolumeDetachTimeout**|str|nodeVolumeDetachTimeout is the total amount of time that the controller will spend on waiting for all volumes<br />to be detached. The default value is 0, meaning that the volumes can be detached without any time limitations.||
 ### ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecMachineTemplateMetadata
 
-Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+metadata is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**annotations**|{str:str}|annotations is an unstructured key value map stored with a resource that may be<br />set by external tools to store and retrieve arbitrary metadata. They are not<br />queryable and should be preserved when modifying objects.<br />More info: http://kubernetes.io/docs/user-guide/annotations||
-|**labels**|{str:str}|Map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
+|**labels**|{str:str}|labels is a map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
 ### ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecRemediationStrategy
 
-The RemediationStrategy that controls how control plane machine remediation happens.
+remediationStrategy is the RemediationStrategy that controls how control plane machine remediation happens.
 
 #### Attributes
 
@@ -14546,23 +14273,73 @@ rolloutBefore is a field to indicate a rollout should be performed if the specif
 |**certificatesExpiryDays**|int|certificatesExpiryDays indicates a rollout needs to be performed if the<br />certificates of the machine will expire within the specified days.||
 ### ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecRolloutStrategy
 
-The RolloutStrategy to use to replace control plane machines with new ones.
+rolloutStrategy is the RolloutStrategy to use to replace control plane machines with new ones.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**rollingUpdate**|[ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecRolloutStrategyRollingUpdate](#controlplaneclusterxk8siov1beta1kubeadmcontrolplanetemplatespectemplatespecrolloutstrategyrollingupdate)|rolling update||
-|**type**|str|||
+|**type** `readOnly`|"RollingUpdate"||"RollingUpdate"|
 ### ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecRolloutStrategyRollingUpdate
 
-Rolling update config params. Present only if RolloutStrategyType = RollingUpdate.
+rollingUpdate is the rolling update config params. Present only if RolloutStrategyType = RollingUpdate.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**maxSurge**|int | str|The maximum number of control planes that can be scheduled above or under the<br />desired number of control planes.<br />Value can be an absolute number 1 or 0.<br />Defaults to 1.<br />Example: when this is set to 1, the control plane can be scaled<br />up immediately when the rolling update starts.||
+|**maxSurge**|int | str|maxSurge is the maximum number of control planes that can be scheduled above or under the<br />desired number of control planes.<br />Value can be an absolute number 1 or 0.<br />Defaults to 1.<br />Example: when this is set to 1, the control plane can be scaled<br />up immediately when the rolling update starts.||
+### DevCluster
+
+DevCluster is the schema for the dev cluster infrastructure API.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**apiVersion** `required` `readOnly`|"infrastructure.cluster.x-k8s.io/v1beta1"|APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources|"infrastructure.cluster.x-k8s.io/v1beta1"|
+|**kind** `required` `readOnly`|"DevCluster"|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds|"DevCluster"|
+|**metadata**|[ObjectMeta](#objectmeta)|metadata||
+|**spec**|[InfrastructureClusterxK8sIoV1beta1DevClusterSpec](#infrastructureclusterxk8siov1beta1devclusterspec)|spec||
+|**status**|[InfrastructureClusterxK8sIoV1beta1DevClusterStatus](#infrastructureclusterxk8siov1beta1devclusterstatus)|status||
+### DevClusterTemplate
+
+DevClusterTemplate is the Schema for the DevClusterTemplate API.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**apiVersion** `required` `readOnly`|"infrastructure.cluster.x-k8s.io/v1beta1"|APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources|"infrastructure.cluster.x-k8s.io/v1beta1"|
+|**kind** `required` `readOnly`|"DevClusterTemplate"|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds|"DevClusterTemplate"|
+|**metadata**|[ObjectMeta](#objectmeta)|metadata||
+|**spec**|[InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpec](#infrastructureclusterxk8siov1beta1devclustertemplatespec)|spec||
+### DevMachine
+
+DevMachine is the schema for the dev machine infrastructure API.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**apiVersion** `required` `readOnly`|"infrastructure.cluster.x-k8s.io/v1beta1"|APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources|"infrastructure.cluster.x-k8s.io/v1beta1"|
+|**kind** `required` `readOnly`|"DevMachine"|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds|"DevMachine"|
+|**metadata**|[ObjectMeta](#objectmeta)|metadata||
+|**spec**|[InfrastructureClusterxK8sIoV1beta1DevMachineSpec](#infrastructureclusterxk8siov1beta1devmachinespec)|spec||
+|**status**|[InfrastructureClusterxK8sIoV1beta1DevMachineStatus](#infrastructureclusterxk8siov1beta1devmachinestatus)|status||
+### DevMachineTemplate
+
+DevMachineTemplate is the schema for the in-memory machine template API.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**apiVersion** `required` `readOnly`|"infrastructure.cluster.x-k8s.io/v1beta1"|APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources|"infrastructure.cluster.x-k8s.io/v1beta1"|
+|**kind** `required` `readOnly`|"DevMachineTemplate"|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds|"DevMachineTemplate"|
+|**metadata**|[ObjectMeta](#objectmeta)|metadata||
+|**spec**|[InfrastructureClusterxK8sIoV1beta1DevMachineTemplateSpec](#infrastructureclusterxk8siov1beta1devmachinetemplatespec)|spec||
 ### DockerCluster
 
 DockerCluster is the Schema for the dockerclusters API.
@@ -14651,6 +14428,605 @@ IPAddressClaim is the Schema for the ipaddressclaim API.
 |**metadata**|[ObjectMeta](#objectmeta)|metadata||
 |**spec**|[IpamClusterxK8sIoV1beta1IPAddressClaimSpec](#ipamclusterxk8siov1beta1ipaddressclaimspec)|spec||
 |**status**|[IpamClusterxK8sIoV1beta1IPAddressClaimStatus](#ipamclusterxk8siov1beta1ipaddressclaimstatus)|status||
+### InfrastructureClusterxK8sIoV1beta1DevClusterSpec
+
+DevClusterSpec defines the desired state of the DevCluster infrastructure.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**backend** `required`|[InfrastructureClusterxK8sIoV1beta1DevClusterSpecBackend](#infrastructureclusterxk8siov1beta1devclusterspecbackend)|backend||
+|**controlPlaneEndpoint**|[InfrastructureClusterxK8sIoV1beta1DevClusterSpecControlPlaneEndpoint](#infrastructureclusterxk8siov1beta1devclusterspeccontrolplaneendpoint)|control plane endpoint||
+### InfrastructureClusterxK8sIoV1beta1DevClusterSpecBackend
+
+backend defines backends for a DevCluster.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**docker**|[InfrastructureClusterxK8sIoV1beta1DevClusterSpecBackendDocker](#infrastructureclusterxk8siov1beta1devclusterspecbackenddocker)|docker||
+|**inMemory**|any|inMemory defines a backend for a DevCluster that runs in memory.||
+### InfrastructureClusterxK8sIoV1beta1DevClusterSpecBackendDocker
+
+docker defines a backend for a DevCluster using docker containers.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**failureDomains**|{str:[InfrastructureClusterxK8sIoV1beta1DevClusterSpecBackendDockerFailureDomainsAnon](#infrastructureclusterxk8siov1beta1devclusterspecbackenddockerfailuredomainsanon)}|failureDomains are usually not defined in the spec.<br />The docker provider is special since failure domains don't mean anything in a local docker environment.<br />Instead, the docker cluster controller will simply copy these into the Status and allow the Cluster API<br />controllers to do what they will with the defined failure domains.||
+|**loadBalancer**|[InfrastructureClusterxK8sIoV1beta1DevClusterSpecBackendDockerLoadBalancer](#infrastructureclusterxk8siov1beta1devclusterspecbackenddockerloadbalancer)|load balancer||
+### InfrastructureClusterxK8sIoV1beta1DevClusterSpecBackendDockerFailureDomainsAnon
+
+FailureDomainSpec is the Schema for Cluster API failure domains. It allows controllers to understand how many failure domains a cluster can optionally span across.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**attributes**|{str:str}|attributes is a free form map of attributes an infrastructure provider might use or require.||
+|**controlPlane**|bool|controlPlane determines if this failure domain is suitable for use by control plane machines.||
+### InfrastructureClusterxK8sIoV1beta1DevClusterSpecBackendDockerLoadBalancer
+
+loadBalancer allows defining configurations for the cluster load balancer.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**customHAProxyConfigTemplateRef**|[InfrastructureClusterxK8sIoV1beta1DevClusterSpecBackendDockerLoadBalancerCustomHAProxyConfigTemplateRef](#infrastructureclusterxk8siov1beta1devclusterspecbackenddockerloadbalancercustomhaproxyconfigtemplateref)|custom h a proxy config template ref||
+|**imageRepository**|str|ImageRepository sets the container registry to pull the haproxy image from.<br />if not set, "kindest" will be used instead.||
+|**imageTag**|str|ImageTag allows to specify a tag for the haproxy image.<br />if not set, "v20210715-a6da3463" will be used instead.||
+### InfrastructureClusterxK8sIoV1beta1DevClusterSpecBackendDockerLoadBalancerCustomHAProxyConfigTemplateRef
+
+CustomHAProxyConfigTemplateRef allows you to replace the default HAProxy config file. This field is a reference to a config map that contains the configuration template. The key of the config map should be equal to 'value'. The content of the config map will be processed and will replace the default HAProxy config file. Please use it with caution, as there are no checks to ensure the validity of the configuration. This template will support the following variables that will be passed by the controller: $IPv6 (bool) indicates if the cluster is IPv6, $FrontendControlPlanePort (string) indicates the frontend control plane port, $BackendControlPlanePort (string) indicates the backend control plane port, $BackendServers (map[string]string) indicates the backend server where the key is the server name and the value is the address. This map is dynamic and is updated every time a new control plane node is added or removed. The template will also support the JoinHostPort function to join the host and port of the backend server.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**name**|str|Name of the referent.<br />This field is effectively required, but due to backwards compatibility is<br />allowed to be empty. Instances of this type with an empty value here are<br />almost certainly wrong.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names|""|
+### InfrastructureClusterxK8sIoV1beta1DevClusterSpecControlPlaneEndpoint
+
+controlPlaneEndpoint represents the endpoint used to communicate with the control plane.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**host** `required`|str|Host is the hostname on which the API server is serving.||
+|**port** `required`|int|Port is the port on which the API server is serving.<br />Defaults to 6443 if not set.||
+### InfrastructureClusterxK8sIoV1beta1DevClusterStatus
+
+DevClusterStatus defines the observed state of the DevCluster.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**conditions**|[[InfrastructureClusterxK8sIoV1beta1DevClusterStatusConditionsItems0](#infrastructureclusterxk8siov1beta1devclusterstatusconditionsitems0)]|conditions defines current service state of the DevCluster.||
+|**failureDomains**|{str:[InfrastructureClusterxK8sIoV1beta1DevClusterStatusFailureDomainsAnon](#infrastructureclusterxk8siov1beta1devclusterstatusfailuredomainsanon)}|failureDomains don't mean much in CAPD since it's all local, but we can see how the rest of cluster API<br />will use this if we populate it.||
+|**ready**|bool|ready denotes that the dev cluster infrastructure is ready.||
+|**v1beta2**|[InfrastructureClusterxK8sIoV1beta1DevClusterStatusV1beta2](#infrastructureclusterxk8siov1beta1devclusterstatusv1beta2)|v1beta2||
+### InfrastructureClusterxK8sIoV1beta1DevClusterStatusConditionsItems0
+
+Condition defines an observation of a Cluster API resource operational state.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**lastTransitionTime** `required`|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
+|**message**|str|message is a human readable message indicating details about the transition.<br />This field may be empty.||
+|**reason**|str|reason is the reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may be empty.||
+|**severity**|str|severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
+|**status** `required`|str|status of the condition, one of True, False, Unknown.||
+|**type** `required`|str|||
+### InfrastructureClusterxK8sIoV1beta1DevClusterStatusFailureDomainsAnon
+
+FailureDomainSpec is the Schema for Cluster API failure domains. It allows controllers to understand how many failure domains a cluster can optionally span across.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**attributes**|{str:str}|attributes is a free form map of attributes an infrastructure provider might use or require.||
+|**controlPlane**|bool|controlPlane determines if this failure domain is suitable for use by control plane machines.||
+### InfrastructureClusterxK8sIoV1beta1DevClusterStatusV1beta2
+
+v1beta2 groups all the fields that will be added or modified in DevCluster's status with the V1Beta2 version.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**conditions**|[[InfrastructureClusterxK8sIoV1beta1DevClusterStatusV1beta2ConditionsItems0](#infrastructureclusterxk8siov1beta1devclusterstatusv1beta2conditionsitems0)]|conditions represents the observations of a DevCluster's current state.||
+### InfrastructureClusterxK8sIoV1beta1DevClusterStatusV1beta2ConditionsItems0
+
+Condition contains details for one aspect of the current state of this API Resource.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**lastTransitionTime** `required`|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed.  If that is not known, then using the time when the API field changed is acceptable.||
+|**message** `required`|str|message is a human readable message indicating details about the transition.<br />This may be an empty string.||
+|**observedGeneration**|int|observedGeneration represents the .metadata.generation that the condition was set based upon.<br />For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date<br />with respect to the current state of the instance.||
+|**reason** `required`|str|reason contains a programmatic identifier indicating the reason for the condition's last transition.<br />Producers of specific condition types may define expected values and meanings for this field,<br />and whether the values are considered a guaranteed API.<br />The value should be a CamelCase string.<br />This field may not be empty.||
+|**status** `required`|"True" | "False" | "Unknown"|status of the condition, one of True, False, Unknown.||
+|**type** `required`|str|||
+### InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpec
+
+DevClusterTemplateSpec defines the desired state of DevClusterTemplate.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**template** `required`|[InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpecTemplate](#infrastructureclusterxk8siov1beta1devclustertemplatespectemplate)|template||
+### InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpecTemplate
+
+DevClusterTemplateResource describes the data needed to create a DevCluster from a template.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**metadata**|[InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpecTemplateMetadata](#infrastructureclusterxk8siov1beta1devclustertemplatespectemplatemetadata)|metadata||
+|**spec** `required`|[InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpecTemplateSpec](#infrastructureclusterxk8siov1beta1devclustertemplatespectemplatespec)|spec||
+### InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpecTemplateMetadata
+
+Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**annotations**|{str:str}|annotations is an unstructured key value map stored with a resource that may be<br />set by external tools to store and retrieve arbitrary metadata. They are not<br />queryable and should be preserved when modifying objects.<br />More info: http://kubernetes.io/docs/user-guide/annotations||
+|**labels**|{str:str}|labels is a map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
+### InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpecTemplateSpec
+
+DevClusterSpec defines the desired state of the DevCluster infrastructure.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**backend** `required`|[InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpecTemplateSpecBackend](#infrastructureclusterxk8siov1beta1devclustertemplatespectemplatespecbackend)|backend||
+|**controlPlaneEndpoint**|[InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpecTemplateSpecControlPlaneEndpoint](#infrastructureclusterxk8siov1beta1devclustertemplatespectemplatespeccontrolplaneendpoint)|control plane endpoint||
+### InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpecTemplateSpecBackend
+
+backend defines backends for a DevCluster.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**docker**|[InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpecTemplateSpecBackendDocker](#infrastructureclusterxk8siov1beta1devclustertemplatespectemplatespecbackenddocker)|docker||
+|**inMemory**|any|inMemory defines a backend for a DevCluster that runs in memory.||
+### InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpecTemplateSpecBackendDocker
+
+docker defines a backend for a DevCluster using docker containers.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**failureDomains**|{str:[InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpecTemplateSpecBackendDockerFailureDomainsAnon](#infrastructureclusterxk8siov1beta1devclustertemplatespectemplatespecbackenddockerfailuredomainsanon)}|failureDomains are usually not defined in the spec.<br />The docker provider is special since failure domains don't mean anything in a local docker environment.<br />Instead, the docker cluster controller will simply copy these into the Status and allow the Cluster API<br />controllers to do what they will with the defined failure domains.||
+|**loadBalancer**|[InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpecTemplateSpecBackendDockerLoadBalancer](#infrastructureclusterxk8siov1beta1devclustertemplatespectemplatespecbackenddockerloadbalancer)|load balancer||
+### InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpecTemplateSpecBackendDockerFailureDomainsAnon
+
+FailureDomainSpec is the Schema for Cluster API failure domains. It allows controllers to understand how many failure domains a cluster can optionally span across.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**attributes**|{str:str}|attributes is a free form map of attributes an infrastructure provider might use or require.||
+|**controlPlane**|bool|controlPlane determines if this failure domain is suitable for use by control plane machines.||
+### InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpecTemplateSpecBackendDockerLoadBalancer
+
+loadBalancer allows defining configurations for the cluster load balancer.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**customHAProxyConfigTemplateRef**|[InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpecTemplateSpecBackendDockerLoadBalancerCustomHAProxyConfigTemplateRef](#infrastructureclusterxk8siov1beta1devclustertemplatespectemplatespecbackenddockerloadbalancercustomhaproxyconfigtemplateref)|custom h a proxy config template ref||
+|**imageRepository**|str|ImageRepository sets the container registry to pull the haproxy image from.<br />if not set, "kindest" will be used instead.||
+|**imageTag**|str|ImageTag allows to specify a tag for the haproxy image.<br />if not set, "v20210715-a6da3463" will be used instead.||
+### InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpecTemplateSpecBackendDockerLoadBalancerCustomHAProxyConfigTemplateRef
+
+CustomHAProxyConfigTemplateRef allows you to replace the default HAProxy config file. This field is a reference to a config map that contains the configuration template. The key of the config map should be equal to 'value'. The content of the config map will be processed and will replace the default HAProxy config file. Please use it with caution, as there are no checks to ensure the validity of the configuration. This template will support the following variables that will be passed by the controller: $IPv6 (bool) indicates if the cluster is IPv6, $FrontendControlPlanePort (string) indicates the frontend control plane port, $BackendControlPlanePort (string) indicates the backend control plane port, $BackendServers (map[string]string) indicates the backend server where the key is the server name and the value is the address. This map is dynamic and is updated every time a new control plane node is added or removed. The template will also support the JoinHostPort function to join the host and port of the backend server.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**name**|str|Name of the referent.<br />This field is effectively required, but due to backwards compatibility is<br />allowed to be empty. Instances of this type with an empty value here are<br />almost certainly wrong.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names|""|
+### InfrastructureClusterxK8sIoV1beta1DevClusterTemplateSpecTemplateSpecControlPlaneEndpoint
+
+controlPlaneEndpoint represents the endpoint used to communicate with the control plane.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**host** `required`|str|Host is the hostname on which the API server is serving.||
+|**port** `required`|int|Port is the port on which the API server is serving.<br />Defaults to 6443 if not set.||
+### InfrastructureClusterxK8sIoV1beta1DevMachineSpec
+
+DevMachineSpec defines the desired state of DevMachine.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**backend** `required`|[InfrastructureClusterxK8sIoV1beta1DevMachineSpecBackend](#infrastructureclusterxk8siov1beta1devmachinespecbackend)|backend||
+|**providerID**|str|providerID used to link this machine with the node hosted on it.||
+### InfrastructureClusterxK8sIoV1beta1DevMachineSpecBackend
+
+backend defines backends for a DevMachine.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**docker**|[InfrastructureClusterxK8sIoV1beta1DevMachineSpecBackendDocker](#infrastructureclusterxk8siov1beta1devmachinespecbackenddocker)|docker||
+|**inMemory**|[InfrastructureClusterxK8sIoV1beta1DevMachineSpecBackendInMemory](#infrastructureclusterxk8siov1beta1devmachinespecbackendinmemory)|in memory||
+### InfrastructureClusterxK8sIoV1beta1DevMachineSpecBackendDocker
+
+docker defines a backend for a DevMachine using docker containers.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**bootstrapTimeout**|str|bootstrapTimeout is the total amount of time to wait for the machine to bootstrap before timing out.<br />The default value is 3m.||
+|**bootstrapped**|bool|bootstrapped is true when the kubeadm bootstrapping has been run<br />against this machine<br /><br />Deprecated: This field will be removed in the next apiVersion.<br />When removing also remove from staticcheck exclude-rules for SA1019 in golangci.yml.||
+|**customImage**|str|customImage allows customizing the container image that is used for<br />running the machine||
+|**extraMounts**|[[InfrastructureClusterxK8sIoV1beta1DevMachineSpecBackendDockerExtraMountsItems0](#infrastructureclusterxk8siov1beta1devmachinespecbackenddockerextramountsitems0)]|extraMounts describes additional mount points for the node container<br />These may be used to bind a hostPath||
+|**preLoadImages**|[str]|preLoadImages allows to pre-load images in a newly created machine. This can be used to<br />speed up tests by avoiding e.g. to download CNI images on all the containers.||
+### InfrastructureClusterxK8sIoV1beta1DevMachineSpecBackendDockerExtraMountsItems0
+
+Mount specifies a host volume to mount into a container. This is a simplified version of kind v1alpha4.Mount types.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**containerPath**|str|Path of the mount within the container.||
+|**hostPath**|str|Path of the mount on the host. If the hostPath doesn't exist, then runtimes<br />should report error. If the hostpath is a symbolic link, runtimes should<br />follow the symlink and mount the real destination to container.||
+|**readOnly**|bool|If set, the mount is read-only.||
+### InfrastructureClusterxK8sIoV1beta1DevMachineSpecBackendInMemory
+
+inMemory defines a backend for a DevMachine that runs in memory.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**apiServer**|[InfrastructureClusterxK8sIoV1beta1DevMachineSpecBackendInMemoryAPIServer](#infrastructureclusterxk8siov1beta1devmachinespecbackendinmemoryapiserver)|api server||
+|**etcd**|[InfrastructureClusterxK8sIoV1beta1DevMachineSpecBackendInMemoryEtcd](#infrastructureclusterxk8siov1beta1devmachinespecbackendinmemoryetcd)|etcd||
+|**node**|[InfrastructureClusterxK8sIoV1beta1DevMachineSpecBackendInMemoryNode](#infrastructureclusterxk8siov1beta1devmachinespecbackendinmemorynode)|node||
+|**vm**|[InfrastructureClusterxK8sIoV1beta1DevMachineSpecBackendInMemoryVM](#infrastructureclusterxk8siov1beta1devmachinespecbackendinmemoryvm)|vm||
+### InfrastructureClusterxK8sIoV1beta1DevMachineSpecBackendInMemoryAPIServer
+
+apiServer defines the behaviour of the APIServer hosted on the InMemoryMachine.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**provisioning**|[InfrastructureClusterxK8sIoV1beta1DevMachineSpecBackendInMemoryAPIServerProvisioning](#infrastructureclusterxk8siov1beta1devmachinespecbackendinmemoryapiserverprovisioning)|provisioning||
+### InfrastructureClusterxK8sIoV1beta1DevMachineSpecBackendInMemoryAPIServerProvisioning
+
+provisioning defines variables influencing how the APIServer hosted on the InMemoryMachine is going to be provisioned. NOTE: APIServer provisioning includes all the steps from starting the static Pod to the Pod become ready and being registered in K8s.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**startupDuration** `required`|str|startupDuration defines the duration of the object provisioning phase.||
+|**startupJitter**|str|startupJitter adds some randomness on StartupDuration; the actual duration will be StartupDuration plus an additional<br />amount chosen uniformly at random from the interval between zero and `StartupJitter*StartupDuration`.<br />NOTE: this is modeled as string because the usage of float is highly discouraged, as support for them varies across languages.||
+### InfrastructureClusterxK8sIoV1beta1DevMachineSpecBackendInMemoryEtcd
+
+etcd defines the behaviour of the etcd member hosted on the InMemoryMachine.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**provisioning**|[InfrastructureClusterxK8sIoV1beta1DevMachineSpecBackendInMemoryEtcdProvisioning](#infrastructureclusterxk8siov1beta1devmachinespecbackendinmemoryetcdprovisioning)|provisioning||
+### InfrastructureClusterxK8sIoV1beta1DevMachineSpecBackendInMemoryEtcdProvisioning
+
+provisioning defines variables influencing how the etcd member hosted on the InMemoryMachine is going to be provisioned. NOTE: Etcd provisioning includes all the steps from starting the static Pod to the Pod become ready and being registered in K8s.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**startupDuration** `required`|str|startupDuration defines the duration of the object provisioning phase.||
+|**startupJitter**|str|startupJitter adds some randomness on StartupDuration; the actual duration will be StartupDuration plus an additional<br />amount chosen uniformly at random from the interval between zero and `StartupJitter*StartupDuration`.<br />NOTE: this is modeled as string because the usage of float is highly discouraged, as support for them varies across languages.||
+### InfrastructureClusterxK8sIoV1beta1DevMachineSpecBackendInMemoryNode
+
+node defines the behaviour of the Node (the kubelet) hosted on the InMemoryMachine.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**provisioning**|[InfrastructureClusterxK8sIoV1beta1DevMachineSpecBackendInMemoryNodeProvisioning](#infrastructureclusterxk8siov1beta1devmachinespecbackendinmemorynodeprovisioning)|provisioning||
+### InfrastructureClusterxK8sIoV1beta1DevMachineSpecBackendInMemoryNodeProvisioning
+
+provisioning defines variables influencing how the Node (the kubelet) hosted on the InMemoryMachine is going to be provisioned. NOTE: Node provisioning includes all the steps from starting kubelet to the node become ready, get a provider ID, and being registered in K8s.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**startupDuration** `required`|str|startupDuration defines the duration of the object provisioning phase.||
+|**startupJitter**|str|startupJitter adds some randomness on StartupDuration; the actual duration will be StartupDuration plus an additional<br />amount chosen uniformly at random from the interval between zero and `StartupJitter*StartupDuration`.<br />NOTE: this is modeled as string because the usage of float is highly discouraged, as support for them varies across languages.||
+### InfrastructureClusterxK8sIoV1beta1DevMachineSpecBackendInMemoryVM
+
+vm defines the behaviour of the VM implementing the InMemoryMachine.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**provisioning**|[InfrastructureClusterxK8sIoV1beta1DevMachineSpecBackendInMemoryVMProvisioning](#infrastructureclusterxk8siov1beta1devmachinespecbackendinmemoryvmprovisioning)|provisioning||
+### InfrastructureClusterxK8sIoV1beta1DevMachineSpecBackendInMemoryVMProvisioning
+
+provisioning defines variables influencing how the VM implementing the InMemoryMachine is going to be provisioned. NOTE: VM provisioning includes all the steps from creation to power-on.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**startupDuration** `required`|str|startupDuration defines the duration of the object provisioning phase.||
+|**startupJitter**|str|startupJitter adds some randomness on StartupDuration; the actual duration will be StartupDuration plus an additional<br />amount chosen uniformly at random from the interval between zero and `StartupJitter*StartupDuration`.<br />NOTE: this is modeled as string because the usage of float is highly discouraged, as support for them varies across languages.||
+### InfrastructureClusterxK8sIoV1beta1DevMachineStatus
+
+DevMachineStatus defines the observed state of DevMachine.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**addresses**|[[InfrastructureClusterxK8sIoV1beta1DevMachineStatusAddressesItems0](#infrastructureclusterxk8siov1beta1devmachinestatusaddressesitems0)]|addresses contains the associated addresses for the dev machine.||
+|**backend**|[InfrastructureClusterxK8sIoV1beta1DevMachineStatusBackend](#infrastructureclusterxk8siov1beta1devmachinestatusbackend)|backend||
+|**conditions**|[[InfrastructureClusterxK8sIoV1beta1DevMachineStatusConditionsItems0](#infrastructureclusterxk8siov1beta1devmachinestatusconditionsitems0)]|conditions defines current service state of the DevMachine.||
+|**ready**|bool|ready denotes that the machine is ready||
+|**v1beta2**|[InfrastructureClusterxK8sIoV1beta1DevMachineStatusV1beta2](#infrastructureclusterxk8siov1beta1devmachinestatusv1beta2)|v1beta2||
+### InfrastructureClusterxK8sIoV1beta1DevMachineStatusAddressesItems0
+
+MachineAddress contains information for the node's address.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**address** `required`|str|address is the machine address.||
+|**type** `required`|"Hostname" | "ExternalIP" | "InternalIP" | "ExternalDNS" | "InternalDNS"|||
+### InfrastructureClusterxK8sIoV1beta1DevMachineStatusBackend
+
+backend defines backends status for a DevMachine.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**docker**|[InfrastructureClusterxK8sIoV1beta1DevMachineStatusBackendDocker](#infrastructureclusterxk8siov1beta1devmachinestatusbackenddocker)|docker||
+### InfrastructureClusterxK8sIoV1beta1DevMachineStatusBackendDocker
+
+docker define backend status for a DevMachine for a machine using docker containers.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**loadBalancerConfigured**|bool|loadBalancerConfigured denotes that the machine has been<br />added to the load balancer||
+### InfrastructureClusterxK8sIoV1beta1DevMachineStatusConditionsItems0
+
+Condition defines an observation of a Cluster API resource operational state.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**lastTransitionTime** `required`|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
+|**message**|str|message is a human readable message indicating details about the transition.<br />This field may be empty.||
+|**reason**|str|reason is the reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may be empty.||
+|**severity**|str|severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
+|**status** `required`|str|status of the condition, one of True, False, Unknown.||
+|**type** `required`|str|||
+### InfrastructureClusterxK8sIoV1beta1DevMachineStatusV1beta2
+
+v1beta2 groups all the fields that will be added or modified in DevMachine's status with the V1Beta2 version.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**conditions**|[[InfrastructureClusterxK8sIoV1beta1DevMachineStatusV1beta2ConditionsItems0](#infrastructureclusterxk8siov1beta1devmachinestatusv1beta2conditionsitems0)]|conditions represents the observations of a DevMachine's current state.||
+### InfrastructureClusterxK8sIoV1beta1DevMachineStatusV1beta2ConditionsItems0
+
+Condition contains details for one aspect of the current state of this API Resource.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**lastTransitionTime** `required`|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed.  If that is not known, then using the time when the API field changed is acceptable.||
+|**message** `required`|str|message is a human readable message indicating details about the transition.<br />This may be an empty string.||
+|**observedGeneration**|int|observedGeneration represents the .metadata.generation that the condition was set based upon.<br />For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date<br />with respect to the current state of the instance.||
+|**reason** `required`|str|reason contains a programmatic identifier indicating the reason for the condition's last transition.<br />Producers of specific condition types may define expected values and meanings for this field,<br />and whether the values are considered a guaranteed API.<br />The value should be a CamelCase string.<br />This field may not be empty.||
+|**status** `required`|"True" | "False" | "Unknown"|status of the condition, one of True, False, Unknown.||
+|**type** `required`|str|||
+### InfrastructureClusterxK8sIoV1beta1DevMachineTemplateSpec
+
+DevMachineTemplateSpec defines the desired state of DevMachineTemplate.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**template** `required`|[InfrastructureClusterxK8sIoV1beta1DevMachineTemplateSpecTemplate](#infrastructureclusterxk8siov1beta1devmachinetemplatespectemplate)|template||
+### InfrastructureClusterxK8sIoV1beta1DevMachineTemplateSpecTemplate
+
+DevMachineTemplateResource describes the data needed to create a DevMachine from a template.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**metadata**|[InfrastructureClusterxK8sIoV1beta1DevMachineTemplateSpecTemplateMetadata](#infrastructureclusterxk8siov1beta1devmachinetemplatespectemplatemetadata)|metadata||
+|**spec** `required`|[InfrastructureClusterxK8sIoV1beta1DevMachineTemplateSpecTemplateSpec](#infrastructureclusterxk8siov1beta1devmachinetemplatespectemplatespec)|spec||
+### InfrastructureClusterxK8sIoV1beta1DevMachineTemplateSpecTemplateMetadata
+
+Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**annotations**|{str:str}|annotations is an unstructured key value map stored with a resource that may be<br />set by external tools to store and retrieve arbitrary metadata. They are not<br />queryable and should be preserved when modifying objects.<br />More info: http://kubernetes.io/docs/user-guide/annotations||
+|**labels**|{str:str}|labels is a map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
+### InfrastructureClusterxK8sIoV1beta1DevMachineTemplateSpecTemplateSpec
+
+Spec is the specification of the desired behavior of the machine.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**backend** `required`|[InfrastructureClusterxK8sIoV1beta1DevMachineTemplateSpecTemplateSpecBackend](#infrastructureclusterxk8siov1beta1devmachinetemplatespectemplatespecbackend)|backend||
+|**providerID**|str|providerID used to link this machine with the node hosted on it.||
+### InfrastructureClusterxK8sIoV1beta1DevMachineTemplateSpecTemplateSpecBackend
+
+backend defines backends for a DevMachine.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**docker**|[InfrastructureClusterxK8sIoV1beta1DevMachineTemplateSpecTemplateSpecBackendDocker](#infrastructureclusterxk8siov1beta1devmachinetemplatespectemplatespecbackenddocker)|docker||
+|**inMemory**|[InfrastructureClusterxK8sIoV1beta1DevMachineTemplateSpecTemplateSpecBackendInMemory](#infrastructureclusterxk8siov1beta1devmachinetemplatespectemplatespecbackendinmemory)|in memory||
+### InfrastructureClusterxK8sIoV1beta1DevMachineTemplateSpecTemplateSpecBackendDocker
+
+docker defines a backend for a DevMachine using docker containers.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**bootstrapTimeout**|str|bootstrapTimeout is the total amount of time to wait for the machine to bootstrap before timing out.<br />The default value is 3m.||
+|**bootstrapped**|bool|bootstrapped is true when the kubeadm bootstrapping has been run<br />against this machine<br /><br />Deprecated: This field will be removed in the next apiVersion.<br />When removing also remove from staticcheck exclude-rules for SA1019 in golangci.yml.||
+|**customImage**|str|customImage allows customizing the container image that is used for<br />running the machine||
+|**extraMounts**|[[InfrastructureClusterxK8sIoV1beta1DevMachineTemplateSpecTemplateSpecBackendDockerExtraMountsItems0](#infrastructureclusterxk8siov1beta1devmachinetemplatespectemplatespecbackenddockerextramountsitems0)]|extraMounts describes additional mount points for the node container<br />These may be used to bind a hostPath||
+|**preLoadImages**|[str]|preLoadImages allows to pre-load images in a newly created machine. This can be used to<br />speed up tests by avoiding e.g. to download CNI images on all the containers.||
+### InfrastructureClusterxK8sIoV1beta1DevMachineTemplateSpecTemplateSpecBackendDockerExtraMountsItems0
+
+Mount specifies a host volume to mount into a container. This is a simplified version of kind v1alpha4.Mount types.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**containerPath**|str|Path of the mount within the container.||
+|**hostPath**|str|Path of the mount on the host. If the hostPath doesn't exist, then runtimes<br />should report error. If the hostpath is a symbolic link, runtimes should<br />follow the symlink and mount the real destination to container.||
+|**readOnly**|bool|If set, the mount is read-only.||
+### InfrastructureClusterxK8sIoV1beta1DevMachineTemplateSpecTemplateSpecBackendInMemory
+
+inMemory defines a backend for a DevMachine that runs in memory.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**apiServer**|[InfrastructureClusterxK8sIoV1beta1DevMachineTemplateSpecTemplateSpecBackendInMemoryAPIServer](#infrastructureclusterxk8siov1beta1devmachinetemplatespectemplatespecbackendinmemoryapiserver)|api server||
+|**etcd**|[InfrastructureClusterxK8sIoV1beta1DevMachineTemplateSpecTemplateSpecBackendInMemoryEtcd](#infrastructureclusterxk8siov1beta1devmachinetemplatespectemplatespecbackendinmemoryetcd)|etcd||
+|**node**|[InfrastructureClusterxK8sIoV1beta1DevMachineTemplateSpecTemplateSpecBackendInMemoryNode](#infrastructureclusterxk8siov1beta1devmachinetemplatespectemplatespecbackendinmemorynode)|node||
+|**vm**|[InfrastructureClusterxK8sIoV1beta1DevMachineTemplateSpecTemplateSpecBackendInMemoryVM](#infrastructureclusterxk8siov1beta1devmachinetemplatespectemplatespecbackendinmemoryvm)|vm||
+### InfrastructureClusterxK8sIoV1beta1DevMachineTemplateSpecTemplateSpecBackendInMemoryAPIServer
+
+apiServer defines the behaviour of the APIServer hosted on the InMemoryMachine.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**provisioning**|[InfrastructureClusterxK8sIoV1beta1DevMachineTemplateSpecTemplateSpecBackendInMemoryAPIServerProvisioning](#infrastructureclusterxk8siov1beta1devmachinetemplatespectemplatespecbackendinmemoryapiserverprovisioning)|provisioning||
+### InfrastructureClusterxK8sIoV1beta1DevMachineTemplateSpecTemplateSpecBackendInMemoryAPIServerProvisioning
+
+provisioning defines variables influencing how the APIServer hosted on the InMemoryMachine is going to be provisioned. NOTE: APIServer provisioning includes all the steps from starting the static Pod to the Pod become ready and being registered in K8s.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**startupDuration** `required`|str|startupDuration defines the duration of the object provisioning phase.||
+|**startupJitter**|str|startupJitter adds some randomness on StartupDuration; the actual duration will be StartupDuration plus an additional<br />amount chosen uniformly at random from the interval between zero and `StartupJitter*StartupDuration`.<br />NOTE: this is modeled as string because the usage of float is highly discouraged, as support for them varies across languages.||
+### InfrastructureClusterxK8sIoV1beta1DevMachineTemplateSpecTemplateSpecBackendInMemoryEtcd
+
+etcd defines the behaviour of the etcd member hosted on the InMemoryMachine.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**provisioning**|[InfrastructureClusterxK8sIoV1beta1DevMachineTemplateSpecTemplateSpecBackendInMemoryEtcdProvisioning](#infrastructureclusterxk8siov1beta1devmachinetemplatespectemplatespecbackendinmemoryetcdprovisioning)|provisioning||
+### InfrastructureClusterxK8sIoV1beta1DevMachineTemplateSpecTemplateSpecBackendInMemoryEtcdProvisioning
+
+provisioning defines variables influencing how the etcd member hosted on the InMemoryMachine is going to be provisioned. NOTE: Etcd provisioning includes all the steps from starting the static Pod to the Pod become ready and being registered in K8s.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**startupDuration** `required`|str|startupDuration defines the duration of the object provisioning phase.||
+|**startupJitter**|str|startupJitter adds some randomness on StartupDuration; the actual duration will be StartupDuration plus an additional<br />amount chosen uniformly at random from the interval between zero and `StartupJitter*StartupDuration`.<br />NOTE: this is modeled as string because the usage of float is highly discouraged, as support for them varies across languages.||
+### InfrastructureClusterxK8sIoV1beta1DevMachineTemplateSpecTemplateSpecBackendInMemoryNode
+
+node defines the behaviour of the Node (the kubelet) hosted on the InMemoryMachine.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**provisioning**|[InfrastructureClusterxK8sIoV1beta1DevMachineTemplateSpecTemplateSpecBackendInMemoryNodeProvisioning](#infrastructureclusterxk8siov1beta1devmachinetemplatespectemplatespecbackendinmemorynodeprovisioning)|provisioning||
+### InfrastructureClusterxK8sIoV1beta1DevMachineTemplateSpecTemplateSpecBackendInMemoryNodeProvisioning
+
+provisioning defines variables influencing how the Node (the kubelet) hosted on the InMemoryMachine is going to be provisioned. NOTE: Node provisioning includes all the steps from starting kubelet to the node become ready, get a provider ID, and being registered in K8s.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**startupDuration** `required`|str|startupDuration defines the duration of the object provisioning phase.||
+|**startupJitter**|str|startupJitter adds some randomness on StartupDuration; the actual duration will be StartupDuration plus an additional<br />amount chosen uniformly at random from the interval between zero and `StartupJitter*StartupDuration`.<br />NOTE: this is modeled as string because the usage of float is highly discouraged, as support for them varies across languages.||
+### InfrastructureClusterxK8sIoV1beta1DevMachineTemplateSpecTemplateSpecBackendInMemoryVM
+
+vm defines the behaviour of the VM implementing the InMemoryMachine.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**provisioning**|[InfrastructureClusterxK8sIoV1beta1DevMachineTemplateSpecTemplateSpecBackendInMemoryVMProvisioning](#infrastructureclusterxk8siov1beta1devmachinetemplatespectemplatespecbackendinmemoryvmprovisioning)|provisioning||
+### InfrastructureClusterxK8sIoV1beta1DevMachineTemplateSpecTemplateSpecBackendInMemoryVMProvisioning
+
+provisioning defines variables influencing how the VM implementing the InMemoryMachine is going to be provisioned. NOTE: VM provisioning includes all the steps from creation to power-on.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**startupDuration** `required`|str|startupDuration defines the duration of the object provisioning phase.||
+|**startupJitter**|str|startupJitter adds some randomness on StartupDuration; the actual duration will be StartupDuration plus an additional<br />amount chosen uniformly at random from the interval between zero and `StartupJitter*StartupDuration`.<br />NOTE: this is modeled as string because the usage of float is highly discouraged, as support for them varies across languages.||
 ### InfrastructureClusterxK8sIoV1beta1DockerClusterSpec
 
 DockerClusterSpec defines the desired state of DockerCluster.
@@ -14722,9 +15098,9 @@ Condition defines an observation of a Cluster API resource operational state.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime** `required`|str|Last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
-|**message**|str|A human readable message indicating details about the transition.<br />This field may be empty.||
-|**reason**|str|The reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may be empty.||
+|**lastTransitionTime** `required`|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
+|**message**|str|message is a human readable message indicating details about the transition.<br />This field may be empty.||
+|**reason**|str|reason is the reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may be empty.||
 |**severity**|str|severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
 |**status** `required`|str|status of the condition, one of True, False, Unknown.||
 |**type** `required`|str|||
@@ -14789,7 +15165,7 @@ Standard object's metadata. More info: https://git.k8s.io/community/contributors
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**annotations**|{str:str}|annotations is an unstructured key value map stored with a resource that may be<br />set by external tools to store and retrieve arbitrary metadata. They are not<br />queryable and should be preserved when modifying objects.<br />More info: http://kubernetes.io/docs/user-guide/annotations||
-|**labels**|{str:str}|Map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
+|**labels**|{str:str}|labels is a map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
 ### InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpecTemplateSpec
 
 DockerClusterSpec defines the desired state of DockerCluster.
@@ -14896,9 +15272,9 @@ Condition defines an observation of a Cluster API resource operational state.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime** `required`|str|Last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
-|**message**|str|A human readable message indicating details about the transition.<br />This field may be empty.||
-|**reason**|str|The reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may be empty.||
+|**lastTransitionTime** `required`|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
+|**message**|str|message is a human readable message indicating details about the transition.<br />This field may be empty.||
+|**reason**|str|reason is the reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may be empty.||
 |**severity**|str|severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
 |**status** `required`|str|status of the condition, one of True, False, Unknown.||
 |**type** `required`|str|||
@@ -14924,8 +15300,8 @@ MachineAddress contains information for the node's address.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**address** `required`|str|The machine address.||
-|**type** `required`|str|||
+|**address** `required`|str|address is the machine address.||
+|**type** `required`|"Hostname" | "ExternalIP" | "InternalIP" | "ExternalDNS" | "InternalDNS"|||
 ### InfrastructureClusterxK8sIoV1beta1DockerMachinePoolTemplateSpec
 
 DockerMachinePoolTemplateSpec defines the desired state of DockerMachinePoolTemplate.
@@ -14954,7 +15330,7 @@ Standard object's metadata. More info: https://git.k8s.io/community/contributors
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**annotations**|{str:str}|annotations is an unstructured key value map stored with a resource that may be<br />set by external tools to store and retrieve arbitrary metadata. They are not<br />queryable and should be preserved when modifying objects.<br />More info: http://kubernetes.io/docs/user-guide/annotations||
-|**labels**|{str:str}|Map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
+|**labels**|{str:str}|labels is a map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
 ### InfrastructureClusterxK8sIoV1beta1DockerMachinePoolTemplateSpecTemplateSpec
 
 DockerMachinePoolSpec defines the desired state of DockerMachinePool.
@@ -15034,8 +15410,8 @@ MachineAddress contains information for the node's address.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**address** `required`|str|The machine address.||
-|**type** `required`|str|||
+|**address** `required`|str|address is the machine address.||
+|**type** `required`|"Hostname" | "ExternalIP" | "InternalIP" | "ExternalDNS" | "InternalDNS"|||
 ### InfrastructureClusterxK8sIoV1beta1DockerMachineStatusConditionsItems0
 
 Condition defines an observation of a Cluster API resource operational state.
@@ -15044,9 +15420,9 @@ Condition defines an observation of a Cluster API resource operational state.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime** `required`|str|Last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
-|**message**|str|A human readable message indicating details about the transition.<br />This field may be empty.||
-|**reason**|str|The reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may be empty.||
+|**lastTransitionTime** `required`|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
+|**message**|str|message is a human readable message indicating details about the transition.<br />This field may be empty.||
+|**reason**|str|reason is the reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may be empty.||
 |**severity**|str|severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
 |**status** `required`|str|status of the condition, one of True, False, Unknown.||
 |**type** `required`|str|||
@@ -15101,7 +15477,7 @@ Standard object's metadata. More info: https://git.k8s.io/community/contributors
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**annotations**|{str:str}|annotations is an unstructured key value map stored with a resource that may be<br />set by external tools to store and retrieve arbitrary metadata. They are not<br />queryable and should be preserved when modifying objects.<br />More info: http://kubernetes.io/docs/user-guide/annotations||
-|**labels**|{str:str}|Map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
+|**labels**|{str:str}|labels is a map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
 ### InfrastructureClusterxK8sIoV1beta1DockerMachineTemplateSpecTemplateSpec
 
 Spec is the specification of the desired behavior of the machine.
@@ -15129,7 +15505,7 @@ Mount specifies a host volume to mount into a container. This is a simplified ve
 |**readOnly**|bool|If set, the mount is read-only.||
 ### IpamClusterxK8sIoV1beta1IPAddressClaimSpec
 
-IPAddressClaimSpec is the desired state of an IPAddressClaim.
+spec is the desired state of IPAddressClaim.
 
 #### Attributes
 
@@ -15150,7 +15526,7 @@ poolRef is a reference to the pool from which an IP address should be created.
 |**name** `required`|str|Name is the name of resource being referenced||
 ### IpamClusterxK8sIoV1beta1IPAddressClaimStatus
 
-IPAddressClaimStatus is the observed status of a IPAddressClaim.
+status is the observed state of IPAddressClaim.
 
 #### Attributes
 
@@ -15158,6 +15534,7 @@ IPAddressClaimStatus is the observed status of a IPAddressClaim.
 | --- | --- | --- | --- |
 |**addressRef**|[IpamClusterxK8sIoV1beta1IPAddressClaimStatusAddressRef](#ipamclusterxk8siov1beta1ipaddressclaimstatusaddressref)|address ref||
 |**conditions**|[[IpamClusterxK8sIoV1beta1IPAddressClaimStatusConditionsItems0](#ipamclusterxk8siov1beta1ipaddressclaimstatusconditionsitems0)]|conditions summarises the current state of the IPAddressClaim||
+|**v1beta2**|[IpamClusterxK8sIoV1beta1IPAddressClaimStatusV1beta2](#ipamclusterxk8siov1beta1ipaddressclaimstatusv1beta2)|v1beta2||
 ### IpamClusterxK8sIoV1beta1IPAddressClaimStatusAddressRef
 
 addressRef is a reference to the address that was created for this claim.
@@ -15175,11 +15552,34 @@ Condition defines an observation of a Cluster API resource operational state.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime** `required`|str|Last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
-|**message**|str|A human readable message indicating details about the transition.<br />This field may be empty.||
-|**reason**|str|The reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may be empty.||
+|**lastTransitionTime** `required`|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
+|**message**|str|message is a human readable message indicating details about the transition.<br />This field may be empty.||
+|**reason**|str|reason is the reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may be empty.||
 |**severity**|str|severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
 |**status** `required`|str|status of the condition, one of True, False, Unknown.||
+|**type** `required`|str|||
+### IpamClusterxK8sIoV1beta1IPAddressClaimStatusV1beta2
+
+v1beta2 groups all the fields that will be added or modified in IPAddressClaim's status with the V1Beta2 version.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**conditions**|[[IpamClusterxK8sIoV1beta1IPAddressClaimStatusV1beta2ConditionsItems0](#ipamclusterxk8siov1beta1ipaddressclaimstatusv1beta2conditionsitems0)]|conditions represents the observations of a IPAddressClaim's current state.||
+### IpamClusterxK8sIoV1beta1IPAddressClaimStatusV1beta2ConditionsItems0
+
+Condition contains details for one aspect of the current state of this API Resource.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**lastTransitionTime** `required`|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed.  If that is not known, then using the time when the API field changed is acceptable.||
+|**message** `required`|str|message is a human readable message indicating details about the transition.<br />This may be an empty string.||
+|**observedGeneration**|int|observedGeneration represents the .metadata.generation that the condition was set based upon.<br />For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date<br />with respect to the current state of the instance.||
+|**reason** `required`|str|reason contains a programmatic identifier indicating the reason for the condition's last transition.<br />Producers of specific condition types may define expected values and meanings for this field,<br />and whether the values are considered a guaranteed API.<br />The value should be a CamelCase string.<br />This field may not be empty.||
+|**status** `required`|"True" | "False" | "Unknown"|status of the condition, one of True, False, Unknown.||
 |**type** `required`|str|||
 ### KubeadmConfig
 
@@ -15308,4 +15708,36 @@ MachineSet is the Schema for the machinesets API.
 |**metadata**|[ObjectMeta](#objectmeta)|metadata||
 |**spec**|[ClusterxK8sIoV1beta1MachineSetSpec](#clusterxk8siov1beta1machinesetspec)|spec||
 |**status**|[ClusterxK8sIoV1beta1MachineSetStatus](#clusterxk8siov1beta1machinesetstatus)|status||
+### TestCluster
+
+TestCluster defines a test cluster.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**apiVersion** `required` `readOnly`|"test.cluster.x-k8s.io/v1beta1"|APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources|"test.cluster.x-k8s.io/v1beta1"|
+|**kind** `required` `readOnly`|"TestCluster"|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds|"TestCluster"|
+|**metadata**|[ObjectMeta](#objectmeta)|metadata||
+|**spec**|[TestClusterxK8sIoV1beta1TestClusterSpec](#testclusterxk8siov1beta1testclusterspec)|spec||
+|**status**|[TestClusterxK8sIoV1beta1TestClusterStatus](#testclusterxk8siov1beta1testclusterstatus)|status||
+### TestClusterxK8sIoV1beta1TestClusterSpec
+
+TestClusterSpec defines the spec of a TestCluster.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**bar**|str|bar||
+|**foo**|str|foo||
+### TestClusterxK8sIoV1beta1TestClusterStatus
+
+TestClusterStatus defines the status of a TestCluster.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**foo**|str|foo||
 <!-- Auto generated by kcl-doc tool, please do not edit. -->
