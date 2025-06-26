@@ -53,8 +53,8 @@ schema KustomizeToolkitFluxcdIoV1KustomizationSpec:
     deletionPolicy : str, default is Undefined, optional
         DeletionPolicy can be used to control garbage collection when this
         Kustomization is deleted. Valid values are ('MirrorPrune', 'Delete',
-        'Orphan'). 'MirrorPrune' mirrors the Prune field (orphan if false,
-        delete if true). Defaults to 'MirrorPrune'.
+        'WaitForTermination', 'Orphan'). 'MirrorPrune' mirrors the Prune field
+        (orphan if false, delete if true). Defaults to 'MirrorPrune'.
     dependsOn : [KustomizeToolkitFluxcdIoV1KustomizationSpecDependsOnItems0], default is Undefined, optional
         DependsOn may contain a meta.NamespacedObjectReference slice
         with references to Kustomization resources that must be ready before this
@@ -123,7 +123,7 @@ schema KustomizeToolkitFluxcdIoV1KustomizationSpec:
 
     decryption?: KustomizeToolkitFluxcdIoV1KustomizationSpecDecryption
 
-    deletionPolicy?: "MirrorPrune" | "Delete" | "Orphan"
+    deletionPolicy?: "MirrorPrune" | "Delete" | "WaitForTermination" | "Orphan"
 
     dependsOn?: [KustomizeToolkitFluxcdIoV1KustomizationSpecDependsOnItems0]
 
@@ -208,6 +208,12 @@ schema KustomizeToolkitFluxcdIoV1KustomizationSpecDecryption:
         Provider is the name of the decryption engine.
     secretRef : KustomizeToolkitFluxcdIoV1KustomizationSpecDecryptionSecretRef, default is Undefined, optional
         secret ref
+    serviceAccountName : str, default is Undefined, optional
+        ServiceAccountName is the name of the service account used to
+        authenticate with KMS services from cloud providers. If a
+        static credential for a given cloud provider is defined
+        inside the Secret referenced by SecretRef, that static
+        credential takes priority.
     """
 
 
@@ -215,10 +221,15 @@ schema KustomizeToolkitFluxcdIoV1KustomizationSpecDecryption:
 
     secretRef?: KustomizeToolkitFluxcdIoV1KustomizationSpecDecryptionSecretRef
 
+    serviceAccountName?: str
+
 
 schema KustomizeToolkitFluxcdIoV1KustomizationSpecDecryptionSecretRef:
     r"""
     The secret name containing the private OpenPGP keys used for decryption.
+    A static credential for a cloud provider defined inside the Secret
+    takes priority to secret-less authentication with the ServiceAccountName
+    field.
 
     Attributes
     ----------
