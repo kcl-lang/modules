@@ -70,12 +70,10 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateMetadat
     ObjectMeta is metadata that all persisted resources must have, which includes all objects
     users must create. This is a copy of customizable fields from metav1.ObjectMeta.
 
-
     ObjectMeta is embedded in `Machine.Spec`, `MachineDeployment.Template` and `MachineSet.Template`,
     which are not top-level Kubernetes objects. Given that metav1.ObjectMeta has lots of special cases
     and read-only fields which end up in the generated CRD validation, having it as a subset simplifies
     the API and some issues that can impact user experience.
-
 
     During the [upgrade to controller-tools@v2](https://github.com/kubernetes-sigs/cluster-api/pull/1054)
     for v1alpha2, we noticed a failure would occur running Cluster API test suite against the new CRDs,
@@ -83,12 +81,10 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateMetadat
     The investigation showed that `controller-tools@v2` behaves differently than its previous version
     when handling types from [metav1](k8s.io/apimachinery/pkg/apis/meta/v1) package.
 
-
     In more details, we found that embedded (non-top level) types that embedded `metav1.ObjectMeta`
     had validation properties, including for `creationTimestamp` (metav1.Time).
     The `metav1.Time` type specifies a custom json marshaller that, when IsZero() is true, returns `null`
     which breaks validation because the field isn't marked as nullable.
-
 
     In future versions, controller-tools@v2 might allow overriding the type and validation for embedded
     types. When that happens, this hack should be revisited.
@@ -96,12 +92,12 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateMetadat
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        Annotations is an unstructured key value map stored with a resource that may be
+        annotations is an unstructured key value map stored with a resource that may be
         set by external tools to store and retrieve arbitrary metadata. They are not
         queryable and should be preserved when modifying objects.
         More info: http://kubernetes.io/docs/user-guide/annotations
     labels : {str:str}, default is Undefined, optional
-        Map of string keys and values that can be used to organize and categorize
+        labels is a map of string keys and values that can be used to organize and categorize
         (scope and select) objects. May match selectors of replication controllers
         and services.
         More info: http://kubernetes.io/docs/user-guide/labels
@@ -144,6 +140,9 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpec:
         DisableExtensionOperations specifies whether extension operations should be disabled on the virtual machine.
         Use this setting only if VMExtensions are not supported by your image, as it disables CAPZ bootstrapping extension used for detecting Kubernetes bootstrap failure.
         This may only be set to True when no extensions are configured on the virtual machine.
+    disableVMBootstrapExtension : bool, default is Undefined, optional
+        DisableVMBootstrapExtension specifies whether the VM bootstrap extension should be disabled on the virtual machine.
+        Use this setting if you want to disable only the bootstrapping extension and not all extensions.
     dnsServers : [str], default is Undefined, optional
         DNSServers adds a list of DNS Server IP addresses to the VM NICs.
     enableIPForwarding : bool, default is Undefined, optional
@@ -210,6 +209,8 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpec:
     diagnostics?: InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecDiagnostics
 
     disableExtensionOperations?: bool
+
+    disableVMBootstrapExtension?: bool
 
     dnsServers?: [str]
 
@@ -434,8 +435,8 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecDia
 schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecImage:
     r"""
     Image is used to provide details of an image to use during VM creation.
-    If image details are omitted the image will default the Azure Marketplace "capi" offer,
-    which is based on Ubuntu.
+    If image details are omitted, the default is to use an Azure Compute Gallery Image
+    from CAPZ's community gallery.
 
     Attributes
     ----------
@@ -671,7 +672,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecOsD
 
     Attributes
     ----------
-    cachingType : str, default is Undefined, optional
+    cachingType : str, default is "None", optional
         CachingType specifies the caching requirements.
     diffDiskSettings : InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecOsDiskDiffDiskSettings, default is Undefined, optional
         diff disk settings
@@ -680,12 +681,12 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecOsD
         Will have a default of 30GB if not provided
     managedDisk : InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecOsDiskManagedDisk, default is Undefined, optional
         managed disk
-    osType : str, default is Undefined, required
+    osType : str, default is "Linux", required
         os type
     """
 
 
-    cachingType?: "None" | "ReadOnly" | "ReadWrite"
+    cachingType?: "None" | "ReadOnly" | "ReadWrite" = "None"
 
     diffDiskSettings?: InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecOsDiskDiffDiskSettings
 
@@ -693,7 +694,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecOsD
 
     managedDisk?: InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecOsDiskManagedDisk
 
-    osType: str
+    osType: str = "Linux"
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecOsDiskDiffDiskSettings:

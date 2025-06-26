@@ -83,7 +83,6 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolTemplateSpecTemp
         Immutable.
         See also [AKS doc].
 
-
         [AKS doc]: https://learn.microsoft.com/en-us/azure/aks/enable-host-encryption
     enableFIPS : bool, default is Undefined, optional
         EnableFIPS indicates whether FIPS is enabled on the node pool.
@@ -102,7 +101,6 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolTemplateSpecTemp
         Immutable.
         See also [AKS doc].
 
-
         [AKS doc]: https://learn.microsoft.com/rest/api/aks/agent-pools/create-or-update?tabs=HTTP#kubeletdisktype
     linuxOSConfig : InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolTemplateSpecTemplateSpecLinuxOSConfig, default is Undefined, optional
         linux o s config
@@ -110,7 +108,6 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolTemplateSpecTemp
         MaxPods specifies the kubelet `--max-pods` configuration for the node pool.
         Immutable.
         See also [AKS doc], [K8s doc].
-
 
         [AKS doc]: https://learn.microsoft.com/azure/aks/configure-azure-cni#configure-maximum---new-clusters
         [K8s doc]: https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/
@@ -122,7 +119,6 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolTemplateSpecTemp
     nodeLabels : {str:str}, default is Undefined, optional
         Node labels represent the labels for all of the nodes present in node pool.
         See also [AKS doc].
-
 
         [AKS doc]: https://learn.microsoft.com/azure/aks/use-labels
     nodePublicIPPrefixID : str, default is Undefined, optional
@@ -137,14 +133,12 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolTemplateSpecTemp
         Immutable.
         See also [AKS doc].
 
-
         [AKS doc]: https://learn.microsoft.com/azure/aks/cluster-configuration#ephemeral-os
-    osType : str, default is Undefined, optional
+    osType : str, default is "Linux", optional
         OSType specifies the virtual machine operating system. Default to Linux. Possible values include: 'Linux', 'Windows'.
         'Windows' requires the AzureManagedControlPlane's `spec.networkPlugin` to be `azure`.
         Immutable.
         See also [AKS doc].
-
 
         [AKS doc]: https://learn.microsoft.com/rest/api/aks/agent-pools/create-or-update?tabs=HTTP#ostype
     scaleDownMode : str, default is "Delete", optional
@@ -167,7 +161,6 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolTemplateSpecTemp
     taints : [InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolTemplateSpecTemplateSpecTaintsItems0], default is Undefined, optional
         Taints specifies the taints for nodes present in this agent pool.
         See also [AKS doc].
-
 
         [AKS doc]: https://learn.microsoft.com/azure/aks/use-multiple-node-pools#setting-node-pool-taints
     """
@@ -207,7 +200,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolTemplateSpecTemp
 
     osDiskType?: "Ephemeral" | "Managed" = "Managed"
 
-    osType?: "Linux" | "Windows"
+    osType?: "Linux" | "Windows" = "Linux"
 
     scaleDownMode?: "Deallocate" | "Delete" = "Delete"
 
@@ -310,7 +303,6 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolTemplateSpecTemp
         Must be at least 1.
         See also [AKS doc].
 
-
         [AKS doc]: https://learn.microsoft.com/azure/virtual-machines/managed-disks-overview#temporary-disk
     sysctls : InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolTemplateSpecTemplateSpecLinuxOSConfigSysctls, default is Undefined, optional
         sysctls
@@ -318,12 +310,10 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolTemplateSpecTemp
         TransparentHugePageDefrag specifies whether the kernel should make aggressive use of memory compaction to make more hugepages available.
         See also [Linux doc].
 
-
         [Linux doc]: https://www.kernel.org/doc/html/latest/admin-guide/mm/transhuge.html#admin-guide-transhuge for more details.
     transparentHugePageEnabled : str, default is Undefined, optional
         TransparentHugePageEnabled specifies various modes of Transparent Hugepages.
         See also [Linux doc].
-
 
         [Linux doc]: https://www.kernel.org/doc/html/latest/admin-guide/mm/transhuge.html#admin-guide-transhuge for more details.
     """

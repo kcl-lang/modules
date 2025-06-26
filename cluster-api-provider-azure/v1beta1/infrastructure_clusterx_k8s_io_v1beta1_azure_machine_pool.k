@@ -209,6 +209,8 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplate:
     ----------
     acceleratedNetworking : bool, default is Undefined, optional
         Deprecated: AcceleratedNetworking should be set in the networkInterfaces field.
+    additionalCapabilities : InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateAdditionalCapabilities, default is Undefined, optional
+        additional capabilities
     dataDisks : [InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateDataDisksItems0], default is Undefined, optional
         DataDisks specifies the list of data disks to be created for a Virtual Machine
     diagnostics : InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateDiagnostics, default is Undefined, optional
@@ -244,6 +246,8 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplate:
 
     acceleratedNetworking?: bool
 
+    additionalCapabilities?: InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateAdditionalCapabilities
+
     dataDisks?: [InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateDataDisksItems0]
 
     diagnostics?: InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateDiagnostics
@@ -267,6 +271,22 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplate:
     vmExtensions?: [InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateVMExtensionsItems0]
 
     vmSize: str
+
+
+schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateAdditionalCapabilities:
+    r"""
+    AdditionalCapabilities specifies additional capabilities enabled or disabled on the virtual machine.
+
+    Attributes
+    ----------
+    ultraSSDEnabled : bool, default is Undefined, optional
+        UltraSSDEnabled enables or disables Azure UltraSSD capability for the virtual machine.
+        Defaults to true if Ultra SSD data disks are specified,
+        otherwise it doesn't set the capability on the VM.
+    """
+
+
+    ultraSSDEnabled?: bool
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateDataDisksItems0:
@@ -678,7 +698,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateOsDisk:
 
     Attributes
     ----------
-    cachingType : str, default is Undefined, optional
+    cachingType : str, default is "None", optional
         CachingType specifies the caching requirements.
     diffDiskSettings : InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateOsDiskDiffDiskSettings, default is Undefined, optional
         diff disk settings
@@ -687,12 +707,12 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateOsDisk:
         Will have a default of 30GB if not provided
     managedDisk : InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateOsDiskManagedDisk, default is Undefined, optional
         managed disk
-    osType : str, default is Undefined, required
+    osType : str, default is "Linux", required
         os type
     """
 
 
-    cachingType?: "None" | "ReadOnly" | "ReadWrite"
+    cachingType?: "None" | "ReadOnly" | "ReadWrite" = "None"
 
     diffDiskSettings?: InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateOsDiskDiffDiskSettings
 
@@ -700,7 +720,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateOsDisk:
 
     managedDisk?: InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateOsDiskManagedDisk
 
-    osType: str
+    osType: str = "Linux"
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateOsDiskDiffDiskSettings:
@@ -929,7 +949,6 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolStatus:
         reconciling the MachinePool and will contain a more verbose string suitable
         for logging and human consumption.
 
-
         This field should not be set for transitive errors that a controller
         faces that are expected to be fixed automatically over
         time (like service outages), but instead indicate that something is
@@ -938,7 +957,6 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolStatus:
         of terminal errors would be invalid combinations of settings in the
         spec, values that are unsupported by the controller, or the
         responsible controller itself being critically misconfigured.
-
 
         Any transient errors that occur during the reconciliation of MachinePools
         can be added as events to the MachinePool object and/or logged in the
@@ -948,7 +966,6 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolStatus:
         reconciling the MachinePool and will contain a succinct value suitable
         for machine interpretation.
 
-
         This field should not be set for transitive errors that a controller
         faces that are expected to be fixed automatically over
         time (like service outages), but instead indicate that something is
@@ -957,7 +974,6 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolStatus:
         of terminal errors would be invalid combinations of settings in the
         spec, values that are unsupported by the controller, or the
         responsible controller itself being critically misconfigured.
-
 
         Any transient errors that occur during the reconciliation of MachinePools
         can be added as events to the MachinePool object and/or logged in the
@@ -1012,24 +1028,24 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolStatusConditionsItems0:
     Attributes
     ----------
     lastTransitionTime : str, default is Undefined, required
-        Last time the condition transitioned from one status to another.
+        lastTransitionTime is the last time the condition transitioned from one status to another.
         This should be when the underlying condition changed. If that is not known, then using the time when
         the API field changed is acceptable.
     message : str, default is Undefined, optional
-        A human readable message indicating details about the transition.
+        message is a human readable message indicating details about the transition.
         This field may be empty.
     reason : str, default is Undefined, optional
-        The reason for the condition's last transition in CamelCase.
+        reason is the reason for the condition's last transition in CamelCase.
         The specific API may choose whether or not this field is considered a guaranteed API.
-        This field may not be empty.
+        This field may be empty.
     severity : str, default is Undefined, optional
-        Severity provides an explicit classification of Reason code, so the users or machines can immediately
+        severity provides an explicit classification of Reason code, so the users or machines can immediately
         understand the current situation and act accordingly.
         The Severity field MUST be set only when Status=False.
     status : str, default is Undefined, required
-        Status of the condition, one of True, False, Unknown.
+        status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
-        Type of condition in CamelCase or in foo.example.com/CamelCase.
+        type of condition in CamelCase or in foo.example.com/CamelCase.
         Many .condition.type values are consistent across resources like Available, but because arbitrary conditions
         can be useful (see .node.status.conditions), the ability to deconflict is important.
     """
@@ -1046,6 +1062,16 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolStatusConditionsItems0:
     status: str
 
     $type: str
+
+
+    check:
+        len(message) <= 10240 if message
+        len(message) >= 1 if message
+        len(reason) <= 256 if reason
+        len(reason) >= 1 if reason
+        len(severity) <= 32 if severity
+        len($type) <= 256
+        len($type) >= 1
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolStatusImage:

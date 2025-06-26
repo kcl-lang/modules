@@ -204,8 +204,8 @@ schema CrdProjectcalicoOrgV1GlobalNetworkPolicySpecEgressItems0Destination:
 
 
     check:
-        all notPorts in notPorts {_regex_match(str(notPorts), r"^.*") if notPorts } if notPorts
-        all ports in ports {_regex_match(str(ports), r"^.*") if ports } if ports
+        all notPorts in notPorts { _regex_match(str(notPorts), r"^.*") if notPorts } if notPorts
+        all ports in ports { _regex_match(str(ports), r"^.*") if ports } if ports
 
 
 schema CrdProjectcalicoOrgV1GlobalNetworkPolicySpecEgressItems0DestinationServiceAccounts:
@@ -387,8 +387,8 @@ schema CrdProjectcalicoOrgV1GlobalNetworkPolicySpecEgressItems0Source:
 
 
     check:
-        all notPorts in notPorts {_regex_match(str(notPorts), r"^.*") if notPorts } if notPorts
-        all ports in ports {_regex_match(str(ports), r"^.*") if ports } if ports
+        all notPorts in notPorts { _regex_match(str(notPorts), r"^.*") if notPorts } if notPorts
+        all ports in ports { _regex_match(str(ports), r"^.*") if ports } if ports
 
 
 schema CrdProjectcalicoOrgV1GlobalNetworkPolicySpecEgressItems0SourceServiceAccounts:
@@ -541,8 +541,8 @@ schema CrdProjectcalicoOrgV1GlobalNetworkPolicySpecIngressItems0Destination:
 
 
     check:
-        all notPorts in notPorts {_regex_match(str(notPorts), r"^.*") if notPorts } if notPorts
-        all ports in ports {_regex_match(str(ports), r"^.*") if ports } if ports
+        all notPorts in notPorts { _regex_match(str(notPorts), r"^.*") if notPorts } if notPorts
+        all ports in ports { _regex_match(str(ports), r"^.*") if ports } if ports
 
 
 schema CrdProjectcalicoOrgV1GlobalNetworkPolicySpecIngressItems0DestinationServiceAccounts:
@@ -724,8 +724,8 @@ schema CrdProjectcalicoOrgV1GlobalNetworkPolicySpecIngressItems0Source:
 
 
     check:
-        all notPorts in notPorts {_regex_match(str(notPorts), r"^.*") if notPorts } if notPorts
-        all ports in ports {_regex_match(str(ports), r"^.*") if ports } if ports
+        all notPorts in notPorts { _regex_match(str(notPorts), r"^.*") if notPorts } if notPorts
+        all ports in ports { _regex_match(str(ports), r"^.*") if ports } if ports
 
 
 schema CrdProjectcalicoOrgV1GlobalNetworkPolicySpecIngressItems0SourceServiceAccounts:

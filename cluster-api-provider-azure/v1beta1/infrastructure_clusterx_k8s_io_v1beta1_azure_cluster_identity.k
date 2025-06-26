@@ -43,6 +43,8 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterIdentitySpec:
     ----------
     allowedNamespaces : InfrastructureClusterxK8sIoV1beta1AzureClusterIdentitySpecAllowedNamespaces, default is Undefined, optional
         allowed namespaces
+    certPath : str, default is Undefined, optional
+        CertPath is the path where certificates exist. When set, it takes precedence over ClientSecret for types that use certs like ServicePrincipalCertificate.
     clientID : str, default is Undefined, required
         ClientID is the service principal client ID.
         Both User Assigned MSI and SP can use this field.
@@ -52,17 +54,26 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterIdentitySpec:
         ResourceID is the Azure resource ID for the User Assigned MSI resource.
         Only applicable when type is UserAssignedMSI.
 
-
         Deprecated: This field no longer has any effect.
     tenantID : str, default is Undefined, required
         TenantID is the service principal primary tenant id.
     $type : str, default is Undefined, required
         Type is the type of Azure Identity used.
-        ServicePrincipal, ServicePrincipalCertificate, UserAssignedMSI, ManualServicePrincipal or WorkloadIdentity.
+        ServicePrincipal, ServicePrincipalCertificate, UserAssignedMSI, ManualServicePrincipal, UserAssignedIdentityCredential, or WorkloadIdentity.
+    userAssignedIdentityCredentialsCloudType : str, default is Undefined, optional
+        UserAssignedIdentityCredentialsCloudType is used with UserAssignedIdentityCredentialsPath to specify the Cloud
+        type. Can only be one of the following values: public, china, or usgovernment
+        If a value is not specified, defaults to public
+    userAssignedIdentityCredentialsPath : str, default is Undefined, optional
+        UserAssignedIdentityCredentialsPath is the path where an existing JSON file exists containing the JSON format of
+        a UserAssignedIdentityCredentials struct.
+        See the msi-dataplane for more details on UserAssignedIdentityCredentials - https://github.com/Azure/msi-dataplane/blob/main/pkg/dataplane/internal/client/models.go#L125
     """
 
 
     allowedNamespaces?: InfrastructureClusterxK8sIoV1beta1AzureClusterIdentitySpecAllowedNamespaces
+
+    certPath?: str
 
     clientID: str
 
@@ -72,7 +83,11 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterIdentitySpec:
 
     tenantID: str
 
-    $type: "ServicePrincipal" | "UserAssignedMSI" | "ManualServicePrincipal" | "ServicePrincipalCertificate" | "WorkloadIdentity"
+    $type: "ServicePrincipal" | "UserAssignedMSI" | "ManualServicePrincipal" | "ServicePrincipalCertificate" | "WorkloadIdentity" | "UserAssignedIdentityCredential"
+
+    userAssignedIdentityCredentialsCloudType?: str
+
+    userAssignedIdentityCredentialsPath?: str
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterIdentitySpecAllowedNamespaces:
@@ -103,7 +118,6 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterIdentitySpecAllowedNamespac
     use this Identity from. This is a standard Kubernetes LabelSelector,
     a label query over a set of resources. The result of matchLabels and
     matchExpressions are ANDed.
-
 
     A nil or empty selector indicates that AzureCluster cannot use this
     AzureClusterIdentity from any namespace.
@@ -190,24 +204,24 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterIdentityStatusConditionsIte
     Attributes
     ----------
     lastTransitionTime : str, default is Undefined, required
-        Last time the condition transitioned from one status to another.
+        lastTransitionTime is the last time the condition transitioned from one status to another.
         This should be when the underlying condition changed. If that is not known, then using the time when
         the API field changed is acceptable.
     message : str, default is Undefined, optional
-        A human readable message indicating details about the transition.
+        message is a human readable message indicating details about the transition.
         This field may be empty.
     reason : str, default is Undefined, optional
-        The reason for the condition's last transition in CamelCase.
+        reason is the reason for the condition's last transition in CamelCase.
         The specific API may choose whether or not this field is considered a guaranteed API.
-        This field may not be empty.
+        This field may be empty.
     severity : str, default is Undefined, optional
-        Severity provides an explicit classification of Reason code, so the users or machines can immediately
+        severity provides an explicit classification of Reason code, so the users or machines can immediately
         understand the current situation and act accordingly.
         The Severity field MUST be set only when Status=False.
     status : str, default is Undefined, required
-        Status of the condition, one of True, False, Unknown.
+        status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
-        Type of condition in CamelCase or in foo.example.com/CamelCase.
+        type of condition in CamelCase or in foo.example.com/CamelCase.
         Many .condition.type values are consistent across resources like Available, but because arbitrary conditions
         can be useful (see .node.status.conditions), the ability to deconflict is important.
     """
@@ -224,5 +238,15 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterIdentityStatusConditionsIte
     status: str
 
     $type: str
+
+
+    check:
+        len(message) <= 10240 if message
+        len(message) >= 1 if message
+        len(reason) <= 256 if reason
+        len(reason) >= 1 if reason
+        len(severity) <= 32 if severity
+        len($type) <= 256
+        len($type) >= 1
 
 

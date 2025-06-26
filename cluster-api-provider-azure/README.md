@@ -1039,6 +1039,7 @@
   - [InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecAPIServerLBFrontendIPsItems0](#infrastructureclusterxk8siov1beta1azureclusterspecnetworkspecapiserverlbfrontendipsitems0)
   - [InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecAPIServerLBFrontendIPsItems0PublicIP](#infrastructureclusterxk8siov1beta1azureclusterspecnetworkspecapiserverlbfrontendipsitems0publicip)
   - [InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecAPIServerLBFrontendIPsItems0PublicIPIPTagsItems0](#infrastructureclusterxk8siov1beta1azureclusterspecnetworkspecapiserverlbfrontendipsitems0publicipiptagsitems0)
+  - [InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecAdditionalAPIServerLBPortsItems0](#infrastructureclusterxk8siov1beta1azureclusterspecnetworkspecadditionalapiserverlbportsitems0)
   - [InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecControlPlaneOutboundLB](#infrastructureclusterxk8siov1beta1azureclusterspecnetworkspeccontrolplaneoutboundlb)
   - [InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecControlPlaneOutboundLBBackendPool](#infrastructureclusterxk8siov1beta1azureclusterspecnetworkspeccontrolplaneoutboundlbbackendpool)
   - [InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecControlPlaneOutboundLBFrontendIPsItems0](#infrastructureclusterxk8siov1beta1azureclusterspecnetworkspeccontrolplaneoutboundlbfrontendipsitems0)
@@ -1088,6 +1089,7 @@
   - [InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecIdentityRef](#infrastructureclusterxk8siov1beta1azureclustertemplatespectemplatespecidentityref)
   - [InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpec](#infrastructureclusterxk8siov1beta1azureclustertemplatespectemplatespecnetworkspec)
   - [InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecAPIServerLB](#infrastructureclusterxk8siov1beta1azureclustertemplatespectemplatespecnetworkspecapiserverlb)
+  - [InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecAdditionalAPIServerLBPortsItems0](#infrastructureclusterxk8siov1beta1azureclustertemplatespectemplatespecnetworkspecadditionalapiserverlbportsitems0)
   - [InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecControlPlaneOutboundLB](#infrastructureclusterxk8siov1beta1azureclustertemplatespectemplatespecnetworkspeccontrolplaneoutboundlb)
   - [InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecNodeOutboundLB](#infrastructureclusterxk8siov1beta1azureclustertemplatespectemplatespecnetworkspecnodeoutboundlb)
   - [InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecSubnetsItems0](#infrastructureclusterxk8siov1beta1azureclustertemplatespectemplatespecnetworkspecsubnetsitems0)
@@ -1111,6 +1113,7 @@
   - [InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecStrategyRollingUpdate](#infrastructureclusterxk8siov1beta1azuremachinepoolspecstrategyrollingupdate)
   - [InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecSystemAssignedIdentityRole](#infrastructureclusterxk8siov1beta1azuremachinepoolspecsystemassignedidentityrole)
   - [InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplate](#infrastructureclusterxk8siov1beta1azuremachinepoolspectemplate)
+  - [InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateAdditionalCapabilities](#infrastructureclusterxk8siov1beta1azuremachinepoolspectemplateadditionalcapabilities)
   - [InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateDataDisksItems0](#infrastructureclusterxk8siov1beta1azuremachinepoolspectemplatedatadisksitems0)
   - [InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateDataDisksItems0ManagedDisk](#infrastructureclusterxk8siov1beta1azuremachinepoolspectemplatedatadisksitems0manageddisk)
   - [InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateDataDisksItems0ManagedDiskDiskEncryptionSet](#infrastructureclusterxk8siov1beta1azuremachinepoolspectemplatedatadisksitems0manageddiskdiskencryptionset)
@@ -1296,7 +1299,7 @@
 
 ### Alertmanager
 
-r""" Alertmanager describes an Alertmanager cluster.
+Alertmanager describes an Alertmanager cluster.
 
 #### Attributes
 
@@ -1309,7 +1312,7 @@ r""" Alertmanager describes an Alertmanager cluster.
 |**status**|[MonitoringCoreosComV1AlertmanagerStatus](#monitoringcoreoscomv1alertmanagerstatus)|status||
 ### BGPConfiguration
 
-r""" BGPConfiguration contains the configuration for any BGP routing.
+BGPConfiguration contains the configuration for any BGP routing.
 
 #### Attributes
 
@@ -1321,7 +1324,7 @@ r""" BGPConfiguration contains the configuration for any BGP routing.
 |**spec**|[CrdProjectcalicoOrgV1BGPConfigurationSpec](#crdprojectcalicoorgv1bgpconfigurationspec)|spec||
 ### BGPFilter
 
-r""" crd projectcalico org v1 b g p filter
+crd projectcalico org v1 b g p filter
 
 #### Attributes
 
@@ -1333,7 +1336,7 @@ r""" crd projectcalico org v1 b g p filter
 |**spec**|[CrdProjectcalicoOrgV1BGPFilterSpec](#crdprojectcalicoorgv1bgpfilterspec)|spec||
 ### BGPPeer
 
-r""" crd projectcalico org v1 b g p peer
+crd projectcalico org v1 b g p peer
 
 #### Attributes
 
@@ -1345,7 +1348,7 @@ r""" crd projectcalico org v1 b g p peer
 |**spec**|[CrdProjectcalicoOrgV1BGPPeerSpec](#crdprojectcalicoorgv1bgppeerspec)|spec||
 ### BlockAffinity
 
-r""" crd projectcalico org v1 block affinity
+crd projectcalico org v1 block affinity
 
 #### Attributes
 
@@ -1357,7 +1360,7 @@ r""" crd projectcalico org v1 block affinity
 |**spec**|[CrdProjectcalicoOrgV1BlockAffinitySpec](#crdprojectcalicoorgv1blockaffinityspec)|spec||
 ### CalicoNodeStatus
 
-r""" crd projectcalico org v1 calico node status
+crd projectcalico org v1 calico node status
 
 #### Attributes
 
@@ -1370,7 +1373,7 @@ r""" crd projectcalico org v1 calico node status
 |**status**|[CrdProjectcalicoOrgV1CalicoNodeStatusStatus](#crdprojectcalicoorgv1caliconodestatusstatus)|status||
 ### ClusterInformation
 
-r""" ClusterInformation contains the cluster specific information.
+ClusterInformation contains the cluster specific information.
 
 #### Attributes
 
@@ -1382,7 +1385,7 @@ r""" ClusterInformation contains the cluster specific information.
 |**spec**|[CrdProjectcalicoOrgV1ClusterInformationSpec](#crdprojectcalicoorgv1clusterinformationspec)|spec||
 ### CrdProjectcalicoOrgV1BGPConfigurationSpec
 
-r""" BGPConfigurationSpec contains the values of the BGP configuration.
+BGPConfigurationSpec contains the values of the BGP configuration.
 
 #### Attributes
 
@@ -1403,7 +1406,7 @@ r""" BGPConfigurationSpec contains the values of the BGP configuration.
 |**serviceLoadBalancerIPs**|[[CrdProjectcalicoOrgV1BGPConfigurationSpecServiceLoadBalancerIPsItems0](#crdprojectcalicoorgv1bgpconfigurationspecserviceloadbalanceripsitems0)]|ServiceLoadBalancerIPs are the CIDR blocks for Kubernetes Service LoadBalancer IPs. Kubernetes Service status.LoadBalancer.Ingress IPs will only be advertised if they are within one of these blocks.||
 ### CrdProjectcalicoOrgV1BGPConfigurationSpecCommunitiesItems0
 
-r""" Community contains standard or large community value and its name.
+Community contains standard or large community value and its name.
 
 #### Attributes
 
@@ -1413,7 +1416,7 @@ r""" Community contains standard or large community value and its name.
 |**value**|str|Value must be of format `aa:nn` or `aa:nn:mm`. For standard community use `aa:nn` format, where `aa` and `nn` are 16 bit number. For large community use `aa:nn:mm` format, where `aa`, `nn` and `mm` are 32 bit number. Where, `aa` is an AS Number, `nn` and `mm` are per-AS identifier.||
 ### CrdProjectcalicoOrgV1BGPConfigurationSpecNodeMeshPassword
 
-r""" Optional BGP password for full node-to-mesh peerings. This field can only be set on the default BGPConfiguration instance and requires that NodeMesh is enabled
+Optional BGP password for full node-to-mesh peerings. This field can only be set on the default BGPConfiguration instance and requires that NodeMesh is enabled
 
 #### Attributes
 
@@ -1422,7 +1425,7 @@ r""" Optional BGP password for full node-to-mesh peerings. This field can only b
 |**secretKeyRef**|[CrdProjectcalicoOrgV1BGPConfigurationSpecNodeMeshPasswordSecretKeyRef](#crdprojectcalicoorgv1bgpconfigurationspecnodemeshpasswordsecretkeyref)|secret key ref||
 ### CrdProjectcalicoOrgV1BGPConfigurationSpecNodeMeshPasswordSecretKeyRef
 
-r""" Selects a key of a secret in the node pod's namespace.
+Selects a key of a secret in the node pod's namespace.
 
 #### Attributes
 
@@ -1433,7 +1436,7 @@ r""" Selects a key of a secret in the node pod's namespace.
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### CrdProjectcalicoOrgV1BGPConfigurationSpecPrefixAdvertisementsItems0
 
-r""" PrefixAdvertisement configures advertisement properties for the specified CIDR.
+PrefixAdvertisement configures advertisement properties for the specified CIDR.
 
 #### Attributes
 
@@ -1443,7 +1446,7 @@ r""" PrefixAdvertisement configures advertisement properties for the specified C
 |**communities**|[str]|Communities can be list of either community names already defined in `Specs.Communities` or community value of format `aa:nn` or `aa:nn:mm`. For standard community use `aa:nn` format, where `aa` and `nn` are 16 bit number. For large community use `aa:nn:mm` format, where `aa`, `nn` and `mm` are 32 bit number. Where,`aa` is an AS Number, `nn` and `mm` are per-AS identifier.||
 ### CrdProjectcalicoOrgV1BGPConfigurationSpecServiceClusterIPsItems0
 
-r""" ServiceClusterIPBlock represents a single allowed ClusterIP CIDR block.
+ServiceClusterIPBlock represents a single allowed ClusterIP CIDR block.
 
 #### Attributes
 
@@ -1452,7 +1455,7 @@ r""" ServiceClusterIPBlock represents a single allowed ClusterIP CIDR block.
 |**cidr**|str|cidr||
 ### CrdProjectcalicoOrgV1BGPConfigurationSpecServiceExternalIPsItems0
 
-r""" ServiceExternalIPBlock represents a single allowed External IP CIDR block.
+ServiceExternalIPBlock represents a single allowed External IP CIDR block.
 
 #### Attributes
 
@@ -1461,7 +1464,7 @@ r""" ServiceExternalIPBlock represents a single allowed External IP CIDR block.
 |**cidr**|str|cidr||
 ### CrdProjectcalicoOrgV1BGPConfigurationSpecServiceLoadBalancerIPsItems0
 
-r""" ServiceLoadBalancerIPBlock represents a single allowed LoadBalancer IP CIDR block.
+ServiceLoadBalancerIPBlock represents a single allowed LoadBalancer IP CIDR block.
 
 #### Attributes
 
@@ -1470,7 +1473,7 @@ r""" ServiceLoadBalancerIPBlock represents a single allowed LoadBalancer IP CIDR
 |**cidr**|str|cidr||
 ### CrdProjectcalicoOrgV1BGPFilterSpec
 
-r""" BGPFilterSpec contains the IPv4 and IPv6 filter rules of the BGP Filter.
+BGPFilterSpec contains the IPv4 and IPv6 filter rules of the BGP Filter.
 
 #### Attributes
 
@@ -1482,7 +1485,7 @@ r""" BGPFilterSpec contains the IPv4 and IPv6 filter rules of the BGP Filter.
 |**importV6**|[[CrdProjectcalicoOrgV1BGPFilterSpecImportV6Items0](#crdprojectcalicoorgv1bgpfilterspecimportv6items0)]|The ordered set of IPv6 BGPFilter rules acting on importing routes from a peer.||
 ### CrdProjectcalicoOrgV1BGPFilterSpecExportV4Items0
 
-r""" BGPFilterRuleV4 defines a BGP filter rule consisting a single IPv4 CIDR block and a filter action for this CIDR.
+BGPFilterRuleV4 defines a BGP filter rule consisting a single IPv4 CIDR block and a filter action for this CIDR.
 
 #### Attributes
 
@@ -1493,7 +1496,7 @@ r""" BGPFilterRuleV4 defines a BGP filter rule consisting a single IPv4 CIDR blo
 |**matchOperator** `required`|str|match operator||
 ### CrdProjectcalicoOrgV1BGPFilterSpecExportV6Items0
 
-r""" BGPFilterRuleV6 defines a BGP filter rule consisting a single IPv6 CIDR block and a filter action for this CIDR.
+BGPFilterRuleV6 defines a BGP filter rule consisting a single IPv6 CIDR block and a filter action for this CIDR.
 
 #### Attributes
 
@@ -1504,7 +1507,7 @@ r""" BGPFilterRuleV6 defines a BGP filter rule consisting a single IPv6 CIDR blo
 |**matchOperator** `required`|str|match operator||
 ### CrdProjectcalicoOrgV1BGPFilterSpecImportV4Items0
 
-r""" BGPFilterRuleV4 defines a BGP filter rule consisting a single IPv4 CIDR block and a filter action for this CIDR.
+BGPFilterRuleV4 defines a BGP filter rule consisting a single IPv4 CIDR block and a filter action for this CIDR.
 
 #### Attributes
 
@@ -1515,7 +1518,7 @@ r""" BGPFilterRuleV4 defines a BGP filter rule consisting a single IPv4 CIDR blo
 |**matchOperator** `required`|str|match operator||
 ### CrdProjectcalicoOrgV1BGPFilterSpecImportV6Items0
 
-r""" BGPFilterRuleV6 defines a BGP filter rule consisting a single IPv6 CIDR block and a filter action for this CIDR.
+BGPFilterRuleV6 defines a BGP filter rule consisting a single IPv6 CIDR block and a filter action for this CIDR.
 
 #### Attributes
 
@@ -1526,7 +1529,7 @@ r""" BGPFilterRuleV6 defines a BGP filter rule consisting a single IPv6 CIDR blo
 |**matchOperator** `required`|str|match operator||
 ### CrdProjectcalicoOrgV1BGPPeerSpec
 
-r""" BGPPeerSpec contains the specification for a BGPPeer resource.
+BGPPeerSpec contains the specification for a BGPPeer resource.
 
 #### Attributes
 
@@ -1547,7 +1550,7 @@ r""" BGPPeerSpec contains the specification for a BGPPeer resource.
 |**ttlSecurity**|int|TTLSecurity enables the generalized TTL security mechanism (GTSM) which protects against spoofed packets by ignoring received packets with a smaller than expected TTL value. The provided value is the number of hops (edges) between the peers.||
 ### CrdProjectcalicoOrgV1BGPPeerSpecPassword
 
-r""" Optional BGP password for the peerings generated by this BGPPeer resource.
+Optional BGP password for the peerings generated by this BGPPeer resource.
 
 #### Attributes
 
@@ -1556,7 +1559,7 @@ r""" Optional BGP password for the peerings generated by this BGPPeer resource.
 |**secretKeyRef**|[CrdProjectcalicoOrgV1BGPPeerSpecPasswordSecretKeyRef](#crdprojectcalicoorgv1bgppeerspecpasswordsecretkeyref)|secret key ref||
 ### CrdProjectcalicoOrgV1BGPPeerSpecPasswordSecretKeyRef
 
-r""" Selects a key of a secret in the node pod's namespace.
+Selects a key of a secret in the node pod's namespace.
 
 #### Attributes
 
@@ -1567,7 +1570,7 @@ r""" Selects a key of a secret in the node pod's namespace.
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### CrdProjectcalicoOrgV1BlockAffinitySpec
 
-r""" BlockAffinitySpec contains the specification for a BlockAffinity resource.
+BlockAffinitySpec contains the specification for a BlockAffinity resource.
 
 #### Attributes
 
@@ -1579,7 +1582,7 @@ r""" BlockAffinitySpec contains the specification for a BlockAffinity resource.
 |**state** `required`|str|state||
 ### CrdProjectcalicoOrgV1CalicoNodeStatusSpec
 
-r""" CalicoNodeStatusSpec contains the specification for a CalicoNodeStatus resource.
+CalicoNodeStatusSpec contains the specification for a CalicoNodeStatus resource.
 
 #### Attributes
 
@@ -1590,7 +1593,7 @@ r""" CalicoNodeStatusSpec contains the specification for a CalicoNodeStatus reso
 |**updatePeriodSeconds**|int|UpdatePeriodSeconds is the period at which CalicoNodeStatus should be updated. Set to 0 to disable CalicoNodeStatus refresh. Maximum update period is one day.||
 ### CrdProjectcalicoOrgV1CalicoNodeStatusStatus
 
-r""" CalicoNodeStatusStatus defines the observed state of CalicoNodeStatus. No validation needed for status since it is updated by Calico.
+CalicoNodeStatusStatus defines the observed state of CalicoNodeStatus. No validation needed for status since it is updated by Calico.
 
 #### Attributes
 
@@ -1602,7 +1605,7 @@ r""" CalicoNodeStatusStatus defines the observed state of CalicoNodeStatus. No v
 |**routes**|[CrdProjectcalicoOrgV1CalicoNodeStatusStatusRoutes](#crdprojectcalicoorgv1caliconodestatusstatusroutes)|routes||
 ### CrdProjectcalicoOrgV1CalicoNodeStatusStatusAgent
 
-r""" Agent holds agent status on the node.
+Agent holds agent status on the node.
 
 #### Attributes
 
@@ -1612,7 +1615,7 @@ r""" Agent holds agent status on the node.
 |**birdV6**|[CrdProjectcalicoOrgV1CalicoNodeStatusStatusAgentBirdV6](#crdprojectcalicoorgv1caliconodestatusstatusagentbirdv6)|bird v6||
 ### CrdProjectcalicoOrgV1CalicoNodeStatusStatusAgentBirdV4
 
-r""" BIRDV4 represents the latest observed status of bird4.
+BIRDV4 represents the latest observed status of bird4.
 
 #### Attributes
 
@@ -1625,7 +1628,7 @@ r""" BIRDV4 represents the latest observed status of bird4.
 |**version**|str|Version of the BGP daemon||
 ### CrdProjectcalicoOrgV1CalicoNodeStatusStatusAgentBirdV6
 
-r""" BIRDV6 represents the latest observed status of bird6.
+BIRDV6 represents the latest observed status of bird6.
 
 #### Attributes
 
@@ -1638,7 +1641,7 @@ r""" BIRDV6 represents the latest observed status of bird6.
 |**version**|str|Version of the BGP daemon||
 ### CrdProjectcalicoOrgV1CalicoNodeStatusStatusBgp
 
-r""" BGP holds node BGP status.
+BGP holds node BGP status.
 
 #### Attributes
 
@@ -1652,7 +1655,7 @@ r""" BGP holds node BGP status.
 |**peersV6**|[[CrdProjectcalicoOrgV1CalicoNodeStatusStatusBgpPeersV6Items0](#crdprojectcalicoorgv1caliconodestatusstatusbgppeersv6items0)]|PeersV6 represents IPv6 BGP peers status on the node.||
 ### CrdProjectcalicoOrgV1CalicoNodeStatusStatusBgpPeersV4Items0
 
-r""" CalicoNodePeer contains the status of BGP peers on the node.
+CalicoNodePeer contains the status of BGP peers on the node.
 
 #### Attributes
 
@@ -1664,7 +1667,7 @@ r""" CalicoNodePeer contains the status of BGP peers on the node.
 |**type**|str|||
 ### CrdProjectcalicoOrgV1CalicoNodeStatusStatusBgpPeersV6Items0
 
-r""" CalicoNodePeer contains the status of BGP peers on the node.
+CalicoNodePeer contains the status of BGP peers on the node.
 
 #### Attributes
 
@@ -1676,7 +1679,7 @@ r""" CalicoNodePeer contains the status of BGP peers on the node.
 |**type**|str|||
 ### CrdProjectcalicoOrgV1CalicoNodeStatusStatusRoutes
 
-r""" Routes reports routes known to the Calico BGP daemon on the node.
+Routes reports routes known to the Calico BGP daemon on the node.
 
 #### Attributes
 
@@ -1686,7 +1689,7 @@ r""" Routes reports routes known to the Calico BGP daemon on the node.
 |**routesV6**|[[CrdProjectcalicoOrgV1CalicoNodeStatusStatusRoutesRoutesV6Items0](#crdprojectcalicoorgv1caliconodestatusstatusroutesroutesv6items0)]|RoutesV6 represents IPv6 routes on the node.||
 ### CrdProjectcalicoOrgV1CalicoNodeStatusStatusRoutesRoutesV4Items0
 
-r""" CalicoNodeRoute contains the status of BGP routes on the node.
+CalicoNodeRoute contains the status of BGP routes on the node.
 
 #### Attributes
 
@@ -1699,7 +1702,7 @@ r""" CalicoNodeRoute contains the status of BGP routes on the node.
 |**type**|str|||
 ### CrdProjectcalicoOrgV1CalicoNodeStatusStatusRoutesRoutesV4Items0LearnedFrom
 
-r""" LearnedFrom contains information regarding where this route originated.
+LearnedFrom contains information regarding where this route originated.
 
 #### Attributes
 
@@ -1709,7 +1712,7 @@ r""" LearnedFrom contains information regarding where this route originated.
 |**sourceType**|str|Type of the source where a route is learned from.||
 ### CrdProjectcalicoOrgV1CalicoNodeStatusStatusRoutesRoutesV6Items0
 
-r""" CalicoNodeRoute contains the status of BGP routes on the node.
+CalicoNodeRoute contains the status of BGP routes on the node.
 
 #### Attributes
 
@@ -1722,7 +1725,7 @@ r""" CalicoNodeRoute contains the status of BGP routes on the node.
 |**type**|str|||
 ### CrdProjectcalicoOrgV1CalicoNodeStatusStatusRoutesRoutesV6Items0LearnedFrom
 
-r""" LearnedFrom contains information regarding where this route originated.
+LearnedFrom contains information regarding where this route originated.
 
 #### Attributes
 
@@ -1732,7 +1735,7 @@ r""" LearnedFrom contains information regarding where this route originated.
 |**sourceType**|str|Type of the source where a route is learned from.||
 ### CrdProjectcalicoOrgV1ClusterInformationSpec
 
-r""" ClusterInformationSpec contains the values of describing the cluster.
+ClusterInformationSpec contains the values of describing the cluster.
 
 #### Attributes
 
@@ -1745,7 +1748,7 @@ r""" ClusterInformationSpec contains the values of describing the cluster.
 |**variant**|str|Variant declares which variant of Calico should be active.||
 ### CrdProjectcalicoOrgV1FelixConfigurationSpec
 
-r""" FelixConfigurationSpec contains the values of the Felix configuration.
+FelixConfigurationSpec contains the values of the Felix configuration.
 
 #### Attributes
 
@@ -1877,7 +1880,7 @@ r""" FelixConfigurationSpec contains the values of the Felix configuration.
 |**xdpRefreshInterval**|str|XDPRefreshInterval is the period at which Felix re-checks all XDP state to ensure that no other process has accidentally broken Calico's BPF maps or attached programs. Set to 0 to disable XDP refresh. [Default: 90s]||
 ### CrdProjectcalicoOrgV1FelixConfigurationSpecFailsafeInboundHostPortsItems0
 
-r""" ProtoPort is combination of protocol, port, and CIDR. Protocol and port must be specified.
+ProtoPort is combination of protocol, port, and CIDR. Protocol and port must be specified.
 
 #### Attributes
 
@@ -1888,7 +1891,7 @@ r""" ProtoPort is combination of protocol, port, and CIDR. Protocol and port mus
 |**protocol** `required`|str|||
 ### CrdProjectcalicoOrgV1FelixConfigurationSpecFailsafeOutboundHostPortsItems0
 
-r""" ProtoPort is combination of protocol, port, and CIDR. Protocol and port must be specified.
+ProtoPort is combination of protocol, port, and CIDR. Protocol and port must be specified.
 
 #### Attributes
 
@@ -1899,7 +1902,7 @@ r""" ProtoPort is combination of protocol, port, and CIDR. Protocol and port mus
 |**protocol** `required`|str|||
 ### CrdProjectcalicoOrgV1FelixConfigurationSpecHealthTimeoutOverridesItems0
 
-r""" crd projectcalico org v1 felix configuration spec health timeout overrides items0
+crd projectcalico org v1 felix configuration spec health timeout overrides items0
 
 #### Attributes
 
@@ -1909,7 +1912,7 @@ r""" crd projectcalico org v1 felix configuration spec health timeout overrides 
 |**timeout** `required`|str|timeout||
 ### CrdProjectcalicoOrgV1FelixConfigurationSpecRouteTableRange
 
-r""" Deprecated in favor of RouteTableRanges. Calico programs additional Linux route tables for various purposes. RouteTableRange specifies the indices of the route tables that Calico should use.
+Deprecated in favor of RouteTableRanges. Calico programs additional Linux route tables for various purposes. RouteTableRange specifies the indices of the route tables that Calico should use.
 
 #### Attributes
 
@@ -1919,7 +1922,7 @@ r""" Deprecated in favor of RouteTableRanges. Calico programs additional Linux r
 |**min** `required`|int|min||
 ### CrdProjectcalicoOrgV1FelixConfigurationSpecRouteTableRangesItems0
 
-r""" crd projectcalico org v1 felix configuration spec route table ranges items0
+crd projectcalico org v1 felix configuration spec route table ranges items0
 
 #### Attributes
 
@@ -1929,7 +1932,7 @@ r""" crd projectcalico org v1 felix configuration spec route table ranges items0
 |**min** `required`|int|min||
 ### CrdProjectcalicoOrgV1GlobalNetworkPolicySpec
 
-r""" crd projectcalico org v1 global network policy spec
+crd projectcalico org v1 global network policy spec
 
 #### Attributes
 
@@ -1947,7 +1950,7 @@ r""" crd projectcalico org v1 global network policy spec
 |**types**|[str]|Types indicates whether this policy applies to ingress, or to egress, or to both.  When not explicitly specified (and so the value on creation is empty or nil), Calico defaults Types according to what Ingress and Egress rules are present in the policy.  The default is:<br />- [ PolicyTypeIngress ], if there are no Egress rules (including the case where there are   also no Ingress rules)<br />- [ PolicyTypeEgress ], if there are Egress rules but no Ingress rules<br />- [ PolicyTypeIngress, PolicyTypeEgress ], if there are both Ingress and Egress rules.<br />When the policy is read back again, Types will always be one of these values, never empty or nil.||
 ### CrdProjectcalicoOrgV1GlobalNetworkPolicySpecEgressItems0
 
-r""" A Rule encapsulates a set of match criteria and an action.  Both selector-based security Policy and security Profiles reference rules - separated out as a list of rules for both ingress and egress packet matching. Each positive match criteria has a negated version, prefixed with "Not". All the match criteria within a rule must be satisfied for a packet to match. A single rule can contain the positive and negative version of a match and both must be satisfied for the rule to match.
+A Rule encapsulates a set of match criteria and an action.  Both selector-based security Policy and security Profiles reference rules - separated out as a list of rules for both ingress and egress packet matching. Each positive match criteria has a negated version, prefixed with "Not". All the match criteria within a rule must be satisfied for a packet to match. A single rule can contain the positive and negative version of a match and both must be satisfied for the rule to match.
 
 #### Attributes
 
@@ -1965,7 +1968,7 @@ r""" A Rule encapsulates a set of match criteria and an action.  Both selector-b
 |**source**|[CrdProjectcalicoOrgV1GlobalNetworkPolicySpecEgressItems0Source](#crdprojectcalicoorgv1globalnetworkpolicyspecegressitems0source)|source||
 ### CrdProjectcalicoOrgV1GlobalNetworkPolicySpecEgressItems0Destination
 
-r""" Destination contains the match criteria that apply to destination entity.
+Destination contains the match criteria that apply to destination entity.
 
 #### Attributes
 
@@ -1982,7 +1985,7 @@ r""" Destination contains the match criteria that apply to destination entity.
 |**services**|[CrdProjectcalicoOrgV1GlobalNetworkPolicySpecEgressItems0DestinationServices](#crdprojectcalicoorgv1globalnetworkpolicyspecegressitems0destinationservices)|services||
 ### CrdProjectcalicoOrgV1GlobalNetworkPolicySpecEgressItems0DestinationServiceAccounts
 
-r""" ServiceAccounts is an optional field that restricts the rule to only apply to traffic that originates from (or terminates at) a pod running as a matching service account.
+ServiceAccounts is an optional field that restricts the rule to only apply to traffic that originates from (or terminates at) a pod running as a matching service account.
 
 #### Attributes
 
@@ -1992,7 +1995,7 @@ r""" ServiceAccounts is an optional field that restricts the rule to only apply 
 |**selector**|str|Selector is an optional field that restricts the rule to only apply to traffic that originates from (or terminates at) a pod running as a service account that matches the given label selector. If both Names and Selector are specified then they are AND'ed.||
 ### CrdProjectcalicoOrgV1GlobalNetworkPolicySpecEgressItems0DestinationServices
 
-r""" Services is an optional field that contains options for matching Kubernetes Services. If specified, only traffic that originates from or terminates at endpoints within the selected service(s) will be matched, and only to/from each endpoint's port. Services cannot be specified on the same rule as Selector, NotSelector, NamespaceSelector, Nets, NotNets or ServiceAccounts. Ports and NotPorts can only be specified with Services on ingress rules.
+Services is an optional field that contains options for matching Kubernetes Services. If specified, only traffic that originates from or terminates at endpoints within the selected service(s) will be matched, and only to/from each endpoint's port. Services cannot be specified on the same rule as Selector, NotSelector, NamespaceSelector, Nets, NotNets or ServiceAccounts. Ports and NotPorts can only be specified with Services on ingress rules.
 
 #### Attributes
 
@@ -2002,7 +2005,7 @@ r""" Services is an optional field that contains options for matching Kubernetes
 |**namespace**|str|Namespace specifies the namespace of the given Service. If left empty, the rule will match within this policy's namespace.||
 ### CrdProjectcalicoOrgV1GlobalNetworkPolicySpecEgressItems0HTTP
 
-r""" HTTP contains match criteria that apply to HTTP requests.
+HTTP contains match criteria that apply to HTTP requests.
 
 #### Attributes
 
@@ -2012,7 +2015,7 @@ r""" HTTP contains match criteria that apply to HTTP requests.
 |**paths**|[[CrdProjectcalicoOrgV1GlobalNetworkPolicySpecEgressItems0HTTPPathsItems0](#crdprojectcalicoorgv1globalnetworkpolicyspecegressitems0httppathsitems0)]|Paths is an optional field that restricts the rule to apply to HTTP requests that use one of the listed HTTP Paths. Multiple paths are OR'd together. e.g: - exact: /foo - prefix: /bar NOTE: Each entry may ONLY specify either a `exact` or a `prefix` match. The validator will check for it.||
 ### CrdProjectcalicoOrgV1GlobalNetworkPolicySpecEgressItems0HTTPPathsItems0
 
-r""" HTTPPath specifies an HTTP path to match. It may be either of the form: exact: <path>: which matches the path exactly or prefix: <path-prefix>: which matches the path prefix
+HTTPPath specifies an HTTP path to match. It may be either of the form: exact: <path>: which matches the path exactly or prefix: <path-prefix>: which matches the path prefix
 
 #### Attributes
 
@@ -2022,7 +2025,7 @@ r""" HTTPPath specifies an HTTP path to match. It may be either of the form: exa
 |**prefix**|str|prefix||
 ### CrdProjectcalicoOrgV1GlobalNetworkPolicySpecEgressItems0Icmp
 
-r""" ICMP is an optional field that restricts the rule to apply to a specific type and code of ICMP traffic.  This should only be specified if the Protocol field is set to "ICMP" or "ICMPv6".
+ICMP is an optional field that restricts the rule to apply to a specific type and code of ICMP traffic.  This should only be specified if the Protocol field is set to "ICMP" or "ICMPv6".
 
 #### Attributes
 
@@ -2032,7 +2035,7 @@ r""" ICMP is an optional field that restricts the rule to apply to a specific ty
 |**type**|int|||
 ### CrdProjectcalicoOrgV1GlobalNetworkPolicySpecEgressItems0Metadata
 
-r""" Metadata contains additional information for this rule
+Metadata contains additional information for this rule
 
 #### Attributes
 
@@ -2041,7 +2044,7 @@ r""" Metadata contains additional information for this rule
 |**annotations**|{str:str}|Annotations is a set of key value pairs that give extra information about the rule||
 ### CrdProjectcalicoOrgV1GlobalNetworkPolicySpecEgressItems0NotICMP
 
-r""" NotICMP is the negated version of the ICMP field.
+NotICMP is the negated version of the ICMP field.
 
 #### Attributes
 
@@ -2051,7 +2054,7 @@ r""" NotICMP is the negated version of the ICMP field.
 |**type**|int|||
 ### CrdProjectcalicoOrgV1GlobalNetworkPolicySpecEgressItems0Source
 
-r""" Source contains the match criteria that apply to source entity.
+Source contains the match criteria that apply to source entity.
 
 #### Attributes
 
@@ -2068,7 +2071,7 @@ r""" Source contains the match criteria that apply to source entity.
 |**services**|[CrdProjectcalicoOrgV1GlobalNetworkPolicySpecEgressItems0SourceServices](#crdprojectcalicoorgv1globalnetworkpolicyspecegressitems0sourceservices)|services||
 ### CrdProjectcalicoOrgV1GlobalNetworkPolicySpecEgressItems0SourceServiceAccounts
 
-r""" ServiceAccounts is an optional field that restricts the rule to only apply to traffic that originates from (or terminates at) a pod running as a matching service account.
+ServiceAccounts is an optional field that restricts the rule to only apply to traffic that originates from (or terminates at) a pod running as a matching service account.
 
 #### Attributes
 
@@ -2078,7 +2081,7 @@ r""" ServiceAccounts is an optional field that restricts the rule to only apply 
 |**selector**|str|Selector is an optional field that restricts the rule to only apply to traffic that originates from (or terminates at) a pod running as a service account that matches the given label selector. If both Names and Selector are specified then they are AND'ed.||
 ### CrdProjectcalicoOrgV1GlobalNetworkPolicySpecEgressItems0SourceServices
 
-r""" Services is an optional field that contains options for matching Kubernetes Services. If specified, only traffic that originates from or terminates at endpoints within the selected service(s) will be matched, and only to/from each endpoint's port. Services cannot be specified on the same rule as Selector, NotSelector, NamespaceSelector, Nets, NotNets or ServiceAccounts. Ports and NotPorts can only be specified with Services on ingress rules.
+Services is an optional field that contains options for matching Kubernetes Services. If specified, only traffic that originates from or terminates at endpoints within the selected service(s) will be matched, and only to/from each endpoint's port. Services cannot be specified on the same rule as Selector, NotSelector, NamespaceSelector, Nets, NotNets or ServiceAccounts. Ports and NotPorts can only be specified with Services on ingress rules.
 
 #### Attributes
 
@@ -2088,7 +2091,7 @@ r""" Services is an optional field that contains options for matching Kubernetes
 |**namespace**|str|Namespace specifies the namespace of the given Service. If left empty, the rule will match within this policy's namespace.||
 ### CrdProjectcalicoOrgV1GlobalNetworkPolicySpecIngressItems0
 
-r""" A Rule encapsulates a set of match criteria and an action.  Both selector-based security Policy and security Profiles reference rules - separated out as a list of rules for both ingress and egress packet matching. Each positive match criteria has a negated version, prefixed with "Not". All the match criteria within a rule must be satisfied for a packet to match. A single rule can contain the positive and negative version of a match and both must be satisfied for the rule to match.
+A Rule encapsulates a set of match criteria and an action.  Both selector-based security Policy and security Profiles reference rules - separated out as a list of rules for both ingress and egress packet matching. Each positive match criteria has a negated version, prefixed with "Not". All the match criteria within a rule must be satisfied for a packet to match. A single rule can contain the positive and negative version of a match and both must be satisfied for the rule to match.
 
 #### Attributes
 
@@ -2106,7 +2109,7 @@ r""" A Rule encapsulates a set of match criteria and an action.  Both selector-b
 |**source**|[CrdProjectcalicoOrgV1GlobalNetworkPolicySpecIngressItems0Source](#crdprojectcalicoorgv1globalnetworkpolicyspecingressitems0source)|source||
 ### CrdProjectcalicoOrgV1GlobalNetworkPolicySpecIngressItems0Destination
 
-r""" Destination contains the match criteria that apply to destination entity.
+Destination contains the match criteria that apply to destination entity.
 
 #### Attributes
 
@@ -2123,7 +2126,7 @@ r""" Destination contains the match criteria that apply to destination entity.
 |**services**|[CrdProjectcalicoOrgV1GlobalNetworkPolicySpecIngressItems0DestinationServices](#crdprojectcalicoorgv1globalnetworkpolicyspecingressitems0destinationservices)|services||
 ### CrdProjectcalicoOrgV1GlobalNetworkPolicySpecIngressItems0DestinationServiceAccounts
 
-r""" ServiceAccounts is an optional field that restricts the rule to only apply to traffic that originates from (or terminates at) a pod running as a matching service account.
+ServiceAccounts is an optional field that restricts the rule to only apply to traffic that originates from (or terminates at) a pod running as a matching service account.
 
 #### Attributes
 
@@ -2133,7 +2136,7 @@ r""" ServiceAccounts is an optional field that restricts the rule to only apply 
 |**selector**|str|Selector is an optional field that restricts the rule to only apply to traffic that originates from (or terminates at) a pod running as a service account that matches the given label selector. If both Names and Selector are specified then they are AND'ed.||
 ### CrdProjectcalicoOrgV1GlobalNetworkPolicySpecIngressItems0DestinationServices
 
-r""" Services is an optional field that contains options for matching Kubernetes Services. If specified, only traffic that originates from or terminates at endpoints within the selected service(s) will be matched, and only to/from each endpoint's port. Services cannot be specified on the same rule as Selector, NotSelector, NamespaceSelector, Nets, NotNets or ServiceAccounts. Ports and NotPorts can only be specified with Services on ingress rules.
+Services is an optional field that contains options for matching Kubernetes Services. If specified, only traffic that originates from or terminates at endpoints within the selected service(s) will be matched, and only to/from each endpoint's port. Services cannot be specified on the same rule as Selector, NotSelector, NamespaceSelector, Nets, NotNets or ServiceAccounts. Ports and NotPorts can only be specified with Services on ingress rules.
 
 #### Attributes
 
@@ -2143,7 +2146,7 @@ r""" Services is an optional field that contains options for matching Kubernetes
 |**namespace**|str|Namespace specifies the namespace of the given Service. If left empty, the rule will match within this policy's namespace.||
 ### CrdProjectcalicoOrgV1GlobalNetworkPolicySpecIngressItems0HTTP
 
-r""" HTTP contains match criteria that apply to HTTP requests.
+HTTP contains match criteria that apply to HTTP requests.
 
 #### Attributes
 
@@ -2153,7 +2156,7 @@ r""" HTTP contains match criteria that apply to HTTP requests.
 |**paths**|[[CrdProjectcalicoOrgV1GlobalNetworkPolicySpecIngressItems0HTTPPathsItems0](#crdprojectcalicoorgv1globalnetworkpolicyspecingressitems0httppathsitems0)]|Paths is an optional field that restricts the rule to apply to HTTP requests that use one of the listed HTTP Paths. Multiple paths are OR'd together. e.g: - exact: /foo - prefix: /bar NOTE: Each entry may ONLY specify either a `exact` or a `prefix` match. The validator will check for it.||
 ### CrdProjectcalicoOrgV1GlobalNetworkPolicySpecIngressItems0HTTPPathsItems0
 
-r""" HTTPPath specifies an HTTP path to match. It may be either of the form: exact: <path>: which matches the path exactly or prefix: <path-prefix>: which matches the path prefix
+HTTPPath specifies an HTTP path to match. It may be either of the form: exact: <path>: which matches the path exactly or prefix: <path-prefix>: which matches the path prefix
 
 #### Attributes
 
@@ -2163,7 +2166,7 @@ r""" HTTPPath specifies an HTTP path to match. It may be either of the form: exa
 |**prefix**|str|prefix||
 ### CrdProjectcalicoOrgV1GlobalNetworkPolicySpecIngressItems0Icmp
 
-r""" ICMP is an optional field that restricts the rule to apply to a specific type and code of ICMP traffic.  This should only be specified if the Protocol field is set to "ICMP" or "ICMPv6".
+ICMP is an optional field that restricts the rule to apply to a specific type and code of ICMP traffic.  This should only be specified if the Protocol field is set to "ICMP" or "ICMPv6".
 
 #### Attributes
 
@@ -2173,7 +2176,7 @@ r""" ICMP is an optional field that restricts the rule to apply to a specific ty
 |**type**|int|||
 ### CrdProjectcalicoOrgV1GlobalNetworkPolicySpecIngressItems0Metadata
 
-r""" Metadata contains additional information for this rule
+Metadata contains additional information for this rule
 
 #### Attributes
 
@@ -2182,7 +2185,7 @@ r""" Metadata contains additional information for this rule
 |**annotations**|{str:str}|Annotations is a set of key value pairs that give extra information about the rule||
 ### CrdProjectcalicoOrgV1GlobalNetworkPolicySpecIngressItems0NotICMP
 
-r""" NotICMP is the negated version of the ICMP field.
+NotICMP is the negated version of the ICMP field.
 
 #### Attributes
 
@@ -2192,7 +2195,7 @@ r""" NotICMP is the negated version of the ICMP field.
 |**type**|int|||
 ### CrdProjectcalicoOrgV1GlobalNetworkPolicySpecIngressItems0Source
 
-r""" Source contains the match criteria that apply to source entity.
+Source contains the match criteria that apply to source entity.
 
 #### Attributes
 
@@ -2209,7 +2212,7 @@ r""" Source contains the match criteria that apply to source entity.
 |**services**|[CrdProjectcalicoOrgV1GlobalNetworkPolicySpecIngressItems0SourceServices](#crdprojectcalicoorgv1globalnetworkpolicyspecingressitems0sourceservices)|services||
 ### CrdProjectcalicoOrgV1GlobalNetworkPolicySpecIngressItems0SourceServiceAccounts
 
-r""" ServiceAccounts is an optional field that restricts the rule to only apply to traffic that originates from (or terminates at) a pod running as a matching service account.
+ServiceAccounts is an optional field that restricts the rule to only apply to traffic that originates from (or terminates at) a pod running as a matching service account.
 
 #### Attributes
 
@@ -2219,7 +2222,7 @@ r""" ServiceAccounts is an optional field that restricts the rule to only apply 
 |**selector**|str|Selector is an optional field that restricts the rule to only apply to traffic that originates from (or terminates at) a pod running as a service account that matches the given label selector. If both Names and Selector are specified then they are AND'ed.||
 ### CrdProjectcalicoOrgV1GlobalNetworkPolicySpecIngressItems0SourceServices
 
-r""" Services is an optional field that contains options for matching Kubernetes Services. If specified, only traffic that originates from or terminates at endpoints within the selected service(s) will be matched, and only to/from each endpoint's port. Services cannot be specified on the same rule as Selector, NotSelector, NamespaceSelector, Nets, NotNets or ServiceAccounts. Ports and NotPorts can only be specified with Services on ingress rules.
+Services is an optional field that contains options for matching Kubernetes Services. If specified, only traffic that originates from or terminates at endpoints within the selected service(s) will be matched, and only to/from each endpoint's port. Services cannot be specified on the same rule as Selector, NotSelector, NamespaceSelector, Nets, NotNets or ServiceAccounts. Ports and NotPorts can only be specified with Services on ingress rules.
 
 #### Attributes
 
@@ -2229,7 +2232,7 @@ r""" Services is an optional field that contains options for matching Kubernetes
 |**namespace**|str|Namespace specifies the namespace of the given Service. If left empty, the rule will match within this policy's namespace.||
 ### CrdProjectcalicoOrgV1GlobalNetworkSetSpec
 
-r""" GlobalNetworkSetSpec contains the specification for a NetworkSet resource.
+GlobalNetworkSetSpec contains the specification for a NetworkSet resource.
 
 #### Attributes
 
@@ -2238,7 +2241,7 @@ r""" GlobalNetworkSetSpec contains the specification for a NetworkSet resource.
 |**nets**|[str]|The list of IP networks that belong to this set.||
 ### CrdProjectcalicoOrgV1HostEndpointSpec
 
-r""" HostEndpointSpec contains the specification for a HostEndpoint resource.
+HostEndpointSpec contains the specification for a HostEndpoint resource.
 
 #### Attributes
 
@@ -2251,7 +2254,7 @@ r""" HostEndpointSpec contains the specification for a HostEndpoint resource.
 |**profiles**|[str]|A list of identifiers of security Profile objects that apply to this endpoint. Each profile is applied in the order that they appear in this list.  Profile rules are applied after the selector-based security policy.||
 ### CrdProjectcalicoOrgV1HostEndpointSpecPortsItems0
 
-r""" crd projectcalico org v1 host endpoint spec ports items0
+crd projectcalico org v1 host endpoint spec ports items0
 
 #### Attributes
 
@@ -2262,7 +2265,7 @@ r""" crd projectcalico org v1 host endpoint spec ports items0
 |**protocol** `required`|int | str|||
 ### CrdProjectcalicoOrgV1IPAMBlockSpec
 
-r""" IPAMBlockSpec contains the specification for an IPAMBlock resource.
+IPAMBlockSpec contains the specification for an IPAMBlock resource.
 
 #### Attributes
 
@@ -2279,7 +2282,7 @@ r""" IPAMBlockSpec contains the specification for an IPAMBlock resource.
 |**unallocated** `required`|[int]|Unallocated is an ordered list of allocations which are free in the block.||
 ### CrdProjectcalicoOrgV1IPAMBlockSpecAttributesItems0
 
-r""" crd projectcalico org v1 IP a m block spec attributes items0
+crd projectcalico org v1 IP a m block spec attributes items0
 
 #### Attributes
 
@@ -2289,7 +2292,7 @@ r""" crd projectcalico org v1 IP a m block spec attributes items0
 |**secondary**|{str:str}|secondary||
 ### CrdProjectcalicoOrgV1IPAMConfigSpec
 
-r""" IPAMConfigSpec contains the specification for an IPAMConfig resource.
+IPAMConfigSpec contains the specification for an IPAMConfig resource.
 
 #### Attributes
 
@@ -2300,7 +2303,7 @@ r""" IPAMConfigSpec contains the specification for an IPAMConfig resource.
 |**strictAffinity** `required`|bool|strict affinity||
 ### CrdProjectcalicoOrgV1IPAMHandleSpec
 
-r""" IPAMHandleSpec contains the specification for an IPAMHandle resource.
+IPAMHandleSpec contains the specification for an IPAMHandle resource.
 
 #### Attributes
 
@@ -2311,7 +2314,7 @@ r""" IPAMHandleSpec contains the specification for an IPAMHandle resource.
 |**handleID** `required`|str|handle ID||
 ### CrdProjectcalicoOrgV1IPPoolSpec
 
-r""" IPPoolSpec contains the specification for an IPPool resource.
+IPPoolSpec contains the specification for an IPPool resource.
 
 #### Attributes
 
@@ -2324,13 +2327,13 @@ r""" IPPoolSpec contains the specification for an IPPool resource.
 |**disabled**|bool|When disabled is true, Calico IPAM will not assign addresses from this pool.||
 |**ipip**|[CrdProjectcalicoOrgV1IPPoolSpecIpip](#crdprojectcalicoorgv1ippoolspecipip)|ipip||
 |**ipipMode**|str|Contains configuration for IPIP tunneling for this pool. If not specified, then this is defaulted to "Never" (i.e. IPIP tunneling is disabled).||
+|**nat-outgoing**|bool|||
 |**natOutgoing**|bool|When natOutgoing is true, packets sent from Calico networked containers in this pool to destinations outside of this pool will be masqueraded.||
-|**nat_outgoing**|bool|Deprecated: this field is only used for APIv1 backwards compatibility. Setting this field is not allowed, this field is for internal use only.||
 |**nodeSelector**|str|Allows IPPool to allocate for a specific node by label selector.||
 |**vxlanMode**|str|Contains configuration for VXLAN tunneling for this pool. If not specified, then this is defaulted to "Never" (i.e. VXLAN tunneling is disabled).||
 ### CrdProjectcalicoOrgV1IPPoolSpecIpip
 
-r""" Deprecated: this field is only used for APIv1 backwards compatibility. Setting this field is not allowed, this field is for internal use only.
+Deprecated: this field is only used for APIv1 backwards compatibility. Setting this field is not allowed, this field is for internal use only.
 
 #### Attributes
 
@@ -2340,7 +2343,7 @@ r""" Deprecated: this field is only used for APIv1 backwards compatibility. Sett
 |**mode**|str|The IPIP mode.  This can be one of "always" or "cross-subnet".  A mode of "always" will also use IPIP tunneling for routing to destination IP addresses within this pool.  A mode of "cross-subnet" will only use IPIP tunneling when the destination node is on a different subnet to the originating node.  The default value (if not specified) is "always".||
 ### CrdProjectcalicoOrgV1IPReservationSpec
 
-r""" IPReservationSpec contains the specification for an IPReservation resource.
+IPReservationSpec contains the specification for an IPReservation resource.
 
 #### Attributes
 
@@ -2349,7 +2352,7 @@ r""" IPReservationSpec contains the specification for an IPReservation resource.
 |**reservedCIDRs**|[str]|ReservedCIDRs is a list of CIDRs and/or IP addresses that Calico IPAM will exclude from new allocations.||
 ### CrdProjectcalicoOrgV1KubeControllersConfigurationSpec
 
-r""" KubeControllersConfigurationSpec contains the values of the Kubernetes controllers configuration.
+KubeControllersConfigurationSpec contains the values of the Kubernetes controllers configuration.
 
 #### Attributes
 
@@ -2363,7 +2366,7 @@ r""" KubeControllersConfigurationSpec contains the values of the Kubernetes cont
 |**prometheusMetricsPort**|int|PrometheusMetricsPort is the TCP port that the Prometheus metrics server should bind to. Set to 0 to disable. [Default: 9094]||
 ### CrdProjectcalicoOrgV1KubeControllersConfigurationSpecControllers
 
-r""" Controllers enables and configures individual Kubernetes controllers
+Controllers enables and configures individual Kubernetes controllers
 
 #### Attributes
 
@@ -2376,7 +2379,7 @@ r""" Controllers enables and configures individual Kubernetes controllers
 |**workloadEndpoint**|[CrdProjectcalicoOrgV1KubeControllersConfigurationSpecControllersWorkloadEndpoint](#crdprojectcalicoorgv1kubecontrollersconfigurationspeccontrollersworkloadendpoint)|workload endpoint||
 ### CrdProjectcalicoOrgV1KubeControllersConfigurationSpecControllersNamespace
 
-r""" Namespace enables and configures the namespace controller. Enabled by default, set to nil to disable.
+Namespace enables and configures the namespace controller. Enabled by default, set to nil to disable.
 
 #### Attributes
 
@@ -2385,7 +2388,7 @@ r""" Namespace enables and configures the namespace controller. Enabled by defau
 |**reconcilerPeriod**|str|ReconcilerPeriod is the period to perform reconciliation with the Calico datastore. [Default: 5m]||
 ### CrdProjectcalicoOrgV1KubeControllersConfigurationSpecControllersNode
 
-r""" Node enables and configures the node controller. Enabled by default, set to nil to disable.
+Node enables and configures the node controller. Enabled by default, set to nil to disable.
 
 #### Attributes
 
@@ -2397,7 +2400,7 @@ r""" Node enables and configures the node controller. Enabled by default, set to
 |**syncLabels**|str|SyncLabels controls whether to copy Kubernetes node labels to Calico nodes. [Default: Enabled]||
 ### CrdProjectcalicoOrgV1KubeControllersConfigurationSpecControllersNodeHostEndpoint
 
-r""" HostEndpoint controls syncing nodes to host endpoints. Disabled by default, set to nil to disable.
+HostEndpoint controls syncing nodes to host endpoints. Disabled by default, set to nil to disable.
 
 #### Attributes
 
@@ -2406,7 +2409,7 @@ r""" HostEndpoint controls syncing nodes to host endpoints. Disabled by default,
 |**autoCreate**|str|AutoCreate enables automatic creation of host endpoints for every node. [Default: Disabled]||
 ### CrdProjectcalicoOrgV1KubeControllersConfigurationSpecControllersPolicy
 
-r""" Policy enables and configures the policy controller. Enabled by default, set to nil to disable.
+Policy enables and configures the policy controller. Enabled by default, set to nil to disable.
 
 #### Attributes
 
@@ -2415,7 +2418,7 @@ r""" Policy enables and configures the policy controller. Enabled by default, se
 |**reconcilerPeriod**|str|ReconcilerPeriod is the period to perform reconciliation with the Calico datastore. [Default: 5m]||
 ### CrdProjectcalicoOrgV1KubeControllersConfigurationSpecControllersServiceAccount
 
-r""" ServiceAccount enables and configures the service account controller. Enabled by default, set to nil to disable.
+ServiceAccount enables and configures the service account controller. Enabled by default, set to nil to disable.
 
 #### Attributes
 
@@ -2424,7 +2427,7 @@ r""" ServiceAccount enables and configures the service account controller. Enabl
 |**reconcilerPeriod**|str|ReconcilerPeriod is the period to perform reconciliation with the Calico datastore. [Default: 5m]||
 ### CrdProjectcalicoOrgV1KubeControllersConfigurationSpecControllersWorkloadEndpoint
 
-r""" WorkloadEndpoint enables and configures the workload endpoint controller. Enabled by default, set to nil to disable.
+WorkloadEndpoint enables and configures the workload endpoint controller. Enabled by default, set to nil to disable.
 
 #### Attributes
 
@@ -2433,7 +2436,7 @@ r""" WorkloadEndpoint enables and configures the workload endpoint controller. E
 |**reconcilerPeriod**|str|ReconcilerPeriod is the period to perform reconciliation with the Calico datastore. [Default: 5m]||
 ### CrdProjectcalicoOrgV1KubeControllersConfigurationStatus
 
-r""" KubeControllersConfigurationStatus represents the status of the configuration. It's useful for admins to be able to see the actual config that was applied, which can be modified by environment variables on the kube-controllers process.
+KubeControllersConfigurationStatus represents the status of the configuration. It's useful for admins to be able to see the actual config that was applied, which can be modified by environment variables on the kube-controllers process.
 
 #### Attributes
 
@@ -2443,7 +2446,7 @@ r""" KubeControllersConfigurationStatus represents the status of the configurati
 |**runningConfig**|[CrdProjectcalicoOrgV1KubeControllersConfigurationStatusRunningConfig](#crdprojectcalicoorgv1kubecontrollersconfigurationstatusrunningconfig)|running config||
 ### CrdProjectcalicoOrgV1KubeControllersConfigurationStatusRunningConfig
 
-r""" RunningConfig contains the effective config that is running in the kube-controllers pod, after merging the API resource with any environment variables.
+RunningConfig contains the effective config that is running in the kube-controllers pod, after merging the API resource with any environment variables.
 
 #### Attributes
 
@@ -2457,7 +2460,7 @@ r""" RunningConfig contains the effective config that is running in the kube-con
 |**prometheusMetricsPort**|int|PrometheusMetricsPort is the TCP port that the Prometheus metrics server should bind to. Set to 0 to disable. [Default: 9094]||
 ### CrdProjectcalicoOrgV1KubeControllersConfigurationStatusRunningConfigControllers
 
-r""" Controllers enables and configures individual Kubernetes controllers
+Controllers enables and configures individual Kubernetes controllers
 
 #### Attributes
 
@@ -2470,7 +2473,7 @@ r""" Controllers enables and configures individual Kubernetes controllers
 |**workloadEndpoint**|[CrdProjectcalicoOrgV1KubeControllersConfigurationStatusRunningConfigControllersWorkloadEndpoint](#crdprojectcalicoorgv1kubecontrollersconfigurationstatusrunningconfigcontrollersworkloadendpoint)|workload endpoint||
 ### CrdProjectcalicoOrgV1KubeControllersConfigurationStatusRunningConfigControllersNamespace
 
-r""" Namespace enables and configures the namespace controller. Enabled by default, set to nil to disable.
+Namespace enables and configures the namespace controller. Enabled by default, set to nil to disable.
 
 #### Attributes
 
@@ -2479,7 +2482,7 @@ r""" Namespace enables and configures the namespace controller. Enabled by defau
 |**reconcilerPeriod**|str|ReconcilerPeriod is the period to perform reconciliation with the Calico datastore. [Default: 5m]||
 ### CrdProjectcalicoOrgV1KubeControllersConfigurationStatusRunningConfigControllersNode
 
-r""" Node enables and configures the node controller. Enabled by default, set to nil to disable.
+Node enables and configures the node controller. Enabled by default, set to nil to disable.
 
 #### Attributes
 
@@ -2491,7 +2494,7 @@ r""" Node enables and configures the node controller. Enabled by default, set to
 |**syncLabels**|str|SyncLabels controls whether to copy Kubernetes node labels to Calico nodes. [Default: Enabled]||
 ### CrdProjectcalicoOrgV1KubeControllersConfigurationStatusRunningConfigControllersNodeHostEndpoint
 
-r""" HostEndpoint controls syncing nodes to host endpoints. Disabled by default, set to nil to disable.
+HostEndpoint controls syncing nodes to host endpoints. Disabled by default, set to nil to disable.
 
 #### Attributes
 
@@ -2500,7 +2503,7 @@ r""" HostEndpoint controls syncing nodes to host endpoints. Disabled by default,
 |**autoCreate**|str|AutoCreate enables automatic creation of host endpoints for every node. [Default: Disabled]||
 ### CrdProjectcalicoOrgV1KubeControllersConfigurationStatusRunningConfigControllersPolicy
 
-r""" Policy enables and configures the policy controller. Enabled by default, set to nil to disable.
+Policy enables and configures the policy controller. Enabled by default, set to nil to disable.
 
 #### Attributes
 
@@ -2509,7 +2512,7 @@ r""" Policy enables and configures the policy controller. Enabled by default, se
 |**reconcilerPeriod**|str|ReconcilerPeriod is the period to perform reconciliation with the Calico datastore. [Default: 5m]||
 ### CrdProjectcalicoOrgV1KubeControllersConfigurationStatusRunningConfigControllersServiceAccount
 
-r""" ServiceAccount enables and configures the service account controller. Enabled by default, set to nil to disable.
+ServiceAccount enables and configures the service account controller. Enabled by default, set to nil to disable.
 
 #### Attributes
 
@@ -2518,7 +2521,7 @@ r""" ServiceAccount enables and configures the service account controller. Enabl
 |**reconcilerPeriod**|str|ReconcilerPeriod is the period to perform reconciliation with the Calico datastore. [Default: 5m]||
 ### CrdProjectcalicoOrgV1KubeControllersConfigurationStatusRunningConfigControllersWorkloadEndpoint
 
-r""" WorkloadEndpoint enables and configures the workload endpoint controller. Enabled by default, set to nil to disable.
+WorkloadEndpoint enables and configures the workload endpoint controller. Enabled by default, set to nil to disable.
 
 #### Attributes
 
@@ -2527,7 +2530,7 @@ r""" WorkloadEndpoint enables and configures the workload endpoint controller. E
 |**reconcilerPeriod**|str|ReconcilerPeriod is the period to perform reconciliation with the Calico datastore. [Default: 5m]||
 ### CrdProjectcalicoOrgV1NetworkPolicySpec
 
-r""" crd projectcalico org v1 network policy spec
+crd projectcalico org v1 network policy spec
 
 #### Attributes
 
@@ -2541,7 +2544,7 @@ r""" crd projectcalico org v1 network policy spec
 |**types**|[str]|Types indicates whether this policy applies to ingress, or to egress, or to both.  When not explicitly specified (and so the value on creation is empty or nil), Calico defaults Types according to what Ingress and Egress are present in the policy.  The default is:<br />- [ PolicyTypeIngress ], if there are no Egress rules (including the case where there are   also no Ingress rules)<br />- [ PolicyTypeEgress ], if there are Egress rules but no Ingress rules<br />- [ PolicyTypeIngress, PolicyTypeEgress ], if there are both Ingress and Egress rules.<br />When the policy is read back again, Types will always be one of these values, never empty or nil.||
 ### CrdProjectcalicoOrgV1NetworkPolicySpecEgressItems0
 
-r""" A Rule encapsulates a set of match criteria and an action.  Both selector-based security Policy and security Profiles reference rules - separated out as a list of rules for both ingress and egress packet matching. Each positive match criteria has a negated version, prefixed with "Not". All the match criteria within a rule must be satisfied for a packet to match. A single rule can contain the positive and negative version of a match and both must be satisfied for the rule to match.
+A Rule encapsulates a set of match criteria and an action.  Both selector-based security Policy and security Profiles reference rules - separated out as a list of rules for both ingress and egress packet matching. Each positive match criteria has a negated version, prefixed with "Not". All the match criteria within a rule must be satisfied for a packet to match. A single rule can contain the positive and negative version of a match and both must be satisfied for the rule to match.
 
 #### Attributes
 
@@ -2559,7 +2562,7 @@ r""" A Rule encapsulates a set of match criteria and an action.  Both selector-b
 |**source**|[CrdProjectcalicoOrgV1NetworkPolicySpecEgressItems0Source](#crdprojectcalicoorgv1networkpolicyspecegressitems0source)|source||
 ### CrdProjectcalicoOrgV1NetworkPolicySpecEgressItems0Destination
 
-r""" Destination contains the match criteria that apply to destination entity.
+Destination contains the match criteria that apply to destination entity.
 
 #### Attributes
 
@@ -2576,7 +2579,7 @@ r""" Destination contains the match criteria that apply to destination entity.
 |**services**|[CrdProjectcalicoOrgV1NetworkPolicySpecEgressItems0DestinationServices](#crdprojectcalicoorgv1networkpolicyspecegressitems0destinationservices)|services||
 ### CrdProjectcalicoOrgV1NetworkPolicySpecEgressItems0DestinationServiceAccounts
 
-r""" ServiceAccounts is an optional field that restricts the rule to only apply to traffic that originates from (or terminates at) a pod running as a matching service account.
+ServiceAccounts is an optional field that restricts the rule to only apply to traffic that originates from (or terminates at) a pod running as a matching service account.
 
 #### Attributes
 
@@ -2586,7 +2589,7 @@ r""" ServiceAccounts is an optional field that restricts the rule to only apply 
 |**selector**|str|Selector is an optional field that restricts the rule to only apply to traffic that originates from (or terminates at) a pod running as a service account that matches the given label selector. If both Names and Selector are specified then they are AND'ed.||
 ### CrdProjectcalicoOrgV1NetworkPolicySpecEgressItems0DestinationServices
 
-r""" Services is an optional field that contains options for matching Kubernetes Services. If specified, only traffic that originates from or terminates at endpoints within the selected service(s) will be matched, and only to/from each endpoint's port. Services cannot be specified on the same rule as Selector, NotSelector, NamespaceSelector, Nets, NotNets or ServiceAccounts. Ports and NotPorts can only be specified with Services on ingress rules.
+Services is an optional field that contains options for matching Kubernetes Services. If specified, only traffic that originates from or terminates at endpoints within the selected service(s) will be matched, and only to/from each endpoint's port. Services cannot be specified on the same rule as Selector, NotSelector, NamespaceSelector, Nets, NotNets or ServiceAccounts. Ports and NotPorts can only be specified with Services on ingress rules.
 
 #### Attributes
 
@@ -2596,7 +2599,7 @@ r""" Services is an optional field that contains options for matching Kubernetes
 |**namespace**|str|Namespace specifies the namespace of the given Service. If left empty, the rule will match within this policy's namespace.||
 ### CrdProjectcalicoOrgV1NetworkPolicySpecEgressItems0HTTP
 
-r""" HTTP contains match criteria that apply to HTTP requests.
+HTTP contains match criteria that apply to HTTP requests.
 
 #### Attributes
 
@@ -2606,7 +2609,7 @@ r""" HTTP contains match criteria that apply to HTTP requests.
 |**paths**|[[CrdProjectcalicoOrgV1NetworkPolicySpecEgressItems0HTTPPathsItems0](#crdprojectcalicoorgv1networkpolicyspecegressitems0httppathsitems0)]|Paths is an optional field that restricts the rule to apply to HTTP requests that use one of the listed HTTP Paths. Multiple paths are OR'd together. e.g: - exact: /foo - prefix: /bar NOTE: Each entry may ONLY specify either a `exact` or a `prefix` match. The validator will check for it.||
 ### CrdProjectcalicoOrgV1NetworkPolicySpecEgressItems0HTTPPathsItems0
 
-r""" HTTPPath specifies an HTTP path to match. It may be either of the form: exact: <path>: which matches the path exactly or prefix: <path-prefix>: which matches the path prefix
+HTTPPath specifies an HTTP path to match. It may be either of the form: exact: <path>: which matches the path exactly or prefix: <path-prefix>: which matches the path prefix
 
 #### Attributes
 
@@ -2616,7 +2619,7 @@ r""" HTTPPath specifies an HTTP path to match. It may be either of the form: exa
 |**prefix**|str|prefix||
 ### CrdProjectcalicoOrgV1NetworkPolicySpecEgressItems0Icmp
 
-r""" ICMP is an optional field that restricts the rule to apply to a specific type and code of ICMP traffic.  This should only be specified if the Protocol field is set to "ICMP" or "ICMPv6".
+ICMP is an optional field that restricts the rule to apply to a specific type and code of ICMP traffic.  This should only be specified if the Protocol field is set to "ICMP" or "ICMPv6".
 
 #### Attributes
 
@@ -2626,7 +2629,7 @@ r""" ICMP is an optional field that restricts the rule to apply to a specific ty
 |**type**|int|||
 ### CrdProjectcalicoOrgV1NetworkPolicySpecEgressItems0Metadata
 
-r""" Metadata contains additional information for this rule
+Metadata contains additional information for this rule
 
 #### Attributes
 
@@ -2635,7 +2638,7 @@ r""" Metadata contains additional information for this rule
 |**annotations**|{str:str}|Annotations is a set of key value pairs that give extra information about the rule||
 ### CrdProjectcalicoOrgV1NetworkPolicySpecEgressItems0NotICMP
 
-r""" NotICMP is the negated version of the ICMP field.
+NotICMP is the negated version of the ICMP field.
 
 #### Attributes
 
@@ -2645,7 +2648,7 @@ r""" NotICMP is the negated version of the ICMP field.
 |**type**|int|||
 ### CrdProjectcalicoOrgV1NetworkPolicySpecEgressItems0Source
 
-r""" Source contains the match criteria that apply to source entity.
+Source contains the match criteria that apply to source entity.
 
 #### Attributes
 
@@ -2662,7 +2665,7 @@ r""" Source contains the match criteria that apply to source entity.
 |**services**|[CrdProjectcalicoOrgV1NetworkPolicySpecEgressItems0SourceServices](#crdprojectcalicoorgv1networkpolicyspecegressitems0sourceservices)|services||
 ### CrdProjectcalicoOrgV1NetworkPolicySpecEgressItems0SourceServiceAccounts
 
-r""" ServiceAccounts is an optional field that restricts the rule to only apply to traffic that originates from (or terminates at) a pod running as a matching service account.
+ServiceAccounts is an optional field that restricts the rule to only apply to traffic that originates from (or terminates at) a pod running as a matching service account.
 
 #### Attributes
 
@@ -2672,7 +2675,7 @@ r""" ServiceAccounts is an optional field that restricts the rule to only apply 
 |**selector**|str|Selector is an optional field that restricts the rule to only apply to traffic that originates from (or terminates at) a pod running as a service account that matches the given label selector. If both Names and Selector are specified then they are AND'ed.||
 ### CrdProjectcalicoOrgV1NetworkPolicySpecEgressItems0SourceServices
 
-r""" Services is an optional field that contains options for matching Kubernetes Services. If specified, only traffic that originates from or terminates at endpoints within the selected service(s) will be matched, and only to/from each endpoint's port. Services cannot be specified on the same rule as Selector, NotSelector, NamespaceSelector, Nets, NotNets or ServiceAccounts. Ports and NotPorts can only be specified with Services on ingress rules.
+Services is an optional field that contains options for matching Kubernetes Services. If specified, only traffic that originates from or terminates at endpoints within the selected service(s) will be matched, and only to/from each endpoint's port. Services cannot be specified on the same rule as Selector, NotSelector, NamespaceSelector, Nets, NotNets or ServiceAccounts. Ports and NotPorts can only be specified with Services on ingress rules.
 
 #### Attributes
 
@@ -2682,7 +2685,7 @@ r""" Services is an optional field that contains options for matching Kubernetes
 |**namespace**|str|Namespace specifies the namespace of the given Service. If left empty, the rule will match within this policy's namespace.||
 ### CrdProjectcalicoOrgV1NetworkPolicySpecIngressItems0
 
-r""" A Rule encapsulates a set of match criteria and an action.  Both selector-based security Policy and security Profiles reference rules - separated out as a list of rules for both ingress and egress packet matching. Each positive match criteria has a negated version, prefixed with "Not". All the match criteria within a rule must be satisfied for a packet to match. A single rule can contain the positive and negative version of a match and both must be satisfied for the rule to match.
+A Rule encapsulates a set of match criteria and an action.  Both selector-based security Policy and security Profiles reference rules - separated out as a list of rules for both ingress and egress packet matching. Each positive match criteria has a negated version, prefixed with "Not". All the match criteria within a rule must be satisfied for a packet to match. A single rule can contain the positive and negative version of a match and both must be satisfied for the rule to match.
 
 #### Attributes
 
@@ -2700,7 +2703,7 @@ r""" A Rule encapsulates a set of match criteria and an action.  Both selector-b
 |**source**|[CrdProjectcalicoOrgV1NetworkPolicySpecIngressItems0Source](#crdprojectcalicoorgv1networkpolicyspecingressitems0source)|source||
 ### CrdProjectcalicoOrgV1NetworkPolicySpecIngressItems0Destination
 
-r""" Destination contains the match criteria that apply to destination entity.
+Destination contains the match criteria that apply to destination entity.
 
 #### Attributes
 
@@ -2717,7 +2720,7 @@ r""" Destination contains the match criteria that apply to destination entity.
 |**services**|[CrdProjectcalicoOrgV1NetworkPolicySpecIngressItems0DestinationServices](#crdprojectcalicoorgv1networkpolicyspecingressitems0destinationservices)|services||
 ### CrdProjectcalicoOrgV1NetworkPolicySpecIngressItems0DestinationServiceAccounts
 
-r""" ServiceAccounts is an optional field that restricts the rule to only apply to traffic that originates from (or terminates at) a pod running as a matching service account.
+ServiceAccounts is an optional field that restricts the rule to only apply to traffic that originates from (or terminates at) a pod running as a matching service account.
 
 #### Attributes
 
@@ -2727,7 +2730,7 @@ r""" ServiceAccounts is an optional field that restricts the rule to only apply 
 |**selector**|str|Selector is an optional field that restricts the rule to only apply to traffic that originates from (or terminates at) a pod running as a service account that matches the given label selector. If both Names and Selector are specified then they are AND'ed.||
 ### CrdProjectcalicoOrgV1NetworkPolicySpecIngressItems0DestinationServices
 
-r""" Services is an optional field that contains options for matching Kubernetes Services. If specified, only traffic that originates from or terminates at endpoints within the selected service(s) will be matched, and only to/from each endpoint's port. Services cannot be specified on the same rule as Selector, NotSelector, NamespaceSelector, Nets, NotNets or ServiceAccounts. Ports and NotPorts can only be specified with Services on ingress rules.
+Services is an optional field that contains options for matching Kubernetes Services. If specified, only traffic that originates from or terminates at endpoints within the selected service(s) will be matched, and only to/from each endpoint's port. Services cannot be specified on the same rule as Selector, NotSelector, NamespaceSelector, Nets, NotNets or ServiceAccounts. Ports and NotPorts can only be specified with Services on ingress rules.
 
 #### Attributes
 
@@ -2737,7 +2740,7 @@ r""" Services is an optional field that contains options for matching Kubernetes
 |**namespace**|str|Namespace specifies the namespace of the given Service. If left empty, the rule will match within this policy's namespace.||
 ### CrdProjectcalicoOrgV1NetworkPolicySpecIngressItems0HTTP
 
-r""" HTTP contains match criteria that apply to HTTP requests.
+HTTP contains match criteria that apply to HTTP requests.
 
 #### Attributes
 
@@ -2747,7 +2750,7 @@ r""" HTTP contains match criteria that apply to HTTP requests.
 |**paths**|[[CrdProjectcalicoOrgV1NetworkPolicySpecIngressItems0HTTPPathsItems0](#crdprojectcalicoorgv1networkpolicyspecingressitems0httppathsitems0)]|Paths is an optional field that restricts the rule to apply to HTTP requests that use one of the listed HTTP Paths. Multiple paths are OR'd together. e.g: - exact: /foo - prefix: /bar NOTE: Each entry may ONLY specify either a `exact` or a `prefix` match. The validator will check for it.||
 ### CrdProjectcalicoOrgV1NetworkPolicySpecIngressItems0HTTPPathsItems0
 
-r""" HTTPPath specifies an HTTP path to match. It may be either of the form: exact: <path>: which matches the path exactly or prefix: <path-prefix>: which matches the path prefix
+HTTPPath specifies an HTTP path to match. It may be either of the form: exact: <path>: which matches the path exactly or prefix: <path-prefix>: which matches the path prefix
 
 #### Attributes
 
@@ -2757,7 +2760,7 @@ r""" HTTPPath specifies an HTTP path to match. It may be either of the form: exa
 |**prefix**|str|prefix||
 ### CrdProjectcalicoOrgV1NetworkPolicySpecIngressItems0Icmp
 
-r""" ICMP is an optional field that restricts the rule to apply to a specific type and code of ICMP traffic.  This should only be specified if the Protocol field is set to "ICMP" or "ICMPv6".
+ICMP is an optional field that restricts the rule to apply to a specific type and code of ICMP traffic.  This should only be specified if the Protocol field is set to "ICMP" or "ICMPv6".
 
 #### Attributes
 
@@ -2767,7 +2770,7 @@ r""" ICMP is an optional field that restricts the rule to apply to a specific ty
 |**type**|int|||
 ### CrdProjectcalicoOrgV1NetworkPolicySpecIngressItems0Metadata
 
-r""" Metadata contains additional information for this rule
+Metadata contains additional information for this rule
 
 #### Attributes
 
@@ -2776,7 +2779,7 @@ r""" Metadata contains additional information for this rule
 |**annotations**|{str:str}|Annotations is a set of key value pairs that give extra information about the rule||
 ### CrdProjectcalicoOrgV1NetworkPolicySpecIngressItems0NotICMP
 
-r""" NotICMP is the negated version of the ICMP field.
+NotICMP is the negated version of the ICMP field.
 
 #### Attributes
 
@@ -2786,7 +2789,7 @@ r""" NotICMP is the negated version of the ICMP field.
 |**type**|int|||
 ### CrdProjectcalicoOrgV1NetworkPolicySpecIngressItems0Source
 
-r""" Source contains the match criteria that apply to source entity.
+Source contains the match criteria that apply to source entity.
 
 #### Attributes
 
@@ -2803,7 +2806,7 @@ r""" Source contains the match criteria that apply to source entity.
 |**services**|[CrdProjectcalicoOrgV1NetworkPolicySpecIngressItems0SourceServices](#crdprojectcalicoorgv1networkpolicyspecingressitems0sourceservices)|services||
 ### CrdProjectcalicoOrgV1NetworkPolicySpecIngressItems0SourceServiceAccounts
 
-r""" ServiceAccounts is an optional field that restricts the rule to only apply to traffic that originates from (or terminates at) a pod running as a matching service account.
+ServiceAccounts is an optional field that restricts the rule to only apply to traffic that originates from (or terminates at) a pod running as a matching service account.
 
 #### Attributes
 
@@ -2813,7 +2816,7 @@ r""" ServiceAccounts is an optional field that restricts the rule to only apply 
 |**selector**|str|Selector is an optional field that restricts the rule to only apply to traffic that originates from (or terminates at) a pod running as a service account that matches the given label selector. If both Names and Selector are specified then they are AND'ed.||
 ### CrdProjectcalicoOrgV1NetworkPolicySpecIngressItems0SourceServices
 
-r""" Services is an optional field that contains options for matching Kubernetes Services. If specified, only traffic that originates from or terminates at endpoints within the selected service(s) will be matched, and only to/from each endpoint's port. Services cannot be specified on the same rule as Selector, NotSelector, NamespaceSelector, Nets, NotNets or ServiceAccounts. Ports and NotPorts can only be specified with Services on ingress rules.
+Services is an optional field that contains options for matching Kubernetes Services. If specified, only traffic that originates from or terminates at endpoints within the selected service(s) will be matched, and only to/from each endpoint's port. Services cannot be specified on the same rule as Selector, NotSelector, NamespaceSelector, Nets, NotNets or ServiceAccounts. Ports and NotPorts can only be specified with Services on ingress rules.
 
 #### Attributes
 
@@ -2823,7 +2826,7 @@ r""" Services is an optional field that contains options for matching Kubernetes
 |**namespace**|str|Namespace specifies the namespace of the given Service. If left empty, the rule will match within this policy's namespace.||
 ### CrdProjectcalicoOrgV1NetworkSetSpec
 
-r""" NetworkSetSpec contains the specification for a NetworkSet resource.
+NetworkSetSpec contains the specification for a NetworkSet resource.
 
 #### Attributes
 
@@ -2832,7 +2835,7 @@ r""" NetworkSetSpec contains the specification for a NetworkSet resource.
 |**nets**|[str]|The list of IP networks that belong to this set.||
 ### FelixConfiguration
 
-r""" Felix Configuration contains the configuration for Felix.
+Felix Configuration contains the configuration for Felix.
 
 #### Attributes
 
@@ -2844,7 +2847,7 @@ r""" Felix Configuration contains the configuration for Felix.
 |**spec**|[CrdProjectcalicoOrgV1FelixConfigurationSpec](#crdprojectcalicoorgv1felixconfigurationspec)|spec||
 ### GlobalNetworkPolicy
 
-r""" crd projectcalico org v1 global network policy
+crd projectcalico org v1 global network policy
 
 #### Attributes
 
@@ -2856,7 +2859,7 @@ r""" crd projectcalico org v1 global network policy
 |**spec**|[CrdProjectcalicoOrgV1GlobalNetworkPolicySpec](#crdprojectcalicoorgv1globalnetworkpolicyspec)|spec||
 ### GlobalNetworkSet
 
-r""" GlobalNetworkSet contains a set of arbitrary IP sub-networks/CIDRs that share labels to allow rules to refer to them via selectors.  The labels of GlobalNetworkSet are not namespaced.
+GlobalNetworkSet contains a set of arbitrary IP sub-networks/CIDRs that share labels to allow rules to refer to them via selectors.  The labels of GlobalNetworkSet are not namespaced.
 
 #### Attributes
 
@@ -2868,7 +2871,7 @@ r""" GlobalNetworkSet contains a set of arbitrary IP sub-networks/CIDRs that sha
 |**spec**|[CrdProjectcalicoOrgV1GlobalNetworkSetSpec](#crdprojectcalicoorgv1globalnetworksetspec)|spec||
 ### HostEndpoint
 
-r""" crd projectcalico org v1 host endpoint
+crd projectcalico org v1 host endpoint
 
 #### Attributes
 
@@ -2880,7 +2883,7 @@ r""" crd projectcalico org v1 host endpoint
 |**spec**|[CrdProjectcalicoOrgV1HostEndpointSpec](#crdprojectcalicoorgv1hostendpointspec)|spec||
 ### IPAMBlock
 
-r""" crd projectcalico org v1 IP a m block
+crd projectcalico org v1 IP a m block
 
 #### Attributes
 
@@ -2892,7 +2895,7 @@ r""" crd projectcalico org v1 IP a m block
 |**spec**|[CrdProjectcalicoOrgV1IPAMBlockSpec](#crdprojectcalicoorgv1ipamblockspec)|spec||
 ### IPAMConfig
 
-r""" crd projectcalico org v1 IP a m config
+crd projectcalico org v1 IP a m config
 
 #### Attributes
 
@@ -2904,7 +2907,7 @@ r""" crd projectcalico org v1 IP a m config
 |**spec**|[CrdProjectcalicoOrgV1IPAMConfigSpec](#crdprojectcalicoorgv1ipamconfigspec)|spec||
 ### IPAMHandle
 
-r""" crd projectcalico org v1 IP a m handle
+crd projectcalico org v1 IP a m handle
 
 #### Attributes
 
@@ -2916,7 +2919,7 @@ r""" crd projectcalico org v1 IP a m handle
 |**spec**|[CrdProjectcalicoOrgV1IPAMHandleSpec](#crdprojectcalicoorgv1ipamhandlespec)|spec||
 ### IPPool
 
-r""" crd projectcalico org v1 IP pool
+crd projectcalico org v1 IP pool
 
 #### Attributes
 
@@ -2928,7 +2931,7 @@ r""" crd projectcalico org v1 IP pool
 |**spec**|[CrdProjectcalicoOrgV1IPPoolSpec](#crdprojectcalicoorgv1ippoolspec)|spec||
 ### IPReservation
 
-r""" crd projectcalico org v1 IP reservation
+crd projectcalico org v1 IP reservation
 
 #### Attributes
 
@@ -2940,7 +2943,7 @@ r""" crd projectcalico org v1 IP reservation
 |**spec**|[CrdProjectcalicoOrgV1IPReservationSpec](#crdprojectcalicoorgv1ipreservationspec)|spec||
 ### KubeControllersConfiguration
 
-r""" crd projectcalico org v1 kube controllers configuration
+crd projectcalico org v1 kube controllers configuration
 
 #### Attributes
 
@@ -2953,7 +2956,7 @@ r""" crd projectcalico org v1 kube controllers configuration
 |**status**|[CrdProjectcalicoOrgV1KubeControllersConfigurationStatus](#crdprojectcalicoorgv1kubecontrollersconfigurationstatus)|status||
 ### MonitoringCoreosComV1AlertmanagerSpec
 
-r""" Specification of the desired behavior of the Alertmanager cluster. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+Specification of the desired behavior of the Alertmanager cluster. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
 
 #### Attributes
 
@@ -2998,7 +3001,7 @@ r""" Specification of the desired behavior of the Alertmanager cluster. More inf
 |**volumes**|[[MonitoringCoreosComV1AlertmanagerSpecVolumesItems0](#monitoringcoreoscomv1alertmanagerspecvolumesitems0)]|Volumes allows configuration of additional volumes on the output StatefulSet definition. Volumes specified will be appended to other volumes that are generated as a result of StorageSpec objects.||
 ### MonitoringCoreosComV1AlertmanagerSpecAffinity
 
-r""" If specified, the pod's scheduling constraints.
+If specified, the pod's scheduling constraints.
 
 #### Attributes
 
@@ -3009,7 +3012,7 @@ r""" If specified, the pod's scheduling constraints.
 |**podAntiAffinity**|[MonitoringCoreosComV1AlertmanagerSpecAffinityPodAntiAffinity](#monitoringcoreoscomv1alertmanagerspecaffinitypodantiaffinity)|pod anti affinity||
 ### MonitoringCoreosComV1AlertmanagerSpecAffinityNodeAffinity
 
-r""" Describes node affinity scheduling rules for the pod.
+Describes node affinity scheduling rules for the pod.
 
 #### Attributes
 
@@ -3019,7 +3022,7 @@ r""" Describes node affinity scheduling rules for the pod.
 |**requiredDuringSchedulingIgnoredDuringExecution**|[MonitoringCoreosComV1AlertmanagerSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution](#monitoringcoreoscomv1alertmanagerspecaffinitynodeaffinityrequiredduringschedulingignoredduringexecution)|required during scheduling ignored during execution||
 ### MonitoringCoreosComV1AlertmanagerSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0
 
-r""" An empty preferred scheduling term matches all objects with implicit weight 0 (i.e. it's a no-op). A null preferred scheduling term matches no objects (i.e. is also a no-op).
+An empty preferred scheduling term matches all objects with implicit weight 0 (i.e. it's a no-op). A null preferred scheduling term matches no objects (i.e. is also a no-op).
 
 #### Attributes
 
@@ -3029,7 +3032,7 @@ r""" An empty preferred scheduling term matches all objects with implicit weight
 |**weight** `required`|int|Weight associated with matching the corresponding nodeSelectorTerm, in the range 1-100.||
 ### MonitoringCoreosComV1AlertmanagerSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0Preference
 
-r""" A node selector term, associated with the corresponding weight.
+A node selector term, associated with the corresponding weight.
 
 #### Attributes
 
@@ -3039,7 +3042,7 @@ r""" A node selector term, associated with the corresponding weight.
 |**matchFields**|[[MonitoringCoreosComV1AlertmanagerSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchFieldsItems0](#monitoringcoreoscomv1alertmanagerspecaffinitynodeaffinitypreferredduringschedulingignoredduringexecutionitems0preferencematchfieldsitems0)]|A list of node selector requirements by node's fields.||
 ### MonitoringCoreosComV1AlertmanagerSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchExpressionsItems0
 
-r""" A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
 #### Attributes
 
@@ -3050,7 +3053,7 @@ r""" A node selector requirement is a selector that contains values, a key, and 
 |**values**|[str]|An array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch.||
 ### MonitoringCoreosComV1AlertmanagerSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchFieldsItems0
 
-r""" A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
 #### Attributes
 
@@ -3061,7 +3064,7 @@ r""" A node selector requirement is a selector that contains values, a key, and 
 |**values**|[str]|An array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch.||
 ### MonitoringCoreosComV1AlertmanagerSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution
 
-r""" If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to an update), the system may or may not try to eventually evict the pod from its node.
+If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to an update), the system may or may not try to eventually evict the pod from its node.
 
 #### Attributes
 
@@ -3070,7 +3073,7 @@ r""" If the affinity requirements specified by this field are not met at schedul
 |**nodeSelectorTerms** `required`|[[MonitoringCoreosComV1AlertmanagerSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0](#monitoringcoreoscomv1alertmanagerspecaffinitynodeaffinityrequiredduringschedulingignoredduringexecutionnodeselectortermsitems0)]|Required. A list of node selector terms. The terms are ORed.||
 ### MonitoringCoreosComV1AlertmanagerSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0
 
-r""" A null or empty node selector term matches no objects. The requirements of them are ANDed. The TopologySelectorTerm type implements a subset of the NodeSelectorTerm.
+A null or empty node selector term matches no objects. The requirements of them are ANDed. The TopologySelectorTerm type implements a subset of the NodeSelectorTerm.
 
 #### Attributes
 
@@ -3080,7 +3083,7 @@ r""" A null or empty node selector term matches no objects. The requirements of 
 |**matchFields**|[[MonitoringCoreosComV1AlertmanagerSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchFieldsItems0](#monitoringcoreoscomv1alertmanagerspecaffinitynodeaffinityrequiredduringschedulingignoredduringexecutionnodeselectortermsitems0matchfieldsitems0)]|A list of node selector requirements by node's fields.||
 ### MonitoringCoreosComV1AlertmanagerSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchExpressionsItems0
 
-r""" A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
 #### Attributes
 
@@ -3091,7 +3094,7 @@ r""" A node selector requirement is a selector that contains values, a key, and 
 |**values**|[str]|An array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch.||
 ### MonitoringCoreosComV1AlertmanagerSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchFieldsItems0
 
-r""" A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
 #### Attributes
 
@@ -3102,7 +3105,7 @@ r""" A node selector requirement is a selector that contains values, a key, and 
 |**values**|[str]|An array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch.||
 ### MonitoringCoreosComV1AlertmanagerSpecAffinityPodAffinity
 
-r""" Describes pod affinity scheduling rules (e.g. co-locate this pod in the same node, zone, etc. as some other pod(s)).
+Describes pod affinity scheduling rules (e.g. co-locate this pod in the same node, zone, etc. as some other pod(s)).
 
 #### Attributes
 
@@ -3112,7 +3115,7 @@ r""" Describes pod affinity scheduling rules (e.g. co-locate this pod in the sam
 |**requiredDuringSchedulingIgnoredDuringExecution**|[[MonitoringCoreosComV1AlertmanagerSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0](#monitoringcoreoscomv1alertmanagerspecaffinitypodaffinityrequiredduringschedulingignoredduringexecutionitems0)]|If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each podAffinityTerm are intersected, i.e. all terms must be satisfied.||
 ### MonitoringCoreosComV1AlertmanagerSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0
 
-r""" The weights of all of the matched WeightedPodAffinityTerm fields are added per-node to find the most preferred node(s)
+The weights of all of the matched WeightedPodAffinityTerm fields are added per-node to find the most preferred node(s)
 
 #### Attributes
 
@@ -3122,7 +3125,7 @@ r""" The weights of all of the matched WeightedPodAffinityTerm fields are added 
 |**weight** `required`|int|weight associated with matching the corresponding podAffinityTerm, in the range 1-100.||
 ### MonitoringCoreosComV1AlertmanagerSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTerm
 
-r""" Required. A pod affinity term, associated with the corresponding weight.
+Required. A pod affinity term, associated with the corresponding weight.
 
 #### Attributes
 
@@ -3133,7 +3136,7 @@ r""" Required. A pod affinity term, associated with the corresponding weight.
 |**topologyKey** `required`|str|This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching the labelSelector in the specified namespaces, where co-located is defined as running on a node whose value of the label with key topologyKey matches that of any node on which any of the selected pods is running. Empty topologyKey is not allowed.||
 ### MonitoringCoreosComV1AlertmanagerSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector
 
-r""" A label query over a set of resources, in this case pods.
+A label query over a set of resources, in this case pods.
 
 #### Attributes
 
@@ -3143,7 +3146,7 @@ r""" A label query over a set of resources, in this case pods.
 |**matchLabels**|{str:str}|matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.||
 ### MonitoringCoreosComV1AlertmanagerSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0
 
-r""" A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
 #### Attributes
 
@@ -3154,7 +3157,7 @@ r""" A label selector requirement is a selector that contains values, a key, and
 |**values**|[str]|values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.||
 ### MonitoringCoreosComV1AlertmanagerSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0
 
-r""" Defines a set of pods (namely those matching the labelSelector relative to the given namespace(s)) that this pod should be co-located (affinity) or not co-located (anti-affinity) with, where co-located is defined as running on a node whose value of the label with key <topologyKey> matches that of any node on which a pod of the set of pods is running
+Defines a set of pods (namely those matching the labelSelector relative to the given namespace(s)) that this pod should be co-located (affinity) or not co-located (anti-affinity) with, where co-located is defined as running on a node whose value of the label with key <topologyKey> matches that of any node on which a pod of the set of pods is running
 
 #### Attributes
 
@@ -3165,7 +3168,7 @@ r""" Defines a set of pods (namely those matching the labelSelector relative to 
 |**topologyKey** `required`|str|This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching the labelSelector in the specified namespaces, where co-located is defined as running on a node whose value of the label with key topologyKey matches that of any node on which any of the selected pods is running. Empty topologyKey is not allowed.||
 ### MonitoringCoreosComV1AlertmanagerSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector
 
-r""" A label query over a set of resources, in this case pods.
+A label query over a set of resources, in this case pods.
 
 #### Attributes
 
@@ -3175,7 +3178,7 @@ r""" A label query over a set of resources, in this case pods.
 |**matchLabels**|{str:str}|matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.||
 ### MonitoringCoreosComV1AlertmanagerSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0
 
-r""" A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
 #### Attributes
 
@@ -3186,7 +3189,7 @@ r""" A label selector requirement is a selector that contains values, a key, and
 |**values**|[str]|values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.||
 ### MonitoringCoreosComV1AlertmanagerSpecAffinityPodAntiAffinity
 
-r""" Describes pod anti-affinity scheduling rules (e.g. avoid putting this pod in the same node, zone, etc. as some other pod(s)).
+Describes pod anti-affinity scheduling rules (e.g. avoid putting this pod in the same node, zone, etc. as some other pod(s)).
 
 #### Attributes
 
@@ -3196,7 +3199,7 @@ r""" Describes pod anti-affinity scheduling rules (e.g. avoid putting this pod i
 |**requiredDuringSchedulingIgnoredDuringExecution**|[[MonitoringCoreosComV1AlertmanagerSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0](#monitoringcoreoscomv1alertmanagerspecaffinitypodantiaffinityrequiredduringschedulingignoredduringexecutionitems0)]|If the anti-affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the anti-affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each podAffinityTerm are intersected, i.e. all terms must be satisfied.||
 ### MonitoringCoreosComV1AlertmanagerSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0
 
-r""" The weights of all of the matched WeightedPodAffinityTerm fields are added per-node to find the most preferred node(s)
+The weights of all of the matched WeightedPodAffinityTerm fields are added per-node to find the most preferred node(s)
 
 #### Attributes
 
@@ -3206,7 +3209,7 @@ r""" The weights of all of the matched WeightedPodAffinityTerm fields are added 
 |**weight** `required`|int|weight associated with matching the corresponding podAffinityTerm, in the range 1-100.||
 ### MonitoringCoreosComV1AlertmanagerSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTerm
 
-r""" Required. A pod affinity term, associated with the corresponding weight.
+Required. A pod affinity term, associated with the corresponding weight.
 
 #### Attributes
 
@@ -3217,7 +3220,7 @@ r""" Required. A pod affinity term, associated with the corresponding weight.
 |**topologyKey** `required`|str|This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching the labelSelector in the specified namespaces, where co-located is defined as running on a node whose value of the label with key topologyKey matches that of any node on which any of the selected pods is running. Empty topologyKey is not allowed.||
 ### MonitoringCoreosComV1AlertmanagerSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector
 
-r""" A label query over a set of resources, in this case pods.
+A label query over a set of resources, in this case pods.
 
 #### Attributes
 
@@ -3227,7 +3230,7 @@ r""" A label query over a set of resources, in this case pods.
 |**matchLabels**|{str:str}|matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.||
 ### MonitoringCoreosComV1AlertmanagerSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0
 
-r""" A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
 #### Attributes
 
@@ -3238,7 +3241,7 @@ r""" A label selector requirement is a selector that contains values, a key, and
 |**values**|[str]|values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.||
 ### MonitoringCoreosComV1AlertmanagerSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0
 
-r""" Defines a set of pods (namely those matching the labelSelector relative to the given namespace(s)) that this pod should be co-located (affinity) or not co-located (anti-affinity) with, where co-located is defined as running on a node whose value of the label with key <topologyKey> matches that of any node on which a pod of the set of pods is running
+Defines a set of pods (namely those matching the labelSelector relative to the given namespace(s)) that this pod should be co-located (affinity) or not co-located (anti-affinity) with, where co-located is defined as running on a node whose value of the label with key <topologyKey> matches that of any node on which a pod of the set of pods is running
 
 #### Attributes
 
@@ -3249,7 +3252,7 @@ r""" Defines a set of pods (namely those matching the labelSelector relative to 
 |**topologyKey** `required`|str|This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching the labelSelector in the specified namespaces, where co-located is defined as running on a node whose value of the label with key topologyKey matches that of any node on which any of the selected pods is running. Empty topologyKey is not allowed.||
 ### MonitoringCoreosComV1AlertmanagerSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector
 
-r""" A label query over a set of resources, in this case pods.
+A label query over a set of resources, in this case pods.
 
 #### Attributes
 
@@ -3259,7 +3262,7 @@ r""" A label query over a set of resources, in this case pods.
 |**matchLabels**|{str:str}|matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.||
 ### MonitoringCoreosComV1AlertmanagerSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0
 
-r""" A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
 #### Attributes
 
@@ -3270,7 +3273,7 @@ r""" A label selector requirement is a selector that contains values, a key, and
 |**values**|[str]|values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.||
 ### MonitoringCoreosComV1AlertmanagerSpecAlertmanagerConfigNamespaceSelector
 
-r""" Namespaces to be selected for AlertmanagerConfig discovery. If nil, only check own namespace.
+Namespaces to be selected for AlertmanagerConfig discovery. If nil, only check own namespace.
 
 #### Attributes
 
@@ -3280,7 +3283,7 @@ r""" Namespaces to be selected for AlertmanagerConfig discovery. If nil, only ch
 |**matchLabels**|{str:str}|matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.||
 ### MonitoringCoreosComV1AlertmanagerSpecAlertmanagerConfigNamespaceSelectorMatchExpressionsItems0
 
-r""" A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
 #### Attributes
 
@@ -3291,7 +3294,7 @@ r""" A label selector requirement is a selector that contains values, a key, and
 |**values**|[str]|values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.||
 ### MonitoringCoreosComV1AlertmanagerSpecAlertmanagerConfigSelector
 
-r""" AlertmanagerConfigs to be selected for to merge and configure Alertmanager with.
+AlertmanagerConfigs to be selected for to merge and configure Alertmanager with.
 
 #### Attributes
 
@@ -3301,7 +3304,7 @@ r""" AlertmanagerConfigs to be selected for to merge and configure Alertmanager 
 |**matchLabels**|{str:str}|matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.||
 ### MonitoringCoreosComV1AlertmanagerSpecAlertmanagerConfigSelectorMatchExpressionsItems0
 
-r""" A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
 #### Attributes
 
@@ -3312,7 +3315,7 @@ r""" A label selector requirement is a selector that contains values, a key, and
 |**values**|[str]|values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.||
 ### MonitoringCoreosComV1AlertmanagerSpecContainersItems0
 
-r""" A single application container that you want to run within a pod.
+A single application container that you want to run within a pod.
 
 #### Attributes
 
@@ -3342,7 +3345,7 @@ r""" A single application container that you want to run within a pod.
 |**workingDir**|str|Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. Cannot be updated.||
 ### MonitoringCoreosComV1AlertmanagerSpecContainersItems0EnvFromItems0
 
-r""" EnvFromSource represents the source of a set of ConfigMaps
+EnvFromSource represents the source of a set of ConfigMaps
 
 #### Attributes
 
@@ -3353,7 +3356,7 @@ r""" EnvFromSource represents the source of a set of ConfigMaps
 |**secretRef**|[MonitoringCoreosComV1AlertmanagerSpecContainersItems0EnvFromItems0SecretRef](#monitoringcoreoscomv1alertmanagerspeccontainersitems0envfromitems0secretref)|secret ref||
 ### MonitoringCoreosComV1AlertmanagerSpecContainersItems0EnvFromItems0ConfigMapRef
 
-r""" The ConfigMap to select from
+The ConfigMap to select from
 
 #### Attributes
 
@@ -3363,7 +3366,7 @@ r""" The ConfigMap to select from
 |**optional**|bool|Specify whether the ConfigMap must be defined||
 ### MonitoringCoreosComV1AlertmanagerSpecContainersItems0EnvFromItems0SecretRef
 
-r""" The Secret to select from
+The Secret to select from
 
 #### Attributes
 
@@ -3373,7 +3376,7 @@ r""" The Secret to select from
 |**optional**|bool|Specify whether the Secret must be defined||
 ### MonitoringCoreosComV1AlertmanagerSpecContainersItems0EnvItems0
 
-r""" EnvVar represents an environment variable present in a Container.
+EnvVar represents an environment variable present in a Container.
 
 #### Attributes
 
@@ -3384,7 +3387,7 @@ r""" EnvVar represents an environment variable present in a Container.
 |**valueFrom**|[MonitoringCoreosComV1AlertmanagerSpecContainersItems0EnvItems0ValueFrom](#monitoringcoreoscomv1alertmanagerspeccontainersitems0envitems0valuefrom)|value from||
 ### MonitoringCoreosComV1AlertmanagerSpecContainersItems0EnvItems0ValueFrom
 
-r""" Source for the environment variable's value. Cannot be used if value is not empty.
+Source for the environment variable's value. Cannot be used if value is not empty.
 
 #### Attributes
 
@@ -3396,7 +3399,7 @@ r""" Source for the environment variable's value. Cannot be used if value is not
 |**secretKeyRef**|[MonitoringCoreosComV1AlertmanagerSpecContainersItems0EnvItems0ValueFromSecretKeyRef](#monitoringcoreoscomv1alertmanagerspeccontainersitems0envitems0valuefromsecretkeyref)|secret key ref||
 ### MonitoringCoreosComV1AlertmanagerSpecContainersItems0EnvItems0ValueFromConfigMapKeyRef
 
-r""" Selects a key of a ConfigMap.
+Selects a key of a ConfigMap.
 
 #### Attributes
 
@@ -3407,7 +3410,7 @@ r""" Selects a key of a ConfigMap.
 |**optional**|bool|Specify whether the ConfigMap or its key must be defined||
 ### MonitoringCoreosComV1AlertmanagerSpecContainersItems0EnvItems0ValueFromFieldRef
 
-r""" Selects a field of the pod: supports metadata.name, metadata.namespace, metadata.labels, metadata.annotations, spec.nodeName, spec.serviceAccountName, status.hostIP, status.podIP, status.podIPs.
+Selects a field of the pod: supports metadata.name, metadata.namespace, metadata.labels, metadata.annotations, spec.nodeName, spec.serviceAccountName, status.hostIP, status.podIP, status.podIPs.
 
 #### Attributes
 
@@ -3417,7 +3420,7 @@ r""" Selects a field of the pod: supports metadata.name, metadata.namespace, met
 |**fieldPath** `required`|str|Path of the field to select in the specified API version.||
 ### MonitoringCoreosComV1AlertmanagerSpecContainersItems0EnvItems0ValueFromResourceFieldRef
 
-r""" Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
+Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
 
 #### Attributes
 
@@ -3428,7 +3431,7 @@ r""" Selects a resource of the container: only resources limits and requests (li
 |**resource** `required`|str|Required: resource to select||
 ### MonitoringCoreosComV1AlertmanagerSpecContainersItems0EnvItems0ValueFromSecretKeyRef
 
-r""" Selects a key of a secret in the pod's namespace
+Selects a key of a secret in the pod's namespace
 
 #### Attributes
 
@@ -3439,7 +3442,7 @@ r""" Selects a key of a secret in the pod's namespace
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1AlertmanagerSpecContainersItems0Lifecycle
 
-r""" Actions that the management system should take in response to container lifecycle events. Cannot be updated.
+Actions that the management system should take in response to container lifecycle events. Cannot be updated.
 
 #### Attributes
 
@@ -3449,7 +3452,7 @@ r""" Actions that the management system should take in response to container lif
 |**preStop**|[MonitoringCoreosComV1AlertmanagerSpecContainersItems0LifecyclePreStop](#monitoringcoreoscomv1alertmanagerspeccontainersitems0lifecycleprestop)|pre stop||
 ### MonitoringCoreosComV1AlertmanagerSpecContainersItems0LifecyclePostStart
 
-r""" PostStart is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+PostStart is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
 
 #### Attributes
 
@@ -3460,7 +3463,7 @@ r""" PostStart is called immediately after a container is created. If the handle
 |**tcpSocket**|[MonitoringCoreosComV1AlertmanagerSpecContainersItems0LifecyclePostStartTCPSocket](#monitoringcoreoscomv1alertmanagerspeccontainersitems0lifecyclepoststarttcpsocket)|tcp socket||
 ### MonitoringCoreosComV1AlertmanagerSpecContainersItems0LifecyclePostStartExec
 
-r""" One and only one of the following should be specified. Exec specifies the action to take.
+One and only one of the following should be specified. Exec specifies the action to take.
 
 #### Attributes
 
@@ -3469,7 +3472,7 @@ r""" One and only one of the following should be specified. Exec specifies the a
 |**command**|[str]|Command is the command line to execute inside the container, the working directory for the command  is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('\|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.||
 ### MonitoringCoreosComV1AlertmanagerSpecContainersItems0LifecyclePostStartHTTPGet
 
-r""" HTTPGet specifies the http request to perform.
+HTTPGet specifies the http request to perform.
 
 #### Attributes
 
@@ -3482,7 +3485,7 @@ r""" HTTPGet specifies the http request to perform.
 |**scheme**|str|Scheme to use for connecting to the host. Defaults to HTTP.||
 ### MonitoringCoreosComV1AlertmanagerSpecContainersItems0LifecyclePostStartHTTPGetHTTPHeadersItems0
 
-r""" HTTPHeader describes a custom header to be used in HTTP probes
+HTTPHeader describes a custom header to be used in HTTP probes
 
 #### Attributes
 
@@ -3492,7 +3495,7 @@ r""" HTTPHeader describes a custom header to be used in HTTP probes
 |**value** `required`|str|The header field value||
 ### MonitoringCoreosComV1AlertmanagerSpecContainersItems0LifecyclePostStartTCPSocket
 
-r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
+TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
 
 #### Attributes
 
@@ -3502,7 +3505,7 @@ r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet suppo
 |**port** `required`|int | str|Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.||
 ### MonitoringCoreosComV1AlertmanagerSpecContainersItems0LifecyclePreStop
 
-r""" PreStop is called immediately before a container is terminated due to an API request or management event such as liveness/startup probe failure, preemption, resource contention, etc. The handler is not called if the container crashes or exits. The reason for termination is passed to the handler. The Pod's termination grace period countdown begins before the PreStop hooked is executed. Regardless of the outcome of the handler, the container will eventually terminate within the Pod's termination grace period. Other management of the container blocks until the hook completes or until the termination grace period is reached. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+PreStop is called immediately before a container is terminated due to an API request or management event such as liveness/startup probe failure, preemption, resource contention, etc. The handler is not called if the container crashes or exits. The reason for termination is passed to the handler. The Pod's termination grace period countdown begins before the PreStop hooked is executed. Regardless of the outcome of the handler, the container will eventually terminate within the Pod's termination grace period. Other management of the container blocks until the hook completes or until the termination grace period is reached. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
 
 #### Attributes
 
@@ -3513,7 +3516,7 @@ r""" PreStop is called immediately before a container is terminated due to an AP
 |**tcpSocket**|[MonitoringCoreosComV1AlertmanagerSpecContainersItems0LifecyclePreStopTCPSocket](#monitoringcoreoscomv1alertmanagerspeccontainersitems0lifecycleprestoptcpsocket)|tcp socket||
 ### MonitoringCoreosComV1AlertmanagerSpecContainersItems0LifecyclePreStopExec
 
-r""" One and only one of the following should be specified. Exec specifies the action to take.
+One and only one of the following should be specified. Exec specifies the action to take.
 
 #### Attributes
 
@@ -3522,7 +3525,7 @@ r""" One and only one of the following should be specified. Exec specifies the a
 |**command**|[str]|Command is the command line to execute inside the container, the working directory for the command  is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('\|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.||
 ### MonitoringCoreosComV1AlertmanagerSpecContainersItems0LifecyclePreStopHTTPGet
 
-r""" HTTPGet specifies the http request to perform.
+HTTPGet specifies the http request to perform.
 
 #### Attributes
 
@@ -3535,7 +3538,7 @@ r""" HTTPGet specifies the http request to perform.
 |**scheme**|str|Scheme to use for connecting to the host. Defaults to HTTP.||
 ### MonitoringCoreosComV1AlertmanagerSpecContainersItems0LifecyclePreStopHTTPGetHTTPHeadersItems0
 
-r""" HTTPHeader describes a custom header to be used in HTTP probes
+HTTPHeader describes a custom header to be used in HTTP probes
 
 #### Attributes
 
@@ -3545,7 +3548,7 @@ r""" HTTPHeader describes a custom header to be used in HTTP probes
 |**value** `required`|str|The header field value||
 ### MonitoringCoreosComV1AlertmanagerSpecContainersItems0LifecyclePreStopTCPSocket
 
-r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
+TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
 
 #### Attributes
 
@@ -3555,7 +3558,7 @@ r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet suppo
 |**port** `required`|int | str|Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.||
 ### MonitoringCoreosComV1AlertmanagerSpecContainersItems0LivenessProbe
 
-r""" Periodic probe of container liveness. Container will be restarted if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+Periodic probe of container liveness. Container will be restarted if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 
 #### Attributes
 
@@ -3571,7 +3574,7 @@ r""" Periodic probe of container liveness. Container will be restarted if the pr
 |**timeoutSeconds**|int|Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes||
 ### MonitoringCoreosComV1AlertmanagerSpecContainersItems0LivenessProbeExec
 
-r""" One and only one of the following should be specified. Exec specifies the action to take.
+One and only one of the following should be specified. Exec specifies the action to take.
 
 #### Attributes
 
@@ -3580,7 +3583,7 @@ r""" One and only one of the following should be specified. Exec specifies the a
 |**command**|[str]|Command is the command line to execute inside the container, the working directory for the command  is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('\|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.||
 ### MonitoringCoreosComV1AlertmanagerSpecContainersItems0LivenessProbeHTTPGet
 
-r""" HTTPGet specifies the http request to perform.
+HTTPGet specifies the http request to perform.
 
 #### Attributes
 
@@ -3593,7 +3596,7 @@ r""" HTTPGet specifies the http request to perform.
 |**scheme**|str|Scheme to use for connecting to the host. Defaults to HTTP.||
 ### MonitoringCoreosComV1AlertmanagerSpecContainersItems0LivenessProbeHTTPGetHTTPHeadersItems0
 
-r""" HTTPHeader describes a custom header to be used in HTTP probes
+HTTPHeader describes a custom header to be used in HTTP probes
 
 #### Attributes
 
@@ -3603,7 +3606,7 @@ r""" HTTPHeader describes a custom header to be used in HTTP probes
 |**value** `required`|str|The header field value||
 ### MonitoringCoreosComV1AlertmanagerSpecContainersItems0LivenessProbeTCPSocket
 
-r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
+TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
 
 #### Attributes
 
@@ -3613,7 +3616,7 @@ r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet suppo
 |**port** `required`|int | str|Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.||
 ### MonitoringCoreosComV1AlertmanagerSpecContainersItems0PortsItems0
 
-r""" ContainerPort represents a network port in a single container.
+ContainerPort represents a network port in a single container.
 
 #### Attributes
 
@@ -3626,7 +3629,7 @@ r""" ContainerPort represents a network port in a single container.
 |**protocol**|str|||
 ### MonitoringCoreosComV1AlertmanagerSpecContainersItems0ReadinessProbe
 
-r""" Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 
 #### Attributes
 
@@ -3642,7 +3645,7 @@ r""" Periodic probe of container service readiness. Container will be removed fr
 |**timeoutSeconds**|int|Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes||
 ### MonitoringCoreosComV1AlertmanagerSpecContainersItems0ReadinessProbeExec
 
-r""" One and only one of the following should be specified. Exec specifies the action to take.
+One and only one of the following should be specified. Exec specifies the action to take.
 
 #### Attributes
 
@@ -3651,7 +3654,7 @@ r""" One and only one of the following should be specified. Exec specifies the a
 |**command**|[str]|Command is the command line to execute inside the container, the working directory for the command  is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('\|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.||
 ### MonitoringCoreosComV1AlertmanagerSpecContainersItems0ReadinessProbeHTTPGet
 
-r""" HTTPGet specifies the http request to perform.
+HTTPGet specifies the http request to perform.
 
 #### Attributes
 
@@ -3664,7 +3667,7 @@ r""" HTTPGet specifies the http request to perform.
 |**scheme**|str|Scheme to use for connecting to the host. Defaults to HTTP.||
 ### MonitoringCoreosComV1AlertmanagerSpecContainersItems0ReadinessProbeHTTPGetHTTPHeadersItems0
 
-r""" HTTPHeader describes a custom header to be used in HTTP probes
+HTTPHeader describes a custom header to be used in HTTP probes
 
 #### Attributes
 
@@ -3674,7 +3677,7 @@ r""" HTTPHeader describes a custom header to be used in HTTP probes
 |**value** `required`|str|The header field value||
 ### MonitoringCoreosComV1AlertmanagerSpecContainersItems0ReadinessProbeTCPSocket
 
-r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
+TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
 
 #### Attributes
 
@@ -3684,7 +3687,7 @@ r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet suppo
 |**port** `required`|int | str|Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.||
 ### MonitoringCoreosComV1AlertmanagerSpecContainersItems0Resources
 
-r""" Compute Resources required by this container. Cannot be updated. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
+Compute Resources required by this container. Cannot be updated. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
 
 #### Attributes
 
@@ -3694,7 +3697,7 @@ r""" Compute Resources required by this container. Cannot be updated. More info:
 |**requests**|{str:str}|Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/||
 ### MonitoringCoreosComV1AlertmanagerSpecContainersItems0SecurityContext
 
-r""" Security options the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-context/ More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+Security options the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-context/ More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
 
 #### Attributes
 
@@ -3712,7 +3715,7 @@ r""" Security options the pod should run with. More info: https://kubernetes.io/
 |**windowsOptions**|[MonitoringCoreosComV1AlertmanagerSpecContainersItems0SecurityContextWindowsOptions](#monitoringcoreoscomv1alertmanagerspeccontainersitems0securitycontextwindowsoptions)|windows options||
 ### MonitoringCoreosComV1AlertmanagerSpecContainersItems0SecurityContextCapabilities
 
-r""" The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime.
+The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime.
 
 #### Attributes
 
@@ -3722,7 +3725,7 @@ r""" The capabilities to add/drop when running containers. Defaults to the defau
 |**drop**|[str]|Removed capabilities||
 ### MonitoringCoreosComV1AlertmanagerSpecContainersItems0SecurityContextSeLinuxOptions
 
-r""" The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container.  May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container.  May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
 
 #### Attributes
 
@@ -3734,7 +3737,7 @@ r""" The SELinux context to be applied to the container. If unspecified, the con
 |**user**|str|User is a SELinux user label that applies to the container.||
 ### MonitoringCoreosComV1AlertmanagerSpecContainersItems0SecurityContextWindowsOptions
 
-r""" The Windows specific settings applied to all containers. If unspecified, the options from the PodSecurityContext will be used. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+The Windows specific settings applied to all containers. If unspecified, the options from the PodSecurityContext will be used. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
 
 #### Attributes
 
@@ -3745,7 +3748,7 @@ r""" The Windows specific settings applied to all containers. If unspecified, th
 |**runAsUserName**|str|The UserName in Windows to run the entrypoint of the container process. Defaults to the user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.||
 ### MonitoringCoreosComV1AlertmanagerSpecContainersItems0StartupProbe
 
-r""" StartupProbe indicates that the Pod has successfully initialized. If specified, no other probes are executed until this completes successfully. If this probe fails, the Pod will be restarted, just as if the livenessProbe failed. This can be used to provide different probe parameters at the beginning of a Pod's lifecycle, when it might take a long time to load data or warm a cache, than during steady-state operation. This cannot be updated. This is a beta feature enabled by the StartupProbe feature flag. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+StartupProbe indicates that the Pod has successfully initialized. If specified, no other probes are executed until this completes successfully. If this probe fails, the Pod will be restarted, just as if the livenessProbe failed. This can be used to provide different probe parameters at the beginning of a Pod's lifecycle, when it might take a long time to load data or warm a cache, than during steady-state operation. This cannot be updated. This is a beta feature enabled by the StartupProbe feature flag. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 
 #### Attributes
 
@@ -3761,7 +3764,7 @@ r""" StartupProbe indicates that the Pod has successfully initialized. If specif
 |**timeoutSeconds**|int|Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes||
 ### MonitoringCoreosComV1AlertmanagerSpecContainersItems0StartupProbeExec
 
-r""" One and only one of the following should be specified. Exec specifies the action to take.
+One and only one of the following should be specified. Exec specifies the action to take.
 
 #### Attributes
 
@@ -3770,7 +3773,7 @@ r""" One and only one of the following should be specified. Exec specifies the a
 |**command**|[str]|Command is the command line to execute inside the container, the working directory for the command  is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('\|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.||
 ### MonitoringCoreosComV1AlertmanagerSpecContainersItems0StartupProbeHTTPGet
 
-r""" HTTPGet specifies the http request to perform.
+HTTPGet specifies the http request to perform.
 
 #### Attributes
 
@@ -3783,7 +3786,7 @@ r""" HTTPGet specifies the http request to perform.
 |**scheme**|str|Scheme to use for connecting to the host. Defaults to HTTP.||
 ### MonitoringCoreosComV1AlertmanagerSpecContainersItems0StartupProbeHTTPGetHTTPHeadersItems0
 
-r""" HTTPHeader describes a custom header to be used in HTTP probes
+HTTPHeader describes a custom header to be used in HTTP probes
 
 #### Attributes
 
@@ -3793,7 +3796,7 @@ r""" HTTPHeader describes a custom header to be used in HTTP probes
 |**value** `required`|str|The header field value||
 ### MonitoringCoreosComV1AlertmanagerSpecContainersItems0StartupProbeTCPSocket
 
-r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
+TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
 
 #### Attributes
 
@@ -3803,7 +3806,7 @@ r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet suppo
 |**port** `required`|int | str|Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.||
 ### MonitoringCoreosComV1AlertmanagerSpecContainersItems0VolumeDevicesItems0
 
-r""" volumeDevice describes a mapping of a raw block device within a container.
+volumeDevice describes a mapping of a raw block device within a container.
 
 #### Attributes
 
@@ -3813,7 +3816,7 @@ r""" volumeDevice describes a mapping of a raw block device within a container.
 |**name** `required`|str|name must match the name of a persistentVolumeClaim in the pod||
 ### MonitoringCoreosComV1AlertmanagerSpecContainersItems0VolumeMountsItems0
 
-r""" VolumeMount describes a mounting of a Volume within a container.
+VolumeMount describes a mounting of a Volume within a container.
 
 #### Attributes
 
@@ -3827,7 +3830,7 @@ r""" VolumeMount describes a mounting of a Volume within a container.
 |**subPathExpr**|str|Expanded path within the volume from which the container's volume should be mounted. Behaves similarly to SubPath but environment variable references $(VAR_NAME) are expanded using the container's environment. Defaults to "" (volume's root). SubPathExpr and SubPath are mutually exclusive.||
 ### MonitoringCoreosComV1AlertmanagerSpecImagePullSecretsItems0
 
-r""" LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
+LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
 
 #### Attributes
 
@@ -3836,7 +3839,7 @@ r""" LocalObjectReference contains enough information to let you locate the refe
 |**name**|str|Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?||
 ### MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0
 
-r""" A single application container that you want to run within a pod.
+A single application container that you want to run within a pod.
 
 #### Attributes
 
@@ -3866,7 +3869,7 @@ r""" A single application container that you want to run within a pod.
 |**workingDir**|str|Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. Cannot be updated.||
 ### MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0EnvFromItems0
 
-r""" EnvFromSource represents the source of a set of ConfigMaps
+EnvFromSource represents the source of a set of ConfigMaps
 
 #### Attributes
 
@@ -3877,7 +3880,7 @@ r""" EnvFromSource represents the source of a set of ConfigMaps
 |**secretRef**|[MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0EnvFromItems0SecretRef](#monitoringcoreoscomv1alertmanagerspecinitcontainersitems0envfromitems0secretref)|secret ref||
 ### MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0EnvFromItems0ConfigMapRef
 
-r""" The ConfigMap to select from
+The ConfigMap to select from
 
 #### Attributes
 
@@ -3887,7 +3890,7 @@ r""" The ConfigMap to select from
 |**optional**|bool|Specify whether the ConfigMap must be defined||
 ### MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0EnvFromItems0SecretRef
 
-r""" The Secret to select from
+The Secret to select from
 
 #### Attributes
 
@@ -3897,7 +3900,7 @@ r""" The Secret to select from
 |**optional**|bool|Specify whether the Secret must be defined||
 ### MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0EnvItems0
 
-r""" EnvVar represents an environment variable present in a Container.
+EnvVar represents an environment variable present in a Container.
 
 #### Attributes
 
@@ -3908,7 +3911,7 @@ r""" EnvVar represents an environment variable present in a Container.
 |**valueFrom**|[MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0EnvItems0ValueFrom](#monitoringcoreoscomv1alertmanagerspecinitcontainersitems0envitems0valuefrom)|value from||
 ### MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0EnvItems0ValueFrom
 
-r""" Source for the environment variable's value. Cannot be used if value is not empty.
+Source for the environment variable's value. Cannot be used if value is not empty.
 
 #### Attributes
 
@@ -3920,7 +3923,7 @@ r""" Source for the environment variable's value. Cannot be used if value is not
 |**secretKeyRef**|[MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0EnvItems0ValueFromSecretKeyRef](#monitoringcoreoscomv1alertmanagerspecinitcontainersitems0envitems0valuefromsecretkeyref)|secret key ref||
 ### MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0EnvItems0ValueFromConfigMapKeyRef
 
-r""" Selects a key of a ConfigMap.
+Selects a key of a ConfigMap.
 
 #### Attributes
 
@@ -3931,7 +3934,7 @@ r""" Selects a key of a ConfigMap.
 |**optional**|bool|Specify whether the ConfigMap or its key must be defined||
 ### MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0EnvItems0ValueFromFieldRef
 
-r""" Selects a field of the pod: supports metadata.name, metadata.namespace, metadata.labels, metadata.annotations, spec.nodeName, spec.serviceAccountName, status.hostIP, status.podIP, status.podIPs.
+Selects a field of the pod: supports metadata.name, metadata.namespace, metadata.labels, metadata.annotations, spec.nodeName, spec.serviceAccountName, status.hostIP, status.podIP, status.podIPs.
 
 #### Attributes
 
@@ -3941,7 +3944,7 @@ r""" Selects a field of the pod: supports metadata.name, metadata.namespace, met
 |**fieldPath** `required`|str|Path of the field to select in the specified API version.||
 ### MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0EnvItems0ValueFromResourceFieldRef
 
-r""" Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
+Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
 
 #### Attributes
 
@@ -3952,7 +3955,7 @@ r""" Selects a resource of the container: only resources limits and requests (li
 |**resource** `required`|str|Required: resource to select||
 ### MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0EnvItems0ValueFromSecretKeyRef
 
-r""" Selects a key of a secret in the pod's namespace
+Selects a key of a secret in the pod's namespace
 
 #### Attributes
 
@@ -3963,7 +3966,7 @@ r""" Selects a key of a secret in the pod's namespace
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0Lifecycle
 
-r""" Actions that the management system should take in response to container lifecycle events. Cannot be updated.
+Actions that the management system should take in response to container lifecycle events. Cannot be updated.
 
 #### Attributes
 
@@ -3973,7 +3976,7 @@ r""" Actions that the management system should take in response to container lif
 |**preStop**|[MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0LifecyclePreStop](#monitoringcoreoscomv1alertmanagerspecinitcontainersitems0lifecycleprestop)|pre stop||
 ### MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0LifecyclePostStart
 
-r""" PostStart is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+PostStart is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
 
 #### Attributes
 
@@ -3984,7 +3987,7 @@ r""" PostStart is called immediately after a container is created. If the handle
 |**tcpSocket**|[MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0LifecyclePostStartTCPSocket](#monitoringcoreoscomv1alertmanagerspecinitcontainersitems0lifecyclepoststarttcpsocket)|tcp socket||
 ### MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0LifecyclePostStartExec
 
-r""" One and only one of the following should be specified. Exec specifies the action to take.
+One and only one of the following should be specified. Exec specifies the action to take.
 
 #### Attributes
 
@@ -3993,7 +3996,7 @@ r""" One and only one of the following should be specified. Exec specifies the a
 |**command**|[str]|Command is the command line to execute inside the container, the working directory for the command  is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('\|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.||
 ### MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0LifecyclePostStartHTTPGet
 
-r""" HTTPGet specifies the http request to perform.
+HTTPGet specifies the http request to perform.
 
 #### Attributes
 
@@ -4006,7 +4009,7 @@ r""" HTTPGet specifies the http request to perform.
 |**scheme**|str|Scheme to use for connecting to the host. Defaults to HTTP.||
 ### MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0LifecyclePostStartHTTPGetHTTPHeadersItems0
 
-r""" HTTPHeader describes a custom header to be used in HTTP probes
+HTTPHeader describes a custom header to be used in HTTP probes
 
 #### Attributes
 
@@ -4016,7 +4019,7 @@ r""" HTTPHeader describes a custom header to be used in HTTP probes
 |**value** `required`|str|The header field value||
 ### MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0LifecyclePostStartTCPSocket
 
-r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
+TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
 
 #### Attributes
 
@@ -4026,7 +4029,7 @@ r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet suppo
 |**port** `required`|int | str|Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.||
 ### MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0LifecyclePreStop
 
-r""" PreStop is called immediately before a container is terminated due to an API request or management event such as liveness/startup probe failure, preemption, resource contention, etc. The handler is not called if the container crashes or exits. The reason for termination is passed to the handler. The Pod's termination grace period countdown begins before the PreStop hooked is executed. Regardless of the outcome of the handler, the container will eventually terminate within the Pod's termination grace period. Other management of the container blocks until the hook completes or until the termination grace period is reached. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+PreStop is called immediately before a container is terminated due to an API request or management event such as liveness/startup probe failure, preemption, resource contention, etc. The handler is not called if the container crashes or exits. The reason for termination is passed to the handler. The Pod's termination grace period countdown begins before the PreStop hooked is executed. Regardless of the outcome of the handler, the container will eventually terminate within the Pod's termination grace period. Other management of the container blocks until the hook completes or until the termination grace period is reached. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
 
 #### Attributes
 
@@ -4037,7 +4040,7 @@ r""" PreStop is called immediately before a container is terminated due to an AP
 |**tcpSocket**|[MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0LifecyclePreStopTCPSocket](#monitoringcoreoscomv1alertmanagerspecinitcontainersitems0lifecycleprestoptcpsocket)|tcp socket||
 ### MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0LifecyclePreStopExec
 
-r""" One and only one of the following should be specified. Exec specifies the action to take.
+One and only one of the following should be specified. Exec specifies the action to take.
 
 #### Attributes
 
@@ -4046,7 +4049,7 @@ r""" One and only one of the following should be specified. Exec specifies the a
 |**command**|[str]|Command is the command line to execute inside the container, the working directory for the command  is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('\|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.||
 ### MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0LifecyclePreStopHTTPGet
 
-r""" HTTPGet specifies the http request to perform.
+HTTPGet specifies the http request to perform.
 
 #### Attributes
 
@@ -4059,7 +4062,7 @@ r""" HTTPGet specifies the http request to perform.
 |**scheme**|str|Scheme to use for connecting to the host. Defaults to HTTP.||
 ### MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0LifecyclePreStopHTTPGetHTTPHeadersItems0
 
-r""" HTTPHeader describes a custom header to be used in HTTP probes
+HTTPHeader describes a custom header to be used in HTTP probes
 
 #### Attributes
 
@@ -4069,7 +4072,7 @@ r""" HTTPHeader describes a custom header to be used in HTTP probes
 |**value** `required`|str|The header field value||
 ### MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0LifecyclePreStopTCPSocket
 
-r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
+TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
 
 #### Attributes
 
@@ -4079,7 +4082,7 @@ r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet suppo
 |**port** `required`|int | str|Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.||
 ### MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0LivenessProbe
 
-r""" Periodic probe of container liveness. Container will be restarted if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+Periodic probe of container liveness. Container will be restarted if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 
 #### Attributes
 
@@ -4095,7 +4098,7 @@ r""" Periodic probe of container liveness. Container will be restarted if the pr
 |**timeoutSeconds**|int|Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes||
 ### MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0LivenessProbeExec
 
-r""" One and only one of the following should be specified. Exec specifies the action to take.
+One and only one of the following should be specified. Exec specifies the action to take.
 
 #### Attributes
 
@@ -4104,7 +4107,7 @@ r""" One and only one of the following should be specified. Exec specifies the a
 |**command**|[str]|Command is the command line to execute inside the container, the working directory for the command  is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('\|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.||
 ### MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0LivenessProbeHTTPGet
 
-r""" HTTPGet specifies the http request to perform.
+HTTPGet specifies the http request to perform.
 
 #### Attributes
 
@@ -4117,7 +4120,7 @@ r""" HTTPGet specifies the http request to perform.
 |**scheme**|str|Scheme to use for connecting to the host. Defaults to HTTP.||
 ### MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0LivenessProbeHTTPGetHTTPHeadersItems0
 
-r""" HTTPHeader describes a custom header to be used in HTTP probes
+HTTPHeader describes a custom header to be used in HTTP probes
 
 #### Attributes
 
@@ -4127,7 +4130,7 @@ r""" HTTPHeader describes a custom header to be used in HTTP probes
 |**value** `required`|str|The header field value||
 ### MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0LivenessProbeTCPSocket
 
-r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
+TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
 
 #### Attributes
 
@@ -4137,7 +4140,7 @@ r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet suppo
 |**port** `required`|int | str|Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.||
 ### MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0PortsItems0
 
-r""" ContainerPort represents a network port in a single container.
+ContainerPort represents a network port in a single container.
 
 #### Attributes
 
@@ -4150,7 +4153,7 @@ r""" ContainerPort represents a network port in a single container.
 |**protocol**|str|||
 ### MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0ReadinessProbe
 
-r""" Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 
 #### Attributes
 
@@ -4166,7 +4169,7 @@ r""" Periodic probe of container service readiness. Container will be removed fr
 |**timeoutSeconds**|int|Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes||
 ### MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0ReadinessProbeExec
 
-r""" One and only one of the following should be specified. Exec specifies the action to take.
+One and only one of the following should be specified. Exec specifies the action to take.
 
 #### Attributes
 
@@ -4175,7 +4178,7 @@ r""" One and only one of the following should be specified. Exec specifies the a
 |**command**|[str]|Command is the command line to execute inside the container, the working directory for the command  is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('\|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.||
 ### MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0ReadinessProbeHTTPGet
 
-r""" HTTPGet specifies the http request to perform.
+HTTPGet specifies the http request to perform.
 
 #### Attributes
 
@@ -4188,7 +4191,7 @@ r""" HTTPGet specifies the http request to perform.
 |**scheme**|str|Scheme to use for connecting to the host. Defaults to HTTP.||
 ### MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0ReadinessProbeHTTPGetHTTPHeadersItems0
 
-r""" HTTPHeader describes a custom header to be used in HTTP probes
+HTTPHeader describes a custom header to be used in HTTP probes
 
 #### Attributes
 
@@ -4198,7 +4201,7 @@ r""" HTTPHeader describes a custom header to be used in HTTP probes
 |**value** `required`|str|The header field value||
 ### MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0ReadinessProbeTCPSocket
 
-r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
+TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
 
 #### Attributes
 
@@ -4208,7 +4211,7 @@ r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet suppo
 |**port** `required`|int | str|Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.||
 ### MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0Resources
 
-r""" Compute Resources required by this container. Cannot be updated. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
+Compute Resources required by this container. Cannot be updated. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
 
 #### Attributes
 
@@ -4218,7 +4221,7 @@ r""" Compute Resources required by this container. Cannot be updated. More info:
 |**requests**|{str:str}|Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/||
 ### MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0SecurityContext
 
-r""" Security options the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-context/ More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+Security options the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-context/ More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
 
 #### Attributes
 
@@ -4236,7 +4239,7 @@ r""" Security options the pod should run with. More info: https://kubernetes.io/
 |**windowsOptions**|[MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0SecurityContextWindowsOptions](#monitoringcoreoscomv1alertmanagerspecinitcontainersitems0securitycontextwindowsoptions)|windows options||
 ### MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0SecurityContextCapabilities
 
-r""" The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime.
+The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime.
 
 #### Attributes
 
@@ -4246,7 +4249,7 @@ r""" The capabilities to add/drop when running containers. Defaults to the defau
 |**drop**|[str]|Removed capabilities||
 ### MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0SecurityContextSeLinuxOptions
 
-r""" The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container.  May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container.  May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
 
 #### Attributes
 
@@ -4258,7 +4261,7 @@ r""" The SELinux context to be applied to the container. If unspecified, the con
 |**user**|str|User is a SELinux user label that applies to the container.||
 ### MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0SecurityContextWindowsOptions
 
-r""" The Windows specific settings applied to all containers. If unspecified, the options from the PodSecurityContext will be used. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+The Windows specific settings applied to all containers. If unspecified, the options from the PodSecurityContext will be used. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
 
 #### Attributes
 
@@ -4269,7 +4272,7 @@ r""" The Windows specific settings applied to all containers. If unspecified, th
 |**runAsUserName**|str|The UserName in Windows to run the entrypoint of the container process. Defaults to the user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.||
 ### MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0StartupProbe
 
-r""" StartupProbe indicates that the Pod has successfully initialized. If specified, no other probes are executed until this completes successfully. If this probe fails, the Pod will be restarted, just as if the livenessProbe failed. This can be used to provide different probe parameters at the beginning of a Pod's lifecycle, when it might take a long time to load data or warm a cache, than during steady-state operation. This cannot be updated. This is a beta feature enabled by the StartupProbe feature flag. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+StartupProbe indicates that the Pod has successfully initialized. If specified, no other probes are executed until this completes successfully. If this probe fails, the Pod will be restarted, just as if the livenessProbe failed. This can be used to provide different probe parameters at the beginning of a Pod's lifecycle, when it might take a long time to load data or warm a cache, than during steady-state operation. This cannot be updated. This is a beta feature enabled by the StartupProbe feature flag. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 
 #### Attributes
 
@@ -4285,7 +4288,7 @@ r""" StartupProbe indicates that the Pod has successfully initialized. If specif
 |**timeoutSeconds**|int|Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes||
 ### MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0StartupProbeExec
 
-r""" One and only one of the following should be specified. Exec specifies the action to take.
+One and only one of the following should be specified. Exec specifies the action to take.
 
 #### Attributes
 
@@ -4294,7 +4297,7 @@ r""" One and only one of the following should be specified. Exec specifies the a
 |**command**|[str]|Command is the command line to execute inside the container, the working directory for the command  is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('\|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.||
 ### MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0StartupProbeHTTPGet
 
-r""" HTTPGet specifies the http request to perform.
+HTTPGet specifies the http request to perform.
 
 #### Attributes
 
@@ -4307,7 +4310,7 @@ r""" HTTPGet specifies the http request to perform.
 |**scheme**|str|Scheme to use for connecting to the host. Defaults to HTTP.||
 ### MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0StartupProbeHTTPGetHTTPHeadersItems0
 
-r""" HTTPHeader describes a custom header to be used in HTTP probes
+HTTPHeader describes a custom header to be used in HTTP probes
 
 #### Attributes
 
@@ -4317,7 +4320,7 @@ r""" HTTPHeader describes a custom header to be used in HTTP probes
 |**value** `required`|str|The header field value||
 ### MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0StartupProbeTCPSocket
 
-r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
+TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
 
 #### Attributes
 
@@ -4327,7 +4330,7 @@ r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet suppo
 |**port** `required`|int | str|Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.||
 ### MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0VolumeDevicesItems0
 
-r""" volumeDevice describes a mapping of a raw block device within a container.
+volumeDevice describes a mapping of a raw block device within a container.
 
 #### Attributes
 
@@ -4337,7 +4340,7 @@ r""" volumeDevice describes a mapping of a raw block device within a container.
 |**name** `required`|str|name must match the name of a persistentVolumeClaim in the pod||
 ### MonitoringCoreosComV1AlertmanagerSpecInitContainersItems0VolumeMountsItems0
 
-r""" VolumeMount describes a mounting of a Volume within a container.
+VolumeMount describes a mounting of a Volume within a container.
 
 #### Attributes
 
@@ -4351,7 +4354,7 @@ r""" VolumeMount describes a mounting of a Volume within a container.
 |**subPathExpr**|str|Expanded path within the volume from which the container's volume should be mounted. Behaves similarly to SubPath but environment variable references $(VAR_NAME) are expanded using the container's environment. Defaults to "" (volume's root). SubPathExpr and SubPath are mutually exclusive.||
 ### MonitoringCoreosComV1AlertmanagerSpecPodMetadata
 
-r""" PodMetadata configures Labels and Annotations which are propagated to the alertmanager pods.
+PodMetadata configures Labels and Annotations which are propagated to the alertmanager pods.
 
 #### Attributes
 
@@ -4362,7 +4365,7 @@ r""" PodMetadata configures Labels and Annotations which are propagated to the a
 |**name**|str|Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names||
 ### MonitoringCoreosComV1AlertmanagerSpecResources
 
-r""" Define resources requests and limits for single Pods.
+Define resources requests and limits for single Pods.
 
 #### Attributes
 
@@ -4372,7 +4375,7 @@ r""" Define resources requests and limits for single Pods.
 |**requests**|{str:str}|Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/||
 ### MonitoringCoreosComV1AlertmanagerSpecSecurityContext
 
-r""" SecurityContext holds pod-level security attributes and common container settings. This defaults to the default PodSecurityContext.
+SecurityContext holds pod-level security attributes and common container settings. This defaults to the default PodSecurityContext.
 
 #### Attributes
 
@@ -4389,7 +4392,7 @@ r""" SecurityContext holds pod-level security attributes and common container se
 |**windowsOptions**|[MonitoringCoreosComV1AlertmanagerSpecSecurityContextWindowsOptions](#monitoringcoreoscomv1alertmanagerspecsecuritycontextwindowsoptions)|windows options||
 ### MonitoringCoreosComV1AlertmanagerSpecSecurityContextSeLinuxOptions
 
-r""" The SELinux context to be applied to all containers. If unspecified, the container runtime will allocate a random SELinux context for each container.  May also be set in SecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container.
+The SELinux context to be applied to all containers. If unspecified, the container runtime will allocate a random SELinux context for each container.  May also be set in SecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container.
 
 #### Attributes
 
@@ -4401,7 +4404,7 @@ r""" The SELinux context to be applied to all containers. If unspecified, the co
 |**user**|str|User is a SELinux user label that applies to the container.||
 ### MonitoringCoreosComV1AlertmanagerSpecSecurityContextSysctlsItems0
 
-r""" Sysctl defines a kernel parameter to be set
+Sysctl defines a kernel parameter to be set
 
 #### Attributes
 
@@ -4411,7 +4414,7 @@ r""" Sysctl defines a kernel parameter to be set
 |**value** `required`|str|Value of a property to set||
 ### MonitoringCoreosComV1AlertmanagerSpecSecurityContextWindowsOptions
 
-r""" The Windows specific settings applied to all containers. If unspecified, the options within a container's SecurityContext will be used. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+The Windows specific settings applied to all containers. If unspecified, the options within a container's SecurityContext will be used. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
 
 #### Attributes
 
@@ -4422,7 +4425,7 @@ r""" The Windows specific settings applied to all containers. If unspecified, th
 |**runAsUserName**|str|The UserName in Windows to run the entrypoint of the container process. Defaults to the user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.||
 ### MonitoringCoreosComV1AlertmanagerSpecStorage
 
-r""" Storage is the definition of how storage will be used by the Alertmanager instances.
+Storage is the definition of how storage will be used by the Alertmanager instances.
 
 #### Attributes
 
@@ -4433,7 +4436,7 @@ r""" Storage is the definition of how storage will be used by the Alertmanager i
 |**volumeClaimTemplate**|[MonitoringCoreosComV1AlertmanagerSpecStorageVolumeClaimTemplate](#monitoringcoreoscomv1alertmanagerspecstoragevolumeclaimtemplate)|volume claim template||
 ### MonitoringCoreosComV1AlertmanagerSpecStorageEmptyDir
 
-r""" EmptyDirVolumeSource to be used by the Prometheus StatefulSets. If specified, used in place of any volumeClaimTemplate. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir
+EmptyDirVolumeSource to be used by the Prometheus StatefulSets. If specified, used in place of any volumeClaimTemplate. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir
 
 #### Attributes
 
@@ -4443,7 +4446,7 @@ r""" EmptyDirVolumeSource to be used by the Prometheus StatefulSets. If specifie
 |**sizeLimit**|str|Total amount of local storage required for this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir||
 ### MonitoringCoreosComV1AlertmanagerSpecStorageVolumeClaimTemplate
 
-r""" A PVC spec to be used by the Prometheus StatefulSets.
+A PVC spec to be used by the Prometheus StatefulSets.
 
 #### Attributes
 
@@ -4456,7 +4459,7 @@ r""" A PVC spec to be used by the Prometheus StatefulSets.
 |**status**|[MonitoringCoreosComV1AlertmanagerSpecStorageVolumeClaimTemplateStatus](#monitoringcoreoscomv1alertmanagerspecstoragevolumeclaimtemplatestatus)|status||
 ### MonitoringCoreosComV1AlertmanagerSpecStorageVolumeClaimTemplateMetadata
 
-r""" EmbeddedMetadata contains metadata relevant to an EmbeddedResource.
+EmbeddedMetadata contains metadata relevant to an EmbeddedResource.
 
 #### Attributes
 
@@ -4467,7 +4470,7 @@ r""" EmbeddedMetadata contains metadata relevant to an EmbeddedResource.
 |**name**|str|Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names||
 ### MonitoringCoreosComV1AlertmanagerSpecStorageVolumeClaimTemplateSpec
 
-r""" Spec defines the desired characteristics of a volume requested by a pod author. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
+Spec defines the desired characteristics of a volume requested by a pod author. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
 
 #### Attributes
 
@@ -4482,7 +4485,7 @@ r""" Spec defines the desired characteristics of a volume requested by a pod aut
 |**volumeName**|str|VolumeName is the binding reference to the PersistentVolume backing this claim.||
 ### MonitoringCoreosComV1AlertmanagerSpecStorageVolumeClaimTemplateSpecDataSource
 
-r""" This field can be used to specify either: * An existing VolumeSnapshot object (snapshot.storage.k8s.io/VolumeSnapshot - Beta) * An existing PVC (PersistentVolumeClaim) * An existing custom resource/object that implements data population (Alpha) In order to use VolumeSnapshot object types, the appropriate feature gate must be enabled (VolumeSnapshotDataSource or AnyVolumeDataSource) If the provisioner or an external controller can support the specified data source, it will create a new volume based on the contents of the specified data source. If the specified data source is not supported, the volume will not be created and the failure will be reported as an event. In the future, we plan to support more data source types and the behavior of the provisioner may change.
+This field can be used to specify either: * An existing VolumeSnapshot object (snapshot.storage.k8s.io/VolumeSnapshot - Beta) * An existing PVC (PersistentVolumeClaim) * An existing custom resource/object that implements data population (Alpha) In order to use VolumeSnapshot object types, the appropriate feature gate must be enabled (VolumeSnapshotDataSource or AnyVolumeDataSource) If the provisioner or an external controller can support the specified data source, it will create a new volume based on the contents of the specified data source. If the specified data source is not supported, the volume will not be created and the failure will be reported as an event. In the future, we plan to support more data source types and the behavior of the provisioner may change.
 
 #### Attributes
 
@@ -4493,7 +4496,7 @@ r""" This field can be used to specify either: * An existing VolumeSnapshot obje
 |**name** `required`|str|Name is the name of resource being referenced||
 ### MonitoringCoreosComV1AlertmanagerSpecStorageVolumeClaimTemplateSpecResources
 
-r""" Resources represents the minimum resources the volume should have. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+Resources represents the minimum resources the volume should have. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 
 #### Attributes
 
@@ -4503,7 +4506,7 @@ r""" Resources represents the minimum resources the volume should have. More inf
 |**requests**|{str:str}|Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/||
 ### MonitoringCoreosComV1AlertmanagerSpecStorageVolumeClaimTemplateSpecSelector
 
-r""" A label query over volumes to consider for binding.
+A label query over volumes to consider for binding.
 
 #### Attributes
 
@@ -4513,7 +4516,7 @@ r""" A label query over volumes to consider for binding.
 |**matchLabels**|{str:str}|matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.||
 ### MonitoringCoreosComV1AlertmanagerSpecStorageVolumeClaimTemplateSpecSelectorMatchExpressionsItems0
 
-r""" A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
 #### Attributes
 
@@ -4524,7 +4527,7 @@ r""" A label selector requirement is a selector that contains values, a key, and
 |**values**|[str]|values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.||
 ### MonitoringCoreosComV1AlertmanagerSpecStorageVolumeClaimTemplateStatus
 
-r""" Status represents the current information/status of a persistent volume claim. Read-only. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
+Status represents the current information/status of a persistent volume claim. Read-only. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
 
 #### Attributes
 
@@ -4536,7 +4539,7 @@ r""" Status represents the current information/status of a persistent volume cla
 |**phase**|str|Phase represents the current phase of PersistentVolumeClaim.||
 ### MonitoringCoreosComV1AlertmanagerSpecStorageVolumeClaimTemplateStatusConditionsItems0
 
-r""" PersistentVolumeClaimCondition contains details about state of pvc
+PersistentVolumeClaimCondition contains details about state of pvc
 
 #### Attributes
 
@@ -4550,7 +4553,7 @@ r""" PersistentVolumeClaimCondition contains details about state of pvc
 |**type** `required`|str|||
 ### MonitoringCoreosComV1AlertmanagerSpecTolerationsItems0
 
-r""" The pod this Toleration is attached to tolerates any taint that matches the triple <key,value,effect> using the matching operator <operator>.
+The pod this Toleration is attached to tolerates any taint that matches the triple <key,value,effect> using the matching operator <operator>.
 
 #### Attributes
 
@@ -4563,7 +4566,7 @@ r""" The pod this Toleration is attached to tolerates any taint that matches the
 |**value**|str|Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string.||
 ### MonitoringCoreosComV1AlertmanagerSpecTopologySpreadConstraintsItems0
 
-r""" TopologySpreadConstraint specifies how to spread matching pods among the given topology.
+TopologySpreadConstraint specifies how to spread matching pods among the given topology.
 
 #### Attributes
 
@@ -4575,7 +4578,7 @@ r""" TopologySpreadConstraint specifies how to spread matching pods among the gi
 |**whenUnsatisfiable** `required`|str|WhenUnsatisfiable indicates how to deal with a pod if it doesn't satisfy the spread constraint. - DoNotSchedule (default) tells the scheduler not to schedule it - ScheduleAnyway tells the scheduler to still schedule it It's considered as "Unsatisfiable" if and only if placing incoming pod on any topology violates "MaxSkew". For example, in a 3-zone cluster, MaxSkew is set to 1, and pods with the same labelSelector spread as 3/1/1: \| zone1 \| zone2 \| zone3 \| \| P P P \|   P   \|   P   \| If WhenUnsatisfiable is set to DoNotSchedule, incoming pod can only be scheduled to zone2(zone3) to become 3/2/1(3/1/2) as ActualSkew(2-1) on zone2(zone3) satisfies MaxSkew(1). In other words, the cluster can still be imbalanced, but scheduler won't make it *more* imbalanced. It's a required field.||
 ### MonitoringCoreosComV1AlertmanagerSpecTopologySpreadConstraintsItems0LabelSelector
 
-r""" LabelSelector is used to find matching pods. Pods that match this label selector are counted to determine the number of pods in their corresponding topology domain.
+LabelSelector is used to find matching pods. Pods that match this label selector are counted to determine the number of pods in their corresponding topology domain.
 
 #### Attributes
 
@@ -4585,7 +4588,7 @@ r""" LabelSelector is used to find matching pods. Pods that match this label sel
 |**matchLabels**|{str:str}|matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.||
 ### MonitoringCoreosComV1AlertmanagerSpecTopologySpreadConstraintsItems0LabelSelectorMatchExpressionsItems0
 
-r""" A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
 #### Attributes
 
@@ -4596,7 +4599,7 @@ r""" A label selector requirement is a selector that contains values, a key, and
 |**values**|[str]|values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.||
 ### MonitoringCoreosComV1AlertmanagerSpecVolumeMountsItems0
 
-r""" VolumeMount describes a mounting of a Volume within a container.
+VolumeMount describes a mounting of a Volume within a container.
 
 #### Attributes
 
@@ -4610,7 +4613,7 @@ r""" VolumeMount describes a mounting of a Volume within a container.
 |**subPathExpr**|str|Expanded path within the volume from which the container's volume should be mounted. Behaves similarly to SubPath but environment variable references $(VAR_NAME) are expanded using the container's environment. Defaults to "" (volume's root). SubPathExpr and SubPath are mutually exclusive.||
 ### MonitoringCoreosComV1AlertmanagerSpecVolumesItems0
 
-r""" Volume represents a named volume in a pod that may be accessed by any container in the pod.
+Volume represents a named volume in a pod that may be accessed by any container in the pod.
 
 #### Attributes
 
@@ -4647,7 +4650,7 @@ r""" Volume represents a named volume in a pod that may be accessed by any conta
 |**vsphereVolume**|[MonitoringCoreosComV1AlertmanagerSpecVolumesItems0VsphereVolume](#monitoringcoreoscomv1alertmanagerspecvolumesitems0vspherevolume)|vsphere volume||
 ### MonitoringCoreosComV1AlertmanagerSpecVolumesItems0AwsElasticBlockStore
 
-r""" AWSElasticBlockStore represents an AWS Disk resource that is attached to a kubelet's host machine and then exposed to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+AWSElasticBlockStore represents an AWS Disk resource that is attached to a kubelet's host machine and then exposed to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
 
 #### Attributes
 
@@ -4659,7 +4662,7 @@ r""" AWSElasticBlockStore represents an AWS Disk resource that is attached to a 
 |**volumeID** `required`|str|Unique ID of the persistent disk resource in AWS (Amazon EBS volume). More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore||
 ### MonitoringCoreosComV1AlertmanagerSpecVolumesItems0AzureDisk
 
-r""" AzureDisk represents an Azure Data Disk mount on the host and bind mount to the pod.
+AzureDisk represents an Azure Data Disk mount on the host and bind mount to the pod.
 
 #### Attributes
 
@@ -4673,7 +4676,7 @@ r""" AzureDisk represents an Azure Data Disk mount on the host and bind mount to
 |**readOnly**|bool|Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.||
 ### MonitoringCoreosComV1AlertmanagerSpecVolumesItems0AzureFile
 
-r""" AzureFile represents an Azure File Service mount on the host and bind mount to the pod.
+AzureFile represents an Azure File Service mount on the host and bind mount to the pod.
 
 #### Attributes
 
@@ -4684,7 +4687,7 @@ r""" AzureFile represents an Azure File Service mount on the host and bind mount
 |**shareName** `required`|str|Share Name||
 ### MonitoringCoreosComV1AlertmanagerSpecVolumesItems0Cephfs
 
-r""" CephFS represents a Ceph FS mount on the host that shares a pod's lifetime
+CephFS represents a Ceph FS mount on the host that shares a pod's lifetime
 
 #### Attributes
 
@@ -4698,7 +4701,7 @@ r""" CephFS represents a Ceph FS mount on the host that shares a pod's lifetime
 |**user**|str|Optional: User is the rados user name, default is admin More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it||
 ### MonitoringCoreosComV1AlertmanagerSpecVolumesItems0CephfsSecretRef
 
-r""" Optional: SecretRef is reference to the authentication secret for User, default is empty. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+Optional: SecretRef is reference to the authentication secret for User, default is empty. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
 
 #### Attributes
 
@@ -4707,7 +4710,7 @@ r""" Optional: SecretRef is reference to the authentication secret for User, def
 |**name**|str|Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?||
 ### MonitoringCoreosComV1AlertmanagerSpecVolumesItems0Cinder
 
-r""" Cinder represents a cinder volume attached and mounted on kubelets host machine. More info: https://examples.k8s.io/mysql-cinder-pd/README.md
+Cinder represents a cinder volume attached and mounted on kubelets host machine. More info: https://examples.k8s.io/mysql-cinder-pd/README.md
 
 #### Attributes
 
@@ -4719,7 +4722,7 @@ r""" Cinder represents a cinder volume attached and mounted on kubelets host mac
 |**volumeID** `required`|str|volume id used to identify the volume in cinder. More info: https://examples.k8s.io/mysql-cinder-pd/README.md||
 ### MonitoringCoreosComV1AlertmanagerSpecVolumesItems0CinderSecretRef
 
-r""" Optional: points to a secret object containing parameters used to connect to OpenStack.
+Optional: points to a secret object containing parameters used to connect to OpenStack.
 
 #### Attributes
 
@@ -4728,7 +4731,7 @@ r""" Optional: points to a secret object containing parameters used to connect t
 |**name**|str|Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?||
 ### MonitoringCoreosComV1AlertmanagerSpecVolumesItems0ConfigMap
 
-r""" ConfigMap represents a configMap that should populate this volume
+ConfigMap represents a configMap that should populate this volume
 
 #### Attributes
 
@@ -4740,7 +4743,7 @@ r""" ConfigMap represents a configMap that should populate this volume
 |**optional**|bool|Specify whether the ConfigMap or its keys must be defined||
 ### MonitoringCoreosComV1AlertmanagerSpecVolumesItems0ConfigMapItemsItems0
 
-r""" Maps a string key to a path within a volume.
+Maps a string key to a path within a volume.
 
 #### Attributes
 
@@ -4751,7 +4754,7 @@ r""" Maps a string key to a path within a volume.
 |**path** `required`|str|The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.||
 ### MonitoringCoreosComV1AlertmanagerSpecVolumesItems0Csi
 
-r""" CSI (Container Storage Interface) represents storage that is handled by an external CSI driver (Alpha feature).
+CSI (Container Storage Interface) represents storage that is handled by an external CSI driver (Alpha feature).
 
 #### Attributes
 
@@ -4764,7 +4767,7 @@ r""" CSI (Container Storage Interface) represents storage that is handled by an 
 |**volumeAttributes**|{str:str}|VolumeAttributes stores driver-specific properties that are passed to the CSI driver. Consult your driver's documentation for supported values.||
 ### MonitoringCoreosComV1AlertmanagerSpecVolumesItems0CsiNodePublishSecretRef
 
-r""" NodePublishSecretRef is a reference to the secret object containing sensitive information to pass to the CSI driver to complete the CSI NodePublishVolume and NodeUnpublishVolume calls. This field is optional, and  may be empty if no secret is required. If the secret object contains more than one secret, all secret references are passed.
+NodePublishSecretRef is a reference to the secret object containing sensitive information to pass to the CSI driver to complete the CSI NodePublishVolume and NodeUnpublishVolume calls. This field is optional, and  may be empty if no secret is required. If the secret object contains more than one secret, all secret references are passed.
 
 #### Attributes
 
@@ -4773,7 +4776,7 @@ r""" NodePublishSecretRef is a reference to the secret object containing sensiti
 |**name**|str|Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?||
 ### MonitoringCoreosComV1AlertmanagerSpecVolumesItems0DownwardAPI
 
-r""" DownwardAPI represents downward API about the pod that should populate this volume
+DownwardAPI represents downward API about the pod that should populate this volume
 
 #### Attributes
 
@@ -4783,7 +4786,7 @@ r""" DownwardAPI represents downward API about the pod that should populate this
 |**items**|[[MonitoringCoreosComV1AlertmanagerSpecVolumesItems0DownwardAPIItemsItems0](#monitoringcoreoscomv1alertmanagerspecvolumesitems0downwardapiitemsitems0)]|Items is a list of downward API volume file||
 ### MonitoringCoreosComV1AlertmanagerSpecVolumesItems0DownwardAPIItemsItems0
 
-r""" DownwardAPIVolumeFile represents information to create the file containing the pod field
+DownwardAPIVolumeFile represents information to create the file containing the pod field
 
 #### Attributes
 
@@ -4795,7 +4798,7 @@ r""" DownwardAPIVolumeFile represents information to create the file containing 
 |**resourceFieldRef**|[MonitoringCoreosComV1AlertmanagerSpecVolumesItems0DownwardAPIItemsItems0ResourceFieldRef](#monitoringcoreoscomv1alertmanagerspecvolumesitems0downwardapiitemsitems0resourcefieldref)|resource field ref||
 ### MonitoringCoreosComV1AlertmanagerSpecVolumesItems0DownwardAPIItemsItems0FieldRef
 
-r""" Required: Selects a field of the pod: only annotations, labels, name and namespace are supported.
+Required: Selects a field of the pod: only annotations, labels, name and namespace are supported.
 
 #### Attributes
 
@@ -4805,7 +4808,7 @@ r""" Required: Selects a field of the pod: only annotations, labels, name and na
 |**fieldPath** `required`|str|Path of the field to select in the specified API version.||
 ### MonitoringCoreosComV1AlertmanagerSpecVolumesItems0DownwardAPIItemsItems0ResourceFieldRef
 
-r""" Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported.
+Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported.
 
 #### Attributes
 
@@ -4816,7 +4819,7 @@ r""" Selects a resource of the container: only resources limits and requests (li
 |**resource** `required`|str|Required: resource to select||
 ### MonitoringCoreosComV1AlertmanagerSpecVolumesItems0EmptyDir
 
-r""" EmptyDir represents a temporary directory that shares a pod's lifetime. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir
+EmptyDir represents a temporary directory that shares a pod's lifetime. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir
 
 #### Attributes
 
@@ -4826,7 +4829,7 @@ r""" EmptyDir represents a temporary directory that shares a pod's lifetime. Mor
 |**sizeLimit**|str|Total amount of local storage required for this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir||
 ### MonitoringCoreosComV1AlertmanagerSpecVolumesItems0Fc
 
-r""" FC represents a Fibre Channel resource that is attached to a kubelet's host machine and then exposed to the pod.
+FC represents a Fibre Channel resource that is attached to a kubelet's host machine and then exposed to the pod.
 
 #### Attributes
 
@@ -4839,7 +4842,7 @@ r""" FC represents a Fibre Channel resource that is attached to a kubelet's host
 |**wwids**|[str]|Optional: FC volume world wide identifiers (wwids) Either wwids or combination of targetWWNs and lun must be set, but not both simultaneously.||
 ### MonitoringCoreosComV1AlertmanagerSpecVolumesItems0FlexVolume
 
-r""" FlexVolume represents a generic volume resource that is provisioned/attached using an exec based plugin.
+FlexVolume represents a generic volume resource that is provisioned/attached using an exec based plugin.
 
 #### Attributes
 
@@ -4852,7 +4855,7 @@ r""" FlexVolume represents a generic volume resource that is provisioned/attache
 |**secretRef**|[MonitoringCoreosComV1AlertmanagerSpecVolumesItems0FlexVolumeSecretRef](#monitoringcoreoscomv1alertmanagerspecvolumesitems0flexvolumesecretref)|secret ref||
 ### MonitoringCoreosComV1AlertmanagerSpecVolumesItems0FlexVolumeSecretRef
 
-r""" Optional: SecretRef is reference to the secret object containing sensitive information to pass to the plugin scripts. This may be empty if no secret object is specified. If the secret object contains more than one secret, all secrets are passed to the plugin scripts.
+Optional: SecretRef is reference to the secret object containing sensitive information to pass to the plugin scripts. This may be empty if no secret object is specified. If the secret object contains more than one secret, all secrets are passed to the plugin scripts.
 
 #### Attributes
 
@@ -4861,7 +4864,7 @@ r""" Optional: SecretRef is reference to the secret object containing sensitive 
 |**name**|str|Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?||
 ### MonitoringCoreosComV1AlertmanagerSpecVolumesItems0Flocker
 
-r""" Flocker represents a Flocker volume attached to a kubelet's host machine. This depends on the Flocker control service being running
+Flocker represents a Flocker volume attached to a kubelet's host machine. This depends on the Flocker control service being running
 
 #### Attributes
 
@@ -4871,7 +4874,7 @@ r""" Flocker represents a Flocker volume attached to a kubelet's host machine. T
 |**datasetUUID**|str|UUID of the dataset. This is unique identifier of a Flocker dataset||
 ### MonitoringCoreosComV1AlertmanagerSpecVolumesItems0GcePersistentDisk
 
-r""" GCEPersistentDisk represents a GCE Disk resource that is attached to a kubelet's host machine and then exposed to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+GCEPersistentDisk represents a GCE Disk resource that is attached to a kubelet's host machine and then exposed to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
 
 #### Attributes
 
@@ -4883,7 +4886,7 @@ r""" GCEPersistentDisk represents a GCE Disk resource that is attached to a kube
 |**readOnly**|bool|ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk||
 ### MonitoringCoreosComV1AlertmanagerSpecVolumesItems0GitRepo
 
-r""" GitRepo represents a git repository at a particular revision. DEPRECATED: GitRepo is deprecated. To provision a container with a git repo, mount an EmptyDir into an InitContainer that clones the repo using git, then mount the EmptyDir into the Pod's container.
+GitRepo represents a git repository at a particular revision. DEPRECATED: GitRepo is deprecated. To provision a container with a git repo, mount an EmptyDir into an InitContainer that clones the repo using git, then mount the EmptyDir into the Pod's container.
 
 #### Attributes
 
@@ -4894,7 +4897,7 @@ r""" GitRepo represents a git repository at a particular revision. DEPRECATED: G
 |**revision**|str|Commit hash for the specified revision.||
 ### MonitoringCoreosComV1AlertmanagerSpecVolumesItems0Glusterfs
 
-r""" Glusterfs represents a Glusterfs mount on the host that shares a pod's lifetime. More info: https://examples.k8s.io/volumes/glusterfs/README.md
+Glusterfs represents a Glusterfs mount on the host that shares a pod's lifetime. More info: https://examples.k8s.io/volumes/glusterfs/README.md
 
 #### Attributes
 
@@ -4905,7 +4908,7 @@ r""" Glusterfs represents a Glusterfs mount on the host that shares a pod's life
 |**readOnly**|bool|ReadOnly here will force the Glusterfs volume to be mounted with read-only permissions. Defaults to false. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod||
 ### MonitoringCoreosComV1AlertmanagerSpecVolumesItems0HostPath
 
-r""" HostPath represents a pre-existing file or directory on the host machine that is directly exposed to the container. This is generally used for system agents or other privileged things that are allowed to see the host machine. Most containers will NOT need this. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath --- TODO(jonesdl) We need to restrict who can use host directory mounts and who can/can not mount host directories as read/write.
+HostPath represents a pre-existing file or directory on the host machine that is directly exposed to the container. This is generally used for system agents or other privileged things that are allowed to see the host machine. Most containers will NOT need this. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath --- TODO(jonesdl) We need to restrict who can use host directory mounts and who can/can not mount host directories as read/write.
 
 #### Attributes
 
@@ -4915,7 +4918,7 @@ r""" HostPath represents a pre-existing file or directory on the host machine th
 |**type**|str|||
 ### MonitoringCoreosComV1AlertmanagerSpecVolumesItems0Iscsi
 
-r""" ISCSI represents an ISCSI Disk resource that is attached to a kubelet's host machine and then exposed to the pod. More info: https://examples.k8s.io/volumes/iscsi/README.md
+ISCSI represents an ISCSI Disk resource that is attached to a kubelet's host machine and then exposed to the pod. More info: https://examples.k8s.io/volumes/iscsi/README.md
 
 #### Attributes
 
@@ -4934,7 +4937,7 @@ r""" ISCSI represents an ISCSI Disk resource that is attached to a kubelet's hos
 |**targetPortal** `required`|str|iSCSI Target Portal. The Portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260).||
 ### MonitoringCoreosComV1AlertmanagerSpecVolumesItems0IscsiSecretRef
 
-r""" CHAP Secret for iSCSI target and initiator authentication
+CHAP Secret for iSCSI target and initiator authentication
 
 #### Attributes
 
@@ -4943,7 +4946,7 @@ r""" CHAP Secret for iSCSI target and initiator authentication
 |**name**|str|Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?||
 ### MonitoringCoreosComV1AlertmanagerSpecVolumesItems0Nfs
 
-r""" NFS represents an NFS mount on the host that shares a pod's lifetime More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+NFS represents an NFS mount on the host that shares a pod's lifetime More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
 
 #### Attributes
 
@@ -4954,7 +4957,7 @@ r""" NFS represents an NFS mount on the host that shares a pod's lifetime More i
 |**server** `required`|str|Server is the hostname or IP address of the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs||
 ### MonitoringCoreosComV1AlertmanagerSpecVolumesItems0PersistentVolumeClaim
 
-r""" PersistentVolumeClaimVolumeSource represents a reference to a PersistentVolumeClaim in the same namespace. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
+PersistentVolumeClaimVolumeSource represents a reference to a PersistentVolumeClaim in the same namespace. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
 
 #### Attributes
 
@@ -4964,7 +4967,7 @@ r""" PersistentVolumeClaimVolumeSource represents a reference to a PersistentVol
 |**readOnly**|bool|Will force the ReadOnly setting in VolumeMounts. Default false.||
 ### MonitoringCoreosComV1AlertmanagerSpecVolumesItems0PhotonPersistentDisk
 
-r""" PhotonPersistentDisk represents a PhotonController persistent disk attached and mounted on kubelets host machine
+PhotonPersistentDisk represents a PhotonController persistent disk attached and mounted on kubelets host machine
 
 #### Attributes
 
@@ -4974,7 +4977,7 @@ r""" PhotonPersistentDisk represents a PhotonController persistent disk attached
 |**pdID** `required`|str|ID that identifies Photon Controller persistent disk||
 ### MonitoringCoreosComV1AlertmanagerSpecVolumesItems0PortworxVolume
 
-r""" PortworxVolume represents a portworx volume attached and mounted on kubelets host machine
+PortworxVolume represents a portworx volume attached and mounted on kubelets host machine
 
 #### Attributes
 
@@ -4985,7 +4988,7 @@ r""" PortworxVolume represents a portworx volume attached and mounted on kubelet
 |**volumeID** `required`|str|VolumeID uniquely identifies a Portworx volume||
 ### MonitoringCoreosComV1AlertmanagerSpecVolumesItems0Projected
 
-r""" Items for all in one resources secrets, configmaps, and downward API
+Items for all in one resources secrets, configmaps, and downward API
 
 #### Attributes
 
@@ -4995,7 +4998,7 @@ r""" Items for all in one resources secrets, configmaps, and downward API
 |**sources** `required`|[[MonitoringCoreosComV1AlertmanagerSpecVolumesItems0ProjectedSourcesItems0](#monitoringcoreoscomv1alertmanagerspecvolumesitems0projectedsourcesitems0)]|list of volume projections||
 ### MonitoringCoreosComV1AlertmanagerSpecVolumesItems0ProjectedSourcesItems0
 
-r""" Projection that may be projected along with other supported volume types
+Projection that may be projected along with other supported volume types
 
 #### Attributes
 
@@ -5007,7 +5010,7 @@ r""" Projection that may be projected along with other supported volume types
 |**serviceAccountToken**|[MonitoringCoreosComV1AlertmanagerSpecVolumesItems0ProjectedSourcesItems0ServiceAccountToken](#monitoringcoreoscomv1alertmanagerspecvolumesitems0projectedsourcesitems0serviceaccounttoken)|service account token||
 ### MonitoringCoreosComV1AlertmanagerSpecVolumesItems0ProjectedSourcesItems0ConfigMap
 
-r""" information about the configMap data to project
+information about the configMap data to project
 
 #### Attributes
 
@@ -5018,7 +5021,7 @@ r""" information about the configMap data to project
 |**optional**|bool|Specify whether the ConfigMap or its keys must be defined||
 ### MonitoringCoreosComV1AlertmanagerSpecVolumesItems0ProjectedSourcesItems0ConfigMapItemsItems0
 
-r""" Maps a string key to a path within a volume.
+Maps a string key to a path within a volume.
 
 #### Attributes
 
@@ -5029,7 +5032,7 @@ r""" Maps a string key to a path within a volume.
 |**path** `required`|str|The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.||
 ### MonitoringCoreosComV1AlertmanagerSpecVolumesItems0ProjectedSourcesItems0DownwardAPI
 
-r""" information about the downwardAPI data to project
+information about the downwardAPI data to project
 
 #### Attributes
 
@@ -5038,7 +5041,7 @@ r""" information about the downwardAPI data to project
 |**items**|[[MonitoringCoreosComV1AlertmanagerSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0](#monitoringcoreoscomv1alertmanagerspecvolumesitems0projectedsourcesitems0downwardapiitemsitems0)]|Items is a list of DownwardAPIVolume file||
 ### MonitoringCoreosComV1AlertmanagerSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0
 
-r""" DownwardAPIVolumeFile represents information to create the file containing the pod field
+DownwardAPIVolumeFile represents information to create the file containing the pod field
 
 #### Attributes
 
@@ -5050,7 +5053,7 @@ r""" DownwardAPIVolumeFile represents information to create the file containing 
 |**resourceFieldRef**|[MonitoringCoreosComV1AlertmanagerSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0ResourceFieldRef](#monitoringcoreoscomv1alertmanagerspecvolumesitems0projectedsourcesitems0downwardapiitemsitems0resourcefieldref)|resource field ref||
 ### MonitoringCoreosComV1AlertmanagerSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0FieldRef
 
-r""" Required: Selects a field of the pod: only annotations, labels, name and namespace are supported.
+Required: Selects a field of the pod: only annotations, labels, name and namespace are supported.
 
 #### Attributes
 
@@ -5060,7 +5063,7 @@ r""" Required: Selects a field of the pod: only annotations, labels, name and na
 |**fieldPath** `required`|str|Path of the field to select in the specified API version.||
 ### MonitoringCoreosComV1AlertmanagerSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0ResourceFieldRef
 
-r""" Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported.
+Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported.
 
 #### Attributes
 
@@ -5071,7 +5074,7 @@ r""" Selects a resource of the container: only resources limits and requests (li
 |**resource** `required`|str|Required: resource to select||
 ### MonitoringCoreosComV1AlertmanagerSpecVolumesItems0ProjectedSourcesItems0Secret
 
-r""" information about the secret data to project
+information about the secret data to project
 
 #### Attributes
 
@@ -5082,7 +5085,7 @@ r""" information about the secret data to project
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1AlertmanagerSpecVolumesItems0ProjectedSourcesItems0SecretItemsItems0
 
-r""" Maps a string key to a path within a volume.
+Maps a string key to a path within a volume.
 
 #### Attributes
 
@@ -5093,7 +5096,7 @@ r""" Maps a string key to a path within a volume.
 |**path** `required`|str|The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.||
 ### MonitoringCoreosComV1AlertmanagerSpecVolumesItems0ProjectedSourcesItems0ServiceAccountToken
 
-r""" information about the serviceAccountToken data to project
+information about the serviceAccountToken data to project
 
 #### Attributes
 
@@ -5104,7 +5107,7 @@ r""" information about the serviceAccountToken data to project
 |**path** `required`|str|Path is the path relative to the mount point of the file to project the token into.||
 ### MonitoringCoreosComV1AlertmanagerSpecVolumesItems0Quobyte
 
-r""" Quobyte represents a Quobyte mount on the host that shares a pod's lifetime
+Quobyte represents a Quobyte mount on the host that shares a pod's lifetime
 
 #### Attributes
 
@@ -5118,7 +5121,7 @@ r""" Quobyte represents a Quobyte mount on the host that shares a pod's lifetime
 |**volume** `required`|str|Volume is a string that references an already created Quobyte volume by name.||
 ### MonitoringCoreosComV1AlertmanagerSpecVolumesItems0Rbd
 
-r""" RBD represents a Rados Block Device mount on the host that shares a pod's lifetime. More info: https://examples.k8s.io/volumes/rbd/README.md
+RBD represents a Rados Block Device mount on the host that shares a pod's lifetime. More info: https://examples.k8s.io/volumes/rbd/README.md
 
 #### Attributes
 
@@ -5134,7 +5137,7 @@ r""" RBD represents a Rados Block Device mount on the host that shares a pod's l
 |**user**|str|The rados user name. Default is admin. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it||
 ### MonitoringCoreosComV1AlertmanagerSpecVolumesItems0RbdSecretRef
 
-r""" SecretRef is name of the authentication secret for RBDUser. If provided overrides keyring. Default is nil. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+SecretRef is name of the authentication secret for RBDUser. If provided overrides keyring. Default is nil. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
 
 #### Attributes
 
@@ -5143,7 +5146,7 @@ r""" SecretRef is name of the authentication secret for RBDUser. If provided ove
 |**name**|str|Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?||
 ### MonitoringCoreosComV1AlertmanagerSpecVolumesItems0ScaleIO
 
-r""" ScaleIO represents a ScaleIO persistent volume attached and mounted on Kubernetes nodes.
+ScaleIO represents a ScaleIO persistent volume attached and mounted on Kubernetes nodes.
 
 #### Attributes
 
@@ -5161,7 +5164,7 @@ r""" ScaleIO represents a ScaleIO persistent volume attached and mounted on Kube
 |**volumeName**|str|The name of a volume already created in the ScaleIO system that is associated with this volume source.||
 ### MonitoringCoreosComV1AlertmanagerSpecVolumesItems0ScaleIOSecretRef
 
-r""" SecretRef references to the secret for ScaleIO user and other sensitive information. If this is not provided, Login operation will fail.
+SecretRef references to the secret for ScaleIO user and other sensitive information. If this is not provided, Login operation will fail.
 
 #### Attributes
 
@@ -5170,7 +5173,7 @@ r""" SecretRef references to the secret for ScaleIO user and other sensitive inf
 |**name**|str|Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?||
 ### MonitoringCoreosComV1AlertmanagerSpecVolumesItems0Secret
 
-r""" Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
 
 #### Attributes
 
@@ -5182,7 +5185,7 @@ r""" Secret represents a secret that should populate this volume. More info: htt
 |**secretName**|str|Name of the secret in the pod's namespace to use. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret||
 ### MonitoringCoreosComV1AlertmanagerSpecVolumesItems0SecretItemsItems0
 
-r""" Maps a string key to a path within a volume.
+Maps a string key to a path within a volume.
 
 #### Attributes
 
@@ -5193,7 +5196,7 @@ r""" Maps a string key to a path within a volume.
 |**path** `required`|str|The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.||
 ### MonitoringCoreosComV1AlertmanagerSpecVolumesItems0Storageos
 
-r""" StorageOS represents a StorageOS volume attached and mounted on Kubernetes nodes.
+StorageOS represents a StorageOS volume attached and mounted on Kubernetes nodes.
 
 #### Attributes
 
@@ -5206,7 +5209,7 @@ r""" StorageOS represents a StorageOS volume attached and mounted on Kubernetes 
 |**volumeNamespace**|str|VolumeNamespace specifies the scope of the volume within StorageOS.  If no namespace is specified then the Pod's namespace will be used.  This allows the Kubernetes name scoping to be mirrored within StorageOS for tighter integration. Set VolumeName to any name to override the default behaviour. Set to "default" if you are not using namespaces within StorageOS. Namespaces that do not pre-exist within StorageOS will be created.||
 ### MonitoringCoreosComV1AlertmanagerSpecVolumesItems0StorageosSecretRef
 
-r""" SecretRef specifies the secret to use for obtaining the StorageOS API credentials.  If not specified, default values will be attempted.
+SecretRef specifies the secret to use for obtaining the StorageOS API credentials.  If not specified, default values will be attempted.
 
 #### Attributes
 
@@ -5215,7 +5218,7 @@ r""" SecretRef specifies the secret to use for obtaining the StorageOS API crede
 |**name**|str|Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?||
 ### MonitoringCoreosComV1AlertmanagerSpecVolumesItems0VsphereVolume
 
-r""" VsphereVolume represents a vSphere volume attached and mounted on kubelets host machine
+VsphereVolume represents a vSphere volume attached and mounted on kubelets host machine
 
 #### Attributes
 
@@ -5227,7 +5230,7 @@ r""" VsphereVolume represents a vSphere volume attached and mounted on kubelets 
 |**volumePath** `required`|str|Path that identifies vSphere volume vmdk||
 ### MonitoringCoreosComV1AlertmanagerStatus
 
-r""" Most recent observed status of the Alertmanager cluster. Read-only. Not included when requesting from the apiserver, only from the Prometheus Operator API itself. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+Most recent observed status of the Alertmanager cluster. Read-only. Not included when requesting from the apiserver, only from the Prometheus Operator API itself. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
 
 #### Attributes
 
@@ -5240,7 +5243,7 @@ r""" Most recent observed status of the Alertmanager cluster. Read-only. Not inc
 |**updatedReplicas** `required`|int|Total number of non-terminated pods targeted by this Alertmanager cluster that have the desired version spec.||
 ### MonitoringCoreosComV1PodMonitorSpec
 
-r""" Specification of desired Pod selection for target discovery by Prometheus.
+Specification of desired Pod selection for target discovery by Prometheus.
 
 #### Attributes
 
@@ -5255,7 +5258,7 @@ r""" Specification of desired Pod selection for target discovery by Prometheus.
 |**targetLimit**|int|TargetLimit defines a limit on the number of scraped targets that will be accepted.||
 ### MonitoringCoreosComV1PodMonitorSpecNamespaceSelector
 
-r""" Selector to select which namespaces the Endpoints objects are discovered from.
+Selector to select which namespaces the Endpoints objects are discovered from.
 
 #### Attributes
 
@@ -5265,7 +5268,7 @@ r""" Selector to select which namespaces the Endpoints objects are discovered fr
 |**matchNames**|[str]|List of namespace names.||
 ### MonitoringCoreosComV1PodMonitorSpecPodMetricsEndpointsItems0
 
-r""" PodMetricsEndpoint defines a scrapeable endpoint of a Kubernetes Pod serving Prometheus metrics.
+PodMetricsEndpoint defines a scrapeable endpoint of a Kubernetes Pod serving Prometheus metrics.
 
 #### Attributes
 
@@ -5288,7 +5291,7 @@ r""" PodMetricsEndpoint defines a scrapeable endpoint of a Kubernetes Pod servin
 |**tlsConfig**|[MonitoringCoreosComV1PodMonitorSpecPodMetricsEndpointsItems0TLSConfig](#monitoringcoreoscomv1podmonitorspecpodmetricsendpointsitems0tlsconfig)|tls config||
 ### MonitoringCoreosComV1PodMonitorSpecPodMetricsEndpointsItems0BasicAuth
 
-r""" BasicAuth allow an endpoint to authenticate over basic authentication. More info: https://prometheus.io/docs/operating/configuration/#endpoint
+BasicAuth allow an endpoint to authenticate over basic authentication. More info: https://prometheus.io/docs/operating/configuration/#endpoint
 
 #### Attributes
 
@@ -5298,7 +5301,7 @@ r""" BasicAuth allow an endpoint to authenticate over basic authentication. More
 |**username**|[MonitoringCoreosComV1PodMonitorSpecPodMetricsEndpointsItems0BasicAuthUsername](#monitoringcoreoscomv1podmonitorspecpodmetricsendpointsitems0basicauthusername)|username||
 ### MonitoringCoreosComV1PodMonitorSpecPodMetricsEndpointsItems0BasicAuthPassword
 
-r""" The secret in the service monitor namespace that contains the password for authentication.
+The secret in the service monitor namespace that contains the password for authentication.
 
 #### Attributes
 
@@ -5309,7 +5312,7 @@ r""" The secret in the service monitor namespace that contains the password for 
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1PodMonitorSpecPodMetricsEndpointsItems0BasicAuthUsername
 
-r""" The secret in the service monitor namespace that contains the username for authentication.
+The secret in the service monitor namespace that contains the username for authentication.
 
 #### Attributes
 
@@ -5320,7 +5323,7 @@ r""" The secret in the service monitor namespace that contains the username for 
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1PodMonitorSpecPodMetricsEndpointsItems0BearerTokenSecret
 
-r""" Secret to mount to read bearer token for scraping targets. The secret needs to be in the same namespace as the pod monitor and accessible by the Prometheus Operator.
+Secret to mount to read bearer token for scraping targets. The secret needs to be in the same namespace as the pod monitor and accessible by the Prometheus Operator.
 
 #### Attributes
 
@@ -5331,7 +5334,7 @@ r""" Secret to mount to read bearer token for scraping targets. The secret needs
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1PodMonitorSpecPodMetricsEndpointsItems0MetricRelabelingsItems0
 
-r""" RelabelConfig allows dynamic rewriting of the label set, being applied to samples before ingestion. It defines `<metric_relabel_configs>`-section of Prometheus configuration. More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#metric_relabel_configs
+RelabelConfig allows dynamic rewriting of the label set, being applied to samples before ingestion. It defines `<metric_relabel_configs>`-section of Prometheus configuration. More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#metric_relabel_configs
 
 #### Attributes
 
@@ -5346,7 +5349,7 @@ r""" RelabelConfig allows dynamic rewriting of the label set, being applied to s
 |**targetLabel**|str|Label to which the resulting value is written in a replace action. It is mandatory for replace actions. Regex capture groups are available.||
 ### MonitoringCoreosComV1PodMonitorSpecPodMetricsEndpointsItems0RelabelingsItems0
 
-r""" RelabelConfig allows dynamic rewriting of the label set, being applied to samples before ingestion. It defines `<metric_relabel_configs>`-section of Prometheus configuration. More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#metric_relabel_configs
+RelabelConfig allows dynamic rewriting of the label set, being applied to samples before ingestion. It defines `<metric_relabel_configs>`-section of Prometheus configuration. More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#metric_relabel_configs
 
 #### Attributes
 
@@ -5361,7 +5364,7 @@ r""" RelabelConfig allows dynamic rewriting of the label set, being applied to s
 |**targetLabel**|str|Label to which the resulting value is written in a replace action. It is mandatory for replace actions. Regex capture groups are available.||
 ### MonitoringCoreosComV1PodMonitorSpecPodMetricsEndpointsItems0TLSConfig
 
-r""" TLS configuration to use when scraping the endpoint.
+TLS configuration to use when scraping the endpoint.
 
 #### Attributes
 
@@ -5374,7 +5377,7 @@ r""" TLS configuration to use when scraping the endpoint.
 |**serverName**|str|Used to verify the hostname for the targets.||
 ### MonitoringCoreosComV1PodMonitorSpecPodMetricsEndpointsItems0TLSConfigCa
 
-r""" Struct containing the CA cert to use for the targets.
+Struct containing the CA cert to use for the targets.
 
 #### Attributes
 
@@ -5384,7 +5387,7 @@ r""" Struct containing the CA cert to use for the targets.
 |**secret**|[MonitoringCoreosComV1PodMonitorSpecPodMetricsEndpointsItems0TLSConfigCaSecret](#monitoringcoreoscomv1podmonitorspecpodmetricsendpointsitems0tlsconfigcasecret)|secret||
 ### MonitoringCoreosComV1PodMonitorSpecPodMetricsEndpointsItems0TLSConfigCaConfigMap
 
-r""" ConfigMap containing data to use for the targets.
+ConfigMap containing data to use for the targets.
 
 #### Attributes
 
@@ -5395,7 +5398,7 @@ r""" ConfigMap containing data to use for the targets.
 |**optional**|bool|Specify whether the ConfigMap or its key must be defined||
 ### MonitoringCoreosComV1PodMonitorSpecPodMetricsEndpointsItems0TLSConfigCaSecret
 
-r""" Secret containing data to use for the targets.
+Secret containing data to use for the targets.
 
 #### Attributes
 
@@ -5406,7 +5409,7 @@ r""" Secret containing data to use for the targets.
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1PodMonitorSpecPodMetricsEndpointsItems0TLSConfigCert
 
-r""" Struct containing the client cert file for the targets.
+Struct containing the client cert file for the targets.
 
 #### Attributes
 
@@ -5416,7 +5419,7 @@ r""" Struct containing the client cert file for the targets.
 |**secret**|[MonitoringCoreosComV1PodMonitorSpecPodMetricsEndpointsItems0TLSConfigCertSecret](#monitoringcoreoscomv1podmonitorspecpodmetricsendpointsitems0tlsconfigcertsecret)|secret||
 ### MonitoringCoreosComV1PodMonitorSpecPodMetricsEndpointsItems0TLSConfigCertConfigMap
 
-r""" ConfigMap containing data to use for the targets.
+ConfigMap containing data to use for the targets.
 
 #### Attributes
 
@@ -5427,7 +5430,7 @@ r""" ConfigMap containing data to use for the targets.
 |**optional**|bool|Specify whether the ConfigMap or its key must be defined||
 ### MonitoringCoreosComV1PodMonitorSpecPodMetricsEndpointsItems0TLSConfigCertSecret
 
-r""" Secret containing data to use for the targets.
+Secret containing data to use for the targets.
 
 #### Attributes
 
@@ -5438,7 +5441,7 @@ r""" Secret containing data to use for the targets.
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1PodMonitorSpecPodMetricsEndpointsItems0TLSConfigKeySecret
 
-r""" Secret containing the client key file for the targets.
+Secret containing the client key file for the targets.
 
 #### Attributes
 
@@ -5449,7 +5452,7 @@ r""" Secret containing the client key file for the targets.
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1PodMonitorSpecSelector
 
-r""" Selector to select Pod objects.
+Selector to select Pod objects.
 
 #### Attributes
 
@@ -5459,7 +5462,7 @@ r""" Selector to select Pod objects.
 |**matchLabels**|{str:str}|matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.||
 ### MonitoringCoreosComV1PodMonitorSpecSelectorMatchExpressionsItems0
 
-r""" A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
 #### Attributes
 
@@ -5470,7 +5473,7 @@ r""" A label selector requirement is a selector that contains values, a key, and
 |**values**|[str]|values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.||
 ### MonitoringCoreosComV1ProbeSpec
 
-r""" Specification of desired Ingress selection for target discovery by Prometheus.
+Specification of desired Ingress selection for target discovery by Prometheus.
 
 #### Attributes
 
@@ -5484,7 +5487,7 @@ r""" Specification of desired Ingress selection for target discovery by Promethe
 |**targets**|[MonitoringCoreosComV1ProbeSpecTargets](#monitoringcoreoscomv1probespectargets)|targets||
 ### MonitoringCoreosComV1ProbeSpecProber
 
-r""" Specification for the prober to use for probing targets. The prober.URL parameter is required. Targets cannot be probed if left empty.
+Specification for the prober to use for probing targets. The prober.URL parameter is required. Targets cannot be probed if left empty.
 
 #### Attributes
 
@@ -5495,7 +5498,7 @@ r""" Specification for the prober to use for probing targets. The prober.URL par
 |**url** `required`|str|Mandatory URL of the prober.||
 ### MonitoringCoreosComV1ProbeSpecTargets
 
-r""" Targets defines a set of static and/or dynamically discovered targets to be probed using the prober.
+Targets defines a set of static and/or dynamically discovered targets to be probed using the prober.
 
 #### Attributes
 
@@ -5505,7 +5508,7 @@ r""" Targets defines a set of static and/or dynamically discovered targets to be
 |**staticConfig**|[MonitoringCoreosComV1ProbeSpecTargetsStaticConfig](#monitoringcoreoscomv1probespectargetsstaticconfig)|static config||
 ### MonitoringCoreosComV1ProbeSpecTargetsIngress
 
-r""" Ingress defines the set of dynamically discovered ingress objects which hosts are considered for probing.
+Ingress defines the set of dynamically discovered ingress objects which hosts are considered for probing.
 
 #### Attributes
 
@@ -5516,7 +5519,7 @@ r""" Ingress defines the set of dynamically discovered ingress objects which hos
 |**selector**|[MonitoringCoreosComV1ProbeSpecTargetsIngressSelector](#monitoringcoreoscomv1probespectargetsingressselector)|selector||
 ### MonitoringCoreosComV1ProbeSpecTargetsIngressNamespaceSelector
 
-r""" Select Ingress objects by namespace.
+Select Ingress objects by namespace.
 
 #### Attributes
 
@@ -5526,7 +5529,7 @@ r""" Select Ingress objects by namespace.
 |**matchNames**|[str]|List of namespace names.||
 ### MonitoringCoreosComV1ProbeSpecTargetsIngressRelabelingConfigsItems0
 
-r""" RelabelConfig allows dynamic rewriting of the label set, being applied to samples before ingestion. It defines `<metric_relabel_configs>`-section of Prometheus configuration. More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#metric_relabel_configs
+RelabelConfig allows dynamic rewriting of the label set, being applied to samples before ingestion. It defines `<metric_relabel_configs>`-section of Prometheus configuration. More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#metric_relabel_configs
 
 #### Attributes
 
@@ -5541,7 +5544,7 @@ r""" RelabelConfig allows dynamic rewriting of the label set, being applied to s
 |**targetLabel**|str|Label to which the resulting value is written in a replace action. It is mandatory for replace actions. Regex capture groups are available.||
 ### MonitoringCoreosComV1ProbeSpecTargetsIngressSelector
 
-r""" Select Ingress objects by labels.
+Select Ingress objects by labels.
 
 #### Attributes
 
@@ -5551,7 +5554,7 @@ r""" Select Ingress objects by labels.
 |**matchLabels**|{str:str}|matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.||
 ### MonitoringCoreosComV1ProbeSpecTargetsIngressSelectorMatchExpressionsItems0
 
-r""" A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
 #### Attributes
 
@@ -5562,7 +5565,7 @@ r""" A label selector requirement is a selector that contains values, a key, and
 |**values**|[str]|values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.||
 ### MonitoringCoreosComV1ProbeSpecTargetsStaticConfig
 
-r""" StaticConfig defines static targets which are considers for probing. More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#static_config.
+StaticConfig defines static targets which are considers for probing. More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#static_config.
 
 #### Attributes
 
@@ -5572,7 +5575,7 @@ r""" StaticConfig defines static targets which are considers for probing. More i
 |**static**|[str]|Targets is a list of URLs to probe using the configured prober.||
 ### MonitoringCoreosComV1PrometheusRuleSpec
 
-r""" Specification of desired alerting rule definitions for Prometheus.
+Specification of desired alerting rule definitions for Prometheus.
 
 #### Attributes
 
@@ -5581,7 +5584,7 @@ r""" Specification of desired alerting rule definitions for Prometheus.
 |**groups**|[[MonitoringCoreosComV1PrometheusRuleSpecGroupsItems0](#monitoringcoreoscomv1prometheusrulespecgroupsitems0)]|Content of Prometheus rule file||
 ### MonitoringCoreosComV1PrometheusRuleSpecGroupsItems0
 
-r""" RuleGroup is a list of sequentially evaluated recording and alerting rules. Note: PartialResponseStrategy is only used by ThanosRuler and will be ignored by Prometheus instances.  Valid values for this field are 'warn' or 'abort'.  More info: https://github.com/thanos-io/thanos/blob/master/docs/components/rule.md#partial-response
+RuleGroup is a list of sequentially evaluated recording and alerting rules. Note: PartialResponseStrategy is only used by ThanosRuler and will be ignored by Prometheus instances.  Valid values for this field are 'warn' or 'abort'.  More info: https://github.com/thanos-io/thanos/blob/master/docs/components/rule.md#partial-response
 
 #### Attributes
 
@@ -5593,7 +5596,7 @@ r""" RuleGroup is a list of sequentially evaluated recording and alerting rules.
 |**rules** `required`|[[MonitoringCoreosComV1PrometheusRuleSpecGroupsItems0RulesItems0](#monitoringcoreoscomv1prometheusrulespecgroupsitems0rulesitems0)]|rules||
 ### MonitoringCoreosComV1PrometheusRuleSpecGroupsItems0RulesItems0
 
-r""" Rule describes an alerting or recording rule.
+Rule describes an alerting or recording rule.
 
 #### Attributes
 
@@ -5607,7 +5610,7 @@ r""" Rule describes an alerting or recording rule.
 |**record**|str|record||
 ### MonitoringCoreosComV1PrometheusSpec
 
-r""" Specification of the desired behavior of the Prometheus cluster. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+Specification of the desired behavior of the Prometheus cluster. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
 
 #### Attributes
 
@@ -5685,7 +5688,7 @@ r""" Specification of the desired behavior of the Prometheus cluster. More info:
 |**web**|[MonitoringCoreosComV1PrometheusSpecWeb](#monitoringcoreoscomv1prometheusspecweb)|web||
 ### MonitoringCoreosComV1PrometheusSpecAdditionalAlertManagerConfigs
 
-r""" AdditionalAlertManagerConfigs allows specifying a key of a Secret containing additional Prometheus AlertManager configurations. AlertManager configurations specified are appended to the configurations generated by the Prometheus Operator. Job configurations specified must have the form as specified in the official Prometheus documentation: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#alertmanager_config. As AlertManager configs are appended, the user is responsible to make sure it is valid. Note that using this feature may expose the possibility to break upgrades of Prometheus. It is advised to review Prometheus release notes to ensure that no incompatible AlertManager configs are going to break Prometheus after the upgrade.
+AdditionalAlertManagerConfigs allows specifying a key of a Secret containing additional Prometheus AlertManager configurations. AlertManager configurations specified are appended to the configurations generated by the Prometheus Operator. Job configurations specified must have the form as specified in the official Prometheus documentation: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#alertmanager_config. As AlertManager configs are appended, the user is responsible to make sure it is valid. Note that using this feature may expose the possibility to break upgrades of Prometheus. It is advised to review Prometheus release notes to ensure that no incompatible AlertManager configs are going to break Prometheus after the upgrade.
 
 #### Attributes
 
@@ -5696,7 +5699,7 @@ r""" AdditionalAlertManagerConfigs allows specifying a key of a Secret containin
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1PrometheusSpecAdditionalAlertRelabelConfigs
 
-r""" AdditionalAlertRelabelConfigs allows specifying a key of a Secret containing additional Prometheus alert relabel configurations. Alert relabel configurations specified are appended to the configurations generated by the Prometheus Operator. Alert relabel configurations specified must have the form as specified in the official Prometheus documentation: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#alert_relabel_configs. As alert relabel configs are appended, the user is responsible to make sure it is valid. Note that using this feature may expose the possibility to break upgrades of Prometheus. It is advised to review Prometheus release notes to ensure that no incompatible alert relabel configs are going to break Prometheus after the upgrade.
+AdditionalAlertRelabelConfigs allows specifying a key of a Secret containing additional Prometheus alert relabel configurations. Alert relabel configurations specified are appended to the configurations generated by the Prometheus Operator. Alert relabel configurations specified must have the form as specified in the official Prometheus documentation: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#alert_relabel_configs. As alert relabel configs are appended, the user is responsible to make sure it is valid. Note that using this feature may expose the possibility to break upgrades of Prometheus. It is advised to review Prometheus release notes to ensure that no incompatible alert relabel configs are going to break Prometheus after the upgrade.
 
 #### Attributes
 
@@ -5707,7 +5710,7 @@ r""" AdditionalAlertRelabelConfigs allows specifying a key of a Secret containin
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1PrometheusSpecAdditionalScrapeConfigs
 
-r""" AdditionalScrapeConfigs allows specifying a key of a Secret containing additional Prometheus scrape configurations. Scrape configurations specified are appended to the configurations generated by the Prometheus Operator. Job configurations specified must have the form as specified in the official Prometheus documentation: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config. As scrape configs are appended, the user is responsible to make sure it is valid. Note that using this feature may expose the possibility to break upgrades of Prometheus. It is advised to review Prometheus release notes to ensure that no incompatible scrape configs are going to break Prometheus after the upgrade.
+AdditionalScrapeConfigs allows specifying a key of a Secret containing additional Prometheus scrape configurations. Scrape configurations specified are appended to the configurations generated by the Prometheus Operator. Job configurations specified must have the form as specified in the official Prometheus documentation: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config. As scrape configs are appended, the user is responsible to make sure it is valid. Note that using this feature may expose the possibility to break upgrades of Prometheus. It is advised to review Prometheus release notes to ensure that no incompatible scrape configs are going to break Prometheus after the upgrade.
 
 #### Attributes
 
@@ -5718,7 +5721,7 @@ r""" AdditionalScrapeConfigs allows specifying a key of a Secret containing addi
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1PrometheusSpecAffinity
 
-r""" If specified, the pod's scheduling constraints.
+If specified, the pod's scheduling constraints.
 
 #### Attributes
 
@@ -5729,7 +5732,7 @@ r""" If specified, the pod's scheduling constraints.
 |**podAntiAffinity**|[MonitoringCoreosComV1PrometheusSpecAffinityPodAntiAffinity](#monitoringcoreoscomv1prometheusspecaffinitypodantiaffinity)|pod anti affinity||
 ### MonitoringCoreosComV1PrometheusSpecAffinityNodeAffinity
 
-r""" Describes node affinity scheduling rules for the pod.
+Describes node affinity scheduling rules for the pod.
 
 #### Attributes
 
@@ -5739,7 +5742,7 @@ r""" Describes node affinity scheduling rules for the pod.
 |**requiredDuringSchedulingIgnoredDuringExecution**|[MonitoringCoreosComV1PrometheusSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution](#monitoringcoreoscomv1prometheusspecaffinitynodeaffinityrequiredduringschedulingignoredduringexecution)|required during scheduling ignored during execution||
 ### MonitoringCoreosComV1PrometheusSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0
 
-r""" An empty preferred scheduling term matches all objects with implicit weight 0 (i.e. it's a no-op). A null preferred scheduling term matches no objects (i.e. is also a no-op).
+An empty preferred scheduling term matches all objects with implicit weight 0 (i.e. it's a no-op). A null preferred scheduling term matches no objects (i.e. is also a no-op).
 
 #### Attributes
 
@@ -5749,7 +5752,7 @@ r""" An empty preferred scheduling term matches all objects with implicit weight
 |**weight** `required`|int|Weight associated with matching the corresponding nodeSelectorTerm, in the range 1-100.||
 ### MonitoringCoreosComV1PrometheusSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0Preference
 
-r""" A node selector term, associated with the corresponding weight.
+A node selector term, associated with the corresponding weight.
 
 #### Attributes
 
@@ -5759,7 +5762,7 @@ r""" A node selector term, associated with the corresponding weight.
 |**matchFields**|[[MonitoringCoreosComV1PrometheusSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchFieldsItems0](#monitoringcoreoscomv1prometheusspecaffinitynodeaffinitypreferredduringschedulingignoredduringexecutionitems0preferencematchfieldsitems0)]|A list of node selector requirements by node's fields.||
 ### MonitoringCoreosComV1PrometheusSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchExpressionsItems0
 
-r""" A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
 #### Attributes
 
@@ -5770,7 +5773,7 @@ r""" A node selector requirement is a selector that contains values, a key, and 
 |**values**|[str]|An array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch.||
 ### MonitoringCoreosComV1PrometheusSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchFieldsItems0
 
-r""" A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
 #### Attributes
 
@@ -5781,7 +5784,7 @@ r""" A node selector requirement is a selector that contains values, a key, and 
 |**values**|[str]|An array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch.||
 ### MonitoringCoreosComV1PrometheusSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution
 
-r""" If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to an update), the system may or may not try to eventually evict the pod from its node.
+If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to an update), the system may or may not try to eventually evict the pod from its node.
 
 #### Attributes
 
@@ -5790,7 +5793,7 @@ r""" If the affinity requirements specified by this field are not met at schedul
 |**nodeSelectorTerms** `required`|[[MonitoringCoreosComV1PrometheusSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0](#monitoringcoreoscomv1prometheusspecaffinitynodeaffinityrequiredduringschedulingignoredduringexecutionnodeselectortermsitems0)]|Required. A list of node selector terms. The terms are ORed.||
 ### MonitoringCoreosComV1PrometheusSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0
 
-r""" A null or empty node selector term matches no objects. The requirements of them are ANDed. The TopologySelectorTerm type implements a subset of the NodeSelectorTerm.
+A null or empty node selector term matches no objects. The requirements of them are ANDed. The TopologySelectorTerm type implements a subset of the NodeSelectorTerm.
 
 #### Attributes
 
@@ -5800,7 +5803,7 @@ r""" A null or empty node selector term matches no objects. The requirements of 
 |**matchFields**|[[MonitoringCoreosComV1PrometheusSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchFieldsItems0](#monitoringcoreoscomv1prometheusspecaffinitynodeaffinityrequiredduringschedulingignoredduringexecutionnodeselectortermsitems0matchfieldsitems0)]|A list of node selector requirements by node's fields.||
 ### MonitoringCoreosComV1PrometheusSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchExpressionsItems0
 
-r""" A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
 #### Attributes
 
@@ -5811,7 +5814,7 @@ r""" A node selector requirement is a selector that contains values, a key, and 
 |**values**|[str]|An array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch.||
 ### MonitoringCoreosComV1PrometheusSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchFieldsItems0
 
-r""" A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
 #### Attributes
 
@@ -5822,7 +5825,7 @@ r""" A node selector requirement is a selector that contains values, a key, and 
 |**values**|[str]|An array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch.||
 ### MonitoringCoreosComV1PrometheusSpecAffinityPodAffinity
 
-r""" Describes pod affinity scheduling rules (e.g. co-locate this pod in the same node, zone, etc. as some other pod(s)).
+Describes pod affinity scheduling rules (e.g. co-locate this pod in the same node, zone, etc. as some other pod(s)).
 
 #### Attributes
 
@@ -5832,7 +5835,7 @@ r""" Describes pod affinity scheduling rules (e.g. co-locate this pod in the sam
 |**requiredDuringSchedulingIgnoredDuringExecution**|[[MonitoringCoreosComV1PrometheusSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0](#monitoringcoreoscomv1prometheusspecaffinitypodaffinityrequiredduringschedulingignoredduringexecutionitems0)]|If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each podAffinityTerm are intersected, i.e. all terms must be satisfied.||
 ### MonitoringCoreosComV1PrometheusSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0
 
-r""" The weights of all of the matched WeightedPodAffinityTerm fields are added per-node to find the most preferred node(s)
+The weights of all of the matched WeightedPodAffinityTerm fields are added per-node to find the most preferred node(s)
 
 #### Attributes
 
@@ -5842,7 +5845,7 @@ r""" The weights of all of the matched WeightedPodAffinityTerm fields are added 
 |**weight** `required`|int|weight associated with matching the corresponding podAffinityTerm, in the range 1-100.||
 ### MonitoringCoreosComV1PrometheusSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTerm
 
-r""" Required. A pod affinity term, associated with the corresponding weight.
+Required. A pod affinity term, associated with the corresponding weight.
 
 #### Attributes
 
@@ -5853,7 +5856,7 @@ r""" Required. A pod affinity term, associated with the corresponding weight.
 |**topologyKey** `required`|str|This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching the labelSelector in the specified namespaces, where co-located is defined as running on a node whose value of the label with key topologyKey matches that of any node on which any of the selected pods is running. Empty topologyKey is not allowed.||
 ### MonitoringCoreosComV1PrometheusSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector
 
-r""" A label query over a set of resources, in this case pods.
+A label query over a set of resources, in this case pods.
 
 #### Attributes
 
@@ -5863,7 +5866,7 @@ r""" A label query over a set of resources, in this case pods.
 |**matchLabels**|{str:str}|matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.||
 ### MonitoringCoreosComV1PrometheusSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0
 
-r""" A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
 #### Attributes
 
@@ -5874,7 +5877,7 @@ r""" A label selector requirement is a selector that contains values, a key, and
 |**values**|[str]|values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.||
 ### MonitoringCoreosComV1PrometheusSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0
 
-r""" Defines a set of pods (namely those matching the labelSelector relative to the given namespace(s)) that this pod should be co-located (affinity) or not co-located (anti-affinity) with, where co-located is defined as running on a node whose value of the label with key <topologyKey> matches that of any node on which a pod of the set of pods is running
+Defines a set of pods (namely those matching the labelSelector relative to the given namespace(s)) that this pod should be co-located (affinity) or not co-located (anti-affinity) with, where co-located is defined as running on a node whose value of the label with key <topologyKey> matches that of any node on which a pod of the set of pods is running
 
 #### Attributes
 
@@ -5885,7 +5888,7 @@ r""" Defines a set of pods (namely those matching the labelSelector relative to 
 |**topologyKey** `required`|str|This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching the labelSelector in the specified namespaces, where co-located is defined as running on a node whose value of the label with key topologyKey matches that of any node on which any of the selected pods is running. Empty topologyKey is not allowed.||
 ### MonitoringCoreosComV1PrometheusSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector
 
-r""" A label query over a set of resources, in this case pods.
+A label query over a set of resources, in this case pods.
 
 #### Attributes
 
@@ -5895,7 +5898,7 @@ r""" A label query over a set of resources, in this case pods.
 |**matchLabels**|{str:str}|matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.||
 ### MonitoringCoreosComV1PrometheusSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0
 
-r""" A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
 #### Attributes
 
@@ -5906,7 +5909,7 @@ r""" A label selector requirement is a selector that contains values, a key, and
 |**values**|[str]|values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.||
 ### MonitoringCoreosComV1PrometheusSpecAffinityPodAntiAffinity
 
-r""" Describes pod anti-affinity scheduling rules (e.g. avoid putting this pod in the same node, zone, etc. as some other pod(s)).
+Describes pod anti-affinity scheduling rules (e.g. avoid putting this pod in the same node, zone, etc. as some other pod(s)).
 
 #### Attributes
 
@@ -5916,7 +5919,7 @@ r""" Describes pod anti-affinity scheduling rules (e.g. avoid putting this pod i
 |**requiredDuringSchedulingIgnoredDuringExecution**|[[MonitoringCoreosComV1PrometheusSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0](#monitoringcoreoscomv1prometheusspecaffinitypodantiaffinityrequiredduringschedulingignoredduringexecutionitems0)]|If the anti-affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the anti-affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each podAffinityTerm are intersected, i.e. all terms must be satisfied.||
 ### MonitoringCoreosComV1PrometheusSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0
 
-r""" The weights of all of the matched WeightedPodAffinityTerm fields are added per-node to find the most preferred node(s)
+The weights of all of the matched WeightedPodAffinityTerm fields are added per-node to find the most preferred node(s)
 
 #### Attributes
 
@@ -5926,7 +5929,7 @@ r""" The weights of all of the matched WeightedPodAffinityTerm fields are added 
 |**weight** `required`|int|weight associated with matching the corresponding podAffinityTerm, in the range 1-100.||
 ### MonitoringCoreosComV1PrometheusSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTerm
 
-r""" Required. A pod affinity term, associated with the corresponding weight.
+Required. A pod affinity term, associated with the corresponding weight.
 
 #### Attributes
 
@@ -5937,7 +5940,7 @@ r""" Required. A pod affinity term, associated with the corresponding weight.
 |**topologyKey** `required`|str|This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching the labelSelector in the specified namespaces, where co-located is defined as running on a node whose value of the label with key topologyKey matches that of any node on which any of the selected pods is running. Empty topologyKey is not allowed.||
 ### MonitoringCoreosComV1PrometheusSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector
 
-r""" A label query over a set of resources, in this case pods.
+A label query over a set of resources, in this case pods.
 
 #### Attributes
 
@@ -5947,7 +5950,7 @@ r""" A label query over a set of resources, in this case pods.
 |**matchLabels**|{str:str}|matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.||
 ### MonitoringCoreosComV1PrometheusSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0
 
-r""" A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
 #### Attributes
 
@@ -5958,7 +5961,7 @@ r""" A label selector requirement is a selector that contains values, a key, and
 |**values**|[str]|values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.||
 ### MonitoringCoreosComV1PrometheusSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0
 
-r""" Defines a set of pods (namely those matching the labelSelector relative to the given namespace(s)) that this pod should be co-located (affinity) or not co-located (anti-affinity) with, where co-located is defined as running on a node whose value of the label with key <topologyKey> matches that of any node on which a pod of the set of pods is running
+Defines a set of pods (namely those matching the labelSelector relative to the given namespace(s)) that this pod should be co-located (affinity) or not co-located (anti-affinity) with, where co-located is defined as running on a node whose value of the label with key <topologyKey> matches that of any node on which a pod of the set of pods is running
 
 #### Attributes
 
@@ -5969,7 +5972,7 @@ r""" Defines a set of pods (namely those matching the labelSelector relative to 
 |**topologyKey** `required`|str|This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching the labelSelector in the specified namespaces, where co-located is defined as running on a node whose value of the label with key topologyKey matches that of any node on which any of the selected pods is running. Empty topologyKey is not allowed.||
 ### MonitoringCoreosComV1PrometheusSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector
 
-r""" A label query over a set of resources, in this case pods.
+A label query over a set of resources, in this case pods.
 
 #### Attributes
 
@@ -5979,7 +5982,7 @@ r""" A label query over a set of resources, in this case pods.
 |**matchLabels**|{str:str}|matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.||
 ### MonitoringCoreosComV1PrometheusSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0
 
-r""" A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
 #### Attributes
 
@@ -5990,7 +5993,7 @@ r""" A label selector requirement is a selector that contains values, a key, and
 |**values**|[str]|values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.||
 ### MonitoringCoreosComV1PrometheusSpecAlerting
 
-r""" Define details regarding alerting.
+Define details regarding alerting.
 
 #### Attributes
 
@@ -5999,7 +6002,7 @@ r""" Define details regarding alerting.
 |**alertmanagers** `required`|[[MonitoringCoreosComV1PrometheusSpecAlertingAlertmanagersItems0](#monitoringcoreoscomv1prometheusspecalertingalertmanagersitems0)]|AlertmanagerEndpoints Prometheus should fire alerts against.||
 ### MonitoringCoreosComV1PrometheusSpecAlertingAlertmanagersItems0
 
-r""" AlertmanagerEndpoints defines a selection of a single Endpoints object containing alertmanager IPs to fire alerts against.
+AlertmanagerEndpoints defines a selection of a single Endpoints object containing alertmanager IPs to fire alerts against.
 
 #### Attributes
 
@@ -6016,7 +6019,7 @@ r""" AlertmanagerEndpoints defines a selection of a single Endpoints object cont
 |**tlsConfig**|[MonitoringCoreosComV1PrometheusSpecAlertingAlertmanagersItems0TLSConfig](#monitoringcoreoscomv1prometheusspecalertingalertmanagersitems0tlsconfig)|tls config||
 ### MonitoringCoreosComV1PrometheusSpecAlertingAlertmanagersItems0TLSConfig
 
-r""" TLS Config to use for alertmanager connection.
+TLS Config to use for alertmanager connection.
 
 #### Attributes
 
@@ -6032,7 +6035,7 @@ r""" TLS Config to use for alertmanager connection.
 |**serverName**|str|Used to verify the hostname for the targets.||
 ### MonitoringCoreosComV1PrometheusSpecAlertingAlertmanagersItems0TLSConfigCa
 
-r""" Struct containing the CA cert to use for the targets.
+Struct containing the CA cert to use for the targets.
 
 #### Attributes
 
@@ -6042,7 +6045,7 @@ r""" Struct containing the CA cert to use for the targets.
 |**secret**|[MonitoringCoreosComV1PrometheusSpecAlertingAlertmanagersItems0TLSConfigCaSecret](#monitoringcoreoscomv1prometheusspecalertingalertmanagersitems0tlsconfigcasecret)|secret||
 ### MonitoringCoreosComV1PrometheusSpecAlertingAlertmanagersItems0TLSConfigCaConfigMap
 
-r""" ConfigMap containing data to use for the targets.
+ConfigMap containing data to use for the targets.
 
 #### Attributes
 
@@ -6053,7 +6056,7 @@ r""" ConfigMap containing data to use for the targets.
 |**optional**|bool|Specify whether the ConfigMap or its key must be defined||
 ### MonitoringCoreosComV1PrometheusSpecAlertingAlertmanagersItems0TLSConfigCaSecret
 
-r""" Secret containing data to use for the targets.
+Secret containing data to use for the targets.
 
 #### Attributes
 
@@ -6064,7 +6067,7 @@ r""" Secret containing data to use for the targets.
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1PrometheusSpecAlertingAlertmanagersItems0TLSConfigCert
 
-r""" Struct containing the client cert file for the targets.
+Struct containing the client cert file for the targets.
 
 #### Attributes
 
@@ -6074,7 +6077,7 @@ r""" Struct containing the client cert file for the targets.
 |**secret**|[MonitoringCoreosComV1PrometheusSpecAlertingAlertmanagersItems0TLSConfigCertSecret](#monitoringcoreoscomv1prometheusspecalertingalertmanagersitems0tlsconfigcertsecret)|secret||
 ### MonitoringCoreosComV1PrometheusSpecAlertingAlertmanagersItems0TLSConfigCertConfigMap
 
-r""" ConfigMap containing data to use for the targets.
+ConfigMap containing data to use for the targets.
 
 #### Attributes
 
@@ -6085,7 +6088,7 @@ r""" ConfigMap containing data to use for the targets.
 |**optional**|bool|Specify whether the ConfigMap or its key must be defined||
 ### MonitoringCoreosComV1PrometheusSpecAlertingAlertmanagersItems0TLSConfigCertSecret
 
-r""" Secret containing data to use for the targets.
+Secret containing data to use for the targets.
 
 #### Attributes
 
@@ -6096,7 +6099,7 @@ r""" Secret containing data to use for the targets.
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1PrometheusSpecAlertingAlertmanagersItems0TLSConfigKeySecret
 
-r""" Secret containing the client key file for the targets.
+Secret containing the client key file for the targets.
 
 #### Attributes
 
@@ -6107,7 +6110,7 @@ r""" Secret containing the client key file for the targets.
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1PrometheusSpecApiserverConfig
 
-r""" APIServerConfig allows specifying a host and auth methods to access apiserver. If left empty, Prometheus is assumed to run inside of the cluster and will discover API servers automatically and use the pod's CA certificate and bearer token file at /var/run/secrets/kubernetes.io/serviceaccount/.
+APIServerConfig allows specifying a host and auth methods to access apiserver. If left empty, Prometheus is assumed to run inside of the cluster and will discover API servers automatically and use the pod's CA certificate and bearer token file at /var/run/secrets/kubernetes.io/serviceaccount/.
 
 #### Attributes
 
@@ -6120,7 +6123,7 @@ r""" APIServerConfig allows specifying a host and auth methods to access apiserv
 |**tlsConfig**|[MonitoringCoreosComV1PrometheusSpecApiserverConfigTLSConfig](#monitoringcoreoscomv1prometheusspecapiserverconfigtlsconfig)|tls config||
 ### MonitoringCoreosComV1PrometheusSpecApiserverConfigBasicAuth
 
-r""" BasicAuth allow an endpoint to authenticate over basic authentication
+BasicAuth allow an endpoint to authenticate over basic authentication
 
 #### Attributes
 
@@ -6130,7 +6133,7 @@ r""" BasicAuth allow an endpoint to authenticate over basic authentication
 |**username**|[MonitoringCoreosComV1PrometheusSpecApiserverConfigBasicAuthUsername](#monitoringcoreoscomv1prometheusspecapiserverconfigbasicauthusername)|username||
 ### MonitoringCoreosComV1PrometheusSpecApiserverConfigBasicAuthPassword
 
-r""" The secret in the service monitor namespace that contains the password for authentication.
+The secret in the service monitor namespace that contains the password for authentication.
 
 #### Attributes
 
@@ -6141,7 +6144,7 @@ r""" The secret in the service monitor namespace that contains the password for 
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1PrometheusSpecApiserverConfigBasicAuthUsername
 
-r""" The secret in the service monitor namespace that contains the username for authentication.
+The secret in the service monitor namespace that contains the username for authentication.
 
 #### Attributes
 
@@ -6152,7 +6155,7 @@ r""" The secret in the service monitor namespace that contains the username for 
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1PrometheusSpecApiserverConfigTLSConfig
 
-r""" TLS Config to use for accessing apiserver.
+TLS Config to use for accessing apiserver.
 
 #### Attributes
 
@@ -6168,7 +6171,7 @@ r""" TLS Config to use for accessing apiserver.
 |**serverName**|str|Used to verify the hostname for the targets.||
 ### MonitoringCoreosComV1PrometheusSpecApiserverConfigTLSConfigCa
 
-r""" Struct containing the CA cert to use for the targets.
+Struct containing the CA cert to use for the targets.
 
 #### Attributes
 
@@ -6178,7 +6181,7 @@ r""" Struct containing the CA cert to use for the targets.
 |**secret**|[MonitoringCoreosComV1PrometheusSpecApiserverConfigTLSConfigCaSecret](#monitoringcoreoscomv1prometheusspecapiserverconfigtlsconfigcasecret)|secret||
 ### MonitoringCoreosComV1PrometheusSpecApiserverConfigTLSConfigCaConfigMap
 
-r""" ConfigMap containing data to use for the targets.
+ConfigMap containing data to use for the targets.
 
 #### Attributes
 
@@ -6189,7 +6192,7 @@ r""" ConfigMap containing data to use for the targets.
 |**optional**|bool|Specify whether the ConfigMap or its key must be defined||
 ### MonitoringCoreosComV1PrometheusSpecApiserverConfigTLSConfigCaSecret
 
-r""" Secret containing data to use for the targets.
+Secret containing data to use for the targets.
 
 #### Attributes
 
@@ -6200,7 +6203,7 @@ r""" Secret containing data to use for the targets.
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1PrometheusSpecApiserverConfigTLSConfigCert
 
-r""" Struct containing the client cert file for the targets.
+Struct containing the client cert file for the targets.
 
 #### Attributes
 
@@ -6210,7 +6213,7 @@ r""" Struct containing the client cert file for the targets.
 |**secret**|[MonitoringCoreosComV1PrometheusSpecApiserverConfigTLSConfigCertSecret](#monitoringcoreoscomv1prometheusspecapiserverconfigtlsconfigcertsecret)|secret||
 ### MonitoringCoreosComV1PrometheusSpecApiserverConfigTLSConfigCertConfigMap
 
-r""" ConfigMap containing data to use for the targets.
+ConfigMap containing data to use for the targets.
 
 #### Attributes
 
@@ -6221,7 +6224,7 @@ r""" ConfigMap containing data to use for the targets.
 |**optional**|bool|Specify whether the ConfigMap or its key must be defined||
 ### MonitoringCoreosComV1PrometheusSpecApiserverConfigTLSConfigCertSecret
 
-r""" Secret containing data to use for the targets.
+Secret containing data to use for the targets.
 
 #### Attributes
 
@@ -6232,7 +6235,7 @@ r""" Secret containing data to use for the targets.
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1PrometheusSpecApiserverConfigTLSConfigKeySecret
 
-r""" Secret containing the client key file for the targets.
+Secret containing the client key file for the targets.
 
 #### Attributes
 
@@ -6243,7 +6246,7 @@ r""" Secret containing the client key file for the targets.
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1PrometheusSpecArbitraryFSAccessThroughSMs
 
-r""" ArbitraryFSAccessThroughSMs configures whether configuration based on a service monitor can access arbitrary files on the file system of the Prometheus container e.g. bearer token files.
+ArbitraryFSAccessThroughSMs configures whether configuration based on a service monitor can access arbitrary files on the file system of the Prometheus container e.g. bearer token files.
 
 #### Attributes
 
@@ -6252,7 +6255,7 @@ r""" ArbitraryFSAccessThroughSMs configures whether configuration based on a ser
 |**deny**|bool|deny||
 ### MonitoringCoreosComV1PrometheusSpecContainersItems0
 
-r""" A single application container that you want to run within a pod.
+A single application container that you want to run within a pod.
 
 #### Attributes
 
@@ -6282,7 +6285,7 @@ r""" A single application container that you want to run within a pod.
 |**workingDir**|str|Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. Cannot be updated.||
 ### MonitoringCoreosComV1PrometheusSpecContainersItems0EnvFromItems0
 
-r""" EnvFromSource represents the source of a set of ConfigMaps
+EnvFromSource represents the source of a set of ConfigMaps
 
 #### Attributes
 
@@ -6293,7 +6296,7 @@ r""" EnvFromSource represents the source of a set of ConfigMaps
 |**secretRef**|[MonitoringCoreosComV1PrometheusSpecContainersItems0EnvFromItems0SecretRef](#monitoringcoreoscomv1prometheusspeccontainersitems0envfromitems0secretref)|secret ref||
 ### MonitoringCoreosComV1PrometheusSpecContainersItems0EnvFromItems0ConfigMapRef
 
-r""" The ConfigMap to select from
+The ConfigMap to select from
 
 #### Attributes
 
@@ -6303,7 +6306,7 @@ r""" The ConfigMap to select from
 |**optional**|bool|Specify whether the ConfigMap must be defined||
 ### MonitoringCoreosComV1PrometheusSpecContainersItems0EnvFromItems0SecretRef
 
-r""" The Secret to select from
+The Secret to select from
 
 #### Attributes
 
@@ -6313,7 +6316,7 @@ r""" The Secret to select from
 |**optional**|bool|Specify whether the Secret must be defined||
 ### MonitoringCoreosComV1PrometheusSpecContainersItems0EnvItems0
 
-r""" EnvVar represents an environment variable present in a Container.
+EnvVar represents an environment variable present in a Container.
 
 #### Attributes
 
@@ -6324,7 +6327,7 @@ r""" EnvVar represents an environment variable present in a Container.
 |**valueFrom**|[MonitoringCoreosComV1PrometheusSpecContainersItems0EnvItems0ValueFrom](#monitoringcoreoscomv1prometheusspeccontainersitems0envitems0valuefrom)|value from||
 ### MonitoringCoreosComV1PrometheusSpecContainersItems0EnvItems0ValueFrom
 
-r""" Source for the environment variable's value. Cannot be used if value is not empty.
+Source for the environment variable's value. Cannot be used if value is not empty.
 
 #### Attributes
 
@@ -6336,7 +6339,7 @@ r""" Source for the environment variable's value. Cannot be used if value is not
 |**secretKeyRef**|[MonitoringCoreosComV1PrometheusSpecContainersItems0EnvItems0ValueFromSecretKeyRef](#monitoringcoreoscomv1prometheusspeccontainersitems0envitems0valuefromsecretkeyref)|secret key ref||
 ### MonitoringCoreosComV1PrometheusSpecContainersItems0EnvItems0ValueFromConfigMapKeyRef
 
-r""" Selects a key of a ConfigMap.
+Selects a key of a ConfigMap.
 
 #### Attributes
 
@@ -6347,7 +6350,7 @@ r""" Selects a key of a ConfigMap.
 |**optional**|bool|Specify whether the ConfigMap or its key must be defined||
 ### MonitoringCoreosComV1PrometheusSpecContainersItems0EnvItems0ValueFromFieldRef
 
-r""" Selects a field of the pod: supports metadata.name, metadata.namespace, metadata.labels, metadata.annotations, spec.nodeName, spec.serviceAccountName, status.hostIP, status.podIP, status.podIPs.
+Selects a field of the pod: supports metadata.name, metadata.namespace, metadata.labels, metadata.annotations, spec.nodeName, spec.serviceAccountName, status.hostIP, status.podIP, status.podIPs.
 
 #### Attributes
 
@@ -6357,7 +6360,7 @@ r""" Selects a field of the pod: supports metadata.name, metadata.namespace, met
 |**fieldPath** `required`|str|Path of the field to select in the specified API version.||
 ### MonitoringCoreosComV1PrometheusSpecContainersItems0EnvItems0ValueFromResourceFieldRef
 
-r""" Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
+Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
 
 #### Attributes
 
@@ -6368,7 +6371,7 @@ r""" Selects a resource of the container: only resources limits and requests (li
 |**resource** `required`|str|Required: resource to select||
 ### MonitoringCoreosComV1PrometheusSpecContainersItems0EnvItems0ValueFromSecretKeyRef
 
-r""" Selects a key of a secret in the pod's namespace
+Selects a key of a secret in the pod's namespace
 
 #### Attributes
 
@@ -6379,7 +6382,7 @@ r""" Selects a key of a secret in the pod's namespace
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1PrometheusSpecContainersItems0Lifecycle
 
-r""" Actions that the management system should take in response to container lifecycle events. Cannot be updated.
+Actions that the management system should take in response to container lifecycle events. Cannot be updated.
 
 #### Attributes
 
@@ -6389,7 +6392,7 @@ r""" Actions that the management system should take in response to container lif
 |**preStop**|[MonitoringCoreosComV1PrometheusSpecContainersItems0LifecyclePreStop](#monitoringcoreoscomv1prometheusspeccontainersitems0lifecycleprestop)|pre stop||
 ### MonitoringCoreosComV1PrometheusSpecContainersItems0LifecyclePostStart
 
-r""" PostStart is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+PostStart is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
 
 #### Attributes
 
@@ -6400,7 +6403,7 @@ r""" PostStart is called immediately after a container is created. If the handle
 |**tcpSocket**|[MonitoringCoreosComV1PrometheusSpecContainersItems0LifecyclePostStartTCPSocket](#monitoringcoreoscomv1prometheusspeccontainersitems0lifecyclepoststarttcpsocket)|tcp socket||
 ### MonitoringCoreosComV1PrometheusSpecContainersItems0LifecyclePostStartExec
 
-r""" One and only one of the following should be specified. Exec specifies the action to take.
+One and only one of the following should be specified. Exec specifies the action to take.
 
 #### Attributes
 
@@ -6409,7 +6412,7 @@ r""" One and only one of the following should be specified. Exec specifies the a
 |**command**|[str]|Command is the command line to execute inside the container, the working directory for the command  is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('\|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.||
 ### MonitoringCoreosComV1PrometheusSpecContainersItems0LifecyclePostStartHTTPGet
 
-r""" HTTPGet specifies the http request to perform.
+HTTPGet specifies the http request to perform.
 
 #### Attributes
 
@@ -6422,7 +6425,7 @@ r""" HTTPGet specifies the http request to perform.
 |**scheme**|str|Scheme to use for connecting to the host. Defaults to HTTP.||
 ### MonitoringCoreosComV1PrometheusSpecContainersItems0LifecyclePostStartHTTPGetHTTPHeadersItems0
 
-r""" HTTPHeader describes a custom header to be used in HTTP probes
+HTTPHeader describes a custom header to be used in HTTP probes
 
 #### Attributes
 
@@ -6432,7 +6435,7 @@ r""" HTTPHeader describes a custom header to be used in HTTP probes
 |**value** `required`|str|The header field value||
 ### MonitoringCoreosComV1PrometheusSpecContainersItems0LifecyclePostStartTCPSocket
 
-r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
+TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
 
 #### Attributes
 
@@ -6442,7 +6445,7 @@ r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet suppo
 |**port** `required`|int | str|Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.||
 ### MonitoringCoreosComV1PrometheusSpecContainersItems0LifecyclePreStop
 
-r""" PreStop is called immediately before a container is terminated due to an API request or management event such as liveness/startup probe failure, preemption, resource contention, etc. The handler is not called if the container crashes or exits. The reason for termination is passed to the handler. The Pod's termination grace period countdown begins before the PreStop hooked is executed. Regardless of the outcome of the handler, the container will eventually terminate within the Pod's termination grace period. Other management of the container blocks until the hook completes or until the termination grace period is reached. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+PreStop is called immediately before a container is terminated due to an API request or management event such as liveness/startup probe failure, preemption, resource contention, etc. The handler is not called if the container crashes or exits. The reason for termination is passed to the handler. The Pod's termination grace period countdown begins before the PreStop hooked is executed. Regardless of the outcome of the handler, the container will eventually terminate within the Pod's termination grace period. Other management of the container blocks until the hook completes or until the termination grace period is reached. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
 
 #### Attributes
 
@@ -6453,7 +6456,7 @@ r""" PreStop is called immediately before a container is terminated due to an AP
 |**tcpSocket**|[MonitoringCoreosComV1PrometheusSpecContainersItems0LifecyclePreStopTCPSocket](#monitoringcoreoscomv1prometheusspeccontainersitems0lifecycleprestoptcpsocket)|tcp socket||
 ### MonitoringCoreosComV1PrometheusSpecContainersItems0LifecyclePreStopExec
 
-r""" One and only one of the following should be specified. Exec specifies the action to take.
+One and only one of the following should be specified. Exec specifies the action to take.
 
 #### Attributes
 
@@ -6462,7 +6465,7 @@ r""" One and only one of the following should be specified. Exec specifies the a
 |**command**|[str]|Command is the command line to execute inside the container, the working directory for the command  is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('\|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.||
 ### MonitoringCoreosComV1PrometheusSpecContainersItems0LifecyclePreStopHTTPGet
 
-r""" HTTPGet specifies the http request to perform.
+HTTPGet specifies the http request to perform.
 
 #### Attributes
 
@@ -6475,7 +6478,7 @@ r""" HTTPGet specifies the http request to perform.
 |**scheme**|str|Scheme to use for connecting to the host. Defaults to HTTP.||
 ### MonitoringCoreosComV1PrometheusSpecContainersItems0LifecyclePreStopHTTPGetHTTPHeadersItems0
 
-r""" HTTPHeader describes a custom header to be used in HTTP probes
+HTTPHeader describes a custom header to be used in HTTP probes
 
 #### Attributes
 
@@ -6485,7 +6488,7 @@ r""" HTTPHeader describes a custom header to be used in HTTP probes
 |**value** `required`|str|The header field value||
 ### MonitoringCoreosComV1PrometheusSpecContainersItems0LifecyclePreStopTCPSocket
 
-r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
+TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
 
 #### Attributes
 
@@ -6495,7 +6498,7 @@ r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet suppo
 |**port** `required`|int | str|Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.||
 ### MonitoringCoreosComV1PrometheusSpecContainersItems0LivenessProbe
 
-r""" Periodic probe of container liveness. Container will be restarted if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+Periodic probe of container liveness. Container will be restarted if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 
 #### Attributes
 
@@ -6511,7 +6514,7 @@ r""" Periodic probe of container liveness. Container will be restarted if the pr
 |**timeoutSeconds**|int|Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes||
 ### MonitoringCoreosComV1PrometheusSpecContainersItems0LivenessProbeExec
 
-r""" One and only one of the following should be specified. Exec specifies the action to take.
+One and only one of the following should be specified. Exec specifies the action to take.
 
 #### Attributes
 
@@ -6520,7 +6523,7 @@ r""" One and only one of the following should be specified. Exec specifies the a
 |**command**|[str]|Command is the command line to execute inside the container, the working directory for the command  is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('\|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.||
 ### MonitoringCoreosComV1PrometheusSpecContainersItems0LivenessProbeHTTPGet
 
-r""" HTTPGet specifies the http request to perform.
+HTTPGet specifies the http request to perform.
 
 #### Attributes
 
@@ -6533,7 +6536,7 @@ r""" HTTPGet specifies the http request to perform.
 |**scheme**|str|Scheme to use for connecting to the host. Defaults to HTTP.||
 ### MonitoringCoreosComV1PrometheusSpecContainersItems0LivenessProbeHTTPGetHTTPHeadersItems0
 
-r""" HTTPHeader describes a custom header to be used in HTTP probes
+HTTPHeader describes a custom header to be used in HTTP probes
 
 #### Attributes
 
@@ -6543,7 +6546,7 @@ r""" HTTPHeader describes a custom header to be used in HTTP probes
 |**value** `required`|str|The header field value||
 ### MonitoringCoreosComV1PrometheusSpecContainersItems0LivenessProbeTCPSocket
 
-r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
+TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
 
 #### Attributes
 
@@ -6553,7 +6556,7 @@ r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet suppo
 |**port** `required`|int | str|Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.||
 ### MonitoringCoreosComV1PrometheusSpecContainersItems0PortsItems0
 
-r""" ContainerPort represents a network port in a single container.
+ContainerPort represents a network port in a single container.
 
 #### Attributes
 
@@ -6566,7 +6569,7 @@ r""" ContainerPort represents a network port in a single container.
 |**protocol**|str|||
 ### MonitoringCoreosComV1PrometheusSpecContainersItems0ReadinessProbe
 
-r""" Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 
 #### Attributes
 
@@ -6582,7 +6585,7 @@ r""" Periodic probe of container service readiness. Container will be removed fr
 |**timeoutSeconds**|int|Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes||
 ### MonitoringCoreosComV1PrometheusSpecContainersItems0ReadinessProbeExec
 
-r""" One and only one of the following should be specified. Exec specifies the action to take.
+One and only one of the following should be specified. Exec specifies the action to take.
 
 #### Attributes
 
@@ -6591,7 +6594,7 @@ r""" One and only one of the following should be specified. Exec specifies the a
 |**command**|[str]|Command is the command line to execute inside the container, the working directory for the command  is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('\|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.||
 ### MonitoringCoreosComV1PrometheusSpecContainersItems0ReadinessProbeHTTPGet
 
-r""" HTTPGet specifies the http request to perform.
+HTTPGet specifies the http request to perform.
 
 #### Attributes
 
@@ -6604,7 +6607,7 @@ r""" HTTPGet specifies the http request to perform.
 |**scheme**|str|Scheme to use for connecting to the host. Defaults to HTTP.||
 ### MonitoringCoreosComV1PrometheusSpecContainersItems0ReadinessProbeHTTPGetHTTPHeadersItems0
 
-r""" HTTPHeader describes a custom header to be used in HTTP probes
+HTTPHeader describes a custom header to be used in HTTP probes
 
 #### Attributes
 
@@ -6614,7 +6617,7 @@ r""" HTTPHeader describes a custom header to be used in HTTP probes
 |**value** `required`|str|The header field value||
 ### MonitoringCoreosComV1PrometheusSpecContainersItems0ReadinessProbeTCPSocket
 
-r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
+TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
 
 #### Attributes
 
@@ -6624,7 +6627,7 @@ r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet suppo
 |**port** `required`|int | str|Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.||
 ### MonitoringCoreosComV1PrometheusSpecContainersItems0Resources
 
-r""" Compute Resources required by this container. Cannot be updated. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
+Compute Resources required by this container. Cannot be updated. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
 
 #### Attributes
 
@@ -6634,7 +6637,7 @@ r""" Compute Resources required by this container. Cannot be updated. More info:
 |**requests**|{str:str}|Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/||
 ### MonitoringCoreosComV1PrometheusSpecContainersItems0SecurityContext
 
-r""" Security options the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-context/ More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+Security options the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-context/ More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
 
 #### Attributes
 
@@ -6652,7 +6655,7 @@ r""" Security options the pod should run with. More info: https://kubernetes.io/
 |**windowsOptions**|[MonitoringCoreosComV1PrometheusSpecContainersItems0SecurityContextWindowsOptions](#monitoringcoreoscomv1prometheusspeccontainersitems0securitycontextwindowsoptions)|windows options||
 ### MonitoringCoreosComV1PrometheusSpecContainersItems0SecurityContextCapabilities
 
-r""" The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime.
+The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime.
 
 #### Attributes
 
@@ -6662,7 +6665,7 @@ r""" The capabilities to add/drop when running containers. Defaults to the defau
 |**drop**|[str]|Removed capabilities||
 ### MonitoringCoreosComV1PrometheusSpecContainersItems0SecurityContextSeLinuxOptions
 
-r""" The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container.  May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container.  May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
 
 #### Attributes
 
@@ -6674,7 +6677,7 @@ r""" The SELinux context to be applied to the container. If unspecified, the con
 |**user**|str|User is a SELinux user label that applies to the container.||
 ### MonitoringCoreosComV1PrometheusSpecContainersItems0SecurityContextWindowsOptions
 
-r""" The Windows specific settings applied to all containers. If unspecified, the options from the PodSecurityContext will be used. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+The Windows specific settings applied to all containers. If unspecified, the options from the PodSecurityContext will be used. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
 
 #### Attributes
 
@@ -6685,7 +6688,7 @@ r""" The Windows specific settings applied to all containers. If unspecified, th
 |**runAsUserName**|str|The UserName in Windows to run the entrypoint of the container process. Defaults to the user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.||
 ### MonitoringCoreosComV1PrometheusSpecContainersItems0StartupProbe
 
-r""" StartupProbe indicates that the Pod has successfully initialized. If specified, no other probes are executed until this completes successfully. If this probe fails, the Pod will be restarted, just as if the livenessProbe failed. This can be used to provide different probe parameters at the beginning of a Pod's lifecycle, when it might take a long time to load data or warm a cache, than during steady-state operation. This cannot be updated. This is a beta feature enabled by the StartupProbe feature flag. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+StartupProbe indicates that the Pod has successfully initialized. If specified, no other probes are executed until this completes successfully. If this probe fails, the Pod will be restarted, just as if the livenessProbe failed. This can be used to provide different probe parameters at the beginning of a Pod's lifecycle, when it might take a long time to load data or warm a cache, than during steady-state operation. This cannot be updated. This is a beta feature enabled by the StartupProbe feature flag. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 
 #### Attributes
 
@@ -6701,7 +6704,7 @@ r""" StartupProbe indicates that the Pod has successfully initialized. If specif
 |**timeoutSeconds**|int|Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes||
 ### MonitoringCoreosComV1PrometheusSpecContainersItems0StartupProbeExec
 
-r""" One and only one of the following should be specified. Exec specifies the action to take.
+One and only one of the following should be specified. Exec specifies the action to take.
 
 #### Attributes
 
@@ -6710,7 +6713,7 @@ r""" One and only one of the following should be specified. Exec specifies the a
 |**command**|[str]|Command is the command line to execute inside the container, the working directory for the command  is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('\|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.||
 ### MonitoringCoreosComV1PrometheusSpecContainersItems0StartupProbeHTTPGet
 
-r""" HTTPGet specifies the http request to perform.
+HTTPGet specifies the http request to perform.
 
 #### Attributes
 
@@ -6723,7 +6726,7 @@ r""" HTTPGet specifies the http request to perform.
 |**scheme**|str|Scheme to use for connecting to the host. Defaults to HTTP.||
 ### MonitoringCoreosComV1PrometheusSpecContainersItems0StartupProbeHTTPGetHTTPHeadersItems0
 
-r""" HTTPHeader describes a custom header to be used in HTTP probes
+HTTPHeader describes a custom header to be used in HTTP probes
 
 #### Attributes
 
@@ -6733,7 +6736,7 @@ r""" HTTPHeader describes a custom header to be used in HTTP probes
 |**value** `required`|str|The header field value||
 ### MonitoringCoreosComV1PrometheusSpecContainersItems0StartupProbeTCPSocket
 
-r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
+TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
 
 #### Attributes
 
@@ -6743,7 +6746,7 @@ r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet suppo
 |**port** `required`|int | str|Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.||
 ### MonitoringCoreosComV1PrometheusSpecContainersItems0VolumeDevicesItems0
 
-r""" volumeDevice describes a mapping of a raw block device within a container.
+volumeDevice describes a mapping of a raw block device within a container.
 
 #### Attributes
 
@@ -6753,7 +6756,7 @@ r""" volumeDevice describes a mapping of a raw block device within a container.
 |**name** `required`|str|name must match the name of a persistentVolumeClaim in the pod||
 ### MonitoringCoreosComV1PrometheusSpecContainersItems0VolumeMountsItems0
 
-r""" VolumeMount describes a mounting of a Volume within a container.
+VolumeMount describes a mounting of a Volume within a container.
 
 #### Attributes
 
@@ -6767,7 +6770,7 @@ r""" VolumeMount describes a mounting of a Volume within a container.
 |**subPathExpr**|str|Expanded path within the volume from which the container's volume should be mounted. Behaves similarly to SubPath but environment variable references $(VAR_NAME) are expanded using the container's environment. Defaults to "" (volume's root). SubPathExpr and SubPath are mutually exclusive.||
 ### MonitoringCoreosComV1PrometheusSpecImagePullSecretsItems0
 
-r""" LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
+LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
 
 #### Attributes
 
@@ -6776,7 +6779,7 @@ r""" LocalObjectReference contains enough information to let you locate the refe
 |**name**|str|Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?||
 ### MonitoringCoreosComV1PrometheusSpecInitContainersItems0
 
-r""" A single application container that you want to run within a pod.
+A single application container that you want to run within a pod.
 
 #### Attributes
 
@@ -6806,7 +6809,7 @@ r""" A single application container that you want to run within a pod.
 |**workingDir**|str|Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. Cannot be updated.||
 ### MonitoringCoreosComV1PrometheusSpecInitContainersItems0EnvFromItems0
 
-r""" EnvFromSource represents the source of a set of ConfigMaps
+EnvFromSource represents the source of a set of ConfigMaps
 
 #### Attributes
 
@@ -6817,7 +6820,7 @@ r""" EnvFromSource represents the source of a set of ConfigMaps
 |**secretRef**|[MonitoringCoreosComV1PrometheusSpecInitContainersItems0EnvFromItems0SecretRef](#monitoringcoreoscomv1prometheusspecinitcontainersitems0envfromitems0secretref)|secret ref||
 ### MonitoringCoreosComV1PrometheusSpecInitContainersItems0EnvFromItems0ConfigMapRef
 
-r""" The ConfigMap to select from
+The ConfigMap to select from
 
 #### Attributes
 
@@ -6827,7 +6830,7 @@ r""" The ConfigMap to select from
 |**optional**|bool|Specify whether the ConfigMap must be defined||
 ### MonitoringCoreosComV1PrometheusSpecInitContainersItems0EnvFromItems0SecretRef
 
-r""" The Secret to select from
+The Secret to select from
 
 #### Attributes
 
@@ -6837,7 +6840,7 @@ r""" The Secret to select from
 |**optional**|bool|Specify whether the Secret must be defined||
 ### MonitoringCoreosComV1PrometheusSpecInitContainersItems0EnvItems0
 
-r""" EnvVar represents an environment variable present in a Container.
+EnvVar represents an environment variable present in a Container.
 
 #### Attributes
 
@@ -6848,7 +6851,7 @@ r""" EnvVar represents an environment variable present in a Container.
 |**valueFrom**|[MonitoringCoreosComV1PrometheusSpecInitContainersItems0EnvItems0ValueFrom](#monitoringcoreoscomv1prometheusspecinitcontainersitems0envitems0valuefrom)|value from||
 ### MonitoringCoreosComV1PrometheusSpecInitContainersItems0EnvItems0ValueFrom
 
-r""" Source for the environment variable's value. Cannot be used if value is not empty.
+Source for the environment variable's value. Cannot be used if value is not empty.
 
 #### Attributes
 
@@ -6860,7 +6863,7 @@ r""" Source for the environment variable's value. Cannot be used if value is not
 |**secretKeyRef**|[MonitoringCoreosComV1PrometheusSpecInitContainersItems0EnvItems0ValueFromSecretKeyRef](#monitoringcoreoscomv1prometheusspecinitcontainersitems0envitems0valuefromsecretkeyref)|secret key ref||
 ### MonitoringCoreosComV1PrometheusSpecInitContainersItems0EnvItems0ValueFromConfigMapKeyRef
 
-r""" Selects a key of a ConfigMap.
+Selects a key of a ConfigMap.
 
 #### Attributes
 
@@ -6871,7 +6874,7 @@ r""" Selects a key of a ConfigMap.
 |**optional**|bool|Specify whether the ConfigMap or its key must be defined||
 ### MonitoringCoreosComV1PrometheusSpecInitContainersItems0EnvItems0ValueFromFieldRef
 
-r""" Selects a field of the pod: supports metadata.name, metadata.namespace, metadata.labels, metadata.annotations, spec.nodeName, spec.serviceAccountName, status.hostIP, status.podIP, status.podIPs.
+Selects a field of the pod: supports metadata.name, metadata.namespace, metadata.labels, metadata.annotations, spec.nodeName, spec.serviceAccountName, status.hostIP, status.podIP, status.podIPs.
 
 #### Attributes
 
@@ -6881,7 +6884,7 @@ r""" Selects a field of the pod: supports metadata.name, metadata.namespace, met
 |**fieldPath** `required`|str|Path of the field to select in the specified API version.||
 ### MonitoringCoreosComV1PrometheusSpecInitContainersItems0EnvItems0ValueFromResourceFieldRef
 
-r""" Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
+Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
 
 #### Attributes
 
@@ -6892,7 +6895,7 @@ r""" Selects a resource of the container: only resources limits and requests (li
 |**resource** `required`|str|Required: resource to select||
 ### MonitoringCoreosComV1PrometheusSpecInitContainersItems0EnvItems0ValueFromSecretKeyRef
 
-r""" Selects a key of a secret in the pod's namespace
+Selects a key of a secret in the pod's namespace
 
 #### Attributes
 
@@ -6903,7 +6906,7 @@ r""" Selects a key of a secret in the pod's namespace
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1PrometheusSpecInitContainersItems0Lifecycle
 
-r""" Actions that the management system should take in response to container lifecycle events. Cannot be updated.
+Actions that the management system should take in response to container lifecycle events. Cannot be updated.
 
 #### Attributes
 
@@ -6913,7 +6916,7 @@ r""" Actions that the management system should take in response to container lif
 |**preStop**|[MonitoringCoreosComV1PrometheusSpecInitContainersItems0LifecyclePreStop](#monitoringcoreoscomv1prometheusspecinitcontainersitems0lifecycleprestop)|pre stop||
 ### MonitoringCoreosComV1PrometheusSpecInitContainersItems0LifecyclePostStart
 
-r""" PostStart is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+PostStart is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
 
 #### Attributes
 
@@ -6924,7 +6927,7 @@ r""" PostStart is called immediately after a container is created. If the handle
 |**tcpSocket**|[MonitoringCoreosComV1PrometheusSpecInitContainersItems0LifecyclePostStartTCPSocket](#monitoringcoreoscomv1prometheusspecinitcontainersitems0lifecyclepoststarttcpsocket)|tcp socket||
 ### MonitoringCoreosComV1PrometheusSpecInitContainersItems0LifecyclePostStartExec
 
-r""" One and only one of the following should be specified. Exec specifies the action to take.
+One and only one of the following should be specified. Exec specifies the action to take.
 
 #### Attributes
 
@@ -6933,7 +6936,7 @@ r""" One and only one of the following should be specified. Exec specifies the a
 |**command**|[str]|Command is the command line to execute inside the container, the working directory for the command  is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('\|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.||
 ### MonitoringCoreosComV1PrometheusSpecInitContainersItems0LifecyclePostStartHTTPGet
 
-r""" HTTPGet specifies the http request to perform.
+HTTPGet specifies the http request to perform.
 
 #### Attributes
 
@@ -6946,7 +6949,7 @@ r""" HTTPGet specifies the http request to perform.
 |**scheme**|str|Scheme to use for connecting to the host. Defaults to HTTP.||
 ### MonitoringCoreosComV1PrometheusSpecInitContainersItems0LifecyclePostStartHTTPGetHTTPHeadersItems0
 
-r""" HTTPHeader describes a custom header to be used in HTTP probes
+HTTPHeader describes a custom header to be used in HTTP probes
 
 #### Attributes
 
@@ -6956,7 +6959,7 @@ r""" HTTPHeader describes a custom header to be used in HTTP probes
 |**value** `required`|str|The header field value||
 ### MonitoringCoreosComV1PrometheusSpecInitContainersItems0LifecyclePostStartTCPSocket
 
-r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
+TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
 
 #### Attributes
 
@@ -6966,7 +6969,7 @@ r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet suppo
 |**port** `required`|int | str|Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.||
 ### MonitoringCoreosComV1PrometheusSpecInitContainersItems0LifecyclePreStop
 
-r""" PreStop is called immediately before a container is terminated due to an API request or management event such as liveness/startup probe failure, preemption, resource contention, etc. The handler is not called if the container crashes or exits. The reason for termination is passed to the handler. The Pod's termination grace period countdown begins before the PreStop hooked is executed. Regardless of the outcome of the handler, the container will eventually terminate within the Pod's termination grace period. Other management of the container blocks until the hook completes or until the termination grace period is reached. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+PreStop is called immediately before a container is terminated due to an API request or management event such as liveness/startup probe failure, preemption, resource contention, etc. The handler is not called if the container crashes or exits. The reason for termination is passed to the handler. The Pod's termination grace period countdown begins before the PreStop hooked is executed. Regardless of the outcome of the handler, the container will eventually terminate within the Pod's termination grace period. Other management of the container blocks until the hook completes or until the termination grace period is reached. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
 
 #### Attributes
 
@@ -6977,7 +6980,7 @@ r""" PreStop is called immediately before a container is terminated due to an AP
 |**tcpSocket**|[MonitoringCoreosComV1PrometheusSpecInitContainersItems0LifecyclePreStopTCPSocket](#monitoringcoreoscomv1prometheusspecinitcontainersitems0lifecycleprestoptcpsocket)|tcp socket||
 ### MonitoringCoreosComV1PrometheusSpecInitContainersItems0LifecyclePreStopExec
 
-r""" One and only one of the following should be specified. Exec specifies the action to take.
+One and only one of the following should be specified. Exec specifies the action to take.
 
 #### Attributes
 
@@ -6986,7 +6989,7 @@ r""" One and only one of the following should be specified. Exec specifies the a
 |**command**|[str]|Command is the command line to execute inside the container, the working directory for the command  is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('\|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.||
 ### MonitoringCoreosComV1PrometheusSpecInitContainersItems0LifecyclePreStopHTTPGet
 
-r""" HTTPGet specifies the http request to perform.
+HTTPGet specifies the http request to perform.
 
 #### Attributes
 
@@ -6999,7 +7002,7 @@ r""" HTTPGet specifies the http request to perform.
 |**scheme**|str|Scheme to use for connecting to the host. Defaults to HTTP.||
 ### MonitoringCoreosComV1PrometheusSpecInitContainersItems0LifecyclePreStopHTTPGetHTTPHeadersItems0
 
-r""" HTTPHeader describes a custom header to be used in HTTP probes
+HTTPHeader describes a custom header to be used in HTTP probes
 
 #### Attributes
 
@@ -7009,7 +7012,7 @@ r""" HTTPHeader describes a custom header to be used in HTTP probes
 |**value** `required`|str|The header field value||
 ### MonitoringCoreosComV1PrometheusSpecInitContainersItems0LifecyclePreStopTCPSocket
 
-r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
+TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
 
 #### Attributes
 
@@ -7019,7 +7022,7 @@ r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet suppo
 |**port** `required`|int | str|Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.||
 ### MonitoringCoreosComV1PrometheusSpecInitContainersItems0LivenessProbe
 
-r""" Periodic probe of container liveness. Container will be restarted if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+Periodic probe of container liveness. Container will be restarted if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 
 #### Attributes
 
@@ -7035,7 +7038,7 @@ r""" Periodic probe of container liveness. Container will be restarted if the pr
 |**timeoutSeconds**|int|Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes||
 ### MonitoringCoreosComV1PrometheusSpecInitContainersItems0LivenessProbeExec
 
-r""" One and only one of the following should be specified. Exec specifies the action to take.
+One and only one of the following should be specified. Exec specifies the action to take.
 
 #### Attributes
 
@@ -7044,7 +7047,7 @@ r""" One and only one of the following should be specified. Exec specifies the a
 |**command**|[str]|Command is the command line to execute inside the container, the working directory for the command  is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('\|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.||
 ### MonitoringCoreosComV1PrometheusSpecInitContainersItems0LivenessProbeHTTPGet
 
-r""" HTTPGet specifies the http request to perform.
+HTTPGet specifies the http request to perform.
 
 #### Attributes
 
@@ -7057,7 +7060,7 @@ r""" HTTPGet specifies the http request to perform.
 |**scheme**|str|Scheme to use for connecting to the host. Defaults to HTTP.||
 ### MonitoringCoreosComV1PrometheusSpecInitContainersItems0LivenessProbeHTTPGetHTTPHeadersItems0
 
-r""" HTTPHeader describes a custom header to be used in HTTP probes
+HTTPHeader describes a custom header to be used in HTTP probes
 
 #### Attributes
 
@@ -7067,7 +7070,7 @@ r""" HTTPHeader describes a custom header to be used in HTTP probes
 |**value** `required`|str|The header field value||
 ### MonitoringCoreosComV1PrometheusSpecInitContainersItems0LivenessProbeTCPSocket
 
-r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
+TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
 
 #### Attributes
 
@@ -7077,7 +7080,7 @@ r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet suppo
 |**port** `required`|int | str|Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.||
 ### MonitoringCoreosComV1PrometheusSpecInitContainersItems0PortsItems0
 
-r""" ContainerPort represents a network port in a single container.
+ContainerPort represents a network port in a single container.
 
 #### Attributes
 
@@ -7090,7 +7093,7 @@ r""" ContainerPort represents a network port in a single container.
 |**protocol**|str|||
 ### MonitoringCoreosComV1PrometheusSpecInitContainersItems0ReadinessProbe
 
-r""" Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 
 #### Attributes
 
@@ -7106,7 +7109,7 @@ r""" Periodic probe of container service readiness. Container will be removed fr
 |**timeoutSeconds**|int|Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes||
 ### MonitoringCoreosComV1PrometheusSpecInitContainersItems0ReadinessProbeExec
 
-r""" One and only one of the following should be specified. Exec specifies the action to take.
+One and only one of the following should be specified. Exec specifies the action to take.
 
 #### Attributes
 
@@ -7115,7 +7118,7 @@ r""" One and only one of the following should be specified. Exec specifies the a
 |**command**|[str]|Command is the command line to execute inside the container, the working directory for the command  is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('\|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.||
 ### MonitoringCoreosComV1PrometheusSpecInitContainersItems0ReadinessProbeHTTPGet
 
-r""" HTTPGet specifies the http request to perform.
+HTTPGet specifies the http request to perform.
 
 #### Attributes
 
@@ -7128,7 +7131,7 @@ r""" HTTPGet specifies the http request to perform.
 |**scheme**|str|Scheme to use for connecting to the host. Defaults to HTTP.||
 ### MonitoringCoreosComV1PrometheusSpecInitContainersItems0ReadinessProbeHTTPGetHTTPHeadersItems0
 
-r""" HTTPHeader describes a custom header to be used in HTTP probes
+HTTPHeader describes a custom header to be used in HTTP probes
 
 #### Attributes
 
@@ -7138,7 +7141,7 @@ r""" HTTPHeader describes a custom header to be used in HTTP probes
 |**value** `required`|str|The header field value||
 ### MonitoringCoreosComV1PrometheusSpecInitContainersItems0ReadinessProbeTCPSocket
 
-r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
+TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
 
 #### Attributes
 
@@ -7148,7 +7151,7 @@ r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet suppo
 |**port** `required`|int | str|Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.||
 ### MonitoringCoreosComV1PrometheusSpecInitContainersItems0Resources
 
-r""" Compute Resources required by this container. Cannot be updated. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
+Compute Resources required by this container. Cannot be updated. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
 
 #### Attributes
 
@@ -7158,7 +7161,7 @@ r""" Compute Resources required by this container. Cannot be updated. More info:
 |**requests**|{str:str}|Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/||
 ### MonitoringCoreosComV1PrometheusSpecInitContainersItems0SecurityContext
 
-r""" Security options the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-context/ More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+Security options the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-context/ More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
 
 #### Attributes
 
@@ -7176,7 +7179,7 @@ r""" Security options the pod should run with. More info: https://kubernetes.io/
 |**windowsOptions**|[MonitoringCoreosComV1PrometheusSpecInitContainersItems0SecurityContextWindowsOptions](#monitoringcoreoscomv1prometheusspecinitcontainersitems0securitycontextwindowsoptions)|windows options||
 ### MonitoringCoreosComV1PrometheusSpecInitContainersItems0SecurityContextCapabilities
 
-r""" The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime.
+The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime.
 
 #### Attributes
 
@@ -7186,7 +7189,7 @@ r""" The capabilities to add/drop when running containers. Defaults to the defau
 |**drop**|[str]|Removed capabilities||
 ### MonitoringCoreosComV1PrometheusSpecInitContainersItems0SecurityContextSeLinuxOptions
 
-r""" The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container.  May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container.  May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
 
 #### Attributes
 
@@ -7198,7 +7201,7 @@ r""" The SELinux context to be applied to the container. If unspecified, the con
 |**user**|str|User is a SELinux user label that applies to the container.||
 ### MonitoringCoreosComV1PrometheusSpecInitContainersItems0SecurityContextWindowsOptions
 
-r""" The Windows specific settings applied to all containers. If unspecified, the options from the PodSecurityContext will be used. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+The Windows specific settings applied to all containers. If unspecified, the options from the PodSecurityContext will be used. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
 
 #### Attributes
 
@@ -7209,7 +7212,7 @@ r""" The Windows specific settings applied to all containers. If unspecified, th
 |**runAsUserName**|str|The UserName in Windows to run the entrypoint of the container process. Defaults to the user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.||
 ### MonitoringCoreosComV1PrometheusSpecInitContainersItems0StartupProbe
 
-r""" StartupProbe indicates that the Pod has successfully initialized. If specified, no other probes are executed until this completes successfully. If this probe fails, the Pod will be restarted, just as if the livenessProbe failed. This can be used to provide different probe parameters at the beginning of a Pod's lifecycle, when it might take a long time to load data or warm a cache, than during steady-state operation. This cannot be updated. This is a beta feature enabled by the StartupProbe feature flag. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+StartupProbe indicates that the Pod has successfully initialized. If specified, no other probes are executed until this completes successfully. If this probe fails, the Pod will be restarted, just as if the livenessProbe failed. This can be used to provide different probe parameters at the beginning of a Pod's lifecycle, when it might take a long time to load data or warm a cache, than during steady-state operation. This cannot be updated. This is a beta feature enabled by the StartupProbe feature flag. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 
 #### Attributes
 
@@ -7225,7 +7228,7 @@ r""" StartupProbe indicates that the Pod has successfully initialized. If specif
 |**timeoutSeconds**|int|Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes||
 ### MonitoringCoreosComV1PrometheusSpecInitContainersItems0StartupProbeExec
 
-r""" One and only one of the following should be specified. Exec specifies the action to take.
+One and only one of the following should be specified. Exec specifies the action to take.
 
 #### Attributes
 
@@ -7234,7 +7237,7 @@ r""" One and only one of the following should be specified. Exec specifies the a
 |**command**|[str]|Command is the command line to execute inside the container, the working directory for the command  is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('\|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.||
 ### MonitoringCoreosComV1PrometheusSpecInitContainersItems0StartupProbeHTTPGet
 
-r""" HTTPGet specifies the http request to perform.
+HTTPGet specifies the http request to perform.
 
 #### Attributes
 
@@ -7247,7 +7250,7 @@ r""" HTTPGet specifies the http request to perform.
 |**scheme**|str|Scheme to use for connecting to the host. Defaults to HTTP.||
 ### MonitoringCoreosComV1PrometheusSpecInitContainersItems0StartupProbeHTTPGetHTTPHeadersItems0
 
-r""" HTTPHeader describes a custom header to be used in HTTP probes
+HTTPHeader describes a custom header to be used in HTTP probes
 
 #### Attributes
 
@@ -7257,7 +7260,7 @@ r""" HTTPHeader describes a custom header to be used in HTTP probes
 |**value** `required`|str|The header field value||
 ### MonitoringCoreosComV1PrometheusSpecInitContainersItems0StartupProbeTCPSocket
 
-r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
+TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
 
 #### Attributes
 
@@ -7267,7 +7270,7 @@ r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet suppo
 |**port** `required`|int | str|Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.||
 ### MonitoringCoreosComV1PrometheusSpecInitContainersItems0VolumeDevicesItems0
 
-r""" volumeDevice describes a mapping of a raw block device within a container.
+volumeDevice describes a mapping of a raw block device within a container.
 
 #### Attributes
 
@@ -7277,7 +7280,7 @@ r""" volumeDevice describes a mapping of a raw block device within a container.
 |**name** `required`|str|name must match the name of a persistentVolumeClaim in the pod||
 ### MonitoringCoreosComV1PrometheusSpecInitContainersItems0VolumeMountsItems0
 
-r""" VolumeMount describes a mounting of a Volume within a container.
+VolumeMount describes a mounting of a Volume within a container.
 
 #### Attributes
 
@@ -7291,7 +7294,7 @@ r""" VolumeMount describes a mounting of a Volume within a container.
 |**subPathExpr**|str|Expanded path within the volume from which the container's volume should be mounted. Behaves similarly to SubPath but environment variable references $(VAR_NAME) are expanded using the container's environment. Defaults to "" (volume's root). SubPathExpr and SubPath are mutually exclusive.||
 ### MonitoringCoreosComV1PrometheusSpecPodMetadata
 
-r""" PodMetadata configures Labels and Annotations which are propagated to the prometheus pods.
+PodMetadata configures Labels and Annotations which are propagated to the prometheus pods.
 
 #### Attributes
 
@@ -7302,7 +7305,7 @@ r""" PodMetadata configures Labels and Annotations which are propagated to the p
 |**name**|str|Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names||
 ### MonitoringCoreosComV1PrometheusSpecPodMonitorNamespaceSelector
 
-r""" Namespaces to be selected for PodMonitor discovery. If nil, only check own namespace.
+Namespaces to be selected for PodMonitor discovery. If nil, only check own namespace.
 
 #### Attributes
 
@@ -7312,7 +7315,7 @@ r""" Namespaces to be selected for PodMonitor discovery. If nil, only check own 
 |**matchLabels**|{str:str}|matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.||
 ### MonitoringCoreosComV1PrometheusSpecPodMonitorNamespaceSelectorMatchExpressionsItems0
 
-r""" A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
 #### Attributes
 
@@ -7323,7 +7326,7 @@ r""" A label selector requirement is a selector that contains values, a key, and
 |**values**|[str]|values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.||
 ### MonitoringCoreosComV1PrometheusSpecPodMonitorSelector
 
-r""" *Experimental* PodMonitors to be selected for target discovery. *Deprecated:* if neither this nor serviceMonitorSelector are specified, configuration is unmanaged.
+*Experimental* PodMonitors to be selected for target discovery. *Deprecated:* if neither this nor serviceMonitorSelector are specified, configuration is unmanaged.
 
 #### Attributes
 
@@ -7333,7 +7336,7 @@ r""" *Experimental* PodMonitors to be selected for target discovery. *Deprecated
 |**matchLabels**|{str:str}|matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.||
 ### MonitoringCoreosComV1PrometheusSpecPodMonitorSelectorMatchExpressionsItems0
 
-r""" A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
 #### Attributes
 
@@ -7344,7 +7347,7 @@ r""" A label selector requirement is a selector that contains values, a key, and
 |**values**|[str]|values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.||
 ### MonitoringCoreosComV1PrometheusSpecProbeNamespaceSelector
 
-r""" *Experimental* Namespaces to be selected for Probe discovery. If nil, only check own namespace.
+*Experimental* Namespaces to be selected for Probe discovery. If nil, only check own namespace.
 
 #### Attributes
 
@@ -7354,7 +7357,7 @@ r""" *Experimental* Namespaces to be selected for Probe discovery. If nil, only 
 |**matchLabels**|{str:str}|matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.||
 ### MonitoringCoreosComV1PrometheusSpecProbeNamespaceSelectorMatchExpressionsItems0
 
-r""" A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
 #### Attributes
 
@@ -7365,7 +7368,7 @@ r""" A label selector requirement is a selector that contains values, a key, and
 |**values**|[str]|values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.||
 ### MonitoringCoreosComV1PrometheusSpecProbeSelector
 
-r""" *Experimental* Probes to be selected for target discovery.
+*Experimental* Probes to be selected for target discovery.
 
 #### Attributes
 
@@ -7375,7 +7378,7 @@ r""" *Experimental* Probes to be selected for target discovery.
 |**matchLabels**|{str:str}|matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.||
 ### MonitoringCoreosComV1PrometheusSpecProbeSelectorMatchExpressionsItems0
 
-r""" A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
 #### Attributes
 
@@ -7386,7 +7389,7 @@ r""" A label selector requirement is a selector that contains values, a key, and
 |**values**|[str]|values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.||
 ### MonitoringCoreosComV1PrometheusSpecPrometheusRulesExcludedFromEnforceItems0
 
-r""" PrometheusRuleExcludeConfig enables users to configure excluded PrometheusRule names and their namespaces to be ignored while enforcing namespace label for alerts and metrics.
+PrometheusRuleExcludeConfig enables users to configure excluded PrometheusRule names and their namespaces to be ignored while enforcing namespace label for alerts and metrics.
 
 #### Attributes
 
@@ -7396,7 +7399,7 @@ r""" PrometheusRuleExcludeConfig enables users to configure excluded PrometheusR
 |**ruleNamespace** `required`|str|RuleNamespace - namespace of excluded rule||
 ### MonitoringCoreosComV1PrometheusSpecQuery
 
-r""" QuerySpec defines the query command line flags when starting Prometheus.
+QuerySpec defines the query command line flags when starting Prometheus.
 
 #### Attributes
 
@@ -7408,7 +7411,7 @@ r""" QuerySpec defines the query command line flags when starting Prometheus.
 |**timeout**|str|Maximum time a query may take before being aborted.||
 ### MonitoringCoreosComV1PrometheusSpecRemoteReadItems0
 
-r""" RemoteReadSpec defines the remote_read configuration for prometheus.
+RemoteReadSpec defines the remote_read configuration for prometheus.
 
 #### Attributes
 
@@ -7426,7 +7429,7 @@ r""" RemoteReadSpec defines the remote_read configuration for prometheus.
 |**url** `required`|str|The URL of the endpoint to send samples to.||
 ### MonitoringCoreosComV1PrometheusSpecRemoteReadItems0BasicAuth
 
-r""" BasicAuth for the URL.
+BasicAuth for the URL.
 
 #### Attributes
 
@@ -7436,7 +7439,7 @@ r""" BasicAuth for the URL.
 |**username**|[MonitoringCoreosComV1PrometheusSpecRemoteReadItems0BasicAuthUsername](#monitoringcoreoscomv1prometheusspecremotereaditems0basicauthusername)|username||
 ### MonitoringCoreosComV1PrometheusSpecRemoteReadItems0BasicAuthPassword
 
-r""" The secret in the service monitor namespace that contains the password for authentication.
+The secret in the service monitor namespace that contains the password for authentication.
 
 #### Attributes
 
@@ -7447,7 +7450,7 @@ r""" The secret in the service monitor namespace that contains the password for 
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1PrometheusSpecRemoteReadItems0BasicAuthUsername
 
-r""" The secret in the service monitor namespace that contains the username for authentication.
+The secret in the service monitor namespace that contains the username for authentication.
 
 #### Attributes
 
@@ -7458,7 +7461,7 @@ r""" The secret in the service monitor namespace that contains the username for 
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1PrometheusSpecRemoteReadItems0TLSConfig
 
-r""" TLS Config to use for remote read.
+TLS Config to use for remote read.
 
 #### Attributes
 
@@ -7474,7 +7477,7 @@ r""" TLS Config to use for remote read.
 |**serverName**|str|Used to verify the hostname for the targets.||
 ### MonitoringCoreosComV1PrometheusSpecRemoteReadItems0TLSConfigCa
 
-r""" Struct containing the CA cert to use for the targets.
+Struct containing the CA cert to use for the targets.
 
 #### Attributes
 
@@ -7484,7 +7487,7 @@ r""" Struct containing the CA cert to use for the targets.
 |**secret**|[MonitoringCoreosComV1PrometheusSpecRemoteReadItems0TLSConfigCaSecret](#monitoringcoreoscomv1prometheusspecremotereaditems0tlsconfigcasecret)|secret||
 ### MonitoringCoreosComV1PrometheusSpecRemoteReadItems0TLSConfigCaConfigMap
 
-r""" ConfigMap containing data to use for the targets.
+ConfigMap containing data to use for the targets.
 
 #### Attributes
 
@@ -7495,7 +7498,7 @@ r""" ConfigMap containing data to use for the targets.
 |**optional**|bool|Specify whether the ConfigMap or its key must be defined||
 ### MonitoringCoreosComV1PrometheusSpecRemoteReadItems0TLSConfigCaSecret
 
-r""" Secret containing data to use for the targets.
+Secret containing data to use for the targets.
 
 #### Attributes
 
@@ -7506,7 +7509,7 @@ r""" Secret containing data to use for the targets.
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1PrometheusSpecRemoteReadItems0TLSConfigCert
 
-r""" Struct containing the client cert file for the targets.
+Struct containing the client cert file for the targets.
 
 #### Attributes
 
@@ -7516,7 +7519,7 @@ r""" Struct containing the client cert file for the targets.
 |**secret**|[MonitoringCoreosComV1PrometheusSpecRemoteReadItems0TLSConfigCertSecret](#monitoringcoreoscomv1prometheusspecremotereaditems0tlsconfigcertsecret)|secret||
 ### MonitoringCoreosComV1PrometheusSpecRemoteReadItems0TLSConfigCertConfigMap
 
-r""" ConfigMap containing data to use for the targets.
+ConfigMap containing data to use for the targets.
 
 #### Attributes
 
@@ -7527,7 +7530,7 @@ r""" ConfigMap containing data to use for the targets.
 |**optional**|bool|Specify whether the ConfigMap or its key must be defined||
 ### MonitoringCoreosComV1PrometheusSpecRemoteReadItems0TLSConfigCertSecret
 
-r""" Secret containing data to use for the targets.
+Secret containing data to use for the targets.
 
 #### Attributes
 
@@ -7538,7 +7541,7 @@ r""" Secret containing data to use for the targets.
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1PrometheusSpecRemoteReadItems0TLSConfigKeySecret
 
-r""" Secret containing the client key file for the targets.
+Secret containing the client key file for the targets.
 
 #### Attributes
 
@@ -7549,7 +7552,7 @@ r""" Secret containing the client key file for the targets.
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1PrometheusSpecRemoteWriteItems0
 
-r""" RemoteWriteSpec defines the remote_write configuration for prometheus.
+RemoteWriteSpec defines the remote_write configuration for prometheus.
 
 #### Attributes
 
@@ -7567,7 +7570,7 @@ r""" RemoteWriteSpec defines the remote_write configuration for prometheus.
 |**writeRelabelConfigs**|[[MonitoringCoreosComV1PrometheusSpecRemoteWriteItems0WriteRelabelConfigsItems0](#monitoringcoreoscomv1prometheusspecremotewriteitems0writerelabelconfigsitems0)]|The list of remote write relabel configurations.||
 ### MonitoringCoreosComV1PrometheusSpecRemoteWriteItems0BasicAuth
 
-r""" BasicAuth for the URL.
+BasicAuth for the URL.
 
 #### Attributes
 
@@ -7577,7 +7580,7 @@ r""" BasicAuth for the URL.
 |**username**|[MonitoringCoreosComV1PrometheusSpecRemoteWriteItems0BasicAuthUsername](#monitoringcoreoscomv1prometheusspecremotewriteitems0basicauthusername)|username||
 ### MonitoringCoreosComV1PrometheusSpecRemoteWriteItems0BasicAuthPassword
 
-r""" The secret in the service monitor namespace that contains the password for authentication.
+The secret in the service monitor namespace that contains the password for authentication.
 
 #### Attributes
 
@@ -7588,7 +7591,7 @@ r""" The secret in the service monitor namespace that contains the password for 
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1PrometheusSpecRemoteWriteItems0BasicAuthUsername
 
-r""" The secret in the service monitor namespace that contains the username for authentication.
+The secret in the service monitor namespace that contains the username for authentication.
 
 #### Attributes
 
@@ -7599,7 +7602,7 @@ r""" The secret in the service monitor namespace that contains the username for 
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1PrometheusSpecRemoteWriteItems0QueueConfig
 
-r""" QueueConfig allows tuning of the remote write queue parameters.
+QueueConfig allows tuning of the remote write queue parameters.
 
 #### Attributes
 
@@ -7615,7 +7618,7 @@ r""" QueueConfig allows tuning of the remote write queue parameters.
 |**minShards**|int|MinShards is the minimum number of shards, i.e. amount of concurrency.||
 ### MonitoringCoreosComV1PrometheusSpecRemoteWriteItems0TLSConfig
 
-r""" TLS Config to use for remote write.
+TLS Config to use for remote write.
 
 #### Attributes
 
@@ -7631,7 +7634,7 @@ r""" TLS Config to use for remote write.
 |**serverName**|str|Used to verify the hostname for the targets.||
 ### MonitoringCoreosComV1PrometheusSpecRemoteWriteItems0TLSConfigCa
 
-r""" Struct containing the CA cert to use for the targets.
+Struct containing the CA cert to use for the targets.
 
 #### Attributes
 
@@ -7641,7 +7644,7 @@ r""" Struct containing the CA cert to use for the targets.
 |**secret**|[MonitoringCoreosComV1PrometheusSpecRemoteWriteItems0TLSConfigCaSecret](#monitoringcoreoscomv1prometheusspecremotewriteitems0tlsconfigcasecret)|secret||
 ### MonitoringCoreosComV1PrometheusSpecRemoteWriteItems0TLSConfigCaConfigMap
 
-r""" ConfigMap containing data to use for the targets.
+ConfigMap containing data to use for the targets.
 
 #### Attributes
 
@@ -7652,7 +7655,7 @@ r""" ConfigMap containing data to use for the targets.
 |**optional**|bool|Specify whether the ConfigMap or its key must be defined||
 ### MonitoringCoreosComV1PrometheusSpecRemoteWriteItems0TLSConfigCaSecret
 
-r""" Secret containing data to use for the targets.
+Secret containing data to use for the targets.
 
 #### Attributes
 
@@ -7663,7 +7666,7 @@ r""" Secret containing data to use for the targets.
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1PrometheusSpecRemoteWriteItems0TLSConfigCert
 
-r""" Struct containing the client cert file for the targets.
+Struct containing the client cert file for the targets.
 
 #### Attributes
 
@@ -7673,7 +7676,7 @@ r""" Struct containing the client cert file for the targets.
 |**secret**|[MonitoringCoreosComV1PrometheusSpecRemoteWriteItems0TLSConfigCertSecret](#monitoringcoreoscomv1prometheusspecremotewriteitems0tlsconfigcertsecret)|secret||
 ### MonitoringCoreosComV1PrometheusSpecRemoteWriteItems0TLSConfigCertConfigMap
 
-r""" ConfigMap containing data to use for the targets.
+ConfigMap containing data to use for the targets.
 
 #### Attributes
 
@@ -7684,7 +7687,7 @@ r""" ConfigMap containing data to use for the targets.
 |**optional**|bool|Specify whether the ConfigMap or its key must be defined||
 ### MonitoringCoreosComV1PrometheusSpecRemoteWriteItems0TLSConfigCertSecret
 
-r""" Secret containing data to use for the targets.
+Secret containing data to use for the targets.
 
 #### Attributes
 
@@ -7695,7 +7698,7 @@ r""" Secret containing data to use for the targets.
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1PrometheusSpecRemoteWriteItems0TLSConfigKeySecret
 
-r""" Secret containing the client key file for the targets.
+Secret containing the client key file for the targets.
 
 #### Attributes
 
@@ -7706,7 +7709,7 @@ r""" Secret containing the client key file for the targets.
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1PrometheusSpecRemoteWriteItems0WriteRelabelConfigsItems0
 
-r""" RelabelConfig allows dynamic rewriting of the label set, being applied to samples before ingestion. It defines `<metric_relabel_configs>`-section of Prometheus configuration. More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#metric_relabel_configs
+RelabelConfig allows dynamic rewriting of the label set, being applied to samples before ingestion. It defines `<metric_relabel_configs>`-section of Prometheus configuration. More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#metric_relabel_configs
 
 #### Attributes
 
@@ -7721,7 +7724,7 @@ r""" RelabelConfig allows dynamic rewriting of the label set, being applied to s
 |**targetLabel**|str|Label to which the resulting value is written in a replace action. It is mandatory for replace actions. Regex capture groups are available.||
 ### MonitoringCoreosComV1PrometheusSpecResources
 
-r""" Define resources requests and limits for single Pods.
+Define resources requests and limits for single Pods.
 
 #### Attributes
 
@@ -7731,7 +7734,7 @@ r""" Define resources requests and limits for single Pods.
 |**requests**|{str:str}|Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/||
 ### MonitoringCoreosComV1PrometheusSpecRuleNamespaceSelector
 
-r""" Namespaces to be selected for PrometheusRules discovery. If unspecified, only the same namespace as the Prometheus object is in is used.
+Namespaces to be selected for PrometheusRules discovery. If unspecified, only the same namespace as the Prometheus object is in is used.
 
 #### Attributes
 
@@ -7741,7 +7744,7 @@ r""" Namespaces to be selected for PrometheusRules discovery. If unspecified, on
 |**matchLabels**|{str:str}|matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.||
 ### MonitoringCoreosComV1PrometheusSpecRuleNamespaceSelectorMatchExpressionsItems0
 
-r""" A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
 #### Attributes
 
@@ -7752,7 +7755,7 @@ r""" A label selector requirement is a selector that contains values, a key, and
 |**values**|[str]|values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.||
 ### MonitoringCoreosComV1PrometheusSpecRuleSelector
 
-r""" A selector to select which PrometheusRules to mount for loading alerting/recording rules from. Until (excluding) Prometheus Operator v0.24.0 Prometheus Operator will migrate any legacy rule ConfigMaps to PrometheusRule custom resources selected by RuleSelector. Make sure it does not match any config maps that you do not want to be migrated.
+A selector to select which PrometheusRules to mount for loading alerting/recording rules from. Until (excluding) Prometheus Operator v0.24.0 Prometheus Operator will migrate any legacy rule ConfigMaps to PrometheusRule custom resources selected by RuleSelector. Make sure it does not match any config maps that you do not want to be migrated.
 
 #### Attributes
 
@@ -7762,7 +7765,7 @@ r""" A selector to select which PrometheusRules to mount for loading alerting/re
 |**matchLabels**|{str:str}|matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.||
 ### MonitoringCoreosComV1PrometheusSpecRuleSelectorMatchExpressionsItems0
 
-r""" A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
 #### Attributes
 
@@ -7773,7 +7776,7 @@ r""" A label selector requirement is a selector that contains values, a key, and
 |**values**|[str]|values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.||
 ### MonitoringCoreosComV1PrometheusSpecRules
 
-r""" /--rules.*/ command-line arguments.
+/--rules.*/ command-line arguments.
 
 #### Attributes
 
@@ -7782,7 +7785,7 @@ r""" /--rules.*/ command-line arguments.
 |**alert**|[MonitoringCoreosComV1PrometheusSpecRulesAlert](#monitoringcoreoscomv1prometheusspecrulesalert)|alert||
 ### MonitoringCoreosComV1PrometheusSpecRulesAlert
 
-r""" /--rules.alert.*/ command-line arguments
+/--rules.alert.*/ command-line arguments
 
 #### Attributes
 
@@ -7793,7 +7796,7 @@ r""" /--rules.alert.*/ command-line arguments
 |**resendDelay**|str|Minimum amount of time to wait before resending an alert to Alertmanager.||
 ### MonitoringCoreosComV1PrometheusSpecSecurityContext
 
-r""" SecurityContext holds pod-level security attributes and common container settings. This defaults to the default PodSecurityContext.
+SecurityContext holds pod-level security attributes and common container settings. This defaults to the default PodSecurityContext.
 
 #### Attributes
 
@@ -7810,7 +7813,7 @@ r""" SecurityContext holds pod-level security attributes and common container se
 |**windowsOptions**|[MonitoringCoreosComV1PrometheusSpecSecurityContextWindowsOptions](#monitoringcoreoscomv1prometheusspecsecuritycontextwindowsoptions)|windows options||
 ### MonitoringCoreosComV1PrometheusSpecSecurityContextSeLinuxOptions
 
-r""" The SELinux context to be applied to all containers. If unspecified, the container runtime will allocate a random SELinux context for each container.  May also be set in SecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container.
+The SELinux context to be applied to all containers. If unspecified, the container runtime will allocate a random SELinux context for each container.  May also be set in SecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container.
 
 #### Attributes
 
@@ -7822,7 +7825,7 @@ r""" The SELinux context to be applied to all containers. If unspecified, the co
 |**user**|str|User is a SELinux user label that applies to the container.||
 ### MonitoringCoreosComV1PrometheusSpecSecurityContextSysctlsItems0
 
-r""" Sysctl defines a kernel parameter to be set
+Sysctl defines a kernel parameter to be set
 
 #### Attributes
 
@@ -7832,7 +7835,7 @@ r""" Sysctl defines a kernel parameter to be set
 |**value** `required`|str|Value of a property to set||
 ### MonitoringCoreosComV1PrometheusSpecSecurityContextWindowsOptions
 
-r""" The Windows specific settings applied to all containers. If unspecified, the options within a container's SecurityContext will be used. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+The Windows specific settings applied to all containers. If unspecified, the options within a container's SecurityContext will be used. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
 
 #### Attributes
 
@@ -7843,7 +7846,7 @@ r""" The Windows specific settings applied to all containers. If unspecified, th
 |**runAsUserName**|str|The UserName in Windows to run the entrypoint of the container process. Defaults to the user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.||
 ### MonitoringCoreosComV1PrometheusSpecServiceMonitorNamespaceSelector
 
-r""" Namespaces to be selected for ServiceMonitor discovery. If nil, only check own namespace.
+Namespaces to be selected for ServiceMonitor discovery. If nil, only check own namespace.
 
 #### Attributes
 
@@ -7853,7 +7856,7 @@ r""" Namespaces to be selected for ServiceMonitor discovery. If nil, only check 
 |**matchLabels**|{str:str}|matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.||
 ### MonitoringCoreosComV1PrometheusSpecServiceMonitorNamespaceSelectorMatchExpressionsItems0
 
-r""" A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
 #### Attributes
 
@@ -7864,7 +7867,7 @@ r""" A label selector requirement is a selector that contains values, a key, and
 |**values**|[str]|values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.||
 ### MonitoringCoreosComV1PrometheusSpecServiceMonitorSelector
 
-r""" ServiceMonitors to be selected for target discovery. *Deprecated:* if neither this nor podMonitorSelector are specified, configuration is unmanaged.
+ServiceMonitors to be selected for target discovery. *Deprecated:* if neither this nor podMonitorSelector are specified, configuration is unmanaged.
 
 #### Attributes
 
@@ -7874,7 +7877,7 @@ r""" ServiceMonitors to be selected for target discovery. *Deprecated:* if neith
 |**matchLabels**|{str:str}|matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.||
 ### MonitoringCoreosComV1PrometheusSpecServiceMonitorSelectorMatchExpressionsItems0
 
-r""" A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
 #### Attributes
 
@@ -7885,7 +7888,7 @@ r""" A label selector requirement is a selector that contains values, a key, and
 |**values**|[str]|values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.||
 ### MonitoringCoreosComV1PrometheusSpecStorage
 
-r""" Storage spec to specify how storage shall be used.
+Storage spec to specify how storage shall be used.
 
 #### Attributes
 
@@ -7896,7 +7899,7 @@ r""" Storage spec to specify how storage shall be used.
 |**volumeClaimTemplate**|[MonitoringCoreosComV1PrometheusSpecStorageVolumeClaimTemplate](#monitoringcoreoscomv1prometheusspecstoragevolumeclaimtemplate)|volume claim template||
 ### MonitoringCoreosComV1PrometheusSpecStorageEmptyDir
 
-r""" EmptyDirVolumeSource to be used by the Prometheus StatefulSets. If specified, used in place of any volumeClaimTemplate. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir
+EmptyDirVolumeSource to be used by the Prometheus StatefulSets. If specified, used in place of any volumeClaimTemplate. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir
 
 #### Attributes
 
@@ -7906,7 +7909,7 @@ r""" EmptyDirVolumeSource to be used by the Prometheus StatefulSets. If specifie
 |**sizeLimit**|str|Total amount of local storage required for this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir||
 ### MonitoringCoreosComV1PrometheusSpecStorageVolumeClaimTemplate
 
-r""" A PVC spec to be used by the Prometheus StatefulSets.
+A PVC spec to be used by the Prometheus StatefulSets.
 
 #### Attributes
 
@@ -7919,7 +7922,7 @@ r""" A PVC spec to be used by the Prometheus StatefulSets.
 |**status**|[MonitoringCoreosComV1PrometheusSpecStorageVolumeClaimTemplateStatus](#monitoringcoreoscomv1prometheusspecstoragevolumeclaimtemplatestatus)|status||
 ### MonitoringCoreosComV1PrometheusSpecStorageVolumeClaimTemplateMetadata
 
-r""" EmbeddedMetadata contains metadata relevant to an EmbeddedResource.
+EmbeddedMetadata contains metadata relevant to an EmbeddedResource.
 
 #### Attributes
 
@@ -7930,7 +7933,7 @@ r""" EmbeddedMetadata contains metadata relevant to an EmbeddedResource.
 |**name**|str|Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names||
 ### MonitoringCoreosComV1PrometheusSpecStorageVolumeClaimTemplateSpec
 
-r""" Spec defines the desired characteristics of a volume requested by a pod author. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
+Spec defines the desired characteristics of a volume requested by a pod author. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
 
 #### Attributes
 
@@ -7945,7 +7948,7 @@ r""" Spec defines the desired characteristics of a volume requested by a pod aut
 |**volumeName**|str|VolumeName is the binding reference to the PersistentVolume backing this claim.||
 ### MonitoringCoreosComV1PrometheusSpecStorageVolumeClaimTemplateSpecDataSource
 
-r""" This field can be used to specify either: * An existing VolumeSnapshot object (snapshot.storage.k8s.io/VolumeSnapshot - Beta) * An existing PVC (PersistentVolumeClaim) * An existing custom resource/object that implements data population (Alpha) In order to use VolumeSnapshot object types, the appropriate feature gate must be enabled (VolumeSnapshotDataSource or AnyVolumeDataSource) If the provisioner or an external controller can support the specified data source, it will create a new volume based on the contents of the specified data source. If the specified data source is not supported, the volume will not be created and the failure will be reported as an event. In the future, we plan to support more data source types and the behavior of the provisioner may change.
+This field can be used to specify either: * An existing VolumeSnapshot object (snapshot.storage.k8s.io/VolumeSnapshot - Beta) * An existing PVC (PersistentVolumeClaim) * An existing custom resource/object that implements data population (Alpha) In order to use VolumeSnapshot object types, the appropriate feature gate must be enabled (VolumeSnapshotDataSource or AnyVolumeDataSource) If the provisioner or an external controller can support the specified data source, it will create a new volume based on the contents of the specified data source. If the specified data source is not supported, the volume will not be created and the failure will be reported as an event. In the future, we plan to support more data source types and the behavior of the provisioner may change.
 
 #### Attributes
 
@@ -7956,7 +7959,7 @@ r""" This field can be used to specify either: * An existing VolumeSnapshot obje
 |**name** `required`|str|Name is the name of resource being referenced||
 ### MonitoringCoreosComV1PrometheusSpecStorageVolumeClaimTemplateSpecResources
 
-r""" Resources represents the minimum resources the volume should have. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+Resources represents the minimum resources the volume should have. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 
 #### Attributes
 
@@ -7966,7 +7969,7 @@ r""" Resources represents the minimum resources the volume should have. More inf
 |**requests**|{str:str}|Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/||
 ### MonitoringCoreosComV1PrometheusSpecStorageVolumeClaimTemplateSpecSelector
 
-r""" A label query over volumes to consider for binding.
+A label query over volumes to consider for binding.
 
 #### Attributes
 
@@ -7976,7 +7979,7 @@ r""" A label query over volumes to consider for binding.
 |**matchLabels**|{str:str}|matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.||
 ### MonitoringCoreosComV1PrometheusSpecStorageVolumeClaimTemplateSpecSelectorMatchExpressionsItems0
 
-r""" A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
 #### Attributes
 
@@ -7987,7 +7990,7 @@ r""" A label selector requirement is a selector that contains values, a key, and
 |**values**|[str]|values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.||
 ### MonitoringCoreosComV1PrometheusSpecStorageVolumeClaimTemplateStatus
 
-r""" Status represents the current information/status of a persistent volume claim. Read-only. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
+Status represents the current information/status of a persistent volume claim. Read-only. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
 
 #### Attributes
 
@@ -7999,7 +8002,7 @@ r""" Status represents the current information/status of a persistent volume cla
 |**phase**|str|Phase represents the current phase of PersistentVolumeClaim.||
 ### MonitoringCoreosComV1PrometheusSpecStorageVolumeClaimTemplateStatusConditionsItems0
 
-r""" PersistentVolumeClaimCondition contains details about state of pvc
+PersistentVolumeClaimCondition contains details about state of pvc
 
 #### Attributes
 
@@ -8013,7 +8016,7 @@ r""" PersistentVolumeClaimCondition contains details about state of pvc
 |**type** `required`|str|||
 ### MonitoringCoreosComV1PrometheusSpecThanos
 
-r""" Thanos configuration allows configuring various aspects of a Prometheus server in a Thanos environment. This section is experimental, it may change significantly without deprecation notice in any release. This is experimental and may change significantly without backward compatibility in any release.
+Thanos configuration allows configuring various aspects of a Prometheus server in a Thanos environment. This section is experimental, it may change significantly without deprecation notice in any release. This is experimental and may change significantly without backward compatibility in any release.
 
 #### Attributes
 
@@ -8034,7 +8037,7 @@ r""" Thanos configuration allows configuring various aspects of a Prometheus ser
 |**version**|str|Version describes the version of Thanos to use.||
 ### MonitoringCoreosComV1PrometheusSpecThanosGrpcServerTLSConfig
 
-r""" GRPCServerTLSConfig configures the gRPC server from which Thanos Querier reads recorded rule data. Note: Currently only the CAFile, CertFile, and KeyFile fields are supported. Maps to the '--grpc-server-tls-*' CLI args.
+GRPCServerTLSConfig configures the gRPC server from which Thanos Querier reads recorded rule data. Note: Currently only the CAFile, CertFile, and KeyFile fields are supported. Maps to the '--grpc-server-tls-*' CLI args.
 
 #### Attributes
 
@@ -8050,7 +8053,7 @@ r""" GRPCServerTLSConfig configures the gRPC server from which Thanos Querier re
 |**serverName**|str|Used to verify the hostname for the targets.||
 ### MonitoringCoreosComV1PrometheusSpecThanosGrpcServerTLSConfigCa
 
-r""" Struct containing the CA cert to use for the targets.
+Struct containing the CA cert to use for the targets.
 
 #### Attributes
 
@@ -8060,7 +8063,7 @@ r""" Struct containing the CA cert to use for the targets.
 |**secret**|[MonitoringCoreosComV1PrometheusSpecThanosGrpcServerTLSConfigCaSecret](#monitoringcoreoscomv1prometheusspecthanosgrpcservertlsconfigcasecret)|secret||
 ### MonitoringCoreosComV1PrometheusSpecThanosGrpcServerTLSConfigCaConfigMap
 
-r""" ConfigMap containing data to use for the targets.
+ConfigMap containing data to use for the targets.
 
 #### Attributes
 
@@ -8071,7 +8074,7 @@ r""" ConfigMap containing data to use for the targets.
 |**optional**|bool|Specify whether the ConfigMap or its key must be defined||
 ### MonitoringCoreosComV1PrometheusSpecThanosGrpcServerTLSConfigCaSecret
 
-r""" Secret containing data to use for the targets.
+Secret containing data to use for the targets.
 
 #### Attributes
 
@@ -8082,7 +8085,7 @@ r""" Secret containing data to use for the targets.
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1PrometheusSpecThanosGrpcServerTLSConfigCert
 
-r""" Struct containing the client cert file for the targets.
+Struct containing the client cert file for the targets.
 
 #### Attributes
 
@@ -8092,7 +8095,7 @@ r""" Struct containing the client cert file for the targets.
 |**secret**|[MonitoringCoreosComV1PrometheusSpecThanosGrpcServerTLSConfigCertSecret](#monitoringcoreoscomv1prometheusspecthanosgrpcservertlsconfigcertsecret)|secret||
 ### MonitoringCoreosComV1PrometheusSpecThanosGrpcServerTLSConfigCertConfigMap
 
-r""" ConfigMap containing data to use for the targets.
+ConfigMap containing data to use for the targets.
 
 #### Attributes
 
@@ -8103,7 +8106,7 @@ r""" ConfigMap containing data to use for the targets.
 |**optional**|bool|Specify whether the ConfigMap or its key must be defined||
 ### MonitoringCoreosComV1PrometheusSpecThanosGrpcServerTLSConfigCertSecret
 
-r""" Secret containing data to use for the targets.
+Secret containing data to use for the targets.
 
 #### Attributes
 
@@ -8114,7 +8117,7 @@ r""" Secret containing data to use for the targets.
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1PrometheusSpecThanosGrpcServerTLSConfigKeySecret
 
-r""" Secret containing the client key file for the targets.
+Secret containing the client key file for the targets.
 
 #### Attributes
 
@@ -8125,7 +8128,7 @@ r""" Secret containing the client key file for the targets.
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1PrometheusSpecThanosObjectStorageConfig
 
-r""" ObjectStorageConfig configures object storage in Thanos.
+ObjectStorageConfig configures object storage in Thanos.
 
 #### Attributes
 
@@ -8136,7 +8139,7 @@ r""" ObjectStorageConfig configures object storage in Thanos.
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1PrometheusSpecThanosResources
 
-r""" Resources defines the resource requirements for the Thanos sidecar. If not provided, no requests/limits will be set
+Resources defines the resource requirements for the Thanos sidecar. If not provided, no requests/limits will be set
 
 #### Attributes
 
@@ -8146,7 +8149,7 @@ r""" Resources defines the resource requirements for the Thanos sidecar. If not 
 |**requests**|{str:str}|Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/||
 ### MonitoringCoreosComV1PrometheusSpecThanosTracingConfig
 
-r""" TracingConfig configures tracing in Thanos. This is an experimental feature, it may change in any upcoming release in a breaking way.
+TracingConfig configures tracing in Thanos. This is an experimental feature, it may change in any upcoming release in a breaking way.
 
 #### Attributes
 
@@ -8157,7 +8160,7 @@ r""" TracingConfig configures tracing in Thanos. This is an experimental feature
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1PrometheusSpecTolerationsItems0
 
-r""" The pod this Toleration is attached to tolerates any taint that matches the triple <key,value,effect> using the matching operator <operator>.
+The pod this Toleration is attached to tolerates any taint that matches the triple <key,value,effect> using the matching operator <operator>.
 
 #### Attributes
 
@@ -8170,7 +8173,7 @@ r""" The pod this Toleration is attached to tolerates any taint that matches the
 |**value**|str|Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string.||
 ### MonitoringCoreosComV1PrometheusSpecTopologySpreadConstraintsItems0
 
-r""" TopologySpreadConstraint specifies how to spread matching pods among the given topology.
+TopologySpreadConstraint specifies how to spread matching pods among the given topology.
 
 #### Attributes
 
@@ -8182,7 +8185,7 @@ r""" TopologySpreadConstraint specifies how to spread matching pods among the gi
 |**whenUnsatisfiable** `required`|str|WhenUnsatisfiable indicates how to deal with a pod if it doesn't satisfy the spread constraint. - DoNotSchedule (default) tells the scheduler not to schedule it - ScheduleAnyway tells the scheduler to still schedule it It's considered as "Unsatisfiable" if and only if placing incoming pod on any topology violates "MaxSkew". For example, in a 3-zone cluster, MaxSkew is set to 1, and pods with the same labelSelector spread as 3/1/1: \| zone1 \| zone2 \| zone3 \| \| P P P \|   P   \|   P   \| If WhenUnsatisfiable is set to DoNotSchedule, incoming pod can only be scheduled to zone2(zone3) to become 3/2/1(3/1/2) as ActualSkew(2-1) on zone2(zone3) satisfies MaxSkew(1). In other words, the cluster can still be imbalanced, but scheduler won't make it *more* imbalanced. It's a required field.||
 ### MonitoringCoreosComV1PrometheusSpecTopologySpreadConstraintsItems0LabelSelector
 
-r""" LabelSelector is used to find matching pods. Pods that match this label selector are counted to determine the number of pods in their corresponding topology domain.
+LabelSelector is used to find matching pods. Pods that match this label selector are counted to determine the number of pods in their corresponding topology domain.
 
 #### Attributes
 
@@ -8192,7 +8195,7 @@ r""" LabelSelector is used to find matching pods. Pods that match this label sel
 |**matchLabels**|{str:str}|matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.||
 ### MonitoringCoreosComV1PrometheusSpecTopologySpreadConstraintsItems0LabelSelectorMatchExpressionsItems0
 
-r""" A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
 #### Attributes
 
@@ -8203,7 +8206,7 @@ r""" A label selector requirement is a selector that contains values, a key, and
 |**values**|[str]|values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.||
 ### MonitoringCoreosComV1PrometheusSpecVolumeMountsItems0
 
-r""" VolumeMount describes a mounting of a Volume within a container.
+VolumeMount describes a mounting of a Volume within a container.
 
 #### Attributes
 
@@ -8217,7 +8220,7 @@ r""" VolumeMount describes a mounting of a Volume within a container.
 |**subPathExpr**|str|Expanded path within the volume from which the container's volume should be mounted. Behaves similarly to SubPath but environment variable references $(VAR_NAME) are expanded using the container's environment. Defaults to "" (volume's root). SubPathExpr and SubPath are mutually exclusive.||
 ### MonitoringCoreosComV1PrometheusSpecVolumesItems0
 
-r""" Volume represents a named volume in a pod that may be accessed by any container in the pod.
+Volume represents a named volume in a pod that may be accessed by any container in the pod.
 
 #### Attributes
 
@@ -8254,7 +8257,7 @@ r""" Volume represents a named volume in a pod that may be accessed by any conta
 |**vsphereVolume**|[MonitoringCoreosComV1PrometheusSpecVolumesItems0VsphereVolume](#monitoringcoreoscomv1prometheusspecvolumesitems0vspherevolume)|vsphere volume||
 ### MonitoringCoreosComV1PrometheusSpecVolumesItems0AwsElasticBlockStore
 
-r""" AWSElasticBlockStore represents an AWS Disk resource that is attached to a kubelet's host machine and then exposed to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+AWSElasticBlockStore represents an AWS Disk resource that is attached to a kubelet's host machine and then exposed to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
 
 #### Attributes
 
@@ -8266,7 +8269,7 @@ r""" AWSElasticBlockStore represents an AWS Disk resource that is attached to a 
 |**volumeID** `required`|str|Unique ID of the persistent disk resource in AWS (Amazon EBS volume). More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore||
 ### MonitoringCoreosComV1PrometheusSpecVolumesItems0AzureDisk
 
-r""" AzureDisk represents an Azure Data Disk mount on the host and bind mount to the pod.
+AzureDisk represents an Azure Data Disk mount on the host and bind mount to the pod.
 
 #### Attributes
 
@@ -8280,7 +8283,7 @@ r""" AzureDisk represents an Azure Data Disk mount on the host and bind mount to
 |**readOnly**|bool|Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.||
 ### MonitoringCoreosComV1PrometheusSpecVolumesItems0AzureFile
 
-r""" AzureFile represents an Azure File Service mount on the host and bind mount to the pod.
+AzureFile represents an Azure File Service mount on the host and bind mount to the pod.
 
 #### Attributes
 
@@ -8291,7 +8294,7 @@ r""" AzureFile represents an Azure File Service mount on the host and bind mount
 |**shareName** `required`|str|Share Name||
 ### MonitoringCoreosComV1PrometheusSpecVolumesItems0Cephfs
 
-r""" CephFS represents a Ceph FS mount on the host that shares a pod's lifetime
+CephFS represents a Ceph FS mount on the host that shares a pod's lifetime
 
 #### Attributes
 
@@ -8305,7 +8308,7 @@ r""" CephFS represents a Ceph FS mount on the host that shares a pod's lifetime
 |**user**|str|Optional: User is the rados user name, default is admin More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it||
 ### MonitoringCoreosComV1PrometheusSpecVolumesItems0CephfsSecretRef
 
-r""" Optional: SecretRef is reference to the authentication secret for User, default is empty. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+Optional: SecretRef is reference to the authentication secret for User, default is empty. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
 
 #### Attributes
 
@@ -8314,7 +8317,7 @@ r""" Optional: SecretRef is reference to the authentication secret for User, def
 |**name**|str|Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?||
 ### MonitoringCoreosComV1PrometheusSpecVolumesItems0Cinder
 
-r""" Cinder represents a cinder volume attached and mounted on kubelets host machine. More info: https://examples.k8s.io/mysql-cinder-pd/README.md
+Cinder represents a cinder volume attached and mounted on kubelets host machine. More info: https://examples.k8s.io/mysql-cinder-pd/README.md
 
 #### Attributes
 
@@ -8326,7 +8329,7 @@ r""" Cinder represents a cinder volume attached and mounted on kubelets host mac
 |**volumeID** `required`|str|volume id used to identify the volume in cinder. More info: https://examples.k8s.io/mysql-cinder-pd/README.md||
 ### MonitoringCoreosComV1PrometheusSpecVolumesItems0CinderSecretRef
 
-r""" Optional: points to a secret object containing parameters used to connect to OpenStack.
+Optional: points to a secret object containing parameters used to connect to OpenStack.
 
 #### Attributes
 
@@ -8335,7 +8338,7 @@ r""" Optional: points to a secret object containing parameters used to connect t
 |**name**|str|Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?||
 ### MonitoringCoreosComV1PrometheusSpecVolumesItems0ConfigMap
 
-r""" ConfigMap represents a configMap that should populate this volume
+ConfigMap represents a configMap that should populate this volume
 
 #### Attributes
 
@@ -8347,7 +8350,7 @@ r""" ConfigMap represents a configMap that should populate this volume
 |**optional**|bool|Specify whether the ConfigMap or its keys must be defined||
 ### MonitoringCoreosComV1PrometheusSpecVolumesItems0ConfigMapItemsItems0
 
-r""" Maps a string key to a path within a volume.
+Maps a string key to a path within a volume.
 
 #### Attributes
 
@@ -8358,7 +8361,7 @@ r""" Maps a string key to a path within a volume.
 |**path** `required`|str|The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.||
 ### MonitoringCoreosComV1PrometheusSpecVolumesItems0Csi
 
-r""" CSI (Container Storage Interface) represents storage that is handled by an external CSI driver (Alpha feature).
+CSI (Container Storage Interface) represents storage that is handled by an external CSI driver (Alpha feature).
 
 #### Attributes
 
@@ -8371,7 +8374,7 @@ r""" CSI (Container Storage Interface) represents storage that is handled by an 
 |**volumeAttributes**|{str:str}|VolumeAttributes stores driver-specific properties that are passed to the CSI driver. Consult your driver's documentation for supported values.||
 ### MonitoringCoreosComV1PrometheusSpecVolumesItems0CsiNodePublishSecretRef
 
-r""" NodePublishSecretRef is a reference to the secret object containing sensitive information to pass to the CSI driver to complete the CSI NodePublishVolume and NodeUnpublishVolume calls. This field is optional, and  may be empty if no secret is required. If the secret object contains more than one secret, all secret references are passed.
+NodePublishSecretRef is a reference to the secret object containing sensitive information to pass to the CSI driver to complete the CSI NodePublishVolume and NodeUnpublishVolume calls. This field is optional, and  may be empty if no secret is required. If the secret object contains more than one secret, all secret references are passed.
 
 #### Attributes
 
@@ -8380,7 +8383,7 @@ r""" NodePublishSecretRef is a reference to the secret object containing sensiti
 |**name**|str|Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?||
 ### MonitoringCoreosComV1PrometheusSpecVolumesItems0DownwardAPI
 
-r""" DownwardAPI represents downward API about the pod that should populate this volume
+DownwardAPI represents downward API about the pod that should populate this volume
 
 #### Attributes
 
@@ -8390,7 +8393,7 @@ r""" DownwardAPI represents downward API about the pod that should populate this
 |**items**|[[MonitoringCoreosComV1PrometheusSpecVolumesItems0DownwardAPIItemsItems0](#monitoringcoreoscomv1prometheusspecvolumesitems0downwardapiitemsitems0)]|Items is a list of downward API volume file||
 ### MonitoringCoreosComV1PrometheusSpecVolumesItems0DownwardAPIItemsItems0
 
-r""" DownwardAPIVolumeFile represents information to create the file containing the pod field
+DownwardAPIVolumeFile represents information to create the file containing the pod field
 
 #### Attributes
 
@@ -8402,7 +8405,7 @@ r""" DownwardAPIVolumeFile represents information to create the file containing 
 |**resourceFieldRef**|[MonitoringCoreosComV1PrometheusSpecVolumesItems0DownwardAPIItemsItems0ResourceFieldRef](#monitoringcoreoscomv1prometheusspecvolumesitems0downwardapiitemsitems0resourcefieldref)|resource field ref||
 ### MonitoringCoreosComV1PrometheusSpecVolumesItems0DownwardAPIItemsItems0FieldRef
 
-r""" Required: Selects a field of the pod: only annotations, labels, name and namespace are supported.
+Required: Selects a field of the pod: only annotations, labels, name and namespace are supported.
 
 #### Attributes
 
@@ -8412,7 +8415,7 @@ r""" Required: Selects a field of the pod: only annotations, labels, name and na
 |**fieldPath** `required`|str|Path of the field to select in the specified API version.||
 ### MonitoringCoreosComV1PrometheusSpecVolumesItems0DownwardAPIItemsItems0ResourceFieldRef
 
-r""" Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported.
+Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported.
 
 #### Attributes
 
@@ -8423,7 +8426,7 @@ r""" Selects a resource of the container: only resources limits and requests (li
 |**resource** `required`|str|Required: resource to select||
 ### MonitoringCoreosComV1PrometheusSpecVolumesItems0EmptyDir
 
-r""" EmptyDir represents a temporary directory that shares a pod's lifetime. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir
+EmptyDir represents a temporary directory that shares a pod's lifetime. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir
 
 #### Attributes
 
@@ -8433,7 +8436,7 @@ r""" EmptyDir represents a temporary directory that shares a pod's lifetime. Mor
 |**sizeLimit**|str|Total amount of local storage required for this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir||
 ### MonitoringCoreosComV1PrometheusSpecVolumesItems0Fc
 
-r""" FC represents a Fibre Channel resource that is attached to a kubelet's host machine and then exposed to the pod.
+FC represents a Fibre Channel resource that is attached to a kubelet's host machine and then exposed to the pod.
 
 #### Attributes
 
@@ -8446,7 +8449,7 @@ r""" FC represents a Fibre Channel resource that is attached to a kubelet's host
 |**wwids**|[str]|Optional: FC volume world wide identifiers (wwids) Either wwids or combination of targetWWNs and lun must be set, but not both simultaneously.||
 ### MonitoringCoreosComV1PrometheusSpecVolumesItems0FlexVolume
 
-r""" FlexVolume represents a generic volume resource that is provisioned/attached using an exec based plugin.
+FlexVolume represents a generic volume resource that is provisioned/attached using an exec based plugin.
 
 #### Attributes
 
@@ -8459,7 +8462,7 @@ r""" FlexVolume represents a generic volume resource that is provisioned/attache
 |**secretRef**|[MonitoringCoreosComV1PrometheusSpecVolumesItems0FlexVolumeSecretRef](#monitoringcoreoscomv1prometheusspecvolumesitems0flexvolumesecretref)|secret ref||
 ### MonitoringCoreosComV1PrometheusSpecVolumesItems0FlexVolumeSecretRef
 
-r""" Optional: SecretRef is reference to the secret object containing sensitive information to pass to the plugin scripts. This may be empty if no secret object is specified. If the secret object contains more than one secret, all secrets are passed to the plugin scripts.
+Optional: SecretRef is reference to the secret object containing sensitive information to pass to the plugin scripts. This may be empty if no secret object is specified. If the secret object contains more than one secret, all secrets are passed to the plugin scripts.
 
 #### Attributes
 
@@ -8468,7 +8471,7 @@ r""" Optional: SecretRef is reference to the secret object containing sensitive 
 |**name**|str|Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?||
 ### MonitoringCoreosComV1PrometheusSpecVolumesItems0Flocker
 
-r""" Flocker represents a Flocker volume attached to a kubelet's host machine. This depends on the Flocker control service being running
+Flocker represents a Flocker volume attached to a kubelet's host machine. This depends on the Flocker control service being running
 
 #### Attributes
 
@@ -8478,7 +8481,7 @@ r""" Flocker represents a Flocker volume attached to a kubelet's host machine. T
 |**datasetUUID**|str|UUID of the dataset. This is unique identifier of a Flocker dataset||
 ### MonitoringCoreosComV1PrometheusSpecVolumesItems0GcePersistentDisk
 
-r""" GCEPersistentDisk represents a GCE Disk resource that is attached to a kubelet's host machine and then exposed to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+GCEPersistentDisk represents a GCE Disk resource that is attached to a kubelet's host machine and then exposed to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
 
 #### Attributes
 
@@ -8490,7 +8493,7 @@ r""" GCEPersistentDisk represents a GCE Disk resource that is attached to a kube
 |**readOnly**|bool|ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk||
 ### MonitoringCoreosComV1PrometheusSpecVolumesItems0GitRepo
 
-r""" GitRepo represents a git repository at a particular revision. DEPRECATED: GitRepo is deprecated. To provision a container with a git repo, mount an EmptyDir into an InitContainer that clones the repo using git, then mount the EmptyDir into the Pod's container.
+GitRepo represents a git repository at a particular revision. DEPRECATED: GitRepo is deprecated. To provision a container with a git repo, mount an EmptyDir into an InitContainer that clones the repo using git, then mount the EmptyDir into the Pod's container.
 
 #### Attributes
 
@@ -8501,7 +8504,7 @@ r""" GitRepo represents a git repository at a particular revision. DEPRECATED: G
 |**revision**|str|Commit hash for the specified revision.||
 ### MonitoringCoreosComV1PrometheusSpecVolumesItems0Glusterfs
 
-r""" Glusterfs represents a Glusterfs mount on the host that shares a pod's lifetime. More info: https://examples.k8s.io/volumes/glusterfs/README.md
+Glusterfs represents a Glusterfs mount on the host that shares a pod's lifetime. More info: https://examples.k8s.io/volumes/glusterfs/README.md
 
 #### Attributes
 
@@ -8512,7 +8515,7 @@ r""" Glusterfs represents a Glusterfs mount on the host that shares a pod's life
 |**readOnly**|bool|ReadOnly here will force the Glusterfs volume to be mounted with read-only permissions. Defaults to false. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod||
 ### MonitoringCoreosComV1PrometheusSpecVolumesItems0HostPath
 
-r""" HostPath represents a pre-existing file or directory on the host machine that is directly exposed to the container. This is generally used for system agents or other privileged things that are allowed to see the host machine. Most containers will NOT need this. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath --- TODO(jonesdl) We need to restrict who can use host directory mounts and who can/can not mount host directories as read/write.
+HostPath represents a pre-existing file or directory on the host machine that is directly exposed to the container. This is generally used for system agents or other privileged things that are allowed to see the host machine. Most containers will NOT need this. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath --- TODO(jonesdl) We need to restrict who can use host directory mounts and who can/can not mount host directories as read/write.
 
 #### Attributes
 
@@ -8522,7 +8525,7 @@ r""" HostPath represents a pre-existing file or directory on the host machine th
 |**type**|str|||
 ### MonitoringCoreosComV1PrometheusSpecVolumesItems0Iscsi
 
-r""" ISCSI represents an ISCSI Disk resource that is attached to a kubelet's host machine and then exposed to the pod. More info: https://examples.k8s.io/volumes/iscsi/README.md
+ISCSI represents an ISCSI Disk resource that is attached to a kubelet's host machine and then exposed to the pod. More info: https://examples.k8s.io/volumes/iscsi/README.md
 
 #### Attributes
 
@@ -8541,7 +8544,7 @@ r""" ISCSI represents an ISCSI Disk resource that is attached to a kubelet's hos
 |**targetPortal** `required`|str|iSCSI Target Portal. The Portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260).||
 ### MonitoringCoreosComV1PrometheusSpecVolumesItems0IscsiSecretRef
 
-r""" CHAP Secret for iSCSI target and initiator authentication
+CHAP Secret for iSCSI target and initiator authentication
 
 #### Attributes
 
@@ -8550,7 +8553,7 @@ r""" CHAP Secret for iSCSI target and initiator authentication
 |**name**|str|Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?||
 ### MonitoringCoreosComV1PrometheusSpecVolumesItems0Nfs
 
-r""" NFS represents an NFS mount on the host that shares a pod's lifetime More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+NFS represents an NFS mount on the host that shares a pod's lifetime More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
 
 #### Attributes
 
@@ -8561,7 +8564,7 @@ r""" NFS represents an NFS mount on the host that shares a pod's lifetime More i
 |**server** `required`|str|Server is the hostname or IP address of the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs||
 ### MonitoringCoreosComV1PrometheusSpecVolumesItems0PersistentVolumeClaim
 
-r""" PersistentVolumeClaimVolumeSource represents a reference to a PersistentVolumeClaim in the same namespace. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
+PersistentVolumeClaimVolumeSource represents a reference to a PersistentVolumeClaim in the same namespace. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
 
 #### Attributes
 
@@ -8571,7 +8574,7 @@ r""" PersistentVolumeClaimVolumeSource represents a reference to a PersistentVol
 |**readOnly**|bool|Will force the ReadOnly setting in VolumeMounts. Default false.||
 ### MonitoringCoreosComV1PrometheusSpecVolumesItems0PhotonPersistentDisk
 
-r""" PhotonPersistentDisk represents a PhotonController persistent disk attached and mounted on kubelets host machine
+PhotonPersistentDisk represents a PhotonController persistent disk attached and mounted on kubelets host machine
 
 #### Attributes
 
@@ -8581,7 +8584,7 @@ r""" PhotonPersistentDisk represents a PhotonController persistent disk attached
 |**pdID** `required`|str|ID that identifies Photon Controller persistent disk||
 ### MonitoringCoreosComV1PrometheusSpecVolumesItems0PortworxVolume
 
-r""" PortworxVolume represents a portworx volume attached and mounted on kubelets host machine
+PortworxVolume represents a portworx volume attached and mounted on kubelets host machine
 
 #### Attributes
 
@@ -8592,7 +8595,7 @@ r""" PortworxVolume represents a portworx volume attached and mounted on kubelet
 |**volumeID** `required`|str|VolumeID uniquely identifies a Portworx volume||
 ### MonitoringCoreosComV1PrometheusSpecVolumesItems0Projected
 
-r""" Items for all in one resources secrets, configmaps, and downward API
+Items for all in one resources secrets, configmaps, and downward API
 
 #### Attributes
 
@@ -8602,7 +8605,7 @@ r""" Items for all in one resources secrets, configmaps, and downward API
 |**sources** `required`|[[MonitoringCoreosComV1PrometheusSpecVolumesItems0ProjectedSourcesItems0](#monitoringcoreoscomv1prometheusspecvolumesitems0projectedsourcesitems0)]|list of volume projections||
 ### MonitoringCoreosComV1PrometheusSpecVolumesItems0ProjectedSourcesItems0
 
-r""" Projection that may be projected along with other supported volume types
+Projection that may be projected along with other supported volume types
 
 #### Attributes
 
@@ -8614,7 +8617,7 @@ r""" Projection that may be projected along with other supported volume types
 |**serviceAccountToken**|[MonitoringCoreosComV1PrometheusSpecVolumesItems0ProjectedSourcesItems0ServiceAccountToken](#monitoringcoreoscomv1prometheusspecvolumesitems0projectedsourcesitems0serviceaccounttoken)|service account token||
 ### MonitoringCoreosComV1PrometheusSpecVolumesItems0ProjectedSourcesItems0ConfigMap
 
-r""" information about the configMap data to project
+information about the configMap data to project
 
 #### Attributes
 
@@ -8625,7 +8628,7 @@ r""" information about the configMap data to project
 |**optional**|bool|Specify whether the ConfigMap or its keys must be defined||
 ### MonitoringCoreosComV1PrometheusSpecVolumesItems0ProjectedSourcesItems0ConfigMapItemsItems0
 
-r""" Maps a string key to a path within a volume.
+Maps a string key to a path within a volume.
 
 #### Attributes
 
@@ -8636,7 +8639,7 @@ r""" Maps a string key to a path within a volume.
 |**path** `required`|str|The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.||
 ### MonitoringCoreosComV1PrometheusSpecVolumesItems0ProjectedSourcesItems0DownwardAPI
 
-r""" information about the downwardAPI data to project
+information about the downwardAPI data to project
 
 #### Attributes
 
@@ -8645,7 +8648,7 @@ r""" information about the downwardAPI data to project
 |**items**|[[MonitoringCoreosComV1PrometheusSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0](#monitoringcoreoscomv1prometheusspecvolumesitems0projectedsourcesitems0downwardapiitemsitems0)]|Items is a list of DownwardAPIVolume file||
 ### MonitoringCoreosComV1PrometheusSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0
 
-r""" DownwardAPIVolumeFile represents information to create the file containing the pod field
+DownwardAPIVolumeFile represents information to create the file containing the pod field
 
 #### Attributes
 
@@ -8657,7 +8660,7 @@ r""" DownwardAPIVolumeFile represents information to create the file containing 
 |**resourceFieldRef**|[MonitoringCoreosComV1PrometheusSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0ResourceFieldRef](#monitoringcoreoscomv1prometheusspecvolumesitems0projectedsourcesitems0downwardapiitemsitems0resourcefieldref)|resource field ref||
 ### MonitoringCoreosComV1PrometheusSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0FieldRef
 
-r""" Required: Selects a field of the pod: only annotations, labels, name and namespace are supported.
+Required: Selects a field of the pod: only annotations, labels, name and namespace are supported.
 
 #### Attributes
 
@@ -8667,7 +8670,7 @@ r""" Required: Selects a field of the pod: only annotations, labels, name and na
 |**fieldPath** `required`|str|Path of the field to select in the specified API version.||
 ### MonitoringCoreosComV1PrometheusSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0ResourceFieldRef
 
-r""" Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported.
+Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported.
 
 #### Attributes
 
@@ -8678,7 +8681,7 @@ r""" Selects a resource of the container: only resources limits and requests (li
 |**resource** `required`|str|Required: resource to select||
 ### MonitoringCoreosComV1PrometheusSpecVolumesItems0ProjectedSourcesItems0Secret
 
-r""" information about the secret data to project
+information about the secret data to project
 
 #### Attributes
 
@@ -8689,7 +8692,7 @@ r""" information about the secret data to project
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1PrometheusSpecVolumesItems0ProjectedSourcesItems0SecretItemsItems0
 
-r""" Maps a string key to a path within a volume.
+Maps a string key to a path within a volume.
 
 #### Attributes
 
@@ -8700,7 +8703,7 @@ r""" Maps a string key to a path within a volume.
 |**path** `required`|str|The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.||
 ### MonitoringCoreosComV1PrometheusSpecVolumesItems0ProjectedSourcesItems0ServiceAccountToken
 
-r""" information about the serviceAccountToken data to project
+information about the serviceAccountToken data to project
 
 #### Attributes
 
@@ -8711,7 +8714,7 @@ r""" information about the serviceAccountToken data to project
 |**path** `required`|str|Path is the path relative to the mount point of the file to project the token into.||
 ### MonitoringCoreosComV1PrometheusSpecVolumesItems0Quobyte
 
-r""" Quobyte represents a Quobyte mount on the host that shares a pod's lifetime
+Quobyte represents a Quobyte mount on the host that shares a pod's lifetime
 
 #### Attributes
 
@@ -8725,7 +8728,7 @@ r""" Quobyte represents a Quobyte mount on the host that shares a pod's lifetime
 |**volume** `required`|str|Volume is a string that references an already created Quobyte volume by name.||
 ### MonitoringCoreosComV1PrometheusSpecVolumesItems0Rbd
 
-r""" RBD represents a Rados Block Device mount on the host that shares a pod's lifetime. More info: https://examples.k8s.io/volumes/rbd/README.md
+RBD represents a Rados Block Device mount on the host that shares a pod's lifetime. More info: https://examples.k8s.io/volumes/rbd/README.md
 
 #### Attributes
 
@@ -8741,7 +8744,7 @@ r""" RBD represents a Rados Block Device mount on the host that shares a pod's l
 |**user**|str|The rados user name. Default is admin. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it||
 ### MonitoringCoreosComV1PrometheusSpecVolumesItems0RbdSecretRef
 
-r""" SecretRef is name of the authentication secret for RBDUser. If provided overrides keyring. Default is nil. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+SecretRef is name of the authentication secret for RBDUser. If provided overrides keyring. Default is nil. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
 
 #### Attributes
 
@@ -8750,7 +8753,7 @@ r""" SecretRef is name of the authentication secret for RBDUser. If provided ove
 |**name**|str|Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?||
 ### MonitoringCoreosComV1PrometheusSpecVolumesItems0ScaleIO
 
-r""" ScaleIO represents a ScaleIO persistent volume attached and mounted on Kubernetes nodes.
+ScaleIO represents a ScaleIO persistent volume attached and mounted on Kubernetes nodes.
 
 #### Attributes
 
@@ -8768,7 +8771,7 @@ r""" ScaleIO represents a ScaleIO persistent volume attached and mounted on Kube
 |**volumeName**|str|The name of a volume already created in the ScaleIO system that is associated with this volume source.||
 ### MonitoringCoreosComV1PrometheusSpecVolumesItems0ScaleIOSecretRef
 
-r""" SecretRef references to the secret for ScaleIO user and other sensitive information. If this is not provided, Login operation will fail.
+SecretRef references to the secret for ScaleIO user and other sensitive information. If this is not provided, Login operation will fail.
 
 #### Attributes
 
@@ -8777,7 +8780,7 @@ r""" SecretRef references to the secret for ScaleIO user and other sensitive inf
 |**name**|str|Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?||
 ### MonitoringCoreosComV1PrometheusSpecVolumesItems0Secret
 
-r""" Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
 
 #### Attributes
 
@@ -8789,7 +8792,7 @@ r""" Secret represents a secret that should populate this volume. More info: htt
 |**secretName**|str|Name of the secret in the pod's namespace to use. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret||
 ### MonitoringCoreosComV1PrometheusSpecVolumesItems0SecretItemsItems0
 
-r""" Maps a string key to a path within a volume.
+Maps a string key to a path within a volume.
 
 #### Attributes
 
@@ -8800,7 +8803,7 @@ r""" Maps a string key to a path within a volume.
 |**path** `required`|str|The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.||
 ### MonitoringCoreosComV1PrometheusSpecVolumesItems0Storageos
 
-r""" StorageOS represents a StorageOS volume attached and mounted on Kubernetes nodes.
+StorageOS represents a StorageOS volume attached and mounted on Kubernetes nodes.
 
 #### Attributes
 
@@ -8813,7 +8816,7 @@ r""" StorageOS represents a StorageOS volume attached and mounted on Kubernetes 
 |**volumeNamespace**|str|VolumeNamespace specifies the scope of the volume within StorageOS.  If no namespace is specified then the Pod's namespace will be used.  This allows the Kubernetes name scoping to be mirrored within StorageOS for tighter integration. Set VolumeName to any name to override the default behaviour. Set to "default" if you are not using namespaces within StorageOS. Namespaces that do not pre-exist within StorageOS will be created.||
 ### MonitoringCoreosComV1PrometheusSpecVolumesItems0StorageosSecretRef
 
-r""" SecretRef specifies the secret to use for obtaining the StorageOS API credentials.  If not specified, default values will be attempted.
+SecretRef specifies the secret to use for obtaining the StorageOS API credentials.  If not specified, default values will be attempted.
 
 #### Attributes
 
@@ -8822,7 +8825,7 @@ r""" SecretRef specifies the secret to use for obtaining the StorageOS API crede
 |**name**|str|Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?||
 ### MonitoringCoreosComV1PrometheusSpecVolumesItems0VsphereVolume
 
-r""" VsphereVolume represents a vSphere volume attached and mounted on kubelets host machine
+VsphereVolume represents a vSphere volume attached and mounted on kubelets host machine
 
 #### Attributes
 
@@ -8834,7 +8837,7 @@ r""" VsphereVolume represents a vSphere volume attached and mounted on kubelets 
 |**volumePath** `required`|str|Path that identifies vSphere volume vmdk||
 ### MonitoringCoreosComV1PrometheusSpecWeb
 
-r""" WebSpec defines the web command line flags when starting Prometheus.
+WebSpec defines the web command line flags when starting Prometheus.
 
 #### Attributes
 
@@ -8843,7 +8846,7 @@ r""" WebSpec defines the web command line flags when starting Prometheus.
 |**pageTitle**|str|The prometheus web page title||
 ### MonitoringCoreosComV1PrometheusStatus
 
-r""" Most recent observed status of the Prometheus cluster. Read-only. Not included when requesting from the apiserver, only from the Prometheus Operator API itself. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+Most recent observed status of the Prometheus cluster. Read-only. Not included when requesting from the apiserver, only from the Prometheus Operator API itself. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
 
 #### Attributes
 
@@ -8856,7 +8859,7 @@ r""" Most recent observed status of the Prometheus cluster. Read-only. Not inclu
 |**updatedReplicas** `required`|int|Total number of non-terminated pods targeted by this Prometheus deployment that have the desired version spec.||
 ### MonitoringCoreosComV1ServiceMonitorSpec
 
-r""" Specification of desired Service selection for target discovery by Prometheus.
+Specification of desired Service selection for target discovery by Prometheus.
 
 #### Attributes
 
@@ -8872,7 +8875,7 @@ r""" Specification of desired Service selection for target discovery by Promethe
 |**targetLimit**|int|TargetLimit defines a limit on the number of scraped targets that will be accepted.||
 ### MonitoringCoreosComV1ServiceMonitorSpecEndpointsItems0
 
-r""" Endpoint defines a scrapeable endpoint serving Prometheus metrics.
+Endpoint defines a scrapeable endpoint serving Prometheus metrics.
 
 #### Attributes
 
@@ -8896,7 +8899,7 @@ r""" Endpoint defines a scrapeable endpoint serving Prometheus metrics.
 |**tlsConfig**|[MonitoringCoreosComV1ServiceMonitorSpecEndpointsItems0TLSConfig](#monitoringcoreoscomv1servicemonitorspecendpointsitems0tlsconfig)|tls config||
 ### MonitoringCoreosComV1ServiceMonitorSpecEndpointsItems0BasicAuth
 
-r""" BasicAuth allow an endpoint to authenticate over basic authentication More info: https://prometheus.io/docs/operating/configuration/#endpoints
+BasicAuth allow an endpoint to authenticate over basic authentication More info: https://prometheus.io/docs/operating/configuration/#endpoints
 
 #### Attributes
 
@@ -8906,7 +8909,7 @@ r""" BasicAuth allow an endpoint to authenticate over basic authentication More 
 |**username**|[MonitoringCoreosComV1ServiceMonitorSpecEndpointsItems0BasicAuthUsername](#monitoringcoreoscomv1servicemonitorspecendpointsitems0basicauthusername)|username||
 ### MonitoringCoreosComV1ServiceMonitorSpecEndpointsItems0BasicAuthPassword
 
-r""" The secret in the service monitor namespace that contains the password for authentication.
+The secret in the service monitor namespace that contains the password for authentication.
 
 #### Attributes
 
@@ -8917,7 +8920,7 @@ r""" The secret in the service monitor namespace that contains the password for 
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1ServiceMonitorSpecEndpointsItems0BasicAuthUsername
 
-r""" The secret in the service monitor namespace that contains the username for authentication.
+The secret in the service monitor namespace that contains the username for authentication.
 
 #### Attributes
 
@@ -8928,7 +8931,7 @@ r""" The secret in the service monitor namespace that contains the username for 
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1ServiceMonitorSpecEndpointsItems0BearerTokenSecret
 
-r""" Secret to mount to read bearer token for scraping targets. The secret needs to be in the same namespace as the service monitor and accessible by the Prometheus Operator.
+Secret to mount to read bearer token for scraping targets. The secret needs to be in the same namespace as the service monitor and accessible by the Prometheus Operator.
 
 #### Attributes
 
@@ -8939,7 +8942,7 @@ r""" Secret to mount to read bearer token for scraping targets. The secret needs
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1ServiceMonitorSpecEndpointsItems0MetricRelabelingsItems0
 
-r""" RelabelConfig allows dynamic rewriting of the label set, being applied to samples before ingestion. It defines `<metric_relabel_configs>`-section of Prometheus configuration. More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#metric_relabel_configs
+RelabelConfig allows dynamic rewriting of the label set, being applied to samples before ingestion. It defines `<metric_relabel_configs>`-section of Prometheus configuration. More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#metric_relabel_configs
 
 #### Attributes
 
@@ -8954,7 +8957,7 @@ r""" RelabelConfig allows dynamic rewriting of the label set, being applied to s
 |**targetLabel**|str|Label to which the resulting value is written in a replace action. It is mandatory for replace actions. Regex capture groups are available.||
 ### MonitoringCoreosComV1ServiceMonitorSpecEndpointsItems0RelabelingsItems0
 
-r""" RelabelConfig allows dynamic rewriting of the label set, being applied to samples before ingestion. It defines `<metric_relabel_configs>`-section of Prometheus configuration. More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#metric_relabel_configs
+RelabelConfig allows dynamic rewriting of the label set, being applied to samples before ingestion. It defines `<metric_relabel_configs>`-section of Prometheus configuration. More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#metric_relabel_configs
 
 #### Attributes
 
@@ -8969,7 +8972,7 @@ r""" RelabelConfig allows dynamic rewriting of the label set, being applied to s
 |**targetLabel**|str|Label to which the resulting value is written in a replace action. It is mandatory for replace actions. Regex capture groups are available.||
 ### MonitoringCoreosComV1ServiceMonitorSpecEndpointsItems0TLSConfig
 
-r""" TLS configuration to use when scraping the endpoint
+TLS configuration to use when scraping the endpoint
 
 #### Attributes
 
@@ -8985,7 +8988,7 @@ r""" TLS configuration to use when scraping the endpoint
 |**serverName**|str|Used to verify the hostname for the targets.||
 ### MonitoringCoreosComV1ServiceMonitorSpecEndpointsItems0TLSConfigCa
 
-r""" Struct containing the CA cert to use for the targets.
+Struct containing the CA cert to use for the targets.
 
 #### Attributes
 
@@ -8995,7 +8998,7 @@ r""" Struct containing the CA cert to use for the targets.
 |**secret**|[MonitoringCoreosComV1ServiceMonitorSpecEndpointsItems0TLSConfigCaSecret](#monitoringcoreoscomv1servicemonitorspecendpointsitems0tlsconfigcasecret)|secret||
 ### MonitoringCoreosComV1ServiceMonitorSpecEndpointsItems0TLSConfigCaConfigMap
 
-r""" ConfigMap containing data to use for the targets.
+ConfigMap containing data to use for the targets.
 
 #### Attributes
 
@@ -9006,7 +9009,7 @@ r""" ConfigMap containing data to use for the targets.
 |**optional**|bool|Specify whether the ConfigMap or its key must be defined||
 ### MonitoringCoreosComV1ServiceMonitorSpecEndpointsItems0TLSConfigCaSecret
 
-r""" Secret containing data to use for the targets.
+Secret containing data to use for the targets.
 
 #### Attributes
 
@@ -9017,7 +9020,7 @@ r""" Secret containing data to use for the targets.
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1ServiceMonitorSpecEndpointsItems0TLSConfigCert
 
-r""" Struct containing the client cert file for the targets.
+Struct containing the client cert file for the targets.
 
 #### Attributes
 
@@ -9027,7 +9030,7 @@ r""" Struct containing the client cert file for the targets.
 |**secret**|[MonitoringCoreosComV1ServiceMonitorSpecEndpointsItems0TLSConfigCertSecret](#monitoringcoreoscomv1servicemonitorspecendpointsitems0tlsconfigcertsecret)|secret||
 ### MonitoringCoreosComV1ServiceMonitorSpecEndpointsItems0TLSConfigCertConfigMap
 
-r""" ConfigMap containing data to use for the targets.
+ConfigMap containing data to use for the targets.
 
 #### Attributes
 
@@ -9038,7 +9041,7 @@ r""" ConfigMap containing data to use for the targets.
 |**optional**|bool|Specify whether the ConfigMap or its key must be defined||
 ### MonitoringCoreosComV1ServiceMonitorSpecEndpointsItems0TLSConfigCertSecret
 
-r""" Secret containing data to use for the targets.
+Secret containing data to use for the targets.
 
 #### Attributes
 
@@ -9049,7 +9052,7 @@ r""" Secret containing data to use for the targets.
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1ServiceMonitorSpecEndpointsItems0TLSConfigKeySecret
 
-r""" Secret containing the client key file for the targets.
+Secret containing the client key file for the targets.
 
 #### Attributes
 
@@ -9060,7 +9063,7 @@ r""" Secret containing the client key file for the targets.
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1ServiceMonitorSpecNamespaceSelector
 
-r""" Selector to select which namespaces the Endpoints objects are discovered from.
+Selector to select which namespaces the Endpoints objects are discovered from.
 
 #### Attributes
 
@@ -9070,7 +9073,7 @@ r""" Selector to select which namespaces the Endpoints objects are discovered fr
 |**matchNames**|[str]|List of namespace names.||
 ### MonitoringCoreosComV1ServiceMonitorSpecSelector
 
-r""" Selector to select Endpoints objects.
+Selector to select Endpoints objects.
 
 #### Attributes
 
@@ -9080,7 +9083,7 @@ r""" Selector to select Endpoints objects.
 |**matchLabels**|{str:str}|matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.||
 ### MonitoringCoreosComV1ServiceMonitorSpecSelectorMatchExpressionsItems0
 
-r""" A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
 #### Attributes
 
@@ -9091,7 +9094,7 @@ r""" A label selector requirement is a selector that contains values, a key, and
 |**values**|[str]|values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.||
 ### MonitoringCoreosComV1ThanosRulerSpec
 
-r""" Specification of the desired behavior of the ThanosRuler cluster. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+Specification of the desired behavior of the ThanosRuler cluster. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
 
 #### Attributes
 
@@ -9138,7 +9141,7 @@ r""" Specification of the desired behavior of the ThanosRuler cluster. More info
 |**volumes**|[[MonitoringCoreosComV1ThanosRulerSpecVolumesItems0](#monitoringcoreoscomv1thanosrulerspecvolumesitems0)]|Volumes allows configuration of additional volumes on the output StatefulSet definition. Volumes specified will be appended to other volumes that are generated as a result of StorageSpec objects.||
 ### MonitoringCoreosComV1ThanosRulerSpecAffinity
 
-r""" If specified, the pod's scheduling constraints.
+If specified, the pod's scheduling constraints.
 
 #### Attributes
 
@@ -9149,7 +9152,7 @@ r""" If specified, the pod's scheduling constraints.
 |**podAntiAffinity**|[MonitoringCoreosComV1ThanosRulerSpecAffinityPodAntiAffinity](#monitoringcoreoscomv1thanosrulerspecaffinitypodantiaffinity)|pod anti affinity||
 ### MonitoringCoreosComV1ThanosRulerSpecAffinityNodeAffinity
 
-r""" Describes node affinity scheduling rules for the pod.
+Describes node affinity scheduling rules for the pod.
 
 #### Attributes
 
@@ -9159,7 +9162,7 @@ r""" Describes node affinity scheduling rules for the pod.
 |**requiredDuringSchedulingIgnoredDuringExecution**|[MonitoringCoreosComV1ThanosRulerSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution](#monitoringcoreoscomv1thanosrulerspecaffinitynodeaffinityrequiredduringschedulingignoredduringexecution)|required during scheduling ignored during execution||
 ### MonitoringCoreosComV1ThanosRulerSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0
 
-r""" An empty preferred scheduling term matches all objects with implicit weight 0 (i.e. it's a no-op). A null preferred scheduling term matches no objects (i.e. is also a no-op).
+An empty preferred scheduling term matches all objects with implicit weight 0 (i.e. it's a no-op). A null preferred scheduling term matches no objects (i.e. is also a no-op).
 
 #### Attributes
 
@@ -9169,7 +9172,7 @@ r""" An empty preferred scheduling term matches all objects with implicit weight
 |**weight** `required`|int|Weight associated with matching the corresponding nodeSelectorTerm, in the range 1-100.||
 ### MonitoringCoreosComV1ThanosRulerSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0Preference
 
-r""" A node selector term, associated with the corresponding weight.
+A node selector term, associated with the corresponding weight.
 
 #### Attributes
 
@@ -9179,7 +9182,7 @@ r""" A node selector term, associated with the corresponding weight.
 |**matchFields**|[[MonitoringCoreosComV1ThanosRulerSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchFieldsItems0](#monitoringcoreoscomv1thanosrulerspecaffinitynodeaffinitypreferredduringschedulingignoredduringexecutionitems0preferencematchfieldsitems0)]|A list of node selector requirements by node's fields.||
 ### MonitoringCoreosComV1ThanosRulerSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchExpressionsItems0
 
-r""" A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
 #### Attributes
 
@@ -9190,7 +9193,7 @@ r""" A node selector requirement is a selector that contains values, a key, and 
 |**values**|[str]|An array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch.||
 ### MonitoringCoreosComV1ThanosRulerSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchFieldsItems0
 
-r""" A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
 #### Attributes
 
@@ -9201,7 +9204,7 @@ r""" A node selector requirement is a selector that contains values, a key, and 
 |**values**|[str]|An array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch.||
 ### MonitoringCoreosComV1ThanosRulerSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution
 
-r""" If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to an update), the system may or may not try to eventually evict the pod from its node.
+If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to an update), the system may or may not try to eventually evict the pod from its node.
 
 #### Attributes
 
@@ -9210,7 +9213,7 @@ r""" If the affinity requirements specified by this field are not met at schedul
 |**nodeSelectorTerms** `required`|[[MonitoringCoreosComV1ThanosRulerSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0](#monitoringcoreoscomv1thanosrulerspecaffinitynodeaffinityrequiredduringschedulingignoredduringexecutionnodeselectortermsitems0)]|Required. A list of node selector terms. The terms are ORed.||
 ### MonitoringCoreosComV1ThanosRulerSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0
 
-r""" A null or empty node selector term matches no objects. The requirements of them are ANDed. The TopologySelectorTerm type implements a subset of the NodeSelectorTerm.
+A null or empty node selector term matches no objects. The requirements of them are ANDed. The TopologySelectorTerm type implements a subset of the NodeSelectorTerm.
 
 #### Attributes
 
@@ -9220,7 +9223,7 @@ r""" A null or empty node selector term matches no objects. The requirements of 
 |**matchFields**|[[MonitoringCoreosComV1ThanosRulerSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchFieldsItems0](#monitoringcoreoscomv1thanosrulerspecaffinitynodeaffinityrequiredduringschedulingignoredduringexecutionnodeselectortermsitems0matchfieldsitems0)]|A list of node selector requirements by node's fields.||
 ### MonitoringCoreosComV1ThanosRulerSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchExpressionsItems0
 
-r""" A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
 #### Attributes
 
@@ -9231,7 +9234,7 @@ r""" A node selector requirement is a selector that contains values, a key, and 
 |**values**|[str]|An array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch.||
 ### MonitoringCoreosComV1ThanosRulerSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchFieldsItems0
 
-r""" A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
 #### Attributes
 
@@ -9242,7 +9245,7 @@ r""" A node selector requirement is a selector that contains values, a key, and 
 |**values**|[str]|An array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch.||
 ### MonitoringCoreosComV1ThanosRulerSpecAffinityPodAffinity
 
-r""" Describes pod affinity scheduling rules (e.g. co-locate this pod in the same node, zone, etc. as some other pod(s)).
+Describes pod affinity scheduling rules (e.g. co-locate this pod in the same node, zone, etc. as some other pod(s)).
 
 #### Attributes
 
@@ -9252,7 +9255,7 @@ r""" Describes pod affinity scheduling rules (e.g. co-locate this pod in the sam
 |**requiredDuringSchedulingIgnoredDuringExecution**|[[MonitoringCoreosComV1ThanosRulerSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0](#monitoringcoreoscomv1thanosrulerspecaffinitypodaffinityrequiredduringschedulingignoredduringexecutionitems0)]|If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each podAffinityTerm are intersected, i.e. all terms must be satisfied.||
 ### MonitoringCoreosComV1ThanosRulerSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0
 
-r""" The weights of all of the matched WeightedPodAffinityTerm fields are added per-node to find the most preferred node(s)
+The weights of all of the matched WeightedPodAffinityTerm fields are added per-node to find the most preferred node(s)
 
 #### Attributes
 
@@ -9262,7 +9265,7 @@ r""" The weights of all of the matched WeightedPodAffinityTerm fields are added 
 |**weight** `required`|int|weight associated with matching the corresponding podAffinityTerm, in the range 1-100.||
 ### MonitoringCoreosComV1ThanosRulerSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTerm
 
-r""" Required. A pod affinity term, associated with the corresponding weight.
+Required. A pod affinity term, associated with the corresponding weight.
 
 #### Attributes
 
@@ -9273,7 +9276,7 @@ r""" Required. A pod affinity term, associated with the corresponding weight.
 |**topologyKey** `required`|str|This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching the labelSelector in the specified namespaces, where co-located is defined as running on a node whose value of the label with key topologyKey matches that of any node on which any of the selected pods is running. Empty topologyKey is not allowed.||
 ### MonitoringCoreosComV1ThanosRulerSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector
 
-r""" A label query over a set of resources, in this case pods.
+A label query over a set of resources, in this case pods.
 
 #### Attributes
 
@@ -9283,7 +9286,7 @@ r""" A label query over a set of resources, in this case pods.
 |**matchLabels**|{str:str}|matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.||
 ### MonitoringCoreosComV1ThanosRulerSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0
 
-r""" A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
 #### Attributes
 
@@ -9294,7 +9297,7 @@ r""" A label selector requirement is a selector that contains values, a key, and
 |**values**|[str]|values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.||
 ### MonitoringCoreosComV1ThanosRulerSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0
 
-r""" Defines a set of pods (namely those matching the labelSelector relative to the given namespace(s)) that this pod should be co-located (affinity) or not co-located (anti-affinity) with, where co-located is defined as running on a node whose value of the label with key <topologyKey> matches that of any node on which a pod of the set of pods is running
+Defines a set of pods (namely those matching the labelSelector relative to the given namespace(s)) that this pod should be co-located (affinity) or not co-located (anti-affinity) with, where co-located is defined as running on a node whose value of the label with key <topologyKey> matches that of any node on which a pod of the set of pods is running
 
 #### Attributes
 
@@ -9305,7 +9308,7 @@ r""" Defines a set of pods (namely those matching the labelSelector relative to 
 |**topologyKey** `required`|str|This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching the labelSelector in the specified namespaces, where co-located is defined as running on a node whose value of the label with key topologyKey matches that of any node on which any of the selected pods is running. Empty topologyKey is not allowed.||
 ### MonitoringCoreosComV1ThanosRulerSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector
 
-r""" A label query over a set of resources, in this case pods.
+A label query over a set of resources, in this case pods.
 
 #### Attributes
 
@@ -9315,7 +9318,7 @@ r""" A label query over a set of resources, in this case pods.
 |**matchLabels**|{str:str}|matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.||
 ### MonitoringCoreosComV1ThanosRulerSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0
 
-r""" A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
 #### Attributes
 
@@ -9326,7 +9329,7 @@ r""" A label selector requirement is a selector that contains values, a key, and
 |**values**|[str]|values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.||
 ### MonitoringCoreosComV1ThanosRulerSpecAffinityPodAntiAffinity
 
-r""" Describes pod anti-affinity scheduling rules (e.g. avoid putting this pod in the same node, zone, etc. as some other pod(s)).
+Describes pod anti-affinity scheduling rules (e.g. avoid putting this pod in the same node, zone, etc. as some other pod(s)).
 
 #### Attributes
 
@@ -9336,7 +9339,7 @@ r""" Describes pod anti-affinity scheduling rules (e.g. avoid putting this pod i
 |**requiredDuringSchedulingIgnoredDuringExecution**|[[MonitoringCoreosComV1ThanosRulerSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0](#monitoringcoreoscomv1thanosrulerspecaffinitypodantiaffinityrequiredduringschedulingignoredduringexecutionitems0)]|If the anti-affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the anti-affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each podAffinityTerm are intersected, i.e. all terms must be satisfied.||
 ### MonitoringCoreosComV1ThanosRulerSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0
 
-r""" The weights of all of the matched WeightedPodAffinityTerm fields are added per-node to find the most preferred node(s)
+The weights of all of the matched WeightedPodAffinityTerm fields are added per-node to find the most preferred node(s)
 
 #### Attributes
 
@@ -9346,7 +9349,7 @@ r""" The weights of all of the matched WeightedPodAffinityTerm fields are added 
 |**weight** `required`|int|weight associated with matching the corresponding podAffinityTerm, in the range 1-100.||
 ### MonitoringCoreosComV1ThanosRulerSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTerm
 
-r""" Required. A pod affinity term, associated with the corresponding weight.
+Required. A pod affinity term, associated with the corresponding weight.
 
 #### Attributes
 
@@ -9357,7 +9360,7 @@ r""" Required. A pod affinity term, associated with the corresponding weight.
 |**topologyKey** `required`|str|This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching the labelSelector in the specified namespaces, where co-located is defined as running on a node whose value of the label with key topologyKey matches that of any node on which any of the selected pods is running. Empty topologyKey is not allowed.||
 ### MonitoringCoreosComV1ThanosRulerSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector
 
-r""" A label query over a set of resources, in this case pods.
+A label query over a set of resources, in this case pods.
 
 #### Attributes
 
@@ -9367,7 +9370,7 @@ r""" A label query over a set of resources, in this case pods.
 |**matchLabels**|{str:str}|matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.||
 ### MonitoringCoreosComV1ThanosRulerSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0
 
-r""" A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
 #### Attributes
 
@@ -9378,7 +9381,7 @@ r""" A label selector requirement is a selector that contains values, a key, and
 |**values**|[str]|values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.||
 ### MonitoringCoreosComV1ThanosRulerSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0
 
-r""" Defines a set of pods (namely those matching the labelSelector relative to the given namespace(s)) that this pod should be co-located (affinity) or not co-located (anti-affinity) with, where co-located is defined as running on a node whose value of the label with key <topologyKey> matches that of any node on which a pod of the set of pods is running
+Defines a set of pods (namely those matching the labelSelector relative to the given namespace(s)) that this pod should be co-located (affinity) or not co-located (anti-affinity) with, where co-located is defined as running on a node whose value of the label with key <topologyKey> matches that of any node on which a pod of the set of pods is running
 
 #### Attributes
 
@@ -9389,7 +9392,7 @@ r""" Defines a set of pods (namely those matching the labelSelector relative to 
 |**topologyKey** `required`|str|This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching the labelSelector in the specified namespaces, where co-located is defined as running on a node whose value of the label with key topologyKey matches that of any node on which any of the selected pods is running. Empty topologyKey is not allowed.||
 ### MonitoringCoreosComV1ThanosRulerSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector
 
-r""" A label query over a set of resources, in this case pods.
+A label query over a set of resources, in this case pods.
 
 #### Attributes
 
@@ -9399,7 +9402,7 @@ r""" A label query over a set of resources, in this case pods.
 |**matchLabels**|{str:str}|matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.||
 ### MonitoringCoreosComV1ThanosRulerSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0
 
-r""" A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
 #### Attributes
 
@@ -9410,7 +9413,7 @@ r""" A label selector requirement is a selector that contains values, a key, and
 |**values**|[str]|values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.||
 ### MonitoringCoreosComV1ThanosRulerSpecAlertmanagersConfig
 
-r""" Define configuration for connecting to alertmanager.  Only available with thanos v0.10.0 and higher.  Maps to the `alertmanagers.config` arg.
+Define configuration for connecting to alertmanager.  Only available with thanos v0.10.0 and higher.  Maps to the `alertmanagers.config` arg.
 
 #### Attributes
 
@@ -9421,7 +9424,7 @@ r""" Define configuration for connecting to alertmanager.  Only available with t
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1ThanosRulerSpecContainersItems0
 
-r""" A single application container that you want to run within a pod.
+A single application container that you want to run within a pod.
 
 #### Attributes
 
@@ -9451,7 +9454,7 @@ r""" A single application container that you want to run within a pod.
 |**workingDir**|str|Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. Cannot be updated.||
 ### MonitoringCoreosComV1ThanosRulerSpecContainersItems0EnvFromItems0
 
-r""" EnvFromSource represents the source of a set of ConfigMaps
+EnvFromSource represents the source of a set of ConfigMaps
 
 #### Attributes
 
@@ -9462,7 +9465,7 @@ r""" EnvFromSource represents the source of a set of ConfigMaps
 |**secretRef**|[MonitoringCoreosComV1ThanosRulerSpecContainersItems0EnvFromItems0SecretRef](#monitoringcoreoscomv1thanosrulerspeccontainersitems0envfromitems0secretref)|secret ref||
 ### MonitoringCoreosComV1ThanosRulerSpecContainersItems0EnvFromItems0ConfigMapRef
 
-r""" The ConfigMap to select from
+The ConfigMap to select from
 
 #### Attributes
 
@@ -9472,7 +9475,7 @@ r""" The ConfigMap to select from
 |**optional**|bool|Specify whether the ConfigMap must be defined||
 ### MonitoringCoreosComV1ThanosRulerSpecContainersItems0EnvFromItems0SecretRef
 
-r""" The Secret to select from
+The Secret to select from
 
 #### Attributes
 
@@ -9482,7 +9485,7 @@ r""" The Secret to select from
 |**optional**|bool|Specify whether the Secret must be defined||
 ### MonitoringCoreosComV1ThanosRulerSpecContainersItems0EnvItems0
 
-r""" EnvVar represents an environment variable present in a Container.
+EnvVar represents an environment variable present in a Container.
 
 #### Attributes
 
@@ -9493,7 +9496,7 @@ r""" EnvVar represents an environment variable present in a Container.
 |**valueFrom**|[MonitoringCoreosComV1ThanosRulerSpecContainersItems0EnvItems0ValueFrom](#monitoringcoreoscomv1thanosrulerspeccontainersitems0envitems0valuefrom)|value from||
 ### MonitoringCoreosComV1ThanosRulerSpecContainersItems0EnvItems0ValueFrom
 
-r""" Source for the environment variable's value. Cannot be used if value is not empty.
+Source for the environment variable's value. Cannot be used if value is not empty.
 
 #### Attributes
 
@@ -9505,7 +9508,7 @@ r""" Source for the environment variable's value. Cannot be used if value is not
 |**secretKeyRef**|[MonitoringCoreosComV1ThanosRulerSpecContainersItems0EnvItems0ValueFromSecretKeyRef](#monitoringcoreoscomv1thanosrulerspeccontainersitems0envitems0valuefromsecretkeyref)|secret key ref||
 ### MonitoringCoreosComV1ThanosRulerSpecContainersItems0EnvItems0ValueFromConfigMapKeyRef
 
-r""" Selects a key of a ConfigMap.
+Selects a key of a ConfigMap.
 
 #### Attributes
 
@@ -9516,7 +9519,7 @@ r""" Selects a key of a ConfigMap.
 |**optional**|bool|Specify whether the ConfigMap or its key must be defined||
 ### MonitoringCoreosComV1ThanosRulerSpecContainersItems0EnvItems0ValueFromFieldRef
 
-r""" Selects a field of the pod: supports metadata.name, metadata.namespace, metadata.labels, metadata.annotations, spec.nodeName, spec.serviceAccountName, status.hostIP, status.podIP, status.podIPs.
+Selects a field of the pod: supports metadata.name, metadata.namespace, metadata.labels, metadata.annotations, spec.nodeName, spec.serviceAccountName, status.hostIP, status.podIP, status.podIPs.
 
 #### Attributes
 
@@ -9526,7 +9529,7 @@ r""" Selects a field of the pod: supports metadata.name, metadata.namespace, met
 |**fieldPath** `required`|str|Path of the field to select in the specified API version.||
 ### MonitoringCoreosComV1ThanosRulerSpecContainersItems0EnvItems0ValueFromResourceFieldRef
 
-r""" Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
+Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
 
 #### Attributes
 
@@ -9537,7 +9540,7 @@ r""" Selects a resource of the container: only resources limits and requests (li
 |**resource** `required`|str|Required: resource to select||
 ### MonitoringCoreosComV1ThanosRulerSpecContainersItems0EnvItems0ValueFromSecretKeyRef
 
-r""" Selects a key of a secret in the pod's namespace
+Selects a key of a secret in the pod's namespace
 
 #### Attributes
 
@@ -9548,7 +9551,7 @@ r""" Selects a key of a secret in the pod's namespace
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1ThanosRulerSpecContainersItems0Lifecycle
 
-r""" Actions that the management system should take in response to container lifecycle events. Cannot be updated.
+Actions that the management system should take in response to container lifecycle events. Cannot be updated.
 
 #### Attributes
 
@@ -9558,7 +9561,7 @@ r""" Actions that the management system should take in response to container lif
 |**preStop**|[MonitoringCoreosComV1ThanosRulerSpecContainersItems0LifecyclePreStop](#monitoringcoreoscomv1thanosrulerspeccontainersitems0lifecycleprestop)|pre stop||
 ### MonitoringCoreosComV1ThanosRulerSpecContainersItems0LifecyclePostStart
 
-r""" PostStart is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+PostStart is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
 
 #### Attributes
 
@@ -9569,7 +9572,7 @@ r""" PostStart is called immediately after a container is created. If the handle
 |**tcpSocket**|[MonitoringCoreosComV1ThanosRulerSpecContainersItems0LifecyclePostStartTCPSocket](#monitoringcoreoscomv1thanosrulerspeccontainersitems0lifecyclepoststarttcpsocket)|tcp socket||
 ### MonitoringCoreosComV1ThanosRulerSpecContainersItems0LifecyclePostStartExec
 
-r""" One and only one of the following should be specified. Exec specifies the action to take.
+One and only one of the following should be specified. Exec specifies the action to take.
 
 #### Attributes
 
@@ -9578,7 +9581,7 @@ r""" One and only one of the following should be specified. Exec specifies the a
 |**command**|[str]|Command is the command line to execute inside the container, the working directory for the command  is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('\|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.||
 ### MonitoringCoreosComV1ThanosRulerSpecContainersItems0LifecyclePostStartHTTPGet
 
-r""" HTTPGet specifies the http request to perform.
+HTTPGet specifies the http request to perform.
 
 #### Attributes
 
@@ -9591,7 +9594,7 @@ r""" HTTPGet specifies the http request to perform.
 |**scheme**|str|Scheme to use for connecting to the host. Defaults to HTTP.||
 ### MonitoringCoreosComV1ThanosRulerSpecContainersItems0LifecyclePostStartHTTPGetHTTPHeadersItems0
 
-r""" HTTPHeader describes a custom header to be used in HTTP probes
+HTTPHeader describes a custom header to be used in HTTP probes
 
 #### Attributes
 
@@ -9601,7 +9604,7 @@ r""" HTTPHeader describes a custom header to be used in HTTP probes
 |**value** `required`|str|The header field value||
 ### MonitoringCoreosComV1ThanosRulerSpecContainersItems0LifecyclePostStartTCPSocket
 
-r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
+TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
 
 #### Attributes
 
@@ -9611,7 +9614,7 @@ r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet suppo
 |**port** `required`|int | str|Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.||
 ### MonitoringCoreosComV1ThanosRulerSpecContainersItems0LifecyclePreStop
 
-r""" PreStop is called immediately before a container is terminated due to an API request or management event such as liveness/startup probe failure, preemption, resource contention, etc. The handler is not called if the container crashes or exits. The reason for termination is passed to the handler. The Pod's termination grace period countdown begins before the PreStop hooked is executed. Regardless of the outcome of the handler, the container will eventually terminate within the Pod's termination grace period. Other management of the container blocks until the hook completes or until the termination grace period is reached. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+PreStop is called immediately before a container is terminated due to an API request or management event such as liveness/startup probe failure, preemption, resource contention, etc. The handler is not called if the container crashes or exits. The reason for termination is passed to the handler. The Pod's termination grace period countdown begins before the PreStop hooked is executed. Regardless of the outcome of the handler, the container will eventually terminate within the Pod's termination grace period. Other management of the container blocks until the hook completes or until the termination grace period is reached. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
 
 #### Attributes
 
@@ -9622,7 +9625,7 @@ r""" PreStop is called immediately before a container is terminated due to an AP
 |**tcpSocket**|[MonitoringCoreosComV1ThanosRulerSpecContainersItems0LifecyclePreStopTCPSocket](#monitoringcoreoscomv1thanosrulerspeccontainersitems0lifecycleprestoptcpsocket)|tcp socket||
 ### MonitoringCoreosComV1ThanosRulerSpecContainersItems0LifecyclePreStopExec
 
-r""" One and only one of the following should be specified. Exec specifies the action to take.
+One and only one of the following should be specified. Exec specifies the action to take.
 
 #### Attributes
 
@@ -9631,7 +9634,7 @@ r""" One and only one of the following should be specified. Exec specifies the a
 |**command**|[str]|Command is the command line to execute inside the container, the working directory for the command  is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('\|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.||
 ### MonitoringCoreosComV1ThanosRulerSpecContainersItems0LifecyclePreStopHTTPGet
 
-r""" HTTPGet specifies the http request to perform.
+HTTPGet specifies the http request to perform.
 
 #### Attributes
 
@@ -9644,7 +9647,7 @@ r""" HTTPGet specifies the http request to perform.
 |**scheme**|str|Scheme to use for connecting to the host. Defaults to HTTP.||
 ### MonitoringCoreosComV1ThanosRulerSpecContainersItems0LifecyclePreStopHTTPGetHTTPHeadersItems0
 
-r""" HTTPHeader describes a custom header to be used in HTTP probes
+HTTPHeader describes a custom header to be used in HTTP probes
 
 #### Attributes
 
@@ -9654,7 +9657,7 @@ r""" HTTPHeader describes a custom header to be used in HTTP probes
 |**value** `required`|str|The header field value||
 ### MonitoringCoreosComV1ThanosRulerSpecContainersItems0LifecyclePreStopTCPSocket
 
-r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
+TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
 
 #### Attributes
 
@@ -9664,7 +9667,7 @@ r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet suppo
 |**port** `required`|int | str|Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.||
 ### MonitoringCoreosComV1ThanosRulerSpecContainersItems0LivenessProbe
 
-r""" Periodic probe of container liveness. Container will be restarted if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+Periodic probe of container liveness. Container will be restarted if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 
 #### Attributes
 
@@ -9680,7 +9683,7 @@ r""" Periodic probe of container liveness. Container will be restarted if the pr
 |**timeoutSeconds**|int|Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes||
 ### MonitoringCoreosComV1ThanosRulerSpecContainersItems0LivenessProbeExec
 
-r""" One and only one of the following should be specified. Exec specifies the action to take.
+One and only one of the following should be specified. Exec specifies the action to take.
 
 #### Attributes
 
@@ -9689,7 +9692,7 @@ r""" One and only one of the following should be specified. Exec specifies the a
 |**command**|[str]|Command is the command line to execute inside the container, the working directory for the command  is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('\|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.||
 ### MonitoringCoreosComV1ThanosRulerSpecContainersItems0LivenessProbeHTTPGet
 
-r""" HTTPGet specifies the http request to perform.
+HTTPGet specifies the http request to perform.
 
 #### Attributes
 
@@ -9702,7 +9705,7 @@ r""" HTTPGet specifies the http request to perform.
 |**scheme**|str|Scheme to use for connecting to the host. Defaults to HTTP.||
 ### MonitoringCoreosComV1ThanosRulerSpecContainersItems0LivenessProbeHTTPGetHTTPHeadersItems0
 
-r""" HTTPHeader describes a custom header to be used in HTTP probes
+HTTPHeader describes a custom header to be used in HTTP probes
 
 #### Attributes
 
@@ -9712,7 +9715,7 @@ r""" HTTPHeader describes a custom header to be used in HTTP probes
 |**value** `required`|str|The header field value||
 ### MonitoringCoreosComV1ThanosRulerSpecContainersItems0LivenessProbeTCPSocket
 
-r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
+TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
 
 #### Attributes
 
@@ -9722,7 +9725,7 @@ r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet suppo
 |**port** `required`|int | str|Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.||
 ### MonitoringCoreosComV1ThanosRulerSpecContainersItems0PortsItems0
 
-r""" ContainerPort represents a network port in a single container.
+ContainerPort represents a network port in a single container.
 
 #### Attributes
 
@@ -9735,7 +9738,7 @@ r""" ContainerPort represents a network port in a single container.
 |**protocol**|str|||
 ### MonitoringCoreosComV1ThanosRulerSpecContainersItems0ReadinessProbe
 
-r""" Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 
 #### Attributes
 
@@ -9751,7 +9754,7 @@ r""" Periodic probe of container service readiness. Container will be removed fr
 |**timeoutSeconds**|int|Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes||
 ### MonitoringCoreosComV1ThanosRulerSpecContainersItems0ReadinessProbeExec
 
-r""" One and only one of the following should be specified. Exec specifies the action to take.
+One and only one of the following should be specified. Exec specifies the action to take.
 
 #### Attributes
 
@@ -9760,7 +9763,7 @@ r""" One and only one of the following should be specified. Exec specifies the a
 |**command**|[str]|Command is the command line to execute inside the container, the working directory for the command  is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('\|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.||
 ### MonitoringCoreosComV1ThanosRulerSpecContainersItems0ReadinessProbeHTTPGet
 
-r""" HTTPGet specifies the http request to perform.
+HTTPGet specifies the http request to perform.
 
 #### Attributes
 
@@ -9773,7 +9776,7 @@ r""" HTTPGet specifies the http request to perform.
 |**scheme**|str|Scheme to use for connecting to the host. Defaults to HTTP.||
 ### MonitoringCoreosComV1ThanosRulerSpecContainersItems0ReadinessProbeHTTPGetHTTPHeadersItems0
 
-r""" HTTPHeader describes a custom header to be used in HTTP probes
+HTTPHeader describes a custom header to be used in HTTP probes
 
 #### Attributes
 
@@ -9783,7 +9786,7 @@ r""" HTTPHeader describes a custom header to be used in HTTP probes
 |**value** `required`|str|The header field value||
 ### MonitoringCoreosComV1ThanosRulerSpecContainersItems0ReadinessProbeTCPSocket
 
-r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
+TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
 
 #### Attributes
 
@@ -9793,7 +9796,7 @@ r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet suppo
 |**port** `required`|int | str|Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.||
 ### MonitoringCoreosComV1ThanosRulerSpecContainersItems0Resources
 
-r""" Compute Resources required by this container. Cannot be updated. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
+Compute Resources required by this container. Cannot be updated. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
 
 #### Attributes
 
@@ -9803,7 +9806,7 @@ r""" Compute Resources required by this container. Cannot be updated. More info:
 |**requests**|{str:str}|Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/||
 ### MonitoringCoreosComV1ThanosRulerSpecContainersItems0SecurityContext
 
-r""" Security options the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-context/ More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+Security options the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-context/ More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
 
 #### Attributes
 
@@ -9821,7 +9824,7 @@ r""" Security options the pod should run with. More info: https://kubernetes.io/
 |**windowsOptions**|[MonitoringCoreosComV1ThanosRulerSpecContainersItems0SecurityContextWindowsOptions](#monitoringcoreoscomv1thanosrulerspeccontainersitems0securitycontextwindowsoptions)|windows options||
 ### MonitoringCoreosComV1ThanosRulerSpecContainersItems0SecurityContextCapabilities
 
-r""" The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime.
+The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime.
 
 #### Attributes
 
@@ -9831,7 +9834,7 @@ r""" The capabilities to add/drop when running containers. Defaults to the defau
 |**drop**|[str]|Removed capabilities||
 ### MonitoringCoreosComV1ThanosRulerSpecContainersItems0SecurityContextSeLinuxOptions
 
-r""" The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container.  May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container.  May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
 
 #### Attributes
 
@@ -9843,7 +9846,7 @@ r""" The SELinux context to be applied to the container. If unspecified, the con
 |**user**|str|User is a SELinux user label that applies to the container.||
 ### MonitoringCoreosComV1ThanosRulerSpecContainersItems0SecurityContextWindowsOptions
 
-r""" The Windows specific settings applied to all containers. If unspecified, the options from the PodSecurityContext will be used. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+The Windows specific settings applied to all containers. If unspecified, the options from the PodSecurityContext will be used. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
 
 #### Attributes
 
@@ -9854,7 +9857,7 @@ r""" The Windows specific settings applied to all containers. If unspecified, th
 |**runAsUserName**|str|The UserName in Windows to run the entrypoint of the container process. Defaults to the user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.||
 ### MonitoringCoreosComV1ThanosRulerSpecContainersItems0StartupProbe
 
-r""" StartupProbe indicates that the Pod has successfully initialized. If specified, no other probes are executed until this completes successfully. If this probe fails, the Pod will be restarted, just as if the livenessProbe failed. This can be used to provide different probe parameters at the beginning of a Pod's lifecycle, when it might take a long time to load data or warm a cache, than during steady-state operation. This cannot be updated. This is a beta feature enabled by the StartupProbe feature flag. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+StartupProbe indicates that the Pod has successfully initialized. If specified, no other probes are executed until this completes successfully. If this probe fails, the Pod will be restarted, just as if the livenessProbe failed. This can be used to provide different probe parameters at the beginning of a Pod's lifecycle, when it might take a long time to load data or warm a cache, than during steady-state operation. This cannot be updated. This is a beta feature enabled by the StartupProbe feature flag. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 
 #### Attributes
 
@@ -9870,7 +9873,7 @@ r""" StartupProbe indicates that the Pod has successfully initialized. If specif
 |**timeoutSeconds**|int|Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes||
 ### MonitoringCoreosComV1ThanosRulerSpecContainersItems0StartupProbeExec
 
-r""" One and only one of the following should be specified. Exec specifies the action to take.
+One and only one of the following should be specified. Exec specifies the action to take.
 
 #### Attributes
 
@@ -9879,7 +9882,7 @@ r""" One and only one of the following should be specified. Exec specifies the a
 |**command**|[str]|Command is the command line to execute inside the container, the working directory for the command  is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('\|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.||
 ### MonitoringCoreosComV1ThanosRulerSpecContainersItems0StartupProbeHTTPGet
 
-r""" HTTPGet specifies the http request to perform.
+HTTPGet specifies the http request to perform.
 
 #### Attributes
 
@@ -9892,7 +9895,7 @@ r""" HTTPGet specifies the http request to perform.
 |**scheme**|str|Scheme to use for connecting to the host. Defaults to HTTP.||
 ### MonitoringCoreosComV1ThanosRulerSpecContainersItems0StartupProbeHTTPGetHTTPHeadersItems0
 
-r""" HTTPHeader describes a custom header to be used in HTTP probes
+HTTPHeader describes a custom header to be used in HTTP probes
 
 #### Attributes
 
@@ -9902,7 +9905,7 @@ r""" HTTPHeader describes a custom header to be used in HTTP probes
 |**value** `required`|str|The header field value||
 ### MonitoringCoreosComV1ThanosRulerSpecContainersItems0StartupProbeTCPSocket
 
-r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
+TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
 
 #### Attributes
 
@@ -9912,7 +9915,7 @@ r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet suppo
 |**port** `required`|int | str|Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.||
 ### MonitoringCoreosComV1ThanosRulerSpecContainersItems0VolumeDevicesItems0
 
-r""" volumeDevice describes a mapping of a raw block device within a container.
+volumeDevice describes a mapping of a raw block device within a container.
 
 #### Attributes
 
@@ -9922,7 +9925,7 @@ r""" volumeDevice describes a mapping of a raw block device within a container.
 |**name** `required`|str|name must match the name of a persistentVolumeClaim in the pod||
 ### MonitoringCoreosComV1ThanosRulerSpecContainersItems0VolumeMountsItems0
 
-r""" VolumeMount describes a mounting of a Volume within a container.
+VolumeMount describes a mounting of a Volume within a container.
 
 #### Attributes
 
@@ -9936,7 +9939,7 @@ r""" VolumeMount describes a mounting of a Volume within a container.
 |**subPathExpr**|str|Expanded path within the volume from which the container's volume should be mounted. Behaves similarly to SubPath but environment variable references $(VAR_NAME) are expanded using the container's environment. Defaults to "" (volume's root). SubPathExpr and SubPath are mutually exclusive.||
 ### MonitoringCoreosComV1ThanosRulerSpecGrpcServerTLSConfig
 
-r""" GRPCServerTLSConfig configures the gRPC server from which Thanos Querier reads recorded rule data. Note: Currently only the CAFile, CertFile, and KeyFile fields are supported. Maps to the '--grpc-server-tls-*' CLI args.
+GRPCServerTLSConfig configures the gRPC server from which Thanos Querier reads recorded rule data. Note: Currently only the CAFile, CertFile, and KeyFile fields are supported. Maps to the '--grpc-server-tls-*' CLI args.
 
 #### Attributes
 
@@ -9952,7 +9955,7 @@ r""" GRPCServerTLSConfig configures the gRPC server from which Thanos Querier re
 |**serverName**|str|Used to verify the hostname for the targets.||
 ### MonitoringCoreosComV1ThanosRulerSpecGrpcServerTLSConfigCa
 
-r""" Struct containing the CA cert to use for the targets.
+Struct containing the CA cert to use for the targets.
 
 #### Attributes
 
@@ -9962,7 +9965,7 @@ r""" Struct containing the CA cert to use for the targets.
 |**secret**|[MonitoringCoreosComV1ThanosRulerSpecGrpcServerTLSConfigCaSecret](#monitoringcoreoscomv1thanosrulerspecgrpcservertlsconfigcasecret)|secret||
 ### MonitoringCoreosComV1ThanosRulerSpecGrpcServerTLSConfigCaConfigMap
 
-r""" ConfigMap containing data to use for the targets.
+ConfigMap containing data to use for the targets.
 
 #### Attributes
 
@@ -9973,7 +9976,7 @@ r""" ConfigMap containing data to use for the targets.
 |**optional**|bool|Specify whether the ConfigMap or its key must be defined||
 ### MonitoringCoreosComV1ThanosRulerSpecGrpcServerTLSConfigCaSecret
 
-r""" Secret containing data to use for the targets.
+Secret containing data to use for the targets.
 
 #### Attributes
 
@@ -9984,7 +9987,7 @@ r""" Secret containing data to use for the targets.
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1ThanosRulerSpecGrpcServerTLSConfigCert
 
-r""" Struct containing the client cert file for the targets.
+Struct containing the client cert file for the targets.
 
 #### Attributes
 
@@ -9994,7 +9997,7 @@ r""" Struct containing the client cert file for the targets.
 |**secret**|[MonitoringCoreosComV1ThanosRulerSpecGrpcServerTLSConfigCertSecret](#monitoringcoreoscomv1thanosrulerspecgrpcservertlsconfigcertsecret)|secret||
 ### MonitoringCoreosComV1ThanosRulerSpecGrpcServerTLSConfigCertConfigMap
 
-r""" ConfigMap containing data to use for the targets.
+ConfigMap containing data to use for the targets.
 
 #### Attributes
 
@@ -10005,7 +10008,7 @@ r""" ConfigMap containing data to use for the targets.
 |**optional**|bool|Specify whether the ConfigMap or its key must be defined||
 ### MonitoringCoreosComV1ThanosRulerSpecGrpcServerTLSConfigCertSecret
 
-r""" Secret containing data to use for the targets.
+Secret containing data to use for the targets.
 
 #### Attributes
 
@@ -10016,7 +10019,7 @@ r""" Secret containing data to use for the targets.
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1ThanosRulerSpecGrpcServerTLSConfigKeySecret
 
-r""" Secret containing the client key file for the targets.
+Secret containing the client key file for the targets.
 
 #### Attributes
 
@@ -10027,7 +10030,7 @@ r""" Secret containing the client key file for the targets.
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1ThanosRulerSpecImagePullSecretsItems0
 
-r""" LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
+LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
 
 #### Attributes
 
@@ -10036,7 +10039,7 @@ r""" LocalObjectReference contains enough information to let you locate the refe
 |**name**|str|Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?||
 ### MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0
 
-r""" A single application container that you want to run within a pod.
+A single application container that you want to run within a pod.
 
 #### Attributes
 
@@ -10066,7 +10069,7 @@ r""" A single application container that you want to run within a pod.
 |**workingDir**|str|Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. Cannot be updated.||
 ### MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0EnvFromItems0
 
-r""" EnvFromSource represents the source of a set of ConfigMaps
+EnvFromSource represents the source of a set of ConfigMaps
 
 #### Attributes
 
@@ -10077,7 +10080,7 @@ r""" EnvFromSource represents the source of a set of ConfigMaps
 |**secretRef**|[MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0EnvFromItems0SecretRef](#monitoringcoreoscomv1thanosrulerspecinitcontainersitems0envfromitems0secretref)|secret ref||
 ### MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0EnvFromItems0ConfigMapRef
 
-r""" The ConfigMap to select from
+The ConfigMap to select from
 
 #### Attributes
 
@@ -10087,7 +10090,7 @@ r""" The ConfigMap to select from
 |**optional**|bool|Specify whether the ConfigMap must be defined||
 ### MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0EnvFromItems0SecretRef
 
-r""" The Secret to select from
+The Secret to select from
 
 #### Attributes
 
@@ -10097,7 +10100,7 @@ r""" The Secret to select from
 |**optional**|bool|Specify whether the Secret must be defined||
 ### MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0EnvItems0
 
-r""" EnvVar represents an environment variable present in a Container.
+EnvVar represents an environment variable present in a Container.
 
 #### Attributes
 
@@ -10108,7 +10111,7 @@ r""" EnvVar represents an environment variable present in a Container.
 |**valueFrom**|[MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0EnvItems0ValueFrom](#monitoringcoreoscomv1thanosrulerspecinitcontainersitems0envitems0valuefrom)|value from||
 ### MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0EnvItems0ValueFrom
 
-r""" Source for the environment variable's value. Cannot be used if value is not empty.
+Source for the environment variable's value. Cannot be used if value is not empty.
 
 #### Attributes
 
@@ -10120,7 +10123,7 @@ r""" Source for the environment variable's value. Cannot be used if value is not
 |**secretKeyRef**|[MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0EnvItems0ValueFromSecretKeyRef](#monitoringcoreoscomv1thanosrulerspecinitcontainersitems0envitems0valuefromsecretkeyref)|secret key ref||
 ### MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0EnvItems0ValueFromConfigMapKeyRef
 
-r""" Selects a key of a ConfigMap.
+Selects a key of a ConfigMap.
 
 #### Attributes
 
@@ -10131,7 +10134,7 @@ r""" Selects a key of a ConfigMap.
 |**optional**|bool|Specify whether the ConfigMap or its key must be defined||
 ### MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0EnvItems0ValueFromFieldRef
 
-r""" Selects a field of the pod: supports metadata.name, metadata.namespace, metadata.labels, metadata.annotations, spec.nodeName, spec.serviceAccountName, status.hostIP, status.podIP, status.podIPs.
+Selects a field of the pod: supports metadata.name, metadata.namespace, metadata.labels, metadata.annotations, spec.nodeName, spec.serviceAccountName, status.hostIP, status.podIP, status.podIPs.
 
 #### Attributes
 
@@ -10141,7 +10144,7 @@ r""" Selects a field of the pod: supports metadata.name, metadata.namespace, met
 |**fieldPath** `required`|str|Path of the field to select in the specified API version.||
 ### MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0EnvItems0ValueFromResourceFieldRef
 
-r""" Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
+Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
 
 #### Attributes
 
@@ -10152,7 +10155,7 @@ r""" Selects a resource of the container: only resources limits and requests (li
 |**resource** `required`|str|Required: resource to select||
 ### MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0EnvItems0ValueFromSecretKeyRef
 
-r""" Selects a key of a secret in the pod's namespace
+Selects a key of a secret in the pod's namespace
 
 #### Attributes
 
@@ -10163,7 +10166,7 @@ r""" Selects a key of a secret in the pod's namespace
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0Lifecycle
 
-r""" Actions that the management system should take in response to container lifecycle events. Cannot be updated.
+Actions that the management system should take in response to container lifecycle events. Cannot be updated.
 
 #### Attributes
 
@@ -10173,7 +10176,7 @@ r""" Actions that the management system should take in response to container lif
 |**preStop**|[MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0LifecyclePreStop](#monitoringcoreoscomv1thanosrulerspecinitcontainersitems0lifecycleprestop)|pre stop||
 ### MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0LifecyclePostStart
 
-r""" PostStart is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+PostStart is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
 
 #### Attributes
 
@@ -10184,7 +10187,7 @@ r""" PostStart is called immediately after a container is created. If the handle
 |**tcpSocket**|[MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0LifecyclePostStartTCPSocket](#monitoringcoreoscomv1thanosrulerspecinitcontainersitems0lifecyclepoststarttcpsocket)|tcp socket||
 ### MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0LifecyclePostStartExec
 
-r""" One and only one of the following should be specified. Exec specifies the action to take.
+One and only one of the following should be specified. Exec specifies the action to take.
 
 #### Attributes
 
@@ -10193,7 +10196,7 @@ r""" One and only one of the following should be specified. Exec specifies the a
 |**command**|[str]|Command is the command line to execute inside the container, the working directory for the command  is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('\|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.||
 ### MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0LifecyclePostStartHTTPGet
 
-r""" HTTPGet specifies the http request to perform.
+HTTPGet specifies the http request to perform.
 
 #### Attributes
 
@@ -10206,7 +10209,7 @@ r""" HTTPGet specifies the http request to perform.
 |**scheme**|str|Scheme to use for connecting to the host. Defaults to HTTP.||
 ### MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0LifecyclePostStartHTTPGetHTTPHeadersItems0
 
-r""" HTTPHeader describes a custom header to be used in HTTP probes
+HTTPHeader describes a custom header to be used in HTTP probes
 
 #### Attributes
 
@@ -10216,7 +10219,7 @@ r""" HTTPHeader describes a custom header to be used in HTTP probes
 |**value** `required`|str|The header field value||
 ### MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0LifecyclePostStartTCPSocket
 
-r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
+TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
 
 #### Attributes
 
@@ -10226,7 +10229,7 @@ r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet suppo
 |**port** `required`|int | str|Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.||
 ### MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0LifecyclePreStop
 
-r""" PreStop is called immediately before a container is terminated due to an API request or management event such as liveness/startup probe failure, preemption, resource contention, etc. The handler is not called if the container crashes or exits. The reason for termination is passed to the handler. The Pod's termination grace period countdown begins before the PreStop hooked is executed. Regardless of the outcome of the handler, the container will eventually terminate within the Pod's termination grace period. Other management of the container blocks until the hook completes or until the termination grace period is reached. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
+PreStop is called immediately before a container is terminated due to an API request or management event such as liveness/startup probe failure, preemption, resource contention, etc. The handler is not called if the container crashes or exits. The reason for termination is passed to the handler. The Pod's termination grace period countdown begins before the PreStop hooked is executed. Regardless of the outcome of the handler, the container will eventually terminate within the Pod's termination grace period. Other management of the container blocks until the hook completes or until the termination grace period is reached. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks
 
 #### Attributes
 
@@ -10237,7 +10240,7 @@ r""" PreStop is called immediately before a container is terminated due to an AP
 |**tcpSocket**|[MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0LifecyclePreStopTCPSocket](#monitoringcoreoscomv1thanosrulerspecinitcontainersitems0lifecycleprestoptcpsocket)|tcp socket||
 ### MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0LifecyclePreStopExec
 
-r""" One and only one of the following should be specified. Exec specifies the action to take.
+One and only one of the following should be specified. Exec specifies the action to take.
 
 #### Attributes
 
@@ -10246,7 +10249,7 @@ r""" One and only one of the following should be specified. Exec specifies the a
 |**command**|[str]|Command is the command line to execute inside the container, the working directory for the command  is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('\|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.||
 ### MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0LifecyclePreStopHTTPGet
 
-r""" HTTPGet specifies the http request to perform.
+HTTPGet specifies the http request to perform.
 
 #### Attributes
 
@@ -10259,7 +10262,7 @@ r""" HTTPGet specifies the http request to perform.
 |**scheme**|str|Scheme to use for connecting to the host. Defaults to HTTP.||
 ### MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0LifecyclePreStopHTTPGetHTTPHeadersItems0
 
-r""" HTTPHeader describes a custom header to be used in HTTP probes
+HTTPHeader describes a custom header to be used in HTTP probes
 
 #### Attributes
 
@@ -10269,7 +10272,7 @@ r""" HTTPHeader describes a custom header to be used in HTTP probes
 |**value** `required`|str|The header field value||
 ### MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0LifecyclePreStopTCPSocket
 
-r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
+TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
 
 #### Attributes
 
@@ -10279,7 +10282,7 @@ r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet suppo
 |**port** `required`|int | str|Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.||
 ### MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0LivenessProbe
 
-r""" Periodic probe of container liveness. Container will be restarted if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+Periodic probe of container liveness. Container will be restarted if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 
 #### Attributes
 
@@ -10295,7 +10298,7 @@ r""" Periodic probe of container liveness. Container will be restarted if the pr
 |**timeoutSeconds**|int|Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes||
 ### MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0LivenessProbeExec
 
-r""" One and only one of the following should be specified. Exec specifies the action to take.
+One and only one of the following should be specified. Exec specifies the action to take.
 
 #### Attributes
 
@@ -10304,7 +10307,7 @@ r""" One and only one of the following should be specified. Exec specifies the a
 |**command**|[str]|Command is the command line to execute inside the container, the working directory for the command  is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('\|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.||
 ### MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0LivenessProbeHTTPGet
 
-r""" HTTPGet specifies the http request to perform.
+HTTPGet specifies the http request to perform.
 
 #### Attributes
 
@@ -10317,7 +10320,7 @@ r""" HTTPGet specifies the http request to perform.
 |**scheme**|str|Scheme to use for connecting to the host. Defaults to HTTP.||
 ### MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0LivenessProbeHTTPGetHTTPHeadersItems0
 
-r""" HTTPHeader describes a custom header to be used in HTTP probes
+HTTPHeader describes a custom header to be used in HTTP probes
 
 #### Attributes
 
@@ -10327,7 +10330,7 @@ r""" HTTPHeader describes a custom header to be used in HTTP probes
 |**value** `required`|str|The header field value||
 ### MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0LivenessProbeTCPSocket
 
-r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
+TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
 
 #### Attributes
 
@@ -10337,7 +10340,7 @@ r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet suppo
 |**port** `required`|int | str|Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.||
 ### MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0PortsItems0
 
-r""" ContainerPort represents a network port in a single container.
+ContainerPort represents a network port in a single container.
 
 #### Attributes
 
@@ -10350,7 +10353,7 @@ r""" ContainerPort represents a network port in a single container.
 |**protocol**|str|||
 ### MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0ReadinessProbe
 
-r""" Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 
 #### Attributes
 
@@ -10366,7 +10369,7 @@ r""" Periodic probe of container service readiness. Container will be removed fr
 |**timeoutSeconds**|int|Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes||
 ### MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0ReadinessProbeExec
 
-r""" One and only one of the following should be specified. Exec specifies the action to take.
+One and only one of the following should be specified. Exec specifies the action to take.
 
 #### Attributes
 
@@ -10375,7 +10378,7 @@ r""" One and only one of the following should be specified. Exec specifies the a
 |**command**|[str]|Command is the command line to execute inside the container, the working directory for the command  is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('\|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.||
 ### MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0ReadinessProbeHTTPGet
 
-r""" HTTPGet specifies the http request to perform.
+HTTPGet specifies the http request to perform.
 
 #### Attributes
 
@@ -10388,7 +10391,7 @@ r""" HTTPGet specifies the http request to perform.
 |**scheme**|str|Scheme to use for connecting to the host. Defaults to HTTP.||
 ### MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0ReadinessProbeHTTPGetHTTPHeadersItems0
 
-r""" HTTPHeader describes a custom header to be used in HTTP probes
+HTTPHeader describes a custom header to be used in HTTP probes
 
 #### Attributes
 
@@ -10398,7 +10401,7 @@ r""" HTTPHeader describes a custom header to be used in HTTP probes
 |**value** `required`|str|The header field value||
 ### MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0ReadinessProbeTCPSocket
 
-r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
+TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
 
 #### Attributes
 
@@ -10408,7 +10411,7 @@ r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet suppo
 |**port** `required`|int | str|Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.||
 ### MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0Resources
 
-r""" Compute Resources required by this container. Cannot be updated. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
+Compute Resources required by this container. Cannot be updated. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
 
 #### Attributes
 
@@ -10418,7 +10421,7 @@ r""" Compute Resources required by this container. Cannot be updated. More info:
 |**requests**|{str:str}|Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/||
 ### MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0SecurityContext
 
-r""" Security options the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-context/ More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+Security options the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-context/ More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
 
 #### Attributes
 
@@ -10436,7 +10439,7 @@ r""" Security options the pod should run with. More info: https://kubernetes.io/
 |**windowsOptions**|[MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0SecurityContextWindowsOptions](#monitoringcoreoscomv1thanosrulerspecinitcontainersitems0securitycontextwindowsoptions)|windows options||
 ### MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0SecurityContextCapabilities
 
-r""" The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime.
+The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime.
 
 #### Attributes
 
@@ -10446,7 +10449,7 @@ r""" The capabilities to add/drop when running containers. Defaults to the defau
 |**drop**|[str]|Removed capabilities||
 ### MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0SecurityContextSeLinuxOptions
 
-r""" The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container.  May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container.  May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
 
 #### Attributes
 
@@ -10458,7 +10461,7 @@ r""" The SELinux context to be applied to the container. If unspecified, the con
 |**user**|str|User is a SELinux user label that applies to the container.||
 ### MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0SecurityContextWindowsOptions
 
-r""" The Windows specific settings applied to all containers. If unspecified, the options from the PodSecurityContext will be used. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+The Windows specific settings applied to all containers. If unspecified, the options from the PodSecurityContext will be used. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
 
 #### Attributes
 
@@ -10469,7 +10472,7 @@ r""" The Windows specific settings applied to all containers. If unspecified, th
 |**runAsUserName**|str|The UserName in Windows to run the entrypoint of the container process. Defaults to the user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.||
 ### MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0StartupProbe
 
-r""" StartupProbe indicates that the Pod has successfully initialized. If specified, no other probes are executed until this completes successfully. If this probe fails, the Pod will be restarted, just as if the livenessProbe failed. This can be used to provide different probe parameters at the beginning of a Pod's lifecycle, when it might take a long time to load data or warm a cache, than during steady-state operation. This cannot be updated. This is a beta feature enabled by the StartupProbe feature flag. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+StartupProbe indicates that the Pod has successfully initialized. If specified, no other probes are executed until this completes successfully. If this probe fails, the Pod will be restarted, just as if the livenessProbe failed. This can be used to provide different probe parameters at the beginning of a Pod's lifecycle, when it might take a long time to load data or warm a cache, than during steady-state operation. This cannot be updated. This is a beta feature enabled by the StartupProbe feature flag. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 
 #### Attributes
 
@@ -10485,7 +10488,7 @@ r""" StartupProbe indicates that the Pod has successfully initialized. If specif
 |**timeoutSeconds**|int|Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes||
 ### MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0StartupProbeExec
 
-r""" One and only one of the following should be specified. Exec specifies the action to take.
+One and only one of the following should be specified. Exec specifies the action to take.
 
 #### Attributes
 
@@ -10494,7 +10497,7 @@ r""" One and only one of the following should be specified. Exec specifies the a
 |**command**|[str]|Command is the command line to execute inside the container, the working directory for the command  is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('\|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.||
 ### MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0StartupProbeHTTPGet
 
-r""" HTTPGet specifies the http request to perform.
+HTTPGet specifies the http request to perform.
 
 #### Attributes
 
@@ -10507,7 +10510,7 @@ r""" HTTPGet specifies the http request to perform.
 |**scheme**|str|Scheme to use for connecting to the host. Defaults to HTTP.||
 ### MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0StartupProbeHTTPGetHTTPHeadersItems0
 
-r""" HTTPHeader describes a custom header to be used in HTTP probes
+HTTPHeader describes a custom header to be used in HTTP probes
 
 #### Attributes
 
@@ -10517,7 +10520,7 @@ r""" HTTPHeader describes a custom header to be used in HTTP probes
 |**value** `required`|str|The header field value||
 ### MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0StartupProbeTCPSocket
 
-r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
+TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported TODO: implement a realistic TCP lifecycle hook
 
 #### Attributes
 
@@ -10527,7 +10530,7 @@ r""" TCPSocket specifies an action involving a TCP port. TCP hooks not yet suppo
 |**port** `required`|int | str|Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.||
 ### MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0VolumeDevicesItems0
 
-r""" volumeDevice describes a mapping of a raw block device within a container.
+volumeDevice describes a mapping of a raw block device within a container.
 
 #### Attributes
 
@@ -10537,7 +10540,7 @@ r""" volumeDevice describes a mapping of a raw block device within a container.
 |**name** `required`|str|name must match the name of a persistentVolumeClaim in the pod||
 ### MonitoringCoreosComV1ThanosRulerSpecInitContainersItems0VolumeMountsItems0
 
-r""" VolumeMount describes a mounting of a Volume within a container.
+VolumeMount describes a mounting of a Volume within a container.
 
 #### Attributes
 
@@ -10551,7 +10554,7 @@ r""" VolumeMount describes a mounting of a Volume within a container.
 |**subPathExpr**|str|Expanded path within the volume from which the container's volume should be mounted. Behaves similarly to SubPath but environment variable references $(VAR_NAME) are expanded using the container's environment. Defaults to "" (volume's root). SubPathExpr and SubPath are mutually exclusive.||
 ### MonitoringCoreosComV1ThanosRulerSpecObjectStorageConfig
 
-r""" ObjectStorageConfig configures object storage in Thanos.
+ObjectStorageConfig configures object storage in Thanos.
 
 #### Attributes
 
@@ -10562,7 +10565,7 @@ r""" ObjectStorageConfig configures object storage in Thanos.
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1ThanosRulerSpecPodMetadata
 
-r""" PodMetadata contains Labels and Annotations gets propagated to the thanos ruler pods.
+PodMetadata contains Labels and Annotations gets propagated to the thanos ruler pods.
 
 #### Attributes
 
@@ -10573,7 +10576,7 @@ r""" PodMetadata contains Labels and Annotations gets propagated to the thanos r
 |**name**|str|Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names||
 ### MonitoringCoreosComV1ThanosRulerSpecPrometheusRulesExcludedFromEnforceItems0
 
-r""" PrometheusRuleExcludeConfig enables users to configure excluded PrometheusRule names and their namespaces to be ignored while enforcing namespace label for alerts and metrics.
+PrometheusRuleExcludeConfig enables users to configure excluded PrometheusRule names and their namespaces to be ignored while enforcing namespace label for alerts and metrics.
 
 #### Attributes
 
@@ -10583,7 +10586,7 @@ r""" PrometheusRuleExcludeConfig enables users to configure excluded PrometheusR
 |**ruleNamespace** `required`|str|RuleNamespace - namespace of excluded rule||
 ### MonitoringCoreosComV1ThanosRulerSpecQueryConfig
 
-r""" Define configuration for connecting to thanos query instances. If this is defined, the QueryEndpoints field will be ignored. Maps to the `query.config` CLI argument. Only available with thanos v0.11.0 and higher.
+Define configuration for connecting to thanos query instances. If this is defined, the QueryEndpoints field will be ignored. Maps to the `query.config` CLI argument. Only available with thanos v0.11.0 and higher.
 
 #### Attributes
 
@@ -10594,7 +10597,7 @@ r""" Define configuration for connecting to thanos query instances. If this is d
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1ThanosRulerSpecResources
 
-r""" Resources defines the resource requirements for single Pods. If not provided, no requests/limits will be set
+Resources defines the resource requirements for single Pods. If not provided, no requests/limits will be set
 
 #### Attributes
 
@@ -10604,7 +10607,7 @@ r""" Resources defines the resource requirements for single Pods. If not provide
 |**requests**|{str:str}|Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/||
 ### MonitoringCoreosComV1ThanosRulerSpecRuleNamespaceSelector
 
-r""" Namespaces to be selected for Rules discovery. If unspecified, only the same namespace as the ThanosRuler object is in is used.
+Namespaces to be selected for Rules discovery. If unspecified, only the same namespace as the ThanosRuler object is in is used.
 
 #### Attributes
 
@@ -10614,7 +10617,7 @@ r""" Namespaces to be selected for Rules discovery. If unspecified, only the sam
 |**matchLabels**|{str:str}|matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.||
 ### MonitoringCoreosComV1ThanosRulerSpecRuleNamespaceSelectorMatchExpressionsItems0
 
-r""" A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
 #### Attributes
 
@@ -10625,7 +10628,7 @@ r""" A label selector requirement is a selector that contains values, a key, and
 |**values**|[str]|values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.||
 ### MonitoringCoreosComV1ThanosRulerSpecRuleSelector
 
-r""" A label selector to select which PrometheusRules to mount for alerting and recording.
+A label selector to select which PrometheusRules to mount for alerting and recording.
 
 #### Attributes
 
@@ -10635,7 +10638,7 @@ r""" A label selector to select which PrometheusRules to mount for alerting and 
 |**matchLabels**|{str:str}|matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.||
 ### MonitoringCoreosComV1ThanosRulerSpecRuleSelectorMatchExpressionsItems0
 
-r""" A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
 #### Attributes
 
@@ -10646,7 +10649,7 @@ r""" A label selector requirement is a selector that contains values, a key, and
 |**values**|[str]|values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.||
 ### MonitoringCoreosComV1ThanosRulerSpecSecurityContext
 
-r""" SecurityContext holds pod-level security attributes and common container settings. This defaults to the default PodSecurityContext.
+SecurityContext holds pod-level security attributes and common container settings. This defaults to the default PodSecurityContext.
 
 #### Attributes
 
@@ -10663,7 +10666,7 @@ r""" SecurityContext holds pod-level security attributes and common container se
 |**windowsOptions**|[MonitoringCoreosComV1ThanosRulerSpecSecurityContextWindowsOptions](#monitoringcoreoscomv1thanosrulerspecsecuritycontextwindowsoptions)|windows options||
 ### MonitoringCoreosComV1ThanosRulerSpecSecurityContextSeLinuxOptions
 
-r""" The SELinux context to be applied to all containers. If unspecified, the container runtime will allocate a random SELinux context for each container.  May also be set in SecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container.
+The SELinux context to be applied to all containers. If unspecified, the container runtime will allocate a random SELinux context for each container.  May also be set in SecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container.
 
 #### Attributes
 
@@ -10675,7 +10678,7 @@ r""" The SELinux context to be applied to all containers. If unspecified, the co
 |**user**|str|User is a SELinux user label that applies to the container.||
 ### MonitoringCoreosComV1ThanosRulerSpecSecurityContextSysctlsItems0
 
-r""" Sysctl defines a kernel parameter to be set
+Sysctl defines a kernel parameter to be set
 
 #### Attributes
 
@@ -10685,7 +10688,7 @@ r""" Sysctl defines a kernel parameter to be set
 |**value** `required`|str|Value of a property to set||
 ### MonitoringCoreosComV1ThanosRulerSpecSecurityContextWindowsOptions
 
-r""" The Windows specific settings applied to all containers. If unspecified, the options within a container's SecurityContext will be used. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+The Windows specific settings applied to all containers. If unspecified, the options within a container's SecurityContext will be used. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
 
 #### Attributes
 
@@ -10696,7 +10699,7 @@ r""" The Windows specific settings applied to all containers. If unspecified, th
 |**runAsUserName**|str|The UserName in Windows to run the entrypoint of the container process. Defaults to the user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.||
 ### MonitoringCoreosComV1ThanosRulerSpecStorage
 
-r""" Storage spec to specify how storage shall be used.
+Storage spec to specify how storage shall be used.
 
 #### Attributes
 
@@ -10707,7 +10710,7 @@ r""" Storage spec to specify how storage shall be used.
 |**volumeClaimTemplate**|[MonitoringCoreosComV1ThanosRulerSpecStorageVolumeClaimTemplate](#monitoringcoreoscomv1thanosrulerspecstoragevolumeclaimtemplate)|volume claim template||
 ### MonitoringCoreosComV1ThanosRulerSpecStorageEmptyDir
 
-r""" EmptyDirVolumeSource to be used by the Prometheus StatefulSets. If specified, used in place of any volumeClaimTemplate. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir
+EmptyDirVolumeSource to be used by the Prometheus StatefulSets. If specified, used in place of any volumeClaimTemplate. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir
 
 #### Attributes
 
@@ -10717,7 +10720,7 @@ r""" EmptyDirVolumeSource to be used by the Prometheus StatefulSets. If specifie
 |**sizeLimit**|str|Total amount of local storage required for this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir||
 ### MonitoringCoreosComV1ThanosRulerSpecStorageVolumeClaimTemplate
 
-r""" A PVC spec to be used by the Prometheus StatefulSets.
+A PVC spec to be used by the Prometheus StatefulSets.
 
 #### Attributes
 
@@ -10730,7 +10733,7 @@ r""" A PVC spec to be used by the Prometheus StatefulSets.
 |**status**|[MonitoringCoreosComV1ThanosRulerSpecStorageVolumeClaimTemplateStatus](#monitoringcoreoscomv1thanosrulerspecstoragevolumeclaimtemplatestatus)|status||
 ### MonitoringCoreosComV1ThanosRulerSpecStorageVolumeClaimTemplateMetadata
 
-r""" EmbeddedMetadata contains metadata relevant to an EmbeddedResource.
+EmbeddedMetadata contains metadata relevant to an EmbeddedResource.
 
 #### Attributes
 
@@ -10741,7 +10744,7 @@ r""" EmbeddedMetadata contains metadata relevant to an EmbeddedResource.
 |**name**|str|Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names||
 ### MonitoringCoreosComV1ThanosRulerSpecStorageVolumeClaimTemplateSpec
 
-r""" Spec defines the desired characteristics of a volume requested by a pod author. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
+Spec defines the desired characteristics of a volume requested by a pod author. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
 
 #### Attributes
 
@@ -10756,7 +10759,7 @@ r""" Spec defines the desired characteristics of a volume requested by a pod aut
 |**volumeName**|str|VolumeName is the binding reference to the PersistentVolume backing this claim.||
 ### MonitoringCoreosComV1ThanosRulerSpecStorageVolumeClaimTemplateSpecDataSource
 
-r""" This field can be used to specify either: * An existing VolumeSnapshot object (snapshot.storage.k8s.io/VolumeSnapshot - Beta) * An existing PVC (PersistentVolumeClaim) * An existing custom resource/object that implements data population (Alpha) In order to use VolumeSnapshot object types, the appropriate feature gate must be enabled (VolumeSnapshotDataSource or AnyVolumeDataSource) If the provisioner or an external controller can support the specified data source, it will create a new volume based on the contents of the specified data source. If the specified data source is not supported, the volume will not be created and the failure will be reported as an event. In the future, we plan to support more data source types and the behavior of the provisioner may change.
+This field can be used to specify either: * An existing VolumeSnapshot object (snapshot.storage.k8s.io/VolumeSnapshot - Beta) * An existing PVC (PersistentVolumeClaim) * An existing custom resource/object that implements data population (Alpha) In order to use VolumeSnapshot object types, the appropriate feature gate must be enabled (VolumeSnapshotDataSource or AnyVolumeDataSource) If the provisioner or an external controller can support the specified data source, it will create a new volume based on the contents of the specified data source. If the specified data source is not supported, the volume will not be created and the failure will be reported as an event. In the future, we plan to support more data source types and the behavior of the provisioner may change.
 
 #### Attributes
 
@@ -10767,7 +10770,7 @@ r""" This field can be used to specify either: * An existing VolumeSnapshot obje
 |**name** `required`|str|Name is the name of resource being referenced||
 ### MonitoringCoreosComV1ThanosRulerSpecStorageVolumeClaimTemplateSpecResources
 
-r""" Resources represents the minimum resources the volume should have. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+Resources represents the minimum resources the volume should have. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 
 #### Attributes
 
@@ -10777,7 +10780,7 @@ r""" Resources represents the minimum resources the volume should have. More inf
 |**requests**|{str:str}|Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/||
 ### MonitoringCoreosComV1ThanosRulerSpecStorageVolumeClaimTemplateSpecSelector
 
-r""" A label query over volumes to consider for binding.
+A label query over volumes to consider for binding.
 
 #### Attributes
 
@@ -10787,7 +10790,7 @@ r""" A label query over volumes to consider for binding.
 |**matchLabels**|{str:str}|matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.||
 ### MonitoringCoreosComV1ThanosRulerSpecStorageVolumeClaimTemplateSpecSelectorMatchExpressionsItems0
 
-r""" A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
 #### Attributes
 
@@ -10798,7 +10801,7 @@ r""" A label selector requirement is a selector that contains values, a key, and
 |**values**|[str]|values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.||
 ### MonitoringCoreosComV1ThanosRulerSpecStorageVolumeClaimTemplateStatus
 
-r""" Status represents the current information/status of a persistent volume claim. Read-only. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
+Status represents the current information/status of a persistent volume claim. Read-only. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
 
 #### Attributes
 
@@ -10810,7 +10813,7 @@ r""" Status represents the current information/status of a persistent volume cla
 |**phase**|str|Phase represents the current phase of PersistentVolumeClaim.||
 ### MonitoringCoreosComV1ThanosRulerSpecStorageVolumeClaimTemplateStatusConditionsItems0
 
-r""" PersistentVolumeClaimCondition contains details about state of pvc
+PersistentVolumeClaimCondition contains details about state of pvc
 
 #### Attributes
 
@@ -10824,7 +10827,7 @@ r""" PersistentVolumeClaimCondition contains details about state of pvc
 |**type** `required`|str|||
 ### MonitoringCoreosComV1ThanosRulerSpecTolerationsItems0
 
-r""" The pod this Toleration is attached to tolerates any taint that matches the triple <key,value,effect> using the matching operator <operator>.
+The pod this Toleration is attached to tolerates any taint that matches the triple <key,value,effect> using the matching operator <operator>.
 
 #### Attributes
 
@@ -10837,7 +10840,7 @@ r""" The pod this Toleration is attached to tolerates any taint that matches the
 |**value**|str|Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string.||
 ### MonitoringCoreosComV1ThanosRulerSpecTopologySpreadConstraintsItems0
 
-r""" TopologySpreadConstraint specifies how to spread matching pods among the given topology.
+TopologySpreadConstraint specifies how to spread matching pods among the given topology.
 
 #### Attributes
 
@@ -10849,7 +10852,7 @@ r""" TopologySpreadConstraint specifies how to spread matching pods among the gi
 |**whenUnsatisfiable** `required`|str|WhenUnsatisfiable indicates how to deal with a pod if it doesn't satisfy the spread constraint. - DoNotSchedule (default) tells the scheduler not to schedule it - ScheduleAnyway tells the scheduler to still schedule it It's considered as "Unsatisfiable" if and only if placing incoming pod on any topology violates "MaxSkew". For example, in a 3-zone cluster, MaxSkew is set to 1, and pods with the same labelSelector spread as 3/1/1: \| zone1 \| zone2 \| zone3 \| \| P P P \|   P   \|   P   \| If WhenUnsatisfiable is set to DoNotSchedule, incoming pod can only be scheduled to zone2(zone3) to become 3/2/1(3/1/2) as ActualSkew(2-1) on zone2(zone3) satisfies MaxSkew(1). In other words, the cluster can still be imbalanced, but scheduler won't make it *more* imbalanced. It's a required field.||
 ### MonitoringCoreosComV1ThanosRulerSpecTopologySpreadConstraintsItems0LabelSelector
 
-r""" LabelSelector is used to find matching pods. Pods that match this label selector are counted to determine the number of pods in their corresponding topology domain.
+LabelSelector is used to find matching pods. Pods that match this label selector are counted to determine the number of pods in their corresponding topology domain.
 
 #### Attributes
 
@@ -10859,7 +10862,7 @@ r""" LabelSelector is used to find matching pods. Pods that match this label sel
 |**matchLabels**|{str:str}|matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.||
 ### MonitoringCoreosComV1ThanosRulerSpecTopologySpreadConstraintsItems0LabelSelectorMatchExpressionsItems0
 
-r""" A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
 #### Attributes
 
@@ -10870,7 +10873,7 @@ r""" A label selector requirement is a selector that contains values, a key, and
 |**values**|[str]|values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.||
 ### MonitoringCoreosComV1ThanosRulerSpecTracingConfig
 
-r""" TracingConfig configures tracing in Thanos. This is an experimental feature, it may change in any upcoming release in a breaking way.
+TracingConfig configures tracing in Thanos. This is an experimental feature, it may change in any upcoming release in a breaking way.
 
 #### Attributes
 
@@ -10881,7 +10884,7 @@ r""" TracingConfig configures tracing in Thanos. This is an experimental feature
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1ThanosRulerSpecVolumesItems0
 
-r""" Volume represents a named volume in a pod that may be accessed by any container in the pod.
+Volume represents a named volume in a pod that may be accessed by any container in the pod.
 
 #### Attributes
 
@@ -10918,7 +10921,7 @@ r""" Volume represents a named volume in a pod that may be accessed by any conta
 |**vsphereVolume**|[MonitoringCoreosComV1ThanosRulerSpecVolumesItems0VsphereVolume](#monitoringcoreoscomv1thanosrulerspecvolumesitems0vspherevolume)|vsphere volume||
 ### MonitoringCoreosComV1ThanosRulerSpecVolumesItems0AwsElasticBlockStore
 
-r""" AWSElasticBlockStore represents an AWS Disk resource that is attached to a kubelet's host machine and then exposed to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+AWSElasticBlockStore represents an AWS Disk resource that is attached to a kubelet's host machine and then exposed to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
 
 #### Attributes
 
@@ -10930,7 +10933,7 @@ r""" AWSElasticBlockStore represents an AWS Disk resource that is attached to a 
 |**volumeID** `required`|str|Unique ID of the persistent disk resource in AWS (Amazon EBS volume). More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore||
 ### MonitoringCoreosComV1ThanosRulerSpecVolumesItems0AzureDisk
 
-r""" AzureDisk represents an Azure Data Disk mount on the host and bind mount to the pod.
+AzureDisk represents an Azure Data Disk mount on the host and bind mount to the pod.
 
 #### Attributes
 
@@ -10944,7 +10947,7 @@ r""" AzureDisk represents an Azure Data Disk mount on the host and bind mount to
 |**readOnly**|bool|Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.||
 ### MonitoringCoreosComV1ThanosRulerSpecVolumesItems0AzureFile
 
-r""" AzureFile represents an Azure File Service mount on the host and bind mount to the pod.
+AzureFile represents an Azure File Service mount on the host and bind mount to the pod.
 
 #### Attributes
 
@@ -10955,7 +10958,7 @@ r""" AzureFile represents an Azure File Service mount on the host and bind mount
 |**shareName** `required`|str|Share Name||
 ### MonitoringCoreosComV1ThanosRulerSpecVolumesItems0Cephfs
 
-r""" CephFS represents a Ceph FS mount on the host that shares a pod's lifetime
+CephFS represents a Ceph FS mount on the host that shares a pod's lifetime
 
 #### Attributes
 
@@ -10969,7 +10972,7 @@ r""" CephFS represents a Ceph FS mount on the host that shares a pod's lifetime
 |**user**|str|Optional: User is the rados user name, default is admin More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it||
 ### MonitoringCoreosComV1ThanosRulerSpecVolumesItems0CephfsSecretRef
 
-r""" Optional: SecretRef is reference to the authentication secret for User, default is empty. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+Optional: SecretRef is reference to the authentication secret for User, default is empty. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
 
 #### Attributes
 
@@ -10978,7 +10981,7 @@ r""" Optional: SecretRef is reference to the authentication secret for User, def
 |**name**|str|Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?||
 ### MonitoringCoreosComV1ThanosRulerSpecVolumesItems0Cinder
 
-r""" Cinder represents a cinder volume attached and mounted on kubelets host machine. More info: https://examples.k8s.io/mysql-cinder-pd/README.md
+Cinder represents a cinder volume attached and mounted on kubelets host machine. More info: https://examples.k8s.io/mysql-cinder-pd/README.md
 
 #### Attributes
 
@@ -10990,7 +10993,7 @@ r""" Cinder represents a cinder volume attached and mounted on kubelets host mac
 |**volumeID** `required`|str|volume id used to identify the volume in cinder. More info: https://examples.k8s.io/mysql-cinder-pd/README.md||
 ### MonitoringCoreosComV1ThanosRulerSpecVolumesItems0CinderSecretRef
 
-r""" Optional: points to a secret object containing parameters used to connect to OpenStack.
+Optional: points to a secret object containing parameters used to connect to OpenStack.
 
 #### Attributes
 
@@ -10999,7 +11002,7 @@ r""" Optional: points to a secret object containing parameters used to connect t
 |**name**|str|Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?||
 ### MonitoringCoreosComV1ThanosRulerSpecVolumesItems0ConfigMap
 
-r""" ConfigMap represents a configMap that should populate this volume
+ConfigMap represents a configMap that should populate this volume
 
 #### Attributes
 
@@ -11011,7 +11014,7 @@ r""" ConfigMap represents a configMap that should populate this volume
 |**optional**|bool|Specify whether the ConfigMap or its keys must be defined||
 ### MonitoringCoreosComV1ThanosRulerSpecVolumesItems0ConfigMapItemsItems0
 
-r""" Maps a string key to a path within a volume.
+Maps a string key to a path within a volume.
 
 #### Attributes
 
@@ -11022,7 +11025,7 @@ r""" Maps a string key to a path within a volume.
 |**path** `required`|str|The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.||
 ### MonitoringCoreosComV1ThanosRulerSpecVolumesItems0Csi
 
-r""" CSI (Container Storage Interface) represents storage that is handled by an external CSI driver (Alpha feature).
+CSI (Container Storage Interface) represents storage that is handled by an external CSI driver (Alpha feature).
 
 #### Attributes
 
@@ -11035,7 +11038,7 @@ r""" CSI (Container Storage Interface) represents storage that is handled by an 
 |**volumeAttributes**|{str:str}|VolumeAttributes stores driver-specific properties that are passed to the CSI driver. Consult your driver's documentation for supported values.||
 ### MonitoringCoreosComV1ThanosRulerSpecVolumesItems0CsiNodePublishSecretRef
 
-r""" NodePublishSecretRef is a reference to the secret object containing sensitive information to pass to the CSI driver to complete the CSI NodePublishVolume and NodeUnpublishVolume calls. This field is optional, and  may be empty if no secret is required. If the secret object contains more than one secret, all secret references are passed.
+NodePublishSecretRef is a reference to the secret object containing sensitive information to pass to the CSI driver to complete the CSI NodePublishVolume and NodeUnpublishVolume calls. This field is optional, and  may be empty if no secret is required. If the secret object contains more than one secret, all secret references are passed.
 
 #### Attributes
 
@@ -11044,7 +11047,7 @@ r""" NodePublishSecretRef is a reference to the secret object containing sensiti
 |**name**|str|Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?||
 ### MonitoringCoreosComV1ThanosRulerSpecVolumesItems0DownwardAPI
 
-r""" DownwardAPI represents downward API about the pod that should populate this volume
+DownwardAPI represents downward API about the pod that should populate this volume
 
 #### Attributes
 
@@ -11054,7 +11057,7 @@ r""" DownwardAPI represents downward API about the pod that should populate this
 |**items**|[[MonitoringCoreosComV1ThanosRulerSpecVolumesItems0DownwardAPIItemsItems0](#monitoringcoreoscomv1thanosrulerspecvolumesitems0downwardapiitemsitems0)]|Items is a list of downward API volume file||
 ### MonitoringCoreosComV1ThanosRulerSpecVolumesItems0DownwardAPIItemsItems0
 
-r""" DownwardAPIVolumeFile represents information to create the file containing the pod field
+DownwardAPIVolumeFile represents information to create the file containing the pod field
 
 #### Attributes
 
@@ -11066,7 +11069,7 @@ r""" DownwardAPIVolumeFile represents information to create the file containing 
 |**resourceFieldRef**|[MonitoringCoreosComV1ThanosRulerSpecVolumesItems0DownwardAPIItemsItems0ResourceFieldRef](#monitoringcoreoscomv1thanosrulerspecvolumesitems0downwardapiitemsitems0resourcefieldref)|resource field ref||
 ### MonitoringCoreosComV1ThanosRulerSpecVolumesItems0DownwardAPIItemsItems0FieldRef
 
-r""" Required: Selects a field of the pod: only annotations, labels, name and namespace are supported.
+Required: Selects a field of the pod: only annotations, labels, name and namespace are supported.
 
 #### Attributes
 
@@ -11076,7 +11079,7 @@ r""" Required: Selects a field of the pod: only annotations, labels, name and na
 |**fieldPath** `required`|str|Path of the field to select in the specified API version.||
 ### MonitoringCoreosComV1ThanosRulerSpecVolumesItems0DownwardAPIItemsItems0ResourceFieldRef
 
-r""" Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported.
+Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported.
 
 #### Attributes
 
@@ -11087,7 +11090,7 @@ r""" Selects a resource of the container: only resources limits and requests (li
 |**resource** `required`|str|Required: resource to select||
 ### MonitoringCoreosComV1ThanosRulerSpecVolumesItems0EmptyDir
 
-r""" EmptyDir represents a temporary directory that shares a pod's lifetime. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir
+EmptyDir represents a temporary directory that shares a pod's lifetime. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir
 
 #### Attributes
 
@@ -11097,7 +11100,7 @@ r""" EmptyDir represents a temporary directory that shares a pod's lifetime. Mor
 |**sizeLimit**|str|Total amount of local storage required for this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir||
 ### MonitoringCoreosComV1ThanosRulerSpecVolumesItems0Fc
 
-r""" FC represents a Fibre Channel resource that is attached to a kubelet's host machine and then exposed to the pod.
+FC represents a Fibre Channel resource that is attached to a kubelet's host machine and then exposed to the pod.
 
 #### Attributes
 
@@ -11110,7 +11113,7 @@ r""" FC represents a Fibre Channel resource that is attached to a kubelet's host
 |**wwids**|[str]|Optional: FC volume world wide identifiers (wwids) Either wwids or combination of targetWWNs and lun must be set, but not both simultaneously.||
 ### MonitoringCoreosComV1ThanosRulerSpecVolumesItems0FlexVolume
 
-r""" FlexVolume represents a generic volume resource that is provisioned/attached using an exec based plugin.
+FlexVolume represents a generic volume resource that is provisioned/attached using an exec based plugin.
 
 #### Attributes
 
@@ -11123,7 +11126,7 @@ r""" FlexVolume represents a generic volume resource that is provisioned/attache
 |**secretRef**|[MonitoringCoreosComV1ThanosRulerSpecVolumesItems0FlexVolumeSecretRef](#monitoringcoreoscomv1thanosrulerspecvolumesitems0flexvolumesecretref)|secret ref||
 ### MonitoringCoreosComV1ThanosRulerSpecVolumesItems0FlexVolumeSecretRef
 
-r""" Optional: SecretRef is reference to the secret object containing sensitive information to pass to the plugin scripts. This may be empty if no secret object is specified. If the secret object contains more than one secret, all secrets are passed to the plugin scripts.
+Optional: SecretRef is reference to the secret object containing sensitive information to pass to the plugin scripts. This may be empty if no secret object is specified. If the secret object contains more than one secret, all secrets are passed to the plugin scripts.
 
 #### Attributes
 
@@ -11132,7 +11135,7 @@ r""" Optional: SecretRef is reference to the secret object containing sensitive 
 |**name**|str|Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?||
 ### MonitoringCoreosComV1ThanosRulerSpecVolumesItems0Flocker
 
-r""" Flocker represents a Flocker volume attached to a kubelet's host machine. This depends on the Flocker control service being running
+Flocker represents a Flocker volume attached to a kubelet's host machine. This depends on the Flocker control service being running
 
 #### Attributes
 
@@ -11142,7 +11145,7 @@ r""" Flocker represents a Flocker volume attached to a kubelet's host machine. T
 |**datasetUUID**|str|UUID of the dataset. This is unique identifier of a Flocker dataset||
 ### MonitoringCoreosComV1ThanosRulerSpecVolumesItems0GcePersistentDisk
 
-r""" GCEPersistentDisk represents a GCE Disk resource that is attached to a kubelet's host machine and then exposed to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+GCEPersistentDisk represents a GCE Disk resource that is attached to a kubelet's host machine and then exposed to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
 
 #### Attributes
 
@@ -11154,7 +11157,7 @@ r""" GCEPersistentDisk represents a GCE Disk resource that is attached to a kube
 |**readOnly**|bool|ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk||
 ### MonitoringCoreosComV1ThanosRulerSpecVolumesItems0GitRepo
 
-r""" GitRepo represents a git repository at a particular revision. DEPRECATED: GitRepo is deprecated. To provision a container with a git repo, mount an EmptyDir into an InitContainer that clones the repo using git, then mount the EmptyDir into the Pod's container.
+GitRepo represents a git repository at a particular revision. DEPRECATED: GitRepo is deprecated. To provision a container with a git repo, mount an EmptyDir into an InitContainer that clones the repo using git, then mount the EmptyDir into the Pod's container.
 
 #### Attributes
 
@@ -11165,7 +11168,7 @@ r""" GitRepo represents a git repository at a particular revision. DEPRECATED: G
 |**revision**|str|Commit hash for the specified revision.||
 ### MonitoringCoreosComV1ThanosRulerSpecVolumesItems0Glusterfs
 
-r""" Glusterfs represents a Glusterfs mount on the host that shares a pod's lifetime. More info: https://examples.k8s.io/volumes/glusterfs/README.md
+Glusterfs represents a Glusterfs mount on the host that shares a pod's lifetime. More info: https://examples.k8s.io/volumes/glusterfs/README.md
 
 #### Attributes
 
@@ -11176,7 +11179,7 @@ r""" Glusterfs represents a Glusterfs mount on the host that shares a pod's life
 |**readOnly**|bool|ReadOnly here will force the Glusterfs volume to be mounted with read-only permissions. Defaults to false. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod||
 ### MonitoringCoreosComV1ThanosRulerSpecVolumesItems0HostPath
 
-r""" HostPath represents a pre-existing file or directory on the host machine that is directly exposed to the container. This is generally used for system agents or other privileged things that are allowed to see the host machine. Most containers will NOT need this. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath --- TODO(jonesdl) We need to restrict who can use host directory mounts and who can/can not mount host directories as read/write.
+HostPath represents a pre-existing file or directory on the host machine that is directly exposed to the container. This is generally used for system agents or other privileged things that are allowed to see the host machine. Most containers will NOT need this. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath --- TODO(jonesdl) We need to restrict who can use host directory mounts and who can/can not mount host directories as read/write.
 
 #### Attributes
 
@@ -11186,7 +11189,7 @@ r""" HostPath represents a pre-existing file or directory on the host machine th
 |**type**|str|||
 ### MonitoringCoreosComV1ThanosRulerSpecVolumesItems0Iscsi
 
-r""" ISCSI represents an ISCSI Disk resource that is attached to a kubelet's host machine and then exposed to the pod. More info: https://examples.k8s.io/volumes/iscsi/README.md
+ISCSI represents an ISCSI Disk resource that is attached to a kubelet's host machine and then exposed to the pod. More info: https://examples.k8s.io/volumes/iscsi/README.md
 
 #### Attributes
 
@@ -11205,7 +11208,7 @@ r""" ISCSI represents an ISCSI Disk resource that is attached to a kubelet's hos
 |**targetPortal** `required`|str|iSCSI Target Portal. The Portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260).||
 ### MonitoringCoreosComV1ThanosRulerSpecVolumesItems0IscsiSecretRef
 
-r""" CHAP Secret for iSCSI target and initiator authentication
+CHAP Secret for iSCSI target and initiator authentication
 
 #### Attributes
 
@@ -11214,7 +11217,7 @@ r""" CHAP Secret for iSCSI target and initiator authentication
 |**name**|str|Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?||
 ### MonitoringCoreosComV1ThanosRulerSpecVolumesItems0Nfs
 
-r""" NFS represents an NFS mount on the host that shares a pod's lifetime More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+NFS represents an NFS mount on the host that shares a pod's lifetime More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
 
 #### Attributes
 
@@ -11225,7 +11228,7 @@ r""" NFS represents an NFS mount on the host that shares a pod's lifetime More i
 |**server** `required`|str|Server is the hostname or IP address of the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs||
 ### MonitoringCoreosComV1ThanosRulerSpecVolumesItems0PersistentVolumeClaim
 
-r""" PersistentVolumeClaimVolumeSource represents a reference to a PersistentVolumeClaim in the same namespace. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
+PersistentVolumeClaimVolumeSource represents a reference to a PersistentVolumeClaim in the same namespace. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
 
 #### Attributes
 
@@ -11235,7 +11238,7 @@ r""" PersistentVolumeClaimVolumeSource represents a reference to a PersistentVol
 |**readOnly**|bool|Will force the ReadOnly setting in VolumeMounts. Default false.||
 ### MonitoringCoreosComV1ThanosRulerSpecVolumesItems0PhotonPersistentDisk
 
-r""" PhotonPersistentDisk represents a PhotonController persistent disk attached and mounted on kubelets host machine
+PhotonPersistentDisk represents a PhotonController persistent disk attached and mounted on kubelets host machine
 
 #### Attributes
 
@@ -11245,7 +11248,7 @@ r""" PhotonPersistentDisk represents a PhotonController persistent disk attached
 |**pdID** `required`|str|ID that identifies Photon Controller persistent disk||
 ### MonitoringCoreosComV1ThanosRulerSpecVolumesItems0PortworxVolume
 
-r""" PortworxVolume represents a portworx volume attached and mounted on kubelets host machine
+PortworxVolume represents a portworx volume attached and mounted on kubelets host machine
 
 #### Attributes
 
@@ -11256,7 +11259,7 @@ r""" PortworxVolume represents a portworx volume attached and mounted on kubelet
 |**volumeID** `required`|str|VolumeID uniquely identifies a Portworx volume||
 ### MonitoringCoreosComV1ThanosRulerSpecVolumesItems0Projected
 
-r""" Items for all in one resources secrets, configmaps, and downward API
+Items for all in one resources secrets, configmaps, and downward API
 
 #### Attributes
 
@@ -11266,7 +11269,7 @@ r""" Items for all in one resources secrets, configmaps, and downward API
 |**sources** `required`|[[MonitoringCoreosComV1ThanosRulerSpecVolumesItems0ProjectedSourcesItems0](#monitoringcoreoscomv1thanosrulerspecvolumesitems0projectedsourcesitems0)]|list of volume projections||
 ### MonitoringCoreosComV1ThanosRulerSpecVolumesItems0ProjectedSourcesItems0
 
-r""" Projection that may be projected along with other supported volume types
+Projection that may be projected along with other supported volume types
 
 #### Attributes
 
@@ -11278,7 +11281,7 @@ r""" Projection that may be projected along with other supported volume types
 |**serviceAccountToken**|[MonitoringCoreosComV1ThanosRulerSpecVolumesItems0ProjectedSourcesItems0ServiceAccountToken](#monitoringcoreoscomv1thanosrulerspecvolumesitems0projectedsourcesitems0serviceaccounttoken)|service account token||
 ### MonitoringCoreosComV1ThanosRulerSpecVolumesItems0ProjectedSourcesItems0ConfigMap
 
-r""" information about the configMap data to project
+information about the configMap data to project
 
 #### Attributes
 
@@ -11289,7 +11292,7 @@ r""" information about the configMap data to project
 |**optional**|bool|Specify whether the ConfigMap or its keys must be defined||
 ### MonitoringCoreosComV1ThanosRulerSpecVolumesItems0ProjectedSourcesItems0ConfigMapItemsItems0
 
-r""" Maps a string key to a path within a volume.
+Maps a string key to a path within a volume.
 
 #### Attributes
 
@@ -11300,7 +11303,7 @@ r""" Maps a string key to a path within a volume.
 |**path** `required`|str|The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.||
 ### MonitoringCoreosComV1ThanosRulerSpecVolumesItems0ProjectedSourcesItems0DownwardAPI
 
-r""" information about the downwardAPI data to project
+information about the downwardAPI data to project
 
 #### Attributes
 
@@ -11309,7 +11312,7 @@ r""" information about the downwardAPI data to project
 |**items**|[[MonitoringCoreosComV1ThanosRulerSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0](#monitoringcoreoscomv1thanosrulerspecvolumesitems0projectedsourcesitems0downwardapiitemsitems0)]|Items is a list of DownwardAPIVolume file||
 ### MonitoringCoreosComV1ThanosRulerSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0
 
-r""" DownwardAPIVolumeFile represents information to create the file containing the pod field
+DownwardAPIVolumeFile represents information to create the file containing the pod field
 
 #### Attributes
 
@@ -11321,7 +11324,7 @@ r""" DownwardAPIVolumeFile represents information to create the file containing 
 |**resourceFieldRef**|[MonitoringCoreosComV1ThanosRulerSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0ResourceFieldRef](#monitoringcoreoscomv1thanosrulerspecvolumesitems0projectedsourcesitems0downwardapiitemsitems0resourcefieldref)|resource field ref||
 ### MonitoringCoreosComV1ThanosRulerSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0FieldRef
 
-r""" Required: Selects a field of the pod: only annotations, labels, name and namespace are supported.
+Required: Selects a field of the pod: only annotations, labels, name and namespace are supported.
 
 #### Attributes
 
@@ -11331,7 +11334,7 @@ r""" Required: Selects a field of the pod: only annotations, labels, name and na
 |**fieldPath** `required`|str|Path of the field to select in the specified API version.||
 ### MonitoringCoreosComV1ThanosRulerSpecVolumesItems0ProjectedSourcesItems0DownwardAPIItemsItems0ResourceFieldRef
 
-r""" Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported.
+Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, requests.cpu and requests.memory) are currently supported.
 
 #### Attributes
 
@@ -11342,7 +11345,7 @@ r""" Selects a resource of the container: only resources limits and requests (li
 |**resource** `required`|str|Required: resource to select||
 ### MonitoringCoreosComV1ThanosRulerSpecVolumesItems0ProjectedSourcesItems0Secret
 
-r""" information about the secret data to project
+information about the secret data to project
 
 #### Attributes
 
@@ -11353,7 +11356,7 @@ r""" information about the secret data to project
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1ThanosRulerSpecVolumesItems0ProjectedSourcesItems0SecretItemsItems0
 
-r""" Maps a string key to a path within a volume.
+Maps a string key to a path within a volume.
 
 #### Attributes
 
@@ -11364,7 +11367,7 @@ r""" Maps a string key to a path within a volume.
 |**path** `required`|str|The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.||
 ### MonitoringCoreosComV1ThanosRulerSpecVolumesItems0ProjectedSourcesItems0ServiceAccountToken
 
-r""" information about the serviceAccountToken data to project
+information about the serviceAccountToken data to project
 
 #### Attributes
 
@@ -11375,7 +11378,7 @@ r""" information about the serviceAccountToken data to project
 |**path** `required`|str|Path is the path relative to the mount point of the file to project the token into.||
 ### MonitoringCoreosComV1ThanosRulerSpecVolumesItems0Quobyte
 
-r""" Quobyte represents a Quobyte mount on the host that shares a pod's lifetime
+Quobyte represents a Quobyte mount on the host that shares a pod's lifetime
 
 #### Attributes
 
@@ -11389,7 +11392,7 @@ r""" Quobyte represents a Quobyte mount on the host that shares a pod's lifetime
 |**volume** `required`|str|Volume is a string that references an already created Quobyte volume by name.||
 ### MonitoringCoreosComV1ThanosRulerSpecVolumesItems0Rbd
 
-r""" RBD represents a Rados Block Device mount on the host that shares a pod's lifetime. More info: https://examples.k8s.io/volumes/rbd/README.md
+RBD represents a Rados Block Device mount on the host that shares a pod's lifetime. More info: https://examples.k8s.io/volumes/rbd/README.md
 
 #### Attributes
 
@@ -11405,7 +11408,7 @@ r""" RBD represents a Rados Block Device mount on the host that shares a pod's l
 |**user**|str|The rados user name. Default is admin. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it||
 ### MonitoringCoreosComV1ThanosRulerSpecVolumesItems0RbdSecretRef
 
-r""" SecretRef is name of the authentication secret for RBDUser. If provided overrides keyring. Default is nil. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+SecretRef is name of the authentication secret for RBDUser. If provided overrides keyring. Default is nil. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
 
 #### Attributes
 
@@ -11414,7 +11417,7 @@ r""" SecretRef is name of the authentication secret for RBDUser. If provided ove
 |**name**|str|Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?||
 ### MonitoringCoreosComV1ThanosRulerSpecVolumesItems0ScaleIO
 
-r""" ScaleIO represents a ScaleIO persistent volume attached and mounted on Kubernetes nodes.
+ScaleIO represents a ScaleIO persistent volume attached and mounted on Kubernetes nodes.
 
 #### Attributes
 
@@ -11432,7 +11435,7 @@ r""" ScaleIO represents a ScaleIO persistent volume attached and mounted on Kube
 |**volumeName**|str|The name of a volume already created in the ScaleIO system that is associated with this volume source.||
 ### MonitoringCoreosComV1ThanosRulerSpecVolumesItems0ScaleIOSecretRef
 
-r""" SecretRef references to the secret for ScaleIO user and other sensitive information. If this is not provided, Login operation will fail.
+SecretRef references to the secret for ScaleIO user and other sensitive information. If this is not provided, Login operation will fail.
 
 #### Attributes
 
@@ -11441,7 +11444,7 @@ r""" SecretRef references to the secret for ScaleIO user and other sensitive inf
 |**name**|str|Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?||
 ### MonitoringCoreosComV1ThanosRulerSpecVolumesItems0Secret
 
-r""" Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
 
 #### Attributes
 
@@ -11453,7 +11456,7 @@ r""" Secret represents a secret that should populate this volume. More info: htt
 |**secretName**|str|Name of the secret in the pod's namespace to use. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret||
 ### MonitoringCoreosComV1ThanosRulerSpecVolumesItems0SecretItemsItems0
 
-r""" Maps a string key to a path within a volume.
+Maps a string key to a path within a volume.
 
 #### Attributes
 
@@ -11464,7 +11467,7 @@ r""" Maps a string key to a path within a volume.
 |**path** `required`|str|The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.||
 ### MonitoringCoreosComV1ThanosRulerSpecVolumesItems0Storageos
 
-r""" StorageOS represents a StorageOS volume attached and mounted on Kubernetes nodes.
+StorageOS represents a StorageOS volume attached and mounted on Kubernetes nodes.
 
 #### Attributes
 
@@ -11477,7 +11480,7 @@ r""" StorageOS represents a StorageOS volume attached and mounted on Kubernetes 
 |**volumeNamespace**|str|VolumeNamespace specifies the scope of the volume within StorageOS.  If no namespace is specified then the Pod's namespace will be used.  This allows the Kubernetes name scoping to be mirrored within StorageOS for tighter integration. Set VolumeName to any name to override the default behaviour. Set to "default" if you are not using namespaces within StorageOS. Namespaces that do not pre-exist within StorageOS will be created.||
 ### MonitoringCoreosComV1ThanosRulerSpecVolumesItems0StorageosSecretRef
 
-r""" SecretRef specifies the secret to use for obtaining the StorageOS API credentials.  If not specified, default values will be attempted.
+SecretRef specifies the secret to use for obtaining the StorageOS API credentials.  If not specified, default values will be attempted.
 
 #### Attributes
 
@@ -11486,7 +11489,7 @@ r""" SecretRef specifies the secret to use for obtaining the StorageOS API crede
 |**name**|str|Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?||
 ### MonitoringCoreosComV1ThanosRulerSpecVolumesItems0VsphereVolume
 
-r""" VsphereVolume represents a vSphere volume attached and mounted on kubelets host machine
+VsphereVolume represents a vSphere volume attached and mounted on kubelets host machine
 
 #### Attributes
 
@@ -11498,7 +11501,7 @@ r""" VsphereVolume represents a vSphere volume attached and mounted on kubelets 
 |**volumePath** `required`|str|Path that identifies vSphere volume vmdk||
 ### MonitoringCoreosComV1ThanosRulerStatus
 
-r""" Most recent observed status of the ThanosRuler cluster. Read-only. Not included when requesting from the apiserver, only from the ThanosRuler Operator API itself. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+Most recent observed status of the ThanosRuler cluster. Read-only. Not included when requesting from the apiserver, only from the ThanosRuler Operator API itself. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
 
 #### Attributes
 
@@ -11511,7 +11514,7 @@ r""" Most recent observed status of the ThanosRuler cluster. Read-only. Not incl
 |**updatedReplicas** `required`|int|Total number of non-terminated pods targeted by this ThanosRuler deployment that have the desired version spec.||
 ### NetworkPolicy
 
-r""" crd projectcalico org v1 network policy
+crd projectcalico org v1 network policy
 
 #### Attributes
 
@@ -11523,7 +11526,7 @@ r""" crd projectcalico org v1 network policy
 |**spec**|[CrdProjectcalicoOrgV1NetworkPolicySpec](#crdprojectcalicoorgv1networkpolicyspec)|spec||
 ### NetworkSet
 
-r""" NetworkSet is the Namespaced-equivalent of the GlobalNetworkSet.
+NetworkSet is the Namespaced-equivalent of the GlobalNetworkSet.
 
 #### Attributes
 
@@ -11535,7 +11538,7 @@ r""" NetworkSet is the Namespaced-equivalent of the GlobalNetworkSet.
 |**spec**|[CrdProjectcalicoOrgV1NetworkSetSpec](#crdprojectcalicoorgv1networksetspec)|spec||
 ### PodMonitor
 
-r""" PodMonitor defines monitoring for a set of pods.
+PodMonitor defines monitoring for a set of pods.
 
 #### Attributes
 
@@ -11547,7 +11550,7 @@ r""" PodMonitor defines monitoring for a set of pods.
 |**spec** `required`|[MonitoringCoreosComV1PodMonitorSpec](#monitoringcoreoscomv1podmonitorspec)|spec||
 ### Probe
 
-r""" Probe defines monitoring for a set of static targets or ingresses.
+Probe defines monitoring for a set of static targets or ingresses.
 
 #### Attributes
 
@@ -11559,7 +11562,7 @@ r""" Probe defines monitoring for a set of static targets or ingresses.
 |**spec** `required`|[MonitoringCoreosComV1ProbeSpec](#monitoringcoreoscomv1probespec)|spec||
 ### Prometheus
 
-r""" Prometheus defines a Prometheus deployment.
+Prometheus defines a Prometheus deployment.
 
 #### Attributes
 
@@ -11572,7 +11575,7 @@ r""" Prometheus defines a Prometheus deployment.
 |**status**|[MonitoringCoreosComV1PrometheusStatus](#monitoringcoreoscomv1prometheusstatus)|status||
 ### PrometheusRule
 
-r""" PrometheusRule defines alerting rules for a Prometheus instance
+PrometheusRule defines alerting rules for a Prometheus instance
 
 #### Attributes
 
@@ -11584,7 +11587,7 @@ r""" PrometheusRule defines alerting rules for a Prometheus instance
 |**spec** `required`|[MonitoringCoreosComV1PrometheusRuleSpec](#monitoringcoreoscomv1prometheusrulespec)|spec||
 ### ServiceMonitor
 
-r""" ServiceMonitor defines monitoring for a set of services.
+ServiceMonitor defines monitoring for a set of services.
 
 #### Attributes
 
@@ -11596,7 +11599,7 @@ r""" ServiceMonitor defines monitoring for a set of services.
 |**spec** `required`|[MonitoringCoreosComV1ServiceMonitorSpec](#monitoringcoreoscomv1servicemonitorspec)|spec||
 ### ThanosRuler
 
-r""" ThanosRuler defines a ThanosRuler deployment.
+ThanosRuler defines a ThanosRuler deployment.
 
 #### Attributes
 
@@ -11609,7 +11612,7 @@ r""" ThanosRuler defines a ThanosRuler deployment.
 |**status**|[MonitoringCoreosComV1ThanosRulerStatus](#monitoringcoreoscomv1thanosrulerstatus)|status||
 ### AlertmanagerConfig
 
-r""" AlertmanagerConfig defines a namespaced AlertmanagerConfig to be aggregated across multiple namespaces configuring one Alertmanager.
+AlertmanagerConfig defines a namespaced AlertmanagerConfig to be aggregated across multiple namespaces configuring one Alertmanager.
 
 #### Attributes
 
@@ -11621,7 +11624,7 @@ r""" AlertmanagerConfig defines a namespaced AlertmanagerConfig to be aggregated
 |**spec** `required`|[MonitoringCoreosComV1alpha1AlertmanagerConfigSpec](#monitoringcoreoscomv1alpha1alertmanagerconfigspec)|spec||
 ### AzureASOManagedCluster
 
-r""" AzureASOManagedCluster is the Schema for the azureasomanagedclusters API.
+AzureASOManagedCluster is the Schema for the azureasomanagedclusters API.
 
 #### Attributes
 
@@ -11634,7 +11637,7 @@ r""" AzureASOManagedCluster is the Schema for the azureasomanagedclusters API.
 |**status**|[InfrastructureClusterxK8sIoV1alpha1AzureASOManagedClusterStatus](#infrastructureclusterxk8siov1alpha1azureasomanagedclusterstatus)|status||
 ### AzureASOManagedClusterTemplate
 
-r""" AzureASOManagedClusterTemplate is the Schema for the azureasomanagedclustertemplates API.
+AzureASOManagedClusterTemplate is the Schema for the azureasomanagedclustertemplates API.
 
 #### Attributes
 
@@ -11646,7 +11649,7 @@ r""" AzureASOManagedClusterTemplate is the Schema for the azureasomanagedcluster
 |**spec**|[InfrastructureClusterxK8sIoV1alpha1AzureASOManagedClusterTemplateSpec](#infrastructureclusterxk8siov1alpha1azureasomanagedclustertemplatespec)|spec||
 ### AzureASOManagedControlPlane
 
-r""" AzureASOManagedControlPlane is the Schema for the azureasomanagedcontrolplanes API.
+AzureASOManagedControlPlane is the Schema for the azureasomanagedcontrolplanes API.
 
 #### Attributes
 
@@ -11659,7 +11662,7 @@ r""" AzureASOManagedControlPlane is the Schema for the azureasomanagedcontrolpla
 |**status**|[InfrastructureClusterxK8sIoV1alpha1AzureASOManagedControlPlaneStatus](#infrastructureclusterxk8siov1alpha1azureasomanagedcontrolplanestatus)|status||
 ### AzureASOManagedControlPlaneTemplate
 
-r""" AzureASOManagedControlPlaneTemplate is the Schema for the azureasomanagedcontrolplanetemplates API.
+AzureASOManagedControlPlaneTemplate is the Schema for the azureasomanagedcontrolplanetemplates API.
 
 #### Attributes
 
@@ -11671,7 +11674,7 @@ r""" AzureASOManagedControlPlaneTemplate is the Schema for the azureasomanagedco
 |**spec**|[InfrastructureClusterxK8sIoV1alpha1AzureASOManagedControlPlaneTemplateSpec](#infrastructureclusterxk8siov1alpha1azureasomanagedcontrolplanetemplatespec)|spec||
 ### AzureASOManagedMachinePool
 
-r""" AzureASOManagedMachinePool is the Schema for the azureasomanagedmachinepools API.
+AzureASOManagedMachinePool is the Schema for the azureasomanagedmachinepools API.
 
 #### Attributes
 
@@ -11684,7 +11687,7 @@ r""" AzureASOManagedMachinePool is the Schema for the azureasomanagedmachinepool
 |**status**|[InfrastructureClusterxK8sIoV1alpha1AzureASOManagedMachinePoolStatus](#infrastructureclusterxk8siov1alpha1azureasomanagedmachinepoolstatus)|status||
 ### AzureASOManagedMachinePoolTemplate
 
-r""" AzureASOManagedMachinePoolTemplate is the Schema for the azureasomanagedmachinepooltemplates API.
+AzureASOManagedMachinePoolTemplate is the Schema for the azureasomanagedmachinepooltemplates API.
 
 #### Attributes
 
@@ -11696,7 +11699,7 @@ r""" AzureASOManagedMachinePoolTemplate is the Schema for the azureasomanagedmac
 |**spec**|[InfrastructureClusterxK8sIoV1alpha1AzureASOManagedMachinePoolTemplateSpec](#infrastructureclusterxk8siov1alpha1azureasomanagedmachinepooltemplatespec)|spec||
 ### InfrastructureClusterxK8sIoV1alpha1AzureASOManagedClusterSpec
 
-r""" AzureASOManagedClusterSpec defines the desired state of AzureASOManagedCluster.
+AzureASOManagedClusterSpec defines the desired state of AzureASOManagedCluster.
 
 #### Attributes
 
@@ -11706,17 +11709,17 @@ r""" AzureASOManagedClusterSpec defines the desired state of AzureASOManagedClus
 |**resources**|[]|Resources are embedded ASO resources to be managed by this resource.||
 ### InfrastructureClusterxK8sIoV1alpha1AzureASOManagedClusterSpecControlPlaneEndpoint
 
-r""" ControlPlaneEndpoint is the location of the API server within the control plane. CAPZ manages this field and it should not be set by the user. It fulfills Cluster API's cluster infrastructure provider contract. Because this field is programmatically set by CAPZ after resource creation, we define it as +optional in the API schema to permit resource admission.
+ControlPlaneEndpoint is the location of the API server within the control plane. CAPZ manages this field and it should not be set by the user. It fulfills Cluster API's cluster infrastructure provider contract. Because this field is programmatically set by CAPZ after resource creation, we define it as +optional in the API schema to permit resource admission.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**host** `required`|str|The hostname on which the API server is serving.||
-|**port** `required`|int|The port on which the API server is serving.||
+|**host** `required`|str|host is the hostname on which the API server is serving.||
+|**port** `required`|int|port is the port on which the API server is serving.||
 ### InfrastructureClusterxK8sIoV1alpha1AzureASOManagedClusterStatus
 
-r""" AzureASOManagedClusterStatus defines the observed state of AzureASOManagedCluster.
+AzureASOManagedClusterStatus defines the observed state of AzureASOManagedCluster.
 
 #### Attributes
 
@@ -11726,7 +11729,7 @@ r""" AzureASOManagedClusterStatus defines the observed state of AzureASOManagedC
 |**resources**|[[InfrastructureClusterxK8sIoV1alpha1AzureASOManagedClusterStatusResourcesItems0](#infrastructureclusterxk8siov1alpha1azureasomanagedclusterstatusresourcesitems0)]|resources||
 ### InfrastructureClusterxK8sIoV1alpha1AzureASOManagedClusterStatusResourcesItems0
 
-r""" ResourceStatus represents the status of a resource.
+ResourceStatus represents the status of a resource.
 
 #### Attributes
 
@@ -11736,7 +11739,7 @@ r""" ResourceStatus represents the status of a resource.
 |**resource** `required`|[InfrastructureClusterxK8sIoV1alpha1AzureASOManagedClusterStatusResourcesItems0Resource](#infrastructureclusterxk8siov1alpha1azureasomanagedclusterstatusresourcesitems0resource)|resource||
 ### InfrastructureClusterxK8sIoV1alpha1AzureASOManagedClusterStatusResourcesItems0Resource
 
-r""" StatusResource is a handle to a resource.
+StatusResource is a handle to a resource.
 
 #### Attributes
 
@@ -11748,7 +11751,7 @@ r""" StatusResource is a handle to a resource.
 |**version** `required`|str|version||
 ### InfrastructureClusterxK8sIoV1alpha1AzureASOManagedClusterTemplateSpec
 
-r""" AzureASOManagedClusterTemplateSpec defines the desired state of AzureASOManagedClusterTemplate.
+AzureASOManagedClusterTemplateSpec defines the desired state of AzureASOManagedClusterTemplate.
 
 #### Attributes
 
@@ -11757,7 +11760,7 @@ r""" AzureASOManagedClusterTemplateSpec defines the desired state of AzureASOMan
 |**template** `required`|[InfrastructureClusterxK8sIoV1alpha1AzureASOManagedClusterTemplateSpecTemplate](#infrastructureclusterxk8siov1alpha1azureasomanagedclustertemplatespectemplate)|template||
 ### InfrastructureClusterxK8sIoV1alpha1AzureASOManagedClusterTemplateSpecTemplate
 
-r""" AzureASOManagedClusterTemplateResource defines the templated resource.
+AzureASOManagedClusterTemplateResource defines the templated resource.
 
 #### Attributes
 
@@ -11766,7 +11769,7 @@ r""" AzureASOManagedClusterTemplateResource defines the templated resource.
 |**spec**|[InfrastructureClusterxK8sIoV1alpha1AzureASOManagedClusterTemplateSpecTemplateSpec](#infrastructureclusterxk8siov1alpha1azureasomanagedclustertemplatespectemplatespec)|spec||
 ### InfrastructureClusterxK8sIoV1alpha1AzureASOManagedClusterTemplateSpecTemplateSpec
 
-r""" AzureASOManagedClusterTemplateResourceSpec defines the desired state of the templated resource.
+AzureASOManagedClusterTemplateResourceSpec defines the desired state of the templated resource.
 
 #### Attributes
 
@@ -11775,7 +11778,7 @@ r""" AzureASOManagedClusterTemplateResourceSpec defines the desired state of the
 |**resources**|[]|Resources are embedded ASO resources to be managed by this resource.||
 ### InfrastructureClusterxK8sIoV1alpha1AzureASOManagedControlPlaneSpec
 
-r""" AzureASOManagedControlPlaneSpec defines the desired state of AzureASOManagedControlPlane.
+AzureASOManagedControlPlaneSpec defines the desired state of AzureASOManagedControlPlane.
 
 #### Attributes
 
@@ -11785,7 +11788,7 @@ r""" AzureASOManagedControlPlaneSpec defines the desired state of AzureASOManage
 |**version**|str|Version is the Kubernetes version of the control plane. It fulfills Cluster API's control plane<br />provider contract.||
 ### InfrastructureClusterxK8sIoV1alpha1AzureASOManagedControlPlaneStatus
 
-r""" AzureASOManagedControlPlaneStatus defines the observed state of AzureASOManagedControlPlane.
+AzureASOManagedControlPlaneStatus defines the observed state of AzureASOManagedControlPlane.
 
 #### Attributes
 
@@ -11798,17 +11801,17 @@ r""" AzureASOManagedControlPlaneStatus defines the observed state of AzureASOMan
 |**version**|str|Version is the observed Kubernetes version of the control plane. It fulfills Cluster API's control<br />plane provider contract.||
 ### InfrastructureClusterxK8sIoV1alpha1AzureASOManagedControlPlaneStatusControlPlaneEndpoint
 
-r""" ControlPlaneEndpoint represents the endpoint for the cluster's API server.
+ControlPlaneEndpoint represents the endpoint for the cluster's API server.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**host** `required`|str|The hostname on which the API server is serving.||
-|**port** `required`|int|The port on which the API server is serving.||
+|**host** `required`|str|host is the hostname on which the API server is serving.||
+|**port** `required`|int|port is the port on which the API server is serving.||
 ### InfrastructureClusterxK8sIoV1alpha1AzureASOManagedControlPlaneStatusResourcesItems0
 
-r""" ResourceStatus represents the status of a resource.
+ResourceStatus represents the status of a resource.
 
 #### Attributes
 
@@ -11818,7 +11821,7 @@ r""" ResourceStatus represents the status of a resource.
 |**resource** `required`|[InfrastructureClusterxK8sIoV1alpha1AzureASOManagedControlPlaneStatusResourcesItems0Resource](#infrastructureclusterxk8siov1alpha1azureasomanagedcontrolplanestatusresourcesitems0resource)|resource||
 ### InfrastructureClusterxK8sIoV1alpha1AzureASOManagedControlPlaneStatusResourcesItems0Resource
 
-r""" StatusResource is a handle to a resource.
+StatusResource is a handle to a resource.
 
 #### Attributes
 
@@ -11830,7 +11833,7 @@ r""" StatusResource is a handle to a resource.
 |**version** `required`|str|version||
 ### InfrastructureClusterxK8sIoV1alpha1AzureASOManagedControlPlaneTemplateSpec
 
-r""" AzureASOManagedControlPlaneTemplateSpec defines the desired state of AzureASOManagedControlPlane.
+AzureASOManagedControlPlaneTemplateSpec defines the desired state of AzureASOManagedControlPlane.
 
 #### Attributes
 
@@ -11839,7 +11842,7 @@ r""" AzureASOManagedControlPlaneTemplateSpec defines the desired state of AzureA
 |**template** `required`|[InfrastructureClusterxK8sIoV1alpha1AzureASOManagedControlPlaneTemplateSpecTemplate](#infrastructureclusterxk8siov1alpha1azureasomanagedcontrolplanetemplatespectemplate)|template||
 ### InfrastructureClusterxK8sIoV1alpha1AzureASOManagedControlPlaneTemplateSpecTemplate
 
-r""" AzureASOManagedControlPlaneResource defines the templated resource.
+AzureASOManagedControlPlaneResource defines the templated resource.
 
 #### Attributes
 
@@ -11848,7 +11851,7 @@ r""" AzureASOManagedControlPlaneResource defines the templated resource.
 |**spec**|[InfrastructureClusterxK8sIoV1alpha1AzureASOManagedControlPlaneTemplateSpecTemplateSpec](#infrastructureclusterxk8siov1alpha1azureasomanagedcontrolplanetemplatespectemplatespec)|spec||
 ### InfrastructureClusterxK8sIoV1alpha1AzureASOManagedControlPlaneTemplateSpecTemplateSpec
 
-r""" AzureASOManagedControlPlaneTemplateResourceSpec defines the desired state of the templated resource.
+AzureASOManagedControlPlaneTemplateResourceSpec defines the desired state of the templated resource.
 
 #### Attributes
 
@@ -11858,7 +11861,7 @@ r""" AzureASOManagedControlPlaneTemplateResourceSpec defines the desired state o
 |**version**|str|Version is the Kubernetes version of the control plane. It fulfills Cluster API's control plane<br />provider contract.||
 ### InfrastructureClusterxK8sIoV1alpha1AzureASOManagedMachinePoolSpec
 
-r""" AzureASOManagedMachinePoolSpec defines the desired state of AzureASOManagedMachinePool.
+AzureASOManagedMachinePoolSpec defines the desired state of AzureASOManagedMachinePool.
 
 #### Attributes
 
@@ -11868,7 +11871,7 @@ r""" AzureASOManagedMachinePoolSpec defines the desired state of AzureASOManaged
 |**resources**|[]|Resources are embedded ASO resources to be managed by this resource.||
 ### InfrastructureClusterxK8sIoV1alpha1AzureASOManagedMachinePoolStatus
 
-r""" AzureASOManagedMachinePoolStatus defines the observed state of AzureASOManagedMachinePool.
+AzureASOManagedMachinePoolStatus defines the observed state of AzureASOManagedMachinePool.
 
 #### Attributes
 
@@ -11879,7 +11882,7 @@ r""" AzureASOManagedMachinePoolStatus defines the observed state of AzureASOMana
 |**resources**|[[InfrastructureClusterxK8sIoV1alpha1AzureASOManagedMachinePoolStatusResourcesItems0](#infrastructureclusterxk8siov1alpha1azureasomanagedmachinepoolstatusresourcesitems0)]|resources||
 ### InfrastructureClusterxK8sIoV1alpha1AzureASOManagedMachinePoolStatusResourcesItems0
 
-r""" ResourceStatus represents the status of a resource.
+ResourceStatus represents the status of a resource.
 
 #### Attributes
 
@@ -11889,7 +11892,7 @@ r""" ResourceStatus represents the status of a resource.
 |**resource** `required`|[InfrastructureClusterxK8sIoV1alpha1AzureASOManagedMachinePoolStatusResourcesItems0Resource](#infrastructureclusterxk8siov1alpha1azureasomanagedmachinepoolstatusresourcesitems0resource)|resource||
 ### InfrastructureClusterxK8sIoV1alpha1AzureASOManagedMachinePoolStatusResourcesItems0Resource
 
-r""" StatusResource is a handle to a resource.
+StatusResource is a handle to a resource.
 
 #### Attributes
 
@@ -11901,7 +11904,7 @@ r""" StatusResource is a handle to a resource.
 |**version** `required`|str|version||
 ### InfrastructureClusterxK8sIoV1alpha1AzureASOManagedMachinePoolTemplateSpec
 
-r""" AzureASOManagedMachinePoolTemplateSpec defines the desired state of AzureASOManagedMachinePoolTemplate.
+AzureASOManagedMachinePoolTemplateSpec defines the desired state of AzureASOManagedMachinePoolTemplate.
 
 #### Attributes
 
@@ -11910,7 +11913,7 @@ r""" AzureASOManagedMachinePoolTemplateSpec defines the desired state of AzureAS
 |**template** `required`|[InfrastructureClusterxK8sIoV1alpha1AzureASOManagedMachinePoolTemplateSpecTemplate](#infrastructureclusterxk8siov1alpha1azureasomanagedmachinepooltemplatespectemplate)|template||
 ### InfrastructureClusterxK8sIoV1alpha1AzureASOManagedMachinePoolTemplateSpecTemplate
 
-r""" AzureASOManagedControlPlaneResource defines the templated resource.
+AzureASOManagedControlPlaneResource defines the templated resource.
 
 #### Attributes
 
@@ -11919,7 +11922,7 @@ r""" AzureASOManagedControlPlaneResource defines the templated resource.
 |**spec**|[InfrastructureClusterxK8sIoV1alpha1AzureASOManagedMachinePoolTemplateSpecTemplateSpec](#infrastructureclusterxk8siov1alpha1azureasomanagedmachinepooltemplatespectemplatespec)|spec||
 ### InfrastructureClusterxK8sIoV1alpha1AzureASOManagedMachinePoolTemplateSpecTemplateSpec
 
-r""" AzureASOManagedControlPlaneTemplateResourceSpec defines the desired state of the templated resource.
+AzureASOManagedControlPlaneTemplateResourceSpec defines the desired state of the templated resource.
 
 #### Attributes
 
@@ -11929,7 +11932,7 @@ r""" AzureASOManagedControlPlaneTemplateResourceSpec defines the desired state o
 |**version**|str|Version is the Kubernetes version of the control plane. It fulfills Cluster API's control plane<br />provider contract.||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpec
 
-r""" monitoring coreos com v1alpha1 alertmanager config spec
+monitoring coreos com v1alpha1 alertmanager config spec
 
 #### Attributes
 
@@ -11940,7 +11943,7 @@ r""" monitoring coreos com v1alpha1 alertmanager config spec
 |**route**|[MonitoringCoreosComV1alpha1AlertmanagerConfigSpecRoute](#monitoringcoreoscomv1alpha1alertmanagerconfigspecroute)|route||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecInhibitRulesItems0
 
-r""" monitoring coreos com v1alpha1 alertmanager config spec inhibit rules items0
+monitoring coreos com v1alpha1 alertmanager config spec inhibit rules items0
 
 #### Attributes
 
@@ -11951,7 +11954,7 @@ r""" monitoring coreos com v1alpha1 alertmanager config spec inhibit rules items
 |**targetMatch**|[[MonitoringCoreosComV1alpha1AlertmanagerConfigSpecInhibitRulesItems0TargetMatchItems0](#monitoringcoreoscomv1alpha1alertmanagerconfigspecinhibitrulesitems0targetmatchitems0)]|target match||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecInhibitRulesItems0SourceMatchItems0
 
-r""" monitoring coreos com v1alpha1 alertmanager config spec inhibit rules items0 source match items0
+monitoring coreos com v1alpha1 alertmanager config spec inhibit rules items0 source match items0
 
 #### Attributes
 
@@ -11962,7 +11965,7 @@ r""" monitoring coreos com v1alpha1 alertmanager config spec inhibit rules items
 |**value** `required`|str|value||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecInhibitRulesItems0TargetMatchItems0
 
-r""" monitoring coreos com v1alpha1 alertmanager config spec inhibit rules items0 target match items0
+monitoring coreos com v1alpha1 alertmanager config spec inhibit rules items0 target match items0
 
 #### Attributes
 
@@ -11973,7 +11976,7 @@ r""" monitoring coreos com v1alpha1 alertmanager config spec inhibit rules items
 |**value** `required`|str|value||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0
 
-r""" monitoring coreos com v1alpha1 alertmanager config spec receivers items0
+monitoring coreos com v1alpha1 alertmanager config spec receivers items0
 
 #### Attributes
 
@@ -11986,7 +11989,7 @@ r""" monitoring coreos com v1alpha1 alertmanager config spec receivers items0
 |**webhookConfigs**|[[MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WebhookConfigsItems0](#monitoringcoreoscomv1alpha1alertmanagerconfigspecreceiversitems0webhookconfigsitems0)]|webhook configs||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0OpsgenieConfigsItems0
 
-r""" monitoring coreos com v1alpha1 alertmanager config spec receivers items0 opsgenie configs items0
+monitoring coreos com v1alpha1 alertmanager config spec receivers items0 opsgenie configs items0
 
 #### Attributes
 
@@ -12006,7 +12009,7 @@ r""" monitoring coreos com v1alpha1 alertmanager config spec receivers items0 op
 |**tags**|str|tags||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0OpsgenieConfigsItems0APIKey
 
-r""" SecretKeySelector selects a key of a Secret.
+SecretKeySelector selects a key of a Secret.
 
 #### Attributes
 
@@ -12017,7 +12020,7 @@ r""" SecretKeySelector selects a key of a Secret.
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0OpsgenieConfigsItems0DetailsItems0
 
-r""" monitoring coreos com v1alpha1 alertmanager config spec receivers items0 opsgenie configs items0 details items0
+monitoring coreos com v1alpha1 alertmanager config spec receivers items0 opsgenie configs items0 details items0
 
 #### Attributes
 
@@ -12027,7 +12030,7 @@ r""" monitoring coreos com v1alpha1 alertmanager config spec receivers items0 op
 |**value** `required`|str|value||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0OpsgenieConfigsItems0HTTPConfig
 
-r""" monitoring coreos com v1alpha1 alertmanager config spec receivers items0 opsgenie configs items0 HTTP config
+monitoring coreos com v1alpha1 alertmanager config spec receivers items0 opsgenie configs items0 HTTP config
 
 #### Attributes
 
@@ -12039,7 +12042,7 @@ r""" monitoring coreos com v1alpha1 alertmanager config spec receivers items0 op
 |**tlsConfig**|[MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0OpsgenieConfigsItems0HTTPConfigTLSConfig](#monitoringcoreoscomv1alpha1alertmanagerconfigspecreceiversitems0opsgenieconfigsitems0httpconfigtlsconfig)|tls config||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0OpsgenieConfigsItems0HTTPConfigBasicAuth
 
-r""" BasicAuth allow an endpoint to authenticate over basic authentication More info: https://prometheus.io/docs/operating/configuration/#endpoints
+BasicAuth allow an endpoint to authenticate over basic authentication More info: https://prometheus.io/docs/operating/configuration/#endpoints
 
 #### Attributes
 
@@ -12049,7 +12052,7 @@ r""" BasicAuth allow an endpoint to authenticate over basic authentication More 
 |**username**|[MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0OpsgenieConfigsItems0HTTPConfigBasicAuthUsername](#monitoringcoreoscomv1alpha1alertmanagerconfigspecreceiversitems0opsgenieconfigsitems0httpconfigbasicauthusername)|username||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0OpsgenieConfigsItems0HTTPConfigBasicAuthPassword
 
-r""" The secret in the service monitor namespace that contains the password for authentication.
+The secret in the service monitor namespace that contains the password for authentication.
 
 #### Attributes
 
@@ -12060,7 +12063,7 @@ r""" The secret in the service monitor namespace that contains the password for 
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0OpsgenieConfigsItems0HTTPConfigBasicAuthUsername
 
-r""" The secret in the service monitor namespace that contains the username for authentication.
+The secret in the service monitor namespace that contains the username for authentication.
 
 #### Attributes
 
@@ -12071,7 +12074,7 @@ r""" The secret in the service monitor namespace that contains the username for 
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0OpsgenieConfigsItems0HTTPConfigBearerTokenSecret
 
-r""" SecretKeySelector selects a key of a Secret.
+SecretKeySelector selects a key of a Secret.
 
 #### Attributes
 
@@ -12082,7 +12085,7 @@ r""" SecretKeySelector selects a key of a Secret.
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0OpsgenieConfigsItems0HTTPConfigTLSConfig
 
-r""" SafeTLSConfig specifies safe TLS configuration parameters.
+SafeTLSConfig specifies safe TLS configuration parameters.
 
 #### Attributes
 
@@ -12095,7 +12098,7 @@ r""" SafeTLSConfig specifies safe TLS configuration parameters.
 |**serverName**|str|Used to verify the hostname for the targets.||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0OpsgenieConfigsItems0HTTPConfigTLSConfigCa
 
-r""" Struct containing the CA cert to use for the targets.
+Struct containing the CA cert to use for the targets.
 
 #### Attributes
 
@@ -12105,7 +12108,7 @@ r""" Struct containing the CA cert to use for the targets.
 |**secret**|[MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0OpsgenieConfigsItems0HTTPConfigTLSConfigCaSecret](#monitoringcoreoscomv1alpha1alertmanagerconfigspecreceiversitems0opsgenieconfigsitems0httpconfigtlsconfigcasecret)|secret||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0OpsgenieConfigsItems0HTTPConfigTLSConfigCaConfigMap
 
-r""" ConfigMap containing data to use for the targets.
+ConfigMap containing data to use for the targets.
 
 #### Attributes
 
@@ -12116,7 +12119,7 @@ r""" ConfigMap containing data to use for the targets.
 |**optional**|bool|Specify whether the ConfigMap or its key must be defined||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0OpsgenieConfigsItems0HTTPConfigTLSConfigCaSecret
 
-r""" Secret containing data to use for the targets.
+Secret containing data to use for the targets.
 
 #### Attributes
 
@@ -12127,7 +12130,7 @@ r""" Secret containing data to use for the targets.
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0OpsgenieConfigsItems0HTTPConfigTLSConfigCert
 
-r""" Struct containing the client cert file for the targets.
+Struct containing the client cert file for the targets.
 
 #### Attributes
 
@@ -12137,7 +12140,7 @@ r""" Struct containing the client cert file for the targets.
 |**secret**|[MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0OpsgenieConfigsItems0HTTPConfigTLSConfigCertSecret](#monitoringcoreoscomv1alpha1alertmanagerconfigspecreceiversitems0opsgenieconfigsitems0httpconfigtlsconfigcertsecret)|secret||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0OpsgenieConfigsItems0HTTPConfigTLSConfigCertConfigMap
 
-r""" ConfigMap containing data to use for the targets.
+ConfigMap containing data to use for the targets.
 
 #### Attributes
 
@@ -12148,7 +12151,7 @@ r""" ConfigMap containing data to use for the targets.
 |**optional**|bool|Specify whether the ConfigMap or its key must be defined||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0OpsgenieConfigsItems0HTTPConfigTLSConfigCertSecret
 
-r""" Secret containing data to use for the targets.
+Secret containing data to use for the targets.
 
 #### Attributes
 
@@ -12159,7 +12162,7 @@ r""" Secret containing data to use for the targets.
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0OpsgenieConfigsItems0HTTPConfigTLSConfigKeySecret
 
-r""" Secret containing the client key file for the targets.
+Secret containing the client key file for the targets.
 
 #### Attributes
 
@@ -12170,7 +12173,7 @@ r""" Secret containing the client key file for the targets.
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0OpsgenieConfigsItems0RespondersItems0
 
-r""" monitoring coreos com v1alpha1 alertmanager config spec receivers items0 opsgenie configs items0 responders items0
+monitoring coreos com v1alpha1 alertmanager config spec receivers items0 opsgenie configs items0 responders items0
 
 #### Attributes
 
@@ -12182,7 +12185,7 @@ r""" monitoring coreos com v1alpha1 alertmanager config spec receivers items0 op
 |**username**|str|username||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0PagerDutyConfigsItems0
 
-r""" monitoring coreos com v1alpha1 alertmanager config spec receivers items0 pager duty configs items0
+monitoring coreos com v1alpha1 alertmanager config spec receivers items0 pager duty configs items0
 
 #### Attributes
 
@@ -12203,7 +12206,7 @@ r""" monitoring coreos com v1alpha1 alertmanager config spec receivers items0 pa
 |**url**|str|url||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0PagerDutyConfigsItems0DetailsItems0
 
-r""" monitoring coreos com v1alpha1 alertmanager config spec receivers items0 pager duty configs items0 details items0
+monitoring coreos com v1alpha1 alertmanager config spec receivers items0 pager duty configs items0 details items0
 
 #### Attributes
 
@@ -12213,7 +12216,7 @@ r""" monitoring coreos com v1alpha1 alertmanager config spec receivers items0 pa
 |**value** `required`|str|value||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0PagerDutyConfigsItems0HTTPConfig
 
-r""" monitoring coreos com v1alpha1 alertmanager config spec receivers items0 pager duty configs items0 HTTP config
+monitoring coreos com v1alpha1 alertmanager config spec receivers items0 pager duty configs items0 HTTP config
 
 #### Attributes
 
@@ -12225,7 +12228,7 @@ r""" monitoring coreos com v1alpha1 alertmanager config spec receivers items0 pa
 |**tlsConfig**|[MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0PagerDutyConfigsItems0HTTPConfigTLSConfig](#monitoringcoreoscomv1alpha1alertmanagerconfigspecreceiversitems0pagerdutyconfigsitems0httpconfigtlsconfig)|tls config||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0PagerDutyConfigsItems0HTTPConfigBasicAuth
 
-r""" BasicAuth allow an endpoint to authenticate over basic authentication More info: https://prometheus.io/docs/operating/configuration/#endpoints
+BasicAuth allow an endpoint to authenticate over basic authentication More info: https://prometheus.io/docs/operating/configuration/#endpoints
 
 #### Attributes
 
@@ -12235,7 +12238,7 @@ r""" BasicAuth allow an endpoint to authenticate over basic authentication More 
 |**username**|[MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0PagerDutyConfigsItems0HTTPConfigBasicAuthUsername](#monitoringcoreoscomv1alpha1alertmanagerconfigspecreceiversitems0pagerdutyconfigsitems0httpconfigbasicauthusername)|username||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0PagerDutyConfigsItems0HTTPConfigBasicAuthPassword
 
-r""" The secret in the service monitor namespace that contains the password for authentication.
+The secret in the service monitor namespace that contains the password for authentication.
 
 #### Attributes
 
@@ -12246,7 +12249,7 @@ r""" The secret in the service monitor namespace that contains the password for 
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0PagerDutyConfigsItems0HTTPConfigBasicAuthUsername
 
-r""" The secret in the service monitor namespace that contains the username for authentication.
+The secret in the service monitor namespace that contains the username for authentication.
 
 #### Attributes
 
@@ -12257,7 +12260,7 @@ r""" The secret in the service monitor namespace that contains the username for 
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0PagerDutyConfigsItems0HTTPConfigBearerTokenSecret
 
-r""" SecretKeySelector selects a key of a Secret.
+SecretKeySelector selects a key of a Secret.
 
 #### Attributes
 
@@ -12268,7 +12271,7 @@ r""" SecretKeySelector selects a key of a Secret.
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0PagerDutyConfigsItems0HTTPConfigTLSConfig
 
-r""" SafeTLSConfig specifies safe TLS configuration parameters.
+SafeTLSConfig specifies safe TLS configuration parameters.
 
 #### Attributes
 
@@ -12281,7 +12284,7 @@ r""" SafeTLSConfig specifies safe TLS configuration parameters.
 |**serverName**|str|Used to verify the hostname for the targets.||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0PagerDutyConfigsItems0HTTPConfigTLSConfigCa
 
-r""" Struct containing the CA cert to use for the targets.
+Struct containing the CA cert to use for the targets.
 
 #### Attributes
 
@@ -12291,7 +12294,7 @@ r""" Struct containing the CA cert to use for the targets.
 |**secret**|[MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0PagerDutyConfigsItems0HTTPConfigTLSConfigCaSecret](#monitoringcoreoscomv1alpha1alertmanagerconfigspecreceiversitems0pagerdutyconfigsitems0httpconfigtlsconfigcasecret)|secret||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0PagerDutyConfigsItems0HTTPConfigTLSConfigCaConfigMap
 
-r""" ConfigMap containing data to use for the targets.
+ConfigMap containing data to use for the targets.
 
 #### Attributes
 
@@ -12302,7 +12305,7 @@ r""" ConfigMap containing data to use for the targets.
 |**optional**|bool|Specify whether the ConfigMap or its key must be defined||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0PagerDutyConfigsItems0HTTPConfigTLSConfigCaSecret
 
-r""" Secret containing data to use for the targets.
+Secret containing data to use for the targets.
 
 #### Attributes
 
@@ -12313,7 +12316,7 @@ r""" Secret containing data to use for the targets.
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0PagerDutyConfigsItems0HTTPConfigTLSConfigCert
 
-r""" Struct containing the client cert file for the targets.
+Struct containing the client cert file for the targets.
 
 #### Attributes
 
@@ -12323,7 +12326,7 @@ r""" Struct containing the client cert file for the targets.
 |**secret**|[MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0PagerDutyConfigsItems0HTTPConfigTLSConfigCertSecret](#monitoringcoreoscomv1alpha1alertmanagerconfigspecreceiversitems0pagerdutyconfigsitems0httpconfigtlsconfigcertsecret)|secret||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0PagerDutyConfigsItems0HTTPConfigTLSConfigCertConfigMap
 
-r""" ConfigMap containing data to use for the targets.
+ConfigMap containing data to use for the targets.
 
 #### Attributes
 
@@ -12334,7 +12337,7 @@ r""" ConfigMap containing data to use for the targets.
 |**optional**|bool|Specify whether the ConfigMap or its key must be defined||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0PagerDutyConfigsItems0HTTPConfigTLSConfigCertSecret
 
-r""" Secret containing data to use for the targets.
+Secret containing data to use for the targets.
 
 #### Attributes
 
@@ -12345,7 +12348,7 @@ r""" Secret containing data to use for the targets.
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0PagerDutyConfigsItems0HTTPConfigTLSConfigKeySecret
 
-r""" Secret containing the client key file for the targets.
+Secret containing the client key file for the targets.
 
 #### Attributes
 
@@ -12356,7 +12359,7 @@ r""" Secret containing the client key file for the targets.
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0PagerDutyConfigsItems0RoutingKey
 
-r""" SecretKeySelector selects a key of a Secret.
+SecretKeySelector selects a key of a Secret.
 
 #### Attributes
 
@@ -12367,7 +12370,7 @@ r""" SecretKeySelector selects a key of a Secret.
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0PagerDutyConfigsItems0ServiceKey
 
-r""" SecretKeySelector selects a key of a Secret.
+SecretKeySelector selects a key of a Secret.
 
 #### Attributes
 
@@ -12378,7 +12381,7 @@ r""" SecretKeySelector selects a key of a Secret.
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WeChatConfigsItems0
 
-r""" monitoring coreos com v1alpha1 alertmanager config spec receivers items0 we chat configs items0
+monitoring coreos com v1alpha1 alertmanager config spec receivers items0 we chat configs items0
 
 #### Attributes
 
@@ -12397,7 +12400,7 @@ r""" monitoring coreos com v1alpha1 alertmanager config spec receivers items0 we
 |**toUser**|str|to user||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WeChatConfigsItems0APISecret
 
-r""" SecretKeySelector selects a key of a Secret.
+SecretKeySelector selects a key of a Secret.
 
 #### Attributes
 
@@ -12408,7 +12411,7 @@ r""" SecretKeySelector selects a key of a Secret.
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WeChatConfigsItems0HTTPConfig
 
-r""" monitoring coreos com v1alpha1 alertmanager config spec receivers items0 we chat configs items0 HTTP config
+monitoring coreos com v1alpha1 alertmanager config spec receivers items0 we chat configs items0 HTTP config
 
 #### Attributes
 
@@ -12420,7 +12423,7 @@ r""" monitoring coreos com v1alpha1 alertmanager config spec receivers items0 we
 |**tlsConfig**|[MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WeChatConfigsItems0HTTPConfigTLSConfig](#monitoringcoreoscomv1alpha1alertmanagerconfigspecreceiversitems0wechatconfigsitems0httpconfigtlsconfig)|tls config||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WeChatConfigsItems0HTTPConfigBasicAuth
 
-r""" BasicAuth allow an endpoint to authenticate over basic authentication More info: https://prometheus.io/docs/operating/configuration/#endpoints
+BasicAuth allow an endpoint to authenticate over basic authentication More info: https://prometheus.io/docs/operating/configuration/#endpoints
 
 #### Attributes
 
@@ -12430,7 +12433,7 @@ r""" BasicAuth allow an endpoint to authenticate over basic authentication More 
 |**username**|[MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WeChatConfigsItems0HTTPConfigBasicAuthUsername](#monitoringcoreoscomv1alpha1alertmanagerconfigspecreceiversitems0wechatconfigsitems0httpconfigbasicauthusername)|username||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WeChatConfigsItems0HTTPConfigBasicAuthPassword
 
-r""" The secret in the service monitor namespace that contains the password for authentication.
+The secret in the service monitor namespace that contains the password for authentication.
 
 #### Attributes
 
@@ -12441,7 +12444,7 @@ r""" The secret in the service monitor namespace that contains the password for 
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WeChatConfigsItems0HTTPConfigBasicAuthUsername
 
-r""" The secret in the service monitor namespace that contains the username for authentication.
+The secret in the service monitor namespace that contains the username for authentication.
 
 #### Attributes
 
@@ -12452,7 +12455,7 @@ r""" The secret in the service monitor namespace that contains the username for 
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WeChatConfigsItems0HTTPConfigBearerTokenSecret
 
-r""" SecretKeySelector selects a key of a Secret.
+SecretKeySelector selects a key of a Secret.
 
 #### Attributes
 
@@ -12463,7 +12466,7 @@ r""" SecretKeySelector selects a key of a Secret.
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WeChatConfigsItems0HTTPConfigTLSConfig
 
-r""" SafeTLSConfig specifies safe TLS configuration parameters.
+SafeTLSConfig specifies safe TLS configuration parameters.
 
 #### Attributes
 
@@ -12476,7 +12479,7 @@ r""" SafeTLSConfig specifies safe TLS configuration parameters.
 |**serverName**|str|Used to verify the hostname for the targets.||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WeChatConfigsItems0HTTPConfigTLSConfigCa
 
-r""" Struct containing the CA cert to use for the targets.
+Struct containing the CA cert to use for the targets.
 
 #### Attributes
 
@@ -12486,7 +12489,7 @@ r""" Struct containing the CA cert to use for the targets.
 |**secret**|[MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WeChatConfigsItems0HTTPConfigTLSConfigCaSecret](#monitoringcoreoscomv1alpha1alertmanagerconfigspecreceiversitems0wechatconfigsitems0httpconfigtlsconfigcasecret)|secret||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WeChatConfigsItems0HTTPConfigTLSConfigCaConfigMap
 
-r""" ConfigMap containing data to use for the targets.
+ConfigMap containing data to use for the targets.
 
 #### Attributes
 
@@ -12497,7 +12500,7 @@ r""" ConfigMap containing data to use for the targets.
 |**optional**|bool|Specify whether the ConfigMap or its key must be defined||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WeChatConfigsItems0HTTPConfigTLSConfigCaSecret
 
-r""" Secret containing data to use for the targets.
+Secret containing data to use for the targets.
 
 #### Attributes
 
@@ -12508,7 +12511,7 @@ r""" Secret containing data to use for the targets.
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WeChatConfigsItems0HTTPConfigTLSConfigCert
 
-r""" Struct containing the client cert file for the targets.
+Struct containing the client cert file for the targets.
 
 #### Attributes
 
@@ -12518,7 +12521,7 @@ r""" Struct containing the client cert file for the targets.
 |**secret**|[MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WeChatConfigsItems0HTTPConfigTLSConfigCertSecret](#monitoringcoreoscomv1alpha1alertmanagerconfigspecreceiversitems0wechatconfigsitems0httpconfigtlsconfigcertsecret)|secret||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WeChatConfigsItems0HTTPConfigTLSConfigCertConfigMap
 
-r""" ConfigMap containing data to use for the targets.
+ConfigMap containing data to use for the targets.
 
 #### Attributes
 
@@ -12529,7 +12532,7 @@ r""" ConfigMap containing data to use for the targets.
 |**optional**|bool|Specify whether the ConfigMap or its key must be defined||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WeChatConfigsItems0HTTPConfigTLSConfigCertSecret
 
-r""" Secret containing data to use for the targets.
+Secret containing data to use for the targets.
 
 #### Attributes
 
@@ -12540,7 +12543,7 @@ r""" Secret containing data to use for the targets.
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WeChatConfigsItems0HTTPConfigTLSConfigKeySecret
 
-r""" Secret containing the client key file for the targets.
+Secret containing the client key file for the targets.
 
 #### Attributes
 
@@ -12551,7 +12554,7 @@ r""" Secret containing the client key file for the targets.
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WebhookConfigsItems0
 
-r""" monitoring coreos com v1alpha1 alertmanager config spec receivers items0 webhook configs items0
+monitoring coreos com v1alpha1 alertmanager config spec receivers items0 webhook configs items0
 
 #### Attributes
 
@@ -12564,7 +12567,7 @@ r""" monitoring coreos com v1alpha1 alertmanager config spec receivers items0 we
 |**urlSecret**|[MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WebhookConfigsItems0URLSecret](#monitoringcoreoscomv1alpha1alertmanagerconfigspecreceiversitems0webhookconfigsitems0urlsecret)|url secret||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WebhookConfigsItems0HTTPConfig
 
-r""" monitoring coreos com v1alpha1 alertmanager config spec receivers items0 webhook configs items0 HTTP config
+monitoring coreos com v1alpha1 alertmanager config spec receivers items0 webhook configs items0 HTTP config
 
 #### Attributes
 
@@ -12576,7 +12579,7 @@ r""" monitoring coreos com v1alpha1 alertmanager config spec receivers items0 we
 |**tlsConfig**|[MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WebhookConfigsItems0HTTPConfigTLSConfig](#monitoringcoreoscomv1alpha1alertmanagerconfigspecreceiversitems0webhookconfigsitems0httpconfigtlsconfig)|tls config||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WebhookConfigsItems0HTTPConfigBasicAuth
 
-r""" BasicAuth allow an endpoint to authenticate over basic authentication More info: https://prometheus.io/docs/operating/configuration/#endpoints
+BasicAuth allow an endpoint to authenticate over basic authentication More info: https://prometheus.io/docs/operating/configuration/#endpoints
 
 #### Attributes
 
@@ -12586,7 +12589,7 @@ r""" BasicAuth allow an endpoint to authenticate over basic authentication More 
 |**username**|[MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WebhookConfigsItems0HTTPConfigBasicAuthUsername](#monitoringcoreoscomv1alpha1alertmanagerconfigspecreceiversitems0webhookconfigsitems0httpconfigbasicauthusername)|username||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WebhookConfigsItems0HTTPConfigBasicAuthPassword
 
-r""" The secret in the service monitor namespace that contains the password for authentication.
+The secret in the service monitor namespace that contains the password for authentication.
 
 #### Attributes
 
@@ -12597,7 +12600,7 @@ r""" The secret in the service monitor namespace that contains the password for 
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WebhookConfigsItems0HTTPConfigBasicAuthUsername
 
-r""" The secret in the service monitor namespace that contains the username for authentication.
+The secret in the service monitor namespace that contains the username for authentication.
 
 #### Attributes
 
@@ -12608,7 +12611,7 @@ r""" The secret in the service monitor namespace that contains the username for 
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WebhookConfigsItems0HTTPConfigBearerTokenSecret
 
-r""" SecretKeySelector selects a key of a Secret.
+SecretKeySelector selects a key of a Secret.
 
 #### Attributes
 
@@ -12619,7 +12622,7 @@ r""" SecretKeySelector selects a key of a Secret.
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WebhookConfigsItems0HTTPConfigTLSConfig
 
-r""" SafeTLSConfig specifies safe TLS configuration parameters.
+SafeTLSConfig specifies safe TLS configuration parameters.
 
 #### Attributes
 
@@ -12632,7 +12635,7 @@ r""" SafeTLSConfig specifies safe TLS configuration parameters.
 |**serverName**|str|Used to verify the hostname for the targets.||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WebhookConfigsItems0HTTPConfigTLSConfigCa
 
-r""" Struct containing the CA cert to use for the targets.
+Struct containing the CA cert to use for the targets.
 
 #### Attributes
 
@@ -12642,7 +12645,7 @@ r""" Struct containing the CA cert to use for the targets.
 |**secret**|[MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WebhookConfigsItems0HTTPConfigTLSConfigCaSecret](#monitoringcoreoscomv1alpha1alertmanagerconfigspecreceiversitems0webhookconfigsitems0httpconfigtlsconfigcasecret)|secret||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WebhookConfigsItems0HTTPConfigTLSConfigCaConfigMap
 
-r""" ConfigMap containing data to use for the targets.
+ConfigMap containing data to use for the targets.
 
 #### Attributes
 
@@ -12653,7 +12656,7 @@ r""" ConfigMap containing data to use for the targets.
 |**optional**|bool|Specify whether the ConfigMap or its key must be defined||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WebhookConfigsItems0HTTPConfigTLSConfigCaSecret
 
-r""" Secret containing data to use for the targets.
+Secret containing data to use for the targets.
 
 #### Attributes
 
@@ -12664,7 +12667,7 @@ r""" Secret containing data to use for the targets.
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WebhookConfigsItems0HTTPConfigTLSConfigCert
 
-r""" Struct containing the client cert file for the targets.
+Struct containing the client cert file for the targets.
 
 #### Attributes
 
@@ -12674,7 +12677,7 @@ r""" Struct containing the client cert file for the targets.
 |**secret**|[MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WebhookConfigsItems0HTTPConfigTLSConfigCertSecret](#monitoringcoreoscomv1alpha1alertmanagerconfigspecreceiversitems0webhookconfigsitems0httpconfigtlsconfigcertsecret)|secret||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WebhookConfigsItems0HTTPConfigTLSConfigCertConfigMap
 
-r""" ConfigMap containing data to use for the targets.
+ConfigMap containing data to use for the targets.
 
 #### Attributes
 
@@ -12685,7 +12688,7 @@ r""" ConfigMap containing data to use for the targets.
 |**optional**|bool|Specify whether the ConfigMap or its key must be defined||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WebhookConfigsItems0HTTPConfigTLSConfigCertSecret
 
-r""" Secret containing data to use for the targets.
+Secret containing data to use for the targets.
 
 #### Attributes
 
@@ -12696,7 +12699,7 @@ r""" Secret containing data to use for the targets.
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WebhookConfigsItems0HTTPConfigTLSConfigKeySecret
 
-r""" Secret containing the client key file for the targets.
+Secret containing the client key file for the targets.
 
 #### Attributes
 
@@ -12707,7 +12710,7 @@ r""" Secret containing the client key file for the targets.
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecReceiversItems0WebhookConfigsItems0URLSecret
 
-r""" SecretKeySelector selects a key of a Secret.
+SecretKeySelector selects a key of a Secret.
 
 #### Attributes
 
@@ -12718,7 +12721,7 @@ r""" SecretKeySelector selects a key of a Secret.
 |**optional**|bool|Specify whether the Secret or its key must be defined||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecRoute
 
-r""" monitoring coreos com v1alpha1 alertmanager config spec route
+monitoring coreos com v1alpha1 alertmanager config spec route
 
 #### Attributes
 
@@ -12734,7 +12737,7 @@ r""" monitoring coreos com v1alpha1 alertmanager config spec route
 |**routes**|[]|routes||
 ### MonitoringCoreosComV1alpha1AlertmanagerConfigSpecRouteMatchersItems0
 
-r""" monitoring coreos com v1alpha1 alertmanager config spec route matchers items0
+monitoring coreos com v1alpha1 alertmanager config spec route matchers items0
 
 #### Attributes
 
@@ -12745,7 +12748,7 @@ r""" monitoring coreos com v1alpha1 alertmanager config spec route matchers item
 |**value** `required`|str|value||
 ### AzureServicePrincipal
 
-r""" AzureServicePrincipal represents a reference to an Azure access key ID and secret access key, stored in a secret.
+AzureServicePrincipal represents a reference to an Azure access key ID and secret access key, stored in a secret.
 
 #### Attributes
 
@@ -12757,7 +12760,7 @@ r""" AzureServicePrincipal represents a reference to an Azure access key ID and 
 |**spec**|[InfrastructureClusterxK8sIoV1alpha3AzureServicePrincipalSpec](#infrastructureclusterxk8siov1alpha3azureserviceprincipalspec)|spec||
 ### AzureSystemAssignedIdentity
 
-r""" AzureSystemAssignedIdentity represents a reference to an Azure access key ID and secret access key, stored in a secret.
+AzureSystemAssignedIdentity represents a reference to an Azure access key ID and secret access key, stored in a secret.
 
 #### Attributes
 
@@ -12769,7 +12772,7 @@ r""" AzureSystemAssignedIdentity represents a reference to an Azure access key I
 |**spec**|[InfrastructureClusterxK8sIoV1alpha3AzureSystemAssignedIdentitySpec](#infrastructureclusterxk8siov1alpha3azuresystemassignedidentityspec)|spec||
 ### AzureUserAssignedIdentity
 
-r""" AzureUserAssignedIdentity represents a reference to an Azure access key ID and secret access key, stored in a secret.
+AzureUserAssignedIdentity represents a reference to an Azure access key ID and secret access key, stored in a secret.
 
 #### Attributes
 
@@ -12781,7 +12784,7 @@ r""" AzureUserAssignedIdentity represents a reference to an Azure access key ID 
 |**spec**|[InfrastructureClusterxK8sIoV1alpha3AzureUserAssignedIdentitySpec](#infrastructureclusterxk8siov1alpha3azureuserassignedidentityspec)|spec||
 ### InfrastructureClusterxK8sIoV1alpha3AzureServicePrincipalSpec
 
-r""" Spec for this AzureServicePrincipalSpec.
+Spec for this AzureServicePrincipalSpec.
 
 #### Attributes
 
@@ -12792,7 +12795,7 @@ r""" Spec for this AzureServicePrincipalSpec.
 |**secretRef** `required`|[InfrastructureClusterxK8sIoV1alpha3AzureServicePrincipalSpecSecretRef](#infrastructureclusterxk8siov1alpha3azureserviceprincipalspecsecretref)|secret ref||
 ### InfrastructureClusterxK8sIoV1alpha3AzureServicePrincipalSpecAllowedNamespaces
 
-r""" AllowedNamespaces is a selector of namespaces that AzureClusters can use this ClusterPrincipal from. This is a standard Kubernetes LabelSelector, a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. Controllers must not support AzureClusters in namespaces outside this selector. An empty selector (default) indicates that AzureClusters can use this AzureServicePrincipal from any namespace. This field is intentionally not a pointer because the nil behavior (no namespaces) is undesirable here.
+AllowedNamespaces is a selector of namespaces that AzureClusters can use this ClusterPrincipal from. This is a standard Kubernetes LabelSelector, a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. Controllers must not support AzureClusters in namespaces outside this selector. An empty selector (default) indicates that AzureClusters can use this AzureServicePrincipal from any namespace. This field is intentionally not a pointer because the nil behavior (no namespaces) is undesirable here.
 
 #### Attributes
 
@@ -12802,7 +12805,7 @@ r""" AllowedNamespaces is a selector of namespaces that AzureClusters can use th
 |**matchLabels**|{str:str}|matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.||
 ### InfrastructureClusterxK8sIoV1alpha3AzureServicePrincipalSpecAllowedNamespacesMatchExpressionsItems0
 
-r""" A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
 #### Attributes
 
@@ -12813,7 +12816,7 @@ r""" A label selector requirement is a selector that contains values, a key, and
 |**values**|[str]|values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.||
 ### InfrastructureClusterxK8sIoV1alpha3AzureServicePrincipalSpecSecretRef
 
-r""" Reference to a secret containing the credentials. The secret should contain the following data keys: tenantID clientID clientSecret
+Reference to a secret containing the credentials. The secret should contain the following data keys: tenantID clientID clientSecret
 
 #### Attributes
 
@@ -12823,7 +12826,7 @@ r""" Reference to a secret containing the credentials. The secret should contain
 |**namespace**|str|Namespace defines the space within which the secret name must be unique.||
 ### InfrastructureClusterxK8sIoV1alpha3AzureSystemAssignedIdentitySpec
 
-r""" Spec for this AzureSystemAssignedIdentitySpec.
+Spec for this AzureSystemAssignedIdentitySpec.
 
 #### Attributes
 
@@ -12834,7 +12837,7 @@ r""" Spec for this AzureSystemAssignedIdentitySpec.
 |**secretRef** `required`|[InfrastructureClusterxK8sIoV1alpha3AzureSystemAssignedIdentitySpecSecretRef](#infrastructureclusterxk8siov1alpha3azuresystemassignedidentityspecsecretref)|secret ref||
 ### InfrastructureClusterxK8sIoV1alpha3AzureSystemAssignedIdentitySpecAllowedNamespaces
 
-r""" AllowedNamespaces is a selector of namespaces that AzureClusters can use this ClusterPrincipal from. This is a standard Kubernetes LabelSelector, a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. Controllers must not support AzureClusters in namespaces outside this selector. An empty selector (default) indicates that AzureClusters can use this AzureSystemAssignedIdentity from any namespace. This field is intentionally not a pointer because the nil behavior (no namespaces) is undesirable here.
+AllowedNamespaces is a selector of namespaces that AzureClusters can use this ClusterPrincipal from. This is a standard Kubernetes LabelSelector, a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. Controllers must not support AzureClusters in namespaces outside this selector. An empty selector (default) indicates that AzureClusters can use this AzureSystemAssignedIdentity from any namespace. This field is intentionally not a pointer because the nil behavior (no namespaces) is undesirable here.
 
 #### Attributes
 
@@ -12844,7 +12847,7 @@ r""" AllowedNamespaces is a selector of namespaces that AzureClusters can use th
 |**matchLabels**|{str:str}|matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.||
 ### InfrastructureClusterxK8sIoV1alpha3AzureSystemAssignedIdentitySpecAllowedNamespacesMatchExpressionsItems0
 
-r""" A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
 #### Attributes
 
@@ -12855,7 +12858,7 @@ r""" A label selector requirement is a selector that contains values, a key, and
 |**values**|[str]|values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.||
 ### InfrastructureClusterxK8sIoV1alpha3AzureSystemAssignedIdentitySpecSecretRef
 
-r""" Reference to a secret containing the credentials. The secret should contain the following data keys: tenantID
+Reference to a secret containing the credentials. The secret should contain the following data keys: tenantID
 
 #### Attributes
 
@@ -12865,7 +12868,7 @@ r""" Reference to a secret containing the credentials. The secret should contain
 |**namespace**|str|Namespace defines the space within which the secret name must be unique.||
 ### InfrastructureClusterxK8sIoV1alpha3AzureUserAssignedIdentitySpec
 
-r""" Spec for this AzureUserAssignedIdentitySpec.
+Spec for this AzureUserAssignedIdentitySpec.
 
 #### Attributes
 
@@ -12876,7 +12879,7 @@ r""" Spec for this AzureUserAssignedIdentitySpec.
 |**secretRef** `required`|[InfrastructureClusterxK8sIoV1alpha3AzureUserAssignedIdentitySpecSecretRef](#infrastructureclusterxk8siov1alpha3azureuserassignedidentityspecsecretref)|secret ref||
 ### InfrastructureClusterxK8sIoV1alpha3AzureUserAssignedIdentitySpecAllowedNamespaces
 
-r""" AllowedNamespaces is a selector of namespaces that AzureClusters can use this ClusterPrincipal from. This is a standard Kubernetes LabelSelector, a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. Controllers must not support AzureClusters in namespaces outside this selector. An empty selector (default) indicates that AzureClusters can use this AzureUserAssignedIdentity from any namespace. This field is intentionally not a pointer because the nil behavior (no namespaces) is undesirable here.
+AllowedNamespaces is a selector of namespaces that AzureClusters can use this ClusterPrincipal from. This is a standard Kubernetes LabelSelector, a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. Controllers must not support AzureClusters in namespaces outside this selector. An empty selector (default) indicates that AzureClusters can use this AzureUserAssignedIdentity from any namespace. This field is intentionally not a pointer because the nil behavior (no namespaces) is undesirable here.
 
 #### Attributes
 
@@ -12886,7 +12889,7 @@ r""" AllowedNamespaces is a selector of namespaces that AzureClusters can use th
 |**matchLabels**|{str:str}|matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.||
 ### InfrastructureClusterxK8sIoV1alpha3AzureUserAssignedIdentitySpecAllowedNamespacesMatchExpressionsItems0
 
-r""" A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
 #### Attributes
 
@@ -12897,7 +12900,7 @@ r""" A label selector requirement is a selector that contains values, a key, and
 |**values**|[str]|values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.||
 ### InfrastructureClusterxK8sIoV1alpha3AzureUserAssignedIdentitySpecSecretRef
 
-r""" Reference to a secret containing the credentials. The secret should contain the following data keys: tenantID clientID
+Reference to a secret containing the credentials. The secret should contain the following data keys: tenantID clientID
 
 #### Attributes
 
@@ -12907,7 +12910,7 @@ r""" Reference to a secret containing the credentials. The secret should contain
 |**namespace**|str|Namespace defines the space within which the secret name must be unique.||
 ### AzureCluster
 
-r""" AzureCluster is the Schema for the azureclusters API.
+AzureCluster is the Schema for the azureclusters API.
 
 #### Attributes
 
@@ -12920,7 +12923,7 @@ r""" AzureCluster is the Schema for the azureclusters API.
 |**status**|[InfrastructureClusterxK8sIoV1beta1AzureClusterStatus](#infrastructureclusterxk8siov1beta1azureclusterstatus)|status||
 ### AzureClusterIdentity
 
-r""" AzureClusterIdentity is the Schema for the azureclustersidentities API.
+AzureClusterIdentity is the Schema for the azureclustersidentities API.
 
 #### Attributes
 
@@ -12933,7 +12936,7 @@ r""" AzureClusterIdentity is the Schema for the azureclustersidentities API.
 |**status**|[InfrastructureClusterxK8sIoV1beta1AzureClusterIdentityStatus](#infrastructureclusterxk8siov1beta1azureclusteridentitystatus)|status||
 ### AzureClusterTemplate
 
-r""" AzureClusterTemplate is the Schema for the azureclustertemplates API.
+AzureClusterTemplate is the Schema for the azureclustertemplates API.
 
 #### Attributes
 
@@ -12945,7 +12948,7 @@ r""" AzureClusterTemplate is the Schema for the azureclustertemplates API.
 |**spec**|[InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpec](#infrastructureclusterxk8siov1beta1azureclustertemplatespec)|spec||
 ### AzureMachine
 
-r""" AzureMachine is the Schema for the azuremachines API.
+AzureMachine is the Schema for the azuremachines API.
 
 #### Attributes
 
@@ -12958,7 +12961,7 @@ r""" AzureMachine is the Schema for the azuremachines API.
 |**status**|[InfrastructureClusterxK8sIoV1beta1AzureMachineStatus](#infrastructureclusterxk8siov1beta1azuremachinestatus)|status||
 ### AzureMachinePool
 
-r""" AzureMachinePool is the Schema for the azuremachinepools API.
+AzureMachinePool is the Schema for the azuremachinepools API.
 
 #### Attributes
 
@@ -12971,7 +12974,7 @@ r""" AzureMachinePool is the Schema for the azuremachinepools API.
 |**status**|[InfrastructureClusterxK8sIoV1beta1AzureMachinePoolStatus](#infrastructureclusterxk8siov1beta1azuremachinepoolstatus)|status||
 ### AzureMachinePoolMachine
 
-r""" AzureMachinePoolMachine is the Schema for the azuremachinepoolmachines API.
+AzureMachinePoolMachine is the Schema for the azuremachinepoolmachines API.
 
 #### Attributes
 
@@ -12984,7 +12987,7 @@ r""" AzureMachinePoolMachine is the Schema for the azuremachinepoolmachines API.
 |**status**|[InfrastructureClusterxK8sIoV1beta1AzureMachinePoolMachineStatus](#infrastructureclusterxk8siov1beta1azuremachinepoolmachinestatus)|status||
 ### AzureMachineTemplate
 
-r""" AzureMachineTemplate is the Schema for the azuremachinetemplates API.
+AzureMachineTemplate is the Schema for the azuremachinetemplates API.
 
 #### Attributes
 
@@ -12996,7 +12999,7 @@ r""" AzureMachineTemplate is the Schema for the azuremachinetemplates API.
 |**spec**|[InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpec](#infrastructureclusterxk8siov1beta1azuremachinetemplatespec)|spec||
 ### AzureManagedCluster
 
-r""" AzureManagedCluster is the Schema for the azuremanagedclusters API.
+AzureManagedCluster is the Schema for the azuremanagedclusters API.
 
 #### Attributes
 
@@ -13009,7 +13012,7 @@ r""" AzureManagedCluster is the Schema for the azuremanagedclusters API.
 |**status**|[InfrastructureClusterxK8sIoV1beta1AzureManagedClusterStatus](#infrastructureclusterxk8siov1beta1azuremanagedclusterstatus)|status||
 ### AzureManagedClusterTemplate
 
-r""" AzureManagedClusterTemplate is the Schema for the AzureManagedClusterTemplates API.
+AzureManagedClusterTemplate is the Schema for the AzureManagedClusterTemplates API.
 
 #### Attributes
 
@@ -13021,7 +13024,7 @@ r""" AzureManagedClusterTemplate is the Schema for the AzureManagedClusterTempla
 |**spec**|[InfrastructureClusterxK8sIoV1beta1AzureManagedClusterTemplateSpec](#infrastructureclusterxk8siov1beta1azuremanagedclustertemplatespec)|spec||
 ### AzureManagedControlPlane
 
-r""" AzureManagedControlPlane is the Schema for the azuremanagedcontrolplanes API.
+AzureManagedControlPlane is the Schema for the azuremanagedcontrolplanes API.
 
 #### Attributes
 
@@ -13034,7 +13037,7 @@ r""" AzureManagedControlPlane is the Schema for the azuremanagedcontrolplanes AP
 |**status**|[InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneStatus](#infrastructureclusterxk8siov1beta1azuremanagedcontrolplanestatus)|status||
 ### AzureManagedControlPlaneTemplate
 
-r""" AzureManagedControlPlaneTemplate is the Schema for the AzureManagedControlPlaneTemplates API.
+AzureManagedControlPlaneTemplate is the Schema for the AzureManagedControlPlaneTemplates API.
 
 #### Attributes
 
@@ -13046,7 +13049,7 @@ r""" AzureManagedControlPlaneTemplate is the Schema for the AzureManagedControlP
 |**spec**|[InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneTemplateSpec](#infrastructureclusterxk8siov1beta1azuremanagedcontrolplanetemplatespec)|spec||
 ### AzureManagedMachinePool
 
-r""" AzureManagedMachinePool is the Schema for the azuremanagedmachinepools API.
+AzureManagedMachinePool is the Schema for the azuremanagedmachinepools API.
 
 #### Attributes
 
@@ -13059,7 +13062,7 @@ r""" AzureManagedMachinePool is the Schema for the azuremanagedmachinepools API.
 |**status**|[InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolStatus](#infrastructureclusterxk8siov1beta1azuremanagedmachinepoolstatus)|status||
 ### AzureManagedMachinePoolTemplate
 
-r""" AzureManagedMachinePoolTemplate is the Schema for the AzureManagedMachinePoolTemplates API.
+AzureManagedMachinePoolTemplate is the Schema for the AzureManagedMachinePoolTemplates API.
 
 #### Attributes
 
@@ -13071,21 +13074,24 @@ r""" AzureManagedMachinePoolTemplate is the Schema for the AzureManagedMachinePo
 |**spec**|[InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolTemplateSpec](#infrastructureclusterxk8siov1beta1azuremanagedmachinepooltemplatespec)|spec||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterIdentitySpec
 
-r""" AzureClusterIdentitySpec defines the parameters that are used to create an AzureIdentity.
+AzureClusterIdentitySpec defines the parameters that are used to create an AzureIdentity.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**allowedNamespaces**|[InfrastructureClusterxK8sIoV1beta1AzureClusterIdentitySpecAllowedNamespaces](#infrastructureclusterxk8siov1beta1azureclusteridentityspecallowednamespaces)|allowed namespaces||
+|**certPath**|str|CertPath is the path where certificates exist. When set, it takes precedence over ClientSecret for types that use certs like ServicePrincipalCertificate.||
 |**clientID** `required`|str|ClientID is the service principal client ID.<br />Both User Assigned MSI and SP can use this field.||
 |**clientSecret**|[InfrastructureClusterxK8sIoV1beta1AzureClusterIdentitySpecClientSecret](#infrastructureclusterxk8siov1beta1azureclusteridentityspecclientsecret)|client secret||
 |**resourceID**|str|ResourceID is the Azure resource ID for the User Assigned MSI resource.<br />Only applicable when type is UserAssignedMSI.<br /><br />Deprecated: This field no longer has any effect.||
 |**tenantID** `required`|str|TenantID is the service principal primary tenant id.||
-|**type** `required`|"ServicePrincipal" | "UserAssignedMSI" | "ManualServicePrincipal" | "ServicePrincipalCertificate" | "WorkloadIdentity"|||
+|**type** `required`|"ServicePrincipal" | "UserAssignedMSI" | "ManualServicePrincipal" | "ServicePrincipalCertificate" | "WorkloadIdentity" | "UserAssignedIdentityCredential"|||
+|**userAssignedIdentityCredentialsCloudType**|str|UserAssignedIdentityCredentialsCloudType is used with UserAssignedIdentityCredentialsPath to specify the Cloud<br />type. Can only be one of the following values: public, china, or usgovernment<br />If a value is not specified, defaults to public||
+|**userAssignedIdentityCredentialsPath**|str|UserAssignedIdentityCredentialsPath is the path where an existing JSON file exists containing the JSON format of<br />a UserAssignedIdentityCredentials struct.<br />See the msi-dataplane for more details on UserAssignedIdentityCredentials - https://github.com/Azure/msi-dataplane/blob/main/pkg/dataplane/internal/client/models.go#L125||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterIdentitySpecAllowedNamespaces
 
-r""" AllowedNamespaces is used to identify the namespaces the clusters are allowed to use the identity from. Namespaces can be selected either using an array of namespaces or with label selector. An empty allowedNamespaces object indicates that AzureClusters can use this identity from any namespace. If this object is nil, no namespaces will be allowed (default behaviour, if this field is not provided) A namespace should be either in the NamespaceList or match with Selector to use the identity.
+AllowedNamespaces is used to identify the namespaces the clusters are allowed to use the identity from. Namespaces can be selected either using an array of namespaces or with label selector. An empty allowedNamespaces object indicates that AzureClusters can use this identity from any namespace. If this object is nil, no namespaces will be allowed (default behaviour, if this field is not provided) A namespace should be either in the NamespaceList or match with Selector to use the identity.
 
 #### Attributes
 
@@ -13095,7 +13101,7 @@ r""" AllowedNamespaces is used to identify the namespaces the clusters are allow
 |**selector**|[InfrastructureClusterxK8sIoV1beta1AzureClusterIdentitySpecAllowedNamespacesSelector](#infrastructureclusterxk8siov1beta1azureclusteridentityspecallowednamespacesselector)|selector||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterIdentitySpecAllowedNamespacesSelector
 
-r""" Selector is a selector of namespaces that AzureCluster can use this Identity from. This is a standard Kubernetes LabelSelector, a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed.  A nil or empty selector indicates that AzureCluster cannot use this AzureClusterIdentity from any namespace.
+Selector is a selector of namespaces that AzureCluster can use this Identity from. This is a standard Kubernetes LabelSelector, a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed.  A nil or empty selector indicates that AzureCluster cannot use this AzureClusterIdentity from any namespace.
 
 #### Attributes
 
@@ -13105,7 +13111,7 @@ r""" Selector is a selector of namespaces that AzureCluster can use this Identit
 |**matchLabels**|{str:str}|matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels<br />map is equivalent to an element of matchExpressions, whose key field is "key", the<br />operator is "In", and the values array contains only "value". The requirements are ANDed.||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterIdentitySpecAllowedNamespacesSelectorMatchExpressionsItems0
 
-r""" A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
 #### Attributes
 
@@ -13116,7 +13122,7 @@ r""" A label selector requirement is a selector that contains values, a key, and
 |**values**|[str]|values is an array of string values. If the operator is In or NotIn,<br />the values array must be non-empty. If the operator is Exists or DoesNotExist,<br />the values array must be empty. This array is replaced during a strategic<br />merge patch.||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterIdentitySpecClientSecret
 
-r""" ClientSecret is a secret reference which should contain either a Service Principal password or certificate secret.
+ClientSecret is a secret reference which should contain either a Service Principal password or certificate secret.
 
 #### Attributes
 
@@ -13126,7 +13132,7 @@ r""" ClientSecret is a secret reference which should contain either a Service Pr
 |**namespace**|str|namespace defines the space within which the secret name must be unique.||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterIdentityStatus
 
-r""" AzureClusterIdentityStatus defines the observed state of AzureClusterIdentity.
+AzureClusterIdentityStatus defines the observed state of AzureClusterIdentity.
 
 #### Attributes
 
@@ -13135,21 +13141,21 @@ r""" AzureClusterIdentityStatus defines the observed state of AzureClusterIdenti
 |**conditions**|[[InfrastructureClusterxK8sIoV1beta1AzureClusterIdentityStatusConditionsItems0](#infrastructureclusterxk8siov1beta1azureclusteridentitystatusconditionsitems0)]|Conditions defines current service state of the AzureClusterIdentity.||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterIdentityStatusConditionsItems0
 
-r""" Condition defines an observation of a Cluster API resource operational state.
+Condition defines an observation of a Cluster API resource operational state.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime** `required`|str|Last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
-|**message**|str|A human readable message indicating details about the transition.<br />This field may be empty.||
-|**reason**|str|The reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may not be empty.||
-|**severity**|str|Severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
-|**status** `required`|str|Status of the condition, one of True, False, Unknown.||
+|**lastTransitionTime** `required`|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
+|**message**|str|message is a human readable message indicating details about the transition.<br />This field may be empty.||
+|**reason**|str|reason is the reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may be empty.||
+|**severity**|str|severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
+|**status** `required`|str|status of the condition, one of True, False, Unknown.||
 |**type** `required`|str|||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterSpec
 
-r""" AzureClusterSpec defines the desired state of AzureCluster.
+AzureClusterSpec defines the desired state of AzureCluster.
 
 #### Attributes
 
@@ -13159,6 +13165,7 @@ r""" AzureClusterSpec defines the desired state of AzureCluster.
 |**azureEnvironment**|str|AzureEnvironment is the name of the AzureCloud to be used.<br />The default value that would be used by most users is "AzurePublicCloud", other values are:<br />- ChinaCloud: "AzureChinaCloud"<br />- GermanCloud: "AzureGermanCloud"<br />- PublicCloud: "AzurePublicCloud"<br />- USGovernmentCloud: "AzureUSGovernmentCloud"<br /><br />Note that values other than the default must also be accompanied by corresponding changes to the<br />aso-controller-settings Secret to configure ASO to refer to the non-Public cloud. ASO currently does<br />not support referring to multiple different clouds in a single installation. The following fields must<br />be defined in the Secret:<br />- AZURE_AUTHORITY_HOST<br />- AZURE_RESOURCE_MANAGER_ENDPOINT<br />- AZURE_RESOURCE_MANAGER_AUDIENCE<br /><br />See the [ASO docs] for more details.<br /><br />[ASO docs]: https://azure.github.io/azure-service-operator/guide/aso-controller-settings-options/||
 |**bastionSpec**|[InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpec](#infrastructureclusterxk8siov1beta1azureclusterspecbastionspec)|bastion spec||
 |**cloudProviderConfigOverrides**|[InfrastructureClusterxK8sIoV1beta1AzureClusterSpecCloudProviderConfigOverrides](#infrastructureclusterxk8siov1beta1azureclusterspeccloudproviderconfigoverrides)|cloud provider config overrides||
+|**controlPlaneEnabled**|bool|ControlPlaneEnabled enables control plane components in the cluster.|True|
 |**controlPlaneEndpoint**|[InfrastructureClusterxK8sIoV1beta1AzureClusterSpecControlPlaneEndpoint](#infrastructureclusterxk8siov1beta1azureclusterspeccontrolplaneendpoint)|control plane endpoint||
 |**extendedLocation**|[InfrastructureClusterxK8sIoV1beta1AzureClusterSpecExtendedLocation](#infrastructureclusterxk8siov1beta1azureclusterspecextendedlocation)|extended location||
 |**failureDomains**|{str:[InfrastructureClusterxK8sIoV1beta1AzureClusterSpecFailureDomainsAnon](#infrastructureclusterxk8siov1beta1azureclusterspecfailuredomainsanon)}|FailureDomains is a list of failure domains in the cluster's region, used to restrict<br />eligibility to host the control plane. A FailureDomain maps to an availability zone,<br />which is a separated group of datacenters within a region.<br />See: https://learn.microsoft.com/azure/reliability/availability-zones-overview||
@@ -13169,7 +13176,7 @@ r""" AzureClusterSpec defines the desired state of AzureCluster.
 |**subscriptionID**|str|subscription ID||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpec
 
-r""" BastionSpec encapsulates all things related to the Bastions in the cluster.
+BastionSpec encapsulates all things related to the Bastions in the cluster.
 
 #### Attributes
 
@@ -13178,7 +13185,7 @@ r""" BastionSpec encapsulates all things related to the Bastions in the cluster.
 |**azureBastion**|[InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastion](#infrastructureclusterxk8siov1beta1azureclusterspecbastionspecazurebastion)|azure bastion||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastion
 
-r""" AzureBastion specifies how the Azure Bastion cloud component should be configured.
+AzureBastion specifies how the Azure Bastion cloud component should be configured.
 
 #### Attributes
 
@@ -13191,7 +13198,7 @@ r""" AzureBastion specifies how the Azure Bastion cloud component should be conf
 |**subnet**|[InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastionSubnet](#infrastructureclusterxk8siov1beta1azureclusterspecbastionspecazurebastionsubnet)|subnet||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastionPublicIP
 
-r""" PublicIPSpec defines the inputs to create an Azure public IP address.
+PublicIPSpec defines the inputs to create an Azure public IP address.
 
 #### Attributes
 
@@ -13202,7 +13209,7 @@ r""" PublicIPSpec defines the inputs to create an Azure public IP address.
 |**name** `required`|str|name||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastionPublicIPIPTagsItems0
 
-r""" IPTag contains the IpTag associated with the object.
+IPTag contains the IpTag associated with the object.
 
 #### Attributes
 
@@ -13212,7 +13219,7 @@ r""" IPTag contains the IpTag associated with the object.
 |**type** `required`|str|||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastionSubnet
 
-r""" SubnetSpec configures an Azure subnet.
+SubnetSpec configures an Azure subnet.
 
 #### Attributes
 
@@ -13223,13 +13230,13 @@ r""" SubnetSpec configures an Azure subnet.
 |**name** `required`|str|Name defines a name for the subnet resource.||
 |**natGateway**|[InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastionSubnetNatGateway](#infrastructureclusterxk8siov1beta1azureclusterspecbastionspecazurebastionsubnetnatgateway)|nat gateway||
 |**privateEndpoints**|[[InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastionSubnetPrivateEndpointsItems0](#infrastructureclusterxk8siov1beta1azureclusterspecbastionspecazurebastionsubnetprivateendpointsitems0)]|PrivateEndpoints defines a list of private endpoints that should be attached to this subnet.||
-|**role** `required`|"node" | "control-plane" | "bastion" | "all"|Role defines the subnet role (eg. Node, ControlPlane)||
+|**role** `required`|"node" | "control-plane" | "bastion" | "cluster"|Role defines the subnet role (eg. Node, ControlPlane)||
 |**routeTable**|[InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastionSubnetRouteTable](#infrastructureclusterxk8siov1beta1azureclusterspecbastionspecazurebastionsubnetroutetable)|route table||
 |**securityGroup**|[InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastionSubnetSecurityGroup](#infrastructureclusterxk8siov1beta1azureclusterspecbastionspecazurebastionsubnetsecuritygroup)|security group||
 |**serviceEndpoints**|[[InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastionSubnetServiceEndpointsItems0](#infrastructureclusterxk8siov1beta1azureclusterspecbastionspecazurebastionsubnetserviceendpointsitems0)]|ServiceEndpoints is a slice of Virtual Network service endpoints to enable for the subnets.||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastionSubnetNatGateway
 
-r""" NatGateway associated with this subnet.
+NatGateway associated with this subnet.
 
 #### Attributes
 
@@ -13240,7 +13247,7 @@ r""" NatGateway associated with this subnet.
 |**name** `required`|str|name||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastionSubnetNatGatewayIP
 
-r""" PublicIPSpec defines the inputs to create an Azure public IP address.
+PublicIPSpec defines the inputs to create an Azure public IP address.
 
 #### Attributes
 
@@ -13251,7 +13258,7 @@ r""" PublicIPSpec defines the inputs to create an Azure public IP address.
 |**name** `required`|str|name||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastionSubnetNatGatewayIPIPTagsItems0
 
-r""" IPTag contains the IpTag associated with the object.
+IPTag contains the IpTag associated with the object.
 
 #### Attributes
 
@@ -13261,7 +13268,7 @@ r""" IPTag contains the IpTag associated with the object.
 |**type** `required`|str|||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastionSubnetPrivateEndpointsItems0
 
-r""" PrivateEndpointSpec configures an Azure Private Endpoint.
+PrivateEndpointSpec configures an Azure Private Endpoint.
 
 #### Attributes
 
@@ -13276,7 +13283,7 @@ r""" PrivateEndpointSpec configures an Azure Private Endpoint.
 |**privateLinkServiceConnections**|[[InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastionSubnetPrivateEndpointsItems0PrivateLinkServiceConnectionsItems0](#infrastructureclusterxk8siov1beta1azureclusterspecbastionspecazurebastionsubnetprivateendpointsitems0privatelinkserviceconnectionsitems0)]|PrivateLinkServiceConnections specifies Private Link Service Connections of the private endpoint.||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastionSubnetPrivateEndpointsItems0PrivateLinkServiceConnectionsItems0
 
-r""" PrivateLinkServiceConnection defines the specification for a private link service connection associated with a private endpoint.
+PrivateLinkServiceConnection defines the specification for a private link service connection associated with a private endpoint.
 
 #### Attributes
 
@@ -13288,7 +13295,7 @@ r""" PrivateLinkServiceConnection defines the specification for a private link s
 |**requestMessage**|str|RequestMessage specifies a message passed to the owner of the remote resource with the private endpoint connection request.||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastionSubnetRouteTable
 
-r""" RouteTable defines the route table that should be attached to this subnet.
+RouteTable defines the route table that should be attached to this subnet.
 
 #### Attributes
 
@@ -13298,7 +13305,7 @@ r""" RouteTable defines the route table that should be attached to this subnet.
 |**name** `required`|str|name||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastionSubnetSecurityGroup
 
-r""" SecurityGroup defines the NSG (network security group) that should be attached to this subnet.
+SecurityGroup defines the NSG (network security group) that should be attached to this subnet.
 
 #### Attributes
 
@@ -13310,7 +13317,7 @@ r""" SecurityGroup defines the NSG (network security group) that should be attac
 |**tags**|{str:str}|Tags defines a map of tags.||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastionSubnetSecurityGroupSecurityRulesItems0
 
-r""" SecurityRule defines an Azure security rule for security groups.
+SecurityRule defines an Azure security rule for security groups.
 
 #### Attributes
 
@@ -13329,7 +13336,7 @@ r""" SecurityRule defines an Azure security rule for security groups.
 |**sources**|[str]|Sources specifies The CIDR or source IP ranges.||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastionSubnetServiceEndpointsItems0
 
-r""" ServiceEndpointSpec configures an Azure Service Endpoint.
+ServiceEndpointSpec configures an Azure Service Endpoint.
 
 #### Attributes
 
@@ -13339,7 +13346,7 @@ r""" ServiceEndpointSpec configures an Azure Service Endpoint.
 |**service** `required`|str|service||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterSpecCloudProviderConfigOverrides
 
-r""" CloudProviderConfigOverrides is an optional set of configuration values that can be overridden in azure cloud provider config. This is only a subset of options that are available in azure cloud provider config. Some values for the cloud provider config are inferred from other parts of cluster api provider azure spec, and may not be available for overrides. See: https://cloud-provider-azure.sigs.k8s.io/install/configs Note: All cloud provider config values can be customized by creating the secret beforehand. CloudProviderConfigOverrides is only used when the secret is managed by the Azure Provider.
+CloudProviderConfigOverrides is an optional set of configuration values that can be overridden in azure cloud provider config. This is only a subset of options that are available in azure cloud provider config. Some values for the cloud provider config are inferred from other parts of cluster api provider azure spec, and may not be available for overrides. See: https://cloud-provider-azure.sigs.k8s.io/install/configs Note: All cloud provider config values can be customized by creating the secret beforehand. CloudProviderConfigOverrides is only used when the secret is managed by the Azure Provider.
 
 #### Attributes
 
@@ -13349,7 +13356,7 @@ r""" CloudProviderConfigOverrides is an optional set of configuration values tha
 |**rateLimits**|[[InfrastructureClusterxK8sIoV1beta1AzureClusterSpecCloudProviderConfigOverridesRateLimitsItems0](#infrastructureclusterxk8siov1beta1azureclusterspeccloudproviderconfigoverridesratelimitsitems0)]|rate limits||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterSpecCloudProviderConfigOverridesBackOffs
 
-r""" BackOffConfig indicates the back-off config options.
+BackOffConfig indicates the back-off config options.
 
 #### Attributes
 
@@ -13362,7 +13369,7 @@ r""" BackOffConfig indicates the back-off config options.
 |**cloudProviderBackoffRetries**|int|cloud provider backoff retries||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterSpecCloudProviderConfigOverridesRateLimitsItems0
 
-r""" RateLimitSpec represents the rate limit configuration for a particular kind of resource. Eg. loadBalancerRateLimit is used to configure rate limits for load balancers. This eventually gets converted to CloudProviderRateLimitConfig that cloud-provider-azure expects. See: https://github.com/kubernetes-sigs/cloud-provider-azure/blob/d585c2031925b39c925624302f22f8856e29e352/pkg/provider/azure_ratelimit.go#L25 We cannot use CloudProviderRateLimitConfig directly because floating point values are not supported in controller-tools. See: https://github.com/kubernetes-sigs/controller-tools/issues/245
+RateLimitSpec represents the rate limit configuration for a particular kind of resource. Eg. loadBalancerRateLimit is used to configure rate limits for load balancers. This eventually gets converted to CloudProviderRateLimitConfig that cloud-provider-azure expects. See: https://github.com/kubernetes-sigs/cloud-provider-azure/blob/d585c2031925b39c925624302f22f8856e29e352/pkg/provider/azure_ratelimit.go#L25 We cannot use CloudProviderRateLimitConfig directly because floating point values are not supported in controller-tools. See: https://github.com/kubernetes-sigs/controller-tools/issues/245
 
 #### Attributes
 
@@ -13372,7 +13379,7 @@ r""" RateLimitSpec represents the rate limit configuration for a particular kind
 |**name** `required`|"defaultRateLimit" | "routeRateLimit" | "subnetsRateLimit" | "interfaceRateLimit" | "routeTableRateLimit" | "loadBalancerRateLimit" | "publicIPAddressRateLimit" | "securityGroupRateLimit" | "virtualMachineRateLimit" | "storageAccountRateLimit" | "diskRateLimit" | "snapshotRateLimit" | "virtualMachineScaleSetRateLimit" | "virtualMachineSizesRateLimit" | "availabilitySetRateLimit"|Name is the name of the rate limit spec.||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterSpecCloudProviderConfigOverridesRateLimitsItems0Config
 
-r""" RateLimitConfig indicates the rate limit config options.
+RateLimitConfig indicates the rate limit config options.
 
 #### Attributes
 
@@ -13385,17 +13392,17 @@ r""" RateLimitConfig indicates the rate limit config options.
 |**cloudProviderRateLimitQPSWrite**|int | str|cloud provider rate limit QPS write||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterSpecControlPlaneEndpoint
 
-r""" ControlPlaneEndpoint represents the endpoint used to communicate with the control plane. It is not recommended to set this when creating an AzureCluster as CAPZ will set this for you. However, if it is set, CAPZ will not change it.
+ControlPlaneEndpoint represents the endpoint used to communicate with the control plane. It is not recommended to set this when creating an AzureCluster as CAPZ will set this for you. However, if it is set, CAPZ will not change it.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**host** `required`|str|The hostname on which the API server is serving.||
-|**port** `required`|int|The port on which the API server is serving.||
+|**host** `required`|str|host is the hostname on which the API server is serving.||
+|**port** `required`|int|port is the port on which the API server is serving.||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterSpecExtendedLocation
 
-r""" ExtendedLocation is an optional set of ExtendedLocation properties for clusters on Azure public MEC.
+ExtendedLocation is an optional set of ExtendedLocation properties for clusters on Azure public MEC.
 
 #### Attributes
 
@@ -13405,24 +13412,24 @@ r""" ExtendedLocation is an optional set of ExtendedLocation properties for clus
 |**type** `required` `readOnly`|"EdgeZone"||"EdgeZone"|
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterSpecFailureDomainsAnon
 
-r""" FailureDomainSpec is the Schema for Cluster API failure domains. It allows controllers to understand how many failure domains a cluster can optionally span across.
+FailureDomainSpec is the Schema for Cluster API failure domains. It allows controllers to understand how many failure domains a cluster can optionally span across.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**attributes**|{str:str}|Attributes is a free form map of attributes an infrastructure provider might use or require.||
-|**controlPlane**|bool|ControlPlane determines if this failure domain is suitable for use by control plane machines.||
+|**attributes**|{str:str}|attributes is a free form map of attributes an infrastructure provider might use or require.||
+|**controlPlane**|bool|controlPlane determines if this failure domain is suitable for use by control plane machines.||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterSpecIdentityRef
 
-r""" IdentityRef is a reference to an AzureIdentity to be used when reconciling this cluster
+IdentityRef is a reference to an AzureIdentity to be used when reconciling this cluster
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**apiVersion**|str|API version of the referent.||
-|**fieldPath**|str|If referring to a piece of an object instead of an entire object, this string<br />should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2].<br />For example, if the object reference is to a container within a pod, this would take on a value like:<br />"spec.containers{name}" (where "name" refers to the name of the container that triggered<br />the event) or if no container name is specified "spec.containers[2]" (container with<br />index 2 in this pod). This syntax is chosen only to have some well-defined way of<br />referencing a part of an object.<br />TODO: this design is not final and this field is subject to change in the future.||
+|**fieldPath**|str|If referring to a piece of an object instead of an entire object, this string<br />should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2].<br />For example, if the object reference is to a container within a pod, this would take on a value like:<br />"spec.containers{name}" (where "name" refers to the name of the container that triggered<br />the event) or if no container name is specified "spec.containers[2]" (container with<br />index 2 in this pod). This syntax is chosen only to have some well-defined way of<br />referencing a part of an object.||
 |**kind**|str|Kind of the referent.<br />More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds||
 |**name**|str|Name of the referent.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names||
 |**namespace**|str|Namespace of the referent.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/||
@@ -13430,21 +13437,23 @@ r""" IdentityRef is a reference to an AzureIdentity to be used when reconciling 
 |**uid**|str|UID of the referent.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpec
 
-r""" NetworkSpec encapsulates all things related to Azure network.
+NetworkSpec encapsulates all things related to Azure network.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
+|**additionalAPIServerLBPorts**|[[InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecAdditionalAPIServerLBPortsItems0](#infrastructureclusterxk8siov1beta1azureclusterspecnetworkspecadditionalapiserverlbportsitems0)]|AdditionalAPIServerLBPorts specifies extra inbound ports for the APIServer load balancer.<br />Each port specified (e.g., 9345) creates an inbound rule where the frontend port and the backend port are the same.||
 |**apiServerLB**|[InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecAPIServerLB](#infrastructureclusterxk8siov1beta1azureclusterspecnetworkspecapiserverlb)|api server l b||
 |**controlPlaneOutboundLB**|[InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecControlPlaneOutboundLB](#infrastructureclusterxk8siov1beta1azureclusterspecnetworkspeccontrolplaneoutboundlb)|control plane outbound l b||
 |**nodeOutboundLB**|[InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecNodeOutboundLB](#infrastructureclusterxk8siov1beta1azureclusterspecnetworkspecnodeoutboundlb)|node outbound l b||
 |**privateDNSZoneName**|str|PrivateDNSZoneName defines the zone name for the Azure Private DNS.||
+|**privateDNSZoneResourceGroup**|str|PrivateDNSZoneResourceGroup defines the resource group to be used for Azure Private DNS Zone.<br />If not specified, the resource group of the cluster will be used to create the Azure Private DNS Zone.||
 |**subnets**|[[InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecSubnetsItems0](#infrastructureclusterxk8siov1beta1azureclusterspecnetworkspecsubnetsitems0)]|Subnets is the configuration for the control-plane subnet and the node subnet.||
 |**vnet**|[InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecVnet](#infrastructureclusterxk8siov1beta1azureclusterspecnetworkspecvnet)|vnet||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecAPIServerLB
 
-r""" APIServerLB is the configuration for the control-plane load balancer.
+APIServerLB is the configuration for the control-plane load balancer.
 
 #### Attributes
 
@@ -13460,7 +13469,7 @@ r""" APIServerLB is the configuration for the control-plane load balancer.
 |**type**|str|||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecAPIServerLBBackendPool
 
-r""" BackendPool describes the backend pool of the load balancer.
+BackendPool describes the backend pool of the load balancer.
 
 #### Attributes
 
@@ -13469,7 +13478,7 @@ r""" BackendPool describes the backend pool of the load balancer.
 |**name**|str|Name specifies the name of backend pool for the load balancer. If not specified, the default name will<br />be set, depending on the load balancer role.||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecAPIServerLBFrontendIPsItems0
 
-r""" FrontendIP defines a load balancer frontend IP configuration.
+FrontendIP defines a load balancer frontend IP configuration.
 
 #### Attributes
 
@@ -13480,7 +13489,7 @@ r""" FrontendIP defines a load balancer frontend IP configuration.
 |**publicIP**|[InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecAPIServerLBFrontendIPsItems0PublicIP](#infrastructureclusterxk8siov1beta1azureclusterspecnetworkspecapiserverlbfrontendipsitems0publicip)|public IP||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecAPIServerLBFrontendIPsItems0PublicIP
 
-r""" PublicIPSpec defines the inputs to create an Azure public IP address.
+PublicIPSpec defines the inputs to create an Azure public IP address.
 
 #### Attributes
 
@@ -13491,7 +13500,7 @@ r""" PublicIPSpec defines the inputs to create an Azure public IP address.
 |**name** `required`|str|name||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecAPIServerLBFrontendIPsItems0PublicIPIPTagsItems0
 
-r""" IPTag contains the IpTag associated with the object.
+IPTag contains the IpTag associated with the object.
 
 #### Attributes
 
@@ -13499,9 +13508,19 @@ r""" IPTag contains the IpTag associated with the object.
 | --- | --- | --- | --- |
 |**tag** `required`|str|Tag specifies the value of the IP tag associated with the public IP. Example: SQL.||
 |**type** `required`|str|||
+### InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecAdditionalAPIServerLBPortsItems0
+
+LoadBalancerPort specifies additional port for the API server load balancer.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**name** `required`|str|Name for the additional port within LB definition||
+|**port** `required`|int|Port for the LB definition||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecControlPlaneOutboundLB
 
-r""" ControlPlaneOutboundLB is the configuration for the control-plane outbound load balancer. This is different from APIServerLB, and is used only in private clusters (optionally) for enabling outbound traffic.
+ControlPlaneOutboundLB is the configuration for the control-plane outbound load balancer. This is different from APIServerLB, and is used only in private clusters (optionally) for enabling outbound traffic.
 
 #### Attributes
 
@@ -13517,7 +13536,7 @@ r""" ControlPlaneOutboundLB is the configuration for the control-plane outbound 
 |**type**|str|||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecControlPlaneOutboundLBBackendPool
 
-r""" BackendPool describes the backend pool of the load balancer.
+BackendPool describes the backend pool of the load balancer.
 
 #### Attributes
 
@@ -13526,7 +13545,7 @@ r""" BackendPool describes the backend pool of the load balancer.
 |**name**|str|Name specifies the name of backend pool for the load balancer. If not specified, the default name will<br />be set, depending on the load balancer role.||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecControlPlaneOutboundLBFrontendIPsItems0
 
-r""" FrontendIP defines a load balancer frontend IP configuration.
+FrontendIP defines a load balancer frontend IP configuration.
 
 #### Attributes
 
@@ -13537,7 +13556,7 @@ r""" FrontendIP defines a load balancer frontend IP configuration.
 |**publicIP**|[InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecControlPlaneOutboundLBFrontendIPsItems0PublicIP](#infrastructureclusterxk8siov1beta1azureclusterspecnetworkspeccontrolplaneoutboundlbfrontendipsitems0publicip)|public IP||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecControlPlaneOutboundLBFrontendIPsItems0PublicIP
 
-r""" PublicIPSpec defines the inputs to create an Azure public IP address.
+PublicIPSpec defines the inputs to create an Azure public IP address.
 
 #### Attributes
 
@@ -13548,7 +13567,7 @@ r""" PublicIPSpec defines the inputs to create an Azure public IP address.
 |**name** `required`|str|name||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecControlPlaneOutboundLBFrontendIPsItems0PublicIPIPTagsItems0
 
-r""" IPTag contains the IpTag associated with the object.
+IPTag contains the IpTag associated with the object.
 
 #### Attributes
 
@@ -13558,7 +13577,7 @@ r""" IPTag contains the IpTag associated with the object.
 |**type** `required`|str|||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecNodeOutboundLB
 
-r""" NodeOutboundLB is the configuration for the node outbound load balancer.
+NodeOutboundLB is the configuration for the node outbound load balancer.
 
 #### Attributes
 
@@ -13574,7 +13593,7 @@ r""" NodeOutboundLB is the configuration for the node outbound load balancer.
 |**type**|str|||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecNodeOutboundLBBackendPool
 
-r""" BackendPool describes the backend pool of the load balancer.
+BackendPool describes the backend pool of the load balancer.
 
 #### Attributes
 
@@ -13583,7 +13602,7 @@ r""" BackendPool describes the backend pool of the load balancer.
 |**name**|str|Name specifies the name of backend pool for the load balancer. If not specified, the default name will<br />be set, depending on the load balancer role.||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecNodeOutboundLBFrontendIPsItems0
 
-r""" FrontendIP defines a load balancer frontend IP configuration.
+FrontendIP defines a load balancer frontend IP configuration.
 
 #### Attributes
 
@@ -13594,7 +13613,7 @@ r""" FrontendIP defines a load balancer frontend IP configuration.
 |**publicIP**|[InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecNodeOutboundLBFrontendIPsItems0PublicIP](#infrastructureclusterxk8siov1beta1azureclusterspecnetworkspecnodeoutboundlbfrontendipsitems0publicip)|public IP||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecNodeOutboundLBFrontendIPsItems0PublicIP
 
-r""" PublicIPSpec defines the inputs to create an Azure public IP address.
+PublicIPSpec defines the inputs to create an Azure public IP address.
 
 #### Attributes
 
@@ -13605,7 +13624,7 @@ r""" PublicIPSpec defines the inputs to create an Azure public IP address.
 |**name** `required`|str|name||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecNodeOutboundLBFrontendIPsItems0PublicIPIPTagsItems0
 
-r""" IPTag contains the IpTag associated with the object.
+IPTag contains the IpTag associated with the object.
 
 #### Attributes
 
@@ -13615,7 +13634,7 @@ r""" IPTag contains the IpTag associated with the object.
 |**type** `required`|str|||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecSubnetsItems0
 
-r""" SubnetSpec configures an Azure subnet.
+SubnetSpec configures an Azure subnet.
 
 #### Attributes
 
@@ -13626,13 +13645,13 @@ r""" SubnetSpec configures an Azure subnet.
 |**name** `required`|str|Name defines a name for the subnet resource.||
 |**natGateway**|[InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecSubnetsItems0NatGateway](#infrastructureclusterxk8siov1beta1azureclusterspecnetworkspecsubnetsitems0natgateway)|nat gateway||
 |**privateEndpoints**|[[InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecSubnetsItems0PrivateEndpointsItems0](#infrastructureclusterxk8siov1beta1azureclusterspecnetworkspecsubnetsitems0privateendpointsitems0)]|PrivateEndpoints defines a list of private endpoints that should be attached to this subnet.||
-|**role** `required`|"node" | "control-plane" | "bastion" | "all"|Role defines the subnet role (eg. Node, ControlPlane)||
+|**role** `required`|"node" | "control-plane" | "bastion" | "cluster"|Role defines the subnet role (eg. Node, ControlPlane)||
 |**routeTable**|[InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecSubnetsItems0RouteTable](#infrastructureclusterxk8siov1beta1azureclusterspecnetworkspecsubnetsitems0routetable)|route table||
 |**securityGroup**|[InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecSubnetsItems0SecurityGroup](#infrastructureclusterxk8siov1beta1azureclusterspecnetworkspecsubnetsitems0securitygroup)|security group||
 |**serviceEndpoints**|[[InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecSubnetsItems0ServiceEndpointsItems0](#infrastructureclusterxk8siov1beta1azureclusterspecnetworkspecsubnetsitems0serviceendpointsitems0)]|ServiceEndpoints is a slice of Virtual Network service endpoints to enable for the subnets.||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecSubnetsItems0NatGateway
 
-r""" NatGateway associated with this subnet.
+NatGateway associated with this subnet.
 
 #### Attributes
 
@@ -13643,7 +13662,7 @@ r""" NatGateway associated with this subnet.
 |**name** `required`|str|name||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecSubnetsItems0NatGatewayIP
 
-r""" PublicIPSpec defines the inputs to create an Azure public IP address.
+PublicIPSpec defines the inputs to create an Azure public IP address.
 
 #### Attributes
 
@@ -13654,7 +13673,7 @@ r""" PublicIPSpec defines the inputs to create an Azure public IP address.
 |**name** `required`|str|name||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecSubnetsItems0NatGatewayIPIPTagsItems0
 
-r""" IPTag contains the IpTag associated with the object.
+IPTag contains the IpTag associated with the object.
 
 #### Attributes
 
@@ -13664,7 +13683,7 @@ r""" IPTag contains the IpTag associated with the object.
 |**type** `required`|str|||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecSubnetsItems0PrivateEndpointsItems0
 
-r""" PrivateEndpointSpec configures an Azure Private Endpoint.
+PrivateEndpointSpec configures an Azure Private Endpoint.
 
 #### Attributes
 
@@ -13679,7 +13698,7 @@ r""" PrivateEndpointSpec configures an Azure Private Endpoint.
 |**privateLinkServiceConnections**|[[InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecSubnetsItems0PrivateEndpointsItems0PrivateLinkServiceConnectionsItems0](#infrastructureclusterxk8siov1beta1azureclusterspecnetworkspecsubnetsitems0privateendpointsitems0privatelinkserviceconnectionsitems0)]|PrivateLinkServiceConnections specifies Private Link Service Connections of the private endpoint.||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecSubnetsItems0PrivateEndpointsItems0PrivateLinkServiceConnectionsItems0
 
-r""" PrivateLinkServiceConnection defines the specification for a private link service connection associated with a private endpoint.
+PrivateLinkServiceConnection defines the specification for a private link service connection associated with a private endpoint.
 
 #### Attributes
 
@@ -13691,7 +13710,7 @@ r""" PrivateLinkServiceConnection defines the specification for a private link s
 |**requestMessage**|str|RequestMessage specifies a message passed to the owner of the remote resource with the private endpoint connection request.||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecSubnetsItems0RouteTable
 
-r""" RouteTable defines the route table that should be attached to this subnet.
+RouteTable defines the route table that should be attached to this subnet.
 
 #### Attributes
 
@@ -13701,7 +13720,7 @@ r""" RouteTable defines the route table that should be attached to this subnet.
 |**name** `required`|str|name||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecSubnetsItems0SecurityGroup
 
-r""" SecurityGroup defines the NSG (network security group) that should be attached to this subnet.
+SecurityGroup defines the NSG (network security group) that should be attached to this subnet.
 
 #### Attributes
 
@@ -13713,7 +13732,7 @@ r""" SecurityGroup defines the NSG (network security group) that should be attac
 |**tags**|{str:str}|Tags defines a map of tags.||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecSubnetsItems0SecurityGroupSecurityRulesItems0
 
-r""" SecurityRule defines an Azure security rule for security groups.
+SecurityRule defines an Azure security rule for security groups.
 
 #### Attributes
 
@@ -13732,7 +13751,7 @@ r""" SecurityRule defines an Azure security rule for security groups.
 |**sources**|[str]|Sources specifies The CIDR or source IP ranges.||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecSubnetsItems0ServiceEndpointsItems0
 
-r""" ServiceEndpointSpec configures an Azure Service Endpoint.
+ServiceEndpointSpec configures an Azure Service Endpoint.
 
 #### Attributes
 
@@ -13742,7 +13761,7 @@ r""" ServiceEndpointSpec configures an Azure Service Endpoint.
 |**service** `required`|str|service||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecVnet
 
-r""" Vnet is the configuration for the Azure virtual network.
+Vnet is the configuration for the Azure virtual network.
 
 #### Attributes
 
@@ -13756,7 +13775,7 @@ r""" Vnet is the configuration for the Azure virtual network.
 |**tags**|{str:str}|Tags is a collection of tags describing the resource.||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecVnetPeeringsItems0
 
-r""" VnetPeeringSpec specifies an existing remote virtual network to peer with the AzureCluster's virtual network.
+VnetPeeringSpec specifies an existing remote virtual network to peer with the AzureCluster's virtual network.
 
 #### Attributes
 
@@ -13768,7 +13787,7 @@ r""" VnetPeeringSpec specifies an existing remote virtual network to peer with t
 |**reversePeeringProperties**|[InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecVnetPeeringsItems0ReversePeeringProperties](#infrastructureclusterxk8siov1beta1azureclusterspecnetworkspecvnetpeeringsitems0reversepeeringproperties)|reverse peering properties||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecVnetPeeringsItems0ForwardPeeringProperties
 
-r""" ForwardPeeringProperties specifies VnetPeeringProperties for peering from the cluster's virtual network to the remote virtual network.
+ForwardPeeringProperties specifies VnetPeeringProperties for peering from the cluster's virtual network to the remote virtual network.
 
 #### Attributes
 
@@ -13780,7 +13799,7 @@ r""" ForwardPeeringProperties specifies VnetPeeringProperties for peering from t
 |**useRemoteGateways**|bool|UseRemoteGateways specifies if remote gateways can be used on this virtual network.<br />If the flag is set to true, and allowGatewayTransit on remote peering is also set to true, the virtual network<br />will use the gateways of the remote virtual network for transit. Only one peering can have this flag set to true.<br />This flag cannot be set if virtual network already has a gateway.||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecVnetPeeringsItems0ReversePeeringProperties
 
-r""" ReversePeeringProperties specifies VnetPeeringProperties for peering from the remote virtual network to the cluster's virtual network.
+ReversePeeringProperties specifies VnetPeeringProperties for peering from the remote virtual network to the cluster's virtual network.
 
 #### Attributes
 
@@ -13792,7 +13811,7 @@ r""" ReversePeeringProperties specifies VnetPeeringProperties for peering from t
 |**useRemoteGateways**|bool|UseRemoteGateways specifies if remote gateways can be used on this virtual network.<br />If the flag is set to true, and allowGatewayTransit on remote peering is also set to true, the virtual network<br />will use the gateways of the remote virtual network for transit. Only one peering can have this flag set to true.<br />This flag cannot be set if virtual network already has a gateway.||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterStatus
 
-r""" AzureClusterStatus defines the observed state of AzureCluster.
+AzureClusterStatus defines the observed state of AzureCluster.
 
 #### Attributes
 
@@ -13804,31 +13823,31 @@ r""" AzureClusterStatus defines the observed state of AzureCluster.
 |**ready**|bool|Ready is true when the provider resource is ready.||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterStatusConditionsItems0
 
-r""" Condition defines an observation of a Cluster API resource operational state.
+Condition defines an observation of a Cluster API resource operational state.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime** `required`|str|Last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
-|**message**|str|A human readable message indicating details about the transition.<br />This field may be empty.||
-|**reason**|str|The reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may not be empty.||
-|**severity**|str|Severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
-|**status** `required`|str|Status of the condition, one of True, False, Unknown.||
+|**lastTransitionTime** `required`|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
+|**message**|str|message is a human readable message indicating details about the transition.<br />This field may be empty.||
+|**reason**|str|reason is the reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may be empty.||
+|**severity**|str|severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
+|**status** `required`|str|status of the condition, one of True, False, Unknown.||
 |**type** `required`|str|||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterStatusFailureDomainsAnon
 
-r""" FailureDomainSpec is the Schema for Cluster API failure domains. It allows controllers to understand how many failure domains a cluster can optionally span across.
+FailureDomainSpec is the Schema for Cluster API failure domains. It allows controllers to understand how many failure domains a cluster can optionally span across.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**attributes**|{str:str}|Attributes is a free form map of attributes an infrastructure provider might use or require.||
-|**controlPlane**|bool|ControlPlane determines if this failure domain is suitable for use by control plane machines.||
+|**attributes**|{str:str}|attributes is a free form map of attributes an infrastructure provider might use or require.||
+|**controlPlane**|bool|controlPlane determines if this failure domain is suitable for use by control plane machines.||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterStatusLongRunningOperationStatesItems0
 
-r""" Future contains the data needed for an Azure long-running operation to continue across reconcile loops.
+Future contains the data needed for an Azure long-running operation to continue across reconcile loops.
 
 #### Attributes
 
@@ -13841,7 +13860,7 @@ r""" Future contains the data needed for an Azure long-running operation to cont
 |**type** `required`|str|||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpec
 
-r""" AzureClusterTemplateSpec defines the desired state of AzureClusterTemplate.
+AzureClusterTemplateSpec defines the desired state of AzureClusterTemplate.
 
 #### Attributes
 
@@ -13850,7 +13869,7 @@ r""" AzureClusterTemplateSpec defines the desired state of AzureClusterTemplate.
 |**template** `required`|[InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplate](#infrastructureclusterxk8siov1beta1azureclustertemplatespectemplate)|template||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplate
 
-r""" AzureClusterTemplateResource describes the data needed to create an AzureCluster from a template.
+AzureClusterTemplateResource describes the data needed to create an AzureCluster from a template.
 
 #### Attributes
 
@@ -13859,7 +13878,7 @@ r""" AzureClusterTemplateResource describes the data needed to create an AzureCl
 |**spec** `required`|[InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpec](#infrastructureclusterxk8siov1beta1azureclustertemplatespectemplatespec)|spec||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpec
 
-r""" AzureClusterTemplateResourceSpec specifies an Azure cluster template resource.
+AzureClusterTemplateResourceSpec specifies an Azure cluster template resource.
 
 #### Attributes
 
@@ -13877,7 +13896,7 @@ r""" AzureClusterTemplateResourceSpec specifies an Azure cluster template resour
 |**subscriptionID**|str|subscription ID||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecBastionSpec
 
-r""" BastionSpec encapsulates all things related to the Bastions in the cluster.
+BastionSpec encapsulates all things related to the Bastions in the cluster.
 
 #### Attributes
 
@@ -13886,7 +13905,7 @@ r""" BastionSpec encapsulates all things related to the Bastions in the cluster.
 |**azureBastion**|[InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecBastionSpecAzureBastion](#infrastructureclusterxk8siov1beta1azureclustertemplatespectemplatespecbastionspecazurebastion)|azure bastion||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecBastionSpecAzureBastion
 
-r""" AzureBastionTemplateSpec specifies a template for an Azure Bastion host.
+AzureBastionTemplateSpec specifies a template for an Azure Bastion host.
 
 #### Attributes
 
@@ -13895,7 +13914,7 @@ r""" AzureBastionTemplateSpec specifies a template for an Azure Bastion host.
 |**subnet**|[InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecBastionSpecAzureBastionSubnet](#infrastructureclusterxk8siov1beta1azureclustertemplatespectemplatespecbastionspecazurebastionsubnet)|subnet||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecBastionSpecAzureBastionSubnet
 
-r""" SubnetTemplateSpec specifies a template for a subnet.
+SubnetTemplateSpec specifies a template for a subnet.
 
 #### Attributes
 
@@ -13905,12 +13924,12 @@ r""" SubnetTemplateSpec specifies a template for a subnet.
 |**name** `required`|str|Name defines a name for the subnet resource.||
 |**natGateway**|[InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecBastionSpecAzureBastionSubnetNatGateway](#infrastructureclusterxk8siov1beta1azureclustertemplatespectemplatespecbastionspecazurebastionsubnetnatgateway)|nat gateway||
 |**privateEndpoints**|[[InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecBastionSpecAzureBastionSubnetPrivateEndpointsItems0](#infrastructureclusterxk8siov1beta1azureclustertemplatespectemplatespecbastionspecazurebastionsubnetprivateendpointsitems0)]|PrivateEndpoints defines a list of private endpoints that should be attached to this subnet.||
-|**role** `required`|"node" | "control-plane" | "bastion" | "all"|Role defines the subnet role (eg. Node, ControlPlane)||
+|**role** `required`|"node" | "control-plane" | "bastion" | "cluster"|Role defines the subnet role (eg. Node, ControlPlane)||
 |**securityGroup**|[InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecBastionSpecAzureBastionSubnetSecurityGroup](#infrastructureclusterxk8siov1beta1azureclustertemplatespectemplatespecbastionspecazurebastionsubnetsecuritygroup)|security group||
 |**serviceEndpoints**|[[InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecBastionSpecAzureBastionSubnetServiceEndpointsItems0](#infrastructureclusterxk8siov1beta1azureclustertemplatespectemplatespecbastionspecazurebastionsubnetserviceendpointsitems0)]|ServiceEndpoints is a slice of Virtual Network service endpoints to enable for the subnets.||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecBastionSpecAzureBastionSubnetNatGateway
 
-r""" NatGateway associated with this subnet.
+NatGateway associated with this subnet.
 
 #### Attributes
 
@@ -13919,7 +13938,7 @@ r""" NatGateway associated with this subnet.
 |**name** `required`|str|name||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecBastionSpecAzureBastionSubnetPrivateEndpointsItems0
 
-r""" PrivateEndpointSpec configures an Azure Private Endpoint.
+PrivateEndpointSpec configures an Azure Private Endpoint.
 
 #### Attributes
 
@@ -13934,7 +13953,7 @@ r""" PrivateEndpointSpec configures an Azure Private Endpoint.
 |**privateLinkServiceConnections**|[[InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecBastionSpecAzureBastionSubnetPrivateEndpointsItems0PrivateLinkServiceConnectionsItems0](#infrastructureclusterxk8siov1beta1azureclustertemplatespectemplatespecbastionspecazurebastionsubnetprivateendpointsitems0privatelinkserviceconnectionsitems0)]|PrivateLinkServiceConnections specifies Private Link Service Connections of the private endpoint.||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecBastionSpecAzureBastionSubnetPrivateEndpointsItems0PrivateLinkServiceConnectionsItems0
 
-r""" PrivateLinkServiceConnection defines the specification for a private link service connection associated with a private endpoint.
+PrivateLinkServiceConnection defines the specification for a private link service connection associated with a private endpoint.
 
 #### Attributes
 
@@ -13946,7 +13965,7 @@ r""" PrivateLinkServiceConnection defines the specification for a private link s
 |**requestMessage**|str|RequestMessage specifies a message passed to the owner of the remote resource with the private endpoint connection request.||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecBastionSpecAzureBastionSubnetSecurityGroup
 
-r""" SecurityGroup defines the NSG (network security group) that should be attached to this subnet.
+SecurityGroup defines the NSG (network security group) that should be attached to this subnet.
 
 #### Attributes
 
@@ -13956,7 +13975,7 @@ r""" SecurityGroup defines the NSG (network security group) that should be attac
 |**tags**|{str:str}|Tags defines a map of tags.||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecBastionSpecAzureBastionSubnetSecurityGroupSecurityRulesItems0
 
-r""" SecurityRule defines an Azure security rule for security groups.
+SecurityRule defines an Azure security rule for security groups.
 
 #### Attributes
 
@@ -13975,7 +13994,7 @@ r""" SecurityRule defines an Azure security rule for security groups.
 |**sources**|[str]|Sources specifies The CIDR or source IP ranges.||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecBastionSpecAzureBastionSubnetServiceEndpointsItems0
 
-r""" ServiceEndpointSpec configures an Azure Service Endpoint.
+ServiceEndpointSpec configures an Azure Service Endpoint.
 
 #### Attributes
 
@@ -13985,7 +14004,7 @@ r""" ServiceEndpointSpec configures an Azure Service Endpoint.
 |**service** `required`|str|service||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecCloudProviderConfigOverrides
 
-r""" CloudProviderConfigOverrides is an optional set of configuration values that can be overridden in azure cloud provider config. This is only a subset of options that are available in azure cloud provider config. Some values for the cloud provider config are inferred from other parts of cluster api provider azure spec, and may not be available for overrides. See: https://cloud-provider-azure.sigs.k8s.io/install/configs Note: All cloud provider config values can be customized by creating the secret beforehand. CloudProviderConfigOverrides is only used when the secret is managed by the Azure Provider.
+CloudProviderConfigOverrides is an optional set of configuration values that can be overridden in azure cloud provider config. This is only a subset of options that are available in azure cloud provider config. Some values for the cloud provider config are inferred from other parts of cluster api provider azure spec, and may not be available for overrides. See: https://cloud-provider-azure.sigs.k8s.io/install/configs Note: All cloud provider config values can be customized by creating the secret beforehand. CloudProviderConfigOverrides is only used when the secret is managed by the Azure Provider.
 
 #### Attributes
 
@@ -13995,7 +14014,7 @@ r""" CloudProviderConfigOverrides is an optional set of configuration values tha
 |**rateLimits**|[[InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecCloudProviderConfigOverridesRateLimitsItems0](#infrastructureclusterxk8siov1beta1azureclustertemplatespectemplatespeccloudproviderconfigoverridesratelimitsitems0)]|rate limits||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecCloudProviderConfigOverridesBackOffs
 
-r""" BackOffConfig indicates the back-off config options.
+BackOffConfig indicates the back-off config options.
 
 #### Attributes
 
@@ -14008,7 +14027,7 @@ r""" BackOffConfig indicates the back-off config options.
 |**cloudProviderBackoffRetries**|int|cloud provider backoff retries||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecCloudProviderConfigOverridesRateLimitsItems0
 
-r""" RateLimitSpec represents the rate limit configuration for a particular kind of resource. Eg. loadBalancerRateLimit is used to configure rate limits for load balancers. This eventually gets converted to CloudProviderRateLimitConfig that cloud-provider-azure expects. See: https://github.com/kubernetes-sigs/cloud-provider-azure/blob/d585c2031925b39c925624302f22f8856e29e352/pkg/provider/azure_ratelimit.go#L25 We cannot use CloudProviderRateLimitConfig directly because floating point values are not supported in controller-tools. See: https://github.com/kubernetes-sigs/controller-tools/issues/245
+RateLimitSpec represents the rate limit configuration for a particular kind of resource. Eg. loadBalancerRateLimit is used to configure rate limits for load balancers. This eventually gets converted to CloudProviderRateLimitConfig that cloud-provider-azure expects. See: https://github.com/kubernetes-sigs/cloud-provider-azure/blob/d585c2031925b39c925624302f22f8856e29e352/pkg/provider/azure_ratelimit.go#L25 We cannot use CloudProviderRateLimitConfig directly because floating point values are not supported in controller-tools. See: https://github.com/kubernetes-sigs/controller-tools/issues/245
 
 #### Attributes
 
@@ -14018,7 +14037,7 @@ r""" RateLimitSpec represents the rate limit configuration for a particular kind
 |**name** `required`|"defaultRateLimit" | "routeRateLimit" | "subnetsRateLimit" | "interfaceRateLimit" | "routeTableRateLimit" | "loadBalancerRateLimit" | "publicIPAddressRateLimit" | "securityGroupRateLimit" | "virtualMachineRateLimit" | "storageAccountRateLimit" | "diskRateLimit" | "snapshotRateLimit" | "virtualMachineScaleSetRateLimit" | "virtualMachineSizesRateLimit" | "availabilitySetRateLimit"|Name is the name of the rate limit spec.||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecCloudProviderConfigOverridesRateLimitsItems0Config
 
-r""" RateLimitConfig indicates the rate limit config options.
+RateLimitConfig indicates the rate limit config options.
 
 #### Attributes
 
@@ -14031,7 +14050,7 @@ r""" RateLimitConfig indicates the rate limit config options.
 |**cloudProviderRateLimitQPSWrite**|int | str|cloud provider rate limit QPS write||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecExtendedLocation
 
-r""" ExtendedLocation is an optional set of ExtendedLocation properties for clusters on Azure public MEC.
+ExtendedLocation is an optional set of ExtendedLocation properties for clusters on Azure public MEC.
 
 #### Attributes
 
@@ -14041,24 +14060,24 @@ r""" ExtendedLocation is an optional set of ExtendedLocation properties for clus
 |**type** `required` `readOnly`|"EdgeZone"||"EdgeZone"|
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecFailureDomainsAnon
 
-r""" FailureDomainSpec is the Schema for Cluster API failure domains. It allows controllers to understand how many failure domains a cluster can optionally span across.
+FailureDomainSpec is the Schema for Cluster API failure domains. It allows controllers to understand how many failure domains a cluster can optionally span across.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**attributes**|{str:str}|Attributes is a free form map of attributes an infrastructure provider might use or require.||
-|**controlPlane**|bool|ControlPlane determines if this failure domain is suitable for use by control plane machines.||
+|**attributes**|{str:str}|attributes is a free form map of attributes an infrastructure provider might use or require.||
+|**controlPlane**|bool|controlPlane determines if this failure domain is suitable for use by control plane machines.||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecIdentityRef
 
-r""" IdentityRef is a reference to an AzureIdentity to be used when reconciling this cluster
+IdentityRef is a reference to an AzureIdentity to be used when reconciling this cluster
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**apiVersion**|str|API version of the referent.||
-|**fieldPath**|str|If referring to a piece of an object instead of an entire object, this string<br />should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2].<br />For example, if the object reference is to a container within a pod, this would take on a value like:<br />"spec.containers{name}" (where "name" refers to the name of the container that triggered<br />the event) or if no container name is specified "spec.containers[2]" (container with<br />index 2 in this pod). This syntax is chosen only to have some well-defined way of<br />referencing a part of an object.<br />TODO: this design is not final and this field is subject to change in the future.||
+|**fieldPath**|str|If referring to a piece of an object instead of an entire object, this string<br />should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2].<br />For example, if the object reference is to a container within a pod, this would take on a value like:<br />"spec.containers{name}" (where "name" refers to the name of the container that triggered<br />the event) or if no container name is specified "spec.containers[2]" (container with<br />index 2 in this pod). This syntax is chosen only to have some well-defined way of<br />referencing a part of an object.||
 |**kind**|str|Kind of the referent.<br />More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds||
 |**name**|str|Name of the referent.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names||
 |**namespace**|str|Namespace of the referent.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/||
@@ -14066,21 +14085,23 @@ r""" IdentityRef is a reference to an AzureIdentity to be used when reconciling 
 |**uid**|str|UID of the referent.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpec
 
-r""" NetworkSpec encapsulates all things related to Azure network.
+NetworkSpec encapsulates all things related to Azure network.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
+|**additionalAPIServerLBPorts**|[[InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecAdditionalAPIServerLBPortsItems0](#infrastructureclusterxk8siov1beta1azureclustertemplatespectemplatespecnetworkspecadditionalapiserverlbportsitems0)]|AdditionalAPIServerLBPorts is the configuration for the additional inbound control-plane load balancer ports<br />Each port specified (e.g., 9345) creates an inbound rule where the frontend port and the backend port are the same.||
 |**apiServerLB**|[InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecAPIServerLB](#infrastructureclusterxk8siov1beta1azureclustertemplatespectemplatespecnetworkspecapiserverlb)|api server l b||
 |**controlPlaneOutboundLB**|[InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecControlPlaneOutboundLB](#infrastructureclusterxk8siov1beta1azureclustertemplatespectemplatespecnetworkspeccontrolplaneoutboundlb)|control plane outbound l b||
 |**nodeOutboundLB**|[InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecNodeOutboundLB](#infrastructureclusterxk8siov1beta1azureclustertemplatespectemplatespecnetworkspecnodeoutboundlb)|node outbound l b||
 |**privateDNSZoneName**|str|PrivateDNSZoneName defines the zone name for the Azure Private DNS.||
+|**privateDNSZoneResourceGroup**|str|PrivateDNSZoneResourceGroup defines the resource group to be used for Azure Private DNS Zone.<br />If not specified, the resource group of the cluster will be used to create the Azure Private DNS Zone.||
 |**subnets**|[[InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecSubnetsItems0](#infrastructureclusterxk8siov1beta1azureclustertemplatespectemplatespecnetworkspecsubnetsitems0)]|Subnets is the configuration for the control-plane subnet and the node subnet.||
 |**vnet**|[InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecVnet](#infrastructureclusterxk8siov1beta1azureclustertemplatespectemplatespecnetworkspecvnet)|vnet||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecAPIServerLB
 
-r""" APIServerLB is the configuration for the control-plane load balancer.
+APIServerLB is the configuration for the control-plane load balancer.
 
 #### Attributes
 
@@ -14089,9 +14110,19 @@ r""" APIServerLB is the configuration for the control-plane load balancer.
 |**idleTimeoutInMinutes**|int|IdleTimeoutInMinutes specifies the timeout for the TCP idle connection.||
 |**sku**|str|SKU defines an Azure load balancer SKU.||
 |**type**|str|||
+### InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecAdditionalAPIServerLBPortsItems0
+
+LoadBalancerPort specifies additional port for the API server load balancer.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**name** `required`|str|Name for the additional port within LB definition||
+|**port** `required`|int|Port for the LB definition||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecControlPlaneOutboundLB
 
-r""" ControlPlaneOutboundLB is the configuration for the control-plane outbound load balancer. This is different from APIServerLB, and is used only in private clusters (optionally) for enabling outbound traffic.
+ControlPlaneOutboundLB is the configuration for the control-plane outbound load balancer. This is different from APIServerLB, and is used only in private clusters (optionally) for enabling outbound traffic.
 
 #### Attributes
 
@@ -14102,7 +14133,7 @@ r""" ControlPlaneOutboundLB is the configuration for the control-plane outbound 
 |**type**|str|||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecNodeOutboundLB
 
-r""" NodeOutboundLB is the configuration for the node outbound load balancer.
+NodeOutboundLB is the configuration for the node outbound load balancer.
 
 #### Attributes
 
@@ -14113,7 +14144,7 @@ r""" NodeOutboundLB is the configuration for the node outbound load balancer.
 |**type**|str|||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecSubnetsItems0
 
-r""" SubnetTemplateSpec specifies a template for a subnet.
+SubnetTemplateSpec specifies a template for a subnet.
 
 #### Attributes
 
@@ -14123,12 +14154,12 @@ r""" SubnetTemplateSpec specifies a template for a subnet.
 |**name** `required`|str|Name defines a name for the subnet resource.||
 |**natGateway**|[InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecSubnetsItems0NatGateway](#infrastructureclusterxk8siov1beta1azureclustertemplatespectemplatespecnetworkspecsubnetsitems0natgateway)|nat gateway||
 |**privateEndpoints**|[[InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecSubnetsItems0PrivateEndpointsItems0](#infrastructureclusterxk8siov1beta1azureclustertemplatespectemplatespecnetworkspecsubnetsitems0privateendpointsitems0)]|PrivateEndpoints defines a list of private endpoints that should be attached to this subnet.||
-|**role** `required`|"node" | "control-plane" | "bastion" | "all"|Role defines the subnet role (eg. Node, ControlPlane)||
+|**role** `required`|"node" | "control-plane" | "bastion" | "cluster"|Role defines the subnet role (eg. Node, ControlPlane)||
 |**securityGroup**|[InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecSubnetsItems0SecurityGroup](#infrastructureclusterxk8siov1beta1azureclustertemplatespectemplatespecnetworkspecsubnetsitems0securitygroup)|security group||
 |**serviceEndpoints**|[[InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecSubnetsItems0ServiceEndpointsItems0](#infrastructureclusterxk8siov1beta1azureclustertemplatespectemplatespecnetworkspecsubnetsitems0serviceendpointsitems0)]|ServiceEndpoints is a slice of Virtual Network service endpoints to enable for the subnets.||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecSubnetsItems0NatGateway
 
-r""" NatGateway associated with this subnet.
+NatGateway associated with this subnet.
 
 #### Attributes
 
@@ -14137,7 +14168,7 @@ r""" NatGateway associated with this subnet.
 |**name** `required`|str|name||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecSubnetsItems0PrivateEndpointsItems0
 
-r""" PrivateEndpointSpec configures an Azure Private Endpoint.
+PrivateEndpointSpec configures an Azure Private Endpoint.
 
 #### Attributes
 
@@ -14152,7 +14183,7 @@ r""" PrivateEndpointSpec configures an Azure Private Endpoint.
 |**privateLinkServiceConnections**|[[InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecSubnetsItems0PrivateEndpointsItems0PrivateLinkServiceConnectionsItems0](#infrastructureclusterxk8siov1beta1azureclustertemplatespectemplatespecnetworkspecsubnetsitems0privateendpointsitems0privatelinkserviceconnectionsitems0)]|PrivateLinkServiceConnections specifies Private Link Service Connections of the private endpoint.||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecSubnetsItems0PrivateEndpointsItems0PrivateLinkServiceConnectionsItems0
 
-r""" PrivateLinkServiceConnection defines the specification for a private link service connection associated with a private endpoint.
+PrivateLinkServiceConnection defines the specification for a private link service connection associated with a private endpoint.
 
 #### Attributes
 
@@ -14164,7 +14195,7 @@ r""" PrivateLinkServiceConnection defines the specification for a private link s
 |**requestMessage**|str|RequestMessage specifies a message passed to the owner of the remote resource with the private endpoint connection request.||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecSubnetsItems0SecurityGroup
 
-r""" SecurityGroup defines the NSG (network security group) that should be attached to this subnet.
+SecurityGroup defines the NSG (network security group) that should be attached to this subnet.
 
 #### Attributes
 
@@ -14174,7 +14205,7 @@ r""" SecurityGroup defines the NSG (network security group) that should be attac
 |**tags**|{str:str}|Tags defines a map of tags.||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecSubnetsItems0SecurityGroupSecurityRulesItems0
 
-r""" SecurityRule defines an Azure security rule for security groups.
+SecurityRule defines an Azure security rule for security groups.
 
 #### Attributes
 
@@ -14193,7 +14224,7 @@ r""" SecurityRule defines an Azure security rule for security groups.
 |**sources**|[str]|Sources specifies The CIDR or source IP ranges.||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecSubnetsItems0ServiceEndpointsItems0
 
-r""" ServiceEndpointSpec configures an Azure Service Endpoint.
+ServiceEndpointSpec configures an Azure Service Endpoint.
 
 #### Attributes
 
@@ -14203,7 +14234,7 @@ r""" ServiceEndpointSpec configures an Azure Service Endpoint.
 |**service** `required`|str|service||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecVnet
 
-r""" Vnet is the configuration for the Azure virtual network.
+Vnet is the configuration for the Azure virtual network.
 
 #### Attributes
 
@@ -14214,7 +14245,7 @@ r""" Vnet is the configuration for the Azure virtual network.
 |**tags**|{str:str}|Tags is a collection of tags describing the resource.||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecVnetPeeringsItems0
 
-r""" VnetPeeringClassSpec specifies a virtual network peering class.
+VnetPeeringClassSpec specifies a virtual network peering class.
 
 #### Attributes
 
@@ -14226,7 +14257,7 @@ r""" VnetPeeringClassSpec specifies a virtual network peering class.
 |**reversePeeringProperties**|[InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecVnetPeeringsItems0ReversePeeringProperties](#infrastructureclusterxk8siov1beta1azureclustertemplatespectemplatespecnetworkspecvnetpeeringsitems0reversepeeringproperties)|reverse peering properties||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecVnetPeeringsItems0ForwardPeeringProperties
 
-r""" ForwardPeeringProperties specifies VnetPeeringProperties for peering from the cluster's virtual network to the remote virtual network.
+ForwardPeeringProperties specifies VnetPeeringProperties for peering from the cluster's virtual network to the remote virtual network.
 
 #### Attributes
 
@@ -14238,7 +14269,7 @@ r""" ForwardPeeringProperties specifies VnetPeeringProperties for peering from t
 |**useRemoteGateways**|bool|UseRemoteGateways specifies if remote gateways can be used on this virtual network.<br />If the flag is set to true, and allowGatewayTransit on remote peering is also set to true, the virtual network<br />will use the gateways of the remote virtual network for transit. Only one peering can have this flag set to true.<br />This flag cannot be set if virtual network already has a gateway.||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecVnetPeeringsItems0ReversePeeringProperties
 
-r""" ReversePeeringProperties specifies VnetPeeringProperties for peering from the remote virtual network to the cluster's virtual network.
+ReversePeeringProperties specifies VnetPeeringProperties for peering from the remote virtual network to the cluster's virtual network.
 
 #### Attributes
 
@@ -14250,7 +14281,7 @@ r""" ReversePeeringProperties specifies VnetPeeringProperties for peering from t
 |**useRemoteGateways**|bool|UseRemoteGateways specifies if remote gateways can be used on this virtual network.<br />If the flag is set to true, and allowGatewayTransit on remote peering is also set to true, the virtual network<br />will use the gateways of the remote virtual network for transit. Only one peering can have this flag set to true.<br />This flag cannot be set if virtual network already has a gateway.||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachinePoolMachineSpec
 
-r""" AzureMachinePoolMachineSpec defines the desired state of AzureMachinePoolMachine.
+AzureMachinePoolMachineSpec defines the desired state of AzureMachinePoolMachine.
 
 #### Attributes
 
@@ -14260,7 +14291,7 @@ r""" AzureMachinePoolMachineSpec defines the desired state of AzureMachinePoolMa
 |**providerID** `required`|str|ProviderID is the identification ID of the Virtual Machine Scale Set||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachinePoolMachineStatus
 
-r""" AzureMachinePoolMachineStatus defines the observed state of AzureMachinePoolMachine.
+AzureMachinePoolMachineStatus defines the observed state of AzureMachinePoolMachine.
 
 #### Attributes
 
@@ -14278,21 +14309,21 @@ r""" AzureMachinePoolMachineStatus defines the observed state of AzureMachinePoo
 |**version**|str|Version defines the Kubernetes version for the VM Instance||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachinePoolMachineStatusConditionsItems0
 
-r""" Condition defines an observation of a Cluster API resource operational state.
+Condition defines an observation of a Cluster API resource operational state.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime** `required`|str|Last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
-|**message**|str|A human readable message indicating details about the transition.<br />This field may be empty.||
-|**reason**|str|The reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may not be empty.||
-|**severity**|str|Severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
-|**status** `required`|str|Status of the condition, one of True, False, Unknown.||
+|**lastTransitionTime** `required`|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
+|**message**|str|message is a human readable message indicating details about the transition.<br />This field may be empty.||
+|**reason**|str|reason is the reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may be empty.||
+|**severity**|str|severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
+|**status** `required`|str|status of the condition, one of True, False, Unknown.||
 |**type** `required`|str|||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachinePoolMachineStatusLongRunningOperationStatesItems0
 
-r""" Future contains the data needed for an Azure long-running operation to continue across reconcile loops.
+Future contains the data needed for an Azure long-running operation to continue across reconcile loops.
 
 #### Attributes
 
@@ -14305,14 +14336,14 @@ r""" Future contains the data needed for an Azure long-running operation to cont
 |**type** `required`|str|||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachinePoolMachineStatusNodeRef
 
-r""" NodeRef will point to the corresponding Node if it exists.
+NodeRef will point to the corresponding Node if it exists.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**apiVersion**|str|API version of the referent.||
-|**fieldPath**|str|If referring to a piece of an object instead of an entire object, this string<br />should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2].<br />For example, if the object reference is to a container within a pod, this would take on a value like:<br />"spec.containers{name}" (where "name" refers to the name of the container that triggered<br />the event) or if no container name is specified "spec.containers[2]" (container with<br />index 2 in this pod). This syntax is chosen only to have some well-defined way of<br />referencing a part of an object.<br />TODO: this design is not final and this field is subject to change in the future.||
+|**fieldPath**|str|If referring to a piece of an object instead of an entire object, this string<br />should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2].<br />For example, if the object reference is to a container within a pod, this would take on a value like:<br />"spec.containers{name}" (where "name" refers to the name of the container that triggered<br />the event) or if no container name is specified "spec.containers[2]" (container with<br />index 2 in this pod). This syntax is chosen only to have some well-defined way of<br />referencing a part of an object.||
 |**kind**|str|Kind of the referent.<br />More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds||
 |**name**|str|Name of the referent.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names||
 |**namespace**|str|Namespace of the referent.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/||
@@ -14320,7 +14351,7 @@ r""" NodeRef will point to the corresponding Node if it exists.
 |**uid**|str|UID of the referent.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpec
 
-r""" AzureMachinePoolSpec defines the desired state of AzureMachinePool.
+AzureMachinePoolSpec defines the desired state of AzureMachinePool.
 
 #### Attributes
 
@@ -14341,7 +14372,7 @@ r""" AzureMachinePoolSpec defines the desired state of AzureMachinePool.
 |**zoneBalance**|bool|ZoneBalane dictates whether to force strictly even Virtual Machine distribution cross x-zones in case there is zone outage.||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecStrategy
 
-r""" The deployment strategy to use to replace existing AzureMachinePoolMachines with new ones.
+The deployment strategy to use to replace existing AzureMachinePoolMachines with new ones.
 
 #### Attributes
 
@@ -14351,7 +14382,7 @@ r""" The deployment strategy to use to replace existing AzureMachinePoolMachines
 |**type** `readOnly`|"RollingUpdate"||"RollingUpdate"|
 ### InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecStrategyRollingUpdate
 
-r""" Rolling update config params. Present only if MachineDeploymentStrategyType = RollingUpdate.
+Rolling update config params. Present only if MachineDeploymentStrategyType = RollingUpdate.
 
 #### Attributes
 
@@ -14362,7 +14393,7 @@ r""" Rolling update config params. Present only if MachineDeploymentStrategyType
 |**maxUnavailable**|int | str|The maximum number of machines that can be unavailable during the update.<br />Value can be an absolute number (ex: 5) or a percentage of desired<br />machines (ex: 10%).<br />Absolute number is calculated from percentage by rounding down.<br />This can not be 0 if MaxSurge is 0.<br />Defaults to 0.<br />Example: when this is set to 30%, the old MachineSet can be scaled<br />down to 70% of desired machines immediately when the rolling update<br />starts. Once new machines are ready, old MachineSet can be scaled<br />down further, followed by scaling up the new MachineSet, ensuring<br />that the total number of machines available at all times<br />during the update is at least 70% of desired machines.|0|
 ### InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecSystemAssignedIdentityRole
 
-r""" SystemAssignedIdentityRole defines the role and scope to assign to the system assigned identity.
+SystemAssignedIdentityRole defines the role and scope to assign to the system assigned identity.
 
 #### Attributes
 
@@ -14373,13 +14404,14 @@ r""" SystemAssignedIdentityRole defines the role and scope to assign to the syst
 |**scope**|str|Scope is the scope that the role assignment or definition applies to. The scope can be any REST resource instance.<br />If not specified, the scope will be the subscription.||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplate
 
-r""" Template contains the details used to build a replica virtual machine within the Machine Pool
+Template contains the details used to build a replica virtual machine within the Machine Pool
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**acceleratedNetworking**|bool|Deprecated: AcceleratedNetworking should be set in the networkInterfaces field.||
+|**additionalCapabilities**|[InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateAdditionalCapabilities](#infrastructureclusterxk8siov1beta1azuremachinepoolspectemplateadditionalcapabilities)|additional capabilities||
 |**dataDisks**|[[InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateDataDisksItems0](#infrastructureclusterxk8siov1beta1azuremachinepoolspectemplatedatadisksitems0)]|DataDisks specifies the list of data disks to be created for a Virtual Machine||
 |**diagnostics**|[InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateDiagnostics](#infrastructureclusterxk8siov1beta1azuremachinepoolspectemplatediagnostics)|diagnostics||
 |**image**|[InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateImage](#infrastructureclusterxk8siov1beta1azuremachinepoolspectemplateimage)|image||
@@ -14392,9 +14424,18 @@ r""" Template contains the details used to build a replica virtual machine withi
 |**terminateNotificationTimeout**|int|TerminateNotificationTimeout enables or disables VMSS scheduled events termination notification with specified timeout<br />allowed values are between 5 and 15 (mins)||
 |**vmExtensions**|[[InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateVMExtensionsItems0](#infrastructureclusterxk8siov1beta1azuremachinepoolspectemplatevmextensionsitems0)]|VMExtensions specifies a list of extensions to be added to the scale set.||
 |**vmSize** `required`|str|VMSize is the size of the Virtual Machine to build.<br />See https://learn.microsoft.com/rest/api/compute/virtualmachines/createorupdate#virtualmachinesizetypes||
+### InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateAdditionalCapabilities
+
+AdditionalCapabilities specifies additional capabilities enabled or disabled on the virtual machine.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**ultraSSDEnabled**|bool|UltraSSDEnabled enables or disables Azure UltraSSD capability for the virtual machine.<br />Defaults to true if Ultra SSD data disks are specified,<br />otherwise it doesn't set the capability on the VM.||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateDataDisksItems0
 
-r""" DataDisk specifies the parameters that are used to add one or more data disks to the machine.
+DataDisk specifies the parameters that are used to add one or more data disks to the machine.
 
 #### Attributes
 
@@ -14407,7 +14448,7 @@ r""" DataDisk specifies the parameters that are used to add one or more data dis
 |**nameSuffix** `required`|str|NameSuffix is the suffix to be appended to the machine name to generate the disk name.<br />Each disk name will be in format <machineName>_<nameSuffix>.||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateDataDisksItems0ManagedDisk
 
-r""" ManagedDisk specifies the Managed Disk parameters for the data disk.
+ManagedDisk specifies the Managed Disk parameters for the data disk.
 
 #### Attributes
 
@@ -14418,7 +14459,7 @@ r""" ManagedDisk specifies the Managed Disk parameters for the data disk.
 |**storageAccountType**|str|storage account type||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateDataDisksItems0ManagedDiskDiskEncryptionSet
 
-r""" DiskEncryptionSet specifies the customer-managed disk encryption set resource id for the managed disk.
+DiskEncryptionSet specifies the customer-managed disk encryption set resource id for the managed disk.
 
 #### Attributes
 
@@ -14427,7 +14468,7 @@ r""" DiskEncryptionSet specifies the customer-managed disk encryption set resour
 |**id**|str|ID defines resourceID for diskEncryptionSet resource. It must be in the same subscription||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateDataDisksItems0ManagedDiskSecurityProfile
 
-r""" SecurityProfile specifies the security profile for the managed disk.
+SecurityProfile specifies the security profile for the managed disk.
 
 #### Attributes
 
@@ -14437,7 +14478,7 @@ r""" SecurityProfile specifies the security profile for the managed disk.
 |**securityEncryptionType**|"VMGuestStateOnly" | "DiskWithVMGuestState"|SecurityEncryptionType specifies the encryption type of the managed disk.<br />It is set to DiskWithVMGuestState to encrypt the managed disk along with the VMGuestState<br />blob, and to VMGuestStateOnly to encrypt the VMGuestState blob only.<br />When set to VMGuestStateOnly, VirtualizedTrustedPlatformModule should be set to Enabled.<br />When set to DiskWithVMGuestState, EncryptionAtHost should be disabled, SecureBoot and<br />VirtualizedTrustedPlatformModule should be set to Enabled.<br />It can be set only for Confidential VMs.||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateDataDisksItems0ManagedDiskSecurityProfileDiskEncryptionSet
 
-r""" DiskEncryptionSet specifies the customer-managed disk encryption set resource id for the managed disk that is used for Customer Managed Key encrypted ConfidentialVM OS Disk and VMGuest blob.
+DiskEncryptionSet specifies the customer-managed disk encryption set resource id for the managed disk that is used for Customer Managed Key encrypted ConfidentialVM OS Disk and VMGuest blob.
 
 #### Attributes
 
@@ -14446,7 +14487,7 @@ r""" DiskEncryptionSet specifies the customer-managed disk encryption set resour
 |**id**|str|ID defines resourceID for diskEncryptionSet resource. It must be in the same subscription||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateDiagnostics
 
-r""" Diagnostics specifies the diagnostics settings for a virtual machine. If not specified then Boot diagnostics (Managed) will be enabled.
+Diagnostics specifies the diagnostics settings for a virtual machine. If not specified then Boot diagnostics (Managed) will be enabled.
 
 #### Attributes
 
@@ -14455,7 +14496,7 @@ r""" Diagnostics specifies the diagnostics settings for a virtual machine. If no
 |**boot**|[InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateDiagnosticsBoot](#infrastructureclusterxk8siov1beta1azuremachinepoolspectemplatediagnosticsboot)|boot||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateDiagnosticsBoot
 
-r""" Boot configures the boot diagnostics settings for the virtual machine. This allows to configure capturing serial output from the virtual machine on boot. This is useful for debugging software based launch issues. If not specified then Boot diagnostics (Managed) will be enabled.
+Boot configures the boot diagnostics settings for the virtual machine. This allows to configure capturing serial output from the virtual machine on boot. This is useful for debugging software based launch issues. If not specified then Boot diagnostics (Managed) will be enabled.
 
 #### Attributes
 
@@ -14465,7 +14506,7 @@ r""" Boot configures the boot diagnostics settings for the virtual machine. This
 |**userManaged**|[InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateDiagnosticsBootUserManaged](#infrastructureclusterxk8siov1beta1azuremachinepoolspectemplatediagnosticsbootusermanaged)|user managed||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateDiagnosticsBootUserManaged
 
-r""" UserManaged provides a reference to the user-managed storage account.
+UserManaged provides a reference to the user-managed storage account.
 
 #### Attributes
 
@@ -14474,7 +14515,7 @@ r""" UserManaged provides a reference to the user-managed storage account.
 |**storageAccountURI** `required`|str|StorageAccountURI is the URI of the user-managed storage account.<br />The URI typically will be `https://<mystorageaccountname>.blob.core.windows.net/`<br />but may differ if you are using Azure DNS zone endpoints.<br />You can find the correct endpoint by looking for the Blob Primary Endpoint in the<br />endpoints tab in the Azure console or with the CLI by issuing<br />`az storage account list --query='[].{name: name, "resource group": resourceGroup, "blob endpoint": primaryEndpoints.blob}'`.||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateImage
 
-r""" Image is used to provide details of an image to use during VM creation. If image details are omitted the image will default the Azure Marketplace "capi" offer, which is based on Ubuntu.
+Image is used to provide details of an image to use during VM creation. If image details are omitted the image will default the Azure Marketplace "capi" offer, which is based on Ubuntu.
 
 #### Attributes
 
@@ -14486,7 +14527,7 @@ r""" Image is used to provide details of an image to use during VM creation. If 
 |**sharedGallery**|[InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateImageSharedGallery](#infrastructureclusterxk8siov1beta1azuremachinepoolspectemplateimagesharedgallery)|shared gallery||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateImageComputeGallery
 
-r""" ComputeGallery specifies an image to use from the Azure Compute Gallery
+ComputeGallery specifies an image to use from the Azure Compute Gallery
 
 #### Attributes
 
@@ -14500,7 +14541,7 @@ r""" ComputeGallery specifies an image to use from the Azure Compute Gallery
 |**version** `required`|str|Version specifies the version of the marketplace image. The allowed formats<br />are Major.Minor.Build or 'latest'. Major, Minor, and Build are decimal numbers.<br />Specify 'latest' to use the latest version of an image available at deploy time.<br />Even if you use 'latest', the VM image will not automatically update after deploy<br />time even if a new version becomes available.||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateImageComputeGalleryPlan
 
-r""" Plan contains plan information.
+Plan contains plan information.
 
 #### Attributes
 
@@ -14511,7 +14552,7 @@ r""" Plan contains plan information.
 |**sku** `required`|str|SKU specifies an instance of an offer, such as a major release of a distribution.<br />For example, 18.04-LTS, 2019-Datacenter||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateImageMarketplace
 
-r""" Marketplace specifies an image to use from the Azure Marketplace
+Marketplace specifies an image to use from the Azure Marketplace
 
 #### Attributes
 
@@ -14524,7 +14565,7 @@ r""" Marketplace specifies an image to use from the Azure Marketplace
 |**version** `required`|str|Version specifies the version of an image sku. The allowed formats<br />are Major.Minor.Build or 'latest'. Major, Minor, and Build are decimal numbers.<br />Specify 'latest' to use the latest version of an image available at deploy time.<br />Even if you use 'latest', the VM image will not automatically update after deploy<br />time even if a new version becomes available.||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateImageSharedGallery
 
-r""" SharedGallery specifies an image to use from an Azure Shared Image Gallery Deprecated: use ComputeGallery instead.
+SharedGallery specifies an image to use from an Azure Shared Image Gallery Deprecated: use ComputeGallery instead.
 
 #### Attributes
 
@@ -14540,7 +14581,7 @@ r""" SharedGallery specifies an image to use from an Azure Shared Image Gallery 
 |**version** `required`|str|Version specifies the version of the marketplace image. The allowed formats<br />are Major.Minor.Build or 'latest'. Major, Minor, and Build are decimal numbers.<br />Specify 'latest' to use the latest version of an image available at deploy time.<br />Even if you use 'latest', the VM image will not automatically update after deploy<br />time even if a new version becomes available.||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateNetworkInterfacesItems0
 
-r""" NetworkInterface defines a network interface.
+NetworkInterface defines a network interface.
 
 #### Attributes
 
@@ -14551,20 +14592,20 @@ r""" NetworkInterface defines a network interface.
 |**subnetName**|str|SubnetName specifies the subnet in which the new network interface will be placed.||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateOsDisk
 
-r""" OSDisk contains the operating system disk information for a Virtual Machine
+OSDisk contains the operating system disk information for a Virtual Machine
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**cachingType**|"None" | "ReadOnly" | "ReadWrite"|CachingType specifies the caching requirements.||
+|**cachingType**|"None" | "ReadOnly" | "ReadWrite"|CachingType specifies the caching requirements.|"None"|
 |**diffDiskSettings**|[InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateOsDiskDiffDiskSettings](#infrastructureclusterxk8siov1beta1azuremachinepoolspectemplateosdiskdiffdisksettings)|diff disk settings||
 |**diskSizeGB**|int|DiskSizeGB is the size in GB to assign to the OS disk.<br />Will have a default of 30GB if not provided||
 |**managedDisk**|[InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateOsDiskManagedDisk](#infrastructureclusterxk8siov1beta1azuremachinepoolspectemplateosdiskmanageddisk)|managed disk||
-|**osType** `required`|str|os type||
+|**osType** `required`|str|os type|"Linux"|
 ### InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateOsDiskDiffDiskSettings
 
-r""" DiffDiskSettings describe ephemeral disk settings for the os disk.
+DiffDiskSettings describe ephemeral disk settings for the os disk.
 
 #### Attributes
 
@@ -14574,7 +14615,7 @@ r""" DiffDiskSettings describe ephemeral disk settings for the os disk.
 |**placement**|"CacheDisk" | "NvmeDisk" | "ResourceDisk"|Placement specifies the ephemeral disk placement for operating system disk. If placement is specified, Option must be set to "Local".||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateOsDiskManagedDisk
 
-r""" ManagedDisk specifies the Managed Disk parameters for the OS disk.
+ManagedDisk specifies the Managed Disk parameters for the OS disk.
 
 #### Attributes
 
@@ -14585,7 +14626,7 @@ r""" ManagedDisk specifies the Managed Disk parameters for the OS disk.
 |**storageAccountType**|str|storage account type||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateOsDiskManagedDiskDiskEncryptionSet
 
-r""" DiskEncryptionSet specifies the customer-managed disk encryption set resource id for the managed disk.
+DiskEncryptionSet specifies the customer-managed disk encryption set resource id for the managed disk.
 
 #### Attributes
 
@@ -14594,7 +14635,7 @@ r""" DiskEncryptionSet specifies the customer-managed disk encryption set resour
 |**id**|str|ID defines resourceID for diskEncryptionSet resource. It must be in the same subscription||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateOsDiskManagedDiskSecurityProfile
 
-r""" SecurityProfile specifies the security profile for the managed disk.
+SecurityProfile specifies the security profile for the managed disk.
 
 #### Attributes
 
@@ -14604,7 +14645,7 @@ r""" SecurityProfile specifies the security profile for the managed disk.
 |**securityEncryptionType**|"VMGuestStateOnly" | "DiskWithVMGuestState"|SecurityEncryptionType specifies the encryption type of the managed disk.<br />It is set to DiskWithVMGuestState to encrypt the managed disk along with the VMGuestState<br />blob, and to VMGuestStateOnly to encrypt the VMGuestState blob only.<br />When set to VMGuestStateOnly, VirtualizedTrustedPlatformModule should be set to Enabled.<br />When set to DiskWithVMGuestState, EncryptionAtHost should be disabled, SecureBoot and<br />VirtualizedTrustedPlatformModule should be set to Enabled.<br />It can be set only for Confidential VMs.||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateOsDiskManagedDiskSecurityProfileDiskEncryptionSet
 
-r""" DiskEncryptionSet specifies the customer-managed disk encryption set resource id for the managed disk that is used for Customer Managed Key encrypted ConfidentialVM OS Disk and VMGuest blob.
+DiskEncryptionSet specifies the customer-managed disk encryption set resource id for the managed disk that is used for Customer Managed Key encrypted ConfidentialVM OS Disk and VMGuest blob.
 
 #### Attributes
 
@@ -14613,7 +14654,7 @@ r""" DiskEncryptionSet specifies the customer-managed disk encryption set resour
 |**id**|str|ID defines resourceID for diskEncryptionSet resource. It must be in the same subscription||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateSecurityProfile
 
-r""" SecurityProfile specifies the Security profile settings for a virtual machine.
+SecurityProfile specifies the Security profile settings for a virtual machine.
 
 #### Attributes
 
@@ -14624,7 +14665,7 @@ r""" SecurityProfile specifies the Security profile settings for a virtual machi
 |**uefiSettings**|[InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateSecurityProfileUefiSettings](#infrastructureclusterxk8siov1beta1azuremachinepoolspectemplatesecurityprofileuefisettings)|uefi settings||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateSecurityProfileUefiSettings
 
-r""" UefiSettings specifies the security settings like secure boot and vTPM used while creating the virtual machine.
+UefiSettings specifies the security settings like secure boot and vTPM used while creating the virtual machine.
 
 #### Attributes
 
@@ -14634,7 +14675,7 @@ r""" UefiSettings specifies the security settings like secure boot and vTPM used
 |**vTpmEnabled**|bool|VTpmEnabled specifies whether vTPM should be enabled on the virtual machine.<br />When true it enables the virtualized trusted platform module measurements to create a known good boot integrity policy baseline.<br />The integrity policy baseline is used for comparison with measurements from subsequent VM boots to determine if anything has changed.<br />This is required to be set to Enabled if SecurityEncryptionType is defined.<br />If omitted, the platform chooses a default, which is subject to change over time, currently that default is false.||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateSpotVMOptions
 
-r""" SpotVMOptions allows the ability to specify the Machine should use a Spot VM
+SpotVMOptions allows the ability to specify the Machine should use a Spot VM
 
 #### Attributes
 
@@ -14644,7 +14685,7 @@ r""" SpotVMOptions allows the ability to specify the Machine should use a Spot V
 |**maxPrice**|int | str|MaxPrice defines the maximum price the user is willing to pay for Spot VM instances||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateVMExtensionsItems0
 
-r""" VMExtension specifies the parameters for a custom VM extension.
+VMExtension specifies the parameters for a custom VM extension.
 
 #### Attributes
 
@@ -14657,7 +14698,7 @@ r""" VMExtension specifies the parameters for a custom VM extension.
 |**version** `required`|str|Version specifies the version of the script handler.||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecUserAssignedIdentitiesItems0
 
-r""" UserAssignedIdentity defines the user-assigned identities provided by the user to be assigned to Azure resources.
+UserAssignedIdentity defines the user-assigned identities provided by the user to be assigned to Azure resources.
 
 #### Attributes
 
@@ -14666,7 +14707,7 @@ r""" UserAssignedIdentity defines the user-assigned identities provided by the u
 |**providerID** `required`|str|ProviderID is the identification ID of the user-assigned Identity, the format of an identity is:<br />'azure:///subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachinePoolStatus
 
-r""" AzureMachinePoolStatus defines the observed state of AzureMachinePool.
+AzureMachinePoolStatus defines the observed state of AzureMachinePool.
 
 #### Attributes
 
@@ -14685,21 +14726,21 @@ r""" AzureMachinePoolStatus defines the observed state of AzureMachinePool.
 |**version**|str|Version is the Kubernetes version for the current VMSS model||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachinePoolStatusConditionsItems0
 
-r""" Condition defines an observation of a Cluster API resource operational state.
+Condition defines an observation of a Cluster API resource operational state.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime** `required`|str|Last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
-|**message**|str|A human readable message indicating details about the transition.<br />This field may be empty.||
-|**reason**|str|The reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may not be empty.||
-|**severity**|str|Severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
-|**status** `required`|str|Status of the condition, one of True, False, Unknown.||
+|**lastTransitionTime** `required`|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
+|**message**|str|message is a human readable message indicating details about the transition.<br />This field may be empty.||
+|**reason**|str|reason is the reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may be empty.||
+|**severity**|str|severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
+|**status** `required`|str|status of the condition, one of True, False, Unknown.||
 |**type** `required`|str|||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachinePoolStatusImage
 
-r""" Image is the current image used in the AzureMachinePool. When the spec image is nil, this image is populated with the details of the defaulted Azure Marketplace "capi" offer.
+Image is the current image used in the AzureMachinePool. When the spec image is nil, this image is populated with the details of the defaulted Azure Marketplace "capi" offer.
 
 #### Attributes
 
@@ -14711,7 +14752,7 @@ r""" Image is the current image used in the AzureMachinePool. When the spec imag
 |**sharedGallery**|[InfrastructureClusterxK8sIoV1beta1AzureMachinePoolStatusImageSharedGallery](#infrastructureclusterxk8siov1beta1azuremachinepoolstatusimagesharedgallery)|shared gallery||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachinePoolStatusImageComputeGallery
 
-r""" ComputeGallery specifies an image to use from the Azure Compute Gallery
+ComputeGallery specifies an image to use from the Azure Compute Gallery
 
 #### Attributes
 
@@ -14725,7 +14766,7 @@ r""" ComputeGallery specifies an image to use from the Azure Compute Gallery
 |**version** `required`|str|Version specifies the version of the marketplace image. The allowed formats<br />are Major.Minor.Build or 'latest'. Major, Minor, and Build are decimal numbers.<br />Specify 'latest' to use the latest version of an image available at deploy time.<br />Even if you use 'latest', the VM image will not automatically update after deploy<br />time even if a new version becomes available.||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachinePoolStatusImageComputeGalleryPlan
 
-r""" Plan contains plan information.
+Plan contains plan information.
 
 #### Attributes
 
@@ -14736,7 +14777,7 @@ r""" Plan contains plan information.
 |**sku** `required`|str|SKU specifies an instance of an offer, such as a major release of a distribution.<br />For example, 18.04-LTS, 2019-Datacenter||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachinePoolStatusImageMarketplace
 
-r""" Marketplace specifies an image to use from the Azure Marketplace
+Marketplace specifies an image to use from the Azure Marketplace
 
 #### Attributes
 
@@ -14749,7 +14790,7 @@ r""" Marketplace specifies an image to use from the Azure Marketplace
 |**version** `required`|str|Version specifies the version of an image sku. The allowed formats<br />are Major.Minor.Build or 'latest'. Major, Minor, and Build are decimal numbers.<br />Specify 'latest' to use the latest version of an image available at deploy time.<br />Even if you use 'latest', the VM image will not automatically update after deploy<br />time even if a new version becomes available.||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachinePoolStatusImageSharedGallery
 
-r""" SharedGallery specifies an image to use from an Azure Shared Image Gallery Deprecated: use ComputeGallery instead.
+SharedGallery specifies an image to use from an Azure Shared Image Gallery Deprecated: use ComputeGallery instead.
 
 #### Attributes
 
@@ -14765,7 +14806,7 @@ r""" SharedGallery specifies an image to use from an Azure Shared Image Gallery 
 |**version** `required`|str|Version specifies the version of the marketplace image. The allowed formats<br />are Major.Minor.Build or 'latest'. Major, Minor, and Build are decimal numbers.<br />Specify 'latest' to use the latest version of an image available at deploy time.<br />Even if you use 'latest', the VM image will not automatically update after deploy<br />time even if a new version becomes available.||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachinePoolStatusInstancesItems0
 
-r""" AzureMachinePoolInstanceStatus provides status information for each instance in the VMSS.
+AzureMachinePoolInstanceStatus provides status information for each instance in the VMSS.
 
 #### Attributes
 
@@ -14779,7 +14820,7 @@ r""" AzureMachinePoolInstanceStatus provides status information for each instanc
 |**version**|str|Version defines the Kubernetes version for the VM Instance||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachinePoolStatusLongRunningOperationStatesItems0
 
-r""" Future contains the data needed for an Azure long-running operation to continue across reconcile loops.
+Future contains the data needed for an Azure long-running operation to continue across reconcile loops.
 
 #### Attributes
 
@@ -14792,7 +14833,7 @@ r""" Future contains the data needed for an Azure long-running operation to cont
 |**type** `required`|str|||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineSpec
 
-r""" AzureMachineSpec defines the desired state of AzureMachine.
+AzureMachineSpec defines the desired state of AzureMachine.
 
 #### Attributes
 
@@ -14806,6 +14847,7 @@ r""" AzureMachineSpec defines the desired state of AzureMachine.
 |**dataDisks**|[[InfrastructureClusterxK8sIoV1beta1AzureMachineSpecDataDisksItems0](#infrastructureclusterxk8siov1beta1azuremachinespecdatadisksitems0)]|DataDisk specifies the parameters that are used to add one or more data disks to the machine||
 |**diagnostics**|[InfrastructureClusterxK8sIoV1beta1AzureMachineSpecDiagnostics](#infrastructureclusterxk8siov1beta1azuremachinespecdiagnostics)|diagnostics||
 |**disableExtensionOperations**|bool|DisableExtensionOperations specifies whether extension operations should be disabled on the virtual machine.<br />Use this setting only if VMExtensions are not supported by your image, as it disables CAPZ bootstrapping extension used for detecting Kubernetes bootstrap failure.<br />This may only be set to True when no extensions are configured on the virtual machine.||
+|**disableVMBootstrapExtension**|bool|DisableVMBootstrapExtension specifies whether the VM bootstrap extension should be disabled on the virtual machine.<br />Use this setting if you want to disable only the bootstrapping extension and not all extensions.||
 |**dnsServers**|[str]|DNSServers adds a list of DNS Server IP addresses to the VM NICs.||
 |**enableIPForwarding**|bool|EnableIPForwarding enables IP Forwarding in Azure which is required for some CNI's to send traffic from a pods on one machine<br />to another. This is required for IpV6 with Calico in combination with User Defined Routes (set by the Azure Cloud Controller<br />manager). Default is false for disabled.||
 |**failureDomain**|str|FailureDomain is the failure domain unique identifier this Machine should be attached to,<br />as defined in Cluster API. This relates to an Azure Availability Zone||
@@ -14825,7 +14867,7 @@ r""" AzureMachineSpec defines the desired state of AzureMachine.
 |**vmSize** `required`|str|vm size||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineSpecAdditionalCapabilities
 
-r""" AdditionalCapabilities specifies additional capabilities enabled or disabled on the virtual machine.
+AdditionalCapabilities specifies additional capabilities enabled or disabled on the virtual machine.
 
 #### Attributes
 
@@ -14834,7 +14876,7 @@ r""" AdditionalCapabilities specifies additional capabilities enabled or disable
 |**ultraSSDEnabled**|bool|UltraSSDEnabled enables or disables Azure UltraSSD capability for the virtual machine.<br />Defaults to true if Ultra SSD data disks are specified,<br />otherwise it doesn't set the capability on the VM.||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineSpecDataDisksItems0
 
-r""" DataDisk specifies the parameters that are used to add one or more data disks to the machine.
+DataDisk specifies the parameters that are used to add one or more data disks to the machine.
 
 #### Attributes
 
@@ -14847,7 +14889,7 @@ r""" DataDisk specifies the parameters that are used to add one or more data dis
 |**nameSuffix** `required`|str|NameSuffix is the suffix to be appended to the machine name to generate the disk name.<br />Each disk name will be in format <machineName>_<nameSuffix>.||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineSpecDataDisksItems0ManagedDisk
 
-r""" ManagedDisk specifies the Managed Disk parameters for the data disk.
+ManagedDisk specifies the Managed Disk parameters for the data disk.
 
 #### Attributes
 
@@ -14858,7 +14900,7 @@ r""" ManagedDisk specifies the Managed Disk parameters for the data disk.
 |**storageAccountType**|str|storage account type||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineSpecDataDisksItems0ManagedDiskDiskEncryptionSet
 
-r""" DiskEncryptionSet specifies the customer-managed disk encryption set resource id for the managed disk.
+DiskEncryptionSet specifies the customer-managed disk encryption set resource id for the managed disk.
 
 #### Attributes
 
@@ -14867,7 +14909,7 @@ r""" DiskEncryptionSet specifies the customer-managed disk encryption set resour
 |**id**|str|ID defines resourceID for diskEncryptionSet resource. It must be in the same subscription||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineSpecDataDisksItems0ManagedDiskSecurityProfile
 
-r""" SecurityProfile specifies the security profile for the managed disk.
+SecurityProfile specifies the security profile for the managed disk.
 
 #### Attributes
 
@@ -14877,7 +14919,7 @@ r""" SecurityProfile specifies the security profile for the managed disk.
 |**securityEncryptionType**|"VMGuestStateOnly" | "DiskWithVMGuestState"|SecurityEncryptionType specifies the encryption type of the managed disk.<br />It is set to DiskWithVMGuestState to encrypt the managed disk along with the VMGuestState<br />blob, and to VMGuestStateOnly to encrypt the VMGuestState blob only.<br />When set to VMGuestStateOnly, VirtualizedTrustedPlatformModule should be set to Enabled.<br />When set to DiskWithVMGuestState, EncryptionAtHost should be disabled, SecureBoot and<br />VirtualizedTrustedPlatformModule should be set to Enabled.<br />It can be set only for Confidential VMs.||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineSpecDataDisksItems0ManagedDiskSecurityProfileDiskEncryptionSet
 
-r""" DiskEncryptionSet specifies the customer-managed disk encryption set resource id for the managed disk that is used for Customer Managed Key encrypted ConfidentialVM OS Disk and VMGuest blob.
+DiskEncryptionSet specifies the customer-managed disk encryption set resource id for the managed disk that is used for Customer Managed Key encrypted ConfidentialVM OS Disk and VMGuest blob.
 
 #### Attributes
 
@@ -14886,7 +14928,7 @@ r""" DiskEncryptionSet specifies the customer-managed disk encryption set resour
 |**id**|str|ID defines resourceID for diskEncryptionSet resource. It must be in the same subscription||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineSpecDiagnostics
 
-r""" Diagnostics specifies the diagnostics settings for a virtual machine. If not specified then Boot diagnostics (Managed) will be enabled.
+Diagnostics specifies the diagnostics settings for a virtual machine. If not specified then Boot diagnostics (Managed) will be enabled.
 
 #### Attributes
 
@@ -14895,7 +14937,7 @@ r""" Diagnostics specifies the diagnostics settings for a virtual machine. If no
 |**boot**|[InfrastructureClusterxK8sIoV1beta1AzureMachineSpecDiagnosticsBoot](#infrastructureclusterxk8siov1beta1azuremachinespecdiagnosticsboot)|boot||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineSpecDiagnosticsBoot
 
-r""" Boot configures the boot diagnostics settings for the virtual machine. This allows to configure capturing serial output from the virtual machine on boot. This is useful for debugging software based launch issues. If not specified then Boot diagnostics (Managed) will be enabled.
+Boot configures the boot diagnostics settings for the virtual machine. This allows to configure capturing serial output from the virtual machine on boot. This is useful for debugging software based launch issues. If not specified then Boot diagnostics (Managed) will be enabled.
 
 #### Attributes
 
@@ -14905,7 +14947,7 @@ r""" Boot configures the boot diagnostics settings for the virtual machine. This
 |**userManaged**|[InfrastructureClusterxK8sIoV1beta1AzureMachineSpecDiagnosticsBootUserManaged](#infrastructureclusterxk8siov1beta1azuremachinespecdiagnosticsbootusermanaged)|user managed||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineSpecDiagnosticsBootUserManaged
 
-r""" UserManaged provides a reference to the user-managed storage account.
+UserManaged provides a reference to the user-managed storage account.
 
 #### Attributes
 
@@ -14914,7 +14956,7 @@ r""" UserManaged provides a reference to the user-managed storage account.
 |**storageAccountURI** `required`|str|StorageAccountURI is the URI of the user-managed storage account.<br />The URI typically will be `https://<mystorageaccountname>.blob.core.windows.net/`<br />but may differ if you are using Azure DNS zone endpoints.<br />You can find the correct endpoint by looking for the Blob Primary Endpoint in the<br />endpoints tab in the Azure console or with the CLI by issuing<br />`az storage account list --query='[].{name: name, "resource group": resourceGroup, "blob endpoint": primaryEndpoints.blob}'`.||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineSpecImage
 
-r""" Image is used to provide details of an image to use during VM creation. If image details are omitted the image will default the Azure Marketplace "capi" offer, which is based on Ubuntu.
+Image is used to provide details of an image to use during VM creation. If image details are omitted, the default is to use an Azure Compute Gallery Image from CAPZ's community gallery.
 
 #### Attributes
 
@@ -14926,7 +14968,7 @@ r""" Image is used to provide details of an image to use during VM creation. If 
 |**sharedGallery**|[InfrastructureClusterxK8sIoV1beta1AzureMachineSpecImageSharedGallery](#infrastructureclusterxk8siov1beta1azuremachinespecimagesharedgallery)|shared gallery||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineSpecImageComputeGallery
 
-r""" ComputeGallery specifies an image to use from the Azure Compute Gallery
+ComputeGallery specifies an image to use from the Azure Compute Gallery
 
 #### Attributes
 
@@ -14940,7 +14982,7 @@ r""" ComputeGallery specifies an image to use from the Azure Compute Gallery
 |**version** `required`|str|Version specifies the version of the marketplace image. The allowed formats<br />are Major.Minor.Build or 'latest'. Major, Minor, and Build are decimal numbers.<br />Specify 'latest' to use the latest version of an image available at deploy time.<br />Even if you use 'latest', the VM image will not automatically update after deploy<br />time even if a new version becomes available.||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineSpecImageComputeGalleryPlan
 
-r""" Plan contains plan information.
+Plan contains plan information.
 
 #### Attributes
 
@@ -14951,7 +14993,7 @@ r""" Plan contains plan information.
 |**sku** `required`|str|SKU specifies an instance of an offer, such as a major release of a distribution.<br />For example, 18.04-LTS, 2019-Datacenter||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineSpecImageMarketplace
 
-r""" Marketplace specifies an image to use from the Azure Marketplace
+Marketplace specifies an image to use from the Azure Marketplace
 
 #### Attributes
 
@@ -14964,7 +15006,7 @@ r""" Marketplace specifies an image to use from the Azure Marketplace
 |**version** `required`|str|Version specifies the version of an image sku. The allowed formats<br />are Major.Minor.Build or 'latest'. Major, Minor, and Build are decimal numbers.<br />Specify 'latest' to use the latest version of an image available at deploy time.<br />Even if you use 'latest', the VM image will not automatically update after deploy<br />time even if a new version becomes available.||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineSpecImageSharedGallery
 
-r""" SharedGallery specifies an image to use from an Azure Shared Image Gallery Deprecated: use ComputeGallery instead.
+SharedGallery specifies an image to use from an Azure Shared Image Gallery Deprecated: use ComputeGallery instead.
 
 #### Attributes
 
@@ -14980,7 +15022,7 @@ r""" SharedGallery specifies an image to use from an Azure Shared Image Gallery 
 |**version** `required`|str|Version specifies the version of the marketplace image. The allowed formats<br />are Major.Minor.Build or 'latest'. Major, Minor, and Build are decimal numbers.<br />Specify 'latest' to use the latest version of an image available at deploy time.<br />Even if you use 'latest', the VM image will not automatically update after deploy<br />time even if a new version becomes available.||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineSpecNetworkInterfacesItems0
 
-r""" NetworkInterface defines a network interface.
+NetworkInterface defines a network interface.
 
 #### Attributes
 
@@ -14991,20 +15033,20 @@ r""" NetworkInterface defines a network interface.
 |**subnetName**|str|SubnetName specifies the subnet in which the new network interface will be placed.||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineSpecOsDisk
 
-r""" OSDisk specifies the parameters for the operating system disk of the machine
+OSDisk specifies the parameters for the operating system disk of the machine
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**cachingType**|"None" | "ReadOnly" | "ReadWrite"|CachingType specifies the caching requirements.||
+|**cachingType**|"None" | "ReadOnly" | "ReadWrite"|CachingType specifies the caching requirements.|"None"|
 |**diffDiskSettings**|[InfrastructureClusterxK8sIoV1beta1AzureMachineSpecOsDiskDiffDiskSettings](#infrastructureclusterxk8siov1beta1azuremachinespecosdiskdiffdisksettings)|diff disk settings||
 |**diskSizeGB**|int|DiskSizeGB is the size in GB to assign to the OS disk.<br />Will have a default of 30GB if not provided||
 |**managedDisk**|[InfrastructureClusterxK8sIoV1beta1AzureMachineSpecOsDiskManagedDisk](#infrastructureclusterxk8siov1beta1azuremachinespecosdiskmanageddisk)|managed disk||
-|**osType** `required`|str|os type||
+|**osType** `required`|str|os type|"Linux"|
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineSpecOsDiskDiffDiskSettings
 
-r""" DiffDiskSettings describe ephemeral disk settings for the os disk.
+DiffDiskSettings describe ephemeral disk settings for the os disk.
 
 #### Attributes
 
@@ -15014,7 +15056,7 @@ r""" DiffDiskSettings describe ephemeral disk settings for the os disk.
 |**placement**|"CacheDisk" | "NvmeDisk" | "ResourceDisk"|Placement specifies the ephemeral disk placement for operating system disk. If placement is specified, Option must be set to "Local".||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineSpecOsDiskManagedDisk
 
-r""" ManagedDisk specifies the Managed Disk parameters for the OS disk.
+ManagedDisk specifies the Managed Disk parameters for the OS disk.
 
 #### Attributes
 
@@ -15025,7 +15067,7 @@ r""" ManagedDisk specifies the Managed Disk parameters for the OS disk.
 |**storageAccountType**|str|storage account type||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineSpecOsDiskManagedDiskDiskEncryptionSet
 
-r""" DiskEncryptionSet specifies the customer-managed disk encryption set resource id for the managed disk.
+DiskEncryptionSet specifies the customer-managed disk encryption set resource id for the managed disk.
 
 #### Attributes
 
@@ -15034,7 +15076,7 @@ r""" DiskEncryptionSet specifies the customer-managed disk encryption set resour
 |**id**|str|ID defines resourceID for diskEncryptionSet resource. It must be in the same subscription||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineSpecOsDiskManagedDiskSecurityProfile
 
-r""" SecurityProfile specifies the security profile for the managed disk.
+SecurityProfile specifies the security profile for the managed disk.
 
 #### Attributes
 
@@ -15044,7 +15086,7 @@ r""" SecurityProfile specifies the security profile for the managed disk.
 |**securityEncryptionType**|"VMGuestStateOnly" | "DiskWithVMGuestState"|SecurityEncryptionType specifies the encryption type of the managed disk.<br />It is set to DiskWithVMGuestState to encrypt the managed disk along with the VMGuestState<br />blob, and to VMGuestStateOnly to encrypt the VMGuestState blob only.<br />When set to VMGuestStateOnly, VirtualizedTrustedPlatformModule should be set to Enabled.<br />When set to DiskWithVMGuestState, EncryptionAtHost should be disabled, SecureBoot and<br />VirtualizedTrustedPlatformModule should be set to Enabled.<br />It can be set only for Confidential VMs.||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineSpecOsDiskManagedDiskSecurityProfileDiskEncryptionSet
 
-r""" DiskEncryptionSet specifies the customer-managed disk encryption set resource id for the managed disk that is used for Customer Managed Key encrypted ConfidentialVM OS Disk and VMGuest blob.
+DiskEncryptionSet specifies the customer-managed disk encryption set resource id for the managed disk that is used for Customer Managed Key encrypted ConfidentialVM OS Disk and VMGuest blob.
 
 #### Attributes
 
@@ -15053,7 +15095,7 @@ r""" DiskEncryptionSet specifies the customer-managed disk encryption set resour
 |**id**|str|ID defines resourceID for diskEncryptionSet resource. It must be in the same subscription||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineSpecSecurityProfile
 
-r""" SecurityProfile specifies the Security profile settings for a virtual machine.
+SecurityProfile specifies the Security profile settings for a virtual machine.
 
 #### Attributes
 
@@ -15064,7 +15106,7 @@ r""" SecurityProfile specifies the Security profile settings for a virtual machi
 |**uefiSettings**|[InfrastructureClusterxK8sIoV1beta1AzureMachineSpecSecurityProfileUefiSettings](#infrastructureclusterxk8siov1beta1azuremachinespecsecurityprofileuefisettings)|uefi settings||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineSpecSecurityProfileUefiSettings
 
-r""" UefiSettings specifies the security settings like secure boot and vTPM used while creating the virtual machine.
+UefiSettings specifies the security settings like secure boot and vTPM used while creating the virtual machine.
 
 #### Attributes
 
@@ -15074,7 +15116,7 @@ r""" UefiSettings specifies the security settings like secure boot and vTPM used
 |**vTpmEnabled**|bool|VTpmEnabled specifies whether vTPM should be enabled on the virtual machine.<br />When true it enables the virtualized trusted platform module measurements to create a known good boot integrity policy baseline.<br />The integrity policy baseline is used for comparison with measurements from subsequent VM boots to determine if anything has changed.<br />This is required to be set to Enabled if SecurityEncryptionType is defined.<br />If omitted, the platform chooses a default, which is subject to change over time, currently that default is false.||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineSpecSpotVMOptions
 
-r""" SpotVMOptions allows the ability to specify the Machine should use a Spot VM
+SpotVMOptions allows the ability to specify the Machine should use a Spot VM
 
 #### Attributes
 
@@ -15084,7 +15126,7 @@ r""" SpotVMOptions allows the ability to specify the Machine should use a Spot V
 |**maxPrice**|int | str|MaxPrice defines the maximum price the user is willing to pay for Spot VM instances||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineSpecSystemAssignedIdentityRole
 
-r""" SystemAssignedIdentityRole defines the role and scope to assign to the system-assigned identity.
+SystemAssignedIdentityRole defines the role and scope to assign to the system-assigned identity.
 
 #### Attributes
 
@@ -15095,7 +15137,7 @@ r""" SystemAssignedIdentityRole defines the role and scope to assign to the syst
 |**scope**|str|Scope is the scope that the role assignment or definition applies to. The scope can be any REST resource instance.<br />If not specified, the scope will be the subscription.||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineSpecUserAssignedIdentitiesItems0
 
-r""" UserAssignedIdentity defines the user-assigned identities provided by the user to be assigned to Azure resources.
+UserAssignedIdentity defines the user-assigned identities provided by the user to be assigned to Azure resources.
 
 #### Attributes
 
@@ -15104,7 +15146,7 @@ r""" UserAssignedIdentity defines the user-assigned identities provided by the u
 |**providerID** `required`|str|ProviderID is the identification ID of the user-assigned Identity, the format of an identity is:<br />'azure:///subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineSpecVMExtensionsItems0
 
-r""" VMExtension specifies the parameters for a custom VM extension.
+VMExtension specifies the parameters for a custom VM extension.
 
 #### Attributes
 
@@ -15117,7 +15159,7 @@ r""" VMExtension specifies the parameters for a custom VM extension.
 |**version** `required`|str|Version specifies the version of the script handler.||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineStatus
 
-r""" AzureMachineStatus defines the observed state of AzureMachine.
+AzureMachineStatus defines the observed state of AzureMachine.
 
 #### Attributes
 
@@ -15132,7 +15174,7 @@ r""" AzureMachineStatus defines the observed state of AzureMachine.
 |**vmState**|str|VMState is the provisioning state of the Azure virtual machine.||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineStatusAddressesItems0
 
-r""" NodeAddress contains information for the node's address.
+NodeAddress contains information for the node's address.
 
 #### Attributes
 
@@ -15142,21 +15184,21 @@ r""" NodeAddress contains information for the node's address.
 |**type** `required`|str|||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineStatusConditionsItems0
 
-r""" Condition defines an observation of a Cluster API resource operational state.
+Condition defines an observation of a Cluster API resource operational state.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime** `required`|str|Last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
-|**message**|str|A human readable message indicating details about the transition.<br />This field may be empty.||
-|**reason**|str|The reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may not be empty.||
-|**severity**|str|Severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
-|**status** `required`|str|Status of the condition, one of True, False, Unknown.||
+|**lastTransitionTime** `required`|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
+|**message**|str|message is a human readable message indicating details about the transition.<br />This field may be empty.||
+|**reason**|str|reason is the reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may be empty.||
+|**severity**|str|severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
+|**status** `required`|str|status of the condition, one of True, False, Unknown.||
 |**type** `required`|str|||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineStatusLongRunningOperationStatesItems0
 
-r""" Future contains the data needed for an Azure long-running operation to continue across reconcile loops.
+Future contains the data needed for an Azure long-running operation to continue across reconcile loops.
 
 #### Attributes
 
@@ -15169,7 +15211,7 @@ r""" Future contains the data needed for an Azure long-running operation to cont
 |**type** `required`|str|||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpec
 
-r""" AzureMachineTemplateSpec defines the desired state of AzureMachineTemplate.
+AzureMachineTemplateSpec defines the desired state of AzureMachineTemplate.
 
 #### Attributes
 
@@ -15178,7 +15220,7 @@ r""" AzureMachineTemplateSpec defines the desired state of AzureMachineTemplate.
 |**template** `required`|[InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplate](#infrastructureclusterxk8siov1beta1azuremachinetemplatespectemplate)|template||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplate
 
-r""" AzureMachineTemplateResource describes the data needed to create an AzureMachine from a template.
+AzureMachineTemplateResource describes the data needed to create an AzureMachine from a template.
 
 #### Attributes
 
@@ -15188,17 +15230,17 @@ r""" AzureMachineTemplateResource describes the data needed to create an AzureMa
 |**spec** `required`|[InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpec](#infrastructureclusterxk8siov1beta1azuremachinetemplatespectemplatespec)|spec||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateMetadata
 
-r""" ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create. This is a copy of customizable fields from metav1.ObjectMeta.  ObjectMeta is embedded in `Machine.Spec`, `MachineDeployment.Template` and `MachineSet.Template`, which are not top-level Kubernetes objects. Given that metav1.ObjectMeta has lots of special cases and read-only fields which end up in the generated CRD validation, having it as a subset simplifies the API and some issues that can impact user experience.  During the [upgrade to controller-tools@v2](https://github.com/kubernetes-sigs/cluster-api/pull/1054) for v1alpha2, we noticed a failure would occur running Cluster API test suite against the new CRDs, specifically `spec.metadata.creationTimestamp in body must be of type string: "null"`. The investigation showed that `controller-tools@v2` behaves differently than its previous version when handling types from [metav1](k8s.io/apimachinery/pkg/apis/meta/v1) package.  In more details, we found that embedded (non-top level) types that embedded `metav1.ObjectMeta` had validation properties, including for `creationTimestamp` (metav1.Time). The `metav1.Time` type specifies a custom json marshaller that, when IsZero() is true, returns `null` which breaks validation because the field isn't marked as nullable.  In future versions, controller-tools@v2 might allow overriding the type and validation for embedded types. When that happens, this hack should be revisited.
+ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create. This is a copy of customizable fields from metav1.ObjectMeta.  ObjectMeta is embedded in `Machine.Spec`, `MachineDeployment.Template` and `MachineSet.Template`, which are not top-level Kubernetes objects. Given that metav1.ObjectMeta has lots of special cases and read-only fields which end up in the generated CRD validation, having it as a subset simplifies the API and some issues that can impact user experience.  During the [upgrade to controller-tools@v2](https://github.com/kubernetes-sigs/cluster-api/pull/1054) for v1alpha2, we noticed a failure would occur running Cluster API test suite against the new CRDs, specifically `spec.metadata.creationTimestamp in body must be of type string: "null"`. The investigation showed that `controller-tools@v2` behaves differently than its previous version when handling types from [metav1](k8s.io/apimachinery/pkg/apis/meta/v1) package.  In more details, we found that embedded (non-top level) types that embedded `metav1.ObjectMeta` had validation properties, including for `creationTimestamp` (metav1.Time). The `metav1.Time` type specifies a custom json marshaller that, when IsZero() is true, returns `null` which breaks validation because the field isn't marked as nullable.  In future versions, controller-tools@v2 might allow overriding the type and validation for embedded types. When that happens, this hack should be revisited.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations is an unstructured key value map stored with a resource that may be<br />set by external tools to store and retrieve arbitrary metadata. They are not<br />queryable and should be preserved when modifying objects.<br />More info: http://kubernetes.io/docs/user-guide/annotations||
-|**labels**|{str:str}|Map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
+|**annotations**|{str:str}|annotations is an unstructured key value map stored with a resource that may be<br />set by external tools to store and retrieve arbitrary metadata. They are not<br />queryable and should be preserved when modifying objects.<br />More info: http://kubernetes.io/docs/user-guide/annotations||
+|**labels**|{str:str}|labels is a map of string keys and values that can be used to organize and categorize<br />(scope and select) objects. May match selectors of replication controllers<br />and services.<br />More info: http://kubernetes.io/docs/user-guide/labels||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpec
 
-r""" Spec is the specification of the desired behavior of the machine.
+Spec is the specification of the desired behavior of the machine.
 
 #### Attributes
 
@@ -15212,6 +15254,7 @@ r""" Spec is the specification of the desired behavior of the machine.
 |**dataDisks**|[[InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecDataDisksItems0](#infrastructureclusterxk8siov1beta1azuremachinetemplatespectemplatespecdatadisksitems0)]|DataDisk specifies the parameters that are used to add one or more data disks to the machine||
 |**diagnostics**|[InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecDiagnostics](#infrastructureclusterxk8siov1beta1azuremachinetemplatespectemplatespecdiagnostics)|diagnostics||
 |**disableExtensionOperations**|bool|DisableExtensionOperations specifies whether extension operations should be disabled on the virtual machine.<br />Use this setting only if VMExtensions are not supported by your image, as it disables CAPZ bootstrapping extension used for detecting Kubernetes bootstrap failure.<br />This may only be set to True when no extensions are configured on the virtual machine.||
+|**disableVMBootstrapExtension**|bool|DisableVMBootstrapExtension specifies whether the VM bootstrap extension should be disabled on the virtual machine.<br />Use this setting if you want to disable only the bootstrapping extension and not all extensions.||
 |**dnsServers**|[str]|DNSServers adds a list of DNS Server IP addresses to the VM NICs.||
 |**enableIPForwarding**|bool|EnableIPForwarding enables IP Forwarding in Azure which is required for some CNI's to send traffic from a pods on one machine<br />to another. This is required for IpV6 with Calico in combination with User Defined Routes (set by the Azure Cloud Controller<br />manager). Default is false for disabled.||
 |**failureDomain**|str|FailureDomain is the failure domain unique identifier this Machine should be attached to,<br />as defined in Cluster API. This relates to an Azure Availability Zone||
@@ -15231,7 +15274,7 @@ r""" Spec is the specification of the desired behavior of the machine.
 |**vmSize** `required`|str|vm size||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecAdditionalCapabilities
 
-r""" AdditionalCapabilities specifies additional capabilities enabled or disabled on the virtual machine.
+AdditionalCapabilities specifies additional capabilities enabled or disabled on the virtual machine.
 
 #### Attributes
 
@@ -15240,7 +15283,7 @@ r""" AdditionalCapabilities specifies additional capabilities enabled or disable
 |**ultraSSDEnabled**|bool|UltraSSDEnabled enables or disables Azure UltraSSD capability for the virtual machine.<br />Defaults to true if Ultra SSD data disks are specified,<br />otherwise it doesn't set the capability on the VM.||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecDataDisksItems0
 
-r""" DataDisk specifies the parameters that are used to add one or more data disks to the machine.
+DataDisk specifies the parameters that are used to add one or more data disks to the machine.
 
 #### Attributes
 
@@ -15253,7 +15296,7 @@ r""" DataDisk specifies the parameters that are used to add one or more data dis
 |**nameSuffix** `required`|str|NameSuffix is the suffix to be appended to the machine name to generate the disk name.<br />Each disk name will be in format <machineName>_<nameSuffix>.||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecDataDisksItems0ManagedDisk
 
-r""" ManagedDisk specifies the Managed Disk parameters for the data disk.
+ManagedDisk specifies the Managed Disk parameters for the data disk.
 
 #### Attributes
 
@@ -15264,7 +15307,7 @@ r""" ManagedDisk specifies the Managed Disk parameters for the data disk.
 |**storageAccountType**|str|storage account type||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecDataDisksItems0ManagedDiskDiskEncryptionSet
 
-r""" DiskEncryptionSet specifies the customer-managed disk encryption set resource id for the managed disk.
+DiskEncryptionSet specifies the customer-managed disk encryption set resource id for the managed disk.
 
 #### Attributes
 
@@ -15273,7 +15316,7 @@ r""" DiskEncryptionSet specifies the customer-managed disk encryption set resour
 |**id**|str|ID defines resourceID for diskEncryptionSet resource. It must be in the same subscription||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecDataDisksItems0ManagedDiskSecurityProfile
 
-r""" SecurityProfile specifies the security profile for the managed disk.
+SecurityProfile specifies the security profile for the managed disk.
 
 #### Attributes
 
@@ -15283,7 +15326,7 @@ r""" SecurityProfile specifies the security profile for the managed disk.
 |**securityEncryptionType**|"VMGuestStateOnly" | "DiskWithVMGuestState"|SecurityEncryptionType specifies the encryption type of the managed disk.<br />It is set to DiskWithVMGuestState to encrypt the managed disk along with the VMGuestState<br />blob, and to VMGuestStateOnly to encrypt the VMGuestState blob only.<br />When set to VMGuestStateOnly, VirtualizedTrustedPlatformModule should be set to Enabled.<br />When set to DiskWithVMGuestState, EncryptionAtHost should be disabled, SecureBoot and<br />VirtualizedTrustedPlatformModule should be set to Enabled.<br />It can be set only for Confidential VMs.||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecDataDisksItems0ManagedDiskSecurityProfileDiskEncryptionSet
 
-r""" DiskEncryptionSet specifies the customer-managed disk encryption set resource id for the managed disk that is used for Customer Managed Key encrypted ConfidentialVM OS Disk and VMGuest blob.
+DiskEncryptionSet specifies the customer-managed disk encryption set resource id for the managed disk that is used for Customer Managed Key encrypted ConfidentialVM OS Disk and VMGuest blob.
 
 #### Attributes
 
@@ -15292,7 +15335,7 @@ r""" DiskEncryptionSet specifies the customer-managed disk encryption set resour
 |**id**|str|ID defines resourceID for diskEncryptionSet resource. It must be in the same subscription||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecDiagnostics
 
-r""" Diagnostics specifies the diagnostics settings for a virtual machine. If not specified then Boot diagnostics (Managed) will be enabled.
+Diagnostics specifies the diagnostics settings for a virtual machine. If not specified then Boot diagnostics (Managed) will be enabled.
 
 #### Attributes
 
@@ -15301,7 +15344,7 @@ r""" Diagnostics specifies the diagnostics settings for a virtual machine. If no
 |**boot**|[InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecDiagnosticsBoot](#infrastructureclusterxk8siov1beta1azuremachinetemplatespectemplatespecdiagnosticsboot)|boot||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecDiagnosticsBoot
 
-r""" Boot configures the boot diagnostics settings for the virtual machine. This allows to configure capturing serial output from the virtual machine on boot. This is useful for debugging software based launch issues. If not specified then Boot diagnostics (Managed) will be enabled.
+Boot configures the boot diagnostics settings for the virtual machine. This allows to configure capturing serial output from the virtual machine on boot. This is useful for debugging software based launch issues. If not specified then Boot diagnostics (Managed) will be enabled.
 
 #### Attributes
 
@@ -15311,7 +15354,7 @@ r""" Boot configures the boot diagnostics settings for the virtual machine. This
 |**userManaged**|[InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecDiagnosticsBootUserManaged](#infrastructureclusterxk8siov1beta1azuremachinetemplatespectemplatespecdiagnosticsbootusermanaged)|user managed||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecDiagnosticsBootUserManaged
 
-r""" UserManaged provides a reference to the user-managed storage account.
+UserManaged provides a reference to the user-managed storage account.
 
 #### Attributes
 
@@ -15320,7 +15363,7 @@ r""" UserManaged provides a reference to the user-managed storage account.
 |**storageAccountURI** `required`|str|StorageAccountURI is the URI of the user-managed storage account.<br />The URI typically will be `https://<mystorageaccountname>.blob.core.windows.net/`<br />but may differ if you are using Azure DNS zone endpoints.<br />You can find the correct endpoint by looking for the Blob Primary Endpoint in the<br />endpoints tab in the Azure console or with the CLI by issuing<br />`az storage account list --query='[].{name: name, "resource group": resourceGroup, "blob endpoint": primaryEndpoints.blob}'`.||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecImage
 
-r""" Image is used to provide details of an image to use during VM creation. If image details are omitted the image will default the Azure Marketplace "capi" offer, which is based on Ubuntu.
+Image is used to provide details of an image to use during VM creation. If image details are omitted, the default is to use an Azure Compute Gallery Image from CAPZ's community gallery.
 
 #### Attributes
 
@@ -15332,7 +15375,7 @@ r""" Image is used to provide details of an image to use during VM creation. If 
 |**sharedGallery**|[InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecImageSharedGallery](#infrastructureclusterxk8siov1beta1azuremachinetemplatespectemplatespecimagesharedgallery)|shared gallery||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecImageComputeGallery
 
-r""" ComputeGallery specifies an image to use from the Azure Compute Gallery
+ComputeGallery specifies an image to use from the Azure Compute Gallery
 
 #### Attributes
 
@@ -15346,7 +15389,7 @@ r""" ComputeGallery specifies an image to use from the Azure Compute Gallery
 |**version** `required`|str|Version specifies the version of the marketplace image. The allowed formats<br />are Major.Minor.Build or 'latest'. Major, Minor, and Build are decimal numbers.<br />Specify 'latest' to use the latest version of an image available at deploy time.<br />Even if you use 'latest', the VM image will not automatically update after deploy<br />time even if a new version becomes available.||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecImageComputeGalleryPlan
 
-r""" Plan contains plan information.
+Plan contains plan information.
 
 #### Attributes
 
@@ -15357,7 +15400,7 @@ r""" Plan contains plan information.
 |**sku** `required`|str|SKU specifies an instance of an offer, such as a major release of a distribution.<br />For example, 18.04-LTS, 2019-Datacenter||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecImageMarketplace
 
-r""" Marketplace specifies an image to use from the Azure Marketplace
+Marketplace specifies an image to use from the Azure Marketplace
 
 #### Attributes
 
@@ -15370,7 +15413,7 @@ r""" Marketplace specifies an image to use from the Azure Marketplace
 |**version** `required`|str|Version specifies the version of an image sku. The allowed formats<br />are Major.Minor.Build or 'latest'. Major, Minor, and Build are decimal numbers.<br />Specify 'latest' to use the latest version of an image available at deploy time.<br />Even if you use 'latest', the VM image will not automatically update after deploy<br />time even if a new version becomes available.||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecImageSharedGallery
 
-r""" SharedGallery specifies an image to use from an Azure Shared Image Gallery Deprecated: use ComputeGallery instead.
+SharedGallery specifies an image to use from an Azure Shared Image Gallery Deprecated: use ComputeGallery instead.
 
 #### Attributes
 
@@ -15386,7 +15429,7 @@ r""" SharedGallery specifies an image to use from an Azure Shared Image Gallery 
 |**version** `required`|str|Version specifies the version of the marketplace image. The allowed formats<br />are Major.Minor.Build or 'latest'. Major, Minor, and Build are decimal numbers.<br />Specify 'latest' to use the latest version of an image available at deploy time.<br />Even if you use 'latest', the VM image will not automatically update after deploy<br />time even if a new version becomes available.||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecNetworkInterfacesItems0
 
-r""" NetworkInterface defines a network interface.
+NetworkInterface defines a network interface.
 
 #### Attributes
 
@@ -15397,20 +15440,20 @@ r""" NetworkInterface defines a network interface.
 |**subnetName**|str|SubnetName specifies the subnet in which the new network interface will be placed.||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecOsDisk
 
-r""" OSDisk specifies the parameters for the operating system disk of the machine
+OSDisk specifies the parameters for the operating system disk of the machine
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**cachingType**|"None" | "ReadOnly" | "ReadWrite"|CachingType specifies the caching requirements.||
+|**cachingType**|"None" | "ReadOnly" | "ReadWrite"|CachingType specifies the caching requirements.|"None"|
 |**diffDiskSettings**|[InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecOsDiskDiffDiskSettings](#infrastructureclusterxk8siov1beta1azuremachinetemplatespectemplatespecosdiskdiffdisksettings)|diff disk settings||
 |**diskSizeGB**|int|DiskSizeGB is the size in GB to assign to the OS disk.<br />Will have a default of 30GB if not provided||
 |**managedDisk**|[InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecOsDiskManagedDisk](#infrastructureclusterxk8siov1beta1azuremachinetemplatespectemplatespecosdiskmanageddisk)|managed disk||
-|**osType** `required`|str|os type||
+|**osType** `required`|str|os type|"Linux"|
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecOsDiskDiffDiskSettings
 
-r""" DiffDiskSettings describe ephemeral disk settings for the os disk.
+DiffDiskSettings describe ephemeral disk settings for the os disk.
 
 #### Attributes
 
@@ -15420,7 +15463,7 @@ r""" DiffDiskSettings describe ephemeral disk settings for the os disk.
 |**placement**|"CacheDisk" | "NvmeDisk" | "ResourceDisk"|Placement specifies the ephemeral disk placement for operating system disk. If placement is specified, Option must be set to "Local".||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecOsDiskManagedDisk
 
-r""" ManagedDisk specifies the Managed Disk parameters for the OS disk.
+ManagedDisk specifies the Managed Disk parameters for the OS disk.
 
 #### Attributes
 
@@ -15431,7 +15474,7 @@ r""" ManagedDisk specifies the Managed Disk parameters for the OS disk.
 |**storageAccountType**|str|storage account type||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecOsDiskManagedDiskDiskEncryptionSet
 
-r""" DiskEncryptionSet specifies the customer-managed disk encryption set resource id for the managed disk.
+DiskEncryptionSet specifies the customer-managed disk encryption set resource id for the managed disk.
 
 #### Attributes
 
@@ -15440,7 +15483,7 @@ r""" DiskEncryptionSet specifies the customer-managed disk encryption set resour
 |**id**|str|ID defines resourceID for diskEncryptionSet resource. It must be in the same subscription||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecOsDiskManagedDiskSecurityProfile
 
-r""" SecurityProfile specifies the security profile for the managed disk.
+SecurityProfile specifies the security profile for the managed disk.
 
 #### Attributes
 
@@ -15450,7 +15493,7 @@ r""" SecurityProfile specifies the security profile for the managed disk.
 |**securityEncryptionType**|"VMGuestStateOnly" | "DiskWithVMGuestState"|SecurityEncryptionType specifies the encryption type of the managed disk.<br />It is set to DiskWithVMGuestState to encrypt the managed disk along with the VMGuestState<br />blob, and to VMGuestStateOnly to encrypt the VMGuestState blob only.<br />When set to VMGuestStateOnly, VirtualizedTrustedPlatformModule should be set to Enabled.<br />When set to DiskWithVMGuestState, EncryptionAtHost should be disabled, SecureBoot and<br />VirtualizedTrustedPlatformModule should be set to Enabled.<br />It can be set only for Confidential VMs.||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecOsDiskManagedDiskSecurityProfileDiskEncryptionSet
 
-r""" DiskEncryptionSet specifies the customer-managed disk encryption set resource id for the managed disk that is used for Customer Managed Key encrypted ConfidentialVM OS Disk and VMGuest blob.
+DiskEncryptionSet specifies the customer-managed disk encryption set resource id for the managed disk that is used for Customer Managed Key encrypted ConfidentialVM OS Disk and VMGuest blob.
 
 #### Attributes
 
@@ -15459,7 +15502,7 @@ r""" DiskEncryptionSet specifies the customer-managed disk encryption set resour
 |**id**|str|ID defines resourceID for diskEncryptionSet resource. It must be in the same subscription||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecSecurityProfile
 
-r""" SecurityProfile specifies the Security profile settings for a virtual machine.
+SecurityProfile specifies the Security profile settings for a virtual machine.
 
 #### Attributes
 
@@ -15470,7 +15513,7 @@ r""" SecurityProfile specifies the Security profile settings for a virtual machi
 |**uefiSettings**|[InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecSecurityProfileUefiSettings](#infrastructureclusterxk8siov1beta1azuremachinetemplatespectemplatespecsecurityprofileuefisettings)|uefi settings||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecSecurityProfileUefiSettings
 
-r""" UefiSettings specifies the security settings like secure boot and vTPM used while creating the virtual machine.
+UefiSettings specifies the security settings like secure boot and vTPM used while creating the virtual machine.
 
 #### Attributes
 
@@ -15480,7 +15523,7 @@ r""" UefiSettings specifies the security settings like secure boot and vTPM used
 |**vTpmEnabled**|bool|VTpmEnabled specifies whether vTPM should be enabled on the virtual machine.<br />When true it enables the virtualized trusted platform module measurements to create a known good boot integrity policy baseline.<br />The integrity policy baseline is used for comparison with measurements from subsequent VM boots to determine if anything has changed.<br />This is required to be set to Enabled if SecurityEncryptionType is defined.<br />If omitted, the platform chooses a default, which is subject to change over time, currently that default is false.||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecSpotVMOptions
 
-r""" SpotVMOptions allows the ability to specify the Machine should use a Spot VM
+SpotVMOptions allows the ability to specify the Machine should use a Spot VM
 
 #### Attributes
 
@@ -15490,7 +15533,7 @@ r""" SpotVMOptions allows the ability to specify the Machine should use a Spot V
 |**maxPrice**|int | str|MaxPrice defines the maximum price the user is willing to pay for Spot VM instances||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecSystemAssignedIdentityRole
 
-r""" SystemAssignedIdentityRole defines the role and scope to assign to the system-assigned identity.
+SystemAssignedIdentityRole defines the role and scope to assign to the system-assigned identity.
 
 #### Attributes
 
@@ -15501,7 +15544,7 @@ r""" SystemAssignedIdentityRole defines the role and scope to assign to the syst
 |**scope**|str|Scope is the scope that the role assignment or definition applies to. The scope can be any REST resource instance.<br />If not specified, the scope will be the subscription.||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecUserAssignedIdentitiesItems0
 
-r""" UserAssignedIdentity defines the user-assigned identities provided by the user to be assigned to Azure resources.
+UserAssignedIdentity defines the user-assigned identities provided by the user to be assigned to Azure resources.
 
 #### Attributes
 
@@ -15510,7 +15553,7 @@ r""" UserAssignedIdentity defines the user-assigned identities provided by the u
 |**providerID** `required`|str|ProviderID is the identification ID of the user-assigned Identity, the format of an identity is:<br />'azure:///subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecVMExtensionsItems0
 
-r""" VMExtension specifies the parameters for a custom VM extension.
+VMExtension specifies the parameters for a custom VM extension.
 
 #### Attributes
 
@@ -15523,7 +15566,7 @@ r""" VMExtension specifies the parameters for a custom VM extension.
 |**version** `required`|str|Version specifies the version of the script handler.||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedClusterSpec
 
-r""" AzureManagedClusterSpec defines the desired state of AzureManagedCluster.
+AzureManagedClusterSpec defines the desired state of AzureManagedCluster.
 
 #### Attributes
 
@@ -15532,17 +15575,17 @@ r""" AzureManagedClusterSpec defines the desired state of AzureManagedCluster.
 |**controlPlaneEndpoint**|[InfrastructureClusterxK8sIoV1beta1AzureManagedClusterSpecControlPlaneEndpoint](#infrastructureclusterxk8siov1beta1azuremanagedclusterspeccontrolplaneendpoint)|control plane endpoint||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedClusterSpecControlPlaneEndpoint
 
-r""" ControlPlaneEndpoint represents the endpoint used to communicate with the control plane. Immutable, populated by the AKS API at create. Because this field is programmatically set by CAPZ after resource creation, we define it as +optional in the API schema to permit resource admission.
+ControlPlaneEndpoint represents the endpoint used to communicate with the control plane. Immutable, populated by the AKS API at create. Because this field is programmatically set by CAPZ after resource creation, we define it as +optional in the API schema to permit resource admission.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**host** `required`|str|The hostname on which the API server is serving.||
-|**port** `required`|int|The port on which the API server is serving.||
+|**host** `required`|str|host is the hostname on which the API server is serving.||
+|**port** `required`|int|port is the port on which the API server is serving.||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedClusterStatus
 
-r""" AzureManagedClusterStatus defines the observed state of AzureManagedCluster.
+AzureManagedClusterStatus defines the observed state of AzureManagedCluster.
 
 #### Attributes
 
@@ -15551,7 +15594,7 @@ r""" AzureManagedClusterStatus defines the observed state of AzureManagedCluster
 |**ready**|bool|Ready is true when the provider resource is ready.||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedClusterTemplateSpec
 
-r""" AzureManagedClusterTemplateSpec defines the desired state of AzureManagedClusterTemplate.
+AzureManagedClusterTemplateSpec defines the desired state of AzureManagedClusterTemplate.
 
 #### Attributes
 
@@ -15560,7 +15603,7 @@ r""" AzureManagedClusterTemplateSpec defines the desired state of AzureManagedCl
 |**template** `required`|[InfrastructureClusterxK8sIoV1beta1AzureManagedClusterTemplateSpecTemplate](#infrastructureclusterxk8siov1beta1azuremanagedclustertemplatespectemplate)|template||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedClusterTemplateSpecTemplate
 
-r""" AzureManagedClusterTemplateResource describes the data needed to create an AzureManagedCluster from a template.
+AzureManagedClusterTemplateResource describes the data needed to create an AzureManagedCluster from a template.
 
 #### Attributes
 
@@ -15569,7 +15612,7 @@ r""" AzureManagedClusterTemplateResource describes the data needed to create an 
 |**spec** `required`|any|AzureManagedClusterTemplateResourceSpec specifies an Azure managed cluster template resource.||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpec
 
-r""" AzureManagedControlPlaneSpec defines the desired state of AzureManagedControlPlane.
+AzureManagedControlPlaneSpec defines the desired state of AzureManagedControlPlane.
 
 #### Attributes
 
@@ -15587,7 +15630,7 @@ r""" AzureManagedControlPlaneSpec defines the desired state of AzureManagedContr
 |**disableLocalAccounts**|bool|DisableLocalAccounts disables getting static credentials for this cluster when set. Expected to only be used for AAD clusters.||
 |**dnsPrefix**|str|DNSPrefix allows the user to customize dns prefix.<br />Immutable.||
 |**dnsServiceIP**|str|DNSServiceIP is an IP address assigned to the Kubernetes DNS service.<br />It must be within the Kubernetes service address range specified in serviceCidr.<br />Immutable.||
-|**enablePreviewFeatures**|bool|EnablePreviewFeatures enables preview features for the cluster.||
+|**enablePreviewFeatures**|bool|EnablePreviewFeatures enables preview features for the cluster.|False|
 |**extensions**|[[InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecExtensionsItems0](#infrastructureclusterxk8siov1beta1azuremanagedcontrolplanespecextensionsitems0)]|Extensions is a list of AKS extensions to be installed on the cluster.||
 |**fleetsMember**|[InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecFleetsMember](#infrastructureclusterxk8siov1beta1azuremanagedcontrolplanespecfleetsmember)|fleets member||
 |**httpProxyConfig**|[InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecHTTPProxyConfig](#infrastructureclusterxk8siov1beta1azuremanagedcontrolplanespechttpproxyconfig)|http proxy config||
@@ -15599,7 +15642,7 @@ r""" AzureManagedControlPlaneSpec defines the desired state of AzureManagedContr
 |**location** `required`|str|Location is a string matching one of the canonical Azure region names. Examples: "westus2", "eastus".||
 |**machineTemplate**|any|MachineTemplate contains information about how machines<br />should be shaped when creating or updating a control plane.<br />For the AzureManagedControlPlaneTemplate, this field is used<br />only to fulfill the CAPI contract.||
 |**networkDataplane**|"azure" | "cilium"|NetworkDataplane is the dataplane used for building the Kubernetes network.||
-|**networkPlugin**|"azure" | "kubenet" | "none"|NetworkPlugin used for building Kubernetes network.||
+|**networkPlugin**|"azure" | "kubenet" | "none"|NetworkPlugin used for building Kubernetes network.|"azure"|
 |**networkPluginMode** `readOnly`|"overlay"|NetworkPluginMode is the mode the network plugin should use.<br />Allowed value is "overlay".|"overlay"|
 |**networkPolicy**|"azure" | "calico" | "cilium"|NetworkPolicy used for building Kubernetes network.||
 |**nodeResourceGroupName**|str|NodeResourceGroupName is the name of the resource group<br />containing cluster IaaS resources. Will be populated to default<br />in webhook.<br />Immutable.||
@@ -15614,7 +15657,7 @@ r""" AzureManagedControlPlaneSpec defines the desired state of AzureManagedContr
 |**virtualNetwork**|[InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecVirtualNetwork](#infrastructureclusterxk8siov1beta1azuremanagedcontrolplanespecvirtualnetwork)|virtual network||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecAPIServerAccessProfile
 
-r""" APIServerAccessProfile is the access profile for AKS API server. Immutable except for `authorizedIPRanges`.
+APIServerAccessProfile is the access profile for AKS API server. Immutable except for `authorizedIPRanges`.
 
 #### Attributes
 
@@ -15626,7 +15669,7 @@ r""" APIServerAccessProfile is the access profile for AKS API server. Immutable 
 |**privateDNSZone**|str|PrivateDNSZone enables private dns zone mode for private cluster.||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecAadProfile
 
-r""" AadProfile is Azure Active Directory configuration to integrate with AKS for aad authentication.
+AadProfile is Azure Active Directory configuration to integrate with AKS for aad authentication.
 
 #### Attributes
 
@@ -15636,7 +15679,7 @@ r""" AadProfile is Azure Active Directory configuration to integrate with AKS fo
 |**managed** `required`|bool|Managed - Whether to enable managed AAD.||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecAddonProfilesItems0
 
-r""" AddonProfile represents a managed cluster add-on.
+AddonProfile represents a managed cluster add-on.
 
 #### Attributes
 
@@ -15647,7 +15690,7 @@ r""" AddonProfile represents a managed cluster add-on.
 |**name** `required`|str|Name - The name of the managed cluster add-on.||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecAutoUpgradeProfile
 
-r""" AutoUpgradeProfile defines the auto upgrade configuration.
+AutoUpgradeProfile defines the auto upgrade configuration.
 
 #### Attributes
 
@@ -15656,42 +15699,42 @@ r""" AutoUpgradeProfile defines the auto upgrade configuration.
 |**upgradeChannel**|"node-image" | "none" | "patch" | "rapid" | "stable"|UpgradeChannel determines the type of upgrade channel for automatically upgrading the cluster.||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecAutoscalerProfile
 
-r""" AutoscalerProfile is the parameters to be applied to the cluster-autoscaler when enabled
+AutoscalerProfile is the parameters to be applied to the cluster-autoscaler when enabled
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**balanceSimilarNodeGroups**|"true" | "false"|BalanceSimilarNodeGroups - Valid values are 'true' and 'false'. The default is false.||
-|**expander**|"least-waste" | "most-pods" | "priority" | "random"|Expander - If not specified, the default is 'random'. See [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) for more information.||
-|**maxEmptyBulkDelete**|str|MaxEmptyBulkDelete - The default is 10.||
-|**maxGracefulTerminationSec**|str|MaxGracefulTerminationSec - The default is 600.||
-|**maxNodeProvisionTime**|str|MaxNodeProvisionTime - The default is '15m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.||
-|**maxTotalUnreadyPercentage**|str|MaxTotalUnreadyPercentage - The default is 45. The maximum is 100 and the minimum is 0.||
-|**newPodScaleUpDelay**|str|NewPodScaleUpDelay - For scenarios like burst/batch scale where you don't want CA to act before the kubernetes scheduler could schedule all the pods, you can tell CA to ignore unscheduled pods before they're a certain age. The default is '0s'. Values must be an integer followed by a unit ('s' for seconds, 'm' for minutes, 'h' for hours, etc).||
-|**okTotalUnreadyCount**|str|OkTotalUnreadyCount - This must be an integer. The default is 3.||
-|**scaleDownDelayAfterAdd**|str|ScaleDownDelayAfterAdd - The default is '10m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.||
-|**scaleDownDelayAfterDelete**|str|ScaleDownDelayAfterDelete - The default is the scan-interval. Values must be an integer followed by an 's'. No unit of time other than seconds (s) is supported.||
-|**scaleDownDelayAfterFailure**|str|ScaleDownDelayAfterFailure - The default is '3m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.||
-|**scaleDownUnneededTime**|str|ScaleDownUnneededTime - The default is '10m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.||
-|**scaleDownUnreadyTime**|str|ScaleDownUnreadyTime - The default is '20m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.||
-|**scaleDownUtilizationThreshold**|str|ScaleDownUtilizationThreshold - The default is '0.5'.||
-|**scanInterval**|str|ScanInterval - How often cluster is reevaluated for scale up or down. The default is '10s'.||
-|**skipNodesWithLocalStorage**|"true" | "false"|SkipNodesWithLocalStorage - The default is false.||
-|**skipNodesWithSystemPods**|"true" | "false"|SkipNodesWithSystemPods - The default is true.||
+|**balanceSimilarNodeGroups**|"true" | "false"|BalanceSimilarNodeGroups - Valid values are 'true' and 'false'. The default is false.|"false"|
+|**expander**|"least-waste" | "most-pods" | "priority" | "random"|Expander - If not specified, the default is 'random'. See [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) for more information.|"random"|
+|**maxEmptyBulkDelete**|str|MaxEmptyBulkDelete - The default is 10.|"10"|
+|**maxGracefulTerminationSec**|str|MaxGracefulTerminationSec - The default is 600.|"600"|
+|**maxNodeProvisionTime**|str|MaxNodeProvisionTime - The default is '15m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.|"15m"|
+|**maxTotalUnreadyPercentage**|str|MaxTotalUnreadyPercentage - The default is 45. The maximum is 100 and the minimum is 0.|"45"|
+|**newPodScaleUpDelay**|str|NewPodScaleUpDelay - For scenarios like burst/batch scale where you don't want CA to act before the kubernetes scheduler could schedule all the pods, you can tell CA to ignore unscheduled pods before they're a certain age. The default is '0s'. Values must be an integer followed by a unit ('s' for seconds, 'm' for minutes, 'h' for hours, etc).|"0s"|
+|**okTotalUnreadyCount**|str|OkTotalUnreadyCount - This must be an integer. The default is 3.|"3"|
+|**scaleDownDelayAfterAdd**|str|ScaleDownDelayAfterAdd - The default is '10m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.|"10m"|
+|**scaleDownDelayAfterDelete**|str|ScaleDownDelayAfterDelete - The default is the scan-interval. Values must be an integer followed by an 's'. No unit of time other than seconds (s) is supported.|"10s"|
+|**scaleDownDelayAfterFailure**|str|ScaleDownDelayAfterFailure - The default is '3m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.|"3m"|
+|**scaleDownUnneededTime**|str|ScaleDownUnneededTime - The default is '10m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.|"10m"|
+|**scaleDownUnreadyTime**|str|ScaleDownUnreadyTime - The default is '20m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.|"20m"|
+|**scaleDownUtilizationThreshold**|str|ScaleDownUtilizationThreshold - The default is '0.5'.|"0.5"|
+|**scanInterval**|str|ScanInterval - How often cluster is reevaluated for scale up or down. The default is '10s'.|"10s"|
+|**skipNodesWithLocalStorage**|"true" | "false"|SkipNodesWithLocalStorage - The default is false.|"false"|
+|**skipNodesWithSystemPods**|"true" | "false"|SkipNodesWithSystemPods - The default is true.|"true"|
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecControlPlaneEndpoint
 
-r""" ControlPlaneEndpoint represents the endpoint used to communicate with the control plane. Immutable, populated by the AKS API at create.
+ControlPlaneEndpoint represents the endpoint used to communicate with the control plane. Immutable, populated by the AKS API at create.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**host** `required`|str|The hostname on which the API server is serving.||
-|**port** `required`|int|The port on which the API server is serving.||
+|**host** `required`|str|host is the hostname on which the API server is serving.||
+|**port** `required`|int|port is the port on which the API server is serving.||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecExtensionsItems0
 
-r""" AKSExtension represents the configuration for an AKS cluster extension. See also [AKS doc].  [AKS doc]: https://learn.microsoft.com/en-us/azure/aks/cluster-extensions
+AKSExtension represents the configuration for an AKS cluster extension. See also [AKS doc].  [AKS doc]: https://learn.microsoft.com/en-us/azure/aks/cluster-extensions
 
 #### Attributes
 
@@ -15709,7 +15752,7 @@ r""" AKSExtension represents the configuration for an AKS cluster extension. See
 |**version**|str|Version is the version of the extension.||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecExtensionsItems0Plan
 
-r""" Plan is the plan of the extension.
+Plan is the plan of the extension.
 
 #### Attributes
 
@@ -15722,7 +15765,7 @@ r""" Plan is the plan of the extension.
 |**version**|str|Version is the version of the plan.||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecExtensionsItems0Scope
 
-r""" Scope is the scope at which this extension is enabled.
+Scope is the scope at which this extension is enabled.
 
 #### Attributes
 
@@ -15733,19 +15776,19 @@ r""" Scope is the scope at which this extension is enabled.
 |**targetNamespace**|str|TargetNamespace is the namespace where the extension will be created for a Namespace-scoped extension.<br />Required for Namespace-scoped extensions.||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecFleetsMember
 
-r""" FleetsMember is the spec for the fleet this cluster is a member of. See also [AKS doc].  [AKS doc]: https://learn.microsoft.com/en-us/azure/templates/microsoft.containerservice/2023-03-15-preview/fleets/members
+FleetsMember is the spec for the fleet this cluster is a member of. See also [AKS doc].  [AKS doc]: https://learn.microsoft.com/en-us/azure/templates/microsoft.containerservice/2023-03-15-preview/fleets/members
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**group**|str|Group is the group this member belongs to for multi-cluster update management.||
+|**group**|str|Group is the group this member belongs to for multi-cluster update management.|"default"|
 |**managerName** `required`|str|ManagerName is the name of the fleet manager.||
 |**managerResourceGroup** `required`|str|ManagerResourceGroup is the resource group of the fleet manager.||
 |**name**|str|Name is the name of the member.||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecHTTPProxyConfig
 
-r""" HTTPProxyConfig is the HTTP proxy configuration for the cluster. Immutable.
+HTTPProxyConfig is the HTTP proxy configuration for the cluster. Immutable.
 
 #### Attributes
 
@@ -15757,24 +15800,24 @@ r""" HTTPProxyConfig is the HTTP proxy configuration for the cluster. Immutable.
 |**trustedCa**|str|TrustedCA is the alternative CA cert to use for connecting to proxy servers.||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecIdentity
 
-r""" Identity configuration used by the AKS control plane.
+Identity configuration used by the AKS control plane.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**type**|"SystemAssigned" | "UserAssigned"|||
+|**type**|"SystemAssigned" | "UserAssigned"||"SystemAssigned"|
 |**userAssignedIdentityResourceID**|str|UserAssignedIdentityResourceID - Identity ARM resource ID when using user-assigned identity.||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecIdentityRef
 
-r""" IdentityRef is a reference to a AzureClusterIdentity to be used when reconciling this cluster
+IdentityRef is a reference to a AzureClusterIdentity to be used when reconciling this cluster
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**apiVersion**|str|API version of the referent.||
-|**fieldPath**|str|If referring to a piece of an object instead of an entire object, this string<br />should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2].<br />For example, if the object reference is to a container within a pod, this would take on a value like:<br />"spec.containers{name}" (where "name" refers to the name of the container that triggered<br />the event) or if no container name is specified "spec.containers[2]" (container with<br />index 2 in this pod). This syntax is chosen only to have some well-defined way of<br />referencing a part of an object.<br />TODO: this design is not final and this field is subject to change in the future.||
+|**fieldPath**|str|If referring to a piece of an object instead of an entire object, this string<br />should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2].<br />For example, if the object reference is to a container within a pod, this would take on a value like:<br />"spec.containers{name}" (where "name" refers to the name of the container that triggered<br />the event) or if no container name is specified "spec.containers[2]" (container with<br />index 2 in this pod). This syntax is chosen only to have some well-defined way of<br />referencing a part of an object.||
 |**kind**|str|Kind of the referent.<br />More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds||
 |**name**|str|Name of the referent.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names||
 |**namespace**|str|Namespace of the referent.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/||
@@ -15782,7 +15825,7 @@ r""" IdentityRef is a reference to a AzureClusterIdentity to be used when reconc
 |**uid**|str|UID of the referent.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecLoadBalancerProfile
 
-r""" LoadBalancerProfile is the profile of the cluster load balancer.
+LoadBalancerProfile is the profile of the cluster load balancer.
 
 #### Attributes
 
@@ -15795,16 +15838,16 @@ r""" LoadBalancerProfile is the profile of the cluster load balancer.
 |**outboundIPs**|[str]|OutboundIPs - Desired outbound IP resources for the cluster load balancer.||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecOidcIssuerProfile
 
-r""" OIDCIssuerProfile is the OIDC issuer profile of the Managed Cluster.
+OIDCIssuerProfile is the OIDC issuer profile of the Managed Cluster.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**enabled**|bool|Enabled is whether the OIDC issuer is enabled.||
+|**enabled**|bool|Enabled is whether the OIDC issuer is enabled.|False|
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecSecurityProfile
 
-r""" SecurityProfile defines the security profile for cluster.
+SecurityProfile defines the security profile for cluster.
 
 #### Attributes
 
@@ -15816,7 +15859,7 @@ r""" SecurityProfile defines the security profile for cluster.
 |**workloadIdentity**|[InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecSecurityProfileWorkloadIdentity](#infrastructureclusterxk8siov1beta1azuremanagedcontrolplanespecsecurityprofileworkloadidentity)|workload identity||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecSecurityProfileAzureKeyVaultKms
 
-r""" AzureKeyVaultKms defines Azure Key Vault Management Services Profile for the security profile.
+AzureKeyVaultKms defines Azure Key Vault Management Services Profile for the security profile.
 
 #### Attributes
 
@@ -15828,7 +15871,7 @@ r""" AzureKeyVaultKms defines Azure Key Vault Management Services Profile for th
 |**keyVaultResourceID**|str|KeyVaultResourceID is the Resource ID of key vault. When keyVaultNetworkAccess is Private, this field is required and must be a valid resource ID.||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecSecurityProfileDefender
 
-r""" Defender settings for the security profile.
+Defender settings for the security profile.
 
 #### Attributes
 
@@ -15838,7 +15881,7 @@ r""" Defender settings for the security profile.
 |**securityMonitoring** `required`|[InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecSecurityProfileDefenderSecurityMonitoring](#infrastructureclusterxk8siov1beta1azuremanagedcontrolplanespecsecurityprofiledefendersecuritymonitoring)|security monitoring||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecSecurityProfileDefenderSecurityMonitoring
 
-r""" SecurityMonitoring profile defines the Microsoft Defender threat detection for Cloud settings for the security profile.
+SecurityMonitoring profile defines the Microsoft Defender threat detection for Cloud settings for the security profile.
 
 #### Attributes
 
@@ -15847,7 +15890,7 @@ r""" SecurityMonitoring profile defines the Microsoft Defender threat detection 
 |**enabled** `required`|bool|Enabled enables Defender threat detection||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecSecurityProfileImageCleaner
 
-r""" ImageCleaner settings for the security profile.
+ImageCleaner settings for the security profile.
 
 #### Attributes
 
@@ -15857,7 +15900,7 @@ r""" ImageCleaner settings for the security profile.
 |**intervalHours**|int|IntervalHours defines Image Cleaner scanning interval in hours. Default value is 24 hours.||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecSecurityProfileWorkloadIdentity
 
-r""" Workloadidentity enables Kubernetes applications to access Azure cloud resources securely with Azure AD. Ensure to enable OIDC issuer while enabling Workload Identity
+Workloadidentity enables Kubernetes applications to access Azure cloud resources securely with Azure AD. Ensure to enable OIDC issuer while enabling Workload Identity
 
 #### Attributes
 
@@ -15866,40 +15909,40 @@ r""" Workloadidentity enables Kubernetes applications to access Azure cloud reso
 |**enabled** `required`|bool|Enabled enables the workload identity.||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecSku
 
-r""" SKU is the SKU of the AKS to be provisioned.
+SKU is the SKU of the AKS to be provisioned.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**tier** `required`|"Free" | "Paid" | "Standard"|Tier - Tier of an AKS cluster.||
+|**tier** `required`|"Free" | "Paid" | "Standard"|Tier - Tier of an AKS cluster.|"Free"|
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecVirtualNetwork
 
-r""" VirtualNetwork describes the virtual network for the AKS cluster. It will be created if it does not already exist.
+VirtualNetwork describes the virtual network for the AKS cluster. It will be created if it does not already exist.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**cidrBlock** `required`|str|cidr block||
+|**cidrBlock** `required`|str|cidr block|"10.0.0.0/8"|
 |**name** `required`|str|Name is the name of the virtual network.||
 |**resourceGroup**|str|ResourceGroup is the name of the Azure resource group for the VNet and Subnet.||
 |**subnet**|[InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecVirtualNetworkSubnet](#infrastructureclusterxk8siov1beta1azuremanagedcontrolplanespecvirtualnetworksubnet)|subnet||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecVirtualNetworkSubnet
 
-r""" ManagedControlPlaneSubnet describes a subnet for an AKS cluster.
+ManagedControlPlaneSubnet describes a subnet for an AKS cluster.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**cidrBlock** `required`|str|cidr block||
+|**cidrBlock** `required`|str|cidr block|"10.240.0.0/16"|
 |**name** `required`|str|name||
 |**privateEndpoints**|[[InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecVirtualNetworkSubnetPrivateEndpointsItems0](#infrastructureclusterxk8siov1beta1azuremanagedcontrolplanespecvirtualnetworksubnetprivateendpointsitems0)]|PrivateEndpoints is a slice of Virtual Network private endpoints to create for the subnets.||
 |**serviceEndpoints**|[[InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecVirtualNetworkSubnetServiceEndpointsItems0](#infrastructureclusterxk8siov1beta1azuremanagedcontrolplanespecvirtualnetworksubnetserviceendpointsitems0)]|ServiceEndpoints is a slice of Virtual Network service endpoints to enable for the subnets.||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecVirtualNetworkSubnetPrivateEndpointsItems0
 
-r""" PrivateEndpointSpec configures an Azure Private Endpoint.
+PrivateEndpointSpec configures an Azure Private Endpoint.
 
 #### Attributes
 
@@ -15914,7 +15957,7 @@ r""" PrivateEndpointSpec configures an Azure Private Endpoint.
 |**privateLinkServiceConnections**|[[InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecVirtualNetworkSubnetPrivateEndpointsItems0PrivateLinkServiceConnectionsItems0](#infrastructureclusterxk8siov1beta1azuremanagedcontrolplanespecvirtualnetworksubnetprivateendpointsitems0privatelinkserviceconnectionsitems0)]|PrivateLinkServiceConnections specifies Private Link Service Connections of the private endpoint.||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecVirtualNetworkSubnetPrivateEndpointsItems0PrivateLinkServiceConnectionsItems0
 
-r""" PrivateLinkServiceConnection defines the specification for a private link service connection associated with a private endpoint.
+PrivateLinkServiceConnection defines the specification for a private link service connection associated with a private endpoint.
 
 #### Attributes
 
@@ -15926,7 +15969,7 @@ r""" PrivateLinkServiceConnection defines the specification for a private link s
 |**requestMessage**|str|RequestMessage specifies a message passed to the owner of the remote resource with the private endpoint connection request.||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecVirtualNetworkSubnetServiceEndpointsItems0
 
-r""" ServiceEndpointSpec configures an Azure Service Endpoint.
+ServiceEndpointSpec configures an Azure Service Endpoint.
 
 #### Attributes
 
@@ -15936,7 +15979,7 @@ r""" ServiceEndpointSpec configures an Azure Service Endpoint.
 |**service** `required`|str|service||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneStatus
 
-r""" AzureManagedControlPlaneStatus defines the observed state of AzureManagedControlPlane.
+AzureManagedControlPlaneStatus defines the observed state of AzureManagedControlPlane.
 
 #### Attributes
 
@@ -15951,21 +15994,21 @@ r""" AzureManagedControlPlaneStatus defines the observed state of AzureManagedCo
 |**version**|str|Version defines the Kubernetes version for the control plane instance.||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneStatusConditionsItems0
 
-r""" Condition defines an observation of a Cluster API resource operational state.
+Condition defines an observation of a Cluster API resource operational state.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime** `required`|str|Last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
-|**message**|str|A human readable message indicating details about the transition.<br />This field may be empty.||
-|**reason**|str|The reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may not be empty.||
-|**severity**|str|Severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
-|**status** `required`|str|Status of the condition, one of True, False, Unknown.||
+|**lastTransitionTime** `required`|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
+|**message**|str|message is a human readable message indicating details about the transition.<br />This field may be empty.||
+|**reason**|str|reason is the reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may be empty.||
+|**severity**|str|severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
+|**status** `required`|str|status of the condition, one of True, False, Unknown.||
 |**type** `required`|str|||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneStatusLongRunningOperationStatesItems0
 
-r""" Future contains the data needed for an Azure long-running operation to continue across reconcile loops.
+Future contains the data needed for an Azure long-running operation to continue across reconcile loops.
 
 #### Attributes
 
@@ -15978,7 +16021,7 @@ r""" Future contains the data needed for an Azure long-running operation to cont
 |**type** `required`|str|||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneStatusOidcIssuerProfile
 
-r""" OIDCIssuerProfile is the OIDC issuer profile of the Managed Cluster.
+OIDCIssuerProfile is the OIDC issuer profile of the Managed Cluster.
 
 #### Attributes
 
@@ -15987,7 +16030,7 @@ r""" OIDCIssuerProfile is the OIDC issuer profile of the Managed Cluster.
 |**issuerURL**|str|IssuerURL is the OIDC issuer url of the Managed Cluster.||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneTemplateSpec
 
-r""" AzureManagedControlPlaneTemplateSpec defines the desired state of AzureManagedControlPlaneTemplate.
+AzureManagedControlPlaneTemplateSpec defines the desired state of AzureManagedControlPlaneTemplate.
 
 #### Attributes
 
@@ -15996,7 +16039,7 @@ r""" AzureManagedControlPlaneTemplateSpec defines the desired state of AzureMana
 |**template** `required`|[InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneTemplateSpecTemplate](#infrastructureclusterxk8siov1beta1azuremanagedcontrolplanetemplatespectemplate)|template||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneTemplateSpecTemplate
 
-r""" AzureManagedControlPlaneTemplateResource describes the data needed to create an AzureManagedCluster from a template.
+AzureManagedControlPlaneTemplateResource describes the data needed to create an AzureManagedCluster from a template.
 
 #### Attributes
 
@@ -16005,7 +16048,7 @@ r""" AzureManagedControlPlaneTemplateResource describes the data needed to creat
 |**spec** `required`|[InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneTemplateSpecTemplateSpec](#infrastructureclusterxk8siov1beta1azuremanagedcontrolplanetemplatespectemplatespec)|spec||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneTemplateSpecTemplateSpec
 
-r""" AzureManagedControlPlaneTemplateResourceSpec specifies an Azure managed control plane template resource.
+AzureManagedControlPlaneTemplateResourceSpec specifies an Azure managed control plane template resource.
 
 #### Attributes
 
@@ -16021,7 +16064,7 @@ r""" AzureManagedControlPlaneTemplateResourceSpec specifies an Azure managed con
 |**azureEnvironment**|str|AzureEnvironment is the name of the AzureCloud to be used.<br />The default value that would be used by most users is "AzurePublicCloud", other values are:<br />- ChinaCloud: "AzureChinaCloud"<br />- PublicCloud: "AzurePublicCloud"<br />- USGovernmentCloud: "AzureUSGovernmentCloud"<br /><br />Note that values other than the default must also be accompanied by corresponding changes to the<br />aso-controller-settings Secret to configure ASO to refer to the non-Public cloud. ASO currently does<br />not support referring to multiple different clouds in a single installation. The following fields must<br />be defined in the Secret:<br />- AZURE_AUTHORITY_HOST<br />- AZURE_RESOURCE_MANAGER_ENDPOINT<br />- AZURE_RESOURCE_MANAGER_AUDIENCE<br /><br />See the [ASO docs] for more details.<br /><br />[ASO docs]: https://azure.github.io/azure-service-operator/guide/aso-controller-settings-options/||
 |**disableLocalAccounts**|bool|DisableLocalAccounts disables getting static credentials for this cluster when set. Expected to only be used for AAD clusters.||
 |**dnsServiceIP**|str|DNSServiceIP is an IP address assigned to the Kubernetes DNS service.<br />It must be within the Kubernetes service address range specified in serviceCidr.<br />Immutable.||
-|**enablePreviewFeatures**|bool|EnablePreviewFeatures enables preview features for the cluster.||
+|**enablePreviewFeatures**|bool|EnablePreviewFeatures enables preview features for the cluster.|False|
 |**extensions**|[[InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneTemplateSpecTemplateSpecExtensionsItems0](#infrastructureclusterxk8siov1beta1azuremanagedcontrolplanetemplatespectemplatespecextensionsitems0)]|Extensions is a list of AKS extensions to be installed on the cluster.||
 |**fleetsMember**|[InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneTemplateSpecTemplateSpecFleetsMember](#infrastructureclusterxk8siov1beta1azuremanagedcontrolplanetemplatespectemplatespecfleetsmember)|fleets member||
 |**httpProxyConfig**|[InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneTemplateSpecTemplateSpecHTTPProxyConfig](#infrastructureclusterxk8siov1beta1azuremanagedcontrolplanetemplatespectemplatespechttpproxyconfig)|http proxy config||
@@ -16033,7 +16076,7 @@ r""" AzureManagedControlPlaneTemplateResourceSpec specifies an Azure managed con
 |**location** `required`|str|Location is a string matching one of the canonical Azure region names. Examples: "westus2", "eastus".||
 |**machineTemplate**|any|MachineTemplate contains information about how machines<br />should be shaped when creating or updating a control plane.<br />For the AzureManagedControlPlaneTemplate, this field is used<br />only to fulfill the CAPI contract.||
 |**networkDataplane**|"azure" | "cilium"|NetworkDataplane is the dataplane used for building the Kubernetes network.||
-|**networkPlugin**|"azure" | "kubenet" | "none"|NetworkPlugin used for building Kubernetes network.||
+|**networkPlugin**|"azure" | "kubenet" | "none"|NetworkPlugin used for building Kubernetes network.|"azure"|
 |**networkPluginMode** `readOnly`|"overlay"|NetworkPluginMode is the mode the network plugin should use.<br />Allowed value is "overlay".|"overlay"|
 |**networkPolicy**|"azure" | "calico" | "cilium"|NetworkPolicy used for building Kubernetes network.||
 |**oidcIssuerProfile**|[InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneTemplateSpecTemplateSpecOidcIssuerProfile](#infrastructureclusterxk8siov1beta1azuremanagedcontrolplanetemplatespectemplatespecoidcissuerprofile)|oidc issuer profile||
@@ -16046,7 +16089,7 @@ r""" AzureManagedControlPlaneTemplateResourceSpec specifies an Azure managed con
 |**virtualNetwork**|[InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneTemplateSpecTemplateSpecVirtualNetwork](#infrastructureclusterxk8siov1beta1azuremanagedcontrolplanetemplatespectemplatespecvirtualnetwork)|virtual network||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneTemplateSpecTemplateSpecAPIServerAccessProfile
 
-r""" APIServerAccessProfile is the access profile for AKS API server. Immutable except for `authorizedIPRanges`.
+APIServerAccessProfile is the access profile for AKS API server. Immutable except for `authorizedIPRanges`.
 
 #### Attributes
 
@@ -16058,7 +16101,7 @@ r""" APIServerAccessProfile is the access profile for AKS API server. Immutable 
 |**privateDNSZone**|str|PrivateDNSZone enables private dns zone mode for private cluster.||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneTemplateSpecTemplateSpecAadProfile
 
-r""" AadProfile is Azure Active Directory configuration to integrate with AKS for aad authentication.
+AadProfile is Azure Active Directory configuration to integrate with AKS for aad authentication.
 
 #### Attributes
 
@@ -16068,7 +16111,7 @@ r""" AadProfile is Azure Active Directory configuration to integrate with AKS fo
 |**managed** `required`|bool|Managed - Whether to enable managed AAD.||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneTemplateSpecTemplateSpecAddonProfilesItems0
 
-r""" AddonProfile represents a managed cluster add-on.
+AddonProfile represents a managed cluster add-on.
 
 #### Attributes
 
@@ -16079,7 +16122,7 @@ r""" AddonProfile represents a managed cluster add-on.
 |**name** `required`|str|Name - The name of the managed cluster add-on.||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneTemplateSpecTemplateSpecAutoUpgradeProfile
 
-r""" AutoUpgradeProfile defines the auto upgrade configuration.
+AutoUpgradeProfile defines the auto upgrade configuration.
 
 #### Attributes
 
@@ -16088,32 +16131,32 @@ r""" AutoUpgradeProfile defines the auto upgrade configuration.
 |**upgradeChannel**|"node-image" | "none" | "patch" | "rapid" | "stable"|UpgradeChannel determines the type of upgrade channel for automatically upgrading the cluster.||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneTemplateSpecTemplateSpecAutoscalerProfile
 
-r""" AutoscalerProfile is the parameters to be applied to the cluster-autoscaler when enabled
+AutoscalerProfile is the parameters to be applied to the cluster-autoscaler when enabled
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**balanceSimilarNodeGroups**|"true" | "false"|BalanceSimilarNodeGroups - Valid values are 'true' and 'false'. The default is false.||
-|**expander**|"least-waste" | "most-pods" | "priority" | "random"|Expander - If not specified, the default is 'random'. See [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) for more information.||
-|**maxEmptyBulkDelete**|str|MaxEmptyBulkDelete - The default is 10.||
-|**maxGracefulTerminationSec**|str|MaxGracefulTerminationSec - The default is 600.||
-|**maxNodeProvisionTime**|str|MaxNodeProvisionTime - The default is '15m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.||
-|**maxTotalUnreadyPercentage**|str|MaxTotalUnreadyPercentage - The default is 45. The maximum is 100 and the minimum is 0.||
-|**newPodScaleUpDelay**|str|NewPodScaleUpDelay - For scenarios like burst/batch scale where you don't want CA to act before the kubernetes scheduler could schedule all the pods, you can tell CA to ignore unscheduled pods before they're a certain age. The default is '0s'. Values must be an integer followed by a unit ('s' for seconds, 'm' for minutes, 'h' for hours, etc).||
-|**okTotalUnreadyCount**|str|OkTotalUnreadyCount - This must be an integer. The default is 3.||
-|**scaleDownDelayAfterAdd**|str|ScaleDownDelayAfterAdd - The default is '10m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.||
-|**scaleDownDelayAfterDelete**|str|ScaleDownDelayAfterDelete - The default is the scan-interval. Values must be an integer followed by an 's'. No unit of time other than seconds (s) is supported.||
-|**scaleDownDelayAfterFailure**|str|ScaleDownDelayAfterFailure - The default is '3m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.||
-|**scaleDownUnneededTime**|str|ScaleDownUnneededTime - The default is '10m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.||
-|**scaleDownUnreadyTime**|str|ScaleDownUnreadyTime - The default is '20m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.||
-|**scaleDownUtilizationThreshold**|str|ScaleDownUtilizationThreshold - The default is '0.5'.||
-|**scanInterval**|str|ScanInterval - How often cluster is reevaluated for scale up or down. The default is '10s'.||
-|**skipNodesWithLocalStorage**|"true" | "false"|SkipNodesWithLocalStorage - The default is false.||
-|**skipNodesWithSystemPods**|"true" | "false"|SkipNodesWithSystemPods - The default is true.||
+|**balanceSimilarNodeGroups**|"true" | "false"|BalanceSimilarNodeGroups - Valid values are 'true' and 'false'. The default is false.|"false"|
+|**expander**|"least-waste" | "most-pods" | "priority" | "random"|Expander - If not specified, the default is 'random'. See [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) for more information.|"random"|
+|**maxEmptyBulkDelete**|str|MaxEmptyBulkDelete - The default is 10.|"10"|
+|**maxGracefulTerminationSec**|str|MaxGracefulTerminationSec - The default is 600.|"600"|
+|**maxNodeProvisionTime**|str|MaxNodeProvisionTime - The default is '15m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.|"15m"|
+|**maxTotalUnreadyPercentage**|str|MaxTotalUnreadyPercentage - The default is 45. The maximum is 100 and the minimum is 0.|"45"|
+|**newPodScaleUpDelay**|str|NewPodScaleUpDelay - For scenarios like burst/batch scale where you don't want CA to act before the kubernetes scheduler could schedule all the pods, you can tell CA to ignore unscheduled pods before they're a certain age. The default is '0s'. Values must be an integer followed by a unit ('s' for seconds, 'm' for minutes, 'h' for hours, etc).|"0s"|
+|**okTotalUnreadyCount**|str|OkTotalUnreadyCount - This must be an integer. The default is 3.|"3"|
+|**scaleDownDelayAfterAdd**|str|ScaleDownDelayAfterAdd - The default is '10m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.|"10m"|
+|**scaleDownDelayAfterDelete**|str|ScaleDownDelayAfterDelete - The default is the scan-interval. Values must be an integer followed by an 's'. No unit of time other than seconds (s) is supported.|"10s"|
+|**scaleDownDelayAfterFailure**|str|ScaleDownDelayAfterFailure - The default is '3m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.|"3m"|
+|**scaleDownUnneededTime**|str|ScaleDownUnneededTime - The default is '10m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.|"10m"|
+|**scaleDownUnreadyTime**|str|ScaleDownUnreadyTime - The default is '20m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.|"20m"|
+|**scaleDownUtilizationThreshold**|str|ScaleDownUtilizationThreshold - The default is '0.5'.|"0.5"|
+|**scanInterval**|str|ScanInterval - How often cluster is reevaluated for scale up or down. The default is '10s'.|"10s"|
+|**skipNodesWithLocalStorage**|"true" | "false"|SkipNodesWithLocalStorage - The default is false.|"false"|
+|**skipNodesWithSystemPods**|"true" | "false"|SkipNodesWithSystemPods - The default is true.|"true"|
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneTemplateSpecTemplateSpecExtensionsItems0
 
-r""" AKSExtension represents the configuration for an AKS cluster extension. See also [AKS doc].  [AKS doc]: https://learn.microsoft.com/en-us/azure/aks/cluster-extensions
+AKSExtension represents the configuration for an AKS cluster extension. See also [AKS doc].  [AKS doc]: https://learn.microsoft.com/en-us/azure/aks/cluster-extensions
 
 #### Attributes
 
@@ -16131,7 +16174,7 @@ r""" AKSExtension represents the configuration for an AKS cluster extension. See
 |**version**|str|Version is the version of the extension.||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneTemplateSpecTemplateSpecExtensionsItems0Plan
 
-r""" Plan is the plan of the extension.
+Plan is the plan of the extension.
 
 #### Attributes
 
@@ -16144,7 +16187,7 @@ r""" Plan is the plan of the extension.
 |**version**|str|Version is the version of the plan.||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneTemplateSpecTemplateSpecExtensionsItems0Scope
 
-r""" Scope is the scope at which this extension is enabled.
+Scope is the scope at which this extension is enabled.
 
 #### Attributes
 
@@ -16155,18 +16198,18 @@ r""" Scope is the scope at which this extension is enabled.
 |**targetNamespace**|str|TargetNamespace is the namespace where the extension will be created for a Namespace-scoped extension.<br />Required for Namespace-scoped extensions.||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneTemplateSpecTemplateSpecFleetsMember
 
-r""" FleetsMember is the spec for the fleet this cluster is a member of. See also [AKS doc].  [AKS doc]: https://learn.microsoft.com/en-us/azure/templates/microsoft.containerservice/2023-03-15-preview/fleets/members
+FleetsMember is the spec for the fleet this cluster is a member of. See also [AKS doc].  [AKS doc]: https://learn.microsoft.com/en-us/azure/templates/microsoft.containerservice/2023-03-15-preview/fleets/members
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**group**|str|Group is the group this member belongs to for multi-cluster update management.||
+|**group**|str|Group is the group this member belongs to for multi-cluster update management.|"default"|
 |**managerName** `required`|str|ManagerName is the name of the fleet manager.||
 |**managerResourceGroup** `required`|str|ManagerResourceGroup is the resource group of the fleet manager.||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneTemplateSpecTemplateSpecHTTPProxyConfig
 
-r""" HTTPProxyConfig is the HTTP proxy configuration for the cluster. Immutable.
+HTTPProxyConfig is the HTTP proxy configuration for the cluster. Immutable.
 
 #### Attributes
 
@@ -16178,24 +16221,24 @@ r""" HTTPProxyConfig is the HTTP proxy configuration for the cluster. Immutable.
 |**trustedCa**|str|TrustedCA is the alternative CA cert to use for connecting to proxy servers.||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneTemplateSpecTemplateSpecIdentity
 
-r""" Identity configuration used by the AKS control plane.
+Identity configuration used by the AKS control plane.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**type**|"SystemAssigned" | "UserAssigned"|||
+|**type**|"SystemAssigned" | "UserAssigned"||"SystemAssigned"|
 |**userAssignedIdentityResourceID**|str|UserAssignedIdentityResourceID - Identity ARM resource ID when using user-assigned identity.||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneTemplateSpecTemplateSpecIdentityRef
 
-r""" IdentityRef is a reference to a AzureClusterIdentity to be used when reconciling this cluster
+IdentityRef is a reference to a AzureClusterIdentity to be used when reconciling this cluster
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**apiVersion**|str|API version of the referent.||
-|**fieldPath**|str|If referring to a piece of an object instead of an entire object, this string<br />should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2].<br />For example, if the object reference is to a container within a pod, this would take on a value like:<br />"spec.containers{name}" (where "name" refers to the name of the container that triggered<br />the event) or if no container name is specified "spec.containers[2]" (container with<br />index 2 in this pod). This syntax is chosen only to have some well-defined way of<br />referencing a part of an object.<br />TODO: this design is not final and this field is subject to change in the future.||
+|**fieldPath**|str|If referring to a piece of an object instead of an entire object, this string<br />should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2].<br />For example, if the object reference is to a container within a pod, this would take on a value like:<br />"spec.containers{name}" (where "name" refers to the name of the container that triggered<br />the event) or if no container name is specified "spec.containers[2]" (container with<br />index 2 in this pod). This syntax is chosen only to have some well-defined way of<br />referencing a part of an object.||
 |**kind**|str|Kind of the referent.<br />More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds||
 |**name**|str|Name of the referent.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names||
 |**namespace**|str|Namespace of the referent.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/||
@@ -16203,7 +16246,7 @@ r""" IdentityRef is a reference to a AzureClusterIdentity to be used when reconc
 |**uid**|str|UID of the referent.<br />More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneTemplateSpecTemplateSpecLoadBalancerProfile
 
-r""" LoadBalancerProfile is the profile of the cluster load balancer.
+LoadBalancerProfile is the profile of the cluster load balancer.
 
 #### Attributes
 
@@ -16216,16 +16259,16 @@ r""" LoadBalancerProfile is the profile of the cluster load balancer.
 |**outboundIPs**|[str]|OutboundIPs - Desired outbound IP resources for the cluster load balancer.||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneTemplateSpecTemplateSpecOidcIssuerProfile
 
-r""" OIDCIssuerProfile is the OIDC issuer profile of the Managed Cluster.
+OIDCIssuerProfile is the OIDC issuer profile of the Managed Cluster.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**enabled**|bool|Enabled is whether the OIDC issuer is enabled.||
+|**enabled**|bool|Enabled is whether the OIDC issuer is enabled.|False|
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneTemplateSpecTemplateSpecSecurityProfile
 
-r""" SecurityProfile defines the security profile for cluster.
+SecurityProfile defines the security profile for cluster.
 
 #### Attributes
 
@@ -16237,7 +16280,7 @@ r""" SecurityProfile defines the security profile for cluster.
 |**workloadIdentity**|[InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneTemplateSpecTemplateSpecSecurityProfileWorkloadIdentity](#infrastructureclusterxk8siov1beta1azuremanagedcontrolplanetemplatespectemplatespecsecurityprofileworkloadidentity)|workload identity||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneTemplateSpecTemplateSpecSecurityProfileAzureKeyVaultKms
 
-r""" AzureKeyVaultKms defines Azure Key Vault Management Services Profile for the security profile.
+AzureKeyVaultKms defines Azure Key Vault Management Services Profile for the security profile.
 
 #### Attributes
 
@@ -16249,7 +16292,7 @@ r""" AzureKeyVaultKms defines Azure Key Vault Management Services Profile for th
 |**keyVaultResourceID**|str|KeyVaultResourceID is the Resource ID of key vault. When keyVaultNetworkAccess is Private, this field is required and must be a valid resource ID.||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneTemplateSpecTemplateSpecSecurityProfileDefender
 
-r""" Defender settings for the security profile.
+Defender settings for the security profile.
 
 #### Attributes
 
@@ -16259,7 +16302,7 @@ r""" Defender settings for the security profile.
 |**securityMonitoring** `required`|[InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneTemplateSpecTemplateSpecSecurityProfileDefenderSecurityMonitoring](#infrastructureclusterxk8siov1beta1azuremanagedcontrolplanetemplatespectemplatespecsecurityprofiledefendersecuritymonitoring)|security monitoring||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneTemplateSpecTemplateSpecSecurityProfileDefenderSecurityMonitoring
 
-r""" SecurityMonitoring profile defines the Microsoft Defender threat detection for Cloud settings for the security profile.
+SecurityMonitoring profile defines the Microsoft Defender threat detection for Cloud settings for the security profile.
 
 #### Attributes
 
@@ -16268,7 +16311,7 @@ r""" SecurityMonitoring profile defines the Microsoft Defender threat detection 
 |**enabled** `required`|bool|Enabled enables Defender threat detection||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneTemplateSpecTemplateSpecSecurityProfileImageCleaner
 
-r""" ImageCleaner settings for the security profile.
+ImageCleaner settings for the security profile.
 
 #### Attributes
 
@@ -16278,7 +16321,7 @@ r""" ImageCleaner settings for the security profile.
 |**intervalHours**|int|IntervalHours defines Image Cleaner scanning interval in hours. Default value is 24 hours.||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneTemplateSpecTemplateSpecSecurityProfileWorkloadIdentity
 
-r""" Workloadidentity enables Kubernetes applications to access Azure cloud resources securely with Azure AD. Ensure to enable OIDC issuer while enabling Workload Identity
+Workloadidentity enables Kubernetes applications to access Azure cloud resources securely with Azure AD. Ensure to enable OIDC issuer while enabling Workload Identity
 
 #### Attributes
 
@@ -16287,40 +16330,40 @@ r""" Workloadidentity enables Kubernetes applications to access Azure cloud reso
 |**enabled** `required`|bool|Enabled enables the workload identity.||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneTemplateSpecTemplateSpecSku
 
-r""" SKU is the SKU of the AKS to be provisioned.
+SKU is the SKU of the AKS to be provisioned.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**tier** `required`|"Free" | "Paid" | "Standard"|Tier - Tier of an AKS cluster.||
+|**tier** `required`|"Free" | "Paid" | "Standard"|Tier - Tier of an AKS cluster.|"Free"|
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneTemplateSpecTemplateSpecVirtualNetwork
 
-r""" VirtualNetwork describes the virtual network for the AKS cluster. It will be created if it does not already exist.
+VirtualNetwork describes the virtual network for the AKS cluster. It will be created if it does not already exist.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**cidrBlock** `required`|str|cidr block||
+|**cidrBlock** `required`|str|cidr block|"10.0.0.0/8"|
 |**name** `required`|str|Name is the name of the virtual network.||
 |**resourceGroup**|str|ResourceGroup is the name of the Azure resource group for the VNet and Subnet.||
 |**subnet**|[InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneTemplateSpecTemplateSpecVirtualNetworkSubnet](#infrastructureclusterxk8siov1beta1azuremanagedcontrolplanetemplatespectemplatespecvirtualnetworksubnet)|subnet||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneTemplateSpecTemplateSpecVirtualNetworkSubnet
 
-r""" ManagedControlPlaneSubnet describes a subnet for an AKS cluster.
+ManagedControlPlaneSubnet describes a subnet for an AKS cluster.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**cidrBlock** `required`|str|cidr block||
+|**cidrBlock** `required`|str|cidr block|"10.240.0.0/16"|
 |**name** `required`|str|name||
 |**privateEndpoints**|[[InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneTemplateSpecTemplateSpecVirtualNetworkSubnetPrivateEndpointsItems0](#infrastructureclusterxk8siov1beta1azuremanagedcontrolplanetemplatespectemplatespecvirtualnetworksubnetprivateendpointsitems0)]|PrivateEndpoints is a slice of Virtual Network private endpoints to create for the subnets.||
 |**serviceEndpoints**|[[InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneTemplateSpecTemplateSpecVirtualNetworkSubnetServiceEndpointsItems0](#infrastructureclusterxk8siov1beta1azuremanagedcontrolplanetemplatespectemplatespecvirtualnetworksubnetserviceendpointsitems0)]|ServiceEndpoints is a slice of Virtual Network service endpoints to enable for the subnets.||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneTemplateSpecTemplateSpecVirtualNetworkSubnetPrivateEndpointsItems0
 
-r""" PrivateEndpointSpec configures an Azure Private Endpoint.
+PrivateEndpointSpec configures an Azure Private Endpoint.
 
 #### Attributes
 
@@ -16335,7 +16378,7 @@ r""" PrivateEndpointSpec configures an Azure Private Endpoint.
 |**privateLinkServiceConnections**|[[InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneTemplateSpecTemplateSpecVirtualNetworkSubnetPrivateEndpointsItems0PrivateLinkServiceConnectionsItems0](#infrastructureclusterxk8siov1beta1azuremanagedcontrolplanetemplatespectemplatespecvirtualnetworksubnetprivateendpointsitems0privatelinkserviceconnectionsitems0)]|PrivateLinkServiceConnections specifies Private Link Service Connections of the private endpoint.||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneTemplateSpecTemplateSpecVirtualNetworkSubnetPrivateEndpointsItems0PrivateLinkServiceConnectionsItems0
 
-r""" PrivateLinkServiceConnection defines the specification for a private link service connection associated with a private endpoint.
+PrivateLinkServiceConnection defines the specification for a private link service connection associated with a private endpoint.
 
 #### Attributes
 
@@ -16347,7 +16390,7 @@ r""" PrivateLinkServiceConnection defines the specification for a private link s
 |**requestMessage**|str|RequestMessage specifies a message passed to the owner of the remote resource with the private endpoint connection request.||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneTemplateSpecTemplateSpecVirtualNetworkSubnetServiceEndpointsItems0
 
-r""" ServiceEndpointSpec configures an Azure Service Endpoint.
+ServiceEndpointSpec configures an Azure Service Endpoint.
 
 #### Attributes
 
@@ -16357,7 +16400,7 @@ r""" ServiceEndpointSpec configures an Azure Service Endpoint.
 |**service** `required`|str|service||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolSpec
 
-r""" AzureManagedMachinePoolSpec defines the desired state of AzureManagedMachinePool.
+AzureManagedMachinePoolSpec defines the desired state of AzureManagedMachinePool.
 
 #### Attributes
 
@@ -16380,7 +16423,7 @@ r""" AzureManagedMachinePoolSpec defines the desired state of AzureManagedMachin
 |**nodePublicIPPrefixID**|str|NodePublicIPPrefixID specifies the public IP prefix resource ID which VM nodes should use IPs from.<br />Immutable.||
 |**osDiskSizeGB**|int|OSDiskSizeGB is the disk size for every machine in this agent pool.<br />If you specify 0, it will apply the default osDisk size according to the vmSize specified.<br />Immutable.||
 |**osDiskType**|"Ephemeral" | "Managed"|OsDiskType specifies the OS disk type for each node in the pool. Allowed values are 'Ephemeral' and 'Managed' (default).<br />Immutable.<br />See also [AKS doc].<br /><br />[AKS doc]: https://learn.microsoft.com/azure/aks/cluster-configuration#ephemeral-os|"Managed"|
-|**osType**|"Linux" | "Windows"|OSType specifies the virtual machine operating system. Default to Linux. Possible values include: 'Linux', 'Windows'.<br />'Windows' requires the AzureManagedControlPlane's `spec.networkPlugin` to be `azure`.<br />Immutable.<br />See also [AKS doc].<br /><br />[AKS doc]: https://learn.microsoft.com/rest/api/aks/agent-pools/create-or-update?tabs=HTTP#ostype||
+|**osType**|"Linux" | "Windows"|OSType specifies the virtual machine operating system. Default to Linux. Possible values include: 'Linux', 'Windows'.<br />'Windows' requires the AzureManagedControlPlane's `spec.networkPlugin` to be `azure`.<br />Immutable.<br />See also [AKS doc].<br /><br />[AKS doc]: https://learn.microsoft.com/rest/api/aks/agent-pools/create-or-update?tabs=HTTP#ostype|"Linux"|
 |**providerIDList**|[str]|ProviderIDList is the unique identifier as specified by the cloud provider.||
 |**scaleDownMode**|"Deallocate" | "Delete"|ScaleDownMode affects the cluster autoscaler behavior. Default to Delete. Possible values include: 'Deallocate', 'Delete'|"Delete"|
 |**scaleSetPriority**|"Regular" | "Spot"|ScaleSetPriority specifies the ScaleSetPriority value. Default to Regular. Possible values include: 'Regular', 'Spot'<br />Immutable.||
@@ -16391,7 +16434,7 @@ r""" AzureManagedMachinePoolSpec defines the desired state of AzureManagedMachin
 |**taints**|[[InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolSpecTaintsItems0](#infrastructureclusterxk8siov1beta1azuremanagedmachinepoolspectaintsitems0)]|Taints specifies the taints for nodes present in this agent pool.<br />See also [AKS doc].<br /><br />[AKS doc]: https://learn.microsoft.com/azure/aks/use-multiple-node-pools#setting-node-pool-taints||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolSpecKubeletConfig
 
-r""" KubeletConfig specifies the kubelet configurations for nodes. Immutable.
+KubeletConfig specifies the kubelet configurations for nodes. Immutable.
 
 #### Attributes
 
@@ -16410,7 +16453,7 @@ r""" KubeletConfig specifies the kubelet configurations for nodes. Immutable.
 |**topologyManagerPolicy**|"none" | "best-effort" | "restricted" | "single-numa-node"|TopologyManagerPolicy - Topology Manager policy to use.||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolSpecLinuxOSConfig
 
-r""" LinuxOSConfig specifies the custom Linux OS settings and configurations. Immutable.
+LinuxOSConfig specifies the custom Linux OS settings and configurations. Immutable.
 
 #### Attributes
 
@@ -16422,7 +16465,7 @@ r""" LinuxOSConfig specifies the custom Linux OS settings and configurations. Im
 |**transparentHugePageEnabled**|"always" | "madvise" | "never"|TransparentHugePageEnabled specifies various modes of Transparent Hugepages.<br />See also [Linux doc].<br /><br />[Linux doc]: https://www.kernel.org/doc/html/latest/admin-guide/mm/transhuge.html#admin-guide-transhuge for more details.||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolSpecLinuxOSConfigSysctls
 
-r""" Sysctl specifies the settings for Linux agent nodes.
+Sysctl specifies the settings for Linux agent nodes.
 
 #### Attributes
 
@@ -16458,7 +16501,7 @@ r""" Sysctl specifies the settings for Linux agent nodes.
 |**vmVfsCachePressure**|int|VMVfsCachePressure specifies the percentage value that controls tendency of the kernel to reclaim the memory, which is used for caching of directory and inode objects.<br />Valid values are 1-500 (inclusive).<br />Maps to vm.vfs_cache_pressure.||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolSpecScaling
 
-r""" Scaling specifies the autoscaling parameters for the node pool.
+Scaling specifies the autoscaling parameters for the node pool.
 
 #### Attributes
 
@@ -16468,7 +16511,7 @@ r""" Scaling specifies the autoscaling parameters for the node pool.
 |**minSize**|int|MinSize is the minimum number of nodes for auto-scaling.||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolSpecTaintsItems0
 
-r""" Taint represents a Kubernetes taint.
+Taint represents a Kubernetes taint.
 
 #### Attributes
 
@@ -16479,7 +16522,7 @@ r""" Taint represents a Kubernetes taint.
 |**value** `required`|str|Value is the value of the taint||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolStatus
 
-r""" AzureManagedMachinePoolStatus defines the observed state of AzureManagedMachinePool.
+AzureManagedMachinePoolStatus defines the observed state of AzureManagedMachinePool.
 
 #### Attributes
 
@@ -16493,21 +16536,21 @@ r""" AzureManagedMachinePoolStatus defines the observed state of AzureManagedMac
 |**replicas**|int|Replicas is the most recently observed number of replicas.||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolStatusConditionsItems0
 
-r""" Condition defines an observation of a Cluster API resource operational state.
+Condition defines an observation of a Cluster API resource operational state.
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime** `required`|str|Last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
-|**message**|str|A human readable message indicating details about the transition.<br />This field may be empty.||
-|**reason**|str|The reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may not be empty.||
-|**severity**|str|Severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
-|**status** `required`|str|Status of the condition, one of True, False, Unknown.||
+|**lastTransitionTime** `required`|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
+|**message**|str|message is a human readable message indicating details about the transition.<br />This field may be empty.||
+|**reason**|str|reason is the reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may be empty.||
+|**severity**|str|severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
+|**status** `required`|str|status of the condition, one of True, False, Unknown.||
 |**type** `required`|str|||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolStatusLongRunningOperationStatesItems0
 
-r""" Future contains the data needed for an Azure long-running operation to continue across reconcile loops.
+Future contains the data needed for an Azure long-running operation to continue across reconcile loops.
 
 #### Attributes
 
@@ -16520,7 +16563,7 @@ r""" Future contains the data needed for an Azure long-running operation to cont
 |**type** `required`|str|||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolTemplateSpec
 
-r""" AzureManagedMachinePoolTemplateSpec defines the desired state of AzureManagedMachinePoolTemplate.
+AzureManagedMachinePoolTemplateSpec defines the desired state of AzureManagedMachinePoolTemplate.
 
 #### Attributes
 
@@ -16529,7 +16572,7 @@ r""" AzureManagedMachinePoolTemplateSpec defines the desired state of AzureManag
 |**template** `required`|[InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolTemplateSpecTemplate](#infrastructureclusterxk8siov1beta1azuremanagedmachinepooltemplatespectemplate)|template||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolTemplateSpecTemplate
 
-r""" AzureManagedMachinePoolTemplateResource describes the data needed to create an AzureManagedCluster from a template.
+AzureManagedMachinePoolTemplateResource describes the data needed to create an AzureManagedCluster from a template.
 
 #### Attributes
 
@@ -16538,7 +16581,7 @@ r""" AzureManagedMachinePoolTemplateResource describes the data needed to create
 |**spec** `required`|[InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolTemplateSpecTemplateSpec](#infrastructureclusterxk8siov1beta1azuremanagedmachinepooltemplatespectemplatespec)|spec||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolTemplateSpecTemplateSpec
 
-r""" AzureManagedMachinePoolTemplateResourceSpec specifies an Azure managed control plane template resource.
+AzureManagedMachinePoolTemplateResourceSpec specifies an Azure managed control plane template resource.
 
 #### Attributes
 
@@ -16561,7 +16604,7 @@ r""" AzureManagedMachinePoolTemplateResourceSpec specifies an Azure managed cont
 |**nodePublicIPPrefixID**|str|NodePublicIPPrefixID specifies the public IP prefix resource ID which VM nodes should use IPs from.<br />Immutable.||
 |**osDiskSizeGB**|int|OSDiskSizeGB is the disk size for every machine in this agent pool.<br />If you specify 0, it will apply the default osDisk size according to the vmSize specified.<br />Immutable.||
 |**osDiskType**|"Ephemeral" | "Managed"|OsDiskType specifies the OS disk type for each node in the pool. Allowed values are 'Ephemeral' and 'Managed' (default).<br />Immutable.<br />See also [AKS doc].<br /><br />[AKS doc]: https://learn.microsoft.com/azure/aks/cluster-configuration#ephemeral-os|"Managed"|
-|**osType**|"Linux" | "Windows"|OSType specifies the virtual machine operating system. Default to Linux. Possible values include: 'Linux', 'Windows'.<br />'Windows' requires the AzureManagedControlPlane's `spec.networkPlugin` to be `azure`.<br />Immutable.<br />See also [AKS doc].<br /><br />[AKS doc]: https://learn.microsoft.com/rest/api/aks/agent-pools/create-or-update?tabs=HTTP#ostype||
+|**osType**|"Linux" | "Windows"|OSType specifies the virtual machine operating system. Default to Linux. Possible values include: 'Linux', 'Windows'.<br />'Windows' requires the AzureManagedControlPlane's `spec.networkPlugin` to be `azure`.<br />Immutable.<br />See also [AKS doc].<br /><br />[AKS doc]: https://learn.microsoft.com/rest/api/aks/agent-pools/create-or-update?tabs=HTTP#ostype|"Linux"|
 |**scaleDownMode**|"Deallocate" | "Delete"|ScaleDownMode affects the cluster autoscaler behavior. Default to Delete. Possible values include: 'Deallocate', 'Delete'|"Delete"|
 |**scaleSetPriority**|"Regular" | "Spot"|ScaleSetPriority specifies the ScaleSetPriority value. Default to Regular. Possible values include: 'Regular', 'Spot'<br />Immutable.||
 |**scaling**|[InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolTemplateSpecTemplateSpecScaling](#infrastructureclusterxk8siov1beta1azuremanagedmachinepooltemplatespectemplatespecscaling)|scaling||
@@ -16571,7 +16614,7 @@ r""" AzureManagedMachinePoolTemplateResourceSpec specifies an Azure managed cont
 |**taints**|[[InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolTemplateSpecTemplateSpecTaintsItems0](#infrastructureclusterxk8siov1beta1azuremanagedmachinepooltemplatespectemplatespectaintsitems0)]|Taints specifies the taints for nodes present in this agent pool.<br />See also [AKS doc].<br /><br />[AKS doc]: https://learn.microsoft.com/azure/aks/use-multiple-node-pools#setting-node-pool-taints||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolTemplateSpecTemplateSpecKubeletConfig
 
-r""" KubeletConfig specifies the kubelet configurations for nodes. Immutable.
+KubeletConfig specifies the kubelet configurations for nodes. Immutable.
 
 #### Attributes
 
@@ -16590,7 +16633,7 @@ r""" KubeletConfig specifies the kubelet configurations for nodes. Immutable.
 |**topologyManagerPolicy**|"none" | "best-effort" | "restricted" | "single-numa-node"|TopologyManagerPolicy - Topology Manager policy to use.||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolTemplateSpecTemplateSpecLinuxOSConfig
 
-r""" LinuxOSConfig specifies the custom Linux OS settings and configurations. Immutable.
+LinuxOSConfig specifies the custom Linux OS settings and configurations. Immutable.
 
 #### Attributes
 
@@ -16602,7 +16645,7 @@ r""" LinuxOSConfig specifies the custom Linux OS settings and configurations. Im
 |**transparentHugePageEnabled**|"always" | "madvise" | "never"|TransparentHugePageEnabled specifies various modes of Transparent Hugepages.<br />See also [Linux doc].<br /><br />[Linux doc]: https://www.kernel.org/doc/html/latest/admin-guide/mm/transhuge.html#admin-guide-transhuge for more details.||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolTemplateSpecTemplateSpecLinuxOSConfigSysctls
 
-r""" Sysctl specifies the settings for Linux agent nodes.
+Sysctl specifies the settings for Linux agent nodes.
 
 #### Attributes
 
@@ -16638,7 +16681,7 @@ r""" Sysctl specifies the settings for Linux agent nodes.
 |**vmVfsCachePressure**|int|VMVfsCachePressure specifies the percentage value that controls tendency of the kernel to reclaim the memory, which is used for caching of directory and inode objects.<br />Valid values are 1-500 (inclusive).<br />Maps to vm.vfs_cache_pressure.||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolTemplateSpecTemplateSpecScaling
 
-r""" Scaling specifies the autoscaling parameters for the node pool.
+Scaling specifies the autoscaling parameters for the node pool.
 
 #### Attributes
 
@@ -16648,7 +16691,7 @@ r""" Scaling specifies the autoscaling parameters for the node pool.
 |**minSize**|int|MinSize is the minimum number of nodes for auto-scaling.||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolTemplateSpecTemplateSpecTaintsItems0
 
-r""" Taint represents a Kubernetes taint.
+Taint represents a Kubernetes taint.
 
 #### Attributes
 

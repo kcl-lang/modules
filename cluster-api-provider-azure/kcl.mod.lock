@@ -1,5 +1,9 @@
 [dependencies]
+  [dependencies.cluster-api]
+    name = "cluster-api"
+    full_name = "cluster-api_v1.9.6"
+    version = "v1.9.6"
   [dependencies.k8s]
     name = "k8s"
-    full_name = "k8s_1.31.2"
-    version = "1.31.2"
+    full_name = "k8s_1.32.4"
+    version = "1.32.4"

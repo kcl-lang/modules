@@ -51,7 +51,7 @@ schema CrdProjectcalicoOrgV1IPPoolSpec:
         ipip
     ipipMode : str, default is Undefined, optional
         Contains configuration for IPIP tunneling for this pool. If not specified, then this is defaulted to "Never" (i.e. IPIP tunneling is disabled).
-    nat_outgoing : bool, default is Undefined, optional
+    "nat-outgoing" : bool, default is Undefined, optional
         Deprecated: this field is only used for APIv1 backwards compatibility. Setting this field is not allowed, this field is for internal use only.
     natOutgoing : bool, default is Undefined, optional
         When natOutgoing is true, packets sent from Calico networked containers in this pool to destinations outside of this pool will be masqueraded.
@@ -76,7 +76,7 @@ schema CrdProjectcalicoOrgV1IPPoolSpec:
 
     ipipMode?: str
 
-    nat_outgoing?: bool
+    "nat-outgoing"?: bool
 
     natOutgoing?: bool
 

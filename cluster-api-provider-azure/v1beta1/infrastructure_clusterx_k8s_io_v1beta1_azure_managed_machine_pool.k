@@ -59,7 +59,6 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolSpec:
         Immutable.
         See also [AKS doc].
 
-
         [AKS doc]: https://learn.microsoft.com/en-us/azure/aks/enable-host-encryption
     enableFIPS : bool, default is Undefined, optional
         EnableFIPS indicates whether FIPS is enabled on the node pool.
@@ -78,7 +77,6 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolSpec:
         Immutable.
         See also [AKS doc].
 
-
         [AKS doc]: https://learn.microsoft.com/rest/api/aks/agent-pools/create-or-update?tabs=HTTP#kubeletdisktype
     linuxOSConfig : InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolSpecLinuxOSConfig, default is Undefined, optional
         linux o s config
@@ -86,7 +84,6 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolSpec:
         MaxPods specifies the kubelet `--max-pods` configuration for the node pool.
         Immutable.
         See also [AKS doc], [K8s doc].
-
 
         [AKS doc]: https://learn.microsoft.com/azure/aks/configure-azure-cni#configure-maximum---new-clusters
         [K8s doc]: https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/
@@ -98,7 +95,6 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolSpec:
     nodeLabels : {str:str}, default is Undefined, optional
         Node labels represent the labels for all of the nodes present in node pool.
         See also [AKS doc].
-
 
         [AKS doc]: https://learn.microsoft.com/azure/aks/use-labels
     nodePublicIPPrefixID : str, default is Undefined, optional
@@ -113,14 +109,12 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolSpec:
         Immutable.
         See also [AKS doc].
 
-
         [AKS doc]: https://learn.microsoft.com/azure/aks/cluster-configuration#ephemeral-os
-    osType : str, default is Undefined, optional
+    osType : str, default is "Linux", optional
         OSType specifies the virtual machine operating system. Default to Linux. Possible values include: 'Linux', 'Windows'.
         'Windows' requires the AzureManagedControlPlane's `spec.networkPlugin` to be `azure`.
         Immutable.
         See also [AKS doc].
-
 
         [AKS doc]: https://learn.microsoft.com/rest/api/aks/agent-pools/create-or-update?tabs=HTTP#ostype
     providerIDList : [str], default is Undefined, optional
@@ -145,7 +139,6 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolSpec:
     taints : [InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolSpecTaintsItems0], default is Undefined, optional
         Taints specifies the taints for nodes present in this agent pool.
         See also [AKS doc].
-
 
         [AKS doc]: https://learn.microsoft.com/azure/aks/use-multiple-node-pools#setting-node-pool-taints
     """
@@ -185,7 +178,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolSpec:
 
     osDiskType?: "Ephemeral" | "Managed" = "Managed"
 
-    osType?: "Linux" | "Windows"
+    osType?: "Linux" | "Windows" = "Linux"
 
     providerIDList?: [str]
 
@@ -290,7 +283,6 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolSpecLinuxOSConfi
         Must be at least 1.
         See also [AKS doc].
 
-
         [AKS doc]: https://learn.microsoft.com/azure/virtual-machines/managed-disks-overview#temporary-disk
     sysctls : InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolSpecLinuxOSConfigSysctls, default is Undefined, optional
         sysctls
@@ -298,12 +290,10 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolSpecLinuxOSConfi
         TransparentHugePageDefrag specifies whether the kernel should make aggressive use of memory compaction to make more hugepages available.
         See also [Linux doc].
 
-
         [Linux doc]: https://www.kernel.org/doc/html/latest/admin-guide/mm/transhuge.html#admin-guide-transhuge for more details.
     transparentHugePageEnabled : str, default is Undefined, optional
         TransparentHugePageEnabled specifies various modes of Transparent Hugepages.
         See also [Linux doc].
-
 
         [Linux doc]: https://www.kernel.org/doc/html/latest/admin-guide/mm/transhuge.html#admin-guide-transhuge for more details.
     """
@@ -651,24 +641,24 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolStatusConditions
     Attributes
     ----------
     lastTransitionTime : str, default is Undefined, required
-        Last time the condition transitioned from one status to another.
+        lastTransitionTime is the last time the condition transitioned from one status to another.
         This should be when the underlying condition changed. If that is not known, then using the time when
         the API field changed is acceptable.
     message : str, default is Undefined, optional
-        A human readable message indicating details about the transition.
+        message is a human readable message indicating details about the transition.
         This field may be empty.
     reason : str, default is Undefined, optional
-        The reason for the condition's last transition in CamelCase.
+        reason is the reason for the condition's last transition in CamelCase.
         The specific API may choose whether or not this field is considered a guaranteed API.
-        This field may not be empty.
+        This field may be empty.
     severity : str, default is Undefined, optional
-        Severity provides an explicit classification of Reason code, so the users or machines can immediately
+        severity provides an explicit classification of Reason code, so the users or machines can immediately
         understand the current situation and act accordingly.
         The Severity field MUST be set only when Status=False.
     status : str, default is Undefined, required
-        Status of the condition, one of True, False, Unknown.
+        status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
-        Type of condition in CamelCase or in foo.example.com/CamelCase.
+        type of condition in CamelCase or in foo.example.com/CamelCase.
         Many .condition.type values are consistent across resources like Available, but because arbitrary conditions
         can be useful (see .node.status.conditions), the ability to deconflict is important.
     """
@@ -685,6 +675,16 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolStatusConditions
     status: str
 
     $type: str
+
+
+    check:
+        len(message) <= 10240 if message
+        len(message) >= 1 if message
+        len(reason) <= 256 if reason
+        len(reason) >= 1 if reason
+        len(severity) <= 32 if severity
+        len($type) <= 256
+        len($type) >= 1
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolStatusLongRunningOperationStatesItems0:

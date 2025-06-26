@@ -59,15 +59,19 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedClusterSpecControlPlaneEndp
     Attributes
     ----------
     host : str, default is Undefined, required
-        The hostname on which the API server is serving.
+        host is the hostname on which the API server is serving.
     port : int, default is Undefined, required
-        The port on which the API server is serving.
+        port is the port on which the API server is serving.
     """
 
 
     host: str
 
     port: int
+
+
+    check:
+        len(host) <= 512
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureManagedClusterStatus:

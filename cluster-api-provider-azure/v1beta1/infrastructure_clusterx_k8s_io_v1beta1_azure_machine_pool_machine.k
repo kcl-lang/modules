@@ -66,7 +66,6 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolMachineStatus:
         reconciling the MachinePool and will contain a more verbose string suitable
         for logging and human consumption.
 
-
         Any transient errors that occur during the reconciliation of MachinePools
         can be added as events to the MachinePool object and/or logged in the
         controller's output.
@@ -74,7 +73,6 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolMachineStatus:
         FailureReason will be set in the event that there is a terminal problem
         reconciling the MachinePool machine and will contain a succinct value suitable
         for machine interpretation.
-
 
         Any transient errors that occur during the reconciliation of MachinePools
         can be added as events to the MachinePool object and/or logged in the
@@ -127,24 +125,24 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolMachineStatusConditions
     Attributes
     ----------
     lastTransitionTime : str, default is Undefined, required
-        Last time the condition transitioned from one status to another.
+        lastTransitionTime is the last time the condition transitioned from one status to another.
         This should be when the underlying condition changed. If that is not known, then using the time when
         the API field changed is acceptable.
     message : str, default is Undefined, optional
-        A human readable message indicating details about the transition.
+        message is a human readable message indicating details about the transition.
         This field may be empty.
     reason : str, default is Undefined, optional
-        The reason for the condition's last transition in CamelCase.
+        reason is the reason for the condition's last transition in CamelCase.
         The specific API may choose whether or not this field is considered a guaranteed API.
-        This field may not be empty.
+        This field may be empty.
     severity : str, default is Undefined, optional
-        Severity provides an explicit classification of Reason code, so the users or machines can immediately
+        severity provides an explicit classification of Reason code, so the users or machines can immediately
         understand the current situation and act accordingly.
         The Severity field MUST be set only when Status=False.
     status : str, default is Undefined, required
-        Status of the condition, one of True, False, Unknown.
+        status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
-        Type of condition in CamelCase or in foo.example.com/CamelCase.
+        type of condition in CamelCase or in foo.example.com/CamelCase.
         Many .condition.type values are consistent across resources like Available, but because arbitrary conditions
         can be useful (see .node.status.conditions), the ability to deconflict is important.
     """
@@ -161,6 +159,16 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolMachineStatusConditions
     status: str
 
     $type: str
+
+
+    check:
+        len(message) <= 10240 if message
+        len(message) >= 1 if message
+        len(reason) <= 256 if reason
+        len(reason) >= 1 if reason
+        len(severity) <= 32 if severity
+        len($type) <= 256
+        len($type) >= 1
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolMachineStatusLongRunningOperationStatesItems0:
@@ -211,7 +219,6 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachinePoolMachineStatusNodeRef:
         the event) or if no container name is specified "spec.containers[2]" (container with
         index 2 in this pod). This syntax is chosen only to have some well-defined way of
         referencing a part of an object.
-        TODO: this design is not final and this field is subject to change in the future.
     kind : str, default is Undefined, optional
         Kind of the referent.
         More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds

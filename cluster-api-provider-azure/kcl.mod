@@ -1,8 +1,9 @@
 [package]
 name = "cluster-api-provider-azure"
-edition = "v0.9.0"
-version = "v1.16.2"
+edition = "*"
+version = "v1.20.0"
+description = "KCL package for https://github.com/kubernetes-sigs/cluster-api-provider-azure CRDs"
 
 [dependencies]
-k8s = "1.31.2"
-
+k8s = "1.32.4"
+cluster-api = "v1.10.3"

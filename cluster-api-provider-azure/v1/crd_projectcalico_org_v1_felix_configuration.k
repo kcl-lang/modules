@@ -542,7 +542,7 @@ schema CrdProjectcalicoOrgV1FelixConfigurationSpec:
 
     check:
         _regex_match(str(bpfPSNATPorts), r"^.*") if bpfPSNATPorts
-        all kubeNodePortRanges in kubeNodePortRanges {_regex_match(str(kubeNodePortRanges), r"^.*") if kubeNodePortRanges } if kubeNodePortRanges
+        all kubeNodePortRanges in kubeNodePortRanges { _regex_match(str(kubeNodePortRanges), r"^.*") if kubeNodePortRanges } if kubeNodePortRanges
         _regex_match(str(natPortRange), r"^.*") if natPortRange
 
 
