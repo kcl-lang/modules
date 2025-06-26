@@ -469,12 +469,16 @@ schema ImageToolkitFluxcdIoV1beta2ImageUpdateAutomationStatusObservedPoliciesAno
 
     Attributes
     ----------
+    digest : str, default is Undefined, optional
+        Digest is the image's digest.
     name : str, default is Undefined, required
         Name is the bare image's name.
     tag : str, default is Undefined, required
         Tag is the image's tag.
     """
 
+
+    digest?: str
 
     name: str
 
