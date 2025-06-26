@@ -44,20 +44,46 @@ schema ImageToolkitFluxcdIoV1beta2ImagePolicySpec:
 
     Attributes
     ----------
+    digestReflectionPolicy : str, default is "Never", optional
+        DigestReflectionPolicy governs the setting of the `.status.latestRef.digest` field.
+
+        Never: The digest field will always be set to the empty string.
+
+        IfNotPresent: The digest field will be set to the digest of the elected
+        latest image if the field is empty and the image did not change.
+
+        Always: The digest field will always be set to the digest of the elected
+        latest image.
+
+        Default: Never.
     filterTags : ImageToolkitFluxcdIoV1beta2ImagePolicySpecFilterTags, default is Undefined, optional
         filter tags
     imageRepositoryRef : ImageToolkitFluxcdIoV1beta2ImagePolicySpecImageRepositoryRef, default is Undefined, required
         image repository ref
+    interval : str, default is Undefined, optional
+        Interval is the length of time to wait between
+        refreshing the digest of the latest tag when the
+        reflection policy is set to "Always".
+
+        Defaults to 10m.
     policy : ImageToolkitFluxcdIoV1beta2ImagePolicySpecPolicy, default is Undefined, required
         policy
     """
 
 
+    digestReflectionPolicy?: "Always" | "IfNotPresent" | "Never" = "Never"
+
     filterTags?: ImageToolkitFluxcdIoV1beta2ImagePolicySpecFilterTags
 
     imageRepositoryRef: ImageToolkitFluxcdIoV1beta2ImagePolicySpecImageRepositoryRef
 
+    interval?: str
+
     policy: ImageToolkitFluxcdIoV1beta2ImagePolicySpecPolicy
+
+
+    check:
+        _regex_match(str(interval), r"^([0-9]+(\.[0-9]+)?(ms|s|m|h))+$") if interval
 
 
 schema ImageToolkitFluxcdIoV1beta2ImagePolicySpecFilterTags:
@@ -184,11 +210,19 @@ schema ImageToolkitFluxcdIoV1beta2ImagePolicyStatus:
         LatestImage gives the first in the list of images scanned by
         the image repository, when filtered and ordered according to
         the policy.
+
+        Deprecated: Replaced by the composite "latestRef" field.
+    latestRef : ImageToolkitFluxcdIoV1beta2ImagePolicyStatusLatestRef, default is Undefined, optional
+        latest ref
     observedGeneration : int, default is Undefined, optional
         observed generation
     observedPreviousImage : str, default is Undefined, optional
         ObservedPreviousImage is the observed previous LatestImage. It is used
         to keep track of the previous and current images.
+
+        Deprecated: Replaced by the composite "observedPreviousRef" field.
+    observedPreviousRef : ImageToolkitFluxcdIoV1beta2ImagePolicyStatusObservedPreviousRef, default is Undefined, optional
+        observed previous ref
     """
 
 
@@ -196,9 +230,13 @@ schema ImageToolkitFluxcdIoV1beta2ImagePolicyStatus:
 
     latestImage?: str
 
+    latestRef?: ImageToolkitFluxcdIoV1beta2ImagePolicyStatusLatestRef
+
     observedGeneration?: int
 
     observedPreviousImage?: str
+
+    observedPreviousRef?: ImageToolkitFluxcdIoV1beta2ImagePolicyStatusObservedPreviousRef
 
 
 schema ImageToolkitFluxcdIoV1beta2ImagePolicyStatusConditionsItems0:
@@ -251,5 +289,52 @@ schema ImageToolkitFluxcdIoV1beta2ImagePolicyStatusConditionsItems0:
         _regex_match(str(reason), r"^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$")
         len($type) <= 316
         _regex_match(str($type), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$")
+
+
+schema ImageToolkitFluxcdIoV1beta2ImagePolicyStatusLatestRef:
+    r"""
+    LatestRef gives the first in the list of images scanned by
+    the image repository, when filtered and ordered according
+    to the policy.
+
+    Attributes
+    ----------
+    digest : str, default is Undefined, optional
+        Digest is the image's digest.
+    name : str, default is Undefined, required
+        Name is the bare image's name.
+    tag : str, default is Undefined, required
+        Tag is the image's tag.
+    """
+
+
+    digest?: str
+
+    name: str
+
+    tag: str
+
+
+schema ImageToolkitFluxcdIoV1beta2ImagePolicyStatusObservedPreviousRef:
+    r"""
+    ObservedPreviousRef is the observed previous LatestRef. It is used
+    to keep track of the previous and current images.
+
+    Attributes
+    ----------
+    digest : str, default is Undefined, optional
+        Digest is the image's digest.
+    name : str, default is Undefined, required
+        Name is the bare image's name.
+    tag : str, default is Undefined, required
+        Tag is the image's tag.
+    """
+
+
+    digest?: str
+
+    name: str
+
+    tag: str
 
 
