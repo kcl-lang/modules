@@ -67,6 +67,10 @@ schema SourceToolkitFluxcdIoV1GitRepositorySpec:
         ref
     secretRef : SourceToolkitFluxcdIoV1GitRepositorySpecSecretRef, default is Undefined, optional
         secret ref
+    sparseCheckout : [str], default is Undefined, optional
+        SparseCheckout specifies a list of directories to checkout when cloning
+        the repository. If specified, only these directories are included in the
+        Artifact produced for this GitRepository.
     suspend : bool, default is Undefined, optional
         Suspend tells the controller to suspend the reconciliation of this
         GitRepository.
@@ -94,6 +98,8 @@ schema SourceToolkitFluxcdIoV1GitRepositorySpec:
     ref?: SourceToolkitFluxcdIoV1GitRepositorySpecRef
 
     secretRef?: SourceToolkitFluxcdIoV1GitRepositorySpecSecretRef
+
+    sparseCheckout?: [str]
 
     suspend?: bool
 
@@ -288,6 +294,9 @@ schema SourceToolkitFluxcdIoV1GitRepositoryStatus:
     observedRecurseSubmodules : bool, default is Undefined, optional
         ObservedRecurseSubmodules is the observed resource submodules
         configuration used to produce the current Artifact.
+    observedSparseCheckout : [str], default is Undefined, optional
+        ObservedSparseCheckout is the observed list of directories used to
+        produce the current Artifact.
     sourceVerificationMode : str, default is Undefined, optional
         SourceVerificationMode is the last used verification mode indicating
         which Git object(s) have been verified.
@@ -309,6 +318,8 @@ schema SourceToolkitFluxcdIoV1GitRepositoryStatus:
     observedInclude?: [SourceToolkitFluxcdIoV1GitRepositoryStatusObservedIncludeItems0]
 
     observedRecurseSubmodules?: bool
+
+    observedSparseCheckout?: [str]
 
     sourceVerificationMode?: str
 

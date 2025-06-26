@@ -7,6 +7,7 @@
   - [GitRepository](#gitrepository)
   - [HelmChart](#helmchart)
   - [HelmRepository](#helmrepository)
+  - [OCIRepository](#ocirepository)
   - [SourceToolkitFluxcdIoV1BucketSpec](#sourcetoolkitfluxcdiov1bucketspec)
   - [SourceToolkitFluxcdIoV1BucketSpecCertSecretRef](#sourcetoolkitfluxcdiov1bucketspeccertsecretref)
   - [SourceToolkitFluxcdIoV1BucketSpecProxySecretRef](#sourcetoolkitfluxcdiov1bucketspecproxysecretref)
@@ -47,6 +48,19 @@
   - [SourceToolkitFluxcdIoV1HelmRepositoryStatus](#sourcetoolkitfluxcdiov1helmrepositorystatus)
   - [SourceToolkitFluxcdIoV1HelmRepositoryStatusArtifact](#sourcetoolkitfluxcdiov1helmrepositorystatusartifact)
   - [SourceToolkitFluxcdIoV1HelmRepositoryStatusConditionsItems0](#sourcetoolkitfluxcdiov1helmrepositorystatusconditionsitems0)
+  - [SourceToolkitFluxcdIoV1OCIRepositorySpec](#sourcetoolkitfluxcdiov1ocirepositoryspec)
+  - [SourceToolkitFluxcdIoV1OCIRepositorySpecCertSecretRef](#sourcetoolkitfluxcdiov1ocirepositoryspeccertsecretref)
+  - [SourceToolkitFluxcdIoV1OCIRepositorySpecLayerSelector](#sourcetoolkitfluxcdiov1ocirepositoryspeclayerselector)
+  - [SourceToolkitFluxcdIoV1OCIRepositorySpecProxySecretRef](#sourcetoolkitfluxcdiov1ocirepositoryspecproxysecretref)
+  - [SourceToolkitFluxcdIoV1OCIRepositorySpecRef](#sourcetoolkitfluxcdiov1ocirepositoryspecref)
+  - [SourceToolkitFluxcdIoV1OCIRepositorySpecSecretRef](#sourcetoolkitfluxcdiov1ocirepositoryspecsecretref)
+  - [SourceToolkitFluxcdIoV1OCIRepositorySpecVerify](#sourcetoolkitfluxcdiov1ocirepositoryspecverify)
+  - [SourceToolkitFluxcdIoV1OCIRepositorySpecVerifyMatchOIDCIdentityItems0](#sourcetoolkitfluxcdiov1ocirepositoryspecverifymatchoidcidentityitems0)
+  - [SourceToolkitFluxcdIoV1OCIRepositorySpecVerifySecretRef](#sourcetoolkitfluxcdiov1ocirepositoryspecverifysecretref)
+  - [SourceToolkitFluxcdIoV1OCIRepositoryStatus](#sourcetoolkitfluxcdiov1ocirepositorystatus)
+  - [SourceToolkitFluxcdIoV1OCIRepositoryStatusArtifact](#sourcetoolkitfluxcdiov1ocirepositorystatusartifact)
+  - [SourceToolkitFluxcdIoV1OCIRepositoryStatusConditionsItems0](#sourcetoolkitfluxcdiov1ocirepositorystatusconditionsitems0)
+  - [SourceToolkitFluxcdIoV1OCIRepositoryStatusObservedLayerSelector](#sourcetoolkitfluxcdiov1ocirepositorystatusobservedlayerselector)
 - v1beta1
   - [Bucket](#bucket)
   - [GitRepository](#gitrepository)
@@ -205,6 +219,19 @@ HelmRepository is the Schema for the helmrepositories API.
 |**metadata**|[ObjectMeta](#objectmeta)|metadata||
 |**spec**|[SourceToolkitFluxcdIoV1HelmRepositorySpec](#sourcetoolkitfluxcdiov1helmrepositoryspec)|spec||
 |**status**|[SourceToolkitFluxcdIoV1HelmRepositoryStatus](#sourcetoolkitfluxcdiov1helmrepositorystatus)|status||
+### OCIRepository
+
+OCIRepository is the Schema for the ocirepositories API
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**apiVersion** `required` `readOnly`|"source.toolkit.fluxcd.io/v1"|APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources|"source.toolkit.fluxcd.io/v1"|
+|**kind** `required` `readOnly`|"OCIRepository"|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds|"OCIRepository"|
+|**metadata**|[ObjectMeta](#objectmeta)|metadata||
+|**spec**|[SourceToolkitFluxcdIoV1OCIRepositorySpec](#sourcetoolkitfluxcdiov1ocirepositoryspec)|spec||
+|**status**|[SourceToolkitFluxcdIoV1OCIRepositoryStatus](#sourcetoolkitfluxcdiov1ocirepositorystatus)|status||
 ### SourceToolkitFluxcdIoV1BucketSpec
 
 BucketSpec specifies the required configuration to produce an Artifact for an object storage bucket.
@@ -343,6 +370,7 @@ GitRepositorySpec specifies the required configuration to produce an Artifact fo
 |**recurseSubmodules**|bool|RecurseSubmodules enables the initialization of all submodules within<br />the GitRepository as cloned from the URL, using their default settings.||
 |**ref**|[SourceToolkitFluxcdIoV1GitRepositorySpecRef](#sourcetoolkitfluxcdiov1gitrepositoryspecref)|ref||
 |**secretRef**|[SourceToolkitFluxcdIoV1GitRepositorySpecSecretRef](#sourcetoolkitfluxcdiov1gitrepositoryspecsecretref)|secret ref||
+|**sparseCheckout**|[str]|SparseCheckout specifies a list of directories to checkout when cloning<br />the repository. If specified, only these directories are included in the<br />Artifact produced for this GitRepository.||
 |**suspend**|bool|Suspend tells the controller to suspend the reconciliation of this<br />GitRepository.||
 |**timeout**|str|Timeout for Git operations like cloning, defaults to 60s.|"60s"|
 |**url** `required`|str|URL specifies the Git repository URL, it can be an HTTP/S or SSH address.||
@@ -433,6 +461,7 @@ GitRepositoryStatus records the observed state of a Git repository.
 |**observedIgnore**|str|ObservedIgnore is the observed exclusion patterns used for constructing<br />the source artifact.||
 |**observedInclude**|[[SourceToolkitFluxcdIoV1GitRepositoryStatusObservedIncludeItems0](#sourcetoolkitfluxcdiov1gitrepositorystatusobservedincludeitems0)]|ObservedInclude is the observed list of GitRepository resources used to<br />produce the current Artifact.||
 |**observedRecurseSubmodules**|bool|ObservedRecurseSubmodules is the observed resource submodules<br />configuration used to produce the current Artifact.||
+|**observedSparseCheckout**|[str]|ObservedSparseCheckout is the observed list of directories used to<br />produce the current Artifact.||
 |**sourceVerificationMode**|str|SourceVerificationMode is the last used verification mode indicating<br />which Git object(s) have been verified.||
 ### SourceToolkitFluxcdIoV1GitRepositoryStatusArtifact
 
@@ -698,6 +727,161 @@ Condition contains details for one aspect of the current state of this API Resou
 |**reason** `required`|str|reason contains a programmatic identifier indicating the reason for the condition's last transition.<br />Producers of specific condition types may define expected values and meanings for this field,<br />and whether the values are considered a guaranteed API.<br />The value should be a CamelCase string.<br />This field may not be empty.||
 |**status** `required`|"True" | "False" | "Unknown"|status of the condition, one of True, False, Unknown.||
 |**type** `required`|str|||
+### SourceToolkitFluxcdIoV1OCIRepositorySpec
+
+OCIRepositorySpec defines the desired state of OCIRepository
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**certSecretRef**|[SourceToolkitFluxcdIoV1OCIRepositorySpecCertSecretRef](#sourcetoolkitfluxcdiov1ocirepositoryspeccertsecretref)|cert secret ref||
+|**ignore**|str|Ignore overrides the set of excluded patterns in the .sourceignore format<br />(which is the same as .gitignore). If not provided, a default will be used,<br />consult the documentation for your version to find out what those are.||
+|**insecure**|bool|Insecure allows connecting to a non-TLS HTTP container registry.||
+|**interval** `required`|str|Interval at which the OCIRepository URL is checked for updates.<br />This interval is approximate and may be subject to jitter to ensure<br />efficient use of resources.||
+|**layerSelector**|[SourceToolkitFluxcdIoV1OCIRepositorySpecLayerSelector](#sourcetoolkitfluxcdiov1ocirepositoryspeclayerselector)|layer selector||
+|**provider**|"generic" | "aws" | "azure" | "gcp"|The provider used for authentication, can be 'aws', 'azure', 'gcp' or 'generic'.<br />When not specified, defaults to 'generic'.|"generic"|
+|**proxySecretRef**|[SourceToolkitFluxcdIoV1OCIRepositorySpecProxySecretRef](#sourcetoolkitfluxcdiov1ocirepositoryspecproxysecretref)|proxy secret ref||
+|**ref**|[SourceToolkitFluxcdIoV1OCIRepositorySpecRef](#sourcetoolkitfluxcdiov1ocirepositoryspecref)|ref||
+|**secretRef**|[SourceToolkitFluxcdIoV1OCIRepositorySpecSecretRef](#sourcetoolkitfluxcdiov1ocirepositoryspecsecretref)|secret ref||
+|**serviceAccountName**|str|ServiceAccountName is the name of the Kubernetes ServiceAccount used to authenticate<br />the image pull if the service account has attached pull secrets. For more information:<br />https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#add-imagepullsecrets-to-a-service-account||
+|**suspend**|bool|This flag tells the controller to suspend the reconciliation of this source.||
+|**timeout**|str|The timeout for remote OCI Repository operations like pulling, defaults to 60s.|"60s"|
+|**url** `required`|str|URL is a reference to an OCI artifact repository hosted<br />on a remote container registry.||
+|**verify**|[SourceToolkitFluxcdIoV1OCIRepositorySpecVerify](#sourcetoolkitfluxcdiov1ocirepositoryspecverify)|verify||
+### SourceToolkitFluxcdIoV1OCIRepositorySpecCertSecretRef
+
+CertSecretRef can be given the name of a Secret containing either or both of  - a PEM-encoded client certificate (`tls.crt`) and private key (`tls.key`); - a PEM-encoded CA certificate (`ca.crt`)  and whichever are supplied, will be used for connecting to the registry. The client cert and key are useful if you are authenticating with a certificate; the CA cert is useful if you are using a self-signed server certificate. The Secret must be of type `Opaque` or `kubernetes.io/tls`.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**name** `required`|str|Name of the referent.||
+### SourceToolkitFluxcdIoV1OCIRepositorySpecLayerSelector
+
+LayerSelector specifies which layer should be extracted from the OCI artifact. When not specified, the first layer found in the artifact is selected.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**mediaType**|str|MediaType specifies the OCI media type of the layer<br />which should be extracted from the OCI Artifact. The<br />first layer matching this type is selected.||
+|**operation**|"extract" | "copy"|Operation specifies how the selected layer should be processed.<br />By default, the layer compressed content is extracted to storage.<br />When the operation is set to 'copy', the layer compressed content<br />is persisted to storage as it is.||
+### SourceToolkitFluxcdIoV1OCIRepositorySpecProxySecretRef
+
+ProxySecretRef specifies the Secret containing the proxy configuration to use while communicating with the container registry.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**name** `required`|str|Name of the referent.||
+### SourceToolkitFluxcdIoV1OCIRepositorySpecRef
+
+The OCI reference to pull and monitor for changes, defaults to the latest tag.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**digest**|str|Digest is the image digest to pull, takes precedence over SemVer.<br />The value should be in the format 'sha256:<HASH>'.||
+|**semver**|str|SemVer is the range of tags to pull selecting the latest within<br />the range, takes precedence over Tag.||
+|**semverFilter**|str|SemverFilter is a regex pattern to filter the tags within the SemVer range.||
+|**tag**|str|Tag is the image tag to pull, defaults to latest.||
+### SourceToolkitFluxcdIoV1OCIRepositorySpecSecretRef
+
+SecretRef contains the secret name containing the registry login credentials to resolve image metadata. The secret must be of type kubernetes.io/dockerconfigjson.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**name** `required`|str|Name of the referent.||
+### SourceToolkitFluxcdIoV1OCIRepositorySpecVerify
+
+Verify contains the secret name containing the trusted public keys used to verify the signature and specifies which provider to use to check whether OCI image is authentic.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**matchOIDCIdentity**|[[SourceToolkitFluxcdIoV1OCIRepositorySpecVerifyMatchOIDCIdentityItems0](#sourcetoolkitfluxcdiov1ocirepositoryspecverifymatchoidcidentityitems0)]|MatchOIDCIdentity specifies the identity matching criteria to use<br />while verifying an OCI artifact which was signed using Cosign keyless<br />signing. The artifact's identity is deemed to be verified if any of the<br />specified matchers match against the identity.||
+|**provider** `required`|"cosign" | "notation"|Provider specifies the technology used to sign the OCI Artifact.|"cosign"|
+|**secretRef**|[SourceToolkitFluxcdIoV1OCIRepositorySpecVerifySecretRef](#sourcetoolkitfluxcdiov1ocirepositoryspecverifysecretref)|secret ref||
+### SourceToolkitFluxcdIoV1OCIRepositorySpecVerifyMatchOIDCIdentityItems0
+
+OIDCIdentityMatch specifies options for verifying the certificate identity, i.e. the issuer and the subject of the certificate.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**issuer** `required`|str|Issuer specifies the regex pattern to match against to verify<br />the OIDC issuer in the Fulcio certificate. The pattern must be a<br />valid Go regular expression.||
+|**subject** `required`|str|Subject specifies the regex pattern to match against to verify<br />the identity subject in the Fulcio certificate. The pattern must<br />be a valid Go regular expression.||
+### SourceToolkitFluxcdIoV1OCIRepositorySpecVerifySecretRef
+
+SecretRef specifies the Kubernetes Secret containing the trusted public keys.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**name** `required`|str|Name of the referent.||
+### SourceToolkitFluxcdIoV1OCIRepositoryStatus
+
+OCIRepositoryStatus defines the observed state of OCIRepository
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**artifact**|[SourceToolkitFluxcdIoV1OCIRepositoryStatusArtifact](#sourcetoolkitfluxcdiov1ocirepositorystatusartifact)|artifact||
+|**conditions**|[[SourceToolkitFluxcdIoV1OCIRepositoryStatusConditionsItems0](#sourcetoolkitfluxcdiov1ocirepositorystatusconditionsitems0)]|Conditions holds the conditions for the OCIRepository.||
+|**lastHandledReconcileAt**|str|LastHandledReconcileAt holds the value of the most recent<br />reconcile request value, so a change of the annotation value<br />can be detected.||
+|**observedGeneration**|int|ObservedGeneration is the last observed generation.||
+|**observedIgnore**|str|ObservedIgnore is the observed exclusion patterns used for constructing<br />the source artifact.||
+|**observedLayerSelector**|[SourceToolkitFluxcdIoV1OCIRepositoryStatusObservedLayerSelector](#sourcetoolkitfluxcdiov1ocirepositorystatusobservedlayerselector)|observed layer selector||
+|**url**|str|URL is the download link for the artifact output of the last OCI Repository sync.||
+### SourceToolkitFluxcdIoV1OCIRepositoryStatusArtifact
+
+Artifact represents the output of the last successful OCI Repository sync.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**digest**|str|Digest is the digest of the file in the form of '<algorithm>:<checksum>'.||
+|**lastUpdateTime** `required`|str|LastUpdateTime is the timestamp corresponding to the last update of the<br />Artifact.||
+|**metadata**|{str:str}|Metadata holds upstream information such as OCI annotations.||
+|**path** `required`|str|Path is the relative file path of the Artifact. It can be used to locate<br />the file in the root of the Artifact storage on the local file system of<br />the controller managing the Source.||
+|**revision** `required`|str|Revision is a human-readable identifier traceable in the origin source<br />system. It can be a Git commit SHA, Git tag, a Helm chart version, etc.||
+|**size**|int|Size is the number of bytes in the file.||
+|**url** `required`|str|URL is the HTTP address of the Artifact as exposed by the controller<br />managing the Source. It can be used to retrieve the Artifact for<br />consumption, e.g. by another controller applying the Artifact contents.||
+### SourceToolkitFluxcdIoV1OCIRepositoryStatusConditionsItems0
+
+Condition contains details for one aspect of the current state of this API Resource.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**lastTransitionTime** `required`|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed.  If that is not known, then using the time when the API field changed is acceptable.||
+|**message** `required`|str|message is a human readable message indicating details about the transition.<br />This may be an empty string.||
+|**observedGeneration**|int|observedGeneration represents the .metadata.generation that the condition was set based upon.<br />For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date<br />with respect to the current state of the instance.||
+|**reason** `required`|str|reason contains a programmatic identifier indicating the reason for the condition's last transition.<br />Producers of specific condition types may define expected values and meanings for this field,<br />and whether the values are considered a guaranteed API.<br />The value should be a CamelCase string.<br />This field may not be empty.||
+|**status** `required`|"True" | "False" | "Unknown"|status of the condition, one of True, False, Unknown.||
+|**type** `required`|str|||
+### SourceToolkitFluxcdIoV1OCIRepositoryStatusObservedLayerSelector
+
+ObservedLayerSelector is the observed layer selector used for constructing the source artifact.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**mediaType**|str|MediaType specifies the OCI media type of the layer<br />which should be extracted from the OCI Artifact. The<br />first layer matching this type is selected.||
+|**operation**|"extract" | "copy"|Operation specifies how the selected layer should be processed.<br />By default, the layer compressed content is extracted to storage.<br />When the operation is set to 'copy', the layer compressed content<br />is persisted to storage as it is.||
 ### Bucket
 
 Bucket is the Schema for the buckets API
