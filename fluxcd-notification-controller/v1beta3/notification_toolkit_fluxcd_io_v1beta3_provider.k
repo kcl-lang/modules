@@ -48,6 +48,12 @@ schema NotificationToolkitFluxcdIoV1beta3ProviderSpec:
         cert secret ref
     channel : str, default is Undefined, optional
         Channel specifies the destination channel where events should be posted.
+    commitStatusExpr : str, default is Undefined, optional
+        CommitStatusExpr is a CEL expression that evaluates to a string value
+        that can be used to generate a custom commit status message for use
+        with eligible Provider types (github, gitlab, gitea, bitbucketserver,
+        bitbucket, azuredevops). Supported variables are: event, provider,
+        and alert.
     interval : str, default is Undefined, optional
         Interval at which to reconcile the Provider with its Secret references.
         Deprecated and not used in v1beta3.
@@ -55,6 +61,11 @@ schema NotificationToolkitFluxcdIoV1beta3ProviderSpec:
         Proxy the HTTP/S address of the proxy server.
     secretRef : NotificationToolkitFluxcdIoV1beta3ProviderSpecSecretRef, default is Undefined, optional
         secret ref
+    serviceAccountName : str, default is Undefined, optional
+        ServiceAccountName is the name of the service account used to
+        authenticate with services from cloud providers. An error is thrown if a
+        static credential is also defined inside the Secret referenced by the
+        SecretRef.
     suspend : bool, default is Undefined, optional
         Suspend tells the controller to suspend subsequent
         events handling for this Provider.
@@ -73,11 +84,15 @@ schema NotificationToolkitFluxcdIoV1beta3ProviderSpec:
 
     channel?: str
 
+    commitStatusExpr?: str
+
     interval?: str
 
     proxy?: str
 
     secretRef?: NotificationToolkitFluxcdIoV1beta3ProviderSpecSecretRef
+
+    serviceAccountName?: str
 
     suspend?: bool
 
