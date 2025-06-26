@@ -719,8 +719,9 @@ Metal3ClusterSpec defines the desired state of Metal3Cluster.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
+|**cloudProviderEnabled**|bool|Determines if the cluster is to be deployed with an external cloud provider.<br />If set to false, CAPM3 will use node labels to set providerID on the kubernetes nodes.<br />If set to true, providerID is set on nodes by other entities and CAPM3 uses the value of the providerID on the m3m resource.<br />Default value is true, it is set in the webhook.||
 |**controlPlaneEndpoint**|[InfrastructureClusterxK8sIoV1beta1Metal3ClusterSpecControlPlaneEndpoint](#infrastructureclusterxk8siov1beta1metal3clusterspeccontrolplaneendpoint)|control plane endpoint||
-|**noCloudProvider**|bool|Determines if the cluster is not to be deployed with an external cloud provider.<br />If set to true, CAPM3 will use node labels to set providerID on the kubernetes nodes.<br />If set to false, providerID is set on nodes by other entities and CAPM3 uses the value of the providerID on the m3m resource.||
+|**noCloudProvider**|bool|Determines if the cluster is not to be deployed with an external cloud provider.<br />If set to true, CAPM3 will use node labels to set providerID on the kubernetes nodes.<br />If set to false, providerID is set on nodes by other entities and CAPM3 uses the value of the providerID on the m3m resource.<br /><br />Deprecated: This field is deprecated, use cloudProviderEnabled instead||
 ### InfrastructureClusterxK8sIoV1beta1Metal3ClusterSpecControlPlaneEndpoint
 
 ControlPlaneEndpoint represents the endpoint used to communicate with the control plane.
@@ -752,9 +753,9 @@ Condition defines an observation of a Cluster API resource operational state.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime** `required`|str|Last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
-|**message**|str|A human readable message indicating details about the transition.<br />This field may be empty.||
-|**reason**|str|The reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may be empty.||
+|**lastTransitionTime** `required`|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
+|**message**|str|message is a human readable message indicating details about the transition.<br />This field may be empty.||
+|**reason**|str|reason is the reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may be empty.||
 |**severity**|str|severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
 |**status** `required`|str|status of the condition, one of True, False, Unknown.||
 |**type** `required`|str|||
@@ -784,8 +785,9 @@ Metal3ClusterSpec defines the desired state of Metal3Cluster.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
+|**cloudProviderEnabled**|bool|Determines if the cluster is to be deployed with an external cloud provider.<br />If set to false, CAPM3 will use node labels to set providerID on the kubernetes nodes.<br />If set to true, providerID is set on nodes by other entities and CAPM3 uses the value of the providerID on the m3m resource.<br />Default value is true, it is set in the webhook.||
 |**controlPlaneEndpoint**|[InfrastructureClusterxK8sIoV1beta1Metal3ClusterTemplateSpecTemplateSpecControlPlaneEndpoint](#infrastructureclusterxk8siov1beta1metal3clustertemplatespectemplatespeccontrolplaneendpoint)|control plane endpoint||
-|**noCloudProvider**|bool|Determines if the cluster is not to be deployed with an external cloud provider.<br />If set to true, CAPM3 will use node labels to set providerID on the kubernetes nodes.<br />If set to false, providerID is set on nodes by other entities and CAPM3 uses the value of the providerID on the m3m resource.||
+|**noCloudProvider**|bool|Determines if the cluster is not to be deployed with an external cloud provider.<br />If set to true, CAPM3 will use node labels to set providerID on the kubernetes nodes.<br />If set to false, providerID is set on nodes by other entities and CAPM3 uses the value of the providerID on the m3m resource.<br /><br />Deprecated: This field is deprecated, use cloudProviderEnabled instead||
 ### InfrastructureClusterxK8sIoV1beta1Metal3ClusterTemplateSpecTemplateSpecControlPlaneEndpoint
 
 ControlPlaneEndpoint represents the endpoint used to communicate with the control plane.
@@ -858,7 +860,7 @@ Metal3DataSpec defines the desired state of Metal3Data.
 |**metaData**|[InfrastructureClusterxK8sIoV1beta1Metal3DataSpecMetaData](#infrastructureclusterxk8siov1beta1metal3dataspecmetadata)|meta data||
 |**networkData**|[InfrastructureClusterxK8sIoV1beta1Metal3DataSpecNetworkData](#infrastructureclusterxk8siov1beta1metal3dataspecnetworkdata)|network data||
 |**template** `required`|[InfrastructureClusterxK8sIoV1beta1Metal3DataSpecTemplate](#infrastructureclusterxk8siov1beta1metal3dataspectemplate)|template||
-|**templateReference**|str|TemplateReference refers to the Template the Metal3MachineTemplate refers to.<br />It can be matched against the key or it may also point to the name of the template<br />Metal3Data refers to||
+|**templateReference**|str|TemplateReference refers to the Template the Metal3MachineTemplate refers to.<br />It can be matched against the key or it may also point to the name of the template<br />Metal3Data refers to.<br /><br />Deprecated: This field is deprecated and will be removed in a future release.||
 ### InfrastructureClusterxK8sIoV1beta1Metal3DataSpecClaim
 
 DataClaim points to the Metal3DataClaim the Metal3Data was created for.
@@ -930,7 +932,7 @@ Metal3DataTemplateSpec defines the desired state of Metal3DataTemplate.
 |**clusterName** `required`|str|ClusterName is the name of the Cluster this object belongs to.||
 |**metaData**|[InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecMetaData](#infrastructureclusterxk8siov1beta1metal3datatemplatespecmetadata)|meta data||
 |**networkData**|[InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkData](#infrastructureclusterxk8siov1beta1metal3datatemplatespecnetworkdata)|network data||
-|**templateReference**|str|TemplateReference refers to the Template the Metal3MachineTemplate refers to.<br />It can be matched against the key or it may also point to the name of the template<br />Metal3Data refers to||
+|**templateReference**|str|TemplateReference refers to the Template the Metal3MachineTemplate refers to.<br />It can be matched against the key or it may also point to the name of the template<br />Metal3Data refers to.<br /><br />Deprecated: This field is deprecated and will be removed in a future release.||
 ### InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecMetaData
 
 MetaData contains the information needed to generate the metadata secret
@@ -1601,8 +1603,8 @@ MachineAddress contains information for the node's address.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**address** `required`|str|The machine address.||
-|**type** `required`|str|||
+|**address** `required`|str|address is the machine address.||
+|**type** `required`|"Hostname" | "ExternalIP" | "InternalIP" | "ExternalDNS" | "InternalDNS"|||
 ### InfrastructureClusterxK8sIoV1beta1Metal3MachineStatusConditionsItems0
 
 Condition defines an observation of a Cluster API resource operational state.
@@ -1611,9 +1613,9 @@ Condition defines an observation of a Cluster API resource operational state.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime** `required`|str|Last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
-|**message**|str|A human readable message indicating details about the transition.<br />This field may be empty.||
-|**reason**|str|The reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may be empty.||
+|**lastTransitionTime** `required`|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
+|**message**|str|message is a human readable message indicating details about the transition.<br />This field may be empty.||
+|**reason**|str|reason is the reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may be empty.||
 |**severity**|str|severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
 |**status** `required`|str|status of the condition, one of True, False, Unknown.||
 |**type** `required`|str|||

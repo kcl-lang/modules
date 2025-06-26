@@ -65,14 +65,23 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3ClusterTemplateSpecTemplateSpec:
 
     Attributes
     ----------
+    cloudProviderEnabled : bool, default is Undefined, optional
+        Determines if the cluster is to be deployed with an external cloud provider.
+        If set to false, CAPM3 will use node labels to set providerID on the kubernetes nodes.
+        If set to true, providerID is set on nodes by other entities and CAPM3 uses the value of the providerID on the m3m resource.
+        Default value is true, it is set in the webhook.
     controlPlaneEndpoint : InfrastructureClusterxK8sIoV1beta1Metal3ClusterTemplateSpecTemplateSpecControlPlaneEndpoint, default is Undefined, optional
         control plane endpoint
     noCloudProvider : bool, default is Undefined, optional
         Determines if the cluster is not to be deployed with an external cloud provider.
         If set to true, CAPM3 will use node labels to set providerID on the kubernetes nodes.
         If set to false, providerID is set on nodes by other entities and CAPM3 uses the value of the providerID on the m3m resource.
+
+        Deprecated: This field is deprecated, use cloudProviderEnabled instead
     """
 
+
+    cloudProviderEnabled?: bool
 
     controlPlaneEndpoint?: InfrastructureClusterxK8sIoV1beta1Metal3ClusterTemplateSpecTemplateSpecControlPlaneEndpoint
 

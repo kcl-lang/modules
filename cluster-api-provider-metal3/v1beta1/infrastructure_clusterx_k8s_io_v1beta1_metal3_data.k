@@ -54,7 +54,9 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataSpec:
     templateReference : str, default is Undefined, optional
         TemplateReference refers to the Template the Metal3MachineTemplate refers to.
         It can be matched against the key or it may also point to the name of the template
-        Metal3Data refers to
+        Metal3Data refers to.
+
+        Deprecated: This field is deprecated and will be removed in a future release.
     """
 
 
