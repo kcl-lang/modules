@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema EKSConfigTemplate:
-    """
+    r"""
     EKSConfigTemplate is the Amazon EKS Bootstrap Configuration Template API.
 
     Attributes
@@ -32,7 +32,7 @@ schema EKSConfigTemplate:
 
 
 schema BootstrapClusterxK8sIoV1beta1EKSConfigTemplateSpec:
-    """
+    r"""
     EKSConfigTemplateSpec defines the desired state of templated EKSConfig Amazon EKS Bootstrap Configuration resources.
 
     Attributes
@@ -46,7 +46,7 @@ schema BootstrapClusterxK8sIoV1beta1EKSConfigTemplateSpec:
 
 
 schema BootstrapClusterxK8sIoV1beta1EKSConfigTemplateSpecTemplate:
-    """
+    r"""
     EKSConfigTemplateResource defines the Template structure.
 
     Attributes
@@ -60,7 +60,7 @@ schema BootstrapClusterxK8sIoV1beta1EKSConfigTemplateSpecTemplate:
 
 
 schema BootstrapClusterxK8sIoV1beta1EKSConfigTemplateSpecTemplateSpec:
-    """
+    r"""
     EKSConfigSpec defines the desired state of Amazon EKS Bootstrap Configuration.
 
     Attributes
@@ -104,7 +104,7 @@ schema BootstrapClusterxK8sIoV1beta1EKSConfigTemplateSpecTemplateSpec:
 
 
 schema BootstrapClusterxK8sIoV1beta1EKSConfigTemplateSpecTemplateSpecPauseContainer:
-    """
+    r"""
     PauseContainer allows customization of the pause container to use.
 
     Attributes

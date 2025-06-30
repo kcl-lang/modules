@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema EKSConfig:
-    """
+    r"""
     EKSConfig is the schema for the Amazon EKS Machine Bootstrap Configuration API.
 
     Attributes
@@ -36,7 +36,7 @@ schema EKSConfig:
 
 
 schema BootstrapClusterxK8sIoV1beta1EKSConfigSpec:
-    """
+    r"""
     EKSConfigSpec defines the desired state of Amazon EKS Bootstrap Configuration.
 
     Attributes
@@ -80,7 +80,7 @@ schema BootstrapClusterxK8sIoV1beta1EKSConfigSpec:
 
 
 schema BootstrapClusterxK8sIoV1beta1EKSConfigSpecPauseContainer:
-    """
+    r"""
     PauseContainer allows customization of the pause container to use.
 
     Attributes
@@ -98,7 +98,7 @@ schema BootstrapClusterxK8sIoV1beta1EKSConfigSpecPauseContainer:
 
 
 schema BootstrapClusterxK8sIoV1beta1EKSConfigStatus:
-    """
+    r"""
     EKSConfigStatus defines the observed state of the Amazon EKS Bootstrap Configuration.
 
     Attributes
@@ -132,7 +132,7 @@ schema BootstrapClusterxK8sIoV1beta1EKSConfigStatus:
 
 
 schema BootstrapClusterxK8sIoV1beta1EKSConfigStatusConditionsItems0:
-    """
+    r"""
     Condition defines an observation of a Cluster API resource operational state.
 
     Attributes
@@ -147,15 +147,15 @@ schema BootstrapClusterxK8sIoV1beta1EKSConfigStatusConditionsItems0:
     reason : str, default is Undefined, optional
         The reason for the condition's last transition in CamelCase.
         The specific API may choose whether or not this field is considered a guaranteed API.
-        This field may not be empty.
+        This field may be empty.
     severity : str, default is Undefined, optional
-        Severity provides an explicit classification of Reason code, so the users or machines can immediately
+        severity provides an explicit classification of Reason code, so the users or machines can immediately
         understand the current situation and act accordingly.
         The Severity field MUST be set only when Status=False.
     status : str, default is Undefined, required
-        Status of the condition, one of True, False, Unknown.
+        status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
-        Type of condition in CamelCase or in foo.example.com/CamelCase.
+        type of condition in CamelCase or in foo.example.com/CamelCase.
         Many .condition.type values are consistent across resources like Available, but because arbitrary conditions
         can be useful (see .node.status.conditions), the ability to deconflict is important.
     """

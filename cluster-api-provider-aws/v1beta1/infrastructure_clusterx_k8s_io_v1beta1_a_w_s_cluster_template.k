@@ -8,7 +8,7 @@ _regex_match = regex.match
 
 
 schema AWSClusterTemplate:
-    """
+    r"""
     AWSClusterTemplate is the schema for Amazon EC2 based Kubernetes Cluster Templates.
 
     Attributes
@@ -34,7 +34,7 @@ schema AWSClusterTemplate:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterTemplateSpec:
-    """
+    r"""
     AWSClusterTemplateSpec defines the desired state of AWSClusterTemplate.
 
     Attributes
@@ -48,7 +48,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterTemplateSpec:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterTemplateSpecTemplate:
-    """
+    r"""
     AWSClusterTemplateResource defines the desired state of AWSClusterTemplate.
 
     Attributes
@@ -66,14 +66,14 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterTemplateSpecTemplate:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterTemplateSpecTemplateMetadata:
-    """
+    r"""
     Standard object's metadata.
     More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        Annotations is an unstructured key value map stored with a resource that may be
+        annotations is an unstructured key value map stored with a resource that may be
         set by external tools to store and retrieve arbitrary metadata. They are not
         queryable and should be preserved when modifying objects.
         More info: http://kubernetes.io/docs/user-guide/annotations
@@ -91,7 +91,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterTemplateSpecTemplateMetadata:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterTemplateSpecTemplateSpec:
-    """
+    r"""
     AWSClusterSpec defines the desired state of an EC2-based Kubernetes cluster.
 
     Attributes
@@ -166,7 +166,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterTemplateSpecTemplateSpec:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterTemplateSpecTemplateSpecBastion:
-    """
+    r"""
     Bastion contains options to configure the bastion host.
 
     Attributes
@@ -202,7 +202,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterTemplateSpecTemplateSpecBasti
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterTemplateSpecTemplateSpecControlPlaneEndpoint:
-    """
+    r"""
     ControlPlaneEndpoint represents the endpoint used to communicate with the control plane.
 
     Attributes
@@ -220,7 +220,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterTemplateSpecTemplateSpecContr
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterTemplateSpecTemplateSpecControlPlaneLoadBalancer:
-    """
+    r"""
     ControlPlaneLoadBalancer is optional configuration for customizing control plane behavior.
 
     Attributes
@@ -231,12 +231,10 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterTemplateSpecTemplateSpecContr
     crossZoneLoadBalancing : bool, default is Undefined, optional
         CrossZoneLoadBalancing enables the classic ELB cross availability zone balancing.
 
-
         With cross-zone load balancing, each load balancer node for your Classic Load Balancer
         distributes requests evenly across the registered instances in all enabled Availability Zones.
         If cross-zone load balancing is disabled, each load balancer node distributes requests evenly across
         the registered instances in its Availability Zone only.
-
 
         Defaults to false.
     healthCheckProtocol : str, default is Undefined, optional
@@ -268,12 +266,12 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterTemplateSpecTemplateSpecContr
 
 
     check:
-        len(name) <= 32
+        len(name) <= 32 if name
         _regex_match(str(name), r"^[A-Za-z0-9]([A-Za-z0-9]{0,31}|[-A-Za-z0-9]{0,30}[A-Za-z0-9])$") if name
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterTemplateSpecTemplateSpecIdentityRef:
-    """
+    r"""
     IdentityRef is a reference to an identity to be used when reconciling the managed control plane.
     If no identity is specified, the default identity for this controller will be used.
 
@@ -296,7 +294,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterTemplateSpecTemplateSpecIdent
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterTemplateSpecTemplateSpecNetwork:
-    """
+    r"""
     NetworkSpec encapsulates all things related to AWS network.
 
     Attributes
@@ -323,7 +321,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterTemplateSpecTemplateSpecNetwo
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterTemplateSpecTemplateSpecNetworkCni:
-    """
+    r"""
     CNI configuration
 
     Attributes
@@ -338,7 +336,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterTemplateSpecTemplateSpecNetwo
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterTemplateSpecTemplateSpecNetworkCniCniIngressRulesItems0:
-    """
+    r"""
     CNIIngressRule defines an AWS ingress rule for CNI requirements.
 
     Attributes
@@ -364,7 +362,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterTemplateSpecTemplateSpecNetwo
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterTemplateSpecTemplateSpecNetworkSubnetsItems0:
-    """
+    r"""
     SubnetSpec configures an AWS Subnet.
 
     Attributes
@@ -414,7 +412,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterTemplateSpecTemplateSpecNetwo
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterTemplateSpecTemplateSpecNetworkVpc:
-    """
+    r"""
     VPC configuration.
 
     Attributes
@@ -460,11 +458,11 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterTemplateSpecTemplateSpecNetwo
 
 
     check:
-        availabilityZoneUsageLimit >= 1
+        availabilityZoneUsageLimit >= 1 if availabilityZoneUsageLimit not in [None, Undefined]
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterTemplateSpecTemplateSpecNetworkVpcIPV6:
-    """
+    r"""
     IPv6 contains ipv6 specific settings for the network. Supported only in managed clusters.
     This field cannot be set on AWSCluster object.
 
@@ -487,7 +485,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterTemplateSpecTemplateSpecNetwo
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterTemplateSpecTemplateSpecS3Bucket:
-    """
+    r"""
     S3Bucket contains options to configure a supporting S3 bucket for this
     cluster - currently used for nodes requiring Ignition
     (https://coreos.github.io/ignition/) for bootstrapping (requires

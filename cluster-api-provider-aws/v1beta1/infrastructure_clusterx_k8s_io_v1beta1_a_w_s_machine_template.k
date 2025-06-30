@@ -8,7 +8,7 @@ _regex_match = regex.match
 
 
 schema AWSMachineTemplate:
-    """
+    r"""
     AWSMachineTemplate is the schema for the Amazon EC2 Machine Templates API.
 
     Attributes
@@ -38,7 +38,7 @@ schema AWSMachineTemplate:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSMachineTemplateSpec:
-    """
+    r"""
     AWSMachineTemplateSpec defines the desired state of AWSMachineTemplate.
 
     Attributes
@@ -52,7 +52,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachineTemplateSpec:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSMachineTemplateSpecTemplate:
-    """
+    r"""
     AWSMachineTemplateResource describes the data needed to create am AWSMachine from a template.
 
     Attributes
@@ -70,14 +70,14 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachineTemplateSpecTemplate:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSMachineTemplateSpecTemplateMetadata:
-    """
+    r"""
     Standard object's metadata.
     More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        Annotations is an unstructured key value map stored with a resource that may be
+        annotations is an unstructured key value map stored with a resource that may be
         set by external tools to store and retrieve arbitrary metadata. They are not
         queryable and should be preserved when modifying objects.
         More info: http://kubernetes.io/docs/user-guide/annotations
@@ -95,7 +95,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachineTemplateSpecTemplateMetadata:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSMachineTemplateSpecTemplateSpec:
-    """
+    r"""
     Spec is the specification of the desired behavior of the machine.
 
     Attributes
@@ -219,11 +219,11 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachineTemplateSpecTemplateSpec:
 
     check:
         len(instanceType) >= 2
-        len(networkInterfaces) <= 2
+        len(networkInterfaces) <= 2 if networkInterfaces
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSMachineTemplateSpecTemplateSpecAdditionalSecurityGroupsItems0:
-    """
+    r"""
     AWSResourceReference is a reference to a specific AWS resource by ID or filters.
     Only one of ID or Filters may be specified. Specifying more than one will result in
     a validation error.
@@ -250,7 +250,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachineTemplateSpecTemplateSpecAddit
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSMachineTemplateSpecTemplateSpecAdditionalSecurityGroupsItems0FiltersItems0:
-    """
+    r"""
     Filter is a filter used to identify an AWS resource.
 
     Attributes
@@ -268,7 +268,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachineTemplateSpecTemplateSpecAddit
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSMachineTemplateSpecTemplateSpecAmi:
-    """
+    r"""
     AMI is the reference to the AMI from which to create the machine instance.
 
     Attributes
@@ -286,7 +286,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachineTemplateSpecTemplateSpecAmi:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSMachineTemplateSpecTemplateSpecCloudInit:
-    """
+    r"""
     CloudInit defines options related to the bootstrapping systems where
     CloudInit is used.
 
@@ -320,7 +320,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachineTemplateSpecTemplateSpecCloud
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSMachineTemplateSpecTemplateSpecIgnition:
-    """
+    r"""
     Ignition defined options related to the bootstrapping systems where Ignition is used.
 
     Attributes
@@ -334,7 +334,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachineTemplateSpecTemplateSpecIgnit
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSMachineTemplateSpecTemplateSpecNonRootVolumesItems0:
-    """
+    r"""
     Volume encapsulates the configuration options for the storage device.
 
     Attributes
@@ -379,7 +379,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachineTemplateSpecTemplateSpecNonRo
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSMachineTemplateSpecTemplateSpecRootVolume:
-    """
+    r"""
     RootVolume encapsulates the configuration options for the root volume
 
     Attributes
@@ -424,7 +424,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachineTemplateSpecTemplateSpecRootV
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSMachineTemplateSpecTemplateSpecSpotMarketOptions:
-    """
+    r"""
     SpotMarketOptions allows users to configure instances to be run using AWS Spot instances.
 
     Attributes
@@ -438,7 +438,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachineTemplateSpecTemplateSpecSpotM
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSMachineTemplateSpecTemplateSpecSubnet:
-    """
+    r"""
     Subnet is a reference to the subnet to use for this instance. If not specified,
     the cluster subnet will be used.
 
@@ -464,7 +464,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachineTemplateSpecTemplateSpecSubne
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSMachineTemplateSpecTemplateSpecSubnetFiltersItems0:
-    """
+    r"""
     Filter is a filter used to identify an AWS resource.
 
     Attributes
@@ -482,7 +482,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachineTemplateSpecTemplateSpecSubne
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSMachineTemplateStatus:
-    """
+    r"""
     AWSMachineTemplateStatus defines a status for an AWSMachineTemplate.
 
     Attributes
@@ -498,6 +498,6 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachineTemplateStatus:
 
 
     check:
-        all _, capacity in capacity {_regex_match(str(capacity), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if capacity } if capacity
+        all _, capacity in capacity { _regex_match(str(capacity), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if capacity } if capacity
 
 

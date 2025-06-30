@@ -8,7 +8,7 @@ _regex_match = regex.match
 
 
 schema AWSMachineTemplate:
-    """
+    r"""
     AWSMachineTemplate is the schema for the Amazon EC2 Machine Templates API.
 
     Attributes
@@ -38,7 +38,7 @@ schema AWSMachineTemplate:
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpec:
-    """
+    r"""
     AWSMachineTemplateSpec defines the desired state of AWSMachineTemplate.
 
     Attributes
@@ -52,7 +52,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpec:
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplate:
-    """
+    r"""
     AWSMachineTemplateResource describes the data needed to create am AWSMachine from a template.
 
     Attributes
@@ -70,14 +70,14 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplate:
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateMetadata:
-    """
+    r"""
     Standard object's metadata.
     More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        Annotations is an unstructured key value map stored with a resource that may be
+        annotations is an unstructured key value map stored with a resource that may be
         set by external tools to store and retrieve arbitrary metadata. They are not
         queryable and should be preserved when modifying objects.
         More info: http://kubernetes.io/docs/user-guide/annotations
@@ -95,7 +95,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateMetadata:
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpec:
-    """
+    r"""
     Spec is the specification of the desired behavior of the machine.
 
     Attributes
@@ -111,8 +111,12 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpec:
         AWSMachine's value takes precedence.
     ami : InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecAmi, default is Undefined, optional
         ami
+    capacityReservationId : str, default is Undefined, optional
+        CapacityReservationID specifies the target Capacity Reservation into which the instance should be launched.
     cloudInit : InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecCloudInit, default is Undefined, optional
         cloud init
+    elasticIpPool : InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecElasticIPPool, default is Undefined, optional
+        elastic Ip pool
     iamInstanceProfile : str, default is Undefined, optional
         IAMInstanceProfile is a name of an IAM instance profile to assign to the instance
     ignition : InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecIgnition, default is Undefined, optional
@@ -140,6 +144,16 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpec:
         instance metadata options
     instanceType : str, default is Undefined, required
         InstanceType is the type of instance to create. Example: m4.xlarge
+    marketType : str, default is Undefined, optional
+        MarketType specifies the type of market for the EC2 instance. Valid values include:
+        "OnDemand" (default): The instance runs as a standard OnDemand instance.
+        "Spot": The instance runs as a Spot instance. When SpotMarketOptions is provided, the marketType defaults to "Spot".
+        "CapacityBlock": The instance utilizes pre-purchased compute capacity (capacity blocks) with AWS Capacity Reservations.
+         If this value is selected, CapacityReservationID must be specified to identify the target reservation.
+        If marketType is not specified and spotMarketOptions is provided, the marketType defaults to "Spot".
+    networkInterfaceType : str, default is Undefined, optional
+        NetworkInterfaceType is the interface type of the primary network Interface.
+        If not specified, AWS applies a default value.
     networkInterfaces : [str], default is Undefined, optional
         NetworkInterfaces is a list of ENIs to associate with the instance.
         A maximum of 2 may be specified.
@@ -187,7 +201,11 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpec:
 
     ami?: InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecAmi
 
+    capacityReservationId?: str
+
     cloudInit?: InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecCloudInit
+
+    elasticIpPool?: InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecElasticIPPool
 
     iamInstanceProfile?: str
 
@@ -204,6 +222,10 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpec:
     instanceMetadataOptions?: InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecInstanceMetadataOptions
 
     instanceType: str
+
+    marketType?: "OnDemand" | "Spot" | "CapacityBlock"
+
+    networkInterfaceType?: "interface" | "efa"
 
     networkInterfaces?: [str]
 
@@ -236,13 +258,13 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpec:
 
     check:
         len(instanceType) >= 2
-        len(networkInterfaces) <= 2
-        placementGroupPartition <= 7
-        placementGroupPartition >= 1
+        len(networkInterfaces) <= 2 if networkInterfaces
+        placementGroupPartition <= 7 if placementGroupPartition not in [None, Undefined]
+        placementGroupPartition >= 1 if placementGroupPartition not in [None, Undefined]
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecAdditionalSecurityGroupsItems0:
-    """
+    r"""
     AWSResourceReference is a reference to a specific AWS resource by ID or filters.
     Only one of ID or Filters may be specified. Specifying more than one will result in
     a validation error.
@@ -264,7 +286,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecAddit
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecAdditionalSecurityGroupsItems0FiltersItems0:
-    """
+    r"""
     Filter is a filter used to identify an AWS resource.
 
     Attributes
@@ -282,7 +304,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecAddit
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecAmi:
-    """
+    r"""
     AMI is the reference to the AMI from which to create the machine instance.
 
     Attributes
@@ -294,13 +316,13 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecAmi:
     """
 
 
-    eksLookupType?: "AmazonLinux" | "AmazonLinuxGPU"
+    eksLookupType?: "AmazonLinux" | "AmazonLinuxGPU" | "AmazonLinux2023" | "AmazonLinux2023GPU"
 
     id?: str
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecCloudInit:
-    """
+    r"""
     CloudInit defines options related to the bootstrapping systems where
     CloudInit is used.
 
@@ -333,8 +355,39 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecCloud
     secureSecretsBackend?: "secrets-manager" | "ssm-parameter-store"
 
 
-schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecIgnition:
+schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecElasticIPPool:
+    r"""
+    ElasticIPPool is the configuration to allocate Public IPv4 address (Elastic IP/EIP) from user-defined pool.
+
+    Attributes
+    ----------
+    publicIpv4Pool : str, default is Undefined, optional
+        PublicIpv4Pool sets a custom Public IPv4 Pool used to create Elastic IP address for resources
+        created in public IPv4 subnets. Every IPv4 address, Elastic IP, will be allocated from the custom
+        Public IPv4 pool that you brought to AWS, instead of Amazon-provided pool. The public IPv4 pool
+        resource ID starts with 'ipv4pool-ec2'.
+    publicIpv4PoolFallbackOrder : str, default is Undefined, optional
+        PublicIpv4PoolFallBackOrder defines the fallback action when the Public IPv4 Pool has been exhausted,
+        no more IPv4 address available in the pool.
+
+        When set to 'amazon-pool', the controller check if the pool has available IPv4 address, when pool has reached the
+        IPv4 limit, the address will be claimed from Amazon-pool (default).
+
+        When set to 'none', the controller will fail the Elastic IP allocation when the publicIpv4Pool is exhausted.
     """
+
+
+    publicIpv4Pool?: str
+
+    publicIpv4PoolFallbackOrder?: "amazon-pool" | "none"
+
+
+    check:
+        len(publicIpv4Pool) <= 30 if publicIpv4Pool
+
+
+schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecIgnition:
+    r"""
     Ignition defined options related to the bootstrapping systems where Ignition is used.
 
     Attributes
@@ -345,14 +398,11 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecIgnit
         StorageType defines how to store the boostrap user data for Ignition.
         This can be used to instruct Ignition from where to fetch the user data to bootstrap an instance.
 
-
         When omitted, the storage option will default to ClusterObjectStore.
-
 
         When set to "ClusterObjectStore", if the capability is available and a Cluster ObjectStore configuration
         is correctly provided in the Cluster object (under .spec.s3Bucket),
         an object store will be used to store bootstrap user data.
-
 
         When set to "UnencryptedUserData", EC2 Instance User Data will be used to store the machine bootstrap user data, unencrypted.
         This option is considered less secure than others as user data may contain sensitive informations (keys, certificates, etc.)
@@ -376,7 +426,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecIgnit
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecIgnitionProxy:
-    """
+    r"""
     Proxy defines proxy settings for Ignition.
     Only valid for Ignition versions 3.1 and above.
 
@@ -394,7 +444,6 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecIgnit
         NoProxy is the list of domains to not proxy for Ignition.
         Specifies a list of strings to hosts that should be excluded from proxying.
 
-
         Each value is represented by:
         - An IP address prefix (1.2.3.4)
         - An IP address prefix in CIDR notation (1.2.3.4/8)
@@ -402,7 +451,6 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecIgnit
           - A domain name matches that name and all subdomains
           - A domain name with a leading . matches subdomains only
         - A special DNS label (*), indicates that no proxying should be done
-
 
         An IP address prefix and domain name can also include a literal port number (1.2.3.4:80).
     """
@@ -416,12 +464,12 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecIgnit
 
 
     check:
-        len(noProxy) <= 64
-        all noProxy in noProxy {len(noProxy) <= 2048 } if noProxy
+        len(noProxy) <= 64 if noProxy
+        all noProxy in noProxy { len(noProxy) <= 2048 if noProxy not in [None, Undefined] } if noProxy
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecIgnitionTLS:
-    """
+    r"""
     TLS defines TLS settings for Ignition.
     Only valid for Ignition versions 3.1 and above.
 
@@ -438,12 +486,12 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecIgnit
 
 
     check:
-        len(certificateAuthorities) <= 64
-        all certificateAuthorities in certificateAuthorities {len(certificateAuthorities) <= 65536 } if certificateAuthorities
+        len(certificateAuthorities) <= 64 if certificateAuthorities
+        all certificateAuthorities in certificateAuthorities { len(certificateAuthorities) <= 65536 if certificateAuthorities not in [None, Undefined] } if certificateAuthorities
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecInstanceMetadataOptions:
-    """
+    r"""
     InstanceMetadataOptions is the metadata options for the EC2 instance.
 
     Attributes
@@ -451,20 +499,16 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecInsta
     httpEndpoint : str, default is "enabled", optional
         Enables or disables the HTTP metadata endpoint on your instances.
 
-
         If you specify a value of disabled, you cannot access your instance metadata.
-
 
         Default: enabled
     httpPutResponseHopLimit : int, default is 1, optional
         The desired HTTP PUT response hop limit for instance metadata requests. The
         larger the number, the further instance metadata requests can travel.
 
-
         Default: 1
     httpTokens : str, default is "optional", optional
         The state of token usage for your instance metadata requests.
-
 
         If the state is optional, you can choose to retrieve instance metadata with
         or without a session token on your request. If you retrieve the IAM role
@@ -472,12 +516,10 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecInsta
         If you retrieve the IAM role credentials using a valid session token, the
         version 2.0 role credentials are returned.
 
-
         If the state is required, you must send a session token with any instance
         metadata retrieval requests. In this state, retrieving the IAM role credentials
         always returns the version 2.0 credentials; the version 1.0 credentials are
         not available.
-
 
         Default: optional
     instanceMetadataTags : str, default is "disabled", optional
@@ -485,7 +527,6 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecInsta
         Set to disabled to turn off access to instance tags from the instance metadata.
         For more information, see Work with instance tags using the instance metadata
         (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#work-with-tags-in-IMDS).
-
 
         Default: disabled
     """
@@ -501,12 +542,12 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecInsta
 
 
     check:
-        httpPutResponseHopLimit <= 64
-        httpPutResponseHopLimit >= 1
+        httpPutResponseHopLimit <= 64 if httpPutResponseHopLimit not in [None, Undefined]
+        httpPutResponseHopLimit >= 1 if httpPutResponseHopLimit not in [None, Undefined]
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecNonRootVolumesItems0:
-    """
+    r"""
     Volume encapsulates the configuration options for the storage device.
 
     Attributes
@@ -551,7 +592,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecNonRo
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecPrivateDNSName:
-    """
+    r"""
     PrivateDNSName is the options for the instance hostname.
 
     Attributes
@@ -573,7 +614,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecPriva
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecRootVolume:
-    """
+    r"""
     RootVolume encapsulates the configuration options for the root volume
 
     Attributes
@@ -618,7 +659,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecRootV
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecSpotMarketOptions:
-    """
+    r"""
     SpotMarketOptions allows users to configure instances to be run using AWS Spot instances.
 
     Attributes
@@ -632,7 +673,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecSpotM
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecSubnet:
-    """
+    r"""
     Subnet is a reference to the subnet to use for this instance. If not specified,
     the cluster subnet will be used.
 
@@ -653,7 +694,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecSubne
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecSubnetFiltersItems0:
-    """
+    r"""
     Filter is a filter used to identify an AWS resource.
 
     Attributes
@@ -671,7 +712,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecSubne
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateStatus:
-    """
+    r"""
     AWSMachineTemplateStatus defines a status for an AWSMachineTemplate.
 
     Attributes
@@ -687,6 +728,6 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateStatus:
 
 
     check:
-        all _, capacity in capacity {_regex_match(str(capacity), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if capacity } if capacity
+        all _, capacity in capacity { _regex_match(str(capacity), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if capacity } if capacity
 
 

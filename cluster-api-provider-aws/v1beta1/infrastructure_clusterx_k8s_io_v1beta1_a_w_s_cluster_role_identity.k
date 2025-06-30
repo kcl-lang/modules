@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema AWSClusterRoleIdentity:
-    """
+    r"""
     AWSClusterRoleIdentity is the Schema for the awsclusterroleidentities API
     It is used to assume a role using the provided sourceRef.
 
@@ -33,7 +33,7 @@ schema AWSClusterRoleIdentity:
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterRoleIdentitySpec:
-    """
+    r"""
     Spec for this AWSClusterRoleIdentity.
 
     Attributes
@@ -85,12 +85,12 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterRoleIdentitySpec:
 
 
     check:
-        durationSeconds <= 43200
-        durationSeconds >= 900
+        durationSeconds <= 43200 if durationSeconds not in [None, Undefined]
+        durationSeconds >= 900 if durationSeconds not in [None, Undefined]
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterRoleIdentitySpecAllowedNamespaces:
-    """
+    r"""
     AllowedNamespaces is used to identify which namespaces are allowed to use the identity from.
     Namespaces can be selected either using an array of namespaces or with label selector.
     An empty allowedNamespaces object indicates that AWSClusters can use this identity from any namespace.
@@ -112,7 +112,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterRoleIdentitySpecAllowedNamesp
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterRoleIdentitySpecAllowedNamespacesSelector:
-    """
+    r"""
     An empty selector indicates that AWSClusters cannot use this
     AWSClusterIdentity from any namespace.
 
@@ -133,7 +133,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterRoleIdentitySpecAllowedNamesp
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterRoleIdentitySpecAllowedNamespacesSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
 
@@ -160,7 +160,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterRoleIdentitySpecAllowedNamesp
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterRoleIdentitySpecSourceIdentityRef:
-    """
+    r"""
     SourceIdentityRef is a reference to another identity which will be chained to do
     role assumption. All identity types are accepted.
 

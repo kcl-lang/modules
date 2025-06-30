@@ -8,7 +8,7 @@ _regex_match = regex.match
 
 
 schema AWSClusterTemplate:
-    """
+    r"""
     AWSClusterTemplate is the schema for Amazon EC2 based Kubernetes Cluster Templates.
 
     Attributes
@@ -34,7 +34,7 @@ schema AWSClusterTemplate:
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpec:
-    """
+    r"""
     AWSClusterTemplateSpec defines the desired state of AWSClusterTemplate.
 
     Attributes
@@ -48,7 +48,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpec:
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplate:
-    """
+    r"""
     AWSClusterTemplateResource defines the desired state of AWSClusterTemplateResource.
 
     Attributes
@@ -66,14 +66,14 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplate:
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateMetadata:
-    """
+    r"""
     Standard object's metadata.
     More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        Annotations is an unstructured key value map stored with a resource that may be
+        annotations is an unstructured key value map stored with a resource that may be
         set by external tools to store and retrieve arbitrary metadata. They are not
         queryable and should be preserved when modifying objects.
         More info: http://kubernetes.io/docs/user-guide/annotations
@@ -91,7 +91,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateMetadata:
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpec:
-    """
+    r"""
     AWSClusterSpec defines the desired state of an EC2-based Kubernetes cluster.
 
     Attributes
@@ -174,7 +174,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpec:
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecBastion:
-    """
+    r"""
     Bastion contains options to configure the bastion host.
 
     Attributes
@@ -210,7 +210,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecBasti
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecControlPlaneEndpoint:
-    """
+    r"""
     ControlPlaneEndpoint represents the endpoint used to communicate with the control plane.
 
     Attributes
@@ -228,7 +228,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecContr
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecControlPlaneLoadBalancer:
-    """
+    r"""
     ControlPlaneLoadBalancer is optional configuration for customizing control plane behavior.
 
     Attributes
@@ -242,12 +242,10 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecContr
     crossZoneLoadBalancing : bool, default is Undefined, optional
         CrossZoneLoadBalancing enables the classic ELB cross availability zone balancing.
 
-
         With cross-zone load balancing, each load balancer node for your Classic Load Balancer
         distributes requests evenly across the registered instances in all enabled Availability Zones.
         If cross-zone load balancing is disabled, each load balancer node distributes requests evenly across
         the registered instances in its Availability Zone only.
-
 
         Defaults to false.
     disableHostsRewrite : bool, default is Undefined, optional
@@ -303,12 +301,12 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecContr
 
 
     check:
-        len(name) <= 32
+        len(name) <= 32 if name
         _regex_match(str(name), r"^[A-Za-z0-9]([A-Za-z0-9]{0,31}|[-A-Za-z0-9]{0,30}[A-Za-z0-9])$") if name
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecControlPlaneLoadBalancerAdditionalListenersItems0:
-    """
+    r"""
     AdditionalListenerSpec defines the desired state of an
     additional listener on an AWS load balancer.
 
@@ -337,7 +335,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecContr
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecControlPlaneLoadBalancerAdditionalListenersItems0HealthCheck:
-    """
+    r"""
     HealthCheck sets the optional custom health check configuration to the API target group.
 
     Attributes
@@ -382,18 +380,18 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecContr
 
 
     check:
-        intervalSeconds <= 300
-        intervalSeconds >= 5
-        thresholdCount <= 10
-        thresholdCount >= 2
-        timeoutSeconds <= 120
-        timeoutSeconds >= 2
-        unhealthyThresholdCount <= 10
-        unhealthyThresholdCount >= 2
+        intervalSeconds <= 300 if intervalSeconds not in [None, Undefined]
+        intervalSeconds >= 5 if intervalSeconds not in [None, Undefined]
+        thresholdCount <= 10 if thresholdCount not in [None, Undefined]
+        thresholdCount >= 2 if thresholdCount not in [None, Undefined]
+        timeoutSeconds <= 120 if timeoutSeconds not in [None, Undefined]
+        timeoutSeconds >= 2 if timeoutSeconds not in [None, Undefined]
+        unhealthyThresholdCount <= 10 if unhealthyThresholdCount not in [None, Undefined]
+        unhealthyThresholdCount >= 2 if unhealthyThresholdCount not in [None, Undefined]
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecControlPlaneLoadBalancerHealthCheck:
-    """
+    r"""
     HealthCheck sets custom health check configuration to the API target group.
 
     Attributes
@@ -423,18 +421,18 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecContr
 
 
     check:
-        intervalSeconds <= 300
-        intervalSeconds >= 5
-        thresholdCount <= 10
-        thresholdCount >= 2
-        timeoutSeconds <= 120
-        timeoutSeconds >= 2
-        unhealthyThresholdCount <= 10
-        unhealthyThresholdCount >= 2
+        intervalSeconds <= 300 if intervalSeconds not in [None, Undefined]
+        intervalSeconds >= 5 if intervalSeconds not in [None, Undefined]
+        thresholdCount <= 10 if thresholdCount not in [None, Undefined]
+        thresholdCount >= 2 if thresholdCount not in [None, Undefined]
+        timeoutSeconds <= 120 if timeoutSeconds not in [None, Undefined]
+        timeoutSeconds >= 2 if timeoutSeconds not in [None, Undefined]
+        unhealthyThresholdCount <= 10 if unhealthyThresholdCount not in [None, Undefined]
+        unhealthyThresholdCount >= 2 if unhealthyThresholdCount not in [None, Undefined]
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecControlPlaneLoadBalancerIngressRulesItems0:
-    """
+    r"""
     IngressRule defines an AWS ingress rule for security groups.
 
     Attributes
@@ -447,6 +445,8 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecContr
         FromPort is the start of port range.
     ipv6CidrBlocks : [str], default is Undefined, optional
         List of IPv6 CIDR blocks to allow access from. Cannot be specified with SourceSecurityGroupID.
+    natGatewaysIPsSource : bool, default is Undefined, optional
+        NatGatewaysIPsSource use the NAT gateways IPs as the source for the ingress rule.
     $protocol : str, default is Undefined, required
         Protocol is the protocol for the ingress rule. Accepted values are "-1" (all), "4" (IP in IP),"tcp", "udp", "icmp", and "58" (ICMPv6), "50" (ESP).
     sourceSecurityGroupIds : [str], default is Undefined, optional
@@ -467,6 +467,8 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecContr
 
     ipv6CidrBlocks?: [str]
 
+    natGatewaysIPsSource?: bool
+
     $protocol: "-1" | "4" | "tcp" | "udp" | "icmp" | "58" | "50"
 
     sourceSecurityGroupIds?: [str]
@@ -477,7 +479,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecContr
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecIdentityRef:
-    """
+    r"""
     IdentityRef is a reference to an identity to be used when reconciling the managed control plane.
     If no identity is specified, the default identity for this controller will be used.
 
@@ -500,7 +502,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecIdent
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetwork:
-    """
+    r"""
     NetworkSpec encapsulates all things related to AWS network.
 
     Attributes
@@ -509,6 +511,9 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetwo
         AdditionalControlPlaneIngressRules is an optional set of ingress rules to add to the control plane
     cni : InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetworkCni, default is Undefined, optional
         cni
+    nodePortIngressRuleCidrBlocks : [str], default is Undefined, optional
+        NodePortIngressRuleCidrBlocks is an optional set of CIDR blocks to allow traffic to nodes' NodePort services.
+        If none are specified here, all IPs are allowed to connect.
     securityGroupOverrides : {str:str}, default is Undefined, optional
         SecurityGroupOverrides is an optional set of security groups to use for cluster instances
         This is optional - if not provided new security groups will be created for the cluster
@@ -523,6 +528,8 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetwo
 
     cni?: InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetworkCni
 
+    nodePortIngressRuleCidrBlocks?: [str]
+
     securityGroupOverrides?: {str:str}
 
     subnets?: [InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetworkSubnetsItems0]
@@ -531,7 +538,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetwo
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetworkAdditionalControlPlaneIngressRulesItems0:
-    """
+    r"""
     IngressRule defines an AWS ingress rule for security groups.
 
     Attributes
@@ -544,6 +551,8 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetwo
         FromPort is the start of port range.
     ipv6CidrBlocks : [str], default is Undefined, optional
         List of IPv6 CIDR blocks to allow access from. Cannot be specified with SourceSecurityGroupID.
+    natGatewaysIPsSource : bool, default is Undefined, optional
+        NatGatewaysIPsSource use the NAT gateways IPs as the source for the ingress rule.
     $protocol : str, default is Undefined, required
         Protocol is the protocol for the ingress rule. Accepted values are "-1" (all), "4" (IP in IP),"tcp", "udp", "icmp", and "58" (ICMPv6), "50" (ESP).
     sourceSecurityGroupIds : [str], default is Undefined, optional
@@ -564,6 +573,8 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetwo
 
     ipv6CidrBlocks?: [str]
 
+    natGatewaysIPsSource?: bool
+
     $protocol: "-1" | "4" | "tcp" | "udp" | "icmp" | "58" | "50"
 
     sourceSecurityGroupIds?: [str]
@@ -574,7 +585,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetwo
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetworkCni:
-    """
+    r"""
     CNI configuration
 
     Attributes
@@ -589,7 +600,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetwo
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetworkCniCniIngressRulesItems0:
-    """
+    r"""
     CNIIngressRule defines an AWS ingress rule for CNI requirements.
 
     Attributes
@@ -615,7 +626,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetwo
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetworkSubnetsItems0:
-    """
+    r"""
     SubnetSpec configures an AWS Subnet.
 
     Attributes
@@ -627,7 +638,6 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetwo
     id : str, default is Undefined, required
         ID defines a unique identifier to reference this resource.
         If you're bringing your subnet, set the AWS subnet-id here, it must start with `subnet-`.
-
 
         When the VPC is managed by CAPA, and you'd like the provider to create a subnet for you,
         the id can be set to any placeholder value that does not start with `subnet-`;
@@ -650,7 +660,6 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetwo
         ParentZoneName is the zone name where the current subnet's zone is tied when
         the zone is a Local Zone.
 
-
         The subnets in Local Zone or Wavelength Zone locations consume the ParentZoneName
         to select the correct private route table to egress traffic to the internet.
     resourceID : str, default is Undefined, optional
@@ -663,29 +672,22 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetwo
     zoneType : str, default is Undefined, optional
         ZoneType defines the type of the zone where the subnet is created.
 
-
         The valid values are availability-zone, local-zone, and wavelength-zone.
-
 
         Subnet with zone type availability-zone (regular) is always selected to create cluster
         resources, like Load Balancers, NAT Gateways, Contol Plane nodes, etc.
 
-
         Subnet with zone type local-zone or wavelength-zone is not eligible to automatically create
         regular cluster resources.
-
 
         The public subnet in availability-zone or local-zone is associated with regular public
         route table with default route entry to a Internet Gateway.
 
-
         The public subnet in wavelength-zone is associated with a carrier public
         route table with default route entry to a Carrier Gateway.
 
-
         The private subnet in the availability-zone is associated with a private route table with
         the default route entry to a NAT Gateway created in that zone.
-
 
         The private subnet in the local-zone or wavelength-zone is associated with a private route table with
         the default route entry re-using the NAT Gateway in the Region (preferred from the
@@ -719,7 +721,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetwo
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetworkVpc:
-    """
+    r"""
     VPC configuration.
 
     Attributes
@@ -742,15 +744,15 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetwo
         CidrBlock is the CIDR block to be used when the provider creates a managed VPC.
         Defaults to 10.0.0.0/16.
         Mutually exclusive with IPAMPool.
+    elasticIpPool : InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetworkVpcElasticIPPool, default is Undefined, optional
+        elastic Ip pool
     emptyRoutesDefaultVPCSecurityGroup : bool, default is Undefined, optional
         EmptyRoutesDefaultVPCSecurityGroup specifies whether the default VPC security group ingress
         and egress rules should be removed.
 
-
         By default, when creating a VPC, AWS creates a security group called `default` with ingress and egress
         rules that allow traffic from anywhere. The group could be used as a potential surface attack and
         it's generally suggested that the group rules are removed or modified appropriately.
-
 
         NOTE: This only applies when the VPC is managed by the Cluster API AWS controller.
     id : str, default is Undefined, optional
@@ -765,6 +767,16 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetwo
         PrivateDNSHostnameTypeOnLaunch is the type of hostname to assign to instances in the subnet at launch.
         For IPv4-only and dual-stack (IPv4 and IPv6) subnets, an instance DNS name can be based on the instance IPv4 address (ip-name)
         or the instance ID (resource-name). For IPv6 only subnets, an instance DNS name must be based on the instance ID (resource-name).
+    secondaryCidrBlocks : [InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetworkVpcSecondaryCidrBlocksItems0], default is Undefined, optional
+        SecondaryCidrBlocks are additional CIDR blocks to be associated when the provider creates a managed VPC.
+        Defaults to none. Mutually exclusive with IPAMPool. This makes sense to use if, for example, you want to use
+        a separate IP range for pods (e.g. Cilium ENI mode).
+    subnetSchema : str, default is "PreferPrivate", optional
+        SubnetSchema specifies how CidrBlock should be divided on subnets in the VPC depending on the number of AZs.
+        PreferPrivate - one private subnet for each AZ plus one other subnet that will be further sub-divided for the public subnets.
+        PreferPublic - have the reverse logic of PreferPrivate, one public subnet for each AZ plus one other subnet
+        that will be further sub-divided for the private subnets.
+        Defaults to PreferPrivate
     tags : {str:str}, default is Undefined, optional
         Tags is a collection of tags describing the resource.
     """
@@ -778,6 +790,8 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetwo
 
     cidrBlock?: str
 
+    elasticIpPool?: InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetworkVpcElasticIPPool
+
     emptyRoutesDefaultVPCSecurityGroup?: bool
 
     id?: str
@@ -790,15 +804,52 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetwo
 
     privateDnsHostnameTypeOnLaunch?: "ip-name" | "resource-name"
 
+    secondaryCidrBlocks?: [InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetworkVpcSecondaryCidrBlocksItems0]
+
+    subnetSchema?: "PreferPrivate" | "PreferPublic" = "PreferPrivate"
+
     tags?: {str:str}
 
 
     check:
-        availabilityZoneUsageLimit >= 1
+        availabilityZoneUsageLimit >= 1 if availabilityZoneUsageLimit not in [None, Undefined]
+
+
+schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetworkVpcElasticIPPool:
+    r"""
+    ElasticIPPool contains specific configuration to allocate Public IPv4 address (Elastic IP) from user-defined pool
+    brought to AWS for core infrastructure resources, like NAT Gateways and Public Network Load Balancers for
+    the API Server.
+
+    Attributes
+    ----------
+    publicIpv4Pool : str, default is Undefined, optional
+        PublicIpv4Pool sets a custom Public IPv4 Pool used to create Elastic IP address for resources
+        created in public IPv4 subnets. Every IPv4 address, Elastic IP, will be allocated from the custom
+        Public IPv4 pool that you brought to AWS, instead of Amazon-provided pool. The public IPv4 pool
+        resource ID starts with 'ipv4pool-ec2'.
+    publicIpv4PoolFallbackOrder : str, default is Undefined, optional
+        PublicIpv4PoolFallBackOrder defines the fallback action when the Public IPv4 Pool has been exhausted,
+        no more IPv4 address available in the pool.
+
+        When set to 'amazon-pool', the controller check if the pool has available IPv4 address, when pool has reached the
+        IPv4 limit, the address will be claimed from Amazon-pool (default).
+
+        When set to 'none', the controller will fail the Elastic IP allocation when the publicIpv4Pool is exhausted.
+    """
+
+
+    publicIpv4Pool?: str
+
+    publicIpv4PoolFallbackOrder?: "amazon-pool" | "none"
+
+
+    check:
+        len(publicIpv4Pool) <= 30 if publicIpv4Pool
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetworkVpcIPV6:
-    """
+    r"""
     IPv6 contains ipv6 specific settings for the network. Supported only in managed clusters.
     This field cannot be set on AWSCluster object.
 
@@ -828,7 +879,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetwo
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetworkVpcIPV6IpamPool:
-    """
+    r"""
     IPAMPool defines the IPAMv6 pool to be used for VPC.
     Mutually exclusive with CidrBlock.
 
@@ -853,7 +904,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetwo
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetworkVpcIpamPool:
-    """
+    r"""
     IPAMPool defines the IPAMv4 pool to be used for VPC.
     Mutually exclusive with CidrBlock.
 
@@ -877,8 +928,26 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetwo
     netmaskLength?: int
 
 
-schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecS3Bucket:
+schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetworkVpcSecondaryCidrBlocksItems0:
+    r"""
+    VpcCidrBlock defines the CIDR block and settings to associate with the managed VPC. Currently, only IPv4 is supported.
+
+    Attributes
+    ----------
+    ipv4CidrBlock : str, default is Undefined, required
+        IPv4CidrBlock is the IPv4 CIDR block to associate with the managed VPC.
     """
+
+
+    ipv4CidrBlock: str
+
+
+    check:
+        len(ipv4CidrBlock) >= 1
+
+
+schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecS3Bucket:
+    r"""
     S3Bucket contains options to configure a supporting S3 bucket for this
     cluster - currently used for nodes requiring Ignition
     (https://coreos.github.io/ignition/) for bootstrapping (requires
@@ -899,10 +968,8 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecS3Buc
     presignedURLDuration : str, default is Undefined, optional
         PresignedURLDuration defines the duration for which presigned URLs are valid.
 
-
         This is used to generate presigned URLs for S3 Bucket objects, which are used by
         control-plane and worker nodes to fetch bootstrap data.
-
 
         When enabled, the IAM instance profiles specified are not used.
     """
@@ -926,9 +993,8 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecS3Buc
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecSecondaryControlPlaneLoadBalancer:
-    """
+    r"""
     SecondaryControlPlaneLoadBalancer is an additional load balancer that can be used for the control plane.
-
 
     An example use case is to have a separate internal load balancer for internal traffic,
     and a separate external load balancer for external traffic.
@@ -944,12 +1010,10 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecSecon
     crossZoneLoadBalancing : bool, default is Undefined, optional
         CrossZoneLoadBalancing enables the classic ELB cross availability zone balancing.
 
-
         With cross-zone load balancing, each load balancer node for your Classic Load Balancer
         distributes requests evenly across the registered instances in all enabled Availability Zones.
         If cross-zone load balancing is disabled, each load balancer node distributes requests evenly across
         the registered instances in its Availability Zone only.
-
 
         Defaults to false.
     disableHostsRewrite : bool, default is Undefined, optional
@@ -1005,12 +1069,12 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecSecon
 
 
     check:
-        len(name) <= 32
+        len(name) <= 32 if name
         _regex_match(str(name), r"^[A-Za-z0-9]([A-Za-z0-9]{0,31}|[-A-Za-z0-9]{0,30}[A-Za-z0-9])$") if name
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecSecondaryControlPlaneLoadBalancerAdditionalListenersItems0:
-    """
+    r"""
     AdditionalListenerSpec defines the desired state of an
     additional listener on an AWS load balancer.
 
@@ -1039,7 +1103,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecSecon
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecSecondaryControlPlaneLoadBalancerAdditionalListenersItems0HealthCheck:
-    """
+    r"""
     HealthCheck sets the optional custom health check configuration to the API target group.
 
     Attributes
@@ -1084,18 +1148,18 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecSecon
 
 
     check:
-        intervalSeconds <= 300
-        intervalSeconds >= 5
-        thresholdCount <= 10
-        thresholdCount >= 2
-        timeoutSeconds <= 120
-        timeoutSeconds >= 2
-        unhealthyThresholdCount <= 10
-        unhealthyThresholdCount >= 2
+        intervalSeconds <= 300 if intervalSeconds not in [None, Undefined]
+        intervalSeconds >= 5 if intervalSeconds not in [None, Undefined]
+        thresholdCount <= 10 if thresholdCount not in [None, Undefined]
+        thresholdCount >= 2 if thresholdCount not in [None, Undefined]
+        timeoutSeconds <= 120 if timeoutSeconds not in [None, Undefined]
+        timeoutSeconds >= 2 if timeoutSeconds not in [None, Undefined]
+        unhealthyThresholdCount <= 10 if unhealthyThresholdCount not in [None, Undefined]
+        unhealthyThresholdCount >= 2 if unhealthyThresholdCount not in [None, Undefined]
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecSecondaryControlPlaneLoadBalancerHealthCheck:
-    """
+    r"""
     HealthCheck sets custom health check configuration to the API target group.
 
     Attributes
@@ -1125,18 +1189,18 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecSecon
 
 
     check:
-        intervalSeconds <= 300
-        intervalSeconds >= 5
-        thresholdCount <= 10
-        thresholdCount >= 2
-        timeoutSeconds <= 120
-        timeoutSeconds >= 2
-        unhealthyThresholdCount <= 10
-        unhealthyThresholdCount >= 2
+        intervalSeconds <= 300 if intervalSeconds not in [None, Undefined]
+        intervalSeconds >= 5 if intervalSeconds not in [None, Undefined]
+        thresholdCount <= 10 if thresholdCount not in [None, Undefined]
+        thresholdCount >= 2 if thresholdCount not in [None, Undefined]
+        timeoutSeconds <= 120 if timeoutSeconds not in [None, Undefined]
+        timeoutSeconds >= 2 if timeoutSeconds not in [None, Undefined]
+        unhealthyThresholdCount <= 10 if unhealthyThresholdCount not in [None, Undefined]
+        unhealthyThresholdCount >= 2 if unhealthyThresholdCount not in [None, Undefined]
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecSecondaryControlPlaneLoadBalancerIngressRulesItems0:
-    """
+    r"""
     IngressRule defines an AWS ingress rule for security groups.
 
     Attributes
@@ -1149,6 +1213,8 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecSecon
         FromPort is the start of port range.
     ipv6CidrBlocks : [str], default is Undefined, optional
         List of IPv6 CIDR blocks to allow access from. Cannot be specified with SourceSecurityGroupID.
+    natGatewaysIPsSource : bool, default is Undefined, optional
+        NatGatewaysIPsSource use the NAT gateways IPs as the source for the ingress rule.
     $protocol : str, default is Undefined, required
         Protocol is the protocol for the ingress rule. Accepted values are "-1" (all), "4" (IP in IP),"tcp", "udp", "icmp", and "58" (ICMPv6), "50" (ESP).
     sourceSecurityGroupIds : [str], default is Undefined, optional
@@ -1168,6 +1234,8 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecSecon
     fromPort: int
 
     ipv6CidrBlocks?: [str]
+
+    natGatewaysIPsSource?: bool
 
     $protocol: "-1" | "4" | "tcp" | "udp" | "icmp" | "58" | "50"
 
