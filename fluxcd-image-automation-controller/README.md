@@ -376,6 +376,7 @@ ImageRef represents an image reference.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
+|**digest**|str|Digest is the image's digest.||
 |**name** `required`|str|Name is the bare image's name.||
 |**tag** `required`|str|Tag is the image's tag.||
 ### ImageUpdateAutomation
