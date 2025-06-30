@@ -54,7 +54,6 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpec:
         - PublicCloud: "AzurePublicCloud"
         - USGovernmentCloud: "AzureUSGovernmentCloud"
 
-
         Note that values other than the default must also be accompanied by corresponding changes to the
         aso-controller-settings Secret to configure ASO to refer to the non-Public cloud. ASO currently does
         not support referring to multiple different clouds in a single installation. The following fields must
@@ -63,15 +62,15 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpec:
         - AZURE_RESOURCE_MANAGER_ENDPOINT
         - AZURE_RESOURCE_MANAGER_AUDIENCE
 
-
         See the [ASO docs] for more details.
-
 
         [ASO docs]: https://azure.github.io/azure-service-operator/guide/aso-controller-settings-options/
     bastionSpec : InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpec, default is Undefined, optional
         bastion spec
     cloudProviderConfigOverrides : InfrastructureClusterxK8sIoV1beta1AzureClusterSpecCloudProviderConfigOverrides, default is Undefined, optional
         cloud provider config overrides
+    controlPlaneEnabled : bool, default is True, optional
+        ControlPlaneEnabled enables control plane components in the cluster.
     controlPlaneEndpoint : InfrastructureClusterxK8sIoV1beta1AzureClusterSpecControlPlaneEndpoint, default is Undefined, optional
         control plane endpoint
     extendedLocation : InfrastructureClusterxK8sIoV1beta1AzureClusterSpecExtendedLocation, default is Undefined, optional
@@ -101,6 +100,8 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpec:
     bastionSpec?: InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpec
 
     cloudProviderConfigOverrides?: InfrastructureClusterxK8sIoV1beta1AzureClusterSpecCloudProviderConfigOverrides
+
+    controlPlaneEnabled?: bool = True
 
     controlPlaneEndpoint?: InfrastructureClusterxK8sIoV1beta1AzureClusterSpecControlPlaneEndpoint
 
@@ -241,7 +242,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastion
 
     privateEndpoints?: [InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastionSubnetPrivateEndpointsItems0]
 
-    role: "node" | "control-plane" | "bastion" | "all"
+    role: "node" | "control-plane" | "bastion" | "cluster"
 
     routeTable?: InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastionSubnetRouteTable
 
@@ -625,15 +626,19 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecControlPlaneEndpoint:
     Attributes
     ----------
     host : str, default is Undefined, required
-        The hostname on which the API server is serving.
+        host is the hostname on which the API server is serving.
     port : int, default is Undefined, required
-        The port on which the API server is serving.
+        port is the port on which the API server is serving.
     """
 
 
     host: str
 
     port: int
+
+
+    check:
+        len(host) <= 512
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecExtendedLocation:
@@ -662,9 +667,9 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecFailureDomainsAnon:
     Attributes
     ----------
     attributes : {str:str}, default is Undefined, optional
-        Attributes is a free form map of attributes an infrastructure provider might use or require.
+        attributes is a free form map of attributes an infrastructure provider might use or require.
     controlPlane : bool, default is Undefined, optional
-        ControlPlane determines if this failure domain is suitable for use by control plane machines.
+        controlPlane determines if this failure domain is suitable for use by control plane machines.
     """
 
 
@@ -689,7 +694,6 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecIdentityRef:
         the event) or if no container name is specified "spec.containers[2]" (container with
         index 2 in this pod). This syntax is chosen only to have some well-defined way of
         referencing a part of an object.
-        TODO: this design is not final and this field is subject to change in the future.
     kind : str, default is Undefined, optional
         Kind of the referent.
         More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
@@ -729,6 +733,9 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpec:
 
     Attributes
     ----------
+    additionalAPIServerLBPorts : [InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecAdditionalAPIServerLBPortsItems0], default is Undefined, optional
+        AdditionalAPIServerLBPorts specifies extra inbound ports for the APIServer load balancer.
+        Each port specified (e.g., 9345) creates an inbound rule where the frontend port and the backend port are the same.
     apiServerLB : InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecAPIServerLB, default is Undefined, optional
         api server l b
     controlPlaneOutboundLB : InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecControlPlaneOutboundLB, default is Undefined, optional
@@ -737,12 +744,17 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpec:
         node outbound l b
     privateDNSZoneName : str, default is Undefined, optional
         PrivateDNSZoneName defines the zone name for the Azure Private DNS.
+    privateDNSZoneResourceGroup : str, default is Undefined, optional
+        PrivateDNSZoneResourceGroup defines the resource group to be used for Azure Private DNS Zone.
+        If not specified, the resource group of the cluster will be used to create the Azure Private DNS Zone.
     subnets : [InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecSubnetsItems0], default is Undefined, optional
         Subnets is the configuration for the control-plane subnet and the node subnet.
     vnet : InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecVnet, default is Undefined, optional
         vnet
     """
 
+
+    additionalAPIServerLBPorts?: [InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecAdditionalAPIServerLBPortsItems0]
 
     apiServerLB?: InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecAPIServerLB
 
@@ -751,6 +763,8 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpec:
     nodeOutboundLB?: InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecNodeOutboundLB
 
     privateDNSZoneName?: str
+
+    privateDNSZoneResourceGroup?: str
 
     subnets?: [InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecSubnetsItems0]
 
@@ -879,6 +893,24 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecAPIServerLBF
     tag: str
 
     $type: str
+
+
+schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecAdditionalAPIServerLBPortsItems0:
+    r"""
+    LoadBalancerPort specifies additional port for the API server load balancer.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name for the additional port within LB definition
+    port : int, default is Undefined, required
+        Port for the LB definition
+    """
+
+
+    name: str
+
+    port: int
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecControlPlaneOutboundLB:
@@ -1168,7 +1200,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecSubnetsItems
 
     privateEndpoints?: [InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecSubnetsItems0PrivateEndpointsItems0]
 
-    role: "node" | "control-plane" | "bastion" | "all"
+    role: "node" | "control-plane" | "bastion" | "cluster"
 
     routeTable?: InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecSubnetsItems0RouteTable
 
@@ -1596,24 +1628,24 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterStatusConditionsItems0:
     Attributes
     ----------
     lastTransitionTime : str, default is Undefined, required
-        Last time the condition transitioned from one status to another.
+        lastTransitionTime is the last time the condition transitioned from one status to another.
         This should be when the underlying condition changed. If that is not known, then using the time when
         the API field changed is acceptable.
     message : str, default is Undefined, optional
-        A human readable message indicating details about the transition.
+        message is a human readable message indicating details about the transition.
         This field may be empty.
     reason : str, default is Undefined, optional
-        The reason for the condition's last transition in CamelCase.
+        reason is the reason for the condition's last transition in CamelCase.
         The specific API may choose whether or not this field is considered a guaranteed API.
-        This field may not be empty.
+        This field may be empty.
     severity : str, default is Undefined, optional
-        Severity provides an explicit classification of Reason code, so the users or machines can immediately
+        severity provides an explicit classification of Reason code, so the users or machines can immediately
         understand the current situation and act accordingly.
         The Severity field MUST be set only when Status=False.
     status : str, default is Undefined, required
-        Status of the condition, one of True, False, Unknown.
+        status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
-        Type of condition in CamelCase or in foo.example.com/CamelCase.
+        type of condition in CamelCase or in foo.example.com/CamelCase.
         Many .condition.type values are consistent across resources like Available, but because arbitrary conditions
         can be useful (see .node.status.conditions), the ability to deconflict is important.
     """
@@ -1632,6 +1664,16 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterStatusConditionsItems0:
     $type: str
 
 
+    check:
+        len(message) <= 10240 if message
+        len(message) >= 1 if message
+        len(reason) <= 256 if reason
+        len(reason) >= 1 if reason
+        len(severity) <= 32 if severity
+        len($type) <= 256
+        len($type) >= 1
+
+
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterStatusFailureDomainsAnon:
     r"""
     FailureDomainSpec is the Schema for Cluster API failure domains.
@@ -1640,9 +1682,9 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterStatusFailureDomainsAnon:
     Attributes
     ----------
     attributes : {str:str}, default is Undefined, optional
-        Attributes is a free form map of attributes an infrastructure provider might use or require.
+        attributes is a free form map of attributes an infrastructure provider might use or require.
     controlPlane : bool, default is Undefined, optional
-        ControlPlane determines if this failure domain is suitable for use by control plane machines.
+        controlPlane determines if this failure domain is suitable for use by control plane machines.
     """
 
 

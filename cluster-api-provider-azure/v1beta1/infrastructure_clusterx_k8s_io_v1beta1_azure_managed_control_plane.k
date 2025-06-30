@@ -68,7 +68,6 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpec:
         - PublicCloud: "AzurePublicCloud"
         - USGovernmentCloud: "AzureUSGovernmentCloud"
 
-
         Note that values other than the default must also be accompanied by corresponding changes to the
         aso-controller-settings Secret to configure ASO to refer to the non-Public cloud. ASO currently does
         not support referring to multiple different clouds in a single installation. The following fields must
@@ -77,9 +76,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpec:
         - AZURE_RESOURCE_MANAGER_ENDPOINT
         - AZURE_RESOURCE_MANAGER_AUDIENCE
 
-
         See the [ASO docs] for more details.
-
 
         [ASO docs]: https://azure.github.io/azure-service-operator/guide/aso-controller-settings-options/
     controlPlaneEndpoint : InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecControlPlaneEndpoint, default is Undefined, optional
@@ -122,7 +119,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpec:
         only to fulfill the CAPI contract.
     networkDataplane : str, default is Undefined, optional
         NetworkDataplane is the dataplane used for building the Kubernetes network.
-    networkPlugin : str, default is Undefined, optional
+    networkPlugin : str, default is "azure", optional
         NetworkPlugin used for building Kubernetes network.
     networkPluginMode : str, default is Undefined, optional
         NetworkPluginMode is the mode the network plugin should use.
@@ -182,7 +179,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpec:
 
     dnsServiceIP?: str
 
-    enablePreviewFeatures?: bool
+    enablePreviewFeatures?: bool = False
 
     extensions?: [InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecExtensionsItems0]
 
@@ -206,7 +203,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpec:
 
     networkDataplane?: "azure" | "cilium"
 
-    networkPlugin?: "azure" | "kubenet" | "none"
+    networkPlugin?: "azure" | "kubenet" | "none" = "azure"
 
     networkPluginMode?: "overlay"
 
@@ -324,76 +321,76 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecAutoscalerP
 
     Attributes
     ----------
-    balanceSimilarNodeGroups : str, default is Undefined, optional
+    balanceSimilarNodeGroups : str, default is "false", optional
         BalanceSimilarNodeGroups - Valid values are 'true' and 'false'. The default is false.
-    expander : str, default is Undefined, optional
+    expander : str, default is "random", optional
         Expander - If not specified, the default is 'random'. See [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) for more information.
-    maxEmptyBulkDelete : str, default is Undefined, optional
+    maxEmptyBulkDelete : str, default is "10", optional
         MaxEmptyBulkDelete - The default is 10.
-    maxGracefulTerminationSec : str, default is Undefined, optional
+    maxGracefulTerminationSec : str, default is "600", optional
         MaxGracefulTerminationSec - The default is 600.
-    maxNodeProvisionTime : str, default is Undefined, optional
+    maxNodeProvisionTime : str, default is "15m", optional
         MaxNodeProvisionTime - The default is '15m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
-    maxTotalUnreadyPercentage : str, default is Undefined, optional
+    maxTotalUnreadyPercentage : str, default is "45", optional
         MaxTotalUnreadyPercentage - The default is 45. The maximum is 100 and the minimum is 0.
-    newPodScaleUpDelay : str, default is Undefined, optional
+    newPodScaleUpDelay : str, default is "0s", optional
         NewPodScaleUpDelay - For scenarios like burst/batch scale where you don't want CA to act before the kubernetes scheduler could schedule all the pods, you can tell CA to ignore unscheduled pods before they're a certain age. The default is '0s'. Values must be an integer followed by a unit ('s' for seconds, 'm' for minutes, 'h' for hours, etc).
-    okTotalUnreadyCount : str, default is Undefined, optional
+    okTotalUnreadyCount : str, default is "3", optional
         OkTotalUnreadyCount - This must be an integer. The default is 3.
-    scaleDownDelayAfterAdd : str, default is Undefined, optional
+    scaleDownDelayAfterAdd : str, default is "10m", optional
         ScaleDownDelayAfterAdd - The default is '10m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
-    scaleDownDelayAfterDelete : str, default is Undefined, optional
+    scaleDownDelayAfterDelete : str, default is "10s", optional
         ScaleDownDelayAfterDelete - The default is the scan-interval. Values must be an integer followed by an 's'. No unit of time other than seconds (s) is supported.
-    scaleDownDelayAfterFailure : str, default is Undefined, optional
+    scaleDownDelayAfterFailure : str, default is "3m", optional
         ScaleDownDelayAfterFailure - The default is '3m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
-    scaleDownUnneededTime : str, default is Undefined, optional
+    scaleDownUnneededTime : str, default is "10m", optional
         ScaleDownUnneededTime - The default is '10m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
-    scaleDownUnreadyTime : str, default is Undefined, optional
+    scaleDownUnreadyTime : str, default is "20m", optional
         ScaleDownUnreadyTime - The default is '20m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.
-    scaleDownUtilizationThreshold : str, default is Undefined, optional
+    scaleDownUtilizationThreshold : str, default is "0.5", optional
         ScaleDownUtilizationThreshold - The default is '0.5'.
-    scanInterval : str, default is Undefined, optional
+    scanInterval : str, default is "10s", optional
         ScanInterval - How often cluster is reevaluated for scale up or down. The default is '10s'.
-    skipNodesWithLocalStorage : str, default is Undefined, optional
+    skipNodesWithLocalStorage : str, default is "false", optional
         SkipNodesWithLocalStorage - The default is false.
-    skipNodesWithSystemPods : str, default is Undefined, optional
+    skipNodesWithSystemPods : str, default is "true", optional
         SkipNodesWithSystemPods - The default is true.
     """
 
 
-    balanceSimilarNodeGroups?: "true" | "false"
+    balanceSimilarNodeGroups?: "true" | "false" = "false"
 
-    expander?: "least-waste" | "most-pods" | "priority" | "random"
+    expander?: "least-waste" | "most-pods" | "priority" | "random" = "random"
 
-    maxEmptyBulkDelete?: str
+    maxEmptyBulkDelete?: str = "10"
 
-    maxGracefulTerminationSec?: str
+    maxGracefulTerminationSec?: str = "600"
 
-    maxNodeProvisionTime?: str
+    maxNodeProvisionTime?: str = "15m"
 
-    maxTotalUnreadyPercentage?: str
+    maxTotalUnreadyPercentage?: str = "45"
 
-    newPodScaleUpDelay?: str
+    newPodScaleUpDelay?: str = "0s"
 
-    okTotalUnreadyCount?: str
+    okTotalUnreadyCount?: str = "3"
 
-    scaleDownDelayAfterAdd?: str
+    scaleDownDelayAfterAdd?: str = "10m"
 
-    scaleDownDelayAfterDelete?: str
+    scaleDownDelayAfterDelete?: str = "10s"
 
-    scaleDownDelayAfterFailure?: str
+    scaleDownDelayAfterFailure?: str = "3m"
 
-    scaleDownUnneededTime?: str
+    scaleDownUnneededTime?: str = "10m"
 
-    scaleDownUnreadyTime?: str
+    scaleDownUnreadyTime?: str = "20m"
 
-    scaleDownUtilizationThreshold?: str
+    scaleDownUtilizationThreshold?: str = "0.5"
 
-    scanInterval?: str
+    scanInterval?: str = "10s"
 
-    skipNodesWithLocalStorage?: "true" | "false"
+    skipNodesWithLocalStorage?: "true" | "false" = "false"
 
-    skipNodesWithSystemPods?: "true" | "false"
+    skipNodesWithSystemPods?: "true" | "false" = "true"
 
 
     check:
@@ -419,9 +416,9 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecControlPlan
     Attributes
     ----------
     host : str, default is Undefined, required
-        The hostname on which the API server is serving.
+        host is the hostname on which the API server is serving.
     port : int, default is Undefined, required
-        The port on which the API server is serving.
+        port is the port on which the API server is serving.
     """
 
 
@@ -430,11 +427,14 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecControlPlan
     port: int
 
 
+    check:
+        len(host) <= 512
+
+
 schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecExtensionsItems0:
     r"""
     AKSExtension represents the configuration for an AKS cluster extension.
     See also [AKS doc].
-
 
     [AKS doc]: https://learn.microsoft.com/en-us/azure/aks/cluster-extensions
 
@@ -545,12 +545,11 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecFleetsMembe
     FleetsMember is the spec for the fleet this cluster is a member of.
     See also [AKS doc].
 
-
     [AKS doc]: https://learn.microsoft.com/en-us/azure/templates/microsoft.containerservice/2023-03-15-preview/fleets/members
 
     Attributes
     ----------
-    group : str, default is Undefined, optional
+    group : str, default is "default", optional
         Group is the group this member belongs to for multi-cluster update management.
     managerName : str, default is Undefined, required
         ManagerName is the name of the fleet manager.
@@ -561,7 +560,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecFleetsMembe
     """
 
 
-    group?: str
+    group?: str = "default"
 
     managerName: str
 
@@ -603,14 +602,14 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecIdentity:
 
     Attributes
     ----------
-    $type : str, default is Undefined, optional
+    $type : str, default is "SystemAssigned", optional
         Type - The Identity type to use.
     userAssignedIdentityResourceID : str, default is Undefined, optional
         UserAssignedIdentityResourceID - Identity ARM resource ID when using user-assigned identity.
     """
 
 
-    $type?: "SystemAssigned" | "UserAssigned"
+    $type?: "SystemAssigned" | "UserAssigned" = "SystemAssigned"
 
     userAssignedIdentityResourceID?: str
 
@@ -631,7 +630,6 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecIdentityRef
         the event) or if no container name is specified "spec.containers[2]" (container with
         index 2 in this pod). This syntax is chosen only to have some well-defined way of
         referencing a part of an object.
-        TODO: this design is not final and this field is subject to change in the future.
     kind : str, default is Undefined, optional
         Kind of the referent.
         More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
@@ -706,7 +704,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecOidcIssuerP
     """
 
 
-    enabled?: bool
+    enabled?: bool = False
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecSecurityProfile:
@@ -841,12 +839,12 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecSku:
 
     Attributes
     ----------
-    tier : str, default is Undefined, required
+    tier : str, default is "Free", required
         Tier - Tier of an AKS cluster.
     """
 
 
-    tier: "Free" | "Paid" | "Standard"
+    tier: "Free" | "Paid" | "Standard" = "Free"
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecVirtualNetwork:
@@ -855,7 +853,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecVirtualNetw
 
     Attributes
     ----------
-    cidrBlock : str, default is Undefined, required
+    cidrBlock : str, default is "10.0.0.0/8", required
         cidr block
     name : str, default is Undefined, required
         Name is the name of the virtual network.
@@ -866,7 +864,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecVirtualNetw
     """
 
 
-    cidrBlock: str
+    cidrBlock: str = "10.0.0.0/8"
 
     name: str
 
@@ -881,7 +879,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecVirtualNetw
 
     Attributes
     ----------
-    cidrBlock : str, default is Undefined, required
+    cidrBlock : str, default is "10.240.0.0/16", required
         cidr block
     name : str, default is Undefined, required
         name
@@ -892,7 +890,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecVirtualNetw
     """
 
 
-    cidrBlock: str
+    cidrBlock: str = "10.240.0.0/16"
 
     name: str
 
@@ -1042,24 +1040,24 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneStatusCondition
     Attributes
     ----------
     lastTransitionTime : str, default is Undefined, required
-        Last time the condition transitioned from one status to another.
+        lastTransitionTime is the last time the condition transitioned from one status to another.
         This should be when the underlying condition changed. If that is not known, then using the time when
         the API field changed is acceptable.
     message : str, default is Undefined, optional
-        A human readable message indicating details about the transition.
+        message is a human readable message indicating details about the transition.
         This field may be empty.
     reason : str, default is Undefined, optional
-        The reason for the condition's last transition in CamelCase.
+        reason is the reason for the condition's last transition in CamelCase.
         The specific API may choose whether or not this field is considered a guaranteed API.
-        This field may not be empty.
+        This field may be empty.
     severity : str, default is Undefined, optional
-        Severity provides an explicit classification of Reason code, so the users or machines can immediately
+        severity provides an explicit classification of Reason code, so the users or machines can immediately
         understand the current situation and act accordingly.
         The Severity field MUST be set only when Status=False.
     status : str, default is Undefined, required
-        Status of the condition, one of True, False, Unknown.
+        status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
-        Type of condition in CamelCase or in foo.example.com/CamelCase.
+        type of condition in CamelCase or in foo.example.com/CamelCase.
         Many .condition.type values are consistent across resources like Available, but because arbitrary conditions
         can be useful (see .node.status.conditions), the ability to deconflict is important.
     """
@@ -1076,6 +1074,16 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneStatusCondition
     status: str
 
     $type: str
+
+
+    check:
+        len(message) <= 10240 if message
+        len(message) >= 1 if message
+        len(reason) <= 256 if reason
+        len(reason) >= 1 if reason
+        len(severity) <= 32 if severity
+        len($type) <= 256
+        len($type) >= 1
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneStatusLongRunningOperationStatesItems0:

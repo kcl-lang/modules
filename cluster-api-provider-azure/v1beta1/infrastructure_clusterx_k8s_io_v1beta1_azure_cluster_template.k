@@ -78,7 +78,6 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpec:
         - PublicCloud: "AzurePublicCloud"
         - USGovernmentCloud: "AzureUSGovernmentCloud"
 
-
         Note that values other than the default must also be accompanied by corresponding changes to the
         aso-controller-settings Secret to configure ASO to refer to the non-Public cloud. ASO currently does
         not support referring to multiple different clouds in a single installation. The following fields must
@@ -87,9 +86,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpec:
         - AZURE_RESOURCE_MANAGER_ENDPOINT
         - AZURE_RESOURCE_MANAGER_AUDIENCE
 
-
         See the [ASO docs] for more details.
-
 
         [ASO docs]: https://azure.github.io/azure-service-operator/guide/aso-controller-settings-options/
     bastionSpec : InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecBastionSpec, default is Undefined, optional
@@ -194,7 +191,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecBas
 
     privateEndpoints?: [InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecBastionSpecAzureBastionSubnetPrivateEndpointsItems0]
 
-    role: "node" | "control-plane" | "bastion" | "all"
+    role: "node" | "control-plane" | "bastion" | "cluster"
 
     securityGroup?: InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecBastionSpecAzureBastionSubnetSecurityGroup
 
@@ -517,9 +514,9 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecFai
     Attributes
     ----------
     attributes : {str:str}, default is Undefined, optional
-        Attributes is a free form map of attributes an infrastructure provider might use or require.
+        attributes is a free form map of attributes an infrastructure provider might use or require.
     controlPlane : bool, default is Undefined, optional
-        ControlPlane determines if this failure domain is suitable for use by control plane machines.
+        controlPlane determines if this failure domain is suitable for use by control plane machines.
     """
 
 
@@ -544,7 +541,6 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecIde
         the event) or if no container name is specified "spec.containers[2]" (container with
         index 2 in this pod). This syntax is chosen only to have some well-defined way of
         referencing a part of an object.
-        TODO: this design is not final and this field is subject to change in the future.
     kind : str, default is Undefined, optional
         Kind of the referent.
         More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
@@ -584,6 +580,9 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNet
 
     Attributes
     ----------
+    additionalAPIServerLBPorts : [InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecAdditionalAPIServerLBPortsItems0], default is Undefined, optional
+        AdditionalAPIServerLBPorts is the configuration for the additional inbound control-plane load balancer ports
+        Each port specified (e.g., 9345) creates an inbound rule where the frontend port and the backend port are the same.
     apiServerLB : InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecAPIServerLB, default is Undefined, optional
         api server l b
     controlPlaneOutboundLB : InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecControlPlaneOutboundLB, default is Undefined, optional
@@ -592,12 +591,17 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNet
         node outbound l b
     privateDNSZoneName : str, default is Undefined, optional
         PrivateDNSZoneName defines the zone name for the Azure Private DNS.
+    privateDNSZoneResourceGroup : str, default is Undefined, optional
+        PrivateDNSZoneResourceGroup defines the resource group to be used for Azure Private DNS Zone.
+        If not specified, the resource group of the cluster will be used to create the Azure Private DNS Zone.
     subnets : [InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecSubnetsItems0], default is Undefined, optional
         Subnets is the configuration for the control-plane subnet and the node subnet.
     vnet : InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecVnet, default is Undefined, optional
         vnet
     """
 
+
+    additionalAPIServerLBPorts?: [InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecAdditionalAPIServerLBPortsItems0]
 
     apiServerLB?: InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecAPIServerLB
 
@@ -606,6 +610,8 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNet
     nodeOutboundLB?: InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecNodeOutboundLB
 
     privateDNSZoneName?: str
+
+    privateDNSZoneResourceGroup?: str
 
     subnets?: [InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecSubnetsItems0]
 
@@ -632,6 +638,24 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNet
     sku?: str
 
     $type?: str
+
+
+schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecAdditionalAPIServerLBPortsItems0:
+    r"""
+    LoadBalancerPort specifies additional port for the API server load balancer.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name for the additional port within LB definition
+    port : int, default is Undefined, required
+        Port for the LB definition
+    """
+
+
+    name: str
+
+    port: int
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecControlPlaneOutboundLB:
@@ -710,7 +734,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNet
 
     privateEndpoints?: [InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecSubnetsItems0PrivateEndpointsItems0]
 
-    role: "node" | "control-plane" | "bastion" | "all"
+    role: "node" | "control-plane" | "bastion" | "cluster"
 
     securityGroup?: InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecSubnetsItems0SecurityGroup
 

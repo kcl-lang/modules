@@ -68,6 +68,9 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachineSpec:
         DisableExtensionOperations specifies whether extension operations should be disabled on the virtual machine.
         Use this setting only if VMExtensions are not supported by your image, as it disables CAPZ bootstrapping extension used for detecting Kubernetes bootstrap failure.
         This may only be set to True when no extensions are configured on the virtual machine.
+    disableVMBootstrapExtension : bool, default is Undefined, optional
+        DisableVMBootstrapExtension specifies whether the VM bootstrap extension should be disabled on the virtual machine.
+        Use this setting if you want to disable only the bootstrapping extension and not all extensions.
     dnsServers : [str], default is Undefined, optional
         DNSServers adds a list of DNS Server IP addresses to the VM NICs.
     enableIPForwarding : bool, default is Undefined, optional
@@ -134,6 +137,8 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachineSpec:
     diagnostics?: InfrastructureClusterxK8sIoV1beta1AzureMachineSpecDiagnostics
 
     disableExtensionOperations?: bool
+
+    disableVMBootstrapExtension?: bool
 
     dnsServers?: [str]
 
@@ -358,8 +363,8 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachineSpecDiagnosticsBootUserMana
 schema InfrastructureClusterxK8sIoV1beta1AzureMachineSpecImage:
     r"""
     Image is used to provide details of an image to use during VM creation.
-    If image details are omitted the image will default the Azure Marketplace "capi" offer,
-    which is based on Ubuntu.
+    If image details are omitted, the default is to use an Azure Compute Gallery Image
+    from CAPZ's community gallery.
 
     Attributes
     ----------
@@ -595,7 +600,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachineSpecOsDisk:
 
     Attributes
     ----------
-    cachingType : str, default is Undefined, optional
+    cachingType : str, default is "None", optional
         CachingType specifies the caching requirements.
     diffDiskSettings : InfrastructureClusterxK8sIoV1beta1AzureMachineSpecOsDiskDiffDiskSettings, default is Undefined, optional
         diff disk settings
@@ -604,12 +609,12 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachineSpecOsDisk:
         Will have a default of 30GB if not provided
     managedDisk : InfrastructureClusterxK8sIoV1beta1AzureMachineSpecOsDiskManagedDisk, default is Undefined, optional
         managed disk
-    osType : str, default is Undefined, required
+    osType : str, default is "Linux", required
         os type
     """
 
 
-    cachingType?: "None" | "ReadOnly" | "ReadWrite"
+    cachingType?: "None" | "ReadOnly" | "ReadWrite" = "None"
 
     diffDiskSettings?: InfrastructureClusterxK8sIoV1beta1AzureMachineSpecOsDiskDiffDiskSettings
 
@@ -617,7 +622,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachineSpecOsDisk:
 
     managedDisk?: InfrastructureClusterxK8sIoV1beta1AzureMachineSpecOsDiskManagedDisk
 
-    osType: str
+    osType: str = "Linux"
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachineSpecOsDiskDiffDiskSettings:
@@ -873,7 +878,6 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachineStatus:
         reconciling the Machine and will contain a more verbose string suitable
         for logging and human consumption.
 
-
         This field should not be set for transitive errors that a controller
         faces that are expected to be fixed automatically over
         time (like service outages), but instead indicate that something is
@@ -882,7 +886,6 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachineStatus:
         of terminal errors would be invalid combinations of settings in the
         spec, values that are unsupported by the controller, or the
         responsible controller itself being critically misconfigured.
-
 
         Any transient errors that occur during the reconciliation of Machines
         can be added as events to the Machine object and/or logged in the
@@ -892,7 +895,6 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachineStatus:
         reconciling the Machine and will contain a succinct value suitable
         for machine interpretation.
 
-
         This field should not be set for transitive errors that a controller
         faces that are expected to be fixed automatically over
         time (like service outages), but instead indicate that something is
@@ -901,7 +903,6 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachineStatus:
         of terminal errors would be invalid combinations of settings in the
         spec, values that are unsupported by the controller, or the
         responsible controller itself being critically misconfigured.
-
 
         Any transient errors that occur during the reconciliation of Machines
         can be added as events to the Machine object and/or logged in the
@@ -956,24 +957,24 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachineStatusConditionsItems0:
     Attributes
     ----------
     lastTransitionTime : str, default is Undefined, required
-        Last time the condition transitioned from one status to another.
+        lastTransitionTime is the last time the condition transitioned from one status to another.
         This should be when the underlying condition changed. If that is not known, then using the time when
         the API field changed is acceptable.
     message : str, default is Undefined, optional
-        A human readable message indicating details about the transition.
+        message is a human readable message indicating details about the transition.
         This field may be empty.
     reason : str, default is Undefined, optional
-        The reason for the condition's last transition in CamelCase.
+        reason is the reason for the condition's last transition in CamelCase.
         The specific API may choose whether or not this field is considered a guaranteed API.
-        This field may not be empty.
+        This field may be empty.
     severity : str, default is Undefined, optional
-        Severity provides an explicit classification of Reason code, so the users or machines can immediately
+        severity provides an explicit classification of Reason code, so the users or machines can immediately
         understand the current situation and act accordingly.
         The Severity field MUST be set only when Status=False.
     status : str, default is Undefined, required
-        Status of the condition, one of True, False, Unknown.
+        status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
-        Type of condition in CamelCase or in foo.example.com/CamelCase.
+        type of condition in CamelCase or in foo.example.com/CamelCase.
         Many .condition.type values are consistent across resources like Available, but because arbitrary conditions
         can be useful (see .node.status.conditions), the ability to deconflict is important.
     """
@@ -990,6 +991,16 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachineStatusConditionsItems0:
     status: str
 
     $type: str
+
+
+    check:
+        len(message) <= 10240 if message
+        len(message) >= 1 if message
+        len(reason) <= 256 if reason
+        len(reason) >= 1 if reason
+        len(severity) <= 32 if severity
+        len($type) <= 256
+        len($type) >= 1
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachineStatusLongRunningOperationStatesItems0:
