@@ -34,6 +34,8 @@
   - [ImageToolkitFluxcdIoV1beta2ImagePolicySpecPolicySemver](#imagetoolkitfluxcdiov1beta2imagepolicyspecpolicysemver)
   - [ImageToolkitFluxcdIoV1beta2ImagePolicyStatus](#imagetoolkitfluxcdiov1beta2imagepolicystatus)
   - [ImageToolkitFluxcdIoV1beta2ImagePolicyStatusConditionsItems0](#imagetoolkitfluxcdiov1beta2imagepolicystatusconditionsitems0)
+  - [ImageToolkitFluxcdIoV1beta2ImagePolicyStatusLatestRef](#imagetoolkitfluxcdiov1beta2imagepolicystatuslatestref)
+  - [ImageToolkitFluxcdIoV1beta2ImagePolicyStatusObservedPreviousRef](#imagetoolkitfluxcdiov1beta2imagepolicystatusobservedpreviousref)
   - [ImageToolkitFluxcdIoV1beta2ImageRepositorySpec](#imagetoolkitfluxcdiov1beta2imagerepositoryspec)
   - [ImageToolkitFluxcdIoV1beta2ImageRepositorySpecAccessFrom](#imagetoolkitfluxcdiov1beta2imagerepositoryspecaccessfrom)
   - [ImageToolkitFluxcdIoV1beta2ImageRepositorySpecAccessFromNamespaceSelectorsItems0](#imagetoolkitfluxcdiov1beta2imagerepositoryspecaccessfromnamespaceselectorsitems0)
@@ -290,8 +292,10 @@ ImagePolicySpec defines the parameters for calculating the ImagePolicy.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
+|**digestReflectionPolicy**|"Always" | "IfNotPresent" | "Never"|DigestReflectionPolicy governs the setting of the `.status.latestRef.digest` field.<br /><br />Never: The digest field will always be set to the empty string.<br /><br />IfNotPresent: The digest field will be set to the digest of the elected<br />latest image if the field is empty and the image did not change.<br /><br />Always: The digest field will always be set to the digest of the elected<br />latest image.<br /><br />Default: Never.|"Never"|
 |**filterTags**|[ImageToolkitFluxcdIoV1beta2ImagePolicySpecFilterTags](#imagetoolkitfluxcdiov1beta2imagepolicyspecfiltertags)|filter tags||
 |**imageRepositoryRef** `required`|[ImageToolkitFluxcdIoV1beta2ImagePolicySpecImageRepositoryRef](#imagetoolkitfluxcdiov1beta2imagepolicyspecimagerepositoryref)|image repository ref||
+|**interval**|str|Interval is the length of time to wait between<br />refreshing the digest of the latest tag when the<br />reflection policy is set to "Always".<br /><br />Defaults to 10m.||
 |**policy** `required`|[ImageToolkitFluxcdIoV1beta2ImagePolicySpecPolicy](#imagetoolkitfluxcdiov1beta2imagepolicyspecpolicy)|policy||
 ### ImageToolkitFluxcdIoV1beta2ImagePolicySpecFilterTags
 
@@ -360,9 +364,11 @@ ImagePolicyStatus defines the observed state of ImagePolicy
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**conditions**|[[ImageToolkitFluxcdIoV1beta2ImagePolicyStatusConditionsItems0](#imagetoolkitfluxcdiov1beta2imagepolicystatusconditionsitems0)]|conditions||
-|**latestImage**|str|LatestImage gives the first in the list of images scanned by<br />the image repository, when filtered and ordered according to<br />the policy.||
+|**latestImage**|str|LatestImage gives the first in the list of images scanned by<br />the image repository, when filtered and ordered according to<br />the policy.<br /><br />Deprecated: Replaced by the composite "latestRef" field.||
+|**latestRef**|[ImageToolkitFluxcdIoV1beta2ImagePolicyStatusLatestRef](#imagetoolkitfluxcdiov1beta2imagepolicystatuslatestref)|latest ref||
 |**observedGeneration**|int|observed generation||
-|**observedPreviousImage**|str|ObservedPreviousImage is the observed previous LatestImage. It is used<br />to keep track of the previous and current images.||
+|**observedPreviousImage**|str|ObservedPreviousImage is the observed previous LatestImage. It is used<br />to keep track of the previous and current images.<br /><br />Deprecated: Replaced by the composite "observedPreviousRef" field.||
+|**observedPreviousRef**|[ImageToolkitFluxcdIoV1beta2ImagePolicyStatusObservedPreviousRef](#imagetoolkitfluxcdiov1beta2imagepolicystatusobservedpreviousref)|observed previous ref||
 ### ImageToolkitFluxcdIoV1beta2ImagePolicyStatusConditionsItems0
 
 Condition contains details for one aspect of the current state of this API Resource.
@@ -377,6 +383,28 @@ Condition contains details for one aspect of the current state of this API Resou
 |**reason** `required`|str|reason contains a programmatic identifier indicating the reason for the condition's last transition.<br />Producers of specific condition types may define expected values and meanings for this field,<br />and whether the values are considered a guaranteed API.<br />The value should be a CamelCase string.<br />This field may not be empty.||
 |**status** `required`|"True" | "False" | "Unknown"|status of the condition, one of True, False, Unknown.||
 |**type** `required`|str|||
+### ImageToolkitFluxcdIoV1beta2ImagePolicyStatusLatestRef
+
+LatestRef gives the first in the list of images scanned by the image repository, when filtered and ordered according to the policy.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**digest**|str|Digest is the image's digest.||
+|**name** `required`|str|Name is the bare image's name.||
+|**tag** `required`|str|Tag is the image's tag.||
+### ImageToolkitFluxcdIoV1beta2ImagePolicyStatusObservedPreviousRef
+
+ObservedPreviousRef is the observed previous LatestRef. It is used to keep track of the previous and current images.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**digest**|str|Digest is the image's digest.||
+|**name** `required`|str|Name is the bare image's name.||
+|**tag** `required`|str|Tag is the image's tag.||
 ### ImageToolkitFluxcdIoV1beta2ImageRepositorySpec
 
 ImageRepositorySpec defines the parameters for scanning an image repository, e.g., `fluxcd/flux`.
