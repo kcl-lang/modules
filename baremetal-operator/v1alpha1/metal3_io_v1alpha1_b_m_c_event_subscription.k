@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema BMCEventSubscription:
-    """
+    r"""
     BMCEventSubscription is the Schema for the fast eventing API
 
     Attributes
@@ -36,7 +36,7 @@ schema BMCEventSubscription:
 
 
 schema Metal3IoV1alpha1BMCEventSubscriptionSpec:
-    """
+    r"""
     metal3 io v1alpha1 b m c event subscription spec
 
     Attributes
@@ -62,15 +62,16 @@ schema Metal3IoV1alpha1BMCEventSubscriptionSpec:
 
 
 schema Metal3IoV1alpha1BMCEventSubscriptionSpecHTTPHeadersRef:
-    """
-    A secret containing HTTP headers which should be passed along to the Destination when making a request
+    r"""
+    A secret containing HTTP headers which should be passed along to the Destination
+    when making a request
 
     Attributes
     ----------
     name : str, default is Undefined, optional
-        Name is unique within a namespace to reference a secret resource.
+        name is unique within a namespace to reference a secret resource.
     namespace : str, default is Undefined, optional
-        Namespace defines the space within which the secret name must be unique.
+        namespace defines the space within which the secret name must be unique.
     """
 
 
@@ -80,7 +81,7 @@ schema Metal3IoV1alpha1BMCEventSubscriptionSpecHTTPHeadersRef:
 
 
 schema Metal3IoV1alpha1BMCEventSubscriptionStatus:
-    """
+    r"""
     metal3 io v1alpha1 b m c event subscription status
 
     Attributes

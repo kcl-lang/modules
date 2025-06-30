@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema FirmwareSchema:
-    """
-    FirmwareSchema is the Schema for the firmwareschemas API
+    r"""
+    FirmwareSchema is the Schema for the firmwareschemas API.
 
     Attributes
     ----------
@@ -32,8 +32,8 @@ schema FirmwareSchema:
 
 
 schema Metal3IoV1alpha1FirmwareSchemaSpec:
-    """
-    FirmwareSchemaSpec defines the desired state of FirmwareSchema
+    r"""
+    FirmwareSchemaSpec defines the desired state of FirmwareSchema.
 
     Attributes
     ----------
@@ -54,8 +54,8 @@ schema Metal3IoV1alpha1FirmwareSchemaSpec:
 
 
 schema Metal3IoV1alpha1FirmwareSchemaSpecSchemaAnon:
-    """
-    Additional data describing the firmware setting
+    r"""
+    Additional data describing the firmware setting.
 
     Attributes
     ----------
@@ -72,7 +72,8 @@ schema Metal3IoV1alpha1FirmwareSchemaSpecSchemaAnon:
     read_only : bool, default is Undefined, optional
         Whether or not this setting is read only.
     unique : bool, default is Undefined, optional
-        Whether or not this setting's value is unique to this node, e.g. a serial number.
+        Whether or not this setting's value is unique to this node, e.g.
+        a serial number.
     upper_bound : int, default is Undefined, optional
         The highest value for an Integer type setting.
     """

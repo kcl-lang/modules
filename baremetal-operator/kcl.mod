@@ -1,7 +1,8 @@
 [package]
 name = "baremetal-operator"
-edition = "0.10.0"
-version = "0.1.1"
+edition = "*"
+version = "v0.10.2"
+description = "KCL package for https://github.com/metal3-io/baremetal-operator CRDs"
 
 [dependencies]
-k8s = "1.31.2"
+k8s = "1.32.4"

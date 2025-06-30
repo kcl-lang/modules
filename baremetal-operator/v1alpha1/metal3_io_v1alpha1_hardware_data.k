@@ -4,11 +4,12 @@ Editing this file might prove futile when you re-run the KCL auto-gen generate c
 """
 import regex
 import k8s.apimachinery.pkg.apis.meta.v1
+_regex_match = regex.match
 
 
 schema HardwareData:
-    """
-    HardwareData is the Schema for the hardwaredata API
+    r"""
+    HardwareData is the Schema for the hardwaredata API.
 
     Attributes
     ----------
@@ -33,8 +34,8 @@ schema HardwareData:
 
 
 schema Metal3IoV1alpha1HardwareDataSpec:
-    """
-    HardwareDataSpec defines the desired state of HardwareData
+    r"""
+    HardwareDataSpec defines the desired state of HardwareData.
 
     Attributes
     ----------
@@ -47,7 +48,7 @@ schema Metal3IoV1alpha1HardwareDataSpec:
 
 
 schema Metal3IoV1alpha1HardwareDataSpecHardware:
-    """
+    r"""
     The hardware discovered on the host during its inspection.
 
     Attributes
@@ -59,11 +60,11 @@ schema Metal3IoV1alpha1HardwareDataSpecHardware:
     hostname : str, default is Undefined, optional
         hostname
     nics : [Metal3IoV1alpha1HardwareDataSpecHardwareNicsItems0], default is Undefined, optional
-        nics
+        List of network interfaces for the host.
     ramMebibytes : int, default is Undefined, optional
-        ram mebibytes
+        The host's amount of memory in Mebibytes.
     storage : [Metal3IoV1alpha1HardwareDataSpecHardwareStorageItems0], default is Undefined, optional
-        storage
+        List of storage (disk, SSD, etc.) available to the host.
     systemVendor : Metal3IoV1alpha1HardwareDataSpecHardwareSystemVendor, default is Undefined, optional
         system vendor
     """
@@ -85,8 +86,8 @@ schema Metal3IoV1alpha1HardwareDataSpecHardware:
 
 
 schema Metal3IoV1alpha1HardwareDataSpecHardwareCPU:
-    """
-    CPU describes one processor on the host.
+    r"""
+    Details of the CPU(s) in the system.
 
     Attributes
     ----------
@@ -115,8 +116,8 @@ schema Metal3IoV1alpha1HardwareDataSpecHardwareCPU:
 
 
 schema Metal3IoV1alpha1HardwareDataSpecHardwareFirmware:
-    """
-    Firmware describes the firmware on the host.
+    r"""
+    System firmware information.
 
     Attributes
     ----------
@@ -129,7 +130,7 @@ schema Metal3IoV1alpha1HardwareDataSpecHardwareFirmware:
 
 
 schema Metal3IoV1alpha1HardwareDataSpecHardwareFirmwareBios:
-    """
+    r"""
     The BIOS for this firmware
 
     Attributes
@@ -151,13 +152,15 @@ schema Metal3IoV1alpha1HardwareDataSpecHardwareFirmwareBios:
 
 
 schema Metal3IoV1alpha1HardwareDataSpecHardwareNicsItems0:
-    """
+    r"""
     NIC describes one network interface on the host.
 
     Attributes
     ----------
     ip : str, default is Undefined, optional
-        The IP address of the interface. This will be an IPv4 or IPv6 address if one is present.  If both IPv4 and IPv6 addresses are present in a dual-stack environment, two nics will be output, one with each IP.
+        The IP address of the interface. This will be an IPv4 or IPv6 address
+        if one is present.  If both IPv4 and IPv6 addresses are present in a
+        dual-stack environment, two nics will be output, one with each IP.
     mac : str, default is Undefined, optional
         The device MAC address
     model : str, default is Undefined, optional
@@ -193,14 +196,14 @@ schema Metal3IoV1alpha1HardwareDataSpecHardwareNicsItems0:
 
 
     check:
-        regex.match(str(mac), r"[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}") if mac
-        vlanId <= 4094
-        vlanId >= 0
+        _regex_match(str(mac), r"[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}") if mac
+        vlanId <= 4094 if vlanId not in [None, Undefined]
+        vlanId >= 0 if vlanId not in [None, Undefined]
 
 
 schema Metal3IoV1alpha1HardwareDataSpecHardwareNicsItems0VlansItems0:
-    """
-    VLAN represents the name and ID of a VLAN
+    r"""
+    VLAN represents the name and ID of a VLAN.
 
     Attributes
     ----------
@@ -217,24 +220,33 @@ schema Metal3IoV1alpha1HardwareDataSpecHardwareNicsItems0VlansItems0:
 
 
     check:
-        id <= 4094
-        id >= 0
+        id <= 4094 if id not in [None, Undefined]
+        id >= 0 if id not in [None, Undefined]
 
 
 schema Metal3IoV1alpha1HardwareDataSpecHardwareStorageItems0:
-    """
+    r"""
     Storage describes one storage device (disk, SSD, etc.) on the host.
 
     Attributes
     ----------
+    alternateNames : [str], default is Undefined, optional
+        A list of alternate Linux device names of the disk, e.g. "/dev/sda".
+        Note that this list is not exhaustive, and names may not be stable
+        across reboots.
     hctl : str, default is Undefined, optional
         The SCSI location of the device
     model : str, default is Undefined, optional
         Hardware model
     name : str, default is Undefined, optional
-        The Linux device name of the disk, e.g. "/dev/sda". Note that this may not be stable across reboots.
+        A Linux device name of the disk, e.g.
+        "/dev/disk/by-path/pci-0000:01:00.0-scsi-0:2:0:0". This will be a name
+        that is stable across reboots if one is available.
     rotational : bool, default is Undefined, optional
-        Whether this disk represents rotational storage. This field is not recommended for usage, please prefer using 'Type' field instead, this field will be deprecated eventually.
+        Whether this disk represents rotational storage.
+        This field is not recommended for usage, please
+        prefer using 'Type' field instead, this field
+        will be deprecated eventually.
     serialNumber : str, default is Undefined, optional
         The serial number of the device
     sizeBytes : int, default is Undefined, optional
@@ -251,6 +263,8 @@ schema Metal3IoV1alpha1HardwareDataSpecHardwareStorageItems0:
         The WWN with the extension
     """
 
+
+    alternateNames?: [str]
 
     hctl?: str
 
@@ -276,8 +290,8 @@ schema Metal3IoV1alpha1HardwareDataSpecHardwareStorageItems0:
 
 
 schema Metal3IoV1alpha1HardwareDataSpecHardwareSystemVendor:
-    """
-    HardwareSystemVendor stores details about the whole hardware system.
+    r"""
+    System vendor information.
 
     Attributes
     ----------

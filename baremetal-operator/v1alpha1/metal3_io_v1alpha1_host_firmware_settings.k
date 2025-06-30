@@ -4,11 +4,12 @@ Editing this file might prove futile when you re-run the KCL auto-gen generate c
 """
 import regex
 import k8s.apimachinery.pkg.apis.meta.v1
+_regex_match = regex.match
 
 
 schema HostFirmwareSettings:
-    """
-    HostFirmwareSettings is the Schema for the hostfirmwaresettings API
+    r"""
+    HostFirmwareSettings is the Schema for the hostfirmwaresettings API.
 
     Attributes
     ----------
@@ -37,8 +38,8 @@ schema HostFirmwareSettings:
 
 
 schema Metal3IoV1alpha1HostFirmwareSettingsSpec:
-    """
-    HostFirmwareSettingsSpec defines the desired state of HostFirmwareSettings
+    r"""
+    HostFirmwareSettingsSpec defines the desired state of HostFirmwareSettings.
 
     Attributes
     ----------
@@ -51,8 +52,8 @@ schema Metal3IoV1alpha1HostFirmwareSettingsSpec:
 
 
 schema Metal3IoV1alpha1HostFirmwareSettingsStatus:
-    """
-    HostFirmwareSettingsStatus defines the observed state of HostFirmwareSettings
+    r"""
+    HostFirmwareSettingsStatus defines the observed state of HostFirmwareSettings.
 
     Attributes
     ----------
@@ -77,24 +78,31 @@ schema Metal3IoV1alpha1HostFirmwareSettingsStatus:
 
 
 schema Metal3IoV1alpha1HostFirmwareSettingsStatusConditionsItems0:
-    """
-    Condition contains details for one aspect of the current state of this API Resource. --- This struct is intended for direct use as an array at the field path .status.conditions.  For example, type FooStatus struct{ // Represents the observations of a foo's current state. // Known .status.conditions.type are: "Available", "Progressing", and "Degraded" // +patchMergeKey=type // +patchStrategy=merge // +listType=map // +listMapKey=type Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"` 
-     // other fields }
+    r"""
+    Condition contains details for one aspect of the current state of this API Resource.
 
     Attributes
     ----------
     lastTransitionTime : str, default is Undefined, required
-        lastTransitionTime is the last time the condition transitioned from one status to another. This should be when the underlying condition changed.  If that is not known, then using the time when the API field changed is acceptable.
+        lastTransitionTime is the last time the condition transitioned from one status to another.
+        This should be when the underlying condition changed.  If that is not known, then using the time when the API field changed is acceptable.
     message : str, default is Undefined, required
-        message is a human readable message indicating details about the transition. This may be an empty string.
+        message is a human readable message indicating details about the transition.
+        This may be an empty string.
     observedGeneration : int, default is Undefined, optional
-        observedGeneration represents the .metadata.generation that the condition was set based upon. For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date with respect to the current state of the instance.
+        observedGeneration represents the .metadata.generation that the condition was set based upon.
+        For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date
+        with respect to the current state of the instance.
     reason : str, default is Undefined, required
-        reason contains a programmatic identifier indicating the reason for the condition's last transition. Producers of specific condition types may define expected values and meanings for this field, and whether the values are considered a guaranteed API. The value should be a CamelCase string. This field may not be empty.
+        reason contains a programmatic identifier indicating the reason for the condition's last transition.
+        Producers of specific condition types may define expected values and meanings for this field,
+        and whether the values are considered a guaranteed API.
+        The value should be a CamelCase string.
+        This field may not be empty.
     status : str, default is Undefined, required
         status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
-        type of condition in CamelCase or in foo.example.com/CamelCase. --- Many .condition.type values are consistent across resources like Available, but because arbitrary conditions can be useful (see .node.status.conditions), the ability to deconflict is important. The regex it matches is (dns1123SubdomainFmt/)?(qualifiedNameFmt)
+        type of condition in CamelCase or in foo.example.com/CamelCase.
     """
 
 
@@ -113,17 +121,19 @@ schema Metal3IoV1alpha1HostFirmwareSettingsStatusConditionsItems0:
 
     check:
         len(message) <= 32768
-        observedGeneration >= 0
+        observedGeneration >= 0 if observedGeneration not in [None, Undefined]
         len(reason) <= 1024
         len(reason) >= 1
-        regex.match(str(reason), r"^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$")
+        _regex_match(str(reason), r"^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$")
         len($type) <= 316
-        regex.match(str($type), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$")
+        _regex_match(str($type), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$")
 
 
 schema Metal3IoV1alpha1HostFirmwareSettingsStatusSchema:
-    """
-    FirmwareSchema is a reference to the Schema used to describe each FirmwareSetting. By default, this will be a Schema in the same Namespace as the settings but it can be overwritten in the Spec
+    r"""
+    FirmwareSchema is a reference to the Schema used to describe each
+    FirmwareSetting. By default, this will be a Schema in the same
+    Namespace as the settings but it can be overwritten in the Spec
 
     Attributes
     ----------
