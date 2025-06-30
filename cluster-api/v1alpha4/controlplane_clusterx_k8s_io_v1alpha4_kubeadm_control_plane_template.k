@@ -35,7 +35,7 @@ schema KubeadmControlPlaneTemplate:
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneTemplateSpec:
     r"""
-    KubeadmControlPlaneTemplateSpec defines the desired state of KubeadmControlPlaneTemplate.
+    spec is the desired state of KubeadmControlPlaneTemplate.
 
     Attributes
     ----------
@@ -49,7 +49,7 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneTemplateSpec:
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneTemplateSpecTemplate:
     r"""
-    KubeadmControlPlaneTemplateResource describes the data needed to create a KubeadmControlPlane from a template.
+    template defines the desired state of KubeadmControlPlaneTemplate.
 
     Attributes
     ----------
@@ -63,7 +63,7 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneTemplateSpecTemplate:
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneTemplateSpecTemplateSpec:
     r"""
-    KubeadmControlPlaneSpec defines the desired state of KubeadmControlPlane.
+    spec is the desired state of KubeadmControlPlane.
 
     Attributes
     ----------
@@ -72,7 +72,7 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneTemplateSpecTemplateS
     machineTemplate : ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneTemplateSpecTemplateSpecMachineTemplate, default is Undefined, required
         machine template
     replicas : int, default is Undefined, optional
-        Number of desired machines. Defaults to 1. When stacked etcd is used only
+        replicas is the number of desired machines. Defaults to 1. When stacked etcd is used only
         odd numbers are permitted, as per [etcd best practice](https://etcd.io/docs/v3.3.12/faq/#why-an-odd-number-of-cluster-members).
         This is a pointer to distinguish between explicit zero and not specified.
     rolloutAfter : str, default is Undefined, optional
@@ -189,7 +189,7 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneTemplateSpecTemplateS
         certificatesDir specifies where to store or look for all required certificates.
         NB: if not provided, this will default to `/etc/kubernetes/pki`
     clusterName : str, default is Undefined, optional
-        The cluster name
+        clusterName is the cluster name
     controlPlaneEndpoint : str, default is Undefined, optional
         controlPlaneEndpoint sets a stable IP address or DNS name for the control plane; it
         can be a valid IP address or a RFC-1123 DNS subdomain, both with optional TCP port.
@@ -1253,7 +1253,7 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneTemplateSpecTemplateS
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneTemplateSpecTemplateSpecMachineTemplateMetadata:
     r"""
-    Standard object's metadata.
+    metadata is the standard object's metadata.
     More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
 
     Attributes
@@ -1264,7 +1264,7 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneTemplateSpecTemplateS
         queryable and should be preserved when modifying objects.
         More info: http://kubernetes.io/docs/user-guide/annotations
     labels : {str:str}, default is Undefined, optional
-        Map of string keys and values that can be used to organize and categorize
+        labels is a map of string keys and values that can be used to organize and categorize
         (scope and select) objects. May match selectors of replication controllers
         and services.
         More info: http://kubernetes.io/docs/user-guide/labels
@@ -1278,7 +1278,7 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneTemplateSpecTemplateS
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneTemplateSpecTemplateSpecRolloutStrategy:
     r"""
-    The RolloutStrategy to use to replace control plane machines with
+    rolloutStrategy is the RolloutStrategy to use to replace control plane machines with
     new ones.
 
     Attributes
@@ -1299,13 +1299,13 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneTemplateSpecTemplateS
 
 schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneTemplateSpecTemplateSpecRolloutStrategyRollingUpdate:
     r"""
-    Rolling update config params. Present only if
+    rollingUpdate is the rolling update config params. Present only if
     RolloutStrategyType = RollingUpdate.
 
     Attributes
     ----------
     maxSurge : int | str, default is Undefined, optional
-        The maximum number of control planes that can be scheduled above or under the
+        maxSurge is the maximum number of control planes that can be scheduled above or under the
         desired number of control planes.
         Value can be an absolute number 1 or 0.
         Defaults to 1.

@@ -39,14 +39,15 @@ schema MachineHealthCheck:
 
 schema ClusterxK8sIoV1beta1MachineHealthCheckSpec:
     r"""
-    Specification of machine health check policy
+    spec is the specification of machine health check policy
 
     Attributes
     ----------
     clusterName : str, default is Undefined, required
         clusterName is the name of the Cluster this object belongs to.
     maxUnhealthy : int | str, default is Undefined, optional
-        Any further remediation is only allowed if at most "MaxUnhealthy" machines selected by
+        maxUnhealthy specifies the maximum number of unhealthy machines allowed.
+        Any further remediation is only allowed if at most "maxUnhealthy" machines selected by
         "selector" are not healthy.
 
         Deprecated: This field is deprecated and is going to be removed in the next apiVersion. Please see https://github.com/kubernetes-sigs/cluster-api/issues/10722 for more details.
@@ -72,8 +73,9 @@ schema ClusterxK8sIoV1beta1MachineHealthCheckSpec:
         whether a node is considered unhealthy.  The conditions are combined in a
         logical OR, i.e. if any of the conditions is met, the node is unhealthy.
     unhealthyRange : str, default is Undefined, optional
+        unhealthyRange specifies the range of unhealthy machines allowed.
         Any further remediation is only allowed if the number of machines selected by "selector" as not healthy
-        is within the range of "UnhealthyRange". Takes precedence over MaxUnhealthy.
+        is within the range of "unhealthyRange". Takes precedence over maxUnhealthy.
         Eg. "[3-5]" - This means that remediation will be allowed only when:
         (a) there are at least 3 unhealthy machines (and)
         (b) there are at most 5 unhealthy machines
@@ -98,7 +100,11 @@ schema ClusterxK8sIoV1beta1MachineHealthCheckSpec:
 
 
     check:
+        len(clusterName) <= 63
         len(clusterName) >= 1
+        len(unhealthyConditions) <= 100 if unhealthyConditions
+        len(unhealthyRange) <= 32 if unhealthyRange
+        len(unhealthyRange) >= 1 if unhealthyRange
         _regex_match(str(unhealthyRange), r"^\[[0-9]+-[0-9]+\]$") if unhealthyRange
 
 
@@ -158,7 +164,7 @@ schema ClusterxK8sIoV1beta1MachineHealthCheckSpecRemediationTemplate:
 
 schema ClusterxK8sIoV1beta1MachineHealthCheckSpecSelector:
     r"""
-    Label selector to match machines whose health will be exercised
+    selector is a label selector to match machines whose health will be exercised
 
     Attributes
     ----------
@@ -212,11 +218,14 @@ schema ClusterxK8sIoV1beta1MachineHealthCheckSpecUnhealthyConditionsItems0:
     Attributes
     ----------
     status : str, default is Undefined, required
-        status
+        status of the condition, one of True, False, Unknown.
     timeout : str, default is Undefined, required
-        timeout
+        timeout is the duration that a node must be in a given status for,
+        after which the node is considered unhealthy.
+        For example, with a value of "1h", the node must match the status
+        for at least 1 hour before being considered unhealthy.
     $type : str, default is Undefined, required
-        type
+        type of Node condition
     """
 
 
@@ -234,16 +243,16 @@ schema ClusterxK8sIoV1beta1MachineHealthCheckSpecUnhealthyConditionsItems0:
 
 schema ClusterxK8sIoV1beta1MachineHealthCheckStatus:
     r"""
-    Most recently observed status of MachineHealthCheck resource
+    status is the most recently observed status of MachineHealthCheck resource
 
     Attributes
     ----------
     conditions : [ClusterxK8sIoV1beta1MachineHealthCheckStatusConditionsItems0], default is Undefined, optional
         conditions defines current service state of the MachineHealthCheck.
     currentHealthy : int, default is Undefined, optional
-        total number of healthy machines counted by this machine health check
+        currentHealthy is the total number of healthy machines counted by this machine health check
     expectedMachines : int, default is Undefined, optional
-        total number of machines counted by this machine health check
+        expectedMachines is the total number of machines counted by this machine health check
     observedGeneration : int, default is Undefined, optional
         observedGeneration is the latest generation observed by the controller.
     remediationsAllowed : int, default is Undefined, optional
@@ -275,6 +284,9 @@ schema ClusterxK8sIoV1beta1MachineHealthCheckStatus:
         currentHealthy >= 0 if currentHealthy not in [None, Undefined]
         expectedMachines >= 0 if expectedMachines not in [None, Undefined]
         remediationsAllowed >= 0 if remediationsAllowed not in [None, Undefined]
+        len(targets) <= 10000 if targets
+        all targets in targets { len(targets) <= 253 if targets not in [None, Undefined] } if targets
+        all targets in targets { len(targets) >= 1 if targets not in [None, Undefined] } if targets
 
 
 schema ClusterxK8sIoV1beta1MachineHealthCheckStatusConditionsItems0:
@@ -284,14 +296,14 @@ schema ClusterxK8sIoV1beta1MachineHealthCheckStatusConditionsItems0:
     Attributes
     ----------
     lastTransitionTime : str, default is Undefined, required
-        Last time the condition transitioned from one status to another.
+        lastTransitionTime is the last time the condition transitioned from one status to another.
         This should be when the underlying condition changed. If that is not known, then using the time when
         the API field changed is acceptable.
     message : str, default is Undefined, optional
-        A human readable message indicating details about the transition.
+        message is a human readable message indicating details about the transition.
         This field may be empty.
     reason : str, default is Undefined, optional
-        The reason for the condition's last transition in CamelCase.
+        reason is the reason for the condition's last transition in CamelCase.
         The specific API may choose whether or not this field is considered a guaranteed API.
         This field may be empty.
     severity : str, default is Undefined, optional
@@ -318,6 +330,16 @@ schema ClusterxK8sIoV1beta1MachineHealthCheckStatusConditionsItems0:
     status: str
 
     $type: str
+
+
+    check:
+        len(message) <= 10240 if message
+        len(message) >= 1 if message
+        len(reason) <= 256 if reason
+        len(reason) >= 1 if reason
+        len(severity) <= 32 if severity
+        len($type) <= 256
+        len($type) >= 1
 
 
 schema ClusterxK8sIoV1beta1MachineHealthCheckStatusV1beta2:

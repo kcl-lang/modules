@@ -37,7 +37,7 @@ schema IPAddressClaim:
 
 schema IpamClusterxK8sIoV1alpha1IPAddressClaimSpec:
     r"""
-    IPAddressClaimSpec is the desired state of an IPAddressClaim.
+    spec is the desired state of IPAddressClaim.
 
     Attributes
     ----------
@@ -75,7 +75,7 @@ schema IpamClusterxK8sIoV1alpha1IPAddressClaimSpecPoolRef:
 
 schema IpamClusterxK8sIoV1alpha1IPAddressClaimStatus:
     r"""
-    IPAddressClaimStatus is the observed status of a IPAddressClaim.
+    status is the observed state of IPAddressClaim.
 
     Attributes
     ----------
@@ -116,14 +116,14 @@ schema IpamClusterxK8sIoV1alpha1IPAddressClaimStatusConditionsItems0:
     Attributes
     ----------
     lastTransitionTime : str, default is Undefined, required
-        Last time the condition transitioned from one status to another.
+        lastTransitionTime is the last time the condition transitioned from one status to another.
         This should be when the underlying condition changed. If that is not known, then using the time when
         the API field changed is acceptable.
     message : str, default is Undefined, optional
-        A human readable message indicating details about the transition.
+        message is a human readable message indicating details about the transition.
         This field may be empty.
     reason : str, default is Undefined, optional
-        The reason for the condition's last transition in CamelCase.
+        reason is the reason for the condition's last transition in CamelCase.
         The specific API may choose whether or not this field is considered a guaranteed API.
         This field may be empty.
     severity : str, default is Undefined, optional
@@ -150,5 +150,15 @@ schema IpamClusterxK8sIoV1alpha1IPAddressClaimStatusConditionsItems0:
     status: str
 
     $type: str
+
+
+    check:
+        len(message) <= 10240 if message
+        len(message) >= 1 if message
+        len(reason) <= 256 if reason
+        len(reason) >= 1 if reason
+        len(severity) <= 32 if severity
+        len($type) <= 256
+        len($type) >= 1
 
 

@@ -33,7 +33,7 @@ schema IPAddress:
 
 schema IpamClusterxK8sIoV1alpha1IPAddressSpec:
     r"""
-    IPAddressSpec is the desired state of an IPAddress.
+    spec is the desired state of IPAddress.
 
     Attributes
     ----------
@@ -59,6 +59,13 @@ schema IpamClusterxK8sIoV1alpha1IPAddressSpec:
     poolRef: IpamClusterxK8sIoV1alpha1IPAddressSpecPoolRef
 
     prefix: int
+
+
+    check:
+        len(address) <= 39
+        len(address) >= 1
+        len(gateway) <= 39 if gateway
+        len(gateway) >= 1 if gateway
 
 
 schema IpamClusterxK8sIoV1alpha1IPAddressSpecClaimRef:

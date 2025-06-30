@@ -39,12 +39,15 @@ schema Cluster:
 
 schema ClusterxK8sIoV1beta1ClusterSpec:
     r"""
-    ClusterSpec defines the desired state of Cluster.
+    spec is the desired state of Cluster.
 
     Attributes
     ----------
     availabilityGates : [ClusterxK8sIoV1beta1ClusterSpecAvailabilityGatesItems0], default is Undefined, optional
         availabilityGates specifies additional conditions to include when evaluating Cluster Available condition.
+
+        If this field is not defined and the Cluster implements a managed topology, availabilityGates
+        from the corresponding ClusterClass will be used, if any.
 
         NOTE: this field is considered only for computing v1beta2 conditions.
     clusterNetwork : ClusterxK8sIoV1beta1ClusterSpecClusterNetwork, default is Undefined, optional
@@ -88,13 +91,21 @@ schema ClusterxK8sIoV1beta1ClusterSpecAvailabilityGatesItems0:
     Attributes
     ----------
     conditionType : str, default is Undefined, required
-        conditionType refers to a positive polarity condition (status true means good) with matching type in the Cluster's condition list.
+        conditionType refers to a condition with matching type in the Cluster's condition list.
         If the conditions doesn't exist, it will be treated as unknown.
         Note: Both Cluster API conditions or conditions added by 3rd party controllers can be used as availability gates.
+    polarity : str, default is Undefined, optional
+        polarity of the conditionType specified in this availabilityGate.
+        Valid values are Positive, Negative and omitted.
+        When omitted, the default behaviour will be Positive.
+        A positive polarity means that the condition should report a true status under normal conditions.
+        A negative polarity means that the condition should report a false status under normal conditions.
     """
 
 
     conditionType: str
+
+    polarity?: "Positive" | "Negative"
 
 
     check:
@@ -105,7 +116,7 @@ schema ClusterxK8sIoV1beta1ClusterSpecAvailabilityGatesItems0:
 
 schema ClusterxK8sIoV1beta1ClusterSpecClusterNetwork:
     r"""
-    Cluster network configuration.
+    clusterNetwork represents the cluster network configuration.
 
     Attributes
     ----------
@@ -115,7 +126,7 @@ schema ClusterxK8sIoV1beta1ClusterSpecClusterNetwork:
     pods : ClusterxK8sIoV1beta1ClusterSpecClusterNetworkPods, default is Undefined, optional
         pods
     serviceDomain : str, default is Undefined, optional
-        Domain name for services.
+        serviceDomain is the domain name for services.
     services : ClusterxK8sIoV1beta1ClusterSpecClusterNetworkServices, default is Undefined, optional
         services
     """
@@ -130,32 +141,49 @@ schema ClusterxK8sIoV1beta1ClusterSpecClusterNetwork:
     services?: ClusterxK8sIoV1beta1ClusterSpecClusterNetworkServices
 
 
+    check:
+        len(serviceDomain) <= 253 if serviceDomain
+        len(serviceDomain) >= 1 if serviceDomain
+
+
 schema ClusterxK8sIoV1beta1ClusterSpecClusterNetworkPods:
     r"""
-    The network ranges from which Pod networks are allocated.
+    pods is the network ranges from which Pod networks are allocated.
 
     Attributes
     ----------
     cidrBlocks : [str], default is Undefined, required
-        cidr blocks
+        cidrBlocks is a list of CIDR blocks.
     """
 
 
     cidrBlocks: [str]
+
+
+    check:
+        len(cidrBlocks) <= 100
+        all cidrBlocks in cidrBlocks { len(cidrBlocks) <= 43 if cidrBlocks not in [None, Undefined] } if cidrBlocks
+        all cidrBlocks in cidrBlocks { len(cidrBlocks) >= 1 if cidrBlocks not in [None, Undefined] } if cidrBlocks
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecClusterNetworkServices:
     r"""
-    The network ranges from which service VIPs are allocated.
+    services is the network ranges from which service VIPs are allocated.
 
     Attributes
     ----------
     cidrBlocks : [str], default is Undefined, required
-        cidr blocks
+        cidrBlocks is a list of CIDR blocks.
     """
 
 
     cidrBlocks: [str]
+
+
+    check:
+        len(cidrBlocks) <= 100
+        all cidrBlocks in cidrBlocks { len(cidrBlocks) <= 43 if cidrBlocks not in [None, Undefined] } if cidrBlocks
+        all cidrBlocks in cidrBlocks { len(cidrBlocks) >= 1 if cidrBlocks not in [None, Undefined] } if cidrBlocks
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecControlPlaneEndpoint:
@@ -165,15 +193,19 @@ schema ClusterxK8sIoV1beta1ClusterSpecControlPlaneEndpoint:
     Attributes
     ----------
     host : str, default is Undefined, required
-        The hostname on which the API server is serving.
+        host is the hostname on which the API server is serving.
     port : int, default is Undefined, required
-        The port on which the API server is serving.
+        port is the port on which the API server is serving.
     """
 
 
     host: str
 
     port: int
+
+
+    check:
+        len(host) <= 512
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecControlPlaneRef:
@@ -278,7 +310,7 @@ schema ClusterxK8sIoV1beta1ClusterSpecInfrastructureRef:
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopology:
     r"""
-    This encapsulates the topology for the cluster.
+    topology encapsulates the topology for the cluster.
     NOTE: It is required to enable the ClusterTopology
     feature gate flag to activate managed topologies support;
     this feature is highly experimental, and parts of it might still be not implemented.
@@ -286,11 +318,13 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopology:
     Attributes
     ----------
     class : str, default is Undefined, required
-        The name of the ClusterClass object to create the topology.
+        class is the name of the ClusterClass object to create the topology.
     classNamespace : str, default is Undefined, optional
-        classNamespace is the namespace of the ClusterClass object to create the topology.
-        If the namespace is empty or not set, it is defaulted to the namespace of the cluster object.
-        Value must follow the DNS1123Subdomain syntax.
+        classNamespace is the namespace of the ClusterClass that should be used for the topology.
+        If classNamespace is empty or not set, it is defaulted to the namespace of the Cluster object.
+        classNamespace must be a valid namespace name and because of that be at most 63 characters in length
+        and it must consist only of lower case alphanumeric characters or hyphens (-), and must start
+        and end with an alphanumeric character.
     controlPlane : ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlane, default is Undefined, optional
         control plane
     rolloutAfter : str, default is Undefined, optional
@@ -303,7 +337,7 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopology:
         patches. They must comply to the corresponding
         VariableClasses defined in the ClusterClass.
     version : str, default is Undefined, required
-        The Kubernetes version of the cluster.
+        version is the Kubernetes version of the cluster.
     workers : ClusterxK8sIoV1beta1ClusterSpecTopologyWorkers, default is Undefined, optional
         workers
     """
@@ -325,9 +359,14 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopology:
 
 
     check:
-        len(classNamespace) <= 253 if classNamespace
+        len(class) <= 253
+        len(class) >= 1
+        len(classNamespace) <= 63 if classNamespace
         len(classNamespace) >= 1 if classNamespace
-        _regex_match(str(classNamespace), r"^[a-z0-9](?:[-a-z0-9]*[a-z0-9])?(?:\.[a-z0-9](?:[-a-z0-9]*[a-z0-9])?)*$") if classNamespace
+        _regex_match(str(classNamespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$") if classNamespace
+        len(variables) <= 1000 if variables
+        len(version) <= 256
+        len(version) >= 1
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlane:
@@ -351,6 +390,17 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlane:
     nodeVolumeDetachTimeout : str, default is Undefined, optional
         nodeVolumeDetachTimeout is the total amount of time that the controller will spend on waiting for all volumes
         to be detached. The default value is 0, meaning that the volumes can be detached without any time limitations.
+    readinessGates : [ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneReadinessGatesItems0], default is Undefined, optional
+        readinessGates specifies additional conditions to include when evaluating Machine Ready condition.
+
+        This field can be used e.g. to instruct the machine controller to include in the computation for Machine's ready
+        computation a condition, managed by an external controllers, reporting the status of special software/hardware installed on the Machine.
+
+        If this field is not defined, readinessGates from the corresponding ControlPlaneClass will be used, if any.
+
+        NOTE: This field is considered only for computing v1beta2 conditions.
+        NOTE: Specific control plane provider implementations might automatically extend the list of readinessGates;
+        e.g. the kubeadm control provider adds ReadinessGates for the APIServerPodHealthy, SchedulerPodHealthy conditions, etc.
     replicas : int, default is Undefined, optional
         replicas is the number of control plane nodes.
         If the value is nil, the ControlPlane object is created without the number of Replicas
@@ -371,9 +421,15 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlane:
 
     nodeVolumeDetachTimeout?: str
 
+    readinessGates?: [ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneReadinessGatesItems0]
+
     replicas?: int
 
     variables?: ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneVariables
+
+
+    check:
+        len(readinessGates) <= 32 if readinessGates
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneMachineHealthCheck:
@@ -394,7 +450,8 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneMachineHealthCheck:
         If true: A MachineHealthCheck is guaranteed to be created. Cluster validation will
         block if `enable` is true and no MachineHealthCheck definition is available.
     maxUnhealthy : int | str, default is Undefined, optional
-        Any further remediation is only allowed if at most "MaxUnhealthy" machines selected by
+        maxUnhealthy specifies the maximum number of unhealthy machines allowed.
+        Any further remediation is only allowed if at most "maxUnhealthy" machines selected by
         "selector" are not healthy.
     nodeStartupTimeout : str, default is Undefined, optional
         nodeStartupTimeout allows to set the maximum time for MachineHealthCheck
@@ -416,8 +473,9 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneMachineHealthCheck:
         whether a node is considered unhealthy. The conditions are combined in a
         logical OR, i.e. if any of the conditions is met, the node is unhealthy.
     unhealthyRange : str, default is Undefined, optional
+        unhealthyRange specifies the range of unhealthy machines allowed.
         Any further remediation is only allowed if the number of machines selected by "selector" as not healthy
-        is within the range of "UnhealthyRange". Takes precedence over MaxUnhealthy.
+        is within the range of "unhealthyRange". Takes precedence over maxUnhealthy.
         Eg. "[3-5]" - This means that remediation will be allowed only when:
         (a) there are at least 3 unhealthy machines (and)
         (b) there are at most 5 unhealthy machines
@@ -438,6 +496,9 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneMachineHealthCheck:
 
 
     check:
+        len(unhealthyConditions) <= 100 if unhealthyConditions
+        len(unhealthyRange) <= 32 if unhealthyRange
+        len(unhealthyRange) >= 1 if unhealthyRange
         _regex_match(str(unhealthyRange), r"^\[[0-9]+-[0-9]+\]$") if unhealthyRange
 
 
@@ -504,11 +565,14 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneMachineHealthCheckUnhe
     Attributes
     ----------
     status : str, default is Undefined, required
-        status
+        status of the condition, one of True, False, Unknown.
     timeout : str, default is Undefined, required
-        timeout
+        timeout is the duration that a node must be in a given status for,
+        after which the node is considered unhealthy.
+        For example, with a value of "1h", the node must match the status
+        for at least 1 hour before being considered unhealthy.
     $type : str, default is Undefined, required
-        type
+        type of Node condition
     """
 
 
@@ -539,7 +603,7 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneMetadata:
         queryable and should be preserved when modifying objects.
         More info: http://kubernetes.io/docs/user-guide/annotations
     labels : {str:str}, default is Undefined, optional
-        Map of string keys and values that can be used to organize and categorize
+        labels is a map of string keys and values that can be used to organize and categorize
         (scope and select) objects. May match selectors of replication controllers
         and services.
         More info: http://kubernetes.io/docs/user-guide/labels
@@ -549,6 +613,36 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneMetadata:
     annotations?: {str:str}
 
     labels?: {str:str}
+
+
+schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneReadinessGatesItems0:
+    r"""
+    MachineReadinessGate contains the type of a Machine condition to be used as a readiness gate.
+
+    Attributes
+    ----------
+    conditionType : str, default is Undefined, required
+        conditionType refers to a condition with matching type in the Machine's condition list.
+        If the conditions doesn't exist, it will be treated as unknown.
+        Note: Both Cluster API conditions or conditions added by 3rd party controllers can be used as readiness gates.
+    polarity : str, default is Undefined, optional
+        polarity of the conditionType specified in this readinessGate.
+        Valid values are Positive, Negative and omitted.
+        When omitted, the default behaviour will be Positive.
+        A positive polarity means that the condition should report a true status under normal conditions.
+        A negative polarity means that the condition should report a false status under normal conditions.
+    """
+
+
+    conditionType: str
+
+    polarity?: "Positive" | "Negative"
+
+
+    check:
+        len(conditionType) <= 316
+        len(conditionType) >= 1
+        _regex_match(str(conditionType), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$")
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneVariables:
@@ -563,6 +657,10 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneVariables:
 
 
     overrides?: [ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneVariablesOverridesItems0]
+
+
+    check:
+        len(overrides) <= 1000 if overrides
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneVariablesOverridesItems0:
@@ -596,6 +694,12 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneVariablesOverridesItem
     value: any
 
 
+    check:
+        len(definitionFrom) <= 256 if definitionFrom
+        len(name) <= 256
+        len(name) >= 1
+
+
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyVariablesItems0:
     r"""
     ClusterVariable can be used to customize the Cluster through patches. Each ClusterVariable is associated with a
@@ -627,6 +731,12 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyVariablesItems0:
     value: any
 
 
+    check:
+        len(definitionFrom) <= 256 if definitionFrom
+        len(name) <= 256
+        len(name) >= 1
+
+
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkers:
     r"""
     workers encapsulates the different constructs that form the worker nodes
@@ -644,6 +754,11 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkers:
     machineDeployments?: [ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0]
 
     machinePools?: [ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachinePoolsItems0]
+
+
+    check:
+        len(machineDeployments) <= 2000 if machineDeployments
+        len(machinePools) <= 2000 if machinePools
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0:
@@ -665,7 +780,7 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0:
     metadata : ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Metadata, default is Undefined, optional
         metadata
     minReadySeconds : int, default is Undefined, optional
-        Minimum number of seconds for which a newly created machine should
+        minReadySeconds is the minimum number of seconds for which a newly created machine should
         be ready.
         Defaults to 0 (machine will be considered available as soon as it
         is ready)
@@ -685,6 +800,15 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0:
     nodeVolumeDetachTimeout : str, default is Undefined, optional
         nodeVolumeDetachTimeout is the total amount of time that the controller will spend on waiting for all volumes
         to be detached. The default value is 0, meaning that the volumes can be detached without any time limitations.
+    readinessGates : [ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0ReadinessGatesItems0], default is Undefined, optional
+        readinessGates specifies additional conditions to include when evaluating Machine Ready condition.
+
+        This field can be used e.g. to instruct the machine controller to include in the computation for Machine's ready
+        computation a condition, managed by an external controllers, reporting the status of special software/hardware installed on the Machine.
+
+        If this field is not defined, readinessGates from the corresponding MachineDeploymentClass will be used, if any.
+
+        NOTE: This field is considered only for computing v1beta2 conditions.
     replicas : int, default is Undefined, optional
         replicas is the number of worker nodes belonging to this set.
         If the value is nil, the MachineDeployment is created without the number of Replicas (defaulting to 1)
@@ -715,11 +839,23 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0:
 
     nodeVolumeDetachTimeout?: str
 
+    readinessGates?: [ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0ReadinessGatesItems0]
+
     replicas?: int
 
     strategy?: ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Strategy
 
     variables?: ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Variables
+
+
+    check:
+        len(class) <= 256
+        len(class) >= 1
+        len(failureDomain) <= 256 if failureDomain
+        len(failureDomain) >= 1 if failureDomain
+        len(name) <= 63
+        len(name) >= 1
+        len(readinessGates) <= 32 if readinessGates
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0MachineHealthCheck:
@@ -740,7 +876,8 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Mac
         If true: A MachineHealthCheck is guaranteed to be created. Cluster validation will
         block if `enable` is true and no MachineHealthCheck definition is available.
     maxUnhealthy : int | str, default is Undefined, optional
-        Any further remediation is only allowed if at most "MaxUnhealthy" machines selected by
+        maxUnhealthy specifies the maximum number of unhealthy machines allowed.
+        Any further remediation is only allowed if at most "maxUnhealthy" machines selected by
         "selector" are not healthy.
     nodeStartupTimeout : str, default is Undefined, optional
         nodeStartupTimeout allows to set the maximum time for MachineHealthCheck
@@ -762,8 +899,9 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Mac
         whether a node is considered unhealthy. The conditions are combined in a
         logical OR, i.e. if any of the conditions is met, the node is unhealthy.
     unhealthyRange : str, default is Undefined, optional
+        unhealthyRange specifies the range of unhealthy machines allowed.
         Any further remediation is only allowed if the number of machines selected by "selector" as not healthy
-        is within the range of "UnhealthyRange". Takes precedence over MaxUnhealthy.
+        is within the range of "unhealthyRange". Takes precedence over maxUnhealthy.
         Eg. "[3-5]" - This means that remediation will be allowed only when:
         (a) there are at least 3 unhealthy machines (and)
         (b) there are at most 5 unhealthy machines
@@ -784,6 +922,9 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Mac
 
 
     check:
+        len(unhealthyConditions) <= 100 if unhealthyConditions
+        len(unhealthyRange) <= 32 if unhealthyRange
+        len(unhealthyRange) >= 1 if unhealthyRange
         _regex_match(str(unhealthyRange), r"^\[[0-9]+-[0-9]+\]$") if unhealthyRange
 
 
@@ -850,11 +991,14 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Mac
     Attributes
     ----------
     status : str, default is Undefined, required
-        status
+        status of the condition, one of True, False, Unknown.
     timeout : str, default is Undefined, required
-        timeout
+        timeout is the duration that a node must be in a given status for,
+        after which the node is considered unhealthy.
+        For example, with a value of "1h", the node must match the status
+        for at least 1 hour before being considered unhealthy.
     $type : str, default is Undefined, required
-        type
+        type of Node condition
     """
 
 
@@ -883,7 +1027,7 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Met
         queryable and should be preserved when modifying objects.
         More info: http://kubernetes.io/docs/user-guide/annotations
     labels : {str:str}, default is Undefined, optional
-        Map of string keys and values that can be used to organize and categorize
+        labels is a map of string keys and values that can be used to organize and categorize
         (scope and select) objects. May match selectors of replication controllers
         and services.
         More info: http://kubernetes.io/docs/user-guide/labels
@@ -895,9 +1039,39 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Met
     labels?: {str:str}
 
 
+schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0ReadinessGatesItems0:
+    r"""
+    MachineReadinessGate contains the type of a Machine condition to be used as a readiness gate.
+
+    Attributes
+    ----------
+    conditionType : str, default is Undefined, required
+        conditionType refers to a condition with matching type in the Machine's condition list.
+        If the conditions doesn't exist, it will be treated as unknown.
+        Note: Both Cluster API conditions or conditions added by 3rd party controllers can be used as readiness gates.
+    polarity : str, default is Undefined, optional
+        polarity of the conditionType specified in this readinessGate.
+        Valid values are Positive, Negative and omitted.
+        When omitted, the default behaviour will be Positive.
+        A positive polarity means that the condition should report a true status under normal conditions.
+        A negative polarity means that the condition should report a false status under normal conditions.
+    """
+
+
+    conditionType: str
+
+    polarity?: "Positive" | "Negative"
+
+
+    check:
+        len(conditionType) <= 316
+        len(conditionType) >= 1
+        _regex_match(str(conditionType), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$")
+
+
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Strategy:
     r"""
-    The deployment strategy to use to replace existing machines with
+    strategy is the deployment strategy to use to replace existing machines with
     new ones.
 
     Attributes
@@ -949,7 +1123,7 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Str
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0StrategyRollingUpdate:
     r"""
-    Rolling update config params. Present only if
+    rollingUpdate is the rolling update config params. Present only if
     MachineDeploymentStrategyType = RollingUpdate.
 
     Attributes
@@ -959,7 +1133,7 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Str
         Valid values are "Random, "Newest", "Oldest"
         When no value is supplied, the default DeletePolicy of MachineSet is used
     maxSurge : int | str, default is Undefined, optional
-        The maximum number of machines that can be scheduled above the
+        maxSurge is the maximum number of machines that can be scheduled above the
         desired number of machines.
         Value can be an absolute number (ex: 5) or a percentage of
         desired machines (ex: 10%).
@@ -973,7 +1147,7 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Str
         be scaled up further, ensuring that total number of machines running
         at any time during the update is at most 130% of desired machines.
     maxUnavailable : int | str, default is Undefined, optional
-        The maximum number of machines that can be unavailable during the update.
+        maxUnavailable is the maximum number of machines that can be unavailable during the update.
         Value can be an absolute number (ex: 5) or a percentage of desired
         machines (ex: 10%).
         Absolute number is calculated from percentage by rounding down.
@@ -1009,6 +1183,10 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Var
     overrides?: [ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0VariablesOverridesItems0]
 
 
+    check:
+        len(overrides) <= 1000 if overrides
+
+
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0VariablesOverridesItems0:
     r"""
     ClusterVariable can be used to customize the Cluster through patches. Each ClusterVariable is associated with a
@@ -1040,6 +1218,12 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Var
     value: any
 
 
+    check:
+        len(definitionFrom) <= 256 if definitionFrom
+        len(name) <= 256
+        len(name) >= 1
+
+
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachinePoolsItems0:
     r"""
     MachinePoolTopology specifies the different parameters for a pool of worker nodes in the topology.
@@ -1057,7 +1241,7 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachinePoolsItems0:
     metadata : ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachinePoolsItems0Metadata, default is Undefined, optional
         metadata
     minReadySeconds : int, default is Undefined, optional
-        Minimum number of seconds for which a newly created machine pool should
+        minReadySeconds is the minimum number of seconds for which a newly created machine pool should
         be ready.
         Defaults to 0 (machine will be considered available as soon as it
         is ready)
@@ -1108,6 +1292,16 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachinePoolsItems0:
     variables?: ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachinePoolsItems0Variables
 
 
+    check:
+        len(class) <= 256
+        len(class) >= 1
+        len(failureDomains) <= 100 if failureDomains
+        all failureDomains in failureDomains { len(failureDomains) <= 256 if failureDomains not in [None, Undefined] } if failureDomains
+        all failureDomains in failureDomains { len(failureDomains) >= 1 if failureDomains not in [None, Undefined] } if failureDomains
+        len(name) <= 63
+        len(name) >= 1
+
+
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachinePoolsItems0Metadata:
     r"""
     metadata is the metadata applied to the MachinePool.
@@ -1121,7 +1315,7 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachinePoolsItems0Metadata:
         queryable and should be preserved when modifying objects.
         More info: http://kubernetes.io/docs/user-guide/annotations
     labels : {str:str}, default is Undefined, optional
-        Map of string keys and values that can be used to organize and categorize
+        labels is a map of string keys and values that can be used to organize and categorize
         (scope and select) objects. May match selectors of replication controllers
         and services.
         More info: http://kubernetes.io/docs/user-guide/labels
@@ -1145,6 +1339,10 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachinePoolsItems0Variables
 
 
     overrides?: [ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachinePoolsItems0VariablesOverridesItems0]
+
+
+    check:
+        len(overrides) <= 1000 if overrides
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachinePoolsItems0VariablesOverridesItems0:
@@ -1178,9 +1376,15 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachinePoolsItems0Variables
     value: any
 
 
+    check:
+        len(definitionFrom) <= 256 if definitionFrom
+        len(name) <= 256
+        len(name) >= 1
+
+
 schema ClusterxK8sIoV1beta1ClusterStatus:
     r"""
-    ClusterStatus defines the observed state of Cluster.
+    status is the observed state of Cluster.
 
     Attributes
     ----------
@@ -1211,7 +1415,6 @@ schema ClusterxK8sIoV1beta1ClusterStatus:
         observedGeneration is the latest generation observed by the controller.
     phase : str, default is Undefined, optional
         phase represents the current phase of cluster actuation.
-        E.g. Pending, Running, Terminating, Failed etc.
     v1beta2 : ClusterxK8sIoV1beta1ClusterStatusV1beta2, default is Undefined, optional
         v1beta2
     """
@@ -1231,9 +1434,14 @@ schema ClusterxK8sIoV1beta1ClusterStatus:
 
     observedGeneration?: int
 
-    phase?: str
+    phase?: "Pending" | "Provisioning" | "Provisioned" | "Deleting" | "Failed" | "Unknown"
 
     v1beta2?: ClusterxK8sIoV1beta1ClusterStatusV1beta2
+
+
+    check:
+        len(failureMessage) <= 10240 if failureMessage
+        len(failureMessage) >= 1 if failureMessage
 
 
 schema ClusterxK8sIoV1beta1ClusterStatusConditionsItems0:
@@ -1243,14 +1451,14 @@ schema ClusterxK8sIoV1beta1ClusterStatusConditionsItems0:
     Attributes
     ----------
     lastTransitionTime : str, default is Undefined, required
-        Last time the condition transitioned from one status to another.
+        lastTransitionTime is the last time the condition transitioned from one status to another.
         This should be when the underlying condition changed. If that is not known, then using the time when
         the API field changed is acceptable.
     message : str, default is Undefined, optional
-        A human readable message indicating details about the transition.
+        message is a human readable message indicating details about the transition.
         This field may be empty.
     reason : str, default is Undefined, optional
-        The reason for the condition's last transition in CamelCase.
+        reason is the reason for the condition's last transition in CamelCase.
         The specific API may choose whether or not this field is considered a guaranteed API.
         This field may be empty.
     severity : str, default is Undefined, optional
@@ -1277,6 +1485,16 @@ schema ClusterxK8sIoV1beta1ClusterStatusConditionsItems0:
     status: str
 
     $type: str
+
+
+    check:
+        len(message) <= 10240 if message
+        len(message) >= 1 if message
+        len(reason) <= 256 if reason
+        len(reason) >= 1 if reason
+        len(severity) <= 32 if severity
+        len($type) <= 256
+        len($type) >= 1
 
 
 schema ClusterxK8sIoV1beta1ClusterStatusFailureDomainsAnon:

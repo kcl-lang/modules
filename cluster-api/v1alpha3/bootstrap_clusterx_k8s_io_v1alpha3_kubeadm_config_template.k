@@ -35,7 +35,7 @@ schema KubeadmConfigTemplate:
 
 schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpec:
     r"""
-    KubeadmConfigTemplateSpec defines the desired state of KubeadmConfigTemplate.
+    spec is the desired state of KubeadmConfigTemplate.
 
     Attributes
     ----------
@@ -49,7 +49,7 @@ schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpec:
 
 schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplate:
     r"""
-    KubeadmConfigTemplateResource defines the Template structure.
+    template defines the desired state of KubeadmConfigTemplate.
 
     Attributes
     ----------
@@ -63,8 +63,7 @@ schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplate:
 
 schema BootstrapClusterxK8sIoV1alpha3KubeadmConfigTemplateSpecTemplateSpec:
     r"""
-    KubeadmConfigSpec defines the desired state of KubeadmConfig.
-    Either ClusterConfiguration and InitConfiguration should be defined or the JoinConfiguration should be defined.
+    spec is the desired state of KubeadmConfig.
 
     Attributes
     ----------

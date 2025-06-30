@@ -39,7 +39,7 @@ schema ClusterResourceSet:
 
 schema AddonsClusterxK8sIoV1alpha4ClusterResourceSetSpec:
     r"""
-    ClusterResourceSetSpec defines the desired state of ClusterResourceSet.
+    spec is the desired state of ClusterResourceSet.
 
     Attributes
     ----------
@@ -61,7 +61,7 @@ schema AddonsClusterxK8sIoV1alpha4ClusterResourceSetSpec:
 
 schema AddonsClusterxK8sIoV1alpha4ClusterResourceSetSpecClusterSelector:
     r"""
-    Label selector for Clusters. The Clusters that are
+    clusterSelector is the label selector for Clusters. The Clusters that are
     selected by this will be the ones affected by this ClusterResourceSet.
     It must match the Cluster labels. This field is immutable.
     Label selector cannot be empty.
@@ -133,7 +133,7 @@ schema AddonsClusterxK8sIoV1alpha4ClusterResourceSetSpecResourcesItems0:
 
 schema AddonsClusterxK8sIoV1alpha4ClusterResourceSetStatus:
     r"""
-    ClusterResourceSetStatus defines the observed state of ClusterResourceSet.
+    status is the observed state of ClusterResourceSet.
 
     Attributes
     ----------
@@ -156,14 +156,14 @@ schema AddonsClusterxK8sIoV1alpha4ClusterResourceSetStatusConditionsItems0:
     Attributes
     ----------
     lastTransitionTime : str, default is Undefined, optional
-        Last time the condition transitioned from one status to another.
+        lastTransitionTime is the last time the condition transitioned from one status to another.
         This should be when the underlying condition changed. If that is not known, then using the time when
         the API field changed is acceptable.
     message : str, default is Undefined, optional
-        A human readable message indicating details about the transition.
+        message is a human readable message indicating details about the transition.
         This field may be empty.
     reason : str, default is Undefined, optional
-        The reason for the condition's last transition in CamelCase.
+        reason is the reason for the condition's last transition in CamelCase.
         The specific API may choose whether or not this field is considered a guaranteed API.
         This field may not be empty.
     severity : str, default is Undefined, optional

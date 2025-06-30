@@ -33,7 +33,7 @@ schema ClusterResourceSetBinding:
 
 schema AddonsClusterxK8sIoV1beta1ClusterResourceSetBindingSpec:
     r"""
-    ClusterResourceSetBindingSpec defines the desired state of ClusterResourceSetBinding.
+    spec is the desired state of ClusterResourceSetBinding.
 
     Attributes
     ----------
@@ -48,6 +48,12 @@ schema AddonsClusterxK8sIoV1beta1ClusterResourceSetBindingSpec:
     bindings?: [AddonsClusterxK8sIoV1beta1ClusterResourceSetBindingSpecBindingsItems0]
 
     clusterName?: str
+
+
+    check:
+        len(bindings) <= 100 if bindings
+        len(clusterName) <= 63 if clusterName
+        len(clusterName) >= 1 if clusterName
 
 
 schema AddonsClusterxK8sIoV1beta1ClusterResourceSetBindingSpecBindingsItems0:
@@ -66,6 +72,12 @@ schema AddonsClusterxK8sIoV1beta1ClusterResourceSetBindingSpecBindingsItems0:
     clusterResourceSetName: str
 
     resources?: [AddonsClusterxK8sIoV1beta1ClusterResourceSetBindingSpecBindingsItems0ResourcesItems0]
+
+
+    check:
+        len(clusterResourceSetName) <= 253
+        len(clusterResourceSetName) >= 1
+        len(resources) <= 100 if resources
 
 
 schema AddonsClusterxK8sIoV1beta1ClusterResourceSetBindingSpecBindingsItems0ResourcesItems0:
@@ -100,6 +112,9 @@ schema AddonsClusterxK8sIoV1beta1ClusterResourceSetBindingSpecBindingsItems0Reso
 
 
     check:
+        len(hash) <= 256 if hash
+        len(hash) >= 1 if hash
+        len(name) <= 253
         len(name) >= 1
 
 

@@ -10,6 +10,7 @@ _regex_match = regex.match
 schema ClusterResourceSet:
     r"""
     ClusterResourceSet is the Schema for the clusterresourcesets API.
+    For advanced use cases an add-on provider should be used instead.
 
     Attributes
     ----------
@@ -39,7 +40,7 @@ schema ClusterResourceSet:
 
 schema AddonsClusterxK8sIoV1beta1ClusterResourceSetSpec:
     r"""
-    ClusterResourceSetSpec defines the desired state of ClusterResourceSet.
+    spec is the desired state of ClusterResourceSet.
 
     Attributes
     ----------
@@ -59,9 +60,13 @@ schema AddonsClusterxK8sIoV1beta1ClusterResourceSetSpec:
     strategy?: "ApplyOnce" | "Reconcile"
 
 
+    check:
+        len(resources) <= 100 if resources
+
+
 schema AddonsClusterxK8sIoV1beta1ClusterResourceSetSpecClusterSelector:
     r"""
-    Label selector for Clusters. The Clusters that are
+    clusterSelector is the label selector for Clusters. The Clusters that are
     selected by this will be the ones affected by this ClusterResourceSet.
     It must match the Cluster labels. This field is immutable.
     Label selector cannot be empty.
@@ -128,12 +133,13 @@ schema AddonsClusterxK8sIoV1beta1ClusterResourceSetSpecResourcesItems0:
 
 
     check:
+        len(name) <= 253
         len(name) >= 1
 
 
 schema AddonsClusterxK8sIoV1beta1ClusterResourceSetStatus:
     r"""
-    ClusterResourceSetStatus defines the observed state of ClusterResourceSet.
+    status is the observed state of ClusterResourceSet.
 
     Attributes
     ----------
@@ -160,14 +166,14 @@ schema AddonsClusterxK8sIoV1beta1ClusterResourceSetStatusConditionsItems0:
     Attributes
     ----------
     lastTransitionTime : str, default is Undefined, required
-        Last time the condition transitioned from one status to another.
+        lastTransitionTime is the last time the condition transitioned from one status to another.
         This should be when the underlying condition changed. If that is not known, then using the time when
         the API field changed is acceptable.
     message : str, default is Undefined, optional
-        A human readable message indicating details about the transition.
+        message is a human readable message indicating details about the transition.
         This field may be empty.
     reason : str, default is Undefined, optional
-        The reason for the condition's last transition in CamelCase.
+        reason is the reason for the condition's last transition in CamelCase.
         The specific API may choose whether or not this field is considered a guaranteed API.
         This field may be empty.
     severity : str, default is Undefined, optional
@@ -194,6 +200,16 @@ schema AddonsClusterxK8sIoV1beta1ClusterResourceSetStatusConditionsItems0:
     status: str
 
     $type: str
+
+
+    check:
+        len(message) <= 10240 if message
+        len(message) >= 1 if message
+        len(reason) <= 256 if reason
+        len(reason) >= 1 if reason
+        len(severity) <= 32 if severity
+        len($type) <= 256
+        len($type) >= 1
 
 
 schema AddonsClusterxK8sIoV1beta1ClusterResourceSetStatusV1beta2:

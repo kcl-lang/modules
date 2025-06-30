@@ -39,7 +39,7 @@ schema MachineSet:
 
 schema ClusterxK8sIoV1beta1MachineSetSpec:
     r"""
-    MachineSetSpec defines the desired state of MachineSet.
+    spec is the desired state of MachineSet.
 
     Attributes
     ----------
@@ -48,6 +48,8 @@ schema ClusterxK8sIoV1beta1MachineSetSpec:
     deletePolicy : str, default is Undefined, optional
         deletePolicy defines the policy used to identify nodes to delete when downscaling.
         Defaults to "Random".  Valid values are "Random, "Newest", "Oldest"
+    machineNamingStrategy : ClusterxK8sIoV1beta1MachineSetSpecMachineNamingStrategy, default is Undefined, optional
+        machine naming strategy
     minReadySeconds : int, default is Undefined, optional
         minReadySeconds is the minimum number of seconds for which a Node for a newly created machine should be ready before considering the replica available.
         Defaults to 0 (machine will be considered available as soon as the Node is ready)
@@ -80,6 +82,8 @@ schema ClusterxK8sIoV1beta1MachineSetSpec:
 
     deletePolicy?: "Random" | "Newest" | "Oldest"
 
+    machineNamingStrategy?: ClusterxK8sIoV1beta1MachineSetSpecMachineNamingStrategy
+
     minReadySeconds?: int
 
     replicas?: int
@@ -90,7 +94,43 @@ schema ClusterxK8sIoV1beta1MachineSetSpec:
 
 
     check:
+        len(clusterName) <= 63
         len(clusterName) >= 1
+
+
+schema ClusterxK8sIoV1beta1MachineSetSpecMachineNamingStrategy:
+    r"""
+    machineNamingStrategy allows changing the naming pattern used when creating Machines.
+    Note: InfraMachines & BootstrapConfigs will use the same name as the corresponding Machines.
+
+    Attributes
+    ----------
+    template : str, default is Undefined, optional
+        template defines the template to use for generating the names of the
+        Machine objects.
+        If not defined, it will fallback to `{{ .machineSet.name }}-{{ .random }}`.
+        If the generated name string exceeds 63 characters, it will be trimmed to
+        58 characters and will
+        get concatenated with a random suffix of length 5.
+        Length of the template string must not exceed 256 characters.
+        The template allows the following variables `.cluster.name`,
+        `.machineSet.name` and `.random`.
+        The variable `.cluster.name` retrieves the name of the cluster object
+        that owns the Machines being created.
+        The variable `.machineSet.name` retrieves the name of the MachineSet
+        object that owns the Machines being created.
+        The variable `.random` is substituted with random alphanumeric string,
+        without vowels, of length 5. This variable is required part of the
+        template. If not provided, validation will fail.
+    """
+
+
+    template?: str
+
+
+    check:
+        len(template) <= 256 if template
+        len(template) >= 1 if template
 
 
 schema ClusterxK8sIoV1beta1MachineSetSpecSelector:
@@ -165,7 +205,7 @@ schema ClusterxK8sIoV1beta1MachineSetSpecTemplate:
 
 schema ClusterxK8sIoV1beta1MachineSetSpecTemplateMetadata:
     r"""
-    Standard object's metadata.
+    metadata is the standard object's metadata.
     More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
 
     Attributes
@@ -176,7 +216,7 @@ schema ClusterxK8sIoV1beta1MachineSetSpecTemplateMetadata:
         queryable and should be preserved when modifying objects.
         More info: http://kubernetes.io/docs/user-guide/annotations
     labels : {str:str}, default is Undefined, optional
-        Map of string keys and values that can be used to organize and categorize
+        labels is a map of string keys and values that can be used to organize and categorize
         (scope and select) objects. May match selectors of replication controllers
         and services.
         More info: http://kubernetes.io/docs/user-guide/labels
@@ -190,7 +230,7 @@ schema ClusterxK8sIoV1beta1MachineSetSpecTemplateMetadata:
 
 schema ClusterxK8sIoV1beta1MachineSetSpecTemplateSpec:
     r"""
-    Specification of the desired behavior of the machine.
+    spec is the specification of the desired behavior of the machine.
     More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
 
     Attributes
@@ -269,8 +309,15 @@ schema ClusterxK8sIoV1beta1MachineSetSpecTemplateSpec:
 
 
     check:
+        len(clusterName) <= 63
         len(clusterName) >= 1
+        len(failureDomain) <= 256 if failureDomain
+        len(failureDomain) >= 1 if failureDomain
+        len(providerID) <= 512 if providerID
+        len(providerID) >= 1 if providerID
         len(readinessGates) <= 32 if readinessGates
+        len(version) <= 256 if version
+        len(version) >= 1 if version
 
 
 schema ClusterxK8sIoV1beta1MachineSetSpecTemplateSpecBootstrap:
@@ -291,6 +338,11 @@ schema ClusterxK8sIoV1beta1MachineSetSpecTemplateSpecBootstrap:
     configRef?: ClusterxK8sIoV1beta1MachineSetSpecTemplateSpecBootstrapConfigRef
 
     dataSecretName?: str
+
+
+    check:
+        len(dataSecretName) <= 253 if dataSecretName
+        len(dataSecretName) >= 0 if dataSecretName
 
 
 schema ClusterxK8sIoV1beta1MachineSetSpecTemplateSpecBootstrapConfigRef:
@@ -402,13 +454,21 @@ schema ClusterxK8sIoV1beta1MachineSetSpecTemplateSpecReadinessGatesItems0:
     Attributes
     ----------
     conditionType : str, default is Undefined, required
-        conditionType refers to a positive polarity condition (status true means good) with matching type in the Machine's condition list.
+        conditionType refers to a condition with matching type in the Machine's condition list.
         If the conditions doesn't exist, it will be treated as unknown.
         Note: Both Cluster API conditions or conditions added by 3rd party controllers can be used as readiness gates.
+    polarity : str, default is Undefined, optional
+        polarity of the conditionType specified in this readinessGate.
+        Valid values are Positive, Negative and omitted.
+        When omitted, the default behaviour will be Positive.
+        A positive polarity means that the condition should report a true status under normal conditions.
+        A negative polarity means that the condition should report a false status under normal conditions.
     """
 
 
     conditionType: str
+
+    polarity?: "Positive" | "Negative"
 
 
     check:
@@ -419,17 +479,25 @@ schema ClusterxK8sIoV1beta1MachineSetSpecTemplateSpecReadinessGatesItems0:
 
 schema ClusterxK8sIoV1beta1MachineSetStatus:
     r"""
-    MachineSetStatus defines the observed state of MachineSet.
+    status is the observed state of MachineSet.
 
     Attributes
     ----------
     availableReplicas : int, default is Undefined, optional
-        The number of available replicas (ready for at least minReadySeconds) for this MachineSet.
+        availableReplicas is the number of available replicas (ready for at least minReadySeconds) for this MachineSet.
     conditions : [ClusterxK8sIoV1beta1MachineSetStatusConditionsItems0], default is Undefined, optional
         conditions defines current service state of the MachineSet.
     failureMessage : str, default is Undefined, optional
+        failureMessage will be set in the event that there is a terminal problem
+        reconciling the Machine and will contain a more verbose string suitable
+        for logging and human consumption.
+
         Deprecated: This field is deprecated and is going to be removed in the next apiVersion. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.
     failureReason : str, default is Undefined, optional
+        failureReason will be set in the event that there is a terminal problem
+        reconciling the Machine and will contain a succinct value suitable
+        for machine interpretation.
+
         In the event that there is a terminal problem reconciling the
         replicas, both FailureReason and FailureMessage will be set. FailureReason
         will be populated with a succinct value suitable for machine
@@ -451,13 +519,13 @@ schema ClusterxK8sIoV1beta1MachineSetStatus:
 
         Deprecated: This field is deprecated and is going to be removed in the next apiVersion. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.
     fullyLabeledReplicas : int, default is Undefined, optional
-        The number of replicas that have labels matching the labels of the machine template of the MachineSet.
+        fullyLabeledReplicas is the number of replicas that have labels matching the labels of the machine template of the MachineSet.
 
         Deprecated: This field is deprecated and is going to be removed in the next apiVersion. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.
     observedGeneration : int, default is Undefined, optional
         observedGeneration reflects the generation of the most recently observed MachineSet.
     readyReplicas : int, default is Undefined, optional
-        The number of ready replicas for this MachineSet. A machine is considered ready when the node has been created and is "Ready".
+        readyReplicas is the number of ready replicas for this MachineSet. A machine is considered ready when the node has been created and is "Ready".
     replicas : int, default is Undefined, optional
         replicas is the most recently observed number of replicas.
     selector : str, default is Undefined, optional
@@ -490,6 +558,13 @@ schema ClusterxK8sIoV1beta1MachineSetStatus:
     v1beta2?: ClusterxK8sIoV1beta1MachineSetStatusV1beta2
 
 
+    check:
+        len(failureMessage) <= 10240 if failureMessage
+        len(failureMessage) >= 1 if failureMessage
+        len(selector) <= 4096 if selector
+        len(selector) >= 1 if selector
+
+
 schema ClusterxK8sIoV1beta1MachineSetStatusConditionsItems0:
     r"""
     Condition defines an observation of a Cluster API resource operational state.
@@ -497,14 +572,14 @@ schema ClusterxK8sIoV1beta1MachineSetStatusConditionsItems0:
     Attributes
     ----------
     lastTransitionTime : str, default is Undefined, required
-        Last time the condition transitioned from one status to another.
+        lastTransitionTime is the last time the condition transitioned from one status to another.
         This should be when the underlying condition changed. If that is not known, then using the time when
         the API field changed is acceptable.
     message : str, default is Undefined, optional
-        A human readable message indicating details about the transition.
+        message is a human readable message indicating details about the transition.
         This field may be empty.
     reason : str, default is Undefined, optional
-        The reason for the condition's last transition in CamelCase.
+        reason is the reason for the condition's last transition in CamelCase.
         The specific API may choose whether or not this field is considered a guaranteed API.
         This field may be empty.
     severity : str, default is Undefined, optional
@@ -531,6 +606,16 @@ schema ClusterxK8sIoV1beta1MachineSetStatusConditionsItems0:
     status: str
 
     $type: str
+
+
+    check:
+        len(message) <= 10240 if message
+        len(message) >= 1 if message
+        len(reason) <= 256 if reason
+        len(reason) >= 1 if reason
+        len(severity) <= 32 if severity
+        len($type) <= 256
+        len($type) >= 1
 
 
 schema ClusterxK8sIoV1beta1MachineSetStatusV1beta2:

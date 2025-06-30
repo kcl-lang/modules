@@ -39,8 +39,7 @@ schema KubeadmConfig:
 
 schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigSpec:
     r"""
-    KubeadmConfigSpec defines the desired state of KubeadmConfig.
-    Either ClusterConfiguration and InitConfiguration should be defined or the JoinConfiguration should be defined.
+    spec is the desired state of KubeadmConfig.
 
     Attributes
     ----------
@@ -127,7 +126,7 @@ schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigSpecClusterConfiguration:
         certificatesDir specifies where to store or look for all required certificates.
         NB: if not provided, this will default to `/etc/kubernetes/pki`
     clusterName : str, default is Undefined, optional
-        The cluster name
+        clusterName is the cluster name
     controlPlaneEndpoint : str, default is Undefined, optional
         controlPlaneEndpoint sets a stable IP address or DNS name for the control plane; it
         can be a valid IP address or a RFC-1123 DNS subdomain, both with optional TCP port.
@@ -1116,7 +1115,7 @@ schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigSpecUsersItems0:
 
 schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigStatus:
     r"""
-    KubeadmConfigStatus defines the observed state of KubeadmConfig.
+    status is the observed state of KubeadmConfig.
 
     Attributes
     ----------
@@ -1155,14 +1154,14 @@ schema BootstrapClusterxK8sIoV1alpha4KubeadmConfigStatusConditionsItems0:
     Attributes
     ----------
     lastTransitionTime : str, default is Undefined, optional
-        Last time the condition transitioned from one status to another.
+        lastTransitionTime is the last time the condition transitioned from one status to another.
         This should be when the underlying condition changed. If that is not known, then using the time when
         the API field changed is acceptable.
     message : str, default is Undefined, optional
-        A human readable message indicating details about the transition.
+        message is a human readable message indicating details about the transition.
         This field may be empty.
     reason : str, default is Undefined, optional
-        The reason for the condition's last transition in CamelCase.
+        reason is the reason for the condition's last transition in CamelCase.
         The specific API may choose whether or not this field is considered a guaranteed API.
         This field may not be empty.
     severity : str, default is Undefined, optional

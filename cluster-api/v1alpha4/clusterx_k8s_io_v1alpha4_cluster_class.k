@@ -35,7 +35,7 @@ schema ClusterClass:
 
 schema ClusterxK8sIoV1alpha4ClusterClassSpec:
     r"""
-    ClusterClassSpec describes the desired state of the ClusterClass.
+    spec is the desired state of ClusterClass.
 
     Attributes
     ----------
@@ -80,7 +80,7 @@ schema ClusterxK8sIoV1alpha4ClusterClassSpecControlPlane:
 
 schema ClusterxK8sIoV1alpha4ClusterClassSpecControlPlaneMachineInfrastructure:
     r"""
-    MachineTemplate defines the metadata and infrastructure information
+    machineInfrastructure defines the metadata and infrastructure information
     for control plane machines.
 
     This field is supported if and only if the control plane provider template
@@ -162,7 +162,7 @@ schema ClusterxK8sIoV1alpha4ClusterClassSpecControlPlaneMetadata:
         queryable and should be preserved when modifying objects.
         More info: http://kubernetes.io/docs/user-guide/annotations
     labels : {str:str}, default is Undefined, optional
-        Map of string keys and values that can be used to organize and categorize
+        labels is a map of string keys and values that can be used to organize and categorize
         (scope and select) objects. May match selectors of replication controllers
         and services.
         More info: http://kubernetes.io/docs/user-guide/labels
@@ -496,7 +496,7 @@ schema ClusterxK8sIoV1alpha4ClusterClassSpecWorkersMachineDeploymentsItems0Templ
         queryable and should be preserved when modifying objects.
         More info: http://kubernetes.io/docs/user-guide/annotations
     labels : {str:str}, default is Undefined, optional
-        Map of string keys and values that can be used to organize and categorize
+        labels is a map of string keys and values that can be used to organize and categorize
         (scope and select) objects. May match selectors of replication controllers
         and services.
         More info: http://kubernetes.io/docs/user-guide/labels

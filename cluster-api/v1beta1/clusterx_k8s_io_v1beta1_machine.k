@@ -39,7 +39,7 @@ schema Machine:
 
 schema ClusterxK8sIoV1beta1MachineSpec:
     r"""
-    MachineSpec defines the desired state of Machine.
+    spec is the desired state of Machine.
 
     Attributes
     ----------
@@ -117,8 +117,15 @@ schema ClusterxK8sIoV1beta1MachineSpec:
 
 
     check:
+        len(clusterName) <= 63
         len(clusterName) >= 1
+        len(failureDomain) <= 256 if failureDomain
+        len(failureDomain) >= 1 if failureDomain
+        len(providerID) <= 512 if providerID
+        len(providerID) >= 1 if providerID
         len(readinessGates) <= 32 if readinessGates
+        len(version) <= 256 if version
+        len(version) >= 1 if version
 
 
 schema ClusterxK8sIoV1beta1MachineSpecBootstrap:
@@ -139,6 +146,11 @@ schema ClusterxK8sIoV1beta1MachineSpecBootstrap:
     configRef?: ClusterxK8sIoV1beta1MachineSpecBootstrapConfigRef
 
     dataSecretName?: str
+
+
+    check:
+        len(dataSecretName) <= 253 if dataSecretName
+        len(dataSecretName) >= 0 if dataSecretName
 
 
 schema ClusterxK8sIoV1beta1MachineSpecBootstrapConfigRef:
@@ -250,13 +262,21 @@ schema ClusterxK8sIoV1beta1MachineSpecReadinessGatesItems0:
     Attributes
     ----------
     conditionType : str, default is Undefined, required
-        conditionType refers to a positive polarity condition (status true means good) with matching type in the Machine's condition list.
+        conditionType refers to a condition with matching type in the Machine's condition list.
         If the conditions doesn't exist, it will be treated as unknown.
         Note: Both Cluster API conditions or conditions added by 3rd party controllers can be used as readiness gates.
+    polarity : str, default is Undefined, optional
+        polarity of the conditionType specified in this readinessGate.
+        Valid values are Positive, Negative and omitted.
+        When omitted, the default behaviour will be Positive.
+        A positive polarity means that the condition should report a true status under normal conditions.
+        A negative polarity means that the condition should report a false status under normal conditions.
     """
 
 
     conditionType: str
+
+    polarity?: "Positive" | "Negative"
 
 
     check:
@@ -267,7 +287,7 @@ schema ClusterxK8sIoV1beta1MachineSpecReadinessGatesItems0:
 
 schema ClusterxK8sIoV1beta1MachineStatus:
     r"""
-    MachineStatus defines the observed state of Machine.
+    status is the observed state of Machine.
 
     Attributes
     ----------
@@ -333,7 +353,6 @@ schema ClusterxK8sIoV1beta1MachineStatus:
         observedGeneration is the latest generation observed by the controller.
     phase : str, default is Undefined, optional
         phase represents the current phase of machine actuation.
-        E.g. Pending, Running, Terminating, Failed etc.
     v1beta2 : ClusterxK8sIoV1beta1MachineStatusV1beta2, default is Undefined, optional
         v1beta2
     """
@@ -363,9 +382,14 @@ schema ClusterxK8sIoV1beta1MachineStatus:
 
     observedGeneration?: int
 
-    phase?: str
+    phase?: "Pending" | "Provisioning" | "Provisioned" | "Running" | "Deleting" | "Deleted" | "Failed" | "Unknown"
 
     v1beta2?: ClusterxK8sIoV1beta1MachineStatusV1beta2
+
+
+    check:
+        len(failureMessage) <= 10240 if failureMessage
+        len(failureMessage) >= 1 if failureMessage
 
 
 schema ClusterxK8sIoV1beta1MachineStatusAddressesItems0:
@@ -375,15 +399,20 @@ schema ClusterxK8sIoV1beta1MachineStatusAddressesItems0:
     Attributes
     ----------
     address : str, default is Undefined, required
-        The machine address.
+        address is the machine address.
     $type : str, default is Undefined, required
-        Machine address type, one of Hostname, ExternalIP, InternalIP, ExternalDNS or InternalDNS.
+        type is the machine address type, one of Hostname, ExternalIP, InternalIP, ExternalDNS or InternalDNS.
     """
 
 
     address: str
 
-    $type: str
+    $type: "Hostname" | "ExternalIP" | "InternalIP" | "ExternalDNS" | "InternalDNS"
+
+
+    check:
+        len(address) <= 256
+        len(address) >= 1
 
 
 schema ClusterxK8sIoV1beta1MachineStatusConditionsItems0:
@@ -393,14 +422,14 @@ schema ClusterxK8sIoV1beta1MachineStatusConditionsItems0:
     Attributes
     ----------
     lastTransitionTime : str, default is Undefined, required
-        Last time the condition transitioned from one status to another.
+        lastTransitionTime is the last time the condition transitioned from one status to another.
         This should be when the underlying condition changed. If that is not known, then using the time when
         the API field changed is acceptable.
     message : str, default is Undefined, optional
-        A human readable message indicating details about the transition.
+        message is a human readable message indicating details about the transition.
         This field may be empty.
     reason : str, default is Undefined, optional
-        The reason for the condition's last transition in CamelCase.
+        reason is the reason for the condition's last transition in CamelCase.
         The specific API may choose whether or not this field is considered a guaranteed API.
         This field may be empty.
     severity : str, default is Undefined, optional
@@ -427,6 +456,16 @@ schema ClusterxK8sIoV1beta1MachineStatusConditionsItems0:
     status: str
 
     $type: str
+
+
+    check:
+        len(message) <= 10240 if message
+        len(message) >= 1 if message
+        len(reason) <= 256 if reason
+        len(reason) >= 1 if reason
+        len(severity) <= 32 if severity
+        len($type) <= 256
+        len($type) >= 1
 
 
 schema ClusterxK8sIoV1beta1MachineStatusDeletion:
