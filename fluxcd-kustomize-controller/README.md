@@ -143,7 +143,7 @@ KustomizationSpec defines the configuration to calculate the desired state from 
 |**commonMetadata**|[KustomizeToolkitFluxcdIoV1KustomizationSpecCommonMetadata](#kustomizetoolkitfluxcdiov1kustomizationspeccommonmetadata)|common metadata||
 |**components**|[str]|Components specifies relative paths to specifications of other Components.||
 |**decryption**|[KustomizeToolkitFluxcdIoV1KustomizationSpecDecryption](#kustomizetoolkitfluxcdiov1kustomizationspecdecryption)|decryption||
-|**deletionPolicy**|"MirrorPrune" | "Delete" | "Orphan"|DeletionPolicy can be used to control garbage collection when this<br />Kustomization is deleted. Valid values are ('MirrorPrune', 'Delete',<br />'Orphan'). 'MirrorPrune' mirrors the Prune field (orphan if false,<br />delete if true). Defaults to 'MirrorPrune'.||
+|**deletionPolicy**|"MirrorPrune" | "Delete" | "WaitForTermination" | "Orphan"|DeletionPolicy can be used to control garbage collection when this<br />Kustomization is deleted. Valid values are ('MirrorPrune', 'Delete',<br />'WaitForTermination', 'Orphan'). 'MirrorPrune' mirrors the Prune field<br />(orphan if false, delete if true). Defaults to 'MirrorPrune'.||
 |**dependsOn**|[[KustomizeToolkitFluxcdIoV1KustomizationSpecDependsOnItems0](#kustomizetoolkitfluxcdiov1kustomizationspecdependsonitems0)]|DependsOn may contain a meta.NamespacedObjectReference slice<br />with references to Kustomization resources that must be ready before this<br />Kustomization can be reconciled.||
 |**force**|bool|Force instructs the controller to recreate resources<br />when patching fails due to an immutable field change.|False|
 |**healthCheckExprs**|[[KustomizeToolkitFluxcdIoV1KustomizationSpecHealthCheckExprsItems0](#kustomizetoolkitfluxcdiov1kustomizationspechealthcheckexprsitems0)]|HealthCheckExprs is a list of healthcheck expressions for evaluating the<br />health of custom resources using Common Expression Language (CEL).<br />The expressions are evaluated only when Wait or HealthChecks are specified.||
@@ -184,9 +184,10 @@ Decrypt Kubernetes secrets before applying them on the cluster.
 | --- | --- | --- | --- |
 |**provider** `required` `readOnly`|"sops"|Provider is the name of the decryption engine.|"sops"|
 |**secretRef**|[KustomizeToolkitFluxcdIoV1KustomizationSpecDecryptionSecretRef](#kustomizetoolkitfluxcdiov1kustomizationspecdecryptionsecretref)|secret ref||
+|**serviceAccountName**|str|ServiceAccountName is the name of the service account used to<br />authenticate with KMS services from cloud providers. If a<br />static credential for a given cloud provider is defined<br />inside the Secret referenced by SecretRef, that static<br />credential takes priority.||
 ### KustomizeToolkitFluxcdIoV1KustomizationSpecDecryptionSecretRef
 
-The secret name containing the private OpenPGP keys used for decryption.
+The secret name containing the private OpenPGP keys used for decryption. A static credential for a cloud provider defined inside the Secret takes priority to secret-less authentication with the ServiceAccountName field.
 
 #### Attributes
 
