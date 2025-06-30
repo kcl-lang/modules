@@ -1,0 +1,26 @@
+version: v2.8.4
+name: cluster-api-provider-aws
+displayName: cluster-api-provider-aws
+createdAt: "2025-06-30T14:02:13Z"
+description: KCL package for https://github.com/kubernetes-sigs/cluster-api-provider-aws
+  CRDs
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `cluster-api-provider-aws` with tag `v2.8.4` as dependency
+  ```
+  kcl mod add cluster-api-provider-aws:v2.8.4
+  ```
+
+  #### Pull `cluster-api-provider-aws` with tag `v2.8.4` to local
+  ```
+  kcl mod pull cluster-api-provider-aws:v2.8.4
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
