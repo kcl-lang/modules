@@ -114,9 +114,9 @@ schema NotificationToolkitFluxcdIoV1beta2ReceiverSpecResourcesItems0:
 
 
     check:
-        len(name) <= 53
+        len(name) <= 253
         len(name) >= 1
-        len(namespace) <= 53 if namespace
+        len(namespace) <= 253 if namespace
         len(namespace) >= 1 if namespace
 
 

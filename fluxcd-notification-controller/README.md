@@ -640,9 +640,11 @@ ProviderSpec defines the desired state of the Provider.
 |**address**|str|Address specifies the endpoint, in a generic sense, to where alerts are sent.<br />What kind of endpoint depends on the specific Provider type being used.<br />For the generic Provider, for example, this is an HTTP/S address.<br />For other Provider types this could be a project ID or a namespace.||
 |**certSecretRef**|[NotificationToolkitFluxcdIoV1beta3ProviderSpecCertSecretRef](#notificationtoolkitfluxcdiov1beta3providerspeccertsecretref)|cert secret ref||
 |**channel**|str|Channel specifies the destination channel where events should be posted.||
+|**commitStatusExpr**|str|CommitStatusExpr is a CEL expression that evaluates to a string value<br />that can be used to generate a custom commit status message for use<br />with eligible Provider types (github, gitlab, gitea, bitbucketserver,<br />bitbucket, azuredevops). Supported variables are: event, provider,<br />and alert.||
 |**interval**|str|Interval at which to reconcile the Provider with its Secret references.<br />Deprecated and not used in v1beta3.||
 |**proxy**|str|Proxy the HTTP/S address of the proxy server.||
 |**secretRef**|[NotificationToolkitFluxcdIoV1beta3ProviderSpecSecretRef](#notificationtoolkitfluxcdiov1beta3providerspecsecretref)|secret ref||
+|**serviceAccountName**|str|ServiceAccountName is the name of the service account used to<br />authenticate with services from cloud providers. An error is thrown if a<br />static credential is also defined inside the Secret referenced by the<br />SecretRef.||
 |**suspend**|bool|Suspend tells the controller to suspend subsequent<br />events handling for this Provider.||
 |**timeout**|str|Timeout for sending alerts to the Provider.||
 |**type** `required`|"slack" | "discord" | "msteams" | "rocket" | "generic" | "generic-hmac" | "github" | "gitlab" | "gitea" | "bitbucketserver" | "bitbucket" | "azuredevops" | "googlechat" | "googlepubsub" | "webex" | "sentry" | "azureeventhub" | "telegram" | "lark" | "matrix" | "opsgenie" | "alertmanager" | "grafana" | "githubdispatch" | "pagerduty" | "datadog" | "nats"|||
