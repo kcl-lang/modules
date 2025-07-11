@@ -1,0 +1,25 @@
+version: 0.18.2
+name: external-secrets
+displayName: external-secrets
+createdAt: "2025-07-11T12:09:04Z"
+description: '`external-secrets` module contains definitions for external-secrets'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `external-secrets` with tag `0.18.2` as dependency
+  ```
+  kcl mod add external-secrets:0.18.2
+  ```
+
+  #### Pull `external-secrets` with tag `0.18.2` to local
+  ```
+  kcl mod pull external-secrets:0.18.2
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
