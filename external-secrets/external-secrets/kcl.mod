@@ -1,6 +1,6 @@
 [package]
 name = "external-secrets"
-version = "0.18.2"
+version = "0.18.1"
 description = "`external-secrets` module contains definitions for external-secrets"
 
 [dependencies]
