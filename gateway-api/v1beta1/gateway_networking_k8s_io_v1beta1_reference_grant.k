@@ -13,15 +13,12 @@ schema ReferenceGrant:
     trusted to reference the specified kinds of resources in the same namespace
     as the policy.
 
-
     Each ReferenceGrant can be used to represent a unique trust relationship.
     Additional Reference Grants can be used to add to the set of trusted
     sources of inbound references for the namespace they are defined within.
 
-
     All cross-namespace references in Gateway API (with the exception of cross-namespace
     Gateway-route attachment) require a ReferenceGrant.
-
 
     ReferenceGrant is a form of runtime verification allowing users to assert
     which cross-namespace object references are permitted. Implementations that
@@ -63,14 +60,12 @@ schema GatewayNetworkingK8sIoV1beta1ReferenceGrantSpec:
         to be an additional place that references can be valid from, or to put
         this another way, entries MUST be combined using OR.
 
-
         Support: Core
     to : [GatewayNetworkingK8sIoV1beta1ReferenceGrantSpecToItems0], default is Undefined, required
         To describes the resources that may be referenced by the resources
         described in "From". Each entry in this list MUST be considered to be an
         additional place that references can be valid to, or to put this another
         way, entries MUST be combined using OR.
-
 
         Support: Core
     """
@@ -98,22 +93,17 @@ schema GatewayNetworkingK8sIoV1beta1ReferenceGrantSpecFromItems0:
         Group is the group of the referent.
         When empty, the Kubernetes core API group is inferred.
 
-
         Support: Core
     kind : str, default is Undefined, required
         Kind is the kind of the referent. Although implementations may support
         additional resources, the following types are part of the "Core"
         support level for this field.
 
-
         When used to permit a SecretObjectReference:
-
 
         * Gateway
 
-
         When used to permit a BackendObjectReference:
-
 
         * GRPCRoute
         * HTTPRoute
@@ -122,7 +112,6 @@ schema GatewayNetworkingK8sIoV1beta1ReferenceGrantSpecFromItems0:
         * UDPRoute
     namespace : str, default is Undefined, required
         Namespace is the namespace of the referent.
-
 
         Support: Core
     """
@@ -157,13 +146,11 @@ schema GatewayNetworkingK8sIoV1beta1ReferenceGrantSpecToItems0:
         Group is the group of the referent.
         When empty, the Kubernetes core API group is inferred.
 
-
         Support: Core
     kind : str, default is Undefined, required
         Kind is the kind of the referent. Although implementations may support
         additional resources, the following types are part of the "Core"
         support level for this field:
-
 
         * Secret when used to permit a SecretObjectReference
         * Service when used to permit a BackendObjectReference

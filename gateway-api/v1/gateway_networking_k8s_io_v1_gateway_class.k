@@ -12,7 +12,6 @@ schema GatewayClass:
     GatewayClass describes a class of Gateways available to the user for creating
     Gateway resources.
 
-
     It is recommended that this resource be used as a template for Gateways. This
     means that a Gateway is based on the state of the GatewayClass at the time it
     was created and changes to the GatewayClass or associated parameters are not
@@ -21,12 +20,10 @@ schema GatewayClass:
     If implementations choose to propagate GatewayClass changes to existing
     Gateways, that MUST be clearly documented by the implementation.
 
-
     Whenever one or more Gateways are using a GatewayClass, implementations SHOULD
     add the `gateway-exists-finalizer.gateway.networking.k8s.io` finalizer on the
     associated GatewayClass. This ensures that a GatewayClass associated with a
     Gateway is not deleted while in use.
-
 
     GatewayClass is a Cluster level resource.
 
@@ -66,12 +63,9 @@ schema GatewayNetworkingK8sIoV1GatewayClassSpec:
         ControllerName is the name of the controller that is managing Gateways of
         this class. The value of this field MUST be a domain prefixed path.
 
-
         Example: "example.net/gateway-controller".
 
-
         This field is not mutable and cannot be empty.
-
 
         Support: Core
     description : str, default is Undefined, optional
@@ -101,20 +95,18 @@ schema GatewayNetworkingK8sIoV1GatewayClassSpecParametersRef:
     parameters corresponding to the GatewayClass. This is optional if the
     controller does not require any additional configuration.
 
-
     ParametersRef can reference a standard Kubernetes resource, i.e. ConfigMap,
     or an implementation-specific custom resource. The resource can be
     cluster-scoped or namespace-scoped.
 
-
-    If the referent cannot be found, the GatewayClass's "InvalidParameters"
-    status condition will be true.
-
+    If the referent cannot be found, refers to an unsupported kind, or when
+    the data within that resource is malformed, the GatewayClass SHOULD be
+    rejected with the "Accepted" status condition set to "False" and an
+    "InvalidParameters" reason.
 
     A Gateway for this GatewayClass may provide its own `parametersRef`. When both are specified,
     the merging behavior is implementation specific.
     It is generally recommended that GatewayClass provides defaults that can be overridden by a Gateway.
-
 
     Support: Implementation-specific
 
@@ -159,55 +151,30 @@ schema GatewayNetworkingK8sIoV1GatewayClassStatus:
     r"""
     Status defines the current state of GatewayClass.
 
-
     Implementations MUST populate status on all GatewayClass resources which
     specify their controller name.
 
     Attributes
     ----------
-    conditions : [GatewayNetworkingK8sIoV1GatewayClassStatusConditionsItems0], default is [{"lastTransitionTime": {"value": "1970-01-01T00:00:00Z", "x-order": 0}, "message": {"value": "Waiting for controller", "x-order": 1}, "reason": {"value": "Pending", "x-order": 2}, "status": {"value": "Unknown", "x-order": 3}, "type": {"value": "Accepted", "x-order": 4}}], optional
+    conditions : [GatewayNetworkingK8sIoV1GatewayClassStatusConditionsItems0], default is [{"reason": "Pending", "status": "Unknown", "type": "Accepted", "lastTransitionTime": "1970-01-01T00:00:00Z", "message": "Waiting for controller"}], optional
         Conditions is the current status from the controller for
         this GatewayClass.
 
-
         Controllers should prefer to publish conditions using values
         of GatewayClassConditionType for the type of each Condition.
-    supportedFeatures : [str], default is Undefined, optional
-        SupportedFeatures is the set of features the GatewayClass support.
-        It MUST be sorted in ascending alphabetical order.
-
     """
 
 
-    conditions?: [GatewayNetworkingK8sIoV1GatewayClassStatusConditionsItems0] = [{"message": {"value": "Waiting for controller", "x-order": 1}, "reason": {"value": "Pending", "x-order": 2}, "status": {"value": "Unknown", "x-order": 3}, "type": {"value": "Accepted", "x-order": 4}, "lastTransitionTime": {"value": "1970-01-01T00:00:00Z", "x-order": 0}}]
-
-    supportedFeatures?: [str]
+    conditions?: [GatewayNetworkingK8sIoV1GatewayClassStatusConditionsItems0] = [{"reason": "Pending", "status": "Unknown", "type": "Accepted", "lastTransitionTime": "1970-01-01T00:00:00Z", "message": "Waiting for controller"}]
 
 
     check:
         len(conditions) <= 8 if conditions
-        len(supportedFeatures) <= 64 if supportedFeatures
 
 
 schema GatewayNetworkingK8sIoV1GatewayClassStatusConditionsItems0:
     r"""
     Condition contains details for one aspect of the current state of this API Resource.
-    ---
-    This struct is intended for direct use as an array at the field path .status.conditions.  For example,
-
-
-    	type FooStatus struct{
-    	    // Represents the observations of a foo's current state.
-    	    // Known .status.conditions.type are: "Available", "Progressing", and "Degraded"
-    	    // +patchMergeKey=type
-    	    // +patchStrategy=merge
-    	    // +listType=map
-    	    // +listMapKey=type
-    	    Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`
-
-
-    	    // other fields
-    	}
 
     Attributes
     ----------
@@ -231,10 +198,6 @@ schema GatewayNetworkingK8sIoV1GatewayClassStatusConditionsItems0:
         status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
         type of condition in CamelCase or in foo.example.com/CamelCase.
-        ---
-        Many .condition.type values are consistent across resources like Available, but because arbitrary conditions can be
-        useful (see .node.status.conditions), the ability to deconflict is important.
-        The regex it matches is (dns1123SubdomainFmt/)?(qualifiedNameFmt)
     """
 
 
