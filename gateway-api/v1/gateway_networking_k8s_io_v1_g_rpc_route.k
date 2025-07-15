@@ -14,13 +14,11 @@ schema GRPCRoute:
     Filters can be used to specify additional processing steps. Backends specify
     where matching requests will be routed.
 
-
     GRPCRoute falls under extended support within the Gateway API. Within the
     following specification, the word "MUST" indicates that an implementation
     supporting GRPCRoute must conform to the indicated requirement, but an
     implementation not supporting this route type need not follow the requirement
     unless explicitly indicated.
-
 
     Implementations supporting `GRPCRoute` with the `HTTPS` `ProtocolType` MUST
     accept HTTP/2 connections without an initial upgrade from HTTP/1.1, i.e. via
@@ -28,7 +26,6 @@ schema GRPCRoute:
     "Accepted" condition to "False" for the affected listener with a reason of
     "UnsupportedProtocol".  Implementations MAY also accept HTTP/2 connections
     with an upgrade from HTTP/1.
-
 
     Implementations supporting `GRPCRoute` with the `HTTP` `ProtocolType` MUST
     support HTTP/2 over cleartext TCP (h2c,
@@ -77,16 +74,13 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpec:
         Host header to select a GRPCRoute to process the request. This matches
         the RFC 1123 definition of a hostname with 2 notable exceptions:
 
-
         1. IPs are not allowed.
         2. A hostname may be prefixed with a wildcard label (`*.`). The wildcard
            label MUST appear by itself as the first label.
 
-
         If a hostname is specified by both the Listener and GRPCRoute, there
         MUST be at least one intersecting hostname for the GRPCRoute to be
         attached to the Listener. For example:
-
 
         * A Listener with `test.example.com` as the hostname matches GRPCRoutes
           that have either not specified any hostnames, or have specified at
@@ -97,11 +91,9 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpec:
           `test.example.com` and `*.example.com` would both match. On the other
           hand, `example.com` and `test.example.net` would not match.
 
-
         Hostnames that are prefixed with a wildcard label (`*.`) are interpreted
         as a suffix match. That means that a match for `*.example.com` would match
         both `test.example.com`, and `foo.test.example.com`, but not `example.com`.
-
 
         If both the Listener and GRPCRoute have specified hostnames, any
         GRPCRoute hostnames that do not match the Listener hostname MUST be
@@ -109,12 +101,10 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpec:
         GRPCRoute specified `test.example.com` and `test.example.net`,
         `test.example.net` MUST NOT be considered for a match.
 
-
         If both the Listener and GRPCRoute have specified hostnames, and none
         match with the criteria above, then the GRPCRoute MUST NOT be accepted by
         the implementation. The implementation MUST raise an 'Accepted' Condition
         with a status of `False` in the corresponding RouteParentStatus.
-
 
         If a Route (A) of type HTTPRoute or GRPCRoute is attached to a
         Listener and that listener already has another Route (B) of the other
@@ -122,15 +112,12 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpec:
         non-empty, then the implementation MUST accept exactly one of these two
         routes, determined by the following criteria, in order:
 
-
         * The oldest Route based on creation timestamp.
         * The Route appearing first in alphabetical order by
           "{namespace}/{name}".
 
-
         The rejected Route MUST raise an 'Accepted' condition with a status of
         'False' in the corresponding RouteParentStatus.
-
 
         Support: Core
     parentRefs : [GatewayNetworkingK8sIoV1GRPCRouteSpecParentRefsItems0], default is Undefined, optional
@@ -145,20 +132,15 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpec:
         create a "producer" route for a Service in a different namespace from the
         Route.
 
-
         There are two kinds of parent resources with "Core" support:
-
 
         * Gateway (Gateway conformance profile)
         * Service (Mesh conformance profile, ClusterIP Services only)
 
-
         This API may be extended in the future to support additional kinds of parent
         resources.
 
-
         ParentRefs must be _distinct_. This means either that:
-
 
         * They select different objects.  If this is the case, then parentRef
           entries are distinct. In terms of fields, this means that the
@@ -169,9 +151,7 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpec:
           optional fields to different values. If one ParentRef sets a
           combination of optional fields, all must set the same combination.
 
-
         Some examples:
-
 
         * If one ParentRef sets `sectionName`, all ParentRefs referencing the
           same object must also set `sectionName`.
@@ -180,39 +160,17 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpec:
         * If one ParentRef sets `sectionName` and `port`, all ParentRefs
           referencing the same object must also set `sectionName` and `port`.
 
-
         It is possible to separately reference multiple distinct objects that may
         be collapsed by an implementation. For example, some implementations may
         choose to merge compatible Gateway Listeners together. If that is the
         case, the list of routes attached to those resources should also be
         merged.
 
-
         Note that for ParentRefs that cross namespace boundaries, there are specific
         rules. Cross-namespace references are only valid if they are explicitly
         allowed by something in the namespace they are referring to. For example,
         Gateway has the AllowedRoutes field, and ReferenceGrant provides a
         generic way to enable other kinds of cross-namespace reference.
-
-
-
-        ParentRefs from a Route to a Service in the same namespace are "producer"
-        routes, which apply default routing rules to inbound connections from
-        any namespace to the Service.
-
-
-        ParentRefs from a Route to a Service in a different namespace are
-        "consumer" routes, and these routing rules are only applied to outbound
-        connections originating from the same namespace as the Route, for which
-        the intended destination of the connections are a Service targeted as a
-        ParentRef of the Route.
-
-
-
-
-
-
-
     rules : [GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0], default is Undefined, optional
         Rules are a list of GRPC matchers, filters and actions.
     """
@@ -240,14 +198,11 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecParentRefsItems0:
     a parent of this resource (usually a route). There are two kinds of parent resources
     with "Core" support:
 
-
     * Gateway (Gateway conformance profile)
     * Service (Mesh conformance profile, ClusterIP Services only)
 
-
     This API may be extended in the future to support additional kinds of parent
     resources.
-
 
     The API object must be valid in the cluster; the Group and Kind must
     be registered in the cluster for this reference to be valid.
@@ -260,29 +215,23 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecParentRefsItems0:
         To set the core API group (such as for a "Service" kind referent),
         Group must be explicitly set to "" (empty string).
 
-
         Support: Core
     kind : str, default is "Gateway", optional
         Kind is kind of the referent.
 
-
         There are two kinds of parent resources with "Core" support:
-
 
         * Gateway (Gateway conformance profile)
         * Service (Mesh conformance profile, ClusterIP Services only)
-
 
         Support for other resources is Implementation-Specific.
     name : str, default is Undefined, required
         Name is the name of the referent.
 
-
         Support: Core
     namespace : str, default is Undefined, optional
         Namespace is the namespace of the referent. When unspecified, this refers
         to the local namespace of the Route.
-
 
         Note that there are specific rules for ParentRefs which cross namespace
         boundaries. Cross-namespace references are only valid if they are explicitly
@@ -290,26 +239,10 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecParentRefsItems0:
         Gateway has the AllowedRoutes field, and ReferenceGrant provides a
         generic way to enable any other kind of cross-namespace reference.
 
-
-
-        ParentRefs from a Route to a Service in the same namespace are "producer"
-        routes, which apply default routing rules to inbound connections from
-        any namespace to the Service.
-
-
-        ParentRefs from a Route to a Service in a different namespace are
-        "consumer" routes, and these routing rules are only applied to outbound
-        connections originating from the same namespace as the Route, for which
-        the intended destination of the connections are a Service targeted as a
-        ParentRef of the Route.
-
-
-
         Support: Core
     port : int, default is Undefined, optional
         Port is the network port this Route targets. It can be interpreted
         differently based on the type of parent resource.
-
 
         When the parent resource is a Gateway, this targets all listeners
         listening on the specified port that also support this kind of Route(and
@@ -319,18 +252,9 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecParentRefsItems0:
         and SectionName are specified, the name and port of the selected listener
         must match both specified values.
 
-
-
-        When the parent resource is a Service, this targets a specific port in the
-        Service spec. When both Port (experimental) and SectionName are specified,
-        the name and port of the selected port must match both specified values.
-
-
-
         Implementations MAY choose to support other parent resources.
         Implementations supporting other types of parent resources MUST clearly
         document how/if Port is interpreted.
-
 
         For the purpose of status, an attachment is considered successful as
         long as the parent resource accepts it partially. For example, Gateway
@@ -340,12 +264,10 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecParentRefsItems0:
         attached. If no Gateway listeners accept attachment from this Route,
         the Route MUST be considered detached from the Gateway.
 
-
         Support: Extended
     sectionName : str, default is Undefined, optional
         SectionName is the name of a section within the target resource. In the
         following resources, SectionName is interpreted as the following:
-
 
         * Gateway: Listener name. When both Port (experimental) and SectionName
         are specified, the name and port of the selected listener must match
@@ -354,11 +276,9 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecParentRefsItems0:
         are specified, the name and port of the selected listener must match
         both specified values.
 
-
         Implementations MAY choose to support attaching Routes to other resources.
         If that is the case, they MUST clearly document how SectionName is
         interpreted.
-
 
         When unspecified (empty string), this will reference the entire resource.
         For the purpose of status, an attachment is considered successful if at
@@ -368,7 +288,6 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecParentRefsItems0:
         the referencing Route, the Route MUST be considered successfully
         attached. If no Gateway listeners accept attachment from this Route, the
         Route MUST be considered detached from the Gateway.
-
 
         Support: Core
     """
@@ -417,19 +336,15 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0:
         BackendRefs defines the backend(s) where matching requests should be
         sent.
 
-
         Failure behavior here depends on how many BackendRefs are specified and
         how many are invalid.
-
 
         If *all* entries in BackendRefs are invalid, and there are also no filters
         specified in this route rule, *all* traffic which matches this rule MUST
         receive an `UNAVAILABLE` status.
 
-
         See the GRPCBackendRef definition for the rules about what makes a single
         GRPCBackendRef invalid.
-
 
         When a GRPCBackendRef is invalid, `UNAVAILABLE` statuses MUST be returned for
         requests that would have otherwise been routed to an invalid backend. If
@@ -437,30 +352,23 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0:
         requests that would otherwise have been routed to an invalid backend
         MUST receive an `UNAVAILABLE` status.
 
-
         For example, if two backends are specified with equal weights, and one is
         invalid, 50 percent of traffic MUST receive an `UNAVAILABLE` status.
         Implementations may choose how that 50 percent is determined.
 
-
         Support: Core for Kubernetes Service
 
-
         Support: Implementation-specific for any other resource
-
 
         Support for weight: Core
     filters : [GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0FiltersItems0], default is Undefined, optional
         Filters define the filters that are applied to requests that match
         this rule.
 
-
         The effects of ordering of multiple behaviors are currently unspecified.
         This can change in the future based on feedback during the alpha stage.
 
-
         Conformance-levels at this level are defined based on the type of filter:
-
 
         - ALL core filters MUST be supported by all implementations that support
           GRPCRoute.
@@ -468,17 +376,14 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0:
         - Implementation-specific custom filters have no API guarantees across
           implementations.
 
-
         Specifying the same filter multiple times is not supported unless explicitly
         indicated in the filter.
 
-
-        If an implementation can not support a combination of filters, it must clearly
+        If an implementation cannot support a combination of filters, it must clearly
         document that limitation. In cases where incompatible or unsupported
         filters are specified and cause the `Accepted` condition to be set to status
         `False`, implementations may use the `IncompatibleFilters` reason to specify
         this configuration error.
-
 
         Support: Core
     matches : [GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0MatchesItems0], default is Undefined, optional
@@ -486,9 +391,7 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0:
         gRPC requests. Each match is independent, i.e. this rule will be matched
         if **any** one of the matches is satisfied.
 
-
         For example, take the following matches configuration:
-
 
         ```
         matches:
@@ -501,27 +404,21 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0:
             service: foo.bar.v2
         ```
 
-
         For a request to match against this rule, it MUST satisfy
         EITHER of the two conditions:
-
 
         - service of foo.bar AND contains the header `version: 2`
         - service of foo.bar.v2
 
-
         See the documentation for GRPCRouteMatch on how to specify multiple
         match conditions to be ANDed together.
 
-
         If no matches are specified, the implementation MUST match every gRPC request.
-
 
         Proxy or Load Balancer routing configuration generated from GRPCRoutes
         MUST prioritize rules based on the following criteria, continuing on
         ties. Merging MUST not be done between GRPCRoutes and HTTPRoutes.
         Precedence MUST be given to the rule with the largest number of:
-
 
         * Characters in a matching non-wildcard hostname.
         * Characters in a matching hostname.
@@ -529,21 +426,16 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0:
         * Characters in a matching method.
         * Header matches.
 
-
         If ties still exist across multiple Routes, matching precedence MUST be
         determined in order of the following criteria, continuing on ties:
-
 
         * The oldest Route based on creation timestamp.
         * The Route appearing first in alphabetical order by
           "{namespace}/{name}".
 
-
         If ties still exist within the Route that has been given precedence,
         matching precedence MUST be granted to the first matching rule meeting
         the above criteria.
-    sessionPersistence : GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0SessionPersistence, default is Undefined, optional
-        session persistence
     """
 
 
@@ -553,55 +445,27 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0:
 
     matches?: [GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0MatchesItems0]
 
-    sessionPersistence?: GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0SessionPersistence
-
 
     check:
         len(backendRefs) <= 16 if backendRefs
         len(filters) <= 16 if filters
-        len(matches) <= 8 if matches
+        len(matches) <= 64 if matches
 
 
 schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0BackendRefsItems0:
     r"""
     GRPCBackendRef defines how a GRPCRoute forwards a gRPC request.
 
-
     Note that when a namespace different than the local namespace is specified, a
     ReferenceGrant object is required in the referent namespace to allow that
     namespace's owner to accept the reference. See the ReferenceGrant
     documentation for details.
-
-
-    <gateway:experimental:description>
-
-
-    When the BackendRef points to a Kubernetes Service, implementations SHOULD
-    honor the appProtocol field if it is set for the target Service Port.
-
-
-    Implementations supporting appProtocol SHOULD recognize the Kubernetes
-    Standard Application Protocols defined in KEP-3726.
-
-
-    If a Service appProtocol isn't specified, an implementation MAY infer the
-    backend protocol through its own means. Implementations MAY infer the
-    protocol from the Route type referring to the backend Service.
-
-
-    If a Route is not able to send traffic to the backend using the specified
-    protocol then the backend is considered invalid. Implementations MUST set the
-    "ResolvedRefs" condition to "False" with the "UnsupportedProtocol" reason.
-
-
-    </gateway:experimental:description>
 
     Attributes
     ----------
     filters : [GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0BackendRefsItems0FiltersItems0], default is Undefined, optional
         Filters defined at this level MUST be executed if and only if the
         request is being forwarded to the backend defined here.
-
 
         Support: Implementation-specific (For broader support of filters, use the
         Filters field in GRPCRouteRule.)
@@ -612,9 +476,7 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0BackendRefsItems0:
         Kind is the Kubernetes resource kind of the referent. For example
         "Service".
 
-
         Defaults to "Service" when not specified.
-
 
         ExternalName services can refer to CNAME DNS records that may live
         outside of the cluster and as such are difficult to reason about in
@@ -622,9 +484,7 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0BackendRefsItems0:
         CVE-2021-25740 for more information). Implementations SHOULD NOT
         support ExternalName Services.
 
-
         Support: Core (Services with a type other than ExternalName)
-
 
         Support: Implementation-specific (Services with type ExternalName)
     name : str, default is Undefined, required
@@ -633,12 +493,10 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0BackendRefsItems0:
         Namespace is the namespace of the backend. When unspecified, the local
         namespace is inferred.
 
-
         Note that when a namespace different than the local namespace is specified,
         a ReferenceGrant object is required in the referent namespace to allow that
         namespace's owner to accept the reference. See the ReferenceGrant
         documentation for details.
-
 
         Support: Core
     port : int, default is Undefined, optional
@@ -655,12 +513,10 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0BackendRefsItems0:
         implementation supports. Weight is not a percentage and the sum of
         weights does not need to equal 100.
 
-
         If only one backend is specified and it has a weight greater than 0, 100%
         of the traffic is forwarded to that backend. If weight is set to 0, no
         traffic should be forwarded for this entry. If unspecified, weight
         defaults to 1.
-
 
         Support for this field varies based on the context where used.
     """
@@ -722,16 +578,13 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0BackendRefsItems0FiltersI
         Type identifies the type of filter to apply. As with other API fields,
         types are classified into three conformance levels:
 
-
         - Core: Filter types and their corresponding configuration defined by
           "Support: Core" in this package, e.g. "RequestHeaderModifier". All
           implementations supporting GRPCRoute MUST support core filters.
 
-
         - Extended: Filter types and their corresponding configuration defined by
           "Support: Extended" in this package, e.g. "RequestMirror". Implementers
           are encouraged to support extended filters.
-
 
         - Implementation-specific: Filters that are defined and supported by specific vendors.
           In the future, filters showing convergence in behavior across multiple
@@ -740,17 +593,12 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0BackendRefsItems0FiltersI
           is specified using the ExtensionRef field. `Type` MUST be set to
           "ExtensionRef" for custom filters.
 
-
         Implementers are encouraged to define custom implementation types to
         extend the core API with implementation-specific behavior.
-
 
         If a reference to a custom filter type cannot be resolved, the filter
         MUST NOT be skipped. Instead, requests that would have been processed by
         that filter MUST receive a HTTP error response.
-
-
-
     """
 
 
@@ -772,9 +620,7 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0BackendRefsItems0FiltersI
     "networking.example.net"). ExtensionRef MUST NOT be used for core and
     extended filters.
 
-
     Support: Implementation-specific
-
 
     This filter can be used multiple times within the same rule.
 
@@ -812,7 +658,6 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0BackendRefsItems0FiltersI
     RequestHeaderModifier defines a schema for a filter that modifies request
     headers.
 
-
     Support: Core
 
     Attributes
@@ -822,17 +667,14 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0BackendRefsItems0FiltersI
         before the action. It appends to any existing values associated
         with the header name.
 
-
         Input:
           GET /foo HTTP/1.1
           my-header: foo
-
 
         Config:
           add:
           - name: "my-header"
             value: "bar,baz"
-
 
         Output:
           GET /foo HTTP/1.1
@@ -843,17 +685,14 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0BackendRefsItems0FiltersI
         names are case-insensitive (see
         https://datatracker.ietf.org/doc/html/rfc2616#section-4.2).
 
-
         Input:
           GET /foo HTTP/1.1
           my-header1: foo
           my-header2: bar
           my-header3: baz
 
-
         Config:
           remove: ["my-header1", "my-header3"]
-
 
         Output:
           GET /foo HTTP/1.1
@@ -862,17 +701,14 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0BackendRefsItems0FiltersI
         Set overwrites the request with the given header (name, value)
         before the action.
 
-
         Input:
           GET /foo HTTP/1.1
           my-header: foo
-
 
         Config:
           set:
           - name: "my-header"
             value: "bar"
-
 
         Output:
           GET /foo HTTP/1.1
@@ -901,8 +737,7 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0BackendRefsItems0FiltersI
     ----------
     name : str, default is Undefined, required
         Name is the name of the HTTP Header to be matched. Name matching MUST be
-        case insensitive. (See https://tools.ietf.org/html/rfc7230#section-3.2).
-
+        case-insensitive. (See https://tools.ietf.org/html/rfc7230#section-3.2).
 
         If multiple entries specify equivalent header names, the first entry with
         an equivalent name MUST be considered for a match. Subsequent entries
@@ -935,8 +770,7 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0BackendRefsItems0FiltersI
     ----------
     name : str, default is Undefined, required
         Name is the name of the HTTP Header to be matched. Name matching MUST be
-        case insensitive. (See https://tools.ietf.org/html/rfc7230#section-3.2).
-
+        case-insensitive. (See https://tools.ietf.org/html/rfc7230#section-3.2).
 
         If multiple entries specify equivalent header names, the first entry with
         an equivalent name MUST be considered for a match. Subsequent entries
@@ -967,11 +801,9 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0BackendRefsItems0FiltersI
     Requests are sent to the specified destination, but responses from
     that destination are ignored.
 
-
     This filter can be used multiple times within the same rule. Note that
     not all implementations will be able to support mirroring to multiple
     backends.
-
 
     Support: Extended
 
@@ -979,27 +811,42 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0BackendRefsItems0FiltersI
     ----------
     backendRef : GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0BackendRefsItems0FiltersItems0RequestMirrorBackendRef, default is Undefined, required
         backend ref
+    fraction : GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0BackendRefsItems0FiltersItems0RequestMirrorFraction, default is Undefined, optional
+        fraction
+    percent : int, default is Undefined, optional
+        Percent represents the percentage of requests that should be
+        mirrored to BackendRef. Its minimum value is 0 (indicating 0% of
+        requests) and its maximum value is 100 (indicating 100% of requests).
+
+        Only one of Fraction or Percent may be specified. If neither field
+        is specified, 100% of requests will be mirrored.
     """
 
 
     backendRef: GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0BackendRefsItems0FiltersItems0RequestMirrorBackendRef
+
+    fraction?: GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0BackendRefsItems0FiltersItems0RequestMirrorFraction
+
+    percent?: int
+
+
+    check:
+        percent <= 100 if percent not in [None, Undefined]
+        percent >= 0 if percent not in [None, Undefined]
 
 
 schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0BackendRefsItems0FiltersItems0RequestMirrorBackendRef:
     r"""
     BackendRef references a resource where mirrored requests are sent.
 
-
     Mirrored requests must be sent only to a single destination endpoint
     within this BackendRef, irrespective of how many endpoints are present
     within this BackendRef.
-
 
     If the referent cannot be found, this BackendRef is invalid and must be
     dropped from the Gateway. The controller must ensure the "ResolvedRefs"
     condition on the Route status is set to `status: False` and not configure
     this backend in the underlying implementation.
-
 
     If there is a cross-namespace reference to an *existing* object
     that is not allowed by a ReferenceGrant, the controller must ensure the
@@ -1007,13 +854,10 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0BackendRefsItems0FiltersI
     with the "RefNotPermitted" reason and not configure this backend in the
     underlying implementation.
 
-
     In either error case, the Message of the `ResolvedRefs` Condition
     should be used to provide more detail about the problem.
 
-
     Support: Extended for Kubernetes Service
-
 
     Support: Implementation-specific for any other resource
 
@@ -1026,9 +870,7 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0BackendRefsItems0FiltersI
         Kind is the Kubernetes resource kind of the referent. For example
         "Service".
 
-
         Defaults to "Service" when not specified.
-
 
         ExternalName services can refer to CNAME DNS records that may live
         outside of the cluster and as such are difficult to reason about in
@@ -1036,9 +878,7 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0BackendRefsItems0FiltersI
         CVE-2021-25740 for more information). Implementations SHOULD NOT
         support ExternalName Services.
 
-
         Support: Core (Services with a type other than ExternalName)
-
 
         Support: Implementation-specific (Services with type ExternalName)
     name : str, default is Undefined, required
@@ -1047,12 +887,10 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0BackendRefsItems0FiltersI
         Namespace is the namespace of the backend. When unspecified, the local
         namespace is inferred.
 
-
         Note that when a namespace different than the local namespace is specified,
         a ReferenceGrant object is required in the referent namespace to allow that
         namespace's owner to accept the reference. See the ReferenceGrant
         documentation for details.
-
 
         Support: Core
     port : int, default is Undefined, optional
@@ -1090,11 +928,37 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0BackendRefsItems0FiltersI
         port >= 1 if port not in [None, Undefined]
 
 
+schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0BackendRefsItems0FiltersItems0RequestMirrorFraction:
+    r"""
+    Fraction represents the fraction of requests that should be
+    mirrored to BackendRef.
+
+    Only one of Fraction or Percent may be specified. If neither field
+    is specified, 100% of requests will be mirrored.
+
+    Attributes
+    ----------
+    denominator : int, default is 100, optional
+        denominator
+    numerator : int, default is Undefined, required
+        numerator
+    """
+
+
+    denominator?: int = 100
+
+    numerator: int
+
+
+    check:
+        denominator >= 1 if denominator not in [None, Undefined]
+        numerator >= 0
+
+
 schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0BackendRefsItems0FiltersItems0ResponseHeaderModifier:
     r"""
     ResponseHeaderModifier defines a schema for a filter that modifies response
     headers.
-
 
     Support: Extended
 
@@ -1105,17 +969,14 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0BackendRefsItems0FiltersI
         before the action. It appends to any existing values associated
         with the header name.
 
-
         Input:
           GET /foo HTTP/1.1
           my-header: foo
-
 
         Config:
           add:
           - name: "my-header"
             value: "bar,baz"
-
 
         Output:
           GET /foo HTTP/1.1
@@ -1126,17 +987,14 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0BackendRefsItems0FiltersI
         names are case-insensitive (see
         https://datatracker.ietf.org/doc/html/rfc2616#section-4.2).
 
-
         Input:
           GET /foo HTTP/1.1
           my-header1: foo
           my-header2: bar
           my-header3: baz
 
-
         Config:
           remove: ["my-header1", "my-header3"]
-
 
         Output:
           GET /foo HTTP/1.1
@@ -1145,17 +1003,14 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0BackendRefsItems0FiltersI
         Set overwrites the request with the given header (name, value)
         before the action.
 
-
         Input:
           GET /foo HTTP/1.1
           my-header: foo
-
 
         Config:
           set:
           - name: "my-header"
             value: "bar"
-
 
         Output:
           GET /foo HTTP/1.1
@@ -1184,8 +1039,7 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0BackendRefsItems0FiltersI
     ----------
     name : str, default is Undefined, required
         Name is the name of the HTTP Header to be matched. Name matching MUST be
-        case insensitive. (See https://tools.ietf.org/html/rfc7230#section-3.2).
-
+        case-insensitive. (See https://tools.ietf.org/html/rfc7230#section-3.2).
 
         If multiple entries specify equivalent header names, the first entry with
         an equivalent name MUST be considered for a match. Subsequent entries
@@ -1218,8 +1072,7 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0BackendRefsItems0FiltersI
     ----------
     name : str, default is Undefined, required
         Name is the name of the HTTP Header to be matched. Name matching MUST be
-        case insensitive. (See https://tools.ietf.org/html/rfc7230#section-3.2).
-
+        case-insensitive. (See https://tools.ietf.org/html/rfc7230#section-3.2).
 
         If multiple entries specify equivalent header names, the first entry with
         an equivalent name MUST be considered for a match. Subsequent entries
@@ -1267,16 +1120,13 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0FiltersItems0:
         Type identifies the type of filter to apply. As with other API fields,
         types are classified into three conformance levels:
 
-
         - Core: Filter types and their corresponding configuration defined by
           "Support: Core" in this package, e.g. "RequestHeaderModifier". All
           implementations supporting GRPCRoute MUST support core filters.
 
-
         - Extended: Filter types and their corresponding configuration defined by
           "Support: Extended" in this package, e.g. "RequestMirror". Implementers
           are encouraged to support extended filters.
-
 
         - Implementation-specific: Filters that are defined and supported by specific vendors.
           In the future, filters showing convergence in behavior across multiple
@@ -1285,17 +1135,12 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0FiltersItems0:
           is specified using the ExtensionRef field. `Type` MUST be set to
           "ExtensionRef" for custom filters.
 
-
         Implementers are encouraged to define custom implementation types to
         extend the core API with implementation-specific behavior.
-
 
         If a reference to a custom filter type cannot be resolved, the filter
         MUST NOT be skipped. Instead, requests that would have been processed by
         that filter MUST receive a HTTP error response.
-
-
-
     """
 
 
@@ -1317,9 +1162,7 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0FiltersItems0ExtensionRef
     "networking.example.net"). ExtensionRef MUST NOT be used for core and
     extended filters.
 
-
     Support: Implementation-specific
-
 
     This filter can be used multiple times within the same rule.
 
@@ -1357,7 +1200,6 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0FiltersItems0RequestHeade
     RequestHeaderModifier defines a schema for a filter that modifies request
     headers.
 
-
     Support: Core
 
     Attributes
@@ -1367,17 +1209,14 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0FiltersItems0RequestHeade
         before the action. It appends to any existing values associated
         with the header name.
 
-
         Input:
           GET /foo HTTP/1.1
           my-header: foo
-
 
         Config:
           add:
           - name: "my-header"
             value: "bar,baz"
-
 
         Output:
           GET /foo HTTP/1.1
@@ -1388,17 +1227,14 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0FiltersItems0RequestHeade
         names are case-insensitive (see
         https://datatracker.ietf.org/doc/html/rfc2616#section-4.2).
 
-
         Input:
           GET /foo HTTP/1.1
           my-header1: foo
           my-header2: bar
           my-header3: baz
 
-
         Config:
           remove: ["my-header1", "my-header3"]
-
 
         Output:
           GET /foo HTTP/1.1
@@ -1407,17 +1243,14 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0FiltersItems0RequestHeade
         Set overwrites the request with the given header (name, value)
         before the action.
 
-
         Input:
           GET /foo HTTP/1.1
           my-header: foo
-
 
         Config:
           set:
           - name: "my-header"
             value: "bar"
-
 
         Output:
           GET /foo HTTP/1.1
@@ -1446,8 +1279,7 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0FiltersItems0RequestHeade
     ----------
     name : str, default is Undefined, required
         Name is the name of the HTTP Header to be matched. Name matching MUST be
-        case insensitive. (See https://tools.ietf.org/html/rfc7230#section-3.2).
-
+        case-insensitive. (See https://tools.ietf.org/html/rfc7230#section-3.2).
 
         If multiple entries specify equivalent header names, the first entry with
         an equivalent name MUST be considered for a match. Subsequent entries
@@ -1480,8 +1312,7 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0FiltersItems0RequestHeade
     ----------
     name : str, default is Undefined, required
         Name is the name of the HTTP Header to be matched. Name matching MUST be
-        case insensitive. (See https://tools.ietf.org/html/rfc7230#section-3.2).
-
+        case-insensitive. (See https://tools.ietf.org/html/rfc7230#section-3.2).
 
         If multiple entries specify equivalent header names, the first entry with
         an equivalent name MUST be considered for a match. Subsequent entries
@@ -1512,11 +1343,9 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0FiltersItems0RequestMirro
     Requests are sent to the specified destination, but responses from
     that destination are ignored.
 
-
     This filter can be used multiple times within the same rule. Note that
     not all implementations will be able to support mirroring to multiple
     backends.
-
 
     Support: Extended
 
@@ -1524,27 +1353,42 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0FiltersItems0RequestMirro
     ----------
     backendRef : GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0FiltersItems0RequestMirrorBackendRef, default is Undefined, required
         backend ref
+    fraction : GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0FiltersItems0RequestMirrorFraction, default is Undefined, optional
+        fraction
+    percent : int, default is Undefined, optional
+        Percent represents the percentage of requests that should be
+        mirrored to BackendRef. Its minimum value is 0 (indicating 0% of
+        requests) and its maximum value is 100 (indicating 100% of requests).
+
+        Only one of Fraction or Percent may be specified. If neither field
+        is specified, 100% of requests will be mirrored.
     """
 
 
     backendRef: GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0FiltersItems0RequestMirrorBackendRef
+
+    fraction?: GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0FiltersItems0RequestMirrorFraction
+
+    percent?: int
+
+
+    check:
+        percent <= 100 if percent not in [None, Undefined]
+        percent >= 0 if percent not in [None, Undefined]
 
 
 schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0FiltersItems0RequestMirrorBackendRef:
     r"""
     BackendRef references a resource where mirrored requests are sent.
 
-
     Mirrored requests must be sent only to a single destination endpoint
     within this BackendRef, irrespective of how many endpoints are present
     within this BackendRef.
-
 
     If the referent cannot be found, this BackendRef is invalid and must be
     dropped from the Gateway. The controller must ensure the "ResolvedRefs"
     condition on the Route status is set to `status: False` and not configure
     this backend in the underlying implementation.
-
 
     If there is a cross-namespace reference to an *existing* object
     that is not allowed by a ReferenceGrant, the controller must ensure the
@@ -1552,13 +1396,10 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0FiltersItems0RequestMirro
     with the "RefNotPermitted" reason and not configure this backend in the
     underlying implementation.
 
-
     In either error case, the Message of the `ResolvedRefs` Condition
     should be used to provide more detail about the problem.
 
-
     Support: Extended for Kubernetes Service
-
 
     Support: Implementation-specific for any other resource
 
@@ -1571,9 +1412,7 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0FiltersItems0RequestMirro
         Kind is the Kubernetes resource kind of the referent. For example
         "Service".
 
-
         Defaults to "Service" when not specified.
-
 
         ExternalName services can refer to CNAME DNS records that may live
         outside of the cluster and as such are difficult to reason about in
@@ -1581,9 +1420,7 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0FiltersItems0RequestMirro
         CVE-2021-25740 for more information). Implementations SHOULD NOT
         support ExternalName Services.
 
-
         Support: Core (Services with a type other than ExternalName)
-
 
         Support: Implementation-specific (Services with type ExternalName)
     name : str, default is Undefined, required
@@ -1592,12 +1429,10 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0FiltersItems0RequestMirro
         Namespace is the namespace of the backend. When unspecified, the local
         namespace is inferred.
 
-
         Note that when a namespace different than the local namespace is specified,
         a ReferenceGrant object is required in the referent namespace to allow that
         namespace's owner to accept the reference. See the ReferenceGrant
         documentation for details.
-
 
         Support: Core
     port : int, default is Undefined, optional
@@ -1635,11 +1470,37 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0FiltersItems0RequestMirro
         port >= 1 if port not in [None, Undefined]
 
 
+schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0FiltersItems0RequestMirrorFraction:
+    r"""
+    Fraction represents the fraction of requests that should be
+    mirrored to BackendRef.
+
+    Only one of Fraction or Percent may be specified. If neither field
+    is specified, 100% of requests will be mirrored.
+
+    Attributes
+    ----------
+    denominator : int, default is 100, optional
+        denominator
+    numerator : int, default is Undefined, required
+        numerator
+    """
+
+
+    denominator?: int = 100
+
+    numerator: int
+
+
+    check:
+        denominator >= 1 if denominator not in [None, Undefined]
+        numerator >= 0
+
+
 schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0FiltersItems0ResponseHeaderModifier:
     r"""
     ResponseHeaderModifier defines a schema for a filter that modifies response
     headers.
-
 
     Support: Extended
 
@@ -1650,17 +1511,14 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0FiltersItems0ResponseHead
         before the action. It appends to any existing values associated
         with the header name.
 
-
         Input:
           GET /foo HTTP/1.1
           my-header: foo
-
 
         Config:
           add:
           - name: "my-header"
             value: "bar,baz"
-
 
         Output:
           GET /foo HTTP/1.1
@@ -1671,17 +1529,14 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0FiltersItems0ResponseHead
         names are case-insensitive (see
         https://datatracker.ietf.org/doc/html/rfc2616#section-4.2).
 
-
         Input:
           GET /foo HTTP/1.1
           my-header1: foo
           my-header2: bar
           my-header3: baz
 
-
         Config:
           remove: ["my-header1", "my-header3"]
-
 
         Output:
           GET /foo HTTP/1.1
@@ -1690,17 +1545,14 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0FiltersItems0ResponseHead
         Set overwrites the request with the given header (name, value)
         before the action.
 
-
         Input:
           GET /foo HTTP/1.1
           my-header: foo
-
 
         Config:
           set:
           - name: "my-header"
             value: "bar"
-
 
         Output:
           GET /foo HTTP/1.1
@@ -1729,8 +1581,7 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0FiltersItems0ResponseHead
     ----------
     name : str, default is Undefined, required
         Name is the name of the HTTP Header to be matched. Name matching MUST be
-        case insensitive. (See https://tools.ietf.org/html/rfc7230#section-3.2).
-
+        case-insensitive. (See https://tools.ietf.org/html/rfc7230#section-3.2).
 
         If multiple entries specify equivalent header names, the first entry with
         an equivalent name MUST be considered for a match. Subsequent entries
@@ -1763,8 +1614,7 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0FiltersItems0ResponseHead
     ----------
     name : str, default is Undefined, required
         Name is the name of the HTTP Header to be matched. Name matching MUST be
-        case insensitive. (See https://tools.ietf.org/html/rfc7230#section-3.2).
-
+        case-insensitive. (See https://tools.ietf.org/html/rfc7230#section-3.2).
 
         If multiple entries specify equivalent header names, the first entry with
         an equivalent name MUST be considered for a match. Subsequent entries
@@ -1795,10 +1645,8 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0MatchesItems0:
     action. Multiple match types are ANDed together, i.e. the match will
     evaluate to true only if all conditions are satisfied.
 
-
     For example, the match below will match a gRPC request only if its service
     is `foo` AND it contains the `version: v1` header:
-
 
     ```
     matches:
@@ -1808,7 +1656,6 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0MatchesItems0:
         headers:
       - name: "version"
         value "v1"
-
 
     ```
 
@@ -1841,7 +1688,6 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0MatchesItems0HeadersItems
     ----------
     name : str, default is Undefined, required
         Name is the name of the gRPC Header to be matched.
-
 
         If multiple entries specify equivalent header names, only the first
         entry with an equivalent name MUST be considered for a match. Subsequent
@@ -1881,21 +1727,17 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0MatchesItems0Method:
         Value of the method to match against. If left empty or omitted, will
         match all services.
 
-
         At least one of Service and Method MUST be a non-empty string.
     service : str, default is Undefined, optional
         Value of the service to match against. If left empty or omitted, will
         match any service.
-
 
         At least one of Service and Method MUST be a non-empty string.
     $type : str, default is "Exact", optional
         Type specifies how to match against the service and/or method.
         Support: Core (Exact with service and method specified)
 
-
         Support: Implementation-specific (Exact with method specified but no service specified)
-
 
         Support: Implementation-specific (RegularExpression)
     """
@@ -1913,111 +1755,6 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0MatchesItems0Method:
         len(service) <= 1024 if service
 
 
-schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0SessionPersistence:
-    r"""
-    SessionPersistence defines and configures session persistence
-    for the route rule.
-
-
-    Support: Extended
-
-
-
-
-    Attributes
-    ----------
-    absoluteTimeout : str, default is Undefined, optional
-        AbsoluteTimeout defines the absolute timeout of the persistent
-        session. Once the AbsoluteTimeout duration has elapsed, the
-        session becomes invalid.
-
-
-        Support: Extended
-    cookieConfig : GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0SessionPersistenceCookieConfig, default is Undefined, optional
-        cookie config
-    idleTimeout : str, default is Undefined, optional
-        IdleTimeout defines the idle timeout of the persistent session.
-        Once the session has been idle for more than the specified
-        IdleTimeout duration, the session becomes invalid.
-
-
-        Support: Extended
-    sessionName : str, default is Undefined, optional
-        SessionName defines the name of the persistent session token
-        which may be reflected in the cookie or the header. Users
-        should avoid reusing session names to prevent unintended
-        consequences, such as rejection or unpredictable behavior.
-
-
-        Support: Implementation-specific
-    $type : str, default is "Cookie", optional
-        Type defines the type of session persistence such as through
-        the use a header or cookie. Defaults to cookie based session
-        persistence.
-
-
-        Support: Core for "Cookie" type
-
-
-        Support: Extended for "Header" type
-    """
-
-
-    absoluteTimeout?: str
-
-    cookieConfig?: GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0SessionPersistenceCookieConfig
-
-    idleTimeout?: str
-
-    sessionName?: str
-
-    $type?: "Cookie" | "Header" = "Cookie"
-
-
-    check:
-        _regex_match(str(absoluteTimeout), r"^([0-9]{1,5}(h|m|s|ms)){1,4}$") if absoluteTimeout
-        _regex_match(str(idleTimeout), r"^([0-9]{1,5}(h|m|s|ms)){1,4}$") if idleTimeout
-        len(sessionName) <= 128 if sessionName
-
-
-schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0SessionPersistenceCookieConfig:
-    r"""
-    CookieConfig provides configuration settings that are specific
-    to cookie-based session persistence.
-
-
-    Support: Core
-
-    Attributes
-    ----------
-    lifetimeType : str, default is "Session", optional
-        LifetimeType specifies whether the cookie has a permanent or
-        session-based lifetime. A permanent cookie persists until its
-        specified expiry time, defined by the Expires or Max-Age cookie
-        attributes, while a session cookie is deleted when the current
-        session ends.
-
-
-        When set to "Permanent", AbsoluteTimeout indicates the
-        cookie's lifetime via the Expires or Max-Age cookie attributes
-        and is required.
-
-
-        When set to "Session", AbsoluteTimeout indicates the
-        absolute lifetime of the cookie tracked by the gateway and
-        is optional.
-
-
-        Support: Core for "Session" type
-
-
-        Support: Extended for "Permanent" type
-    """
-
-
-    lifetimeType?: "Permanent" | "Session" = "Session"
-
-
 schema GatewayNetworkingK8sIoV1GRPCRouteStatus:
     r"""
     Status defines the current state of GRPCRoute.
@@ -2032,12 +1769,10 @@ schema GatewayNetworkingK8sIoV1GRPCRouteStatus:
         first sees the route and should update the entry as appropriate when the
         route or gateway is modified.
 
-
         Note that parent references that cannot be resolved by an implementation
         of this API will not be added to this list. Implementations of this API
         can only populate Route status for the Gateways/parent resources they are
         responsible for.
-
 
         A maximum of 32 Gateways will be represented in this list. An empty list
         means the route has not been attached to any Gateway.
@@ -2063,23 +1798,19 @@ schema GatewayNetworkingK8sIoV1GRPCRouteStatusParentsItems0:
         Note that the route's availability is also subject to the Gateway's own
         status conditions and listener status.
 
-
         If the Route's ParentRef specifies an existing Gateway that supports
         Routes of this kind AND that Gateway's controller has sufficient access,
         then that Gateway's controller MUST set the "Accepted" condition on the
         Route, to indicate whether the route has been accepted or rejected by the
         Gateway, and why.
 
-
         A Route MUST be considered "Accepted" if at least one of the Route's
         rules is implemented by the Gateway.
-
 
         There are a number of cases where the "Accepted" condition may not be set
         due to lack of controller visibility, that includes when:
 
-
-        * The Route refers to a non-existent parent.
+        * The Route refers to a nonexistent parent.
         * The Route is of a type that the controller does not support.
         * The Route is in a namespace the controller does not have access to.
     controllerName : str, default is Undefined, required
@@ -2087,14 +1818,11 @@ schema GatewayNetworkingK8sIoV1GRPCRouteStatusParentsItems0:
         controller that wrote this status. This corresponds with the
         controllerName field on GatewayClass.
 
-
         Example: "example.net/gateway-controller".
-
 
         The format of this field is DOMAIN "/" PATH, where DOMAIN and PATH are
         valid Kubernetes names
         (https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names).
-
 
         Controllers MUST populate this field when writing status. Controllers should ensure that
         entries to status populated with their ControllerName are cleaned up when they are no
@@ -2122,22 +1850,6 @@ schema GatewayNetworkingK8sIoV1GRPCRouteStatusParentsItems0:
 schema GatewayNetworkingK8sIoV1GRPCRouteStatusParentsItems0ConditionsItems0:
     r"""
     Condition contains details for one aspect of the current state of this API Resource.
-    ---
-    This struct is intended for direct use as an array at the field path .status.conditions.  For example,
-
-
-    	type FooStatus struct{
-    	    // Represents the observations of a foo's current state.
-    	    // Known .status.conditions.type are: "Available", "Progressing", and "Degraded"
-    	    // +patchMergeKey=type
-    	    // +patchStrategy=merge
-    	    // +listType=map
-    	    // +listMapKey=type
-    	    Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`
-
-
-    	    // other fields
-    	}
 
     Attributes
     ----------
@@ -2161,10 +1873,6 @@ schema GatewayNetworkingK8sIoV1GRPCRouteStatusParentsItems0ConditionsItems0:
         status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
         type of condition in CamelCase or in foo.example.com/CamelCase.
-        ---
-        Many .condition.type values are consistent across resources like Available, but because arbitrary conditions can be
-        useful (see .node.status.conditions), the ability to deconflict is important.
-        The regex it matches is (dns1123SubdomainFmt/)?(qualifiedNameFmt)
     """
 
 
@@ -2204,29 +1912,23 @@ schema GatewayNetworkingK8sIoV1GRPCRouteStatusParentsItems0ParentRef:
         To set the core API group (such as for a "Service" kind referent),
         Group must be explicitly set to "" (empty string).
 
-
         Support: Core
     kind : str, default is "Gateway", optional
         Kind is kind of the referent.
 
-
         There are two kinds of parent resources with "Core" support:
-
 
         * Gateway (Gateway conformance profile)
         * Service (Mesh conformance profile, ClusterIP Services only)
-
 
         Support for other resources is Implementation-Specific.
     name : str, default is Undefined, required
         Name is the name of the referent.
 
-
         Support: Core
     namespace : str, default is Undefined, optional
         Namespace is the namespace of the referent. When unspecified, this refers
         to the local namespace of the Route.
-
 
         Note that there are specific rules for ParentRefs which cross namespace
         boundaries. Cross-namespace references are only valid if they are explicitly
@@ -2234,26 +1936,10 @@ schema GatewayNetworkingK8sIoV1GRPCRouteStatusParentsItems0ParentRef:
         Gateway has the AllowedRoutes field, and ReferenceGrant provides a
         generic way to enable any other kind of cross-namespace reference.
 
-
-
-        ParentRefs from a Route to a Service in the same namespace are "producer"
-        routes, which apply default routing rules to inbound connections from
-        any namespace to the Service.
-
-
-        ParentRefs from a Route to a Service in a different namespace are
-        "consumer" routes, and these routing rules are only applied to outbound
-        connections originating from the same namespace as the Route, for which
-        the intended destination of the connections are a Service targeted as a
-        ParentRef of the Route.
-
-
-
         Support: Core
     port : int, default is Undefined, optional
         Port is the network port this Route targets. It can be interpreted
         differently based on the type of parent resource.
-
 
         When the parent resource is a Gateway, this targets all listeners
         listening on the specified port that also support this kind of Route(and
@@ -2263,18 +1949,9 @@ schema GatewayNetworkingK8sIoV1GRPCRouteStatusParentsItems0ParentRef:
         and SectionName are specified, the name and port of the selected listener
         must match both specified values.
 
-
-
-        When the parent resource is a Service, this targets a specific port in the
-        Service spec. When both Port (experimental) and SectionName are specified,
-        the name and port of the selected port must match both specified values.
-
-
-
         Implementations MAY choose to support other parent resources.
         Implementations supporting other types of parent resources MUST clearly
         document how/if Port is interpreted.
-
 
         For the purpose of status, an attachment is considered successful as
         long as the parent resource accepts it partially. For example, Gateway
@@ -2284,12 +1961,10 @@ schema GatewayNetworkingK8sIoV1GRPCRouteStatusParentsItems0ParentRef:
         attached. If no Gateway listeners accept attachment from this Route,
         the Route MUST be considered detached from the Gateway.
 
-
         Support: Extended
     sectionName : str, default is Undefined, optional
         SectionName is the name of a section within the target resource. In the
         following resources, SectionName is interpreted as the following:
-
 
         * Gateway: Listener name. When both Port (experimental) and SectionName
         are specified, the name and port of the selected listener must match
@@ -2298,11 +1973,9 @@ schema GatewayNetworkingK8sIoV1GRPCRouteStatusParentsItems0ParentRef:
         are specified, the name and port of the selected listener must match
         both specified values.
 
-
         Implementations MAY choose to support attaching Routes to other resources.
         If that is the case, they MUST clearly document how SectionName is
         interpreted.
-
 
         When unspecified (empty string), this will reference the entire resource.
         For the purpose of status, an attachment is considered successful if at
@@ -2312,7 +1985,6 @@ schema GatewayNetworkingK8sIoV1GRPCRouteStatusParentsItems0ParentRef:
         the referencing Route, the Route MUST be considered successfully
         attached. If no Gateway listeners accept attachment from this Route, the
         Route MUST be considered detached from the Gateway.
-
 
         Support: Core
     """

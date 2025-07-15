@@ -7,56 +7,63 @@ import k8s.apimachinery.pkg.apis.meta.v1
 _regex_match = regex.match
 
 
-schema BackendLBPolicy:
+schema XBackendTrafficPolicy:
     r"""
-    BackendLBPolicy provides a way to define load balancing rules
-    for a backend.
+    XBackendTrafficPolicy defines the configuration for how traffic to a
+    target backend should be handled.
 
     Attributes
     ----------
-    apiVersion : str, default is "gateway.networking.k8s.io/v1alpha2", required
+    apiVersion : str, default is "gateway.networking.x-k8s.io/v1alpha1", required
         APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-    kind : str, default is "BackendLBPolicy", required
+    kind : str, default is "XBackendTrafficPolicy", required
         Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     metadata : v1.ObjectMeta, default is Undefined, optional
         metadata
-    spec : GatewayNetworkingK8sIoV1alpha2BackendLBPolicySpec, default is Undefined, required
+    spec : GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicySpec, default is Undefined, required
         spec
-    status : GatewayNetworkingK8sIoV1alpha2BackendLBPolicyStatus, default is Undefined, optional
+    status : GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicyStatus, default is Undefined, optional
         status
     """
 
 
-    apiVersion: "gateway.networking.k8s.io/v1alpha2" = "gateway.networking.k8s.io/v1alpha2"
+    apiVersion: "gateway.networking.x-k8s.io/v1alpha1" = "gateway.networking.x-k8s.io/v1alpha1"
 
-    kind: "BackendLBPolicy" = "BackendLBPolicy"
+    kind: "XBackendTrafficPolicy" = "XBackendTrafficPolicy"
 
     metadata?: v1.ObjectMeta
 
-    spec: GatewayNetworkingK8sIoV1alpha2BackendLBPolicySpec
+    spec: GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicySpec
 
-    status?: GatewayNetworkingK8sIoV1alpha2BackendLBPolicyStatus
+    status?: GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicyStatus
 
 
-schema GatewayNetworkingK8sIoV1alpha2BackendLBPolicySpec:
+schema GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicySpec:
     r"""
-    Spec defines the desired state of BackendLBPolicy.
+    Spec defines the desired state of BackendTrafficPolicy.
 
     Attributes
     ----------
-    targetRefs : [GatewayNetworkingK8sIoV1alpha2BackendLBPolicySpecTargetRefsItems0], default is Undefined, required
-        TargetRef identifies an API object to apply policy to.
-        Currently, Backends (i.e. Service, ServiceImport, or any
-        implementation-specific backendRef) are the only valid API
-        target references.
-    sessionPersistence : GatewayNetworkingK8sIoV1alpha2BackendLBPolicySpecSessionPersistence, default is Undefined, optional
+    retryConstraint : GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicySpecRetryConstraint, default is Undefined, optional
+        retry constraint
+    sessionPersistence : GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicySpecSessionPersistence, default is Undefined, optional
         session persistence
+    targetRefs : [GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicySpecTargetRefsItems0], default is Undefined, required
+        TargetRefs identifies API object(s) to apply this policy to.
+        Currently, Backends (A grouping of like endpoints such as Service,
+        ServiceImport, or any implementation-specific backendRef) are the only
+        valid API target references.
+
+        Currently, a TargetRef can not be scoped to a specific port on a
+        Service.
     """
 
 
-    targetRefs: [GatewayNetworkingK8sIoV1alpha2BackendLBPolicySpecTargetRefsItems0]
+    retryConstraint?: GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicySpecRetryConstraint
 
-    sessionPersistence?: GatewayNetworkingK8sIoV1alpha2BackendLBPolicySpecSessionPersistence
+    sessionPersistence?: GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicySpecSessionPersistence
+
+    targetRefs: [GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicySpecTargetRefsItems0]
 
 
     check:
@@ -64,11 +71,126 @@ schema GatewayNetworkingK8sIoV1alpha2BackendLBPolicySpec:
         len(targetRefs) <= 16
 
 
-schema GatewayNetworkingK8sIoV1alpha2BackendLBPolicySpecSessionPersistence:
+schema GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicySpecRetryConstraint:
+    r"""
+    RetryConstraint defines the configuration for when to allow or prevent
+    further retries to a target backend, by dynamically calculating a 'retry
+    budget'. This budget is calculated based on the percentage of incoming
+    traffic composed of retries over a given time interval. Once the budget
+    is exceeded, additional retries will be rejected.
+
+    For example, if the retry budget interval is 10 seconds, there have been
+    1000 active requests in the past 10 seconds, and the allowed percentage
+    of requests that can be retried is 20% (the default), then 200 of those
+    requests may be composed of retries. Active requests will only be
+    considered for the duration of the interval when calculating the retry
+    budget. Retrying the same original request multiple times within the
+    retry budget interval will lead to each retry being counted towards
+    calculating the budget.
+
+    Configuring a RetryConstraint in BackendTrafficPolicy is compatible with
+    HTTPRoute Retry settings for each HTTPRouteRule that targets the same
+    backend. While the HTTPRouteRule Retry stanza can specify whether a
+    request will be retried, and the number of retry attempts each client
+    may perform, RetryConstraint helps prevent cascading failures such as
+    retry storms during periods of consistent failures.
+
+    After the retry budget has been exceeded, additional retries to the
+    backend MUST return a 503 response to the client.
+
+    Additional configurations for defining a constraint on retries MAY be
+    defined in the future.
+
+    Support: Extended
+
+    Attributes
+    ----------
+    budget : GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicySpecRetryConstraintBudget, default is Undefined, optional
+        budget
+    minRetryRate : GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicySpecRetryConstraintMinRetryRate, default is Undefined, optional
+        min retry rate
+    """
+
+
+    budget?: GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicySpecRetryConstraintBudget
+
+    minRetryRate?: GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicySpecRetryConstraintMinRetryRate
+
+
+schema GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicySpecRetryConstraintBudget:
+    r"""
+    Budget holds the details of the retry budget configuration.
+
+    Attributes
+    ----------
+    interval : str, default is "10s", optional
+        Interval defines the duration in which requests will be considered
+        for calculating the budget for retries.
+
+        Support: Extended
+    percent : int, default is 20, optional
+        Percent defines the maximum percentage of active requests that may
+        be made up of retries.
+
+        Support: Extended
+    """
+
+
+    interval?: str = "10s"
+
+    percent?: int = 20
+
+
+    check:
+        _regex_match(str(interval), r"^([0-9]{1,5}(h|m|s|ms)){1,4}$") if interval
+        percent <= 100 if percent not in [None, Undefined]
+        percent >= 0 if percent not in [None, Undefined]
+
+
+schema GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicySpecRetryConstraintMinRetryRate:
+    r"""
+    MinRetryRate defines the minimum rate of retries that will be allowable
+    over a specified duration of time.
+
+    The effective overall minimum rate of retries targeting the backend
+    service may be much higher, as there can be any number of clients which
+    are applying this setting locally.
+
+    This ensures that requests can still be retried during periods of low
+    traffic, where the budget for retries may be calculated as a very low
+    value.
+
+    Support: Extended
+
+    Attributes
+    ----------
+    count : int, default is Undefined, optional
+        Count specifies the number of requests per time interval.
+
+        Support: Extended
+    interval : str, default is Undefined, optional
+        Interval specifies the divisor of the rate of requests, the amount of
+        time during which the given count of requests occur.
+
+        Support: Extended
+    """
+
+
+    count?: int
+
+    interval?: str
+
+
+    check:
+        count <= 1e+06 if count not in [None, Undefined]
+        count >= 1 if count not in [None, Undefined]
+        _regex_match(str(interval), r"^([0-9]{1,5}(h|m|s|ms)){1,4}$") if interval
+
+
+schema GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicySpecSessionPersistence:
     r"""
     SessionPersistence defines and configures session persistence
     for the backend.
-
 
     Support: Extended
 
@@ -79,13 +201,13 @@ schema GatewayNetworkingK8sIoV1alpha2BackendLBPolicySpecSessionPersistence:
         session. Once the AbsoluteTimeout duration has elapsed, the
         session becomes invalid.
 
-
         Support: Extended
+    cookieConfig : GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicySpecSessionPersistenceCookieConfig, default is Undefined, optional
+        cookie config
     idleTimeout : str, default is Undefined, optional
         IdleTimeout defines the idle timeout of the persistent session.
         Once the session has been idle for more than the specified
         IdleTimeout duration, the session becomes invalid.
-
 
         Support: Extended
     sessionName : str, default is Undefined, optional
@@ -94,32 +216,27 @@ schema GatewayNetworkingK8sIoV1alpha2BackendLBPolicySpecSessionPersistence:
         should avoid reusing session names to prevent unintended
         consequences, such as rejection or unpredictable behavior.
 
-
         Support: Implementation-specific
     $type : str, default is "Cookie", optional
         Type defines the type of session persistence such as through
         the use a header or cookie. Defaults to cookie based session
         persistence.
 
-
         Support: Core for "Cookie" type
 
-
         Support: Extended for "Header" type
-    cookieConfig : GatewayNetworkingK8sIoV1alpha2BackendLBPolicySpecSessionPersistenceCookieConfig, default is Undefined, optional
-        cookie config
     """
 
 
     absoluteTimeout?: str
+
+    cookieConfig?: GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicySpecSessionPersistenceCookieConfig
 
     idleTimeout?: str
 
     sessionName?: str
 
     $type?: "Cookie" | "Header" = "Cookie"
-
-    cookieConfig?: GatewayNetworkingK8sIoV1alpha2BackendLBPolicySpecSessionPersistenceCookieConfig
 
 
     check:
@@ -128,11 +245,10 @@ schema GatewayNetworkingK8sIoV1alpha2BackendLBPolicySpecSessionPersistence:
         len(sessionName) <= 128 if sessionName
 
 
-schema GatewayNetworkingK8sIoV1alpha2BackendLBPolicySpecSessionPersistenceCookieConfig:
+schema GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicySpecSessionPersistenceCookieConfig:
     r"""
     CookieConfig provides configuration settings that are specific
     to cookie-based session persistence.
-
 
     Support: Core
 
@@ -145,19 +261,17 @@ schema GatewayNetworkingK8sIoV1alpha2BackendLBPolicySpecSessionPersistenceCookie
         attributes, while a session cookie is deleted when the current
         session ends.
 
-
         When set to "Permanent", AbsoluteTimeout indicates the
         cookie's lifetime via the Expires or Max-Age cookie attributes
         and is required.
-
 
         When set to "Session", AbsoluteTimeout indicates the
         absolute lifetime of the cookie tracked by the gateway and
         is optional.
 
+        Defaults to "Session".
 
         Support: Core for "Session" type
-
 
         Support: Extended for "Permanent" type
     """
@@ -166,7 +280,7 @@ schema GatewayNetworkingK8sIoV1alpha2BackendLBPolicySpecSessionPersistenceCookie
     lifetimeType?: "Permanent" | "Session" = "Session"
 
 
-schema GatewayNetworkingK8sIoV1alpha2BackendLBPolicySpecTargetRefsItems0:
+schema GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicySpecTargetRefsItems0:
     r"""
     LocalPolicyTargetReference identifies an API object to apply a direct or
     inherited policy to. This should be used as part of Policy resources
@@ -202,13 +316,13 @@ schema GatewayNetworkingK8sIoV1alpha2BackendLBPolicySpecTargetRefsItems0:
         len(name) >= 1
 
 
-schema GatewayNetworkingK8sIoV1alpha2BackendLBPolicyStatus:
+schema GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicyStatus:
     r"""
-    Status defines the current state of BackendLBPolicy.
+    Status defines the current state of BackendTrafficPolicy.
 
     Attributes
     ----------
-    ancestors : [GatewayNetworkingK8sIoV1alpha2BackendLBPolicyStatusAncestorsItems0], default is Undefined, required
+    ancestors : [GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicyStatusAncestorsItems0], default is Undefined, required
         Ancestors is a list of ancestor resources (usually Gateways) that are
         associated with the policy, and the status of the policy with respect to
         each ancestor. When this policy attaches to a parent, the controller that
@@ -216,26 +330,21 @@ schema GatewayNetworkingK8sIoV1alpha2BackendLBPolicyStatus:
         the controller first sees the policy and SHOULD update the entry as
         appropriate when the relevant ancestor is modified.
 
-
         Note that choosing the relevant ancestor is left to the Policy designers;
         an important part of Policy design is designing the right object level at
         which to namespace this status.
-
 
         Note also that implementations MUST ONLY populate ancestor status for
         the Ancestor resources they are responsible for. Implementations MUST
         use the ControllerName field to uniquely identify the entries in this list
         that they are responsible for.
 
-
         Note that to achieve this, the list of PolicyAncestorStatus structs
         MUST be treated as a map with a composite key, made up of the AncestorRef
         and ControllerName fields combined.
 
-
         A maximum of 16 ancestors will be represented in this list. An empty list
         means the Policy is not relevant for any ancestors.
-
 
         If this slice is full, implementations MUST NOT add further entries.
         Instead they MUST consider the policy unimplementable and signal that
@@ -246,18 +355,17 @@ schema GatewayNetworkingK8sIoV1alpha2BackendLBPolicyStatus:
     """
 
 
-    ancestors: [GatewayNetworkingK8sIoV1alpha2BackendLBPolicyStatusAncestorsItems0]
+    ancestors: [GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicyStatusAncestorsItems0]
 
 
     check:
         len(ancestors) <= 16
 
 
-schema GatewayNetworkingK8sIoV1alpha2BackendLBPolicyStatusAncestorsItems0:
+schema GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicyStatusAncestorsItems0:
     r"""
     PolicyAncestorStatus describes the status of a route with respect to an
     associated Ancestor.
-
 
     Ancestors refer to objects that are either the Target of a policy or above it
     in terms of object hierarchy. For example, if a policy targets a Service, the
@@ -267,50 +375,42 @@ schema GatewayNetworkingK8sIoV1alpha2BackendLBPolicyStatusAncestorsItems0:
     SHOULD use Gateway as the PolicyAncestorStatus object unless the designers
     have a _very_ good reason otherwise.
 
-
     In the context of policy attachment, the Ancestor is used to distinguish which
     resource results in a distinct application of this policy. For example, if a policy
     targets a Service, it may have a distinct result per attached Gateway.
-
 
     Policies targeting the same resource may have different effects depending on the
     ancestors of those resources. For example, different Gateways targeting the same
     Service may have different capabilities, especially if they have different underlying
     implementations.
 
-
     For example, in BackendTLSPolicy, the Policy attaches to a Service that is
     used as a backend in a HTTPRoute that is itself attached to a Gateway.
     In this case, the relevant object for status is the Gateway, and that is the
     ancestor object referred to in this status.
 
-
     Note that a parent is also an ancestor, so for objects where the parent is the
     relevant object for status, this struct SHOULD still be used.
-
 
     This struct is intended to be used in a slice that's effectively a map,
     with a composite key made up of the AncestorRef and the ControllerName.
 
     Attributes
     ----------
-    ancestorRef : GatewayNetworkingK8sIoV1alpha2BackendLBPolicyStatusAncestorsItems0AncestorRef, default is Undefined, required
+    ancestorRef : GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicyStatusAncestorsItems0AncestorRef, default is Undefined, required
         ancestor ref
-    conditions : [GatewayNetworkingK8sIoV1alpha2BackendLBPolicyStatusAncestorsItems0ConditionsItems0], default is Undefined, optional
+    conditions : [GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicyStatusAncestorsItems0ConditionsItems0], default is Undefined, optional
         Conditions describes the status of the Policy with respect to the given Ancestor.
     controllerName : str, default is Undefined, required
         ControllerName is a domain/path string that indicates the name of the
         controller that wrote this status. This corresponds with the
         controllerName field on GatewayClass.
 
-
         Example: "example.net/gateway-controller".
-
 
         The format of this field is DOMAIN "/" PATH, where DOMAIN and PATH are
         valid Kubernetes names
         (https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names).
-
 
         Controllers MUST populate this field when writing status. Controllers should ensure that
         entries to status populated with their ControllerName are cleaned up when they are no
@@ -318,9 +418,9 @@ schema GatewayNetworkingK8sIoV1alpha2BackendLBPolicyStatusAncestorsItems0:
     """
 
 
-    ancestorRef: GatewayNetworkingK8sIoV1alpha2BackendLBPolicyStatusAncestorsItems0AncestorRef
+    ancestorRef: GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicyStatusAncestorsItems0AncestorRef
 
-    conditions?: [GatewayNetworkingK8sIoV1alpha2BackendLBPolicyStatusAncestorsItems0ConditionsItems0]
+    conditions?: [GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicyStatusAncestorsItems0ConditionsItems0]
 
     controllerName: str
 
@@ -333,7 +433,7 @@ schema GatewayNetworkingK8sIoV1alpha2BackendLBPolicyStatusAncestorsItems0:
         _regex_match(str(controllerName), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*\/[A-Za-z0-9\/\-._~%!$&'()*+,;=:]+$")
 
 
-schema GatewayNetworkingK8sIoV1alpha2BackendLBPolicyStatusAncestorsItems0AncestorRef:
+schema GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicyStatusAncestorsItems0AncestorRef:
     r"""
     AncestorRef corresponds with a ParentRef in the spec that this
     PolicyAncestorStatus struct describes the status of.
@@ -346,29 +446,23 @@ schema GatewayNetworkingK8sIoV1alpha2BackendLBPolicyStatusAncestorsItems0Ancesto
         To set the core API group (such as for a "Service" kind referent),
         Group must be explicitly set to "" (empty string).
 
-
         Support: Core
     kind : str, default is "Gateway", optional
         Kind is kind of the referent.
 
-
         There are two kinds of parent resources with "Core" support:
-
 
         * Gateway (Gateway conformance profile)
         * Service (Mesh conformance profile, ClusterIP Services only)
-
 
         Support for other resources is Implementation-Specific.
     name : str, default is Undefined, required
         Name is the name of the referent.
 
-
         Support: Core
     namespace : str, default is Undefined, optional
         Namespace is the namespace of the referent. When unspecified, this refers
         to the local namespace of the Route.
-
 
         Note that there are specific rules for ParentRefs which cross namespace
         boundaries. Cross-namespace references are only valid if they are explicitly
@@ -377,11 +471,9 @@ schema GatewayNetworkingK8sIoV1alpha2BackendLBPolicyStatusAncestorsItems0Ancesto
         generic way to enable any other kind of cross-namespace reference.
 
 
-
         ParentRefs from a Route to a Service in the same namespace are "producer"
         routes, which apply default routing rules to inbound connections from
         any namespace to the Service.
-
 
         ParentRefs from a Route to a Service in a different namespace are
         "consumer" routes, and these routing rules are only applied to outbound
@@ -390,12 +482,10 @@ schema GatewayNetworkingK8sIoV1alpha2BackendLBPolicyStatusAncestorsItems0Ancesto
         ParentRef of the Route.
 
 
-
         Support: Core
     port : int, default is Undefined, optional
         Port is the network port this Route targets. It can be interpreted
         differently based on the type of parent resource.
-
 
         When the parent resource is a Gateway, this targets all listeners
         listening on the specified port that also support this kind of Route(and
@@ -406,17 +496,14 @@ schema GatewayNetworkingK8sIoV1alpha2BackendLBPolicyStatusAncestorsItems0Ancesto
         must match both specified values.
 
 
-
         When the parent resource is a Service, this targets a specific port in the
         Service spec. When both Port (experimental) and SectionName are specified,
         the name and port of the selected port must match both specified values.
 
 
-
         Implementations MAY choose to support other parent resources.
         Implementations supporting other types of parent resources MUST clearly
         document how/if Port is interpreted.
-
 
         For the purpose of status, an attachment is considered successful as
         long as the parent resource accepts it partially. For example, Gateway
@@ -426,12 +513,10 @@ schema GatewayNetworkingK8sIoV1alpha2BackendLBPolicyStatusAncestorsItems0Ancesto
         attached. If no Gateway listeners accept attachment from this Route,
         the Route MUST be considered detached from the Gateway.
 
-
         Support: Extended
     sectionName : str, default is Undefined, optional
         SectionName is the name of a section within the target resource. In the
         following resources, SectionName is interpreted as the following:
-
 
         * Gateway: Listener name. When both Port (experimental) and SectionName
         are specified, the name and port of the selected listener must match
@@ -440,11 +525,9 @@ schema GatewayNetworkingK8sIoV1alpha2BackendLBPolicyStatusAncestorsItems0Ancesto
         are specified, the name and port of the selected listener must match
         both specified values.
 
-
         Implementations MAY choose to support attaching Routes to other resources.
         If that is the case, they MUST clearly document how SectionName is
         interpreted.
-
 
         When unspecified (empty string), this will reference the entire resource.
         For the purpose of status, an attachment is considered successful if at
@@ -454,7 +537,6 @@ schema GatewayNetworkingK8sIoV1alpha2BackendLBPolicyStatusAncestorsItems0Ancesto
         the referencing Route, the Route MUST be considered successfully
         attached. If no Gateway listeners accept attachment from this Route, the
         Route MUST be considered detached from the Gateway.
-
 
         Support: Core
     """
@@ -491,25 +573,9 @@ schema GatewayNetworkingK8sIoV1alpha2BackendLBPolicyStatusAncestorsItems0Ancesto
         _regex_match(str(sectionName), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if sectionName
 
 
-schema GatewayNetworkingK8sIoV1alpha2BackendLBPolicyStatusAncestorsItems0ConditionsItems0:
+schema GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicyStatusAncestorsItems0ConditionsItems0:
     r"""
     Condition contains details for one aspect of the current state of this API Resource.
-    ---
-    This struct is intended for direct use as an array at the field path .status.conditions.  For example,
-
-
-    	type FooStatus struct{
-    	    // Represents the observations of a foo's current state.
-    	    // Known .status.conditions.type are: "Available", "Progressing", and "Degraded"
-    	    // +patchMergeKey=type
-    	    // +patchStrategy=merge
-    	    // +listType=map
-    	    // +listMapKey=type
-    	    Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`
-
-
-    	    // other fields
-    	}
 
     Attributes
     ----------
@@ -533,10 +599,6 @@ schema GatewayNetworkingK8sIoV1alpha2BackendLBPolicyStatusAncestorsItems0Conditi
         status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
         type of condition in CamelCase or in foo.example.com/CamelCase.
-        ---
-        Many .condition.type values are consistent across resources like Available, but because arbitrary conditions can be
-        useful (see .node.status.conditions), the ability to deconflict is important.
-        The regex it matches is (dns1123SubdomainFmt/)?(qualifiedNameFmt)
     """
 
 
