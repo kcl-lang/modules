@@ -1,0 +1,25 @@
+version: 0.38.1
+name: mariadb-operator
+displayName: mariadb-operator
+createdAt: "2025-07-21T09:07:54Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `mariadb-operator` with tag `0.38.1` as dependency
+  ```
+  kcl mod add mariadb-operator:0.38.1
+  ```
+
+  #### Pull `mariadb-operator` with tag `0.38.1` to local
+  ```
+  kcl mod pull mariadb-operator:0.38.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
