@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ApplicationSet:
-    """
+    r"""
     argoproj io v1alpha1 application set
 
     Attributes
@@ -36,17 +36,21 @@ schema ApplicationSet:
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpec:
-    """
+    r"""
     argoproj io v1alpha1 application set spec
 
     Attributes
     ----------
+    applyNestedSelectors : bool, default is Undefined, optional
+        apply nested selectors
     generators : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0], default is Undefined, required
         generators
     goTemplate : bool, default is Undefined, optional
         go template
     goTemplateOptions : [str], default is Undefined, optional
         go template options
+    ignoreApplicationDifferences : [ArgoprojIoV1alpha1ApplicationSetSpecIgnoreApplicationDifferencesItems0], default is Undefined, optional
+        ignore application differences
     preservedFields : ArgoprojIoV1alpha1ApplicationSetSpecPreservedFields, default is Undefined, optional
         preserved fields
     strategy : ArgoprojIoV1alpha1ApplicationSetSpecStrategy, default is Undefined, optional
@@ -55,14 +59,20 @@ schema ArgoprojIoV1alpha1ApplicationSetSpec:
         sync policy
     template : ArgoprojIoV1alpha1ApplicationSetSpecTemplate, default is Undefined, required
         template
+    templatePatch : str, default is Undefined, optional
+        template patch
     """
 
+
+    applyNestedSelectors?: bool
 
     generators: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0]
 
     goTemplate?: bool
 
     goTemplateOptions?: [str]
+
+    ignoreApplicationDifferences?: [ArgoprojIoV1alpha1ApplicationSetSpecIgnoreApplicationDifferencesItems0]
 
     preservedFields?: ArgoprojIoV1alpha1ApplicationSetSpecPreservedFields
 
@@ -72,9 +82,11 @@ schema ArgoprojIoV1alpha1ApplicationSetSpec:
 
     template: ArgoprojIoV1alpha1ApplicationSetSpecTemplate
 
+    templatePatch?: str
+
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0
 
     Attributes
@@ -91,6 +103,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0:
         matrix
     merge : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0Merge, default is Undefined, optional
         merge
+    plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0Plugin, default is Undefined, optional
+        plugin
     pullRequest : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequest, default is Undefined, optional
         pull request
     scmProvider : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProvider, default is Undefined, optional
@@ -112,6 +126,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0:
 
     merge?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0Merge
 
+    plugin?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0Plugin
+
     pullRequest?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequest
 
     scmProvider?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProvider
@@ -120,7 +136,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0:
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResource:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 cluster decision resource
 
     Attributes
@@ -154,7 +170,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceLabelSelector:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 cluster decision resource label selector
 
     Attributes
@@ -172,7 +188,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceLabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 cluster decision resource label selector match expressions items0
 
     Attributes
@@ -194,7 +210,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplate:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 cluster decision resource template
 
     Attributes
@@ -212,7 +228,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateMetadata:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 cluster decision resource template metadata
 
     Attributes
@@ -242,7 +258,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpec:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 cluster decision resource template spec
 
     Attributes
@@ -259,6 +275,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
         revision history limit
     source : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSource, default is Undefined, optional
         source
+    sourceHydrator : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydrator, default is Undefined, optional
+        source hydrator
     sources : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0], default is Undefined, optional
         sources
     syncPolicy : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSyncPolicy, default is Undefined, optional
@@ -278,13 +296,15 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
 
     source?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSource
 
+    sourceHydrator?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydrator
+
     sources?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0]
 
     syncPolicy?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSyncPolicy
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecDestination:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 cluster decision resource template spec destination
 
     Attributes
@@ -306,7 +326,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecIgnoreDifferencesItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 cluster decision resource template spec ignore differences items0
 
     Attributes
@@ -344,7 +364,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecInfoItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 cluster decision resource template spec info items0
 
     Attributes
@@ -362,7 +382,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSource:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 cluster decision resource template spec source
 
     Attributes
@@ -375,6 +395,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceKustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcePlugin, default is Undefined, optional
@@ -396,6 +418,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceKustomize
 
+    name?: str
+
     path?: str
 
     plugin?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcePlugin
@@ -408,7 +432,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceDirectory:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 cluster decision resource template spec source directory
 
     Attributes
@@ -434,7 +458,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceDirectoryJsonnet:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 cluster decision resource template spec source directory jsonnet
 
     Attributes
@@ -456,7 +480,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceDirectoryJsonnetExtVarsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 cluster decision resource template spec source directory jsonnet ext vars items0
 
     Attributes
@@ -478,7 +502,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceDirectoryJsonnetTlasItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 cluster decision resource template spec source directory jsonnet tlas items0
 
     Attributes
@@ -500,15 +524,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHelm:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 cluster decision resource template spec source helm
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     fileParameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHelmFileParametersItems0], default is Undefined, optional
         file parameters
     ignoreMissingValueFiles : bool, default is Undefined, optional
         ignore missing value files
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    namespace : str, default is Undefined, optional
+        namespace
     parameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHelmParametersItems0], default is Undefined, optional
         parameters
     passCredentials : bool, default is Undefined, optional
@@ -517,18 +547,30 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
         values
+    valuesObject : any, default is Undefined, optional
+        values object
     version : str, default is Undefined, optional
         version
     """
 
 
+    apiVersions?: [str]
+
     fileParameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHelmFileParametersItems0]
 
     ignoreMissingValueFiles?: bool
+
+    kubeVersion?: str
+
+    namespace?: str
 
     parameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHelmParametersItems0]
 
@@ -538,15 +580,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
 
     skipCrds?: bool
 
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
+
     valueFiles?: [str]
 
     values?: str
+
+    valuesObject?: any
 
     version?: str
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHelmFileParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 cluster decision resource template spec source helm file parameters items0
 
     Attributes
@@ -564,7 +612,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHelmParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 cluster decision resource template spec source helm parameters items0
 
     Attributes
@@ -585,30 +633,120 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
     value?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceKustomize:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydrator:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 cluster decision resource template spec source hydrator
+
+    Attributes
+    ----------
+    drySource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydratorDrySource, default is Undefined, required
+        dry source
+    hydrateTo : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydratorHydrateTo, default is Undefined, optional
+        hydrate to
+    syncSource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydratorSyncSource, default is Undefined, required
+        sync source
     """
+
+
+    drySource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydratorDrySource
+
+    hydrateTo?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydratorHydrateTo
+
+    syncSource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydratorSyncSource
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydratorDrySource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 cluster decision resource template spec source hydrator dry source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    repoURL : str, default is Undefined, required
+        repo URL
+    targetRevision : str, default is Undefined, required
+        target revision
+    """
+
+
+    path: str
+
+    repoURL: str
+
+    targetRevision: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydratorHydrateTo:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 cluster decision resource template spec source hydrator hydrate to
+
+    Attributes
+    ----------
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydratorSyncSource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 cluster decision resource template spec source hydrator sync source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    path: str
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceKustomize:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 cluster decision resource template spec source kustomize
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     commonAnnotations : {str:str}, default is Undefined, optional
         common annotations
     commonAnnotationsEnvsubst : bool, default is Undefined, optional
         common annotations envsubst
     commonLabels : {str:str}, default is Undefined, optional
         common labels
+    components : [str], default is Undefined, optional
+        components
     forceCommonAnnotations : bool, default is Undefined, optional
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
+    labelWithoutSelector : bool, default is Undefined, optional
+        label without selector
     namePrefix : str, default is Undefined, optional
         name prefix
     nameSuffix : str, default is Undefined, optional
         name suffix
     namespace : str, default is Undefined, optional
         namespace
+    patches : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceKustomizePatchesItems0], default is Undefined, optional
+        patches
     replicas : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceKustomizeReplicasItems0], default is Undefined, optional
         replicas
     version : str, default is Undefined, optional
@@ -616,17 +754,29 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
     """
 
 
+    apiVersions?: [str]
+
     commonAnnotations?: {str:str}
 
     commonAnnotationsEnvsubst?: bool
 
     commonLabels?: {str:str}
 
+    components?: [str]
+
     forceCommonAnnotations?: bool
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
+
+    kubeVersion?: str
+
+    labelIncludeTemplates?: bool
+
+    labelWithoutSelector?: bool
 
     namePrefix?: str
 
@@ -634,13 +784,79 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
 
     namespace?: str
 
+    patches?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceKustomizePatchesItems0]
+
     replicas?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceKustomizeReplicasItems0]
 
     version?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceKustomizeReplicasItems0:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceKustomizePatchesItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 cluster decision resource template spec source kustomize patches items0
+
+    Attributes
+    ----------
+    options : {str:bool}, default is Undefined, optional
+        options
+    patch : str, default is Undefined, optional
+        patch
+    path : str, default is Undefined, optional
+        path
+    target : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceKustomizePatchesItems0Target, default is Undefined, optional
+        target
     """
+
+
+    options?: {str:bool}
+
+    patch?: str
+
+    path?: str
+
+    target?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceKustomizePatchesItems0Target
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceKustomizePatchesItems0Target:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 cluster decision resource template spec source kustomize patches items0 target
+
+    Attributes
+    ----------
+    annotationSelector : str, default is Undefined, optional
+        annotation selector
+    group : str, default is Undefined, optional
+        group
+    kind : str, default is Undefined, optional
+        kind
+    labelSelector : str, default is Undefined, optional
+        label selector
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    annotationSelector?: str
+
+    group?: str
+
+    kind?: str
+
+    labelSelector?: str
+
+    name?: str
+
+    namespace?: str
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceKustomizeReplicasItems0:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 cluster decision resource template spec source kustomize replicas items0
 
     Attributes
@@ -658,7 +874,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcePlugin:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 cluster decision resource template spec source plugin
 
     Attributes
@@ -680,7 +896,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcePluginEnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 cluster decision resource template spec source plugin env items0
 
     Attributes
@@ -698,7 +914,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcePluginParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 cluster decision resource template spec source plugin parameters items0
 
     Attributes
@@ -724,7 +940,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 cluster decision resource template spec sources items0
 
     Attributes
@@ -737,6 +953,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0Kustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0Plugin, default is Undefined, optional
@@ -758,6 +976,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0Kustomize
 
+    name?: str
+
     path?: str
 
     plugin?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0Plugin
@@ -770,7 +990,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0Directory:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 cluster decision resource template spec sources items0 directory
 
     Attributes
@@ -796,7 +1016,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0DirectoryJsonnet:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 cluster decision resource template spec sources items0 directory jsonnet
 
     Attributes
@@ -818,7 +1038,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0DirectoryJsonnetExtVarsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 cluster decision resource template spec sources items0 directory jsonnet ext vars items0
 
     Attributes
@@ -840,7 +1060,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0DirectoryJsonnetTlasItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 cluster decision resource template spec sources items0 directory jsonnet tlas items0
 
     Attributes
@@ -862,15 +1082,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0Helm:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 cluster decision resource template spec sources items0 helm
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     fileParameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0HelmFileParametersItems0], default is Undefined, optional
         file parameters
     ignoreMissingValueFiles : bool, default is Undefined, optional
         ignore missing value files
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    namespace : str, default is Undefined, optional
+        namespace
     parameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0HelmParametersItems0], default is Undefined, optional
         parameters
     passCredentials : bool, default is Undefined, optional
@@ -879,18 +1105,30 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
         values
+    valuesObject : any, default is Undefined, optional
+        values object
     version : str, default is Undefined, optional
         version
     """
 
 
+    apiVersions?: [str]
+
     fileParameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0HelmFileParametersItems0]
 
     ignoreMissingValueFiles?: bool
+
+    kubeVersion?: str
+
+    namespace?: str
 
     parameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0HelmParametersItems0]
 
@@ -900,15 +1138,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
 
     skipCrds?: bool
 
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
+
     valueFiles?: [str]
 
     values?: str
+
+    valuesObject?: any
 
     version?: str
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0HelmFileParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 cluster decision resource template spec sources items0 helm file parameters items0
 
     Attributes
@@ -926,7 +1170,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0HelmParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 cluster decision resource template spec sources items0 helm parameters items0
 
     Attributes
@@ -948,29 +1192,43 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0Kustomize:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 cluster decision resource template spec sources items0 kustomize
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     commonAnnotations : {str:str}, default is Undefined, optional
         common annotations
     commonAnnotationsEnvsubst : bool, default is Undefined, optional
         common annotations envsubst
     commonLabels : {str:str}, default is Undefined, optional
         common labels
+    components : [str], default is Undefined, optional
+        components
     forceCommonAnnotations : bool, default is Undefined, optional
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
+    labelWithoutSelector : bool, default is Undefined, optional
+        label without selector
     namePrefix : str, default is Undefined, optional
         name prefix
     nameSuffix : str, default is Undefined, optional
         name suffix
     namespace : str, default is Undefined, optional
         namespace
+    patches : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0KustomizePatchesItems0], default is Undefined, optional
+        patches
     replicas : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0KustomizeReplicasItems0], default is Undefined, optional
         replicas
     version : str, default is Undefined, optional
@@ -978,17 +1236,29 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
     """
 
 
+    apiVersions?: [str]
+
     commonAnnotations?: {str:str}
 
     commonAnnotationsEnvsubst?: bool
 
     commonLabels?: {str:str}
 
+    components?: [str]
+
     forceCommonAnnotations?: bool
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
+
+    kubeVersion?: str
+
+    labelIncludeTemplates?: bool
+
+    labelWithoutSelector?: bool
 
     namePrefix?: str
 
@@ -996,13 +1266,79 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
 
     namespace?: str
 
+    patches?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0KustomizePatchesItems0]
+
     replicas?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0KustomizeReplicasItems0]
 
     version?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0KustomizeReplicasItems0:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0KustomizePatchesItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 cluster decision resource template spec sources items0 kustomize patches items0
+
+    Attributes
+    ----------
+    options : {str:bool}, default is Undefined, optional
+        options
+    patch : str, default is Undefined, optional
+        patch
+    path : str, default is Undefined, optional
+        path
+    target : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0KustomizePatchesItems0Target, default is Undefined, optional
+        target
     """
+
+
+    options?: {str:bool}
+
+    patch?: str
+
+    path?: str
+
+    target?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0KustomizePatchesItems0Target
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0KustomizePatchesItems0Target:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 cluster decision resource template spec sources items0 kustomize patches items0 target
+
+    Attributes
+    ----------
+    annotationSelector : str, default is Undefined, optional
+        annotation selector
+    group : str, default is Undefined, optional
+        group
+    kind : str, default is Undefined, optional
+        kind
+    labelSelector : str, default is Undefined, optional
+        label selector
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    annotationSelector?: str
+
+    group?: str
+
+    kind?: str
+
+    labelSelector?: str
+
+    name?: str
+
+    namespace?: str
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0KustomizeReplicasItems0:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 cluster decision resource template spec sources items0 kustomize replicas items0
 
     Attributes
@@ -1020,7 +1356,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0Plugin:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 cluster decision resource template spec sources items0 plugin
 
     Attributes
@@ -1042,7 +1378,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0PluginEnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 cluster decision resource template spec sources items0 plugin env items0
 
     Attributes
@@ -1060,7 +1396,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0PluginParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 cluster decision resource template spec sources items0 plugin parameters items0
 
     Attributes
@@ -1086,7 +1422,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSyncPolicy:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 cluster decision resource template spec sync policy
 
     Attributes
@@ -1112,7 +1448,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSyncPolicyAutomated:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 cluster decision resource template spec sync policy automated
 
     Attributes
@@ -1134,7 +1470,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSyncPolicyManagedNamespaceMetadata:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 cluster decision resource template spec sync policy managed namespace metadata
 
     Attributes
@@ -1152,7 +1488,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSyncPolicyRetry:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 cluster decision resource template spec sync policy retry
 
     Attributes
@@ -1170,7 +1506,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSyncPolicyRetryBackoff:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 cluster decision resource template spec sync policy retry backoff
 
     Attributes
@@ -1192,11 +1528,13 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0Clusters:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 clusters
 
     Attributes
     ----------
+    flatList : bool, default is Undefined, optional
+        flat list
     selector : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersSelector, default is Undefined, optional
         selector
     template : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplate, default is Undefined, optional
@@ -1206,6 +1544,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0Clusters:
     """
 
 
+    flatList?: bool
+
     selector?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersSelector
 
     template?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplate
@@ -1214,7 +1554,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0Clusters:
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersSelector:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 clusters selector
 
     Attributes
@@ -1232,7 +1572,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersSelector:
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 clusters selector match expressions items0
 
     Attributes
@@ -1254,7 +1594,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersSelectorMatch
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplate:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 clusters template
 
     Attributes
@@ -1272,7 +1612,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplate:
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateMetadata:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 clusters template metadata
 
     Attributes
@@ -1302,7 +1642,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateMetad
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpec:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 clusters template spec
 
     Attributes
@@ -1319,6 +1659,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpec:
         revision history limit
     source : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSource, default is Undefined, optional
         source
+    sourceHydrator : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourceHydrator, default is Undefined, optional
+        source hydrator
     sources : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourcesItems0], default is Undefined, optional
         sources
     syncPolicy : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSyncPolicy, default is Undefined, optional
@@ -1338,13 +1680,15 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpec:
 
     source?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSource
 
+    sourceHydrator?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourceHydrator
+
     sources?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourcesItems0]
 
     syncPolicy?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSyncPolicy
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecDestination:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 clusters template spec destination
 
     Attributes
@@ -1366,7 +1710,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecD
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecIgnoreDifferencesItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 clusters template spec ignore differences items0
 
     Attributes
@@ -1404,7 +1748,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecI
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecInfoItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 clusters template spec info items0
 
     Attributes
@@ -1422,7 +1766,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecI
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSource:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 clusters template spec source
 
     Attributes
@@ -1435,6 +1779,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecS
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourceKustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourcePlugin, default is Undefined, optional
@@ -1456,6 +1802,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecS
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourceKustomize
 
+    name?: str
+
     path?: str
 
     plugin?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourcePlugin
@@ -1468,7 +1816,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecS
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourceDirectory:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 clusters template spec source directory
 
     Attributes
@@ -1494,7 +1842,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecS
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourceDirectoryJsonnet:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 clusters template spec source directory jsonnet
 
     Attributes
@@ -1516,7 +1864,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecS
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourceDirectoryJsonnetExtVarsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 clusters template spec source directory jsonnet ext vars items0
 
     Attributes
@@ -1538,7 +1886,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecS
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourceDirectoryJsonnetTlasItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 clusters template spec source directory jsonnet tlas items0
 
     Attributes
@@ -1560,15 +1908,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecS
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourceHelm:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 clusters template spec source helm
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     fileParameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourceHelmFileParametersItems0], default is Undefined, optional
         file parameters
     ignoreMissingValueFiles : bool, default is Undefined, optional
         ignore missing value files
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    namespace : str, default is Undefined, optional
+        namespace
     parameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourceHelmParametersItems0], default is Undefined, optional
         parameters
     passCredentials : bool, default is Undefined, optional
@@ -1577,18 +1931,30 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecS
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
         values
+    valuesObject : any, default is Undefined, optional
+        values object
     version : str, default is Undefined, optional
         version
     """
 
 
+    apiVersions?: [str]
+
     fileParameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourceHelmFileParametersItems0]
 
     ignoreMissingValueFiles?: bool
+
+    kubeVersion?: str
+
+    namespace?: str
 
     parameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourceHelmParametersItems0]
 
@@ -1598,15 +1964,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecS
 
     skipCrds?: bool
 
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
+
     valueFiles?: [str]
 
     values?: str
+
+    valuesObject?: any
 
     version?: str
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourceHelmFileParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 clusters template spec source helm file parameters items0
 
     Attributes
@@ -1624,7 +1996,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecS
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourceHelmParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 clusters template spec source helm parameters items0
 
     Attributes
@@ -1645,30 +2017,120 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecS
     value?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourceKustomize:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourceHydrator:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 clusters template spec source hydrator
+
+    Attributes
+    ----------
+    drySource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourceHydratorDrySource, default is Undefined, required
+        dry source
+    hydrateTo : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourceHydratorHydrateTo, default is Undefined, optional
+        hydrate to
+    syncSource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourceHydratorSyncSource, default is Undefined, required
+        sync source
     """
+
+
+    drySource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourceHydratorDrySource
+
+    hydrateTo?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourceHydratorHydrateTo
+
+    syncSource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourceHydratorSyncSource
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourceHydratorDrySource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 clusters template spec source hydrator dry source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    repoURL : str, default is Undefined, required
+        repo URL
+    targetRevision : str, default is Undefined, required
+        target revision
+    """
+
+
+    path: str
+
+    repoURL: str
+
+    targetRevision: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourceHydratorHydrateTo:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 clusters template spec source hydrator hydrate to
+
+    Attributes
+    ----------
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourceHydratorSyncSource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 clusters template spec source hydrator sync source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    path: str
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourceKustomize:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 clusters template spec source kustomize
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     commonAnnotations : {str:str}, default is Undefined, optional
         common annotations
     commonAnnotationsEnvsubst : bool, default is Undefined, optional
         common annotations envsubst
     commonLabels : {str:str}, default is Undefined, optional
         common labels
+    components : [str], default is Undefined, optional
+        components
     forceCommonAnnotations : bool, default is Undefined, optional
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
+    labelWithoutSelector : bool, default is Undefined, optional
+        label without selector
     namePrefix : str, default is Undefined, optional
         name prefix
     nameSuffix : str, default is Undefined, optional
         name suffix
     namespace : str, default is Undefined, optional
         namespace
+    patches : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourceKustomizePatchesItems0], default is Undefined, optional
+        patches
     replicas : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourceKustomizeReplicasItems0], default is Undefined, optional
         replicas
     version : str, default is Undefined, optional
@@ -1676,17 +2138,29 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecS
     """
 
 
+    apiVersions?: [str]
+
     commonAnnotations?: {str:str}
 
     commonAnnotationsEnvsubst?: bool
 
     commonLabels?: {str:str}
 
+    components?: [str]
+
     forceCommonAnnotations?: bool
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
+
+    kubeVersion?: str
+
+    labelIncludeTemplates?: bool
+
+    labelWithoutSelector?: bool
 
     namePrefix?: str
 
@@ -1694,13 +2168,79 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecS
 
     namespace?: str
 
+    patches?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourceKustomizePatchesItems0]
+
     replicas?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourceKustomizeReplicasItems0]
 
     version?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourceKustomizeReplicasItems0:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourceKustomizePatchesItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 clusters template spec source kustomize patches items0
+
+    Attributes
+    ----------
+    options : {str:bool}, default is Undefined, optional
+        options
+    patch : str, default is Undefined, optional
+        patch
+    path : str, default is Undefined, optional
+        path
+    target : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourceKustomizePatchesItems0Target, default is Undefined, optional
+        target
     """
+
+
+    options?: {str:bool}
+
+    patch?: str
+
+    path?: str
+
+    target?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourceKustomizePatchesItems0Target
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourceKustomizePatchesItems0Target:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 clusters template spec source kustomize patches items0 target
+
+    Attributes
+    ----------
+    annotationSelector : str, default is Undefined, optional
+        annotation selector
+    group : str, default is Undefined, optional
+        group
+    kind : str, default is Undefined, optional
+        kind
+    labelSelector : str, default is Undefined, optional
+        label selector
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    annotationSelector?: str
+
+    group?: str
+
+    kind?: str
+
+    labelSelector?: str
+
+    name?: str
+
+    namespace?: str
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourceKustomizeReplicasItems0:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 clusters template spec source kustomize replicas items0
 
     Attributes
@@ -1718,7 +2258,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecS
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourcePlugin:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 clusters template spec source plugin
 
     Attributes
@@ -1740,7 +2280,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecS
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourcePluginEnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 clusters template spec source plugin env items0
 
     Attributes
@@ -1758,7 +2298,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecS
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourcePluginParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 clusters template spec source plugin parameters items0
 
     Attributes
@@ -1784,7 +2324,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecS
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourcesItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 clusters template spec sources items0
 
     Attributes
@@ -1797,6 +2337,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecS
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourcesItems0Kustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourcesItems0Plugin, default is Undefined, optional
@@ -1818,6 +2360,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecS
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourcesItems0Kustomize
 
+    name?: str
+
     path?: str
 
     plugin?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourcesItems0Plugin
@@ -1830,7 +2374,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecS
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourcesItems0Directory:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 clusters template spec sources items0 directory
 
     Attributes
@@ -1856,7 +2400,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecS
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourcesItems0DirectoryJsonnet:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 clusters template spec sources items0 directory jsonnet
 
     Attributes
@@ -1878,7 +2422,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecS
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourcesItems0DirectoryJsonnetExtVarsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 clusters template spec sources items0 directory jsonnet ext vars items0
 
     Attributes
@@ -1900,7 +2444,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecS
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourcesItems0DirectoryJsonnetTlasItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 clusters template spec sources items0 directory jsonnet tlas items0
 
     Attributes
@@ -1922,15 +2466,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecS
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourcesItems0Helm:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 clusters template spec sources items0 helm
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     fileParameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourcesItems0HelmFileParametersItems0], default is Undefined, optional
         file parameters
     ignoreMissingValueFiles : bool, default is Undefined, optional
         ignore missing value files
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    namespace : str, default is Undefined, optional
+        namespace
     parameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourcesItems0HelmParametersItems0], default is Undefined, optional
         parameters
     passCredentials : bool, default is Undefined, optional
@@ -1939,18 +2489,30 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecS
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
         values
+    valuesObject : any, default is Undefined, optional
+        values object
     version : str, default is Undefined, optional
         version
     """
 
 
+    apiVersions?: [str]
+
     fileParameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourcesItems0HelmFileParametersItems0]
 
     ignoreMissingValueFiles?: bool
+
+    kubeVersion?: str
+
+    namespace?: str
 
     parameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourcesItems0HelmParametersItems0]
 
@@ -1960,15 +2522,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecS
 
     skipCrds?: bool
 
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
+
     valueFiles?: [str]
 
     values?: str
+
+    valuesObject?: any
 
     version?: str
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourcesItems0HelmFileParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 clusters template spec sources items0 helm file parameters items0
 
     Attributes
@@ -1986,7 +2554,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecS
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourcesItems0HelmParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 clusters template spec sources items0 helm parameters items0
 
     Attributes
@@ -2008,29 +2576,43 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecS
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourcesItems0Kustomize:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 clusters template spec sources items0 kustomize
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     commonAnnotations : {str:str}, default is Undefined, optional
         common annotations
     commonAnnotationsEnvsubst : bool, default is Undefined, optional
         common annotations envsubst
     commonLabels : {str:str}, default is Undefined, optional
         common labels
+    components : [str], default is Undefined, optional
+        components
     forceCommonAnnotations : bool, default is Undefined, optional
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
+    labelWithoutSelector : bool, default is Undefined, optional
+        label without selector
     namePrefix : str, default is Undefined, optional
         name prefix
     nameSuffix : str, default is Undefined, optional
         name suffix
     namespace : str, default is Undefined, optional
         namespace
+    patches : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourcesItems0KustomizePatchesItems0], default is Undefined, optional
+        patches
     replicas : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourcesItems0KustomizeReplicasItems0], default is Undefined, optional
         replicas
     version : str, default is Undefined, optional
@@ -2038,17 +2620,29 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecS
     """
 
 
+    apiVersions?: [str]
+
     commonAnnotations?: {str:str}
 
     commonAnnotationsEnvsubst?: bool
 
     commonLabels?: {str:str}
 
+    components?: [str]
+
     forceCommonAnnotations?: bool
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
+
+    kubeVersion?: str
+
+    labelIncludeTemplates?: bool
+
+    labelWithoutSelector?: bool
 
     namePrefix?: str
 
@@ -2056,13 +2650,79 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecS
 
     namespace?: str
 
+    patches?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourcesItems0KustomizePatchesItems0]
+
     replicas?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourcesItems0KustomizeReplicasItems0]
 
     version?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourcesItems0KustomizeReplicasItems0:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourcesItems0KustomizePatchesItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 clusters template spec sources items0 kustomize patches items0
+
+    Attributes
+    ----------
+    options : {str:bool}, default is Undefined, optional
+        options
+    patch : str, default is Undefined, optional
+        patch
+    path : str, default is Undefined, optional
+        path
+    target : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourcesItems0KustomizePatchesItems0Target, default is Undefined, optional
+        target
     """
+
+
+    options?: {str:bool}
+
+    patch?: str
+
+    path?: str
+
+    target?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourcesItems0KustomizePatchesItems0Target
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourcesItems0KustomizePatchesItems0Target:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 clusters template spec sources items0 kustomize patches items0 target
+
+    Attributes
+    ----------
+    annotationSelector : str, default is Undefined, optional
+        annotation selector
+    group : str, default is Undefined, optional
+        group
+    kind : str, default is Undefined, optional
+        kind
+    labelSelector : str, default is Undefined, optional
+        label selector
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    annotationSelector?: str
+
+    group?: str
+
+    kind?: str
+
+    labelSelector?: str
+
+    name?: str
+
+    namespace?: str
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourcesItems0KustomizeReplicasItems0:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 clusters template spec sources items0 kustomize replicas items0
 
     Attributes
@@ -2080,7 +2740,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecS
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourcesItems0Plugin:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 clusters template spec sources items0 plugin
 
     Attributes
@@ -2102,7 +2762,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecS
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourcesItems0PluginEnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 clusters template spec sources items0 plugin env items0
 
     Attributes
@@ -2120,7 +2780,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecS
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourcesItems0PluginParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 clusters template spec sources items0 plugin parameters items0
 
     Attributes
@@ -2146,7 +2806,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecS
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSyncPolicy:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 clusters template spec sync policy
 
     Attributes
@@ -2172,7 +2832,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecS
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSyncPolicyAutomated:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 clusters template spec sync policy automated
 
     Attributes
@@ -2194,7 +2854,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecS
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSyncPolicyManagedNamespaceMetadata:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 clusters template spec sync policy managed namespace metadata
 
     Attributes
@@ -2212,7 +2872,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecS
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSyncPolicyRetry:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 clusters template spec sync policy retry
 
     Attributes
@@ -2230,7 +2890,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecS
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSyncPolicyRetryBackoff:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 clusters template spec sync policy retry backoff
 
     Attributes
@@ -2252,7 +2912,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecS
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0Git:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 git
 
     Attributes
@@ -2294,7 +2954,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0Git:
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitDirectoriesItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 git directories items0
 
     Attributes
@@ -2312,7 +2972,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitDirectoriesItems0:
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitFilesItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 git files items0
 
     Attributes
@@ -2326,7 +2986,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitFilesItems0:
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplate:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 git template
 
     Attributes
@@ -2344,7 +3004,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplate:
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateMetadata:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 git template metadata
 
     Attributes
@@ -2374,7 +3034,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateMetadata:
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpec:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 git template spec
 
     Attributes
@@ -2391,6 +3051,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpec:
         revision history limit
     source : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSource, default is Undefined, optional
         source
+    sourceHydrator : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourceHydrator, default is Undefined, optional
+        source hydrator
     sources : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourcesItems0], default is Undefined, optional
         sources
     syncPolicy : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSyncPolicy, default is Undefined, optional
@@ -2410,13 +3072,15 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpec:
 
     source?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSource
 
+    sourceHydrator?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourceHydrator
+
     sources?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourcesItems0]
 
     syncPolicy?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSyncPolicy
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecDestination:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 git template spec destination
 
     Attributes
@@ -2438,7 +3102,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecDestin
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecIgnoreDifferencesItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 git template spec ignore differences items0
 
     Attributes
@@ -2476,7 +3140,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecIgnore
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecInfoItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 git template spec info items0
 
     Attributes
@@ -2494,7 +3158,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecInfoIt
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSource:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 git template spec source
 
     Attributes
@@ -2507,6 +3171,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSource
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourceKustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourcePlugin, default is Undefined, optional
@@ -2528,6 +3194,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSource
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourceKustomize
 
+    name?: str
+
     path?: str
 
     plugin?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourcePlugin
@@ -2540,7 +3208,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSource
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourceDirectory:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 git template spec source directory
 
     Attributes
@@ -2566,7 +3234,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSource
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourceDirectoryJsonnet:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 git template spec source directory jsonnet
 
     Attributes
@@ -2588,7 +3256,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSource
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourceDirectoryJsonnetExtVarsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 git template spec source directory jsonnet ext vars items0
 
     Attributes
@@ -2610,7 +3278,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSource
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourceDirectoryJsonnetTlasItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 git template spec source directory jsonnet tlas items0
 
     Attributes
@@ -2632,15 +3300,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSource
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourceHelm:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 git template spec source helm
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     fileParameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourceHelmFileParametersItems0], default is Undefined, optional
         file parameters
     ignoreMissingValueFiles : bool, default is Undefined, optional
         ignore missing value files
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    namespace : str, default is Undefined, optional
+        namespace
     parameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourceHelmParametersItems0], default is Undefined, optional
         parameters
     passCredentials : bool, default is Undefined, optional
@@ -2649,18 +3323,30 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSource
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
         values
+    valuesObject : any, default is Undefined, optional
+        values object
     version : str, default is Undefined, optional
         version
     """
 
 
+    apiVersions?: [str]
+
     fileParameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourceHelmFileParametersItems0]
 
     ignoreMissingValueFiles?: bool
+
+    kubeVersion?: str
+
+    namespace?: str
 
     parameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourceHelmParametersItems0]
 
@@ -2670,15 +3356,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSource
 
     skipCrds?: bool
 
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
+
     valueFiles?: [str]
 
     values?: str
+
+    valuesObject?: any
 
     version?: str
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourceHelmFileParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 git template spec source helm file parameters items0
 
     Attributes
@@ -2696,7 +3388,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSource
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourceHelmParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 git template spec source helm parameters items0
 
     Attributes
@@ -2717,30 +3409,120 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSource
     value?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourceKustomize:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourceHydrator:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 git template spec source hydrator
+
+    Attributes
+    ----------
+    drySource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourceHydratorDrySource, default is Undefined, required
+        dry source
+    hydrateTo : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourceHydratorHydrateTo, default is Undefined, optional
+        hydrate to
+    syncSource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourceHydratorSyncSource, default is Undefined, required
+        sync source
     """
+
+
+    drySource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourceHydratorDrySource
+
+    hydrateTo?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourceHydratorHydrateTo
+
+    syncSource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourceHydratorSyncSource
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourceHydratorDrySource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 git template spec source hydrator dry source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    repoURL : str, default is Undefined, required
+        repo URL
+    targetRevision : str, default is Undefined, required
+        target revision
+    """
+
+
+    path: str
+
+    repoURL: str
+
+    targetRevision: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourceHydratorHydrateTo:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 git template spec source hydrator hydrate to
+
+    Attributes
+    ----------
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourceHydratorSyncSource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 git template spec source hydrator sync source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    path: str
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourceKustomize:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 git template spec source kustomize
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     commonAnnotations : {str:str}, default is Undefined, optional
         common annotations
     commonAnnotationsEnvsubst : bool, default is Undefined, optional
         common annotations envsubst
     commonLabels : {str:str}, default is Undefined, optional
         common labels
+    components : [str], default is Undefined, optional
+        components
     forceCommonAnnotations : bool, default is Undefined, optional
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
+    labelWithoutSelector : bool, default is Undefined, optional
+        label without selector
     namePrefix : str, default is Undefined, optional
         name prefix
     nameSuffix : str, default is Undefined, optional
         name suffix
     namespace : str, default is Undefined, optional
         namespace
+    patches : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourceKustomizePatchesItems0], default is Undefined, optional
+        patches
     replicas : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourceKustomizeReplicasItems0], default is Undefined, optional
         replicas
     version : str, default is Undefined, optional
@@ -2748,17 +3530,29 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSource
     """
 
 
+    apiVersions?: [str]
+
     commonAnnotations?: {str:str}
 
     commonAnnotationsEnvsubst?: bool
 
     commonLabels?: {str:str}
 
+    components?: [str]
+
     forceCommonAnnotations?: bool
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
+
+    kubeVersion?: str
+
+    labelIncludeTemplates?: bool
+
+    labelWithoutSelector?: bool
 
     namePrefix?: str
 
@@ -2766,13 +3560,79 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSource
 
     namespace?: str
 
+    patches?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourceKustomizePatchesItems0]
+
     replicas?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourceKustomizeReplicasItems0]
 
     version?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourceKustomizeReplicasItems0:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourceKustomizePatchesItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 git template spec source kustomize patches items0
+
+    Attributes
+    ----------
+    options : {str:bool}, default is Undefined, optional
+        options
+    patch : str, default is Undefined, optional
+        patch
+    path : str, default is Undefined, optional
+        path
+    target : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourceKustomizePatchesItems0Target, default is Undefined, optional
+        target
     """
+
+
+    options?: {str:bool}
+
+    patch?: str
+
+    path?: str
+
+    target?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourceKustomizePatchesItems0Target
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourceKustomizePatchesItems0Target:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 git template spec source kustomize patches items0 target
+
+    Attributes
+    ----------
+    annotationSelector : str, default is Undefined, optional
+        annotation selector
+    group : str, default is Undefined, optional
+        group
+    kind : str, default is Undefined, optional
+        kind
+    labelSelector : str, default is Undefined, optional
+        label selector
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    annotationSelector?: str
+
+    group?: str
+
+    kind?: str
+
+    labelSelector?: str
+
+    name?: str
+
+    namespace?: str
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourceKustomizeReplicasItems0:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 git template spec source kustomize replicas items0
 
     Attributes
@@ -2790,7 +3650,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSource
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourcePlugin:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 git template spec source plugin
 
     Attributes
@@ -2812,7 +3672,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSource
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourcePluginEnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 git template spec source plugin env items0
 
     Attributes
@@ -2830,7 +3690,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSource
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourcePluginParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 git template spec source plugin parameters items0
 
     Attributes
@@ -2856,7 +3716,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSource
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourcesItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 git template spec sources items0
 
     Attributes
@@ -2869,6 +3729,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSource
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourcesItems0Kustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourcesItems0Plugin, default is Undefined, optional
@@ -2890,6 +3752,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSource
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourcesItems0Kustomize
 
+    name?: str
+
     path?: str
 
     plugin?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourcesItems0Plugin
@@ -2902,7 +3766,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSource
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourcesItems0Directory:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 git template spec sources items0 directory
 
     Attributes
@@ -2928,7 +3792,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSource
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourcesItems0DirectoryJsonnet:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 git template spec sources items0 directory jsonnet
 
     Attributes
@@ -2950,7 +3814,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSource
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourcesItems0DirectoryJsonnetExtVarsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 git template spec sources items0 directory jsonnet ext vars items0
 
     Attributes
@@ -2972,7 +3836,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSource
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourcesItems0DirectoryJsonnetTlasItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 git template spec sources items0 directory jsonnet tlas items0
 
     Attributes
@@ -2994,15 +3858,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSource
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourcesItems0Helm:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 git template spec sources items0 helm
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     fileParameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourcesItems0HelmFileParametersItems0], default is Undefined, optional
         file parameters
     ignoreMissingValueFiles : bool, default is Undefined, optional
         ignore missing value files
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    namespace : str, default is Undefined, optional
+        namespace
     parameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourcesItems0HelmParametersItems0], default is Undefined, optional
         parameters
     passCredentials : bool, default is Undefined, optional
@@ -3011,18 +3881,30 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSource
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
         values
+    valuesObject : any, default is Undefined, optional
+        values object
     version : str, default is Undefined, optional
         version
     """
 
 
+    apiVersions?: [str]
+
     fileParameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourcesItems0HelmFileParametersItems0]
 
     ignoreMissingValueFiles?: bool
+
+    kubeVersion?: str
+
+    namespace?: str
 
     parameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourcesItems0HelmParametersItems0]
 
@@ -3032,15 +3914,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSource
 
     skipCrds?: bool
 
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
+
     valueFiles?: [str]
 
     values?: str
+
+    valuesObject?: any
 
     version?: str
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourcesItems0HelmFileParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 git template spec sources items0 helm file parameters items0
 
     Attributes
@@ -3058,7 +3946,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSource
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourcesItems0HelmParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 git template spec sources items0 helm parameters items0
 
     Attributes
@@ -3080,29 +3968,43 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSource
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourcesItems0Kustomize:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 git template spec sources items0 kustomize
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     commonAnnotations : {str:str}, default is Undefined, optional
         common annotations
     commonAnnotationsEnvsubst : bool, default is Undefined, optional
         common annotations envsubst
     commonLabels : {str:str}, default is Undefined, optional
         common labels
+    components : [str], default is Undefined, optional
+        components
     forceCommonAnnotations : bool, default is Undefined, optional
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
+    labelWithoutSelector : bool, default is Undefined, optional
+        label without selector
     namePrefix : str, default is Undefined, optional
         name prefix
     nameSuffix : str, default is Undefined, optional
         name suffix
     namespace : str, default is Undefined, optional
         namespace
+    patches : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourcesItems0KustomizePatchesItems0], default is Undefined, optional
+        patches
     replicas : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourcesItems0KustomizeReplicasItems0], default is Undefined, optional
         replicas
     version : str, default is Undefined, optional
@@ -3110,17 +4012,29 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSource
     """
 
 
+    apiVersions?: [str]
+
     commonAnnotations?: {str:str}
 
     commonAnnotationsEnvsubst?: bool
 
     commonLabels?: {str:str}
 
+    components?: [str]
+
     forceCommonAnnotations?: bool
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
+
+    kubeVersion?: str
+
+    labelIncludeTemplates?: bool
+
+    labelWithoutSelector?: bool
 
     namePrefix?: str
 
@@ -3128,13 +4042,79 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSource
 
     namespace?: str
 
+    patches?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourcesItems0KustomizePatchesItems0]
+
     replicas?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourcesItems0KustomizeReplicasItems0]
 
     version?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourcesItems0KustomizeReplicasItems0:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourcesItems0KustomizePatchesItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 git template spec sources items0 kustomize patches items0
+
+    Attributes
+    ----------
+    options : {str:bool}, default is Undefined, optional
+        options
+    patch : str, default is Undefined, optional
+        patch
+    path : str, default is Undefined, optional
+        path
+    target : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourcesItems0KustomizePatchesItems0Target, default is Undefined, optional
+        target
     """
+
+
+    options?: {str:bool}
+
+    patch?: str
+
+    path?: str
+
+    target?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourcesItems0KustomizePatchesItems0Target
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourcesItems0KustomizePatchesItems0Target:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 git template spec sources items0 kustomize patches items0 target
+
+    Attributes
+    ----------
+    annotationSelector : str, default is Undefined, optional
+        annotation selector
+    group : str, default is Undefined, optional
+        group
+    kind : str, default is Undefined, optional
+        kind
+    labelSelector : str, default is Undefined, optional
+        label selector
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    annotationSelector?: str
+
+    group?: str
+
+    kind?: str
+
+    labelSelector?: str
+
+    name?: str
+
+    namespace?: str
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourcesItems0KustomizeReplicasItems0:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 git template spec sources items0 kustomize replicas items0
 
     Attributes
@@ -3152,7 +4132,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSource
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourcesItems0Plugin:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 git template spec sources items0 plugin
 
     Attributes
@@ -3174,7 +4154,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSource
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourcesItems0PluginEnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 git template spec sources items0 plugin env items0
 
     Attributes
@@ -3192,7 +4172,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSource
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourcesItems0PluginParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 git template spec sources items0 plugin parameters items0
 
     Attributes
@@ -3218,7 +4198,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSource
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSyncPolicy:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 git template spec sync policy
 
     Attributes
@@ -3244,7 +4224,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSyncPo
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSyncPolicyAutomated:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 git template spec sync policy automated
 
     Attributes
@@ -3266,7 +4246,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSyncPo
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSyncPolicyManagedNamespaceMetadata:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 git template spec sync policy managed namespace metadata
 
     Attributes
@@ -3284,7 +4264,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSyncPo
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSyncPolicyRetry:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 git template spec sync policy retry
 
     Attributes
@@ -3302,7 +4282,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSyncPo
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSyncPolicyRetryBackoff:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 git template spec sync policy retry backoff
 
     Attributes
@@ -3324,12 +4304,12 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSyncPo
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0List:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 list
 
     Attributes
     ----------
-    elements : [any], default is Undefined, required
+    elements : [any], default is Undefined, optional
         elements
     elementsYaml : str, default is Undefined, optional
         elements yaml
@@ -3338,7 +4318,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0List:
     """
 
 
-    elements: [any]
+    elements?: [any]
 
     elementsYaml?: str
 
@@ -3346,7 +4326,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0List:
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplate:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 list template
 
     Attributes
@@ -3364,7 +4344,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplate:
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateMetadata:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 list template metadata
 
     Attributes
@@ -3394,7 +4374,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateMetadata:
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpec:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 list template spec
 
     Attributes
@@ -3411,6 +4391,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpec:
         revision history limit
     source : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSource, default is Undefined, optional
         source
+    sourceHydrator : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourceHydrator, default is Undefined, optional
+        source hydrator
     sources : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourcesItems0], default is Undefined, optional
         sources
     syncPolicy : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSyncPolicy, default is Undefined, optional
@@ -3430,13 +4412,15 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpec:
 
     source?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSource
 
+    sourceHydrator?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourceHydrator
+
     sources?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourcesItems0]
 
     syncPolicy?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSyncPolicy
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecDestination:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 list template spec destination
 
     Attributes
@@ -3458,7 +4442,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecDesti
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecIgnoreDifferencesItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 list template spec ignore differences items0
 
     Attributes
@@ -3496,7 +4480,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecIgnor
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecInfoItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 list template spec info items0
 
     Attributes
@@ -3514,7 +4498,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecInfoI
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSource:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 list template spec source
 
     Attributes
@@ -3527,6 +4511,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourc
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourceKustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourcePlugin, default is Undefined, optional
@@ -3548,6 +4534,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourc
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourceKustomize
 
+    name?: str
+
     path?: str
 
     plugin?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourcePlugin
@@ -3560,7 +4548,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourc
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourceDirectory:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 list template spec source directory
 
     Attributes
@@ -3586,7 +4574,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourc
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourceDirectoryJsonnet:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 list template spec source directory jsonnet
 
     Attributes
@@ -3608,7 +4596,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourc
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourceDirectoryJsonnetExtVarsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 list template spec source directory jsonnet ext vars items0
 
     Attributes
@@ -3630,7 +4618,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourc
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourceDirectoryJsonnetTlasItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 list template spec source directory jsonnet tlas items0
 
     Attributes
@@ -3652,15 +4640,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourc
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourceHelm:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 list template spec source helm
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     fileParameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourceHelmFileParametersItems0], default is Undefined, optional
         file parameters
     ignoreMissingValueFiles : bool, default is Undefined, optional
         ignore missing value files
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    namespace : str, default is Undefined, optional
+        namespace
     parameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourceHelmParametersItems0], default is Undefined, optional
         parameters
     passCredentials : bool, default is Undefined, optional
@@ -3669,18 +4663,30 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourc
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
         values
+    valuesObject : any, default is Undefined, optional
+        values object
     version : str, default is Undefined, optional
         version
     """
 
 
+    apiVersions?: [str]
+
     fileParameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourceHelmFileParametersItems0]
 
     ignoreMissingValueFiles?: bool
+
+    kubeVersion?: str
+
+    namespace?: str
 
     parameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourceHelmParametersItems0]
 
@@ -3690,15 +4696,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourc
 
     skipCrds?: bool
 
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
+
     valueFiles?: [str]
 
     values?: str
+
+    valuesObject?: any
 
     version?: str
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourceHelmFileParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 list template spec source helm file parameters items0
 
     Attributes
@@ -3716,7 +4728,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourc
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourceHelmParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 list template spec source helm parameters items0
 
     Attributes
@@ -3737,30 +4749,120 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourc
     value?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourceKustomize:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourceHydrator:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 list template spec source hydrator
+
+    Attributes
+    ----------
+    drySource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourceHydratorDrySource, default is Undefined, required
+        dry source
+    hydrateTo : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourceHydratorHydrateTo, default is Undefined, optional
+        hydrate to
+    syncSource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourceHydratorSyncSource, default is Undefined, required
+        sync source
     """
+
+
+    drySource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourceHydratorDrySource
+
+    hydrateTo?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourceHydratorHydrateTo
+
+    syncSource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourceHydratorSyncSource
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourceHydratorDrySource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 list template spec source hydrator dry source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    repoURL : str, default is Undefined, required
+        repo URL
+    targetRevision : str, default is Undefined, required
+        target revision
+    """
+
+
+    path: str
+
+    repoURL: str
+
+    targetRevision: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourceHydratorHydrateTo:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 list template spec source hydrator hydrate to
+
+    Attributes
+    ----------
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourceHydratorSyncSource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 list template spec source hydrator sync source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    path: str
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourceKustomize:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 list template spec source kustomize
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     commonAnnotations : {str:str}, default is Undefined, optional
         common annotations
     commonAnnotationsEnvsubst : bool, default is Undefined, optional
         common annotations envsubst
     commonLabels : {str:str}, default is Undefined, optional
         common labels
+    components : [str], default is Undefined, optional
+        components
     forceCommonAnnotations : bool, default is Undefined, optional
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
+    labelWithoutSelector : bool, default is Undefined, optional
+        label without selector
     namePrefix : str, default is Undefined, optional
         name prefix
     nameSuffix : str, default is Undefined, optional
         name suffix
     namespace : str, default is Undefined, optional
         namespace
+    patches : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourceKustomizePatchesItems0], default is Undefined, optional
+        patches
     replicas : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourceKustomizeReplicasItems0], default is Undefined, optional
         replicas
     version : str, default is Undefined, optional
@@ -3768,17 +4870,29 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourc
     """
 
 
+    apiVersions?: [str]
+
     commonAnnotations?: {str:str}
 
     commonAnnotationsEnvsubst?: bool
 
     commonLabels?: {str:str}
 
+    components?: [str]
+
     forceCommonAnnotations?: bool
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
+
+    kubeVersion?: str
+
+    labelIncludeTemplates?: bool
+
+    labelWithoutSelector?: bool
 
     namePrefix?: str
 
@@ -3786,13 +4900,79 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourc
 
     namespace?: str
 
+    patches?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourceKustomizePatchesItems0]
+
     replicas?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourceKustomizeReplicasItems0]
 
     version?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourceKustomizeReplicasItems0:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourceKustomizePatchesItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 list template spec source kustomize patches items0
+
+    Attributes
+    ----------
+    options : {str:bool}, default is Undefined, optional
+        options
+    patch : str, default is Undefined, optional
+        patch
+    path : str, default is Undefined, optional
+        path
+    target : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourceKustomizePatchesItems0Target, default is Undefined, optional
+        target
     """
+
+
+    options?: {str:bool}
+
+    patch?: str
+
+    path?: str
+
+    target?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourceKustomizePatchesItems0Target
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourceKustomizePatchesItems0Target:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 list template spec source kustomize patches items0 target
+
+    Attributes
+    ----------
+    annotationSelector : str, default is Undefined, optional
+        annotation selector
+    group : str, default is Undefined, optional
+        group
+    kind : str, default is Undefined, optional
+        kind
+    labelSelector : str, default is Undefined, optional
+        label selector
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    annotationSelector?: str
+
+    group?: str
+
+    kind?: str
+
+    labelSelector?: str
+
+    name?: str
+
+    namespace?: str
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourceKustomizeReplicasItems0:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 list template spec source kustomize replicas items0
 
     Attributes
@@ -3810,7 +4990,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourc
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourcePlugin:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 list template spec source plugin
 
     Attributes
@@ -3832,7 +5012,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourc
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourcePluginEnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 list template spec source plugin env items0
 
     Attributes
@@ -3850,7 +5030,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourc
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourcePluginParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 list template spec source plugin parameters items0
 
     Attributes
@@ -3876,7 +5056,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourc
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourcesItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 list template spec sources items0
 
     Attributes
@@ -3889,6 +5069,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourc
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourcesItems0Kustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourcesItems0Plugin, default is Undefined, optional
@@ -3910,6 +5092,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourc
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourcesItems0Kustomize
 
+    name?: str
+
     path?: str
 
     plugin?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourcesItems0Plugin
@@ -3922,7 +5106,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourc
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourcesItems0Directory:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 list template spec sources items0 directory
 
     Attributes
@@ -3948,7 +5132,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourc
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourcesItems0DirectoryJsonnet:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 list template spec sources items0 directory jsonnet
 
     Attributes
@@ -3970,7 +5154,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourc
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourcesItems0DirectoryJsonnetExtVarsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 list template spec sources items0 directory jsonnet ext vars items0
 
     Attributes
@@ -3992,7 +5176,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourc
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourcesItems0DirectoryJsonnetTlasItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 list template spec sources items0 directory jsonnet tlas items0
 
     Attributes
@@ -4014,15 +5198,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourc
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourcesItems0Helm:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 list template spec sources items0 helm
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     fileParameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourcesItems0HelmFileParametersItems0], default is Undefined, optional
         file parameters
     ignoreMissingValueFiles : bool, default is Undefined, optional
         ignore missing value files
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    namespace : str, default is Undefined, optional
+        namespace
     parameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourcesItems0HelmParametersItems0], default is Undefined, optional
         parameters
     passCredentials : bool, default is Undefined, optional
@@ -4031,18 +5221,30 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourc
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
         values
+    valuesObject : any, default is Undefined, optional
+        values object
     version : str, default is Undefined, optional
         version
     """
 
 
+    apiVersions?: [str]
+
     fileParameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourcesItems0HelmFileParametersItems0]
 
     ignoreMissingValueFiles?: bool
+
+    kubeVersion?: str
+
+    namespace?: str
 
     parameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourcesItems0HelmParametersItems0]
 
@@ -4052,15 +5254,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourc
 
     skipCrds?: bool
 
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
+
     valueFiles?: [str]
 
     values?: str
+
+    valuesObject?: any
 
     version?: str
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourcesItems0HelmFileParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 list template spec sources items0 helm file parameters items0
 
     Attributes
@@ -4078,7 +5286,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourc
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourcesItems0HelmParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 list template spec sources items0 helm parameters items0
 
     Attributes
@@ -4100,29 +5308,43 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourc
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourcesItems0Kustomize:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 list template spec sources items0 kustomize
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     commonAnnotations : {str:str}, default is Undefined, optional
         common annotations
     commonAnnotationsEnvsubst : bool, default is Undefined, optional
         common annotations envsubst
     commonLabels : {str:str}, default is Undefined, optional
         common labels
+    components : [str], default is Undefined, optional
+        components
     forceCommonAnnotations : bool, default is Undefined, optional
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
+    labelWithoutSelector : bool, default is Undefined, optional
+        label without selector
     namePrefix : str, default is Undefined, optional
         name prefix
     nameSuffix : str, default is Undefined, optional
         name suffix
     namespace : str, default is Undefined, optional
         namespace
+    patches : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourcesItems0KustomizePatchesItems0], default is Undefined, optional
+        patches
     replicas : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourcesItems0KustomizeReplicasItems0], default is Undefined, optional
         replicas
     version : str, default is Undefined, optional
@@ -4130,17 +5352,29 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourc
     """
 
 
+    apiVersions?: [str]
+
     commonAnnotations?: {str:str}
 
     commonAnnotationsEnvsubst?: bool
 
     commonLabels?: {str:str}
 
+    components?: [str]
+
     forceCommonAnnotations?: bool
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
+
+    kubeVersion?: str
+
+    labelIncludeTemplates?: bool
+
+    labelWithoutSelector?: bool
 
     namePrefix?: str
 
@@ -4148,13 +5382,79 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourc
 
     namespace?: str
 
+    patches?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourcesItems0KustomizePatchesItems0]
+
     replicas?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourcesItems0KustomizeReplicasItems0]
 
     version?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourcesItems0KustomizeReplicasItems0:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourcesItems0KustomizePatchesItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 list template spec sources items0 kustomize patches items0
+
+    Attributes
+    ----------
+    options : {str:bool}, default is Undefined, optional
+        options
+    patch : str, default is Undefined, optional
+        patch
+    path : str, default is Undefined, optional
+        path
+    target : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourcesItems0KustomizePatchesItems0Target, default is Undefined, optional
+        target
     """
+
+
+    options?: {str:bool}
+
+    patch?: str
+
+    path?: str
+
+    target?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourcesItems0KustomizePatchesItems0Target
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourcesItems0KustomizePatchesItems0Target:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 list template spec sources items0 kustomize patches items0 target
+
+    Attributes
+    ----------
+    annotationSelector : str, default is Undefined, optional
+        annotation selector
+    group : str, default is Undefined, optional
+        group
+    kind : str, default is Undefined, optional
+        kind
+    labelSelector : str, default is Undefined, optional
+        label selector
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    annotationSelector?: str
+
+    group?: str
+
+    kind?: str
+
+    labelSelector?: str
+
+    name?: str
+
+    namespace?: str
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourcesItems0KustomizeReplicasItems0:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 list template spec sources items0 kustomize replicas items0
 
     Attributes
@@ -4172,7 +5472,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourc
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourcesItems0Plugin:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 list template spec sources items0 plugin
 
     Attributes
@@ -4194,7 +5494,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourc
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourcesItems0PluginEnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 list template spec sources items0 plugin env items0
 
     Attributes
@@ -4212,7 +5512,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourc
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourcesItems0PluginParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 list template spec sources items0 plugin parameters items0
 
     Attributes
@@ -4238,7 +5538,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourc
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSyncPolicy:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 list template spec sync policy
 
     Attributes
@@ -4264,7 +5564,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSyncP
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSyncPolicyAutomated:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 list template spec sync policy automated
 
     Attributes
@@ -4286,7 +5586,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSyncP
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSyncPolicyManagedNamespaceMetadata:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 list template spec sync policy managed namespace metadata
 
     Attributes
@@ -4304,7 +5604,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSyncP
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSyncPolicyRetry:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 list template spec sync policy retry
 
     Attributes
@@ -4322,7 +5622,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSyncP
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSyncPolicyRetryBackoff:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 list template spec sync policy retry backoff
 
     Attributes
@@ -4344,7 +5644,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSyncP
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0Matrix:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix
 
     Attributes
@@ -4362,7 +5662,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0Matrix:
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0
 
     Attributes
@@ -4379,6 +5679,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         matrix
     merge : any, default is Undefined, optional
         merge
+    plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0Plugin, default is Undefined, optional
+        plugin
     pullRequest : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequest, default is Undefined, optional
         pull request
     scmProvider : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProvider, default is Undefined, optional
@@ -4400,6 +5702,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     merge?: any
 
+    plugin?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0Plugin
+
     pullRequest?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequest
 
     scmProvider?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProvider
@@ -4408,7 +5712,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResource:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 cluster decision resource
 
     Attributes
@@ -4442,7 +5746,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceLabelSelector:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 cluster decision resource label selector
 
     Attributes
@@ -4460,7 +5764,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceLabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 cluster decision resource label selector match expressions items0
 
     Attributes
@@ -4482,7 +5786,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplate:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 cluster decision resource template
 
     Attributes
@@ -4500,7 +5804,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateMetadata:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 cluster decision resource template metadata
 
     Attributes
@@ -4530,7 +5834,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpec:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 cluster decision resource template spec
 
     Attributes
@@ -4547,6 +5851,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         revision history limit
     source : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSource, default is Undefined, optional
         source
+    sourceHydrator : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydrator, default is Undefined, optional
+        source hydrator
     sources : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0], default is Undefined, optional
         sources
     syncPolicy : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSyncPolicy, default is Undefined, optional
@@ -4566,13 +5872,15 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     source?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSource
 
+    sourceHydrator?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydrator
+
     sources?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0]
 
     syncPolicy?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSyncPolicy
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecDestination:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 cluster decision resource template spec destination
 
     Attributes
@@ -4594,7 +5902,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecIgnoreDifferencesItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 cluster decision resource template spec ignore differences items0
 
     Attributes
@@ -4632,7 +5940,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecInfoItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 cluster decision resource template spec info items0
 
     Attributes
@@ -4650,7 +5958,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSource:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 cluster decision resource template spec source
 
     Attributes
@@ -4663,6 +5971,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceKustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcePlugin, default is Undefined, optional
@@ -4684,6 +5994,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceKustomize
 
+    name?: str
+
     path?: str
 
     plugin?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcePlugin
@@ -4696,7 +6008,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceDirectory:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 cluster decision resource template spec source directory
 
     Attributes
@@ -4722,7 +6034,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceDirectoryJsonnet:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 cluster decision resource template spec source directory jsonnet
 
     Attributes
@@ -4744,7 +6056,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceDirectoryJsonnetExtVarsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 cluster decision resource template spec source directory jsonnet ext vars items0
 
     Attributes
@@ -4766,7 +6078,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceDirectoryJsonnetTlasItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 cluster decision resource template spec source directory jsonnet tlas items0
 
     Attributes
@@ -4788,15 +6100,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHelm:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 cluster decision resource template spec source helm
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     fileParameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHelmFileParametersItems0], default is Undefined, optional
         file parameters
     ignoreMissingValueFiles : bool, default is Undefined, optional
         ignore missing value files
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    namespace : str, default is Undefined, optional
+        namespace
     parameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHelmParametersItems0], default is Undefined, optional
         parameters
     passCredentials : bool, default is Undefined, optional
@@ -4805,18 +6123,30 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
         values
+    valuesObject : any, default is Undefined, optional
+        values object
     version : str, default is Undefined, optional
         version
     """
 
 
+    apiVersions?: [str]
+
     fileParameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHelmFileParametersItems0]
 
     ignoreMissingValueFiles?: bool
+
+    kubeVersion?: str
+
+    namespace?: str
 
     parameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHelmParametersItems0]
 
@@ -4826,15 +6156,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     skipCrds?: bool
 
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
+
     valueFiles?: [str]
 
     values?: str
+
+    valuesObject?: any
 
     version?: str
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHelmFileParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 cluster decision resource template spec source helm file parameters items0
 
     Attributes
@@ -4852,7 +6188,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHelmParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 cluster decision resource template spec source helm parameters items0
 
     Attributes
@@ -4873,30 +6209,120 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     value?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceKustomize:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydrator:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 cluster decision resource template spec source hydrator
+
+    Attributes
+    ----------
+    drySource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydratorDrySource, default is Undefined, required
+        dry source
+    hydrateTo : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydratorHydrateTo, default is Undefined, optional
+        hydrate to
+    syncSource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydratorSyncSource, default is Undefined, required
+        sync source
     """
+
+
+    drySource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydratorDrySource
+
+    hydrateTo?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydratorHydrateTo
+
+    syncSource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydratorSyncSource
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydratorDrySource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 cluster decision resource template spec source hydrator dry source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    repoURL : str, default is Undefined, required
+        repo URL
+    targetRevision : str, default is Undefined, required
+        target revision
+    """
+
+
+    path: str
+
+    repoURL: str
+
+    targetRevision: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydratorHydrateTo:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 cluster decision resource template spec source hydrator hydrate to
+
+    Attributes
+    ----------
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydratorSyncSource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 cluster decision resource template spec source hydrator sync source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    path: str
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceKustomize:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 cluster decision resource template spec source kustomize
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     commonAnnotations : {str:str}, default is Undefined, optional
         common annotations
     commonAnnotationsEnvsubst : bool, default is Undefined, optional
         common annotations envsubst
     commonLabels : {str:str}, default is Undefined, optional
         common labels
+    components : [str], default is Undefined, optional
+        components
     forceCommonAnnotations : bool, default is Undefined, optional
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
+    labelWithoutSelector : bool, default is Undefined, optional
+        label without selector
     namePrefix : str, default is Undefined, optional
         name prefix
     nameSuffix : str, default is Undefined, optional
         name suffix
     namespace : str, default is Undefined, optional
         namespace
+    patches : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceKustomizePatchesItems0], default is Undefined, optional
+        patches
     replicas : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceKustomizeReplicasItems0], default is Undefined, optional
         replicas
     version : str, default is Undefined, optional
@@ -4904,17 +6330,29 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     """
 
 
+    apiVersions?: [str]
+
     commonAnnotations?: {str:str}
 
     commonAnnotationsEnvsubst?: bool
 
     commonLabels?: {str:str}
 
+    components?: [str]
+
     forceCommonAnnotations?: bool
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
+
+    kubeVersion?: str
+
+    labelIncludeTemplates?: bool
+
+    labelWithoutSelector?: bool
 
     namePrefix?: str
 
@@ -4922,13 +6360,79 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     namespace?: str
 
+    patches?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceKustomizePatchesItems0]
+
     replicas?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceKustomizeReplicasItems0]
 
     version?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceKustomizeReplicasItems0:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceKustomizePatchesItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 cluster decision resource template spec source kustomize patches items0
+
+    Attributes
+    ----------
+    options : {str:bool}, default is Undefined, optional
+        options
+    patch : str, default is Undefined, optional
+        patch
+    path : str, default is Undefined, optional
+        path
+    target : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceKustomizePatchesItems0Target, default is Undefined, optional
+        target
     """
+
+
+    options?: {str:bool}
+
+    patch?: str
+
+    path?: str
+
+    target?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceKustomizePatchesItems0Target
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceKustomizePatchesItems0Target:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 cluster decision resource template spec source kustomize patches items0 target
+
+    Attributes
+    ----------
+    annotationSelector : str, default is Undefined, optional
+        annotation selector
+    group : str, default is Undefined, optional
+        group
+    kind : str, default is Undefined, optional
+        kind
+    labelSelector : str, default is Undefined, optional
+        label selector
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    annotationSelector?: str
+
+    group?: str
+
+    kind?: str
+
+    labelSelector?: str
+
+    name?: str
+
+    namespace?: str
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceKustomizeReplicasItems0:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 cluster decision resource template spec source kustomize replicas items0
 
     Attributes
@@ -4946,7 +6450,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcePlugin:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 cluster decision resource template spec source plugin
 
     Attributes
@@ -4968,7 +6472,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcePluginEnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 cluster decision resource template spec source plugin env items0
 
     Attributes
@@ -4986,7 +6490,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcePluginParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 cluster decision resource template spec source plugin parameters items0
 
     Attributes
@@ -5012,7 +6516,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 cluster decision resource template spec sources items0
 
     Attributes
@@ -5025,6 +6529,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0Kustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0Plugin, default is Undefined, optional
@@ -5046,6 +6552,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0Kustomize
 
+    name?: str
+
     path?: str
 
     plugin?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0Plugin
@@ -5058,7 +6566,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0Directory:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 cluster decision resource template spec sources items0 directory
 
     Attributes
@@ -5084,7 +6592,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0DirectoryJsonnet:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 cluster decision resource template spec sources items0 directory jsonnet
 
     Attributes
@@ -5106,7 +6614,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0DirectoryJsonnetExtVarsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 cluster decision resource template spec sources items0 directory jsonnet ext vars items0
 
     Attributes
@@ -5128,7 +6636,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0DirectoryJsonnetTlasItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 cluster decision resource template spec sources items0 directory jsonnet tlas items0
 
     Attributes
@@ -5150,15 +6658,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0Helm:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 cluster decision resource template spec sources items0 helm
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     fileParameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0HelmFileParametersItems0], default is Undefined, optional
         file parameters
     ignoreMissingValueFiles : bool, default is Undefined, optional
         ignore missing value files
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    namespace : str, default is Undefined, optional
+        namespace
     parameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0HelmParametersItems0], default is Undefined, optional
         parameters
     passCredentials : bool, default is Undefined, optional
@@ -5167,18 +6681,30 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
         values
+    valuesObject : any, default is Undefined, optional
+        values object
     version : str, default is Undefined, optional
         version
     """
 
 
+    apiVersions?: [str]
+
     fileParameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0HelmFileParametersItems0]
 
     ignoreMissingValueFiles?: bool
+
+    kubeVersion?: str
+
+    namespace?: str
 
     parameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0HelmParametersItems0]
 
@@ -5188,15 +6714,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     skipCrds?: bool
 
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
+
     valueFiles?: [str]
 
     values?: str
+
+    valuesObject?: any
 
     version?: str
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0HelmFileParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 cluster decision resource template spec sources items0 helm file parameters items0
 
     Attributes
@@ -5214,7 +6746,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0HelmParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 cluster decision resource template spec sources items0 helm parameters items0
 
     Attributes
@@ -5236,29 +6768,43 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0Kustomize:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 cluster decision resource template spec sources items0 kustomize
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     commonAnnotations : {str:str}, default is Undefined, optional
         common annotations
     commonAnnotationsEnvsubst : bool, default is Undefined, optional
         common annotations envsubst
     commonLabels : {str:str}, default is Undefined, optional
         common labels
+    components : [str], default is Undefined, optional
+        components
     forceCommonAnnotations : bool, default is Undefined, optional
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
+    labelWithoutSelector : bool, default is Undefined, optional
+        label without selector
     namePrefix : str, default is Undefined, optional
         name prefix
     nameSuffix : str, default is Undefined, optional
         name suffix
     namespace : str, default is Undefined, optional
         namespace
+    patches : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0KustomizePatchesItems0], default is Undefined, optional
+        patches
     replicas : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0KustomizeReplicasItems0], default is Undefined, optional
         replicas
     version : str, default is Undefined, optional
@@ -5266,17 +6812,29 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     """
 
 
+    apiVersions?: [str]
+
     commonAnnotations?: {str:str}
 
     commonAnnotationsEnvsubst?: bool
 
     commonLabels?: {str:str}
 
+    components?: [str]
+
     forceCommonAnnotations?: bool
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
+
+    kubeVersion?: str
+
+    labelIncludeTemplates?: bool
+
+    labelWithoutSelector?: bool
 
     namePrefix?: str
 
@@ -5284,13 +6842,79 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     namespace?: str
 
+    patches?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0KustomizePatchesItems0]
+
     replicas?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0KustomizeReplicasItems0]
 
     version?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0KustomizeReplicasItems0:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0KustomizePatchesItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 cluster decision resource template spec sources items0 kustomize patches items0
+
+    Attributes
+    ----------
+    options : {str:bool}, default is Undefined, optional
+        options
+    patch : str, default is Undefined, optional
+        patch
+    path : str, default is Undefined, optional
+        path
+    target : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0KustomizePatchesItems0Target, default is Undefined, optional
+        target
     """
+
+
+    options?: {str:bool}
+
+    patch?: str
+
+    path?: str
+
+    target?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0KustomizePatchesItems0Target
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0KustomizePatchesItems0Target:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 cluster decision resource template spec sources items0 kustomize patches items0 target
+
+    Attributes
+    ----------
+    annotationSelector : str, default is Undefined, optional
+        annotation selector
+    group : str, default is Undefined, optional
+        group
+    kind : str, default is Undefined, optional
+        kind
+    labelSelector : str, default is Undefined, optional
+        label selector
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    annotationSelector?: str
+
+    group?: str
+
+    kind?: str
+
+    labelSelector?: str
+
+    name?: str
+
+    namespace?: str
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0KustomizeReplicasItems0:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 cluster decision resource template spec sources items0 kustomize replicas items0
 
     Attributes
@@ -5308,7 +6932,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0Plugin:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 cluster decision resource template spec sources items0 plugin
 
     Attributes
@@ -5330,7 +6954,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0PluginEnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 cluster decision resource template spec sources items0 plugin env items0
 
     Attributes
@@ -5348,7 +6972,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0PluginParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 cluster decision resource template spec sources items0 plugin parameters items0
 
     Attributes
@@ -5374,7 +6998,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSyncPolicy:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 cluster decision resource template spec sync policy
 
     Attributes
@@ -5400,7 +7024,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSyncPolicyAutomated:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 cluster decision resource template spec sync policy automated
 
     Attributes
@@ -5422,7 +7046,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSyncPolicyManagedNamespaceMetadata:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 cluster decision resource template spec sync policy managed namespace metadata
 
     Attributes
@@ -5440,7 +7064,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSyncPolicyRetry:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 cluster decision resource template spec sync policy retry
 
     Attributes
@@ -5458,7 +7082,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSyncPolicyRetryBackoff:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 cluster decision resource template spec sync policy retry backoff
 
     Attributes
@@ -5480,11 +7104,13 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0Clusters:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 clusters
 
     Attributes
     ----------
+    flatList : bool, default is Undefined, optional
+        flat list
     selector : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersSelector, default is Undefined, optional
         selector
     template : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplate, default is Undefined, optional
@@ -5494,6 +7120,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     """
 
 
+    flatList?: bool
+
     selector?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersSelector
 
     template?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplate
@@ -5502,7 +7130,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersSelector:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 clusters selector
 
     Attributes
@@ -5520,7 +7148,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 clusters selector match expressions items0
 
     Attributes
@@ -5542,7 +7170,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplate:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 clusters template
 
     Attributes
@@ -5560,7 +7188,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateMetadata:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 clusters template metadata
 
     Attributes
@@ -5590,7 +7218,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpec:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 clusters template spec
 
     Attributes
@@ -5607,6 +7235,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         revision history limit
     source : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSource, default is Undefined, optional
         source
+    sourceHydrator : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourceHydrator, default is Undefined, optional
+        source hydrator
     sources : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourcesItems0], default is Undefined, optional
         sources
     syncPolicy : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSyncPolicy, default is Undefined, optional
@@ -5626,13 +7256,15 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     source?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSource
 
+    sourceHydrator?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourceHydrator
+
     sources?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourcesItems0]
 
     syncPolicy?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSyncPolicy
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecDestination:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 clusters template spec destination
 
     Attributes
@@ -5654,7 +7286,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecIgnoreDifferencesItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 clusters template spec ignore differences items0
 
     Attributes
@@ -5692,7 +7324,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecInfoItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 clusters template spec info items0
 
     Attributes
@@ -5710,7 +7342,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSource:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 clusters template spec source
 
     Attributes
@@ -5723,6 +7355,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourceKustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourcePlugin, default is Undefined, optional
@@ -5744,6 +7378,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourceKustomize
 
+    name?: str
+
     path?: str
 
     plugin?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourcePlugin
@@ -5756,7 +7392,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourceDirectory:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 clusters template spec source directory
 
     Attributes
@@ -5782,7 +7418,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourceDirectoryJsonnet:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 clusters template spec source directory jsonnet
 
     Attributes
@@ -5804,7 +7440,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourceDirectoryJsonnetExtVarsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 clusters template spec source directory jsonnet ext vars items0
 
     Attributes
@@ -5826,7 +7462,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourceDirectoryJsonnetTlasItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 clusters template spec source directory jsonnet tlas items0
 
     Attributes
@@ -5848,15 +7484,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourceHelm:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 clusters template spec source helm
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     fileParameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourceHelmFileParametersItems0], default is Undefined, optional
         file parameters
     ignoreMissingValueFiles : bool, default is Undefined, optional
         ignore missing value files
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    namespace : str, default is Undefined, optional
+        namespace
     parameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourceHelmParametersItems0], default is Undefined, optional
         parameters
     passCredentials : bool, default is Undefined, optional
@@ -5865,18 +7507,30 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
         values
+    valuesObject : any, default is Undefined, optional
+        values object
     version : str, default is Undefined, optional
         version
     """
 
 
+    apiVersions?: [str]
+
     fileParameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourceHelmFileParametersItems0]
 
     ignoreMissingValueFiles?: bool
+
+    kubeVersion?: str
+
+    namespace?: str
 
     parameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourceHelmParametersItems0]
 
@@ -5886,15 +7540,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     skipCrds?: bool
 
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
+
     valueFiles?: [str]
 
     values?: str
+
+    valuesObject?: any
 
     version?: str
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourceHelmFileParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 clusters template spec source helm file parameters items0
 
     Attributes
@@ -5912,7 +7572,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourceHelmParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 clusters template spec source helm parameters items0
 
     Attributes
@@ -5933,30 +7593,120 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     value?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourceKustomize:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourceHydrator:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 clusters template spec source hydrator
+
+    Attributes
+    ----------
+    drySource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourceHydratorDrySource, default is Undefined, required
+        dry source
+    hydrateTo : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourceHydratorHydrateTo, default is Undefined, optional
+        hydrate to
+    syncSource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourceHydratorSyncSource, default is Undefined, required
+        sync source
     """
+
+
+    drySource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourceHydratorDrySource
+
+    hydrateTo?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourceHydratorHydrateTo
+
+    syncSource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourceHydratorSyncSource
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourceHydratorDrySource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 clusters template spec source hydrator dry source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    repoURL : str, default is Undefined, required
+        repo URL
+    targetRevision : str, default is Undefined, required
+        target revision
+    """
+
+
+    path: str
+
+    repoURL: str
+
+    targetRevision: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourceHydratorHydrateTo:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 clusters template spec source hydrator hydrate to
+
+    Attributes
+    ----------
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourceHydratorSyncSource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 clusters template spec source hydrator sync source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    path: str
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourceKustomize:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 clusters template spec source kustomize
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     commonAnnotations : {str:str}, default is Undefined, optional
         common annotations
     commonAnnotationsEnvsubst : bool, default is Undefined, optional
         common annotations envsubst
     commonLabels : {str:str}, default is Undefined, optional
         common labels
+    components : [str], default is Undefined, optional
+        components
     forceCommonAnnotations : bool, default is Undefined, optional
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
+    labelWithoutSelector : bool, default is Undefined, optional
+        label without selector
     namePrefix : str, default is Undefined, optional
         name prefix
     nameSuffix : str, default is Undefined, optional
         name suffix
     namespace : str, default is Undefined, optional
         namespace
+    patches : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourceKustomizePatchesItems0], default is Undefined, optional
+        patches
     replicas : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourceKustomizeReplicasItems0], default is Undefined, optional
         replicas
     version : str, default is Undefined, optional
@@ -5964,17 +7714,29 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     """
 
 
+    apiVersions?: [str]
+
     commonAnnotations?: {str:str}
 
     commonAnnotationsEnvsubst?: bool
 
     commonLabels?: {str:str}
 
+    components?: [str]
+
     forceCommonAnnotations?: bool
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
+
+    kubeVersion?: str
+
+    labelIncludeTemplates?: bool
+
+    labelWithoutSelector?: bool
 
     namePrefix?: str
 
@@ -5982,13 +7744,79 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     namespace?: str
 
+    patches?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourceKustomizePatchesItems0]
+
     replicas?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourceKustomizeReplicasItems0]
 
     version?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourceKustomizeReplicasItems0:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourceKustomizePatchesItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 clusters template spec source kustomize patches items0
+
+    Attributes
+    ----------
+    options : {str:bool}, default is Undefined, optional
+        options
+    patch : str, default is Undefined, optional
+        patch
+    path : str, default is Undefined, optional
+        path
+    target : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourceKustomizePatchesItems0Target, default is Undefined, optional
+        target
     """
+
+
+    options?: {str:bool}
+
+    patch?: str
+
+    path?: str
+
+    target?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourceKustomizePatchesItems0Target
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourceKustomizePatchesItems0Target:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 clusters template spec source kustomize patches items0 target
+
+    Attributes
+    ----------
+    annotationSelector : str, default is Undefined, optional
+        annotation selector
+    group : str, default is Undefined, optional
+        group
+    kind : str, default is Undefined, optional
+        kind
+    labelSelector : str, default is Undefined, optional
+        label selector
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    annotationSelector?: str
+
+    group?: str
+
+    kind?: str
+
+    labelSelector?: str
+
+    name?: str
+
+    namespace?: str
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourceKustomizeReplicasItems0:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 clusters template spec source kustomize replicas items0
 
     Attributes
@@ -6006,7 +7834,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourcePlugin:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 clusters template spec source plugin
 
     Attributes
@@ -6028,7 +7856,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourcePluginEnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 clusters template spec source plugin env items0
 
     Attributes
@@ -6046,7 +7874,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourcePluginParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 clusters template spec source plugin parameters items0
 
     Attributes
@@ -6072,7 +7900,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourcesItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 clusters template spec sources items0
 
     Attributes
@@ -6085,6 +7913,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourcesItems0Kustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourcesItems0Plugin, default is Undefined, optional
@@ -6106,6 +7936,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourcesItems0Kustomize
 
+    name?: str
+
     path?: str
 
     plugin?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourcesItems0Plugin
@@ -6118,7 +7950,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourcesItems0Directory:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 clusters template spec sources items0 directory
 
     Attributes
@@ -6144,7 +7976,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourcesItems0DirectoryJsonnet:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 clusters template spec sources items0 directory jsonnet
 
     Attributes
@@ -6166,7 +7998,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourcesItems0DirectoryJsonnetExtVarsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 clusters template spec sources items0 directory jsonnet ext vars items0
 
     Attributes
@@ -6188,7 +8020,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourcesItems0DirectoryJsonnetTlasItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 clusters template spec sources items0 directory jsonnet tlas items0
 
     Attributes
@@ -6210,15 +8042,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourcesItems0Helm:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 clusters template spec sources items0 helm
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     fileParameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourcesItems0HelmFileParametersItems0], default is Undefined, optional
         file parameters
     ignoreMissingValueFiles : bool, default is Undefined, optional
         ignore missing value files
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    namespace : str, default is Undefined, optional
+        namespace
     parameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourcesItems0HelmParametersItems0], default is Undefined, optional
         parameters
     passCredentials : bool, default is Undefined, optional
@@ -6227,18 +8065,30 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
         values
+    valuesObject : any, default is Undefined, optional
+        values object
     version : str, default is Undefined, optional
         version
     """
 
 
+    apiVersions?: [str]
+
     fileParameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourcesItems0HelmFileParametersItems0]
 
     ignoreMissingValueFiles?: bool
+
+    kubeVersion?: str
+
+    namespace?: str
 
     parameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourcesItems0HelmParametersItems0]
 
@@ -6248,15 +8098,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     skipCrds?: bool
 
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
+
     valueFiles?: [str]
 
     values?: str
+
+    valuesObject?: any
 
     version?: str
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourcesItems0HelmFileParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 clusters template spec sources items0 helm file parameters items0
 
     Attributes
@@ -6274,7 +8130,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourcesItems0HelmParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 clusters template spec sources items0 helm parameters items0
 
     Attributes
@@ -6296,29 +8152,43 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourcesItems0Kustomize:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 clusters template spec sources items0 kustomize
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     commonAnnotations : {str:str}, default is Undefined, optional
         common annotations
     commonAnnotationsEnvsubst : bool, default is Undefined, optional
         common annotations envsubst
     commonLabels : {str:str}, default is Undefined, optional
         common labels
+    components : [str], default is Undefined, optional
+        components
     forceCommonAnnotations : bool, default is Undefined, optional
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
+    labelWithoutSelector : bool, default is Undefined, optional
+        label without selector
     namePrefix : str, default is Undefined, optional
         name prefix
     nameSuffix : str, default is Undefined, optional
         name suffix
     namespace : str, default is Undefined, optional
         namespace
+    patches : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourcesItems0KustomizePatchesItems0], default is Undefined, optional
+        patches
     replicas : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourcesItems0KustomizeReplicasItems0], default is Undefined, optional
         replicas
     version : str, default is Undefined, optional
@@ -6326,17 +8196,29 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     """
 
 
+    apiVersions?: [str]
+
     commonAnnotations?: {str:str}
 
     commonAnnotationsEnvsubst?: bool
 
     commonLabels?: {str:str}
 
+    components?: [str]
+
     forceCommonAnnotations?: bool
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
+
+    kubeVersion?: str
+
+    labelIncludeTemplates?: bool
+
+    labelWithoutSelector?: bool
 
     namePrefix?: str
 
@@ -6344,13 +8226,79 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     namespace?: str
 
+    patches?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourcesItems0KustomizePatchesItems0]
+
     replicas?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourcesItems0KustomizeReplicasItems0]
 
     version?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourcesItems0KustomizeReplicasItems0:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourcesItems0KustomizePatchesItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 clusters template spec sources items0 kustomize patches items0
+
+    Attributes
+    ----------
+    options : {str:bool}, default is Undefined, optional
+        options
+    patch : str, default is Undefined, optional
+        patch
+    path : str, default is Undefined, optional
+        path
+    target : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourcesItems0KustomizePatchesItems0Target, default is Undefined, optional
+        target
     """
+
+
+    options?: {str:bool}
+
+    patch?: str
+
+    path?: str
+
+    target?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourcesItems0KustomizePatchesItems0Target
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourcesItems0KustomizePatchesItems0Target:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 clusters template spec sources items0 kustomize patches items0 target
+
+    Attributes
+    ----------
+    annotationSelector : str, default is Undefined, optional
+        annotation selector
+    group : str, default is Undefined, optional
+        group
+    kind : str, default is Undefined, optional
+        kind
+    labelSelector : str, default is Undefined, optional
+        label selector
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    annotationSelector?: str
+
+    group?: str
+
+    kind?: str
+
+    labelSelector?: str
+
+    name?: str
+
+    namespace?: str
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourcesItems0KustomizeReplicasItems0:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 clusters template spec sources items0 kustomize replicas items0
 
     Attributes
@@ -6368,7 +8316,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourcesItems0Plugin:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 clusters template spec sources items0 plugin
 
     Attributes
@@ -6390,7 +8338,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourcesItems0PluginEnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 clusters template spec sources items0 plugin env items0
 
     Attributes
@@ -6408,7 +8356,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourcesItems0PluginParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 clusters template spec sources items0 plugin parameters items0
 
     Attributes
@@ -6434,7 +8382,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSyncPolicy:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 clusters template spec sync policy
 
     Attributes
@@ -6460,7 +8408,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSyncPolicyAutomated:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 clusters template spec sync policy automated
 
     Attributes
@@ -6482,7 +8430,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSyncPolicyManagedNamespaceMetadata:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 clusters template spec sync policy managed namespace metadata
 
     Attributes
@@ -6500,7 +8448,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSyncPolicyRetry:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 clusters template spec sync policy retry
 
     Attributes
@@ -6518,7 +8466,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSyncPolicyRetryBackoff:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 clusters template spec sync policy retry backoff
 
     Attributes
@@ -6540,7 +8488,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0Git:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 git
 
     Attributes
@@ -6582,7 +8530,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitDirectoriesItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 git directories items0
 
     Attributes
@@ -6600,7 +8548,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitFilesItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 git files items0
 
     Attributes
@@ -6614,7 +8562,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplate:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 git template
 
     Attributes
@@ -6632,7 +8580,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateMetadata:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 git template metadata
 
     Attributes
@@ -6662,7 +8610,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpec:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 git template spec
 
     Attributes
@@ -6679,6 +8627,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         revision history limit
     source : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSource, default is Undefined, optional
         source
+    sourceHydrator : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourceHydrator, default is Undefined, optional
+        source hydrator
     sources : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourcesItems0], default is Undefined, optional
         sources
     syncPolicy : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSyncPolicy, default is Undefined, optional
@@ -6698,13 +8648,15 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     source?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSource
 
+    sourceHydrator?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourceHydrator
+
     sources?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourcesItems0]
 
     syncPolicy?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSyncPolicy
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecDestination:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 git template spec destination
 
     Attributes
@@ -6726,7 +8678,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecIgnoreDifferencesItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 git template spec ignore differences items0
 
     Attributes
@@ -6764,7 +8716,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecInfoItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 git template spec info items0
 
     Attributes
@@ -6782,7 +8734,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSource:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 git template spec source
 
     Attributes
@@ -6795,6 +8747,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourceKustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourcePlugin, default is Undefined, optional
@@ -6816,6 +8770,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourceKustomize
 
+    name?: str
+
     path?: str
 
     plugin?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourcePlugin
@@ -6828,7 +8784,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourceDirectory:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 git template spec source directory
 
     Attributes
@@ -6854,7 +8810,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourceDirectoryJsonnet:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 git template spec source directory jsonnet
 
     Attributes
@@ -6876,7 +8832,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourceDirectoryJsonnetExtVarsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 git template spec source directory jsonnet ext vars items0
 
     Attributes
@@ -6898,7 +8854,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourceDirectoryJsonnetTlasItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 git template spec source directory jsonnet tlas items0
 
     Attributes
@@ -6920,15 +8876,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourceHelm:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 git template spec source helm
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     fileParameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourceHelmFileParametersItems0], default is Undefined, optional
         file parameters
     ignoreMissingValueFiles : bool, default is Undefined, optional
         ignore missing value files
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    namespace : str, default is Undefined, optional
+        namespace
     parameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourceHelmParametersItems0], default is Undefined, optional
         parameters
     passCredentials : bool, default is Undefined, optional
@@ -6937,18 +8899,30 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
         values
+    valuesObject : any, default is Undefined, optional
+        values object
     version : str, default is Undefined, optional
         version
     """
 
 
+    apiVersions?: [str]
+
     fileParameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourceHelmFileParametersItems0]
 
     ignoreMissingValueFiles?: bool
+
+    kubeVersion?: str
+
+    namespace?: str
 
     parameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourceHelmParametersItems0]
 
@@ -6958,15 +8932,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     skipCrds?: bool
 
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
+
     valueFiles?: [str]
 
     values?: str
+
+    valuesObject?: any
 
     version?: str
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourceHelmFileParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 git template spec source helm file parameters items0
 
     Attributes
@@ -6984,7 +8964,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourceHelmParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 git template spec source helm parameters items0
 
     Attributes
@@ -7005,30 +8985,120 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     value?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourceKustomize:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourceHydrator:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 git template spec source hydrator
+
+    Attributes
+    ----------
+    drySource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourceHydratorDrySource, default is Undefined, required
+        dry source
+    hydrateTo : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourceHydratorHydrateTo, default is Undefined, optional
+        hydrate to
+    syncSource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourceHydratorSyncSource, default is Undefined, required
+        sync source
     """
+
+
+    drySource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourceHydratorDrySource
+
+    hydrateTo?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourceHydratorHydrateTo
+
+    syncSource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourceHydratorSyncSource
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourceHydratorDrySource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 git template spec source hydrator dry source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    repoURL : str, default is Undefined, required
+        repo URL
+    targetRevision : str, default is Undefined, required
+        target revision
+    """
+
+
+    path: str
+
+    repoURL: str
+
+    targetRevision: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourceHydratorHydrateTo:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 git template spec source hydrator hydrate to
+
+    Attributes
+    ----------
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourceHydratorSyncSource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 git template spec source hydrator sync source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    path: str
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourceKustomize:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 git template spec source kustomize
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     commonAnnotations : {str:str}, default is Undefined, optional
         common annotations
     commonAnnotationsEnvsubst : bool, default is Undefined, optional
         common annotations envsubst
     commonLabels : {str:str}, default is Undefined, optional
         common labels
+    components : [str], default is Undefined, optional
+        components
     forceCommonAnnotations : bool, default is Undefined, optional
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
+    labelWithoutSelector : bool, default is Undefined, optional
+        label without selector
     namePrefix : str, default is Undefined, optional
         name prefix
     nameSuffix : str, default is Undefined, optional
         name suffix
     namespace : str, default is Undefined, optional
         namespace
+    patches : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourceKustomizePatchesItems0], default is Undefined, optional
+        patches
     replicas : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourceKustomizeReplicasItems0], default is Undefined, optional
         replicas
     version : str, default is Undefined, optional
@@ -7036,17 +9106,29 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     """
 
 
+    apiVersions?: [str]
+
     commonAnnotations?: {str:str}
 
     commonAnnotationsEnvsubst?: bool
 
     commonLabels?: {str:str}
 
+    components?: [str]
+
     forceCommonAnnotations?: bool
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
+
+    kubeVersion?: str
+
+    labelIncludeTemplates?: bool
+
+    labelWithoutSelector?: bool
 
     namePrefix?: str
 
@@ -7054,13 +9136,79 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     namespace?: str
 
+    patches?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourceKustomizePatchesItems0]
+
     replicas?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourceKustomizeReplicasItems0]
 
     version?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourceKustomizeReplicasItems0:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourceKustomizePatchesItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 git template spec source kustomize patches items0
+
+    Attributes
+    ----------
+    options : {str:bool}, default is Undefined, optional
+        options
+    patch : str, default is Undefined, optional
+        patch
+    path : str, default is Undefined, optional
+        path
+    target : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourceKustomizePatchesItems0Target, default is Undefined, optional
+        target
     """
+
+
+    options?: {str:bool}
+
+    patch?: str
+
+    path?: str
+
+    target?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourceKustomizePatchesItems0Target
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourceKustomizePatchesItems0Target:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 git template spec source kustomize patches items0 target
+
+    Attributes
+    ----------
+    annotationSelector : str, default is Undefined, optional
+        annotation selector
+    group : str, default is Undefined, optional
+        group
+    kind : str, default is Undefined, optional
+        kind
+    labelSelector : str, default is Undefined, optional
+        label selector
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    annotationSelector?: str
+
+    group?: str
+
+    kind?: str
+
+    labelSelector?: str
+
+    name?: str
+
+    namespace?: str
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourceKustomizeReplicasItems0:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 git template spec source kustomize replicas items0
 
     Attributes
@@ -7078,7 +9226,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourcePlugin:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 git template spec source plugin
 
     Attributes
@@ -7100,7 +9248,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourcePluginEnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 git template spec source plugin env items0
 
     Attributes
@@ -7118,7 +9266,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourcePluginParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 git template spec source plugin parameters items0
 
     Attributes
@@ -7144,7 +9292,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourcesItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 git template spec sources items0
 
     Attributes
@@ -7157,6 +9305,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourcesItems0Kustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourcesItems0Plugin, default is Undefined, optional
@@ -7178,6 +9328,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourcesItems0Kustomize
 
+    name?: str
+
     path?: str
 
     plugin?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourcesItems0Plugin
@@ -7190,7 +9342,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourcesItems0Directory:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 git template spec sources items0 directory
 
     Attributes
@@ -7216,7 +9368,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourcesItems0DirectoryJsonnet:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 git template spec sources items0 directory jsonnet
 
     Attributes
@@ -7238,7 +9390,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourcesItems0DirectoryJsonnetExtVarsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 git template spec sources items0 directory jsonnet ext vars items0
 
     Attributes
@@ -7260,7 +9412,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourcesItems0DirectoryJsonnetTlasItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 git template spec sources items0 directory jsonnet tlas items0
 
     Attributes
@@ -7282,15 +9434,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourcesItems0Helm:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 git template spec sources items0 helm
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     fileParameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourcesItems0HelmFileParametersItems0], default is Undefined, optional
         file parameters
     ignoreMissingValueFiles : bool, default is Undefined, optional
         ignore missing value files
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    namespace : str, default is Undefined, optional
+        namespace
     parameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourcesItems0HelmParametersItems0], default is Undefined, optional
         parameters
     passCredentials : bool, default is Undefined, optional
@@ -7299,18 +9457,30 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
         values
+    valuesObject : any, default is Undefined, optional
+        values object
     version : str, default is Undefined, optional
         version
     """
 
 
+    apiVersions?: [str]
+
     fileParameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourcesItems0HelmFileParametersItems0]
 
     ignoreMissingValueFiles?: bool
+
+    kubeVersion?: str
+
+    namespace?: str
 
     parameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourcesItems0HelmParametersItems0]
 
@@ -7320,15 +9490,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     skipCrds?: bool
 
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
+
     valueFiles?: [str]
 
     values?: str
+
+    valuesObject?: any
 
     version?: str
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourcesItems0HelmFileParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 git template spec sources items0 helm file parameters items0
 
     Attributes
@@ -7346,7 +9522,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourcesItems0HelmParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 git template spec sources items0 helm parameters items0
 
     Attributes
@@ -7368,29 +9544,43 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourcesItems0Kustomize:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 git template spec sources items0 kustomize
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     commonAnnotations : {str:str}, default is Undefined, optional
         common annotations
     commonAnnotationsEnvsubst : bool, default is Undefined, optional
         common annotations envsubst
     commonLabels : {str:str}, default is Undefined, optional
         common labels
+    components : [str], default is Undefined, optional
+        components
     forceCommonAnnotations : bool, default is Undefined, optional
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
+    labelWithoutSelector : bool, default is Undefined, optional
+        label without selector
     namePrefix : str, default is Undefined, optional
         name prefix
     nameSuffix : str, default is Undefined, optional
         name suffix
     namespace : str, default is Undefined, optional
         namespace
+    patches : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourcesItems0KustomizePatchesItems0], default is Undefined, optional
+        patches
     replicas : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourcesItems0KustomizeReplicasItems0], default is Undefined, optional
         replicas
     version : str, default is Undefined, optional
@@ -7398,17 +9588,29 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     """
 
 
+    apiVersions?: [str]
+
     commonAnnotations?: {str:str}
 
     commonAnnotationsEnvsubst?: bool
 
     commonLabels?: {str:str}
 
+    components?: [str]
+
     forceCommonAnnotations?: bool
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
+
+    kubeVersion?: str
+
+    labelIncludeTemplates?: bool
+
+    labelWithoutSelector?: bool
 
     namePrefix?: str
 
@@ -7416,13 +9618,79 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     namespace?: str
 
+    patches?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourcesItems0KustomizePatchesItems0]
+
     replicas?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourcesItems0KustomizeReplicasItems0]
 
     version?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourcesItems0KustomizeReplicasItems0:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourcesItems0KustomizePatchesItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 git template spec sources items0 kustomize patches items0
+
+    Attributes
+    ----------
+    options : {str:bool}, default is Undefined, optional
+        options
+    patch : str, default is Undefined, optional
+        patch
+    path : str, default is Undefined, optional
+        path
+    target : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourcesItems0KustomizePatchesItems0Target, default is Undefined, optional
+        target
     """
+
+
+    options?: {str:bool}
+
+    patch?: str
+
+    path?: str
+
+    target?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourcesItems0KustomizePatchesItems0Target
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourcesItems0KustomizePatchesItems0Target:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 git template spec sources items0 kustomize patches items0 target
+
+    Attributes
+    ----------
+    annotationSelector : str, default is Undefined, optional
+        annotation selector
+    group : str, default is Undefined, optional
+        group
+    kind : str, default is Undefined, optional
+        kind
+    labelSelector : str, default is Undefined, optional
+        label selector
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    annotationSelector?: str
+
+    group?: str
+
+    kind?: str
+
+    labelSelector?: str
+
+    name?: str
+
+    namespace?: str
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourcesItems0KustomizeReplicasItems0:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 git template spec sources items0 kustomize replicas items0
 
     Attributes
@@ -7440,7 +9708,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourcesItems0Plugin:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 git template spec sources items0 plugin
 
     Attributes
@@ -7462,7 +9730,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourcesItems0PluginEnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 git template spec sources items0 plugin env items0
 
     Attributes
@@ -7480,7 +9748,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourcesItems0PluginParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 git template spec sources items0 plugin parameters items0
 
     Attributes
@@ -7506,7 +9774,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSyncPolicy:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 git template spec sync policy
 
     Attributes
@@ -7532,7 +9800,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSyncPolicyAutomated:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 git template spec sync policy automated
 
     Attributes
@@ -7554,7 +9822,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSyncPolicyManagedNamespaceMetadata:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 git template spec sync policy managed namespace metadata
 
     Attributes
@@ -7572,7 +9840,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSyncPolicyRetry:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 git template spec sync policy retry
 
     Attributes
@@ -7590,7 +9858,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSyncPolicyRetryBackoff:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 git template spec sync policy retry backoff
 
     Attributes
@@ -7612,12 +9880,12 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0List:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 list
 
     Attributes
     ----------
-    elements : [any], default is Undefined, required
+    elements : [any], default is Undefined, optional
         elements
     elementsYaml : str, default is Undefined, optional
         elements yaml
@@ -7626,7 +9894,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     """
 
 
-    elements: [any]
+    elements?: [any]
 
     elementsYaml?: str
 
@@ -7634,7 +9902,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplate:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 list template
 
     Attributes
@@ -7652,7 +9920,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateMetadata:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 list template metadata
 
     Attributes
@@ -7682,7 +9950,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpec:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 list template spec
 
     Attributes
@@ -7699,6 +9967,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         revision history limit
     source : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSource, default is Undefined, optional
         source
+    sourceHydrator : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourceHydrator, default is Undefined, optional
+        source hydrator
     sources : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourcesItems0], default is Undefined, optional
         sources
     syncPolicy : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSyncPolicy, default is Undefined, optional
@@ -7718,13 +9988,15 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     source?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSource
 
+    sourceHydrator?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourceHydrator
+
     sources?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourcesItems0]
 
     syncPolicy?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSyncPolicy
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecDestination:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 list template spec destination
 
     Attributes
@@ -7746,7 +10018,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecIgnoreDifferencesItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 list template spec ignore differences items0
 
     Attributes
@@ -7784,7 +10056,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecInfoItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 list template spec info items0
 
     Attributes
@@ -7802,7 +10074,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSource:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 list template spec source
 
     Attributes
@@ -7815,6 +10087,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourceKustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourcePlugin, default is Undefined, optional
@@ -7836,6 +10110,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourceKustomize
 
+    name?: str
+
     path?: str
 
     plugin?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourcePlugin
@@ -7848,7 +10124,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourceDirectory:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 list template spec source directory
 
     Attributes
@@ -7874,7 +10150,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourceDirectoryJsonnet:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 list template spec source directory jsonnet
 
     Attributes
@@ -7896,7 +10172,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourceDirectoryJsonnetExtVarsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 list template spec source directory jsonnet ext vars items0
 
     Attributes
@@ -7918,7 +10194,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourceDirectoryJsonnetTlasItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 list template spec source directory jsonnet tlas items0
 
     Attributes
@@ -7940,15 +10216,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourceHelm:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 list template spec source helm
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     fileParameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourceHelmFileParametersItems0], default is Undefined, optional
         file parameters
     ignoreMissingValueFiles : bool, default is Undefined, optional
         ignore missing value files
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    namespace : str, default is Undefined, optional
+        namespace
     parameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourceHelmParametersItems0], default is Undefined, optional
         parameters
     passCredentials : bool, default is Undefined, optional
@@ -7957,18 +10239,30 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
         values
+    valuesObject : any, default is Undefined, optional
+        values object
     version : str, default is Undefined, optional
         version
     """
 
 
+    apiVersions?: [str]
+
     fileParameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourceHelmFileParametersItems0]
 
     ignoreMissingValueFiles?: bool
+
+    kubeVersion?: str
+
+    namespace?: str
 
     parameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourceHelmParametersItems0]
 
@@ -7978,15 +10272,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     skipCrds?: bool
 
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
+
     valueFiles?: [str]
 
     values?: str
+
+    valuesObject?: any
 
     version?: str
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourceHelmFileParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 list template spec source helm file parameters items0
 
     Attributes
@@ -8004,7 +10304,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourceHelmParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 list template spec source helm parameters items0
 
     Attributes
@@ -8025,30 +10325,120 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     value?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourceKustomize:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourceHydrator:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 list template spec source hydrator
+
+    Attributes
+    ----------
+    drySource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourceHydratorDrySource, default is Undefined, required
+        dry source
+    hydrateTo : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourceHydratorHydrateTo, default is Undefined, optional
+        hydrate to
+    syncSource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourceHydratorSyncSource, default is Undefined, required
+        sync source
     """
+
+
+    drySource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourceHydratorDrySource
+
+    hydrateTo?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourceHydratorHydrateTo
+
+    syncSource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourceHydratorSyncSource
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourceHydratorDrySource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 list template spec source hydrator dry source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    repoURL : str, default is Undefined, required
+        repo URL
+    targetRevision : str, default is Undefined, required
+        target revision
+    """
+
+
+    path: str
+
+    repoURL: str
+
+    targetRevision: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourceHydratorHydrateTo:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 list template spec source hydrator hydrate to
+
+    Attributes
+    ----------
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourceHydratorSyncSource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 list template spec source hydrator sync source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    path: str
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourceKustomize:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 list template spec source kustomize
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     commonAnnotations : {str:str}, default is Undefined, optional
         common annotations
     commonAnnotationsEnvsubst : bool, default is Undefined, optional
         common annotations envsubst
     commonLabels : {str:str}, default is Undefined, optional
         common labels
+    components : [str], default is Undefined, optional
+        components
     forceCommonAnnotations : bool, default is Undefined, optional
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
+    labelWithoutSelector : bool, default is Undefined, optional
+        label without selector
     namePrefix : str, default is Undefined, optional
         name prefix
     nameSuffix : str, default is Undefined, optional
         name suffix
     namespace : str, default is Undefined, optional
         namespace
+    patches : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourceKustomizePatchesItems0], default is Undefined, optional
+        patches
     replicas : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourceKustomizeReplicasItems0], default is Undefined, optional
         replicas
     version : str, default is Undefined, optional
@@ -8056,17 +10446,29 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     """
 
 
+    apiVersions?: [str]
+
     commonAnnotations?: {str:str}
 
     commonAnnotationsEnvsubst?: bool
 
     commonLabels?: {str:str}
 
+    components?: [str]
+
     forceCommonAnnotations?: bool
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
+
+    kubeVersion?: str
+
+    labelIncludeTemplates?: bool
+
+    labelWithoutSelector?: bool
 
     namePrefix?: str
 
@@ -8074,13 +10476,79 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     namespace?: str
 
+    patches?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourceKustomizePatchesItems0]
+
     replicas?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourceKustomizeReplicasItems0]
 
     version?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourceKustomizeReplicasItems0:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourceKustomizePatchesItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 list template spec source kustomize patches items0
+
+    Attributes
+    ----------
+    options : {str:bool}, default is Undefined, optional
+        options
+    patch : str, default is Undefined, optional
+        patch
+    path : str, default is Undefined, optional
+        path
+    target : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourceKustomizePatchesItems0Target, default is Undefined, optional
+        target
     """
+
+
+    options?: {str:bool}
+
+    patch?: str
+
+    path?: str
+
+    target?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourceKustomizePatchesItems0Target
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourceKustomizePatchesItems0Target:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 list template spec source kustomize patches items0 target
+
+    Attributes
+    ----------
+    annotationSelector : str, default is Undefined, optional
+        annotation selector
+    group : str, default is Undefined, optional
+        group
+    kind : str, default is Undefined, optional
+        kind
+    labelSelector : str, default is Undefined, optional
+        label selector
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    annotationSelector?: str
+
+    group?: str
+
+    kind?: str
+
+    labelSelector?: str
+
+    name?: str
+
+    namespace?: str
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourceKustomizeReplicasItems0:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 list template spec source kustomize replicas items0
 
     Attributes
@@ -8098,7 +10566,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourcePlugin:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 list template spec source plugin
 
     Attributes
@@ -8120,7 +10588,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourcePluginEnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 list template spec source plugin env items0
 
     Attributes
@@ -8138,7 +10606,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourcePluginParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 list template spec source plugin parameters items0
 
     Attributes
@@ -8164,7 +10632,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourcesItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 list template spec sources items0
 
     Attributes
@@ -8177,6 +10645,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourcesItems0Kustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourcesItems0Plugin, default is Undefined, optional
@@ -8198,6 +10668,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourcesItems0Kustomize
 
+    name?: str
+
     path?: str
 
     plugin?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourcesItems0Plugin
@@ -8210,7 +10682,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourcesItems0Directory:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 list template spec sources items0 directory
 
     Attributes
@@ -8236,7 +10708,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourcesItems0DirectoryJsonnet:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 list template spec sources items0 directory jsonnet
 
     Attributes
@@ -8258,7 +10730,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourcesItems0DirectoryJsonnetExtVarsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 list template spec sources items0 directory jsonnet ext vars items0
 
     Attributes
@@ -8280,7 +10752,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourcesItems0DirectoryJsonnetTlasItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 list template spec sources items0 directory jsonnet tlas items0
 
     Attributes
@@ -8302,15 +10774,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourcesItems0Helm:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 list template spec sources items0 helm
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     fileParameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourcesItems0HelmFileParametersItems0], default is Undefined, optional
         file parameters
     ignoreMissingValueFiles : bool, default is Undefined, optional
         ignore missing value files
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    namespace : str, default is Undefined, optional
+        namespace
     parameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourcesItems0HelmParametersItems0], default is Undefined, optional
         parameters
     passCredentials : bool, default is Undefined, optional
@@ -8319,18 +10797,30 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
         values
+    valuesObject : any, default is Undefined, optional
+        values object
     version : str, default is Undefined, optional
         version
     """
 
 
+    apiVersions?: [str]
+
     fileParameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourcesItems0HelmFileParametersItems0]
 
     ignoreMissingValueFiles?: bool
+
+    kubeVersion?: str
+
+    namespace?: str
 
     parameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourcesItems0HelmParametersItems0]
 
@@ -8340,15 +10830,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     skipCrds?: bool
 
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
+
     valueFiles?: [str]
 
     values?: str
+
+    valuesObject?: any
 
     version?: str
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourcesItems0HelmFileParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 list template spec sources items0 helm file parameters items0
 
     Attributes
@@ -8366,7 +10862,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourcesItems0HelmParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 list template spec sources items0 helm parameters items0
 
     Attributes
@@ -8388,29 +10884,43 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourcesItems0Kustomize:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 list template spec sources items0 kustomize
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     commonAnnotations : {str:str}, default is Undefined, optional
         common annotations
     commonAnnotationsEnvsubst : bool, default is Undefined, optional
         common annotations envsubst
     commonLabels : {str:str}, default is Undefined, optional
         common labels
+    components : [str], default is Undefined, optional
+        components
     forceCommonAnnotations : bool, default is Undefined, optional
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
+    labelWithoutSelector : bool, default is Undefined, optional
+        label without selector
     namePrefix : str, default is Undefined, optional
         name prefix
     nameSuffix : str, default is Undefined, optional
         name suffix
     namespace : str, default is Undefined, optional
         namespace
+    patches : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourcesItems0KustomizePatchesItems0], default is Undefined, optional
+        patches
     replicas : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourcesItems0KustomizeReplicasItems0], default is Undefined, optional
         replicas
     version : str, default is Undefined, optional
@@ -8418,17 +10928,29 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     """
 
 
+    apiVersions?: [str]
+
     commonAnnotations?: {str:str}
 
     commonAnnotationsEnvsubst?: bool
 
     commonLabels?: {str:str}
 
+    components?: [str]
+
     forceCommonAnnotations?: bool
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
+
+    kubeVersion?: str
+
+    labelIncludeTemplates?: bool
+
+    labelWithoutSelector?: bool
 
     namePrefix?: str
 
@@ -8436,13 +10958,79 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     namespace?: str
 
+    patches?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourcesItems0KustomizePatchesItems0]
+
     replicas?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourcesItems0KustomizeReplicasItems0]
 
     version?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourcesItems0KustomizeReplicasItems0:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourcesItems0KustomizePatchesItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 list template spec sources items0 kustomize patches items0
+
+    Attributes
+    ----------
+    options : {str:bool}, default is Undefined, optional
+        options
+    patch : str, default is Undefined, optional
+        patch
+    path : str, default is Undefined, optional
+        path
+    target : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourcesItems0KustomizePatchesItems0Target, default is Undefined, optional
+        target
     """
+
+
+    options?: {str:bool}
+
+    patch?: str
+
+    path?: str
+
+    target?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourcesItems0KustomizePatchesItems0Target
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourcesItems0KustomizePatchesItems0Target:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 list template spec sources items0 kustomize patches items0 target
+
+    Attributes
+    ----------
+    annotationSelector : str, default is Undefined, optional
+        annotation selector
+    group : str, default is Undefined, optional
+        group
+    kind : str, default is Undefined, optional
+        kind
+    labelSelector : str, default is Undefined, optional
+        label selector
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    annotationSelector?: str
+
+    group?: str
+
+    kind?: str
+
+    labelSelector?: str
+
+    name?: str
+
+    namespace?: str
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourcesItems0KustomizeReplicasItems0:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 list template spec sources items0 kustomize replicas items0
 
     Attributes
@@ -8460,7 +11048,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourcesItems0Plugin:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 list template spec sources items0 plugin
 
     Attributes
@@ -8482,7 +11070,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourcesItems0PluginEnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 list template spec sources items0 plugin env items0
 
     Attributes
@@ -8500,7 +11088,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourcesItems0PluginParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 list template spec sources items0 plugin parameters items0
 
     Attributes
@@ -8526,7 +11114,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSyncPolicy:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 list template spec sync policy
 
     Attributes
@@ -8552,7 +11140,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSyncPolicyAutomated:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 list template spec sync policy automated
 
     Attributes
@@ -8574,7 +11162,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSyncPolicyManagedNamespaceMetadata:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 list template spec sync policy managed namespace metadata
 
     Attributes
@@ -8592,7 +11180,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSyncPolicyRetry:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 list template spec sync policy retry
 
     Attributes
@@ -8610,7 +11198,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSyncPolicyRetryBackoff:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 list template spec sync policy retry backoff
 
     Attributes
@@ -8631,12 +11219,1392 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     maxDuration?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequest:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0Plugin:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 plugin
+
+    Attributes
+    ----------
+    configMapRef : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginConfigMapRef, default is Undefined, required
+        config map ref
+    input : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginInput, default is Undefined, optional
+        input
+    requeueAfterSeconds : int, default is Undefined, optional
+        requeue after seconds
+    template : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplate, default is Undefined, optional
+        template
+    values : {str:str}, default is Undefined, optional
+        values
     """
+
+
+    configMapRef: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginConfigMapRef
+
+    input?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginInput
+
+    requeueAfterSeconds?: int
+
+    template?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplate
+
+    values?: {str:str}
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginConfigMapRef:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 plugin config map ref
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        name
+    """
+
+
+    name: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginInput:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 plugin input
+
+    Attributes
+    ----------
+    parameters : {str:any}, default is Undefined, optional
+        parameters
+    """
+
+
+    parameters?: {str:any}
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplate:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 plugin template
+
+    Attributes
+    ----------
+    metadata : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateMetadata, default is Undefined, required
+        metadata
+    spec : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpec, default is Undefined, required
+        spec
+    """
+
+
+    metadata: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateMetadata
+
+    spec: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpec
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateMetadata:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 plugin template metadata
+
+    Attributes
+    ----------
+    annotations : {str:str}, default is Undefined, optional
+        annotations
+    finalizers : [str], default is Undefined, optional
+        finalizers
+    labels : {str:str}, default is Undefined, optional
+        labels
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    """
+
+
+    annotations?: {str:str}
+
+    finalizers?: [str]
+
+    labels?: {str:str}
+
+    name?: str
+
+    namespace?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpec:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 plugin template spec
+
+    Attributes
+    ----------
+    destination : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecDestination, default is Undefined, required
+        destination
+    ignoreDifferences : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecIgnoreDifferencesItems0], default is Undefined, optional
+        ignore differences
+    info : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecInfoItems0], default is Undefined, optional
+        info
+    project : str, default is Undefined, required
+        project
+    revisionHistoryLimit : int, default is Undefined, optional
+        revision history limit
+    source : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSource, default is Undefined, optional
+        source
+    sourceHydrator : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceHydrator, default is Undefined, optional
+        source hydrator
+    sources : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcesItems0], default is Undefined, optional
+        sources
+    syncPolicy : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSyncPolicy, default is Undefined, optional
+        sync policy
+    """
+
+
+    destination: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecDestination
+
+    ignoreDifferences?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecIgnoreDifferencesItems0]
+
+    info?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecInfoItems0]
+
+    project: str
+
+    revisionHistoryLimit?: int
+
+    source?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSource
+
+    sourceHydrator?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceHydrator
+
+    sources?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcesItems0]
+
+    syncPolicy?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSyncPolicy
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecDestination:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 plugin template spec destination
+
+    Attributes
+    ----------
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    server : str, default is Undefined, optional
+        server
+    """
+
+
+    name?: str
+
+    namespace?: str
+
+    server?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecIgnoreDifferencesItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 plugin template spec ignore differences items0
+
+    Attributes
+    ----------
+    group : str, default is Undefined, optional
+        group
+    jqPathExpressions : [str], default is Undefined, optional
+        jq path expressions
+    jsonPointers : [str], default is Undefined, optional
+        json pointers
+    kind : str, default is Undefined, required
+        kind
+    managedFieldsManagers : [str], default is Undefined, optional
+        managed fields managers
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    """
+
+
+    group?: str
+
+    jqPathExpressions?: [str]
+
+    jsonPointers?: [str]
+
+    kind: str
+
+    managedFieldsManagers?: [str]
+
+    name?: str
+
+    namespace?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecInfoItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 plugin template spec info items0
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        name
+    value : str, default is Undefined, required
+        value
+    """
+
+
+    name: str
+
+    value: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 plugin template spec source
+
+    Attributes
+    ----------
+    chart : str, default is Undefined, optional
+        chart
+    directory : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceDirectory, default is Undefined, optional
+        directory
+    helm : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceHelm, default is Undefined, optional
+        helm
+    kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceKustomize, default is Undefined, optional
+        kustomize
+    name : str, default is Undefined, optional
+        name
+    path : str, default is Undefined, optional
+        path
+    plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcePlugin, default is Undefined, optional
+        plugin
+    ref : str, default is Undefined, optional
+        ref
+    repoURL : str, default is Undefined, required
+        repo URL
+    targetRevision : str, default is Undefined, optional
+        target revision
+    """
+
+
+    chart?: str
+
+    directory?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceDirectory
+
+    helm?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceHelm
+
+    kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceKustomize
+
+    name?: str
+
+    path?: str
+
+    plugin?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcePlugin
+
+    ref?: str
+
+    repoURL: str
+
+    targetRevision?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceDirectory:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 plugin template spec source directory
+
+    Attributes
+    ----------
+    exclude : str, default is Undefined, optional
+        exclude
+    include : str, default is Undefined, optional
+        include
+    jsonnet : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceDirectoryJsonnet, default is Undefined, optional
+        jsonnet
+    recurse : bool, default is Undefined, optional
+        recurse
+    """
+
+
+    exclude?: str
+
+    include?: str
+
+    jsonnet?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceDirectoryJsonnet
+
+    recurse?: bool
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceDirectoryJsonnet:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 plugin template spec source directory jsonnet
+
+    Attributes
+    ----------
+    extVars : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceDirectoryJsonnetExtVarsItems0], default is Undefined, optional
+        ext vars
+    libs : [str], default is Undefined, optional
+        libs
+    tlas : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceDirectoryJsonnetTlasItems0], default is Undefined, optional
+        tlas
+    """
+
+
+    extVars?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceDirectoryJsonnetExtVarsItems0]
+
+    libs?: [str]
+
+    tlas?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceDirectoryJsonnetTlasItems0]
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceDirectoryJsonnetExtVarsItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 plugin template spec source directory jsonnet ext vars items0
+
+    Attributes
+    ----------
+    code : bool, default is Undefined, optional
+        code
+    name : str, default is Undefined, required
+        name
+    value : str, default is Undefined, required
+        value
+    """
+
+
+    code?: bool
+
+    name: str
+
+    value: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceDirectoryJsonnetTlasItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 plugin template spec source directory jsonnet tlas items0
+
+    Attributes
+    ----------
+    code : bool, default is Undefined, optional
+        code
+    name : str, default is Undefined, required
+        name
+    value : str, default is Undefined, required
+        value
+    """
+
+
+    code?: bool
+
+    name: str
+
+    value: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceHelm:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 plugin template spec source helm
+
+    Attributes
+    ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
+    fileParameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceHelmFileParametersItems0], default is Undefined, optional
+        file parameters
+    ignoreMissingValueFiles : bool, default is Undefined, optional
+        ignore missing value files
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    namespace : str, default is Undefined, optional
+        namespace
+    parameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceHelmParametersItems0], default is Undefined, optional
+        parameters
+    passCredentials : bool, default is Undefined, optional
+        pass credentials
+    releaseName : str, default is Undefined, optional
+        release name
+    skipCrds : bool, default is Undefined, optional
+        skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
+    valueFiles : [str], default is Undefined, optional
+        value files
+    values : str, default is Undefined, optional
+        values
+    valuesObject : any, default is Undefined, optional
+        values object
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    apiVersions?: [str]
+
+    fileParameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceHelmFileParametersItems0]
+
+    ignoreMissingValueFiles?: bool
+
+    kubeVersion?: str
+
+    namespace?: str
+
+    parameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceHelmParametersItems0]
+
+    passCredentials?: bool
+
+    releaseName?: str
+
+    skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
+
+    valueFiles?: [str]
+
+    values?: str
+
+    valuesObject?: any
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceHelmFileParametersItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 plugin template spec source helm file parameters items0
+
+    Attributes
+    ----------
+    name : str, default is Undefined, optional
+        name
+    path : str, default is Undefined, optional
+        path
+    """
+
+
+    name?: str
+
+    path?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceHelmParametersItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 plugin template spec source helm parameters items0
+
+    Attributes
+    ----------
+    forceString : bool, default is Undefined, optional
+        force string
+    name : str, default is Undefined, optional
+        name
+    value : str, default is Undefined, optional
+        value
+    """
+
+
+    forceString?: bool
+
+    name?: str
+
+    value?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceHydrator:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 plugin template spec source hydrator
+
+    Attributes
+    ----------
+    drySource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceHydratorDrySource, default is Undefined, required
+        dry source
+    hydrateTo : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceHydratorHydrateTo, default is Undefined, optional
+        hydrate to
+    syncSource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceHydratorSyncSource, default is Undefined, required
+        sync source
+    """
+
+
+    drySource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceHydratorDrySource
+
+    hydrateTo?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceHydratorHydrateTo
+
+    syncSource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceHydratorSyncSource
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceHydratorDrySource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 plugin template spec source hydrator dry source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    repoURL : str, default is Undefined, required
+        repo URL
+    targetRevision : str, default is Undefined, required
+        target revision
+    """
+
+
+    path: str
+
+    repoURL: str
+
+    targetRevision: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceHydratorHydrateTo:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 plugin template spec source hydrator hydrate to
+
+    Attributes
+    ----------
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceHydratorSyncSource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 plugin template spec source hydrator sync source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    path: str
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceKustomize:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 plugin template spec source kustomize
+
+    Attributes
+    ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
+    commonAnnotations : {str:str}, default is Undefined, optional
+        common annotations
+    commonAnnotationsEnvsubst : bool, default is Undefined, optional
+        common annotations envsubst
+    commonLabels : {str:str}, default is Undefined, optional
+        common labels
+    components : [str], default is Undefined, optional
+        components
+    forceCommonAnnotations : bool, default is Undefined, optional
+        force common annotations
+    forceCommonLabels : bool, default is Undefined, optional
+        force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
+    images : [str], default is Undefined, optional
+        images
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
+    labelWithoutSelector : bool, default is Undefined, optional
+        label without selector
+    namePrefix : str, default is Undefined, optional
+        name prefix
+    nameSuffix : str, default is Undefined, optional
+        name suffix
+    namespace : str, default is Undefined, optional
+        namespace
+    patches : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceKustomizePatchesItems0], default is Undefined, optional
+        patches
+    replicas : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceKustomizeReplicasItems0], default is Undefined, optional
+        replicas
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    apiVersions?: [str]
+
+    commonAnnotations?: {str:str}
+
+    commonAnnotationsEnvsubst?: bool
+
+    commonLabels?: {str:str}
+
+    components?: [str]
+
+    forceCommonAnnotations?: bool
+
+    forceCommonLabels?: bool
+
+    ignoreMissingComponents?: bool
+
+    images?: [str]
+
+    kubeVersion?: str
+
+    labelIncludeTemplates?: bool
+
+    labelWithoutSelector?: bool
+
+    namePrefix?: str
+
+    nameSuffix?: str
+
+    namespace?: str
+
+    patches?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceKustomizePatchesItems0]
+
+    replicas?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceKustomizeReplicasItems0]
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceKustomizePatchesItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 plugin template spec source kustomize patches items0
+
+    Attributes
+    ----------
+    options : {str:bool}, default is Undefined, optional
+        options
+    patch : str, default is Undefined, optional
+        patch
+    path : str, default is Undefined, optional
+        path
+    target : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceKustomizePatchesItems0Target, default is Undefined, optional
+        target
+    """
+
+
+    options?: {str:bool}
+
+    patch?: str
+
+    path?: str
+
+    target?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceKustomizePatchesItems0Target
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceKustomizePatchesItems0Target:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 plugin template spec source kustomize patches items0 target
+
+    Attributes
+    ----------
+    annotationSelector : str, default is Undefined, optional
+        annotation selector
+    group : str, default is Undefined, optional
+        group
+    kind : str, default is Undefined, optional
+        kind
+    labelSelector : str, default is Undefined, optional
+        label selector
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    annotationSelector?: str
+
+    group?: str
+
+    kind?: str
+
+    labelSelector?: str
+
+    name?: str
+
+    namespace?: str
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceKustomizeReplicasItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 plugin template spec source kustomize replicas items0
+
+    Attributes
+    ----------
+    count : int | str, default is Undefined, required
+        count
+    name : str, default is Undefined, required
+        name
+    """
+
+
+    count: int | str
+
+    name: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcePlugin:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 plugin template spec source plugin
+
+    Attributes
+    ----------
+    env : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcePluginEnvItems0], default is Undefined, optional
+        env
+    name : str, default is Undefined, optional
+        name
+    parameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcePluginParametersItems0], default is Undefined, optional
+        parameters
+    """
+
+
+    env?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcePluginEnvItems0]
+
+    name?: str
+
+    parameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcePluginParametersItems0]
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcePluginEnvItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 plugin template spec source plugin env items0
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        name
+    value : str, default is Undefined, required
+        value
+    """
+
+
+    name: str
+
+    value: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcePluginParametersItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 plugin template spec source plugin parameters items0
+
+    Attributes
+    ----------
+    array : [str], default is Undefined, optional
+        array
+    $map : {str:str}, default is Undefined, optional
+        map
+    name : str, default is Undefined, optional
+        name
+    string : str, default is Undefined, optional
+        string
+    """
+
+
+    array?: [str]
+
+    $map?: {str:str}
+
+    name?: str
+
+    string?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcesItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 plugin template spec sources items0
+
+    Attributes
+    ----------
+    chart : str, default is Undefined, optional
+        chart
+    directory : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcesItems0Directory, default is Undefined, optional
+        directory
+    helm : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcesItems0Helm, default is Undefined, optional
+        helm
+    kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcesItems0Kustomize, default is Undefined, optional
+        kustomize
+    name : str, default is Undefined, optional
+        name
+    path : str, default is Undefined, optional
+        path
+    plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcesItems0Plugin, default is Undefined, optional
+        plugin
+    ref : str, default is Undefined, optional
+        ref
+    repoURL : str, default is Undefined, required
+        repo URL
+    targetRevision : str, default is Undefined, optional
+        target revision
+    """
+
+
+    chart?: str
+
+    directory?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcesItems0Directory
+
+    helm?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcesItems0Helm
+
+    kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcesItems0Kustomize
+
+    name?: str
+
+    path?: str
+
+    plugin?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcesItems0Plugin
+
+    ref?: str
+
+    repoURL: str
+
+    targetRevision?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcesItems0Directory:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 plugin template spec sources items0 directory
+
+    Attributes
+    ----------
+    exclude : str, default is Undefined, optional
+        exclude
+    include : str, default is Undefined, optional
+        include
+    jsonnet : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcesItems0DirectoryJsonnet, default is Undefined, optional
+        jsonnet
+    recurse : bool, default is Undefined, optional
+        recurse
+    """
+
+
+    exclude?: str
+
+    include?: str
+
+    jsonnet?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcesItems0DirectoryJsonnet
+
+    recurse?: bool
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcesItems0DirectoryJsonnet:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 plugin template spec sources items0 directory jsonnet
+
+    Attributes
+    ----------
+    extVars : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcesItems0DirectoryJsonnetExtVarsItems0], default is Undefined, optional
+        ext vars
+    libs : [str], default is Undefined, optional
+        libs
+    tlas : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcesItems0DirectoryJsonnetTlasItems0], default is Undefined, optional
+        tlas
+    """
+
+
+    extVars?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcesItems0DirectoryJsonnetExtVarsItems0]
+
+    libs?: [str]
+
+    tlas?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcesItems0DirectoryJsonnetTlasItems0]
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcesItems0DirectoryJsonnetExtVarsItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 plugin template spec sources items0 directory jsonnet ext vars items0
+
+    Attributes
+    ----------
+    code : bool, default is Undefined, optional
+        code
+    name : str, default is Undefined, required
+        name
+    value : str, default is Undefined, required
+        value
+    """
+
+
+    code?: bool
+
+    name: str
+
+    value: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcesItems0DirectoryJsonnetTlasItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 plugin template spec sources items0 directory jsonnet tlas items0
+
+    Attributes
+    ----------
+    code : bool, default is Undefined, optional
+        code
+    name : str, default is Undefined, required
+        name
+    value : str, default is Undefined, required
+        value
+    """
+
+
+    code?: bool
+
+    name: str
+
+    value: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcesItems0Helm:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 plugin template spec sources items0 helm
+
+    Attributes
+    ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
+    fileParameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcesItems0HelmFileParametersItems0], default is Undefined, optional
+        file parameters
+    ignoreMissingValueFiles : bool, default is Undefined, optional
+        ignore missing value files
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    namespace : str, default is Undefined, optional
+        namespace
+    parameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcesItems0HelmParametersItems0], default is Undefined, optional
+        parameters
+    passCredentials : bool, default is Undefined, optional
+        pass credentials
+    releaseName : str, default is Undefined, optional
+        release name
+    skipCrds : bool, default is Undefined, optional
+        skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
+    valueFiles : [str], default is Undefined, optional
+        value files
+    values : str, default is Undefined, optional
+        values
+    valuesObject : any, default is Undefined, optional
+        values object
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    apiVersions?: [str]
+
+    fileParameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcesItems0HelmFileParametersItems0]
+
+    ignoreMissingValueFiles?: bool
+
+    kubeVersion?: str
+
+    namespace?: str
+
+    parameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcesItems0HelmParametersItems0]
+
+    passCredentials?: bool
+
+    releaseName?: str
+
+    skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
+
+    valueFiles?: [str]
+
+    values?: str
+
+    valuesObject?: any
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcesItems0HelmFileParametersItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 plugin template spec sources items0 helm file parameters items0
+
+    Attributes
+    ----------
+    name : str, default is Undefined, optional
+        name
+    path : str, default is Undefined, optional
+        path
+    """
+
+
+    name?: str
+
+    path?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcesItems0HelmParametersItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 plugin template spec sources items0 helm parameters items0
+
+    Attributes
+    ----------
+    forceString : bool, default is Undefined, optional
+        force string
+    name : str, default is Undefined, optional
+        name
+    value : str, default is Undefined, optional
+        value
+    """
+
+
+    forceString?: bool
+
+    name?: str
+
+    value?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcesItems0Kustomize:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 plugin template spec sources items0 kustomize
+
+    Attributes
+    ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
+    commonAnnotations : {str:str}, default is Undefined, optional
+        common annotations
+    commonAnnotationsEnvsubst : bool, default is Undefined, optional
+        common annotations envsubst
+    commonLabels : {str:str}, default is Undefined, optional
+        common labels
+    components : [str], default is Undefined, optional
+        components
+    forceCommonAnnotations : bool, default is Undefined, optional
+        force common annotations
+    forceCommonLabels : bool, default is Undefined, optional
+        force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
+    images : [str], default is Undefined, optional
+        images
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
+    labelWithoutSelector : bool, default is Undefined, optional
+        label without selector
+    namePrefix : str, default is Undefined, optional
+        name prefix
+    nameSuffix : str, default is Undefined, optional
+        name suffix
+    namespace : str, default is Undefined, optional
+        namespace
+    patches : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcesItems0KustomizePatchesItems0], default is Undefined, optional
+        patches
+    replicas : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcesItems0KustomizeReplicasItems0], default is Undefined, optional
+        replicas
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    apiVersions?: [str]
+
+    commonAnnotations?: {str:str}
+
+    commonAnnotationsEnvsubst?: bool
+
+    commonLabels?: {str:str}
+
+    components?: [str]
+
+    forceCommonAnnotations?: bool
+
+    forceCommonLabels?: bool
+
+    ignoreMissingComponents?: bool
+
+    images?: [str]
+
+    kubeVersion?: str
+
+    labelIncludeTemplates?: bool
+
+    labelWithoutSelector?: bool
+
+    namePrefix?: str
+
+    nameSuffix?: str
+
+    namespace?: str
+
+    patches?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcesItems0KustomizePatchesItems0]
+
+    replicas?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcesItems0KustomizeReplicasItems0]
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcesItems0KustomizePatchesItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 plugin template spec sources items0 kustomize patches items0
+
+    Attributes
+    ----------
+    options : {str:bool}, default is Undefined, optional
+        options
+    patch : str, default is Undefined, optional
+        patch
+    path : str, default is Undefined, optional
+        path
+    target : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcesItems0KustomizePatchesItems0Target, default is Undefined, optional
+        target
+    """
+
+
+    options?: {str:bool}
+
+    patch?: str
+
+    path?: str
+
+    target?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcesItems0KustomizePatchesItems0Target
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcesItems0KustomizePatchesItems0Target:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 plugin template spec sources items0 kustomize patches items0 target
+
+    Attributes
+    ----------
+    annotationSelector : str, default is Undefined, optional
+        annotation selector
+    group : str, default is Undefined, optional
+        group
+    kind : str, default is Undefined, optional
+        kind
+    labelSelector : str, default is Undefined, optional
+        label selector
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    annotationSelector?: str
+
+    group?: str
+
+    kind?: str
+
+    labelSelector?: str
+
+    name?: str
+
+    namespace?: str
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcesItems0KustomizeReplicasItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 plugin template spec sources items0 kustomize replicas items0
+
+    Attributes
+    ----------
+    count : int | str, default is Undefined, required
+        count
+    name : str, default is Undefined, required
+        name
+    """
+
+
+    count: int | str
+
+    name: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcesItems0Plugin:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 plugin template spec sources items0 plugin
+
+    Attributes
+    ----------
+    env : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcesItems0PluginEnvItems0], default is Undefined, optional
+        env
+    name : str, default is Undefined, optional
+        name
+    parameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcesItems0PluginParametersItems0], default is Undefined, optional
+        parameters
+    """
+
+
+    env?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcesItems0PluginEnvItems0]
+
+    name?: str
+
+    parameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcesItems0PluginParametersItems0]
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcesItems0PluginEnvItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 plugin template spec sources items0 plugin env items0
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        name
+    value : str, default is Undefined, required
+        value
+    """
+
+
+    name: str
+
+    value: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcesItems0PluginParametersItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 plugin template spec sources items0 plugin parameters items0
+
+    Attributes
+    ----------
+    array : [str], default is Undefined, optional
+        array
+    $map : {str:str}, default is Undefined, optional
+        map
+    name : str, default is Undefined, optional
+        name
+    string : str, default is Undefined, optional
+        string
+    """
+
+
+    array?: [str]
+
+    $map?: {str:str}
+
+    name?: str
+
+    string?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSyncPolicy:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 plugin template spec sync policy
+
+    Attributes
+    ----------
+    automated : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSyncPolicyAutomated, default is Undefined, optional
+        automated
+    managedNamespaceMetadata : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSyncPolicyManagedNamespaceMetadata, default is Undefined, optional
+        managed namespace metadata
+    retry : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSyncPolicyRetry, default is Undefined, optional
+        retry
+    syncOptions : [str], default is Undefined, optional
+        sync options
+    """
+
+
+    automated?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSyncPolicyAutomated
+
+    managedNamespaceMetadata?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSyncPolicyManagedNamespaceMetadata
+
+    retry?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSyncPolicyRetry
+
+    syncOptions?: [str]
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSyncPolicyAutomated:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 plugin template spec sync policy automated
+
+    Attributes
+    ----------
+    allowEmpty : bool, default is Undefined, optional
+        allow empty
+    prune : bool, default is Undefined, optional
+        prune
+    selfHeal : bool, default is Undefined, optional
+        self heal
+    """
+
+
+    allowEmpty?: bool
+
+    prune?: bool
+
+    selfHeal?: bool
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSyncPolicyManagedNamespaceMetadata:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 plugin template spec sync policy managed namespace metadata
+
+    Attributes
+    ----------
+    annotations : {str:str}, default is Undefined, optional
+        annotations
+    labels : {str:str}, default is Undefined, optional
+        labels
+    """
+
+
+    annotations?: {str:str}
+
+    labels?: {str:str}
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSyncPolicyRetry:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 plugin template spec sync policy retry
+
+    Attributes
+    ----------
+    backoff : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSyncPolicyRetryBackoff, default is Undefined, optional
+        backoff
+    limit : int, default is Undefined, optional
+        limit
+    """
+
+
+    backoff?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSyncPolicyRetryBackoff
+
+    limit?: int
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSyncPolicyRetryBackoff:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 plugin template spec sync policy retry backoff
+
+    Attributes
+    ----------
+    duration : str, default is Undefined, optional
+        duration
+    factor : int, default is Undefined, optional
+        factor
+    maxDuration : str, default is Undefined, optional
+        max duration
+    """
+
+
+    duration?: str
+
+    factor?: int
+
+    maxDuration?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequest:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request
 
     Attributes
     ----------
+    azuredevops : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestAzuredevops, default is Undefined, optional
+        azuredevops
+    bitbucket : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestBitbucket, default is Undefined, optional
+        bitbucket
     bitbucketServer : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestBitbucketServer, default is Undefined, optional
         bitbucket server
     filters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestFiltersItems0], default is Undefined, optional
@@ -8651,8 +12619,14 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         requeue after seconds
     template : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplate, default is Undefined, optional
         template
+    values : {str:str}, default is Undefined, optional
+        values
     """
 
+
+    azuredevops?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestAzuredevops
+
+    bitbucket?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestBitbucket
 
     bitbucketServer?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestBitbucketServer
 
@@ -8668,9 +12642,161 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     template?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplate
 
+    values?: {str:str}
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestAzuredevops:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request azuredevops
+
+    Attributes
+    ----------
+    api : str, default is Undefined, optional
+        api
+    labels : [str], default is Undefined, optional
+        labels
+    organization : str, default is Undefined, required
+        organization
+    project : str, default is Undefined, required
+        project
+    repo : str, default is Undefined, required
+        repo
+    tokenRef : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestAzuredevopsTokenRef, default is Undefined, optional
+        token ref
+    """
+
+
+    api?: str
+
+    labels?: [str]
+
+    organization: str
+
+    project: str
+
+    repo: str
+
+    tokenRef?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestAzuredevopsTokenRef
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestAzuredevopsTokenRef:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request azuredevops token ref
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    secretName : str, default is Undefined, required
+        secret name
+    """
+
+
+    key: str
+
+    secretName: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestBitbucket:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request bitbucket
+
+    Attributes
+    ----------
+    api : str, default is Undefined, optional
+        api
+    basicAuth : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestBitbucketBasicAuth, default is Undefined, optional
+        basic auth
+    bearerToken : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestBitbucketBearerToken, default is Undefined, optional
+        bearer token
+    owner : str, default is Undefined, required
+        owner
+    repo : str, default is Undefined, required
+        repo
+    """
+
+
+    api?: str
+
+    basicAuth?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestBitbucketBasicAuth
+
+    bearerToken?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestBitbucketBearerToken
+
+    owner: str
+
+    repo: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestBitbucketBasicAuth:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request bitbucket basic auth
+
+    Attributes
+    ----------
+    passwordRef : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestBitbucketBasicAuthPasswordRef, default is Undefined, required
+        password ref
+    username : str, default is Undefined, required
+        username
+    """
+
+
+    passwordRef: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestBitbucketBasicAuthPasswordRef
+
+    username: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestBitbucketBasicAuthPasswordRef:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request bitbucket basic auth password ref
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    secretName : str, default is Undefined, required
+        secret name
+    """
+
+
+    key: str
+
+    secretName: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestBitbucketBearerToken:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request bitbucket bearer token
+
+    Attributes
+    ----------
+    tokenRef : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestBitbucketBearerTokenTokenRef, default is Undefined, required
+        token ref
+    """
+
+
+    tokenRef: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestBitbucketBearerTokenTokenRef
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestBitbucketBearerTokenTokenRef:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request bitbucket bearer token token ref
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    secretName : str, default is Undefined, required
+        secret name
+    """
+
+
+    key: str
+
+    secretName: str
+
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestBitbucketServer:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request bitbucket server
 
     Attributes
@@ -8679,6 +12805,12 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         api
     basicAuth : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestBitbucketServerBasicAuth, default is Undefined, optional
         basic auth
+    bearerToken : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestBitbucketServerBearerToken, default is Undefined, optional
+        bearer token
+    caRef : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestBitbucketServerCaRef, default is Undefined, optional
+        ca ref
+    insecure : bool, default is Undefined, optional
+        insecure
     project : str, default is Undefined, required
         project
     repo : str, default is Undefined, required
@@ -8690,13 +12822,19 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     basicAuth?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestBitbucketServerBasicAuth
 
+    bearerToken?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestBitbucketServerBearerToken
+
+    caRef?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestBitbucketServerCaRef
+
+    insecure?: bool
+
     project: str
 
     repo: str
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestBitbucketServerBasicAuth:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request bitbucket server basic auth
 
     Attributes
@@ -8714,7 +12852,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestBitbucketServerBasicAuthPasswordRef:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request bitbucket server basic auth password ref
 
     Attributes
@@ -8731,8 +12869,58 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     secretName: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestFiltersItems0:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestBitbucketServerBearerToken:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request bitbucket server bearer token
+
+    Attributes
+    ----------
+    tokenRef : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestBitbucketServerBearerTokenTokenRef, default is Undefined, required
+        token ref
     """
+
+
+    tokenRef: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestBitbucketServerBearerTokenTokenRef
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestBitbucketServerBearerTokenTokenRef:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request bitbucket server bearer token token ref
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    secretName : str, default is Undefined, required
+        secret name
+    """
+
+
+    key: str
+
+    secretName: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestBitbucketServerCaRef:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request bitbucket server ca ref
+
+    Attributes
+    ----------
+    configMapName : str, default is Undefined, required
+        config map name
+    key : str, default is Undefined, required
+        key
+    """
+
+
+    configMapName: str
+
+    key: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestFiltersItems0:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request filters items0
 
     Attributes
@@ -8750,7 +12938,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestGitea:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request gitea
 
     Attributes
@@ -8780,7 +12968,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestGiteaTokenRef:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request gitea token ref
 
     Attributes
@@ -8798,7 +12986,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestGithub:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request github
 
     Attributes
@@ -8832,7 +13020,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestGithubTokenRef:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request github token ref
 
     Attributes
@@ -8850,13 +13038,17 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestGitlab:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request gitlab
 
     Attributes
     ----------
     api : str, default is Undefined, optional
         api
+    caRef : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestGitlabCaRef, default is Undefined, optional
+        ca ref
+    insecure : bool, default is Undefined, optional
+        insecure
     labels : [str], default is Undefined, optional
         labels
     project : str, default is Undefined, required
@@ -8870,6 +13062,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     api?: str
 
+    caRef?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestGitlabCaRef
+
+    insecure?: bool
+
     labels?: [str]
 
     project: str
@@ -8879,8 +13075,26 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     tokenRef?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestGitlabTokenRef
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestGitlabTokenRef:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestGitlabCaRef:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request gitlab ca ref
+
+    Attributes
+    ----------
+    configMapName : str, default is Undefined, required
+        config map name
+    key : str, default is Undefined, required
+        key
     """
+
+
+    configMapName: str
+
+    key: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestGitlabTokenRef:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request gitlab token ref
 
     Attributes
@@ -8898,7 +13112,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplate:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request template
 
     Attributes
@@ -8916,7 +13130,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateMetadata:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request template metadata
 
     Attributes
@@ -8946,7 +13160,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpec:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request template spec
 
     Attributes
@@ -8963,6 +13177,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         revision history limit
     source : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSource, default is Undefined, optional
         source
+    sourceHydrator : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourceHydrator, default is Undefined, optional
+        source hydrator
     sources : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourcesItems0], default is Undefined, optional
         sources
     syncPolicy : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSyncPolicy, default is Undefined, optional
@@ -8982,13 +13198,15 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     source?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSource
 
+    sourceHydrator?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourceHydrator
+
     sources?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourcesItems0]
 
     syncPolicy?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSyncPolicy
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecDestination:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request template spec destination
 
     Attributes
@@ -9010,7 +13228,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecIgnoreDifferencesItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request template spec ignore differences items0
 
     Attributes
@@ -9048,7 +13266,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecInfoItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request template spec info items0
 
     Attributes
@@ -9066,7 +13284,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSource:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request template spec source
 
     Attributes
@@ -9079,6 +13297,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourceKustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourcePlugin, default is Undefined, optional
@@ -9100,6 +13320,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourceKustomize
 
+    name?: str
+
     path?: str
 
     plugin?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourcePlugin
@@ -9112,7 +13334,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourceDirectory:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request template spec source directory
 
     Attributes
@@ -9138,7 +13360,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourceDirectoryJsonnet:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request template spec source directory jsonnet
 
     Attributes
@@ -9160,7 +13382,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourceDirectoryJsonnetExtVarsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request template spec source directory jsonnet ext vars items0
 
     Attributes
@@ -9182,7 +13404,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourceDirectoryJsonnetTlasItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request template spec source directory jsonnet tlas items0
 
     Attributes
@@ -9204,15 +13426,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourceHelm:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request template spec source helm
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     fileParameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourceHelmFileParametersItems0], default is Undefined, optional
         file parameters
     ignoreMissingValueFiles : bool, default is Undefined, optional
         ignore missing value files
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    namespace : str, default is Undefined, optional
+        namespace
     parameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourceHelmParametersItems0], default is Undefined, optional
         parameters
     passCredentials : bool, default is Undefined, optional
@@ -9221,18 +13449,30 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
         values
+    valuesObject : any, default is Undefined, optional
+        values object
     version : str, default is Undefined, optional
         version
     """
 
 
+    apiVersions?: [str]
+
     fileParameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourceHelmFileParametersItems0]
 
     ignoreMissingValueFiles?: bool
+
+    kubeVersion?: str
+
+    namespace?: str
 
     parameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourceHelmParametersItems0]
 
@@ -9242,15 +13482,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     skipCrds?: bool
 
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
+
     valueFiles?: [str]
 
     values?: str
+
+    valuesObject?: any
 
     version?: str
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourceHelmFileParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request template spec source helm file parameters items0
 
     Attributes
@@ -9268,7 +13514,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourceHelmParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request template spec source helm parameters items0
 
     Attributes
@@ -9289,30 +13535,120 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     value?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourceKustomize:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourceHydrator:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request template spec source hydrator
+
+    Attributes
+    ----------
+    drySource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourceHydratorDrySource, default is Undefined, required
+        dry source
+    hydrateTo : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourceHydratorHydrateTo, default is Undefined, optional
+        hydrate to
+    syncSource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourceHydratorSyncSource, default is Undefined, required
+        sync source
     """
+
+
+    drySource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourceHydratorDrySource
+
+    hydrateTo?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourceHydratorHydrateTo
+
+    syncSource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourceHydratorSyncSource
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourceHydratorDrySource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request template spec source hydrator dry source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    repoURL : str, default is Undefined, required
+        repo URL
+    targetRevision : str, default is Undefined, required
+        target revision
+    """
+
+
+    path: str
+
+    repoURL: str
+
+    targetRevision: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourceHydratorHydrateTo:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request template spec source hydrator hydrate to
+
+    Attributes
+    ----------
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourceHydratorSyncSource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request template spec source hydrator sync source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    path: str
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourceKustomize:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request template spec source kustomize
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     commonAnnotations : {str:str}, default is Undefined, optional
         common annotations
     commonAnnotationsEnvsubst : bool, default is Undefined, optional
         common annotations envsubst
     commonLabels : {str:str}, default is Undefined, optional
         common labels
+    components : [str], default is Undefined, optional
+        components
     forceCommonAnnotations : bool, default is Undefined, optional
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
+    labelWithoutSelector : bool, default is Undefined, optional
+        label without selector
     namePrefix : str, default is Undefined, optional
         name prefix
     nameSuffix : str, default is Undefined, optional
         name suffix
     namespace : str, default is Undefined, optional
         namespace
+    patches : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourceKustomizePatchesItems0], default is Undefined, optional
+        patches
     replicas : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourceKustomizeReplicasItems0], default is Undefined, optional
         replicas
     version : str, default is Undefined, optional
@@ -9320,17 +13656,29 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     """
 
 
+    apiVersions?: [str]
+
     commonAnnotations?: {str:str}
 
     commonAnnotationsEnvsubst?: bool
 
     commonLabels?: {str:str}
 
+    components?: [str]
+
     forceCommonAnnotations?: bool
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
+
+    kubeVersion?: str
+
+    labelIncludeTemplates?: bool
+
+    labelWithoutSelector?: bool
 
     namePrefix?: str
 
@@ -9338,13 +13686,79 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     namespace?: str
 
+    patches?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourceKustomizePatchesItems0]
+
     replicas?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourceKustomizeReplicasItems0]
 
     version?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourceKustomizeReplicasItems0:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourceKustomizePatchesItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request template spec source kustomize patches items0
+
+    Attributes
+    ----------
+    options : {str:bool}, default is Undefined, optional
+        options
+    patch : str, default is Undefined, optional
+        patch
+    path : str, default is Undefined, optional
+        path
+    target : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourceKustomizePatchesItems0Target, default is Undefined, optional
+        target
     """
+
+
+    options?: {str:bool}
+
+    patch?: str
+
+    path?: str
+
+    target?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourceKustomizePatchesItems0Target
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourceKustomizePatchesItems0Target:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request template spec source kustomize patches items0 target
+
+    Attributes
+    ----------
+    annotationSelector : str, default is Undefined, optional
+        annotation selector
+    group : str, default is Undefined, optional
+        group
+    kind : str, default is Undefined, optional
+        kind
+    labelSelector : str, default is Undefined, optional
+        label selector
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    annotationSelector?: str
+
+    group?: str
+
+    kind?: str
+
+    labelSelector?: str
+
+    name?: str
+
+    namespace?: str
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourceKustomizeReplicasItems0:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request template spec source kustomize replicas items0
 
     Attributes
@@ -9362,7 +13776,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourcePlugin:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request template spec source plugin
 
     Attributes
@@ -9384,7 +13798,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourcePluginEnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request template spec source plugin env items0
 
     Attributes
@@ -9402,7 +13816,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourcePluginParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request template spec source plugin parameters items0
 
     Attributes
@@ -9428,7 +13842,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourcesItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request template spec sources items0
 
     Attributes
@@ -9441,6 +13855,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourcesItems0Kustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourcesItems0Plugin, default is Undefined, optional
@@ -9462,6 +13878,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourcesItems0Kustomize
 
+    name?: str
+
     path?: str
 
     plugin?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourcesItems0Plugin
@@ -9474,7 +13892,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourcesItems0Directory:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request template spec sources items0 directory
 
     Attributes
@@ -9500,7 +13918,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourcesItems0DirectoryJsonnet:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request template spec sources items0 directory jsonnet
 
     Attributes
@@ -9522,7 +13940,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourcesItems0DirectoryJsonnetExtVarsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request template spec sources items0 directory jsonnet ext vars items0
 
     Attributes
@@ -9544,7 +13962,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourcesItems0DirectoryJsonnetTlasItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request template spec sources items0 directory jsonnet tlas items0
 
     Attributes
@@ -9566,15 +13984,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourcesItems0Helm:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request template spec sources items0 helm
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     fileParameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourcesItems0HelmFileParametersItems0], default is Undefined, optional
         file parameters
     ignoreMissingValueFiles : bool, default is Undefined, optional
         ignore missing value files
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    namespace : str, default is Undefined, optional
+        namespace
     parameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourcesItems0HelmParametersItems0], default is Undefined, optional
         parameters
     passCredentials : bool, default is Undefined, optional
@@ -9583,18 +14007,30 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
         values
+    valuesObject : any, default is Undefined, optional
+        values object
     version : str, default is Undefined, optional
         version
     """
 
 
+    apiVersions?: [str]
+
     fileParameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourcesItems0HelmFileParametersItems0]
 
     ignoreMissingValueFiles?: bool
+
+    kubeVersion?: str
+
+    namespace?: str
 
     parameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourcesItems0HelmParametersItems0]
 
@@ -9604,15 +14040,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     skipCrds?: bool
 
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
+
     valueFiles?: [str]
 
     values?: str
+
+    valuesObject?: any
 
     version?: str
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourcesItems0HelmFileParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request template spec sources items0 helm file parameters items0
 
     Attributes
@@ -9630,7 +14072,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourcesItems0HelmParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request template spec sources items0 helm parameters items0
 
     Attributes
@@ -9652,29 +14094,43 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourcesItems0Kustomize:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request template spec sources items0 kustomize
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     commonAnnotations : {str:str}, default is Undefined, optional
         common annotations
     commonAnnotationsEnvsubst : bool, default is Undefined, optional
         common annotations envsubst
     commonLabels : {str:str}, default is Undefined, optional
         common labels
+    components : [str], default is Undefined, optional
+        components
     forceCommonAnnotations : bool, default is Undefined, optional
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
+    labelWithoutSelector : bool, default is Undefined, optional
+        label without selector
     namePrefix : str, default is Undefined, optional
         name prefix
     nameSuffix : str, default is Undefined, optional
         name suffix
     namespace : str, default is Undefined, optional
         namespace
+    patches : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourcesItems0KustomizePatchesItems0], default is Undefined, optional
+        patches
     replicas : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourcesItems0KustomizeReplicasItems0], default is Undefined, optional
         replicas
     version : str, default is Undefined, optional
@@ -9682,17 +14138,29 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     """
 
 
+    apiVersions?: [str]
+
     commonAnnotations?: {str:str}
 
     commonAnnotationsEnvsubst?: bool
 
     commonLabels?: {str:str}
 
+    components?: [str]
+
     forceCommonAnnotations?: bool
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
+
+    kubeVersion?: str
+
+    labelIncludeTemplates?: bool
+
+    labelWithoutSelector?: bool
 
     namePrefix?: str
 
@@ -9700,13 +14168,79 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     namespace?: str
 
+    patches?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourcesItems0KustomizePatchesItems0]
+
     replicas?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourcesItems0KustomizeReplicasItems0]
 
     version?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourcesItems0KustomizeReplicasItems0:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourcesItems0KustomizePatchesItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request template spec sources items0 kustomize patches items0
+
+    Attributes
+    ----------
+    options : {str:bool}, default is Undefined, optional
+        options
+    patch : str, default is Undefined, optional
+        patch
+    path : str, default is Undefined, optional
+        path
+    target : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourcesItems0KustomizePatchesItems0Target, default is Undefined, optional
+        target
     """
+
+
+    options?: {str:bool}
+
+    patch?: str
+
+    path?: str
+
+    target?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourcesItems0KustomizePatchesItems0Target
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourcesItems0KustomizePatchesItems0Target:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request template spec sources items0 kustomize patches items0 target
+
+    Attributes
+    ----------
+    annotationSelector : str, default is Undefined, optional
+        annotation selector
+    group : str, default is Undefined, optional
+        group
+    kind : str, default is Undefined, optional
+        kind
+    labelSelector : str, default is Undefined, optional
+        label selector
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    annotationSelector?: str
+
+    group?: str
+
+    kind?: str
+
+    labelSelector?: str
+
+    name?: str
+
+    namespace?: str
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourcesItems0KustomizeReplicasItems0:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request template spec sources items0 kustomize replicas items0
 
     Attributes
@@ -9724,7 +14258,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourcesItems0Plugin:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request template spec sources items0 plugin
 
     Attributes
@@ -9746,7 +14280,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourcesItems0PluginEnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request template spec sources items0 plugin env items0
 
     Attributes
@@ -9764,7 +14298,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourcesItems0PluginParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request template spec sources items0 plugin parameters items0
 
     Attributes
@@ -9790,7 +14324,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSyncPolicy:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request template spec sync policy
 
     Attributes
@@ -9816,7 +14350,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSyncPolicyAutomated:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request template spec sync policy automated
 
     Attributes
@@ -9838,7 +14372,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSyncPolicyManagedNamespaceMetadata:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request template spec sync policy managed namespace metadata
 
     Attributes
@@ -9856,7 +14390,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSyncPolicyRetry:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request template spec sync policy retry
 
     Attributes
@@ -9874,7 +14408,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSyncPolicyRetryBackoff:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request template spec sync policy retry backoff
 
     Attributes
@@ -9896,7 +14430,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProvider:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider
 
     Attributes
@@ -9954,7 +14488,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderAwsCodeCommit:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider aws code commit
 
     Attributes
@@ -9980,7 +14514,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderAwsCodeCommitTagFiltersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider aws code commit tag filters items0
 
     Attributes
@@ -9998,7 +14532,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderAzureDevOps:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider azure dev ops
 
     Attributes
@@ -10028,7 +14562,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderAzureDevOpsAccessTokenRef:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider azure dev ops access token ref
 
     Attributes
@@ -10046,7 +14580,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderBitbucket:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider bitbucket
 
     Attributes
@@ -10072,7 +14606,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderBitbucketAppPasswordRef:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider bitbucket app password ref
 
     Attributes
@@ -10090,7 +14624,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderBitbucketServer:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider bitbucket server
 
     Attributes
@@ -10101,6 +14635,12 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         api
     basicAuth : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderBitbucketServerBasicAuth, default is Undefined, optional
         basic auth
+    bearerToken : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderBitbucketServerBearerToken, default is Undefined, optional
+        bearer token
+    caRef : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderBitbucketServerCaRef, default is Undefined, optional
+        ca ref
+    insecure : bool, default is Undefined, optional
+        insecure
     project : str, default is Undefined, required
         project
     """
@@ -10112,11 +14652,17 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     basicAuth?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderBitbucketServerBasicAuth
 
+    bearerToken?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderBitbucketServerBearerToken
+
+    caRef?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderBitbucketServerCaRef
+
+    insecure?: bool
+
     project: str
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderBitbucketServerBasicAuth:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider bitbucket server basic auth
 
     Attributes
@@ -10134,7 +14680,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderBitbucketServerBasicAuthPasswordRef:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider bitbucket server basic auth password ref
 
     Attributes
@@ -10151,8 +14697,58 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     secretName: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderFiltersItems0:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderBitbucketServerBearerToken:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider bitbucket server bearer token
+
+    Attributes
+    ----------
+    tokenRef : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderBitbucketServerBearerTokenTokenRef, default is Undefined, required
+        token ref
     """
+
+
+    tokenRef: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderBitbucketServerBearerTokenTokenRef
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderBitbucketServerBearerTokenTokenRef:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider bitbucket server bearer token token ref
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    secretName : str, default is Undefined, required
+        secret name
+    """
+
+
+    key: str
+
+    secretName: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderBitbucketServerCaRef:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider bitbucket server ca ref
+
+    Attributes
+    ----------
+    configMapName : str, default is Undefined, required
+        config map name
+    key : str, default is Undefined, required
+        key
+    """
+
+
+    configMapName: str
+
+    key: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderFiltersItems0:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider filters items0
 
     Attributes
@@ -10182,7 +14778,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderGitea:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider gitea
 
     Attributes
@@ -10212,7 +14808,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderGiteaTokenRef:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider gitea token ref
 
     Attributes
@@ -10230,7 +14826,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderGithub:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider github
 
     Attributes
@@ -10260,7 +14856,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderGithubTokenRef:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider github token ref
 
     Attributes
@@ -10278,7 +14874,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderGitlab:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider gitlab
 
     Attributes
@@ -10287,12 +14883,20 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         all branches
     api : str, default is Undefined, optional
         api
+    caRef : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderGitlabCaRef, default is Undefined, optional
+        ca ref
     group : str, default is Undefined, required
         group
+    includeSharedProjects : bool, default is Undefined, optional
+        include shared projects
     includeSubgroups : bool, default is Undefined, optional
         include subgroups
+    insecure : bool, default is Undefined, optional
+        insecure
     tokenRef : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderGitlabTokenRef, default is Undefined, optional
         token ref
+    topic : str, default is Undefined, optional
+        topic
     """
 
 
@@ -10300,15 +14904,41 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     api?: str
 
+    caRef?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderGitlabCaRef
+
     group: str
+
+    includeSharedProjects?: bool
 
     includeSubgroups?: bool
 
+    insecure?: bool
+
     tokenRef?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderGitlabTokenRef
+
+    topic?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderGitlabCaRef:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider gitlab ca ref
+
+    Attributes
+    ----------
+    configMapName : str, default is Undefined, required
+        config map name
+    key : str, default is Undefined, required
+        key
+    """
+
+
+    configMapName: str
+
+    key: str
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderGitlabTokenRef:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider gitlab token ref
 
     Attributes
@@ -10326,7 +14956,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplate:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider template
 
     Attributes
@@ -10344,7 +14974,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateMetadata:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider template metadata
 
     Attributes
@@ -10374,7 +15004,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpec:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider template spec
 
     Attributes
@@ -10391,6 +15021,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         revision history limit
     source : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSource, default is Undefined, optional
         source
+    sourceHydrator : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourceHydrator, default is Undefined, optional
+        source hydrator
     sources : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourcesItems0], default is Undefined, optional
         sources
     syncPolicy : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSyncPolicy, default is Undefined, optional
@@ -10410,13 +15042,15 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     source?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSource
 
+    sourceHydrator?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourceHydrator
+
     sources?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourcesItems0]
 
     syncPolicy?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSyncPolicy
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecDestination:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider template spec destination
 
     Attributes
@@ -10438,7 +15072,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecIgnoreDifferencesItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider template spec ignore differences items0
 
     Attributes
@@ -10476,7 +15110,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecInfoItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider template spec info items0
 
     Attributes
@@ -10494,7 +15128,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSource:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider template spec source
 
     Attributes
@@ -10507,6 +15141,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourceKustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourcePlugin, default is Undefined, optional
@@ -10528,6 +15164,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourceKustomize
 
+    name?: str
+
     path?: str
 
     plugin?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourcePlugin
@@ -10540,7 +15178,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourceDirectory:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider template spec source directory
 
     Attributes
@@ -10566,7 +15204,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourceDirectoryJsonnet:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider template spec source directory jsonnet
 
     Attributes
@@ -10588,7 +15226,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourceDirectoryJsonnetExtVarsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider template spec source directory jsonnet ext vars items0
 
     Attributes
@@ -10610,7 +15248,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourceDirectoryJsonnetTlasItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider template spec source directory jsonnet tlas items0
 
     Attributes
@@ -10632,15 +15270,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourceHelm:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider template spec source helm
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     fileParameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourceHelmFileParametersItems0], default is Undefined, optional
         file parameters
     ignoreMissingValueFiles : bool, default is Undefined, optional
         ignore missing value files
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    namespace : str, default is Undefined, optional
+        namespace
     parameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourceHelmParametersItems0], default is Undefined, optional
         parameters
     passCredentials : bool, default is Undefined, optional
@@ -10649,18 +15293,30 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
         values
+    valuesObject : any, default is Undefined, optional
+        values object
     version : str, default is Undefined, optional
         version
     """
 
 
+    apiVersions?: [str]
+
     fileParameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourceHelmFileParametersItems0]
 
     ignoreMissingValueFiles?: bool
+
+    kubeVersion?: str
+
+    namespace?: str
 
     parameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourceHelmParametersItems0]
 
@@ -10670,15 +15326,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     skipCrds?: bool
 
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
+
     valueFiles?: [str]
 
     values?: str
+
+    valuesObject?: any
 
     version?: str
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourceHelmFileParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider template spec source helm file parameters items0
 
     Attributes
@@ -10696,7 +15358,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourceHelmParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider template spec source helm parameters items0
 
     Attributes
@@ -10717,30 +15379,120 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     value?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourceKustomize:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourceHydrator:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider template spec source hydrator
+
+    Attributes
+    ----------
+    drySource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourceHydratorDrySource, default is Undefined, required
+        dry source
+    hydrateTo : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourceHydratorHydrateTo, default is Undefined, optional
+        hydrate to
+    syncSource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourceHydratorSyncSource, default is Undefined, required
+        sync source
     """
+
+
+    drySource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourceHydratorDrySource
+
+    hydrateTo?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourceHydratorHydrateTo
+
+    syncSource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourceHydratorSyncSource
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourceHydratorDrySource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider template spec source hydrator dry source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    repoURL : str, default is Undefined, required
+        repo URL
+    targetRevision : str, default is Undefined, required
+        target revision
+    """
+
+
+    path: str
+
+    repoURL: str
+
+    targetRevision: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourceHydratorHydrateTo:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider template spec source hydrator hydrate to
+
+    Attributes
+    ----------
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourceHydratorSyncSource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider template spec source hydrator sync source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    path: str
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourceKustomize:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider template spec source kustomize
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     commonAnnotations : {str:str}, default is Undefined, optional
         common annotations
     commonAnnotationsEnvsubst : bool, default is Undefined, optional
         common annotations envsubst
     commonLabels : {str:str}, default is Undefined, optional
         common labels
+    components : [str], default is Undefined, optional
+        components
     forceCommonAnnotations : bool, default is Undefined, optional
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
+    labelWithoutSelector : bool, default is Undefined, optional
+        label without selector
     namePrefix : str, default is Undefined, optional
         name prefix
     nameSuffix : str, default is Undefined, optional
         name suffix
     namespace : str, default is Undefined, optional
         namespace
+    patches : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourceKustomizePatchesItems0], default is Undefined, optional
+        patches
     replicas : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourceKustomizeReplicasItems0], default is Undefined, optional
         replicas
     version : str, default is Undefined, optional
@@ -10748,17 +15500,29 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     """
 
 
+    apiVersions?: [str]
+
     commonAnnotations?: {str:str}
 
     commonAnnotationsEnvsubst?: bool
 
     commonLabels?: {str:str}
 
+    components?: [str]
+
     forceCommonAnnotations?: bool
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
+
+    kubeVersion?: str
+
+    labelIncludeTemplates?: bool
+
+    labelWithoutSelector?: bool
 
     namePrefix?: str
 
@@ -10766,13 +15530,79 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     namespace?: str
 
+    patches?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourceKustomizePatchesItems0]
+
     replicas?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourceKustomizeReplicasItems0]
 
     version?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourceKustomizeReplicasItems0:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourceKustomizePatchesItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider template spec source kustomize patches items0
+
+    Attributes
+    ----------
+    options : {str:bool}, default is Undefined, optional
+        options
+    patch : str, default is Undefined, optional
+        patch
+    path : str, default is Undefined, optional
+        path
+    target : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourceKustomizePatchesItems0Target, default is Undefined, optional
+        target
     """
+
+
+    options?: {str:bool}
+
+    patch?: str
+
+    path?: str
+
+    target?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourceKustomizePatchesItems0Target
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourceKustomizePatchesItems0Target:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider template spec source kustomize patches items0 target
+
+    Attributes
+    ----------
+    annotationSelector : str, default is Undefined, optional
+        annotation selector
+    group : str, default is Undefined, optional
+        group
+    kind : str, default is Undefined, optional
+        kind
+    labelSelector : str, default is Undefined, optional
+        label selector
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    annotationSelector?: str
+
+    group?: str
+
+    kind?: str
+
+    labelSelector?: str
+
+    name?: str
+
+    namespace?: str
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourceKustomizeReplicasItems0:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider template spec source kustomize replicas items0
 
     Attributes
@@ -10790,7 +15620,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourcePlugin:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider template spec source plugin
 
     Attributes
@@ -10812,7 +15642,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourcePluginEnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider template spec source plugin env items0
 
     Attributes
@@ -10830,7 +15660,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourcePluginParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider template spec source plugin parameters items0
 
     Attributes
@@ -10856,7 +15686,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourcesItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider template spec sources items0
 
     Attributes
@@ -10869,6 +15699,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourcesItems0Kustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourcesItems0Plugin, default is Undefined, optional
@@ -10890,6 +15722,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourcesItems0Kustomize
 
+    name?: str
+
     path?: str
 
     plugin?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourcesItems0Plugin
@@ -10902,7 +15736,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourcesItems0Directory:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider template spec sources items0 directory
 
     Attributes
@@ -10928,7 +15762,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourcesItems0DirectoryJsonnet:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider template spec sources items0 directory jsonnet
 
     Attributes
@@ -10950,7 +15784,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourcesItems0DirectoryJsonnetExtVarsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider template spec sources items0 directory jsonnet ext vars items0
 
     Attributes
@@ -10972,7 +15806,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourcesItems0DirectoryJsonnetTlasItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider template spec sources items0 directory jsonnet tlas items0
 
     Attributes
@@ -10994,15 +15828,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourcesItems0Helm:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider template spec sources items0 helm
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     fileParameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourcesItems0HelmFileParametersItems0], default is Undefined, optional
         file parameters
     ignoreMissingValueFiles : bool, default is Undefined, optional
         ignore missing value files
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    namespace : str, default is Undefined, optional
+        namespace
     parameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourcesItems0HelmParametersItems0], default is Undefined, optional
         parameters
     passCredentials : bool, default is Undefined, optional
@@ -11011,18 +15851,30 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
         values
+    valuesObject : any, default is Undefined, optional
+        values object
     version : str, default is Undefined, optional
         version
     """
 
 
+    apiVersions?: [str]
+
     fileParameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourcesItems0HelmFileParametersItems0]
 
     ignoreMissingValueFiles?: bool
+
+    kubeVersion?: str
+
+    namespace?: str
 
     parameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourcesItems0HelmParametersItems0]
 
@@ -11032,15 +15884,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     skipCrds?: bool
 
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
+
     valueFiles?: [str]
 
     values?: str
+
+    valuesObject?: any
 
     version?: str
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourcesItems0HelmFileParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider template spec sources items0 helm file parameters items0
 
     Attributes
@@ -11058,7 +15916,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourcesItems0HelmParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider template spec sources items0 helm parameters items0
 
     Attributes
@@ -11080,29 +15938,43 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourcesItems0Kustomize:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider template spec sources items0 kustomize
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     commonAnnotations : {str:str}, default is Undefined, optional
         common annotations
     commonAnnotationsEnvsubst : bool, default is Undefined, optional
         common annotations envsubst
     commonLabels : {str:str}, default is Undefined, optional
         common labels
+    components : [str], default is Undefined, optional
+        components
     forceCommonAnnotations : bool, default is Undefined, optional
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
+    labelWithoutSelector : bool, default is Undefined, optional
+        label without selector
     namePrefix : str, default is Undefined, optional
         name prefix
     nameSuffix : str, default is Undefined, optional
         name suffix
     namespace : str, default is Undefined, optional
         namespace
+    patches : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourcesItems0KustomizePatchesItems0], default is Undefined, optional
+        patches
     replicas : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourcesItems0KustomizeReplicasItems0], default is Undefined, optional
         replicas
     version : str, default is Undefined, optional
@@ -11110,17 +15982,29 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     """
 
 
+    apiVersions?: [str]
+
     commonAnnotations?: {str:str}
 
     commonAnnotationsEnvsubst?: bool
 
     commonLabels?: {str:str}
 
+    components?: [str]
+
     forceCommonAnnotations?: bool
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
+
+    kubeVersion?: str
+
+    labelIncludeTemplates?: bool
+
+    labelWithoutSelector?: bool
 
     namePrefix?: str
 
@@ -11128,13 +16012,79 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     namespace?: str
 
+    patches?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourcesItems0KustomizePatchesItems0]
+
     replicas?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourcesItems0KustomizeReplicasItems0]
 
     version?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourcesItems0KustomizeReplicasItems0:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourcesItems0KustomizePatchesItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider template spec sources items0 kustomize patches items0
+
+    Attributes
+    ----------
+    options : {str:bool}, default is Undefined, optional
+        options
+    patch : str, default is Undefined, optional
+        patch
+    path : str, default is Undefined, optional
+        path
+    target : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourcesItems0KustomizePatchesItems0Target, default is Undefined, optional
+        target
     """
+
+
+    options?: {str:bool}
+
+    patch?: str
+
+    path?: str
+
+    target?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourcesItems0KustomizePatchesItems0Target
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourcesItems0KustomizePatchesItems0Target:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider template spec sources items0 kustomize patches items0 target
+
+    Attributes
+    ----------
+    annotationSelector : str, default is Undefined, optional
+        annotation selector
+    group : str, default is Undefined, optional
+        group
+    kind : str, default is Undefined, optional
+        kind
+    labelSelector : str, default is Undefined, optional
+        label selector
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    annotationSelector?: str
+
+    group?: str
+
+    kind?: str
+
+    labelSelector?: str
+
+    name?: str
+
+    namespace?: str
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourcesItems0KustomizeReplicasItems0:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider template spec sources items0 kustomize replicas items0
 
     Attributes
@@ -11152,7 +16102,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourcesItems0Plugin:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider template spec sources items0 plugin
 
     Attributes
@@ -11174,7 +16124,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourcesItems0PluginEnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider template spec sources items0 plugin env items0
 
     Attributes
@@ -11192,7 +16142,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourcesItems0PluginParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider template spec sources items0 plugin parameters items0
 
     Attributes
@@ -11218,7 +16168,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSyncPolicy:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider template spec sync policy
 
     Attributes
@@ -11244,7 +16194,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSyncPolicyAutomated:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider template spec sync policy automated
 
     Attributes
@@ -11266,7 +16216,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSyncPolicyManagedNamespaceMetadata:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider template spec sync policy managed namespace metadata
 
     Attributes
@@ -11284,7 +16234,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSyncPolicyRetry:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider template spec sync policy retry
 
     Attributes
@@ -11302,7 +16252,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSyncPolicyRetryBackoff:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider template spec sync policy retry backoff
 
     Attributes
@@ -11324,7 +16274,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0Selector:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 selector
 
     Attributes
@@ -11342,7 +16292,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0SelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 selector match expressions items0
 
     Attributes
@@ -11364,7 +16314,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplate:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix template
 
     Attributes
@@ -11382,7 +16332,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplate:
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateMetadata:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix template metadata
 
     Attributes
@@ -11412,7 +16362,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateMetadat
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpec:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix template spec
 
     Attributes
@@ -11429,6 +16379,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpec:
         revision history limit
     source : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSource, default is Undefined, optional
         source
+    sourceHydrator : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourceHydrator, default is Undefined, optional
+        source hydrator
     sources : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourcesItems0], default is Undefined, optional
         sources
     syncPolicy : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSyncPolicy, default is Undefined, optional
@@ -11448,13 +16400,15 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpec:
 
     source?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSource
 
+    sourceHydrator?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourceHydrator
+
     sources?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourcesItems0]
 
     syncPolicy?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSyncPolicy
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecDestination:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix template spec destination
 
     Attributes
@@ -11476,7 +16430,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecDes
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecIgnoreDifferencesItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix template spec ignore differences items0
 
     Attributes
@@ -11514,7 +16468,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecIgn
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecInfoItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix template spec info items0
 
     Attributes
@@ -11532,7 +16486,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecInf
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSource:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix template spec source
 
     Attributes
@@ -11545,6 +16499,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSou
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourceKustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourcePlugin, default is Undefined, optional
@@ -11566,6 +16522,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSou
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourceKustomize
 
+    name?: str
+
     path?: str
 
     plugin?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourcePlugin
@@ -11578,7 +16536,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSou
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourceDirectory:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix template spec source directory
 
     Attributes
@@ -11604,7 +16562,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSou
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourceDirectoryJsonnet:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix template spec source directory jsonnet
 
     Attributes
@@ -11626,7 +16584,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSou
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourceDirectoryJsonnetExtVarsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix template spec source directory jsonnet ext vars items0
 
     Attributes
@@ -11648,7 +16606,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSou
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourceDirectoryJsonnetTlasItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix template spec source directory jsonnet tlas items0
 
     Attributes
@@ -11670,15 +16628,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSou
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourceHelm:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix template spec source helm
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     fileParameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourceHelmFileParametersItems0], default is Undefined, optional
         file parameters
     ignoreMissingValueFiles : bool, default is Undefined, optional
         ignore missing value files
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    namespace : str, default is Undefined, optional
+        namespace
     parameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourceHelmParametersItems0], default is Undefined, optional
         parameters
     passCredentials : bool, default is Undefined, optional
@@ -11687,18 +16651,30 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSou
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
         values
+    valuesObject : any, default is Undefined, optional
+        values object
     version : str, default is Undefined, optional
         version
     """
 
 
+    apiVersions?: [str]
+
     fileParameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourceHelmFileParametersItems0]
 
     ignoreMissingValueFiles?: bool
+
+    kubeVersion?: str
+
+    namespace?: str
 
     parameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourceHelmParametersItems0]
 
@@ -11708,15 +16684,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSou
 
     skipCrds?: bool
 
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
+
     valueFiles?: [str]
 
     values?: str
+
+    valuesObject?: any
 
     version?: str
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourceHelmFileParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix template spec source helm file parameters items0
 
     Attributes
@@ -11734,7 +16716,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSou
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourceHelmParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix template spec source helm parameters items0
 
     Attributes
@@ -11755,30 +16737,120 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSou
     value?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourceKustomize:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourceHydrator:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix template spec source hydrator
+
+    Attributes
+    ----------
+    drySource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourceHydratorDrySource, default is Undefined, required
+        dry source
+    hydrateTo : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourceHydratorHydrateTo, default is Undefined, optional
+        hydrate to
+    syncSource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourceHydratorSyncSource, default is Undefined, required
+        sync source
     """
+
+
+    drySource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourceHydratorDrySource
+
+    hydrateTo?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourceHydratorHydrateTo
+
+    syncSource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourceHydratorSyncSource
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourceHydratorDrySource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix template spec source hydrator dry source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    repoURL : str, default is Undefined, required
+        repo URL
+    targetRevision : str, default is Undefined, required
+        target revision
+    """
+
+
+    path: str
+
+    repoURL: str
+
+    targetRevision: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourceHydratorHydrateTo:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix template spec source hydrator hydrate to
+
+    Attributes
+    ----------
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourceHydratorSyncSource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix template spec source hydrator sync source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    path: str
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourceKustomize:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix template spec source kustomize
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     commonAnnotations : {str:str}, default is Undefined, optional
         common annotations
     commonAnnotationsEnvsubst : bool, default is Undefined, optional
         common annotations envsubst
     commonLabels : {str:str}, default is Undefined, optional
         common labels
+    components : [str], default is Undefined, optional
+        components
     forceCommonAnnotations : bool, default is Undefined, optional
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
+    labelWithoutSelector : bool, default is Undefined, optional
+        label without selector
     namePrefix : str, default is Undefined, optional
         name prefix
     nameSuffix : str, default is Undefined, optional
         name suffix
     namespace : str, default is Undefined, optional
         namespace
+    patches : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourceKustomizePatchesItems0], default is Undefined, optional
+        patches
     replicas : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourceKustomizeReplicasItems0], default is Undefined, optional
         replicas
     version : str, default is Undefined, optional
@@ -11786,17 +16858,29 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSou
     """
 
 
+    apiVersions?: [str]
+
     commonAnnotations?: {str:str}
 
     commonAnnotationsEnvsubst?: bool
 
     commonLabels?: {str:str}
 
+    components?: [str]
+
     forceCommonAnnotations?: bool
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
+
+    kubeVersion?: str
+
+    labelIncludeTemplates?: bool
+
+    labelWithoutSelector?: bool
 
     namePrefix?: str
 
@@ -11804,13 +16888,79 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSou
 
     namespace?: str
 
+    patches?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourceKustomizePatchesItems0]
+
     replicas?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourceKustomizeReplicasItems0]
 
     version?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourceKustomizeReplicasItems0:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourceKustomizePatchesItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix template spec source kustomize patches items0
+
+    Attributes
+    ----------
+    options : {str:bool}, default is Undefined, optional
+        options
+    patch : str, default is Undefined, optional
+        patch
+    path : str, default is Undefined, optional
+        path
+    target : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourceKustomizePatchesItems0Target, default is Undefined, optional
+        target
     """
+
+
+    options?: {str:bool}
+
+    patch?: str
+
+    path?: str
+
+    target?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourceKustomizePatchesItems0Target
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourceKustomizePatchesItems0Target:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix template spec source kustomize patches items0 target
+
+    Attributes
+    ----------
+    annotationSelector : str, default is Undefined, optional
+        annotation selector
+    group : str, default is Undefined, optional
+        group
+    kind : str, default is Undefined, optional
+        kind
+    labelSelector : str, default is Undefined, optional
+        label selector
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    annotationSelector?: str
+
+    group?: str
+
+    kind?: str
+
+    labelSelector?: str
+
+    name?: str
+
+    namespace?: str
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourceKustomizeReplicasItems0:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix template spec source kustomize replicas items0
 
     Attributes
@@ -11828,7 +16978,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSou
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourcePlugin:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix template spec source plugin
 
     Attributes
@@ -11850,7 +17000,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSou
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourcePluginEnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix template spec source plugin env items0
 
     Attributes
@@ -11868,7 +17018,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSou
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourcePluginParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix template spec source plugin parameters items0
 
     Attributes
@@ -11894,7 +17044,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSou
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourcesItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix template spec sources items0
 
     Attributes
@@ -11907,6 +17057,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSou
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourcesItems0Kustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourcesItems0Plugin, default is Undefined, optional
@@ -11928,6 +17080,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSou
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourcesItems0Kustomize
 
+    name?: str
+
     path?: str
 
     plugin?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourcesItems0Plugin
@@ -11940,7 +17094,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSou
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourcesItems0Directory:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix template spec sources items0 directory
 
     Attributes
@@ -11966,7 +17120,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSou
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourcesItems0DirectoryJsonnet:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix template spec sources items0 directory jsonnet
 
     Attributes
@@ -11988,7 +17142,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSou
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourcesItems0DirectoryJsonnetExtVarsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix template spec sources items0 directory jsonnet ext vars items0
 
     Attributes
@@ -12010,7 +17164,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSou
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourcesItems0DirectoryJsonnetTlasItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix template spec sources items0 directory jsonnet tlas items0
 
     Attributes
@@ -12032,15 +17186,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSou
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourcesItems0Helm:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix template spec sources items0 helm
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     fileParameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourcesItems0HelmFileParametersItems0], default is Undefined, optional
         file parameters
     ignoreMissingValueFiles : bool, default is Undefined, optional
         ignore missing value files
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    namespace : str, default is Undefined, optional
+        namespace
     parameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourcesItems0HelmParametersItems0], default is Undefined, optional
         parameters
     passCredentials : bool, default is Undefined, optional
@@ -12049,18 +17209,30 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSou
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
         values
+    valuesObject : any, default is Undefined, optional
+        values object
     version : str, default is Undefined, optional
         version
     """
 
 
+    apiVersions?: [str]
+
     fileParameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourcesItems0HelmFileParametersItems0]
 
     ignoreMissingValueFiles?: bool
+
+    kubeVersion?: str
+
+    namespace?: str
 
     parameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourcesItems0HelmParametersItems0]
 
@@ -12070,15 +17242,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSou
 
     skipCrds?: bool
 
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
+
     valueFiles?: [str]
 
     values?: str
+
+    valuesObject?: any
 
     version?: str
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourcesItems0HelmFileParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix template spec sources items0 helm file parameters items0
 
     Attributes
@@ -12096,7 +17274,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSou
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourcesItems0HelmParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix template spec sources items0 helm parameters items0
 
     Attributes
@@ -12118,29 +17296,43 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSou
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourcesItems0Kustomize:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix template spec sources items0 kustomize
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     commonAnnotations : {str:str}, default is Undefined, optional
         common annotations
     commonAnnotationsEnvsubst : bool, default is Undefined, optional
         common annotations envsubst
     commonLabels : {str:str}, default is Undefined, optional
         common labels
+    components : [str], default is Undefined, optional
+        components
     forceCommonAnnotations : bool, default is Undefined, optional
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
+    labelWithoutSelector : bool, default is Undefined, optional
+        label without selector
     namePrefix : str, default is Undefined, optional
         name prefix
     nameSuffix : str, default is Undefined, optional
         name suffix
     namespace : str, default is Undefined, optional
         namespace
+    patches : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourcesItems0KustomizePatchesItems0], default is Undefined, optional
+        patches
     replicas : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourcesItems0KustomizeReplicasItems0], default is Undefined, optional
         replicas
     version : str, default is Undefined, optional
@@ -12148,17 +17340,29 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSou
     """
 
 
+    apiVersions?: [str]
+
     commonAnnotations?: {str:str}
 
     commonAnnotationsEnvsubst?: bool
 
     commonLabels?: {str:str}
 
+    components?: [str]
+
     forceCommonAnnotations?: bool
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
+
+    kubeVersion?: str
+
+    labelIncludeTemplates?: bool
+
+    labelWithoutSelector?: bool
 
     namePrefix?: str
 
@@ -12166,13 +17370,79 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSou
 
     namespace?: str
 
+    patches?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourcesItems0KustomizePatchesItems0]
+
     replicas?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourcesItems0KustomizeReplicasItems0]
 
     version?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourcesItems0KustomizeReplicasItems0:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourcesItems0KustomizePatchesItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix template spec sources items0 kustomize patches items0
+
+    Attributes
+    ----------
+    options : {str:bool}, default is Undefined, optional
+        options
+    patch : str, default is Undefined, optional
+        patch
+    path : str, default is Undefined, optional
+        path
+    target : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourcesItems0KustomizePatchesItems0Target, default is Undefined, optional
+        target
     """
+
+
+    options?: {str:bool}
+
+    patch?: str
+
+    path?: str
+
+    target?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourcesItems0KustomizePatchesItems0Target
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourcesItems0KustomizePatchesItems0Target:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix template spec sources items0 kustomize patches items0 target
+
+    Attributes
+    ----------
+    annotationSelector : str, default is Undefined, optional
+        annotation selector
+    group : str, default is Undefined, optional
+        group
+    kind : str, default is Undefined, optional
+        kind
+    labelSelector : str, default is Undefined, optional
+        label selector
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    annotationSelector?: str
+
+    group?: str
+
+    kind?: str
+
+    labelSelector?: str
+
+    name?: str
+
+    namespace?: str
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourcesItems0KustomizeReplicasItems0:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix template spec sources items0 kustomize replicas items0
 
     Attributes
@@ -12190,7 +17460,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSou
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourcesItems0Plugin:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix template spec sources items0 plugin
 
     Attributes
@@ -12212,7 +17482,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSou
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourcesItems0PluginEnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix template spec sources items0 plugin env items0
 
     Attributes
@@ -12230,7 +17500,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSou
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourcesItems0PluginParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix template spec sources items0 plugin parameters items0
 
     Attributes
@@ -12256,7 +17526,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSou
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSyncPolicy:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix template spec sync policy
 
     Attributes
@@ -12282,7 +17552,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSyn
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSyncPolicyAutomated:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix template spec sync policy automated
 
     Attributes
@@ -12304,7 +17574,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSyn
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSyncPolicyManagedNamespaceMetadata:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix template spec sync policy managed namespace metadata
 
     Attributes
@@ -12322,7 +17592,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSyn
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSyncPolicyRetry:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix template spec sync policy retry
 
     Attributes
@@ -12340,7 +17610,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSyn
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSyncPolicyRetryBackoff:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 matrix template spec sync policy retry backoff
 
     Attributes
@@ -12362,7 +17632,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSyn
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0Merge:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge
 
     Attributes
@@ -12384,7 +17654,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0Merge:
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0
 
     Attributes
@@ -12401,6 +17671,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         matrix
     merge : any, default is Undefined, optional
         merge
+    plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0Plugin, default is Undefined, optional
+        plugin
     pullRequest : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequest, default is Undefined, optional
         pull request
     scmProvider : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProvider, default is Undefined, optional
@@ -12422,6 +17694,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     merge?: any
 
+    plugin?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0Plugin
+
     pullRequest?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequest
 
     scmProvider?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProvider
@@ -12430,7 +17704,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResource:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 cluster decision resource
 
     Attributes
@@ -12464,7 +17738,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceLabelSelector:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 cluster decision resource label selector
 
     Attributes
@@ -12482,7 +17756,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceLabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 cluster decision resource label selector match expressions items0
 
     Attributes
@@ -12504,7 +17778,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplate:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 cluster decision resource template
 
     Attributes
@@ -12522,7 +17796,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateMetadata:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 cluster decision resource template metadata
 
     Attributes
@@ -12552,7 +17826,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpec:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 cluster decision resource template spec
 
     Attributes
@@ -12569,6 +17843,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         revision history limit
     source : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSource, default is Undefined, optional
         source
+    sourceHydrator : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydrator, default is Undefined, optional
+        source hydrator
     sources : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0], default is Undefined, optional
         sources
     syncPolicy : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSyncPolicy, default is Undefined, optional
@@ -12588,13 +17864,15 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     source?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSource
 
+    sourceHydrator?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydrator
+
     sources?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0]
 
     syncPolicy?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSyncPolicy
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecDestination:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 cluster decision resource template spec destination
 
     Attributes
@@ -12616,7 +17894,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecIgnoreDifferencesItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 cluster decision resource template spec ignore differences items0
 
     Attributes
@@ -12654,7 +17932,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecInfoItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 cluster decision resource template spec info items0
 
     Attributes
@@ -12672,7 +17950,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSource:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 cluster decision resource template spec source
 
     Attributes
@@ -12685,6 +17963,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceKustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcePlugin, default is Undefined, optional
@@ -12706,6 +17986,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceKustomize
 
+    name?: str
+
     path?: str
 
     plugin?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcePlugin
@@ -12718,7 +18000,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceDirectory:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 cluster decision resource template spec source directory
 
     Attributes
@@ -12744,7 +18026,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceDirectoryJsonnet:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 cluster decision resource template spec source directory jsonnet
 
     Attributes
@@ -12766,7 +18048,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceDirectoryJsonnetExtVarsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 cluster decision resource template spec source directory jsonnet ext vars items0
 
     Attributes
@@ -12788,7 +18070,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceDirectoryJsonnetTlasItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 cluster decision resource template spec source directory jsonnet tlas items0
 
     Attributes
@@ -12810,15 +18092,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHelm:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 cluster decision resource template spec source helm
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     fileParameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHelmFileParametersItems0], default is Undefined, optional
         file parameters
     ignoreMissingValueFiles : bool, default is Undefined, optional
         ignore missing value files
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    namespace : str, default is Undefined, optional
+        namespace
     parameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHelmParametersItems0], default is Undefined, optional
         parameters
     passCredentials : bool, default is Undefined, optional
@@ -12827,18 +18115,30 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
         values
+    valuesObject : any, default is Undefined, optional
+        values object
     version : str, default is Undefined, optional
         version
     """
 
 
+    apiVersions?: [str]
+
     fileParameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHelmFileParametersItems0]
 
     ignoreMissingValueFiles?: bool
+
+    kubeVersion?: str
+
+    namespace?: str
 
     parameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHelmParametersItems0]
 
@@ -12848,15 +18148,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     skipCrds?: bool
 
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
+
     valueFiles?: [str]
 
     values?: str
+
+    valuesObject?: any
 
     version?: str
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHelmFileParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 cluster decision resource template spec source helm file parameters items0
 
     Attributes
@@ -12874,7 +18180,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHelmParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 cluster decision resource template spec source helm parameters items0
 
     Attributes
@@ -12895,30 +18201,120 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     value?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceKustomize:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydrator:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 cluster decision resource template spec source hydrator
+
+    Attributes
+    ----------
+    drySource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydratorDrySource, default is Undefined, required
+        dry source
+    hydrateTo : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydratorHydrateTo, default is Undefined, optional
+        hydrate to
+    syncSource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydratorSyncSource, default is Undefined, required
+        sync source
     """
+
+
+    drySource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydratorDrySource
+
+    hydrateTo?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydratorHydrateTo
+
+    syncSource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydratorSyncSource
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydratorDrySource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 cluster decision resource template spec source hydrator dry source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    repoURL : str, default is Undefined, required
+        repo URL
+    targetRevision : str, default is Undefined, required
+        target revision
+    """
+
+
+    path: str
+
+    repoURL: str
+
+    targetRevision: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydratorHydrateTo:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 cluster decision resource template spec source hydrator hydrate to
+
+    Attributes
+    ----------
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydratorSyncSource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 cluster decision resource template spec source hydrator sync source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    path: str
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceKustomize:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 cluster decision resource template spec source kustomize
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     commonAnnotations : {str:str}, default is Undefined, optional
         common annotations
     commonAnnotationsEnvsubst : bool, default is Undefined, optional
         common annotations envsubst
     commonLabels : {str:str}, default is Undefined, optional
         common labels
+    components : [str], default is Undefined, optional
+        components
     forceCommonAnnotations : bool, default is Undefined, optional
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
+    labelWithoutSelector : bool, default is Undefined, optional
+        label without selector
     namePrefix : str, default is Undefined, optional
         name prefix
     nameSuffix : str, default is Undefined, optional
         name suffix
     namespace : str, default is Undefined, optional
         namespace
+    patches : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceKustomizePatchesItems0], default is Undefined, optional
+        patches
     replicas : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceKustomizeReplicasItems0], default is Undefined, optional
         replicas
     version : str, default is Undefined, optional
@@ -12926,17 +18322,29 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     """
 
 
+    apiVersions?: [str]
+
     commonAnnotations?: {str:str}
 
     commonAnnotationsEnvsubst?: bool
 
     commonLabels?: {str:str}
 
+    components?: [str]
+
     forceCommonAnnotations?: bool
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
+
+    kubeVersion?: str
+
+    labelIncludeTemplates?: bool
+
+    labelWithoutSelector?: bool
 
     namePrefix?: str
 
@@ -12944,13 +18352,79 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     namespace?: str
 
+    patches?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceKustomizePatchesItems0]
+
     replicas?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceKustomizeReplicasItems0]
 
     version?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceKustomizeReplicasItems0:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceKustomizePatchesItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 cluster decision resource template spec source kustomize patches items0
+
+    Attributes
+    ----------
+    options : {str:bool}, default is Undefined, optional
+        options
+    patch : str, default is Undefined, optional
+        patch
+    path : str, default is Undefined, optional
+        path
+    target : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceKustomizePatchesItems0Target, default is Undefined, optional
+        target
     """
+
+
+    options?: {str:bool}
+
+    patch?: str
+
+    path?: str
+
+    target?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceKustomizePatchesItems0Target
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceKustomizePatchesItems0Target:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 cluster decision resource template spec source kustomize patches items0 target
+
+    Attributes
+    ----------
+    annotationSelector : str, default is Undefined, optional
+        annotation selector
+    group : str, default is Undefined, optional
+        group
+    kind : str, default is Undefined, optional
+        kind
+    labelSelector : str, default is Undefined, optional
+        label selector
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    annotationSelector?: str
+
+    group?: str
+
+    kind?: str
+
+    labelSelector?: str
+
+    name?: str
+
+    namespace?: str
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceKustomizeReplicasItems0:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 cluster decision resource template spec source kustomize replicas items0
 
     Attributes
@@ -12968,7 +18442,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcePlugin:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 cluster decision resource template spec source plugin
 
     Attributes
@@ -12990,7 +18464,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcePluginEnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 cluster decision resource template spec source plugin env items0
 
     Attributes
@@ -13008,7 +18482,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcePluginParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 cluster decision resource template spec source plugin parameters items0
 
     Attributes
@@ -13034,7 +18508,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 cluster decision resource template spec sources items0
 
     Attributes
@@ -13047,6 +18521,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0Kustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0Plugin, default is Undefined, optional
@@ -13068,6 +18544,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0Kustomize
 
+    name?: str
+
     path?: str
 
     plugin?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0Plugin
@@ -13080,7 +18558,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0Directory:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 cluster decision resource template spec sources items0 directory
 
     Attributes
@@ -13106,7 +18584,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0DirectoryJsonnet:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 cluster decision resource template spec sources items0 directory jsonnet
 
     Attributes
@@ -13128,7 +18606,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0DirectoryJsonnetExtVarsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 cluster decision resource template spec sources items0 directory jsonnet ext vars items0
 
     Attributes
@@ -13150,7 +18628,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0DirectoryJsonnetTlasItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 cluster decision resource template spec sources items0 directory jsonnet tlas items0
 
     Attributes
@@ -13172,15 +18650,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0Helm:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 cluster decision resource template spec sources items0 helm
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     fileParameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0HelmFileParametersItems0], default is Undefined, optional
         file parameters
     ignoreMissingValueFiles : bool, default is Undefined, optional
         ignore missing value files
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    namespace : str, default is Undefined, optional
+        namespace
     parameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0HelmParametersItems0], default is Undefined, optional
         parameters
     passCredentials : bool, default is Undefined, optional
@@ -13189,18 +18673,30 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
         values
+    valuesObject : any, default is Undefined, optional
+        values object
     version : str, default is Undefined, optional
         version
     """
 
 
+    apiVersions?: [str]
+
     fileParameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0HelmFileParametersItems0]
 
     ignoreMissingValueFiles?: bool
+
+    kubeVersion?: str
+
+    namespace?: str
 
     parameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0HelmParametersItems0]
 
@@ -13210,15 +18706,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     skipCrds?: bool
 
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
+
     valueFiles?: [str]
 
     values?: str
+
+    valuesObject?: any
 
     version?: str
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0HelmFileParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 cluster decision resource template spec sources items0 helm file parameters items0
 
     Attributes
@@ -13236,7 +18738,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0HelmParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 cluster decision resource template spec sources items0 helm parameters items0
 
     Attributes
@@ -13258,29 +18760,43 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0Kustomize:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 cluster decision resource template spec sources items0 kustomize
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     commonAnnotations : {str:str}, default is Undefined, optional
         common annotations
     commonAnnotationsEnvsubst : bool, default is Undefined, optional
         common annotations envsubst
     commonLabels : {str:str}, default is Undefined, optional
         common labels
+    components : [str], default is Undefined, optional
+        components
     forceCommonAnnotations : bool, default is Undefined, optional
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
+    labelWithoutSelector : bool, default is Undefined, optional
+        label without selector
     namePrefix : str, default is Undefined, optional
         name prefix
     nameSuffix : str, default is Undefined, optional
         name suffix
     namespace : str, default is Undefined, optional
         namespace
+    patches : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0KustomizePatchesItems0], default is Undefined, optional
+        patches
     replicas : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0KustomizeReplicasItems0], default is Undefined, optional
         replicas
     version : str, default is Undefined, optional
@@ -13288,17 +18804,29 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     """
 
 
+    apiVersions?: [str]
+
     commonAnnotations?: {str:str}
 
     commonAnnotationsEnvsubst?: bool
 
     commonLabels?: {str:str}
 
+    components?: [str]
+
     forceCommonAnnotations?: bool
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
+
+    kubeVersion?: str
+
+    labelIncludeTemplates?: bool
+
+    labelWithoutSelector?: bool
 
     namePrefix?: str
 
@@ -13306,13 +18834,79 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     namespace?: str
 
+    patches?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0KustomizePatchesItems0]
+
     replicas?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0KustomizeReplicasItems0]
 
     version?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0KustomizeReplicasItems0:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0KustomizePatchesItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 cluster decision resource template spec sources items0 kustomize patches items0
+
+    Attributes
+    ----------
+    options : {str:bool}, default is Undefined, optional
+        options
+    patch : str, default is Undefined, optional
+        patch
+    path : str, default is Undefined, optional
+        path
+    target : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0KustomizePatchesItems0Target, default is Undefined, optional
+        target
     """
+
+
+    options?: {str:bool}
+
+    patch?: str
+
+    path?: str
+
+    target?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0KustomizePatchesItems0Target
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0KustomizePatchesItems0Target:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 cluster decision resource template spec sources items0 kustomize patches items0 target
+
+    Attributes
+    ----------
+    annotationSelector : str, default is Undefined, optional
+        annotation selector
+    group : str, default is Undefined, optional
+        group
+    kind : str, default is Undefined, optional
+        kind
+    labelSelector : str, default is Undefined, optional
+        label selector
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    annotationSelector?: str
+
+    group?: str
+
+    kind?: str
+
+    labelSelector?: str
+
+    name?: str
+
+    namespace?: str
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0KustomizeReplicasItems0:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 cluster decision resource template spec sources items0 kustomize replicas items0
 
     Attributes
@@ -13330,7 +18924,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0Plugin:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 cluster decision resource template spec sources items0 plugin
 
     Attributes
@@ -13352,7 +18946,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0PluginEnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 cluster decision resource template spec sources items0 plugin env items0
 
     Attributes
@@ -13370,7 +18964,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0PluginParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 cluster decision resource template spec sources items0 plugin parameters items0
 
     Attributes
@@ -13396,7 +18990,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSyncPolicy:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 cluster decision resource template spec sync policy
 
     Attributes
@@ -13422,7 +19016,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSyncPolicyAutomated:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 cluster decision resource template spec sync policy automated
 
     Attributes
@@ -13444,7 +19038,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSyncPolicyManagedNamespaceMetadata:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 cluster decision resource template spec sync policy managed namespace metadata
 
     Attributes
@@ -13462,7 +19056,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSyncPolicyRetry:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 cluster decision resource template spec sync policy retry
 
     Attributes
@@ -13480,7 +19074,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSyncPolicyRetryBackoff:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 cluster decision resource template spec sync policy retry backoff
 
     Attributes
@@ -13502,11 +19096,13 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0Clusters:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 clusters
 
     Attributes
     ----------
+    flatList : bool, default is Undefined, optional
+        flat list
     selector : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersSelector, default is Undefined, optional
         selector
     template : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplate, default is Undefined, optional
@@ -13516,6 +19112,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     """
 
 
+    flatList?: bool
+
     selector?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersSelector
 
     template?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplate
@@ -13524,7 +19122,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersSelector:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 clusters selector
 
     Attributes
@@ -13542,7 +19140,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersSelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 clusters selector match expressions items0
 
     Attributes
@@ -13564,7 +19162,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplate:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 clusters template
 
     Attributes
@@ -13582,7 +19180,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateMetadata:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 clusters template metadata
 
     Attributes
@@ -13612,7 +19210,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpec:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 clusters template spec
 
     Attributes
@@ -13629,6 +19227,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         revision history limit
     source : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSource, default is Undefined, optional
         source
+    sourceHydrator : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourceHydrator, default is Undefined, optional
+        source hydrator
     sources : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourcesItems0], default is Undefined, optional
         sources
     syncPolicy : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSyncPolicy, default is Undefined, optional
@@ -13648,13 +19248,15 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     source?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSource
 
+    sourceHydrator?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourceHydrator
+
     sources?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourcesItems0]
 
     syncPolicy?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSyncPolicy
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecDestination:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 clusters template spec destination
 
     Attributes
@@ -13676,7 +19278,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecIgnoreDifferencesItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 clusters template spec ignore differences items0
 
     Attributes
@@ -13714,7 +19316,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecInfoItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 clusters template spec info items0
 
     Attributes
@@ -13732,7 +19334,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSource:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 clusters template spec source
 
     Attributes
@@ -13745,6 +19347,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourceKustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourcePlugin, default is Undefined, optional
@@ -13766,6 +19370,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourceKustomize
 
+    name?: str
+
     path?: str
 
     plugin?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourcePlugin
@@ -13778,7 +19384,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourceDirectory:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 clusters template spec source directory
 
     Attributes
@@ -13804,7 +19410,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourceDirectoryJsonnet:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 clusters template spec source directory jsonnet
 
     Attributes
@@ -13826,7 +19432,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourceDirectoryJsonnetExtVarsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 clusters template spec source directory jsonnet ext vars items0
 
     Attributes
@@ -13848,7 +19454,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourceDirectoryJsonnetTlasItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 clusters template spec source directory jsonnet tlas items0
 
     Attributes
@@ -13870,15 +19476,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourceHelm:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 clusters template spec source helm
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     fileParameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourceHelmFileParametersItems0], default is Undefined, optional
         file parameters
     ignoreMissingValueFiles : bool, default is Undefined, optional
         ignore missing value files
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    namespace : str, default is Undefined, optional
+        namespace
     parameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourceHelmParametersItems0], default is Undefined, optional
         parameters
     passCredentials : bool, default is Undefined, optional
@@ -13887,18 +19499,30 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
         values
+    valuesObject : any, default is Undefined, optional
+        values object
     version : str, default is Undefined, optional
         version
     """
 
 
+    apiVersions?: [str]
+
     fileParameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourceHelmFileParametersItems0]
 
     ignoreMissingValueFiles?: bool
+
+    kubeVersion?: str
+
+    namespace?: str
 
     parameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourceHelmParametersItems0]
 
@@ -13908,15 +19532,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     skipCrds?: bool
 
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
+
     valueFiles?: [str]
 
     values?: str
+
+    valuesObject?: any
 
     version?: str
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourceHelmFileParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 clusters template spec source helm file parameters items0
 
     Attributes
@@ -13934,7 +19564,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourceHelmParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 clusters template spec source helm parameters items0
 
     Attributes
@@ -13955,30 +19585,120 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     value?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourceKustomize:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourceHydrator:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 clusters template spec source hydrator
+
+    Attributes
+    ----------
+    drySource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourceHydratorDrySource, default is Undefined, required
+        dry source
+    hydrateTo : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourceHydratorHydrateTo, default is Undefined, optional
+        hydrate to
+    syncSource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourceHydratorSyncSource, default is Undefined, required
+        sync source
     """
+
+
+    drySource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourceHydratorDrySource
+
+    hydrateTo?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourceHydratorHydrateTo
+
+    syncSource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourceHydratorSyncSource
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourceHydratorDrySource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 clusters template spec source hydrator dry source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    repoURL : str, default is Undefined, required
+        repo URL
+    targetRevision : str, default is Undefined, required
+        target revision
+    """
+
+
+    path: str
+
+    repoURL: str
+
+    targetRevision: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourceHydratorHydrateTo:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 clusters template spec source hydrator hydrate to
+
+    Attributes
+    ----------
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourceHydratorSyncSource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 clusters template spec source hydrator sync source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    path: str
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourceKustomize:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 clusters template spec source kustomize
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     commonAnnotations : {str:str}, default is Undefined, optional
         common annotations
     commonAnnotationsEnvsubst : bool, default is Undefined, optional
         common annotations envsubst
     commonLabels : {str:str}, default is Undefined, optional
         common labels
+    components : [str], default is Undefined, optional
+        components
     forceCommonAnnotations : bool, default is Undefined, optional
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
+    labelWithoutSelector : bool, default is Undefined, optional
+        label without selector
     namePrefix : str, default is Undefined, optional
         name prefix
     nameSuffix : str, default is Undefined, optional
         name suffix
     namespace : str, default is Undefined, optional
         namespace
+    patches : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourceKustomizePatchesItems0], default is Undefined, optional
+        patches
     replicas : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourceKustomizeReplicasItems0], default is Undefined, optional
         replicas
     version : str, default is Undefined, optional
@@ -13986,17 +19706,29 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     """
 
 
+    apiVersions?: [str]
+
     commonAnnotations?: {str:str}
 
     commonAnnotationsEnvsubst?: bool
 
     commonLabels?: {str:str}
 
+    components?: [str]
+
     forceCommonAnnotations?: bool
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
+
+    kubeVersion?: str
+
+    labelIncludeTemplates?: bool
+
+    labelWithoutSelector?: bool
 
     namePrefix?: str
 
@@ -14004,13 +19736,79 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     namespace?: str
 
+    patches?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourceKustomizePatchesItems0]
+
     replicas?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourceKustomizeReplicasItems0]
 
     version?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourceKustomizeReplicasItems0:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourceKustomizePatchesItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 clusters template spec source kustomize patches items0
+
+    Attributes
+    ----------
+    options : {str:bool}, default is Undefined, optional
+        options
+    patch : str, default is Undefined, optional
+        patch
+    path : str, default is Undefined, optional
+        path
+    target : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourceKustomizePatchesItems0Target, default is Undefined, optional
+        target
     """
+
+
+    options?: {str:bool}
+
+    patch?: str
+
+    path?: str
+
+    target?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourceKustomizePatchesItems0Target
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourceKustomizePatchesItems0Target:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 clusters template spec source kustomize patches items0 target
+
+    Attributes
+    ----------
+    annotationSelector : str, default is Undefined, optional
+        annotation selector
+    group : str, default is Undefined, optional
+        group
+    kind : str, default is Undefined, optional
+        kind
+    labelSelector : str, default is Undefined, optional
+        label selector
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    annotationSelector?: str
+
+    group?: str
+
+    kind?: str
+
+    labelSelector?: str
+
+    name?: str
+
+    namespace?: str
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourceKustomizeReplicasItems0:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 clusters template spec source kustomize replicas items0
 
     Attributes
@@ -14028,7 +19826,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourcePlugin:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 clusters template spec source plugin
 
     Attributes
@@ -14050,7 +19848,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourcePluginEnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 clusters template spec source plugin env items0
 
     Attributes
@@ -14068,7 +19866,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourcePluginParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 clusters template spec source plugin parameters items0
 
     Attributes
@@ -14094,7 +19892,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourcesItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 clusters template spec sources items0
 
     Attributes
@@ -14107,6 +19905,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourcesItems0Kustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourcesItems0Plugin, default is Undefined, optional
@@ -14128,6 +19928,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourcesItems0Kustomize
 
+    name?: str
+
     path?: str
 
     plugin?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourcesItems0Plugin
@@ -14140,7 +19942,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourcesItems0Directory:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 clusters template spec sources items0 directory
 
     Attributes
@@ -14166,7 +19968,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourcesItems0DirectoryJsonnet:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 clusters template spec sources items0 directory jsonnet
 
     Attributes
@@ -14188,7 +19990,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourcesItems0DirectoryJsonnetExtVarsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 clusters template spec sources items0 directory jsonnet ext vars items0
 
     Attributes
@@ -14210,7 +20012,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourcesItems0DirectoryJsonnetTlasItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 clusters template spec sources items0 directory jsonnet tlas items0
 
     Attributes
@@ -14232,15 +20034,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourcesItems0Helm:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 clusters template spec sources items0 helm
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     fileParameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourcesItems0HelmFileParametersItems0], default is Undefined, optional
         file parameters
     ignoreMissingValueFiles : bool, default is Undefined, optional
         ignore missing value files
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    namespace : str, default is Undefined, optional
+        namespace
     parameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourcesItems0HelmParametersItems0], default is Undefined, optional
         parameters
     passCredentials : bool, default is Undefined, optional
@@ -14249,18 +20057,30 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
         values
+    valuesObject : any, default is Undefined, optional
+        values object
     version : str, default is Undefined, optional
         version
     """
 
 
+    apiVersions?: [str]
+
     fileParameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourcesItems0HelmFileParametersItems0]
 
     ignoreMissingValueFiles?: bool
+
+    kubeVersion?: str
+
+    namespace?: str
 
     parameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourcesItems0HelmParametersItems0]
 
@@ -14270,15 +20090,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     skipCrds?: bool
 
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
+
     valueFiles?: [str]
 
     values?: str
+
+    valuesObject?: any
 
     version?: str
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourcesItems0HelmFileParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 clusters template spec sources items0 helm file parameters items0
 
     Attributes
@@ -14296,7 +20122,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourcesItems0HelmParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 clusters template spec sources items0 helm parameters items0
 
     Attributes
@@ -14318,29 +20144,43 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourcesItems0Kustomize:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 clusters template spec sources items0 kustomize
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     commonAnnotations : {str:str}, default is Undefined, optional
         common annotations
     commonAnnotationsEnvsubst : bool, default is Undefined, optional
         common annotations envsubst
     commonLabels : {str:str}, default is Undefined, optional
         common labels
+    components : [str], default is Undefined, optional
+        components
     forceCommonAnnotations : bool, default is Undefined, optional
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
+    labelWithoutSelector : bool, default is Undefined, optional
+        label without selector
     namePrefix : str, default is Undefined, optional
         name prefix
     nameSuffix : str, default is Undefined, optional
         name suffix
     namespace : str, default is Undefined, optional
         namespace
+    patches : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourcesItems0KustomizePatchesItems0], default is Undefined, optional
+        patches
     replicas : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourcesItems0KustomizeReplicasItems0], default is Undefined, optional
         replicas
     version : str, default is Undefined, optional
@@ -14348,17 +20188,29 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     """
 
 
+    apiVersions?: [str]
+
     commonAnnotations?: {str:str}
 
     commonAnnotationsEnvsubst?: bool
 
     commonLabels?: {str:str}
 
+    components?: [str]
+
     forceCommonAnnotations?: bool
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
+
+    kubeVersion?: str
+
+    labelIncludeTemplates?: bool
+
+    labelWithoutSelector?: bool
 
     namePrefix?: str
 
@@ -14366,13 +20218,79 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     namespace?: str
 
+    patches?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourcesItems0KustomizePatchesItems0]
+
     replicas?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourcesItems0KustomizeReplicasItems0]
 
     version?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourcesItems0KustomizeReplicasItems0:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourcesItems0KustomizePatchesItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 clusters template spec sources items0 kustomize patches items0
+
+    Attributes
+    ----------
+    options : {str:bool}, default is Undefined, optional
+        options
+    patch : str, default is Undefined, optional
+        patch
+    path : str, default is Undefined, optional
+        path
+    target : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourcesItems0KustomizePatchesItems0Target, default is Undefined, optional
+        target
     """
+
+
+    options?: {str:bool}
+
+    patch?: str
+
+    path?: str
+
+    target?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourcesItems0KustomizePatchesItems0Target
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourcesItems0KustomizePatchesItems0Target:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 clusters template spec sources items0 kustomize patches items0 target
+
+    Attributes
+    ----------
+    annotationSelector : str, default is Undefined, optional
+        annotation selector
+    group : str, default is Undefined, optional
+        group
+    kind : str, default is Undefined, optional
+        kind
+    labelSelector : str, default is Undefined, optional
+        label selector
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    annotationSelector?: str
+
+    group?: str
+
+    kind?: str
+
+    labelSelector?: str
+
+    name?: str
+
+    namespace?: str
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourcesItems0KustomizeReplicasItems0:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 clusters template spec sources items0 kustomize replicas items0
 
     Attributes
@@ -14390,7 +20308,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourcesItems0Plugin:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 clusters template spec sources items0 plugin
 
     Attributes
@@ -14412,7 +20330,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourcesItems0PluginEnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 clusters template spec sources items0 plugin env items0
 
     Attributes
@@ -14430,7 +20348,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourcesItems0PluginParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 clusters template spec sources items0 plugin parameters items0
 
     Attributes
@@ -14456,7 +20374,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSyncPolicy:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 clusters template spec sync policy
 
     Attributes
@@ -14482,7 +20400,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSyncPolicyAutomated:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 clusters template spec sync policy automated
 
     Attributes
@@ -14504,7 +20422,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSyncPolicyManagedNamespaceMetadata:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 clusters template spec sync policy managed namespace metadata
 
     Attributes
@@ -14522,7 +20440,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSyncPolicyRetry:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 clusters template spec sync policy retry
 
     Attributes
@@ -14540,7 +20458,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSyncPolicyRetryBackoff:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 clusters template spec sync policy retry backoff
 
     Attributes
@@ -14562,7 +20480,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0Git:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 git
 
     Attributes
@@ -14604,7 +20522,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitDirectoriesItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 git directories items0
 
     Attributes
@@ -14622,7 +20540,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitFilesItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 git files items0
 
     Attributes
@@ -14636,7 +20554,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplate:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 git template
 
     Attributes
@@ -14654,7 +20572,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateMetadata:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 git template metadata
 
     Attributes
@@ -14684,7 +20602,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpec:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 git template spec
 
     Attributes
@@ -14701,6 +20619,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         revision history limit
     source : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSource, default is Undefined, optional
         source
+    sourceHydrator : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourceHydrator, default is Undefined, optional
+        source hydrator
     sources : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourcesItems0], default is Undefined, optional
         sources
     syncPolicy : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSyncPolicy, default is Undefined, optional
@@ -14720,13 +20640,15 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     source?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSource
 
+    sourceHydrator?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourceHydrator
+
     sources?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourcesItems0]
 
     syncPolicy?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSyncPolicy
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecDestination:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 git template spec destination
 
     Attributes
@@ -14748,7 +20670,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecIgnoreDifferencesItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 git template spec ignore differences items0
 
     Attributes
@@ -14786,7 +20708,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecInfoItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 git template spec info items0
 
     Attributes
@@ -14804,7 +20726,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSource:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 git template spec source
 
     Attributes
@@ -14817,6 +20739,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourceKustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourcePlugin, default is Undefined, optional
@@ -14838,6 +20762,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourceKustomize
 
+    name?: str
+
     path?: str
 
     plugin?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourcePlugin
@@ -14850,7 +20776,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourceDirectory:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 git template spec source directory
 
     Attributes
@@ -14876,7 +20802,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourceDirectoryJsonnet:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 git template spec source directory jsonnet
 
     Attributes
@@ -14898,7 +20824,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourceDirectoryJsonnetExtVarsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 git template spec source directory jsonnet ext vars items0
 
     Attributes
@@ -14920,7 +20846,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourceDirectoryJsonnetTlasItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 git template spec source directory jsonnet tlas items0
 
     Attributes
@@ -14942,15 +20868,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourceHelm:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 git template spec source helm
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     fileParameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourceHelmFileParametersItems0], default is Undefined, optional
         file parameters
     ignoreMissingValueFiles : bool, default is Undefined, optional
         ignore missing value files
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    namespace : str, default is Undefined, optional
+        namespace
     parameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourceHelmParametersItems0], default is Undefined, optional
         parameters
     passCredentials : bool, default is Undefined, optional
@@ -14959,18 +20891,30 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
         values
+    valuesObject : any, default is Undefined, optional
+        values object
     version : str, default is Undefined, optional
         version
     """
 
 
+    apiVersions?: [str]
+
     fileParameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourceHelmFileParametersItems0]
 
     ignoreMissingValueFiles?: bool
+
+    kubeVersion?: str
+
+    namespace?: str
 
     parameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourceHelmParametersItems0]
 
@@ -14980,15 +20924,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     skipCrds?: bool
 
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
+
     valueFiles?: [str]
 
     values?: str
+
+    valuesObject?: any
 
     version?: str
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourceHelmFileParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 git template spec source helm file parameters items0
 
     Attributes
@@ -15006,7 +20956,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourceHelmParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 git template spec source helm parameters items0
 
     Attributes
@@ -15027,30 +20977,120 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     value?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourceKustomize:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourceHydrator:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 git template spec source hydrator
+
+    Attributes
+    ----------
+    drySource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourceHydratorDrySource, default is Undefined, required
+        dry source
+    hydrateTo : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourceHydratorHydrateTo, default is Undefined, optional
+        hydrate to
+    syncSource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourceHydratorSyncSource, default is Undefined, required
+        sync source
     """
+
+
+    drySource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourceHydratorDrySource
+
+    hydrateTo?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourceHydratorHydrateTo
+
+    syncSource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourceHydratorSyncSource
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourceHydratorDrySource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 git template spec source hydrator dry source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    repoURL : str, default is Undefined, required
+        repo URL
+    targetRevision : str, default is Undefined, required
+        target revision
+    """
+
+
+    path: str
+
+    repoURL: str
+
+    targetRevision: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourceHydratorHydrateTo:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 git template spec source hydrator hydrate to
+
+    Attributes
+    ----------
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourceHydratorSyncSource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 git template spec source hydrator sync source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    path: str
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourceKustomize:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 git template spec source kustomize
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     commonAnnotations : {str:str}, default is Undefined, optional
         common annotations
     commonAnnotationsEnvsubst : bool, default is Undefined, optional
         common annotations envsubst
     commonLabels : {str:str}, default is Undefined, optional
         common labels
+    components : [str], default is Undefined, optional
+        components
     forceCommonAnnotations : bool, default is Undefined, optional
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
+    labelWithoutSelector : bool, default is Undefined, optional
+        label without selector
     namePrefix : str, default is Undefined, optional
         name prefix
     nameSuffix : str, default is Undefined, optional
         name suffix
     namespace : str, default is Undefined, optional
         namespace
+    patches : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourceKustomizePatchesItems0], default is Undefined, optional
+        patches
     replicas : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourceKustomizeReplicasItems0], default is Undefined, optional
         replicas
     version : str, default is Undefined, optional
@@ -15058,17 +21098,29 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     """
 
 
+    apiVersions?: [str]
+
     commonAnnotations?: {str:str}
 
     commonAnnotationsEnvsubst?: bool
 
     commonLabels?: {str:str}
 
+    components?: [str]
+
     forceCommonAnnotations?: bool
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
+
+    kubeVersion?: str
+
+    labelIncludeTemplates?: bool
+
+    labelWithoutSelector?: bool
 
     namePrefix?: str
 
@@ -15076,13 +21128,79 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     namespace?: str
 
+    patches?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourceKustomizePatchesItems0]
+
     replicas?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourceKustomizeReplicasItems0]
 
     version?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourceKustomizeReplicasItems0:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourceKustomizePatchesItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 git template spec source kustomize patches items0
+
+    Attributes
+    ----------
+    options : {str:bool}, default is Undefined, optional
+        options
+    patch : str, default is Undefined, optional
+        patch
+    path : str, default is Undefined, optional
+        path
+    target : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourceKustomizePatchesItems0Target, default is Undefined, optional
+        target
     """
+
+
+    options?: {str:bool}
+
+    patch?: str
+
+    path?: str
+
+    target?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourceKustomizePatchesItems0Target
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourceKustomizePatchesItems0Target:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 git template spec source kustomize patches items0 target
+
+    Attributes
+    ----------
+    annotationSelector : str, default is Undefined, optional
+        annotation selector
+    group : str, default is Undefined, optional
+        group
+    kind : str, default is Undefined, optional
+        kind
+    labelSelector : str, default is Undefined, optional
+        label selector
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    annotationSelector?: str
+
+    group?: str
+
+    kind?: str
+
+    labelSelector?: str
+
+    name?: str
+
+    namespace?: str
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourceKustomizeReplicasItems0:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 git template spec source kustomize replicas items0
 
     Attributes
@@ -15100,7 +21218,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourcePlugin:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 git template spec source plugin
 
     Attributes
@@ -15122,7 +21240,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourcePluginEnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 git template spec source plugin env items0
 
     Attributes
@@ -15140,7 +21258,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourcePluginParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 git template spec source plugin parameters items0
 
     Attributes
@@ -15166,7 +21284,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourcesItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 git template spec sources items0
 
     Attributes
@@ -15179,6 +21297,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourcesItems0Kustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourcesItems0Plugin, default is Undefined, optional
@@ -15200,6 +21320,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourcesItems0Kustomize
 
+    name?: str
+
     path?: str
 
     plugin?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourcesItems0Plugin
@@ -15212,7 +21334,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourcesItems0Directory:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 git template spec sources items0 directory
 
     Attributes
@@ -15238,7 +21360,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourcesItems0DirectoryJsonnet:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 git template spec sources items0 directory jsonnet
 
     Attributes
@@ -15260,7 +21382,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourcesItems0DirectoryJsonnetExtVarsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 git template spec sources items0 directory jsonnet ext vars items0
 
     Attributes
@@ -15282,7 +21404,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourcesItems0DirectoryJsonnetTlasItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 git template spec sources items0 directory jsonnet tlas items0
 
     Attributes
@@ -15304,15 +21426,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourcesItems0Helm:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 git template spec sources items0 helm
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     fileParameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourcesItems0HelmFileParametersItems0], default is Undefined, optional
         file parameters
     ignoreMissingValueFiles : bool, default is Undefined, optional
         ignore missing value files
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    namespace : str, default is Undefined, optional
+        namespace
     parameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourcesItems0HelmParametersItems0], default is Undefined, optional
         parameters
     passCredentials : bool, default is Undefined, optional
@@ -15321,18 +21449,30 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
         values
+    valuesObject : any, default is Undefined, optional
+        values object
     version : str, default is Undefined, optional
         version
     """
 
 
+    apiVersions?: [str]
+
     fileParameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourcesItems0HelmFileParametersItems0]
 
     ignoreMissingValueFiles?: bool
+
+    kubeVersion?: str
+
+    namespace?: str
 
     parameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourcesItems0HelmParametersItems0]
 
@@ -15342,15 +21482,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     skipCrds?: bool
 
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
+
     valueFiles?: [str]
 
     values?: str
+
+    valuesObject?: any
 
     version?: str
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourcesItems0HelmFileParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 git template spec sources items0 helm file parameters items0
 
     Attributes
@@ -15368,7 +21514,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourcesItems0HelmParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 git template spec sources items0 helm parameters items0
 
     Attributes
@@ -15390,29 +21536,43 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourcesItems0Kustomize:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 git template spec sources items0 kustomize
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     commonAnnotations : {str:str}, default is Undefined, optional
         common annotations
     commonAnnotationsEnvsubst : bool, default is Undefined, optional
         common annotations envsubst
     commonLabels : {str:str}, default is Undefined, optional
         common labels
+    components : [str], default is Undefined, optional
+        components
     forceCommonAnnotations : bool, default is Undefined, optional
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
+    labelWithoutSelector : bool, default is Undefined, optional
+        label without selector
     namePrefix : str, default is Undefined, optional
         name prefix
     nameSuffix : str, default is Undefined, optional
         name suffix
     namespace : str, default is Undefined, optional
         namespace
+    patches : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourcesItems0KustomizePatchesItems0], default is Undefined, optional
+        patches
     replicas : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourcesItems0KustomizeReplicasItems0], default is Undefined, optional
         replicas
     version : str, default is Undefined, optional
@@ -15420,17 +21580,29 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     """
 
 
+    apiVersions?: [str]
+
     commonAnnotations?: {str:str}
 
     commonAnnotationsEnvsubst?: bool
 
     commonLabels?: {str:str}
 
+    components?: [str]
+
     forceCommonAnnotations?: bool
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
+
+    kubeVersion?: str
+
+    labelIncludeTemplates?: bool
+
+    labelWithoutSelector?: bool
 
     namePrefix?: str
 
@@ -15438,13 +21610,79 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     namespace?: str
 
+    patches?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourcesItems0KustomizePatchesItems0]
+
     replicas?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourcesItems0KustomizeReplicasItems0]
 
     version?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourcesItems0KustomizeReplicasItems0:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourcesItems0KustomizePatchesItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 git template spec sources items0 kustomize patches items0
+
+    Attributes
+    ----------
+    options : {str:bool}, default is Undefined, optional
+        options
+    patch : str, default is Undefined, optional
+        patch
+    path : str, default is Undefined, optional
+        path
+    target : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourcesItems0KustomizePatchesItems0Target, default is Undefined, optional
+        target
     """
+
+
+    options?: {str:bool}
+
+    patch?: str
+
+    path?: str
+
+    target?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourcesItems0KustomizePatchesItems0Target
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourcesItems0KustomizePatchesItems0Target:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 git template spec sources items0 kustomize patches items0 target
+
+    Attributes
+    ----------
+    annotationSelector : str, default is Undefined, optional
+        annotation selector
+    group : str, default is Undefined, optional
+        group
+    kind : str, default is Undefined, optional
+        kind
+    labelSelector : str, default is Undefined, optional
+        label selector
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    annotationSelector?: str
+
+    group?: str
+
+    kind?: str
+
+    labelSelector?: str
+
+    name?: str
+
+    namespace?: str
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourcesItems0KustomizeReplicasItems0:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 git template spec sources items0 kustomize replicas items0
 
     Attributes
@@ -15462,7 +21700,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourcesItems0Plugin:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 git template spec sources items0 plugin
 
     Attributes
@@ -15484,7 +21722,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourcesItems0PluginEnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 git template spec sources items0 plugin env items0
 
     Attributes
@@ -15502,7 +21740,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourcesItems0PluginParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 git template spec sources items0 plugin parameters items0
 
     Attributes
@@ -15528,7 +21766,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSyncPolicy:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 git template spec sync policy
 
     Attributes
@@ -15554,7 +21792,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSyncPolicyAutomated:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 git template spec sync policy automated
 
     Attributes
@@ -15576,7 +21814,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSyncPolicyManagedNamespaceMetadata:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 git template spec sync policy managed namespace metadata
 
     Attributes
@@ -15594,7 +21832,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSyncPolicyRetry:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 git template spec sync policy retry
 
     Attributes
@@ -15612,7 +21850,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSyncPolicyRetryBackoff:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 git template spec sync policy retry backoff
 
     Attributes
@@ -15634,12 +21872,12 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0List:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 list
 
     Attributes
     ----------
-    elements : [any], default is Undefined, required
+    elements : [any], default is Undefined, optional
         elements
     elementsYaml : str, default is Undefined, optional
         elements yaml
@@ -15648,7 +21886,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     """
 
 
-    elements: [any]
+    elements?: [any]
 
     elementsYaml?: str
 
@@ -15656,7 +21894,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplate:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 list template
 
     Attributes
@@ -15674,7 +21912,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateMetadata:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 list template metadata
 
     Attributes
@@ -15704,7 +21942,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpec:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 list template spec
 
     Attributes
@@ -15721,6 +21959,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         revision history limit
     source : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSource, default is Undefined, optional
         source
+    sourceHydrator : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourceHydrator, default is Undefined, optional
+        source hydrator
     sources : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourcesItems0], default is Undefined, optional
         sources
     syncPolicy : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSyncPolicy, default is Undefined, optional
@@ -15740,13 +21980,15 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     source?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSource
 
+    sourceHydrator?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourceHydrator
+
     sources?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourcesItems0]
 
     syncPolicy?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSyncPolicy
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecDestination:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 list template spec destination
 
     Attributes
@@ -15768,7 +22010,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecIgnoreDifferencesItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 list template spec ignore differences items0
 
     Attributes
@@ -15806,7 +22048,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecInfoItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 list template spec info items0
 
     Attributes
@@ -15824,7 +22066,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSource:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 list template spec source
 
     Attributes
@@ -15837,6 +22079,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourceKustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourcePlugin, default is Undefined, optional
@@ -15858,6 +22102,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourceKustomize
 
+    name?: str
+
     path?: str
 
     plugin?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourcePlugin
@@ -15870,7 +22116,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourceDirectory:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 list template spec source directory
 
     Attributes
@@ -15896,7 +22142,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourceDirectoryJsonnet:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 list template spec source directory jsonnet
 
     Attributes
@@ -15918,7 +22164,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourceDirectoryJsonnetExtVarsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 list template spec source directory jsonnet ext vars items0
 
     Attributes
@@ -15940,7 +22186,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourceDirectoryJsonnetTlasItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 list template spec source directory jsonnet tlas items0
 
     Attributes
@@ -15962,15 +22208,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourceHelm:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 list template spec source helm
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     fileParameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourceHelmFileParametersItems0], default is Undefined, optional
         file parameters
     ignoreMissingValueFiles : bool, default is Undefined, optional
         ignore missing value files
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    namespace : str, default is Undefined, optional
+        namespace
     parameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourceHelmParametersItems0], default is Undefined, optional
         parameters
     passCredentials : bool, default is Undefined, optional
@@ -15979,18 +22231,30 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
         values
+    valuesObject : any, default is Undefined, optional
+        values object
     version : str, default is Undefined, optional
         version
     """
 
 
+    apiVersions?: [str]
+
     fileParameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourceHelmFileParametersItems0]
 
     ignoreMissingValueFiles?: bool
+
+    kubeVersion?: str
+
+    namespace?: str
 
     parameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourceHelmParametersItems0]
 
@@ -16000,15 +22264,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     skipCrds?: bool
 
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
+
     valueFiles?: [str]
 
     values?: str
+
+    valuesObject?: any
 
     version?: str
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourceHelmFileParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 list template spec source helm file parameters items0
 
     Attributes
@@ -16026,7 +22296,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourceHelmParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 list template spec source helm parameters items0
 
     Attributes
@@ -16047,30 +22317,120 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     value?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourceKustomize:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourceHydrator:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 list template spec source hydrator
+
+    Attributes
+    ----------
+    drySource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourceHydratorDrySource, default is Undefined, required
+        dry source
+    hydrateTo : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourceHydratorHydrateTo, default is Undefined, optional
+        hydrate to
+    syncSource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourceHydratorSyncSource, default is Undefined, required
+        sync source
     """
+
+
+    drySource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourceHydratorDrySource
+
+    hydrateTo?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourceHydratorHydrateTo
+
+    syncSource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourceHydratorSyncSource
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourceHydratorDrySource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 list template spec source hydrator dry source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    repoURL : str, default is Undefined, required
+        repo URL
+    targetRevision : str, default is Undefined, required
+        target revision
+    """
+
+
+    path: str
+
+    repoURL: str
+
+    targetRevision: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourceHydratorHydrateTo:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 list template spec source hydrator hydrate to
+
+    Attributes
+    ----------
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourceHydratorSyncSource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 list template spec source hydrator sync source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    path: str
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourceKustomize:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 list template spec source kustomize
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     commonAnnotations : {str:str}, default is Undefined, optional
         common annotations
     commonAnnotationsEnvsubst : bool, default is Undefined, optional
         common annotations envsubst
     commonLabels : {str:str}, default is Undefined, optional
         common labels
+    components : [str], default is Undefined, optional
+        components
     forceCommonAnnotations : bool, default is Undefined, optional
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
+    labelWithoutSelector : bool, default is Undefined, optional
+        label without selector
     namePrefix : str, default is Undefined, optional
         name prefix
     nameSuffix : str, default is Undefined, optional
         name suffix
     namespace : str, default is Undefined, optional
         namespace
+    patches : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourceKustomizePatchesItems0], default is Undefined, optional
+        patches
     replicas : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourceKustomizeReplicasItems0], default is Undefined, optional
         replicas
     version : str, default is Undefined, optional
@@ -16078,17 +22438,29 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     """
 
 
+    apiVersions?: [str]
+
     commonAnnotations?: {str:str}
 
     commonAnnotationsEnvsubst?: bool
 
     commonLabels?: {str:str}
 
+    components?: [str]
+
     forceCommonAnnotations?: bool
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
+
+    kubeVersion?: str
+
+    labelIncludeTemplates?: bool
+
+    labelWithoutSelector?: bool
 
     namePrefix?: str
 
@@ -16096,13 +22468,79 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     namespace?: str
 
+    patches?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourceKustomizePatchesItems0]
+
     replicas?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourceKustomizeReplicasItems0]
 
     version?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourceKustomizeReplicasItems0:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourceKustomizePatchesItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 list template spec source kustomize patches items0
+
+    Attributes
+    ----------
+    options : {str:bool}, default is Undefined, optional
+        options
+    patch : str, default is Undefined, optional
+        patch
+    path : str, default is Undefined, optional
+        path
+    target : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourceKustomizePatchesItems0Target, default is Undefined, optional
+        target
     """
+
+
+    options?: {str:bool}
+
+    patch?: str
+
+    path?: str
+
+    target?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourceKustomizePatchesItems0Target
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourceKustomizePatchesItems0Target:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 list template spec source kustomize patches items0 target
+
+    Attributes
+    ----------
+    annotationSelector : str, default is Undefined, optional
+        annotation selector
+    group : str, default is Undefined, optional
+        group
+    kind : str, default is Undefined, optional
+        kind
+    labelSelector : str, default is Undefined, optional
+        label selector
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    annotationSelector?: str
+
+    group?: str
+
+    kind?: str
+
+    labelSelector?: str
+
+    name?: str
+
+    namespace?: str
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourceKustomizeReplicasItems0:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 list template spec source kustomize replicas items0
 
     Attributes
@@ -16120,7 +22558,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourcePlugin:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 list template spec source plugin
 
     Attributes
@@ -16142,7 +22580,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourcePluginEnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 list template spec source plugin env items0
 
     Attributes
@@ -16160,7 +22598,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourcePluginParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 list template spec source plugin parameters items0
 
     Attributes
@@ -16186,7 +22624,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourcesItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 list template spec sources items0
 
     Attributes
@@ -16199,6 +22637,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourcesItems0Kustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourcesItems0Plugin, default is Undefined, optional
@@ -16220,6 +22660,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourcesItems0Kustomize
 
+    name?: str
+
     path?: str
 
     plugin?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourcesItems0Plugin
@@ -16232,7 +22674,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourcesItems0Directory:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 list template spec sources items0 directory
 
     Attributes
@@ -16258,7 +22700,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourcesItems0DirectoryJsonnet:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 list template spec sources items0 directory jsonnet
 
     Attributes
@@ -16280,7 +22722,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourcesItems0DirectoryJsonnetExtVarsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 list template spec sources items0 directory jsonnet ext vars items0
 
     Attributes
@@ -16302,7 +22744,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourcesItems0DirectoryJsonnetTlasItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 list template spec sources items0 directory jsonnet tlas items0
 
     Attributes
@@ -16324,15 +22766,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourcesItems0Helm:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 list template spec sources items0 helm
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     fileParameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourcesItems0HelmFileParametersItems0], default is Undefined, optional
         file parameters
     ignoreMissingValueFiles : bool, default is Undefined, optional
         ignore missing value files
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    namespace : str, default is Undefined, optional
+        namespace
     parameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourcesItems0HelmParametersItems0], default is Undefined, optional
         parameters
     passCredentials : bool, default is Undefined, optional
@@ -16341,18 +22789,30 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
         values
+    valuesObject : any, default is Undefined, optional
+        values object
     version : str, default is Undefined, optional
         version
     """
 
 
+    apiVersions?: [str]
+
     fileParameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourcesItems0HelmFileParametersItems0]
 
     ignoreMissingValueFiles?: bool
+
+    kubeVersion?: str
+
+    namespace?: str
 
     parameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourcesItems0HelmParametersItems0]
 
@@ -16362,15 +22822,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     skipCrds?: bool
 
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
+
     valueFiles?: [str]
 
     values?: str
+
+    valuesObject?: any
 
     version?: str
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourcesItems0HelmFileParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 list template spec sources items0 helm file parameters items0
 
     Attributes
@@ -16388,7 +22854,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourcesItems0HelmParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 list template spec sources items0 helm parameters items0
 
     Attributes
@@ -16410,29 +22876,43 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourcesItems0Kustomize:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 list template spec sources items0 kustomize
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     commonAnnotations : {str:str}, default is Undefined, optional
         common annotations
     commonAnnotationsEnvsubst : bool, default is Undefined, optional
         common annotations envsubst
     commonLabels : {str:str}, default is Undefined, optional
         common labels
+    components : [str], default is Undefined, optional
+        components
     forceCommonAnnotations : bool, default is Undefined, optional
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
+    labelWithoutSelector : bool, default is Undefined, optional
+        label without selector
     namePrefix : str, default is Undefined, optional
         name prefix
     nameSuffix : str, default is Undefined, optional
         name suffix
     namespace : str, default is Undefined, optional
         namespace
+    patches : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourcesItems0KustomizePatchesItems0], default is Undefined, optional
+        patches
     replicas : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourcesItems0KustomizeReplicasItems0], default is Undefined, optional
         replicas
     version : str, default is Undefined, optional
@@ -16440,17 +22920,29 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     """
 
 
+    apiVersions?: [str]
+
     commonAnnotations?: {str:str}
 
     commonAnnotationsEnvsubst?: bool
 
     commonLabels?: {str:str}
 
+    components?: [str]
+
     forceCommonAnnotations?: bool
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
+
+    kubeVersion?: str
+
+    labelIncludeTemplates?: bool
+
+    labelWithoutSelector?: bool
 
     namePrefix?: str
 
@@ -16458,13 +22950,79 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     namespace?: str
 
+    patches?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourcesItems0KustomizePatchesItems0]
+
     replicas?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourcesItems0KustomizeReplicasItems0]
 
     version?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourcesItems0KustomizeReplicasItems0:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourcesItems0KustomizePatchesItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 list template spec sources items0 kustomize patches items0
+
+    Attributes
+    ----------
+    options : {str:bool}, default is Undefined, optional
+        options
+    patch : str, default is Undefined, optional
+        patch
+    path : str, default is Undefined, optional
+        path
+    target : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourcesItems0KustomizePatchesItems0Target, default is Undefined, optional
+        target
     """
+
+
+    options?: {str:bool}
+
+    patch?: str
+
+    path?: str
+
+    target?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourcesItems0KustomizePatchesItems0Target
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourcesItems0KustomizePatchesItems0Target:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 list template spec sources items0 kustomize patches items0 target
+
+    Attributes
+    ----------
+    annotationSelector : str, default is Undefined, optional
+        annotation selector
+    group : str, default is Undefined, optional
+        group
+    kind : str, default is Undefined, optional
+        kind
+    labelSelector : str, default is Undefined, optional
+        label selector
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    annotationSelector?: str
+
+    group?: str
+
+    kind?: str
+
+    labelSelector?: str
+
+    name?: str
+
+    namespace?: str
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourcesItems0KustomizeReplicasItems0:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 list template spec sources items0 kustomize replicas items0
 
     Attributes
@@ -16482,7 +23040,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourcesItems0Plugin:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 list template spec sources items0 plugin
 
     Attributes
@@ -16504,7 +23062,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourcesItems0PluginEnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 list template spec sources items0 plugin env items0
 
     Attributes
@@ -16522,7 +23080,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourcesItems0PluginParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 list template spec sources items0 plugin parameters items0
 
     Attributes
@@ -16548,7 +23106,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSyncPolicy:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 list template spec sync policy
 
     Attributes
@@ -16574,7 +23132,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSyncPolicyAutomated:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 list template spec sync policy automated
 
     Attributes
@@ -16596,7 +23154,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSyncPolicyManagedNamespaceMetadata:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 list template spec sync policy managed namespace metadata
 
     Attributes
@@ -16614,7 +23172,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSyncPolicyRetry:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 list template spec sync policy retry
 
     Attributes
@@ -16632,7 +23190,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSyncPolicyRetryBackoff:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 list template spec sync policy retry backoff
 
     Attributes
@@ -16653,12 +23211,1392 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     maxDuration?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequest:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0Plugin:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 plugin
+
+    Attributes
+    ----------
+    configMapRef : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginConfigMapRef, default is Undefined, required
+        config map ref
+    input : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginInput, default is Undefined, optional
+        input
+    requeueAfterSeconds : int, default is Undefined, optional
+        requeue after seconds
+    template : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplate, default is Undefined, optional
+        template
+    values : {str:str}, default is Undefined, optional
+        values
     """
+
+
+    configMapRef: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginConfigMapRef
+
+    input?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginInput
+
+    requeueAfterSeconds?: int
+
+    template?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplate
+
+    values?: {str:str}
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginConfigMapRef:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 plugin config map ref
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        name
+    """
+
+
+    name: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginInput:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 plugin input
+
+    Attributes
+    ----------
+    parameters : {str:any}, default is Undefined, optional
+        parameters
+    """
+
+
+    parameters?: {str:any}
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplate:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 plugin template
+
+    Attributes
+    ----------
+    metadata : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateMetadata, default is Undefined, required
+        metadata
+    spec : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpec, default is Undefined, required
+        spec
+    """
+
+
+    metadata: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateMetadata
+
+    spec: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpec
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateMetadata:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 plugin template metadata
+
+    Attributes
+    ----------
+    annotations : {str:str}, default is Undefined, optional
+        annotations
+    finalizers : [str], default is Undefined, optional
+        finalizers
+    labels : {str:str}, default is Undefined, optional
+        labels
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    """
+
+
+    annotations?: {str:str}
+
+    finalizers?: [str]
+
+    labels?: {str:str}
+
+    name?: str
+
+    namespace?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpec:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 plugin template spec
+
+    Attributes
+    ----------
+    destination : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecDestination, default is Undefined, required
+        destination
+    ignoreDifferences : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecIgnoreDifferencesItems0], default is Undefined, optional
+        ignore differences
+    info : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecInfoItems0], default is Undefined, optional
+        info
+    project : str, default is Undefined, required
+        project
+    revisionHistoryLimit : int, default is Undefined, optional
+        revision history limit
+    source : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSource, default is Undefined, optional
+        source
+    sourceHydrator : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceHydrator, default is Undefined, optional
+        source hydrator
+    sources : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcesItems0], default is Undefined, optional
+        sources
+    syncPolicy : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSyncPolicy, default is Undefined, optional
+        sync policy
+    """
+
+
+    destination: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecDestination
+
+    ignoreDifferences?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecIgnoreDifferencesItems0]
+
+    info?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecInfoItems0]
+
+    project: str
+
+    revisionHistoryLimit?: int
+
+    source?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSource
+
+    sourceHydrator?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceHydrator
+
+    sources?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcesItems0]
+
+    syncPolicy?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSyncPolicy
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecDestination:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 plugin template spec destination
+
+    Attributes
+    ----------
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    server : str, default is Undefined, optional
+        server
+    """
+
+
+    name?: str
+
+    namespace?: str
+
+    server?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecIgnoreDifferencesItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 plugin template spec ignore differences items0
+
+    Attributes
+    ----------
+    group : str, default is Undefined, optional
+        group
+    jqPathExpressions : [str], default is Undefined, optional
+        jq path expressions
+    jsonPointers : [str], default is Undefined, optional
+        json pointers
+    kind : str, default is Undefined, required
+        kind
+    managedFieldsManagers : [str], default is Undefined, optional
+        managed fields managers
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    """
+
+
+    group?: str
+
+    jqPathExpressions?: [str]
+
+    jsonPointers?: [str]
+
+    kind: str
+
+    managedFieldsManagers?: [str]
+
+    name?: str
+
+    namespace?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecInfoItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 plugin template spec info items0
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        name
+    value : str, default is Undefined, required
+        value
+    """
+
+
+    name: str
+
+    value: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 plugin template spec source
+
+    Attributes
+    ----------
+    chart : str, default is Undefined, optional
+        chart
+    directory : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceDirectory, default is Undefined, optional
+        directory
+    helm : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceHelm, default is Undefined, optional
+        helm
+    kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceKustomize, default is Undefined, optional
+        kustomize
+    name : str, default is Undefined, optional
+        name
+    path : str, default is Undefined, optional
+        path
+    plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcePlugin, default is Undefined, optional
+        plugin
+    ref : str, default is Undefined, optional
+        ref
+    repoURL : str, default is Undefined, required
+        repo URL
+    targetRevision : str, default is Undefined, optional
+        target revision
+    """
+
+
+    chart?: str
+
+    directory?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceDirectory
+
+    helm?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceHelm
+
+    kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceKustomize
+
+    name?: str
+
+    path?: str
+
+    plugin?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcePlugin
+
+    ref?: str
+
+    repoURL: str
+
+    targetRevision?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceDirectory:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 plugin template spec source directory
+
+    Attributes
+    ----------
+    exclude : str, default is Undefined, optional
+        exclude
+    include : str, default is Undefined, optional
+        include
+    jsonnet : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceDirectoryJsonnet, default is Undefined, optional
+        jsonnet
+    recurse : bool, default is Undefined, optional
+        recurse
+    """
+
+
+    exclude?: str
+
+    include?: str
+
+    jsonnet?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceDirectoryJsonnet
+
+    recurse?: bool
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceDirectoryJsonnet:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 plugin template spec source directory jsonnet
+
+    Attributes
+    ----------
+    extVars : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceDirectoryJsonnetExtVarsItems0], default is Undefined, optional
+        ext vars
+    libs : [str], default is Undefined, optional
+        libs
+    tlas : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceDirectoryJsonnetTlasItems0], default is Undefined, optional
+        tlas
+    """
+
+
+    extVars?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceDirectoryJsonnetExtVarsItems0]
+
+    libs?: [str]
+
+    tlas?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceDirectoryJsonnetTlasItems0]
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceDirectoryJsonnetExtVarsItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 plugin template spec source directory jsonnet ext vars items0
+
+    Attributes
+    ----------
+    code : bool, default is Undefined, optional
+        code
+    name : str, default is Undefined, required
+        name
+    value : str, default is Undefined, required
+        value
+    """
+
+
+    code?: bool
+
+    name: str
+
+    value: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceDirectoryJsonnetTlasItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 plugin template spec source directory jsonnet tlas items0
+
+    Attributes
+    ----------
+    code : bool, default is Undefined, optional
+        code
+    name : str, default is Undefined, required
+        name
+    value : str, default is Undefined, required
+        value
+    """
+
+
+    code?: bool
+
+    name: str
+
+    value: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceHelm:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 plugin template spec source helm
+
+    Attributes
+    ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
+    fileParameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceHelmFileParametersItems0], default is Undefined, optional
+        file parameters
+    ignoreMissingValueFiles : bool, default is Undefined, optional
+        ignore missing value files
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    namespace : str, default is Undefined, optional
+        namespace
+    parameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceHelmParametersItems0], default is Undefined, optional
+        parameters
+    passCredentials : bool, default is Undefined, optional
+        pass credentials
+    releaseName : str, default is Undefined, optional
+        release name
+    skipCrds : bool, default is Undefined, optional
+        skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
+    valueFiles : [str], default is Undefined, optional
+        value files
+    values : str, default is Undefined, optional
+        values
+    valuesObject : any, default is Undefined, optional
+        values object
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    apiVersions?: [str]
+
+    fileParameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceHelmFileParametersItems0]
+
+    ignoreMissingValueFiles?: bool
+
+    kubeVersion?: str
+
+    namespace?: str
+
+    parameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceHelmParametersItems0]
+
+    passCredentials?: bool
+
+    releaseName?: str
+
+    skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
+
+    valueFiles?: [str]
+
+    values?: str
+
+    valuesObject?: any
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceHelmFileParametersItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 plugin template spec source helm file parameters items0
+
+    Attributes
+    ----------
+    name : str, default is Undefined, optional
+        name
+    path : str, default is Undefined, optional
+        path
+    """
+
+
+    name?: str
+
+    path?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceHelmParametersItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 plugin template spec source helm parameters items0
+
+    Attributes
+    ----------
+    forceString : bool, default is Undefined, optional
+        force string
+    name : str, default is Undefined, optional
+        name
+    value : str, default is Undefined, optional
+        value
+    """
+
+
+    forceString?: bool
+
+    name?: str
+
+    value?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceHydrator:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 plugin template spec source hydrator
+
+    Attributes
+    ----------
+    drySource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceHydratorDrySource, default is Undefined, required
+        dry source
+    hydrateTo : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceHydratorHydrateTo, default is Undefined, optional
+        hydrate to
+    syncSource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceHydratorSyncSource, default is Undefined, required
+        sync source
+    """
+
+
+    drySource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceHydratorDrySource
+
+    hydrateTo?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceHydratorHydrateTo
+
+    syncSource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceHydratorSyncSource
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceHydratorDrySource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 plugin template spec source hydrator dry source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    repoURL : str, default is Undefined, required
+        repo URL
+    targetRevision : str, default is Undefined, required
+        target revision
+    """
+
+
+    path: str
+
+    repoURL: str
+
+    targetRevision: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceHydratorHydrateTo:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 plugin template spec source hydrator hydrate to
+
+    Attributes
+    ----------
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceHydratorSyncSource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 plugin template spec source hydrator sync source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    path: str
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceKustomize:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 plugin template spec source kustomize
+
+    Attributes
+    ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
+    commonAnnotations : {str:str}, default is Undefined, optional
+        common annotations
+    commonAnnotationsEnvsubst : bool, default is Undefined, optional
+        common annotations envsubst
+    commonLabels : {str:str}, default is Undefined, optional
+        common labels
+    components : [str], default is Undefined, optional
+        components
+    forceCommonAnnotations : bool, default is Undefined, optional
+        force common annotations
+    forceCommonLabels : bool, default is Undefined, optional
+        force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
+    images : [str], default is Undefined, optional
+        images
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
+    labelWithoutSelector : bool, default is Undefined, optional
+        label without selector
+    namePrefix : str, default is Undefined, optional
+        name prefix
+    nameSuffix : str, default is Undefined, optional
+        name suffix
+    namespace : str, default is Undefined, optional
+        namespace
+    patches : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceKustomizePatchesItems0], default is Undefined, optional
+        patches
+    replicas : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceKustomizeReplicasItems0], default is Undefined, optional
+        replicas
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    apiVersions?: [str]
+
+    commonAnnotations?: {str:str}
+
+    commonAnnotationsEnvsubst?: bool
+
+    commonLabels?: {str:str}
+
+    components?: [str]
+
+    forceCommonAnnotations?: bool
+
+    forceCommonLabels?: bool
+
+    ignoreMissingComponents?: bool
+
+    images?: [str]
+
+    kubeVersion?: str
+
+    labelIncludeTemplates?: bool
+
+    labelWithoutSelector?: bool
+
+    namePrefix?: str
+
+    nameSuffix?: str
+
+    namespace?: str
+
+    patches?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceKustomizePatchesItems0]
+
+    replicas?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceKustomizeReplicasItems0]
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceKustomizePatchesItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 plugin template spec source kustomize patches items0
+
+    Attributes
+    ----------
+    options : {str:bool}, default is Undefined, optional
+        options
+    patch : str, default is Undefined, optional
+        patch
+    path : str, default is Undefined, optional
+        path
+    target : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceKustomizePatchesItems0Target, default is Undefined, optional
+        target
+    """
+
+
+    options?: {str:bool}
+
+    patch?: str
+
+    path?: str
+
+    target?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceKustomizePatchesItems0Target
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceKustomizePatchesItems0Target:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 plugin template spec source kustomize patches items0 target
+
+    Attributes
+    ----------
+    annotationSelector : str, default is Undefined, optional
+        annotation selector
+    group : str, default is Undefined, optional
+        group
+    kind : str, default is Undefined, optional
+        kind
+    labelSelector : str, default is Undefined, optional
+        label selector
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    annotationSelector?: str
+
+    group?: str
+
+    kind?: str
+
+    labelSelector?: str
+
+    name?: str
+
+    namespace?: str
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceKustomizeReplicasItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 plugin template spec source kustomize replicas items0
+
+    Attributes
+    ----------
+    count : int | str, default is Undefined, required
+        count
+    name : str, default is Undefined, required
+        name
+    """
+
+
+    count: int | str
+
+    name: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcePlugin:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 plugin template spec source plugin
+
+    Attributes
+    ----------
+    env : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcePluginEnvItems0], default is Undefined, optional
+        env
+    name : str, default is Undefined, optional
+        name
+    parameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcePluginParametersItems0], default is Undefined, optional
+        parameters
+    """
+
+
+    env?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcePluginEnvItems0]
+
+    name?: str
+
+    parameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcePluginParametersItems0]
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcePluginEnvItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 plugin template spec source plugin env items0
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        name
+    value : str, default is Undefined, required
+        value
+    """
+
+
+    name: str
+
+    value: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcePluginParametersItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 plugin template spec source plugin parameters items0
+
+    Attributes
+    ----------
+    array : [str], default is Undefined, optional
+        array
+    $map : {str:str}, default is Undefined, optional
+        map
+    name : str, default is Undefined, optional
+        name
+    string : str, default is Undefined, optional
+        string
+    """
+
+
+    array?: [str]
+
+    $map?: {str:str}
+
+    name?: str
+
+    string?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcesItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 plugin template spec sources items0
+
+    Attributes
+    ----------
+    chart : str, default is Undefined, optional
+        chart
+    directory : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcesItems0Directory, default is Undefined, optional
+        directory
+    helm : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcesItems0Helm, default is Undefined, optional
+        helm
+    kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcesItems0Kustomize, default is Undefined, optional
+        kustomize
+    name : str, default is Undefined, optional
+        name
+    path : str, default is Undefined, optional
+        path
+    plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcesItems0Plugin, default is Undefined, optional
+        plugin
+    ref : str, default is Undefined, optional
+        ref
+    repoURL : str, default is Undefined, required
+        repo URL
+    targetRevision : str, default is Undefined, optional
+        target revision
+    """
+
+
+    chart?: str
+
+    directory?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcesItems0Directory
+
+    helm?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcesItems0Helm
+
+    kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcesItems0Kustomize
+
+    name?: str
+
+    path?: str
+
+    plugin?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcesItems0Plugin
+
+    ref?: str
+
+    repoURL: str
+
+    targetRevision?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcesItems0Directory:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 plugin template spec sources items0 directory
+
+    Attributes
+    ----------
+    exclude : str, default is Undefined, optional
+        exclude
+    include : str, default is Undefined, optional
+        include
+    jsonnet : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcesItems0DirectoryJsonnet, default is Undefined, optional
+        jsonnet
+    recurse : bool, default is Undefined, optional
+        recurse
+    """
+
+
+    exclude?: str
+
+    include?: str
+
+    jsonnet?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcesItems0DirectoryJsonnet
+
+    recurse?: bool
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcesItems0DirectoryJsonnet:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 plugin template spec sources items0 directory jsonnet
+
+    Attributes
+    ----------
+    extVars : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcesItems0DirectoryJsonnetExtVarsItems0], default is Undefined, optional
+        ext vars
+    libs : [str], default is Undefined, optional
+        libs
+    tlas : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcesItems0DirectoryJsonnetTlasItems0], default is Undefined, optional
+        tlas
+    """
+
+
+    extVars?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcesItems0DirectoryJsonnetExtVarsItems0]
+
+    libs?: [str]
+
+    tlas?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcesItems0DirectoryJsonnetTlasItems0]
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcesItems0DirectoryJsonnetExtVarsItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 plugin template spec sources items0 directory jsonnet ext vars items0
+
+    Attributes
+    ----------
+    code : bool, default is Undefined, optional
+        code
+    name : str, default is Undefined, required
+        name
+    value : str, default is Undefined, required
+        value
+    """
+
+
+    code?: bool
+
+    name: str
+
+    value: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcesItems0DirectoryJsonnetTlasItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 plugin template spec sources items0 directory jsonnet tlas items0
+
+    Attributes
+    ----------
+    code : bool, default is Undefined, optional
+        code
+    name : str, default is Undefined, required
+        name
+    value : str, default is Undefined, required
+        value
+    """
+
+
+    code?: bool
+
+    name: str
+
+    value: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcesItems0Helm:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 plugin template spec sources items0 helm
+
+    Attributes
+    ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
+    fileParameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcesItems0HelmFileParametersItems0], default is Undefined, optional
+        file parameters
+    ignoreMissingValueFiles : bool, default is Undefined, optional
+        ignore missing value files
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    namespace : str, default is Undefined, optional
+        namespace
+    parameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcesItems0HelmParametersItems0], default is Undefined, optional
+        parameters
+    passCredentials : bool, default is Undefined, optional
+        pass credentials
+    releaseName : str, default is Undefined, optional
+        release name
+    skipCrds : bool, default is Undefined, optional
+        skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
+    valueFiles : [str], default is Undefined, optional
+        value files
+    values : str, default is Undefined, optional
+        values
+    valuesObject : any, default is Undefined, optional
+        values object
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    apiVersions?: [str]
+
+    fileParameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcesItems0HelmFileParametersItems0]
+
+    ignoreMissingValueFiles?: bool
+
+    kubeVersion?: str
+
+    namespace?: str
+
+    parameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcesItems0HelmParametersItems0]
+
+    passCredentials?: bool
+
+    releaseName?: str
+
+    skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
+
+    valueFiles?: [str]
+
+    values?: str
+
+    valuesObject?: any
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcesItems0HelmFileParametersItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 plugin template spec sources items0 helm file parameters items0
+
+    Attributes
+    ----------
+    name : str, default is Undefined, optional
+        name
+    path : str, default is Undefined, optional
+        path
+    """
+
+
+    name?: str
+
+    path?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcesItems0HelmParametersItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 plugin template spec sources items0 helm parameters items0
+
+    Attributes
+    ----------
+    forceString : bool, default is Undefined, optional
+        force string
+    name : str, default is Undefined, optional
+        name
+    value : str, default is Undefined, optional
+        value
+    """
+
+
+    forceString?: bool
+
+    name?: str
+
+    value?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcesItems0Kustomize:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 plugin template spec sources items0 kustomize
+
+    Attributes
+    ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
+    commonAnnotations : {str:str}, default is Undefined, optional
+        common annotations
+    commonAnnotationsEnvsubst : bool, default is Undefined, optional
+        common annotations envsubst
+    commonLabels : {str:str}, default is Undefined, optional
+        common labels
+    components : [str], default is Undefined, optional
+        components
+    forceCommonAnnotations : bool, default is Undefined, optional
+        force common annotations
+    forceCommonLabels : bool, default is Undefined, optional
+        force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
+    images : [str], default is Undefined, optional
+        images
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
+    labelWithoutSelector : bool, default is Undefined, optional
+        label without selector
+    namePrefix : str, default is Undefined, optional
+        name prefix
+    nameSuffix : str, default is Undefined, optional
+        name suffix
+    namespace : str, default is Undefined, optional
+        namespace
+    patches : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcesItems0KustomizePatchesItems0], default is Undefined, optional
+        patches
+    replicas : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcesItems0KustomizeReplicasItems0], default is Undefined, optional
+        replicas
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    apiVersions?: [str]
+
+    commonAnnotations?: {str:str}
+
+    commonAnnotationsEnvsubst?: bool
+
+    commonLabels?: {str:str}
+
+    components?: [str]
+
+    forceCommonAnnotations?: bool
+
+    forceCommonLabels?: bool
+
+    ignoreMissingComponents?: bool
+
+    images?: [str]
+
+    kubeVersion?: str
+
+    labelIncludeTemplates?: bool
+
+    labelWithoutSelector?: bool
+
+    namePrefix?: str
+
+    nameSuffix?: str
+
+    namespace?: str
+
+    patches?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcesItems0KustomizePatchesItems0]
+
+    replicas?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcesItems0KustomizeReplicasItems0]
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcesItems0KustomizePatchesItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 plugin template spec sources items0 kustomize patches items0
+
+    Attributes
+    ----------
+    options : {str:bool}, default is Undefined, optional
+        options
+    patch : str, default is Undefined, optional
+        patch
+    path : str, default is Undefined, optional
+        path
+    target : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcesItems0KustomizePatchesItems0Target, default is Undefined, optional
+        target
+    """
+
+
+    options?: {str:bool}
+
+    patch?: str
+
+    path?: str
+
+    target?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcesItems0KustomizePatchesItems0Target
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcesItems0KustomizePatchesItems0Target:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 plugin template spec sources items0 kustomize patches items0 target
+
+    Attributes
+    ----------
+    annotationSelector : str, default is Undefined, optional
+        annotation selector
+    group : str, default is Undefined, optional
+        group
+    kind : str, default is Undefined, optional
+        kind
+    labelSelector : str, default is Undefined, optional
+        label selector
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    annotationSelector?: str
+
+    group?: str
+
+    kind?: str
+
+    labelSelector?: str
+
+    name?: str
+
+    namespace?: str
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcesItems0KustomizeReplicasItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 plugin template spec sources items0 kustomize replicas items0
+
+    Attributes
+    ----------
+    count : int | str, default is Undefined, required
+        count
+    name : str, default is Undefined, required
+        name
+    """
+
+
+    count: int | str
+
+    name: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcesItems0Plugin:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 plugin template spec sources items0 plugin
+
+    Attributes
+    ----------
+    env : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcesItems0PluginEnvItems0], default is Undefined, optional
+        env
+    name : str, default is Undefined, optional
+        name
+    parameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcesItems0PluginParametersItems0], default is Undefined, optional
+        parameters
+    """
+
+
+    env?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcesItems0PluginEnvItems0]
+
+    name?: str
+
+    parameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcesItems0PluginParametersItems0]
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcesItems0PluginEnvItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 plugin template spec sources items0 plugin env items0
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        name
+    value : str, default is Undefined, required
+        value
+    """
+
+
+    name: str
+
+    value: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcesItems0PluginParametersItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 plugin template spec sources items0 plugin parameters items0
+
+    Attributes
+    ----------
+    array : [str], default is Undefined, optional
+        array
+    $map : {str:str}, default is Undefined, optional
+        map
+    name : str, default is Undefined, optional
+        name
+    string : str, default is Undefined, optional
+        string
+    """
+
+
+    array?: [str]
+
+    $map?: {str:str}
+
+    name?: str
+
+    string?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSyncPolicy:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 plugin template spec sync policy
+
+    Attributes
+    ----------
+    automated : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSyncPolicyAutomated, default is Undefined, optional
+        automated
+    managedNamespaceMetadata : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSyncPolicyManagedNamespaceMetadata, default is Undefined, optional
+        managed namespace metadata
+    retry : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSyncPolicyRetry, default is Undefined, optional
+        retry
+    syncOptions : [str], default is Undefined, optional
+        sync options
+    """
+
+
+    automated?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSyncPolicyAutomated
+
+    managedNamespaceMetadata?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSyncPolicyManagedNamespaceMetadata
+
+    retry?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSyncPolicyRetry
+
+    syncOptions?: [str]
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSyncPolicyAutomated:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 plugin template spec sync policy automated
+
+    Attributes
+    ----------
+    allowEmpty : bool, default is Undefined, optional
+        allow empty
+    prune : bool, default is Undefined, optional
+        prune
+    selfHeal : bool, default is Undefined, optional
+        self heal
+    """
+
+
+    allowEmpty?: bool
+
+    prune?: bool
+
+    selfHeal?: bool
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSyncPolicyManagedNamespaceMetadata:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 plugin template spec sync policy managed namespace metadata
+
+    Attributes
+    ----------
+    annotations : {str:str}, default is Undefined, optional
+        annotations
+    labels : {str:str}, default is Undefined, optional
+        labels
+    """
+
+
+    annotations?: {str:str}
+
+    labels?: {str:str}
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSyncPolicyRetry:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 plugin template spec sync policy retry
+
+    Attributes
+    ----------
+    backoff : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSyncPolicyRetryBackoff, default is Undefined, optional
+        backoff
+    limit : int, default is Undefined, optional
+        limit
+    """
+
+
+    backoff?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSyncPolicyRetryBackoff
+
+    limit?: int
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSyncPolicyRetryBackoff:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 plugin template spec sync policy retry backoff
+
+    Attributes
+    ----------
+    duration : str, default is Undefined, optional
+        duration
+    factor : int, default is Undefined, optional
+        factor
+    maxDuration : str, default is Undefined, optional
+        max duration
+    """
+
+
+    duration?: str
+
+    factor?: int
+
+    maxDuration?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequest:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request
 
     Attributes
     ----------
+    azuredevops : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestAzuredevops, default is Undefined, optional
+        azuredevops
+    bitbucket : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestBitbucket, default is Undefined, optional
+        bitbucket
     bitbucketServer : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestBitbucketServer, default is Undefined, optional
         bitbucket server
     filters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestFiltersItems0], default is Undefined, optional
@@ -16673,8 +24611,14 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         requeue after seconds
     template : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplate, default is Undefined, optional
         template
+    values : {str:str}, default is Undefined, optional
+        values
     """
 
+
+    azuredevops?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestAzuredevops
+
+    bitbucket?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestBitbucket
 
     bitbucketServer?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestBitbucketServer
 
@@ -16690,9 +24634,161 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     template?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplate
 
+    values?: {str:str}
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestAzuredevops:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request azuredevops
+
+    Attributes
+    ----------
+    api : str, default is Undefined, optional
+        api
+    labels : [str], default is Undefined, optional
+        labels
+    organization : str, default is Undefined, required
+        organization
+    project : str, default is Undefined, required
+        project
+    repo : str, default is Undefined, required
+        repo
+    tokenRef : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestAzuredevopsTokenRef, default is Undefined, optional
+        token ref
+    """
+
+
+    api?: str
+
+    labels?: [str]
+
+    organization: str
+
+    project: str
+
+    repo: str
+
+    tokenRef?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestAzuredevopsTokenRef
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestAzuredevopsTokenRef:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request azuredevops token ref
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    secretName : str, default is Undefined, required
+        secret name
+    """
+
+
+    key: str
+
+    secretName: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestBitbucket:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request bitbucket
+
+    Attributes
+    ----------
+    api : str, default is Undefined, optional
+        api
+    basicAuth : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestBitbucketBasicAuth, default is Undefined, optional
+        basic auth
+    bearerToken : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestBitbucketBearerToken, default is Undefined, optional
+        bearer token
+    owner : str, default is Undefined, required
+        owner
+    repo : str, default is Undefined, required
+        repo
+    """
+
+
+    api?: str
+
+    basicAuth?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestBitbucketBasicAuth
+
+    bearerToken?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestBitbucketBearerToken
+
+    owner: str
+
+    repo: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestBitbucketBasicAuth:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request bitbucket basic auth
+
+    Attributes
+    ----------
+    passwordRef : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestBitbucketBasicAuthPasswordRef, default is Undefined, required
+        password ref
+    username : str, default is Undefined, required
+        username
+    """
+
+
+    passwordRef: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestBitbucketBasicAuthPasswordRef
+
+    username: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestBitbucketBasicAuthPasswordRef:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request bitbucket basic auth password ref
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    secretName : str, default is Undefined, required
+        secret name
+    """
+
+
+    key: str
+
+    secretName: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestBitbucketBearerToken:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request bitbucket bearer token
+
+    Attributes
+    ----------
+    tokenRef : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestBitbucketBearerTokenTokenRef, default is Undefined, required
+        token ref
+    """
+
+
+    tokenRef: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestBitbucketBearerTokenTokenRef
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestBitbucketBearerTokenTokenRef:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request bitbucket bearer token token ref
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    secretName : str, default is Undefined, required
+        secret name
+    """
+
+
+    key: str
+
+    secretName: str
+
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestBitbucketServer:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request bitbucket server
 
     Attributes
@@ -16701,6 +24797,12 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         api
     basicAuth : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestBitbucketServerBasicAuth, default is Undefined, optional
         basic auth
+    bearerToken : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestBitbucketServerBearerToken, default is Undefined, optional
+        bearer token
+    caRef : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestBitbucketServerCaRef, default is Undefined, optional
+        ca ref
+    insecure : bool, default is Undefined, optional
+        insecure
     project : str, default is Undefined, required
         project
     repo : str, default is Undefined, required
@@ -16712,13 +24814,19 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     basicAuth?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestBitbucketServerBasicAuth
 
+    bearerToken?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestBitbucketServerBearerToken
+
+    caRef?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestBitbucketServerCaRef
+
+    insecure?: bool
+
     project: str
 
     repo: str
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestBitbucketServerBasicAuth:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request bitbucket server basic auth
 
     Attributes
@@ -16736,7 +24844,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestBitbucketServerBasicAuthPasswordRef:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request bitbucket server basic auth password ref
 
     Attributes
@@ -16753,8 +24861,58 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     secretName: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestFiltersItems0:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestBitbucketServerBearerToken:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request bitbucket server bearer token
+
+    Attributes
+    ----------
+    tokenRef : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestBitbucketServerBearerTokenTokenRef, default is Undefined, required
+        token ref
     """
+
+
+    tokenRef: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestBitbucketServerBearerTokenTokenRef
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestBitbucketServerBearerTokenTokenRef:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request bitbucket server bearer token token ref
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    secretName : str, default is Undefined, required
+        secret name
+    """
+
+
+    key: str
+
+    secretName: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestBitbucketServerCaRef:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request bitbucket server ca ref
+
+    Attributes
+    ----------
+    configMapName : str, default is Undefined, required
+        config map name
+    key : str, default is Undefined, required
+        key
+    """
+
+
+    configMapName: str
+
+    key: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestFiltersItems0:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request filters items0
 
     Attributes
@@ -16772,7 +24930,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestGitea:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request gitea
 
     Attributes
@@ -16802,7 +24960,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestGiteaTokenRef:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request gitea token ref
 
     Attributes
@@ -16820,7 +24978,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestGithub:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request github
 
     Attributes
@@ -16854,7 +25012,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestGithubTokenRef:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request github token ref
 
     Attributes
@@ -16872,13 +25030,17 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestGitlab:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request gitlab
 
     Attributes
     ----------
     api : str, default is Undefined, optional
         api
+    caRef : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestGitlabCaRef, default is Undefined, optional
+        ca ref
+    insecure : bool, default is Undefined, optional
+        insecure
     labels : [str], default is Undefined, optional
         labels
     project : str, default is Undefined, required
@@ -16892,6 +25054,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     api?: str
 
+    caRef?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestGitlabCaRef
+
+    insecure?: bool
+
     labels?: [str]
 
     project: str
@@ -16901,8 +25067,26 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     tokenRef?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestGitlabTokenRef
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestGitlabTokenRef:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestGitlabCaRef:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request gitlab ca ref
+
+    Attributes
+    ----------
+    configMapName : str, default is Undefined, required
+        config map name
+    key : str, default is Undefined, required
+        key
     """
+
+
+    configMapName: str
+
+    key: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestGitlabTokenRef:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request gitlab token ref
 
     Attributes
@@ -16920,7 +25104,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplate:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request template
 
     Attributes
@@ -16938,7 +25122,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateMetadata:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request template metadata
 
     Attributes
@@ -16968,7 +25152,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpec:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request template spec
 
     Attributes
@@ -16985,6 +25169,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         revision history limit
     source : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSource, default is Undefined, optional
         source
+    sourceHydrator : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourceHydrator, default is Undefined, optional
+        source hydrator
     sources : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourcesItems0], default is Undefined, optional
         sources
     syncPolicy : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSyncPolicy, default is Undefined, optional
@@ -17004,13 +25190,15 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     source?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSource
 
+    sourceHydrator?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourceHydrator
+
     sources?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourcesItems0]
 
     syncPolicy?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSyncPolicy
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecDestination:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request template spec destination
 
     Attributes
@@ -17032,7 +25220,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecIgnoreDifferencesItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request template spec ignore differences items0
 
     Attributes
@@ -17070,7 +25258,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecInfoItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request template spec info items0
 
     Attributes
@@ -17088,7 +25276,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSource:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request template spec source
 
     Attributes
@@ -17101,6 +25289,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourceKustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourcePlugin, default is Undefined, optional
@@ -17122,6 +25312,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourceKustomize
 
+    name?: str
+
     path?: str
 
     plugin?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourcePlugin
@@ -17134,7 +25326,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourceDirectory:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request template spec source directory
 
     Attributes
@@ -17160,7 +25352,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourceDirectoryJsonnet:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request template spec source directory jsonnet
 
     Attributes
@@ -17182,7 +25374,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourceDirectoryJsonnetExtVarsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request template spec source directory jsonnet ext vars items0
 
     Attributes
@@ -17204,7 +25396,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourceDirectoryJsonnetTlasItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request template spec source directory jsonnet tlas items0
 
     Attributes
@@ -17226,15 +25418,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourceHelm:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request template spec source helm
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     fileParameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourceHelmFileParametersItems0], default is Undefined, optional
         file parameters
     ignoreMissingValueFiles : bool, default is Undefined, optional
         ignore missing value files
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    namespace : str, default is Undefined, optional
+        namespace
     parameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourceHelmParametersItems0], default is Undefined, optional
         parameters
     passCredentials : bool, default is Undefined, optional
@@ -17243,18 +25441,30 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
         values
+    valuesObject : any, default is Undefined, optional
+        values object
     version : str, default is Undefined, optional
         version
     """
 
 
+    apiVersions?: [str]
+
     fileParameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourceHelmFileParametersItems0]
 
     ignoreMissingValueFiles?: bool
+
+    kubeVersion?: str
+
+    namespace?: str
 
     parameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourceHelmParametersItems0]
 
@@ -17264,15 +25474,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     skipCrds?: bool
 
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
+
     valueFiles?: [str]
 
     values?: str
+
+    valuesObject?: any
 
     version?: str
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourceHelmFileParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request template spec source helm file parameters items0
 
     Attributes
@@ -17290,7 +25506,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourceHelmParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request template spec source helm parameters items0
 
     Attributes
@@ -17311,30 +25527,120 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     value?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourceKustomize:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourceHydrator:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request template spec source hydrator
+
+    Attributes
+    ----------
+    drySource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourceHydratorDrySource, default is Undefined, required
+        dry source
+    hydrateTo : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourceHydratorHydrateTo, default is Undefined, optional
+        hydrate to
+    syncSource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourceHydratorSyncSource, default is Undefined, required
+        sync source
     """
+
+
+    drySource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourceHydratorDrySource
+
+    hydrateTo?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourceHydratorHydrateTo
+
+    syncSource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourceHydratorSyncSource
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourceHydratorDrySource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request template spec source hydrator dry source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    repoURL : str, default is Undefined, required
+        repo URL
+    targetRevision : str, default is Undefined, required
+        target revision
+    """
+
+
+    path: str
+
+    repoURL: str
+
+    targetRevision: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourceHydratorHydrateTo:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request template spec source hydrator hydrate to
+
+    Attributes
+    ----------
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourceHydratorSyncSource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request template spec source hydrator sync source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    path: str
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourceKustomize:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request template spec source kustomize
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     commonAnnotations : {str:str}, default is Undefined, optional
         common annotations
     commonAnnotationsEnvsubst : bool, default is Undefined, optional
         common annotations envsubst
     commonLabels : {str:str}, default is Undefined, optional
         common labels
+    components : [str], default is Undefined, optional
+        components
     forceCommonAnnotations : bool, default is Undefined, optional
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
+    labelWithoutSelector : bool, default is Undefined, optional
+        label without selector
     namePrefix : str, default is Undefined, optional
         name prefix
     nameSuffix : str, default is Undefined, optional
         name suffix
     namespace : str, default is Undefined, optional
         namespace
+    patches : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourceKustomizePatchesItems0], default is Undefined, optional
+        patches
     replicas : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourceKustomizeReplicasItems0], default is Undefined, optional
         replicas
     version : str, default is Undefined, optional
@@ -17342,17 +25648,29 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     """
 
 
+    apiVersions?: [str]
+
     commonAnnotations?: {str:str}
 
     commonAnnotationsEnvsubst?: bool
 
     commonLabels?: {str:str}
 
+    components?: [str]
+
     forceCommonAnnotations?: bool
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
+
+    kubeVersion?: str
+
+    labelIncludeTemplates?: bool
+
+    labelWithoutSelector?: bool
 
     namePrefix?: str
 
@@ -17360,13 +25678,79 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     namespace?: str
 
+    patches?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourceKustomizePatchesItems0]
+
     replicas?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourceKustomizeReplicasItems0]
 
     version?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourceKustomizeReplicasItems0:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourceKustomizePatchesItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request template spec source kustomize patches items0
+
+    Attributes
+    ----------
+    options : {str:bool}, default is Undefined, optional
+        options
+    patch : str, default is Undefined, optional
+        patch
+    path : str, default is Undefined, optional
+        path
+    target : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourceKustomizePatchesItems0Target, default is Undefined, optional
+        target
     """
+
+
+    options?: {str:bool}
+
+    patch?: str
+
+    path?: str
+
+    target?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourceKustomizePatchesItems0Target
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourceKustomizePatchesItems0Target:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request template spec source kustomize patches items0 target
+
+    Attributes
+    ----------
+    annotationSelector : str, default is Undefined, optional
+        annotation selector
+    group : str, default is Undefined, optional
+        group
+    kind : str, default is Undefined, optional
+        kind
+    labelSelector : str, default is Undefined, optional
+        label selector
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    annotationSelector?: str
+
+    group?: str
+
+    kind?: str
+
+    labelSelector?: str
+
+    name?: str
+
+    namespace?: str
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourceKustomizeReplicasItems0:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request template spec source kustomize replicas items0
 
     Attributes
@@ -17384,7 +25768,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourcePlugin:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request template spec source plugin
 
     Attributes
@@ -17406,7 +25790,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourcePluginEnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request template spec source plugin env items0
 
     Attributes
@@ -17424,7 +25808,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourcePluginParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request template spec source plugin parameters items0
 
     Attributes
@@ -17450,7 +25834,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourcesItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request template spec sources items0
 
     Attributes
@@ -17463,6 +25847,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourcesItems0Kustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourcesItems0Plugin, default is Undefined, optional
@@ -17484,6 +25870,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourcesItems0Kustomize
 
+    name?: str
+
     path?: str
 
     plugin?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourcesItems0Plugin
@@ -17496,7 +25884,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourcesItems0Directory:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request template spec sources items0 directory
 
     Attributes
@@ -17522,7 +25910,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourcesItems0DirectoryJsonnet:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request template spec sources items0 directory jsonnet
 
     Attributes
@@ -17544,7 +25932,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourcesItems0DirectoryJsonnetExtVarsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request template spec sources items0 directory jsonnet ext vars items0
 
     Attributes
@@ -17566,7 +25954,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourcesItems0DirectoryJsonnetTlasItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request template spec sources items0 directory jsonnet tlas items0
 
     Attributes
@@ -17588,15 +25976,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourcesItems0Helm:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request template spec sources items0 helm
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     fileParameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourcesItems0HelmFileParametersItems0], default is Undefined, optional
         file parameters
     ignoreMissingValueFiles : bool, default is Undefined, optional
         ignore missing value files
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    namespace : str, default is Undefined, optional
+        namespace
     parameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourcesItems0HelmParametersItems0], default is Undefined, optional
         parameters
     passCredentials : bool, default is Undefined, optional
@@ -17605,18 +25999,30 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
         values
+    valuesObject : any, default is Undefined, optional
+        values object
     version : str, default is Undefined, optional
         version
     """
 
 
+    apiVersions?: [str]
+
     fileParameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourcesItems0HelmFileParametersItems0]
 
     ignoreMissingValueFiles?: bool
+
+    kubeVersion?: str
+
+    namespace?: str
 
     parameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourcesItems0HelmParametersItems0]
 
@@ -17626,15 +26032,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     skipCrds?: bool
 
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
+
     valueFiles?: [str]
 
     values?: str
+
+    valuesObject?: any
 
     version?: str
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourcesItems0HelmFileParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request template spec sources items0 helm file parameters items0
 
     Attributes
@@ -17652,7 +26064,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourcesItems0HelmParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request template spec sources items0 helm parameters items0
 
     Attributes
@@ -17674,29 +26086,43 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourcesItems0Kustomize:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request template spec sources items0 kustomize
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     commonAnnotations : {str:str}, default is Undefined, optional
         common annotations
     commonAnnotationsEnvsubst : bool, default is Undefined, optional
         common annotations envsubst
     commonLabels : {str:str}, default is Undefined, optional
         common labels
+    components : [str], default is Undefined, optional
+        components
     forceCommonAnnotations : bool, default is Undefined, optional
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
+    labelWithoutSelector : bool, default is Undefined, optional
+        label without selector
     namePrefix : str, default is Undefined, optional
         name prefix
     nameSuffix : str, default is Undefined, optional
         name suffix
     namespace : str, default is Undefined, optional
         namespace
+    patches : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourcesItems0KustomizePatchesItems0], default is Undefined, optional
+        patches
     replicas : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourcesItems0KustomizeReplicasItems0], default is Undefined, optional
         replicas
     version : str, default is Undefined, optional
@@ -17704,17 +26130,29 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     """
 
 
+    apiVersions?: [str]
+
     commonAnnotations?: {str:str}
 
     commonAnnotationsEnvsubst?: bool
 
     commonLabels?: {str:str}
 
+    components?: [str]
+
     forceCommonAnnotations?: bool
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
+
+    kubeVersion?: str
+
+    labelIncludeTemplates?: bool
+
+    labelWithoutSelector?: bool
 
     namePrefix?: str
 
@@ -17722,13 +26160,79 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     namespace?: str
 
+    patches?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourcesItems0KustomizePatchesItems0]
+
     replicas?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourcesItems0KustomizeReplicasItems0]
 
     version?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourcesItems0KustomizeReplicasItems0:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourcesItems0KustomizePatchesItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request template spec sources items0 kustomize patches items0
+
+    Attributes
+    ----------
+    options : {str:bool}, default is Undefined, optional
+        options
+    patch : str, default is Undefined, optional
+        patch
+    path : str, default is Undefined, optional
+        path
+    target : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourcesItems0KustomizePatchesItems0Target, default is Undefined, optional
+        target
     """
+
+
+    options?: {str:bool}
+
+    patch?: str
+
+    path?: str
+
+    target?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourcesItems0KustomizePatchesItems0Target
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourcesItems0KustomizePatchesItems0Target:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request template spec sources items0 kustomize patches items0 target
+
+    Attributes
+    ----------
+    annotationSelector : str, default is Undefined, optional
+        annotation selector
+    group : str, default is Undefined, optional
+        group
+    kind : str, default is Undefined, optional
+        kind
+    labelSelector : str, default is Undefined, optional
+        label selector
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    annotationSelector?: str
+
+    group?: str
+
+    kind?: str
+
+    labelSelector?: str
+
+    name?: str
+
+    namespace?: str
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourcesItems0KustomizeReplicasItems0:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request template spec sources items0 kustomize replicas items0
 
     Attributes
@@ -17746,7 +26250,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourcesItems0Plugin:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request template spec sources items0 plugin
 
     Attributes
@@ -17768,7 +26272,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourcesItems0PluginEnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request template spec sources items0 plugin env items0
 
     Attributes
@@ -17786,7 +26290,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourcesItems0PluginParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request template spec sources items0 plugin parameters items0
 
     Attributes
@@ -17812,7 +26316,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSyncPolicy:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request template spec sync policy
 
     Attributes
@@ -17838,7 +26342,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSyncPolicyAutomated:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request template spec sync policy automated
 
     Attributes
@@ -17860,7 +26364,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSyncPolicyManagedNamespaceMetadata:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request template spec sync policy managed namespace metadata
 
     Attributes
@@ -17878,7 +26382,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSyncPolicyRetry:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request template spec sync policy retry
 
     Attributes
@@ -17896,7 +26400,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSyncPolicyRetryBackoff:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request template spec sync policy retry backoff
 
     Attributes
@@ -17918,7 +26422,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProvider:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider
 
     Attributes
@@ -17976,7 +26480,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderAwsCodeCommit:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider aws code commit
 
     Attributes
@@ -18002,7 +26506,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderAwsCodeCommitTagFiltersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider aws code commit tag filters items0
 
     Attributes
@@ -18020,7 +26524,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderAzureDevOps:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider azure dev ops
 
     Attributes
@@ -18050,7 +26554,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderAzureDevOpsAccessTokenRef:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider azure dev ops access token ref
 
     Attributes
@@ -18068,7 +26572,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderBitbucket:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider bitbucket
 
     Attributes
@@ -18094,7 +26598,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderBitbucketAppPasswordRef:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider bitbucket app password ref
 
     Attributes
@@ -18112,7 +26616,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderBitbucketServer:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider bitbucket server
 
     Attributes
@@ -18123,6 +26627,12 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         api
     basicAuth : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderBitbucketServerBasicAuth, default is Undefined, optional
         basic auth
+    bearerToken : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderBitbucketServerBearerToken, default is Undefined, optional
+        bearer token
+    caRef : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderBitbucketServerCaRef, default is Undefined, optional
+        ca ref
+    insecure : bool, default is Undefined, optional
+        insecure
     project : str, default is Undefined, required
         project
     """
@@ -18134,11 +26644,17 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     basicAuth?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderBitbucketServerBasicAuth
 
+    bearerToken?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderBitbucketServerBearerToken
+
+    caRef?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderBitbucketServerCaRef
+
+    insecure?: bool
+
     project: str
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderBitbucketServerBasicAuth:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider bitbucket server basic auth
 
     Attributes
@@ -18156,7 +26672,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderBitbucketServerBasicAuthPasswordRef:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider bitbucket server basic auth password ref
 
     Attributes
@@ -18173,8 +26689,58 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     secretName: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderFiltersItems0:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderBitbucketServerBearerToken:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider bitbucket server bearer token
+
+    Attributes
+    ----------
+    tokenRef : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderBitbucketServerBearerTokenTokenRef, default is Undefined, required
+        token ref
     """
+
+
+    tokenRef: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderBitbucketServerBearerTokenTokenRef
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderBitbucketServerBearerTokenTokenRef:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider bitbucket server bearer token token ref
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    secretName : str, default is Undefined, required
+        secret name
+    """
+
+
+    key: str
+
+    secretName: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderBitbucketServerCaRef:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider bitbucket server ca ref
+
+    Attributes
+    ----------
+    configMapName : str, default is Undefined, required
+        config map name
+    key : str, default is Undefined, required
+        key
+    """
+
+
+    configMapName: str
+
+    key: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderFiltersItems0:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider filters items0
 
     Attributes
@@ -18204,7 +26770,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderGitea:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider gitea
 
     Attributes
@@ -18234,7 +26800,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderGiteaTokenRef:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider gitea token ref
 
     Attributes
@@ -18252,7 +26818,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderGithub:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider github
 
     Attributes
@@ -18282,7 +26848,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderGithubTokenRef:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider github token ref
 
     Attributes
@@ -18300,7 +26866,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderGitlab:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider gitlab
 
     Attributes
@@ -18309,12 +26875,20 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         all branches
     api : str, default is Undefined, optional
         api
+    caRef : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderGitlabCaRef, default is Undefined, optional
+        ca ref
     group : str, default is Undefined, required
         group
+    includeSharedProjects : bool, default is Undefined, optional
+        include shared projects
     includeSubgroups : bool, default is Undefined, optional
         include subgroups
+    insecure : bool, default is Undefined, optional
+        insecure
     tokenRef : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderGitlabTokenRef, default is Undefined, optional
         token ref
+    topic : str, default is Undefined, optional
+        topic
     """
 
 
@@ -18322,15 +26896,41 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     api?: str
 
+    caRef?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderGitlabCaRef
+
     group: str
+
+    includeSharedProjects?: bool
 
     includeSubgroups?: bool
 
+    insecure?: bool
+
     tokenRef?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderGitlabTokenRef
+
+    topic?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderGitlabCaRef:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider gitlab ca ref
+
+    Attributes
+    ----------
+    configMapName : str, default is Undefined, required
+        config map name
+    key : str, default is Undefined, required
+        key
+    """
+
+
+    configMapName: str
+
+    key: str
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderGitlabTokenRef:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider gitlab token ref
 
     Attributes
@@ -18348,7 +26948,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplate:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider template
 
     Attributes
@@ -18366,7 +26966,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateMetadata:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider template metadata
 
     Attributes
@@ -18396,7 +26996,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpec:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider template spec
 
     Attributes
@@ -18413,6 +27013,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         revision history limit
     source : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSource, default is Undefined, optional
         source
+    sourceHydrator : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourceHydrator, default is Undefined, optional
+        source hydrator
     sources : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourcesItems0], default is Undefined, optional
         sources
     syncPolicy : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSyncPolicy, default is Undefined, optional
@@ -18432,13 +27034,15 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     source?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSource
 
+    sourceHydrator?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourceHydrator
+
     sources?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourcesItems0]
 
     syncPolicy?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSyncPolicy
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecDestination:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider template spec destination
 
     Attributes
@@ -18460,7 +27064,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecIgnoreDifferencesItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider template spec ignore differences items0
 
     Attributes
@@ -18498,7 +27102,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecInfoItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider template spec info items0
 
     Attributes
@@ -18516,7 +27120,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSource:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider template spec source
 
     Attributes
@@ -18529,6 +27133,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourceKustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourcePlugin, default is Undefined, optional
@@ -18550,6 +27156,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourceKustomize
 
+    name?: str
+
     path?: str
 
     plugin?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourcePlugin
@@ -18562,7 +27170,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourceDirectory:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider template spec source directory
 
     Attributes
@@ -18588,7 +27196,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourceDirectoryJsonnet:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider template spec source directory jsonnet
 
     Attributes
@@ -18610,7 +27218,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourceDirectoryJsonnetExtVarsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider template spec source directory jsonnet ext vars items0
 
     Attributes
@@ -18632,7 +27240,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourceDirectoryJsonnetTlasItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider template spec source directory jsonnet tlas items0
 
     Attributes
@@ -18654,15 +27262,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourceHelm:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider template spec source helm
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     fileParameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourceHelmFileParametersItems0], default is Undefined, optional
         file parameters
     ignoreMissingValueFiles : bool, default is Undefined, optional
         ignore missing value files
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    namespace : str, default is Undefined, optional
+        namespace
     parameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourceHelmParametersItems0], default is Undefined, optional
         parameters
     passCredentials : bool, default is Undefined, optional
@@ -18671,18 +27285,30 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
         values
+    valuesObject : any, default is Undefined, optional
+        values object
     version : str, default is Undefined, optional
         version
     """
 
 
+    apiVersions?: [str]
+
     fileParameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourceHelmFileParametersItems0]
 
     ignoreMissingValueFiles?: bool
+
+    kubeVersion?: str
+
+    namespace?: str
 
     parameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourceHelmParametersItems0]
 
@@ -18692,15 +27318,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     skipCrds?: bool
 
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
+
     valueFiles?: [str]
 
     values?: str
+
+    valuesObject?: any
 
     version?: str
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourceHelmFileParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider template spec source helm file parameters items0
 
     Attributes
@@ -18718,7 +27350,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourceHelmParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider template spec source helm parameters items0
 
     Attributes
@@ -18739,30 +27371,120 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     value?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourceKustomize:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourceHydrator:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider template spec source hydrator
+
+    Attributes
+    ----------
+    drySource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourceHydratorDrySource, default is Undefined, required
+        dry source
+    hydrateTo : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourceHydratorHydrateTo, default is Undefined, optional
+        hydrate to
+    syncSource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourceHydratorSyncSource, default is Undefined, required
+        sync source
     """
+
+
+    drySource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourceHydratorDrySource
+
+    hydrateTo?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourceHydratorHydrateTo
+
+    syncSource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourceHydratorSyncSource
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourceHydratorDrySource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider template spec source hydrator dry source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    repoURL : str, default is Undefined, required
+        repo URL
+    targetRevision : str, default is Undefined, required
+        target revision
+    """
+
+
+    path: str
+
+    repoURL: str
+
+    targetRevision: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourceHydratorHydrateTo:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider template spec source hydrator hydrate to
+
+    Attributes
+    ----------
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourceHydratorSyncSource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider template spec source hydrator sync source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    path: str
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourceKustomize:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider template spec source kustomize
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     commonAnnotations : {str:str}, default is Undefined, optional
         common annotations
     commonAnnotationsEnvsubst : bool, default is Undefined, optional
         common annotations envsubst
     commonLabels : {str:str}, default is Undefined, optional
         common labels
+    components : [str], default is Undefined, optional
+        components
     forceCommonAnnotations : bool, default is Undefined, optional
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
+    labelWithoutSelector : bool, default is Undefined, optional
+        label without selector
     namePrefix : str, default is Undefined, optional
         name prefix
     nameSuffix : str, default is Undefined, optional
         name suffix
     namespace : str, default is Undefined, optional
         namespace
+    patches : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourceKustomizePatchesItems0], default is Undefined, optional
+        patches
     replicas : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourceKustomizeReplicasItems0], default is Undefined, optional
         replicas
     version : str, default is Undefined, optional
@@ -18770,17 +27492,29 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     """
 
 
+    apiVersions?: [str]
+
     commonAnnotations?: {str:str}
 
     commonAnnotationsEnvsubst?: bool
 
     commonLabels?: {str:str}
 
+    components?: [str]
+
     forceCommonAnnotations?: bool
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
+
+    kubeVersion?: str
+
+    labelIncludeTemplates?: bool
+
+    labelWithoutSelector?: bool
 
     namePrefix?: str
 
@@ -18788,13 +27522,79 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     namespace?: str
 
+    patches?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourceKustomizePatchesItems0]
+
     replicas?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourceKustomizeReplicasItems0]
 
     version?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourceKustomizeReplicasItems0:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourceKustomizePatchesItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider template spec source kustomize patches items0
+
+    Attributes
+    ----------
+    options : {str:bool}, default is Undefined, optional
+        options
+    patch : str, default is Undefined, optional
+        patch
+    path : str, default is Undefined, optional
+        path
+    target : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourceKustomizePatchesItems0Target, default is Undefined, optional
+        target
     """
+
+
+    options?: {str:bool}
+
+    patch?: str
+
+    path?: str
+
+    target?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourceKustomizePatchesItems0Target
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourceKustomizePatchesItems0Target:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider template spec source kustomize patches items0 target
+
+    Attributes
+    ----------
+    annotationSelector : str, default is Undefined, optional
+        annotation selector
+    group : str, default is Undefined, optional
+        group
+    kind : str, default is Undefined, optional
+        kind
+    labelSelector : str, default is Undefined, optional
+        label selector
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    annotationSelector?: str
+
+    group?: str
+
+    kind?: str
+
+    labelSelector?: str
+
+    name?: str
+
+    namespace?: str
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourceKustomizeReplicasItems0:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider template spec source kustomize replicas items0
 
     Attributes
@@ -18812,7 +27612,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourcePlugin:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider template spec source plugin
 
     Attributes
@@ -18834,7 +27634,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourcePluginEnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider template spec source plugin env items0
 
     Attributes
@@ -18852,7 +27652,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourcePluginParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider template spec source plugin parameters items0
 
     Attributes
@@ -18878,7 +27678,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourcesItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider template spec sources items0
 
     Attributes
@@ -18891,6 +27691,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourcesItems0Kustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourcesItems0Plugin, default is Undefined, optional
@@ -18912,6 +27714,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourcesItems0Kustomize
 
+    name?: str
+
     path?: str
 
     plugin?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourcesItems0Plugin
@@ -18924,7 +27728,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourcesItems0Directory:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider template spec sources items0 directory
 
     Attributes
@@ -18950,7 +27754,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourcesItems0DirectoryJsonnet:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider template spec sources items0 directory jsonnet
 
     Attributes
@@ -18972,7 +27776,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourcesItems0DirectoryJsonnetExtVarsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider template spec sources items0 directory jsonnet ext vars items0
 
     Attributes
@@ -18994,7 +27798,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourcesItems0DirectoryJsonnetTlasItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider template spec sources items0 directory jsonnet tlas items0
 
     Attributes
@@ -19016,15 +27820,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourcesItems0Helm:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider template spec sources items0 helm
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     fileParameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourcesItems0HelmFileParametersItems0], default is Undefined, optional
         file parameters
     ignoreMissingValueFiles : bool, default is Undefined, optional
         ignore missing value files
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    namespace : str, default is Undefined, optional
+        namespace
     parameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourcesItems0HelmParametersItems0], default is Undefined, optional
         parameters
     passCredentials : bool, default is Undefined, optional
@@ -19033,18 +27843,30 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
         values
+    valuesObject : any, default is Undefined, optional
+        values object
     version : str, default is Undefined, optional
         version
     """
 
 
+    apiVersions?: [str]
+
     fileParameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourcesItems0HelmFileParametersItems0]
 
     ignoreMissingValueFiles?: bool
+
+    kubeVersion?: str
+
+    namespace?: str
 
     parameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourcesItems0HelmParametersItems0]
 
@@ -19054,15 +27876,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     skipCrds?: bool
 
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
+
     valueFiles?: [str]
 
     values?: str
+
+    valuesObject?: any
 
     version?: str
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourcesItems0HelmFileParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider template spec sources items0 helm file parameters items0
 
     Attributes
@@ -19080,7 +27908,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourcesItems0HelmParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider template spec sources items0 helm parameters items0
 
     Attributes
@@ -19102,29 +27930,43 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourcesItems0Kustomize:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider template spec sources items0 kustomize
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     commonAnnotations : {str:str}, default is Undefined, optional
         common annotations
     commonAnnotationsEnvsubst : bool, default is Undefined, optional
         common annotations envsubst
     commonLabels : {str:str}, default is Undefined, optional
         common labels
+    components : [str], default is Undefined, optional
+        components
     forceCommonAnnotations : bool, default is Undefined, optional
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
+    labelWithoutSelector : bool, default is Undefined, optional
+        label without selector
     namePrefix : str, default is Undefined, optional
         name prefix
     nameSuffix : str, default is Undefined, optional
         name suffix
     namespace : str, default is Undefined, optional
         namespace
+    patches : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourcesItems0KustomizePatchesItems0], default is Undefined, optional
+        patches
     replicas : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourcesItems0KustomizeReplicasItems0], default is Undefined, optional
         replicas
     version : str, default is Undefined, optional
@@ -19132,17 +27974,29 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     """
 
 
+    apiVersions?: [str]
+
     commonAnnotations?: {str:str}
 
     commonAnnotationsEnvsubst?: bool
 
     commonLabels?: {str:str}
 
+    components?: [str]
+
     forceCommonAnnotations?: bool
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
+
+    kubeVersion?: str
+
+    labelIncludeTemplates?: bool
+
+    labelWithoutSelector?: bool
 
     namePrefix?: str
 
@@ -19150,13 +28004,79 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     namespace?: str
 
+    patches?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourcesItems0KustomizePatchesItems0]
+
     replicas?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourcesItems0KustomizeReplicasItems0]
 
     version?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourcesItems0KustomizeReplicasItems0:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourcesItems0KustomizePatchesItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider template spec sources items0 kustomize patches items0
+
+    Attributes
+    ----------
+    options : {str:bool}, default is Undefined, optional
+        options
+    patch : str, default is Undefined, optional
+        patch
+    path : str, default is Undefined, optional
+        path
+    target : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourcesItems0KustomizePatchesItems0Target, default is Undefined, optional
+        target
     """
+
+
+    options?: {str:bool}
+
+    patch?: str
+
+    path?: str
+
+    target?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourcesItems0KustomizePatchesItems0Target
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourcesItems0KustomizePatchesItems0Target:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider template spec sources items0 kustomize patches items0 target
+
+    Attributes
+    ----------
+    annotationSelector : str, default is Undefined, optional
+        annotation selector
+    group : str, default is Undefined, optional
+        group
+    kind : str, default is Undefined, optional
+        kind
+    labelSelector : str, default is Undefined, optional
+        label selector
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    annotationSelector?: str
+
+    group?: str
+
+    kind?: str
+
+    labelSelector?: str
+
+    name?: str
+
+    namespace?: str
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourcesItems0KustomizeReplicasItems0:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider template spec sources items0 kustomize replicas items0
 
     Attributes
@@ -19174,7 +28094,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourcesItems0Plugin:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider template spec sources items0 plugin
 
     Attributes
@@ -19196,7 +28116,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourcesItems0PluginEnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider template spec sources items0 plugin env items0
 
     Attributes
@@ -19214,7 +28134,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourcesItems0PluginParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider template spec sources items0 plugin parameters items0
 
     Attributes
@@ -19240,7 +28160,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSyncPolicy:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider template spec sync policy
 
     Attributes
@@ -19266,7 +28186,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSyncPolicyAutomated:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider template spec sync policy automated
 
     Attributes
@@ -19288,7 +28208,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSyncPolicyManagedNamespaceMetadata:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider template spec sync policy managed namespace metadata
 
     Attributes
@@ -19306,7 +28226,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSyncPolicyRetry:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider template spec sync policy retry
 
     Attributes
@@ -19324,7 +28244,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSyncPolicyRetryBackoff:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider template spec sync policy retry backoff
 
     Attributes
@@ -19346,7 +28266,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0Selector:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 selector
 
     Attributes
@@ -19364,7 +28284,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0SelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 selector match expressions items0
 
     Attributes
@@ -19386,7 +28306,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplate:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge template
 
     Attributes
@@ -19404,7 +28324,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplate:
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateMetadata:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge template metadata
 
     Attributes
@@ -19434,7 +28354,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateMetadata
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpec:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge template spec
 
     Attributes
@@ -19451,6 +28371,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpec:
         revision history limit
     source : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSource, default is Undefined, optional
         source
+    sourceHydrator : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourceHydrator, default is Undefined, optional
+        source hydrator
     sources : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourcesItems0], default is Undefined, optional
         sources
     syncPolicy : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSyncPolicy, default is Undefined, optional
@@ -19470,13 +28392,15 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpec:
 
     source?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSource
 
+    sourceHydrator?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourceHydrator
+
     sources?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourcesItems0]
 
     syncPolicy?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSyncPolicy
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecDestination:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge template spec destination
 
     Attributes
@@ -19498,7 +28422,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecDest
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecIgnoreDifferencesItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge template spec ignore differences items0
 
     Attributes
@@ -19536,7 +28460,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecIgno
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecInfoItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge template spec info items0
 
     Attributes
@@ -19554,7 +28478,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecInfo
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSource:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge template spec source
 
     Attributes
@@ -19567,6 +28491,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSour
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourceKustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourcePlugin, default is Undefined, optional
@@ -19588,6 +28514,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSour
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourceKustomize
 
+    name?: str
+
     path?: str
 
     plugin?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourcePlugin
@@ -19600,7 +28528,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSour
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourceDirectory:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge template spec source directory
 
     Attributes
@@ -19626,7 +28554,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSour
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourceDirectoryJsonnet:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge template spec source directory jsonnet
 
     Attributes
@@ -19648,7 +28576,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSour
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourceDirectoryJsonnetExtVarsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge template spec source directory jsonnet ext vars items0
 
     Attributes
@@ -19670,7 +28598,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSour
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourceDirectoryJsonnetTlasItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge template spec source directory jsonnet tlas items0
 
     Attributes
@@ -19692,15 +28620,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSour
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourceHelm:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge template spec source helm
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     fileParameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourceHelmFileParametersItems0], default is Undefined, optional
         file parameters
     ignoreMissingValueFiles : bool, default is Undefined, optional
         ignore missing value files
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    namespace : str, default is Undefined, optional
+        namespace
     parameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourceHelmParametersItems0], default is Undefined, optional
         parameters
     passCredentials : bool, default is Undefined, optional
@@ -19709,18 +28643,30 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSour
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
         values
+    valuesObject : any, default is Undefined, optional
+        values object
     version : str, default is Undefined, optional
         version
     """
 
 
+    apiVersions?: [str]
+
     fileParameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourceHelmFileParametersItems0]
 
     ignoreMissingValueFiles?: bool
+
+    kubeVersion?: str
+
+    namespace?: str
 
     parameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourceHelmParametersItems0]
 
@@ -19730,15 +28676,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSour
 
     skipCrds?: bool
 
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
+
     valueFiles?: [str]
 
     values?: str
+
+    valuesObject?: any
 
     version?: str
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourceHelmFileParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge template spec source helm file parameters items0
 
     Attributes
@@ -19756,7 +28708,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSour
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourceHelmParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge template spec source helm parameters items0
 
     Attributes
@@ -19777,30 +28729,120 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSour
     value?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourceKustomize:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourceHydrator:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge template spec source hydrator
+
+    Attributes
+    ----------
+    drySource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourceHydratorDrySource, default is Undefined, required
+        dry source
+    hydrateTo : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourceHydratorHydrateTo, default is Undefined, optional
+        hydrate to
+    syncSource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourceHydratorSyncSource, default is Undefined, required
+        sync source
     """
+
+
+    drySource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourceHydratorDrySource
+
+    hydrateTo?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourceHydratorHydrateTo
+
+    syncSource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourceHydratorSyncSource
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourceHydratorDrySource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge template spec source hydrator dry source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    repoURL : str, default is Undefined, required
+        repo URL
+    targetRevision : str, default is Undefined, required
+        target revision
+    """
+
+
+    path: str
+
+    repoURL: str
+
+    targetRevision: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourceHydratorHydrateTo:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge template spec source hydrator hydrate to
+
+    Attributes
+    ----------
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourceHydratorSyncSource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge template spec source hydrator sync source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    path: str
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourceKustomize:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge template spec source kustomize
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     commonAnnotations : {str:str}, default is Undefined, optional
         common annotations
     commonAnnotationsEnvsubst : bool, default is Undefined, optional
         common annotations envsubst
     commonLabels : {str:str}, default is Undefined, optional
         common labels
+    components : [str], default is Undefined, optional
+        components
     forceCommonAnnotations : bool, default is Undefined, optional
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
+    labelWithoutSelector : bool, default is Undefined, optional
+        label without selector
     namePrefix : str, default is Undefined, optional
         name prefix
     nameSuffix : str, default is Undefined, optional
         name suffix
     namespace : str, default is Undefined, optional
         namespace
+    patches : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourceKustomizePatchesItems0], default is Undefined, optional
+        patches
     replicas : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourceKustomizeReplicasItems0], default is Undefined, optional
         replicas
     version : str, default is Undefined, optional
@@ -19808,17 +28850,29 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSour
     """
 
 
+    apiVersions?: [str]
+
     commonAnnotations?: {str:str}
 
     commonAnnotationsEnvsubst?: bool
 
     commonLabels?: {str:str}
 
+    components?: [str]
+
     forceCommonAnnotations?: bool
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
+
+    kubeVersion?: str
+
+    labelIncludeTemplates?: bool
+
+    labelWithoutSelector?: bool
 
     namePrefix?: str
 
@@ -19826,13 +28880,79 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSour
 
     namespace?: str
 
+    patches?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourceKustomizePatchesItems0]
+
     replicas?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourceKustomizeReplicasItems0]
 
     version?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourceKustomizeReplicasItems0:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourceKustomizePatchesItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge template spec source kustomize patches items0
+
+    Attributes
+    ----------
+    options : {str:bool}, default is Undefined, optional
+        options
+    patch : str, default is Undefined, optional
+        patch
+    path : str, default is Undefined, optional
+        path
+    target : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourceKustomizePatchesItems0Target, default is Undefined, optional
+        target
     """
+
+
+    options?: {str:bool}
+
+    patch?: str
+
+    path?: str
+
+    target?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourceKustomizePatchesItems0Target
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourceKustomizePatchesItems0Target:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge template spec source kustomize patches items0 target
+
+    Attributes
+    ----------
+    annotationSelector : str, default is Undefined, optional
+        annotation selector
+    group : str, default is Undefined, optional
+        group
+    kind : str, default is Undefined, optional
+        kind
+    labelSelector : str, default is Undefined, optional
+        label selector
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    annotationSelector?: str
+
+    group?: str
+
+    kind?: str
+
+    labelSelector?: str
+
+    name?: str
+
+    namespace?: str
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourceKustomizeReplicasItems0:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge template spec source kustomize replicas items0
 
     Attributes
@@ -19850,7 +28970,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSour
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourcePlugin:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge template spec source plugin
 
     Attributes
@@ -19872,7 +28992,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSour
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourcePluginEnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge template spec source plugin env items0
 
     Attributes
@@ -19890,7 +29010,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSour
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourcePluginParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge template spec source plugin parameters items0
 
     Attributes
@@ -19916,7 +29036,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSour
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourcesItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge template spec sources items0
 
     Attributes
@@ -19929,6 +29049,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSour
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourcesItems0Kustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourcesItems0Plugin, default is Undefined, optional
@@ -19950,6 +29072,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSour
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourcesItems0Kustomize
 
+    name?: str
+
     path?: str
 
     plugin?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourcesItems0Plugin
@@ -19962,7 +29086,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSour
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourcesItems0Directory:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge template spec sources items0 directory
 
     Attributes
@@ -19988,7 +29112,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSour
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourcesItems0DirectoryJsonnet:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge template spec sources items0 directory jsonnet
 
     Attributes
@@ -20010,7 +29134,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSour
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourcesItems0DirectoryJsonnetExtVarsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge template spec sources items0 directory jsonnet ext vars items0
 
     Attributes
@@ -20032,7 +29156,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSour
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourcesItems0DirectoryJsonnetTlasItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge template spec sources items0 directory jsonnet tlas items0
 
     Attributes
@@ -20054,15 +29178,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSour
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourcesItems0Helm:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge template spec sources items0 helm
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     fileParameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourcesItems0HelmFileParametersItems0], default is Undefined, optional
         file parameters
     ignoreMissingValueFiles : bool, default is Undefined, optional
         ignore missing value files
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    namespace : str, default is Undefined, optional
+        namespace
     parameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourcesItems0HelmParametersItems0], default is Undefined, optional
         parameters
     passCredentials : bool, default is Undefined, optional
@@ -20071,18 +29201,30 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSour
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
         values
+    valuesObject : any, default is Undefined, optional
+        values object
     version : str, default is Undefined, optional
         version
     """
 
 
+    apiVersions?: [str]
+
     fileParameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourcesItems0HelmFileParametersItems0]
 
     ignoreMissingValueFiles?: bool
+
+    kubeVersion?: str
+
+    namespace?: str
 
     parameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourcesItems0HelmParametersItems0]
 
@@ -20092,15 +29234,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSour
 
     skipCrds?: bool
 
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
+
     valueFiles?: [str]
 
     values?: str
+
+    valuesObject?: any
 
     version?: str
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourcesItems0HelmFileParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge template spec sources items0 helm file parameters items0
 
     Attributes
@@ -20118,7 +29266,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSour
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourcesItems0HelmParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge template spec sources items0 helm parameters items0
 
     Attributes
@@ -20140,29 +29288,43 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSour
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourcesItems0Kustomize:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge template spec sources items0 kustomize
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     commonAnnotations : {str:str}, default is Undefined, optional
         common annotations
     commonAnnotationsEnvsubst : bool, default is Undefined, optional
         common annotations envsubst
     commonLabels : {str:str}, default is Undefined, optional
         common labels
+    components : [str], default is Undefined, optional
+        components
     forceCommonAnnotations : bool, default is Undefined, optional
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
+    labelWithoutSelector : bool, default is Undefined, optional
+        label without selector
     namePrefix : str, default is Undefined, optional
         name prefix
     nameSuffix : str, default is Undefined, optional
         name suffix
     namespace : str, default is Undefined, optional
         namespace
+    patches : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourcesItems0KustomizePatchesItems0], default is Undefined, optional
+        patches
     replicas : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourcesItems0KustomizeReplicasItems0], default is Undefined, optional
         replicas
     version : str, default is Undefined, optional
@@ -20170,17 +29332,29 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSour
     """
 
 
+    apiVersions?: [str]
+
     commonAnnotations?: {str:str}
 
     commonAnnotationsEnvsubst?: bool
 
     commonLabels?: {str:str}
 
+    components?: [str]
+
     forceCommonAnnotations?: bool
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
+
+    kubeVersion?: str
+
+    labelIncludeTemplates?: bool
+
+    labelWithoutSelector?: bool
 
     namePrefix?: str
 
@@ -20188,13 +29362,79 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSour
 
     namespace?: str
 
+    patches?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourcesItems0KustomizePatchesItems0]
+
     replicas?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourcesItems0KustomizeReplicasItems0]
 
     version?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourcesItems0KustomizeReplicasItems0:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourcesItems0KustomizePatchesItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge template spec sources items0 kustomize patches items0
+
+    Attributes
+    ----------
+    options : {str:bool}, default is Undefined, optional
+        options
+    patch : str, default is Undefined, optional
+        patch
+    path : str, default is Undefined, optional
+        path
+    target : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourcesItems0KustomizePatchesItems0Target, default is Undefined, optional
+        target
     """
+
+
+    options?: {str:bool}
+
+    patch?: str
+
+    path?: str
+
+    target?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourcesItems0KustomizePatchesItems0Target
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourcesItems0KustomizePatchesItems0Target:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge template spec sources items0 kustomize patches items0 target
+
+    Attributes
+    ----------
+    annotationSelector : str, default is Undefined, optional
+        annotation selector
+    group : str, default is Undefined, optional
+        group
+    kind : str, default is Undefined, optional
+        kind
+    labelSelector : str, default is Undefined, optional
+        label selector
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    annotationSelector?: str
+
+    group?: str
+
+    kind?: str
+
+    labelSelector?: str
+
+    name?: str
+
+    namespace?: str
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourcesItems0KustomizeReplicasItems0:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge template spec sources items0 kustomize replicas items0
 
     Attributes
@@ -20212,7 +29452,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSour
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourcesItems0Plugin:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge template spec sources items0 plugin
 
     Attributes
@@ -20234,7 +29474,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSour
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourcesItems0PluginEnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge template spec sources items0 plugin env items0
 
     Attributes
@@ -20252,7 +29492,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSour
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourcesItems0PluginParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge template spec sources items0 plugin parameters items0
 
     Attributes
@@ -20278,7 +29518,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSour
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSyncPolicy:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge template spec sync policy
 
     Attributes
@@ -20304,7 +29544,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSync
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSyncPolicyAutomated:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge template spec sync policy automated
 
     Attributes
@@ -20326,7 +29566,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSync
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSyncPolicyManagedNamespaceMetadata:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge template spec sync policy managed namespace metadata
 
     Attributes
@@ -20344,7 +29584,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSync
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSyncPolicyRetry:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge template spec sync policy retry
 
     Attributes
@@ -20362,7 +29602,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSync
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSyncPolicyRetryBackoff:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 merge template spec sync policy retry backoff
 
     Attributes
@@ -20383,12 +29623,1392 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSync
     maxDuration?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequest:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0Plugin:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 plugin
+
+    Attributes
+    ----------
+    configMapRef : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginConfigMapRef, default is Undefined, required
+        config map ref
+    input : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginInput, default is Undefined, optional
+        input
+    requeueAfterSeconds : int, default is Undefined, optional
+        requeue after seconds
+    template : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplate, default is Undefined, optional
+        template
+    values : {str:str}, default is Undefined, optional
+        values
     """
+
+
+    configMapRef: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginConfigMapRef
+
+    input?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginInput
+
+    requeueAfterSeconds?: int
+
+    template?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplate
+
+    values?: {str:str}
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginConfigMapRef:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 plugin config map ref
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        name
+    """
+
+
+    name: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginInput:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 plugin input
+
+    Attributes
+    ----------
+    parameters : {str:any}, default is Undefined, optional
+        parameters
+    """
+
+
+    parameters?: {str:any}
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplate:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 plugin template
+
+    Attributes
+    ----------
+    metadata : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateMetadata, default is Undefined, required
+        metadata
+    spec : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpec, default is Undefined, required
+        spec
+    """
+
+
+    metadata: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateMetadata
+
+    spec: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpec
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateMetadata:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 plugin template metadata
+
+    Attributes
+    ----------
+    annotations : {str:str}, default is Undefined, optional
+        annotations
+    finalizers : [str], default is Undefined, optional
+        finalizers
+    labels : {str:str}, default is Undefined, optional
+        labels
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    """
+
+
+    annotations?: {str:str}
+
+    finalizers?: [str]
+
+    labels?: {str:str}
+
+    name?: str
+
+    namespace?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpec:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 plugin template spec
+
+    Attributes
+    ----------
+    destination : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecDestination, default is Undefined, required
+        destination
+    ignoreDifferences : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecIgnoreDifferencesItems0], default is Undefined, optional
+        ignore differences
+    info : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecInfoItems0], default is Undefined, optional
+        info
+    project : str, default is Undefined, required
+        project
+    revisionHistoryLimit : int, default is Undefined, optional
+        revision history limit
+    source : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSource, default is Undefined, optional
+        source
+    sourceHydrator : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceHydrator, default is Undefined, optional
+        source hydrator
+    sources : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcesItems0], default is Undefined, optional
+        sources
+    syncPolicy : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSyncPolicy, default is Undefined, optional
+        sync policy
+    """
+
+
+    destination: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecDestination
+
+    ignoreDifferences?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecIgnoreDifferencesItems0]
+
+    info?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecInfoItems0]
+
+    project: str
+
+    revisionHistoryLimit?: int
+
+    source?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSource
+
+    sourceHydrator?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceHydrator
+
+    sources?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcesItems0]
+
+    syncPolicy?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSyncPolicy
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecDestination:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 plugin template spec destination
+
+    Attributes
+    ----------
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    server : str, default is Undefined, optional
+        server
+    """
+
+
+    name?: str
+
+    namespace?: str
+
+    server?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecIgnoreDifferencesItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 plugin template spec ignore differences items0
+
+    Attributes
+    ----------
+    group : str, default is Undefined, optional
+        group
+    jqPathExpressions : [str], default is Undefined, optional
+        jq path expressions
+    jsonPointers : [str], default is Undefined, optional
+        json pointers
+    kind : str, default is Undefined, required
+        kind
+    managedFieldsManagers : [str], default is Undefined, optional
+        managed fields managers
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    """
+
+
+    group?: str
+
+    jqPathExpressions?: [str]
+
+    jsonPointers?: [str]
+
+    kind: str
+
+    managedFieldsManagers?: [str]
+
+    name?: str
+
+    namespace?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecInfoItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 plugin template spec info items0
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        name
+    value : str, default is Undefined, required
+        value
+    """
+
+
+    name: str
+
+    value: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 plugin template spec source
+
+    Attributes
+    ----------
+    chart : str, default is Undefined, optional
+        chart
+    directory : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceDirectory, default is Undefined, optional
+        directory
+    helm : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceHelm, default is Undefined, optional
+        helm
+    kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceKustomize, default is Undefined, optional
+        kustomize
+    name : str, default is Undefined, optional
+        name
+    path : str, default is Undefined, optional
+        path
+    plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcePlugin, default is Undefined, optional
+        plugin
+    ref : str, default is Undefined, optional
+        ref
+    repoURL : str, default is Undefined, required
+        repo URL
+    targetRevision : str, default is Undefined, optional
+        target revision
+    """
+
+
+    chart?: str
+
+    directory?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceDirectory
+
+    helm?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceHelm
+
+    kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceKustomize
+
+    name?: str
+
+    path?: str
+
+    plugin?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcePlugin
+
+    ref?: str
+
+    repoURL: str
+
+    targetRevision?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceDirectory:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 plugin template spec source directory
+
+    Attributes
+    ----------
+    exclude : str, default is Undefined, optional
+        exclude
+    include : str, default is Undefined, optional
+        include
+    jsonnet : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceDirectoryJsonnet, default is Undefined, optional
+        jsonnet
+    recurse : bool, default is Undefined, optional
+        recurse
+    """
+
+
+    exclude?: str
+
+    include?: str
+
+    jsonnet?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceDirectoryJsonnet
+
+    recurse?: bool
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceDirectoryJsonnet:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 plugin template spec source directory jsonnet
+
+    Attributes
+    ----------
+    extVars : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceDirectoryJsonnetExtVarsItems0], default is Undefined, optional
+        ext vars
+    libs : [str], default is Undefined, optional
+        libs
+    tlas : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceDirectoryJsonnetTlasItems0], default is Undefined, optional
+        tlas
+    """
+
+
+    extVars?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceDirectoryJsonnetExtVarsItems0]
+
+    libs?: [str]
+
+    tlas?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceDirectoryJsonnetTlasItems0]
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceDirectoryJsonnetExtVarsItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 plugin template spec source directory jsonnet ext vars items0
+
+    Attributes
+    ----------
+    code : bool, default is Undefined, optional
+        code
+    name : str, default is Undefined, required
+        name
+    value : str, default is Undefined, required
+        value
+    """
+
+
+    code?: bool
+
+    name: str
+
+    value: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceDirectoryJsonnetTlasItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 plugin template spec source directory jsonnet tlas items0
+
+    Attributes
+    ----------
+    code : bool, default is Undefined, optional
+        code
+    name : str, default is Undefined, required
+        name
+    value : str, default is Undefined, required
+        value
+    """
+
+
+    code?: bool
+
+    name: str
+
+    value: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceHelm:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 plugin template spec source helm
+
+    Attributes
+    ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
+    fileParameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceHelmFileParametersItems0], default is Undefined, optional
+        file parameters
+    ignoreMissingValueFiles : bool, default is Undefined, optional
+        ignore missing value files
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    namespace : str, default is Undefined, optional
+        namespace
+    parameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceHelmParametersItems0], default is Undefined, optional
+        parameters
+    passCredentials : bool, default is Undefined, optional
+        pass credentials
+    releaseName : str, default is Undefined, optional
+        release name
+    skipCrds : bool, default is Undefined, optional
+        skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
+    valueFiles : [str], default is Undefined, optional
+        value files
+    values : str, default is Undefined, optional
+        values
+    valuesObject : any, default is Undefined, optional
+        values object
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    apiVersions?: [str]
+
+    fileParameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceHelmFileParametersItems0]
+
+    ignoreMissingValueFiles?: bool
+
+    kubeVersion?: str
+
+    namespace?: str
+
+    parameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceHelmParametersItems0]
+
+    passCredentials?: bool
+
+    releaseName?: str
+
+    skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
+
+    valueFiles?: [str]
+
+    values?: str
+
+    valuesObject?: any
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceHelmFileParametersItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 plugin template spec source helm file parameters items0
+
+    Attributes
+    ----------
+    name : str, default is Undefined, optional
+        name
+    path : str, default is Undefined, optional
+        path
+    """
+
+
+    name?: str
+
+    path?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceHelmParametersItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 plugin template spec source helm parameters items0
+
+    Attributes
+    ----------
+    forceString : bool, default is Undefined, optional
+        force string
+    name : str, default is Undefined, optional
+        name
+    value : str, default is Undefined, optional
+        value
+    """
+
+
+    forceString?: bool
+
+    name?: str
+
+    value?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceHydrator:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 plugin template spec source hydrator
+
+    Attributes
+    ----------
+    drySource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceHydratorDrySource, default is Undefined, required
+        dry source
+    hydrateTo : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceHydratorHydrateTo, default is Undefined, optional
+        hydrate to
+    syncSource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceHydratorSyncSource, default is Undefined, required
+        sync source
+    """
+
+
+    drySource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceHydratorDrySource
+
+    hydrateTo?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceHydratorHydrateTo
+
+    syncSource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceHydratorSyncSource
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceHydratorDrySource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 plugin template spec source hydrator dry source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    repoURL : str, default is Undefined, required
+        repo URL
+    targetRevision : str, default is Undefined, required
+        target revision
+    """
+
+
+    path: str
+
+    repoURL: str
+
+    targetRevision: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceHydratorHydrateTo:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 plugin template spec source hydrator hydrate to
+
+    Attributes
+    ----------
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceHydratorSyncSource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 plugin template spec source hydrator sync source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    path: str
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceKustomize:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 plugin template spec source kustomize
+
+    Attributes
+    ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
+    commonAnnotations : {str:str}, default is Undefined, optional
+        common annotations
+    commonAnnotationsEnvsubst : bool, default is Undefined, optional
+        common annotations envsubst
+    commonLabels : {str:str}, default is Undefined, optional
+        common labels
+    components : [str], default is Undefined, optional
+        components
+    forceCommonAnnotations : bool, default is Undefined, optional
+        force common annotations
+    forceCommonLabels : bool, default is Undefined, optional
+        force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
+    images : [str], default is Undefined, optional
+        images
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
+    labelWithoutSelector : bool, default is Undefined, optional
+        label without selector
+    namePrefix : str, default is Undefined, optional
+        name prefix
+    nameSuffix : str, default is Undefined, optional
+        name suffix
+    namespace : str, default is Undefined, optional
+        namespace
+    patches : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceKustomizePatchesItems0], default is Undefined, optional
+        patches
+    replicas : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceKustomizeReplicasItems0], default is Undefined, optional
+        replicas
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    apiVersions?: [str]
+
+    commonAnnotations?: {str:str}
+
+    commonAnnotationsEnvsubst?: bool
+
+    commonLabels?: {str:str}
+
+    components?: [str]
+
+    forceCommonAnnotations?: bool
+
+    forceCommonLabels?: bool
+
+    ignoreMissingComponents?: bool
+
+    images?: [str]
+
+    kubeVersion?: str
+
+    labelIncludeTemplates?: bool
+
+    labelWithoutSelector?: bool
+
+    namePrefix?: str
+
+    nameSuffix?: str
+
+    namespace?: str
+
+    patches?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceKustomizePatchesItems0]
+
+    replicas?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceKustomizeReplicasItems0]
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceKustomizePatchesItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 plugin template spec source kustomize patches items0
+
+    Attributes
+    ----------
+    options : {str:bool}, default is Undefined, optional
+        options
+    patch : str, default is Undefined, optional
+        patch
+    path : str, default is Undefined, optional
+        path
+    target : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceKustomizePatchesItems0Target, default is Undefined, optional
+        target
+    """
+
+
+    options?: {str:bool}
+
+    patch?: str
+
+    path?: str
+
+    target?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceKustomizePatchesItems0Target
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceKustomizePatchesItems0Target:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 plugin template spec source kustomize patches items0 target
+
+    Attributes
+    ----------
+    annotationSelector : str, default is Undefined, optional
+        annotation selector
+    group : str, default is Undefined, optional
+        group
+    kind : str, default is Undefined, optional
+        kind
+    labelSelector : str, default is Undefined, optional
+        label selector
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    annotationSelector?: str
+
+    group?: str
+
+    kind?: str
+
+    labelSelector?: str
+
+    name?: str
+
+    namespace?: str
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceKustomizeReplicasItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 plugin template spec source kustomize replicas items0
+
+    Attributes
+    ----------
+    count : int | str, default is Undefined, required
+        count
+    name : str, default is Undefined, required
+        name
+    """
+
+
+    count: int | str
+
+    name: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcePlugin:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 plugin template spec source plugin
+
+    Attributes
+    ----------
+    env : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcePluginEnvItems0], default is Undefined, optional
+        env
+    name : str, default is Undefined, optional
+        name
+    parameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcePluginParametersItems0], default is Undefined, optional
+        parameters
+    """
+
+
+    env?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcePluginEnvItems0]
+
+    name?: str
+
+    parameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcePluginParametersItems0]
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcePluginEnvItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 plugin template spec source plugin env items0
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        name
+    value : str, default is Undefined, required
+        value
+    """
+
+
+    name: str
+
+    value: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcePluginParametersItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 plugin template spec source plugin parameters items0
+
+    Attributes
+    ----------
+    array : [str], default is Undefined, optional
+        array
+    $map : {str:str}, default is Undefined, optional
+        map
+    name : str, default is Undefined, optional
+        name
+    string : str, default is Undefined, optional
+        string
+    """
+
+
+    array?: [str]
+
+    $map?: {str:str}
+
+    name?: str
+
+    string?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcesItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 plugin template spec sources items0
+
+    Attributes
+    ----------
+    chart : str, default is Undefined, optional
+        chart
+    directory : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcesItems0Directory, default is Undefined, optional
+        directory
+    helm : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcesItems0Helm, default is Undefined, optional
+        helm
+    kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcesItems0Kustomize, default is Undefined, optional
+        kustomize
+    name : str, default is Undefined, optional
+        name
+    path : str, default is Undefined, optional
+        path
+    plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcesItems0Plugin, default is Undefined, optional
+        plugin
+    ref : str, default is Undefined, optional
+        ref
+    repoURL : str, default is Undefined, required
+        repo URL
+    targetRevision : str, default is Undefined, optional
+        target revision
+    """
+
+
+    chart?: str
+
+    directory?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcesItems0Directory
+
+    helm?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcesItems0Helm
+
+    kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcesItems0Kustomize
+
+    name?: str
+
+    path?: str
+
+    plugin?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcesItems0Plugin
+
+    ref?: str
+
+    repoURL: str
+
+    targetRevision?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcesItems0Directory:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 plugin template spec sources items0 directory
+
+    Attributes
+    ----------
+    exclude : str, default is Undefined, optional
+        exclude
+    include : str, default is Undefined, optional
+        include
+    jsonnet : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcesItems0DirectoryJsonnet, default is Undefined, optional
+        jsonnet
+    recurse : bool, default is Undefined, optional
+        recurse
+    """
+
+
+    exclude?: str
+
+    include?: str
+
+    jsonnet?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcesItems0DirectoryJsonnet
+
+    recurse?: bool
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcesItems0DirectoryJsonnet:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 plugin template spec sources items0 directory jsonnet
+
+    Attributes
+    ----------
+    extVars : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcesItems0DirectoryJsonnetExtVarsItems0], default is Undefined, optional
+        ext vars
+    libs : [str], default is Undefined, optional
+        libs
+    tlas : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcesItems0DirectoryJsonnetTlasItems0], default is Undefined, optional
+        tlas
+    """
+
+
+    extVars?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcesItems0DirectoryJsonnetExtVarsItems0]
+
+    libs?: [str]
+
+    tlas?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcesItems0DirectoryJsonnetTlasItems0]
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcesItems0DirectoryJsonnetExtVarsItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 plugin template spec sources items0 directory jsonnet ext vars items0
+
+    Attributes
+    ----------
+    code : bool, default is Undefined, optional
+        code
+    name : str, default is Undefined, required
+        name
+    value : str, default is Undefined, required
+        value
+    """
+
+
+    code?: bool
+
+    name: str
+
+    value: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcesItems0DirectoryJsonnetTlasItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 plugin template spec sources items0 directory jsonnet tlas items0
+
+    Attributes
+    ----------
+    code : bool, default is Undefined, optional
+        code
+    name : str, default is Undefined, required
+        name
+    value : str, default is Undefined, required
+        value
+    """
+
+
+    code?: bool
+
+    name: str
+
+    value: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcesItems0Helm:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 plugin template spec sources items0 helm
+
+    Attributes
+    ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
+    fileParameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcesItems0HelmFileParametersItems0], default is Undefined, optional
+        file parameters
+    ignoreMissingValueFiles : bool, default is Undefined, optional
+        ignore missing value files
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    namespace : str, default is Undefined, optional
+        namespace
+    parameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcesItems0HelmParametersItems0], default is Undefined, optional
+        parameters
+    passCredentials : bool, default is Undefined, optional
+        pass credentials
+    releaseName : str, default is Undefined, optional
+        release name
+    skipCrds : bool, default is Undefined, optional
+        skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
+    valueFiles : [str], default is Undefined, optional
+        value files
+    values : str, default is Undefined, optional
+        values
+    valuesObject : any, default is Undefined, optional
+        values object
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    apiVersions?: [str]
+
+    fileParameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcesItems0HelmFileParametersItems0]
+
+    ignoreMissingValueFiles?: bool
+
+    kubeVersion?: str
+
+    namespace?: str
+
+    parameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcesItems0HelmParametersItems0]
+
+    passCredentials?: bool
+
+    releaseName?: str
+
+    skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
+
+    valueFiles?: [str]
+
+    values?: str
+
+    valuesObject?: any
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcesItems0HelmFileParametersItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 plugin template spec sources items0 helm file parameters items0
+
+    Attributes
+    ----------
+    name : str, default is Undefined, optional
+        name
+    path : str, default is Undefined, optional
+        path
+    """
+
+
+    name?: str
+
+    path?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcesItems0HelmParametersItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 plugin template spec sources items0 helm parameters items0
+
+    Attributes
+    ----------
+    forceString : bool, default is Undefined, optional
+        force string
+    name : str, default is Undefined, optional
+        name
+    value : str, default is Undefined, optional
+        value
+    """
+
+
+    forceString?: bool
+
+    name?: str
+
+    value?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcesItems0Kustomize:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 plugin template spec sources items0 kustomize
+
+    Attributes
+    ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
+    commonAnnotations : {str:str}, default is Undefined, optional
+        common annotations
+    commonAnnotationsEnvsubst : bool, default is Undefined, optional
+        common annotations envsubst
+    commonLabels : {str:str}, default is Undefined, optional
+        common labels
+    components : [str], default is Undefined, optional
+        components
+    forceCommonAnnotations : bool, default is Undefined, optional
+        force common annotations
+    forceCommonLabels : bool, default is Undefined, optional
+        force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
+    images : [str], default is Undefined, optional
+        images
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
+    labelWithoutSelector : bool, default is Undefined, optional
+        label without selector
+    namePrefix : str, default is Undefined, optional
+        name prefix
+    nameSuffix : str, default is Undefined, optional
+        name suffix
+    namespace : str, default is Undefined, optional
+        namespace
+    patches : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcesItems0KustomizePatchesItems0], default is Undefined, optional
+        patches
+    replicas : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcesItems0KustomizeReplicasItems0], default is Undefined, optional
+        replicas
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    apiVersions?: [str]
+
+    commonAnnotations?: {str:str}
+
+    commonAnnotationsEnvsubst?: bool
+
+    commonLabels?: {str:str}
+
+    components?: [str]
+
+    forceCommonAnnotations?: bool
+
+    forceCommonLabels?: bool
+
+    ignoreMissingComponents?: bool
+
+    images?: [str]
+
+    kubeVersion?: str
+
+    labelIncludeTemplates?: bool
+
+    labelWithoutSelector?: bool
+
+    namePrefix?: str
+
+    nameSuffix?: str
+
+    namespace?: str
+
+    patches?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcesItems0KustomizePatchesItems0]
+
+    replicas?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcesItems0KustomizeReplicasItems0]
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcesItems0KustomizePatchesItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 plugin template spec sources items0 kustomize patches items0
+
+    Attributes
+    ----------
+    options : {str:bool}, default is Undefined, optional
+        options
+    patch : str, default is Undefined, optional
+        patch
+    path : str, default is Undefined, optional
+        path
+    target : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcesItems0KustomizePatchesItems0Target, default is Undefined, optional
+        target
+    """
+
+
+    options?: {str:bool}
+
+    patch?: str
+
+    path?: str
+
+    target?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcesItems0KustomizePatchesItems0Target
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcesItems0KustomizePatchesItems0Target:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 plugin template spec sources items0 kustomize patches items0 target
+
+    Attributes
+    ----------
+    annotationSelector : str, default is Undefined, optional
+        annotation selector
+    group : str, default is Undefined, optional
+        group
+    kind : str, default is Undefined, optional
+        kind
+    labelSelector : str, default is Undefined, optional
+        label selector
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    annotationSelector?: str
+
+    group?: str
+
+    kind?: str
+
+    labelSelector?: str
+
+    name?: str
+
+    namespace?: str
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcesItems0KustomizeReplicasItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 plugin template spec sources items0 kustomize replicas items0
+
+    Attributes
+    ----------
+    count : int | str, default is Undefined, required
+        count
+    name : str, default is Undefined, required
+        name
+    """
+
+
+    count: int | str
+
+    name: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcesItems0Plugin:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 plugin template spec sources items0 plugin
+
+    Attributes
+    ----------
+    env : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcesItems0PluginEnvItems0], default is Undefined, optional
+        env
+    name : str, default is Undefined, optional
+        name
+    parameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcesItems0PluginParametersItems0], default is Undefined, optional
+        parameters
+    """
+
+
+    env?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcesItems0PluginEnvItems0]
+
+    name?: str
+
+    parameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcesItems0PluginParametersItems0]
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcesItems0PluginEnvItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 plugin template spec sources items0 plugin env items0
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        name
+    value : str, default is Undefined, required
+        value
+    """
+
+
+    name: str
+
+    value: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcesItems0PluginParametersItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 plugin template spec sources items0 plugin parameters items0
+
+    Attributes
+    ----------
+    array : [str], default is Undefined, optional
+        array
+    $map : {str:str}, default is Undefined, optional
+        map
+    name : str, default is Undefined, optional
+        name
+    string : str, default is Undefined, optional
+        string
+    """
+
+
+    array?: [str]
+
+    $map?: {str:str}
+
+    name?: str
+
+    string?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSyncPolicy:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 plugin template spec sync policy
+
+    Attributes
+    ----------
+    automated : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSyncPolicyAutomated, default is Undefined, optional
+        automated
+    managedNamespaceMetadata : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSyncPolicyManagedNamespaceMetadata, default is Undefined, optional
+        managed namespace metadata
+    retry : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSyncPolicyRetry, default is Undefined, optional
+        retry
+    syncOptions : [str], default is Undefined, optional
+        sync options
+    """
+
+
+    automated?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSyncPolicyAutomated
+
+    managedNamespaceMetadata?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSyncPolicyManagedNamespaceMetadata
+
+    retry?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSyncPolicyRetry
+
+    syncOptions?: [str]
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSyncPolicyAutomated:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 plugin template spec sync policy automated
+
+    Attributes
+    ----------
+    allowEmpty : bool, default is Undefined, optional
+        allow empty
+    prune : bool, default is Undefined, optional
+        prune
+    selfHeal : bool, default is Undefined, optional
+        self heal
+    """
+
+
+    allowEmpty?: bool
+
+    prune?: bool
+
+    selfHeal?: bool
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSyncPolicyManagedNamespaceMetadata:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 plugin template spec sync policy managed namespace metadata
+
+    Attributes
+    ----------
+    annotations : {str:str}, default is Undefined, optional
+        annotations
+    labels : {str:str}, default is Undefined, optional
+        labels
+    """
+
+
+    annotations?: {str:str}
+
+    labels?: {str:str}
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSyncPolicyRetry:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 plugin template spec sync policy retry
+
+    Attributes
+    ----------
+    backoff : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSyncPolicyRetryBackoff, default is Undefined, optional
+        backoff
+    limit : int, default is Undefined, optional
+        limit
+    """
+
+
+    backoff?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSyncPolicyRetryBackoff
+
+    limit?: int
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSyncPolicyRetryBackoff:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 plugin template spec sync policy retry backoff
+
+    Attributes
+    ----------
+    duration : str, default is Undefined, optional
+        duration
+    factor : int, default is Undefined, optional
+        factor
+    maxDuration : str, default is Undefined, optional
+        max duration
+    """
+
+
+    duration?: str
+
+    factor?: int
+
+    maxDuration?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequest:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 pull request
 
     Attributes
     ----------
+    azuredevops : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestAzuredevops, default is Undefined, optional
+        azuredevops
+    bitbucket : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestBitbucket, default is Undefined, optional
+        bitbucket
     bitbucketServer : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestBitbucketServer, default is Undefined, optional
         bitbucket server
     filters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestFiltersItems0], default is Undefined, optional
@@ -20403,8 +31023,14 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequest:
         requeue after seconds
     template : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplate, default is Undefined, optional
         template
+    values : {str:str}, default is Undefined, optional
+        values
     """
 
+
+    azuredevops?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestAzuredevops
+
+    bitbucket?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestBitbucket
 
     bitbucketServer?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestBitbucketServer
 
@@ -20420,9 +31046,161 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequest:
 
     template?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplate
 
+    values?: {str:str}
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestAzuredevops:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 pull request azuredevops
+
+    Attributes
+    ----------
+    api : str, default is Undefined, optional
+        api
+    labels : [str], default is Undefined, optional
+        labels
+    organization : str, default is Undefined, required
+        organization
+    project : str, default is Undefined, required
+        project
+    repo : str, default is Undefined, required
+        repo
+    tokenRef : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestAzuredevopsTokenRef, default is Undefined, optional
+        token ref
+    """
+
+
+    api?: str
+
+    labels?: [str]
+
+    organization: str
+
+    project: str
+
+    repo: str
+
+    tokenRef?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestAzuredevopsTokenRef
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestAzuredevopsTokenRef:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 pull request azuredevops token ref
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    secretName : str, default is Undefined, required
+        secret name
+    """
+
+
+    key: str
+
+    secretName: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestBitbucket:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 pull request bitbucket
+
+    Attributes
+    ----------
+    api : str, default is Undefined, optional
+        api
+    basicAuth : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestBitbucketBasicAuth, default is Undefined, optional
+        basic auth
+    bearerToken : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestBitbucketBearerToken, default is Undefined, optional
+        bearer token
+    owner : str, default is Undefined, required
+        owner
+    repo : str, default is Undefined, required
+        repo
+    """
+
+
+    api?: str
+
+    basicAuth?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestBitbucketBasicAuth
+
+    bearerToken?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestBitbucketBearerToken
+
+    owner: str
+
+    repo: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestBitbucketBasicAuth:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 pull request bitbucket basic auth
+
+    Attributes
+    ----------
+    passwordRef : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestBitbucketBasicAuthPasswordRef, default is Undefined, required
+        password ref
+    username : str, default is Undefined, required
+        username
+    """
+
+
+    passwordRef: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestBitbucketBasicAuthPasswordRef
+
+    username: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestBitbucketBasicAuthPasswordRef:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 pull request bitbucket basic auth password ref
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    secretName : str, default is Undefined, required
+        secret name
+    """
+
+
+    key: str
+
+    secretName: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestBitbucketBearerToken:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 pull request bitbucket bearer token
+
+    Attributes
+    ----------
+    tokenRef : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestBitbucketBearerTokenTokenRef, default is Undefined, required
+        token ref
+    """
+
+
+    tokenRef: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestBitbucketBearerTokenTokenRef
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestBitbucketBearerTokenTokenRef:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 pull request bitbucket bearer token token ref
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    secretName : str, default is Undefined, required
+        secret name
+    """
+
+
+    key: str
+
+    secretName: str
+
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestBitbucketServer:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 pull request bitbucket server
 
     Attributes
@@ -20431,6 +31209,12 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestBitbucketS
         api
     basicAuth : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestBitbucketServerBasicAuth, default is Undefined, optional
         basic auth
+    bearerToken : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestBitbucketServerBearerToken, default is Undefined, optional
+        bearer token
+    caRef : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestBitbucketServerCaRef, default is Undefined, optional
+        ca ref
+    insecure : bool, default is Undefined, optional
+        insecure
     project : str, default is Undefined, required
         project
     repo : str, default is Undefined, required
@@ -20442,13 +31226,19 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestBitbucketS
 
     basicAuth?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestBitbucketServerBasicAuth
 
+    bearerToken?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestBitbucketServerBearerToken
+
+    caRef?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestBitbucketServerCaRef
+
+    insecure?: bool
+
     project: str
 
     repo: str
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestBitbucketServerBasicAuth:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 pull request bitbucket server basic auth
 
     Attributes
@@ -20466,7 +31256,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestBitbucketS
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestBitbucketServerBasicAuthPasswordRef:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 pull request bitbucket server basic auth password ref
 
     Attributes
@@ -20483,8 +31273,58 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestBitbucketS
     secretName: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestFiltersItems0:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestBitbucketServerBearerToken:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 pull request bitbucket server bearer token
+
+    Attributes
+    ----------
+    tokenRef : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestBitbucketServerBearerTokenTokenRef, default is Undefined, required
+        token ref
     """
+
+
+    tokenRef: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestBitbucketServerBearerTokenTokenRef
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestBitbucketServerBearerTokenTokenRef:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 pull request bitbucket server bearer token token ref
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    secretName : str, default is Undefined, required
+        secret name
+    """
+
+
+    key: str
+
+    secretName: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestBitbucketServerCaRef:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 pull request bitbucket server ca ref
+
+    Attributes
+    ----------
+    configMapName : str, default is Undefined, required
+        config map name
+    key : str, default is Undefined, required
+        key
+    """
+
+
+    configMapName: str
+
+    key: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestFiltersItems0:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 pull request filters items0
 
     Attributes
@@ -20502,7 +31342,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestFiltersIte
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestGitea:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 pull request gitea
 
     Attributes
@@ -20532,7 +31372,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestGitea:
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestGiteaTokenRef:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 pull request gitea token ref
 
     Attributes
@@ -20550,7 +31390,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestGiteaToken
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestGithub:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 pull request github
 
     Attributes
@@ -20584,7 +31424,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestGithub:
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestGithubTokenRef:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 pull request github token ref
 
     Attributes
@@ -20602,13 +31442,17 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestGithubToke
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestGitlab:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 pull request gitlab
 
     Attributes
     ----------
     api : str, default is Undefined, optional
         api
+    caRef : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestGitlabCaRef, default is Undefined, optional
+        ca ref
+    insecure : bool, default is Undefined, optional
+        insecure
     labels : [str], default is Undefined, optional
         labels
     project : str, default is Undefined, required
@@ -20622,6 +31466,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestGitlab:
 
     api?: str
 
+    caRef?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestGitlabCaRef
+
+    insecure?: bool
+
     labels?: [str]
 
     project: str
@@ -20631,8 +31479,26 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestGitlab:
     tokenRef?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestGitlabTokenRef
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestGitlabTokenRef:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestGitlabCaRef:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 pull request gitlab ca ref
+
+    Attributes
+    ----------
+    configMapName : str, default is Undefined, required
+        config map name
+    key : str, default is Undefined, required
+        key
     """
+
+
+    configMapName: str
+
+    key: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestGitlabTokenRef:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 pull request gitlab token ref
 
     Attributes
@@ -20650,7 +31516,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestGitlabToke
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplate:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 pull request template
 
     Attributes
@@ -20668,7 +31534,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplate:
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateMetadata:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 pull request template metadata
 
     Attributes
@@ -20698,7 +31564,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateMe
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpec:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 pull request template spec
 
     Attributes
@@ -20715,6 +31581,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
         revision history limit
     source : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSource, default is Undefined, optional
         source
+    sourceHydrator : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourceHydrator, default is Undefined, optional
+        source hydrator
     sources : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourcesItems0], default is Undefined, optional
         sources
     syncPolicy : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSyncPolicy, default is Undefined, optional
@@ -20734,13 +31602,15 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
 
     source?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSource
 
+    sourceHydrator?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourceHydrator
+
     sources?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourcesItems0]
 
     syncPolicy?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSyncPolicy
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecDestination:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 pull request template spec destination
 
     Attributes
@@ -20762,7 +31632,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecIgnoreDifferencesItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 pull request template spec ignore differences items0
 
     Attributes
@@ -20800,7 +31670,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecInfoItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 pull request template spec info items0
 
     Attributes
@@ -20818,7 +31688,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSource:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 pull request template spec source
 
     Attributes
@@ -20831,6 +31701,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourceKustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourcePlugin, default is Undefined, optional
@@ -20852,6 +31724,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourceKustomize
 
+    name?: str
+
     path?: str
 
     plugin?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourcePlugin
@@ -20864,7 +31738,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourceDirectory:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 pull request template spec source directory
 
     Attributes
@@ -20890,7 +31764,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourceDirectoryJsonnet:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 pull request template spec source directory jsonnet
 
     Attributes
@@ -20912,7 +31786,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourceDirectoryJsonnetExtVarsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 pull request template spec source directory jsonnet ext vars items0
 
     Attributes
@@ -20934,7 +31808,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourceDirectoryJsonnetTlasItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 pull request template spec source directory jsonnet tlas items0
 
     Attributes
@@ -20956,15 +31830,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourceHelm:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 pull request template spec source helm
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     fileParameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourceHelmFileParametersItems0], default is Undefined, optional
         file parameters
     ignoreMissingValueFiles : bool, default is Undefined, optional
         ignore missing value files
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    namespace : str, default is Undefined, optional
+        namespace
     parameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourceHelmParametersItems0], default is Undefined, optional
         parameters
     passCredentials : bool, default is Undefined, optional
@@ -20973,18 +31853,30 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
         values
+    valuesObject : any, default is Undefined, optional
+        values object
     version : str, default is Undefined, optional
         version
     """
 
 
+    apiVersions?: [str]
+
     fileParameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourceHelmFileParametersItems0]
 
     ignoreMissingValueFiles?: bool
+
+    kubeVersion?: str
+
+    namespace?: str
 
     parameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourceHelmParametersItems0]
 
@@ -20994,15 +31886,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
 
     skipCrds?: bool
 
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
+
     valueFiles?: [str]
 
     values?: str
+
+    valuesObject?: any
 
     version?: str
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourceHelmFileParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 pull request template spec source helm file parameters items0
 
     Attributes
@@ -21020,7 +31918,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourceHelmParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 pull request template spec source helm parameters items0
 
     Attributes
@@ -21041,30 +31939,120 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
     value?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourceKustomize:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourceHydrator:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 pull request template spec source hydrator
+
+    Attributes
+    ----------
+    drySource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourceHydratorDrySource, default is Undefined, required
+        dry source
+    hydrateTo : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourceHydratorHydrateTo, default is Undefined, optional
+        hydrate to
+    syncSource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourceHydratorSyncSource, default is Undefined, required
+        sync source
     """
+
+
+    drySource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourceHydratorDrySource
+
+    hydrateTo?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourceHydratorHydrateTo
+
+    syncSource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourceHydratorSyncSource
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourceHydratorDrySource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 pull request template spec source hydrator dry source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    repoURL : str, default is Undefined, required
+        repo URL
+    targetRevision : str, default is Undefined, required
+        target revision
+    """
+
+
+    path: str
+
+    repoURL: str
+
+    targetRevision: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourceHydratorHydrateTo:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 pull request template spec source hydrator hydrate to
+
+    Attributes
+    ----------
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourceHydratorSyncSource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 pull request template spec source hydrator sync source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    path: str
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourceKustomize:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 pull request template spec source kustomize
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     commonAnnotations : {str:str}, default is Undefined, optional
         common annotations
     commonAnnotationsEnvsubst : bool, default is Undefined, optional
         common annotations envsubst
     commonLabels : {str:str}, default is Undefined, optional
         common labels
+    components : [str], default is Undefined, optional
+        components
     forceCommonAnnotations : bool, default is Undefined, optional
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
+    labelWithoutSelector : bool, default is Undefined, optional
+        label without selector
     namePrefix : str, default is Undefined, optional
         name prefix
     nameSuffix : str, default is Undefined, optional
         name suffix
     namespace : str, default is Undefined, optional
         namespace
+    patches : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourceKustomizePatchesItems0], default is Undefined, optional
+        patches
     replicas : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourceKustomizeReplicasItems0], default is Undefined, optional
         replicas
     version : str, default is Undefined, optional
@@ -21072,17 +32060,29 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
     """
 
 
+    apiVersions?: [str]
+
     commonAnnotations?: {str:str}
 
     commonAnnotationsEnvsubst?: bool
 
     commonLabels?: {str:str}
 
+    components?: [str]
+
     forceCommonAnnotations?: bool
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
+
+    kubeVersion?: str
+
+    labelIncludeTemplates?: bool
+
+    labelWithoutSelector?: bool
 
     namePrefix?: str
 
@@ -21090,13 +32090,79 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
 
     namespace?: str
 
+    patches?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourceKustomizePatchesItems0]
+
     replicas?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourceKustomizeReplicasItems0]
 
     version?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourceKustomizeReplicasItems0:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourceKustomizePatchesItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 pull request template spec source kustomize patches items0
+
+    Attributes
+    ----------
+    options : {str:bool}, default is Undefined, optional
+        options
+    patch : str, default is Undefined, optional
+        patch
+    path : str, default is Undefined, optional
+        path
+    target : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourceKustomizePatchesItems0Target, default is Undefined, optional
+        target
     """
+
+
+    options?: {str:bool}
+
+    patch?: str
+
+    path?: str
+
+    target?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourceKustomizePatchesItems0Target
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourceKustomizePatchesItems0Target:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 pull request template spec source kustomize patches items0 target
+
+    Attributes
+    ----------
+    annotationSelector : str, default is Undefined, optional
+        annotation selector
+    group : str, default is Undefined, optional
+        group
+    kind : str, default is Undefined, optional
+        kind
+    labelSelector : str, default is Undefined, optional
+        label selector
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    annotationSelector?: str
+
+    group?: str
+
+    kind?: str
+
+    labelSelector?: str
+
+    name?: str
+
+    namespace?: str
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourceKustomizeReplicasItems0:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 pull request template spec source kustomize replicas items0
 
     Attributes
@@ -21114,7 +32180,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourcePlugin:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 pull request template spec source plugin
 
     Attributes
@@ -21136,7 +32202,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourcePluginEnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 pull request template spec source plugin env items0
 
     Attributes
@@ -21154,7 +32220,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourcePluginParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 pull request template spec source plugin parameters items0
 
     Attributes
@@ -21180,7 +32246,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourcesItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 pull request template spec sources items0
 
     Attributes
@@ -21193,6 +32259,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourcesItems0Kustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourcesItems0Plugin, default is Undefined, optional
@@ -21214,6 +32282,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourcesItems0Kustomize
 
+    name?: str
+
     path?: str
 
     plugin?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourcesItems0Plugin
@@ -21226,7 +32296,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourcesItems0Directory:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 pull request template spec sources items0 directory
 
     Attributes
@@ -21252,7 +32322,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourcesItems0DirectoryJsonnet:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 pull request template spec sources items0 directory jsonnet
 
     Attributes
@@ -21274,7 +32344,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourcesItems0DirectoryJsonnetExtVarsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 pull request template spec sources items0 directory jsonnet ext vars items0
 
     Attributes
@@ -21296,7 +32366,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourcesItems0DirectoryJsonnetTlasItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 pull request template spec sources items0 directory jsonnet tlas items0
 
     Attributes
@@ -21318,15 +32388,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourcesItems0Helm:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 pull request template spec sources items0 helm
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     fileParameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourcesItems0HelmFileParametersItems0], default is Undefined, optional
         file parameters
     ignoreMissingValueFiles : bool, default is Undefined, optional
         ignore missing value files
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    namespace : str, default is Undefined, optional
+        namespace
     parameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourcesItems0HelmParametersItems0], default is Undefined, optional
         parameters
     passCredentials : bool, default is Undefined, optional
@@ -21335,18 +32411,30 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
         values
+    valuesObject : any, default is Undefined, optional
+        values object
     version : str, default is Undefined, optional
         version
     """
 
 
+    apiVersions?: [str]
+
     fileParameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourcesItems0HelmFileParametersItems0]
 
     ignoreMissingValueFiles?: bool
+
+    kubeVersion?: str
+
+    namespace?: str
 
     parameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourcesItems0HelmParametersItems0]
 
@@ -21356,15 +32444,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
 
     skipCrds?: bool
 
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
+
     valueFiles?: [str]
 
     values?: str
+
+    valuesObject?: any
 
     version?: str
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourcesItems0HelmFileParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 pull request template spec sources items0 helm file parameters items0
 
     Attributes
@@ -21382,7 +32476,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourcesItems0HelmParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 pull request template spec sources items0 helm parameters items0
 
     Attributes
@@ -21404,29 +32498,43 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourcesItems0Kustomize:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 pull request template spec sources items0 kustomize
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     commonAnnotations : {str:str}, default is Undefined, optional
         common annotations
     commonAnnotationsEnvsubst : bool, default is Undefined, optional
         common annotations envsubst
     commonLabels : {str:str}, default is Undefined, optional
         common labels
+    components : [str], default is Undefined, optional
+        components
     forceCommonAnnotations : bool, default is Undefined, optional
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
+    labelWithoutSelector : bool, default is Undefined, optional
+        label without selector
     namePrefix : str, default is Undefined, optional
         name prefix
     nameSuffix : str, default is Undefined, optional
         name suffix
     namespace : str, default is Undefined, optional
         namespace
+    patches : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourcesItems0KustomizePatchesItems0], default is Undefined, optional
+        patches
     replicas : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourcesItems0KustomizeReplicasItems0], default is Undefined, optional
         replicas
     version : str, default is Undefined, optional
@@ -21434,17 +32542,29 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
     """
 
 
+    apiVersions?: [str]
+
     commonAnnotations?: {str:str}
 
     commonAnnotationsEnvsubst?: bool
 
     commonLabels?: {str:str}
 
+    components?: [str]
+
     forceCommonAnnotations?: bool
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
+
+    kubeVersion?: str
+
+    labelIncludeTemplates?: bool
+
+    labelWithoutSelector?: bool
 
     namePrefix?: str
 
@@ -21452,13 +32572,79 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
 
     namespace?: str
 
+    patches?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourcesItems0KustomizePatchesItems0]
+
     replicas?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourcesItems0KustomizeReplicasItems0]
 
     version?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourcesItems0KustomizeReplicasItems0:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourcesItems0KustomizePatchesItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 pull request template spec sources items0 kustomize patches items0
+
+    Attributes
+    ----------
+    options : {str:bool}, default is Undefined, optional
+        options
+    patch : str, default is Undefined, optional
+        patch
+    path : str, default is Undefined, optional
+        path
+    target : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourcesItems0KustomizePatchesItems0Target, default is Undefined, optional
+        target
     """
+
+
+    options?: {str:bool}
+
+    patch?: str
+
+    path?: str
+
+    target?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourcesItems0KustomizePatchesItems0Target
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourcesItems0KustomizePatchesItems0Target:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 pull request template spec sources items0 kustomize patches items0 target
+
+    Attributes
+    ----------
+    annotationSelector : str, default is Undefined, optional
+        annotation selector
+    group : str, default is Undefined, optional
+        group
+    kind : str, default is Undefined, optional
+        kind
+    labelSelector : str, default is Undefined, optional
+        label selector
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    annotationSelector?: str
+
+    group?: str
+
+    kind?: str
+
+    labelSelector?: str
+
+    name?: str
+
+    namespace?: str
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourcesItems0KustomizeReplicasItems0:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 pull request template spec sources items0 kustomize replicas items0
 
     Attributes
@@ -21476,7 +32662,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourcesItems0Plugin:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 pull request template spec sources items0 plugin
 
     Attributes
@@ -21498,7 +32684,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourcesItems0PluginEnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 pull request template spec sources items0 plugin env items0
 
     Attributes
@@ -21516,7 +32702,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourcesItems0PluginParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 pull request template spec sources items0 plugin parameters items0
 
     Attributes
@@ -21542,7 +32728,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSyncPolicy:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 pull request template spec sync policy
 
     Attributes
@@ -21568,7 +32754,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSyncPolicyAutomated:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 pull request template spec sync policy automated
 
     Attributes
@@ -21590,7 +32776,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSyncPolicyManagedNamespaceMetadata:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 pull request template spec sync policy managed namespace metadata
 
     Attributes
@@ -21608,7 +32794,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSyncPolicyRetry:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 pull request template spec sync policy retry
 
     Attributes
@@ -21626,7 +32812,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSyncPolicyRetryBackoff:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 pull request template spec sync policy retry backoff
 
     Attributes
@@ -21648,7 +32834,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProvider:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 scm provider
 
     Attributes
@@ -21706,7 +32892,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProvider:
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderAwsCodeCommit:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 scm provider aws code commit
 
     Attributes
@@ -21732,7 +32918,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderAwsCodeCom
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderAwsCodeCommitTagFiltersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 scm provider aws code commit tag filters items0
 
     Attributes
@@ -21750,7 +32936,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderAwsCodeCom
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderAzureDevOps:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 scm provider azure dev ops
 
     Attributes
@@ -21780,7 +32966,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderAzureDevOp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderAzureDevOpsAccessTokenRef:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 scm provider azure dev ops access token ref
 
     Attributes
@@ -21798,7 +32984,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderAzureDevOp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderBitbucket:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 scm provider bitbucket
 
     Attributes
@@ -21824,7 +33010,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderBitbucket:
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderBitbucketAppPasswordRef:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 scm provider bitbucket app password ref
 
     Attributes
@@ -21842,7 +33028,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderBitbucketA
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderBitbucketServer:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 scm provider bitbucket server
 
     Attributes
@@ -21853,6 +33039,12 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderBitbucketS
         api
     basicAuth : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderBitbucketServerBasicAuth, default is Undefined, optional
         basic auth
+    bearerToken : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderBitbucketServerBearerToken, default is Undefined, optional
+        bearer token
+    caRef : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderBitbucketServerCaRef, default is Undefined, optional
+        ca ref
+    insecure : bool, default is Undefined, optional
+        insecure
     project : str, default is Undefined, required
         project
     """
@@ -21864,11 +33056,17 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderBitbucketS
 
     basicAuth?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderBitbucketServerBasicAuth
 
+    bearerToken?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderBitbucketServerBearerToken
+
+    caRef?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderBitbucketServerCaRef
+
+    insecure?: bool
+
     project: str
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderBitbucketServerBasicAuth:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 scm provider bitbucket server basic auth
 
     Attributes
@@ -21886,7 +33084,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderBitbucketS
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderBitbucketServerBasicAuthPasswordRef:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 scm provider bitbucket server basic auth password ref
 
     Attributes
@@ -21903,8 +33101,58 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderBitbucketS
     secretName: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderFiltersItems0:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderBitbucketServerBearerToken:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 scm provider bitbucket server bearer token
+
+    Attributes
+    ----------
+    tokenRef : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderBitbucketServerBearerTokenTokenRef, default is Undefined, required
+        token ref
     """
+
+
+    tokenRef: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderBitbucketServerBearerTokenTokenRef
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderBitbucketServerBearerTokenTokenRef:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 scm provider bitbucket server bearer token token ref
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    secretName : str, default is Undefined, required
+        secret name
+    """
+
+
+    key: str
+
+    secretName: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderBitbucketServerCaRef:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 scm provider bitbucket server ca ref
+
+    Attributes
+    ----------
+    configMapName : str, default is Undefined, required
+        config map name
+    key : str, default is Undefined, required
+        key
+    """
+
+
+    configMapName: str
+
+    key: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderFiltersItems0:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 scm provider filters items0
 
     Attributes
@@ -21934,7 +33182,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderFiltersIte
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderGitea:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 scm provider gitea
 
     Attributes
@@ -21964,7 +33212,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderGitea:
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderGiteaTokenRef:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 scm provider gitea token ref
 
     Attributes
@@ -21982,7 +33230,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderGiteaToken
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderGithub:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 scm provider github
 
     Attributes
@@ -22012,7 +33260,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderGithub:
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderGithubTokenRef:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 scm provider github token ref
 
     Attributes
@@ -22030,7 +33278,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderGithubToke
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderGitlab:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 scm provider gitlab
 
     Attributes
@@ -22039,12 +33287,20 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderGitlab:
         all branches
     api : str, default is Undefined, optional
         api
+    caRef : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderGitlabCaRef, default is Undefined, optional
+        ca ref
     group : str, default is Undefined, required
         group
+    includeSharedProjects : bool, default is Undefined, optional
+        include shared projects
     includeSubgroups : bool, default is Undefined, optional
         include subgroups
+    insecure : bool, default is Undefined, optional
+        insecure
     tokenRef : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderGitlabTokenRef, default is Undefined, optional
         token ref
+    topic : str, default is Undefined, optional
+        topic
     """
 
 
@@ -22052,15 +33308,41 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderGitlab:
 
     api?: str
 
+    caRef?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderGitlabCaRef
+
     group: str
+
+    includeSharedProjects?: bool
 
     includeSubgroups?: bool
 
+    insecure?: bool
+
     tokenRef?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderGitlabTokenRef
+
+    topic?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderGitlabCaRef:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 scm provider gitlab ca ref
+
+    Attributes
+    ----------
+    configMapName : str, default is Undefined, required
+        config map name
+    key : str, default is Undefined, required
+        key
+    """
+
+
+    configMapName: str
+
+    key: str
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderGitlabTokenRef:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 scm provider gitlab token ref
 
     Attributes
@@ -22078,7 +33360,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderGitlabToke
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplate:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 scm provider template
 
     Attributes
@@ -22096,7 +33378,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplate:
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateMetadata:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 scm provider template metadata
 
     Attributes
@@ -22126,7 +33408,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateMe
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpec:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 scm provider template spec
 
     Attributes
@@ -22143,6 +33425,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
         revision history limit
     source : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSource, default is Undefined, optional
         source
+    sourceHydrator : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourceHydrator, default is Undefined, optional
+        source hydrator
     sources : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourcesItems0], default is Undefined, optional
         sources
     syncPolicy : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSyncPolicy, default is Undefined, optional
@@ -22162,13 +33446,15 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
 
     source?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSource
 
+    sourceHydrator?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourceHydrator
+
     sources?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourcesItems0]
 
     syncPolicy?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSyncPolicy
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecDestination:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 scm provider template spec destination
 
     Attributes
@@ -22190,7 +33476,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecIgnoreDifferencesItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 scm provider template spec ignore differences items0
 
     Attributes
@@ -22228,7 +33514,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecInfoItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 scm provider template spec info items0
 
     Attributes
@@ -22246,7 +33532,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSource:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 scm provider template spec source
 
     Attributes
@@ -22259,6 +33545,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourceKustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourcePlugin, default is Undefined, optional
@@ -22280,6 +33568,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourceKustomize
 
+    name?: str
+
     path?: str
 
     plugin?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourcePlugin
@@ -22292,7 +33582,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourceDirectory:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 scm provider template spec source directory
 
     Attributes
@@ -22318,7 +33608,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourceDirectoryJsonnet:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 scm provider template spec source directory jsonnet
 
     Attributes
@@ -22340,7 +33630,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourceDirectoryJsonnetExtVarsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 scm provider template spec source directory jsonnet ext vars items0
 
     Attributes
@@ -22362,7 +33652,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourceDirectoryJsonnetTlasItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 scm provider template spec source directory jsonnet tlas items0
 
     Attributes
@@ -22384,15 +33674,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourceHelm:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 scm provider template spec source helm
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     fileParameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourceHelmFileParametersItems0], default is Undefined, optional
         file parameters
     ignoreMissingValueFiles : bool, default is Undefined, optional
         ignore missing value files
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    namespace : str, default is Undefined, optional
+        namespace
     parameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourceHelmParametersItems0], default is Undefined, optional
         parameters
     passCredentials : bool, default is Undefined, optional
@@ -22401,18 +33697,30 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
         values
+    valuesObject : any, default is Undefined, optional
+        values object
     version : str, default is Undefined, optional
         version
     """
 
 
+    apiVersions?: [str]
+
     fileParameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourceHelmFileParametersItems0]
 
     ignoreMissingValueFiles?: bool
+
+    kubeVersion?: str
+
+    namespace?: str
 
     parameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourceHelmParametersItems0]
 
@@ -22422,15 +33730,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
 
     skipCrds?: bool
 
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
+
     valueFiles?: [str]
 
     values?: str
+
+    valuesObject?: any
 
     version?: str
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourceHelmFileParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 scm provider template spec source helm file parameters items0
 
     Attributes
@@ -22448,7 +33762,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourceHelmParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 scm provider template spec source helm parameters items0
 
     Attributes
@@ -22469,30 +33783,120 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
     value?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourceKustomize:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourceHydrator:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 scm provider template spec source hydrator
+
+    Attributes
+    ----------
+    drySource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourceHydratorDrySource, default is Undefined, required
+        dry source
+    hydrateTo : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourceHydratorHydrateTo, default is Undefined, optional
+        hydrate to
+    syncSource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourceHydratorSyncSource, default is Undefined, required
+        sync source
     """
+
+
+    drySource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourceHydratorDrySource
+
+    hydrateTo?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourceHydratorHydrateTo
+
+    syncSource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourceHydratorSyncSource
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourceHydratorDrySource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 scm provider template spec source hydrator dry source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    repoURL : str, default is Undefined, required
+        repo URL
+    targetRevision : str, default is Undefined, required
+        target revision
+    """
+
+
+    path: str
+
+    repoURL: str
+
+    targetRevision: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourceHydratorHydrateTo:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 scm provider template spec source hydrator hydrate to
+
+    Attributes
+    ----------
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourceHydratorSyncSource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 scm provider template spec source hydrator sync source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    path: str
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourceKustomize:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 scm provider template spec source kustomize
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     commonAnnotations : {str:str}, default is Undefined, optional
         common annotations
     commonAnnotationsEnvsubst : bool, default is Undefined, optional
         common annotations envsubst
     commonLabels : {str:str}, default is Undefined, optional
         common labels
+    components : [str], default is Undefined, optional
+        components
     forceCommonAnnotations : bool, default is Undefined, optional
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
+    labelWithoutSelector : bool, default is Undefined, optional
+        label without selector
     namePrefix : str, default is Undefined, optional
         name prefix
     nameSuffix : str, default is Undefined, optional
         name suffix
     namespace : str, default is Undefined, optional
         namespace
+    patches : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourceKustomizePatchesItems0], default is Undefined, optional
+        patches
     replicas : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourceKustomizeReplicasItems0], default is Undefined, optional
         replicas
     version : str, default is Undefined, optional
@@ -22500,17 +33904,29 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
     """
 
 
+    apiVersions?: [str]
+
     commonAnnotations?: {str:str}
 
     commonAnnotationsEnvsubst?: bool
 
     commonLabels?: {str:str}
 
+    components?: [str]
+
     forceCommonAnnotations?: bool
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
+
+    kubeVersion?: str
+
+    labelIncludeTemplates?: bool
+
+    labelWithoutSelector?: bool
 
     namePrefix?: str
 
@@ -22518,13 +33934,79 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
 
     namespace?: str
 
+    patches?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourceKustomizePatchesItems0]
+
     replicas?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourceKustomizeReplicasItems0]
 
     version?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourceKustomizeReplicasItems0:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourceKustomizePatchesItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 scm provider template spec source kustomize patches items0
+
+    Attributes
+    ----------
+    options : {str:bool}, default is Undefined, optional
+        options
+    patch : str, default is Undefined, optional
+        patch
+    path : str, default is Undefined, optional
+        path
+    target : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourceKustomizePatchesItems0Target, default is Undefined, optional
+        target
     """
+
+
+    options?: {str:bool}
+
+    patch?: str
+
+    path?: str
+
+    target?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourceKustomizePatchesItems0Target
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourceKustomizePatchesItems0Target:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 scm provider template spec source kustomize patches items0 target
+
+    Attributes
+    ----------
+    annotationSelector : str, default is Undefined, optional
+        annotation selector
+    group : str, default is Undefined, optional
+        group
+    kind : str, default is Undefined, optional
+        kind
+    labelSelector : str, default is Undefined, optional
+        label selector
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    annotationSelector?: str
+
+    group?: str
+
+    kind?: str
+
+    labelSelector?: str
+
+    name?: str
+
+    namespace?: str
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourceKustomizeReplicasItems0:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 scm provider template spec source kustomize replicas items0
 
     Attributes
@@ -22542,7 +34024,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourcePlugin:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 scm provider template spec source plugin
 
     Attributes
@@ -22564,7 +34046,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourcePluginEnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 scm provider template spec source plugin env items0
 
     Attributes
@@ -22582,7 +34064,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourcePluginParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 scm provider template spec source plugin parameters items0
 
     Attributes
@@ -22608,7 +34090,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourcesItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 scm provider template spec sources items0
 
     Attributes
@@ -22621,6 +34103,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourcesItems0Kustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourcesItems0Plugin, default is Undefined, optional
@@ -22642,6 +34126,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourcesItems0Kustomize
 
+    name?: str
+
     path?: str
 
     plugin?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourcesItems0Plugin
@@ -22654,7 +34140,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourcesItems0Directory:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 scm provider template spec sources items0 directory
 
     Attributes
@@ -22680,7 +34166,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourcesItems0DirectoryJsonnet:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 scm provider template spec sources items0 directory jsonnet
 
     Attributes
@@ -22702,7 +34188,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourcesItems0DirectoryJsonnetExtVarsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 scm provider template spec sources items0 directory jsonnet ext vars items0
 
     Attributes
@@ -22724,7 +34210,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourcesItems0DirectoryJsonnetTlasItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 scm provider template spec sources items0 directory jsonnet tlas items0
 
     Attributes
@@ -22746,15 +34232,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourcesItems0Helm:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 scm provider template spec sources items0 helm
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     fileParameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourcesItems0HelmFileParametersItems0], default is Undefined, optional
         file parameters
     ignoreMissingValueFiles : bool, default is Undefined, optional
         ignore missing value files
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    namespace : str, default is Undefined, optional
+        namespace
     parameters : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourcesItems0HelmParametersItems0], default is Undefined, optional
         parameters
     passCredentials : bool, default is Undefined, optional
@@ -22763,18 +34255,30 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
         values
+    valuesObject : any, default is Undefined, optional
+        values object
     version : str, default is Undefined, optional
         version
     """
 
 
+    apiVersions?: [str]
+
     fileParameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourcesItems0HelmFileParametersItems0]
 
     ignoreMissingValueFiles?: bool
+
+    kubeVersion?: str
+
+    namespace?: str
 
     parameters?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourcesItems0HelmParametersItems0]
 
@@ -22784,15 +34288,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
 
     skipCrds?: bool
 
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
+
     valueFiles?: [str]
 
     values?: str
+
+    valuesObject?: any
 
     version?: str
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourcesItems0HelmFileParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 scm provider template spec sources items0 helm file parameters items0
 
     Attributes
@@ -22810,7 +34320,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourcesItems0HelmParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 scm provider template spec sources items0 helm parameters items0
 
     Attributes
@@ -22832,29 +34342,43 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourcesItems0Kustomize:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 scm provider template spec sources items0 kustomize
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     commonAnnotations : {str:str}, default is Undefined, optional
         common annotations
     commonAnnotationsEnvsubst : bool, default is Undefined, optional
         common annotations envsubst
     commonLabels : {str:str}, default is Undefined, optional
         common labels
+    components : [str], default is Undefined, optional
+        components
     forceCommonAnnotations : bool, default is Undefined, optional
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
+    labelWithoutSelector : bool, default is Undefined, optional
+        label without selector
     namePrefix : str, default is Undefined, optional
         name prefix
     nameSuffix : str, default is Undefined, optional
         name suffix
     namespace : str, default is Undefined, optional
         namespace
+    patches : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourcesItems0KustomizePatchesItems0], default is Undefined, optional
+        patches
     replicas : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourcesItems0KustomizeReplicasItems0], default is Undefined, optional
         replicas
     version : str, default is Undefined, optional
@@ -22862,17 +34386,29 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
     """
 
 
+    apiVersions?: [str]
+
     commonAnnotations?: {str:str}
 
     commonAnnotationsEnvsubst?: bool
 
     commonLabels?: {str:str}
 
+    components?: [str]
+
     forceCommonAnnotations?: bool
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
+
+    kubeVersion?: str
+
+    labelIncludeTemplates?: bool
+
+    labelWithoutSelector?: bool
 
     namePrefix?: str
 
@@ -22880,13 +34416,79 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
 
     namespace?: str
 
+    patches?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourcesItems0KustomizePatchesItems0]
+
     replicas?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourcesItems0KustomizeReplicasItems0]
 
     version?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourcesItems0KustomizeReplicasItems0:
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourcesItems0KustomizePatchesItems0:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 scm provider template spec sources items0 kustomize patches items0
+
+    Attributes
+    ----------
+    options : {str:bool}, default is Undefined, optional
+        options
+    patch : str, default is Undefined, optional
+        patch
+    path : str, default is Undefined, optional
+        path
+    target : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourcesItems0KustomizePatchesItems0Target, default is Undefined, optional
+        target
     """
+
+
+    options?: {str:bool}
+
+    patch?: str
+
+    path?: str
+
+    target?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourcesItems0KustomizePatchesItems0Target
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourcesItems0KustomizePatchesItems0Target:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 scm provider template spec sources items0 kustomize patches items0 target
+
+    Attributes
+    ----------
+    annotationSelector : str, default is Undefined, optional
+        annotation selector
+    group : str, default is Undefined, optional
+        group
+    kind : str, default is Undefined, optional
+        kind
+    labelSelector : str, default is Undefined, optional
+        label selector
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    annotationSelector?: str
+
+    group?: str
+
+    kind?: str
+
+    labelSelector?: str
+
+    name?: str
+
+    namespace?: str
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourcesItems0KustomizeReplicasItems0:
+    r"""
     argoproj io v1alpha1 application set spec generators items0 scm provider template spec sources items0 kustomize replicas items0
 
     Attributes
@@ -22904,7 +34506,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourcesItems0Plugin:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 scm provider template spec sources items0 plugin
 
     Attributes
@@ -22926,7 +34528,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourcesItems0PluginEnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 scm provider template spec sources items0 plugin env items0
 
     Attributes
@@ -22944,7 +34546,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourcesItems0PluginParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 scm provider template spec sources items0 plugin parameters items0
 
     Attributes
@@ -22970,7 +34572,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSyncPolicy:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 scm provider template spec sync policy
 
     Attributes
@@ -22996,7 +34598,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSyncPolicyAutomated:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 scm provider template spec sync policy automated
 
     Attributes
@@ -23018,7 +34620,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSyncPolicyManagedNamespaceMetadata:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 scm provider template spec sync policy managed namespace metadata
 
     Attributes
@@ -23036,7 +34638,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSyncPolicyRetry:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 scm provider template spec sync policy retry
 
     Attributes
@@ -23054,7 +34656,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSyncPolicyRetryBackoff:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 scm provider template spec sync policy retry backoff
 
     Attributes
@@ -23076,7 +34678,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0Selector:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 selector
 
     Attributes
@@ -23094,7 +34696,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0Selector:
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0SelectorMatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec generators items0 selector match expressions items0
 
     Attributes
@@ -23115,22 +34717,48 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0SelectorMatchExpressi
     values?: [str]
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecPreservedFields:
+schema ArgoprojIoV1alpha1ApplicationSetSpecIgnoreApplicationDifferencesItems0:
+    r"""
+    argoproj io v1alpha1 application set spec ignore application differences items0
+
+    Attributes
+    ----------
+    jqPathExpressions : [str], default is Undefined, optional
+        jq path expressions
+    jsonPointers : [str], default is Undefined, optional
+        json pointers
+    name : str, default is Undefined, optional
+        name
     """
+
+
+    jqPathExpressions?: [str]
+
+    jsonPointers?: [str]
+
+    name?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecPreservedFields:
+    r"""
     argoproj io v1alpha1 application set spec preserved fields
 
     Attributes
     ----------
     annotations : [str], default is Undefined, optional
         annotations
+    labels : [str], default is Undefined, optional
+        labels
     """
 
 
     annotations?: [str]
 
+    labels?: [str]
+
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecStrategy:
-    """
+    r"""
     argoproj io v1alpha1 application set spec strategy
 
     Attributes
@@ -23148,7 +34776,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecStrategy:
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecStrategyRollingSync:
-    """
+    r"""
     argoproj io v1alpha1 application set spec strategy rolling sync
 
     Attributes
@@ -23162,7 +34790,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecStrategyRollingSync:
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecStrategyRollingSyncStepsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec strategy rolling sync steps items0
 
     Attributes
@@ -23180,7 +34808,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecStrategyRollingSyncStepsItems0:
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecStrategyRollingSyncStepsItems0MatchExpressionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec strategy rolling sync steps items0 match expressions items0
 
     Attributes
@@ -23202,21 +34830,25 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecStrategyRollingSyncStepsItems0MatchEx
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecSyncPolicy:
-    """
+    r"""
     argoproj io v1alpha1 application set spec sync policy
 
     Attributes
     ----------
+    applicationsSync : str, default is Undefined, optional
+        applications sync
     preserveResourcesOnDeletion : bool, default is Undefined, optional
         preserve resources on deletion
     """
 
 
+    applicationsSync?: "create-only" | "create-update" | "create-delete" | "sync"
+
     preserveResourcesOnDeletion?: bool
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecTemplate:
-    """
+    r"""
     argoproj io v1alpha1 application set spec template
 
     Attributes
@@ -23234,7 +34866,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplate:
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateMetadata:
-    """
+    r"""
     argoproj io v1alpha1 application set spec template metadata
 
     Attributes
@@ -23264,7 +34896,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateMetadata:
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpec:
-    """
+    r"""
     argoproj io v1alpha1 application set spec template spec
 
     Attributes
@@ -23281,6 +34913,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpec:
         revision history limit
     source : ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSource, default is Undefined, optional
         source
+    sourceHydrator : ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceHydrator, default is Undefined, optional
+        source hydrator
     sources : [ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0], default is Undefined, optional
         sources
     syncPolicy : ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSyncPolicy, default is Undefined, optional
@@ -23300,13 +34934,15 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpec:
 
     source?: ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSource
 
+    sourceHydrator?: ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceHydrator
+
     sources?: [ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0]
 
     syncPolicy?: ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSyncPolicy
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecDestination:
-    """
+    r"""
     argoproj io v1alpha1 application set spec template spec destination
 
     Attributes
@@ -23328,7 +34964,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecDestination:
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecIgnoreDifferencesItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec template spec ignore differences items0
 
     Attributes
@@ -23366,7 +35002,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecIgnoreDifferencesItems0:
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecInfoItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec template spec info items0
 
     Attributes
@@ -23384,7 +35020,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecInfoItems0:
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSource:
-    """
+    r"""
     argoproj io v1alpha1 application set spec template spec source
 
     Attributes
@@ -23397,6 +35033,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSource:
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceKustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcePlugin, default is Undefined, optional
@@ -23418,6 +35056,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSource:
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceKustomize
 
+    name?: str
+
     path?: str
 
     plugin?: ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcePlugin
@@ -23430,7 +35070,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSource:
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceDirectory:
-    """
+    r"""
     argoproj io v1alpha1 application set spec template spec source directory
 
     Attributes
@@ -23456,7 +35096,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceDirectory:
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceDirectoryJsonnet:
-    """
+    r"""
     argoproj io v1alpha1 application set spec template spec source directory jsonnet
 
     Attributes
@@ -23478,7 +35118,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceDirectoryJsonnet:
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceDirectoryJsonnetExtVarsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec template spec source directory jsonnet ext vars items0
 
     Attributes
@@ -23500,7 +35140,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceDirectoryJsonnetExt
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceDirectoryJsonnetTlasItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec template spec source directory jsonnet tlas items0
 
     Attributes
@@ -23522,15 +35162,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceDirectoryJsonnetTla
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceHelm:
-    """
+    r"""
     argoproj io v1alpha1 application set spec template spec source helm
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     fileParameters : [ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceHelmFileParametersItems0], default is Undefined, optional
         file parameters
     ignoreMissingValueFiles : bool, default is Undefined, optional
         ignore missing value files
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    namespace : str, default is Undefined, optional
+        namespace
     parameters : [ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceHelmParametersItems0], default is Undefined, optional
         parameters
     passCredentials : bool, default is Undefined, optional
@@ -23539,18 +35185,30 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceHelm:
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
         values
+    valuesObject : any, default is Undefined, optional
+        values object
     version : str, default is Undefined, optional
         version
     """
 
 
+    apiVersions?: [str]
+
     fileParameters?: [ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceHelmFileParametersItems0]
 
     ignoreMissingValueFiles?: bool
+
+    kubeVersion?: str
+
+    namespace?: str
 
     parameters?: [ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceHelmParametersItems0]
 
@@ -23560,15 +35218,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceHelm:
 
     skipCrds?: bool
 
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
+
     valueFiles?: [str]
 
     values?: str
+
+    valuesObject?: any
 
     version?: str
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceHelmFileParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec template spec source helm file parameters items0
 
     Attributes
@@ -23586,7 +35250,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceHelmFileParametersI
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceHelmParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec template spec source helm parameters items0
 
     Attributes
@@ -23607,30 +35271,120 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceHelmParametersItems
     value?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceKustomize:
+schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceHydrator:
+    r"""
+    argoproj io v1alpha1 application set spec template spec source hydrator
+
+    Attributes
+    ----------
+    drySource : ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceHydratorDrySource, default is Undefined, required
+        dry source
+    hydrateTo : ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceHydratorHydrateTo, default is Undefined, optional
+        hydrate to
+    syncSource : ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceHydratorSyncSource, default is Undefined, required
+        sync source
     """
+
+
+    drySource: ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceHydratorDrySource
+
+    hydrateTo?: ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceHydratorHydrateTo
+
+    syncSource: ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceHydratorSyncSource
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceHydratorDrySource:
+    r"""
+    argoproj io v1alpha1 application set spec template spec source hydrator dry source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    repoURL : str, default is Undefined, required
+        repo URL
+    targetRevision : str, default is Undefined, required
+        target revision
+    """
+
+
+    path: str
+
+    repoURL: str
+
+    targetRevision: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceHydratorHydrateTo:
+    r"""
+    argoproj io v1alpha1 application set spec template spec source hydrator hydrate to
+
+    Attributes
+    ----------
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceHydratorSyncSource:
+    r"""
+    argoproj io v1alpha1 application set spec template spec source hydrator sync source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    path: str
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceKustomize:
+    r"""
     argoproj io v1alpha1 application set spec template spec source kustomize
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     commonAnnotations : {str:str}, default is Undefined, optional
         common annotations
     commonAnnotationsEnvsubst : bool, default is Undefined, optional
         common annotations envsubst
     commonLabels : {str:str}, default is Undefined, optional
         common labels
+    components : [str], default is Undefined, optional
+        components
     forceCommonAnnotations : bool, default is Undefined, optional
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
+    labelWithoutSelector : bool, default is Undefined, optional
+        label without selector
     namePrefix : str, default is Undefined, optional
         name prefix
     nameSuffix : str, default is Undefined, optional
         name suffix
     namespace : str, default is Undefined, optional
         namespace
+    patches : [ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceKustomizePatchesItems0], default is Undefined, optional
+        patches
     replicas : [ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceKustomizeReplicasItems0], default is Undefined, optional
         replicas
     version : str, default is Undefined, optional
@@ -23638,17 +35392,29 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceKustomize:
     """
 
 
+    apiVersions?: [str]
+
     commonAnnotations?: {str:str}
 
     commonAnnotationsEnvsubst?: bool
 
     commonLabels?: {str:str}
 
+    components?: [str]
+
     forceCommonAnnotations?: bool
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
+
+    kubeVersion?: str
+
+    labelIncludeTemplates?: bool
+
+    labelWithoutSelector?: bool
 
     namePrefix?: str
 
@@ -23656,13 +35422,79 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceKustomize:
 
     namespace?: str
 
+    patches?: [ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceKustomizePatchesItems0]
+
     replicas?: [ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceKustomizeReplicasItems0]
 
     version?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceKustomizeReplicasItems0:
+schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceKustomizePatchesItems0:
+    r"""
+    argoproj io v1alpha1 application set spec template spec source kustomize patches items0
+
+    Attributes
+    ----------
+    options : {str:bool}, default is Undefined, optional
+        options
+    patch : str, default is Undefined, optional
+        patch
+    path : str, default is Undefined, optional
+        path
+    target : ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceKustomizePatchesItems0Target, default is Undefined, optional
+        target
     """
+
+
+    options?: {str:bool}
+
+    patch?: str
+
+    path?: str
+
+    target?: ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceKustomizePatchesItems0Target
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceKustomizePatchesItems0Target:
+    r"""
+    argoproj io v1alpha1 application set spec template spec source kustomize patches items0 target
+
+    Attributes
+    ----------
+    annotationSelector : str, default is Undefined, optional
+        annotation selector
+    group : str, default is Undefined, optional
+        group
+    kind : str, default is Undefined, optional
+        kind
+    labelSelector : str, default is Undefined, optional
+        label selector
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    annotationSelector?: str
+
+    group?: str
+
+    kind?: str
+
+    labelSelector?: str
+
+    name?: str
+
+    namespace?: str
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceKustomizeReplicasItems0:
+    r"""
     argoproj io v1alpha1 application set spec template spec source kustomize replicas items0
 
     Attributes
@@ -23680,7 +35512,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceKustomizeReplicasIt
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcePlugin:
-    """
+    r"""
     argoproj io v1alpha1 application set spec template spec source plugin
 
     Attributes
@@ -23702,7 +35534,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcePlugin:
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcePluginEnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec template spec source plugin env items0
 
     Attributes
@@ -23720,7 +35552,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcePluginEnvItems0:
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcePluginParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec template spec source plugin parameters items0
 
     Attributes
@@ -23746,7 +35578,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcePluginParametersIte
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec template spec sources items0
 
     Attributes
@@ -23759,6 +35591,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0:
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0Kustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0Plugin, default is Undefined, optional
@@ -23780,6 +35614,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0:
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0Kustomize
 
+    name?: str
+
     path?: str
 
     plugin?: ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0Plugin
@@ -23792,7 +35628,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0:
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0Directory:
-    """
+    r"""
     argoproj io v1alpha1 application set spec template spec sources items0 directory
 
     Attributes
@@ -23818,7 +35654,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0Directory:
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0DirectoryJsonnet:
-    """
+    r"""
     argoproj io v1alpha1 application set spec template spec sources items0 directory jsonnet
 
     Attributes
@@ -23840,7 +35676,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0DirectoryJso
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0DirectoryJsonnetExtVarsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec template spec sources items0 directory jsonnet ext vars items0
 
     Attributes
@@ -23862,7 +35698,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0DirectoryJso
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0DirectoryJsonnetTlasItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec template spec sources items0 directory jsonnet tlas items0
 
     Attributes
@@ -23884,15 +35720,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0DirectoryJso
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0Helm:
-    """
+    r"""
     argoproj io v1alpha1 application set spec template spec sources items0 helm
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     fileParameters : [ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0HelmFileParametersItems0], default is Undefined, optional
         file parameters
     ignoreMissingValueFiles : bool, default is Undefined, optional
         ignore missing value files
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    namespace : str, default is Undefined, optional
+        namespace
     parameters : [ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0HelmParametersItems0], default is Undefined, optional
         parameters
     passCredentials : bool, default is Undefined, optional
@@ -23901,18 +35743,30 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0Helm:
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
         values
+    valuesObject : any, default is Undefined, optional
+        values object
     version : str, default is Undefined, optional
         version
     """
 
 
+    apiVersions?: [str]
+
     fileParameters?: [ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0HelmFileParametersItems0]
 
     ignoreMissingValueFiles?: bool
+
+    kubeVersion?: str
+
+    namespace?: str
 
     parameters?: [ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0HelmParametersItems0]
 
@@ -23922,15 +35776,21 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0Helm:
 
     skipCrds?: bool
 
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
+
     valueFiles?: [str]
 
     values?: str
+
+    valuesObject?: any
 
     version?: str
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0HelmFileParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec template spec sources items0 helm file parameters items0
 
     Attributes
@@ -23948,7 +35808,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0HelmFilePara
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0HelmParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec template spec sources items0 helm parameters items0
 
     Attributes
@@ -23970,29 +35830,43 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0HelmParamete
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0Kustomize:
-    """
+    r"""
     argoproj io v1alpha1 application set spec template spec sources items0 kustomize
 
     Attributes
     ----------
+    apiVersions : [str], default is Undefined, optional
+        api versions
     commonAnnotations : {str:str}, default is Undefined, optional
         common annotations
     commonAnnotationsEnvsubst : bool, default is Undefined, optional
         common annotations envsubst
     commonLabels : {str:str}, default is Undefined, optional
         common labels
+    components : [str], default is Undefined, optional
+        components
     forceCommonAnnotations : bool, default is Undefined, optional
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
+    kubeVersion : str, default is Undefined, optional
+        kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
+    labelWithoutSelector : bool, default is Undefined, optional
+        label without selector
     namePrefix : str, default is Undefined, optional
         name prefix
     nameSuffix : str, default is Undefined, optional
         name suffix
     namespace : str, default is Undefined, optional
         namespace
+    patches : [ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0KustomizePatchesItems0], default is Undefined, optional
+        patches
     replicas : [ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0KustomizeReplicasItems0], default is Undefined, optional
         replicas
     version : str, default is Undefined, optional
@@ -24000,17 +35874,29 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0Kustomize:
     """
 
 
+    apiVersions?: [str]
+
     commonAnnotations?: {str:str}
 
     commonAnnotationsEnvsubst?: bool
 
     commonLabels?: {str:str}
 
+    components?: [str]
+
     forceCommonAnnotations?: bool
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
+
+    kubeVersion?: str
+
+    labelIncludeTemplates?: bool
+
+    labelWithoutSelector?: bool
 
     namePrefix?: str
 
@@ -24018,13 +35904,79 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0Kustomize:
 
     namespace?: str
 
+    patches?: [ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0KustomizePatchesItems0]
+
     replicas?: [ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0KustomizeReplicasItems0]
 
     version?: str
 
 
-schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0KustomizeReplicasItems0:
+schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0KustomizePatchesItems0:
+    r"""
+    argoproj io v1alpha1 application set spec template spec sources items0 kustomize patches items0
+
+    Attributes
+    ----------
+    options : {str:bool}, default is Undefined, optional
+        options
+    patch : str, default is Undefined, optional
+        patch
+    path : str, default is Undefined, optional
+        path
+    target : ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0KustomizePatchesItems0Target, default is Undefined, optional
+        target
     """
+
+
+    options?: {str:bool}
+
+    patch?: str
+
+    path?: str
+
+    target?: ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0KustomizePatchesItems0Target
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0KustomizePatchesItems0Target:
+    r"""
+    argoproj io v1alpha1 application set spec template spec sources items0 kustomize patches items0 target
+
+    Attributes
+    ----------
+    annotationSelector : str, default is Undefined, optional
+        annotation selector
+    group : str, default is Undefined, optional
+        group
+    kind : str, default is Undefined, optional
+        kind
+    labelSelector : str, default is Undefined, optional
+        label selector
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    annotationSelector?: str
+
+    group?: str
+
+    kind?: str
+
+    labelSelector?: str
+
+    name?: str
+
+    namespace?: str
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0KustomizeReplicasItems0:
+    r"""
     argoproj io v1alpha1 application set spec template spec sources items0 kustomize replicas items0
 
     Attributes
@@ -24042,7 +35994,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0KustomizeRep
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0Plugin:
-    """
+    r"""
     argoproj io v1alpha1 application set spec template spec sources items0 plugin
 
     Attributes
@@ -24064,7 +36016,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0Plugin:
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0PluginEnvItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec template spec sources items0 plugin env items0
 
     Attributes
@@ -24082,7 +36034,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0PluginEnvIte
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0PluginParametersItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set spec template spec sources items0 plugin parameters items0
 
     Attributes
@@ -24108,7 +36060,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0PluginParame
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSyncPolicy:
-    """
+    r"""
     argoproj io v1alpha1 application set spec template spec sync policy
 
     Attributes
@@ -24134,7 +36086,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSyncPolicy:
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSyncPolicyAutomated:
-    """
+    r"""
     argoproj io v1alpha1 application set spec template spec sync policy automated
 
     Attributes
@@ -24156,7 +36108,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSyncPolicyAutomated:
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSyncPolicyManagedNamespaceMetadata:
-    """
+    r"""
     argoproj io v1alpha1 application set spec template spec sync policy managed namespace metadata
 
     Attributes
@@ -24174,7 +36126,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSyncPolicyManagedNamespac
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSyncPolicyRetry:
-    """
+    r"""
     argoproj io v1alpha1 application set spec template spec sync policy retry
 
     Attributes
@@ -24192,7 +36144,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSyncPolicyRetry:
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSyncPolicyRetryBackoff:
-    """
+    r"""
     argoproj io v1alpha1 application set spec template spec sync policy retry backoff
 
     Attributes
@@ -24214,7 +36166,7 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSyncPolicyRetryBackoff:
 
 
 schema ArgoprojIoV1alpha1ApplicationSetStatus:
-    """
+    r"""
     argoproj io v1alpha1 application set status
 
     Attributes
@@ -24223,6 +36175,8 @@ schema ArgoprojIoV1alpha1ApplicationSetStatus:
         application status
     conditions : [ArgoprojIoV1alpha1ApplicationSetStatusConditionsItems0], default is Undefined, optional
         conditions
+    resources : [ArgoprojIoV1alpha1ApplicationSetStatusResourcesItems0], default is Undefined, optional
+        resources
     """
 
 
@@ -24230,9 +36184,11 @@ schema ArgoprojIoV1alpha1ApplicationSetStatus:
 
     conditions?: [ArgoprojIoV1alpha1ApplicationSetStatusConditionsItems0]
 
+    resources?: [ArgoprojIoV1alpha1ApplicationSetStatusResourcesItems0]
+
 
 schema ArgoprojIoV1alpha1ApplicationSetStatusApplicationStatusItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set status application status items0
 
     Attributes
@@ -24247,6 +36203,8 @@ schema ArgoprojIoV1alpha1ApplicationSetStatusApplicationStatusItems0:
         status
     step : str, default is Undefined, required
         step
+    targetRevisions : [str], default is Undefined, required
+        target revisions
     """
 
 
@@ -24260,9 +36218,11 @@ schema ArgoprojIoV1alpha1ApplicationSetStatusApplicationStatusItems0:
 
     step: str
 
+    targetRevisions: [str]
+
 
 schema ArgoprojIoV1alpha1ApplicationSetStatusConditionsItems0:
-    """
+    r"""
     argoproj io v1alpha1 application set status conditions items0
 
     Attributes
@@ -24289,5 +36249,81 @@ schema ArgoprojIoV1alpha1ApplicationSetStatusConditionsItems0:
     status: str
 
     $type: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetStatusResourcesItems0:
+    r"""
+    argoproj io v1alpha1 application set status resources items0
+
+    Attributes
+    ----------
+    group : str, default is Undefined, optional
+        group
+    health : ArgoprojIoV1alpha1ApplicationSetStatusResourcesItems0Health, default is Undefined, optional
+        health
+    hook : bool, default is Undefined, optional
+        hook
+    kind : str, default is Undefined, optional
+        kind
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    requiresDeletionConfirmation : bool, default is Undefined, optional
+        requires deletion confirmation
+    requiresPruning : bool, default is Undefined, optional
+        requires pruning
+    status : str, default is Undefined, optional
+        status
+    syncWave : int, default is Undefined, optional
+        sync wave
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    group?: str
+
+    health?: ArgoprojIoV1alpha1ApplicationSetStatusResourcesItems0Health
+
+    hook?: bool
+
+    kind?: str
+
+    name?: str
+
+    namespace?: str
+
+    requiresDeletionConfirmation?: bool
+
+    requiresPruning?: bool
+
+    status?: str
+
+    syncWave?: int
+
+    version?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetStatusResourcesItems0Health:
+    r"""
+    argoproj io v1alpha1 application set status resources items0 health
+
+    Attributes
+    ----------
+    lastTransitionTime : str, default is Undefined, optional
+        last transition time
+    message : str, default is Undefined, optional
+        message
+    status : str, default is Undefined, optional
+        status
+    """
+
+
+    lastTransitionTime?: str
+
+    message?: str
+
+    status?: str
 
 
