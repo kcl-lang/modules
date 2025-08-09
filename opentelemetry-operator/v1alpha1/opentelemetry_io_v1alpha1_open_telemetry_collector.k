@@ -4,7 +4,7 @@ Editing this file might prove futile when you re-run the KCL auto-gen generate c
 """
 import regex
 import k8s.apimachinery.pkg.apis.meta.v1
-regex_match = regex.match
+_regex_match = regex.match
 
 
 schema OpenTelemetryCollector:
@@ -486,7 +486,7 @@ schema OpentelemetryIoV1alpha1OpenTelemetryCollectorSpecAdditionalContainersItem
 
 
     check:
-        regex_match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
+        _regex_match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
 
 
 schema OpentelemetryIoV1alpha1OpenTelemetryCollectorSpecAdditionalContainersItems0EnvItems0ValueFromSecretKeyRef:
@@ -1136,8 +1136,8 @@ schema OpentelemetryIoV1alpha1OpenTelemetryCollectorSpecAdditionalContainersItem
 
 
     check:
-        all _, limits in limits {regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests {regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
+        all _, limits in limits {_regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests {_regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema OpentelemetryIoV1alpha1OpenTelemetryCollectorSpecAdditionalContainersItems0ResourcesClaimsItems0:
@@ -2507,8 +2507,8 @@ schema OpentelemetryIoV1alpha1OpenTelemetryCollectorSpecAutoscalerMetricsItems0P
 
 
     check:
-        regex_match(str(averageValue), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if averageValue
-        regex_match(str(value), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if value
+        _regex_match(str(averageValue), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if averageValue
+        _regex_match(str(value), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if value
 
 
 schema OpentelemetryIoV1alpha1OpenTelemetryCollectorSpecConfigmapsItems0:
@@ -2734,7 +2734,7 @@ schema OpentelemetryIoV1alpha1OpenTelemetryCollectorSpecEnvItems0ValueFromResour
 
 
     check:
-        regex_match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
+        _regex_match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
 
 
 schema OpentelemetryIoV1alpha1OpenTelemetryCollectorSpecEnvItems0ValueFromSecretKeyRef:
@@ -3104,7 +3104,7 @@ schema OpentelemetryIoV1alpha1OpenTelemetryCollectorSpecInitContainersItems0EnvI
 
 
     check:
-        regex_match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
+        _regex_match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
 
 
 schema OpentelemetryIoV1alpha1OpenTelemetryCollectorSpecInitContainersItems0EnvItems0ValueFromSecretKeyRef:
@@ -3754,8 +3754,8 @@ schema OpentelemetryIoV1alpha1OpenTelemetryCollectorSpecInitContainersItems0Reso
 
 
     check:
-        all _, limits in limits {regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests {regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
+        all _, limits in limits {_regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests {_regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema OpentelemetryIoV1alpha1OpenTelemetryCollectorSpecInitContainersItems0ResourcesClaimsItems0:
@@ -4703,8 +4703,8 @@ schema OpentelemetryIoV1alpha1OpenTelemetryCollectorSpecResources:
 
 
     check:
-        all _, limits in limits {regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests {regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
+        all _, limits in limits {_regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests {_regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema OpentelemetryIoV1alpha1OpenTelemetryCollectorSpecResourcesClaimsItems0:
@@ -5798,7 +5798,7 @@ schema OpentelemetryIoV1alpha1OpenTelemetryCollectorSpecTargetAllocatorEnvItems0
 
 
     check:
-        regex_match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
+        _regex_match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
 
 
 schema OpentelemetryIoV1alpha1OpenTelemetryCollectorSpecTargetAllocatorEnvItems0ValueFromSecretKeyRef:
@@ -6082,8 +6082,8 @@ schema OpentelemetryIoV1alpha1OpenTelemetryCollectorSpecTargetAllocatorResources
 
 
     check:
-        all _, limits in limits {regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests {regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
+        all _, limits in limits {_regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests {_regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema OpentelemetryIoV1alpha1OpenTelemetryCollectorSpecTargetAllocatorResourcesClaimsItems0:
@@ -6697,8 +6697,8 @@ schema OpentelemetryIoV1alpha1OpenTelemetryCollectorSpecVolumeClaimTemplatesItem
 
 
     check:
-        all _, limits in limits {regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests {regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
+        all _, limits in limits {_regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests {_regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema OpentelemetryIoV1alpha1OpenTelemetryCollectorSpecVolumeClaimTemplatesItems0SpecSelector:
@@ -6784,8 +6784,8 @@ schema OpentelemetryIoV1alpha1OpenTelemetryCollectorSpecVolumeClaimTemplatesItem
 
 
     check:
-        all _, allocatedResources in allocatedResources {regex_match(str(allocatedResources), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if allocatedResources } if allocatedResources
-        all _, capacity in capacity {regex_match(str(capacity), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if capacity } if capacity
+        all _, allocatedResources in allocatedResources {_regex_match(str(allocatedResources), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if allocatedResources } if allocatedResources
+        all _, capacity in capacity {_regex_match(str(capacity), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if capacity } if capacity
 
 
 schema OpentelemetryIoV1alpha1OpenTelemetryCollectorSpecVolumeClaimTemplatesItems0StatusConditionsItems0:
@@ -7355,7 +7355,7 @@ schema OpentelemetryIoV1alpha1OpenTelemetryCollectorSpecVolumesItems0DownwardAPI
 
 
     check:
-        regex_match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
+        _regex_match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
 
 
 schema OpentelemetryIoV1alpha1OpenTelemetryCollectorSpecVolumesItems0EmptyDir:
@@ -7377,7 +7377,7 @@ schema OpentelemetryIoV1alpha1OpenTelemetryCollectorSpecVolumesItems0EmptyDir:
 
 
     check:
-        regex_match(str(sizeLimit), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if sizeLimit
+        _regex_match(str(sizeLimit), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if sizeLimit
 
 
 schema OpentelemetryIoV1alpha1OpenTelemetryCollectorSpecVolumesItems0Ephemeral:
@@ -7555,8 +7555,8 @@ schema OpentelemetryIoV1alpha1OpenTelemetryCollectorSpecVolumesItems0EphemeralVo
 
 
     check:
-        all _, limits in limits {regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests {regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
+        all _, limits in limits {_regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests {_regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema OpentelemetryIoV1alpha1OpenTelemetryCollectorSpecVolumesItems0EphemeralVolumeClaimTemplateSpecSelector:
@@ -8170,7 +8170,7 @@ schema OpentelemetryIoV1alpha1OpenTelemetryCollectorSpecVolumesItems0ProjectedSo
 
 
     check:
-        regex_match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
+        _regex_match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
 
 
 schema OpentelemetryIoV1alpha1OpenTelemetryCollectorSpecVolumesItems0ProjectedSourcesItems0Secret:
