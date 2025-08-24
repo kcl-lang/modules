@@ -38,9 +38,15 @@ schema PkgCrossplaneIoV1beta1ImageConfigSpec:
     Attributes
     ----------
     matchImages : [PkgCrossplaneIoV1beta1ImageConfigSpecMatchImagesItems0], default is Undefined, required
-        MatchImages is a list of image matching rules that should be satisfied.
+        MatchImages is a list of image matching rules. This ImageConfig will
+        match an image if any one of these rules is satisfied. In the case where
+        multiple ImageConfigs match an image for a given purpose the one with the
+        most specific match will be used. If multiple rules of equal specificity
+        match an arbitrary one will be selected.
     registry : PkgCrossplaneIoV1beta1ImageConfigSpecRegistry, default is Undefined, optional
         registry
+    rewriteImage : PkgCrossplaneIoV1beta1ImageConfigSpecRewriteImage, default is Undefined, optional
+        rewrite image
     verification : PkgCrossplaneIoV1beta1ImageConfigSpecVerification, default is Undefined, optional
         verification
     """
@@ -49,6 +55,8 @@ schema PkgCrossplaneIoV1beta1ImageConfigSpec:
     matchImages: [PkgCrossplaneIoV1beta1ImageConfigSpecMatchImagesItems0]
 
     registry?: PkgCrossplaneIoV1beta1ImageConfigSpecRegistry
+
+    rewriteImage?: PkgCrossplaneIoV1beta1ImageConfigSpecRewriteImage
 
     verification?: PkgCrossplaneIoV1beta1ImageConfigSpecVerification
 
@@ -60,7 +68,8 @@ schema PkgCrossplaneIoV1beta1ImageConfigSpecMatchImagesItems0:
     Attributes
     ----------
     prefix : str, default is Undefined, required
-        Prefix is the prefix that should be matched.
+        Prefix is the prefix that should be matched. When multiple prefix rules
+        match an image path, the longest one takes precedence.
     $type : str, default is "Prefix", optional
         Type is the type of match.
     """
@@ -116,6 +125,22 @@ schema PkgCrossplaneIoV1beta1ImageConfigSpecRegistryAuthenticationPullSecretRef:
 
 
     name?: str = ""
+
+
+schema PkgCrossplaneIoV1beta1ImageConfigSpecRewriteImage:
+    r"""
+    RewriteImage defines how a matched image's path should be rewritten.
+
+    Attributes
+    ----------
+    prefix : str, default is Undefined, required
+        Prefix is the prefix that will replace the portion of the image's path
+        matched by the prefix in the ImageMatch. If multiple prefixes matched,
+        the longest one will be replaced.
+    """
+
+
+    prefix: str
 
 
 schema PkgCrossplaneIoV1beta1ImageConfigSpecVerification:

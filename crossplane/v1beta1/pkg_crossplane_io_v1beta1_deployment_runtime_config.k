@@ -391,7 +391,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         Init containers may not have Lifecycle actions, Readiness probes, Liveness probes, or Startup probes.
         The resourceRequirements of an init container are taken into account during scheduling
         by finding the highest request/limit for each resource type, and then using the max of
-        of that value or the sum of the normal containers. Limits are applied to init containers
+        that value or the sum of the normal containers. Limits are applied to init containers
         in a similar fashion.
         Init containers cannot currently be added or removed.
         Cannot be updated.
@@ -448,6 +448,8 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         DynamicResourceAllocation feature gate.
 
         This field is immutable.
+    resources : PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecResources, default is Undefined, optional
+        resources
     restartPolicy : str, default is Undefined, optional
         Restart policy for all containers within the pod.
         One of Always, OnFailure, Never. In some contexts, only a subset of those values may be permitted.
@@ -561,6 +563,8 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
     readinessGates?: [PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecReadinessGatesItems0]
 
     resourceClaims?: [PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecResourceClaimsItems0]
+
+    resources?: PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecResources
 
     restartPolicy?: str
 
@@ -898,7 +902,6 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         pod labels will be ignored. The default value is empty.
         The same key is forbidden to exist in both matchLabelKeys and labelSelector.
         Also, matchLabelKeys cannot be set when labelSelector isn't set.
-        This is a beta field and requires enabling MatchLabelKeysInPodAffinity feature gate (enabled by default).
     mismatchLabelKeys : [str], default is Undefined, optional
         MismatchLabelKeys is a set of pod label keys to select which pods will
         be taken into consideration. The keys are used to lookup values from the
@@ -908,7 +911,6 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         pod labels will be ignored. The default value is empty.
         The same key is forbidden to exist in both mismatchLabelKeys and labelSelector.
         Also, mismatchLabelKeys cannot be set when labelSelector isn't set.
-        This is a beta field and requires enabling MatchLabelKeysInPodAffinity feature gate (enabled by default).
     namespaceSelector : PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector, default is Undefined, optional
         namespace selector
     namespaces : [str], default is Undefined, optional
@@ -1059,7 +1061,6 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         pod labels will be ignored. The default value is empty.
         The same key is forbidden to exist in both matchLabelKeys and labelSelector.
         Also, matchLabelKeys cannot be set when labelSelector isn't set.
-        This is a beta field and requires enabling MatchLabelKeysInPodAffinity feature gate (enabled by default).
     mismatchLabelKeys : [str], default is Undefined, optional
         MismatchLabelKeys is a set of pod label keys to select which pods will
         be taken into consideration. The keys are used to lookup values from the
@@ -1069,7 +1070,6 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         pod labels will be ignored. The default value is empty.
         The same key is forbidden to exist in both mismatchLabelKeys and labelSelector.
         Also, mismatchLabelKeys cannot be set when labelSelector isn't set.
-        This is a beta field and requires enabling MatchLabelKeysInPodAffinity feature gate (enabled by default).
     namespaceSelector : PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector, default is Undefined, optional
         namespace selector
     namespaces : [str], default is Undefined, optional
@@ -1266,7 +1266,6 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         pod labels will be ignored. The default value is empty.
         The same key is forbidden to exist in both matchLabelKeys and labelSelector.
         Also, matchLabelKeys cannot be set when labelSelector isn't set.
-        This is a beta field and requires enabling MatchLabelKeysInPodAffinity feature gate (enabled by default).
     mismatchLabelKeys : [str], default is Undefined, optional
         MismatchLabelKeys is a set of pod label keys to select which pods will
         be taken into consideration. The keys are used to lookup values from the
@@ -1276,7 +1275,6 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         pod labels will be ignored. The default value is empty.
         The same key is forbidden to exist in both mismatchLabelKeys and labelSelector.
         Also, mismatchLabelKeys cannot be set when labelSelector isn't set.
-        This is a beta field and requires enabling MatchLabelKeysInPodAffinity feature gate (enabled by default).
     namespaceSelector : PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector, default is Undefined, optional
         namespace selector
     namespaces : [str], default is Undefined, optional
@@ -1427,7 +1425,6 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         pod labels will be ignored. The default value is empty.
         The same key is forbidden to exist in both matchLabelKeys and labelSelector.
         Also, matchLabelKeys cannot be set when labelSelector isn't set.
-        This is a beta field and requires enabling MatchLabelKeysInPodAffinity feature gate (enabled by default).
     mismatchLabelKeys : [str], default is Undefined, optional
         MismatchLabelKeys is a set of pod label keys to select which pods will
         be taken into consideration. The keys are used to lookup values from the
@@ -1437,7 +1434,6 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         pod labels will be ignored. The default value is empty.
         The same key is forbidden to exist in both mismatchLabelKeys and labelSelector.
         Also, mismatchLabelKeys cannot be set when labelSelector isn't set.
-        This is a beta field and requires enabling MatchLabelKeysInPodAffinity feature gate (enabled by default).
     namespaceSelector : PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector, default is Undefined, optional
         namespace selector
     namespaces : [str], default is Undefined, optional
@@ -1748,14 +1744,14 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0EnvFromItems0:
     r"""
-    EnvFromSource represents the source of a set of ConfigMaps
+    EnvFromSource represents the source of a set of ConfigMaps or Secrets
 
     Attributes
     ----------
     configMapRef : PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0EnvFromItems0ConfigMapRef, default is Undefined, optional
         config map ref
     prefix : str, default is Undefined, optional
-        An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
+        Optional text to prepend to the name of each environment variable. Must be a C_IDENTIFIER.
     secretRef : PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0EnvFromItems0SecretRef, default is Undefined, optional
         secret ref
     """
@@ -1977,12 +1973,18 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         post start
     preStop : PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0LifecyclePreStop, default is Undefined, optional
         pre stop
+    stopSignal : str, default is Undefined, optional
+        StopSignal defines which signal will be sent to a container when it is being stopped.
+        If not specified, the default is defined by the container runtime in use.
+        StopSignal can only be set for Pods with a non-empty .spec.os.name
     """
 
 
     postStart?: PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0LifecyclePostStart
 
     preStop?: PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0LifecyclePreStop
+
+    stopSignal?: str
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0LifecyclePostStart:
@@ -2016,7 +2018,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0LifecyclePostStartExec:
     r"""
-    Exec specifies the action to take.
+    Exec specifies a command to execute in the container.
 
     Attributes
     ----------
@@ -2034,7 +2036,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0LifecyclePostStartHTTPGet:
     r"""
-    HTTPGet specifies the http request to perform.
+    HTTPGet specifies an HTTP GET request to perform.
 
     Attributes
     ----------
@@ -2087,7 +2089,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0LifecyclePostStartSleep:
     r"""
-    Sleep represents the duration that the container should sleep before being terminated.
+    Sleep represents a duration that the container should sleep.
 
     Attributes
     ----------
@@ -2102,8 +2104,8 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0LifecyclePostStartTCPSocket:
     r"""
     Deprecated. TCPSocket is NOT supported as a LifecycleHandler and kept
-    for the backward compatibility. There are no validation of this field and
-    lifecycle hooks will fail in runtime when tcp handler is specified.
+    for backward compatibility. There is no validation of this field and
+    lifecycle hooks will fail at runtime when it is specified.
 
     Attributes
     ----------
@@ -2157,7 +2159,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0LifecyclePreStopExec:
     r"""
-    Exec specifies the action to take.
+    Exec specifies a command to execute in the container.
 
     Attributes
     ----------
@@ -2175,7 +2177,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0LifecyclePreStopHTTPGet:
     r"""
-    HTTPGet specifies the http request to perform.
+    HTTPGet specifies an HTTP GET request to perform.
 
     Attributes
     ----------
@@ -2228,7 +2230,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0LifecyclePreStopSleep:
     r"""
-    Sleep represents the duration that the container should sleep before being terminated.
+    Sleep represents a duration that the container should sleep.
 
     Attributes
     ----------
@@ -2243,8 +2245,8 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0LifecyclePreStopTCPSocket:
     r"""
     Deprecated. TCPSocket is NOT supported as a LifecycleHandler and kept
-    for the backward compatibility. There are no validation of this field and
-    lifecycle hooks will fail in runtime when tcp handler is specified.
+    for backward compatibility. There is no validation of this field and
+    lifecycle hooks will fail at runtime when it is specified.
 
     Attributes
     ----------
@@ -2332,7 +2334,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0LivenessProbeExec:
     r"""
-    Exec specifies the action to take.
+    Exec specifies a command to execute in the container.
 
     Attributes
     ----------
@@ -2350,7 +2352,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0LivenessProbeGrpc:
     r"""
-    GRPC specifies an action involving a GRPC port.
+    GRPC specifies a GRPC HealthCheckRequest.
 
     Attributes
     ----------
@@ -2371,7 +2373,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0LivenessProbeHTTPGet:
     r"""
-    HTTPGet specifies the http request to perform.
+    HTTPGet specifies an HTTP GET request to perform.
 
     Attributes
     ----------
@@ -2424,7 +2426,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0LivenessProbeTCPSocket:
     r"""
-    TCPSocket specifies an action involving a TCP port.
+    TCPSocket specifies a connection to a TCP port.
 
     Attributes
     ----------
@@ -2549,7 +2551,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0ReadinessProbeExec:
     r"""
-    Exec specifies the action to take.
+    Exec specifies a command to execute in the container.
 
     Attributes
     ----------
@@ -2567,7 +2569,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0ReadinessProbeGrpc:
     r"""
-    GRPC specifies an action involving a GRPC port.
+    GRPC specifies a GRPC HealthCheckRequest.
 
     Attributes
     ----------
@@ -2588,7 +2590,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0ReadinessProbeHTTPGet:
     r"""
-    HTTPGet specifies the http request to perform.
+    HTTPGet specifies an HTTP GET request to perform.
 
     Attributes
     ----------
@@ -2641,7 +2643,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0ReadinessProbeTCPSocket:
     r"""
-    TCPSocket specifies an action involving a TCP port.
+    TCPSocket specifies a connection to a TCP port.
 
     Attributes
     ----------
@@ -3044,7 +3046,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0StartupProbeExec:
     r"""
-    Exec specifies the action to take.
+    Exec specifies a command to execute in the container.
 
     Attributes
     ----------
@@ -3062,7 +3064,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0StartupProbeGrpc:
     r"""
-    GRPC specifies an action involving a GRPC port.
+    GRPC specifies a GRPC HealthCheckRequest.
 
     Attributes
     ----------
@@ -3083,7 +3085,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0StartupProbeHTTPGet:
     r"""
-    HTTPGet specifies the http request to perform.
+    HTTPGet specifies an HTTP GET request to perform.
 
     Attributes
     ----------
@@ -3136,7 +3138,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecContainersItems0StartupProbeTCPSocket:
     r"""
-    TCPSocket specifies an action involving a TCP port.
+    TCPSocket specifies a connection to a TCP port.
 
     Attributes
     ----------
@@ -3274,9 +3276,10 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
     Attributes
     ----------
     name : str, default is Undefined, optional
+        Name is this DNS resolver option's name.
         Required.
     value : str, default is Undefined, optional
-        value
+        Value is this DNS resolver option's value.
     """
 
 
@@ -3463,14 +3466,14 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0EnvFromItems0:
     r"""
-    EnvFromSource represents the source of a set of ConfigMaps
+    EnvFromSource represents the source of a set of ConfigMaps or Secrets
 
     Attributes
     ----------
     configMapRef : PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0EnvFromItems0ConfigMapRef, default is Undefined, optional
         config map ref
     prefix : str, default is Undefined, optional
-        An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
+        Optional text to prepend to the name of each environment variable. Must be a C_IDENTIFIER.
     secretRef : PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0EnvFromItems0SecretRef, default is Undefined, optional
         secret ref
     """
@@ -3691,12 +3694,18 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         post start
     preStop : PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0LifecyclePreStop, default is Undefined, optional
         pre stop
+    stopSignal : str, default is Undefined, optional
+        StopSignal defines which signal will be sent to a container when it is being stopped.
+        If not specified, the default is defined by the container runtime in use.
+        StopSignal can only be set for Pods with a non-empty .spec.os.name
     """
 
 
     postStart?: PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0LifecyclePostStart
 
     preStop?: PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0LifecyclePreStop
+
+    stopSignal?: str
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0LifecyclePostStart:
@@ -3730,7 +3739,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0LifecyclePostStartExec:
     r"""
-    Exec specifies the action to take.
+    Exec specifies a command to execute in the container.
 
     Attributes
     ----------
@@ -3748,7 +3757,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0LifecyclePostStartHTTPGet:
     r"""
-    HTTPGet specifies the http request to perform.
+    HTTPGet specifies an HTTP GET request to perform.
 
     Attributes
     ----------
@@ -3801,7 +3810,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0LifecyclePostStartSleep:
     r"""
-    Sleep represents the duration that the container should sleep before being terminated.
+    Sleep represents a duration that the container should sleep.
 
     Attributes
     ----------
@@ -3816,8 +3825,8 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0LifecyclePostStartTCPSocket:
     r"""
     Deprecated. TCPSocket is NOT supported as a LifecycleHandler and kept
-    for the backward compatibility. There are no validation of this field and
-    lifecycle hooks will fail in runtime when tcp handler is specified.
+    for backward compatibility. There is no validation of this field and
+    lifecycle hooks will fail at runtime when it is specified.
 
     Attributes
     ----------
@@ -3871,7 +3880,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0LifecyclePreStopExec:
     r"""
-    Exec specifies the action to take.
+    Exec specifies a command to execute in the container.
 
     Attributes
     ----------
@@ -3889,7 +3898,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0LifecyclePreStopHTTPGet:
     r"""
-    HTTPGet specifies the http request to perform.
+    HTTPGet specifies an HTTP GET request to perform.
 
     Attributes
     ----------
@@ -3942,7 +3951,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0LifecyclePreStopSleep:
     r"""
-    Sleep represents the duration that the container should sleep before being terminated.
+    Sleep represents a duration that the container should sleep.
 
     Attributes
     ----------
@@ -3957,8 +3966,8 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0LifecyclePreStopTCPSocket:
     r"""
     Deprecated. TCPSocket is NOT supported as a LifecycleHandler and kept
-    for the backward compatibility. There are no validation of this field and
-    lifecycle hooks will fail in runtime when tcp handler is specified.
+    for backward compatibility. There is no validation of this field and
+    lifecycle hooks will fail at runtime when it is specified.
 
     Attributes
     ----------
@@ -4043,7 +4052,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0LivenessProbeExec:
     r"""
-    Exec specifies the action to take.
+    Exec specifies a command to execute in the container.
 
     Attributes
     ----------
@@ -4061,7 +4070,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0LivenessProbeGrpc:
     r"""
-    GRPC specifies an action involving a GRPC port.
+    GRPC specifies a GRPC HealthCheckRequest.
 
     Attributes
     ----------
@@ -4082,7 +4091,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0LivenessProbeHTTPGet:
     r"""
-    HTTPGet specifies the http request to perform.
+    HTTPGet specifies an HTTP GET request to perform.
 
     Attributes
     ----------
@@ -4135,7 +4144,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0LivenessProbeTCPSocket:
     r"""
-    TCPSocket specifies an action involving a TCP port.
+    TCPSocket specifies a connection to a TCP port.
 
     Attributes
     ----------
@@ -4257,7 +4266,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0ReadinessProbeExec:
     r"""
-    Exec specifies the action to take.
+    Exec specifies a command to execute in the container.
 
     Attributes
     ----------
@@ -4275,7 +4284,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0ReadinessProbeGrpc:
     r"""
-    GRPC specifies an action involving a GRPC port.
+    GRPC specifies a GRPC HealthCheckRequest.
 
     Attributes
     ----------
@@ -4296,7 +4305,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0ReadinessProbeHTTPGet:
     r"""
-    HTTPGet specifies the http request to perform.
+    HTTPGet specifies an HTTP GET request to perform.
 
     Attributes
     ----------
@@ -4349,7 +4358,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0ReadinessProbeTCPSocket:
     r"""
-    TCPSocket specifies an action involving a TCP port.
+    TCPSocket specifies a connection to a TCP port.
 
     Attributes
     ----------
@@ -4744,7 +4753,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0StartupProbeExec:
     r"""
-    Exec specifies the action to take.
+    Exec specifies a command to execute in the container.
 
     Attributes
     ----------
@@ -4762,7 +4771,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0StartupProbeGrpc:
     r"""
-    GRPC specifies an action involving a GRPC port.
+    GRPC specifies a GRPC HealthCheckRequest.
 
     Attributes
     ----------
@@ -4783,7 +4792,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0StartupProbeHTTPGet:
     r"""
-    HTTPGet specifies the http request to perform.
+    HTTPGet specifies an HTTP GET request to perform.
 
     Attributes
     ----------
@@ -4836,7 +4845,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecEphemeralContainersItems0StartupProbeTCPSocket:
     r"""
-    TCPSocket specifies an action involving a TCP port.
+    TCPSocket specifies a connection to a TCP port.
 
     Attributes
     ----------
@@ -5156,14 +5165,14 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0EnvFromItems0:
     r"""
-    EnvFromSource represents the source of a set of ConfigMaps
+    EnvFromSource represents the source of a set of ConfigMaps or Secrets
 
     Attributes
     ----------
     configMapRef : PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0EnvFromItems0ConfigMapRef, default is Undefined, optional
         config map ref
     prefix : str, default is Undefined, optional
-        An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
+        Optional text to prepend to the name of each environment variable. Must be a C_IDENTIFIER.
     secretRef : PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0EnvFromItems0SecretRef, default is Undefined, optional
         secret ref
     """
@@ -5385,12 +5394,18 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         post start
     preStop : PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0LifecyclePreStop, default is Undefined, optional
         pre stop
+    stopSignal : str, default is Undefined, optional
+        StopSignal defines which signal will be sent to a container when it is being stopped.
+        If not specified, the default is defined by the container runtime in use.
+        StopSignal can only be set for Pods with a non-empty .spec.os.name
     """
 
 
     postStart?: PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0LifecyclePostStart
 
     preStop?: PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0LifecyclePreStop
+
+    stopSignal?: str
 
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0LifecyclePostStart:
@@ -5424,7 +5439,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0LifecyclePostStartExec:
     r"""
-    Exec specifies the action to take.
+    Exec specifies a command to execute in the container.
 
     Attributes
     ----------
@@ -5442,7 +5457,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0LifecyclePostStartHTTPGet:
     r"""
-    HTTPGet specifies the http request to perform.
+    HTTPGet specifies an HTTP GET request to perform.
 
     Attributes
     ----------
@@ -5495,7 +5510,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0LifecyclePostStartSleep:
     r"""
-    Sleep represents the duration that the container should sleep before being terminated.
+    Sleep represents a duration that the container should sleep.
 
     Attributes
     ----------
@@ -5510,8 +5525,8 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0LifecyclePostStartTCPSocket:
     r"""
     Deprecated. TCPSocket is NOT supported as a LifecycleHandler and kept
-    for the backward compatibility. There are no validation of this field and
-    lifecycle hooks will fail in runtime when tcp handler is specified.
+    for backward compatibility. There is no validation of this field and
+    lifecycle hooks will fail at runtime when it is specified.
 
     Attributes
     ----------
@@ -5565,7 +5580,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0LifecyclePreStopExec:
     r"""
-    Exec specifies the action to take.
+    Exec specifies a command to execute in the container.
 
     Attributes
     ----------
@@ -5583,7 +5598,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0LifecyclePreStopHTTPGet:
     r"""
-    HTTPGet specifies the http request to perform.
+    HTTPGet specifies an HTTP GET request to perform.
 
     Attributes
     ----------
@@ -5636,7 +5651,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0LifecyclePreStopSleep:
     r"""
-    Sleep represents the duration that the container should sleep before being terminated.
+    Sleep represents a duration that the container should sleep.
 
     Attributes
     ----------
@@ -5651,8 +5666,8 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0LifecyclePreStopTCPSocket:
     r"""
     Deprecated. TCPSocket is NOT supported as a LifecycleHandler and kept
-    for the backward compatibility. There are no validation of this field and
-    lifecycle hooks will fail in runtime when tcp handler is specified.
+    for backward compatibility. There is no validation of this field and
+    lifecycle hooks will fail at runtime when it is specified.
 
     Attributes
     ----------
@@ -5740,7 +5755,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0LivenessProbeExec:
     r"""
-    Exec specifies the action to take.
+    Exec specifies a command to execute in the container.
 
     Attributes
     ----------
@@ -5758,7 +5773,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0LivenessProbeGrpc:
     r"""
-    GRPC specifies an action involving a GRPC port.
+    GRPC specifies a GRPC HealthCheckRequest.
 
     Attributes
     ----------
@@ -5779,7 +5794,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0LivenessProbeHTTPGet:
     r"""
-    HTTPGet specifies the http request to perform.
+    HTTPGet specifies an HTTP GET request to perform.
 
     Attributes
     ----------
@@ -5832,7 +5847,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0LivenessProbeTCPSocket:
     r"""
-    TCPSocket specifies an action involving a TCP port.
+    TCPSocket specifies a connection to a TCP port.
 
     Attributes
     ----------
@@ -5957,7 +5972,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0ReadinessProbeExec:
     r"""
-    Exec specifies the action to take.
+    Exec specifies a command to execute in the container.
 
     Attributes
     ----------
@@ -5975,7 +5990,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0ReadinessProbeGrpc:
     r"""
-    GRPC specifies an action involving a GRPC port.
+    GRPC specifies a GRPC HealthCheckRequest.
 
     Attributes
     ----------
@@ -5996,7 +6011,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0ReadinessProbeHTTPGet:
     r"""
-    HTTPGet specifies the http request to perform.
+    HTTPGet specifies an HTTP GET request to perform.
 
     Attributes
     ----------
@@ -6049,7 +6064,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0ReadinessProbeTCPSocket:
     r"""
-    TCPSocket specifies an action involving a TCP port.
+    TCPSocket specifies a connection to a TCP port.
 
     Attributes
     ----------
@@ -6452,7 +6467,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0StartupProbeExec:
     r"""
-    Exec specifies the action to take.
+    Exec specifies a command to execute in the container.
 
     Attributes
     ----------
@@ -6470,7 +6485,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0StartupProbeGrpc:
     r"""
-    GRPC specifies an action involving a GRPC port.
+    GRPC specifies a GRPC HealthCheckRequest.
 
     Attributes
     ----------
@@ -6491,7 +6506,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0StartupProbeHTTPGet:
     r"""
-    HTTPGet specifies the http request to perform.
+    HTTPGet specifies an HTTP GET request to perform.
 
     Attributes
     ----------
@@ -6544,7 +6559,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecInitContainersItems0StartupProbeTCPSocket:
     r"""
-    TCPSocket specifies an action involving a TCP port.
+    TCPSocket specifies a connection to a TCP port.
 
     Attributes
     ----------
@@ -6751,6 +6766,73 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
     resourceClaimTemplateName?: str
 
 
+schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecResources:
+    r"""
+    Resources is the total amount of CPU and Memory resources required by all
+    containers in the pod. It supports specifying Requests and Limits for
+    "cpu" and "memory" resource names only. ResourceClaims are not supported.
+
+    This field enables fine-grained control over resource allocation for the
+    entire pod, allowing resource sharing among containers in a pod.
+
+    This is an alpha field and requires enabling the PodLevelResources feature
+    gate.
+
+    Attributes
+    ----------
+    claims : [PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecResourcesClaimsItems0], default is Undefined, optional
+        Claims lists the names of resources, defined in spec.resourceClaims,
+        that are used by this container.
+
+        This is an alpha field and requires enabling the
+        DynamicResourceAllocation feature gate.
+
+        This field is immutable. It can only be set for containers.
+    limits : {str:int | str}, default is Undefined, optional
+        Limits describes the maximum amount of compute resources allowed.
+        More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+    requests : {str:int | str}, default is Undefined, optional
+        Requests describes the minimum amount of compute resources required.
+        If Requests is omitted for a container, it defaults to Limits if that is explicitly specified,
+        otherwise to an implementation-defined value. Requests cannot exceed Limits.
+        More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+    """
+
+
+    claims?: [PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecResourcesClaimsItems0]
+
+    limits?: {str:int | str}
+
+    requests?: {str:int | str}
+
+
+    check:
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
+
+
+schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecResourcesClaimsItems0:
+    r"""
+    ResourceClaim references one entry in PodSpec.ResourceClaims.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name must match the name of one entry in pod.spec.resourceClaims of
+        the Pod where this field is used. It makes that resource available
+        inside a container.
+    request : str, default is Undefined, optional
+        Request is the name chosen for a request in the referenced claim.
+        If empty, everything from the claim is made available, otherwise
+        only the result of this request.
+    """
+
+
+    name: str
+
+    request?: str
+
+
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecSchedulingGatesItems0:
     r"""
     PodSchedulingGate is associated to a Pod to guard its scheduling.
@@ -6815,6 +6897,30 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         PodSecurityContext, the value specified in SecurityContext takes precedence
         for that container.
         Note that this field cannot be set when spec.os.name is windows.
+    seLinuxChangePolicy : str, default is Undefined, optional
+        seLinuxChangePolicy defines how the container's SELinux label is applied to all volumes used by the Pod.
+        It has no effect on nodes that do not support SELinux or to volumes does not support SELinux.
+        Valid values are "MountOption" and "Recursive".
+
+        "Recursive" means relabeling of all files on all Pod volumes by the container runtime.
+        This may be slow for large volumes, but allows mixing privileged and unprivileged Pods sharing the same volume on the same node.
+
+        "MountOption" mounts all eligible Pod volumes with `-o context` mount option.
+        This requires all Pods that share the same volume to use the same SELinux label.
+        It is not possible to share the same volume among privileged and unprivileged Pods.
+        Eligible volumes are in-tree FibreChannel and iSCSI volumes, and all CSI volumes
+        whose CSI driver announces SELinux support by setting spec.seLinuxMount: true in their
+        CSIDriver instance. Other volumes are always re-labelled recursively.
+        "MountOption" value is allowed only when SELinuxMount feature gate is enabled.
+
+        If not specified and SELinuxMount feature gate is enabled, "MountOption" is used.
+        If not specified and SELinuxMount feature gate is disabled, "MountOption" is used for ReadWriteOncePod volumes
+        and "Recursive" for all other volumes.
+
+        This field affects only Pods that have SELinux label set, either in PodSecurityContext or in SecurityContext of all containers.
+
+        All Pods that use the same volume should use the same seLinuxChangePolicy, otherwise some pods can get stuck in ContainerCreating state.
+        Note that this field cannot be set when spec.os.name is windows.
     seLinuxOptions : PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecSecurityContextSeLinuxOptions, default is Undefined, optional
         se linux options
     seccompProfile : PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecSecurityContextSeccompProfile, default is Undefined, optional
@@ -6855,6 +6961,8 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
     runAsNonRoot?: bool
 
     runAsUser?: int
+
+    seLinuxChangePolicy?: str
 
     seLinuxOptions?: PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecSecurityContextSeLinuxOptions
 
@@ -7112,7 +7220,6 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         - Ignore: nodeAffinity/nodeSelector are ignored. All nodes are included in the calculations.
 
         If this value is nil, the behavior is equivalent to the Honor policy.
-        This is a beta-level feature default enabled by the NodeInclusionPolicyInPodTopologySpread feature flag.
     nodeTaintsPolicy : str, default is Undefined, optional
         NodeTaintsPolicy indicates how we will treat node taints when calculating
         pod topology spread skew. Options are:
@@ -7121,7 +7228,6 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
         - Ignore: node taints are ignored. All nodes are included.
 
         If this value is nil, the behavior is equivalent to the Ignore policy.
-        This is a beta-level feature default enabled by the NodeInclusionPolicyInPodTopologySpread feature flag.
     topologyKey : str, default is Undefined, required
         TopologyKey is the key of node labels. Nodes that have a label with this key
         and identical values are considered to be in the same topology.
@@ -7361,6 +7467,8 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
     r"""
     awsElasticBlockStore represents an AWS Disk resource that is attached to a
     kubelet's host machine and then exposed to the pod.
+    Deprecated: AWSElasticBlockStore is deprecated. All operations for the in-tree
+    awsElasticBlockStore type are redirected to the ebs.csi.aws.com CSI driver.
     More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
 
     Attributes
@@ -7396,6 +7504,8 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0AzureDisk:
     r"""
     azureDisk represents an Azure Data Disk mount on the host and bind mount to the pod.
+    Deprecated: AzureDisk is deprecated. All operations for the in-tree azureDisk type
+    are redirected to the disk.csi.azure.com CSI driver.
 
     Attributes
     ----------
@@ -7433,6 +7543,8 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0AzureFile:
     r"""
     azureFile represents an Azure File Service mount on the host and bind mount to the pod.
+    Deprecated: AzureFile is deprecated. All operations for the in-tree azureFile type
+    are redirected to the file.csi.azure.com CSI driver.
 
     Attributes
     ----------
@@ -7455,7 +7567,8 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0Cephfs:
     r"""
-    cephFS represents a Ceph FS mount on the host that shares a pod's lifetime
+    cephFS represents a Ceph FS mount on the host that shares a pod's lifetime.
+    Deprecated: CephFS is deprecated and the in-tree cephfs type is no longer supported.
 
     Attributes
     ----------
@@ -7514,6 +7627,8 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0Cinder:
     r"""
     cinder represents a cinder volume attached and mounted on kubelets host machine.
+    Deprecated: Cinder is deprecated. All operations for the in-tree cinder type
+    are redirected to the cinder.csi.openstack.org CSI driver.
     More info: https://examples.k8s.io/mysql-cinder-pd/README.md
 
     Attributes
@@ -7637,7 +7752,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0Csi:
     r"""
-    csi (Container Storage Interface) represents ephemeral storage that is handled by certain external CSI drivers (Beta feature).
+    csi (Container Storage Interface) represents ephemeral storage that is handled by certain external CSI drivers.
 
     Attributes
     ----------
@@ -8193,6 +8308,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
     r"""
     flexVolume represents a generic volume resource that is
     provisioned/attached using an exec based plugin.
+    Deprecated: FlexVolume is deprecated. Consider using a CSIDriver instead.
 
     Attributes
     ----------
@@ -8247,7 +8363,8 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0Flocker:
     r"""
-    flocker represents a Flocker volume attached to a kubelet's host machine. This depends on the Flocker control service being running
+    flocker represents a Flocker volume attached to a kubelet's host machine. This depends on the Flocker control service being running.
+    Deprecated: Flocker is deprecated and the in-tree flocker type is no longer supported.
 
     Attributes
     ----------
@@ -8268,6 +8385,8 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
     r"""
     gcePersistentDisk represents a GCE Disk resource that is attached to a
     kubelet's host machine and then exposed to the pod.
+    Deprecated: GCEPersistentDisk is deprecated. All operations for the in-tree
+    gcePersistentDisk type are redirected to the pd.csi.storage.gke.io CSI driver.
     More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
 
     Attributes
@@ -8305,7 +8424,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0GitRepo:
     r"""
     gitRepo represents a git repository at a particular revision.
-    DEPRECATED: GitRepo is deprecated. To provision a container with a git repo, mount an
+    Deprecated: GitRepo is deprecated. To provision a container with a git repo, mount an
     EmptyDir into an InitContainer that clones the repo using git, then mount the EmptyDir
     into the Pod's container.
 
@@ -8333,6 +8452,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0Glusterfs:
     r"""
     glusterfs represents a Glusterfs mount on the host that shares a pod's lifetime.
+    Deprecated: Glusterfs is deprecated and the in-tree glusterfs type is no longer supported.
     More info: https://examples.k8s.io/volumes/glusterfs/README.md
 
     Attributes
@@ -8397,7 +8517,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
     The types of objects that may be mounted by this volume are defined by the container runtime implementation on a host machine and at minimum must include all valid types supported by the container image field.
     The OCI object gets mounted in a single directory (spec.containers[*].volumeMounts.mountPath) by merging the manifest layers in the same way as for container images.
     The volume will be mounted read-only (ro) and non-executable files (noexec).
-    Sub path mounts for containers are not supported (spec.containers[*].volumeMounts.subpath).
+    Sub path mounts for containers are not supported (spec.containers[*].volumeMounts.subpath) before 1.33.
     The field spec.securityContext.fsGroupChangePolicy has no effect on this volume type.
 
     Attributes
@@ -8557,7 +8677,8 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0PhotonPersistentDisk:
     r"""
-    photonPersistentDisk represents a PhotonController persistent disk attached and mounted on kubelets host machine
+    photonPersistentDisk represents a PhotonController persistent disk attached and mounted on kubelets host machine.
+    Deprecated: PhotonPersistentDisk is deprecated and the in-tree photonPersistentDisk type is no longer supported.
 
     Attributes
     ----------
@@ -8577,7 +8698,10 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0PortworxVolume:
     r"""
-    portworxVolume represents a portworx volume attached and mounted on kubelets host machine
+    portworxVolume represents a portworx volume attached and mounted on kubelets host machine.
+    Deprecated: PortworxVolume is deprecated. All operations for the in-tree portworxVolume type
+    are redirected to the pxd.portworx.com CSI driver when the CSIMigrationPortworx feature-gate
+    is on.
 
     Attributes
     ----------
@@ -9001,7 +9125,8 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0Quobyte:
     r"""
-    quobyte represents a Quobyte mount on the host that shares a pod's lifetime
+    quobyte represents a Quobyte mount on the host that shares a pod's lifetime.
+    Deprecated: Quobyte is deprecated and the in-tree quobyte type is no longer supported.
 
     Attributes
     ----------
@@ -9042,6 +9167,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0Rbd:
     r"""
     rbd represents a Rados Block Device mount on the host that shares a pod's lifetime.
+    Deprecated: RBD is deprecated and the in-tree rbd type is no longer supported.
     More info: https://examples.k8s.io/volumes/rbd/README.md
 
     Attributes
@@ -9119,6 +9245,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0ScaleIO:
     r"""
     scaleIO represents a ScaleIO persistent volume attached and mounted on Kubernetes nodes.
+    Deprecated: ScaleIO is deprecated and the in-tree scaleIO type is no longer supported.
 
     Attributes
     ----------
@@ -9264,6 +9391,7 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0Storageos:
     r"""
     storageOS represents a StorageOS volume attached and mounted on Kubernetes nodes.
+    Deprecated: StorageOS is deprecated and the in-tree storageos type is no longer supported.
 
     Attributes
     ----------
@@ -9321,7 +9449,9 @@ schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTe
 
 schema PkgCrossplaneIoV1beta1DeploymentRuntimeConfigSpecDeploymentTemplateSpecTemplateSpecVolumesItems0VsphereVolume:
     r"""
-    vsphereVolume represents a vSphere volume attached and mounted on kubelets host machine
+    vsphereVolume represents a vSphere volume attached and mounted on kubelets host machine.
+    Deprecated: VsphereVolume is deprecated. All operations for the in-tree vsphereVolume type
+    are redirected to the csi.vsphere.vmware.com CSI driver.
 
     Attributes
     ----------

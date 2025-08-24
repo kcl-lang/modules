@@ -50,8 +50,6 @@ schema PkgCrossplaneIoV1ProviderRevisionSpec:
         (scope and select) objects. May match selectors of replication controllers
         and services.
         More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
-    controllerConfigRef : PkgCrossplaneIoV1ProviderRevisionSpecControllerConfigRef, default is Undefined, optional
-        controller config ref
     desiredState : str, default is Undefined, required
         DesiredState of the PackageRevision. Can be either Active or Inactive.
     ignoreCrossplaneConstraints : bool, default is Undefined, optional
@@ -90,8 +88,6 @@ schema PkgCrossplaneIoV1ProviderRevisionSpec:
 
     commonLabels?: {str:str}
 
-    controllerConfigRef?: PkgCrossplaneIoV1ProviderRevisionSpecControllerConfigRef
-
     desiredState: str
 
     ignoreCrossplaneConstraints?: bool = False
@@ -111,22 +107,6 @@ schema PkgCrossplaneIoV1ProviderRevisionSpec:
     tlsClientSecretName?: str
 
     tlsServerSecretName?: str
-
-
-schema PkgCrossplaneIoV1ProviderRevisionSpecControllerConfigRef:
-    r"""
-    ControllerConfigRef references a ControllerConfig resource that will be
-    used to configure the packaged controller Deployment.
-    Deprecated: Use RuntimeConfigReference instead.
-
-    Attributes
-    ----------
-    name : str, default is Undefined, required
-        Name of the ControllerConfig.
-    """
-
-
-    name: str
 
 
 schema PkgCrossplaneIoV1ProviderRevisionSpecPackagePullSecretsItems0:
@@ -173,10 +153,16 @@ schema PkgCrossplaneIoV1ProviderRevisionSpecRuntimeConfigRef:
 
 schema PkgCrossplaneIoV1ProviderRevisionStatus:
     r"""
-    PackageRevisionStatus represents the observed state of a PackageRevision.
+    ProviderRevisionStatus represents the observed state of a ProviderRevision.
 
     Attributes
     ----------
+    appliedImageConfigRefs : [PkgCrossplaneIoV1ProviderRevisionStatusAppliedImageConfigRefsItems0], default is Undefined, optional
+        AppliedImageConfigRefs records any image configs that were applied in
+        reconciling this revision, and what they were used for.
+    capabilities : [str], default is Undefined, optional
+        Capabilities of this package. Capabilities are opaque strings that
+        may be meaningful to package consumers.
     conditions : [PkgCrossplaneIoV1ProviderRevisionStatusConditionsItems0], default is Undefined, optional
         Conditions of the resource.
     foundDependencies : int, default is Undefined, optional
@@ -187,12 +173,22 @@ schema PkgCrossplaneIoV1ProviderRevisionStatus:
         invalid dependencies
     objectRefs : [PkgCrossplaneIoV1ProviderRevisionStatusObjectRefsItems0], default is Undefined, optional
         References to objects owned by PackageRevision.
-    permissionRequests : [PkgCrossplaneIoV1ProviderRevisionStatusPermissionRequestsItems0], default is Undefined, optional
-        PermissionRequests made by this package. The package declares that its
-        controller needs these permissions to run. The RBAC manager is
-        responsible for granting them.
+    resolvedImage : str, default is Undefined, optional
+        ResolvedPackage is the name of the package that was installed. It may be
+        different from spec.image if the package path was rewritten using an
+        image config.
+    tlsClientSecretName : str, default is Undefined, optional
+        TLSClientSecretName is the name of the TLS Secret that stores client
+        certificates of the Provider.
+    tlsServerSecretName : str, default is Undefined, optional
+        TLSServerSecretName is the name of the TLS Secret that stores server
+        certificates of the Provider.
     """
 
+
+    appliedImageConfigRefs?: [PkgCrossplaneIoV1ProviderRevisionStatusAppliedImageConfigRefsItems0]
+
+    capabilities?: [str]
 
     conditions?: [PkgCrossplaneIoV1ProviderRevisionStatusConditionsItems0]
 
@@ -204,7 +200,30 @@ schema PkgCrossplaneIoV1ProviderRevisionStatus:
 
     objectRefs?: [PkgCrossplaneIoV1ProviderRevisionStatusObjectRefsItems0]
 
-    permissionRequests?: [PkgCrossplaneIoV1ProviderRevisionStatusPermissionRequestsItems0]
+    resolvedImage?: str
+
+    tlsClientSecretName?: str
+
+    tlsServerSecretName?: str
+
+
+schema PkgCrossplaneIoV1ProviderRevisionStatusAppliedImageConfigRefsItems0:
+    r"""
+    ImageConfigRef is a reference to an image config that indicates how the
+    referenced image config was used by the package manager.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name is the name of the image config.
+    reason : str, default is Undefined, required
+        Reason indicates what the image config was used for.
+    """
+
+
+    name: str
+
+    reason: str
 
 
 schema PkgCrossplaneIoV1ProviderRevisionStatusConditionsItems0:
@@ -272,39 +291,5 @@ schema PkgCrossplaneIoV1ProviderRevisionStatusObjectRefsItems0:
     name: str
 
     uid?: str
-
-
-schema PkgCrossplaneIoV1ProviderRevisionStatusPermissionRequestsItems0:
-    r"""
-    PolicyRule holds information that describes a policy rule, but does not contain information
-    about who the rule applies to or which namespace the rule applies to.
-
-    Attributes
-    ----------
-    apiGroups : [str], default is Undefined, optional
-        APIGroups is the name of the APIGroup that contains the resources.  If multiple API groups are specified, any action requested against one of
-        the enumerated resources in any API group will be allowed. "" represents the core API group and "*" represents all API groups.
-    nonResourceURLs : [str], default is Undefined, optional
-        NonResourceURLs is a set of partial urls that a user should have access to.  *s are allowed, but only as the full, final step in the path
-        Since non-resource URLs are not namespaced, this field is only applicable for ClusterRoles referenced from a ClusterRoleBinding.
-        Rules can either apply to API resources (such as "pods" or "secrets") or non-resource URL paths (such as "/api"),  but not both.
-    resourceNames : [str], default is Undefined, optional
-        ResourceNames is an optional white list of names that the rule applies to.  An empty set means that everything is allowed.
-    resources : [str], default is Undefined, optional
-        Resources is a list of resources this rule applies to. '*' represents all resources.
-    verbs : [str], default is Undefined, required
-        Verbs is a list of Verbs that apply to ALL the ResourceKinds contained in this rule. '*' represents all verbs.
-    """
-
-
-    apiGroups?: [str]
-
-    nonResourceURLs?: [str]
-
-    resourceNames?: [str]
-
-    resources?: [str]
-
-    verbs: [str]
 
 

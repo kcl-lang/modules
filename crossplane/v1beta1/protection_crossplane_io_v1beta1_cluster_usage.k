@@ -5,53 +5,52 @@ Editing this file might prove futile when you re-run the KCL auto-gen generate c
 import k8s.apimachinery.pkg.apis.meta.v1
 
 
-schema Usage:
+schema ClusterUsage:
     r"""
-    A Usage defines a deletion blocking relationship between two resources.
+    A ClusterUsage defines a deletion blocking relationship between two
+    resources.
 
     Usages prevent accidental deletion of a single resource or deletion of
     resources with dependent resources.
 
     Read the Crossplane documentation for
-    [more information about Usages](https://docs.crossplane.io/latest/concepts/usages).
-
-    Deprecated: Use protection.crossplane.io Usage or ClusterUsage.
+    [more information about usages](https://docs.crossplane.io/latest/concepts/usages).
 
     Attributes
     ----------
-    apiVersion : str, default is "apiextensions.crossplane.io/v1alpha1", required
+    apiVersion : str, default is "protection.crossplane.io/v1beta1", required
         APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-    kind : str, default is "Usage", required
+    kind : str, default is "ClusterUsage", required
         Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     metadata : v1.ObjectMeta, default is Undefined, optional
         metadata
-    spec : ApiextensionsCrossplaneIoV1alpha1UsageSpec, default is Undefined, required
+    spec : ProtectionCrossplaneIoV1beta1ClusterUsageSpec, default is Undefined, required
         spec
-    status : ApiextensionsCrossplaneIoV1alpha1UsageStatus, default is Undefined, optional
+    status : ProtectionCrossplaneIoV1beta1ClusterUsageStatus, default is Undefined, optional
         status
     """
 
 
-    apiVersion: "apiextensions.crossplane.io/v1alpha1" = "apiextensions.crossplane.io/v1alpha1"
+    apiVersion: "protection.crossplane.io/v1beta1" = "protection.crossplane.io/v1beta1"
 
-    kind: "Usage" = "Usage"
+    kind: "ClusterUsage" = "ClusterUsage"
 
     metadata?: v1.ObjectMeta
 
-    spec: ApiextensionsCrossplaneIoV1alpha1UsageSpec
+    spec: ProtectionCrossplaneIoV1beta1ClusterUsageSpec
 
-    status?: ApiextensionsCrossplaneIoV1alpha1UsageStatus
+    status?: ProtectionCrossplaneIoV1beta1ClusterUsageStatus
 
 
-schema ApiextensionsCrossplaneIoV1alpha1UsageSpec:
+schema ProtectionCrossplaneIoV1beta1ClusterUsageSpec:
     r"""
-    UsageSpec defines the desired state of Usage.
+    ClusterUsageSpec defines the desired state of a ClusterUsage.
 
     Attributes
     ----------
-    by : ApiextensionsCrossplaneIoV1alpha1UsageSpecBy, default is Undefined, optional
+    by : ProtectionCrossplaneIoV1beta1ClusterUsageSpecBy, default is Undefined, optional
         by
-    of : ApiextensionsCrossplaneIoV1alpha1UsageSpecOf, default is Undefined, required
+    of : ProtectionCrossplaneIoV1beta1ClusterUsageSpecOf, default is Undefined, required
         of
     reason : str, default is Undefined, optional
         Reason is the reason for blocking deletion of the resource.
@@ -60,16 +59,16 @@ schema ApiextensionsCrossplaneIoV1alpha1UsageSpec:
     """
 
 
-    by?: ApiextensionsCrossplaneIoV1alpha1UsageSpecBy
+    by?: ProtectionCrossplaneIoV1beta1ClusterUsageSpecBy
 
-    of: ApiextensionsCrossplaneIoV1alpha1UsageSpecOf
+    of: ProtectionCrossplaneIoV1beta1ClusterUsageSpecOf
 
     reason?: str
 
     replayDeletion?: bool
 
 
-schema ApiextensionsCrossplaneIoV1alpha1UsageSpecBy:
+schema ProtectionCrossplaneIoV1beta1ClusterUsageSpecBy:
     r"""
     By is the resource that is "using the other resource".
 
@@ -80,9 +79,9 @@ schema ApiextensionsCrossplaneIoV1alpha1UsageSpecBy:
     kind : str, default is Undefined, optional
         Kind of the referent.
         More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-    resourceRef : ApiextensionsCrossplaneIoV1alpha1UsageSpecByResourceRef, default is Undefined, optional
+    resourceRef : ProtectionCrossplaneIoV1beta1ClusterUsageSpecByResourceRef, default is Undefined, optional
         resource ref
-    resourceSelector : ApiextensionsCrossplaneIoV1alpha1UsageSpecByResourceSelector, default is Undefined, optional
+    resourceSelector : ProtectionCrossplaneIoV1beta1ClusterUsageSpecByResourceSelector, default is Undefined, optional
         resource selector
     """
 
@@ -91,12 +90,12 @@ schema ApiextensionsCrossplaneIoV1alpha1UsageSpecBy:
 
     kind?: str
 
-    resourceRef?: ApiextensionsCrossplaneIoV1alpha1UsageSpecByResourceRef
+    resourceRef?: ProtectionCrossplaneIoV1beta1ClusterUsageSpecByResourceRef
 
-    resourceSelector?: ApiextensionsCrossplaneIoV1alpha1UsageSpecByResourceSelector
+    resourceSelector?: ProtectionCrossplaneIoV1beta1ClusterUsageSpecByResourceSelector
 
 
-schema ApiextensionsCrossplaneIoV1alpha1UsageSpecByResourceRef:
+schema ProtectionCrossplaneIoV1beta1ClusterUsageSpecByResourceRef:
     r"""
     Reference to the resource.
 
@@ -110,7 +109,7 @@ schema ApiextensionsCrossplaneIoV1alpha1UsageSpecByResourceRef:
     name: str
 
 
-schema ApiextensionsCrossplaneIoV1alpha1UsageSpecByResourceSelector:
+schema ProtectionCrossplaneIoV1beta1ClusterUsageSpecByResourceSelector:
     r"""
     Selector to the resource.
     This field will be ignored if ResourceRef is set.
@@ -130,7 +129,7 @@ schema ApiextensionsCrossplaneIoV1alpha1UsageSpecByResourceSelector:
     matchLabels?: {str:str}
 
 
-schema ApiextensionsCrossplaneIoV1alpha1UsageSpecOf:
+schema ProtectionCrossplaneIoV1beta1ClusterUsageSpecOf:
     r"""
     Of is the resource that is "being used".
 
@@ -141,9 +140,9 @@ schema ApiextensionsCrossplaneIoV1alpha1UsageSpecOf:
     kind : str, default is Undefined, optional
         Kind of the referent.
         More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-    resourceRef : ApiextensionsCrossplaneIoV1alpha1UsageSpecOfResourceRef, default is Undefined, optional
+    resourceRef : ProtectionCrossplaneIoV1beta1ClusterUsageSpecOfResourceRef, default is Undefined, optional
         resource ref
-    resourceSelector : ApiextensionsCrossplaneIoV1alpha1UsageSpecOfResourceSelector, default is Undefined, optional
+    resourceSelector : ProtectionCrossplaneIoV1beta1ClusterUsageSpecOfResourceSelector, default is Undefined, optional
         resource selector
     """
 
@@ -152,12 +151,12 @@ schema ApiextensionsCrossplaneIoV1alpha1UsageSpecOf:
 
     kind?: str
 
-    resourceRef?: ApiextensionsCrossplaneIoV1alpha1UsageSpecOfResourceRef
+    resourceRef?: ProtectionCrossplaneIoV1beta1ClusterUsageSpecOfResourceRef
 
-    resourceSelector?: ApiextensionsCrossplaneIoV1alpha1UsageSpecOfResourceSelector
+    resourceSelector?: ProtectionCrossplaneIoV1beta1ClusterUsageSpecOfResourceSelector
 
 
-schema ApiextensionsCrossplaneIoV1alpha1UsageSpecOfResourceRef:
+schema ProtectionCrossplaneIoV1beta1ClusterUsageSpecOfResourceRef:
     r"""
     Reference to the resource.
 
@@ -171,7 +170,7 @@ schema ApiextensionsCrossplaneIoV1alpha1UsageSpecOfResourceRef:
     name: str
 
 
-schema ApiextensionsCrossplaneIoV1alpha1UsageSpecOfResourceSelector:
+schema ProtectionCrossplaneIoV1beta1ClusterUsageSpecOfResourceSelector:
     r"""
     Selector to the resource.
     This field will be ignored if ResourceRef is set.
@@ -191,21 +190,21 @@ schema ApiextensionsCrossplaneIoV1alpha1UsageSpecOfResourceSelector:
     matchLabels?: {str:str}
 
 
-schema ApiextensionsCrossplaneIoV1alpha1UsageStatus:
+schema ProtectionCrossplaneIoV1beta1ClusterUsageStatus:
     r"""
     UsageStatus defines the observed state of Usage.
 
     Attributes
     ----------
-    conditions : [ApiextensionsCrossplaneIoV1alpha1UsageStatusConditionsItems0], default is Undefined, optional
+    conditions : [ProtectionCrossplaneIoV1beta1ClusterUsageStatusConditionsItems0], default is Undefined, optional
         Conditions of the resource.
     """
 
 
-    conditions?: [ApiextensionsCrossplaneIoV1alpha1UsageStatusConditionsItems0]
+    conditions?: [ProtectionCrossplaneIoV1beta1ClusterUsageStatusConditionsItems0]
 
 
-schema ApiextensionsCrossplaneIoV1alpha1UsageStatusConditionsItems0:
+schema ProtectionCrossplaneIoV1beta1ClusterUsageStatusConditionsItems0:
     r"""
     A Condition that may apply to a resource.
 

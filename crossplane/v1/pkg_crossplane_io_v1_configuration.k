@@ -58,6 +58,8 @@ schema PkgCrossplaneIoV1ConfigurationSpec:
         Default is false.
     package : str, default is Undefined, required
         Package is the name of the package that is being requested.
+        must be a fully qualified image name, including the registry,
+        repository, and tag. for example, "registry.example.com/repo/package:tag".
     packagePullPolicy : str, default is "IfNotPresent", optional
         PackagePullPolicy defines the pull policy for the package.
         Default is IfNotPresent.
@@ -122,6 +124,9 @@ schema PkgCrossplaneIoV1ConfigurationStatus:
 
     Attributes
     ----------
+    appliedImageConfigRefs : [PkgCrossplaneIoV1ConfigurationStatusAppliedImageConfigRefsItems0], default is Undefined, optional
+        AppliedImageConfigRefs records any image configs that were applied in
+        reconciling this package, and what they were used for.
     conditions : [PkgCrossplaneIoV1ConfigurationStatusConditionsItems0], default is Undefined, optional
         Conditions of the resource.
     currentIdentifier : str, default is Undefined, optional
@@ -135,14 +140,41 @@ schema PkgCrossplaneIoV1ConfigurationStatus:
         CurrentRevision is the name of the current package revision. It will
         reflect the most up to date revision, whether it has been activated or
         not.
+    resolvedPackage : str, default is Undefined, optional
+        ResolvedPackage is the name of the package that was used for version
+        resolution. It may be different from spec.package if the package path was
+        rewritten using an image config.
     """
 
+
+    appliedImageConfigRefs?: [PkgCrossplaneIoV1ConfigurationStatusAppliedImageConfigRefsItems0]
 
     conditions?: [PkgCrossplaneIoV1ConfigurationStatusConditionsItems0]
 
     currentIdentifier?: str
 
     currentRevision?: str
+
+    resolvedPackage?: str
+
+
+schema PkgCrossplaneIoV1ConfigurationStatusAppliedImageConfigRefsItems0:
+    r"""
+    ImageConfigRef is a reference to an image config that indicates how the
+    referenced image config was used by the package manager.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name is the name of the image config.
+    reason : str, default is Undefined, required
+        Reason indicates what the image config was used for.
+    """
+
+
+    name: str
+
+    reason: str
 
 
 schema PkgCrossplaneIoV1ConfigurationStatusConditionsItems0:
