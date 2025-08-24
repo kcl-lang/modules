@@ -37,12 +37,17 @@ schema MetaPkgCrossplaneIoV1ConfigurationSpec:
 
     Attributes
     ----------
+    capabilities : [str], default is Undefined, optional
+        Capabilities of this package. Capabilities are opaque strings that
+        may be meaningful to package consumers.
     crossplane : MetaPkgCrossplaneIoV1ConfigurationSpecCrossplane, default is Undefined, optional
         crossplane
     dependsOn : [MetaPkgCrossplaneIoV1ConfigurationSpecDependsOnItems0], default is Undefined, optional
         Dependencies on other packages.
     """
 
+
+    capabilities?: [str]
 
     crossplane?: MetaPkgCrossplaneIoV1ConfigurationSpecCrossplane
 
@@ -77,17 +82,22 @@ schema MetaPkgCrossplaneIoV1ConfigurationSpecDependsOnItems0:
         APIVersion of the dependency.
     configuration : str, default is Undefined, optional
         Configuration is the name of a Configuration package image.
+        Must be a fully qualified image name, including the registry,
         Deprecated: Specify an apiVersion, kind, and package instead.
     function : str, default is Undefined, optional
         Function is the name of a Function package image.
+        Must be a fully qualified image name, including the registry,
         Deprecated: Specify an apiVersion, kind, and package instead.
     kind : str, default is Undefined, optional
         Kind of the dependency.
     package : str, default is Undefined, optional
         Package OCI reference of the dependency. Only used when apiVersion and
         kind are set.
+        Must be a fully qualified image name, including the registry,
+        repository, and tag. For example, "registry.example.com/repo/package:tag".
     provider : str, default is Undefined, optional
         Provider is the name of a Provider package image.
+        Must be a fully qualified image name, including the registry,
         Deprecated: Specify an apiVersion and kind instead.
     version : str, default is Undefined, required
         Version is the semantic version constraints of the dependency image.

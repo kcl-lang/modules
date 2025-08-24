@@ -37,8 +37,9 @@ schema MetaPkgCrossplaneIoV1ProviderSpec:
 
     Attributes
     ----------
-    controller : MetaPkgCrossplaneIoV1ProviderSpecController, default is Undefined, required
-        controller
+    capabilities : [str], default is Undefined, optional
+        Capabilities of this package. Capabilities are opaque strings that
+        may be meaningful to package consumers.
     crossplane : MetaPkgCrossplaneIoV1ProviderSpecCrossplane, default is Undefined, optional
         crossplane
     dependsOn : [MetaPkgCrossplaneIoV1ProviderSpecDependsOnItems0], default is Undefined, optional
@@ -46,65 +47,11 @@ schema MetaPkgCrossplaneIoV1ProviderSpec:
     """
 
 
-    controller: MetaPkgCrossplaneIoV1ProviderSpecController
+    capabilities?: [str]
 
     crossplane?: MetaPkgCrossplaneIoV1ProviderSpecCrossplane
 
     dependsOn?: [MetaPkgCrossplaneIoV1ProviderSpecDependsOnItems0]
-
-
-schema MetaPkgCrossplaneIoV1ProviderSpecController:
-    r"""
-    Configuration for the packaged Provider's controller.
-
-    Attributes
-    ----------
-    image : str, default is Undefined, optional
-        Image is the packaged Provider controller image.
-    permissionRequests : [MetaPkgCrossplaneIoV1ProviderSpecControllerPermissionRequestsItems0], default is Undefined, optional
-        PermissionRequests for RBAC rules required for this provider's controller
-        to function. The RBAC manager is responsible for assessing the requested
-        permissions.
-    """
-
-
-    image?: str
-
-    permissionRequests?: [MetaPkgCrossplaneIoV1ProviderSpecControllerPermissionRequestsItems0]
-
-
-schema MetaPkgCrossplaneIoV1ProviderSpecControllerPermissionRequestsItems0:
-    r"""
-    PolicyRule holds information that describes a policy rule, but does not contain information
-    about who the rule applies to or which namespace the rule applies to.
-
-    Attributes
-    ----------
-    apiGroups : [str], default is Undefined, optional
-        APIGroups is the name of the APIGroup that contains the resources.  If multiple API groups are specified, any action requested against one of
-        the enumerated resources in any API group will be allowed. "" represents the core API group and "*" represents all API groups.
-    nonResourceURLs : [str], default is Undefined, optional
-        NonResourceURLs is a set of partial urls that a user should have access to.  *s are allowed, but only as the full, final step in the path
-        Since non-resource URLs are not namespaced, this field is only applicable for ClusterRoles referenced from a ClusterRoleBinding.
-        Rules can either apply to API resources (such as "pods" or "secrets") or non-resource URL paths (such as "/api"),  but not both.
-    resourceNames : [str], default is Undefined, optional
-        ResourceNames is an optional white list of names that the rule applies to.  An empty set means that everything is allowed.
-    resources : [str], default is Undefined, optional
-        Resources is a list of resources this rule applies to. '*' represents all resources.
-    verbs : [str], default is Undefined, required
-        Verbs is a list of Verbs that apply to ALL the ResourceKinds contained in this rule. '*' represents all verbs.
-    """
-
-
-    apiGroups?: [str]
-
-    nonResourceURLs?: [str]
-
-    resourceNames?: [str]
-
-    resources?: [str]
-
-    verbs: [str]
 
 
 schema MetaPkgCrossplaneIoV1ProviderSpecCrossplane:
@@ -135,17 +82,22 @@ schema MetaPkgCrossplaneIoV1ProviderSpecDependsOnItems0:
         APIVersion of the dependency.
     configuration : str, default is Undefined, optional
         Configuration is the name of a Configuration package image.
+        Must be a fully qualified image name, including the registry,
         Deprecated: Specify an apiVersion, kind, and package instead.
     function : str, default is Undefined, optional
         Function is the name of a Function package image.
+        Must be a fully qualified image name, including the registry,
         Deprecated: Specify an apiVersion, kind, and package instead.
     kind : str, default is Undefined, optional
         Kind of the dependency.
     package : str, default is Undefined, optional
         Package OCI reference of the dependency. Only used when apiVersion and
         kind are set.
+        Must be a fully qualified image name, including the registry,
+        repository, and tag. For example, "registry.example.com/repo/package:tag".
     provider : str, default is Undefined, optional
         Provider is the name of a Provider package image.
+        Must be a fully qualified image name, including the registry,
         Deprecated: Specify an apiVersion and kind instead.
     version : str, default is Undefined, required
         Version is the semantic version constraints of the dependency image.

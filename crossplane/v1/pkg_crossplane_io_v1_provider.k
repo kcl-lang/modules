@@ -51,14 +51,14 @@ schema PkgCrossplaneIoV1ProviderSpec:
         (scope and select) objects. May match selectors of replication controllers
         and services.
         More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
-    controllerConfigRef : PkgCrossplaneIoV1ProviderSpecControllerConfigRef, default is Undefined, optional
-        controller config ref
     ignoreCrossplaneConstraints : bool, default is Undefined, optional
         IgnoreCrossplaneConstraints indicates to the package manager whether to
         honor Crossplane version constrains specified by the package.
         Default is false.
     package : str, default is Undefined, required
         Package is the name of the package that is being requested.
+        must be a fully qualified image name, including the registry,
+        repository, and tag. for example, "registry.example.com/repo/package:tag".
     packagePullPolicy : str, default is "IfNotPresent", optional
         PackagePullPolicy defines the pull policy for the package.
         Default is IfNotPresent.
@@ -85,8 +85,6 @@ schema PkgCrossplaneIoV1ProviderSpec:
 
     commonLabels?: {str:str}
 
-    controllerConfigRef?: PkgCrossplaneIoV1ProviderSpecControllerConfigRef
-
     ignoreCrossplaneConstraints?: bool = False
 
     package: str
@@ -102,22 +100,6 @@ schema PkgCrossplaneIoV1ProviderSpec:
     runtimeConfigRef?: PkgCrossplaneIoV1ProviderSpecRuntimeConfigRef
 
     skipDependencyResolution?: bool = False
-
-
-schema PkgCrossplaneIoV1ProviderSpecControllerConfigRef:
-    r"""
-    ControllerConfigRef references a ControllerConfig resource that will be
-    used to configure the packaged controller Deployment.
-    Deprecated: Use RuntimeConfigReference instead.
-
-    Attributes
-    ----------
-    name : str, default is Undefined, required
-        Name of the ControllerConfig.
-    """
-
-
-    name: str
 
 
 schema PkgCrossplaneIoV1ProviderSpecPackagePullSecretsItems0:
@@ -168,6 +150,9 @@ schema PkgCrossplaneIoV1ProviderStatus:
 
     Attributes
     ----------
+    appliedImageConfigRefs : [PkgCrossplaneIoV1ProviderStatusAppliedImageConfigRefsItems0], default is Undefined, optional
+        AppliedImageConfigRefs records any image configs that were applied in
+        reconciling this package, and what they were used for.
     conditions : [PkgCrossplaneIoV1ProviderStatusConditionsItems0], default is Undefined, optional
         Conditions of the resource.
     currentIdentifier : str, default is Undefined, optional
@@ -181,14 +166,41 @@ schema PkgCrossplaneIoV1ProviderStatus:
         CurrentRevision is the name of the current package revision. It will
         reflect the most up to date revision, whether it has been activated or
         not.
+    resolvedPackage : str, default is Undefined, optional
+        ResolvedPackage is the name of the package that was used for version
+        resolution. It may be different from spec.package if the package path was
+        rewritten using an image config.
     """
 
+
+    appliedImageConfigRefs?: [PkgCrossplaneIoV1ProviderStatusAppliedImageConfigRefsItems0]
 
     conditions?: [PkgCrossplaneIoV1ProviderStatusConditionsItems0]
 
     currentIdentifier?: str
 
     currentRevision?: str
+
+    resolvedPackage?: str
+
+
+schema PkgCrossplaneIoV1ProviderStatusAppliedImageConfigRefsItems0:
+    r"""
+    ImageConfigRef is a reference to an image config that indicates how the
+    referenced image config was used by the package manager.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name is the name of the image config.
+    reason : str, default is Undefined, required
+        Reason indicates what the image config was used for.
+    """
+
+
+    name: str
+
+    reason: str
 
 
 schema PkgCrossplaneIoV1ProviderStatusConditionsItems0:

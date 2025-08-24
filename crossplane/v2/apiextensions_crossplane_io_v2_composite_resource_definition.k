@@ -15,37 +15,37 @@ schema CompositeResourceDefinition:
 
     Attributes
     ----------
-    apiVersion : str, default is "apiextensions.crossplane.io/v1", required
+    apiVersion : str, default is "apiextensions.crossplane.io/v2", required
         APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
     kind : str, default is "CompositeResourceDefinition", required
         Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     metadata : v1.ObjectMeta, default is Undefined, optional
         metadata
-    spec : ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpec, default is Undefined, optional
+    spec : ApiextensionsCrossplaneIoV2CompositeResourceDefinitionSpec, default is Undefined, optional
         spec
-    status : ApiextensionsCrossplaneIoV1CompositeResourceDefinitionStatus, default is Undefined, optional
+    status : ApiextensionsCrossplaneIoV2CompositeResourceDefinitionStatus, default is Undefined, optional
         status
     """
 
 
-    apiVersion: "apiextensions.crossplane.io/v1" = "apiextensions.crossplane.io/v1"
+    apiVersion: "apiextensions.crossplane.io/v2" = "apiextensions.crossplane.io/v2"
 
     kind: "CompositeResourceDefinition" = "CompositeResourceDefinition"
 
     metadata?: v1.ObjectMeta
 
-    spec?: ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpec
+    spec?: ApiextensionsCrossplaneIoV2CompositeResourceDefinitionSpec
 
-    status?: ApiextensionsCrossplaneIoV1CompositeResourceDefinitionStatus
+    status?: ApiextensionsCrossplaneIoV2CompositeResourceDefinitionStatus
 
 
-schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpec:
+schema ApiextensionsCrossplaneIoV2CompositeResourceDefinitionSpec:
     r"""
     CompositeResourceDefinitionSpec specifies the desired state of the definition.
 
     Attributes
     ----------
-    claimNames : ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecClaimNames, default is Undefined, optional
+    claimNames : ApiextensionsCrossplaneIoV2CompositeResourceDefinitionSpecClaimNames, default is Undefined, optional
         claim names
     connectionSecretKeys : [str], default is Undefined, optional
         ConnectionSecretKeys is the list of connection secret keys the
@@ -53,33 +53,36 @@ schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpec:
         published. If the list isn't empty, any connection secret keys that
         don't appear in the list will be filtered out. Only LegacyCluster XRs
         support connection secrets.
-    conversion : ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecConversion, default is Undefined, optional
+
+        Deprecated: XR connection secrets aren't supported in
+        apiextensions.crossplane.io/v2. Compose a secret instead.
+    conversion : ApiextensionsCrossplaneIoV2CompositeResourceDefinitionSpecConversion, default is Undefined, optional
         conversion
-    defaultCompositeDeletePolicy : str, default is "Background", optional
+    defaultCompositeDeletePolicy : str, default is Undefined, optional
         DefaultCompositeDeletePolicy is the policy used when deleting the Composite
         that is associated with the Claim if no policy has been specified.
-    defaultCompositionRef : ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecDefaultCompositionRef, default is Undefined, optional
+
+        Deprecated: Claims aren't supported in apiextensions.crossplane.io/v2.
+    defaultCompositionRef : ApiextensionsCrossplaneIoV2CompositeResourceDefinitionSpecDefaultCompositionRef, default is Undefined, optional
         default composition ref
     defaultCompositionUpdatePolicy : str, default is "Automatic", optional
         DefaultCompositionUpdatePolicy is the policy used when updating composites after a new
         Composition Revision has been created if no policy has been specified on the composite.
-    enforcedCompositionRef : ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecEnforcedCompositionRef, default is Undefined, optional
+    enforcedCompositionRef : ApiextensionsCrossplaneIoV2CompositeResourceDefinitionSpecEnforcedCompositionRef, default is Undefined, optional
         enforced composition ref
     group : str, default is Undefined, required
         Group specifies the API group of the defined composite resource.
         Composite resources are served under `/apis/<group>/...`. Must match the
         name of the XRD (in the form `<names.plural>.<group>`).
-    metadata : ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecMetadata, default is Undefined, optional
+    metadata : ApiextensionsCrossplaneIoV2CompositeResourceDefinitionSpecMetadata, default is Undefined, optional
         metadata
-    names : ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecNames, default is Undefined, required
+    names : ApiextensionsCrossplaneIoV2CompositeResourceDefinitionSpecNames, default is Undefined, required
         names
-    scope : str, default is "LegacyCluster", optional
+    scope : str, default is "Namespaced", optional
         Scope of the defined composite resource. Namespaced composite resources
         are scoped to a single namespace. Cluster scoped composite resource exist
-        outside the scope of any namespace. Neither can be claimed. Legacy
-        cluster scoped composite resources are cluster scoped resources that can
-        be claimed.
-    versions : [ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecVersionsItems0], default is Undefined, required
+        outside the scope of any namespace.
+    versions : [ApiextensionsCrossplaneIoV2CompositeResourceDefinitionSpecVersionsItems0], default is Undefined, required
         Versions is the list of all API versions of the defined composite
         resource. Version names are used to compute the order in which served
         versions are listed in API discovery. If the version string is
@@ -94,32 +97,32 @@ schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpec:
     """
 
 
-    claimNames?: ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecClaimNames
+    claimNames?: ApiextensionsCrossplaneIoV2CompositeResourceDefinitionSpecClaimNames
 
     connectionSecretKeys?: [str]
 
-    conversion?: ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecConversion
+    conversion?: ApiextensionsCrossplaneIoV2CompositeResourceDefinitionSpecConversion
 
-    defaultCompositeDeletePolicy?: "Background" | "Foreground" = "Background"
+    defaultCompositeDeletePolicy?: "Background" | "Foreground"
 
-    defaultCompositionRef?: ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecDefaultCompositionRef
+    defaultCompositionRef?: ApiextensionsCrossplaneIoV2CompositeResourceDefinitionSpecDefaultCompositionRef
 
     defaultCompositionUpdatePolicy?: "Automatic" | "Manual" = "Automatic"
 
-    enforcedCompositionRef?: ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecEnforcedCompositionRef
+    enforcedCompositionRef?: ApiextensionsCrossplaneIoV2CompositeResourceDefinitionSpecEnforcedCompositionRef
 
     group: str
 
-    metadata?: ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecMetadata
+    metadata?: ApiextensionsCrossplaneIoV2CompositeResourceDefinitionSpecMetadata
 
-    names: ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecNames
+    names: ApiextensionsCrossplaneIoV2CompositeResourceDefinitionSpecNames
 
-    scope?: "LegacyCluster" | "Namespaced" | "Cluster" = "LegacyCluster"
+    scope?: "Namespaced" | "Cluster" = "Namespaced"
 
-    versions: [ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecVersionsItems0]
+    versions: [ApiextensionsCrossplaneIoV2CompositeResourceDefinitionSpecVersionsItems0]
 
 
-schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecClaimNames:
+schema ApiextensionsCrossplaneIoV2CompositeResourceDefinitionSpecClaimNames:
     r"""
     ClaimNames specifies the names of an optional composite resource claim.
     When claim names are specified Crossplane will create a namespaced
@@ -129,6 +132,8 @@ schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecClaimNames:
     create, update, or delete a corresponding composite resource. You may add
     claim names to an existing CompositeResourceDefinition, but they cannot
     be changed or removed once they have been set.
+
+    Deprecated: Claims aren't supported in apiextensions.crossplane.io/v2.
 
     Attributes
     ----------
@@ -168,7 +173,7 @@ schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecClaimNames:
     singular?: str
 
 
-schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecConversion:
+schema ApiextensionsCrossplaneIoV2CompositeResourceDefinitionSpecConversion:
     r"""
     Conversion defines all conversion settings for the defined Composite resource.
 
@@ -179,23 +184,23 @@ schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecConversion:
         - `"None"`: The converter only change the apiVersion and would not touch any other field in the custom resource.
         - `"Webhook"`: API Server will call to an external webhook to do the conversion. Additional information
           is needed for this option. This requires spec.preserveUnknownFields to be false, and spec.conversion.webhook to be set.
-    webhook : ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecConversionWebhook, default is Undefined, optional
+    webhook : ApiextensionsCrossplaneIoV2CompositeResourceDefinitionSpecConversionWebhook, default is Undefined, optional
         webhook
     """
 
 
     strategy: str
 
-    webhook?: ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecConversionWebhook
+    webhook?: ApiextensionsCrossplaneIoV2CompositeResourceDefinitionSpecConversionWebhook
 
 
-schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecConversionWebhook:
+schema ApiextensionsCrossplaneIoV2CompositeResourceDefinitionSpecConversionWebhook:
     r"""
     webhook describes how to call the conversion webhook. Required when `strategy` is set to `"Webhook"`.
 
     Attributes
     ----------
-    clientConfig : ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecConversionWebhookClientConfig, default is Undefined, optional
+    clientConfig : ApiextensionsCrossplaneIoV2CompositeResourceDefinitionSpecConversionWebhookClientConfig, default is Undefined, optional
         client config
     conversionReviewVersions : [str], default is Undefined, required
         conversionReviewVersions is an ordered list of preferred `ConversionReview`
@@ -207,12 +212,12 @@ schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecConversionWebho
     """
 
 
-    clientConfig?: ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecConversionWebhookClientConfig
+    clientConfig?: ApiextensionsCrossplaneIoV2CompositeResourceDefinitionSpecConversionWebhookClientConfig
 
     conversionReviewVersions: [str]
 
 
-schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecConversionWebhookClientConfig:
+schema ApiextensionsCrossplaneIoV2CompositeResourceDefinitionSpecConversionWebhookClientConfig:
     r"""
     clientConfig is the instructions for how to call the webhook if strategy is `Webhook`.
 
@@ -221,7 +226,7 @@ schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecConversionWebho
     caBundle : str, default is Undefined, optional
         caBundle is a PEM encoded CA bundle which will be used to validate the webhook's server certificate.
         If unspecified, system trust roots on the apiserver are used.
-    service : ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecConversionWebhookClientConfigService, default is Undefined, optional
+    service : ApiextensionsCrossplaneIoV2CompositeResourceDefinitionSpecConversionWebhookClientConfigService, default is Undefined, optional
         service
     url : str, default is Undefined, optional
         url gives the location of the webhook, in standard URL form
@@ -254,12 +259,12 @@ schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecConversionWebho
 
     caBundle?: str
 
-    service?: ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecConversionWebhookClientConfigService
+    service?: ApiextensionsCrossplaneIoV2CompositeResourceDefinitionSpecConversionWebhookClientConfigService
 
     url?: str
 
 
-schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecConversionWebhookClientConfigService:
+schema ApiextensionsCrossplaneIoV2CompositeResourceDefinitionSpecConversionWebhookClientConfigService:
     r"""
     service is a reference to the service for this webhook. Either
     service or url must be specified.
@@ -292,7 +297,7 @@ schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecConversionWebho
     port?: int
 
 
-schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecDefaultCompositionRef:
+schema ApiextensionsCrossplaneIoV2CompositeResourceDefinitionSpecDefaultCompositionRef:
     r"""
     DefaultCompositionRef refers to the Composition resource that will be used
     in case no composition selector is given.
@@ -307,7 +312,7 @@ schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecDefaultComposit
     name: str
 
 
-schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecEnforcedCompositionRef:
+schema ApiextensionsCrossplaneIoV2CompositeResourceDefinitionSpecEnforcedCompositionRef:
     r"""
     EnforcedCompositionRef refers to the Composition resource that will be used
     by all composite instances whose schema is defined by this definition.
@@ -322,7 +327,7 @@ schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecEnforcedComposi
     name: str
 
 
-schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecMetadata:
+schema ApiextensionsCrossplaneIoV2CompositeResourceDefinitionSpecMetadata:
     r"""
     Metadata specifies the desired metadata for the defined composite resource and claim CRD's.
 
@@ -348,7 +353,7 @@ schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecMetadata:
     labels?: {str:str}
 
 
-schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecNames:
+schema ApiextensionsCrossplaneIoV2CompositeResourceDefinitionSpecNames:
     r"""
     Names specifies the resource and kind names of the defined composite
     resource.
@@ -391,13 +396,13 @@ schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecNames:
     singular?: str
 
 
-schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecVersionsItems0:
+schema ApiextensionsCrossplaneIoV2CompositeResourceDefinitionSpecVersionsItems0:
     r"""
     CompositeResourceDefinitionVersion describes a version of an XR.
 
     Attributes
     ----------
-    additionalPrinterColumns : [ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecVersionsItems0AdditionalPrinterColumnsItems0], default is Undefined, optional
+    additionalPrinterColumns : [ApiextensionsCrossplaneIoV2CompositeResourceDefinitionSpecVersionsItems0AdditionalPrinterColumnsItems0], default is Undefined, optional
         AdditionalPrinterColumns specifies additional columns returned in Table
         output. If no columns are specified, a single column displaying the age
         of the custom resource is used. See the following link for details:
@@ -418,14 +423,14 @@ schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecVersionsItems0:
         of. Exactly one version must be marked as referenceable; all Compositions
         must target only the referenceable version. The referenceable version
         must be served. It's mapped to the CRD's `spec.versions[*].storage` field.
-    $schema : ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecVersionsItems0Schema, default is Undefined, optional
+    $schema : ApiextensionsCrossplaneIoV2CompositeResourceDefinitionSpecVersionsItems0Schema, default is Undefined, optional
         schema
     served : bool, default is Undefined, required
         Served specifies that this version should be served via REST APIs.
     """
 
 
-    additionalPrinterColumns?: [ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecVersionsItems0AdditionalPrinterColumnsItems0]
+    additionalPrinterColumns?: [ApiextensionsCrossplaneIoV2CompositeResourceDefinitionSpecVersionsItems0AdditionalPrinterColumnsItems0]
 
     deprecated?: bool
 
@@ -435,7 +440,7 @@ schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecVersionsItems0:
 
     referenceable: bool
 
-    $schema?: ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecVersionsItems0Schema
+    $schema?: ApiextensionsCrossplaneIoV2CompositeResourceDefinitionSpecVersionsItems0Schema
 
     served: bool
 
@@ -444,7 +449,7 @@ schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecVersionsItems0:
         len(deprecationWarning) <= 256 if deprecationWarning
 
 
-schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecVersionsItems0AdditionalPrinterColumnsItems0:
+schema ApiextensionsCrossplaneIoV2CompositeResourceDefinitionSpecVersionsItems0AdditionalPrinterColumnsItems0:
     r"""
     CustomResourceColumnDefinition specifies a column for server side printing.
 
@@ -484,7 +489,7 @@ schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecVersionsItems0A
     $type: str
 
 
-schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecVersionsItems0Schema:
+schema ApiextensionsCrossplaneIoV2CompositeResourceDefinitionSpecVersionsItems0Schema:
     r"""
     Schema describes the schema used for validation, pruning, and defaulting
     of this version of the defined composite resource. Fields required by all
@@ -504,25 +509,25 @@ schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionSpecVersionsItems0S
     openAPIV3Schema?: any
 
 
-schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionStatus:
+schema ApiextensionsCrossplaneIoV2CompositeResourceDefinitionStatus:
     r"""
     CompositeResourceDefinitionStatus shows the observed state of the definition.
 
     Attributes
     ----------
-    conditions : [ApiextensionsCrossplaneIoV1CompositeResourceDefinitionStatusConditionsItems0], default is Undefined, optional
+    conditions : [ApiextensionsCrossplaneIoV2CompositeResourceDefinitionStatusConditionsItems0], default is Undefined, optional
         Conditions of the resource.
-    controllers : ApiextensionsCrossplaneIoV1CompositeResourceDefinitionStatusControllers, default is Undefined, optional
+    controllers : ApiextensionsCrossplaneIoV2CompositeResourceDefinitionStatusControllers, default is Undefined, optional
         controllers
     """
 
 
-    conditions?: [ApiextensionsCrossplaneIoV1CompositeResourceDefinitionStatusConditionsItems0]
+    conditions?: [ApiextensionsCrossplaneIoV2CompositeResourceDefinitionStatusConditionsItems0]
 
-    controllers?: ApiextensionsCrossplaneIoV1CompositeResourceDefinitionStatusControllers
+    controllers?: ApiextensionsCrossplaneIoV2CompositeResourceDefinitionStatusControllers
 
 
-schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionStatusConditionsItems0:
+schema ApiextensionsCrossplaneIoV2CompositeResourceDefinitionStatusConditionsItems0:
     r"""
     A Condition that may apply to a resource.
 
@@ -561,26 +566,26 @@ schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionStatusConditionsIte
     $type: str
 
 
-schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionStatusControllers:
+schema ApiextensionsCrossplaneIoV2CompositeResourceDefinitionStatusControllers:
     r"""
     Controllers represents the status of the controllers that power this
     composite resource definition.
 
     Attributes
     ----------
-    compositeResourceClaimType : ApiextensionsCrossplaneIoV1CompositeResourceDefinitionStatusControllersCompositeResourceClaimType, default is Undefined, optional
+    compositeResourceClaimType : ApiextensionsCrossplaneIoV2CompositeResourceDefinitionStatusControllersCompositeResourceClaimType, default is Undefined, optional
         composite resource claim type
-    compositeResourceType : ApiextensionsCrossplaneIoV1CompositeResourceDefinitionStatusControllersCompositeResourceType, default is Undefined, optional
+    compositeResourceType : ApiextensionsCrossplaneIoV2CompositeResourceDefinitionStatusControllersCompositeResourceType, default is Undefined, optional
         composite resource type
     """
 
 
-    compositeResourceClaimType?: ApiextensionsCrossplaneIoV1CompositeResourceDefinitionStatusControllersCompositeResourceClaimType
+    compositeResourceClaimType?: ApiextensionsCrossplaneIoV2CompositeResourceDefinitionStatusControllersCompositeResourceClaimType
 
-    compositeResourceType?: ApiextensionsCrossplaneIoV1CompositeResourceDefinitionStatusControllersCompositeResourceType
+    compositeResourceType?: ApiextensionsCrossplaneIoV2CompositeResourceDefinitionStatusControllersCompositeResourceType
 
 
-schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionStatusControllersCompositeResourceClaimType:
+schema ApiextensionsCrossplaneIoV2CompositeResourceDefinitionStatusControllersCompositeResourceClaimType:
     r"""
     The CompositeResourceClaimTypeRef is the type of composite resource claim
     that Crossplane is currently reconciling for this definition. Its version
@@ -602,7 +607,7 @@ schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionStatusControllersCo
     kind: str
 
 
-schema ApiextensionsCrossplaneIoV1CompositeResourceDefinitionStatusControllersCompositeResourceType:
+schema ApiextensionsCrossplaneIoV2CompositeResourceDefinitionStatusControllersCompositeResourceType:
     r"""
     The CompositeResourceTypeRef is the type of composite resource that
     Crossplane is currently reconciling for this definition. Its version will

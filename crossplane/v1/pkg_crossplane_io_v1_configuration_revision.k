@@ -120,6 +120,12 @@ schema PkgCrossplaneIoV1ConfigurationRevisionStatus:
 
     Attributes
     ----------
+    appliedImageConfigRefs : [PkgCrossplaneIoV1ConfigurationRevisionStatusAppliedImageConfigRefsItems0], default is Undefined, optional
+        AppliedImageConfigRefs records any image configs that were applied in
+        reconciling this revision, and what they were used for.
+    capabilities : [str], default is Undefined, optional
+        Capabilities of this package. Capabilities are opaque strings that
+        may be meaningful to package consumers.
     conditions : [PkgCrossplaneIoV1ConfigurationRevisionStatusConditionsItems0], default is Undefined, optional
         Conditions of the resource.
     foundDependencies : int, default is Undefined, optional
@@ -130,12 +136,16 @@ schema PkgCrossplaneIoV1ConfigurationRevisionStatus:
         invalid dependencies
     objectRefs : [PkgCrossplaneIoV1ConfigurationRevisionStatusObjectRefsItems0], default is Undefined, optional
         References to objects owned by PackageRevision.
-    permissionRequests : [PkgCrossplaneIoV1ConfigurationRevisionStatusPermissionRequestsItems0], default is Undefined, optional
-        PermissionRequests made by this package. The package declares that its
-        controller needs these permissions to run. The RBAC manager is
-        responsible for granting them.
+    resolvedImage : str, default is Undefined, optional
+        ResolvedPackage is the name of the package that was installed. It may be
+        different from spec.image if the package path was rewritten using an
+        image config.
     """
 
+
+    appliedImageConfigRefs?: [PkgCrossplaneIoV1ConfigurationRevisionStatusAppliedImageConfigRefsItems0]
+
+    capabilities?: [str]
 
     conditions?: [PkgCrossplaneIoV1ConfigurationRevisionStatusConditionsItems0]
 
@@ -147,7 +157,26 @@ schema PkgCrossplaneIoV1ConfigurationRevisionStatus:
 
     objectRefs?: [PkgCrossplaneIoV1ConfigurationRevisionStatusObjectRefsItems0]
 
-    permissionRequests?: [PkgCrossplaneIoV1ConfigurationRevisionStatusPermissionRequestsItems0]
+    resolvedImage?: str
+
+
+schema PkgCrossplaneIoV1ConfigurationRevisionStatusAppliedImageConfigRefsItems0:
+    r"""
+    ImageConfigRef is a reference to an image config that indicates how the
+    referenced image config was used by the package manager.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name is the name of the image config.
+    reason : str, default is Undefined, required
+        Reason indicates what the image config was used for.
+    """
+
+
+    name: str
+
+    reason: str
 
 
 schema PkgCrossplaneIoV1ConfigurationRevisionStatusConditionsItems0:
@@ -215,39 +244,5 @@ schema PkgCrossplaneIoV1ConfigurationRevisionStatusObjectRefsItems0:
     name: str
 
     uid?: str
-
-
-schema PkgCrossplaneIoV1ConfigurationRevisionStatusPermissionRequestsItems0:
-    r"""
-    PolicyRule holds information that describes a policy rule, but does not contain information
-    about who the rule applies to or which namespace the rule applies to.
-
-    Attributes
-    ----------
-    apiGroups : [str], default is Undefined, optional
-        APIGroups is the name of the APIGroup that contains the resources.  If multiple API groups are specified, any action requested against one of
-        the enumerated resources in any API group will be allowed. "" represents the core API group and "*" represents all API groups.
-    nonResourceURLs : [str], default is Undefined, optional
-        NonResourceURLs is a set of partial urls that a user should have access to.  *s are allowed, but only as the full, final step in the path
-        Since non-resource URLs are not namespaced, this field is only applicable for ClusterRoles referenced from a ClusterRoleBinding.
-        Rules can either apply to API resources (such as "pods" or "secrets") or non-resource URL paths (such as "/api"),  but not both.
-    resourceNames : [str], default is Undefined, optional
-        ResourceNames is an optional white list of names that the rule applies to.  An empty set means that everything is allowed.
-    resources : [str], default is Undefined, optional
-        Resources is a list of resources this rule applies to. '*' represents all resources.
-    verbs : [str], default is Undefined, required
-        Verbs is a list of Verbs that apply to ALL the ResourceKinds contained in this rule. '*' represents all verbs.
-    """
-
-
-    apiGroups?: [str]
-
-    nonResourceURLs?: [str]
-
-    resourceNames?: [str]
-
-    resources?: [str]
-
-    verbs: [str]
 
 

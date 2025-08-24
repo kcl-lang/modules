@@ -5,33 +5,24 @@ Editing this file might prove futile when you re-run the KCL auto-gen generate c
 import k8s.apimachinery.pkg.apis.meta.v1
 
 
-schema EnvironmentConfig:
+schema Used:
     r"""
-    An EnvironmentConfig contains user-defined unstructured values for
-    use in a Composition.
-
-    Read the Crossplane documentation for
-    [more information about EnvironmentConfigs](https://docs.crossplane.io/latest/concepts/environment-configs).
+    example org v1alpha1 used
 
     Attributes
     ----------
-    apiVersion : str, default is "apiextensions.crossplane.io/v1alpha1", required
+    apiVersion : str, default is "example.org/v1alpha1", required
         APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-    data : {str:any}, default is Undefined, optional
-        The data of this EnvironmentConfig.
-        This may contain any kind of structure that can be serialized into JSON.
-    kind : str, default is "EnvironmentConfig", required
+    kind : str, default is "Used", required
         Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     metadata : v1.ObjectMeta, default is Undefined, optional
         metadata
     """
 
 
-    apiVersion: "apiextensions.crossplane.io/v1alpha1" = "apiextensions.crossplane.io/v1alpha1"
+    apiVersion: "example.org/v1alpha1" = "example.org/v1alpha1"
 
-    data?: {str:any}
-
-    kind: "EnvironmentConfig" = "EnvironmentConfig"
+    kind: "Used" = "Used"
 
     metadata?: v1.ObjectMeta
 

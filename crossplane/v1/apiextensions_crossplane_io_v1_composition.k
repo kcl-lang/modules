@@ -43,30 +43,12 @@ schema ApiextensionsCrossplaneIoV1CompositionSpec:
     ----------
     compositeTypeRef : ApiextensionsCrossplaneIoV1CompositionSpecCompositeTypeRef, default is Undefined, required
         composite type ref
-    mode : str, default is "Resources", optional
+    mode : str, default is "Pipeline", optional
         Mode controls what type or "mode" of Composition will be used.
 
         "Pipeline" indicates that a Composition specifies a pipeline of
-        Composition Functions, each of which is responsible for producing
-        composed resources that Crossplane should create or update.
-
-        "Resources" indicates that a Composition uses what is commonly referred
-        to as "Patch & Transform" or P&T composition. This mode of Composition
-        uses an array of resources, each a template for a composed resource.
-
-        All Compositions should use Pipeline mode. Resources mode is deprecated.
-        Resources mode won't be removed in Crossplane 1.x, and will remain the
-        default to avoid breaking legacy Compositions. However, it's no longer
-        accepting new features, and only accepting security related bug fixes.
-    patchSets : [ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0], default is Undefined, optional
-        PatchSets define a named set of patches that may be included by any
-        resource in this Composition. PatchSets cannot themselves refer to other
-        PatchSets.
-
-        PatchSets are only used by the "Resources" mode of Composition. They
-        are ignored by other modes.
-
-        Deprecated: Use Composition Functions instead.
+        functions, each of which is responsible for producing composed
+        resources that Crossplane should create or update.
     pipeline : [ApiextensionsCrossplaneIoV1CompositionSpecPipelineItems0], default is Undefined, optional
         Pipeline is a list of composition function steps that will be used when a
         composite resource referring to this composition is created. One of
@@ -74,41 +56,25 @@ schema ApiextensionsCrossplaneIoV1CompositionSpec:
 
         The Pipeline is only used by the "Pipeline" mode of Composition. It is
         ignored by other modes.
-    publishConnectionDetailsWithStoreConfigRef : ApiextensionsCrossplaneIoV1CompositionSpecPublishConnectionDetailsWithStoreConfigRef, default is Undefined, optional
-        publish connection details with store config ref
-    resources : [ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0], default is Undefined, optional
-        Resources is a list of resource templates that will be used when a
-        composite resource referring to this composition is created.
-
-        Resources are only used by the "Resources" mode of Composition. They are
-        ignored by other modes.
-
-        Deprecated: Use Composition Functions instead.
     writeConnectionSecretsToNamespace : str, default is Undefined, optional
         WriteConnectionSecretsToNamespace specifies the namespace in which the
         connection secrets of composite resource dynamically provisioned using
         this composition will be created.
-        This field is planned to be replaced in a future release in favor of
-        PublishConnectionDetailsWithStoreConfigRef. Currently, both could be
-        set independently and connection details would be published to both
-        without affecting each other as long as related fields at MR level
-        specified.
     """
 
 
     compositeTypeRef: ApiextensionsCrossplaneIoV1CompositionSpecCompositeTypeRef
 
-    mode?: "Resources" | "Pipeline" = "Resources"
-
-    patchSets?: [ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0]
+    mode?: "Pipeline" = "Pipeline"
 
     pipeline?: [ApiextensionsCrossplaneIoV1CompositionSpecPipelineItems0]
 
-    publishConnectionDetailsWithStoreConfigRef?: ApiextensionsCrossplaneIoV1CompositionSpecPublishConnectionDetailsWithStoreConfigRef
-
-    resources?: [ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0]
-
     writeConnectionSecretsToNamespace?: str
+
+
+    check:
+        len(pipeline) >= 1 if pipeline
+        len(pipeline) <= 99 if pipeline
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecCompositeTypeRef:
@@ -130,411 +96,22 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecCompositeTypeRef:
     kind: str
 
 
-schema ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0:
-    r"""
-    A PatchSet is a set of patches that can be reused from all resources within
-    a Composition.
-
-    Attributes
-    ----------
-    name : str, default is Undefined, required
-        Name of this PatchSet.
-    patches : [ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0], default is Undefined, required
-        Patches will be applied as an overlay to the base resource.
-    """
-
-
-    name: str
-
-    patches: [ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0]
-
-
-schema ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0:
-    r"""
-    Patch objects are applied between composite and composed resources. Their
-    behaviour depends on the Type selected. The default Type,
-    FromCompositeFieldPath, copies a value from the composite resource to
-    the composed resource, applying any defined transformers.
-
-    Attributes
-    ----------
-    combine : ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0Combine, default is Undefined, optional
-        combine
-    fromFieldPath : str, default is Undefined, optional
-        FromFieldPath is the path of the field on the resource whose value is
-        to be used as input. Required when type is FromCompositeFieldPath or
-        ToCompositeFieldPath.
-    patchSetName : str, default is Undefined, optional
-        PatchSetName to include patches from. Required when type is PatchSet.
-    policy : ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0Policy, default is Undefined, optional
-        policy
-    toFieldPath : str, default is Undefined, optional
-        ToFieldPath is the path of the field on the resource whose value will
-        be changed with the result of transforms. Leave empty if you'd like to
-        propagate to the same path as fromFieldPath.
-    transforms : [ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0TransformsItems0], default is Undefined, optional
-        Transforms are the list of functions that are used as a FIFO pipe for the
-        input to be transformed.
-    $type : str, default is "FromCompositeFieldPath", optional
-        Type sets the patching behaviour to be used. Each patch type may require
-        its own fields to be set on the Patch object.
-    """
-
-
-    combine?: ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0Combine
-
-    fromFieldPath?: str
-
-    patchSetName?: str
-
-    policy?: ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0Policy
-
-    toFieldPath?: str
-
-    transforms?: [ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0TransformsItems0]
-
-    $type?: "FromCompositeFieldPath" | "PatchSet" | "ToCompositeFieldPath" | "CombineFromComposite" | "CombineToComposite" = "FromCompositeFieldPath"
-
-
-schema ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0Combine:
-    r"""
-    Combine is the patch configuration for a CombineFromComposite or
-    CombineToComposite patch.
-
-    Attributes
-    ----------
-    strategy : str, default is Undefined, required
-        Strategy defines the strategy to use to combine the input variable values.
-        Currently only string is supported.
-    string : ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0CombineString, default is Undefined, optional
-        string
-    variables : [ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0CombineVariablesItems0], default is Undefined, required
-        Variables are the list of variables whose values will be retrieved and
-        combined.
-    """
-
-
-    strategy: "string"
-
-    string?: ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0CombineString
-
-    variables: [ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0CombineVariablesItems0]
-
-
-    check:
-        len(variables) >= 1
-
-
-schema ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0CombineString:
-    r"""
-    String declares that input variables should be combined into a single
-    string, using the relevant settings for formatting purposes.
-
-    Attributes
-    ----------
-    fmt : str, default is Undefined, required
-        Format the input using a Go format string. See
-        https://golang.org/pkg/fmt/ for details.
-    """
-
-
-    fmt: str
-
-
-schema ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0CombineVariablesItems0:
-    r"""
-    A CombineVariable defines the source of a value that is combined with
-    others to form and patch an output value. Currently, this only supports
-    retrieving values from a field path.
-
-    Attributes
-    ----------
-    fromFieldPath : str, default is Undefined, required
-        FromFieldPath is the path of the field on the source whose value is
-        to be used as input.
-    """
-
-
-    fromFieldPath: str
-
-
-schema ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0Policy:
-    r"""
-    Policy configures the specifics of patching behaviour.
-
-    Attributes
-    ----------
-    fromFieldPath : str, default is Undefined, optional
-        FromFieldPath specifies how to patch from a field path. The default is
-        'Optional', which means the patch will be a no-op if the specified
-        fromFieldPath does not exist. Use 'Required' if the patch should fail if
-        the specified path does not exist.
-    mergeOptions : ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0PolicyMergeOptions, default is Undefined, optional
-        merge options
-    """
-
-
-    fromFieldPath?: "Optional" | "Required"
-
-    mergeOptions?: ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0PolicyMergeOptions
-
-
-schema ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0PolicyMergeOptions:
-    r"""
-    MergeOptions Specifies merge options on a field path.
-
-    Attributes
-    ----------
-    appendSlice : bool, default is Undefined, optional
-        Specifies that already existing elements in a merged slice should be preserved
-    keepMapValues : bool, default is Undefined, optional
-        Specifies that already existing values in a merged map should be preserved
-    """
-
-
-    appendSlice?: bool
-
-    keepMapValues?: bool
-
-
-schema ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0TransformsItems0:
-    r"""
-    Transform is a unit of process whose input is transformed into an output with
-    the supplied configuration.
-
-    Attributes
-    ----------
-    convert : ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0TransformsItems0Convert, default is Undefined, optional
-        convert
-    $map : {str:any}, default is Undefined, optional
-        Map uses the input as a key in the given map and returns the value.
-    match : ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0TransformsItems0Match, default is Undefined, optional
-        match
-    math : ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0TransformsItems0Math, default is Undefined, optional
-        math
-    string : ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0TransformsItems0String, default is Undefined, optional
-        string
-    $type : str, default is Undefined, required
-        Type of the transform to be run.
-    """
-
-
-    convert?: ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0TransformsItems0Convert
-
-    $map?: {str:any}
-
-    match?: ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0TransformsItems0Match
-
-    math?: ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0TransformsItems0Math
-
-    string?: ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0TransformsItems0String
-
-    $type: "map" | "match" | "math" | "string" | "convert"
-
-
-schema ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0TransformsItems0Convert:
-    r"""
-    Convert is used to cast the input into the given output type.
-
-    Attributes
-    ----------
-    format : str, default is Undefined, optional
-        The expected input format.
-
-        * `quantity` - parses the input as a K8s [`resource.Quantity`](https://pkg.go.dev/k8s.io/apimachinery/pkg/api/resource#Quantity).
-        Only used during `string -> float64` conversions.
-        * `json` - parses the input as a JSON string.
-        Only used during `string -> object` or `string -> list` conversions.
-
-        If this property is null, the default conversion is applied.
-    toType : str, default is Undefined, required
-        ToType is the type of the output of this transform.
-    """
-
-
-    format?: "none" | "quantity" | "json"
-
-    toType: "string" | "int" | "int64" | "bool" | "float64" | "object" | "array"
-
-
-schema ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0TransformsItems0Match:
-    r"""
-    Match is a more complex version of Map that matches a list of patterns.
-
-    Attributes
-    ----------
-    fallbackTo : str, default is "Value", optional
-        Determines to what value the transform should fallback if no pattern matches.
-    fallbackValue : any, default is Undefined, optional
-        The fallback value that should be returned by the transform if now pattern
-        matches.
-    patterns : [ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0TransformsItems0MatchPatternsItems0], default is Undefined, optional
-        The patterns that should be tested against the input string.
-        Patterns are tested in order. The value of the first match is used as
-        result of this transform.
-    """
-
-
-    fallbackTo?: "Value" | "Input" = "Value"
-
-    fallbackValue?: any
-
-    patterns?: [ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0TransformsItems0MatchPatternsItems0]
-
-
-schema ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0TransformsItems0MatchPatternsItems0:
-    r"""
-    MatchTransformPattern is a transform that returns the value that matches a
-    pattern.
-
-    Attributes
-    ----------
-    literal : str, default is Undefined, optional
-        Literal exactly matches the input string (case sensitive).
-        Is required if `type` is `literal`.
-    regexp : str, default is Undefined, optional
-        Regexp to match against the input string.
-        Is required if `type` is `regexp`.
-    result : any, default is Undefined, required
-        The value that is used as result of the transform if the pattern matches.
-    $type : str, default is "literal", required
-        Type specifies how the pattern matches the input.
-
-        * `literal` - the pattern value has to exactly match (case sensitive) the
-        input string. This is the default.
-
-        * `regexp` - the pattern treated as a regular expression against
-        which the input string is tested. Crossplane will throw an error if the
-        key is not a valid regexp.
-    """
-
-
-    literal?: str
-
-    regexp?: str
-
-    result: any
-
-    $type: "literal" | "regexp" = "literal"
-
-
-schema ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0TransformsItems0Math:
-    r"""
-    Math is used to transform the input via mathematical operations such as
-    multiplication.
-
-    Attributes
-    ----------
-    clampMax : int, default is Undefined, optional
-        ClampMax makes sure that the value is not bigger than the given value.
-    clampMin : int, default is Undefined, optional
-        ClampMin makes sure that the value is not smaller than the given value.
-    multiply : int, default is Undefined, optional
-        Multiply the value.
-    $type : str, default is "Multiply", optional
-        Type of the math transform to be run.
-    """
-
-
-    clampMax?: int
-
-    clampMin?: int
-
-    multiply?: int
-
-    $type?: "Multiply" | "ClampMin" | "ClampMax" = "Multiply"
-
-
-schema ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0TransformsItems0String:
-    r"""
-    String is used to transform the input into a string or a different kind
-    of string. Note that the input does not necessarily need to be a string.
-
-    Attributes
-    ----------
-    convert : str, default is Undefined, optional
-        Optional conversion method to be specified.
-        `ToUpper` and `ToLower` change the letter case of the input string.
-        `ToBase64` and `FromBase64` perform a base64 conversion based on the input string.
-        `ToJson` converts any input value into its raw JSON representation.
-        `ToSha1`, `ToSha256` and `ToSha512` generate a hash value based on the input
-        converted to JSON.
-        `ToAdler32` generate a addler32 hash based on the input string.
-    fmt : str, default is Undefined, optional
-        Format the input using a Go format string. See
-        https://golang.org/pkg/fmt/ for details.
-    join : ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0TransformsItems0StringJoin, default is Undefined, optional
-        join
-    regexp : ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0TransformsItems0StringRegexp, default is Undefined, optional
-        regexp
-    trim : str, default is Undefined, optional
-        Trim the prefix or suffix from the input
-    $type : str, default is "Format", optional
-        Type of the string transform to be run.
-    """
-
-
-    convert?: "ToUpper" | "ToLower" | "ToBase64" | "FromBase64" | "ToJson" | "ToSha1" | "ToSha256" | "ToSha512" | "ToAdler32"
-
-    fmt?: str
-
-    join?: ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0TransformsItems0StringJoin
-
-    regexp?: ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0TransformsItems0StringRegexp
-
-    trim?: str
-
-    $type?: "Format" | "Convert" | "TrimPrefix" | "TrimSuffix" | "Regexp" | "Join" = "Format"
-
-
-schema ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0TransformsItems0StringJoin:
-    r"""
-    Join defines parameters to join a slice of values to a string.
-
-    Attributes
-    ----------
-    separator : str, default is Undefined, required
-        Separator defines the character that should separate the values from each
-        other in the joined string.
-    """
-
-
-    separator: str
-
-
-schema ApiextensionsCrossplaneIoV1CompositionSpecPatchSetsItems0PatchesItems0TransformsItems0StringRegexp:
-    r"""
-    Extract a match from the input using a regular expression.
-
-    Attributes
-    ----------
-    group : int, default is Undefined, optional
-        Group number to match. 0 (the default) matches the entire expression.
-    match : str, default is Undefined, required
-        Match string. May optionally include submatches, aka capture groups.
-        See https://pkg.go.dev/regexp/ for details.
-    """
-
-
-    group?: int
-
-    match: str
-
-
 schema ApiextensionsCrossplaneIoV1CompositionSpecPipelineItems0:
     r"""
-    A PipelineStep in a Composition Function pipeline.
+    A PipelineStep in a function pipeline.
 
     Attributes
     ----------
     credentials : [ApiextensionsCrossplaneIoV1CompositionSpecPipelineItems0CredentialsItems0], default is Undefined, optional
-        Credentials are optional credentials that the Composition Function needs.
+        Credentials are optional credentials that the function needs.
     functionRef : ApiextensionsCrossplaneIoV1CompositionSpecPipelineItems0FunctionRef, default is Undefined, required
         function ref
     input : any, default is Undefined, optional
         Input is an optional, arbitrary Kubernetes resource (i.e. a resource
-        with an apiVersion and kind) that will be passed to the Composition
-        Function as the 'input' of its RunFunctionRequest.
+        with an apiVersion and kind) that will be passed to the function as
+        the 'input' of its RunFunctionRequest.
+    requirements : ApiextensionsCrossplaneIoV1CompositionSpecPipelineItems0Requirements, default is Undefined, optional
+        requirements
     step : str, default is Undefined, required
         Step name. Must be unique within its Pipeline.
     """
@@ -546,12 +123,14 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecPipelineItems0:
 
     input?: any
 
+    requirements?: ApiextensionsCrossplaneIoV1CompositionSpecPipelineItems0Requirements
+
     step: str
 
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecPipelineItems0CredentialsItems0:
     r"""
-    FunctionCredentials are optional credentials that a Composition Function
+    FunctionCredentials are optional credentials that a function
     needs to run.
 
     Attributes
@@ -593,7 +172,7 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecPipelineItems0CredentialsItems0
 
 schema ApiextensionsCrossplaneIoV1CompositionSpecPipelineItems0FunctionRef:
     r"""
-    FunctionRef is a reference to the Composition Function this step should
+    FunctionRef is a reference to the function this step should
     execute.
 
     Attributes
@@ -606,528 +185,57 @@ schema ApiextensionsCrossplaneIoV1CompositionSpecPipelineItems0FunctionRef:
     name: str
 
 
-schema ApiextensionsCrossplaneIoV1CompositionSpecPublishConnectionDetailsWithStoreConfigRef:
+schema ApiextensionsCrossplaneIoV1CompositionSpecPipelineItems0Requirements:
     r"""
-    PublishConnectionDetailsWithStoreConfig specifies the secret store config
-    with which the connection details of composite resources dynamically
-    provisioned using this composition will be published.
-
-    THIS IS AN ALPHA FIELD. Do not use it in production. It is not honored
-    unless the relevant Crossplane feature flag is enabled, and may be
-    changed or removed without notice.
+    Requirements are resource requirements that will be satisfied before
+    this pipeline step is called for the first time. This allows
+    pre-populating required resources without requiring a function to
+    request them first.
 
     Attributes
     ----------
-    name : str, default is Undefined, required
-        Name of the referenced StoreConfig.
+    requiredResources : [ApiextensionsCrossplaneIoV1CompositionSpecPipelineItems0RequirementsRequiredResourcesItems0], default is Undefined, optional
+        RequiredResources is a list of resources that must be fetched before
+        this function is called.
     """
 
 
-    name: str
+    requiredResources?: [ApiextensionsCrossplaneIoV1CompositionSpecPipelineItems0RequirementsRequiredResourcesItems0]
 
 
-schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0:
+schema ApiextensionsCrossplaneIoV1CompositionSpecPipelineItems0RequirementsRequiredResourcesItems0:
     r"""
-    ComposedTemplate is used to provide information about how the composed resource
-    should be processed.
+    RequiredResourceSelector selects a required resource.
 
     Attributes
     ----------
-    base : any, default is Undefined, required
-        Base is the target resource that the patches will be applied on.
-    connectionDetails : [ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0ConnectionDetailsItems0], default is Undefined, optional
-        ConnectionDetails lists the propagation secret keys from this target
-        resource to the composition instance connection secret.
+    apiVersion : str, default is Undefined, required
+        APIVersion of the required resource.
+    kind : str, default is Undefined, required
+        Kind of the required resource.
+    matchLabels : {str:str}, default is Undefined, optional
+        MatchLabels specifies the set of labels to match for finding the
+        required resource. When specified, Name is ignored.
     name : str, default is Undefined, optional
-        A Name uniquely identifies this entry within its Composition's resources
-        array. Names are optional but *strongly* recommended. When all entries in
-        the resources array are named entries may added, deleted, and reordered
-        as long as their names do not change. When entries are not named the
-        length and order of the resources array should be treated as immutable.
-        Either all or no entries must be named.
-    patches : [ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0], default is Undefined, optional
-        Patches will be applied as overlay to the base resource.
-    readinessChecks : [ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0ReadinessChecksItems0], default is [{"matchCondition": {"status": "True", "type": "Ready"}, "type": "MatchCondition"}], optional
-        ReadinessChecks allows users to define custom readiness checks. All checks
-        have to return true in order for resource to be considered ready. The
-        default readiness check is to have the "Ready" condition to be "True".
+        Name of the required resource.
+    namespace : str, default is Undefined, optional
+        Namespace of the required resource if it is namespaced.
+    requirementName : str, default is Undefined, required
+        RequirementName is the unique name to identify this required resource
+        in the Required Resources map in the function request.
     """
 
 
-    base: any
+    apiVersion: str
 
-    connectionDetails?: [ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0ConnectionDetailsItems0]
+    kind: str
+
+    matchLabels?: {str:str}
 
     name?: str
 
-    patches?: [ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0]
+    namespace?: str
 
-    readinessChecks?: [ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0ReadinessChecksItems0] = [{"matchCondition": {"status": "True", "type": "Ready"}, "type": "MatchCondition"}]
-
-
-schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0ConnectionDetailsItems0:
-    r"""
-    ConnectionDetail includes the information about the propagation of the connection
-    information from one secret to another.
-
-    Attributes
-    ----------
-    fromConnectionSecretKey : str, default is Undefined, optional
-        FromConnectionSecretKey is the key that will be used to fetch the value
-        from the composed resource's connection secret.
-    fromFieldPath : str, default is Undefined, optional
-        FromFieldPath is the path of the field on the composed resource whose
-        value to be used as input. Name must be specified if the type is
-        FromFieldPath.
-    name : str, default is Undefined, optional
-        Name of the connection secret key that will be propagated to the
-        connection secret of the composition instance. Leave empty if you'd like
-        to use the same key name.
-    $type : str, default is Undefined, optional
-        Type sets the connection detail fetching behaviour to be used. Each
-        connection detail type may require its own fields to be set on the
-        ConnectionDetail object. If the type is omitted Crossplane will attempt
-        to infer it based on which other fields were specified. If multiple
-        fields are specified the order of precedence is:
-        1. FromValue
-        2. FromConnectionSecretKey
-        3. FromFieldPath
-    value : str, default is Undefined, optional
-        Value that will be propagated to the connection secret of the composite
-        resource. May be set to inject a fixed, non-sensitive connection secret
-        value, for example a well-known port.
-    """
-
-
-    fromConnectionSecretKey?: str
-
-    fromFieldPath?: str
-
-    name?: str
-
-    $type?: "FromConnectionSecretKey" | "FromFieldPath" | "FromValue"
-
-    value?: str
-
-
-schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0:
-    r"""
-    Patch objects are applied between composite and composed resources. Their
-    behaviour depends on the Type selected. The default Type,
-    FromCompositeFieldPath, copies a value from the composite resource to
-    the composed resource, applying any defined transformers.
-
-    Attributes
-    ----------
-    combine : ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0Combine, default is Undefined, optional
-        combine
-    fromFieldPath : str, default is Undefined, optional
-        FromFieldPath is the path of the field on the resource whose value is
-        to be used as input. Required when type is FromCompositeFieldPath or
-        ToCompositeFieldPath.
-    patchSetName : str, default is Undefined, optional
-        PatchSetName to include patches from. Required when type is PatchSet.
-    policy : ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0Policy, default is Undefined, optional
-        policy
-    toFieldPath : str, default is Undefined, optional
-        ToFieldPath is the path of the field on the resource whose value will
-        be changed with the result of transforms. Leave empty if you'd like to
-        propagate to the same path as fromFieldPath.
-    transforms : [ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0TransformsItems0], default is Undefined, optional
-        Transforms are the list of functions that are used as a FIFO pipe for the
-        input to be transformed.
-    $type : str, default is "FromCompositeFieldPath", optional
-        Type sets the patching behaviour to be used. Each patch type may require
-        its own fields to be set on the Patch object.
-    """
-
-
-    combine?: ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0Combine
-
-    fromFieldPath?: str
-
-    patchSetName?: str
-
-    policy?: ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0Policy
-
-    toFieldPath?: str
-
-    transforms?: [ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0TransformsItems0]
-
-    $type?: "FromCompositeFieldPath" | "PatchSet" | "ToCompositeFieldPath" | "CombineFromComposite" | "CombineToComposite" = "FromCompositeFieldPath"
-
-
-schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0Combine:
-    r"""
-    Combine is the patch configuration for a CombineFromComposite or
-    CombineToComposite patch.
-
-    Attributes
-    ----------
-    strategy : str, default is Undefined, required
-        Strategy defines the strategy to use to combine the input variable values.
-        Currently only string is supported.
-    string : ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0CombineString, default is Undefined, optional
-        string
-    variables : [ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0CombineVariablesItems0], default is Undefined, required
-        Variables are the list of variables whose values will be retrieved and
-        combined.
-    """
-
-
-    strategy: "string"
-
-    string?: ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0CombineString
-
-    variables: [ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0CombineVariablesItems0]
-
-
-    check:
-        len(variables) >= 1
-
-
-schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0CombineString:
-    r"""
-    String declares that input variables should be combined into a single
-    string, using the relevant settings for formatting purposes.
-
-    Attributes
-    ----------
-    fmt : str, default is Undefined, required
-        Format the input using a Go format string. See
-        https://golang.org/pkg/fmt/ for details.
-    """
-
-
-    fmt: str
-
-
-schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0CombineVariablesItems0:
-    r"""
-    A CombineVariable defines the source of a value that is combined with
-    others to form and patch an output value. Currently, this only supports
-    retrieving values from a field path.
-
-    Attributes
-    ----------
-    fromFieldPath : str, default is Undefined, required
-        FromFieldPath is the path of the field on the source whose value is
-        to be used as input.
-    """
-
-
-    fromFieldPath: str
-
-
-schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0Policy:
-    r"""
-    Policy configures the specifics of patching behaviour.
-
-    Attributes
-    ----------
-    fromFieldPath : str, default is Undefined, optional
-        FromFieldPath specifies how to patch from a field path. The default is
-        'Optional', which means the patch will be a no-op if the specified
-        fromFieldPath does not exist. Use 'Required' if the patch should fail if
-        the specified path does not exist.
-    mergeOptions : ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0PolicyMergeOptions, default is Undefined, optional
-        merge options
-    """
-
-
-    fromFieldPath?: "Optional" | "Required"
-
-    mergeOptions?: ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0PolicyMergeOptions
-
-
-schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0PolicyMergeOptions:
-    r"""
-    MergeOptions Specifies merge options on a field path.
-
-    Attributes
-    ----------
-    appendSlice : bool, default is Undefined, optional
-        Specifies that already existing elements in a merged slice should be preserved
-    keepMapValues : bool, default is Undefined, optional
-        Specifies that already existing values in a merged map should be preserved
-    """
-
-
-    appendSlice?: bool
-
-    keepMapValues?: bool
-
-
-schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0TransformsItems0:
-    r"""
-    Transform is a unit of process whose input is transformed into an output with
-    the supplied configuration.
-
-    Attributes
-    ----------
-    convert : ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0TransformsItems0Convert, default is Undefined, optional
-        convert
-    $map : {str:any}, default is Undefined, optional
-        Map uses the input as a key in the given map and returns the value.
-    match : ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0TransformsItems0Match, default is Undefined, optional
-        match
-    math : ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0TransformsItems0Math, default is Undefined, optional
-        math
-    string : ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0TransformsItems0String, default is Undefined, optional
-        string
-    $type : str, default is Undefined, required
-        Type of the transform to be run.
-    """
-
-
-    convert?: ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0TransformsItems0Convert
-
-    $map?: {str:any}
-
-    match?: ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0TransformsItems0Match
-
-    math?: ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0TransformsItems0Math
-
-    string?: ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0TransformsItems0String
-
-    $type: "map" | "match" | "math" | "string" | "convert"
-
-
-schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0TransformsItems0Convert:
-    r"""
-    Convert is used to cast the input into the given output type.
-
-    Attributes
-    ----------
-    format : str, default is Undefined, optional
-        The expected input format.
-
-        * `quantity` - parses the input as a K8s [`resource.Quantity`](https://pkg.go.dev/k8s.io/apimachinery/pkg/api/resource#Quantity).
-        Only used during `string -> float64` conversions.
-        * `json` - parses the input as a JSON string.
-        Only used during `string -> object` or `string -> list` conversions.
-
-        If this property is null, the default conversion is applied.
-    toType : str, default is Undefined, required
-        ToType is the type of the output of this transform.
-    """
-
-
-    format?: "none" | "quantity" | "json"
-
-    toType: "string" | "int" | "int64" | "bool" | "float64" | "object" | "array"
-
-
-schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0TransformsItems0Match:
-    r"""
-    Match is a more complex version of Map that matches a list of patterns.
-
-    Attributes
-    ----------
-    fallbackTo : str, default is "Value", optional
-        Determines to what value the transform should fallback if no pattern matches.
-    fallbackValue : any, default is Undefined, optional
-        The fallback value that should be returned by the transform if now pattern
-        matches.
-    patterns : [ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0TransformsItems0MatchPatternsItems0], default is Undefined, optional
-        The patterns that should be tested against the input string.
-        Patterns are tested in order. The value of the first match is used as
-        result of this transform.
-    """
-
-
-    fallbackTo?: "Value" | "Input" = "Value"
-
-    fallbackValue?: any
-
-    patterns?: [ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0TransformsItems0MatchPatternsItems0]
-
-
-schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0TransformsItems0MatchPatternsItems0:
-    r"""
-    MatchTransformPattern is a transform that returns the value that matches a
-    pattern.
-
-    Attributes
-    ----------
-    literal : str, default is Undefined, optional
-        Literal exactly matches the input string (case sensitive).
-        Is required if `type` is `literal`.
-    regexp : str, default is Undefined, optional
-        Regexp to match against the input string.
-        Is required if `type` is `regexp`.
-    result : any, default is Undefined, required
-        The value that is used as result of the transform if the pattern matches.
-    $type : str, default is "literal", required
-        Type specifies how the pattern matches the input.
-
-        * `literal` - the pattern value has to exactly match (case sensitive) the
-        input string. This is the default.
-
-        * `regexp` - the pattern treated as a regular expression against
-        which the input string is tested. Crossplane will throw an error if the
-        key is not a valid regexp.
-    """
-
-
-    literal?: str
-
-    regexp?: str
-
-    result: any
-
-    $type: "literal" | "regexp" = "literal"
-
-
-schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0TransformsItems0Math:
-    r"""
-    Math is used to transform the input via mathematical operations such as
-    multiplication.
-
-    Attributes
-    ----------
-    clampMax : int, default is Undefined, optional
-        ClampMax makes sure that the value is not bigger than the given value.
-    clampMin : int, default is Undefined, optional
-        ClampMin makes sure that the value is not smaller than the given value.
-    multiply : int, default is Undefined, optional
-        Multiply the value.
-    $type : str, default is "Multiply", optional
-        Type of the math transform to be run.
-    """
-
-
-    clampMax?: int
-
-    clampMin?: int
-
-    multiply?: int
-
-    $type?: "Multiply" | "ClampMin" | "ClampMax" = "Multiply"
-
-
-schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0TransformsItems0String:
-    r"""
-    String is used to transform the input into a string or a different kind
-    of string. Note that the input does not necessarily need to be a string.
-
-    Attributes
-    ----------
-    convert : str, default is Undefined, optional
-        Optional conversion method to be specified.
-        `ToUpper` and `ToLower` change the letter case of the input string.
-        `ToBase64` and `FromBase64` perform a base64 conversion based on the input string.
-        `ToJson` converts any input value into its raw JSON representation.
-        `ToSha1`, `ToSha256` and `ToSha512` generate a hash value based on the input
-        converted to JSON.
-        `ToAdler32` generate a addler32 hash based on the input string.
-    fmt : str, default is Undefined, optional
-        Format the input using a Go format string. See
-        https://golang.org/pkg/fmt/ for details.
-    join : ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0TransformsItems0StringJoin, default is Undefined, optional
-        join
-    regexp : ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0TransformsItems0StringRegexp, default is Undefined, optional
-        regexp
-    trim : str, default is Undefined, optional
-        Trim the prefix or suffix from the input
-    $type : str, default is "Format", optional
-        Type of the string transform to be run.
-    """
-
-
-    convert?: "ToUpper" | "ToLower" | "ToBase64" | "FromBase64" | "ToJson" | "ToSha1" | "ToSha256" | "ToSha512" | "ToAdler32"
-
-    fmt?: str
-
-    join?: ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0TransformsItems0StringJoin
-
-    regexp?: ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0TransformsItems0StringRegexp
-
-    trim?: str
-
-    $type?: "Format" | "Convert" | "TrimPrefix" | "TrimSuffix" | "Regexp" | "Join" = "Format"
-
-
-schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0TransformsItems0StringJoin:
-    r"""
-    Join defines parameters to join a slice of values to a string.
-
-    Attributes
-    ----------
-    separator : str, default is Undefined, required
-        Separator defines the character that should separate the values from each
-        other in the joined string.
-    """
-
-
-    separator: str
-
-
-schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0PatchesItems0TransformsItems0StringRegexp:
-    r"""
-    Extract a match from the input using a regular expression.
-
-    Attributes
-    ----------
-    group : int, default is Undefined, optional
-        Group number to match. 0 (the default) matches the entire expression.
-    match : str, default is Undefined, required
-        Match string. May optionally include submatches, aka capture groups.
-        See https://pkg.go.dev/regexp/ for details.
-    """
-
-
-    group?: int
-
-    match: str
-
-
-schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0ReadinessChecksItems0:
-    r"""
-    ReadinessCheck is used to indicate how to tell whether a resource is ready
-    for consumption.
-
-    Attributes
-    ----------
-    fieldPath : str, default is Undefined, optional
-        FieldPath shows the path of the field whose value will be used.
-    matchCondition : ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0ReadinessChecksItems0MatchCondition, default is Undefined, optional
-        match condition
-    matchInteger : int, default is Undefined, optional
-        MatchInt is the value you'd like to match if you're using "MatchInt" type.
-    matchString : str, default is Undefined, optional
-        MatchString is the value you'd like to match if you're using "MatchString" type.
-    $type : str, default is Undefined, required
-        Type indicates the type of probe you'd like to use.
-    """
-
-
-    fieldPath?: str
-
-    matchCondition?: ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0ReadinessChecksItems0MatchCondition
-
-    matchInteger?: int
-
-    matchString?: str
-
-    $type: "MatchString" | "MatchInteger" | "NonEmpty" | "MatchCondition" | "MatchTrue" | "MatchFalse" | "None"
-
-
-schema ApiextensionsCrossplaneIoV1CompositionSpecResourcesItems0ReadinessChecksItems0MatchCondition:
-    r"""
-    MatchCondition specifies the condition you'd like to match if you're using "MatchCondition" type.
-
-    Attributes
-    ----------
-    status : str, default is "True", required
-        Status is the status of the condition you'd like to match.
-    $type : str, default is "Ready", required
-        Type indicates the type of condition you'd like to use.
-    """
-
-
-    status: str = "True"
-
-    $type: str = "Ready"
+    requirementName: str
 
 
