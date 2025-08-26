@@ -146,6 +146,13 @@ schema SamlKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProvider:
     nameIdPolicyFormat : str, default is Undefined, optional
         Specifies the URI reference corresponding to a name identifier format. Defaults to empty.
         Name ID Policy Format.
+    orgDomain : str, default is Undefined, optional
+        The organization domain to associate this identity provider with. It is used to map users to an organization based on their email domain and to authenticate them accordingly in the scope of the organization.
+    orgRedirectModeEmailMatches : bool, default is Undefined, optional
+        Indicates whether to automatically redirect users to this identity provider when email domain matches domain.
+    organizationId : str, default is Undefined, optional
+        The ID of the organization to link this identity provider to.
+        ID of organization with which this identity is linked.
     postBindingAuthnRequest : bool, default is Undefined, optional
         Indicates whether the AuthnRequest must be sent using HTTP-POST binding. If false, HTTP-REDIRECT binding will be used.
         Post Binding Authn Request.
@@ -245,6 +252,12 @@ schema SamlKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProvider:
     loginHint?: str
 
     nameIdPolicyFormat?: str
+
+    orgDomain?: str
+
+    orgRedirectModeEmailMatches?: bool
+
+    organizationId?: str
 
     postBindingAuthnRequest?: bool
 
@@ -445,6 +458,13 @@ schema SamlKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProvider:
     nameIdPolicyFormat : str, default is Undefined, optional
         Specifies the URI reference corresponding to a name identifier format. Defaults to empty.
         Name ID Policy Format.
+    orgDomain : str, default is Undefined, optional
+        The organization domain to associate this identity provider with. It is used to map users to an organization based on their email domain and to authenticate them accordingly in the scope of the organization.
+    orgRedirectModeEmailMatches : bool, default is Undefined, optional
+        Indicates whether to automatically redirect users to this identity provider when email domain matches domain.
+    organizationId : str, default is Undefined, optional
+        The ID of the organization to link this identity provider to.
+        ID of organization with which this identity is linked.
     postBindingAuthnRequest : bool, default is Undefined, optional
         Indicates whether the AuthnRequest must be sent using HTTP-POST binding. If false, HTTP-REDIRECT binding will be used.
         Post Binding Authn Request.
@@ -544,6 +564,12 @@ schema SamlKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProvider:
     loginHint?: str
 
     nameIdPolicyFormat?: str
+
+    orgDomain?: str
+
+    orgRedirectModeEmailMatches?: bool
+
+    organizationId?: str
 
     postBindingAuthnRequest?: bool
 
@@ -928,6 +954,13 @@ schema SamlKeycloakCrossplaneIoV1alpha1IdentityProviderStatusAtProvider:
     nameIdPolicyFormat : str, default is Undefined, optional
         Specifies the URI reference corresponding to a name identifier format. Defaults to empty.
         Name ID Policy Format.
+    orgDomain : str, default is Undefined, optional
+        The organization domain to associate this identity provider with. It is used to map users to an organization based on their email domain and to authenticate them accordingly in the scope of the organization.
+    orgRedirectModeEmailMatches : bool, default is Undefined, optional
+        Indicates whether to automatically redirect users to this identity provider when email domain matches domain.
+    organizationId : str, default is Undefined, optional
+        The ID of the organization to link this identity provider to.
+        ID of organization with which this identity is linked.
     postBindingAuthnRequest : bool, default is Undefined, optional
         Indicates whether the AuthnRequest must be sent using HTTP-POST binding. If false, HTTP-REDIRECT binding will be used.
         Post Binding Authn Request.
@@ -1027,6 +1060,12 @@ schema SamlKeycloakCrossplaneIoV1alpha1IdentityProviderStatusAtProvider:
     loginHint?: str
 
     nameIdPolicyFormat?: str
+
+    orgDomain?: str
+
+    orgRedirectModeEmailMatches?: bool
+
+    organizationId?: str
 
     postBindingAuthnRequest?: bool
 
