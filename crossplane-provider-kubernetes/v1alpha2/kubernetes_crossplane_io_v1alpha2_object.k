@@ -8,64 +8,69 @@ import k8s.apimachinery.pkg.apis.meta.v1
 schema Object:
     r"""
     A Object is an provider Kubernetes API type
-    Deprecated: v1alpha1.Object is deprecated in favor of v1alpha2.Object
 
     Attributes
     ----------
-    apiVersion : str, default is "kubernetes.crossplane.io/v1alpha1", required
+    apiVersion : str, default is "kubernetes.crossplane.io/v1alpha2", required
         APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
     kind : str, default is "Object", required
         Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     metadata : v1.ObjectMeta, default is Undefined, optional
         metadata
-    spec : KubernetesCrossplaneIoV1alpha1ObjectSpec, default is Undefined, required
+    spec : KubernetesCrossplaneIoV1alpha2ObjectSpec, default is Undefined, required
         spec
-    status : KubernetesCrossplaneIoV1alpha1ObjectStatus, default is Undefined, optional
+    status : KubernetesCrossplaneIoV1alpha2ObjectStatus, default is Undefined, optional
         status
     """
 
 
-    apiVersion: "kubernetes.crossplane.io/v1alpha1" = "kubernetes.crossplane.io/v1alpha1"
+    apiVersion: "kubernetes.crossplane.io/v1alpha2" = "kubernetes.crossplane.io/v1alpha2"
 
     kind: "Object" = "Object"
 
     metadata?: v1.ObjectMeta
 
-    spec: KubernetesCrossplaneIoV1alpha1ObjectSpec
+    spec: KubernetesCrossplaneIoV1alpha2ObjectSpec
 
-    status?: KubernetesCrossplaneIoV1alpha1ObjectStatus
+    status?: KubernetesCrossplaneIoV1alpha2ObjectStatus
 
 
-schema KubernetesCrossplaneIoV1alpha1ObjectSpec:
+schema KubernetesCrossplaneIoV1alpha2ObjectSpec:
     r"""
     A ObjectSpec defines the desired state of a Object.
 
     Attributes
     ----------
-    connectionDetails : [KubernetesCrossplaneIoV1alpha1ObjectSpecConnectionDetailsItems0], default is Undefined, optional
+    connectionDetails : [KubernetesCrossplaneIoV1alpha2ObjectSpecConnectionDetailsItems0], default is Undefined, optional
         connection details
     deletionPolicy : str, default is "Delete", optional
         DeletionPolicy specifies what will happen to the underlying external
         when this managed resource is deleted - either "Delete" or "Orphan" the
         external resource.
-        This field is planned to be deprecated in favor of the ManagementPolicy
+        This field is planned to be deprecated in favor of the ManagementPolicies
         field in a future release. Currently, both could be set independently and
         non-default values would be honored if the feature flag is enabled.
         See the design doc for more information: https://github.com/crossplane/crossplane/blob/499895a25d1a1a0ba1604944ef98ac7a1a71f197/design/design-doc-observe-only-resources.md?plain=1#L223
-    forProvider : KubernetesCrossplaneIoV1alpha1ObjectSpecForProvider, default is Undefined, required
+    forProvider : KubernetesCrossplaneIoV1alpha2ObjectSpecForProvider, default is Undefined, required
         for provider
-    managementPolicy : str, default is "Default", optional
-        A ManagementPolicy determines what should happen to the underlying external
-        resource when a managed resource is created, updated, deleted, or observed.
-    providerConfigRef : KubernetesCrossplaneIoV1alpha1ObjectSpecProviderConfigRef, default is Undefined, optional
+    managementPolicies : [str], default is ["*"], optional
+        THIS IS A BETA FIELD. It is on by default but can be opted out
+        through a Crossplane feature flag.
+        ManagementPolicies specify the array of actions Crossplane is allowed to
+        take on the managed and external resources.
+        This field is planned to replace the DeletionPolicy field in a future
+        release. Currently, both could be set independently and non-default
+        values would be honored if the feature flag is enabled. If both are
+        custom, the DeletionPolicy field will be ignored.
+        See the design doc for more information: https://github.com/crossplane/crossplane/blob/499895a25d1a1a0ba1604944ef98ac7a1a71f197/design/design-doc-observe-only-resources.md?plain=1#L223
+        and this one: https://github.com/crossplane/crossplane/blob/444267e84783136daa93568b364a5f01228cacbe/design/one-pager-ignore-changes.md
+    providerConfigRef : KubernetesCrossplaneIoV1alpha2ObjectSpecProviderConfigRef, default is Undefined, optional
         provider config ref
-    providerRef : KubernetesCrossplaneIoV1alpha1ObjectSpecProviderRef, default is Undefined, optional
-        provider ref
-    publishConnectionDetailsTo : KubernetesCrossplaneIoV1alpha1ObjectSpecPublishConnectionDetailsTo, default is Undefined, optional
+    publishConnectionDetailsTo : KubernetesCrossplaneIoV1alpha2ObjectSpecPublishConnectionDetailsTo, default is Undefined, optional
         publish connection details to
-    readiness : KubernetesCrossplaneIoV1alpha1ObjectSpecReadiness, default is Undefined, optional
+    readiness : KubernetesCrossplaneIoV1alpha2ObjectSpecReadiness, default is Undefined, optional
         readiness
-    references : [KubernetesCrossplaneIoV1alpha1ObjectSpecReferencesItems0], default is Undefined, optional
+    references : [KubernetesCrossplaneIoV1alpha2ObjectSpecReferencesItems0], default is Undefined, optional
         references
     watch : bool, default is Undefined, optional
         Watch enables watching the referenced or managed kubernetes resources.
@@ -73,35 +78,33 @@ schema KubernetesCrossplaneIoV1alpha1ObjectSpec:
         THIS IS AN ALPHA FIELD. Do not use it in production. It is not honored
         unless "watches" feature gate is enabled, and may be changed or removed
         without notice.
-    writeConnectionSecretToRef : KubernetesCrossplaneIoV1alpha1ObjectSpecWriteConnectionSecretToRef, default is Undefined, optional
+    writeConnectionSecretToRef : KubernetesCrossplaneIoV1alpha2ObjectSpecWriteConnectionSecretToRef, default is Undefined, optional
         write connection secret to ref
     """
 
 
-    connectionDetails?: [KubernetesCrossplaneIoV1alpha1ObjectSpecConnectionDetailsItems0]
+    connectionDetails?: [KubernetesCrossplaneIoV1alpha2ObjectSpecConnectionDetailsItems0]
 
     deletionPolicy?: "Orphan" | "Delete" = "Delete"
 
-    forProvider: KubernetesCrossplaneIoV1alpha1ObjectSpecForProvider
+    forProvider: KubernetesCrossplaneIoV1alpha2ObjectSpecForProvider
 
-    managementPolicy?: "Default" | "ObserveCreateUpdate" | "ObserveDelete" | "Observe" = "Default"
+    managementPolicies?: [str] = ["*"]
 
-    providerConfigRef?: KubernetesCrossplaneIoV1alpha1ObjectSpecProviderConfigRef
+    providerConfigRef?: KubernetesCrossplaneIoV1alpha2ObjectSpecProviderConfigRef
 
-    providerRef?: KubernetesCrossplaneIoV1alpha1ObjectSpecProviderRef
+    publishConnectionDetailsTo?: KubernetesCrossplaneIoV1alpha2ObjectSpecPublishConnectionDetailsTo
 
-    publishConnectionDetailsTo?: KubernetesCrossplaneIoV1alpha1ObjectSpecPublishConnectionDetailsTo
+    readiness?: KubernetesCrossplaneIoV1alpha2ObjectSpecReadiness
 
-    readiness?: KubernetesCrossplaneIoV1alpha1ObjectSpecReadiness
-
-    references?: [KubernetesCrossplaneIoV1alpha1ObjectSpecReferencesItems0]
+    references?: [KubernetesCrossplaneIoV1alpha2ObjectSpecReferencesItems0]
 
     watch?: bool = False
 
-    writeConnectionSecretToRef?: KubernetesCrossplaneIoV1alpha1ObjectSpecWriteConnectionSecretToRef
+    writeConnectionSecretToRef?: KubernetesCrossplaneIoV1alpha2ObjectSpecWriteConnectionSecretToRef
 
 
-schema KubernetesCrossplaneIoV1alpha1ObjectSpecConnectionDetailsItems0:
+schema KubernetesCrossplaneIoV1alpha2ObjectSpecConnectionDetailsItems0:
     r"""
     ConnectionDetail represents an entry in the connection secret for an Object
 
@@ -154,7 +157,7 @@ schema KubernetesCrossplaneIoV1alpha1ObjectSpecConnectionDetailsItems0:
     uid?: str
 
 
-schema KubernetesCrossplaneIoV1alpha1ObjectSpecForProvider:
+schema KubernetesCrossplaneIoV1alpha2ObjectSpecForProvider:
     r"""
     ObjectParameters are the configurable fields of a Object.
 
@@ -168,7 +171,7 @@ schema KubernetesCrossplaneIoV1alpha1ObjectSpecForProvider:
     manifest: any
 
 
-schema KubernetesCrossplaneIoV1alpha1ObjectSpecProviderConfigRef:
+schema KubernetesCrossplaneIoV1alpha2ObjectSpecProviderConfigRef:
     r"""
     ProviderConfigReference specifies how the provider that will be used to
     create, observe, update, and delete this managed resource should be
@@ -178,17 +181,17 @@ schema KubernetesCrossplaneIoV1alpha1ObjectSpecProviderConfigRef:
     ----------
     name : str, default is Undefined, required
         Name of the referenced object.
-    policy : KubernetesCrossplaneIoV1alpha1ObjectSpecProviderConfigRefPolicy, default is Undefined, optional
+    policy : KubernetesCrossplaneIoV1alpha2ObjectSpecProviderConfigRefPolicy, default is Undefined, optional
         policy
     """
 
 
     name: str
 
-    policy?: KubernetesCrossplaneIoV1alpha1ObjectSpecProviderConfigRefPolicy
+    policy?: KubernetesCrossplaneIoV1alpha2ObjectSpecProviderConfigRefPolicy
 
 
-schema KubernetesCrossplaneIoV1alpha1ObjectSpecProviderConfigRefPolicy:
+schema KubernetesCrossplaneIoV1alpha2ObjectSpecProviderConfigRefPolicy:
     r"""
     Policies for referencing.
 
@@ -212,51 +215,7 @@ schema KubernetesCrossplaneIoV1alpha1ObjectSpecProviderConfigRefPolicy:
     resolve?: "Always" | "IfNotPresent"
 
 
-schema KubernetesCrossplaneIoV1alpha1ObjectSpecProviderRef:
-    r"""
-    ProviderReference specifies the provider that will be used to create,
-    observe, update, and delete this managed resource.
-    Deprecated: Please use ProviderConfigReference, i.e. `providerConfigRef`
-
-    Attributes
-    ----------
-    name : str, default is Undefined, required
-        Name of the referenced object.
-    policy : KubernetesCrossplaneIoV1alpha1ObjectSpecProviderRefPolicy, default is Undefined, optional
-        policy
-    """
-
-
-    name: str
-
-    policy?: KubernetesCrossplaneIoV1alpha1ObjectSpecProviderRefPolicy
-
-
-schema KubernetesCrossplaneIoV1alpha1ObjectSpecProviderRefPolicy:
-    r"""
-    Policies for referencing.
-
-    Attributes
-    ----------
-    resolution : str, default is "Required", optional
-        Resolution specifies whether resolution of this reference is required.
-        The default is 'Required', which means the reconcile will fail if the
-        reference cannot be resolved. 'Optional' means this reference will be
-        a no-op if it cannot be resolved.
-    resolve : str, default is Undefined, optional
-        Resolve specifies when this reference should be resolved. The default
-        is 'IfNotPresent', which will attempt to resolve the reference only when
-        the corresponding field is not present. Use 'Always' to resolve the
-        reference on every reconcile.
-    """
-
-
-    resolution?: "Required" | "Optional" = "Required"
-
-    resolve?: "Always" | "IfNotPresent"
-
-
-schema KubernetesCrossplaneIoV1alpha1ObjectSpecPublishConnectionDetailsTo:
+schema KubernetesCrossplaneIoV1alpha2ObjectSpecPublishConnectionDetailsTo:
     r"""
     PublishConnectionDetailsTo specifies the connection secret config which
     contains a name, metadata and a reference to secret store config to
@@ -266,23 +225,23 @@ schema KubernetesCrossplaneIoV1alpha1ObjectSpecPublishConnectionDetailsTo:
 
     Attributes
     ----------
-    configRef : KubernetesCrossplaneIoV1alpha1ObjectSpecPublishConnectionDetailsToConfigRef, default is Undefined, optional
+    configRef : KubernetesCrossplaneIoV1alpha2ObjectSpecPublishConnectionDetailsToConfigRef, default is Undefined, optional
         config ref
-    metadata : KubernetesCrossplaneIoV1alpha1ObjectSpecPublishConnectionDetailsToMetadata, default is Undefined, optional
+    metadata : KubernetesCrossplaneIoV1alpha2ObjectSpecPublishConnectionDetailsToMetadata, default is Undefined, optional
         metadata
     name : str, default is Undefined, required
         Name is the name of the connection secret.
     """
 
 
-    configRef?: KubernetesCrossplaneIoV1alpha1ObjectSpecPublishConnectionDetailsToConfigRef
+    configRef?: KubernetesCrossplaneIoV1alpha2ObjectSpecPublishConnectionDetailsToConfigRef
 
-    metadata?: KubernetesCrossplaneIoV1alpha1ObjectSpecPublishConnectionDetailsToMetadata
+    metadata?: KubernetesCrossplaneIoV1alpha2ObjectSpecPublishConnectionDetailsToMetadata
 
     name: str
 
 
-schema KubernetesCrossplaneIoV1alpha1ObjectSpecPublishConnectionDetailsToConfigRef:
+schema KubernetesCrossplaneIoV1alpha2ObjectSpecPublishConnectionDetailsToConfigRef:
     r"""
     SecretStoreConfigRef specifies which secret store config should be used
     for this ConnectionSecret.
@@ -291,17 +250,17 @@ schema KubernetesCrossplaneIoV1alpha1ObjectSpecPublishConnectionDetailsToConfigR
     ----------
     name : str, default is Undefined, required
         Name of the referenced object.
-    policy : KubernetesCrossplaneIoV1alpha1ObjectSpecPublishConnectionDetailsToConfigRefPolicy, default is Undefined, optional
+    policy : KubernetesCrossplaneIoV1alpha2ObjectSpecPublishConnectionDetailsToConfigRefPolicy, default is Undefined, optional
         policy
     """
 
 
     name: str
 
-    policy?: KubernetesCrossplaneIoV1alpha1ObjectSpecPublishConnectionDetailsToConfigRefPolicy
+    policy?: KubernetesCrossplaneIoV1alpha2ObjectSpecPublishConnectionDetailsToConfigRefPolicy
 
 
-schema KubernetesCrossplaneIoV1alpha1ObjectSpecPublishConnectionDetailsToConfigRefPolicy:
+schema KubernetesCrossplaneIoV1alpha2ObjectSpecPublishConnectionDetailsToConfigRefPolicy:
     r"""
     Policies for referencing.
 
@@ -325,7 +284,7 @@ schema KubernetesCrossplaneIoV1alpha1ObjectSpecPublishConnectionDetailsToConfigR
     resolve?: "Always" | "IfNotPresent"
 
 
-schema KubernetesCrossplaneIoV1alpha1ObjectSpecPublishConnectionDetailsToMetadata:
+schema KubernetesCrossplaneIoV1alpha2ObjectSpecPublishConnectionDetailsToMetadata:
     r"""
     Metadata is the metadata for connection secret.
 
@@ -352,7 +311,7 @@ schema KubernetesCrossplaneIoV1alpha1ObjectSpecPublishConnectionDetailsToMetadat
     $type?: str
 
 
-schema KubernetesCrossplaneIoV1alpha1ObjectSpecReadiness:
+schema KubernetesCrossplaneIoV1alpha2ObjectSpecReadiness:
     r"""
     Readiness defines how the object's readiness condition should be computed,
     if not specified it will be considered ready as soon as the underlying external
@@ -360,24 +319,35 @@ schema KubernetesCrossplaneIoV1alpha1ObjectSpecReadiness:
 
     Attributes
     ----------
+    celQuery : str, default is Undefined, optional
+        CelQuery defines a cel query to evaluate the readiness. The
+        observed object is passed to the cel query with the word `object`.
+        Cel macros are available to be used, see https://github.com/google/cel-spec/blob/master/doc/langdef.md#macros
+        for more information.
+        Examples:
+         `object.status.isReady == true`: checks for a boolean field called isReady on status.
+         `object.status.conditions.all(x, x.status == "True")` mimics the behavior of the AllTrue readiness policy
+         `object.status.conditions.exists(c, c.type == "condition1" && c.status == "True" )` checks just one condition
     policy : str, default is "SuccessfulCreate", optional
         Policy defines how the Object's readiness condition should be computed.
     """
 
 
-    policy?: "SuccessfulCreate" | "DeriveFromObject" | "AllTrue" = "SuccessfulCreate"
+    celQuery?: str
+
+    policy?: "SuccessfulCreate" | "DeriveFromObject" | "AllTrue" | "DeriveFromCelQuery" = "SuccessfulCreate"
 
 
-schema KubernetesCrossplaneIoV1alpha1ObjectSpecReferencesItems0:
+schema KubernetesCrossplaneIoV1alpha2ObjectSpecReferencesItems0:
     r"""
     Reference refers to an Object or arbitrary Kubernetes resource and optionally
     patch values from that resource to the current Object.
 
     Attributes
     ----------
-    dependsOn : KubernetesCrossplaneIoV1alpha1ObjectSpecReferencesItems0DependsOn, default is Undefined, optional
+    dependsOn : KubernetesCrossplaneIoV1alpha2ObjectSpecReferencesItems0DependsOn, default is Undefined, optional
         depends on
-    patchesFrom : KubernetesCrossplaneIoV1alpha1ObjectSpecReferencesItems0PatchesFrom, default is Undefined, optional
+    patchesFrom : KubernetesCrossplaneIoV1alpha2ObjectSpecReferencesItems0PatchesFrom, default is Undefined, optional
         patches from
     toFieldPath : str, default is Undefined, optional
         ToFieldPath is the path of the field on the resource whose value will
@@ -386,14 +356,14 @@ schema KubernetesCrossplaneIoV1alpha1ObjectSpecReferencesItems0:
     """
 
 
-    dependsOn?: KubernetesCrossplaneIoV1alpha1ObjectSpecReferencesItems0DependsOn
+    dependsOn?: KubernetesCrossplaneIoV1alpha2ObjectSpecReferencesItems0DependsOn
 
-    patchesFrom?: KubernetesCrossplaneIoV1alpha1ObjectSpecReferencesItems0PatchesFrom
+    patchesFrom?: KubernetesCrossplaneIoV1alpha2ObjectSpecReferencesItems0PatchesFrom
 
     toFieldPath?: str
 
 
-schema KubernetesCrossplaneIoV1alpha1ObjectSpecReferencesItems0DependsOn:
+schema KubernetesCrossplaneIoV1alpha2ObjectSpecReferencesItems0DependsOn:
     r"""
     DependsOn is used to declare dependency on other Object or arbitrary
     Kubernetes resource.
@@ -420,7 +390,7 @@ schema KubernetesCrossplaneIoV1alpha1ObjectSpecReferencesItems0DependsOn:
     namespace?: str
 
 
-schema KubernetesCrossplaneIoV1alpha1ObjectSpecReferencesItems0PatchesFrom:
+schema KubernetesCrossplaneIoV1alpha2ObjectSpecReferencesItems0PatchesFrom:
     r"""
     PatchesFrom is used to declare dependency on other Object or arbitrary
     Kubernetes resource, and also patch fields from this object.
@@ -452,7 +422,7 @@ schema KubernetesCrossplaneIoV1alpha1ObjectSpecReferencesItems0PatchesFrom:
     namespace?: str
 
 
-schema KubernetesCrossplaneIoV1alpha1ObjectSpecWriteConnectionSecretToRef:
+schema KubernetesCrossplaneIoV1alpha2ObjectSpecWriteConnectionSecretToRef:
     r"""
     WriteConnectionSecretToReference specifies the namespace and name of a
     Secret to which any connection details for this managed resource should
@@ -477,15 +447,15 @@ schema KubernetesCrossplaneIoV1alpha1ObjectSpecWriteConnectionSecretToRef:
     namespace: str
 
 
-schema KubernetesCrossplaneIoV1alpha1ObjectStatus:
+schema KubernetesCrossplaneIoV1alpha2ObjectStatus:
     r"""
     A ObjectStatus represents the observed state of a Object.
 
     Attributes
     ----------
-    atProvider : KubernetesCrossplaneIoV1alpha1ObjectStatusAtProvider, default is Undefined, optional
+    atProvider : KubernetesCrossplaneIoV1alpha2ObjectStatusAtProvider, default is Undefined, optional
         at provider
-    conditions : [KubernetesCrossplaneIoV1alpha1ObjectStatusConditionsItems0], default is Undefined, optional
+    conditions : [KubernetesCrossplaneIoV1alpha2ObjectStatusConditionsItems0], default is Undefined, optional
         Conditions of the resource.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the latest metadata.generation
@@ -494,14 +464,14 @@ schema KubernetesCrossplaneIoV1alpha1ObjectStatus:
     """
 
 
-    atProvider?: KubernetesCrossplaneIoV1alpha1ObjectStatusAtProvider
+    atProvider?: KubernetesCrossplaneIoV1alpha2ObjectStatusAtProvider
 
-    conditions?: [KubernetesCrossplaneIoV1alpha1ObjectStatusConditionsItems0]
+    conditions?: [KubernetesCrossplaneIoV1alpha2ObjectStatusConditionsItems0]
 
     observedGeneration?: int
 
 
-schema KubernetesCrossplaneIoV1alpha1ObjectStatusAtProvider:
+schema KubernetesCrossplaneIoV1alpha2ObjectStatusAtProvider:
     r"""
     ObjectObservation are the observable fields of a Object.
 
@@ -515,7 +485,7 @@ schema KubernetesCrossplaneIoV1alpha1ObjectStatusAtProvider:
     manifest?: any
 
 
-schema KubernetesCrossplaneIoV1alpha1ObjectStatusConditionsItems0:
+schema KubernetesCrossplaneIoV1alpha2ObjectStatusConditionsItems0:
     r"""
     A Condition that may apply to a resource.
 
