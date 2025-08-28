@@ -100,6 +100,8 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecForProvider:
         Specifies the type of client, which can be one of the following:
     adminUrl : str, default is Undefined, optional
         URL to the admin interface of the client.
+    allowRefreshTokenInStandardTokenExchange : str, default is Undefined, optional
+        allow refresh token in standard token exchange
     alwaysDisplayInConsole : bool, default is Undefined, optional
         Always list this client in the Account UI, even if the user does not have an active session.
     authenticationFlowBindingOverrides : [OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecForProviderAuthenticationFlowBindingOverridesItems0], default is Undefined, optional
@@ -126,8 +128,16 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecForProvider:
         Time a client session is allowed to be idle before it expires. Tokens are invalidated when a client session is expired. If not set it uses the standard SSO Session Idle value.
     clientOfflineSessionMaxLifespan : str, default is Undefined, optional
         Max time before a client session is expired. Tokens are invalidated when a client session is expired. If not set, it uses the standard SSO Session Max value.
+    clientSecretRegenerateWhenChanged : {str:str}, default is Undefined, optional
+        Arbitrary map of values that, when changed, will trigger rotation of the secret. NOTE! Conflicts with client_secret, client_secret_wo and client_secret_wo_version attribute and can't be used together
+        Arbitrary map of values that, when changed, will trigger rotation of the secret
     clientSecretSecretRef : OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecForProviderClientSecretSecretRef, default is Undefined, optional
         client secret secret ref
+    clientSecretWoSecretRef : OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecForProviderClientSecretWoSecretRef, default is Undefined, optional
+        client secret wo secret ref
+    clientSecretWoVersion : float, default is Undefined, optional
+        The value of this argument is stored in the state and plan files. Required when using client_secret_wo.
+        Version of the Client secret write-only argument
     clientSessionIdleTimeout : str, default is Undefined, optional
         Time a client offline session is allowed to be idle before it expires. Offline tokens are invalidated when a client offline session is expired. If not set it uses the Offline Session Idle value.
     clientSessionMaxLifespan : str, default is Undefined, optional
@@ -184,6 +194,8 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecForProvider:
         When true, the OAuth2 Client Credentials grant will be enabled for this client. Defaults to false.
     standardFlowEnabled : bool, default is Undefined, optional
         When true, the OAuth2 Authorization Code Grant will be enabled for this client. Defaults to false.
+    standardTokenExchangeEnabled : bool, default is Undefined, optional
+        When false, this client will not be able to initiate a login or obtain access tokens. Defaults to true.
     useRefreshTokens : bool, default is Undefined, optional
         If this is true, a refresh_token will be created and added to the token response. If this is false then no refresh_token will be generated.  Defaults to true.
     useRefreshTokensClientCredentials : bool, default is Undefined, optional
@@ -204,6 +216,8 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecForProvider:
     accessType?: str
 
     adminUrl?: str
+
+    allowRefreshTokenInStandardTokenExchange?: str
 
     alwaysDisplayInConsole?: bool
 
@@ -231,7 +245,13 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecForProvider:
 
     clientOfflineSessionMaxLifespan?: str
 
+    clientSecretRegenerateWhenChanged?: {str:str}
+
     clientSecretSecretRef?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecForProviderClientSecretSecretRef
+
+    clientSecretWoSecretRef?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecForProviderClientSecretWoSecretRef
+
+    clientSecretWoVersion?: float
 
     clientSessionIdleTimeout?: str
 
@@ -288,6 +308,8 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecForProvider:
     serviceAccountsEnabled?: bool
 
     standardFlowEnabled?: bool
+
+    standardTokenExchangeEnabled?: bool
 
     useRefreshTokens?: bool
 
@@ -649,6 +671,29 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecForProviderClientSecret
     namespace: str
 
 
+schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecForProviderClientSecretWoSecretRef:
+    r"""
+    The secret for clients with an access_type of CONFIDENTIAL or BEARER-ONLY. If omitted, this will fallback to use client_secret.
+    Client Secret as write-only argument
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        The key to select.
+    name : str, default is Undefined, required
+        Name of the secret.
+    namespace : str, default is Undefined, required
+        Namespace of the secret.
+    """
+
+
+    key: str
+
+    name: str
+
+    namespace: str
+
+
 schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecForProviderRealmIDRef:
     r"""
     Reference to a Realm in realm to populate realmId.
@@ -759,6 +804,8 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecInitProvider:
         Specifies the type of client, which can be one of the following:
     adminUrl : str, default is Undefined, optional
         URL to the admin interface of the client.
+    allowRefreshTokenInStandardTokenExchange : str, default is Undefined, optional
+        allow refresh token in standard token exchange
     alwaysDisplayInConsole : bool, default is Undefined, optional
         Always list this client in the Account UI, even if the user does not have an active session.
     authenticationFlowBindingOverrides : [OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecInitProviderAuthenticationFlowBindingOverridesItems0], default is Undefined, optional
@@ -785,8 +832,16 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecInitProvider:
         Time a client session is allowed to be idle before it expires. Tokens are invalidated when a client session is expired. If not set it uses the standard SSO Session Idle value.
     clientOfflineSessionMaxLifespan : str, default is Undefined, optional
         Max time before a client session is expired. Tokens are invalidated when a client session is expired. If not set, it uses the standard SSO Session Max value.
+    clientSecretRegenerateWhenChanged : {str:str}, default is Undefined, optional
+        Arbitrary map of values that, when changed, will trigger rotation of the secret. NOTE! Conflicts with client_secret, client_secret_wo and client_secret_wo_version attribute and can't be used together
+        Arbitrary map of values that, when changed, will trigger rotation of the secret
     clientSecretSecretRef : OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecInitProviderClientSecretSecretRef, default is Undefined, optional
         client secret secret ref
+    clientSecretWoSecretRef : OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecInitProviderClientSecretWoSecretRef, default is Undefined, optional
+        client secret wo secret ref
+    clientSecretWoVersion : float, default is Undefined, optional
+        The value of this argument is stored in the state and plan files. Required when using client_secret_wo.
+        Version of the Client secret write-only argument
     clientSessionIdleTimeout : str, default is Undefined, optional
         Time a client offline session is allowed to be idle before it expires. Offline tokens are invalidated when a client offline session is expired. If not set it uses the Offline Session Idle value.
     clientSessionMaxLifespan : str, default is Undefined, optional
@@ -843,6 +898,8 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecInitProvider:
         When true, the OAuth2 Client Credentials grant will be enabled for this client. Defaults to false.
     standardFlowEnabled : bool, default is Undefined, optional
         When true, the OAuth2 Authorization Code Grant will be enabled for this client. Defaults to false.
+    standardTokenExchangeEnabled : bool, default is Undefined, optional
+        When false, this client will not be able to initiate a login or obtain access tokens. Defaults to true.
     useRefreshTokens : bool, default is Undefined, optional
         If this is true, a refresh_token will be created and added to the token response. If this is false then no refresh_token will be generated.  Defaults to true.
     useRefreshTokensClientCredentials : bool, default is Undefined, optional
@@ -863,6 +920,8 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecInitProvider:
     accessType?: str
 
     adminUrl?: str
+
+    allowRefreshTokenInStandardTokenExchange?: str
 
     alwaysDisplayInConsole?: bool
 
@@ -890,7 +949,13 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecInitProvider:
 
     clientOfflineSessionMaxLifespan?: str
 
+    clientSecretRegenerateWhenChanged?: {str:str}
+
     clientSecretSecretRef?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecInitProviderClientSecretSecretRef
+
+    clientSecretWoSecretRef?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecInitProviderClientSecretWoSecretRef
+
+    clientSecretWoVersion?: float
 
     clientSessionIdleTimeout?: str
 
@@ -947,6 +1012,8 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecInitProvider:
     serviceAccountsEnabled?: bool
 
     standardFlowEnabled?: bool
+
+    standardTokenExchangeEnabled?: bool
 
     useRefreshTokens?: bool
 
@@ -1308,6 +1375,29 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecInitProviderClientSecre
     namespace: str
 
 
+schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecInitProviderClientSecretWoSecretRef:
+    r"""
+    The secret for clients with an access_type of CONFIDENTIAL or BEARER-ONLY. If omitted, this will fallback to use client_secret.
+    Client Secret as write-only argument
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        The key to select.
+    name : str, default is Undefined, required
+        Name of the secret.
+    namespace : str, default is Undefined, required
+        Namespace of the secret.
+    """
+
+
+    key: str
+
+    name: str
+
+    namespace: str
+
+
 schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecInitProviderRealmIDRef:
     r"""
     Reference to a Realm in realm to populate realmId.
@@ -1598,6 +1688,8 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientStatusAtProvider:
         Specifies the type of client, which can be one of the following:
     adminUrl : str, default is Undefined, optional
         URL to the admin interface of the client.
+    allowRefreshTokenInStandardTokenExchange : str, default is Undefined, optional
+        allow refresh token in standard token exchange
     alwaysDisplayInConsole : bool, default is Undefined, optional
         Always list this client in the Account UI, even if the user does not have an active session.
     authenticationFlowBindingOverrides : [OpenidclientKeycloakCrossplaneIoV1alpha1ClientStatusAtProviderAuthenticationFlowBindingOverridesItems0], default is Undefined, optional
@@ -1620,6 +1712,12 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientStatusAtProvider:
         Time a client session is allowed to be idle before it expires. Tokens are invalidated when a client session is expired. If not set it uses the standard SSO Session Idle value.
     clientOfflineSessionMaxLifespan : str, default is Undefined, optional
         Max time before a client session is expired. Tokens are invalidated when a client session is expired. If not set, it uses the standard SSO Session Max value.
+    clientSecretRegenerateWhenChanged : {str:str}, default is Undefined, optional
+        Arbitrary map of values that, when changed, will trigger rotation of the secret. NOTE! Conflicts with client_secret, client_secret_wo and client_secret_wo_version attribute and can't be used together
+        Arbitrary map of values that, when changed, will trigger rotation of the secret
+    clientSecretWoVersion : float, default is Undefined, optional
+        The value of this argument is stored in the state and plan files. Required when using client_secret_wo.
+        Version of the Client secret write-only argument
     clientSessionIdleTimeout : str, default is Undefined, optional
         Time a client offline session is allowed to be idle before it expires. Offline tokens are invalidated when a client offline session is expired. If not set it uses the Offline Session Idle value.
     clientSessionMaxLifespan : str, default is Undefined, optional
@@ -1678,6 +1776,8 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientStatusAtProvider:
         When true, the OAuth2 Client Credentials grant will be enabled for this client. Defaults to false.
     standardFlowEnabled : bool, default is Undefined, optional
         When true, the OAuth2 Authorization Code Grant will be enabled for this client. Defaults to false.
+    standardTokenExchangeEnabled : bool, default is Undefined, optional
+        When false, this client will not be able to initiate a login or obtain access tokens. Defaults to true.
     useRefreshTokens : bool, default is Undefined, optional
         If this is true, a refresh_token will be created and added to the token response. If this is false then no refresh_token will be generated.  Defaults to true.
     useRefreshTokensClientCredentials : bool, default is Undefined, optional
@@ -1698,6 +1798,8 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientStatusAtProvider:
     accessType?: str
 
     adminUrl?: str
+
+    allowRefreshTokenInStandardTokenExchange?: str
 
     alwaysDisplayInConsole?: bool
 
@@ -1720,6 +1822,10 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientStatusAtProvider:
     clientOfflineSessionIdleTimeout?: str
 
     clientOfflineSessionMaxLifespan?: str
+
+    clientSecretRegenerateWhenChanged?: {str:str}
+
+    clientSecretWoVersion?: float
 
     clientSessionIdleTimeout?: str
 
@@ -1778,6 +1884,8 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientStatusAtProvider:
     serviceAccountsEnabled?: bool
 
     standardFlowEnabled?: bool
+
+    standardTokenExchangeEnabled?: bool
 
     useRefreshTokens?: bool
 

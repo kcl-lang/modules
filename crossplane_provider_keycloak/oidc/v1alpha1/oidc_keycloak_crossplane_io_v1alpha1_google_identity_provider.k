@@ -5,39 +5,39 @@ Editing this file might prove futile when you re-run the KCL auto-gen generate c
 import k8s.apimachinery.pkg.apis.meta.v1
 
 
-schema IdentityProvider:
+schema GoogleIdentityProvider:
     r"""
-    IdentityProvider is the Schema for the IdentityProviders API.
+    GoogleIdentityProvider is the Schema for the GoogleIdentityProviders API.
 
     Attributes
     ----------
     apiVersion : str, default is "oidc.keycloak.crossplane.io/v1alpha1", required
         APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-    kind : str, default is "IdentityProvider", required
+    kind : str, default is "GoogleIdentityProvider", required
         Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     metadata : v1.ObjectMeta, default is Undefined, optional
         metadata
-    spec : OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpec, default is Undefined, required
+    spec : OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpec, default is Undefined, required
         spec
-    status : OidcKeycloakCrossplaneIoV1alpha1IdentityProviderStatus, default is Undefined, optional
+    status : OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderStatus, default is Undefined, optional
         status
     """
 
 
     apiVersion: "oidc.keycloak.crossplane.io/v1alpha1" = "oidc.keycloak.crossplane.io/v1alpha1"
 
-    kind: "IdentityProvider" = "IdentityProvider"
+    kind: "GoogleIdentityProvider" = "GoogleIdentityProvider"
 
     metadata?: v1.ObjectMeta
 
-    spec: OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpec
+    spec: OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpec
 
-    status?: OidcKeycloakCrossplaneIoV1alpha1IdentityProviderStatus
+    status?: OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderStatus
 
 
-schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpec:
+schema OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpec:
     r"""
-    IdentityProviderSpec defines the desired state of IdentityProvider
+    GoogleIdentityProviderSpec defines the desired state of GoogleIdentityProvider
 
     Attributes
     ----------
@@ -49,9 +49,9 @@ schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpec:
         field in a future release. Currently, both could be set independently and
         non-default values would be honored if the feature flag is enabled.
         See the design doc for more information: https://github.com/crossplane/crossplane/blob/499895a25d1a1a0ba1604944ef98ac7a1a71f197/design/design-doc-observe-only-resources.md?plain=1#L223
-    forProvider : OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProvider, default is Undefined, required
+    forProvider : OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecForProvider, default is Undefined, required
         for provider
-    initProvider : OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProvider, default is Undefined, optional
+    initProvider : OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecInitProvider, default is Undefined, optional
         init provider
     managementPolicies : [str], default is ["*"], optional
         THIS IS A BETA FIELD. It is on by default but can be opted out
@@ -64,78 +64,64 @@ schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpec:
         custom, the DeletionPolicy field will be ignored.
         See the design doc for more information: https://github.com/crossplane/crossplane/blob/499895a25d1a1a0ba1604944ef98ac7a1a71f197/design/design-doc-observe-only-resources.md?plain=1#L223
         and this one: https://github.com/crossplane/crossplane/blob/444267e84783136daa93568b364a5f01228cacbe/design/one-pager-ignore-changes.md
-    providerConfigRef : OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecProviderConfigRef, default is Undefined, optional
+    providerConfigRef : OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecProviderConfigRef, default is Undefined, optional
         provider config ref
-    publishConnectionDetailsTo : OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecPublishConnectionDetailsTo, default is Undefined, optional
+    publishConnectionDetailsTo : OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecPublishConnectionDetailsTo, default is Undefined, optional
         publish connection details to
-    writeConnectionSecretToRef : OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecWriteConnectionSecretToRef, default is Undefined, optional
+    writeConnectionSecretToRef : OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecWriteConnectionSecretToRef, default is Undefined, optional
         write connection secret to ref
     """
 
 
     deletionPolicy?: "Orphan" | "Delete" = "Delete"
 
-    forProvider: OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProvider
+    forProvider: OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecForProvider
 
-    initProvider?: OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProvider
+    initProvider?: OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecInitProvider
 
     managementPolicies?: [str] = ["*"]
 
-    providerConfigRef?: OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecProviderConfigRef
+    providerConfigRef?: OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecProviderConfigRef
 
-    publishConnectionDetailsTo?: OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecPublishConnectionDetailsTo
+    publishConnectionDetailsTo?: OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecPublishConnectionDetailsTo
 
-    writeConnectionSecretToRef?: OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecWriteConnectionSecretToRef
+    writeConnectionSecretToRef?: OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecWriteConnectionSecretToRef
 
 
-schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProvider:
+schema OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecForProvider:
     r"""
-    oidc keycloak crossplane io v1alpha1 identity provider spec for provider
+    oidc keycloak crossplane io v1alpha1 google identity provider spec for provider
 
     Attributes
     ----------
     acceptsPromptNoneForwardFromClient : bool, default is Undefined, optional
-        When true, the IDP will accept forwarded authentication requests that contain the prompt=none query parameter. Defaults to false.
+        When true, unauthenticated requests with prompt=none will be forwarded to Google instead of returning an error. Defaults to false.
         This is just used together with Identity Provider Authenticator or when kc_idp_hint points to this identity provider. In case that client sends a request with prompt=none and user is not yet authenticated, the error will not be directly returned to client, but the request with prompt=none will be forwarded to this identity provider.
     addReadTokenRoleOnCreate : bool, default is Undefined, optional
         When true, new users will be able to read stored tokens. This will automatically assign the broker.read-token role. Defaults to false.
         Enable/disable if new users can read any stored tokens. This assigns the broker.read-token role.
     alias : str, default is Undefined, optional
-        The alias uniquely identifies an identity provider, and it is also used to build the redirect uri.
-        The alias uniquely identifies an identity provider and it is also used to build the redirect uri.
+        The alias for the Google identity provider.
+        The alias uniquely identifies an identity provider and it is also used to build the redirect uri. In case of google this is computed and always google
     authenticateByDefault : bool, default is Undefined, optional
         Enable/disable authenticate users by default.
-    authorizationUrl : str, default is Undefined, optional
-        The Authorization Url.
-        OIDC authorization URL.
-    backchannelSupported : bool, default is Undefined, optional
-        Does the external IDP support backchannel logout? Defaults to true.
-        Does the external IDP support backchannel logout?
     clientId : str, default is Undefined, optional
         The client or client identifier registered within the identity provider.
         Client ID.
-    clientIdRef : OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderClientIDRef, default is Undefined, optional
+    clientIdRef : OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecForProviderClientIDRef, default is Undefined, optional
         client Id ref
-    clientIdSelector : OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderClientIDSelector, default is Undefined, optional
+    clientIdSelector : OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecForProviderClientIDSelector, default is Undefined, optional
         client Id selector
-    clientSecretSecretRef : OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderClientSecretSecretRef, default is Undefined, optional
+    clientSecretSecretRef : OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecForProviderClientSecretSecretRef, default is Undefined, optional
         client secret secret ref
-    clientSecretWoSecretRef : OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderClientSecretWoSecretRef, default is Undefined, optional
-        client secret wo secret ref
-    clientSecretWoVersion : float, default is Undefined, optional
-        The value of this argument is stored in the state and plan files. Required when using client_secret_wo.
-        Version of the Client secret write-only argument
     defaultScopes : str, default is Undefined, optional
-        The scopes to be sent when asking for authorization. It can be a space-separated list of scopes. Defaults to openid.
-        The scopes to be sent when asking for authorization. It can be a space-separated list of scopes. Defaults to 'openid'.
-    disableTypeClaimCheck : bool, default is Undefined, optional
-        When true, disables the check for the typ claim of tokens received from the identity provider. Defaults to false.
-        Disables the validation of the `typ` claim of tokens received from the Identity Provider. If this is `off` the type claim is validated (default).
+        The scopes to be sent when asking for authorization. It can be a space-separated list of scopes. Defaults to openid profile email.
+        The scopes to be sent when asking for authorization. See the documentation for possible values, separator and default value'. Default: 'openid profile email'
     disableUserInfo : bool, default is Undefined, optional
         When true, disables the usage of the user info service to obtain additional user information. Defaults to false.
         Disable usage of User Info service to obtain additional user information?  Default is to use this OIDC service.
     displayName : str, default is Undefined, optional
-        Display name for the identity provider in the GUI.
+        Display name for the Google identity provider in the GUI.
         The human-friendly name of the identity provider, used in the log in form.
     enabled : bool, default is Undefined, optional
         When true, users will be able to log in to this realm using this identity provider. Defaults to true.
@@ -145,76 +131,56 @@ schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProvider:
     firstBrokerLoginFlowAlias : str, default is Undefined, optional
         The authentication flow to use when users log in for the first time through this identity provider. Defaults to first broker login.
         Alias of authentication flow, which is triggered after first login with this identity provider. Term 'First Login' means that there is not yet existing Keycloak account linked with the authenticated identity provider account.
-    firstBrokerLoginFlowAliasRef : OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderFirstBrokerLoginFlowAliasRef, default is Undefined, optional
+    firstBrokerLoginFlowAliasRef : OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecForProviderFirstBrokerLoginFlowAliasRef, default is Undefined, optional
         first broker login flow alias ref
-    firstBrokerLoginFlowAliasSelector : OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderFirstBrokerLoginFlowAliasSelector, default is Undefined, optional
+    firstBrokerLoginFlowAliasSelector : OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecForProviderFirstBrokerLoginFlowAliasSelector, default is Undefined, optional
         first broker login flow alias selector
     guiOrder : str, default is Undefined, optional
         A number defining the order of this identity provider in the GUI.
         GUI Order
     hideOnLoginPage : bool, default is Undefined, optional
-        When true, this provider will be hidden on the login page, and is only accessible when requested explicitly. Defaults to false.
+        When true, this identity provider will be hidden on the login page. Defaults to false.
         Hide On Login Page.
-    issuer : str, default is Undefined, optional
-        The issuer identifier for the issuer of the response. If not provided, no validation will be performed.
-        The issuer identifier for the issuer of the response. If not provided, no validation will be performed.
-    jwksUrl : str, default is Undefined, optional
-        JSON Web Key Set URL.
-        JSON Web Key Set URL
+    hostedDomain : str, default is Undefined, optional
+        Sets the "hd" query parameter when logging in with Google. Google will only list accounts for this domain. Keycloak will validate that the returned identity token has a claim for this domain. When * is entered, an account from any domain can be used.
+        Set 'hd' query parameter when logging in with Google. Google will list accounts only for this domain. Keycloak validates that the returned identity token has a claim for this domain. When '*' is entered, any hosted account can be used.
     linkOnly : bool, default is Undefined, optional
         When true, users cannot sign-in using this provider, but their existing accounts will be linked when possible. Defaults to false.
         If true, users cannot log in through this provider.  They can only link to this provider.  This is useful if you don't want to allow login from the provider, but want to integrate with a provider
-    loginHint : str, default is Undefined, optional
-        Pass login hint to identity provider.
-        Login Hint.
-    logoutUrl : str, default is Undefined, optional
-        The Logout URL is the end session endpoint to use to sign-out the user from external identity provider.
-        Logout URL
     orgDomain : str, default is Undefined, optional
-        The organization domain to associate this identity provider with. it is used to map users to an organization based on their email domain and to authenticate them accordingly in the scope of the organization.
+        org domain
     orgRedirectModeEmailMatches : bool, default is Undefined, optional
-        Indicates whether to automatically redirect user to this identity provider when email domain matches domain.
+        org redirect mode email matches
     organizationId : str, default is Undefined, optional
-        The ID of the organization to link this identity provider to.
         ID of organization with which this identity is linked.
-    organizationIdRef : OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderOrganizationIDRef, default is Undefined, optional
-        organization Id ref
-    organizationIdSelector : OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderOrganizationIDSelector, default is Undefined, optional
-        organization Id selector
     postBrokerLoginFlowAlias : str, default is Undefined, optional
         The authentication flow to use after users have successfully logged in, which can be used to perform additional user verification (such as OTP checking). Defaults to an empty string, which means no post login flow will be used.
         Alias of authentication flow, which is triggered after each login with this identity provider. Useful if you want additional verification of each user authenticated with this identity provider (for example OTP). Leave this empty if you don't want any additional authenticators to be triggered after login with this identity provider. Also note, that authenticator implementations must assume that user is already set in ClientSession as identity provider already set it.
     providerId : str, default is Undefined, optional
-        The ID of the identity provider to use. Defaults to oidc, which should be used unless you have extended Keycloak and provided your own implementation.
-        provider id, is always oidc, unless you have a custom implementation
+        The ID of the identity provider to use. Defaults to google, which should be used unless you have extended Keycloak and provided your own implementation.
+        provider id, is always google, unless you have a extended custom implementation
     realm : str, default is Undefined, optional
         The name of the realm. This is unique across Keycloak.
         Realm Name
-    realmRef : OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderRealmRef, default is Undefined, optional
+    realmRef : OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecForProviderRealmRef, default is Undefined, optional
         realm ref
-    realmSelector : OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderRealmSelector, default is Undefined, optional
+    realmSelector : OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecForProviderRealmSelector, default is Undefined, optional
         realm selector
+    requestRefreshToken : bool, default is Undefined, optional
+        Sets the "access_type" query parameter to "offline" when redirecting to google authorization endpoint,to get a refresh token back. This is useful for using Token Exchange to retrieve a Google token to access Google APIs when the user is offline.
+        Set 'access_type' query parameter to 'offline' when redirecting to google authorization endpoint, to get a refresh token back. Useful if planning to use Token Exchange to retrieve Google token to access Google APIs when the user is not at the browser.
     storeToken : bool, default is Undefined, optional
         When true, tokens will be stored after authenticating users. Defaults to true.
         Enable/disable if tokens must be stored after authenticating users.
     syncMode : str, default is Undefined, optional
         The default sync mode to use for all mappers attached to this identity provider. Can be once of IMPORT, FORCE, or LEGACY.
         Sync Mode
-    tokenUrl : str, default is Undefined, optional
-        The Token URL.
-        Token URL.
     trustEmail : bool, default is Undefined, optional
         When true, email addresses for users in this provider will automatically be verified regardless of the realm's email verification policy. Defaults to false.
         If enabled then email provided by this provider is not verified even if verification is enabled for the realm.
-    uiLocales : bool, default is Undefined, optional
-        Pass current locale to identity provider. Defaults to false.
-        Pass current locale to identity provider
-    userInfoUrl : str, default is Undefined, optional
-        User Info URL.
-        User Info URL
-    validateSignature : bool, default is Undefined, optional
-        Enable/disable signature validation of external IDP signatures. Defaults to false.
-        Enable/disable signature validation of external IDP signatures.
+    useUserIpParam : bool, default is Undefined, optional
+        Sets the "userIp" query parameter when querying Google's User Info service. This will use the user's IP address. This is useful if Google is throttling Keycloak's access to the User Info service.
+        Set 'userIp' query parameter when invoking on Google's User Info service.  This will use the user's ip address.  Useful if Google is throttling access to the User Info service.
     """
 
 
@@ -226,25 +192,15 @@ schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProvider:
 
     authenticateByDefault?: bool
 
-    authorizationUrl?: str
-
-    backchannelSupported?: bool
-
     clientId?: str
 
-    clientIdRef?: OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderClientIDRef
+    clientIdRef?: OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecForProviderClientIDRef
 
-    clientIdSelector?: OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderClientIDSelector
+    clientIdSelector?: OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecForProviderClientIDSelector
 
-    clientSecretSecretRef?: OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderClientSecretSecretRef
-
-    clientSecretWoSecretRef?: OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderClientSecretWoSecretRef
-
-    clientSecretWoVersion?: float
+    clientSecretSecretRef?: OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecForProviderClientSecretSecretRef
 
     defaultScopes?: str
-
-    disableTypeClaimCheck?: bool
 
     disableUserInfo?: bool
 
@@ -256,23 +212,17 @@ schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProvider:
 
     firstBrokerLoginFlowAlias?: str
 
-    firstBrokerLoginFlowAliasRef?: OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderFirstBrokerLoginFlowAliasRef
+    firstBrokerLoginFlowAliasRef?: OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecForProviderFirstBrokerLoginFlowAliasRef
 
-    firstBrokerLoginFlowAliasSelector?: OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderFirstBrokerLoginFlowAliasSelector
+    firstBrokerLoginFlowAliasSelector?: OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecForProviderFirstBrokerLoginFlowAliasSelector
 
     guiOrder?: str
 
     hideOnLoginPage?: bool
 
-    issuer?: str
-
-    jwksUrl?: str
+    hostedDomain?: str
 
     linkOnly?: bool
-
-    loginHint?: str
-
-    logoutUrl?: str
 
     orgDomain?: str
 
@@ -280,36 +230,28 @@ schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProvider:
 
     organizationId?: str
 
-    organizationIdRef?: OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderOrganizationIDRef
-
-    organizationIdSelector?: OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderOrganizationIDSelector
-
     postBrokerLoginFlowAlias?: str
 
     providerId?: str
 
     realm?: str
 
-    realmRef?: OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderRealmRef
+    realmRef?: OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecForProviderRealmRef
 
-    realmSelector?: OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderRealmSelector
+    realmSelector?: OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecForProviderRealmSelector
+
+    requestRefreshToken?: bool
 
     storeToken?: bool
 
     syncMode?: str
 
-    tokenUrl?: str
-
     trustEmail?: bool
 
-    uiLocales?: bool
-
-    userInfoUrl?: str
-
-    validateSignature?: bool
+    useUserIpParam?: bool
 
 
-schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderClientIDRef:
+schema OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecForProviderClientIDRef:
     r"""
     Reference to a Client in openidclient to populate clientId.
 
@@ -317,17 +259,17 @@ schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderClientIDRe
     ----------
     name : str, default is Undefined, required
         Name of the referenced object.
-    policy : OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderClientIDRefPolicy, default is Undefined, optional
+    policy : OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecForProviderClientIDRefPolicy, default is Undefined, optional
         policy
     """
 
 
     name: str
 
-    policy?: OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderClientIDRefPolicy
+    policy?: OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecForProviderClientIDRefPolicy
 
 
-schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderClientIDRefPolicy:
+schema OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecForProviderClientIDRefPolicy:
     r"""
     Policies for referencing.
 
@@ -351,7 +293,7 @@ schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderClientIDRe
     resolve?: "Always" | "IfNotPresent"
 
 
-schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderClientIDSelector:
+schema OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecForProviderClientIDSelector:
     r"""
     Selector for a Client in openidclient to populate clientId.
 
@@ -362,7 +304,7 @@ schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderClientIDSe
         as the selecting object is selected.
     matchLabels : {str:str}, default is Undefined, optional
         MatchLabels ensures an object with matching labels is selected.
-    policy : OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderClientIDSelectorPolicy, default is Undefined, optional
+    policy : OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecForProviderClientIDSelectorPolicy, default is Undefined, optional
         policy
     """
 
@@ -371,10 +313,10 @@ schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderClientIDSe
 
     matchLabels?: {str:str}
 
-    policy?: OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderClientIDSelectorPolicy
+    policy?: OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecForProviderClientIDSelectorPolicy
 
 
-schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderClientIDSelectorPolicy:
+schema OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecForProviderClientIDSelectorPolicy:
     r"""
     Policies for selection.
 
@@ -398,9 +340,9 @@ schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderClientIDSe
     resolve?: "Always" | "IfNotPresent"
 
 
-schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderClientSecretSecretRef:
+schema OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecForProviderClientSecretSecretRef:
     r"""
-    The client or client secret registered within the identity provider. This field is able to obtain its value from vault, use $${vault.ID} format. Required without client_secret_wo and client_secret_wo_version.
+    The client or client secret registered within the identity provider. This field is able to obtain its value from vault, use $${vault.ID} format.
     Client Secret.
 
     Attributes
@@ -421,30 +363,7 @@ schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderClientSecr
     namespace: str
 
 
-schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderClientSecretWoSecretRef:
-    r"""
-    The secret for clients with an access_type of CONFIDENTIAL or BEARER-ONLY. If omitted, this will fallback to use client_secret.
-    Client Secret as write-only argument
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        The key to select.
-    name : str, default is Undefined, required
-        Name of the secret.
-    namespace : str, default is Undefined, required
-        Namespace of the secret.
-    """
-
-
-    key: str
-
-    name: str
-
-    namespace: str
-
-
-schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderFirstBrokerLoginFlowAliasRef:
+schema OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecForProviderFirstBrokerLoginFlowAliasRef:
     r"""
     Reference to a Flow in authenticationflow to populate firstBrokerLoginFlowAlias.
 
@@ -452,17 +371,17 @@ schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderFirstBroke
     ----------
     name : str, default is Undefined, required
         Name of the referenced object.
-    policy : OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderFirstBrokerLoginFlowAliasRefPolicy, default is Undefined, optional
+    policy : OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecForProviderFirstBrokerLoginFlowAliasRefPolicy, default is Undefined, optional
         policy
     """
 
 
     name: str
 
-    policy?: OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderFirstBrokerLoginFlowAliasRefPolicy
+    policy?: OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecForProviderFirstBrokerLoginFlowAliasRefPolicy
 
 
-schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderFirstBrokerLoginFlowAliasRefPolicy:
+schema OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecForProviderFirstBrokerLoginFlowAliasRefPolicy:
     r"""
     Policies for referencing.
 
@@ -486,7 +405,7 @@ schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderFirstBroke
     resolve?: "Always" | "IfNotPresent"
 
 
-schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderFirstBrokerLoginFlowAliasSelector:
+schema OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecForProviderFirstBrokerLoginFlowAliasSelector:
     r"""
     Selector for a Flow in authenticationflow to populate firstBrokerLoginFlowAlias.
 
@@ -497,7 +416,7 @@ schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderFirstBroke
         as the selecting object is selected.
     matchLabels : {str:str}, default is Undefined, optional
         MatchLabels ensures an object with matching labels is selected.
-    policy : OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderFirstBrokerLoginFlowAliasSelectorPolicy, default is Undefined, optional
+    policy : OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecForProviderFirstBrokerLoginFlowAliasSelectorPolicy, default is Undefined, optional
         policy
     """
 
@@ -506,10 +425,10 @@ schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderFirstBroke
 
     matchLabels?: {str:str}
 
-    policy?: OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderFirstBrokerLoginFlowAliasSelectorPolicy
+    policy?: OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecForProviderFirstBrokerLoginFlowAliasSelectorPolicy
 
 
-schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderFirstBrokerLoginFlowAliasSelectorPolicy:
+schema OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecForProviderFirstBrokerLoginFlowAliasSelectorPolicy:
     r"""
     Policies for selection.
 
@@ -533,96 +452,7 @@ schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderFirstBroke
     resolve?: "Always" | "IfNotPresent"
 
 
-schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderOrganizationIDRef:
-    r"""
-    Reference to a Organization in organization to populate organizationId.
-
-    Attributes
-    ----------
-    name : str, default is Undefined, required
-        Name of the referenced object.
-    policy : OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderOrganizationIDRefPolicy, default is Undefined, optional
-        policy
-    """
-
-
-    name: str
-
-    policy?: OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderOrganizationIDRefPolicy
-
-
-schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderOrganizationIDRefPolicy:
-    r"""
-    Policies for referencing.
-
-    Attributes
-    ----------
-    resolution : str, default is "Required", optional
-        Resolution specifies whether resolution of this reference is required.
-        The default is 'Required', which means the reconcile will fail if the
-        reference cannot be resolved. 'Optional' means this reference will be
-        a no-op if it cannot be resolved.
-    resolve : str, default is Undefined, optional
-        Resolve specifies when this reference should be resolved. The default
-        is 'IfNotPresent', which will attempt to resolve the reference only when
-        the corresponding field is not present. Use 'Always' to resolve the
-        reference on every reconcile.
-    """
-
-
-    resolution?: "Required" | "Optional" = "Required"
-
-    resolve?: "Always" | "IfNotPresent"
-
-
-schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderOrganizationIDSelector:
-    r"""
-    Selector for a Organization in organization to populate organizationId.
-
-    Attributes
-    ----------
-    matchControllerRef : bool, default is Undefined, optional
-        MatchControllerRef ensures an object with the same controller reference
-        as the selecting object is selected.
-    matchLabels : {str:str}, default is Undefined, optional
-        MatchLabels ensures an object with matching labels is selected.
-    policy : OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderOrganizationIDSelectorPolicy, default is Undefined, optional
-        policy
-    """
-
-
-    matchControllerRef?: bool
-
-    matchLabels?: {str:str}
-
-    policy?: OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderOrganizationIDSelectorPolicy
-
-
-schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderOrganizationIDSelectorPolicy:
-    r"""
-    Policies for selection.
-
-    Attributes
-    ----------
-    resolution : str, default is "Required", optional
-        Resolution specifies whether resolution of this reference is required.
-        The default is 'Required', which means the reconcile will fail if the
-        reference cannot be resolved. 'Optional' means this reference will be
-        a no-op if it cannot be resolved.
-    resolve : str, default is Undefined, optional
-        Resolve specifies when this reference should be resolved. The default
-        is 'IfNotPresent', which will attempt to resolve the reference only when
-        the corresponding field is not present. Use 'Always' to resolve the
-        reference on every reconcile.
-    """
-
-
-    resolution?: "Required" | "Optional" = "Required"
-
-    resolve?: "Always" | "IfNotPresent"
-
-
-schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderRealmRef:
+schema OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecForProviderRealmRef:
     r"""
     Reference to a Realm in realm to populate realm.
 
@@ -630,17 +460,17 @@ schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderRealmRef:
     ----------
     name : str, default is Undefined, required
         Name of the referenced object.
-    policy : OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderRealmRefPolicy, default is Undefined, optional
+    policy : OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecForProviderRealmRefPolicy, default is Undefined, optional
         policy
     """
 
 
     name: str
 
-    policy?: OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderRealmRefPolicy
+    policy?: OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecForProviderRealmRefPolicy
 
 
-schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderRealmRefPolicy:
+schema OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecForProviderRealmRefPolicy:
     r"""
     Policies for referencing.
 
@@ -664,7 +494,7 @@ schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderRealmRefPo
     resolve?: "Always" | "IfNotPresent"
 
 
-schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderRealmSelector:
+schema OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecForProviderRealmSelector:
     r"""
     Selector for a Realm in realm to populate realm.
 
@@ -675,7 +505,7 @@ schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderRealmSelec
         as the selecting object is selected.
     matchLabels : {str:str}, default is Undefined, optional
         MatchLabels ensures an object with matching labels is selected.
-    policy : OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderRealmSelectorPolicy, default is Undefined, optional
+    policy : OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecForProviderRealmSelectorPolicy, default is Undefined, optional
         policy
     """
 
@@ -684,10 +514,10 @@ schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderRealmSelec
 
     matchLabels?: {str:str}
 
-    policy?: OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderRealmSelectorPolicy
+    policy?: OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecForProviderRealmSelectorPolicy
 
 
-schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderRealmSelectorPolicy:
+schema OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecForProviderRealmSelectorPolicy:
     r"""
     Policies for selection.
 
@@ -711,7 +541,7 @@ schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProviderRealmSelec
     resolve?: "Always" | "IfNotPresent"
 
 
-schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProvider:
+schema OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecInitProvider:
     r"""
     THIS IS A BETA FIELD. It will be honored
     unless the Management Policies feature flag is disabled.
@@ -727,47 +557,33 @@ schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProvider:
     Attributes
     ----------
     acceptsPromptNoneForwardFromClient : bool, default is Undefined, optional
-        When true, the IDP will accept forwarded authentication requests that contain the prompt=none query parameter. Defaults to false.
+        When true, unauthenticated requests with prompt=none will be forwarded to Google instead of returning an error. Defaults to false.
         This is just used together with Identity Provider Authenticator or when kc_idp_hint points to this identity provider. In case that client sends a request with prompt=none and user is not yet authenticated, the error will not be directly returned to client, but the request with prompt=none will be forwarded to this identity provider.
     addReadTokenRoleOnCreate : bool, default is Undefined, optional
         When true, new users will be able to read stored tokens. This will automatically assign the broker.read-token role. Defaults to false.
         Enable/disable if new users can read any stored tokens. This assigns the broker.read-token role.
     alias : str, default is Undefined, optional
-        The alias uniquely identifies an identity provider, and it is also used to build the redirect uri.
-        The alias uniquely identifies an identity provider and it is also used to build the redirect uri.
+        The alias for the Google identity provider.
+        The alias uniquely identifies an identity provider and it is also used to build the redirect uri. In case of google this is computed and always google
     authenticateByDefault : bool, default is Undefined, optional
         Enable/disable authenticate users by default.
-    authorizationUrl : str, default is Undefined, optional
-        The Authorization Url.
-        OIDC authorization URL.
-    backchannelSupported : bool, default is Undefined, optional
-        Does the external IDP support backchannel logout? Defaults to true.
-        Does the external IDP support backchannel logout?
     clientId : str, default is Undefined, optional
         The client or client identifier registered within the identity provider.
         Client ID.
-    clientIdRef : OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderClientIDRef, default is Undefined, optional
+    clientIdRef : OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecInitProviderClientIDRef, default is Undefined, optional
         client Id ref
-    clientIdSelector : OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderClientIDSelector, default is Undefined, optional
+    clientIdSelector : OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecInitProviderClientIDSelector, default is Undefined, optional
         client Id selector
-    clientSecretSecretRef : OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderClientSecretSecretRef, default is Undefined, optional
+    clientSecretSecretRef : OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecInitProviderClientSecretSecretRef, default is Undefined, required
         client secret secret ref
-    clientSecretWoSecretRef : OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderClientSecretWoSecretRef, default is Undefined, optional
-        client secret wo secret ref
-    clientSecretWoVersion : float, default is Undefined, optional
-        The value of this argument is stored in the state and plan files. Required when using client_secret_wo.
-        Version of the Client secret write-only argument
     defaultScopes : str, default is Undefined, optional
-        The scopes to be sent when asking for authorization. It can be a space-separated list of scopes. Defaults to openid.
-        The scopes to be sent when asking for authorization. It can be a space-separated list of scopes. Defaults to 'openid'.
-    disableTypeClaimCheck : bool, default is Undefined, optional
-        When true, disables the check for the typ claim of tokens received from the identity provider. Defaults to false.
-        Disables the validation of the `typ` claim of tokens received from the Identity Provider. If this is `off` the type claim is validated (default).
+        The scopes to be sent when asking for authorization. It can be a space-separated list of scopes. Defaults to openid profile email.
+        The scopes to be sent when asking for authorization. See the documentation for possible values, separator and default value'. Default: 'openid profile email'
     disableUserInfo : bool, default is Undefined, optional
         When true, disables the usage of the user info service to obtain additional user information. Defaults to false.
         Disable usage of User Info service to obtain additional user information?  Default is to use this OIDC service.
     displayName : str, default is Undefined, optional
-        Display name for the identity provider in the GUI.
+        Display name for the Google identity provider in the GUI.
         The human-friendly name of the identity provider, used in the log in form.
     enabled : bool, default is Undefined, optional
         When true, users will be able to log in to this realm using this identity provider. Defaults to true.
@@ -777,76 +593,56 @@ schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProvider:
     firstBrokerLoginFlowAlias : str, default is Undefined, optional
         The authentication flow to use when users log in for the first time through this identity provider. Defaults to first broker login.
         Alias of authentication flow, which is triggered after first login with this identity provider. Term 'First Login' means that there is not yet existing Keycloak account linked with the authenticated identity provider account.
-    firstBrokerLoginFlowAliasRef : OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderFirstBrokerLoginFlowAliasRef, default is Undefined, optional
+    firstBrokerLoginFlowAliasRef : OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecInitProviderFirstBrokerLoginFlowAliasRef, default is Undefined, optional
         first broker login flow alias ref
-    firstBrokerLoginFlowAliasSelector : OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderFirstBrokerLoginFlowAliasSelector, default is Undefined, optional
+    firstBrokerLoginFlowAliasSelector : OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecInitProviderFirstBrokerLoginFlowAliasSelector, default is Undefined, optional
         first broker login flow alias selector
     guiOrder : str, default is Undefined, optional
         A number defining the order of this identity provider in the GUI.
         GUI Order
     hideOnLoginPage : bool, default is Undefined, optional
-        When true, this provider will be hidden on the login page, and is only accessible when requested explicitly. Defaults to false.
+        When true, this identity provider will be hidden on the login page. Defaults to false.
         Hide On Login Page.
-    issuer : str, default is Undefined, optional
-        The issuer identifier for the issuer of the response. If not provided, no validation will be performed.
-        The issuer identifier for the issuer of the response. If not provided, no validation will be performed.
-    jwksUrl : str, default is Undefined, optional
-        JSON Web Key Set URL.
-        JSON Web Key Set URL
+    hostedDomain : str, default is Undefined, optional
+        Sets the "hd" query parameter when logging in with Google. Google will only list accounts for this domain. Keycloak will validate that the returned identity token has a claim for this domain. When * is entered, an account from any domain can be used.
+        Set 'hd' query parameter when logging in with Google. Google will list accounts only for this domain. Keycloak validates that the returned identity token has a claim for this domain. When '*' is entered, any hosted account can be used.
     linkOnly : bool, default is Undefined, optional
         When true, users cannot sign-in using this provider, but their existing accounts will be linked when possible. Defaults to false.
         If true, users cannot log in through this provider.  They can only link to this provider.  This is useful if you don't want to allow login from the provider, but want to integrate with a provider
-    loginHint : str, default is Undefined, optional
-        Pass login hint to identity provider.
-        Login Hint.
-    logoutUrl : str, default is Undefined, optional
-        The Logout URL is the end session endpoint to use to sign-out the user from external identity provider.
-        Logout URL
     orgDomain : str, default is Undefined, optional
-        The organization domain to associate this identity provider with. it is used to map users to an organization based on their email domain and to authenticate them accordingly in the scope of the organization.
+        org domain
     orgRedirectModeEmailMatches : bool, default is Undefined, optional
-        Indicates whether to automatically redirect user to this identity provider when email domain matches domain.
+        org redirect mode email matches
     organizationId : str, default is Undefined, optional
-        The ID of the organization to link this identity provider to.
         ID of organization with which this identity is linked.
-    organizationIdRef : OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderOrganizationIDRef, default is Undefined, optional
-        organization Id ref
-    organizationIdSelector : OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderOrganizationIDSelector, default is Undefined, optional
-        organization Id selector
     postBrokerLoginFlowAlias : str, default is Undefined, optional
         The authentication flow to use after users have successfully logged in, which can be used to perform additional user verification (such as OTP checking). Defaults to an empty string, which means no post login flow will be used.
         Alias of authentication flow, which is triggered after each login with this identity provider. Useful if you want additional verification of each user authenticated with this identity provider (for example OTP). Leave this empty if you don't want any additional authenticators to be triggered after login with this identity provider. Also note, that authenticator implementations must assume that user is already set in ClientSession as identity provider already set it.
     providerId : str, default is Undefined, optional
-        The ID of the identity provider to use. Defaults to oidc, which should be used unless you have extended Keycloak and provided your own implementation.
-        provider id, is always oidc, unless you have a custom implementation
+        The ID of the identity provider to use. Defaults to google, which should be used unless you have extended Keycloak and provided your own implementation.
+        provider id, is always google, unless you have a extended custom implementation
     realm : str, default is Undefined, optional
         The name of the realm. This is unique across Keycloak.
         Realm Name
-    realmRef : OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderRealmRef, default is Undefined, optional
+    realmRef : OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecInitProviderRealmRef, default is Undefined, optional
         realm ref
-    realmSelector : OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderRealmSelector, default is Undefined, optional
+    realmSelector : OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecInitProviderRealmSelector, default is Undefined, optional
         realm selector
+    requestRefreshToken : bool, default is Undefined, optional
+        Sets the "access_type" query parameter to "offline" when redirecting to google authorization endpoint,to get a refresh token back. This is useful for using Token Exchange to retrieve a Google token to access Google APIs when the user is offline.
+        Set 'access_type' query parameter to 'offline' when redirecting to google authorization endpoint, to get a refresh token back. Useful if planning to use Token Exchange to retrieve Google token to access Google APIs when the user is not at the browser.
     storeToken : bool, default is Undefined, optional
         When true, tokens will be stored after authenticating users. Defaults to true.
         Enable/disable if tokens must be stored after authenticating users.
     syncMode : str, default is Undefined, optional
         The default sync mode to use for all mappers attached to this identity provider. Can be once of IMPORT, FORCE, or LEGACY.
         Sync Mode
-    tokenUrl : str, default is Undefined, optional
-        The Token URL.
-        Token URL.
     trustEmail : bool, default is Undefined, optional
         When true, email addresses for users in this provider will automatically be verified regardless of the realm's email verification policy. Defaults to false.
         If enabled then email provided by this provider is not verified even if verification is enabled for the realm.
-    uiLocales : bool, default is Undefined, optional
-        Pass current locale to identity provider. Defaults to false.
-        Pass current locale to identity provider
-    userInfoUrl : str, default is Undefined, optional
-        User Info URL.
-        User Info URL
-    validateSignature : bool, default is Undefined, optional
-        Enable/disable signature validation of external IDP signatures. Defaults to false.
-        Enable/disable signature validation of external IDP signatures.
+    useUserIpParam : bool, default is Undefined, optional
+        Sets the "userIp" query parameter when querying Google's User Info service. This will use the user's IP address. This is useful if Google is throttling Keycloak's access to the User Info service.
+        Set 'userIp' query parameter when invoking on Google's User Info service.  This will use the user's ip address.  Useful if Google is throttling access to the User Info service.
     """
 
 
@@ -858,25 +654,15 @@ schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProvider:
 
     authenticateByDefault?: bool
 
-    authorizationUrl?: str
-
-    backchannelSupported?: bool
-
     clientId?: str
 
-    clientIdRef?: OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderClientIDRef
+    clientIdRef?: OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecInitProviderClientIDRef
 
-    clientIdSelector?: OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderClientIDSelector
+    clientIdSelector?: OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecInitProviderClientIDSelector
 
-    clientSecretSecretRef?: OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderClientSecretSecretRef
-
-    clientSecretWoSecretRef?: OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderClientSecretWoSecretRef
-
-    clientSecretWoVersion?: float
+    clientSecretSecretRef: OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecInitProviderClientSecretSecretRef
 
     defaultScopes?: str
-
-    disableTypeClaimCheck?: bool
 
     disableUserInfo?: bool
 
@@ -888,23 +674,17 @@ schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProvider:
 
     firstBrokerLoginFlowAlias?: str
 
-    firstBrokerLoginFlowAliasRef?: OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderFirstBrokerLoginFlowAliasRef
+    firstBrokerLoginFlowAliasRef?: OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecInitProviderFirstBrokerLoginFlowAliasRef
 
-    firstBrokerLoginFlowAliasSelector?: OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderFirstBrokerLoginFlowAliasSelector
+    firstBrokerLoginFlowAliasSelector?: OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecInitProviderFirstBrokerLoginFlowAliasSelector
 
     guiOrder?: str
 
     hideOnLoginPage?: bool
 
-    issuer?: str
-
-    jwksUrl?: str
+    hostedDomain?: str
 
     linkOnly?: bool
-
-    loginHint?: str
-
-    logoutUrl?: str
 
     orgDomain?: str
 
@@ -912,36 +692,28 @@ schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProvider:
 
     organizationId?: str
 
-    organizationIdRef?: OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderOrganizationIDRef
-
-    organizationIdSelector?: OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderOrganizationIDSelector
-
     postBrokerLoginFlowAlias?: str
 
     providerId?: str
 
     realm?: str
 
-    realmRef?: OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderRealmRef
+    realmRef?: OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecInitProviderRealmRef
 
-    realmSelector?: OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderRealmSelector
+    realmSelector?: OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecInitProviderRealmSelector
+
+    requestRefreshToken?: bool
 
     storeToken?: bool
 
     syncMode?: str
 
-    tokenUrl?: str
-
     trustEmail?: bool
 
-    uiLocales?: bool
-
-    userInfoUrl?: str
-
-    validateSignature?: bool
+    useUserIpParam?: bool
 
 
-schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderClientIDRef:
+schema OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecInitProviderClientIDRef:
     r"""
     Reference to a Client in openidclient to populate clientId.
 
@@ -949,17 +721,17 @@ schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderClientIDR
     ----------
     name : str, default is Undefined, required
         Name of the referenced object.
-    policy : OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderClientIDRefPolicy, default is Undefined, optional
+    policy : OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecInitProviderClientIDRefPolicy, default is Undefined, optional
         policy
     """
 
 
     name: str
 
-    policy?: OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderClientIDRefPolicy
+    policy?: OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecInitProviderClientIDRefPolicy
 
 
-schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderClientIDRefPolicy:
+schema OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecInitProviderClientIDRefPolicy:
     r"""
     Policies for referencing.
 
@@ -983,7 +755,7 @@ schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderClientIDR
     resolve?: "Always" | "IfNotPresent"
 
 
-schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderClientIDSelector:
+schema OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecInitProviderClientIDSelector:
     r"""
     Selector for a Client in openidclient to populate clientId.
 
@@ -994,7 +766,7 @@ schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderClientIDS
         as the selecting object is selected.
     matchLabels : {str:str}, default is Undefined, optional
         MatchLabels ensures an object with matching labels is selected.
-    policy : OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderClientIDSelectorPolicy, default is Undefined, optional
+    policy : OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecInitProviderClientIDSelectorPolicy, default is Undefined, optional
         policy
     """
 
@@ -1003,10 +775,10 @@ schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderClientIDS
 
     matchLabels?: {str:str}
 
-    policy?: OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderClientIDSelectorPolicy
+    policy?: OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecInitProviderClientIDSelectorPolicy
 
 
-schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderClientIDSelectorPolicy:
+schema OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecInitProviderClientIDSelectorPolicy:
     r"""
     Policies for selection.
 
@@ -1030,9 +802,9 @@ schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderClientIDS
     resolve?: "Always" | "IfNotPresent"
 
 
-schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderClientSecretSecretRef:
+schema OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecInitProviderClientSecretSecretRef:
     r"""
-    The client or client secret registered within the identity provider. This field is able to obtain its value from vault, use $${vault.ID} format. Required without client_secret_wo and client_secret_wo_version.
+    The client or client secret registered within the identity provider. This field is able to obtain its value from vault, use $${vault.ID} format.
     Client Secret.
 
     Attributes
@@ -1053,30 +825,7 @@ schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderClientSec
     namespace: str
 
 
-schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderClientSecretWoSecretRef:
-    r"""
-    The secret for clients with an access_type of CONFIDENTIAL or BEARER-ONLY. If omitted, this will fallback to use client_secret.
-    Client Secret as write-only argument
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        The key to select.
-    name : str, default is Undefined, required
-        Name of the secret.
-    namespace : str, default is Undefined, required
-        Namespace of the secret.
-    """
-
-
-    key: str
-
-    name: str
-
-    namespace: str
-
-
-schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderFirstBrokerLoginFlowAliasRef:
+schema OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecInitProviderFirstBrokerLoginFlowAliasRef:
     r"""
     Reference to a Flow in authenticationflow to populate firstBrokerLoginFlowAlias.
 
@@ -1084,17 +833,17 @@ schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderFirstBrok
     ----------
     name : str, default is Undefined, required
         Name of the referenced object.
-    policy : OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderFirstBrokerLoginFlowAliasRefPolicy, default is Undefined, optional
+    policy : OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecInitProviderFirstBrokerLoginFlowAliasRefPolicy, default is Undefined, optional
         policy
     """
 
 
     name: str
 
-    policy?: OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderFirstBrokerLoginFlowAliasRefPolicy
+    policy?: OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecInitProviderFirstBrokerLoginFlowAliasRefPolicy
 
 
-schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderFirstBrokerLoginFlowAliasRefPolicy:
+schema OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecInitProviderFirstBrokerLoginFlowAliasRefPolicy:
     r"""
     Policies for referencing.
 
@@ -1118,7 +867,7 @@ schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderFirstBrok
     resolve?: "Always" | "IfNotPresent"
 
 
-schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderFirstBrokerLoginFlowAliasSelector:
+schema OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecInitProviderFirstBrokerLoginFlowAliasSelector:
     r"""
     Selector for a Flow in authenticationflow to populate firstBrokerLoginFlowAlias.
 
@@ -1129,7 +878,7 @@ schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderFirstBrok
         as the selecting object is selected.
     matchLabels : {str:str}, default is Undefined, optional
         MatchLabels ensures an object with matching labels is selected.
-    policy : OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderFirstBrokerLoginFlowAliasSelectorPolicy, default is Undefined, optional
+    policy : OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecInitProviderFirstBrokerLoginFlowAliasSelectorPolicy, default is Undefined, optional
         policy
     """
 
@@ -1138,10 +887,10 @@ schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderFirstBrok
 
     matchLabels?: {str:str}
 
-    policy?: OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderFirstBrokerLoginFlowAliasSelectorPolicy
+    policy?: OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecInitProviderFirstBrokerLoginFlowAliasSelectorPolicy
 
 
-schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderFirstBrokerLoginFlowAliasSelectorPolicy:
+schema OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecInitProviderFirstBrokerLoginFlowAliasSelectorPolicy:
     r"""
     Policies for selection.
 
@@ -1165,96 +914,7 @@ schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderFirstBrok
     resolve?: "Always" | "IfNotPresent"
 
 
-schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderOrganizationIDRef:
-    r"""
-    Reference to a Organization in organization to populate organizationId.
-
-    Attributes
-    ----------
-    name : str, default is Undefined, required
-        Name of the referenced object.
-    policy : OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderOrganizationIDRefPolicy, default is Undefined, optional
-        policy
-    """
-
-
-    name: str
-
-    policy?: OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderOrganizationIDRefPolicy
-
-
-schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderOrganizationIDRefPolicy:
-    r"""
-    Policies for referencing.
-
-    Attributes
-    ----------
-    resolution : str, default is "Required", optional
-        Resolution specifies whether resolution of this reference is required.
-        The default is 'Required', which means the reconcile will fail if the
-        reference cannot be resolved. 'Optional' means this reference will be
-        a no-op if it cannot be resolved.
-    resolve : str, default is Undefined, optional
-        Resolve specifies when this reference should be resolved. The default
-        is 'IfNotPresent', which will attempt to resolve the reference only when
-        the corresponding field is not present. Use 'Always' to resolve the
-        reference on every reconcile.
-    """
-
-
-    resolution?: "Required" | "Optional" = "Required"
-
-    resolve?: "Always" | "IfNotPresent"
-
-
-schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderOrganizationIDSelector:
-    r"""
-    Selector for a Organization in organization to populate organizationId.
-
-    Attributes
-    ----------
-    matchControllerRef : bool, default is Undefined, optional
-        MatchControllerRef ensures an object with the same controller reference
-        as the selecting object is selected.
-    matchLabels : {str:str}, default is Undefined, optional
-        MatchLabels ensures an object with matching labels is selected.
-    policy : OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderOrganizationIDSelectorPolicy, default is Undefined, optional
-        policy
-    """
-
-
-    matchControllerRef?: bool
-
-    matchLabels?: {str:str}
-
-    policy?: OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderOrganizationIDSelectorPolicy
-
-
-schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderOrganizationIDSelectorPolicy:
-    r"""
-    Policies for selection.
-
-    Attributes
-    ----------
-    resolution : str, default is "Required", optional
-        Resolution specifies whether resolution of this reference is required.
-        The default is 'Required', which means the reconcile will fail if the
-        reference cannot be resolved. 'Optional' means this reference will be
-        a no-op if it cannot be resolved.
-    resolve : str, default is Undefined, optional
-        Resolve specifies when this reference should be resolved. The default
-        is 'IfNotPresent', which will attempt to resolve the reference only when
-        the corresponding field is not present. Use 'Always' to resolve the
-        reference on every reconcile.
-    """
-
-
-    resolution?: "Required" | "Optional" = "Required"
-
-    resolve?: "Always" | "IfNotPresent"
-
-
-schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderRealmRef:
+schema OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecInitProviderRealmRef:
     r"""
     Reference to a Realm in realm to populate realm.
 
@@ -1262,17 +922,17 @@ schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderRealmRef:
     ----------
     name : str, default is Undefined, required
         Name of the referenced object.
-    policy : OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderRealmRefPolicy, default is Undefined, optional
+    policy : OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecInitProviderRealmRefPolicy, default is Undefined, optional
         policy
     """
 
 
     name: str
 
-    policy?: OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderRealmRefPolicy
+    policy?: OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecInitProviderRealmRefPolicy
 
 
-schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderRealmRefPolicy:
+schema OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecInitProviderRealmRefPolicy:
     r"""
     Policies for referencing.
 
@@ -1296,7 +956,7 @@ schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderRealmRefP
     resolve?: "Always" | "IfNotPresent"
 
 
-schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderRealmSelector:
+schema OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecInitProviderRealmSelector:
     r"""
     Selector for a Realm in realm to populate realm.
 
@@ -1307,7 +967,7 @@ schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderRealmSele
         as the selecting object is selected.
     matchLabels : {str:str}, default is Undefined, optional
         MatchLabels ensures an object with matching labels is selected.
-    policy : OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderRealmSelectorPolicy, default is Undefined, optional
+    policy : OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecInitProviderRealmSelectorPolicy, default is Undefined, optional
         policy
     """
 
@@ -1316,10 +976,10 @@ schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderRealmSele
 
     matchLabels?: {str:str}
 
-    policy?: OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderRealmSelectorPolicy
+    policy?: OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecInitProviderRealmSelectorPolicy
 
 
-schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderRealmSelectorPolicy:
+schema OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecInitProviderRealmSelectorPolicy:
     r"""
     Policies for selection.
 
@@ -1343,7 +1003,7 @@ schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProviderRealmSele
     resolve?: "Always" | "IfNotPresent"
 
 
-schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecProviderConfigRef:
+schema OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecProviderConfigRef:
     r"""
     ProviderConfigReference specifies how the provider that will be used to
     create, observe, update, and delete this managed resource should be
@@ -1353,17 +1013,17 @@ schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecProviderConfigRef:
     ----------
     name : str, default is Undefined, required
         Name of the referenced object.
-    policy : OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecProviderConfigRefPolicy, default is Undefined, optional
+    policy : OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecProviderConfigRefPolicy, default is Undefined, optional
         policy
     """
 
 
     name: str
 
-    policy?: OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecProviderConfigRefPolicy
+    policy?: OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecProviderConfigRefPolicy
 
 
-schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecProviderConfigRefPolicy:
+schema OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecProviderConfigRefPolicy:
     r"""
     Policies for referencing.
 
@@ -1387,7 +1047,7 @@ schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecProviderConfigRefPoli
     resolve?: "Always" | "IfNotPresent"
 
 
-schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecPublishConnectionDetailsTo:
+schema OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecPublishConnectionDetailsTo:
     r"""
     PublishConnectionDetailsTo specifies the connection secret config which
     contains a name, metadata and a reference to secret store config to
@@ -1397,23 +1057,23 @@ schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecPublishConnectionDeta
 
     Attributes
     ----------
-    configRef : OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecPublishConnectionDetailsToConfigRef, default is Undefined, optional
+    configRef : OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecPublishConnectionDetailsToConfigRef, default is Undefined, optional
         config ref
-    metadata : OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecPublishConnectionDetailsToMetadata, default is Undefined, optional
+    metadata : OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecPublishConnectionDetailsToMetadata, default is Undefined, optional
         metadata
     name : str, default is Undefined, required
         Name is the name of the connection secret.
     """
 
 
-    configRef?: OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecPublishConnectionDetailsToConfigRef
+    configRef?: OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecPublishConnectionDetailsToConfigRef
 
-    metadata?: OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecPublishConnectionDetailsToMetadata
+    metadata?: OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecPublishConnectionDetailsToMetadata
 
     name: str
 
 
-schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecPublishConnectionDetailsToConfigRef:
+schema OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecPublishConnectionDetailsToConfigRef:
     r"""
     SecretStoreConfigRef specifies which secret store config should be used
     for this ConnectionSecret.
@@ -1422,17 +1082,17 @@ schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecPublishConnectionDeta
     ----------
     name : str, default is Undefined, required
         Name of the referenced object.
-    policy : OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecPublishConnectionDetailsToConfigRefPolicy, default is Undefined, optional
+    policy : OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecPublishConnectionDetailsToConfigRefPolicy, default is Undefined, optional
         policy
     """
 
 
     name: str
 
-    policy?: OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecPublishConnectionDetailsToConfigRefPolicy
+    policy?: OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecPublishConnectionDetailsToConfigRefPolicy
 
 
-schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecPublishConnectionDetailsToConfigRefPolicy:
+schema OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecPublishConnectionDetailsToConfigRefPolicy:
     r"""
     Policies for referencing.
 
@@ -1456,7 +1116,7 @@ schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecPublishConnectionDeta
     resolve?: "Always" | "IfNotPresent"
 
 
-schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecPublishConnectionDetailsToMetadata:
+schema OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecPublishConnectionDetailsToMetadata:
     r"""
     Metadata is the metadata for connection secret.
 
@@ -1483,7 +1143,7 @@ schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecPublishConnectionDeta
     $type?: str
 
 
-schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecWriteConnectionSecretToRef:
+schema OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecWriteConnectionSecretToRef:
     r"""
     WriteConnectionSecretToReference specifies the namespace and name of a
     Secret to which any connection details for this managed resource should
@@ -1508,15 +1168,15 @@ schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderSpecWriteConnectionSecret
     namespace: str
 
 
-schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderStatus:
+schema OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderStatus:
     r"""
-    IdentityProviderStatus defines the observed state of IdentityProvider.
+    GoogleIdentityProviderStatus defines the observed state of GoogleIdentityProvider.
 
     Attributes
     ----------
-    atProvider : OidcKeycloakCrossplaneIoV1alpha1IdentityProviderStatusAtProvider, default is Undefined, optional
+    atProvider : OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderStatusAtProvider, default is Undefined, optional
         at provider
-    conditions : [OidcKeycloakCrossplaneIoV1alpha1IdentityProviderStatusConditionsItems0], default is Undefined, optional
+    conditions : [OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderStatusConditionsItems0], default is Undefined, optional
         Conditions of the resource.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the latest metadata.generation
@@ -1525,53 +1185,41 @@ schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderStatus:
     """
 
 
-    atProvider?: OidcKeycloakCrossplaneIoV1alpha1IdentityProviderStatusAtProvider
+    atProvider?: OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderStatusAtProvider
 
-    conditions?: [OidcKeycloakCrossplaneIoV1alpha1IdentityProviderStatusConditionsItems0]
+    conditions?: [OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderStatusConditionsItems0]
 
     observedGeneration?: int
 
 
-schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderStatusAtProvider:
+schema OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderStatusAtProvider:
     r"""
-    oidc keycloak crossplane io v1alpha1 identity provider status at provider
+    oidc keycloak crossplane io v1alpha1 google identity provider status at provider
 
     Attributes
     ----------
     acceptsPromptNoneForwardFromClient : bool, default is Undefined, optional
-        When true, the IDP will accept forwarded authentication requests that contain the prompt=none query parameter. Defaults to false.
+        When true, unauthenticated requests with prompt=none will be forwarded to Google instead of returning an error. Defaults to false.
         This is just used together with Identity Provider Authenticator or when kc_idp_hint points to this identity provider. In case that client sends a request with prompt=none and user is not yet authenticated, the error will not be directly returned to client, but the request with prompt=none will be forwarded to this identity provider.
     addReadTokenRoleOnCreate : bool, default is Undefined, optional
         When true, new users will be able to read stored tokens. This will automatically assign the broker.read-token role. Defaults to false.
         Enable/disable if new users can read any stored tokens. This assigns the broker.read-token role.
     alias : str, default is Undefined, optional
-        The alias uniquely identifies an identity provider, and it is also used to build the redirect uri.
-        The alias uniquely identifies an identity provider and it is also used to build the redirect uri.
+        The alias for the Google identity provider.
+        The alias uniquely identifies an identity provider and it is also used to build the redirect uri. In case of google this is computed and always google
     authenticateByDefault : bool, default is Undefined, optional
         Enable/disable authenticate users by default.
-    authorizationUrl : str, default is Undefined, optional
-        The Authorization Url.
-        OIDC authorization URL.
-    backchannelSupported : bool, default is Undefined, optional
-        Does the external IDP support backchannel logout? Defaults to true.
-        Does the external IDP support backchannel logout?
     clientId : str, default is Undefined, optional
         The client or client identifier registered within the identity provider.
         Client ID.
-    clientSecretWoVersion : float, default is Undefined, optional
-        The value of this argument is stored in the state and plan files. Required when using client_secret_wo.
-        Version of the Client secret write-only argument
     defaultScopes : str, default is Undefined, optional
-        The scopes to be sent when asking for authorization. It can be a space-separated list of scopes. Defaults to openid.
-        The scopes to be sent when asking for authorization. It can be a space-separated list of scopes. Defaults to 'openid'.
-    disableTypeClaimCheck : bool, default is Undefined, optional
-        When true, disables the check for the typ claim of tokens received from the identity provider. Defaults to false.
-        Disables the validation of the `typ` claim of tokens received from the Identity Provider. If this is `off` the type claim is validated (default).
+        The scopes to be sent when asking for authorization. It can be a space-separated list of scopes. Defaults to openid profile email.
+        The scopes to be sent when asking for authorization. See the documentation for possible values, separator and default value'. Default: 'openid profile email'
     disableUserInfo : bool, default is Undefined, optional
         When true, disables the usage of the user info service to obtain additional user information. Defaults to false.
         Disable usage of User Info service to obtain additional user information?  Default is to use this OIDC service.
     displayName : str, default is Undefined, optional
-        Display name for the identity provider in the GUI.
+        Display name for the Google identity provider in the GUI.
         The human-friendly name of the identity provider, used in the log in form.
     enabled : bool, default is Undefined, optional
         When true, users will be able to log in to this realm using this identity provider. Defaults to true.
@@ -1585,65 +1233,49 @@ schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderStatusAtProvider:
         A number defining the order of this identity provider in the GUI.
         GUI Order
     hideOnLoginPage : bool, default is Undefined, optional
-        When true, this provider will be hidden on the login page, and is only accessible when requested explicitly. Defaults to false.
+        When true, this identity provider will be hidden on the login page. Defaults to false.
         Hide On Login Page.
+    hostedDomain : str, default is Undefined, optional
+        Sets the "hd" query parameter when logging in with Google. Google will only list accounts for this domain. Keycloak will validate that the returned identity token has a claim for this domain. When * is entered, an account from any domain can be used.
+        Set 'hd' query parameter when logging in with Google. Google will list accounts only for this domain. Keycloak validates that the returned identity token has a claim for this domain. When '*' is entered, any hosted account can be used.
     id : str, default is Undefined, optional
         id
     internalId : str, default is Undefined, optional
         (Computed) The unique ID that Keycloak assigns to the identity provider upon creation.
         Internal Identity Provider Id
-    issuer : str, default is Undefined, optional
-        The issuer identifier for the issuer of the response. If not provided, no validation will be performed.
-        The issuer identifier for the issuer of the response. If not provided, no validation will be performed.
-    jwksUrl : str, default is Undefined, optional
-        JSON Web Key Set URL.
-        JSON Web Key Set URL
     linkOnly : bool, default is Undefined, optional
         When true, users cannot sign-in using this provider, but their existing accounts will be linked when possible. Defaults to false.
         If true, users cannot log in through this provider.  They can only link to this provider.  This is useful if you don't want to allow login from the provider, but want to integrate with a provider
-    loginHint : str, default is Undefined, optional
-        Pass login hint to identity provider.
-        Login Hint.
-    logoutUrl : str, default is Undefined, optional
-        The Logout URL is the end session endpoint to use to sign-out the user from external identity provider.
-        Logout URL
     orgDomain : str, default is Undefined, optional
-        The organization domain to associate this identity provider with. it is used to map users to an organization based on their email domain and to authenticate them accordingly in the scope of the organization.
+        org domain
     orgRedirectModeEmailMatches : bool, default is Undefined, optional
-        Indicates whether to automatically redirect user to this identity provider when email domain matches domain.
+        org redirect mode email matches
     organizationId : str, default is Undefined, optional
-        The ID of the organization to link this identity provider to.
         ID of organization with which this identity is linked.
     postBrokerLoginFlowAlias : str, default is Undefined, optional
         The authentication flow to use after users have successfully logged in, which can be used to perform additional user verification (such as OTP checking). Defaults to an empty string, which means no post login flow will be used.
         Alias of authentication flow, which is triggered after each login with this identity provider. Useful if you want additional verification of each user authenticated with this identity provider (for example OTP). Leave this empty if you don't want any additional authenticators to be triggered after login with this identity provider. Also note, that authenticator implementations must assume that user is already set in ClientSession as identity provider already set it.
     providerId : str, default is Undefined, optional
-        The ID of the identity provider to use. Defaults to oidc, which should be used unless you have extended Keycloak and provided your own implementation.
-        provider id, is always oidc, unless you have a custom implementation
+        The ID of the identity provider to use. Defaults to google, which should be used unless you have extended Keycloak and provided your own implementation.
+        provider id, is always google, unless you have a extended custom implementation
     realm : str, default is Undefined, optional
         The name of the realm. This is unique across Keycloak.
         Realm Name
+    requestRefreshToken : bool, default is Undefined, optional
+        Sets the "access_type" query parameter to "offline" when redirecting to google authorization endpoint,to get a refresh token back. This is useful for using Token Exchange to retrieve a Google token to access Google APIs when the user is offline.
+        Set 'access_type' query parameter to 'offline' when redirecting to google authorization endpoint, to get a refresh token back. Useful if planning to use Token Exchange to retrieve Google token to access Google APIs when the user is not at the browser.
     storeToken : bool, default is Undefined, optional
         When true, tokens will be stored after authenticating users. Defaults to true.
         Enable/disable if tokens must be stored after authenticating users.
     syncMode : str, default is Undefined, optional
         The default sync mode to use for all mappers attached to this identity provider. Can be once of IMPORT, FORCE, or LEGACY.
         Sync Mode
-    tokenUrl : str, default is Undefined, optional
-        The Token URL.
-        Token URL.
     trustEmail : bool, default is Undefined, optional
         When true, email addresses for users in this provider will automatically be verified regardless of the realm's email verification policy. Defaults to false.
         If enabled then email provided by this provider is not verified even if verification is enabled for the realm.
-    uiLocales : bool, default is Undefined, optional
-        Pass current locale to identity provider. Defaults to false.
-        Pass current locale to identity provider
-    userInfoUrl : str, default is Undefined, optional
-        User Info URL.
-        User Info URL
-    validateSignature : bool, default is Undefined, optional
-        Enable/disable signature validation of external IDP signatures. Defaults to false.
-        Enable/disable signature validation of external IDP signatures.
+    useUserIpParam : bool, default is Undefined, optional
+        Sets the "userIp" query parameter when querying Google's User Info service. This will use the user's IP address. This is useful if Google is throttling Keycloak's access to the User Info service.
+        Set 'userIp' query parameter when invoking on Google's User Info service.  This will use the user's ip address.  Useful if Google is throttling access to the User Info service.
     """
 
 
@@ -1655,17 +1287,9 @@ schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderStatusAtProvider:
 
     authenticateByDefault?: bool
 
-    authorizationUrl?: str
-
-    backchannelSupported?: bool
-
     clientId?: str
 
-    clientSecretWoVersion?: float
-
     defaultScopes?: str
-
-    disableTypeClaimCheck?: bool
 
     disableUserInfo?: bool
 
@@ -1681,19 +1305,13 @@ schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderStatusAtProvider:
 
     hideOnLoginPage?: bool
 
+    hostedDomain?: str
+
     id?: str
 
     internalId?: str
 
-    issuer?: str
-
-    jwksUrl?: str
-
     linkOnly?: bool
-
-    loginHint?: str
-
-    logoutUrl?: str
 
     orgDomain?: str
 
@@ -1707,22 +1325,18 @@ schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderStatusAtProvider:
 
     realm?: str
 
+    requestRefreshToken?: bool
+
     storeToken?: bool
 
     syncMode?: str
 
-    tokenUrl?: str
-
     trustEmail?: bool
 
-    uiLocales?: bool
-
-    userInfoUrl?: str
-
-    validateSignature?: bool
+    useUserIpParam?: bool
 
 
-schema OidcKeycloakCrossplaneIoV1alpha1IdentityProviderStatusConditionsItems0:
+schema OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderStatusConditionsItems0:
     r"""
     A Condition that may apply to a resource.
 

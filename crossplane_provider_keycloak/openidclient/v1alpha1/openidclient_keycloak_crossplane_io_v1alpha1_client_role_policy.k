@@ -98,6 +98,8 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientRolePolicySpecForProvider:
         decision strategy
     description : str, default is Undefined, optional
         description
+    fetchRoles : bool, default is Undefined, optional
+        fetch roles
     logic : str, default is Undefined, optional
         logic
     name : str, default is Undefined, optional
@@ -124,6 +126,8 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientRolePolicySpecForProvider:
     decisionStrategy?: str
 
     description?: str
+
+    fetchRoles?: bool
 
     logic?: str
 
@@ -458,6 +462,8 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientRolePolicySpecInitProvider:
         decision strategy
     description : str, default is Undefined, optional
         description
+    fetchRoles : bool, default is Undefined, optional
+        fetch roles
     logic : str, default is Undefined, optional
         logic
     name : str, default is Undefined, optional
@@ -484,6 +490,8 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientRolePolicySpecInitProvider:
     decisionStrategy?: str
 
     description?: str
+
+    fetchRoles?: bool
 
     logic?: str
 
@@ -998,6 +1006,8 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientRolePolicyStatusAtProvider:
         decision strategy
     description : str, default is Undefined, optional
         description
+    fetchRoles : bool, default is Undefined, optional
+        fetch roles
     id : str, default is Undefined, optional
         id
     logic : str, default is Undefined, optional
@@ -1018,6 +1028,8 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientRolePolicyStatusAtProvider:
     decisionStrategy?: str
 
     description?: str
+
+    fetchRoles?: bool
 
     id?: str
 
