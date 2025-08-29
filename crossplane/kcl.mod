@@ -1,7 +1,7 @@
 [package]
 name = "crossplane"
-version = "1.17.3"
-description = "`crossplane` is the crossplane spec definition"
+edition = "v0.11.2"
+version = "v2.0.2"
 
 [dependencies]
-k8s = "1.31.2"
+k8s = "1.32.4"
