@@ -1,0 +1,25 @@
+version: 1.27.0
+name: cloudnative-pg
+displayName: cloudnative-pg
+createdAt: "2025-09-12T15:33:47Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `cloudnative-pg` with tag `1.27.0` as dependency
+  ```
+  kcl mod add cloudnative-pg:1.27.0
+  ```
+
+  #### Pull `cloudnative-pg` with tag `1.27.0` to local
+  ```
+  kcl mod pull cloudnative-pg:1.27.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
