@@ -43,6 +43,8 @@ schema PromoterArgoprojIoV1alpha1PullRequestSpec:
 
     Attributes
     ----------
+    commit : PromoterArgoprojIoV1alpha1PullRequestSpecCommit, default is Undefined, optional
+        commit
     description : str, default is Undefined, optional
         Description is the description body of the pull/merge request
     gitRepositoryRef : PromoterArgoprojIoV1alpha1PullRequestSpecGitRepositoryRef, default is Undefined, required
@@ -58,6 +60,8 @@ schema PromoterArgoprojIoV1alpha1PullRequestSpec:
     """
 
 
+    commit?: PromoterArgoprojIoV1alpha1PullRequestSpecCommit
+
     description?: str
 
     gitRepositoryRef: PromoterArgoprojIoV1alpha1PullRequestSpecGitRepositoryRef
@@ -69,6 +73,20 @@ schema PromoterArgoprojIoV1alpha1PullRequestSpec:
     targetBranch: str
 
     title: str
+
+
+schema PromoterArgoprojIoV1alpha1PullRequestSpecCommit:
+    r"""
+    Commit contains configuration for how we will merge/squash/etc the pull request.
+
+    Attributes
+    ----------
+    message : str, default is Undefined, required
+        Message is the commit message that will be written for the commit that's made when merging the PR.
+    """
+
+
+    message: str
 
 
 schema PromoterArgoprojIoV1alpha1PullRequestSpecGitRepositoryRef:

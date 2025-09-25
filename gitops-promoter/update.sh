@@ -1,27 +1,14 @@
 #!/usr/bin/env bash
-set -Eeuo pipefail
+APP_VERSION=v0.12.0
 
-./download_crd.sh
-kcl import -m crd -o . *.yaml
-rm -rf v*
+rm -rf install.yaml crds.yaml
+mkdir models
+
+wget "https://github.com/argoproj-labs/gitops-promoter/releases/download/v0.12.0/install.yaml"
+yq eval 'select(.kind == "CustomResourceDefinition")' install.yaml -o yaml >crds.yaml
+kcl import -m crd -o . crds.yaml
+
+# cleanup
 mv models/v* .
-rm -rf models/
-rm -rf *.yaml
-
-# VERSION="1.20.1"
-# ZIP="percona-server-mongodb-operator-v${VERSION}.zip"
-# DIR="percona-server-mongodb-operator-${VERSION}"
-#
-# echo "📥 Downloading Percona Operator version ${VERSION}..."
-# mkdir -p crds/
-# rm -rf crds/*
-# rm -rf v*
-# wget -q "https://github.com/percona/percona-server-mongodb-operator/archive/refs/tags/v${VERSION}.zip" -O "${ZIP}"
-#
-# echo "📂 Extracting ZIP..."
-# unzip -q "${ZIP}"
-#
-# kcl import -m crd -o . "${DIR}/deploy/crd.yaml"
-# cp "${DIR}/deploy/crd.yaml" crds/
-# cp -r models/v1* .
-# rm -rf "${DIR}" "${ZIP}" "models"
+rm -rf models
+rm -rf install.yaml crds.yaml

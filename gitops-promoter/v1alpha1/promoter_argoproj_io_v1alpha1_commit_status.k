@@ -53,7 +53,7 @@ schema PromoterArgoprojIoV1alpha1CommitStatusSpec:
         CommitStatusPhase represents the phase of a commit status.
     sha : str, default is Undefined, required
         sha
-    url : str, default is Undefined, required
+    url : str, default is Undefined, optional
         Url is a URL that the user can follow to see more details about the status
     """
 
@@ -68,7 +68,11 @@ schema PromoterArgoprojIoV1alpha1CommitStatusSpec:
 
     sha: str
 
-    url: str
+    url?: str
+
+
+    check:
+        _regex_match(str(url), r"^https?://.*$") if url
 
 
 schema PromoterArgoprojIoV1alpha1CommitStatusSpecGitRepositoryRef:
@@ -95,7 +99,7 @@ schema PromoterArgoprojIoV1alpha1CommitStatusStatus:
         Conditions Represents the observations of the current state.
     id : str, default is Undefined, required
         Id is the unique identifier of the commit status, set by the SCM
-    phase : str, default is "pending", required
+    phase : str, default is "pending", optional
         CommitStatusPhase represents the phase of a commit status.
     sha : str, default is Undefined, required
         sha
@@ -106,7 +110,7 @@ schema PromoterArgoprojIoV1alpha1CommitStatusStatus:
 
     id: str
 
-    phase: "pending" | "success" | "failure" = "pending"
+    phase?: "pending" | "success" | "failure" = "pending"
 
     sha: str
 
