@@ -4,11 +4,11 @@ Editing this file might prove futile when you re-run the KCL auto-gen generate c
 """
 import regex
 import k8s.apimachinery.pkg.apis.meta.v1
-
+_regex_match = regex.match
 
 
 schema GrafanaAlertRuleGroup:
-    """
+    r"""
     GrafanaAlertRuleGroup is the Schema for the grafanaalertrulegroups API
 
     Attributes
@@ -19,7 +19,7 @@ schema GrafanaAlertRuleGroup:
         Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     metadata : v1.ObjectMeta, default is Undefined, optional
         metadata
-    spec : GrafanaIntegreatlyOrgV1beta1GrafanaAlertRuleGroupSpec, default is Undefined, optional
+    spec : GrafanaIntegreatlyOrgV1beta1GrafanaAlertRuleGroupSpec, default is Undefined, required
         spec
     status : GrafanaIntegreatlyOrgV1beta1GrafanaAlertRuleGroupStatus, default is Undefined, optional
         status
@@ -32,19 +32,21 @@ schema GrafanaAlertRuleGroup:
 
     metadata?: v1.ObjectMeta
 
-    spec?: GrafanaIntegreatlyOrgV1beta1GrafanaAlertRuleGroupSpec
+    spec: GrafanaIntegreatlyOrgV1beta1GrafanaAlertRuleGroupSpec
 
     status?: GrafanaIntegreatlyOrgV1beta1GrafanaAlertRuleGroupStatus
 
 
 schema GrafanaIntegreatlyOrgV1beta1GrafanaAlertRuleGroupSpec:
-    """
+    r"""
     GrafanaAlertRuleGroupSpec defines the desired state of GrafanaAlertRuleGroup
 
     Attributes
     ----------
     allowCrossNamespaceImport : bool, default is Undefined, optional
-        allow cross namespace import
+        Allow the Operator to match this resource with Grafanas outside the current namespace
+    editable : bool, default is Undefined, optional
+        Whether to enable or disable editing of the alert rule group in Grafana UI
     folderRef : str, default is Undefined, optional
         Match GrafanaFolders CRs to infer the uid
     folderUID : str, default is Undefined, optional
@@ -54,14 +56,20 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaAlertRuleGroupSpec:
         instance selector
     interval : str, default is Undefined, required
         interval
-    resyncPeriod : str, default is "10m", optional
-        resync period
+    name : str, default is Undefined, optional
+        Name of the alert rule group. If not specified, the resource name will be used.
+    resyncPeriod : str, default is "10m0s", optional
+        How often the resource is synced, defaults to 10m0s if not set
     rules : [GrafanaIntegreatlyOrgV1beta1GrafanaAlertRuleGroupSpecRulesItems0], default is Undefined, required
         rules
+    suspend : bool, default is Undefined, optional
+        Suspend pauses synchronizing attempts and tells the operator to ignore changes
     """
 
 
-    allowCrossNamespaceImport?: bool
+    allowCrossNamespaceImport?: bool = False
+
+    editable?: bool
 
     folderRef?: str
 
@@ -71,14 +79,23 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaAlertRuleGroupSpec:
 
     interval: str
 
-    resyncPeriod?: str = "10m"
+    name?: str
+
+    resyncPeriod?: str = "10m0s"
 
     rules: [GrafanaIntegreatlyOrgV1beta1GrafanaAlertRuleGroupSpecRulesItems0]
 
+    suspend?: bool
+
+
+    check:
+        _regex_match(str(resyncPeriod), r"^([0-9]+(\.[0-9]+)?(ns|us|µs|ms|s|m|h))+$") if resyncPeriod
+        len(rules) >= 1
+
 
 schema GrafanaIntegreatlyOrgV1beta1GrafanaAlertRuleGroupSpecInstanceSelector:
-    """
-    selects Grafanas for import
+    r"""
+    Selects Grafana instances for import
 
     Attributes
     ----------
@@ -97,7 +114,7 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaAlertRuleGroupSpecInstanceSelector:
 
 
 schema GrafanaIntegreatlyOrgV1beta1GrafanaAlertRuleGroupSpecInstanceSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
 
@@ -124,7 +141,7 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaAlertRuleGroupSpecInstanceSelectorMatc
 
 
 schema GrafanaIntegreatlyOrgV1beta1GrafanaAlertRuleGroupSpecRulesItems0:
-    """
+    r"""
     AlertRule defines a specific rule to be evaluated. It is based on the upstream model with some k8s specific type mappings
 
     Attributes
@@ -137,20 +154,26 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaAlertRuleGroupSpecRulesItems0:
         data
     execErrState : str, default is Undefined, required
         exec err state
-    $for : str, default is Undefined, required
+    $for : str, default is "0s", required
         for
     isPaused : bool, default is Undefined, optional
         is paused
+    keepFiringFor : str, default is Undefined, optional
+        keep firing for
     labels : {str:str}, default is Undefined, optional
         labels
+    missingSeriesEvalsToResolve : int, default is Undefined, optional
+        The number of missing series evaluations that must occur before the rule is considered to be resolved.
     noDataState : str, default is Undefined, required
         no data state
     notificationSettings : GrafanaIntegreatlyOrgV1beta1GrafanaAlertRuleGroupSpecRulesItems0NotificationSettings, default is Undefined, optional
         notification settings
+    record : GrafanaIntegreatlyOrgV1beta1GrafanaAlertRuleGroupSpecRulesItems0Record, default is Undefined, optional
+        record
     title : str, default is Undefined, required
         title
     uid : str, default is Undefined, required
-        uid
+        UID of the alert rule. Can be any string consisting of alphanumeric characters, - and _ with a maximum length of 40
     """
 
 
@@ -162,15 +185,21 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaAlertRuleGroupSpecRulesItems0:
 
     execErrState: "OK" | "Alerting" | "Error" | "KeepLast"
 
-    $for: str
+    $for: str = "0s"
 
     isPaused?: bool
 
+    keepFiringFor?: str
+
     labels?: {str:str}
+
+    missingSeriesEvalsToResolve?: int
 
     noDataState: "Alerting" | "NoData" | "OK" | "KeepLast"
 
     notificationSettings?: GrafanaIntegreatlyOrgV1beta1GrafanaAlertRuleGroupSpecRulesItems0NotificationSettings
+
+    record?: GrafanaIntegreatlyOrgV1beta1GrafanaAlertRuleGroupSpecRulesItems0Record
 
     title: str
 
@@ -180,11 +209,12 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaAlertRuleGroupSpecRulesItems0:
     check:
         len(title) <= 190
         len(title) >= 1
-        regex_match(str(uid), r"^[a-zA-Z0-9-_]+$")
+        len(uid) <= 40
+        _regex_match(str(uid), r"^[a-zA-Z0-9-_]+$")
 
 
 schema GrafanaIntegreatlyOrgV1beta1GrafanaAlertRuleGroupSpecRulesItems0DataItems0:
-    """
+    r"""
     grafana integreatly org v1beta1 grafana alert rule group spec rules items0 data items0
 
     Attributes
@@ -215,7 +245,7 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaAlertRuleGroupSpecRulesItems0DataItems
 
 
 schema GrafanaIntegreatlyOrgV1beta1GrafanaAlertRuleGroupSpecRulesItems0DataItems0RelativeTimeRange:
-    """
+    r"""
     relative time range
 
     Attributes
@@ -233,7 +263,7 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaAlertRuleGroupSpecRulesItems0DataItems
 
 
 schema GrafanaIntegreatlyOrgV1beta1GrafanaAlertRuleGroupSpecRulesItems0NotificationSettings:
-    """
+    r"""
     grafana integreatly org v1beta1 grafana alert rule group spec rules items0 notification settings
 
     Attributes
@@ -266,39 +296,45 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaAlertRuleGroupSpecRulesItems0Notificat
     repeat_interval?: str
 
 
-schema GrafanaIntegreatlyOrgV1beta1GrafanaAlertRuleGroupStatus:
-    """
-    GrafanaAlertRuleGroupStatus defines the observed state of GrafanaAlertRuleGroup
+schema GrafanaIntegreatlyOrgV1beta1GrafanaAlertRuleGroupSpecRulesItems0Record:
+    r"""
+    grafana integreatly org v1beta1 grafana alert rule group spec rules items0 record
 
     Attributes
     ----------
-    conditions : [GrafanaIntegreatlyOrgV1beta1GrafanaAlertRuleGroupStatusConditionsItems0], default is Undefined, required
-        conditions
+    from : str, default is Undefined, required
+        from
+    metric : str, default is Undefined, required
+        metric
     """
 
 
-    conditions: [GrafanaIntegreatlyOrgV1beta1GrafanaAlertRuleGroupStatusConditionsItems0]
+    from: str
+
+    metric: str
+
+
+schema GrafanaIntegreatlyOrgV1beta1GrafanaAlertRuleGroupStatus:
+    r"""
+    The most recent observed state of a Grafana resource
+
+    Attributes
+    ----------
+    conditions : [GrafanaIntegreatlyOrgV1beta1GrafanaAlertRuleGroupStatusConditionsItems0], default is Undefined, optional
+        Results when synchonizing resource with Grafana instances
+    lastResync : str, default is Undefined, optional
+        Last time the resource was synchronized with Grafana instances
+    """
+
+
+    conditions?: [GrafanaIntegreatlyOrgV1beta1GrafanaAlertRuleGroupStatusConditionsItems0]
+
+    lastResync?: str
 
 
 schema GrafanaIntegreatlyOrgV1beta1GrafanaAlertRuleGroupStatusConditionsItems0:
-    """
+    r"""
     Condition contains details for one aspect of the current state of this API Resource.
-    ---
-    This struct is intended for direct use as an array at the field path .status.conditions.  For example,
-
-
-    	type FooStatus struct{
-    	    // Represents the observations of a foo's current state.
-    	    // Known .status.conditions.type are: "Available", "Progressing", and "Degraded"
-    	    // +patchMergeKey=type
-    	    // +patchStrategy=merge
-    	    // +listType=map
-    	    // +listMapKey=type
-    	    Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`
-
-
-    	    // other fields
-    	}
 
     Attributes
     ----------
@@ -322,10 +358,6 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaAlertRuleGroupStatusConditionsItems0:
         status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
         type of condition in CamelCase or in foo.example.com/CamelCase.
-        ---
-        Many .condition.type values are consistent across resources like Available, but because arbitrary conditions can be
-        useful (see .node.status.conditions), the ability to deconflict is important.
-        The regex it matches is (dns1123SubdomainFmt/)?(qualifiedNameFmt)
     """
 
 
@@ -344,11 +376,11 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaAlertRuleGroupStatusConditionsItems0:
 
     check:
         len(message) <= 32768
-        observedGeneration >= 0
+        observedGeneration >= 0 if observedGeneration not in [None, Undefined]
         len(reason) <= 1024
         len(reason) >= 1
-        regex_match(str(reason), r"^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$")
+        _regex_match(str(reason), r"^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$")
         len($type) <= 316
-        regex_match(str($type), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$")
+        _regex_match(str($type), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$")
 
 

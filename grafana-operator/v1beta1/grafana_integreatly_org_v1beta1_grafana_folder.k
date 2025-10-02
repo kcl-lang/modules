@@ -4,11 +4,11 @@ Editing this file might prove futile when you re-run the KCL auto-gen generate c
 """
 import regex
 import k8s.apimachinery.pkg.apis.meta.v1
-
+_regex_match = regex.match
 
 
 schema GrafanaFolder:
-    """
+    r"""
     GrafanaFolder is the Schema for the grafanafolders API
 
     Attributes
@@ -19,7 +19,7 @@ schema GrafanaFolder:
         Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     metadata : v1.ObjectMeta, default is Undefined, optional
         metadata
-    spec : GrafanaIntegreatlyOrgV1beta1GrafanaFolderSpec, default is Undefined, optional
+    spec : GrafanaIntegreatlyOrgV1beta1GrafanaFolderSpec, default is Undefined, required
         spec
     status : GrafanaIntegreatlyOrgV1beta1GrafanaFolderStatus, default is Undefined, optional
         status
@@ -32,19 +32,19 @@ schema GrafanaFolder:
 
     metadata?: v1.ObjectMeta
 
-    spec?: GrafanaIntegreatlyOrgV1beta1GrafanaFolderSpec
+    spec: GrafanaIntegreatlyOrgV1beta1GrafanaFolderSpec
 
     status?: GrafanaIntegreatlyOrgV1beta1GrafanaFolderStatus
 
 
 schema GrafanaIntegreatlyOrgV1beta1GrafanaFolderSpec:
-    """
+    r"""
     GrafanaFolderSpec defines the desired state of GrafanaFolder
 
     Attributes
     ----------
     allowCrossNamespaceImport : bool, default is Undefined, optional
-        allow to import this resources from an operator in a different namespace
+        Allow the Operator to match this resource with Grafanas outside the current namespace
     instanceSelector : GrafanaIntegreatlyOrgV1beta1GrafanaFolderSpecInstanceSelector, default is Undefined, required
         instance selector
     parentFolderRef : str, default is Undefined, optional
@@ -52,15 +52,19 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaFolderSpec:
     parentFolderUID : str, default is Undefined, optional
         UID of the folder in which the current folder should be created
     permissions : str, default is Undefined, optional
-        raw json with folder permissions
-    resyncPeriod : str, default is "5m", optional
-        how often the folder is synced, defaults to 5m if not set
+        Raw json with folder permissions, potentially exported from Grafana
+    resyncPeriod : str, default is "10m0s", optional
+        How often the resource is synced, defaults to 10m0s if not set
+    suspend : bool, default is Undefined, optional
+        Suspend pauses synchronizing attempts and tells the operator to ignore changes
     title : str, default is Undefined, optional
-        title
+        Display name of the folder in Grafana
+    uid : str, default is Undefined, optional
+        Manually specify the UID the Folder is created with. Can be any string consisting of alphanumeric characters, - and _ with a maximum length of 40
     """
 
 
-    allowCrossNamespaceImport?: bool
+    allowCrossNamespaceImport?: bool = False
 
     instanceSelector: GrafanaIntegreatlyOrgV1beta1GrafanaFolderSpecInstanceSelector
 
@@ -70,14 +74,24 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaFolderSpec:
 
     permissions?: str
 
-    resyncPeriod?: str = "5m"
+    resyncPeriod?: str = "10m0s"
+
+    suspend?: bool
 
     title?: str
 
+    uid?: str
+
+
+    check:
+        _regex_match(str(resyncPeriod), r"^([0-9]+(\.[0-9]+)?(ns|us|µs|ms|s|m|h))+$") if resyncPeriod
+        len(uid) <= 40 if uid
+        _regex_match(str(uid), r"^[a-zA-Z0-9-_]+$") if uid
+
 
 schema GrafanaIntegreatlyOrgV1beta1GrafanaFolderSpecInstanceSelector:
-    """
-    selects Grafanas for import
+    r"""
+    Selects Grafana instances for import
 
     Attributes
     ----------
@@ -96,7 +110,7 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaFolderSpecInstanceSelector:
 
 
 schema GrafanaIntegreatlyOrgV1beta1GrafanaFolderSpecInstanceSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
 
@@ -123,7 +137,7 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaFolderSpecInstanceSelectorMatchExpress
 
 
 schema GrafanaIntegreatlyOrgV1beta1GrafanaFolderStatus:
-    """
+    r"""
     GrafanaFolderStatus defines the observed state of GrafanaFolder
 
     Attributes
@@ -131,12 +145,11 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaFolderStatus:
     NoMatchingInstances : bool, default is Undefined, optional
         The folder instanceSelector can't find matching grafana instances
     conditions : [GrafanaIntegreatlyOrgV1beta1GrafanaFolderStatusConditionsItems0], default is Undefined, optional
-        conditions
+        Results when synchonizing resource with Grafana instances
     hash : str, default is Undefined, optional
-        INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
-        Important: Run "make" to regenerate code after modifying this file
+        hash
     lastResync : str, default is Undefined, optional
-        Last time the folder was resynced
+        Last time the resource was synchronized with Grafana instances
     """
 
 
@@ -150,24 +163,8 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaFolderStatus:
 
 
 schema GrafanaIntegreatlyOrgV1beta1GrafanaFolderStatusConditionsItems0:
-    """
+    r"""
     Condition contains details for one aspect of the current state of this API Resource.
-    ---
-    This struct is intended for direct use as an array at the field path .status.conditions.  For example,
-
-
-    	type FooStatus struct{
-    	    // Represents the observations of a foo's current state.
-    	    // Known .status.conditions.type are: "Available", "Progressing", and "Degraded"
-    	    // +patchMergeKey=type
-    	    // +patchStrategy=merge
-    	    // +listType=map
-    	    // +listMapKey=type
-    	    Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`
-
-
-    	    // other fields
-    	}
 
     Attributes
     ----------
@@ -191,10 +188,6 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaFolderStatusConditionsItems0:
         status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
         type of condition in CamelCase or in foo.example.com/CamelCase.
-        ---
-        Many .condition.type values are consistent across resources like Available, but because arbitrary conditions can be
-        useful (see .node.status.conditions), the ability to deconflict is important.
-        The regex it matches is (dns1123SubdomainFmt/)?(qualifiedNameFmt)
     """
 
 
@@ -213,11 +206,11 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaFolderStatusConditionsItems0:
 
     check:
         len(message) <= 32768
-        observedGeneration >= 0
+        observedGeneration >= 0 if observedGeneration not in [None, Undefined]
         len(reason) <= 1024
         len(reason) >= 1
-        regex_match(str(reason), r"^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$")
+        _regex_match(str(reason), r"^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$")
         len($type) <= 316
-        regex_match(str($type), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$")
+        _regex_match(str($type), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$")
 
 

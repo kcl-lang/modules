@@ -7,101 +7,85 @@ import k8s.apimachinery.pkg.apis.meta.v1
 _regex_match = regex.match
 
 
-schema GrafanaContactPoint:
+schema GrafanaNotificationTemplate:
     r"""
-    GrafanaContactPoint is the Schema for the grafanacontactpoints API
+    GrafanaNotificationTemplate is the Schema for the GrafanaNotificationTemplate API
 
     Attributes
     ----------
     apiVersion : str, default is "grafana.integreatly.org/v1beta1", required
         APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-    kind : str, default is "GrafanaContactPoint", required
+    kind : str, default is "GrafanaNotificationTemplate", required
         Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     metadata : v1.ObjectMeta, default is Undefined, optional
         metadata
-    spec : GrafanaIntegreatlyOrgV1beta1GrafanaContactPointSpec, default is Undefined, required
+    spec : GrafanaIntegreatlyOrgV1beta1GrafanaNotificationTemplateSpec, default is Undefined, required
         spec
-    status : GrafanaIntegreatlyOrgV1beta1GrafanaContactPointStatus, default is Undefined, optional
+    status : GrafanaIntegreatlyOrgV1beta1GrafanaNotificationTemplateStatus, default is Undefined, optional
         status
     """
 
 
     apiVersion: "grafana.integreatly.org/v1beta1" = "grafana.integreatly.org/v1beta1"
 
-    kind: "GrafanaContactPoint" = "GrafanaContactPoint"
+    kind: "GrafanaNotificationTemplate" = "GrafanaNotificationTemplate"
 
     metadata?: v1.ObjectMeta
 
-    spec: GrafanaIntegreatlyOrgV1beta1GrafanaContactPointSpec
+    spec: GrafanaIntegreatlyOrgV1beta1GrafanaNotificationTemplateSpec
 
-    status?: GrafanaIntegreatlyOrgV1beta1GrafanaContactPointStatus
+    status?: GrafanaIntegreatlyOrgV1beta1GrafanaNotificationTemplateStatus
 
 
-schema GrafanaIntegreatlyOrgV1beta1GrafanaContactPointSpec:
+schema GrafanaIntegreatlyOrgV1beta1GrafanaNotificationTemplateSpec:
     r"""
-    GrafanaContactPointSpec defines the desired state of GrafanaContactPoint
+    GrafanaNotificationTemplateSpec defines the desired state of GrafanaNotificationTemplate
 
     Attributes
     ----------
     allowCrossNamespaceImport : bool, default is Undefined, optional
         Allow the Operator to match this resource with Grafanas outside the current namespace
-    disableResolveMessage : bool, default is Undefined, optional
-        disable resolve message
-    instanceSelector : GrafanaIntegreatlyOrgV1beta1GrafanaContactPointSpecInstanceSelector, default is Undefined, required
+    editable : bool, default is Undefined, optional
+        Whether to enable or disable editing of the notification template in Grafana UI
+    instanceSelector : GrafanaIntegreatlyOrgV1beta1GrafanaNotificationTemplateSpecInstanceSelector, default is Undefined, required
         instance selector
     name : str, default is Undefined, required
-        name
+        Template name
     resyncPeriod : str, default is "10m0s", optional
         How often the resource is synced, defaults to 10m0s if not set
-    settings : any, default is Undefined, required
-        settings
     suspend : bool, default is Undefined, optional
         Suspend pauses synchronizing attempts and tells the operator to ignore changes
-    $type : str, default is Undefined, required
-        type
-    uid : str, default is Undefined, optional
-        Manually specify the UID the Contact Point is created with. Can be any string consisting of alphanumeric characters, - and _ with a maximum length of 40
-    valuesFrom : [GrafanaIntegreatlyOrgV1beta1GrafanaContactPointSpecValuesFromItems0], default is Undefined, optional
-        values from
+    template : str, default is Undefined, optional
+        Template content
     """
 
 
     allowCrossNamespaceImport?: bool = False
 
-    disableResolveMessage?: bool
+    editable?: bool
 
-    instanceSelector: GrafanaIntegreatlyOrgV1beta1GrafanaContactPointSpecInstanceSelector
+    instanceSelector: GrafanaIntegreatlyOrgV1beta1GrafanaNotificationTemplateSpecInstanceSelector
 
     name: str
 
     resyncPeriod?: str = "10m0s"
 
-    settings: any
-
     suspend?: bool
 
-    $type: str
-
-    uid?: str
-
-    valuesFrom?: [GrafanaIntegreatlyOrgV1beta1GrafanaContactPointSpecValuesFromItems0]
+    template?: str
 
 
     check:
         _regex_match(str(resyncPeriod), r"^([0-9]+(\.[0-9]+)?(ns|us|µs|ms|s|m|h))+$") if resyncPeriod
-        len($type) >= 1
-        len(uid) <= 40 if uid
-        _regex_match(str(uid), r"^[a-zA-Z0-9-_]+$") if uid
-        len(valuesFrom) <= 99 if valuesFrom
 
 
-schema GrafanaIntegreatlyOrgV1beta1GrafanaContactPointSpecInstanceSelector:
+schema GrafanaIntegreatlyOrgV1beta1GrafanaNotificationTemplateSpecInstanceSelector:
     r"""
     Selects Grafana instances for import
 
     Attributes
     ----------
-    matchExpressions : [GrafanaIntegreatlyOrgV1beta1GrafanaContactPointSpecInstanceSelectorMatchExpressionsItems0], default is Undefined, optional
+    matchExpressions : [GrafanaIntegreatlyOrgV1beta1GrafanaNotificationTemplateSpecInstanceSelectorMatchExpressionsItems0], default is Undefined, optional
         matchExpressions is a list of label selector requirements. The requirements are ANDed.
     matchLabels : {str:str}, default is Undefined, optional
         matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels
@@ -110,12 +94,12 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaContactPointSpecInstanceSelector:
     """
 
 
-    matchExpressions?: [GrafanaIntegreatlyOrgV1beta1GrafanaContactPointSpecInstanceSelectorMatchExpressionsItems0]
+    matchExpressions?: [GrafanaIntegreatlyOrgV1beta1GrafanaNotificationTemplateSpecInstanceSelectorMatchExpressionsItems0]
 
     matchLabels?: {str:str}
 
 
-schema GrafanaIntegreatlyOrgV1beta1GrafanaContactPointSpecInstanceSelectorMatchExpressionsItems0:
+schema GrafanaIntegreatlyOrgV1beta1GrafanaNotificationTemplateSpecInstanceSelectorMatchExpressionsItems0:
     r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
@@ -142,113 +126,25 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaContactPointSpecInstanceSelectorMatchE
     values?: [str]
 
 
-schema GrafanaIntegreatlyOrgV1beta1GrafanaContactPointSpecValuesFromItems0:
-    r"""
-    grafana integreatly org v1beta1 grafana contact point spec values from items0
-
-    Attributes
-    ----------
-    targetPath : str, default is Undefined, required
-        target path
-    valueFrom : GrafanaIntegreatlyOrgV1beta1GrafanaContactPointSpecValuesFromItems0ValueFrom, default is Undefined, required
-        value from
-    """
-
-
-    targetPath: str
-
-    valueFrom: GrafanaIntegreatlyOrgV1beta1GrafanaContactPointSpecValuesFromItems0ValueFrom
-
-
-schema GrafanaIntegreatlyOrgV1beta1GrafanaContactPointSpecValuesFromItems0ValueFrom:
-    r"""
-    grafana integreatly org v1beta1 grafana contact point spec values from items0 value from
-
-    Attributes
-    ----------
-    configMapKeyRef : GrafanaIntegreatlyOrgV1beta1GrafanaContactPointSpecValuesFromItems0ValueFromConfigMapKeyRef, default is Undefined, optional
-        config map key ref
-    secretKeyRef : GrafanaIntegreatlyOrgV1beta1GrafanaContactPointSpecValuesFromItems0ValueFromSecretKeyRef, default is Undefined, optional
-        secret key ref
-    """
-
-
-    configMapKeyRef?: GrafanaIntegreatlyOrgV1beta1GrafanaContactPointSpecValuesFromItems0ValueFromConfigMapKeyRef
-
-    secretKeyRef?: GrafanaIntegreatlyOrgV1beta1GrafanaContactPointSpecValuesFromItems0ValueFromSecretKeyRef
-
-
-schema GrafanaIntegreatlyOrgV1beta1GrafanaContactPointSpecValuesFromItems0ValueFromConfigMapKeyRef:
-    r"""
-    Selects a key of a ConfigMap.
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        The key to select.
-    name : str, default is Undefined, optional
-        Name of the referent.
-        This field is effectively required, but due to backwards compatibility is
-        allowed to be empty. Instances of this type with an empty value here are
-        almost certainly wrong.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-    optional : bool, default is Undefined, optional
-        Specify whether the ConfigMap or its key must be defined
-    """
-
-
-    key: str
-
-    name?: str = ""
-
-    optional?: bool
-
-
-schema GrafanaIntegreatlyOrgV1beta1GrafanaContactPointSpecValuesFromItems0ValueFromSecretKeyRef:
-    r"""
-    Selects a key of a Secret.
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
-    name : str, default is Undefined, optional
-        Name of the referent.
-        This field is effectively required, but due to backwards compatibility is
-        allowed to be empty. Instances of this type with an empty value here are
-        almost certainly wrong.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-    optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
-    """
-
-
-    key: str
-
-    name?: str = ""
-
-    optional?: bool
-
-
-schema GrafanaIntegreatlyOrgV1beta1GrafanaContactPointStatus:
+schema GrafanaIntegreatlyOrgV1beta1GrafanaNotificationTemplateStatus:
     r"""
     The most recent observed state of a Grafana resource
 
     Attributes
     ----------
-    conditions : [GrafanaIntegreatlyOrgV1beta1GrafanaContactPointStatusConditionsItems0], default is Undefined, optional
+    conditions : [GrafanaIntegreatlyOrgV1beta1GrafanaNotificationTemplateStatusConditionsItems0], default is Undefined, optional
         Results when synchonizing resource with Grafana instances
     lastResync : str, default is Undefined, optional
         Last time the resource was synchronized with Grafana instances
     """
 
 
-    conditions?: [GrafanaIntegreatlyOrgV1beta1GrafanaContactPointStatusConditionsItems0]
+    conditions?: [GrafanaIntegreatlyOrgV1beta1GrafanaNotificationTemplateStatusConditionsItems0]
 
     lastResync?: str
 
 
-schema GrafanaIntegreatlyOrgV1beta1GrafanaContactPointStatusConditionsItems0:
+schema GrafanaIntegreatlyOrgV1beta1GrafanaNotificationTemplateStatusConditionsItems0:
     r"""
     Condition contains details for one aspect of the current state of this API Resource.
 
