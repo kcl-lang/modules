@@ -595,6 +595,17 @@ schema CloudGoogleComV1ComputeClassSpecPrioritiesItems0Tpu:
     $type?: str
 
 
+schema CloudGoogleComV1ComputeClassSpecPriorityDefaultsLocation:
+    r"""
+    Location defines the location of the compute class.
+
+    Attributes
+    ----------
+    location: [str], A list of Google Cloud zones to use. In order for a node to be used, it must belong to a node pool that spans exactly the same set of zones.
+    """
+
+    location?: [str]
+
 schema CloudGoogleComV1ComputeClassSpecPriorityDefaults:
     r"""
     PriorityDefaults define the default rules for all priorities if the rule doesn't exist in some priority.
@@ -604,10 +615,14 @@ schema CloudGoogleComV1ComputeClassSpecPriorityDefaults:
     ----------
     nodeSystemConfig : CloudGoogleComV1ComputeClassSpecPriorityDefaultsNodeSystemConfig, default is Undefined, optional
         node system config
+    
+    location: CloudGoogleComV1ComputeClassSpecPriorityDefaultsLocation, default is Undefined, optional
     """
 
 
     nodeSystemConfig?: CloudGoogleComV1ComputeClassSpecPriorityDefaultsNodeSystemConfig
+
+    location?: CloudGoogleComV1ComputeClassSpecPriorityDefaultsLocation
 
 
 schema CloudGoogleComV1ComputeClassSpecPriorityDefaultsNodeSystemConfig:
