@@ -239,6 +239,8 @@ schema ArgoprojIoV1alpha1ApplicationOperationSyncSource:
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationOperationSyncSourceKustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        Name is used to refer to a source and is displayed in the UI. It is used in multi-source Applications.
     path : str, default is Undefined, optional
         Path is a directory path within the Git repository, and is only valid for applications sourced from Git.
     plugin : ArgoprojIoV1alpha1ApplicationOperationSyncSourcePlugin, default is Undefined, optional
@@ -261,6 +263,8 @@ schema ArgoprojIoV1alpha1ApplicationOperationSyncSource:
     helm?: ArgoprojIoV1alpha1ApplicationOperationSyncSourceHelm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationOperationSyncSourceKustomize
+
+    name?: str
 
     path?: str
 
@@ -391,6 +395,10 @@ schema ArgoprojIoV1alpha1ApplicationOperationSyncSourceHelm:
         ReleaseName is the Helm release name to use. If omitted it will use the application name
     skipCrds : bool, default is Undefined, optional
         SkipCrds skips custom resource definition installation step (Helm's --skip-crds)
+    skipSchemaValidation : bool, default is Undefined, optional
+        SkipSchemaValidation skips JSON schema validation (Helm's --skip-schema-validation)
+    skipTests : bool, default is Undefined, optional
+        SkipTests skips test manifest installation step (Helm's --skip-tests).
     valueFiles : [str], default is Undefined, optional
         ValuesFiles is a list of Helm value files to use when generating a template
     values : str, default is Undefined, optional
@@ -419,6 +427,10 @@ schema ArgoprojIoV1alpha1ApplicationOperationSyncSourceHelm:
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -490,11 +502,15 @@ schema ArgoprojIoV1alpha1ApplicationOperationSyncSourceKustomize:
         ForceCommonAnnotations specifies whether to force applying common annotations to resources for Kustomize apps
     forceCommonLabels : bool, default is Undefined, optional
         ForceCommonLabels specifies whether to force applying common labels to resources for Kustomize apps
+    ignoreMissingComponents : bool, default is Undefined, optional
+        IgnoreMissingComponents prevents kustomize from failing when components do not exist locally by not appending them to kustomization file
     images : [str], default is Undefined, optional
         Images is a list of Kustomize image override specifications
     kubeVersion : str, default is Undefined, optional
         KubeVersion specifies the Kubernetes API version to pass to Helm when templating manifests. By default, Argo CD
         uses the Kubernetes version of the target cluster.
+    labelIncludeTemplates : bool, default is Undefined, optional
+        LabelIncludeTemplates specifies whether to apply common labels to resource templates or not
     labelWithoutSelector : bool, default is Undefined, optional
         LabelWithoutSelector specifies whether to apply common labels to resource selectors or not
     namePrefix : str, default is Undefined, optional
@@ -526,9 +542,13 @@ schema ArgoprojIoV1alpha1ApplicationOperationSyncSourceKustomize:
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -707,6 +727,8 @@ schema ArgoprojIoV1alpha1ApplicationOperationSyncSourcesItems0:
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationOperationSyncSourcesItems0Kustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        Name is used to refer to a source and is displayed in the UI. It is used in multi-source Applications.
     path : str, default is Undefined, optional
         Path is a directory path within the Git repository, and is only valid for applications sourced from Git.
     plugin : ArgoprojIoV1alpha1ApplicationOperationSyncSourcesItems0Plugin, default is Undefined, optional
@@ -729,6 +751,8 @@ schema ArgoprojIoV1alpha1ApplicationOperationSyncSourcesItems0:
     helm?: ArgoprojIoV1alpha1ApplicationOperationSyncSourcesItems0Helm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationOperationSyncSourcesItems0Kustomize
+
+    name?: str
 
     path?: str
 
@@ -859,6 +883,10 @@ schema ArgoprojIoV1alpha1ApplicationOperationSyncSourcesItems0Helm:
         ReleaseName is the Helm release name to use. If omitted it will use the application name
     skipCrds : bool, default is Undefined, optional
         SkipCrds skips custom resource definition installation step (Helm's --skip-crds)
+    skipSchemaValidation : bool, default is Undefined, optional
+        SkipSchemaValidation skips JSON schema validation (Helm's --skip-schema-validation)
+    skipTests : bool, default is Undefined, optional
+        SkipTests skips test manifest installation step (Helm's --skip-tests).
     valueFiles : [str], default is Undefined, optional
         ValuesFiles is a list of Helm value files to use when generating a template
     values : str, default is Undefined, optional
@@ -887,6 +915,10 @@ schema ArgoprojIoV1alpha1ApplicationOperationSyncSourcesItems0Helm:
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -958,11 +990,15 @@ schema ArgoprojIoV1alpha1ApplicationOperationSyncSourcesItems0Kustomize:
         ForceCommonAnnotations specifies whether to force applying common annotations to resources for Kustomize apps
     forceCommonLabels : bool, default is Undefined, optional
         ForceCommonLabels specifies whether to force applying common labels to resources for Kustomize apps
+    ignoreMissingComponents : bool, default is Undefined, optional
+        IgnoreMissingComponents prevents kustomize from failing when components do not exist locally by not appending them to kustomization file
     images : [str], default is Undefined, optional
         Images is a list of Kustomize image override specifications
     kubeVersion : str, default is Undefined, optional
         KubeVersion specifies the Kubernetes API version to pass to Helm when templating manifests. By default, Argo CD
         uses the Kubernetes version of the target cluster.
+    labelIncludeTemplates : bool, default is Undefined, optional
+        LabelIncludeTemplates specifies whether to apply common labels to resource templates or not
     labelWithoutSelector : bool, default is Undefined, optional
         LabelWithoutSelector specifies whether to apply common labels to resource selectors or not
     namePrefix : str, default is Undefined, optional
@@ -994,9 +1030,13 @@ schema ArgoprojIoV1alpha1ApplicationOperationSyncSourcesItems0Kustomize:
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -1234,6 +1274,8 @@ schema ArgoprojIoV1alpha1ApplicationSpec:
         Default is 10.
     source : ArgoprojIoV1alpha1ApplicationSpecSource, default is Undefined, optional
         source
+    sourceHydrator : ArgoprojIoV1alpha1ApplicationSpecSourceHydrator, default is Undefined, optional
+        source hydrator
     sources : [ArgoprojIoV1alpha1ApplicationSpecSourcesItems0], default is Undefined, optional
         Sources is a reference to the location of the application's manifests or chart
     syncPolicy : ArgoprojIoV1alpha1ApplicationSpecSyncPolicy, default is Undefined, optional
@@ -1252,6 +1294,8 @@ schema ArgoprojIoV1alpha1ApplicationSpec:
     revisionHistoryLimit?: int
 
     source?: ArgoprojIoV1alpha1ApplicationSpecSource
+
+    sourceHydrator?: ArgoprojIoV1alpha1ApplicationSpecSourceHydrator
 
     sources?: [ArgoprojIoV1alpha1ApplicationSpecSourcesItems0]
 
@@ -1352,6 +1396,8 @@ schema ArgoprojIoV1alpha1ApplicationSpecSource:
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSpecSourceKustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        Name is used to refer to a source and is displayed in the UI. It is used in multi-source Applications.
     path : str, default is Undefined, optional
         Path is a directory path within the Git repository, and is only valid for applications sourced from Git.
     plugin : ArgoprojIoV1alpha1ApplicationSpecSourcePlugin, default is Undefined, optional
@@ -1374,6 +1420,8 @@ schema ArgoprojIoV1alpha1ApplicationSpecSource:
     helm?: ArgoprojIoV1alpha1ApplicationSpecSourceHelm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSpecSourceKustomize
+
+    name?: str
 
     path?: str
 
@@ -1504,6 +1552,10 @@ schema ArgoprojIoV1alpha1ApplicationSpecSourceHelm:
         ReleaseName is the Helm release name to use. If omitted it will use the application name
     skipCrds : bool, default is Undefined, optional
         SkipCrds skips custom resource definition installation step (Helm's --skip-crds)
+    skipSchemaValidation : bool, default is Undefined, optional
+        SkipSchemaValidation skips JSON schema validation (Helm's --skip-schema-validation)
+    skipTests : bool, default is Undefined, optional
+        SkipTests skips test manifest installation step (Helm's --skip-tests).
     valueFiles : [str], default is Undefined, optional
         ValuesFiles is a list of Helm value files to use when generating a template
     values : str, default is Undefined, optional
@@ -1532,6 +1584,10 @@ schema ArgoprojIoV1alpha1ApplicationSpecSourceHelm:
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -1582,6 +1638,84 @@ schema ArgoprojIoV1alpha1ApplicationSpecSourceHelmParametersItems0:
     value?: str
 
 
+schema ArgoprojIoV1alpha1ApplicationSpecSourceHydrator:
+    r"""
+    SourceHydrator provides a way to push hydrated manifests back to git before syncing them to the cluster.
+
+    Attributes
+    ----------
+    drySource : ArgoprojIoV1alpha1ApplicationSpecSourceHydratorDrySource, default is Undefined, required
+        dry source
+    hydrateTo : ArgoprojIoV1alpha1ApplicationSpecSourceHydratorHydrateTo, default is Undefined, optional
+        hydrate to
+    syncSource : ArgoprojIoV1alpha1ApplicationSpecSourceHydratorSyncSource, default is Undefined, required
+        sync source
+    """
+
+
+    drySource: ArgoprojIoV1alpha1ApplicationSpecSourceHydratorDrySource
+
+    hydrateTo?: ArgoprojIoV1alpha1ApplicationSpecSourceHydratorHydrateTo
+
+    syncSource: ArgoprojIoV1alpha1ApplicationSpecSourceHydratorSyncSource
+
+
+schema ArgoprojIoV1alpha1ApplicationSpecSourceHydratorDrySource:
+    r"""
+    DrySource specifies where the dry "don't repeat yourself" manifest source lives.
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        Path is a directory path within the Git repository where the manifests are located
+    repoURL : str, default is Undefined, required
+        RepoURL is the URL to the git repository that contains the application manifests
+    targetRevision : str, default is Undefined, required
+        TargetRevision defines the revision of the source to hydrate
+    """
+
+
+    path: str
+
+    repoURL: str
+
+    targetRevision: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSpecSourceHydratorHydrateTo:
+    r"""
+    HydrateTo specifies an optional "staging" location to push hydrated manifests to. An external system would then
+    have to move manifests to the SyncSource, e.g. by pull request.
+
+    Attributes
+    ----------
+    targetBranch : str, default is Undefined, required
+        TargetBranch is the branch to which hydrated manifests should be committed
+    """
+
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSpecSourceHydratorSyncSource:
+    r"""
+    SyncSource specifies where to sync hydrated manifests from.
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        Path is a directory path within the git repository where hydrated manifests should be committed to and synced
+        from. If hydrateTo is set, this is just the path from which hydrated manifests will be synced.
+    targetBranch : str, default is Undefined, required
+        TargetBranch is the branch to which hydrated manifests should be committed
+    """
+
+
+    path: str
+
+    targetBranch: str
+
+
 schema ArgoprojIoV1alpha1ApplicationSpecSourceKustomize:
     r"""
     Kustomize holds kustomize specific options
@@ -1603,11 +1737,15 @@ schema ArgoprojIoV1alpha1ApplicationSpecSourceKustomize:
         ForceCommonAnnotations specifies whether to force applying common annotations to resources for Kustomize apps
     forceCommonLabels : bool, default is Undefined, optional
         ForceCommonLabels specifies whether to force applying common labels to resources for Kustomize apps
+    ignoreMissingComponents : bool, default is Undefined, optional
+        IgnoreMissingComponents prevents kustomize from failing when components do not exist locally by not appending them to kustomization file
     images : [str], default is Undefined, optional
         Images is a list of Kustomize image override specifications
     kubeVersion : str, default is Undefined, optional
         KubeVersion specifies the Kubernetes API version to pass to Helm when templating manifests. By default, Argo CD
         uses the Kubernetes version of the target cluster.
+    labelIncludeTemplates : bool, default is Undefined, optional
+        LabelIncludeTemplates specifies whether to apply common labels to resource templates or not
     labelWithoutSelector : bool, default is Undefined, optional
         LabelWithoutSelector specifies whether to apply common labels to resource selectors or not
     namePrefix : str, default is Undefined, optional
@@ -1639,9 +1777,13 @@ schema ArgoprojIoV1alpha1ApplicationSpecSourceKustomize:
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -1820,6 +1962,8 @@ schema ArgoprojIoV1alpha1ApplicationSpecSourcesItems0:
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSpecSourcesItems0Kustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        Name is used to refer to a source and is displayed in the UI. It is used in multi-source Applications.
     path : str, default is Undefined, optional
         Path is a directory path within the Git repository, and is only valid for applications sourced from Git.
     plugin : ArgoprojIoV1alpha1ApplicationSpecSourcesItems0Plugin, default is Undefined, optional
@@ -1842,6 +1986,8 @@ schema ArgoprojIoV1alpha1ApplicationSpecSourcesItems0:
     helm?: ArgoprojIoV1alpha1ApplicationSpecSourcesItems0Helm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSpecSourcesItems0Kustomize
+
+    name?: str
 
     path?: str
 
@@ -1972,6 +2118,10 @@ schema ArgoprojIoV1alpha1ApplicationSpecSourcesItems0Helm:
         ReleaseName is the Helm release name to use. If omitted it will use the application name
     skipCrds : bool, default is Undefined, optional
         SkipCrds skips custom resource definition installation step (Helm's --skip-crds)
+    skipSchemaValidation : bool, default is Undefined, optional
+        SkipSchemaValidation skips JSON schema validation (Helm's --skip-schema-validation)
+    skipTests : bool, default is Undefined, optional
+        SkipTests skips test manifest installation step (Helm's --skip-tests).
     valueFiles : [str], default is Undefined, optional
         ValuesFiles is a list of Helm value files to use when generating a template
     values : str, default is Undefined, optional
@@ -2000,6 +2150,10 @@ schema ArgoprojIoV1alpha1ApplicationSpecSourcesItems0Helm:
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -2071,11 +2225,15 @@ schema ArgoprojIoV1alpha1ApplicationSpecSourcesItems0Kustomize:
         ForceCommonAnnotations specifies whether to force applying common annotations to resources for Kustomize apps
     forceCommonLabels : bool, default is Undefined, optional
         ForceCommonLabels specifies whether to force applying common labels to resources for Kustomize apps
+    ignoreMissingComponents : bool, default is Undefined, optional
+        IgnoreMissingComponents prevents kustomize from failing when components do not exist locally by not appending them to kustomization file
     images : [str], default is Undefined, optional
         Images is a list of Kustomize image override specifications
     kubeVersion : str, default is Undefined, optional
         KubeVersion specifies the Kubernetes API version to pass to Helm when templating manifests. By default, Argo CD
         uses the Kubernetes version of the target cluster.
+    labelIncludeTemplates : bool, default is Undefined, optional
+        LabelIncludeTemplates specifies whether to apply common labels to resource templates or not
     labelWithoutSelector : bool, default is Undefined, optional
         LabelWithoutSelector specifies whether to apply common labels to resource selectors or not
     namePrefix : str, default is Undefined, optional
@@ -2107,9 +2265,13 @@ schema ArgoprojIoV1alpha1ApplicationSpecSourcesItems0Kustomize:
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -2308,6 +2470,8 @@ schema ArgoprojIoV1alpha1ApplicationSpecSyncPolicyAutomated:
     ----------
     allowEmpty : bool, default is Undefined, optional
         AllowEmpty allows apps have zero live resources (default: false)
+    enabled : bool, default is Undefined, optional
+        Enable allows apps to explicitly control automated sync
     prune : bool, default is Undefined, optional
         Prune specifies whether to delete resources from the cluster that are not found in the sources anymore as part of automated sync (default: false)
     selfHeal : bool, default is Undefined, optional
@@ -2316,6 +2480,8 @@ schema ArgoprojIoV1alpha1ApplicationSpecSyncPolicyAutomated:
 
 
     allowEmpty?: bool
+
+    enabled?: bool
 
     prune?: bool
 
@@ -2405,6 +2571,8 @@ schema ArgoprojIoV1alpha1ApplicationStatus:
         ResourceHealthSource indicates where the resource health status is stored: inline if not set or appTree
     resources : [ArgoprojIoV1alpha1ApplicationStatusResourcesItems0], default is Undefined, optional
         Resources is a list of Kubernetes resources managed by this application
+    sourceHydrator : ArgoprojIoV1alpha1ApplicationStatusSourceHydrator, default is Undefined, optional
+        source hydrator
     sourceType : str, default is Undefined, optional
         SourceType specifies the type of this application
     sourceTypes : [str], default is Undefined, optional
@@ -2433,6 +2601,8 @@ schema ArgoprojIoV1alpha1ApplicationStatus:
     resourceHealthSource?: str
 
     resources?: [ArgoprojIoV1alpha1ApplicationStatusResourcesItems0]
+
+    sourceHydrator?: ArgoprojIoV1alpha1ApplicationStatusSourceHydrator
 
     sourceType?: str
 
@@ -2471,12 +2641,18 @@ schema ArgoprojIoV1alpha1ApplicationStatusHealth:
 
     Attributes
     ----------
+    lastTransitionTime : str, default is Undefined, optional
+        LastTransitionTime is the time the HealthStatus was set or updated
     message : str, default is Undefined, optional
         Message is a human-readable informational message describing the health status
+
+        Deprecated: this field is not used and will be removed in a future release.
     status : str, default is Undefined, optional
-        Status holds the status code of the application or resource
+        Status holds the status code of the application
     """
 
+
+    lastTransitionTime?: str
 
     message?: str
 
@@ -2557,6 +2733,8 @@ schema ArgoprojIoV1alpha1ApplicationStatusHistoryItems0Source:
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationStatusHistoryItems0SourceKustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        Name is used to refer to a source and is displayed in the UI. It is used in multi-source Applications.
     path : str, default is Undefined, optional
         Path is a directory path within the Git repository, and is only valid for applications sourced from Git.
     plugin : ArgoprojIoV1alpha1ApplicationStatusHistoryItems0SourcePlugin, default is Undefined, optional
@@ -2579,6 +2757,8 @@ schema ArgoprojIoV1alpha1ApplicationStatusHistoryItems0Source:
     helm?: ArgoprojIoV1alpha1ApplicationStatusHistoryItems0SourceHelm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationStatusHistoryItems0SourceKustomize
+
+    name?: str
 
     path?: str
 
@@ -2709,6 +2889,10 @@ schema ArgoprojIoV1alpha1ApplicationStatusHistoryItems0SourceHelm:
         ReleaseName is the Helm release name to use. If omitted it will use the application name
     skipCrds : bool, default is Undefined, optional
         SkipCrds skips custom resource definition installation step (Helm's --skip-crds)
+    skipSchemaValidation : bool, default is Undefined, optional
+        SkipSchemaValidation skips JSON schema validation (Helm's --skip-schema-validation)
+    skipTests : bool, default is Undefined, optional
+        SkipTests skips test manifest installation step (Helm's --skip-tests).
     valueFiles : [str], default is Undefined, optional
         ValuesFiles is a list of Helm value files to use when generating a template
     values : str, default is Undefined, optional
@@ -2737,6 +2921,10 @@ schema ArgoprojIoV1alpha1ApplicationStatusHistoryItems0SourceHelm:
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -2808,11 +2996,15 @@ schema ArgoprojIoV1alpha1ApplicationStatusHistoryItems0SourceKustomize:
         ForceCommonAnnotations specifies whether to force applying common annotations to resources for Kustomize apps
     forceCommonLabels : bool, default is Undefined, optional
         ForceCommonLabels specifies whether to force applying common labels to resources for Kustomize apps
+    ignoreMissingComponents : bool, default is Undefined, optional
+        IgnoreMissingComponents prevents kustomize from failing when components do not exist locally by not appending them to kustomization file
     images : [str], default is Undefined, optional
         Images is a list of Kustomize image override specifications
     kubeVersion : str, default is Undefined, optional
         KubeVersion specifies the Kubernetes API version to pass to Helm when templating manifests. By default, Argo CD
         uses the Kubernetes version of the target cluster.
+    labelIncludeTemplates : bool, default is Undefined, optional
+        LabelIncludeTemplates specifies whether to apply common labels to resource templates or not
     labelWithoutSelector : bool, default is Undefined, optional
         LabelWithoutSelector specifies whether to apply common labels to resource selectors or not
     namePrefix : str, default is Undefined, optional
@@ -2844,9 +3036,13 @@ schema ArgoprojIoV1alpha1ApplicationStatusHistoryItems0SourceKustomize:
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -3025,6 +3221,8 @@ schema ArgoprojIoV1alpha1ApplicationStatusHistoryItems0SourcesItems0:
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationStatusHistoryItems0SourcesItems0Kustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        Name is used to refer to a source and is displayed in the UI. It is used in multi-source Applications.
     path : str, default is Undefined, optional
         Path is a directory path within the Git repository, and is only valid for applications sourced from Git.
     plugin : ArgoprojIoV1alpha1ApplicationStatusHistoryItems0SourcesItems0Plugin, default is Undefined, optional
@@ -3047,6 +3245,8 @@ schema ArgoprojIoV1alpha1ApplicationStatusHistoryItems0SourcesItems0:
     helm?: ArgoprojIoV1alpha1ApplicationStatusHistoryItems0SourcesItems0Helm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationStatusHistoryItems0SourcesItems0Kustomize
+
+    name?: str
 
     path?: str
 
@@ -3177,6 +3377,10 @@ schema ArgoprojIoV1alpha1ApplicationStatusHistoryItems0SourcesItems0Helm:
         ReleaseName is the Helm release name to use. If omitted it will use the application name
     skipCrds : bool, default is Undefined, optional
         SkipCrds skips custom resource definition installation step (Helm's --skip-crds)
+    skipSchemaValidation : bool, default is Undefined, optional
+        SkipSchemaValidation skips JSON schema validation (Helm's --skip-schema-validation)
+    skipTests : bool, default is Undefined, optional
+        SkipTests skips test manifest installation step (Helm's --skip-tests).
     valueFiles : [str], default is Undefined, optional
         ValuesFiles is a list of Helm value files to use when generating a template
     values : str, default is Undefined, optional
@@ -3205,6 +3409,10 @@ schema ArgoprojIoV1alpha1ApplicationStatusHistoryItems0SourcesItems0Helm:
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -3276,11 +3484,15 @@ schema ArgoprojIoV1alpha1ApplicationStatusHistoryItems0SourcesItems0Kustomize:
         ForceCommonAnnotations specifies whether to force applying common annotations to resources for Kustomize apps
     forceCommonLabels : bool, default is Undefined, optional
         ForceCommonLabels specifies whether to force applying common labels to resources for Kustomize apps
+    ignoreMissingComponents : bool, default is Undefined, optional
+        IgnoreMissingComponents prevents kustomize from failing when components do not exist locally by not appending them to kustomization file
     images : [str], default is Undefined, optional
         Images is a list of Kustomize image override specifications
     kubeVersion : str, default is Undefined, optional
         KubeVersion specifies the Kubernetes API version to pass to Helm when templating manifests. By default, Argo CD
         uses the Kubernetes version of the target cluster.
+    labelIncludeTemplates : bool, default is Undefined, optional
+        LabelIncludeTemplates specifies whether to apply common labels to resource templates or not
     labelWithoutSelector : bool, default is Undefined, optional
         LabelWithoutSelector specifies whether to apply common labels to resource selectors or not
     namePrefix : str, default is Undefined, optional
@@ -3312,9 +3524,13 @@ schema ArgoprojIoV1alpha1ApplicationStatusHistoryItems0SourcesItems0Kustomize:
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -3717,6 +3933,8 @@ schema ArgoprojIoV1alpha1ApplicationStatusOperationStateOperationSyncSource:
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationStatusOperationStateOperationSyncSourceKustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        Name is used to refer to a source and is displayed in the UI. It is used in multi-source Applications.
     path : str, default is Undefined, optional
         Path is a directory path within the Git repository, and is only valid for applications sourced from Git.
     plugin : ArgoprojIoV1alpha1ApplicationStatusOperationStateOperationSyncSourcePlugin, default is Undefined, optional
@@ -3739,6 +3957,8 @@ schema ArgoprojIoV1alpha1ApplicationStatusOperationStateOperationSyncSource:
     helm?: ArgoprojIoV1alpha1ApplicationStatusOperationStateOperationSyncSourceHelm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationStatusOperationStateOperationSyncSourceKustomize
+
+    name?: str
 
     path?: str
 
@@ -3869,6 +4089,10 @@ schema ArgoprojIoV1alpha1ApplicationStatusOperationStateOperationSyncSourceHelm:
         ReleaseName is the Helm release name to use. If omitted it will use the application name
     skipCrds : bool, default is Undefined, optional
         SkipCrds skips custom resource definition installation step (Helm's --skip-crds)
+    skipSchemaValidation : bool, default is Undefined, optional
+        SkipSchemaValidation skips JSON schema validation (Helm's --skip-schema-validation)
+    skipTests : bool, default is Undefined, optional
+        SkipTests skips test manifest installation step (Helm's --skip-tests).
     valueFiles : [str], default is Undefined, optional
         ValuesFiles is a list of Helm value files to use when generating a template
     values : str, default is Undefined, optional
@@ -3897,6 +4121,10 @@ schema ArgoprojIoV1alpha1ApplicationStatusOperationStateOperationSyncSourceHelm:
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -3968,11 +4196,15 @@ schema ArgoprojIoV1alpha1ApplicationStatusOperationStateOperationSyncSourceKusto
         ForceCommonAnnotations specifies whether to force applying common annotations to resources for Kustomize apps
     forceCommonLabels : bool, default is Undefined, optional
         ForceCommonLabels specifies whether to force applying common labels to resources for Kustomize apps
+    ignoreMissingComponents : bool, default is Undefined, optional
+        IgnoreMissingComponents prevents kustomize from failing when components do not exist locally by not appending them to kustomization file
     images : [str], default is Undefined, optional
         Images is a list of Kustomize image override specifications
     kubeVersion : str, default is Undefined, optional
         KubeVersion specifies the Kubernetes API version to pass to Helm when templating manifests. By default, Argo CD
         uses the Kubernetes version of the target cluster.
+    labelIncludeTemplates : bool, default is Undefined, optional
+        LabelIncludeTemplates specifies whether to apply common labels to resource templates or not
     labelWithoutSelector : bool, default is Undefined, optional
         LabelWithoutSelector specifies whether to apply common labels to resource selectors or not
     namePrefix : str, default is Undefined, optional
@@ -4004,9 +4236,13 @@ schema ArgoprojIoV1alpha1ApplicationStatusOperationStateOperationSyncSourceKusto
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -4185,6 +4421,8 @@ schema ArgoprojIoV1alpha1ApplicationStatusOperationStateOperationSyncSourcesItem
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationStatusOperationStateOperationSyncSourcesItems0Kustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        Name is used to refer to a source and is displayed in the UI. It is used in multi-source Applications.
     path : str, default is Undefined, optional
         Path is a directory path within the Git repository, and is only valid for applications sourced from Git.
     plugin : ArgoprojIoV1alpha1ApplicationStatusOperationStateOperationSyncSourcesItems0Plugin, default is Undefined, optional
@@ -4207,6 +4445,8 @@ schema ArgoprojIoV1alpha1ApplicationStatusOperationStateOperationSyncSourcesItem
     helm?: ArgoprojIoV1alpha1ApplicationStatusOperationStateOperationSyncSourcesItems0Helm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationStatusOperationStateOperationSyncSourcesItems0Kustomize
+
+    name?: str
 
     path?: str
 
@@ -4337,6 +4577,10 @@ schema ArgoprojIoV1alpha1ApplicationStatusOperationStateOperationSyncSourcesItem
         ReleaseName is the Helm release name to use. If omitted it will use the application name
     skipCrds : bool, default is Undefined, optional
         SkipCrds skips custom resource definition installation step (Helm's --skip-crds)
+    skipSchemaValidation : bool, default is Undefined, optional
+        SkipSchemaValidation skips JSON schema validation (Helm's --skip-schema-validation)
+    skipTests : bool, default is Undefined, optional
+        SkipTests skips test manifest installation step (Helm's --skip-tests).
     valueFiles : [str], default is Undefined, optional
         ValuesFiles is a list of Helm value files to use when generating a template
     values : str, default is Undefined, optional
@@ -4365,6 +4609,10 @@ schema ArgoprojIoV1alpha1ApplicationStatusOperationStateOperationSyncSourcesItem
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -4436,11 +4684,15 @@ schema ArgoprojIoV1alpha1ApplicationStatusOperationStateOperationSyncSourcesItem
         ForceCommonAnnotations specifies whether to force applying common annotations to resources for Kustomize apps
     forceCommonLabels : bool, default is Undefined, optional
         ForceCommonLabels specifies whether to force applying common labels to resources for Kustomize apps
+    ignoreMissingComponents : bool, default is Undefined, optional
+        IgnoreMissingComponents prevents kustomize from failing when components do not exist locally by not appending them to kustomization file
     images : [str], default is Undefined, optional
         Images is a list of Kustomize image override specifications
     kubeVersion : str, default is Undefined, optional
         KubeVersion specifies the Kubernetes API version to pass to Helm when templating manifests. By default, Argo CD
         uses the Kubernetes version of the target cluster.
+    labelIncludeTemplates : bool, default is Undefined, optional
+        LabelIncludeTemplates specifies whether to apply common labels to resource templates or not
     labelWithoutSelector : bool, default is Undefined, optional
         LabelWithoutSelector specifies whether to apply common labels to resource selectors or not
     namePrefix : str, default is Undefined, optional
@@ -4472,9 +4724,13 @@ schema ArgoprojIoV1alpha1ApplicationStatusOperationStateOperationSyncSourcesItem
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -4754,6 +5010,8 @@ schema ArgoprojIoV1alpha1ApplicationStatusOperationStateSyncResultResourcesItems
         This can also contain values for non-hook resources.
     hookType : str, default is Undefined, optional
         HookType specifies the type of the hook. Empty for non-hook resources
+    images : [str], default is Undefined, optional
+        Images contains the images related to the ResourceResult
     kind : str, default is Undefined, required
         Kind specifies the API kind of the resource
     message : str, default is Undefined, optional
@@ -4776,6 +5034,8 @@ schema ArgoprojIoV1alpha1ApplicationStatusOperationStateSyncResultResourcesItems
     hookPhase?: str
 
     hookType?: str
+
+    images?: [str]
 
     kind: str
 
@@ -4806,6 +5066,8 @@ schema ArgoprojIoV1alpha1ApplicationStatusOperationStateSyncResultSource:
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationStatusOperationStateSyncResultSourceKustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        Name is used to refer to a source and is displayed in the UI. It is used in multi-source Applications.
     path : str, default is Undefined, optional
         Path is a directory path within the Git repository, and is only valid for applications sourced from Git.
     plugin : ArgoprojIoV1alpha1ApplicationStatusOperationStateSyncResultSourcePlugin, default is Undefined, optional
@@ -4828,6 +5090,8 @@ schema ArgoprojIoV1alpha1ApplicationStatusOperationStateSyncResultSource:
     helm?: ArgoprojIoV1alpha1ApplicationStatusOperationStateSyncResultSourceHelm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationStatusOperationStateSyncResultSourceKustomize
+
+    name?: str
 
     path?: str
 
@@ -4958,6 +5222,10 @@ schema ArgoprojIoV1alpha1ApplicationStatusOperationStateSyncResultSourceHelm:
         ReleaseName is the Helm release name to use. If omitted it will use the application name
     skipCrds : bool, default is Undefined, optional
         SkipCrds skips custom resource definition installation step (Helm's --skip-crds)
+    skipSchemaValidation : bool, default is Undefined, optional
+        SkipSchemaValidation skips JSON schema validation (Helm's --skip-schema-validation)
+    skipTests : bool, default is Undefined, optional
+        SkipTests skips test manifest installation step (Helm's --skip-tests).
     valueFiles : [str], default is Undefined, optional
         ValuesFiles is a list of Helm value files to use when generating a template
     values : str, default is Undefined, optional
@@ -4986,6 +5254,10 @@ schema ArgoprojIoV1alpha1ApplicationStatusOperationStateSyncResultSourceHelm:
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -5057,11 +5329,15 @@ schema ArgoprojIoV1alpha1ApplicationStatusOperationStateSyncResultSourceKustomiz
         ForceCommonAnnotations specifies whether to force applying common annotations to resources for Kustomize apps
     forceCommonLabels : bool, default is Undefined, optional
         ForceCommonLabels specifies whether to force applying common labels to resources for Kustomize apps
+    ignoreMissingComponents : bool, default is Undefined, optional
+        IgnoreMissingComponents prevents kustomize from failing when components do not exist locally by not appending them to kustomization file
     images : [str], default is Undefined, optional
         Images is a list of Kustomize image override specifications
     kubeVersion : str, default is Undefined, optional
         KubeVersion specifies the Kubernetes API version to pass to Helm when templating manifests. By default, Argo CD
         uses the Kubernetes version of the target cluster.
+    labelIncludeTemplates : bool, default is Undefined, optional
+        LabelIncludeTemplates specifies whether to apply common labels to resource templates or not
     labelWithoutSelector : bool, default is Undefined, optional
         LabelWithoutSelector specifies whether to apply common labels to resource selectors or not
     namePrefix : str, default is Undefined, optional
@@ -5093,9 +5369,13 @@ schema ArgoprojIoV1alpha1ApplicationStatusOperationStateSyncResultSourceKustomiz
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -5274,6 +5554,8 @@ schema ArgoprojIoV1alpha1ApplicationStatusOperationStateSyncResultSourcesItems0:
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationStatusOperationStateSyncResultSourcesItems0Kustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        Name is used to refer to a source and is displayed in the UI. It is used in multi-source Applications.
     path : str, default is Undefined, optional
         Path is a directory path within the Git repository, and is only valid for applications sourced from Git.
     plugin : ArgoprojIoV1alpha1ApplicationStatusOperationStateSyncResultSourcesItems0Plugin, default is Undefined, optional
@@ -5296,6 +5578,8 @@ schema ArgoprojIoV1alpha1ApplicationStatusOperationStateSyncResultSourcesItems0:
     helm?: ArgoprojIoV1alpha1ApplicationStatusOperationStateSyncResultSourcesItems0Helm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationStatusOperationStateSyncResultSourcesItems0Kustomize
+
+    name?: str
 
     path?: str
 
@@ -5426,6 +5710,10 @@ schema ArgoprojIoV1alpha1ApplicationStatusOperationStateSyncResultSourcesItems0H
         ReleaseName is the Helm release name to use. If omitted it will use the application name
     skipCrds : bool, default is Undefined, optional
         SkipCrds skips custom resource definition installation step (Helm's --skip-crds)
+    skipSchemaValidation : bool, default is Undefined, optional
+        SkipSchemaValidation skips JSON schema validation (Helm's --skip-schema-validation)
+    skipTests : bool, default is Undefined, optional
+        SkipTests skips test manifest installation step (Helm's --skip-tests).
     valueFiles : [str], default is Undefined, optional
         ValuesFiles is a list of Helm value files to use when generating a template
     values : str, default is Undefined, optional
@@ -5454,6 +5742,10 @@ schema ArgoprojIoV1alpha1ApplicationStatusOperationStateSyncResultSourcesItems0H
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -5525,11 +5817,15 @@ schema ArgoprojIoV1alpha1ApplicationStatusOperationStateSyncResultSourcesItems0K
         ForceCommonAnnotations specifies whether to force applying common annotations to resources for Kustomize apps
     forceCommonLabels : bool, default is Undefined, optional
         ForceCommonLabels specifies whether to force applying common labels to resources for Kustomize apps
+    ignoreMissingComponents : bool, default is Undefined, optional
+        IgnoreMissingComponents prevents kustomize from failing when components do not exist locally by not appending them to kustomization file
     images : [str], default is Undefined, optional
         Images is a list of Kustomize image override specifications
     kubeVersion : str, default is Undefined, optional
         KubeVersion specifies the Kubernetes API version to pass to Helm when templating manifests. By default, Argo CD
         uses the Kubernetes version of the target cluster.
+    labelIncludeTemplates : bool, default is Undefined, optional
+        LabelIncludeTemplates specifies whether to apply common labels to resource templates or not
     labelWithoutSelector : bool, default is Undefined, optional
         LabelWithoutSelector specifies whether to apply common labels to resource selectors or not
     namePrefix : str, default is Undefined, optional
@@ -5561,9 +5857,13 @@ schema ArgoprojIoV1alpha1ApplicationStatusOperationStateSyncResultSourcesItems0K
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -5730,31 +6030,33 @@ schema ArgoprojIoV1alpha1ApplicationStatusOperationStateSyncResultSourcesItems0P
 
 schema ArgoprojIoV1alpha1ApplicationStatusResourcesItems0:
     r"""
-    ResourceStatus holds the current sync and health status of a resource
-    TODO: describe members of this type
+    ResourceStatus holds the current synchronization and health status of a Kubernetes resource.
 
     Attributes
     ----------
     group : str, default is Undefined, optional
-        group
+        Group represents the API group of the resource (e.g., "apps" for Deployments).
     health : ArgoprojIoV1alpha1ApplicationStatusResourcesItems0Health, default is Undefined, optional
         health
     hook : bool, default is Undefined, optional
-        hook
+        Hook is true if the resource is used as a lifecycle hook in an Argo CD application.
     kind : str, default is Undefined, optional
-        kind
+        Kind specifies the type of the resource (e.g., "Deployment", "Service").
     name : str, default is Undefined, optional
-        name
+        Name is the unique name of the resource within the namespace.
     namespace : str, default is Undefined, optional
-        namespace
+        Namespace defines the Kubernetes namespace where the resource is located.
+    requiresDeletionConfirmation : bool, default is Undefined, optional
+        RequiresDeletionConfirmation is true if the resource requires explicit user confirmation before deletion.
     requiresPruning : bool, default is Undefined, optional
-        requires pruning
+        RequiresPruning is true if the resource needs to be pruned (deleted) as part of synchronization.
     status : str, default is Undefined, optional
-        SyncStatusCode is a type which represents possible comparison results
+        Status represents the synchronization state of the resource (e.g., Synced, OutOfSync).
     syncWave : int, default is Undefined, optional
-        sync wave
+        SyncWave determines the order in which resources are applied during a sync operation.
+        Lower values are applied first.
     version : str, default is Undefined, optional
-        version
+        Version indicates the API version of the resource (e.g., "v1", "v1beta1").
     """
 
 
@@ -5770,6 +6072,8 @@ schema ArgoprojIoV1alpha1ApplicationStatusResourcesItems0:
 
     namespace?: str
 
+    requiresDeletionConfirmation?: bool
+
     requiresPruning?: bool
 
     status?: str
@@ -5781,20 +6085,260 @@ schema ArgoprojIoV1alpha1ApplicationStatusResourcesItems0:
 
 schema ArgoprojIoV1alpha1ApplicationStatusResourcesItems0Health:
     r"""
-    HealthStatus contains information about the currently observed health state of an application or resource
+    Health indicates the health status of the resource (e.g., Healthy, Degraded, Progressing).
 
     Attributes
     ----------
+    lastTransitionTime : str, default is Undefined, optional
+        LastTransitionTime is the time the HealthStatus was set or updated
+
+        Deprecated: this field is not used and will be removed in a future release.
     message : str, default is Undefined, optional
         Message is a human-readable informational message describing the health status
     status : str, default is Undefined, optional
-        Status holds the status code of the application or resource
+        Status holds the status code of the resource
     """
 
+
+    lastTransitionTime?: str
 
     message?: str
 
     status?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationStatusSourceHydrator:
+    r"""
+    SourceHydrator stores information about the current state of source hydration
+
+    Attributes
+    ----------
+    currentOperation : ArgoprojIoV1alpha1ApplicationStatusSourceHydratorCurrentOperation, default is Undefined, optional
+        current operation
+    lastSuccessfulOperation : ArgoprojIoV1alpha1ApplicationStatusSourceHydratorLastSuccessfulOperation, default is Undefined, optional
+        last successful operation
+    """
+
+
+    currentOperation?: ArgoprojIoV1alpha1ApplicationStatusSourceHydratorCurrentOperation
+
+    lastSuccessfulOperation?: ArgoprojIoV1alpha1ApplicationStatusSourceHydratorLastSuccessfulOperation
+
+
+schema ArgoprojIoV1alpha1ApplicationStatusSourceHydratorCurrentOperation:
+    r"""
+    CurrentOperation holds the status of the hydrate operation
+
+    Attributes
+    ----------
+    drySHA : str, default is Undefined, optional
+        DrySHA holds the resolved revision (sha) of the dry source as of the most recent reconciliation
+    finishedAt : str, default is Undefined, optional
+        FinishedAt indicates when the hydrate operation finished
+    hydratedSHA : str, default is Undefined, optional
+        HydratedSHA holds the resolved revision (sha) of the hydrated source as of the most recent reconciliation
+    message : str, default is Undefined, required
+        Message contains a message describing the current status of the hydrate operation
+    phase : str, default is Undefined, required
+        Phase indicates the status of the hydrate operation
+    sourceHydrator : ArgoprojIoV1alpha1ApplicationStatusSourceHydratorCurrentOperationSourceHydrator, default is Undefined, optional
+        source hydrator
+    startedAt : str, default is Undefined, optional
+        StartedAt indicates when the hydrate operation started
+    """
+
+
+    drySHA?: str
+
+    finishedAt?: str
+
+    hydratedSHA?: str
+
+    message: str
+
+    phase: "Hydrating" | "Failed" | "Hydrated"
+
+    sourceHydrator?: ArgoprojIoV1alpha1ApplicationStatusSourceHydratorCurrentOperationSourceHydrator
+
+    startedAt?: str
+
+
+schema ArgoprojIoV1alpha1ApplicationStatusSourceHydratorCurrentOperationSourceHydrator:
+    r"""
+    SourceHydrator holds the hydrator config used for the hydrate operation
+
+    Attributes
+    ----------
+    drySource : ArgoprojIoV1alpha1ApplicationStatusSourceHydratorCurrentOperationSourceHydratorDrySource, default is Undefined, required
+        dry source
+    hydrateTo : ArgoprojIoV1alpha1ApplicationStatusSourceHydratorCurrentOperationSourceHydratorHydrateTo, default is Undefined, optional
+        hydrate to
+    syncSource : ArgoprojIoV1alpha1ApplicationStatusSourceHydratorCurrentOperationSourceHydratorSyncSource, default is Undefined, required
+        sync source
+    """
+
+
+    drySource: ArgoprojIoV1alpha1ApplicationStatusSourceHydratorCurrentOperationSourceHydratorDrySource
+
+    hydrateTo?: ArgoprojIoV1alpha1ApplicationStatusSourceHydratorCurrentOperationSourceHydratorHydrateTo
+
+    syncSource: ArgoprojIoV1alpha1ApplicationStatusSourceHydratorCurrentOperationSourceHydratorSyncSource
+
+
+schema ArgoprojIoV1alpha1ApplicationStatusSourceHydratorCurrentOperationSourceHydratorDrySource:
+    r"""
+    DrySource specifies where the dry "don't repeat yourself" manifest source lives.
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        Path is a directory path within the Git repository where the manifests are located
+    repoURL : str, default is Undefined, required
+        RepoURL is the URL to the git repository that contains the application manifests
+    targetRevision : str, default is Undefined, required
+        TargetRevision defines the revision of the source to hydrate
+    """
+
+
+    path: str
+
+    repoURL: str
+
+    targetRevision: str
+
+
+schema ArgoprojIoV1alpha1ApplicationStatusSourceHydratorCurrentOperationSourceHydratorHydrateTo:
+    r"""
+    HydrateTo specifies an optional "staging" location to push hydrated manifests to. An external system would then
+    have to move manifests to the SyncSource, e.g. by pull request.
+
+    Attributes
+    ----------
+    targetBranch : str, default is Undefined, required
+        TargetBranch is the branch to which hydrated manifests should be committed
+    """
+
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationStatusSourceHydratorCurrentOperationSourceHydratorSyncSource:
+    r"""
+    SyncSource specifies where to sync hydrated manifests from.
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        Path is a directory path within the git repository where hydrated manifests should be committed to and synced
+        from. If hydrateTo is set, this is just the path from which hydrated manifests will be synced.
+    targetBranch : str, default is Undefined, required
+        TargetBranch is the branch to which hydrated manifests should be committed
+    """
+
+
+    path: str
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationStatusSourceHydratorLastSuccessfulOperation:
+    r"""
+    LastSuccessfulOperation holds info about the most recent successful hydration
+
+    Attributes
+    ----------
+    drySHA : str, default is Undefined, optional
+        DrySHA holds the resolved revision (sha) of the dry source as of the most recent reconciliation
+    hydratedSHA : str, default is Undefined, optional
+        HydratedSHA holds the resolved revision (sha) of the hydrated source as of the most recent reconciliation
+    sourceHydrator : ArgoprojIoV1alpha1ApplicationStatusSourceHydratorLastSuccessfulOperationSourceHydrator, default is Undefined, optional
+        source hydrator
+    """
+
+
+    drySHA?: str
+
+    hydratedSHA?: str
+
+    sourceHydrator?: ArgoprojIoV1alpha1ApplicationStatusSourceHydratorLastSuccessfulOperationSourceHydrator
+
+
+schema ArgoprojIoV1alpha1ApplicationStatusSourceHydratorLastSuccessfulOperationSourceHydrator:
+    r"""
+    SourceHydrator holds the hydrator config used for the hydrate operation
+
+    Attributes
+    ----------
+    drySource : ArgoprojIoV1alpha1ApplicationStatusSourceHydratorLastSuccessfulOperationSourceHydratorDrySource, default is Undefined, required
+        dry source
+    hydrateTo : ArgoprojIoV1alpha1ApplicationStatusSourceHydratorLastSuccessfulOperationSourceHydratorHydrateTo, default is Undefined, optional
+        hydrate to
+    syncSource : ArgoprojIoV1alpha1ApplicationStatusSourceHydratorLastSuccessfulOperationSourceHydratorSyncSource, default is Undefined, required
+        sync source
+    """
+
+
+    drySource: ArgoprojIoV1alpha1ApplicationStatusSourceHydratorLastSuccessfulOperationSourceHydratorDrySource
+
+    hydrateTo?: ArgoprojIoV1alpha1ApplicationStatusSourceHydratorLastSuccessfulOperationSourceHydratorHydrateTo
+
+    syncSource: ArgoprojIoV1alpha1ApplicationStatusSourceHydratorLastSuccessfulOperationSourceHydratorSyncSource
+
+
+schema ArgoprojIoV1alpha1ApplicationStatusSourceHydratorLastSuccessfulOperationSourceHydratorDrySource:
+    r"""
+    DrySource specifies where the dry "don't repeat yourself" manifest source lives.
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        Path is a directory path within the Git repository where the manifests are located
+    repoURL : str, default is Undefined, required
+        RepoURL is the URL to the git repository that contains the application manifests
+    targetRevision : str, default is Undefined, required
+        TargetRevision defines the revision of the source to hydrate
+    """
+
+
+    path: str
+
+    repoURL: str
+
+    targetRevision: str
+
+
+schema ArgoprojIoV1alpha1ApplicationStatusSourceHydratorLastSuccessfulOperationSourceHydratorHydrateTo:
+    r"""
+    HydrateTo specifies an optional "staging" location to push hydrated manifests to. An external system would then
+    have to move manifests to the SyncSource, e.g. by pull request.
+
+    Attributes
+    ----------
+    targetBranch : str, default is Undefined, required
+        TargetBranch is the branch to which hydrated manifests should be committed
+    """
+
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationStatusSourceHydratorLastSuccessfulOperationSourceHydratorSyncSource:
+    r"""
+    SyncSource specifies where to sync hydrated manifests from.
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        Path is a directory path within the git repository where hydrated manifests should be committed to and synced
+        from. If hydrateTo is set, this is just the path from which hydrated manifests will be synced.
+    targetBranch : str, default is Undefined, required
+        TargetBranch is the branch to which hydrated manifests should be committed
+    """
+
+
+    path: str
+
+    targetBranch: str
 
 
 schema ArgoprojIoV1alpha1ApplicationStatusSummary:
@@ -5943,6 +6487,8 @@ schema ArgoprojIoV1alpha1ApplicationStatusSyncComparedToSource:
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationStatusSyncComparedToSourceKustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        Name is used to refer to a source and is displayed in the UI. It is used in multi-source Applications.
     path : str, default is Undefined, optional
         Path is a directory path within the Git repository, and is only valid for applications sourced from Git.
     plugin : ArgoprojIoV1alpha1ApplicationStatusSyncComparedToSourcePlugin, default is Undefined, optional
@@ -5965,6 +6511,8 @@ schema ArgoprojIoV1alpha1ApplicationStatusSyncComparedToSource:
     helm?: ArgoprojIoV1alpha1ApplicationStatusSyncComparedToSourceHelm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationStatusSyncComparedToSourceKustomize
+
+    name?: str
 
     path?: str
 
@@ -6095,6 +6643,10 @@ schema ArgoprojIoV1alpha1ApplicationStatusSyncComparedToSourceHelm:
         ReleaseName is the Helm release name to use. If omitted it will use the application name
     skipCrds : bool, default is Undefined, optional
         SkipCrds skips custom resource definition installation step (Helm's --skip-crds)
+    skipSchemaValidation : bool, default is Undefined, optional
+        SkipSchemaValidation skips JSON schema validation (Helm's --skip-schema-validation)
+    skipTests : bool, default is Undefined, optional
+        SkipTests skips test manifest installation step (Helm's --skip-tests).
     valueFiles : [str], default is Undefined, optional
         ValuesFiles is a list of Helm value files to use when generating a template
     values : str, default is Undefined, optional
@@ -6123,6 +6675,10 @@ schema ArgoprojIoV1alpha1ApplicationStatusSyncComparedToSourceHelm:
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -6194,11 +6750,15 @@ schema ArgoprojIoV1alpha1ApplicationStatusSyncComparedToSourceKustomize:
         ForceCommonAnnotations specifies whether to force applying common annotations to resources for Kustomize apps
     forceCommonLabels : bool, default is Undefined, optional
         ForceCommonLabels specifies whether to force applying common labels to resources for Kustomize apps
+    ignoreMissingComponents : bool, default is Undefined, optional
+        IgnoreMissingComponents prevents kustomize from failing when components do not exist locally by not appending them to kustomization file
     images : [str], default is Undefined, optional
         Images is a list of Kustomize image override specifications
     kubeVersion : str, default is Undefined, optional
         KubeVersion specifies the Kubernetes API version to pass to Helm when templating manifests. By default, Argo CD
         uses the Kubernetes version of the target cluster.
+    labelIncludeTemplates : bool, default is Undefined, optional
+        LabelIncludeTemplates specifies whether to apply common labels to resource templates or not
     labelWithoutSelector : bool, default is Undefined, optional
         LabelWithoutSelector specifies whether to apply common labels to resource selectors or not
     namePrefix : str, default is Undefined, optional
@@ -6230,9 +6790,13 @@ schema ArgoprojIoV1alpha1ApplicationStatusSyncComparedToSourceKustomize:
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -6411,6 +6975,8 @@ schema ArgoprojIoV1alpha1ApplicationStatusSyncComparedToSourcesItems0:
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationStatusSyncComparedToSourcesItems0Kustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        Name is used to refer to a source and is displayed in the UI. It is used in multi-source Applications.
     path : str, default is Undefined, optional
         Path is a directory path within the Git repository, and is only valid for applications sourced from Git.
     plugin : ArgoprojIoV1alpha1ApplicationStatusSyncComparedToSourcesItems0Plugin, default is Undefined, optional
@@ -6433,6 +6999,8 @@ schema ArgoprojIoV1alpha1ApplicationStatusSyncComparedToSourcesItems0:
     helm?: ArgoprojIoV1alpha1ApplicationStatusSyncComparedToSourcesItems0Helm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationStatusSyncComparedToSourcesItems0Kustomize
+
+    name?: str
 
     path?: str
 
@@ -6563,6 +7131,10 @@ schema ArgoprojIoV1alpha1ApplicationStatusSyncComparedToSourcesItems0Helm:
         ReleaseName is the Helm release name to use. If omitted it will use the application name
     skipCrds : bool, default is Undefined, optional
         SkipCrds skips custom resource definition installation step (Helm's --skip-crds)
+    skipSchemaValidation : bool, default is Undefined, optional
+        SkipSchemaValidation skips JSON schema validation (Helm's --skip-schema-validation)
+    skipTests : bool, default is Undefined, optional
+        SkipTests skips test manifest installation step (Helm's --skip-tests).
     valueFiles : [str], default is Undefined, optional
         ValuesFiles is a list of Helm value files to use when generating a template
     values : str, default is Undefined, optional
@@ -6591,6 +7163,10 @@ schema ArgoprojIoV1alpha1ApplicationStatusSyncComparedToSourcesItems0Helm:
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -6662,11 +7238,15 @@ schema ArgoprojIoV1alpha1ApplicationStatusSyncComparedToSourcesItems0Kustomize:
         ForceCommonAnnotations specifies whether to force applying common annotations to resources for Kustomize apps
     forceCommonLabels : bool, default is Undefined, optional
         ForceCommonLabels specifies whether to force applying common labels to resources for Kustomize apps
+    ignoreMissingComponents : bool, default is Undefined, optional
+        IgnoreMissingComponents prevents kustomize from failing when components do not exist locally by not appending them to kustomization file
     images : [str], default is Undefined, optional
         Images is a list of Kustomize image override specifications
     kubeVersion : str, default is Undefined, optional
         KubeVersion specifies the Kubernetes API version to pass to Helm when templating manifests. By default, Argo CD
         uses the Kubernetes version of the target cluster.
+    labelIncludeTemplates : bool, default is Undefined, optional
+        LabelIncludeTemplates specifies whether to apply common labels to resource templates or not
     labelWithoutSelector : bool, default is Undefined, optional
         LabelWithoutSelector specifies whether to apply common labels to resource selectors or not
     namePrefix : str, default is Undefined, optional
@@ -6698,9 +7278,13 @@ schema ArgoprojIoV1alpha1ApplicationStatusSyncComparedToSourcesItems0Kustomize:
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
