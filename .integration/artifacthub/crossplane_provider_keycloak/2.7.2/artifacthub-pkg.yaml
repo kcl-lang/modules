@@ -1,0 +1,25 @@
+version: 2.7.2
+name: crossplane_provider_keycloak
+displayName: crossplane_provider_keycloak
+createdAt: "2025-10-04T08:57:55Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `crossplane_provider_keycloak` with tag `2.7.2` as dependency
+  ```
+  kcl mod add crossplane_provider_keycloak:2.7.2
+  ```
+
+  #### Pull `crossplane_provider_keycloak` with tag `2.7.2` to local
+  ```
+  kcl mod pull crossplane_provider_keycloak:2.7.2
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

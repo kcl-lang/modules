@@ -1,0 +1,25 @@
+version: 1.23.0
+name: crossplane-provider-upjet-aws
+displayName: crossplane-provider-upjet-aws
+createdAt: "2025-08-06T15:23:59Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `crossplane-provider-upjet-aws` with tag `1.23.0` as dependency
+  ```
+  kcl mod add crossplane-provider-upjet-aws:1.23.0
+  ```
+
+  #### Pull `crossplane-provider-upjet-aws` with tag `1.23.0` to local
+  ```
+  kcl mod pull crossplane-provider-upjet-aws:1.23.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

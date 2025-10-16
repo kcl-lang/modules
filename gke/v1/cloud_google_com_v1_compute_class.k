@@ -595,6 +595,19 @@ schema CloudGoogleComV1ComputeClassSpecPrioritiesItems0Tpu:
     $type?: str
 
 
+schema CloudGoogleComV1ComputeClassSpecPriorityDefaultsLocation:
+    r"""
+    Location defines the location of the compute class.
+
+    Attributes
+    ----------
+    zones: [str], A list of Google Cloud zones to use. In order for a node to be used, it must belong to a node pool that spans exactly the same set of zones.
+    locationPolicy?: str, Location policy specifies the strategy for selecting zones when scaling up a node pool managed by this Compute Class. It can be either ANY or BALANCED. This setting controls the distribution of new nodes across zones in the node pool's region and corresponds to the node pool setting of the same name.
+    """
+
+    zones?: [str]
+    locationPolicy?: str
+
 schema CloudGoogleComV1ComputeClassSpecPriorityDefaults:
     r"""
     PriorityDefaults define the default rules for all priorities if the rule doesn't exist in some priority.
@@ -604,10 +617,14 @@ schema CloudGoogleComV1ComputeClassSpecPriorityDefaults:
     ----------
     nodeSystemConfig : CloudGoogleComV1ComputeClassSpecPriorityDefaultsNodeSystemConfig, default is Undefined, optional
         node system config
+    
+    location: CloudGoogleComV1ComputeClassSpecPriorityDefaultsLocation, default is Undefined, optional
     """
 
 
     nodeSystemConfig?: CloudGoogleComV1ComputeClassSpecPriorityDefaultsNodeSystemConfig
+
+    location?: CloudGoogleComV1ComputeClassSpecPriorityDefaultsLocation
 
 
 schema CloudGoogleComV1ComputeClassSpecPriorityDefaultsNodeSystemConfig:

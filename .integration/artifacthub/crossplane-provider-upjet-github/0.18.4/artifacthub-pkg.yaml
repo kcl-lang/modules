@@ -1,0 +1,25 @@
+version: 0.18.4
+name: crossplane-provider-upjet-github
+displayName: crossplane-provider-upjet-github
+createdAt: "2025-08-15T15:05:20Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `crossplane-provider-upjet-github` with tag `0.18.4` as dependency
+  ```
+  kcl mod add crossplane-provider-upjet-github:0.18.4
+  ```
+
+  #### Pull `crossplane-provider-upjet-github` with tag `0.18.4` to local
+  ```
+  kcl mod pull crossplane-provider-upjet-github:0.18.4
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

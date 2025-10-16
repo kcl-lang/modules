@@ -1,7 +1,7 @@
 [package]
 name = "argo-cd"
 edition = "*"
-version = "2.13.3"
+version = "3.1.8"
 description = "`argo-cd` is the argo-cd spec definition"
 
 [dependencies]

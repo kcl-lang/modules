@@ -4,11 +4,11 @@ Editing this file might prove futile when you re-run the KCL auto-gen generate c
 """
 import regex
 import k8s.apimachinery.pkg.apis.meta.v1
-
+_regex_match = regex.match
 
 
 schema GrafanaDashboard:
-    """
+    r"""
     GrafanaDashboard is the Schema for the grafanadashboards API
 
     Attributes
@@ -19,7 +19,7 @@ schema GrafanaDashboard:
         Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     metadata : v1.ObjectMeta, default is Undefined, optional
         metadata
-    spec : GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpec, default is Undefined, optional
+    spec : GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpec, default is Undefined, required
         spec
     status : GrafanaIntegreatlyOrgV1beta1GrafanaDashboardStatus, default is Undefined, optional
         status
@@ -32,23 +32,23 @@ schema GrafanaDashboard:
 
     metadata?: v1.ObjectMeta
 
-    spec?: GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpec
+    spec: GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpec
 
     status?: GrafanaIntegreatlyOrgV1beta1GrafanaDashboardStatus
 
 
 schema GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpec:
-    """
+    r"""
     GrafanaDashboardSpec defines the desired state of GrafanaDashboard
 
     Attributes
     ----------
     allowCrossNamespaceImport : bool, default is Undefined, optional
-        allow to import this resources from an operator in a different namespace
+        Allow the Operator to match this resource with Grafanas outside the current namespace
     configMapRef : GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpecConfigMapRef, default is Undefined, optional
         config map ref
     contentCacheDuration : str, default is Undefined, optional
-        Cache duration for dashboards fetched from URLs
+        Cache duration for models fetched from URLs
     datasources : [GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpecDatasourcesItems0], default is Undefined, optional
         maps required data sources to existing ones
     envFrom : [GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpecEnvFromItems0], default is Undefined, optional
@@ -64,25 +64,32 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpec:
     grafanaCom : GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpecGrafanaCom, default is Undefined, optional
         grafana com
     gzipJson : str, default is Undefined, optional
-        GzipJson the dashboard's JSON compressed with Gzip. Base64-encoded when in YAML.
+        GzipJson the model's JSON compressed with Gzip. Base64-encoded when in YAML.
     instanceSelector : GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpecInstanceSelector, default is Undefined, required
         instance selector
     json : str, default is Undefined, optional
-        dashboard json
+        model json
     jsonnet : str, default is Undefined, optional
         Jsonnet
     jsonnetLib : GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpecJsonnetLib, default is Undefined, optional
         jsonnet lib
     plugins : [GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpecPluginsItems0], default is Undefined, optional
         plugins
-    resyncPeriod : str, default is "5m", optional
-        how often the dashboard is refreshed, defaults to 5m if not set
+    resyncPeriod : str, default is "10m0s", optional
+        How often the resource is synced, defaults to 10m0s if not set
+    suspend : bool, default is Undefined, optional
+        Suspend pauses synchronizing attempts and tells the operator to ignore changes
+    uid : str, default is Undefined, optional
+        Manually specify the uid, overwrites uids already present in the json model.
+        Can be any string consisting of alphanumeric characters, - and _ with a maximum length of 40.
     url : str, default is Undefined, optional
-        dashboard url
+        model url
+    urlAuthorization : GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpecURLAuthorization, default is Undefined, optional
+        url authorization
     """
 
 
-    allowCrossNamespaceImport?: bool
+    allowCrossNamespaceImport?: bool = False
 
     configMapRef?: GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpecConfigMapRef
 
@@ -114,14 +121,26 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpec:
 
     plugins?: [GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpecPluginsItems0]
 
-    resyncPeriod?: str = "5m"
+    resyncPeriod?: str = "10m0s"
+
+    suspend?: bool
+
+    uid?: str
 
     url?: str
 
+    urlAuthorization?: GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpecURLAuthorization
+
+
+    check:
+        _regex_match(str(resyncPeriod), r"^([0-9]+(\.[0-9]+)?(ns|us|µs|ms|s|m|h))+$") if resyncPeriod
+        len(uid) <= 40 if uid
+        _regex_match(str(uid), r"^[a-zA-Z0-9-_]+$") if uid
+
 
 schema GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpecConfigMapRef:
-    """
-    dashboard from configmap
+    r"""
+    model from configmap
 
     Attributes
     ----------
@@ -132,9 +151,7 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpecConfigMapRef:
         This field is effectively required, but due to backwards compatibility is
         allowed to be empty. Instances of this type with an empty value here are
         almost certainly wrong.
-        TODO: Add other useful fields. apiVersion, kind, uid?
         More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.
     optional : bool, default is Undefined, optional
         Specify whether the ConfigMap or its key must be defined
     """
@@ -148,8 +165,9 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpecConfigMapRef:
 
 
 schema GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpecDatasourcesItems0:
-    """
-    grafana integreatly org v1beta1 grafana dashboard spec datasources items0
+    r"""
+    GrafanaResourceDatasource is used to set the datasource name of any templated datasources in
+    content definitions (e.g., dashboard JSON).
 
     Attributes
     ----------
@@ -166,7 +184,7 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpecDatasourcesItems0:
 
 
 schema GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpecEnvFromItems0:
-    """
+    r"""
     grafana integreatly org v1beta1 grafana dashboard spec env from items0
 
     Attributes
@@ -184,7 +202,7 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpecEnvFromItems0:
 
 
 schema GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpecEnvFromItems0ConfigMapKeyRef:
-    """
+    r"""
     Selects a key of a ConfigMap.
 
     Attributes
@@ -196,9 +214,7 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpecEnvFromItems0ConfigMapKey
         This field is effectively required, but due to backwards compatibility is
         allowed to be empty. Instances of this type with an empty value here are
         almost certainly wrong.
-        TODO: Add other useful fields. apiVersion, kind, uid?
         More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.
     optional : bool, default is Undefined, optional
         Specify whether the ConfigMap or its key must be defined
     """
@@ -212,7 +228,7 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpecEnvFromItems0ConfigMapKey
 
 
 schema GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpecEnvFromItems0SecretKeyRef:
-    """
+    r"""
     Selects a key of a Secret.
 
     Attributes
@@ -224,9 +240,7 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpecEnvFromItems0SecretKeyRef
         This field is effectively required, but due to backwards compatibility is
         allowed to be empty. Instances of this type with an empty value here are
         almost certainly wrong.
-        TODO: Add other useful fields. apiVersion, kind, uid?
         More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -240,7 +254,7 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpecEnvFromItems0SecretKeyRef
 
 
 schema GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpecEnvsItems0:
-    """
+    r"""
     grafana integreatly org v1beta1 grafana dashboard spec envs items0
 
     Attributes
@@ -248,7 +262,7 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpecEnvsItems0:
     name : str, default is Undefined, required
         name
     value : str, default is Undefined, optional
-        Inline evn value
+        Inline env value
     valueFrom : GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpecEnvsItems0ValueFrom, default is Undefined, optional
         value from
     """
@@ -262,7 +276,7 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpecEnvsItems0:
 
 
 schema GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpecEnvsItems0ValueFrom:
-    """
+    r"""
     Reference on value source, might be the reference on a secret or config map
 
     Attributes
@@ -280,7 +294,7 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpecEnvsItems0ValueFrom:
 
 
 schema GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpecEnvsItems0ValueFromConfigMapKeyRef:
-    """
+    r"""
     Selects a key of a ConfigMap.
 
     Attributes
@@ -292,9 +306,7 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpecEnvsItems0ValueFromConfig
         This field is effectively required, but due to backwards compatibility is
         allowed to be empty. Instances of this type with an empty value here are
         almost certainly wrong.
-        TODO: Add other useful fields. apiVersion, kind, uid?
         More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.
     optional : bool, default is Undefined, optional
         Specify whether the ConfigMap or its key must be defined
     """
@@ -308,7 +320,7 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpecEnvsItems0ValueFromConfig
 
 
 schema GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpecEnvsItems0ValueFromSecretKeyRef:
-    """
+    r"""
     Selects a key of a Secret.
 
     Attributes
@@ -320,9 +332,7 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpecEnvsItems0ValueFromSecret
         This field is effectively required, but due to backwards compatibility is
         allowed to be empty. Instances of this type with an empty value here are
         almost certainly wrong.
-        TODO: Add other useful fields. apiVersion, kind, uid?
         More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Drop `kubebuilder:default` when controller-gen doesn't need it https://github.com/kubernetes-sigs/kubebuilder/issues/3896.
     optional : bool, default is Undefined, optional
         Specify whether the Secret or its key must be defined
     """
@@ -336,7 +346,7 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpecEnvsItems0ValueFromSecret
 
 
 schema GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpecGrafanaCom:
-    """
+    r"""
     grafana.com/dashboards
 
     Attributes
@@ -354,8 +364,8 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpecGrafanaCom:
 
 
 schema GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpecInstanceSelector:
-    """
-    selects Grafanas for import
+    r"""
+    Selects Grafana instances for import
 
     Attributes
     ----------
@@ -374,7 +384,7 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpecInstanceSelector:
 
 
 schema GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpecInstanceSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
 
@@ -401,7 +411,7 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpecInstanceSelectorMatchExpr
 
 
 schema GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpecJsonnetLib:
-    """
+    r"""
     Jsonnet project build
 
     Attributes
@@ -423,7 +433,7 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpecJsonnetLib:
 
 
 schema GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpecPluginsItems0:
-    """
+    r"""
     grafana integreatly org v1beta1 grafana dashboard spec plugins items0
 
     Attributes
@@ -440,8 +450,92 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpecPluginsItems0:
     version: str
 
 
-schema GrafanaIntegreatlyOrgV1beta1GrafanaDashboardStatus:
+schema GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpecURLAuthorization:
+    r"""
+    authorization options for model from url
+
+    Attributes
+    ----------
+    basicAuth : GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpecURLAuthorizationBasicAuth, default is Undefined, optional
+        basic auth
     """
+
+
+    basicAuth?: GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpecURLAuthorizationBasicAuth
+
+
+schema GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpecURLAuthorizationBasicAuth:
+    r"""
+    grafana integreatly org v1beta1 grafana dashboard spec URL authorization basic auth
+
+    Attributes
+    ----------
+    password : GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpecURLAuthorizationBasicAuthPassword, default is Undefined, optional
+        password
+    username : GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpecURLAuthorizationBasicAuthUsername, default is Undefined, optional
+        username
+    """
+
+
+    password?: GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpecURLAuthorizationBasicAuthPassword
+
+    username?: GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpecURLAuthorizationBasicAuthUsername
+
+
+schema GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpecURLAuthorizationBasicAuthPassword:
+    r"""
+    SecretKeySelector selects a key of a Secret.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        The key of the secret to select from.  Must be a valid secret key.
+    name : str, default is Undefined, optional
+        Name of the referent.
+        This field is effectively required, but due to backwards compatibility is
+        allowed to be empty. Instances of this type with an empty value here are
+        almost certainly wrong.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+    optional : bool, default is Undefined, optional
+        Specify whether the Secret or its key must be defined
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema GrafanaIntegreatlyOrgV1beta1GrafanaDashboardSpecURLAuthorizationBasicAuthUsername:
+    r"""
+    SecretKeySelector selects a key of a Secret.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        The key of the secret to select from.  Must be a valid secret key.
+    name : str, default is Undefined, optional
+        Name of the referent.
+        This field is effectively required, but due to backwards compatibility is
+        allowed to be empty. Instances of this type with an empty value here are
+        almost certainly wrong.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+    optional : bool, default is Undefined, optional
+        Specify whether the Secret or its key must be defined
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema GrafanaIntegreatlyOrgV1beta1GrafanaDashboardStatus:
+    r"""
     GrafanaDashboardStatus defines the observed state of GrafanaDashboard
 
     Attributes
@@ -449,7 +543,7 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaDashboardStatus:
     NoMatchingInstances : bool, default is Undefined, optional
         The dashboard instanceSelector can't find matching grafana instances
     conditions : [GrafanaIntegreatlyOrgV1beta1GrafanaDashboardStatusConditionsItems0], default is Undefined, optional
-        conditions
+        Results when synchonizing resource with Grafana instances
     contentCache : str, default is Undefined, optional
         content cache
     contentTimestamp : str, default is Undefined, optional
@@ -459,7 +553,7 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaDashboardStatus:
     hash : str, default is Undefined, optional
         hash
     lastResync : str, default is Undefined, optional
-        Last time the dashboard was resynced
+        Last time the resource was synchronized with Grafana instances
     uid : str, default is Undefined, optional
         uid
     """
@@ -483,24 +577,8 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaDashboardStatus:
 
 
 schema GrafanaIntegreatlyOrgV1beta1GrafanaDashboardStatusConditionsItems0:
-    """
+    r"""
     Condition contains details for one aspect of the current state of this API Resource.
-    ---
-    This struct is intended for direct use as an array at the field path .status.conditions.  For example,
-
-
-    	type FooStatus struct{
-    	    // Represents the observations of a foo's current state.
-    	    // Known .status.conditions.type are: "Available", "Progressing", and "Degraded"
-    	    // +patchMergeKey=type
-    	    // +patchStrategy=merge
-    	    // +listType=map
-    	    // +listMapKey=type
-    	    Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`
-
-
-    	    // other fields
-    	}
 
     Attributes
     ----------
@@ -524,10 +602,6 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaDashboardStatusConditionsItems0:
         status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
         type of condition in CamelCase or in foo.example.com/CamelCase.
-        ---
-        Many .condition.type values are consistent across resources like Available, but because arbitrary conditions can be
-        useful (see .node.status.conditions), the ability to deconflict is important.
-        The regex it matches is (dns1123SubdomainFmt/)?(qualifiedNameFmt)
     """
 
 
@@ -546,11 +620,11 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaDashboardStatusConditionsItems0:
 
     check:
         len(message) <= 32768
-        observedGeneration >= 0
+        observedGeneration >= 0 if observedGeneration not in [None, Undefined]
         len(reason) <= 1024
         len(reason) >= 1
-        regex_match(str(reason), r"^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$")
+        _regex_match(str(reason), r"^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$")
         len($type) <= 316
-        regex_match(str($type), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$")
+        _regex_match(str($type), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$")
 
 

@@ -1,0 +1,25 @@
+version: 0.1.2
+name: opentelemetry-operator
+displayName: opentelemetry-operator
+createdAt: "2025-08-09T14:27:46Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `opentelemetry-operator` with tag `0.1.2` as dependency
+  ```
+  kcl mod add opentelemetry-operator:0.1.2
+  ```
+
+  #### Pull `opentelemetry-operator` with tag `0.1.2` to local
+  ```
+  kcl mod pull opentelemetry-operator:0.1.2
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

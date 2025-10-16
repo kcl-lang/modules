@@ -275,6 +275,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
         revision history limit
     source : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSource, default is Undefined, optional
         source
+    sourceHydrator : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydrator, default is Undefined, optional
+        source hydrator
     sources : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0], default is Undefined, optional
         sources
     syncPolicy : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSyncPolicy, default is Undefined, optional
@@ -293,6 +295,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
     revisionHistoryLimit?: int
 
     source?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSource
+
+    sourceHydrator?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydrator
 
     sources?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0]
 
@@ -391,6 +395,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceKustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcePlugin, default is Undefined, optional
@@ -411,6 +417,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
     helm?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHelm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceKustomize
+
+    name?: str
 
     path?: str
 
@@ -539,6 +547,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
@@ -567,6 +579,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -617,6 +633,82 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
     value?: str
 
 
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydrator:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 cluster decision resource template spec source hydrator
+
+    Attributes
+    ----------
+    drySource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydratorDrySource, default is Undefined, required
+        dry source
+    hydrateTo : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydratorHydrateTo, default is Undefined, optional
+        hydrate to
+    syncSource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydratorSyncSource, default is Undefined, required
+        sync source
+    """
+
+
+    drySource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydratorDrySource
+
+    hydrateTo?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydratorHydrateTo
+
+    syncSource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydratorSyncSource
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydratorDrySource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 cluster decision resource template spec source hydrator dry source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    repoURL : str, default is Undefined, required
+        repo URL
+    targetRevision : str, default is Undefined, required
+        target revision
+    """
+
+
+    path: str
+
+    repoURL: str
+
+    targetRevision: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydratorHydrateTo:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 cluster decision resource template spec source hydrator hydrate to
+
+    Attributes
+    ----------
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydratorSyncSource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 cluster decision resource template spec source hydrator sync source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    path: str
+
+    targetBranch: str
+
+
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceKustomize:
     r"""
     argoproj io v1alpha1 application set spec generators items0 cluster decision resource template spec source kustomize
@@ -637,10 +729,14 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
     kubeVersion : str, default is Undefined, optional
         kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
     labelWithoutSelector : bool, default is Undefined, optional
         label without selector
     namePrefix : str, default is Undefined, optional
@@ -672,9 +768,13 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -853,6 +953,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0Kustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0Plugin, default is Undefined, optional
@@ -873,6 +975,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
     helm?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0Helm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0Kustomize
+
+    name?: str
 
     path?: str
 
@@ -1001,6 +1105,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
@@ -1029,6 +1137,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -1099,10 +1211,14 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
     kubeVersion : str, default is Undefined, optional
         kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
     labelWithoutSelector : bool, default is Undefined, optional
         label without selector
     namePrefix : str, default is Undefined, optional
@@ -1134,9 +1250,13 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -1335,6 +1455,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
     ----------
     allowEmpty : bool, default is Undefined, optional
         allow empty
+    enabled : bool, default is Undefined, optional
+        enabled
     prune : bool, default is Undefined, optional
         prune
     selfHeal : bool, default is Undefined, optional
@@ -1343,6 +1465,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClusterDecisionResour
 
 
     allowEmpty?: bool
+
+    enabled?: bool
 
     prune?: bool
 
@@ -1413,6 +1537,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0Clusters:
 
     Attributes
     ----------
+    flatList : bool, default is Undefined, optional
+        flat list
     selector : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersSelector, default is Undefined, optional
         selector
     template : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplate, default is Undefined, optional
@@ -1421,6 +1547,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0Clusters:
         values
     """
 
+
+    flatList?: bool
 
     selector?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersSelector
 
@@ -1535,6 +1663,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpec:
         revision history limit
     source : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSource, default is Undefined, optional
         source
+    sourceHydrator : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourceHydrator, default is Undefined, optional
+        source hydrator
     sources : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourcesItems0], default is Undefined, optional
         sources
     syncPolicy : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSyncPolicy, default is Undefined, optional
@@ -1553,6 +1683,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpec:
     revisionHistoryLimit?: int
 
     source?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSource
+
+    sourceHydrator?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourceHydrator
 
     sources?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourcesItems0]
 
@@ -1651,6 +1783,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecS
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourceKustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourcePlugin, default is Undefined, optional
@@ -1671,6 +1805,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecS
     helm?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourceHelm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourceKustomize
+
+    name?: str
 
     path?: str
 
@@ -1799,6 +1935,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecS
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
@@ -1827,6 +1967,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecS
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -1877,6 +2021,82 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecS
     value?: str
 
 
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourceHydrator:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 clusters template spec source hydrator
+
+    Attributes
+    ----------
+    drySource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourceHydratorDrySource, default is Undefined, required
+        dry source
+    hydrateTo : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourceHydratorHydrateTo, default is Undefined, optional
+        hydrate to
+    syncSource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourceHydratorSyncSource, default is Undefined, required
+        sync source
+    """
+
+
+    drySource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourceHydratorDrySource
+
+    hydrateTo?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourceHydratorHydrateTo
+
+    syncSource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourceHydratorSyncSource
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourceHydratorDrySource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 clusters template spec source hydrator dry source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    repoURL : str, default is Undefined, required
+        repo URL
+    targetRevision : str, default is Undefined, required
+        target revision
+    """
+
+
+    path: str
+
+    repoURL: str
+
+    targetRevision: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourceHydratorHydrateTo:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 clusters template spec source hydrator hydrate to
+
+    Attributes
+    ----------
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourceHydratorSyncSource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 clusters template spec source hydrator sync source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    path: str
+
+    targetBranch: str
+
+
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourceKustomize:
     r"""
     argoproj io v1alpha1 application set spec generators items0 clusters template spec source kustomize
@@ -1897,10 +2117,14 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecS
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
     kubeVersion : str, default is Undefined, optional
         kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
     labelWithoutSelector : bool, default is Undefined, optional
         label without selector
     namePrefix : str, default is Undefined, optional
@@ -1932,9 +2156,13 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecS
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -2113,6 +2341,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecS
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourcesItems0Kustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourcesItems0Plugin, default is Undefined, optional
@@ -2133,6 +2363,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecS
     helm?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourcesItems0Helm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecSourcesItems0Kustomize
+
+    name?: str
 
     path?: str
 
@@ -2261,6 +2493,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecS
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
@@ -2289,6 +2525,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecS
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -2359,10 +2599,14 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecS
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
     kubeVersion : str, default is Undefined, optional
         kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
     labelWithoutSelector : bool, default is Undefined, optional
         label without selector
     namePrefix : str, default is Undefined, optional
@@ -2394,9 +2638,13 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecS
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -2595,6 +2843,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecS
     ----------
     allowEmpty : bool, default is Undefined, optional
         allow empty
+    enabled : bool, default is Undefined, optional
+        enabled
     prune : bool, default is Undefined, optional
         prune
     selfHeal : bool, default is Undefined, optional
@@ -2603,6 +2853,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ClustersTemplateSpecS
 
 
     allowEmpty?: bool
+
+    enabled?: bool
 
     prune?: bool
 
@@ -2733,10 +2985,14 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitFilesItems0:
 
     Attributes
     ----------
+    exclude : bool, default is Undefined, optional
+        exclude
     path : str, default is Undefined, required
         path
     """
 
+
+    exclude?: bool
 
     path: str
 
@@ -2807,6 +3063,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpec:
         revision history limit
     source : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSource, default is Undefined, optional
         source
+    sourceHydrator : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourceHydrator, default is Undefined, optional
+        source hydrator
     sources : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourcesItems0], default is Undefined, optional
         sources
     syncPolicy : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSyncPolicy, default is Undefined, optional
@@ -2825,6 +3083,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpec:
     revisionHistoryLimit?: int
 
     source?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSource
+
+    sourceHydrator?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourceHydrator
 
     sources?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourcesItems0]
 
@@ -2923,6 +3183,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSource
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourceKustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourcePlugin, default is Undefined, optional
@@ -2943,6 +3205,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSource
     helm?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourceHelm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourceKustomize
+
+    name?: str
 
     path?: str
 
@@ -3071,6 +3335,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSource
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
@@ -3099,6 +3367,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSource
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -3149,6 +3421,82 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSource
     value?: str
 
 
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourceHydrator:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 git template spec source hydrator
+
+    Attributes
+    ----------
+    drySource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourceHydratorDrySource, default is Undefined, required
+        dry source
+    hydrateTo : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourceHydratorHydrateTo, default is Undefined, optional
+        hydrate to
+    syncSource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourceHydratorSyncSource, default is Undefined, required
+        sync source
+    """
+
+
+    drySource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourceHydratorDrySource
+
+    hydrateTo?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourceHydratorHydrateTo
+
+    syncSource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourceHydratorSyncSource
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourceHydratorDrySource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 git template spec source hydrator dry source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    repoURL : str, default is Undefined, required
+        repo URL
+    targetRevision : str, default is Undefined, required
+        target revision
+    """
+
+
+    path: str
+
+    repoURL: str
+
+    targetRevision: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourceHydratorHydrateTo:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 git template spec source hydrator hydrate to
+
+    Attributes
+    ----------
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourceHydratorSyncSource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 git template spec source hydrator sync source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    path: str
+
+    targetBranch: str
+
+
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourceKustomize:
     r"""
     argoproj io v1alpha1 application set spec generators items0 git template spec source kustomize
@@ -3169,10 +3517,14 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSource
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
     kubeVersion : str, default is Undefined, optional
         kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
     labelWithoutSelector : bool, default is Undefined, optional
         label without selector
     namePrefix : str, default is Undefined, optional
@@ -3204,9 +3556,13 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSource
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -3385,6 +3741,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSource
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourcesItems0Kustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourcesItems0Plugin, default is Undefined, optional
@@ -3405,6 +3763,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSource
     helm?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourcesItems0Helm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSourcesItems0Kustomize
+
+    name?: str
 
     path?: str
 
@@ -3533,6 +3893,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSource
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
@@ -3561,6 +3925,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSource
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -3631,10 +3999,14 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSource
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
     kubeVersion : str, default is Undefined, optional
         kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
     labelWithoutSelector : bool, default is Undefined, optional
         label without selector
     namePrefix : str, default is Undefined, optional
@@ -3666,9 +4038,13 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSource
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -3867,6 +4243,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSyncPo
     ----------
     allowEmpty : bool, default is Undefined, optional
         allow empty
+    enabled : bool, default is Undefined, optional
+        enabled
     prune : bool, default is Undefined, optional
         prune
     selfHeal : bool, default is Undefined, optional
@@ -3875,6 +4253,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0GitTemplateSpecSyncPo
 
 
     allowEmpty?: bool
+
+    enabled?: bool
 
     prune?: bool
 
@@ -4027,6 +4407,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpec:
         revision history limit
     source : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSource, default is Undefined, optional
         source
+    sourceHydrator : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourceHydrator, default is Undefined, optional
+        source hydrator
     sources : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourcesItems0], default is Undefined, optional
         sources
     syncPolicy : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSyncPolicy, default is Undefined, optional
@@ -4045,6 +4427,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpec:
     revisionHistoryLimit?: int
 
     source?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSource
+
+    sourceHydrator?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourceHydrator
 
     sources?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourcesItems0]
 
@@ -4143,6 +4527,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourc
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourceKustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourcePlugin, default is Undefined, optional
@@ -4163,6 +4549,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourc
     helm?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourceHelm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourceKustomize
+
+    name?: str
 
     path?: str
 
@@ -4291,6 +4679,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourc
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
@@ -4319,6 +4711,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourc
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -4369,6 +4765,82 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourc
     value?: str
 
 
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourceHydrator:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 list template spec source hydrator
+
+    Attributes
+    ----------
+    drySource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourceHydratorDrySource, default is Undefined, required
+        dry source
+    hydrateTo : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourceHydratorHydrateTo, default is Undefined, optional
+        hydrate to
+    syncSource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourceHydratorSyncSource, default is Undefined, required
+        sync source
+    """
+
+
+    drySource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourceHydratorDrySource
+
+    hydrateTo?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourceHydratorHydrateTo
+
+    syncSource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourceHydratorSyncSource
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourceHydratorDrySource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 list template spec source hydrator dry source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    repoURL : str, default is Undefined, required
+        repo URL
+    targetRevision : str, default is Undefined, required
+        target revision
+    """
+
+
+    path: str
+
+    repoURL: str
+
+    targetRevision: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourceHydratorHydrateTo:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 list template spec source hydrator hydrate to
+
+    Attributes
+    ----------
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourceHydratorSyncSource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 list template spec source hydrator sync source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    path: str
+
+    targetBranch: str
+
+
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourceKustomize:
     r"""
     argoproj io v1alpha1 application set spec generators items0 list template spec source kustomize
@@ -4389,10 +4861,14 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourc
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
     kubeVersion : str, default is Undefined, optional
         kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
     labelWithoutSelector : bool, default is Undefined, optional
         label without selector
     namePrefix : str, default is Undefined, optional
@@ -4424,9 +4900,13 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourc
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -4605,6 +5085,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourc
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourcesItems0Kustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourcesItems0Plugin, default is Undefined, optional
@@ -4625,6 +5107,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourc
     helm?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourcesItems0Helm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourcesItems0Kustomize
+
+    name?: str
 
     path?: str
 
@@ -4753,6 +5237,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourc
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
@@ -4781,6 +5269,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourc
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -4851,10 +5343,14 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourc
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
     kubeVersion : str, default is Undefined, optional
         kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
     labelWithoutSelector : bool, default is Undefined, optional
         label without selector
     namePrefix : str, default is Undefined, optional
@@ -4886,9 +5382,13 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSourc
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -5087,6 +5587,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSyncP
     ----------
     allowEmpty : bool, default is Undefined, optional
         allow empty
+    enabled : bool, default is Undefined, optional
+        enabled
     prune : bool, default is Undefined, optional
         prune
     selfHeal : bool, default is Undefined, optional
@@ -5095,6 +5597,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ListTemplateSpecSyncP
 
 
     allowEmpty?: bool
+
+    enabled?: bool
 
     prune?: bool
 
@@ -5367,6 +5871,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         revision history limit
     source : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSource, default is Undefined, optional
         source
+    sourceHydrator : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydrator, default is Undefined, optional
+        source hydrator
     sources : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0], default is Undefined, optional
         sources
     syncPolicy : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSyncPolicy, default is Undefined, optional
@@ -5385,6 +5891,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     revisionHistoryLimit?: int
 
     source?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSource
+
+    sourceHydrator?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydrator
 
     sources?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0]
 
@@ -5483,6 +5991,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceKustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcePlugin, default is Undefined, optional
@@ -5503,6 +6013,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     helm?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHelm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceKustomize
+
+    name?: str
 
     path?: str
 
@@ -5631,6 +6143,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
@@ -5659,6 +6175,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -5709,6 +6229,82 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     value?: str
 
 
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydrator:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 cluster decision resource template spec source hydrator
+
+    Attributes
+    ----------
+    drySource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydratorDrySource, default is Undefined, required
+        dry source
+    hydrateTo : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydratorHydrateTo, default is Undefined, optional
+        hydrate to
+    syncSource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydratorSyncSource, default is Undefined, required
+        sync source
+    """
+
+
+    drySource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydratorDrySource
+
+    hydrateTo?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydratorHydrateTo
+
+    syncSource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydratorSyncSource
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydratorDrySource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 cluster decision resource template spec source hydrator dry source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    repoURL : str, default is Undefined, required
+        repo URL
+    targetRevision : str, default is Undefined, required
+        target revision
+    """
+
+
+    path: str
+
+    repoURL: str
+
+    targetRevision: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydratorHydrateTo:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 cluster decision resource template spec source hydrator hydrate to
+
+    Attributes
+    ----------
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydratorSyncSource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 cluster decision resource template spec source hydrator sync source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    path: str
+
+    targetBranch: str
+
+
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceKustomize:
     r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 cluster decision resource template spec source kustomize
@@ -5729,10 +6325,14 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
     kubeVersion : str, default is Undefined, optional
         kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
     labelWithoutSelector : bool, default is Undefined, optional
         label without selector
     namePrefix : str, default is Undefined, optional
@@ -5764,9 +6364,13 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -5945,6 +6549,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0Kustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0Plugin, default is Undefined, optional
@@ -5965,6 +6571,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     helm?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0Helm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0Kustomize
+
+    name?: str
 
     path?: str
 
@@ -6093,6 +6701,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
@@ -6121,6 +6733,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -6191,10 +6807,14 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
     kubeVersion : str, default is Undefined, optional
         kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
     labelWithoutSelector : bool, default is Undefined, optional
         label without selector
     namePrefix : str, default is Undefined, optional
@@ -6226,9 +6846,13 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -6427,6 +7051,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     ----------
     allowEmpty : bool, default is Undefined, optional
         allow empty
+    enabled : bool, default is Undefined, optional
+        enabled
     prune : bool, default is Undefined, optional
         prune
     selfHeal : bool, default is Undefined, optional
@@ -6435,6 +7061,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
     allowEmpty?: bool
+
+    enabled?: bool
 
     prune?: bool
 
@@ -6505,6 +7133,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     Attributes
     ----------
+    flatList : bool, default is Undefined, optional
+        flat list
     selector : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersSelector, default is Undefined, optional
         selector
     template : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplate, default is Undefined, optional
@@ -6513,6 +7143,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         values
     """
 
+
+    flatList?: bool
 
     selector?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersSelector
 
@@ -6627,6 +7259,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         revision history limit
     source : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSource, default is Undefined, optional
         source
+    sourceHydrator : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourceHydrator, default is Undefined, optional
+        source hydrator
     sources : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourcesItems0], default is Undefined, optional
         sources
     syncPolicy : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSyncPolicy, default is Undefined, optional
@@ -6645,6 +7279,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     revisionHistoryLimit?: int
 
     source?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSource
+
+    sourceHydrator?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourceHydrator
 
     sources?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourcesItems0]
 
@@ -6743,6 +7379,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourceKustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourcePlugin, default is Undefined, optional
@@ -6763,6 +7401,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     helm?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourceHelm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourceKustomize
+
+    name?: str
 
     path?: str
 
@@ -6891,6 +7531,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
@@ -6919,6 +7563,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -6969,6 +7617,82 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     value?: str
 
 
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourceHydrator:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 clusters template spec source hydrator
+
+    Attributes
+    ----------
+    drySource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourceHydratorDrySource, default is Undefined, required
+        dry source
+    hydrateTo : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourceHydratorHydrateTo, default is Undefined, optional
+        hydrate to
+    syncSource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourceHydratorSyncSource, default is Undefined, required
+        sync source
+    """
+
+
+    drySource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourceHydratorDrySource
+
+    hydrateTo?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourceHydratorHydrateTo
+
+    syncSource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourceHydratorSyncSource
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourceHydratorDrySource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 clusters template spec source hydrator dry source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    repoURL : str, default is Undefined, required
+        repo URL
+    targetRevision : str, default is Undefined, required
+        target revision
+    """
+
+
+    path: str
+
+    repoURL: str
+
+    targetRevision: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourceHydratorHydrateTo:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 clusters template spec source hydrator hydrate to
+
+    Attributes
+    ----------
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourceHydratorSyncSource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 clusters template spec source hydrator sync source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    path: str
+
+    targetBranch: str
+
+
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourceKustomize:
     r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 clusters template spec source kustomize
@@ -6989,10 +7713,14 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
     kubeVersion : str, default is Undefined, optional
         kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
     labelWithoutSelector : bool, default is Undefined, optional
         label without selector
     namePrefix : str, default is Undefined, optional
@@ -7024,9 +7752,13 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -7205,6 +7937,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourcesItems0Kustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourcesItems0Plugin, default is Undefined, optional
@@ -7225,6 +7959,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     helm?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourcesItems0Helm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ClustersTemplateSpecSourcesItems0Kustomize
+
+    name?: str
 
     path?: str
 
@@ -7353,6 +8089,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
@@ -7381,6 +8121,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -7451,10 +8195,14 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
     kubeVersion : str, default is Undefined, optional
         kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
     labelWithoutSelector : bool, default is Undefined, optional
         label without selector
     namePrefix : str, default is Undefined, optional
@@ -7486,9 +8234,13 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -7687,6 +8439,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     ----------
     allowEmpty : bool, default is Undefined, optional
         allow empty
+    enabled : bool, default is Undefined, optional
+        enabled
     prune : bool, default is Undefined, optional
         prune
     selfHeal : bool, default is Undefined, optional
@@ -7695,6 +8449,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
     allowEmpty?: bool
+
+    enabled?: bool
 
     prune?: bool
 
@@ -7825,10 +8581,14 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     Attributes
     ----------
+    exclude : bool, default is Undefined, optional
+        exclude
     path : str, default is Undefined, required
         path
     """
 
+
+    exclude?: bool
 
     path: str
 
@@ -7899,6 +8659,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         revision history limit
     source : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSource, default is Undefined, optional
         source
+    sourceHydrator : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourceHydrator, default is Undefined, optional
+        source hydrator
     sources : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourcesItems0], default is Undefined, optional
         sources
     syncPolicy : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSyncPolicy, default is Undefined, optional
@@ -7917,6 +8679,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     revisionHistoryLimit?: int
 
     source?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSource
+
+    sourceHydrator?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourceHydrator
 
     sources?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourcesItems0]
 
@@ -8015,6 +8779,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourceKustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourcePlugin, default is Undefined, optional
@@ -8035,6 +8801,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     helm?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourceHelm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourceKustomize
+
+    name?: str
 
     path?: str
 
@@ -8163,6 +8931,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
@@ -8191,6 +8963,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -8241,6 +9017,82 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     value?: str
 
 
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourceHydrator:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 git template spec source hydrator
+
+    Attributes
+    ----------
+    drySource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourceHydratorDrySource, default is Undefined, required
+        dry source
+    hydrateTo : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourceHydratorHydrateTo, default is Undefined, optional
+        hydrate to
+    syncSource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourceHydratorSyncSource, default is Undefined, required
+        sync source
+    """
+
+
+    drySource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourceHydratorDrySource
+
+    hydrateTo?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourceHydratorHydrateTo
+
+    syncSource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourceHydratorSyncSource
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourceHydratorDrySource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 git template spec source hydrator dry source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    repoURL : str, default is Undefined, required
+        repo URL
+    targetRevision : str, default is Undefined, required
+        target revision
+    """
+
+
+    path: str
+
+    repoURL: str
+
+    targetRevision: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourceHydratorHydrateTo:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 git template spec source hydrator hydrate to
+
+    Attributes
+    ----------
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourceHydratorSyncSource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 git template spec source hydrator sync source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    path: str
+
+    targetBranch: str
+
+
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourceKustomize:
     r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 git template spec source kustomize
@@ -8261,10 +9113,14 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
     kubeVersion : str, default is Undefined, optional
         kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
     labelWithoutSelector : bool, default is Undefined, optional
         label without selector
     namePrefix : str, default is Undefined, optional
@@ -8296,9 +9152,13 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -8477,6 +9337,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourcesItems0Kustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourcesItems0Plugin, default is Undefined, optional
@@ -8497,6 +9359,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     helm?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourcesItems0Helm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0GitTemplateSpecSourcesItems0Kustomize
+
+    name?: str
 
     path?: str
 
@@ -8625,6 +9489,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
@@ -8653,6 +9521,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -8723,10 +9595,14 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
     kubeVersion : str, default is Undefined, optional
         kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
     labelWithoutSelector : bool, default is Undefined, optional
         label without selector
     namePrefix : str, default is Undefined, optional
@@ -8758,9 +9634,13 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -8959,6 +9839,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     ----------
     allowEmpty : bool, default is Undefined, optional
         allow empty
+    enabled : bool, default is Undefined, optional
+        enabled
     prune : bool, default is Undefined, optional
         prune
     selfHeal : bool, default is Undefined, optional
@@ -8967,6 +9849,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
     allowEmpty?: bool
+
+    enabled?: bool
 
     prune?: bool
 
@@ -9119,6 +10003,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         revision history limit
     source : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSource, default is Undefined, optional
         source
+    sourceHydrator : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourceHydrator, default is Undefined, optional
+        source hydrator
     sources : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourcesItems0], default is Undefined, optional
         sources
     syncPolicy : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSyncPolicy, default is Undefined, optional
@@ -9137,6 +10023,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     revisionHistoryLimit?: int
 
     source?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSource
+
+    sourceHydrator?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourceHydrator
 
     sources?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourcesItems0]
 
@@ -9235,6 +10123,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourceKustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourcePlugin, default is Undefined, optional
@@ -9255,6 +10145,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     helm?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourceHelm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourceKustomize
+
+    name?: str
 
     path?: str
 
@@ -9383,6 +10275,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
@@ -9411,6 +10307,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -9461,6 +10361,82 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     value?: str
 
 
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourceHydrator:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 list template spec source hydrator
+
+    Attributes
+    ----------
+    drySource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourceHydratorDrySource, default is Undefined, required
+        dry source
+    hydrateTo : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourceHydratorHydrateTo, default is Undefined, optional
+        hydrate to
+    syncSource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourceHydratorSyncSource, default is Undefined, required
+        sync source
+    """
+
+
+    drySource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourceHydratorDrySource
+
+    hydrateTo?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourceHydratorHydrateTo
+
+    syncSource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourceHydratorSyncSource
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourceHydratorDrySource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 list template spec source hydrator dry source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    repoURL : str, default is Undefined, required
+        repo URL
+    targetRevision : str, default is Undefined, required
+        target revision
+    """
+
+
+    path: str
+
+    repoURL: str
+
+    targetRevision: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourceHydratorHydrateTo:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 list template spec source hydrator hydrate to
+
+    Attributes
+    ----------
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourceHydratorSyncSource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 list template spec source hydrator sync source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    path: str
+
+    targetBranch: str
+
+
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourceKustomize:
     r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 list template spec source kustomize
@@ -9481,10 +10457,14 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
     kubeVersion : str, default is Undefined, optional
         kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
     labelWithoutSelector : bool, default is Undefined, optional
         label without selector
     namePrefix : str, default is Undefined, optional
@@ -9516,9 +10496,13 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -9697,6 +10681,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourcesItems0Kustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourcesItems0Plugin, default is Undefined, optional
@@ -9717,6 +10703,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     helm?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourcesItems0Helm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ListTemplateSpecSourcesItems0Kustomize
+
+    name?: str
 
     path?: str
 
@@ -9845,6 +10833,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
@@ -9873,6 +10865,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -9943,10 +10939,14 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
     kubeVersion : str, default is Undefined, optional
         kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
     labelWithoutSelector : bool, default is Undefined, optional
         label without selector
     namePrefix : str, default is Undefined, optional
@@ -9978,9 +10978,13 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -10179,6 +11183,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     ----------
     allowEmpty : bool, default is Undefined, optional
         allow empty
+    enabled : bool, default is Undefined, optional
+        enabled
     prune : bool, default is Undefined, optional
         prune
     selfHeal : bool, default is Undefined, optional
@@ -10187,6 +11193,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
     allowEmpty?: bool
+
+    enabled?: bool
 
     prune?: bool
 
@@ -10375,6 +11383,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         revision history limit
     source : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSource, default is Undefined, optional
         source
+    sourceHydrator : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceHydrator, default is Undefined, optional
+        source hydrator
     sources : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcesItems0], default is Undefined, optional
         sources
     syncPolicy : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSyncPolicy, default is Undefined, optional
@@ -10393,6 +11403,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     revisionHistoryLimit?: int
 
     source?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSource
+
+    sourceHydrator?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceHydrator
 
     sources?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcesItems0]
 
@@ -10491,6 +11503,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceKustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcePlugin, default is Undefined, optional
@@ -10511,6 +11525,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     helm?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceHelm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceKustomize
+
+    name?: str
 
     path?: str
 
@@ -10639,6 +11655,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
@@ -10667,6 +11687,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -10717,6 +11741,82 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     value?: str
 
 
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceHydrator:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 plugin template spec source hydrator
+
+    Attributes
+    ----------
+    drySource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceHydratorDrySource, default is Undefined, required
+        dry source
+    hydrateTo : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceHydratorHydrateTo, default is Undefined, optional
+        hydrate to
+    syncSource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceHydratorSyncSource, default is Undefined, required
+        sync source
+    """
+
+
+    drySource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceHydratorDrySource
+
+    hydrateTo?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceHydratorHydrateTo
+
+    syncSource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceHydratorSyncSource
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceHydratorDrySource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 plugin template spec source hydrator dry source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    repoURL : str, default is Undefined, required
+        repo URL
+    targetRevision : str, default is Undefined, required
+        target revision
+    """
+
+
+    path: str
+
+    repoURL: str
+
+    targetRevision: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceHydratorHydrateTo:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 plugin template spec source hydrator hydrate to
+
+    Attributes
+    ----------
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceHydratorSyncSource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 plugin template spec source hydrator sync source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    path: str
+
+    targetBranch: str
+
+
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourceKustomize:
     r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 plugin template spec source kustomize
@@ -10737,10 +11837,14 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
     kubeVersion : str, default is Undefined, optional
         kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
     labelWithoutSelector : bool, default is Undefined, optional
         label without selector
     namePrefix : str, default is Undefined, optional
@@ -10772,9 +11876,13 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -10953,6 +12061,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcesItems0Kustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcesItems0Plugin, default is Undefined, optional
@@ -10973,6 +12083,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     helm?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcesItems0Helm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PluginTemplateSpecSourcesItems0Kustomize
+
+    name?: str
 
     path?: str
 
@@ -11101,6 +12213,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
@@ -11129,6 +12245,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -11199,10 +12319,14 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
     kubeVersion : str, default is Undefined, optional
         kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
     labelWithoutSelector : bool, default is Undefined, optional
         label without selector
     namePrefix : str, default is Undefined, optional
@@ -11234,9 +12358,13 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -11435,6 +12563,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     ----------
     allowEmpty : bool, default is Undefined, optional
         allow empty
+    enabled : bool, default is Undefined, optional
+        enabled
     prune : bool, default is Undefined, optional
         prune
     selfHeal : bool, default is Undefined, optional
@@ -11443,6 +12573,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
     allowEmpty?: bool
+
+    enabled?: bool
 
     prune?: bool
 
@@ -11531,6 +12663,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         requeue after seconds
     template : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplate, default is Undefined, optional
         template
+    values : {str:str}, default is Undefined, optional
+        values
     """
 
 
@@ -11551,6 +12685,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     requeueAfterSeconds?: int
 
     template?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplate
+
+    values?: {str:str}
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestAzuredevops:
@@ -11855,6 +12991,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         api
     insecure : bool, default is Undefined, optional
         insecure
+    labels : [str], default is Undefined, optional
+        labels
     owner : str, default is Undefined, required
         owner
     repo : str, default is Undefined, required
@@ -11867,6 +13005,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     api: str
 
     insecure?: bool
+
+    labels?: [str]
 
     owner: str
 
@@ -12085,6 +13225,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         revision history limit
     source : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSource, default is Undefined, optional
         source
+    sourceHydrator : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourceHydrator, default is Undefined, optional
+        source hydrator
     sources : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourcesItems0], default is Undefined, optional
         sources
     syncPolicy : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSyncPolicy, default is Undefined, optional
@@ -12103,6 +13245,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     revisionHistoryLimit?: int
 
     source?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSource
+
+    sourceHydrator?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourceHydrator
 
     sources?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourcesItems0]
 
@@ -12201,6 +13345,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourceKustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourcePlugin, default is Undefined, optional
@@ -12221,6 +13367,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     helm?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourceHelm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourceKustomize
+
+    name?: str
 
     path?: str
 
@@ -12349,6 +13497,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
@@ -12377,6 +13529,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -12427,6 +13583,82 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     value?: str
 
 
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourceHydrator:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request template spec source hydrator
+
+    Attributes
+    ----------
+    drySource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourceHydratorDrySource, default is Undefined, required
+        dry source
+    hydrateTo : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourceHydratorHydrateTo, default is Undefined, optional
+        hydrate to
+    syncSource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourceHydratorSyncSource, default is Undefined, required
+        sync source
+    """
+
+
+    drySource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourceHydratorDrySource
+
+    hydrateTo?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourceHydratorHydrateTo
+
+    syncSource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourceHydratorSyncSource
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourceHydratorDrySource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request template spec source hydrator dry source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    repoURL : str, default is Undefined, required
+        repo URL
+    targetRevision : str, default is Undefined, required
+        target revision
+    """
+
+
+    path: str
+
+    repoURL: str
+
+    targetRevision: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourceHydratorHydrateTo:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request template spec source hydrator hydrate to
+
+    Attributes
+    ----------
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourceHydratorSyncSource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request template spec source hydrator sync source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    path: str
+
+    targetBranch: str
+
+
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourceKustomize:
     r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 pull request template spec source kustomize
@@ -12447,10 +13679,14 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
     kubeVersion : str, default is Undefined, optional
         kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
     labelWithoutSelector : bool, default is Undefined, optional
         label without selector
     namePrefix : str, default is Undefined, optional
@@ -12482,9 +13718,13 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -12663,6 +13903,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourcesItems0Kustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourcesItems0Plugin, default is Undefined, optional
@@ -12683,6 +13925,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     helm?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourcesItems0Helm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0PullRequestTemplateSpecSourcesItems0Kustomize
+
+    name?: str
 
     path?: str
 
@@ -12811,6 +14055,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
@@ -12839,6 +14087,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -12909,10 +14161,14 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
     kubeVersion : str, default is Undefined, optional
         kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
     labelWithoutSelector : bool, default is Undefined, optional
         label without selector
     namePrefix : str, default is Undefined, optional
@@ -12944,9 +14200,13 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -13145,6 +14405,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     ----------
     allowEmpty : bool, default is Undefined, optional
         allow empty
+    enabled : bool, default is Undefined, optional
+        enabled
     prune : bool, default is Undefined, optional
         prune
     selfHeal : bool, default is Undefined, optional
@@ -13153,6 +14415,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
     allowEmpty?: bool
+
+    enabled?: bool
 
     prune?: bool
 
@@ -13809,6 +15073,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         revision history limit
     source : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSource, default is Undefined, optional
         source
+    sourceHydrator : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourceHydrator, default is Undefined, optional
+        source hydrator
     sources : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourcesItems0], default is Undefined, optional
         sources
     syncPolicy : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSyncPolicy, default is Undefined, optional
@@ -13827,6 +15093,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     revisionHistoryLimit?: int
 
     source?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSource
+
+    sourceHydrator?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourceHydrator
 
     sources?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourcesItems0]
 
@@ -13925,6 +15193,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourceKustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourcePlugin, default is Undefined, optional
@@ -13945,6 +15215,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     helm?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourceHelm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourceKustomize
+
+    name?: str
 
     path?: str
 
@@ -14073,6 +15345,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
@@ -14101,6 +15377,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -14151,6 +15431,82 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     value?: str
 
 
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourceHydrator:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider template spec source hydrator
+
+    Attributes
+    ----------
+    drySource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourceHydratorDrySource, default is Undefined, required
+        dry source
+    hydrateTo : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourceHydratorHydrateTo, default is Undefined, optional
+        hydrate to
+    syncSource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourceHydratorSyncSource, default is Undefined, required
+        sync source
+    """
+
+
+    drySource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourceHydratorDrySource
+
+    hydrateTo?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourceHydratorHydrateTo
+
+    syncSource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourceHydratorSyncSource
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourceHydratorDrySource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider template spec source hydrator dry source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    repoURL : str, default is Undefined, required
+        repo URL
+    targetRevision : str, default is Undefined, required
+        target revision
+    """
+
+
+    path: str
+
+    repoURL: str
+
+    targetRevision: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourceHydratorHydrateTo:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider template spec source hydrator hydrate to
+
+    Attributes
+    ----------
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourceHydratorSyncSource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider template spec source hydrator sync source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    path: str
+
+    targetBranch: str
+
+
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourceKustomize:
     r"""
     argoproj io v1alpha1 application set spec generators items0 matrix generators items0 scm provider template spec source kustomize
@@ -14171,10 +15527,14 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
     kubeVersion : str, default is Undefined, optional
         kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
     labelWithoutSelector : bool, default is Undefined, optional
         label without selector
     namePrefix : str, default is Undefined, optional
@@ -14206,9 +15566,13 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -14387,6 +15751,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourcesItems0Kustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourcesItems0Plugin, default is Undefined, optional
@@ -14407,6 +15773,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     helm?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourcesItems0Helm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems0ScmProviderTemplateSpecSourcesItems0Kustomize
+
+    name?: str
 
     path?: str
 
@@ -14535,6 +15903,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
@@ -14563,6 +15935,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -14633,10 +16009,14 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
     kubeVersion : str, default is Undefined, optional
         kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
     labelWithoutSelector : bool, default is Undefined, optional
         label without selector
     namePrefix : str, default is Undefined, optional
@@ -14668,9 +16048,13 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -14869,6 +16253,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
     ----------
     allowEmpty : bool, default is Undefined, optional
         allow empty
+    enabled : bool, default is Undefined, optional
+        enabled
     prune : bool, default is Undefined, optional
         prune
     selfHeal : bool, default is Undefined, optional
@@ -14877,6 +16263,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixGeneratorsItems
 
 
     allowEmpty?: bool
+
+    enabled?: bool
 
     prune?: bool
 
@@ -15047,6 +16435,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpec:
         revision history limit
     source : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSource, default is Undefined, optional
         source
+    sourceHydrator : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourceHydrator, default is Undefined, optional
+        source hydrator
     sources : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourcesItems0], default is Undefined, optional
         sources
     syncPolicy : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSyncPolicy, default is Undefined, optional
@@ -15065,6 +16455,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpec:
     revisionHistoryLimit?: int
 
     source?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSource
+
+    sourceHydrator?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourceHydrator
 
     sources?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourcesItems0]
 
@@ -15163,6 +16555,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSou
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourceKustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourcePlugin, default is Undefined, optional
@@ -15183,6 +16577,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSou
     helm?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourceHelm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourceKustomize
+
+    name?: str
 
     path?: str
 
@@ -15311,6 +16707,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSou
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
@@ -15339,6 +16739,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSou
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -15389,6 +16793,82 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSou
     value?: str
 
 
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourceHydrator:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix template spec source hydrator
+
+    Attributes
+    ----------
+    drySource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourceHydratorDrySource, default is Undefined, required
+        dry source
+    hydrateTo : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourceHydratorHydrateTo, default is Undefined, optional
+        hydrate to
+    syncSource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourceHydratorSyncSource, default is Undefined, required
+        sync source
+    """
+
+
+    drySource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourceHydratorDrySource
+
+    hydrateTo?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourceHydratorHydrateTo
+
+    syncSource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourceHydratorSyncSource
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourceHydratorDrySource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix template spec source hydrator dry source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    repoURL : str, default is Undefined, required
+        repo URL
+    targetRevision : str, default is Undefined, required
+        target revision
+    """
+
+
+    path: str
+
+    repoURL: str
+
+    targetRevision: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourceHydratorHydrateTo:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix template spec source hydrator hydrate to
+
+    Attributes
+    ----------
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourceHydratorSyncSource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 matrix template spec source hydrator sync source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    path: str
+
+    targetBranch: str
+
+
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourceKustomize:
     r"""
     argoproj io v1alpha1 application set spec generators items0 matrix template spec source kustomize
@@ -15409,10 +16889,14 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSou
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
     kubeVersion : str, default is Undefined, optional
         kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
     labelWithoutSelector : bool, default is Undefined, optional
         label without selector
     namePrefix : str, default is Undefined, optional
@@ -15444,9 +16928,13 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSou
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -15625,6 +17113,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSou
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourcesItems0Kustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourcesItems0Plugin, default is Undefined, optional
@@ -15645,6 +17135,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSou
     helm?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourcesItems0Helm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSourcesItems0Kustomize
+
+    name?: str
 
     path?: str
 
@@ -15773,6 +17265,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSou
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
@@ -15801,6 +17297,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSou
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -15871,10 +17371,14 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSou
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
     kubeVersion : str, default is Undefined, optional
         kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
     labelWithoutSelector : bool, default is Undefined, optional
         label without selector
     namePrefix : str, default is Undefined, optional
@@ -15906,9 +17410,13 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSou
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -16107,6 +17615,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSyn
     ----------
     allowEmpty : bool, default is Undefined, optional
         allow empty
+    enabled : bool, default is Undefined, optional
+        enabled
     prune : bool, default is Undefined, optional
         prune
     selfHeal : bool, default is Undefined, optional
@@ -16115,6 +17625,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MatrixTemplateSpecSyn
 
 
     allowEmpty?: bool
+
+    enabled?: bool
 
     prune?: bool
 
@@ -16391,6 +17903,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         revision history limit
     source : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSource, default is Undefined, optional
         source
+    sourceHydrator : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydrator, default is Undefined, optional
+        source hydrator
     sources : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0], default is Undefined, optional
         sources
     syncPolicy : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSyncPolicy, default is Undefined, optional
@@ -16409,6 +17923,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     revisionHistoryLimit?: int
 
     source?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSource
+
+    sourceHydrator?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydrator
 
     sources?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0]
 
@@ -16507,6 +18023,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceKustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcePlugin, default is Undefined, optional
@@ -16527,6 +18045,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     helm?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHelm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceKustomize
+
+    name?: str
 
     path?: str
 
@@ -16655,6 +18175,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
@@ -16683,6 +18207,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -16733,6 +18261,82 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     value?: str
 
 
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydrator:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 cluster decision resource template spec source hydrator
+
+    Attributes
+    ----------
+    drySource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydratorDrySource, default is Undefined, required
+        dry source
+    hydrateTo : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydratorHydrateTo, default is Undefined, optional
+        hydrate to
+    syncSource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydratorSyncSource, default is Undefined, required
+        sync source
+    """
+
+
+    drySource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydratorDrySource
+
+    hydrateTo?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydratorHydrateTo
+
+    syncSource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydratorSyncSource
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydratorDrySource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 cluster decision resource template spec source hydrator dry source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    repoURL : str, default is Undefined, required
+        repo URL
+    targetRevision : str, default is Undefined, required
+        target revision
+    """
+
+
+    path: str
+
+    repoURL: str
+
+    targetRevision: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydratorHydrateTo:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 cluster decision resource template spec source hydrator hydrate to
+
+    Attributes
+    ----------
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceHydratorSyncSource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 cluster decision resource template spec source hydrator sync source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    path: str
+
+    targetBranch: str
+
+
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourceKustomize:
     r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 cluster decision resource template spec source kustomize
@@ -16753,10 +18357,14 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
     kubeVersion : str, default is Undefined, optional
         kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
     labelWithoutSelector : bool, default is Undefined, optional
         label without selector
     namePrefix : str, default is Undefined, optional
@@ -16788,9 +18396,13 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -16969,6 +18581,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0Kustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0Plugin, default is Undefined, optional
@@ -16989,6 +18603,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     helm?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0Helm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClusterDecisionResourceTemplateSpecSourcesItems0Kustomize
+
+    name?: str
 
     path?: str
 
@@ -17117,6 +18733,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
@@ -17145,6 +18765,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -17215,10 +18839,14 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
     kubeVersion : str, default is Undefined, optional
         kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
     labelWithoutSelector : bool, default is Undefined, optional
         label without selector
     namePrefix : str, default is Undefined, optional
@@ -17250,9 +18878,13 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -17451,6 +19083,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     ----------
     allowEmpty : bool, default is Undefined, optional
         allow empty
+    enabled : bool, default is Undefined, optional
+        enabled
     prune : bool, default is Undefined, optional
         prune
     selfHeal : bool, default is Undefined, optional
@@ -17459,6 +19093,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
     allowEmpty?: bool
+
+    enabled?: bool
 
     prune?: bool
 
@@ -17529,6 +19165,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     Attributes
     ----------
+    flatList : bool, default is Undefined, optional
+        flat list
     selector : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersSelector, default is Undefined, optional
         selector
     template : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplate, default is Undefined, optional
@@ -17537,6 +19175,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         values
     """
 
+
+    flatList?: bool
 
     selector?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersSelector
 
@@ -17651,6 +19291,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         revision history limit
     source : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSource, default is Undefined, optional
         source
+    sourceHydrator : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourceHydrator, default is Undefined, optional
+        source hydrator
     sources : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourcesItems0], default is Undefined, optional
         sources
     syncPolicy : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSyncPolicy, default is Undefined, optional
@@ -17669,6 +19311,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     revisionHistoryLimit?: int
 
     source?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSource
+
+    sourceHydrator?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourceHydrator
 
     sources?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourcesItems0]
 
@@ -17767,6 +19411,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourceKustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourcePlugin, default is Undefined, optional
@@ -17787,6 +19433,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     helm?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourceHelm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourceKustomize
+
+    name?: str
 
     path?: str
 
@@ -17915,6 +19563,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
@@ -17943,6 +19595,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -17993,6 +19649,82 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     value?: str
 
 
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourceHydrator:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 clusters template spec source hydrator
+
+    Attributes
+    ----------
+    drySource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourceHydratorDrySource, default is Undefined, required
+        dry source
+    hydrateTo : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourceHydratorHydrateTo, default is Undefined, optional
+        hydrate to
+    syncSource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourceHydratorSyncSource, default is Undefined, required
+        sync source
+    """
+
+
+    drySource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourceHydratorDrySource
+
+    hydrateTo?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourceHydratorHydrateTo
+
+    syncSource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourceHydratorSyncSource
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourceHydratorDrySource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 clusters template spec source hydrator dry source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    repoURL : str, default is Undefined, required
+        repo URL
+    targetRevision : str, default is Undefined, required
+        target revision
+    """
+
+
+    path: str
+
+    repoURL: str
+
+    targetRevision: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourceHydratorHydrateTo:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 clusters template spec source hydrator hydrate to
+
+    Attributes
+    ----------
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourceHydratorSyncSource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 clusters template spec source hydrator sync source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    path: str
+
+    targetBranch: str
+
+
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourceKustomize:
     r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 clusters template spec source kustomize
@@ -18013,10 +19745,14 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
     kubeVersion : str, default is Undefined, optional
         kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
     labelWithoutSelector : bool, default is Undefined, optional
         label without selector
     namePrefix : str, default is Undefined, optional
@@ -18048,9 +19784,13 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -18229,6 +19969,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourcesItems0Kustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourcesItems0Plugin, default is Undefined, optional
@@ -18249,6 +19991,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     helm?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourcesItems0Helm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ClustersTemplateSpecSourcesItems0Kustomize
+
+    name?: str
 
     path?: str
 
@@ -18377,6 +20121,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
@@ -18405,6 +20153,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -18475,10 +20227,14 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
     kubeVersion : str, default is Undefined, optional
         kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
     labelWithoutSelector : bool, default is Undefined, optional
         label without selector
     namePrefix : str, default is Undefined, optional
@@ -18510,9 +20266,13 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -18711,6 +20471,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     ----------
     allowEmpty : bool, default is Undefined, optional
         allow empty
+    enabled : bool, default is Undefined, optional
+        enabled
     prune : bool, default is Undefined, optional
         prune
     selfHeal : bool, default is Undefined, optional
@@ -18719,6 +20481,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
     allowEmpty?: bool
+
+    enabled?: bool
 
     prune?: bool
 
@@ -18849,10 +20613,14 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     Attributes
     ----------
+    exclude : bool, default is Undefined, optional
+        exclude
     path : str, default is Undefined, required
         path
     """
 
+
+    exclude?: bool
 
     path: str
 
@@ -18923,6 +20691,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         revision history limit
     source : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSource, default is Undefined, optional
         source
+    sourceHydrator : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourceHydrator, default is Undefined, optional
+        source hydrator
     sources : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourcesItems0], default is Undefined, optional
         sources
     syncPolicy : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSyncPolicy, default is Undefined, optional
@@ -18941,6 +20711,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     revisionHistoryLimit?: int
 
     source?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSource
+
+    sourceHydrator?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourceHydrator
 
     sources?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourcesItems0]
 
@@ -19039,6 +20811,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourceKustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourcePlugin, default is Undefined, optional
@@ -19059,6 +20833,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     helm?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourceHelm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourceKustomize
+
+    name?: str
 
     path?: str
 
@@ -19187,6 +20963,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
@@ -19215,6 +20995,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -19265,6 +21049,82 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     value?: str
 
 
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourceHydrator:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 git template spec source hydrator
+
+    Attributes
+    ----------
+    drySource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourceHydratorDrySource, default is Undefined, required
+        dry source
+    hydrateTo : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourceHydratorHydrateTo, default is Undefined, optional
+        hydrate to
+    syncSource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourceHydratorSyncSource, default is Undefined, required
+        sync source
+    """
+
+
+    drySource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourceHydratorDrySource
+
+    hydrateTo?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourceHydratorHydrateTo
+
+    syncSource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourceHydratorSyncSource
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourceHydratorDrySource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 git template spec source hydrator dry source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    repoURL : str, default is Undefined, required
+        repo URL
+    targetRevision : str, default is Undefined, required
+        target revision
+    """
+
+
+    path: str
+
+    repoURL: str
+
+    targetRevision: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourceHydratorHydrateTo:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 git template spec source hydrator hydrate to
+
+    Attributes
+    ----------
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourceHydratorSyncSource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 git template spec source hydrator sync source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    path: str
+
+    targetBranch: str
+
+
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourceKustomize:
     r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 git template spec source kustomize
@@ -19285,10 +21145,14 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
     kubeVersion : str, default is Undefined, optional
         kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
     labelWithoutSelector : bool, default is Undefined, optional
         label without selector
     namePrefix : str, default is Undefined, optional
@@ -19320,9 +21184,13 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -19501,6 +21369,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourcesItems0Kustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourcesItems0Plugin, default is Undefined, optional
@@ -19521,6 +21391,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     helm?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourcesItems0Helm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0GitTemplateSpecSourcesItems0Kustomize
+
+    name?: str
 
     path?: str
 
@@ -19649,6 +21521,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
@@ -19677,6 +21553,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -19747,10 +21627,14 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
     kubeVersion : str, default is Undefined, optional
         kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
     labelWithoutSelector : bool, default is Undefined, optional
         label without selector
     namePrefix : str, default is Undefined, optional
@@ -19782,9 +21666,13 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -19983,6 +21871,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     ----------
     allowEmpty : bool, default is Undefined, optional
         allow empty
+    enabled : bool, default is Undefined, optional
+        enabled
     prune : bool, default is Undefined, optional
         prune
     selfHeal : bool, default is Undefined, optional
@@ -19991,6 +21881,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
     allowEmpty?: bool
+
+    enabled?: bool
 
     prune?: bool
 
@@ -20143,6 +22035,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         revision history limit
     source : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSource, default is Undefined, optional
         source
+    sourceHydrator : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourceHydrator, default is Undefined, optional
+        source hydrator
     sources : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourcesItems0], default is Undefined, optional
         sources
     syncPolicy : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSyncPolicy, default is Undefined, optional
@@ -20161,6 +22055,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     revisionHistoryLimit?: int
 
     source?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSource
+
+    sourceHydrator?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourceHydrator
 
     sources?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourcesItems0]
 
@@ -20259,6 +22155,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourceKustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourcePlugin, default is Undefined, optional
@@ -20279,6 +22177,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     helm?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourceHelm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourceKustomize
+
+    name?: str
 
     path?: str
 
@@ -20407,6 +22307,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
@@ -20435,6 +22339,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -20485,6 +22393,82 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     value?: str
 
 
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourceHydrator:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 list template spec source hydrator
+
+    Attributes
+    ----------
+    drySource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourceHydratorDrySource, default is Undefined, required
+        dry source
+    hydrateTo : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourceHydratorHydrateTo, default is Undefined, optional
+        hydrate to
+    syncSource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourceHydratorSyncSource, default is Undefined, required
+        sync source
+    """
+
+
+    drySource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourceHydratorDrySource
+
+    hydrateTo?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourceHydratorHydrateTo
+
+    syncSource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourceHydratorSyncSource
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourceHydratorDrySource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 list template spec source hydrator dry source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    repoURL : str, default is Undefined, required
+        repo URL
+    targetRevision : str, default is Undefined, required
+        target revision
+    """
+
+
+    path: str
+
+    repoURL: str
+
+    targetRevision: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourceHydratorHydrateTo:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 list template spec source hydrator hydrate to
+
+    Attributes
+    ----------
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourceHydratorSyncSource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 list template spec source hydrator sync source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    path: str
+
+    targetBranch: str
+
+
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourceKustomize:
     r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 list template spec source kustomize
@@ -20505,10 +22489,14 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
     kubeVersion : str, default is Undefined, optional
         kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
     labelWithoutSelector : bool, default is Undefined, optional
         label without selector
     namePrefix : str, default is Undefined, optional
@@ -20540,9 +22528,13 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -20721,6 +22713,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourcesItems0Kustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourcesItems0Plugin, default is Undefined, optional
@@ -20741,6 +22735,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     helm?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourcesItems0Helm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ListTemplateSpecSourcesItems0Kustomize
+
+    name?: str
 
     path?: str
 
@@ -20869,6 +22865,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
@@ -20897,6 +22897,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -20967,10 +22971,14 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
     kubeVersion : str, default is Undefined, optional
         kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
     labelWithoutSelector : bool, default is Undefined, optional
         label without selector
     namePrefix : str, default is Undefined, optional
@@ -21002,9 +23010,13 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -21203,6 +23215,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     ----------
     allowEmpty : bool, default is Undefined, optional
         allow empty
+    enabled : bool, default is Undefined, optional
+        enabled
     prune : bool, default is Undefined, optional
         prune
     selfHeal : bool, default is Undefined, optional
@@ -21211,6 +23225,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
     allowEmpty?: bool
+
+    enabled?: bool
 
     prune?: bool
 
@@ -21399,6 +23415,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         revision history limit
     source : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSource, default is Undefined, optional
         source
+    sourceHydrator : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceHydrator, default is Undefined, optional
+        source hydrator
     sources : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcesItems0], default is Undefined, optional
         sources
     syncPolicy : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSyncPolicy, default is Undefined, optional
@@ -21417,6 +23435,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     revisionHistoryLimit?: int
 
     source?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSource
+
+    sourceHydrator?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceHydrator
 
     sources?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcesItems0]
 
@@ -21515,6 +23535,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceKustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcePlugin, default is Undefined, optional
@@ -21535,6 +23557,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     helm?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceHelm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceKustomize
+
+    name?: str
 
     path?: str
 
@@ -21663,6 +23687,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
@@ -21691,6 +23719,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -21741,6 +23773,82 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     value?: str
 
 
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceHydrator:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 plugin template spec source hydrator
+
+    Attributes
+    ----------
+    drySource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceHydratorDrySource, default is Undefined, required
+        dry source
+    hydrateTo : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceHydratorHydrateTo, default is Undefined, optional
+        hydrate to
+    syncSource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceHydratorSyncSource, default is Undefined, required
+        sync source
+    """
+
+
+    drySource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceHydratorDrySource
+
+    hydrateTo?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceHydratorHydrateTo
+
+    syncSource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceHydratorSyncSource
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceHydratorDrySource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 plugin template spec source hydrator dry source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    repoURL : str, default is Undefined, required
+        repo URL
+    targetRevision : str, default is Undefined, required
+        target revision
+    """
+
+
+    path: str
+
+    repoURL: str
+
+    targetRevision: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceHydratorHydrateTo:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 plugin template spec source hydrator hydrate to
+
+    Attributes
+    ----------
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceHydratorSyncSource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 plugin template spec source hydrator sync source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    path: str
+
+    targetBranch: str
+
+
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourceKustomize:
     r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 plugin template spec source kustomize
@@ -21761,10 +23869,14 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
     kubeVersion : str, default is Undefined, optional
         kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
     labelWithoutSelector : bool, default is Undefined, optional
         label without selector
     namePrefix : str, default is Undefined, optional
@@ -21796,9 +23908,13 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -21977,6 +24093,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcesItems0Kustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcesItems0Plugin, default is Undefined, optional
@@ -21997,6 +24115,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     helm?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcesItems0Helm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PluginTemplateSpecSourcesItems0Kustomize
+
+    name?: str
 
     path?: str
 
@@ -22125,6 +24245,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
@@ -22153,6 +24277,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -22223,10 +24351,14 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
     kubeVersion : str, default is Undefined, optional
         kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
     labelWithoutSelector : bool, default is Undefined, optional
         label without selector
     namePrefix : str, default is Undefined, optional
@@ -22258,9 +24390,13 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -22459,6 +24595,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     ----------
     allowEmpty : bool, default is Undefined, optional
         allow empty
+    enabled : bool, default is Undefined, optional
+        enabled
     prune : bool, default is Undefined, optional
         prune
     selfHeal : bool, default is Undefined, optional
@@ -22467,6 +24605,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
     allowEmpty?: bool
+
+    enabled?: bool
 
     prune?: bool
 
@@ -22555,6 +24695,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         requeue after seconds
     template : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplate, default is Undefined, optional
         template
+    values : {str:str}, default is Undefined, optional
+        values
     """
 
 
@@ -22575,6 +24717,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     requeueAfterSeconds?: int
 
     template?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplate
+
+    values?: {str:str}
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestAzuredevops:
@@ -22879,6 +25023,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         api
     insecure : bool, default is Undefined, optional
         insecure
+    labels : [str], default is Undefined, optional
+        labels
     owner : str, default is Undefined, required
         owner
     repo : str, default is Undefined, required
@@ -22891,6 +25037,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     api: str
 
     insecure?: bool
+
+    labels?: [str]
 
     owner: str
 
@@ -23109,6 +25257,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         revision history limit
     source : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSource, default is Undefined, optional
         source
+    sourceHydrator : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourceHydrator, default is Undefined, optional
+        source hydrator
     sources : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourcesItems0], default is Undefined, optional
         sources
     syncPolicy : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSyncPolicy, default is Undefined, optional
@@ -23127,6 +25277,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     revisionHistoryLimit?: int
 
     source?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSource
+
+    sourceHydrator?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourceHydrator
 
     sources?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourcesItems0]
 
@@ -23225,6 +25377,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourceKustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourcePlugin, default is Undefined, optional
@@ -23245,6 +25399,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     helm?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourceHelm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourceKustomize
+
+    name?: str
 
     path?: str
 
@@ -23373,6 +25529,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
@@ -23401,6 +25561,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -23451,6 +25615,82 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     value?: str
 
 
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourceHydrator:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request template spec source hydrator
+
+    Attributes
+    ----------
+    drySource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourceHydratorDrySource, default is Undefined, required
+        dry source
+    hydrateTo : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourceHydratorHydrateTo, default is Undefined, optional
+        hydrate to
+    syncSource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourceHydratorSyncSource, default is Undefined, required
+        sync source
+    """
+
+
+    drySource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourceHydratorDrySource
+
+    hydrateTo?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourceHydratorHydrateTo
+
+    syncSource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourceHydratorSyncSource
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourceHydratorDrySource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request template spec source hydrator dry source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    repoURL : str, default is Undefined, required
+        repo URL
+    targetRevision : str, default is Undefined, required
+        target revision
+    """
+
+
+    path: str
+
+    repoURL: str
+
+    targetRevision: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourceHydratorHydrateTo:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request template spec source hydrator hydrate to
+
+    Attributes
+    ----------
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourceHydratorSyncSource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request template spec source hydrator sync source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    path: str
+
+    targetBranch: str
+
+
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourceKustomize:
     r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 pull request template spec source kustomize
@@ -23471,10 +25711,14 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
     kubeVersion : str, default is Undefined, optional
         kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
     labelWithoutSelector : bool, default is Undefined, optional
         label without selector
     namePrefix : str, default is Undefined, optional
@@ -23506,9 +25750,13 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -23687,6 +25935,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourcesItems0Kustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourcesItems0Plugin, default is Undefined, optional
@@ -23707,6 +25957,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     helm?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourcesItems0Helm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0PullRequestTemplateSpecSourcesItems0Kustomize
+
+    name?: str
 
     path?: str
 
@@ -23835,6 +26087,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
@@ -23863,6 +26119,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -23933,10 +26193,14 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
     kubeVersion : str, default is Undefined, optional
         kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
     labelWithoutSelector : bool, default is Undefined, optional
         label without selector
     namePrefix : str, default is Undefined, optional
@@ -23968,9 +26232,13 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -24169,6 +26437,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     ----------
     allowEmpty : bool, default is Undefined, optional
         allow empty
+    enabled : bool, default is Undefined, optional
+        enabled
     prune : bool, default is Undefined, optional
         prune
     selfHeal : bool, default is Undefined, optional
@@ -24177,6 +26447,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
     allowEmpty?: bool
+
+    enabled?: bool
 
     prune?: bool
 
@@ -24833,6 +27105,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         revision history limit
     source : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSource, default is Undefined, optional
         source
+    sourceHydrator : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourceHydrator, default is Undefined, optional
+        source hydrator
     sources : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourcesItems0], default is Undefined, optional
         sources
     syncPolicy : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSyncPolicy, default is Undefined, optional
@@ -24851,6 +27125,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     revisionHistoryLimit?: int
 
     source?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSource
+
+    sourceHydrator?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourceHydrator
 
     sources?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourcesItems0]
 
@@ -24949,6 +27225,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourceKustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourcePlugin, default is Undefined, optional
@@ -24969,6 +27247,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     helm?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourceHelm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourceKustomize
+
+    name?: str
 
     path?: str
 
@@ -25097,6 +27377,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
@@ -25125,6 +27409,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -25175,6 +27463,82 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     value?: str
 
 
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourceHydrator:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider template spec source hydrator
+
+    Attributes
+    ----------
+    drySource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourceHydratorDrySource, default is Undefined, required
+        dry source
+    hydrateTo : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourceHydratorHydrateTo, default is Undefined, optional
+        hydrate to
+    syncSource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourceHydratorSyncSource, default is Undefined, required
+        sync source
+    """
+
+
+    drySource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourceHydratorDrySource
+
+    hydrateTo?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourceHydratorHydrateTo
+
+    syncSource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourceHydratorSyncSource
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourceHydratorDrySource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider template spec source hydrator dry source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    repoURL : str, default is Undefined, required
+        repo URL
+    targetRevision : str, default is Undefined, required
+        target revision
+    """
+
+
+    path: str
+
+    repoURL: str
+
+    targetRevision: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourceHydratorHydrateTo:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider template spec source hydrator hydrate to
+
+    Attributes
+    ----------
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourceHydratorSyncSource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider template spec source hydrator sync source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    path: str
+
+    targetBranch: str
+
+
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourceKustomize:
     r"""
     argoproj io v1alpha1 application set spec generators items0 merge generators items0 scm provider template spec source kustomize
@@ -25195,10 +27559,14 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
     kubeVersion : str, default is Undefined, optional
         kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
     labelWithoutSelector : bool, default is Undefined, optional
         label without selector
     namePrefix : str, default is Undefined, optional
@@ -25230,9 +27598,13 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -25411,6 +27783,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourcesItems0Kustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourcesItems0Plugin, default is Undefined, optional
@@ -25431,6 +27805,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     helm?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourcesItems0Helm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0ScmProviderTemplateSpecSourcesItems0Kustomize
+
+    name?: str
 
     path?: str
 
@@ -25559,6 +27935,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
@@ -25587,6 +27967,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -25657,10 +28041,14 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
     kubeVersion : str, default is Undefined, optional
         kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
     labelWithoutSelector : bool, default is Undefined, optional
         label without selector
     namePrefix : str, default is Undefined, optional
@@ -25692,9 +28080,13 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -25893,6 +28285,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
     ----------
     allowEmpty : bool, default is Undefined, optional
         allow empty
+    enabled : bool, default is Undefined, optional
+        enabled
     prune : bool, default is Undefined, optional
         prune
     selfHeal : bool, default is Undefined, optional
@@ -25901,6 +28295,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeGeneratorsItems0
 
 
     allowEmpty?: bool
+
+    enabled?: bool
 
     prune?: bool
 
@@ -26071,6 +28467,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpec:
         revision history limit
     source : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSource, default is Undefined, optional
         source
+    sourceHydrator : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourceHydrator, default is Undefined, optional
+        source hydrator
     sources : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourcesItems0], default is Undefined, optional
         sources
     syncPolicy : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSyncPolicy, default is Undefined, optional
@@ -26089,6 +28487,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpec:
     revisionHistoryLimit?: int
 
     source?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSource
+
+    sourceHydrator?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourceHydrator
 
     sources?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourcesItems0]
 
@@ -26187,6 +28587,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSour
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourceKustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourcePlugin, default is Undefined, optional
@@ -26207,6 +28609,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSour
     helm?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourceHelm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourceKustomize
+
+    name?: str
 
     path?: str
 
@@ -26335,6 +28739,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSour
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
@@ -26363,6 +28771,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSour
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -26413,6 +28825,82 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSour
     value?: str
 
 
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourceHydrator:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge template spec source hydrator
+
+    Attributes
+    ----------
+    drySource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourceHydratorDrySource, default is Undefined, required
+        dry source
+    hydrateTo : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourceHydratorHydrateTo, default is Undefined, optional
+        hydrate to
+    syncSource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourceHydratorSyncSource, default is Undefined, required
+        sync source
+    """
+
+
+    drySource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourceHydratorDrySource
+
+    hydrateTo?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourceHydratorHydrateTo
+
+    syncSource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourceHydratorSyncSource
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourceHydratorDrySource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge template spec source hydrator dry source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    repoURL : str, default is Undefined, required
+        repo URL
+    targetRevision : str, default is Undefined, required
+        target revision
+    """
+
+
+    path: str
+
+    repoURL: str
+
+    targetRevision: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourceHydratorHydrateTo:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge template spec source hydrator hydrate to
+
+    Attributes
+    ----------
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourceHydratorSyncSource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 merge template spec source hydrator sync source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    path: str
+
+    targetBranch: str
+
+
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourceKustomize:
     r"""
     argoproj io v1alpha1 application set spec generators items0 merge template spec source kustomize
@@ -26433,10 +28921,14 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSour
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
     kubeVersion : str, default is Undefined, optional
         kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
     labelWithoutSelector : bool, default is Undefined, optional
         label without selector
     namePrefix : str, default is Undefined, optional
@@ -26468,9 +28960,13 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSour
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -26649,6 +29145,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSour
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourcesItems0Kustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourcesItems0Plugin, default is Undefined, optional
@@ -26669,6 +29167,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSour
     helm?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourcesItems0Helm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSourcesItems0Kustomize
+
+    name?: str
 
     path?: str
 
@@ -26797,6 +29297,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSour
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
@@ -26825,6 +29329,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSour
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -26895,10 +29403,14 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSour
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
     kubeVersion : str, default is Undefined, optional
         kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
     labelWithoutSelector : bool, default is Undefined, optional
         label without selector
     namePrefix : str, default is Undefined, optional
@@ -26930,9 +29442,13 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSour
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -27131,6 +29647,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSync
     ----------
     allowEmpty : bool, default is Undefined, optional
         allow empty
+    enabled : bool, default is Undefined, optional
+        enabled
     prune : bool, default is Undefined, optional
         prune
     selfHeal : bool, default is Undefined, optional
@@ -27139,6 +29657,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0MergeTemplateSpecSync
 
 
     allowEmpty?: bool
+
+    enabled?: bool
 
     prune?: bool
 
@@ -27327,6 +29847,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpec:
         revision history limit
     source : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSource, default is Undefined, optional
         source
+    sourceHydrator : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceHydrator, default is Undefined, optional
+        source hydrator
     sources : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcesItems0], default is Undefined, optional
         sources
     syncPolicy : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSyncPolicy, default is Undefined, optional
@@ -27345,6 +29867,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpec:
     revisionHistoryLimit?: int
 
     source?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSource
+
+    sourceHydrator?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceHydrator
 
     sources?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcesItems0]
 
@@ -27443,6 +29967,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSou
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceKustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcePlugin, default is Undefined, optional
@@ -27463,6 +29989,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSou
     helm?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceHelm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceKustomize
+
+    name?: str
 
     path?: str
 
@@ -27591,6 +30119,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSou
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
@@ -27619,6 +30151,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSou
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -27669,6 +30205,82 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSou
     value?: str
 
 
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceHydrator:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 plugin template spec source hydrator
+
+    Attributes
+    ----------
+    drySource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceHydratorDrySource, default is Undefined, required
+        dry source
+    hydrateTo : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceHydratorHydrateTo, default is Undefined, optional
+        hydrate to
+    syncSource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceHydratorSyncSource, default is Undefined, required
+        sync source
+    """
+
+
+    drySource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceHydratorDrySource
+
+    hydrateTo?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceHydratorHydrateTo
+
+    syncSource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceHydratorSyncSource
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceHydratorDrySource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 plugin template spec source hydrator dry source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    repoURL : str, default is Undefined, required
+        repo URL
+    targetRevision : str, default is Undefined, required
+        target revision
+    """
+
+
+    path: str
+
+    repoURL: str
+
+    targetRevision: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceHydratorHydrateTo:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 plugin template spec source hydrator hydrate to
+
+    Attributes
+    ----------
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceHydratorSyncSource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 plugin template spec source hydrator sync source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    path: str
+
+    targetBranch: str
+
+
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourceKustomize:
     r"""
     argoproj io v1alpha1 application set spec generators items0 plugin template spec source kustomize
@@ -27689,10 +30301,14 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSou
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
     kubeVersion : str, default is Undefined, optional
         kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
     labelWithoutSelector : bool, default is Undefined, optional
         label without selector
     namePrefix : str, default is Undefined, optional
@@ -27724,9 +30340,13 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSou
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -27905,6 +30525,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSou
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcesItems0Kustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcesItems0Plugin, default is Undefined, optional
@@ -27925,6 +30547,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSou
     helm?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcesItems0Helm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSourcesItems0Kustomize
+
+    name?: str
 
     path?: str
 
@@ -28053,6 +30677,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSou
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
@@ -28081,6 +30709,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSou
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -28151,10 +30783,14 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSou
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
     kubeVersion : str, default is Undefined, optional
         kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
     labelWithoutSelector : bool, default is Undefined, optional
         label without selector
     namePrefix : str, default is Undefined, optional
@@ -28186,9 +30822,13 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSou
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -28387,6 +31027,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSyn
     ----------
     allowEmpty : bool, default is Undefined, optional
         allow empty
+    enabled : bool, default is Undefined, optional
+        enabled
     prune : bool, default is Undefined, optional
         prune
     selfHeal : bool, default is Undefined, optional
@@ -28395,6 +31037,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PluginTemplateSpecSyn
 
 
     allowEmpty?: bool
+
+    enabled?: bool
 
     prune?: bool
 
@@ -28483,6 +31127,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequest:
         requeue after seconds
     template : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplate, default is Undefined, optional
         template
+    values : {str:str}, default is Undefined, optional
+        values
     """
 
 
@@ -28503,6 +31149,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequest:
     requeueAfterSeconds?: int
 
     template?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplate
+
+    values?: {str:str}
 
 
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestAzuredevops:
@@ -28807,6 +31455,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestGitea:
         api
     insecure : bool, default is Undefined, optional
         insecure
+    labels : [str], default is Undefined, optional
+        labels
     owner : str, default is Undefined, required
         owner
     repo : str, default is Undefined, required
@@ -28819,6 +31469,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestGitea:
     api: str
 
     insecure?: bool
+
+    labels?: [str]
 
     owner: str
 
@@ -29037,6 +31689,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
         revision history limit
     source : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSource, default is Undefined, optional
         source
+    sourceHydrator : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourceHydrator, default is Undefined, optional
+        source hydrator
     sources : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourcesItems0], default is Undefined, optional
         sources
     syncPolicy : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSyncPolicy, default is Undefined, optional
@@ -29055,6 +31709,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
     revisionHistoryLimit?: int
 
     source?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSource
+
+    sourceHydrator?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourceHydrator
 
     sources?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourcesItems0]
 
@@ -29153,6 +31809,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourceKustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourcePlugin, default is Undefined, optional
@@ -29173,6 +31831,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
     helm?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourceHelm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourceKustomize
+
+    name?: str
 
     path?: str
 
@@ -29301,6 +31961,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
@@ -29329,6 +31993,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -29379,6 +32047,82 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
     value?: str
 
 
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourceHydrator:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 pull request template spec source hydrator
+
+    Attributes
+    ----------
+    drySource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourceHydratorDrySource, default is Undefined, required
+        dry source
+    hydrateTo : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourceHydratorHydrateTo, default is Undefined, optional
+        hydrate to
+    syncSource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourceHydratorSyncSource, default is Undefined, required
+        sync source
+    """
+
+
+    drySource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourceHydratorDrySource
+
+    hydrateTo?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourceHydratorHydrateTo
+
+    syncSource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourceHydratorSyncSource
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourceHydratorDrySource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 pull request template spec source hydrator dry source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    repoURL : str, default is Undefined, required
+        repo URL
+    targetRevision : str, default is Undefined, required
+        target revision
+    """
+
+
+    path: str
+
+    repoURL: str
+
+    targetRevision: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourceHydratorHydrateTo:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 pull request template spec source hydrator hydrate to
+
+    Attributes
+    ----------
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourceHydratorSyncSource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 pull request template spec source hydrator sync source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    path: str
+
+    targetBranch: str
+
+
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourceKustomize:
     r"""
     argoproj io v1alpha1 application set spec generators items0 pull request template spec source kustomize
@@ -29399,10 +32143,14 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
     kubeVersion : str, default is Undefined, optional
         kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
     labelWithoutSelector : bool, default is Undefined, optional
         label without selector
     namePrefix : str, default is Undefined, optional
@@ -29434,9 +32182,13 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -29615,6 +32367,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourcesItems0Kustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourcesItems0Plugin, default is Undefined, optional
@@ -29635,6 +32389,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
     helm?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourcesItems0Helm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSpecSourcesItems0Kustomize
+
+    name?: str
 
     path?: str
 
@@ -29763,6 +32519,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
@@ -29791,6 +32551,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -29861,10 +32625,14 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
     kubeVersion : str, default is Undefined, optional
         kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
     labelWithoutSelector : bool, default is Undefined, optional
         label without selector
     namePrefix : str, default is Undefined, optional
@@ -29896,9 +32664,13 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -30097,6 +32869,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
     ----------
     allowEmpty : bool, default is Undefined, optional
         allow empty
+    enabled : bool, default is Undefined, optional
+        enabled
     prune : bool, default is Undefined, optional
         prune
     selfHeal : bool, default is Undefined, optional
@@ -30105,6 +32879,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0PullRequestTemplateSp
 
 
     allowEmpty?: bool
+
+    enabled?: bool
 
     prune?: bool
 
@@ -30761,6 +33537,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
         revision history limit
     source : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSource, default is Undefined, optional
         source
+    sourceHydrator : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourceHydrator, default is Undefined, optional
+        source hydrator
     sources : [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourcesItems0], default is Undefined, optional
         sources
     syncPolicy : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSyncPolicy, default is Undefined, optional
@@ -30779,6 +33557,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
     revisionHistoryLimit?: int
 
     source?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSource
+
+    sourceHydrator?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourceHydrator
 
     sources?: [ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourcesItems0]
 
@@ -30877,6 +33657,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourceKustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourcePlugin, default is Undefined, optional
@@ -30897,6 +33679,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
     helm?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourceHelm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourceKustomize
+
+    name?: str
 
     path?: str
 
@@ -31025,6 +33809,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
@@ -31053,6 +33841,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -31103,6 +33895,82 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
     value?: str
 
 
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourceHydrator:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 scm provider template spec source hydrator
+
+    Attributes
+    ----------
+    drySource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourceHydratorDrySource, default is Undefined, required
+        dry source
+    hydrateTo : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourceHydratorHydrateTo, default is Undefined, optional
+        hydrate to
+    syncSource : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourceHydratorSyncSource, default is Undefined, required
+        sync source
+    """
+
+
+    drySource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourceHydratorDrySource
+
+    hydrateTo?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourceHydratorHydrateTo
+
+    syncSource: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourceHydratorSyncSource
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourceHydratorDrySource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 scm provider template spec source hydrator dry source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    repoURL : str, default is Undefined, required
+        repo URL
+    targetRevision : str, default is Undefined, required
+        target revision
+    """
+
+
+    path: str
+
+    repoURL: str
+
+    targetRevision: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourceHydratorHydrateTo:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 scm provider template spec source hydrator hydrate to
+
+    Attributes
+    ----------
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourceHydratorSyncSource:
+    r"""
+    argoproj io v1alpha1 application set spec generators items0 scm provider template spec source hydrator sync source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    path: str
+
+    targetBranch: str
+
+
 schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourceKustomize:
     r"""
     argoproj io v1alpha1 application set spec generators items0 scm provider template spec source kustomize
@@ -31123,10 +33991,14 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
     kubeVersion : str, default is Undefined, optional
         kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
     labelWithoutSelector : bool, default is Undefined, optional
         label without selector
     namePrefix : str, default is Undefined, optional
@@ -31158,9 +34030,13 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -31339,6 +34215,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourcesItems0Kustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourcesItems0Plugin, default is Undefined, optional
@@ -31359,6 +34237,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
     helm?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourcesItems0Helm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSpecSourcesItems0Kustomize
+
+    name?: str
 
     path?: str
 
@@ -31487,6 +34367,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
@@ -31515,6 +34399,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -31585,10 +34473,14 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
     kubeVersion : str, default is Undefined, optional
         kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
     labelWithoutSelector : bool, default is Undefined, optional
         label without selector
     namePrefix : str, default is Undefined, optional
@@ -31620,9 +34512,13 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -31821,6 +34717,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
     ----------
     allowEmpty : bool, default is Undefined, optional
         allow empty
+    enabled : bool, default is Undefined, optional
+        enabled
     prune : bool, default is Undefined, optional
         prune
     selfHeal : bool, default is Undefined, optional
@@ -31829,6 +34727,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecGeneratorsItems0ScmProviderTemplateSp
 
 
     allowEmpty?: bool
+
+    enabled?: bool
 
     prune?: bool
 
@@ -32129,6 +35029,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpec:
         revision history limit
     source : ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSource, default is Undefined, optional
         source
+    sourceHydrator : ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceHydrator, default is Undefined, optional
+        source hydrator
     sources : [ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0], default is Undefined, optional
         sources
     syncPolicy : ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSyncPolicy, default is Undefined, optional
@@ -32147,6 +35049,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpec:
     revisionHistoryLimit?: int
 
     source?: ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSource
+
+    sourceHydrator?: ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceHydrator
 
     sources?: [ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0]
 
@@ -32245,6 +35149,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSource:
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceKustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcePlugin, default is Undefined, optional
@@ -32265,6 +35171,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSource:
     helm?: ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceHelm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceKustomize
+
+    name?: str
 
     path?: str
 
@@ -32393,6 +35301,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceHelm:
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
@@ -32421,6 +35333,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceHelm:
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -32471,6 +35387,82 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceHelmParametersItems
     value?: str
 
 
+schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceHydrator:
+    r"""
+    argoproj io v1alpha1 application set spec template spec source hydrator
+
+    Attributes
+    ----------
+    drySource : ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceHydratorDrySource, default is Undefined, required
+        dry source
+    hydrateTo : ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceHydratorHydrateTo, default is Undefined, optional
+        hydrate to
+    syncSource : ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceHydratorSyncSource, default is Undefined, required
+        sync source
+    """
+
+
+    drySource: ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceHydratorDrySource
+
+    hydrateTo?: ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceHydratorHydrateTo
+
+    syncSource: ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceHydratorSyncSource
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceHydratorDrySource:
+    r"""
+    argoproj io v1alpha1 application set spec template spec source hydrator dry source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    repoURL : str, default is Undefined, required
+        repo URL
+    targetRevision : str, default is Undefined, required
+        target revision
+    """
+
+
+    path: str
+
+    repoURL: str
+
+    targetRevision: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceHydratorHydrateTo:
+    r"""
+    argoproj io v1alpha1 application set spec template spec source hydrator hydrate to
+
+    Attributes
+    ----------
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    targetBranch: str
+
+
+schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceHydratorSyncSource:
+    r"""
+    argoproj io v1alpha1 application set spec template spec source hydrator sync source
+
+    Attributes
+    ----------
+    path : str, default is Undefined, required
+        path
+    targetBranch : str, default is Undefined, required
+        target branch
+    """
+
+
+    path: str
+
+    targetBranch: str
+
+
 schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceKustomize:
     r"""
     argoproj io v1alpha1 application set spec template spec source kustomize
@@ -32491,10 +35483,14 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceKustomize:
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
     kubeVersion : str, default is Undefined, optional
         kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
     labelWithoutSelector : bool, default is Undefined, optional
         label without selector
     namePrefix : str, default is Undefined, optional
@@ -32526,9 +35522,13 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourceKustomize:
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -32707,6 +35707,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0:
         helm
     kustomize : ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0Kustomize, default is Undefined, optional
         kustomize
+    name : str, default is Undefined, optional
+        name
     path : str, default is Undefined, optional
         path
     plugin : ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0Plugin, default is Undefined, optional
@@ -32727,6 +35729,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0:
     helm?: ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0Helm
 
     kustomize?: ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0Kustomize
+
+    name?: str
 
     path?: str
 
@@ -32855,6 +35859,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0Helm:
         release name
     skipCrds : bool, default is Undefined, optional
         skip crds
+    skipSchemaValidation : bool, default is Undefined, optional
+        skip schema validation
+    skipTests : bool, default is Undefined, optional
+        skip tests
     valueFiles : [str], default is Undefined, optional
         value files
     values : str, default is Undefined, optional
@@ -32883,6 +35891,10 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0Helm:
     releaseName?: str
 
     skipCrds?: bool
+
+    skipSchemaValidation?: bool
+
+    skipTests?: bool
 
     valueFiles?: [str]
 
@@ -32953,10 +35965,14 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0Kustomize:
         force common annotations
     forceCommonLabels : bool, default is Undefined, optional
         force common labels
+    ignoreMissingComponents : bool, default is Undefined, optional
+        ignore missing components
     images : [str], default is Undefined, optional
         images
     kubeVersion : str, default is Undefined, optional
         kube version
+    labelIncludeTemplates : bool, default is Undefined, optional
+        label include templates
     labelWithoutSelector : bool, default is Undefined, optional
         label without selector
     namePrefix : str, default is Undefined, optional
@@ -32988,9 +36004,13 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSourcesItems0Kustomize:
 
     forceCommonLabels?: bool
 
+    ignoreMissingComponents?: bool
+
     images?: [str]
 
     kubeVersion?: str
+
+    labelIncludeTemplates?: bool
 
     labelWithoutSelector?: bool
 
@@ -33189,6 +36209,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSyncPolicyAutomated:
     ----------
     allowEmpty : bool, default is Undefined, optional
         allow empty
+    enabled : bool, default is Undefined, optional
+        enabled
     prune : bool, default is Undefined, optional
         prune
     selfHeal : bool, default is Undefined, optional
@@ -33197,6 +36219,8 @@ schema ArgoprojIoV1alpha1ApplicationSetSpecTemplateSpecSyncPolicyAutomated:
 
 
     allowEmpty?: bool
+
+    enabled?: bool
 
     prune?: bool
 
@@ -33365,6 +36389,8 @@ schema ArgoprojIoV1alpha1ApplicationSetStatusResourcesItems0:
         name
     namespace : str, default is Undefined, optional
         namespace
+    requiresDeletionConfirmation : bool, default is Undefined, optional
+        requires deletion confirmation
     requiresPruning : bool, default is Undefined, optional
         requires pruning
     status : str, default is Undefined, optional
@@ -33388,6 +36414,8 @@ schema ArgoprojIoV1alpha1ApplicationSetStatusResourcesItems0:
 
     namespace?: str
 
+    requiresDeletionConfirmation?: bool
+
     requiresPruning?: bool
 
     status?: str
@@ -33403,12 +36431,16 @@ schema ArgoprojIoV1alpha1ApplicationSetStatusResourcesItems0Health:
 
     Attributes
     ----------
+    lastTransitionTime : str, default is Undefined, optional
+        last transition time
     message : str, default is Undefined, optional
         message
     status : str, default is Undefined, optional
         status
     """
 
+
+    lastTransitionTime?: str
 
     message?: str
 

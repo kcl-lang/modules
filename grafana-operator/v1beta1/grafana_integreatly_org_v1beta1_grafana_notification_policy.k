@@ -4,11 +4,11 @@ Editing this file might prove futile when you re-run the KCL auto-gen generate c
 """
 import regex
 import k8s.apimachinery.pkg.apis.meta.v1
-
+_regex_match = regex.match
 
 
 schema GrafanaNotificationPolicy:
-    """
+    r"""
     GrafanaNotificationPolicy is the Schema for the GrafanaNotificationPolicy API
 
     Attributes
@@ -19,7 +19,7 @@ schema GrafanaNotificationPolicy:
         Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     metadata : v1.ObjectMeta, default is Undefined, optional
         metadata
-    spec : GrafanaIntegreatlyOrgV1beta1GrafanaNotificationPolicySpec, default is Undefined, optional
+    spec : GrafanaIntegreatlyOrgV1beta1GrafanaNotificationPolicySpec, default is Undefined, required
         spec
     status : GrafanaIntegreatlyOrgV1beta1GrafanaNotificationPolicyStatus, default is Undefined, optional
         status
@@ -32,36 +32,52 @@ schema GrafanaNotificationPolicy:
 
     metadata?: v1.ObjectMeta
 
-    spec?: GrafanaIntegreatlyOrgV1beta1GrafanaNotificationPolicySpec
+    spec: GrafanaIntegreatlyOrgV1beta1GrafanaNotificationPolicySpec
 
     status?: GrafanaIntegreatlyOrgV1beta1GrafanaNotificationPolicyStatus
 
 
 schema GrafanaIntegreatlyOrgV1beta1GrafanaNotificationPolicySpec:
-    """
+    r"""
     GrafanaNotificationPolicySpec defines the desired state of GrafanaNotificationPolicy
 
     Attributes
     ----------
+    allowCrossNamespaceImport : bool, default is Undefined, optional
+        Allow the Operator to match this resource with Grafanas outside the current namespace
+    editable : bool, default is Undefined, optional
+        Whether to enable or disable editing of the notification policy in Grafana UI
     instanceSelector : GrafanaIntegreatlyOrgV1beta1GrafanaNotificationPolicySpecInstanceSelector, default is Undefined, required
         instance selector
-    resyncPeriod : str, default is "10m", optional
-        resync period
+    resyncPeriod : str, default is "10m0s", optional
+        How often the resource is synced, defaults to 10m0s if not set
     route : GrafanaIntegreatlyOrgV1beta1GrafanaNotificationPolicySpecRoute, default is Undefined, required
         route
+    suspend : bool, default is Undefined, optional
+        Suspend pauses synchronizing attempts and tells the operator to ignore changes
     """
 
+
+    allowCrossNamespaceImport?: bool = False
+
+    editable?: bool
 
     instanceSelector: GrafanaIntegreatlyOrgV1beta1GrafanaNotificationPolicySpecInstanceSelector
 
-    resyncPeriod?: str = "10m"
+    resyncPeriod?: str = "10m0s"
 
     route: GrafanaIntegreatlyOrgV1beta1GrafanaNotificationPolicySpecRoute
 
+    suspend?: bool
+
+
+    check:
+        _regex_match(str(resyncPeriod), r"^([0-9]+(\.[0-9]+)?(ns|us|µs|ms|s|m|h))+$") if resyncPeriod
+
 
 schema GrafanaIntegreatlyOrgV1beta1GrafanaNotificationPolicySpecInstanceSelector:
-    """
-    selects Grafanas for import
+    r"""
+    Selects Grafana instances for import
 
     Attributes
     ----------
@@ -80,7 +96,7 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaNotificationPolicySpecInstanceSelector
 
 
 schema GrafanaIntegreatlyOrgV1beta1GrafanaNotificationPolicySpecInstanceSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
 
@@ -107,7 +123,7 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaNotificationPolicySpecInstanceSelector
 
 
 schema GrafanaIntegreatlyOrgV1beta1GrafanaNotificationPolicySpecRoute:
-    """
+    r"""
     Routes for alerts to match against
 
     Attributes
@@ -130,12 +146,14 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaNotificationPolicySpecRoute:
         object matchers
     provenance : str, default is Undefined, optional
         provenance
-    receiver : str, default is Undefined, optional
+    receiver : str, default is Undefined, required
         receiver
     repeat_interval : str, default is Undefined, optional
         repeat interval
+    routeSelector : GrafanaIntegreatlyOrgV1beta1GrafanaNotificationPolicySpecRouteRouteSelector, default is Undefined, optional
+        route selector
     routes : any, default is Undefined, optional
-        routes
+        routes, mutually exclusive with RouteSelector
     """
 
 
@@ -157,15 +175,21 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaNotificationPolicySpecRoute:
 
     provenance?: str
 
-    receiver?: str
+    receiver: str
 
     repeat_interval?: str
+
+    routeSelector?: GrafanaIntegreatlyOrgV1beta1GrafanaNotificationPolicySpecRouteRouteSelector
 
     routes?: any
 
 
+    check:
+        len(receiver) >= 1
+
+
 schema GrafanaIntegreatlyOrgV1beta1GrafanaNotificationPolicySpecRouteMatchersItems0:
-    """
+    r"""
     grafana integreatly org v1beta1 grafana notification policy spec route matchers items0
 
     Attributes
@@ -190,39 +214,79 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaNotificationPolicySpecRouteMatchersIte
     value: str
 
 
-schema GrafanaIntegreatlyOrgV1beta1GrafanaNotificationPolicyStatus:
+schema GrafanaIntegreatlyOrgV1beta1GrafanaNotificationPolicySpecRouteRouteSelector:
+    r"""
+    selects GrafanaNotificationPolicyRoutes to merge in when specified
+    mutually exclusive with Routes
+
+    Attributes
+    ----------
+    matchExpressions : [GrafanaIntegreatlyOrgV1beta1GrafanaNotificationPolicySpecRouteRouteSelectorMatchExpressionsItems0], default is Undefined, optional
+        matchExpressions is a list of label selector requirements. The requirements are ANDed.
+    matchLabels : {str:str}, default is Undefined, optional
+        matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels
+        map is equivalent to an element of matchExpressions, whose key field is "key", the
+        operator is "In", and the values array contains only "value". The requirements are ANDed.
     """
+
+
+    matchExpressions?: [GrafanaIntegreatlyOrgV1beta1GrafanaNotificationPolicySpecRouteRouteSelectorMatchExpressionsItems0]
+
+    matchLabels?: {str:str}
+
+
+schema GrafanaIntegreatlyOrgV1beta1GrafanaNotificationPolicySpecRouteRouteSelectorMatchExpressionsItems0:
+    r"""
+    A label selector requirement is a selector that contains values, a key, and an operator that
+    relates the key and values.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key is the label key that the selector applies to.
+    operator : str, default is Undefined, required
+        operator represents a key's relationship to a set of values.
+        Valid operators are In, NotIn, Exists and DoesNotExist.
+    values : [str], default is Undefined, optional
+        values is an array of string values. If the operator is In or NotIn,
+        the values array must be non-empty. If the operator is Exists or DoesNotExist,
+        the values array must be empty. This array is replaced during a strategic
+        merge patch.
+    """
+
+
+    key: str
+
+    operator: str
+
+    values?: [str]
+
+
+schema GrafanaIntegreatlyOrgV1beta1GrafanaNotificationPolicyStatus:
+    r"""
     GrafanaNotificationPolicyStatus defines the observed state of GrafanaNotificationPolicy
 
     Attributes
     ----------
-    conditions : [GrafanaIntegreatlyOrgV1beta1GrafanaNotificationPolicyStatusConditionsItems0], default is Undefined, required
-        conditions
+    conditions : [GrafanaIntegreatlyOrgV1beta1GrafanaNotificationPolicyStatusConditionsItems0], default is Undefined, optional
+        Results when synchonizing resource with Grafana instances
+    discoveredRoutes : [str], default is Undefined, optional
+        discovered routes
+    lastResync : str, default is Undefined, optional
+        Last time the resource was synchronized with Grafana instances
     """
 
 
-    conditions: [GrafanaIntegreatlyOrgV1beta1GrafanaNotificationPolicyStatusConditionsItems0]
+    conditions?: [GrafanaIntegreatlyOrgV1beta1GrafanaNotificationPolicyStatusConditionsItems0]
+
+    discoveredRoutes?: [str]
+
+    lastResync?: str
 
 
 schema GrafanaIntegreatlyOrgV1beta1GrafanaNotificationPolicyStatusConditionsItems0:
-    """
+    r"""
     Condition contains details for one aspect of the current state of this API Resource.
-    ---
-    This struct is intended for direct use as an array at the field path .status.conditions.  For example,
-
-
-    	type FooStatus struct{
-    	    // Represents the observations of a foo's current state.
-    	    // Known .status.conditions.type are: "Available", "Progressing", and "Degraded"
-    	    // +patchMergeKey=type
-    	    // +patchStrategy=merge
-    	    // +listType=map
-    	    // +listMapKey=type
-    	    Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`
-
-
-    	    // other fields
-    	}
 
     Attributes
     ----------
@@ -246,10 +310,6 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaNotificationPolicyStatusConditionsItem
         status of the condition, one of True, False, Unknown.
     $type : str, default is Undefined, required
         type of condition in CamelCase or in foo.example.com/CamelCase.
-        ---
-        Many .condition.type values are consistent across resources like Available, but because arbitrary conditions can be
-        useful (see .node.status.conditions), the ability to deconflict is important.
-        The regex it matches is (dns1123SubdomainFmt/)?(qualifiedNameFmt)
     """
 
 
@@ -268,11 +328,11 @@ schema GrafanaIntegreatlyOrgV1beta1GrafanaNotificationPolicyStatusConditionsItem
 
     check:
         len(message) <= 32768
-        observedGeneration >= 0
+        observedGeneration >= 0 if observedGeneration not in [None, Undefined]
         len(reason) <= 1024
         len(reason) >= 1
-        regex_match(str(reason), r"^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$")
+        _regex_match(str(reason), r"^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$")
         len($type) <= 316
-        regex_match(str($type), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$")
+        _regex_match(str($type), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$")
 
 
