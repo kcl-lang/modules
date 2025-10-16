@@ -86,7 +86,9 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicySpecActiveCommitStatusesIte
 
 
     check:
-        _regex_match(str(key), r"(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?")
+        len(key) <= 63
+        len(key) >= 1
+        _regex_match(str(key), r"([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9]")
 
 
 schema PromoterArgoprojIoV1alpha1ChangeTransferPolicySpecGitRepositoryRef:
@@ -118,7 +120,9 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicySpecProposedCommitStatusesI
 
 
     check:
-        _regex_match(str(key), r"(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?")
+        len(key) <= 63
+        len(key) >= 1
+        _regex_match(str(key), r"([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9]")
 
 
 schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatus:
@@ -131,6 +135,12 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatus:
         active
     conditions : [PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusConditionsItems0], default is Undefined, optional
         Conditions Represents the observations of the current state.
+    history : [PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0], default is Undefined, optional
+        History defines the history of promoted changes done by the ChangeTransferPolicy. You can think of
+        it as a list of PRs merged by GitOps Promoter. It will not include changes that were manually merged.
+        The history length is hard-coded to be at most 5 entries. This may change in the future.
+        History is constructed on a best-effort basis and should be used for informational purposes only.
+        History is in reverse chronological order (newest is first).
     proposed : PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusProposed, default is Undefined, optional
         proposed
     pullRequest : PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusPullRequest, default is Undefined, optional
@@ -141,6 +151,8 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatus:
     active?: PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusActive
 
     conditions?: [PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusConditionsItems0]
+
+    history?: [PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0]
 
     proposed?: PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusProposed
 
@@ -189,6 +201,12 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusActiveCommitStatusesI
     phase: "pending" | "success" | "failure"
 
     url?: str
+
+
+    check:
+        len(key) <= 63
+        len(key) >= 1
+        _regex_match(str(key), r"([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9]")
 
 
 schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusActiveDry:
@@ -256,12 +274,12 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusActiveDryReferencesIt
         Body is the body of the commit message, excluding the subject line, i.e. `git show --format=%b`.
     date : str, default is Undefined, optional
         Date is the date of the commit, formatted as by `git show -s --format=%aI`.
-    message : str, default is Undefined, optional
-        Subject is the subject line of the commit message, i.e. `git show --format=%s`.
     repoURL : str, default is Undefined, optional
         RepoURL is the URL of the repository where the commit is located.
     sha : str, default is Undefined, optional
         Sha is the commit hash.
+    subject : str, default is Undefined, optional
+        Subject is the subject line of the commit message, i.e. `git show --format=%s`.
     """
 
 
@@ -271,11 +289,11 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusActiveDryReferencesIt
 
     date?: str
 
-    message?: str
-
     repoURL?: str
 
     sha?: str
+
+    subject?: str
 
 
 schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusActiveHydrated:
@@ -343,12 +361,12 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusActiveHydratedReferen
         Body is the body of the commit message, excluding the subject line, i.e. `git show --format=%b`.
     date : str, default is Undefined, optional
         Date is the date of the commit, formatted as by `git show -s --format=%aI`.
-    message : str, default is Undefined, optional
-        Subject is the subject line of the commit message, i.e. `git show --format=%s`.
     repoURL : str, default is Undefined, optional
         RepoURL is the URL of the repository where the commit is located.
     sha : str, default is Undefined, optional
         Sha is the commit hash.
+    subject : str, default is Undefined, optional
+        Subject is the subject line of the commit message, i.e. `git show --format=%s`.
     """
 
 
@@ -358,11 +376,11 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusActiveHydratedReferen
 
     date?: str
 
-    message?: str
-
     repoURL?: str
 
     sha?: str
+
+    subject?: str
 
 
 schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusConditionsItems0:
@@ -417,6 +435,412 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusConditionsItems0:
         _regex_match(str($type), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$")
 
 
+schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0:
+    r"""
+    History describes a particular change that was promoted by the ChangeTransferPolicy.
+
+    Attributes
+    ----------
+    active : PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0Active, default is Undefined, optional
+        active
+    proposed : PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0Proposed, default is Undefined, optional
+        proposed
+    pullRequest : PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0PullRequest, default is Undefined, optional
+        pull request
+    """
+
+
+    active?: PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0Active
+
+    proposed?: PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0Proposed
+
+    pullRequest?: PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0PullRequest
+
+
+schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0Active:
+    r"""
+    Active is the state of the active branch at the time the PR was merged.
+
+    Attributes
+    ----------
+    commitStatuses : [PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ActiveCommitStatusesItems0], default is Undefined, optional
+        CommitStatuses is a list of commit statuses that are being monitored for this branch.
+    dry : PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ActiveDry, default is Undefined, optional
+        dry
+    hydrated : PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ActiveHydrated, default is Undefined, optional
+        hydrated
+    """
+
+
+    commitStatuses?: [PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ActiveCommitStatusesItems0]
+
+    dry?: PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ActiveDry
+
+    hydrated?: PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ActiveHydrated
+
+
+schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ActiveCommitStatusesItems0:
+    r"""
+    ChangeRequestPolicyCommitStatusPhase defines the phase of a commit status in a ChangeTransferPolicy.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        Key staging hydrated branch
+    phase : str, default is Undefined, required
+        Phase what phase is the status in
+    url : str, default is Undefined, optional
+        Url is the URL of the commit status
+    """
+
+
+    key: str
+
+    phase: "pending" | "success" | "failure"
+
+    url?: str
+
+
+    check:
+        len(key) <= 63
+        len(key) >= 1
+        _regex_match(str(key), r"([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9]")
+
+
+schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ActiveDry:
+    r"""
+    Dry is the dry state of the branch, which is the commit that is being proposed.
+
+    Attributes
+    ----------
+    author : str, default is Undefined, optional
+        Author is the author of the commit
+    body : str, default is Undefined, optional
+        Body is the body of the commit message without the subject line
+    commitTime : str, default is Undefined, optional
+        CommitTime is the time the commit was made
+    references : [PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ActiveDryReferencesItems0], default is Undefined, optional
+        References are the references to other commits, that went into the hydration of the branch
+    repoURL : str, default is Undefined, optional
+        RepoURL is the URL of the repository where the commit is located
+    sha : str, default is Undefined, optional
+        Sha is the SHA of the commit in the branch
+    subject : str, default is Undefined, optional
+        Subject is the subject line of the commit message
+    """
+
+
+    author?: str
+
+    body?: str
+
+    commitTime?: str
+
+    references?: [PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ActiveDryReferencesItems0]
+
+    repoURL?: str
+
+    sha?: str
+
+    subject?: str
+
+
+schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ActiveDryReferencesItems0:
+    r"""
+    RevisionReference contains a reference to a some information that is related in some way to another commit. For now,
+    it supports only references to a commit. In the future, it may support other types of references.
+
+    Attributes
+    ----------
+    commit : PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ActiveDryReferencesItems0Commit, default is Undefined, optional
+        commit
+    """
+
+
+    commit?: PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ActiveDryReferencesItems0Commit
+
+
+schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ActiveDryReferencesItems0Commit:
+    r"""
+    Commit contains metadata about the commit that is related in some way to another commit.
+
+    Attributes
+    ----------
+    author : str, default is Undefined, optional
+        Author is the author of the commit.
+    body : str, default is Undefined, optional
+        Body is the body of the commit message, excluding the subject line, i.e. `git show --format=%b`.
+    date : str, default is Undefined, optional
+        Date is the date of the commit, formatted as by `git show -s --format=%aI`.
+    repoURL : str, default is Undefined, optional
+        RepoURL is the URL of the repository where the commit is located.
+    sha : str, default is Undefined, optional
+        Sha is the commit hash.
+    subject : str, default is Undefined, optional
+        Subject is the subject line of the commit message, i.e. `git show --format=%s`.
+    """
+
+
+    author?: str
+
+    body?: str
+
+    date?: str
+
+    repoURL?: str
+
+    sha?: str
+
+    subject?: str
+
+
+schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ActiveHydrated:
+    r"""
+    Hydrated is the hydrated state of the branch, which is the commit that is currently being worked on.
+
+    Attributes
+    ----------
+    author : str, default is Undefined, optional
+        Author is the author of the commit
+    body : str, default is Undefined, optional
+        Body is the body of the commit message without the subject line
+    commitTime : str, default is Undefined, optional
+        CommitTime is the time the commit was made
+    references : [PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ActiveHydratedReferencesItems0], default is Undefined, optional
+        References are the references to other commits, that went into the hydration of the branch
+    repoURL : str, default is Undefined, optional
+        RepoURL is the URL of the repository where the commit is located
+    sha : str, default is Undefined, optional
+        Sha is the SHA of the commit in the branch
+    subject : str, default is Undefined, optional
+        Subject is the subject line of the commit message
+    """
+
+
+    author?: str
+
+    body?: str
+
+    commitTime?: str
+
+    references?: [PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ActiveHydratedReferencesItems0]
+
+    repoURL?: str
+
+    sha?: str
+
+    subject?: str
+
+
+schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ActiveHydratedReferencesItems0:
+    r"""
+    RevisionReference contains a reference to a some information that is related in some way to another commit. For now,
+    it supports only references to a commit. In the future, it may support other types of references.
+
+    Attributes
+    ----------
+    commit : PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ActiveHydratedReferencesItems0Commit, default is Undefined, optional
+        commit
+    """
+
+
+    commit?: PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ActiveHydratedReferencesItems0Commit
+
+
+schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ActiveHydratedReferencesItems0Commit:
+    r"""
+    Commit contains metadata about the commit that is related in some way to another commit.
+
+    Attributes
+    ----------
+    author : str, default is Undefined, optional
+        Author is the author of the commit.
+    body : str, default is Undefined, optional
+        Body is the body of the commit message, excluding the subject line, i.e. `git show --format=%b`.
+    date : str, default is Undefined, optional
+        Date is the date of the commit, formatted as by `git show -s --format=%aI`.
+    repoURL : str, default is Undefined, optional
+        RepoURL is the URL of the repository where the commit is located.
+    sha : str, default is Undefined, optional
+        Sha is the commit hash.
+    subject : str, default is Undefined, optional
+        Subject is the subject line of the commit message, i.e. `git show --format=%s`.
+    """
+
+
+    author?: str
+
+    body?: str
+
+    date?: str
+
+    repoURL?: str
+
+    sha?: str
+
+    subject?: str
+
+
+schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0Proposed:
+    r"""
+    Proposed is the state of the proposed branch at the time the PR was merged.
+
+    Attributes
+    ----------
+    commitStatuses : [PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ProposedCommitStatusesItems0], default is Undefined, optional
+        CommitStatuses is a list of commit statuses that were being monitored for this branch.
+        This contains the state frozen at the moment the PR was merged.
+    hydrated : PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ProposedHydrated, default is Undefined, optional
+        hydrated
+    """
+
+
+    commitStatuses?: [PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ProposedCommitStatusesItems0]
+
+    hydrated?: PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ProposedHydrated
+
+
+schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ProposedCommitStatusesItems0:
+    r"""
+    ChangeRequestPolicyCommitStatusPhase defines the phase of a commit status in a ChangeTransferPolicy.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        Key staging hydrated branch
+    phase : str, default is Undefined, required
+        Phase what phase is the status in
+    url : str, default is Undefined, optional
+        Url is the URL of the commit status
+    """
+
+
+    key: str
+
+    phase: "pending" | "success" | "failure"
+
+    url?: str
+
+
+    check:
+        len(key) <= 63
+        len(key) >= 1
+        _regex_match(str(key), r"([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9]")
+
+
+schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ProposedHydrated:
+    r"""
+    Hydrated is the hydrated state of the branch, which is the commit that is currently being worked on.
+
+    Attributes
+    ----------
+    author : str, default is Undefined, optional
+        Author is the author of the commit
+    body : str, default is Undefined, optional
+        Body is the body of the commit message without the subject line
+    commitTime : str, default is Undefined, optional
+        CommitTime is the time the commit was made
+    references : [PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ProposedHydratedReferencesItems0], default is Undefined, optional
+        References are the references to other commits, that went into the hydration of the branch
+    repoURL : str, default is Undefined, optional
+        RepoURL is the URL of the repository where the commit is located
+    sha : str, default is Undefined, optional
+        Sha is the SHA of the commit in the branch
+    subject : str, default is Undefined, optional
+        Subject is the subject line of the commit message
+    """
+
+
+    author?: str
+
+    body?: str
+
+    commitTime?: str
+
+    references?: [PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ProposedHydratedReferencesItems0]
+
+    repoURL?: str
+
+    sha?: str
+
+    subject?: str
+
+
+schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ProposedHydratedReferencesItems0:
+    r"""
+    RevisionReference contains a reference to a some information that is related in some way to another commit. For now,
+    it supports only references to a commit. In the future, it may support other types of references.
+
+    Attributes
+    ----------
+    commit : PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ProposedHydratedReferencesItems0Commit, default is Undefined, optional
+        commit
+    """
+
+
+    commit?: PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ProposedHydratedReferencesItems0Commit
+
+
+schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ProposedHydratedReferencesItems0Commit:
+    r"""
+    Commit contains metadata about the commit that is related in some way to another commit.
+
+    Attributes
+    ----------
+    author : str, default is Undefined, optional
+        Author is the author of the commit.
+    body : str, default is Undefined, optional
+        Body is the body of the commit message, excluding the subject line, i.e. `git show --format=%b`.
+    date : str, default is Undefined, optional
+        Date is the date of the commit, formatted as by `git show -s --format=%aI`.
+    repoURL : str, default is Undefined, optional
+        RepoURL is the URL of the repository where the commit is located.
+    sha : str, default is Undefined, optional
+        Sha is the commit hash.
+    subject : str, default is Undefined, optional
+        Subject is the subject line of the commit message, i.e. `git show --format=%s`.
+    """
+
+
+    author?: str
+
+    body?: str
+
+    date?: str
+
+    repoURL?: str
+
+    sha?: str
+
+    subject?: str
+
+
+schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0PullRequest:
+    r"""
+    PullRequest is the state of the pull request that was created for this ChangeTransferPolicy.
+
+    Attributes
+    ----------
+    id : str, default is Undefined, optional
+        ID is the unique identifier of the pull request, set by the SCM.
+    prCreationTime : str, default is Undefined, optional
+        PRCreationTime is the time when the pull request was created.
+    state : str, default is Undefined, optional
+        State is the state of the pull request.
+    url : str, default is Undefined, optional
+        Url is the URL of the pull request.
+    """
+
+
+    id?: str
+
+    prCreationTime?: str
+
+    state?: "closed" | "merged" | "open"
+
+    url?: str
+
+
 schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusProposed:
     r"""
     Proposed is the state of the proposed branch.
@@ -459,6 +883,12 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusProposedCommitStatuse
     phase: "pending" | "success" | "failure"
 
     url?: str
+
+
+    check:
+        len(key) <= 63
+        len(key) >= 1
+        _regex_match(str(key), r"([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9]")
 
 
 schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusProposedDry:
@@ -526,12 +956,12 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusProposedDryReferences
         Body is the body of the commit message, excluding the subject line, i.e. `git show --format=%b`.
     date : str, default is Undefined, optional
         Date is the date of the commit, formatted as by `git show -s --format=%aI`.
-    message : str, default is Undefined, optional
-        Subject is the subject line of the commit message, i.e. `git show --format=%s`.
     repoURL : str, default is Undefined, optional
         RepoURL is the URL of the repository where the commit is located.
     sha : str, default is Undefined, optional
         Sha is the commit hash.
+    subject : str, default is Undefined, optional
+        Subject is the subject line of the commit message, i.e. `git show --format=%s`.
     """
 
 
@@ -541,11 +971,11 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusProposedDryReferences
 
     date?: str
 
-    message?: str
-
     repoURL?: str
 
     sha?: str
+
+    subject?: str
 
 
 schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusProposedHydrated:
@@ -613,12 +1043,12 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusProposedHydratedRefer
         Body is the body of the commit message, excluding the subject line, i.e. `git show --format=%b`.
     date : str, default is Undefined, optional
         Date is the date of the commit, formatted as by `git show -s --format=%aI`.
-    message : str, default is Undefined, optional
-        Subject is the subject line of the commit message, i.e. `git show --format=%s`.
     repoURL : str, default is Undefined, optional
         RepoURL is the URL of the repository where the commit is located.
     sha : str, default is Undefined, optional
         Sha is the commit hash.
+    subject : str, default is Undefined, optional
+        Subject is the subject line of the commit message, i.e. `git show --format=%s`.
     """
 
 
@@ -628,11 +1058,11 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusProposedHydratedRefer
 
     date?: str
 
-    message?: str
-
     repoURL?: str
 
     sha?: str
+
+    subject?: str
 
 
 schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusPullRequest:
