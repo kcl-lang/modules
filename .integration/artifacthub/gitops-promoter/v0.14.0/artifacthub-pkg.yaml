@@ -1,0 +1,25 @@
+version: v0.14.0
+name: gitops-promoter
+displayName: gitops-promoter
+createdAt: "2025-10-16T09:34:32Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `gitops-promoter` with tag `v0.14.0` as dependency
+  ```
+  kcl mod add gitops-promoter:v0.14.0
+  ```
+
+  #### Pull `gitops-promoter` with tag `v0.14.0` to local
+  ```
+  kcl mod pull gitops-promoter:v0.14.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
