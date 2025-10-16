@@ -105,8 +105,10 @@ schema PromoterArgoprojIoV1alpha1ClusterScmProviderSpecGithub:
     domain : str, default is Undefined, optional
         Domain is the GitHub domain, such as "github.mycompany.com". If using the default GitHub domain, leave this field
         empty.
-    installationID : int, default is Undefined, required
-        InstallationID is the GitHub App Installation ID.
+    installationID : int, default is Undefined, optional
+        InstallationID is the GitHub App Installation ID. If you want to use this ScmProvider for multiple
+        GitHub orgs, do not specify this field. The installation ID will be inferred from the repo owner
+        when needed.
     """
 
 
@@ -114,7 +116,11 @@ schema PromoterArgoprojIoV1alpha1ClusterScmProviderSpecGithub:
 
     domain?: str
 
-    installationID: int
+    installationID?: int
+
+
+    check:
+        installationID >= 0 if installationID not in [None, Undefined]
 
 
 schema PromoterArgoprojIoV1alpha1ClusterScmProviderSpecGitlab:

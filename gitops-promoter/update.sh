@@ -1,14 +1,19 @@
-#!/usr/bin/env bash
-APP_VERSION=v0.12.0
+#!/bin/bash
 
-rm -rf install.yaml crds.yaml
-mkdir models
+set -o errexit
+set -o nounset
+set -eoux pipefail
 
-wget "https://github.com/argoproj-labs/gitops-promoter/releases/download/v0.12.0/install.yaml"
-yq eval 'select(.kind == "CustomResourceDefinition")' install.yaml -o yaml >crds.yaml
-kcl import -m crd -o . crds.yaml
+VERSION="v0.14.0"
 
-# cleanup
-mv models/v* .
-rm -rf models
-rm -rf install.yaml crds.yaml
+rm -rf v*
+mkdir -p crds
+rm -rf crds/*
+
+wget -O manifest.yaml "https://github.com/argoproj-labs/gitops-promoter/releases/download/${VERSION}/install.yaml"
+
+yq eval 'select(.kind == "CustomResourceDefinition")' manifest.yaml >crds.yaml
+kcl import -m crd -o . ./crds.yaml
+mv models/v1* .
+mv crds.yaml crds/
+rm -rf models manifest.yaml
