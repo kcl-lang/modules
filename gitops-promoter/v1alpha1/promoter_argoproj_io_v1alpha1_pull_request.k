@@ -49,10 +49,14 @@ schema PromoterArgoprojIoV1alpha1PullRequestSpec:
         Description is the description body of the pull/merge request
     gitRepositoryRef : PromoterArgoprojIoV1alpha1PullRequestSpecGitRepositoryRef, default is Undefined, required
         git repository ref
+    mergeSha : str, default is Undefined, required
+        MergeSha is the commit SHA that the head branch must match before the PR can be merged.
+        This prevents a race condition where a PR is merged with a different commit than intended.
     sourceBranch : str, default is Undefined, required
         SourceBranch is the base the git reference that we are merging into Head ---> Base
     state : str, default is "open", required
-        State of the merge request closed/merged/open
+        State of the pull request (closed, merged, or open). Must always be "open" when creating a new pull request.
+        This value may not be changed to "closed" or "merged" unless the pull request status.id is set.
     targetBranch : str, default is Undefined, required
         TargetBranch is the head the git reference we are merging from Head ---> Base
     title : str, default is Undefined, required
@@ -66,6 +70,8 @@ schema PromoterArgoprojIoV1alpha1PullRequestSpec:
 
     gitRepositoryRef: PromoterArgoprojIoV1alpha1PullRequestSpecGitRepositoryRef
 
+    mergeSha: str
+
     sourceBranch: str
 
     state: "closed" | "merged" | "open" = "open"
@@ -73,6 +79,12 @@ schema PromoterArgoprojIoV1alpha1PullRequestSpec:
     targetBranch: str
 
     title: str
+
+
+    check:
+        len(mergeSha) <= 64
+        len(mergeSha) >= 1
+        _regex_match(str(mergeSha), r"^[a-fA-F0-9]+$")
 
 
 schema PromoterArgoprojIoV1alpha1PullRequestSpecCommit:
@@ -131,6 +143,10 @@ schema PromoterArgoprojIoV1alpha1PullRequestStatus:
     state?: "" | "closed" | "merged" | "open"
 
     url?: str
+
+
+    check:
+        _regex_match(str(url), r"^(https?://.*)?$") if url
 
 
 schema PromoterArgoprojIoV1alpha1PullRequestStatusConditionsItems0:

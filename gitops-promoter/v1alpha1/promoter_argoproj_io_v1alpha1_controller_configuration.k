@@ -60,6 +60,8 @@ schema PromoterArgoprojIoV1alpha1ControllerConfigurationSpec:
         promotion strategy
     pullRequest : PromoterArgoprojIoV1alpha1ControllerConfigurationSpecPullRequest, default is Undefined, required
         pull request
+    timedCommitStatus : PromoterArgoprojIoV1alpha1ControllerConfigurationSpecTimedCommitStatus, default is Undefined, required
+        timed commit status
     """
 
 
@@ -72,6 +74,8 @@ schema PromoterArgoprojIoV1alpha1ControllerConfigurationSpec:
     promotionStrategy: PromoterArgoprojIoV1alpha1ControllerConfigurationSpecPromotionStrategy
 
     pullRequest: PromoterArgoprojIoV1alpha1ControllerConfigurationSpecPullRequest
+
+    timedCommitStatus: PromoterArgoprojIoV1alpha1ControllerConfigurationSpecTimedCommitStatus
 
 
 schema PromoterArgoprojIoV1alpha1ControllerConfigurationSpecArgocdCommitStatus:
@@ -1316,6 +1320,253 @@ schema PromoterArgoprojIoV1alpha1ControllerConfigurationSpecPullRequestWorkQueue
 
 
 schema PromoterArgoprojIoV1alpha1ControllerConfigurationSpecPullRequestWorkQueueRateLimiterMaxOfItems0FastSlow:
+    r"""
+    FastSlow rate limiter provides fast retries initially, then switches to slow retries.
+    Useful for quickly retrying transient errors while backing off for persistent failures.
+
+    Attributes
+    ----------
+    fastDelay : str, default is Undefined, required
+        FastDelay is the delay used for the first MaxFastAttempts retry attempts.
+        Format follows Go's time.Duration syntax (e.g., "100ms" for 100 milliseconds).
+    maxFastAttempts : int, default is Undefined, required
+        MaxFastAttempts is the number of retry attempts that use FastDelay before switching to SlowDelay.
+        Must be at least 1.
+    slowDelay : str, default is Undefined, required
+        SlowDelay is the delay used for retry attempts after MaxFastAttempts have been exhausted.
+        Format follows Go's time.Duration syntax (e.g., "10s" for 10 seconds).
+    """
+
+
+    fastDelay: str
+
+    maxFastAttempts: int
+
+    slowDelay: str
+
+
+schema PromoterArgoprojIoV1alpha1ControllerConfigurationSpecTimedCommitStatus:
+    r"""
+    TimedCommitStatus contains the configuration for the TimedCommitStatus controller,
+    including WorkQueue settings that control reconciliation behavior.
+
+    Attributes
+    ----------
+    workQueue : PromoterArgoprojIoV1alpha1ControllerConfigurationSpecTimedCommitStatusWorkQueue, default is Undefined, required
+        work queue
+    """
+
+
+    workQueue: PromoterArgoprojIoV1alpha1ControllerConfigurationSpecTimedCommitStatusWorkQueue
+
+
+schema PromoterArgoprojIoV1alpha1ControllerConfigurationSpecTimedCommitStatusWorkQueue:
+    r"""
+    WorkQueue contains the work queue configuration for the TimedCommitStatus controller.
+    This includes requeue duration, maximum concurrent reconciles, and rate limiter settings.
+
+    Attributes
+    ----------
+    maxConcurrentReconciles : int, default is Undefined, required
+        MaxConcurrentReconciles defines the maximum number of concurrent reconcile operations
+        that can run for this controller. Higher values increase throughput but consume more
+        resources. Must be at least 1.
+    rateLimiter : PromoterArgoprojIoV1alpha1ControllerConfigurationSpecTimedCommitStatusWorkQueueRateLimiter, default is Undefined, required
+        rate limiter
+    requeueDuration : str, default is Undefined, required
+        RequeueDuration specifies how frequently resources should be requeued for automatic reconciliation.
+        This creates a periodic reconciliation loop that ensures the desired state is maintained even
+        without external triggers. Format follows Go's time.Duration syntax (e.g., "5m" for 5 minutes).
+    """
+
+
+    maxConcurrentReconciles: int
+
+    rateLimiter: PromoterArgoprojIoV1alpha1ControllerConfigurationSpecTimedCommitStatusWorkQueueRateLimiter
+
+    requeueDuration: str
+
+
+schema PromoterArgoprojIoV1alpha1ControllerConfigurationSpecTimedCommitStatusWorkQueueRateLimiter:
+    r"""
+    RateLimiter defines the rate limiting strategy for the controller's work queue.
+    Rate limiting controls how quickly failed reconciliations are retried and helps
+    prevent overwhelming external APIs or systems.
+
+    Attributes
+    ----------
+    bucket : PromoterArgoprojIoV1alpha1ControllerConfigurationSpecTimedCommitStatusWorkQueueRateLimiterBucket, default is Undefined, optional
+        bucket
+    exponentialFailure : PromoterArgoprojIoV1alpha1ControllerConfigurationSpecTimedCommitStatusWorkQueueRateLimiterExponentialFailure, default is Undefined, optional
+        exponential failure
+    fastSlow : PromoterArgoprojIoV1alpha1ControllerConfigurationSpecTimedCommitStatusWorkQueueRateLimiterFastSlow, default is Undefined, optional
+        fast slow
+    maxOf : [PromoterArgoprojIoV1alpha1ControllerConfigurationSpecTimedCommitStatusWorkQueueRateLimiterMaxOfItems0], default is Undefined, optional
+        MaxOf allows combining multiple rate limiters, where the maximum delay from all
+        limiters is used. This enables sophisticated rate limiting that respects multiple
+        constraints simultaneously (e.g., both per-item exponential backoff and global rate limits).
+    """
+
+
+    bucket?: PromoterArgoprojIoV1alpha1ControllerConfigurationSpecTimedCommitStatusWorkQueueRateLimiterBucket
+
+    exponentialFailure?: PromoterArgoprojIoV1alpha1ControllerConfigurationSpecTimedCommitStatusWorkQueueRateLimiterExponentialFailure
+
+    fastSlow?: PromoterArgoprojIoV1alpha1ControllerConfigurationSpecTimedCommitStatusWorkQueueRateLimiterFastSlow
+
+    maxOf?: [PromoterArgoprojIoV1alpha1ControllerConfigurationSpecTimedCommitStatusWorkQueueRateLimiterMaxOfItems0]
+
+
+    check:
+        len(maxOf) <= 3 if maxOf
+
+
+schema PromoterArgoprojIoV1alpha1ControllerConfigurationSpecTimedCommitStatusWorkQueueRateLimiterBucket:
+    r"""
+    Bucket rate limiter uses a token bucket algorithm to control request rate.
+    Allows bursts while maintaining an average rate limit.
+
+    Attributes
+    ----------
+    bucket : int, default is Undefined, required
+        Bucket is the maximum number of tokens that can be accumulated in the bucket.
+        This defines the maximum burst size - how many operations can occur in rapid
+        succession before rate limiting takes effect. Must be non-negative.
+    qps : int, default is Undefined, required
+        Qps (queries per second) is the rate at which tokens are added to the bucket.
+        This defines the sustained rate limit for operations. Must be non-negative.
+    """
+
+
+    bucket: int
+
+    qps: int
+
+
+schema PromoterArgoprojIoV1alpha1ControllerConfigurationSpecTimedCommitStatusWorkQueueRateLimiterExponentialFailure:
+    r"""
+    ExponentialFailure rate limiter increases delay exponentially with each failure.
+    Standard approach for backing off when operations fail repeatedly.
+
+    Attributes
+    ----------
+    baseDelay : str, default is Undefined, required
+        BaseDelay is the initial delay after the first failure. Subsequent failures will exponentially
+        increase this delay (2x, 4x, 8x, etc.) until MaxDelay is reached.
+        Format follows Go's time.Duration syntax (e.g., "1s" for 1 second).
+    maxDelay : str, default is Undefined, required
+        MaxDelay is the maximum delay between retry attempts. Once the exponential backoff reaches
+        this value, all subsequent retries will use this delay.
+        Format follows Go's time.Duration syntax (e.g., "1m" for 1 minute).
+    """
+
+
+    baseDelay: str
+
+    maxDelay: str
+
+
+schema PromoterArgoprojIoV1alpha1ControllerConfigurationSpecTimedCommitStatusWorkQueueRateLimiterFastSlow:
+    r"""
+    FastSlow rate limiter provides fast retries initially, then switches to slow retries.
+    Useful for quickly retrying transient errors while backing off for persistent failures.
+
+    Attributes
+    ----------
+    fastDelay : str, default is Undefined, required
+        FastDelay is the delay used for the first MaxFastAttempts retry attempts.
+        Format follows Go's time.Duration syntax (e.g., "100ms" for 100 milliseconds).
+    maxFastAttempts : int, default is Undefined, required
+        MaxFastAttempts is the number of retry attempts that use FastDelay before switching to SlowDelay.
+        Must be at least 1.
+    slowDelay : str, default is Undefined, required
+        SlowDelay is the delay used for retry attempts after MaxFastAttempts have been exhausted.
+        Format follows Go's time.Duration syntax (e.g., "10s" for 10 seconds).
+    """
+
+
+    fastDelay: str
+
+    maxFastAttempts: int
+
+    slowDelay: str
+
+
+schema PromoterArgoprojIoV1alpha1ControllerConfigurationSpecTimedCommitStatusWorkQueueRateLimiterMaxOfItems0:
+    r"""
+    RateLimiterTypes defines the different algorithms available for rate limiting.
+
+    Exactly one of the three rate limiter types must be specified:
+      - FastSlow: Quick retry for transient errors, then slower retry for persistent failures
+      - ExponentialFailure: Standard exponential backoff for repeated failures
+      - Bucket: Token bucket algorithm for controlling overall request rate
+
+    See https://pkg.go.dev/k8s.io/client-go/util/workqueue for implementation details.
+
+    Attributes
+    ----------
+    bucket : PromoterArgoprojIoV1alpha1ControllerConfigurationSpecTimedCommitStatusWorkQueueRateLimiterMaxOfItems0Bucket, default is Undefined, optional
+        bucket
+    exponentialFailure : PromoterArgoprojIoV1alpha1ControllerConfigurationSpecTimedCommitStatusWorkQueueRateLimiterMaxOfItems0ExponentialFailure, default is Undefined, optional
+        exponential failure
+    fastSlow : PromoterArgoprojIoV1alpha1ControllerConfigurationSpecTimedCommitStatusWorkQueueRateLimiterMaxOfItems0FastSlow, default is Undefined, optional
+        fast slow
+    """
+
+
+    bucket?: PromoterArgoprojIoV1alpha1ControllerConfigurationSpecTimedCommitStatusWorkQueueRateLimiterMaxOfItems0Bucket
+
+    exponentialFailure?: PromoterArgoprojIoV1alpha1ControllerConfigurationSpecTimedCommitStatusWorkQueueRateLimiterMaxOfItems0ExponentialFailure
+
+    fastSlow?: PromoterArgoprojIoV1alpha1ControllerConfigurationSpecTimedCommitStatusWorkQueueRateLimiterMaxOfItems0FastSlow
+
+
+schema PromoterArgoprojIoV1alpha1ControllerConfigurationSpecTimedCommitStatusWorkQueueRateLimiterMaxOfItems0Bucket:
+    r"""
+    Bucket rate limiter uses a token bucket algorithm to control request rate.
+    Allows bursts while maintaining an average rate limit.
+
+    Attributes
+    ----------
+    bucket : int, default is Undefined, required
+        Bucket is the maximum number of tokens that can be accumulated in the bucket.
+        This defines the maximum burst size - how many operations can occur in rapid
+        succession before rate limiting takes effect. Must be non-negative.
+    qps : int, default is Undefined, required
+        Qps (queries per second) is the rate at which tokens are added to the bucket.
+        This defines the sustained rate limit for operations. Must be non-negative.
+    """
+
+
+    bucket: int
+
+    qps: int
+
+
+schema PromoterArgoprojIoV1alpha1ControllerConfigurationSpecTimedCommitStatusWorkQueueRateLimiterMaxOfItems0ExponentialFailure:
+    r"""
+    ExponentialFailure rate limiter increases delay exponentially with each failure.
+    Standard approach for backing off when operations fail repeatedly.
+
+    Attributes
+    ----------
+    baseDelay : str, default is Undefined, required
+        BaseDelay is the initial delay after the first failure. Subsequent failures will exponentially
+        increase this delay (2x, 4x, 8x, etc.) until MaxDelay is reached.
+        Format follows Go's time.Duration syntax (e.g., "1s" for 1 second).
+    maxDelay : str, default is Undefined, required
+        MaxDelay is the maximum delay between retry attempts. Once the exponential backoff reaches
+        this value, all subsequent retries will use this delay.
+        Format follows Go's time.Duration syntax (e.g., "1m" for 1 minute).
+    """
+
+
+    baseDelay: str
+
+    maxDelay: str
+
+
+schema PromoterArgoprojIoV1alpha1ControllerConfigurationSpecTimedCommitStatusWorkQueueRateLimiterMaxOfItems0FastSlow:
     r"""
     FastSlow rate limiter provides fast retries initially, then switches to slow retries.
     Useful for quickly retrying transient errors while backing off for persistent failures.

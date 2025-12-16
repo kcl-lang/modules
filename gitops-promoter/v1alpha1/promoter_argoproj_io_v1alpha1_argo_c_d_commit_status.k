@@ -199,8 +199,9 @@ schema PromoterArgoprojIoV1alpha1ArgoCDCommitStatusStatusApplicationsSelectedIte
     Attributes
     ----------
     clusterName : str, default is Undefined, required
-        ClusterName is the name of the cluster that the application manifest is deployed to.
-    environment : str, default is Undefined, optional
+        ClusterName is the name of the cluster that the application manifest is deployed to. An empty string indicates
+        the local cluster.
+    environment : str, default is Undefined, required
         Environment is the syncSource.targetBranch of the Argo CD application (in effect, its environment).
     lastTransitionTime : str, default is Undefined, optional
         LastTransitionTime is the last time the phase transitioned.
@@ -217,7 +218,7 @@ schema PromoterArgoprojIoV1alpha1ArgoCDCommitStatusStatusApplicationsSelectedIte
 
     clusterName: str
 
-    environment?: str
+    environment: str
 
     lastTransitionTime?: str
 
@@ -228,6 +229,10 @@ schema PromoterArgoprojIoV1alpha1ArgoCDCommitStatusStatusApplicationsSelectedIte
     phase: str
 
     sha: str
+
+
+    check:
+        len(environment) >= 1
 
 
 schema PromoterArgoprojIoV1alpha1ArgoCDCommitStatusStatusConditionsItems0:

@@ -207,6 +207,7 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusActiveCommitStatusesI
         len(key) <= 63
         len(key) >= 1
         _regex_match(str(key), r"([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9]")
+        _regex_match(str(url), r"^(https?://.*)?$") if url
 
 
 schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusActiveDry:
@@ -245,6 +246,10 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusActiveDry:
     sha?: str
 
     subject?: str
+
+
+    check:
+        _regex_match(str(repoURL), r"^(https?://.*)?$") if repoURL
 
 
 schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusActiveDryReferencesItems0:
@@ -296,6 +301,10 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusActiveDryReferencesIt
     subject?: str
 
 
+    check:
+        _regex_match(str(repoURL), r"^(https?://.*)?$") if repoURL
+
+
 schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusActiveHydrated:
     r"""
     Hydrated is the hydrated state of the branch, which is the commit that is currently being worked on.
@@ -332,6 +341,10 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusActiveHydrated:
     sha?: str
 
     subject?: str
+
+
+    check:
+        _regex_match(str(repoURL), r"^(https?://.*)?$") if repoURL
 
 
 schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusActiveHydratedReferencesItems0:
@@ -381,6 +394,10 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusActiveHydratedReferen
     sha?: str
 
     subject?: str
+
+
+    check:
+        _regex_match(str(repoURL), r"^(https?://.*)?$") if repoURL
 
 
 schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusConditionsItems0:
@@ -505,6 +522,7 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ActiveCo
         len(key) <= 63
         len(key) >= 1
         _regex_match(str(key), r"([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9]")
+        _regex_match(str(url), r"^(https?://.*)?$") if url
 
 
 schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ActiveDry:
@@ -543,6 +561,10 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ActiveDr
     sha?: str
 
     subject?: str
+
+
+    check:
+        _regex_match(str(repoURL), r"^(https?://.*)?$") if repoURL
 
 
 schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ActiveDryReferencesItems0:
@@ -594,6 +616,10 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ActiveDr
     subject?: str
 
 
+    check:
+        _regex_match(str(repoURL), r"^(https?://.*)?$") if repoURL
+
+
 schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ActiveHydrated:
     r"""
     Hydrated is the hydrated state of the branch, which is the commit that is currently being worked on.
@@ -630,6 +656,10 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ActiveHy
     sha?: str
 
     subject?: str
+
+
+    check:
+        _regex_match(str(repoURL), r"^(https?://.*)?$") if repoURL
 
 
 schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ActiveHydratedReferencesItems0:
@@ -681,6 +711,10 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ActiveHy
     subject?: str
 
 
+    check:
+        _regex_match(str(repoURL), r"^(https?://.*)?$") if repoURL
+
+
 schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0Proposed:
     r"""
     Proposed is the state of the proposed branch at the time the PR was merged.
@@ -726,6 +760,7 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0Proposed
         len(key) <= 63
         len(key) >= 1
         _regex_match(str(key), r"([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9]")
+        _regex_match(str(url), r"^(https?://.*)?$") if url
 
 
 schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ProposedHydrated:
@@ -764,6 +799,10 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0Proposed
     sha?: str
 
     subject?: str
+
+
+    check:
+        _regex_match(str(repoURL), r"^(https?://.*)?$") if repoURL
 
 
 schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ProposedHydratedReferencesItems0:
@@ -815,6 +854,10 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0Proposed
     subject?: str
 
 
+    check:
+        _regex_match(str(repoURL), r"^(https?://.*)?$") if repoURL
+
+
 schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0PullRequest:
     r"""
     PullRequest is the state of the pull request that was created for this ChangeTransferPolicy.
@@ -825,6 +868,11 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0PullRequ
         ID is the unique identifier of the pull request, set by the SCM.
     prCreationTime : str, default is Undefined, optional
         PRCreationTime is the time when the pull request was created.
+    prMergeTime : str, default is Undefined, optional
+        PRMergeTime is the time when the pull request was merged. This time can vary slightly from the actual merge time because
+        it is the time when the ChangeTransferPolicy controller sets the pull requests spec to merge. In the future we plan on making
+        this time more accurate by fetching the actual merge time from the SCM via the webhook this would then be updated in the git note
+        for that commit.
     state : str, default is Undefined, optional
         State is the state of the pull request.
     url : str, default is Undefined, optional
@@ -836,9 +884,15 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0PullRequ
 
     prCreationTime?: str
 
+    prMergeTime?: str
+
     state?: "closed" | "merged" | "open"
 
     url?: str
+
+
+    check:
+        _regex_match(str(url), r"^(https?://.*)?$") if url
 
 
 schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusProposed:
@@ -889,6 +943,7 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusProposedCommitStatuse
         len(key) <= 63
         len(key) >= 1
         _regex_match(str(key), r"([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9]")
+        _regex_match(str(url), r"^(https?://.*)?$") if url
 
 
 schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusProposedDry:
@@ -927,6 +982,10 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusProposedDry:
     sha?: str
 
     subject?: str
+
+
+    check:
+        _regex_match(str(repoURL), r"^(https?://.*)?$") if repoURL
 
 
 schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusProposedDryReferencesItems0:
@@ -978,6 +1037,10 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusProposedDryReferences
     subject?: str
 
 
+    check:
+        _regex_match(str(repoURL), r"^(https?://.*)?$") if repoURL
+
+
 schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusProposedHydrated:
     r"""
     Hydrated is the hydrated state of the branch, which is the commit that is currently being worked on.
@@ -1014,6 +1077,10 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusProposedHydrated:
     sha?: str
 
     subject?: str
+
+
+    check:
+        _regex_match(str(repoURL), r"^(https?://.*)?$") if repoURL
 
 
 schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusProposedHydratedReferencesItems0:
@@ -1065,6 +1132,10 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusProposedHydratedRefer
     subject?: str
 
 
+    check:
+        _regex_match(str(repoURL), r"^(https?://.*)?$") if repoURL
+
+
 schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusPullRequest:
     r"""
     PullRequest is the state of the pull request that was created for this ChangeTransferPolicy.
@@ -1075,6 +1146,11 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusPullRequest:
         ID is the unique identifier of the pull request, set by the SCM.
     prCreationTime : str, default is Undefined, optional
         PRCreationTime is the time when the pull request was created.
+    prMergeTime : str, default is Undefined, optional
+        PRMergeTime is the time when the pull request was merged. This time can vary slightly from the actual merge time because
+        it is the time when the ChangeTransferPolicy controller sets the pull requests spec to merge. In the future we plan on making
+        this time more accurate by fetching the actual merge time from the SCM via the webhook this would then be updated in the git note
+        for that commit.
     state : str, default is Undefined, optional
         State is the state of the pull request.
     url : str, default is Undefined, optional
@@ -1086,8 +1162,14 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusPullRequest:
 
     prCreationTime?: str
 
+    prMergeTime?: str
+
     state?: "closed" | "merged" | "open"
 
     url?: str
+
+
+    check:
+        _regex_match(str(url), r"^(https?://.*)?$") if url
 
 
