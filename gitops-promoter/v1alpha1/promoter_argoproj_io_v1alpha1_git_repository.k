@@ -21,8 +21,8 @@ schema GitRepository:
         metadata
     spec : PromoterArgoprojIoV1alpha1GitRepositorySpec, default is Undefined, optional
         spec
-    status : any, default is Undefined, optional
-        GitRepositoryStatus defines the observed state of GitRepository
+    status : PromoterArgoprojIoV1alpha1GitRepositoryStatus, default is Undefined, optional
+        status
     """
 
 
@@ -34,7 +34,7 @@ schema GitRepository:
 
     spec?: PromoterArgoprojIoV1alpha1GitRepositorySpec
 
-    status?: any
+    status?: PromoterArgoprojIoV1alpha1GitRepositoryStatus
 
 
 schema PromoterArgoprojIoV1alpha1GitRepositorySpec:
@@ -171,5 +171,71 @@ schema PromoterArgoprojIoV1alpha1GitRepositorySpecScmProviderRef:
     kind: "ScmProvider" | "ClusterScmProvider" = "ScmProvider"
 
     name: str
+
+
+schema PromoterArgoprojIoV1alpha1GitRepositoryStatus:
+    r"""
+    GitRepositoryStatus defines the observed state of GitRepository
+
+    Attributes
+    ----------
+    conditions : [PromoterArgoprojIoV1alpha1GitRepositoryStatusConditionsItems0], default is Undefined, optional
+        Conditions Represents the observations of the current state.
+    """
+
+
+    conditions?: [PromoterArgoprojIoV1alpha1GitRepositoryStatusConditionsItems0]
+
+
+schema PromoterArgoprojIoV1alpha1GitRepositoryStatusConditionsItems0:
+    r"""
+    Condition contains details for one aspect of the current state of this API Resource.
+
+    Attributes
+    ----------
+    lastTransitionTime : str, default is Undefined, required
+        lastTransitionTime is the last time the condition transitioned from one status to another.
+        This should be when the underlying condition changed.  If that is not known, then using the time when the API field changed is acceptable.
+    message : str, default is Undefined, required
+        message is a human readable message indicating details about the transition.
+        This may be an empty string.
+    observedGeneration : int, default is Undefined, optional
+        observedGeneration represents the .metadata.generation that the condition was set based upon.
+        For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date
+        with respect to the current state of the instance.
+    reason : str, default is Undefined, required
+        reason contains a programmatic identifier indicating the reason for the condition's last transition.
+        Producers of specific condition types may define expected values and meanings for this field,
+        and whether the values are considered a guaranteed API.
+        The value should be a CamelCase string.
+        This field may not be empty.
+    status : str, default is Undefined, required
+        status of the condition, one of True, False, Unknown.
+    $type : str, default is Undefined, required
+        type of condition in CamelCase or in foo.example.com/CamelCase.
+    """
+
+
+    lastTransitionTime: str
+
+    message: str
+
+    observedGeneration?: int
+
+    reason: str
+
+    status: "True" | "False" | "Unknown"
+
+    $type: str
+
+
+    check:
+        len(message) <= 32768
+        observedGeneration >= 0 if observedGeneration not in [None, Undefined]
+        len(reason) <= 1024
+        len(reason) >= 1
+        _regex_match(str(reason), r"^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$")
+        len($type) <= 316
+        _regex_match(str($type), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$")
 
 

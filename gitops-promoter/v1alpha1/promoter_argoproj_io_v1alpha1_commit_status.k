@@ -72,7 +72,10 @@ schema PromoterArgoprojIoV1alpha1CommitStatusSpec:
 
 
     check:
-        _regex_match(str(url), r"^https?://.*$") if url
+        len(sha) <= 64
+        len(sha) >= 1
+        _regex_match(str(sha), r"^[a-fA-F0-9]+$")
+        _regex_match(str(url), r"^(https?://.*)?$") if url
 
 
 schema PromoterArgoprojIoV1alpha1CommitStatusSpecGitRepositoryRef:
@@ -110,7 +113,7 @@ schema PromoterArgoprojIoV1alpha1CommitStatusStatus:
 
     id: str
 
-    phase?: "pending" | "success" | "failure" = "pending"
+    phase?: "pending" | "success" | "failure" | "" = "pending"
 
     sha: str
 

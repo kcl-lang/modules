@@ -4,7 +4,7 @@ set -o errexit
 set -o nounset
 set -eoux pipefail
 
-VERSION="v0.14.0"
+VERSION="v0.18.3"
 
 rm -rf v*
 mkdir -p crds
