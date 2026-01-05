@@ -72,6 +72,7 @@ schema PromoterArgoprojIoV1alpha1CommitStatusSpec:
 
 
     check:
+        len(name) >= 1
         len(sha) <= 64
         len(sha) >= 1
         _regex_match(str(sha), r"^[a-fA-F0-9]+$")
