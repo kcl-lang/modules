@@ -326,6 +326,8 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0Active
         dry
     hydrated : PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0ActiveHydrated, default is Undefined, optional
         hydrated
+    note : PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0ActiveNote, default is Undefined, optional
+        note
     """
 
 
@@ -334,6 +336,8 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0Active
     dry?: PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0ActiveDry
 
     hydrated?: PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0ActiveHydrated
+
+    note?: PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0ActiveNote
 
 
 schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0ActiveCommitStatusesItems0:
@@ -555,6 +559,97 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0Active
         _regex_match(str(repoURL), r"^(https?://.*)?$") if repoURL
 
 
+schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0ActiveNote:
+    r"""
+    Note is the hydrator metadata from the git note attached to the hydrated commit.
+
+    Attributes
+    ----------
+    author : str, default is Undefined, optional
+        Author is the author of the dry commit that was used to hydrate the branch.
+    body : str, default is Undefined, optional
+        Body is the body of the dry commit that was used to hydrate the branch without the subject.
+    date : str, default is Undefined, optional
+        Date is the date of the dry commit that was used to hydrate the branch.
+    drySha : str, default is Undefined, optional
+        DrySha is the SHA of the commit that was used as the dry source for hydration.
+    references : [PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0ActiveNoteReferencesItems0], default is Undefined, optional
+        References are the references to other commits, that went into the hydration of the branch.
+    repoURL : str, default is Undefined, optional
+        RepoURL is the URL of the repository where the commit is located.
+    subject : str, default is Undefined, optional
+        Subject is the subject line of the dry commit that was used to hydrate the branch.
+    """
+
+
+    author?: str
+
+    body?: str
+
+    date?: str
+
+    drySha?: str
+
+    references?: [PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0ActiveNoteReferencesItems0]
+
+    repoURL?: str
+
+    subject?: str
+
+
+schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0ActiveNoteReferencesItems0:
+    r"""
+    RevisionReference contains a reference to a some information that is related in some way to another commit. For now,
+    it supports only references to a commit. In the future, it may support other types of references.
+
+    Attributes
+    ----------
+    commit : PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0ActiveNoteReferencesItems0Commit, default is Undefined, optional
+        commit
+    """
+
+
+    commit?: PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0ActiveNoteReferencesItems0Commit
+
+
+schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0ActiveNoteReferencesItems0Commit:
+    r"""
+    Commit contains metadata about the commit that is related in some way to another commit.
+
+    Attributes
+    ----------
+    author : str, default is Undefined, optional
+        Author is the author of the commit.
+    body : str, default is Undefined, optional
+        Body is the body of the commit message, excluding the subject line, i.e. `git show --format=%b`.
+    date : str, default is Undefined, optional
+        Date is the date of the commit, formatted as by `git show -s --format=%aI`.
+    repoURL : str, default is Undefined, optional
+        RepoURL is the URL of the repository where the commit is located.
+    sha : str, default is Undefined, optional
+        Sha is the commit hash.
+    subject : str, default is Undefined, optional
+        Subject is the subject line of the commit message, i.e. `git show --format=%s`.
+    """
+
+
+    author?: str
+
+    body?: str
+
+    date?: str
+
+    repoURL?: str
+
+    sha?: str
+
+    subject?: str
+
+
+    check:
+        _regex_match(str(repoURL), r"^(https?://.*)?$") if repoURL
+
+
 schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0HistoryItems0:
     r"""
     History describes a particular change that was promoted by the ChangeTransferPolicy.
@@ -589,6 +684,8 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0Histor
         dry
     hydrated : PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0HistoryItems0ActiveHydrated, default is Undefined, optional
         hydrated
+    note : PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0HistoryItems0ActiveNote, default is Undefined, optional
+        note
     """
 
 
@@ -597,6 +694,8 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0Histor
     dry?: PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0HistoryItems0ActiveDry
 
     hydrated?: PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0HistoryItems0ActiveHydrated
+
+    note?: PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0HistoryItems0ActiveNote
 
 
 schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0HistoryItems0ActiveCommitStatusesItems0:
@@ -781,6 +880,97 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0Histor
 
 
 schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0HistoryItems0ActiveHydratedReferencesItems0Commit:
+    r"""
+    Commit contains metadata about the commit that is related in some way to another commit.
+
+    Attributes
+    ----------
+    author : str, default is Undefined, optional
+        Author is the author of the commit.
+    body : str, default is Undefined, optional
+        Body is the body of the commit message, excluding the subject line, i.e. `git show --format=%b`.
+    date : str, default is Undefined, optional
+        Date is the date of the commit, formatted as by `git show -s --format=%aI`.
+    repoURL : str, default is Undefined, optional
+        RepoURL is the URL of the repository where the commit is located.
+    sha : str, default is Undefined, optional
+        Sha is the commit hash.
+    subject : str, default is Undefined, optional
+        Subject is the subject line of the commit message, i.e. `git show --format=%s`.
+    """
+
+
+    author?: str
+
+    body?: str
+
+    date?: str
+
+    repoURL?: str
+
+    sha?: str
+
+    subject?: str
+
+
+    check:
+        _regex_match(str(repoURL), r"^(https?://.*)?$") if repoURL
+
+
+schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0HistoryItems0ActiveNote:
+    r"""
+    Note is the hydrator metadata from the git note attached to the hydrated commit.
+
+    Attributes
+    ----------
+    author : str, default is Undefined, optional
+        Author is the author of the dry commit that was used to hydrate the branch.
+    body : str, default is Undefined, optional
+        Body is the body of the dry commit that was used to hydrate the branch without the subject.
+    date : str, default is Undefined, optional
+        Date is the date of the dry commit that was used to hydrate the branch.
+    drySha : str, default is Undefined, optional
+        DrySha is the SHA of the commit that was used as the dry source for hydration.
+    references : [PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0HistoryItems0ActiveNoteReferencesItems0], default is Undefined, optional
+        References are the references to other commits, that went into the hydration of the branch.
+    repoURL : str, default is Undefined, optional
+        RepoURL is the URL of the repository where the commit is located.
+    subject : str, default is Undefined, optional
+        Subject is the subject line of the dry commit that was used to hydrate the branch.
+    """
+
+
+    author?: str
+
+    body?: str
+
+    date?: str
+
+    drySha?: str
+
+    references?: [PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0HistoryItems0ActiveNoteReferencesItems0]
+
+    repoURL?: str
+
+    subject?: str
+
+
+schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0HistoryItems0ActiveNoteReferencesItems0:
+    r"""
+    RevisionReference contains a reference to a some information that is related in some way to another commit. For now,
+    it supports only references to a commit. In the future, it may support other types of references.
+
+    Attributes
+    ----------
+    commit : PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0HistoryItems0ActiveNoteReferencesItems0Commit, default is Undefined, optional
+        commit
+    """
+
+
+    commit?: PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0HistoryItems0ActiveNoteReferencesItems0Commit
+
+
+schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0HistoryItems0ActiveNoteReferencesItems0Commit:
     r"""
     Commit contains metadata about the commit that is related in some way to another commit.
 
@@ -1028,6 +1218,8 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0Propos
         dry
     hydrated : PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0ProposedHydrated, default is Undefined, optional
         hydrated
+    note : PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0ProposedNote, default is Undefined, optional
+        note
     """
 
 
@@ -1036,6 +1228,8 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0Propos
     dry?: PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0ProposedDry
 
     hydrated?: PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0ProposedHydrated
+
+    note?: PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0ProposedNote
 
 
 schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0ProposedCommitStatusesItems0:
@@ -1220,6 +1414,97 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0Propos
 
 
 schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0ProposedHydratedReferencesItems0Commit:
+    r"""
+    Commit contains metadata about the commit that is related in some way to another commit.
+
+    Attributes
+    ----------
+    author : str, default is Undefined, optional
+        Author is the author of the commit.
+    body : str, default is Undefined, optional
+        Body is the body of the commit message, excluding the subject line, i.e. `git show --format=%b`.
+    date : str, default is Undefined, optional
+        Date is the date of the commit, formatted as by `git show -s --format=%aI`.
+    repoURL : str, default is Undefined, optional
+        RepoURL is the URL of the repository where the commit is located.
+    sha : str, default is Undefined, optional
+        Sha is the commit hash.
+    subject : str, default is Undefined, optional
+        Subject is the subject line of the commit message, i.e. `git show --format=%s`.
+    """
+
+
+    author?: str
+
+    body?: str
+
+    date?: str
+
+    repoURL?: str
+
+    sha?: str
+
+    subject?: str
+
+
+    check:
+        _regex_match(str(repoURL), r"^(https?://.*)?$") if repoURL
+
+
+schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0ProposedNote:
+    r"""
+    Note is the hydrator metadata from the git note attached to the hydrated commit.
+
+    Attributes
+    ----------
+    author : str, default is Undefined, optional
+        Author is the author of the dry commit that was used to hydrate the branch.
+    body : str, default is Undefined, optional
+        Body is the body of the dry commit that was used to hydrate the branch without the subject.
+    date : str, default is Undefined, optional
+        Date is the date of the dry commit that was used to hydrate the branch.
+    drySha : str, default is Undefined, optional
+        DrySha is the SHA of the commit that was used as the dry source for hydration.
+    references : [PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0ProposedNoteReferencesItems0], default is Undefined, optional
+        References are the references to other commits, that went into the hydration of the branch.
+    repoURL : str, default is Undefined, optional
+        RepoURL is the URL of the repository where the commit is located.
+    subject : str, default is Undefined, optional
+        Subject is the subject line of the dry commit that was used to hydrate the branch.
+    """
+
+
+    author?: str
+
+    body?: str
+
+    date?: str
+
+    drySha?: str
+
+    references?: [PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0ProposedNoteReferencesItems0]
+
+    repoURL?: str
+
+    subject?: str
+
+
+schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0ProposedNoteReferencesItems0:
+    r"""
+    RevisionReference contains a reference to a some information that is related in some way to another commit. For now,
+    it supports only references to a commit. In the future, it may support other types of references.
+
+    Attributes
+    ----------
+    commit : PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0ProposedNoteReferencesItems0Commit, default is Undefined, optional
+        commit
+    """
+
+
+    commit?: PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0ProposedNoteReferencesItems0Commit
+
+
+schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0ProposedNoteReferencesItems0Commit:
     r"""
     Commit contains metadata about the commit that is related in some way to another commit.
 

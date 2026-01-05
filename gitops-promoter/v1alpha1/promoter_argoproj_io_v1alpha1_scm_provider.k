@@ -43,6 +43,8 @@ schema PromoterArgoprojIoV1alpha1ScmProviderSpec:
 
     Attributes
     ----------
+    bitbucketCloud : any, default is Undefined, optional
+        BitbucketCloud required configuration for Bitbucket Cloud as the SCM provider
     fake : PromoterArgoprojIoV1alpha1ScmProviderSpecFake, default is Undefined, optional
         fake
     forgejo : PromoterArgoprojIoV1alpha1ScmProviderSpecForgejo, default is Undefined, optional
@@ -55,6 +57,8 @@ schema PromoterArgoprojIoV1alpha1ScmProviderSpec:
         secret ref
     """
 
+
+    bitbucketCloud?: any
 
     fake?: PromoterArgoprojIoV1alpha1ScmProviderSpecFake
 

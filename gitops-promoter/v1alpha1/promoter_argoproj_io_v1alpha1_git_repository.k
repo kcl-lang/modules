@@ -43,6 +43,8 @@ schema PromoterArgoprojIoV1alpha1GitRepositorySpec:
 
     Attributes
     ----------
+    bitbucketCloud : PromoterArgoprojIoV1alpha1GitRepositorySpecBitbucketCloud, default is Undefined, optional
+        bitbucket cloud
     fake : PromoterArgoprojIoV1alpha1GitRepositorySpecFake, default is Undefined, optional
         fake
     forgejo : PromoterArgoprojIoV1alpha1GitRepositorySpecForgejo, default is Undefined, optional
@@ -56,6 +58,8 @@ schema PromoterArgoprojIoV1alpha1GitRepositorySpec:
     """
 
 
+    bitbucketCloud?: PromoterArgoprojIoV1alpha1GitRepositorySpecBitbucketCloud
+
     fake?: PromoterArgoprojIoV1alpha1GitRepositorySpecFake
 
     forgejo?: PromoterArgoprojIoV1alpha1GitRepositorySpecForgejo
@@ -65,6 +69,31 @@ schema PromoterArgoprojIoV1alpha1GitRepositorySpec:
     gitlab?: PromoterArgoprojIoV1alpha1GitRepositorySpecGitlab
 
     scmProviderRef: PromoterArgoprojIoV1alpha1GitRepositorySpecScmProviderRef
+
+
+schema PromoterArgoprojIoV1alpha1GitRepositorySpecBitbucketCloud:
+    r"""
+    BitbucketCloudRepo is a repository in Bitbucket Cloud, identified by its owner and name.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name is the name of the repository.
+    owner : str, default is Undefined, required
+        Owner is the owner of the repository (can be a user or workspace).
+    """
+
+
+    name: str
+
+    owner: str
+
+
+    check:
+        len(name) <= 62
+        _regex_match(str(name), r"^[a-zA-Z0-9_.-]+$")
+        len(owner) >= 1
+        _regex_match(str(owner), r"^[a-zA-Z0-9_-]+$")
 
 
 schema PromoterArgoprojIoV1alpha1GitRepositorySpecFake:
