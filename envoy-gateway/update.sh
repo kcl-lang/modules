@@ -4,7 +4,7 @@ set -o errexit
 set -o nounset
 set -eoux pipefail
 
-VERSION="v1.5.0"
+VERSION="v1.6.2"
 rm -rf v* standard crds
 
 curl -L -o envoy-gateway-crds.yaml "https://github.com/envoyproxy/gateway/releases/download/${VERSION}/envoy-gateway-crds.yaml"
