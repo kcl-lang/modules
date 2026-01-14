@@ -1,0 +1,25 @@
+version: 1.6.2
+name: envoy-gateway
+displayName: envoy-gateway
+createdAt: "2026-01-14T15:21:03Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `envoy-gateway` with tag `1.6.2` as dependency
+  ```
+  kcl mod add envoy-gateway:1.6.2
+  ```
+
+  #### Pull `envoy-gateway` with tag `1.6.2` to local
+  ```
+  kcl mod pull envoy-gateway:1.6.2
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
