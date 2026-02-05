@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema IngressRouteTCP:
-    """
+    r"""
     IngressRouteTCP is the CRD implementation of a Traefik TCP Router.
 
     Attributes
@@ -32,7 +32,7 @@ schema IngressRouteTCP:
 
 
 schema TraefikIoV1alpha1IngressRouteTCPSpec:
-    """
+    r"""
     IngressRouteTCPSpec defines the desired state of IngressRouteTCP.
 
     Attributes
@@ -40,7 +40,7 @@ schema TraefikIoV1alpha1IngressRouteTCPSpec:
     entryPoints : [str], default is Undefined, optional
         EntryPoints defines the list of entry point names to bind to.
         Entry points have to be configured in the static configuration.
-        More info: https://doc.traefik.io/traefik/v3.0/routing/entrypoints/
+        More info: https://doc.traefik.io/traefik/v3.6/reference/install-configuration/entrypoints/
         Default: all.
     routes : [TraefikIoV1alpha1IngressRouteTCPSpecRoutesItems0], default is Undefined, required
         Routes defines the list of routes.
@@ -57,24 +57,25 @@ schema TraefikIoV1alpha1IngressRouteTCPSpec:
 
 
 schema TraefikIoV1alpha1IngressRouteTCPSpecRoutesItems0:
-    """
+    r"""
     RouteTCP holds the TCP route configuration.
 
     Attributes
     ----------
     match : str, default is Undefined, required
         Match defines the router's rule.
-        More info: https://doc.traefik.io/traefik/v3.0/routing/routers/#rule_1
+        More info: https://doc.traefik.io/traefik/v3.6/reference/routing-configuration/tcp/routing/rules-and-priority/
     middlewares : [TraefikIoV1alpha1IngressRouteTCPSpecRoutesItems0MiddlewaresItems0], default is Undefined, optional
         Middlewares defines the list of references to MiddlewareTCP resources.
     priority : int, default is Undefined, optional
         Priority defines the router's priority.
-        More info: https://doc.traefik.io/traefik/v3.0/routing/routers/#priority_1
+        More info: https://doc.traefik.io/traefik/v3.6/reference/routing-configuration/tcp/routing/rules-and-priority/#priority
     services : [TraefikIoV1alpha1IngressRouteTCPSpecRoutesItems0ServicesItems0], default is Undefined, optional
         Services defines the list of TCP services.
     syntax : str, default is Undefined, optional
         Syntax defines the router's rule syntax.
-        More info: https://doc.traefik.io/traefik/v3.0/routing/routers/#rulesyntax_1
+        More info: https://doc.traefik.io/traefik/v3.6/reference/routing-configuration/tcp/routing/rules-and-priority/#rulesyntax
+        Deprecated: Please do not use this field and rewrite the router rules to use the v3 syntax.
     """
 
 
@@ -86,11 +87,15 @@ schema TraefikIoV1alpha1IngressRouteTCPSpecRoutesItems0:
 
     services?: [TraefikIoV1alpha1IngressRouteTCPSpecRoutesItems0ServicesItems0]
 
-    syntax?: str
+    syntax?: "v3" | "v2"
+
+
+    check:
+        priority <= 9.223372036854775e+18 if priority not in [None, Undefined]
 
 
 schema TraefikIoV1alpha1IngressRouteTCPSpecRoutesItems0MiddlewaresItems0:
-    """
+    r"""
     ObjectReference is a generic reference to a Traefik resource.
 
     Attributes
@@ -108,7 +113,7 @@ schema TraefikIoV1alpha1IngressRouteTCPSpecRoutesItems0MiddlewaresItems0:
 
 
 schema TraefikIoV1alpha1IngressRouteTCPSpecRoutesItems0ServicesItems0:
-    """
+    r"""
     ServiceTCP defines an upstream TCP service to proxy traffic to.
 
     Attributes
@@ -142,7 +147,7 @@ schema TraefikIoV1alpha1IngressRouteTCPSpecRoutesItems0ServicesItems0:
         hence fully terminating the connection.
         It is a duration in milliseconds, defaulting to 100.
         A negative value means an infinite deadline (i.e. the reading capability is never closed).
-        Deprecated: TerminationDelay is not supported APIVersion traefik.io/v1, please use ServersTransport to configure the TerminationDelay instead.
+        Deprecated: TerminationDelay will not be supported in future APIVersions, please use ServersTransport to configure the TerminationDelay instead.
     tls : bool, default is Undefined, optional
         TLS determines whether to use TLS when dialing with the backend.
     weight : int, default is Undefined, optional
@@ -171,10 +176,15 @@ schema TraefikIoV1alpha1IngressRouteTCPSpecRoutesItems0ServicesItems0:
     weight?: int
 
 
+    check:
+        weight >= 0 if weight not in [None, Undefined]
+
+
 schema TraefikIoV1alpha1IngressRouteTCPSpecRoutesItems0ServicesItems0ProxyProtocol:
-    """
+    r"""
     ProxyProtocol defines the PROXY protocol configuration.
-    More info: https://doc.traefik.io/traefik/v3.0/routing/services/#proxy-protocol
+    More info: https://doc.traefik.io/traefik/v3.6/reference/routing-configuration/tcp/service/#proxy-protocol
+    Deprecated: ProxyProtocol will not be supported in future APIVersions, please use ServersTransport to configure ProxyProtocol instead.
 
     Attributes
     ----------
@@ -186,20 +196,25 @@ schema TraefikIoV1alpha1IngressRouteTCPSpecRoutesItems0ServicesItems0ProxyProtoc
     version?: int
 
 
+    check:
+        version <= 2 if version not in [None, Undefined]
+        version >= 1 if version not in [None, Undefined]
+
+
 schema TraefikIoV1alpha1IngressRouteTCPSpecTLS:
-    """
+    r"""
     TLS defines the TLS configuration on a layer 4 / TCP Route.
-    More info: https://doc.traefik.io/traefik/v3.0/routing/routers/#tls_1
+    More info: https://doc.traefik.io/traefik/v3.6/reference/routing-configuration/tcp/routing/router/#tls
 
     Attributes
     ----------
     certResolver : str, default is Undefined, optional
         CertResolver defines the name of the certificate resolver to use.
         Cert resolvers have to be configured in the static configuration.
-        More info: https://doc.traefik.io/traefik/v3.0/https/acme/#certificate-resolvers
+        More info: https://doc.traefik.io/traefik/v3.6/reference/install-configuration/tls/certificate-resolvers/acme/
     domains : [TraefikIoV1alpha1IngressRouteTCPSpecTLSDomainsItems0], default is Undefined, optional
         Domains defines the list of domains that will be used to issue certificates.
-        More info: https://doc.traefik.io/traefik/v3.0/routing/routers/#domains
+        More info: https://doc.traefik.io/traefik/v3.6/reference/routing-configuration/tcp/tls/#domains
     options : TraefikIoV1alpha1IngressRouteTCPSpecTLSOptions, default is Undefined, optional
         options
     passthrough : bool, default is Undefined, optional
@@ -225,7 +240,7 @@ schema TraefikIoV1alpha1IngressRouteTCPSpecTLS:
 
 
 schema TraefikIoV1alpha1IngressRouteTCPSpecTLSDomainsItems0:
-    """
+    r"""
     Domain holds a domain name with SANs.
 
     Attributes
@@ -243,10 +258,10 @@ schema TraefikIoV1alpha1IngressRouteTCPSpecTLSDomainsItems0:
 
 
 schema TraefikIoV1alpha1IngressRouteTCPSpecTLSOptions:
-    """
+    r"""
     Options defines the reference to a TLSOption, that specifies the parameters of the TLS connection.
     If not defined, the `default` TLSOption is used.
-    More info: https://doc.traefik.io/traefik/v3.0/https/tls/#tls-options
+    More info: https://doc.traefik.io/traefik/v3.6/reference/routing-configuration/tcp/tls/#tls-options
 
     Attributes
     ----------
@@ -263,7 +278,7 @@ schema TraefikIoV1alpha1IngressRouteTCPSpecTLSOptions:
 
 
 schema TraefikIoV1alpha1IngressRouteTCPSpecTLSStore:
-    """
+    r"""
     Store defines the reference to the TLSStore, that will be used to store certificates.
     Please note that only `default` TLSStore can be used.
 

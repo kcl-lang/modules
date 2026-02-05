@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema APIRateLimit:
-    """
+    r"""
     APIRateLimit defines how group of consumers are rate limited on a set of APIs.
 
     Attributes
@@ -36,7 +36,7 @@ schema APIRateLimit:
 
 
 schema HubTraefikIoV1alpha1APIRateLimitSpec:
-    """
+    r"""
     The desired behavior of this APIRateLimit.
 
     Attributes
@@ -80,11 +80,11 @@ schema HubTraefikIoV1alpha1APIRateLimitSpec:
 
 
     check:
-        len(apis) <= 100
+        len(apis) <= 100 if apis
 
 
 schema HubTraefikIoV1alpha1APIRateLimitSpecAPISelector:
-    """
+    r"""
     APISelector selects the APIs that will be rate limited.
     Multiple APIRateLimits can select the same set of APIs.
     This field is optional and follows standard label selector semantics.
@@ -107,7 +107,7 @@ schema HubTraefikIoV1alpha1APIRateLimitSpecAPISelector:
 
 
 schema HubTraefikIoV1alpha1APIRateLimitSpecAPISelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
 
@@ -134,7 +134,7 @@ schema HubTraefikIoV1alpha1APIRateLimitSpecAPISelectorMatchExpressionsItems0:
 
 
 schema HubTraefikIoV1alpha1APIRateLimitSpecApisItems0:
-    """
+    r"""
     APIReference references an API.
 
     Attributes
@@ -152,7 +152,7 @@ schema HubTraefikIoV1alpha1APIRateLimitSpecApisItems0:
 
 
 schema HubTraefikIoV1alpha1APIRateLimitStatus:
-    """
+    r"""
     The current status of this APIRateLimit.
 
     Attributes

@@ -4,10 +4,11 @@ Editing this file might prove futile when you re-run the KCL auto-gen generate c
 """
 import regex
 import k8s.apimachinery.pkg.apis.meta.v1
+_regex_match = regex.match
 
 
 schema ReferenceGrant:
-    """
+    r"""
     ReferenceGrant identifies kinds of resources in other namespaces that are trusted to reference the specified kinds of resources in the same namespace as the policy. 
      Each ReferenceGrant can be used to represent a unique trust relationship. Additional Reference Grants can be used to add to the set of trusted sources of inbound references for the namespace they are defined within. 
      A ReferenceGrant is required for all cross-namespace references in Gateway API (with the exception of cross-namespace Route-Gateway attachment, which is governed by the AllowedRoutes configuration on the Gateway, and cross-namespace Service ParentRefs on a "consumer" mesh Route, which defines routing rules applicable only to workloads in the Route namespace). ReferenceGrants allowing a reference from a Route to a Service are only applicable to BackendRefs. 
@@ -36,7 +37,7 @@ schema ReferenceGrant:
 
 
 schema GatewayNetworkingK8sIoV1alpha2ReferenceGrantSpec:
-    """
+    r"""
     Spec defines the desired state of ReferenceGrant.
 
     Attributes
@@ -63,7 +64,7 @@ schema GatewayNetworkingK8sIoV1alpha2ReferenceGrantSpec:
 
 
 schema GatewayNetworkingK8sIoV1alpha2ReferenceGrantSpecFromItems0:
-    """
+    r"""
     ReferenceGrantFrom describes trusted namespaces and kinds.
 
     Attributes
@@ -92,17 +93,17 @@ schema GatewayNetworkingK8sIoV1alpha2ReferenceGrantSpecFromItems0:
 
     check:
         len(group) <= 253
-        regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$")
+        _regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$")
         len(kind) <= 63
         len(kind) >= 1
-        regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$")
+        _regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$")
         len(namespace) <= 63
         len(namespace) >= 1
-        regex_match(str(namespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$")
+        _regex_match(str(namespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$")
 
 
 schema GatewayNetworkingK8sIoV1alpha2ReferenceGrantSpecToItems0:
-    """
+    r"""
     ReferenceGrantTo describes what Kinds are allowed as targets of the references.
 
     Attributes
@@ -127,11 +128,11 @@ schema GatewayNetworkingK8sIoV1alpha2ReferenceGrantSpecToItems0:
 
     check:
         len(group) <= 253
-        regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$")
+        _regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$")
         len(kind) <= 63
         len(kind) >= 1
-        regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$")
-        len(name) <= 253
-        len(name) >= 1
+        _regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$")
+        len(name) <= 253 if name
+        len(name) >= 1 if name
 
 

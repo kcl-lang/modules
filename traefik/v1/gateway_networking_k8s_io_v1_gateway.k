@@ -4,10 +4,11 @@ Editing this file might prove futile when you re-run the KCL auto-gen generate c
 """
 import regex
 import k8s.apimachinery.pkg.apis.meta.v1
+_regex_match = regex.match
 
 
 schema Gateway:
-    """
+    r"""
     Gateway represents an instance of a service-traffic handling infrastructure by binding Listeners to a set of IP addresses.
 
     Attributes
@@ -37,7 +38,7 @@ schema Gateway:
 
 
 schema GatewayNetworkingK8sIoV1GatewaySpec:
-    """
+    r"""
     Spec defines the desired state of Gateway.
 
     Attributes
@@ -95,7 +96,7 @@ schema GatewayNetworkingK8sIoV1GatewaySpec:
 
 
     check:
-        len(addresses) <= 16
+        len(addresses) <= 16 if addresses
         len(gatewayClassName) <= 253
         len(gatewayClassName) >= 1
         len(listeners) >= 1
@@ -103,7 +104,7 @@ schema GatewayNetworkingK8sIoV1GatewaySpec:
 
 
 schema GatewayNetworkingK8sIoV1GatewaySpecAddressesItems0:
-    """
+    r"""
     GatewayAddress describes an address that can be bound to a Gateway.
 
     Attributes
@@ -122,15 +123,15 @@ schema GatewayNetworkingK8sIoV1GatewaySpecAddressesItems0:
 
 
     check:
-        len($type) <= 253
-        len($type) >= 1
-        regex_match(str($type), r"^Hostname|IPAddress|NamedAddress|[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*\/[A-Za-z0-9\/\-._~%!$&'()*+,;=:]+$") if $type
+        len($type) <= 253 if $type
+        len($type) >= 1 if $type
+        _regex_match(str($type), r"^Hostname|IPAddress|NamedAddress|[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*\/[A-Za-z0-9\/\-._~%!$&'()*+,;=:]+$") if $type
         len(value) <= 253
         len(value) >= 1
 
 
 schema GatewayNetworkingK8sIoV1GatewaySpecInfrastructure:
-    """
+    r"""
     Infrastructure defines infrastructure level attributes about this Gateway instance. 
      Support: Core 
      
@@ -156,12 +157,14 @@ schema GatewayNetworkingK8sIoV1GatewaySpecInfrastructure:
 
 
     check:
-        all _, annotations in annotations {len(annotations) <= 4096len(annotations) >= 0 } if annotations
-        all _, labels in labels {len(labels) <= 4096len(labels) >= 0 } if labels
+        all _, annotations in annotations { len(annotations) <= 4096 if annotations not in [None, Undefined] } if annotations
+        all _, annotations in annotations { len(annotations) >= 0 if annotations not in [None, Undefined] } if annotations
+        all _, labels in labels { len(labels) <= 4096 if labels not in [None, Undefined] } if labels
+        all _, labels in labels { len(labels) >= 0 if labels not in [None, Undefined] } if labels
 
 
 schema GatewayNetworkingK8sIoV1GatewaySpecListenersItems0:
-    """
+    r"""
     Listener embodies the concept of a logical endpoint where a Gateway accepts network connections.
 
     Attributes
@@ -203,21 +206,21 @@ schema GatewayNetworkingK8sIoV1GatewaySpecListenersItems0:
 
 
     check:
-        len(hostname) <= 253
-        len(hostname) >= 1
-        regex_match(str(hostname), r"^(\*\.)?[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if hostname
+        len(hostname) <= 253 if hostname
+        len(hostname) >= 1 if hostname
+        _regex_match(str(hostname), r"^(\*\.)?[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if hostname
         len(name) <= 253
         len(name) >= 1
-        regex_match(str(name), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$")
+        _regex_match(str(name), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$")
         port <= 65535
         port >= 1
         len($protocol) <= 255
         len($protocol) >= 1
-        regex_match(str($protocol), r"^[a-zA-Z0-9]([-a-zSA-Z0-9]*[a-zA-Z0-9])?$|[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*\/[A-Za-z0-9]+$")
+        _regex_match(str($protocol), r"^[a-zA-Z0-9]([-a-zSA-Z0-9]*[a-zA-Z0-9])?$|[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*\/[A-Za-z0-9]+$")
 
 
 schema GatewayNetworkingK8sIoV1GatewaySpecListenersItems0AllowedRoutes:
-    """
+    r"""
     AllowedRoutes defines the types of routes that MAY be attached to a Listener and the trusted namespaces where those Route resources MAY be present. 
      Although a client request may match multiple route rules, only one rule may ultimately receive the request. Matching precedence MUST be determined in order of the following criteria: 
      * The most specific match as defined by the Route type. * The oldest Route based on creation timestamp. For example, a Route with a creation timestamp of "2020-09-08 01:02:03" is given precedence over a Route with a creation timestamp of "2020-09-08 01:02:04". * If everything else is equivalent, the Route appearing first in alphabetical order (namespace/name) should be given precedence. For example, foo/bar is given precedence over foo/baz. 
@@ -241,11 +244,11 @@ schema GatewayNetworkingK8sIoV1GatewaySpecListenersItems0AllowedRoutes:
 
 
     check:
-        len(kinds) <= 8
+        len(kinds) <= 8 if kinds
 
 
 schema GatewayNetworkingK8sIoV1GatewaySpecListenersItems0AllowedRoutesKindsItems0:
-    """
+    r"""
     RouteGroupKind indicates the group and kind of a Route resource.
 
     Attributes
@@ -263,15 +266,15 @@ schema GatewayNetworkingK8sIoV1GatewaySpecListenersItems0AllowedRoutesKindsItems
 
 
     check:
-        len(group) <= 253
-        regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if group
+        len(group) <= 253 if group
+        _regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if group
         len(kind) <= 63
         len(kind) >= 1
-        regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$")
+        _regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$")
 
 
 schema GatewayNetworkingK8sIoV1GatewaySpecListenersItems0AllowedRoutesNamespaces:
-    """
+    r"""
     Namespaces indicates namespaces from which Routes may be attached to this Listener. This is restricted to the namespace of this Gateway by default. 
      Support: Core
 
@@ -292,7 +295,7 @@ schema GatewayNetworkingK8sIoV1GatewaySpecListenersItems0AllowedRoutesNamespaces
 
 
 schema GatewayNetworkingK8sIoV1GatewaySpecListenersItems0AllowedRoutesNamespacesSelector:
-    """
+    r"""
     Selector must be specified when From is set to "Selector". In that case, only Routes in Namespaces matching this Selector will be selected by this Gateway. This field is ignored for other values of "From". 
      Support: Core
 
@@ -311,7 +314,7 @@ schema GatewayNetworkingK8sIoV1GatewaySpecListenersItems0AllowedRoutesNamespaces
 
 
 schema GatewayNetworkingK8sIoV1GatewaySpecListenersItems0AllowedRoutesNamespacesSelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
 
     Attributes
@@ -333,7 +336,7 @@ schema GatewayNetworkingK8sIoV1GatewaySpecListenersItems0AllowedRoutesNamespaces
 
 
 schema GatewayNetworkingK8sIoV1GatewaySpecListenersItems0TLS:
-    """
+    r"""
     TLS is the TLS configuration for the Listener. This field is required if the Protocol field is "HTTPS" or "TLS". It is invalid to set this field if the Protocol field is "HTTP", "TCP", or "UDP". 
      The association of SNIs to Certificate defined in GatewayTLSConfig is defined based on the Hostname field for this listener. 
      The GatewayClass MUST use the longest matching SNI out of all available certificates for any TLS handshake. 
@@ -368,12 +371,13 @@ schema GatewayNetworkingK8sIoV1GatewaySpecListenersItems0TLS:
 
 
     check:
-        len(certificateRefs) <= 64
-        all _, options in options {len(options) <= 4096len(options) >= 0 } if options
+        len(certificateRefs) <= 64 if certificateRefs
+        all _, options in options { len(options) <= 4096 if options not in [None, Undefined] } if options
+        all _, options in options { len(options) >= 0 if options not in [None, Undefined] } if options
 
 
 schema GatewayNetworkingK8sIoV1GatewaySpecListenersItems0TLSCertificateRefsItems0:
-    """
+    r"""
     SecretObjectReference identifies an API object including its namespace, defaulting to Secret. 
      The API object must be valid in the cluster; the Group and Kind must be registered in the cluster for this reference to be valid. 
      References to objects with invalid Group and Kind are not valid, and must be rejected by the implementation, with appropriate Conditions set on the containing object.
@@ -403,20 +407,20 @@ schema GatewayNetworkingK8sIoV1GatewaySpecListenersItems0TLSCertificateRefsItems
 
 
     check:
-        len(group) <= 253
-        regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if group
-        len(kind) <= 63
-        len(kind) >= 1
-        regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$") if kind
+        len(group) <= 253 if group
+        _regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if group
+        len(kind) <= 63 if kind
+        len(kind) >= 1 if kind
+        _regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$") if kind
         len(name) <= 253
         len(name) >= 1
-        len(namespace) <= 63
-        len(namespace) >= 1
-        regex_match(str(namespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$") if namespace
+        len(namespace) <= 63 if namespace
+        len(namespace) >= 1 if namespace
+        _regex_match(str(namespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$") if namespace
 
 
 schema GatewayNetworkingK8sIoV1GatewayStatus:
-    """
+    r"""
     Status defines the current state of Gateway.
 
     Attributes
@@ -438,19 +442,19 @@ schema GatewayNetworkingK8sIoV1GatewayStatus:
 
     addresses?: [GatewayNetworkingK8sIoV1GatewayStatusAddressesItems0]
 
-    conditions?: [GatewayNetworkingK8sIoV1GatewayStatusConditionsItems0] = [{"status": "Unknown", "type": "Accepted", "lastTransitionTime": "1970-01-01T00:00:00Z", "message": "Waiting for controller", "reason": "Pending"}, {"status": "Unknown", "type": "Programmed", "lastTransitionTime": "1970-01-01T00:00:00Z", "message": "Waiting for controller", "reason": "Pending"}]
+    conditions?: [GatewayNetworkingK8sIoV1GatewayStatusConditionsItems0] = [{"lastTransitionTime": "1970-01-01T00:00:00Z", "message": "Waiting for controller", "reason": "Pending", "status": "Unknown", "type": "Accepted"}, {"message": "Waiting for controller", "reason": "Pending", "status": "Unknown", "type": "Programmed", "lastTransitionTime": "1970-01-01T00:00:00Z"}]
 
     listeners?: [GatewayNetworkingK8sIoV1GatewayStatusListenersItems0]
 
 
     check:
-        len(addresses) <= 16
-        len(conditions) <= 8
-        len(listeners) <= 64
+        len(addresses) <= 16 if addresses
+        len(conditions) <= 8 if conditions
+        len(listeners) <= 64 if listeners
 
 
 schema GatewayNetworkingK8sIoV1GatewayStatusAddressesItems0:
-    """
+    r"""
     GatewayStatusAddress describes a network address that is bound to a Gateway.
 
     Attributes
@@ -469,15 +473,15 @@ schema GatewayNetworkingK8sIoV1GatewayStatusAddressesItems0:
 
 
     check:
-        len($type) <= 253
-        len($type) >= 1
-        regex_match(str($type), r"^Hostname|IPAddress|NamedAddress|[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*\/[A-Za-z0-9\/\-._~%!$&'()*+,;=:]+$") if $type
+        len($type) <= 253 if $type
+        len($type) >= 1 if $type
+        _regex_match(str($type), r"^Hostname|IPAddress|NamedAddress|[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*\/[A-Za-z0-9\/\-._~%!$&'()*+,;=:]+$") if $type
         len(value) <= 253
         len(value) >= 1
 
 
 schema GatewayNetworkingK8sIoV1GatewayStatusConditionsItems0:
-    """
+    r"""
     Condition contains details for one aspect of the current state of this API Resource. --- This struct is intended for direct use as an array at the field path .status.conditions.  For example, 
      type FooStatus struct{ // Represents the observations of a foo's current state. // Known .status.conditions.type are: "Available", "Progressing", and "Degraded" // +patchMergeKey=type // +patchStrategy=merge // +listType=map // +listMapKey=type Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"` 
      // other fields }
@@ -514,16 +518,16 @@ schema GatewayNetworkingK8sIoV1GatewayStatusConditionsItems0:
 
     check:
         len(message) <= 32768
-        observedGeneration >= 0
+        observedGeneration >= 0 if observedGeneration not in [None, Undefined]
         len(reason) <= 1024
         len(reason) >= 1
-        regex_match(str(reason), r"^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$")
+        _regex_match(str(reason), r"^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$")
         len($type) <= 316
-        regex_match(str($type), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$")
+        _regex_match(str($type), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$")
 
 
 schema GatewayNetworkingK8sIoV1GatewayStatusListenersItems0:
-    """
+    r"""
     ListenerStatus is the status associated with a Listener.
 
     Attributes
@@ -555,12 +559,12 @@ schema GatewayNetworkingK8sIoV1GatewayStatusListenersItems0:
         len(conditions) <= 8
         len(name) <= 253
         len(name) >= 1
-        regex_match(str(name), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$")
+        _regex_match(str(name), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$")
         len(supportedKinds) <= 8
 
 
 schema GatewayNetworkingK8sIoV1GatewayStatusListenersItems0ConditionsItems0:
-    """
+    r"""
     Condition contains details for one aspect of the current state of this API Resource. --- This struct is intended for direct use as an array at the field path .status.conditions.  For example, 
      type FooStatus struct{ // Represents the observations of a foo's current state. // Known .status.conditions.type are: "Available", "Progressing", and "Degraded" // +patchMergeKey=type // +patchStrategy=merge // +listType=map // +listMapKey=type Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"` 
      // other fields }
@@ -597,16 +601,16 @@ schema GatewayNetworkingK8sIoV1GatewayStatusListenersItems0ConditionsItems0:
 
     check:
         len(message) <= 32768
-        observedGeneration >= 0
+        observedGeneration >= 0 if observedGeneration not in [None, Undefined]
         len(reason) <= 1024
         len(reason) >= 1
-        regex_match(str(reason), r"^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$")
+        _regex_match(str(reason), r"^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$")
         len($type) <= 316
-        regex_match(str($type), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$")
+        _regex_match(str($type), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$")
 
 
 schema GatewayNetworkingK8sIoV1GatewayStatusListenersItems0SupportedKindsItems0:
-    """
+    r"""
     RouteGroupKind indicates the group and kind of a Route resource.
 
     Attributes
@@ -624,10 +628,10 @@ schema GatewayNetworkingK8sIoV1GatewayStatusListenersItems0SupportedKindsItems0:
 
 
     check:
-        len(group) <= 253
-        regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if group
+        len(group) <= 253 if group
+        _regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if group
         len(kind) <= 63
         len(kind) >= 1
-        regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$")
+        _regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$")
 
 

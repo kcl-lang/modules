@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema APIAccess:
-    """
+    r"""
     APIAccess defines who can access to a set of APIs.
 
     Attributes
@@ -36,7 +36,7 @@ schema APIAccess:
 
 
 schema HubTraefikIoV1alpha1APIAccessSpec:
-    """
+    r"""
     The desired behavior of this APIAccess.
 
     Attributes
@@ -68,11 +68,11 @@ schema HubTraefikIoV1alpha1APIAccessSpec:
 
 
     check:
-        len(apis) <= 100
+        len(apis) <= 100 if apis
 
 
 schema HubTraefikIoV1alpha1APIAccessSpecAPISelector:
-    """
+    r"""
     APISelector selects the APIs that will be accessible to the configured audience.
     Multiple APIAccesses can select the same set of APIs.
     This field is optional and follows standard label selector semantics.
@@ -95,7 +95,7 @@ schema HubTraefikIoV1alpha1APIAccessSpecAPISelector:
 
 
 schema HubTraefikIoV1alpha1APIAccessSpecAPISelectorMatchExpressionsItems0:
-    """
+    r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
 
@@ -122,7 +122,7 @@ schema HubTraefikIoV1alpha1APIAccessSpecAPISelectorMatchExpressionsItems0:
 
 
 schema HubTraefikIoV1alpha1APIAccessSpecApisItems0:
-    """
+    r"""
     APIReference references an API.
 
     Attributes
@@ -140,7 +140,7 @@ schema HubTraefikIoV1alpha1APIAccessSpecApisItems0:
 
 
 schema HubTraefikIoV1alpha1APIAccessSpecOperationFilter:
-    """
+    r"""
     OperationFilter specifies the allowed operations on APIs and APIVersions.
     If not set, all operations are available.
     An empty OperationFilter prohibits all operations.
@@ -156,11 +156,11 @@ schema HubTraefikIoV1alpha1APIAccessSpecOperationFilter:
 
 
     check:
-        len(include) <= 100
+        len(include) <= 100 if include
 
 
 schema HubTraefikIoV1alpha1APIAccessStatus:
-    """
+    r"""
     The current status of this APIAccess.
 
     Attributes
